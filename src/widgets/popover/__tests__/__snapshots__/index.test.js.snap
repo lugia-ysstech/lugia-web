@@ -34,7 +34,6 @@ exports[`popover Demo Component JSON 1`] = `
 }
 
 .c4 {
-  color: #646A6E;
   font-size: 1.4rem;
 }
 
@@ -82,6 +81,7 @@ exports[`popover Demo Component JSON 1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -121,6 +121,7 @@ exports[`popover Demo Component JSON 1`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;

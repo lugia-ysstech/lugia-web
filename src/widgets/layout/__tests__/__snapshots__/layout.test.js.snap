@@ -83,7 +83,6 @@ exports[`Layout css 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
 }
 
 .c1 {
@@ -691,7 +690,13 @@ exports[`Layout css 1`] = `
           onClick={[Function]}
         >
           <i
-            className="lugia-icon-direction_right c7 c8"
+            className="lugia-icon-direction_right c7  c8"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
           />
         </div>
       </div>
@@ -720,7 +725,13 @@ exports[`Layout css 1`] = `
           onClick={[Function]}
         >
           <i
-            className="lugia-icon-direction_Left c7 c8"
+            className="lugia-icon-direction_Left c7  c8"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
           />
         </div>
       </div>
@@ -859,7 +870,13 @@ exports[`Layout css 1`] = `
           onClick={[Function]}
         >
           <i
-            className="lugia-icon-direction_right c7 c8"
+            className="lugia-icon-direction_right c7  c8"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
           />
         </div>
       </div>
@@ -991,7 +1008,13 @@ exports[`Layout css 1`] = `
           order={2}
         >
           <i
-            className="lugia-icon-direction_arrows_alt c17 c8"
+            className="lugia-icon-direction_arrows_alt c17  c8"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
           />
         </div>
       </div>
@@ -1065,7 +1088,13 @@ exports[`Layout css 1`] = `
           order={1}
         >
           <i
-            className="lugia-icon-direction_arrows_alt c17 c8"
+            className="lugia-icon-direction_arrows_alt c17  c8"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
           />
         </div>
       </div>
@@ -1154,7 +1183,13 @@ exports[`Layout css 1`] = `
           order={1}
         >
           <i
-            className="lugia-icon-direction_arrows_alt c17 c8"
+            className="lugia-icon-direction_arrows_alt c17  c8"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
           />
         </div>
       </div>
@@ -1187,7 +1222,13 @@ exports[`Layout css 1`] = `
               order={3}
             >
               <i
-                className="lugia-icon-direction_arrows_alt c17 c8"
+                className="lugia-icon-direction_arrows_alt c17  c8"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
               />
             </div>
           </div>
@@ -1211,7 +1252,13 @@ exports[`Layout css 1`] = `
               order={4}
             >
               <i
-                className="lugia-icon-direction_arrows_alt c17 c8"
+                className="lugia-icon-direction_arrows_alt c17  c8"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
               />
             </div>
           </div>
@@ -1236,7 +1283,13 @@ exports[`Layout css 1`] = `
               order={5}
             >
               <i
-                className="lugia-icon-direction_arrows_alt c17 c8"
+                className="lugia-icon-direction_arrows_alt c17  c8"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
               />
             </div>
           </div>
@@ -1262,7 +1315,13 @@ exports[`Layout css 1`] = `
           order={6}
         >
           <i
-            className="lugia-icon-direction_arrows_alt c17 c8"
+            className="lugia-icon-direction_arrows_alt c17  c8"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
           />
         </div>
       </div>

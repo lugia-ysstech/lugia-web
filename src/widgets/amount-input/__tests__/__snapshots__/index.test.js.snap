@@ -89,6 +89,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -128,6 +129,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -167,6 +169,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -538,7 +541,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "color": "#9EA4AE",
+              "color": "#cccccc",
               "cursor": "not-allowed",
               "fontSize": "1.2rem",
             }
@@ -881,7 +884,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "color": "#9EA4AE",
+              "color": "#cccccc",
               "cursor": "not-allowed",
               "fontSize": "1.2rem",
             }
@@ -1708,6 +1711,7 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -1747,6 +1751,7 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -1914,6 +1919,7 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -1953,6 +1959,7 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;

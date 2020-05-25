@@ -10,10 +10,10 @@ exports[`Radio Radio css 1`] = `
   white-space: nowrap;
   cursor: pointer;
   display: inline-block;
-  margin-right: 1rem;
+  margin-right: 0;
   opacity: 1;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   padding-left: 0rem;
   padding-right: 0rem;
 }
@@ -27,10 +27,10 @@ exports[`Radio Radio css 1`] = `
   white-space: nowrap;
   cursor: not-allowed;
   display: inline-block;
-  margin-right: 1rem;
+  margin-right: 0;
   opacity: 1;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   padding-left: 0rem;
   padding-right: 0rem;
 }
@@ -44,9 +44,10 @@ exports[`Radio Radio css 1`] = `
   white-space: nowrap;
   cursor: pointer;
   display: block;
+  margin-bottom: 0;
   opacity: 1;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   padding-left: 0rem;
   padding-right: 0rem;
 }
@@ -62,12 +63,8 @@ exports[`Radio Radio css 1`] = `
 .c4 {
   padding-left: 1rem;
   vertical-align: middle;
-  color: #333333;
+  color: #363B40;
   font-size: 1.4rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  padding-left: 1rem;
-  padding-right: 0rem;
 }
 
 .c3 {
@@ -79,13 +76,13 @@ exports[`Radio Radio css 1`] = `
   height: 1.6rem;
   border-radius: 50%;
   border: 1px solid #cccccc;
-  background-color: #fff;
+  background-color: #4d63ff;
   -webkit-transition: all 0.3s;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
+  background-color: #4d63ff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -113,13 +110,13 @@ exports[`Radio Radio css 1`] = `
   height: 1.6rem;
   border-radius: 50%;
   border: 1px solid #cccccc;
-  background-color: #fff;
+  background-color: #4d63ff;
   -webkit-transition: all 0.3s;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
+  background-color: #4d63ff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -164,13 +161,13 @@ exports[`Radio Radio css 1`] = `
   height: 1.6rem;
   border-radius: 50%;
   border: 1px solid #cccccc;
-  background-color: #fff;
+  background-color: #4d63ff;
   -webkit-transition: all 0.3s;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
+  background-color: #4d63ff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -215,13 +212,13 @@ exports[`Radio Radio css 1`] = `
   height: 1.6rem;
   border-radius: 50%;
   border: 1px solid #cccccc;
-  background-color: #fff;
+  background-color: #4d63ff;
   -webkit-transition: all 0.3s;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
+  background-color: #4d63ff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -266,13 +263,13 @@ exports[`Radio Radio css 1`] = `
   height: 1.6rem;
   border-radius: 50%;
   border: 1px solid #cccccc;
-  background-color: #fff;
+  background-color: #4d63ff;
   -webkit-transition: all 0.3s;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
+  background-color: #4d63ff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -317,13 +314,13 @@ exports[`Radio Radio css 1`] = `
   height: 1.6rem;
   border-radius: 50%;
   border: 1px solid #cccccc;
-  background-color: #fff;
+  background-color: #4d63ff;
   -webkit-transition: all 0.3s;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
+  background-color: #4d63ff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -385,7 +382,6 @@ exports[`Radio Radio css 1`] = `
           "marginLeft": "1rem",
           "marginRight": "1rem",
           "marginTop": "1rem",
-          "opacity": 0.6,
           "paddingBottom": "1rem",
           "paddingLeft": "1rem",
           "paddingRight": "1rem",
@@ -539,7 +535,6 @@ exports[`Radio Radio css 1`] = `
           "marginLeft": "1rem",
           "marginRight": "1rem",
           "marginTop": "1rem",
-          "opacity": 0.6,
           "paddingBottom": "1rem",
           "paddingLeft": "1rem",
           "paddingRight": "1rem",
@@ -695,7 +690,6 @@ exports[`Radio Radio css 1`] = `
           "marginLeft": "1rem",
           "marginRight": "1rem",
           "marginTop": "1rem",
-          "opacity": 0.6,
           "paddingBottom": "1rem",
           "paddingLeft": "1rem",
           "paddingRight": "1rem",
@@ -739,11 +733,7 @@ exports[`Radio Radio css 1`] = `
         className="c4"
         style={
           Object {
-            "color": "red",
-            "paddingBottom": "1rem",
-            "paddingLeft": "1rem",
-            "paddingRight": "1rem",
-            "paddingTop": "1rem",
+            "color": "#646A6E",
           }
         }
       >
@@ -774,7 +764,7 @@ exports[`Radio Radio css 1`] = `
           className="c8"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomColor": "#4d63ff",
               "borderBottomLeftRadius": "100%",
               "borderBottomRightRadius": "100%",
@@ -828,7 +818,7 @@ exports[`Radio Radio css 1`] = `
           className="c8"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomColor": "#4d63ff",
               "borderBottomLeftRadius": "100%",
               "borderBottomRightRadius": "100%",
@@ -880,7 +870,29 @@ exports[`Radio Radio css 1`] = `
         <span
           checked={false}
           className="c3"
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "#ffffff",
+              "borderBottomColor": "#cccccc",
+              "borderBottomLeftRadius": "100%",
+              "borderBottomRightRadius": "100%",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#cccccc",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#cccccc",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#cccccc",
+              "borderTopLeftRadius": "100%",
+              "borderTopRightRadius": "100%",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "height": "1.6rem",
+              "width": "1.6rem",
+            }
+          }
         />
       </span>
       <span
@@ -937,6 +949,8 @@ exports[`Radio Radio css 1`] = `
               "borderTopRightRadius": "100%",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
+              "height": "1.6rem",
+              "width": "1.6rem",
             }
           }
         />
@@ -1033,7 +1047,7 @@ exports[`Radio Radio css 1`] = `
           className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomColor": "#c0c8ff",
               "borderBottomLeftRadius": "10rem",
               "borderBottomRightRadius": "10rem",
@@ -1058,7 +1072,11 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
+        style={
+          Object {
+            "color": "#646A6E",
+          }
+        }
       >
         Radio
       </span>
@@ -1085,7 +1103,29 @@ exports[`Radio Radio css 1`] = `
         <span
           checked={false}
           className="c3"
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "#ffffff",
+              "borderBottomColor": "#cccccc",
+              "borderBottomLeftRadius": "100%",
+              "borderBottomRightRadius": "100%",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#cccccc",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#cccccc",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#cccccc",
+              "borderTopLeftRadius": "100%",
+              "borderTopRightRadius": "100%",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "height": "1.6rem",
+              "width": "1.6rem",
+            }
+          }
         />
       </span>
       <span
@@ -1110,7 +1150,29 @@ exports[`Radio Radio css 1`] = `
         <span
           checked={false}
           className="c3"
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "#ffffff",
+              "borderBottomColor": "#cccccc",
+              "borderBottomLeftRadius": "100%",
+              "borderBottomRightRadius": "100%",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#cccccc",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#cccccc",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#cccccc",
+              "borderTopLeftRadius": "100%",
+              "borderTopRightRadius": "100%",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "height": "1.6rem",
+              "width": "1.6rem",
+            }
+          }
         />
       </span>
       <span
@@ -1140,7 +1202,7 @@ exports[`Radio Radio css 1`] = `
           className="c8"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomColor": "#4d63ff",
               "borderBottomLeftRadius": "100%",
               "borderBottomRightRadius": "100%",
@@ -1185,7 +1247,29 @@ exports[`Radio Radio css 1`] = `
         <span
           checked={false}
           className="c3"
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "#ffffff",
+              "borderBottomColor": "#cccccc",
+              "borderBottomLeftRadius": "100%",
+              "borderBottomRightRadius": "100%",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#cccccc",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#cccccc",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#cccccc",
+              "borderTopLeftRadius": "100%",
+              "borderTopRightRadius": "100%",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "height": "1.6rem",
+              "width": "1.6rem",
+            }
+          }
         />
       </span>
       <span

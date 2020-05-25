@@ -38,7 +38,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   cursor: pointer;
-  height: 3.5rem;
+  height: 3.6rem;
 }
 
 .c2 > i {
@@ -46,7 +46,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 }
 
 .c3 {
-  padding: 0rem 0.8rem;
+  padding: 0rem 1rem;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -70,6 +70,9 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 .c4 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
 }
 
 .c0 {
@@ -77,9 +80,12 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
-  border-radius: 0.4rem;
   width: 25rem;
   background-color: #fff;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
   height: 25rem;
 }
 
@@ -94,7 +100,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   onWheel={[Function]}
   style={
     Object {
-      "boxShadow": "0px 1px 6px 0px rgba(0, 0, 0, 0.2)",
+      "boxShadow": "0px 0px 6px 0px #cccccc",
     }
   }
 >
@@ -113,7 +119,11 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      style={Object {}}
+      style={
+        Object {
+          "color": "#363B40",
+        }
+      }
       title="a"
     >
       <div
@@ -122,6 +132,15 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
       >
         <span
           className="c4"
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
         >
           a
         </span>
@@ -136,7 +155,11 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      style={Object {}}
+      style={
+        Object {
+          "color": "#363B40",
+        }
+      }
       title="b"
     >
       <div
@@ -145,6 +168,15 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
       >
         <span
           className="c4"
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
         >
           b
         </span>
@@ -161,8 +193,8 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "color": "#4d63ff",
-          "fontWeight": 900,
+          "backgroundColor": "#ffffff",
+          "color": "#363B40",
         }
       }
       title="c"
@@ -173,6 +205,15 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
       >
         <span
           className="c4"
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
         >
           c
         </span>
@@ -189,8 +230,8 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "color": "#4d63ff",
-          "fontWeight": 900,
+          "backgroundColor": "#ffffff",
+          "color": "#363B40",
         }
       }
       title="d"
@@ -201,6 +242,15 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
       >
         <span
           className="c4"
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
         >
           d
         </span>
@@ -248,7 +298,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   cursor: pointer;
-  height: 3.5rem;
+  height: 3.6rem;
 }
 
 .c2 > i {
@@ -256,7 +306,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 }
 
 .c3 {
-  padding: 0rem 0.8rem;
+  padding: 0rem 1rem;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -280,6 +330,9 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 .c4 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
 }
 
 .c0 {
@@ -287,9 +340,12 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
-  border-radius: 0.4rem;
   width: 25rem;
   background-color: #fff;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
   height: 25rem;
 }
 
@@ -304,7 +360,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   onWheel={[Function]}
   style={
     Object {
-      "boxShadow": "0px 1px 6px 0px rgba(0, 0, 0, 0.2)",
+      "boxShadow": "0px 0px 6px 0px #cccccc",
     }
   }
 >
@@ -323,7 +379,11 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      style={Object {}}
+      style={
+        Object {
+          "color": "#363B40",
+        }
+      }
       title="a"
     >
       <div
@@ -332,6 +392,15 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
       >
         <span
           className="c4"
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
         >
           a
         </span>
@@ -346,7 +415,11 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      style={Object {}}
+      style={
+        Object {
+          "color": "#363B40",
+        }
+      }
       title="b"
     >
       <div
@@ -355,6 +428,15 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
       >
         <span
           className="c4"
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
         >
           b
         </span>
@@ -371,8 +453,8 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "color": "#4d63ff",
-          "fontWeight": 900,
+          "backgroundColor": "#ffffff",
+          "color": "#363B40",
         }
       }
       title="c"
@@ -383,6 +465,15 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
       >
         <span
           className="c4"
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
         >
           c
         </span>
@@ -397,7 +488,11 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      style={Object {}}
+      style={
+        Object {
+          "color": "#363B40",
+        }
+      }
       title="d"
     >
       <div
@@ -406,6 +501,15 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
       >
         <span
           className="c4"
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
         >
           d
         </span>
@@ -453,7 +557,7 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   cursor: pointer;
-  height: 3.5rem;
+  height: 3.6rem;
 }
 
 .c2 > i {
@@ -461,7 +565,7 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
 }
 
 .c3 {
-  padding: 0rem 0.8rem;
+  padding: 0rem 1rem;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -485,6 +589,9 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
 .c4 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
 }
 
 .c0 {
@@ -492,9 +599,12 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
-  border-radius: 0.4rem;
   width: 25rem;
   background-color: #fff;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
   height: 25rem;
 }
 
@@ -509,7 +619,7 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
   onWheel={[Function]}
   style={
     Object {
-      "boxShadow": "0px 1px 6px 0px rgba(0, 0, 0, 0.2)",
+      "boxShadow": "0px 0px 6px 0px #cccccc",
     }
   }
 >
@@ -528,7 +638,11 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      style={Object {}}
+      style={
+        Object {
+          "color": "#363B40",
+        }
+      }
       title="a"
     >
       <div
@@ -537,6 +651,15 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
       >
         <span
           className="c4"
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
         >
           a
         </span>
@@ -551,7 +674,11 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      style={Object {}}
+      style={
+        Object {
+          "color": "#363B40",
+        }
+      }
       title="b"
     >
       <div
@@ -560,6 +687,15 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
       >
         <span
           className="c4"
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
         >
           b
         </span>
@@ -574,7 +710,11 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      style={Object {}}
+      style={
+        Object {
+          "color": "#363B40",
+        }
+      }
       title="c"
     >
       <div
@@ -583,6 +723,15 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
       >
         <span
           className="c4"
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
         >
           c
         </span>
@@ -597,7 +746,11 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      style={Object {}}
+      style={
+        Object {
+          "color": "#363B40",
+        }
+      }
       title="d"
     >
       <div
@@ -606,6 +759,15 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
       >
         <span
           className="c4"
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
         >
           d
         </span>
@@ -653,7 +815,7 @@ exports[`Menu children: items 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   cursor: pointer;
-  height: 3.5rem;
+  height: 3.6rem;
 }
 
 .c3 > i {
@@ -661,7 +823,7 @@ exports[`Menu children: items 1`] = `
 }
 
 .c4 {
-  padding: 0rem 0.8rem;
+  padding: 0rem 1rem;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -685,6 +847,9 @@ exports[`Menu children: items 1`] = `
 .c5 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
 }
 
 .c0 {
@@ -692,9 +857,12 @@ exports[`Menu children: items 1`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
-  border-radius: 0.4rem;
   width: 25rem;
   background-color: #fff;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
   height: 25rem;
 }
 
@@ -717,7 +885,7 @@ exports[`Menu children: items 1`] = `
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
   opacity: 0;
-  left: 18.8rem;
+  right: 0;
 }
 
 .c8 {
@@ -761,7 +929,7 @@ exports[`Menu children: items 1`] = `
   onWheel={[Function]}
   style={
     Object {
-      "boxShadow": "0px 1px 6px 0px rgba(0, 0, 0, 0.2)",
+      "boxShadow": "0px 0px 6px 0px #cccccc",
       "width": "20rem",
     }
   }
@@ -793,7 +961,11 @@ exports[`Menu children: items 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "color": "#363B40",
+          }
+        }
         title=""
       >
         <div
@@ -802,6 +974,15 @@ exports[`Menu children: items 1`] = `
         >
           <span
             className="c5"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "fontSize": "1.4rem",
+              }
+            }
           >
             0
           </span>
@@ -816,7 +997,11 @@ exports[`Menu children: items 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "color": "#363B40",
+          }
+        }
         title=""
       >
         <div
@@ -825,6 +1010,15 @@ exports[`Menu children: items 1`] = `
         >
           <span
             className="c5"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "fontSize": "1.4rem",
+              }
+            }
           >
             1
           </span>
@@ -839,7 +1033,11 @@ exports[`Menu children: items 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "color": "#363B40",
+          }
+        }
         title=""
       >
         <div
@@ -848,6 +1046,15 @@ exports[`Menu children: items 1`] = `
         >
           <span
             className="c5"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "fontSize": "1.4rem",
+              }
+            }
           >
             2
           </span>
@@ -862,7 +1069,11 @@ exports[`Menu children: items 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "color": "#363B40",
+          }
+        }
         title=""
       >
         <div
@@ -871,6 +1082,15 @@ exports[`Menu children: items 1`] = `
         >
           <span
             className="c5"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "fontSize": "1.4rem",
+              }
+            }
           >
             3
           </span>
@@ -885,7 +1105,11 @@ exports[`Menu children: items 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "color": "#363B40",
+          }
+        }
         title=""
       >
         <div
@@ -894,6 +1118,15 @@ exports[`Menu children: items 1`] = `
         >
           <span
             className="c5"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "fontSize": "1.4rem",
+              }
+            }
           >
             4
           </span>
@@ -908,7 +1141,11 @@ exports[`Menu children: items 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "color": "#363B40",
+          }
+        }
         title=""
       >
         <div
@@ -917,54 +1154,17 @@ exports[`Menu children: items 1`] = `
         >
           <span
             className="c5"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "fontSize": "1.4rem",
+              }
+            }
           >
             5
-          </span>
-        </div>
-      </li>
-      <li
-        checked={false}
-        className="c3"
-        disabled={false}
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={Object {}}
-        title=""
-      >
-        <div
-          className="c4"
-          style={Object {}}
-        >
-          <span
-            className="c5"
-          >
-            6
-          </span>
-        </div>
-      </li>
-      <li
-        checked={false}
-        className="c3"
-        disabled={false}
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={Object {}}
-        title=""
-      >
-        <div
-          className="c4"
-          style={Object {}}
-        >
-          <span
-            className="c5"
-          >
-            7
           </span>
         </div>
       </li>
@@ -997,7 +1197,7 @@ exports[`Menu children: items 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "height": "17.6rem",
+            "height": "12.8rem",
             "top": "0rem",
           }
         }

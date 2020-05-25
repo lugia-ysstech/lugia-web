@@ -1,47 +1,159 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+.c6 {
+  font-size: 1.4rem;
+  color: #9EA4AE;
+  display: inline-block;
+}
+
+.c16 {
+  opacity: 0;
+}
+
+.c2 {
+  margin: 0;
+  overflow: hidden;
+  -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
+  transition-property: background-color,border,border-radius,opacity,box-shadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  position: relative;
+  box-sizing: border-box;
+  top: 0rem;
+}
+
+.c3 {
+  min-height: 2rem;
+  list-style: none;
+  white-space: nowrap;
+  position: relative;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-bottom: 0rem;
+}
+
+.c14 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  vertical-align: top;
+  padding-left: 0.4rem;
+  box-sizing: border-box;
+  -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
+  transition-property: background-color,border,border-radius,opacity,box-shadow;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+
+.c14 span {
+  vertical-align: middle;
+}
+
+.c4 {
+  cursor: pointer;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
+  transition-property: background-color,border,border-radius,opacity,box-shadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  padding-left: 0rem;
+  height: 3.5rem;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100%;
+  padding-right: 1rem;
+}
+
+.c15 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
 }
 
-.c8 {
+.c9 {
   font-size: 1.4rem;
   cursor: pointer;
-  color: #333333;
-  width: none;
   box-sizing: border-box;
   padding: 0;
   list-style: none;
   display: inline-block;
-  position: relative;
+  line-height: 1;
   white-space: nowrap;
   display: inline-block;
-  margin-right: 2.142857142857143em;
-}
-
-.c8:hover > span span {
-  border: 1px solid #4d63ff;
-}
-
-.c9 {
-  margin: 0;
-  outline: none;
-  line-height: 1;
-  vertical-align: text-bottom;
-  display: inline-block;
-}
-
-.c12 {
-  padding-left: 0.7142857142857143em;
+  margin-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 1;
 }
 
 .c10 {
+  margin: 0;
+  outline: none;
+  line-height: 1;
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+}
+
+.c13 {
+  padding-left: 0;
+  vertical-align: middle;
+  color: #363B40;
+  font-size: 1.4rem;
+}
+
+.c11 {
   position: absolute;
   left: 0;
   z-index: 1;
@@ -54,569 +166,1275 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   height: 100%;
 }
 
-.c15 {
-  position: relative;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 1.2857142857142858em;
-  height: 1.2857142857142858em;
-  border-radius: 0.14285714285714288em;
-  background-color: #fff;
-  border: 1px solid #cccccc;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.c15:hover {
-  border: 1px solid #4d63ff;
-}
-
-.c15::after {
-  position: absolute;
-  box-sizing: border-box;
-  left: 0.35714285714285715em;
-  top: 0.14285714285714288em;
-  width: 0.4285714285714286em;
-  height: 0.7142857142857143em;
-  -webkit-transform: rotate(45deg) scale(0);
-  -ms-transform: rotate(45deg) scale(0);
-  transform: rotate(45deg) scale(0);
-  -webkit-transition: all .1s cubic-bezier(.71,-.46,.88,.6);
-  transition: all .1s cubic-bezier(.71,-.46,.88,.6);
-  display: table;
-  border: 0.14285714285714288em solid #fff;
-  border-top: 0;
-  border-left: 0;
-  content: ' ';
-}
-
-.c11 {
-  position: relative;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 1.2857142857142858em;
-  height: 1.2857142857142858em;
-  border-radius: 0.14285714285714288em;
-  background-color: #4d63ff;
-  border: 1px solid #4d63ff;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.c11:hover {
-  border: 1px solid #4d63ff;
-}
-
-.c11::after {
-  position: absolute;
-  box-sizing: border-box;
-  left: 0.2142857142857143em;
-  top: 0.5em;
-  width: 0.7142857142857143em;
-  height: 0.07142857142857144em;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition: all .2s cubic-bezier(.03,.86,.56,.87);
-  transition: all .2s cubic-bezier(.03,.86,.56,.87);
-  display: table;
-  border: 0.14285714285714288em solid #fff;
-  border-top: 0;
-  border-left: 0;
-  content: ' ';
-}
-
 .c17 {
   position: relative;
-  background: rgba(255,255,255,0);
-  width: 1.6666666666666667em;
-  height: 25em;
-  z-index: 996;
-  width: 1em;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  display: block;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+
+.c12 {
+  position: relative;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  display: block;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+
+.c12::after {
+  position: absolute;
+  box-sizing: border-box;
+  -webkit-transform: translate(-50%,-50%) scale(1);
+  -ms-transform: translate(-50%,-50%) scale(1);
+  transform: translate(-50%,-50%) scale(1);
+  -webkit-transition: all .2s cubic-bezier(.03,.86,.56,.87);
+  transition: all .2s cubic-bezier(.03,.86,.56,.87);
+  left: 50%;
+  top: 50%;
+  width: 1rem;
+  height: 0.1rem;
+  display: table;
+  border: 0.2rem solid #ffffff;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+}
+
+.c0 {
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+  width: 25rem;
+  background-color: #fff;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+  height: 25rem;
+}
+
+.c0:hover > div:nth-child(2) {
+  opacity: 1;
+}
+
+.c1 {
+  width: 25rem;
+  position: absolute;
+  display: inline-block;
+  height: 25rem;
+  height: 25rem;
 }
 
 .c18 {
+  width: 1.2rem;
+  position: absolute;
+  display: inline-block;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  opacity: 0;
+  right: 0;
+}
+
+.c20 {
+  position: relative;
+  background: rgba(255,255,255,0);
+  width: 2rem;
+  height: 30rem;
+  z-index: 996;
+}
+
+.c19 {
+  width: 1.2rem;
+}
+
+.c21 {
   position: absolute;
   top: 0;
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 0.6666666666666667em;
+  border-radius: 0.8rem;
   background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 2.5em;
+  line-height: 3rem;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  width: 0.6666666666666667em;
-  margin-left: 0.16666666666666669em;
-  margin-right: 0.16666666666666669em;
+  width: 0.8rem;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
 }
 
-.c18:hover {
+.c21:hover {
   background-color: #7a7a7a;
 }
 
-.c2 {
-  width: 20.833333333333336em;
-  font-size: 1.2rem;
-  position: absolute;
-  display: inline-block;
-}
-
-.c1 {
-  overflow: hidden;
-  font-size: 1.2rem;
-  height: 20.833333333333336em;
-  width: 20.833333333333336em;
-  position: relative;
-}
-
-.c16 {
-  width: 20.833333333333336em;
-  font-size: 1.2rem;
-  position: absolute;
-  display: inline-block;
-  left: 19.833333333333336em;
-  width: 1em;
-  opacity: 0;
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-}
-
-.c0:hover .c16 {
-  opacity: 1;
-}
-
-.c3 {
-  position: relative;
-  top: 0em;
-  width: 100%;
-  padding: 0;
-}
-
-.c6 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin-left: 0.4166666666666667em;
-  vertical-align: top;
-  margin-right: 0.8333333333333334em;
-}
-
-.c14 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin-left: 0.4166666666666667em;
-  vertical-align: top;
-  margin-right: 0;
-  opacity: 0;
-}
-
-.c4 {
-  margin: 0;
-  overflow: hidden;
-  padding-right: 1.6666666666666667em;
-}
-
-.c5 {
-  min-height: 2.8333333333333335em;
-  line-height: 2.8333333333333335em;
-  list-style: none;
-  padding-right: 1em;
-  white-space: nowrap;
-  outline: 0;
-}
-
-.c13 {
-  margin: 0;
-  padding: 0 0 0 1.5em;
-}
-
 <div
-  className="c0 c1"
+  className="c0"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
   onWheel={[Function]}
+  style={
+    Object {
+      "boxShadow": "0px 0px 6px 0px #cccccc",
+    }
+  }
 >
   <div
-    className="c2"
+    className="c1"
+    style={Object {}}
   >
     <ul
-      className="rc-tree c3 c4"
+      className="rc-tree  c2"
+      onMouseDown={false}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={false}
+      onMouseUp={false}
       role="tree-node"
+      style={Object {}}
       unselectable="on"
     >
       <li
-        className="c5"
+        className="c3"
         height={35}
         selected={false}
+        style={Object {}}
         title="1"
         unselectable="on"
       >
-        <span
-          className="c6"
-          onClick={[Function]}
-        >
-          <i
-            className="lugia-icon-direction_caret_down  c7"
-          />
-        </span>
-        <label
-          className="c8"
+        <div
+          className="c4"
           disabled={false}
-          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
         >
-          <span
-            className="c9"
-            onClick={null}
-          >
-            <input
-              className="c10"
-              disabled={false}
-              onBlur={[Function]}
-              type="checkbox"
-            />
-            <span
-              checked={false}
-              className="c11"
-              disabled={false}
-            />
-          </span>
-          <span
-            className="c12"
-          >
-            1
-          </span>
-        </label>
-        <ul
-          className="c13"
-          data-expanded={true}
-        >
-          <li
+          <div
             className="c5"
-            height={35}
-            selected={false}
-            title="1.1"
-            unselectable="on"
-          >
-            <span
-              className="c14"
-            >
-              <i
-                className="lugia-icon-direction_caret_down  c7"
-              />
-            </span>
-            <label
-              className="c8"
-              disabled={false}
-              onClick={[Function]}
-            >
-              <span
-                className="c9"
-                onClick={null}
-              >
-                <input
-                  className="c10"
-                  disabled={false}
-                  onBlur={[Function]}
-                  type="checkbox"
-                />
-                <span
-                  checked={false}
-                  className="c15"
-                  disabled={false}
-                />
-              </span>
-              <span
-                className="c12"
-              >
-                1.1
-              </span>
-            </label>
-          </li>
-          <li
-            className="c5"
-            height={35}
-            selected={false}
-            title="1.2"
-            unselectable="on"
+            disabled={false}
+            style={Object {}}
           >
             <span
               className="c6"
-              onClick={[Function]}
-            >
-              <i
-                className="lugia-icon-direction_caret_down  c7"
-              />
-            </span>
-            <label
-              className="c8"
               disabled={false}
               onClick={[Function]}
             >
-              <span
-                className="c9"
-                onClick={null}
-              >
-                <input
-                  className="c10"
-                  disabled={false}
-                  onBlur={[Function]}
-                  type="checkbox"
-                />
-                <span
-                  checked={false}
-                  className="c15"
-                  disabled={false}
-                />
-              </span>
-              <span
-                className="c12"
-              >
-                1.2
-              </span>
-            </label>
-            <ul
-              className="c13"
-              data-expanded={true}
+              <i
+                className="lugia-icon-direction_caret_down   c7"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={
+                  Object {
+                    "color": "#9EA4AE",
+                    "fontSize": "1.2rem",
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
+              />
+            </span>
+            <div
+              className="c8"
             >
-              <li
-                className="c5"
-                height={35}
-                selected={false}
-                title="1.2.1"
-                unselectable="on"
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
               >
                 <span
-                  className="c14"
+                  className="c10"
+                  onClick={null}
                 >
-                  <i
-                    className="lugia-icon-direction_caret_down  c7"
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c12"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#4d63ff",
+                        "borderBottomColor": "#4d63ff",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#4d63ff",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#4d63ff",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#4d63ff",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
                   />
                 </span>
-                <label
-                  className="c8"
-                  disabled={false}
-                  onClick={[Function]}
-                >
-                  <span
-                    className="c9"
-                    onClick={null}
-                  >
-                    <input
-                      className="c10"
-                      disabled={false}
-                      onBlur={[Function]}
-                      type="checkbox"
-                    />
-                    <span
-                      checked={false}
-                      className="c15"
-                      disabled={false}
-                    />
-                  </span>
-                  <span
-                    className="c12"
-                  >
-                    1.2.1
-                  </span>
-                </label>
-              </li>
-              <li
-                className="c5"
-                height={35}
-                selected={false}
-                title="1.2.2"
-                unselectable="on"
-              >
                 <span
-                  className="c6"
-                  onClick={[Function]}
-                >
-                  <i
-                    className="lugia-icon-direction_caret_down  c7"
-                  />
-                </span>
-                <label
-                  className="c8"
-                  disabled={false}
-                  onClick={[Function]}
-                >
-                  <span
-                    className="c9"
-                    onClick={null}
-                  >
-                    <input
-                      className="c10"
-                      disabled={false}
-                      onBlur={[Function]}
-                      type="checkbox"
-                    />
-                    <span
-                      checked={false}
-                      className="c15"
-                      disabled={false}
-                    />
-                  </span>
-                  <span
-                    className="c12"
-                  >
-                    1.2.2
-                  </span>
-                </label>
-                <ul
                   className="c13"
-                  data-expanded={true}
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1"
+              >
+                <span
+                  className="c15"
                 >
-                  <li
-                    className="c5"
-                    height={35}
-                    selected={false}
-                    title="1.2.2.1"
-                    unselectable="on"
-                  >
-                    <span
-                      className="c6"
-                      onClick={[Function]}
-                    >
-                      <i
-                        className="lugia-icon-direction_caret_down  c7"
-                      />
-                    </span>
-                    <label
-                      className="c8"
-                      disabled={false}
-                      onClick={[Function]}
-                    >
-                      <span
-                        className="c9"
-                        onClick={null}
-                      >
-                        <input
-                          className="c10"
-                          disabled={false}
-                          onBlur={[Function]}
-                          type="checkbox"
-                        />
-                        <span
-                          checked={false}
-                          className="c15"
-                          disabled={false}
-                        />
-                      </span>
-                      <span
-                        className="c12"
-                      >
-                        1.2.2.1
-                      </span>
-                    </label>
-                    <ul
-                      className="c13"
-                      data-expanded={true}
-                    >
-                      <li
-                        className="c5"
-                        height={35}
-                        selected={false}
-                        title="1.2.2.1.1"
-                        unselectable="on"
-                      >
-                        <span
-                          className="c14"
-                        >
-                          <i
-                            className="lugia-icon-direction_caret_down  c7"
-                          />
-                        </span>
-                        <label
-                          className="c8"
-                          disabled={false}
-                          onClick={[Function]}
-                        >
-                          <span
-                            className="c9"
-                            onClick={null}
-                          >
-                            <input
-                              className="c10"
-                              disabled={false}
-                              onBlur={[Function]}
-                              type="checkbox"
-                            />
-                            <span
-                              checked={false}
-                              className="c15"
-                              disabled={false}
-                            />
-                          </span>
-                          <span
-                            className="c12"
-                          >
-                            1.2.2.1.1
-                          </span>
-                        </label>
-                      </li>
-                      <li
-                        className="c5"
-                        height={35}
-                        selected={false}
-                        title="1.2.2.1.2"
-                        unselectable="on"
-                      >
-                        <span
-                          className="c14"
-                        >
-                          <i
-                            className="lugia-icon-direction_caret_down  c7"
-                          />
-                        </span>
-                        <label
-                          className="c8"
-                          disabled={false}
-                          onClick={[Function]}
-                        >
-                          <span
-                            className="c9"
-                            onClick={null}
-                          >
-                            <input
-                              className="c10"
-                              disabled={false}
-                              onBlur={[Function]}
-                              type="checkbox"
-                            />
-                            <span
-                              checked={false}
-                              className="c15"
-                              disabled={false}
-                            />
-                          </span>
-                          <span
-                            className="c12"
-                          >
-                            1.2.2.1.2
-                          </span>
-                        </label>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
+                  1
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        className="c3"
+        height={35}
+        selected={false}
+        style={Object {}}
+        title="1.1"
+        unselectable="on"
+      >
+        <div
+          className="c4"
+          disabled={false}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            disabled={false}
+            style={Object {}}
+          >
+            <span
+              className="c16  c6"
+            >
+              <i
+                className="lugia-icon-financial_omit   c7"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              />
+            </span>
+            <div
+              className="c8"
+            >
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="c10"
+                  onClick={null}
+                >
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c17"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomColor": "#cccccc",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#cccccc",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#cccccc",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#cccccc",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
+                  />
+                </span>
+                <span
+                  className="c13"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.1"
+              >
+                <span
+                  className="c15"
+                >
+                  1.1
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        className="c3"
+        height={35}
+        selected={false}
+        style={Object {}}
+        title="1.2"
+        unselectable="on"
+      >
+        <div
+          className="c4"
+          disabled={false}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            disabled={false}
+            style={Object {}}
+          >
+            <span
+              className="c6"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-direction_caret_down   c7"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={
+                  Object {
+                    "color": "#9EA4AE",
+                    "fontSize": "1.2rem",
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
+              />
+            </span>
+            <div
+              className="c8"
+            >
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="c10"
+                  onClick={null}
+                >
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c17"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomColor": "#cccccc",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#cccccc",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#cccccc",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#cccccc",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
+                  />
+                </span>
+                <span
+                  className="c13"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2"
+              >
+                <span
+                  className="c15"
+                >
+                  1.2
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        className="c3"
+        height={35}
+        selected={false}
+        style={Object {}}
+        title="1.2.1"
+        unselectable="on"
+      >
+        <div
+          className="c4"
+          disabled={false}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            disabled={false}
+            style={Object {}}
+          >
+            <span
+              className="c16  c6"
+            >
+              <i
+                className="lugia-icon-financial_omit   c7"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              />
+            </span>
+            <div
+              className="c8"
+            >
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="c10"
+                  onClick={null}
+                >
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c17"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomColor": "#cccccc",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#cccccc",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#cccccc",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#cccccc",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
+                  />
+                </span>
+                <span
+                  className="c13"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.1"
+              >
+                <span
+                  className="c15"
+                >
+                  1.2.1
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        className="c3"
+        height={35}
+        selected={false}
+        style={Object {}}
+        title="1.2.2"
+        unselectable="on"
+      >
+        <div
+          className="c4"
+          disabled={false}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            disabled={false}
+            style={Object {}}
+          >
+            <span
+              className="c6"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-direction_caret_down   c7"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={
+                  Object {
+                    "color": "#9EA4AE",
+                    "fontSize": "1.2rem",
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
+              />
+            </span>
+            <div
+              className="c8"
+            >
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="c10"
+                  onClick={null}
+                >
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c17"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomColor": "#cccccc",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#cccccc",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#cccccc",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#cccccc",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
+                  />
+                </span>
+                <span
+                  className="c13"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.2"
+              >
+                <span
+                  className="c15"
+                >
+                  1.2.2
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        className="c3"
+        height={35}
+        selected={false}
+        style={Object {}}
+        title="1.2.2.1"
+        unselectable="on"
+      >
+        <div
+          className="c4"
+          disabled={false}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            disabled={false}
+            style={Object {}}
+          >
+            <span
+              className="c6"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-direction_caret_down   c7"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={
+                  Object {
+                    "color": "#9EA4AE",
+                    "fontSize": "1.2rem",
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
+              />
+            </span>
+            <div
+              className="c8"
+            >
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="c10"
+                  onClick={null}
+                >
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c17"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomColor": "#cccccc",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#cccccc",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#cccccc",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#cccccc",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
+                  />
+                </span>
+                <span
+                  className="c13"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.2.1"
+              >
+                <span
+                  className="c15"
+                >
+                  1.2.2.1
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        className="c3"
+        height={35}
+        selected={false}
+        style={Object {}}
+        title="1.2.2.1.1"
+        unselectable="on"
+      >
+        <div
+          className="c4"
+          disabled={false}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            disabled={false}
+            style={Object {}}
+          >
+            <span
+              className="c16  c6"
+            >
+              <i
+                className="lugia-icon-financial_omit   c7"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              />
+            </span>
+            <div
+              className="c8"
+            >
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="c10"
+                  onClick={null}
+                >
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c17"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomColor": "#cccccc",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#cccccc",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#cccccc",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#cccccc",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
+                  />
+                </span>
+                <span
+                  className="c13"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.2.1.1"
+              >
+                <span
+                  className="c15"
+                >
+                  1.2.2.1.1
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        className="c3"
+        height={35}
+        selected={false}
+        style={Object {}}
+        title="1.2.2.1.2"
+        unselectable="on"
+      >
+        <div
+          className="c4"
+          disabled={false}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            disabled={false}
+            style={Object {}}
+          >
+            <span
+              className="c16  c6"
+            >
+              <i
+                className="lugia-icon-financial_omit   c7"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              />
+            </span>
+            <div
+              className="c8"
+            >
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="c10"
+                  onClick={null}
+                >
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c17"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomColor": "#cccccc",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#cccccc",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#cccccc",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#cccccc",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
+                  />
+                </span>
+                <span
+                  className="c13"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.2.1.2"
+              >
+                <span
+                  className="c15"
+                >
+                  1.2.2.1.2
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
   <div
-    className="c16"
+    className="c18"
+    style={Object {}}
   >
     <div
-      className="c17"
+      className="c19  c20"
       onMouseDown={[Function]}
       onMouseMove={[Function]}
       onMouseOut={[Function]}
@@ -624,18 +1442,18 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
       onWheel={[Function]}
       style={
         Object {
-          "height": "20.833333333333336em",
+          "height": "25rem",
         }
       }
     >
       <div
-        className="c18"
+        className="c21"
         onMouseDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "height": "4.916666666666667em",
-            "top": "0em",
+            "height": "5.7rem",
+            "top": "0rem",
           }
         }
       />
@@ -645,260 +1463,239 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 `;
 
 exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
+.c6 {
+  font-size: 1.4rem;
+  color: #9EA4AE;
+  display: inline-block;
+}
+
 .c5 {
+  opacity: 0;
+}
+
+.c1 {
+  margin: 0;
+  overflow: hidden;
+  -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
+  transition-property: background-color,border,border-radius,opacity,box-shadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  position: relative;
+  box-sizing: border-box;
+  top: 0rem;
+}
+
+.c2 {
+  min-height: 2rem;
+  list-style: none;
+  white-space: nowrap;
+  position: relative;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-bottom: 0rem;
+}
+
+.c8 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  vertical-align: top;
+  padding-left: 0.4rem;
+  box-sizing: border-box;
+  -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
+  transition-property: background-color,border,border-radius,opacity,box-shadow;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+
+.c8 span {
+  vertical-align: middle;
+}
+
+.c9 {
+  opacity: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
+  cursor: pointer;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
+  transition-property: background-color,border,border-radius,opacity,box-shadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  padding-left: 0rem;
+  height: 3.5rem;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100%;
+  padding-right: 1rem;
+}
+
+.c10 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
 }
 
 .c0 {
-  overflow: hidden;
-  font-size: 1.2rem;
-  height: 20.833333333333336em;
-  width: 20.833333333333336em;
   position: relative;
-}
-
-.c1 {
-  position: relative;
-  top: 0em;
-  width: 100%;
-  padding: 0;
-}
-
-.c4 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin-left: 0.4166666666666667em;
-  vertical-align: top;
-  margin-right: 0;
-}
-
-.c9 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin-left: 0.4166666666666667em;
-  vertical-align: top;
-  margin-right: 0;
-  opacity: 0;
-}
-
-.c2 {
-  margin: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
   overflow: hidden;
-  padding-right: 1.6666666666666667em;
+  width: 25rem;
+  background-color: #fff;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+  height: 3.5rem;
 }
 
-.c3 {
-  min-height: 2.8333333333333335em;
-  line-height: 2.8333333333333335em;
-  list-style: none;
-  padding-right: 1em;
-  white-space: nowrap;
-  outline: 0;
-}
-
-.c8 {
-  margin: 0;
-  padding: 0 0 0 1.5em;
-}
-
-.c6 {
-  width: 100%;
-  overflow: hidden;
-  vertical-align: top;
-  display: inline-block;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  box-sizing: border-box;
-  padding-left: 0.8333333333333334em;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  font-size: 1.1666666666666667em;
-  cursor: pointer;
-  color: #666666;
-  border-radius: 0.33333333333333337em;
-}
-
-.c6:hover {
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c7 {
+.c0:hover > div:nth-child(2) {
   opacity: 1;
 }
 
 <div
   className="c0"
-  onWheel={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  style={
+    Object {
+      "boxShadow": "0px 0px 6px 0px #cccccc",
+    }
+  }
 >
   <ul
-    className="rc-tree c1 rc-tree-show-line c2"
+    className="rc-tree rc-tree-show-line  c1"
+    onMouseDown={false}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseMove={false}
+    onMouseUp={false}
     role="tree-node"
+    style={Object {}}
     unselectable="on"
   >
     <li
-      className="c3"
+      className="c2"
       height={35}
       selected={false}
-      title="2"
+      style={Object {}}
+      title="2.1.2.1"
       unselectable="on"
     >
-      <span
-        className="c4"
-        onClick={[Function]}
-      >
-        <i
-          className="lugia-icon-direction_caret_down  c5"
-        />
-      </span>
-      <span
-        className="c6"
+      <div
+        className="c3"
         disabled={false}
-        onClick={[Function]}
-        onContextMenu={[Function]}
+        onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        selected={false}
-        shape="default"
-        title="2"
+        onMouseUp={[Function]}
+        style={Object {}}
       >
-        <span
-          className="c7"
-          height={35}
-          selected={false}
-          title="2"
-        >
-          2
-        </span>
-      </span>
-      <ul
-        className="c8"
-        data-expanded={true}
-      >
-        <li
-          className="c3"
-          height={35}
-          selected={false}
-          title="2.1"
-          unselectable="on"
+        <div
+          className="c4"
+          disabled={false}
+          style={Object {}}
         >
           <span
-            className="c4"
-            onClick={[Function]}
+            className="c5  c6"
           >
             <i
-              className="lugia-icon-direction_caret_down  c5"
+              className="lugia-icon-financial_omit   c7"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={Object {}}
             />
           </span>
-          <span
-            className="c6"
+          <div
+            className="c8"
             disabled={false}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseUp={[Function]}
             selected={false}
             shape="default"
-            title="2.1"
+            style={
+              Object {
+                "borderBottomLeftRadius": "0.4rem",
+                "borderBottomRightRadius": "0.4rem",
+                "borderTopLeftRadius": "0.4rem",
+                "borderTopRightRadius": "0.4rem",
+                "color": "#363B40",
+                "fontSize": "1.4rem",
+              }
+            }
+            title="2.1.2.1"
           >
-            <span
-              className="c7"
+            <div
+              className="c9"
               height={35}
               selected={false}
-              title="2.1"
-            >
-              2.1
-            </span>
-          </span>
-          <ul
-            className="c8"
-            data-expanded={true}
-          >
-            <li
-              className="c3"
-              height={35}
-              selected={false}
-              title="2.1.2"
-              unselectable="on"
+              style={Object {}}
+              title="2.1.2.1"
             >
               <span
-                className="c4"
-                onClick={[Function]}
+                className="c10"
               >
-                <i
-                  className="lugia-icon-direction_caret_down  c5"
-                />
+                2.1.2.1
               </span>
-              <span
-                className="c6"
-                disabled={false}
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                selected={false}
-                shape="default"
-                title="2.1.2"
-              >
-                <span
-                  className="c7"
-                  height={35}
-                  selected={false}
-                  title="2.1.2"
-                >
-                  2.1.2
-                </span>
-              </span>
-              <ul
-                className="c8"
-                data-expanded={true}
-              >
-                <li
-                  className="c3"
-                  height={35}
-                  selected={false}
-                  title="2.1.2.1"
-                  unselectable="on"
-                >
-                  <span
-                    className="c9"
-                  >
-                    <i
-                      className="lugia-icon-direction_caret_down  c5"
-                    />
-                  </span>
-                  <span
-                    className="c6"
-                    disabled={false}
-                    onClick={[Function]}
-                    onContextMenu={[Function]}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                    selected={false}
-                    shape="default"
-                    title="2.1.2.1"
-                  >
-                    <span
-                      className="c7"
-                      height={35}
-                      selected={false}
-                      title="2.1.2.1"
-                    >
-                      2.1.2.1
-                    </span>
-                  </span>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </li>
   </ul>
 </div>
@@ -906,22 +1703,172 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
 
 exports[`Tree props: value: 1 mutliple: false onChange监听 limit 1`] = `
 Array [
-  .c7 {
+  .c6 {
+  font-size: 1.4rem;
+  color: #9EA4AE;
+  display: inline-block;
+}
+
+.c11 {
+  opacity: 0;
+}
+
+.c2 {
+  margin: 0;
+  overflow: hidden;
+  -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
+  transition-property: background-color,border,border-radius,opacity,box-shadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  position: relative;
+  box-sizing: border-box;
+  top: 0rem;
+}
+
+.c3 {
+  min-height: 2rem;
+  list-style: none;
+  white-space: nowrap;
+  position: relative;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-bottom: 0rem;
+}
+
+.c8 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  vertical-align: top;
+  padding-left: 0.4rem;
+  box-sizing: border-box;
+  -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
+  transition-property: background-color,border,border-radius,opacity,box-shadow;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+
+.c8 span {
+  vertical-align: middle;
+}
+
+.c9 {
+  opacity: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 {
+  cursor: pointer;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
+  transition-property: background-color,border,border-radius,opacity,box-shadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  padding-left: 0rem;
+  height: 3.5rem;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100%;
+  padding-right: 1rem;
+}
+
+.c10 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
+}
+
+.c0 {
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+  width: 25rem;
+  background-color: #fff;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+  height: 25rem;
+}
+
+.c0:hover > div:nth-child(2) {
+  opacity: 1;
+}
+
+.c1 {
+  width: 25rem;
+  position: absolute;
+  display: inline-block;
+  height: 25rem;
+  height: 25rem;
+}
+
+.c12 {
+  width: 1.2rem;
+  position: absolute;
+  display: inline-block;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  opacity: 0;
+  right: 0;
 }
 
 .c14 {
   position: relative;
   background: rgba(255,255,255,0);
-  width: 1.6666666666666667em;
-  height: 25em;
+  width: 2rem;
+  height: 30rem;
   z-index: 996;
-  width: 1em;
+}
+
+.c13 {
+  width: 1.2rem;
 }
 
 .c15 {
@@ -930,465 +1877,704 @@ Array [
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 0.6666666666666667em;
+  border-radius: 0.8rem;
   background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 2.5em;
+  line-height: 3rem;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  width: 0.6666666666666667em;
-  margin-left: 0.16666666666666669em;
-  margin-right: 0.16666666666666669em;
+  width: 0.8rem;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
 }
 
 .c15:hover {
   background-color: #7a7a7a;
 }
 
-.c2 {
-  width: 20.833333333333336em;
-  font-size: 1.2rem;
-  position: absolute;
-  display: inline-block;
-}
-
-.c1 {
-  overflow: hidden;
-  font-size: 1.2rem;
-  height: 20.833333333333336em;
-  width: 20.833333333333336em;
-  position: relative;
-}
-
-.c13 {
-  width: 20.833333333333336em;
-  font-size: 1.2rem;
-  position: absolute;
-  display: inline-block;
-  left: 19.833333333333336em;
-  width: 1em;
-  opacity: 0;
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-}
-
-.c0:hover .c13 {
-  opacity: 1;
-}
-
-.c3 {
-  position: relative;
-  top: 0em;
-  width: 100%;
-  padding: 0;
-}
-
-.c6 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin-left: 0.4166666666666667em;
-  vertical-align: top;
-  margin-right: 0;
-}
-
-.c11 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin-left: 0.4166666666666667em;
-  vertical-align: top;
-  margin-right: 0;
-  opacity: 0;
-}
-
-.c4 {
-  margin: 0;
-  overflow: hidden;
-  padding-right: 1.6666666666666667em;
-}
-
-.c5 {
-  min-height: 2.8333333333333335em;
-  line-height: 2.8333333333333335em;
-  list-style: none;
-  padding-right: 1em;
-  white-space: nowrap;
-  outline: 0;
-}
-
-.c10 {
-  margin: 0;
-  padding: 0 0 0 1.5em;
-}
-
-.c12 {
-  width: 100%;
-  overflow: hidden;
-  vertical-align: top;
-  display: inline-block;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  box-sizing: border-box;
-  padding-left: 0.8333333333333334em;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  font-size: 1.1666666666666667em;
-  cursor: pointer;
-  color: #666666;
-  border-radius: 0.33333333333333337em;
-}
-
-.c12:hover {
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c8 {
-  width: 100%;
-  overflow: hidden;
-  vertical-align: top;
-  display: inline-block;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  box-sizing: border-box;
-  padding-left: 0.8333333333333334em;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  font-size: 1.1666666666666667em;
-  cursor: pointer;
-  color: #666666;
-  border-radius: 0.33333333333333337em;
-  background-color: rgba(77,99,255,0.2);
-}
-
-.c9 {
-  opacity: 1;
-}
-
 <div
-    className="c0 c1"
+    className="c0"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
     onWheel={[Function]}
+    style={
+      Object {
+        "boxShadow": "0px 0px 6px 0px #cccccc",
+      }
+    }
   >
     <div
-      className="c2"
+      className="c1"
+      style={Object {}}
     >
       <ul
-        className="rc-tree c3 c4"
+        className="rc-tree  c2"
+        onMouseDown={false}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseMove={false}
+        onMouseUp={false}
         role="tree-node"
+        style={Object {}}
         unselectable="on"
       >
         <li
-          className="c5"
+          className="c3"
           height={35}
           selected={true}
+          style={Object {}}
           title="1"
           unselectable="on"
         >
-          <span
-            className="c6"
-            onClick={[Function]}
-          >
-            <i
-              className="lugia-icon-direction_caret_down  c7"
-            />
-          </span>
-          <span
-            className="c8"
+          <div
+            className="c4"
             disabled={false}
-            onClick={[Function]}
-            onContextMenu={[Function]}
+            onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
-            selected={true}
-            shape="default"
-            title="1"
+            onMouseUp={[Function]}
+            style={Object {}}
           >
-            <span
-              className="c9"
-              height={35}
-              selected={true}
-              title="1"
-            >
-              1
-            </span>
-          </span>
-          <ul
-            className="c10"
-            data-expanded={true}
-          >
-            <li
+            <div
               className="c5"
-              height={35}
-              selected={false}
-              title="1.1"
-              unselectable="on"
-            >
-              <span
-                className="c11"
-              >
-                <i
-                  className="lugia-icon-direction_caret_down  c7"
-                />
-              </span>
-              <span
-                className="c12"
-                disabled={false}
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                selected={false}
-                shape="default"
-                title="1.1"
-              >
-                <span
-                  className="c9"
-                  height={35}
-                  selected={false}
-                  title="1.1"
-                >
-                  1.1
-                </span>
-              </span>
-            </li>
-            <li
-              className="c5"
-              height={35}
-              selected={false}
-              title="1.2"
-              unselectable="on"
+              disabled={false}
+              style={Object {}}
             >
               <span
                 className="c6"
+                disabled={false}
                 onClick={[Function]}
               >
                 <i
-                  className="lugia-icon-direction_caret_down  c7"
+                  className="lugia-icon-direction_caret_down   c7"
+                  disabled={false}
+                  onClick={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  style={
+                    Object {
+                      "color": "#9EA4AE",
+                      "fontSize": "1.2rem",
+                      "paddingBottom": "0rem",
+                      "paddingLeft": "1rem",
+                      "paddingRight": "0rem",
+                      "paddingTop": "0rem",
+                    }
+                  }
                 />
               </span>
-              <span
-                className="c12"
+              <div
+                className="c8"
                 disabled={false}
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onMouseDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={true}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#4d63ff",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1"
+              >
+                <div
+                  className="c9"
+                  height={35}
+                  selected={true}
+                  style={Object {}}
+                  title="1"
+                >
+                  <span
+                    className="c10"
+                  >
+                    1
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          className="c3"
+          height={35}
+          selected={false}
+          style={Object {}}
+          title="1.1"
+          unselectable="on"
+        >
+          <div
+            className="c4"
+            disabled={false}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
+          >
+            <div
+              className="c5"
+              disabled={false}
+              style={Object {}}
+            >
+              <span
+                className="c11  c6"
+              >
+                <i
+                  className="lugia-icon-financial_omit   c7"
+                  onClick={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  style={Object {}}
+                />
+              </span>
+              <div
+                className="c8"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
                 selected={false}
                 shape="default"
-                title="1.2"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.1"
               >
-                <span
+                <div
                   className="c9"
                   height={35}
                   selected={false}
+                  style={Object {}}
+                  title="1.1"
+                >
+                  <span
+                    className="c10"
+                  >
+                    1.1
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          className="c3"
+          height={35}
+          selected={false}
+          style={Object {}}
+          title="1.2"
+          unselectable="on"
+        >
+          <div
+            className="c4"
+            disabled={false}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
+          >
+            <div
+              className="c5"
+              disabled={false}
+              style={Object {}}
+            >
+              <span
+                className="c6"
+                disabled={false}
+                onClick={[Function]}
+              >
+                <i
+                  className="lugia-icon-direction_caret_down   c7"
+                  disabled={false}
+                  onClick={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  style={
+                    Object {
+                      "color": "#9EA4AE",
+                      "fontSize": "1.2rem",
+                      "paddingBottom": "0rem",
+                      "paddingLeft": "1rem",
+                      "paddingRight": "0rem",
+                      "paddingTop": "0rem",
+                    }
+                  }
+                />
+              </span>
+              <div
+                className="c8"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2"
+              >
+                <div
+                  className="c9"
+                  height={35}
+                  selected={false}
+                  style={Object {}}
                   title="1.2"
                 >
-                  1.2
-                </span>
-              </span>
-              <ul
-                className="c10"
-                data-expanded={true}
-              >
-                <li
-                  className="c5"
-                  height={35}
-                  selected={false}
-                  title="1.2.1"
-                  unselectable="on"
-                >
                   <span
-                    className="c11"
-                  >
-                    <i
-                      className="lugia-icon-direction_caret_down  c7"
-                    />
-                  </span>
-                  <span
-                    className="c12"
-                    disabled={false}
-                    onClick={[Function]}
-                    onContextMenu={[Function]}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                    selected={false}
-                    shape="default"
-                    title="1.2.1"
-                  >
-                    <span
-                      className="c9"
-                      height={35}
-                      selected={false}
-                      title="1.2.1"
-                    >
-                      1.2.1
-                    </span>
-                  </span>
-                </li>
-                <li
-                  className="c5"
-                  height={35}
-                  selected={false}
-                  title="1.2.2"
-                  unselectable="on"
-                >
-                  <span
-                    className="c6"
-                    onClick={[Function]}
-                  >
-                    <i
-                      className="lugia-icon-direction_caret_down  c7"
-                    />
-                  </span>
-                  <span
-                    className="c12"
-                    disabled={false}
-                    onClick={[Function]}
-                    onContextMenu={[Function]}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                    selected={false}
-                    shape="default"
-                    title="1.2.2"
-                  >
-                    <span
-                      className="c9"
-                      height={35}
-                      selected={false}
-                      title="1.2.2"
-                    >
-                      1.2.2
-                    </span>
-                  </span>
-                  <ul
                     className="c10"
-                    data-expanded={true}
                   >
-                    <li
-                      className="c5"
-                      height={35}
-                      selected={false}
-                      title="1.2.2.1"
-                      unselectable="on"
-                    >
-                      <span
-                        className="c6"
-                        onClick={[Function]}
-                      >
-                        <i
-                          className="lugia-icon-direction_caret_down  c7"
-                        />
-                      </span>
-                      <span
-                        className="c12"
-                        disabled={false}
-                        onClick={[Function]}
-                        onContextMenu={[Function]}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
-                        selected={false}
-                        shape="default"
-                        title="1.2.2.1"
-                      >
-                        <span
-                          className="c9"
-                          height={35}
-                          selected={false}
-                          title="1.2.2.1"
-                        >
-                          1.2.2.1
-                        </span>
-                      </span>
-                      <ul
-                        className="c10"
-                        data-expanded={true}
-                      >
-                        <li
-                          className="c5"
-                          height={35}
-                          selected={false}
-                          title="1.2.2.1.1"
-                          unselectable="on"
-                        >
-                          <span
-                            className="c11"
-                          >
-                            <i
-                              className="lugia-icon-direction_caret_down  c7"
-                            />
-                          </span>
-                          <span
-                            className="c12"
-                            disabled={false}
-                            onClick={[Function]}
-                            onContextMenu={[Function]}
-                            onMouseEnter={[Function]}
-                            onMouseLeave={[Function]}
-                            selected={false}
-                            shape="default"
-                            title="1.2.2.1.1"
-                          >
-                            <span
-                              className="c9"
-                              height={35}
-                              selected={false}
-                              title="1.2.2.1.1"
-                            >
-                              1.2.2.1.1
-                            </span>
-                          </span>
-                        </li>
-                        <li
-                          className="c5"
-                          height={35}
-                          selected={false}
-                          title="1.2.2.1.2"
-                          unselectable="on"
-                        >
-                          <span
-                            className="c11"
-                          >
-                            <i
-                              className="lugia-icon-direction_caret_down  c7"
-                            />
-                          </span>
-                          <span
-                            className="c12"
-                            disabled={false}
-                            onClick={[Function]}
-                            onContextMenu={[Function]}
-                            onMouseEnter={[Function]}
-                            onMouseLeave={[Function]}
-                            selected={false}
-                            shape="default"
-                            title="1.2.2.1.2"
-                          >
-                            <span
-                              className="c9"
-                              height={35}
-                              selected={false}
-                              title="1.2.2.1.2"
-                            >
-                              1.2.2.1.2
-                            </span>
-                          </span>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
+                    1.2
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          className="c3"
+          height={35}
+          selected={false}
+          style={Object {}}
+          title="1.2.1"
+          unselectable="on"
+        >
+          <div
+            className="c4"
+            disabled={false}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
+          >
+            <div
+              className="c5"
+              disabled={false}
+              style={Object {}}
+            >
+              <span
+                className="c11  c6"
+              >
+                <i
+                  className="lugia-icon-financial_omit   c7"
+                  onClick={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  style={Object {}}
+                />
+              </span>
+              <div
+                className="c8"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.1"
+              >
+                <div
+                  className="c9"
+                  height={35}
+                  selected={false}
+                  style={Object {}}
+                  title="1.2.1"
+                >
+                  <span
+                    className="c10"
+                  >
+                    1.2.1
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          className="c3"
+          height={35}
+          selected={false}
+          style={Object {}}
+          title="1.2.2"
+          unselectable="on"
+        >
+          <div
+            className="c4"
+            disabled={false}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
+          >
+            <div
+              className="c5"
+              disabled={false}
+              style={Object {}}
+            >
+              <span
+                className="c6"
+                disabled={false}
+                onClick={[Function]}
+              >
+                <i
+                  className="lugia-icon-direction_caret_down   c7"
+                  disabled={false}
+                  onClick={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  style={
+                    Object {
+                      "color": "#9EA4AE",
+                      "fontSize": "1.2rem",
+                      "paddingBottom": "0rem",
+                      "paddingLeft": "1rem",
+                      "paddingRight": "0rem",
+                      "paddingTop": "0rem",
+                    }
+                  }
+                />
+              </span>
+              <div
+                className="c8"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.2"
+              >
+                <div
+                  className="c9"
+                  height={35}
+                  selected={false}
+                  style={Object {}}
+                  title="1.2.2"
+                >
+                  <span
+                    className="c10"
+                  >
+                    1.2.2
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          className="c3"
+          height={35}
+          selected={false}
+          style={Object {}}
+          title="1.2.2.1"
+          unselectable="on"
+        >
+          <div
+            className="c4"
+            disabled={false}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
+          >
+            <div
+              className="c5"
+              disabled={false}
+              style={Object {}}
+            >
+              <span
+                className="c6"
+                disabled={false}
+                onClick={[Function]}
+              >
+                <i
+                  className="lugia-icon-direction_caret_down   c7"
+                  disabled={false}
+                  onClick={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  style={
+                    Object {
+                      "color": "#9EA4AE",
+                      "fontSize": "1.2rem",
+                      "paddingBottom": "0rem",
+                      "paddingLeft": "1rem",
+                      "paddingRight": "0rem",
+                      "paddingTop": "0rem",
+                    }
+                  }
+                />
+              </span>
+              <div
+                className="c8"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.2.1"
+              >
+                <div
+                  className="c9"
+                  height={35}
+                  selected={false}
+                  style={Object {}}
+                  title="1.2.2.1"
+                >
+                  <span
+                    className="c10"
+                  >
+                    1.2.2.1
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          className="c3"
+          height={35}
+          selected={false}
+          style={Object {}}
+          title="1.2.2.1.1"
+          unselectable="on"
+        >
+          <div
+            className="c4"
+            disabled={false}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
+          >
+            <div
+              className="c5"
+              disabled={false}
+              style={Object {}}
+            >
+              <span
+                className="c11  c6"
+              >
+                <i
+                  className="lugia-icon-financial_omit   c7"
+                  onClick={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  style={Object {}}
+                />
+              </span>
+              <div
+                className="c8"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.2.1.1"
+              >
+                <div
+                  className="c9"
+                  height={35}
+                  selected={false}
+                  style={Object {}}
+                  title="1.2.2.1.1"
+                >
+                  <span
+                    className="c10"
+                  >
+                    1.2.2.1.1
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          className="c3"
+          height={35}
+          selected={false}
+          style={Object {}}
+          title="1.2.2.1.2"
+          unselectable="on"
+        >
+          <div
+            className="c4"
+            disabled={false}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
+          >
+            <div
+              className="c5"
+              disabled={false}
+              style={Object {}}
+            >
+              <span
+                className="c11  c6"
+              >
+                <i
+                  className="lugia-icon-financial_omit   c7"
+                  onClick={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  style={Object {}}
+                />
+              </span>
+              <div
+                className="c8"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.2.1.2"
+              >
+                <div
+                  className="c9"
+                  height={35}
+                  selected={false}
+                  style={Object {}}
+                  title="1.2.2.1.2"
+                >
+                  <span
+                    className="c10"
+                  >
+                    1.2.2.1.2
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </li>
       </ul>
     </div>
     <div
-      className="c13"
+      className="c12"
+      style={Object {}}
     >
       <div
-        className="c14"
+        className="c13  c14"
         onMouseDown={[Function]}
         onMouseMove={[Function]}
         onMouseOut={[Function]}
@@ -1396,7 +2582,7 @@ Array [
         onWheel={[Function]}
         style={
           Object {
-            "height": "20.833333333333336em",
+            "height": "25rem",
           }
         }
       >
@@ -1406,8 +2592,8 @@ Array [
           onMouseUp={[Function]}
           style={
             Object {
-              "height": "4.916666666666667em",
-              "top": "0em",
+              "height": "5.7rem",
+              "top": "0rem",
             }
           }
         />
@@ -1421,47 +2607,159 @@ Array [
 `;
 
 exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+.c6 {
+  font-size: 1.4rem;
+  color: #9EA4AE;
+  display: inline-block;
+}
+
+.c16 {
+  opacity: 0;
+}
+
+.c2 {
+  margin: 0;
+  overflow: hidden;
+  -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
+  transition-property: background-color,border,border-radius,opacity,box-shadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  position: relative;
+  box-sizing: border-box;
+  top: 0rem;
+}
+
+.c3 {
+  min-height: 2rem;
+  list-style: none;
+  white-space: nowrap;
+  position: relative;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-bottom: 0rem;
+}
+
+.c14 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  vertical-align: top;
+  padding-left: 0.4rem;
+  box-sizing: border-box;
+  -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
+  transition-property: background-color,border,border-radius,opacity,box-shadow;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+
+.c14 span {
+  vertical-align: middle;
+}
+
+.c4 {
+  cursor: pointer;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
+  transition-property: background-color,border,border-radius,opacity,box-shadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  padding-left: 0rem;
+  height: 3.5rem;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100%;
+  padding-right: 1rem;
+}
+
+.c15 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
 }
 
-.c8 {
+.c9 {
   font-size: 1.4rem;
   cursor: pointer;
-  color: #333333;
-  width: none;
   box-sizing: border-box;
   padding: 0;
   list-style: none;
   display: inline-block;
-  position: relative;
+  line-height: 1;
   white-space: nowrap;
   display: inline-block;
-  margin-right: 2.142857142857143em;
-}
-
-.c8:hover > span span {
-  border: 1px solid #4d63ff;
-}
-
-.c9 {
-  margin: 0;
-  outline: none;
-  line-height: 1;
-  vertical-align: text-bottom;
-  display: inline-block;
-}
-
-.c12 {
-  padding-left: 0.7142857142857143em;
+  margin-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 1;
 }
 
 .c10 {
+  margin: 0;
+  outline: none;
+  line-height: 1;
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+}
+
+.c13 {
+  padding-left: 0;
+  vertical-align: middle;
+  color: #363B40;
+  font-size: 1.4rem;
+}
+
+.c11 {
   position: absolute;
   left: 0;
   z-index: 1;
@@ -1474,569 +2772,1275 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   height: 100%;
 }
 
-.c15 {
-  position: relative;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 1.2857142857142858em;
-  height: 1.2857142857142858em;
-  border-radius: 0.14285714285714288em;
-  background-color: #fff;
-  border: 1px solid #cccccc;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.c15:hover {
-  border: 1px solid #4d63ff;
-}
-
-.c15::after {
-  position: absolute;
-  box-sizing: border-box;
-  left: 0.35714285714285715em;
-  top: 0.14285714285714288em;
-  width: 0.4285714285714286em;
-  height: 0.7142857142857143em;
-  -webkit-transform: rotate(45deg) scale(0);
-  -ms-transform: rotate(45deg) scale(0);
-  transform: rotate(45deg) scale(0);
-  -webkit-transition: all .1s cubic-bezier(.71,-.46,.88,.6);
-  transition: all .1s cubic-bezier(.71,-.46,.88,.6);
-  display: table;
-  border: 0.14285714285714288em solid #fff;
-  border-top: 0;
-  border-left: 0;
-  content: ' ';
-}
-
-.c11 {
-  position: relative;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 1.2857142857142858em;
-  height: 1.2857142857142858em;
-  border-radius: 0.14285714285714288em;
-  background-color: #4d63ff;
-  border: 1px solid #4d63ff;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.c11:hover {
-  border: 1px solid #4d63ff;
-}
-
-.c11::after {
-  position: absolute;
-  box-sizing: border-box;
-  left: 0.2142857142857143em;
-  top: 0.5em;
-  width: 0.7142857142857143em;
-  height: 0.07142857142857144em;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition: all .2s cubic-bezier(.03,.86,.56,.87);
-  transition: all .2s cubic-bezier(.03,.86,.56,.87);
-  display: table;
-  border: 0.14285714285714288em solid #fff;
-  border-top: 0;
-  border-left: 0;
-  content: ' ';
-}
-
 .c17 {
   position: relative;
-  background: rgba(255,255,255,0);
-  width: 1.6666666666666667em;
-  height: 25em;
-  z-index: 996;
-  width: 1em;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  display: block;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+
+.c12 {
+  position: relative;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  display: block;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+
+.c12::after {
+  position: absolute;
+  box-sizing: border-box;
+  -webkit-transform: translate(-50%,-50%) scale(1);
+  -ms-transform: translate(-50%,-50%) scale(1);
+  transform: translate(-50%,-50%) scale(1);
+  -webkit-transition: all .2s cubic-bezier(.03,.86,.56,.87);
+  transition: all .2s cubic-bezier(.03,.86,.56,.87);
+  left: 50%;
+  top: 50%;
+  width: 1rem;
+  height: 0.1rem;
+  display: table;
+  border: 0.2rem solid #ffffff;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+}
+
+.c0 {
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+  width: 25rem;
+  background-color: #fff;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+  height: 25rem;
+}
+
+.c0:hover > div:nth-child(2) {
+  opacity: 1;
+}
+
+.c1 {
+  width: 25rem;
+  position: absolute;
+  display: inline-block;
+  height: 25rem;
+  height: 25rem;
 }
 
 .c18 {
+  width: 1.2rem;
+  position: absolute;
+  display: inline-block;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  opacity: 0;
+  right: 0;
+}
+
+.c20 {
+  position: relative;
+  background: rgba(255,255,255,0);
+  width: 2rem;
+  height: 30rem;
+  z-index: 996;
+}
+
+.c19 {
+  width: 1.2rem;
+}
+
+.c21 {
   position: absolute;
   top: 0;
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 0.6666666666666667em;
+  border-radius: 0.8rem;
   background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 2.5em;
+  line-height: 3rem;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  width: 0.6666666666666667em;
-  margin-left: 0.16666666666666669em;
-  margin-right: 0.16666666666666669em;
+  width: 0.8rem;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
 }
 
-.c18:hover {
+.c21:hover {
   background-color: #7a7a7a;
 }
 
-.c2 {
-  width: 20.833333333333336em;
-  font-size: 1.2rem;
-  position: absolute;
-  display: inline-block;
-}
-
-.c1 {
-  overflow: hidden;
-  font-size: 1.2rem;
-  height: 20.833333333333336em;
-  width: 20.833333333333336em;
-  position: relative;
-}
-
-.c16 {
-  width: 20.833333333333336em;
-  font-size: 1.2rem;
-  position: absolute;
-  display: inline-block;
-  left: 19.833333333333336em;
-  width: 1em;
-  opacity: 0;
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-}
-
-.c0:hover .c16 {
-  opacity: 1;
-}
-
-.c3 {
-  position: relative;
-  top: 0em;
-  width: 100%;
-  padding: 0;
-}
-
-.c6 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin-left: 0.4166666666666667em;
-  vertical-align: top;
-  margin-right: 0.8333333333333334em;
-}
-
-.c14 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin-left: 0.4166666666666667em;
-  vertical-align: top;
-  margin-right: 0;
-  opacity: 0;
-}
-
-.c4 {
-  margin: 0;
-  overflow: hidden;
-  padding-right: 1.6666666666666667em;
-}
-
-.c5 {
-  min-height: 2.8333333333333335em;
-  line-height: 2.8333333333333335em;
-  list-style: none;
-  padding-right: 1em;
-  white-space: nowrap;
-  outline: 0;
-}
-
-.c13 {
-  margin: 0;
-  padding: 0 0 0 1.5em;
-}
-
 <div
-  className="c0 c1"
+  className="c0"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
   onWheel={[Function]}
+  style={
+    Object {
+      "boxShadow": "0px 0px 6px 0px #cccccc",
+    }
+  }
 >
   <div
-    className="c2"
+    className="c1"
+    style={Object {}}
   >
     <ul
-      className="rc-tree c3 c4"
+      className="rc-tree  c2"
+      onMouseDown={false}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={false}
+      onMouseUp={false}
       role="tree-node"
+      style={Object {}}
       unselectable="on"
     >
       <li
-        className="c5"
+        className="c3"
         height={35}
         selected={false}
+        style={Object {}}
         title="1"
         unselectable="on"
       >
-        <span
-          className="c6"
-          onClick={[Function]}
-        >
-          <i
-            className="lugia-icon-direction_caret_down  c7"
-          />
-        </span>
-        <label
-          className="c8"
+        <div
+          className="c4"
           disabled={false}
-          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
         >
-          <span
-            className="c9"
-            onClick={null}
-          >
-            <input
-              className="c10"
-              disabled={false}
-              onBlur={[Function]}
-              type="checkbox"
-            />
-            <span
-              checked={false}
-              className="c11"
-              disabled={false}
-            />
-          </span>
-          <span
-            className="c12"
-          >
-            1
-          </span>
-        </label>
-        <ul
-          className="c13"
-          data-expanded={true}
-        >
-          <li
+          <div
             className="c5"
-            height={35}
-            selected={false}
-            title="1.1"
-            unselectable="on"
-          >
-            <span
-              className="c14"
-            >
-              <i
-                className="lugia-icon-direction_caret_down  c7"
-              />
-            </span>
-            <label
-              className="c8"
-              disabled={false}
-              onClick={[Function]}
-            >
-              <span
-                className="c9"
-                onClick={null}
-              >
-                <input
-                  className="c10"
-                  disabled={false}
-                  onBlur={[Function]}
-                  type="checkbox"
-                />
-                <span
-                  checked={false}
-                  className="c15"
-                  disabled={false}
-                />
-              </span>
-              <span
-                className="c12"
-              >
-                1.1
-              </span>
-            </label>
-          </li>
-          <li
-            className="c5"
-            height={35}
-            selected={false}
-            title="1.2"
-            unselectable="on"
+            disabled={false}
+            style={Object {}}
           >
             <span
               className="c6"
-              onClick={[Function]}
-            >
-              <i
-                className="lugia-icon-direction_caret_down  c7"
-              />
-            </span>
-            <label
-              className="c8"
               disabled={false}
               onClick={[Function]}
             >
-              <span
-                className="c9"
-                onClick={null}
-              >
-                <input
-                  className="c10"
-                  disabled={false}
-                  onBlur={[Function]}
-                  type="checkbox"
-                />
-                <span
-                  checked={false}
-                  className="c15"
-                  disabled={false}
-                />
-              </span>
-              <span
-                className="c12"
-              >
-                1.2
-              </span>
-            </label>
-            <ul
-              className="c13"
-              data-expanded={true}
+              <i
+                className="lugia-icon-direction_caret_down   c7"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={
+                  Object {
+                    "color": "#9EA4AE",
+                    "fontSize": "1.2rem",
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
+              />
+            </span>
+            <div
+              className="c8"
             >
-              <li
-                className="c5"
-                height={35}
-                selected={false}
-                title="1.2.1"
-                unselectable="on"
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
               >
                 <span
-                  className="c14"
+                  className="c10"
+                  onClick={null}
                 >
-                  <i
-                    className="lugia-icon-direction_caret_down  c7"
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c12"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#4d63ff",
+                        "borderBottomColor": "#4d63ff",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#4d63ff",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#4d63ff",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#4d63ff",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
                   />
                 </span>
-                <label
-                  className="c8"
-                  disabled={false}
-                  onClick={[Function]}
-                >
-                  <span
-                    className="c9"
-                    onClick={null}
-                  >
-                    <input
-                      className="c10"
-                      disabled={false}
-                      onBlur={[Function]}
-                      type="checkbox"
-                    />
-                    <span
-                      checked={false}
-                      className="c15"
-                      disabled={false}
-                    />
-                  </span>
-                  <span
-                    className="c12"
-                  >
-                    1.2.1
-                  </span>
-                </label>
-              </li>
-              <li
-                className="c5"
-                height={35}
-                selected={false}
-                title="1.2.2"
-                unselectable="on"
-              >
                 <span
-                  className="c6"
-                  onClick={[Function]}
-                >
-                  <i
-                    className="lugia-icon-direction_caret_down  c7"
-                  />
-                </span>
-                <label
-                  className="c8"
-                  disabled={false}
-                  onClick={[Function]}
-                >
-                  <span
-                    className="c9"
-                    onClick={null}
-                  >
-                    <input
-                      className="c10"
-                      disabled={false}
-                      onBlur={[Function]}
-                      type="checkbox"
-                    />
-                    <span
-                      checked={false}
-                      className="c15"
-                      disabled={false}
-                    />
-                  </span>
-                  <span
-                    className="c12"
-                  >
-                    1.2.2
-                  </span>
-                </label>
-                <ul
                   className="c13"
-                  data-expanded={true}
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1"
+              >
+                <span
+                  className="c15"
                 >
-                  <li
-                    className="c5"
-                    height={35}
-                    selected={false}
-                    title="1.2.2.1"
-                    unselectable="on"
-                  >
-                    <span
-                      className="c6"
-                      onClick={[Function]}
-                    >
-                      <i
-                        className="lugia-icon-direction_caret_down  c7"
-                      />
-                    </span>
-                    <label
-                      className="c8"
-                      disabled={false}
-                      onClick={[Function]}
-                    >
-                      <span
-                        className="c9"
-                        onClick={null}
-                      >
-                        <input
-                          className="c10"
-                          disabled={false}
-                          onBlur={[Function]}
-                          type="checkbox"
-                        />
-                        <span
-                          checked={false}
-                          className="c15"
-                          disabled={false}
-                        />
-                      </span>
-                      <span
-                        className="c12"
-                      >
-                        1.2.2.1
-                      </span>
-                    </label>
-                    <ul
-                      className="c13"
-                      data-expanded={true}
-                    >
-                      <li
-                        className="c5"
-                        height={35}
-                        selected={false}
-                        title="1.2.2.1.1"
-                        unselectable="on"
-                      >
-                        <span
-                          className="c14"
-                        >
-                          <i
-                            className="lugia-icon-direction_caret_down  c7"
-                          />
-                        </span>
-                        <label
-                          className="c8"
-                          disabled={false}
-                          onClick={[Function]}
-                        >
-                          <span
-                            className="c9"
-                            onClick={null}
-                          >
-                            <input
-                              className="c10"
-                              disabled={false}
-                              onBlur={[Function]}
-                              type="checkbox"
-                            />
-                            <span
-                              checked={false}
-                              className="c15"
-                              disabled={false}
-                            />
-                          </span>
-                          <span
-                            className="c12"
-                          >
-                            1.2.2.1.1
-                          </span>
-                        </label>
-                      </li>
-                      <li
-                        className="c5"
-                        height={35}
-                        selected={false}
-                        title="1.2.2.1.2"
-                        unselectable="on"
-                      >
-                        <span
-                          className="c14"
-                        >
-                          <i
-                            className="lugia-icon-direction_caret_down  c7"
-                          />
-                        </span>
-                        <label
-                          className="c8"
-                          disabled={false}
-                          onClick={[Function]}
-                        >
-                          <span
-                            className="c9"
-                            onClick={null}
-                          >
-                            <input
-                              className="c10"
-                              disabled={false}
-                              onBlur={[Function]}
-                              type="checkbox"
-                            />
-                            <span
-                              checked={false}
-                              className="c15"
-                              disabled={false}
-                            />
-                          </span>
-                          <span
-                            className="c12"
-                          >
-                            1.2.2.1.2
-                          </span>
-                        </label>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
+                  1
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        className="c3"
+        height={35}
+        selected={false}
+        style={Object {}}
+        title="1.1"
+        unselectable="on"
+      >
+        <div
+          className="c4"
+          disabled={false}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            disabled={false}
+            style={Object {}}
+          >
+            <span
+              className="c16  c6"
+            >
+              <i
+                className="lugia-icon-financial_omit   c7"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              />
+            </span>
+            <div
+              className="c8"
+            >
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="c10"
+                  onClick={null}
+                >
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c17"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomColor": "#cccccc",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#cccccc",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#cccccc",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#cccccc",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
+                  />
+                </span>
+                <span
+                  className="c13"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.1"
+              >
+                <span
+                  className="c15"
+                >
+                  1.1
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        className="c3"
+        height={35}
+        selected={false}
+        style={Object {}}
+        title="1.2"
+        unselectable="on"
+      >
+        <div
+          className="c4"
+          disabled={false}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            disabled={false}
+            style={Object {}}
+          >
+            <span
+              className="c6"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-direction_caret_down   c7"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={
+                  Object {
+                    "color": "#9EA4AE",
+                    "fontSize": "1.2rem",
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
+              />
+            </span>
+            <div
+              className="c8"
+            >
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="c10"
+                  onClick={null}
+                >
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c17"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomColor": "#cccccc",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#cccccc",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#cccccc",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#cccccc",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
+                  />
+                </span>
+                <span
+                  className="c13"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2"
+              >
+                <span
+                  className="c15"
+                >
+                  1.2
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        className="c3"
+        height={35}
+        selected={false}
+        style={Object {}}
+        title="1.2.1"
+        unselectable="on"
+      >
+        <div
+          className="c4"
+          disabled={false}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            disabled={false}
+            style={Object {}}
+          >
+            <span
+              className="c16  c6"
+            >
+              <i
+                className="lugia-icon-financial_omit   c7"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              />
+            </span>
+            <div
+              className="c8"
+            >
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="c10"
+                  onClick={null}
+                >
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c17"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomColor": "#cccccc",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#cccccc",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#cccccc",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#cccccc",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
+                  />
+                </span>
+                <span
+                  className="c13"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.1"
+              >
+                <span
+                  className="c15"
+                >
+                  1.2.1
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        className="c3"
+        height={35}
+        selected={false}
+        style={Object {}}
+        title="1.2.2"
+        unselectable="on"
+      >
+        <div
+          className="c4"
+          disabled={false}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            disabled={false}
+            style={Object {}}
+          >
+            <span
+              className="c6"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-direction_caret_down   c7"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={
+                  Object {
+                    "color": "#9EA4AE",
+                    "fontSize": "1.2rem",
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
+              />
+            </span>
+            <div
+              className="c8"
+            >
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="c10"
+                  onClick={null}
+                >
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c17"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomColor": "#cccccc",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#cccccc",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#cccccc",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#cccccc",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
+                  />
+                </span>
+                <span
+                  className="c13"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.2"
+              >
+                <span
+                  className="c15"
+                >
+                  1.2.2
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        className="c3"
+        height={35}
+        selected={false}
+        style={Object {}}
+        title="1.2.2.1"
+        unselectable="on"
+      >
+        <div
+          className="c4"
+          disabled={false}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            disabled={false}
+            style={Object {}}
+          >
+            <span
+              className="c6"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-direction_caret_down   c7"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={
+                  Object {
+                    "color": "#9EA4AE",
+                    "fontSize": "1.2rem",
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
+              />
+            </span>
+            <div
+              className="c8"
+            >
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="c10"
+                  onClick={null}
+                >
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c17"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomColor": "#cccccc",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#cccccc",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#cccccc",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#cccccc",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
+                  />
+                </span>
+                <span
+                  className="c13"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.2.1"
+              >
+                <span
+                  className="c15"
+                >
+                  1.2.2.1
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        className="c3"
+        height={35}
+        selected={false}
+        style={Object {}}
+        title="1.2.2.1.1"
+        unselectable="on"
+      >
+        <div
+          className="c4"
+          disabled={false}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            disabled={false}
+            style={Object {}}
+          >
+            <span
+              className="c16  c6"
+            >
+              <i
+                className="lugia-icon-financial_omit   c7"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              />
+            </span>
+            <div
+              className="c8"
+            >
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="c10"
+                  onClick={null}
+                >
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c17"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomColor": "#cccccc",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#cccccc",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#cccccc",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#cccccc",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
+                  />
+                </span>
+                <span
+                  className="c13"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.2.1.1"
+              >
+                <span
+                  className="c15"
+                >
+                  1.2.2.1.1
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        className="c3"
+        height={35}
+        selected={false}
+        style={Object {}}
+        title="1.2.2.1.2"
+        unselectable="on"
+      >
+        <div
+          className="c4"
+          disabled={false}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            disabled={false}
+            style={Object {}}
+          >
+            <span
+              className="c16  c6"
+            >
+              <i
+                className="lugia-icon-financial_omit   c7"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              />
+            </span>
+            <div
+              className="c8"
+            >
+              <label
+                className="c9"
+                disabled={false}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="c10"
+                  onClick={null}
+                >
+                  <input
+                    className="c11"
+                    disabled={false}
+                    onBlur={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    checked={false}
+                    className="c17"
+                    disabled={false}
+                    style={
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomColor": "#cccccc",
+                        "borderBottomLeftRadius": "0.2rem",
+                        "borderBottomRightRadius": "0.2rem",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#cccccc",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#cccccc",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#cccccc",
+                        "borderTopLeftRadius": "0.2rem",
+                        "borderTopRightRadius": "0.2rem",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "1.6rem",
+                        "width": "1.6rem",
+                      }
+                    }
+                  />
+                </span>
+                <span
+                  className="c13"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                />
+              </label>
+              <div
+                checked={false}
+                className="c14"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                selected={false}
+                shape="default"
+                style={
+                  Object {
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "color": "#363B40",
+                    "fontSize": "1.4rem",
+                  }
+                }
+                title="1.2.2.1.2"
+              >
+                <span
+                  className="c15"
+                >
+                  1.2.2.1.2
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
   <div
-    className="c16"
+    className="c18"
+    style={Object {}}
   >
     <div
-      className="c17"
+      className="c19  c20"
       onMouseDown={[Function]}
       onMouseMove={[Function]}
       onMouseOut={[Function]}
@@ -2044,18 +4048,18 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
       onWheel={[Function]}
       style={
         Object {
-          "height": "20.833333333333336em",
+          "height": "25rem",
         }
       }
     >
       <div
-        className="c18"
+        className="c21"
         onMouseDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "height": "4.916666666666667em",
-            "top": "0em",
+            "height": "5.7rem",
+            "top": "0rem",
           }
         }
       />

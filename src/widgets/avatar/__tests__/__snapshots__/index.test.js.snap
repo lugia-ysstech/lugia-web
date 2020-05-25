@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Avatar css 1`] = `
-.c6 {
+.c4 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -24,79 +24,7 @@ exports[`Avatar css 1`] = `
   white-space: nowrap;
   position: relative;
   vertical-align: middle;
-  color: rgba(0,0,0,0.65);
-  border-radius: 10%;
-  line-height: 3.2rem;
-  min-width: 2.4rem;
-  min-height: 2.4rem;
-}
-
-.c4 {
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  position: relative;
-  vertical-align: middle;
-  color: rgba(0,0,0,0.65);
-  border-radius: 50%;
-  line-height: 3.2rem;
-  min-width: 2.4rem;
-  min-height: 2.4rem;
-}
-
-.c5 {
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  position: relative;
-  vertical-align: middle;
-  color: rgba(0,0,0,0.65);
-  border-radius: 10%;
-  line-height: 2.4rem;
-  min-width: 2.4rem;
-  min-height: 2.4rem;
-}
-
-.c7 {
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  position: relative;
-  vertical-align: middle;
-  color: rgba(0,0,0,0.65);
-  border-radius: 10%;
-  line-height: 4rem;
-  min-width: 2.4rem;
-  min-height: 2.4rem;
-}
-
-.c8 {
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  position: relative;
-  vertical-align: middle;
-  color: rgba(0,0,0,0.65);
-  border-radius: 50%;
-  line-height: 2.4rem;
-  min-width: 2.4rem;
-  min-height: 2.4rem;
-}
-
-.c9 {
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  position: relative;
-  vertical-align: middle;
-  color: rgba(0,0,0,0.65);
-  border-radius: 50%;
-  line-height: 4rem;
+  color: #ffffff;
   min-width: 2.4rem;
   min-height: 2.4rem;
 }
@@ -106,42 +34,20 @@ exports[`Avatar css 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: white;
-  width: 3.2rem;
-  height: 3.2rem;
+  color: #ffffff;
 }
 
-.c10 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: white;
-  width: 2.4rem;
-  height: 2.4rem;
-}
-
-.c11 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: white;
-  width: 4rem;
-  height: 4rem;
-}
-
-.c13 {
+.c6 {
   width: 100%;
   height: 100%;
 }
 
-.c12 {
+.c5 {
   min-width: 2.4rem;
   min-height: 2.4rem;
 }
 
-.c15 {
+.c8 {
   overflow: hidden;
   text-align: center;
   font-weight: normal;
@@ -155,7 +61,7 @@ exports[`Avatar css 1`] = `
   border-radius: 0.8rem;
 }
 
-.c16 {
+.c9 {
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   white-space: nowrap;
@@ -168,7 +74,7 @@ exports[`Avatar css 1`] = `
   color: #ffffff;
 }
 
-.c18 {
+.c11 {
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   white-space: nowrap;
@@ -181,7 +87,7 @@ exports[`Avatar css 1`] = `
   color: #ffffff;
 }
 
-.c17 {
+.c10 {
   text-align: center;
   box-sizing: border-box;
   line-height: 1.4rem;
@@ -189,7 +95,7 @@ exports[`Avatar css 1`] = `
   color: #ffffff;
 }
 
-.c19 {
+.c12 {
   box-sizing: border-box;
   position: absolute;
   z-index: 10;
@@ -201,12 +107,12 @@ exports[`Avatar css 1`] = `
   background-color: #f22735;
 }
 
-.c14 {
-  background: transparent;
+.c7 {
   box-sizing: border-box;
   position: relative;
   display: inline-block;
   line-height: 1;
+  background-color: transparent;
   min-width: 1rem;
   min-height: 1rem;
 }
@@ -227,7 +133,12 @@ exports[`Avatar css 1`] = `
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -248,6 +159,8 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "red",
+              "height": "3.2rem",
+              "width": "3.2rem",
             }
           }
         >
@@ -260,7 +173,12 @@ exports[`Avatar css 1`] = `
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -281,6 +199,8 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "red",
+              "height": "3.2rem",
+              "width": "3.2rem",
             }
           }
         >
@@ -293,7 +213,12 @@ exports[`Avatar css 1`] = `
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -314,6 +239,8 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "red",
+              "height": "3.2rem",
+              "width": "3.2rem",
             }
           }
         >
@@ -326,7 +253,12 @@ exports[`Avatar css 1`] = `
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -347,6 +279,8 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "red",
+              "height": "3.2rem",
+              "width": "3.2rem",
             }
           }
         >
@@ -356,11 +290,16 @@ exports[`Avatar css 1`] = `
     </div>
     <br />
     <div
-      className="c4"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "50%",
+          "borderBottomRightRadius": "50%",
+          "borderTopLeftRadius": "50%",
+          "borderTopRightRadius": "50%",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -381,6 +320,8 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "red",
+              "height": "3.2rem",
+              "width": "3.2rem",
             }
           }
         >
@@ -389,11 +330,16 @@ exports[`Avatar css 1`] = `
       </div>
     </div>
     <div
-      className="c4"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "50%",
+          "borderBottomRightRadius": "50%",
+          "borderTopLeftRadius": "50%",
+          "borderTopRightRadius": "50%",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -414,6 +360,8 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "red",
+              "height": "3.2rem",
+              "width": "3.2rem",
             }
           }
         >
@@ -422,11 +370,16 @@ exports[`Avatar css 1`] = `
       </div>
     </div>
     <div
-      className="c4"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "50%",
+          "borderBottomRightRadius": "50%",
+          "borderTopLeftRadius": "50%",
+          "borderTopRightRadius": "50%",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -447,6 +400,8 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "red",
+              "height": "3.2rem",
+              "width": "3.2rem",
             }
           }
         >
@@ -455,11 +410,16 @@ exports[`Avatar css 1`] = `
       </div>
     </div>
     <div
-      className="c4"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "50%",
+          "borderBottomRightRadius": "50%",
+          "borderTopLeftRadius": "50%",
+          "borderTopRightRadius": "50%",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -480,6 +440,8 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "red",
+              "height": "3.2rem",
+              "width": "3.2rem",
             }
           }
         >
@@ -492,11 +454,16 @@ exports[`Avatar css 1`] = `
     className="c0"
   >
     <div
-      className="c5"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -512,7 +479,7 @@ exports[`Avatar css 1`] = `
         }
       >
         <i
-          className="lugia-icon-financial_user   c6"
+          className="lugia-icon-financial_user   c4"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -521,7 +488,7 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "purple",
-              "fontSize": "1.2rem",
+              "fontSize": "1.4rem",
             }
           }
         />
@@ -532,7 +499,12 @@ exports[`Avatar css 1`] = `
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -548,7 +520,7 @@ exports[`Avatar css 1`] = `
         }
       >
         <i
-          className="lugia-icon-financial_user   c6"
+          className="lugia-icon-financial_user   c4"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -564,11 +536,16 @@ exports[`Avatar css 1`] = `
       </div>
     </div>
     <div
-      className="c7"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -584,7 +561,7 @@ exports[`Avatar css 1`] = `
         }
       >
         <i
-          className="lugia-icon-financial_user   c6"
+          className="lugia-icon-financial_user   c4"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -593,7 +570,7 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "purple",
-              "fontSize": "2.2rem",
+              "fontSize": "2.4rem",
             }
           }
         />
@@ -601,11 +578,16 @@ exports[`Avatar css 1`] = `
     </div>
     <br />
     <div
-      className="c8"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "50%",
+          "borderBottomRightRadius": "50%",
+          "borderTopLeftRadius": "50%",
+          "borderTopRightRadius": "50%",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -621,7 +603,7 @@ exports[`Avatar css 1`] = `
         }
       >
         <i
-          className="lugia-icon-financial_user   c6"
+          className="lugia-icon-financial_user   c4"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -630,18 +612,23 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "orange",
-              "fontSize": "1.2rem",
+              "fontSize": "1.4rem",
             }
           }
         />
       </div>
     </div>
     <div
-      className="c4"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "50%",
+          "borderBottomRightRadius": "50%",
+          "borderTopLeftRadius": "50%",
+          "borderTopRightRadius": "50%",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -657,7 +644,7 @@ exports[`Avatar css 1`] = `
         }
       >
         <i
-          className="lugia-icon-financial_user   c6"
+          className="lugia-icon-financial_user   c4"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -673,11 +660,16 @@ exports[`Avatar css 1`] = `
       </div>
     </div>
     <div
-      className="c9"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "50%",
+          "borderBottomRightRadius": "50%",
+          "borderTopLeftRadius": "50%",
+          "borderTopRightRadius": "50%",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -693,7 +685,7 @@ exports[`Avatar css 1`] = `
         }
       >
         <i
-          className="lugia-icon-financial_user   c6"
+          className="lugia-icon-financial_user   c4"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -702,7 +694,7 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "orange",
-              "fontSize": "2.2rem",
+              "fontSize": "2.4rem",
             }
           }
         />
@@ -713,11 +705,16 @@ exports[`Avatar css 1`] = `
     className="c0"
   >
     <div
-      className="c5"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -733,11 +730,13 @@ exports[`Avatar css 1`] = `
         }
       >
         <span
-          className="c10"
+          className="c3"
           size="small"
           style={
             Object {
               "color": "blue",
+              "height": "2.4rem",
+              "width": "2.4rem",
             }
           }
         >
@@ -750,7 +749,12 @@ exports[`Avatar css 1`] = `
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -771,6 +775,8 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "blue",
+              "height": "3.2rem",
+              "width": "3.2rem",
             }
           }
         >
@@ -779,11 +785,16 @@ exports[`Avatar css 1`] = `
       </div>
     </div>
     <div
-      className="c7"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -799,11 +810,13 @@ exports[`Avatar css 1`] = `
         }
       >
         <span
-          className="c11"
+          className="c3"
           size="large"
           style={
             Object {
               "color": "blue",
+              "height": "4rem",
+              "width": "4rem",
             }
           }
         >
@@ -813,11 +826,16 @@ exports[`Avatar css 1`] = `
     </div>
     <br />
     <div
-      className="c8"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "50%",
+          "borderBottomRightRadius": "50%",
+          "borderTopLeftRadius": "50%",
+          "borderTopRightRadius": "50%",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -833,11 +851,13 @@ exports[`Avatar css 1`] = `
         }
       >
         <span
-          className="c10"
+          className="c3"
           size="small"
           style={
             Object {
               "color": "red",
+              "height": "2.4rem",
+              "width": "2.4rem",
             }
           }
         >
@@ -846,11 +866,16 @@ exports[`Avatar css 1`] = `
       </div>
     </div>
     <div
-      className="c4"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "50%",
+          "borderBottomRightRadius": "50%",
+          "borderTopLeftRadius": "50%",
+          "borderTopRightRadius": "50%",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -871,6 +896,8 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "red",
+              "height": "3.2rem",
+              "width": "3.2rem",
             }
           }
         >
@@ -879,11 +906,16 @@ exports[`Avatar css 1`] = `
       </div>
     </div>
     <div
-      className="c9"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "50%",
+          "borderBottomRightRadius": "50%",
+          "borderTopLeftRadius": "50%",
+          "borderTopRightRadius": "50%",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -899,11 +931,13 @@ exports[`Avatar css 1`] = `
         }
       >
         <span
-          className="c11"
+          className="c3"
           size="large"
           style={
             Object {
               "color": "red",
+              "height": "4rem",
+              "width": "4rem",
             }
           }
         >
@@ -920,7 +954,12 @@ exports[`Avatar css 1`] = `
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -941,6 +980,8 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "red",
+              "height": "3.2rem",
+              "width": "3.2rem",
             }
           }
         >
@@ -953,7 +994,12 @@ exports[`Avatar css 1`] = `
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -969,7 +1015,7 @@ exports[`Avatar css 1`] = `
         }
       >
         <i
-          className="lugia-icon-financial_user   c6"
+          className="lugia-icon-financial_user   c4"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -989,13 +1035,18 @@ exports[`Avatar css 1`] = `
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
     >
       <div
-        className="c12"
+        className="c5"
         style={
           Object {
             "height": "4rem",
@@ -1005,14 +1056,14 @@ exports[`Avatar css 1`] = `
       >
         <img
           alt=""
-          className="c13"
+          className="c6"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
           style={
             Object {
-              "borderBottomLeftRadius": "10%",
-              "borderBottomRightRadius": "10%",
-              "borderTopLeftRadius": "10%",
-              "borderTopRightRadius": "10%",
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
             }
           }
         />
@@ -1020,11 +1071,16 @@ exports[`Avatar css 1`] = `
     </div>
     <br />
     <div
-      className="c4"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "50%",
+          "borderBottomRightRadius": "50%",
+          "borderTopLeftRadius": "50%",
+          "borderTopRightRadius": "50%",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -1045,6 +1101,8 @@ exports[`Avatar css 1`] = `
           style={
             Object {
               "color": "red",
+              "height": "3.2rem",
+              "width": "3.2rem",
             }
           }
         >
@@ -1053,11 +1111,16 @@ exports[`Avatar css 1`] = `
       </div>
     </div>
     <div
-      className="c4"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "50%",
+          "borderBottomRightRadius": "50%",
+          "borderTopLeftRadius": "50%",
+          "borderTopRightRadius": "50%",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
@@ -1073,7 +1136,7 @@ exports[`Avatar css 1`] = `
         }
       >
         <i
-          className="lugia-icon-financial_user   c6"
+          className="lugia-icon-financial_user   c4"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -1089,17 +1152,22 @@ exports[`Avatar css 1`] = `
       </div>
     </div>
     <div
-      className="c4"
+      className="c1"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
+          "borderBottomLeftRadius": "50%",
+          "borderBottomRightRadius": "50%",
+          "borderTopLeftRadius": "50%",
+          "borderTopRightRadius": "50%",
           "height": "4rem",
+          "lineHeight": "4rem",
           "width": "4rem",
         }
       }
     >
       <div
-        className="c12"
+        className="c5"
         style={
           Object {
             "height": "4rem",
@@ -1109,7 +1177,7 @@ exports[`Avatar css 1`] = `
       >
         <img
           alt=""
-          className="c13"
+          className="c6"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
           style={
             Object {
@@ -1127,15 +1195,19 @@ exports[`Avatar css 1`] = `
     className="c0"
   >
     <div
-      className="c5"
+      className="c1"
       style={
         Object {
           "backgroundColor": "transparent",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
         }
       }
     >
       <div
-        className="c12"
+        className="c5"
         style={
           Object {
             "height": "2.4rem",
@@ -1145,14 +1217,14 @@ exports[`Avatar css 1`] = `
       >
         <img
           alt=""
-          className="c13"
+          className="c6"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
           style={
             Object {
-              "borderBottomLeftRadius": "10%",
-              "borderBottomRightRadius": "10%",
-              "borderTopLeftRadius": "10%",
-              "borderTopRightRadius": "10%",
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
             }
           }
         />
@@ -1163,11 +1235,15 @@ exports[`Avatar css 1`] = `
       style={
         Object {
           "backgroundColor": "transparent",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
         }
       }
     >
       <div
-        className="c12"
+        className="c5"
         style={
           Object {
             "height": "3.2rem",
@@ -1177,29 +1253,33 @@ exports[`Avatar css 1`] = `
       >
         <img
           alt=""
-          className="c13"
+          className="c6"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
           style={
             Object {
-              "borderBottomLeftRadius": "10%",
-              "borderBottomRightRadius": "10%",
-              "borderTopLeftRadius": "10%",
-              "borderTopRightRadius": "10%",
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
             }
           }
         />
       </div>
     </div>
     <div
-      className="c7"
+      className="c1"
       style={
         Object {
           "backgroundColor": "transparent",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
         }
       }
     >
       <div
-        className="c12"
+        className="c5"
         style={
           Object {
             "height": "4rem",
@@ -1209,14 +1289,14 @@ exports[`Avatar css 1`] = `
       >
         <img
           alt=""
-          className="c13"
+          className="c6"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
           style={
             Object {
-              "borderBottomLeftRadius": "10%",
-              "borderBottomRightRadius": "10%",
-              "borderTopLeftRadius": "10%",
-              "borderTopRightRadius": "10%",
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
             }
           }
         />
@@ -1227,15 +1307,20 @@ exports[`Avatar css 1`] = `
     className="c0"
   >
     <div
-      className="c14"
+      className="c7"
       style={Object {}}
     >
       <div
-        className="c7"
+        className="c1"
         style={
           Object {
             "backgroundColor": "#cccccc",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
             "height": "4rem",
+            "lineHeight": "4rem",
             "width": "4rem",
           }
         }
@@ -1250,9 +1335,14 @@ exports[`Avatar css 1`] = `
           }
         >
           <span
-            className="c11"
+            className="c3"
             size="large"
-            style={Object {}}
+            style={
+              Object {
+                "height": "4rem",
+                "width": "4rem",
+              }
+            }
           >
             lugia
           </span>
@@ -1269,137 +1359,137 @@ exports[`Avatar css 1`] = `
         }
       >
         <div
-          className="c15"
+          className="c8"
           overflow={false}
           style={Object {}}
         >
           <span
-            className="c16"
+            className="c9"
             style={Object {}}
             y={-100}
           >
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               0
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               1
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               2
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               3
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               4
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               5
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               6
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               7
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               8
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               9
             </p>
           </span>
           <span
-            className="c18"
+            className="c11"
             style={Object {}}
             y={-0}
           >
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               0
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               1
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               2
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               3
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               4
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               5
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               6
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               7
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               8
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               9
@@ -1411,15 +1501,20 @@ exports[`Avatar css 1`] = `
     <br />
     <br />
     <div
-      className="c14"
+      className="c7"
       style={Object {}}
     >
       <div
-        className="c7"
+        className="c1"
         style={
           Object {
             "backgroundColor": "#cccccc",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
             "height": "4rem",
+            "lineHeight": "4rem",
             "width": "4rem",
           }
         }
@@ -1434,16 +1529,21 @@ exports[`Avatar css 1`] = `
           }
         >
           <span
-            className="c11"
+            className="c3"
             size="large"
-            style={Object {}}
+            style={
+              Object {
+                "height": "4rem",
+                "width": "4rem",
+              }
+            }
           >
             lugia
           </span>
         </div>
       </div>
       <div
-        className="c19"
+        className="c12"
         style={
           Object {
             "position": "absolute",
@@ -1460,15 +1560,20 @@ exports[`Avatar css 1`] = `
     className="c0"
   >
     <div
-      className="c14"
+      className="c7"
       style={Object {}}
     >
       <div
-        className="c9"
+        className="c1"
         style={
           Object {
             "backgroundColor": "#cccccc",
+            "borderBottomLeftRadius": "50%",
+            "borderBottomRightRadius": "50%",
+            "borderTopLeftRadius": "50%",
+            "borderTopRightRadius": "50%",
             "height": "4rem",
+            "lineHeight": "4rem",
             "width": "4rem",
           }
         }
@@ -1483,7 +1588,7 @@ exports[`Avatar css 1`] = `
           }
         >
           <i
-            className="lugia-icon-financial_user   c6"
+            className="lugia-icon-financial_user   c4"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -1491,7 +1596,7 @@ exports[`Avatar css 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "2.2rem",
+                "fontSize": "2.4rem",
               }
             }
           />
@@ -1508,137 +1613,137 @@ exports[`Avatar css 1`] = `
         }
       >
         <div
-          className="c15"
+          className="c8"
           overflow={false}
           style={Object {}}
         >
           <span
-            className="c16"
+            className="c9"
             style={Object {}}
             y={-100}
           >
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               0
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               1
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               2
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               3
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               4
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               5
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               6
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               7
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               8
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               9
             </p>
           </span>
           <span
-            className="c18"
+            className="c11"
             style={Object {}}
             y={-0}
           >
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               0
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               1
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               2
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               3
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               4
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               5
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               6
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               7
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               8
             </p>
             <p
-              className="c17"
+              className="c10"
               style={Object {}}
             >
               9
@@ -1650,16 +1755,21 @@ exports[`Avatar css 1`] = `
     <br />
     <br />
     <div
-      className="c14"
+      className="c7"
       style={Object {}}
     >
       <div
-        className="c9"
+        className="c1"
         style={
           Object {
             "backgroundColor": "#cccccc",
-            "height": "4rem",
-            "width": "4rem",
+            "borderBottomLeftRadius": "50%",
+            "borderBottomRightRadius": "50%",
+            "borderTopLeftRadius": "50%",
+            "borderTopRightRadius": "50%",
+            "height": "2.4rem",
+            "lineHeight": "2.4rem",
+            "width": "2.4rem",
           }
         }
       >
@@ -1667,13 +1777,13 @@ exports[`Avatar css 1`] = `
           className="c2"
           style={
             Object {
-              "height": "4rem",
-              "lineHeight": "4rem",
+              "height": "2.4rem",
+              "lineHeight": "2.4rem",
             }
           }
         >
           <i
-            className="lugia-icon-financial_user   c6"
+            className="lugia-icon-financial_user   c4"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -1681,14 +1791,14 @@ exports[`Avatar css 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "2.2rem",
+                "fontSize": "1.4rem",
               }
             }
           />
         </div>
       </div>
       <div
-        className="c19"
+        className="c12"
         style={
           Object {
             "position": "absolute",

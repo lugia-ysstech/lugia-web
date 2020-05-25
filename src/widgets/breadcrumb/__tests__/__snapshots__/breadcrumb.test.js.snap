@@ -106,7 +106,7 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -116,7 +116,7 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -140,7 +140,7 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -150,7 +150,7 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -174,7 +174,7 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
             }
           }
         >
@@ -184,7 +184,7 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
           className="c6"
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
             }
           }
         >
@@ -301,7 +301,7 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -311,7 +311,7 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -334,7 +334,7 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -344,7 +344,7 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -367,7 +367,7 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
             }
           }
         >
@@ -377,7 +377,7 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
           className="c6"
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
             }
           }
         >
@@ -502,7 +502,7 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -523,7 +523,7 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
           className="c6"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -546,7 +546,7 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
             }
           }
         >
@@ -567,7 +567,7 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
           className="c7"
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
             }
           }
         >
@@ -685,7 +685,7 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -695,7 +695,7 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -719,7 +719,7 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -729,7 +729,7 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -753,7 +753,7 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -763,7 +763,7 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -787,7 +787,7 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
             }
           }
         >
@@ -797,7 +797,7 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           className="c6"
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
             }
           }
         >
@@ -914,7 +914,7 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -924,7 +924,7 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -947,7 +947,7 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -957,7 +957,7 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -980,7 +980,7 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
             }
           }
         >
@@ -990,7 +990,7 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
           className="c6"
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
             }
           }
         >
@@ -1108,7 +1108,7 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -1118,7 +1118,7 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -1142,7 +1142,7 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -1152,7 +1152,7 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -1176,7 +1176,7 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -1186,7 +1186,7 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
             }
           }
         >
@@ -1210,7 +1210,7 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
             }
           }
         >
@@ -1220,7 +1220,7 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           className="c6"
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
             }
           }
         >
