@@ -81,7 +81,7 @@ class StepsDemo extends React.Component<Object, Object> {
     return (
       <Wrapper>
         <Theme config={view}>
-          <Steps currentStepNumber={currentStepNumber} stepType={'simple'} size={'normal'}>
+          <Steps currentStepNumber={currentStepNumber} stepType={'simple'} size={'default'}>
             {steps.map((item, i) => (
               <Step currentStepNumber={currentStepNumber} title={item.title} />
             ))}
@@ -114,7 +114,7 @@ export default () => {
           <Steps data={data} />
         </Wrapper>
         <p>带有描述</p>
-        <Steps orientation="horizontal" size={'normal'}>
+        <Steps orientation="horizontal" size={'default'}>
           <Step title="步骤1" description={'描述性文本1'} stepStatus="finish" />
           <Step
             title="步骤1"
@@ -141,7 +141,7 @@ export default () => {
       </Wrapper>
       <Wrapper>
         <p>带有描述 居中显示</p>
-        <Steps orientation="horizontal" size={'normal'} desAlign={'center'}>
+        <Steps orientation="horizontal" size={'default'} desAlign={'center'}>
           <Step title="步骤1" description={'描述性文本1'} stepStatus="finish" />
           <Step title="步骤2" description={'描述性文本2'} stepStatus="finish" />
           <Step title="步骤3" description={'描述性文本3'} stepStatus="process" />
@@ -152,7 +152,7 @@ export default () => {
       </Wrapper>
       <Wrapper>
         <p>简洁风格 size mini</p>
-        <Steps orientation="horizontal" stepType={'simple'} size={'mini'}>
+        <Steps orientation="horizontal" stepType={'simple'} size={'small'}>
           <Step title="步骤1" stepStatus="finish" description={'描述性文本'} />
           <Step title="步骤2" stepStatus="finish" description={'描述性文本'} />
           <Step title="步骤3" stepStatus="process" />
@@ -163,7 +163,7 @@ export default () => {
       </Wrapper>
       <Wrapper>
         <p>半扁平风格</p>
-        <Steps orientation="horizontal" stepType={'flat'} size={'mini'}>
+        <Steps orientation="horizontal" stepType={'flat'} size={'small'}>
           <Step title="步骤1" stepStatus="finish" description={'描述性文本'} />
           <Step title="步骤2" stepStatus="finish" description={'描述性文本'} />
           <Step title="步骤3" stepStatus="process" />
@@ -174,7 +174,7 @@ export default () => {
       </Wrapper>
       <Wrapper>
         <p>半扁平风格</p>
-        <Steps orientation="horizontal" stepType={'flat'} size={'normal'}>
+        <Steps orientation="horizontal" stepType={'flat'} size={'default'}>
           <Step title="步骤1" stepStatus="finish" />
           <Step title="步骤2" stepStatus="finish" />
           <Step title="步骤3" stepStatus="process" />
@@ -186,7 +186,7 @@ export default () => {
 
       <Wrapper>
         <p>icon 描述文本居中展示</p>
-        <Steps orientation="horizontal" stepType={'icon'} size={'mini'} desAlign={'center'}>
+        <Steps orientation="horizontal" stepType={'icon'} size={'small'} desAlign={'center'}>
           <Step
             icon={'lugia-icon-financial_cloud'}
             stepStatus="finish"
@@ -272,7 +272,7 @@ export default () => {
       </VWrapper>
       <VWrapper>
         <p>带有描述</p>
-        <Steps orientation="vertical" stepType="simple" size={'normal'}>
+        <Steps orientation="vertical" stepType="simple" size={'default'}>
           <Step title="步骤1" description={'描述性文本'} stepStatus="finish" />
           <Step title="步骤1" description={'描述性文本'} stepStatus="finish" />
           <Step
@@ -302,7 +302,7 @@ export default () => {
       </VWrapper>
       <VWrapper>
         <p>icon</p>
-        <Steps orientation="vertical" stepType={'icon'} size={'mini'}>
+        <Steps orientation="vertical" stepType={'icon'} size={'small'}>
           <Step
             icon={'lugia-icon-financial_cloud'}
             stepStatus="finish"
