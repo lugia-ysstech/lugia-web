@@ -20,7 +20,7 @@
     "size": {
       "type": "SizeType",
       "desc": "步骤条尺寸,有正常和迷你 两种尺寸可供选择",
-      "defaultValue": "normal"
+      "defaultValue": "default"
     },
     "desAlign": {
       "type": "AlignType",
@@ -72,7 +72,10 @@
   "type": {
     "StepType": ["simple", "flat", "icon", "dot"],
     "StepStatus": ["finish", "process", "next", "wait", "error"],
-    "SizeType": ["normal", "mini"],
+    "SizeType": [
+      "default",
+      "small"
+    ],
     "OrientationType": ["horizontal", "vertical"],
     "AlignType": ["center", "left"]
   },

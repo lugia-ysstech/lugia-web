@@ -2,7 +2,7 @@ import { px2emcss } from './units';
 import type { ThemeType } from '@lugia/lugia-web';
 export type StepType = 'simple' | 'flat' | 'icon' | 'dot';
 export type StepStatus = 'finish' | 'process' | 'next' | 'wait' | 'error';
-export type SizeType = 'normal' | 'mini';
+export type SizeType = 'default' | 'small';
 export type OrientationType = 'horizontal' | 'vertical';
 export type AlignType = 'center' | 'left';
 const em = px2emcss(1.2);

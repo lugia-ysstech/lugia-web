@@ -31,8 +31,11 @@ const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 export const isHorizontal = (orientation: OrientationType): boolean => {
   return orientation === 'horizontal';
 };
-const isNormalSize = (size: 'normal' | 'mini'): boolean => {
-  return size === 'normal';
+const isNormalSize = (size: 'default' | 'small'): boolean => {
+  return size === 'default' || size === 'normal';
+};
+const isSmallSize = (size: 'default' | 'small'): boolean => {
+  return size === 'small' || size === 'mini';
 };
 
 const isDotType = (stepType: StepType): boolean => {
@@ -466,6 +469,7 @@ const StepNumber = CSSComponent({
     line-height: 1;
   `,
 });
+
 const StepInner = CSSComponent({
   tag: 'div',
   className: 'StepInner',
@@ -487,7 +491,7 @@ const StepInner = CSSComponent({
           theSize =
             isNormalSize(size) && isFlatType(stepType)
               ? 32
-              : size === 'mini' && isFlatType(stepType)
+              : isSmallSize(size) && isFlatType(stepType)
               ? 24
               : isNormalSize(size)
               ? 20
@@ -802,7 +806,7 @@ class Step extends React.Component<StepProps, StepState> {
         ? 12
         : isNormalSize(size) && isFirst
         ? 32
-        : size === 'mini' && isFirst
+        : isSmallSize(size) && isFirst
         ? 24
         : '100%';
 

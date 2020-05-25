@@ -732,7 +732,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -844,7 +844,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       <div
                         className="c7"
                         orientation="horizontal"
-                        size="normal"
+                        size="default"
                         style={
                           Object {
                             "backgroundColor": "#4d63ff",
@@ -881,7 +881,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         />
                         <div
                           className="c14"
-                          size="normal"
+                          size="default"
                           style={
                             Object {
                               "color": "#ffffff",
@@ -970,7 +970,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       <div
                         className="c7"
                         orientation="horizontal"
-                        size="normal"
+                        size="default"
                         style={
                           Object {
                             "backgroundColor": "#ffffff",
@@ -1083,7 +1083,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       <div
                         className="c7"
                         orientation="horizontal"
-                        size="normal"
+                        size="default"
                         style={
                           Object {
                             "backgroundColor": "#ffffff",
@@ -1196,7 +1196,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       <div
                         className="c7"
                         orientation="horizontal"
-                        size="normal"
+                        size="default"
                         style={
                           Object {
                             "backgroundColor": "#ffffff",
@@ -1310,7 +1310,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   <div
                     className="c7"
                     orientation="horizontal"
-                    size="normal"
+                    size="default"
                     style={
                       Object {
                         "backgroundColor": "#ffffff",
@@ -1422,7 +1422,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -1537,7 +1537,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -1574,7 +1574,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                       <div
                         className="c14"
-                        size="normal"
+                        size="default"
                         style={
                           Object {
                             "color": "#ffffff",
@@ -1665,7 +1665,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -1778,7 +1778,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -1891,7 +1891,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -2008,7 +2008,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   <div
                     className="c7"
                     orientation="horizontal"
-                    size="normal"
+                    size="default"
                     style={
                       Object {
                         "backgroundColor": "#ffffff",
@@ -2120,7 +2120,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -2233,7 +2233,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -2270,7 +2270,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                       <div
                         className="c14"
-                        size="normal"
+                        size="default"
                         style={
                           Object {
                             "color": "#ffffff",
@@ -2359,7 +2359,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -2472,7 +2472,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -2585,7 +2585,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -2702,7 +2702,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   <div
                     className="c7"
                     orientation="horizontal"
-                    size="mini"
+                    size="small"
                     style={
                       Object {
                         "backgroundColor": "#ffffff",
@@ -2814,7 +2814,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="mini"
+                      size="small"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -2927,7 +2927,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="mini"
+                      size="small"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -2964,7 +2964,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                       <div
                         className="c14"
-                        size="mini"
+                        size="small"
                         style={
                           Object {
                             "color": "#ffffff",
@@ -3043,7 +3043,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="mini"
+                      size="small"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -3146,7 +3146,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="mini"
+                      size="small"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -3249,7 +3249,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="mini"
+                      size="small"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -3356,7 +3356,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   <div
                     className="c7"
                     orientation="horizontal"
-                    size="mini"
+                    size="small"
                     style={
                       Object {
                         "backgroundColor": "#4d63ff",
@@ -3455,7 +3455,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="mini"
+                      size="small"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -3555,7 +3555,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="mini"
+                      size="small"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -3580,7 +3580,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                       <div
                         className="c14"
-                        size="mini"
+                        size="small"
                         style={
                           Object {
                             "color": "#ffffff",
@@ -3658,7 +3658,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="mini"
+                      size="small"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -3749,7 +3749,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="mini"
+                      size="small"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -3840,7 +3840,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="mini"
+                      size="small"
                       style={
                         Object {
                           "backgroundColor": "#f22735",
@@ -3935,7 +3935,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   <div
                     className="c7"
                     orientation="horizontal"
-                    size="normal"
+                    size="default"
                     style={
                       Object {
                         "backgroundColor": "#4d63ff",
@@ -4024,7 +4024,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -4114,7 +4114,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -4139,7 +4139,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                       <div
                         className="c14"
-                        size="normal"
+                        size="default"
                         style={
                           Object {
                             "color": "#ffffff",
@@ -4217,7 +4217,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -4308,7 +4308,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -4399,7 +4399,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#f22735",
@@ -7333,7 +7333,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   <div
                     className="c7"
                     orientation="vertical"
-                    size="normal"
+                    size="default"
                     style={
                       Object {
                         "backgroundColor": "#ffffff",
@@ -7445,7 +7445,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="vertical"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -7558,7 +7558,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="vertical"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -7595,7 +7595,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                       <div
                         className="c14"
-                        size="normal"
+                        size="default"
                         style={
                           Object {
                             "color": "#ffffff",
@@ -7686,7 +7686,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="vertical"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -7799,7 +7799,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="vertical"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -7912,7 +7912,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="vertical"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -10046,7 +10046,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   <div
                     className="c7"
                     orientation="horizontal"
-                    size="normal"
+                    size="default"
                     style={
                       Object {
                         "backgroundColor": "#4d63ff",
@@ -10083,7 +10083,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                     <div
                       className="c14"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "color": "#ffffff",
@@ -10161,7 +10161,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
@@ -10264,7 +10264,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     <div
                       className="c7"
                       orientation="horizontal"
-                      size="normal"
+                      size="default"
                       style={
                         Object {
                           "backgroundColor": "#ffffff",

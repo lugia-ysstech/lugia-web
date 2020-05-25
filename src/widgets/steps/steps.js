@@ -118,7 +118,7 @@ class Steps extends Component<StepsProps, StepsState> {
   static defaultProps = {
     currentStepNumber: 0,
     stepType: 'simple',
-    size: 'normal',
+    size: 'default',
     orientation: 'horizontal',
     desAlign: 'left',
     defaultData,
