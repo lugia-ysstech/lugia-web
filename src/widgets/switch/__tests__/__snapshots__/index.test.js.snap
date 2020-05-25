@@ -11,6 +11,11 @@ exports[`Switch Wrapper 1`] = `
 
 .c0 {
   display: inline-block;
+  cursor: not-allowed;
+}
+
+.c5 {
+  display: inline-block;
 }
 
 .c1 {
@@ -18,9 +23,21 @@ exports[`Switch Wrapper 1`] = `
   position: relative;
   cursor: pointer;
   vertical-align: middle;
+  cursor: not-allowed;
 }
 
 .c1:focus {
+  outline: none;
+}
+
+.c6 {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.c6:focus {
   outline: none;
 }
 
@@ -29,6 +46,7 @@ exports[`Switch Wrapper 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  cursor: not-allowed;
 }
 
 .c2 > *:first-child {
@@ -58,40 +76,6 @@ exports[`Switch Wrapper 1`] = `
   color: #000;
 }
 
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c5 > *:first-child {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  text-align: center;
-  font-style: normal;
-  font-size: 1.2rem;
-  color: #fff;
-  line-height: 1.2rem;
-}
-
-.c5 > *:first-child {
-  width: 1.6rem;
-  right: 0;
-  font-size: 1.2rem;
-  font-weight: undefined;
-  color: rgba(255,255,255,0.8);
-}
-
-.c5 > *:first-child > *:first-child {
-  font-size: 1.2rem;
-  font-weight: undefined;
-  color: rgba(255,255,255,0.8);
-}
-
 .c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -113,7 +97,7 @@ exports[`Switch Wrapper 1`] = `
 }
 
 .c7 > *:first-child {
-  width: 2.1rem;
+  width: 1.6rem;
   right: 0;
   font-size: 1.2rem;
   font-weight: undefined;
@@ -148,13 +132,82 @@ exports[`Switch Wrapper 1`] = `
 
 .c9 > *:first-child {
   width: 2.1rem;
-  left: 0;
+  right: 0;
   font-size: 1.2rem;
   font-weight: undefined;
   color: rgba(255,255,255,0.8);
 }
 
 .c9 > *:first-child > *:first-child {
+  font-size: 1.2rem;
+  font-weight: undefined;
+  color: rgba(255,255,255,0.8);
+}
+
+.c11 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c11 > *:first-child {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 1.2rem;
+}
+
+.c11 > *:first-child {
+  width: 2.1rem;
+  left: 0;
+  font-size: 1.2rem;
+  font-weight: undefined;
+  color: rgba(255,255,255,0.8);
+}
+
+.c11 > *:first-child > *:first-child {
+  font-size: 1.2rem;
+  font-weight: undefined;
+  color: rgba(255,255,255,0.8);
+}
+
+.c13 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: not-allowed;
+}
+
+.c13 > *:first-child {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 1.2rem;
+}
+
+.c13 > *:first-child {
+  width: 2.1rem;
+  right: 0;
+  font-size: 1.2rem;
+  font-weight: undefined;
+  color: rgba(255,255,255,0.8);
+}
+
+.c13 > *:first-child > *:first-child {
   font-size: 1.2rem;
   font-weight: undefined;
   color: rgba(255,255,255,0.8);
@@ -202,6 +255,7 @@ exports[`Switch Wrapper 1`] = `
 }
 
 .c3 > *:first-child {
+  cursor: not-allowed;
   height: 3rem;
 }
 
@@ -209,46 +263,6 @@ exports[`Switch Wrapper 1`] = `
   display: inline-block;
   width: 3rem;
   height: 3rem;
-}
-
-.c6 {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transition: 1s;
-  transition: 1s;
-  -webkit-transition: all 0.2s;
-  left: 2px;
-}
-
-.c6 > *:first-child {
-  display: block;
-  color: #4d63ff;
-  -webkit-animation: rotate 1.5s linear infinite;
-  animation: rotate 1.5s linear infinite;
-  position: relative;
-}
-
-.c6 > *:first-child > *:first-child {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-}
-
-.c6 > *:first-child::before {
-  -webkit-transform: scale(0.65);
-  -ms-transform: scale(0.65);
-  transform: scale(0.65);
-}
-
-.c6 > *:first-child {
-  height: 1.2rem;
 }
 
 .c8 {
@@ -261,7 +275,7 @@ exports[`Switch Wrapper 1`] = `
   -webkit-transition: 1s;
   transition: 1s;
   -webkit-transition: all 0.2s;
-  left: 3px;
+  left: 2px;
 }
 
 .c8 > *:first-child {
@@ -288,7 +302,7 @@ exports[`Switch Wrapper 1`] = `
 }
 
 .c8 > *:first-child {
-  height: 1.4rem;
+  height: 1.2rem;
 }
 
 .c10 {
@@ -301,7 +315,7 @@ exports[`Switch Wrapper 1`] = `
   -webkit-transition: 1s;
   transition: 1s;
   -webkit-transition: all 0.2s;
-  right: 3px;
+  left: 3px;
 }
 
 .c10 > *:first-child {
@@ -331,7 +345,47 @@ exports[`Switch Wrapper 1`] = `
   height: 1.4rem;
 }
 
-.c11 {
+.c12 {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition: all 0.2s;
+  right: 3px;
+}
+
+.c12 > *:first-child {
+  display: block;
+  color: #4d63ff;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
+  position: relative;
+}
+
+.c12 > *:first-child > *:first-child {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.c12 > *:first-child::before {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+  transform: scale(0.65);
+}
+
+.c12 > *:first-child {
+  height: 1.4rem;
+}
+
+.c14 {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -345,7 +399,7 @@ exports[`Switch Wrapper 1`] = `
   left: 3px;
 }
 
-.c11 > *:first-child {
+.c14 > *:first-child {
   display: block;
   color: #4d63ff;
   -webkit-animation: rotate 1.5s linear infinite;
@@ -353,7 +407,7 @@ exports[`Switch Wrapper 1`] = `
   position: relative;
 }
 
-.c11 > *:first-child > *:first-child {
+.c14 > *:first-child > *:first-child {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -362,21 +416,22 @@ exports[`Switch Wrapper 1`] = `
   transform: translate(-50%,-50%);
 }
 
-.c11 > *:first-child::before {
+.c14 > *:first-child::before {
   -webkit-transform: scale(0.65);
   -ms-transform: scale(0.65);
   transform: scale(0.65);
 }
 
-.c11 > *:first-child {
+.c14 > *:first-child {
   height: 1.4rem;
 }
 
-.c11 > *:first-child {
+.c14 > *:first-child {
+  cursor: not-allowed;
   height: 1.4rem;
 }
 
-.c11 > *:first-child::before {
+.c14 > *:first-child::before {
   display: inline-block;
   width: 1.4rem;
   height: 1.4rem;
@@ -519,7 +574,7 @@ exports[`Switch Wrapper 1`] = `
       size=‘small’
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -527,12 +582,12 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#ccc",
+            "backgroundColor": "#cccccc",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -551,7 +606,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c5"
+          className="c7"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -564,10 +619,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c6"
+          className="c8"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -598,7 +653,7 @@ exports[`Switch Wrapper 1`] = `
       data.length=3
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -606,12 +661,12 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#ccc",
+            "backgroundColor": "#cccccc",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -630,7 +685,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c9"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -643,10 +698,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -677,7 +732,7 @@ exports[`Switch Wrapper 1`] = `
       data.length=2 isInverse defaultValue
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -685,7 +740,7 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
@@ -709,7 +764,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c11"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -722,10 +777,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c12"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -756,7 +811,7 @@ exports[`Switch Wrapper 1`] = `
       data \`data.length=1 isInverse\`
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -764,7 +819,7 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
@@ -788,7 +843,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c9"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -801,10 +856,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -835,7 +890,7 @@ exports[`Switch Wrapper 1`] = `
       data \`data.length=0\`
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -843,12 +898,12 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#ccc",
+            "backgroundColor": "#cccccc",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -867,7 +922,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c9"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -880,10 +935,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -914,7 +969,7 @@ exports[`Switch Wrapper 1`] = `
       data[0]=null
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -922,12 +977,12 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#ccc",
+            "backgroundColor": "#cccccc",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -946,7 +1001,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c9"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -959,10 +1014,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -993,7 +1048,7 @@ exports[`Switch Wrapper 1`] = `
       data[0]=null,data[1]=null
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1001,12 +1056,12 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#ccc",
+            "backgroundColor": "#cccccc",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1025,7 +1080,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c9"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1038,10 +1093,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -1072,7 +1127,7 @@ exports[`Switch Wrapper 1`] = `
       data[0]=undefined
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1080,12 +1135,12 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#ccc",
+            "backgroundColor": "#cccccc",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1104,7 +1159,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c9"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1117,10 +1172,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -1151,7 +1206,7 @@ exports[`Switch Wrapper 1`] = `
       data[0]=undefined,data[1]=undefined
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1159,12 +1214,12 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#ccc",
+            "backgroundColor": "#cccccc",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1183,7 +1238,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c9"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1196,10 +1251,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -1230,7 +1285,7 @@ exports[`Switch Wrapper 1`] = `
       data[0]=null,data[1]=undefined
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1238,12 +1293,12 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#ccc",
+            "backgroundColor": "#cccccc",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1262,7 +1317,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c9"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1275,10 +1330,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -1310,7 +1365,7 @@ exports[`Switch Wrapper 1`] = `
       text:月
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1318,12 +1373,12 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#ccc",
+            "backgroundColor": "#cccccc",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1342,7 +1397,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c9"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1355,10 +1410,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -1389,7 +1444,7 @@ exports[`Switch Wrapper 1`] = `
       displayFiled
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1397,12 +1452,12 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#ccc",
+            "backgroundColor": "#cccccc",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1421,7 +1476,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c9"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1434,10 +1489,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -1468,7 +1523,7 @@ exports[`Switch Wrapper 1`] = `
       no displayFiled, have text
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1476,12 +1531,12 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#ccc",
+            "backgroundColor": "#cccccc",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1500,7 +1555,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c9"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1513,10 +1568,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -1547,7 +1602,7 @@ exports[`Switch Wrapper 1`] = `
       no displayFiled no text
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1555,12 +1610,12 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#ccc",
+            "backgroundColor": "#cccccc",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1579,7 +1634,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c9"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1588,10 +1643,10 @@ exports[`Switch Wrapper 1`] = `
           }
         />
         <span
-          className="c8"
+          className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -1622,7 +1677,7 @@ exports[`Switch Wrapper 1`] = `
       isInverse
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1630,7 +1685,7 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
@@ -1654,7 +1709,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c9"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1667,10 +1722,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -1701,7 +1756,7 @@ exports[`Switch Wrapper 1`] = `
       data \`value\`
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1709,7 +1764,7 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
@@ -1733,7 +1788,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c11"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1746,10 +1801,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c12"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -1780,7 +1835,7 @@ exports[`Switch Wrapper 1`] = `
       defaultValue
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1788,7 +1843,7 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
@@ -1812,7 +1867,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c11"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1825,10 +1880,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c12"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -1859,7 +1914,7 @@ exports[`Switch Wrapper 1`] = `
       defaultValue && value
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1867,7 +1922,7 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
@@ -1891,7 +1946,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c11"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1904,10 +1959,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c12"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -1938,7 +1993,7 @@ exports[`Switch Wrapper 1`] = `
       autoFocus
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1946,12 +2001,12 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#ccc",
+            "backgroundColor": "#cccccc",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1970,7 +2025,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c9"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1983,10 +2038,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c10"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -2017,7 +2072,7 @@ exports[`Switch Wrapper 1`] = `
       autoFocus && value
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -2025,7 +2080,7 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
@@ -2049,7 +2104,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c11"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2062,10 +2117,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c12"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -2096,7 +2151,7 @@ exports[`Switch Wrapper 1`] = `
       onChange
     </h3>
     <span
-      className="c0"
+      className="c5"
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -2104,170 +2159,12 @@ exports[`Switch Wrapper 1`] = `
       style={Object {}}
     >
       <span
-        className="c1"
+        className="c6"
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#ccc",
-            "borderBottomLeftRadius": "2rem",
-            "borderBottomRightRadius": "2rem",
-            "borderBottomWidth": "0rem",
-            "borderLeftWidth": "0rem",
-            "borderRightWidth": "0rem",
-            "borderTopLeftRadius": "2rem",
-            "borderTopRightRadius": "2rem",
-            "borderTopWidth": "0rem",
-            "boxShadow": "undefinedpx undefinedpx 0px 0px",
-            "color": "rgba(255, 255, 255, 0.8)",
-            "fontSize": "1.2rem",
-            "height": "2rem",
-            "width": "3.8rem",
-          }
-        }
-        tabIndex={0}
-      >
-        <span
-          className="c7"
-          style={
-            Object {
-              "color": "rgba(255, 255, 255, 0.8)",
-              "fontSize": "1.2rem",
-            }
-          }
-        >
-          <i>
-            月
-          </i>
-        </span>
-        <span
-          className="c8"
-          style={
-            Object {
-              "backgroundColor": "#fff",
-              "borderBottomLeftRadius": "50%",
-              "borderBottomRightRadius": "50%",
-              "borderBottomWidth": "0rem",
-              "borderLeftWidth": "0rem",
-              "borderRightWidth": "0rem",
-              "borderTopLeftRadius": "50%",
-              "borderTopRightRadius": "50%",
-              "borderTopWidth": "0rem",
-              "boxShadow": "undefinedpx undefinedpx 0px 0px",
-              "height": "1.4rem",
-              "width": "1.4rem",
-            }
-          }
-        >
-          
-        </span>
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      onChange value false
-    </h3>
-    <span
-      className="c0"
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={Object {}}
-    >
-      <span
-        className="c1"
-        onKeyDown={[Function]}
-        onMouseUp={[Function]}
-        style={
-          Object {
-            "backgroundColor": "#ccc",
-            "borderBottomLeftRadius": "2rem",
-            "borderBottomRightRadius": "2rem",
-            "borderBottomWidth": "0rem",
-            "borderLeftWidth": "0rem",
-            "borderRightWidth": "0rem",
-            "borderTopLeftRadius": "2rem",
-            "borderTopRightRadius": "2rem",
-            "borderTopWidth": "0rem",
-            "boxShadow": "undefinedpx undefinedpx 0px 0px",
-            "color": "rgba(255, 255, 255, 0.8)",
-            "fontSize": "1.2rem",
-            "height": "2rem",
-            "width": "3.8rem",
-          }
-        }
-        tabIndex={0}
-      >
-        <span
-          className="c7"
-          style={
-            Object {
-              "color": "rgba(255, 255, 255, 0.8)",
-              "fontSize": "1.2rem",
-            }
-          }
-        >
-          <i>
-            月
-          </i>
-        </span>
-        <span
-          className="c8"
-          style={
-            Object {
-              "backgroundColor": "#fff",
-              "borderBottomLeftRadius": "50%",
-              "borderBottomRightRadius": "50%",
-              "borderBottomWidth": "0rem",
-              "borderLeftWidth": "0rem",
-              "borderRightWidth": "0rem",
-              "borderTopLeftRadius": "50%",
-              "borderTopRightRadius": "50%",
-              "borderTopWidth": "0rem",
-              "boxShadow": "undefinedpx undefinedpx 0px 0px",
-              "height": "1.4rem",
-              "width": "1.4rem",
-            }
-          }
-        >
-          
-        </span>
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      onChange value false
-    </h3>
-    <span
-      className="c0"
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={Object {}}
-    >
-      <span
-        className="c1"
-        onKeyDown={[Function]}
-        onMouseUp={[Function]}
-        style={
-          Object {
-            "backgroundColor": "#4d63ff",
+            "backgroundColor": "#cccccc",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -2294,6 +2191,164 @@ exports[`Switch Wrapper 1`] = `
             }
           }
         >
+          <i>
+            月
+          </i>
+        </span>
+        <span
+          className="c10"
+          style={
+            Object {
+              "backgroundColor": "#ffffff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "borderTopWidth": "0rem",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      onChange value false
+    </h3>
+    <span
+      className="c5"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c6"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#cccccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderBottomWidth": "0rem",
+            "borderLeftWidth": "0rem",
+            "borderRightWidth": "0rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "borderTopWidth": "0rem",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
+            "color": "rgba(255, 255, 255, 0.8)",
+            "fontSize": "1.2rem",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c9"
+          style={
+            Object {
+              "color": "rgba(255, 255, 255, 0.8)",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            月
+          </i>
+        </span>
+        <span
+          className="c10"
+          style={
+            Object {
+              "backgroundColor": "#ffffff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "borderTopWidth": "0rem",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      onChange value false
+    </h3>
+    <span
+      className="c5"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c6"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderBottomWidth": "0rem",
+            "borderLeftWidth": "0rem",
+            "borderRightWidth": "0rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "borderTopWidth": "0rem",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
+            "color": "rgba(255, 255, 255, 0.8)",
+            "fontSize": "1.2rem",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c11"
+          style={
+            Object {
+              "color": "rgba(255, 255, 255, 0.8)",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
           <i
             className="lugia-icon-logo_lugia lugia-icon-reminder_check  c4"
             onClick={[Function]}
@@ -2305,10 +2360,10 @@ exports[`Switch Wrapper 1`] = `
           />
         </span>
         <span
-          className="c10"
+          className="c12"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -2371,7 +2426,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2384,10 +2439,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c11"
+          className="c14"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -2463,7 +2518,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2476,10 +2531,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c11"
+          className="c14"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -2555,7 +2610,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={-1}
       >
         <span
-          className="c7"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2568,10 +2623,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c11"
+          className="c14"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -2634,7 +2689,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={-1}
       >
         <span
-          className="c7"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2647,10 +2702,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c11"
+          className="c14"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",
@@ -2726,7 +2781,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={-1}
       >
         <span
-          className="c7"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2739,10 +2794,10 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c11"
+          className="c14"
           style={
             Object {
-              "backgroundColor": "#fff",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": "50%",
               "borderBottomRightRadius": "50%",
               "borderBottomWidth": "0rem",

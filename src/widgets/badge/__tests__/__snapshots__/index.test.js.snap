@@ -59,19 +59,6 @@ exports[` Badge css 1`] = `
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   white-space: nowrap;
   text-align: center;
-  -webkit-transform: translateY(-808%);
-  -ms-transform: translateY(-808%);
-  transform: translateY(-808%);
-  display: inline-block;
-  height: 1.4rem;
-  color: #ffffff;
-}
-
-.c11 {
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  white-space: nowrap;
-  text-align: center;
   -webkit-transform: translateY(-908%);
   -ms-transform: translateY(-908%);
   transform: translateY(-908%);
@@ -80,7 +67,7 @@ exports[` Badge css 1`] = `
   color: #ffffff;
 }
 
-.c13 {
+.c12 {
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   white-space: nowrap;
@@ -101,7 +88,7 @@ exports[` Badge css 1`] = `
   color: #ffffff;
 }
 
-.c12 {
+.c11 {
   box-sizing: border-box;
   position: absolute;
   z-index: 10;
@@ -114,21 +101,21 @@ exports[` Badge css 1`] = `
 }
 
 .c3 {
-  background: transparent;
   box-sizing: border-box;
   position: relative;
   display: inline-block;
   line-height: 1;
+  background-color: transparent;
   min-width: 2rem;
   min-height: 2rem;
 }
 
-.c14 {
-  background: transparent;
+.c13 {
   box-sizing: border-box;
   position: relative;
   display: inline-block;
   line-height: 1;
+  background-color: transparent;
   min-width: 1rem;
   min-height: 1rem;
 }
@@ -167,7 +154,7 @@ exports[` Badge css 1`] = `
   margin-left: 0%;
 }
 
-.c15 {
+.c14 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -208,7 +195,11 @@ exports[` Badge css 1`] = `
       >
         <div
           className="c3"
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "orange",
+            }
+          }
         >
           <div
             className="c4"
@@ -367,7 +358,11 @@ exports[` Badge css 1`] = `
       >
         <div
           className="c3"
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "orange",
+            }
+          }
         >
           <div
             className="c4"
@@ -647,7 +642,11 @@ exports[` Badge css 1`] = `
       >
         <div
           className="c3"
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "orange",
+            }
+          }
         >
           <div
             className="c4"
@@ -913,18 +912,6 @@ exports[` Badge css 1`] = `
                   9
                 </p>
               </span>
-              <span
-                className="c10"
-                style={
-                  Object {
-                    "height": "1.5rem",
-                    "lineHeight": "1.5rem",
-                  }
-                }
-                y={-808}
-              >
-                +
-              </span>
             </div>
           </div>
         </div>
@@ -939,7 +926,11 @@ exports[` Badge css 1`] = `
       >
         <div
           className="c3"
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "orange",
+            }
+          }
         >
           <div
             className="c4"
@@ -1206,7 +1197,7 @@ exports[` Badge css 1`] = `
                 </p>
               </span>
               <span
-                className="c11"
+                className="c10"
                 style={
                   Object {
                     "height": "1.5rem",
@@ -1231,13 +1222,17 @@ exports[` Badge css 1`] = `
       >
         <div
           className="c3"
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "orange",
+            }
+          }
         >
           <div
             className="c4"
           />
           <div
-            className="c12"
+            className="c11"
             style={
               Object {
                 "backgroundColor": "orange",
@@ -1285,13 +1280,17 @@ exports[` Badge css 1`] = `
       >
         <div
           className="c3"
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "orange",
+            }
+          }
         >
           <div
             className="c4"
           />
           <div
-            className="c12"
+            className="c11"
             style={
               Object {
                 "backgroundColor": "orange",
@@ -1327,7 +1326,11 @@ exports[` Badge css 1`] = `
       >
         <div
           className="c3"
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "orange",
+            }
+          }
         >
           <div
             className="c4"
@@ -1352,7 +1355,7 @@ exports[` Badge css 1`] = `
               }
             >
               <span
-                className="c13"
+                className="c12"
                 style={
                   Object {
                     "height": "1.5rem",
@@ -1486,7 +1489,11 @@ exports[` Badge css 1`] = `
       >
         <div
           className="c3"
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "orange",
+            }
+          }
         >
           <div
             className="c4"
@@ -1511,7 +1518,7 @@ exports[` Badge css 1`] = `
               }
             >
               <span
-                className="c13"
+                className="c12"
                 style={
                   Object {
                     "height": "1.5rem",
@@ -1648,13 +1655,17 @@ exports[` Badge css 1`] = `
         >
           <div
             className="c3"
-            style={Object {}}
+            style={
+              Object {
+                "backgroundColor": "orange",
+              }
+            }
           >
             <div
               className="c4"
             />
             <div
-              className="c12"
+              className="c11"
               style={
                 Object {
                   "backgroundColor": "orange",
@@ -1702,14 +1713,18 @@ exports[` Badge css 1`] = `
         width={4.166666666666667}
       >
         <div
-          className="c14"
-          style={Object {}}
+          className="c13"
+          style={
+            Object {
+              "backgroundColor": "green",
+            }
+          }
         >
           <div
             className="c4"
           />
           <div
-            className="c12"
+            className="c11"
             style={
               Object {
                 "backgroundColor": "green",
@@ -1730,14 +1745,18 @@ exports[` Badge css 1`] = `
         width={4.166666666666667}
       >
         <div
-          className="c14"
-          style={Object {}}
+          className="c13"
+          style={
+            Object {
+              "backgroundColor": "purple",
+            }
+          }
         >
           <div
             className="c4"
           />
           <div
-            className="c12"
+            className="c11"
             style={
               Object {
                 "backgroundColor": "purple",
@@ -1758,14 +1777,18 @@ exports[` Badge css 1`] = `
         width={4.166666666666667}
       >
         <div
-          className="c14"
-          style={Object {}}
+          className="c13"
+          style={
+            Object {
+              "backgroundColor": "yellow",
+            }
+          }
         >
           <div
             className="c4"
           />
           <div
-            className="c12"
+            className="c11"
             style={
               Object {
                 "backgroundColor": "yellow",
@@ -1786,14 +1809,18 @@ exports[` Badge css 1`] = `
         width={4.166666666666667}
       >
         <div
-          className="c14"
-          style={Object {}}
+          className="c13"
+          style={
+            Object {
+              "backgroundColor": "blue",
+            }
+          }
         >
           <div
             className="c4"
           />
           <div
-            className="c12"
+            className="c11"
             style={
               Object {
                 "backgroundColor": "blue",
@@ -1826,14 +1853,18 @@ exports[` Badge css 1`] = `
         width={4.166666666666667}
       >
         <div
-          className="c14"
-          style={Object {}}
+          className="c13"
+          style={
+            Object {
+              "backgroundColor": "green",
+            }
+          }
         >
           <div
             className="c4"
           />
           <div
-            className="c12"
+            className="c11"
             style={
               Object {
                 "backgroundColor": "green",
@@ -1854,8 +1885,12 @@ exports[` Badge css 1`] = `
         width={4.166666666666667}
       >
         <div
-          className="c14"
-          style={Object {}}
+          className="c13"
+          style={
+            Object {
+              "backgroundColor": "purple",
+            }
+          }
         >
           <div
             className="c4"
@@ -1958,14 +1993,18 @@ exports[` Badge css 1`] = `
         width={4.166666666666667}
       >
         <div
-          className="c14"
-          style={Object {}}
+          className="c13"
+          style={
+            Object {
+              "backgroundColor": "yellow",
+            }
+          }
         >
           <div
             className="c4"
           />
           <div
-            className="c12"
+            className="c11"
             style={
               Object {
                 "backgroundColor": "yellow",
@@ -1986,8 +2025,12 @@ exports[` Badge css 1`] = `
         width={4.166666666666667}
       >
         <div
-          className="c14"
-          style={Object {}}
+          className="c13"
+          style={
+            Object {
+              "backgroundColor": "blue",
+            }
+          }
         >
           <div
             className="c4"
@@ -2168,7 +2211,7 @@ exports[` Badge css 1`] = `
         width={4.166666666666667}
       >
         <div
-          className="c14"
+          className="c13"
           style={Object {}}
         >
           <div
@@ -2190,7 +2233,7 @@ exports[` Badge css 1`] = `
               style={Object {}}
             >
               <span
-                className="c13"
+                className="c12"
                 style={Object {}}
                 y={-0}
               >
@@ -2259,7 +2302,7 @@ exports[` Badge css 1`] = `
           </div>
         </div>
         <i
-          className="lugia-icon-reminder_plus_square_o   c15"
+          className="lugia-icon-reminder_plus_square_o   c14"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -2268,7 +2311,7 @@ exports[` Badge css 1`] = `
           style={Object {}}
         />
         <i
-          className="lugia-icon-reminder_minus_square_o   c15"
+          className="lugia-icon-reminder_minus_square_o   c14"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}

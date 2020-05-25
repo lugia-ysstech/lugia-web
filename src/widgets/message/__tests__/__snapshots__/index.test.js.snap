@@ -99,7 +99,6 @@ exports[`Message css 1`] = `
 }
 
 .c2 {
-  color: #646A6E;
   font-size: 1.4rem;
 }
 
@@ -169,7 +168,7 @@ exports[`Message css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#646A6E",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -226,7 +225,7 @@ exports[`Message css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#646A6E",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -283,7 +282,7 @@ exports[`Message css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#646A6E",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -340,7 +339,7 @@ exports[`Message css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#646A6E",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -397,7 +396,7 @@ exports[`Message css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#646A6E",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }

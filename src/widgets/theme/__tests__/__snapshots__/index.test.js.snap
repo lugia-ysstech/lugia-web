@@ -2,7 +2,6 @@
 
 exports[`Theme Theme 1`] = `
 <div>
-  {"ligx":{"value":"正念"}}
   hello everyone
 </div>
 `;

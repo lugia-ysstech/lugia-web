@@ -10,12 +10,10 @@ exports[`Affix css 1`] = `
   display: inline-block;
   margin-bottom: 0;
   box-sizing: border-box;
-  text-align: center;
   touch-action: manipulation;
   cursor: pointer;
   white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -25,34 +23,40 @@ exports[`Affix css 1`] = `
   position: relative;
   text-transform: none;
   outline: 0;
-  color: #666666;
   background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 0 1.2857142857142858em;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+}
+
+.c3 {
   font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-}
-
-.c1:hover {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c1:focus {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c1:active {
-  color: #3e4fcc;
-  border: 1px solid #3e4fcc;
 }
 
 .c2 {
-  display: inline-block;
-  line-height: 2.142857142857143em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 <div>
@@ -84,19 +88,57 @@ exports[`Affix css 1`] = `
         </p>
         <button
           className="c1"
+          onBlur={[Function]}
           onClick={[Function]}
+          onFocus={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
           onMouseUp={[Function]}
           size="default"
+          style={
+            Object {
+              "backgroundColor": "#ffffff",
+              "borderBottomColor": "#cccccc",
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#cccccc",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#cccccc",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#cccccc",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "height": "3.2rem",
+              "paddingBottom": "0rem",
+              "paddingLeft": "1.8rem",
+              "paddingRight": "1.8rem",
+              "paddingTop": "0rem",
+            }
+          }
         >
           <span
             className="c2"
-            size="default"
           >
-            Affix-top-50
+            <span
+              className="c3"
+              style={
+                Object {
+                  "color": "#363B40",
+                  "fontSize": "1.4rem",
+                }
+              }
+            >
+              Affix-top-50
+            </span>
           </span>
         </button>
       </div>
@@ -136,19 +178,57 @@ exports[`Affix css 1`] = `
             </p>
             <button
               className="c1"
+              onBlur={[Function]}
               onClick={[Function]}
+              onFocus={[Function]}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
               onMouseOut={[Function]}
               onMouseOver={[Function]}
               onMouseUp={[Function]}
               size="default"
+              style={
+                Object {
+                  "backgroundColor": "#ffffff",
+                  "borderBottomColor": "#cccccc",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "#cccccc",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "#cccccc",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "#cccccc",
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                }
+              }
             >
               <span
                 className="c2"
-                size="default"
               >
-                target-top-50
+                <span
+                  className="c3"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  target-top-50
+                </span>
               </span>
             </button>
           </div>
@@ -192,19 +272,57 @@ exports[`Affix css 1`] = `
             </p>
             <button
               className="c1"
+              onBlur={[Function]}
               onClick={[Function]}
+              onFocus={[Function]}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
               onMouseOut={[Function]}
               onMouseOver={[Function]}
               onMouseUp={[Function]}
               size="default"
+              style={
+                Object {
+                  "backgroundColor": "#ffffff",
+                  "borderBottomColor": "#cccccc",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "#cccccc",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "#cccccc",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "#cccccc",
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                }
+              }
             >
               <span
                 className="c2"
-                size="default"
               >
-                target-bottom-50
+                <span
+                  className="c3"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  target-bottom-50
+                </span>
               </span>
             </button>
           </div>
@@ -230,19 +348,57 @@ exports[`Affix css 1`] = `
         </p>
         <button
           className="c1"
+          onBlur={[Function]}
           onClick={[Function]}
+          onFocus={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
           onMouseUp={[Function]}
           size="default"
+          style={
+            Object {
+              "backgroundColor": "#ffffff",
+              "borderBottomColor": "#cccccc",
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#cccccc",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#cccccc",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#cccccc",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "height": "3.2rem",
+              "paddingBottom": "0rem",
+              "paddingLeft": "1.8rem",
+              "paddingRight": "1.8rem",
+              "paddingTop": "0rem",
+            }
+          }
         >
           <span
             className="c2"
-            size="default"
           >
-            Affix-bottom-50
+            <span
+              className="c3"
+              style={
+                Object {
+                  "color": "#363B40",
+                  "fontSize": "1.4rem",
+                }
+              }
+            >
+              Affix-bottom-50
+            </span>
           </span>
         </button>
       </div>
