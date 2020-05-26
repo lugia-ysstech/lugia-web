@@ -1613,7 +1613,7 @@
     "iconClass": "lugia-icon-logo_zhifubao_circle",
     "title": "支付宝zhifubao"
   },
-  { "category": "reminder", "name": "reminder图标", "iconClass": "lugia-icon-reminder_Collapse_line","tittle":"卡片组件银行卡折叠面板" },
+  { "category": "reminder", "name": "reminder图标", "iconClass": "lugia-icon-reminder_Collapse_line","title":"卡片组件银行卡折叠面板" },
   {
     "category": "reminder",
     "name": "reminder图标",
@@ -1833,22 +1833,22 @@
     "iconClass": "lugia-icon-reminder_question_circle_o",
     "title": "？问号提问问题状态"
   },
-  { "category": "reminder", "name": "reminder图标", "iconClass": "lugia-icon-reminder_replace_line" ,"tittle":"转换ab切字母大小写" },
+  { "category": "reminder", "name": "reminder图标", "iconClass": "lugia-icon-reminder_replace_line" ,"title":"转换ab切字母大小写" },
   {
     "category": "reminder",
     "name": "reminder图标",
     "iconClass": "lugia-icon-reminder_replay",
     "title": "播放循环准备"
   },
-  { "category": "reminder", "name": "reminder图标", "iconClass": "lugia-icon-reminder_setUp_solid","tittle":"设置工具" },
-  { "category": "reminder", "name": "reminder图标", "iconClass": "lugia-icon-reminder_show_solid" ,"tittle":"眼睛显示隐藏看观察"},
+  { "category": "reminder", "name": "reminder图标", "iconClass": "lugia-icon-reminder_setUp_solid","title":"设置工具" },
+  { "category": "reminder", "name": "reminder图标", "iconClass": "lugia-icon-reminder_show_solid" ,"title":"眼睛显示隐藏看观察"},
   {
     "category": "reminder",
     "name": "reminder图标",
     "iconClass": "lugia-icon-reminder_square_o",
     "title": "播放循环准备"
   },
-  { "category": "reminder", "name": "reminder图标", "iconClass": "lugia-icon-reminder_tabs_line","tittle":"组件标签卡券" },
+  { "category": "reminder", "name": "reminder图标", "iconClass": "lugia-icon-reminder_tabs_line","title":"组件标签卡券" },
   {
     "category": "reminder",
     "name": "reminder图标",
