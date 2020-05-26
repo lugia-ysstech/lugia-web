@@ -1,10 +1,10 @@
 @font-face {
     font-family: "lugia-icon";
-    src: url("./lugia-icon.eot?daeb2591741e27af5a2948e9b96a950f?#iefix") format("embedded-opentype"),
-url("./lugia-icon.woff2?daeb2591741e27af5a2948e9b96a950f") format("woff2"),
-url("./lugia-icon.woff?daeb2591741e27af5a2948e9b96a950f") format("woff"),
-url("./lugia-icon.ttf?daeb2591741e27af5a2948e9b96a950f") format("truetype"),
-url("./lugia-icon.svg?daeb2591741e27af5a2948e9b96a950f#lugia-icon") format("svg");
+    src: url("./lugia-icon.eot?b352f1198fac32cfa53da031bee7c320?#iefix") format("embedded-opentype"),
+url("./lugia-icon.woff2?b352f1198fac32cfa53da031bee7c320") format("woff2"),
+url("./lugia-icon.woff?b352f1198fac32cfa53da031bee7c320") format("woff"),
+url("./lugia-icon.ttf?b352f1198fac32cfa53da031bee7c320") format("truetype"),
+url("./lugia-icon.svg?b352f1198fac32cfa53da031bee7c320#lugia-icon") format("svg");
 }
 
 i {
@@ -863,131 +863,146 @@ i[class^="lugia-icon-"]:before, i[class*=" lugia-icon-"]:before {
 .lugia-icon-logo_zhifubao_circle:before {
     content: "\f215";
 }
-.lugia-icon-reminder_ban:before {
+.lugia-icon-reminder_Collapse_line:before {
     content: "\f216";
 }
-.lugia-icon-reminder_check:before {
+.lugia-icon-reminder_ban:before {
     content: "\f217";
 }
-.lugia-icon-reminder_check_circle:before {
+.lugia-icon-reminder_check:before {
     content: "\f218";
 }
-.lugia-icon-reminder_check_circle_o:before {
+.lugia-icon-reminder_check_circle:before {
     content: "\f219";
 }
-.lugia-icon-reminder_check_square:before {
+.lugia-icon-reminder_check_circle_o:before {
     content: "\f21a";
 }
-.lugia-icon-reminder_check_square_o:before {
+.lugia-icon-reminder_check_square:before {
     content: "\f21b";
 }
-.lugia-icon-reminder_clock_circle:before {
+.lugia-icon-reminder_check_square_o:before {
     content: "\f21c";
 }
-.lugia-icon-reminder_clock_circle_o:before {
+.lugia-icon-reminder_clock_circle:before {
     content: "\f21d";
 }
-.lugia-icon-reminder_close:before {
+.lugia-icon-reminder_clock_circle_o:before {
     content: "\f21e";
 }
-.lugia-icon-reminder_close_circle:before {
+.lugia-icon-reminder_close:before {
     content: "\f21f";
 }
-.lugia-icon-reminder_close_circle_o:before {
+.lugia-icon-reminder_close_circle:before {
     content: "\f220";
 }
-.lugia-icon-reminder_close_square:before {
+.lugia-icon-reminder_close_circle_o:before {
     content: "\f221";
 }
-.lugia-icon-reminder_close_square_o:before {
+.lugia-icon-reminder_close_square:before {
     content: "\f222";
 }
-.lugia-icon-reminder_exclamation:before {
+.lugia-icon-reminder_close_square_o:before {
     content: "\f223";
 }
-.lugia-icon-reminder_exclamation_circle:before {
+.lugia-icon-reminder_edit_line:before {
     content: "\f224";
 }
-.lugia-icon-reminder_exclamation_circle_o:before {
+.lugia-icon-reminder_exclamation:before {
     content: "\f225";
 }
-.lugia-icon-reminder_info:before {
+.lugia-icon-reminder_exclamation_circle:before {
     content: "\f226";
 }
-.lugia-icon-reminder_info_circle:before {
+.lugia-icon-reminder_exclamation_circle_o:before {
     content: "\f227";
 }
-.lugia-icon-reminder_info_circle_o:before {
+.lugia-icon-reminder_hide_solid:before {
     content: "\f228";
 }
-.lugia-icon-reminder_minus:before {
+.lugia-icon-reminder_info:before {
     content: "\f229";
 }
-.lugia-icon-reminder_minus_circle:before {
+.lugia-icon-reminder_info_circle:before {
     content: "\f22a";
 }
-.lugia-icon-reminder_minus_circle_o:before {
+.lugia-icon-reminder_info_circle_o:before {
     content: "\f22b";
 }
-.lugia-icon-reminder_minus_square:before {
+.lugia-icon-reminder_locking_solid:before {
     content: "\f22c";
 }
-.lugia-icon-reminder_minus_square_o:before {
+.lugia-icon-reminder_minus:before {
     content: "\f22d";
 }
-.lugia-icon-reminder_pause:before {
+.lugia-icon-reminder_minus_circle:before {
     content: "\f22e";
 }
-.lugia-icon-reminder_pause_circle:before {
+.lugia-icon-reminder_minus_circle_o:before {
     content: "\f22f";
 }
-.lugia-icon-reminder_pause_circle_o:before {
+.lugia-icon-reminder_minus_square:before {
     content: "\f230";
 }
-.lugia-icon-reminder_pause_cycle:before {
+.lugia-icon-reminder_minus_square_o:before {
     content: "\f231";
 }
-.lugia-icon-reminder_plus:before {
+.lugia-icon-reminder_pause:before {
     content: "\f232";
 }
-.lugia-icon-reminder_plus_circle:before {
+.lugia-icon-reminder_pause_circle:before {
     content: "\f233";
 }
-.lugia-icon-reminder_plus_circle_o:before {
+.lugia-icon-reminder_pause_circle_o:before {
     content: "\f234";
 }
-.lugia-icon-reminder_plus_square:before {
+.lugia-icon-reminder_pause_cycle:before {
     content: "\f235";
 }
-.lugia-icon-reminder_plus_square_o:before {
+.lugia-icon-reminder_plus:before {
     content: "\f236";
 }
-.lugia-icon-reminder_question:before {
+.lugia-icon-reminder_plus_circle:before {
     content: "\f237";
 }
-.lugia-icon-reminder_question_circle:before {
+.lugia-icon-reminder_plus_circle_o:before {
     content: "\f238";
 }
-.lugia-icon-reminder_question_circle_o:before {
+.lugia-icon-reminder_plus_square:before {
     content: "\f239";
 }
-.lugia-icon-reminder_replay:before {
+.lugia-icon-reminder_plus_square_o:before {
     content: "\f23a";
 }
-.lugia-icon-reminder_square_o:before {
+.lugia-icon-reminder_question:before {
     content: "\f23b";
 }
-.lugia-icon-reminder_warning:before {
+.lugia-icon-reminder_question_circle:before {
     content: "\f23c";
 }
-.lugia-icon-symbol__audit_error_color:before {
+.lugia-icon-reminder_question_circle_o:before {
     content: "\f23d";
 }
-.lugia-icon-symbol_audit:before {
+.lugia-icon-reminder_replace_line:before {
     content: "\f23e";
 }
-.lugia-icon-symbol_reverse_audit:before {
+.lugia-icon-reminder_replay:before {
     content: "\f23f";
+}
+.lugia-icon-reminder_setUp_solid:before {
+    content: "\f240";
+}
+.lugia-icon-reminder_show_solid:before {
+    content: "\f241";
+}
+.lugia-icon-reminder_square_o:before {
+    content: "\f242";
+}
+.lugia-icon-reminder_tabs_line:before {
+    content: "\f243";
+}
+.lugia-icon-reminder_warning:before {
+    content: "\f244";
 }
 
 .lugia-icon-utils-loading:before {
