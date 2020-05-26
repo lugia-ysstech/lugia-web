@@ -1692,7 +1692,9 @@
     "iconClass": "lugia-icon-reminder_close_square_o",
     "title": "错误差错号"
   },
-  { "category": "reminder", "name": "", "iconClass": "lugia-icon-reminder_edit_line" },
+  { "category": "reminder", "name": "reminder图标", "iconClass": "lugia-icon-reminder_edit_line",
+    "name": "编辑笔书写注释文档"
+  },
   {
     "category": "reminder",
     "name": "reminder图标",
@@ -1711,7 +1713,9 @@
     "iconClass": "lugia-icon-reminder_exclamation_circle_o",
     "title": "注意提醒警告"
   },
-  { "category": "reminder", "name": "", "iconClass": "lugia-icon-reminder_hide_solid" },
+  { "category": "reminder", "name": "reminder图标", "iconClass": "lugia-icon-reminder_hide_solid" ,
+    "tittle": "眼睛隐藏查看显示"
+  },
   {
     "category": "reminder",
     "name": "reminder图标",
@@ -1730,7 +1734,7 @@
     "iconClass": "lugia-icon-reminder_info_circle_o",
     "title": "注意提醒警告i"
   },
-  { "category": "reminder", "name": "", "iconClass": "lugia-icon-reminder_locking_solid" },
+  { "category": "reminder", "name": "reminder图标", "iconClass": "lugia-icon-reminder_locking_solid" ,"name": "锁定禁止禁用加锁"},
   {
     "category": "reminder",
     "name": "reminder图标",
