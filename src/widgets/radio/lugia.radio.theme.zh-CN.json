@@ -90,7 +90,7 @@
     "title": "单选框组",
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
-      { "name": "valueField", "text": "选中" },
+      { "name": "value", "text": "选中" },
       { "name": "data", "text": "数据编辑" }
     ],
     "data": [
@@ -214,7 +214,7 @@
     "title": "单选框组",
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
-      { "name": "valueField", "text": "选中" },
+      { "name": "value", "text": "选中" },
       { "name": "data", "text": "数据编辑" }
     ],
     "data": [
