@@ -18,6 +18,7 @@ import Input from './input';
 import Label from './label';
 import Loading from './loading';
 import Menu from './menu';
+import Message from './message/message';
 import Navmenu from './navmenu';
 import NewTable from './new-table';
 import NumberInput from './number-input';
@@ -8113,6 +8114,51 @@ export default [
     target: Menu,
     screenshot:
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAABQpJREFUeAHtnU+IU1cUxr/JOIwuXEwoDIy4GRClaAmlMNCNUrLQhaviQhBBKYrQwlil9Q+MggupooXi2kU3XXQp7kJX3QiiQa0KltKWmnZEMlZFRhNC75mXWF/Im3czOS/vvHnfW0zmvntz7j2/8+W8m8w7E4AHCZAACZAACZAACZAACZAACZAACZAACQyHwIjmNNVqdUOr1frW2Sy7xwlN27QVJlAoFBbcmYp7PFoqlR6He1feUhNEWwx3p6am1heLxTVjY2MrXxWfGUug0WigXq83a7XaCyeKbVqiKMTO7DlAMoOIYXJykmLwZDbIMHnBCWth3s7Kg5h7+1w1QTiLZckMby3zl6EQaDMva02mJgjZM/AyoRUWfzvCXHO/piYIfxc40jIBCsJydFJYGwWRAnTLU1IQlqOTwtooiBSgW56SgrAcnRTWRkGkAN3ylGY+SLp1D7jyPfC0roPrvSLw+X7gw6069vJixUyG0BSDBE+EJTZ59EfATIbQygzvuu9j84cfr737lMjf9+7ZvdSX9PjIBQypw0yGGJK/nCaGAAURAyhv3RRE3iIe4++qEMTmaeDsLLB2PMZbdscSyLwgPtgCnDsWvL08fijWXw6IIWDmXUbMOnt2z5SArw4Dcrfe6zfA9Z96DuPJPgiYzRCjo8DsQWB6Y29vts8AJ44EYlh87bLEd8DtX3qP5Vl/AmYFMXsA+ORj4PzXwEfbwg7t2gF8+Rkgonm1CJxx93nfeRgew9bKCJgVxI0q0GwC69YCp78ARARyfLoTOLIPGHH3i798BcxdAh78GvTx5+AEzO4hfr4ZvPpPusvCuHv3ICKQy8T7mwKnn790YrgM/Pbn4BBo4X8CZjOELFH+4DXnLgeSCeToiOHZc5c1LlIMARXdn6YFIa7K5eDUBWDh38Dx+jPgpGv/oVarpAs069bMC0IA//6Xe0fxDXD/USCGx/9kHbvd9ZvdQ3Qj+/tJIIru82zrEshEhtB1mdaWI5CZDLGcE4P0de5z8LWR9HjfdSQ1jhkiKbIZtWtGEHIPpPaRhE3tNVqzZ0YQckOsZgA7N9laA259PWb2EHJ39FX3+QKPdAmYyRDpYuDsHQIURIcEH5cIUBAUQogABRHCwQYFQQ2ECFAQIRxsUBDUQIiAmc8hWP0diktqDTMZgtXfqWkgNLEZQfhUaodW7tFIwqbHtJkeYkYQmaa4ihZvZg+RFtOk/99Dv/bT4tCZlxmiQ4KPSwRWhSBY/a2n5swLgtXfemIQS5neQ7D6W1cMYs1shmD1t36wfSyaFQSrv33Cpz/GrCBY/a0fbB+LZvcQrP72CZ/+GLMZQlxl9bd+wOMsmhaELJ7V33Eh1O03Lwhxl9XfukFfzprZPUT3oln93U0kmXYmMkQyrtNqLwIURC8qOT5HQeQ4+L1cN7OHkOJc7TucfIqHk/5/D/3a7xWkYZ4zkyFY/T3MsEfPZSZDsPo7OkjD7DGTIYbpNOeKJkBBRLPJZQ8FkcuwRztNQUSzyWUPBZHLsEc7TUFEs8llDwWRy7BHO60miEKhsNBoNKJnYk8iBIS5sNcyriYIt6BKvV5vai2MdvwItJlX/EbHj1IThFPp0Vqt9mJ+fr7JTBEPftARwlhYC3NhP6i9zvPdN1fpHdVqdUOr1XLfgYOye5zQs0xL3QTal4mKiKFUKvHrZLoBsU0CJEACJEACJEACJEACJEACJEACJGCewH8y1TqV9fMSwQAAAABJRU5ErkJggg==',
+  },
+  {
+    meta: {
+      widgetName: 'Message',
+      title: '全局提示',
+      desc: '全局提示，展示操作反馈信息。',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        content: { type: 'React.node', desc: '提示消息的内容' },
+        time: { type: 'number', desc: '自动延时关闭，单位为 秒', defaultValue: 2 },
+        callBack: { type: 'Function', desc: '关闭时的回调' },
+      },
+      category: ['反馈'],
+      theme: {
+        Container: {
+          name: 'Message整体样式配置',
+          desc: '为Message整体配置样式',
+          normal: [
+            ['width'],
+            ['height'],
+            ['boxShadow'],
+            ['background'],
+            ['borderRadius'],
+            ['padding'],
+            ['opacity'],
+            ['border'],
+          ],
+        },
+        MessageText: {
+          name: 'Message文字样式配置',
+          desc: '为Message文字配置样式',
+          normal: [['color'], ['font']],
+        },
+        MessageIcon: {
+          name: 'Message图标样式配置',
+          desc: '为Message图标配置样式',
+          normal: [['color'], ['font']],
+        },
+      },
+      childrenWidget: [],
+    },
+    target: Message,
+    screenshot:
+      'data:image/png;base64,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',
+    hideInTollPanel: true,
   },
   {
     meta: {
