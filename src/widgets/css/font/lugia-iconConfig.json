@@ -809,7 +809,12 @@
     "iconClass": "lugia-icon-financial_information_c",
     "title": "消息提醒信息说话文本评论"
   },
-  { "category": "financial", "name": "", "iconClass": "lugia-icon-financial_install" },
+  {
+    "category": "financial",
+    "name": "金融图标",
+    "iconClass": "lugia-icon-financial_install",
+    "title": "安装下载"
+  },
   {
     "category": "financial",
     "name": "金融图标",
@@ -954,7 +959,12 @@
     "iconClass": "lugia-icon-financial_ordered_list",
     "title": "段落文本分段数字"
   },
-  { "category": "financial", "name": "", "iconClass": "lugia-icon-financial_overlay_installation" },
+  {
+    "category": "financial",
+    "name": "金融图标",
+    "iconClass": "lugia-icon-financial_overlay_installation",
+    "title": "覆盖安装替换"
+  },
   {
     "category": "financial",
     "name": "金融图标",
@@ -1069,7 +1079,12 @@
     "iconClass": "lugia-icon-financial_remote_control",
     "title": "转存移动转换交换电脑"
   },
-  { "category": "financial", "name": "", "iconClass": "lugia-icon-financial_replace" },
+  {
+    "category": "financial",
+    "name": "金融图标",
+    "iconClass": "lugia-icon-financial_replace",
+    "title": "替换转换大小写字母"
+  },
   {
     "category": "financial",
     "name": "金融图标",
