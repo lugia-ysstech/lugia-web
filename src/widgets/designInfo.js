@@ -43,6 +43,7 @@ import Upload from './upload';
 import Window from './window';
 import { load } from './css/theme-common-dict.js';
 export { load };
+
 export default [
   {
     meta: {
@@ -7229,6 +7230,16 @@ export default [
       desc: '为用户提供菜单列表',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        isShowAuxiliaryText: {
+          type: 'boolean',
+          desc: '是否展示辅助文本',
+          propsDefaultValue: false,
+        },
+        auxiliaryTextField: {
+          type: 'string',
+          desc: '辅助文本展示的对应字段名',
+          propsDefaultValue: 'des',
+        },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
@@ -7785,6 +7796,16 @@ export default [
       desc: '多项选择的菜单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        isShowAuxiliaryText: {
+          type: 'boolean',
+          desc: '是否展示辅助文本',
+          propsDefaultValue: false,
+        },
+        auxiliaryTextField: {
+          type: 'string',
+          desc: '辅助文本展示的对应字段名',
+          propsDefaultValue: 'des',
+        },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
