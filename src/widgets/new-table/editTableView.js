@@ -69,8 +69,10 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   componentDidMount() {
     const tableEl = findDOMNode(this.table.getThemeTarget());
     const isInTarget = tableEl === document.activeElement;
-    tableEl.addEventListener('keydown', this.editTableListener.keyDownHandler({ isInTarget }));
-    tableEl.addEventListener('keyup', this.editTableListener.keyUpHandler);
+    if (tableEl) {
+      tableEl.addEventListener('keydown', this.editTableListener.keyDownHandler({ isInTarget }));
+      tableEl.addEventListener('keyup', this.editTableListener.keyUpHandler);
+    }
   }
 
   render() {
@@ -320,8 +322,10 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
 
   componentWillUnmount() {
     const tableEl = findDOMNode(this.table.getThemeTarget());
-    tableEl.removeEventListener('keydown', this.editTableListener.keyDownHandler);
-    tableEl.removeEventListener('keyup', this.editTableListener.keyUpHandler);
+    if (tableEl) {
+      tableEl.removeEventListener('keydown', this.editTableListener.keyDownHandler);
+      tableEl.removeEventListener('keyup', this.editTableListener.keyUpHandler);
+    }
     this.moveCellsListener.removeListener();
     this.quitEditListener.removeListener();
     this.enterEditingListener.removeListener();
