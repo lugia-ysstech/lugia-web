@@ -9,7 +9,7 @@ import { Container, TdContainer, EditDiv, InnerTriggerDiv } from './editTableCss
 import EditTableEventListener from './connection';
 import Widget from '../consts';
 import { findDOMNode } from 'react-dom';
-import { getEditDivTheme, isValued, isEqualArray } from './utils';
+import { getEditDivTheme, isValued, isEqualArray, getRandom } from './utils';
 
 class EditTable extends React.Component<EditTableProps, EditTableState> {
   editTableListener: EditTableEventListenerHandle;
@@ -164,10 +164,11 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     const { editTableListener: { getSelectDataMark } = {} } = this;
     const keyMap = getSelectDataMark(index - 1);
     const keyVal = isHead ? dataIndex : keyMap.keyValue;
-
+    const randomVal = getRandom(1000);
+    const keyValue = `${dataIndex}-${keyVal}-${randomVal}`;
     if (enterEdit) {
       return (
-        <TdContainer key={`Head-${keyVal}`}>
+        <TdContainer key={`editing-${keyValue}`}>
           <EditElement
             value={defaultText}
             autoFocus={true}
@@ -187,8 +188,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     return (
       <EditDiv
         themeProps={editDivTheme}
-        className={'EditDiv'}
-        key={`EditDiv-${dataIndex}-${keyVal}`}
+        key={`editDiv-${keyValue}`}
         onClick={e =>
           onCellClick({
             e,
