@@ -25,22 +25,25 @@ const componentInvalid = [
   'theme-provider',
   'trigger',
   'empty',
-  'notification',
   'design-responsive',
   'affix',
-  'anchor',
   'drawer',
   'grid',
   'layout',
-  'modal',
   'back-top',
-  'popover',
-  'popconfirm',
-  'tooltip',
-  'collapse',
 ];
 const hideInTollPanelComponents = {
   message: 'message',
+  modal: 'modal',
+  anchor: 'anchor',
+  collapse: 'collapse',
+  notification: 'notification',
+  popover: 'popover',
+  loading: 'loading',
+  skeleton: 'skeleton',
+  divider: 'divider',
+  tooltip: 'index',
+  popconfirm: 'popconfirm',
 };
 const themeInvalid = [...commonInvalid];
 
