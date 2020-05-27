@@ -43,7 +43,6 @@ import Upload from './upload';
 import Window from './window';
 import { load } from './css/theme-common-dict.js';
 export { load };
-
 export default [
   {
     meta: {
