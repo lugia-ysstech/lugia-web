@@ -178,7 +178,7 @@ declare module '@lugia/lugia-web' {
       keyName: ?string,
       value: string | number
     ): Array<Object>,
-    changeColumns(props: Object): Array<Object>,
+    changeColumns(props: Object): ?Array<Object>,
     onCellClick(props: Object): void,
     isEqualArray(oldValue: ?Array<Object>, newValue: ?Array<Object>): boolean,
     getHeaderCell(props: Object): Object,
