@@ -35,7 +35,7 @@
 
     "help": {
       "type": "string",
-      "desc": "input校验提示信息"
+      "desc": "树形选择控件校验提示信息"
     },
 
     "data": {

@@ -63,7 +63,7 @@
               },
               "textPart": {
                 "text": "下拉图标",
-                "desc": "整体背景外观配置的区"
+                "desc": "下拉图标文本配置区"
               },
               "spacingPart": {
                 "hidden": true
@@ -102,9 +102,6 @@
             "description": {
               "appearancePart": {
                 "desc": "菜单外盒外观配置的区"
-              },
-              "textPart": {
-                "hidden": true
               },
               "spacingPart": {
                 "desc": "菜单外盒内外边距配置"
@@ -182,24 +179,6 @@
                     "desc": "子选项背景内外边距配置区"
                   }
                 }
-              },
-              {
-                "name": "父选项文本",
-                "path": ["Tree", "TreeItem", "SelectedParentText"],
-                "description": {
-                  "appearancePart": {
-                    "text": "父选项文本",
-                    "desc": "父选项文本外观配置的区"
-                  },
-                  "textPart": {
-                    "text": "父选项文本",
-                    "desc": "父选项文本配置"
-                  },
-                  "spacingPart": {
-                    "text": "padding/margin",
-                    "desc": "父选项文本内外边距配置区"
-                  }
-                }
               }
             ]
           },
@@ -219,7 +198,7 @@
                 "description": {
                   "textPart": {
                     "text": "前缀图标",
-                    "desc": "前缀图标"
+                    "desc": "前缀图标文本配置区"
                   },
                   "spacingPart": {
                     "hidden": true
@@ -238,10 +217,7 @@
                 "description": {
                   "textPart": {
                     "text": "后缀图标",
-                    "desc": "后缀图标"
-                  },
-                  "spacingPart": {
-                    "hidden": true
+                    "desc": "后缀图标文本配置区"
                   }
                 }
               }
@@ -263,7 +239,7 @@
                 "description": {
                   "textPart": {
                     "text": "图标",
-                    "desc": "图标"
+                    "desc": "前缀图标文本配置区"
                   }
                 }
               }
@@ -279,14 +255,11 @@
                 "description": {
                   "appearancePart": {
                     "text": "默认项底色",
-                    "desc": "父选项文本外观配置的区"
-                  },
-                  "textPart": {
-                    "hidden": true
+                    "desc": "默认项底色外观配置的区"
                   },
                   "spacingPart": {
                     "text": "padding/margin",
-                    "desc": "父选项文本内外边距配置区"
+                    "desc": "默认项底色内外边距配置区"
                   }
                 }
               }
@@ -302,14 +275,11 @@
                 "description": {
                   "appearancePart": {
                     "text": "选中项底色",
-                    "desc": "父选项文本外观配置的区"
-                  },
-                  "textPart": {
-                    "hidden": true
+                    "desc": "选中项底色外观配置的区"
                   },
                   "spacingPart": {
                     "text": "padding/margin",
-                    "desc": "父选项文本内外边距配置区"
+                    "desc": "选中项底色内外边距配置区"
                   }
                 }
               }
@@ -329,7 +299,6 @@
                 "desc": "校验失败外观配置"
               },
               "textPart": {
-                "text": "",
                 "desc": "校验失败内外边距配置"
               }
             }
@@ -587,24 +556,6 @@
                     "desc": "子选项背景内外边距配置区"
                   }
                 }
-              },
-              {
-                "name": "父选项文本",
-                "path": ["Tree", "TreeItem", "SelectedParentText"],
-                "description": {
-                  "appearancePart": {
-                    "text": "父选项文本",
-                    "desc": "父选项文本外观配置的区"
-                  },
-                  "textPart": {
-                    "text": "父选项文本",
-                    "desc": "父选项文本配置"
-                  },
-                  "spacingPart": {
-                    "text": "padding/margin",
-                    "desc": "父选项文本内外边距配置区"
-                  }
-                }
               }
             ]
           },
@@ -624,7 +575,7 @@
                 "description": {
                   "textPart": {
                     "text": "前缀图标",
-                    "desc": "前缀图标"
+                    "desc": "前缀图标文本配置区"
                   },
                   "spacingPart": {
                     "hidden": true
@@ -643,7 +594,7 @@
                 "description": {
                   "textPart": {
                     "text": "后缀图标",
-                    "desc": "后缀图标"
+                    "desc": "后缀图标文本配置区"
                   },
                   "spacingPart": {
                     "hidden": true
@@ -668,7 +619,7 @@
                 "description": {
                   "textPart": {
                     "text": "图标",
-                    "desc": "图标"
+                    "desc": "前缀图标文本配置区"
                   }
                 }
               }
@@ -684,14 +635,14 @@
                 "description": {
                   "appearancePart": {
                     "text": "默认项底色",
-                    "desc": "父选项文本外观配置的区"
+                    "desc": "默认项底色外观配置的区"
                   },
                   "textPart": {
                     "hidden": true
                   },
                   "spacingPart": {
                     "text": "padding/margin",
-                    "desc": "父选项文本内外边距配置区"
+                    "desc": "默认项底色内外边距配置区"
                   }
                 }
               }
@@ -707,14 +658,14 @@
                 "description": {
                   "appearancePart": {
                     "text": "选中项底色",
-                    "desc": "父选项文本外观配置的区"
+                    "desc": "选中项底色外观配置的区"
                   },
                   "textPart": {
                     "hidden": true
                   },
                   "spacingPart": {
                     "text": "padding/margin",
-                    "desc": "父选项文本内外边距配置区"
+                    "desc": "选中项底色内外边距配置区"
                   }
                 }
               }
