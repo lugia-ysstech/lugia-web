@@ -1,0 +1,257 @@
+[
+  {
+    "widgetName": "AutoComplete",
+    "title": "多项选择器",
+    "viewProps": [
+      {
+        "name": "disabled",
+        "text": "禁用"
+      },
+      {
+        "name": "showOldValue",
+        "text": "记录上一次的值"
+      },
+      {
+        "name": "data",
+        "text": "数据绑定"
+      }
+    ],
+    "data": [
+      {
+        "title": "输入框",
+        "iconClass": "input",
+        "data": [
+          {
+            "name": "输入框外部容器",
+            "path": ["AutoInput", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "选择框",
+                "desc": "输入框外部容器外观配置的区块"
+              },
+              "spacingPart": {
+                "desc": "输入框外内外边距配置区块"
+              }
+            }
+          },
+          {
+            "name": "输入框清除图标",
+            "path": ["AutoInput", "InputClearButton"],
+            "props": [{ "name": "suffix", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": {
+                "text": "清除图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "提示文本",
+            "path": ["AutoInput", "InputClearButton"],
+            "props": [{ "name": "placeholder", "typeInTheme": "text" }],
+            "description": {
+              "textPart": {
+                "text": "提示文本",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "选中文本",
+            "path": ["Menu", "SelectedMenuItemWrap"],
+            "description": {
+              "textPart": {
+                "text": "选中文本",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "前/后缀符号",
+        "iconClass": "iconsearch",
+        "data": [
+          {
+            "name": "前置图标配置",
+            "path": ["AutoInput", "InputPrefix"],
+            "props": [{ "name": "suffix", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": {
+                "text": "前置图标",
+                "desc": "前置图标配置区块"
+              },
+              "spacingPart": {
+                "desc": "前置图标内外边距配置区块"
+              }
+            }
+          },
+          {
+            "name": "后置图标配置",
+            "path": ["AutoInput", "InputSuffix"],
+            "props": [{ "name": "suffix", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": {
+                "text": "后置图标",
+                "desc": "前置图标配置区块"
+              },
+              "spacingPart": {
+                "desc": "前置图标内外边距配置区块"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "上次选中值",
+        "iconClass": "autoCompleteNumber",
+        "data": [
+          {
+            "name": "选中文本",
+            "path": ["OldItem"],
+            "props": [{ "name": "InputPrefix", "typeInTheme": "icon" }],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "选中文本中外观配置的区块"
+              },
+              "textPart": {
+                "text": "文本",
+                "desc": "选中文本配置区块"
+              },
+              "spacingPart": {
+                "desc": "选中文本内外边距配置区块"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "菜单",
+        "iconClass": "menu",
+        "children": [
+          {
+            "title": "整体面板",
+            "iconClass": "menubackground",
+            "data": [
+              {
+                "name": "选择框整体配置",
+                "path": ["Menu", "Container"],
+                "description": {
+                  "appearancePart": {
+                    "text": "外框",
+                    "desc": "面板中外观配置的区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "面板内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "默认项",
+            "iconClass": "Default",
+            "data": [
+              {
+                "name": "项的外盒",
+                "path": ["Menu", "MenuItem", "MenuItemWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "选项背景",
+                    "desc": "项的外盒外观配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "项的外盒内外边距配置区"
+                  }
+                }
+              },
+              {
+                "name": "文本框",
+                "path": ["MenuItem", "TextContainer"],
+                "description": {
+                  "textPart": {
+                    "text": "padding/margin",
+                    "desc": "文本框置内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "选中项",
+            "iconClass": "Checked",
+            "data": [
+              {
+                "name": "选中项的外盒",
+                "path": ["Menu", "MenuItem", "SelectedMenuItemWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "选项背景",
+                    "desc": "文本配置区块的显示文本"
+                  },
+                  "textPart": {
+                    "text": "标题文本",
+                    "desc": "标题文本配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "选中项内外边距配置区"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "校验失败",
+        "iconClass": "Verificationfailed",
+        "data": [
+          {
+            "name": "校验失败的输入框",
+            "path": ["AutoInput", "ValidateErrorInput"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "选中文本中外观配置的区块"
+              },
+              "textPart": {
+                "text": "文本",
+                "desc": "选中文本配置区块"
+              },
+              "spacingPart": {
+                "desc": "选中文本内外边距配置区块"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "失败提示",
+        "iconClass": "Failureprompt",
+        "data": [
+          {
+            "name": "校验失败提示信息",
+            "path": ["AutoInput", "ValidateErrorText"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "选中文本中外观配置的区块"
+              },
+              "textPart": {
+                "text": "文本",
+                "desc": "选中文本配置区块"
+              },
+              "spacingPart": {
+                "desc": "选中文本内外边距配置区块"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
