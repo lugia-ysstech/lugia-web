@@ -132,12 +132,12 @@
       "propsDefaultValue": "click"
     },
     "size": {
-      "type": "sizeType",
+      "type": "SizeType",
       "desc": "可配置三种尺寸大小的menu",
       "propsDefaultValue": "default"
     },
     "subsize": {
-      "type": "SubsizeType",
+      "type": "SizeType",
       "desc": "设置子菜单列表项的高度",
       "propsDefaultValue": "default"
     }
@@ -205,8 +205,7 @@
   "type": {
     "sizeType": ["small", "default", "large"],
     "CheckedCSSType": ["background", "checkbox", "none"],
-    "ActionType": ["hover", "click"],
-    "SubsizeType": ["small", "default", "large"]
+    "ActionType": ["hover", "click"]
   },
   "category": ["数据录入"],
 
