@@ -61,6 +61,11 @@
       "propsDefaultValue": "top"
     },
 
+    "help": {
+      "type": "string",
+      "desc": "input校验提示信息"
+    },
+
     "data": {
       "type": "Object[]",
       "desc": "生成选择项的数据",
@@ -402,9 +407,27 @@
               "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
             },
 
+            "SelectedPrefixIcon": {
+              "name": "选中项前置图标配置",
+              "desc": "选中项前置图标的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            },
+
             "SuffixIcon": {
               "name": "后缀图标配置",
               "desc": "后缀图标或图片的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            },
+
+            "SelectedSuffixIcon": {
+              "name": "选中项后缀图标配置",
+              "desc": "选中项后缀图标的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [["color"], ["font"], ["fontSize"]],
