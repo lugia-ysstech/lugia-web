@@ -1,0 +1,49 @@
+[
+  {
+    "widgetName": "BasicElements",
+    "title": "基本元素",
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "基本元素",
+        "iconClass": "icon",
+        "data": [
+          {
+            "name": "配置方形",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "BasicElements",
+    "aliasName": "Circle",
+    "title": "基本元素",
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "基本元素",
+        "iconClass": "icon",
+        "data": [
+          {
+            "name": "配置圆形",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
