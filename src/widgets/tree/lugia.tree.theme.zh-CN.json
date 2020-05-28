@@ -16,16 +16,16 @@
         "iconClass": "menubackground",
         "data": [
           {
-            "name": "主题背景",
+            "name": "主体背景",
             "path": ["Container"],
             "description": {
               "appearancePart": {
-                "text": "主题背景",
-                "desc": "主题背景中外观配置的区"
+                "text": "主体背景",
+                "desc": "主体背景中外观配置的区"
               },
               "spacingPart": {
                 "text": "padding/margin",
-                "desc": "主题背景内外边距配置区"
+                "desc": "主体背景内外边距配置区"
               }
             }
           }
@@ -42,10 +42,6 @@
               "appearancePart": {
                 "text": "展开项背景",
                 "desc": "展开项背景外观配置的区"
-              },
-              "spacingPart": {
-                "text": "padding/margin",
-                "desc": "展开项背景内外边距配置区"
               }
             }
           }
@@ -194,13 +190,6 @@
               "appearancePart": {
                 "text": "默认项底色",
                 "desc": "父选项文本外观配置的区"
-              },
-              "textPart": {
-                "hidden": true
-              },
-              "spacingPart": {
-                "text": "padding/margin",
-                "desc": "父选项文本内外边距配置区"
               }
             }
           }
@@ -217,9 +206,6 @@
               "appearancePart": {
                 "text": "选中项底色",
                 "desc": "父选项文本外观配置的区"
-              },
-              "textPart": {
-                "hidden": true
               },
               "spacingPart": {
                 "text": "padding/margin",
@@ -245,20 +231,20 @@
     ],
     "data": [
       {
-        "title": "主题背景",
+        "title": "主体背景",
         "iconClass": "menubackground",
         "data": [
           {
-            "name": "主题背景",
+            "name": "主体背景",
             "path": ["Container"],
             "description": {
               "appearancePart": {
-                "text": "主题背景",
-                "desc": "主题背景中外观配置的区"
+                "text": "主体背景",
+                "desc": "主体背景中外观配置的区"
               },
               "spacingPart": {
                 "text": "padding/margin",
-                "desc": "主题背景内外边距配置区"
+                "desc": "主体背景内外边距配置区"
               }
             }
           }
@@ -427,13 +413,6 @@
               "appearancePart": {
                 "text": "默认项底色",
                 "desc": "父选项文本外观配置的区"
-              },
-              "textPart": {
-                "hidden": true
-              },
-              "spacingPart": {
-                "text": "padding/margin",
-                "desc": "父选项文本内外边距配置区"
               }
             }
           }
@@ -450,9 +429,6 @@
               "appearancePart": {
                 "text": "选中项底色",
                 "desc": "父选项文本外观配置的区"
-              },
-              "textPart": {
-                "hidden": true
               },
               "spacingPart": {
                 "text": "padding/margin",
@@ -493,9 +469,6 @@
                   "appearancePart": {
                     "text": "外框",
                     "desc": "面板中外观配置的区块显示文本"
-                  },
-                  "textPart": {
-                    "hidden": true
                   }
                 }
               },
