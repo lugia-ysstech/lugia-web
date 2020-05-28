@@ -68,9 +68,8 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
 
   componentDidMount() {
     const tableEl = findDOMNode(this.table.getThemeTarget());
-    const isInTarget = tableEl === document.activeElement;
     if (tableEl) {
-      tableEl.addEventListener('keydown', this.editTableListener.keyDownHandler({ isInTarget }));
+      tableEl.addEventListener('keydown', this.editTableListener.keyDownHandler);
       tableEl.addEventListener('keyup', this.editTableListener.keyUpHandler);
     }
   }

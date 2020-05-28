@@ -208,9 +208,8 @@ export default class EditTableEventListener extends Listener<any> {
     }
   };
 
-  keyDownHandler = (props: Object) => (e: Object): void => {
-    const { isInTarget } = props;
-    this.doStopPropagation(e, isInTarget);
+  keyDownHandler = (e: Object): void => {
+    this.doStopPropagation(e);
     const { key } = e;
     const isMultiple = this.isMultiple();
     if (key.length === 1 && !isMultiple) {
