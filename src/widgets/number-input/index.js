@@ -7,7 +7,7 @@
 import '../common/shirm';
 import React, { Component } from 'react';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
-import type { ClickType, InputSize } from '../css/number-input';
+import type { ClickType, InputSize, StepIconsType } from '../css/number-input';
 import Input from '../input/index';
 import Widget from '../consts';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
@@ -204,8 +204,7 @@ export type NumberInputProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   createEventChannel: Function,
-  addIcon?: string,
-  subtractIcon?: string,
+  stepIcons?: StepIconsType,
   dispatchEvent: Function,
 };
 
@@ -292,13 +291,13 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const { value } = this.state;
     const {
       disabled,
-      addIcon,
-      subtractIcon,
       getPartOfThemeHocProps,
       createEventChannel,
       max,
       min,
+      stepIcons = {},
     } = this.props;
+    const { addIcon, subtractIcon } = stepIcons;
 
     const { theme: IconThemeProps, viewClass: IconViewClass } = getPartOfThemeHocProps(
       'InputArrowIcon'

@@ -23,6 +23,11 @@ export const ButtonWrapperDefaultHeight = em(30);
 export type InputSize = 'small' | 'default' | 'large';
 export type ClickType = 'plus' | 'minus' | 'no';
 
+export type StepIconsType = {
+  addIcon: string,
+  subtractIcon: string,
+};
+
 type CommonNumberInputProps = {
   theme: ThemeType,
   size?: InputSize,
