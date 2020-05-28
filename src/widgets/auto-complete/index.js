@@ -169,6 +169,7 @@ export default ShortKeyBoard(
             InputClearButton: getPartOfThemeConfig('SwitchIcon'),
             ValidateErrorInput: getPartOfThemeConfig('ValidateErrorInput'),
             ValidateErrorText: getPartOfThemeConfig('ValidateErrorText'),
+            Placeholder: getPartOfThemeConfig('Placeholder'),
           },
         };
         return inputtagTheme;
