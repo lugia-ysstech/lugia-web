@@ -165,7 +165,7 @@ const TextareaContainer = CSSComponent({
   hover: {
     selectNames: [],
   },
-  click: {
+  active: {
     selectNames: [],
   },
   disabled: {
