@@ -248,6 +248,17 @@
         ["font"],
         ["color"]
       ],
+      "focus": [
+        ["border"],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
       "active": [
         ["boxShadow"],
         ["border"],
@@ -278,26 +289,26 @@
     "InputSuffix": {
       "name": "后缀图标",
       "desc": "输入框后缀自定义图标",
-      "normal": [["color"], ["fontSize"], ["font"]],
+      "normal": [["color"], ["fontSize"], ["font"], ["padding"], ["margin"]],
       "hover": [],
       "clicked": [],
-      "disabled": []
+      "disabled": [["color"], ["fontSize"], ["font"]]
     },
     "InputPrefix": {
       "name": "前缀图标",
       "desc": "输入框前缀自定义图标",
-      "normal": [["color"], ["fontSize"], ["font"]],
+      "normal": [["color"], ["fontSize"], ["font"], ["padding"], ["margin"]],
       "hover": [],
       "clicked": [],
-      "disabled": []
+      "disabled": [["color"], ["fontSize"], ["font"]]
     },
     "ClearButton": {
       "name": "输入框清除图标",
       "desc": "输入框后缀清除图标",
-      "normal": [["color"], ["fontSize"]],
-      "hover": [],
+      "normal": [["color"], ["fontSize"], ["font"]],
+      "hover": [["color"], ["fontSize"], ["font"]],
       "clicked": [],
-      "disabled": []
+      "disabled": [["color"], ["fontSize"], ["font"]]
     },
     "ValidateErrorInput": {
       "name": "校验失败的输入框",
@@ -312,7 +323,9 @@
         ["opacity"]
       ],
       "hover": [["background"], ["border"], ["boxShadow"]],
-      "active": [["background"], ["border"], ["boxShadow"]]
+      "active": [["background"], ["border"], ["boxShadow"]],
+      "focus": [["background"], ["border"], ["boxShadow"]],
+      "disabled": [["background"], ["border"], ["boxShadow"]]
     },
     "ValidateErrorText": {
       "name": "校验失败提示信息",
