@@ -84,5 +84,286 @@
         ]
       }
     ]
+  },
+  {
+    "widgetName": "Slider",
+    "aliasName": "SingleVerticalSlider",
+    "title": "单个滑块样式",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "tips", "text": "提示信息" },
+      { "name": "maxValue", "text": "最大值限制" },
+      { "name": "minValue", "text": "最小值限制" }
+    ],
+    "data": [
+      {
+        "title": "轨道",
+        "iconClass": "slider",
+        "data": [
+          {
+            "name": "轨道",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "滑块轨道",
+        "iconClass": "sliderChecked",
+        "data": [
+          {
+            "name": "滑块滑过的区间轨道",
+            "path": ["SliderPassedWay"],
+            "description": {
+              "appearancePart": {
+                "text": "区间轨道",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "滑块的样式",
+            "path": ["SliderButton"],
+            "description": {
+              "appearancePart": {
+                "text": "滑块",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "提示框",
+        "iconClass": "sliderPrompt",
+        "data": [
+          {
+            "name": "提示框",
+            "path": ["SliderTips"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Slider",
+    "aliasName": "DoubleSlider",
+    "title": "双滑块样式",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "tips", "text": "提示信息" },
+      { "name": "maxValue", "text": "最大值限制" },
+      { "name": "minValue", "text": "最小值限制" }
+    ],
+    "data": [
+      {
+        "title": "轨道",
+        "iconClass": "slider",
+        "data": [
+          {
+            "name": "滑块轨道样式",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "滑块轨道",
+        "iconClass": "sliderChecked",
+        "data": [
+          {
+            "name": "滑块滑过的区间轨道",
+            "path": ["SliderPassedWay"],
+            "description": {
+              "appearancePart": {
+                "text": "区间轨道",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "滑块的样式",
+            "path": ["SliderButton"],
+            "description": {
+              "appearancePart": {
+                "text": "滑块",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "提示框",
+        "iconClass": "sliderPrompt",
+        "data": [
+          {
+            "name": "提示框",
+            "path": ["SliderTips"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Slider",
+    "aliasName": "MarksSlider",
+    "title": "离散值样式",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "tips", "text": "提示信息" },
+      { "name": "maxValue", "text": "最大值限制" },
+      { "name": "minValue", "text": "最小值限制" }
+    ],
+    "data": [
+      {
+        "title": "轨道",
+        "iconClass": "sliderMarks",
+        "data": [
+          {
+            "name": "滑块轨道样式",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "轨道",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "滑块轨道",
+        "iconClass": "sliderMarksChecked",
+        "data": [
+          {
+            "name": "滑块滑过的区间轨道",
+            "path": ["SliderPassedWay"],
+            "description": {
+              "appearancePart": {
+                "text": "区间轨道",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "滑块的样式",
+            "path": ["SliderButton"],
+            "description": {
+              "appearancePart": {
+                "text": "滑块",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "提示框",
+        "iconClass": "sliderPrompt",
+        "data": [
+          {
+            "name": "提示框",
+            "path": ["SliderTips"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "离散值",
+        "iconClass": "sliderMarksNumber",
+        "data": [
+          {
+            "name": "离散节点",
+            "path": ["SliderMarks"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
   }
 ]
