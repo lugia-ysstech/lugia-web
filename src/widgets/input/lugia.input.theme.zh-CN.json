@@ -37,7 +37,13 @@
                 "text": "输入框",
                 "desc": "输入框配置"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "value",
+                "typeInTheme": "text"
+              }
+            ]
           },
           {
             "name": "提示文本",
@@ -51,22 +57,6 @@
             "props": [
               {
                 "name": "placeholder",
-                "typeInTheme": "text"
-              }
-            ]
-          },
-          {
-            "name": "输入文本",
-            "path": ["Container"],
-            "description": {
-              "textPart": {
-                "text": "输入文本",
-                "desc": "输入文本配置"
-              }
-            },
-            "props": [
-              {
-                "name": "value",
                 "typeInTheme": "text"
               }
             ]
