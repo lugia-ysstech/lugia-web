@@ -1,0 +1,392 @@
+[
+  {
+    "widgetName": "Upload",
+    "title": "上传",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "multiple", "text": "多文件上传" },
+      { "name": "showFileList", "text": "显示上传列表" },
+      { "name": "autoUpload", "text": "失败提醒" },
+      { "name": "limit", "text": "上传最大文件数" },
+      { "name": "fileList", "text": "列表数据编辑" }
+    ],
+    "data": [
+      {
+        "title": "上传框",
+        "iconClass": "upload",
+        "data": [
+          {
+            "name": "文件上传区域",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "上传列表",
+        "iconClass": "uploadList",
+        "data": [
+          {
+            "name": "上传文件列表",
+            "path": ["UploadList", "UploadLiType"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "列表提示图标",
+        "iconClass": "uploadListIcon",
+        "data": [
+          {
+            "name": "上传成功图标样式",
+            "path": ["UploadList", "UploadListSuccessIcon"],
+            "description": {
+              "textPart": {
+                "text": "成功图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "上传失败图标样式",
+            "path": ["UploadList", "UploadListFailedIcon"],
+            "description": {
+              "textPart": {
+                "text": "失败图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Upload",
+    "aliasName": "ButtonTypeUpload",
+    "title": "按钮上传",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "multiple", "text": "多文件上传" },
+      { "name": "showFileList", "text": "显示上传列表" },
+      { "name": "autoUpload", "text": "失败提醒" },
+      { "name": "limit", "text": "上传最大文件数" },
+      { "name": "fileList", "text": "列表数据编辑" }
+    ],
+    "data": [
+      {
+        "title": "上传按钮",
+        "iconClass": "uploadButton",
+        "data": [
+          {
+            "name": "文件上传区域",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "上传列表",
+        "iconClass": "uploadList",
+        "data": [
+          {
+            "name": "上传文件列表",
+            "path": ["UploadList", "UploadLiType"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "列表提示图标",
+        "iconClass": "uploadListIcon",
+        "data": [
+          {
+            "name": "上传成功图标样式",
+            "path": ["UploadList", "UploadListSuccessIcon"],
+            "description": {
+              "textPart": {
+                "text": "成功图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "上传失败图标样式",
+            "path": ["UploadList", "UploadListFailedIcon"],
+            "description": {
+              "textPart": {
+                "text": "失败图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Upload",
+    "aliasName": "PictureTypeUpload",
+    "title": "图片上传",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "multiple", "text": "多文件上传" },
+      { "name": "showFileList", "text": "显示上传列表" },
+      { "name": "autoUpload", "text": "失败提醒" },
+      { "name": "limit", "text": "上传最大文件数" },
+      { "name": "fileList", "text": "列表数据编辑" }
+    ],
+    "data": [
+      {
+        "title": "上传区域",
+        "iconClass": "uploadImage",
+        "data": [
+          {
+            "name": "文件上传区域",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "上传列表",
+        "iconClass": "uploadList",
+        "data": [
+          {
+            "name": "上传文件列表",
+            "path": ["UploadList", "UploadLiType"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "列表提示图标",
+        "iconClass": "uploadListIcon",
+        "data": [
+          {
+            "name": "上传成功图标样式",
+            "path": ["UploadList", "UploadListSuccessIcon"],
+            "description": {
+              "textPart": {
+                "text": "成功图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "上传失败图标样式",
+            "path": ["UploadList", "UploadListFailedIcon"],
+            "description": {
+              "textPart": {
+                "text": "失败图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Upload",
+    "aliasName": "AreaTypeUpload",
+    "title": "区域拖拽上传",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "multiple", "text": "多文件上传" },
+      { "name": "showFileList", "text": "显示上传列表" },
+      { "name": "autoUpload", "text": "失败提醒" },
+      { "name": "limit", "text": "上传最大文件数" },
+      { "name": "fileList", "text": "列表数据编辑" }
+    ],
+    "data": [
+      {
+        "title": "上传区域",
+        "iconClass": "uploadArea",
+        "data": [
+          {
+            "name": "文件上传区域",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "上传列表",
+        "iconClass": "uploadList",
+        "data": [
+          {
+            "name": "上传文件列表",
+            "path": ["UploadList", "UploadLiType"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "列表提示图标",
+        "iconClass": "uploadListIcon",
+        "data": [
+          {
+            "name": "上传成功图标样式",
+            "path": ["UploadList", "UploadListSuccessIcon"],
+            "description": {
+              "textPart": {
+                "text": "成功图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "上传失败图标样式",
+            "path": ["UploadList", "UploadListFailedIcon"],
+            "description": {
+              "textPart": {
+                "text": "失败图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Upload",
+    "aliasName": "BothTypeUpload",
+    "title": "带按钮的拖拽上传",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "multiple", "text": "多文件上传" },
+      { "name": "showFileList", "text": "显示上传列表" },
+      { "name": "autoUpload", "text": "失败提醒" },
+      { "name": "limit", "text": "上传最大文件数" },
+      { "name": "fileList", "text": "列表数据编辑" }
+    ],
+    "data": [
+      {
+        "title": "上传框",
+        "iconClass": "uploadBox",
+        "data": [
+          {
+            "name": "文件上传区域",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "上传按钮",
+        "iconClass": "uploadBoxButton",
+        "data": [
+          {
+            "name": "按钮整体样式",
+            "path": ["UploadButtonType", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "按钮整体样式",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "按钮文字样式",
+            "path": ["UploadButtonType", "ButtonText"],
+            "description": {
+              "textPart": {
+                "text": "按钮文字样式",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "上传列表",
+        "iconClass": "uploadList",
+        "data": [
+          {
+            "name": "上传文件列表",
+            "path": ["UploadList", "UploadLiType"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "列表提示图标",
+        "iconClass": "uploadListIcon",
+        "data": [
+          {
+            "name": "上传成功图标样式",
+            "path": ["UploadList", "UploadListSuccessIcon"],
+            "description": {
+              "textPart": {
+                "text": "成功图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "上传失败图标样式",
+            "path": ["UploadList", "UploadListFailedIcon"],
+            "description": {
+              "textPart": {
+                "text": "失败图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
