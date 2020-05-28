@@ -421,6 +421,15 @@
                   "disabled": []
                 },
 
+                "Divider": {
+                  "name": "分割线",
+                  "desc": "配置每项之间的分割线，当divided为true时生效",
+                  "normal": [["background"]],
+                  "hover": [],
+                  "active": [],
+                  "disabled": []
+                },
+
                 "PrefixIcon": {
                   "name": "前置图标配置",
                   "desc": "前置图标或图片的样式配置",
