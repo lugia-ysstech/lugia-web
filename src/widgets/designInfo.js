@@ -1,5 +1,6 @@
 import Alert from './alert';
 import AmountInput from './amount-input';
+import Anchor from './anchor/anchor';
 import AutoComplete from './auto-complete';
 import Avatar from './avatar';
 import Badge from './badge';
@@ -10,6 +11,7 @@ import Card from './card';
 import Carousel from './carousel';
 import Cascader from './cascader';
 import Checkbox from './checkbox';
+import Collapse from './collapse/collapse';
 import DatePicker from './date-picker';
 import Divider from './divider';
 import Dropmenu from './dropmenu';
@@ -19,10 +21,14 @@ import Label from './label';
 import Loading from './loading';
 import Menu from './menu';
 import Message from './message/message';
+import Modal from './modal/modal';
 import Navmenu from './navmenu';
 import NewTable from './new-table';
+import Notification from './notification/notification';
 import NumberInput from './number-input';
 import Pagination from './pagination';
+import Popconfirm from './popconfirm/popconfirm';
+import Popover from './popover/popover';
 import Progress from './progress';
 import Radio from './radio';
 import Rate from './rate';
@@ -36,6 +42,7 @@ import Tabs from './tabs';
 import Tag from './tag';
 import TimeLine from './time-line';
 import TimePicker from './time-picker';
+import Tooltip from './tooltip/index';
 import Transfer from './transfer';
 import Tree from './tree';
 import TreeSelect from './tree-select';
@@ -290,6 +297,37 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Anchor',
+      title: '锚点',
+      desc: '用于跳转到页面指定位置。',
+      props: {
+        affix: { type: 'boolean', desc: '是否固定在窗口', defaultValue: true },
+        offsetTop: { type: 'number', desc: '距离窗口顶部达到指定值后触发', defaultValue: 0 },
+        offsetBottom: { type: 'number', desc: '距离窗口底部达到指定值后触发' },
+        slideType: { type: 'SlideType', desc: '分割线样式', defaultValue: 'circle' },
+        slideLine: { type: 'boolean', desc: '是否展示分割线', defaultValue: true },
+        useHref: { type: 'boolean', desc: '是否启用a标签的href属性', defaultValue: true },
+      },
+      events: {
+        onClick: {
+          desc: '点击锚点时触发',
+          args: [
+            { name: 'event', desc: '点击的DOM事件', type: 'Object' },
+            { name: 'href', desc: '点击的锚点href值', type: 'string' },
+          ],
+        },
+      },
+      type: { SlideType: ['circle', 'line'] },
+      category: ['其他'],
+      childrenWidget: [],
+    },
+    target: Anchor,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABACAYAAACjgtGkAAAAAXNSR0IArs4c6QAAAXRJREFUeAHt2rFKw0AAxvG72M1CFVcfIC+gz2AX7aTg4KYP5QM4CC4ODj6HQx6gQzaxuurpKQH5p4GKONT7F0ryXULp/foltFzj7DxN31K4HG+mnZPp4uHoYGs/LHlcXd+mJcO9odPjw5gH1/X8UcZIKew+v8Rwcz/e682wsIEqY3Rzfnza6HaL3VbFznxg4oIARhBBIIBoQwSBAKINEQQCiDZEEAgg2hCCxBjm3dj25LXbLXZbVTFcZJSMcTZbFAvRm3jbtik/ewcKG/Aegg9cEEEggGhDBIEAog0RBAKII+TB2DTNSt9R6rr+XJf56/MH3+gvD3jJAFAQQSCAaEMEgQCiDREEAog2RBAIINoQQSCAaEMEgQCiDREEAkPRdZkvGS8ZNEQQQSCAaEMEgQCiDREEAohruy7z03UfzHswesmARhBBIIBoQwSBAKINEQQCiDZEEAgg2hBBIIBoQwSBAKINAcj3n/93H8dW+uslXuNfxXfqDFtjm+0PDwAAAABJRU5ErkJggg==',
+    hideInTollPanel: true,
+  },
+  {
+    meta: {
       widgetName: 'AutoComplete',
       title: '自动完成',
       desc: '需要自动完成数据时使用',
@@ -442,6 +480,11 @@ export default [
               hover: [],
               clicked: [],
               disabled: [],
+            },
+            Placeholder: {
+              name: '输入框提示信息文字',
+              desc: '输入框提示信息文字',
+              normal: [['color'], ['fontSize'], ['font']],
             },
           },
         },
@@ -4345,6 +4388,189 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Collapse',
+      title: '折叠面板',
+      desc: '折叠面板，用于展开/折叠内容区域。',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        activeValue: { type: 'string | string[]', desc: '当前展开面板的 value值 或者 value 集合' },
+        defaultActiveValue: {
+          type: 'string | string[]',
+          desc: '初始时展开面板的 value值 或者 value 集合',
+        },
+        showArrow: { type: 'boolean', desc: '是否展示面板箭头' },
+        accordion: { type: 'boolean', desc: '设置是否为手风琴模式' },
+        zebraStripe: { type: 'boolean', desc: '设置是否为斑马纹模式' },
+        data: {
+          type: 'Object[]',
+          desc: '指定折叠面板data数据源，仅用于设计器',
+          designOnly: true,
+          meta: [
+            { key: 'value', title: '对应字段', type: 'string' },
+            { key: 'title', title: '展示文字', type: 'string' },
+            { key: 'children', title: '展示内容', type: 'string' },
+          ],
+          defaultValue: [
+            { value: '1', title: '标题1', children: '内容1' },
+            { value: '2', title: '标题2', children: '内容2' },
+            { value: '3', title: '标题3', children: '内容3' },
+          ],
+        },
+      },
+      events: {
+        onChange: {
+          desc: 'Collapse面板展开/折叠时回调',
+          args: [
+            { name: 'event', desc: '关闭时的DOM事件', type: 'Object' },
+            { name: 'value', desc: '变化Collapse的value值', type: 'string' },
+          ],
+        },
+      },
+      type: {
+        CollapseStyle: {
+          width: { type: 'number', desc: 'Collapse宽度' },
+          color: { type: 'string', desc: 'Collapse颜色' },
+        },
+      },
+      childrenWidget: ['Collapse.Panel'],
+      category: ['数据展示'],
+      theme: {
+        Container: {
+          name: 'Collapse整体配置',
+          desc: 'Collapse整体配置',
+          normal: [
+            ['opacity'],
+            ['margin'],
+            ['padding'],
+            ['width'],
+            ['height'],
+            ['background'],
+            ['border'],
+          ],
+        },
+        Panel: {
+          theme: {
+            Container: { name: '面板整体配置', desc: '面板整体配置', normal: [['width']] },
+            PanelHeader: {
+              name: '面板头部配置',
+              desc: '面板头部样式配置',
+              normal: [
+                ['opacity'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+                ['padding'],
+                ['width'],
+                ['height'],
+                ['background'],
+              ],
+              hover: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
+              disabled: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
+            },
+            PanelHeaderText: {
+              name: '面板头部文字',
+              desc: '面板头部文字样式配置',
+              normal: [['font'], ['color']],
+              hover: [['color']],
+              disabled: [['color']],
+            },
+            PanelHeaderIcon: {
+              name: '面板头部图标',
+              desc: '面板头部图标样式配置',
+              normal: [['fontSize'], ['color']],
+              hover: [['color']],
+              disabled: [['color']],
+            },
+            PanelContent: {
+              name: '面板内容样式',
+              desc: '面板内容样式配置',
+              normal: [['width'], ['height'], ['background'], ['padding'], ['font'], ['color']],
+              hover: [['color']],
+              disabled: [['color']],
+            },
+          },
+        },
+      },
+    },
+    target: Collapse,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAAA/NJREFUeAHtnWtLFFEYxx9310tpdPkSfoOILiBEVGQKloUvim62RPRpKmq3G/SiXhhCVlDRCyE1y+zy0m+Q7xNW19V2lpQKZ2ZjzjnznJ3fyKLOOT6X3//PzOzucUeEDQIQgAAEIAABCEAAAhCAAAQgAAEIuCHQZjpNqVRaNx2TeOEEisWiUQ2NBgvKXq9v4eUzYppAW30zGTNnMhix/CeAIfzX0GgHGMIoTv+DYQj/NTTaQcFoNIPBno69aCrayPDJxjxt85sqXuEkjhAKRUmzJAyRJn2FuTGEQlHSLMnJNcTKyoo8evxEOrs65dzIWcnn8WGaokfltm6IarUqt8sPZWZ2rl7HulQqFRm9eL5uinxUXYylRMCqIRpmKD2Q6dlPUltdbbT4bvK91GprUrxyQQqYIiXZw9NaO3YHZrh5555Mf5yTtVpNgpfcg0fw8+TUjNy6e1+qv00SXh4jrglYM8TY+ITMf/suO3f0yJ7du/56BPs+f/kqz8afu+6XfDEErJ0yBvqPyWD/8cZRYasagjdFgy82XQSsGaKnu1tXp1TTFAFrp4ymsjNJHQEMoU6SdAvCEOnyV5cdQ6iTJN2CMES6/NVlN7pAM+iORbZuNWaRrVvemcvGKSNzkkc3jCGi+WRuFENkTvLohjFENJ/MjVp7LyMpyYWFhcgQvb29jfFWmRfZrMNBjhAOYfuQCkP4oJLDGjGEQ9g+pMIQPqjksEYM4RC2D6kwhA8qOawRQziE7UMqDOGDSg5rxBAOYfuQCkP4oJLDGjGEQ9g+pGLFlA8qRdTIiqkIOAwlJ8ApIznDloqAIVpKzuTNYIjkDFsqAoZoKTmTN2N8xVS5XE5eFRFSI8DTztTQm0nM004zHIkSQoBriBAwWd2NIbKqfEjfGCIETFZ3Y4isKh/SN4YIAZPV3cZfhzAFUtv9L/63HlMcXMfhCOGauPJ8GEK5QK7LwxCuiSvPZ+0a4ufSktQ/7jz2o435xFtdDrFmiImXr+XVm7eyratry44ry8ty4ugRGTlzastxdqZDwJohhocG5MfionyYm9+8V8ZGi/lCQQ7s2yunhwY3dvFdCQFrhmhvb5cb10Yll8vJ1B83UAnM0HdwPzdQUWKAf8uwZoggUWCK68XLjZsgbNxi6XDfIW6x9K8Kin63aohNU1y9JNvr1xLchE2R8iGlWDdEkLejo6Nxigipgd2KCPA6hCIxNJSCITSooKgGDKFIDA2lYAgNKiiqAUMoEkNDKSzD16BCghpYhp8AHn8aT4BTRjyjTM3AEJmSO75ZDBHPKFMzMESm5I5v1vh7Gfz3dzx0ZkAAAhCAAAQgAAEIQAACEIAABDJK4Bfzxb2WO4yWMwAAAABJRU5ErkJggg==',
+    hideInTollPanel: true,
+  },
+  {
+    meta: {
+      widgetName: 'Collapse.Panel',
+      title: 'Panel 面板',
+      desc: 'Panel 面板。',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        value: { type: 'string', desc: '指定Panel面板value值' },
+        title: { type: 'string | React.node', desc: '指定Panel面板头部内容' },
+        children: { type: 'string | React.node', desc: 'Panel面板内容' },
+        disabled: { type: 'boolean', desc: 'Panel面板是否禁用', defaultValue: false },
+        open: { type: 'boolean', desc: 'Panel面板是否展开', defaultValue: false },
+        showArrow: { type: 'boolean', desc: 'Panel面板是否展示箭头', defaultValue: true },
+        icon: { type: 'string', desc: '设置按钮前置图标类型' },
+      },
+      events: {
+        onClick: {
+          desc: 'Panel面板点击事件回调',
+          args: [{ name: 'value', desc: 'Panel面板点击时 value的值', type: 'string' }],
+        },
+      },
+      type: {},
+      category: ['数据展示'],
+      componentName: 'Panel',
+      needExport: true,
+      theme: {
+        Container: { name: '面板整体配置', desc: '面板整体配置', normal: [['width']] },
+        PanelHeader: {
+          name: '面板头部配置',
+          desc: '面板头部样式配置',
+          normal: [
+            ['opacity'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['padding'],
+            ['width'],
+            ['height'],
+            ['background'],
+          ],
+          hover: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
+          disabled: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
+        },
+        PanelHeaderText: {
+          name: '面板头部文字',
+          desc: '面板头部文字样式配置',
+          normal: [['font'], ['color']],
+          hover: [['color']],
+          disabled: [['color']],
+        },
+        PanelHeaderIcon: {
+          name: '面板头部图标',
+          desc: '面板头部图标样式配置',
+          normal: [['fontSize'], ['color']],
+          hover: [['color']],
+          disabled: [['color']],
+        },
+        PanelContent: {
+          name: '面板内容样式',
+          desc: '面板内容样式配置',
+          normal: [['width'], ['height'], ['background'], ['padding'], ['font'], ['color']],
+          hover: [['color']],
+          disabled: [['color']],
+        },
+      },
+      parentWidget: 'Collapse',
+    },
+    target: Collapse.Panel,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAAAnxJREFUeAHt2stqE1EYB/Av10br84h4gYKIC1GhWiULxVsNIj5Q8gIu3HkBdS1aLL6H3VuwUIkzUSxTbOjiTGeG+U0gdDLDd77zO/8202QibAQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBQvUAndQvT6XSeuqZ6RwtMJpOka5i0WN72PNuObt+R1AKdbEtZs5uymFrNFxCI5q9h0hkIRFLO5hcTiOavYdIZCERSzuYXE4jmr2HSGfSTVktY7OWrN8eqNt64vjivbucfq/kanuQvRA0XpcqWBKJK/RqOLRA1XJQqWyrtGuLH7m508scRn6zmn3DnjzOrq1XO39iHBEoLxOu37+Pdh49xajQ6NOSf3Z97e3Ht6pUY37n13+NerEagtEBsrN+I7zs78WX7W/za3y/Mrtfvx4VzZ+P2+s3C63aqFygtEIPBIF4824xutxuftr7+C0UehrWL52Py5EH0e73qBXRQECgtEPkoeSieTx5nVwoRn7e2s+d5XF67FJsP70dPGHKi2m2lBiKf7SIUTx/F6exaYmW0EvfGd7Mw+Oemdkn421DpgcjHGQ6Hi7eIuiLo60DAr+qBhZ8yAYEQg4KAQBQ47AiEDBQEBKLAYSfpLdw5p9vwTzZUbsM/We/WjeYto3VLvnzCArHcp3VHBaJ1S758wgKx3Kd1R5N/lzGbzVqHaMIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAgRIFfgNzuUnH0HtkpAAAAABJRU5ErkJggg==',
+    hideInTollPanel: true,
+  },
+  {
+    meta: {
       widgetName: 'DatePicker',
       title: '日期选择器',
       desc: '用于日期选择',
@@ -8182,6 +8408,66 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Modal',
+      title: '对话框',
+      desc: 'Modal 对话框。',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        title: { type: 'React.node', desc: '标题' },
+        visible: { type: 'boolean', desc: 'Modal 是否可见' },
+        cancelText: { type: 'string', desc: '取消按钮文字', defaultValue: '取消' },
+        cancelButtonProps: { type: 'Object', desc: '取消按钮 props ' },
+        okText: { type: 'string', desc: '确认按钮文字', defaultValue: '确定' },
+        okButtonProps: { type: 'Object', desc: '确认按钮 props ' },
+        confirmLoading: { type: 'boolean', desc: '确定按钮是否 loading' },
+        footer: { type: 'React.node', desc: '自定义底部内容，不需要底部内容可设置为 null' },
+        maskClosable: { type: 'boolean', desc: '点击蒙层是否允许关闭', defaultValue: true },
+      },
+      events: {
+        onOk: { desc: '点击确定时的回调', args: [] },
+        onCancel: { desc: '点击取消时的回调', args: [] },
+      },
+      category: ['反馈'],
+      theme: {
+        ModalWrap: {
+          name: '弹窗整体样式',
+          desc: '为弹窗配置整体样式',
+          normal: [
+            ['width'],
+            ['height'],
+            ['opacity'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['background'],
+            ['padding'],
+          ],
+        },
+        ModalTitle: {
+          name: '弹窗标题样式',
+          desc: '为弹窗文字配置样式',
+          normal: [['font'], ['color'], ['padding']],
+        },
+        ModalContentText: {
+          name: '弹窗内容文本样式',
+          desc: '为弹窗内容文本配置样式',
+          normal: [['font'], ['color'], ['padding']],
+        },
+        ModalCloseIcon: {
+          name: '弹窗关闭图标样式',
+          desc: '为弹窗关闭图标配置样式',
+          normal: [['fontSize'], ['color']],
+        },
+      },
+      childrenWidget: [],
+    },
+    target: Modal,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAABECAYAAABd/mHNAAAAAXNSR0IArs4c6QAAA8FJREFUeAHtnb+PEkEUxx+/GiKJYkEhDQ3kiktI+BeutdPCimukNCHaG3uTS+ygOioL7WxpLC0wJBdzOWosKEQTzDUc0f1ykFwIizfLzL3Z9fuSS/Zml/e+8/0ws9zucJuSIHq93qP5fH4SbB4tFosHaGP47UAmk/kZKOzncrl2s9n8nlpBPGs0GoVqtZrN5/N+94Dqlg5cXl7KaDS6GgwGswDmYRYjERDr9XqWHsXHAQy4FbNCAPMkHUg/wkiMTxeo9KYDK3ZHaZwTOZ3etCZe22AHhhiRjAQ4QJAJgIguECRBJsSBhHSDI5IgE+JAQrrBEZkQkMYXAt5/+HSrrj97+nh53P92/K3McXAQR6QDUzVSEqSG6w5qEqQDUzVSEqSG6w5qEqQDUzVSEqSG6w5qEqQDUzVSEqSG6w5qEqQDUzVSEqSG6w5qEqQDUzVSEqSG6w5qEqQDUzVSEqSG6w5qEqQDUzVSpjqdzp9Wq6VRmzUtOdDtdrmKzpKX6mk4taojsCOAIO34qJ6FINUR2BFAkHZ8VM9CkOoI7AggSDs+qmcxXtcKxT+Cb6+ffhQ5uxCZ/lLvw1JA8b7IYU3k+InIw3/8F4TgW9oyHo9lNpsJtn2I4OvjUigUpFwuC7ZNwxgkIL54IzL7bVrK7fF4Q33+IvL1m8i71+EwAe78/FxKpVJk01z0BLqm0+lS28HBgTFM46kVI9E3iDeNhTZoDAuMREDET5R3fljefduhZa0LGk3DGCSmU99jl0ZMp8Vi0dsuQBs0moYxSF/Oibs6uksjpjCfRuJmP6AtynnbGORmYf7uhwPGH3ZuK/v07fYjj19dt++7f3t2e60XF9vPIbVa8NE4iH3321N6nYkj0rajSvkIUsl422UJ0rajSvkIUsl422UJ0rajSvkIUsl422UJ0rajSvkIUsl422UJ0rajSvmcXdlZX8EJ69e++8Py2mpfX8EJy7fv/rC8Uds5IqM659nrjEHiTrzvsUtj1LsLd9XnqHdnjEFiOYXvsUsjllPgTryvAW3QaBrGILEmpnDPtMzdHQ9t0BgWWBMzmUyWP1Hu+4Xl3bcdWta6oNE0jD/sYGET1sTEdfEVplasicFyChjnC0zowkiMsl4H0I1B4kWA+fI5tuIZMK1SqcRTfIhq46k1JA+blR0gSGUAtsoTpC0nlfMQpDIAW+UJ0paTynnSeA4hHmHHiKcDYAeGGJF9PIcwnt2g6hW7fjr4m6qNh0kOh8Mrjsz4vDHACsxWDwJtpyCdj+aND8C10s1H8/4FOPYLSaKU35sAAAAASUVORK5CYII=',
+    hideInTollPanel: true,
+  },
+  {
+    meta: {
       widgetName: 'Navmenu',
       title: '导航菜单',
       desc: '为页面提供导航功能的菜单',
@@ -10565,6 +10851,31 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Notification',
+      title: '通知提醒框',
+      desc: 'Notification 通知提醒框。',
+      props: {
+        title: { type: 'React.node', desc: '标题' },
+        duration: { type: 'number', desc: '自定义演示关闭', defaultValue: 4.5 },
+        description: { type: 'React.node', desc: '通知提醒内容' },
+        icon: { type: 'string', desc: '自定义图标' },
+        placement: {
+          type: 'PlacementType',
+          desc: '弹出位置，topRight、bottomLeft、bottomRight、topLeft',
+          defaultValue: 'topRight',
+        },
+      },
+      type: { PlacementType: ['topRight', 'bottomLeft', 'bottomRight', 'topLeft'] },
+      category: ['反馈'],
+      childrenWidget: [],
+    },
+    target: Notification,
+    screenshot:
+      'data:image/png;base64,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',
+    hideInTollPanel: true,
+  },
+  {
+    meta: {
       widgetName: 'NumberInput',
       title: '数字输入框',
       desc: '常用于数字输入,可以进行快速加减显示',
@@ -11436,6 +11747,233 @@ export default [
     target: Pagination,
     screenshot:
       'data:image/png;base64,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',
+  },
+  {
+    meta: {
+      widgetName: 'Popconfirm',
+      title: '气泡确认框',
+      desc: '气泡式的确认框',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        title: { type: 'React.Node', desc: '确认框标题显示内容', defaultValue: '确定要删除吗' },
+        description: { type: 'React.Node', desc: '确认框描述显示内容' },
+        content: { type: 'React.Node', desc: '整个确认框显示内容' },
+        icon: { type: 'icon', desc: '确认框的标题的图标' },
+        placement: { type: 'DirectionType', desc: '气泡确认框显示的位置,十二个方向' },
+        visible: { type: 'boolean', desc: '是否显示出来', defaultValue: false },
+        defaultVisible: { type: 'boolean', desc: '默认是否显示出来', defaultValue: false },
+        action: {
+          type: 'ActionType',
+          desc: '页签位置，可配置 click,hover,focus',
+          defaultValue: 'click',
+        },
+        children: { type: 'React.Node', desc: '气泡确认框需要包含的子组件' },
+        okType: { type: 'ButtonType', desc: '气泡确认框确认按钮的类型', defaultValue: 'primary' },
+        cancelText: { type: 'string', desc: '取消按钮文字', defaultValue: '取消' },
+        okText: { type: 'string', desc: '确认按钮文字', defaultValue: '确定' },
+      },
+      events: {
+        onVisibleChange: {
+          desc: '气泡确认框改变时触发',
+          args: [{ name: 'event', desc: '气泡确认框显示改变的DOM事件', type: 'Object' }],
+        },
+        onCancel: {
+          desc: '气泡确认框点击取消时触发',
+          args: [{ name: 'event', desc: '气泡确认框点击取消的DOM事件', type: 'Object' }],
+        },
+        onConfirm: {
+          desc: '气泡确认框关闭时时触发',
+          args: [{ name: 'event', desc: '气泡确认框点击确认的DOM事件', type: 'Object' }],
+        },
+      },
+      type: {
+        DirectionType: [
+          'left',
+          'leftTop',
+          'leftBottom',
+          'right',
+          'rightTop',
+          'rightBottom',
+          'top',
+          'topLeft',
+          'topRight',
+          'bottom',
+          'bottomLeft',
+          'bottomRight',
+        ],
+        ActionType: ['click', 'hover', 'focus'],
+        ButtonType: ['default', 'primary', 'success', 'warning', 'danger'],
+      },
+      category: ['反馈'],
+      theme: {
+        PopconfirmContent: {
+          name: '气泡卡片框容器',
+          theme: {
+            Container: {
+              name: '气泡确认框内容部分',
+              desc: '气泡确认框内容部分',
+              normal: [
+                ['background'],
+                ['color'],
+                ['padding'],
+                ['font'],
+                ['fontSize'],
+                ['width'],
+                ['height'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+              ],
+            },
+          },
+        },
+        PopconfirmTitle: {
+          name: '气泡确认框标题',
+          desc: '气泡确认框标题',
+          normal: [['color'], ['background'], ['font'], ['fontSize']],
+        },
+        PopconfirmButton: {
+          name: '气泡确认框按钮',
+          desc: '气泡确认框按钮',
+          normal: [['opacity'], ['color'], ['font'], ['fontSize']],
+        },
+        PopconfirmIcon: {
+          name: '气泡确认框标题前图标',
+          desc: '气泡确认框标题前图标',
+          normal: [['opacity'], ['color'], ['font'], ['fontSize']],
+        },
+      },
+      childrenWidget: [],
+    },
+    target: Popconfirm,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAABWCAYAAAAaC2InAAAAAXNSR0IArs4c6QAABBxJREFUeAHtnTFMFEEUht8eXEMkUayM1lARSSgspaClMVpYQaK2JkRja2yNCYm1JlBRaGxoKbC0wGCIBdQaK9EEQ3OQc96xlxDCzb0l796+mfunAXZmZ97/f/tmj5u5vYJCWVtbu9lqtVbCr/MnJyfX+BhKWg6MjIz8CRFvNpvN5cXFxZ9FCXV3dnZ2fHJycnRsbCwtRYi248DR0RHt7+8fb29vHwa406OcqQx1ZmZmFB6l6wAnZMlwPMBdaQQp85yp6UpC5GcdKFnON/ieiun3rDVp/84smSlnLEqGDgBshlBZEsBmClb8omn9w4bIgocPFjrtBt1eFMwQN0LGZgofYAE2UwcylYWMBdhMHchUFjIWYDN1IFNZyFiAzdSBTGUhYwE2UwcylYWMBdhMHchUFjIWYDN1IFNZ4vXY7jqr1IdBt5fGMaztMBVnSl6csZnqryTrd9hrv/qRaHeP6OBvpVMv3XjiKtH0FNHSfaLrFT6jAbBCyxnq01dEh/+EJyg14wvo8xeir9+J3r6Uw8VULATAmWoN9WxoPDbHIC0AK3SKp9+6S5UYxFPx3l5c2dRUuBGE4r3dZeFI76mrby4eYen56fF+9ReffXpUGgO3RsbGnEy4DmAThhcLHWBj7iRcB7AJw4uFDrAxdxKuA9iE4cVCB9iYOwnXAWzC8GKhA2zMnYTrxO88JaxRJXReZZG889N9h6nXoP3qe53HxzkGaUHGCp3ipbO6S5UYAFZIi9dDx68IGw+gGY/NMUgLwAqd4kVuXg+9e6falCjsvmcznn55zCprsdyZ+B7bXb3pGUFZ4b1dv/hj9Qz32ZNYCz91yFg/LFQjAVhVO/10BrB+WKhGArCqdvrpDGD9sFCNpMFPpuaHGKPk4QCzZKacsZv8ZOo8ZEFFyXKzwc+Q58eN7+zsHCNz070wmB0zLB8dv1ywFHzZQ7pAu5Gf/7KH7nH8hANwAA7AATgAB3Qd6Lx40u2yf2/3Hrdvhf+vXoeWc+023eh/RnotioJ+hai3wvLZi0/vih/WCszBMtQW0Tdq04S12FrGK+igSXTbGq75W4qdTB0WqHwlBa3l7GR6XZmDDermTBX6GMxcsznYXO+pseunDs3mYGMGoE7PAfGeJ70hL9dTr0+Cn++tu2930O3Pj+vtb2SsNyJK8QCskpHeugFYb0SU4gFYJSO9dQOw3ogoxQOwSkZ66wZgvRFRigdglYz01g3AeiOiFA/AKhnprRuA9UZEKR6AVTLSWzcA642IUjwAq2Skt24A1hsRpXjMN7MtPAr7CYawbLwP+xYNCzLW0GzLoczBlvttLTXWPlYdms3BBpe3anfaPgBzzeZgeWc8hU3U9t7WNGLQ2tFsPLw5WN4Rzzvjw/S0XscUZeUva2ONdXwKgDX+B3PE4KApjmQzAAAAAElFTkSuQmCC',
+    hideInTollPanel: true,
+  },
+  {
+    meta: {
+      widgetName: 'Popover',
+      title: '气泡卡片',
+      desc: '气泡式的卡片浮层',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: 'This is title!' },
+        description: {
+          type: 'React.Node',
+          desc: '卡片描述显示内容',
+          defaultValue: 'This is description!',
+        },
+        content: { type: 'React.Node', desc: '整个卡片显示内容' },
+        clear: { type: 'React.Node', desc: '关闭卡片的操作内容' },
+        showClearButton: { type: 'boolean', desc: '是否显示关闭按钮', defaultValue: true },
+        placement: { type: 'DirectionType', desc: '气泡卡片显示的位置,十二个方向' },
+        visible: { type: 'boolean', desc: '是否显示出来', defaultValue: false },
+        defaultVisible: { type: 'boolean', desc: '默认是否显示出来', defaultValue: false },
+        action: {
+          type: 'ActionType',
+          desc: '页签位置，可配置 click,hover,focus',
+          defaultValue: 'click',
+        },
+        children: { type: 'React.Node', desc: '气泡卡片需要包含的子组件' },
+      },
+      events: {
+        onVisibleChange: {
+          desc: '气泡卡片改变时触发',
+          args: [{ name: 'event', desc: '气泡卡片显示改变的DOM事件', type: 'Object' }],
+        },
+        onClearClick: {
+          desc: '气泡卡片关闭时时触发',
+          args: [{ name: 'event', desc: '气泡卡片关闭的DOM事件', type: 'Object' }],
+        },
+      },
+      type: {
+        ActionType: ['click', 'hover', 'focus'],
+        DirectionType: [
+          'left',
+          'leftTop',
+          'leftBottom',
+          'right',
+          'rightTop',
+          'rightBottom',
+          'top',
+          'bottom',
+          'topLeft',
+          'top',
+          'topRight',
+          'bottom',
+          'bottomRight',
+          'bottomLeft',
+        ],
+      },
+      category: ['数据展示'],
+      theme: {
+        PopoverContent: {
+          name: '气泡卡片框容器',
+          theme: {
+            Container: {
+              name: '气泡卡片框内容部分',
+              desc: '气泡卡片框内容部分',
+              normal: [
+                ['background'],
+                ['color'],
+                ['padding'],
+                ['font'],
+                ['fontSize'],
+                ['width'],
+                ['height'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+              ],
+            },
+            TooltipTitle: {
+              name: '气泡卡片标题部分',
+              desc: '气泡卡片标题部分',
+              normal: [
+                ['opacity'],
+                ['background'],
+                ['width'],
+                ['height'],
+                ['color'],
+                ['font'],
+                ['fontSize'],
+              ],
+            },
+            TooltipDescription: {
+              name: '气泡卡片描述部分',
+              desc: '气泡卡片描述部分',
+              normal: [
+                ['opacity'],
+                ['background'],
+                ['width'],
+                ['height'],
+                ['color'],
+                ['font'],
+                ['fontSize'],
+              ],
+            },
+          },
+        },
+        PopoverClearIcon: {
+          name: '气泡卡片操作部分',
+          desc: '气泡卡片操作部分',
+          normal: [
+            ['opacity'],
+            ['background'],
+            ['width'],
+            ['height'],
+            ['color'],
+            ['font'],
+            ['fontSize'],
+          ],
+        },
+      },
+      childrenWidget: [],
+    },
+    target: Popover,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAABWCAYAAAAaC2InAAAAAXNSR0IArs4c6QAAA3xJREFUeAHtnb+LGkEUx2f90QhXJF1Iaq1CBP+BK2yvCaRIZSDB/uDIHxEOrlYSiNUVgTTXWtw/IBhSaZ2QLikCNp6YeXsrnIHzdofn2zfP7zan65uZ9/1+9o16jmPi/DEajZ4ul8sLf7O7Wq0e0TkccTlQrVb/+IzH9Xr9tNfr/UwyqN87nc5Rs9msNRqNuBQh29SBxWLh5vP5zWQy+evhPq9RpRLUdrtdg0fxOkAFmTE88nAvKl5Klyo1XknI/K4DGctuhZ5TMf3etSbu28SSmFLF4jDoAMAahEqSANYo2Nwvmi6/XOWy4PWrkzRu3/G5kjngIFSsUfgAC7BGHTAqCxULsEYdMCoLFQuwRh0wKgsVC7BGHTAqCxULsEYdMCoLFQuwRh0wKgsVC7BGHTAqK/fnsZvPWfP6sO/4vHkcahymYqPkARZgjTpgVBYqFmCNOmBUVu5XxXn1z2aznaGtVit9HHHbNm182T4bfg9Tcbh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsmg8Fg3e/3VSeJ5Io5MBwOsWtMMcviicZUHA+rQpkCbCG74gkG2HhYFcoUYAvZFU9whXampk2McdhwgFgSU6rYMe1MbUMWVGQsxxXaQ562G59Opzeo3HgvDGJHDLOt408TkoIfe4gX6Cbz/3/sYXMef+EAHIADcAAOwAFeB9IXT7xdPtzby3frZ/791QcfebxeuycPt4gvIkncL5/1tf9y1PuvH5Mf0grEwRLUpXPf3No9lhZbyniJ+1137oU0XPF/KaaVeihQ6UryWrPZSfS6Egfr1R2LKtQxmLhmcbBWn1N3XT9laBYHu8sAPMbnAPs32vlS2+7p8/n2/fvuvTm7fWTf8feNr+U8KlYLCeY8AJbZUC3dAawWEsx5ACyzoVq6A1gtJJjzAFhmQ7V0B7BaSDDnAbDMhmrpDmC1kGDOA2CZDdXSHcBqIcGcB8AyG6qlO4DVQoI5D4BlNlRLdwCrhQRzHuKL2U7e+vUEB3hcffLrFgUPVKyg2ZJDiYPN1ttKaix9rDI0i4P1Ll+X7rR8AuKaxcHSynjnF1HLe1vSiF5rqll4eHGwtCKeVsb76emyjClKyl/SRhrL+BYAafwHHZ2+Cpkpg+QAAAAASUVORK5CYII=',
+    hideInTollPanel: true,
   },
   {
     meta: {
@@ -19683,6 +20221,118 @@ export default [
     target: TimePicker,
     screenshot:
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAACaxJREFUeAHtXGlTVOkVPtIg0OwqsosLtuNGIagjFKNxQmI+zExqUiZj8sXfML8kv8F8SFUyk6Qm82EmNaiFpCCMWw9EVGj21YWtm2ZtIOd54V5vN71dum/TxHOqsO/yrs/73POe5XqJRAQBQUAQEAQEAUFAEBAEBAFBQBAQBAQBQUAQEAQEAUFAEBAEBAFBQBAQBAQBQUAQEAQEAUFAEBAEBAFBQBAQBAQBQUAQEAQEAUFAEBAEBAFBQBAQBAQBQUAQEATii8C+nTR3586dstXV1T9y3aa1tbWCnbQhdaxBwGazzXDLzWlpaV/evn17zGwvpgmxRYauurq6HIfDkWq32832KeUtRGBhYYF6enp8jx8/9jApzpslRYrZsUEzgAw1NTVCBrPgJaA8HlCsDdZoS4ub6tU0Ibj1JmgGU71I4YQjsLVGTWY7Nk0I2AyyTZiFOfHlsUY7se9MEyLxU5MeE4mAECKRaO+BvoQQe2CREjlEIUQi0d4DfSXUW1hbW6fpWTcNDI7SxKspmvcuKIiys+xUUnSQjh0tpwP5uWSzCU93izsJIcTGxgaNjr+i1nYn9Q+N0pzbG3S+eblZdLyynK5/dJGKDx+kfftMx82CtisXo0fAckKsr2/Qg/Yn9KDtKXnmvZSaaqOK0iIqLCygHNYMEA9rijdvZmji9Vt62vWSXAOjdLXhAjV+WKPKRz8dKRkrApYSwudbo79+8wN1PnPRxvo6OaqO0LX6WiorPUxZ9ky/sXsXFmls/DW1MHlcfSP0/d12Gp98Q7c+v0EpKbFpCp/PR96FJUq12Sgr612/uL7A11dWV+Gz85jsfN/OmslvaHE7WV5eIY9nnja4xf370yg3JzuiFmTlSotLSzzORTp00Pq0kWWEwDbx7w4ndXa7lE3QcKWGmq5dpvT0/UEBBkEcVZVUWVFCf2ESvewdUkQqLS6kaw21EYHTGu0fHKGp6VkFIEDEHxYccu6Mg86fPaXut3c8UTYMxmkU2DMXa89TSfFh4+UdH0NDdv73BfUNDNHKyuY4tMbS0lLp7GkHnT51Ql3yehfJ1T/I5N0cN8a+uLRM6/wwQW7d/NQysqoO+B/LrDfYDNgmNtiQPHWykm58XL+NDF//8y797du7tGwACoT5w29+RQ2XqpVWQRuTr6e08Ub87esfYg0zSOMTr2h2zq2TwVhRPam8fQWSAWVg6La2PSI3P8mxCsjww71Wev7StY0MaHt11UfOzm569KRLdYU+u1+4aGh4jN68nVbE0MgQ61iirW8JIeBNwICEzVB1ooK++PUvgtoCQyOTNDgysQ0s2BnQJqiLNu63PmKVvvmURDuxWMph++jrH46lCVV3eHScpmfmIrbTywSOBwEjdhRFAUu2jBl2LfuGxhQJYDOE2iawVwdobH3IqIO6/YNjyjOBu1p4MF+/H+qgtKSIig4fIntmJvl4YZ/+9Gxb0ZycLLpUV6328MzMDEpLTWV75TV1PHTqZT3z4TUEtoGe3gFynDxG1ec+0OsZD3pdg/opPKaa6jNUUVa8qRm6ntME96nJ6OgElbKxfbLqmLKv7Dyul9z+1DReb0icWEIIuJZu97zyJmBA7lRQt4QXd4S3H8QuoiHE2dMn9e6mZ2b1Y+NBTnYW4c8oR8pL/QiRmZFhvL3tGGRYZaMUv6EIYey/ID+PPnAc19u5wOQwEgIP0Rke+8UL5/Qyg7x1JFos2TImOegEgWsZ6E2YmSDqog0IAllWCoxRo+Tn5RpPtx1DM0Cz4DeYwIA07v8FHHAzSl5ejp+hrBm+xjK7cWyJhvDMb0YgtThDuIlFCj5pbWhRzXBt7fTe5Ku35DRsLdAex49VhG0OWiGUZkDFJfYOjMJvLxlP1TFsJRiWkEAPRF3chX8s0RDRzgNW/uLysoo/RFsn3uXeTs2wV/GQ1rZcO1tKCl25fIFdZVtMXa2srPjVDxaOt6W86wP2TjKIJYTIyX4XgQw3SYSn3R4vffVtM7W0PfFzP7V6iGJCEB+It8zMzlFLawchQAVJYcOv4UpdXAJAqbydGAVBukAxkiCdA1XJIJYQAgsNQTgaQZZQcvOzn9ON6/Ucb9ig75rb6KtvmlUgRiuPumgDguRXPAVu3v0HHXqcAlvXh6wZytkLiEbgZXz9j+9U0ClYeUQijcLvNxpPVQwE7q0mGRnp2uGu/lpCiOOctczNzVa5CYSjQwlcy+uNF+kWB6LKSgrZ9x+hx87nenHURX4DSS9kQuMlXtY691vaaZm3K00u1VbT0SNl2mnEX6OXEaxwICEQPTUK4hPGwFhGenIQwl+vGUccwzEs6hOVZSpRhdwEwtHhYhEODkBlZvxM2RJXLp1XPSOaiLpQtciAIi0eL7nHZFhYXNKbg0exzHs+ooSawMOpDEMQeBdaHEKrY/zFloFchRZwmnN76MdHPykNBEOy+0WvsXhctim/Bnd4YgkhYEB9VF/DWcsRlahqbvlRha5hVYeSirIiDtoUqdsgAfIZSHLB4kdbwYyyUG1Fuh64jSHEPdvl9quG4FY4QkTyMtBYBcc2nj3v0dvtGxjmnMawfq4d4GE5UlGqne7qryVbBmZUzlG3q0hKsdXe9rCT/vz371lF+1vewWaOMv+6166SW6iLNDja2oviqDpKgfGHwHnAdkHCLYXnmgxiiYbAxDDRqxx6RgobGc9n3X30J17saNPfIEP12Sr1TkSkWEUyABlsDDAUm6430n84JD4+Pqm7tigLtzaP7azamnNUeOhAsOq7cs0yQmA2eI/hd5zYQgr7AbuVPa5hlZtAODrUCzLYLrBNQDOAULG8C3GgIJ9+/9tPtwF76+Yn265ZdQHbZGN9nUrOaan4DN4i8P8m+JkJK9caL4e9b8VNSwmBAQMQvM9w4miZyoAi6YXcBP4CBZ4JjFHYDNgm9qpmCJwXzmEDIamW7GI5IQAAFhZZvi8+/yUhidPPiSq846CHuDmQVcxxBngT2HPjaUAm+wIk2/gSQght0ljoQ5zCxp9IciKQHKZtcmLzXo5KCPFeLnvoSQshQmPzXt4RQryXyx560qYJgW8Y4bM1IsmNANZo63tTpgZqmhDcejO+YWSqFymccAS21qjZbMemCYGvm+GDVk6n0yeawizc1pfHmmBttj469qXZHiMET4M3J58lDI5LMlzd2iZ2/FnCZJiDjEEQEAQEAUFAEBAEBAFBQBAQBAQBQUAQEAQEAUFAEBAEBAFBQBAQBAQBQUAQEAQEAUFAEBAEBAFBQBAQBAQBQUAQEAQEAUFAEBAEBAFBQBAQBAQBQUAQEAQEgf8vBP4HTjyX5Vs7MNcAAAAASUVORK5CYII=',
+  },
+  {
+    meta: {
+      widgetName: 'Tooltip',
+      title: '文字提示',
+      desc: '简单的文字气泡提示框',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        size: {
+          type: 'ToolTipSize',
+          desc: '可配置三种尺寸大小的气泡提示框',
+          defaultValue: 'default',
+        },
+        placement: { type: 'DirectionType', desc: '气泡提示框显示的位置,十二个方向' },
+        visible: { type: 'boolean', desc: '是否显示出来', defaultValue: 'false' },
+        defaultVisible: { type: 'boolean', desc: '默认是否显示出来', defaultValue: 'false' },
+        popArrowType: {
+          type: 'PopArrowType',
+          desc: '可配置两种风格的箭头. 尖角,圆角',
+          defaultValue: 'sharp',
+        },
+        action: {
+          type: 'ActionType',
+          desc: '触发提示的动作，可配置 click,hover,focus',
+          defaultValue: 'click',
+        },
+        children: { type: 'React.Node', desc: '气泡提示框需要包含的子组件' },
+        title: {
+          type: 'React.Node',
+          desc: '配置气泡提示框需要显示的标题',
+          defaultValue: 'prompt text',
+        },
+        description: { type: 'React.Node', desc: '配置气泡提示框需要显示的描述' },
+        content: { type: 'React.Node', desc: '配置气泡提示框需要显示的自定义内容' },
+      },
+      events: {
+        onVisibleChange: {
+          desc: '气泡提示框改变时触发',
+          args: [{ name: 'event', desc: '气泡提示框显示改变的DOM事件', type: 'Object' }],
+        },
+      },
+      type: {
+        ActionType: ['click', 'hover', 'focus'],
+        ToolTipSize: ['small', 'default', 'large'],
+        PopArrowType: ['sharp', 'round'],
+        DirectionType: [
+          'left',
+          'leftTop',
+          'leftBottom',
+          'right',
+          'rightTop',
+          'rightBottom',
+          'topLeft',
+          'top',
+          'topRight',
+          'bottom',
+          'bottomRight',
+          'bottomLeft',
+        ],
+      },
+      category: ['数据展示'],
+      theme: {
+        Container: {
+          name: '文字提示框容器',
+          desc: '文字提示框容器部分',
+          normal: [
+            ['background'],
+            ['color'],
+            ['padding'],
+            ['font'],
+            ['fontSize'],
+            ['width'],
+            ['height'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+          ],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+        TooltipTitle: {
+          name: '标题部分',
+          desc: '标题部分',
+          normal: [['fontSize'], ['font'], ['color']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+        TooltipDescription: {
+          name: '描述信息部分',
+          desc: '描述信息部分',
+          normal: [['fontSize'], ['font'], ['color']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+        ChildrenContainer: {
+          name: '包裹子组件的容器',
+          desc: '包裹子组件的容器',
+          normal: [['width']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+      },
+      childrenWidget: [],
+    },
+    target: Tooltip,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABICAYAAAAJZ/BjAAAAAXNSR0IArs4c6QAAAy1JREFUeAHtm7GLGkEYxW93g0qQEMhB0GAvaVKo2F6ddClTnFXUNCFNEsh/ENKEVGpnivsPEkhnEUHxJKSzSXGFykGOhIOAFmq+zxhZQWWSc/Yh+xYWZmdm58383n6jrjPOgRz5fP72ZDJ5OpvNMo7j3NI8HnYICOMLYdz1PO9du90+dxT+dDo9kYIbdiTZ6joCYsKl67qPvEQi8Uoq3F1XiXlWCUTloT90ddqxKsPGNxJQ9i7n/I18rBcoe9e6CgW2EqABW/HYL6QB9hlvVbi2tdRX2Ol0sr7LjclcLneqhbbrb+zAnhUwAsCG0QAaACYAlmcE0AAwAbA8I4AGgAmA5RkBNABMACzPCKABYAJgeUYADQATAMs72Wy2A+5DqOU5BYHtpwE0AEwALK/LUi7AfQitvLLXZSnd0BIAD1zZu7pGURKX4L6ETl6ZK3uv3+//SqVSnyQcDuW8KQXXQ0cjwAHrtCOMPwv8F/PFuVfRlhUQRWnw8Zo2vsXj8XKj0fi5poxZPgKeL/3PycFg0E0mkxO5Mee7+UxW/T5pNps/fHlMbiBwJQO0TTHhi5gwlmRezn4kEim3Wq3vWsYjQAIyHT3MZDKJACUpRQIksPcEHB1BvV6/Mx6P38g3miO55DSiUOwdQ/ka2ohGo88LhULfUfij0ehUMt+KAe9LpdLQnjZbrlarCWF9LKyfxWKxrFOr1U4Ey9disfiaeIIjINxfito9fRl3pE9+cNJUUgLKXNkfSEjMiARDQNnzDxkM+6UqDViiwCRoAIb7UtXYgEql8kHP5Z1M7ISA8SY9+cS+vxNFNrJCwDgCVu7ixc4I0ICdofy/hoynINPme72e0e+KdDo9fw9lu75pv1H1GAEo8gtdGkADwATA8owAGgAmAJZnBNAAMAGwPCOABoAJgOUZATQATAAszwigAWACYPmdvw39+5bTdFy265v2A1WPUxCK/EKXBoANMJ6CZD3jR+mr0Z8t4DHtlbyxAeVy+cFejWxPOsspCGyUGjDUJdPgfoROfsF8qDvlG7pePXQEwANW5nP23KARrBP65Ct8Wej2Z4OGynOLUqAmrGxR+g1+2+iAljtZbQAAAABJRU5ErkJggg==',
+    hideInTollPanel: true,
   },
   {
     meta: {
