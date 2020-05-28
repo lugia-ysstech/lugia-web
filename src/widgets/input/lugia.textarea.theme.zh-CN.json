@@ -1,0 +1,150 @@
+[
+  {
+    "widgetName": "Textarea",
+    "title": "段落文本输入框",
+    "viewProps": [
+      {
+        "name": "disabled",
+        "text": "禁用"
+      },
+      {
+        "name": "canClear",
+        "text": "清除功能"
+      },
+      {
+        "name": "resizeType",
+        "text": "固定宽高"
+      },
+      {
+        "name": "validateType",
+        "text": "校验类型"
+      },
+      {
+        "name": "validateStatus",
+        "text": "校验状态"
+      }
+    ],
+    "data": [
+      {
+        "title": "主体",
+        "iconClass": "input",
+        "data": [
+          {
+            "name": "输入框",
+            "path": [
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "输入框",
+                "desc": "输入框配置"
+              }
+            }
+          },
+          {
+            "name": "提示文本",
+            "path": [
+              "Placeholder"
+            ],
+            "description": {
+              "textPart": {
+                "text": "提示文本",
+                "desc": "提示文本配置"
+              }
+            },
+            "props": [
+              {
+                "name": "placeholder",
+                "typeInTheme": "text"
+              }
+            ]
+          },
+          {
+            "name": "输入文本",
+            "path": [
+              "Container"
+            ],
+            "description": {
+              "textPart": {
+                "text": "输入文本",
+                "desc": "输入文本配置"
+              }
+            },
+            "props": [
+              {
+                "name": "value",
+                "typeInTheme": "text"
+              }
+            ]
+          },
+          {
+            "name": "清除图标",
+            "path": [
+              "ClearButton"
+            ],
+            "description": {
+              "textPart": {
+                "text": "清除图标",
+                "desc": "清除图标配置"
+              }
+            },
+            "props": [
+              {
+                "name": "clearIcon",
+                "typeInTheme": "icon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "校验失败",
+        "iconClass": "Verificationfailed",
+        "data": [
+          {
+            "name": "配置校验失败的段落文本输入框",
+            "path": [
+              "ValidateErrorInput"
+            ],
+            "description": {
+              "textPart": {
+                "text": "校验失败的段落文本输入框",
+                "desc": "校验失败的段落文本输入框配置"
+              }
+            },
+            "props": [
+              {
+                "name": "value",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "失败提示",
+        "iconClass": "Failureprompt",
+        "data": [
+          {
+            "name": "校验失败提示信息",
+            "path": [
+              "ValidateErrorText"
+            ],
+            "description": {
+              "textPart": {
+                "text": "校验失败提示信息",
+                "desc": "校验失败的提示信息"
+              }
+            },
+            "props": [
+              {
+                "name": "help",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

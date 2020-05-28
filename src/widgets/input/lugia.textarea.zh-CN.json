@@ -177,6 +177,23 @@
         ["opacity"],
         ["boxShadow"]
       ],
+      "focus": [
+        [
+          "boxShadow"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "background"
+        ]
+      ],
       "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
       "disabled": [
         ["fontSize"],
@@ -216,6 +233,17 @@
         ["opacity"]
       ],
       "hover": [["background"], ["border"], ["boxShadow"]],
+      "focus": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ],
       "active": [["background"], ["border"], ["boxShadow"]]
     },
     "ValidateErrorText": {
