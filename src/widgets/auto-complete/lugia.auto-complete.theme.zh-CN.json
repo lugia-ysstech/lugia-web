@@ -1,7 +1,7 @@
 [
   {
     "widgetName": "AutoComplete",
-    "title": "多项选择器",
+    "title": "自动完成",
     "viewProps": [
       {
         "name": "disabled",
@@ -35,19 +35,8 @@
             }
           },
           {
-            "name": "输入框清除图标",
-            "path": ["AutoInput", "InputClearButton"],
-            "props": [{ "name": "suffix", "typeInTheme": "icon" }],
-            "description": {
-              "textPart": {
-                "text": "清除图标",
-                "desc": "文本配置区块的显示文本"
-              }
-            }
-          },
-          {
             "name": "提示文本",
-            "path": ["AutoInput", "InputClearButton"],
+            "path": ["AutoInput", "Placeholder"],
             "props": [{ "name": "placeholder", "typeInTheme": "text" }],
             "description": {
               "textPart": {
@@ -65,6 +54,17 @@
                 "desc": "文本配置区块的显示文本"
               }
             }
+          },
+          {
+            "name": "输入框清除图标",
+            "path": ["AutoInput", "InputClearButton"],
+            "props": [{ "name": "suffix", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": {
+                "text": "清除图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
           }
         ]
       },
@@ -75,7 +75,7 @@
           {
             "name": "前置图标配置",
             "path": ["AutoInput", "InputPrefix"],
-            "props": [{ "name": "suffix", "typeInTheme": "icon" }],
+            "props": [{ "name": "prefix", "typeInTheme": "icon" }],
             "description": {
               "textPart": {
                 "text": "前置图标",
@@ -93,10 +93,10 @@
             "description": {
               "textPart": {
                 "text": "后置图标",
-                "desc": "前置图标配置区块"
+                "desc": "后置图标配置区块"
               },
               "spacingPart": {
-                "desc": "前置图标内外边距配置区块"
+                "desc": "后置图标内外边距配置区块"
               }
             }
           }
@@ -109,7 +109,6 @@
           {
             "name": "选中文本",
             "path": ["OldItem"],
-            "props": [{ "name": "InputPrefix", "typeInTheme": "icon" }],
             "description": {
               "appearancePart": {
                 "text": "背景",
@@ -173,8 +172,8 @@
                 "path": ["MenuItem", "TextContainer"],
                 "description": {
                   "textPart": {
-                    "text": "padding/margin",
-                    "desc": "文本框置内外边距配置区"
+                    "text": "文本",
+                    "desc": "选中文本配置区块"
                   }
                 }
               }

@@ -225,6 +225,11 @@
           "hover": [],
           "clicked": [],
           "disabled": []
+        },
+        "Placeholder": {
+          "name": "输入框提示信息文字",
+          "desc": "输入框提示信息文字",
+          "normal": [["color"], ["fontSize"], ["font"]]
         }
       }
     },
