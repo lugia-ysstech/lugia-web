@@ -39,9 +39,6 @@ const hideInTollPanelComponents = {
   collapse: 'collapse',
   notification: 'notification',
   popover: 'popover',
-  loading: 'loading',
-  skeleton: 'skeleton',
-  divider: 'divider',
   tooltip: 'index',
   popconfirm: 'popconfirm',
 };
