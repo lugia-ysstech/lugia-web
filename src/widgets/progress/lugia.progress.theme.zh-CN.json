@@ -1,0 +1,590 @@
+[
+  {
+    "widgetName": "Progress",
+    "title": "进度条",
+    "viewProps": [
+      { "name": "showInfo", "text": "显示数值/图标" },
+      { "name": "showType", "text": "数据/图标位置" },
+      { "name": "percent", "text": "百分比" },
+      { "name": "status", "text": "状态" }
+    ],
+    "data": [
+      {
+        "title": "底色条",
+        "iconClass": "progress",
+        "data": [
+          {
+            "name": "进度条底色线配置",
+            "path": ["ProgressOutLine"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "进度条",
+        "iconClass": "progressing",
+        "data": [
+          {
+            "name": "进度条进度线默认配置",
+            "path": ["ProgressInnerLine_Default"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "数值",
+        "iconClass": "progressNumber",
+        "data": [
+          {
+            "name": "进度条内置文本配置",
+            "path": ["ProgressLineInsideText"],
+            "description": {
+              "appearancePart": {
+                "text": "内置数据",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "内置数据",
+                "desc": "文本配置区块的显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "进度条描述文本配置",
+            "path": ["ProgressLineInfoText"],
+            "description": {
+              "appearancePart": {
+                "text": "外置数据",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "外置数据",
+                "desc": "文本配置区块的显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "成功状态",
+        "iconClass": "progressSuccess",
+        "data": [
+          {
+            "name": "进度条进度线成功配置",
+            "path": ["ProgressInnerLine_Success"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "进度条成功图标配置",
+            "path": ["ProgressLineSuccessIcon"],
+            "description": {
+              "appearancePart": {
+                "text": "成功图标",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "成功图标",
+                "desc": "文本配置区块的显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "错误状态",
+        "iconClass": "progressError",
+        "data": [
+          {
+            "name": "进度条进度线失败配置",
+            "path": ["ProgressInnerLine_Error"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "进度条失败图标配置",
+            "path": ["ProgressLineErrorIcon"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "错误图标",
+                "desc": "文本配置区块的显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Progress",
+    "title": "进度条",
+    "viewProps": [
+      { "name": "showInfo", "text": "显示数值/图标" },
+      { "name": "showType", "text": "数据/图标位置" },
+      { "name": "percent", "text": "百分比" },
+      { "name": "status", "text": "状态" }
+    ],
+    "data": [
+      {
+        "title": "底色条",
+        "iconClass": "progress",
+        "data": [
+          {
+            "name": "进度条底色线配置",
+            "path": ["ProgressOutLine"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "进度条",
+        "iconClass": "progressing",
+        "data": [
+          {
+            "name": "进度条进度线默认配置",
+            "path": ["ProgressInnerLine_Default"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "数值",
+        "iconClass": "progressNumber",
+        "data": [
+          {
+            "name": "进度条内置文本配置",
+            "path": ["ProgressLineInsideText"],
+            "description": {
+              "appearancePart": {
+                "text": "内置数据",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "内置数据",
+                "desc": "文本配置区块的显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "进度条描述文本配置",
+            "path": ["ProgressLineInfoText"],
+            "description": {
+              "appearancePart": {
+                "text": "外置数据",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "外置数据",
+                "desc": "文本配置区块的显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "成功状态",
+        "iconClass": "progressSuccess",
+        "data": [
+          {
+            "name": "进度条进度线成功配置",
+            "path": ["ProgressInnerLine_Success"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "进度条成功图标配置",
+            "path": ["ProgressLineSuccessIcon"],
+            "description": {
+              "appearancePart": {
+                "text": "成功图标",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "成功图标",
+                "desc": "文本配置区块的显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "错误状态",
+        "iconClass": "progressError",
+        "data": [
+          {
+            "name": "进度条进度线失败配置",
+            "path": ["ProgressInnerLine_Error"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "进度条失败图标配置",
+            "path": ["ProgressLineErrorIcon"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "错误图标",
+                "desc": "文本配置区块的显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Progress",
+    "aliasName": "CircleProgress",
+    "title": "圆形进度条",
+    "viewProps": [
+      { "name": "showInfo", "text": "显示数值/图标" },
+      { "name": "percent", "text": "百分比" },
+      { "name": "status", "text": "状态" }
+    ],
+    "data": [
+      {
+        "title": "底色条",
+        "iconClass": "progressCricle",
+        "data": [
+          {
+            "name": "底色条",
+            "path": [""],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "进度条",
+        "iconClass": "progressingCircle",
+        "data": [
+          {
+            "name": "正常进度条",
+            "path": [""],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "数值",
+        "iconClass": "progressNumber",
+        "data": [
+          {
+            "name": "进度条文字配置",
+            "path": ["ProgressCircleText"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "文本",
+                "desc": "文本配置区块的显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "成功状态",
+        "iconClass": "progressDashboardSuccess",
+        "data": [
+          {
+            "name": "进度条成功图标配置",
+            "path": ["ProgressCircleSuccessIcon"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "成功图标",
+                "desc": "文本配置区块的显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "错误状态",
+        "iconClass": "progressDashboardError",
+        "data": [
+          {
+            "name": "进度条失败图标配置",
+            "path": ["ProgressCircleErrorIcon"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "错误图标",
+                "desc": "文本配置区块的显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Progress",
+    "aliasName": "DashboardProgress",
+    "title": "仪表盘进度条",
+    "viewProps": [
+      { "name": "showInfo", "text": "显示数值/图标" },
+      { "name": "percent", "text": "百分比" },
+      { "name": "status", "text": "状态" }
+    ],
+    "data": [
+      {
+        "title": "底色条",
+        "iconClass": "progressDashboard",
+        "data": [
+          {
+            "name": "底色条",
+            "path": [""],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "进度条",
+        "iconClass": "progressingDashboard",
+        "data": [
+          {
+            "name": "正常进度条",
+            "path": [""],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "数值",
+        "iconClass": "progressNumber",
+        "data": [
+          {
+            "name": "进度条文字配置",
+            "path": ["DashboardText"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "文本",
+                "desc": "文本配置区块的显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "成功状态",
+        "iconClass": "progressDashboardSuccess",
+        "data": [
+          {
+            "name": "进度条成功图标配置",
+            "path": ["ProgressDashboardSuccessIcon"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "成功图标",
+                "desc": "文本配置区块的显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "错误状态",
+        "iconClass": "progressDashboardError",
+        "data": [
+          {
+            "name": "进度条失败图标配置",
+            "path": ["ProgressDashboardErrorIcon"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "错误图标",
+                "desc": "文本配置区块的显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
