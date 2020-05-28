@@ -1,0 +1,558 @@
+[
+  {
+    "widgetName": "Menu",
+    "title": "菜单组件",
+    "viewProps": [
+      {
+        "name": "autoHeight",
+        "text": "自动高度"
+      },
+      {
+        "name": "divided",
+        "text": "是否展示分割线"
+      },
+      {
+        "name": "checkedCSS",
+        "text": "选择样式"
+      },
+      {
+        "name": "data",
+        "text": "数据绑定"
+      }
+    ],
+    "data": [
+      {
+        "title": "整体面板",
+        "iconClass": "menubackground",
+        "data": [
+          {
+            "name": "选择框整体配置",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外框",
+                "desc": "面板中外观配置的区"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "面板内外边距配置区"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "默认项",
+        "iconClass": "Default",
+        "data": [
+          {
+            "name": "项的外盒",
+            "path": ["MenuItem", "MenuItemWrap"],
+            "description": {
+              "appearancePart": {
+                "text": "选项背景",
+                "desc": "项的外盒外观配置区"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "项的外盒内外边距配置区"
+              }
+            }
+          },
+          {
+            "name": "文本框",
+            "path": ["MenuItem", "TextContainer"],
+            "description": {
+              "textPart": {
+                "text": "padding/margin",
+                "desc": "文本框置内外边距配置区"
+              }
+            }
+          },
+          {
+            "name": "辅助字段框",
+            "path": ["MenuItem", "DesContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "辅助文本",
+                "desc": "辅助文本外盒外观配置区"
+              },
+              "textPart": {
+                "text": "辅助文本",
+                "desc": "辅助文本文本配置区"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "辅助文本内外边距配置区"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "选中项",
+        "iconClass": "Checked",
+        "data": [
+          {
+            "name": "选中项的外盒",
+            "path": ["MenuItem", "SelectedMenuItemWrap"],
+            "description": {
+              "appearancePart": {
+                "text": "选项背景",
+                "desc": "文本配置区块的显示文本"
+              },
+              "textPart": {
+                "text": "标题文本",
+                "desc": "选中项辅助文本文本配置区"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "选中项内外边距配置区"
+              }
+            }
+          },
+          {
+            "name": "选中项辅助字段框",
+            "path": ["MenuItem", "SelectedDesContainer"],
+            "description": {
+              "textPart": {
+                "text": "辅助文本",
+                "desc": "辅助文本配置区块的"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "辅助文本内外边距配置区"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "分割线",
+        "iconClass": "Dividingline",
+        "data": [
+          {
+            "name": "分割线",
+            "path": ["MenuItem", "Divider"],
+            "description": {
+              "appearancePart": {
+                "text": "分割线",
+                "desc": "分割线外观配置"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "分割线内外边距配置区"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "前后缀图标",
+        "iconClass": "iconsmall",
+        "children": [
+          {
+            "title": "未选中",
+            "iconClass": "checkboxUncheck",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["MenuItem", "PrefixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标文本配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "前缀图标内外边距配置区"
+                  }
+                }
+              },
+              {
+                "name": "后缀图标",
+                "path": ["MenuItem", "SuffixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标文本配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "后缀图标内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "选中",
+            "iconClass": "checkboxCheck",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["MenuItem", "PrefixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标文本配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "前缀图标内外边距配置区"
+                  }
+                }
+              },
+              {
+                "name": "后缀图标",
+                "path": ["MenuItem", "SuffixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标文本配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "后缀图标内外边距配置区"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "选择器",
+        "iconClass": "checkboxCheck",
+        "children": [
+          {
+            "title": "未选中",
+            "iconClass": "checkboxUncheck",
+            "data": [
+              {
+                "name": "Checkbox未选中边框配置",
+                "path": ["MenuItem", "Checkbox", "CheckboxEdgeUnChecked"],
+                "description": {
+                  "appearancePart": {
+                    "desc": "文本配置区块的显示文本"
+                  },
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "Checkbox未选中边框配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "后缀图标内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "选中",
+            "iconClass": "checkboxCheck",
+            "data": [
+              {
+                "name": "Checkbox选中后边框配置",
+                "path": ["MenuItem", "Checkbox", "CheckboxEdgeChecked"],
+                "description": {
+                  "appearancePart": {
+                    "desc": "Checkbox选中后边框配置"
+                  }
+                }
+              },
+              {
+                "name": "Checkbox选中样式配置",
+                "path": ["MenuItem", "Checkbox", "CheckboxInnerChecked"],
+                "description": {
+                  "appearancePart": {
+                    "desc": "Checkbox选中样式配置"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Menu",
+    "aliasName": "MutlipleMenu",
+    "title": "多选菜单",
+    "viewProps": [
+      {
+        "name": "autoHeight",
+        "text": "自动高度"
+      },
+      {
+        "name": "divided",
+        "text": "是否展示分割线"
+      },
+      {
+        "name": "checkedCSS",
+        "text": "选择样式"
+      },
+      {
+        "name": "data",
+        "text": "数据绑定"
+      }
+    ],
+    "data": [
+      {
+        "title": "整体面板",
+        "iconClass": "menubackground",
+        "data": [
+          {
+            "name": "选择框整体配置",
+            "path": ["Container"],
+            "props": [{ "name": "placeholder", "typeInTheme": "text" }],
+            "description": {
+              "appearancePart": {
+                "text": "外框",
+                "desc": "面板中外观配置的区"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "面板内外边距配置区"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "默认项",
+        "iconClass": "Default",
+        "data": [
+          {
+            "name": "项的外盒",
+            "path": ["MenuItem", "MenuItemWrap"],
+            "description": {
+              "appearancePart": {
+                "text": "选项背景",
+                "desc": "项的外盒外观配置区"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "项的外盒内外边距配置区"
+              }
+            }
+          },
+          {
+            "name": "文本框",
+            "path": ["MenuItem", "TextContainer"],
+            "description": {
+              "textPart": {
+                "text": "padding/margin",
+                "desc": "文本框置内外边距配置区"
+              }
+            }
+          },
+          {
+            "name": "辅助字段框",
+            "path": ["MenuItem", "DesContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "辅助文本",
+                "desc": "辅助文本外盒外观配置区"
+              },
+              "textPart": {
+                "text": "辅助文本",
+                "desc": "辅助文本文本配置区"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "辅助文本内外边距配置区"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "选中项",
+        "iconClass": "Checked",
+        "data": [
+          {
+            "name": "选中项的外盒",
+            "path": ["MenuItem", "SelectedMenuItemWrap"],
+            "description": {
+              "appearancePart": {
+                "text": "选项背景",
+                "desc": "文本配置区块的显示文本"
+              },
+              "textPart": {
+                "text": "标题文本",
+                "desc": "选中项辅助文本文本配置区"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "选中项内外边距配置区"
+              }
+            }
+          },
+          {
+            "name": "选中项辅助字段框",
+            "path": ["MenuItem", "SelectedDesContainer"],
+            "description": {
+              "textPart": {
+                "text": "辅助文本",
+                "desc": "辅助文本配置区块的"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "辅助文本内外边距配置区"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "分割线",
+        "iconClass": "Dividingline",
+        "data": [
+          {
+            "name": "分割线",
+            "path": ["MenuItem", "Divider"],
+            "description": {
+              "appearancePart": {
+                "text": "分割线",
+                "desc": "分割线外观配置"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "分割线内外边距配置区"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "前后缀图标",
+        "iconClass": "iconsmall",
+        "children": [
+          {
+            "title": "未选中",
+            "iconClass": "checkboxUncheck",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["MenuItem", "PrefixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标文本配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "前缀图标内外边距配置区"
+                  }
+                }
+              },
+              {
+                "name": "后缀图标",
+                "path": ["MenuItem", "SuffixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标文本配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "后缀图标内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "选中",
+            "iconClass": "checkboxCheck",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["MenuItem", "SelectedPrefixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标文本配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "前缀图标内外边距配置区"
+                  }
+                }
+              },
+              {
+                "name": "后缀图标",
+                "path": ["MenuItem", "SelectedSuffixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标文本配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "后缀图标内外边距配置区"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "选择器",
+        "iconClass": "checkboxCheck",
+        "children": [
+          {
+            "title": "未选中",
+            "iconClass": "checkboxUncheck",
+            "data": [
+              {
+                "name": "Checkbox未选中边框配置",
+                "path": ["MenuItem", "Checkbox", "CheckboxEdgeUnChecked"],
+                "description": {
+                  "appearancePart": {
+                    "desc": "文本配置区块的显示文本"
+                  },
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "Checkbox未选中边框配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "后缀图标内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "选中",
+            "iconClass": "checkboxCheck",
+            "data": [
+              {
+                "name": "Checkbox选中后边框配置",
+                "path": ["MenuItem", "Checkbox", "CheckboxEdgeChecked"],
+                "description": {
+                  "appearancePart": {
+                    "desc": "Checkbox选中后边框配置"
+                  }
+                }
+              },
+              {
+                "name": "Checkbox选中样式配置",
+                "path": ["MenuItem", "Checkbox", "CheckboxInnerChecked"],
+                "description": {
+                  "appearancePart": {
+                    "desc": "Checkbox选中样式配置"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
