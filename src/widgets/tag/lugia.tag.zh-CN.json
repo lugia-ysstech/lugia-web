@@ -97,7 +97,7 @@
 
         "CloseButton": {
           "name": "关闭按钮",
-          "desc": "隐藏按钮的样式配置",
+          "desc": "关闭按钮的样式配置",
           "normal": [["font"], ["color"], ["margin"]],
           "hover": [["font"], ["color"]],
           "active": [],
@@ -217,6 +217,14 @@
         ["opacity"],
         ["font"]
       ],
+      "active": [],
+      "disabled": []
+    },
+    "CloseButton": {
+      "name": "关闭按钮",
+      "desc": "关闭按钮的样式配置",
+      "normal": [["font"], ["color"], ["margin"]],
+      "hover": [["font"], ["color"]],
       "active": [],
       "disabled": []
     }
