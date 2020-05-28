@@ -13,7 +13,7 @@
       },
       {
         "name": "canClear",
-        "text": "清楚功能"
+        "text": "清除功能"
       },
       {
         "name": "data",
@@ -28,7 +28,7 @@
           {
             "name": "选择框整体配置",
             "path": ["Container"],
-            "props": [{ "name": "placeholder", "typeInTheme": "text" }],
+
             "description": {
               "appearancePart": {
                 "text": "选择框",
@@ -37,6 +37,23 @@
               "textPart": {
                 "text": "默认文本",
                 "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "提示文本",
+            "props": [{ "name": "placeholder", "typeInTheme": "text" }],
+            "path": ["Placeholder"],
+            "description": {
+              "textPart": {
+                "text": "默认文本",
+                "desc": "文本配置区块的显示文本"
+              },
+              "appearancePart": {
+                "hidden": true
+              },
+              "spacingPart": {
+                "hidden": true
               }
             }
           },
@@ -281,7 +298,7 @@
       },
       {
         "name": "canClear",
-        "text": "清楚功能"
+        "text": "清除功能"
       },
       {
         "name": "data",
@@ -305,6 +322,23 @@
               "textPart": {
                 "text": "默认文本",
                 "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "提示文本",
+            "props": [{ "name": "placeholder", "typeInTheme": "text" }],
+            "path": ["Placeholder"],
+            "description": {
+              "textPart": {
+                "text": "默认文本",
+                "desc": "文本配置区块的显示文本"
+              },
+              "appearancePart": {
+                "hidden": true
+              },
+              "spacingPart": {
+                "hidden": true
               }
             }
           },
@@ -422,9 +456,6 @@
             "name": "标签删除按钮",
             "path": ["TagIcon"],
             "description": {
-              "appearancePart": {
-                "hidden": true
-              },
               "textPart": {
                 "text": "关闭图标",
                 "desc": "选择文本文本配置"
