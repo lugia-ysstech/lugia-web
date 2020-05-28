@@ -97,7 +97,7 @@
       "propsDefaultValue": "primary"
     },
     "themeStyle": {
-      "type": "light | dark",
+      "type": "themeStyleType",
       "desc": "菜单类型为inline(内嵌模式)时,支持两种主题",
       "propsDefaultValue": "light"
     },
@@ -146,7 +146,9 @@
     }
   },
   "category": ["导航"],
-
+  "type": {
+    "themeStyleType": ["light", "dark"]
+  },
   "designInfo": {
     "HorizontalNavMenu": {
       "sequence": 1,
@@ -162,7 +164,7 @@
             "TitleContainer": {
               "name": "头部标签区域",
               "desc": "头部标签区域宽度配置",
-              "normal": [["width"]],
+              "normal": [["width"], ["background"], ["textAlign"]],
               "hover": [],
               "clicked": [],
               "disabled": []
@@ -170,7 +172,7 @@
             "BorderStyle": {
               "name": "默认线",
               "desc": "默认线样式配置",
-              "normal": [["border"]],
+              "normal": [["background"], ["width"]],
               "hover": [],
               "clicked": [],
               "disabled": []
@@ -237,6 +239,11 @@
                   "normal": [["color"], ["font"]],
                   "hover": [["color"], ["font"]],
                   "disabled": [["color"], ["font"]]
+                },
+                "SelectLine": {
+                  "name": "选中页签底部标识线",
+                  "desc": "选中页签底部标识线样式配置",
+                  "normal": [["height"], ["background"]]
                 }
               }
             }
@@ -331,6 +338,14 @@
                     ["color"],
                     ["font"]
                   ],
+                  "disabled": []
+                },
+                "Divider": {
+                  "name": "分割线",
+                  "desc": "配置每项之间的分割线，当divided为true时生效",
+                  "normal": [["background"]],
+                  "hover": [],
+                  "active": [],
                   "disabled": []
                 }
               }
@@ -964,6 +979,25 @@
                 "SelectedText": {
                   "name": "选中项的文本框区域",
                   "desc": "配置选中项的文本框区域的样式",
+                  "normal": [
+                    ["color"],
+                    ["font"],
+                    ["fontSize"],
+                    ["background"],
+                    ["padding"],
+                    ["border"],
+                    ["opacity"],
+                    ["boxShadow"],
+                    ["borderRadius"]
+                  ],
+                  "hover": [],
+                  "active": [],
+                  "disabled": []
+                },
+
+                "SelectedParentText": {
+                  "name": "选中项的父节点文本框区域",
+                  "desc": "配置选中项的父节点文本框区域的样式",
                   "normal": [
                     ["color"],
                     ["font"],
