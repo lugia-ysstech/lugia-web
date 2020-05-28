@@ -129,13 +129,7 @@
                 "text": "校验失败的输入框",
                 "desc": "校验失败的输入框配置"
               }
-            },
-            "props": [
-              {
-                "name": "value",
-                "typeInTheme": "text"
-              }
-            ]
+            }
           }
         ]
       },
@@ -151,7 +145,13 @@
                 "text": "校验失败提示信息",
                 "desc": "配置校验失败的提示信息"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "help",
+                "typeInTheme": "text"
+              }
+            ]
           }
         ]
       }
