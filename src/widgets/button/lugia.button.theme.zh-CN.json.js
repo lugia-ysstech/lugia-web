@@ -27,6 +27,7 @@
           {
             name: '按钮文字样式',
             path: ['ButtonText'],
+            props: [{ name: 'text', typeInTheme: 'string' }],
             description: {
               appearancePart: {
                 text: '文本',
@@ -63,7 +64,7 @@
   {
     widgetName: 'Button',
     aliasName: 'IconButton',
-    title: '按钮',
+    title: '图标按钮',
     viewProps: [
       { name: 'disabled', text: '禁用' },
       { name: 'loading', text: '加载中' },
@@ -89,6 +90,7 @@
           {
             name: '按钮文字样式',
             path: ['ButtonText'],
+            props: [{ name: 'icon', typeInTheme: 'icon' }],
             description: {
               textPart: {
                 text: '图标',
@@ -103,7 +105,7 @@
   {
     widgetName: 'Button',
     aliasName: 'LinkButton',
-    title: '按钮',
+    title: '文字按钮',
     viewProps: [
       { name: 'disabled', text: '禁用' },
       { name: 'loading', text: '加载中' },
@@ -129,6 +131,7 @@
           {
             name: '按钮文字样式',
             path: ['ButtonText'],
+            props: [{ name: 'text', typeInTheme: 'string' }],
             description: {
               appearancePart: {
                 text: '图标',
@@ -143,7 +146,7 @@
   {
     widgetName: 'Button',
     aliasName: 'LinkIconButton',
-    title: '按钮',
+    title: '文字图标按钮',
     viewProps: [
       { name: 'disabled', text: '禁用' },
       { name: 'loading', text: '加载中' },
@@ -169,6 +172,7 @@
           {
             name: '文字样式',
             path: ['ButtonText'],
+            props: [{ name: 'text', typeInTheme: 'string' }],
             description: {
               appearancePart: {
                 text: '文本',
