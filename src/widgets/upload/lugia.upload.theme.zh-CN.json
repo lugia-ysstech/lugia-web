@@ -6,7 +6,6 @@
       { "name": "disabled", "text": "禁用" },
       { "name": "multiple", "text": "多文件上传" },
       { "name": "showFileList", "text": "显示上传列表" },
-      { "name": "autoUpload", "text": "失败提醒" },
       { "name": "limit", "text": "上传最大文件数" },
       { "name": "fileList", "text": "列表数据编辑" }
     ],
@@ -79,7 +78,6 @@
       { "name": "disabled", "text": "禁用" },
       { "name": "multiple", "text": "多文件上传" },
       { "name": "showFileList", "text": "显示上传列表" },
-      { "name": "autoUpload", "text": "失败提醒" },
       { "name": "limit", "text": "上传最大文件数" },
       { "name": "fileList", "text": "列表数据编辑" }
     ],
@@ -152,7 +150,6 @@
       { "name": "disabled", "text": "禁用" },
       { "name": "multiple", "text": "多文件上传" },
       { "name": "showFileList", "text": "显示上传列表" },
-      { "name": "autoUpload", "text": "失败提醒" },
       { "name": "limit", "text": "上传最大文件数" },
       { "name": "fileList", "text": "列表数据编辑" }
     ],
@@ -225,7 +222,6 @@
       { "name": "disabled", "text": "禁用" },
       { "name": "multiple", "text": "多文件上传" },
       { "name": "showFileList", "text": "显示上传列表" },
-      { "name": "autoUpload", "text": "失败提醒" },
       { "name": "limit", "text": "上传最大文件数" },
       { "name": "fileList", "text": "列表数据编辑" }
     ],
@@ -298,7 +294,6 @@
       { "name": "disabled", "text": "禁用" },
       { "name": "multiple", "text": "多文件上传" },
       { "name": "showFileList", "text": "显示上传列表" },
-      { "name": "autoUpload", "text": "失败提醒" },
       { "name": "limit", "text": "上传最大文件数" },
       { "name": "fileList", "text": "列表数据编辑" }
     ],
