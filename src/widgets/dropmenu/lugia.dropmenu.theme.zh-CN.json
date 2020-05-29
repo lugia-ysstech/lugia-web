@@ -21,9 +21,6 @@
                 "text": "整体背景",
                 "desc": "整体背景外观配置的区"
               },
-              "textPart": {
-                "hidden": true
-              },
               "spacingPart": {
                 "hidden": true
               }
@@ -52,9 +49,6 @@
               "textPart": {
                 "text": "文本",
                 "desc": "文本展示板背景外观配置"
-              },
-              "spacingPart": {
-                "desc": "文本展示板背景内外边距配置"
               }
             }
           }
@@ -90,9 +84,6 @@
               "appearancePart": {
                 "text": "背景",
                 "desc": "选择框外观配置的区"
-              },
-              "textPart": {
-                "hidden": true
               },
               "spacingPart": {
                 "hidden": true
@@ -155,9 +146,6 @@
             "description": {
               "appearancePart": {
                 "text": "分割线",
-                "desc": "选择框外观配置的区"
-              },
-              "textPart": {
                 "desc": "选择框外观配置的区"
               }
             }
@@ -339,7 +327,7 @@
         "iconClass": "dropmenuFalseText",
         "data": [
           {
-            "name": "选择框整体配置",
+            "name": "文本配置",
             "path": ["TextContainer"],
             "props": [
               {
@@ -354,9 +342,6 @@
               "textPart": {
                 "text": "文本",
                 "desc": "文本展示板文本配置"
-              },
-              "spacingPart": {
-                "hidden": true
               }
             }
           }

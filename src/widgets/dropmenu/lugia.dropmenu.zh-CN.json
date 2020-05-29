@@ -14,7 +14,7 @@
       "propsDefaultValue": true
     },
     "size": {
-      "type": "sizeType",
+      "type": "SizeType",
       "desc": "可配置三种尺寸大小的dropmenu",
       "propsDefaultValue": "default"
     },
@@ -38,7 +38,7 @@
       "desc": "弹出项组件"
     },
     "align": {
-      "type": "alignType",
+      "type": "AlignType",
       "desc": "弹出方向",
       "propsDefaultValue": "bottom"
     },
@@ -197,8 +197,8 @@
     }
   },
   "type": {
-    "alignType": ["topLeft", "top", "topRight", "bottomLeft", "bottom", "bottomRight"],
-    "sizeType": ["small", "default", "large"],
+    "AlignType": ["topLeft", "top", "topRight", "bottomLeft", "bottom", "bottomRight"],
+    "SizeType": ["small", "default", "large"],
     "StyleType": ["customs", "primary", "basic"],
     "ActionType": ["hover", "click"]
   },
