@@ -1,0 +1,52 @@
+[
+  {
+    "widgetName": "Message",
+    "title": "全局提示",
+    "viewProps": [{ "name": "time", "text": "延时关闭" }],
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "",
+        "iconClass": "",
+        "data": [
+          {
+            "name": "Message整体样式配置",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景框",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "Message文字样式配置",
+            "path": ["MessageText"],
+            "props": [
+              {
+                "name": "content",
+                "typeInTheme": "text"
+              }
+            ],
+            "description": {
+              "textPart": {
+                "text": "文本",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "Message图标样式配置",
+            "path": ["MessageIcon"],
+            "description": {
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
