@@ -180,46 +180,6 @@
     ],
     "data": [
       {
-        "title": "底色条",
-        "iconClass": "progressCricle",
-        "data": [
-          {
-            "name": "底色条",
-            "path": [""],
-            "description": {
-              "appearancePart": {
-                "text": "外观",
-                "desc": "面板中外观配置的区块显示文本"
-              },
-              "spacingPart": {
-                "text": "padding/margin",
-                "desc": "内外边距配置区块的显示文本"
-              }
-            }
-          }
-        ]
-      },
-      {
-        "title": "进度条",
-        "iconClass": "progressingCircle",
-        "data": [
-          {
-            "name": "正常进度条",
-            "path": [""],
-            "description": {
-              "appearancePart": {
-                "text": "外观",
-                "desc": "面板中外观配置的区块显示文本"
-              },
-              "spacingPart": {
-                "text": "padding/margin",
-                "desc": "内外边距配置区块的显示文本"
-              }
-            }
-          }
-        ]
-      },
-      {
         "title": "数值",
         "iconClass": "progressNumber",
         "data": [
@@ -303,46 +263,6 @@
       { "name": "status", "text": "状态" }
     ],
     "data": [
-      {
-        "title": "底色条",
-        "iconClass": "progressDashboard",
-        "data": [
-          {
-            "name": "底色条",
-            "path": [""],
-            "description": {
-              "appearancePart": {
-                "text": "外观",
-                "desc": "面板中外观配置的区块显示文本"
-              },
-              "spacingPart": {
-                "text": "padding/margin",
-                "desc": "内外边距配置区块的显示文本"
-              }
-            }
-          }
-        ]
-      },
-      {
-        "title": "进度条",
-        "iconClass": "progressingDashboard",
-        "data": [
-          {
-            "name": "正常进度条",
-            "path": [""],
-            "description": {
-              "appearancePart": {
-                "text": "外观",
-                "desc": "面板中外观配置的区块显示文本"
-              },
-              "spacingPart": {
-                "text": "padding/margin",
-                "desc": "内外边距配置区块的显示文本"
-              }
-            }
-          }
-        ]
-      },
       {
         "title": "数值",
         "iconClass": "progressNumber",
