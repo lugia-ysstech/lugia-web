@@ -64,7 +64,7 @@
             "path": ["MenuItem", "TextContainer"],
             "description": {
               "textPart": {
-                "text": "padding/margin",
+                "text": "文本",
                 "desc": "文本框置内外边距配置区"
               }
             }
@@ -74,7 +74,7 @@
             "path": ["MenuItem", "DesContainer"],
             "description": {
               "appearancePart": {
-                "text": "辅助文本",
+                "text": "外观",
                 "desc": "辅助文本外盒外观配置区"
               },
               "textPart": {
@@ -336,7 +336,7 @@
             "path": ["MenuItem", "TextContainer"],
             "description": {
               "textPart": {
-                "text": "padding/margin",
+                "text": "文本",
                 "desc": "文本框置内外边距配置区"
               }
             }
