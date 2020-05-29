@@ -48,12 +48,6 @@
               "textPart": {
                 "text": "默认文本",
                 "desc": "文本配置区块的显示文本"
-              },
-              "appearancePart": {
-                "hidden": true
-              },
-              "spacingPart": {
-                "hidden": true
               }
             }
           },
@@ -62,7 +56,7 @@
             "path": ["TextContent"],
             "description": {
               "textPart": {
-                "text": "默认文本",
+                "text": "选择文本",
                 "desc": "文本配置区块的显示文本"
               }
             }
@@ -194,7 +188,7 @@
                 "path": ["Menu", "MenuItem", "TextContainer"],
                 "description": {
                   "textPart": {
-                    "text": "padding/margin",
+                    "text": "文本框",
                     "desc": "文本框置内外边距配置区"
                   }
                 }
@@ -313,7 +307,6 @@
           {
             "name": "选择框整体配置",
             "path": ["Container"],
-            "props": [{ "name": "placeholder", "typeInTheme": "text" }],
             "description": {
               "appearancePart": {
                 "text": "选择框",
@@ -333,12 +326,6 @@
               "textPart": {
                 "text": "默认文本",
                 "desc": "文本配置区块的显示文本"
-              },
-              "appearancePart": {
-                "hidden": true
-              },
-              "spacingPart": {
-                "hidden": true
               }
             }
           },
@@ -347,7 +334,7 @@
             "path": ["TextContent"],
             "description": {
               "textPart": {
-                "text": "默认文本",
+                "text": "选择文本",
                 "desc": "文本配置区块的显示文本"
               }
             }
@@ -560,8 +547,8 @@
                 "path": ["Menu", "MenuItem", "TextContainer"],
                 "description": {
                   "textPart": {
-                    "text": "padding/margin",
-                    "desc": "文本框置内外边距配置区"
+                    "text": "文本",
+                    "desc": "文本框内外边距配置区"
                   }
                 }
               }
