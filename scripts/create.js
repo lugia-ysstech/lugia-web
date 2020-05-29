@@ -35,12 +35,12 @@ const componentInvalid = [
 const hideInTollPanelComponents = {
   message: 'message',
   modal: 'modal',
-  anchor: 'anchor',
-  collapse: 'collapse',
+  anchor: 'index',
+  collapse: 'index',
   notification: 'notification',
-  popover: 'popover',
+  popover: 'index',
   tooltip: 'index',
-  popconfirm: 'popconfirm',
+  popconfirm: 'index',
 };
 const themeInvalid = [...commonInvalid];
 
