@@ -202,12 +202,6 @@
               {
                 "name": "后缀图标",
                 "path": ["Tree", "TreeItem", "SuffixIcon"],
-                "props": [
-                  {
-                    "name": "data",
-                    "typeInTheme": "icon"
-                  }
-                ],
                 "description": {
                   "textPart": {
                     "text": "后缀图标",
@@ -222,7 +216,7 @@
             "iconClass": "expandIcon",
             "data": [
               {
-                "name": "前缀图标",
+                "name": "展开图标",
                 "path": ["Tree", "TreeItem", "SwitchIcon"],
                 "props": [
                   {
@@ -233,7 +227,7 @@
                 "description": {
                   "textPart": {
                     "text": "图标",
-                    "desc": "前缀图标文本配置区"
+                    "desc": "展开图标文本配置区"
                   }
                 }
               }
@@ -590,7 +584,7 @@
             "iconClass": "expandIcon",
             "data": [
               {
-                "name": "下拉图标",
+                "name": "展开图标",
                 "path": ["Tree", "TreeItem", "SwitchIcon"],
                 "props": [
                   {
@@ -601,7 +595,7 @@
                 "description": {
                   "textPart": {
                     "text": "图标",
-                    "desc": "图标文本配置区"
+                    "desc": "展开图标文本配置区"
                   }
                 }
               }
