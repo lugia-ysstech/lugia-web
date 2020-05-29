@@ -2,10 +2,7 @@
   {
     "widgetName": "Modal",
     "title": "对话框",
-    "viewProps": [
-      { "name": "footer", "text": "按钮关闭" },
-      { "name": "maskClosable", "text": "点击遮罩关闭" }
-    ],
+    "viewProps": [{ "name": "maskClosable", "text": "点击遮罩关闭" }],
     "data": [
       {
         "title": "主题部分",
@@ -52,21 +49,6 @@
             }
           }
         ]
-      },
-      {
-        "title": "默认按钮",
-        "iconClass": "buttonAffirm",
-        "data": []
-      },
-      {
-        "title": "取消按钮",
-        "iconClass": "buttonCancel",
-        "data": []
-      },
-      {
-        "title": "遮罩部分",
-        "iconClass": "mask",
-        "data": []
       }
     ]
   }
