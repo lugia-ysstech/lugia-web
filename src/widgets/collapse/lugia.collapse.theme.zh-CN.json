@@ -86,9 +86,7 @@
     "widgetName": "Collapse.Panel",
     "title": "Panel 面板",
     "viewProps": [
-      { "name": "showArrow", "text": "展示箭头" },
-      { "name": "accordion", "text": "手风琴模式" },
-      { "name": "zebraStripe", "text": "斑马风格" }
+      { "name": "showArrow", "text": "展示箭头" }
     ],
     "data": [
       {
