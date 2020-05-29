@@ -214,16 +214,16 @@
         ]
       },
       {
-        "title": "文字样式",
+        "title": "文字",
         "iconClass": "radioText",
         "data": [
           {
             "name": "文字样式",
             "path": ["Checkbox", "CheckboxText"],
             "description": {
-              "appearancePart": {
-                "text": "外框",
-                "desc": "面板中外观配置的区块显示文本"
+              "textPart": {
+                "text": "文本",
+                "desc": "文本配置区块的显示文本"
               }
             }
           }
