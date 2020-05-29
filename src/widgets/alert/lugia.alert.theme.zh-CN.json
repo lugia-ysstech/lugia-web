@@ -31,6 +31,12 @@
           {
             "name": "警告提示内容样式",
             "path": ["AlertMessage"],
+            "props": [
+              {
+                "name": "message",
+                "typeInTheme": "text"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "标题文本",
@@ -41,6 +47,12 @@
           {
             "name": "警告提示辅助性文字样式",
             "path": ["AlertDescription"],
+            "props": [
+              {
+                "name": "description",
+                "typeInTheme": "text"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "辅助文本",
@@ -55,8 +67,14 @@
         "iconClass": "alertIcon",
         "data": [
           {
-            "name": "警告提示关闭文字样式",
-            "path": ["CloseText"],
+            "name": "警告提示图标样式",
+            "path": ["AlertIcon"],
+            "props": [
+              {
+                "name": "icon",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "图标",
@@ -71,8 +89,14 @@
         "iconClass": "iconClose",
         "data": [
           {
-            "name": "警告提示图标样式",
-            "path": ["AlertIcon"],
+            "name": "警告提示关闭文字样式",
+            "path": ["CloseText"],
+            "props": [
+              {
+                "name": "closeText",
+                "typeInTheme": "text"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "文本",
