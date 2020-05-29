@@ -120,12 +120,6 @@
           {
             "name": "前缀图标",
             "path": ["TreeItem", "PrefixIcon"],
-            "props": [
-              {
-                "name": "data",
-                "typeInTheme": "icon"
-              }
-            ],
             "description": {
               "textPart": {
                 "text": "前缀图标",
@@ -139,12 +133,6 @@
           {
             "name": "后缀图标",
             "path": ["TreeItem", "SuffixIcon"],
-            "props": [
-              {
-                "name": "data",
-                "typeInTheme": "icon"
-              }
-            ],
             "description": {
               "textPart": {
                 "text": "后缀图标",
@@ -162,7 +150,7 @@
         "iconClass": "expandIcon",
         "data": [
           {
-            "name": "前缀图标",
+            "name": "下拉图标",
             "path": ["TreeItem", "SwitchIcon"],
             "props": [
               {
@@ -173,7 +161,7 @@
             "description": {
               "textPart": {
                 "text": "图标",
-                "desc": "图标"
+                "desc": "下拉图标"
               }
             }
           }
@@ -343,12 +331,6 @@
           {
             "name": "前缀图标",
             "path": ["TreeItem", "PrefixIcon"],
-            "props": [
-              {
-                "name": "data",
-                "typeInTheme": "icon"
-              }
-            ],
             "description": {
               "textPart": {
                 "text": "前缀图标",
@@ -362,12 +344,6 @@
           {
             "name": "后缀图标",
             "path": ["TreeItem", "SuffixIcon"],
-            "props": [
-              {
-                "name": "data",
-                "typeInTheme": "icon"
-              }
-            ],
             "description": {
               "textPart": {
                 "text": "后缀图标",
@@ -385,7 +361,7 @@
         "iconClass": "expandIcon",
         "data": [
           {
-            "name": "前缀图标",
+            "name": "下拉图标",
             "path": ["TreeItem", "SwitchIcon"],
             "props": [
               {
@@ -396,7 +372,7 @@
             "description": {
               "textPart": {
                 "text": "图标",
-                "desc": "图标"
+                "desc": "下拉图标"
               }
             }
           }
