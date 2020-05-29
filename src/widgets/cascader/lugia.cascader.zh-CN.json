@@ -398,6 +398,15 @@
               "disabled": []
             },
 
+            "DesContainer": {
+              "name": "辅助字段框",
+              "desc": "配置辅助文本的样式和位置",
+              "normal": [["color"], ["font"], ["fontSize"], ["padding"], ["lineHeight"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": []
+            },
+
             "TextContainer": {
               "name": "文本框",
               "desc": "配置文本和前缀后缀图标的位置",
