@@ -30,7 +30,7 @@
             "props": [
               {
                 "name": "prefix",
-                "typeInTheme": "icon"
+                "typeInTheme": "string"
               }
             ]
           }
