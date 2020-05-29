@@ -78,7 +78,7 @@
     "create-info": "lugia-create-info"
   },
   "devDependencies": {
-    "@lugia/devtools-material": "^1.0.43-alpha.1",
+    "@lugia/devtools-material": "^1.0.43-alpha.2",
     "@lugia/jverify": "^1.0.10",
     "@lugia/lugiax-router": "^1.0.22",
     "@lugia/mega-scripts": "^1.4.17",
