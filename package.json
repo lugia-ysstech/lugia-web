@@ -1,6 +1,6 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.2.4-alpha.34",
+  "version": "1.2.4-alpha.35",
   "keywords": [
     "lugia",
     "design",
@@ -21,7 +21,6 @@
     "@lugia/math": "^1.0.10",
     "@lugia/object-utils": "^1.0.16",
     "@lugia/ramada": "^1.0.5",
-    "@lugia/theme-config": "^1.1.3",
     "@lugia/theme-css-hoc": "^1.1.10",
     "@lugia/theme-hoc": "^1.1.3",
     "@lugia/theme-utils": "^1.1.7",
@@ -49,7 +48,8 @@
   "peerDependencies": {
     "react": ">16.8.0",
     "react-dom": ">16.0.0",
-    "styled-components": "4.2.0"
+    "styled-components": "4.2.0",
+    "@lugia/theme-config": ">1.1.3"
   },
   "repository": {
     "type": "git",
@@ -78,6 +78,7 @@
     "create-info": "lugia-create-info"
   },
   "devDependencies": {
+    "@lugia/theme-config": "^1.1.3",
     "@lugia/devtools-material": "^1.0.43-alpha.2",
     "@lugia/jverify": "^1.0.10",
     "@lugia/lugiax-router": "^1.0.22",
