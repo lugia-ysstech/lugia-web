@@ -6,7 +6,7 @@
     "closable": {
       "type": "boolean",
       "desc": "标签是否可关闭",
-      "propsDefaultValue": true
+      "propsDefaultValue": false
     },
     "text": {
       "type": "string",
