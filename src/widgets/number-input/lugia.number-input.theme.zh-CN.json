@@ -41,16 +41,6 @@
                 "text": "输入框",
                 "desc": "输入框配置"
               }
-            }
-          },
-          {
-            "name": "输入文本",
-            "path": ["Container"],
-            "description": {
-              "textPart": {
-                "text": "输入文本",
-                "desc": "输入文本配置"
-              }
             },
             "props": [
               {
@@ -66,11 +56,11 @@
         "iconClass": "StepIcon",
         "data": [
           {
-            "name": "步长图标包裹框配置",
+            "name": "外观",
             "path": ["ArrowIconContainer"],
             "description": {
               "appearancePart": {
-                "text": "步长图标包裹框",
+                "text": "外框",
                 "desc": "数字输入框步长图标包裹框配置"
               },
               "textPart": {
@@ -99,14 +89,11 @@
           },
           {
             "name": "步长图标配置",
-            "path": ["InputArrowIcon"],
+            "path": ["InputArrowSubtractIcon"],
             "description": {
               "textPart": {
                 "text": "减少的步长图标",
                 "desc": "数字输入框减少的步长图标"
-              },
-              "appearancePart": {
-                "hidden": true
               }
             },
             "props": [
