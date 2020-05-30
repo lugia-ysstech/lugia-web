@@ -27,7 +27,7 @@
           {
             name: '按钮文字样式',
             path: ['ButtonText'],
-            props: [{ name: 'text', typeInTheme: 'string' }],
+            props: [{ name: 'text', typeInTheme: 'text' }],
             description: {
               appearancePart: {
                 text: '文本',
@@ -131,7 +131,7 @@
           {
             name: '按钮文字样式',
             path: ['ButtonText'],
-            props: [{ name: 'text', typeInTheme: 'string' }],
+            props: [{ name: 'text', typeInTheme: 'text' }],
             description: {
               appearancePart: {
                 text: '图标',
@@ -172,7 +172,7 @@
           {
             name: '文字样式',
             path: ['ButtonText'],
-            props: [{ name: 'text', typeInTheme: 'string' }],
+            props: [{ name: 'text', typeInTheme: 'text' }],
             description: {
               appearancePart: {
                 text: '文本',
