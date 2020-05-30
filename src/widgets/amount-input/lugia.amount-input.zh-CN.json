@@ -24,8 +24,7 @@
     },
     "size": {
       "type": "InputSize",
-      "desc":
-        "可配置三种尺寸大小的input ('large' , 'default' , 'small'),高度分别为 40px、32px 和 24px。",
+      "desc": "可配置三种尺寸大小的input ('large' , 'default' , 'small'),高度分别为 40px、32px 和 24px。",
       "defaultValue": "default"
     },
     "placeholder": {
@@ -143,62 +142,78 @@
   "category": ["数据录入"],
   "theme": {
     "Container": {
-      "name": "金额输入框外部容器",
-      "desc": "金额输入框外部容器",
-      "normal": [["width"], ["height"], ["margin"]]
-    },
-    "InnerInput": {
       "name": "金额输入框",
-      "theme": {
-        "Input": {
-          "name": "金额输入框中输入框部分",
-          "desc": "金额输入框中输入框部分",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["cursor"],
-            ["opacity"],
-            ["boxShadow"]
-          ],
-          "hover": [
-            ["border"],
-            ["borderRadius"],
-            ["cursor"],
-            ["background"],
-            ["opacity"],
-            ["boxShadow"]
-          ],
-          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
-          "disabled": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["cursor"],
-            ["padding"],
-            ["opacity"]
-          ]
-        },
-        "ClearButton": {
-          "name": "输入框清除图标",
-          "desc": "输入框后缀清除图标",
-          "normal": [["color"], ["fontSize"]],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
-        },
-        "Placeholder": {
-          "name": "输入框提示信息文字",
-          "desc": "输入框提示信息文字",
-          "normal": [["color"], ["fontSize"], ["font"]]
-        }
-      }
+      "desc": "金额输入框配置",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["opacity"],
+        ["boxShadow"]
+      ],
+      "hover": [
+        ["border"],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "focus": [
+        ["border"],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "active": [
+        ["boxShadow"],
+        ["border"],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "disabled": [
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["opacity"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ]
+    },
+    "ClearButton": {
+      "name": "输入框清除图标",
+      "desc": "输入框后缀清除图标",
+      "normal": [["color"], ["fontSize"], ["font"]],
+      "hover": [["color"], ["fontSize"], ["font"]],
+      "clicked": [],
+      "disabled": [["color"], ["fontSize"], ["font"]]
+    },
+    "Placeholder": {
+      "name": "输入框提示信息文字",
+      "desc": "输入框提示信息文字",
+      "normal": [["color"], ["fontSize"], ["font"]]
     },
     "AmountInputPrefix": {
       "name": "金额输入框主体前缀",
@@ -223,7 +238,7 @@
             ["borderRadius"],
             ["border"]
           ],
-          "hover": [],
+          "hover": [["background"], ["boxShadow"]],
           "clicked": [],
           "disabled": []
         },
