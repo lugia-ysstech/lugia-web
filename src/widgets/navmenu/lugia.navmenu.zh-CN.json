@@ -97,7 +97,7 @@
       "propsDefaultValue": "primary"
     },
     "themeStyle": {
-      "type": "themeStyleType",
+      "type": "ThemeStyleType",
       "desc": "菜单类型为inline(内嵌模式)时,支持两种主题",
       "propsDefaultValue": "light"
     },
@@ -147,7 +147,7 @@
   },
   "category": ["导航"],
   "type": {
-    "themeStyleType": ["light", "dark"]
+    "ThemeStyleType": ["light", "dark"]
   },
   "designInfo": {
     "HorizontalNavMenu": {
