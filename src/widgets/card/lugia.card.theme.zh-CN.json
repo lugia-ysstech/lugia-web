@@ -1,0 +1,507 @@
+[
+  {
+    "widgetName": "Card",
+    "title": "卡片",
+    "viewProps": [
+      {
+        "name": "showTipBottomLine",
+        "text": "显示头部分割线"
+      }
+    ],
+    "data": [
+      {
+        "title": "卡片整体",
+        "iconClass": "cardbackground",
+        "data": [
+          {
+            "name": "卡片整体",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "卡片整体",
+                "desc": "卡片整体"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "卡片头部",
+        "iconClass": "cardhead",
+        "data": [
+          {
+            "name": "背景",
+            "path": ["CardTitleHeadContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              },
+              "textPart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            },
+            "props": [
+              {
+                "name": "title",
+                "typeInTheme": "text"
+              }
+            ]
+          },
+          {
+            "name": "头部文本",
+            "path": ["CardTitle"],
+            "description": {
+              "textPart": {
+                "text": "头部文本",
+                "desc": "头部文本"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            },
+            "props": [
+              {
+                "name": "title",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "标题提示",
+        "iconClass": "Titletip",
+        "data": [
+          {
+            "name": "标题提示",
+            "path": ["CardTitleTipLine"],
+            "description": {
+              "appearancePart": {
+                "text": "标题提示",
+                "desc": "标题提示"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "分割线",
+        "iconClass": "menuDivided",
+        "data": [
+          {
+            "name": "分割线",
+            "path": ["CardTipBottomLine"],
+            "description": {
+              "appearancePart": {
+                "text": "分割线",
+                "desc": "分割线"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "描述内容",
+        "iconClass": "Text",
+        "data": [
+          {
+            "name": "描述文本",
+            "path": ["CardDescription"],
+            "description": {
+              "textPart": {
+                "text": "描述文本",
+                "desc": "描述文本"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            },
+            "props": [
+              {
+                "name": "description",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Card",
+    "aliasName": "HImageCard",
+    "title": "水平图像卡片",
+    "viewProps": [
+      {
+        "name": "image",
+        "text": "图片"
+      }
+    ],
+    "data": [
+      {
+        "title": "卡片整体",
+        "iconClass": "cardbackground",
+        "data": [
+          {
+            "name": "卡片整体",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "卡片整体",
+                "desc": "卡片整体"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "文本",
+        "iconClass": "Text",
+        "data": [
+          {
+            "name": "标题文本",
+            "path": ["CardTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            },
+            "props": [
+              {
+                "name": "title",
+                "typeInTheme": "text"
+              }
+            ]
+          },
+          {
+            "name": "描述内容",
+            "path": ["CardDescription"],
+            "description": {
+              "textPart": {
+                "text": "描述文本",
+                "desc": "描述文本"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            },
+            "props": [
+              {
+                "name": "description",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "图片",
+        "iconClass": "image",
+        "data": [
+          {
+            "name": "图片",
+            "path": ["CardImage"],
+            "description": {
+              "textPart": {
+                "text": "图片",
+                "desc": "图片"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Card",
+    "aliasName": "VImageCard",
+    "title": "垂直图像卡片",
+    "viewProps": [
+      {
+        "name": "image",
+        "text": "图片"
+      }
+    ],
+    "data": [
+      {
+        "title": "卡片整体",
+        "iconClass": "cardbackground",
+        "data": [
+          {
+            "name": "卡片整体",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "卡片整体",
+                "desc": "卡片整体"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "文本",
+        "iconClass": "Text",
+        "data": [
+          {
+            "name": "标题文本",
+            "path": ["CardTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            },
+            "props": [
+              {
+                "name": "title",
+                "typeInTheme": "text"
+              }
+            ]
+          },
+          {
+            "name": "描述内容",
+            "path": ["CardDescription"],
+            "description": {
+              "textPart": {
+                "text": "描述文本",
+                "desc": "描述文本"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            },
+            "props": [
+              {
+                "name": "description",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "图片",
+        "iconClass": "image",
+        "data": [
+          {
+            "name": "图片",
+            "path": ["CardImage"],
+            "description": {
+              "textPart": {
+                "text": "图片",
+                "desc": "图片"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Card",
+    "aliasName": "HAvatarCard",
+    "title": "水平头像卡片",
+    "viewProps": [
+      {
+        "name": "avatar",
+        "text": "头像图片"
+      }
+    ],
+    "data": [
+      {
+        "title": "卡片整体",
+        "iconClass": "cardbackground",
+        "data": [
+          {
+            "name": "卡片整体",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "卡片整体",
+                "desc": "卡片整体"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "文本",
+        "iconClass": "Text",
+        "data": [
+          {
+            "name": "标题文本",
+            "path": ["CardTitle"],
+            "description": {
+              "appearancePart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              },
+              "textPart": {
+                "hidden": true
+              },
+              "props": [
+                {
+                  "name": "title",
+                  "typeInTheme": "text"
+                }
+              ]
+            }
+          },
+          {
+            "name": "描述内容",
+            "path": ["CardDescription"],
+            "description": {
+              "textPart": {
+                "text": "描述文本",
+                "desc": "描述文本"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            },
+            "props": [
+              {
+                "name": "description",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "头像",
+        "iconClass": "headportrait",
+        "data": [
+          {
+            "name": "头像",
+            "path": ["CardAvatar", "Container"],
+            "description": {
+              "textPart": {
+                "text": "头像",
+                "desc": "头像"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Card",
+    "aliasName": "VAvatarCard",
+    "title": "垂直头像卡片",
+    "viewProps": [
+      {
+        "name": "avatar",
+        "text": "头像图片"
+      }
+    ],
+    "data": [
+      {
+        "title": "卡片整体",
+        "iconClass": "cardbackground",
+        "data": [
+          {
+            "name": "卡片整体",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "卡片整体",
+                "desc": "卡片整体"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "文本",
+        "iconClass": "Text",
+        "data": [
+          {
+            "name": "标题文本",
+            "path": ["CardTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            },
+            "props": [
+              {
+                "name": "title",
+                "typeInTheme": "text"
+              }
+            ]
+          },
+          {
+            "name": "描述内容",
+            "path": ["CardDescription"],
+            "description": {
+              "textPart": {
+                "text": "描述文本",
+                "desc": "描述文本"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            },
+            "props": [
+              {
+                "name": "description",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "头像",
+        "iconClass": "headportrait",
+        "data": [
+          {
+            "name": "头像",
+            "path": ["CardAvatar", "Container"],
+            "description": {
+              "textPart": {
+                "text": "头像",
+                "desc": "头像"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Card",
+    "aliasName": "ComboCard",
+    "title": "自定义卡片",
+    "viewProps": [],
+    "data": [
+      {
+        "title": "卡片整体",
+        "iconClass": "cardbackground",
+        "data": [
+          {
+            "name": "卡片整体",
+            "path": ["Container"],
+            "description": { "appearancePart": { "text": "卡片整体", "desc": "卡片整体" } }
+          }
+        ]
+      }
+    ]
+  }
+]
