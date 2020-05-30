@@ -461,11 +461,14 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const { value, stepHover } = this.state;
     const finalValue = handleEmpty(value, limit(value, [min, max]));
     if (stepHover !== 'plus' && stepHover !== 'minus') {
-      this.setValue(finalValue, event);
+      if (this.state.value !== finalValue) {
+        this.setValue(finalValue, event);
+      }
       this.setState({ _innerFocus: false });
       onBlur && onBlur(event);
     }
   };
+
   onFocus = (event: UIEvent) => {
     const { onFocus } = this.props;
     this.setState({ _innerFocus: true });
