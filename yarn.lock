@@ -1071,7 +1071,7 @@
 
 "@lugia/dict@^1.0.4":
   version "1.0.4"
-  resolved "https://registry.npmjs.org/@lugia/dict/-/dict-1.0.4.tgz#b030f62020c0c847e1ee439731cbaf4de16df7f4"
+  resolved "https://registry.yarnpkg.com/@lugia/dict/-/dict-1.0.4.tgz#b030f62020c0c847e1ee439731cbaf4de16df7f4"
   integrity sha512-GIiTN1j/6MLoUoUOUhc6qdUHj0nbXwJ5mrjEu2F2XuK/Aiw3VglY6JfR8LRxNXS0GvHy9RpcS1aKZLVTUIVuuA==
   dependencies:
     tslib "^1.11.1"
@@ -1375,6 +1375,15 @@
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.24"
     "@lugia/dict" "^1.0.4"
+    tslib "^1.11.1"
+
+"@lugia/theme-utils@^1.1.8":
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-utils/-/theme-utils-1.1.8.tgz#7375354767bea7f301066c5385db1875f756ef6e"
+  integrity sha512-LWG/qANa6n/htwccLwaQBdH2StoWujdF7k7LhlJb24kwlIc4B4eqtcTVklGgM6qzIrWRsCfManoVLfMDA6xyjw==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    "@lugia/css" "^1.0.24"
     tslib "^1.11.1"
 
 "@lugia/type-utils@^1.0.1", "@lugia/type-utils@^1.0.6":
