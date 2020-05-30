@@ -225,6 +225,46 @@ function handleEmpty(value, handleValue) {
   return value === '' ? '' : handleValue;
 }
 
+const iconDefaultTheme = (viewClass: string) => {
+  return {
+    [viewClass]: {
+      normal: {
+        cursor: 'pointer',
+        color: mediumGreyColor,
+        getCSS() {
+          return ` position: absolute;
+                       top: 50%;
+                       left: 50%;
+                       transform: translate(-50%, -50%);
+                       transition: all 0.3s;`;
+        },
+        getThemeMeta(themeMeta, themeProps) {
+          const { propsConfig } = themeProps;
+          const { outRange, disabled, size } = propsConfig;
+          const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
+          const theSize = innerFontSize || fontSize || getInputIconSize(size);
+          const theCursor = outRange || disabled ? 'not-allowed' : 'pointer';
+          return {
+            cursor: theCursor,
+            fontSize: theSize,
+          };
+        },
+      },
+      hover: {
+        color: themeColor,
+      },
+      active: {
+        color: themeActiveColor,
+      },
+      disabled: {
+        color: disableTextColor,
+        cursor: 'not-allowed',
+        opacity: 0,
+      },
+    },
+  };
+};
+
 class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   static defaultProps = {
     disabled: false,
@@ -303,46 +343,14 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const { theme: IconThemeProps, viewClass: IconViewClass } = getPartOfThemeHocProps(
       'InputArrowIcon'
     );
+    const { theme: InputArrowSubtractIcon, viewClass: subIconViewClass } = getPartOfThemeHocProps(
+      'InputArrowSubtractIcon'
+    );
 
-    const iconTheme = deepMerge(
-      {
-        [IconViewClass]: {
-          normal: {
-            cursor: 'pointer',
-            color: mediumGreyColor,
-            getCSS() {
-              return ` position: absolute;
-                       top: 50%;
-                       left: 50%;
-                       transform: translate(-50%, -50%);
-                       transition: all 0.3s;`;
-            },
-            getThemeMeta(themeMeta, themeProps) {
-              const { propsConfig } = themeProps;
-              const { outRange, disabled, size } = propsConfig;
-              const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
-              const theSize = innerFontSize || fontSize || getInputIconSize(size);
-              const theCursor = outRange || disabled ? 'not-allowed' : 'pointer';
-              return {
-                cursor: theCursor,
-                fontSize: theSize,
-              };
-            },
-          },
-          hover: {
-            color: themeColor,
-          },
-          active: {
-            color: themeActiveColor,
-          },
-          disabled: {
-            color: disableTextColor,
-            cursor: 'not-allowed',
-            opacity: 0,
-          },
-        },
-      },
-      IconThemeProps
+    const iconTheme = deepMerge({ ...iconDefaultTheme(IconViewClass) }, IconThemeProps);
+    const iconSubtractTheme = deepMerge(
+      { ...iconDefaultTheme(subIconViewClass) },
+      InputArrowSubtractIcon
     );
 
     const theThemeProps = this.getThemePropsByType('container');
@@ -392,8 +400,8 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
           <Icon
             lugiaConsumers={minusChannel.consumer}
             singleTheme
-            theme={iconTheme}
-            viewClass={IconViewClass}
+            theme={iconSubtractTheme}
+            viewClass={subIconViewClass}
             disabled={disabled}
             propsConfig={{ outRange: getBelowMin(value, min), size }}
             iconClass={subtractIcon || MinusClass}
@@ -461,11 +469,14 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const { value, stepHover } = this.state;
     const finalValue = handleEmpty(value, limit(value, [min, max]));
     if (stepHover !== 'plus' && stepHover !== 'minus') {
-      this.setValue(finalValue, event);
+      if (this.state.value !== finalValue) {
+        this.setValue(finalValue, event);
+      }
       this.setState({ _innerFocus: false });
       onBlur && onBlur(event);
     }
   };
+
   onFocus = (event: UIEvent) => {
     const { onFocus } = this.props;
     this.setState({ _innerFocus: true });

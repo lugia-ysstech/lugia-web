@@ -1,0 +1,148 @@
+[
+  {
+    "widgetName": "NumberInput",
+    "title": "文本数字输入框",
+    "viewProps": [
+      {
+        "name": "disabled",
+        "text": "禁用"
+      },
+      {
+        "name": "step",
+        "text": "进阶数"
+      },
+      {
+        "name": "min",
+        "text": "最小值"
+      },
+      {
+        "name": "max",
+        "text": "最大值"
+      },
+      {
+        "name": "validateType",
+        "text": "校验类型"
+      },
+      {
+        "name": "validateStatus",
+        "text": "校验状态"
+      }
+    ],
+    "data": [
+      {
+        "title": "主体",
+        "iconClass": "input",
+        "data": [
+          {
+            "name": "输入框",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "输入框",
+                "desc": "输入框配置"
+              }
+            },
+            "props": [
+              {
+                "name": "value",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "步长图标",
+        "iconClass": "StepIcon",
+        "data": [
+          {
+            "name": "外观",
+            "path": ["ArrowIconContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "外框",
+                "desc": "数字输入框步长图标包裹框配置"
+              },
+              "textPart": {
+                "hidden": true
+              }
+            }
+          },
+          {
+            "name": "步长图标配置",
+            "path": ["InputArrowIcon"],
+            "description": {
+              "textPart": {
+                "text": "增加的步长图标",
+                "desc": "数字输入框减少的步长图标"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            },
+            "props": [
+              {
+                "name": "addIcon",
+                "typeInTheme": "icon"
+              }
+            ]
+          },
+          {
+            "name": "步长图标配置",
+            "path": ["InputArrowSubtractIcon"],
+            "description": {
+              "textPart": {
+                "text": "减少的步长图标",
+                "desc": "数字输入框减少的步长图标"
+              }
+            },
+            "props": [
+              {
+                "name": "subtractIcon",
+                "typeInTheme": "icon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "校验失败",
+        "iconClass": "Verificationfailed",
+        "data": [
+          {
+            "name": "校验失败的输入框",
+            "path": ["ValidateErrorInput"],
+            "description": {
+              "textPart": {
+                "text": "校验失败的输入框",
+                "desc": "校验失败的输入框配置"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "失败提示",
+        "iconClass": "Failureprompt",
+        "data": [
+          {
+            "name": "校验失败提示信息",
+            "path": ["ValidateErrorText"],
+            "description": {
+              "textPart": {
+                "text": "校验失败提示信息",
+                "desc": "配置校验失败的提示信息"
+              }
+            },
+            "props": [
+              {
+                "name": "help",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
