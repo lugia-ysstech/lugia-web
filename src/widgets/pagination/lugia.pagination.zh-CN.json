@@ -30,8 +30,7 @@
       "type": "string[]",
       "desc": "指定每页可以显示多少条",
       "meta": [{ "key": "pageSizes", "title": "每页显示多少条的集合", "type": "string[]" }],
-      "propsDefaultValue": ["10", "20", "30", "50"],
-      "defaultValue": ["10", "20", "30", "50"]
+      "propsDefaultValue": ["10", "20", "30", "50"]
     },
     "showQuickJumper": {
       "type": "boolean",
