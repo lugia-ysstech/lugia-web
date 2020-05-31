@@ -34,7 +34,7 @@
             "props": [
               {
                 "name": "preIconClass",
-                "typeInTheme": "object"
+                "typeInTheme": "icon"
               }
             ]
           }
@@ -169,8 +169,8 @@
             },
             "props": [
               {
-                "name": "icons",
-                "typeInTheme": "object"
+                "name": "preIconClass",
+                "typeInTheme": "icon"
               }
             ]
           }
@@ -185,8 +185,8 @@
             "path": ["PaginationListItem"],
             "description": {
               "appearancePart": {
-                "text": "单个页数背景",
-                "desc": "单个页数背景"
+                "text": "背景",
+                "desc": "背景"
               }
             }
           },
@@ -195,8 +195,8 @@
             "path": ["PaginationListItem"],
             "description": {
               "textPart": {
-                "text": "分页文字",
-                "desc": "分页文字"
+                "text": "文本",
+                "desc": "文本"
               }
             }
           },
@@ -276,7 +276,7 @@
             "data": [
               {
                 "name": "主体",
-                "path": ["Menu", "Container"],
+                "path": ["PaginationPageSizeSelect", "Container"],
                 "description": {
                   "appearancePart": {
                     "text": "主体",
@@ -296,7 +296,7 @@
                 "data": [
                   {
                     "name": "菜单",
-                    "path": ["Menu", "MenuItem", "Container"],
+                    "path": ["PaginationPageSizeSelect", "MenuItem", "Container"],
                     "description": {
                       "appearancePart": {
                         "text": "菜单",
@@ -312,7 +312,7 @@
                 "data": [
                   {
                     "name": "单项",
-                    "path": ["Menu", "MenuItem", "MenuItemWrap"],
+                    "path": ["PaginationPageSizeSelect", "Menu", "MenuItem", "MenuItemWrap"],
                     "description": {
                       "appearancePart": {
                         "text": "单项",
@@ -328,11 +328,16 @@
                 "data": [
                   {
                     "name": "选中项",
-                    "path": ["MenuItem", "SelectedMenuItemWrap"],
+                    "path": [
+                      "PaginationPageSizeSelect",
+                      "Menu",
+                      "MenuItem",
+                      "SelectedMenuItemWrap"
+                    ],
                     "description": {
                       "appearancePart": {
-                        "text": "单项",
-                        "desc": "单项"
+                        "text": "选中项",
+                        "desc": "选中项"
                       }
                     }
                   }
