@@ -38,16 +38,10 @@
                 "desc": "背景"
               },
               "textPart": {
-                "text": "背景",
-                "desc": "背景"
+                "text": "文本",
+                "desc": "文本"
               }
-            },
-            "props": [
-              {
-                "name": "title",
-                "typeInTheme": "text"
-              }
-            ]
+            }
           },
           {
             "name": "头部文本",
