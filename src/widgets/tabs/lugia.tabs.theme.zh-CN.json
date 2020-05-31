@@ -329,6 +329,16 @@
         "iconClass": "tabsIcon",
         "data": [
           {
+            "name": "增加图标",
+            "path": ["AddButton"],
+            "description": {
+              "textPart": {
+                "text": "增加图标",
+                "desc": "增加图标"
+              }
+            }
+          },
+          {
             "name": "翻页图标",
             "path": ["ArrowIcon"],
             "description": {
@@ -497,6 +507,16 @@
         "title": "增/删/翻页",
         "iconClass": "tabsIcon",
         "data": [
+          {
+            "name": "增加图标",
+            "path": ["AddButton"],
+            "description": {
+              "textPart": {
+                "text": "增加图标",
+                "desc": "增加图标"
+              }
+            }
+          },
           {
             "name": "翻页图标",
             "path": ["ArrowIcon"],
