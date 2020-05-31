@@ -1,0 +1,524 @@
+[
+  {
+    "widgetName": "Tabs",
+    "title": "标签页",
+    "viewProps": [
+      {
+        "name": "tabPosition",
+        "text": "页签位置"
+      },
+      {
+        "name": "showAddBtn",
+        "text": "新增功能"
+      },
+      {
+        "name": "showDeleteBtn",
+        "text": "删除功能"
+      },
+      {
+        "name": "showDividerLine",
+        "text": "显示分割线"
+      },
+      {
+        "name": "data",
+        "text": "数据编辑"
+      }
+    ],
+    "data": [
+      {
+        "title": "选中页签",
+        "iconClass": "tabsCheckedLine",
+        "data": [
+          {
+            "name": "背景",
+            "path": ["TabHeader", "SelectTabPan"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "前缀图标",
+            "path": ["TabHeader", "SelectPrefixIcon"],
+            "description": {
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "前缀图标"
+              }
+            }
+          },
+          {
+            "name": "后缀图标",
+            "path": ["TabHeader", "SelectSuffixIcon"],
+            "description": {
+              "textPart": {
+                "text": "后缀图标",
+                "desc": "后缀图标"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "默认页签",
+        "iconClass": "tabsNormal",
+        "data": [
+          {
+            "name": "背景",
+            "path": ["TabHeader", "DefaultTabPan"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "前缀图标",
+            "path": ["TabHeader", "PrefixIcon"],
+            "description": {
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "前缀图标"
+              }
+            }
+          },
+          {
+            "name": "后缀图标",
+            "path": ["TabHeader", "SuffixIcon"],
+            "description": {
+              "textPart": {
+                "text": "后缀图标",
+                "desc": "后缀图标"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "页签背景/内容",
+        "iconClass": "tabsBackground",
+        "data": [
+          {
+            "name": "页签背景",
+            "path": ["TitleContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "页签背景",
+                "desc": "页签背景"
+              }
+            }
+          },
+          {
+            "name": "内容区域",
+            "path": ["ContentBlock"],
+            "description": {
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "默认线",
+        "iconClass": "tabsLine",
+        "data": [
+          {
+            "name": "外观",
+            "path": ["BorderStyle"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "外观"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "分割线",
+        "iconClass": "tabsDivideLine",
+        "data": [
+          {
+            "name": "外观",
+            "path": ["TabHeader", "DividerTheme"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "外观"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "增/删/翻页",
+        "iconClass": "tabsIcon",
+        "data": [
+          {
+            "name": "翻页图标",
+            "path": ["ArrowIcon"],
+            "description": {
+              "textPart": {
+                "text": "翻页图标",
+                "desc": "翻页图标"
+              }
+            }
+          },
+          {
+            "name": "删除图标",
+            "path": ["TabHeader", "DeleteIcon"],
+            "description": {
+              "textPart": {
+                "text": "删除图标",
+                "desc": "删除图标"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Tabs",
+    "aliasName": "CardTabs",
+    "title": "卡片风格标签页",
+    "viewProps": [
+      {
+        "name": "showAddBtn",
+        "text": "新增功能"
+      },
+      {
+        "name": "showDeleteBtn",
+        "text": "删除功能"
+      },
+      {
+        "name": "pagedType",
+        "text": "翻页类型"
+      },
+      {
+        "name": "tabPosition",
+        "text": "页签位置"
+      },
+      {
+        "name": "data",
+        "text": "数据编辑"
+      }
+    ],
+    "data": [
+      {
+        "title": "选中页签",
+        "iconClass": "tabsCheckedCard",
+        "data": [
+          {
+            "name": "背景",
+            "path": ["TabHeader", "SelectTabPan"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "前缀图标",
+            "path": ["TabHeader", "SelectPrefixIcon"],
+            "description": {
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "前缀图标"
+              }
+            }
+          },
+          {
+            "name": "后缀图标",
+            "path": ["TabHeader", "SelectSuffixIcon"],
+            "description": {
+              "textPart": {
+                "text": "后缀图标",
+                "desc": "后缀图标"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "默认页签",
+        "iconClass": "tabsNormal",
+        "data": [
+          {
+            "name": "背景",
+            "path": ["TabHeader", "DefaultTabPan"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "前缀图标",
+            "path": ["TabHeader", "PrefixIcon"],
+            "description": {
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "前缀图标"
+              }
+            }
+          },
+          {
+            "name": "后缀图标",
+            "path": ["TabHeader", "SuffixIcon"],
+            "description": {
+              "textPart": {
+                "text": "后缀图标",
+                "desc": "后缀图标"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "页签背景/内容",
+        "iconClass": "tabsBackground",
+        "data": [
+          {
+            "name": "页签背景",
+            "path": ["TitleContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "页签背景",
+                "desc": "页签背景"
+              }
+            }
+          },
+          {
+            "name": "内容区域",
+            "path": ["ContentBlock"],
+            "description": {
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "默认线",
+        "iconClass": "tabsLine",
+        "data": [
+          {
+            "name": "外观",
+            "path": ["BorderStyle"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "外观"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "增/删/翻页",
+        "iconClass": "tabsIcon",
+        "data": [
+          {
+            "name": "翻页图标",
+            "path": ["ArrowIcon"],
+            "description": {
+              "textPart": {
+                "text": "翻页图标",
+                "desc": "翻页图标"
+              }
+            }
+          },
+          {
+            "name": "删除图标",
+            "path": ["TabHeader", "DeleteIcon"],
+            "description": {
+              "textPart": {
+                "text": "删除图标",
+                "desc": "删除图标"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Tabs",
+    "aliasName": "WindowTabs",
+    "title": "窗口风格标签页",
+    "viewProps": [
+      {
+        "name": "showAddBtn",
+        "text": "新增功能"
+      },
+      {
+        "name": "showDeleteBtn",
+        "text": "删除功能"
+      },
+      {
+        "name": "pagedType",
+        "text": "翻页类型"
+      },
+      {
+        "name": "tabPosition",
+        "text": "页签位置"
+      },
+      {
+        "name": "data",
+        "text": "数据编辑"
+      }
+    ],
+    "data": [
+      {
+        "title": "选中页签",
+        "iconClass": "tabsCheckedWindow",
+        "data": [
+          {
+            "name": "背景",
+            "path": ["TabHeader", "SelectTabPan"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "前缀图标",
+            "path": ["TabHeader", "SelectPrefixIcon"],
+            "description": {
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "前缀图标"
+              }
+            }
+          },
+          {
+            "name": "后缀图标",
+            "path": ["TabHeader", "SelectSuffixIcon"],
+            "description": {
+              "textPart": {
+                "text": "后缀图标",
+                "desc": "后缀图标"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "默认页签",
+        "iconClass": "tabsNormal",
+        "data": [
+          {
+            "name": "背景",
+            "path": ["TabHeader", "DefaultTabPan"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "前缀图标",
+            "path": ["TabHeader", "PrefixIcon"],
+            "description": {
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "前缀图标"
+              }
+            }
+          },
+          {
+            "name": "后缀图标",
+            "path": ["TabHeader", "SuffixIcon"],
+            "description": {
+              "textPart": {
+                "text": "后缀图标",
+                "desc": "后缀图标"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "页签背景/内容",
+        "iconClass": "tabsBackground",
+        "data": [
+          {
+            "name": "页签背景",
+            "path": ["TitleContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "页签背景",
+                "desc": "页签背景"
+              }
+            }
+          },
+          {
+            "name": "内容区域",
+            "path": ["ContentBlock"],
+            "description": {
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "默认线",
+        "iconClass": "tabsLine",
+        "data": [
+          {
+            "name": "外观",
+            "path": ["BorderStyle"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "外观"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "增/删/翻页",
+        "iconClass": "tabsIcon",
+        "data": [
+          {
+            "name": "翻页图标",
+            "path": ["ArrowIcon"],
+            "description": {
+              "textPart": {
+                "text": "翻页图标",
+                "desc": "翻页图标"
+              }
+            }
+          },
+          {
+            "name": "删除图标",
+            "path": ["TabHeader", "DeleteIcon"],
+            "description": {
+              "textPart": {
+                "text": "删除图标",
+                "desc": "删除图标"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+]
