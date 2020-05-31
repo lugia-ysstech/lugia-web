@@ -1,0 +1,363 @@
+[
+  {
+    "widgetName": "Pagination",
+    "aliasName": "SimplePagination",
+    "title": "简洁分页",
+    "viewProps": [
+      {
+        "name": "total",
+        "text": "数据总数"
+      },
+      {
+        "name": "pageSize",
+        "text": "每页数据"
+      },
+      {
+        "name": "hideOnSinglePage",
+        "text": "隐藏分页器"
+      }
+    ],
+    "data": [
+      {
+        "title": "分页器",
+        "iconClass": "paginationSimpleIcon",
+        "data": [
+          {
+            "name": "图标",
+            "path": ["ChangePageIcon"],
+            "description": {
+              "textPart": {
+                "text": "图标",
+                "desc": "分页图标"
+              }
+            },
+            "props": [
+              {
+                "name": "preIconClass",
+                "typeInTheme": "object"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "输入框",
+        "iconClass": "paginationSimpleInput",
+        "data": [
+          {
+            "name": "输入框",
+            "path": ["SimplePaginationInput"],
+            "description": {
+              "textPart": {
+                "text": "输入框",
+                "desc": "输入框"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "示意文本",
+        "iconClass": "paginationSimpleText",
+        "data": [
+          {
+            "name": "示意文本",
+            "path": ["PaginationSimpleText"],
+            "description": {
+              "textPart": {
+                "text": "简洁分页示意文本",
+                "desc": "简洁分页示意文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "整体背景",
+        "iconClass": "treeBackground",
+        "data": [
+          {
+            "name": "整体背景",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体背景",
+                "desc": "整体背景"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Pagination",
+    "title": "分页",
+    "viewProps": [
+      {
+        "name": "total",
+        "text": "数据总数"
+      },
+      {
+        "name": "pageSize",
+        "text": "每页数据"
+      },
+      {
+        "name": "showQuickJumper",
+        "text": "快速跳转"
+      },
+      {
+        "name": "showTotal",
+        "text": "显示数据总数"
+      },
+      {
+        "name": "showSizeChanger",
+        "text": "切换每页数据数量"
+      },
+      {
+        "name": "pageSizeOptions",
+        "text": "每页数据数量"
+      },
+      {
+        "name": "blockList",
+        "text": "功能展示顺序"
+      },
+      {
+        "name": "align",
+        "text": "功能展示位置"
+      }
+    ],
+    "data": [
+      {
+        "title": "主体背景",
+        "iconClass": "treeBackground",
+        "data": [
+          {
+            "name": "背景",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景配置"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "分页器",
+        "iconClass": "pagination",
+        "data": [
+          {
+            "name": "切换页数图标容器",
+            "path": ["PaginationArrowIconContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "切换页数图标容器",
+                "desc": "切换页数图标容器"
+              }
+            }
+          },
+          {
+            "name": "图标",
+            "path": ["ChangePageIcon"],
+            "description": {
+              "textPart": {
+                "text": "图标",
+                "desc": "分页图标"
+              }
+            },
+            "props": [
+              {
+                "name": "icons",
+                "typeInTheme": "object"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "单个页数",
+        "iconClass": "paginationNumber",
+        "data": [
+          {
+            "name": "背景",
+            "path": ["PaginationListItem"],
+            "description": {
+              "appearancePart": {
+                "text": "单个页数背景",
+                "desc": "单个页数背景"
+              }
+            }
+          },
+          {
+            "name": "文本",
+            "path": ["PaginationListItem"],
+            "description": {
+              "textPart": {
+                "text": "分页文字",
+                "desc": "分页文字"
+              }
+            }
+          },
+          {
+            "name": "更多页数图标",
+            "path": ["MorePageIcon"],
+            "description": {
+              "textPart": {
+                "text": "更多页数图标",
+                "desc": "更多页数图标"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "快速跳转",
+        "iconClass": "paginationJump",
+        "children": [
+          {
+            "title": "整体背景",
+            "iconClass": "paginationJump",
+            "data": [
+              {
+                "name": "整体背景",
+                "path": ["PaginationQuickJumpContainer"],
+                "description": {
+                  "appearancePart": {
+                    "text": "整体背景",
+                    "desc": "整体背景"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "输入框",
+            "iconClass": "input",
+            "data": [
+              {
+                "name": "输入框",
+                "path": ["QuickJumpInput"],
+                "description": {
+                  "textPart": {
+                    "text": "输入框",
+                    "desc": "输入框"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "提醒文字",
+            "iconClass": "paginationJump",
+            "data": [
+              {
+                "name": "提醒文字",
+                "path": ["PaginationQuickJumpText"],
+                "description": {
+                  "textPart": {
+                    "text": "提醒文字",
+                    "desc": "提醒文字"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "切换页数",
+        "iconClass": "paginationSwitch",
+        "children": [
+          {
+            "title": "主体",
+            "iconClass": "AmountInput",
+            "data": [
+              {
+                "name": "主体",
+                "path": ["Menu", "Container"],
+                "description": {
+                  "appearancePart": {
+                    "text": "主体",
+                    "desc": "主体"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "菜单",
+            "iconClass": "menu",
+            "children": [
+              {
+                "title": "菜单",
+                "iconClass": "menubackground",
+                "data": [
+                  {
+                    "name": "菜单",
+                    "path": ["Menu", "MenuItem", "Container"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "菜单",
+                        "desc": "菜单"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "单项",
+                "iconClass": "Default",
+                "data": [
+                  {
+                    "name": "单项",
+                    "path": ["Menu", "MenuItem", "MenuItemWrap"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "单项",
+                        "desc": "单项"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "选中项",
+                "iconClass": "Checked",
+                "data": [
+                  {
+                    "name": "选中项",
+                    "path": ["MenuItem", "SelectedMenuItemWrap"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "单项",
+                        "desc": "单项"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "数据提示",
+        "iconClass": "paginationTotal",
+        "data": [
+          {
+            "name": "数据提示",
+            "path": ["PaginationTotalText"],
+            "description": {
+              "appearancePart": {
+                "text": "数据提示",
+                "desc": "数据提示"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
