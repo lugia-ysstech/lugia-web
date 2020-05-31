@@ -1,0 +1,47 @@
+[
+  {
+    "widgetName": "Badge",
+    "title": "徽标数",
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "徽标数",
+        "data": [
+          {
+            "name": "外观",
+            "path": ["Badge"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "外观"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Badge",
+    "aliasName": "BadgeNumber",
+    "title": "徽标数",
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "数字徽标",
+        "data": [
+          {
+            "name": "外观",
+            "path": ["BadgeNumber", "Badge"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "外观"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
