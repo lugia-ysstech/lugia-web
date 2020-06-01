@@ -629,8 +629,8 @@ class TextBox extends Component<InputProps, InputState> {
     onEnter && keyCode === 13 && onEnter(event);
   };
   onClick = (event: UIEvent) => {
-    const { onClick, disabled, readOnly } = this.props;
-    if (disabled || readOnly) {
+    const { onClick, disabled } = this.props;
+    if (disabled) {
       return;
     }
     onClick && onClick(event);
