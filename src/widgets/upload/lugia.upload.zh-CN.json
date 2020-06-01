@@ -178,12 +178,19 @@
         "areaType": "button"
       },
       "theme": {
-        "Container": {
+        "UploadButtonType": {
           "name": "按钮",
           "desc": "按钮上传类型的样式配置",
           "normal": [["background"], ["width"], ["height"], ["boxShadow"], ["border"], ["opacity"]],
           "hover": [["background"], ["boxShadow"], ["border"], ["opacity"]],
           "disabled": [["background"], ["border"]]
+        },
+        "ButtonText": {
+          "name": "上传类型为button时的文字",
+          "desc": "文件上传失败后的文字样式",
+          "normal": [["color"]],
+          "hover": [["color"]],
+          "disabled": [["color"]]
         },
         "UploadList": {
           "name": "上传列表",
