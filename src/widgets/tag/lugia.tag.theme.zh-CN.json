@@ -104,7 +104,6 @@
     "widgetName": "Tag",
     "aliasName": "ChooseTag",
     "title": "可选择标签",
-    "viewProps": [{ "name": "themeStyle", "text": "主题" }, { "name": "data", "text": "数据编辑" }],
     "data": [
       {
         "title": "未选中标签",
