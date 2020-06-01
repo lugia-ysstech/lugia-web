@@ -136,7 +136,7 @@
               "props": [
                 {
                   "name": "src",
-                  "typeInTheme": "image"
+                  "typeInTheme": "icon"
                 }
               ]
             }
