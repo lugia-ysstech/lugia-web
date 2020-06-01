@@ -1,0 +1,1656 @@
+[
+  {
+    "widgetName": "Steps",
+    "title": "步骤条",
+    "viewProps": [
+      {
+        "name": "orientation",
+        "text": "步骤条方向"
+      },
+      {
+        "name": "desAlign",
+        "text": "文本方向"
+      },
+      {
+        "name": "data",
+        "text": "数据编辑"
+      }
+    ],
+    "data": [
+      {
+        "title": "已完成",
+        "iconClass": "stepsCompleted",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "FinishStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "FinishStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "FinishStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "节点图标",
+            "path": ["Step", "StepInnerIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "FinishStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "FinishStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "进行中",
+        "iconClass": "stepsOngoing",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "ProcessStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "ProcessStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "ProcessStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "步骤数字",
+            "path": ["Step", "ProcessStepNumber"],
+            "description": {
+              "textPart": {
+                "text": "步骤数字",
+                "desc": "步骤数字"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "FinishStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "FinishStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "下一步",
+        "iconClass": "stepsNextstep",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "NextStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "NextStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "NextStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "步骤数字",
+            "path": ["Step", "ProcessStepNumber"],
+            "description": {
+              "textPart": {
+                "text": "步骤数字",
+                "desc": "步骤数字"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "NextStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "NextStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "等待中",
+        "iconClass": "stepsWaiting",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "WaitStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "WaitStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "WaitStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "步骤数字",
+            "path": ["Step", "ProcessStepNumber"],
+            "description": {
+              "textPart": {
+                "text": "步骤数字",
+                "desc": "步骤数字"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "WaitStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "WaitStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "异常状态",
+        "iconClass": "stepsError",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "ErrorStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "ErrorStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "ErrorStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "节点图标",
+            "path": ["Step", "StepInnerIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "ErrorStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "ErrorStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Steps",
+    "aliasName": "VSteps",
+    "title": "垂直步骤条",
+    "viewProps": [
+      {
+        "name": "orientation",
+        "text": "步骤条方向"
+      },
+      {
+        "name": "desAlign",
+        "text": "文本方向"
+      },
+      {
+        "name": "data",
+        "text": "数据编辑"
+      }
+    ],
+    "data": [
+      {
+        "title": "已完成",
+        "iconClass": "stepsCompletedVertical",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "FinishStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "FinishStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "FinishStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "节点图标",
+            "path": ["Step", "StepInnerIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "FinishStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "FinishStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "进行中",
+        "iconClass": "stepsOngoingVertical",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "ProcessStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "ProcessStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "ProcessStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "步骤数字",
+            "path": ["Step", "ProcessStepNumber"],
+            "description": {
+              "textPart": {
+                "text": "步骤数字",
+                "desc": "步骤数字"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "FinishStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "FinishStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "下一步",
+        "iconClass": "stepsNextstepVertical",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "NextStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "NextStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "NextStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "步骤数字",
+            "path": ["Step", "ProcessStepNumber"],
+            "description": {
+              "textPart": {
+                "text": "步骤数字",
+                "desc": "步骤数字"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "NextStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "NextStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "等待中",
+        "iconClass": "stepsWaitingVertical",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "WaitStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "WaitStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "WaitStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "步骤数字",
+            "path": ["Step", "ProcessStepNumber"],
+            "description": {
+              "textPart": {
+                "text": "步骤数字",
+                "desc": "步骤数字"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "WaitStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "WaitStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "异常状态",
+        "iconClass": "stepsErrorVertical",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "ErrorStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "ErrorStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "ErrorStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "节点图标",
+            "path": ["Step", "StepInnerIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "ErrorStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "ErrorStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Steps",
+    "aliasName": "FlatSteps",
+    "title": "半扁平步骤条",
+    "viewProps": [
+      {
+        "name": "orientation",
+        "text": "步骤条方向"
+      },
+      {
+        "name": "desAlign",
+        "text": "文本方向"
+      },
+      {
+        "name": "data",
+        "text": "数据编辑"
+      }
+    ],
+    "data": [
+      {
+        "title": "已完成",
+        "iconClass": "stepsCompletedFlat",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "FinishStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "FinishStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "FinishStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "节点图标",
+            "path": ["Step", "StepInnerIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "FinishStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "FinishStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "进行中",
+        "iconClass": "stepsOngoingFlat",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "ProcessStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "ProcessStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "ProcessStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "步骤数字",
+            "path": ["Step", "ProcessStepNumber"],
+            "description": {
+              "textPart": {
+                "text": "步骤数字",
+                "desc": "步骤数字"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "FinishStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "FinishStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "下一步",
+        "iconClass": "stepsNextStepFlat",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "NextStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "NextStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "NextStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "步骤数字",
+            "path": ["Step", "ProcessStepNumber"],
+            "description": {
+              "textPart": {
+                "text": "步骤数字",
+                "desc": "步骤数字"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "NextStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "NextStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "等待中",
+        "iconClass": "stepsNextStepFlat",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "WaitStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "WaitStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "WaitStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "步骤数字",
+            "path": ["Step", "ProcessStepNumber"],
+            "description": {
+              "textPart": {
+                "text": "步骤数字",
+                "desc": "步骤数字"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "WaitStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "WaitStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "异常状态",
+        "iconClass": "stepsErrorFlat",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "ErrorStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "ErrorStepInnerContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "ErrorStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "节点图标",
+            "path": ["Step", "StepInnerIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "ErrorStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "ErrorStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Steps",
+    "aliasName": "IconSteps",
+    "title": "图标步骤条",
+    "viewProps": [
+      {
+        "name": "orientation",
+        "text": "步骤条方向"
+      },
+      {
+        "name": "desAlign",
+        "text": "文本方向"
+      },
+      {
+        "name": "data",
+        "text": "数据编辑"
+      }
+    ],
+    "data": [
+      {
+        "title": "已完成",
+        "iconClass": "stepsCompletedIcon",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "FinishStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "FinishStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "节点图标",
+            "path": ["Step", "StepIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "FinishStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "FinishStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "进行中",
+        "iconClass": "stepsOngoingIcon",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "ProcessStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "ProcessStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "节点图标",
+            "path": ["Step", "StepIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "FinishStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "FinishStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "下一步",
+        "iconClass": "stepsOngoingIcon",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "NextStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点图标",
+            "path": ["Step", "StepIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "NextStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "NextStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "NextStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "等待中",
+        "iconClass": "stepsWaitingIcon",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "WaitStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点图标",
+            "path": ["Step", "StepIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "WaitStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "WaitStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "WaitStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "异常状态",
+        "iconClass": "stepsErrorIcon",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "ErrorStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点图标",
+            "path": ["Step", "StepIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "ErrorStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "ErrorStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "ErrorStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Steps",
+    "aliasName": "DotSteps",
+    "title": "点状步骤条",
+    "viewProps": [
+      {
+        "name": "orientation",
+        "text": "步骤条方向"
+      },
+      {
+        "name": "desAlign",
+        "text": "文本方向"
+      },
+      {
+        "name": "data",
+        "text": "数据编辑"
+      }
+    ],
+    "data": [
+      {
+        "title": "已完成",
+        "iconClass": "stepsCompletedDot",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "FinishStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "FinishStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "FinishStepDot"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "FinishStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "FinishStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "进行中",
+        "iconClass": "stepsOngoingDot",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "ProcessStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "ProcessStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "ProcessStepDot"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "FinishStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "FinishStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "下一步",
+        "iconClass": "stepsNextStepDot",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "NextStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "NextStepDot"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "NextStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "NextStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "NextStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "等待中",
+        "iconClass": "stepsWaitingDot",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "WaitStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "WaitStepDot"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "WaitStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "WaitStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "WaitStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "异常状态",
+        "iconClass": "stepsErrorDot",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Step", "ErrorStepOutContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["Step", "ErrorStepDot"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "ErrorStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["Step", "ErrorStepTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "内容文本",
+            "path": ["Step", "ErrorStepDescription"],
+            "description": {
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
