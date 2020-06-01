@@ -51,9 +51,16 @@ const Container = CSSComponent({
     box-sizing: border-box;
   `,
 });
-const ContainerTheme = CSSComponent({
+const ButtonContainer = CSSComponent({
   tag: 'div',
-  className: 'Container',
+  className: 'ButtonContainer',
+  normal: {
+    selectNames: [['width'], ['height']],
+  },
+});
+const BothContainer = CSSComponent({
+  tag: 'div',
+  className: 'BothContainer',
   normal: {
     selectNames: [['width'], ['height'], ['boxShadow'], ['borderRadius'], ['border'], ['color']],
   },
@@ -974,7 +981,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const newTheme = { viewClass: buttonViewClass, theme: resultButtonTheme };
       children = (
         <React.Fragment>
-          <ContainerTheme themeProps={containerStyle}>
+          <BothContainer themeProps={containerStyle}>
             <InputContent
               themeProps={inputStatusTheme}
               status={classNameStatus}
@@ -998,13 +1005,14 @@ class GetElement extends React.Component<DefProps, StateProps> {
             >
               {getIconByType(props, classNameStatus, { type: 1 })}
             </Button>
-          </ContainerTheme>
+          </BothContainer>
         </React.Fragment>
       );
     }
     if (areaType === 'button') {
       const { disabled } = props;
       const { handleClickToUpload } = this;
+      const buttonContainerStyle = this.props.getPartOfThemeProps('Container');
       const { viewClass: buttonViewClass, theme: buttonTheme } = props.getPartOfThemeHocProps(
         'UploadButtonType'
       );
@@ -1029,9 +1037,17 @@ class GetElement extends React.Component<DefProps, StateProps> {
       );
       const newTheme = { viewClass: buttonViewClass, theme: resultButtonTheme };
       children = (
-        <Button {...newTheme} type={'primary'} disabled={disabled} onClick={handleClickToUpload}>
-          {classNameStatus === 'fail' ? failTips : uploadText}
-        </Button>
+        <ButtonContainer themeProps={buttonContainerStyle}>
+          <Button
+            {...newTheme}
+            block
+            type={'primary'}
+            disabled={disabled}
+            onClick={handleClickToUpload}
+          >
+            {classNameStatus === 'fail' ? failTips : uploadText}
+          </Button>
+        </ButtonContainer>
       );
     }
     if (areaType === 'custom') {
