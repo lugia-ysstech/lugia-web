@@ -436,101 +436,155 @@ class ValidateDemo extends Component {
   render() {
     const onChange = () => {};
     return (
-      <div>
-        <Wrapper>
-          <p>input top 输入值 是否含有a</p>
-          <ValidateInput validateType="top" onChange={onChange()} />
-          <p>input bottom 输入值 是否含有a</p>
-          <ValidateInput validateType="bottom" onChange={onChange()} />
-          <p>inputinner 输入值 是否含有a </p>
-          <ValidateInput validateType="inner" onChange={onChange()} />
-        </Wrapper>
+      <Wrapper>
+        <p>input top 输入值 是否含有a</p>
+        <ValidateInput validateType="top" onChange={onChange()} />
+        <p>input bottom 输入值 是否含有a</p>
+        <ValidateInput validateType="bottom" onChange={onChange()} />
+        <p>input inner 输入值 是否含有a </p>
+        <ValidateInput validateType="inner" onChange={onChange()} />
 
-        <Wrapper>
-          <p>NumberInput top 输入值 是否是1</p>
-          <ValidateNumberInput validateType="top" onChange={onChange()} />
-          <p>NumberInput bottom 输入值 是否是1</p>
-          <ValidateNumberInput validateType="bottom" onChange={onChange()} />
-          <p>NumberInput inner 输入值 是否是1</p>
-          <ValidateNumberInput validateType="inner" onChange={onChange()} />
-        </Wrapper>
+        <p>input top 输入值 是否含有a</p>
+        <ValidateInput validateType="top" value="a" />
+        <p>input bottom 输入值 是否含有a</p>
+        <ValidateInput validateType="bottom" value="a" />
+        <p>input inner 输入值 是否含有a </p>
+        <ValidateInput validateType="inner" value="a" />
 
-        <Wrapper>
-          <p>TextArea top 输入值 包含a</p>
-          <ValidateTextArea validateType="top" onChange={onChange()} />
-          <p>TextArea bottom 输入值 包含a</p>
-          <ValidateTextArea validateType="bottom" onChange={onChange()} />
-          <p>TextArea inner 输入值 包含a</p>
-          <ValidateTextArea validateType="inner" onChange={onChange()} />
-        </Wrapper>
+        <p>NumberInput top 输入值 是否是1</p>
+        <ValidateNumberInput validateType="top" onChange={onChange()} />
+        <p>NumberInput bottom 输入值 是否是1</p>
+        <ValidateNumberInput validateType="bottom" onChange={onChange()} />
+        <p>NumberInput inner 输入值 是否是1</p>
+        <ValidateNumberInput validateType="inner" onChange={onChange()} />
 
-        <Wrapper>
-          <p>AmountInput top 输入值 是否是1</p>
-          <ValidateAmountInput
-            validateType="top"
-            placeholder={'请填写金额'}
-            onChange={onChange('limit')}
-          />
-          <p>AmountInput bottom 输入值 是否是1</p>
-          <ValidateAmountInput validateType="bottom" onChange={onChange()} />
-          <p>AmountInput inner 输入值 是否是1</p>
-          <ValidateAmountInput validateType="inner" onChange={onChange()} />
-        </Wrapper>
+        <p>NumberInput top 输入值 是否是1</p>
+        <ValidateNumberInput validateType="top" value={1} />
+        <p>NumberInput bottom 输入值 是否是1</p>
+        <ValidateNumberInput validateType="bottom" value={1} />
+        <p>NumberInput inner 输入值 是否是1</p>
+        <ValidateNumberInput validateType="inner" value={1} />
 
-        <Wrapper>
-          <p>TopAutoComplete top 搜索结果是否为Armin van Buuren</p>
-          <ValidateAutoComplete validateType="top" onChange={onChange} />
-          <p>ValidateAutoComplete bottom 搜索结果是否为Armin van Buuren</p>
-          <ValidateAutoComplete validateType="bottom" onChange={onChange} />
-          <p>ValidateAutoComplete inner 搜索结果是否为Armin van Buuren</p>
-          <ValidateAutoComplete validateType="inner" onChange={onChange()} />
-        </Wrapper>
+        <p>TextArea top 输入值 包含a</p>
+        <ValidateTextArea validateType="top" onChange={onChange()} />
+        <p>TextArea bottom 输入值 包含a</p>
+        <ValidateTextArea validateType="bottom" onChange={onChange()} />
+        <p>TextArea inner 输入值 包含a</p>
+        <ValidateTextArea validateType="inner" onChange={onChange()} />
 
-        <Wrapper>
-          <p>Cascader top 选择是否为一级菜单</p>
-          <ValidateCascader validateType="top" onChange={onChange()} />
-          <p>Cascader bottom 选择是否为一级菜单</p>
-          <ValidateCascader validateType="bottom" onChange={onChange()} />
-          <p>Cascader inner 选择是否为一级菜单</p>
-          <ValidateCascader validateType="inner" onChange={onChange()} />
-        </Wrapper>
+        <p>TextArea top 输入值 包含a</p>
+        <ValidateTextArea validateType="top" value="a" />
+        <p>TextArea bottom 输入值 包含a</p>
+        <ValidateTextArea validateType="bottom" value="a" />
+        <p>TextArea inner 输入值 包含a</p>
+        <ValidateTextArea validateType="inner" value="a" />
 
-        <Wrapper>
-          <p>Select top 选择是否为txt0</p>
-          <ValidateSelect validateType="top" onChange={onChange()} />
-          <p>Select bottom 选择是否为txt0</p>
-          <ValidateSelect validateType="bottom" onChange={onChange()} />
-          <p>Select inner 选择是否为txt0</p>
-          <ValidateSelect validateType="inner" onChange={onChange()} />
-        </Wrapper>
+        <p>AmountInput top 输入值 是否是1</p>
+        <ValidateAmountInput validateType="top" placeholder={'请填写金额'} onChange={onChange()} />
+        <p>AmountInput bottom 输入值 是否是1</p>
+        <ValidateAmountInput
+          validateType="bottom"
+          placeholder={'请填写金额'}
+          onChange={onChange()}
+        />
+        <p>AmountInput inner 输入值 是否是1</p>
+        <ValidateAmountInput
+          validateType="inner"
+          placeholder={'请填写金额'}
+          onChange={onChange()}
+        />
 
-        <Wrapper>
-          <p>TreeSelect top 选择是否为第1个文件</p>
-          <ValidateTreeSelect validateType="top" onChange={onChange()} />
-          <p>TreeSelect bottom 选择是否为第1个文件</p>
-          <ValidateTreeSelect validateType="bottom" onChange={onChange()} />
-          <p>TreeSelect inner 选择是否为第1个文件</p>
-          <ValidateTreeSelect validateType="inner" onChange={onChange()} />
-        </Wrapper>
+        <p>AmountInput top 输入值 是否是1</p>
+        <ValidateAmountInput validateType="top" placeholder={'请填写金额'} value={1} />
+        <p>AmountInput bottom 输入值 是否是1</p>
+        <ValidateAmountInput validateType="bottom" placeholder={'请填写金额'} value={1} />
+        <p>AmountInput inner 输入值 是否是1</p>
+        <ValidateAmountInput validateType="inner" placeholder={'请填写金额'} value={1} />
 
-        <Wrapper>
-          <p>DatePicker top 选择日期是否为2020-04-30</p>
-          <ValidateDatePicker validateType="top" onChange={onChange()} />
-          <p>DatePicker bottom 选择日期是否为2020-04-30</p>
-          <ValidateDatePicker validateType="bottom" onChange={onChange()} />
-          <p>DatePicker inner 选择日期是否为2020-04-30</p>
-          <ValidateDatePicker validateType="inner" onChange={onChange()} />
-        </Wrapper>
+        <p>TopAutoComplete top 搜索结果是否为Armin van Buuren</p>
+        <ValidateAutoComplete validateType="top" onChange={onChange} />
+        <p>ValidateAutoComplete bottom 搜索结果是否为Armin van Buuren</p>
+        <ValidateAutoComplete validateType="bottom" onChange={onChange} />
+        <p>ValidateAutoComplete inner 搜索结果是否为Armin van Buuren</p>
+        <ValidateAutoComplete validateType="inner" onChange={onChange()} />
 
-        <Wrapper>
-          <p>TimePicker top 选择时间是否为06:06:06</p>
-          <ValidateTimePicker validateType="top" onChange={onChange()} />
-          <p>TimePicker bottom 选择时间是否为06:06:06</p>
-          <ValidateTimePicker validateType="bottom" onChange={onChange()} />
-          <p>TimePicker inner 选择时间是否为06:06:06</p>
-          <ValidateTimePicker validateType="inner" onChange={onChange()} />
-        </Wrapper>
-      </div>
+        <p>TopAutoComplete top 搜索结果是否为Armin van Buuren</p>
+        <ValidateAutoComplete validateType="top" value="Armin van Buuren" />
+        <p>ValidateAutoComplete bottom 搜索结果是否为Armin van Buuren</p>
+        <ValidateAutoComplete validateType="bottom" value="Armin van Buuren" />
+        <p>ValidateAutoComplete inner 搜索结果是否为Armin van Buuren</p>
+        <ValidateAutoComplete validateType="inner" value="Armin van Buuren" />
+
+        <p>Cascader top 选择是否为一级菜单</p>
+        <ValidateCascader validateType="top" onChange={onChange()} />
+        <p>Cascader bottom 选择是否为一级菜单</p>
+        <ValidateCascader validateType="bottom" onChange={onChange()} />
+        <p>Cascader inner 选择是否为一级菜单</p>
+        <ValidateCascader validateType="inner" onChange={onChange()} />
+
+        <p>Cascader top 选择是否为一级菜单</p>
+        <ValidateCascader validateType="top" value={'一级菜单'} />
+        <p>Cascader bottom 选择是否为一级菜单</p>
+        <ValidateCascader validateType="bottom" value={'一级菜单'} />
+        <p>Cascader inner 选择是否为一级菜单</p>
+        <ValidateCascader validateType="inner" value={'一级菜单'} />
+
+        <p>Select top 选择是否为txt0</p>
+        <ValidateSelect validateType="top" onChange={onChange()} />
+        <p>Select bottom 选择是否为txt0</p>
+        <ValidateSelect validateType="bottom" onChange={onChange()} />
+        <p>Select inner 选择是否为txt0</p>
+        <ValidateSelect validateType="inner" onChange={onChange()} />
+
+        <p>Select top 选择是否为txt0</p>
+        <ValidateSelect validateType="top" value="txt0" />
+        <p>Select bottom 选择是否为txt0</p>
+        <ValidateSelect validateType="bottom" value="txt0" />
+        <p>Select inner 选择是否为txt0</p>
+        <ValidateSelect validateType="inner" value="txt0" />
+
+        <p>TreeSelect top 选择是否为第1个文件</p>
+        <ValidateTreeSelect validateType="top" onChange={onChange()} />
+        <p>TreeSelect bottom 选择是否为第1个文件</p>
+        <ValidateTreeSelect validateType="bottom" onChange={onChange()} />
+        <p>TreeSelect inner 选择是否为第1个文件</p>
+        <ValidateTreeSelect validateType="inner" onChange={onChange()} />
+
+        <p>TreeSelect top 选择是否为第1个文件</p>
+        <ValidateTreeSelect validateType="top" value={'1'} />
+        <p>TreeSelect bottom 选择是否为第1个文件</p>
+        <ValidateTreeSelect validateType="bottom" value={'1'} />
+        <p>TreeSelect inner 选择是否为第1个文件</p>
+        <ValidateTreeSelect validateType="inner" value={'1'} />
+
+        <p>DatePicker top 选择日期是否为2020-04-30</p>
+        <ValidateDatePicker validateType="top" onChange={onChange()} />
+        <p>DatePicker bottom 选择日期是否为2020-04-30</p>
+        <ValidateDatePicker validateType="bottom" onChange={onChange()} />
+        <p>DatePicker inner 选择日期是否为2020-04-30</p>
+        <ValidateDatePicker validateType="inner" onChange={onChange()} />
+
+        <p>DatePicker top 选择日期是否为2020-04-30</p>
+        <ValidateDatePicker validateType="top" value={'2020-04-30'} />
+        <p>DatePicker bottom 选择日期是否为2020-04-30</p>
+        <ValidateDatePicker validateType="bottom" value={'2020-04-30'} />
+        <p>DatePicker inner 选择日期是否为2020-04-30</p>
+        <ValidateDatePicker validateType="inner" value={'2020-04-30'} />
+
+        <p>TimePicker top 选择时间是否为06:06:06</p>
+        <ValidateTimePicker validateType="top" onChange={onChange()} />
+        <p>TimePicker bottom 选择时间是否为06:06:06</p>
+        <ValidateTimePicker validateType="bottom" onChange={onChange()} />
+        <p>TimePicker inner 选择时间是否为06:06:06</p>
+        <ValidateTimePicker validateType="inner" onChange={onChange()} />
+
+        <p>TimePicker top 选择时间是否为06:06:06</p>
+        <ValidateTimePicker validateType="top" value={'06:06:06'} />
+        <p>TimePicker bottom 选择时间是否为06:06:06</p>
+        <ValidateTimePicker validateType="bottom" value={'06:06:06'} />
+        <p>TimePicker inner 选择时间是否为06:06:06</p>
+        <ValidateTimePicker validateType="inner" value={'06:06:06'} />
+      </Wrapper>
     );
   }
 }
