@@ -62,10 +62,7 @@
   },
   "type": {
     "StepType": ["simple", "flat", "icon", "dot"],
-    "SizeType": [
-      "default",
-      "small"
-    ],
+    "SizeType": ["default", "small"],
     "OrientationType": ["horizontal", "vertical"],
     "AlignType": ["center", "left"],
     "StepStatus": ["finish", "process", "next", "wait", "error"]
