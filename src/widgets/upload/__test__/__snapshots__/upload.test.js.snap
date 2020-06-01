@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Upload Test css 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.c4.right {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  -webkit-transform: translate(0,-50%);
+  -ms-transform: translate(0,-50%);
+  transform: translate(0,-50%);
+}
+
+.c4.delete {
+  display: none;
+}
+
+.c4.areaIcon {
+  font-size: $lugia-dict.@lugia/lugia-web.xxlFontSizepx;
+}
+
+.c4.icon-mark {
+  margin: 0 6px 0 0;
+}
+
+.c4.loading {
+  -webkit-animation: iECmZH 0.8s linear infinite;
+  animation: iECmZH 0.8s linear infinite;
+}
+
+.c2 {
+  width: 100%;
+  display: none;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.c3 {
+  width: 100%;
+  height: 30px;
+  color: #cccccc;
+  padding: 0 0 0 10px;
+  line-height: 30px;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+  font-size: 12px;
+}
+
+.c0 {
+  position: relative;
+}
+
+<div
+  className="c0"
+  style={Object {}}
+>
+  <div
+    className="c1"
+    style={Object {}}
+  >
+    <input
+      accept="*"
+      className="c2"
+      disabled={false}
+      id="upload"
+      multiple={false}
+      onChange={[Function]}
+      style={Object {}}
+      type="file"
+    />
+    <div
+      className="c3"
+      disabled={false}
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      style={
+        Object {
+          "borderBottomColor": "#cccccc",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#cccccc",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#cccccc",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#cccccc",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+        }
+      }
+    >
+      <i
+        className="lugia-icon-financial_upload right   c4"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={Object {}}
+      />
+      请将文件拖到此处
+    </div>
+  </div>
+</div>
+`;
