@@ -296,7 +296,7 @@
                 "data": [
                   {
                     "name": "菜单",
-                    "path": ["PaginationPageSizeSelect", "MenuItem", "Container"],
+                    "path": ["PaginationPageSizeSelect", "Menu", "Container"],
                     "description": {
                       "appearancePart": {
                         "text": "菜单",
