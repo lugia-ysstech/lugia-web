@@ -1,0 +1,87 @@
+[
+  {
+    "widgetName": "Skeleton",
+    "title": "加载占位符",
+    "viewProps": [
+      {
+        "name": "title",
+        "text": "标题"
+      },
+      {
+        "name": "avatar",
+        "text": "头像"
+      },
+      {
+        "name": "animation",
+        "text": "动画"
+      },
+      {
+        "name": "paragraph",
+        "text": "数据编辑"
+      }
+    ],
+    "data": [
+      {
+        "title": "整体外框",
+        "iconClass": "menubackground",
+        "data": [
+          {
+            "name": "整体外框",
+            "path": ["Wrap"],
+            "description": {
+              "appearancePart": {
+                "text": "整体外框",
+                "desc": "整体外框"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "标题",
+        "data": [
+          {
+            "name": "标题",
+            "path": ["Title"],
+            "description": {
+              "appearancePart": {
+                "text": "标题",
+                "desc": "标题"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "段落",
+        "data": [
+          {
+            "name": "段落",
+            "path": ["Paragraph"],
+            "description": {
+              "appearancePart": {
+                "text": "段落",
+                "desc": "段落"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "头像",
+        "data": [
+          {
+            "name": "头像",
+            "path": ["Avatar"],
+            "description": {
+              "appearancePart": {
+                "text": "头像",
+                "desc": "头像"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
