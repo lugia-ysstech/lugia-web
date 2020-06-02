@@ -27,7 +27,234 @@
           {
             "name": "按钮文字样式",
             "path": ["ButtonText"],
-            "props": [{ "name": "text", "typeInTheme": "text" }],
+            "props": [{ "name": "text", "typeInTheme": "string" }],
+            "description": {
+              "appearancePart": {
+                "text": "文本",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Button",
+    "aliasName": "PlainButton",
+    "title": "按钮",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "loading", "text": "加载中" },
+      { "name": "shape", "text": "形状" },
+      { "name": "type", "text": "类型" }
+    ],
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "按钮",
+        "iconClass": "icon",
+        "data": [
+          {
+            "name": "按钮整体样式",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "按钮文字样式",
+            "path": ["ButtonText"],
+            "props": [{ "name": "text", "typeInTheme": "string" }],
+            "description": {
+              "appearancePart": {
+                "text": "文本",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Button",
+    "aliasName": "IconButton",
+    "title": "图标按钮",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "loading", "text": "加载中" },
+      { "name": "shape", "text": "形状" },
+      { "name": "type", "text": "类型" }
+    ],
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "按钮",
+        "iconClass": "icon",
+        "data": [
+          {
+            "name": "按钮整体样式",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "按钮文字样式",
+            "path": ["ButtonText"],
+            "props": [{ "name": "icon", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": {
+                "text": "图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "按钮前置图标样式",
+            "path": ["ButtonIcon"],
+            "props": [{ "name": "icon", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "按钮后置图标样式",
+            "path": ["ButtonSuffixIcon"],
+            "props": [{ "name": "suffixIcon", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": {
+                "text": "后缀图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Button",
+    "aliasName": "CircleButton",
+    "title": "图标按钮",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "loading", "text": "加载中" },
+      { "name": "shape", "text": "形状" },
+      { "name": "type", "text": "类型" }
+    ],
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "按钮",
+        "iconClass": "icon",
+        "data": [
+          {
+            "name": "按钮整体样式",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "按钮图标样式",
+            "path": ["ButtonIcon"],
+            "props": [{ "name": "icon", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": {
+                "text": "图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Button",
+    "aliasName": "LinkButton",
+    "title": "文字按钮",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "loading", "text": "加载中" },
+      { "name": "shape", "text": "形状" },
+      { "name": "type", "text": "类型" }
+    ],
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "按钮",
+        "iconClass": "icon",
+        "data": [
+          {
+            "name": "按钮整体样式",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "按钮文字样式",
+            "path": ["ButtonText"],
+            "props": [{ "name": "text", "typeInTheme": "string" }],
+            "description": {
+              "appearancePart": {
+                "text": "图标",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Button",
+    "aliasName": "LinkIconButton",
+    "title": "文字图标按钮",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "loading", "text": "加载中" },
+      { "name": "shape", "text": "形状" },
+      { "name": "type", "text": "类型" }
+    ],
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "按钮",
+        "iconClass": "icon",
+        "data": [
+          {
+            "name": "按钮整体样式",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "文字样式",
+            "path": ["ButtonText"],
+            "props": [{ "name": "text", "typeInTheme": "string" }],
             "description": {
               "appearancePart": {
                 "text": "文本",
@@ -36,7 +263,7 @@
             }
           },
           {
-            "name": "按钮前置图标样式",
+            "name": "前置图标样式",
             "path": ["ButtonIcon"],
             "props": [{ "name": "icon", "typeInTheme": "icon" }],
             "description": {
