@@ -316,12 +316,12 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const menuThemeConfig = this.props.getPartOfThemeProps('Tree');
     const { themeConfig } = menuThemeConfig;
 
-    const PopupMenuWrapTheme = {
+    const popupMenuWrapTheme = {
       normal: {
         ...getDefaultPopupMenuWrap(),
       },
     };
-    menuThemeConfig.themeConfig = deepMerge(PopupMenuWrapTheme, themeConfig.Container);
+    menuThemeConfig.themeConfig = deepMerge(popupMenuWrapTheme, themeConfig.Container);
     return <PopupMenuWrap themeProps={menuThemeConfig}>{tree}</PopupMenuWrap>;
   };
 
