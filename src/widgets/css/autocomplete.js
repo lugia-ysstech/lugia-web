@@ -7,9 +7,6 @@ import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import get from './theme-common-dict';
 import changeColor from './utilsColor';
 
-const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
-const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
-
 export const OldValueItem = CSSComponent({
   tag: 'div',
   className: 'OldValueItem',
@@ -26,22 +23,13 @@ export const OldValueItem = CSSComponent({
       ['border'],
       ['borderRadius'],
     ],
-    defaultTheme: {
-      background: {
-        color: changeColor(get('themeColor'), 0, 0, 10).rgba,
-      },
-      color: blackColor,
-    },
     getCSS: themeMeta => {
-      const { height = MenuItemHeight } = themeMeta;
+      const { height = get('smallSize') } = themeMeta;
       return `line-height: ${px2remcss(height)}`;
     },
   },
   hover: {
     selectNames: [['color'], ['background'], ['opacity'], ['border'], ['borderRadius'], ['font']],
-    defaultTheme: {
-      color: themeColor,
-    },
   },
   css: css`
     display: flex;
@@ -49,8 +37,8 @@ export const OldValueItem = CSSComponent({
     transition: all 0.3s;
     width: 100%;
     overflow: hidden;
-    height: ${px2remcss(MenuItemHeight)};
-    padding: 0 ${px2remcss(get('padding'))};
+    height: ${() => px2remcss(get('smallSize'))};
+    padding: 0 ${() => px2remcss(get('padding'))};
     font-size: ${px2remcss(14)};
     position: relative;
     cursor: pointer;
@@ -70,8 +58,7 @@ export const OldValueTitle = CSSComponent({
   },
   css: css`
     display: inline-block;
-    margin-left: ${px2remcss(get('paddingToText'))};
-    height: ${px2remcss(MenuItemHeight)};
+    margin-left: ${() => px2remcss(get('paddingToText'))};
   `,
 });
 OldValueTitle.displayName = 'OldValueTitle';

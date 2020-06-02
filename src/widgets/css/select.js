@@ -4,9 +4,9 @@
  * @flow
  */
 import CSSComponent from '@lugia/theme-css-hoc';
-import { getBorderRadius } from '@lugia/theme-utils';
-import get from './theme-common-dict';
 import { getThemeDefaultConfigFromSource } from '../utils';
+import { getBorderRadius } from '@lugia/theme-utils';
+import get from '../css/theme-common-dict';
 export const MenuItemHeight = 30;
 export const DefaultHeight = 250;
 export const DefaultWidth = 200;
@@ -99,18 +99,21 @@ export const getSelectThemeDefaultConfig = (sizeType: SizeType, themeName: strin
   return getThemeDefaultConfigFromSource(inputTagThemeDefaultConfig)(sizeType, themeName);
 };
 
+export const getDefaultPopupMenuWrap = () => {
+  return {
+    background: {
+      color: '#ffffff',
+    },
+    boxShadow: get('normalBoxShadow'),
+    borderRadius: getBorderRadius(get('borderRadiusValue')),
+  };
+};
+
 export const PopupMenuWrap = CSSComponent({
   tag: 'div',
   className: 'PopupMenuWrap',
   normal: {
     selectNames: [['width'], ['borderRadius'], ['boxShadow'], ['background']],
-    defaultTheme: {
-      background: {
-        color: '#ffffff',
-      },
-      boxShadow: get('normalBoxShadow'),
-      borderRadius: getBorderRadius(get('borderRadiusValue')),
-    },
   },
   css: `
   display:inline-block;

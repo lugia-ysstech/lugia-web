@@ -20,7 +20,7 @@ import { getNewValueOrOldValue } from '../select';
 import { appendCustomValue, getTheme, setNewValue } from '../common/selectFunction';
 import { DefaultHelp } from '../css/input';
 import { getInputtagThemeHoc } from '../select/utils';
-import { PopupMenuWrap } from '../css/select';
+import { PopupMenuWrap, getDefaultPopupMenuWrap } from '../css/select';
 import changeColor from '../css/utilsColor';
 import get from '../css/theme-common-dict';
 
@@ -315,7 +315,13 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     ];
     const menuThemeConfig = this.props.getPartOfThemeProps('Tree');
     const { themeConfig } = menuThemeConfig;
-    menuThemeConfig.themeConfig = themeConfig.Container;
+
+    const PopupMenuWrapTheme = {
+      normal: {
+        ...getDefaultPopupMenuWrap(),
+      },
+    };
+    menuThemeConfig.themeConfig = deepMerge(PopupMenuWrapTheme, themeConfig.Container);
     return <PopupMenuWrap themeProps={menuThemeConfig}>{tree}</PopupMenuWrap>;
   };
 

@@ -97,6 +97,7 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
             data={info}
             translateTreeData
             onlySelectLeaf={false}
+            placeholder={'请选择'}
             canInput
             expandAll
             autoHeight
@@ -111,6 +112,7 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
             theme={config}
             translateTreeData
             onlySelectLeaf={false}
+            placeholder={'请选择'}
             expandAll
             autoHeight
             pullIconClass="lugia-icon-direction_caret_down"
@@ -124,6 +126,7 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
             size={'large'}
             translateTreeData
             onlySelectLeaf={false}
+            placeholder={'请选择'}
             expandAll
             autoHeight
             pullIconClass="lugia-icon-direction_caret_down"
@@ -142,6 +145,7 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
             size={'small'}
             data={info}
             translateTreeData
+            placeholder={'请选择'}
             onlySelectLeaf={false}
             canInput
             expandAll
@@ -157,6 +161,7 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
             size={'default'}
             theme={config}
             translateTreeData
+            placeholder={'请选择'}
             onlySelectLeaf={false}
             expandAll
             autoHeight
@@ -170,6 +175,7 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
             data={info}
             theme={config}
             size={'large'}
+            placeholder={'请选择'}
             translateTreeData
             onlySelectLeaf={false}
             expandAll
