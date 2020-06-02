@@ -275,7 +275,15 @@ class UploadDemo extends React.Component<any, any> {
       showFileList: true,
       limit: 3,
     };
-
+    const configButton = {
+      [Widget.Upload]: {
+        Container: {
+          normal: {
+            width: 300,
+          },
+        },
+      },
+    };
     const config = {
       [Widget.Upload]: {
         UploadButtonType: {
@@ -420,9 +428,15 @@ class UploadDemo extends React.Component<any, any> {
           <Upload {...defaultProps5} />
           <Title>default disabled： </Title>
           <Upload {...defaultProps7} />
-          <Title>Button disabled： </Title>
+          <Title>默认的Button disabled： </Title>
           <Upload {...defaultProps8} />
-          <Title>button limit 3： </Title>
+          <Title>默认default button limit 3： </Title>
+          <Upload {...defaultProps10} />
+        </Theme>
+        <Theme config={configButton}>
+          <Title>配置宽度的Button disabled ： </Title>
+          <Upload {...defaultProps8} />
+          <Title>配置宽度的button limit 3： </Title>
           <Upload {...defaultProps10} />
         </Theme>
         <Theme config={areaConfig}>

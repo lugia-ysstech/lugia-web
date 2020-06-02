@@ -51,13 +51,6 @@ const Container = CSSComponent({
     box-sizing: border-box;
   `,
 });
-const ButtonContainer = CSSComponent({
-  tag: 'div',
-  className: 'ButtonContainer',
-  normal: {
-    selectNames: [['width'], ['height']],
-  },
-});
 const BothContainer = CSSComponent({
   tag: 'div',
   className: 'BothContainer',
@@ -78,7 +71,7 @@ const bothButtonTheme = {
   height: 30,
   borderRadius: getBorderRadius(0, ['tl', 'bl']),
 };
-const buttonTheme = {
+const buttonHeightTheme = {
   height: 30,
 };
 const buttonFailColor = {
@@ -128,7 +121,7 @@ const getDefaultStyle = {
     color: blackColor,
   },
 };
-const bottonTheme = {
+const bottonThemeStyle = {
   border: getBorder({ width: 1, style: 'solid', color: dangerColor }),
   background: { color: 'transparent' },
 };
@@ -136,19 +129,19 @@ const getButtonFailBorder = normalButtonTheme => {
   return {
     normal: {
       ...normalButtonTheme,
-      ...bottonTheme,
+      ...bottonThemeStyle,
     },
     hover: {
-      ...bottonTheme,
+      ...bottonThemeStyle,
     },
     active: {
-      ...bottonTheme,
+      ...bottonThemeStyle,
     },
     focus: {
-      ...bottonTheme,
+      ...bottonThemeStyle,
     },
     disabled: {
-      ...bottonTheme,
+      ...bottonThemeStyle,
     },
   };
 };
@@ -907,7 +900,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
   getChildren(areaType: string, props: DefProps, classNameStatus: string, dragIn: boolean) {
     let children;
     const normalButtonTheme =
-      areaType === 'both' ? bothButtonTheme : areaType === 'button' ? buttonTheme : '';
+      areaType === 'both' ? bothButtonTheme : areaType === 'button' ? buttonHeightTheme : '';
     if (areaType === 'default') {
       const { handleClickToUpload } = this;
       const { defaultText, disabled } = props;
@@ -1012,42 +1005,40 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'button') {
       const { disabled } = props;
       const { handleClickToUpload } = this;
-      const buttonContainerStyle = this.props.getPartOfThemeProps('Container');
+      const { themeConfig: useSetButtonColor } = this.props.getPartOfThemeHocProps('ButtonText');
       const { viewClass: buttonViewClass, theme: buttonTheme } = props.getPartOfThemeHocProps(
-        'UploadButtonType'
+        'Container'
       );
       const buttonColorStyle = classNameStatus === 'fail' ? buttonFailColor : {};
       const buttonStyleTheme =
         classNameStatus === 'fail' ? getButtonFailBorder(normalButtonTheme) : {};
-      const resultButtonTheme = deepMerge(
-        {
-          [buttonViewClass]: {
-            Container: {
-              normal: {
-                height: 30,
-              },
-              ...buttonStyleTheme,
+      const buttonMergeStyle = deepMerge(buttonStyleTheme, buttonTheme[buttonViewClass]);
+      const resultButtonTheme = deepMerge({
+        [buttonViewClass]: {
+          Container: {
+            normal: {
+              height: 30,
             },
-            ButtonText: {
-              ...buttonColorStyle,
-            },
+            ...buttonStyleTheme,
+            buttonMergeStyle,
+          },
+          ButtonText: {
+            ...buttonColorStyle,
+            ...useSetButtonColor,
           },
         },
-        buttonTheme
-      );
+      });
       const newTheme = { viewClass: buttonViewClass, theme: resultButtonTheme };
       children = (
-        <ButtonContainer themeProps={buttonContainerStyle}>
-          <Button
-            {...newTheme}
-            block
-            type={'primary'}
-            disabled={disabled}
-            onClick={handleClickToUpload}
-          >
-            {classNameStatus === 'fail' ? failTips : uploadText}
-          </Button>
-        </ButtonContainer>
+        <Button
+          {...newTheme}
+          block
+          type={'primary'}
+          disabled={disabled}
+          onClick={handleClickToUpload}
+        >
+          {classNameStatus === 'fail' ? failTips : uploadText}
+        </Button>
       );
     }
     if (areaType === 'custom') {
