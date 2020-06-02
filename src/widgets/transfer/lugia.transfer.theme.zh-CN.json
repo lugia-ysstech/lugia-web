@@ -1,0 +1,715 @@
+[
+  {
+    "widgetName": "Transfer",
+    "title": "穿梭框",
+    "viewProps": [
+      {
+        "name": "showSearch",
+        "text": "搜索功能"
+      },
+      {
+        "name": "data",
+        "text": "数据编辑"
+      }
+    ],
+    "data": [
+      {
+        "title": "整体面板",
+        "iconClass": "transferBackground",
+        "data": [
+          {
+            "name": "整体面板",
+            "path": ["TransferPanel"],
+            "description": {
+              "appearancePart": {
+                "text": "整体面板",
+                "desc": "整体面板"
+              }
+            }
+          },
+          {
+            "name": "头部面板",
+            "path": ["TransferHeaderWrap"],
+            "description": {
+              "appearancePart": {
+                "text": "头部面板",
+                "desc": "头部面板"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "头部选择框",
+        "iconClass": "transferCheckbox",
+        "children": [
+          {
+            "title": "未选中",
+            "iconClass": "checkboxUncheck",
+            "data": [
+              {
+                "name": "外观",
+                "path": ["TransferPanelHeaderCheckbox", "CheckboxEdgeUnChecked"],
+                "description": {
+                  "appearancePart": {
+                    "text": "外观",
+                    "desc": "外观"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "选中",
+            "iconClass": "checkboxCheck",
+            "data": [
+              {
+                "name": "外观",
+                "path": ["TransferPanelHeaderCheckbox", "CheckboxEdgeChecked"],
+                "description": {
+                  "appearancePart": {
+                    "text": "外观",
+                    "desc": "外观"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "半选中",
+            "iconClass": "checkboxSemiselective",
+            "data": [
+              {
+                "name": "外观",
+                "path": ["TransferPanelHeaderCheckbox", "CheckboxEdgeIndeterminate"],
+                "description": {
+                  "appearancePart": {
+                    "text": "外观",
+                    "desc": "外观"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "文字",
+            "iconClass": "radioText",
+            "data": [
+              {
+                "name": "文字",
+                "path": ["TransferHeaderText"],
+                "description": {
+                  "textPart": {
+                    "text": "文字",
+                    "desc": "文字"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "穿梭按钮",
+        "iconClass": "transferButton",
+        "data": [
+          {
+            "title": "穿梭按钮",
+            "iconClass": "checkboxUncheck",
+            "data": [
+              {
+                "name": "外观",
+                "path": ["TransferButton", "ButtonWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "外观",
+                    "desc": "外观"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "搜索框",
+        "iconClass": "search",
+        "children": [
+          {
+            "title": "主题",
+            "iconClass": "input",
+            "data": [
+              {
+                "name": "输入框",
+                "path": ["TransferSearchInput", "Container"],
+                "description": {
+                  "appearancePart": {
+                    "text": "输入框",
+                    "desc": "输入框"
+                  }
+                }
+              },
+              {
+                "name": "清除图标",
+                "path": ["TransferSearchInput", "InputClearButton"],
+                "description": {
+                  "textPart": {
+                    "text": "清除图标",
+                    "desc": "清除图标"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "前/后缀图标",
+            "iconClass": "iconsearch",
+            "data": [
+              {
+                "name": "后缀图标",
+                "path": ["TransferSearchInput", "InputSuffix"],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "取消项面板",
+        "iconClass": "transferCancel",
+        "children": [
+          {
+            "title": "面板",
+            "iconClass": "treeBackground",
+            "data": [
+              {
+                "name": "面板",
+                "path": ["TransferCancelCheckbox", "CheckboxWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "面板",
+                    "desc": "面板"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "取消项",
+            "iconClass": "TransferCancelCheckbox",
+            "children": [
+              {
+                "title": "后台取消",
+                "iconClass": "checkboxCancel",
+                "data": [
+                  {
+                    "name": "外观",
+                    "path": ["TransferCancelCheckbox", "CheckboxEdgeCancel"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "外观",
+                        "desc": "外观"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "文字",
+                "iconClass": "radioText",
+                "data": [
+                  {
+                    "name": "文字",
+                    "path": ["TransferCancelCheckbox", "CheckboxText"],
+                    "description": {
+                      "textPart": {
+                        "text": "文字",
+                        "desc": "文字"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Transfer",
+    "aliasName": "TransferTree",
+    "title": "穿梭框",
+    "viewProps": [
+      {
+        "name": "showSearch",
+        "text": "搜索功能"
+      },
+      {
+        "name": "data",
+        "text": "数据编辑"
+      }
+    ],
+    "data": [
+      {
+        "title": "整体面板",
+        "iconClass": "transferBackground",
+        "data": [
+          {
+            "name": "整体面板",
+            "path": ["TransferPanel"],
+            "description": {
+              "appearancePart": {
+                "text": "整体面板",
+                "desc": "整体面板"
+              }
+            }
+          },
+          {
+            "name": "头部面板",
+            "path": ["TransferHeaderWrap"],
+            "description": {
+              "appearancePart": {
+                "text": "头部面板",
+                "desc": "头部面板"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "头部选择框",
+        "iconClass": "transferCheckbox",
+        "children": [
+          {
+            "title": "未选中",
+            "iconClass": "checkboxUncheck",
+            "data": [
+              {
+                "name": "外观",
+                "path": ["TransferPanelHeaderCheckbox", "CheckboxEdgeUnChecked"],
+                "description": {
+                  "appearancePart": {
+                    "text": "外观",
+                    "desc": "外观"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "选中",
+            "iconClass": "checkboxCheck",
+            "data": [
+              {
+                "name": "外观",
+                "path": ["TransferPanelHeaderCheckbox", "CheckboxEdgeChecked"],
+                "description": {
+                  "appearancePart": {
+                    "text": "外观",
+                    "desc": "外观"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "半选中",
+            "iconClass": "checkboxSemiselective",
+            "data": [
+              {
+                "name": "外观",
+                "path": ["TransferPanelHeaderCheckbox", "CheckboxEdgeIndeterminate"],
+                "description": {
+                  "appearancePart": {
+                    "text": "外观",
+                    "desc": "外观"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "文字",
+            "iconClass": "radioText",
+            "data": [
+              {
+                "name": "文字",
+                "path": ["TransferHeaderText"],
+                "description": {
+                  "textPart": {
+                    "text": "文字",
+                    "desc": "文字"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "树形列表",
+        "iconClass": "treeSelect",
+        "children": [
+          {
+            "title": "主体背景",
+            "iconClass": "menubackground",
+            "data": [
+              {
+                "name": "主体背景",
+                "path": ["TransferPanelTree", "Container"],
+                "description": {
+                  "appearancePart": {
+                    "text": "主体背景",
+                    "desc": "主体背景中外观配置的区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "主体背景内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "默认项文本",
+            "iconClass": "treeText",
+            "data": [
+              {
+                "name": "子选项文本",
+                "path": ["TransferPanelTree", "TreeItem", "Text"],
+                "description": {
+                  "appearancePart": {
+                    "text": "子选项背景",
+                    "desc": "子选项背景外观配置的区"
+                  },
+                  "textPart": {
+                    "text": "子选项文本",
+                    "desc": "子选项文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "子选项背景内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "选中项文本",
+            "iconClass": "Checked",
+            "data": [
+              {
+                "name": "选中项文本文本",
+                "path": ["TransferPanelTree", "TreeItem", "SelectedText"],
+                "description": {
+                  "appearancePart": {
+                    "text": "选中项文本背景",
+                    "desc": "选中项文本背景外观配置的区"
+                  },
+                  "textPart": {
+                    "text": "选中项文本",
+                    "desc": "选中项文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "子选项背景内外边距配置区"
+                  }
+                }
+              },
+              {
+                "name": "父选项文本",
+                "path": ["TransferPanelTree", "TreeItem", "SelectedParentText"],
+                "description": {
+                  "appearancePart": {
+                    "text": "父选项文本",
+                    "desc": "父选项文本外观配置的区"
+                  },
+                  "textPart": {
+                    "text": "父选项文本",
+                    "desc": "父选项文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "父选项文本内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "默认项底色",
+            "iconClass": "treeBackground",
+            "data": [
+              {
+                "name": "默认项底色",
+                "path": ["TransferPanelTree", "TreeItem", "TreeItemWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "默认项底色",
+                    "desc": "父选项文本外观配置的区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "选中项底色",
+            "iconClass": "treeSelectedBackground",
+            "data": [
+              {
+                "name": "选中项底色",
+                "path": ["TransferPanelTree", "TreeItem", "SelectedTreeItemWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "选中项底色",
+                    "desc": "父选项文本外观配置的区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "父选项文本内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "多选框",
+            "iconClass": "checkboxCheck",
+            "children": [
+              {
+                "title": "未选中",
+                "iconClass": "checkboxUncheck",
+                "data": [
+                  {
+                    "name": "未选中外框样式",
+                    "path": ["TransferPanelTree", "TreeItem", "Checkbox", "CheckboxEdgeUnChecked"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "外观",
+                        "desc": "面板中外观配置的区块显示文本"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "选中",
+                "iconClass": "checkboxCheck",
+                "data": [
+                  {
+                    "name": "选中外框样式",
+                    "path": ["TransferPanelTree", "TreeItem", "Checkbox", "CheckboxEdgeChecked"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "外框",
+                        "desc": "面板中外观配置的区块显示文本"
+                      }
+                    }
+                  },
+                  {
+                    "name": "选中内框样式",
+                    "path": ["TransferPanelTree", "TreeItem", "Checkbox", "CheckboxInnerChecked"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "内框",
+                        "desc": "面板中外观配置的区块显示文本"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "半选中",
+                "iconClass": "checkboxSemiselective",
+                "data": [
+                  {
+                    "name": "半选外框样式",
+                    "path": [
+                      "TransferPanelTree",
+                      "TreeItem",
+                      "Checkbox",
+                      "CheckboxEdgeIndeterminate"
+                    ],
+                    "description": {
+                      "appearancePart": {
+                        "text": "外框",
+                        "desc": "面板中外观配置的区块显示文本"
+                      }
+                    }
+                  },
+                  {
+                    "name": "半选内框样式",
+                    "path": [
+                      "TransferPanelTree",
+                      "TreeItem",
+                      "Checkbox",
+                      "CheckboxInnerIndeterminate"
+                    ],
+                    "description": {
+                      "appearancePart": {
+                        "text": "内框",
+                        "desc": "面板中外观配置的区块显示文本"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "文字",
+                "iconClass": "radioText",
+                "data": [
+                  {
+                    "name": "文字",
+                    "path": ["TransferPanelTree", "TreeItem", "Checkbox", "CheckboxText"],
+                    "description": {
+                      "textPart": {
+                        "text": "文字",
+                        "desc": "文字"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "穿梭按钮",
+        "iconClass": "transferButton",
+        "data": [
+          {
+            "title": "穿梭按钮",
+            "iconClass": "checkboxUncheck",
+            "data": [
+              {
+                "name": "外观",
+                "path": ["TransferButton", "ButtonWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "外观",
+                    "desc": "外观"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "搜索框",
+        "iconClass": "search",
+        "children": [
+          {
+            "title": "主题",
+            "iconClass": "input",
+            "data": [
+              {
+                "name": "输入框",
+                "path": ["TransferSearchInput", "Container"],
+                "description": {
+                  "appearancePart": {
+                    "text": "输入框",
+                    "desc": "输入框"
+                  }
+                }
+              },
+              {
+                "name": "清除图标",
+                "path": ["TransferSearchInput", "InputClearButton"],
+                "description": {
+                  "textPart": {
+                    "text": "清除图标",
+                    "desc": "清除图标"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "前/后缀图标",
+            "iconClass": "iconsearch",
+            "data": [
+              {
+                "name": "后缀图标",
+                "path": ["TransferSearchInput", "InputSuffix"],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "取消项面板",
+        "iconClass": "transferCancel",
+        "children": [
+          {
+            "title": "面板",
+            "iconClass": "treeBackground",
+            "data": [
+              {
+                "name": "面板",
+                "path": ["TransferCancelCheckbox", "CheckboxWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "面板",
+                    "desc": "面板"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "取消项",
+            "iconClass": "TransferCancelCheckbox",
+            "children": [
+              {
+                "title": "后台取消",
+                "iconClass": "checkboxCancel",
+                "data": [
+                  {
+                    "name": "外观",
+                    "path": ["TransferCancelCheckbox", "CheckboxEdgeCancel"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "外观",
+                        "desc": "外观"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "文字",
+                "iconClass": "radioText",
+                "data": [
+                  {
+                    "name": "文字",
+                    "path": ["TransferCancelCheckbox", "CheckboxText"],
+                    "description": {
+                      "textPart": {
+                        "text": "文字",
+                        "desc": "文字"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
