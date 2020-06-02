@@ -43,9 +43,9 @@ const cancelSmallIconSize = {
 };
 
 const switchSmallIconSize = {
-  small: '$lugia-dict.@lugia/lugia-web.xsFontSize',
-  default: '$lugia-dict.@lugia/lugia-web.sFontSize',
-  large: '$lugia-dict.@lugia/lugia-web.sFontSize',
+  small: '$lugia-dict.@lugia/lugia-web.xxsFontSize',
+  default: '$lugia-dict.@lugia/lugia-web.xsFontSize',
+  large: '$lugia-dict.@lugia/lugia-web.xsFontSize',
 };
 
 const crateInputTagThemeConfig = (type: SizeType) => {
