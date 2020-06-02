@@ -42,7 +42,7 @@
   {
     "widgetName": "Button",
     "aliasName": "PlainButton",
-    "title": "按钮",
+    "title": "朴素按钮",
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
       { "name": "loading", "text": "加载中" },
@@ -146,7 +146,7 @@
   {
     "widgetName": "Button",
     "aliasName": "CircleButton",
-    "title": "图标按钮",
+    "title": "圆形图标按钮",
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
       { "name": "loading", "text": "加载中" },
