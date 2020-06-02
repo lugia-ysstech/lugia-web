@@ -41,14 +41,26 @@ const info = [
       suffixIconClass: 'lugia-icon-financial_contacts',
       suffixIconSrc: '',
     },
+    disabled: true,
     children: [
       {
         value: '0-1',
         text: '朝阳支行办事处',
         icon: 'lugia-icon-financial_describe',
+        disabled: true,
         children: [
-          { value: '0-1-0', text: '朝阳支行办事处-1', icon: 'lugia-icon-financial_bell' },
-          { value: '0-1-1', text: '朝阳支行办事处-2', icon: 'lugia-icon-financial_contacts' },
+          {
+            value: '0-1-0',
+            text: '朝阳支行办事处-1',
+            icon: 'lugia-icon-financial_bell',
+            disabled: true,
+          },
+          {
+            value: '0-1-1',
+            text: '朝阳支行办事处-2',
+            icon: 'lugia-icon-financial_contacts',
+            disabled: true,
+          },
         ],
       },
       { value: '0-2', text: '海淀支行办事处', icon: 'lugia-icon-financial_excle' },
