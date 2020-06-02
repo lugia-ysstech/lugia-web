@@ -1,0 +1,246 @@
+[
+  {
+    "widgetName": "DatePicker",
+    "title": "日期组件",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "selectToday", "text": "默认选中今天日期" },
+      { "name": "showToday", "text": "'切换今天'功能" },
+      { "name": "showTime", "text": "'时间选择'功能" },
+      { "name": "format", "text": "显示格式" }
+    ],
+    "data": [
+      {
+        "title": "文本框",
+        "iconClass": "icon",
+        "children": [
+          {
+            "title": "主体",
+            "iconClass": "input",
+            "data": [
+              {
+                "name": "文本框",
+                "path": ["Container"],
+                "description": {
+                  "appearancePart": {
+                    "text": "输入框",
+                    "desc": "面板中外观配置的区块显示文本"
+                  },
+                  "textPart": {
+                    "text": "输入文本",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "文本框提示信息",
+                "path": ["Placeholder"],
+                "description": {
+                  "textPart": {
+                    "text": "默认文本",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "清楚图标",
+                "path": ["ClearButton"],
+                "props": [
+                  {
+                    "name": "clearIcon",
+                    "typeInTheme": "icon"
+                  }
+                ],
+                "description": {
+                  "textPart": {
+                    "text": "清楚图标",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "前/后缀图标",
+            "iconClass": "datePickerIcon",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["InputPrefix"],
+                "props": [
+                  {
+                    "name": "prefix",
+                    "typeInTheme": "icon"
+                  }
+                ],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "后缀图标",
+                "path": ["InputSuffix"],
+                "props": [
+                  {
+                    "name": "suffix",
+                    "typeInTheme": "icon"
+                  }
+                ],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "校验失败",
+            "iconClass": "Verificationfailed",
+            "data": [
+              {
+                "name": "校验失败的输入框",
+                "path": ["ValidateErrorInput"]
+              }
+            ]
+          },
+          {
+            "title": "校验提示",
+            "iconClass": "Failureprompt",
+            "data": [
+              {
+                "name": "校验失败提示信息",
+                "path": ["ValidateErrorText"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "展开面板",
+        "iconClass": "cardbackground",
+        "data": [
+          {
+            "name": "日期面板",
+            "path": ["FacePanelContain"]
+          }
+        ]
+      },
+      {
+        "title": "日期项",
+        "iconClass": "datePickerDate",
+        "data": [
+          {
+            "name": "日期",
+            "path": ["InMonthDate"],
+            "description": {
+              "textPart": {
+                "text": "本月日期",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "非本月日期",
+            "path": ["OutMonthDate"],
+            "description": {
+              "textPart": {
+                "text": "非本月日期",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "当天日期",
+            "path": ["SelectToday"],
+            "description": {
+              "appearancePart": {
+                "text": "当天日期外框",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "当天日期文字",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "星期标注",
+        "iconClass": "datePickerWeekend",
+        "data": [
+          {
+            "name": "星期项",
+            "path": ["SecondWeekDate"]
+          }
+        ]
+      },
+      {
+        "title": "周/年/月项",
+        "iconClass": "datePickerAllDate",
+        "data": [{ "name": "分类日期", "path": ["GroupDate"] }]
+      },
+      {
+        "title": "页头/页脚标注",
+        "iconClass": "datePickerButton",
+        "data": [
+          {
+            "name": "额外页脚",
+            "path": ["ExtraFooter"]
+          }
+        ]
+      },
+      {
+        "title": "页脚按钮",
+        "iconClass": "datePickerButton",
+        "data": [
+          {
+            "name": "页脚按钮",
+            "path": ["FooterButtonOptions"],
+            "description": {
+              "textPart": {
+                "text": "页脚按钮",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "页脚'今天'按钮",
+            "path": ["FooterToday"],
+            "description": {
+              "textPart": {
+                "text": "今天按钮",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "页脚时间按钮",
+            "path": ["FooterTimeButton"],
+            "description": {
+              "textPart": {
+                "text": "时间按钮",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "页脚确定按钮",
+        "iconClass": "",
+        "data": [
+          {
+            "name": "页脚确定按钮",
+            "path": ["FooterOkButton"]
+          }
+        ]
+      }
+    ]
+  }
+]
