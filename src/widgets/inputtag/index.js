@@ -23,6 +23,9 @@ import PlaceContainer from '../common/PlaceContainer';
 import { DefaultHelp } from '../css/input';
 import { DefaultHeight } from '../css/menu';
 import { addMouseEvent } from '@lugia/theme-hoc';
+import { getBoxShadow } from '@lugia/theme-utils';
+import changeColor from '../css/utilsColor';
+import { getBorder } from '@lugia/theme-utils';
 import {
   FontSize,
   OutContainer,
@@ -293,9 +296,32 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         );
       }
     }
+
+    const defaultOutContainerTheme = {
+      themeConfig: {
+        disabled: {
+          border: getBorder(get('disabledBorder')),
+        },
+        focus: {
+          border: getBorder(get('focusBorder')),
+          boxShadow: getBoxShadow(
+            `0px 0px 4px 0px ${changeColor(get('themeColor'), 0, 0, 40).rgba}`
+          ),
+        },
+        active: {
+          border: getBorder(get('activeBorder')),
+        },
+        hover: { border: getBorder(get('hoverBorder')) },
+        normal: { border: getBorder(get('normalBorder')) },
+      },
+    };
+    const outContainerTheme = deepMerge(
+      defaultOutContainerTheme,
+      getPartOfThemeProps('InputTagWrap')
+    );
     return (
       <OutContainer
-        themeProps={themeProps}
+        themeProps={outContainerTheme}
         focus={focus}
         disabled={disabled}
         validateStatus={validateStatus}

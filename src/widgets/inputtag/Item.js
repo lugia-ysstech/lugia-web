@@ -11,8 +11,10 @@ import Icon from '../icon';
 import { deepMerge } from '@lugia/object-utils';
 import { ItemContainer, ItemText, ItemWrap } from '../css/inputtag';
 import { px2remcss } from '../css/units';
+import changeColor from '../css/utilsColor';
 import get from '../css/theme-common-dict';
 
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 type ItemProps = {
   className?: string,
   closeable?: boolean,
@@ -39,8 +41,17 @@ class ItemTag extends React.Component<ItemProps, ItemState> {
       getPartOfThemeProps,
       disabled,
     } = this.props;
-    const TagWrapThemeProps = getPartOfThemeProps('TagWrap');
-
+    const defaultTagWrapTheme = {
+      themeConfig: {
+        normal: {
+          color: darkGreyColor,
+          background: {
+            color: changeColor(get('themeColor'), 0, 0, 10).rgba,
+          },
+        },
+      },
+    };
+    const TagWrapThemeProps = deepMerge(defaultTagWrapTheme, getPartOfThemeProps('TagWrap'));
     return (
       <ItemWrap>
         <ItemContainer
