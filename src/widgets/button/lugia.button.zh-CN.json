@@ -41,11 +41,11 @@
       "desc": "设置圆形按钮"
     },
     "icon": {
-      "type": "string",
+      "type": "icon",
       "desc": "设置按钮前置图标类型"
     },
     "suffixIcon": {
-      "type": "string",
+      "type": "icon",
       "desc": "设置按钮后置图标类型"
     },
     "text": {
