@@ -55,12 +55,13 @@
 /*border: none;*/
 /*}*/
 :global(.lugia-table-linear .rc-table .rc-table-content th) {
-  border: none;
-  border-bottom:1px solid #e8e8e8;
+  border-color: transparent;
+  border-color: #f7f7f7;
+  border-bottom-color: #e8e8e8;
 }
 :global(.lugia-table-linear .rc-table .rc-table-content td) {
-  border: none;
-  border-bottom:1px solid #e8e8e8;
+  border-color: transparent;
+  border-bottom-color: #e8e8e8;
 }
 
 /*:global(.rc-table tr:hover) {*/
