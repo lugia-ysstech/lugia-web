@@ -590,13 +590,13 @@ class TreeNode extends React.Component {
   };
 
   getIconTheme = (iconType: string, selectedIconType: string) => {
-    const { checked, selected } = this.props;
-    const { viewClass, theme, size } =
+    const { checked, selected, size } = this.props;
+    const { viewClass, theme } =
       checked || selected
         ? this.props.getPartOfThemeHocProps(selectedIconType)
         : this.props.getPartOfThemeHocProps(iconType);
     const marginLeft = iconType === 'SuffixIcon' ? get('paddingToText') : 0;
-    const marginRight = iconType === 'PrefixIcon' ? get('paddingToText') : 0;
+    const marginRight = iconType === 'PrefixIcon' ? get('marginToSameElement') : 0;
     const defaultTheme = {
       normal: {
         margin: {
@@ -773,7 +773,23 @@ class TreeNode extends React.Component {
     }
 
     const renderNoopSwitch = () => {
-      const { viewClass, theme } = this.props.getPartOfThemeHocProps('SwitchIcon');
+      const defaultMarginLeft = {
+        normal: {
+          padding: {
+            left: get('padding'),
+          },
+        },
+      };
+      const {
+        viewClass: switchIconViewClass,
+        theme: switchIconTheme,
+      } = this.props.getPartOfThemeHocProps('SwitchIcon');
+      const { viewClass, theme } = {
+        viewClass: switchIconViewClass,
+        theme: {
+          [switchIconViewClass]: deepMerge(defaultMarginLeft, switchIconTheme[switchIconViewClass]),
+        },
+      };
       return (
         <NullSwitch>
           <Icon

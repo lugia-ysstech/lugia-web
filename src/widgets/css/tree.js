@@ -17,8 +17,6 @@ export type SizeType = 'small' | 'default' | 'large';
 
 export const { transitionTime } = colorsFunc();
 
-const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
-
 export const TreeItemHeight = 35;
 export const DefaultHeight = 250;
 
@@ -157,20 +155,14 @@ const crateTreeThemeConfig = (type: SizeType) => {
         normal: {
           height: checkBoxSize[type],
           width: checkBoxSize[type],
-          background: {
-            color: defaultColor,
-          },
           borderRadius: getBorderRadius(2),
           border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
         },
         hover: {
           height: checkBoxSize[type],
           width: checkBoxSize[type],
-          background: {
-            color: defaultColor,
-          },
           borderRadius: getBorderRadius(2),
-          border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+          border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
         },
         disabled: {
           height: checkBoxSize[type],
@@ -206,14 +198,14 @@ const crateTreeThemeConfig = (type: SizeType) => {
   };
 };
 
-export const treeThemeDefaultConfig: SizeThemeConfig = {
+const treeThemeDefaultConfig = () => ({
   small: crateTreeThemeConfig('small'),
   default: crateTreeThemeConfig('default'),
   large: crateTreeThemeConfig('large'),
-};
+});
 
 export const getTreeThemeDefaultConfig = (sizeType: SizeType, themeName: string) => {
-  return getThemeDefaultConfigFromSource(treeThemeDefaultConfig)(sizeType, themeName);
+  return getThemeDefaultConfigFromSource(treeThemeDefaultConfig())(sizeType, themeName);
 };
 
 export const getMenuItemHeight = (size: SizeType) => {
@@ -232,7 +224,7 @@ export const CheckBoxContainer = StaticComponent({
     height: 100%;
     flex: 1;
     align-items: center;
-    padding-left: ${px2remcss(get('padding'))};
+    padding-left: ${() => px2remcss(get('padding'))};
   `,
   option: { hover: true, active: true },
 });
@@ -243,7 +235,7 @@ export const Switch = StaticComponent({
   className: 'Switch',
   css: css`
     font-size: ${px2remcss(14)};
-    color: ${get('mediumGreyColor')};
+    color: ${() => get('mediumGreyColor')};
     display: inline-block;
   `,
   option: { hover: true, active: true },
@@ -516,7 +508,7 @@ export const TitleWrap = CSSComponent({
     ],
     defaultTheme: {
       cursor: 'not-allowed',
-      color: lightGreyColor,
+      color: disableTextColor,
       font: {
         fontWeight: 500,
       },
@@ -530,7 +522,7 @@ export const TitleWrap = CSSComponent({
     align-items: center;
     height: 100%;
     vertical-align: top;
-    padding-left: ${px2remcss(4)};
+    padding-left: ${() => px2remcss(get('marginToSameElement'))};
     box-sizing: border-box;
     transition-property: background-color, border, border-radius, opacity, box-shadow;
     transition-duration: 0.2s;
@@ -613,7 +605,7 @@ export const FlexWrap = CSSComponent({
     selectNames: [['background'], ['border'], ['borderRadius'], ['opacity'], ['cursor']],
     defaultTheme: {
       cursor: 'not-allowed',
-      color: lightGreyColor,
+      color: disableTextColor,
       font: {
         fontWeight: 500,
       },
@@ -649,7 +641,7 @@ export const FlexBox = CSSComponent({
     align-items: center;
     box-sizing: border-box;
     height: 100%;
-    padding-right: ${px2remcss(get('padding'))};
+    padding-right: ${() => px2remcss(get('padding'))};
   `,
 });
 
@@ -686,8 +678,8 @@ export const DragCopyWrap = StaticComponent({
     position: fixed;
     text-align: center;
     width: 186px;
-    background-color: ${get('disableColor')};
-    border: 1px dashed ${get('lightGreyColor')};
+    background-color: ${() => get('disableColor')};
+    border: 1px dashed ${() => get('lightGreyColor')};
     border-radius: 2px;
     line-height: 28px;
     z-index: 100;
