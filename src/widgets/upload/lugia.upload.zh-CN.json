@@ -181,27 +181,16 @@
         "Container": {
           "name":"上传组件整体样式",
           "desc": "按钮上传类型的整体样式配置",
-          "normal": [["width"],["height"]]
+          "normal": [["background"], ["width"], ["height"], ["boxShadow"], ["border"], ["opacity"]],
+          "hover": [["background"], ["boxShadow"], ["border"], ["opacity"]],
+          "disabled": [["background"], ["border"]]
         },
-        "UploadButtonType": {
-          "name":"上传按钮样式",
-          "theme": {
-            "Container": {
-              "name": "按钮",
-              "desc": "按钮上传类型的样式配置",
-              "normal": [["background"], ["width"], ["height"], ["boxShadow"], ["border"], ["opacity"]],
-              "hover": [["background"], ["boxShadow"], ["border"], ["opacity"]],
-              "disabled": [["background"], ["border"]]
-            },
-            "ButtonText": {
-              "name": "上传类型为button时的文字",
-              "desc": "文件上传失败后的文字样式",
-              "normal": [["color"]],
-              "hover": [["color"]],
-              "disabled": [["color"]]
-            }
-          }
-
+        "ButtonText": {
+          "name": "上传类型为button时的文字",
+          "desc": "文件上传失败后的文字样式",
+          "normal": [["color"]],
+          "hover": [["color"]],
+          "disabled": [["color"]]
         },
         "UploadList": {
           "name": "上传列表",
