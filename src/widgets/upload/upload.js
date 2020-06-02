@@ -152,7 +152,8 @@ class Upload extends React.Component<UploadProps, StateProps> {
   }
 
   render() {
-    const { themeProps, areaType } = this.props;
+    const { areaType } = this.props;
+    const themeProps = this.props.getPartOfThemeProps('Container');
     const areaTypeTheme = deepMerge(themeProps, { propsConfig: { areaType } });
     return (
       <Container themeProps={areaTypeTheme}>
