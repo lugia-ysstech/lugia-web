@@ -1,0 +1,47 @@
+[
+  {
+    "widgetName": "Divider",
+    "title": "分割线",
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "分割线",
+        "data": [
+          {
+            "name": "外观",
+            "path": ["Divider"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "外观"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Divider",
+    "aliasName": "VerticalDivider",
+    "title": "垂直分割线",
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "分割线",
+        "data": [
+          {
+            "name": "外观",
+            "path": ["Divider"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "外观"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
