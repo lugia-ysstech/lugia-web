@@ -233,7 +233,7 @@ class MenuItem extends React.Component<MenuItemProps> {
     const color =
       checkedCSS === 'background' ? defaultColor : checkedCSS === 'none' ? themeColor : blackColor;
     const backgroundColor =
-      checkedCSS === 'background' ? (disabled ? '' : themeColor) : defaultColor;
+      checkedCSS === 'background' ? (disabled ? '' : themeColor) : 'transparent';
     return {
       color,
       background: {

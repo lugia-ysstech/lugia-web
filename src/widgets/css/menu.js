@@ -31,6 +31,8 @@ const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 
+const padding = '$lugia-dict.@lugia/lugia-web.padding';
+
 const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
 const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
 
@@ -96,11 +98,11 @@ const crateTreeThemeConfig = (type: SizeType) => {
     Checkbox: {
       CheckboxText: {
         normal: {
-          fontSize: 12,
+          font: { size: 12 },
           color: blackColor,
         },
         hover: {
-          fontSize: 12,
+          font: { size: 12 },
           color: themeColor,
         },
         disabled: {
@@ -132,7 +134,7 @@ const crateTreeThemeConfig = (type: SizeType) => {
           width: checkboxSize[type],
           height: checkboxSize[type],
           background: {
-            color: defaultColor,
+            color: 'transparent',
           },
           borderRadius: getBorderRadius(2),
           border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
@@ -141,7 +143,7 @@ const crateTreeThemeConfig = (type: SizeType) => {
           width: checkboxSize[type],
           height: checkboxSize[type],
           background: {
-            color: defaultColor,
+            color: 'transparent',
           },
           borderRadius: getBorderRadius(2),
           border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
@@ -179,14 +181,14 @@ const crateTreeThemeConfig = (type: SizeType) => {
   };
 };
 
-export const menuThemeDefaultConfig: SizeThemeConfig = {
+export const menuThemeDefaultConfig = (): SizeThemeConfig => ({
   small: crateTreeThemeConfig('small'),
   default: crateTreeThemeConfig('default'),
   large: crateTreeThemeConfig('large'),
-};
+});
 
 export const getMenuThemeDefaultConfig = (sizeType: SizeType, themeName: string) => {
-  return getThemeDefaultConfigFromSource(menuThemeDefaultConfig)(sizeType, themeName);
+  return getThemeDefaultConfigFromSource(menuThemeDefaultConfig())(sizeType, themeName);
 };
 
 const getTextContainerHeightBySize = size => {
@@ -416,6 +418,12 @@ export const TextContainer = CSSComponent({
   className: 'TextContainer',
   normal: {
     selectNames: [['padding'], ['lineHeight'], ['height']],
+    defaultTheme: {
+      padding: {
+        left: padding,
+        right: padding,
+      },
+    },
   },
   hover: {
     selectNames: [],
@@ -424,7 +432,6 @@ export const TextContainer = CSSComponent({
     selectNames: [],
   },
   css: css`
-    padding: ${px2remcss(0)} ${px2remcss(get('padding'))};
     position: relative;
     display: flex;
     align-items: center;
@@ -458,10 +465,10 @@ export const DesContainer = CSSComponent({
   },
   css: css`
     overflow: hidden;
-    padding-left: ${px2remcss(get('padding'))};
+    padding-left: ${() => px2remcss(get('padding'))};
     box-sizing: border-box;
     flex: 1;
-    color: ${get('mediumGreyColor')};
+    color: ${() => get('mediumGreyColor')};
     display: flex;
     font-size: ${px2remcss(12)};
     transition: all 0.3s;
