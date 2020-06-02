@@ -364,7 +364,6 @@ export const NoDividedContainer = CSSComponent({
         ...defaultCSS,
       };
     },
-    defaultTheme: {},
   },
   hover: {
     selectNames: [
@@ -387,7 +386,6 @@ export const NoDividedContainer = CSSComponent({
 
       return { ...hoverCSS };
     },
-    defaultTheme: {},
   },
   active: {
     selectNames: [
@@ -436,7 +434,7 @@ export const NoDividedContainer = CSSComponent({
   },
   css: css`
     width: ${px2remcss(DefaultWidth)};
-    border-radius: ${px2remcss(get('borderRadiusValue'))};
+    border-radius: ${() => px2remcss(get('borderRadiusValue'))};
     transition-property: background-color, border, border-radius, opacity, box-shadow;
     transition-duration: 0.3s;
     border-width: ${px2remcss(1)};
@@ -502,7 +500,6 @@ export const NoDividedIconWrap = CSSComponent({
       ['cursor'],
     ],
     getThemeMeta: (themeMeta, themeProps) => {},
-    defaultTheme: {},
   },
   css: css`
     display: inline-block;
@@ -575,7 +572,6 @@ export const DividedContainer = CSSComponent({
 
       return disabled ? '' : hoverCSS;
     },
-    defaultTheme: {},
   },
 
   disabled: {
@@ -598,7 +594,7 @@ export const DividedContainer = CSSComponent({
   },
   css: css`
     width: ${px2remcss(DefaultWidth)};
-    border-radius: ${px2remcss(get('borderRadiusValue'))};
+    border-radius: ${() => px2remcss(get('borderRadiusValue'))};
     transition: all 0.3s;
     position: relative;
     display: inline-block;
@@ -775,7 +771,6 @@ export const DevidedTextContainer = CSSComponent({
       border-bottom-left-radius: ${px2remcss(activeBottomLeft)};
       `;
     },
-    defaultTheme: {},
   },
   hover: {
     selectNames: [
@@ -796,7 +791,6 @@ export const DevidedTextContainer = CSSComponent({
         ...hoverCSS,
       };
     },
-    defaultTheme: {},
   },
   active: {
     selectNames: [
@@ -818,8 +812,6 @@ export const DevidedTextContainer = CSSComponent({
         ...activeCSS,
       };
     },
-
-    defaultTheme: {},
   },
   disabled: {
     selectNames: [
@@ -876,16 +868,12 @@ export const NoDevidedTextContainer = CSSComponent({
       ['fontSize'],
       ['cursor'],
     ],
-    defaultTheme: {},
   },
   hover: {
     selectNames: [['color'], ['opacity'], ['font'], ['fontSize']],
-    defaultTheme: {},
   },
   active: {
     selectNames: [['color'], ['opacity'], ['font'], ['fontSize']],
-
-    defaultTheme: {},
   },
   disabled: {
     selectNames: [['color'], ['opacity'], ['font'], ['fontSize']],
@@ -939,7 +927,6 @@ export const PullContainer = CSSComponent({
       border-bottom-right-radius: ${px2remcss(activeBottomRight)};
       `;
     },
-    defaultTheme: {},
   },
   hover: {
     selectNames: [
@@ -960,7 +947,6 @@ export const PullContainer = CSSComponent({
         ...hoverCSS,
       };
     },
-    defaultTheme: {},
   },
   active: {
     selectNames: [
@@ -982,8 +968,6 @@ export const PullContainer = CSSComponent({
         ...activeCSS,
       };
     },
-
-    defaultTheme: {},
   },
   disabled: {
     selectNames: [
