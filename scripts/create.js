@@ -30,7 +30,6 @@ const componentInvalid = [
   'drawer',
   'grid',
   'layout',
-  'back-top',
 ];
 const hideInTollPanelComponents = {
   message: 'message',
@@ -41,6 +40,7 @@ const hideInTollPanelComponents = {
   popover: 'index',
   tooltip: 'index',
   popconfirm: 'index',
+  'back-top': 'index',
 };
 const themeInvalid = [...commonInvalid];
 
