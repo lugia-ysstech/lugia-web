@@ -44,7 +44,6 @@ export const ScrollerContainer = CSSComponent({
         color: '#fff',
       },
       width: DefaultWidth,
-      borderRadius: getBorderRadius(4),
     },
   },
   hover: {

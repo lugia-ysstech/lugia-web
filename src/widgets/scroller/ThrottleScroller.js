@@ -11,6 +11,7 @@ import { getBoxShadow } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import { DefaultHeight, ScrollerContainer, Col, ScrollerCol } from '../css/scroller';
 import { getCanSeeCount, getCanRenderCompleteCount } from './support';
+import { getBorderRadius } from '../theme/CSSProvider';
 import get from '../css/theme-common-dict';
 type ThrottleScrollerState = {
   start: number,
@@ -113,6 +114,7 @@ export default (
       const { themeConfig = {} } = themeProps;
       const defaultTheme = {
         boxShadow: get('normalBoxShadow'),
+        borderRadius: getBorderRadius(get('borderRadiusValue')),
       };
       themeConfig.normal = deepMerge(defaultTheme, themeConfig.normal);
       return themeProps;
