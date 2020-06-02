@@ -58,11 +58,6 @@ const config = {
         width: 300,
       },
     },
-    TextContent: {
-      normal: {
-        color: 'yellow',
-      },
-    },
   },
 };
 
@@ -83,6 +78,7 @@ export default class Demo extends React.Component {
           <H1>size={'small'}</H1>
           <Select
             disabled={false}
+            placeholder={'请选择'}
             defaultValue={['key-1']}
             theme={config}
             createPortal
@@ -101,6 +97,7 @@ export default class Demo extends React.Component {
             data={data}
             displayField={'label'}
             onSelect={this.onSelect}
+            placeholder={'请选择'}
             isShowClearButton={true}
             size={'default'}
             mutliple={false}
@@ -113,6 +110,7 @@ export default class Demo extends React.Component {
             createPortal
             data={data}
             displayField={'label'}
+            placeholder={'请选择'}
             onSelect={this.onSelect}
             isShowClearButton={true}
             size={'large'}
@@ -129,6 +127,7 @@ export default class Demo extends React.Component {
             defaultValue={['key-1', 'key-2']}
             theme={config}
             createPortal
+            placeholder={'请选择'}
             data={data}
             onSelect={this.onSelect}
             isShowClearButton={false}
@@ -145,6 +144,7 @@ export default class Demo extends React.Component {
             defaultValue={['key-1', 'key-2']}
             theme={config}
             createPortal
+            placeholder={'请选择'}
             data={data}
             displayField={'label'}
             onSelect={this.onSelect}
@@ -160,6 +160,7 @@ export default class Demo extends React.Component {
             disabled={true}
             defaultValue={['key-1', 'key-2']}
             theme={config}
+            placeholder={'请选择'}
             createPortal
             data={data1}
             displayField={'label'}

@@ -15,7 +15,8 @@ import QueryInput from '../common/QueryInput';
 import { deepMerge } from '@lugia/object-utils';
 import ValidateHoc from '../input/validateHoc';
 import { getInputtagThemeHoc } from './utils';
-import { PopupMenuWrap } from '../css/select';
+import { PopupMenuWrap, getDefaultPopupMenuWrap } from '../css/select';
+
 import {
   didUpdate,
   getDisplayValue,
@@ -370,14 +371,14 @@ class Select extends React.Component<SelectProps, SelectState> {
     ];
 
     const width = this.getContainerWidth();
+    const menuThemeConfig = this.props.getPartOfThemeProps('Menu');
+    const { themeConfig } = menuThemeConfig;
     const PopupMenuWrapTheme = {
       normal: {
         width,
+        ...getDefaultPopupMenuWrap(),
       },
     };
-
-    const menuThemeConfig = this.props.getPartOfThemeProps('Menu');
-    const { themeConfig } = menuThemeConfig;
     menuThemeConfig.themeConfig = deepMerge(PopupMenuWrapTheme, themeConfig.Container);
     return <PopupMenuWrap themeProps={menuThemeConfig}>{menu}</PopupMenuWrap>;
   };
