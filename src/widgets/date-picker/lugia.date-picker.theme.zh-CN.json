@@ -188,7 +188,7 @@
       },
       {
         "title": "页头/页脚标注",
-        "iconClass": "datePickerButton",
+        "iconClass": "datePickerFooter",
         "data": [
           {
             "name": "额外页脚",
@@ -423,7 +423,22 @@
       {
         "title": "范围日期",
         "iconClass": "datePickerRange",
-        "data": [{ "name": "范围日期", "path": ["RangeDate"] }]
+        "data": [
+          {
+            "name": "范围日期",
+            "path": ["RangeDate"],
+            "description": {
+              "appearancePart": {
+                "text": "选中范围整体",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "选中范围内文字",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
       },
       {
         "title": "星期项",
@@ -442,7 +457,7 @@
       },
       {
         "title": "页头/页脚标注",
-        "iconClass": "datePickerButton",
+        "iconClass": "datePickerFooter",
         "data": [
           {
             "name": "额外页脚",
@@ -638,7 +653,7 @@
       },
       {
         "title": "页头/页脚标注",
-        "iconClass": "datePickerButton",
+        "iconClass": "datePickerFooter",
         "data": [
           {
             "name": "额外页脚",
@@ -834,7 +849,7 @@
       },
       {
         "title": "页头/页脚标注",
-        "iconClass": "datePickerButton",
+        "iconClass": "datePickerFooter",
         "data": [
           {
             "name": "额外页脚",
@@ -1081,7 +1096,7 @@
       },
       {
         "title": "页头/页脚标注",
-        "iconClass": "datePickerButton",
+        "iconClass": "datePickerFooter",
         "data": [
           {
             "name": "额外页脚",
@@ -1277,7 +1292,7 @@
       },
       {
         "title": "页头/页脚标注",
-        "iconClass": "datePickerButton",
+        "iconClass": "datePickerFooter",
         "data": [
           {
             "name": "额外页脚",
