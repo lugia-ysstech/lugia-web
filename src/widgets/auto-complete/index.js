@@ -95,12 +95,12 @@ export default ShortKeyBoard(
         const { value } = this.state;
         const menuThemeConfig = this.props.getPartOfThemeProps('Menu');
         const { themeConfig } = menuThemeConfig;
-        const PopupMenuWrapTheme = {
+        const popupMenuWrapTheme = {
           normal: {
             ...getDefaultPopupMenuWrap(),
           },
         };
-        menuThemeConfig.themeConfig = deepMerge(PopupMenuWrapTheme, themeConfig.Container);
+        menuThemeConfig.themeConfig = deepMerge(popupMenuWrapTheme, themeConfig.Container);
         return (
           <PopupMenuWrap themeProps={menuThemeConfig}>
             {this.getOldValueItem()}
