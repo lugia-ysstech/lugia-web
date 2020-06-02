@@ -16,15 +16,15 @@ const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 export const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 export const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 
-export const FontSize = 12;
-export const MarginTop = 4;
-export const MarginRight = 4;
-export const PaddingLeft = 10;
-export const PadingRight = 20;
-export const Height = 32;
-export const SingleLineHeight = 30;
-export const ItemBackgroundColor = '#edf0fe';
-export const ItemContainerBackgroundColor = '#f6f5ff';
+export const fontSize = 12;
+export const marginTop = 4;
+export const marginRight = 4;
+export const paddingLeft = 10;
+export const paddingRight = 20;
+export const height = 32;
+export const singleLineHeight = 30;
+export const itemBackgroundColor = '#edf0fe';
+export const itemContainerBackgroundColor = '#f6f5ff';
 
 export const OutContainer = CSSComponent({
   tag: 'div',
@@ -87,14 +87,14 @@ export const OutContainer = CSSComponent({
   },
 
   css: css`
-    height: ${px2remcss(Height)};
+    height: ${px2remcss(height)};
     width: 100%;
     overflow: hidden;
     position: relative;
     border-radius: ${() => px2remcss(get('borderRadiusValue'))};
     background: ${() => get('defaultColor')};
     color: ${() => get('blackColor')};
-    font-size: ${px2remcss(FontSize)};
+    font-size: ${px2remcss(fontSize)};
     transition: all 0.3s;
     outline: none;
     & > div {
