@@ -37,6 +37,10 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   cursor: pointer;
   height: 3.6rem;
 }
@@ -46,7 +50,6 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 }
 
 .c3 {
-  padding: 0rem 1rem;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -58,9 +61,10 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c3 i {
@@ -128,7 +132,11 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
     >
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c4"
@@ -164,7 +172,11 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
     >
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c4"
@@ -193,7 +205,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "transparent",
           "color": "#363B40",
         }
       }
@@ -201,7 +213,11 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
     >
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c4"
@@ -230,7 +246,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "transparent",
           "color": "#363B40",
         }
       }
@@ -238,7 +254,11 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
     >
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c4"
@@ -297,6 +317,10 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   cursor: pointer;
   height: 3.6rem;
 }
@@ -306,7 +330,6 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 }
 
 .c3 {
-  padding: 0rem 1rem;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -318,9 +341,10 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c3 i {
@@ -388,7 +412,11 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
     >
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c4"
@@ -424,7 +452,11 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
     >
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c4"
@@ -453,7 +485,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "transparent",
           "color": "#363B40",
         }
       }
@@ -461,7 +493,11 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
     >
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c4"
@@ -497,7 +533,11 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
     >
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c4"
@@ -556,6 +596,10 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   cursor: pointer;
   height: 3.6rem;
 }
@@ -565,7 +609,6 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
 }
 
 .c3 {
-  padding: 0rem 1rem;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -577,9 +620,10 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c3 i {
@@ -647,7 +691,11 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
     >
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c4"
@@ -683,7 +731,11 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
     >
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c4"
@@ -719,7 +771,11 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
     >
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c4"
@@ -755,7 +811,11 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
     >
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c4"
@@ -814,6 +874,10 @@ exports[`Menu children: items 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   cursor: pointer;
   height: 3.6rem;
 }
@@ -823,7 +887,6 @@ exports[`Menu children: items 1`] = `
 }
 
 .c4 {
-  padding: 0rem 1rem;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -835,9 +898,10 @@ exports[`Menu children: items 1`] = `
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c4 i {
@@ -970,7 +1034,11 @@ exports[`Menu children: items 1`] = `
       >
         <div
           className="c4"
-          style={Object {}}
+          style={
+            Object {
+              "height": "3.2rem",
+            }
+          }
         >
           <span
             className="c5"
@@ -1006,7 +1074,11 @@ exports[`Menu children: items 1`] = `
       >
         <div
           className="c4"
-          style={Object {}}
+          style={
+            Object {
+              "height": "3.2rem",
+            }
+          }
         >
           <span
             className="c5"
@@ -1042,7 +1114,11 @@ exports[`Menu children: items 1`] = `
       >
         <div
           className="c4"
-          style={Object {}}
+          style={
+            Object {
+              "height": "3.2rem",
+            }
+          }
         >
           <span
             className="c5"
@@ -1078,7 +1154,11 @@ exports[`Menu children: items 1`] = `
       >
         <div
           className="c4"
-          style={Object {}}
+          style={
+            Object {
+              "height": "3.2rem",
+            }
+          }
         >
           <span
             className="c5"
@@ -1114,7 +1194,11 @@ exports[`Menu children: items 1`] = `
       >
         <div
           className="c4"
-          style={Object {}}
+          style={
+            Object {
+              "height": "3.2rem",
+            }
+          }
         >
           <span
             className="c5"
@@ -1150,7 +1234,11 @@ exports[`Menu children: items 1`] = `
       >
         <div
           className="c4"
-          style={Object {}}
+          style={
+            Object {
+              "height": "3.2rem",
+            }
+          }
         >
           <span
             className="c5"
@@ -1165,6 +1253,86 @@ exports[`Menu children: items 1`] = `
             }
           >
             5
+          </span>
+        </div>
+      </li>
+      <li
+        checked={false}
+        className="c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#363B40",
+          }
+        }
+        title=""
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "height": "3.2rem",
+            }
+          }
+        >
+          <span
+            className="c5"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            6
+          </span>
+        </div>
+      </li>
+      <li
+        checked={false}
+        className="c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#363B40",
+          }
+        }
+        title=""
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "height": "3.2rem",
+            }
+          }
+        >
+          <span
+            className="c5"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            7
           </span>
         </div>
       </li>
@@ -1197,7 +1365,7 @@ exports[`Menu children: items 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "height": "12.8rem",
+            "height": "18.1rem",
             "top": "0rem",
           }
         }
