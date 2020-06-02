@@ -5,6 +5,7 @@
  */
 import '../common/shirm';
 import * as React from 'react';
+import { css } from 'styled-components';
 import Input from '../input';
 import Widget from '../consts/index';
 import QueryInputContainer from '../common/QueryInputContainer';
@@ -33,10 +34,10 @@ const OutContainer = CSSComponent({
   normal: {
     selectNames: [['margin']],
   },
-  css: `
-   height: ${px2remcss(get('smallSize'))};
-  position: relative;
-  overflow: hidden;
+  css: css`
+    height: ${() => px2remcss(get('smallSize'))};
+    position: relative;
+    overflow: hidden;
   `,
   option: { hover: true },
 });
@@ -51,45 +52,45 @@ const InnerContainer = styled.div`
 `;
 
 const CheckAllContainer = styled.div`
-  height: ${px2remcss(get('smallSize'))};
+  height: ${() => px2remcss(get('smallSize'))};
   background: #fff;
   width: 100%;
   position: absolute;
-  line-height: ${px2remcss(get('smallSize'))};
+  line-height: ${() => px2remcss(get('smallSize'))};
 `;
 
 const SearchInputContainer = styled.div`
   position: absolute;
   width: 100%;
-  top: ${px2remcss(get('smallSize'))};
+  top: ${() => px2remcss(get('smallSize'))};
 `;
 
 const CheckAllButton = styled.span`
-  color: ${get('blackColor')};
-  margin-left: ${px2remcss(get('padding'))};
-  font-size: ${px2remcss(get('xsFontSize'))};
+  color: ${() => get('blackColor')};
+  margin-left: ${() => px2remcss(get('padding'))};
+  font-size: ${() => px2remcss(get('xsFontSize'))};
   &:hover {
-    color: ${get('themeColor')};
+    color: ${() => get('themeColor')};
   }
 `;
 CheckAllButton.displayName = 'CheckAllButton';
 
 const CancelCheckAllButton = styled.span`
-  color: ${get('dangerColor')};
-  margin-left: ${px2remcss(get('padding'))};
-  font-size: ${px2remcss(get('xsFontSize'))};
+  color: ${() => get('dangerColor')};
+  margin-left: ${() => px2remcss(get('padding'))};
+  font-size: ${() => px2remcss(get('xsFontSize'))};
   &:hover {
-    color: ${get('dangerHoverColor')};
+    color: ${() => get('dangerHoverColor')};
   }
 `;
 CancelCheckAllButton.displayName = 'CancelCheckAllButton';
 
 const ShowCheckAllButton = styled.span`
-  color: ${get('blackColor')};
-  font-size: ${px2remcss(get('xsFontSize'))};
+  color: ${() => get('blackColor')};
+  font-size: ${() => px2remcss(get('xsFontSize'))};
   transition: all 0.4s;
   &:hover {
-    color: ${get('themeColor')};
+    color: ${() => get('themeColor')};
   }
 `;
 
@@ -97,18 +98,18 @@ const AppendValueButton = ShowCheckAllButton;
 AppendValueButton.displayName = 'addIcon';
 
 const RefreshButton = styled(ShowCheckAllButton)`
-  margin-left: ${px2remcss(get('padding'))};
-  font-size: ${px2remcss(get('xsFontSize'))};
+  margin-left: ${() => px2remcss(get('padding'))};
+  font-size: ${() => px2remcss(get('xsFontSize'))};
 `;
 RefreshButton.displayName = 'RefreshButton';
 
 const SearchButton = styled(ShowCheckAllButton)`
   position: absolute;
   top: 50%;
-  right: ${px2remcss(get('padding'))};
+  right: ${() => px2remcss(get('padding'))};
   transform: translateY(-50%);
   z-index: 200;
-  font-size: ${px2remcss(get('xsFontSize'))};
+  font-size: ${() => px2remcss(get('xsFontSize'))};
 `;
 SearchButton.displayName = 'SearchButton';
 

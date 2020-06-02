@@ -14,14 +14,8 @@ const PlaceContainer = CSSComponent({
     selectNames: [['color'], ['fontSize'], ['font'], ['padding']],
   },
   css: css`
-    top: 50%;
-    position: absolute;
-    padding-left: 5px;
-    left: 1px;
-    right: 7px;
-    margin-top: -10px;
     text-align: left;
-    color: ${get('lightGreyColor')};
+    color: ${() => get('lightGreyColor')};
     line-height: 20px;
     max-width: 100%;
     height: 20px;
