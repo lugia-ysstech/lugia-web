@@ -1,0 +1,94 @@
+[
+  {
+    "widgetName": "Carousel",
+    "title": "走马灯",
+    "viewProps": [
+      {
+        "name": "autoPlay",
+        "text": "自动切换"
+      },
+      {
+        "name": "delay",
+        "text": "切换时间间隔"
+      },
+      {
+        "name": "indicatorType",
+        "text": "指示器显示方式"
+      },
+      {
+        "name": "switchType",
+        "text": "动画切换方式"
+      },
+      {
+        "name": "animationTime",
+        "text": "动画切换时间"
+      }
+    ],
+    "data": [
+      {
+        "title": "整体外框",
+        "iconClass": "carouselBackground",
+        "data": [
+          {
+            "name": "外观",
+            "path": ["CarouselWrap"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "外观"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "切换图标",
+        "iconClass": "carouselButton",
+        "data": [
+          {
+            "name": "左切换图标",
+            "path": ["PreButton"],
+            "description": {
+              "textPart": {
+                "text": "左切换图标",
+                "desc": "左切换图标"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            }
+          },
+          {
+            "name": "右切换图标",
+            "path": ["NextButton"],
+            "description": {
+              "textPart": {
+                "text": "右切换图标",
+                "desc": "右切换图标"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "轮播指示器",
+        "iconClass": "carouselIndicator",
+        "data": [
+          {
+            "name": "外观",
+            "path": ["Indicator"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "外观"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
