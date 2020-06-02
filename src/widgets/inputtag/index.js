@@ -27,7 +27,7 @@ import { getBoxShadow } from '@lugia/theme-utils';
 import changeColor from '../css/utilsColor';
 import { getBorder } from '@lugia/theme-utils';
 import {
-  FontSize,
+  fontSize,
   OutContainer,
   InnerContainer,
   SingleInnerContainer,
@@ -48,7 +48,7 @@ import get from '../css/theme-common-dict';
 
 const ClearMenuItemButton: Object = styled(Icon)`
   top: 50%;
-  right: ${px2remcss(FontSize)};
+  right: ${px2remcss(fontSize)};
   position: absolute;
   transform: translateY(-50%);
   font-size: ${px2remcss(16)};
@@ -673,7 +673,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   getTagFontSize() {
     const { getPartOfThemeConfig } = this.props;
     const { normal: { font: { size } = {} } = {} } = getPartOfThemeConfig('TagWrap');
-    return isNumber(size) ? size : FontSize;
+    return isNumber(size) ? size : fontSize;
   }
 
   getTagWidth() {

@@ -5,16 +5,16 @@
  * @flow
  */
 import styled from 'styled-components';
-import { MarginTop, PaddingLeft, PadingRight, Height } from '../css/inputtag';
+import { marginTop, paddingLeft, paddingRight, height } from '../css/inputtag';
 import { ItemBackgroundColor } from '../css/menu';
 import { Padding } from '../css/input';
 import { px2remcss } from '../css/units';
 import get from '../css/theme-common-dict';
 
-const ItemTagHeight = Height - Padding - MarginTop * 2;
+const ItemTagHeight = height - Padding - marginTop * 2;
 
 const getPaddingRight = (props: Object) => {
-  return props.closeable ? px2remcss(PadingRight) : px2remcss(PaddingLeft);
+  return props.closeable ? px2remcss(paddingRight) : px2remcss(paddingLeft);
 };
 export const ItemContainer = styled.li`
   margin-top: ${px2remcss(4)};
@@ -29,7 +29,7 @@ export const ItemContainer = styled.li`
   position: relative;
   overflow: hidden;
   transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  padding: 0 ${getPaddingRight} 0 ${px2remcss(PaddingLeft)};
+  padding: 0 ${getPaddingRight} 0 ${px2remcss(paddingLeft)};
 `;
 
 export const ItemText = styled.span`
