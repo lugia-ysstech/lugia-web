@@ -10,12 +10,8 @@ import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import Widget from '../consts/index';
 import Icon from '../icon';
 import get from './theme-common-dict';
-import { getBoxShadow } from '@lugia/theme-utils';
-import changeColor from './utilsColor';
-import { getBorder } from '@lugia/theme-utils';
 
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
-const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 export const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 export const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
@@ -49,7 +45,6 @@ export const OutContainer = CSSComponent({
     ],
     defaultTheme: {
       cursor: 'pointer',
-      border: getBorder(get('normalBorder')),
     },
   },
   hover: {
@@ -62,22 +57,12 @@ export const OutContainer = CSSComponent({
       ['opacity'],
       ['cursor'],
     ],
-    defaultTheme: {
-      border: getBorder(get('hoverBorder')),
-    },
   },
   active: {
     selectNames: [['border']],
-    defaultTheme: {
-      border: getBorder(get('activeBorder')),
-    },
   },
   focus: {
     selectNames: [['border']],
-    defaultTheme: {
-      border: getBorder(get('focusBorder')),
-      boxShadow: getBoxShadow(`0px 0px 4px 0px ${changeColor(get('themeColor'), 0, 0, 40).rgba}`),
-    },
   },
   disabled: {
     selectNames: [
@@ -94,7 +79,6 @@ export const OutContainer = CSSComponent({
       ['cursor'],
     ],
     defaultTheme: {
-      border: getBorder(get('disabledBorder')),
       background: {
         color: disableColor,
       },
@@ -107,10 +91,10 @@ export const OutContainer = CSSComponent({
     width: 100%;
     overflow: hidden;
     position: relative;
-    border-radius: ${px2remcss(get('borderRadiusValue'))};
-    background: ${get('defaultColor')};
-    color: ${get('blackColor')};
-    font-size: ${px2remcss(FontSize)};
+    border-radius: ${() => px2remcss(get('borderRadiusValue'))};
+    background: ${() => get('defaultColor')};
+    color: ${() => get('blackColor')};
+    font-size: ${() => px2remcss(FontSize)};
     transition: all 0.3s;
     outline: none;
     & > div {
@@ -138,8 +122,8 @@ export const InnerContainer = CSSComponent({
     height: 100%;
     position: relative;
     user-select: none;
-    padding-left: ${px2remcss(get('padding'))};
-    padding-right: ${px2remcss(get('padding'))};
+    padding-left: ${() => px2remcss(get('padding'))};
+    padding-right: ${() => px2remcss(get('padding'))};
     display: flex;
     align-items: center;
   `,
@@ -163,8 +147,8 @@ export const SingleInnerContainer = CSSComponent({
     height: 100%;
     position: relative;
     user-select: none;
-    padding-left: ${px2remcss(get('padding'))};
-    padding-right: ${px2remcss(get('padding'))};
+    padding-left: ${() => px2remcss(get('padding'))};
+    padding-right: ${() => px2remcss(get('padding'))};
     display: flex;
     align-items: center;
 
@@ -204,13 +188,13 @@ export const TextContent = CSSComponent({
   normal: {
     selectNames: [['color'], ['fontSize'], ['font']],
     defaultTheme: {
-      color: get('blackColor'),
+      color: blackColor,
     },
   },
   disabled: {
     selectNames: [['color'], ['fontSize'], ['font']],
     defaultTheme: {
-      color: get('disableTextColor'),
+      color: disableTextColor,
     },
   },
   css: css`
@@ -227,7 +211,7 @@ export const Prefix = StaticComponent({
   tag: 'span',
   className: 'Prefix',
   css: css`
-    padding-right: ${px2remcss(get('padding'))};
+    padding-right: ${() => px2remcss(get('padding'))};
     position: relative;
   `,
 });
@@ -313,12 +297,6 @@ export const ItemContainer = CSSComponent({
       ['margin', 'right'],
       ['opacity'],
     ],
-    defaultTheme: {
-      background: {
-        color: changeColor(get('themeColor'), 0, 0, 10).rgba,
-      },
-      color: darkGreyColor,
-    },
     getCSS: themeMeta => {
       const { height = 20 } = themeMeta;
       return `
@@ -346,9 +324,9 @@ export const ItemContainer = CSSComponent({
   },
 
   css: css`
-    padding: 0 ${px2remcss(get('padding'))};
+    padding: 0 ${() => px2remcss(get('padding'))};
     height: ${px2remcss(20)};
-    font-size: ${px2remcss(get('xxsFontSize'))};
+    font-size: ${() => px2remcss(get('xxsFontSize'))};
     margin-right: ${px2remcss(4)};
     user-select: none;
     cursor: default;
