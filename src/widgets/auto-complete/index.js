@@ -13,12 +13,17 @@ import Keys from '../consts/KeyBoard';
 import Widget from '../consts/index';
 import { DisplayField, ValueField } from '../consts/props';
 import { OldValueItem, OldValueTitle, TimeIcon, EmptyBox } from '../css/autocomplete';
-import { PopupMenuWrap } from '../css/select';
+import { PopupMenuWrap, getDefaultPopupMenuWrap } from '../css/select';
 import { MenuItemHeight } from '../css/menu';
+import changeColor from '../css/utilsColor';
 import ThemeHoc from '@lugia/theme-hoc';
 import Theme from '../theme';
 import { findDOMNode } from 'react-dom';
+import get from '../css/theme-common-dict';
+
 const ScrollerStep = 30;
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 
 type AutoCompleteProps = {
   getTheme: Function,
@@ -90,7 +95,12 @@ export default ShortKeyBoard(
         const { value } = this.state;
         const menuThemeConfig = this.props.getPartOfThemeProps('Menu');
         const { themeConfig } = menuThemeConfig;
-        menuThemeConfig.themeConfig = themeConfig.Container;
+        const PopupMenuWrapTheme = {
+          normal: {
+            ...getDefaultPopupMenuWrap(),
+          },
+        };
+        menuThemeConfig.themeConfig = deepMerge(PopupMenuWrapTheme, themeConfig.Container);
         return (
           <PopupMenuWrap themeProps={menuThemeConfig}>
             {this.getOldValueItem()}
@@ -184,7 +194,19 @@ export default ShortKeyBoard(
           return null;
         }
         const { showOldValue, getPartOfThemeProps } = this.props;
-        const themeProps = getPartOfThemeProps('OldItem');
+        const defaultThemeConfig = {
+          themeConfig: {
+            normal: {
+              background: {
+                color: changeColor(get('themeColor'), 0, 0, 10).rgba,
+              },
+              color: blackColor,
+            },
+            hover: { color: themeColor },
+          },
+        };
+        const themeProps = deepMerge(defaultThemeConfig, getPartOfThemeProps('OldItem'));
+
         return showOldValue ? (
           <OldValueItem onClick={this.handleClickOldValueItem} themeProps={themeProps}>
             <TimeIcon themeProps={themeProps} iconClass={'lugia-icon-reminder_clock_circle_o'} />

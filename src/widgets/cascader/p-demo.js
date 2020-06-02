@@ -161,7 +161,7 @@ export default class extends React.Component<any, any> {
           />
         </RowWrapItem>
         <RowWrapItem>
-          <H1> size={'large'} 多级菜单 </H1>,
+          <H1> size={'large'} 多级菜单 </H1>
           <Cascader
             theme={config}
             size={'large'}
