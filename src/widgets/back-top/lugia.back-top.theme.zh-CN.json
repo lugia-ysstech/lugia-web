@@ -1,0 +1,51 @@
+[
+  {
+    "widgetName": "BackTop",
+    "title": "回到顶部",
+    "treeNodeHidden": true,
+    "viewProps": [
+      {
+        "name": "visibilityHeight",
+        "text": "指定高度出现"
+      }
+    ],
+    "data": [
+      {
+        "title": "背景框",
+        "data": [
+          {
+            "name": "背景框",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "外观"
+              }
+            },
+            "props": [
+              {
+                "name": "text",
+                "typeInTheme": "text"
+              }
+            ]
+          },
+          {
+            "name": "图标",
+            "description": {
+              "textPart": {
+                "text": "图标",
+                "desc": "图标"
+              }
+            },
+            "props": [
+              {
+                "name": "icon",
+                "typeInTheme": "icon"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
