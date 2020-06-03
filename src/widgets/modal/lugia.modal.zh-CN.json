@@ -8,6 +8,11 @@
       "desc": "是否渲染当前组件",
       "defaultValue": false
     },
+    "injectProps ": {
+      "type": "Object",
+      "defaultValue": { "type": "Modal" },
+      "isHidden": true
+    },
     "title": {
       "type": "React.node",
       "desc": "标题"
@@ -60,7 +65,7 @@
   },
   "category": ["反馈"],
   "theme": {
-    "ModalWrap": {
+    "Container": {
       "name": "弹窗整体样式",
       "desc": "为弹窗配置整体样式",
       "normal": [
