@@ -5,6 +5,7 @@
  */
 import { px2emcss } from '../css/units';
 import styled, { css, keyframes } from 'styled-components';
+import CSSComponent from '@lugia/theme-css-hoc';
 
 type Direction = 'top' | 'right' | 'bottom' | 'left';
 export type DrawerProps = {
@@ -89,11 +90,14 @@ const getAnimateDirection = (props: CSSProps): string => {
   return 'right';
 };
 const getWidthOrHeight = (props: CSSProps) => {
-  const { placement, theme } = props;
+  const {
+    placement,
+    themeProps: { themeConfig: { normal: { width = 256, height = 256 } = {} } = {} } = {},
+  } = props;
   if (placement === 'top' || placement === 'bottom') {
-    return theme.height || 256;
+    return height;
   }
-  return theme.width || 256;
+  return width;
 };
 const getDrawerAnimate = (props: CSSProps): string => {
   const { open, opening, closing } = props;
@@ -164,14 +168,33 @@ const getTransform = (props: CSSProps) => {
     });`;
   }
 };
-export const DrawerContentWrap = styled.div`
-  position: fixed;
-  ${getWidthOrHeightByDirection};
-  ${getDrawerAnimate};
-  box-shadow: ${em(-2)} 0 ${em(8)} rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s;
-  ${getTransform};
-`;
+const getPositionCSS = (props: CSSProps): string => {
+  const { type } = props;
+  if (type === 'Drawer') {
+    return '';
+  }
+  return css`
+    position: fixed;
+  `;
+};
+export const DrawerContentWrap = CSSComponent({
+  tag: 'div',
+  className: 'Drawer',
+  css: css`
+    ${getPositionCSS};
+    ${getWidthOrHeightByDirection};
+    ${getDrawerAnimate};
+    box-shadow: ${em(-2)} 0 ${em(8)} rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s;
+    ${getTransform};
+    min-width: 256px;
+    min-height: 256px;
+  `,
+  normal: {
+    selectNames: [['width'], ['height']],
+  },
+});
+
 export const DrawerContent = styled.div`
   width: 100%;
   height: 100%;
