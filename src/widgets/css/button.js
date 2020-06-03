@@ -20,7 +20,6 @@ import {
   plainActiveTypeTheme,
   defaultActiveTheme,
   defaultHoverTheme,
-  defaultTheme,
   linkTheme,
   defaultDisabledTheme,
   sizeTheme,
@@ -46,6 +45,7 @@ import {
   plainFocusTypeTheme,
   textPlainFocusTheme,
   textTypeFocusTheme,
+  defaultButtonTheme,
 } from '../button/theme';
 
 export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'link';
@@ -270,9 +270,9 @@ const getHoverStyle = (propsConfig: Object = {}) => {
   const { type = 'default', plain } = propsConfig;
   let hoverTheme;
   if (plain) {
-    hoverTheme = plainHoverTheme[type] || plainHoverTheme.default;
+    hoverTheme = plainHoverTheme()[type] || plainHoverTheme().default;
   } else {
-    hoverTheme = typeHoverTheme[type] || typeHoverTheme.default;
+    hoverTheme = typeHoverTheme()[type] || typeHoverTheme().default;
   }
   return hoverTheme;
 };
@@ -289,7 +289,7 @@ export const ButtonOut = CSSComponent({
       ['margin'],
       ['borderRadius'],
     ],
-    defaultTheme,
+    defaultTheme: defaultButtonTheme(),
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
       const {
@@ -305,14 +305,14 @@ export const ButtonOut = CSSComponent({
       let normalTheme;
       if (loading) {
         if (plain) {
-          normalTheme = plainHoverTheme[type] || plainHoverTheme.default;
+          normalTheme = plainHoverTheme()[type] || plainHoverTheme().default;
         } else {
-          normalTheme = typeHoverTheme[type] || typeHoverTheme.default;
+          normalTheme = typeHoverTheme()[type] || typeHoverTheme().default;
         }
       } else if (plain) {
-        normalTheme = plainTypeTheme[type] || plainTypeTheme.default;
+        normalTheme = plainTypeTheme()[type] || plainTypeTheme().default;
       } else {
-        normalTheme = typeTheme[type] || typeTheme.default;
+        normalTheme = typeTheme()[type] || typeTheme().default;
       }
       const sizeThemeStyle = circle
         ? circleTheme[size] || circleTheme.default
@@ -327,7 +327,7 @@ export const ButtonOut = CSSComponent({
   },
   hover: {
     selectNames: [['background'], ['border']],
-    defaultTheme: defaultHoverTheme,
+    defaultTheme: defaultHoverTheme(),
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
       const { type = 'default' } = propsConfig;
@@ -338,7 +338,7 @@ export const ButtonOut = CSSComponent({
   },
   disabled: {
     selectNames: [['background'], ['border']],
-    defaultTheme: { ...defaultDisabledTheme, cursor },
+    defaultTheme: { ...defaultDisabledTheme(), cursor },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
       const { type = 'default', plain } = propsConfig;
@@ -346,9 +346,9 @@ export const ButtonOut = CSSComponent({
 
       let disabledTheme;
       if (plain) {
-        disabledTheme = plainDisabledTypeTheme[type] || plainDisabledTypeTheme.default;
+        disabledTheme = plainDisabledTypeTheme()[type] || plainDisabledTypeTheme().default;
       } else {
-        disabledTheme = disabledTypeTheme[type] || disabledTypeTheme.default;
+        disabledTheme = disabledTypeTheme()[type] || disabledTypeTheme().default;
       }
 
       return disabledTheme;
@@ -356,7 +356,7 @@ export const ButtonOut = CSSComponent({
   },
   active: {
     selectNames: [['background'], ['border']],
-    defaultTheme: defaultActiveTheme,
+    defaultTheme: defaultActiveTheme(),
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
       const { type = 'default', plain } = propsConfig;
@@ -364,9 +364,9 @@ export const ButtonOut = CSSComponent({
 
       let activeTheme;
       if (plain) {
-        activeTheme = plainActiveTypeTheme[type] || plainActiveTypeTheme.default;
+        activeTheme = plainActiveTypeTheme()[type] || plainActiveTypeTheme().default;
       } else {
-        activeTheme = activeTypeTheme[type] || activeTypeTheme.default;
+        activeTheme = activeTypeTheme()[type] || activeTypeTheme().default;
       }
 
       return activeTheme;
@@ -375,7 +375,7 @@ export const ButtonOut = CSSComponent({
 
   focus: {
     selectNames: [['background'], ['border']],
-    defaultTheme: defaultFocusTheme,
+    defaultTheme: defaultFocusTheme(),
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
       const { type = 'default', plain } = propsConfig;
@@ -383,9 +383,9 @@ export const ButtonOut = CSSComponent({
 
       let focusTheme;
       if (plain) {
-        focusTheme = plainFocusTypeTheme[type] || plainFocusTypeTheme.default;
+        focusTheme = plainFocusTypeTheme()[type] || plainFocusTypeTheme().default;
       } else {
-        focusTheme = typeFocusTheme[type] || typeFocusTheme.default;
+        focusTheme = typeFocusTheme()[type] || typeFocusTheme().default;
       }
       return focusTheme;
     },

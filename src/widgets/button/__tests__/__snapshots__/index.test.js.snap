@@ -19,7 +19,7 @@ Array [
   position: relative;
   text-transform: none;
   outline: 0;
-  background-color: #ffffff;
+  background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -52,7 +52,7 @@ Array [
   text-transform: none;
   outline: 0;
   pointer-events: none;
-  background-color: #ffffff;
+  background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -161,7 +161,7 @@ Array [
         size="default"
         style={
           Object {
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "white",
             "borderBottomColor": "#cccccc",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
@@ -474,6 +474,7 @@ Array [
         size="default"
         style={
           Object {
+            "backgroundColor": "transparent",
             "borderBottomColor": "#cccccc",
             "borderBottomLeftRadius": "1.6rem",
             "borderBottomRightRadius": "1.6rem",
@@ -822,7 +823,7 @@ Array [
         size="default"
         style={
           Object {
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "white",
             "borderBottomColor": "#cccccc",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
@@ -990,7 +991,7 @@ Array [
         size="default"
         style={
           Object {
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "white",
             "borderBottomColor": "#e8e8e8",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
@@ -1023,7 +1024,7 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#c0c8ff",
+                "color": "#cccccc",
                 "fontSize": "1.4rem",
               }
             }
@@ -1314,7 +1315,7 @@ Array [
         size="default"
         style={
           Object {
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "transparent",
             "borderBottomColor": "#e8e8e8",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
@@ -1666,6 +1667,7 @@ Array [
         size="default"
         style={
           Object {
+            "backgroundColor": "transparent",
             "borderBottomColor": "#cccccc",
             "borderBottomLeftRadius": "50%",
             "borderBottomRightRadius": "50%",
@@ -1790,7 +1792,7 @@ Array [
         size="small"
         style={
           Object {
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "white",
             "borderBottomColor": "#cccccc",
             "borderBottomLeftRadius": "50%",
             "borderBottomRightRadius": "50%",
@@ -2067,7 +2069,7 @@ Array [
         size="default"
         style={
           Object {
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "white",
             "borderBottomColor": "#cccccc",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
@@ -2374,7 +2376,7 @@ Array [
   text-transform: none;
   outline: 0;
   width: 100%;
-  background-color: #ffffff;
+  background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -2408,7 +2410,7 @@ Array [
   outline: 0;
   width: 100%;
   pointer-events: none;
-  background-color: #ffffff;
+  background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -2485,7 +2487,7 @@ Array [
       size="default"
       style={
         Object {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "white",
           "borderBottomColor": "#cccccc",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
@@ -3111,7 +3113,7 @@ Array [
       size="default"
       style={
         Object {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "white",
           "borderBottomColor": "#cccccc",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
@@ -3184,7 +3186,7 @@ Array [
   position: relative;
   text-transform: none;
   outline: 0;
-  background-color: #ffffff;
+  background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -3238,7 +3240,7 @@ Array [
       size="default"
       style={
         Object {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "white",
           "borderBottomColor": "#cccccc",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",

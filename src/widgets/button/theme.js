@@ -5,15 +5,8 @@
  */
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import get from '../css/theme-common-dict';
-import changeColor from '../css/utilsColor';
-
-const successColors = '$lugia-dict.@lugia/lugia-web.successColorReduceS';
-const warningColors = '$lugia-dict.@lugia/lugia-web.warningColorReduceS';
-const dangerColors = '$lugia-dict.@lugia/lugia-web.dangerColorReduceS';
 
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
-const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
-
 const themeColorReduceA = '$lugia-dict.@lugia/lugia-web.themeColorReduceA';
 const successColorReduceA = '$lugia-dict.@lugia/lugia-web.successColorReduceA';
 const warningColorReduceA = '$lugia-dict.@lugia/lugia-web.warningColorReduceA';
@@ -44,8 +37,6 @@ const successFocusColor = '$lugia-dict.@lugia/lugia-web.successFocusColor';
 const warningFocusColor = '$lugia-dict.@lugia/lugia-web.warningFocusColor';
 const dangerFocusColor = '$lugia-dict.@lugia/lugia-web.dangerFocusColor';
 
-const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
-
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const largeSize = '$lugia-dict.@lugia/lugia-web.largeSize';
 const normalSize = '$lugia-dict.@lugia/lugia-web.normalSize';
@@ -65,16 +56,12 @@ export const linkTheme = {
   background: 'none',
 };
 
-export const defaultTheme = {
-  background: { color: defaultColor },
-  border: getBorder({
-    width: 1,
-    style: 'solid',
-    color: borderColor,
-  }),
-};
-export const typeTheme = {
-  default: defaultTheme,
+export const defaultButtonTheme = () => ({
+  background: { color: 'white' },
+  border: getBorder(get('normalBorder')),
+});
+export const typeTheme = () => ({
+  default: defaultButtonTheme(),
   primary: {
     border: 'none',
     background: { color: themeColor },
@@ -91,19 +78,15 @@ export const typeTheme = {
     border: 'none',
     background: { color: dangerColor },
   },
-};
+});
 
-export const defaultHoverTheme = {
-  border: getBorder({
-    width: 1,
-    style: 'solid',
-    color: themeColor,
-  }),
+export const defaultHoverTheme = () => ({
+  border: getBorder(get('hoverBorder')),
   background: { color: themeColorReduceA },
-};
+});
 
-export const typeHoverTheme = {
-  default: defaultHoverTheme,
+export const typeHoverTheme = () => ({
+  default: defaultHoverTheme(),
   primary: {
     border: 'none',
     background: { color: themeHoverColor },
@@ -120,18 +103,14 @@ export const typeHoverTheme = {
     border: 'none',
     background: { color: dangerHoverColor },
   },
-};
+});
 
-export const defaultActiveTheme = {
-  border: getBorder({
-    width: 1,
-    style: 'solid',
-    color: themeActiveColor,
-  }),
+export const defaultActiveTheme = () => ({
+  border: getBorder(get('activeBorder')),
   background: { color: themeColorReduceA },
-};
-export const activeTypeTheme = {
-  default: defaultActiveTheme,
+});
+export const activeTypeTheme = () => ({
+  default: defaultActiveTheme(),
   primary: {
     border: 'none',
     background: { color: themeActiveColor },
@@ -148,17 +127,13 @@ export const activeTypeTheme = {
     border: 'none',
     background: { color: dangerActiveColor },
   },
-};
-export const defaultFocusTheme = {
-  border: getBorder({
-    width: 1,
-    style: 'solid',
-    color: themeFocusColor,
-  }),
+});
+export const defaultFocusTheme = () => ({
+  border: getBorder(get('focusBorder')),
   background: { color: themeColorReduceA },
-};
-export const typeFocusTheme = {
-  default: defaultFocusTheme,
+});
+export const typeFocusTheme = () => ({
+  default: defaultFocusTheme(),
   primary: {
     border: 'none',
     background: { color: themeFocusColor },
@@ -175,13 +150,13 @@ export const typeFocusTheme = {
     border: 'none',
     background: { color: dangerFocusColor },
   },
-};
-export const defaultDisabledTheme = {
-  background: { color: defaultColor },
-  border: getBorder({ width: 1, style: 'solid', color: borderDisableColor }),
-};
-export const disabledTypeTheme = {
-  default: defaultDisabledTheme,
+});
+export const defaultDisabledTheme = () => ({
+  background: { color: 'white' },
+  border: getBorder(get('disabledBorder')),
+});
+export const disabledTypeTheme = () => ({
+  default: defaultDisabledTheme(),
   primary: {
     border: 'none',
     background: { color: themeDisabledColor },
@@ -198,7 +173,7 @@ export const disabledTypeTheme = {
     border: 'none',
     background: { color: dangerDisabledColor },
   },
-};
+});
 
 export const sizeTheme = {
   large: {
@@ -309,21 +284,20 @@ export const textTypeFocusTheme = {
   link: { color: themeFocusColor },
 };
 export const textTypeDisabledTheme = {
-  default: { color: themeDisabledColor },
+  default: { color: disableTextColor },
   primary: { color: defaultColor },
   success: { color: defaultColor },
   warning: { color: defaultColor },
   danger: { color: defaultColor },
   link: { color: themeDisabledColor },
 };
-
-export const plainTypeTheme = {
+const plainBackground = {
+  background: { color: 'transparent' },
+};
+export const plainTypeTheme = () => ({
   default: {
-    border: getBorder({
-      width: 1,
-      style: 'solid',
-      color: borderColor,
-    }),
+    border: getBorder(get('normalBorder')),
+    ...plainBackground,
   },
   primary: {
     background: { color: themeColorReduceA },
@@ -357,15 +331,12 @@ export const plainTypeTheme = {
       color: dangerColor,
     }),
   },
-};
+});
 
-export const plainHoverTheme = {
+export const plainHoverTheme = () => ({
   default: {
-    border: getBorder({
-      width: 1,
-      style: 'solid',
-      color: themeColor,
-    }),
+    border: getBorder(get('hoverBorder')),
+    ...plainBackground,
   },
   primary: {
     background: { color: themeColorReduce0 },
@@ -399,14 +370,11 @@ export const plainHoverTheme = {
       color: dangerHoverColor,
     }),
   },
-};
-export const plainActiveTypeTheme = {
+});
+export const plainActiveTypeTheme = () => ({
   default: {
-    border: getBorder({
-      width: 1,
-      style: 'solid',
-      color: themeActiveColor,
-    }),
+    border: getBorder(get('activeBorder')),
+    ...plainBackground,
   },
   primary: {
     border: getBorder({
@@ -440,14 +408,11 @@ export const plainActiveTypeTheme = {
     }),
     background: { color: dangerColorReduce0 },
   },
-};
-export const plainFocusTypeTheme = {
+});
+export const plainFocusTypeTheme = () => ({
   default: {
-    border: getBorder({
-      width: 1,
-      style: 'solid',
-      color: themeFocusColor,
-    }),
+    border: getBorder(get('focusBorder')),
+    ...plainBackground,
   },
   primary: {
     border: getBorder({
@@ -481,15 +446,12 @@ export const plainFocusTypeTheme = {
     }),
     background: { color: dangerColorReduceA },
   },
-};
+});
 
-export const plainDisabledTypeTheme = {
+export const plainDisabledTypeTheme = () => ({
   default: {
-    border: getBorder({
-      width: 1,
-      style: 'solid',
-      color: borderDisableColor,
-    }),
+    border: getBorder(get('disabledBorder')),
+    ...plainBackground,
   },
   primary: {
     background: { color: themeColorReduceA },
@@ -523,7 +485,7 @@ export const plainDisabledTypeTheme = {
       color: dangerDisabledColor,
     }),
   },
-};
+});
 
 export const textPlainTypeTheme = {
   default: { color: blackColor },
@@ -560,9 +522,9 @@ export const textPlainFocusTheme = {
 export const textPlainDisabledTypeTheme = {
   default: { color: disableTextColor },
   primary: { color: themeDisabledColor },
-  success: { color: successColors },
-  warning: { color: warningColors },
-  danger: { color: dangerColors },
+  success: { color: successDisabledColor },
+  warning: { color: warningDisabledColor },
+  danger: { color: dangerDisabledColor },
   link: { color: themeDisabledColor },
 };
 
