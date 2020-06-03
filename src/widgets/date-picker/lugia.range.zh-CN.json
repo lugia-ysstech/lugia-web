@@ -220,11 +220,76 @@
       "desc": "当天日期配置",
       "normal": [["border", "style", "color"], ["color"]]
     },
+    "HeadSingleArrow": {
+      "name": "头部单箭头",
+      "desc": "头部单箭头",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "HeadDoubleArrow": {
+      "name": "头部双箭头",
+      "desc": "头部双箭头",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "HeadYearText": {
+      "name": "头部年",
+      "desc": "头部年的配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "HeadMonthText": {
+      "name": "头部月",
+      "desc": "头部月的配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "HeadWeekText": {
+      "name": "头部周",
+      "desc": "头部周的配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "RangeDate": {
+      "name": "范围日期",
+      "desc": "选中范围日期的配置",
+      "normal": [["color"], ["background"], ["borderRadius"]]
+    },
     "SecondWeekDate": {
       "name": "星期项",
       "desc": "星期项配置",
       "normal": [["color"]],
       "hover": [["color"]]
+    },
+    "TimePanelHead": {
+      "name": "时间板头部",
+      "desc": "时间板头部配置",
+      "normal": [["color"], ["font"]]
+    },
+    "TimePanel": {
+      "name": "时间内容区",
+      "desc": "时间内容配置",
+      "normal": [["color"], ["background"]]
+    },
+    "timePanelListTheme": {
+      "name": "单列",
+      "desc": "单列时间配置",
+      "normal": [["border", "right"]]
+    },
+    "SelectTimeOption": {
+      "name": "选中时间",
+      "desc": "选中时间配置",
+      "normal": [["color"], ["background"]]
     },
     "ValidateErrorInput": {
       "name": "校验失败的输入框",
@@ -256,10 +321,51 @@
       "hover": [],
       "active": []
     },
-    "RangeDate": {
-      "name": "范围日期",
-      "desc": "选中范围日期的配置",
-      "normal": [["color"], ["background"], ["borderRadius"]]
+    "ExtraFooter": {
+      "name": "额外页脚",
+      "desc": "额外页脚配置",
+      "normal": [["color"], ["font"]]
+    },
+    "FooterButtonOptions": {
+      "name": "页脚按钮",
+      "desc": "页脚按钮配置",
+      "normal": [
+        ["color"],
+        ["font"],
+        ["margin"],
+        ["padding"],
+        ["width"],
+        ["height"],
+        ["border"],
+        ["borderRadius"],
+        ["background"]
+      ]
+    },
+    "FooterToday": {
+      "name": "页脚'今天'按钮",
+      "desc": "页脚'今天'按钮配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]]
+    },
+    "FooterTimeButton": {
+      "name": "页脚时间按钮",
+      "desc": "页脚时间按钮配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]]
+    },
+    "FooterOkButton": {
+      "name": "页脚确定按钮",
+      "desc": "页脚确定按钮配置",
+      "normal": [
+        ["background"],
+        ["margin"],
+        ["padding"],
+        ["borderRadius"],
+        ["color"],
+        ["font"],
+        ["fontSize"]
+      ],
+      "hover": [["color"], ["font"], ["fontSize"], ["background"]]
     }
   },
   "defaultTheme": {
