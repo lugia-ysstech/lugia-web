@@ -13,7 +13,7 @@
     "data": [
       {
         "title": "文本框",
-        "iconClass": "icon",
+        "iconClass": "datePickerInput",
         "children": [
           {
             "title": "主体",
@@ -123,33 +123,15 @@
       },
       {
         "title": "展开面板",
-        "iconClass": "cardbackground",
+        "iconClass": "TimePickerMenu",
         "data": [
           {
             "name": "日期面板",
-            "path": ["FacePanelContain"]
-          },
-          {
-            "name": "时间板头部",
-            "path": ["TimePanelHead"],
-            "description": {
-              "textPart": {
-                "text": "头部文字",
-                "desc": "文本配置区块的显示文本"
-              }
-            }
-          },
-          {
-            "name": "时间内容区域",
-            "path": ["TimePanel"],
+            "path": ["FacePanelContain"],
             "description": {
               "appearancePart": {
-                "text": "时间内容板",
+                "text": "外框",
                 "desc": "面板中外观配置的区块显示文本"
-              },
-              "textPart": {
-                "text": "内容板文字",
-                "desc": "文本配置区块的显示文本"
               }
             }
           },
@@ -158,27 +140,35 @@
             "path": ["timePanelListTheme"],
             "description": {
               "appearancePart": {
-                "text": "单列外框",
+                "text": "分割线",
                 "desc": "面板中外观配置的区块显示文本"
               }
             }
-          }
-        ]
-      },
-      {
-        "title": "选中时间",
-        "iconClass": "timePickerChecked",
-        "data": [
+          },
+          {
+            "name": "时间内容区域",
+            "path": ["TimePanel"],
+            "description": {
+              "appearancePart": {
+                "text": "默认背景",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "默认时间",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
           {
             "name": "选中时间",
             "path": ["SelectTimeOption"],
             "description": {
               "appearancePart": {
-                "text": "选中项背景",
+                "text": "选中背景",
                 "desc": "面板中外观配置的区块显示文本"
               },
               "textPart": {
-                "text": "选中项文字",
+                "text": "选中时间",
                 "desc": "文本配置区块的显示文本"
               }
             }
@@ -192,46 +182,6 @@
           {
             "name": "额外页脚",
             "path": ["ExtraFooter"]
-          }
-        ]
-      },
-      {
-        "title": "页脚按钮",
-        "iconClass": "datePickerButton",
-        "data": [
-          {
-            "name": "页脚'今天'按钮",
-            "path": ["FooterToday"],
-            "description": {
-              "textPart": {
-                "text": "今天按钮",
-                "desc": "文本配置区块的显示文本"
-              }
-            }
-          },
-          {
-            "name": "页脚时间按钮",
-            "path": ["FooterTimeButton"],
-            "description": {
-              "textPart": {
-                "text": "选择时间按钮",
-                "desc": "文本配置区块的显示文本"
-              }
-            }
-          },
-          {
-            "name": "页脚按钮",
-            "path": ["FooterButtonOptions"],
-            "description": {
-              "appearancePart": {
-                "text": "自定义按钮",
-                "desc": "面板中外观配置的区块显示文本"
-              },
-              "textPart": {
-                "text": "自定义按钮文本",
-                "desc": "文本配置区块的显示文本"
-              }
-            }
           }
         ]
       }
