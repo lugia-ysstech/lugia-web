@@ -210,6 +210,46 @@
       "desc": "当天日期配置",
       "normal": [["border", "style", "color"], ["color"]]
     },
+    "HeadSingleArrow": {
+      "name": "头部单箭头",
+      "desc": "头部单箭头",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "HeadDoubleArrow": {
+      "name": "头部双箭头",
+      "desc": "头部双箭头",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "HeadYearText": {
+      "name": "头部年",
+      "desc": "头部年的配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "HeadMonthText": {
+      "name": "头部月",
+      "desc": "头部月的配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "HeadWeekText": {
+      "name": "头部周",
+      "desc": "头部周的配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
     "SecondWeekDate": {
       "name": "星期项",
       "desc": "星期项配置",
@@ -218,11 +258,33 @@
     },
     "GroupDate": {
       "name": "分类日期",
-      "desc": "分类日期配置/年/月/周",
+      "desc": "年/月/周面板内容文字的配置",
       "normal": [["color"], ["font"]],
       "hover": [["color"], ["font"]],
       "active": [["color"], ["font"], ["background"], ["borderRadius"]]
     },
+
+    "TimePanelHead": {
+      "name": "时间板头部",
+      "desc": "时间板头部配置",
+      "normal": [["color"], ["font"]]
+    },
+    "TimePanel": {
+      "name": "时间内容区",
+      "desc": "时间内容配置",
+      "normal": [["color"], ["background"]]
+    },
+    "timePanelListTheme": {
+      "name": "单列",
+      "desc": "单列时间配置",
+      "normal": [["border", "right"]]
+    },
+    "SelectTimeOption": {
+      "name": "选中时间",
+      "desc": "选中时间配置",
+      "normal": [["color"], ["background"]]
+    },
+
     "ValidateErrorInput": {
       "name": "校验失败的输入框",
       "desc": "配置校验失败的输入框",

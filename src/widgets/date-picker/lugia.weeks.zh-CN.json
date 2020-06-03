@@ -168,6 +168,30 @@
       "hover": [["color"], ["font"]],
       "active": [["color"], ["font"], ["background"], ["borderRadius"]]
     },
+    "HeadSingleArrow": {
+      "name": "头部单箭头",
+      "desc": "头部单箭头",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "HeadYearText": {
+      "name": "头部年",
+      "desc": "头部年的配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "HeadWeekText": {
+      "name": "头部周",
+      "desc": "头部周的配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
     "ValidateErrorInput": {
       "name": "校验失败的输入框",
       "desc": "配置校验失败的输入框",
