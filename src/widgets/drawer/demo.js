@@ -163,6 +163,21 @@ export default class DrawerDemo extends React.Component<any, any> {
             <p>Theme Drawer</p>
           </Drawer>
         </Theme>
+        <DemoBox>
+          <Button
+            type="primary"
+            onClick={() =>
+              Drawer.confirm({
+                title: '快弹Drawer',
+                closable: true,
+                children: [<p>抽屉内容第一条</p>, <p>抽屉内容第二条</p>, <p>抽屉内容第三条</p>],
+                onClose: () => console.log('onClose'),
+              })
+            }
+          >
+            confirm
+          </Button>
+        </DemoBox>
       </div>
     );
   }
