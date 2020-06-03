@@ -182,6 +182,7 @@ export const ModalContent = CSSComponent({
       ['padding'],
     ],
     defaultTheme: {
+      width: 520,
       background: { color: '#fff' },
       boxShadow: getBoxShadow(`0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15)`),
       border: getBorder({ width: 1, style: 'solid', color: '#ccc' }),

@@ -173,6 +173,7 @@ export default class ModalDemo extends React.Component<any, any> {
         <br />
         <Button onClick={this.Click(4)}>Modal</Button>
         <Modal
+          injectProps={{ type: 'Modal' }}
           visible={visable4}
           title="这是标题！"
           onOk={this.buttonClick(4)}
