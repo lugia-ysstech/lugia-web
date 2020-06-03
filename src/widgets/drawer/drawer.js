@@ -86,13 +86,11 @@ export default ThemeProvider(
         title,
         mask = true,
         placement,
-        getTheme,
         maskClosable = true,
+        getPartOfThemeProps,
+        injectProps: { type } = {},
       } = this.props;
-
-      const maskElement = mask ? (
-        <DrawerMask onClick={this.handleMaskClick} visible={visible} />
-      ) : null;
+      const drawerWrapTheme = getPartOfThemeProps('Container');
       const hasCloseIcon = closable || !maskClosable;
       const closeIcon = hasCloseIcon ? (
         <DrawerClose>
@@ -101,24 +99,34 @@ export default ThemeProvider(
           </CloseText>
         </DrawerClose>
       ) : null;
+      const drawerContent = (
+        <DrawerContentWrap
+          type={type}
+          themeProps={drawerWrapTheme}
+          placement={placement}
+          open={open}
+          opening={opening}
+          closing={closing}
+          transform={transform}
+        >
+          <DrawerContent>
+            <DrawerContentHeader>{title}</DrawerContentHeader>
+            {closeIcon}
+            <DrawerContentMain>{children}</DrawerContentMain>
+          </DrawerContent>
+        </DrawerContentWrap>
+      );
+      if (type === 'Drawer') {
+        return drawerContent;
+      }
+      const maskElement = mask ? (
+        <DrawerMask onClick={this.handleMaskClick} visible={visible} />
+      ) : null;
 
       const drawer = (
         <Drawer visible={visible}>
           {maskElement}
-          <DrawerContentWrap
-            theme={getTheme()}
-            placement={placement}
-            open={open}
-            opening={opening}
-            closing={closing}
-            transform={transform}
-          >
-            <DrawerContent>
-              <DrawerContentHeader>{title}</DrawerContentHeader>
-              {closeIcon}
-              <DrawerContentMain>{children}</DrawerContentMain>
-            </DrawerContent>
-          </DrawerContentWrap>
+          {drawerContent}
         </Drawer>
       );
       return createPortal(

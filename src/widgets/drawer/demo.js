@@ -53,8 +53,12 @@ export default class DrawerDemo extends React.Component<any, any> {
     const { radioValue, visible1, visible2, visible3, visible4, visible5, visible6 } = this.state;
     const view = {
       [Widget.Drawer]: {
-        width: 500,
-        height: 500,
+        Container: {
+          normal: {
+            width: 400,
+            height: 400,
+          },
+        },
       },
     };
     return (
