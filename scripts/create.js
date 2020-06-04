@@ -27,13 +27,11 @@ const componentInvalid = [
   'empty',
   'design-responsive',
   'affix',
-  'drawer',
   'grid',
   'layout',
 ];
 const hideInTollPanelComponents = {
   message: 'message',
-  modal: 'modal',
   anchor: 'index',
   collapse: 'index',
   notification: 'notification',
