@@ -446,67 +446,6 @@
       "desc": "空白盒子样式",
       "props": {
         "type": "transparent"
-      },
-      "theme": {
-        "Container": {
-          "name": "卡片容器整体",
-          "desc": "配置卡片容器整体",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["boxShadow"],
-            ["border"],
-            ["margin"],
-            ["padding"],
-            ["boxShadow"],
-            ["opacity"],
-            ["borderRadius"]
-          ],
-          "hover": [["background"], ["border"], ["boxShadow"], ["opacity"]]
-        },
-        "CardTitle": {
-          "name": "卡片标题",
-          "desc": "配置卡片标题",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["background"],
-            ["margin"],
-            ["padding"]
-          ]
-        },
-        "CardDescription": {
-          "name": "卡片描述内容",
-          "desc": "配置卡片描述内容",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["background"],
-            ["margin"],
-            ["padding"]
-          ]
-        },
-        "CardContent": {
-          "name": "卡片内容按钮",
-          "desc": "配置卡片内容",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["boxShadow"],
-            ["border"],
-            ["margin"],
-            ["padding"],
-            ["boxShadow"],
-            ["opacity"],
-            ["color"]
-          ]
-        }
       }
     }
   },
