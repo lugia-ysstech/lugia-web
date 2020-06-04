@@ -88,7 +88,7 @@ export default ThemeProvider(
         placement,
         maskClosable = true,
         getPartOfThemeProps,
-        injectProps: { type } = {},
+        injectLugiad: { type } = {},
       } = this.props;
       const drawerWrapTheme = getPartOfThemeProps('Container');
       const hasCloseIcon = closable || !maskClosable;
