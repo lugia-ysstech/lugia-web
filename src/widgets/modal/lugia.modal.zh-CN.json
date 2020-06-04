@@ -94,5 +94,12 @@
       "desc": "为弹窗关闭图标配置样式",
       "normal": [["fontSize"], ["color"]]
     }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 520
+      }
+    }
   }
 }
