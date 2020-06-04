@@ -268,7 +268,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       },
     };
 
-    const childrenThemeProps = deepMerge(defaultTheme, getPartOfThemeProps('ChildrenContainer'));
+    const childrenThemeProps = deepMerge(defaultTheme, contentThemeProps);
     return (
       <Trigger
         themePass
@@ -280,12 +280,14 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
         action={action}
         direction={direction}
         popup={
-          <ContentWrapper themeProps={contentThemeProps}>
-            {this.getContent(contentThemeProps, direction)}
+          <ContentWrapper themeProps={childrenThemeProps}>
+            {this.getContent(childrenThemeProps, direction)}
           </ContentWrapper>
         }
       >
-        <ChildrenContainer themeProps={childrenThemeProps}>{children}</ChildrenContainer>
+        <ChildrenContainer themeProps={getPartOfThemeProps('ChildrenContainer')}>
+          {children}
+        </ChildrenContainer>
       </Trigger>
     );
   }
