@@ -1,6 +1,7 @@
 import React from 'react';
 import Table from './';
 import EditTable from './editTableView';
+import Checkbox from '../checkbox';
 import styled from 'styled-components';
 import Theme from '../theme';
 import Widgets from '../consts';
@@ -147,6 +148,58 @@ const treeData = [
   },
 ];
 
+const checkboxColumns = [
+  {
+    title: 'checkbox',
+    dataIndex: 'checkbox',
+    key: 'checkbox',
+    width: 200,
+    render: (text, record) => {
+      const { isHead } = record;
+      return isHead ? <Checkbox>全选</Checkbox> : <Checkbox>text</Checkbox>;
+    },
+  },
+  {
+    title: '姓名',
+    dataIndex: 'name',
+    key: 'name',
+    width: 200,
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+    key: 'age',
+    width: 200,
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+    key: 'address',
+    width: 200,
+  },
+  {
+    title: 'isIn',
+    dataIndex: 'isIn',
+    key: 'isIn',
+    render: (text, record, index) => <div>{!text || text === 'false' ? 'B' : 'A'}</div>,
+    width: 200,
+  },
+];
+
+const checkBoxdata = [
+  {
+    name: 'long and long and long and long Jack',
+    age: 28,
+    address: 'long and long and long and long long and long and long and long some where',
+    key: '1',
+  },
+  { name: 'Rose', age: 36, address: 'some where', key: '2' },
+  { name: 'Uzi', age: 36, address: 'some where', key: '3' },
+  { name: 'ClearLove', age: 36, address: 'some where', key: '4' },
+  { name: 'Rookie', age: 36, address: 'some where', key: '5' },
+  { name: 'TheShy', age: 36, address: 'some where', key: '6' },
+];
+
 export default class TableDemo extends React.Component<Object, Object> {
   constructor(props) {
     super(props);
@@ -221,15 +274,33 @@ export default class TableDemo extends React.Component<Object, Object> {
         },
       },
     };
+
+    const newData = [
+      {
+        name: '姓名',
+        age: '年龄',
+        address: '地址',
+        key: '选项',
+        checkbox: '全选',
+        isHead: true,
+      },
+    ];
     return (
       <div>
+        <Title>多选可编辑表格 嵌套数据</Title>
+        <div>{JSON.stringify(treeData)}</div>
+        <EditTable
+          data={newData.concat(checkBoxdata)}
+          columns={checkboxColumns}
+          showHeader={false}
+          tableStyle={'bordered'}
+        />
         <Title>可编辑表格 嵌套数据</Title>
         <div>{JSON.stringify(treeData)}</div>
         <Theme config={config}>
           <EditTable
             data={treeData}
             columns={treeColumns}
-            tableStyle={'bordered'}
             tableSize={'large'}
             title={'这是一个有边框的表格'}
             footer={<div>这是表格底部信息</div>}
