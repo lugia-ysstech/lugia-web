@@ -130,7 +130,6 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       enterEdit,
       selectColumn,
       selectRow,
-      showHeader,
       ...renderObject,
     };
 
@@ -147,9 +146,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       editType,
       selectData,
       align,
-      dataIndex,
       index,
-      showHeader,
     } = renderObject;
     const EditElement = customEditElement || EditInput;
     const editingTheme = enterEdit
@@ -165,15 +162,10 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     const isDisableEdit = isHead && isSelect && !isEditHead;
     const propsConfig = { isSelect, isHead, align, enterEdit, isDisableEdit };
     const editDivTheme = getEditDivTheme(this.props, isHead, propsConfig, editingTheme);
-    const { editTableListener: { getSelectDataMark } = {} } = this;
-    const keyMapIndex = showHeader ? index - 1 : index;
-    const keyMap = getSelectDataMark(keyMapIndex);
-    const keyVal = isHead ? dataIndex : keyMap.keyValue;
-    const randomVal = getRandom(1000);
-    const keyValue = `${dataIndex}-${keyVal}-${randomVal}`;
+
     if (enterEdit) {
       return (
-        <TdContainer key={`editing-${keyValue}`}>
+        <TdContainer>
           <EditElement
             value={defaultText}
             autoFocus={true}
@@ -193,7 +185,6 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     return (
       <EditDiv
         themeProps={editDivTheme}
-        key={`editDiv-${keyValue}`}
         onClick={e =>
           onCellClick({
             e,
