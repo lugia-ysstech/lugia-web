@@ -63,7 +63,7 @@
       "desc": "表格标题",
       "propsDefaultValue": "bordered"
     },
-    "rowKey":{
+    "rowKey": {
       "type": "string",
       "desc": "表格行 key 的取值，可以是字符串或一个返回值是字符串的函数",
       "propsDefaultValue": "key"
@@ -94,6 +94,13 @@
       "name": "无数据提示",
       "desc": "无数据提示配置样式",
       "normal": [["height"], ["padding"], ["font"]]
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 400
+      }
     }
   }
 }

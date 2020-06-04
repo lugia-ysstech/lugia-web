@@ -29,6 +29,7 @@ const componentInvalid = [
   'affix',
   'grid',
   'layout',
+  'new-table'
 ];
 const hideInTollPanelComponents = {
   message: 'message',
