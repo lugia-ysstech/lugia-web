@@ -3,9 +3,9 @@
   "title": "抽屉",
   "desc": "在屏幕边缘出现的浮层面板。",
   "props": {
-    "injectProps ": {
+    "injectProps": {
       "type": "Object",
-      "defaultValue": { "type": "Modal" },
+      "defaultValue": { "type": "Drawer" },
       "isHidden": true
     },
     "placement": {

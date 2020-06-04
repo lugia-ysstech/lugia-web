@@ -8,7 +8,7 @@
       "desc": "是否渲染当前组件",
       "defaultValue": false
     },
-    "injectProps ": {
+    "injectProps": {
       "type": "Object",
       "defaultValue": { "type": "Modal" },
       "isHidden": true
