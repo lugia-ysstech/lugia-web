@@ -3,6 +3,7 @@ import AmountInput from './amount-input';
 import Anchor from './anchor/index';
 import AutoComplete from './auto-complete';
 import Avatar from './avatar';
+import BackTop from './back-top/index';
 import Badge from './badge';
 import BasicElements from './basic-elements';
 import Breadcrumb from './breadcrumb';
@@ -14,6 +15,7 @@ import Checkbox from './checkbox';
 import Collapse from './collapse/index';
 import DatePicker from './date-picker';
 import Divider from './divider';
+import Drawer from './drawer';
 import Dropmenu from './dropmenu';
 import Icon from './icon';
 import Input from './input';
@@ -21,7 +23,7 @@ import Label from './label';
 import Loading from './loading';
 import Menu from './menu';
 import Message from './message/message';
-import Modal from './modal/modal';
+import Modal from './modal';
 import Navmenu from './navmenu';
 import NewTable from './new-table';
 import Notification from './notification/notification';
@@ -930,6 +932,62 @@ export default [
   },
   {
     meta: {
+      widgetName: 'BackTop',
+      title: '回到顶部',
+      desc: '返回页面顶部。',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        visibilityHeight: {
+          type: 'number',
+          desc: '页面滚动高度达到指定值后出现BackTop',
+          defaultValue: 400,
+        },
+        target: {
+          type: 'Function',
+          desc: '设置监听滚动事件的元素，返回值为DOM元素的函数',
+          defaultValue: '() => window',
+        },
+        showType: { type: 'showType', desc: '选择backTop是图标类型，还是文字类型' },
+        text: { type: 'string', desc: 'showType为文字类型时，配置的文字信息' },
+        icon: { type: 'string', desc: 'showType为图标类型时，配置的图标信息' },
+      },
+      type: {
+        BackTopStyle: {
+          color: { type: 'string', desc: '组件颜色' },
+          backgroundColor: { type: 'string', desc: '组件背景颜色' },
+        },
+        showType: ['textType', 'iconType'],
+      },
+      category: ['其他'],
+      theme: {
+        Container: {
+          name: '返回顶部整体样式',
+          desc: '配置返回顶部整体样式',
+          normal: [
+            ['background'],
+            ['color'],
+            ['width'],
+            ['height'],
+            ['opacity'],
+            ['border'],
+            ['borderRadius'],
+          ],
+        },
+        BackTopIcon: {
+          name: '返回顶部图标样式',
+          desc: '配置返回顶部图标样式',
+          normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding']],
+        },
+      },
+      childrenWidget: [],
+      hideInTollPanel: true,
+    },
+    target: BackTop,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAABSlJREFUaAXlm8trE0Ecxydp+kobQl8aWyh9UnoqfYAIxcdNQRC81Yve/AN83PSgNx9/gDd7sbeCULA3HwRE6IPSg4Sei0UpEgSpbZr6/W53l93NZpPZR5LdDgw7u5n5/X6fmd88dnYSEwGFtbW1JETPI84iTsRisQlcMycnJymkU0gLpP8g/QfJPaRzuDKuI2bn5ub+4up7iPkpcWtr61yhULgDmbcRLwKixY18VMIhyn1DXE4kEu+mpqZ+upFjV8YX4I2NjcuAe4R4HUoSdoo8PCugAlYRX87MzHzxIEcp6gkYbnsNUp4h0nVrEbJNTU1PpqenP7lV5goYoBeg8DXiglvFHsstofwD9PMfsnKkgeG+N4rFIhWmZZX5nD8fj8cX4OYfZOTGZTKjZR+gn66gTL1haXaattAmGYaqWnhnZ6c1n8+/geC7MsJrmHcxnU7fHx8f/1dJZ0VguHAfavI94qVKwur5O0bxr4i34OK/nOxwdGm2bBhgCcgGoa202TUw3bjRW9YIR1vVrmd8bEqXbWF1MGjUPmuCsNzcdRrIbPswpx7U1gpi2QqxKGmoW/TlIuJNuymrBBi1cwHWf0dshKnHS0XmUXjSujixa0GuoMIOy4oiA1lMwdTCm5ubV4+Pjz+acoT8Bmvva8a1t6mFAfs85Hwl5luZdGAMVFeQu1ZvPSWGBfhgXmVTVOjAGJEfBqi0rqKNbEof5k7F0dHRLqzy++W9rqAG5YXm5uYB7pwoLaxuy9QMdmBgQHR1dRnsCTyZUBmF5tLcg6pJ6O3tFZlMRgwNDYnOzs6a6FSVKIwxLDSSWJX8hp+72nCTsRivcGJ0dFRAn1IMtS5yuZw4ODiQEeMqL3QegrGLLTxfC9hkMimGh4d1WFqNHUkxNjamXF1RSBRSGecJzH3jQENLS4sChkVAiZ7W1lblN2zXlPwWwINZapkIQLAukpDYiRAYJfVn1kRHR4cYGRmxPg7ifiIO3w4MmH2Vfbatra2i8ezfg4ODFfN5yUBWtnDGixCnshyJU6mUUxbTb319fcoIbnro700mjs5cvUUSyjnXdnd3S5Q4zdrf3x/YHE1WurTvwNpcK02LAuwG9Iwg5miy+j40+tEXOWJX2/dlK5Uuzc+VvgS7udat4CDmaLLSpX0Bdppr3UL7PUeTlS6959YgrRznWq6YnOZaLa/s1ec5eo8unZM1wpifgwz7W3t7u/Gxr2k/xgUaRFa+EnoC5jRC1zs85Ef74AKhe3p6xP7+vhclCvC6Fwm7u7uCMSRhnX04C7cMtnkaoDZUxmxcPS3DAyRRD9/Iqi08lqNOCz6FUQHm0SA8KEQYuqAynu5pcTcPPr4aVWCyaWe9NJfmov1lhIF1Nh1YPfSVjSB0VmVT0HRgFfRp1ICx7H1iZDIBY9jml0OewYpKWDJ+OSSUCVil5LknfkwOeyADWUyhBJhfzHnCDYNY0ZQzRDe0nQxksZpdAswMPBuBN4vH1sxhuaftduc7aP/pN48yJPgM8xY/he0kzyJa9l4ZJNs+rOfFK9l9uMdX/UGDJ2grbXYy09altQI8uwght8IATRtpa6Xzlo4urYGfqcOlGjSvPOGGWnyBQcHRM4xlgkzDliIHKPTZ19XqqaqFjcJ4Su/MHBAnuDrcTyJZzxUZdU+Wm3poZ7kg3cJGQepBNp7tqtVxp/r8ycMIzTTPQaEvPUQM8m88r9Cin626Ze89tbBV2fb29nls1y7gebT/qGUF5z0Py+BCV59FbJi/4v0HGOyzAj414u4AAAAASUVORK5CYII=',
+  },
+  {
+    meta: {
       widgetName: 'Badge',
       title: '徽标数',
       desc: '图标右上角的圆形徽标数字',
@@ -1450,8 +1508,8 @@ export default [
         },
         loading: { type: 'boolean', desc: '设置按钮加载状态' },
         circle: { type: 'boolean', desc: '设置圆形按钮' },
-        icon: { type: 'string', desc: '设置按钮前置图标类型' },
-        suffixIcon: { type: 'string', desc: '设置按钮后置图标类型' },
+        icon: { type: 'icon', desc: '设置按钮前置图标类型' },
+        suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
       },
@@ -1765,8 +1823,8 @@ export default [
         },
         loading: { type: 'boolean', desc: '设置按钮加载状态' },
         circle: { type: 'boolean', desc: '设置圆形按钮' },
-        icon: { type: 'string', desc: '设置按钮前置图标类型' },
-        suffixIcon: { type: 'string', desc: '设置按钮后置图标类型' },
+        icon: { type: 'icon', desc: '设置按钮前置图标类型' },
+        suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
       },
@@ -1870,12 +1928,8 @@ export default [
         },
         loading: { type: 'boolean', desc: '设置按钮加载状态' },
         circle: { type: 'boolean', desc: '设置圆形按钮' },
-        icon: {
-          type: 'string',
-          desc: '设置按钮前置图标类型',
-          defaultValue: 'lugia-icon-logo_lugia',
-        },
-        suffixIcon: { type: 'string', desc: '设置按钮后置图标类型' },
+        icon: { type: 'icon', desc: '设置按钮前置图标类型', defaultValue: 'lugia-icon-logo_lugia' },
+        suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
       },
@@ -1979,12 +2033,8 @@ export default [
         },
         loading: { type: 'boolean', desc: '设置按钮加载状态' },
         circle: { type: 'boolean', desc: '设置圆形按钮', defaultValue: true },
-        icon: {
-          type: 'string',
-          desc: '设置按钮前置图标类型',
-          defaultValue: 'lugia-icon-logo_lugia',
-        },
-        suffixIcon: { type: 'string', desc: '设置按钮后置图标类型' },
+        icon: { type: 'icon', desc: '设置按钮前置图标类型', defaultValue: 'lugia-icon-logo_lugia' },
+        suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: '' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
       },
@@ -2079,8 +2129,8 @@ export default [
         },
         loading: { type: 'boolean', desc: '设置按钮加载状态' },
         circle: { type: 'boolean', desc: '设置圆形按钮' },
-        icon: { type: 'string', desc: '设置按钮前置图标类型' },
-        suffixIcon: { type: 'string', desc: '设置按钮后置图标类型' },
+        icon: { type: 'icon', desc: '设置按钮前置图标类型' },
+        suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
       },
@@ -2154,12 +2204,8 @@ export default [
         },
         loading: { type: 'boolean', desc: '设置按钮加载状态' },
         circle: { type: 'boolean', desc: '设置圆形按钮' },
-        icon: {
-          type: 'string',
-          desc: '设置按钮前置图标类型',
-          defaultValue: 'lugia-icon-logo_lugia',
-        },
-        suffixIcon: { type: 'string', desc: '设置按钮后置图标类型' },
+        icon: { type: 'icon', desc: '设置按钮前置图标类型', defaultValue: 'lugia-icon-logo_lugia' },
+        suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
       },
@@ -5967,6 +6013,35 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Drawer',
+      title: '抽屉',
+      desc: '在屏幕边缘出现的浮层面板。',
+      props: {
+        'injectProps ': { type: 'Object', defaultValue: { type: 'Modal' }, isHidden: true },
+        placement: { type: 'PlacementType', desc: '抽屉的方向', defaultValue: 'right' },
+        title: { type: 'React.node', desc: '抽屉的标题' },
+        visible: { type: 'boolean', desc: '抽屉是否展示' },
+        mask: { type: 'boolean', desc: '是否展示遮罩层', defaultValue: true },
+        maskClosable: { type: 'boolean', desc: '点击遮罩层是否允许关闭抽屉', defaultValue: true },
+        closable: { type: 'boolean', desc: '是否展示抽屉右上角关闭按钮', defaultValue: false },
+      },
+      events: { onClose: { desc: '抽屉关闭时的回调', args: [] } },
+      type: {
+        PlacementType: ['top', 'right', 'left', 'bottom'],
+        DrawerStyle: {
+          width: { type: 'number', desc: 'Drawer的宽度' },
+          height: { type: 'number', desc: 'Drawer的高度，在 placement 为 top 或 bottom 时使用' },
+        },
+      },
+      category: ['反馈'],
+      childrenWidget: [],
+    },
+    target: Drawer,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAABQCAYAAADxwOBcAAAAAXNSR0IArs4c6QAAAvJJREFUeAHtnaFu21AUhu2sIGGGbqpJgc4TmBYOjJYOJs8ylYwGenR0YLAPkAcwjFQpDYxMEoPVu6dTA37pVLdR5fxRfkuVfK6PfX99X68jmdw0CUdVVTdt2953XXcbymsb03FaAsPh8G+WZY95nt+VZblMTdJ+v1+mafojiPo5n8+fThux39mbpun6nTFutt1ul6xWq6Su6+eiKMorW0kmaTabfY97hLr6IDAajZLpdGpTDTabza+Bve5sJfUxueZ4P4HJZJJst9vPg3Dr9aW97t6P63R32MoKP02fTJSOMyAgUWcgySJK1JmIujqTnL3H/P3n4c05v365fbke2/fmwyIuakVFQGJokSgGCxEZJCoCEkOLRDFYiMggURGQGFokisFCRAaJioDE0CJRDBYiMkhUBCSGFolisBCRQaIiIDG0SBSDhYgMEhUBiaFFX88dC69fx53Lh+HYvsMNR55oRR0Jru/bJKpv4kfOJ1FHguv7Nv1GOcTX67Vz5f/weDx+OfnoPm9SrSiPDNm4RJEJ8eJIlEeGbFyiyIR4cSTKI0M2LlFkQrw4EuWRIRuXKDIhXhyJ8siQjUsUmRAvjkR5ZMjGJYpMiBdHojwyZOP6eu4Ief067lw+DH903+HBcKIVBUBYS4liNQO5JAqAsJYSxWoGckkUAGEtJYrVDOSSKADCWkoUqxnIJVEAhLWUKFYzkEuiAAhrKVGsZiCXRAEQ1lKiWM1ALokCIKylRLGagVwSBUBYS4liNQO5JAqAsJYSxWoGckkUAGEtJYrVDOSSKADCWkoUqxnIJVEAhLWUKFYzkEuiAAhrKVGsZiCXRAEQ1lKiWM1ALokCIKylRLGagVwSBUBYS4liNQO5JAqAsJYm6mmxWGh/eFJDthW57Rs/CNuPP4S/b6Q5Lz6W7RefZdljWlXVTdg5eWn7xdtW5Je2y3XTNB3jf4OtJJNU1/VzURRlaiFNVtu297ZvfCj1GjQoJz7sdWcrKc/zu7Isl/8AVmmEFnyq1YQAAAAASUVORK5CYII=',
+  },
+  {
+    meta: {
       widgetName: 'Dropmenu',
       title: '下拉菜单',
       desc: '选项过多时，弹出下拉菜单给用户选择操作',
@@ -8446,6 +8521,7 @@ export default [
       desc: 'Modal 对话框。',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        'injectProps ': { type: 'Object', defaultValue: { type: 'Modal' }, isHidden: true },
         title: { type: 'React.node', desc: '标题' },
         visible: { type: 'boolean', desc: 'Modal 是否可见' },
         cancelText: { type: 'string', desc: '取消按钮文字', defaultValue: '取消' },
@@ -8462,7 +8538,7 @@ export default [
       },
       category: ['反馈'],
       theme: {
-        ModalWrap: {
+        Container: {
           name: '弹窗整体样式',
           desc: '为弹窗配置整体样式',
           normal: [
@@ -8493,7 +8569,6 @@ export default [
         },
       },
       childrenWidget: [],
-      hideInTollPanel: true,
     },
     target: Modal,
     screenshot:
@@ -19992,7 +20067,7 @@ export default [
               desc: '时间轴最外层容器',
               normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
             },
-            TimeLine: {
+            TimeLineItem: {
               name: '单个时间节点配置',
               theme: {
                 TimeLineIcon: {
@@ -20011,6 +20086,21 @@ export default [
                   name: '时间节点连接线',
                   desc: '时间节点连接线的配置',
                   normal: [['width'], ['height'], ['background']],
+                },
+                TimeLineExplainDot: {
+                  name: '隐藏的解释时间节点',
+                  desc: '隐藏的解释时间节点配置',
+                  normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+                },
+                TimeLineItemTip: {
+                  name: '隐藏信息弹框',
+                  theme: {
+                    Container: {
+                      name: '隐藏的解释时间节点显示容器',
+                      desc: '隐藏的解释时间节点显示容器配置',
+                      normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+                    },
+                  },
                 },
               },
             },
@@ -20048,32 +20138,6 @@ export default [
                   name: '隐藏的解释时间节点显示容器',
                   desc: '隐藏的解释时间节点显示容器配置',
                   normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
-                },
-                TooltipTitle: {
-                  name: '隐藏的解释时间节点标题',
-                  desc: '隐藏的解释时间节点标题配置',
-                  normal: [
-                    ['fontSize'],
-                    ['font'],
-                    ['color'],
-                    ['width'],
-                    ['height'],
-                    ['padding'],
-                    ['margin'],
-                  ],
-                },
-                TooltipDescription: {
-                  name: '隐藏的解释时间节点描述',
-                  desc: '隐藏的解释时间节点描述配置',
-                  normal: [
-                    ['fontSize'],
-                    ['font'],
-                    ['color'],
-                    ['width'],
-                    ['height'],
-                    ['padding'],
-                    ['margin'],
-                  ],
                 },
               },
             },
@@ -20147,7 +20211,7 @@ export default [
           desc: '时间轴最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
         },
-        TimeLine: {
+        TimeLineItem: {
           name: '单个时间节点配置',
           theme: {
             TimeLineIcon: {
@@ -20166,6 +20230,21 @@ export default [
               name: '时间节点连接线',
               desc: '时间节点连接线的配置',
               normal: [['width'], ['height'], ['background']],
+            },
+            TimeLineExplainDot: {
+              name: '隐藏的解释时间节点',
+              desc: '隐藏的解释时间节点配置',
+              normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+            },
+            TimeLineItemTip: {
+              name: '隐藏信息弹框',
+              theme: {
+                Container: {
+                  name: '隐藏的解释时间节点显示容器',
+                  desc: '隐藏的解释时间节点显示容器配置',
+                  normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+                },
+              },
             },
           },
         },
@@ -24478,33 +24557,23 @@ export default [
             Container: {
               name: '上传组件整体样式',
               desc: '按钮上传类型的整体样式配置',
-              normal: [['width'], ['height']],
+              normal: [
+                ['background'],
+                ['width'],
+                ['height'],
+                ['boxShadow'],
+                ['border'],
+                ['opacity'],
+              ],
+              hover: [['background'], ['boxShadow'], ['border'], ['opacity']],
+              disabled: [['background'], ['border']],
             },
-            UploadButtonType: {
-              name: '上传按钮样式',
-              theme: {
-                Container: {
-                  name: '按钮',
-                  desc: '按钮上传类型的样式配置',
-                  normal: [
-                    ['background'],
-                    ['width'],
-                    ['height'],
-                    ['boxShadow'],
-                    ['border'],
-                    ['opacity'],
-                  ],
-                  hover: [['background'], ['boxShadow'], ['border'], ['opacity']],
-                  disabled: [['background'], ['border']],
-                },
-                ButtonText: {
-                  name: '上传类型为button时的文字',
-                  desc: '文件上传失败后的文字样式',
-                  normal: [['color']],
-                  hover: [['color']],
-                  disabled: [['color']],
-                },
-              },
+            ButtonText: {
+              name: '上传类型为button时的文字',
+              desc: '文件上传失败后的文字样式',
+              normal: [['color']],
+              hover: [['color']],
+              disabled: [['color']],
             },
             UploadList: {
               name: '上传列表',
@@ -24927,33 +24996,16 @@ export default [
         Container: {
           name: '上传组件整体样式',
           desc: '按钮上传类型的整体样式配置',
-          normal: [['width'], ['height']],
+          normal: [['background'], ['width'], ['height'], ['boxShadow'], ['border'], ['opacity']],
+          hover: [['background'], ['boxShadow'], ['border'], ['opacity']],
+          disabled: [['background'], ['border']],
         },
-        UploadButtonType: {
-          name: '上传按钮样式',
-          theme: {
-            Container: {
-              name: '按钮',
-              desc: '按钮上传类型的样式配置',
-              normal: [
-                ['background'],
-                ['width'],
-                ['height'],
-                ['boxShadow'],
-                ['border'],
-                ['opacity'],
-              ],
-              hover: [['background'], ['boxShadow'], ['border'], ['opacity']],
-              disabled: [['background'], ['border']],
-            },
-            ButtonText: {
-              name: '上传类型为button时的文字',
-              desc: '文件上传失败后的文字样式',
-              normal: [['color']],
-              hover: [['color']],
-              disabled: [['color']],
-            },
-          },
+        ButtonText: {
+          name: '上传类型为button时的文字',
+          desc: '文件上传失败后的文字样式',
+          normal: [['color']],
+          hover: [['color']],
+          disabled: [['color']],
         },
         UploadList: {
           name: '上传列表',
