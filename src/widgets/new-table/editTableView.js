@@ -75,10 +75,10 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   }
 
   render() {
-    const { data = [], columns = [] } = this.props;
+    const { data = [], columns = [], showHeader = true } = this.props;
     const { restColumnsIntoData, getThemeForTable, restColumnsWithRender } = this.editTableListener;
     const firstLineData = restColumnsIntoData(columns);
-    const tableData = firstLineData.concat(data);
+    const tableData = showHeader ? firstLineData.concat(data) : data;
     const { renderFunc } = this;
     const tableColumns = restColumnsWithRender(columns, renderFunc);
     const { tableSize, tableStyle } = this.props;
@@ -111,12 +111,13 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
 
     const selectColumn = getSelectColumnMark(dataIndex);
     const defaultText = typeof text !== 'object' && isValued(text) ? record[text] || text : '';
-    const { isHead } = record;
+    let { isHead } = record;
     const selectRow = index;
     const { editing, selectCell = [] } = this.state;
     const isSelect = !editing && isSelected({ selectColumn, selectRow }, selectCell);
 
-    const { isEditHead } = this.props;
+    const { isEditHead, showHeader = true } = this.props;
+    isHead = showHeader ? isHead : false;
     const headEdit = isEditHead ? true : selectRow !== 0;
     const { editCell } = this.state;
     const enterEdit =
@@ -129,6 +130,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       enterEdit,
       selectColumn,
       selectRow,
+      showHeader,
       ...renderObject,
     };
 
@@ -147,6 +149,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       align,
       dataIndex,
       index,
+      showHeader,
     } = renderObject;
     const EditElement = customEditElement || EditInput;
     const editingTheme = enterEdit
@@ -163,7 +166,8 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     const propsConfig = { isSelect, isHead, align, enterEdit, isDisableEdit };
     const editDivTheme = getEditDivTheme(this.props, isHead, propsConfig, editingTheme);
     const { editTableListener: { getSelectDataMark } = {} } = this;
-    const keyMap = getSelectDataMark(index - 1);
+    const keyMapIndex = showHeader ? index - 1 : index;
+    const keyMap = getSelectDataMark(keyMapIndex);
     const keyVal = isHead ? dataIndex : keyMap.keyValue;
     const randomVal = getRandom(1000);
     const keyValue = `${dataIndex}-${keyVal}-${randomVal}`;
