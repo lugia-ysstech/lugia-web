@@ -523,7 +523,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     } = this.props;
 
     const treeTheme = this.getTreeTheme(inlineType, themeStyle);
-
+    this.treeData = getTreeData(this.props, pathSeparator);
     return (
       <MenuWrap>
         <Tree
