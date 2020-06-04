@@ -446,6 +446,24 @@
       "desc": "空白盒子样式",
       "props": {
         "type": "transparent"
+      },
+      "theme": {
+        "Container": {
+          "name": "卡片容器整体",
+          "desc": "配置卡片容器整体",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["boxShadow"],
+            ["border"],
+            ["margin"],
+            ["padding"],
+            ["boxShadow"],
+            ["opacity"],
+            ["borderRadius"]
+          ]
+        }
       }
     }
   },
