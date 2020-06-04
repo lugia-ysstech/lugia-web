@@ -36,6 +36,16 @@
                 "desc": "头部面板"
               }
             }
+          },
+          {
+            "name": "总数文字",
+            "path": ["TransferHeaderText"],
+            "description": {
+              "appearancePart": {
+                "text": "总数文字",
+                "desc": "总数文字"
+              }
+            }
           }
         ]
       },
@@ -117,7 +127,7 @@
             "data": [
               {
                 "name": "文字",
-                "path": ["TransferHeaderText"],
+                "path": ["TransferPanelHeaderCheckbox","CheckboxText"],
                 "description": {
                   "textPart": {
                     "text": "文字",
