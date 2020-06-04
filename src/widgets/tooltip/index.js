@@ -5,6 +5,7 @@
  * @flow
  */
 import * as React from 'react';
+import { deepMerge } from '@lugia/object-utils';
 import Trigger from '../trigger';
 import Widget from '../consts/index';
 import type { TooltipProps, TooltipState } from '../css/tooltip';
@@ -50,9 +51,6 @@ const Content: Object = CSSComponent({
       ['opacity'],
     ],
     defaultTheme: {
-      borderRadius: getBorderRadius(borderRadiusValue),
-      background: { color: get('blackColor') },
-      boxShadow: get('normalBoxShadow'),
       padding: {
         top: 4,
         bottom: 4,
@@ -155,8 +153,6 @@ const Title: Object = CSSComponent({
     overflow: hidden;
     text-align: left;
     text-decoration: none;
-    display: flex;
-    align-items: center;
   `,
 });
 const Description: Object = CSSComponent({
@@ -262,7 +258,17 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
         direction,
       },
     });
-    const childrenThemeProps = getPartOfThemeProps('ChildrenContainer');
+    const defaultTheme = {
+      themeConfig: {
+        normal: {
+          borderRadius: getBorderRadius(borderRadiusValue),
+          background: { color: get('blackColor') },
+          boxShadow: get('normalBoxShadow'),
+        },
+      },
+    };
+
+    const childrenThemeProps = deepMerge(defaultTheme, getPartOfThemeProps('ChildrenContainer'));
     return (
       <Trigger
         themePass

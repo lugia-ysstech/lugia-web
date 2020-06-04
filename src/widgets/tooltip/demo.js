@@ -12,7 +12,7 @@ import Theme from '../theme';
 import styled from 'styled-components';
 
 const buttonWidth = 80;
-const text = <span>prompt text</span>;
+const text = 'prompt text';
 const ButtonDemo = styled(Button)`
   width: ${buttonWidth}px;
 `;
@@ -145,7 +145,11 @@ export default () => {
         <BottomWrapper />
       </Theme>
       <div>
-        <Tooltip placement="top" title={text} description={'This is description'}>
+        <Tooltip
+          placement="top"
+          title={text}
+          description={[<div>fsdfsdfsdf</div>, <div>dasdsadasdasdas</div>]}
+        >
           <ButtonDemo type="primary">带有描述文本的提示</ButtonDemo>
         </Tooltip>
       </div>
