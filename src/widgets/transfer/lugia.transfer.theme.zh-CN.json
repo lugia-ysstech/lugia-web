@@ -72,6 +72,16 @@
                     "desc": "外观"
                   }
                 }
+              },
+              {
+                "name": "外观",
+                "path": ["TransferPanelHeaderCheckbox", "CheckboxInnerChecked"],
+                "description": {
+                  "appearancePart": {
+                    "text": "外观",
+                    "desc": "外观"
+                  }
+                }
               }
             ]
           },
@@ -637,54 +647,6 @@
                   "textPart": {
                     "text": "图标",
                     "desc": "图标"
-                  }
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "title": "搜索框",
-        "iconClass": "search",
-        "children": [
-          {
-            "title": "主体",
-            "iconClass": "input",
-            "data": [
-              {
-                "name": "输入框",
-                "path": ["TransferSearchInput", "Container"],
-                "description": {
-                  "appearancePart": {
-                    "text": "输入框",
-                    "desc": "输入框"
-                  }
-                }
-              },
-              {
-                "name": "清除图标",
-                "path": ["TransferSearchInput", "InputClearButton"],
-                "description": {
-                  "textPart": {
-                    "text": "清除图标",
-                    "desc": "清除图标"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "title": "前/后缀图标",
-            "iconClass": "iconsearch",
-            "data": [
-              {
-                "name": "后缀图标",
-                "path": ["TransferSearchInput", "InputSuffix"],
-                "description": {
-                  "textPart": {
-                    "text": "后缀图标",
-                    "desc": "后缀图标"
                   }
                 }
               }
