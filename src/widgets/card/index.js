@@ -487,6 +487,9 @@ class Card extends React.Component<CardProps, CardState> {
     );
     const { operation, title, description, content, children } = this.props;
     const hasChildren = operation || title || description || content || children;
+    if (type === 'transparent') {
+      return <CardOutContainer themeProps={resultTheme} />;
+    }
     return (
       <CardOutContainer themeProps={resultTheme}>
         {hasChildren ? (
