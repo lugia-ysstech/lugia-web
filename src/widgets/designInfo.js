@@ -25,7 +25,6 @@ import Menu from './menu';
 import Message from './message/message';
 import Modal from './modal';
 import Navmenu from './navmenu';
-import NewTable from './new-table';
 import Notification from './notification/notification';
 import NumberInput from './number-input';
 import Pagination from './pagination';
@@ -52,7 +51,6 @@ import Upload from './upload';
 import Window from './window';
 import { load } from './css/theme-common-dict.js';
 export { load };
-
 export default [
   {
     meta: {
@@ -6017,7 +6015,7 @@ export default [
       title: '抽屉',
       desc: '在屏幕边缘出现的浮层面板。',
       props: {
-        'injectProps ': { type: 'Object', defaultValue: { type: 'Modal' }, isHidden: true },
+        injectProps: { type: 'Object', defaultValue: { type: 'Drawer' }, isHidden: true },
         placement: { type: 'PlacementType', desc: '抽屉的方向', defaultValue: 'right' },
         title: { type: 'React.node', desc: '抽屉的标题' },
         visible: { type: 'boolean', desc: '抽屉是否展示' },
@@ -8521,7 +8519,7 @@ export default [
       desc: 'Modal 对话框。',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
-        'injectProps ': { type: 'Object', defaultValue: { type: 'Modal' }, isHidden: true },
+        injectProps: { type: 'Object', defaultValue: { type: 'Modal' }, isHidden: true },
         title: { type: 'React.node', desc: '标题' },
         visible: { type: 'boolean', desc: 'Modal 是否可见' },
         cancelText: { type: 'string', desc: '取消按钮文字', defaultValue: '取消' },
@@ -10954,74 +10952,6 @@ export default [
     target: Navmenu,
     screenshot:
       'data:image/png;base64,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',
-  },
-  {
-    meta: {
-      widgetName: 'NewTable',
-      title: '表格',
-      desc: 'Table  表格',
-      props: {
-        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
-        columns: {
-          type: 'Object[]',
-          meta: [
-            { key: 'title', title: '表头文本', type: 'string' },
-            { key: 'key', title: '对应key', type: 'any' },
-            { key: 'dataIndex', title: '指定展示项', type: 'any' },
-            { key: 'width', title: '列宽', type: 'number' },
-          ],
-          desc: '表格每一行展示的内容',
-          defaultValue: [
-            { title: 'Name', dataIndex: 'name', key: 'name' },
-            { title: 'Age', dataIndex: 'age', key: 'age' },
-            { title: 'Address', dataIndex: 'address', key: 'address' },
-          ],
-        },
-        data: {
-          type: 'Object[]',
-          meta: [],
-          desc: '数据源，指定 table 组件的数据',
-          defaultValue: [
-            { name: 'Jack', age: 28, address: 'some where' },
-            { name: 'Rose', age: 36, address: 'some where' },
-            { name: 'Bob', age: 25, address: 'some where' },
-          ],
-        },
-        footer: { type: 'React.node', desc: '表格尾部' },
-        showHeader: { type: 'boolean', desc: '是否展示表头', propsDefaultValue: true },
-        title: { type: 'React.node', desc: '表格标题' },
-        tableStyle: { type: 'tableStyleType', desc: '表格标题', propsDefaultValue: 'bordered' },
-        rowKey: {
-          type: 'string',
-          desc: '表格行 key 的取值，可以是字符串或一个返回值是字符串的函数',
-          propsDefaultValue: 'key',
-        },
-      },
-      type: { tableStyleType: ['zebraStripe', 'linear', 'bordered'] },
-      childrenWidget: [],
-      category: ['数据展示'],
-      theme: {
-        Container: {
-          name: '表格整体样式',
-          desc: '为表格配置整体样式',
-          normal: [['width'], ['height']],
-        },
-        Tr: { name: '表格行样式', desc: '为表格行配置样式', normal: [['background']] },
-        Td: {
-          name: '单元格样式',
-          desc: '为单元格配置样式',
-          normal: [['width'], ['height'], ['border'], ['padding']],
-        },
-        EmptyData: {
-          name: '无数据提示',
-          desc: '无数据提示配置样式',
-          normal: [['height'], ['padding'], ['font']],
-        },
-      },
-    },
-    target: NewTable,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
   },
   {
     meta: {
