@@ -156,7 +156,7 @@ export default ThemeProvider(
         getPartOfThemeProps,
         getPartOfThemeHocProps,
         iconClass,
-        injectProps: { type } = {},
+        injectLugiad: { type } = {},
         __lugiad__header__absolute__ = false,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
