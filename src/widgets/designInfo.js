@@ -6015,7 +6015,7 @@ export default [
       title: '抽屉',
       desc: '在屏幕边缘出现的浮层面板。',
       props: {
-        injectProps: { type: 'Object', defaultValue: { type: 'Drawer' }, isHidden: true },
+        injectLugiad: { type: 'Object', defaultValue: { type: 'Drawer' }, isHidden: true },
         placement: { type: 'PlacementType', desc: '抽屉的方向', defaultValue: 'right' },
         title: { type: 'React.node', desc: '抽屉的标题' },
         visible: { type: 'boolean', desc: '抽屉是否展示' },
@@ -8519,7 +8519,7 @@ export default [
       desc: 'Modal 对话框。',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
-        injectProps: { type: 'Object', defaultValue: { type: 'Modal' }, isHidden: true },
+        injectLugiad: { type: 'Object', defaultValue: { type: 'Modal' }, isHidden: true },
         title: { type: 'React.node', desc: '标题' },
         visible: { type: 'boolean', desc: 'Modal 是否可见' },
         cancelText: { type: 'string', desc: '取消按钮文字', defaultValue: '取消' },
@@ -21601,6 +21601,7 @@ export default [
           type: 'string | string[] | number | number[]',
           desc: '指定当前选中的条目的displayField值',
         },
+        query: { type: 'string', desc: '检索关键字', defaultValue: '' },
         parentIsHighlight: { type: 'boolean', desc: '父级元素是否高亮', defaultValue: false },
         draggable: { type: 'boolean', desc: '设置节点可拖拽', propsDefaultValue: false },
         groupKey: {
@@ -22363,6 +22364,7 @@ export default [
           type: 'string | string[] | number | number[]',
           desc: '指定当前选中的条目的displayField值',
         },
+        query: { type: 'string', desc: '检索关键字', defaultValue: '' },
         parentIsHighlight: { type: 'boolean', desc: '父级元素是否高亮', defaultValue: false },
         draggable: { type: 'boolean', desc: '设置节点可拖拽', propsDefaultValue: false },
         groupKey: {
