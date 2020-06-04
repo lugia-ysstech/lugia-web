@@ -145,11 +145,7 @@ export default () => {
         <BottomWrapper />
       </Theme>
       <div>
-        <Tooltip
-          placement="top"
-          title={text}
-          description={[<div>fsdfsdfsdf</div>, <div>dasdsadasdasdas</div>]}
-        >
+        <Tooltip placement="top" title={text} description={'This is description'}>
           <ButtonDemo type="primary">带有描述文本的提示</ButtonDemo>
         </Tooltip>
       </div>
