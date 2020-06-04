@@ -157,6 +157,7 @@ export default ThemeProvider(
         getPartOfThemeHocProps,
         iconClass,
         injectProps: { type } = {},
+        __lugiad__header__absolute__ = false,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       const view = {
@@ -198,7 +199,7 @@ export default ThemeProvider(
           {this.isInprops('footer') ? (
             footer
           ) : (
-            <ModalFooter>
+            <ModalFooter __lugiad__header__absolute__={__lugiad__header__absolute__} type={type}>
               <Theme config={view}>
                 <Button
                   onClick={this.handleOk}

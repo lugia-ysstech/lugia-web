@@ -262,11 +262,25 @@ export const ModalBody = CSSComponent({
   },
 });
 
+const getFooterLugiadCSS = (props: CSSProps): string => {
+  const { __lugiad__header__absolute__ = false, type } = props;
+  if (__lugiad__header__absolute__ || type === 'Modal') {
+    return css`
+      position: absolute;
+      left: 30px;
+      bottom: 30px;
+      z-index: 4000;
+    `;
+  }
+  return '';
+};
+
 export const ModalFooter = StaticComponent({
   tag: 'div',
   className: 'ModalFooter',
   css: css`
     padding-top: ${px2remcss(22)};
+    ${getFooterLugiadCSS};
     border-radius: 0 0 4px 4px;
     & > button {
       margin-left: ${px2remcss(14)};
