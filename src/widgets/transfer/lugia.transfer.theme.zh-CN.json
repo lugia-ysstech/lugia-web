@@ -88,6 +88,16 @@
                     "desc": "外观"
                   }
                 }
+              },
+              {
+                "name": "外观",
+                "path": ["TransferPanelHeaderCheckbox", "CheckboxInnerIndeterminate"],
+                "description": {
+                  "appearancePart": {
+                    "text": "外观",
+                    "desc": "外观"
+                  }
+                }
               }
             ]
           },
@@ -232,6 +242,16 @@
                         "desc": "文字"
                       }
                     }
+                  },
+                  {
+                    "name": "外观",
+                    "path": ["TransferCancelCheckbox", "CheckboxInnerCancel"],
+                    "description": {
+                      "textPart": {
+                        "text": "外观",
+                        "desc": "外观"
+                      }
+                    }
                   }
                 ]
               }
@@ -315,6 +335,16 @@
                     "desc": "外观"
                   }
                 }
+              },
+              {
+                "name": "外观",
+                "path": ["TransferPanelHeaderCheckbox", "CheckboxInnerChecked"],
+                "description": {
+                  "appearancePart": {
+                    "text": "外观",
+                    "desc": "外观"
+                  }
+                }
               }
             ]
           },
@@ -325,6 +355,16 @@
               {
                 "name": "外观",
                 "path": ["TransferPanelHeaderCheckbox", "CheckboxEdgeIndeterminate"],
+                "description": {
+                  "appearancePart": {
+                    "text": "外观",
+                    "desc": "外观"
+                  }
+                }
+              },
+              {
+                "name": "外观",
+                "path": ["TransferPanelHeaderCheckbox", "CheckboxInnerIndeterminate"],
                 "description": {
                   "appearancePart": {
                     "text": "外观",
@@ -419,24 +459,6 @@
                   "spacingPart": {
                     "text": "padding/margin",
                     "desc": "子选项背景内外边距配置区"
-                  }
-                }
-              },
-              {
-                "name": "父选项文本",
-                "path": ["TransferPanelTree", "TreeItem", "SelectedParentText"],
-                "description": {
-                  "appearancePart": {
-                    "text": "父选项文本",
-                    "desc": "父选项文本外观配置的区"
-                  },
-                  "textPart": {
-                    "text": "父选项文本",
-                    "desc": "父选项文本配置"
-                  },
-                  "spacingPart": {
-                    "text": "padding/margin",
-                    "desc": "父选项文本内外边距配置区"
                   }
                 }
               }
@@ -597,6 +619,26 @@
                     "desc": "外观"
                   }
                 }
+              },
+              {
+                "name": "文字",
+                "path": ["TransferButton", "ButtonText"],
+                "description": {
+                  "textPart": {
+                    "text": "文字",
+                    "desc": "文字"
+                  }
+                }
+              },
+              {
+                "name": "图标",
+                "path": ["TransferButton", "ButtonIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "图标",
+                    "desc": "图标"
+                  }
+                }
               }
             ]
           }
@@ -607,7 +649,7 @@
         "iconClass": "search",
         "children": [
           {
-            "title": "主题",
+            "title": "主体",
             "iconClass": "input",
             "data": [
               {
@@ -701,6 +743,16 @@
                       "textPart": {
                         "text": "文字",
                         "desc": "文字"
+                      }
+                    }
+                  },
+                  {
+                    "name": "外观",
+                    "path": ["TransferCancelCheckbox", "CheckboxInnerCancel"],
+                    "description": {
+                      "textPart": {
+                        "text": "外观",
+                        "desc": "外观"
                       }
                     }
                   }
