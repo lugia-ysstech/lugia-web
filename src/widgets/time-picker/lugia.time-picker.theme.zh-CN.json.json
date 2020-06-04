@@ -44,7 +44,7 @@
                 }
               },
               {
-                "name": "清楚图标",
+                "name": "清除图标",
                 "path": ["ClearButton"],
                 "props": [
                   {
@@ -54,7 +54,7 @@
                 ],
                 "description": {
                   "textPart": {
-                    "text": "清楚图标",
+                    "text": "清除图标",
                     "desc": "文本配置区块的显示文本"
                   }
                 }

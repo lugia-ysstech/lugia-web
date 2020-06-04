@@ -44,7 +44,7 @@
                 }
               },
               {
-                "name": "清楚图标",
+                "name": "清除图标",
                 "path": ["ClearButton"],
                 "props": [
                   {
@@ -54,7 +54,7 @@
                 ],
                 "description": {
                   "textPart": {
-                    "text": "清楚图标",
+                    "text": "清除图标",
                     "desc": "文本配置区块的显示文本"
                   }
                 }
@@ -258,15 +258,15 @@
             "data": [
               {
                 "name": "额外页脚",
-                "path": ["ExtraFooter"]
+                "path": ["ExtraFooter"],
+                "description": {
+                  "textPart": {
+                    "text": "页脚文字",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
               }
-            ],
-            "description": {
-              "textPart": {
-                "text": "页脚文字",
-                "desc": "文本配置区块的显示文本"
-              }
-            }
+            ]
           },
           {
             "title": "页脚按钮",
@@ -330,15 +330,15 @@
             "data": [
               {
                 "name": "时间头部",
-                "path": ["TimePanelHead"]
+                "path": ["TimePanelHead"],
+                "description": {
+                  "textPart": {
+                    "text": "头部日期",
+                    "desc": "面板中外观配置的区块显示文本"
+                  }
+                }
               }
-            ],
-            "description": {
-              "textPart": {
-                "text": "头部日期",
-                "desc": "面板中外观配置的区块显示文本"
-              }
-            }
+            ]
           },
           {
             "title": "展开面板",
@@ -433,7 +433,7 @@
                 }
               },
               {
-                "name": "清楚图标",
+                "name": "清除图标",
                 "path": ["ClearButton"],
                 "props": [
                   {
@@ -443,7 +443,7 @@
                 ],
                 "description": {
                   "textPart": {
-                    "text": "清楚图标",
+                    "text": "清除图标",
                     "desc": "文本配置区块的显示文本"
                   }
                 }
@@ -661,15 +661,15 @@
             "data": [
               {
                 "name": "额外页脚",
-                "path": ["ExtraFooter"]
+                "path": ["ExtraFooter"],
+                "description": {
+                  "textPart": {
+                    "text": "页脚文字",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
               }
-            ],
-            "description": {
-              "textPart": {
-                "text": "页脚文字",
-                "desc": "文本配置区块的显示文本"
-              }
-            }
+            ]
           },
           {
             "title": "页脚按钮",
@@ -733,15 +733,15 @@
             "data": [
               {
                 "name": "时间头部",
-                "path": ["TimePanelHead"]
+                "path": ["TimePanelHead"],
+                "description": {
+                  "textPart": {
+                    "text": "头部日期",
+                    "desc": "面板中外观配置的区块显示文本"
+                  }
+                }
               }
-            ],
-            "description": {
-              "textPart": {
-                "text": "头部日期",
-                "desc": "面板中外观配置的区块显示文本"
-              }
-            }
+            ]
           },
           {
             "title": "展开面板",
@@ -833,7 +833,7 @@
                 }
               },
               {
-                "name": "清楚图标",
+                "name": "清除图标",
                 "path": ["ClearButton"],
                 "props": [
                   {
@@ -843,7 +843,7 @@
                 ],
                 "description": {
                   "textPart": {
-                    "text": "清楚图标",
+                    "text": "清除图标",
                     "desc": "文本配置区块的显示文本"
                   }
                 }
@@ -957,15 +957,15 @@
         "data": [
           {
             "name": "额外页脚",
-            "path": ["ExtraFooter"]
+            "path": ["ExtraFooter"],
+            "description": {
+              "textPart": {
+                "text": "页脚文字",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
           }
-        ],
-        "description": {
-          "textPart": {
-            "text": "页脚文字",
-            "desc": "文本配置区块的显示文本"
-          }
-        }
+        ]
       }
     ]
   },
@@ -1011,7 +1011,7 @@
                 }
               },
               {
-                "name": "清楚图标",
+                "name": "清除图标",
                 "path": ["ClearButton"],
                 "props": [
                   {
@@ -1021,7 +1021,7 @@
                 ],
                 "description": {
                   "textPart": {
-                    "text": "清楚图标",
+                    "text": "清除图标",
                     "desc": "文本配置区块的显示文本"
                   }
                 }
@@ -1145,15 +1145,15 @@
         "data": [
           {
             "name": "额外页脚",
-            "path": ["ExtraFooter"]
+            "path": ["ExtraFooter"],
+            "description": {
+              "textPart": {
+                "text": "页脚文字",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
           }
-        ],
-        "description": {
-          "textPart": {
-            "text": "页脚文字",
-            "desc": "文本配置区块的显示文本"
-          }
-        }
+        ]
       }
     ]
   },
@@ -1200,7 +1200,7 @@
                 }
               },
               {
-                "name": "清楚图标",
+                "name": "清除图标",
                 "path": ["ClearButton"],
                 "props": [
                   {
@@ -1210,7 +1210,7 @@
                 ],
                 "description": {
                   "textPart": {
-                    "text": "清楚图标",
+                    "text": "清除图标",
                     "desc": "文本配置区块的显示文本"
                   }
                 }
@@ -1414,15 +1414,15 @@
             "data": [
               {
                 "name": "额外页脚",
-                "path": ["ExtraFooter"]
+                "path": ["ExtraFooter"],
+                "description": {
+                  "textPart": {
+                    "text": "页脚文字",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
               }
-            ],
-            "description": {
-              "textPart": {
-                "text": "页脚文字",
-                "desc": "文本配置区块的显示文本"
-              }
-            }
+            ]
           },
           {
             "title": "页脚按钮",
@@ -1521,7 +1521,7 @@
                 }
               },
               {
-                "name": "清楚图标",
+                "name": "清除图标",
                 "path": ["ClearButton"],
                 "props": [
                   {
@@ -1531,7 +1531,7 @@
                 ],
                 "description": {
                   "textPart": {
-                    "text": "清楚图标",
+                    "text": "清除图标",
                     "desc": "文本配置区块的显示文本"
                   }
                 }
@@ -1645,15 +1645,15 @@
         "data": [
           {
             "name": "额外页脚",
-            "path": ["ExtraFooter"]
+            "path": ["ExtraFooter"],
+            "description": {
+              "textPart": {
+                "text": "页脚文字",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
           }
-        ],
-        "description": {
-          "textPart": {
-            "text": "页脚文字",
-            "desc": "文本配置区块的显示文本"
-          }
-        }
+        ]
       }
     ]
   }
