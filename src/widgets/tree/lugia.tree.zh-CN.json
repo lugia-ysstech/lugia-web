@@ -60,6 +60,12 @@
       "desc": "指定当前选中的条目的displayField值"
     },
 
+    "query": {
+      "type": "string",
+      "desc": "检索关键字",
+      "defaultValue": ""
+    },
+
     "parentIsHighlight": {
       "type": "boolean",
       "desc": "父级元素是否高亮",
