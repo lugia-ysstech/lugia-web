@@ -4,7 +4,6 @@ import '../css/theme-common-dict';
 
 const noLastItemColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const marginToSameElement = '$lugia-dict.@lugia/lugia-web.marginToSameElement';
-
 export const defaultColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 export const hoverDefaultColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
@@ -51,15 +50,7 @@ export const ALink = CSSComponent({
   tag: 'a',
   className: 'aLink',
   normal: {
-    selectNames: [
-      ['color'],
-      ['fontSize'],
-      ['font'],
-      ['margin', 'left'],
-      ['margin', 'right'],
-      ['padding', 'left'],
-      ['padding', 'right'],
-    ],
+    selectNames: [['color'], ['fontSize'], ['font'], ['margin'], ['padding']],
     getThemeMeta(themeMeta, themeConfig) {
       const { propsConfig: { isLastItem } = {} } = themeConfig;
       const color = isLastItem ? defaultColor : noLastItemColor;
