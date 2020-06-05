@@ -194,7 +194,11 @@ export default ThemeProvider(
             </ModalClose>
           )}
           {title !== null && <ModalTitle themeProps={modalTitleTheme}>{title}</ModalTitle>}
-          <ModalBody themeProps={modalBodyTextTheme}>{children}</ModalBody>
+          {__lugiad__header__absolute__ ? (
+            children
+          ) : (
+            <ModalBody themeProps={modalBodyTextTheme}>{children}</ModalBody>
+          )}
 
           {this.isInprops('footer') ? (
             footer
