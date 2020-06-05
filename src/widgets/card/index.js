@@ -20,7 +20,6 @@ import get from '../css/theme-common-dict';
 const { px2remcss } = units;
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
-const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 
 const checkSizeIsNumber = size => {
@@ -59,7 +58,9 @@ const CardOutContainer = CSSComponent({
       ['opacity'],
     ],
     defaultTheme: {
-      boxShadow: get('normalBoxShadow'),
+      background: {
+        color: 'white',
+      },
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
@@ -83,9 +84,6 @@ const CardOutContainer = CSSComponent({
         };
       }
       return {
-        background: {
-          color: defaultColor,
-        },
         borderRadius: getBorderRadius(borderRadiusValue),
       };
     },
@@ -481,7 +479,11 @@ class Card extends React.Component<CardProps, CardState> {
       default:
         break;
     }
+    const defaultTheme = {
+      themeConfig: { normal: { boxShadow: get('normalBoxShadow') } },
+    };
     resultTheme = deepMerge(
+      defaultTheme,
       resultTheme,
       this.props.getPartOfThemeProps('Container', { props: { type, imageOrientation, minHeight } })
     );
