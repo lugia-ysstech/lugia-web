@@ -36,7 +36,6 @@ const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const padding = '$lugia-dict.@lugia/lugia-web.padding';
 const paddingToText = '$lugia-dict.@lugia/lugia-web.paddingToText';
-const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 const CommonInputStyle = CSSComponent({
   tag: 'input',
@@ -53,8 +52,6 @@ const CommonInputStyle = CSSComponent({
     ],
     defaultTheme: {
       cursor: 'text',
-      borderRadius: getBorderRadius(borderRadius),
-      background: { color: defaultColor },
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
@@ -91,6 +88,7 @@ const CommonInputStyle = CSSComponent({
           left: paddingLeft,
           right: paddingRight,
         },
+        background: { color: 'transparent' },
       };
     },
   },
@@ -107,8 +105,6 @@ const CommonInputStyle = CSSComponent({
     selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity'], ['background']],
     defaultTheme: {
       cursor: 'not-allowed',
-      background: { color: disableColor },
-      color: disableTextColor,
     },
   },
   css: css`
@@ -140,9 +136,7 @@ const InputContainer = CSSComponent({
     ],
     defaultTheme: {
       width: '100%',
-      borderRadius: getBorderRadius(borderRadius),
-      border: getBorder(get('normalBorder')),
-      background: { color: defaultColor },
+      background: { color: 'white' },
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
@@ -157,30 +151,15 @@ const InputContainer = CSSComponent({
   },
   hover: {
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
-    defaultTheme: {
-      border: getBorder(get('hoverBorder')),
-    },
   },
   focus: {
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
-    defaultTheme: {
-      border: getBorder(get('focusBorder')),
-      boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px 4px ${get('inputFocusShadowColor')}`),
-    },
   },
   active: {
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
-    defaultTheme: {
-      border: getBorder(get('activeBorder')),
-    },
   },
   disabled: {
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
-    defaultTheme: {
-      background: { color: disableColor },
-      color: disableTextColor,
-      border: getBorder(get('disabledBorder')),
-    },
   },
   css: css`
     position: relative;
@@ -215,11 +194,9 @@ const Fix = CSSComponent({
       color: disableTextColor,
     },
   },
-
   css: css`
     display: inline-flex;
     align-items: center;
-    color: ${get('mediumGreyColor')};
   `,
 });
 
@@ -228,7 +205,7 @@ const Prefix: Object = CSSComponent({
   className: 'inputPrefix',
   normal: {},
   css: css`
-    padding-left: ${px2remcss(get('padding'))};
+    padding-left: ${() => px2remcss(get('padding'))};
   `,
 });
 
@@ -237,7 +214,7 @@ const Suffix: Object = CSSComponent({
   className: 'inputSuffix',
   normal: {},
   css: css`
-    padding-right: ${px2remcss(get('padding'))};
+    padding-right: ${() => px2remcss(get('padding'))};
   `,
 });
 
@@ -289,6 +266,17 @@ type InputProps = {
   onMouseEnter?: Function,
   onMouseLeave?: Function,
 } & InsideProps;
+
+const defaultFixTheme = {
+  themeConfig: {
+    normal: {
+      color: blackColor,
+    },
+    disabled: {
+      color: disableTextColor,
+    },
+  },
+};
 
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
@@ -585,17 +573,40 @@ class TextBox extends Component<InputProps, InputState> {
     } = getPartOfThemeProps('Placeholder');
 
     const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
-
+    const defaultTheme = {
+      themeConfig: {
+        normal: {
+          borderRadius: getBorderRadius(borderRadius),
+          border: getBorder(get('normalBorder')),
+        },
+        hover: {
+          border: getBorder(get('hoverBorder')),
+        },
+        active: {
+          border: getBorder(get('activeBorder')),
+        },
+        focus: {
+          border: getBorder(get('focusBorder')),
+          boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px 4px ${get('inputFocusShadowColor')}`),
+        },
+        disabled: {
+          background: { color: disableColor },
+          color: disableTextColor,
+          border: getBorder(get('disabledBorder')),
+        },
+      },
+    };
     const theValidateThemeProps = isValidateError(validateStatus)
       ? deepMerge(
           validateValueDefaultTheme,
-          validateBorderDefaultTheme,
+          validateBorderDefaultTheme(),
           validateErrorInputThemeProps
         )
       : {};
     const theValidateWidthThemeProps = validateType && validateStatus ? validateWidthTheme : {};
 
     const theThemeProps = deepMerge(
+      defaultTheme,
       getPartOfThemeProps('Input', {
         props: {
           prefix,

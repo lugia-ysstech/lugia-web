@@ -56,9 +56,7 @@ const Textarea = CSSComponent({
     ],
     defaultTheme: {
       cursor: 'text',
-      borderRadius: getBorderRadius(borderRadius),
       fontSize: 14,
-      border: getBorder(get('normalBorder')),
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
@@ -105,22 +103,12 @@ const Textarea = CSSComponent({
   },
   hover: {
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
-    defaultTheme: {
-      border: getBorder(get('hoverBorder')),
-    },
-  },
-  focus: {
-    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
-    defaultTheme: {
-      border: getBorder(get('focusBorder')),
-      boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px 4px ${get('inputFocusShadowColor')}`),
-    },
   },
   active: {
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
-    defaultTheme: {
-      border: getBorder(get('activeBorder')),
-    },
+  },
+  focus: {
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
   },
   disabled: {
     selectNames: [
@@ -136,9 +124,6 @@ const Textarea = CSSComponent({
     ],
     defaultTheme: {
       cursor: 'not-allowed',
-      background: { color: disableColor },
-      color: disableTextColor,
-      border: getBorder(get('disabledBorder')),
     },
   },
   css: css`
@@ -283,13 +268,6 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   }
 
   render() {
-    return this.getTextareaContainer();
-  }
-  getInnerTextarea() {
-    return [this.generateInput(), this.getClearButton()];
-  }
-
-  getTextareaContainer() {
     const { getPartOfThemeProps, validateType, validateStatus } = this.props;
     const theTheme = deepMerge(
       getPartOfThemeProps('Container'),
@@ -297,11 +275,11 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     );
     return (
       <TextareaContainer {...addMouseEvent(this)} themeProps={theTheme}>
-        {this.getInnerTextarea()}
+        {this.generateInput()}
+        {this.getClearButton()}
       </TextareaContainer>
     );
   }
-
   isEmpty(): boolean {
     const { value } = this.state;
     return !(value && value.length);
@@ -395,11 +373,35 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     const theValidateThemeProps = isValidateError(validateStatus)
       ? deepMerge(
           validateValueDefaultTheme,
-          validateBorderDefaultTheme,
+          validateBorderDefaultTheme(),
           validateErrorInputThemeProps
         )
       : {};
+    const defaultTheme = {
+      themeConfig: {
+        normal: {
+          borderRadius: getBorderRadius(borderRadius),
+          border: getBorder(get('normalBorder')),
+        },
+        hover: {
+          border: getBorder(get('hoverBorder')),
+        },
+        active: {
+          border: getBorder(get('activeBorder')),
+        },
+        focus: {
+          border: getBorder(get('focusBorder')),
+          boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px 4px ${get('inputFocusShadowColor')}`),
+        },
+        disabled: {
+          background: { color: disableColor },
+          color: disableTextColor,
+          border: getBorder(get('disabledBorder')),
+        },
+      },
+    };
     const theThemeProps = deepMerge(
+      defaultTheme,
       getPartOfThemeProps('Container', { props: { ...propsConfig } }),
       getTheValidateWidthThemeProps(validateType, validateStatus),
       theValidateThemeProps
