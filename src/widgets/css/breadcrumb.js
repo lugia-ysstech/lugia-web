@@ -1,16 +1,15 @@
 import { px2remcss } from '../css/units';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
-import get from '../css/theme-common-dict';
+import '../css/theme-common-dict';
 
 const noLastItemColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
-const textToSeparatorDistance = get('padding');
+const marginToSameElement = '$lugia-dict.@lugia/lugia-web.marginToSameElement';
 
 export const defaultColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 export const hoverDefaultColor = '$lugia-dict.@lugia/lugia-web.themeColor';
-export const fontSize = px2remcss(14);
-export const separatorMarginLeft = px2remcss(textToSeparatorDistance);
-export const separatorMarginRight = px2remcss(textToSeparatorDistance);
-export const iconToTextMargin = get('paddingToText');
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
+export const iconfontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+export const iconToTextMargin = '$lugia-dict.@lugia/lugia-web.paddingToText';
 
 export const CommonSpan = CSSComponent({
   tag: 'span',
@@ -22,6 +21,7 @@ export const CommonSpan = CSSComponent({
       const color = isLastItem ? defaultColor : noLastItemColor;
       return {
         color,
+        fontSize: sectionFontSize,
       };
     },
   },
@@ -37,7 +37,6 @@ export const CommonSpan = CSSComponent({
     },
   },
   css: css`
-    font-size: ${fontSize};
     transition: font-size 0.3s;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -66,6 +65,7 @@ export const ALink = CSSComponent({
       const color = isLastItem ? defaultColor : noLastItemColor;
       return {
         color,
+        fontSize: sectionFontSize,
       };
     },
   },
@@ -87,7 +87,6 @@ export const ALink = CSSComponent({
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    font-size: ${fontSize};
     display: flex;
     align-items: center;
   `,
@@ -98,28 +97,16 @@ export const SeparatorSpan = CSSComponent({
   tag: 'span',
   className: 'separatorSpan',
   normal: {
-    selectNames: [
-      ['color'],
-      ['fontSize'],
-      ['font'],
-      ['margin', 'left'],
-      ['margin', 'right'],
-      ['padding', 'left'],
-      ['padding', 'right'],
-    ],
+    selectNames: [['color'], ['fontSize'], ['font'], ['margin'], ['padding']],
     getThemeMeta(themeMeta, themeConfig) {
       const { propsConfig: { isLastItem } = {} } = themeConfig;
       const color = isLastItem ? defaultColor : noLastItemColor;
+      const textToSeparatorLeft = isLastItem ? 0 : marginToSameElement;
+      const textToSeparatorLeftRight = isLastItem ? 0 : marginToSameElement;
       return {
         color,
+        margin: { top: 0, right: textToSeparatorLeftRight, bottom: 0, left: textToSeparatorLeft },
       };
-    },
-    getCSS(themeMeta, themeConfig) {
-      const { propsConfig: { isLastItem } = {} } = themeConfig;
-      return `
-      margin-left: ${isLastItem ? 0 : separatorMarginLeft};
-      margin-right: ${isLastItem ? 0 : separatorMarginRight}
-      `;
     },
   },
 
