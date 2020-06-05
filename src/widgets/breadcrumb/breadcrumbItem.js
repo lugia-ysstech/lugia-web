@@ -13,6 +13,7 @@ import {
   ItemWrap,
   FlexBox,
   iconToTextMargin,
+  iconfontSize,
 } from '../css/breadcrumb';
 import Icon from '../icon';
 import { deepMerge } from '@lugia/object-utils';
@@ -47,7 +48,6 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
       return null;
     }
     const { viewClass, theme } = this.getIconTheme('PrefixIcon');
-
     return (
       <Icon
         iconClass={prefixIconClass}
@@ -94,6 +94,7 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
           left: marginLeft,
           right: marginRight,
         },
+        fontSize: iconfontSize,
 
         getCSS: () => {
           return `
