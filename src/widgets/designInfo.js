@@ -341,7 +341,7 @@ export default [
     },
     target: Anchor,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABACAYAAACjgtGkAAAAAXNSR0IArs4c6QAAAXRJREFUeAHt2rFKw0AAxvG72M1CFVcfIC+gz2AX7aTg4KYP5QM4CC4ODj6HQx6gQzaxuurpKQH5p4GKONT7F0ryXULp/foltFzj7DxN31K4HG+mnZPp4uHoYGs/LHlcXd+mJcO9odPjw5gH1/X8UcZIKew+v8Rwcz/e682wsIEqY3Rzfnza6HaL3VbFznxg4oIARhBBIIBoQwSBAKINEQQCiDZEEAgg2hCCxBjm3dj25LXbLXZbVTFcZJSMcTZbFAvRm3jbtik/ewcKG/Aegg9cEEEggGhDBIEAog0RBAKII+TB2DTNSt9R6rr+XJf56/MH3+gvD3jJAFAQQSCAaEMEgQCiDREEAog2RBAIINoQQSCAaEMEgQCiDREEAkPRdZkvGS8ZNEQQQSCAaEMEgQCiDREEAohruy7z03UfzHswesmARhBBIIBoQwSBAKINEQQCiDZEEAgg2hBBIIBoQwSBAKINAcj3n/93H8dW+uslXuNfxXfqDFtjm+0PDwAAAABJRU5ErkJggg==',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAAAodJREFUeAHt3DFuFDEYhuGZkC6RAKXNAfYCcAbSQCqQKNIlh8oBKJBoKCg4B8UegGI7RKCFgYm0haNY2sb2b/mJFO3aGdmf3+/VFJtMpskXAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggg0COBuXXoy+vl4u8y3Z6eLGfvLu6+vXn17OVjmT58/Lw8Nv9w7v3b1/dn6v36h+eqNT6utVFun1WGZZnOf/2ep09fT1/krjNfh8BRnW3yu6wy7H/64+eT/VuvjQg0F6LRuW2bIUCIDJhRpwkxavOZcxMiA2bUaUKM2nzm3ITIgBl1mhCjNp85NyEyYEadJsSozWfOTYgMmFGnCTFq85lzNxdinqfv+2zPn/7Zv/XaiEBzIY7m6WaVYpXh6vKuEQbbhiOw2+2W9TtcsMECNb9DDMY7/HEJEb6iugEJUZd3+N0IEb6iugEJUZd3+N0IEb6iugEJUZd3+N2a/xn+oYS22+1Bn1FsNpv75zJKX39o7t6uc4forbHCeQlRGHBvyxOit8YK5yVEYcC9LU+I3hornJcQhQH3tjwhemuscF5CFAbc2/KE6K2xwnkJURhwb8sTorfGCuclRGHAvS1PiN4aK5yXEIUB97Y8IXprbJS8nsuI0bQ7RIwewqQgRJgqYgQhRIwewqQgRJgqYgQhRIwewqQgRJgqYgQhRIwewqTwXIbnOBIZ3SESHAaE4EBCgBAJDgNCcCAhQIgEhwEhOJAQIESCw4AQHEgIECLBYUAIDiQECJHgMCAEBxIChEhwGBCCAwmBSL/+/vI/2UH/ejA5gQECCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAALTP56nXGLoWD7zAAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -6394,7 +6394,7 @@ export default [
     },
     target: Drawer,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAABQCAYAAADxwOBcAAAAAXNSR0IArs4c6QAAAvJJREFUeAHtnaFu21AUhu2sIGGGbqpJgc4TmBYOjJYOJs8ylYwGenR0YLAPkAcwjFQpDYxMEoPVu6dTA37pVLdR5fxRfkuVfK6PfX99X68jmdw0CUdVVTdt2953XXcbymsb03FaAsPh8G+WZY95nt+VZblMTdJ+v1+mafojiPo5n8+fThux39mbpun6nTFutt1ul6xWq6Su6+eiKMorW0kmaTabfY97hLr6IDAajZLpdGpTDTabza+Bve5sJfUxueZ4P4HJZJJst9vPg3Dr9aW97t6P63R32MoKP02fTJSOMyAgUWcgySJK1JmIujqTnL3H/P3n4c05v365fbke2/fmwyIuakVFQGJokSgGCxEZJCoCEkOLRDFYiMggURGQGFokisFCRAaJioDE0CJRDBYiMkhUBCSGFolisBCRQaIiIDG0SBSDhYgMEhUBiaFFX88dC69fx53Lh+HYvsMNR55oRR0Jru/bJKpv4kfOJ1FHguv7Nv1GOcTX67Vz5f/weDx+OfnoPm9SrSiPDNm4RJEJ8eJIlEeGbFyiyIR4cSTKI0M2LlFkQrw4EuWRIRuXKDIhXhyJ8siQjUsUmRAvjkR5ZMjGJYpMiBdHojwyZOP6eu4Ief067lw+DH903+HBcKIVBUBYS4liNQO5JAqAsJYSxWoGckkUAGEtJYrVDOSSKADCWkoUqxnIJVEAhLWUKFYzkEuiAAhrKVGsZiCXRAEQ1lKiWM1ALokCIKylRLGagVwSBUBYS4liNQO5JAqAsJYSxWoGckkUAGEtJYrVDOSSKADCWkoUqxnIJVEAhLWUKFYzkEuiAAhrKVGsZiCXRAEQ1lKiWM1ALokCIKylRLGagVwSBUBYS4liNQO5JAqAsJYm6mmxWGh/eFJDthW57Rs/CNuPP4S/b6Q5Lz6W7RefZdljWlXVTdg5eWn7xdtW5Je2y3XTNB3jf4OtJJNU1/VzURRlaiFNVtu297ZvfCj1GjQoJz7sdWcrKc/zu7Isl/8AVmmEFnyq1YQAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAAAkVJREFUeAHtmTFOw1AQBRPEXXIaJBokaLgKXIUqBQUFp8ltQJFSvrUlb4jYmZS7znfevJEVybudHwlIQAISkIAEJCABCUhAAhKQgAQkIAEJSEACtyawX/sDHp9f39deS7zu6/jx9h9y738/1e+8q5bueAQUgtd5mVghSjy8pULwOi8TK0SJh7dUCF7nZWKFKPHwlve8yH+b+Pj5Xd7w5enhvF97XXlYw9InRAPESUcoxKQ2G7IoRAPESUcoxKQ2G7IoRAPESUcoxKQ2G7IoRAPESUcoxKQ2G7IoRAPESUcoxKQ2G7IoRAPESUcoxKQ2G7IoRAPESUf4tvPKbV7eZi7dZu11S+ds3fuE2Epw2PcVYlihW+MoxFaCw77vf4grF3o6nco7HA6H8777uvKmxdInRAGHuFIIYutFZoUo4BBXCkFsvcisEAUc4kohiK0XmRWigENcKQSx9SKzQhRwiCuFILZeZFaIAg5xpRDE1ovMClHAIa5823nl1i9vM5du033d0v3S3idEIgOdKwS0+BRbIRIZ6FwhoMWn2AqRyEDnCgEtPsVWiEQGOlcIaPEptkIkMtC5QkCLT7EVIpGBzhUCWnyKrRCJDHSuENDiU2yFSGSgc4WAFp9iK0QiA50rBLT4FFshEhnoXCGgxafYCpHIQOcKAS0+xVaIRAY6Vwho8Sm2QiQy0LlCQItPsRUikYHOFQJafIqtEIkMdK4Q0OJTbIVIZJxLQAISkIAEJCABCUhAAhKQgAQkIAEJSEACEpDAjQj8APR9Fu3uwZTVAAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -8893,6 +8893,45 @@ export default [
         onCancel: { desc: '点击取消时的回调', args: [] },
       },
       category: ['反馈'],
+      designInfo: {
+        blankModal: {
+          sequence: 1,
+          title: '自定义弹窗',
+          desc: '自定义弹窗',
+          footer: null,
+          theme: {
+            Container: {
+              name: '弹窗整体样式',
+              desc: '为弹窗配置整体样式',
+              normal: [
+                ['width'],
+                ['height'],
+                ['opacity'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+                ['background'],
+                ['padding'],
+              ],
+            },
+            ModalTitle: {
+              name: '弹窗标题样式',
+              desc: '为弹窗文字配置样式',
+              normal: [['font'], ['color'], ['padding']],
+            },
+            ModalContentText: {
+              name: '弹窗内容文本样式',
+              desc: '为弹窗内容文本配置样式',
+              normal: [['font'], ['color'], ['padding']],
+            },
+            ModalCloseIcon: {
+              name: '弹窗关闭图标样式',
+              desc: '为弹窗关闭图标配置样式',
+              normal: [['fontSize'], ['color']],
+            },
+          },
+        },
+      },
       theme: {
         Container: {
           name: '弹窗整体样式',
@@ -8929,7 +8968,69 @@ export default [
     },
     target: Modal,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAABECAYAAABd/mHNAAAAAXNSR0IArs4c6QAAA8FJREFUeAHtnb+PEkEUxx+/GiKJYkEhDQ3kiktI+BeutdPCimukNCHaG3uTS+ygOioL7WxpLC0wJBdzOWosKEQTzDUc0f1ykFwIizfLzL3Z9fuSS/Zml/e+8/0ws9zucJuSIHq93qP5fH4SbB4tFosHaGP47UAmk/kZKOzncrl2s9n8nlpBPGs0GoVqtZrN5/N+94Dqlg5cXl7KaDS6GgwGswDmYRYjERDr9XqWHsXHAQy4FbNCAPMkHUg/wkiMTxeo9KYDK3ZHaZwTOZ3etCZe22AHhhiRjAQ4QJAJgIguECRBJsSBhHSDI5IgE+JAQrrBEZkQkMYXAt5/+HSrrj97+nh53P92/K3McXAQR6QDUzVSEqSG6w5qEqQDUzVSEqSG6w5qEqQDUzVSEqSG6w5qEqQDUzVSEqSG6w5qEqQDUzVSEqSG6w5qEqQDUzVSEqSG6w5qEqQDUzVSEqSG6w5qEqQDUzVSpjqdzp9Wq6VRmzUtOdDtdrmKzpKX6mk4taojsCOAIO34qJ6FINUR2BFAkHZ8VM9CkOoI7AggSDs+qmcxXtcKxT+Cb6+ffhQ5uxCZ/lLvw1JA8b7IYU3k+InIw3/8F4TgW9oyHo9lNpsJtn2I4OvjUigUpFwuC7ZNwxgkIL54IzL7bVrK7fF4Q33+IvL1m8i71+EwAe78/FxKpVJk01z0BLqm0+lS28HBgTFM46kVI9E3iDeNhTZoDAuMREDET5R3fljefduhZa0LGk3DGCSmU99jl0ZMp8Vi0dsuQBs0moYxSF/Oibs6uksjpjCfRuJmP6AtynnbGORmYf7uhwPGH3ZuK/v07fYjj19dt++7f3t2e60XF9vPIbVa8NE4iH3321N6nYkj0rajSvkIUsl422UJ0rajSvkIUsl422UJ0rajSvkIUsl422UJ0rajSvkIUsl422UJ0rajSvmcXdlZX8EJ69e++8Py2mpfX8EJy7fv/rC8Uds5IqM659nrjEHiTrzvsUtj1LsLd9XnqHdnjEFiOYXvsUsjllPgTryvAW3QaBrGILEmpnDPtMzdHQ9t0BgWWBMzmUyWP1Hu+4Xl3bcdWta6oNE0jD/sYGET1sTEdfEVplasicFyChjnC0zowkiMsl4H0I1B4kWA+fI5tuIZMK1SqcRTfIhq46k1JA+blR0gSGUAtsoTpC0nlfMQpDIAW+UJ0paTynnSeA4hHmHHiKcDYAeGGJF9PIcwnt2g6hW7fjr4m6qNh0kOh8Mrjsz4vDHACsxWDwJtpyCdj+aND8C10s1H8/4FOPYLSaKU35sAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAABBFJREFUeAHtnTtoFUEUhkeNeWEakWAikocgFlFBwdpCKxFtBG1CwEIEwUaxCZg0FlEQxcZCCWlUBBEsbawFAwkpxMIYxUREfBBIYio9uVzITfZmZ2Xn7Bn3u5V39uycf77/dza5Dl7neEEAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQKJrAJl8Bp8/2D/nWUmeXwPPHYxv6uNmudJQVQYBAFEHdcE8CYdicIqQRiCKoG+5JIAybU4Q0AlEEdcM9CYRhc4qQRiCKoG64J4EwbE4R0hpCNu3t6Wq7cH7g+O5dnd0tzc1tIXuVZe7FpaX5T59nP9x/MPry/fTMfN7rDrZDSBhuDA1e3Lundz9hyM82YSlMha0wzm/mykzBAiE7Q1NjY0vegpmvQkDYCuO8eQQLhDwm8hbLfLUEQjAOFggeE7XmhXgXgnGwQIQAwJzhCQT9LSNJ/qOnL5KG142dO3NyZSz2+nULMz7ADmHcIG15BEKbuPF+BMK4QdryCIQ2ceP9CIRxg7TlEQht4sb7EQjjBmnLIxDaxI33IxDGDdKWRyC0iRvvRyCMG6Qtj0BoEzfej0AYN0hbHoHQJm68H4EwbpC2PPXzENVzDr4Ljb3ed51W6tghrDhhRAeBMGKEFRkEwooTRnQQCCNGWJFBIKw4YUQHgTBihBUZBMKKE0Z0qH8OMT7l3L0x57591yGwY7tzl/qdO9RX22/uy1f3+s2kW1hYrL0Q6F1ra4s7cviA69jZHqhDPtOqB0IzDIJIgic9H47UApMwaBo0O1cJ4KkTx2qFGHun/sjQ2hlWc07qKTuD5t/Wzo52td1o9dqz/lk9EFkFUq9LQP2Rkba80VvJFQNXKuNp15Pvzj569fqdxJtuDl9eGU+7nnhzBIPsEBGYpCmRQGjSjqAXgYjAJE2JBEKTdgS9CEQEJmlKJBCatCPoRSAiMElTIoHQpB1BLwIRgUmaEs19Uln9RLIehLTr9e7LOl79RLLefWnX691nfZwdwrpDyvrUAyHnE7RfST3lfIL8k7TWS3pJT+sv9UeGHFbRPBNRPSCz1gg5C1HEAZm1Oqy9DxYI+V6HpP+LWU4urT2sUgQUOQth/bBKGhdhnFaT9XqwR4Z8yUdWMdRnIxCCcbBAyDe+/F5e1jmwmI3jf1EtbIVx3ovZ4jvhvr6DR31rpe7Hz1/L4xOTkz3dXdv+/jDVurWhoSnL/dQmE5DHxPTMx3cjt+8++ZevWHo7NfEqeebKaLCfIWR6EXxtcPjZRgK4ZotAsEeGrWWixpcAgfAlVZI6AlESo32XSSB8SZWkjkCUxGjfZRIIX1IlqSMQJTHad5kEwpdUSeoIREmMZpkQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABOIh8AfDrLm5svq1hQAAAABJRU5ErkJggg==',
+  },
+  {
+    meta: {
+      widgetName: 'Modal',
+      title: '自定义弹窗',
+      desc: '自定义弹窗',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        injectLugiad: { type: 'Object', defaultValue: { type: 'Modal' }, isHidden: true },
+        title: { type: 'React.node', desc: '标题' },
+        visible: { type: 'boolean', desc: 'Modal 是否可见' },
+        cancelText: { type: 'string', desc: '取消按钮文字', defaultValue: '取消' },
+        cancelButtonProps: { type: 'Object', desc: '取消按钮 props ' },
+        okText: { type: 'string', desc: '确认按钮文字', defaultValue: '确定' },
+        okButtonProps: { type: 'Object', desc: '确认按钮 props ' },
+        confirmLoading: { type: 'boolean', desc: '确定按钮是否 loading' },
+        footer: { type: 'React.node', desc: '自定义底部内容，不需要底部内容可设置为 null' },
+        maskClosable: { type: 'boolean', desc: '点击蒙层是否允许关闭', defaultValue: true },
+      },
+      events: {
+        onOk: { desc: '点击确定时的回调', args: [] },
+        onCancel: { desc: '点击取消时的回调', args: [] },
+      },
+      category: ['反馈'],
+      theme: {
+        Container: {
+          name: '弹窗整体样式',
+          desc: '为弹窗配置整体样式',
+          normal: [
+            ['width'],
+            ['height'],
+            ['opacity'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['background'],
+            ['padding'],
+          ],
+        },
+        ModalTitle: {
+          name: '弹窗标题样式',
+          desc: '为弹窗文字配置样式',
+          normal: [['font'], ['color'], ['padding']],
+        },
+        ModalContentText: {
+          name: '弹窗内容文本样式',
+          desc: '为弹窗内容文本配置样式',
+          normal: [['font'], ['color'], ['padding']],
+        },
+        ModalCloseIcon: {
+          name: '弹窗关闭图标样式',
+          desc: '为弹窗关闭图标配置样式',
+          normal: [['fontSize'], ['color']],
+        },
+      },
+      defaultTheme: { Container: { normal: { width: 520 } } },
+      childrenWidget: [],
+      aliasName: 'blankModal',
+    },
+    target: Modal,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAABAFJREFUeAHtnU1rE1EUhk9ik37GCEWQiraNVMSvIipdVLB+dCWKQhddVUGo+AvcdFE3LtwI7lwIpRvtRgqiGzfdiBRRSEiwNpAmkSoiolIxaRZRzgSKhVKuztwzczrvwEB6c+ee9z7nIZNC6RDhAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAG/CURMA1weHZs0nYt5wSUw+3h60z5GgxsdyfwgACH8oB7gmhAiwM3xIxqE8IN6gGtCiAA3x49oEMIP6gGuCSEC3Bw/okEIP6gHuCaECHBz/IjWZLNoqrc7ceP6teE9u7t6WltaEjZrhWXtSrW68mH5Y/HBw6kXhaXSitf7tvYJwTLcmZy4uX9f6ghk8K5tzJKZMltm7N3KjZWsCcGfDM3xeKvXgbFegwCzZcZe87AmBN8mvA6L9dYTsMHYmhC4Taxvno2fbDC2JoQNAFt9zXQ2T1OPnlLufWFtq7mFgjOWyeXXxmy+sPpbhs3gW3Htz1++EgvwbrFI41evEP0mmp55RvV6nbp27aSjh/qsbxtCWEdsXuD86QEqlj9RvlB2PhX4SpahL7WXhocGzBdyMRO3DBfwvL40Go3Q2OgF6uzcQdVqzTn5NY9FIsZ/3OYqFoRwhc/7i+OxGCU72tcWTibaicekDgghRdqwzuzzOSqUlikajTpnobhMPCZ1QAgp0gZ15t9k6dXrjDNz5NI5Grl41nnNY/yexIEvlRKUDWtUqquU3N5BgwP9dPLYQeeqn78q9HI+7XyfMFzG1TQI4QqftxcPDR4nPv8+zpw6QXxKHbhlSJFWUgdCKGmUVEwIIUVaSR0IoaRRUjEhhBRpJXUghJJGScWEEFKkldSBEEoaJRUTQkiRVlIHQihplFRMCCFFWkkdCKGkUVIxIYQUaSV1IISSRknFhBBSpJXUgRBKGiUVE0JIkVZSB0IoaZRUTAghRVpJHQihpFFSMSGEFGkldSCEkkZJxYQQUqSV1IEQSholFRNCSJFWUgdCKGmUVEwIIUVaSR0IoaRRUjEhhBRpJXUghJJGScWEEFKkldSBEEoaJRUTQkiRVlIHQihplFRMa0Lwcx2kNhHWOjYYWxOCH/IR1kZJ7dsGY2tC8BNfVmu1ihScsNVhtszY631vM13wwOH+IdO5PO/b9x+1t+lMprenu6OtrbUt1tTU/C/XY+7GBPg2sVQqL969d3/mfx6xtJBNz228cmPU6r8l5MC3Jm4/2SwA3gsWAWu3jGBtE2lMCUAIU1IhmQchQtJo021CCFNSIZkHIULSaNNtQghTUiGZByFC0mjTbUIIU1IhmQchQtJobBMEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAE9BD4A2rqsCT6alSCAAAAAElFTkSuQmCC',
   },
   {
     meta: {
