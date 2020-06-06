@@ -310,6 +310,13 @@
             }
           }
         }
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "height": 400
+          }
+        }
       }
     },
     "WindowTabs": {
@@ -434,6 +441,13 @@
               "hover": [["color"], ["font"]],
               "disabled": [["color"], ["font"]]
             }
+          }
+        }
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "height": 400
           }
         }
       }
