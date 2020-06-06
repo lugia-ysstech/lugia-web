@@ -280,7 +280,7 @@ export default class EditTableEventListener extends Listener<any> {
     if ((!selectColumn && selectColumn !== 0) || (!selectRow && selectRow !== 0)) {
       return {};
     }
-    const { dataItem } = this.getSelectDataMark(selectRow - 1);
+    const { dataItem } = this.getSelectDataMark(Math.max(selectRow - 1, 0));
     const columnItem = columns[selectColumn].dataIndex;
     return {
       currentCell: { [columnItem]: dataItem[columnItem] },
@@ -377,9 +377,13 @@ export default class EditTableEventListener extends Listener<any> {
   };
 
   setInputChangedValue = (props: Object): Object => {
-    const { value, editing } = props;
+    const { value, editing, showHeader } = props;
     if (editing) {
       const { editCell: { selectColumn, selectRow } = {}, data, columns } = props;
+      let currentRow = selectRow;
+      if (!showHeader) {
+        currentRow = selectRow + 1;
+      }
       let keyName = null;
       columns.forEach(col => {
         const { dataIndex } = col;
@@ -388,7 +392,7 @@ export default class EditTableEventListener extends Listener<any> {
           keyName = dataIndex;
         }
       });
-      const newRowData = this.changeData(data, selectRow, keyName, value);
+      const newRowData = this.changeData(data, currentRow, keyName, value);
       return { data: newRowData };
     }
   };

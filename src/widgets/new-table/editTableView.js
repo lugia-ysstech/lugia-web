@@ -209,7 +209,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     const { oldValue, newValue } = res;
     if (oldValue !== newValue) {
       const { editCell, editing } = this.state;
-      const { data, columns } = this.props;
+      const { data, columns, showHeader } = this.props;
       const { selectRow } = editCell;
       const result = {
         data,
@@ -222,6 +222,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
           data,
           columns,
           editing,
+          showHeader,
         });
         if (changedData) {
           const { data: newData } = changedData;

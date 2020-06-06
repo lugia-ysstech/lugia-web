@@ -199,6 +199,16 @@ const checkBoxdata = [
   { name: 'Rookie', age: 36, address: 'some where', key: '5' },
   { name: 'TheShy', age: 36, address: 'some where', key: '6' },
 ];
+const newData = [
+  {
+    name: '姓名',
+    age: '年龄',
+    address: '地址',
+    key: '选项',
+    checkbox: '全选',
+    isHead: true,
+  },
+];
 
 export default class TableDemo extends React.Component<Object, Object> {
   constructor(props) {
@@ -207,6 +217,8 @@ export default class TableDemo extends React.Component<Object, Object> {
       tableData: dataA,
       treeData,
       columns,
+      checkBoxdata: newData.concat(checkBoxdata),
+      checkboxColumns,
     };
   }
   onChange = res => {
@@ -222,11 +234,15 @@ export default class TableDemo extends React.Component<Object, Object> {
   onCell = res => {
     console.log('onCell', res);
   };
+  onChangeCheckData = res => {
+    const { data, columns } = res;
+    this.setState({ checkBoxdata: data, checkboxColumns: columns });
+  };
   onHeaderCell = res => {
     console.log('OnHeaderCell', res);
   };
   render() {
-    const { tableData, treeData, columns } = this.state;
+    const { tableData, treeData, columns, checkBoxdata, checkboxColumns } = this.state;
 
     const config = {
       [Widgets.EditTable]: {
@@ -275,25 +291,17 @@ export default class TableDemo extends React.Component<Object, Object> {
       },
     };
 
-    const newData = [
-      {
-        name: '姓名',
-        age: '年龄',
-        address: '地址',
-        key: '选项',
-        checkbox: '全选',
-        isHead: true,
-      },
-    ];
     return (
       <div>
         <Title>多选可编辑表格 嵌套数据</Title>
         <div>{JSON.stringify(treeData)}</div>
         <EditTable
-          data={newData.concat(checkBoxdata)}
+          data={checkBoxdata}
           columns={checkboxColumns}
           showHeader={false}
+          isEditHead={true}
           tableStyle={'bordered'}
+          onChange={this.onChangeCheckData}
         />
         <Title>可编辑表格 嵌套数据</Title>
         <div>{JSON.stringify(treeData)}</div>
