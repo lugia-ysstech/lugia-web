@@ -377,7 +377,7 @@ export default class EditTableEventListener extends Listener<any> {
   };
 
   setInputChangedValue = (props: Object): Object => {
-    const { value, editing, showHeader } = props;
+    const { value, editing, showHeader = true } = props;
     if (editing) {
       const { editCell: { selectColumn, selectRow } = {}, data, columns } = props;
       let currentRow = selectRow;
