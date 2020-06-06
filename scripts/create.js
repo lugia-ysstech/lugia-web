@@ -34,7 +34,6 @@ const componentInvalid = [
 const hideInTollPanelComponents = {
   message: 'message',
   anchor: 'index',
-  collapse: 'index',
   notification: 'notification',
   popover: 'index',
   tooltip: 'index',
