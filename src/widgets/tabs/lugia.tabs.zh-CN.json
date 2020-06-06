@@ -548,5 +548,12 @@
         }
       }
     }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "height": 400
+      }
+    }
   }
 }
