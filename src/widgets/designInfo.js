@@ -12,7 +12,7 @@ import Card from './card';
 import Carousel from './carousel';
 import Cascader from './cascader';
 import Checkbox from './checkbox';
-import Collapse from './collapse/index';
+import Collapse from './collapse';
 import DatePicker from './date-picker';
 import Divider from './divider';
 import Drawer from './drawer';
@@ -4643,7 +4643,6 @@ export default [
           },
         },
       },
-      hideInTollPanel: true,
     },
     target: Collapse,
     screenshot:
@@ -4715,7 +4714,6 @@ export default [
         },
       },
       parentWidget: 'Collapse',
-      hideInTollPanel: true,
     },
     target: Collapse.Panel,
     screenshot:
@@ -19007,7 +19005,21 @@ export default [
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
           ],
         },
-        defaultData: { type: 'object[]', desc: '默认配置标签页需要配置的数据,若有data,以data优先' },
+        defaultData: {
+          type: 'object[]',
+          desc: '默认配置标签页需要配置的数据,若有data,以data优先',
+          meta: [
+            { key: 'title', title: '页签', type: 'string' },
+            { key: 'content', title: '内容', type: 'string' },
+            { key: 'value', title: '唯一标识', type: 'string' },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
+            { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
+          ],
+          defaultValue: [
+            { title: 'Tab1', content: 'content of Tab1' },
+            { title: 'Tab2', content: 'content of Tab2' },
+          ],
+        },
         forceRender: { type: 'boolean', desc: '切换时是否重新渲染面板', propsDefaultValue: false },
         pagedType: {
           type: 'PagedType',
@@ -19229,6 +19241,7 @@ export default [
               },
             },
           },
+          defaultTheme: { Container: { normal: { height: 400 } } },
         },
         WindowTabs: {
           sequence: 1,
@@ -19353,6 +19366,7 @@ export default [
               },
             },
           },
+          defaultTheme: { Container: { normal: { height: 400 } } },
         },
       },
       theme: {
@@ -19482,6 +19496,7 @@ export default [
           },
         },
       },
+      defaultTheme: { Container: { normal: { height: 400 } } },
     },
     target: Tabs,
     screenshot:
@@ -19518,7 +19533,21 @@ export default [
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
           ],
         },
-        defaultData: { type: 'object[]', desc: '默认配置标签页需要配置的数据,若有data,以data优先' },
+        defaultData: {
+          type: 'object[]',
+          desc: '默认配置标签页需要配置的数据,若有data,以data优先',
+          meta: [
+            { key: 'title', title: '页签', type: 'string' },
+            { key: 'content', title: '内容', type: 'string' },
+            { key: 'value', title: '唯一标识', type: 'string' },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
+            { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
+          ],
+          defaultValue: [
+            { title: 'Tab1', content: 'content of Tab1' },
+            { title: 'Tab2', content: 'content of Tab2' },
+          ],
+        },
         forceRender: { type: 'boolean', desc: '切换时是否重新渲染面板', propsDefaultValue: false },
         pagedType: {
           type: 'PagedType',
@@ -19734,6 +19763,7 @@ export default [
           },
         },
       },
+      defaultTheme: { Container: { normal: { height: 400 } } },
       aliasName: 'CardTabs',
     },
     target: Tabs,
@@ -19771,7 +19801,21 @@ export default [
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
           ],
         },
-        defaultData: { type: 'object[]', desc: '默认配置标签页需要配置的数据,若有data,以data优先' },
+        defaultData: {
+          type: 'object[]',
+          desc: '默认配置标签页需要配置的数据,若有data,以data优先',
+          meta: [
+            { key: 'title', title: '页签', type: 'string' },
+            { key: 'content', title: '内容', type: 'string' },
+            { key: 'value', title: '唯一标识', type: 'string' },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
+            { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
+          ],
+          defaultValue: [
+            { title: 'Tab1', content: 'content of Tab1' },
+            { title: 'Tab2', content: 'content of Tab2' },
+          ],
+        },
         forceRender: { type: 'boolean', desc: '切换时是否重新渲染面板', propsDefaultValue: false },
         pagedType: {
           type: 'PagedType',
@@ -19982,6 +20026,7 @@ export default [
           },
         },
       },
+      defaultTheme: { Container: { normal: { height: 400 } } },
       aliasName: 'WindowTabs',
     },
     target: Tabs,
