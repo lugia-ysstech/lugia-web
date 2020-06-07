@@ -4560,7 +4560,7 @@ export default [
           meta: [
             { key: 'value', title: '对应字段', type: 'string' },
             { key: 'title', title: '展示文字', type: 'string' },
-            { key: 'children', title: '展示内容', type: 'string' },
+            { key: 'children', title: '展示内容', type: 'lugiaDPages' },
           ],
           defaultValue: [
             { value: '1', title: '标题1', children: '内容1' },
@@ -18982,8 +18982,8 @@ export default [
       desc: '选项卡切换组件',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
-        activityValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
-        defaultActivityValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
+        activeValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
+        defaultActiveValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
         tabType: {
           type: 'TabType',
           desc: '可配置三种风格的标签页.可选 线性,卡片,窗口风格',
@@ -18999,10 +18999,14 @@ export default [
           desc: '配置标签页需要配置的数据',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'string' },
+            { key: 'content', title: '内容', type: 'lugiaDPage' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
+          ],
+          defaultValue: [
+            { title: 'Tab1', value: 'Tab1', content: 'content of Tab1' },
+            { title: 'Tab2', value: 'Tab2', content: 'content of Tab2' },
           ],
         },
         defaultData: {
@@ -19010,14 +19014,10 @@ export default [
           desc: '默认配置标签页需要配置的数据,若有data,以data优先',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'string' },
+            { key: 'content', title: '内容', type: 'lugiaDPage' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
-          ],
-          defaultValue: [
-            { title: 'Tab1', content: 'content of Tab1' },
-            { title: 'Tab2', content: 'content of Tab2' },
           ],
         },
         forceRender: { type: 'boolean', desc: '切换时是否重新渲染面板', propsDefaultValue: false },
@@ -19509,8 +19509,8 @@ export default [
       desc: '卡片风格标签页',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
-        activityValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
-        defaultActivityValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
+        activeValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
+        defaultActiveValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
         tabType: {
           type: 'TabType',
           desc: '可配置三种风格的标签页.可选 线性,卡片,窗口风格',
@@ -19527,10 +19527,14 @@ export default [
           desc: '配置标签页需要配置的数据',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'string' },
+            { key: 'content', title: '内容', type: 'lugiaDPage' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
+          ],
+          defaultValue: [
+            { title: 'Tab1', value: 'Tab1', content: 'content of Tab1' },
+            { title: 'Tab2', value: 'Tab2', content: 'content of Tab2' },
           ],
         },
         defaultData: {
@@ -19538,14 +19542,10 @@ export default [
           desc: '默认配置标签页需要配置的数据,若有data,以data优先',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'string' },
+            { key: 'content', title: '内容', type: 'lugiaDPage' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
-          ],
-          defaultValue: [
-            { title: 'Tab1', content: 'content of Tab1' },
-            { title: 'Tab2', content: 'content of Tab2' },
           ],
         },
         forceRender: { type: 'boolean', desc: '切换时是否重新渲染面板', propsDefaultValue: false },
@@ -19777,8 +19777,8 @@ export default [
       desc: '窗口风格标签页',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
-        activityValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
-        defaultActivityValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
+        activeValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
+        defaultActiveValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
         tabType: {
           type: 'TabType',
           desc: '可配置三种风格的标签页.可选 线性,卡片,窗口风格',
@@ -19795,10 +19795,14 @@ export default [
           desc: '配置标签页需要配置的数据',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'string' },
+            { key: 'content', title: '内容', type: 'lugiaDPage' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
+          ],
+          defaultValue: [
+            { title: 'Tab1', value: 'Tab1', content: 'content of Tab1' },
+            { title: 'Tab2', value: 'Tab2', content: 'content of Tab2' },
           ],
         },
         defaultData: {
@@ -19806,14 +19810,10 @@ export default [
           desc: '默认配置标签页需要配置的数据,若有data,以data优先',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'string' },
+            { key: 'content', title: '内容', type: 'lugiaDPage' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
-          ],
-          defaultValue: [
-            { title: 'Tab1', content: 'content of Tab1' },
-            { title: 'Tab2', content: 'content of Tab2' },
           ],
         },
         forceRender: { type: 'boolean', desc: '切换时是否重新渲染面板', propsDefaultValue: false },
