@@ -35,6 +35,16 @@
         { "key": "value", "title": "唯一标识", "type": "string" },
         { "key": "icon", "title": "前缀图标", "type": "icon" },
         { "key": "suffixIcon", "title": "后缀图标", "type": "icon" }
+      ],
+      "defaultValue": [
+        {
+          "title": "Tab1",
+          "content": "content of Tab1"
+        },
+        {
+          "title": "Tab2",
+          "content": "content of Tab2"
+        }
       ]
     },
     "defaultData": {
@@ -46,16 +56,6 @@
         { "key": "value", "title": "唯一标识", "type": "string" },
         { "key": "icon", "title": "前缀图标", "type": "icon" },
         { "key": "suffixIcon", "title": "后缀图标", "type": "icon" }
-      ],
-      "defaultValue": [
-        {
-          "title": "Tab1",
-          "content": "content of Tab1"
-        },
-        {
-          "title": "Tab2",
-          "content": "content of Tab2"
-        }
       ]
     },
     "forceRender": {
