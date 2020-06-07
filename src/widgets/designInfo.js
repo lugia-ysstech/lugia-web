@@ -18999,7 +18999,7 @@ export default [
           desc: '配置标签页需要配置的数据',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'lugiaDPage' },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
@@ -19014,7 +19014,7 @@ export default [
           desc: '默认配置标签页需要配置的数据,若有data,以data优先',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'lugiaDPage' },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
@@ -19527,7 +19527,7 @@ export default [
           desc: '配置标签页需要配置的数据',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'lugiaDPage' },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
@@ -19542,7 +19542,7 @@ export default [
           desc: '默认配置标签页需要配置的数据,若有data,以data优先',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'lugiaDPage' },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
@@ -19795,7 +19795,7 @@ export default [
           desc: '配置标签页需要配置的数据',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'lugiaDPage' },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
@@ -19810,7 +19810,7 @@ export default [
           desc: '默认配置标签页需要配置的数据,若有data,以data优先',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'lugiaDPage' },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
