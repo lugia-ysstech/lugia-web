@@ -174,6 +174,8 @@ type TabsState = {
 
 type TabsProps = {
   activityValue?: string,
+  activeValue?: string,
+  defaultActiveValue?: string,
   defaultActivityValue?: string,
   addIcon?: string,
   deleteIcon?: string,
@@ -258,11 +260,15 @@ class TabsBox extends Component<TabsProps, TabsState> {
   static displayName = Widget.Tabs;
 
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
-    const { activityValue, defaultActivityValue } = props;
+    const { activeValue, defaultActiveValue, activityValue, defaultActivityValue } = props;
 
     let theData = getDefaultData(props);
     let theActivityValue =
-      activityValue || defaultActivityValue || (theData.length !== 0 ? theData[0].value : null);
+      activeValue ||
+      defaultActiveValue ||
+      activityValue ||
+      defaultActivityValue ||
+      (theData.length !== 0 ? theData[0].value : null);
     if (state) {
       theActivityValue = hasTargetInProps('activityValue', props)
         ? theActivityValue

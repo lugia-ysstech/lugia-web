@@ -8,11 +8,11 @@
       "desc": "是否渲染当前组件",
       "defaultValue": false
     },
-    "activityValue": {
+    "activeValue": {
       "type": "string",
       "desc": "当前激活 tab 面板的 value"
     },
-    "defaultActivityValue": {
+    "defaultActiveValue": {
       "type": "string",
       "desc": "默认激活 tab 面板的 value"
     },
@@ -31,7 +31,7 @@
       "desc": "配置标签页需要配置的数据",
       "meta": [
         { "key": "title", "title": "页签", "type": "string" },
-        { "key": "content", "title": "内容", "type": "string" },
+        { "key": "content", "title": "内容", "type": "lugiaDPage" },
         { "key": "value", "title": "唯一标识", "type": "string" },
         { "key": "icon", "title": "前缀图标", "type": "icon" },
         { "key": "suffixIcon", "title": "后缀图标", "type": "icon" }
@@ -39,10 +39,12 @@
       "defaultValue": [
         {
           "title": "Tab1",
+          "value": "Tab1",
           "content": "content of Tab1"
         },
         {
           "title": "Tab2",
+          "value": "Tab2",
           "content": "content of Tab2"
         }
       ]
@@ -52,7 +54,7 @@
       "desc": "默认配置标签页需要配置的数据,若有data,以data优先",
       "meta": [
         { "key": "title", "title": "页签", "type": "string" },
-        { "key": "content", "title": "内容", "type": "string" },
+        { "key": "content", "title": "内容", "type": "lugiaDPage" },
         { "key": "value", "title": "唯一标识", "type": "string" },
         { "key": "icon", "title": "前缀图标", "type": "icon" },
         { "key": "suffixIcon", "title": "后缀图标", "type": "icon" }
