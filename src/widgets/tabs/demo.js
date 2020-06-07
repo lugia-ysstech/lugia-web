@@ -67,14 +67,17 @@ const titleStyle = { margin: '20px 0', fontWeight: 'bold' };
 export const defaultData = [
   {
     title: 'Tab1',
+    value: 'Tab1',
     content: 'content of Tab1',
   },
   {
     title: 'Tab2',
+    value: 'Tab2',
     content: 'content of Tab2',
   },
   {
     title: 'Tab3',
+    value: 'Tab3',
     content: 'content of Tab3',
   },
 ];
@@ -1136,8 +1139,12 @@ export default class TabsDemo extends React.Component<any, any> {
     return (
       <div>
         <Tabs
-          // tabType={'card'}
+          tabType={'card'}
           data={defaultData}
+          activeValue={'Tab3'}
+          activityValue={'Tab1'}
+          defaultActivityValue={'Tab3'}
+          defaultActiveValue={'Tab2'}
         />
         <Tabs tabType={'card'} defaultData={getData()} showDeleteBtn={true} />
         <Theme config={tabpanTheme}>
