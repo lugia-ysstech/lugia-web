@@ -159,7 +159,7 @@ declare module '@lugia/lugia-web' {
     restColumnsIntoData(columns: Array<Object>): Array<Object>,
     isSelectSameItem(oldItem: SelectItem, currentItem: SelectItem): boolean,
     doStopPropagation(e: Object, isStop?: boolean): void,
-    keyDownHandler: (props: Object) => (e: Object) => void,
+    keyDownHandler: (e: Object) => void,
     keyUpHandler(e: Object): void,
     getThemeForTable(targetTheme: Object, defaultTheme: Object): Object,
     restColumnsWithRender(columns: ?Array<Object>, renderFunc: Function): Array<Object>,
@@ -172,7 +172,16 @@ declare module '@lugia/lugia-web' {
     resetItemName(selectItem: SelectItem): Object,
     getMovedCells(props: Object): ?Object,
     setInputChangedValue(props: Object): Object,
+    changeData(
+      data: Array<Object>,
+      selectRow: number,
+      keyName: ?string,
+      value: string | number
+    ): Array<Object>,
+    changeColumns(props: Object): ?Array<Object>,
     onCellClick(props: Object): void,
     isEqualArray(oldValue: ?Array<Object>, newValue: ?Array<Object>): boolean,
+    getHeaderCell(props: Object): Object,
+    focusTable(table: Object): void,
   };
 }
