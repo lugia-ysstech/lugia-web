@@ -191,7 +191,7 @@ export const DrawerContentWrap = CSSComponent({
     transition: transform 0.3s;
     ${getTransform};
     min-width: 256px;
-    min-height: 256px;
+    min-height: 100px;
   `,
   normal: {
     selectNames: [['width'], ['height']],
@@ -206,12 +206,26 @@ export const DrawerContent = styled.div`
   border: 0;
   z-index: 1;
 `;
+const getHeaderLugiadCSS = (props: CSSProps): string => {
+  const { __lugiad__header__absolute__ = false, type } = props;
+  if (__lugiad__header__absolute__ || type === 'Modal') {
+    return css`
+      position: absolute;
+      left: 20px;
+      top: 22px;
+      z-index: 4000;
+      padding: 0;
+    `;
+  }
+  return '';
+};
 export const DrawerContentHeader = styled.div`
   padding: ${HeaderEM(22)} ${HeaderEM(20)} ${HeaderEM(16)};
   font-size: ${em(16)};
   line-height: ${HeaderEM(22)};
   font-weight: 500;
   color: #333;
+  ${getHeaderLugiadCSS}
 `;
 export const DrawerContentMain = styled.div`
   font-size: ${em(14)};

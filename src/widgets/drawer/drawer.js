@@ -89,6 +89,7 @@ export default ThemeProvider(
         maskClosable = true,
         getPartOfThemeProps,
         injectLugiad: { type } = {},
+        __lugiad__header__absolute__,
       } = this.props;
       const drawerWrapTheme = getPartOfThemeProps('Container');
       const hasCloseIcon = closable || !maskClosable;
@@ -110,9 +111,18 @@ export default ThemeProvider(
           transform={transform}
         >
           <DrawerContent>
-            <DrawerContentHeader>{title}</DrawerContentHeader>
+            <DrawerContentHeader
+              __lugiad__header__absolute__={__lugiad__header__absolute__}
+              type={type}
+            >
+              {title}
+            </DrawerContentHeader>
             {closeIcon}
-            <DrawerContentMain>{children}</DrawerContentMain>
+            {__lugiad__header__absolute__ ? (
+              children
+            ) : (
+              <DrawerContentMain>{children}</DrawerContentMain>
+            )}
           </DrawerContent>
         </DrawerContentWrap>
       );
