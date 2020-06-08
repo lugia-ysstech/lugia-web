@@ -25,9 +25,9 @@ const wrapSize = {
 };
 
 const textFontSize = {
-  small: 12,
-  default: 14,
-  large: 14,
+  small: '$lugia-dict.@lugia/lugia-web.descriptionFontSize',
+  default: '$lugia-dict.@lugia/lugia-web.sectionFontSize',
+  large: '$lugia-dict.@lugia/lugia-web.sectionFontSize',
 };
 
 const tagWrapHeight = {

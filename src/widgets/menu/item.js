@@ -35,6 +35,7 @@ const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const smallSize = '$lugia-dict.@lugia/lugia-web.smallSize';
 const normalSize = '$lugia-dict.@lugia/lugia-web.normalSize';
 const largeSize = '$lugia-dict.@lugia/lugia-web.largeSize';
+const descriptionFontSize = '$lugia-dict.@lugia/lugia-web.descriptionFontSize';
 
 const Utils = require('@lugia/type-utils');
 const { ObjectUtils } = Utils;
@@ -189,7 +190,7 @@ class MenuItem extends React.Component<MenuItemProps> {
     const iconType = checked ? 'SwitchIconSelected' : 'SwitchIcon';
     const { viewClass, theme } = getPartOfThemeHocProps(iconType);
     if (hoverState && !checked) {
-      theme[viewClass].normal = theme[viewClass].hover;
+      theme[viewClass].normal = theme[viewClass].hover || {};
     } else {
       theme[viewClass].normal = theme[viewClass].normal || {};
     }
@@ -341,12 +342,21 @@ class MenuItem extends React.Component<MenuItemProps> {
       themeConfig: {
         normal: {
           color: darkGreyColor,
+          font: {
+            size: descriptionFontSize,
+          },
         },
         hover: {
           color: themeColor,
+          font: {
+            size: descriptionFontSize,
+          },
         },
         disabled: {
           color: disableTextColor,
+          font: {
+            size: descriptionFontSize,
+          },
         },
       },
     };

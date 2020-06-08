@@ -42,12 +42,12 @@ export const HorizontalLightTheme = () => {
       SelectTabPan: {
         normal: {
           color: themeColor,
-          font: { size: 14 },
+          font: { size: get('sectionFontSize') },
         },
       },
       DefaultTabPan: {
         normal: {
-          font: { size: 14 },
+          font: { size: get('sectionFontSize') },
           height: 60,
           color: blackColor,
         },
@@ -140,7 +140,7 @@ export const HorizontalDarkTheme = () => {
         normal: {
           height: 60,
           font: {
-            size: 14,
+            size: get('sectionFontSize'),
           },
           color: changeColor(get('defaultColor'), 0, 0, transparency70).rgba,
           background: {
@@ -215,6 +215,7 @@ export const LightTabsMenuTheme = () => {
         background: {
           color: '#fff',
         },
+        width: 200,
         borderRadius: getBorderRadius(borderRadiusValue),
       },
     },
@@ -255,6 +256,7 @@ export const DarkTabsMenuTheme = () => {
         background: {
           color: navBackgroundColor,
         },
+        width: 200,
         borderRadius: getBorderRadius(borderRadiusValue),
       },
     },
@@ -305,10 +307,10 @@ export const DarkTabsMenuTheme = () => {
     SubMenu: {
       Container: {
         normal: {
-          width: 200,
           background: {
             color: navBackgroundColor,
           },
+          width: 200,
           borderRadius: getBorderRadius(borderRadiusValue),
         },
       },
@@ -394,18 +396,18 @@ export const PrimaryLightTheme = () => {
         },
       },
       Text: {
-        normal: { color: blackColor, fontSize: 14 },
-        hover: { color: themeColor, fontSize: 14 },
-        disabled: { color: disableTextColor, fontSize: 14 },
+        normal: { color: blackColor, fontSize: get('sectionFontSize') },
+        hover: { color: themeColor, fontSize: get('sectionFontSize') },
+        disabled: { color: disableTextColor, fontSize: get('sectionFontSize') },
       },
       SelectedText: {
-        normal: { color: themeColor, font: { size: 14 } },
-        disabled: { color: disableTextColor, fontSize: 14 },
+        normal: { color: themeColor, font: { size: get('sectionFontSize') } },
+        disabled: { color: disableTextColor, fontSize: get('sectionFontSize') },
       },
       SelectedParentText: {
         normal: {
           color: themeColor,
-          font: { size: 14 },
+          font: { size: get('sectionFontSize') },
         },
       },
       SubTreeWrap: {
@@ -482,25 +484,25 @@ export const EllipseLightTheme = () => {
         },
       },
       Text: {
-        normal: { color: blackColor, fontSize: 14 },
-        hover: { color: themeColor, fontSize: 14 },
-        disabled: { color: disableTextColor, fontSize: 14 },
+        normal: { color: blackColor, fontSize: get('sectionFontSize') },
+        hover: { color: themeColor, fontSize: get('sectionFontSize') },
+        disabled: { color: disableTextColor, fontSize: get('sectionFontSize') },
       },
       SelectedText: {
         normal: {
           color: defaultColor,
-          font: { size: 14 },
+          font: { size: get('sectionFontSize') },
           background: {
             image: `linear-gradient(to right, ${get('themeColor')}, ${get('themeHoverColor')})`,
           },
           borderRadius: getBorderRadius(borderRadiusValue),
         },
-        disabled: { color: disableTextColor, fontSize: 14 },
+        disabled: { color: disableTextColor, fontSize: get('sectionFontSize') },
       },
       SelectedParentText: {
         normal: {
           color: themeColor,
-          font: { size: 14 },
+          font: { size: get('sectionFontSize') },
           background: {
             image: 'none',
           },
@@ -586,25 +588,25 @@ export const PrimaryDarkTheme = () => {
       Text: {
         normal: {
           color: changeColor(get('defaultColor'), 0, 0, transparency70).rgba,
-          fontSize: 14,
+          fontSize: get('sectionFontSize'),
         },
-        hover: { color: defaultColor, fontSize: 14 },
+        hover: { color: defaultColor, fontSize: get('sectionFontSize') },
         disabled: {
           color: changeColor(get('defaultColor'), 0, 0, transparency30).rgba,
-          fontSize: 14,
+          fontSize: get('sectionFontSize'),
         },
       },
       SelectedText: {
-        normal: { color: themeColor, font: { size: 14 } },
+        normal: { color: themeColor, font: { size: get('sectionFontSize') } },
         disabled: {
           color: changeColor(get('defaultColor'), 0, 0, transparency30).rgba,
-          fontSize: 14,
+          fontSize: get('sectionFontSize'),
         },
       },
       SelectedParentText: {
         normal: {
           color: defaultColor,
-          font: { size: 14 },
+          font: { size: get('sectionFontSize') },
         },
       },
       SubTreeWrap: {
@@ -689,18 +691,18 @@ export const EllipseDarkTheme = () => {
       Text: {
         normal: {
           color: changeColor(get('defaultColor'), 0, 0, transparency70).rgba,
-          fontSize: 14,
+          fontSize: get('sectionFontSize'),
         },
-        hover: { color: themeColor, fontSize: 14 },
+        hover: { color: themeColor, fontSize: get('sectionFontSize') },
         disabled: {
           color: changeColor(get('defaultColor'), 0, 0, transparency30).rgba,
-          fontSize: 14,
+          fontSize: get('sectionFontSize'),
         },
       },
       SelectedText: {
         normal: {
           color: defaultColor,
-          font: { size: 14 },
+          font: { size: get('sectionFontSize') },
           background: {
             image: `linear-gradient(to right, ${get('themeColor')}, ${get('themeHoverColor')})`,
           },
@@ -708,13 +710,13 @@ export const EllipseDarkTheme = () => {
         },
         disabled: {
           color: changeColor(get('defaultColor'), 0, 0, transparency30).rgba,
-          fontSize: 14,
+          fontSize: get('sectionFontSize'),
         },
       },
       SelectedParentText: {
         normal: {
           color: defaultColor,
-          font: { size: 14 },
+          font: { size: get('sectionFontSize') },
           background: {
             image: 'none',
           },

@@ -34,14 +34,15 @@ const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
-const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
+const descriptionFontSize = '$lugia-dict.@lugia/lugia-web.descriptionFontSize';
 const textFontSize = {
-  small: 12,
-  default: 14,
-  large: 14,
+  small: descriptionFontSize,
+  default: sectionFontSize,
+  large: sectionFontSize,
 };
 const switchIcon = {
   small: xxsFontSize,
