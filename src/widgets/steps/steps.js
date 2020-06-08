@@ -26,7 +26,7 @@ const StepsOutContainer = CSSComponent({
       const { width, height } = themeMeta;
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
-      const theWidth = width && width > 0 ? width : '';
+      const theWidth = width && width > 0 ? width : '100%';
       const theHeight = height && height > 0 ? height : '';
       return isHorizontal(orientation) ? { width: theWidth } : { height: theHeight };
     },
@@ -79,6 +79,7 @@ const OrientationContainer = StaticComponent({
   tag: 'div',
   className: 'StepsContentContainer',
   css: css`
+    width: 100%;
     display: ${props => (isHorizontal(props.orientation) ? 'block' : 'inline-block')};
   `,
 });
@@ -127,12 +128,16 @@ class Steps extends Component<StepsProps, StepsState> {
   state = { _renderAgain: false };
 
   render() {
-    const { orientation } = this.props;
-    const theThemeProps = this.props.getPartOfThemeProps('StepsOutContainer', {
-      props: {
-        orientation,
-      },
-    });
+    const { orientation, getPartOfThemeProps } = this.props;
+    const theThemeProps = deepMerge(
+      getPartOfThemeProps('StepsOutContainer'),
+      getPartOfThemeProps('Container', {
+        props: {
+          orientation,
+        },
+      })
+    );
+
     const normalConfig = isHorizontal(orientation)
       ? { height: this.contentHeight }
       : { width: this.contentWidth };
@@ -146,10 +151,8 @@ class Steps extends Component<StepsProps, StepsState> {
     );
     return (
       <StepsOutContainer themeProps={theThemeProps} orientation={orientation}>
-        <div>
-          <OrientationContainer>{this.getHSteps()}</OrientationContainer>
-          <ContentContainer themeProps={contentThemeProps} />
-        </div>
+        <OrientationContainer>{this.getHSteps()}</OrientationContainer>
+        <ContentContainer themeProps={contentThemeProps} />
       </StepsOutContainer>
     );
   }
