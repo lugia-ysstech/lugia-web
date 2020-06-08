@@ -225,7 +225,7 @@ export const CheckBoxContainer = StaticComponent({
     height: 100%;
     flex: 1;
     align-items: center;
-    padding-left: ${() => px2remcss(get('padding'))};
+    padding-left: ${() => px2remcss(get('marginToSameElement'))};
   `,
   option: { hover: true, active: true },
 });
@@ -639,7 +639,7 @@ export const FlexBox = CSSComponent({
     align-items: center;
     box-sizing: border-box;
     height: 100%;
-    padding-right: ${() => px2remcss(get('padding'))};
+    padding-right: ${() => px2remcss(get('marginToSameElement'))};
   `,
 });
 
