@@ -80,7 +80,7 @@ const StepOutContainer = CSSComponent({
       const type = isHorizontal(orientation) ? 'width' : 'height';
       let theSize;
       if (type === 'width') {
-        theSize = width ? width : isNormalSize(size) ? 212 : 204;
+        theSize = width || '100%';
       } else {
         theSize = height ? height : isNormalSize(size) ? 82 : 74;
       }
