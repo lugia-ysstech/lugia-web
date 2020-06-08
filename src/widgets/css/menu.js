@@ -35,6 +35,7 @@ const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
 const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
 const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
 const descriptionFontSize = '$lugia-dict.@lugia/lugia-web.descriptionFontSize';
+const marginToSameElement = '$lugia-dict.@lugia/lugia-web.marginToSameElement';
 
 const smallCheckboxSize = 14;
 const defaultCheckboxSize = 16;
@@ -99,10 +100,16 @@ const crateTreeThemeConfig = (type: SizeType) => {
       CheckboxText: {
         normal: {
           font: { size: 12 },
+          padding: {
+            left: marginToSameElement,
+          },
           color: blackColor,
         },
         hover: {
           font: { size: 12 },
+          padding: {
+            left: marginToSameElement,
+          },
           color: themeColor,
         },
         disabled: {
