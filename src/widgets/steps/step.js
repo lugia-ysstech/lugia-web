@@ -25,7 +25,6 @@ const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
 const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
-const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 
 export const isHorizontal = (orientation: OrientationType): boolean => {
@@ -346,7 +345,7 @@ const FlatLine = CSSComponent({
         position: absolute;
         width: ${px2remcss(4)};
         height: ${px2remcss(4)};
-        background: ${get('defaultColor')};`;
+        background:white`;
       return `
        &::before {
         ${commonCSS}
@@ -983,7 +982,7 @@ class Step extends React.Component<StepProps, StepState> {
         ? themeColor
         : stepStatus === 'error' && isFlatType(stepType)
         ? dangerColor
-        : defaultColor;
+        : 'white';
     return color;
   }
   getStep() {
@@ -1047,7 +1046,7 @@ class Step extends React.Component<StepProps, StepState> {
                 const theColor = color
                   ? color
                   : isFlatType(stepType)
-                  ? defaultColor
+                  ? 'white'
                   : stepStatus === 'finish'
                   ? successColor
                   : stepStatus === 'error'
@@ -1171,7 +1170,7 @@ class Step extends React.Component<StepProps, StepState> {
       theThemeProps.propsConfig = { size };
 
       const stepNumberThemeProps = deepMerge(
-        this.getThemeNormalConfig({ color: defaultColor }),
+        this.getThemeNormalConfig({ color: 'white' }),
         theThemeProps
       );
       return (
