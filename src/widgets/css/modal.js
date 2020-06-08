@@ -148,19 +148,6 @@ export const ModalWrap = StaticComponent({
     z-index: 99999;
   `,
 });
-
-export const Modal = CSSComponent({
-  tag: 'div',
-  className: 'Modal',
-  css: css`
-    box-sizing: border-box;
-    font-size: ${FontSize}rem;
-    ${getAnimate};
-  `,
-  normal: {
-    selectNames: [['width']],
-  },
-});
 const getPlaceholder = (props: CSSProps): string => {
   const { __lugiad__header__absolute__ = false, type } = props;
   if (__lugiad__header__absolute__ || type === 'Modal') {
@@ -174,6 +161,19 @@ const getPlaceholder = (props: CSSProps): string => {
   }
   return '';
 };
+export const Modal = CSSComponent({
+  tag: 'div',
+  className: 'Modal',
+  css: css`
+    box-sizing: border-box;
+    font-size: ${FontSize}rem;
+    ${getAnimate};
+    ${getPlaceholder};
+  `,
+  normal: {
+    selectNames: [['width']],
+  },
+});
 export const ModalContent = CSSComponent({
   tag: 'div',
   className: 'ModalContent',
@@ -183,7 +183,6 @@ export const ModalContent = CSSComponent({
     border-radius: ${px2remcss(4)};
     box-shadow: 0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15);
     min-width: ${px2remcss(520)};
-    ${getPlaceholder}
   `,
   normal: {
     selectNames: [
