@@ -455,13 +455,10 @@ export const TitleWrap = CSSComponent({
       const { propsConfig: { selected, inlineType, __navmenu, shape } = {} } = themeProps;
 
       const borderRadius = shape === 'round' ? 99999 : borderRadiusValue;
-      const linearGradient = `linear-gradient(to right, ${get('themeColor')}, ${get(
-        'themeHoverColor'
-      )})`;
       return __navmenu && selected && inlineType === 'ellipse'
         ? {
             background: {
-              image: linearGradient,
+              color: get('themeColor'),
             },
             borderRadius: getBorderRadius(borderRadius),
           }
