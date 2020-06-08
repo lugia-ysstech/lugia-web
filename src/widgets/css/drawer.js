@@ -92,7 +92,7 @@ const getAnimateDirection = (props: CSSProps): string => {
 const getWidthOrHeight = (props: CSSProps) => {
   const {
     placement,
-    themeProps: { themeConfig: { normal: { width = 256, height = 256 } = {} } = {} } = {},
+    themeProps: { themeConfig: { normal: { width = 256, height = 100 } = {} } = {} } = {},
   } = props;
   if (placement === 'top' || placement === 'bottom') {
     return height;
