@@ -13,7 +13,7 @@ function getInputtagWrapThemeConfig(props: Object): Object {
   if (!isValidateError(validateStatus)) {
     return containerThemeConfig;
   }
-  const { themeConfig: colorThemeConfig } = validateValueDefaultTheme();
+  const { themeConfig: colorThemeConfig } = validateValueDefaultTheme;
   const { themeConfig: borderThemeConfig } = validateBorderDefaultTheme();
   const errorVliDataStatus = deepMerge(
     colorThemeConfig,
