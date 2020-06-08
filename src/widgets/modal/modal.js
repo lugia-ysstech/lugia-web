@@ -229,7 +229,7 @@ export default ThemeProvider(
         </ModalContent>
       );
       if (type === 'Modal') {
-        return modalContent;
+        return visible === true ? modalContent : null;
       }
       return (
         <Wrap visible={closing ? true : visible}>
