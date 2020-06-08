@@ -92,7 +92,6 @@ export const OutContainer = CSSComponent({
     overflow: hidden;
     position: relative;
     border-radius: ${() => px2remcss(get('borderRadiusValue'))};
-    background: ${() => get('defaultColor')};
     color: ${() => get('blackColor')};
     font-size: ${px2remcss(fontSize)};
     transition: all 0.3s;
