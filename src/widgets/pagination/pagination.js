@@ -171,8 +171,6 @@ const PaginationListItem = CSSComponent({
       ['margin'],
     ],
     defaultTheme: {
-      border: getBorder(get('normalBorder')),
-      borderRadius: getBorderRadius(borderRadius),
       cursor: 'pointer',
       background: { color: defaultColor },
     },
@@ -192,9 +190,6 @@ const PaginationListItem = CSSComponent({
       ['background'],
       ['boxShadow'],
     ],
-    defaultTheme: {
-      border: getBorder(get('hoverBorder')),
-    },
   },
   focus: {
     selectNames: [
@@ -209,7 +204,6 @@ const PaginationListItem = CSSComponent({
       background: {
         color: themeColor,
       },
-      border: getBorder(get('focusBorder')),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { height } = themeMeta;
@@ -473,9 +467,29 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   getItems(index: number, isSelected: boolean, pageNumber: number) {
     const { createEventChannel, getPartOfThemeProps, size } = this.props;
     const channel = createEventChannel(['active', 'hover']);
-    const theThemeProps = getPartOfThemeProps('PaginationListItem', {
-      props: { size },
-    });
+    const defaultTheme = {
+      themeConfig: {
+        normal: {
+          border: getBorder(get('normalBorder')),
+          borderRadius: getBorderRadius(borderRadius),
+        },
+        hover: {
+          border: getBorder(get('hoverBorder')),
+        },
+        focus: {
+          border: getBorder(get('focusBorder')),
+        },
+        disabled: {
+          border: getBorder(get('disabledBorder')),
+        },
+      },
+    };
+    const theThemeProps = deepMerge(
+      defaultTheme,
+      getPartOfThemeProps('PaginationListItem', {
+        props: { size },
+      })
+    );
     theThemeProps.themeState.focus = isSelected;
     return (
       <PaginationListItem
