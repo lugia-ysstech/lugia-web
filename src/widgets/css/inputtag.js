@@ -343,7 +343,7 @@ export const ItemText = StaticComponent({
   tag: 'span',
   className: 'ItemText',
   css: css`
-    font-size: ${px2remcss(12)};
+    font-size: ${() => px2remcss(get('descriptionFontSize'))};
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;

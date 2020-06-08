@@ -30,20 +30,20 @@ const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
-
 const padding = '$lugia-dict.@lugia/lugia-web.padding';
-
 const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
 const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
+const descriptionFontSize = '$lugia-dict.@lugia/lugia-web.descriptionFontSize';
 
 const smallCheckboxSize = 14;
 const defaultCheckboxSize = 16;
 const largeCheckboxSize = 16;
 
 const fontSize = {
-  small: 12,
-  default: 14,
-  large: 14,
+  small: descriptionFontSize,
+  default: sectionFontSize,
+  large: sectionFontSize,
 };
 
 const iconSize = {
@@ -234,6 +234,7 @@ export const SwitchIconContainer = StaticComponent({
   css: css`
     position: absolute;
     right: ${px2remcss(12)};
+    font-size: 0;
     top: 50%;
     transform: translateY(-50%);
   `,

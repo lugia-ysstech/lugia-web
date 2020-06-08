@@ -69,7 +69,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
-  padding-left: 0.4rem;
+  padding-left: 1rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -250,10 +250,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   overflow: hidden;
   width: 25rem;
   background-color: #fff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
   height: 25rem;
 }
 
@@ -320,6 +316,10 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   onWheel={[Function]}
   style={
     Object {
+      "borderBottomLeftRadius": "0.4rem",
+      "borderBottomRightRadius": "0.4rem",
+      "borderTopLeftRadius": "0.4rem",
+      "borderTopRightRadius": "0.4rem",
       "boxShadow": "0px 0px 6px 0px #cccccc",
     }
   }
@@ -466,7 +466,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1"
@@ -513,7 +513,14 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseUp={[Function]}
-                style={Object {}}
+                style={
+                  Object {
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
               />
             </span>
             <div
@@ -545,7 +552,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     disabled={false}
                     style={
                       Object {
-                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -596,7 +602,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.1"
@@ -687,7 +693,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     disabled={false}
                     style={
                       Object {
-                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -738,7 +743,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2"
@@ -785,7 +790,14 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseUp={[Function]}
-                style={Object {}}
+                style={
+                  Object {
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
               />
             </span>
             <div
@@ -817,7 +829,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     disabled={false}
                     style={
                       Object {
-                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -868,7 +879,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.1"
@@ -959,7 +970,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     disabled={false}
                     style={
                       Object {
-                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -1010,7 +1020,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.2"
@@ -1101,7 +1111,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     disabled={false}
                     style={
                       Object {
-                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -1152,7 +1161,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.2.1"
@@ -1199,7 +1208,14 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseUp={[Function]}
-                style={Object {}}
+                style={
+                  Object {
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
               />
             </span>
             <div
@@ -1231,7 +1247,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     disabled={false}
                     style={
                       Object {
-                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -1282,7 +1297,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.2.1.1"
@@ -1329,7 +1344,14 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseUp={[Function]}
-                style={Object {}}
+                style={
+                  Object {
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
               />
             </span>
             <div
@@ -1361,7 +1383,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     disabled={false}
                     style={
                       Object {
-                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -1412,7 +1433,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.2.1.2"
@@ -1515,7 +1536,7 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
-  padding-left: 0.4rem;
+  padding-left: 1rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -1590,10 +1611,6 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
   overflow: hidden;
   width: 25rem;
   background-color: #fff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
   height: 3.5rem;
 }
 
@@ -1607,6 +1624,10 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
   onMouseLeave={[Function]}
   style={
     Object {
+      "borderBottomLeftRadius": "0.4rem",
+      "borderBottomRightRadius": "0.4rem",
+      "borderTopLeftRadius": "0.4rem",
+      "borderTopRightRadius": "0.4rem",
       "boxShadow": "0px 0px 6px 0px #cccccc",
     }
   }
@@ -1654,7 +1675,14 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1rem",
+                  "paddingRight": "0rem",
+                  "paddingTop": "0rem",
+                }
+              }
             />
           </span>
           <div
@@ -1675,7 +1703,7 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
                 "borderTopLeftRadius": "0.4rem",
                 "borderTopRightRadius": "0.4rem",
                 "color": "#363B40",
-                "fontSize": "1.4rem",
+                "fontSize": "1.6rem",
               }
             }
             title="2.1.2.1"
@@ -1755,7 +1783,7 @@ Array [
   align-items: center;
   height: 100%;
   vertical-align: top;
-  padding-left: 0.4rem;
+  padding-left: 1rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -1830,10 +1858,6 @@ Array [
   overflow: hidden;
   width: 25rem;
   background-color: #fff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
   height: 25rem;
 }
 
@@ -1900,6 +1924,10 @@ Array [
     onWheel={[Function]}
     style={
       Object {
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "boxShadow": "0px 0px 6px 0px #cccccc",
       }
     }
@@ -1984,7 +2012,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#4d63ff",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1"
@@ -2038,7 +2066,14 @@ Array [
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={Object {}}
+                  style={
+                    Object {
+                      "paddingBottom": "0rem",
+                      "paddingLeft": "1rem",
+                      "paddingRight": "0rem",
+                      "paddingTop": "0rem",
+                    }
+                  }
                 />
               </span>
               <div
@@ -2059,7 +2094,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.1"
@@ -2146,7 +2181,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2"
@@ -2200,7 +2235,14 @@ Array [
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={Object {}}
+                  style={
+                    Object {
+                      "paddingBottom": "0rem",
+                      "paddingLeft": "1rem",
+                      "paddingRight": "0rem",
+                      "paddingTop": "0rem",
+                    }
+                  }
                 />
               </span>
               <div
@@ -2221,7 +2263,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.1"
@@ -2308,7 +2350,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.2"
@@ -2395,7 +2437,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.2.1"
@@ -2449,7 +2491,14 @@ Array [
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={Object {}}
+                  style={
+                    Object {
+                      "paddingBottom": "0rem",
+                      "paddingLeft": "1rem",
+                      "paddingRight": "0rem",
+                      "paddingTop": "0rem",
+                    }
+                  }
                 />
               </span>
               <div
@@ -2470,7 +2519,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.2.1.1"
@@ -2524,7 +2573,14 @@ Array [
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={Object {}}
+                  style={
+                    Object {
+                      "paddingBottom": "0rem",
+                      "paddingLeft": "1rem",
+                      "paddingRight": "0rem",
+                      "paddingTop": "0rem",
+                    }
+                  }
                 />
               </span>
               <div
@@ -2545,7 +2601,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.2.1.2"
@@ -2675,7 +2731,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
-  padding-left: 0.4rem;
+  padding-left: 1rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -2856,10 +2912,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   overflow: hidden;
   width: 25rem;
   background-color: #fff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
   height: 25rem;
 }
 
@@ -2926,6 +2978,10 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   onWheel={[Function]}
   style={
     Object {
+      "borderBottomLeftRadius": "0.4rem",
+      "borderBottomRightRadius": "0.4rem",
+      "borderTopLeftRadius": "0.4rem",
+      "borderTopRightRadius": "0.4rem",
       "boxShadow": "0px 0px 6px 0px #cccccc",
     }
   }
@@ -3072,7 +3128,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1"
@@ -3119,7 +3175,14 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseUp={[Function]}
-                style={Object {}}
+                style={
+                  Object {
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
               />
             </span>
             <div
@@ -3151,7 +3214,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     disabled={false}
                     style={
                       Object {
-                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -3202,7 +3264,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.1"
@@ -3293,7 +3355,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     disabled={false}
                     style={
                       Object {
-                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -3344,7 +3405,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2"
@@ -3391,7 +3452,14 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseUp={[Function]}
-                style={Object {}}
+                style={
+                  Object {
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
               />
             </span>
             <div
@@ -3423,7 +3491,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     disabled={false}
                     style={
                       Object {
-                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -3474,7 +3541,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.1"
@@ -3565,7 +3632,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     disabled={false}
                     style={
                       Object {
-                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -3616,7 +3682,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.2"
@@ -3707,7 +3773,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     disabled={false}
                     style={
                       Object {
-                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -3758,7 +3823,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.2.1"
@@ -3805,7 +3870,14 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseUp={[Function]}
-                style={Object {}}
+                style={
+                  Object {
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
               />
             </span>
             <div
@@ -3837,7 +3909,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     disabled={false}
                     style={
                       Object {
-                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -3888,7 +3959,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.2.1.1"
@@ -3935,7 +4006,14 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseUp={[Function]}
-                style={Object {}}
+                style={
+                  Object {
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1rem",
+                    "paddingRight": "0rem",
+                    "paddingTop": "0rem",
+                  }
+                }
               />
             </span>
             <div
@@ -3967,7 +4045,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     disabled={false}
                     style={
                       Object {
-                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -4018,7 +4095,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "fontSize": "1.6rem",
                   }
                 }
                 title="1.2.2.1.2"
