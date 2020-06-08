@@ -103,10 +103,13 @@ const getDrawerAnimate = (props: CSSProps): string => {
   const { open, opening, closing } = props;
   const distance = getWidthOrHeight(props);
   const Direction = getAnimateDirection(props);
-  const openFrom = `${Direction}: ${em(-distance)};`;
+  const isNumber = typeof distance === 'number';
+  const trueDistance = isNumber ? em(-distance) : distance;
+  const closeDistance = isNumber ? em(-(distance + 8)) : `calc(-${distance} - 8px)`;
+  const openFrom = `${Direction}: ${trueDistance};`;
   const openTo = `${Direction}: 0;`;
   const closeFrom = `${Direction}: 0;`;
-  const closeTo = `${Direction}: ${em(-(distance + 8))};`;
+  const closeTo = `${Direction}: ${closeDistance};`;
   const OpenKeyframe = keyframes`
     from {
       ${openFrom}
@@ -132,7 +135,7 @@ const getDrawerAnimate = (props: CSSProps): string => {
   }
   if (closing) {
     return css`
-      ${Direction}: ${em(-(distance + 8))};
+      ${Direction}: ${closeDistance};
 
       animation: ${CloseKeyframe} 0.3s;
     `;
@@ -143,7 +146,7 @@ const getDrawerAnimate = (props: CSSProps): string => {
     `;
   }
   return `
-    ${Direction}: ${em(-(distance + 8))};
+    ${Direction}: ${closeDistance};
   `;
 };
 const getWidthOrHeightByDirection = (props: CSSProps) => {
