@@ -16363,7 +16363,7 @@ export default [
           desc: '垂直步骤条配置',
           props: { orientation: 'vertical' },
           theme: {
-            StepsOutContainer: {
+            Container: {
               name: '步骤条最外层容器',
               desc: '步骤条最外层容器',
               normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -16596,7 +16596,7 @@ export default [
           desc: '半扁平步骤条配置',
           props: { stepType: 'flat', orientation: 'horizontal' },
           theme: {
-            StepsOutContainer: {
+            Container: {
               name: '步骤条最外层容器',
               desc: '步骤条最外层容器',
               normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -16829,7 +16829,7 @@ export default [
           desc: '图标步骤条步骤条配置',
           props: { stepType: 'icon', orientation: 'horizontal' },
           theme: {
-            StepsOutContainer: {
+            Container: {
               name: '步骤条最外层容器',
               desc: '步骤条最外层容器',
               normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -17057,7 +17057,7 @@ export default [
           desc: '点状步骤条配置',
           props: { stepType: 'dot', orientation: 'horizontal' },
           theme: {
-            StepsOutContainer: {
+            Container: {
               name: '步骤条最外层容器',
               desc: '步骤条最外层容器',
               normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -17276,7 +17276,7 @@ export default [
         },
       },
       theme: {
-        StepsOutContainer: {
+        Container: {
           name: '步骤条最外层容器',
           desc: '步骤条最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -17570,7 +17570,7 @@ export default [
       childrenWidget: [],
       category: ['导航'],
       theme: {
-        StepsOutContainer: {
+        Container: {
           name: '步骤条最外层容器',
           desc: '步骤条最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -17866,7 +17866,7 @@ export default [
       childrenWidget: [],
       category: ['导航'],
       theme: {
-        StepsOutContainer: {
+        Container: {
           name: '步骤条最外层容器',
           desc: '步骤条最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -18162,7 +18162,7 @@ export default [
       childrenWidget: [],
       category: ['导航'],
       theme: {
-        StepsOutContainer: {
+        Container: {
           name: '步骤条最外层容器',
           desc: '步骤条最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -18453,7 +18453,7 @@ export default [
       childrenWidget: [],
       category: ['导航'],
       theme: {
-        StepsOutContainer: {
+        Container: {
           name: '步骤条最外层容器',
           desc: '步骤条最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
