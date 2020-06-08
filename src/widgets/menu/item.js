@@ -109,7 +109,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       ? this.props.getPartOfThemeHocProps(selectedIconType)
       : this.props.getPartOfThemeHocProps(iconType);
     const paddingLeft = iconType === 'SuffixIcon' ? px2remcss(get('padding')) : 0;
-    const paddingRight = iconType === 'PrefixIcon' ? px2remcss(get('paddingToText')) : 0;
+    const paddingRight = iconType === 'PrefixIcon' ? px2remcss(get('marginToSameElement')) : 0;
     const defaultTheme = {
       normal: {
         padding: {
