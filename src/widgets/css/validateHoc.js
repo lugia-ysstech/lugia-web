@@ -15,7 +15,7 @@ export function isValidateError(validateStatus: ValidateStatus): boolean {
   return validateStatus === 'error';
 }
 
-export const validateBorderDefaultTheme = {
+export const validateBorderDefaultTheme = () => ({
   themeConfig: {
     normal: {
       border: getBorder({ color: dangerColor, width: borderSize, style: 'solid' }),
@@ -37,7 +37,8 @@ export const validateBorderDefaultTheme = {
       border: getBorder({ color: borderDisableColor, width: borderSize, style: 'solid' }),
     },
   },
-};
+});
+
 export const validateValueDefaultTheme = {
   themeConfig: {
     normal: {
