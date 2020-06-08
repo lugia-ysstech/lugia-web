@@ -46,6 +46,8 @@ type CSSProps = {
   iconType: IconType,
   closing: boolean,
   opening: boolean,
+  __lugiad__header__absolute__: boolean,
+  type: string,
   theme?: ThemeType,
 };
 
@@ -159,7 +161,19 @@ export const Modal = CSSComponent({
     selectNames: [['width']],
   },
 });
-
+const getPlaceholder = (props: CSSProps): string => {
+  const { __lugiad__header__absolute__ = false, type } = props;
+  if (__lugiad__header__absolute__ || type === 'Modal') {
+    return css`
+      &::after {
+        content: '';
+        height: 60px;
+        display: block;
+      }
+    `;
+  }
+  return '';
+};
 export const ModalContent = CSSComponent({
   tag: 'div',
   className: 'ModalContent',
@@ -169,6 +183,7 @@ export const ModalContent = CSSComponent({
     border-radius: ${px2remcss(4)};
     box-shadow: 0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15);
     min-width: ${px2remcss(520)};
+    ${getPlaceholder}
   `,
   normal: {
     selectNames: [

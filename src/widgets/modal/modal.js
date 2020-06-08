@@ -177,7 +177,12 @@ export default ThemeProvider(
       const modalTitleTheme = getPartOfThemeProps('ModalTitle');
       const modalBodyTextTheme = getPartOfThemeProps('ModalContentText');
       const modalContent = (
-        <ModalContent showIcon={showIcon} themeProps={modalWrapTheme}>
+        <ModalContent
+          showIcon={showIcon}
+          themeProps={modalWrapTheme}
+          __lugiad__header__absolute__={__lugiad__header__absolute__}
+          type={type}
+        >
           {showIcon ? (
             <Icon
               iconClass={iconClass || IconInfo[iconType].class}
@@ -229,7 +234,7 @@ export default ThemeProvider(
         </ModalContent>
       );
       if (type === 'Modal') {
-        return visible === true ? modalContent : null;
+        return modalContent;
       }
       return (
         <Wrap visible={closing ? true : visible}>
