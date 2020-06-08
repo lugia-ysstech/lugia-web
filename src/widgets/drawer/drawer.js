@@ -117,7 +117,7 @@ export default ThemeProvider(
         </DrawerContentWrap>
       );
       if (type === 'Drawer') {
-        return drawerContent;
+        return visible === true ? drawerContent : null;
       }
       const maskElement = mask ? (
         <DrawerMask onClick={this.handleMaskClick} visible={visible} />
