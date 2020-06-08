@@ -46,7 +46,7 @@ exports[`DropMenuButton default 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "fontSize": "1.4rem",
+          "fontSize": "1.6rem",
         }
       }
     />
@@ -117,7 +117,7 @@ exports[`DropMenuButton divided={false} 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "fontSize": "1.4rem",
+          "fontSize": "1.6rem",
         }
       }
     />
@@ -181,7 +181,7 @@ exports[`DropMenuButton type=basic 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "fontSize": "1.4rem",
+          "fontSize": "1.6rem",
         }
       }
     />
@@ -246,7 +246,7 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
           "borderTopStyle": "solid",
           "borderTopWidth": "0.1rem",
           "color": "#363B40",
-          "fontSize": "1.4rem",
+          "fontSize": "1.6rem",
         }
       }
       type="primary"

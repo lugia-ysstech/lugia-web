@@ -178,14 +178,14 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
         Container: {
           normal: {
             width,
-            fontSize: 12,
+            fontSize: '$lugia-dict.@lugia/lugia-web.descriptionFontSize',
             color: blackColor,
             borderRadius: getBorderRadius(20),
           },
         },
         Placeholder: {
           normal: {
-            fontSize: 12,
+            fontSize: '$lugia-dict.@lugia/lugia-web.descriptionFontSize',
             color: lightGreyColor,
           },
         },

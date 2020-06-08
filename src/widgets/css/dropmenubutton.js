@@ -32,12 +32,11 @@ const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
-const fontSmallSize = 12;
-const fontDefaultSize = 14;
-const fontLargeSize = 14;
 const iconSamllSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
 const iconDefaultSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
 const iconLargeSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+const descriptionFontSize = '$lugia-dict.@lugia/lugia-web.descriptionFontSize';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
 
 const heightSize = {
   small: smallSize,
@@ -45,9 +44,9 @@ const heightSize = {
   large: largeSize,
 };
 const textFontSize = {
-  small: fontSmallSize,
-  default: fontDefaultSize,
-  large: fontLargeSize,
+  small: descriptionFontSize,
+  default: sectionFontSize,
+  large: sectionFontSize,
 };
 const iconSize = {
   small: iconSamllSize,

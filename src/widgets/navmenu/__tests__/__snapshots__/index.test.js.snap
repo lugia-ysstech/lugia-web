@@ -62,7 +62,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
-  padding-left: 0.4rem;
+  padding-left: 1rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -116,7 +116,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   padding-left: 0rem;
-  height: 3.2rem;
+  height: 4rem;
 }
 
 .c12 {
@@ -128,7 +128,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   padding-left: 1.4rem;
-  height: 3.2rem;
+  height: 4rem;
 }
 
 .c15 {
@@ -140,7 +140,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   padding-left: 2.8rem;
-  height: 3.2rem;
+  height: 4rem;
 }
 
 .c5 {
@@ -178,11 +178,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
   overflow: hidden;
   width: 25rem;
   background-color: #fff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-  height: 80rem;
+  height: 100rem;
 }
 
 .c1:hover > div:nth-child(2) {
@@ -228,7 +224,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
     >
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="Lugia Design of React"
@@ -279,14 +275,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="Lugia Design of React"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Lugia Design of React"
@@ -303,7 +299,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="快速上手"
@@ -354,14 +350,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="快速上手"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="快速上手"
@@ -378,7 +374,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="项目实战"
@@ -429,14 +425,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="项目实战"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="项目实战"
@@ -453,7 +449,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="在Lugia-mega中使用"
@@ -504,14 +500,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="在Lugia-mega中使用"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="在Lugia-mega中使用"
@@ -528,7 +524,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="Components"
@@ -579,14 +575,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="Components"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Components"
@@ -634,7 +630,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
         >
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="General"
@@ -685,14 +681,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="General"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="General"
@@ -737,7 +733,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Button 按钮"
@@ -788,14 +784,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Button 按钮"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Button 按钮"
@@ -812,7 +808,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Icon 图标"
@@ -863,14 +859,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Icon 图标"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Icon 图标"
@@ -889,7 +885,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
           </li>
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="Layout"
@@ -940,14 +936,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="Layout"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="Layout"
@@ -992,7 +988,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Grid 栅格"
@@ -1043,14 +1039,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Grid 栅格"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Grid 栅格"
@@ -1067,7 +1063,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Layout 布局"
@@ -1118,14 +1114,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Layout 布局"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Layout 布局"
@@ -1144,7 +1140,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
           </li>
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="Navigation"
@@ -1195,14 +1191,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="Navigation"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="Navigation"
@@ -1247,7 +1243,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Affix 固钉"
@@ -1298,14 +1294,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Affix 固钉"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Affix 固钉"
@@ -1322,7 +1318,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Breadcrumb 面包屑"
@@ -1373,14 +1369,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Breadcrumb 面包屑"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Breadcrumb 面包屑"
@@ -1397,7 +1393,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Dropdown 下拉菜单"
@@ -1448,14 +1444,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Dropdown 下拉菜单"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Dropdown 下拉菜单"
@@ -1472,7 +1468,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Menu 导航菜单"
@@ -1523,14 +1519,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Menu 导航菜单"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Menu 导航菜单"
@@ -1547,7 +1543,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Pagination 分页"
@@ -1598,14 +1594,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Pagination 分页"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Pagination 分页"
@@ -1622,7 +1618,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Steps 步骤条"
@@ -1673,14 +1669,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Steps 步骤条"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Steps 步骤条"
@@ -1699,7 +1695,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
           </li>
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="Data Entry"
@@ -1750,14 +1746,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="Data Entry"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="Data Entry"
@@ -1802,7 +1798,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="AutoComplete 自动完成"
@@ -1853,14 +1849,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="AutoComplete 自动完成"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="AutoComplete 自动完成"
@@ -1877,7 +1873,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Cascader 级联选择"
@@ -1928,14 +1924,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Cascader 级联选择"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Cascader 级联选择"
@@ -1952,7 +1948,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Checkbox 多选框"
@@ -2003,14 +1999,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Checkbox 多选框"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Checkbox 多选框"
@@ -2027,7 +2023,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="DatePicker 日期选择框"
@@ -2078,14 +2074,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="DatePicker 日期选择框"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="DatePicker 日期选择框"
@@ -2102,7 +2098,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Form 表单"
@@ -2153,14 +2149,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Form 表单"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Form 表单"
@@ -2177,7 +2173,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Input 输入框"
@@ -2228,14 +2224,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Input 输入框"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Input 输入框"
@@ -2321,7 +2317,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
-  padding-left: 0.4rem;
+  padding-left: 1rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -2375,7 +2371,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   padding-left: 0rem;
-  height: 3.2rem;
+  height: 4rem;
 }
 
 .c12 {
@@ -2387,7 +2383,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   padding-left: 1.4rem;
-  height: 3.2rem;
+  height: 4rem;
 }
 
 .c15 {
@@ -2399,7 +2395,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   padding-left: 2.8rem;
-  height: 3.2rem;
+  height: 4rem;
 }
 
 .c5 {
@@ -2437,11 +2433,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
   overflow: hidden;
   width: 25rem;
   background-color: #fff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-  height: 80rem;
+  height: 100rem;
 }
 
 .c1:hover > div:nth-child(2) {
@@ -2487,7 +2479,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
     >
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="Lugia Design of React"
@@ -2538,14 +2530,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="Lugia Design of React"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Lugia Design of React"
@@ -2562,7 +2554,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="快速上手"
@@ -2613,14 +2605,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="快速上手"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="快速上手"
@@ -2637,7 +2629,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="项目实战"
@@ -2688,14 +2680,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="项目实战"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="项目实战"
@@ -2712,7 +2704,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="在Lugia-mega中使用"
@@ -2763,14 +2755,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="在Lugia-mega中使用"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="在Lugia-mega中使用"
@@ -2787,7 +2779,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="Components"
@@ -2838,14 +2830,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="Components"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Components"
@@ -2893,7 +2885,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
         >
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="General"
@@ -2944,14 +2936,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="General"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="General"
@@ -2996,7 +2988,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Button 按钮"
@@ -3047,14 +3039,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Button 按钮"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Button 按钮"
@@ -3071,7 +3063,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Icon 图标"
@@ -3122,14 +3114,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Icon 图标"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Icon 图标"
@@ -3148,7 +3140,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
           </li>
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="Layout"
@@ -3199,14 +3191,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="Layout"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="Layout"
@@ -3251,7 +3243,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Grid 栅格"
@@ -3302,14 +3294,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Grid 栅格"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Grid 栅格"
@@ -3326,7 +3318,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Layout 布局"
@@ -3377,14 +3369,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Layout 布局"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Layout 布局"
@@ -3403,7 +3395,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
           </li>
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="Navigation"
@@ -3454,14 +3446,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="Navigation"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="Navigation"
@@ -3506,7 +3498,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Affix 固钉"
@@ -3557,14 +3549,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Affix 固钉"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Affix 固钉"
@@ -3581,7 +3573,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Breadcrumb 面包屑"
@@ -3632,14 +3624,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Breadcrumb 面包屑"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Breadcrumb 面包屑"
@@ -3656,7 +3648,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Dropdown 下拉菜单"
@@ -3707,14 +3699,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Dropdown 下拉菜单"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Dropdown 下拉菜单"
@@ -3731,7 +3723,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Menu 导航菜单"
@@ -3782,14 +3774,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Menu 导航菜单"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Menu 导航菜单"
@@ -3806,7 +3798,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Pagination 分页"
@@ -3857,14 +3849,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Pagination 分页"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Pagination 分页"
@@ -3881,7 +3873,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Steps 步骤条"
@@ -3932,14 +3924,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Steps 步骤条"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Steps 步骤条"
@@ -3958,7 +3950,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
           </li>
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="Data Entry"
@@ -4009,14 +4001,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="Data Entry"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="Data Entry"
@@ -4061,7 +4053,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="AutoComplete 自动完成"
@@ -4112,14 +4104,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="AutoComplete 自动完成"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="AutoComplete 自动完成"
@@ -4136,7 +4128,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Cascader 级联选择"
@@ -4187,14 +4179,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Cascader 级联选择"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Cascader 级联选择"
@@ -4211,7 +4203,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Checkbox 多选框"
@@ -4262,14 +4254,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Checkbox 多选框"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Checkbox 多选框"
@@ -4286,7 +4278,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="DatePicker 日期选择框"
@@ -4337,14 +4329,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="DatePicker 日期选择框"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="DatePicker 日期选择框"
@@ -4361,7 +4353,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Form 表单"
@@ -4412,14 +4404,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Form 表单"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Form 表单"
@@ -4436,7 +4428,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Input 输入框"
@@ -4487,14 +4479,14 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Input 输入框"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Input 输入框"
@@ -4534,11 +4526,7 @@ exports[`NavMenu  mode=vertical  1`] = `
   overflow: hidden;
   width: 25rem;
   background-color: #fff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-  height: 18rem;
+  height: 20rem;
 }
 
 .c1:hover > div:nth-child(2) {
@@ -4548,6 +4536,7 @@ exports[`NavMenu  mode=vertical  1`] = `
 .c6 {
   position: absolute;
   right: 1.2rem;
+  font-size: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -4590,8 +4579,12 @@ exports[`NavMenu  mode=vertical  1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   cursor: pointer;
-  height: 3.6rem;
+  height: 4rem;
 }
 
 .c3 > i {
@@ -4599,7 +4592,6 @@ exports[`NavMenu  mode=vertical  1`] = `
 }
 
 .c4 {
-  padding: 0rem 1rem;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -4611,9 +4603,10 @@ exports[`NavMenu  mode=vertical  1`] = `
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c4 i {
@@ -4681,7 +4674,11 @@ exports[`NavMenu  mode=vertical  1`] = `
       >
         <div
           className="c4"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4rem",
+            }
+          }
         >
           <span
             className="c5"
@@ -4691,7 +4688,7 @@ exports[`NavMenu  mode=vertical  1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.4rem",
+                "fontSize": "1.6rem",
               }
             }
           >
@@ -4720,7 +4717,11 @@ exports[`NavMenu  mode=vertical  1`] = `
       >
         <div
           className="c4"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4rem",
+            }
+          }
         >
           <span
             className="c5"
@@ -4730,7 +4731,7 @@ exports[`NavMenu  mode=vertical  1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.4rem",
+                "fontSize": "1.6rem",
               }
             }
           >
@@ -4759,7 +4760,11 @@ exports[`NavMenu  mode=vertical  1`] = `
       >
         <div
           className="c4"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4rem",
+            }
+          }
         >
           <span
             className="c5"
@@ -4769,7 +4774,7 @@ exports[`NavMenu  mode=vertical  1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.4rem",
+                "fontSize": "1.6rem",
               }
             }
           >
@@ -4798,7 +4803,11 @@ exports[`NavMenu  mode=vertical  1`] = `
       >
         <div
           className="c4"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4rem",
+            }
+          }
         >
           <span
             className="c5"
@@ -4808,7 +4817,7 @@ exports[`NavMenu  mode=vertical  1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.4rem",
+                "fontSize": "1.6rem",
               }
             }
           >
@@ -4837,7 +4846,11 @@ exports[`NavMenu  mode=vertical  1`] = `
       >
         <div
           className="c4"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4rem",
+            }
+          }
         >
           <span
             className="c5"
@@ -4847,7 +4860,7 @@ exports[`NavMenu  mode=vertical  1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.4rem",
+                "fontSize": "1.6rem",
               }
             }
           >
@@ -4919,7 +4932,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   content: '';
   width: 0.4rem;
   border-radius: 0.2rem;
-  height: 3.2rem;
+  height: 4rem;
   background: #4d63ff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -4954,7 +4967,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
-  padding-left: 0.4rem;
+  padding-left: 1rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -5008,7 +5021,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   padding-left: 0rem;
-  height: 3.2rem;
+  height: 4rem;
 }
 
 .c12 {
@@ -5020,7 +5033,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   padding-left: 1.4rem;
-  height: 3.2rem;
+  height: 4rem;
 }
 
 .c15 {
@@ -5032,7 +5045,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   padding-left: 2.8rem;
-  height: 3.2rem;
+  height: 4rem;
 }
 
 .c5 {
@@ -5070,11 +5083,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   overflow: hidden;
   width: 25rem;
   background-color: #fff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-  height: 80rem;
+  height: 100rem;
 }
 
 .c1:hover > div:nth-child(2) {
@@ -5120,7 +5129,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
     >
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="Lugia Design of React"
@@ -5171,14 +5180,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="Lugia Design of React"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Lugia Design of React"
@@ -5195,7 +5204,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="快速上手"
@@ -5246,14 +5255,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="快速上手"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="快速上手"
@@ -5270,7 +5279,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="项目实战"
@@ -5321,14 +5330,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="项目实战"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="项目实战"
@@ -5345,7 +5354,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="在Lugia-mega中使用"
@@ -5396,14 +5405,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="在Lugia-mega中使用"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="在Lugia-mega中使用"
@@ -5420,7 +5429,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="Components"
@@ -5471,14 +5480,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="Components"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Components"
@@ -5530,7 +5539,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
         >
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="General"
@@ -5581,14 +5590,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="General"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="General"
@@ -5633,7 +5642,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Button 按钮"
@@ -5684,14 +5693,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Button 按钮"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Button 按钮"
@@ -5708,7 +5717,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Icon 图标"
@@ -5759,14 +5768,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Icon 图标"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Icon 图标"
@@ -5785,7 +5794,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
           </li>
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="Layout"
@@ -5836,14 +5845,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="Layout"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="Layout"
@@ -5888,7 +5897,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Grid 栅格"
@@ -5939,14 +5948,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Grid 栅格"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Grid 栅格"
@@ -5963,7 +5972,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Layout 布局"
@@ -6014,14 +6023,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Layout 布局"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Layout 布局"
@@ -6040,7 +6049,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
           </li>
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="Navigation"
@@ -6091,14 +6100,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="Navigation"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="Navigation"
@@ -6143,7 +6152,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Affix 固钉"
@@ -6194,14 +6203,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Affix 固钉"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Affix 固钉"
@@ -6218,7 +6227,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Breadcrumb 面包屑"
@@ -6269,14 +6278,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Breadcrumb 面包屑"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Breadcrumb 面包屑"
@@ -6293,7 +6302,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Dropdown 下拉菜单"
@@ -6344,14 +6353,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Dropdown 下拉菜单"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Dropdown 下拉菜单"
@@ -6368,7 +6377,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Menu 导航菜单"
@@ -6419,14 +6428,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Menu 导航菜单"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Menu 导航菜单"
@@ -6443,7 +6452,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Pagination 分页"
@@ -6494,14 +6503,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Pagination 分页"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Pagination 分页"
@@ -6518,7 +6527,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Steps 步骤条"
@@ -6569,14 +6578,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Steps 步骤条"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Steps 步骤条"
@@ -6595,7 +6604,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
           </li>
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="Data Entry"
@@ -6646,14 +6655,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="Data Entry"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="Data Entry"
@@ -6698,7 +6707,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="AutoComplete 自动完成"
@@ -6749,14 +6758,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="AutoComplete 自动完成"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="AutoComplete 自动完成"
@@ -6773,7 +6782,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Cascader 级联选择"
@@ -6824,14 +6833,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Cascader 级联选择"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Cascader 级联选择"
@@ -6848,7 +6857,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Checkbox 多选框"
@@ -6899,14 +6908,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Checkbox 多选框"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Checkbox 多选框"
@@ -6923,7 +6932,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="DatePicker 日期选择框"
@@ -6974,14 +6983,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="DatePicker 日期选择框"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="DatePicker 日期选择框"
@@ -6998,7 +7007,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Form 表单"
@@ -7049,14 +7058,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Form 表单"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Form 表单"
@@ -7073,7 +7082,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Input 输入框"
@@ -7124,14 +7133,14 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Input 输入框"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Input 输入框"
@@ -7196,7 +7205,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   content: '';
   width: 0.4rem;
   border-radius: 0.2rem;
-  height: 3.2rem;
+  height: 4rem;
   background: #4d63ff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -7231,7 +7240,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
-  padding-left: 0.4rem;
+  padding-left: 1rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -7285,7 +7294,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   padding-left: 0rem;
-  height: 3.2rem;
+  height: 4rem;
 }
 
 .c12 {
@@ -7297,7 +7306,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   padding-left: 1.4rem;
-  height: 3.2rem;
+  height: 4rem;
 }
 
 .c15 {
@@ -7309,7 +7318,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   padding-left: 2.8rem;
-  height: 3.2rem;
+  height: 4rem;
 }
 
 .c5 {
@@ -7347,11 +7356,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   overflow: hidden;
   width: 25rem;
   background-color: #fff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-  height: 80rem;
+  height: 100rem;
 }
 
 .c1:hover > div:nth-child(2) {
@@ -7397,7 +7402,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
     >
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="Lugia Design of React"
@@ -7448,14 +7453,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="Lugia Design of React"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Lugia Design of React"
@@ -7472,7 +7477,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="快速上手"
@@ -7523,14 +7528,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="快速上手"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="快速上手"
@@ -7547,7 +7552,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="项目实战"
@@ -7598,14 +7603,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="项目实战"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="项目实战"
@@ -7622,7 +7627,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="在Lugia-mega中使用"
@@ -7673,14 +7678,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="在Lugia-mega中使用"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="在Lugia-mega中使用"
@@ -7697,7 +7702,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
       </li>
       <li
         className="c3"
-        height={32}
+        height={40}
         selected={false}
         style={Object {}}
         title="Components"
@@ -7748,14 +7753,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.4rem",
+                  "fontSize": "1.6rem",
                 }
               }
               title="Components"
             >
               <div
                 className="c7"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Components"
@@ -7807,7 +7812,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
         >
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="General"
@@ -7858,14 +7863,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="General"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="General"
@@ -7910,7 +7915,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Button 按钮"
@@ -7961,14 +7966,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Button 按钮"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Button 按钮"
@@ -7985,7 +7990,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Icon 图标"
@@ -8036,14 +8041,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Icon 图标"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Icon 图标"
@@ -8062,7 +8067,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
           </li>
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="Layout"
@@ -8113,14 +8118,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="Layout"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="Layout"
@@ -8165,7 +8170,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Grid 栅格"
@@ -8216,14 +8221,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Grid 栅格"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Grid 栅格"
@@ -8240,7 +8245,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Layout 布局"
@@ -8291,14 +8296,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Layout 布局"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Layout 布局"
@@ -8317,7 +8322,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
           </li>
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="Navigation"
@@ -8368,14 +8373,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="Navigation"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="Navigation"
@@ -8420,7 +8425,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Affix 固钉"
@@ -8471,14 +8476,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Affix 固钉"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Affix 固钉"
@@ -8495,7 +8500,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Breadcrumb 面包屑"
@@ -8546,14 +8551,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Breadcrumb 面包屑"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Breadcrumb 面包屑"
@@ -8570,7 +8575,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Dropdown 下拉菜单"
@@ -8621,14 +8626,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Dropdown 下拉菜单"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Dropdown 下拉菜单"
@@ -8645,7 +8650,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Menu 导航菜单"
@@ -8696,14 +8701,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Menu 导航菜单"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Menu 导航菜单"
@@ -8720,7 +8725,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Pagination 分页"
@@ -8771,14 +8776,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Pagination 分页"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Pagination 分页"
@@ -8795,7 +8800,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Steps 步骤条"
@@ -8846,14 +8851,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Steps 步骤条"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Steps 步骤条"
@@ -8872,7 +8877,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
           </li>
           <li
             className="c3"
-            height={32}
+            height={40}
             selected={false}
             style={Object {}}
             title="Data Entry"
@@ -8923,14 +8928,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.4rem",
+                      "fontSize": "1.6rem",
                     }
                   }
                   title="Data Entry"
                 >
                   <div
                     className="c13"
-                    height={32}
+                    height={40}
                     selected={false}
                     style={Object {}}
                     title="Data Entry"
@@ -8975,7 +8980,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
             >
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="AutoComplete 自动完成"
@@ -9026,14 +9031,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="AutoComplete 自动完成"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="AutoComplete 自动完成"
@@ -9050,7 +9055,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Cascader 级联选择"
@@ -9101,14 +9106,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Cascader 级联选择"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Cascader 级联选择"
@@ -9125,7 +9130,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Checkbox 多选框"
@@ -9176,14 +9181,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Checkbox 多选框"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Checkbox 多选框"
@@ -9200,7 +9205,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="DatePicker 日期选择框"
@@ -9251,14 +9256,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="DatePicker 日期选择框"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="DatePicker 日期选择框"
@@ -9275,7 +9280,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Form 表单"
@@ -9326,14 +9331,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Form 表单"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Form 表单"
@@ -9350,7 +9355,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               </li>
               <li
                 className="c3"
-                height={32}
+                height={40}
                 selected={false}
                 style={Object {}}
                 title="Input 输入框"
@@ -9401,14 +9406,14 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.4rem",
+                          "fontSize": "1.6rem",
                         }
                       }
                       title="Input 输入框"
                     >
                       <div
                         className="c7"
-                        height={32}
+                        height={40}
                         selected={false}
                         style={Object {}}
                         title="Input 输入框"
