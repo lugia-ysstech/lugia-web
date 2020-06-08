@@ -24,7 +24,7 @@ exports[`Upload Test css 1`] = `
 }
 
 .c4.areaIcon {
-  font-size: $lugia-dict.@lugia/lugia-web.xxlFontSizepx;
+  font-size: 36px;
 }
 
 .c4.icon-mark {
@@ -55,13 +55,10 @@ exports[`Upload Test css 1`] = `
 .c3 {
   width: 100%;
   height: 30px;
-  color: #cccccc;
-  padding: 0 0 0 10px;
   line-height: 30px;
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
-  font-size: 12px;
 }
 
 .c0 {
@@ -110,6 +107,12 @@ exports[`Upload Test css 1`] = `
           "borderTopRightRadius": "0.4rem",
           "borderTopStyle": "solid",
           "borderTopWidth": "0.1rem",
+          "color": "#cccccc",
+          "fontSize": "1.4rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "0rem",
+          "paddingTop": "0rem",
         }
       }
     >

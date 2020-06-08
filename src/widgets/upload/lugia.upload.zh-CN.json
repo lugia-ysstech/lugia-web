@@ -508,7 +508,7 @@
             }
           }
         },
-        "UploadDefaultType": {
+        "Container": {
           "normal": {
             "width": 346,
             "height": 30,
@@ -552,7 +552,7 @@
     "Container": {
       "name": "文件上传区域",
       "desc": "默认上传框的样式",
-      "normal": [["width"], ["height"], ["boxShadow"], ["border"]],
+      "normal": [["width"], ["height"], ["boxShadow"], ["border"],["padding"]],
       "hover": [["boxShadow"], ["border"]],
       "disabled": [["border"], ["cursor"]]
     },
@@ -579,7 +579,7 @@
     }
   },
   "defaultTheme": {
-    "UploadDefaultType": {
+    "Container": {
       "normal": {
         "width": 346,
         "height": 30,

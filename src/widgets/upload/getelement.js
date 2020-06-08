@@ -22,12 +22,13 @@ const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
-const focusBorder = '$lugia-dict.@lugia/lugia-web.focusBorder';
-const disabledBorder = '$lugia-dict.@lugia/lugia-web.disabledBorder';
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const padding = '$lugia-dict.@lugia/lugia-web.padding';
 const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const xxlFontSize = '$lugia-dict.@lugia/lugia-web.xxlFontSize';
 const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const themeDisabledColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
 const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
@@ -37,8 +38,8 @@ const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const lFontSize = '$lugia-dict.@lugia/lugia-web.lFontSize';
 const mFontSize = '$lugia-dict.@lugia/lugia-web.mFontSize';
-const normalBorder = '$lugia-dict.@lugia/lugia-web.normalBorder';
-
+const descriptionFontSize = '$lugia-dict.@lugia/lugia-web.descriptionFontSize';
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const Container = CSSComponent({
   tag: 'div',
   className: 'upload_Container',
@@ -104,44 +105,49 @@ const getButtonStyle = (normalButtonTheme, classNameStatus) => {
     disabled: { background: { color: buttonStyle[classNameStatus] } },
   };
 };
-const getDefaultStyle = {
-  default: {
-    border: getBorder(normalBorder),
-  },
-  fail: {
-    border: getBorder({ width: 1, style: 'solid', color: dangerColor }),
-    color: dangerColor,
-  },
-  loading: {
-    border: getBorder({ width: 1, style: 'solid', color: themeColor }),
-    color: blackColor,
-  },
-  done: {
-    border: getBorder(focusBorder),
-    color: blackColor,
-  },
+
+const getDefaultStyle = status => {
+  if (status === 'fail') {
+    return {
+      border: getBorder({ width: 1, style: 'solid', color: dangerColor }),
+      color: dangerColor,
+      fontSize: descriptionFontSize,
+    };
+  } else if (status === 'loading') {
+    return {
+      border: getBorder({ width: 1, style: 'solid', color: themeColor }),
+      color: blackColor,
+    };
+  } else if (status === 'done') {
+    return {
+      border: getBorder(get('focusBorder')),
+      color: blackColor,
+    };
+  }
+  return {};
 };
-const bottonThemeStyle = {
+
+const bottonThemeStyle = () => ({
   border: getBorder({ width: 1, style: 'solid', color: dangerColor }),
   background: { color: 'transparent' },
-};
+});
 const getButtonFailBorder = normalButtonTheme => {
   return {
     normal: {
       ...normalButtonTheme,
-      ...bottonThemeStyle,
+      ...bottonThemeStyle(),
     },
     hover: {
-      ...bottonThemeStyle,
+      ...bottonThemeStyle(),
     },
     active: {
-      ...bottonThemeStyle,
+      ...bottonThemeStyle(),
     },
     focus: {
-      ...bottonThemeStyle,
+      ...bottonThemeStyle(),
     },
     disabled: {
-      ...bottonThemeStyle,
+      ...bottonThemeStyle(),
     },
   };
 };
@@ -149,37 +155,53 @@ const InputContent = CSSComponent({
   tag: 'div',
   className: 'UploadDefaultType',
   normal: {
-    selectNames: [['width'], ['height'], ['boxShadow'], ['borderRadius'], ['border'], ['color']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['boxShadow'],
+      ['borderRadius'],
+      ['border'],
+      ['color'],
+      ['padding'],
+      ['fontSize'],
+    ],
     getThemeMeta(themeMeta, themeProps) {
-      const {
-        propsConfig: { areaType },
-      } = themeProps;
-      if (areaType === 'both') {
-        return {
-          borderRadius: getBorderRadius(borderRadiusValue, ['tl', 'bl']),
-        };
-      }
+      return {
+        color: lightGreyColor,
+        border: getBorder(get('normalBorder')),
+        padding: { top: 0, right: 0, bottom: 0, left: padding },
+        fontSize: descriptionFontSize,
+      };
+    },
+  },
+  hover: {
+    selectNames: [['border']],
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        border: getBorder(get('hoverBorder')),
+      };
     },
   },
   disabled: {
     selectNames: [['border'], ['borderRadius'], ['cursor']],
     defaultTheme: {
-      border: getBorder(disabledBorder),
       cursor: 'not-allowed',
       background: { color: disableColor },
       color: disableTextColor,
+    },
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        border: getBorder(get('disabledBorder')),
+      };
     },
   },
   css: css`
     width: 100%;
     height: 30px;
-    color: ${get('lightGreyColor')};
-    padding: 0 0 0 ${get('padding')}px;
     line-height: 30px;
     overflow: hidden;
     box-sizing: border-box;
     position: relative;
-    font-size: 12px;
   `,
   option: { hover: true, disabled: true },
 });
@@ -210,23 +232,34 @@ const Li = CSSComponent({
   tag: 'li',
   className: 'UploadLiType',
   normal: {
-    selectNames: [['fontSize'], ['color'], ['borderRadius'], ['border']],
+    selectNames: [['fontSize'], ['color'], ['borderRadius'], ['border'], ['font'], ['background']],
     defaultTheme: {
       color: darkGreyColor,
       cursor: 'pointer',
     },
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        fontSize: sFontSize,
+        border: { bottom: { width: 1, style: 'dashed', color: get('borderColor') } },
+      };
+    },
+  },
+  hover: {
+    selectNames: [['background']],
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        background: { color: get('superLightColor') },
+      };
+    },
   },
   css: css`
     height: 36px;
-    border-bottom: 1px dashed #e8e8e8;
     position: relative;
     padding-left: 5px;
-    font-size: 14px;
     & > span {
       line-height: 36px;
     }
     &:hover {
-      background: ${get('disableColor')};
       cursor: pointer;
       & .right {
         display: none;
@@ -242,9 +275,8 @@ const PrevCon = CSSComponent({
   tag: 'div',
   className: 'upload_PrevBox',
   normal: {
-    selectNames: [['fontSize'], ['color']],
+    selectNames: [['fontSize'], ['color'], ['font']],
     defaultTheme: {
-      fontSize: sFontSize,
       color: darkGreyColor,
     },
   },
@@ -333,14 +365,14 @@ const Triangle = CSSComponent({
 });
 
 const pictureStyle = {
-  default: { color: darkGreyColor, borderColor: mediumGreyColor },
-  fail: { color: dangerColor, borderColor: dangerColor },
-  loading: { color: themeColor, borderColor: themeColor },
-  done: { color: darkGreyColor, borderColor: mediumGreyColor },
+  default: { color: darkGreyColor, borderColorStyle: borderColor },
+  fail: { color: dangerColor, borderColorStyle: dangerColor },
+  loading: { color: themeColor, borderColorStyle: themeColor },
+  done: { color: darkGreyColor, borderColorStyle: mediumGreyColor },
 };
-const getPictureStyle = status => {
+const getFailStyle = status => {
   return {
-    border: getBorder({ width: 1, style: 'dashed', color: pictureStyle[status].borderColor }),
+    border: getBorder({ width: 1, style: 'dashed', color: pictureStyle[status].borderColorStyle }),
     color: pictureStyle[status].color,
   };
 };
@@ -359,16 +391,20 @@ const PictureView = CSSComponent({
       ['color'],
       ['font'],
     ],
-    defaultTheme: {
-      width: 80,
-      height: 80,
-      borderRadius: getBorderRadius(borderRadiusValue),
+    getThemeMeta() {
+      return {
+        width: 80,
+        height: 80,
+        borderRadius: getBorderRadius(borderRadiusValue),
+      };
     },
   },
   hover: {
     selectNames: [['background'], ['opacity'], ['borderRadius'], ['border']],
-    defaultTheme: {
-      border: getBorder({ width: 1, style: 'dashed', color: themeColor }),
+    getThemeMeta() {
+      return {
+        border: getBorder({ width: 1, style: 'dashed', color: themeColor }),
+      };
     },
   },
   disabled: {
@@ -378,12 +414,11 @@ const PictureView = CSSComponent({
       background: {
         color: disableColor,
       },
-      color: darkGreyColor,
+      color: disableTextColor,
       border: getBorder({ width: 1, style: 'dashed', color: borderDisableColor }),
     },
   },
   css: css`
-    border: 1px dashed ${get('mediumGreyColor')};
     border-radius: 4px;
     display: flex;
     justify-content: center;
@@ -413,34 +448,44 @@ const AreaView = CSSComponent({
       ['font'],
     ],
     defaultTheme: {
-      color: darkGreyColor,
       width: '100%',
       height: 150,
       fontSize: xxlFontSize,
-      borderRadius: getBorderRadius(borderRadiusValue),
+      color: dangerColor,
+    },
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        borderRadius: getBorderRadius(borderRadiusValue),
+      };
+    },
+  },
+  hover: {
+    selectNames: [['border']],
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        border: getBorder({ width: 1, style: 'dashed', color: themeColor }),
+      };
     },
   },
   disabled: {
     selectNames: [['color'], ['border'], ['background']],
-    defaultTheme: {
-      color: disableTextColor,
-      cursor: 'not-allowed',
-      border: getBorder({ width: 1, style: 'dashed', color: borderDisableColor }),
-      background: {
-        color: disableColor,
-      },
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        border: getBorder({ width: 1, style: 'dashed', color: borderDisableColor }),
+        color: disableTextColor,
+        cursor: 'not-allowed',
+        background: {
+          color: disableColor,
+        },
+      };
     },
   },
+  option: { hover: true },
   css: css`
-    border: 1px dashed ${get('mediumGreyColor')};
-    border-radius: ${get('borderRadiusValue')}px;
     display: flex;
     flex-flow: column;
     justify-content: center;
     text-align: center;
-    &:hover {
-      border: 1px dashed ${get('themeColor')};
-    }
   `,
 });
 
@@ -448,9 +493,10 @@ const AreaText = CSSComponent({
   tag: 'div',
   className: 'upload_AreaText',
   normal: {
-    selectNames: [['color']],
+    selectNames: [['color'], ['fontSize']],
     defaultTheme: {
       color: darkGreyColor,
+      fontSize: sectionFontSize,
     },
   },
   disabled: {
@@ -461,7 +507,6 @@ const AreaText = CSSComponent({
   },
   css: css`
     width: 100%;
-    font-size: 14px;
     text-align: center;
     margin-top: 6px;
   `,
@@ -471,13 +516,22 @@ const AreaTextBlue = CSSComponent({
   tag: 'span',
   className: 'upload_AreaRemindText',
   normal: {
-    selectNames: [['color']],
+    selectNames: [['color'], ['border'], ['fontSize']],
+    getThemeMeta() {
+      return {
+        color: themeColor,
+        border: { bottom: { width: 1, style: 'solid', color: themeColor } },
+        fontSize: sectionFontSize,
+      };
+    },
   },
   hover: {
-    selectNames: [['color']],
-    defaultTheme: {
-      color: themeHoverColor,
-      border: { bottom: { width: 1, style: 'solid', color: get('themeHoverColor ') } },
+    selectNames: [['color'], ['border']],
+    getThemeMeta() {
+      return {
+        color: themeHoverColor,
+        border: { bottom: { width: 1, style: 'solid', color: themeHoverColor } },
+      };
     },
   },
   disabled: {
@@ -499,10 +553,7 @@ const AreaTextBlue = CSSComponent({
     disabled: true,
   },
   css: css`
-    color: ${get('themeColor')};
-    font-size: 14px;
     padding: 0 4px;
-    border-bottom: 1px solid ${get('themeColor')};
     cursor: pointer;
   `,
 });
@@ -599,7 +650,7 @@ export const getIconByType = (
                 display: none;
               }
               &.areaIcon {
-                font-size: ${xxlFontSize}px;
+                font-size: ${get('xxlFontSize')}px;
               }
               &.icon-mark {
                 margin: 0 ${get('paddingToText')}px 0 0;
@@ -908,7 +959,10 @@ class GetElement extends React.Component<DefProps, StateProps> {
         themeConfig: {
           normal: {
             borderRadius: getBorderRadius(borderRadiusValue),
-            ...getDefaultStyle[classNameStatus],
+            ...getDefaultStyle(classNameStatus),
+          },
+          hover: {
+            ...getDefaultStyle(classNameStatus),
           },
         },
       };
@@ -944,7 +998,10 @@ class GetElement extends React.Component<DefProps, StateProps> {
         themeConfig: {
           normal: {
             borderRadius: getBorderRadius(borderRadiusValue, ['tl', 'bl']),
-            ...getDefaultStyle[classNameStatus],
+            ...getDefaultStyle(classNameStatus),
+          },
+          hover: {
+            ...getDefaultStyle(classNameStatus),
           },
         },
       };
@@ -1048,31 +1105,29 @@ class GetElement extends React.Component<DefProps, StateProps> {
         children = React.cloneElement(userDefine, { disabled, onClick: handleClickToUpload });
       }
     }
+    const borderFailTheme =
+      classNameStatus === 'fail'
+        ? { border: getBorder({ width: 1, style: 'dashed', color: dangerColor }) }
+        : {};
     if (areaType === 'picture') {
       const { size, disabled, fileListDone, multiple, previewUrl } = props;
       const { handleClickToUpload, handleClickToDelete, dropArea } = this;
-      const sizeFailTheme = classNameStatus === 'fail' ? { fontSize: 12, color: dangerColor } : {};
+      const pictureSizeFail = classNameStatus === 'fail' ? { fontSize: descriptionFontSize } : {};
       const pictureThemeProps = this.props.getPartOfThemeProps('Container');
-      const resultTheme = deepMerge(
-        {
-          themeConfig: {
-            normal: { ...getDefaultSize(size), ...sizeFailTheme },
-          },
-        },
-        pictureThemeProps
-      );
       const pictureTheme = deepMerge(
         {
           themeConfig: {
             normal: {
-              ...getPictureStyle(classNameStatus),
+              ...getFailStyle(classNameStatus),
+              ...getDefaultSize(size),
+              ...pictureSizeFail,
             },
             hover: {
-              ...getPictureStyle(classNameStatus),
+              ...borderFailTheme,
             },
           },
         },
-        resultTheme
+        pictureThemeProps
       );
 
       children = (
@@ -1120,22 +1175,34 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const { dropArea, handleClickToUpload } = this;
       const { disabled } = props;
       const areaThemeProps = this.props.getPartOfThemeProps('Container');
-      const pictureTheme = deepMerge(
+      const areaCloudFail = classNameStatus === 'fail' ? { color: darkGreyColor } : {};
+      const areaTheme = deepMerge(
         {
           themeConfig: {
             normal: {
-              ...getPictureStyle(classNameStatus),
+              ...getFailStyle(classNameStatus),
+              ...areaCloudFail,
             },
             hover: {
-              ...getPictureStyle(classNameStatus),
+              ...borderFailTheme,
             },
           },
         },
         areaThemeProps
       );
+      const areaTextFail =
+        classNameStatus === 'fail' ? { fontSize: sectionFontSize, color: dangerColor } : {};
+      const areaTextFailStyle = {
+        themeConfig: {
+          normal: {
+            ...areaTextFail,
+          },
+        },
+      };
+
       children = (
         <AreaView
-          themeProps={pictureTheme}
+          themeProps={areaTheme}
           disabled={disabled}
           onClick={handleClickToUpload}
           dragIn={dragIn}
@@ -1146,15 +1213,15 @@ class GetElement extends React.Component<DefProps, StateProps> {
             ? getIconByType(props, 'area-' + classNameStatus)
             : getIconByType(props, 'uploadcloud')}
           {classNameStatus === 'loading' ? (
-            <AreaText themeProps={pictureTheme}>{loadingTips}</AreaText>
+            <AreaText themeProps={areaTextFailStyle}>{loadingTips}</AreaText>
           ) : classNameStatus === 'fail' ? (
-            <AreaText themeProps={pictureTheme} disabled={disabled}>
+            <AreaText themeProps={areaTextFailStyle} disabled={disabled}>
               {failTips}
             </AreaText>
           ) : (
-            <AreaText themeProps={pictureTheme} disabled={disabled}>
+            <AreaText themeProps={areaTextFailStyle} disabled={disabled}>
               {uploadTips},或
-              <AreaTextBlue themeProps={pictureTheme} disabled={disabled}>
+              <AreaTextBlue themeProps={areaThemeProps} disabled={disabled}>
                 {uploadText}
               </AreaTextBlue>
             </AreaText>
