@@ -149,6 +149,20 @@ const horizontalData = [
   },
 ];
 
+const menuTheme = {
+  [Widget.NavMenu]: {
+    Tree: {
+      TreeItem: {
+        SelectedText: {
+          normal: {
+            background: { color: 'red' },
+          },
+        },
+      },
+    },
+  },
+};
+
 export default class LimitDemo extends React.Component<Object, Object> {
   all: boolean;
   constructor(props) {
@@ -200,7 +214,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
       <RowWrap>
         <RowWrapItem>
           <H1> themeStyle：light </H1>
-          <Navmenu data={data} inlineType={'ellipse'} />,
+          <Navmenu theme={menuTheme} data={data} inlineType={'ellipse'} />,
         </RowWrapItem>
         <RowWrapItem>
           <H1> themeStyle：dark </H1>

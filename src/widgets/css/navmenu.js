@@ -223,7 +223,7 @@ export const LightTabsMenuTheme = () => {
       MenuItemWrap: {
         hover: {
           background: {
-            color: 'none',
+            color: 'transparent',
           },
         },
       },
@@ -238,7 +238,7 @@ export const LightTabsMenuTheme = () => {
         MenuItemWrap: {
           hover: {
             background: {
-              color: 'none',
+              color: 'transparent',
             },
           },
         },
@@ -493,7 +493,7 @@ export const EllipseLightTheme = () => {
           color: defaultColor,
           font: { size: get('sectionFontSize') },
           background: {
-            image: `linear-gradient(to right, ${get('themeColor')}, ${get('themeHoverColor')})`,
+            color: get('themeColor'),
           },
           borderRadius: getBorderRadius(borderRadiusValue),
         },
@@ -504,7 +504,7 @@ export const EllipseLightTheme = () => {
           color: themeColor,
           font: { size: get('sectionFontSize') },
           background: {
-            image: 'none',
+            color: 'transparent',
           },
           borderRadius: getBorderRadius(0),
         },
@@ -704,7 +704,7 @@ export const EllipseDarkTheme = () => {
           color: defaultColor,
           font: { size: get('sectionFontSize') },
           background: {
-            image: `linear-gradient(to right, ${get('themeColor')}, ${get('themeHoverColor')})`,
+            color: get('themeColor'),
           },
           borderRadius: getBorderRadius(borderRadiusValue),
         },
@@ -718,7 +718,7 @@ export const EllipseDarkTheme = () => {
           color: defaultColor,
           font: { size: get('sectionFontSize') },
           background: {
-            image: 'none',
+            color: 'transparent',
           },
           borderRadius: getBorderRadius(0),
         },
@@ -788,7 +788,7 @@ export const LightMenuTheme = () => {
         },
         hover: {
           background: {
-            color: 'none',
+            color: 'transparent',
           },
           border: getBorder(
             { style: 'solid', color: superLightColor, width: 1 },
@@ -829,7 +829,7 @@ export const LightMenuTheme = () => {
         MenuItemWrap: {
           hover: {
             background: {
-              color: 'none',
+              color: 'transparent',
             },
           },
         },
