@@ -93,12 +93,10 @@ export default ThemeProvider(
         __lugiad__header__absolute__,
       } = this.props;
       const drawerWrapTheme = getPartOfThemeProps('Container');
-      if (type === 'Drawer') {
-        const { themeConfig } = drawerWrapTheme;
-        const defaultTheme =
-          placement === 'top' || placement === 'bottom' ? { width: '100%' } : { height: '100%' };
-        drawerWrapTheme.themeConfig.normal = deepMerge(themeConfig.normal, defaultTheme);
-      }
+      const { themeConfig } = drawerWrapTheme;
+      const defaultTheme =
+        placement === 'top' || placement === 'bottom' ? { width: '100%' } : { height: '100%' };
+      drawerWrapTheme.themeConfig.normal = deepMerge(themeConfig.normal, defaultTheme);
       const hasCloseIcon = closable || !maskClosable;
       const closeIcon = hasCloseIcon ? (
         <DrawerClose>
