@@ -78,7 +78,7 @@
         "orientation": "vertical"
       },
       "theme": {
-        "StepsOutContainer": {
+        "Container": {
           "name": "步骤条最外层容器",
           "desc": "步骤条最外层容器",
           "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
@@ -319,7 +319,7 @@
         "orientation": "horizontal"
       },
       "theme": {
-        "StepsOutContainer": {
+        "Container": {
           "name": "步骤条最外层容器",
           "desc": "步骤条最外层容器",
           "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
@@ -561,7 +561,7 @@
         "orientation": "horizontal"
       },
       "theme": {
-        "StepsOutContainer": {
+        "Container": {
           "name": "步骤条最外层容器",
           "desc": "步骤条最外层容器",
           "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
@@ -796,7 +796,7 @@
         "orientation": "horizontal"
       },
       "theme": {
-        "StepsOutContainer": {
+        "Container": {
           "name": "步骤条最外层容器",
           "desc": "步骤条最外层容器",
           "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
@@ -1019,7 +1019,7 @@
     }
   },
   "theme": {
-    "StepsOutContainer": {
+    "Container": {
       "name": "步骤条最外层容器",
       "desc": "步骤条最外层容器",
       "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
