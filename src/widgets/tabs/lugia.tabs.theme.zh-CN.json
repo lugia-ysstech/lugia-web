@@ -102,12 +102,26 @@
         "iconClass": "tabsBackground",
         "data": [
           {
+            "name": "整体背景",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体背景",
+                "desc": "整体背景"
+              }
+            }
+          },
+          {
             "name": "页签背景",
             "path": ["TitleContainer"],
             "description": {
               "appearancePart": {
                 "text": "页签背景",
                 "desc": "页签背景"
+              },
+              "textPart": {
+                "text": "页签对齐方式",
+                "desc": "页签对齐方式"
               }
             }
           },
@@ -118,6 +132,10 @@
               "appearancePart": {
                 "text": "内容区域",
                 "desc": "内容区域"
+              },
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
               }
             }
           }
@@ -287,12 +305,26 @@
         "iconClass": "tabsBackground",
         "data": [
           {
+            "name": "整体背景",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体背景",
+                "desc": "整体背景"
+              }
+            }
+          },
+          {
             "name": "页签背景",
             "path": ["TitleContainer"],
             "description": {
               "appearancePart": {
                 "text": "页签背景",
                 "desc": "页签背景"
+              },
+              "textPart": {
+                "text": "页签对齐方式",
+                "desc": "页签对齐方式"
               }
             }
           },
@@ -303,6 +335,10 @@
               "appearancePart": {
                 "text": "内容区域",
                 "desc": "内容区域"
+              },
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
               }
             }
           }
@@ -465,6 +501,16 @@
         "title": "页签背景/内容",
         "iconClass": "tabsBackground",
         "data": [
+          {
+            "name": "整体背景",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体背景",
+                "desc": "整体背景"
+              }
+            }
+          },
           {
             "name": "页签背景",
             "path": ["TitleContainer"],

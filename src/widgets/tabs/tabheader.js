@@ -240,7 +240,7 @@ const HTabsOutContainer = CSSComponent({
   tag: 'div',
   className: 'TitleContainer',
   normal: {
-    selectNames: [['width'], ['background'], ['textAlign'], ['height'], ['borderRadius']],
+    selectNames: [['width'], ['background'], ['textAlign']],
     getThemeMeta: (theme: Object, themeProps: Object) => {
       const { background = { color: '#fff' } } = theme;
       const { propsConfig: { tabType } = {} } = themeProps;
