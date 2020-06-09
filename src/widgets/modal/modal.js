@@ -22,6 +22,7 @@ import {
   ModalTitle,
   ModalWrap,
   Wrap,
+  ChildrenWrap,
 } from '../css/modal';
 import Button from '../button';
 import Icon from '../icon';
@@ -197,12 +198,9 @@ export default ThemeProvider(
             </ModalClose>
           ) : null}
           {title !== null && <ModalTitle themeProps={modalTitleTheme}>{title}</ModalTitle>}
-          {__lugiad__header__absolute__ ? (
-            children
-          ) : (
-            <ModalBody themeProps={modalBodyTextTheme}>{children}</ModalBody>
-          )}
-
+          <ModalBody themeProps={modalBodyTextTheme}>
+            {__lugiad__header__absolute__ ? <ChildrenWrap>{children}</ChildrenWrap> : children}
+          </ModalBody>
           {this.isInprops('footer') ? (
             footer
           ) : (
