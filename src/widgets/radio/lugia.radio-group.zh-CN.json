@@ -61,7 +61,7 @@
       "desc": "指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设"
     }
   },
-  "event": {
+  "events": {
     "onChange": {
       "desc": "Radio 改变时回调",
       "args": [
