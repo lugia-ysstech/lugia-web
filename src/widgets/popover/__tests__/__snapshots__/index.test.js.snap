@@ -18,7 +18,7 @@ exports[`popover Demo Component JSON 1`] = `
   position: relative;
   text-transform: none;
   outline: 0;
-  background-color: #ffffff;
+  background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -81,11 +81,6 @@ exports[`popover Demo Component JSON 1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
-  background-color: #ffffff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c6::-webkit-input-placeholder {
@@ -121,23 +116,7 @@ exports[`popover Demo Component JSON 1`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
-  background-color: #ffffff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
+  background-color: white;
 }
 
 .c0 {
@@ -886,6 +865,22 @@ exports[`popover Demo Component JSON 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
+          "borderBottomColor": "#cccccc",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#cccccc",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#cccccc",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#cccccc",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
           "height": "3.2rem",
         }
       }
@@ -909,6 +904,11 @@ exports[`popover Demo Component JSON 1`] = `
         size="default"
         style={
           Object {
+            "backgroundColor": "transparent",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
             "color": "#363B40",
             "fontSize": "1.4rem",
             "paddingBottom": "0rem",

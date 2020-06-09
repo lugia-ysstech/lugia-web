@@ -247,14 +247,14 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
           Container: {
             normal: {
               background: {
-                color: get('defaultColor'),
+                color: 'white',
               },
               padding: 12,
               fontSize: 12,
             },
             hover: {
               background: {
-                color: get('defaultColor'),
+                color: 'white',
               },
             },
           },

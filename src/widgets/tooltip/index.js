@@ -258,7 +258,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
         direction,
       },
     });
-    const defaultTheme = {
+    const defaultTheme = () => ({
       themeConfig: {
         normal: {
           borderRadius: getBorderRadius(borderRadiusValue),
@@ -266,9 +266,9 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
           boxShadow: get('normalBoxShadow'),
         },
       },
-    };
+    });
 
-    const childrenThemeProps = deepMerge(defaultTheme, contentThemeProps);
+    const childrenThemeProps = deepMerge(defaultTheme(), contentThemeProps);
     return (
       <Trigger
         themePass
