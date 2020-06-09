@@ -130,7 +130,14 @@ const OutContainer = CSSComponent({
   tag: 'div',
   className: 'OutContainer',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+    ],
   },
   disabled: {
     selectNames: [],
@@ -147,7 +154,14 @@ const VerticalOutContainer = CSSComponent({
   tag: 'div',
   className: 'VerticalOutContainer',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+    ],
   },
   disabled: {
     selectNames: [],
