@@ -121,6 +121,13 @@ class LabelDemo extends React.Component<PropsType, StateType> {
           <Label>这是一段很长很长的文本</Label>
         </Theme>
 
+        <br />
+        <br />
+        <LabelBox>无主题配置的 text: showPrefix : *</LabelBox>
+        <Label text={'这是一段文本'} showPrefix prefix={'*'} />
+        <br />
+        <br />
+
         <Theme config={config}>
           <LabelBox>主题配置 text: showPrefix : *</LabelBox>
           <Label text={'这是一段文本'} showPrefix prefix={'*'} />
