@@ -6297,7 +6297,7 @@ export default [
         },
       },
       theme: {
-        Divider: {
+        Container: {
           name: '水平分割线',
           desc: '分割线为水平类型时的配置',
           normal: [
@@ -18946,7 +18946,7 @@ export default [
         showHeader: { type: 'boolean', desc: '是否展示标头', defaultValue: true },
         title: { type: 'Function(currentPageData)', desc: '表格标题' },
         size: {
-          type: 'number',
+          type: 'SizeType',
           desc: '设置表格单元格大小，可选 default、large、small，默认为 default;',
           propsDefaultValue: 'default',
         },
@@ -18967,7 +18967,10 @@ export default [
           ],
         },
       },
-      type: { tableStyleType: ['zebraStripe', 'linear', 'bordered'] },
+      type: {
+        tableStyleType: ['zebraStripe', 'linear', 'bordered'],
+        SizeType: ['default', 'large', 'small'],
+      },
       childrenWidget: [],
       category: ['数据展示'],
       theme: {
