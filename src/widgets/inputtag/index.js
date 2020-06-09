@@ -481,13 +481,10 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   };
 
   getInputTagMenuTheme = () => {
-    const { getPartOfThemeConfig } = this.props;
-    const { normal = {} } = getPartOfThemeConfig('InputTagWrap');
-    const { width = 250 } = normal;
     const defaultMenuTheme = {
       Container: {
         normal: {
-          width,
+          width: this.container.offsetWidth,
         },
       },
       MenuItem: {
