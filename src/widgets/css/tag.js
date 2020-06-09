@@ -26,6 +26,7 @@ export function getPublicColor() {
 export const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const themeActiveColor = '$lugia-dict.@lugia/lugia-web.themeActiveColor';
 export const fontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+const descriptionFontSize = '$lugia-dict.@lugia/lugia-web.descriptionFontSize';
 
 type shapeType = 'basic' | 'round';
 type styleType = 'customs' | 'primary' | 'basic' | 'presets' | 'optional';
@@ -198,7 +199,13 @@ export const TagWrap = CSSComponent({
       ['font'],
       ['margin'],
       ['padding'],
+      ['fontSize'],
     ],
+    getThemeMeta() {
+      return {
+        fontSize: descriptionFontSize,
+      };
+    },
     getCSS: (themeMeta, themeProps) => {
       const { height, color: themeColor, background: themeBgColor } = themeMeta;
       const { propsConfig } = themeProps;
@@ -252,7 +259,6 @@ export const TagWrap = CSSComponent({
     display: inline-block;
     height: ${px2remcss(defaultHeight)};
     border-radius: ${getRadius};
-    font-size: 12px;
     cursor: pointer;
     overflow: hidden;
     user-select: none;
@@ -317,7 +323,13 @@ export const OptionalWrap = CSSComponent({
       ['font'],
       ['margin'],
       ['padding'],
+      ['fontSize'],
     ],
+    getThemeMeta() {
+      return {
+        fontSize: descriptionFontSize,
+      };
+    },
     getCSS: (themeMeta, themeProps) => {
       const {
         height,
@@ -387,7 +399,6 @@ export const OptionalWrap = CSSComponent({
     display: inline-block;
     height: ${px2remcss(defaultHeight)};
     border-radius: ${getRadius};
-    font-size: 12px;
     cursor: pointer;
     overflow: hidden;
     user-select: none;
