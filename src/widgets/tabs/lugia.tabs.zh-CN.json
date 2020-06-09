@@ -194,7 +194,14 @@
         "Container": {
           "name": "标签页整体配置",
           "desc": "标签页整体样式配置",
-          "normal": [["width"], ["height"]]
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"]
+          ]
         },
         "ContentBlock": {
           "name": "内容区域",
@@ -228,7 +235,7 @@
         "TitleContainer": {
           "name": "页签区域",
           "desc": "页签区域样式配置",
-          "normal": [["width"], ["background"], ["height"], ["borderRadius"]]
+          "normal": [["width"], ["background"]]
         },
         "BorderStyle": {
           "name": "默认线",
@@ -332,7 +339,14 @@
         "Container": {
           "name": "标签页整体配置",
           "desc": "标签页整体样式配置",
-          "normal": [["width"], ["height"]]
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"]
+          ]
         },
         "WindowContainer": {
           "name": "窗口背景区域",
@@ -459,7 +473,7 @@
     "Container": {
       "name": "标签页整体配置",
       "desc": "标签页整体样式配置",
-      "normal": [["width"], ["height"]]
+      "normal": [["width"], ["height"], ["background"], ["border"], ["borderRadius"], ["boxShadow"]]
     },
     "ContentBlock": {
       "name": "内容区域",
@@ -480,7 +494,7 @@
     "TitleContainer": {
       "name": "页签区域",
       "desc": "页签区域样式配置",
-      "normal": [["width"], ["background"], ["height"], ["borderRadius"]]
+      "normal": [["width"], ["background"]]
     },
     "BorderStyle": {
       "name": "默认线",
