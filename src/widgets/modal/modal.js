@@ -177,12 +177,7 @@ export default ThemeProvider(
       const modalTitleTheme = getPartOfThemeProps('ModalTitle');
       const modalBodyTextTheme = getPartOfThemeProps('ModalContentText');
       const modalContent = (
-        <ModalContent
-          showIcon={showIcon}
-          themeProps={modalWrapTheme}
-          __lugiad__header__absolute__={__lugiad__header__absolute__}
-          type={type}
-        >
+        <ModalContent showIcon={showIcon} themeProps={modalWrapTheme}>
           {showIcon ? (
             <Icon
               iconClass={iconClass || IconInfo[iconType].class}
