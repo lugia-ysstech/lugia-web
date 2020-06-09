@@ -32,7 +32,7 @@
       "defaultValue": "radio"
     }
   },
-  "event": {
+  "events": {
     "onChange": {
       "desc": "单选框改变时的回调",
       "args": [
