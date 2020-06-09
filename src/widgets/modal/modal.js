@@ -22,6 +22,7 @@ import {
   ModalTitle,
   ModalWrap,
   Wrap,
+  ChildrenWrap,
 } from '../css/modal';
 import Button from '../button';
 import Icon from '../icon';
@@ -179,6 +180,7 @@ export default ThemeProvider(
       };
       const modalTitleTheme = getPartOfThemeProps('ModalTitle');
       const modalBodyTextTheme = getPartOfThemeProps('ModalContentText');
+      const forMega = type === 'Modal' || __lugiad__header__absolute__;
       const modalContent = (
         <ModalContent showIcon={showIcon} themeProps={modalWrapTheme}>
           {showIcon ? (
@@ -197,12 +199,15 @@ export default ThemeProvider(
             </ModalClose>
           ) : null}
           {title !== null && <ModalTitle themeProps={modalTitleTheme}>{title}</ModalTitle>}
-          {__lugiad__header__absolute__ ? (
-            children
-          ) : (
-            <ModalBody themeProps={modalBodyTextTheme}>{children}</ModalBody>
-          )}
-
+          <ModalBody themeProps={modalBodyTextTheme}>
+            {forMega ? (
+              <ChildrenWrap __lugiad__header__absolute__={__lugiad__header__absolute__}>
+                {children}
+              </ChildrenWrap>
+            ) : (
+              children
+            )}
+          </ModalBody>
           {this.isInprops('footer') ? (
             footer
           ) : (
