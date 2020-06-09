@@ -180,6 +180,7 @@ export default class ModalDemo extends React.Component<any, any> {
           onCancel={this.buttonClick(4)}
           okButtonProps={{ type: 'success' }}
           cancelButtonProps={{ type: 'danger' }}
+          closable={true}
         >
           这是内容！
         </Modal>

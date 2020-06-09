@@ -51,6 +51,11 @@
       "type": "boolean",
       "desc": "点击蒙层是否允许关闭",
       "defaultValue": true
+    },
+    "closable": {
+      "type": "boolean",
+      "desc": "是否显示关闭按钮",
+      "defaultValue": true
     }
   },
   "events": {
