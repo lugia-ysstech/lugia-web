@@ -119,14 +119,14 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
           Container: {
             normal: {
               background: {
-                color: get('defaultColor'),
+                color: 'white',
               },
               padding: 8,
               fontSize: 12,
             },
             hover: {
               background: {
-                color: get('defaultColor'),
+                color: 'white',
               },
             },
           },
