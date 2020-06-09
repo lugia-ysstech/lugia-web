@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 export default () => {
   const view = {
     [Widget.Divider]: {
-      Divider: {
+      Container: {
         normal: {
           width: 400,
           height: 1,
@@ -29,7 +29,7 @@ export default () => {
   };
   const vertical = {
     [Widget.Divider]: {
-      Divider: {
+      Container: {
         normal: {
           width: 2,
           height: 10,
