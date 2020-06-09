@@ -189,13 +189,14 @@ export const ModalContent = CSSComponent({
     },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
-      const { showIcon } = propsConfig;
-      const defaultLeft = showIcon ? 50 : 30;
+      const { showIcon, __lugiad__header__absolute__, type } = propsConfig;
+      const paddingValue = __lugiad__header__absolute__ || type === 'Modal' ? 0 : 30;
+      const defaultLeft = showIcon ? 50 : paddingValue;
       return {
         padding: {
-          top: 30,
-          right: 30,
-          bottom: 30,
+          top: paddingValue,
+          right: paddingValue,
+          bottom: paddingValue,
           left: defaultLeft,
         },
       };
