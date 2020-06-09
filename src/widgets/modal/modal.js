@@ -158,6 +158,7 @@ export default ThemeProvider(
         iconClass,
         injectLugiad: { type } = {},
         __lugiad__header__absolute__ = false,
+        closable = true,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       const view = {
@@ -184,7 +185,7 @@ export default ThemeProvider(
               singleTheme
               {...this.getIconTheme()}
             />
-          ) : (
+          ) : closable ? (
             <ModalClose onClick={this.handleCancel}>
               <Icon
                 {...this.getCloseIconTheme()}
@@ -192,7 +193,7 @@ export default ThemeProvider(
                 singleTheme
               />
             </ModalClose>
-          )}
+          ) : null}
           {title !== null && <ModalTitle themeProps={modalTitleTheme}>{title}</ModalTitle>}
           {__lugiad__header__absolute__ ? (
             children
