@@ -80,7 +80,7 @@ export const IconWrap: Object = styled(Icon)`
   vertical-align: bottom !important;
 `;
 
-export const textStyle = {
+export const textStyle = () => ({
   normal: {
     color: blackColor,
     border: getBorder({ width: 1, style: 'solid', color: borderColor }),
@@ -97,7 +97,7 @@ export const textStyle = {
     border: getBorder({ width: 1, style: 'solid', color: themeActiveColor }),
     boxShadow: getBoxShadow('0 0 0 0 transparent'),
   },
-};
+});
 
 export const BackTop = StaticComponent({
   tag: 'div',
