@@ -6278,9 +6278,9 @@ export default [
           title: '垂直分割线',
           desc: '垂直分割线',
           props: { type: 'vertical' },
-          defaultTheme: { Divider: { normal: { width: 1, height: 200 } } },
+          defaultTheme: { Container: { normal: { width: 1, height: 200 } } },
           theme: {
-            Divider: {
+            Container: {
               name: '垂直分割线',
               desc: '分割线为垂直类型时的配置',
               normal: [
@@ -6311,7 +6311,7 @@ export default [
           ],
         },
       },
-      defaultTheme: { Divider: { normal: { width: 200, height: 1 } } },
+      defaultTheme: { Container: { normal: { width: 200, height: 1 } } },
       childrenWidget: [],
     },
     target: Divider,
@@ -6343,7 +6343,7 @@ export default [
       type: { DividerPosition: ['left', 'right'], DividerType: ['horizontal', 'vertical'] },
       category: ['其他'],
       theme: {
-        Divider: {
+        Container: {
           name: '垂直分割线',
           desc: '分割线为垂直类型时的配置',
           normal: [
@@ -6357,7 +6357,7 @@ export default [
           ],
         },
       },
-      defaultTheme: { Divider: { normal: { width: 1, height: 200 } } },
+      defaultTheme: { Container: { normal: { width: 1, height: 200 } } },
       childrenWidget: [],
       aliasName: 'VerticalDivider',
     },
@@ -8885,6 +8885,7 @@ export default [
         confirmLoading: { type: 'boolean', desc: '确定按钮是否 loading' },
         footer: { type: 'React.node', desc: '自定义底部内容，不需要底部内容可设置为 null' },
         maskClosable: { type: 'boolean', desc: '点击蒙层是否允许关闭', defaultValue: true },
+        closable: { type: 'boolean', desc: '是否显示关闭按钮', defaultValue: true },
       },
       events: {
         onOk: { desc: '点击确定时的回调', args: [] },
@@ -8985,6 +8986,7 @@ export default [
         confirmLoading: { type: 'boolean', desc: '确定按钮是否 loading' },
         footer: { type: 'React.node', desc: '自定义底部内容，不需要底部内容可设置为 null' },
         maskClosable: { type: 'boolean', desc: '点击蒙层是否允许关闭', defaultValue: true },
+        closable: { type: 'boolean', desc: '是否显示关闭按钮', defaultValue: true },
       },
       events: {
         onOk: { desc: '点击确定时的回调', args: [] },
