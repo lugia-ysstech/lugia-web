@@ -43,7 +43,7 @@
         "type": "vertical"
       },
       "defaultTheme": {
-        "Divider": {
+        "Container": {
           "normal": {
             "width": 1,
             "height": 200
@@ -51,7 +51,7 @@
         }
       },
       "theme": {
-        "Divider": {
+        "Container": {
           "name": "垂直分割线",
           "desc": "分割线为垂直类型时的配置",
           "normal": [
@@ -83,7 +83,7 @@
     }
   },
   "defaultTheme": {
-    "Divider": {
+    "Container": {
       "normal": {
         "width": 200,
         "height": 1

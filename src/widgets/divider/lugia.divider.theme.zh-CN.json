@@ -9,7 +9,7 @@
         "data": [
           {
             "name": "外观",
-            "path": ["Divider"],
+            "path": ["Container"],
             "description": {
               "appearancePart": {
                 "text": "外观",
@@ -32,7 +32,7 @@
         "data": [
           {
             "name": "外观",
-            "path": ["Divider"],
+            "path": ["Container"],
             "description": {
               "appearancePart": {
                 "text": "外观",

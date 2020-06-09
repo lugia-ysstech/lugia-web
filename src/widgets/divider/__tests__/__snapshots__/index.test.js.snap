@@ -10,7 +10,7 @@ exports[`Divider css 1`] = `
   min-width: 0.8rem;
 }
 
-.c7 {
+.c5 {
   display: inline-block;
   white-space: nowrap;
   vertical-align: middle;
@@ -30,8 +30,8 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  width: 50%;
-  border-top: 0.1rem solid #cccccc;
+  width: 40rem;
+  border-top: 0.1rem solid red;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -41,8 +41,8 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  width: 50%;
-  border-top: 0.1rem solid #cccccc;
+  width: 40rem;
+  border-top: 0.1rem solid red;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -59,8 +59,8 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  width: 50%;
-  border-top: 0.1rem dashed #cccccc;
+  width: 40rem;
+  border-top: 0.1rem dashed red;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -70,66 +70,8 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  width: 50%;
-  border-top: 0.1rem dashed #cccccc;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-}
-
-.c5 {
-  display: table;
-  white-space: nowrap;
-  text-align: center;
-  background: transparent;
-}
-
-.c5::before {
-  content: '';
-  display: table-cell;
-  position: relative;
-  width: 95%;
-  border-top: 0.1rem solid #cccccc;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-}
-
-.c5::after {
-  content: '';
-  display: table-cell;
-  position: relative;
-  width: 5%;
-  border-top: 0.1rem solid #cccccc;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-}
-
-.c6 {
-  display: table;
-  white-space: nowrap;
-  text-align: center;
-  background: transparent;
-}
-
-.c6::before {
-  content: '';
-  display: table-cell;
-  position: relative;
-  width: 5%;
-  border-top: 0.1rem solid #cccccc;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-}
-
-.c6::after {
-  content: '';
-  display: table-cell;
-  position: relative;
-  width: 95%;
-  border-top: 0.1rem solid #cccccc;
+  width: 40rem;
+  border-top: 0.1rem dashed red;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -158,7 +100,9 @@ exports[`Divider css 1`] = `
       className="c1"
       style={
         Object {
-          "width": "100%",
+          "backgroundColor": "red",
+          "height": "0.1rem",
+          "width": "40rem",
         }
       }
     />
@@ -168,7 +112,12 @@ exports[`Divider css 1`] = `
     <div
       className="c2"
       content="solid"
-      style={Object {}}
+      style={
+        Object {
+          "height": "0.1rem",
+          "width": "40rem",
+        }
+      }
     >
       <span
         className="c3"
@@ -183,7 +132,12 @@ exports[`Divider css 1`] = `
     <div
       className="c4"
       content="dashed"
-      style={Object {}}
+      style={
+        Object {
+          "height": "0.1rem",
+          "width": "40rem",
+        }
+      }
     >
       <span
         className="c3"
@@ -200,9 +154,14 @@ exports[`Divider css 1`] = `
       position left
     </p>
     <div
-      className="c5"
+      className="c2"
       content="position left"
-      style={Object {}}
+      style={
+        Object {
+          "height": "0.1rem",
+          "width": "40rem",
+        }
+      }
     >
       <span
         className="c3"
@@ -215,9 +174,14 @@ exports[`Divider css 1`] = `
       position right
     </p>
     <div
-      className="c6"
+      className="c2"
       content="position right"
-      style={Object {}}
+      style={
+        Object {
+          "height": "0.1rem",
+          "width": "40rem",
+        }
+      }
     >
       <span
         className="c3"
@@ -230,7 +194,9 @@ exports[`Divider css 1`] = `
       className="c1"
       style={
         Object {
-          "width": "100%",
+          "backgroundColor": "red",
+          "height": "0.1rem",
+          "width": "40rem",
         }
       }
     />
@@ -241,7 +207,9 @@ exports[`Divider css 1`] = `
       className="c1"
       style={
         Object {
-          "width": "100%",
+          "backgroundColor": "red",
+          "height": "0.1rem",
+          "width": "40rem",
         }
       }
     />
@@ -261,37 +229,61 @@ exports[`Divider css 1`] = `
     >
       text
       <div
-        className="c7"
+        className="c5"
         style={
           Object {
-            "height": "100%",
+            "backgroundColor": "blue",
+            "height": "1rem",
+            "marginBottom": "0rem",
+            "marginLeft": "0.5rem",
+            "marginRight": "0.5rem",
+            "marginTop": "0rem",
+            "width": "0.2rem",
           }
         }
       />
       text
       <div
-        className="c7"
+        className="c5"
         style={
           Object {
-            "height": "100%",
+            "backgroundColor": "blue",
+            "height": "1rem",
+            "marginBottom": "0rem",
+            "marginLeft": "0.5rem",
+            "marginRight": "0.5rem",
+            "marginTop": "0rem",
+            "width": "0.2rem",
           }
         }
       />
       text
       <div
-        className="c7"
+        className="c5"
         style={
           Object {
-            "height": "100%",
+            "backgroundColor": "blue",
+            "height": "1rem",
+            "marginBottom": "0rem",
+            "marginLeft": "0.5rem",
+            "marginRight": "0.5rem",
+            "marginTop": "0rem",
+            "width": "0.2rem",
           }
         }
       />
       text
       <div
-        className="c7"
+        className="c5"
         style={
           Object {
-            "height": "100%",
+            "backgroundColor": "blue",
+            "height": "1rem",
+            "marginBottom": "0rem",
+            "marginLeft": "0.5rem",
+            "marginRight": "0.5rem",
+            "marginTop": "0rem",
+            "width": "0.2rem",
           }
         }
       />
