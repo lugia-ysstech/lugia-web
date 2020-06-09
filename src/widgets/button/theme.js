@@ -45,6 +45,8 @@ const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 
 const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
 const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+const descriptionFontSize = '$lugia-dict.@lugia/lugia-web.descriptionFontSize';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
 
 const themeColorReduce0 = 'transparent';
 const successColorReduce0 = 'transparent';
@@ -237,7 +239,7 @@ export const shapeTheme = {
 };
 
 export const textDefaultTheme = {
-  font: { size: 14 },
+  font: { size: 20 },
 };
 export const textDefaultHoverTheme = {
   color: themeColor,
@@ -529,9 +531,9 @@ export const textPlainDisabledTypeTheme = {
 };
 
 export const textSizeTheme = {
-  large: { font: { size: 14 } },
-  default: { font: { size: 14 } },
-  small: { font: { size: 12 } },
+  large: { font: { size: sectionFontSize } },
+  default: { font: { size: sectionFontSize } },
+  small: { font: { size: descriptionFontSize } },
 };
 export const textCircleTheme = {
   large: { font: { size: 14 } },
