@@ -55,7 +55,7 @@ const config = {
   [Widget.Select]: {
     Container: {
       normal: {
-        width: 300,
+        width: '100%',
       },
     },
   },
@@ -124,7 +124,7 @@ export default class Demo extends React.Component {
           <H1>size={'small'} checkedCSS='background'</H1>
           <Select
             disabled={false}
-            defaultValue={['key-1', 'key-2']}
+            defaultValue={['key-1', 'key-2', 'key-3', 'key-4', 'key-5', 'key-6', 'key-7', 'key-8']}
             theme={config}
             createPortal
             placeholder={'请选择'}
