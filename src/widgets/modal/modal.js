@@ -180,7 +180,6 @@ export default ThemeProvider(
       };
       const modalTitleTheme = getPartOfThemeProps('ModalTitle');
       const modalBodyTextTheme = getPartOfThemeProps('ModalContentText');
-      const forMega = type === 'Modal' || __lugiad__header__absolute__;
       const modalContent = (
         <ModalContent showIcon={showIcon} themeProps={modalWrapTheme}>
           {showIcon ? (
@@ -200,13 +199,7 @@ export default ThemeProvider(
           ) : null}
           {title !== null && <ModalTitle themeProps={modalTitleTheme}>{title}</ModalTitle>}
           <ModalBody themeProps={modalBodyTextTheme}>
-            {forMega ? (
-              <ChildrenWrap __lugiad__header__absolute__={__lugiad__header__absolute__}>
-                {children}
-              </ChildrenWrap>
-            ) : (
-              children
-            )}
+            {__lugiad__header__absolute__ ? <ChildrenWrap>{children}</ChildrenWrap> : children}
           </ModalBody>
           {this.isInprops('footer') ? (
             footer

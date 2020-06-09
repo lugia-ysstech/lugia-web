@@ -152,11 +152,10 @@ export const ChildrenWrap = StaticComponent({
   tag: 'div',
   className: 'ChildrenWrap',
   css: css`
-    ${props => {
-      return props.__lugiad__header__absolute__
-        ? 'z-index: 4001;position: absolute;left: 0;top: 0;'
-        : '';
-    }}
+    z-index: 4001;
+    position: absolute;
+    left: 0;
+    top: 0;
   `,
 });
 export const Modal = CSSComponent({
