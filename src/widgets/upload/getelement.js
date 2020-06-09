@@ -164,6 +164,7 @@ const InputContent = CSSComponent({
       ['color'],
       ['padding'],
       ['fontSize'],
+      ['font'],
     ],
     getThemeMeta(themeMeta, themeProps) {
       return {
@@ -232,7 +233,15 @@ const Li = CSSComponent({
   tag: 'li',
   className: 'UploadLiType',
   normal: {
-    selectNames: [['fontSize'], ['color'], ['borderRadius'], ['border'], ['font'], ['background']],
+    selectNames: [
+      ['fontSize'],
+      ['color'],
+      ['borderRadius'],
+      ['border'],
+      ['font'],
+      ['background'],
+      ['font'],
+    ],
     defaultTheme: {
       color: darkGreyColor,
       cursor: 'pointer',
@@ -493,7 +502,7 @@ const AreaText = CSSComponent({
   tag: 'div',
   className: 'upload_AreaText',
   normal: {
-    selectNames: [['color'], ['fontSize']],
+    selectNames: [['color'], ['fontSize'], ['font']],
     defaultTheme: {
       color: darkGreyColor,
       fontSize: sectionFontSize,
@@ -516,7 +525,7 @@ const AreaTextBlue = CSSComponent({
   tag: 'span',
   className: 'upload_AreaRemindText',
   normal: {
-    selectNames: [['color'], ['border'], ['fontSize']],
+    selectNames: [['color'], ['border'], ['fontSize'], ['font']],
     getThemeMeta() {
       return {
         color: themeColor,
