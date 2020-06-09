@@ -160,7 +160,7 @@ class LineBox extends Component<DividerProps, any> {
     const { type, position, dashed, content, getPartOfThemeProps } = this.props;
 
     const hThemeProps = deepMerge(
-      getPartOfThemeProps(Divider),
+      getPartOfThemeProps('Divider'),
       getPartOfThemeProps('Container', {
         props: {
           dashed,
