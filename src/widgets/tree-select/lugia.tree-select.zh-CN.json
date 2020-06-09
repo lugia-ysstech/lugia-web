@@ -781,8 +781,7 @@
       "defaultTheme": {
         "Container": {
           "normal": {
-            "width": 250,
-            "height": 32
+            "width": 250
           }
         }
       }
@@ -1061,8 +1060,7 @@
   "defaultTheme": {
     "Container": {
       "normal": {
-        "width": 250,
-        "height": 32
+        "width": 250
       }
     }
   }
