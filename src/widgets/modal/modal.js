@@ -174,6 +174,8 @@ export default ThemeProvider(
       const modalWrapTheme = getPartOfThemeProps('Container');
       modalWrapTheme.propsConfig = {
         showIcon,
+        __lugiad__header__absolute__,
+        type,
       };
       const modalTitleTheme = getPartOfThemeProps('ModalTitle');
       const modalBodyTextTheme = getPartOfThemeProps('ModalContentText');
