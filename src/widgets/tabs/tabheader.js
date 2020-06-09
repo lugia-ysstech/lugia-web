@@ -25,6 +25,7 @@ const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const borderSize = '$lugia-dict.@lugia/lugia-web.borderSize';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
 
 const ArrowContainer = CSSComponent({
   tag: 'div',
@@ -239,7 +240,7 @@ const HTabsOutContainer = CSSComponent({
   tag: 'div',
   className: 'TitleContainer',
   normal: {
-    selectNames: [['width'], ['background'], ['textAlign']],
+    selectNames: [['width'], ['background'], ['textAlign'], ['height'], ['borderRadius']],
     getThemeMeta: (theme: Object, themeProps: Object) => {
       const { background = { color: '#fff' } } = theme;
       const { propsConfig: { tabType } = {} } = themeProps;
@@ -676,7 +677,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       [viewClass]: {
         normal: {
           color: mediumGreyColor,
-          fontSize: 14,
+          fontSize: xsFontSize,
         },
         hover: {
           color: darkGreyColor,
@@ -812,7 +813,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         [viewClass]: {
           normal: {
             color: mediumGreyColor,
-            fontSize: 12,
+            fontSize: xsFontSize,
           },
           hover: {
             color: darkGreyColor,
