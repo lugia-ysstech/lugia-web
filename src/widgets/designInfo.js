@@ -8961,7 +8961,7 @@ export default [
           normal: [['fontSize'], ['color']],
         },
       },
-      defaultTheme: { Container: { normal: { width: 520 } } },
+      defaultTheme: { Container: { normal: { width: 520, height: 70 } } },
       childrenWidget: [],
     },
     target: Modal,
@@ -9022,7 +9022,7 @@ export default [
           normal: [['fontSize'], ['color']],
         },
       },
-      defaultTheme: { Container: { normal: { width: 520 } } },
+      defaultTheme: { Container: { normal: { width: 520, height: 70 } } },
       childrenWidget: [],
       aliasName: 'blankModal',
     },
@@ -12836,7 +12836,7 @@ export default [
           defaultValue: 'radio',
         },
       },
-      event: {
+      events: {
         onChange: {
           desc: '单选框改变时的回调',
           args: [
@@ -12953,7 +12953,7 @@ export default [
           desc: '指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设',
         },
       },
-      event: {
+      events: {
         onChange: {
           desc: 'Radio 改变时回调',
           args: [
@@ -13111,7 +13111,7 @@ export default [
           desc: '指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设',
         },
       },
-      event: {
+      events: {
         onChange: {
           desc: 'Radio 改变时回调',
           args: [
@@ -25254,7 +25254,7 @@ export default [
               },
               ButtonText: { normal: { color: '#fff', fontSize: 12 } },
             },
-            UploadDefaultType: {
+            Container: {
               normal: {
                 width: 346,
                 height: 30,
@@ -25281,7 +25281,7 @@ export default [
         Container: {
           name: '文件上传区域',
           desc: '默认上传框的样式',
-          normal: [['width'], ['height'], ['boxShadow'], ['border']],
+          normal: [['width'], ['height'], ['boxShadow'], ['border'], ['padding']],
           hover: [['boxShadow'], ['border']],
           disabled: [['border'], ['cursor']],
         },
@@ -25308,7 +25308,7 @@ export default [
         },
       },
       defaultTheme: {
-        UploadDefaultType: {
+        Container: {
           normal: {
             width: 346,
             height: 30,
@@ -25952,7 +25952,7 @@ export default [
           },
           ButtonText: { normal: { color: '#fff', fontSize: 12 } },
         },
-        UploadDefaultType: {
+        Container: {
           normal: {
             width: 346,
             height: 30,
