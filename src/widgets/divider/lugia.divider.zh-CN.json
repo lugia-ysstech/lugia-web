@@ -68,7 +68,7 @@
     }
   },
   "theme": {
-    "Divider": {
+    "Container": {
       "name": "水平分割线",
       "desc": "分割线为水平类型时的配置",
       "normal": [
