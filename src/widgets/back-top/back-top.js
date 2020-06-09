@@ -139,7 +139,7 @@ export default ThemeProvider(
         const resultTextTheme = deepMerge(
           {
             themeConfig: {
-              ...textStyle,
+              ...textStyle(),
             },
           },
           containerTheme
