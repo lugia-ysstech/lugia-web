@@ -13,6 +13,8 @@ import CSSComponent, { css } from '../theme/CSSProvider';
 import StaticComponent from '../theme/CSSProvider';
 import get from '../css/theme-common-dict';
 import { units } from '@lugia/css';
+import { deepMerge } from '@lugia/object-utils';
+
 const { px2remcss } = units;
 const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const Divider = CSSComponent({
@@ -55,22 +57,9 @@ const Divider = CSSComponent({
       const {
         propsConfig: { type },
       } = themeProps;
-      const { width, height } = themeMeta;
-      const defaultWidth = 8;
-      const defaultHeight = 1;
-      let minWidth;
-      let minHeight;
-
-      if (type === 'vertical') {
-        minHeight = height ? height : defaultWidth;
-        minWidth = width ? width : defaultHeight;
-      } else {
-        minWidth = width ? width : defaultWidth;
-        minHeight = height ? height : defaultHeight;
-      }
+      const width = type === 'vertical' ? 1 : 8;
       return `
-       min-width: ${px2remcss(minWidth)};
-       min-height: ${px2remcss(minHeight)};
+       min-width: ${px2remcss(width)};
       `;
     },
   },
@@ -168,16 +157,19 @@ class LineBox extends Component<DividerProps, any> {
     return content ? <ChildText themeProps={themeProps}>{content}</ChildText> : null;
   }
   getDivider() {
-    const { type, position, dashed, content } = this.props;
+    const { type, position, dashed, content, getPartOfThemeProps } = this.props;
 
-    const hThemeProps = this.props.getPartOfThemeProps('Divider', {
-      props: {
-        dashed,
-        position,
-        content,
-        type,
-      },
-    });
+    const hThemeProps = deepMerge(
+      getPartOfThemeProps(Divider),
+      getPartOfThemeProps('Container', {
+        props: {
+          dashed,
+          position,
+          content,
+          type,
+        },
+      })
+    );
 
     if (position || content || dashed) {
       return (
