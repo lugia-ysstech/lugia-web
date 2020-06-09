@@ -148,6 +148,16 @@ export const ModalWrap = StaticComponent({
     z-index: 99999;
   `,
 });
+export const ChildrenWrap = StaticComponent({
+  tag: 'div',
+  className: 'ChildrenWrap',
+  css: css`
+    z-index: 4001;
+    position: absolute;
+    left: 0;
+    top: 0;
+  `,
+});
 export const Modal = CSSComponent({
   tag: 'div',
   className: 'Modal',
@@ -189,14 +199,13 @@ export const ModalContent = CSSComponent({
     },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
-      const { showIcon, __lugiad__header__absolute__, type } = propsConfig;
-      const paddingValue = __lugiad__header__absolute__ || type === 'Modal' ? 0 : 30;
-      const defaultLeft = showIcon ? 50 : paddingValue;
+      const { showIcon } = propsConfig;
+      const defaultLeft = showIcon ? 50 : 30;
       return {
         padding: {
-          top: paddingValue,
-          right: paddingValue,
-          bottom: paddingValue,
+          top: 30,
+          right: 30,
+          bottom: 30,
           left: defaultLeft,
         },
       };
