@@ -239,7 +239,7 @@ export const shapeTheme = {
 };
 
 export const textDefaultTheme = {
-  font: { size: 20 },
+  font: { size: 14 },
 };
 export const textDefaultHoverTheme = {
   color: themeColor,
