@@ -99,7 +99,7 @@
       "desc": "表格标题"
     },
     "size": {
-      "type": "number",
+      "type": "SizeType",
       "desc": "设置表格单元格大小，可选 default、large、small，默认为 default;",
       "propsDefaultValue": "default"
     },
@@ -145,7 +145,8 @@
     }
   },
   "type": {
-    "tableStyleType": ["zebraStripe", "linear", "bordered"]
+    "tableStyleType": ["zebraStripe", "linear", "bordered"],
+    "SizeType": ["default", "large", "small"]
   },
   "childrenWidget": ["column", "selectOptions"],
   "category": ["数据展示"],
