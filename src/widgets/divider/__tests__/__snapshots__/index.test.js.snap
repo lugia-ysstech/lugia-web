@@ -7,18 +7,16 @@ exports[`Divider css 1`] = `
   vertical-align: middle;
   position: relative;
   background-color: #cccccc;
-  min-width: 40rem;
-  min-height: 0.1rem;
+  min-width: 0.8rem;
 }
 
-.c5 {
+.c7 {
   display: inline-block;
   white-space: nowrap;
   vertical-align: middle;
   position: relative;
   background-color: #cccccc;
-  min-width: 0.2rem;
-  min-height: 1rem;
+  min-width: 0.1rem;
 }
 
 .c2 {
@@ -32,8 +30,8 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  width: 40rem;
-  border-top: 0.1rem solid red;
+  width: 50%;
+  border-top: 0.1rem solid #cccccc;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -43,8 +41,8 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  width: 40rem;
-  border-top: 0.1rem solid red;
+  width: 50%;
+  border-top: 0.1rem solid #cccccc;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -61,8 +59,8 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  width: 40rem;
-  border-top: 0.1rem dashed red;
+  width: 50%;
+  border-top: 0.1rem dashed #cccccc;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -72,8 +70,66 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  width: 40rem;
-  border-top: 0.1rem dashed red;
+  width: 50%;
+  border-top: 0.1rem dashed #cccccc;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+}
+
+.c5 {
+  display: table;
+  white-space: nowrap;
+  text-align: center;
+  background: transparent;
+}
+
+.c5::before {
+  content: '';
+  display: table-cell;
+  position: relative;
+  width: 95%;
+  border-top: 0.1rem solid #cccccc;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+}
+
+.c5::after {
+  content: '';
+  display: table-cell;
+  position: relative;
+  width: 5%;
+  border-top: 0.1rem solid #cccccc;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+}
+
+.c6 {
+  display: table;
+  white-space: nowrap;
+  text-align: center;
+  background: transparent;
+}
+
+.c6::before {
+  content: '';
+  display: table-cell;
+  position: relative;
+  width: 5%;
+  border-top: 0.1rem solid #cccccc;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+}
+
+.c6::after {
+  content: '';
+  display: table-cell;
+  position: relative;
+  width: 95%;
+  border-top: 0.1rem solid #cccccc;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -102,9 +158,7 @@ exports[`Divider css 1`] = `
       className="c1"
       style={
         Object {
-          "backgroundColor": "red",
-          "height": "0.1rem",
-          "width": "40rem",
+          "width": "100%",
         }
       }
     />
@@ -114,12 +168,7 @@ exports[`Divider css 1`] = `
     <div
       className="c2"
       content="solid"
-      style={
-        Object {
-          "height": "0.1rem",
-          "width": "40rem",
-        }
-      }
+      style={Object {}}
     >
       <span
         className="c3"
@@ -134,12 +183,7 @@ exports[`Divider css 1`] = `
     <div
       className="c4"
       content="dashed"
-      style={
-        Object {
-          "height": "0.1rem",
-          "width": "40rem",
-        }
-      }
+      style={Object {}}
     >
       <span
         className="c3"
@@ -156,14 +200,9 @@ exports[`Divider css 1`] = `
       position left
     </p>
     <div
-      className="c2"
+      className="c5"
       content="position left"
-      style={
-        Object {
-          "height": "0.1rem",
-          "width": "40rem",
-        }
-      }
+      style={Object {}}
     >
       <span
         className="c3"
@@ -176,14 +215,9 @@ exports[`Divider css 1`] = `
       position right
     </p>
     <div
-      className="c2"
+      className="c6"
       content="position right"
-      style={
-        Object {
-          "height": "0.1rem",
-          "width": "40rem",
-        }
-      }
+      style={Object {}}
     >
       <span
         className="c3"
@@ -196,9 +230,7 @@ exports[`Divider css 1`] = `
       className="c1"
       style={
         Object {
-          "backgroundColor": "red",
-          "height": "0.1rem",
-          "width": "40rem",
+          "width": "100%",
         }
       }
     />
@@ -209,9 +241,7 @@ exports[`Divider css 1`] = `
       className="c1"
       style={
         Object {
-          "backgroundColor": "red",
-          "height": "0.1rem",
-          "width": "40rem",
+          "width": "100%",
         }
       }
     />
@@ -231,61 +261,37 @@ exports[`Divider css 1`] = `
     >
       text
       <div
-        className="c5"
+        className="c7"
         style={
           Object {
-            "backgroundColor": "blue",
-            "height": "1rem",
-            "marginBottom": "0rem",
-            "marginLeft": "0.5rem",
-            "marginRight": "0.5rem",
-            "marginTop": "0rem",
-            "width": "0.2rem",
+            "height": "100%",
           }
         }
       />
       text
       <div
-        className="c5"
+        className="c7"
         style={
           Object {
-            "backgroundColor": "blue",
-            "height": "1rem",
-            "marginBottom": "0rem",
-            "marginLeft": "0.5rem",
-            "marginRight": "0.5rem",
-            "marginTop": "0rem",
-            "width": "0.2rem",
+            "height": "100%",
           }
         }
       />
       text
       <div
-        className="c5"
+        className="c7"
         style={
           Object {
-            "backgroundColor": "blue",
-            "height": "1rem",
-            "marginBottom": "0rem",
-            "marginLeft": "0.5rem",
-            "marginRight": "0.5rem",
-            "marginTop": "0rem",
-            "width": "0.2rem",
+            "height": "100%",
           }
         }
       />
       text
       <div
-        className="c5"
+        className="c7"
         style={
           Object {
-            "backgroundColor": "blue",
-            "height": "1rem",
-            "marginBottom": "0rem",
-            "marginLeft": "0.5rem",
-            "marginRight": "0.5rem",
-            "marginTop": "0rem",
-            "width": "0.2rem",
+            "height": "100%",
           }
         }
       />
