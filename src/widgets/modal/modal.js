@@ -248,7 +248,6 @@ export default ThemeProvider(
           ) : null}
           <ModalWrap>
             <Modal
-              tabIndex="1"
               ref={this.saveModalDom}
               closing={closing}
               opening={opening}
