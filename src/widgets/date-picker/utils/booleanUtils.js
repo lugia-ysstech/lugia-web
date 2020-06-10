@@ -83,7 +83,8 @@ export function modeStyle(mode: string): Object {
   };
 }
 export function getOpenProps(props) {
-  const { open } = props;
-  const hasOpenInProps = 'open' in props && open !== 'undefined' && open !== 'null';
-  return { hasOpenInProps, open };
+  const { alwaysOpen } = props;
+  const hasOpenInProps =
+    'alwaysOpen' in props && alwaysOpen !== 'undefined' && alwaysOpen !== 'null';
+  return { hasOpenInProps, alwaysOpen };
 }
