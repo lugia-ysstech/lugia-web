@@ -8911,6 +8911,10 @@ export default [
                 ['border'],
                 ['background'],
                 ['padding'],
+                ['minWidth'],
+                ['maxWidth'],
+                ['maxHeight'],
+                ['minHeight'],
               ],
             },
             ModalTitle: {
@@ -8944,6 +8948,10 @@ export default [
             ['border'],
             ['background'],
             ['padding'],
+            ['minWidth'],
+            ['maxWidth'],
+            ['maxHeight'],
+            ['minHeight'],
           ],
         },
         ModalTitle: {
@@ -9006,6 +9014,10 @@ export default [
             ['border'],
             ['background'],
             ['padding'],
+            ['minWidth'],
+            ['maxWidth'],
+            ['maxHeight'],
+            ['minHeight'],
           ],
         },
         ModalTitle: {
