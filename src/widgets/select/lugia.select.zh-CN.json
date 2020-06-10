@@ -287,7 +287,22 @@
             ["font"],
             ["opacity"]
           ],
-          "active": [],
+          "focus": [
+            ["color"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["borderRadius"],
+            ["opacity"]
+          ],
+          "active": [
+            ["color"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["borderRadius"],
+            ["opacity"]
+          ],
           "disabled": [
             ["width"],
             ["height"],
@@ -475,7 +490,6 @@
                   "name": "选中项的外盒",
                   "desc": "配置选中项的外盒",
                   "normal": [
-                    ["height"],
                     ["color"],
                     ["font"],
                     ["fontSize"],
@@ -681,7 +695,22 @@
         ["font"],
         ["opacity"]
       ],
-      "active": [],
+      "focus": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["opacity"]
+      ],
+      "active": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["opacity"]
+      ],
       "disabled": [
         ["width"],
         ["height"],
@@ -835,7 +864,6 @@
               "name": "选中项的外盒",
               "desc": "配置选中项的外盒",
               "normal": [
-                ["height"],
                 ["color"],
                 ["font"],
                 ["fontSize"],

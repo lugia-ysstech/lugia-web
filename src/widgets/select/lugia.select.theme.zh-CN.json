@@ -28,15 +28,13 @@
           {
             "name": "选择框整体配置",
             "path": ["Container"],
-
             "description": {
               "appearancePart": {
                 "text": "选择框",
                 "desc": "面板中外观配置的区块显示文本"
               },
               "textPart": {
-                "text": "默认文本",
-                "desc": "文本配置区块的显示文本"
+                "hidden": true
               }
             }
           },
@@ -180,6 +178,9 @@
                   "spacingPart": {
                     "text": "padding/margin",
                     "desc": "项的外盒内外边距配置区"
+                  },
+                  "textPart": {
+                    "hidden": true
                   }
                 }
               },
@@ -208,8 +209,8 @@
                     "desc": "文本配置区块的显示文本"
                   },
                   "textPart": {
-                    "text": "标题文本",
-                    "desc": "选中项辅助文本文本配置区"
+                    "text": "文本",
+                    "desc": "选中项文本配置区"
                   },
                   "spacingPart": {
                     "text": "padding/margin",
