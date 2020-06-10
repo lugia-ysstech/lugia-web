@@ -15,61 +15,34 @@ const Box = styled.div`
 `;
 
 const data = [
-  { key: '1', title: '1' },
-  { key: '1.1', title: '1.1', pid: '1', path: '1' },
-  { key: '1.1.1', title: '1.1.1', pid: '1.1', path: '1/1.1' },
-  { key: '1.1.1.1', title: '1.1.1.1', pid: '1.1.1', path: '1/1.1/1.1.1' },
-  {
-    key: '1.1.1.1.1',
-    title: '1.1.1.1.1',
-    pid: '1.1.1.1',
-    path: '1/1.1/1.1.1/1.1.1.1',
-    isLeaf: true,
-  },
-  { key: '1.2', title: '1.2', pid: '1', path: '1' },
-  { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true },
-  { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2' },
-  { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2' },
-  {
-    key: '1.2.2.1.1',
-    title: '1.2.2.1.1',
-    pid: '1.2.2.1',
-    path: '1/1.2/1.2.2/1.2.2.1',
-    isLeaf: true,
-  },
-  {
-    key: '1.2.2.1.2',
-    title: '1.2.2.1.2',
-    pid: '1.2.2.1',
-    path: '1/1.2/1.2.2/1.2.2.1',
-    isLeaf: true,
-  },
-  { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true },
+  { key: '1', title: '中国' },
+  { key: '1.1', title: '北京', pid: '1', path: '1' },
+  { key: '1.1.1', title: '昌平', pid: '1.1', path: '1/1.1' },
+  { key: '1.1.1.1', title: '海淀', pid: '1.1.1', path: '1/1.1/1.1.1', isLeaf: true },
 
-  { key: '1.3', title: '1.3', pid: '1', path: '1' },
-  { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3' },
-  { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
-  { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
-  { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3' },
-  { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
-  { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
-  { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true },
+  { key: '1.2', title: '山西', pid: '1', path: '1' },
+  { key: '1.2.1', title: '大同', pid: '1.2', path: '1/1.2', isLeaf: true },
+  { key: '1.2.2', title: '太原', pid: '1.2', path: '1/1.2' },
+  { key: '1.2.2.1', title: '迎泽街', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true },
 
-  { key: '2', title: '2' },
-  { key: '2.1', title: '2.1', pid: '2', path: '2' },
-  { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true },
-  { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1' },
-  { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true },
-  { key: '2.2', title: '2.2', pid: '2', path: '2' },
-  { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2' },
-  { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
-  { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
-  { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true },
+  { key: '1.3', title: '上海', pid: '1', path: '1' },
+  { key: '1.3.1', title: '外滩', pid: '1.3', path: '1/1.3' },
+  { key: '1.3.1.1', title: '外滩海边', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
+  { key: '1.3.1.2', title: '外滩小区', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
+  { key: '1.3.2', title: '黄浦区', pid: '1.3', path: '1/1.3' },
+  { key: '1.3.2.1', title: '海宁路', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
+  { key: '1.3.2.2', title: '延安路', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
+  { key: '1.3.3', title: '长宁区', pid: '1.3', path: '1/1.3', isLeaf: true },
 
-  { key: '3', title: '3' },
-  { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true },
-  { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true },
-  { key: '4', title: '4', isLeaf: true },
+  { key: '2', title: '朝鲜' },
+  { key: '2.1', title: '平壤', pid: '2', path: '2' },
+  { key: '2.1.2', title: '平壤街道', pid: '2.1', path: '2/2.1', isLeaf: true },
+
+  { key: '3', title: '韩国' },
+  { key: '3.1', title: '首尔', pid: '3', path: '3', isLeaf: true },
+  { key: '3.2', title: '釜山', pid: '3', path: '3', isLeaf: true },
+
+  { key: '4', title: '日本', isLeaf: true },
 ];
 
 const info = [
@@ -79,7 +52,7 @@ const info = [
 
     children: [
       // { value: '0-1-0', text: '朝阳支行办事处-1' },
-      { value: '0-1-1', text: '朝阳支行办事处-2', children: [{ value: '0-111', text: '123' }] },
+      { value: '0-1', text: '朝阳支行办事处-2', children: [{ value: '0-111', text: '123' }] },
       {
         value: '0-2',
         text: '海淀支行办事处',
@@ -90,14 +63,13 @@ const info = [
           suffixIconSrc: '',
         },
       },
-      { value: '0-3', text: '石景山支行办事处' },
     ],
   },
-  { value: '0-3', text: '石景山支行办事处' },
-  { value: '0-4', text: '石景山支行办事处' },
-  { value: '0-5', text: '石景山支行办事处' },
-  { value: '0-6', text: '石景山支行办事处' },
-  { value: '0-7', text: '石景山支行办事处' },
+  { value: '0-3', text: '天津分行' },
+  { value: '0-4', text: '山西分行' },
+  { value: '0-5', text: '上海分行' },
+  { value: '0-6', text: '汉南分行' },
+  { value: '0-7', text: '河南分行' },
 ];
 
 const theme = {
@@ -105,7 +77,7 @@ const theme = {
     Tree: {
       Container: {
         normal: {
-          width: 202,
+          width: 600,
           height: 224,
           background: { color: '#fff' },
           boxShadow: getBoxShadow('0 0 6px 0 rgba(0,0,0,0.20)'),
@@ -168,7 +140,7 @@ const theme = {
 
     Container: {
       normal: {
-        width: 202,
+        width: 400,
         height: 28,
         padding: {
           left: 10,
@@ -211,6 +183,14 @@ const iconConfig = {
 };
 
 export default class DefaultTreeSelect extends React.Component<any, any> {
+  constructor(props: TreeSelectProps) {
+    super(props);
+    this.state = {
+      value1: ['1'],
+      value: ['0-3', '0-2', '0-4'],
+    };
+  }
+
   renderSuffix = item => {
     const { isLeaf } = item;
     if (isLeaf) {
@@ -218,13 +198,25 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
     }
   };
   render() {
-    return (
+    return [
       <Box>
         <TreeSelect
           theme={theme}
+          // valueField={'key'}
+          // displayField={'title'}
+          value={this.state.value1}
+          pathSeparator={'/'}
           data={info}
           translateTreeData
           onlySelectLeaf
+          onSelect={obj => {
+            console.log('onSelect=====>', obj);
+          }}
+          onChange={obj => {
+            console.log('=====>', obj);
+            const { newValue } = obj;
+            this.setState({ value1: newValue });
+          }}
           expandAll
           autoHeight
           pullIconClass="lugia-icon-direction_caret_down"
@@ -232,7 +224,31 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
           // autoHeight
           // mutliple
         />
-      </Box>
-    );
+      </Box>,
+      <Box>
+        <TreeSelect
+          theme={theme}
+          valueField={'key'}
+          displayField={'title'}
+          value={this.state.value}
+          pathSeparator={'/'}
+          data={data}
+          onlySelectLeaf={true}
+          onSelect={obj => {
+            console.log('onSelect=====>', obj);
+          }}
+          onChange={obj => {
+            console.log('onChange=====>', obj);
+            const { newValue } = obj;
+            this.setState({ value: newValue });
+          }}
+          expandAll
+          autoHeight
+          pullIconClass="lugia-icon-direction_caret_down"
+          renderSuffixItems={this.renderSuffix}
+          mutliple
+        />
+      </Box>,
+    ];
   }
 }
