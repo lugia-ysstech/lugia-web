@@ -12,7 +12,7 @@ exports[`Upload Test css 1`] = `
 
 .c4.right {
   position: absolute;
-  right: 8px;
+  right: 10px;
   top: 50%;
   -webkit-transform: translate(0,-50%);
   -ms-transform: translate(0,-50%);
@@ -34,6 +34,7 @@ exports[`Upload Test css 1`] = `
 .c4.loading {
   -webkit-animation: iECmZH 0.8s linear infinite;
   animation: iECmZH 0.8s linear infinite;
+  margin: 0 10px 0 0;
 }
 
 .c2 {
