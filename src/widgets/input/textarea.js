@@ -37,12 +37,14 @@ const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const xxsFontSize = '$lugia-dict.@lugia/lugia-web.xxsFontSize';
 
+const getSize = size => {
+  return ObjectUtils.isNumber(size) ? px2remcss(size) : checkIsPercent(size) ? '100%' : size;
+};
 const Textarea = CSSComponent({
   tag: 'textarea',
   className: 'Textarea',
   normal: {
     selectNames: [
-      ['height'],
       ['fontSize'],
       ['font'],
       ['color'],
@@ -67,17 +69,18 @@ const Textarea = CSSComponent({
           resizeType,
         },
       } = themeProps;
-      const { width } = themeMeta;
+      const { width, height } = themeMeta;
       const theColor = color ? color : placeHolderColor;
       const theSize = size || placeHolderFontSize || xxsFontSize;
-      let theWidth = ObjectUtils.isNumber(width) ? px2remcss(width) : width;
+      const theWidth = getSize(width);
+      const theHeight = getSize(height);
       let theResizeType = resizeType;
-      if (checkIsPercent(width)) {
-        theWidth = '100%';
+      if (checkIsPercent(width) || checkIsPercent(height)) {
         theResizeType = 'none';
       }
       return css`
         width: ${theWidth};
+        height: ${theHeight};
         resize: ${theResizeType};
         &::placeholder {
           color: ${theColor};
@@ -142,9 +145,10 @@ const TextareaContainer = CSSComponent({
   normal: {
     selectNames: [['margin']],
     getCSS(themeMeta: Object, themeProps: Object) {
-      const { width } = themeMeta;
+      const { width, height } = themeMeta;
       const theWidth = checkIsPercent(width) ? width : '';
-      return `width:${theWidth};`;
+      const theHeight = checkIsPercent(height) ? height : '';
+      return `width:${theWidth};height:${theHeight};`;
     },
   },
   hover: {
