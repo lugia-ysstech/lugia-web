@@ -15,7 +15,6 @@ const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
 const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
 const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
-const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 describe('stepsDemo', () => {
   it('Component JSON', () => {
@@ -59,10 +58,7 @@ describe('stepsDemo', () => {
       expect(getStepBackgroundColor(props)).toBe(exceptColor);
     });
   }
-  testGetStepBackgroundColor({ stepStatus: 'finish', stepType: 'simple' }, defaultColor);
   testGetStepBackgroundColor({ stepStatus: 'finish', stepType: 'flat' }, themeHoverColor);
   testGetStepBackgroundColor({ stepStatus: 'process', stepType: 'flat' }, themeHoverColor);
-  testGetStepBackgroundColor({ stepStatus: 'next', stepType: 'simple' }, defaultColor);
   testGetStepBackgroundColor({ stepStatus: 'error', stepType: 'flat' }, dangerColor);
-  testGetStepBackgroundColor({ stepStatus: 'error', stepType: 'simple' }, defaultColor);
 });
