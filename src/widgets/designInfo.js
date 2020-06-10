@@ -638,7 +638,7 @@ export default [
           },
         },
       },
-      defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+      defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
     },
     target: AutoComplete,
@@ -4010,7 +4010,7 @@ export default [
           },
         },
       },
-      defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+      defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
     },
     target: Cascader,
@@ -14071,7 +14071,7 @@ export default [
               },
             },
           },
-          defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+          defaultTheme: { Container: { normal: { width: 250 } } },
         },
       },
       theme: {
@@ -14371,7 +14371,7 @@ export default [
           },
         },
       },
-      defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+      defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
     },
     target: Select,
@@ -14857,7 +14857,7 @@ export default [
           },
         },
       },
-      defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+      defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
       aliasName: 'MutlipleSelect',
     },
@@ -19144,7 +19144,14 @@ export default [
             Container: {
               name: '标签页整体配置',
               desc: '标签页整体样式配置',
-              normal: [['width'], ['height']],
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+              ],
             },
             ContentBlock: {
               name: '内容区域',
@@ -19274,7 +19281,14 @@ export default [
             Container: {
               name: '标签页整体配置',
               desc: '标签页整体样式配置',
-              normal: [['width'], ['height']],
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+              ],
             },
             WindowContainer: {
               name: '窗口背景区域',
@@ -19395,7 +19409,14 @@ export default [
         Container: {
           name: '标签页整体配置',
           desc: '标签页整体样式配置',
-          normal: [['width'], ['height']],
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+          ],
         },
         ContentBlock: {
           name: '内容区域',
@@ -19422,6 +19443,13 @@ export default [
           name: '默认线',
           desc: '默认线样式配置',
           normal: [['background'], ['width']],
+        },
+        AddButton: {
+          name: '新增按钮',
+          desc: '新增按钮样式配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
         },
         ArrowIcon: {
           name: '翻页按钮',
@@ -19666,7 +19694,14 @@ export default [
         Container: {
           name: '标签页整体配置',
           desc: '标签页整体样式配置',
-          normal: [['width'], ['height']],
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+          ],
         },
         ContentBlock: {
           name: '内容区域',
@@ -19934,7 +19969,14 @@ export default [
         Container: {
           name: '标签页整体配置',
           desc: '标签页整体样式配置',
-          normal: [['width'], ['height']],
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+          ],
         },
         WindowContainer: {
           name: '窗口背景区域',
@@ -23995,7 +24037,7 @@ export default [
               },
             },
           },
-          defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+          defaultTheme: { Container: { normal: { width: 250 } } },
         },
       },
       theme: {
@@ -24278,7 +24320,7 @@ export default [
           },
         },
       },
-      defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+      defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
     },
     target: TreeSelect,
@@ -24904,7 +24946,7 @@ export default [
           },
         },
       },
-      defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+      defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
       aliasName: 'MutlipleTreeSelect',
     },
