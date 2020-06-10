@@ -21,6 +21,7 @@ const { px2remcss } = units;
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const paddingToText = '$lugia-dict.@lugia/lugia-web.paddingToText';
 
 const checkSizeIsNumber = size => {
   let theSize = size;
@@ -393,13 +394,6 @@ const TitleBottomLine = CSSComponent({
     defaultTheme: {
       height: 1,
       width: '100%',
-      border: {
-        bottom: {
-          style: 'solid',
-          width: 1,
-          color: get('borderColor'),
-        },
-      },
       margin: {
         top: 10,
       },
@@ -556,8 +550,28 @@ class Card extends React.Component<CardProps, CardState> {
 
   getTitleBottomLine() {
     const { showTipBottomLine } = this.props;
+    const defaultTheme = () => ({
+      themeConfig: {
+        normal: {
+          border: {
+            bottom: {
+              style: 'solid',
+              width: 1,
+              color: get('borderColor'),
+            },
+          },
+        },
+      },
+    });
     if (showTipBottomLine) {
-      return <TitleBottomLine themeProps={this.props.getPartOfThemeProps('CardTipBottomLine')} />;
+      return (
+        <TitleBottomLine
+          themeProps={deepMerge(
+            defaultTheme(),
+            this.props.getPartOfThemeProps('CardTipBottomLine')
+          )}
+        />
+      );
     }
   }
 
@@ -602,7 +616,7 @@ class Card extends React.Component<CardProps, CardState> {
           break;
         case 'title':
         default:
-          left = 12;
+          left = paddingToText;
           break;
       }
     } else {
