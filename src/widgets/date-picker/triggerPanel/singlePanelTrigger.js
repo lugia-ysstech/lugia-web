@@ -5,13 +5,14 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import Input from '../../input';
+import Trigger from '../../trigger/OpenTrigger';
 import PageFooter from '../panel/PageFooter';
 import { getDerivedForInput } from '../utils/getDerived';
 import SwitchPanel from '../switchPanel/SwitchPanel';
 import { getValueFromWeekToDate } from '../utils/differUtils';
 import { getformatSymbol, getNewProps } from '../utils/utils';
 import { formatValueIsValid, modeStyle, getOpenProps } from '../utils/booleanUtils';
-import { PanelWrap, TriggerWrap, Box } from '../styled/styled';
+import { PanelWrap, Box } from '../styled/styled';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 import SwitchPanelMode from '../mode';
@@ -42,6 +43,7 @@ type TypeProps = {
   onDocumentClick?: Function,
   size?: string,
   liquidLayout?: boolean,
+  alwaysOpen?: boolean,
 };
 type TypeState = {
   value: string,
@@ -112,6 +114,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       createPortal,
       size,
       liquidLayout,
+      alwaysOpen,
     } = this.props;
     const {
       value,
@@ -124,7 +127,6 @@ class DateInput extends Component<TypeProps, TypeState> {
       isStartOfWeek,
       visible,
     } = this.state;
-    const { hasOpenInProps, open } = getOpenProps(this.props);
     const hasStateValue = value ? true : false;
     const showTimeBtnIsDisabled = valueIsValid ? true : false;
     const { oldValue } = this;
@@ -156,6 +158,8 @@ class DateInput extends Component<TypeProps, TypeState> {
       getPartOfThemeProps,
     });
     const { normal = {} } = themeConfig;
+    console.log('liquidLayout-date', liquidLayout);
+    console.log('alwaysOpen-date', alwaysOpen);
     return (
       <Theme
         config={{
@@ -180,12 +184,13 @@ class DateInput extends Component<TypeProps, TypeState> {
         }}
       >
         <Box themeProps={inputContainProps}>
-          <TriggerWrap
-            liquidLayout={liquidLayout}
+          <Trigger
             themePass
-            createPortal={liquidLayout ? false : createPortal}
+            createPortal={createPortal}
             onDocumentClick={this.onDocumentClick}
-            popupVisible={hasOpenInProps ? open : visible}
+            popupVisible={visible}
+            alwaysOpen={alwaysOpen}
+            liquidLayout={liquidLayout}
             popup={
               <React.Fragment>
                 <PanelWrap themeProps={themeProps} {...addMouseEvent(this)}>
@@ -225,8 +230,8 @@ class DateInput extends Component<TypeProps, TypeState> {
             align="bottomLeft"
             key="trigger"
             ref={this.trigger}
-            action={disabled || readOnly || this.isClear || hasOpenInProps ? [] : ['click']}
-            hideAction={hasOpenInProps ? [] : ['click']}
+            action={disabled || readOnly || this.isClear || ['click']}
+            hideAction={['click']}
           >
             <Input
               {...prefixIcon}
@@ -245,7 +250,7 @@ class DateInput extends Component<TypeProps, TypeState> {
               help={help}
               size={size}
             />
-          </TriggerWrap>
+          </Trigger>
         </Box>
       </Theme>
     );
