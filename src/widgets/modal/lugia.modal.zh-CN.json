@@ -87,7 +87,11 @@
             ["borderRadius"],
             ["border"],
             ["background"],
-            ["padding"]
+            ["padding"],
+            ["minWidth"],
+            ["maxWidth"],
+            ["maxHeight"],
+            ["minHeight"]
           ]
         },
         "ModalTitle": {
@@ -120,7 +124,11 @@
         ["borderRadius"],
         ["border"],
         ["background"],
-        ["padding"]
+        ["padding"],
+        ["minWidth"],
+        ["maxWidth"],
+        ["maxHeight"],
+        ["minHeight"]
       ]
     },
     "ModalTitle": {
