@@ -167,7 +167,7 @@ export const Modal = CSSComponent({
     ${getAnimate};
   `,
   normal: {
-    selectNames: [['width']],
+    selectNames: [['width'], ['height'], ['minWidth'], ['maxWidth'], ['maxHeight'], ['minHeight']],
   },
 });
 export const ModalContent = CSSComponent({
@@ -190,6 +190,10 @@ export const ModalContent = CSSComponent({
       ['border'],
       ['background'],
       ['padding'],
+      ['minWidth'],
+      ['maxWidth'],
+      ['maxHeight'],
+      ['minHeight'],
     ],
     defaultTheme: {
       background: { color: '#fff' },
