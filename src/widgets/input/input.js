@@ -41,15 +41,7 @@ const CommonInputStyle = CSSComponent({
   tag: 'input',
   className: 'InnerInput',
   normal: {
-    selectNames: [
-      ['fontSize'],
-      ['font'],
-      ['color'],
-      ['cursor'],
-      ['padding'],
-      ['borderRadius'],
-      ['background'],
-    ],
+    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['padding'], ['borderRadius']],
     defaultTheme: {
       cursor: 'text',
     },
@@ -88,7 +80,6 @@ const CommonInputStyle = CSSComponent({
           left: paddingLeft,
           right: paddingRight,
         },
-        background: { color: 'transparent' },
       };
     },
   },
@@ -108,6 +99,7 @@ const CommonInputStyle = CSSComponent({
     },
   },
   css: css`
+    background-color: transparent;
     box-sizing: border-box;
     font-family: inherit;
     transition: all ${transitionTime};
