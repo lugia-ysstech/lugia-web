@@ -23,6 +23,7 @@ import { getInputtagThemeHoc } from '../select/utils';
 import { PopupMenuWrap, getDefaultPopupMenuWrap } from '../css/select';
 import changeColor from '../css/utilsColor';
 import get from '../css/theme-common-dict';
+import { getTreeData } from '../menu/utils';
 
 type ValidateStatus = 'success' | 'error';
 
@@ -139,6 +140,21 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.inputTag = React.createRef();
   }
 
+  getDisplayValue = value => {
+    const { pathSeparator, displayField, valueField, data, translateTreeData } = this.props;
+    const translateData = translateTreeData ? getTreeData(this.props, pathSeparator) : data;
+    return value.map(item => {
+      let tem = item;
+      for (let i = 0; i < translateData.length; i++) {
+        if (translateData[i][valueField] === item) {
+          tem = translateData[i][displayField];
+          break;
+        }
+      }
+      return tem;
+    });
+  };
+
   //TODO:受限问题
   //TODO: 放到Table元素中半选状态的样式问题
   //TODO: 选中结点时如果子节点特备多的时候性能有问题。
@@ -146,7 +162,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { value, displayValue } = Support.getCodeItemArray(props);
     return {
       value,
-      displayValue: displayValue && displayValue.length > 0 ? displayValue : [...value],
+      displayValue:
+        displayValue && displayValue.length > 0
+          ? this.getDisplayValue(displayValue)
+          : this.getDisplayValue([...value]),
     };
   }
 
@@ -512,19 +531,37 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.setState({ selectAll: this.isSelectAll() });
   }
 
-  getItems = (value: string[]) => {
-    const length = value.length;
-
-    if (length === 0) {
+  getItems = (value: string[] = []) => {
+    if (value && value.length && value.length === 0) {
       return [];
     }
-
     const { data = [], valueField } = this.props;
-
-    return data.filter(item => {
-      const key = item[valueField];
-      return value.indexOf(key) !== -1;
-    });
+    function getItemsByValues(findValues = [], findFromSource, option, findResult = []) {
+      const { findKeyValue } = option;
+      const remainderValue = [...findValues];
+      const resultItems = findResult;
+      if (remainderValue.length === 0 || findFromSource.length <= 0) {
+        return [];
+      }
+      for (let i = 0; i < findFromSource.length; i++) {
+        const temItem = findFromSource[i];
+        const index = remainderValue.indexOf(temItem[findKeyValue]);
+        if (index > -1) {
+          remainderValue.slice(index);
+          resultItems.push(temItem);
+        }
+        if (temItem.children && temItem.children.length > 0) {
+          getItemsByValues(
+            remainderValue,
+            temItem.children,
+            { findKeyValue: valueField },
+            resultItems
+          );
+        }
+      }
+      return resultItems;
+    }
+    return getItemsByValues(value, data, { findKeyValue: valueField });
   };
 
   expandOnSelect = (value: string[], displayValue: string[]) => {
