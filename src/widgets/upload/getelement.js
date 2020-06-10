@@ -651,7 +651,7 @@ export const getIconByType = (
               display: inline-block;
               &.right {
                 position: absolute;
-                right: 8px;
+                right: ${get('padding')}px;
                 top: 50%;
                 transform: translate(0, -50%);
               }
@@ -666,6 +666,7 @@ export const getIconByType = (
               }
               &.loading {
                 animation: ${load} 0.8s linear infinite;
+                margin: 0 ${get('padding')}px 0 0;
               }
             `;
           },
