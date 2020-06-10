@@ -270,14 +270,19 @@ const verticalCommonProperty = `
   top:calc(50% - 24px);
 `;
 const getHandleWidthOrHeightByDirection = (props: CSSProps) => {
-  const { placement } = props;
+  const { visible, placement } = props;
+  const absolutePosition = visible ? '-16px' : '-24px';
   if (placement === 'top' || placement === 'bottom') {
+    const isLocateTop = placement === 'top';
     return `
-      ${placement === 'top' ? 'bottom' : 'top'}: -16px; ${horizontalCommonProperty}
+      ${isLocateTop ? 'bottom' : 'top'}: ${absolutePosition}; ${horizontalCommonProperty};
+      border-radius: ${isLocateTop ? '0 0 3px 3px' : '3px 3px 0 0'}
     `;
   }
+  const isLoacteRight = placement === 'right';
   return `
-    ${placement === 'right' ? 'left' : 'right'}: -16px; ${verticalCommonProperty}
+    ${isLoacteRight ? 'left' : 'right'}: ${absolutePosition}; ${verticalCommonProperty}
+    border-radius: ${isLoacteRight ? '3px 0 0 3px' : '0 3px 3px 0'}
   `;
 };
 export const HandleWrap = CSSComponent({
@@ -286,7 +291,6 @@ export const HandleWrap = CSSComponent({
   css: css`
     position: absolute;
     ${getHandleWidthOrHeightByDirection}
-    z-index: 999;
     background: #fff;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
     display: flex;
