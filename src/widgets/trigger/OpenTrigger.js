@@ -8,10 +8,11 @@ import React from 'react';
 import Trigger from './index';
 type TypeProps = {
   alwaysOpen?: boolean,
-  popupVisible?: boolean,
+  liquidLayout?: boolean,
 };
 export default function OpenTrigger(props: TypeProps) {
-  const { alwaysOpen } = props;
+  const { alwaysOpen, liquidLayout } = props;
   const newPopupVisible = alwaysOpen ? { popupVisible: true } : {};
-  return <Trigger {...props} {...newPopupVisible} alwaysOpen={alwaysOpen} />;
+  const newCreatePortal = liquidLayout ? { createPortal: false } : {};
+  return <Trigger {...props} {...newPopupVisible} {...newCreatePortal} />;
 }

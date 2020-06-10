@@ -74,7 +74,7 @@ type TriggerProps = {
   align: string,
   offsetX?: number,
   offsetY?: number,
-  alwaysOpen?: boolean,
+  liquidLayout?: boolean,
   onDocumentClick?: Function,
 };
 type TriggerState = {
@@ -156,7 +156,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   getComponent() {
     const { props, state } = this;
-    const { onPopupAlign, popup, offsetX, offsetY, alwaysOpen } = props;
+    const { onPopupAlign, popup, offsetX, offsetY, liquidLayout } = props;
     const { destroyPopupOnHide, mask, zIndex, align, getTheme, className } = props;
     const mouseProps = {};
     if (this.isMouseEnterToShow()) {
@@ -181,7 +181,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
         getRootDomNode={this.getRootDomNode}
         isMask={mask}
         zIndex={zIndex}
-        alwaysOpen={alwaysOpen}
+        liquidLayout={liquidLayout}
       >
         {typeof popup === 'function' ? popup() : popup}
       </Popup>
