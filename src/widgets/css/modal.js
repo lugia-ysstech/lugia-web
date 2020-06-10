@@ -154,6 +154,7 @@ export const Modal = CSSComponent({
   css: css`
     box-sizing: border-box;
     font-size: ${FontSize}rem;
+    outline: none;
     ${getAnimate};
   `,
   normal: {
