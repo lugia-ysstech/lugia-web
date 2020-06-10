@@ -49,7 +49,7 @@ const getStepSize = (size: SizeType) => {
   return isNormalSize(size) ? 32 : 24;
 };
 
-const flatBoxShadowColor = `${changeColor(get('themeColor'), 0, 0, 40).rgba}`;
+const flatBoxShadowColor = () => changeColor(get('themeColor'), 0, 0, 40).rgba;
 
 const getSize = (
   isWidth: boolean,
@@ -316,7 +316,7 @@ const FlatLine = CSSComponent({
       const { orientation } = propsConfig;
       const theWidth = getSize(true, width, orientation, 6);
       const theHeight = getSize(false, height, orientation, 6);
-      const theBoxShadow = `0 0 2 ${flatBoxShadowColor} inset`;
+      const theBoxShadow = `0 0 2px ${flatBoxShadowColor()} inset`;
       const resBoxShadow = boxShadow || getBoxShadow(theBoxShadow);
       const theThemeMeta = {
         height: theHeight,
@@ -1000,7 +1000,7 @@ class Step extends React.Component<StepProps, StepState> {
       const boxShadowConfig =
         isFlatType(stepType) && (stepStatus === 'wait' || stepStatus === 'next')
           ? this.getThemeNormalConfig({
-              boxShadow: getBoxShadow(`0 0 2 ${flatBoxShadowColor} inset`),
+              boxShadow: getBoxShadow(`0 0 2px ${flatBoxShadowColor()} inset`),
             })
           : {};
 
