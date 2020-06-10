@@ -225,7 +225,7 @@ export const ModalClose = StaticComponent({
 
 const getLugiaMegaCSS = (props: CSSProps): string => {
   const { __lugiad__header__absolute__ = false, type, title = false } = props;
-  console.log('title', title);
+
   if (__lugiad__header__absolute__ || type === 'Modal') {
     const theCSS = title ? 'top: 30px;' : 'bottom: 30px;';
 
