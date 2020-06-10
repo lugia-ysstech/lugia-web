@@ -51,7 +51,7 @@ export const InnerTipText: Object = CSSComponent({
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { background } = themeMeta;
-      const theColor = background && background.color ? background.color : get('defaultColor');
+      const theColor = background && background.color ? background.color : 'white';
       return `${getTipShowCSS(themeProps)};background-color:${theColor};
           box-shadow: ${px2remcss(-14)} 0 ${px2remcss(6)} 0 ${theColor};`;
     },
