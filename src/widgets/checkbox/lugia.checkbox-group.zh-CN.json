@@ -40,8 +40,7 @@
     },
     "valueField": {
       "type": "string",
-      "desc": "指定 Checkbox 组件 value 值",
-      "defaultValue": false
+      "desc": "指定 Checkbox 组件 value 值"
     },
     "displayValue": {
       "type": "string[]",
