@@ -4,8 +4,9 @@ import moment from 'moment';
 import SwitchPanel from '../switchPanel/SwitchPanel';
 import RangeInput from '../panel/RangeInput';
 import PageFooter from '../panel/PageFooter';
+import Trigger from '../../trigger/OpenTrigger';
 import { getDerivedForInput } from '../utils/getDerived';
-import { RangeWrap, RangeWrapInner, TriggerWrap, Box } from '../styled/styled';
+import { RangeWrap, RangeWrapInner, Box } from '../styled/styled';
 import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
 import { formatValueIsValid, getIsSame, getOpenProps } from '../utils/booleanUtils';
@@ -32,6 +33,8 @@ type TypeProps = {
   validateType?: string,
   validateStatus?: string,
   help?: string,
+  alwaysOpen?: boolean,
+  onDocumentClick?: Function,
 };
 type TypeState = {
   value: Array<string>,
@@ -435,12 +438,12 @@ class Range extends Component<TypeProps, TypeState> {
       theme,
       mode,
       getPartOfThemeProps,
-      createPortal = true,
+      createPortal,
       size,
       validateStatus,
       liquidLayout,
+      alwaysOpen,
     } = this.props;
-    const { hasOpenInProps, open } = getOpenProps(this.props);
     const { monthAndYear } = this;
     const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
     const config = {
@@ -462,12 +465,13 @@ class Range extends Component<TypeProps, TypeState> {
     );
     return (
       <Box themeProps={inputContainProps}>
-        <TriggerWrap
-          liquidLayout={liquidLayout}
+        <Trigger
           themePass
-          createPortal={liquidLayout ? false : createPortal}
+          createPortal={createPortal}
           onDocumentClick={this.onDocumentClick}
-          popupVisible={hasOpenInProps ? open : visible}
+          popupVisible={visible}
+          alwaysOpen={alwaysOpen}
+          liquidLayout={liquidLayout}
           popup={
             <RangeWrap
               {...theme}
@@ -518,8 +522,8 @@ class Range extends Component<TypeProps, TypeState> {
           align="bottomLeft"
           key="trigger"
           ref={this.trigger}
-          action={disabled || readOnly || hasOpenInProps ? [] : ['click']}
-          hideAction={hasOpenInProps ? [] : ['click']}
+          action={disabled || readOnly || ['click']}
+          hideAction={['click']}
         >
           <RangeInput
             {...this.props}
@@ -537,7 +541,7 @@ class Range extends Component<TypeProps, TypeState> {
             isClear={isClear}
             themeProps={inputContainProps}
           />
-        </TriggerWrap>
+        </Trigger>
       </Box>
     );
   }
