@@ -24,6 +24,7 @@ type PopupProps = {
   destroyPopupOnHide?: boolean,
   transitionName?: string,
   onMouseLeave?: Function,
+  alwaysOpen?: boolean,
 };
 
 class Popup extends React.Component<PopupProps> {
@@ -82,6 +83,7 @@ class Popup extends React.Component<PopupProps> {
       offsetY,
       getTheme,
       className,
+      alwaysOpen,
     } = props;
 
     const hidden = !visible;
@@ -96,6 +98,7 @@ class Popup extends React.Component<PopupProps> {
       className,
       style: newStyle,
       getTheme,
+      alwaysOpen,
     };
 
     const inner =
