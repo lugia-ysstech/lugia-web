@@ -39,6 +39,7 @@
       },
       {
         "title": "标题",
+        "iconClass": "skeletonTitle",
         "data": [
           {
             "name": "标题",
@@ -54,6 +55,7 @@
       },
       {
         "title": "段落",
+        "iconClass": "skeletonParagraph",
         "data": [
           {
             "name": "段落",
@@ -69,6 +71,7 @@
       },
       {
         "title": "头像",
+        "iconClass": "skeletonAvatar",
         "data": [
           {
             "name": "头像",
