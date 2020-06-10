@@ -155,7 +155,7 @@ export function handleCreate(
 
 export function updateMapData(
   props: Object,
-  displayValue?: Array<string> = [],
+  displayValue: ?Array<string> = [],
   updateHandler: Function,
   stateValue?: string[] | string
 ) {
@@ -233,7 +233,7 @@ function getItem(itemMap: Object, v: string, displayField: string) {
   return undefined;
 }
 
-function toArray(param: any, defaultValue?: any = []): any[] {
+function toArray(param: any, defaultValue: ?any = []): any[] {
   if (!param) {
     return defaultValue;
   }
@@ -242,9 +242,10 @@ function toArray(param: any, defaultValue?: any = []): any[] {
 export const getValueAndDisplayValue = function(props: Object, state: ?Object): Object {
   const isInit = state === null || state === undefined;
   state = state ? state : {};
-  const isValue = 'value' in props;
+
   const isDisplayValue = 'displayValue' in props;
   let { value, defaultValue, displayValue, defaultDisplayValue } = props;
+  const isValue = 'value' in props && value !== undefined && value.length !== 0;
   const { value: sValue } = state;
   let realValue = isValue ? value : isInit ? defaultValue : sValue;
   let { displayValue: sDisplayValue } = state;
