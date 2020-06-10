@@ -180,6 +180,16 @@ const getPositionCSS = (props: CSSProps): string => {
     position: fixed;
   `;
 };
+const iconAngleData = {
+  visible: { top: -90, bottom: 90, right: 0, left: 180 },
+  invisible: { top: 90, bottom: -90, right: 180, left: 0 },
+};
+export const getIconTransfrom = (visible, placement) => {
+  if (visible) {
+    return `transform: rotateZ(${iconAngleData.visible[placement]}deg)`;
+  }
+  return `transform: rotateZ(${iconAngleData.invisible[placement]}deg)`;
+};
 export const DrawerContentWrap = CSSComponent({
   tag: 'div',
   className: 'Drawer',
@@ -249,3 +259,39 @@ export const CloseText = styled.span`
   line-height: ${HeaderEM(60)};
   cursor: pointer;
 `;
+const horizontalCommonProperty = `
+  height:16px;
+  width:48px;
+  left:calc(50% - 24px);
+`;
+const verticalCommonProperty = `
+  height:48px;
+  width:16px;
+  top:calc(50% - 24px);
+`;
+const getHandleWidthOrHeightByDirection = (props: CSSProps) => {
+  const { placement } = props;
+  if (placement === 'top' || placement === 'bottom') {
+    return `
+      ${placement === 'top' ? 'bottom' : 'top'}: -16px; ${horizontalCommonProperty}
+    `;
+  }
+  return `
+    ${placement === 'right' ? 'left' : 'right'}: -16px; ${verticalCommonProperty}
+  `;
+};
+export const HandleWrap = CSSComponent({
+  tag: 'div',
+  className: 'HandleWrap',
+  css: css`
+    position: absolute;
+    ${getHandleWidthOrHeightByDirection}
+    z-index: 999;
+    background: #fff;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  `,
+});
