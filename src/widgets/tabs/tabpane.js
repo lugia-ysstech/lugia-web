@@ -58,7 +58,7 @@ const SelectTab = CSSComponent({
           isSelect,
           tabType,
           tabPosition,
-          lineTheme: { height: lineHeight = 2, background: { color: lineColor } = {} } = {},
+          lineTheme: { width: lineWidth, height: lineHeight, background: lineColor } = {},
         },
       } = themeProps;
       let display = 'inline-flex';
@@ -76,20 +76,18 @@ const SelectTab = CSSComponent({
       const textAlignStyle = `text-align:${textAlign};`;
       if (isSelect && tabType === 'line') {
         let cssString = css`
-          width: 100%;
-          height: ${lineHeight}px;
+          width: ${lineWidth ? lineWidth + 'px' : '100%'};
+          height: ${lineHeight || 2}px;
           left: 50%;
-          animation: ${addWidth} 0.2s linear forwards;
           transform: translateX(-50%);
         `;
         let pos = tabPosition === 'top' ? 'bottom: 0px;' : 'top: 0px;';
         if (isVertical(tabPosition)) {
           pos = tabPosition === 'left' ? 'right: -20px;' : 'left: -20px;';
           cssString = css`
-            width: ${lineHeight}px;
-            height: 100%;
+            width: ${lineWidth || 2}px;
+            height: ${lineHeight ? lineHeight + 'px' : '100%'};
             top: 50%;
-            animation: ${addHeight} 0.2s linear forwards;
             transform: translateY(-50%);
           `;
         }
