@@ -63,7 +63,7 @@
             "name": "选中页签底部标识线",
             "path": ["TabHeader", "SelectLine"],
             "description": {
-              "textPart": {
+              "appearancePart": {
                 "text": "选中页签底部标识线",
                 "desc": "选中页签底部标识线"
               }
