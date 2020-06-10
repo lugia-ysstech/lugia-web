@@ -12,6 +12,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c1 {
+  background-color: transparent;
   box-sizing: border-box;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -115,7 +116,6 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "transparent",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderTopLeftRadius": "0.4rem",
@@ -161,6 +161,7 @@ exports[`Input props: null 1`] = `
 }
 
 .c1 {
+  background-color: transparent;
   box-sizing: border-box;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -259,7 +260,6 @@ exports[`Input props: null 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "transparent",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderTopLeftRadius": "0.4rem",
@@ -305,6 +305,7 @@ exports[`Input props: placeholder  1`] = `
 }
 
 .c1 {
+  background-color: transparent;
   box-sizing: border-box;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -404,7 +405,6 @@ exports[`Input props: placeholder  1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "transparent",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderTopLeftRadius": "0.4rem",
@@ -450,6 +450,7 @@ exports[`Input props: placeholder  2`] = `
 }
 
 .c1 {
+  background-color: transparent;
   box-sizing: border-box;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -549,7 +550,6 @@ exports[`Input props: placeholder  2`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "transparent",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderTopLeftRadius": "0.4rem",
@@ -595,6 +595,7 @@ exports[`Input props: size 1`] = `
 }
 
 .c1 {
+  background-color: transparent;
   box-sizing: border-box;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -693,7 +694,6 @@ exports[`Input props: size 1`] = `
     size="small"
     style={
       Object {
-        "backgroundColor": "transparent",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderTopLeftRadius": "0.4rem",
@@ -739,6 +739,7 @@ exports[`Input props: size 2`] = `
 }
 
 .c1 {
+  background-color: transparent;
   box-sizing: border-box;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -837,7 +838,6 @@ exports[`Input props: size 2`] = `
     size="large"
     style={
       Object {
-        "backgroundColor": "transparent",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderTopLeftRadius": "0.4rem",
