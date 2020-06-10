@@ -833,6 +833,13 @@ export default class TabsDemo extends React.Component<any, any> {
               color: '#ccc',
             },
           },
+          SelectLine: {
+            normal: {
+              background: 'black',
+              height: 5,
+              width: 5,
+            },
+          },
         },
       },
     };
@@ -1225,7 +1232,14 @@ export default class TabsDemo extends React.Component<any, any> {
           </Tabs>
         </ContainerBox>
 
-        <ContainerBox>{/*<Tabs />*/}</ContainerBox>
+        <ContainerBox>
+          <Theme config={lineViewTop}>
+            <Tabs />
+          </Theme>
+          <Theme config={lineViewLeft}>
+            <Tabs tabPosition={'left'} />
+          </Theme>
+        </ContainerBox>
 
         <ContainerBox>
           <Theme
