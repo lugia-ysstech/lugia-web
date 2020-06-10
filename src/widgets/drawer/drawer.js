@@ -21,6 +21,8 @@ import {
   DrawerContentMain,
   DrawerClose,
   CloseText,
+  HandleWrap,
+  getIconTransfrom,
 } from '../css/drawer';
 
 export const DrawerContext: Object = React.createContext();
@@ -75,6 +77,33 @@ export default ThemeProvider(
         window.document.body.removeChild(this.node);
       }
     }
+
+    getIconTheme = () => {
+      const { getPartOfThemeHocProps, visible, placement } = this.props;
+      const { viewClass, theme } = getPartOfThemeHocProps('HandleIcon');
+      const iconTheme = deepMerge(
+        {
+          [viewClass]: {
+            Icon: {
+              normal: {
+                color: '#333',
+                font: {
+                  size: 12,
+                },
+                getCSS() {
+                  return `
+                  ${getIconTransfrom(visible, placement)}
+                  `;
+                },
+              },
+            },
+          },
+        },
+        theme
+      );
+      return { viewClass, theme: iconTheme };
+    };
+
     render() {
       if (!this.node) {
         return null;
@@ -91,8 +120,10 @@ export default ThemeProvider(
         getPartOfThemeProps,
         injectLugiad: { type } = {},
         __lugiad__header__absolute__,
+        handle = false,
       } = this.props;
       const drawerWrapTheme = getPartOfThemeProps('Container');
+      const handleWrapTheme = getPartOfThemeProps('handleWrap');
       const { themeConfig } = drawerWrapTheme;
       const defaultTheme =
         placement === 'top' || placement === 'bottom' ? { width: '100%' } : { height: '100%' };
@@ -115,6 +146,15 @@ export default ThemeProvider(
           closing={closing}
           transform={transform}
         >
+          {handle ? (
+            <HandleWrap
+              themeProps={handleWrapTheme}
+              placement={placement}
+              onClick={this.changeVisibleState}
+            >
+              <Icon iconClass={'lugia-icon-direction_right'} {...this.getIconTheme()} />
+            </HandleWrap>
+          ) : null}
           <DrawerContent>
             <DrawerContentHeader
               __lugiad__header__absolute__={__lugiad__header__absolute__}
@@ -196,6 +236,10 @@ export default ThemeProvider(
     handleClose = () => {
       const { onClose } = this.props;
       onClose && onClose();
+    };
+    changeVisibleState = () => {
+      const { onToggle } = this.props;
+      onToggle && onToggle();
     };
   },
   Widget.Drawer
