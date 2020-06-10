@@ -150,6 +150,7 @@ export default ThemeProvider(
             <HandleWrap
               themeProps={handleWrapTheme}
               placement={placement}
+              visible={visible}
               onClick={this.changeVisibleState}
             >
               <Icon iconClass={'lugia-icon-direction_right'} {...this.getIconTheme()} />
