@@ -148,16 +148,6 @@ export const ModalWrap = StaticComponent({
     z-index: 99999;
   `,
 });
-export const ChildrenWrap = StaticComponent({
-  tag: 'div',
-  className: 'ChildrenWrap',
-  css: css`
-    z-index: 4001;
-    position: absolute;
-    left: 0;
-    top: 0;
-  `,
-});
 export const Modal = CSSComponent({
   tag: 'div',
   className: 'Modal',
@@ -167,7 +157,7 @@ export const Modal = CSSComponent({
     ${getAnimate};
   `,
   normal: {
-    selectNames: [['width']],
+    selectNames: [['width'], ['height'], ['minWidth'], ['maxWidth'], ['maxHeight'], ['minHeight']],
   },
 });
 export const ModalContent = CSSComponent({
@@ -190,6 +180,10 @@ export const ModalContent = CSSComponent({
       ['border'],
       ['background'],
       ['padding'],
+      ['minWidth'],
+      ['maxWidth'],
+      ['maxHeight'],
+      ['minHeight'],
     ],
     defaultTheme: {
       background: { color: '#fff' },
@@ -199,13 +193,14 @@ export const ModalContent = CSSComponent({
     },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
-      const { showIcon } = propsConfig;
-      const defaultLeft = showIcon ? 50 : 30;
+      const { showIcon, __lugiad__header__absolute__ } = propsConfig;
+      const defaultLeft = __lugiad__header__absolute__ ? 0 : showIcon ? 50 : 30;
+      const megaPadding = __lugiad__header__absolute__ ? 0 : 30;
       return {
         padding: {
-          top: 30,
-          right: 30,
-          bottom: 30,
+          top: megaPadding,
+          right: megaPadding,
+          bottom: megaPadding,
           left: defaultLeft,
         },
       };
@@ -228,11 +223,29 @@ export const ModalClose = StaticComponent({
   `,
 });
 
+const getLugiaMegaCSS = (props: CSSProps): string => {
+  const { __lugiad__header__absolute__ = false, type, title = false } = props;
+  console.log('title', title);
+  if (__lugiad__header__absolute__ || type === 'Modal') {
+    const theCSS = title ? 'top: 30px;' : 'bottom: 30px;';
+
+    return css`
+      position: absolute;
+      left: 30px;
+      ${theCSS}
+      z-index: 4000;
+      padding-top: 0;
+    `;
+  }
+  return '';
+};
+
 export const ModalTitle = CSSComponent({
   tag: 'div',
   className: 'ModalTitle',
   css: css`
     border-radius: ${px2remcss(4)} ${px2remcss(4)} 0 0;
+    ${getLugiaMegaCSS}
   `,
   normal: {
     selectNames: [['font'], ['color'], ['padding']],
@@ -270,26 +283,12 @@ export const ModalBody = CSSComponent({
   },
 });
 
-const getFooterLugiadCSS = (props: CSSProps): string => {
-  const { __lugiad__header__absolute__ = false, type } = props;
-  if (__lugiad__header__absolute__ || type === 'Modal') {
-    return css`
-      position: absolute;
-      left: 30px;
-      bottom: 30px;
-      z-index: 4000;
-      padding-top: 0;
-    `;
-  }
-  return '';
-};
-
 export const ModalFooter = StaticComponent({
   tag: 'div',
   className: 'ModalFooter',
   css: css`
     padding-top: ${px2remcss(22)};
-    ${getFooterLugiadCSS};
+    ${getLugiaMegaCSS};
     border-radius: 0 0 4px 4px;
     & > button {
       margin-left: ${px2remcss(14)};

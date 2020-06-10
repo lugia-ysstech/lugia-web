@@ -1331,10 +1331,10 @@
     "@types/react-test-renderer" "^16.9.2"
     prop-types "^15.7.2"
 
-"@lugia/theme-core@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@lugia/theme-core/-/theme-core-1.1.4.tgz#f140ee4cbc4bd0f75386597ad73f1356a2a25a1a"
-  integrity sha512-yWU3ZOwUNRozP6wDroOCkFhM0e2lBKNfFuA338XN18uiJT9T+EaW3zrBh5r7LkwuzU5Copz9PKEmQ/2oGubQtg==
+"@lugia/theme-core@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-core/-/theme-core-1.1.6.tgz#2c54ef4b1b8b9066e173ad24fae1eb8638a1cc90"
+  integrity sha512-xnRIG79vTZ+IZ2Aq8hyeM3pVltMxvVvtvvmBhYfCcNVhEC+umMqbqM6k1MhEMd7ghEvbX3gBT+2SN+x6cNSjTw==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.16"
@@ -1342,16 +1342,16 @@
     debug "^4.1.1"
     tslib "^1.11.1"
 
-"@lugia/theme-css-hoc@^1.1.12":
-  version "1.1.12"
-  resolved "https://registry.yarnpkg.com/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.12.tgz#e2dc0214770fd54e39ce442343f703f0d09c27dc"
-  integrity sha512-N+Dy/4RzE/n/sw/4C/nNCLF8EAB+fQSNNNLWvtJnQ2Yfdbi52Vsg9C8d7g1Z3cQrjoe0NWXLspo7OtarHFXIOw==
+"@lugia/theme-css-hoc@^1.1.14":
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.14.tgz#cd2a849f781802426a49b7e34cc478ded0f5fa6f"
+  integrity sha512-AAU9qdJBRSy92ngGftgel9dC95YrBSCzoxwZcyRWoOG7S/hldZNZBnM/HqvOZQd9pxYdzhQ8b2T49sTYOAH5KA==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.24"
     "@lugia/object-utils" "^1.0.16"
     "@lugia/ramada" "^1.0.5"
-    "@lugia/theme-utils" "^1.1.7"
+    "@lugia/theme-utils" "^1.1.8"
     "@types/react" "^16.9.32"
     "@types/styled-components" "^4.4.3"
     tslib "^1.11.1"
@@ -1365,16 +1365,6 @@
     "@lugia/object-utils" "^1.0.16"
     "@types/react" "^16.9.32"
     "@types/styled-components" "^5.0.1"
-    tslib "^1.11.1"
-
-"@lugia/theme-utils@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@lugia/theme-utils/-/theme-utils-1.1.7.tgz#541dd0def773b7ed80a04fc60d35bc68acebba00"
-  integrity sha512-zHm2CXBN2yIbvoFNAss+Q3ktg9k7fwgE+ZCuk1pTxr7G58Tw7ltQkRTfqLABD5IpKphpAoczDLli1kWcVor46Q==
-  dependencies:
-    "@babel/runtime" "^7.4.5"
-    "@lugia/css" "^1.0.24"
-    "@lugia/dict" "^1.0.4"
     tslib "^1.11.1"
 
 "@lugia/theme-utils@^1.1.8":

@@ -22,12 +22,12 @@ import { getBorder } from '@lugia/theme-utils';
 const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
 const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
-const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const marginToSameElement = '$lugia-dict.@lugia/lugia-web.marginToSameElement';
+const xxsFontSize = '$lugia-dict.@lugia/lugia-web.xxsFontSize';
 
 const SelectTab = CSSComponent({
   tag: 'div',
@@ -476,11 +476,8 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     let selectThemeProps = this.props.getPartOfThemeProps('SelectTabPan', {
       props: { isSelect, tabType, tabPosition, showDeleteBtn, disabled },
     });
-    selectThemeProps = deepMerge(
-      titleThemeProps,
-      { themeConfig: { normal: { color: get('themeColor') } } },
-      selectThemeProps
-    );
+    const defaultSelectTheme = () => ({ themeConfig: { normal: { color: get('themeColor') } } });
+    selectThemeProps = deepMerge(titleThemeProps, defaultSelectTheme(), selectThemeProps);
     switch (tabType) {
       case 'card':
         const targetObj = {
@@ -517,7 +514,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
                 topLeft: borderRadiusValue,
                 topRight: borderRadiusValue,
               },
-              background: { color: defaultColor },
+              background: { color: 'white' },
             },
           },
         };
@@ -533,7 +530,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
                 topRight: borderRadiusValue,
               },
               background: {
-                color: defaultColor,
+                color: 'white',
               },
             },
           },
@@ -665,7 +662,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       [viewClass]: {
         normal: {
           color: mediumGreyColor,
-          fontSize: 12,
+          fontSize: xxsFontSize,
         },
         hover: {
           color: darkGreyColor,

@@ -101,7 +101,7 @@ export default class ModalDemo extends React.Component<any, any> {
     } = this.state;
     const view = {
       [Widgets.Modal]: {
-        ModalWrap: {
+        Container: {
           normal: {
             width: 800,
             height: 500,
