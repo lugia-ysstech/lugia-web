@@ -4176,7 +4176,7 @@ export default [
           ],
         },
         displayField: { type: 'string', desc: '指定CheckboxGroup展示字段值' },
-        valueField: { type: 'string', desc: '指定 Checkbox 组件 value 值', defaultValue: false },
+        valueField: { type: 'string', desc: '指定 Checkbox 组件 value 值' },
         displayValue: {
           type: 'string[]',
           desc:
@@ -4371,7 +4371,7 @@ export default [
           ],
         },
         displayField: { type: 'string', desc: '指定CheckboxGroup展示字段值' },
-        valueField: { type: 'string', desc: '指定 Checkbox 组件 value 值', defaultValue: false },
+        valueField: { type: 'string', desc: '指定 Checkbox 组件 value 值' },
         displayValue: {
           type: 'string[]',
           desc:
