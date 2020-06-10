@@ -22,6 +22,8 @@ export const quickcall = () => {
       placement,
       getTheme,
       maskClosable = true,
+      handle = false,
+      onToggle,
     } = props;
     const config: Object = {
       visible,
@@ -33,6 +35,8 @@ export const quickcall = () => {
       placement,
       getTheme,
       maskClosable,
+      handle,
+      onToggle,
     };
     const div = document.createElement('div');
     document.body && document.body.appendChild(div);

@@ -27,11 +27,31 @@ export class FncDrawer extends React.Component<any, any> {
     );
     onClose && onClose();
   };
+  handleToggle = () => {
+    const { onToggle } = this.props;
+    const { visible } = this.state;
+    if (visible) {
+      this.setState({
+        visible: false,
+      });
+      this.removeDom;
+      onToggle && onToggle();
+    } else {
+      this.setState({
+        visible: true,
+      });
+    }
+  };
   render() {
     const { visible } = this.state;
     const { children } = this.props;
     return (
-      <Drawer {...this.props} visible={visible} onClose={this.handleColse}>
+      <Drawer
+        {...this.props}
+        visible={visible}
+        onClose={this.handleColse}
+        onToggle={this.handleToggle}
+      >
         {children}
       </Drawer>
     );
