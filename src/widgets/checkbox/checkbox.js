@@ -21,6 +21,7 @@ import {
 } from '../css/checkbox';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import { getBorderRadius } from '../theme/CSSProvider';
+import get from '../css/theme-common-dict';
 
 type CheckBoxState = {
   checked: boolean,
@@ -35,7 +36,6 @@ const themeDisabledColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
-const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 
 const defaultEdgeCancelProps = () => ({
   themeConfig: {
@@ -47,25 +47,28 @@ const defaultEdgeCancelProps = () => ({
   },
 });
 
-const defaultEdgeTheme = {
+const defaultEdgeTheme = () => ({
   themeConfig: {
     normal: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      border: getBorder(get('normalBorder')),
       borderRadius: getBorderRadius(2),
       background: { color: themeColor },
     },
     hover: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      border: getBorder(get('hoverBorder')),
       borderRadius: getBorderRadius(2),
       background: { color: themeColor },
     },
+    focus: {
+      border: getBorder(get('focusBorder')),
+    },
     disabled: {
-      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+      border: getBorder(get('disabledBorder')),
       borderRadius: getBorderRadius(2),
       background: { color: disableColor },
     },
   },
-};
+});
 const defaultInnerTheme = {
   normal: {
     color: defaultColor,
@@ -171,9 +174,9 @@ export default ThemeProvider(
       const circleEdgeTheme = cancel
         ? deepMerge(defaultEdgeCancelProps(), circleEdgeCancelTheme)
         : checked
-        ? deepMerge(defaultEdgeTheme, circleEdgeCheckedTheme)
+        ? deepMerge(defaultEdgeTheme(), circleEdgeCheckedTheme)
         : indeterminate
-        ? deepMerge(defaultEdgeTheme, circleEdgeIndeterminateTheme)
+        ? deepMerge(defaultEdgeTheme(), circleEdgeIndeterminateTheme)
         : circleEdgeUnCheckedTheme;
       const circleInnerCheckedTheme = getPartOfThemeConfig('CheckboxInnerChecked');
       const circleInnerCancelTheme = getPartOfThemeConfig('CheckboxInnerCancel');
