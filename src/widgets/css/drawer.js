@@ -106,7 +106,7 @@ const getDrawerAnimate = (props: CSSProps): string => {
   const distance = getWidthOrHeight(props);
   const Direction = getAnimateDirection(props);
   const isNumber = typeof distance === 'number';
-  const trueDistance = isNumber ? em(-distance) : distance;
+  const trueDistance = isNumber ? em(-distance) : `-${distance}`;
   const closeDistance = isNumber ? em(-(distance + 8)) : `calc(-${distance} - 8px)`;
   const openFrom = `${Direction}: ${trueDistance};`;
   const openTo = `${Direction}: 0;`;
