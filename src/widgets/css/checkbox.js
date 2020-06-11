@@ -18,9 +18,6 @@ const FontSize = 1.4;
 const defaultColor = '#fff';
 const em = px2remcss;
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
-const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
-const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
-const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 
@@ -207,11 +204,7 @@ export const CheckBoxInnerSpan = CSSComponent({
     ],
     defaultTheme: {
       background: { color: defaultColor },
-      border: getBorder({
-        color: borderColor,
-        width: 1,
-        style: 'solid',
-      }),
+      border: getBorder(get('normalBorder')),
       borderRadius: getBorderRadius(2),
       width: 16,
       height: 16,
@@ -270,11 +263,7 @@ export const CheckBoxInnerSpan = CSSComponent({
   hover: {
     selectNames: [['background'], ['borderRadius'], ['boxShadow'], ['border']],
     defaultTheme: {
-      border: getBorder({
-        color: themeColor,
-        width: 1,
-        style: 'solid',
-      }),
+      border: getBorder(get('hoverBorder')),
       borderRadius: getBorderRadius(2),
       background: { color: defaultColor },
     },
@@ -282,11 +271,7 @@ export const CheckBoxInnerSpan = CSSComponent({
   disabled: {
     selectNames: [['background'], ['borderRadius'], ['boxShadow'], ['border']],
     defaultTheme: {
-      border: getBorder({
-        color: borderDisableColor,
-        width: 1,
-        style: 'solid',
-      }),
+      border: getBorder(get('disabledBorder')),
       borderRadius: getBorderRadius(2),
       background: { color: disableColor },
     },
