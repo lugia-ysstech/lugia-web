@@ -81,9 +81,9 @@
       "desc": "可配置三种尺寸大小的input",
       "propsDefaultValue": "default"
     },
-    "open": {
+    "alwaysOpen": {
       "type": "boolean",
-      "desc": "控制面板是展开",
+      "desc": "控制面板是否始终展开",
       "propsDefaultValue": false
     },
     "liquidLayout": {

@@ -401,16 +401,16 @@ class Range extends Component<TypeProps, TypeState> {
     this.normalStyleValueObj = getformatSymbol(value);
     this.monthAndYear = [...panelValue];
     this.panelDatesArray = getCurrentPageDates(panelValue, format);
-    const { hasOpenInProps, open } = getOpenProps(this.props);
+    const { hasOpenInProps, alwaysOpen } = getOpenProps(this.props);
     if (hasOpenInProps) {
-      this.setState({ visible: open });
+      this.setState({ visible: alwaysOpen });
     }
   }
   onDocumentClick = () => {
-    const { hasOpenInProps, open } = getOpenProps(this.props);
+    const { hasOpenInProps, alwaysOpen } = getOpenProps(this.props);
     let visible = false;
     if (hasOpenInProps) {
-      visible = open;
+      visible = alwaysOpen;
     }
     this.setState({ visible });
     const { onDocumentClick } = this.props;
@@ -443,6 +443,7 @@ class Range extends Component<TypeProps, TypeState> {
       validateStatus,
       liquidLayout,
       alwaysOpen,
+      open,
     } = this.props;
     const { monthAndYear } = this;
     const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
@@ -470,7 +471,7 @@ class Range extends Component<TypeProps, TypeState> {
           createPortal={createPortal}
           onDocumentClick={this.onDocumentClick}
           popupVisible={visible}
-          alwaysOpen={alwaysOpen}
+          alwaysOpen={alwaysOpen || open}
           liquidLayout={liquidLayout}
           popup={
             <RangeWrap
