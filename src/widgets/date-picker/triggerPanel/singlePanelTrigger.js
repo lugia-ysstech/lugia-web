@@ -97,9 +97,9 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { format } = this.state;
     const value = moment().format(format);
     this.normalStyleValueObj = getformatSymbol(value);
-    const { hasOpenInProps, open } = getOpenProps(this.props);
+    const { hasOpenInProps, alwaysOpen } = getOpenProps(this.props);
     if (hasOpenInProps) {
-      this.setState({ visible: open });
+      this.setState({ visible: alwaysOpen });
     }
   }
 
@@ -115,6 +115,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       size,
       liquidLayout,
       alwaysOpen,
+      open,
     } = this.props;
     const {
       value,
@@ -158,8 +159,6 @@ class DateInput extends Component<TypeProps, TypeState> {
       getPartOfThemeProps,
     });
     const { normal = {} } = themeConfig;
-    console.log('liquidLayout-date', liquidLayout);
-    console.log('alwaysOpen-date', alwaysOpen);
     return (
       <Theme
         config={{
@@ -189,7 +188,7 @@ class DateInput extends Component<TypeProps, TypeState> {
             createPortal={createPortal}
             onDocumentClick={this.onDocumentClick}
             popupVisible={visible}
-            alwaysOpen={alwaysOpen}
+            alwaysOpen={alwaysOpen || open}
             liquidLayout={liquidLayout}
             popup={
               <React.Fragment>
@@ -257,10 +256,10 @@ class DateInput extends Component<TypeProps, TypeState> {
   }
 
   onDocumentClick = () => {
-    const { hasOpenInProps, open } = getOpenProps(this.props);
+    const { hasOpenInProps, alwaysOpen } = getOpenProps(this.props);
     let visible = false;
     if (hasOpenInProps) {
-      visible = open;
+      visible = alwaysOpen;
     }
     this.setState({ visible });
     const { onDocumentClick } = this.props;

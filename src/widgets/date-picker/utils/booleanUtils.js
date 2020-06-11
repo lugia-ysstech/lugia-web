@@ -1,3 +1,4 @@
+// @flow
 import moment from 'moment';
 import { valueInRange } from '../../common/Math';
 import { getformatSymbol } from './utils';
@@ -20,7 +21,7 @@ export const getValueIsInRange = (
   const choseValueIn = valueInRange(choseValueUnix, [minUnix, maxUnix]);
   return choseValueIn;
 };
-export const getIsSame = (rangeValue: Array<string>, format) => {
+export const getIsSame = (rangeValue: Array<string>, format: string) => {
   const momentS = moment(rangeValue[0], format);
   const momentE = moment(rangeValue[1], format);
   const isSamePanelS = momentS.format('YYYY-MM');
@@ -82,9 +83,12 @@ export function modeStyle(mode: string): Object {
     isTimes,
   };
 }
-export function getOpenProps(props) {
-  const { alwaysOpen } = props;
-  const hasOpenInProps =
-    'alwaysOpen' in props && alwaysOpen !== 'undefined' && alwaysOpen !== 'null';
-  return { hasOpenInProps, alwaysOpen };
+export function getOpenProps(props: Object) {
+  const { alwaysOpen, open } = props;
+  const hasCurrentInProp = (name: string) => {
+    return name in props && name !== 'undefined' && name !== 'null';
+  };
+  const hasOpenInProps = hasCurrentInProp('open');
+  const hasAlwaysOpenInProps = hasCurrentInProp('alwaysOpen');
+  return { hasOpenInProps: hasAlwaysOpenInProps || hasOpenInProps, alwaysOpen: alwaysOpen || open };
 }
