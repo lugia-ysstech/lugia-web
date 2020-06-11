@@ -10,7 +10,7 @@ import PageFooter from '../panel/PageFooter';
 import { getDerivedForInput } from '../utils/getDerived';
 import SwitchPanel from '../switchPanel/SwitchPanel';
 import { getValueFromWeekToDate } from '../utils/differUtils';
-import { getformatSymbol, getNewProps } from '../utils/utils';
+import { getformatSymbol, getNewProps, getNewStepProps } from '../utils/utils';
 import { formatValueIsValid, modeStyle, getOpenProps } from '../utils/booleanUtils';
 import { PanelWrap, Box } from '../styled/styled';
 import Theme from '../../theme';
@@ -209,6 +209,7 @@ class DateInput extends Component<TypeProps, TypeState> {
                     hasOldValue={hasOldValue}
                     isStartOfWeek={isStartOfWeek}
                     themeProps={themeProps}
+                    step={getNewStepProps(newProps)}
                   />
 
                   {isTime ? (
