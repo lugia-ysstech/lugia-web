@@ -5,7 +5,7 @@
  */
 import { px2emcss } from '../css/units';
 import styled, { css, keyframes } from 'styled-components';
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 
 type Direction = 'top' | 'right' | 'bottom' | 'left';
 export type DrawerProps = {
@@ -91,12 +91,21 @@ const getAnimateDirection = (props: CSSProps): string => {
   }
   return 'right';
 };
+const getDefaultValut = (isHorizontal: boolean): number => (!isHorizontal && 256) || 100;
 const getWidthOrHeight = (props: CSSProps) => {
+  const { placement } = props;
+  const isPlacedInHorizontal = placement === 'top' || placement === 'bottom';
   const {
-    placement,
-    themeProps: { themeConfig: { normal: { width = 256, height = 200 } = {} } = {} } = {},
+    themeProps: {
+      themeConfig: {
+        normal: {
+          width = getDefaultValut(isPlacedInHorizontal),
+          height = getDefaultValut(!isPlacedInHorizontal),
+        } = {},
+      } = {},
+    } = {},
   } = props;
-  if (placement === 'top' || placement === 'bottom') {
+  if (isPlacedInHorizontal) {
     return height;
   }
   return width;
@@ -297,7 +306,7 @@ const getHandleWidthOrHeightByDirection = (props: CSSProps) => {
     border-radius: ${isLoacteRight ? '3px 0 0 3px' : '0 3px 3px 0'}
   `;
 };
-export const HandleWrap = CSSComponent({
+export const HandleWrap = StaticComponent({
   tag: 'div',
   className: 'HandleWrap',
   css: css`
