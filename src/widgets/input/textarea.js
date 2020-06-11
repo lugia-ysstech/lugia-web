@@ -75,7 +75,7 @@ const Textarea = CSSComponent({
       const theWidth = getSize(width);
       const theHeight = getSize(height);
       let theResizeType = resizeType;
-      if (checkIsPercent(width) || checkIsPercent(height)) {
+      if (checkIsPercent(width)) {
         theResizeType = 'none';
       }
       return css`
@@ -196,6 +196,8 @@ type TextareaProps = {
   validateStatus: ValidateStatus,
   validateType: ValidateType,
   help: string,
+  cols?: number,
+  rows?: number,
   readOnly: boolean,
 };
 function getTheValidateWidthThemeProps(validateType: ValidateType, validateStatus: ValidateStatus) {
@@ -410,9 +412,11 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
       getTheValidateWidthThemeProps(validateType, validateStatus),
       theValidateThemeProps
     );
-
+    const { rows, cols } = this.props;
     return (
       <Textarea
+        cols={cols}
+        rows={rows}
         themeProps={theThemeProps}
         autoFocus={autoFocus}
         ref={this.textarea}
