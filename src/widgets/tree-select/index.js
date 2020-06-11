@@ -144,14 +144,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { pathSeparator, displayField, valueField, data, translateTreeData } = this.props;
     const translateData = translateTreeData ? getTreeData(this.props, pathSeparator) : data;
     return value.map(item => {
-      let tem = item;
-      for (let i = 0; i < translateData.length; i++) {
-        if (translateData[i][valueField] === item) {
-          tem = translateData[i][displayField];
-          break;
-        }
-      }
-      return tem;
+      const tem = translateData.find(dataItem => {
+        return dataItem[valueField] === item;
+      });
+      return tem ? tem[displayField] : item;
     });
   };
 
