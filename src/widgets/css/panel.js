@@ -111,7 +111,7 @@ export const PanelHeaderText = CSSComponent({
   className: 'PanelHeaderText',
   normal: {
     defaultTheme: {
-      font: { size: 14 },
+      font: { size: get('sectionFontSize') },
       color: blackColor,
     },
     selectNames: [['font'], ['color']],
@@ -198,7 +198,7 @@ export const PanelContent = CSSComponent({
   `,
   normal: {
     defaultTheme: {
-      font: { size: 12, weight: 300 },
+      font: { size: get('descriptionFontSize'), weight: 300 },
       color: darkGreyColor,
       background: { color: get('defaultColor') },
     },
@@ -265,7 +265,7 @@ export const getIconTransform = (props: Object) => {
 
   return 'transform: translateY(-50%);';
 };
-
+const getBorderColor = () => `border-color: ${get('borderColor')};`;
 export const Wrap = CSSComponent({
   tag: 'div',
   className: 'WrapPanel',
@@ -273,9 +273,9 @@ export const Wrap = CSSComponent({
     font-size: ${px2remcss(14)};
     box-sizing: border-box;
     background: ${get('defaultColor')};
-    border-color: ${get('borderColor')};
     border-style: solid;
     transition: all 0.3s;
+    ${getBorderColor}
   `,
   normal: {
     selectNames: [['boxShadow'], ['borderRadius'], ['width']],
