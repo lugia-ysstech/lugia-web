@@ -7,7 +7,7 @@ import * as React from 'react';
 import Menu from '../menu';
 import Input from '../input';
 import { deepMerge } from '@lugia/object-utils';
-import Trigger from '../trigger';
+import Trigger from '../trigger/OpenTrigger';
 import ShortKeyBoard from '../common/ShortKeyBoard';
 import Keys from '../consts/KeyBoard';
 import Widget from '../consts/index';
@@ -129,13 +129,14 @@ export default ShortKeyBoard(
           validateType,
           validateStatus,
           size = 'default',
+          alwaysOpen,
+          liquidLayout,
         } = props;
         const data = this.getMenuData();
         const len = data.length;
         const menuLen = Math.min(5, len);
         const menuHeight = menuLen * MenuItemHeight;
         const menu = menuHeight === 0 ? <EmptyBox /> : this.getPopupMenu();
-
         return (
           <Theme config={this.getInputTheme()}>
             <Trigger
@@ -147,6 +148,8 @@ export default ShortKeyBoard(
               popup={menu}
               offsetY={4}
               ref={this.triggerEl}
+              alwaysOpen={alwaysOpen}
+              liquidLayout={liquidLayout}
             >
               <Input
                 size={size}

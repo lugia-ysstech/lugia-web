@@ -8,7 +8,7 @@ import '../common/shirm';
 import * as React from 'react';
 import Theme from '../theme';
 import InputTag from '../inputtag';
-import Trigger from '../trigger';
+import Trigger from '../trigger/OpenTrigger';
 import Menu from '../menu';
 import Widget from '../consts/index';
 import QueryInput from '../common/QueryInput';
@@ -398,6 +398,8 @@ class Select extends React.Component<SelectProps, SelectState> {
       isShowClearButton,
       onFocus,
       onBlur,
+      alwaysOpen,
+      liquidLayout,
     } = props;
     const { displayValue = [] } = this;
     const { value = [], menuVisible } = state;
@@ -407,7 +409,6 @@ class Select extends React.Component<SelectProps, SelectState> {
     const getMenuTriger: Function = (cmp: Object) => {
       this.menuTriger = cmp;
     };
-
     const result = (
       <Theme config={getInputtagThemeHoc(props)}>
         <Trigger
@@ -420,6 +421,8 @@ class Select extends React.Component<SelectProps, SelectState> {
           action={disabled ? [] : ['click']}
           hideAction={['click']}
           onPopupVisibleChange={this.onMenuPopupVisibleChange}
+          alwaysOpen={alwaysOpen}
+          liquidLayout={liquidLayout}
         >
           <InputTag
             ref={this.inputTag}
