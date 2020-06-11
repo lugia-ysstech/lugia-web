@@ -26,12 +26,12 @@ const AlertIcons = {
   error: 'lugia-icon-reminder_close_circle_o',
   warning: 'lugia-icon-reminder_exclamation_circle_o',
 };
-const TypeThemeProps = {
+const TypeThemeProps = () => ({
   info: {
     normal: {
       color: themeColor,
       border: getBorder({ color: themeColor, width: 4, style: 'solid' }, ['l']),
-      borderRadius: getBorderRadius(4),
+      borderRadius: getBorderRadius(get('borderRadiusValue')),
       background: { color: changeColor(get('themeColor'), 0, 0, 10).rgba },
     },
   },
@@ -39,7 +39,7 @@ const TypeThemeProps = {
     normal: {
       color: successColor,
       border: getBorder({ color: successColor, width: 4, style: 'solid' }, ['l']),
-      borderRadius: getBorderRadius(4),
+      borderRadius: getBorderRadius(get('borderRadiusValue')),
       background: { color: changeColor(get('successColor'), 0, 0, 10).rgba },
     },
   },
@@ -47,7 +47,7 @@ const TypeThemeProps = {
     normal: {
       color: warningColor,
       border: getBorder({ color: warningColor, width: 4, style: 'solid' }, ['l']),
-      borderRadius: getBorderRadius(4),
+      borderRadius: getBorderRadius(get('borderRadiusValue')),
       background: { color: changeColor(get('warningColor'), 0, 0, 10).rgba },
     },
   },
@@ -55,11 +55,11 @@ const TypeThemeProps = {
     normal: {
       color: dangerColor,
       border: getBorder({ color: dangerColor, width: 4, style: 'solid' }, ['l']),
-      borderRadius: getBorderRadius(4),
+      borderRadius: getBorderRadius(get('borderRadiusValue')),
       background: { color: changeColor(get('dangerColor'), 0, 0, 10).rgba },
     },
   },
-};
+});
 export default ThemeProvider(
   class extends React.Component<AlertProps, AlertState> {
     alert: any;
@@ -81,10 +81,10 @@ export default ThemeProvider(
     }
 
     getDefaultTheme(type: Type) {
-      if (TypeThemeProps[type]) {
-        return TypeThemeProps[type];
+      if (TypeThemeProps()[type]) {
+        return TypeThemeProps()[type];
       }
-      return TypeThemeProps.info;
+      return TypeThemeProps().info;
     }
 
     getAlertIconTheme = () => {
