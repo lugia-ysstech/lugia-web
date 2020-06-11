@@ -131,7 +131,11 @@ export default ThemeProvider(
       const hasCloseIcon = closable || !maskClosable;
       const closeIcon = hasCloseIcon ? (
         <DrawerClose>
-          <CloseText onClick={this.handleClose}>
+          <CloseText
+            __lugiad__header__absolute__={__lugiad__header__absolute__}
+            type={type}
+            onClick={this.handleClose}
+          >
             <Icon iconClass="lugia-icon-reminder_close" />
           </CloseText>
         </DrawerClose>
