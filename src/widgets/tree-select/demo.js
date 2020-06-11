@@ -186,8 +186,8 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
   constructor(props: TreeSelectProps) {
     super(props);
     this.state = {
-      value1: ['1'],
-      value: ['0-3', '0-2', '0-4'],
+      value1: ['0'],
+      value: ['1.1.1.1', '1.2.1', '0-4'],
     };
   }
 
