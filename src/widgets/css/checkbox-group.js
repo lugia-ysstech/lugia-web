@@ -22,6 +22,7 @@ const getFirstChildBorder = (props: GroupCSSProps): string => {
     const { cancel = false } = children[0].props;
     const { disabled = false } = children[0].props;
     const colors = themes.color || get('themeColor');
+    const borderRadiusValue = get('borderRadiusValue');
     if (childType === 'button') {
       if (disabled) {
         return `
@@ -32,7 +33,7 @@ const getFirstChildBorder = (props: GroupCSSProps): string => {
         return `
           border-left: 1px solid ${get('disabledColor')};
           & > span {
-            border-radius: ${px2remcss(4)} 0 0 ${px2remcss(4)};
+            border-radius: ${px2remcss(borderRadiusValue)} 0 0 ${px2remcss(borderRadiusValue)};
           }
         `;
       }
