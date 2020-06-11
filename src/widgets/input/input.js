@@ -187,6 +187,7 @@ const Fix = CSSComponent({
     },
   },
   css: css`
+    height: 100%;
     display: inline-flex;
     align-items: center;
   `,

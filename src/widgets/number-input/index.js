@@ -32,6 +32,7 @@ const ArrowIconContainer = CSSComponent({
       ['font'],
       ['color'],
       ['background'],
+      ['border', 'left'],
       ['cursor'],
       ['margin'],
       ['padding'],
@@ -50,20 +51,43 @@ const ArrowIconContainer = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['font'], ['fontSize'], ['color'], ['background'], ['cursor'], ['opacity']],
+    selectNames: [
+      ['font'],
+      ['fontSize'],
+      ['color'],
+      ['background'],
+      ['border', 'left'],
+      ['cursor'],
+      ['opacity'],
+    ],
   },
   active: {
-    selectNames: [['font'], ['fontSize'], ['color'], ['background'], ['cursor'], ['opacity']],
+    selectNames: [
+      ['font'],
+      ['fontSize'],
+      ['color'],
+      ['background'],
+      ['border', 'left'],
+      ['cursor'],
+      ['opacity'],
+    ],
   },
   disabled: {
-    selectNames: [['font'], ['fontSize'], ['color'], ['background'], ['cursor'], ['opacity']],
+    selectNames: [
+      ['font'],
+      ['fontSize'],
+      ['color'],
+      ['background'],
+      ['border', 'left'],
+      ['cursor'],
+      ['opacity'],
+    ],
     defaultTheme: {
       opacity: 0,
     },
   },
   css: css`
     height: 100%;
-    border-left: ${px2remcss(1)} solid ${get('borderColor')};
     -webkit-transition: all 0.3s linear 0.1s;
     transition: all 0.3s linear 0.1s;
     box-sizing: border-box;
@@ -118,7 +142,7 @@ const MinusButton = CSSComponent({
     },
   },
   css: css`
-    border-top: ${px2remcss(1)} solid ${get('borderColor')};
+    border-top: ${px2remcss(1)} solid ${() => get('borderColor')};
     height: 50%;
   `,
   option: { hover: true, active: true },
@@ -352,8 +376,20 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
       { ...iconDefaultTheme(subIconViewClass) },
       InputArrowSubtractIcon
     );
-
-    const theThemeProps = this.getThemePropsByType('container');
+    const defaultTheme = () => ({
+      themeConfig: {
+        normal: {
+          border: {
+            left: {
+              style: 'solid',
+              width: 1,
+              color: get('borderColor'),
+            },
+          },
+        },
+      },
+    });
+    const theThemeProps = deepMerge(defaultTheme(), this.getThemePropsByType('container'));
     const arrowIconPlusButtonThemeProps = this.getThemePropsByType('plus');
     const arrowIconMinusButtonThemeProps = this.getThemePropsByType('minus');
 
@@ -431,7 +467,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
           InputSuffix: {
             normal: {
               getCSS() {
-                return 'height:100%;opacity: 0;transition: all 0.3s;padding-right:0;';
+                return 'opacity: 0;transition: all 0.3s;padding-right:0;';
               },
             },
             hover: {
