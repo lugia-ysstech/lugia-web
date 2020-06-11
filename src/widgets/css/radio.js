@@ -4,7 +4,6 @@
  * @flow
  */
 
-import colorsFunc from '../css/stateColor';
 import { css } from 'styled-components';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
@@ -18,6 +17,7 @@ const em = px2remcss;
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
 
 type RadioStyleType = 'default' | 'vertical';
 export type CSStype = {
@@ -121,14 +121,14 @@ export const RadioChildrenSpan = CSSComponent({
   tag: 'span',
   className: 'RadioChildrenSpan',
   css: css`
-    padding-left: ${props => (props.hasChildren ? em(get('padding')) : 0)};
+    padding-left: ${props => (props.hasChildren ? em(get('marginToSameElement')) : 0)};
     vertical-align: middle;
   `,
   normal: {
     selectNames: [['color'], ['font'], ['padding']],
     defaultTheme: {
       color: blackColor,
-      font: { size: 14 },
+      font: { size: sectionFontSize },
     },
   },
   hover: {
