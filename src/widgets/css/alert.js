@@ -180,7 +180,7 @@ export const Message = CSSComponent({
       const { hasDect } = propsConfig;
 
       return {
-        font: { size: hasDect ? 16 : 14 },
+        font: { size: hasDect ? get('headLineFontSize') : get('sectionFontSize') },
         color: hasDect ? blackColor : darkGreyColor,
       };
     },
@@ -216,7 +216,7 @@ export const CloseText = CSSComponent({
     right: ${px2remcss(get('padding'))};
   `,
   normal: {
-    defaultTheme: { font: { size: 12 } },
+    defaultTheme: { font: { size: get('descriptionFontSize') } },
     selectNames: [['color'], ['font']],
     getThemeMeta(themeMeta, themeProps) {
       return getCloseTextColor(themeProps, 'color');
@@ -255,7 +255,7 @@ export const Description = CSSComponent({
   normal: {
     defaultTheme: {
       color: darkGreyColor,
-      font: { size: 14 },
+      font: { size: get('sectionFontSize') },
       padding: { top: 0, right: 0, bottom: 0, left: 0 },
     },
     selectNames: [['color'], ['font'], ['padding']],
