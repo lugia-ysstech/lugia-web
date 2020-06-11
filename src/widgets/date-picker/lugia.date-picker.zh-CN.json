@@ -63,17 +63,6 @@
     "buttonOptions": {
       "type": "Object",
       "desc": "自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ",
-      "meta": [
-        {
-          "key": "options",
-          "title": "页脚按钮",
-          "type": "Object",
-          "children": [
-            { "key": "buttonName", "title": "按钮显示文本", "type": "string" },
-            { "key": "time", "title": "时间", "type": "string" }
-          ]
-        }
-      ],
       "defaultValue": ""
     },
     "step": {
