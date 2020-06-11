@@ -94,7 +94,7 @@ const activeAnimate = keyframes`
 const getProgtrssWidth = (props: CSSProps) => {
   const { showInfo, showType } = props;
   if (showInfo && showType === 'default') {
-    return `width: calc(100% - ${px2remcss(30)});`;
+    return `width: calc(100% - ${px2remcss(get('marginToSameElement') + 20)});`;
   }
 
   return 'width: 100%;';
