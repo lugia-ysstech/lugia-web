@@ -20,6 +20,7 @@ const em = px2remcss;
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
 
 export type CSStype = {
   themes: ThemeType,
@@ -139,28 +140,28 @@ export const CheckBoxLabelSpan = CSSComponent({
   tag: 'span',
   className: 'CheckBoxLabelSpan',
   css: css`
-    padding-left: ${props => (props.hasChildren ? em(10) : 0)};
+    padding-left: ${props => (props.hasChildren ? em(get('marginToSameElement')) : 0)};
     vertical-align: middle;
   `,
   normal: {
     selectNames: [['color'], ['font'], ['padding']],
     defaultTheme: {
       color: blackColor,
-      font: { size: 14 },
+      font: { size: sectionFontSize },
     },
   },
   hover: {
     selectNames: [['color'], ['font']],
     defaultTheme: {
       color: blackColor,
-      font: { fontSize: 14 },
+      font: { fontSize: sectionFontSize },
     },
   },
   disabled: {
     selectNames: [['color'], ['font']],
     defaultTheme: {
       color: disableTextColor,
-      font: { fontSize: 14 },
+      font: { fontSize: sectionFontSize },
     },
   },
 });

@@ -37,7 +37,7 @@ const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 
-const defaultEdgeCancelProps = {
+const defaultEdgeCancelProps = () => ({
   themeConfig: {
     normal: {
       border: getBorder({ color: themeDisabledColor, width: 1, style: 'solid' }),
@@ -45,7 +45,7 @@ const defaultEdgeCancelProps = {
       background: { color: themeDisabledColor },
     },
   },
-};
+});
 
 const defaultEdgeTheme = {
   themeConfig: {
@@ -169,7 +169,7 @@ export default ThemeProvider(
         ? deepMerge(defaultCancelTextTheme, checkboxCancelTextTheme)
         : checkboxCommonTextTheme;
       const circleEdgeTheme = cancel
-        ? deepMerge(defaultEdgeCancelProps, circleEdgeCancelTheme)
+        ? deepMerge(defaultEdgeCancelProps(), circleEdgeCancelTheme)
         : checked
         ? deepMerge(defaultEdgeTheme, circleEdgeCheckedTheme)
         : indeterminate
