@@ -41,3 +41,7 @@ export function tansValueFromStringToArray(props) {
   }
   return newProps;
 }
+export function getNewStepProps(props: Object) {
+  const { step } = props;
+  return typeof step === 'number' && !isNaN(step) && step > 0 ? step : 12;
+}

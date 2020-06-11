@@ -60,8 +60,7 @@
     },
     "step": {
       "type": "number",
-      "desc": "设置周,年的展示步长",
-      "propsDefaultValue": false
+      "desc": "设置周,年的展示步长"
     },
     "validateStatus": {
       "type": "ValidateStatus",
