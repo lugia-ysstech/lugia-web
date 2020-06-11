@@ -259,14 +259,39 @@
         ["font"],
         ["color"],
         ["background"],
+        ["border", "left"],
         ["cursor"],
         ["margin"],
         ["padding"],
         ["opacity"]
       ],
-      "hover": [["font"], ["fontSize"], ["color"], ["background"], ["cursor"], ["opacity"]],
-      "active": [["font"], ["fontSize"], ["color"], ["background"], ["cursor"], ["opacity"]],
-      "disabled": [["font"], ["fontSize"], ["color"], ["background"], ["cursor"], ["opacity"]]
+      "hover": [
+        ["font"],
+        ["fontSize"],
+        ["color"],
+        ["background"],
+        ["border", "left"],
+        ["cursor"],
+        ["opacity"]
+      ],
+      "active": [
+        ["font"],
+        ["fontSize"],
+        ["color"],
+        ["background"],
+        ["border", "left"],
+        ["cursor"],
+        ["opacity"]
+      ],
+      "disabled": [
+        ["font"],
+        ["fontSize"],
+        ["color"],
+        ["background"],
+        ["border", "left"],
+        ["cursor"],
+        ["opacity"]
+      ]
     },
     "InputArrowIcon": {
       "name": "数字输入框步长图标",
