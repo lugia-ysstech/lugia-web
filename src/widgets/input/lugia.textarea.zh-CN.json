@@ -56,6 +56,14 @@
     "help": {
       "type": "string",
       "desc": "校验提示信息"
+    },
+    "cols": {
+      "type": "number",
+      "desc": "段落文本输入框展示内容的字数"
+    },
+    "rows": {
+      "type": "number",
+      "desc": "段落文本输入框展示内容的行数"
     }
   },
   "events": {
