@@ -8,7 +8,7 @@ import '../common/shirm';
 import Theme from '../theme';
 import React from 'react';
 import InputTag from '../inputtag';
-import Trigger from '../trigger';
+import Trigger from '../trigger/OpenTrigger';
 import Tree from '../tree/index.js';
 import ThemeHoc from '@lugia/theme-hoc';
 import Widget from '../consts/index';
@@ -339,6 +339,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       onFocus,
       onBlur,
       size = 'default',
+      alwaysOpen,
+      liquidLayout,
     } = props;
     const { value, displayValue, menuVisible } = state;
 
@@ -359,6 +361,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           createPortal={createPortal}
           action={disabled ? [] : ['click']}
           hideAction={['click']}
+          alwaysOpen={alwaysOpen}
+          liquidLayout={liquidLayout}
         >
           <InputTag
             size={size}
