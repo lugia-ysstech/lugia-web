@@ -220,7 +220,7 @@ export const getTextFont = (propsConfig: Object) => {
     return 40;
   }
 
-  return isSmall(size) ? 12 : 14;
+  return isSmall(size) ? 12 : get('sectionFontSize');
 };
 
 export const ProgressText = CSSComponent({
