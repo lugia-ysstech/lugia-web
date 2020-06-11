@@ -22,7 +22,7 @@ export const quickcall = () => {
       placement,
       getTheme,
       maskClosable = true,
-      handle = false,
+      sidebar = false,
       onToggle,
     } = props;
     const config: Object = {
@@ -35,7 +35,7 @@ export const quickcall = () => {
       placement,
       getTheme,
       maskClosable,
-      handle,
+      sidebar,
       onToggle,
     };
     const div = document.createElement('div');

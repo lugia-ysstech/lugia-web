@@ -23,7 +23,7 @@ export class FncDrawer extends React.Component<any, any> {
       {
         visible: false,
       },
-      this.removeDom
+      this.removeDom()
     );
     onClose && onClose();
   };
@@ -31,16 +31,10 @@ export class FncDrawer extends React.Component<any, any> {
     const { onToggle } = this.props;
     const { visible } = this.state;
     if (visible) {
-      this.setState({
-        visible: false,
-      });
-      this.removeDom;
+      this.removeDom();
       onToggle && onToggle();
-    } else {
-      this.setState({
-        visible: true,
-      });
     }
+    this.setState({ visible: !visible });
   };
   render() {
     const { visible } = this.state;
