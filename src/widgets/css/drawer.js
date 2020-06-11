@@ -91,7 +91,7 @@ const getAnimateDirection = (props: CSSProps): string => {
   }
   return 'right';
 };
-const getDefaultValut = (isHorizontal: boolean): number => (!isHorizontal && 256) || 100;
+const getDefaultValue = (isHorizontal: boolean): number => (!isHorizontal && 256) || 100;
 const getWidthOrHeight = (props: CSSProps) => {
   const { placement } = props;
   const isPlacedInHorizontal = placement === 'top' || placement === 'bottom';
@@ -99,8 +99,8 @@ const getWidthOrHeight = (props: CSSProps) => {
     themeProps: {
       themeConfig: {
         normal: {
-          width = getDefaultValut(isPlacedInHorizontal),
-          height = getDefaultValut(!isPlacedInHorizontal),
+          width = getDefaultValue(isPlacedInHorizontal),
+          height = getDefaultValue(!isPlacedInHorizontal),
         } = {},
       } = {},
     } = {},
