@@ -19541,7 +19541,7 @@ export default [
             SelectLine: {
               name: '选中页签底部标识线',
               desc: '选中页签底部标识线样式配置',
-              normal: [['height'], ['background']],
+              normal: [['width'], ['height'], ['background']],
             },
           },
         },
