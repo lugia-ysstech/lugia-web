@@ -272,7 +272,7 @@ const verticalCommonProperty = `
   top:calc(50% - 24px);
 `;
 const getHandleWidthOrHeightByDirection = (props: CSSProps) => {
-  const { visible, placement } = props;
+  const { visible, placement = 'right' } = props;
   const absolutePosition = visible ? '-16px' : '-24px';
   if (placement === 'top' || placement === 'bottom') {
     const isLocateTop = placement === 'top';
