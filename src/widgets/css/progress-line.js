@@ -223,6 +223,7 @@ export const getTextFont = (propsConfig: Object) => {
   return isSmall(size) ? 12 : get('sectionFontSize');
 };
 
+const getMarginLeft = () => `margin-left: ${px2remcss(get('marginToSameElement'))};`;
 export const ProgressText = CSSComponent({
   tag: 'span',
   className: 'ProgressText',
@@ -230,10 +231,10 @@ export const ProgressText = CSSComponent({
     display: inline-block;
     width: ${px2remcss(20)};
     text-align: left;
-    margin-left: ${px2remcss(get('marginToSameElement'))};
     white-space: nowrap;
     word-break: normal;
     vertical-align: middle;
+    ${getMarginLeft}
   `,
   normal: {
     selectNames: [['font'], ['color']],
