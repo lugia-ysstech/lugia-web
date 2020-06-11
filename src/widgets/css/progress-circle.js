@@ -7,6 +7,7 @@ import styled, { css } from 'styled-components';
 import { px2remcss } from './units';
 import { getTextColor, getWrapFontSize } from './progress-line';
 import CSSComponent from '@lugia/theme-css-hoc';
+import get from './theme-common-dict';
 
 const blackColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 
@@ -44,7 +45,7 @@ export const SvgText = CSSComponent({
   normal: {
     selectNames: [['font'], ['color']],
     defaultTheme: {
-      font: { size: 24 },
+      font: { size: get('largeTitleFontSize') },
       color: blackColor,
     },
     getThemeMeta(themeMeta, themeProps): Object {
