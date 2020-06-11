@@ -36,9 +36,9 @@ const getFirstChildBorder = (props: GroupCSSProps): string => {
           }
         `;
       }
-
+      const { color: normalBorderColor } = get('normalBorder');
       return `
-        border-left: 1px solid ${checked ? colors : get('borderColor')};
+        border-left: 1px solid ${checked ? colors : normalBorderColor};
       `;
     }
   }
