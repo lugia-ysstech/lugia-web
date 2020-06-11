@@ -39,7 +39,7 @@ export default class DrawerDemo extends React.Component<any, any> {
       ['visible' + cur]: false,
     });
   };
-  onHandleClick = (cur: number) => () => {
+  onSidebarClick = (cur: number) => () => {
     this.setState({
       ['visible' + cur]: !this.state['visible' + cur],
     });
@@ -94,8 +94,8 @@ export default class DrawerDemo extends React.Component<any, any> {
           placement={radioValue}
           onClose={this.onClick(2)}
           visible={visible2}
-          handle={true}
-          onToggle={this.onHandleClick(2)}
+          sidebar={true}
+          onToggle={this.onSidebarClick(2)}
         >
           <p>Direction Drawer</p>
           <p>Direction Drawer</p>

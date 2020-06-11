@@ -36,7 +36,7 @@
       "desc": "是否展示抽屉右上角关闭按钮",
       "defaultValue": false
     },
-    "handle": {
+    "sidebar": {
       "type": "boolean",
       "desc": "是否展示抽屉侧边抽拉按钮",
       "defaultValue": false

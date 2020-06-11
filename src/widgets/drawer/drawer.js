@@ -120,7 +120,7 @@ export default ThemeProvider(
         getPartOfThemeProps,
         injectLugiad: { type } = {},
         __lugiad__header__absolute__,
-        handle = false,
+        sidebar = false,
       } = this.props;
       const drawerWrapTheme = getPartOfThemeProps('Container');
       const handleWrapTheme = getPartOfThemeProps('handleWrap');
@@ -150,7 +150,7 @@ export default ThemeProvider(
           closing={closing}
           transform={transform}
         >
-          {handle ? (
+          {sidebar ? (
             <HandleWrap
               themeProps={handleWrapTheme}
               placement={placement}
