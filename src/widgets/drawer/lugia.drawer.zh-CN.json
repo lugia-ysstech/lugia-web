@@ -35,11 +35,20 @@
       "type": "boolean",
       "desc": "是否展示抽屉右上角关闭按钮",
       "defaultValue": false
+    },
+    "handle": {
+      "type": "boolean",
+      "desc": "是否展示抽屉侧边抽拉按钮",
+      "defaultValue": false
     }
   },
   "events": {
     "onClose": {
       "desc": "抽屉关闭时的回调",
+      "args": []
+    },
+    "onToggle": {
+      "desc": "抽拉抽屉时的回调",
       "args": []
     }
   },
