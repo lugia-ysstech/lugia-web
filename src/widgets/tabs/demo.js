@@ -835,7 +835,9 @@ export default class TabsDemo extends React.Component<any, any> {
           },
           SelectLine: {
             normal: {
-              background: 'black',
+              background: {
+                color: 'black',
+              },
               height: 5,
               width: 5,
             },
