@@ -10,7 +10,7 @@ import { RangeWrap, RangeWrapInner, Box } from '../styled/styled';
 import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
 import { formatValueIsValid, getIsSame, getOpenProps } from '../utils/booleanUtils';
-import { getformatSymbol } from '../utils/utils';
+import { getformatSymbol, getNewStepProps } from '../utils/utils';
 import { getFacePanelContain, getWrapThemeProps } from '../themeConfig/themeConfig';
 type TypeProps = {
   defaultValue?: Array<string>,
@@ -494,6 +494,7 @@ class Range extends Component<TypeProps, TypeState> {
                   model={this.targetModeFirst}
                   timeValue={value[0]}
                   themeProps={themeProps}
+                  step={getNewStepProps(this.props)}
                 />
                 <SwitchPanel
                   {...this.props}
