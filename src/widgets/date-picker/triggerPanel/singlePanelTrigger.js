@@ -229,7 +229,7 @@ class DateInput extends Component<TypeProps, TypeState> {
             align="bottomLeft"
             key="trigger"
             ref={this.trigger}
-            action={disabled || readOnly || this.isClear || ['click']}
+            action={disabled || readOnly || this.isClear ? [] : ['click']}
             hideAction={['click']}
           >
             <Input

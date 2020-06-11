@@ -523,7 +523,7 @@ class Range extends Component<TypeProps, TypeState> {
           align="bottomLeft"
           key="trigger"
           ref={this.trigger}
-          action={disabled || readOnly || ['click']}
+          action={disabled || readOnly ? [] : ['click']}
           hideAction={['click']}
         >
           <RangeInput
