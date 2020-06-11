@@ -220,7 +220,7 @@ export const DrawerContent = styled.div`
 `;
 const getHeaderLugiadCSS = (props: CSSProps): string => {
   const { __lugiad__header__absolute__ = false, type } = props;
-  if (__lugiad__header__absolute__ || type === 'Modal') {
+  if (__lugiad__header__absolute__ || type === 'Drawer') {
     return css`
       position: absolute;
       left: 20px;
@@ -253,6 +253,15 @@ export const DrawerClose = styled.div`
   right: 0;
   top: 0;
 `;
+const getCloseLugiadCSS = (props: CSSProps): string => {
+  const { __lugiad__header__absolute__ = false, type } = props;
+  if (__lugiad__header__absolute__ || type === 'Drawer') {
+    return css`
+      z-index: 4000;
+    `;
+  }
+  return '';
+};
 export const CloseText = styled.span`
   display: block;
   width: ${HeaderEM(56)};
@@ -260,6 +269,7 @@ export const CloseText = styled.span`
   text-align: center;
   line-height: ${HeaderEM(60)};
   cursor: pointer;
+  ${getCloseLugiadCSS}
 `;
 const horizontalCommonProperty = `
   height:16px;
