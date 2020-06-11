@@ -15,7 +15,7 @@ export type DrawerProps = {
   mask?: boolean,
   maskClosable?: boolean,
   closable?: boolean,
-  handle?: boolean,
+  sidebar?: boolean,
   onToggle: Function,
   onClose?: Function,
   children: any,
