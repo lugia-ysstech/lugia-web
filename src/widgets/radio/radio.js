@@ -13,6 +13,7 @@ import Widget from '../consts/index';
 import type { RadioProps } from '../css/radio';
 import { RadioChildrenSpan, RadioContent, RadioCircleSpan, RadioWrap } from '../css/radio';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
+import get from '../css/theme-common-dict';
 
 type RadioState = {
   checked: boolean,
@@ -22,7 +23,6 @@ const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
-const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const cancelColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
@@ -32,7 +32,7 @@ const defaultProps = {
   normal: { width: 10, height: 10, background: { color: themeColor } },
   disabled: { width: 10, height: 10, background: { color: lightGreyColor } },
 };
-const defaultEdgeCancelProps = {
+const defaultEdgeCancelProps = () => ({
   themeConfig: {
     normal: {
       width: 16,
@@ -42,7 +42,7 @@ const defaultEdgeCancelProps = {
       borderRadius: getBorderRadius(100),
     },
   },
-};
+});
 const defaultInnerCancelProps = {
   normal: { width: 10, height: 10, background: { color: cancelColor } },
 };
@@ -53,27 +53,30 @@ const defaultTextCancelProps = {
     },
   },
 };
-const defaultEdgeUnCheckedProps = {
+const defaultEdgeUnCheckedProps = () => ({
   themeConfig: {
     normal: {
       width: 16,
       height: 16,
       background: { color: defaultColor },
-      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+      border: getBorder(get('normalBorder')),
       borderRadius: getBorderRadius('100%'),
     },
     hover: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      border: getBorder(get('hoverBorder')),
       borderRadius: getBorderRadius('100%'),
       background: { color: defaultColor },
     },
+    focus: {
+      border: getBorder(get('focusBorder')),
+    },
     disabled: {
       background: { color: disableColor },
-      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+      border: getBorder(get('disabledBorder')),
       borderRadius: getBorderRadius('100%'),
     },
   },
-};
+});
 const defaultEdgeCheckedProps = {
   themeConfig: {
     normal: {
@@ -147,10 +150,10 @@ export default ThemeProvider(
       const radioInnerCheckedTheme = getPartOfThemeConfig('RadioInnerChecked');
       const radioInnerCancelTheme = getPartOfThemeConfig('RadioInnerChecked');
       const circleEdgeTheme = cancel
-        ? deepMerge(defaultEdgeCancelProps, radioEdgeCancelTheme)
+        ? deepMerge(defaultEdgeCancelProps(), radioEdgeCancelTheme)
         : checked
         ? deepMerge(defaultEdgeCheckedProps, radioEdgeCheckedTheme)
-        : deepMerge(defaultEdgeUnCheckedProps, radioEdgeUnCheckedTheme);
+        : deepMerge(defaultEdgeUnCheckedProps(), radioEdgeUnCheckedTheme);
       const radioTextTheme = cancel
         ? deepMerge(defaultTextCancelProps, radioTextCancelTheme)
         : radioTextNormalTheme;
