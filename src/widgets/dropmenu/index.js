@@ -4,7 +4,7 @@
  *
  */
 import * as React from 'react';
-import Trigger from '../trigger';
+import Trigger from '../trigger/OpenTrigger';
 import Theme from '../theme';
 import ThemeProvider from '../theme-provider';
 import { deepMerge } from '@lugia/object-utils';
@@ -102,7 +102,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   }
 
   render() {
-    const { menus, action, hideAction, align, createPortal } = this.props;
+    const { menus, action, hideAction, align, createPortal, alwaysOpen, liquidLayout } = this.props;
     const config = {
       [Widget.DropMenuButton]: this.getDropMenuButtonTheme(),
       [Widget.Menu]: this.getMenuTheme(),
@@ -151,6 +151,8 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
           onPopupVisibleChange={this.onPopupVisibleChange}
           popupVisible={this.state.popupVisible}
           popup={popup}
+          alwaysOpen={alwaysOpen}
+          liquidLayout={liquidLayout}
         >
           {this.getChildrenItem()}
         </Trigger>
