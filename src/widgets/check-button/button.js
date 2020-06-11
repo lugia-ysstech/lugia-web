@@ -6,6 +6,7 @@ import Widget from '../consts';
 import { LabelWrapper, CheckInput, CheckSpan, CancelSpan, IconWrap } from '../css/check-button';
 import type { CheckProps, CheckState } from '../css/check-button';
 import { getBorder } from '@lugia/theme-utils';
+import get from '../css/theme-common-dict';
 
 const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 const spiritColor = '$lugia-dict.@lugia/lugia-web.spiritColor';
@@ -88,19 +89,12 @@ const defaultRadioCheckedTheme = {
     disabled: checkedDisabledCommonTheme,
   },
 };
-const defaultUnCheckedTheme = {
+const defaultUnCheckedTheme = () => ({
   themeConfig: {
     normal: {
       color: blackColor,
       border: {
-        ...getBorder(
-          {
-            color: borderColor,
-            width: 1,
-            style: 'solid',
-          },
-          { directions: ['t', 'r', 'b'] }
-        ),
+        ...getBorder(get('normalBorder'), { directions: ['t', 'r', 'b'] }),
       },
       background: { color: '#fff' },
       fontSize: 12,
@@ -117,18 +111,11 @@ const defaultUnCheckedTheme = {
     disabled: {
       color: disableTextColor,
       border: {
-        ...getBorder(
-          {
-            color: borderDisableColor,
-            width: 1,
-            style: 'solid',
-          },
-          { directions: ['t', 'r', 'b'] }
-        ),
+        ...getBorder(get('disabledBorder'), { directions: ['t', 'r', 'b'] }),
       },
     },
   },
-};
+});
 
 CheckSpan.displayName = 'hello';
 CancelSpan.displayName = 'cancel';
@@ -180,7 +167,7 @@ export default ThemeProvider(
         ? deepMerge(dftCancelTheme, cancelTheme)
         : checked
         ? deepMerge(dftCheckedTheme, checkedTheme)
-        : deepMerge(defaultUnCheckedTheme, unCheckedTheme);
+        : deepMerge(defaultUnCheckedTheme(), unCheckedTheme);
       return (
         <LabelWrapper
           size={size}
