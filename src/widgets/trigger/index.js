@@ -117,6 +117,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   component: any;
   clickOutsideHandler: ?Function;
+  blurOutsideHandler: ?Function;
   touchOutsideHandler: ?Function;
   delayTimer: ?TimeoutID;
   focusTime: number;
@@ -206,7 +207,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   }
 
   componentDidUpdate() {
-    const { getDocument } = this.props;
+    const { getDocument, closeBlur } = this.props;
     const { popupVisible } = this.state;
     if (popupVisible) {
       let currentDocument;
@@ -217,6 +218,10 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
           'mousedown',
           this.onDocumentClick
         );
+        if (!this.blurOutsideHandler && closeBlur) {
+          currentDocument = getDocument();
+          this.blurOutsideHandler = addEventListener(currentDocument, 'blur', this.onDocumentClick);
+        }
       }
       // always hide on mobile
       if (!this.touchOutsideHandler) {
@@ -301,6 +306,11 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     if (this.touchOutsideHandler) {
       this.touchOutsideHandler.remove();
       this.touchOutsideHandler = null;
+    }
+
+    if (this.blurOutsideHandler) {
+      this.blurOutsideHandler.remove();
+      this.blurOutsideHandler = null;
     }
   }
 
