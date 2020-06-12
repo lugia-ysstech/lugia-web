@@ -29,7 +29,7 @@ export default class extends React.Component<IconConProps, IconConState> {
       [viewClass]: {
         normal: {
           color: IconInfo[iconType].color,
-          font: { size: 16 },
+          font: { size: '$lugia-dict.@lugia/lugia-web.sFontSize' },
           cursor: 'default',
           getCSS() {
             return css`

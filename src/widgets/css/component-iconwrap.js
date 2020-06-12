@@ -18,6 +18,7 @@ export type IconConProps = {
 export type IconConState = {};
 
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
 
 export const IconInfo = {
   info: {
@@ -69,7 +70,7 @@ export const MessageText = CSSComponent({
     defaultTheme: {
       color: darkGreyColor,
       font: {
-        size: 14,
+        size: sectionFontSize,
       },
     },
   },
