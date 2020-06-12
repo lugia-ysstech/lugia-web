@@ -13781,7 +13781,22 @@ export default [
                 ['font'],
                 ['opacity'],
               ],
-              active: [],
+              focus: [
+                ['color'],
+                ['background'],
+                ['border'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['opacity'],
+              ],
+              active: [
+                ['color'],
+                ['background'],
+                ['border'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['opacity'],
+              ],
               disabled: [
                 ['width'],
                 ['height'],
@@ -13962,7 +13977,6 @@ export default [
                       name: '选中项的外盒',
                       desc: '配置选中项的外盒',
                       normal: [
-                        ['height'],
                         ['color'],
                         ['font'],
                         ['fontSize'],
@@ -14155,7 +14169,22 @@ export default [
             ['font'],
             ['opacity'],
           ],
-          active: [],
+          focus: [
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['opacity'],
+          ],
+          active: [
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['opacity'],
+          ],
           disabled: [
             ['width'],
             ['height'],
@@ -14303,7 +14332,6 @@ export default [
                   name: '选中项的外盒',
                   desc: '配置选中项的外盒',
                   normal: [
-                    ['height'],
                     ['color'],
                     ['font'],
                     ['fontSize'],
@@ -14581,7 +14609,22 @@ export default [
             ['font'],
             ['opacity'],
           ],
-          active: [],
+          focus: [
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['opacity'],
+          ],
+          active: [
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['opacity'],
+          ],
           disabled: [
             ['width'],
             ['height'],
@@ -14762,7 +14805,6 @@ export default [
                   name: '选中项的外盒',
                   desc: '配置选中项的外盒',
                   normal: [
-                    ['height'],
                     ['color'],
                     ['font'],
                     ['fontSize'],
@@ -21241,7 +21283,7 @@ export default [
             TransferHeaderWrap: {
               name: '穿梭框面板头部',
               desc: '为穿梭框配置左右面板头部样式',
-              normal: [['background'], ['border']],
+              normal: [['background'], [['border'], ['bottom']]],
             },
             TransferPanelHeaderCheckbox: {
               name: '穿梭框面板头部Checkbox',
@@ -21348,7 +21390,6 @@ export default [
                   normal: [
                     ['width'],
                     ['height'],
-                    ['boxShadow'],
                     ['background'],
                     ['opacity'],
                     ['border'],
@@ -21356,7 +21397,7 @@ export default [
                     ['margin'],
                     ['padding'],
                   ],
-                  hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
+                  hover: [['background'], ['opacity'], ['border'], ['borderRadius']],
                   clicked: [],
                   disabled: [],
                 },
@@ -21561,7 +21602,7 @@ export default [
         TransferHeaderWrap: {
           name: '穿梭框面板头部',
           desc: '为穿梭框配置左右面板头部样式',
-          normal: [['background'], ['border']],
+          normal: [['background'], [['border'], ['bottom']]],
         },
         TransferPanelHeaderCheckbox: {
           name: '穿梭框面板头部Checkbox',
@@ -21908,7 +21949,7 @@ export default [
         TransferHeaderWrap: {
           name: '穿梭框面板头部',
           desc: '为穿梭框配置左右面板头部样式',
-          normal: [['background'], ['border']],
+          normal: [['background'], [['border'], ['bottom']]],
         },
         TransferPanelHeaderCheckbox: {
           name: '穿梭框面板头部Checkbox',
@@ -22015,7 +22056,6 @@ export default [
               normal: [
                 ['width'],
                 ['height'],
-                ['boxShadow'],
                 ['background'],
                 ['opacity'],
                 ['border'],
@@ -22023,7 +22063,7 @@ export default [
                 ['margin'],
                 ['padding'],
               ],
-              hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
+              hover: [['background'], ['opacity'], ['border'], ['borderRadius']],
               clicked: [],
               disabled: [],
             },
