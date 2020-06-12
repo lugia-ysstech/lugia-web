@@ -698,8 +698,16 @@ class Select extends React.Component<SelectProps, SelectState> {
   };
 
   setSelectMenuPopupVisible(visible: boolean) {
-    if (this.menuTriger && this.menuTriger.getThemeTarget()) {
-      this.menuTriger.getThemeTarget().setPopupVisible(visible);
+    if (
+      this.menuTriger &&
+      this.menuTriger.getTrigger() &&
+      this.menuTriger.getTrigger().current &&
+      this.menuTriger.getTrigger().current.getThemeTarget()
+    ) {
+      this.menuTriger
+        .getTrigger()
+        .current.getThemeTarget()
+        .setPopupVisible(visible);
     }
   }
 

@@ -10,9 +10,18 @@ type TypeProps = {
   alwaysOpen?: boolean,
   liquidLayout?: boolean,
 };
-export default function OpenTrigger(props: TypeProps) {
-  const { alwaysOpen, liquidLayout } = props;
-  const newPopupVisible = alwaysOpen ? { popupVisible: true } : {};
-  const newCreatePortal = liquidLayout ? { createPortal: false } : {};
-  return <Trigger {...props} {...newPopupVisible} {...newCreatePortal} />;
+
+export default class OpenTrigger extends React.Component<TypeProps, null> {
+  triggerRef = React.createRef();
+  getTrigger = () => {
+    return this.triggerRef;
+  };
+  render() {
+    const { alwaysOpen, liquidLayout } = this.props;
+    const newPopupVisible = alwaysOpen ? { popupVisible: true } : {};
+    const newCreatePortal = liquidLayout ? { createPortal: false } : {};
+    return (
+      <Trigger ref={this.triggerRef} {...this.props} {...newPopupVisible} {...newCreatePortal} />
+    );
+  }
 }

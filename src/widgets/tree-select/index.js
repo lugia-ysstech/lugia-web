@@ -776,8 +776,16 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   setTreePopupVisible(visible: boolean) {
-    if (this.treeTriger && this.treeTriger.getThemeTarget()) {
-      this.treeTriger.getThemeTarget().setPopupVisible(visible);
+    if (
+      this.treeTriger &&
+      this.treeTriger.getTrigger() &&
+      this.treeTriger.getTrigger().current &&
+      this.treeTriger.getTrigger().current.getThemeTarget()
+    ) {
+      this.treeTriger
+        .getTrigger()
+        .current.getThemeTarget()
+        .setPopupVisible(visible);
     }
   }
 
