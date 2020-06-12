@@ -87,13 +87,7 @@
                 "text": "前缀符号",
                 "desc": "金额输入框前缀符号"
               }
-            },
-            "props": [
-              {
-                "name": "amountPrefix",
-                "typeInTheme": "text"
-              }
-            ]
+            }
           }
         ]
       },
