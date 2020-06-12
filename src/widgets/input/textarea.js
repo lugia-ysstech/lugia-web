@@ -69,18 +69,17 @@ const Textarea = CSSComponent({
           resizeType,
         },
       } = themeProps;
-      const { width, height } = themeMeta;
+      const { width } = themeMeta;
       const theColor = color ? color : placeHolderColor;
       const theSize = size || placeHolderFontSize || xxsFontSize;
       const theWidth = getSize(width);
-      const theHeight = getSize(height);
       let theResizeType = resizeType;
       if (checkIsPercent(width)) {
         theResizeType = 'none';
       }
       return css`
         width: ${theWidth};
-        height: ${theHeight};
+        height: 100%;
         resize: ${theResizeType};
         &::placeholder {
           color: ${theColor};
@@ -143,12 +142,11 @@ const TextareaContainer = CSSComponent({
   tag: 'span',
   className: 'TextareaContainer',
   normal: {
-    selectNames: [['margin']],
+    selectNames: [['margin'], ['height']],
     getCSS(themeMeta: Object, themeProps: Object) {
-      const { width, height } = themeMeta;
+      const { width } = themeMeta;
       const theWidth = checkIsPercent(width) ? width : '';
-      const theHeight = checkIsPercent(height) ? height : '';
-      return `width:${theWidth};height:${theHeight};`;
+      return `width:${theWidth};`;
     },
   },
   hover: {
