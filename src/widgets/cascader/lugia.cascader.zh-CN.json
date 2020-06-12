@@ -40,6 +40,33 @@
       "desc": "显示框占位符"
     },
 
+    "pullIconClass": {
+      "type": "icon",
+      "desc": "下拉图标",
+      "propsDefaultValue": "lugia-icon-direction_down"
+    },
+
+    "clearIconClass": {
+      "type": "icon",
+      "desc": "清除图标",
+      "propsDefaultValue": "lugia-icon-reminder_close"
+    },
+
+    "switchIconClass": {
+      "type": "object",
+      "desc": "展开图标",
+      "meta": [{ "key": "iconClass", "title": "展开图标", "type": "icon" }],
+      "defaultValue": {
+        "iconClass": "lugia-icon-direction_right"
+      }
+    },
+
+    "autoHeight": {
+      "type": "boolean",
+      "desc": "根据data数量，自动计算弹出菜单高度",
+      "propsDefaultValue": false
+    },
+
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
@@ -77,7 +104,7 @@
           "title": "前/后缀图标",
           "type": "object",
           "children": [
-            { "key": "preIconClass", "title": "前缀图标", "type": "icon" },
+            { "key": "prefixIconClass", "title": "前缀图标", "type": "icon" },
             { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
             { "key": "prefixIconSrc", "title": "前缀图片", "type": "image" },
             { "key": "suffixIconSrc", "title": "后缀图片", "type": "image" }
@@ -407,6 +434,15 @@
               "disabled": []
             },
 
+            "SelectedDesContainer": {
+              "name": "选中项辅助字段框",
+              "desc": "配置被选中项的辅助文本的样式和位置",
+              "normal": [["color"], ["font"], ["fontSize"], ["padding"]],
+              "hover": [],
+              "active": [],
+              "disabled": []
+            },
+
             "TextContainer": {
               "name": "文本框",
               "desc": "配置文本和前缀后缀图标的位置",
@@ -563,6 +599,15 @@
                   "normal": [["color"], ["font"], ["fontSize"], ["padding"], ["lineHeight"]],
                   "hover": [["color"], ["font"], ["fontSize"]],
                   "active": [["color"], ["font"], ["fontSize"]],
+                  "disabled": []
+                },
+
+                "SelectedDesContainer": {
+                  "name": "选中项辅助字段框",
+                  "desc": "配置被选中项的辅助文本的样式和位置",
+                  "normal": [["color"], ["font"], ["fontSize"], ["padding"]],
+                  "hover": [],
+                  "active": [],
                   "disabled": []
                 },
 
