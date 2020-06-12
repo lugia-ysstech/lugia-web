@@ -147,15 +147,15 @@ export default ThemeProvider(
           ? selectKeyLength >= this.getDataLength()
           : selectKeyLength >= treeDataLength;
 
-      const defaultTheme = () => ({
+      const defaultTheme = {
         themeConfig: {
           normal: {
             border: getBorder(get('normalBorder')),
             borderRadius: getBorderRadius(get('borderRadiusValue')),
           },
         },
-      });
-      const defaultHeaderTheme = () => ({
+      };
+      const defaultHeaderTheme = {
         themeConfig: {
           normal: {
             border: {
@@ -168,9 +168,9 @@ export default ThemeProvider(
             borderRadius: getBorderRadius(get('borderRadiusValue'), ['lt', 'rt']),
           },
         },
-      });
-      const theTheme = deepMerge(defaultTheme(), theme);
-      const theHeaderTheme = deepMerge(defaultHeaderTheme(), headerTheme);
+      };
+      const theTheme = deepMerge(defaultTheme, theme);
+      const theHeaderTheme = deepMerge(defaultHeaderTheme, headerTheme);
       return (
         <TransFer themeProps={theTheme}>
           <Check themeProps={theHeaderTheme}>
