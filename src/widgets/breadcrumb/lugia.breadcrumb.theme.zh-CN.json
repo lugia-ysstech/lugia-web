@@ -12,10 +12,7 @@
             "name": "面包屑",
             "path": ["Container"],
             "description": {
-              "appearancePart": {
-                "text": "背景",
-                "desc": "面板中外观配置的区块显示文本"
-              }
+              "appearancePart": { "text": "背景", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
@@ -28,20 +25,14 @@
             "name": "单项外盒",
             "path": ["BreadcrumbItem", "ItemWrap"],
             "description": {
-              "appearancePart": {
-                "text": "背景",
-                "desc": "面板中外观配置的区块显示文本"
-              }
+              "appearancePart": { "text": "背景", "desc": "面板中外观配置的区块显示文本" }
             }
           },
           {
             "name": "文本",
             "path": ["BreadcrumbItem", "Text"],
             "description": {
-              "appearancePart": {
-                "text": "文本",
-                "desc": "面板中外观配置的区块显示文本"
-              }
+              "appearancePart": { "text": "文本", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
@@ -53,11 +44,9 @@
           {
             "name": "分隔符",
             "path": ["BreadcrumbItem", "Separator"],
+            "props": [{ "name": "separator", "typeInTheme": "text" }],
             "description": {
-              "appearancePart": {
-                "text": "外观",
-                "desc": "面板中外观配置的区块显示文本"
-              }
+              "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
@@ -70,20 +59,14 @@
             "name": "前置图标配置",
             "path": ["BreadcrumbItem", "PrefixIcon"],
             "description": {
-              "textPart": {
-                "text": "前缀图标",
-                "desc": "面板中外观配置的区块显示文本"
-              }
+              "textPart": { "text": "前缀图标", "desc": "面板中外观配置的区块显示文本" }
             }
           },
           {
             "name": "后缀图标配置",
             "path": ["BreadcrumbItem", "SuffixIcon"],
             "description": {
-              "textPart": {
-                "text": "后缀图标",
-                "desc": "面板中外观配置的区块显示文本"
-              }
+              "textPart": { "text": "后缀图标", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
