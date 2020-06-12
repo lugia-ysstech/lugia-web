@@ -28,6 +28,7 @@ const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const marginToSameElement = '$lugia-dict.@lugia/lugia-web.marginToSameElement';
 const xxsFontSize = '$lugia-dict.@lugia/lugia-web.xxsFontSize';
+const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
 
 const SelectTab = CSSComponent({
   tag: 'div',
@@ -560,7 +561,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       [viewClass]: {
         normal: {
           color: darkGreyColor,
-          fontSize: 14,
+          fontSize: sFontSize,
           getThemeMeta: (theme: Object, themeProps: Object) => {
             const { propsConfig: { isSelect } = {} } = themeProps;
             const titleSelectColor = isSelect ? { color: themeColor } : {};
