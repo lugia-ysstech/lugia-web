@@ -12,6 +12,18 @@ import Widget from '../consts/index';
 import { Message, MessageContent } from '../css/message';
 import type { MessageProps, MessageState } from '../css/message';
 import IconContent from './icon-content';
+import get from '../css/theme-common-dict';
+import { getBorderRadius } from '@lugia/theme-utils';
+import { deepMerge } from '@lugia/object-utils';
+
+const defaultMessageContentTheme = () => ({
+  themeConfig: {
+    normal: {
+      boxShadow: get('normalBoxShadow'),
+      borderRadius: getBorderRadius(get('borderRadiusValue')),
+    },
+  },
+});
 
 export default ThemeProvider(
   class extends React.Component<MessageProps, MessageState> {
@@ -64,11 +76,12 @@ export default ThemeProvider(
       const messageTheme = getPartOfThemeProps('Container');
       const messageTextTheme = getPartOfThemeProps('MessageText');
       const messageIconThemeObj = getPartOfThemeHocProps('MessageIcon');
-      const { themeConfig: { normal: { height = 40 } = {} } = {} } = messageTheme;
+      const messageContentTheme = deepMerge(defaultMessageContentTheme(), messageTheme);
+      const { themeConfig: { normal: { height = 40 } = {} } = {} } = messageContentTheme;
       if (visible) {
         return (
           <Message>
-            <MessageContent opening={opening} closing={closing} themeProps={messageTheme}>
+            <MessageContent opening={opening} closing={closing} themeProps={messageContentTheme}>
               <IconContent
                 iconType={iconType}
                 content={content}

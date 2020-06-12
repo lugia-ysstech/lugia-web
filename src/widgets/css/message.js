@@ -4,11 +4,9 @@
  * @flow
  */
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-import { getBorderRadius } from '@lugia/theme-utils';
 import { px2remcss } from '../css/units';
 import { css, keyframes } from 'styled-components';
 import type { Type } from './component-iconwrap';
-import get from './theme-common-dict';
 
 export type MessageProps = {
   iconType?: Type,
@@ -81,12 +79,6 @@ const getAnimate = (props: CSSProps) => {
     `;
   }
 };
-const getCssStyle = () => {
-  return {
-    boxShadow: get('normalBoxShadow'),
-    borderRadius: getBorderRadius(get('borderRadiusValue')),
-  };
-};
 export const MessageContent = CSSComponent({
   tag: 'div',
   className: 'MessageContent',
@@ -115,7 +107,6 @@ export const MessageContent = CSSComponent({
         left: 20,
       },
       opacity: 1,
-      ...getCssStyle(),
     },
   },
 });
