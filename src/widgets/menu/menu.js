@@ -268,7 +268,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   getItems(props: MenuProps): Object[] {
-    let { start, end, checkedCSS = 'none', mutliple, data } = props;
+    let { start, end, checkedCSS = 'none', mutliple, data, switchIconClass } = props;
     start = Math.round(start);
     end = Math.round(end);
     if (data && data.length > 0) {
@@ -297,6 +297,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
           expandedPath.length === 0 ? [] : expandedPath[0].split(separator);
         const result = (
           <Item
+            switchIconClass={switchIconClass}
             isShowAuxiliaryText={isShowAuxiliaryText}
             auxiliaryTextField={auxiliaryTextField}
             key={key}
@@ -614,6 +615,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       size,
       isShowAuxiliaryText = false,
       auxiliaryTextField = 'des',
+      switchIconClass,
     } = this.props;
 
     const { selectedKeys, expandedPath } = this.state;
@@ -626,6 +628,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     };
     return (
       <SubMenu
+        switchIconClass={switchIconClass}
         mutliple={mutliple}
         size={size}
         divided={divided}
