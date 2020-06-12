@@ -163,6 +163,24 @@ const menuTheme = {
   },
 };
 
+const menuTheme1 = {
+  [Widget.NavMenu]: {
+    Tabs: {
+      TabHeader: {
+        SelectLine: {
+          normal: {
+            width: 100,
+            height: 10,
+            background: {
+              color: 'red',
+            },
+          },
+        },
+      },
+    },
+  },
+};
+
 export default class LimitDemo extends React.Component<Object, Object> {
   all: boolean;
   constructor(props) {
@@ -192,7 +210,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
       <RowWrap>
         <RowWrapItem>
           <H1> themeStyle：light </H1>
-          <Navmenu data={horizontalData} mode={'horizontal'} />,
+          <Navmenu theme={menuTheme1} data={horizontalData} mode={'horizontal'} />,
         </RowWrapItem>
         <RowWrapItem>
           <H1> themeStyle：dark </H1>
