@@ -20,7 +20,7 @@ const PopupInnerBox = styled(VisibleBox)`
   box-sizing: border-box;
   left: -9999px;
   top: -9999px;
-  ${getZIndex}
+  ${props => (props.liquidLayout ? '' : getZIndex(props))};
 `;
 
 type PopupInnerProps = {
