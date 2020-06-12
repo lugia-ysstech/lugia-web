@@ -14,7 +14,6 @@ import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import { css, StaticComponent } from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
-import Trigger from '../tooltip';
 const { px2remcss } = units;
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
