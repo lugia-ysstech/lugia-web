@@ -28,8 +28,6 @@ exports[`tabsDemo Component JSON 1`] = `
   width: 100%;
   height: 2px;
   left: 50%;
-  -webkit-animation: gaMprO 0.2s linear forwards;
-  animation: gaMprO 0.2s linear forwards;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
