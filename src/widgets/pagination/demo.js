@@ -19,12 +19,11 @@ export default class PaginationDemo extends React.Component<any, any> {
   constructor() {
     super();
   }
-  onShowSizeChange = obj => {
-    const { current, pageSize } = obj;
+  onShowSizeChange = (current: number, pageSize: number) => {
     console.log(current, pageSize);
   };
-  onChange(obj) {
-    console.log(obj);
+  onChange(pageNumber: number, pageSize: number) {
+    console.log('Page: ', pageNumber);
   }
 
   render() {

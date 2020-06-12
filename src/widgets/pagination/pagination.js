@@ -739,7 +739,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     if (pageSize !== thePageSize) {
       this.setState({ pageSize: thePageSize });
     }
-    onShowSizeChange && onShowSizeChange({ current, pageSize: thePageSize });
+    onShowSizeChange && onShowSizeChange(current, thePageSize);
   };
 
   changePage = (page: number) => () => {
