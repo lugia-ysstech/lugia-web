@@ -41,6 +41,8 @@ type CascaderProps = {
   createPortal?: boolean,
   showAllLevels?: boolean,
   allowClear?: boolean,
+  pullIconClass?: string,
+  clearIconClass?: string,
 };
 type CascaderState = {
   popupVisible: boolean,
@@ -65,6 +67,8 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     valueField: ValueField,
     allowClear: true,
     createPortal: false,
+    pullIconClass: 'lugia-icon-direction_down',
+    clearIconClass: 'lugia-icon-reminder_close',
   };
 
   checked: boolean;
@@ -103,8 +107,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
   render() {
     const { props, state } = this;
     const { popupVisible, inputValue } = state;
-    const { placeholder, offsetY, disabled, createPortal } = props;
-
+    const { placeholder, offsetY, disabled, createPortal, clearIconClass, pullIconClass } = props;
     return (
       <Theme config={getInputtagThemeHoc(props)}>
         <Trigger
@@ -125,6 +128,8 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
           onPopupVisibleChange={this.onPopupVisibleChange}
         >
           <InputTag
+            pullIconClass={pullIconClass}
+            clearIconClass={clearIconClass}
             menuVisible={popupVisible}
             onClick={this.handleClickInputTag}
             value={inputValue}
@@ -176,13 +181,24 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
   }
 
   getMenu = () => {
-    const { data, action, separator, offsetX, valueField, displayField, divided } = this.props;
+    const {
+      data,
+      action,
+      separator,
+      offsetX,
+      valueField,
+      displayField,
+      divided,
+      autoHeight,
+      switchIconClass,
+    } = this.props;
     const { popupVisible, expandedPath, selectedKeys } = this.state;
-
     return (
       <Menu
         {...this.getMenuTheme()}
         mutliple={false}
+        autoHeight={autoHeight}
+        switchIconClass={switchIconClass}
         ref={this.menu}
         action={action}
         divided={divided}
@@ -280,7 +296,11 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
       }
     }
 
-    this.setState({ value: selectedKeys, expandedPath: selectedKeys, ...inputValueState });
+    this.setState({
+      value: selectedKeys,
+      expandedPath: selectedKeys,
+      ...inputValueState,
+    });
 
     const { onClick } = this.props;
     const obj = this.getExposeTarget(event, selectedKeys, item);
@@ -320,7 +340,11 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
       return;
     }
 
-    this.setPopupVisibleInner(false, { expandedPath: [], value: [], inputValue: [] });
+    this.setPopupVisibleInner(false, {
+      expandedPath: [],
+      value: [],
+      inputValue: [],
+    });
   };
 
   onChange = (target: Object) => {

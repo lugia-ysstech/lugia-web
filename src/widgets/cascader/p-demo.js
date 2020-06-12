@@ -31,16 +31,53 @@ const data = [
   {
     value: 'Lugia Design',
     text: 'Lugia Design',
-    icon: 'lugia-icon-financial_add_pic',
+    icons: {
+      prefixIconClass: 'lugia-icon-financial_heart',
+      prefixIconSrc: '',
+      suffixIconClass: 'lugia-icon-financial_contacts',
+      suffixIconSrc: '',
+    },
   },
   {
     value: 'Lugia-mega',
     text: 'Lugia-mega',
-    disabled: true,
+  },
+  {
+    value: 'Lugia-mega1',
+    text: 'Lugia-mega1',
+  },
+  {
+    value: 'Lugia-mega2',
+    text: 'Lugia-mega2',
+  },
+  {
+    value: 'Lugia-mega3',
+    text: 'Lugia-mega3',
+  },
+  {
+    value: 'Lugia-mega4',
+    text: 'Lugia-mega4',
+  },
+  {
+    value: 'Lugia-mega5',
+    text: 'Lugia-mega4=5',
+  },
+  {
+    value: 'Lugia-mega6',
+    text: 'Lugia-mega6',
+  },
+  {
+    value: 'Lugia-mega7',
+    text: 'Lugia-mega8',
   },
   {
     value: 'Components',
     text: 'Components',
+    icons: {
+      prefixIconClass: 'lugia-icon-financial_heart',
+      suffixIconClass: 'lugia-icon-financial_contacts',
+      suffixIconSrc: '',
+    },
     children: [
       {
         value: 'General',
@@ -127,7 +164,10 @@ export default class extends React.Component<any, any> {
         <RowWrapItem>
           <H1> size={'small'} 多级菜单 </H1>
           <Cascader
-            value={['Lugia Design']}
+            pullIconClass={'lugia-icon-direction_down-square'}
+            switchIconClass={{ iconClass: 'lugia-icon-direction_play_circle' }}
+            clearIconClass={'lugia-icon-direction_logout'}
+            autoHeight={true}
             size={'small'}
             theme={config}
             data={data}
