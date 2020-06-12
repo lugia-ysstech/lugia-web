@@ -6,7 +6,7 @@
  *
  */
 import * as React from 'react';
-import { getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
+import { getBoxShadow, getBorderRadius, getBorder } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
@@ -19,6 +19,7 @@ import SearchIcon from '../icon/SearchIcon';
 import type { TransferProps, TransferState } from '../css/transfer';
 import { CancelBox, CancelBoxItem, Check, CheckText, TransFer, TreeWrap } from '../css/transfer';
 import { filterEnableKeysFromSelectKeys } from './utils';
+import get from '../css/theme-common-dict';
 
 const { MenuItem } = Menu;
 const cancelBoxHeight = 70;
@@ -145,9 +146,34 @@ export default ThemeProvider(
           : type === 'panel'
           ? selectKeyLength >= this.getDataLength()
           : selectKeyLength >= treeDataLength;
+
+      const defaultTheme = () => ({
+        themeConfig: {
+          normal: {
+            border: getBorder(get('normalBorder')),
+            borderRadius: getBorderRadius(get('borderRadiusValue')),
+          },
+        },
+      });
+      const defaultHeaderTheme = () => ({
+        themeConfig: {
+          normal: {
+            border: {
+              bottom: {
+                style: 'solid',
+                width: 1,
+                color: get('superLightColor'),
+              },
+            },
+            borderRadius: getBorderRadius(get('borderRadiusValue'), ['lt', 'rt']),
+          },
+        },
+      });
+      const theTheme = deepMerge(defaultTheme(), theme);
+      const theHeaderTheme = deepMerge(defaultHeaderTheme(), headerTheme);
       return (
-        <TransFer themeProps={theme}>
-          <Check themeProps={headerTheme}>
+        <TransFer themeProps={theTheme}>
+          <Check themeProps={theHeaderTheme}>
             <CheckBox
               size={size}
               onChange={() => this.props.onCheckAll(!checked)}

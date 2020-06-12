@@ -95,8 +95,6 @@ export const TransFer = CSSComponent({
       ['fontSize'],
     ],
     defaultTheme: {
-      border: getBorder(normalBorder),
-      borderRadius: getBorderRadius(borderRadiusValue),
       background: { color: '#fff' },
       fontSize: 12,
     },
@@ -107,15 +105,13 @@ export const Check = CSSComponent({
   className: 'Check',
   tag: 'div',
   css: css`
-    border-bottom: 1px solid #e8e8e8;
     position: relative;
     display: flex;
     align-items: center;
   `,
   normal: {
-    selectNames: [['background'], ['border'], ['padding'], ['height']],
+    selectNames: [['background'], [['border'], ['bottom']], ['padding'], ['height']],
     defaultTheme: {
-      borderRadius: getBorderRadius(borderRadiusValue, ['lt', 'rt']),
       background: { color: '#f8f8f8' },
       fontSize: 12,
       padding: {
