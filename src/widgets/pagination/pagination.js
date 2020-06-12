@@ -91,7 +91,15 @@ const PaginationMoreItem = CSSComponent({
   tag: 'li',
   className: 'PaginationMoreItem',
   normal: {
-    selectNames: [['width'], ['height'], ['cursor'], ['lineHeight'], ['margin']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['cursor'],
+      ['lineHeight'],
+      ['margin'],
+      ['borderRadius'],
+      ['background'],
+    ],
     defaultTheme: {
       color: lightGreyColor,
       cursor: 'pointer',
@@ -172,7 +180,7 @@ const PaginationListItem = CSSComponent({
     ],
     defaultTheme: {
       cursor: 'pointer',
-      background: { color: defaultColor },
+      background: { color: 'white' },
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const sizeCSS = getPaginationItemStyle(themeMeta, themeProps);
@@ -731,7 +739,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     if (pageSize !== thePageSize) {
       this.setState({ pageSize: thePageSize });
     }
-    onShowSizeChange && onShowSizeChange(current, thePageSize);
+    onShowSizeChange && onShowSizeChange({ current, pageSize: thePageSize });
   };
 
   changePage = (page: number) => () => {
