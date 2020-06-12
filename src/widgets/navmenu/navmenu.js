@@ -520,6 +520,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       pathSeparator,
       switchAtEnd,
       igronSelectField,
+      parentIsHighlight = true,
     } = this.props;
 
     const treeTheme = this.getTreeTheme(inlineType, themeStyle);
@@ -538,7 +539,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           inlineType={inlineType}
           data={this.treeData}
           value={value}
-          parentIsHighlight
+          parentIsHighlight={parentIsHighlight}
           mutliple={false}
           valueField={valueField}
           displayField={displayField}

@@ -153,9 +153,20 @@ const menuTheme = {
   [Widget.NavMenu]: {
     Tree: {
       TreeItem: {
+        TreeItemWrap: {
+          normal: {
+            background: { color: '#fff' },
+          },
+        },
+        SelectedTreeItemWrap: {
+          normal: {
+            background: { color: 'pink' },
+          },
+        },
+
         SelectedText: {
           normal: {
-            background: { color: 'red' },
+            background: { color: 'none' },
           },
         },
       },
@@ -214,7 +225,8 @@ export default class LimitDemo extends React.Component<Object, Object> {
       <RowWrap>
         <RowWrapItem>
           <H1> themeStyle：light </H1>
-          <Navmenu theme={menuTheme} data={data} inlineType={'ellipse'} />,
+          <Navmenu parentIsHighlight={false} theme={menuTheme} data={data} inlineType={'ellipse'} />
+          ,
         </RowWrapItem>
         <RowWrapItem>
           <H1> themeStyle：dark </H1>
