@@ -9057,6 +9057,12 @@ export default [
       desc: '为页面提供导航功能的菜单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        parentIsHighlight: {
+          type: 'boolean',
+          desc: '父级元素是否高亮',
+          propsDefaultValue: true,
+          defaultValue: false,
+        },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
@@ -9242,7 +9248,7 @@ export default [
                     SelectLine: {
                       name: '选中页签底部标识线',
                       desc: '选中页签底部标识线样式配置',
-                      normal: [['height'], ['background']],
+                      normal: [['width'], ['height'], ['background']],
                     },
                   },
                 },
@@ -10272,6 +10278,12 @@ export default [
       desc: '水平的导航菜单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        parentIsHighlight: {
+          type: 'boolean',
+          desc: '父级元素是否高亮',
+          propsDefaultValue: true,
+          defaultValue: false,
+        },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
@@ -10452,7 +10464,7 @@ export default [
                 SelectLine: {
                   name: '选中页签底部标识线',
                   desc: '选中页签底部标识线样式配置',
-                  normal: [['height'], ['background']],
+                  normal: [['width'], ['height'], ['background']],
                 },
               },
             },
@@ -10679,6 +10691,12 @@ export default [
       desc: '子菜单从右侧弹开',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        parentIsHighlight: {
+          type: 'boolean',
+          desc: '父级元素是否高亮',
+          propsDefaultValue: true,
+          defaultValue: false,
+        },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
@@ -11123,6 +11141,12 @@ export default [
       desc: '点击菜单收起或展开子菜单,ellipse样式',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        parentIsHighlight: {
+          type: 'boolean',
+          desc: '父级元素是否高亮',
+          propsDefaultValue: true,
+          defaultValue: false,
+        },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
