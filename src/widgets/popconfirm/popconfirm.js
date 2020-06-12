@@ -235,7 +235,15 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
   }
 
   render() {
-    const { children, action, placement = 'topLeft', defaultChildren, description } = this.props;
+    const {
+      children,
+      action,
+      placement = 'topLeft',
+      defaultChildren,
+      description,
+      alwaysOpen,
+      liquidLayout,
+    } = this.props;
     const getTarget: Function = cmp => (this.target = cmp);
     const theChildren = children ? children : defaultChildren;
 
@@ -273,6 +281,8 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
 
     return (
       <Tooltip
+        alwaysOpen={alwaysOpen}
+        liquidLayout={liquidLayout}
         theme={popoverTheme}
         viewClass={viewClass}
         showClearButton={false}

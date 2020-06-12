@@ -6,7 +6,7 @@
  */
 import * as React from 'react';
 import { deepMerge } from '@lugia/object-utils';
-import Trigger from '../trigger';
+import Trigger from '../trigger/OpenTrigger';
 import Widget from '../consts/index';
 import type { TooltipProps, TooltipState } from '../css/tooltip';
 import { Down, Left, Right, Up, getRoundArrowCSS, getArrowCSS } from '../css/tooltip';
@@ -247,6 +247,8 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       children = <div />,
       size,
       getPartOfThemeProps,
+      alwaysOpen,
+      liquidLayout,
     } = this.props;
     const { visible } = this.state;
     const direction = this.getDirection(placement);
@@ -271,6 +273,8 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     const childrenThemeProps = deepMerge(defaultTheme(), contentThemeProps);
     return (
       <Trigger
+        alwaysOpen={alwaysOpen}
+        liquidLayout={liquidLayout}
         themePass
         createPortal={true}
         popupVisible={visible}
