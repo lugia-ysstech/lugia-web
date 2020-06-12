@@ -8,6 +8,11 @@
       "desc": "是否渲染当前组件",
       "defaultValue": false
     },
+    "parentIsHighlight": {
+      "type": "boolean",
+      "desc": "父级元素是否高亮",
+      "propsDefaultValue": false
+    },
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
