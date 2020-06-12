@@ -24,7 +24,6 @@ const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 
-const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const cancelColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 
@@ -37,7 +36,7 @@ const defaultEdgeCancelProps = () => ({
     normal: {
       width: 16,
       height: 16,
-      background: { color: defaultColor },
+      background: { color: '#fff' },
       border: getBorder({ color: cancelColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(100),
     },
@@ -58,14 +57,14 @@ const defaultEdgeUnCheckedProps = () => ({
     normal: {
       width: 16,
       height: 16,
-      background: { color: defaultColor },
+      background: { color: '#fff' },
       border: getBorder(get('normalBorder')),
       borderRadius: getBorderRadius('100%'),
     },
     hover: {
       border: getBorder(get('hoverBorder')),
       borderRadius: getBorderRadius('100%'),
-      background: { color: defaultColor },
+      background: { color: '#fff' },
     },
     focus: {
       border: getBorder(get('focusBorder')),
@@ -82,7 +81,7 @@ const defaultEdgeCheckedProps = {
     normal: {
       width: 16,
       height: 16,
-      background: { color: defaultColor },
+      background: { color: '#fff' },
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius('100%'),
     },
