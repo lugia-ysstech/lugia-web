@@ -4,6 +4,7 @@
     "title": "内嵌导航菜单配置",
     "viewProps": [
       { "name": "inlineExpandAll", "text": "是否展开子元素" },
+      { "name": "parentIsHighlight", "text": "父元素是否高亮" },
       { "name": "themeStyle", "text": "主题" },
       { "name": "data", "text": "数据编辑" }
     ],
@@ -93,40 +94,106 @@
                 "desc": "选中项内外边距配置区"
               }
             }
+          },
+          {
+            "name": "父选项文本",
+            "path": ["Tree", "TreeItem", "SelectedParentText"],
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "父选项文本",
+                "desc": "父选项文本文本配置"
+              },
+              "spacingPart": {
+                "hidden": true
+              }
+            }
+          },
+          {
+            "name": "选中线",
+            "path": ["Tree", "TreeItem", "SelectLine"],
+            "description": {
+              "appearancePart": {
+                "text": "选中线",
+                "desc": "选中线外观配置的区"
+              }
+            }
           }
         ]
       },
       {
         "title": "前后缀图标",
         "iconClass": "iconsearch",
-        "data": [
+        "children": [
           {
-            "name": "前缀图标",
-            "path": ["Tree", "TreeItem", "PrefixIcon"],
-            "description": {
-              "textPart": {
-                "text": "前缀图标",
-                "desc": "前缀图标文本配置"
+            "title": "未选中",
+            "iconClass": "checkboxUncheck",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["Tree", "TreeItem", "PrefixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "前缀图标内外边距配置区"
+                  }
+                }
               },
-              "spacingPart": {
-                "text": "padding/margin",
-                "desc": "前缀图标内外边距配置区"
+              {
+                "name": "后缀图标",
+                "path": ["Tree", "TreeItem", "SuffixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "前缀图标内外边距配置区"
+                  }
+                }
               }
-            }
+            ]
           },
           {
-            "name": "后缀图标",
-            "path": ["Tree", "TreeItem", "SuffixIcon"],
-            "description": {
-              "textPart": {
-                "text": "后缀图标",
-                "desc": "后缀图标文本配置"
+            "title": "选中",
+            "iconClass": "checkboxCheck",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["Tree", "TreeItem", "SelectedPrefixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "前缀图标内外边距配置区"
+                  }
+                }
               },
-              "spacingPart": {
-                "text": "padding/margin",
-                "desc": "前缀图标内外边距配置区"
+              {
+                "name": "后缀图标",
+                "path": ["Tree", "TreeItem", "SelectedSuffixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "前缀图标内外边距配置区"
+                  }
+                }
               }
-            }
+            ]
           }
         ]
       },
@@ -204,6 +271,7 @@
     "title": "内嵌导航菜单配置",
     "viewProps": [
       { "name": "inlineExpandAll", "text": "是否展开子元素" },
+      { "name": "parentIsHighlight", "text": "父元素是否高亮" },
       { "name": "themeStyle", "text": "主题" },
       { "name": "data", "text": "数据编辑" }
     ],
@@ -293,40 +361,96 @@
                 "desc": "选中项内外边距配置区"
               }
             }
+          },
+          {
+            "name": "父选项文本",
+            "path": ["Tree", "TreeItem", "SelectedParentText"],
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "父选项文本",
+                "desc": "父选项文本文本配置"
+              },
+              "spacingPart": {
+                "hidden": true
+              }
+            }
           }
         ]
       },
       {
         "title": "前后缀图标",
         "iconClass": "iconsearch",
-        "data": [
+        "children": [
           {
-            "name": "前缀图标",
-            "path": ["Tree", "TreeItem", "PrefixIcon"],
-            "description": {
-              "textPart": {
-                "text": "前缀图标",
-                "desc": "前缀图标文本配置"
+            "title": "未选中",
+            "iconClass": "checkboxUncheck",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["Tree", "TreeItem", "PrefixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "前缀图标内外边距配置区"
+                  }
+                }
               },
-              "spacingPart": {
-                "text": "padding/margin",
-                "desc": "前缀图标内外边距配置区"
+              {
+                "name": "后缀图标",
+                "path": ["Tree", "TreeItem", "SuffixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "前缀图标内外边距配置区"
+                  }
+                }
               }
-            }
+            ]
           },
           {
-            "name": "后缀图标",
-            "path": ["Tree", "TreeItem", "SuffixIcon"],
-            "description": {
-              "textPart": {
-                "text": "后缀图标",
-                "desc": "后缀图标文本配置"
+            "title": "选中",
+            "iconClass": "checkboxCheck",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["Tree", "TreeItem", "SelectedPrefixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "前缀图标内外边距配置区"
+                  }
+                }
               },
-              "spacingPart": {
-                "text": "padding/margin",
-                "desc": "后缀图标内外边距配置区"
+              {
+                "name": "后缀图标",
+                "path": ["Tree", "TreeItem", "SelectedSuffixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "前缀图标内外边距配置区"
+                  }
+                }
               }
-            }
+            ]
           }
         ]
       },

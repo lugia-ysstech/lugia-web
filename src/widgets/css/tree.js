@@ -377,9 +377,8 @@ export const NavLi = CSSComponent({
       const {
         propsConfig: { inlineType, itemHeight, selected, marginBottom, hasChildren } = {},
       } = themeProps;
-      const selectedCSS = getLiIcon(inlineType, itemHeight, selected);
       const marginValue = hasChildren ? 0 : marginBottom;
-      return `${selectedCSS};margin-bottom: ${px2remcss(marginValue)};`;
+      return `margin-bottom: ${px2remcss(marginValue)};`;
     },
   },
   hover: {
@@ -399,6 +398,27 @@ export const NavLi = CSSComponent({
   `,
 });
 NavLi.displayName = 'NavLi';
+
+export const SelectLine = CSSComponent({
+  tag: 'div',
+  className: 'SelectLine',
+  normal: {
+    selectNames: [['width'], ['background'], ['height'], ['borderRadius']],
+    getCSS: (themeMeta, themeProps) => {
+      const { propsConfig: { position } = {} } = themeProps;
+      const positionCss = position === 'right' ? 'right:0' : 'left:0';
+      return `${positionCss};opacity: 1;`;
+    },
+  },
+  css: css`
+    transition: all ${transitionTime};
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+  `,
+});
+SelectLine.displayName = 'SelectLine';
 
 export const SubTreeWrap = CSSComponent({
   tag: 'ul',
@@ -610,6 +630,7 @@ export const FlexWrap = CSSComponent({
     },
   },
   css: css`
+    position: relative;
     cursor: pointer;
     box-sizing: border-box;
     overflow: hidden;
