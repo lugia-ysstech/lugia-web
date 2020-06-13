@@ -8,6 +8,7 @@ import * as React from 'react';
 import Select from './index';
 import Widget from '../consts/index';
 import styled from 'styled-components';
+import Icon from '../icon';
 const RowWrap = styled.div`
   display: flex;
   padding: 10px;
@@ -32,7 +33,10 @@ const data = (function(t) {
   for (let i = 0; i < t; i++) {
     res.push({
       value: `key-${i}`,
-      label: `txt${i}`,
+      label:
+        i === 0
+          ? `key-${i}keykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykeykey`
+          : `key-${i}`,
       icon: 'lugia-icon-financial_monitoring',
     });
   }
@@ -55,7 +59,7 @@ const config = {
   [Widget.Select]: {
     Container: {
       normal: {
-        width: '100%',
+        width: '250',
       },
     },
   },
@@ -79,14 +83,22 @@ export default class Demo extends React.Component {
           <Select
             disabled={false}
             placeholder={'请选择'}
-            defaultValue={['key-1']}
+            defaultValue={['key-0']}
             theme={config}
             createPortal
             data={data}
             onSelect={this.onSelect}
-            isShowClearButton={false}
             displayField={'label'}
             size={'small'}
+            prefix={
+              <Icon
+                onClick={e => {
+                  console.log('prefix');
+                  e.stopPropagation();
+                }}
+                iconClass={'lugia-icon-financial_like'}
+              />
+            }
           />
         </RowWrapItem>
         <RowWrapItem>
@@ -134,14 +146,23 @@ export default class Demo extends React.Component {
             displayField={'label'}
             size={'small'}
             checkedCSS="background"
+            prefix={
+              <Icon
+                onClick={e => {
+                  console.log('prefix');
+                  e.stopPropagation();
+                }}
+                iconClass={'lugia-icon-financial_like'}
+              />
+            }
             mutliple={true}
           />
         </RowWrapItem>
         <RowWrapItem>
           <H1>size={'default'} checkedCSS='checkbox'</H1>
           <Select
-            disabled={true}
-            defaultValue={['key-1', 'key-2']}
+            disabled={false}
+            value={['key-1', 'key-2']}
             theme={config}
             createPortal
             placeholder={'请选择'}
@@ -158,7 +179,7 @@ export default class Demo extends React.Component {
           <H1>size={'large'} checkedCSS='checkbox'</H1>
           <Select
             disabled={true}
-            defaultValue={['key-1', 'key-2']}
+            value={['key-1', 'key-2']}
             theme={config}
             placeholder={'请选择'}
             createPortal

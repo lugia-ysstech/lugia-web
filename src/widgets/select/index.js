@@ -648,7 +648,17 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   setPopupVisible(...rest: any[]) {
-    this.menuTriger && this.menuTriger.setPopupVisible(...rest);
+    if (
+      this.menuTriger &&
+      this.menuTriger.getTrigger() &&
+      this.menuTriger.getTrigger().current &&
+      this.menuTriger.getTrigger().current.getThemeTarget()
+    ) {
+      this.menuTriger
+        .getTrigger()
+        .current.getThemeTarget()
+        .setPopupVisible(...rest);
+    }
   }
 
   onInputTagChange = ({ value, displayValue }: Object) => {
