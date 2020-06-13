@@ -413,7 +413,17 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
 
   setPopupVisible(...rest: any[]) {
-    this.treeTriger && this.treeTriger.setPopupVisible(...rest);
+    if (
+      this.treeTriger &&
+      this.treeTriger.getTrigger() &&
+      this.treeTriger.getTrigger().current &&
+      this.treeTriger.getTrigger().current.getThemeTarget()
+    ) {
+      this.treeTriger
+        .getTrigger()
+        .current.getThemeTarget()
+        .setPopupVisible(...rest);
+    }
   }
 
   render() {

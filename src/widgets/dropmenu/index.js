@@ -199,7 +199,17 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   }
 
   setPopupVisible(...rest: any[]) {
-    this.trigger && this.trigger.setPopupVisible(...rest);
+    if (
+      this.trigger &&
+      this.trigger.getTrigger() &&
+      this.trigger.getTrigger().current &&
+      this.trigger.getTrigger().current.getThemeTarget()
+    ) {
+      this.trigger
+        .getTrigger()
+        .current.getThemeTarget()
+        .setPopupVisible(...rest);
+    }
   }
 
   ejectOnClick = (menu: Object): Object => {

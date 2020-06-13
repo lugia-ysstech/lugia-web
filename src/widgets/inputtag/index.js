@@ -268,8 +268,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       result = (
         <InnerContainer disabled={disabled} themeProps={themeProps}>
           <FlexResBox>
-            <List ref={cmp => (this.list = cmp)}>{items}</List>
             {placeholder}
+            <List ref={cmp => (this.list = cmp)}>{items}</List>
             <FocuInput onFocus={this.onFocus} onBlur={this.onBlur} />
           </FlexResBox>
           {clearButton}
