@@ -8,6 +8,7 @@ import CheckBox from '../../checkbox';
 import { deepMerge } from '@lugia/object-utils';
 import ThemeHoc from '@lugia/theme-hoc';
 import { addMouseEvent } from '@lugia/theme-hoc';
+import { getBorderRadius } from '../../theme/CSSProvider';
 import get from '../../css/theme-common-dict';
 
 import {
@@ -23,6 +24,7 @@ import {
   NavLi,
   SuffixWrap,
   CheckBoxContainer,
+  SelectLine,
 } from '../../css/tree';
 import { getTreeThemeDefaultConfig } from '../../css/tree';
 
@@ -657,6 +659,24 @@ class TreeNode extends React.Component {
     return <SuffixWrap>{suffixItems}</SuffixWrap>;
   };
 
+  getSelectLineThem = () => {
+    const { getPartOfThemeProps, itemHeight, selectLinePosition } = this.props;
+    const defaultSelectLineThem = {
+      themeConfig: {
+        normal: {
+          height: itemHeight,
+          width: 4,
+          borderRadius: getBorderRadius(2),
+          background: { color: themeColor },
+        },
+      },
+    };
+    return deepMerge(
+      defaultSelectLineThem,
+      getPartOfThemeProps('SelectLine', { props: { position: selectLinePosition } })
+    );
+  };
+
   render() {
     const { props } = this;
     const {
@@ -834,6 +854,9 @@ class TreeNode extends React.Component {
         height={itemHeight}
       >
         <FlexWrap disabled={disabled} themeProps={TreeItemWrapThemeProps} {...addMouseEvent(this)}>
+          {__navmenu && inlineType === 'primary' && selected && (
+            <SelectLine themeProps={this.getSelectLineThem()} />
+          )}
           <FlexBox disabled={disabled} themeProps={TreeItemWrapThemeProps}>
             {!showSwitch || switchAtEnd
               ? null

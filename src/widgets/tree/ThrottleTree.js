@@ -123,6 +123,7 @@ class ScrollerTree extends React.Component<any, any> {
         marginBottom,
         pidField,
         size,
+        selectLinePosition,
       } = this.props;
 
       const {
@@ -157,6 +158,7 @@ class ScrollerTree extends React.Component<any, any> {
             {...getPartOfThemeHocProps('TreeItem')}
             showSwitch={showSwitch}
             suffix={suffix}
+            selectLinePosition={selectLinePosition}
             __navmenu={__navmenu}
             switchAtEnd={switchAtEnd}
             renderSuffixItems={renderSuffixItems}
@@ -192,6 +194,7 @@ class ScrollerTree extends React.Component<any, any> {
           showSwitch={showSwitch}
           suffix={suffix}
           __navmenu={__navmenu}
+          selectLinePosition={selectLinePosition}
           switchAtEnd={switchAtEnd}
           renderSuffixItems={renderSuffixItems}
           onRightClick={onRightClick}

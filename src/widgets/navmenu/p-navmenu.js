@@ -192,6 +192,33 @@ const menuTheme1 = {
   },
 };
 
+const primaryMenuTheme = {
+  [Widget.NavMenu]: {
+    Tree: {
+      TreeItem: {
+        SubTreeWrap: {
+          normal: {
+            background: {
+              color: '#e20c0c',
+            },
+          },
+        },
+        SelectedText: {
+          normal: {
+            background: {
+              color: '#50e3c2',
+            },
+            font: {
+              size: '',
+            },
+            color: '#f8e71c',
+          },
+        },
+      },
+    },
+  },
+};
+
 export default class LimitDemo extends React.Component<Object, Object> {
   all: boolean;
   constructor(props) {
@@ -232,11 +259,23 @@ export default class LimitDemo extends React.Component<Object, Object> {
       <RowWrap>
         <RowWrapItem>
           <H1> themeStyle：light </H1>
-          <Navmenu data={data} />,
+          <Navmenu
+            data={data}
+            parentIsHighlight={false}
+            theme={primaryMenuTheme}
+            selectLinePosition="left"
+          />
+          ,
         </RowWrapItem>
         <RowWrapItem>
           <H1> themeStyle：dark </H1>
-          <Navmenu data={data} themeStyle={'dark'} />
+          <Navmenu
+            data={data}
+            parentIsHighlight={false}
+            themeStyle={'dark'}
+            theme={primaryMenuTheme}
+            selectLinePosition="right"
+          />
         </RowWrapItem>
       </RowWrap>,
       <H1>侧栏导航 Ellipse 风格 </H1>,
