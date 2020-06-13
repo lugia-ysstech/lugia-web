@@ -219,7 +219,7 @@
               {
                 "name": "前缀图标",
                 "path": ["Menu", "MenuItem", "PrefixIcon"],
-                "props": [{ "name": "data", "typeInTheme": "icon" }],
+                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
                 "description": {
                   "textPart": {
                     "text": "前缀图标",
@@ -234,7 +234,7 @@
               {
                 "name": "后缀图标",
                 "path": ["Menu", "MenuItem", "SuffixIcon"],
-                "props": [{ "name": "data", "typeInTheme": "icon" }],
+                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
                 "description": {
                   "textPart": {
                     "text": "后缀图标",
@@ -396,7 +396,7 @@
                   {
                     "name": "前缀图标",
                     "path": ["Menu", "SubMenu", "MenuItem", "PrefixIcon"],
-                    "props": [{ "name": "data", "typeInTheme": "icon" }],
+                    "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
                     "description": {
                       "textPart": {
                         "text": "前缀图标",
@@ -411,7 +411,7 @@
                   {
                     "name": "后缀图标",
                     "path": ["Menu", "SubMenu", "MenuItem", "SuffixIcon"],
-                    "props": [{ "name": "data", "typeInTheme": "icon" }],
+                    "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
                     "description": {
                       "textPart": {
                         "text": "后缀图标",
