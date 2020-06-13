@@ -189,7 +189,17 @@ export default ShortKeyBoard(
       }
 
       setPopupVisible(...rest: any[]) {
-        this.triggerEl.current && this.triggerEl.current.setPopupVisible(...rest);
+        if (
+          this.triggerEl &&
+          this.triggerEl.getTrigger() &&
+          this.triggerEl.getTrigger().current &&
+          this.triggerEl.getTrigger().current.getThemeTarget()
+        ) {
+          this.triggerEl
+            .getTrigger()
+            .current.getThemeTarget()
+            .setPopupVisible(...rest);
+        }
       }
       getOldValueItem() {
         const { preSelectValue = '' } = this.state;

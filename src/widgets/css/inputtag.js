@@ -178,6 +178,7 @@ export const FlexResBox = StaticComponent({
   tag: 'div',
   className: 'FlexResBox',
   css: css`
+    display: flex;
     flex: 1;
     position: relative;
     overflow: hidden;
@@ -201,6 +202,7 @@ export const TextContent = CSSComponent({
   },
   css: css`
     width: 100%;
+    flex: 1;
     display: block;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -214,6 +216,8 @@ export const Prefix = StaticComponent({
   className: 'Prefix',
   css: css`
     padding-right: ${() => px2remcss(get('padding'))};
+    display: flex;
+    align-items: center;
     position: relative;
   `,
 });
@@ -238,6 +242,7 @@ export const List = StaticComponent({
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex: 1;
   `,
 });
 
