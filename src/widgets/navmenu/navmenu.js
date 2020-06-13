@@ -55,6 +55,7 @@ type NavMenuProps = {
   activityValue: number,
   switchIconNames?: Object,
   renderSuffixItems?: Function,
+  selectLinePosition?: 'right' | 'left',
 };
 
 type NavMenuState = {
@@ -521,6 +522,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       switchAtEnd,
       igronSelectField,
       parentIsHighlight = true,
+      selectLinePosition = 'left',
     } = this.props;
 
     const treeTheme = this.getTreeTheme(inlineType, themeStyle);
@@ -529,6 +531,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       <MenuWrap>
         <Tree
           size={'large'}
+          selectLinePosition={selectLinePosition}
           {...treeTheme}
           switchIconNames={switchIconNames}
           expandAll={inlineExpandAll}
