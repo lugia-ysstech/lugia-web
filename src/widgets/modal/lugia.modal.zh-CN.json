@@ -56,6 +56,23 @@
       "type": "boolean",
       "desc": "是否显示关闭按钮",
       "defaultValue": true
+    },
+    "mask": {
+      "type": "boolean",
+      "desc": "是否显示遮罩",
+      "defaultValue": true
+    },
+    "iconClass": {
+      "type": "string",
+      "desc": "自定义前缀图标"
+    },
+    "closeIconClass": {
+      "type": "string",
+      "desc": "自定义后缀图标"
+    },
+    "modalBodyText": {
+      "type": "React.node",
+      "desc": "对话框内容"
     }
   },
   "events": {
@@ -141,10 +158,60 @@
       "desc": "为弹窗内容文本配置样式",
       "normal": [["font"], ["color"], ["padding"]]
     },
+    "ModalIcon": {
+      "name": "弹窗前缀图标样式",
+      "desc": "为弹窗前缀图标配置样式",
+      "normal": [["fontSize"], ["color"]]
+    },
     "ModalCloseIcon": {
       "name": "弹窗关闭图标样式",
       "desc": "为弹窗关闭图标配置样式",
       "normal": [["fontSize"], ["color"]]
+    },
+    "ModalOkButton": {
+      "name": "弹窗确定按钮样式",
+      "desc": "为弹窗确定按钮配置样式",
+      "Container": {
+        "normal": [
+          ["background"],
+          ["border"],
+          ["height"],
+          ["width"],
+          ["padding"],
+          ["margin"],
+          ["borderRadius"]
+        ],
+        "hover": [["background"], ["border"]],
+        "active": [["background"], ["border"]],
+        "disabled": [["background"], ["border"]],
+        "focus": [["background"], ["border"]]
+      }
+    },
+    "ModalCancelButton": {
+      "name": "弹窗取消按钮样式",
+      "desc": "为弹窗取消按钮配置样式",
+      "Container": {
+        "normal": [
+          ["background"],
+          ["border"],
+          ["height"],
+          ["width"],
+          ["padding"],
+          ["margin"],
+          ["borderRadius"]
+        ],
+        "hover": [["background"], ["border"]],
+        "active": [["background"], ["border"]],
+        "disabled": [["background"], ["border"]],
+        "focus": [["background"], ["border"]]
+      }
+    },
+    "ModalMask": {
+      "name": "弹窗遮罩样式",
+      "desc": "为弹窗遮罩配置样式",
+      "Container": {
+        "normal": [["background"]]
+      }
     }
   },
   "defaultTheme": {

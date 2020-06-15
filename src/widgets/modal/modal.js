@@ -159,6 +159,8 @@ export default ThemeProvider(
         injectLugiad: { type } = {},
         __lugiad__header__absolute__ = false,
         closable = true,
+        closeIconClass,
+        modalBodyText,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       const view = {
@@ -179,6 +181,7 @@ export default ThemeProvider(
       };
       const modalTitleTheme = getPartOfThemeProps('ModalTitle');
       const modalBodyTextTheme = getPartOfThemeProps('ModalContentText');
+      const modalMaskTheme = getPartOfThemeProps('ModalMask');
       const modalContent = (
         <ModalContent showIcon={showIcon} themeProps={modalWrapTheme}>
           {showIcon ? (
@@ -191,7 +194,7 @@ export default ThemeProvider(
             <ModalClose onClick={this.handleCancel}>
               <Icon
                 {...this.getCloseIconTheme()}
-                iconClass="lugia-icon-reminder_close"
+                iconClass={closeIconClass || 'lugia-icon-reminder_close'}
                 singleTheme
               />
             </ModalClose>
@@ -208,7 +211,7 @@ export default ThemeProvider(
           {__lugiad__header__absolute__ ? (
             children
           ) : (
-            <ModalBody themeProps={modalBodyTextTheme}>{children}</ModalBody>
+            <ModalBody themeProps={modalBodyTextTheme}>{children || modalBodyText}</ModalBody>
           )}
           {this.isInprops('footer') ? (
             footer
@@ -244,7 +247,12 @@ export default ThemeProvider(
       return (
         <Wrap visible={closing ? true : visible}>
           {mask ? (
-            <ModalMask onClick={this.handleMaskClick} closing={closing} opening={opening} />
+            <ModalMask
+              onClick={this.handleMaskClick}
+              closing={closing}
+              opening={opening}
+              themeProps={modalMaskTheme}
+            />
           ) : null}
           <ModalWrap>
             <Modal
