@@ -764,7 +764,7 @@ exports[`Radio Radio css 1`] = `
           className="c8"
           style={
             Object {
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "#fff",
               "borderBottomColor": "#4d63ff",
               "borderBottomLeftRadius": "100%",
               "borderBottomRightRadius": "100%",
@@ -818,7 +818,7 @@ exports[`Radio Radio css 1`] = `
           className="c8"
           style={
             Object {
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "#fff",
               "borderBottomColor": "#4d63ff",
               "borderBottomLeftRadius": "100%",
               "borderBottomRightRadius": "100%",
@@ -872,7 +872,7 @@ exports[`Radio Radio css 1`] = `
           className="c3"
           style={
             Object {
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "#fff",
               "borderBottomColor": "#cccccc",
               "borderBottomLeftRadius": "100%",
               "borderBottomRightRadius": "100%",
@@ -1047,7 +1047,7 @@ exports[`Radio Radio css 1`] = `
           className="c10"
           style={
             Object {
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "#fff",
               "borderBottomColor": "#c0c8ff",
               "borderBottomLeftRadius": "10rem",
               "borderBottomRightRadius": "10rem",
@@ -1105,7 +1105,7 @@ exports[`Radio Radio css 1`] = `
           className="c3"
           style={
             Object {
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "#fff",
               "borderBottomColor": "#cccccc",
               "borderBottomLeftRadius": "100%",
               "borderBottomRightRadius": "100%",
@@ -1152,7 +1152,7 @@ exports[`Radio Radio css 1`] = `
           className="c3"
           style={
             Object {
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "#fff",
               "borderBottomColor": "#cccccc",
               "borderBottomLeftRadius": "100%",
               "borderBottomRightRadius": "100%",
@@ -1202,7 +1202,7 @@ exports[`Radio Radio css 1`] = `
           className="c8"
           style={
             Object {
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "#fff",
               "borderBottomColor": "#4d63ff",
               "borderBottomLeftRadius": "100%",
               "borderBottomRightRadius": "100%",
@@ -1249,7 +1249,7 @@ exports[`Radio Radio css 1`] = `
           className="c3"
           style={
             Object {
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "#fff",
               "borderBottomColor": "#cccccc",
               "borderBottomLeftRadius": "100%",
               "borderBottomRightRadius": "100%",
