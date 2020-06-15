@@ -76,13 +76,13 @@ const defaultEdgeUnCheckedProps = () => ({
     },
   },
 });
-const defaultEdgeCheckedProps = {
+const defaultEdgeCheckedProps = () => ({
   themeConfig: {
     normal: {
       width: 16,
       height: 16,
       background: { color: '#fff' },
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      border: getBorder(get('focusBorder')),
       borderRadius: getBorderRadius('100%'),
     },
     disabled: {
@@ -91,7 +91,7 @@ const defaultEdgeCheckedProps = {
       borderRadius: getBorderRadius('100%'),
     },
   },
-};
+});
 
 export default ThemeProvider(
   class extends React.Component<RadioProps, RadioState> {
@@ -151,7 +151,7 @@ export default ThemeProvider(
       const circleEdgeTheme = cancel
         ? deepMerge(defaultEdgeCancelProps(), radioEdgeCancelTheme)
         : checked
-        ? deepMerge(defaultEdgeCheckedProps, radioEdgeCheckedTheme)
+        ? deepMerge(defaultEdgeCheckedProps(), radioEdgeCheckedTheme)
         : deepMerge(defaultEdgeUnCheckedProps(), radioEdgeUnCheckedTheme);
       const radioTextTheme = cancel
         ? deepMerge(defaultTextCancelProps, radioTextCancelTheme)
