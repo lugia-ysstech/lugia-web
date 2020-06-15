@@ -659,9 +659,9 @@ class TreeNode extends React.Component {
     return <SuffixWrap>{suffixItems}</SuffixWrap>;
   };
 
-  getSelectLineThem = () => {
+  getSelectLineTheme = () => {
     const { getPartOfThemeProps, itemHeight, selectLinePosition } = this.props;
-    const defaultSelectLineThem = {
+    const defaultSelectLineTheme = {
       themeConfig: {
         normal: {
           height: itemHeight,
@@ -672,7 +672,7 @@ class TreeNode extends React.Component {
       },
     };
     return deepMerge(
-      defaultSelectLineThem,
+      defaultSelectLineTheme,
       getPartOfThemeProps('SelectLine', { props: { position: selectLinePosition } })
     );
   };
@@ -855,7 +855,7 @@ class TreeNode extends React.Component {
       >
         <FlexWrap disabled={disabled} themeProps={TreeItemWrapThemeProps} {...addMouseEvent(this)}>
           {__navmenu && inlineType === 'primary' && selected && (
-            <SelectLine themeProps={this.getSelectLineThem()} />
+            <SelectLine themeProps={this.getSelectLineTheme()} />
           )}
           <FlexBox disabled={disabled} themeProps={TreeItemWrapThemeProps}>
             {!showSwitch || switchAtEnd
