@@ -239,14 +239,18 @@ function toArray(param: any, defaultValue: ?any = []): any[] {
   }
   return Support.toArray(param);
 }
-export const getValueAndDisplayValue = function(props: Object, state: ?Object): Object {
+export const getValueAndDisplayValue = function(
+  props: Object,
+  state: ?Object,
+  valueValidateRuler?: Function
+): Object {
   const isInit = state === null || state === undefined;
   state = state ? state : {};
+  let { value, defaultValue, displayValue, defaultDisplayValue } = props;
+  const { value: sValue } = state;
 
   const isDisplayValue = 'displayValue' in props;
-  let { value, defaultValue, displayValue, defaultDisplayValue } = props;
-  const isValue = 'value' in props && value !== undefined && value.length !== 0;
-  const { value: sValue } = state;
+  const isValue = valueValidateRuler ? valueValidateRuler(props) : 'value' in props;
   let realValue = isValue ? value : isInit ? defaultValue : sValue;
   let { displayValue: sDisplayValue } = state;
 
@@ -269,4 +273,8 @@ export const getValueAndDisplayValue = function(props: Object, state: ?Object): 
     result.displayValue = undefined;
   }
   return result;
+};
+export const getEffectiveValueAndDisplayValue = function(props: Object): Object {
+  const { value } = props;
+  return 'value' in props && value !== undefined && value.length !== 0;
 };

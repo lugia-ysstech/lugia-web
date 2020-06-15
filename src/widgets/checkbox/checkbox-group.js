@@ -18,6 +18,7 @@ import {
   getValueAndDisplayValue,
   handleCreate,
   updateMapData,
+  getEffectiveValueAndDisplayValue,
 } from '../common/translateData';
 import Theme from '../theme';
 
@@ -54,7 +55,12 @@ export default ThemeProvider(
 
     constructor(props: CheckBoxGroupProps) {
       super(props);
-      const { displayValue } = getValueAndDisplayValue(props, null);
+      const { displayValue } = getValueAndDisplayValue(
+        props,
+        null,
+        getEffectiveValueAndDisplayValue
+      );
+
       const disV = displayValue ? displayValue : [];
       updateMapData(props, disV, this.updateMapData);
     }
@@ -62,7 +68,11 @@ export default ThemeProvider(
     static getDerivedStateFromProps(props, state) {
       const { data = [] } = props;
       const dataLength = data.length;
-      const { value, displayValue } = getValueAndDisplayValue(props, state);
+      const { value, displayValue } = getValueAndDisplayValue(
+        props,
+        state,
+        getEffectiveValueAndDisplayValue
+      );
       const stateValue = value ? value : [];
       const stateDisplayValue = displayValue ? displayValue : [];
       return {
