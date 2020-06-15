@@ -21,17 +21,17 @@ const cancelCommonTheme = {
   color: defaultColor,
   background: { color: themeDisabledColor },
 };
-const normalCancelCommonTheme = {
+const normalCancelCommonTheme = () => ({
   normal: {
     ...cancelCommonTheme,
     border: getBorder({ color: themeDisabledColor, width: 1, style: 'solid' }),
   },
-};
+});
 const defaultRadioCancelTheme = () => ({
-  themeConfig: { ...normalCancelCommonTheme },
+  themeConfig: { ...normalCancelCommonTheme() },
 });
 const defaultCancelTheme = () => ({
-  themeConfig: { ...normalCancelCommonTheme, hover: cancelCommonTheme },
+  themeConfig: { ...normalCancelCommonTheme(), hover: cancelCommonTheme },
 });
 const checkedCommonTheme = () => ({
   color: defaultColor,
