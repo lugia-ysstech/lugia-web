@@ -120,7 +120,7 @@ const getAnimate = (props: CSSProps) => {
   }
 };
 
-export const ModalMask = StaticComponent({
+export const ModalMask = CSSComponent({
   tag: 'div',
   className: 'ModalMask',
   css: css`
@@ -135,6 +135,9 @@ export const ModalMask = StaticComponent({
     z-index: 99999;
     ${getAnimate};
   `,
+  normal: {
+    selectNames: [['background']],
+  },
 });
 
 export const ModalWrap = StaticComponent({
