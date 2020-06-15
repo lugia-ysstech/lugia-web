@@ -185,7 +185,7 @@ const getHoverCSS = (type: styleType, params: Object) => {
 
 export const TagWrap = CSSComponent({
   tag: 'div',
-  className: 'tagContianer',
+  className: 'tagContainer',
   normal: {
     selectNames: [
       ['color'],
@@ -200,6 +200,7 @@ export const TagWrap = CSSComponent({
       ['margin'],
       ['padding'],
       ['fontSize'],
+      ['cursor'],
     ],
     getThemeMeta() {
       return {
@@ -324,6 +325,7 @@ export const OptionalWrap = CSSComponent({
       ['margin'],
       ['padding'],
       ['fontSize'],
+      ['cursor'],
     ],
     getThemeMeta() {
       return {
