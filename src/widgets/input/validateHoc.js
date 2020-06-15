@@ -131,7 +131,7 @@ const ValidateHoc = (Target: Object) => {
           title={theHelp}
           action={'focus'}
           placement={'topLeft'}
-          visible={isValidateError(validateStatus) && _isValidateVisible}
+          visible={isValidateError(validateStatus)}
         >
           {result}
         </ToolTip>
