@@ -51,6 +51,7 @@ export default class extends React.Component<any, any> {
     const lineTarget = type === 'circle' ? 'ProgressCircleLine' : 'DashboardLine';
     const lineTheme = this.getTargetTheme(lineTarget);
     const lineColor = this.getLineColor(lineTheme);
+    const DashboardRadius = size === 'small' ? 37 : 56;
     return (
       <SvgInner size={size}>
         {type === 'circle' ? (
@@ -67,9 +68,9 @@ export default class extends React.Component<any, any> {
           </svg>
         ) : (
           <svg width={viewWidth} height={viewHeight}>
-            {getPolyLine(56, 8, 100, backgroundLineColor)}
+            {getPolyLine(DashboardRadius, 8, 100, backgroundLineColor)}
             {getPolyLine(
-              56,
+              DashboardRadius,
               8,
               handlePercent(percent),
               this.getColor(backgroundLineColor, lineColor)
