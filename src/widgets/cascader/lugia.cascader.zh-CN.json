@@ -56,7 +56,7 @@
       "type": "object",
       "desc": "展开图标",
       "meta": [{ "key": "iconClass", "title": "展开图标", "type": "icon" }],
-      "defaultValue": {
+      "propsDefaultValue": {
         "iconClass": "lugia-icon-direction_right"
       }
     },
