@@ -831,7 +831,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c7"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#4d63ff",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
@@ -878,7 +878,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c4"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#cccccc",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
@@ -933,7 +933,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c7"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#4d63ff",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
@@ -980,7 +980,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c4"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#cccccc",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
@@ -1035,7 +1035,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c7"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#4d63ff",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
@@ -1082,7 +1082,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c4"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#cccccc",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
@@ -1137,7 +1137,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c7"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#4d63ff",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
@@ -1184,7 +1184,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c4"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#cccccc",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
@@ -1296,7 +1296,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c7"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#4d63ff",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
@@ -1343,7 +1343,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c4"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#cccccc",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
@@ -1857,7 +1857,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c13"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#c0c8ff",
                 "borderBottomLeftRadius": "10rem",
                 "borderBottomRightRadius": "10rem",
@@ -1908,7 +1908,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c4"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#cccccc",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
@@ -1955,7 +1955,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c4"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#cccccc",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
@@ -2071,7 +2071,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c13"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#c0c8ff",
                 "borderBottomLeftRadius": "10rem",
                 "borderBottomRightRadius": "10rem",
@@ -2122,7 +2122,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c4"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#cccccc",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
@@ -2169,7 +2169,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
             className="c4"
             style={
               Object {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#fff",
                 "borderBottomColor": "#cccccc",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
@@ -2942,6 +2942,18 @@ exports[`RadioGroup RadioGroup css 1`] = `
           style={
             Object {
               "backgroundColor": "#c0c8ff",
+              "borderBottomColor": "#c0c8ff",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#c0c8ff",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#c0c8ff",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#c0c8ff",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
               "color": "#ffffff",
             }
           }
@@ -3114,6 +3126,18 @@ exports[`RadioGroup RadioGroup css 1`] = `
           style={
             Object {
               "backgroundColor": "#c0c8ff",
+              "borderBottomColor": "#c0c8ff",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#c0c8ff",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#c0c8ff",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#c0c8ff",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
               "color": "#ffffff",
             }
           }
