@@ -160,7 +160,7 @@ export default ThemeProvider(
         __lugiad__header__absolute__ = false,
         closable = true,
         closeIconClass,
-        modalBodyText,
+        modalBodyText = '请输入内容',
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       const view = {
