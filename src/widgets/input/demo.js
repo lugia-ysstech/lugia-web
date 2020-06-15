@@ -247,6 +247,12 @@ const InputDemo = () => {
         <ValidateInput validateType="bottom" onChange={onChange('limit')} />
         <p>校验信息显示类型 inner 输入值 是否含有a </p>
         <ValidateInput validateType="inner" onChange={onChange('limit')} />
+        <p>校验信息显示类型 top 输入值 受限校验</p>
+        <Input validateType="top" validateStatus="error" />
+        <p>校验信息显示类型 bottom 输入值 受限校验</p>
+        <Input validateType="bottom" validateStatus="error" />
+        <p>校验信息显示类型 inner 输入值 受限校验 </p>
+        <Input validateType="inner" validateStatus="error" />
       </Wrapper>
       <Wrapper>
         <p>段落文本输入框 resizeType="horizontal" </p>
@@ -279,6 +285,12 @@ const InputDemo = () => {
         <ValidateTextarea validateType="bottom" onChange={onChange('limit')} />
         <p>校验信息显示类型 inner 输入值 是否含有a </p>
         <ValidateTextarea validateType="inner" onChange={onChange('limit')} />
+        <p>校验信息显示类型 top 输入值 受限校验</p>
+        <Textarea validateType="top" validateStatus="error" />
+        <p>校验信息显示类型 bottom 输入值 受限校验</p>
+        <Textarea validateType="bottom" validateStatus="error" />
+        <p>校验信息显示类型 inner 输入值 受限校验 </p>
+        <Textarea validateType="inner" validateStatus="error" />
       </Wrapper>
     </div>
   );

@@ -9,8 +9,8 @@ const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 
 function getTipShowCSS(themeProps: Object) {
   const { propsConfig } = themeProps;
-  const { validateStatus, innerVisible } = propsConfig;
-  const theVisibility = isValidateError(validateStatus) && innerVisible ? 'visible' : 'hidden';
+  const { validateStatus } = propsConfig;
+  const theVisibility = isValidateError(validateStatus) ? 'visible' : 'hidden';
   return `visibility:${theVisibility}`;
 }
 
@@ -88,6 +88,7 @@ export const BottomContainer: Object = CSSComponent({
   },
   css: css`
     font-size: 0;
+    height: 100%;
   `,
 });
 
