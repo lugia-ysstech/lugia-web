@@ -164,12 +164,12 @@ export const Alert = CSSComponent({
 
 export const getPosition = (props: Object) => {
   const { hasDect } = props;
-  const changeDist = hasDect ? (18 - get('mFontSize')) / 2 : (14 - get('sFontSize')) / 2;
+  const computedDist = hasDect ? (18 - get('mFontSize')) / 2 : (14 - get('sFontSize')) / 2;
 
   return `
     top: ${hasDect ? px2remcss(20) : px2remcss(12)};
-    left: ${px2remcss(get('padding') - changeDist)}
-    transform: translateX(${px2remcss(changeDist)}) translateY(${px2remcss(changeDist)});
+    left: ${px2remcss(get('padding') - computedDist)}
+    transform: translateX(${px2remcss(computedDist)}) translateY(${px2remcss(computedDist)});
   `;
 };
 
