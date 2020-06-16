@@ -9,8 +9,8 @@ const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 
 function getTipShowCSS(themeProps: Object) {
   const { propsConfig } = themeProps;
-  const { validateStatus } = propsConfig;
-  const theVisibility = isValidateError(validateStatus) ? 'visible' : 'hidden';
+  const { validateStatus, innerVisible } = propsConfig;
+  const theVisibility = isValidateError(validateStatus) && innerVisible ? 'visible' : 'hidden';
   return `visibility:${theVisibility}`;
 }
 
