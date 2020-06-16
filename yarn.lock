@@ -1306,6 +1306,16 @@
     is-plain-object "^3.0.0"
     tslib "^1.11.1"
 
+"@lugia/object-utils@^1.0.18-alpha.0":
+  version "1.0.18-alpha.0"
+  resolved "https://registry.yarnpkg.com/@lugia/object-utils/-/object-utils-1.0.18-alpha.0.tgz#f7ad2f5500fca24328aff354748fbc993b5370fc"
+  integrity sha512-dEtdF3EVBJTLlq/nedUH0974nxHdY9QF6w5pxzk82Mm5TT4kwdfxOuVRGISuIYhGxl/4FaLf6F847wXUdIn5hg==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    deepmerge "^3.2.0"
+    is-plain-object "^3.0.0"
+    tslib "^1.11.1"
+
 "@lugia/ramada@^1.0.5":
   version "1.0.5"
   resolved "https://registry.npmjs.org/@lugia/ramada/-/ramada-1.0.5.tgz#e760646adcd3a9b00e4b8200359e03483c344779"
@@ -1342,27 +1352,27 @@
     debug "^4.1.1"
     tslib "^1.11.1"
 
-"@lugia/theme-css-hoc@^1.1.14":
-  version "1.1.14"
-  resolved "https://registry.yarnpkg.com/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.14.tgz#cd2a849f781802426a49b7e34cc478ded0f5fa6f"
-  integrity sha512-AAU9qdJBRSy92ngGftgel9dC95YrBSCzoxwZcyRWoOG7S/hldZNZBnM/HqvOZQd9pxYdzhQ8b2T49sTYOAH5KA==
+"@lugia/theme-css-hoc@^1.1.16-alpha.0":
+  version "1.1.16-alpha.0"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.16-alpha.0.tgz#c677c783a01952e8ba61fb7c538aa47dc4700304"
+  integrity sha512-VhlBeg+XNkop7oOggwr83mHN/niJizKNQh21vXiyOcJE/sqz+RPDbQkP29XQTwwP8P35J/y53lmS6lFYPyVRuA==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.24"
-    "@lugia/object-utils" "^1.0.16"
+    "@lugia/object-utils" "^1.0.18-alpha.0"
     "@lugia/ramada" "^1.0.5"
     "@lugia/theme-utils" "^1.1.8"
     "@types/react" "^16.9.32"
     "@types/styled-components" "^4.4.3"
     tslib "^1.11.1"
 
-"@lugia/theme-hoc@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@lugia/theme-hoc/-/theme-hoc-1.1.5.tgz#383834afede67958712b3663d9fd75c0cfa6d313"
-  integrity sha512-mVtUhsd4p2H910viJERGrdUdXuhr4yAcsyTaMMEzE+fpFpw1rh2k/okpFTRgW6yFY/e+Dajj+TYzNv9y71F4eA==
+"@lugia/theme-hoc@^1.1.7-alpha.0":
+  version "1.1.7-alpha.0"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-hoc/-/theme-hoc-1.1.7-alpha.0.tgz#fa1730e54f9e953d6923fcd986d980c4e1e29e2f"
+  integrity sha512-eXph2zUjRSu/Lo+gRCuSHP1cVdFlM/2vUeGtkvzPOw2IcMQnpFO99reggttWS+8/EZm4BUDEz+yNXqtjmXcPtA==
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/object-utils" "^1.0.16"
+    "@lugia/object-utils" "^1.0.18-alpha.0"
     "@types/react" "^16.9.32"
     "@types/styled-components" "^5.0.1"
     tslib "^1.11.1"
