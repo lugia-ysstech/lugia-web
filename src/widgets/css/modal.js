@@ -224,6 +224,7 @@ export const ModalClose = StaticComponent({
     cursor: pointer;
     text-align: center;
     line-height: ${px2remcss(64)};
+    z-index: 4001;
   `,
 });
 
