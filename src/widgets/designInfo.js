@@ -3471,6 +3471,27 @@ export default [
         offsetX: { type: 'number', desc: '菜单间的间隔', propsDefaultValue: 2 },
         offsetY: { type: 'number', desc: '显示框与菜单的间隔', propsDefaultValue: 5 },
         placeholder: { type: 'string', desc: '显示框占位符' },
+        pullIconClass: {
+          type: 'icon',
+          desc: '下拉图标',
+          propsDefaultValue: 'lugia-icon-direction_down',
+        },
+        clearIconClass: {
+          type: 'icon',
+          desc: '清除图标',
+          propsDefaultValue: 'lugia-icon-reminder_close',
+        },
+        switchIconClass: {
+          type: 'object',
+          desc: '展开图标',
+          meta: [{ key: 'iconClass', title: '展开图标', type: 'icon' }],
+          propsDefaultValue: { iconClass: 'lugia-icon-direction_right' },
+        },
+        autoHeight: {
+          type: 'boolean',
+          desc: '根据data数量，自动计算弹出菜单高度',
+          propsDefaultValue: false,
+        },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
@@ -3491,7 +3512,7 @@ export default [
               title: '前/后缀图标',
               type: 'object',
               children: [
-                { key: 'preIconClass', title: '前缀图标', type: 'icon' },
+                { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
                 { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
                 { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
                 { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
@@ -3767,6 +3788,14 @@ export default [
                   active: [['color'], ['font'], ['fontSize']],
                   disabled: [],
                 },
+                SelectedDesContainer: {
+                  name: '选中项辅助字段框',
+                  desc: '配置被选中项的辅助文本的样式和位置',
+                  normal: [['color'], ['font'], ['fontSize'], ['padding']],
+                  hover: [],
+                  active: [],
+                  disabled: [],
+                },
                 TextContainer: {
                   name: '文本框',
                   desc: '配置文本和前缀后缀图标的位置',
@@ -3935,6 +3964,14 @@ export default [
                       normal: [['color'], ['font'], ['fontSize'], ['padding'], ['lineHeight']],
                       hover: [['color'], ['font'], ['fontSize']],
                       active: [['color'], ['font'], ['fontSize']],
+                      disabled: [],
+                    },
+                    SelectedDesContainer: {
+                      name: '选中项辅助字段框',
+                      desc: '配置被选中项的辅助文本的样式和位置',
+                      normal: [['color'], ['font'], ['fontSize'], ['padding']],
+                      hover: [],
+                      active: [],
                       disabled: [],
                     },
                     PrefixIcon: {
@@ -9064,6 +9101,11 @@ export default [
           defaultValue: false,
         },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
+        selectLinePosition: {
+          type: 'PositionType',
+          desc: '选中项侧线标识线展示位置',
+          propsDefaultValue: 'left',
+        },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
@@ -9155,7 +9197,7 @@ export default [
         },
       },
       category: ['导航'],
-      type: { ThemeStyleType: ['light', 'dark'] },
+      type: { ThemeStyleType: ['light', 'dark'], PositionType: ['left', 'right'] },
       designInfo: {
         HorizontalNavMenu: {
           sequence: 1,
@@ -10011,9 +10053,53 @@ export default [
                         ['cursor'],
                       ],
                     },
+                    SelectedPrefixIcon: {
+                      name: '选中项前置图标配置',
+                      desc: '选中项前置图标的样式配置',
+                      normal: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                      hover: [['color'], ['font'], ['fontSize']],
+                      active: [['color'], ['font'], ['fontSize']],
+                      disabled: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                    },
                     SuffixIcon: {
                       name: '后缀图标配置',
                       desc: '后缀图标或图片的样式配置',
+                      normal: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                      hover: [['color'], ['font'], ['fontSize']],
+                      active: [['color'], ['font'], ['fontSize']],
+                      disabled: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                    },
+                    SelectedSuffixIcon: {
+                      name: '选中项后缀图标配置',
+                      desc: '选中项后缀图标的样式配置',
                       normal: [
                         ['color'],
                         ['margin'],
@@ -10134,6 +10220,11 @@ export default [
                   active: [],
                   disabled: [],
                 },
+                SelectLine: {
+                  name: '选中项侧线标识线',
+                  desc: '选中项侧线标识线样式配置',
+                  normal: [['width'], ['height'], ['background'], ['borderRadius']],
+                },
                 Text: {
                   name: '文本框区域',
                   desc: '配置每一项文本区域的样式',
@@ -10200,6 +10291,24 @@ export default [
                   active: [],
                   disabled: [],
                 },
+                SelectedParentText: {
+                  name: '选中项的父节点文本框区域',
+                  desc: '配置选中项的父节点文本框区域的样式',
+                  normal: [
+                    ['color'],
+                    ['font'],
+                    ['fontSize'],
+                    ['background'],
+                    ['padding'],
+                    ['border'],
+                    ['opacity'],
+                    ['boxShadow'],
+                    ['borderRadius'],
+                  ],
+                  hover: [],
+                  active: [],
+                  disabled: [],
+                },
                 PrefixIcon: {
                   name: '前置图标配置',
                   desc: '前置图标或图片的样式配置',
@@ -10215,9 +10324,39 @@ export default [
                     ['cursor'],
                   ],
                 },
+                SelectedPrefixIcon: {
+                  name: '选中项前置图标配置',
+                  desc: '选中项前置图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
                 SuffixIcon: {
                   name: '后缀图标配置',
                   desc: '后缀图标或图片的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                SelectedSuffixIcon: {
+                  name: '选中项后缀图标配置',
+                  desc: '选中项后缀图标的样式配置',
                   normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                   hover: [['color'], ['font'], ['fontSize']],
                   active: [['color'], ['font'], ['fontSize']],
@@ -10285,6 +10424,11 @@ export default [
           defaultValue: false,
         },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
+        selectLinePosition: {
+          type: 'PositionType',
+          desc: '选中项侧线标识线展示位置',
+          propsDefaultValue: 'left',
+        },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
@@ -10377,7 +10521,7 @@ export default [
         },
       },
       category: ['导航'],
-      type: { ThemeStyleType: ['light', 'dark'] },
+      type: { ThemeStyleType: ['light', 'dark'], PositionType: ['left', 'right'] },
       theme: {
         Tabs: {
           name: '水平导航配置',
@@ -10698,6 +10842,11 @@ export default [
           defaultValue: false,
         },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
+        selectLinePosition: {
+          type: 'PositionType',
+          desc: '选中项侧线标识线展示位置',
+          propsDefaultValue: 'left',
+        },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
@@ -10790,7 +10939,7 @@ export default [
         },
       },
       category: ['导航'],
-      type: { ThemeStyleType: ['light', 'dark'] },
+      type: { ThemeStyleType: ['light', 'dark'], PositionType: ['left', 'right'] },
       theme: {
         Menu: {
           name: '垂直导航菜单配置',
@@ -11148,6 +11297,11 @@ export default [
           defaultValue: false,
         },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
+        selectLinePosition: {
+          type: 'PositionType',
+          desc: '选中项侧线标识线展示位置',
+          propsDefaultValue: 'left',
+        },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
@@ -11241,7 +11395,7 @@ export default [
         },
       },
       category: ['导航'],
-      type: { ThemeStyleType: ['light', 'dark'] },
+      type: { ThemeStyleType: ['light', 'dark'], PositionType: ['left', 'right'] },
       theme: {
         Tree: {
           name: '内嵌导航菜单配置',
@@ -11398,9 +11552,39 @@ export default [
                     ['cursor'],
                   ],
                 },
+                SelectedPrefixIcon: {
+                  name: '选中项前置图标配置',
+                  desc: '选中项前置图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
                 SuffixIcon: {
                   name: '后缀图标配置',
                   desc: '后缀图标或图片的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                SelectedSuffixIcon: {
+                  name: '选中项后缀图标配置',
+                  desc: '选中项后缀图标的样式配置',
                   normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                   hover: [['color'], ['font'], ['fontSize']],
                   active: [['color'], ['font'], ['fontSize']],
