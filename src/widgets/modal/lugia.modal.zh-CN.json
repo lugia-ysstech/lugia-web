@@ -24,7 +24,7 @@
     "cancelText": {
       "type": "string",
       "desc": "取消按钮文字",
-      "defaultValue": "取消"
+      "propsDefaultValue": "取消"
     },
     "cancelButtonProps": {
       "type": "Object",
@@ -33,7 +33,7 @@
     "okText": {
       "type": "string",
       "desc": "确认按钮文字",
-      "defaultValue": "确定"
+      "propsDefaultValue": "确定"
     },
     "okButtonProps": {
       "type": "Object",
@@ -41,26 +41,28 @@
     },
     "confirmLoading": {
       "type": "boolean",
-      "desc": "确定按钮是否 loading"
+      "desc": "确定按钮是否 loading",
+      "propsDefaultValue": false
     },
     "footer": {
-      "type": "React.node",
-      "desc": "自定义底部内容，不需要底部内容可设置为 null"
+      "type": "boolean | React.node",
+      "desc": "底部内容是否显示, 或自定义底部内容",
+      "propsDefaultValue": true
     },
     "maskClosable": {
       "type": "boolean",
       "desc": "点击蒙层是否允许关闭",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
     "closable": {
       "type": "boolean",
       "desc": "是否显示关闭按钮",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
     "mask": {
       "type": "boolean",
       "desc": "是否显示遮罩",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
     "iconClass": {
       "type": "string",
@@ -70,9 +72,10 @@
       "type": "string",
       "desc": "自定义后缀图标"
     },
-    "modalBodyText": {
-      "type": "React.node",
-      "desc": "对话框内容"
+    "showIcon": {
+      "type": "boolean",
+      "desc": "是否显示图标",
+      "propsDefaultValue": false
     }
   },
   "events": {
