@@ -46,7 +46,7 @@ class Tree extends React.Component<any, any> {
   }
 
   getTreeData = () => {
-    const { translateTreeData, data } = this.props;
+    const { translateTreeData, data = [] } = this.props;
     return translateTreeData === true ? this.mapDataTranslateTreeData() : data;
   };
 
