@@ -47,7 +47,13 @@
                 "text": "前缀图标",
                 "desc": "前缀图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "icon",
+                "typeInTheme": "icon"
+              }
+            ]
           },
           {
             "name": "后缀图标",
@@ -57,7 +63,13 @@
                 "text": "后缀图标",
                 "desc": "后缀图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "suffixIcon",
+                "typeInTheme": "icon"
+              }
+            ]
           },
           {
             "name": "选中页签底部标识线",
@@ -93,7 +105,13 @@
                 "text": "前缀图标",
                 "desc": "前缀图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "icon",
+                "typeInTheme": "icon"
+              }
+            ]
           },
           {
             "name": "后缀图标",
@@ -103,7 +121,13 @@
                 "text": "后缀图标",
                 "desc": "后缀图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "suffixIcon",
+                "typeInTheme": "icon"
+              }
+            ]
           }
         ]
       },
@@ -195,7 +219,13 @@
                 "text": "翻页图标",
                 "desc": "翻页图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "pageArrowIcon",
+                "typeInTheme": "icon"
+              }
+            ]
           },
           {
             "name": "删除图标",
@@ -205,7 +235,13 @@
                 "text": "删除图标",
                 "desc": "删除图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "deleteIcon",
+                "typeInTheme": "icon"
+              }
+            ]
           }
         ]
       }
@@ -260,7 +296,13 @@
                 "text": "前缀图标",
                 "desc": "前缀图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "icon",
+                "typeInTheme": "icon"
+              }
+            ]
           },
           {
             "name": "后缀图标",
@@ -270,7 +312,13 @@
                 "text": "后缀图标",
                 "desc": "后缀图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "suffixIcon",
+                "typeInTheme": "icon"
+              }
+            ]
           }
         ]
       },
@@ -296,7 +344,13 @@
                 "text": "前缀图标",
                 "desc": "前缀图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "icon",
+                "typeInTheme": "icon"
+              }
+            ]
           },
           {
             "name": "后缀图标",
@@ -306,7 +360,13 @@
                 "text": "后缀图标",
                 "desc": "后缀图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "suffixIcon",
+                "typeInTheme": "icon"
+              }
+            ]
           }
         ]
       },
@@ -382,7 +442,13 @@
                 "text": "增加图标",
                 "desc": "增加图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "addIcon",
+                "typeInTheme": "icon"
+              }
+            ]
           },
           {
             "name": "翻页图标",
@@ -392,7 +458,13 @@
                 "text": "翻页图标",
                 "desc": "翻页图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "pageArrowIcon",
+                "typeInTheme": "icon"
+              }
+            ]
           },
           {
             "name": "删除图标",
@@ -402,7 +474,13 @@
                 "text": "删除图标",
                 "desc": "删除图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "deleteIcon",
+                "typeInTheme": "icon"
+              }
+            ]
           }
         ]
       }
@@ -457,7 +535,13 @@
                 "text": "前缀图标",
                 "desc": "前缀图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "icon",
+                "typeInTheme": "icon"
+              }
+            ]
           },
           {
             "name": "后缀图标",
@@ -467,7 +551,13 @@
                 "text": "后缀图标",
                 "desc": "后缀图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "suffixIcon",
+                "typeInTheme": "icon"
+              }
+            ]
           }
         ]
       },
@@ -493,7 +583,13 @@
                 "text": "前缀图标",
                 "desc": "前缀图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "icon",
+                "typeInTheme": "icon"
+              }
+            ]
           },
           {
             "name": "后缀图标",
@@ -503,7 +599,13 @@
                 "text": "后缀图标",
                 "desc": "后缀图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "suffixIcon",
+                "typeInTheme": "icon"
+              }
+            ]
           }
         ]
       },
@@ -571,7 +673,13 @@
                 "text": "增加图标",
                 "desc": "增加图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "addIcon",
+                "typeInTheme": "icon"
+              }
+            ]
           },
           {
             "name": "翻页图标",
@@ -581,7 +689,13 @@
                 "text": "翻页图标",
                 "desc": "翻页图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "pageArrowIcon",
+                "typeInTheme": "icon"
+              }
+            ]
           },
           {
             "name": "删除图标",
@@ -591,7 +705,13 @@
                 "text": "删除图标",
                 "desc": "删除图标"
               }
-            }
+            },
+            "props": [
+              {
+                "name": "deleteIcon",
+                "typeInTheme": "icon"
+              }
+            ]
           }
         ]
       }
