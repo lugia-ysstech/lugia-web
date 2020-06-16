@@ -3,7 +3,7 @@
  * create by guorg
  * @flow
  */
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
 import { css, keyframes } from 'styled-components';
 import get from './theme-common-dict';
@@ -143,41 +143,25 @@ export const Alert = CSSComponent({
     ],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
-      const { hasDect, showIcon } = propsConfig;
+      const { hasDect } = propsConfig;
       let verticalPad = 12;
-      let leftPad = 10;
-      if (showIcon) {
-        leftPad = `${get('padding') +
-          get(hasDect ? 'mFontSize' : 'sFontSize') +
-          get('paddingToText')}`;
-      }
       if (hasDect) {
         verticalPad = 18;
       }
 
       return {
-        padding: { top: verticalPad, bottom: verticalPad, left: leftPad, right: 10 },
+        padding: { top: verticalPad, bottom: verticalPad, left: 0, right: 10 },
       };
     },
   },
 });
 
-export const getPosition = (props: Object) => {
-  const { hasDect } = props;
-  const computedDist = hasDect ? (18 - get('mFontSize')) / 2 : (14 - get('sFontSize')) / 2;
-
-  return `
-    top: ${hasDect ? px2remcss(20) : px2remcss(12)};
-    left: ${px2remcss(get('padding') - computedDist)}
-    transform: translateX(${px2remcss(computedDist)}) translateY(${px2remcss(computedDist)});
-  `;
-};
-
 export const Message = CSSComponent({
   tag: 'span',
   className: 'alert-message',
   css: css`
-    vertical-align: text-bottom;
+    display: inline-block;
+    padding-left: ${px2remcss(get('paddingToText'))};
   `,
   normal: {
     defaultTheme: { color: darkGreyColor, font: { fontSize: 14 } },
@@ -266,5 +250,38 @@ export const Description = CSSComponent({
       padding: { top: 0, right: 0, bottom: 0, left: 0 },
     },
     selectNames: [['color'], ['font'], ['padding']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const {
+        iconTheme: {
+          theme: {
+            lugia_t_hoc_lugia_widget_Alert_AlertIcon: {
+              normal: {
+                font: { size },
+              },
+            },
+          },
+        },
+        showIcon,
+      } = propsConfig;
+      const paddingLeft = showIcon
+        ? size + get('padding') + get('paddingToText')
+        : get('paddingToText');
+
+      return {
+        padding: {
+          left: paddingLeft,
+        },
+      };
+    },
   },
+});
+
+export const TitleWrap = StaticComponent({
+  tag: 'div',
+  className: 'alert-title-wrap',
+  css: css`
+    display: flex;
+    align-items: center;
+  `,
 });
