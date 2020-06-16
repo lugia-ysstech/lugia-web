@@ -90,6 +90,11 @@
       "type": "AlignType",
       "desc": "分页各部位对齐的方式",
       "propsDefaultValue": "Left"
+    },
+    "size": {
+      "type": "SizeType",
+      "desc": "可配置三种尺寸大小的Pagination",
+      "propsDefaultValue": "default"
     }
   },
   "events": {
@@ -155,7 +160,8 @@
     }
   },
   "type": {
-    "AlignType": ["Left", "Right"]
+    "AlignType": ["Left", "Right"],
+    "SizeType": ["small", "default", "large"]
   },
   "designInfo": {
     "SimplePagination": {
@@ -549,6 +555,14 @@
                     ["color"],
                     ["font"]
                   ]
+                },
+                "Divider": {
+                  "name": "分割线",
+                  "desc": "配置每项之间的分割线，当divided为true时生效",
+                  "normal": [["background"]],
+                  "hover": [],
+                  "active": [],
+                  "disabled": []
                 }
               }
             }
