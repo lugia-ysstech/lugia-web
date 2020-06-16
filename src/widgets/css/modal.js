@@ -26,7 +26,7 @@ export type ModalProps = {
   onOk: Function,
   onCancel: Function,
   confirmLoading?: boolean,
-  footer?: string | React.ReactNode,
+  footer?: boolean | string | React.ReactNode,
   maskClosable?: boolean,
   getTheme: Function,
   getPartOfThemeProps: Function,

@@ -147,7 +147,7 @@ export default ThemeProvider(
         confirmLoading = false,
         cancelText = '取消',
         okText = '确定',
-        footer,
+        footer = true,
         showIcon = false,
         iconType = 'info',
         mask = true,
@@ -160,7 +160,6 @@ export default ThemeProvider(
         __lugiad__header__absolute__ = false,
         closable = true,
         closeIconClass,
-        modalBodyText = '请输入内容',
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       const view = {
@@ -211,11 +210,11 @@ export default ThemeProvider(
           {__lugiad__header__absolute__ ? (
             children
           ) : (
-            <ModalBody themeProps={modalBodyTextTheme}>{children || modalBodyText}</ModalBody>
+            <ModalBody themeProps={modalBodyTextTheme}>{children}</ModalBody>
           )}
-          {this.isInprops('footer') ? (
+          {this.isInprops('footer') && typeof footer !== Boolean ? (
             footer
-          ) : (
+          ) : footer === true ? (
             <ModalFooter __lugiad__header__absolute__={__lugiad__header__absolute__} type={type}>
               <Theme config={view}>
                 <Button
@@ -238,7 +237,7 @@ export default ThemeProvider(
                 </Button>
               </Theme>
             </ModalFooter>
-          )}
+          ) : null}
         </ModalContent>
       );
       if (type === 'Modal') {
