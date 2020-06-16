@@ -101,9 +101,9 @@ export default ThemeProvider(
               color: typeTheme.color,
               getCSS() {
                 return `
-                      position: absolute;
-                      ${getPosition({ hasDect })};
-                    `;
+                  position: absolute;
+                  ${getPosition({ hasDect })};
+                `;
               },
             },
           },
