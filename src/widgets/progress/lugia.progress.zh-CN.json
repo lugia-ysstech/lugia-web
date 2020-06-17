@@ -134,7 +134,15 @@
     "ProgressOutLine": {
       "name": "进度条底色线配置",
       "desc": "进度条底色线配置",
-      "normal": [["background"], ["borderRadius"], ["border"], ["boxShadow"]]
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["borderRadius"],
+        ["border"],
+        ["boxShadow"],
+        ["padding"]
+      ]
     },
     "ProgressInnerLine_Default": {
       "name": "进度条进度线默认配置",
@@ -170,6 +178,11 @@
       "name": "进度条失败图标配置",
       "desc": "进度条失败图标配置",
       "normal": [["color"], ["fontSize"]]
+    },
+    "ProgressActiveLine": {
+      "name": "动效条样式配置",
+      "desc": "动效条样式配置",
+      "normal": [["color"]]
     }
   }
 }
