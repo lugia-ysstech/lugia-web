@@ -9,6 +9,7 @@ import TreeSelect from './index';
 import Widget from '../consts/index';
 import styled from 'styled-components';
 import Icon from '../icon';
+import Modal from '../modal';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 const Box = styled.div`
   margin: 50px;
@@ -77,7 +78,6 @@ const theme = {
     Tree: {
       Container: {
         normal: {
-          width: 600,
           height: 224,
           background: { color: '#fff' },
           boxShadow: getBoxShadow('0 0 6px 0 rgba(0,0,0,0.20)'),
@@ -188,6 +188,7 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
     this.state = {
       value1: ['0'],
       value: ['1.1.1.1', '1.2.1', '0-4'],
+      visible: false,
     };
   }
 
@@ -197,8 +198,17 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
       return <Icon theme={iconConfig} iconClass={'lugia-icon-reminder_check_square'} />;
     }
   };
+  onClick = () => {
+    this.setState({ visible: !this.state.visible });
+  };
   render() {
     return [
+      <Box>
+        <Modal visible={this.state.visible} onOk={this.onClick} onCancel={this.onClick}>
+          <TreeSelect theme={theme} createPortal={true} />
+        </Modal>
+        <button onClick={this.onClick}>打开Modal对话框</button>
+      </Box>,
       <Box>
         <TreeSelect
           theme={theme}
