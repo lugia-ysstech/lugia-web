@@ -175,7 +175,8 @@
         ["borderRadius"],
         ["cursor"],
         ["opacity"],
-        ["margin"]
+        ["margin"],
+        ["padding"]
       ],
       "hover": [
         ["border"],
@@ -207,8 +208,8 @@
     "ClearButton": {
       "name": "清除图标",
       "desc": "后缀清除图标",
-      "normal": [["color"], ["fontSize"]],
-      "hover": [],
+      "normal": [["color"], ["fontSize"], ["font"]],
+      "hover": [["color"], ["fontSize"], ["font"]],
       "clicked": [],
       "disabled": []
     },
