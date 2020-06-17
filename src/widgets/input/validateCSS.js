@@ -89,6 +89,9 @@ export const BottomContainer: Object = CSSComponent({
   css: css`
     font-size: 0;
     height: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
   `,
 });
 
@@ -96,6 +99,6 @@ export const FatherContainer: Object = CSSComponent({
   extend: BottomContainer,
   className: 'FatherContainer',
   css: css`
-    position: relative;
+    flex-direction: '';
   `,
 });

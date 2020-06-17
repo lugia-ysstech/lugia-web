@@ -46,4 +46,13 @@ export const validateValueDefaultTheme = {
     },
   },
 };
-export const validateWidthTheme = { themeConfig: { normal: { width: '100%' } } };
+export const validateWidthTheme = {
+  themeConfig: {
+    normal: {
+      width: '100%',
+      getCSS() {
+        return 'flex:1';
+      },
+    },
+  },
+};

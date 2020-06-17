@@ -115,7 +115,7 @@ const ValidateHoc = (Target: Object) => {
                 const { propsConfig } = themeProps;
                 const { width = '100%' } = propsConfig;
                 const widthCSS = getWidthCSS(width);
-                return `${widthCSS};height:100%;display: block;`;
+                return `${widthCSS};height:100%;display:flex;`;
               },
             },
           },
