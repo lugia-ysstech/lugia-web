@@ -106,7 +106,6 @@
           {
             "name": "按钮文字样式",
             "path": ["ButtonText"],
-            "props": [{ "name": "icon", "typeInTheme": "icon" }],
             "description": { "textPart": { "text": "文本配置", "desc": "文本配置区块的显示文本" } }
           },
           {
