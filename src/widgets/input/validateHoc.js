@@ -119,9 +119,10 @@ const ValidateHoc = (Target: Object) => {
             normal: {
               getCSS(themeMeta, themeProps) {
                 const { propsConfig } = themeProps;
-                const { width = '100%' } = propsConfig;
+                const { width = '100%', __lugiad__header__absolute__ } = propsConfig;
                 const widthCSS = getWidthCSS(width);
-                return `${widthCSS};height:100%;display:flex;`;
+                const displayCSS = __lugiad__header__absolute__ ? 'flex' : 'inline-block';
+                return `${widthCSS};height:100%;display:${displayCSS};`;
               },
             },
           },
@@ -133,7 +134,7 @@ const ValidateHoc = (Target: Object) => {
         <ToolTip
           theme={newTheme}
           viewClass={viewClass}
-          propsConfig={{ width: theWidth }}
+          propsConfig={{ width: theWidth, __lugiad__header__absolute__ }}
           title={theHelp}
           action={'focus'}
           placement={'topLeft'}
