@@ -571,7 +571,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   }
 
   getPageSelect(isLast: boolean) {
-    const { getPartOfThemeHocProps } = this.props;
+    const { getPartOfThemeHocProps, divided } = this.props;
     const { theme, viewClass } = getPartOfThemeHocProps('PaginationPageSizeSelect');
     const theMargin = isLast ? 0 : 16;
     const selectTheme = deepMerge(
@@ -607,6 +607,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const valueConfig = pageSize && pageSize !== '' ? { value: pageSize + unit } : {};
     return (
       <Select
+        divided={divided}
         size={size}
         autoHeight
         canClear={false}

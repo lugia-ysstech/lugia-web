@@ -25,6 +25,7 @@ export type PaginationProps = {
   align?: AlignType,
   showTotalData?: boolean,
   size: SizeType,
+  divided: boolean,
 };
 
 export type PaginationState = {
