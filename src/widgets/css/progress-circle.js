@@ -21,6 +21,11 @@ export const SvgInner = styled.div`
   position: relative;
   font-size: ${getWrapFontSize}rem;
 `;
+const getFontSize = (props: CSSProps) => {
+  const { size } = props;
+  const fontSize = size === 'small' ? 'headLineFontSize' : 'largeTitleFontSize';
+  return `font-size: ${px2remcss(get(fontSize))}`;
+};
 
 export const SvgText = CSSComponent({
   tag: 'span',
@@ -41,11 +46,11 @@ export const SvgText = CSSComponent({
     text-overflow: ellipsis;
     word-break: normal;
     white-space: nowrap;
+    ${getFontSize};
   `,
   normal: {
     selectNames: [['font'], ['color']],
     defaultTheme: {
-      font: { size: get('largeTitleFontSize') },
       color: blackColor,
     },
     getThemeMeta(themeMeta, themeProps): Object {
