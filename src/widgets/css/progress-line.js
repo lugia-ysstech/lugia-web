@@ -110,7 +110,15 @@ export const ProgressLine = CSSComponent({
     vertical-align: middle;
   `,
   normal: {
-    selectNames: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['borderRadius'],
+      ['border'],
+      ['boxShadow'],
+      ['padding'],
+    ],
     defaultTheme: {
       background: { color: superLightColor },
     },
@@ -177,7 +185,8 @@ export const ProgressBackground = CSSComponent({
       const { propsConfig = {} } = themeProps;
       const { height } = themeMeta;
       const lineHeight = height ? getLineHeight(height) : px2remcss(getHeight(propsConfig));
-      const { active } = propsConfig;
+      const { active, activeLineTheme } = propsConfig;
+      const { themeConfig: { normal: { color = '#fff' } = {} } = {} } = activeLineTheme;
       if (active) {
         return css`
           line-height: ${lineHeight};
@@ -189,7 +198,7 @@ export const ProgressBackground = CSSComponent({
             left: 0;
             right: 0;
             bottom: 0;
-            background: #fff;
+            background: ${color};
             border-radius: 50%;
             animation: ${activeAnimate} 2.4s ease infinite;
           }
