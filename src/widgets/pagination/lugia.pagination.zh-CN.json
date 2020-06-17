@@ -95,6 +95,11 @@
       "type": "SizeType",
       "desc": "可配置三种尺寸大小的Pagination",
       "propsDefaultValue": "default"
+    },
+    "divided": {
+      "type": "boolean",
+      "desc": "是否展示菜单分割线",
+      "propsDefaultValue": "false"
     }
   },
   "events": {
@@ -160,8 +165,7 @@
     }
   },
   "type": {
-    "AlignType": ["Left", "Right"],
-    "SizeType": ["small", "default", "large"]
+    "AlignType": ["Left", "Right"]
   },
   "designInfo": {
     "SimplePagination": {
