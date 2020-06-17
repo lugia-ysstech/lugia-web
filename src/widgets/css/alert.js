@@ -160,8 +160,8 @@ export const Message = CSSComponent({
   tag: 'span',
   className: 'alert-message',
   css: css`
-    display: inline-block;
     padding-left: ${px2remcss(get('paddingToText'))};
+    line-height: 100%;
   `,
   normal: {
     defaultTheme: { color: darkGreyColor, font: { fontSize: 14 } },
