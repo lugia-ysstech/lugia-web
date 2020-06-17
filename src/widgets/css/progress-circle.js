@@ -33,7 +33,6 @@ export const SvgText = CSSComponent({
   css: css`
     display: block;
     position: absolute;
-    font-size: ${px2remcss(24)};
     width: 100%;
     text-align: center;
     line-height: 1;
