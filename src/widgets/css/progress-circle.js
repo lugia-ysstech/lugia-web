@@ -8,6 +8,9 @@ import { px2remcss } from './units';
 import { getTextColor, getWrapFontSize } from './progress-line';
 import CSSComponent from '@lugia/theme-css-hoc';
 import get from './theme-common-dict';
+type CSSProps = {
+  size: 'default' | 'small',
+};
 
 const blackColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 
