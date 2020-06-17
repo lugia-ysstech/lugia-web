@@ -74,7 +74,12 @@ export const BottomContainer: Object = CSSComponent({
     selectNames: [['width']],
     getCSS(themeMeta, themeProps) {
       const { width } = themeMeta;
-      return getWidthCSS(width);
+      const { propsConfig: { __lugiad__header__absolute__, validateType } = {} } = themeProps;
+      const flexDir = validateType === 'bottom' ? 'column' : 'row';
+      const displayCSS = __lugiad__header__absolute__
+        ? `display:flex; flex-direction:${flexDir};`
+        : '';
+      return `${getWidthCSS(width)};${displayCSS}`;
     },
   },
   hover: {
@@ -89,16 +94,11 @@ export const BottomContainer: Object = CSSComponent({
   css: css`
     font-size: 0;
     height: 100%;
-    display: flex;
     position: relative;
-    flex-direction: column;
   `,
 });
 
 export const FatherContainer: Object = CSSComponent({
   extend: BottomContainer,
   className: 'FatherContainer',
-  css: css`
-    flex-direction: row;
-  `,
 });

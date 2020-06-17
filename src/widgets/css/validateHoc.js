@@ -50,9 +50,6 @@ export const validateWidthTheme = {
   themeConfig: {
     normal: {
       width: '100%',
-      getCSS() {
-        return 'flex:1';
-      },
     },
   },
 };

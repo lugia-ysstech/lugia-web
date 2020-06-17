@@ -140,6 +140,13 @@ const InputContainer = CSSComponent({
         height: theHeight,
       };
     },
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { __lugiad__header__absolute__ },
+      } = themeProps;
+      const flexCSS = __lugiad__header__absolute__ ? 'flex:1' : '';
+      return `${flexCSS}`;
+    },
   },
   hover: {
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
@@ -560,6 +567,7 @@ class TextBox extends Component<InputProps, InputState> {
       isShowClearButton,
       size,
       _focus,
+      __lugiad__header__absolute__,
     } = this.props;
     const {
       themeConfig: { normal: { color, font = {}, fontSize } = {} },
@@ -608,6 +616,7 @@ class TextBox extends Component<InputProps, InputState> {
           placeHolderFontSize: fontSize,
           isShowClearButton,
           placeHolderFont: font,
+          __lugiad__header__absolute__,
         },
       }),
       getPartOfThemeProps('Container', {
