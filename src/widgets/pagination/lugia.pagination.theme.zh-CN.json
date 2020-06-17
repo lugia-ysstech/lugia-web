@@ -125,6 +125,10 @@
       {
         "name": "align",
         "text": "功能展示位置"
+      },
+      {
+        "name": "divided",
+        "text": "菜单分割线"
       }
     ],
     "data": [
@@ -338,6 +342,22 @@
                       "appearancePart": {
                         "text": "选中项",
                         "desc": "选中项"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "分割线",
+                "iconClass": "Dividingline",
+                "data": [
+                  {
+                    "name": "选中项",
+                    "path": ["PaginationPageSizeSelect", "Menu", "MenuItem", "Divider"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "分割线",
+                        "desc": "分割线外观配置"
                       }
                     }
                   }
