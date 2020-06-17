@@ -4,6 +4,7 @@
     "title": "进度条",
     "viewProps": [
       { "name": "showInfo", "text": "显示数值/图标" },
+      { "name": "active", "text": "进度条动效" },
       { "name": "showType", "text": "数据/图标位置" },
       { "name": "percent", "text": "百分比" },
       { "name": "status", "text": "状态" }
@@ -38,13 +39,20 @@
             "path": ["ProgressInnerLine_Default"],
             "description": {
               "appearancePart": {
-                "text": "外观",
+                "text": "进度条",
                 "desc": "面板中外观配置的区块显示文本"
               },
               "spacingPart": {
                 "text": "padding/margin",
                 "desc": "内外边距配置区块的显示文本"
               }
+            }
+          },
+          {
+            "name": "动效条样式配置",
+            "path": ["ProgressActiveLine"],
+            "description": {
+              "appearancePart": { "text": "动效条", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]

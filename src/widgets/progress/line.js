@@ -131,6 +131,7 @@ export default class extends React.Component<LineProps, ProgressState> {
     const innerLineErrorTheme = getPartOfThemeProps('ProgressInnerLine_Error');
     const insideTextTheme = getPartOfThemeProps('ProgressLineInsideText');
     const infoTextTheme = getPartOfThemeProps('ProgressLineInfoText');
+    const activeLineTheme = getPartOfThemeProps('ProgressActiveLine');
     const progressStatus = getStatus({ status, percent });
     const progressInnerLineTheme =
       progressStatus === 'success'
@@ -149,6 +150,7 @@ export default class extends React.Component<LineProps, ProgressState> {
       status: progressStatus,
       size,
     };
+    progressInnerLineTheme.propsConfig.activeLineTheme = activeLineTheme;
 
     return (
       <Wrap themeProps={progressWrapTheme} size={size} type={type}>
