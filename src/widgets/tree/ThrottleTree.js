@@ -37,6 +37,9 @@ class ScrollerTree extends React.Component<any, any> {
       this.onCanSeeCountChange(nexProps.canSeeCount);
     }
     return (
+      JSON.stringify(nexProps.selectedKeys) !== JSON.stringify(this.props.selectedKeys) ||
+      JSON.stringify(nexProps.checkedKeys) !== JSON.stringify(this.props.checkedKeys) ||
+      nexProps.value !== this.props.value ||
       nexProps.mutliple !== this.props.mutliple ||
       nexProps.utils != this.props.utils ||
       nexProps.onSelect != this.props.onSelect ||
