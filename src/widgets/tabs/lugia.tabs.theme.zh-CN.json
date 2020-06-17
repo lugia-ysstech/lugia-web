@@ -642,6 +642,10 @@
               "appearancePart": {
                 "text": "页签背景",
                 "desc": "页签背景"
+              },
+              "textPart": {
+                "text": "页签对齐方式",
+                "desc": "页签对齐方式"
               }
             }
           },
@@ -652,22 +656,10 @@
               "appearancePart": {
                 "text": "内容区域",
                 "desc": "内容区域"
-              }
-            }
-          }
-        ]
-      },
-      {
-        "title": "默认线",
-        "iconClass": "tabsLine",
-        "data": [
-          {
-            "name": "外观",
-            "path": ["BorderStyle"],
-            "description": {
-              "appearancePart": {
-                "text": "外观",
-                "desc": "外观"
+              },
+              "textPart": {
+                "text": "内容文本",
+                "desc": "内容文本"
               }
             }
           }
