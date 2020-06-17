@@ -122,21 +122,17 @@ export const BreadcrumbContainer = CSSComponent({
       ['boxShadow'],
       ['background'],
     ],
-    getCSS: themeMeta => {
-      const { height = 30 } = themeMeta;
-      return `line-height: ${px2remcss(height)}`;
-    },
-    defaultTheme: {},
   },
   hover: {
     selectNames: [['border'], ['borderRadius'], ['boxShadow'], ['background'], ['opacity']],
   },
   css: css`
     height: ${px2remcss(30)};
-    display: inline-block;
+    display: inline-flex;
     box-sizing: border-box;
     transition: all 0.3s;
     overflow: hidden;
+    align-items: center;
     width: 100%;
   `,
   option: { hover: true },
