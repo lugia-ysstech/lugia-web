@@ -1341,13 +1341,13 @@
     "@types/react-test-renderer" "^16.9.2"
     prop-types "^15.7.2"
 
-"@lugia/theme-core@^1.1.6":
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/@lugia/theme-core/-/theme-core-1.1.6.tgz#2c54ef4b1b8b9066e173ad24fae1eb8638a1cc90"
-  integrity sha512-xnRIG79vTZ+IZ2Aq8hyeM3pVltMxvVvtvvmBhYfCcNVhEC+umMqbqM6k1MhEMd7ghEvbX3gBT+2SN+x6cNSjTw==
+"@lugia/theme-core@^1.1.8-alpha.0":
+  version "1.1.8-alpha.0"
+  resolved "https://registry.npmjs.org/@lugia/theme-core/-/theme-core-1.1.8-alpha.0.tgz#9f333abf632b28cf35bec941f99a0011b839b58f"
+  integrity sha512-st/txJQZ+PhBWxKFP7i6sZ6QwXYf9JyidWblOIZNdH1okbMnnaMkbvcXd6ec7KYvt7Tyv8bFscZzqQQolVO8ww==
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/object-utils" "^1.0.16"
+    "@lugia/object-utils" "^1.0.18-alpha.0"
     "@types/react" "^16.9.32"
     debug "^4.1.1"
     tslib "^1.11.1"
