@@ -99,6 +99,6 @@ export const FatherContainer: Object = CSSComponent({
   extend: BottomContainer,
   className: 'FatherContainer',
   css: css`
-    flex-direction: '';
+    flex-direction: row;
   `,
 });
