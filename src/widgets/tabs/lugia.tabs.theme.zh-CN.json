@@ -50,8 +50,9 @@
             },
             "props": [
               {
-                "name": "icon",
-                "typeInTheme": "icon"
+                "name": "data",
+                "typeInTheme": "icon",
+                "disabled": true
               }
             ]
           },
@@ -66,8 +67,9 @@
             },
             "props": [
               {
-                "name": "suffixIcon",
-                "typeInTheme": "icon"
+                "name": "data",
+                "typeInTheme": "icon",
+                "disabled": true
               }
             ]
           },
@@ -108,8 +110,9 @@
             },
             "props": [
               {
-                "name": "icon",
-                "typeInTheme": "icon"
+                "name": "data",
+                "typeInTheme": "icon",
+                "disabled": true
               }
             ]
           },
@@ -124,8 +127,9 @@
             },
             "props": [
               {
-                "name": "suffixIcon",
-                "typeInTheme": "icon"
+                "name": "data",
+                "typeInTheme": "icon",
+                "disabled": true
               }
             ]
           }
@@ -299,8 +303,9 @@
             },
             "props": [
               {
-                "name": "icon",
-                "typeInTheme": "icon"
+                "name": "data",
+                "typeInTheme": "icon",
+                "disabled": true
               }
             ]
           },
@@ -315,8 +320,9 @@
             },
             "props": [
               {
-                "name": "suffixIcon",
-                "typeInTheme": "icon"
+                "name": "data",
+                "typeInTheme": "icon",
+                "disabled": true
               }
             ]
           }
@@ -347,8 +353,9 @@
             },
             "props": [
               {
-                "name": "icon",
-                "typeInTheme": "icon"
+                "name": "data",
+                "typeInTheme": "icon",
+                "disabled": true
               }
             ]
           },
@@ -363,8 +370,9 @@
             },
             "props": [
               {
-                "name": "suffixIcon",
-                "typeInTheme": "icon"
+                "name": "data",
+                "typeInTheme": "icon",
+                "disabled": true
               }
             ]
           }
@@ -538,8 +546,9 @@
             },
             "props": [
               {
-                "name": "icon",
-                "typeInTheme": "icon"
+                "name": "data",
+                "typeInTheme": "icon",
+                "disabled": true
               }
             ]
           },
@@ -554,8 +563,9 @@
             },
             "props": [
               {
-                "name": "suffixIcon",
-                "typeInTheme": "icon"
+                "name": "data",
+                "typeInTheme": "icon",
+                "disabled": true
               }
             ]
           }
@@ -586,8 +596,9 @@
             },
             "props": [
               {
-                "name": "icon",
-                "typeInTheme": "icon"
+                "name": "data",
+                "typeInTheme": "icon",
+                "disabled": true
               }
             ]
           },
@@ -602,8 +613,9 @@
             },
             "props": [
               {
-                "name": "suffixIcon",
-                "typeInTheme": "icon"
+                "name": "data",
+                "typeInTheme": "icon",
+                "disabled": true
               }
             ]
           }
