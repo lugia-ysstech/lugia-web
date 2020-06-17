@@ -229,7 +229,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
 
   getContainerWidth = () => {
-    return this.state.treeWidth;
+    return (
+      this.inputTag &&
+      this.inputTag.current &&
+      this.inputTag.current.getThemeTarget().container.offsetWidth
+    );
   };
 
   getTreeTheme = () => {
