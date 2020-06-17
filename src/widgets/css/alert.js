@@ -161,7 +161,6 @@ export const Message = CSSComponent({
   className: 'alert-message',
   css: css`
     padding-left: ${px2remcss(get('paddingToText'))};
-    line-height: 100%;
   `,
   normal: {
     defaultTheme: { color: darkGreyColor, font: { fontSize: 14 } },
