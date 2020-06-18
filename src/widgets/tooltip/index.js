@@ -273,6 +273,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     const childrenThemeProps = deepMerge(defaultTheme(), contentThemeProps);
     return (
       <Trigger
+        lazy={false}
         alwaysOpen={alwaysOpen}
         liquidLayout={liquidLayout}
         themePass
