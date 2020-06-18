@@ -148,12 +148,13 @@ export default class ModalDemo extends React.Component<any, any> {
             fontSize: 18,
           },
         },
-        // ModalIcon: {
-        //   normal: {
-        //     color: 'orange',
-        //     fontSize: 18,
-        //   },
-        // },
+        ModalMask: {
+          normal: {
+            background: {
+              color: 'green',
+            },
+          },
+        },
       },
     };
     return (
