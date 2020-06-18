@@ -122,6 +122,9 @@ const Line = CSSComponent({
   className: 'TimeLineItemLine',
   normal: {
     selectNames: [['width'], ['height'], ['background']],
+    defaultTheme: {
+      width: 1,
+    },
     getCSS(themeMeta, themeProps) {
       const { background } = themeMeta;
       const { propsConfig } = themeProps;
