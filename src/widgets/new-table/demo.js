@@ -294,16 +294,16 @@ export default class TableDemo extends React.Component<Object, Object> {
 
     return (
       <div>
-        {/*<Title>多选可编辑表格 嵌套数据</Title>*/}
-        {/*<div>{JSON.stringify(treeData)}</div>*/}
-        {/*<EditTable*/}
-        {/*  data={checkBoxdata}*/}
-        {/*  columns={checkboxColumns}*/}
-        {/*  showHeader={false}*/}
-        {/*  isEditHead={true}*/}
-        {/*  tableStyle={'bordered'}*/}
-        {/*  onChange={this.onChangeCheckData}*/}
-        {/*/>*/}
+        <Title>多选可编辑表格 嵌套数据</Title>
+        <div>{JSON.stringify(treeData)}</div>
+        <EditTable
+          data={checkBoxdata}
+          columns={checkboxColumns}
+          showHeader={false}
+          isEditHead={true}
+          tableStyle={'bordered'}
+          onChange={this.onChangeCheckData}
+        />
         <Title>可编辑表格 嵌套数据</Title>
         <div>{JSON.stringify(treeData)}</div>
         <Theme config={config}>
@@ -320,51 +320,51 @@ export default class TableDemo extends React.Component<Object, Object> {
             selectSuffixElement={<div>00</div>}
           />
         </Theme>
-        {/*<Title>可编辑表格</Title>*/}
-        {/*<Theme config={config}>*/}
-        {/*<EditTable*/}
-        {/*data={tableData}*/}
-        {/*columns={columns}*/}
-        {/*tableStyle={'bordered'}*/}
-        {/*tableSize={'large'}*/}
-        {/*title={'这是一个有边框的表格'}*/}
-        {/*footer={<div>这是表格底部信息</div>}*/}
-        {/*onChange={this.onChange}*/}
-        {/*onCell={this.onCell}*/}
-        {/*onHeaderCell={this.onHeaderCell}*/}
-        {/*isEditHead*/}
-        {/*selectSuffixElement={<div>00</div>}*/}
-        {/*/>*/}
-        {/*</Theme>*/}
-        {/*<Theme config={tableConfig}>*/}
-        {/*<Title>基本表格</Title>*/}
-        {/*<Table*/}
-        {/*data={data}*/}
-        {/*columns={columns}*/}
-        {/*title={'这是一个表格'}*/}
-        {/*footer={<div>这是表格底部信息</div>}*/}
-        {/*/>*/}
-        {/*</Theme>*/}
-        {/*<Title>tableSize： large tableStyle：zebraStripe </Title>*/}
-        {/*<Table data={tableData} columns={columns} tableStyle={'zebraStripe'} tableSize={'large'} />*/}
-        {/*<Title>tableSize： middle tableStyle：bordered </Title>*/}
-        {/*<Table*/}
-        {/*data={data}*/}
-        {/*columns={columns}*/}
-        {/*tableStyle={'bordered'}*/}
-        {/*tableSize={'middle'}*/}
-        {/*title={'这是一个有边框的表格'}*/}
-        {/*footer={<div>这是表格底部信息</div>}*/}
-        {/*/>*/}
-        {/*<Title>tableSize： large tableStyle：bordered data:null </Title>*/}
-        {/*<Table columns={columns} tableStyle={'bordered'} tableSize={'large'} />*/}
-        {/*<Title>tableSize： default tableStyle：bordered column:null </Title>*/}
-        {/*<Table*/}
-        {/*data={data}*/}
-        {/*// columns={columns}*/}
-        {/*tableStyle={'bordered'}*/}
-        {/*footer={<div>这是表格底部信息</div>}*/}
-        {/*/>*/}
+        <Title>可编辑表格</Title>
+        <Theme config={config}>
+          <EditTable
+            data={tableData}
+            columns={columns}
+            tableStyle={'bordered'}
+            tableSize={'large'}
+            title={'这是一个有边框的表格'}
+            footer={<div>这是表格底部信息</div>}
+            onChange={this.onChange}
+            onCell={this.onCell}
+            onHeaderCell={this.onHeaderCell}
+            isEditHead
+            selectSuffixElement={<div>00</div>}
+          />
+        </Theme>
+        <Theme config={tableConfig}>
+          <Title>基本表格</Title>
+          <Table
+            data={data}
+            columns={columns}
+            title={'这是一个表格'}
+            footer={<div>这是表格底部信息</div>}
+          />
+        </Theme>
+        <Title>tableSize： large tableStyle：zebraStripe </Title>
+        <Table data={tableData} columns={columns} tableStyle={'zebraStripe'} tableSize={'large'} />
+        <Title>tableSize： middle tableStyle：bordered </Title>
+        <Table
+          data={data}
+          columns={columns}
+          tableStyle={'bordered'}
+          tableSize={'middle'}
+          title={'这是一个有边框的表格'}
+          footer={<div>这是表格底部信息</div>}
+        />
+        <Title>tableSize： large tableStyle：bordered data:null </Title>
+        <Table columns={columns} tableStyle={'bordered'} tableSize={'large'} />
+        <Title>tableSize： default tableStyle：bordered column:null </Title>
+        <Table
+          data={data}
+          // columns={columns}
+          tableStyle={'bordered'}
+          footer={<div>这是表格底部信息</div>}
+        />
       </div>
     );
   }
