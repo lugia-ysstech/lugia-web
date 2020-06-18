@@ -22,6 +22,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
 
   static defaultProps = {
     allowEditHead: true,
+    showHeader: true,
   };
 
   constructor(props: EditTableProps) {
