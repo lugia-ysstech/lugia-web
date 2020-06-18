@@ -251,20 +251,9 @@ export const Description = CSSComponent({
     selectNames: [['color'], ['font'], ['padding']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
-      const {
-        iconTheme: {
-          theme: {
-            lugia_t_hoc_lugia_widget_Alert_AlertIcon: {
-              normal: {
-                font: { size },
-              },
-            },
-          },
-        },
-        showIcon,
-      } = propsConfig;
+      const { showIcon, iconSize } = propsConfig;
       const paddingLeft = showIcon
-        ? size + get('padding') + get('paddingToText')
+        ? iconSize + get('padding') + get('paddingToText')
         : get('paddingToText');
 
       return {
