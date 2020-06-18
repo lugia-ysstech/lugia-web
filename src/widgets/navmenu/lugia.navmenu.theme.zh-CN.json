@@ -70,12 +70,40 @@
                 "desc": "子选项内外边距配置区"
               }
             }
+          },
+          {
+            "name": "前缀图标",
+            "path": ["Tree", "TreeItem", "PrefixIcon"],
+            "description": {
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "前缀图标文本配置"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "前缀图标内外边距配置区"
+              }
+            }
+          },
+          {
+            "name": "后缀图标",
+            "path": ["Tree", "TreeItem", "SuffixIcon"],
+            "description": {
+              "textPart": {
+                "text": "后缀图标",
+                "desc": "后缀图标文本配置"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "前缀图标内外边距配置区"
+              }
+            }
           }
         ]
       },
       {
         "title": "选中项文本",
-        "iconClass": "Checked",
+        "iconClass": "menuTextPrimary",
         "data": [
           {
             "name": "选中项文本",
@@ -120,80 +148,34 @@
                 "desc": "选中线外观配置的区"
               }
             }
-          }
-        ]
-      },
-      {
-        "title": "前后缀图标",
-        "iconClass": "iconsearch",
-        "children": [
-          {
-            "title": "未选中",
-            "iconClass": "checkboxUncheck",
-            "data": [
-              {
-                "name": "前缀图标",
-                "path": ["Tree", "TreeItem", "PrefixIcon"],
-                "description": {
-                  "textPart": {
-                    "text": "前缀图标",
-                    "desc": "前缀图标文本配置"
-                  },
-                  "spacingPart": {
-                    "text": "padding/margin",
-                    "desc": "前缀图标内外边距配置区"
-                  }
-                }
-              },
-              {
-                "name": "后缀图标",
-                "path": ["Tree", "TreeItem", "SuffixIcon"],
-                "description": {
-                  "textPart": {
-                    "text": "后缀图标",
-                    "desc": "后缀图标文本配置"
-                  },
-                  "spacingPart": {
-                    "text": "padding/margin",
-                    "desc": "前缀图标内外边距配置区"
-                  }
-                }
-              }
-            ]
           },
           {
-            "title": "选中",
-            "iconClass": "checkboxCheck",
-            "data": [
-              {
-                "name": "前缀图标",
-                "path": ["Tree", "TreeItem", "SelectedPrefixIcon"],
-                "description": {
-                  "textPart": {
-                    "text": "前缀图标",
-                    "desc": "前缀图标文本配置"
-                  },
-                  "spacingPart": {
-                    "text": "padding/margin",
-                    "desc": "前缀图标内外边距配置区"
-                  }
-                }
+            "name": "前缀图标",
+            "path": ["Tree", "TreeItem", "SelectedPrefixIcon"],
+            "description": {
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "前缀图标文本配置"
               },
-              {
-                "name": "后缀图标",
-                "path": ["Tree", "TreeItem", "SelectedSuffixIcon"],
-                "description": {
-                  "textPart": {
-                    "text": "后缀图标",
-                    "desc": "后缀图标文本配置"
-                  },
-                  "spacingPart": {
-                    "text": "padding/margin",
-                    "desc": "前缀图标内外边距配置区"
-                  }
-                }
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "前缀图标内外边距配置区"
               }
-            ]
+            }
+          },
+          {
+            "name": "后缀图标",
+            "path": ["Tree", "TreeItem", "SelectedSuffixIcon"],
+            "description": {
+              "textPart": {
+                "text": "后缀图标",
+                "desc": "后缀图标文本配置"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "前缀图标内外边距配置区"
+              }
+            }
           }
         ]
       },
@@ -337,6 +319,34 @@
                 "desc": "子选项内外边距配置区"
               }
             }
+          },
+          {
+            "name": "前缀图标",
+            "path": ["Tree", "TreeItem", "PrefixIcon"],
+            "description": {
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "前缀图标文本配置"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "前缀图标内外边距配置区"
+              }
+            }
+          },
+          {
+            "name": "后缀图标",
+            "path": ["Tree", "TreeItem", "SuffixIcon"],
+            "description": {
+              "textPart": {
+                "text": "后缀图标",
+                "desc": "后缀图标文本配置"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "前缀图标内外边距配置区"
+              }
+            }
           }
         ]
       },
@@ -377,80 +387,34 @@
                 "hidden": true
               }
             }
-          }
-        ]
-      },
-      {
-        "title": "前后缀图标",
-        "iconClass": "iconsearch",
-        "children": [
-          {
-            "title": "未选中",
-            "iconClass": "checkboxUncheck",
-            "data": [
-              {
-                "name": "前缀图标",
-                "path": ["Tree", "TreeItem", "PrefixIcon"],
-                "description": {
-                  "textPart": {
-                    "text": "前缀图标",
-                    "desc": "前缀图标文本配置"
-                  },
-                  "spacingPart": {
-                    "text": "padding/margin",
-                    "desc": "前缀图标内外边距配置区"
-                  }
-                }
-              },
-              {
-                "name": "后缀图标",
-                "path": ["Tree", "TreeItem", "SuffixIcon"],
-                "description": {
-                  "textPart": {
-                    "text": "后缀图标",
-                    "desc": "后缀图标文本配置"
-                  },
-                  "spacingPart": {
-                    "text": "padding/margin",
-                    "desc": "前缀图标内外边距配置区"
-                  }
-                }
-              }
-            ]
           },
           {
-            "title": "选中",
-            "iconClass": "checkboxCheck",
-            "data": [
-              {
-                "name": "前缀图标",
-                "path": ["Tree", "TreeItem", "SelectedPrefixIcon"],
-                "description": {
-                  "textPart": {
-                    "text": "前缀图标",
-                    "desc": "前缀图标文本配置"
-                  },
-                  "spacingPart": {
-                    "text": "padding/margin",
-                    "desc": "前缀图标内外边距配置区"
-                  }
-                }
+            "name": "前缀图标",
+            "path": ["Tree", "TreeItem", "SelectedPrefixIcon"],
+            "description": {
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "前缀图标文本配置"
               },
-              {
-                "name": "后缀图标",
-                "path": ["Tree", "TreeItem", "SelectedSuffixIcon"],
-                "description": {
-                  "textPart": {
-                    "text": "后缀图标",
-                    "desc": "后缀图标文本配置"
-                  },
-                  "spacingPart": {
-                    "text": "padding/margin",
-                    "desc": "前缀图标内外边距配置区"
-                  }
-                }
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "前缀图标内外边距配置区"
               }
-            ]
+            }
+          },
+          {
+            "name": "后缀图标",
+            "path": ["Tree", "TreeItem", "SelectedSuffixIcon"],
+            "description": {
+              "textPart": {
+                "text": "后缀图标",
+                "desc": "后缀图标文本配置"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "前缀图标内外边距配置区"
+              }
+            }
           }
         ]
       },
