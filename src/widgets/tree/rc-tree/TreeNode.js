@@ -703,7 +703,7 @@ class TreeNode extends React.Component {
       eventKey,
       checkedCSS,
       marginBottom,
-      rowLeftPadding,
+      indentDistance,
     } = props;
     const { dragState } = this.state;
     const expandedState = expanded ? 'open' : 'close';
@@ -830,7 +830,7 @@ class TreeNode extends React.Component {
       selected,
       marginBottom,
       hasChildren: !!item.children,
-      rowLeftPadding,
+      indentDistance,
     });
 
     if (this.isChecked()) {
