@@ -20,6 +20,12 @@
       "propsDefaultValue": "value"
     },
 
+    "rowLeftPadding": {
+      "type": "number",
+      "desc": "每一项leftPadding的距离",
+      "propsDefaultValue": 14
+    },
+
     "selectLinePosition": {
       "type": "PositionType",
       "desc": "选中项侧线标识线展示位置",
