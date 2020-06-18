@@ -93,7 +93,7 @@ exports[`Item Mutliple MenuItem 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "fontSize": "1.6rem",
+          "fontSize": "1.4rem",
         }
       }
     >
@@ -199,7 +199,7 @@ exports[`Item Mutliple MenuItem checked 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "fontSize": "1.6rem",
+          "fontSize": "1.4rem",
         }
       }
     >
@@ -304,7 +304,7 @@ exports[`Item Single MenuItem 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "fontSize": "1.6rem",
+          "fontSize": "1.4rem",
         }
       }
     >
@@ -408,7 +408,7 @@ exports[`Item Single MenuItem checked 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "fontSize": "1.6rem",
+          "fontSize": "1.4rem",
         }
       }
     >
@@ -513,7 +513,7 @@ exports[`Item children: null 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "fontSize": "1.6rem",
+          "fontSize": "1.4rem",
         }
       }
     />

@@ -82,6 +82,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 }
 
 .c4 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -176,23 +177,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c12 {
@@ -205,23 +189,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c12::after {
@@ -466,7 +433,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1"
@@ -552,6 +519,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     disabled={false}
                     style={
                       Object {
+                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -602,7 +570,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.1"
@@ -693,6 +661,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     disabled={false}
                     style={
                       Object {
+                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -743,7 +712,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2"
@@ -829,6 +798,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     disabled={false}
                     style={
                       Object {
+                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -879,7 +849,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.1"
@@ -970,6 +940,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     disabled={false}
                     style={
                       Object {
+                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -1020,7 +991,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.2"
@@ -1111,6 +1082,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     disabled={false}
                     style={
                       Object {
+                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -1161,7 +1133,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.2.1"
@@ -1247,6 +1219,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     disabled={false}
                     style={
                       Object {
+                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -1297,7 +1270,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.2.1.1"
@@ -1383,6 +1356,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     disabled={false}
                     style={
                       Object {
+                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -1433,7 +1407,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.2.1.2"
@@ -1565,6 +1539,7 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
 }
 
 .c3 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -1703,7 +1678,7 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
                 "borderTopLeftRadius": "0.4rem",
                 "borderTopRightRadius": "0.4rem",
                 "color": "#363B40",
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
             title="2.1.2.1"
@@ -1812,6 +1787,7 @@ Array [
 }
 
 .c4 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -2012,7 +1988,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#4d63ff",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1"
@@ -2094,7 +2070,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.1"
@@ -2181,7 +2157,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2"
@@ -2263,7 +2239,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.1"
@@ -2350,7 +2326,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.2"
@@ -2437,7 +2413,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.2.1"
@@ -2519,7 +2495,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.2.1.1"
@@ -2601,7 +2577,7 @@ Array [
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.2.1.2"
@@ -2744,6 +2720,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 }
 
 .c4 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -2838,23 +2815,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c12 {
@@ -2867,23 +2827,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c12::after {
@@ -3128,7 +3071,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1"
@@ -3214,6 +3157,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     disabled={false}
                     style={
                       Object {
+                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -3264,7 +3208,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.1"
@@ -3355,6 +3299,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     disabled={false}
                     style={
                       Object {
+                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -3405,7 +3350,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2"
@@ -3491,6 +3436,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     disabled={false}
                     style={
                       Object {
+                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -3541,7 +3487,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.1"
@@ -3632,6 +3578,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     disabled={false}
                     style={
                       Object {
+                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -3682,7 +3629,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.2"
@@ -3773,6 +3720,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     disabled={false}
                     style={
                       Object {
+                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -3823,7 +3771,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.2.1"
@@ -3909,6 +3857,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     disabled={false}
                     style={
                       Object {
+                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -3959,7 +3908,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.2.1.1"
@@ -4045,6 +3994,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     disabled={false}
                     style={
                       Object {
+                        "backgroundColor": "#ffffff",
                         "borderBottomColor": "#cccccc",
                         "borderBottomLeftRadius": "0.2rem",
                         "borderBottomRightRadius": "0.2rem",
@@ -4095,7 +4045,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "color": "#363B40",
-                    "fontSize": "1.6rem",
+                    "fontSize": "1.4rem",
                   }
                 }
                 title="1.2.2.1.2"

@@ -26,13 +26,19 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
 
 .c0 {
   height: 3rem;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   box-sizing: border-box;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
-  line-height: 3rem;
 }
 
 .c2 {
@@ -97,7 +103,7 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
           style={
             Object {
               "color": "#9EA4AE",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -136,7 +142,7 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
           style={
             Object {
               "color": "#9EA4AE",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -175,7 +181,7 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
           style={
             Object {
               "color": "#363B40",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -227,13 +233,19 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
 
 .c0 {
   height: 3rem;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   box-sizing: border-box;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
-  line-height: 3rem;
 }
 
 .c2 {
@@ -297,7 +309,7 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
           style={
             Object {
               "color": "#9EA4AE",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -335,7 +347,7 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
           style={
             Object {
               "color": "#9EA4AE",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -373,7 +385,7 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
           style={
             Object {
               "color": "#363B40",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -425,13 +437,19 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
 
 .c0 {
   height: 3rem;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   box-sizing: border-box;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
-  line-height: 3rem;
 }
 
 .c2 {
@@ -503,7 +521,7 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
           style={
             Object {
               "color": "#9EA4AE",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -552,7 +570,7 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
           style={
             Object {
               "color": "#363B40",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -615,13 +633,19 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
 
 .c0 {
   height: 3rem;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   box-sizing: border-box;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
-  line-height: 3rem;
 }
 
 .c2 {
@@ -686,7 +710,7 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           style={
             Object {
               "color": "#9EA4AE",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -725,7 +749,7 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           style={
             Object {
               "color": "#9EA4AE",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -764,7 +788,7 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           style={
             Object {
               "color": "#9EA4AE",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -803,7 +827,7 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           style={
             Object {
               "color": "#363B40",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -855,13 +879,19 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
 
 .c0 {
   height: 3rem;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   box-sizing: border-box;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
-  line-height: 3rem;
 }
 
 .c2 {
@@ -925,7 +955,7 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
           style={
             Object {
               "color": "#9EA4AE",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -963,7 +993,7 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
           style={
             Object {
               "color": "#9EA4AE",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -1001,7 +1031,7 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
           style={
             Object {
               "color": "#363B40",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -1053,13 +1083,19 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
 
 .c0 {
   height: 3rem;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   box-sizing: border-box;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
-  line-height: 3rem;
 }
 
 .c2 {
@@ -1124,7 +1160,7 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           style={
             Object {
               "color": "#9EA4AE",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -1163,7 +1199,7 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           style={
             Object {
               "color": "#9EA4AE",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -1202,7 +1238,7 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           style={
             Object {
               "color": "#9EA4AE",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -1241,7 +1277,7 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           style={
             Object {
               "color": "#363B40",
-              "fontSize": "3rem",
+              "fontSize": "1.4rem",
             }
           }
         >

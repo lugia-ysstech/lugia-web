@@ -108,11 +108,11 @@ exports[`Avatar css 1`] = `
 }
 
 .c7 {
+  background: transparent;
   box-sizing: border-box;
   position: relative;
   display: inline-block;
   line-height: 1;
-  background-color: transparent;
   min-width: 1rem;
   min-height: 1rem;
 }

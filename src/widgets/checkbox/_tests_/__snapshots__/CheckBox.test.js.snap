@@ -85,23 +85,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c8 {
@@ -114,23 +97,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c8::after {
@@ -162,23 +128,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c9::after {
@@ -210,23 +159,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c10::after {
@@ -258,23 +190,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c11::after {
@@ -306,23 +221,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c12::after {
@@ -354,23 +252,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c13::after {
@@ -402,23 +283,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c14::after {
@@ -1008,7 +872,27 @@ exports[`CheckBox CheckBox CSS 1`] = `
         />
         <span
           className="c4"
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "#ffffff",
+              "borderBottomColor": "#cccccc",
+              "borderBottomLeftRadius": "0.2rem",
+              "borderBottomRightRadius": "0.2rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#cccccc",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#cccccc",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#cccccc",
+              "borderTopLeftRadius": "0.2rem",
+              "borderTopRightRadius": "0.2rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+            }
+          }
         />
       </span>
       <span
@@ -1235,18 +1119,18 @@ exports[`CheckBox CheckBox CSS 1`] = `
           style={
             Object {
               "backgroundColor": "#4d63ff",
-              "borderBottomColor": "#4d63ff",
+              "borderBottomColor": "#cccccc",
               "borderBottomLeftRadius": "0.2rem",
               "borderBottomRightRadius": "0.2rem",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderLeftColor": "#4d63ff",
+              "borderLeftColor": "#cccccc",
               "borderLeftStyle": "solid",
               "borderLeftWidth": "0.1rem",
-              "borderRightColor": "#4d63ff",
+              "borderRightColor": "#cccccc",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#4d63ff",
+              "borderTopColor": "#cccccc",
               "borderTopLeftRadius": "0.2rem",
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
