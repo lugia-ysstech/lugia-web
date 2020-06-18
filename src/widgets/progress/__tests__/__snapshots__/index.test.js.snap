@@ -245,10 +245,10 @@ exports[`Progress css 1`] = `
   display: inline-block;
   width: 2rem;
   text-align: left;
-  margin-left: 1rem;
   white-space: nowrap;
   word-break: normal;
   vertical-align: middle;
+  margin-left: 1rem;
   color: #9EA4AE;
   font-size: 1.4rem;
 }
@@ -300,7 +300,6 @@ exports[`Progress css 1`] = `
 .c1 {
   display: block;
   position: absolute;
-  font-size: 2.4rem;
   width: 100%;
   text-align: center;
   line-height: 1;
@@ -315,8 +314,29 @@ exports[`Progress css 1`] = `
   text-overflow: ellipsis;
   word-break: normal;
   white-space: nowrap;
+  font-size: 3.6rem;
   color: #9EA4AE;
-  font-size: 2.4rem;
+}
+
+.c27 {
+  display: block;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  line-height: 1;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 0;
+  margin: 0;
+  color: $lugia-dict.@lugia/lugia-web.blackColor;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: normal;
+  white-space: nowrap;
+  font-size: 1.8rem;
+  color: #9EA4AE;
 }
 
 .c15 {
@@ -336,7 +356,7 @@ exports[`Progress css 1`] = `
   position: relative;
   text-transform: none;
   outline: 0;
-  background-color: #ffffff;
+  background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -1911,7 +1931,7 @@ exports[`Progress css 1`] = `
       size="default"
       style={
         Object {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "white",
           "borderBottomColor": "#cccccc",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
@@ -1967,7 +1987,7 @@ exports[`Progress css 1`] = `
       size="default"
       style={
         Object {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "white",
           "borderBottomColor": "#cccccc",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
@@ -3074,7 +3094,7 @@ exports[`Progress css 1`] = `
       size="default"
       style={
         Object {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "white",
           "borderBottomColor": "#cccccc",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
@@ -3130,7 +3150,7 @@ exports[`Progress css 1`] = `
       size="default"
       style={
         Object {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "white",
           "borderBottomColor": "#cccccc",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
@@ -3575,7 +3595,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c27"
         size="small"
         style={
           Object {
@@ -3626,7 +3646,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c27"
         size="small"
         style={
           Object {
@@ -3677,7 +3697,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c27"
         size="small"
         style={
           Object {
@@ -3742,7 +3762,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c27"
         size="small"
         style={
           Object {
@@ -3807,7 +3827,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c27"
         size="small"
         style={
           Object {
@@ -6122,7 +6142,7 @@ exports[`Progress css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "white",
             "borderBottomColor": "#cccccc",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
@@ -6178,7 +6198,7 @@ exports[`Progress css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "white",
             "borderBottomColor": "#cccccc",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
