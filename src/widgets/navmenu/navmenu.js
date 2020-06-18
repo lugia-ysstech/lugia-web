@@ -523,6 +523,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       igronSelectField,
       parentIsHighlight = true,
       selectLinePosition = 'left',
+      rowLeftPadding,
     } = this.props;
 
     const treeTheme = this.getTreeTheme(inlineType, themeStyle);
@@ -551,6 +552,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           igronSelectField={igronSelectField}
           pathSeparator={pathSeparator}
           renderSuffixItems={renderSuffixItems}
+          rowLeftPadding={rowLeftPadding}
         />
       </MenuWrap>
     );

@@ -34,57 +34,28 @@ const data = [
     icon: 'lugia-icon-financial_add_pic',
     disabled: true,
   },
-  {
-    value: 'Lugia-web',
-    text: 'Lugia-web',
-    icon: 'lugia-icon-financial_columns',
-  },
-  { value: 'Lugia-mobile', text: 'Lugia-mobile' },
+  { value: 'Lugia-mobile', text: 'Lugia-mobile', icon: 'lugia-icon-financial_add_pic' },
   {
     value: 'Components',
     text: 'Components',
+    icon: 'lugia-icon-financial_add_pic',
     children: [
       {
         value: 'General',
         text: 'General',
-        children: [
-          {
-            value: 'Button',
-            text: 'Button',
-            icon: 'lugia-icon-financial_add_pic',
-          },
-          {
-            value: 'Icon',
-            text: 'Icon',
-            icon: 'lugia-icon-financial_archive',
-          },
-        ],
       },
 
       {
         value: 'Layout',
         text: 'Layout',
         disabled: true,
-
-        children: [{ value: 'Grid', text: 'Grid' }],
       },
 
       {
         value: 'Navigation',
         text: 'Navigation',
-        disabled: true,
-
+        icon: 'lugia-icon-financial_add_pic',
         children: [{ value: 'Affix', text: 'Affix' }, { value: 'tag', text: 'tag' }],
-      },
-
-      {
-        value: 'Data Entry',
-        text: 'Data Entry',
-        describe: true,
-        children: [
-          { value: 'rate', text: 'rate' },
-          { value: 'Cascader', text: 'Cascader', disabled: true },
-        ],
       },
     ],
   },
@@ -260,6 +231,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
         <RowWrapItem>
           <H1> themeStyle：light </H1>
           <Navmenu
+            rowLeftPadding={26}
             data={data}
             parentIsHighlight={false}
             theme={primaryMenuTheme}
