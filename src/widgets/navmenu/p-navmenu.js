@@ -231,7 +231,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
         <RowWrapItem>
           <H1> themeStyle：light </H1>
           <Navmenu
-            rowLeftPadding={26}
+            indentDistance={26}
             data={data}
             parentIsHighlight={false}
             theme={primaryMenuTheme}
