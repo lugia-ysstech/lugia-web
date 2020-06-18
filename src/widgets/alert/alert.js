@@ -107,10 +107,18 @@ export default ThemeProvider(
         },
         theme
       );
+      const {
+        [viewClass]: {
+          normal: {
+            font: { size },
+          },
+        },
+      } = iconTheme;
 
       return {
         viewClass,
         theme: iconTheme,
+        size,
       };
     };
 
@@ -136,7 +144,7 @@ export default ThemeProvider(
       alertWrapTheme.propsConfig.hasDect = hasDect;
       alertWrapTheme.propsConfig.showIcon = showIcon;
       alertMessageTheme.propsConfig.hasDect = hasDect;
-      alertDescriptionTheme.propsConfig.iconTheme = this.getAlertIconTheme();
+      alertDescriptionTheme.propsConfig.iconSize = this.getAlertIconTheme().size;
       alertDescriptionTheme.propsConfig.showIcon = showIcon;
 
       return visible ? (
