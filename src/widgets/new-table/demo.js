@@ -300,7 +300,7 @@ export default class TableDemo extends React.Component<Object, Object> {
           data={checkBoxdata}
           columns={checkboxColumns}
           showHeader={false}
-          isEditHead={true}
+          isEditHead={false}
           tableStyle={'bordered'}
           onChange={this.onChangeCheckData}
         />
