@@ -11,7 +11,7 @@
     "data": [
       {
         "title": "主体",
-        "iconClass": "checkboxCheck",
+        "iconClass": "input",
         "data": [
           {
             "name": "选择框整体配置",
@@ -22,8 +22,7 @@
                 "desc": "选择框外观配置的区"
               },
               "textPart": {
-                "text": "选择文本",
-                "desc": "选择文本文本配置"
+                "hidden": true
               },
               "spacingPart": {
                 "text": "选择框",
@@ -51,12 +50,25 @@
             }
           },
           {
+            "name": "选择文本",
+            "path": ["TextContent"],
+            "description": {
+              "textPart": {
+                "text": "选择文本",
+                "desc": "选择文本文本配置"
+              }
+            }
+          },
+
+          {
             "name": "下拉图标",
             "path": ["SwitchIcon"],
-            "props": {
-              "name": "pullIconClass",
-              "typeInTheme": "icon"
-            },
+            "props": [
+              {
+                "name": "pullIconClass",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "appearancePart": {
                 "hidden": true
@@ -73,17 +85,19 @@
           {
             "name": "清空图标",
             "path": ["ClearIcon"],
-            "props": {
-              "name": "clearIconClass",
-              "typeInTheme": "icon"
-            },
+            "props": [
+              {
+                "name": "clearIconClass",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "appearancePart": {
                 "hidden": true
               },
               "textPart": {
                 "text": "清除图标",
-                "desc": "整体背景外观配置的区"
+                "desc": "清除图标文本配置区"
               },
               "spacingPart": {
                 "hidden": true
@@ -189,6 +203,7 @@
               {
                 "name": "前缀图标",
                 "path": ["Tree", "TreeItem", "PrefixIcon"],
+                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
                 "description": {
                   "textPart": {
                     "text": "前缀图标",
@@ -202,6 +217,7 @@
               {
                 "name": "后缀图标",
                 "path": ["Tree", "TreeItem", "SuffixIcon"],
+                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
                 "description": {
                   "textPart": {
                     "text": "后缀图标",
@@ -277,7 +293,7 @@
       },
       {
         "title": "校验失败",
-        "iconClass": "treeSelect",
+        "iconClass": "Verificationfailed",
         "data": [
           {
             "name": "校验失败的展示框",
@@ -295,7 +311,7 @@
       },
       {
         "title": "失败提示",
-        "iconClass": "Verificationfailed",
+        "iconClass": "Failureprompt",
         "data": [
           {
             "name": "验证失败",
@@ -344,8 +360,7 @@
                 "desc": "选择框外观配置的区"
               },
               "textPart": {
-                "text": "选择文本",
-                "desc": "选择文本文本配置"
+                "hidden": true
               },
               "spacingPart": {
                 "text": "padding/margin",
@@ -375,17 +390,19 @@
           {
             "name": "下拉图标",
             "path": ["SwitchIcon"],
-            "props": {
-              "name": "pullIconClass",
-              "typeInTheme": "icon"
-            },
+            "props": [
+              {
+                "name": "pullIconClass",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "appearancePart": {
                 "hidden": true
               },
               "textPart": {
                 "text": "下拉图标",
-                "desc": "整体背景外观配置的区"
+                "desc": "下拉图标文本配置的区"
               },
               "spacingPart": {
                 "hidden": true
@@ -395,17 +412,19 @@
           {
             "name": "清空图标",
             "path": ["ClearIcon"],
-            "props": {
-              "name": "clearIconClass",
-              "typeInTheme": "icon"
-            },
+            "props": [
+              {
+                "name": "clearIconClass",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "appearancePart": {
                 "hidden": true
               },
               "textPart": {
                 "text": "清除图标",
-                "desc": "整体背景外观配置的区"
+                "desc": "清除图标文字配置区"
               },
               "spacingPart": {
                 "hidden": true
@@ -554,6 +573,7 @@
               {
                 "name": "前缀图标",
                 "path": ["Tree", "TreeItem", "PrefixIcon"],
+                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
                 "description": {
                   "textPart": {
                     "text": "前缀图标",
@@ -567,6 +587,7 @@
               {
                 "name": "后缀图标",
                 "path": ["Tree", "TreeItem", "SuffixIcon"],
+                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
                 "description": {
                   "textPart": {
                     "text": "后缀图标",

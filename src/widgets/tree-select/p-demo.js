@@ -58,6 +58,13 @@ const config = {
     Container: {
       normal: {
         width: 300,
+        color: '#d31515',
+        height: 40,
+      },
+    },
+    TextContent: {
+      normal: {
+        color: '#1b0202',
       },
     },
   },

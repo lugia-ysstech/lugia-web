@@ -276,6 +276,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       renderSuffixItems,
       onRightClick,
       getPartOfThemeProps,
+      switchIconNames,
     } = this.props;
     const { onSelect, ...res } = this.props;
     const { current, start, treeFilter, value, displayValue, query, selectAll } = this.state;
@@ -315,6 +316,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         {...res}
         size={'default'}
         {...this.getTreeTheme()}
+        switchIconNames={switchIconNames}
         current={current}
         start={start}
         expandAll={expandAll}
@@ -382,6 +384,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           hideAction={['click']}
           alwaysOpen={alwaysOpen}
           liquidLayout={liquidLayout}
+          lazy={false}
         >
           <InputTag
             size={size}
