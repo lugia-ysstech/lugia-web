@@ -1,4 +1,5 @@
 //@flow
+import type { EditTableEventListenerHandle } from '@lugia/lugia-web';
 import * as React from 'react';
 import { px2emcss } from '../css/units';
 import changeColor from '../css/utilsColor';
@@ -19,8 +20,39 @@ const size = {
   small: 28,
 };
 
+export type ColumnsType = {
+  columnType?: string,
+  dataIndex: string,
+  editType?: string,
+  align?: string,
+  disableEdit?: boolean,
+  title: string,
+  key?: string,
+  width?: number | string,
+  render?: Function,
+  children?: Array,
+  customEditElement?: React.Element<any>,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
+};
+
+export type TableCellProps = ColumnsType & {
+  index: number,
+  record: Object,
+  text: ?string | Object | number,
+  listener: EditTableEventListenerHandle,
+};
+
+export type TableCellState = {
+  isSelect: boolean,
+  enterEdit: boolean,
+  selectCell: Object,
+  editCell: Object,
+  editing: boolean,
+};
+
 export type TableProps = {
-  columns: Object[],
+  columns: ColumnsType[],
   data?: Object[],
   showHeader?: boolean,
   tableStyle?: 'zebraStripe' | 'linear' | 'bordered',

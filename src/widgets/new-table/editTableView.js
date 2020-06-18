@@ -3,43 +3,38 @@ import type { EditTableEventListenerHandle } from '@lugia/lugia-web';
 import React from 'react';
 import Table from './table';
 import ThemeProvider from '../theme-provider';
-import EditInput from './EditInput';
 import type { EditTableProps, EditTableState } from './editTableCss';
-import { Container, TdContainer, EditDiv, InnerTriggerDiv } from './editTableCss';
+import { Container } from './editTableCss';
 import EditTableEventListener from './connection';
+import TableCell from './tableCell';
 import Widget from '../consts';
 import { findDOMNode } from 'react-dom';
-import { getEditDivTheme, isValued, isEqualArray, getRandom } from './utils';
+import { isEqualArray } from './utils';
 
 class EditTable extends React.Component<EditTableProps, EditTableState> {
   editTableListener: EditTableEventListenerHandle;
   table: any;
   moveCellsListener: Object;
   quitEditListener: Object;
-  enterEditingListener: Object;
   setStateListener: Object;
   exportOnCellListener: Object;
   exportOnHeaderCellListener: Object;
+
+  static defaultProps = {
+    allowEditHead: true,
+  };
 
   constructor(props: EditTableProps) {
     super(props);
     const { columns, data = [], rowKey } = props;
 
     this.editTableListener = new EditTableEventListener();
-    this.state = {
-      selectCell: [],
-      editCell: {},
-      editing: false,
-    };
     this.editTableListener.emit('updateDataKeyMap', { columns, data, rowKey });
     this.moveCellsListener = this.editTableListener.on('moveCells', (props: Object) => {
       this.doMoveCells(props);
     });
     this.quitEditListener = this.editTableListener.on('quitEdit', (res: Object) => {
       this.quitEdit(res);
-    });
-    this.enterEditingListener = this.editTableListener.on('enterEditing', () => {
-      this.doEnterEditing();
     });
 
     this.setStateListener = this.editTableListener.on('setState', (res: Object) => {
@@ -106,109 +101,26 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   }
 
   renderFunc = (renderObject: Object) => {
-    const { text, record, dataIndex, index, disableEdit } = renderObject;
-    const { getSelectColumnMark, isSelected, isEditCell } = this.editTableListener;
+    const { getPartOfThemeProps, allowEditHead, selectSuffixElement } = this.props;
+    const { editTableListener } = this;
+    const { index } = renderObject;
+    const allowEdit = allowEditHead ? true : index !== 0;
 
-    const selectColumn = getSelectColumnMark(dataIndex);
-    const defaultText = typeof text !== 'object' && isValued(text) ? record[text] || text : '';
-    let { isHead } = record;
-    const selectRow = index;
-    const { editing, selectCell = [] } = this.state;
-    const isSelect = !editing && isSelected({ selectColumn, selectRow }, selectCell);
-
-    const { isEditHead, showHeader = true } = this.props;
-    isHead = showHeader ? isHead : false;
-    const headEdit = isEditHead ? true : selectRow !== 0;
-    const { editCell } = this.state;
-    const enterEdit =
-      !disableEdit && headEdit && editing && isEditCell({ selectColumn, selectRow }, editCell);
-
-    const renderPros = {
-      defaultText,
-      isSelect,
-      isHead,
-      enterEdit,
-      selectColumn,
-      selectRow,
-      ...renderObject,
-    };
-
-    return this.getRenderTarget(renderPros);
-  };
-
-  getRenderTarget = (renderObject: Object) => {
-    const {
-      defaultText,
-      isSelect,
-      isHead,
-      enterEdit,
-      customEditElement,
-      editType,
-      selectData,
-      align,
-      index,
-    } = renderObject;
-    const EditElement = customEditElement || EditInput;
-    const editingTheme = enterEdit
-      ? {
-          themeConfig: {
-            normal: {
-              padding: { right: 0, left: 0 },
-            },
-          },
-        }
-      : {};
-    const { isEditHead } = this.props;
-    const isDisableEdit = isHead && isSelect && !isEditHead;
-    const propsConfig = { isSelect, isHead, align, enterEdit, isDisableEdit };
-    const editDivTheme = getEditDivTheme(this.props, isHead, propsConfig, editingTheme);
-
-    if (enterEdit) {
-      return (
-        <TdContainer>
-          <EditElement
-            value={defaultText}
-            autoFocus={true}
-            type={editType}
-            listener={this.editTableListener}
-            data={selectData}
-          />
-        </TdContainer>
-      );
-    }
-
-    const { text, record, selectColumn, selectRow, customRender } = renderObject;
-    const { selectSuffixElement } = this.props;
-    const { selectCell } = this.state;
-    const allowEdit = !isDisableEdit;
-    const { editTableListener: { onCellClick } = {} } = this;
     return (
-      <EditDiv
-        themeProps={editDivTheme}
-        onClick={e =>
-          onCellClick({
-            e,
-            selectColumn,
-            selectRow,
-            selectCell,
-            isEditHead,
-            isHead,
-            allowEdit,
-          })
-        }
-      >
-        {customRender && !isHead ? customRender(text, record, index) : defaultText.toString()}
-        {allowEdit && isSelect && selectSuffixElement ? (
-          <InnerTriggerDiv>{selectSuffixElement}</InnerTriggerDiv>
-        ) : null}
-      </EditDiv>
+      <TableCell
+        {...renderObject}
+        allowEdit={allowEdit}
+        selectSuffixElement={selectSuffixElement}
+        getPartOfThemeProps={getPartOfThemeProps}
+        listener={editTableListener}
+      />
     );
   };
 
   quitEdit = (res: Object): void => {
     const { oldValue, newValue } = res;
     if (oldValue !== newValue) {
-      const { editCell, editing } = this.state;
+      const editCell = this.editTableListener.getEditCell();
       const { data, columns, showHeader = true } = this.props;
       const { selectRow } = editCell;
       const result = {
@@ -221,7 +133,6 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
           editCell,
           data,
           columns,
-          editing,
           showHeader,
         });
         if (changedData) {
@@ -233,7 +144,6 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
           value: newValue,
           editCell,
           columns,
-          editing,
         });
         result.columns = [...newColumns];
       }
@@ -243,7 +153,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   };
 
   clearEditState = (): void => {
-    this.setState({ editing: false });
+    this.editTableListener.emit('clearEditing');
     const tableEl = findDOMNode(this.table.getThemeTarget());
     this.editTableListener.focusTable(tableEl);
   };
@@ -270,12 +180,15 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   };
 
   doMoveCells = (props: Object): void => {
-    const { selectCell } = this.state;
-    const { data, columns, isEditHead } = this.props;
+    const { data, columns, allowEditHead } = this.props;
     const { editTableListener } = this;
-    const selectInfo = editTableListener.getMovedCells({ selectCell, data, columns, ...props });
-    const { selectRow } = selectInfo || {};
-    const isQuitMove = !selectRow && !isEditHead;
+    const { selectRow, oldSelectInfo, selectColumn } = editTableListener.getMovedCells({
+      data,
+      columns,
+      ...props,
+    });
+    const selectInfo = { selectRow, selectColumn };
+    const isQuitMove = !selectRow && !allowEditHead;
     if (!selectInfo || isQuitMove) {
       return;
     }
@@ -287,32 +200,11 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     editTableListener.emit(emitName, {
       currentItem: selectInfo,
       newValue: [selectInfo],
-      oldValue: selectCell,
+      oldValue: oldSelectInfo,
     });
-    this.setState({
-      selectCell: [selectInfo],
-      editCell: selectInfo,
-    });
-  };
-
-  isAllowEditing = () => {
-    const {
-      editCell: { selectRow, selectColumn },
-      editing,
-    } = this.state;
-    if (!isValued(selectColumn) || !isValued(selectRow)) {
-      return false;
-    }
-    const { isEditHead, columns } = this.props;
-    const isDisableEdit = columns[selectColumn].disableEdit;
-    return !editing && (isEditHead || !!selectRow) && !isDisableEdit;
-  };
-
-  doEnterEditing = (): void => {
-    const allowEdit = this.isAllowEditing();
-    if (allowEdit) {
-      this.setState({ editing: true });
-    }
+    editTableListener.emit('updateSelectCell', [{ selectColumn, selectRow }]);
+    editTableListener.emit('updateEditCell', selectInfo);
+    editTableListener.emit('setCellSelect', { selectCell: [selectInfo], editCell: selectInfo });
   };
 
   componentWillUnmount() {
@@ -323,7 +215,6 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     }
     this.moveCellsListener.removeListener();
     this.quitEditListener.removeListener();
-    this.enterEditingListener.removeListener();
     this.setStateListener.removeListener();
     this.exportOnCellListener.removeListener();
     this.exportOnHeaderCellListener.removeListener();

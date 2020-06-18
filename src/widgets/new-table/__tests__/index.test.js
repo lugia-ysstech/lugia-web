@@ -43,7 +43,7 @@ const columns = [
 ];
 
 const columnsIntoData = [
-  { name: '姓名', age: 'Age', address: 'Address', isIn: 'isIn', isHead: true },
+  { name: '姓名', age: 'Age', address: 'Address', isIn: 'isIn', isLugiaHead: true },
 ];
 
 const columnsWidthRender = [
@@ -527,7 +527,6 @@ describe('new-table', () => {
     const props = {
       columns,
       editCell: { selectColumn: 0, selectRow: 0 },
-      editing: true,
       value: '改变后的数据',
     };
     const result = [
@@ -564,7 +563,6 @@ describe('new-table', () => {
     const props1 = {
       columns,
       editCell: { selectColumn: 2, selectRow: 0 },
-      editing: true,
       value: '改变后的数据',
     };
     const result1 = [
@@ -596,12 +594,5 @@ describe('new-table', () => {
     ];
 
     expect(changeColumns(props1)).toEqual(result1);
-    const props2 = {
-      columns,
-      editCell: { selectColumn: 2, selectRow: 0 },
-      editing: false,
-      value: '改变后的数据',
-    };
-    expect(changeColumns(props2)).toEqual(undefined);
   });
 });
