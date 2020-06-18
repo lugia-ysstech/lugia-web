@@ -241,6 +241,14 @@
         ["font"],
         ["opacity"]
       ],
+      "focus": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["opacity"]
+      ],
       "hover": [
         ["color"],
         ["background"],
@@ -250,7 +258,14 @@
         ["font"],
         ["opacity"]
       ],
-      "active": [],
+      "active": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["opacity"]
+      ],
       "disabled": [
         ["width"],
         ["height"],
@@ -320,6 +335,13 @@
       "name": "提示信息文字",
       "desc": "提示信息文字",
       "normal": [["color"], ["fontSize"], ["font"], ["padding"]]
+    },
+
+    "TextContent": {
+      "name": "选中文本",
+      "desc": "选中文本样式",
+      "normal": [["color"], ["font"], ["fontSize"]],
+      "disabled": [["color"], ["font"], ["fontSize"]]
     },
 
     "Menu": {
