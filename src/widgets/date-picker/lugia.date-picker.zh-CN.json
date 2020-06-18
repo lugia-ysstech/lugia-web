@@ -364,91 +364,14 @@
   "defaultTheme": {
     "Container": {
       "normal": {
-        "width": 300,
-        "height": 32,
-        "background": {
-          "color": "#fff"
-        },
-        "border": {
-          "top": { "color": "#ccc", "style": "solid", "width": 1 },
-          "right": { "color": "#ccc", "style": "solid", "width": 1 },
-          "bottom": { "color": "#ccc", "style": "solid", "width": 1 },
-          "left": { "color": "#ccc", "style": "solid", "width": 1 }
-        },
-        "borderRadius": {
-          "topLeft": 3,
-          "topRight": 3,
-          "bottomLeft": 3,
-          "bottomRight": 3
-        },
-        "fontSize": 14,
-        "color": "#333"
-      }
-    },
-    "InputPrefix": {
-      "normal": {
-        "color": "#999",
-        "font": {
-          "size": 14,
-          "weight": "normal"
-        }
-      }
-    },
-    "InputSuffix": {
-      "normal": {
-        "color": "#999",
-        "font": {
-          "size": 14,
-          "weight": "normal"
-        }
-      }
-    },
-    "ClearButton": {
-      "normal": {
-        "color": "#999",
-        "font": {
-          "size": 14,
-          "weight": "normal"
-        }
+        "width": 300
       }
     },
     "FacePanelContain": {
       "normal": {
         "width": 300,
-        "height": 320,
-        "background": {
-          "color": "#fff"
-        },
-        "boxShadow": {
-          "color": "rgba(0,0,0,0.1)",
-          "x": "2",
-          "y": "3",
-          "blur": "3",
-          "spread": "3",
-          "type": "outset"
-        }
+        "height": 320
       }
-    },
-    "InMonthDate": {
-      "normal": {
-        "color": "#666",
-        "fontSize": 14
-      }
-    },
-    "OutMonthDate": {
-      "normal": {
-        "color": "#ccc",
-        "fontSize": 14
-      }
-    },
-    "SecondWeekDate": {
-      "normal": {
-        "color": "#333",
-        "fontSize": 14
-      }
-    },
-    "ValidateErrorText": {
-      "normal": {}
     }
   }
 }
