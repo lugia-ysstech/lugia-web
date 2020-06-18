@@ -84,6 +84,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   position: relative;
   left: 1rem;
   z-index: 2;
+  width: 0.1rem;
   border-left: 0.1rem solid #cccccc;
 }
 
@@ -91,6 +92,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   position: relative;
   left: 1rem;
   z-index: 2;
+  width: 0.1rem;
   display: none;
   border-left: 0.1rem solid #cccccc;
 }
@@ -123,7 +125,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   position: relative;
   text-transform: none;
   outline: 0;
-  background-color: #ffffff;
+  background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -215,7 +217,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2020-05-25
+            2020-06-18
           </div>
         </div>
       </div>
@@ -256,7 +258,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2020-05-26
+            2020-06-19
           </div>
         </div>
       </div>
@@ -297,7 +299,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2020-05-27
+            2020-06-20
           </div>
         </div>
       </div>
@@ -338,7 +340,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2020-05-28
+            2020-06-21
           </div>
         </div>
       </div>
@@ -379,7 +381,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2020-05-29
+            2020-06-22
           </div>
         </div>
       </div>
