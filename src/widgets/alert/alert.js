@@ -107,18 +107,10 @@ export default ThemeProvider(
         },
         theme
       );
-      const {
-        [viewClass]: {
-          normal: {
-            font: { size },
-          },
-        },
-      } = iconTheme;
 
       return {
         viewClass,
         theme: iconTheme,
-        size,
       };
     };
 
@@ -144,7 +136,16 @@ export default ThemeProvider(
       alertWrapTheme.propsConfig.hasDect = hasDect;
       alertWrapTheme.propsConfig.showIcon = showIcon;
       alertMessageTheme.propsConfig.hasDect = hasDect;
-      alertDescriptionTheme.propsConfig.iconSize = this.getAlertIconTheme().size;
+      const alertIconSyntheticalTheme = this.getAlertIconTheme();
+      const { viewClass, theme } = alertIconSyntheticalTheme;
+      const {
+        [viewClass]: {
+          normal: {
+            font: { size: iconSize },
+          },
+        },
+      } = theme;
+      alertDescriptionTheme.propsConfig.iconSize = iconSize;
       alertDescriptionTheme.propsConfig.showIcon = showIcon;
 
       return visible ? (
@@ -162,7 +163,7 @@ export default ThemeProvider(
             {showIcon ? (
               <Icon
                 iconClass={icon || AlertIcons[type]}
-                {...this.getAlertIconTheme()}
+                {...alertIconSyntheticalTheme}
                 singleTheme
               />
             ) : null}
