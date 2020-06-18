@@ -20,7 +20,7 @@
       "propsDefaultValue": "value"
     },
 
-    "rowLeftPadding": {
+    "indentDistance": {
       "type": "number",
       "desc": "每一项leftPadding的距离",
       "propsDefaultValue": 14

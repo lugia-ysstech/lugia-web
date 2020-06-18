@@ -124,7 +124,7 @@ class ScrollerTree extends React.Component<any, any> {
         pidField,
         size,
         selectLinePosition,
-        rowLeftPadding,
+        indentDistance,
       } = this.props;
 
       const {
@@ -184,7 +184,7 @@ class ScrollerTree extends React.Component<any, any> {
             marginBottom={marginBottom}
             size={size}
             subTreeLevel={subTreeLevel}
-            rowLeftPadding={rowLeftPadding}
+            indentDistance={indentDistance}
           >
             {this.loopNode(children, subTreeLevel + 1)}
           </TreeNode>
@@ -219,7 +219,7 @@ class ScrollerTree extends React.Component<any, any> {
           checkedCSS={checkedCSS}
           marginBottom={marginBottom}
           size={size}
-          rowLeftPadding={rowLeftPadding}
+          indentDistance={indentDistance}
         />
       );
     });
