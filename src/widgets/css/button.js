@@ -288,6 +288,7 @@ export const ButtonOut = CSSComponent({
       ['padding'],
       ['margin'],
       ['borderRadius'],
+      ['boxShadow'],
     ],
     defaultTheme: defaultButtonTheme(),
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
@@ -326,7 +327,7 @@ export const ButtonOut = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['background'], ['border']],
+    selectNames: [['background'], ['border'], ['boxShadow']],
     defaultTheme: defaultHoverTheme(),
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
@@ -337,7 +338,7 @@ export const ButtonOut = CSSComponent({
     },
   },
   disabled: {
-    selectNames: [['background'], ['border']],
+    selectNames: [['background'], ['border'], ['boxShadow']],
     defaultTheme: { ...defaultDisabledTheme(), cursor },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
@@ -355,7 +356,7 @@ export const ButtonOut = CSSComponent({
     },
   },
   active: {
-    selectNames: [['background'], ['border']],
+    selectNames: [['background'], ['border'], ['boxShadow']],
     defaultTheme: defaultActiveTheme(),
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
@@ -374,7 +375,7 @@ export const ButtonOut = CSSComponent({
   },
 
   focus: {
-    selectNames: [['background'], ['border']],
+    selectNames: [['background'], ['border'], ['boxShadow']],
     defaultTheme: defaultFocusTheme(),
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
