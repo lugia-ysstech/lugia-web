@@ -44,8 +44,8 @@
             "path": ["Placeholder"],
             "description": {
               "textPart": {
-                "text": "默认文本",
-                "desc": "文本配置区块的显示文本"
+                "text": "提示文本",
+                "desc": "提示文本配置区"
               }
             }
           },
@@ -72,6 +72,9 @@
               "textPart": {
                 "text": "下拉图标",
                 "desc": "下拉图标配置区块"
+              },
+              "spacingPart": {
+                "hidden": true
               }
             }
           },
@@ -88,6 +91,9 @@
               "textPart": {
                 "text": "清除图标",
                 "desc": "清除图标配置区块"
+              },
+              "spacingPart": {
+                "hidden": true
               }
             }
           }
@@ -189,7 +195,7 @@
                 "path": ["Menu", "MenuItem", "TextContainer"],
                 "description": {
                   "textPart": {
-                    "text": "文本框",
+                    "text": "文本",
                     "desc": "文本框置内外边距配置区"
                   }
                 }
@@ -247,6 +253,7 @@
               {
                 "name": "前缀图标",
                 "path": ["Menu", "MenuItem", "PrefixIcon"],
+                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
                 "description": {
                   "textPart": {
                     "text": "前缀图标",
@@ -261,6 +268,7 @@
               {
                 "name": "后缀图标",
                 "path": ["Menu", "MenuItem", "SuffixIcon"],
+                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
                 "description": {
                   "textPart": {
                     "text": "后缀图标",
@@ -314,8 +322,7 @@
                 "desc": "面板中外观配置的区块显示文本"
               },
               "textPart": {
-                "text": "默认文本",
-                "desc": "文本配置区块的显示文本"
+                "hidden": true
               }
             }
           },
@@ -325,17 +332,7 @@
             "path": ["Placeholder"],
             "description": {
               "textPart": {
-                "text": "默认文本",
-                "desc": "文本配置区块的显示文本"
-              }
-            }
-          },
-          {
-            "name": "选择文本",
-            "path": ["TextContent"],
-            "description": {
-              "textPart": {
-                "text": "选择文本",
+                "text": "提示文本",
                 "desc": "文本配置区块的显示文本"
               }
             }
@@ -353,6 +350,9 @@
               "textPart": {
                 "text": "下拉图标",
                 "desc": "下拉图标配置区块"
+              },
+              "spacingPart": {
+                "hidden": true
               }
             }
           },
@@ -369,6 +369,9 @@
               "textPart": {
                 "text": "清除图标",
                 "desc": "清除图标配置区块"
+              },
+              "spacingPart": {
+                "hidden": true
               }
             }
           }
@@ -540,6 +543,9 @@
                   "spacingPart": {
                     "text": "padding/margin",
                     "desc": "项的外盒内外边距配置区"
+                  },
+                  "textPart": {
+                    "hidden": true
                   }
                 }
               },
@@ -606,6 +612,7 @@
               {
                 "name": "前缀图标",
                 "path": ["Menu", "MenuItem", "PrefixIcon"],
+                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
                 "description": {
                   "textPart": {
                     "text": "前缀图标",
@@ -620,6 +627,7 @@
               {
                 "name": "后缀图标",
                 "path": ["Menu", "MenuItem", "SuffixIcon"],
+                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
                 "description": {
                   "textPart": {
                     "text": "后缀图标",
