@@ -17,15 +17,32 @@
       "desc": "校验信息显示类型",
       "propsDefaultValue": "top"
     },
+
     "pullIconClass": {
-      "type": "string",
+      "type": "icon",
       "desc": "下拉图标icon名称",
       "propsDefaultValue": "lugia-icon-direction_down"
     },
+
     "clearIconClass": {
-      "type": "string",
+      "type": "icon",
       "desc": "清除图标icon名称",
       "propsDefaultValue": "lugia-icon-reminder_close"
+    },
+
+    "switchIconNames": {
+      "type": "object",
+      "desc": "生成选择项的数据",
+      "meta": [
+        { "key": "open", "title": "展开图标", "type": "icon" },
+        { "key": "close", "title": "关闭图标", "type": "icon" }
+      ],
+      "propsDefaultValue": [
+        {
+          "open": "lugia-icon-direction_caret_down",
+          "close": "lugia-icon-direction_caret_right"
+        }
+      ]
     },
     "size": {
       "type": "sizeType",
@@ -878,6 +895,13 @@
       "hover": [["color"], ["fontSize"]],
       "active": [["color"], ["fontSize"]],
       "disabled": [["color"], ["fontSize"], ["cursor"]]
+    },
+
+    "TextContent": {
+      "name": "选中文本",
+      "desc": "选中文本样式",
+      "normal": [["color"], ["font"], ["fontSize"]],
+      "disabled": [["color"], ["font"], ["fontSize"]]
     },
 
     "Placeholder": {
