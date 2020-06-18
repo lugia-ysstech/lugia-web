@@ -39,7 +39,8 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
 
   shouldComponentUpdate(nextProps, nextState) {
     const isSameState = isEqualObject(nextState, this.state);
-    return !isSameState;
+    const isSameProps = isEqualObject(nextProps, this.props);
+    return !isSameState || !isSameProps;
   }
 
   getRenderElement = () => {
@@ -91,7 +92,6 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
     const { selectSuffixElement } = this.props;
     const { getSelectColumnMark, onCellClick } = listener;
     const selectColumn = getSelectColumnMark(dataIndex);
-
     return (
       <EditDiv
         themeProps={editDivTheme}
