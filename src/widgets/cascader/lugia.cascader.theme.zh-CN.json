@@ -44,8 +44,8 @@
             ],
             "description": {
               "textPart": {
-                "text": "提示信息文字",
-                "desc": "主题背景中外观配置的区"
+                "text": "提示文本",
+                "desc": "提示文本配置区"
               },
               "spacingPart": {
                 "hidden": true
