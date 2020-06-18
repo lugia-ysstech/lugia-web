@@ -172,7 +172,7 @@ const Description = CSSComponent({
       let left = 0;
       let maxWidthCSS = '';
       if (isHorizontal(orientation)) {
-        top = isDotType(stepType) ? 35 : stepType === 'icon' ? 45 : isNormalSize(size) ? 55 : 50;
+        top = isDotType(stepType) ? 35 : isNormalSize(size) ? 55 : 50;
         const maxWidth =
           stepContainerWidth && stepContainerWidth > 220 ? stepContainerWidth - 15 : 200;
         maxWidthCSS = `max-width:${px2remcss(maxWidth)};`;

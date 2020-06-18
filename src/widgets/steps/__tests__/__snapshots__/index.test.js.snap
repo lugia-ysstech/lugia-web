@@ -162,7 +162,7 @@ exports[`stepsDemo Component JSON 1`] = `
   overflow: hidden;
   font-size: 1.2rem;
   white-space: nowrap;
-  top: 4.5rem;
+  top: 5rem;
   max-width: 20rem;
   text-align: center;
 }
