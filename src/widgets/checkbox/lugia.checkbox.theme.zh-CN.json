@@ -16,10 +16,7 @@
             "name": "未选中外框样式",
             "path": ["CheckboxEdgeUnChecked"],
             "description": {
-              "appearancePart": {
-                "text": "外观",
-                "desc": "面板中外观配置的区块显示文本"
-              }
+              "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
@@ -32,20 +29,7 @@
             "name": "选中外框样式",
             "path": ["CheckboxEdgeChecked"],
             "description": {
-              "appearancePart": {
-                "text": "外框",
-                "desc": "面板中外观配置的区块显示文本"
-              }
-            }
-          },
-          {
-            "name": "选中内框样式",
-            "path": ["CheckboxInnerChecked"],
-            "description": {
-              "appearancePart": {
-                "text": "内框",
-                "desc": "面板中外观配置的区块显示文本"
-              }
+              "appearancePart": { "text": "外框", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
@@ -58,20 +42,7 @@
             "name": "半选外框样式",
             "path": ["CheckboxEdgeIndeterminate"],
             "description": {
-              "appearancePart": {
-                "text": "外框",
-                "desc": "面板中外观配置的区块显示文本"
-              }
-            }
-          },
-          {
-            "name": "半选内框样式",
-            "path": ["CheckboxInnerIndeterminate"],
-            "description": {
-              "appearancePart": {
-                "text": "内框",
-                "desc": "面板中外观配置的区块显示文本"
-              }
+              "appearancePart": { "text": "外框", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
@@ -84,20 +55,7 @@
             "name": "取消状态外框样式",
             "path": ["CheckboxEdgeCancel"],
             "description": {
-              "appearancePart": {
-                "text": "外框",
-                "desc": "面板中外观配置的区块显示文本"
-              }
-            }
-          },
-          {
-            "name": "取消状态内框样式",
-            "path": ["CheckboxInnerCancel"],
-            "description": {
-              "appearancePart": {
-                "text": "内框",
-                "desc": "面板中外观配置的区块显示文本"
-              }
+              "appearancePart": { "text": "外框", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
@@ -108,7 +66,8 @@
         "data": [
           {
             "name": "文字样式",
-            "path": ["CheckboxText"]
+            "path": ["CheckboxText"],
+            "props": [{ "name": "children", "typeInTheme": "text" }]
           }
         ]
       }
