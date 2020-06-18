@@ -11812,6 +11812,7 @@ export default [
             ['opacity'],
           ],
           hover: [['background'], ['border'], ['boxShadow']],
+          focus: [['background'], ['border'], ['boxShadow']],
           active: [['background'], ['border'], ['boxShadow']],
         },
         ValidateErrorText: {
