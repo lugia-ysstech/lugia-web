@@ -580,9 +580,9 @@ export const TitleSpan = CSSComponent({
 
 TitleSpan.displayName = 'titleSpan';
 
-const getFlexBoxPaddingLeft = pos => {
+const getFlexBoxPaddingLeft = (pos, rowLeftPadding) => {
   const num = pos.split('-').length - 2;
-  return num ? num * 14 : 0;
+  return num ? num * rowLeftPadding : 0;
 };
 
 export const FlexWrap = CSSComponent({
@@ -598,8 +598,8 @@ export const FlexWrap = CSSComponent({
       ['cursor'],
     ],
     getCSS: (themeMeta, themeProps) => {
-      const { pos, itemHeight, dragState } = themeProps.propsConfig;
-      const paddingLeft = getFlexBoxPaddingLeft(pos);
+      const { pos, itemHeight, dragState, rowLeftPadding = 14 } = themeProps.propsConfig;
+      const paddingLeft = getFlexBoxPaddingLeft(pos, rowLeftPadding);
       if (dragState === 'dragOver') {
         return `
          padding-left: ${px2remcss(paddingLeft)};
