@@ -108,6 +108,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
 }
 
 .c4 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -120,6 +121,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
 }
 
 .c12 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -132,6 +134,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
 }
 
 .c15 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -275,7 +278,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="Lugia Design of React"
@@ -350,7 +353,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="快速上手"
@@ -425,7 +428,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="项目实战"
@@ -500,7 +503,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="在Lugia-mega中使用"
@@ -575,7 +578,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="Components"
@@ -681,7 +684,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="General"
@@ -784,7 +787,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Button 按钮"
@@ -859,7 +862,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Icon 图标"
@@ -936,7 +939,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="Layout"
@@ -1039,7 +1042,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Grid 栅格"
@@ -1114,7 +1117,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Layout 布局"
@@ -1191,7 +1194,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="Navigation"
@@ -1294,7 +1297,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Affix 固钉"
@@ -1369,7 +1372,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Breadcrumb 面包屑"
@@ -1444,7 +1447,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Dropdown 下拉菜单"
@@ -1519,7 +1522,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Menu 导航菜单"
@@ -1594,7 +1597,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Pagination 分页"
@@ -1669,7 +1672,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Steps 步骤条"
@@ -1746,7 +1749,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="Data Entry"
@@ -1849,7 +1852,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="AutoComplete 自动完成"
@@ -1924,7 +1927,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Cascader 级联选择"
@@ -1999,7 +2002,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Checkbox 多选框"
@@ -2074,7 +2077,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="DatePicker 日期选择框"
@@ -2149,7 +2152,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Form 表单"
@@ -2224,7 +2227,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Input 输入框"
@@ -2363,6 +2366,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
 }
 
 .c4 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -2375,6 +2379,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
 }
 
 .c12 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -2387,6 +2392,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
 }
 
 .c15 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -2530,7 +2536,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="Lugia Design of React"
@@ -2605,7 +2611,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="快速上手"
@@ -2680,7 +2686,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="项目实战"
@@ -2755,7 +2761,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="在Lugia-mega中使用"
@@ -2830,7 +2836,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="Components"
@@ -2936,7 +2942,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="General"
@@ -3039,7 +3045,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Button 按钮"
@@ -3114,7 +3120,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Icon 图标"
@@ -3191,7 +3197,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="Layout"
@@ -3294,7 +3300,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Grid 栅格"
@@ -3369,7 +3375,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Layout 布局"
@@ -3446,7 +3452,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="Navigation"
@@ -3549,7 +3555,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Affix 固钉"
@@ -3624,7 +3630,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Breadcrumb 面包屑"
@@ -3699,7 +3705,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Dropdown 下拉菜单"
@@ -3774,7 +3780,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Menu 导航菜单"
@@ -3849,7 +3855,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Pagination 分页"
@@ -3924,7 +3930,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Steps 步骤条"
@@ -4001,7 +4007,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="Data Entry"
@@ -4104,7 +4110,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="AutoComplete 自动完成"
@@ -4179,7 +4185,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Cascader 级联选择"
@@ -4254,7 +4260,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Checkbox 多选框"
@@ -4329,7 +4335,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="DatePicker 日期选择框"
@@ -4404,7 +4410,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Form 表单"
@@ -4479,7 +4485,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Input 输入框"
@@ -4688,7 +4694,7 @@ exports[`NavMenu  mode=vertical  1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           >
@@ -4731,7 +4737,7 @@ exports[`NavMenu  mode=vertical  1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           >
@@ -4774,7 +4780,7 @@ exports[`NavMenu  mode=vertical  1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           >
@@ -4817,7 +4823,7 @@ exports[`NavMenu  mode=vertical  1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           >
@@ -4860,7 +4866,7 @@ exports[`NavMenu  mode=vertical  1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           >
@@ -4928,20 +4934,6 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   margin-bottom: 0rem;
 }
 
-.c3::before {
-  content: '';
-  width: 0.4rem;
-  border-radius: 0.2rem;
-  height: 4rem;
-  background: #4d63ff;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
-
 .c11 {
   margin: 0;
   overflow: hidden;
@@ -5013,6 +5005,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
 }
 
 .c4 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -5025,6 +5018,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
 }
 
 .c12 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -5037,6 +5031,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
 }
 
 .c15 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -5180,7 +5175,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="Lugia Design of React"
@@ -5255,7 +5250,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="快速上手"
@@ -5330,7 +5325,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="项目实战"
@@ -5405,7 +5400,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="在Lugia-mega中使用"
@@ -5480,7 +5475,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="Components"
@@ -5590,7 +5585,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="General"
@@ -5693,7 +5688,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Button 按钮"
@@ -5768,7 +5763,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Icon 图标"
@@ -5845,7 +5840,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="Layout"
@@ -5948,7 +5943,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Grid 栅格"
@@ -6023,7 +6018,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Layout 布局"
@@ -6100,7 +6095,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="Navigation"
@@ -6203,7 +6198,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Affix 固钉"
@@ -6278,7 +6273,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Breadcrumb 面包屑"
@@ -6353,7 +6348,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Dropdown 下拉菜单"
@@ -6428,7 +6423,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Menu 导航菜单"
@@ -6503,7 +6498,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Pagination 分页"
@@ -6578,7 +6573,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Steps 步骤条"
@@ -6655,7 +6650,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="Data Entry"
@@ -6758,7 +6753,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="AutoComplete 自动完成"
@@ -6833,7 +6828,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Cascader 级联选择"
@@ -6908,7 +6903,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Checkbox 多选框"
@@ -6983,7 +6978,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="DatePicker 日期选择框"
@@ -7058,7 +7053,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Form 表单"
@@ -7133,7 +7128,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Input 输入框"
@@ -7201,20 +7196,6 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   margin-bottom: 0rem;
 }
 
-.c3::before {
-  content: '';
-  width: 0.4rem;
-  border-radius: 0.2rem;
-  height: 4rem;
-  background: #4d63ff;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
-
 .c11 {
   margin: 0;
   overflow: hidden;
@@ -7286,6 +7267,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
 }
 
 .c4 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -7298,6 +7280,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
 }
 
 .c12 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -7310,6 +7293,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
 }
 
 .c15 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -7453,7 +7437,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="Lugia Design of React"
@@ -7528,7 +7512,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="快速上手"
@@ -7603,7 +7587,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="项目实战"
@@ -7678,7 +7662,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="在Lugia-mega中使用"
@@ -7753,7 +7737,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "color": "#363B40",
-                  "fontSize": "1.6rem",
+                  "fontSize": "1.4rem",
                 }
               }
               title="Components"
@@ -7863,7 +7847,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="General"
@@ -7966,7 +7950,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Button 按钮"
@@ -8041,7 +8025,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Icon 图标"
@@ -8118,7 +8102,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="Layout"
@@ -8221,7 +8205,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Grid 栅格"
@@ -8296,7 +8280,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Layout 布局"
@@ -8373,7 +8357,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="Navigation"
@@ -8476,7 +8460,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Affix 固钉"
@@ -8551,7 +8535,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Breadcrumb 面包屑"
@@ -8626,7 +8610,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Dropdown 下拉菜单"
@@ -8701,7 +8685,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Menu 导航菜单"
@@ -8776,7 +8760,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Pagination 分页"
@@ -8851,7 +8835,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Steps 步骤条"
@@ -8928,7 +8912,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                       "borderTopLeftRadius": "0.4rem",
                       "borderTopRightRadius": "0.4rem",
                       "color": "#363B40",
-                      "fontSize": "1.6rem",
+                      "fontSize": "1.4rem",
                     }
                   }
                   title="Data Entry"
@@ -9031,7 +9015,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="AutoComplete 自动完成"
@@ -9106,7 +9090,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Cascader 级联选择"
@@ -9181,7 +9165,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Checkbox 多选框"
@@ -9256,7 +9240,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="DatePicker 日期选择框"
@@ -9331,7 +9315,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Form 表单"
@@ -9406,7 +9390,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                           "borderTopLeftRadius": "0.4rem",
                           "borderTopRightRadius": "0.4rem",
                           "color": "#363B40",
-                          "fontSize": "1.6rem",
+                          "fontSize": "1.4rem",
                         }
                       }
                       title="Input 输入框"

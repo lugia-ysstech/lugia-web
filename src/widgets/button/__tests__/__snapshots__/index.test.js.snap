@@ -958,7 +958,7 @@ Array [
             style={
               Object {
                 "color": "#ffffff",
-                "fontSize": "1.2rem",
+                "fontSize": "1.4rem",
               }
             }
           >
@@ -1967,7 +1967,7 @@ Array [
             style={
               Object {
                 "color": "#8c9dff",
-                "fontSize": "1.2rem",
+                "fontSize": "1.4rem",
               }
             }
           >
@@ -2946,7 +2946,7 @@ Array [
           style={
             Object {
               "color": "#ffffff",
-              "fontSize": "1.2rem",
+              "fontSize": "1.4rem",
             }
           }
         >

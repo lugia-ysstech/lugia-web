@@ -260,23 +260,6 @@ exports[`Transfer css 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c19 {
@@ -289,23 +272,6 @@ exports[`Transfer css 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c19::after {
@@ -337,23 +303,6 @@ exports[`Transfer css 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c30::after {
@@ -385,23 +334,6 @@ exports[`Transfer css 1`] = `
   transition: all 0.3s;
   width: 1.6rem;
   height: 1.6rem;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
 }
 
 .c36::after {
@@ -728,6 +660,7 @@ exports[`Transfer css 1`] = `
 }
 
 .c41 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -740,6 +673,7 @@ exports[`Transfer css 1`] = `
 }
 
 .c50 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -752,6 +686,7 @@ exports[`Transfer css 1`] = `
 }
 
 .c51 {
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
@@ -983,7 +918,27 @@ exports[`Transfer css 1`] = `
             <span
               checked={false}
               className="c5"
-              style={Object {}}
+              style={
+                Object {
+                  "backgroundColor": "#ffffff",
+                  "borderBottomColor": "#cccccc",
+                  "borderBottomLeftRadius": "0.2rem",
+                  "borderBottomRightRadius": "0.2rem",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "#cccccc",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "#cccccc",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "#cccccc",
+                  "borderTopLeftRadius": "0.2rem",
+                  "borderTopRightRadius": "0.2rem",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
             />
           </span>
           <span
@@ -1037,6 +992,10 @@ exports[`Transfer css 1`] = `
               className="c10"
               style={
                 Object {
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
                   "height": "20.6rem",
                   "width": "20rem",
                 }
@@ -1573,7 +1532,27 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
             <span
               checked={false}
               className="c5"
-              style={Object {}}
+              style={
+                Object {
+                  "backgroundColor": "#ffffff",
+                  "borderBottomColor": "#cccccc",
+                  "borderBottomLeftRadius": "0.2rem",
+                  "borderBottomRightRadius": "0.2rem",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "#cccccc",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "#cccccc",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "#cccccc",
+                  "borderTopLeftRadius": "0.2rem",
+                  "borderTopRightRadius": "0.2rem",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
             />
           </span>
           <span
@@ -1627,6 +1606,10 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               className="c10"
               style={
                 Object {
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
                   "height": "20.6rem",
                   "width": "20rem",
                 }
@@ -2035,7 +2018,27 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
             <span
               checked={false}
               className="c5"
-              style={Object {}}
+              style={
+                Object {
+                  "backgroundColor": "#ffffff",
+                  "borderBottomColor": "#cccccc",
+                  "borderBottomLeftRadius": "0.2rem",
+                  "borderBottomRightRadius": "0.2rem",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "#cccccc",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "#cccccc",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "#cccccc",
+                  "borderTopLeftRadius": "0.2rem",
+                  "borderTopRightRadius": "0.2rem",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
             />
           </span>
           <span
@@ -2600,7 +2603,27 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
             <span
               checked={false}
               className="c5"
-              style={Object {}}
+              style={
+                Object {
+                  "backgroundColor": "#ffffff",
+                  "borderBottomColor": "#cccccc",
+                  "borderBottomLeftRadius": "0.2rem",
+                  "borderBottomRightRadius": "0.2rem",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "#cccccc",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "#cccccc",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "#cccccc",
+                  "borderTopLeftRadius": "0.2rem",
+                  "borderTopRightRadius": "0.2rem",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
             />
           </span>
           <span
@@ -3040,18 +3063,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -4379,7 +4402,27 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
             <span
               checked={false}
               className="c5"
-              style={Object {}}
+              style={
+                Object {
+                  "backgroundColor": "#ffffff",
+                  "borderBottomColor": "#cccccc",
+                  "borderBottomLeftRadius": "0.2rem",
+                  "borderBottomRightRadius": "0.2rem",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "#cccccc",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "#cccccc",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "#cccccc",
+                  "borderTopLeftRadius": "0.2rem",
+                  "borderTopRightRadius": "0.2rem",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
             />
           </span>
           <span
@@ -4992,18 +5035,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -6332,18 +6375,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -7006,18 +7049,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "red",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -8459,18 +8502,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "red",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -9101,18 +9144,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -9351,6 +9394,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                             disabled={false}
                             style={
                               Object {
+                                "backgroundColor": "#ffffff",
                                 "borderBottomColor": "#cccccc",
                                 "borderBottomLeftRadius": "0.2rem",
                                 "borderBottomRightRadius": "0.2rem",
@@ -9640,6 +9684,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                 disabled={false}
                                 style={
                                   Object {
+                                    "backgroundColor": "#ffffff",
                                     "borderBottomColor": "#cccccc",
                                     "borderBottomLeftRadius": "0.2rem",
                                     "borderBottomRightRadius": "0.2rem",
@@ -9782,6 +9827,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                     disabled={false}
                                     style={
                                       Object {
+                                        "backgroundColor": "#ffffff",
                                         "borderBottomColor": "#cccccc",
                                         "borderBottomLeftRadius": "0.2rem",
                                         "borderBottomRightRadius": "0.2rem",
@@ -10205,6 +10251,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                     disabled={false}
                                     style={
                                       Object {
+                                        "backgroundColor": "#ffffff",
                                         "borderBottomColor": "#cccccc",
                                         "borderBottomLeftRadius": "0.2rem",
                                         "borderBottomRightRadius": "0.2rem",
@@ -10501,18 +10548,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -11180,18 +11227,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -11430,6 +11477,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                             disabled={false}
                             style={
                               Object {
+                                "backgroundColor": "#ffffff",
                                 "borderBottomColor": "#cccccc",
                                 "borderBottomLeftRadius": "0.2rem",
                                 "borderBottomRightRadius": "0.2rem",
@@ -11719,6 +11767,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                 disabled={false}
                                 style={
                                   Object {
+                                    "backgroundColor": "#ffffff",
                                     "borderBottomColor": "#cccccc",
                                     "borderBottomLeftRadius": "0.2rem",
                                     "borderBottomRightRadius": "0.2rem",
@@ -11861,6 +11910,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                     disabled={false}
                                     style={
                                       Object {
+                                        "backgroundColor": "#ffffff",
                                         "borderBottomColor": "#cccccc",
                                         "borderBottomLeftRadius": "0.2rem",
                                         "borderBottomRightRadius": "0.2rem",
@@ -12284,6 +12334,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                     disabled={false}
                                     style={
                                       Object {
+                                        "backgroundColor": "#ffffff",
                                         "borderBottomColor": "#cccccc",
                                         "borderBottomLeftRadius": "0.2rem",
                                         "borderBottomRightRadius": "0.2rem",
@@ -12580,18 +12631,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -13626,18 +13677,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -13876,6 +13927,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                             disabled={false}
                             style={
                               Object {
+                                "backgroundColor": "#ffffff",
                                 "borderBottomColor": "#cccccc",
                                 "borderBottomLeftRadius": "0.2rem",
                                 "borderBottomRightRadius": "0.2rem",
@@ -14165,6 +14217,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                 disabled={false}
                                 style={
                                   Object {
+                                    "backgroundColor": "#ffffff",
                                     "borderBottomColor": "#cccccc",
                                     "borderBottomLeftRadius": "0.2rem",
                                     "borderBottomRightRadius": "0.2rem",
@@ -14307,6 +14360,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                     disabled={false}
                                     style={
                                       Object {
+                                        "backgroundColor": "#ffffff",
                                         "borderBottomColor": "#cccccc",
                                         "borderBottomLeftRadius": "0.2rem",
                                         "borderBottomRightRadius": "0.2rem",
@@ -14730,6 +14784,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                     disabled={false}
                                     style={
                                       Object {
+                                        "backgroundColor": "#ffffff",
                                         "borderBottomColor": "#cccccc",
                                         "borderBottomLeftRadius": "0.2rem",
                                         "borderBottomRightRadius": "0.2rem",
@@ -15026,18 +15081,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -15974,18 +16029,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "red",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -16224,6 +16279,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                           disabled={false}
                           style={
                             Object {
+                              "backgroundColor": "#ffffff",
                               "borderBottomColor": "#cccccc",
                               "borderBottomLeftRadius": "0.2rem",
                               "borderBottomRightRadius": "0.2rem",
@@ -16513,6 +16569,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                               disabled={false}
                               style={
                                 Object {
+                                  "backgroundColor": "#ffffff",
                                   "borderBottomColor": "#cccccc",
                                   "borderBottomLeftRadius": "0.2rem",
                                   "borderBottomRightRadius": "0.2rem",
@@ -16655,6 +16712,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                   disabled={false}
                                   style={
                                     Object {
+                                      "backgroundColor": "#ffffff",
                                       "borderBottomColor": "#cccccc",
                                       "borderBottomLeftRadius": "0.2rem",
                                       "borderBottomRightRadius": "0.2rem",
@@ -17078,6 +17136,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                   disabled={false}
                                   style={
                                     Object {
+                                      "backgroundColor": "#ffffff",
                                       "borderBottomColor": "#cccccc",
                                       "borderBottomLeftRadius": "0.2rem",
                                       "borderBottomRightRadius": "0.2rem",
@@ -17349,18 +17408,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "red",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -18271,18 +18330,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -19611,18 +19670,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -20242,18 +20301,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",
@@ -20492,6 +20551,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                             disabled={false}
                             style={
                               Object {
+                                "backgroundColor": "#ffffff",
                                 "borderBottomColor": "#cccccc",
                                 "borderBottomLeftRadius": "0.2rem",
                                 "borderBottomRightRadius": "0.2rem",
@@ -20781,6 +20841,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                 disabled={false}
                                 style={
                                   Object {
+                                    "backgroundColor": "#ffffff",
                                     "borderBottomColor": "#cccccc",
                                     "borderBottomLeftRadius": "0.2rem",
                                     "borderBottomRightRadius": "0.2rem",
@@ -20923,6 +20984,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                     disabled={false}
                                     style={
                                       Object {
+                                        "backgroundColor": "#ffffff",
                                         "borderBottomColor": "#cccccc",
                                         "borderBottomLeftRadius": "0.2rem",
                                         "borderBottomRightRadius": "0.2rem",
@@ -21346,6 +21408,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                     disabled={false}
                                     style={
                                       Object {
+                                        "backgroundColor": "#ffffff",
                                         "borderBottomColor": "#cccccc",
                                         "borderBottomLeftRadius": "0.2rem",
                                         "borderBottomRightRadius": "0.2rem",
@@ -21642,18 +21705,18 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "borderBottomColor": "#4d63ff",
+                  "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.2rem",
                   "borderBottomRightRadius": "0.2rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#4d63ff",
+                  "borderLeftColor": "#cccccc",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#4d63ff",
+                  "borderRightColor": "#cccccc",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#4d63ff",
+                  "borderTopColor": "#cccccc",
                   "borderTopLeftRadius": "0.2rem",
                   "borderTopRightRadius": "0.2rem",
                   "borderTopStyle": "solid",

@@ -38,7 +38,7 @@ exports[`Collapse Collapse CSS 1`] = `
   box-sizing: border-box;
   line-height: 1.5;
   color: #646A6E;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 300;
   background-color: #ffffff;
 }
@@ -47,10 +47,10 @@ exports[`Collapse Collapse CSS 1`] = `
   font-size: 1.4rem;
   box-sizing: border-box;
   background: #ffffff;
-  border-color: #cccccc;
   border-style: solid;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  border-color: #cccccc;
   border-width: 0 0 1px;
 }
 
@@ -58,10 +58,10 @@ exports[`Collapse Collapse CSS 1`] = `
   font-size: 1.4rem;
   box-sizing: border-box;
   background: #ffffff;
-  border-color: #cccccc;
   border-style: solid;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  border-color: #cccccc;
   position: relative;
   z-index: 99;
   border-width: 0 0 0px;
@@ -71,10 +71,10 @@ exports[`Collapse Collapse CSS 1`] = `
   font-size: 1.4rem;
   box-sizing: border-box;
   background: #ffffff;
-  border-color: #cccccc;
   border-style: solid;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  border-color: #cccccc;
   border-width: 0 0 0px;
 }
 

@@ -23,7 +23,7 @@ exports[`Affix css 1`] = `
   position: relative;
   text-transform: none;
   outline: 0;
-  background-color: #ffffff;
+  background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -100,7 +100,7 @@ exports[`Affix css 1`] = `
           size="default"
           style={
             Object {
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "white",
               "borderBottomColor": "#cccccc",
               "borderBottomLeftRadius": "0.4rem",
               "borderBottomRightRadius": "0.4rem",
@@ -190,7 +190,7 @@ exports[`Affix css 1`] = `
               size="default"
               style={
                 Object {
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "white",
                   "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.4rem",
                   "borderBottomRightRadius": "0.4rem",
@@ -284,7 +284,7 @@ exports[`Affix css 1`] = `
               size="default"
               style={
                 Object {
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "white",
                   "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.4rem",
                   "borderBottomRightRadius": "0.4rem",
@@ -360,7 +360,7 @@ exports[`Affix css 1`] = `
           size="default"
           style={
             Object {
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "white",
               "borderBottomColor": "#cccccc",
               "borderBottomLeftRadius": "0.4rem",
               "borderBottomRightRadius": "0.4rem",

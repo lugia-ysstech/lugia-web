@@ -14,13 +14,8 @@ exports[`Message css 1`] = `
   -webkit-animation: hJDLVB 0.3s ease-in;
   animation: hJDLVB 0.3s ease-in;
   opacity: 1;
-  box-shadow: 0px 0px 6px 0px #cccccc;
   font-size: 1.4rem;
   background-color: #fff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-left: 2rem;
@@ -83,7 +78,7 @@ exports[`Message css 1`] = `
   position: relative;
   text-transform: none;
   outline: 0;
-  background-color: #ffffff;
+  background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -136,7 +131,7 @@ exports[`Message css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -193,7 +188,7 @@ exports[`Message css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -250,7 +245,7 @@ exports[`Message css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -307,7 +302,7 @@ exports[`Message css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -364,7 +359,7 @@ exports[`Message css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -488,7 +483,15 @@ exports[`Message css 1`] = `
     >
       <div
         className="c4"
-        style={Object {}}
+        style={
+          Object {
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "boxShadow": "0px 0px 6px 0px #cccccc",
+          }
+        }
       >
         <span
           className="c8"
@@ -505,7 +508,7 @@ exports[`Message css 1`] = `
               Object {
                 "color": "#4d63ff",
                 "cursor": "default",
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           />
@@ -525,7 +528,15 @@ exports[`Message css 1`] = `
     >
       <div
         className="c4"
-        style={Object {}}
+        style={
+          Object {
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "boxShadow": "0px 0px 6px 0px #cccccc",
+          }
+        }
       >
         <span
           className="c8"
@@ -542,7 +553,7 @@ exports[`Message css 1`] = `
               Object {
                 "color": "#56c22d",
                 "cursor": "default",
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           />
@@ -562,7 +573,15 @@ exports[`Message css 1`] = `
     >
       <div
         className="c4"
-        style={Object {}}
+        style={
+          Object {
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "boxShadow": "0px 0px 6px 0px #cccccc",
+          }
+        }
       >
         <span
           className="c8"
@@ -579,7 +598,7 @@ exports[`Message css 1`] = `
               Object {
                 "color": "#f22735",
                 "cursor": "default",
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           />
@@ -599,7 +618,15 @@ exports[`Message css 1`] = `
     >
       <div
         className="c4"
-        style={Object {}}
+        style={
+          Object {
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "boxShadow": "0px 0px 6px 0px #cccccc",
+          }
+        }
       >
         <span
           className="c8"
@@ -616,7 +643,7 @@ exports[`Message css 1`] = `
               Object {
                 "color": "#f8ac30",
                 "cursor": "default",
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           />
@@ -636,7 +663,15 @@ exports[`Message css 1`] = `
     >
       <div
         className="c4"
-        style={Object {}}
+        style={
+          Object {
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "boxShadow": "0px 0px 6px 0px #cccccc",
+          }
+        }
       >
         <span
           className="c8"
@@ -653,7 +688,7 @@ exports[`Message css 1`] = `
               Object {
                 "color": "#4d63ff",
                 "cursor": "default",
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           />

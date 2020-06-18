@@ -146,7 +146,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "fontSize": "1.6rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -186,7 +186,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "fontSize": "1.6rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -227,7 +227,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "fontSize": "1.6rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -268,7 +268,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "fontSize": "1.6rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -426,7 +426,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "fontSize": "1.6rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -466,7 +466,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "fontSize": "1.6rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -507,7 +507,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "fontSize": "1.6rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -547,7 +547,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "fontSize": "1.6rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -705,7 +705,7 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "fontSize": "1.6rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -745,7 +745,7 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "fontSize": "1.6rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -785,7 +785,7 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "fontSize": "1.6rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -825,7 +825,7 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "fontSize": "1.6rem",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -1048,7 +1048,7 @@ exports[`Menu children: items 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           >
@@ -1088,7 +1088,7 @@ exports[`Menu children: items 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           >
@@ -1128,7 +1128,7 @@ exports[`Menu children: items 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           >
@@ -1168,7 +1168,7 @@ exports[`Menu children: items 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           >
@@ -1208,7 +1208,7 @@ exports[`Menu children: items 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           >
@@ -1248,7 +1248,7 @@ exports[`Menu children: items 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           >
@@ -1288,7 +1288,7 @@ exports[`Menu children: items 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           >
@@ -1328,7 +1328,7 @@ exports[`Menu children: items 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "fontSize": "1.6rem",
+                "fontSize": "1.4rem",
               }
             }
           >
