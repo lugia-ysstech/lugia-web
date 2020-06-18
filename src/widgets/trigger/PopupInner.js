@@ -15,7 +15,7 @@ const getZIndex = props => {
 };
 
 const PopupInnerBox = styled(VisibleBox)`
-  ${props => (props.liquidLayout ? '' : 'position: absolute')};
+  position: ${props => (props.liquidLayout ? 'unset !important' : ' absolute')};
   border-radius: 4px;
   box-sizing: border-box;
   left: -9999px;
