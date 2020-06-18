@@ -94,6 +94,9 @@
               "textPart": {
                 "text": "减少的步长图标",
                 "desc": "数字输入框减少的步长图标"
+              },
+              "appearancePart": {
+                "hidden": true
               }
             },
             "props": [
@@ -113,9 +116,13 @@
             "name": "校验失败的输入框",
             "path": ["ValidateErrorInput"],
             "description": {
+              "appearancePart": {
+                "text": "输入框",
+                "desc": "输入框"
+              },
               "textPart": {
-                "text": "校验失败的输入框",
-                "desc": "校验失败的输入框配置"
+                "text": "文本",
+                "desc": "文本"
               }
             }
           }
