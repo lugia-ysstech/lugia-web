@@ -5,7 +5,6 @@ import { deepMerge } from '@lugia/object-utils';
 import { getRandom } from './utils';
 
 export default class EditTableEventListener extends Listener<any> {
-  editing: boolean;
   multipleSelect: boolean;
   canMoveCells: boolean;
   isShift: boolean;
@@ -23,15 +22,20 @@ export default class EditTableEventListener extends Listener<any> {
   enterMoveTrack: Object;
   quiteMoveTrack: Object;
   enterUpdateDataKeyMap: Object;
+  selectCell: Array<Object>;
+  editCell: Object;
+  updateSelectCellListener: Object;
+  updateEditCellListener: Object;
 
   constructor() {
     super();
-    this.editing = false;
     this.multipleSelect = false;
     this.canMoveCells = false;
     this.isShift = false;
     this.isKeyBoardDown = false;
     this.moveTrack = [];
+    this.selectCell = [];
+    this.editCell = {};
     this.clickNumber = 0;
     this.dataKeyMap = {
       columnsMap: {},
@@ -67,6 +71,12 @@ export default class EditTableEventListener extends Listener<any> {
     });
     this.enterUpdateDataKeyMap = this.on('updateDataKeyMap', (props: Object) => {
       this.setUpdateDataKeyMap(props);
+    });
+    this.updateSelectCellListener = this.on('updateSelectCell', (props: Object) => {
+      this.updateSelectCell(props);
+    });
+    this.updateEditCellListener = this.on('updateEditCell', (props: Object) => {
+      this.updateEditCell(props);
     });
   }
 
@@ -184,7 +194,7 @@ export default class EditTableEventListener extends Listener<any> {
     columns.forEach(item => {
       const { title, dataIndex } = item;
       rowDataItem[dataIndex] = title;
-      rowDataItem.isHead = true;
+      rowDataItem.isLugiaHead = true;
     });
     return [rowDataItem];
   };
@@ -332,7 +342,8 @@ export default class EditTableEventListener extends Listener<any> {
   };
 
   getMovedCells = (props: Object): ?Object => {
-    const { directions, key, selectCell } = props;
+    const { directions, key } = props;
+    const { selectCell } = this;
 
     if (!selectCell || selectCell.length <= 0) {
       return;
@@ -373,28 +384,42 @@ export default class EditTableEventListener extends Listener<any> {
     if (key && key === 'Tab' && selectCell) {
       this.emit('enterMoveTrack', selectCell[0]);
     }
-    return { selectColumn, selectRow };
+    return { selectColumn, selectRow, oldSelectInfo: selectCell };
+  };
+
+  updateSelectCell = (selectCell: Object) => {
+    this.selectCell = selectCell;
+  };
+
+  updateEditCell = (editCell: Object) => {
+    this.editCell = editCell;
+  };
+
+  getEditCell = () => {
+    return this.editCell;
+  };
+
+  getSelectCell = () => {
+    return this.selectCell;
   };
 
   setInputChangedValue = (props: Object): Object => {
-    const { value, editing, showHeader = true } = props;
-    if (editing) {
-      const { editCell: { selectColumn, selectRow } = {}, data, columns } = props;
-      let currentRow = selectRow;
-      if (!showHeader) {
-        currentRow = selectRow + 1;
-      }
-      let keyName = null;
-      columns.forEach(col => {
-        const { dataIndex } = col;
-        const currentMark = this.getSelectColumnMark(dataIndex);
-        if (currentMark === selectColumn) {
-          keyName = dataIndex;
-        }
-      });
-      const newRowData = this.changeData(data, currentRow, keyName, value);
-      return { data: newRowData };
+    const { value, showHeader = true } = props;
+    const { editCell: { selectColumn, selectRow } = {}, data, columns } = props;
+    let currentRow = selectRow;
+    if (!showHeader) {
+      currentRow = selectRow + 1;
     }
+    let keyName = null;
+    columns.forEach(col => {
+      const { dataIndex } = col;
+      const currentMark = this.getSelectColumnMark(dataIndex);
+      if (currentMark === selectColumn) {
+        keyName = dataIndex;
+      }
+    });
+    const newRowData = this.changeData(data, currentRow, keyName, value);
+    return { data: newRowData };
   };
 
   changeData = (
@@ -413,10 +438,7 @@ export default class EditTableEventListener extends Listener<any> {
   };
 
   changeColumns = (props: Object): ?Array<Object> => {
-    const { editCell: { selectColumn } = {}, columns, value, editing } = props;
-    if (!editing) {
-      return;
-    }
+    const { editCell: { selectColumn } = {}, columns, value } = props;
     return [...columns].map((item, index) => {
       const newItem = { ...item };
       if (index === selectColumn) {
@@ -433,13 +455,23 @@ export default class EditTableEventListener extends Listener<any> {
     count += 1;
     this.setClickNumber(count);
     setTimeout(() => {
-      const { selectColumn, selectRow, selectCell = [], allowEdit } = props;
+      const selectCell = this.getSelectCell() || [];
+      const { selectColumn, selectRow, isAllowSelect } = props;
+      if (!isAllowSelect) {
+        this.setClickNumber(0);
+        this.emit('updateSelectCell', []);
+        this.emit('updateEditCell', {});
+        this.emit('clearSelect');
+        this.emit('clearEditing');
+        return;
+      }
+
       const currentCell = { selectColumn, selectRow };
       if (count === 1) {
-        const isSelect = this.isSelected(currentCell, selectCell);
+        const isSelected = this.isSelected(currentCell, selectCell);
         let selectCellResult = [currentCell];
         let currentItem = currentCell;
-        if (isSelect) {
+        if (isSelected) {
           this.emit('quitMoveCells');
           selectCellResult = this.getClearSingleSelectCell(currentCell, selectCell);
           currentItem = {};
@@ -449,18 +481,19 @@ export default class EditTableEventListener extends Listener<any> {
         this.emit('enterMoveTrack', currentCell);
         const isMultiple = this.isMultiple();
 
-        if (isMultiple && !isSelect) {
+        if (isMultiple && !isSelected) {
           selectCellResult = selectCell.concat(selectCellResult);
         } else {
           this.emit('enterMoveCells');
         }
-        if (!allowEdit) {
-          currentItem = {};
-        }
-        this.emit('setState', { selectCell: selectCellResult, editCell: currentItem });
-        const { isHead } = props;
+
+        this.emit('updateSelectCell', selectCellResult);
+        this.emit('updateEditCell', currentItem);
+        this.emit('setCellSelect', { selectCell: selectCellResult, editCell: currentItem });
+
+        const { isLugiaHead } = props;
         let emitName = 'exportOnCell';
-        if (isHead) {
+        if (isLugiaHead) {
           emitName = 'exportOnHeaderCell';
         }
         this.emit(emitName, {
@@ -472,9 +505,11 @@ export default class EditTableEventListener extends Listener<any> {
         this.setClickNumber(0);
         this.emit('quitMoveCells');
         this.emit('quiteMoveTrack');
-        allowEdit && this.emit('setState', { editing: true, editCell: currentCell });
+        this.emit('updateSelectCell', [currentCell]);
+        this.emit('updateEditCell', currentCell);
+        this.emit('setCellSelect', { editing: true, editCell: currentCell });
       }
-    }, 200);
+    }, 220);
   };
 
   focusTable = (table: Object): void => {
@@ -492,5 +527,7 @@ export default class EditTableEventListener extends Listener<any> {
     this.enterMoveTrack.removeListener();
     this.quiteMoveTrack.removeListener();
     this.enterUpdateDataKeyMap.removeListener();
+    this.updateSelectCellListener.removeListener();
+    this.updateEditCellListener.removeListener();
   }
 }

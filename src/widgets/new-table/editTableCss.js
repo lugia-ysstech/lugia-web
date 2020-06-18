@@ -11,7 +11,7 @@ export type EditTableProps = TableProps & {
   dataType?: string,
   showAddCol?: boolean,
   showAddRow?: boolean,
-  isEditHead?: boolean,
+  allowEditHead?: boolean,
   onChange: Function,
   onCell: Function,
   onHeaderCell: Function,
@@ -20,11 +20,7 @@ export type EditTableProps = TableProps & {
   selectSuffixElement: any,
 };
 
-export type EditTableState = {
-  selectCell: Array<Object>,
-  editCell: Object,
-  editing: boolean,
-};
+export type EditTableState = {};
 
 export type Direction = 'left' | 'right' | 'top' | 'bottom';
 
@@ -43,10 +39,10 @@ export const EditDiv = CSSComponent({
     selectNames: [['width'], ['height'], ['border'], ['background'], ['padding'], ['color']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { isSelect, isHead, isDisableEdit },
+        propsConfig: { isSelect, isLugiaHead, isDisableEdit },
       } = themeProps;
       const editBorderColor = isSelect ? themeColor : 'transparent';
-      const backgroundColor = isHead ? disableColor : 'transparent';
+      const backgroundColor = isLugiaHead ? disableColor : 'transparent';
       let border = getBorder({ color: editBorderColor, width: borderSize, style: 'solid' });
       if (isDisableEdit) {
         border = getBorder({ color: 'transparent', width: borderSize, style: 'solid' });
