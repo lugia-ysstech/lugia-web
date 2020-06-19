@@ -1,6 +1,6 @@
 [
   {
-    "widgetName": "Textarea",
+    "widgetName": "Input.Textarea",
     "title": "段落文本输入框",
     "viewProps": [
       {
