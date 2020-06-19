@@ -7,7 +7,7 @@ import { getWidthCSS } from './utils';
 import { DefaultHelp, isValidateError } from '../css/validateHoc';
 import { getBorderRadius } from '@lugia/theme-utils';
 const hasValidateStatusInProps = (props: Object) => {
-  return 'validateStatus' in props || !!props.validateStatus;
+  return 'validateStatus' in props;
 };
 const ValidateHoc = (Target: Object) => {
   class ValidateContainer extends React.Component {
