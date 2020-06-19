@@ -6,6 +6,14 @@ import { TdContainer, EditDiv, InnerTriggerDiv } from './editTableCss';
 import EditInput from './EditInput';
 import { getEditDivTheme, isValued, isEqualObject, isInArray } from './utils';
 
+const defaultEditTheme = {
+  themeConfig: {
+    normal: {
+      padding: { right: 0, left: 0 },
+    },
+  },
+};
+
 export default class TableCell extends React.Component<TableCellProps, TableCellState> {
   defaultProps = {};
   currentCell: Object;
@@ -59,15 +67,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
     const { isSelect, editing } = this.state;
 
     const EditElement = customEditElement || EditInput;
-    const editingTheme = editing
-      ? {
-          themeConfig: {
-            normal: {
-              padding: { right: 0, left: 0 },
-            },
-          },
-        }
-      : {};
+    const editingTheme = editing ? defaultEditTheme : {};
     const { isLugiaHead } = record;
     const propsConfig = { isSelect, align, isLugiaHead, isDisableEdit: disableEdit };
     const editDivTheme = getEditDivTheme(this.props, isLugiaHead, propsConfig, editingTheme);
@@ -87,9 +87,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
       );
     }
 
-    const { customRender } = this.props;
-    const { dataIndex, index } = this.props;
-    const { selectSuffixElement } = this.props;
+    const { dataIndex, index, selectSuffixElement, customRender } = this.props;
     const { getSelectColumnMark, onCellClick } = listener;
     const selectColumn = getSelectColumnMark(dataIndex);
     return (
