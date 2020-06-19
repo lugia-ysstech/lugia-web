@@ -2,7 +2,11 @@
   {
     "widgetName": "Modal",
     "title": "对话框",
-    "viewProps": [{ "name": "maskClosable", "text": "点击遮罩关闭" }],
+    "viewProps": [
+      { "name": "mask", "text": "显示遮罩" },
+      { "name": "footer", "text": "按钮关闭" },
+      { "name": "maskClosable", "text": "点击遮罩关闭" }
+    ],
     "data": [
       {
         "title": "主题部分",
@@ -46,6 +50,45 @@
                 "text": "关闭图标",
                 "desc": "文本配置区块的显示文本"
               }
+            }
+          }
+        ]
+      },
+      {
+        "title": "确认按钮",
+        "iconClass": "buttonAffirm",
+        "data": [
+          {
+            "name": "弹窗确定按钮样式",
+            "path": ["ModalOkButton", "Container"],
+            "description": {
+              "appearancePart": { "text": "背景", "desc": "面板中外观配置的区块显示文本" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "取消按钮",
+        "iconClass": "buttonCancel",
+        "data": [
+          {
+            "name": "弹窗取消按钮样式",
+            "path": ["ModalCancelButton", "Container"],
+            "description": {
+              "appearancePart": { "text": "背景", "desc": "面板中外观配置的区块显示文本" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "遮罩部分",
+        "iconClass": "mask",
+        "data": [
+          {
+            "name": "弹窗遮罩样式",
+            "path": ["ModalMask"],
+            "description": {
+              "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]

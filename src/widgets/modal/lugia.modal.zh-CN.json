@@ -131,36 +131,40 @@
     "ModalOkButton": {
       "name": "弹窗确定按钮样式",
       "desc": "为弹窗确定按钮配置样式",
-      "normal": [
-        ["background"],
-        ["border"],
-        ["height"],
-        ["width"],
-        ["padding"],
-        ["margin"],
-        ["borderRadius"]
-      ],
-      "hover": [["background"], ["border"]],
-      "active": [["background"], ["border"]],
-      "disabled": [["background"], ["border"]],
-      "focus": [["background"], ["border"]]
+      "Container": {
+        "normal": [
+          ["background"],
+          ["border"],
+          ["height"],
+          ["width"],
+          ["padding"],
+          ["margin"],
+          ["borderRadius"]
+        ],
+        "hover": [["background"], ["border"]],
+        "active": [["background"], ["border"]],
+        "disabled": [["background"], ["border"]],
+        "focus": [["background"], ["border"]]
+      }
     },
     "ModalCancelButton": {
       "name": "弹窗取消按钮样式",
       "desc": "为弹窗取消按钮配置样式",
-      "normal": [
-        ["background"],
-        ["border"],
-        ["height"],
-        ["width"],
-        ["padding"],
-        ["margin"],
-        ["borderRadius"]
-      ],
-      "hover": [["background"], ["border"]],
-      "active": [["background"], ["border"]],
-      "disabled": [["background"], ["border"]],
-      "focus": [["background"], ["border"]]
+      "Container": {
+        "normal": [
+          ["background"],
+          ["border"],
+          ["height"],
+          ["width"],
+          ["padding"],
+          ["margin"],
+          ["borderRadius"]
+        ],
+        "hover": [["background"], ["border"]],
+        "active": [["background"], ["border"]],
+        "disabled": [["background"], ["border"]],
+        "focus": [["background"], ["border"]]
+      }
     },
     "ModalMask": {
       "name": "弹窗遮罩样式",
