@@ -261,18 +261,6 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     return this.mergeTheme('Menu', defaultMenuTheme);
   };
 
-  getInputtagTheme = () => {
-    const { getPartOfThemeConfig } = this.props;
-    const inputtagTheme = {
-      [Widget.InputTag]: {
-        InputTagWrap: getPartOfThemeConfig('Container'),
-        SwitchIcon: getPartOfThemeConfig('SwitchIcon'),
-        ClearIcon: getPartOfThemeConfig('ClearIcon'),
-        Placeholder: getPartOfThemeConfig('Placeholder'),
-      },
-    };
-    return inputtagTheme;
-  };
   handleIsInMenu = (isInMenuRange: boolean) => {
     const { checked, mouseInTarget } = this;
     if (mouseInTarget) {
