@@ -113,6 +113,9 @@ export const InnerContainer = CSSComponent({
   hover: {
     selectNames: [],
   },
+  focus: {
+    selectNames: [],
+  },
   disabled: {
     selectNames: [['padding']],
   },
