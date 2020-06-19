@@ -11,6 +11,10 @@ import styled from 'styled-components';
 import { getMargin, createGetWidthOrHeight } from '../common/ThemeUtils';
 import { getThemeHeightCSS } from './layout';
 import Icon from '../icon';
+import CSSComponent from '@lugia/theme-css-hoc';
+import get from './theme-common-dict';
+import { css } from 'styled-components';
+import { getBorderRadius } from '@lugia/theme-utils';
 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
@@ -54,15 +58,25 @@ const getBackgroundCSS = (props: CSSProps): string => {
 
   return `background: ${background}`;
 };
-export const Aside = styled.div`
-  font-size: ${FontSize}rem;
-  position: relative;
-  transition: all 0.3s;
-  ${getWidth};
-  ${getCollapsedWidth};
-  ${getThemeHeightCSS};
-  ${getMargin};
-`;
+
+export const Aside = CSSComponent({
+  tag: 'div',
+  className: 'Aside',
+  css: css`
+    font-size: ${FontSize}rem;
+    position: relative;
+    transition: all 0.3s;
+    ${getWidth};
+    ${getCollapsedWidth};
+    ${getThemeHeightCSS};
+    ${getMargin};
+  `,
+  normal: {
+    defaultTheme: {},
+    selectNames: [['background']],
+  },
+});
+
 export const Trigger = styled.div`
   position: absolute;
   bottom: 0;
@@ -77,7 +91,16 @@ export const Trigger = styled.div`
 export const IconWrap: Object = styled(Icon)`
   color: #fff;
 `;
-export const ChildrenWrap = styled.div`
-  height: 100%;
-  ${getBackgroundCSS};
-`;
+
+export const ChildrenWrap = CSSComponent({
+  tag: 'div',
+  className: 'ChildrenWrap',
+  css: css`
+    height: 100%;
+    ${getBackgroundCSS};
+  `,
+  normal: {
+    defaultTheme: {},
+    selectNames: [],
+  },
+});
