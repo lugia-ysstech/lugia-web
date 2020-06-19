@@ -180,7 +180,13 @@ export default ThemeProvider(
     }
 
     getCloseText = () => {
-      const { closeText, type = 'info', getPartOfThemeProps, getPartOfThemeHocProps } = this.props;
+      const {
+        closeText,
+        closeIcon,
+        type = 'info',
+        getPartOfThemeProps,
+        getPartOfThemeHocProps,
+      } = this.props;
       const CloseTextTheme = getPartOfThemeProps('CloseText');
       const { theme: IconThemeProps, viewClass: IconViewClass } = getPartOfThemeHocProps(
         'CloseIcon'
@@ -214,7 +220,7 @@ export default ThemeProvider(
             <Icon
               theme={closeIconTheme}
               viewClass={IconViewClass}
-              iconClass="lugia-icon-reminder_close"
+              iconClass={closeIcon || 'lugia-icon-reminder_close'}
               singleTheme
             />
           )}
