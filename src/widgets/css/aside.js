@@ -12,9 +12,7 @@ import { getMargin, createGetWidthOrHeight } from '../common/ThemeUtils';
 import { getThemeHeightCSS } from './layout';
 import Icon from '../icon';
 import CSSComponent from '@lugia/theme-css-hoc';
-import get from './theme-common-dict';
 import { css } from 'styled-components';
-import { getBorderRadius } from '@lugia/theme-utils';
 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
@@ -101,6 +99,6 @@ export const ChildrenWrap = CSSComponent({
   `,
   normal: {
     defaultTheme: {},
-    selectNames: [],
+    selectNames: ['background'],
   },
 });

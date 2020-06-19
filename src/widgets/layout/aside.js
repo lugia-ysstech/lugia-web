@@ -83,7 +83,6 @@ export default ThemeProvider(
     render() {
       const {
         children,
-        getTheme,
         collapsedWidth,
         collapsible,
         trigger,
