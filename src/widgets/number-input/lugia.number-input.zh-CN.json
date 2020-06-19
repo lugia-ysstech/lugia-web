@@ -238,6 +238,17 @@
         ["font"],
         ["color"]
       ],
+      "focus": [
+        ["border"],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
       "disabled": [
         ["border"],
         ["borderRadius"],
