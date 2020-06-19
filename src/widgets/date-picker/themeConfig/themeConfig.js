@@ -40,7 +40,7 @@ function getDefaultStyleFromSize(size: string) {
 }
 export function getWrapThemeProps(props, partName) {
   const { getPartOfThemeProps, mode, validateStatus, size, visible } = props;
-  const themeProps = getPartOfThemeProps(partName);
+  const themeProps = JSON.parse(JSON.stringify(getPartOfThemeProps(partName)));
   themeProps.propsConfig = { mode };
   themeProps.themeState.focus = visible;
   const { themeConfig = {} } = themeProps;
