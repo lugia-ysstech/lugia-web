@@ -86,7 +86,9 @@
         ["width"],
         ["height"],
         ["background"],
-        ["border"]
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"]
       ]
     },
     "Panel": {
@@ -122,14 +124,23 @@
         "PanelHeaderIcon": {
           "name": "面板头部图标",
           "desc": "面板头部图标样式配置",
-          "normal": [["fontSize"], ["color"]],
-          "hover": [["color"]],
+          "normal": [["fontSize"], ["color"], ["padding"]],
+          "hover": [["color"], ["padding"]],
           "disabled": [["color"]]
         },
         "PanelContent": {
           "name": "面板内容样式",
           "desc": "面板内容样式配置",
-          "normal": [["width"], ["height"], ["background"], ["padding"], ["font"], ["color"]],
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["padding"],
+            ["font"],
+            ["color"],
+            ["border"],
+            ["boxShadow"]
+          ],
           "hover": [["color"]],
           "disabled": [["color"]]
         }
