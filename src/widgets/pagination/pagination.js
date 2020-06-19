@@ -716,7 +716,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   handleChangePage = (page: number) => {
     const { disabled, total } = this.props;
     const { pageSize, current } = this.state;
-    let thePage = page;
+    let thePage = page > 1 ? page : 1;
     if (!disabled) {
       const currentPage = computePage(pageSize, pageSize, total);
       if (thePage > currentPage) {
