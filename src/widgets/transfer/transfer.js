@@ -316,14 +316,17 @@ export default ThemeProvider(
       const menuDefaultView = {
         [menuViewClass]: {
           Container: {
-            normal: { ...defaultTheme, boxShadow: getBoxShadow('0 0') },
+            normal: { ...defaultTheme, boxShadow: 'none' },
           },
         },
       };
       const treeDefaultView = {
         [treeViewClass]: {
           Container: {
-            normal: defaultTheme,
+            normal: {
+              ...defaultTheme,
+              boxShadow: 'none',
+            },
           },
         },
       };
