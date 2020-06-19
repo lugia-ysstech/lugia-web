@@ -637,7 +637,7 @@
           },
           {
             "name": "页签背景",
-            "path": ["TitleContainer"],
+            "path": ["WindowContainer"],
             "description": {
               "appearancePart": {
                 "text": "页签背景",
