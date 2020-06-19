@@ -38,6 +38,10 @@
     "icon": {
       "type": "string",
       "desc": "自定义图标，showIcon 为 true 时有效"
+    },
+    "closeIcon": {
+      "type": "string",
+      "desc": "自定义关闭图标, closable 为 true 时有效"
     }
   },
   "events": {
@@ -77,7 +81,7 @@
         ["width"],
         ["height"],
         ["background"],
-        ["border", "left"],
+        ["border"],
         ["borderRadius"],
         ["boxShadow"]
       ]
@@ -95,12 +99,19 @@
     "CloseText": {
       "name": "警告提示关闭文字样式",
       "desc": "为警告提示关闭文字配置样式",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"]],
+      "active": [["color"]]
+    },
+    "CloseIcon": {
+      "name": "警告提示关闭图标样式",
+      "desc": "为警告提示关闭图标配置样式",
       "normal": [["color"], ["font"]]
     },
     "AlertIcon": {
       "name": "警告提示图标样式",
       "desc": "为警告提示图标配置样式",
-      "normal": [["color"], ["fontSize"]]
+      "normal": [["color"], ["fontSize"], ["padding"]]
     }
   }
 }

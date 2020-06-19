@@ -16,6 +16,7 @@ export type AlertProps = {
   showIcon?: boolean,
   getTheme: Function,
   closeText?: string | React.ReactNode,
+  closeIcon?: string,
   closable?: boolean,
   description?: string | React.ReactNode,
   onClose?: Function,
