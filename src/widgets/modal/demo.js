@@ -155,6 +155,23 @@ export default class ModalDemo extends React.Component<any, any> {
             },
           },
         },
+        ModalOkButton: {
+          Container: {
+            normal: {
+              width: 200,
+            },
+          },
+        },
+        ModalCancelButton: {
+          Container: {
+            normal: {
+              width: 100,
+              background: {
+                color: 'red',
+              },
+            },
+          },
+        },
       },
     };
     return (
