@@ -44,6 +44,8 @@ export const Wrap = CSSComponent({
       ['height'],
       ['background'],
       ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
     ],
   },
 });

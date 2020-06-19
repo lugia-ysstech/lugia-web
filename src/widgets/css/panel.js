@@ -210,6 +210,8 @@ export const PanelContent = CSSComponent({
       ['font'],
       ['color'],
       ['borderRadius'],
+      ['border'],
+      ['boxShadow'],
     ],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig: { showArrow, hasChildren, zebraStripe, count, open } = {} } = themeProps;

@@ -5,7 +5,8 @@
     "viewProps": [
       { "name": "showArrow", "text": "展示箭头" },
       { "name": "accordion", "text": "手风琴模式" },
-      { "name": "zebraStripe", "text": "斑马风格" }
+      { "name": "zebraStripe", "text": "斑马风格" },
+      { "name": "data", "text": "数据编辑" }
     ],
     "data": [
       {
@@ -85,9 +86,7 @@
   {
     "widgetName": "Collapse.Panel",
     "title": "Panel 面板",
-    "viewProps": [
-      { "name": "showArrow", "text": "展示箭头" }
-    ],
+    "viewProps": [{ "name": "showArrow", "text": "展示箭头" }],
     "data": [
       {
         "title": "整体面板",
