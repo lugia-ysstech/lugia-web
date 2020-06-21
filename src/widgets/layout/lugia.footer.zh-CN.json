@@ -1,0 +1,26 @@
+{
+  "widgetName": "Footer",
+  "title": "底部",
+  "desc": "页面整体布局-底部。",
+  "props": {
+    "enlarged": {
+      "type": "boolean",
+      "desc": "指定 Footer 是否可以放大",
+      "propsDefaultValue": false
+    },
+    "isContent": {
+      "type": "boolean",
+      "desc": "指定 Footer 是否是内容",
+      "propsDefaultValue": false
+    }
+  },
+  "category": ["布局"],
+  "needExport": true,
+  "theme": {
+    "Container": {
+      "name": "底部区域样式",
+      "desc": "为底部区域配置样式",
+      "normal": [["width"], ["height"], ["margin"], ["background"]]
+    }
+  }
+}
