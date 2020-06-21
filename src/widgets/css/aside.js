@@ -83,7 +83,7 @@ export const Trigger = CSSComponent({
     cursor: pointer;
   `,
   normal: {
-    selectNames: [['background']],
+    selectNames: [['height'], ['background']],
   },
 });
 
