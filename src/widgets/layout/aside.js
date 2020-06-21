@@ -90,7 +90,6 @@ export default ThemeProvider(
         getPartOfThemeProps,
       } = this.props;
       const { collapsed } = this.state;
-      const asideTheme = getPartOfThemeProps('Container');
       const childrenWrapTheme = getPartOfThemeProps('ChildrenWrap');
       const triggerTheme = getPartOfThemeProps('Trigger');
 
@@ -103,7 +102,7 @@ export default ThemeProvider(
             }
 
             return (
-              <Aside themeProps={asideTheme} collapsed={collapsed} collapsedWidth={collapsedWidth}>
+              <Aside collapsed={collapsed} collapsedWidth={collapsedWidth}>
                 <ChildrenWrap themeProps={childrenWrapTheme}>
                   <div>{children}</div>
                   {collapsible && trigger !== null ? (

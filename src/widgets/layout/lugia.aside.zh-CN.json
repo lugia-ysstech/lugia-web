@@ -51,11 +51,6 @@
   "category": ["布局"],
   "needExport": true,
   "theme": {
-    "Container": {
-      "name": "侧边栏整体样式",
-      "desc": "为侧边栏配置整体样式",
-      "normal": []
-    },
     "ChildrenWrap": {
       "name": "侧边栏内容区域样式",
       "desc": "为侧边栏配置内容区域样式",
