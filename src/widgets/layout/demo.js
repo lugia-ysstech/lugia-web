@@ -90,6 +90,25 @@ export const LayoutDemo = () => {
       },
     },
   };
+  const asideTheme = {
+    [Widget.Aside]: {
+      ChildrenWrap: {
+        normal: {
+          background: {
+            color: 'red',
+          },
+        },
+      },
+      Trigger: {
+        normal: {
+          height: 100,
+          background: {
+            color: 'red',
+          },
+        },
+      },
+    },
+  };
   return (
     <div>
       <p>default flex-direction: column;</p>
@@ -194,7 +213,7 @@ export const LayoutDemo = () => {
         </Layout>
       </Layout>
       <p>flex-direction: row; Aside collapsible</p>
-      <Theme config={{ [Widget.Aside]: { backgroundColor: 'red' } }}>
+      <Theme config={asideTheme}>
         <Layout direction="row">
           <Layout>
             <Header>{header}</Header>
