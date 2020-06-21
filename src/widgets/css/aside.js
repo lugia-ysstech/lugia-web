@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { getMargin, createGetWidthOrHeight } from '../common/ThemeUtils';
 import { getThemeHeightCSS } from './layout';
 import Icon from '../icon';
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { css } from 'styled-components';
 import get from './theme-common-dict';
 
@@ -53,7 +53,7 @@ const getBackgroundCSS = () => {
   return `background: ${get('themeColor')}`;
 };
 
-export const Aside = CSSComponent({
+export const Aside = StaticComponent({
   tag: 'div',
   className: 'Aside',
   css: css`
@@ -65,10 +65,6 @@ export const Aside = CSSComponent({
     ${getThemeHeightCSS};
     ${getMargin};
   `,
-  normal: {
-    defaultTheme: {},
-    selectNames: [],
-  },
 });
 
 export const Trigger = CSSComponent({
@@ -87,7 +83,6 @@ export const Trigger = CSSComponent({
     cursor: pointer;
   `,
   normal: {
-    defaultTheme: {},
     selectNames: [['background']],
   },
 });
@@ -104,7 +99,6 @@ export const ChildrenWrap = CSSComponent({
     ${getBackgroundCSS};
   `,
   normal: {
-    defaultTheme: {},
     selectNames: [['background']],
   },
 });
