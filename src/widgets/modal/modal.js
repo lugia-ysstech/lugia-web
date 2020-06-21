@@ -212,7 +212,7 @@ export default ThemeProvider(
           ) : (
             <ModalBody themeProps={modalBodyTextTheme}>{children}</ModalBody>
           )}
-          {this.isInprops('footer') && typeof footer !== Boolean ? (
+          {this.isInprops('footer') && typeof footer !== 'boolean' ? (
             footer
           ) : footer === true ? (
             <ModalFooter __lugiad__header__absolute__={__lugiad__header__absolute__} type={type}>
