@@ -1,5 +1,5 @@
 {
-  "widgetName": "Textarea",
+  "widgetName": "Input.Textarea",
   "title": "段落文本输入框",
   "desc": "常用于多行文本输入",
   "props": {
