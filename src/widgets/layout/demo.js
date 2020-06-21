@@ -57,36 +57,67 @@ const aside = (
 export const LayoutDemo = () => {
   const layoutView = {
     [Widget.Layout]: {
-      width: 500,
-      margin: {
-        top: 20,
-        bottom: 30,
-        left: 50,
-        right: 40,
+      Container: {
+        normal: {
+          width: 500,
+          margin: {
+            top: 20,
+            bottom: 30,
+            left: 50,
+            right: 40,
+          },
+        },
       },
     },
     [Widget.Header]: {
-      margin: {
-        top: 10,
-        bottom: 10,
-        left: 20,
-        right: 20,
+      Container: {
+        normal: {
+          width: 400,
+          height: 100,
+          margin: {
+            top: 10,
+            bottom: 10,
+            left: 20,
+            right: 20,
+          },
+          background: {
+            color: 'red',
+          },
+        },
       },
     },
     [Widget.Footer]: {
-      margin: {
-        top: 10,
-        bottom: 10,
-        left: 20,
-        right: 20,
+      Container: {
+        normal: {
+          width: 400,
+          height: 100,
+          margin: {
+            top: 10,
+            bottom: 10,
+            left: 20,
+            right: 20,
+          },
+          background: {
+            color: 'blue',
+          },
+        },
       },
     },
     [Widget.Content]: {
-      margin: {
-        top: 20,
-        bottom: 20,
-        left: 10,
-        right: 10,
+      Container: {
+        normal: {
+          width: 400,
+          height: 100,
+          margin: {
+            top: 10,
+            bottom: 10,
+            left: 20,
+            right: 20,
+          },
+          background: {
+            color: 'green',
+          },
+        },
       },
     },
   };
@@ -101,9 +132,9 @@ export const LayoutDemo = () => {
       },
       Trigger: {
         normal: {
-          height: 100,
+          height: 60,
           background: {
-            color: 'red',
+            color: 'green',
           },
         },
       },
@@ -238,9 +269,9 @@ export const LayoutDemo = () => {
       <p>theme</p>
       <Theme config={layoutView}>
         <Layout>
-          <Header>{header}</Header>
-          <Content>{content}</Content>
-          <Footer>{footer}</Footer>
+          <Header>header</Header>
+          <Content>content</Content>
+          <Footer>footer</Footer>
         </Layout>
       </Theme>
       <p>flex-direction: row;</p>
