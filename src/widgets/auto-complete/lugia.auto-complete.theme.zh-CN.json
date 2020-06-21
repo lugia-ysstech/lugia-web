@@ -23,11 +23,15 @@
         "data": [
           {
             "name": "输入框外部容器",
-            "path": ["AutoInput", "Container"],
+            "path": ["Container"],
             "description": {
               "appearancePart": {
                 "text": "选择框",
                 "desc": "输入框外部容器外观配置的区块"
+              },
+              "textPart": {
+                "text": "选中文本",
+                "desc": "文本配置区块的显示文本"
               },
               "spacingPart": {
                 "desc": "输入框外内外边距配置区块"
@@ -36,7 +40,7 @@
           },
           {
             "name": "提示文本",
-            "path": ["AutoInput", "Placeholder"],
+            "path": ["Placeholder"],
             "props": [{ "name": "placeholder", "typeInTheme": "text" }],
             "description": {
               "textPart": {
@@ -46,23 +50,12 @@
             }
           },
           {
-            "name": "选中文本",
-            "path": ["Menu", "SelectedMenuItemWrap"],
-            "description": {
-              "textPart": {
-                "text": "选中文本",
-                "desc": "文本配置区块的显示文本"
-              }
-            }
-          },
-          {
             "name": "输入框清除图标",
-            "path": ["AutoInput", "InputClearButton"],
-            "props": [{ "name": "suffix", "typeInTheme": "icon" }],
+            "path": ["InputClearButton"],
             "description": {
               "textPart": {
                 "text": "清除图标",
-                "desc": "文本配置区块的显示文本"
+                "desc": "清除图标文字置区"
               }
             }
           }
@@ -74,7 +67,7 @@
         "data": [
           {
             "name": "前置图标配置",
-            "path": ["AutoInput", "InputPrefix"],
+            "path": ["InputPrefix"],
             "props": [{ "name": "prefix", "typeInTheme": "icon" }],
             "description": {
               "textPart": {
@@ -88,7 +81,7 @@
           },
           {
             "name": "后置图标配置",
-            "path": ["AutoInput", "InputSuffix"],
+            "path": ["InputSuffix"],
             "props": [{ "name": "suffix", "typeInTheme": "icon" }],
             "description": {
               "textPart": {
@@ -211,7 +204,7 @@
         "data": [
           {
             "name": "校验失败的输入框",
-            "path": ["AutoInput", "ValidateErrorInput"],
+            "path": ["ValidateErrorInput"],
             "description": {
               "appearancePart": {
                 "text": "背景",
@@ -234,7 +227,7 @@
         "data": [
           {
             "name": "校验失败提示信息",
-            "path": ["AutoInput", "ValidateErrorText"],
+            "path": ["ValidateErrorText"],
             "description": {
               "appearancePart": {
                 "text": "背景",

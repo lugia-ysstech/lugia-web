@@ -177,9 +177,9 @@ export default ShortKeyBoard(
         const inputtagTheme = {
           [Widget.Input]: {
             Container: getPartOfThemeConfig('Container'),
-            InputSuffix: getPartOfThemeConfig('TagWrap'),
-            InputPrefix: getPartOfThemeConfig('TagIcon'),
-            InputClearButton: getPartOfThemeConfig('SwitchIcon'),
+            InputSuffix: getPartOfThemeConfig('InputSuffix'),
+            InputPrefix: getPartOfThemeConfig('InputPrefix'),
+            ClearButton: getPartOfThemeConfig('InputClearButton'),
             ValidateErrorInput: getPartOfThemeConfig('ValidateErrorInput'),
             ValidateErrorText: getPartOfThemeConfig('ValidateErrorText'),
             Placeholder: getPartOfThemeConfig('Placeholder'),
