@@ -636,20 +636,6 @@
             }
           },
           {
-            "name": "页签背景",
-            "path": ["WindowContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "页签背景",
-                "desc": "页签背景"
-              },
-              "textPart": {
-                "text": "页签对齐方式",
-                "desc": "页签对齐方式"
-              }
-            }
-          },
-          {
             "name": "内容区域",
             "path": ["ContentBlock"],
             "description": {
