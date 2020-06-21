@@ -128,13 +128,11 @@ declare module '@lugia/lugia-web' {
   }
 
   declare type EditTableEventListenerHandle = EventListener & {
-    editing: boolean,
     multipleSelect: boolean,
     canMoveCells: boolean,
     isShift: boolean,
     isKeyBoardDown: boolean,
     moveTrack: Array<Object>,
-    keyDownListener: Object,
     keyDownListener: Object,
     enterMultipleSelect: Object,
     quitMultipleSelect: Object,
@@ -144,6 +142,10 @@ declare module '@lugia/lugia-web' {
     shiftUp: Object,
     enterMoveTrack: Object,
     quiteMoveTrack: Object,
+    selectCell: Object,
+    editCell: Object,
+    updateSelectCellListener: Object,
+    updateEditCellListener: Object,
     onKeyDown(e: Object): void,
     onKeyUp(e: Object): void,
     isMultiple(): boolean,
@@ -183,5 +185,9 @@ declare module '@lugia/lugia-web' {
     isEqualArray(oldValue: ?Array<Object>, newValue: ?Array<Object>): boolean,
     getHeaderCell(props: Object): Object,
     focusTable(table: Object): void,
+    updateSelectCell(selectCell: Object): void,
+    updateEditCell(editCell: Object): void,
+    getEditCell(): Object,
+    getSelectCell(): Array<Object>,
   };
 }
