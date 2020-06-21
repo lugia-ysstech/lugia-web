@@ -16,7 +16,8 @@ export default class extends React.Component<BlockProps, BlockState> {
   order: number;
 
   render() {
-    const { getTheme, children, enlarged = false, isContent = false } = this.props;
+    const { getPartOfThemeProps, children, enlarged = false, isContent = false } = this.props;
+    const blockTheme = getPartOfThemeProps('Container');
     return (
       <EnlargeContext.Consumer>
         {(context: Object) => {
@@ -33,7 +34,7 @@ export default class extends React.Component<BlockProps, BlockState> {
                 return (
                   <BlockContext.Provider value={{ father: this.order }}>
                     <Block
-                      theme={getTheme()}
+                      themeProps={blockTheme}
                       isContent={isContent}
                       display={!(enlargeValue && !~enlargeValue.indexOf(this.order) && enlarge)}
                       enlarge={enlarge}

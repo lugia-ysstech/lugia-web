@@ -58,6 +58,6 @@ export const Layout = CSSComponent({
     ${getMargin}
   `,
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [['width'], ['height'], ['margin']],
   },
 });
