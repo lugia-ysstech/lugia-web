@@ -27,5 +27,12 @@
     }
   },
   "childrenWidget": ["aside"],
-  "category": ["布局"]
+  "category": ["布局"],
+  "theme": {
+    "Container": {
+      "name": "布局整体样式",
+      "desc": "为布局配置整体样式",
+      "normal": [["width"], ["height"], ["margin"]]
+    }
+  }
 }
