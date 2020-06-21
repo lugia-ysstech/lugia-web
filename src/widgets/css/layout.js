@@ -5,8 +5,9 @@
  */
 import { px2emcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import styled from 'styled-components';
+import { css } from 'styled-components';
 import { getMargin, getWidth } from '../common/ThemeUtils';
+import CSSComponent from '@lugia/theme-css-hoc';
 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
@@ -44,12 +45,19 @@ export const getThemeHeightCSS = (props: CSSProps) => {
   }
 };
 
-export const Layout = styled.div`
-  display: flex;
-  flex: auto;
-  font-size: ${FontSize}rem;
-  ${getDirectionCSS};
-  ${getWidth}
-  ${getThemeHeightCSS}
-  ${getMargin}
-`;
+export const Layout = CSSComponent({
+  tag: 'div',
+  className: 'Layout',
+  css: css`
+    display: flex;
+    flex: auto;
+    font-size: ${FontSize}rem;
+    ${getDirectionCSS};
+    ${getWidth}
+    ${getThemeHeightCSS}
+    ${getMargin}
+  `,
+  normal: {
+    selectNames: [['width'], ['height']],
+  },
+});
