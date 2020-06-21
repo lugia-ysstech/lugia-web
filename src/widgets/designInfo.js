@@ -7506,7 +7506,7 @@ export default [
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
       },
       category: ['数据录入'],
-      childrenWidget: ['Input.Input.Textarea'],
+      childrenWidget: ['Input.Textarea'],
       theme: {
         Container: {
           name: '输入框主体',
@@ -7640,7 +7640,7 @@ export default [
   },
   {
     meta: {
-      widgetName: 'Input.Input.Textarea',
+      widgetName: 'Input.Textarea',
       title: '段落文本输入框',
       desc: '常用于多行文本输入',
       props: {
@@ -7793,7 +7793,7 @@ export default [
       defaultTheme: { Container: { normal: { width: 250, height: 200 } } },
       parentWidget: 'Input',
     },
-    target: Input.Input.Textarea,
+    target: Input.Textarea,
     screenshot:
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAAAyZJREFUeAHtnb9qG0EQh+UoagRBpHYr1AUEegW1KVOkumfwk6RWeVWKlGn1CgJBOqHWdRABNbJIbszG4EqLPDs7o/sEBv9Zzfzum097xtjewYAHBCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAgYgE7jRDt217fzqdvnU1l+fz+aNmbWq9JjAcDn93n1mPRqOHpmkeX3/1+o/UhEgy/FosFh9ms9n78Xh8fSqeeZHA8Xgc7Ha7p81m86eT4pOWFO8uds5cIDuDyDCfz5Ehk9lblskLTlgL87Qrv6Xcy3PVhOgqLmVneKnMOyYEEvOlVjM1IeR7Bm4TWmPJryPMNb9fUxMi/xJY6ZkAQnieToVsCFEBuueWCOF5OhWyIUQF6J5bIoTn6VTIhhAVoHtuaf6DpO8/fmbx+Prl8/O6vq3PglNwETtEQbgRSyNExKkVzIwQBeFGLI0QEadWMDNCFIQbsTRCRJxawcwIURBuxNIIEXFqBTMjREG4EUsjRMSpFcyMEAXhRiyNEBGnVjAzQhSEG7E0QkScWsHMCFEQbq9Lr1arvzzqEBD2WvKxQ2iRvJE6CHEjg9S6DITQInkjdRAiDXK/3w/kre8P81+y9Qr8cDh4jWaaix3CFLf/Zgjhf0amCc1vGd7+zsKUdoBm7BABhmQZESEsaQfohRABhmQZESEsaQfohRABhmQZESEsaQfohRABhmQZESEsaQfohRABhmQZESEsaQfohRABhmQZESEsaQfohRABhmQZESEsaQfohRABhmQZ0fz3If7//8nciyy9PjdHX9axQ/Rl0pnXiRCZoPqyzPyW4RXsZDLxGs00F0Ik3NPp1BS812bcMrxOplIuhKgE3mtbhPA6mUq51ISQs6jl+GEetgSEeToHXKWxmhBdmrWcRa2SiiLZBBLzdfYTLixUE0JOqZeDybfb7RM7xQXqCl8WxsI6HQb/oFDyucSdViGp07btfTqYfKl5/LBmxluplW4Ta3khNk3zeCvXxXVAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQuI7APyUsBkeGtFWQAAAAAElFTkSuQmCC',
   },
