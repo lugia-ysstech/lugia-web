@@ -29,10 +29,11 @@ export default ThemeProvider(
     }
 
     render() {
-      const { direction, children, getTheme, needEnlarge = false } = this.props;
+      const { direction, children, getPartOfThemeProps, needEnlarge = false } = this.props;
+      const layoutTheme = getPartOfThemeProps('Container');
       const { enlarge, enlargeValue } = this.state;
       return (
-        <Layout direction={direction} theme={getTheme()}>
+        <Layout direction={direction} themeProps={layoutTheme}>
           {needEnlarge ? (
             <EnlargeContext.Provider
               value={{

@@ -109,6 +109,16 @@ export const LayoutDemo = () => {
       },
     },
   };
+  const singleLayoutTheme = {
+    [Widget.Layout]: {
+      Container: {
+        normal: {
+          width: 500,
+          height: 500,
+        },
+      },
+    },
+  };
   return (
     <div>
       <p>default flex-direction: column;</p>
@@ -234,7 +244,7 @@ export const LayoutDemo = () => {
         </Layout>
       </Theme>
       <p>flex-direction: row;</p>
-      <Theme config={{ [Widget.Layout]: { width: 500, height: 500 } }}>
+      <Theme config={singleLayoutTheme}>
         <Layout direction="row" needEnlarge>
           <Aside>
             <div
@@ -263,7 +273,7 @@ export const LayoutDemo = () => {
         </Layout>
       </Theme>
       <p>flex-direction: row;</p>
-      <Theme config={{ [Widget.Layout]: { width: 500, height: 500 } }}>
+      <Theme config={singleLayoutTheme}>
         <Layout direction="row">
           <Aside>
             <div
@@ -292,7 +302,7 @@ export const LayoutDemo = () => {
         </Layout>
       </Theme>
       <p>flex-direction: row;</p>
-      <Theme config={{ [Widget.Layout]: { width: 500, height: 500 } }}>
+      <Theme config={singleLayoutTheme}>
         <Layout direction="row" needEnlarge>
           <Aside>
             <div
