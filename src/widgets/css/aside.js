@@ -4,7 +4,6 @@
  * @flow
  */
 import { px2emcss } from '../css/units';
-import colorsFunc from '../css/stateColor';
 import type { ThemeType } from '@lugia/lugia-web';
 import type { screensType } from '../css/row';
 import styled from 'styled-components';
@@ -13,10 +12,10 @@ import { getThemeHeightCSS } from './layout';
 import Icon from '../icon';
 import CSSComponent from '@lugia/theme-css-hoc';
 import { css } from 'styled-components';
+import get from './theme-common-dict';
 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
-const { themeColor } = colorsFunc();
 const getWidth = createGetWidthOrHeight('width', { fontSize: FontSize, defaultWidth: 200 });
 
 type BasicType = {
@@ -50,11 +49,8 @@ const getCollapsedWidth = (props: CSSProps) => {
     return `width: ${em(collapsedWidth)};`;
   }
 };
-const getBackgroundCSS = (props: CSSProps): string => {
-  const { backgroundColor } = props.theme;
-  const background = backgroundColor || themeColor;
-
-  return `background: ${background}`;
+const getBackgroundCSS = () => {
+  return `background: ${get('themeColor')}`;
 };
 
 export const Aside = CSSComponent({
@@ -71,21 +67,31 @@ export const Aside = CSSComponent({
   `,
   normal: {
     defaultTheme: {},
+    selectNames: [],
+  },
+});
+
+export const Trigger = CSSComponent({
+  tag: 'div',
+  className: 'Trigger',
+  css: css`
+    position: absolute;
+    bottom: 0;
+    height: ${em(48)};
+    line-height: ${em(48)};
+    text-align: center;
+    transition: all 0.3s;
+    ${getBackgroundCSS};
+    ${getWidth};
+    ${getCollapsedWidth};
+    cursor: pointer;
+  `,
+  normal: {
+    defaultTheme: {},
     selectNames: [['background']],
   },
 });
 
-export const Trigger = styled.div`
-  position: absolute;
-  bottom: 0;
-  height: ${em(48)};
-  line-height: ${em(48)};
-  text-align: center;
-  transition: all 0.3s;
-  ${getBackgroundCSS};
-  ${getWidth};
-  ${getCollapsedWidth} cursor: pointer;
-`;
 export const IconWrap: Object = styled(Icon)`
   color: #fff;
 `;
@@ -99,6 +105,6 @@ export const ChildrenWrap = CSSComponent({
   `,
   normal: {
     defaultTheme: {},
-    selectNames: ['background'],
+    selectNames: [['background']],
   },
 });
