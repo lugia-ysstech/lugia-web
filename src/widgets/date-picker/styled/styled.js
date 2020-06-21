@@ -28,6 +28,7 @@ export const Box = CSSComponent({
   css: css`
     display: inline-block;
     vertical-align: text-top;
+    font-size: 0;
   `,
 });
 export const Icons = CSSComponent({
