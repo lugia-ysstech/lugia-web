@@ -178,7 +178,7 @@ export default class EditTableEventListener extends Listener<any> {
     return dataKeyMap;
   };
 
-  getSelectColumnMark = (dataIndex: number): number => {
+  getSelectColumnMark = (dataIndex: string): number => {
     return this.dataKeyMap.columnsMap[dataIndex];
   };
 
