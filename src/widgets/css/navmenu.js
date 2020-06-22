@@ -377,10 +377,6 @@ export const PrimaryLightTheme = () => {
             left: padding,
             right: padding,
           },
-          border: getBorder(
-            { style: 'solid', color: superLightColor, width: 1 },
-            { directions: ['r'] }
-          ),
         },
       },
       SelectedTreeItemWrap: {
@@ -389,10 +385,6 @@ export const PrimaryLightTheme = () => {
             left: padding,
             right: padding,
           },
-          border: getBorder(
-            { style: 'solid', color: superLightColor, width: 1 },
-            { directions: ['r'] }
-          ),
         },
       },
       Text: {
@@ -465,10 +457,6 @@ export const EllipseLightTheme = () => {
             left: padding,
             right: padding,
           },
-          border: getBorder(
-            { style: 'solid', color: superLightColor, width: 1 },
-            { directions: ['r'] }
-          ),
         },
       },
       SelectedTreeItemWrap: {
@@ -477,10 +465,6 @@ export const EllipseLightTheme = () => {
             left: padding,
             right: padding,
           },
-          border: getBorder(
-            { style: 'solid', color: superLightColor, width: 1 },
-            { directions: ['r'] }
-          ),
         },
       },
       Text: {
