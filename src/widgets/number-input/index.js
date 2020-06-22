@@ -537,7 +537,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   setValue(value: number, event: any): void {
     const oldValue = this.state.value;
     const { disabled, onChange } = this.props;
-    const param = { newValue: value, oldValue, event };
+    const param = { newValue: Number(value), oldValue, event };
     if (hasValueProps(this.props) === false) {
       if (disabled) {
         return;
