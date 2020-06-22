@@ -50,13 +50,14 @@ export const Up = 'top';
 const defaultPosition = `${px2remcss(-3)};`;
 const leftOrRight = `${px2remcss(10)};`;
 const topOrBottom = `${px2remcss(5)};`;
+const centerPosition = 'calc(50% - 5px)';
 
 const theTopPositionCSS = `top: ${defaultPosition};`;
 const theBottomPositionCSS = `bottom:${defaultPosition};`;
 const theLeftPositionCSS = `left: ${defaultPosition};`;
 const theRightPositionCSS = `right: ${defaultPosition};`;
-const theCenterLeftPositionCSS = 'left:46%;';
-const theCenterTopPositionCSS = 'top:46%;';
+const theCenterLeftPositionCSS = `left: ${centerPosition};`;
+const theCenterTopPositionCSS = `top: ${centerPosition};`;
 
 const theLeftCSS = `left: ${leftOrRight};`;
 const theRightCSS = `right: ${leftOrRight};`;
