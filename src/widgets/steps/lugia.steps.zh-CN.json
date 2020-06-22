@@ -308,6 +308,13 @@
             }
           }
         }
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "width": 100
+          }
+        }
       }
     },
     "FlatSteps": {
