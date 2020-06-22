@@ -218,5 +218,18 @@
       "desc": "额外页脚配置",
       "normal": [["color"], ["font"]]
     }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 300
+      }
+    },
+    "FacePanelContain": {
+      "normal": {
+        "width": 300,
+        "height": 320
+      }
+    }
   }
 }
