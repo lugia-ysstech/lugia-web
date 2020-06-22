@@ -205,18 +205,5 @@
       "clicked": [],
       "disabled": []
     }
-  },
-  "defaultTheme": {
-    "DefaultRateIcon": {
-      "normal": {
-        "fontSize": 16,
-        "color": "#e8e8e8"
-      }
-    },
-    "ActiveIcon": {
-      "normal": {
-        "color": "#f8ac30"
-      }
-    }
   }
 }
