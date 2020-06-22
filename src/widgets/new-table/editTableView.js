@@ -128,7 +128,14 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
         data,
         columns,
       };
-      if (selectRow !== 0) {
+      if (showHeader && selectRow === 0) {
+        const newColumns = this.editTableListener.changeColumns({
+          value: newValue,
+          editCell,
+          columns,
+        });
+        result.columns = [...newColumns];
+      } else {
         const changedData = this.editTableListener.setInputChangedValue({
           value: newValue,
           editCell,
@@ -140,13 +147,6 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
           const { data: newData } = changedData;
           result.data = [...newData];
         }
-      } else {
-        const newColumns = this.editTableListener.changeColumns({
-          value: newValue,
-          editCell,
-          columns,
-        });
-        result.columns = [...newColumns];
       }
       this.exportChange({ ...result });
     }
