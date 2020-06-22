@@ -110,7 +110,7 @@ export const ProgressLine = CSSComponent({
     vertical-align: middle;
   `,
   normal: {
-    selectNames: [['width'], ['background'], ['borderRadius'], ['border'], ['boxShadow']],
+    selectNames: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
     defaultTheme: {
       background: { color: superLightColor },
     },
