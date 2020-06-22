@@ -261,13 +261,12 @@ export const DrawerClose = styled.div`
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 4001;
 `;
 const getCloseLugiadCSS = (props: CSSProps): string => {
   const { __lugiad__header__absolute__ = false, type } = props;
   if (__lugiad__header__absolute__ || type === 'Drawer') {
     return css`
-      z-index: 4000;
+      z-index: 4001;
     `;
   }
   return '';
