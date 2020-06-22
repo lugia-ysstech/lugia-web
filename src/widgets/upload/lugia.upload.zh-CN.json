@@ -179,7 +179,7 @@
       },
       "theme": {
         "Container": {
-          "name":"上传组件整体样式",
+          "name": "上传组件整体样式",
           "desc": "按钮上传类型的整体样式配置",
           "normal": [["background"], ["width"], ["height"], ["boxShadow"], ["border"], ["opacity"]],
           "hover": [["background"], ["boxShadow"], ["border"], ["opacity"]],
@@ -552,7 +552,7 @@
     "Container": {
       "name": "文件上传区域",
       "desc": "默认上传框的样式",
-      "normal": [["width"], ["height"], ["boxShadow"], ["border"],["padding"]],
+      "normal": [["width"], ["height"], ["boxShadow"], ["border"], ["padding"]],
       "hover": [["boxShadow"], ["border"]],
       "disabled": [["border"], ["cursor"]]
     },
@@ -581,38 +581,13 @@
   "defaultTheme": {
     "Container": {
       "normal": {
-        "width": 346,
-        "height": 30,
-        "border": {
-          "top": { "color": "#9482ff", "style": "solid", "width": 1 },
-          "right": { "color": "#9482ff", "style": "solid", "width": 1 },
-          "bottom": { "color": "#9482ff", "style": "solid", "width": 1 },
-          "left": { "color": "#9482ff", "style": "solid", "width": 1 }
-        },
-        "color": "#ccc",
-        "padding": {
-          "left": 10
-        },
-        "line-height": 30
+        "width": 346
       }
     },
     "UploadList": {
       "UploadLiType": {
         "normal": {
-          "width": "100%",
-          "height": 36
-        }
-      },
-      "UploadListSuccessIcon": {
-        "normal": {
-          "color": "#56c22d",
-          "fontSize": 12
-        }
-      },
-      "UploadListFailedIcon": {
-        "normal": {
-          "color": "#f22735",
-          "fontSize": 12
+          "width": "100%"
         }
       }
     }
