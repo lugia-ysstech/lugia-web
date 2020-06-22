@@ -142,7 +142,7 @@ export default (
     render() {
       const { props } = this;
       const start = this.getStart(props, this.state);
-      const { level, autoHeight = false } = props;
+      const { level, autoHeight = false, __isPerformance = true } = props;
       const activeAutoHeight = this.getActiveAutoHeight();
       const totalSize = this.fetchTotalSize(activeAutoHeight);
       const defaultHeight = this.getDefaultHeight();
@@ -152,6 +152,7 @@ export default (
           autoHeight: activeAutoHeight,
           totalSize,
           defaultHeight,
+          __isPerformance,
         },
       });
 
@@ -159,14 +160,14 @@ export default (
         return (
           <ScrollerContainer
             themeProps={themeProps}
-            onWheel={activeAutoHeight ? undefined : this.onWheel}
+            onWheel={activeAutoHeight || !__isPerformance ? undefined : this.onWheel}
           >
             {element}
           </ScrollerContainer>
         );
       };
 
-      if (!this.isNeedScroller() || autoHeight) {
+      if (!this.isNeedScroller() || autoHeight || !__isPerformance) {
         const { length } = this.getTarget();
         //TODO: 待测试
         return pack(

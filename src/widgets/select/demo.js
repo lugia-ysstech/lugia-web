@@ -107,20 +107,21 @@ export default class Demo extends React.Component {
         />
 
         <H2>single search</H2>
-        <Select canSearch canClear={false} displayField={'label'} data={data} />
+        <Select isPerformance canSearch canClear={false} displayField={'label'} data={data} />
 
-        <Select canSearch displayField={'label'} disabled data={data} />
+        <Select isPerformance canSearch displayField={'label'} disabled data={data} />
 
         <H2>single canInput</H2>
-        <Select canSearch canInput displayField={'label'} data={data} />
+        <Select isPerformance canSearch canInput displayField={'label'} data={data} />
 
         <H2>非受限 mutliple</H2>
-        <Select data={data} displayField={'label'} mutliple limitCount={5} />
+        <Select isPerformance data={data} displayField={'label'} mutliple limitCount={5} />
 
         <H2>非受限 mutliple DefaultValue</H2>
         <Select
           theme={newView}
           mutliple
+          isPerformance
           defaultValue={['key-0', 'key-1']}
           defaultDisplayValue={['txt0', 'txt1']}
           displayField={'label'}
@@ -134,7 +135,35 @@ export default class Demo extends React.Component {
         <Select
           value={value}
           displayValue={[]}
+          isPerformance
           mutliple
+          canSearch
+          limitCount={3}
+          canInput
+          displayField={'label'}
+          data={data}
+          onQuery={this.onQuery}
+          onChange={this.onChange}
+        />
+        <H2>原生滚动条</H2>
+        <Select
+          value={value}
+          displayValue={[]}
+          mutliple
+          canSearch
+          limitCount={3}
+          canInput
+          displayField={'label'}
+          data={data}
+          onQuery={this.onQuery}
+          onChange={this.onChange}
+        />
+        <H2>性能原生滚动条</H2>
+        <Select
+          value={value}
+          displayValue={[]}
+          mutliple
+          isPerformance
           canSearch
           limitCount={3}
           canInput

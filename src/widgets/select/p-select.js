@@ -87,6 +87,7 @@ export default class Demo extends React.Component {
             theme={config}
             createPortal
             data={data}
+            isPerformance={true}
             onSelect={this.onSelect}
             displayField={'label'}
             size={'small'}
@@ -107,6 +108,7 @@ export default class Demo extends React.Component {
             theme={config}
             createPortal
             data={data}
+            isPerformance={true}
             displayField={'label'}
             onSelect={this.onSelect}
             placeholder={'请选择'}
@@ -121,6 +123,7 @@ export default class Demo extends React.Component {
             theme={config}
             createPortal
             data={data}
+            isPerformance={true}
             displayField={'label'}
             placeholder={'请选择'}
             onSelect={this.onSelect}
@@ -140,6 +143,7 @@ export default class Demo extends React.Component {
             theme={config}
             createPortal
             placeholder={'请选择'}
+            isPerformance={true}
             data={data}
             onSelect={this.onSelect}
             isShowClearButton={false}

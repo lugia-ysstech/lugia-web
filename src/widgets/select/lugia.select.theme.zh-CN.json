@@ -16,6 +16,10 @@
         "text": "清除功能"
       },
       {
+        "name": "isPerformance",
+        "text": "选项性能加载"
+      },
+      {
         "name": "data",
         "text": "数据编辑"
       }
@@ -302,6 +306,10 @@
       {
         "name": "canClear",
         "text": "清除功能"
+      },
+      {
+        "name": "isPerformance",
+        "text": "选项性能加载"
       },
       {
         "name": "data",

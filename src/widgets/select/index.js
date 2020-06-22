@@ -165,7 +165,7 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   static getDerivedStateFromProps(props: SelectProps, state: SelectState) {
-    const { data = [], validateStatus = 'success', query } = props;
+    const { data = [], validateStatus = 'success', query, isPerformance = false } = props;
     const length = data.length;
 
     const { value, displayValue } = getValueAndDisplayValue(props, state);
@@ -180,6 +180,7 @@ class Select extends React.Component<SelectProps, SelectState> {
         query: getQuery(query),
         validateStatus,
         isCheckedAll: false,
+        __isPerformance: isPerformance,
       };
     }
     return {
@@ -189,6 +190,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       length,
       query: getQuery(query, state.query),
       validateStatus,
+      __isPerformance: isPerformance,
     };
   }
 
@@ -455,7 +457,7 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   getMenuItems(getMenu?: Function) {
     const { state, props } = this;
-    const { value, query, data } = state;
+    const { value, query, data, __isPerformance } = state;
     const {
       displayField,
       valueField,
@@ -470,6 +472,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     return (
       <Menu
         {...this.getMenuTheme()}
+        __isPerformance={__isPerformance}
         checkedCSS={checkedCSS}
         displayField={displayField}
         valueField={valueField}
