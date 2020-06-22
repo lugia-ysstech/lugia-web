@@ -140,14 +140,12 @@
       "name": "进度条进度线默认配置",
       "desc": "进度条进度线默认配置",
       "normal": [
-        ["width"],
-        ["height"],
         ["background"],
         ["borderRadius"],
         ["border"],
         ["borderRadius"],
         ["boxShadow"],
-        ["padding"]
+        ["padding", "right"]
       ]
     },
     "ProgressInnerLine_Success": {
