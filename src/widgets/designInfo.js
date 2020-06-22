@@ -70,6 +70,7 @@ export default [
         closable: { type: 'boolean', desc: '是否显示关闭按钮', defaultValue: false },
         description: { type: 'React.node', desc: '提示内容的辅助性文字介绍' },
         icon: { type: 'string', desc: '自定义图标，showIcon 为 true 时有效' },
+        closeIcon: { type: 'string', desc: '自定义关闭图标, closable 为 true 时有效' },
       },
       events: {
         onClose: {
@@ -96,7 +97,7 @@ export default [
             ['width'],
             ['height'],
             ['background'],
-            ['border', 'left'],
+            ['border'],
             ['borderRadius'],
             ['boxShadow'],
           ],
@@ -115,11 +116,18 @@ export default [
           name: '警告提示关闭文字样式',
           desc: '为警告提示关闭文字配置样式',
           normal: [['color'], ['font']],
+          hover: [['color']],
+          active: [['color']],
+        },
+        CloseIcon: {
+          name: '警告提示关闭图标样式',
+          desc: '为警告提示关闭图标配置样式',
+          normal: [['color'], ['font']],
         },
         AlertIcon: {
           name: '警告提示图标样式',
           desc: '为警告提示图标配置样式',
-          normal: [['color'], ['fontSize']],
+          normal: [['color'], ['fontSize'], ['padding']],
         },
       },
       childrenWidget: [],
@@ -5429,6 +5437,10 @@ export default [
         },
         ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
       },
+      defaultTheme: {
+        Container: { normal: { width: 300 } },
+        FacePanelContain: { normal: { width: 300, height: 320 } },
+      },
       parentWidget: 'DatePicker',
     },
     target: DatePicker.YearPicker,
@@ -5714,6 +5726,10 @@ export default [
           hover: [['color'], ['font'], ['fontSize'], ['background']],
         },
       },
+      defaultTheme: {
+        Container: { normal: { width: 300 } },
+        FacePanelContain: { normal: { width: 300, height: 320 } },
+      },
       parentWidget: 'DatePicker',
     },
     target: DatePicker.WeekPicker,
@@ -5890,6 +5906,10 @@ export default [
           active: [],
         },
         ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
+      },
+      defaultTheme: {
+        Container: { normal: { width: 300 } },
+        FacePanelContain: { normal: { width: 300, height: 320 } },
       },
       parentWidget: 'DatePicker',
     },
@@ -12798,7 +12818,15 @@ export default [
         ProgressInnerLine_Default: {
           name: '进度条进度线默认配置',
           desc: '进度条进度线默认配置',
-          normal: [['height'], ['background'], ['border'], ['borderRadius'], ['boxShadow']],
+          normal: [
+            ['height'],
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['padding', 'right'],
+          ],
         },
         ProgressInnerLine_Success: {
           name: '进度条进度线成功配置',
@@ -12830,6 +12858,7 @@ export default [
           desc: '进度条失败图标配置',
           normal: [['color'], ['fontSize']],
         },
+        ProgressActiveLine: { name: '动效条样式配置', desc: '动效条样式配置', normal: [['color']] },
       },
       childrenWidget: [],
     },
@@ -15221,100 +15250,7 @@ export default [
           title: '单个滑块的样式',
           desc: '单个滑块的样式配置',
           props: { defaultValue: 2, vertical: true, minValue: 0, maxValue: 30 },
-          defaultTheme: {
-            SliderContainer: {
-              normal: {
-                background: { color: 'transparent' },
-                opacity: 1,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: {
-                  topLeft: { radius: 0 },
-                  topRight: { radius: 0 },
-                  bottomLeft: { radius: 0 },
-                  bottomRight: { radius: 0 },
-                },
-                margin: { top: 0, right: 0, bottom: 0, left: 0 },
-                padding: { top: 0, right: 0, bottom: 0, left: 0 },
-              },
-            },
-            Container: {
-              normal: {
-                width: '100%',
-                height: 6,
-                background: { color: '#e8e8e8' },
-                borderRadius: {
-                  topLeft: { radius: 6 },
-                  topRight: { radius: 6 },
-                  bottomLeft: { radius: 6 },
-                  bottomRight: { radius: 6 },
-                },
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-              },
-            },
-            SliderPassedWay: {
-              normal: {
-                background: { color: '#4d63ff' },
-                height: 6,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-              },
-            },
-            SliderButton: {
-              normal: {
-                background: { color: '#4d63ff' },
-                width: 16,
-                height: 16,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: {
-                  topLeft: { radius: 16 },
-                  topRight: { radius: 16 },
-                  bottomLeft: { radius: 16 },
-                  bottomRight: { radius: 16 },
-                },
-              },
-            },
-            SliderTips: {
-              normal: {
-                width: 30,
-                height: 30,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: {
-                  topLeft: { radius: 3 },
-                  topRight: { radius: 3 },
-                  bottomLeft: { radius: 3 },
-                  bottomRight: { radius: 3 },
-                },
-                background: { color: '#333' },
-                color: '#fff',
-                fontSize: 14,
-                font: { weight: 'normal' },
-              },
-            },
-          },
+          defaultTheme: { Container: { normal: { width: 300, height: 6 } } },
           theme: {
             SliderContainer: {
               name: '滑块组件外盒',
@@ -15388,96 +15324,7 @@ export default [
           title: '双滑块的样式',
           desc: '双滑块的样式配置',
           props: { defaultValue: [5, 15], minValue: 0, maxValue: 30 },
-          defaultTheme: {
-            SliderContainer: {
-              normal: {
-                background: { color: 'transparent' },
-                width: 300,
-                opacity: 1,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: {
-                  topLeft: { radius: 0 },
-                  topRight: { radius: 0 },
-                  bottomLeft: { radius: 0 },
-                  bottomRight: { radius: 0 },
-                },
-                margin: { top: 0, right: 0, bottom: 0, left: 0 },
-                padding: { top: 0, right: 0, bottom: 0, left: 0 },
-              },
-            },
-            Container: {
-              normal: {
-                width: 300,
-                height: 6,
-                background: { color: '#e8e8e8' },
-                borderRadius: {
-                  topLeft: { radius: 6 },
-                  topRight: { radius: 6 },
-                  bottomLeft: { radius: 6 },
-                  bottomRight: { radius: 6 },
-                },
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-              },
-            },
-            SliderPassedWay: {
-              normal: {
-                background: { color: '#4d63ff' },
-                height: 6,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-              },
-            },
-            SliderButton: {
-              normal: {
-                background: { color: '#4d63ff' },
-                width: 16,
-                height: 16,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: {
-                  topLeft: { radius: 16 },
-                  topRight: { radius: 16 },
-                  bottomLeft: { radius: 16 },
-                  bottomRight: { radius: 16 },
-                },
-              },
-            },
-            SliderTips: {
-              normal: {
-                width: 30,
-                height: 30,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: { topLeft: 3, topRight: 3, bottomLeft: 3, bottomRight: 3 },
-                background: { color: '#333' },
-                color: '#fff',
-                fontSize: 14,
-                font: { weight: 'normal' },
-              },
-            },
-          },
+          defaultTheme: { Container: { normal: { width: 300, height: 6 } } },
           theme: {
             SliderContainer: {
               name: '滑块组件外盒',
@@ -15556,88 +15403,7 @@ export default [
             maxValue: 15,
             marks: { 5: '5℃', 10: '10℃', 15: '15℃' },
           },
-          defaultTheme: {
-            SliderContainer: {
-              normal: {
-                background: { color: 'transparent' },
-                width: 300,
-                opacity: 1,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: { topLeft: 0, topRight: 0, bottomLeft: 0, bottomRight: 0 },
-                margin: { top: 0, right: 0, bottom: 0, left: 0 },
-                padding: { top: 0, right: 0, bottom: 0, left: 0 },
-              },
-            },
-            Container: {
-              normal: {
-                width: 300,
-                height: 6,
-                background: { color: '#e8e8e8' },
-                borderRadius: { topLeft: 6, topRight: 6, bottomLeft: 6, bottomRight: 6 },
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-              },
-            },
-            SliderPassedWay: {
-              normal: {
-                background: { color: '#4d63ff' },
-                height: 6,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-              },
-            },
-            SliderButton: {
-              normal: {
-                background: { color: '#4d63ff' },
-                width: 16,
-                height: 16,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: { topLeft: 16, topRight: 16, bottomLeft: 16, bottomRight: 16 },
-              },
-            },
-            SliderTips: {
-              normal: {
-                width: 30,
-                height: 30,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: { topLeft: 3, topRight: 3, bottomLeft: 3, bottomRight: 3 },
-                background: { color: '#333' },
-                color: '#fff',
-                fontSize: 14,
-                font: { weight: 'normal' },
-              },
-            },
-            SliderMarks: {
-              normal: {
-                first: { color: '#333', font: { weight: 'normal', size: 14 } },
-                nth1: { color: '#999', font: { weight: 'normal', size: 14 } },
-                last: { color: '#999', font: { weight: 'normal', size: 14 } },
-              },
-            },
-          },
+          defaultTheme: { Container: { normal: { width: 300, height: 6 } } },
           theme: {
             SliderContainer: {
               name: '滑块组件外盒',
@@ -15788,80 +15554,7 @@ export default [
           ],
         },
       },
-      defaultTheme: {
-        SliderContainer: {
-          normal: {
-            background: { color: 'transparent' },
-            opacity: 1,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 0, topRight: 0, bottomLeft: 0, bottomRight: 0 },
-            margin: { top: 0, right: 0, bottom: 0, left: 0 },
-            padding: { top: 0, right: 0, bottom: 0, left: 0 },
-          },
-        },
-        Container: {
-          normal: {
-            width: '100%',
-            height: 6,
-            background: { color: '#e8e8e8' },
-            borderRadius: { topLeft: 6, topRight: 6, bottomLeft: 6, bottomRight: 6 },
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderPassedWay: {
-          normal: {
-            background: { color: '#4d63ff' },
-            height: 6,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderButton: {
-          normal: {
-            background: { color: '#4d63ff' },
-            width: 16,
-            height: 16,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 16, topRight: 16, bottomLeft: 16, bottomRight: 16 },
-          },
-        },
-        SliderTips: {
-          normal: {
-            width: 30,
-            height: 30,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 3, topRight: 3, bottomLeft: 3, bottomRight: 3 },
-            background: { color: '#333' },
-            color: '#fff',
-            fontSize: 14,
-            font: { weight: 'normal' },
-          },
-        },
-      },
+      defaultTheme: { Container: { normal: { width: 300, height: 6 } } },
       childrenWidget: [],
     },
     target: Slider,
@@ -15982,100 +15675,7 @@ export default [
           ],
         },
       },
-      defaultTheme: {
-        SliderContainer: {
-          normal: {
-            background: { color: 'transparent' },
-            opacity: 1,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: {
-              topLeft: { radius: 0 },
-              topRight: { radius: 0 },
-              bottomLeft: { radius: 0 },
-              bottomRight: { radius: 0 },
-            },
-            margin: { top: 0, right: 0, bottom: 0, left: 0 },
-            padding: { top: 0, right: 0, bottom: 0, left: 0 },
-          },
-        },
-        Container: {
-          normal: {
-            width: '100%',
-            height: 6,
-            background: { color: '#e8e8e8' },
-            borderRadius: {
-              topLeft: { radius: 6 },
-              topRight: { radius: 6 },
-              bottomLeft: { radius: 6 },
-              bottomRight: { radius: 6 },
-            },
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderPassedWay: {
-          normal: {
-            background: { color: '#4d63ff' },
-            height: 6,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderButton: {
-          normal: {
-            background: { color: '#4d63ff' },
-            width: 16,
-            height: 16,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: {
-              topLeft: { radius: 16 },
-              topRight: { radius: 16 },
-              bottomLeft: { radius: 16 },
-              bottomRight: { radius: 16 },
-            },
-          },
-        },
-        SliderTips: {
-          normal: {
-            width: 30,
-            height: 30,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: {
-              topLeft: { radius: 3 },
-              topRight: { radius: 3 },
-              bottomLeft: { radius: 3 },
-              bottomRight: { radius: 3 },
-            },
-            background: { color: '#333' },
-            color: '#fff',
-            fontSize: 14,
-            font: { weight: 'normal' },
-          },
-        },
-      },
+      defaultTheme: { Container: { normal: { width: 300, height: 6 } } },
       childrenWidget: [],
       aliasName: 'SingleVerticalSlider',
     },
@@ -16192,96 +15792,7 @@ export default [
           ],
         },
       },
-      defaultTheme: {
-        SliderContainer: {
-          normal: {
-            background: { color: 'transparent' },
-            width: 300,
-            opacity: 1,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: {
-              topLeft: { radius: 0 },
-              topRight: { radius: 0 },
-              bottomLeft: { radius: 0 },
-              bottomRight: { radius: 0 },
-            },
-            margin: { top: 0, right: 0, bottom: 0, left: 0 },
-            padding: { top: 0, right: 0, bottom: 0, left: 0 },
-          },
-        },
-        Container: {
-          normal: {
-            width: 300,
-            height: 6,
-            background: { color: '#e8e8e8' },
-            borderRadius: {
-              topLeft: { radius: 6 },
-              topRight: { radius: 6 },
-              bottomLeft: { radius: 6 },
-              bottomRight: { radius: 6 },
-            },
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderPassedWay: {
-          normal: {
-            background: { color: '#4d63ff' },
-            height: 6,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderButton: {
-          normal: {
-            background: { color: '#4d63ff' },
-            width: 16,
-            height: 16,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: {
-              topLeft: { radius: 16 },
-              topRight: { radius: 16 },
-              bottomLeft: { radius: 16 },
-              bottomRight: { radius: 16 },
-            },
-          },
-        },
-        SliderTips: {
-          normal: {
-            width: 30,
-            height: 30,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 3, topRight: 3, bottomLeft: 3, bottomRight: 3 },
-            background: { color: '#333' },
-            color: '#fff',
-            fontSize: 14,
-            font: { weight: 'normal' },
-          },
-        },
-      },
+      defaultTheme: { Container: { normal: { width: 300, height: 6 } } },
       childrenWidget: [],
       aliasName: 'DoubleSlider',
     },
@@ -16413,88 +15924,7 @@ export default [
           },
         },
       },
-      defaultTheme: {
-        SliderContainer: {
-          normal: {
-            background: { color: 'transparent' },
-            width: 300,
-            opacity: 1,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 0, topRight: 0, bottomLeft: 0, bottomRight: 0 },
-            margin: { top: 0, right: 0, bottom: 0, left: 0 },
-            padding: { top: 0, right: 0, bottom: 0, left: 0 },
-          },
-        },
-        Container: {
-          normal: {
-            width: 300,
-            height: 6,
-            background: { color: '#e8e8e8' },
-            borderRadius: { topLeft: 6, topRight: 6, bottomLeft: 6, bottomRight: 6 },
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderPassedWay: {
-          normal: {
-            background: { color: '#4d63ff' },
-            height: 6,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderButton: {
-          normal: {
-            background: { color: '#4d63ff' },
-            width: 16,
-            height: 16,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 16, topRight: 16, bottomLeft: 16, bottomRight: 16 },
-          },
-        },
-        SliderTips: {
-          normal: {
-            width: 30,
-            height: 30,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 3, topRight: 3, bottomLeft: 3, bottomRight: 3 },
-            background: { color: '#333' },
-            color: '#fff',
-            fontSize: 14,
-            font: { weight: 'normal' },
-          },
-        },
-        SliderMarks: {
-          normal: {
-            first: { color: '#333', font: { weight: 'normal', size: 14 } },
-            nth1: { color: '#999', font: { weight: 'normal', size: 14 } },
-            last: { color: '#999', font: { weight: 'normal', size: 14 } },
-          },
-        },
-      },
+      defaultTheme: { Container: { normal: { width: 300, height: 6 } } },
       childrenWidget: [],
       aliasName: 'MarksSlider',
     },
@@ -19008,79 +18438,7 @@ export default [
           ],
         },
       },
-      defaultTheme: {
-        Switch_SwitchOpen: {
-          normal: {
-            width: 38,
-            height: 20,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 20, topRight: 20, bottomLeft: 20, bottomRight: 20 },
-            boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
-            fontSize: 12,
-            color: 'rgba(255, 255, 255, 0.8)',
-            font: { fontWeight: 'normal' },
-            background: { color: '#4d63ff' },
-          },
-        },
-        Switch_SwitchClosed: {
-          normal: {
-            width: 38,
-            height: 20,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 20, topRight: 20, bottomLeft: 20, bottomRight: 20 },
-            boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
-            fontSize: 12,
-            color: 'rgba(255, 255, 255, 0.8)',
-            font: { fontWeight: 'normal' },
-            background: { color: '#ccc' },
-          },
-        },
-        SwitchButton: {
-          normal: {
-            width: 14,
-            height: 14,
-            background: { color: '#fff' },
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 7, topRight: 7, bottomLeft: 7, bottomRight: 7 },
-            boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
-          },
-        },
-        Container: {
-          normal: {
-            width: 38,
-            height: 20,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 0, topRight: 0, bottomLeft: 0, bottomRight: 0 },
-            boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
-            fontSize: 12,
-            color: 'rgba(255, 255, 255, 0.8)',
-            font: { fontWeight: 'normal' },
-            background: { color: 'transparent' },
-            margin: { top: 0, right: 0, bottom: 0, left: 0 },
-            padding: { top: 0, right: 0, bottom: 0, left: 0 },
-          },
-        },
-      },
+      defaultTheme: { Container: { normal: { width: 38 } } },
       childrenWidget: [],
     },
     target: Switch,
