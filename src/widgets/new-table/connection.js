@@ -223,7 +223,7 @@ export default class EditTableEventListener extends Listener<any> {
     const { key } = e;
     const isMultiple = this.isMultiple();
     if (key.length === 1 && !isMultiple) {
-      this.emit('enterEditing');
+      this.emit('enterEditing', { clearValue: true });
       return;
     }
     this.onKeyDown(e);
