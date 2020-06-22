@@ -134,12 +134,13 @@
     "ProgressOutLine": {
       "name": "进度条底色线配置",
       "desc": "进度条底色线配置",
-      "normal": [["width"], ["height"], ["background"], ["borderRadius"], ["border"], ["boxShadow"]]
+      "normal": [["width"], ["background"], ["borderRadius"], ["border"], ["boxShadow"]]
     },
     "ProgressInnerLine_Default": {
       "name": "进度条进度线默认配置",
       "desc": "进度条进度线默认配置",
       "normal": [
+        ["height"],
         ["background"],
         ["borderRadius"],
         ["border"],
