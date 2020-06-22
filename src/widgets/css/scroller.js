@@ -32,10 +32,12 @@ export const ScrollerContainer = CSSComponent({
       ['borderRadius'],
     ],
     getCSS: (themeMeta, themeProps) => {
-      const { autoHeight, totalSize, defaultHeight } = themeProps.propsConfig;
+      const { autoHeight, totalSize, defaultHeight, __isPerformance } = themeProps.propsConfig;
       const { height = defaultHeight } = themeMeta;
       const activeHeight = autoHeight ? totalSize : height;
+      const overFlow = __isPerformance ? '' : 'overflow-y: auto';
       return `
+      ${overFlow}
         height: ${px2remcss(activeHeight)}
       `;
     },
@@ -53,7 +55,22 @@ export const ScrollerContainer = CSSComponent({
     position: relative;
     transition: all 0.3s;
     overflow: hidden;
-
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background: transparent;
+    }
+    &:hover::-webkit-scrollbar-thumb {
+      background: #c2c2c2;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: #bdbdbd;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
     &:hover > div:nth-child(2) {
       opacity: 1;
     }

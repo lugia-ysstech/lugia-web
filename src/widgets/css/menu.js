@@ -276,7 +276,6 @@ export const MenuContainer = CSSComponent({
     user-select: none;
     padding-left: 0;
     list-style: none;
-    overflow: hidden;
     transition: all 0.3s;
   `,
   option: { hover: true },
