@@ -16226,6 +16226,7 @@ export default [
               },
             },
           },
+          defaultTheme: { Container: { normal: { width: 100 } } },
         },
         FlatSteps: {
           sequence: 2,
@@ -17434,7 +17435,7 @@ export default [
           },
         },
       },
-      defaultTheme: { Container: { normal: { width: 800 } } },
+      defaultTheme: { Container: { normal: { width: 100 } } },
       aliasName: 'VSteps',
     },
     target: Steps,
