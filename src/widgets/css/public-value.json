@@ -36,7 +36,7 @@
   "warningDataColor": "#f58f8a",
   "commonBackgroundColor": "#f5f5f9",
   "navBackgroundColor": "#000333",
-  "navLightBackgroundColor": "#cccccc",
+  "navLightBackgroundColor": "#ffffff",
   "normalBoxShadow": { "x": 0, "y": 0, "color": "#cccccc", "blur": 6, "spread": 0 },
   "hoverBoxShadow": { "x": 0, "y": 0, "color": "rgba(77,99,255,0.4)", "blur": 6, "spread": 0 },
   "activeBoxShadow": { "x": 0, "y": 0, "color": "rgba(62,79,204,0.4)", "blur": 6, "spread": 0 },
