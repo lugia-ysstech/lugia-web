@@ -62,12 +62,12 @@
     },
 
     "prefix": {
-      "type": "ReactNode",
+      "type": "icon",
       "desc": "输入框前缀",
       "isHidden": true
     },
     "suffix": {
-      "type": "ReactNode",
+      "type": "icon",
       "desc": "输入框后缀",
       "isHidden": true
     }
