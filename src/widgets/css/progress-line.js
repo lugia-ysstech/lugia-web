@@ -157,19 +157,16 @@ export const ProgressBackground = CSSComponent({
     ${getBackGroundWidth};
     border-radius: ${px2remcss(50)};
     position: relative;
+    text-align: right;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
   `,
   normal: {
     selectNames: [
-      ['height'],
       ['background'],
       ['border'],
       ['borderRadius'],
       ['boxShadow'],
-      ['padding'],
+      ['padding', 'right'],
     ],
     defaultTheme: {
       background: {
@@ -301,6 +298,7 @@ export const InsideText = CSSComponent({
   tag: 'span',
   className: 'ProgressInsideText',
   css: css`
+    text-align: left;
     margin: 0 ${px2remcss(6)};
     white-space: nowrap;
     word-break: normal;
