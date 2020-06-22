@@ -13583,10 +13583,6 @@ export default [
           disabled: [],
         },
       },
-      defaultTheme: {
-        DefaultRateIcon: { normal: { fontSize: 16, color: '#e8e8e8' } },
-        ActiveIcon: { normal: { color: '#f8ac30' } },
-      },
       childrenWidget: [],
     },
     target: Rate,
@@ -13669,11 +13665,11 @@ export default [
           disabled: [],
         },
       },
+      childrenWidget: [],
       defaultTheme: {
         DefaultRateIcon: { normal: { fontSize: 14, color: '#e8e8e8', margin: { right: 6 } } },
         ActiveIcon: { normal: { color: '#f8ac30' } },
       },
-      childrenWidget: [],
       aliasName: 'ClassifyRate',
     },
     target: Rate,
@@ -13746,11 +13742,11 @@ export default [
           disabled: [],
         },
       },
+      childrenWidget: [],
       defaultTheme: {
         DefaultTextIcon: { normal: { fontSize: 16, color: '#e8e8e8' } },
         ActiveTextIcon: { normal: { color: '#f8ac30' } },
       },
-      childrenWidget: [],
       aliasName: 'TextRate',
     },
     target: Rate,
@@ -24681,19 +24677,7 @@ export default [
               },
             },
           },
-          defaultTheme: {
-            UploadButtonType: {
-              normal: {
-                height: 30,
-                borderRadius: { topLeft: 0, topRight: 4, bottomLeft: 0, bottomRight: 4 },
-              },
-            },
-            UploadList: {
-              UploadLiType: { normal: { width: '100%', height: 36 } },
-              UploadListSuccessIcon: { normal: { color: '#56c22d', fontSize: 12 } },
-              UploadListFailedIcon: { normal: { color: '#f22735', fontSize: 12 } },
-            },
-          },
+          defaultTheme: { UploadList: { UploadLiType: { normal: { width: '100%' } } } },
         },
         PictureTypeUpload: {
           sequence: 2,
@@ -24738,25 +24722,8 @@ export default [
             },
           },
           defaultTheme: {
-            UploadPictureType: {
-              normal: {
-                width: 80,
-                height: 80,
-                borderRadius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
-                border: {
-                  top: { color: '#999', style: 'dashed', width: 1 },
-                  right: { color: '#999', style: 'dashed', width: 1 },
-                  bottom: { color: '#999', style: 'dashed', width: 1 },
-                  left: { color: '#999', style: 'dashed', width: 1 },
-                },
-                opacity: 1,
-              },
-            },
-            UploadList: {
-              UploadLiType: { normal: { width: '100%', height: 36 } },
-              UploadListSuccessIcon: { normal: { color: '#56c22d', fontSize: 12 } },
-              UploadListFailedIcon: { normal: { color: '#f22735', fontSize: 12 } },
-            },
+            UploadPictureType: { normal: { width: 80 } },
+            UploadList: { UploadLiType: { normal: { width: '100%' } } },
           },
         },
         AreaTypeUpload: {
@@ -24801,25 +24768,8 @@ export default [
             },
           },
           defaultTheme: {
-            UploadAreaType: {
-              normal: {
-                width: 300,
-                height: 150,
-                borderRadius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
-                border: {
-                  top: { color: '#999', style: 'dashed', width: 1 },
-                  right: { color: '#999', style: 'dashed', width: 1 },
-                  bottom: { color: '#999', style: 'dashed', width: 1 },
-                  left: { color: '#999', style: 'dashed', width: 1 },
-                },
-                color: '#999',
-              },
-            },
-            UploadList: {
-              UploadLiType: { normal: { width: '100%', height: 36 } },
-              UploadListSuccessIcon: { normal: { color: '#56c22d', fontSize: 12 } },
-              UploadListFailedIcon: { normal: { color: '#f22735', fontSize: 12 } },
-            },
+            UploadAreaType: { normal: { width: 300 } },
+            UploadList: { UploadLiType: { normal: { width: '100%' } } },
           },
         },
         BothTypeUpload: {
@@ -24882,35 +24832,8 @@ export default [
             },
           },
           defaultTheme: {
-            UploadButtonType: {
-              Container: {
-                normal: {
-                  height: 30,
-                  borderRadius: { topLeft: 0, topRight: 4, bottomLeft: 0, bottomRight: 4 },
-                },
-              },
-              ButtonText: { normal: { color: '#fff', fontSize: 12 } },
-            },
-            Container: {
-              normal: {
-                width: 346,
-                height: 30,
-                border: {
-                  top: { color: '#9482ff', style: 'solid', width: 1 },
-                  right: { color: '#9482ff', style: 'solid', width: 1 },
-                  bottom: { color: '#9482ff', style: 'solid', width: 1 },
-                  left: { color: '#9482ff', style: 'solid', width: 1 },
-                },
-                color: '#ccc',
-                padding: { left: 10 },
-                'line-height': 30,
-              },
-            },
-            UploadList: {
-              UploadLiType: { normal: { width: '100%', height: 36 } },
-              UploadListSuccessIcon: { normal: { color: '#56c22d', fontSize: 12 } },
-              UploadListFailedIcon: { normal: { color: '#f22735', fontSize: 12 } },
-            },
+            Container: { normal: { width: 346 } },
+            UploadList: { UploadLiType: { normal: { width: '100%' } } },
           },
         },
       },
@@ -24945,26 +24868,8 @@ export default [
         },
       },
       defaultTheme: {
-        Container: {
-          normal: {
-            width: 346,
-            height: 30,
-            border: {
-              top: { color: '#9482ff', style: 'solid', width: 1 },
-              right: { color: '#9482ff', style: 'solid', width: 1 },
-              bottom: { color: '#9482ff', style: 'solid', width: 1 },
-              left: { color: '#9482ff', style: 'solid', width: 1 },
-            },
-            color: '#ccc',
-            padding: { left: 10 },
-            'line-height': 30,
-          },
-        },
-        UploadList: {
-          UploadLiType: { normal: { width: '100%', height: 36 } },
-          UploadListSuccessIcon: { normal: { color: '#56c22d', fontSize: 12 } },
-          UploadListFailedIcon: { normal: { color: '#f22735', fontSize: 12 } },
-        },
+        Container: { normal: { width: 346 } },
+        UploadList: { UploadLiType: { normal: { width: '100%' } } },
       },
       childrenWidget: [],
     },
@@ -25106,19 +25011,7 @@ export default [
           },
         },
       },
-      defaultTheme: {
-        UploadButtonType: {
-          normal: {
-            height: 30,
-            borderRadius: { topLeft: 0, topRight: 4, bottomLeft: 0, bottomRight: 4 },
-          },
-        },
-        UploadList: {
-          UploadLiType: { normal: { width: '100%', height: 36 } },
-          UploadListSuccessIcon: { normal: { color: '#56c22d', fontSize: 12 } },
-          UploadListFailedIcon: { normal: { color: '#f22735', fontSize: 12 } },
-        },
-      },
+      defaultTheme: { UploadList: { UploadLiType: { normal: { width: '100%' } } } },
       childrenWidget: [],
       aliasName: 'ButtonTypeUpload',
     },
@@ -25254,25 +25147,8 @@ export default [
         },
       },
       defaultTheme: {
-        UploadPictureType: {
-          normal: {
-            width: 80,
-            height: 80,
-            borderRadius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
-            border: {
-              top: { color: '#999', style: 'dashed', width: 1 },
-              right: { color: '#999', style: 'dashed', width: 1 },
-              bottom: { color: '#999', style: 'dashed', width: 1 },
-              left: { color: '#999', style: 'dashed', width: 1 },
-            },
-            opacity: 1,
-          },
-        },
-        UploadList: {
-          UploadLiType: { normal: { width: '100%', height: 36 } },
-          UploadListSuccessIcon: { normal: { color: '#56c22d', fontSize: 12 } },
-          UploadListFailedIcon: { normal: { color: '#f22735', fontSize: 12 } },
-        },
+        UploadPictureType: { normal: { width: 80 } },
+        UploadList: { UploadLiType: { normal: { width: '100%' } } },
       },
       childrenWidget: [],
       aliasName: 'PictureTypeUpload',
@@ -25408,25 +25284,8 @@ export default [
         },
       },
       defaultTheme: {
-        UploadAreaType: {
-          normal: {
-            width: 300,
-            height: 150,
-            borderRadius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
-            border: {
-              top: { color: '#999', style: 'dashed', width: 1 },
-              right: { color: '#999', style: 'dashed', width: 1 },
-              bottom: { color: '#999', style: 'dashed', width: 1 },
-              left: { color: '#999', style: 'dashed', width: 1 },
-            },
-            color: '#999',
-          },
-        },
-        UploadList: {
-          UploadLiType: { normal: { width: '100%', height: 36 } },
-          UploadListSuccessIcon: { normal: { color: '#56c22d', fontSize: 12 } },
-          UploadListFailedIcon: { normal: { color: '#f22735', fontSize: 12 } },
-        },
+        UploadAreaType: { normal: { width: 300 } },
+        UploadList: { UploadLiType: { normal: { width: '100%' } } },
       },
       childrenWidget: [],
       aliasName: 'AreaTypeUpload',
@@ -25580,35 +25439,8 @@ export default [
         },
       },
       defaultTheme: {
-        UploadButtonType: {
-          Container: {
-            normal: {
-              height: 30,
-              borderRadius: { topLeft: 0, topRight: 4, bottomLeft: 0, bottomRight: 4 },
-            },
-          },
-          ButtonText: { normal: { color: '#fff', fontSize: 12 } },
-        },
-        Container: {
-          normal: {
-            width: 346,
-            height: 30,
-            border: {
-              top: { color: '#9482ff', style: 'solid', width: 1 },
-              right: { color: '#9482ff', style: 'solid', width: 1 },
-              bottom: { color: '#9482ff', style: 'solid', width: 1 },
-              left: { color: '#9482ff', style: 'solid', width: 1 },
-            },
-            color: '#ccc',
-            padding: { left: 10 },
-            'line-height': 30,
-          },
-        },
-        UploadList: {
-          UploadLiType: { normal: { width: '100%', height: 36 } },
-          UploadListSuccessIcon: { normal: { color: '#56c22d', fontSize: 12 } },
-          UploadListFailedIcon: { normal: { color: '#f22735', fontSize: 12 } },
-        },
+        Container: { normal: { width: 346 } },
+        UploadList: { UploadLiType: { normal: { width: '100%' } } },
       },
       childrenWidget: [],
       aliasName: 'BothTypeUpload',
