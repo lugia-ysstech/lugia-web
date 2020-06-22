@@ -530,7 +530,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
 
   handleChange = (event: Object) => {
     const value = event.newValue;
-    const theValue = handleEmpty(value, Number(checkNumber(value + '')));
+    const theValue = handleEmpty(value, checkNumber(value + ''));
     this.setValue(theValue, event);
   };
 
