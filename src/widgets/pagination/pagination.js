@@ -276,7 +276,6 @@ const PaginationArrowIconContainer = CSSComponent({
       ['boxShadow'],
     ],
     defaultTheme: {
-      border: getBorder(get('disabledBorder')),
       cursor: 'not-allowed',
     },
   },
@@ -351,6 +350,23 @@ function computePage(pageSize: number, sPageSize: number, total: number) {
   const thePageSize = pageSize ? pageSize : sPageSize;
   return Math.floor((total - 1) / thePageSize) + 1;
 }
+const defaultPaginationTheme = () => ({
+  themeConfig: {
+    normal: {
+      border: getBorder(get('normalBorder')),
+      borderRadius: getBorderRadius(borderRadius),
+    },
+    hover: {
+      border: getBorder(get('hoverBorder')),
+    },
+    focus: {
+      border: getBorder(get('focusBorder')),
+    },
+    disabled: {
+      border: getBorder(get('disabledBorder')),
+    },
+  },
+});
 
 class Pagination extends React.Component<PaginationProps, PaginationState> {
   static displayName = Widget.Pagination;
@@ -475,25 +491,8 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   getItems(index: number, isSelected: boolean, pageNumber: number) {
     const { createEventChannel, getPartOfThemeProps, size } = this.props;
     const channel = createEventChannel(['active', 'hover']);
-    const defaultTheme = {
-      themeConfig: {
-        normal: {
-          border: getBorder(get('normalBorder')),
-          borderRadius: getBorderRadius(borderRadius),
-        },
-        hover: {
-          border: getBorder(get('hoverBorder')),
-        },
-        focus: {
-          border: getBorder(get('focusBorder')),
-        },
-        disabled: {
-          border: getBorder(get('disabledBorder')),
-        },
-      },
-    };
     const theThemeProps = deepMerge(
-      defaultTheme,
+      defaultPaginationTheme(),
       getPartOfThemeProps('PaginationListItem', {
         props: { size },
       })
@@ -802,7 +801,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   }
 
   getArrow(type: MorePageType) {
-    const { hideOnSinglePage, size } = this.props;
+    const { hideOnSinglePage, size, getPartOfThemeProps } = this.props;
     const { current } = this.state;
 
     if (hideOnSinglePage) {
@@ -811,12 +810,18 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const page = this.checkArrowChange(type);
 
     const clickable = type === 'pre' ? current > 1 : current < page;
+
+    const theThemeProps = deepMerge(
+      defaultPaginationTheme(),
+      getPartOfThemeProps('PaginationArrowIconContainer', {
+        props: { size },
+      })
+    );
+
     return (
       <PaginationArrowIconContainer
         disabled={!clickable}
-        themeProps={this.props.getPartOfThemeProps('PaginationArrowIconContainer', {
-          props: { type, size },
-        })}
+        themeProps={theThemeProps}
         onClick={this.changePage(page)}
       >
         {this.getArrowIcon(type, clickable)}
