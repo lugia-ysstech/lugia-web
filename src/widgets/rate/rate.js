@@ -69,7 +69,7 @@ const RateBox = StaticComponent({
 });
 
 const StarIconClass = 'lugia-icon-financial_star';
-const StarIconClassOpen = 'lugia-icon-finacial_half_star';
+const StarIconClassOpen = 'lugia-icon-financial_half_star';
 
 const Ratespan = CSSComponent({
   tag: 'span',
