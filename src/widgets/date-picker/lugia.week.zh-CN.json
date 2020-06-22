@@ -346,5 +346,18 @@
       ],
       "hover": [["color"], ["font"], ["fontSize"], ["background"]]
     }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 300
+      }
+    },
+    "FacePanelContain": {
+      "normal": {
+        "width": 300,
+        "height": 320
+      }
+    }
   }
 }
