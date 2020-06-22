@@ -27,6 +27,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
     this.state = {
       isSelect: false,
       editing: false,
+      clearValue: false,
     };
     const { getSelectColumnMark } = listener;
     const selectColumn = getSelectColumnMark(dataIndex);
@@ -37,8 +38,8 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
     this.clearSelectInfoListener = listener.on('clearSelect', () => {
       this.clearSelect();
     });
-    this.enterEditingListener = listener.on('enterEditing', () => {
-      this.doEnterEditing();
+    this.enterEditingListener = listener.on('enterEditing', props => {
+      this.doEnterEditing(props);
     });
     this.clearEditingListener = listener.on('clearEditing', () => {
       this.doClearEditing();
@@ -64,15 +65,20 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
       listener,
     } = this.props;
 
-    const { isSelect, editing } = this.state;
+    const { isSelect, editing, clearValue } = this.state;
 
     const EditElement = customEditElement || EditInput;
     const editingTheme = editing ? defaultEditTheme : {};
     const { isLugiaHead } = record;
     const propsConfig = { isSelect, align, isLugiaHead, isDisableEdit: disableEdit };
     const editDivTheme = getEditDivTheme(this.props, isLugiaHead, propsConfig, editingTheme);
-    const defaultText = typeof text !== 'object' && isValued(text) ? record[text] || text : '';
+    const defaultText = clearValue
+      ? ''
+      : typeof text !== 'object' && isValued(text)
+      ? record[text] || text
+      : '';
     const isAllowSelect = allowEdit && !disableEdit;
+
     if (editing) {
       return (
         <TdContainer>
@@ -139,7 +145,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
     }
   };
 
-  doEnterEditing = (): void => {
+  doEnterEditing = (props): void => {
     const { listener } = this.props;
     const editCell = listener.getEditCell();
     const isCurrentCell = this.isCurrentCell({ editCell });
@@ -149,7 +155,8 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
 
     const allowEdit = this.isAllowEditing();
     if (allowEdit) {
-      this.setState({ editing: true });
+      const { clearValue = false } = props;
+      this.setState({ editing: true, clearValue });
     }
   };
 
@@ -166,7 +173,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
   doClearEditing = (): void => {
     const { editing } = this.state;
     if (editing) {
-      this.setState({ editing: false });
+      this.setState({ editing: false, clearValue: false });
     }
   };
 
