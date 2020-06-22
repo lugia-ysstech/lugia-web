@@ -157,7 +157,7 @@ declare module '@lugia/lugia-web' {
     setUpdateDataKeyMap(props: Object): void,
     getKeyMaps(props: Object): Object,
     getSelectDataMark(index: number): Object,
-    getSelectColumnMark(dataIndex: number): number,
+    getSelectColumnMark(dataIndex: string): number,
     restColumnsIntoData(columns: Array<Object>): Array<Object>,
     isSelectSameItem(oldItem: SelectItem, currentItem: SelectItem): boolean,
     doStopPropagation(e: Object, isStop?: boolean): void,
