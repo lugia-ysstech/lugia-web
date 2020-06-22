@@ -371,7 +371,12 @@
     "iconClass": "lugia-icon-direction_up_circle_o",
     "title": "向上置顶方向箭头"
   },
-  { "category": "direction", "name": "上下切换箭头", "iconClass": "lugia-icon-direction_up_down" },
+  {
+    "category": "direction",
+    "name": "上下切换箭头",
+    "title": "上下切换箭头",
+    "iconClass": "lugia-icon-direction_up_down"
+  },
   {
     "category": "direction",
     "name": "方向图标",
@@ -440,8 +445,9 @@
   },
   {
     "category": "financial",
-    "name": "页面添加 项目添加 导入 增加",
-    "iconClass": "lugia-icon-financial_audit_add"
+    "name": "金融图标",
+    "iconClass": "lugia-icon-financial_audit_add",
+    "title": "页面添加 项目添加 导入 增加"
   },
   {
     "category": "financial",
@@ -962,13 +968,15 @@
   },
   {
     "category": "financial",
-    "name": "覆盖安装下载",
-    "iconClass": "lugia-icon-financial_overlay_installation"
+    "name": "金融图标",
+    "iconClass": "lugia-icon-financial_overlay_installation",
+    "title": "覆盖安装下载"
   },
   {
     "category": "financial",
-    "name": "页面添加 项目添加 导入 增加",
-    "iconClass": "lugia-icon-financial_page_add"
+    "name": "金融图标",
+    "iconClass": "lugia-icon-financial_page_add",
+    "title": "页面添加 项目添加 导入 增加"
   },
   {
     "category": "financial",
@@ -978,8 +986,9 @@
   },
   {
     "category": "financial",
-    "name": "页面添加 项目添加 导入 增加",
-    "iconClass": "lugia-icon-financial_page_import"
+    "name": "金融图标",
+    "iconClass": "lugia-icon-financial_page_import",
+    "title": "页面添加 项目添加 导入 增加"
   },
   {
     "category": "financial",
@@ -1089,7 +1098,11 @@
     "iconClass": "lugia-icon-financial_remote_control",
     "title": "转存移动转换交换电脑"
   },
-  { "category": "financial", "name": "替换转换字母大写小写", "iconClass": "lugia-icon-financial_replace" },
+  {
+    "category": "financial",
+    "name": "替换转换字母大写小写",
+    "iconClass": "lugia-icon-financial_replace"
+  },
   {
     "category": "financial",
     "name": "金融图标",
