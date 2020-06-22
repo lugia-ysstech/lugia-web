@@ -145,12 +145,12 @@ export default class extends React.Component<LineProps, ProgressState> {
       size,
       showType,
       active,
+      activeLineTheme,
     };
     infoTextTheme.propsConfig = {
       status: progressStatus,
       size,
     };
-    progressInnerLineTheme.propsConfig.activeLineTheme = activeLineTheme;
 
     return (
       <Wrap themeProps={progressWrapTheme} size={size} type={type}>
