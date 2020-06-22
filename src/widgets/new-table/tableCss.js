@@ -49,6 +49,7 @@ export type TableCellState = {
   selectCell: Object,
   editCell: Object,
   editing: boolean,
+  clear: boolean,
 };
 
 export type TableProps = {
