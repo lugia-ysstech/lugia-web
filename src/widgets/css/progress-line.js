@@ -135,7 +135,7 @@ const getHeight = (propsConfig: Object) => {
   const { size, showType } = propsConfig;
 
   if (showType === 'inside') {
-    return;
+    return 16;
   }
   if (isSmall(size)) {
     return 6;
