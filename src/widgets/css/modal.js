@@ -212,6 +212,13 @@ export const ModalContent = CSSComponent({
   },
 });
 
+const getLugiaMegaCloseCSS = (props: CSSProps): string => {
+  const { __lugiad__header__absolute__ = false, type } = props;
+  if (__lugiad__header__absolute__ || type === 'Modal') {
+    return 'z-index:4001;';
+  }
+  return '';
+};
 export const ModalClose = StaticComponent({
   tag: 'div',
   className: 'ModalClose',
@@ -224,7 +231,7 @@ export const ModalClose = StaticComponent({
     cursor: pointer;
     text-align: center;
     line-height: ${px2remcss(64)};
-    z-index: 4001;
+    ${getLugiaMegaCloseCSS}
   `,
 });
 

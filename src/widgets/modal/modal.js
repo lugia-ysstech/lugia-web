@@ -190,7 +190,11 @@ export default ThemeProvider(
               {...this.getIconTheme()}
             />
           ) : closable ? (
-            <ModalClose onClick={this.handleCancel}>
+            <ModalClose
+              onClick={this.handleCancel}
+              __lugiad__header__absolute__={__lugiad__header__absolute__}
+              type={type}
+            >
               <Icon
                 {...this.getCloseIconTheme()}
                 iconClass={closeIconClass || 'lugia-icon-reminder_close'}
@@ -201,6 +205,7 @@ export default ThemeProvider(
           {title !== null && (
             <ModalTitle
               __lugiad__header__absolute__={__lugiad__header__absolute__}
+              type={type}
               themeProps={modalTitleTheme}
               title
             >
