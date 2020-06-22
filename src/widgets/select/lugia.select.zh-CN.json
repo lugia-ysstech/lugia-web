@@ -52,6 +52,11 @@
       "desc": "是否支持查询",
       "propsDefaultValue": false
     },
+    "isPerformance": {
+      "type": "boolean",
+      "desc": "是否性能加载",
+      "propsDefaultValue": false
+    },
     "canInput": {
       "type": "boolean",
       "desc": "是否支持自定义值,只有在canSearch为true时才生效",
