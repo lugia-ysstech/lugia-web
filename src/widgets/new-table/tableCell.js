@@ -21,7 +21,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
   clearSelectInfoListener: Object;
   enterEditingListener: Object;
   clearEditingListener: Object;
-  constructor(props) {
+  constructor(props: TableCellProps) {
     super(props);
     const { listener, dataIndex, index } = props;
     this.state = {
@@ -46,7 +46,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
     });
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps: TableCellProps, nextState: TableCellState) {
     const isSameState = isEqualObject(nextState, this.state);
     const isSameProps = isEqualObject(nextProps, this.props);
     return !isSameState || !isSameProps;
@@ -70,16 +70,15 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
     const EditElement = customEditElement || EditInput;
     const editingTheme = editing ? defaultEditTheme : {};
     const { isLugiaHead } = record;
-    const propsConfig = { isSelect, align, isLugiaHead, isDisableEdit: disableEdit };
+    const propsConfig = { isSelect, align, isLugiaHead, isDisableEdit: !allowEdit };
     const editDivTheme = getEditDivTheme(this.props, isLugiaHead, propsConfig, editingTheme);
     const defaultText = clearValue
       ? ''
       : typeof text !== 'object' && isValued(text)
       ? record[text] || text
       : '';
-    const isAllowSelect = allowEdit && !disableEdit;
-
-    if (editing) {
+    const isAllowSelect = allowEdit;
+    if (editing && !disableEdit) {
       return (
         <TdContainer>
           <EditElement

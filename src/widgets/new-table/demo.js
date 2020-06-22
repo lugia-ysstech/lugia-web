@@ -97,7 +97,6 @@ const treeColumns = [
     key: 'icons',
     editType: 'object',
     columnType: '',
-    disableEdit: true,
     children: [
       { title: 'prefix', dataIndex: 'prefix', key: 'prefix', editType: 'Icon' },
       { title: 'suffix', dataIndex: 'suffix', key: 'suffix', editType: 'Icon' },

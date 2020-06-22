@@ -41,15 +41,18 @@ export type TableCellProps = ColumnsType & {
   record: Object,
   text: ?string | Object | number,
   listener: EditTableEventListenerHandle,
+  customRender: ?Function,
+  selectSuffixElement: ?Function,
 };
 
 export type TableCellState = {
   isSelect: boolean,
-  enterEdit: boolean,
+  enterEdit: ?boolean,
   selectCell: Object,
-  editCell: Object,
+  editCell: ?Object,
   editing: boolean,
-  clear: boolean,
+  clearValue: boolean,
+  selectSuffixElement?: Function,
 };
 
 export type TableProps = {
