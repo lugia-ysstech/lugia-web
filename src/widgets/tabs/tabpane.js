@@ -486,10 +486,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
         const targetObj = {
           themeConfig: {
             normal: {
-              border: getBorder(
-                { color: superLightColor, width: 1, style: 'solid' },
-                { directions: ['l', 'r', 't'] }
-              ),
               borderRadius: {
                 topLeft: borderRadiusValue,
                 topRight: borderRadiusValue,
@@ -512,7 +508,10 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
                 left: borderRadiusValue,
                 right: borderRadiusValue,
               },
-              border: getBorder(get('normalBorder'), { directions: ['l', 'r', 't'] }),
+              border: getBorder(
+                { color: superLightColor, width: 1, style: 'solid' },
+                { directions: ['l', 'r', 't'] }
+              ),
               borderRadius: {
                 topLeft: borderRadiusValue,
                 topRight: borderRadiusValue,
