@@ -106,7 +106,14 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
   }
 
   render() {
-    const { children = <div />, action, placement, alwaysOpen, liquidLayout } = this.props;
+    const {
+      children = <div />,
+      action,
+      placement,
+      alwaysOpen,
+      liquidLayout,
+      createPortal = true,
+    } = this.props;
     const { visible } = this.state;
     const getTarget: Function = cmp => (this.target = cmp);
 
@@ -147,6 +154,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     );
     return (
       <Tooltip
+        createPortal={createPortal}
         alwaysOpen={alwaysOpen}
         liquidLayout={liquidLayout}
         theme={tooltipTheme}
