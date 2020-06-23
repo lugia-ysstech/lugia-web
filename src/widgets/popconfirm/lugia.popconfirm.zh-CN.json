@@ -3,6 +3,11 @@
   "title": "气泡确认框",
   "desc": "气泡式的确认框",
   "props": {
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出器气泡框",
+      "propsDefaultValue": true
+    },
     "lugiaHidden": {
       "type": "boolean",
       "desc": "是否渲染当前组件",
@@ -111,10 +116,7 @@
       "bottomLeft",
       "bottomRight"
     ],
-    "ActionType": [
-      "click",
-      "hover",
-      "focus" ],
+    "ActionType": ["click", "hover", "focus"],
     "ButtonType": ["default", "primary", "success", "warning", "danger"]
   },
   "category": ["反馈"],
