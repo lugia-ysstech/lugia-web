@@ -37,6 +37,7 @@ export type TooltipProps = {
   themeProps: Object,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
+  createPortal: boolean,
 };
 
 export type TooltipState = {

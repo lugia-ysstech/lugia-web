@@ -249,6 +249,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       getPartOfThemeProps,
       alwaysOpen,
       liquidLayout,
+      createPortal = true,
     } = this.props;
     const { visible } = this.state;
     const direction = this.getDirection(placement);
@@ -273,7 +274,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     const childrenThemeProps = deepMerge(defaultTheme(), contentThemeProps);
     return (
       <Trigger
-        createPortal={false}
+        createPortal={createPortal}
         lazy={false}
         alwaysOpen={alwaysOpen}
         liquidLayout={liquidLayout}
