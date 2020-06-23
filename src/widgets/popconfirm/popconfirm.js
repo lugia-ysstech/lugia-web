@@ -44,6 +44,7 @@ type PopconfirmProps = {
   themeProps: Object,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
+  createPortal: boolean,
 };
 type PopconfirmState = {
   visible: boolean,
@@ -243,6 +244,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
       description,
       alwaysOpen,
       liquidLayout,
+      createPortal = true,
     } = this.props;
     const getTarget: Function = cmp => (this.target = cmp);
     const theChildren = children ? children : defaultChildren;
@@ -281,6 +283,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
 
     return (
       <Tooltip
+        createPortal={createPortal}
         alwaysOpen={alwaysOpen}
         liquidLayout={liquidLayout}
         theme={popoverTheme}
