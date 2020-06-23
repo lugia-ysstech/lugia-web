@@ -8,6 +8,11 @@
       "desc": "是否渲染当前组件",
       "defaultValue": false
     },
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出提示框",
+      "propsDefaultValue": true
+    },
     "size": {
       "type": "ToolTipSize",
       "desc": "可配置三种尺寸大小的气泡提示框",
@@ -69,7 +74,7 @@
     }
   },
   "type": {
-    "ActionType": ["click","hover","focus" ],
+    "ActionType": ["click", "hover", "focus"],
     "ToolTipSize": ["small", "default", "large"],
     "PopArrowType": ["sharp", "round"],
     "DirectionType": [
