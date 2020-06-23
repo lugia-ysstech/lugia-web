@@ -23,6 +23,7 @@ export type PopoverProps = {
   defaultChildren: React.Node,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
+  createPortal: boolean,
 };
 export type PopoverState = {
   visible: boolean,
