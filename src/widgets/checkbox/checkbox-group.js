@@ -268,7 +268,7 @@ export default ThemeProvider(
 
     hasValueProps() {
       const { value } = this.props;
-      return 'value' in this.props && value !== undefined && value.length !== 0;
+      return 'value' in this.props && value !== undefined;
     }
 
     handleCancelItemClick = (value: any) => {
