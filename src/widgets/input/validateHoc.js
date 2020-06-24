@@ -125,6 +125,7 @@ const ValidateHoc = (Target: Object) => {
       const theWidth = width || '100%';
       return (
         <ToolTip
+          createPortal={false}
           theme={newTheme}
           viewClass={viewClass}
           propsConfig={{ width: theWidth }}
