@@ -457,7 +457,12 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
 
   render() {
     const { value, stepHover } = this.state;
-    const { createEventChannel, getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
+    const {
+      createEventChannel,
+      getPartOfThemeHocProps,
+      getPartOfThemeProps,
+      showArrow = true,
+    } = this.props;
     const { theme: inputThemeProps } = getPartOfThemeHocProps('Input');
 
     const containerThemeProps = getPartOfThemeProps('Container');
@@ -491,7 +496,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         theme={theInputTheme}
         {...this.props}
         value={value}
-        suffix={this.getStepArrowIconContainer(arrowContainerChannel)}
+        suffix={showArrow && this.getStepArrowIconContainer(arrowContainerChannel)}
         onBlur={this.onBlur}
         onFocus={this.onFocus}
         onChange={this.handleChange}
@@ -530,8 +535,11 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
 
   handleChange = (event: Object) => {
     const value = event.newValue;
+    const { value: sValue } = this.state;
     const theValue = handleEmpty(value, checkNumber(value + ''));
-    this.setValue(theValue, event);
+    if (sValue !== checkNumber(value + '')) {
+      this.setValue(theValue, event);
+    }
   };
 
   setValue(value: number, event: any): void {
