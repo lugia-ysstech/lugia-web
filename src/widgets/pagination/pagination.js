@@ -686,7 +686,8 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   };
   quickJumpValueChange = e => {
     const { newValue } = e;
-    const theValue = checkNumber(newValue);
+    const theNewValue = newValue.replace(/-/g, '');
+    const theValue = checkNumber(theNewValue);
     const { quickJumpValue } = this.state;
     if (theValue !== quickJumpValue) {
       this.setState({
