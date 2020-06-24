@@ -276,5 +276,5 @@ export const getValueAndDisplayValue = function(
 };
 export const getEffectiveValueAndDisplayValue = function(props: Object): Object {
   const { value } = props;
-  return 'value' in props && value !== undefined && value.length !== 0;
+  return 'value' in props && value !== undefined;
 };
