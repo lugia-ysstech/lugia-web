@@ -25,6 +25,12 @@ const normalCancelCommonTheme = () => ({
   normal: {
     ...cancelCommonTheme,
     border: getBorder({ color: themeDisabledColor, width: 1, style: 'solid' }),
+    padding: {
+      top: 0,
+      right: 10,
+      bottom: 0,
+      left: 10,
+    },
   },
 });
 const defaultRadioCancelTheme = () => ({
@@ -53,6 +59,12 @@ const checkedCommonTheme = () => ({
       },
       { directions: ['r'] }
     ),
+  },
+  padding: {
+    top: 0,
+    right: 10,
+    bottom: 0,
+    left: 10,
   },
 });
 const checkedDisabledCommonTheme = {
