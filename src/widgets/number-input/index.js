@@ -502,6 +502,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         onFocus={this.onFocus}
         onChange={this.handleChange}
         {...addMouseEvent(this)}
+        isShowClearButton={false}
       />
     );
   }
