@@ -255,7 +255,7 @@ export const TreeUl = CSSComponent({
   tag: 'ul',
   className: 'TreeUl',
   normal: {
-    selectNames: [['width'], ['background'], ['padding', 'left'], ['padding', 'right']],
+    selectNames: [['background'], ['padding', 'left'], ['padding', 'right']],
     getCSS: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
       const { top } = propsConfig;
@@ -271,6 +271,7 @@ export const TreeUl = CSSComponent({
     selectNames: [],
   },
   css: css`
+    width: 100%;
     margin: 0;
     overflow: hidden;
     transition-property: background-color, border, border-radius, opacity, box-shadow;
