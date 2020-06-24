@@ -231,6 +231,7 @@ export type NumberInputProps = {
   addIcon?: string,
   subtractIcon?: string,
   dispatchEvent: Function,
+  showArrow: boolean,
 };
 
 function hasValueProps(props: Object) {
