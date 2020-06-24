@@ -26,6 +26,7 @@ export type ColumnsType = {
   editType?: string,
   align?: string,
   disableEdit?: boolean,
+  ellipsis?: boolean,
   title: string,
   key?: string,
   width?: number | string,
