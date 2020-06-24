@@ -9,12 +9,12 @@
     ],
     "data": [
       {
-        "title": "主题部分",
+        "title": "主体部分",
         "iconClass": "modal",
         "data": [
           {
             "name": "弹窗整体样式",
-            "path": ["ModalWrap"],
+            "path": ["Container"],
             "description": {
               "appearancePart": {
                 "text": "背景框",
