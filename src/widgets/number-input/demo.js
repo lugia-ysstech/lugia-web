@@ -158,6 +158,8 @@ const NumberInputDemo = () => {
             min={30}
             step={10}
           />
+          <p>showArrow false 不显示步长箭头</p>
+          <NumberInput showArrow={false} />
         </Wrapper>
       </Theme>
     </div>
