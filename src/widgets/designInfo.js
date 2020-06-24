@@ -369,8 +369,8 @@ export default [
         placeholder: { type: 'string', desc: 'input输入提示信息' },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
         validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
-        prefix: { type: 'ReactNode', desc: '输入框前缀', isHidden: true },
-        suffix: { type: 'ReactNode', desc: '输入框后缀', isHidden: true },
+        prefix: { type: 'icon', desc: '输入框前缀', isHidden: true },
+        suffix: { type: 'icon', desc: '输入框后缀', isHidden: true },
       },
       events: {
         onChange: {
@@ -4598,6 +4598,8 @@ export default [
             ['height'],
             ['background'],
             ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
           ],
         },
         Panel: {
@@ -4629,14 +4631,23 @@ export default [
             PanelHeaderIcon: {
               name: '面板头部图标',
               desc: '面板头部图标样式配置',
-              normal: [['fontSize'], ['color']],
-              hover: [['color']],
+              normal: [['fontSize'], ['color'], ['padding']],
+              hover: [['color'], ['padding']],
               disabled: [['color']],
             },
             PanelContent: {
               name: '面板内容样式',
               desc: '面板内容样式配置',
-              normal: [['width'], ['height'], ['background'], ['padding'], ['font'], ['color']],
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['padding'],
+                ['font'],
+                ['color'],
+                ['border'],
+                ['boxShadow'],
+              ],
               hover: [['color']],
               disabled: [['color']],
             },
@@ -4701,14 +4712,23 @@ export default [
         PanelHeaderIcon: {
           name: '面板头部图标',
           desc: '面板头部图标样式配置',
-          normal: [['fontSize'], ['color']],
-          hover: [['color']],
+          normal: [['fontSize'], ['color'], ['padding']],
+          hover: [['color'], ['padding']],
           disabled: [['color']],
         },
         PanelContent: {
           name: '面板内容样式',
           desc: '面板内容样式配置',
-          normal: [['width'], ['height'], ['background'], ['padding'], ['font'], ['color']],
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['padding'],
+            ['font'],
+            ['color'],
+            ['border'],
+            ['boxShadow'],
+          ],
           hover: [['color']],
           disabled: [['color']],
         },
@@ -11478,6 +11498,7 @@ export default [
         addIcon: { type: 'icon', desc: '向上增加的增加图标类型' },
         subtractIcon: { type: 'icon', desc: '向下减少的图标类型' },
         parser: { type: 'function', desc: '解析格式化显示内容的规则,需与 formatter 属性配套使用' },
+        showArrow: { type: 'boolean', desc: '是否显示步长的箭头图标', propsDefaultValue: true },
       },
       events: {
         onClick: {
@@ -12315,6 +12336,7 @@ export default [
       title: '气泡确认框',
       desc: '气泡式的确认框',
       props: {
+        createPortal: { type: 'boolean', desc: '是否全局弹出器气泡框', propsDefaultValue: true },
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         title: { type: 'React.Node', desc: '确认框标题显示内容', defaultValue: '确定要删除吗' },
         description: { type: 'React.Node', desc: '确认框描述显示内容' },
@@ -12417,6 +12439,7 @@ export default [
       title: '气泡卡片',
       desc: '气泡式的卡片浮层',
       props: {
+        createPortal: { type: 'boolean', desc: '是否全局弹出器气泡框', propsDefaultValue: true },
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: 'This is title!' },
         description: {
@@ -20881,6 +20904,7 @@ export default [
       desc: '简单的文字气泡提示框',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        createPortal: { type: 'boolean', desc: '是否全局弹出提示框', propsDefaultValue: true },
         size: {
           type: 'ToolTipSize',
           desc: '可配置三种尺寸大小的气泡提示框',
