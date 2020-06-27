@@ -99,37 +99,39 @@ export default class extends React.Component<AffixProps, AffixState> {
     });
   };
 
+  setFixed = (fixed: boolean) => {
+    const { fixed: stateFixed } = this.state;
+    if (stateFixed === fixed) {
+      return;
+    }
+    this.setState({
+      fixed,
+    });
+  };
+
   setFixedForWin = (param: Object) => {
     const { offsetTop, offsetBottom, winHeight, scrollTop, affixTop, defaultTop } = param;
     const type = this.getOffsetType();
     switch (type) {
       case OffsetTop:
         if (affixTop - scrollTop <= offsetTop) {
-          this.setState({
-            fixed: true,
-            offset: offsetTop,
-          });
+          this.offset = offsetTop;
+          this.setFixed(true);
         }
 
         if (defaultTop - scrollTop > offsetTop) {
-          this.setState({
-            fixed: false,
-          });
+          this.setFixed(false);
         }
         break;
       case OffsetBottom:
         const nowOffsetTop = this.affix && getElementPosition(this.affix).y;
         const affixHeight = this.affix && this.affix.offsetHeight;
         if (winHeight + scrollTop - nowOffsetTop - affixHeight <= offsetBottom) {
-          this.setState({
-            fixed: true,
-            offset: offsetBottom,
-          });
+          this.offset = offsetBottom;
+          this.setFixed(true);
         }
         if (scrollTop + winHeight - offsetBottom >= defaultTop + affixHeight) {
-          this.setState({
-            fixed: false,
-          });
+          this.setFixed(false);
         }
         break;
       default:
@@ -153,17 +155,13 @@ export default class extends React.Component<AffixProps, AffixState> {
       case OffsetTop:
         const fixedTargetOffsetTop = offsetTop + targetScroll;
         if (defaultDistance >= fixedTargetOffsetTop) {
-          this.setState({
-            fixed: false,
-          });
+          this.setFixed(false);
           break;
         }
 
         if (affixTop - targetTop < fixedTargetOffsetTop) {
-          this.setState({
-            fixed: true,
-            offset: offsetTop + targetRect.top,
-          });
+          this.offset = offsetTop + targetRect.top;
+          this.setFixed(true);
           break;
         }
 
@@ -176,15 +174,11 @@ export default class extends React.Component<AffixProps, AffixState> {
           (this.state.fixed ? affixTop + docScrollTop : affixTop) + affixHeight;
         const targetBottomInDoc = targetTop + targetHeight;
         if (affixBottomInDoc - targetBottomInDoc <= offsetBottom + targetScroll) {
-          this.setState({
-            fixed: true,
-            offset: winHeight - targetRect.bottom + offsetBottom,
-          });
+          this.offset = winHeight - targetRect.bottom + offsetBottom;
+          this.setFixed(true);
         }
         if (this.affix.offsetTop - targetRect.top >= defaultDistance - targetScroll) {
-          this.setState({
-            fixed: false,
-          });
+          this.setFixed(false);
         }
 
         break;
@@ -193,7 +187,7 @@ export default class extends React.Component<AffixProps, AffixState> {
   }
 
   getOffsetValue() {
-    const { offset } = this.state;
+    const { offset } = this;
     return {
       [this.getOffsetType()]: offset,
     };
