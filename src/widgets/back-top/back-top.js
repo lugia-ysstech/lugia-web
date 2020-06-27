@@ -41,20 +41,30 @@ export default ThemeProvider(
     addWindowListener = () => {
       const scrollTop = getScrollTop();
       const { visibilityHeight = 400 } = this.props;
-      this.setState({ fixed: this.needFixed(scrollTop, visibilityHeight) });
+      const fixed = this.needFixed(scrollTop, visibilityHeight);
+      const { fixed: stateFixed } = this.state;
+      if (stateFixed === fixed) {
+        return;
+      }
+      this.setState({ fixed });
     };
 
     addTargetListener = () => {
       const { visibilityHeight = 400, target } = this.props;
       if (target) {
+        const targetScroll = target().scrollTop;
+        const fixed = this.needFixed(targetScroll, visibilityHeight);
+        const { fixed: stateFixed } = this.state;
+        if (stateFixed === fixed) {
+          return;
+        }
         const targetPos = target().getBoundingClientRect();
         const targetBottom = targetPos.bottom;
         const targetRight = targetPos.right;
         const posRight = targetRight - 60;
         const posBottom = targetBottom - 50;
-        const targetScroll = target().scrollTop;
         this.setState({
-          fixed: this.needFixed(targetScroll, visibilityHeight),
+          fixed,
           posRight,
           posBottom,
         });
