@@ -1356,10 +1356,10 @@
     "@types/styled-components" "^4.4.3"
     tslib "^1.11.1"
 
-"@lugia/theme-hoc@^1.1.8":
-  version "1.1.8"
-  resolved "https://registry.npmjs.org/@lugia/theme-hoc/-/theme-hoc-1.1.8.tgz#4375abd08bf28b07357f98b08462df989636251a"
-  integrity sha512-0bAcvtVxUuiOAC2tiBZpOWFNrPARJF6F4d3kOlGsTGVbkwkO5DUwXIav/XfDdl2oiiPiYh6o0vjF6QlBykq7Mw==
+"@lugia/theme-hoc@^1.1.9":
+  version "1.1.9"
+  resolved "https://registry.npmjs.org/@lugia/theme-hoc/-/theme-hoc-1.1.9.tgz#cc2bb0b1857b0aae2cfa12cd3a44fb7255c42c03"
+  integrity sha512-SGWL/gY4UYtpFAlhS5oj6asHXoalhx58HqA2k3GrWCy5B9krzKm093aFDrsXCSEfwl1nStbKRYw7ttCmwU+0Uw==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.19"
