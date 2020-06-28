@@ -85,7 +85,6 @@
           {
             "name": "弹窗取消按钮样式",
             "path": ["ModalCancelButton", "Container"],
-            "props": [{ "name": "cancelText", "typeInTheme": "text" }],
             "description": {
               "appearancePart": { "text": "背景", "desc": "面板中外观配置的区块显示文本" }
             }
