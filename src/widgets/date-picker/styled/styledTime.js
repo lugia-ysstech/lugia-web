@@ -1,9 +1,9 @@
 import { css } from 'styled-components';
-import { getThemeProperty, getDateWrrap, fontSize, em } from './utils';
-import CSSComponent from '@lugia/theme-css-hoc';
-const TimeColBorderColor = '#e8e8e8';
+import { getDateWrrap, fontSize, em, getThemeUpdate } from './utils';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+
 export const TimeWrap = CSSComponent({
-  tag: 'ul',
+  tag: 'div',
   className: 'TimeWrap',
   normal: {
     selectNames: [['width']],
@@ -18,9 +18,7 @@ export const TimeWrap = CSSComponent({
     selectNames: [],
   },
   css: css`
-    display: inline-block;
     font-size: ${fontSize}rem;
-    border-right: ${props => (props.hasTimeWrapBorder ? '1px solid #ddd' : '')};
     zoom: 1;
     &::after {
       content: '';
@@ -30,13 +28,22 @@ export const TimeWrap = CSSComponent({
       visibility: hidden;
       clear: both;
     }
+
+    ${props => (props.noBorder ? '' : `border-right: 1px solid ${getThemeUpdate().borderColor}`)};
+  `,
+});
+export const TimeWrapInner = StaticComponent({
+  tag: 'ul',
+  css: css`
+    display: flex;
+    flex-grow: 1;
   `,
 });
 export const TimeCol = CSSComponent({
   tag: 'li',
   className: 'TimeCol',
   normal: {
-    selectNames: [['width']],
+    selectNames: [['border', 'right']],
   },
   hover: {
     selectNames: [],
@@ -48,9 +55,8 @@ export const TimeCol = CSSComponent({
     selectNames: [],
   },
   css: css`
-    float: left;
-    border-right: ${props => (props.noBorder ? 'none' : `1px solid ${TimeColBorderColor}`)};
     overflow: hidden;
+    ${props => (props.noBorder ? 'border-right:none !important;' : '')};
   `,
 });
 
@@ -58,7 +64,7 @@ export const TimeTitle = CSSComponent({
   tag: 'div',
   className: 'TimeTitle',
   normal: {
-    selectNames: [],
+    selectNames: [['color']],
   },
   hover: {
     selectNames: [],
@@ -70,9 +76,9 @@ export const TimeTitle = CSSComponent({
     selectNames: [],
   },
   css: css`
-    font-size: ${fontSize}rem;
+    font-size: ${em(14)};
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid ${getThemeUpdate().borderColor};
     padding: ${getDateWrrap().top} 0 ${em(12)};
   `,
 });

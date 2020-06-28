@@ -4,26 +4,20 @@
  * @flow
  */
 
-import colorsFunc from '../css/stateColor';
 import { css } from 'styled-components';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import { getBorder } from '@lugia/theme-utils';
+import { getBorder, getDictValue } from '@lugia/theme-utils';
 import { getBorderRadius } from '../theme/CSSProvider';
+import get from './theme-common-dict';
+import { judgeStarts } from '../utils';
 
 const em = px2remcss;
-const {
-  themeColor,
-  padding,
-  borderColor,
-  borderDisableColor,
-  disableColor,
-  marginToSameElement,
-  marginToPeerElementForY,
-  lightGreyColor,
-  blackColor,
-} = colorsFunc();
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
 
 type RadioStyleType = 'default' | 'vertical';
 export type CSStype = {
@@ -55,20 +49,21 @@ const getStyleCSS = (props: RadioType): string => {
   if (styles === 'vertical') {
     return `
       display: block;
+      margin-bottom: ${last ? 0 : em(get('marginToPeerElementForY'))};
     `;
   }
   return `
     display: inline-block;
-    margin-right: ${last ? 0 : em(marginToSameElement)};
+    margin-right: ${last ? 0 : em(get('marginToDifferentElement'))};
   `;
 };
 
 const RadioDefaultTheme = {
   opacity: 1,
   padding: {
-    top: em(5),
+    top: 0,
     right: 0,
-    bottom: em(5),
+    bottom: 0,
     left: 0,
   },
 };
@@ -126,14 +121,14 @@ export const RadioChildrenSpan = CSSComponent({
   tag: 'span',
   className: 'RadioChildrenSpan',
   css: css`
-    padding-left: ${props => (props.hasChildren ? em(padding) : 0)};
+    padding-left: ${props => (props.hasChildren ? em(get('marginToSameElement')) : 0)};
     vertical-align: middle;
   `,
   normal: {
     selectNames: [['color'], ['font'], ['padding']],
     defaultTheme: {
       color: blackColor,
-      font: { size: 14 },
+      font: { size: sectionFontSize },
     },
   },
   hover: {
@@ -145,7 +140,7 @@ export const RadioChildrenSpan = CSSComponent({
   disabled: {
     selectNames: [['color']],
     defaultTheme: {
-      color: lightGreyColor,
+      color: disableTextColor,
     },
   },
   active: {
@@ -167,8 +162,8 @@ export const RadioCircleSpan = CSSComponent({
     width: ${em(16)};
     height: ${em(16)};
     border-radius: 50%;
-    border: 1px solid ${borderColor};
-    background-color: #fff;
+    border: 1px solid ${get('borderColor')};
+    background-color: ${get('themeColor')};
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
   `,
@@ -192,8 +187,9 @@ export const RadioCircleSpan = CSSComponent({
           normal: normalTheme,
         } = afterThemeConfig;
         const theme = isDisabled ? disabledTheme : hover ? hoverTheme || normalTheme : normalTheme;
-        const { background } = theme;
+        const { background: { color } = {} } = theme;
         const { width = 10, height = 10 } = normalTheme;
+        const backgroundColor = judgeStarts(color) ? getDictValue(color) : color;
 
         return css`
           &::after {
@@ -208,7 +204,7 @@ export const RadioCircleSpan = CSSComponent({
             border-top: 0;
             border-left: 0;
             content: ' ';
-            background-color: ${background.color};
+            background-color: ${backgroundColor};
           }
         `;
       }
@@ -216,9 +212,13 @@ export const RadioCircleSpan = CSSComponent({
       return '';
     },
     defaultTheme: {
-      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+      border: getBorder({
+        color: '$lugia-dict.@lugia/lugia-web.borderColor',
+        width: 1,
+        style: 'solid',
+      }),
       borderRadius: getBorderRadius('100%'),
-      background: { color: '#fff' },
+      background: { color: themeColor },
       width: 16,
       height: 16,
     },
@@ -229,8 +229,12 @@ export const RadioCircleSpan = CSSComponent({
   disabled: {
     selectNames: [['background'], ['borderRadius'], ['border']],
     defaultTheme: {
-      background: { color: disableColor },
-      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+      background: { color: '$lugia-dict.@lugia/lugia-web.disableColor' },
+      border: getBorder({
+        color: '$lugia-dict.@lugia/lugia-web.borderDisableColor',
+        width: 1,
+        style: 'solid',
+      }),
       borderRadius: getBorderRadius('100%'),
     },
   },

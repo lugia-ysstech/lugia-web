@@ -3,6 +3,11 @@
   "title": "上传",
   "desc": "上传组件,可通过文件选择和拖拽上传",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "data": {
       "type": "object",
       "desc": "上传时附带的额外参数"
@@ -57,6 +62,10 @@
     "accept": {
       "type": "string",
       "desc": "指定上传文件类型"
+    },
+    "name": {
+      "type": "string",
+      "desc": "发送到后台的文件参数名"
     },
     "size": {
       "type": "UploadSize",
@@ -169,12 +178,19 @@
         "areaType": "button"
       },
       "theme": {
-        "UploadButtonType": {
-          "name": "按钮",
-          "desc": "按钮上传类型的样式配置",
+        "Container": {
+          "name": "上传组件整体样式",
+          "desc": "按钮上传类型的整体样式配置",
           "normal": [["background"], ["width"], ["height"], ["boxShadow"], ["border"], ["opacity"]],
           "hover": [["background"], ["boxShadow"], ["border"], ["opacity"]],
           "disabled": [["background"], ["border"]]
+        },
+        "ButtonText": {
+          "name": "上传类型为button时的文字",
+          "desc": "文件上传失败后的文字样式",
+          "normal": [["color"]],
+          "hover": [["color"]],
+          "disabled": [["color"]]
         },
         "UploadList": {
           "name": "上传列表",
@@ -204,6 +220,16 @@
             }
           }
         }
+      },
+
+      "defaultTheme": {
+        "UploadList": {
+          "UploadLiType": {
+            "normal": {
+              "width": "100%"
+            }
+          }
+        }
       }
     },
     "PictureTypeUpload": {
@@ -214,7 +240,7 @@
         "areaType": "picture"
       },
       "theme": {
-        "UploadPictureType": {
+        "Container": {
           "name": "图片上传区域",
           "desc": "图片上传类型的样式配置",
           "normal": [["background"], ["width"], ["height"], ["opacity"], ["border"]],
@@ -249,6 +275,20 @@
             }
           }
         }
+      },
+      "defaultTheme": {
+        "UploadPictureType": {
+          "normal": {
+            "width": 80
+          }
+        },
+        "UploadList": {
+          "UploadLiType": {
+            "normal": {
+              "width": "100%"
+            }
+          }
+        }
       }
     },
     "AreaTypeUpload": {
@@ -259,7 +299,7 @@
         "areaType": "area"
       },
       "theme": {
-        "UploadAreaType": {
+        "Container": {
           "name": "文件上传区域",
           "desc": "区域拖拽上传类型的样式配置",
           "normal": [["width"], ["height"], ["fontSize"], ["color"]],
@@ -293,6 +333,20 @@
             }
           }
         }
+      },
+      "defaultTheme": {
+        "UploadAreaType": {
+          "normal": {
+            "width": 300
+          }
+        },
+        "UploadList": {
+          "UploadLiType": {
+            "normal": {
+              "width": "100%"
+            }
+          }
+        }
       }
     },
     "BothTypeUpload": {
@@ -320,7 +374,7 @@
             }
           }
         },
-        "UploadDefaultType": {
+        "Container": {
           "name": "文件上传区域",
           "desc": "默认上传框的样式",
           "normal": [["width"], ["height"], ["boxShadow"], ["border"]],
@@ -355,14 +409,28 @@
             }
           }
         }
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "width": 346
+          }
+        },
+        "UploadList": {
+          "UploadLiType": {
+            "normal": {
+              "width": "100%"
+            }
+          }
+        }
       }
     }
   },
   "theme": {
-    "UploadDefaultType": {
+    "Container": {
       "name": "文件上传区域",
       "desc": "默认上传框的样式",
-      "normal": [["width"], ["height"], ["boxShadow"], ["border"]],
+      "normal": [["width"], ["height"], ["boxShadow"], ["border"], ["padding"]],
       "hover": [["boxShadow"], ["border"]],
       "disabled": [["border"], ["cursor"]]
     },
@@ -384,6 +452,20 @@
           "name": "上传失败图标样式",
           "desc": "上传失败时列表图标的样式",
           "normal": [["color"], ["fontSize"]]
+        }
+      }
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 346
+      }
+    },
+    "UploadList": {
+      "UploadLiType": {
+        "normal": {
+          "width": "100%"
         }
       }
     }

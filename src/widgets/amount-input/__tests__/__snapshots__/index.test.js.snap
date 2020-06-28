@@ -1,36 +1,175 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AmountInputDemo Component JSON 1`] = `
-.c1 {
-  display: inline-block;
-}
-
-.c6 {
+.c5 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  position: absolute;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  bottom: 50%;
-  right: 1rem;
+  visibility: hidden;
+  padding-right: 1rem;
 }
 
-.c5 {
-  box-sizing: border-box;
-  line-height: 1.5;
+.c7 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  visibility: visible;
+  padding-right: 1rem;
+}
+
+.c1 {
   display: inline-block;
+  display: block;
+}
+
+.c8 {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.c10 {
+  font-size: 1.2rem;
+  height: 3.2rem;
+  color: #f22735;
+  margin-top: 0.4rem;
+  margin-bottom: 0rem;
+  margin-left: 1rem;
+  margin-right: 0rem;
+  visibility: hidden;
+}
+
+.c12 {
+  min-width: 3rem;
+  position: absolute;
+  right: 1rem;
+  top: 10%;
+  height: 80%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #f22735;
+  visibility: hidden;
+  background-color: #ffffff;
+  box-shadow: -1.4rem 0 0.6rem 0 #ffffff;
+}
+
+.c9 {
+  font-size: 0;
+  width: 100%;
+}
+
+.c11 {
+  font-size: 0;
+  position: relative;
+  width: 100%;
+}
+
+.c4 {
+  box-sizing: border-box;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
   height: 100%;
   width: 100%;
-  font-size: 1.2rem;
+  border: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   cursor: text;
+  background-color: #ffffff;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.c4::-webkit-input-placeholder {
+  color: #cccccc;
+  font-size: 1.4rem;
+}
+
+.c4::-moz-placeholder {
+  color: #cccccc;
+  font-size: 1.4rem;
+}
+
+.c4:-ms-input-placeholder {
+  color: #cccccc;
+  font-size: 1.4rem;
+}
+
+.c4::placeholder {
+  color: #cccccc;
+  font-size: 1.4rem;
+}
+
+.c6 {
+  box-sizing: border-box;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  border: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: text;
+  background-color: #ffffff;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.c6::-webkit-input-placeholder {
+  color: #cccccc;
+  font-size: 1.2rem;
+}
+
+.c6::-moz-placeholder {
+  color: #cccccc;
+  font-size: 1.2rem;
+}
+
+.c6:-ms-input-placeholder {
+  color: #cccccc;
+  font-size: 1.2rem;
+}
+
+.c6::placeholder {
+  color: #cccccc;
+  font-size: 1.2rem;
+}
+
+.c2 {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  outline: none;
+  min-width: 3rem;
+  width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -49,54 +188,21 @@ exports[`AmountInputDemo Component JSON 1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c5::-webkit-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c5::-moz-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c5:-ms-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c5::placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
 .c3 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-}
-
-.c4 {
-  position: absolute;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: #999999;
-  left: 1rem;
-}
-
-.c2 {
-  position: relative;
-  display: inline-block;
-  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #9EA4AE;
+  padding-left: 1rem;
+  color: #363B40;
 }
 
 .c0 {
-  float: left;
   margin-left: 50px;
 }
 
@@ -113,78 +219,103 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onFocus={[Function]}
       style={Object {}}
     >
-      <span
+      <div
         className="c2"
-        style={Object {}}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c3"
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
+        <input
+          autoFocus={false}
+          className="c4"
+          disabled={false}
+          maxLength="16"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          placeholder="请填写金额"
+          prefix={
+            <ForwardRef(ResultForward)
+              themeProps={
+                Object {
+                  "onLugia": [Function],
+                  "propsConfig": Object {
+                    "size": "default",
+                  },
+                  "themeConfig": Object {
+                    "__partName": "AmountInputPrefix",
+                  },
+                  "themeState": Object {
+                    "disabled": false,
+                  },
+                }
+              }
+            >
+              ¥
+            </ForwardRef(ResultForward)>
+          }
+          readOnly={false}
+          size="default"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+              "paddingBottom": "0rem",
+              "paddingLeft": "0.6rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
+          type="text"
+          value=""
+        />
+        <i
+          className="lugia-icon-reminder_close   c5"
+          disabled={false}
+          onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
           style={
             Object {
-              "height": "3.2rem",
+              "color": "#9EA4AE",
+              "fontSize": "1.2rem",
             }
           }
-        >
-          <span
-            className="c4"
-            style={Object {}}
-          >
-            <span
-              className=""
-              style={Object {}}
-            >
-              ¥
-            </span>
-          </span>
-          <input
-            autoFocus={false}
-            className="c5"
-            disabled={false}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            placeholder="请填写金额"
-            prefix={
-              <ForwardRef(ResultForward)
-                themeProps={
-                  Object {
-                    "onLugia": [Function],
-                    "propsConfig": Object {},
-                    "themeConfig": Object {
-                      "__partName": "AmountInputPrefix",
-                    },
-                    "themeState": Object {
-                      "disabled": false,
-                    },
-                  }
-                }
-              >
-                ¥
-              </ForwardRef(ResultForward)>
-            }
-            readOnly={false}
-            size="default"
-            style={
-              Object {
-                "color": "#333333",
-                "paddingBottom": "0rem",
-                "paddingLeft": "3rem",
-                "paddingRight": "3.5rem",
-                "paddingTop": "0rem",
-              }
-            }
-            value=""
-          />
-        </span>
-      </span>
+        />
+      </div>
     </div>
     <p>
       default AmountInput
@@ -195,78 +326,103 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onFocus={[Function]}
       style={Object {}}
     >
-      <span
+      <div
         className="c2"
-        style={Object {}}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c3"
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
+        <input
+          autoFocus={false}
+          className="c4"
+          disabled={false}
+          maxLength="16"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          placeholder="请填写金额"
+          prefix={
+            <ForwardRef(ResultForward)
+              themeProps={
+                Object {
+                  "onLugia": [Function],
+                  "propsConfig": Object {
+                    "size": "default",
+                  },
+                  "themeConfig": Object {
+                    "__partName": "AmountInputPrefix",
+                  },
+                  "themeState": Object {
+                    "disabled": false,
+                  },
+                }
+              }
+            >
+              ¥
+            </ForwardRef(ResultForward)>
+          }
+          readOnly={false}
+          size="default"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+              "paddingBottom": "0rem",
+              "paddingLeft": "0.6rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
+          type="text"
+          value=""
+        />
+        <i
+          className="lugia-icon-reminder_close   c5"
+          disabled={false}
+          onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
           style={
             Object {
-              "height": "3.2rem",
+              "color": "#9EA4AE",
+              "fontSize": "1.2rem",
             }
           }
-        >
-          <span
-            className="c4"
-            style={Object {}}
-          >
-            <span
-              className=""
-              style={Object {}}
-            >
-              ¥
-            </span>
-          </span>
-          <input
-            autoFocus={false}
-            className="c5"
-            disabled={false}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            placeholder="请填写金额"
-            prefix={
-              <ForwardRef(ResultForward)
-                themeProps={
-                  Object {
-                    "onLugia": [Function],
-                    "propsConfig": Object {},
-                    "themeConfig": Object {
-                      "__partName": "AmountInputPrefix",
-                    },
-                    "themeState": Object {
-                      "disabled": false,
-                    },
-                  }
-                }
-              >
-                ¥
-              </ForwardRef(ResultForward)>
-            }
-            readOnly={false}
-            size="default"
-            style={
-              Object {
-                "color": "#333333",
-                "paddingBottom": "0rem",
-                "paddingLeft": "3rem",
-                "paddingRight": "3.5rem",
-                "paddingTop": "0rem",
-              }
-            }
-            value=""
-          />
-        </span>
-      </span>
+        />
+      </div>
     </div>
     <p>
       禁用状态 
@@ -277,92 +433,121 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onFocus={[Function]}
       style={Object {}}
     >
-      <span
+      <div
         className="c2"
-        style={Object {}}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#f2f2f2",
+            "borderBottomColor": "#e8e8e8",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#e8e8e8",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#e8e8e8",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#e8e8e8",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "color": "#cccccc",
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c3"
+          style={
+            Object {
+              "color": "#cccccc",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
+        <input
+          autoFocus={false}
+          className="c4"
+          disabled={true}
+          maxLength="16"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          placeholder=""
+          prefix={
+            <ForwardRef(ResultForward)
+              themeProps={
+                Object {
+                  "onLugia": [Function],
+                  "propsConfig": Object {
+                    "size": "default",
+                  },
+                  "themeConfig": Object {
+                    "__partName": "AmountInputPrefix",
+                  },
+                  "themeState": Object {
+                    "disabled": true,
+                  },
+                }
+              }
+            >
+              ¥
+            </ForwardRef(ResultForward)>
+          }
+          readOnly={false}
+          size="default"
+          style={
+            Object {
+              "backgroundColor": "#f2f2f2",
+              "color": "#cccccc",
+              "cursor": "not-allowed",
+              "fontSize": "1.4rem",
+              "paddingBottom": "0rem",
+              "paddingLeft": "0.6rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
+          type="text"
+          value=""
+        />
+        <i
+          className="lugia-icon-reminder_close   c5"
+          disabled={true}
+          onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
           style={
             Object {
-              "height": "3.2rem",
+              "color": "#cccccc",
+              "cursor": "not-allowed",
+              "fontSize": "1.2rem",
             }
           }
-        >
-          <span
-            className="c4"
-            style={Object {}}
-          >
-            <span
-              className=""
-              style={Object {}}
-            >
-              ¥
-            </span>
-          </span>
-          <input
-            autoFocus={false}
-            className="c5"
-            disabled={true}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            placeholder=""
-            prefix={
-              <ForwardRef(ResultForward)
-                themeProps={
-                  Object {
-                    "onLugia": [Function],
-                    "propsConfig": Object {},
-                    "themeConfig": Object {
-                      "__partName": "AmountInputPrefix",
-                    },
-                    "themeState": Object {
-                      "disabled": true,
-                    },
-                  }
-                }
-              >
-                ¥
-              </ForwardRef(ResultForward)>
-            }
-            readOnly={false}
-            size="default"
-            style={
-              Object {
-                "backgroundColor": "#f2f2f2",
-                "borderBottomColor": "#cccccc",
-                "borderBottomStyle": "solid",
-                "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#cccccc",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#cccccc",
-                "borderRightStyle": "solid",
-                "borderRightWidth": "0.1rem",
-                "borderTopColor": "#cccccc",
-                "borderTopStyle": "solid",
-                "borderTopWidth": "0.1rem",
-                "color": "#333333",
-                "cursor": "not-allowed",
-                "paddingBottom": "0rem",
-                "paddingLeft": "3rem",
-                "paddingRight": "3.5rem",
-                "paddingTop": "0rem",
-              }
-            }
-            value=""
-          />
-        </span>
-      </span>
+        />
+      </div>
     </div>
   </div>
   <div
@@ -377,93 +562,103 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onFocus={[Function]}
       style={Object {}}
     >
-      <span
+      <div
         className="c2"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={
           Object {
-            "height": "4rem",
-            "width": "40rem",
+            "height": "2.4rem",
           }
         }
       >
         <span
           className="c3"
+          style={
+            Object {
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
+        <input
+          autoFocus={false}
+          className="c6"
+          disabled={false}
+          maxLength="16"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          placeholder="请填写金额"
+          prefix={
+            <ForwardRef(ResultForward)
+              themeProps={
+                Object {
+                  "onLugia": [Function],
+                  "propsConfig": Object {
+                    "size": "small",
+                  },
+                  "themeConfig": Object {
+                    "__partName": "AmountInputPrefix",
+                  },
+                  "themeState": Object {
+                    "disabled": false,
+                  },
+                }
+              }
+            >
+              ¥
+            </ForwardRef(ResultForward)>
+          }
+          readOnly={false}
+          size="small"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.2rem",
+              "paddingBottom": "0rem",
+              "paddingLeft": "0.6rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
+          type="text"
+          value=""
+        />
+        <i
+          className="lugia-icon-reminder_close   c5"
+          disabled={false}
+          onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
           style={
             Object {
-              "height": "4rem",
-              "width": "40rem",
+              "color": "#9EA4AE",
+              "fontSize": "1rem",
             }
           }
-        >
-          <span
-            className="c4"
-            style={Object {}}
-          >
-            <span
-              className=""
-              style={
-                Object {
-                  "color": "blue",
-                  "fontSize": "1.4rem",
-                }
-              }
-            >
-              ¥
-            </span>
-          </span>
-          <input
-            autoFocus={false}
-            className="c5"
-            disabled={false}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            placeholder="请填写金额"
-            prefix={
-              <ForwardRef(ResultForward)
-                themeProps={
-                  Object {
-                    "onLugia": [Function],
-                    "propsConfig": Object {},
-                    "themeConfig": Object {
-                      "__partName": "AmountInputPrefix",
-                      "normal": Object {
-                        "color": "blue",
-                        "fontSize": 14,
-                      },
-                    },
-                    "themeState": Object {
-                      "disabled": false,
-                    },
-                  }
-                }
-              >
-                ¥
-              </ForwardRef(ResultForward)>
-            }
-            readOnly={false}
-            size="small"
-            style={
-              Object {
-                "color": "#333333",
-                "paddingBottom": "0rem",
-                "paddingLeft": "3rem",
-                "paddingRight": "3.5rem",
-                "paddingTop": "0rem",
-              }
-            }
-            value=""
-          />
-        </span>
-      </span>
+        />
+      </div>
     </div>
     <p>
       default size
@@ -474,93 +669,103 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onFocus={[Function]}
       style={Object {}}
     >
-      <span
+      <div
         className="c2"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={
           Object {
-            "height": "4rem",
-            "width": "40rem",
+            "height": "3.2rem",
           }
         }
       >
         <span
           className="c3"
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
+        <input
+          autoFocus={false}
+          className="c4"
+          disabled={false}
+          maxLength="16"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          placeholder="请填写金额"
+          prefix={
+            <ForwardRef(ResultForward)
+              themeProps={
+                Object {
+                  "onLugia": [Function],
+                  "propsConfig": Object {
+                    "size": "default",
+                  },
+                  "themeConfig": Object {
+                    "__partName": "AmountInputPrefix",
+                  },
+                  "themeState": Object {
+                    "disabled": false,
+                  },
+                }
+              }
+            >
+              ¥
+            </ForwardRef(ResultForward)>
+          }
+          readOnly={false}
+          size="default"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+              "paddingBottom": "0rem",
+              "paddingLeft": "0.6rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
+          type="text"
+          value=""
+        />
+        <i
+          className="lugia-icon-reminder_close   c5"
+          disabled={false}
+          onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
           style={
             Object {
-              "height": "4rem",
-              "width": "40rem",
+              "color": "#9EA4AE",
+              "fontSize": "1.2rem",
             }
           }
-        >
-          <span
-            className="c4"
-            style={Object {}}
-          >
-            <span
-              className=""
-              style={
-                Object {
-                  "color": "blue",
-                  "fontSize": "1.4rem",
-                }
-              }
-            >
-              ¥
-            </span>
-          </span>
-          <input
-            autoFocus={false}
-            className="c5"
-            disabled={false}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            placeholder="请填写金额"
-            prefix={
-              <ForwardRef(ResultForward)
-                themeProps={
-                  Object {
-                    "onLugia": [Function],
-                    "propsConfig": Object {},
-                    "themeConfig": Object {
-                      "__partName": "AmountInputPrefix",
-                      "normal": Object {
-                        "color": "blue",
-                        "fontSize": 14,
-                      },
-                    },
-                    "themeState": Object {
-                      "disabled": false,
-                    },
-                  }
-                }
-              >
-                ¥
-              </ForwardRef(ResultForward)>
-            }
-            readOnly={false}
-            size="default"
-            style={
-              Object {
-                "color": "#333333",
-                "paddingBottom": "0rem",
-                "paddingLeft": "3rem",
-                "paddingRight": "3.5rem",
-                "paddingTop": "0rem",
-              }
-            }
-            value=""
-          />
-        </span>
-      </span>
+        />
+      </div>
     </div>
     <p>
       large size
@@ -571,107 +776,121 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onFocus={[Function]}
       style={Object {}}
     >
-      <span
+      <div
         className="c2"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={
           Object {
+            "backgroundColor": "#f2f2f2",
+            "borderBottomColor": "#e8e8e8",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#e8e8e8",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#e8e8e8",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#e8e8e8",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "color": "#cccccc",
             "height": "4rem",
-            "width": "40rem",
           }
         }
       >
         <span
           className="c3"
+          style={
+            Object {
+              "color": "#cccccc",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
+        <input
+          autoFocus={false}
+          className="c4"
+          disabled={true}
+          maxLength="16"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          placeholder=""
+          prefix={
+            <ForwardRef(ResultForward)
+              themeProps={
+                Object {
+                  "onLugia": [Function],
+                  "propsConfig": Object {
+                    "size": "large",
+                  },
+                  "themeConfig": Object {
+                    "__partName": "AmountInputPrefix",
+                  },
+                  "themeState": Object {
+                    "disabled": true,
+                  },
+                }
+              }
+            >
+              ¥
+            </ForwardRef(ResultForward)>
+          }
+          readOnly={false}
+          size="large"
+          style={
+            Object {
+              "backgroundColor": "#f2f2f2",
+              "color": "#cccccc",
+              "cursor": "not-allowed",
+              "fontSize": "1.4rem",
+              "paddingBottom": "0rem",
+              "paddingLeft": "0.6rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
+          type="text"
+          value=""
+        />
+        <i
+          className="lugia-icon-reminder_close   c5"
+          disabled={true}
+          onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
           style={
             Object {
-              "height": "4rem",
-              "width": "40rem",
+              "color": "#cccccc",
+              "cursor": "not-allowed",
+              "fontSize": "1.2rem",
             }
           }
-        >
-          <span
-            className="c4"
-            style={Object {}}
-          >
-            <span
-              className=""
-              style={
-                Object {
-                  "color": "blue",
-                  "fontSize": "1.4rem",
-                }
-              }
-            >
-              ¥
-            </span>
-          </span>
-          <input
-            autoFocus={false}
-            className="c5"
-            disabled={true}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            placeholder=""
-            prefix={
-              <ForwardRef(ResultForward)
-                themeProps={
-                  Object {
-                    "onLugia": [Function],
-                    "propsConfig": Object {},
-                    "themeConfig": Object {
-                      "__partName": "AmountInputPrefix",
-                      "normal": Object {
-                        "color": "blue",
-                        "fontSize": 14,
-                      },
-                    },
-                    "themeState": Object {
-                      "disabled": true,
-                    },
-                  }
-                }
-              >
-                ¥
-              </ForwardRef(ResultForward)>
-            }
-            readOnly={false}
-            size="large"
-            style={
-              Object {
-                "backgroundColor": "#f2f2f2",
-                "borderBottomColor": "#cccccc",
-                "borderBottomStyle": "solid",
-                "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#cccccc",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#cccccc",
-                "borderRightStyle": "solid",
-                "borderRightWidth": "0.1rem",
-                "borderTopColor": "#cccccc",
-                "borderTopStyle": "solid",
-                "borderTopWidth": "0.1rem",
-                "color": "#333333",
-                "cursor": "not-allowed",
-                "paddingBottom": "0rem",
-                "paddingLeft": "3rem",
-                "paddingRight": "3.5rem",
-                "paddingTop": "0rem",
-              }
-            }
-            value=""
-          />
-        </span>
-      </span>
+        />
+      </div>
     </div>
   </div>
   <div
@@ -686,77 +905,102 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onFocus={[Function]}
       style={Object {}}
     >
-      <span
+      <div
         className="c2"
-        style={Object {}}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c3"
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
+        <input
+          autoFocus={false}
+          className="c4"
+          disabled={false}
+          maxLength="16"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          prefix={
+            <ForwardRef(ResultForward)
+              themeProps={
+                Object {
+                  "onLugia": [Function],
+                  "propsConfig": Object {
+                    "size": "default",
+                  },
+                  "themeConfig": Object {
+                    "__partName": "AmountInputPrefix",
+                  },
+                  "themeState": Object {
+                    "disabled": false,
+                  },
+                }
+              }
+            >
+              ¥
+            </ForwardRef(ResultForward)>
+          }
+          readOnly={false}
+          size="default"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+              "paddingBottom": "0rem",
+              "paddingLeft": "0.6rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
+          type="text"
+          value=""
+        />
+        <i
+          className="lugia-icon-reminder_close   c5"
+          disabled={false}
+          onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
           style={
             Object {
-              "height": "3.2rem",
+              "color": "#9EA4AE",
+              "fontSize": "1.2rem",
             }
           }
-        >
-          <span
-            className="c4"
-            style={Object {}}
-          >
-            <span
-              className=""
-              style={Object {}}
-            >
-              ¥
-            </span>
-          </span>
-          <input
-            autoFocus={false}
-            className="c5"
-            disabled={false}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            prefix={
-              <ForwardRef(ResultForward)
-                themeProps={
-                  Object {
-                    "onLugia": [Function],
-                    "propsConfig": Object {},
-                    "themeConfig": Object {
-                      "__partName": "AmountInputPrefix",
-                    },
-                    "themeState": Object {
-                      "disabled": false,
-                    },
-                  }
-                }
-              >
-                ¥
-              </ForwardRef(ResultForward)>
-            }
-            readOnly={false}
-            size="default"
-            style={
-              Object {
-                "color": "#333333",
-                "paddingBottom": "0rem",
-                "paddingLeft": "3rem",
-                "paddingRight": "3.5rem",
-                "paddingTop": "0rem",
-              }
-            }
-            value=""
-          />
-        </span>
-      </span>
+        />
+      </div>
     </div>
     <p>
       有默认值的 受限Input
@@ -767,90 +1011,102 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onFocus={[Function]}
       style={Object {}}
     >
-      <span
+      <div
         className="c2"
-        style={Object {}}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c3"
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
+        <input
+          autoFocus={false}
+          className="c4"
+          disabled={false}
+          maxLength="16"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          prefix={
+            <ForwardRef(ResultForward)
+              themeProps={
+                Object {
+                  "onLugia": [Function],
+                  "propsConfig": Object {
+                    "size": "default",
+                  },
+                  "themeConfig": Object {
+                    "__partName": "AmountInputPrefix",
+                  },
+                  "themeState": Object {
+                    "disabled": false,
+                  },
+                }
+              }
+            >
+              ¥
+            </ForwardRef(ResultForward)>
+          }
+          readOnly={false}
+          size="default"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+              "paddingBottom": "0rem",
+              "paddingLeft": "0.6rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
+          type="text"
+          value="123,456"
+        />
+        <i
+          className="lugia-icon-reminder_close   c7"
+          disabled={false}
+          onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
           style={
             Object {
-              "height": "3.2rem",
+              "color": "#9EA4AE",
+              "fontSize": "1.2rem",
             }
           }
-        >
-          <span
-            className="c4"
-            style={Object {}}
-          >
-            <span
-              className=""
-              style={Object {}}
-            >
-              ¥
-            </span>
-          </span>
-          <input
-            autoFocus={false}
-            className="c5"
-            disabled={false}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            prefix={
-              <ForwardRef(ResultForward)
-                themeProps={
-                  Object {
-                    "onLugia": [Function],
-                    "propsConfig": Object {},
-                    "themeConfig": Object {
-                      "__partName": "AmountInputPrefix",
-                    },
-                    "themeState": Object {
-                      "disabled": false,
-                    },
-                  }
-                }
-              >
-                ¥
-              </ForwardRef(ResultForward)>
-            }
-            readOnly={false}
-            size="default"
-            style={
-              Object {
-                "color": "#333333",
-                "paddingBottom": "0rem",
-                "paddingLeft": "3rem",
-                "paddingRight": "3.5rem",
-                "paddingTop": "0rem",
-              }
-            }
-            value="123,456"
-          />
-          <i
-            className="lugia-icon-reminder_close   c6"
-            onClick={[Function]}
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            style={
-              Object {
-                "color": "#999999",
-              }
-            }
-          />
-        </span>
-      </span>
+        />
+      </div>
     </div>
   </div>
   <div
@@ -865,12 +1121,232 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onFocus={[Function]}
       style={Object {}}
     >
-      <span
+      <div
         className="c2"
-        style={Object {}}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
       >
         <span
           className="c3"
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
+        <input
+          autoFocus={false}
+          className="c4"
+          disabled={false}
+          maxLength="16"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          prefix={
+            <ForwardRef(ResultForward)
+              themeProps={
+                Object {
+                  "onLugia": [Function],
+                  "propsConfig": Object {
+                    "size": "default",
+                  },
+                  "themeConfig": Object {
+                    "__partName": "AmountInputPrefix",
+                  },
+                  "themeState": Object {
+                    "disabled": false,
+                  },
+                }
+              }
+            >
+              ¥
+            </ForwardRef(ResultForward)>
+          }
+          readOnly={false}
+          size="default"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+              "paddingBottom": "0rem",
+              "paddingLeft": "0.6rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
+          type="text"
+          value=""
+        />
+        <i
+          className="lugia-icon-reminder_close   c5"
+          disabled={false}
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#9EA4AE",
+              "fontSize": "1.2rem",
+            }
+          }
+        />
+      </div>
+    </div>
+    <p>
+      amountPrefix: '$' transform: false 
+    </p>
+    <div
+      className="c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      style={Object {}}
+    >
+      <div
+        className="c2"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
+      >
+        <span
+          className="c3"
+          style={
+            Object {
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            $
+          </span>
+        </span>
+        <input
+          autoFocus={false}
+          className="c4"
+          disabled={false}
+          maxLength="16"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          prefix={
+            <ForwardRef(ResultForward)
+              themeProps={
+                Object {
+                  "onLugia": [Function],
+                  "propsConfig": Object {
+                    "size": "default",
+                  },
+                  "themeConfig": Object {
+                    "__partName": "AmountInputPrefix",
+                  },
+                  "themeState": Object {
+                    "disabled": false,
+                  },
+                }
+              }
+            >
+              $
+            </ForwardRef(ResultForward)>
+          }
+          readOnly={false}
+          size="default"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+              "paddingBottom": "0rem",
+              "paddingLeft": "0.6rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
+          type="text"
+          value=""
+        />
+        <i
+          className="lugia-icon-reminder_close   c5"
+          disabled={false}
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#9EA4AE",
+              "fontSize": "1.2rem",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      校验信息显示类型 top 输入值 是否含有5
+    </p>
+    <div
+      className="c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      style={Object {}}
+    >
+      <div
+        className="c8"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        style={Object {}}
+      >
+        <div
+          className="c2"
+          onBlur={[Function]}
+          onFocus={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -878,12 +1354,17 @@ exports[`AmountInputDemo Component JSON 1`] = `
           style={
             Object {
               "height": "3.2rem",
+              "width": "100%",
             }
           }
         >
           <span
-            className="c4"
-            style={Object {}}
+            className="c3"
+            style={
+              Object {
+                "fontSize": "1.4rem",
+              }
+            }
           >
             <span
               className=""
@@ -894,8 +1375,9 @@ exports[`AmountInputDemo Component JSON 1`] = `
           </span>
           <input
             autoFocus={false}
-            className="c5"
+            className="c4"
             disabled={false}
+            maxLength="16"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -903,12 +1385,18 @@ exports[`AmountInputDemo Component JSON 1`] = `
             onKeyDown={[Function]}
             onKeyPress={[Function]}
             onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
             prefix={
               <ForwardRef(ResultForward)
                 themeProps={
                   Object {
                     "onLugia": [Function],
-                    "propsConfig": Object {},
+                    "propsConfig": Object {
+                      "size": "default",
+                    },
                     "themeConfig": Object {
                       "__partName": "AmountInputPrefix",
                     },
@@ -925,20 +1413,37 @@ exports[`AmountInputDemo Component JSON 1`] = `
             size="default"
             style={
               Object {
-                "color": "#333333",
+                "color": "#363B40",
+                "fontSize": "1.4rem",
                 "paddingBottom": "0rem",
-                "paddingLeft": "3rem",
-                "paddingRight": "3.5rem",
+                "paddingLeft": "0.6rem",
+                "paddingRight": "1rem",
                 "paddingTop": "0rem",
               }
             }
+            type="text"
             value=""
           />
-        </span>
-      </span>
+          <i
+            className="lugia-icon-reminder_close   c5"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "fontSize": "1.2rem",
+              }
+            }
+          />
+        </div>
+      </div>
     </div>
     <p>
-      amountPrefix: '$' transform: false 
+      校验信息显示类型 bottom 输入值 是否含有5
     </p>
     <div
       className="c1"
@@ -946,12 +1451,14 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onFocus={[Function]}
       style={Object {}}
     >
-      <span
-        className="c2"
+      <div
+        className="c9"
         style={Object {}}
       >
-        <span
-          className="c3"
+        <div
+          className="c2"
+          onBlur={[Function]}
+          onFocus={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -959,24 +1466,30 @@ exports[`AmountInputDemo Component JSON 1`] = `
           style={
             Object {
               "height": "3.2rem",
+              "width": "100%",
             }
           }
         >
           <span
-            className="c4"
-            style={Object {}}
+            className="c3"
+            style={
+              Object {
+                "fontSize": "1.4rem",
+              }
+            }
           >
             <span
               className=""
               style={Object {}}
             >
-              $
+              ¥
             </span>
           </span>
           <input
             autoFocus={false}
-            className="c5"
+            className="c4"
             disabled={false}
+            maxLength="16"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -984,12 +1497,18 @@ exports[`AmountInputDemo Component JSON 1`] = `
             onKeyDown={[Function]}
             onKeyPress={[Function]}
             onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
             prefix={
               <ForwardRef(ResultForward)
                 themeProps={
                   Object {
                     "onLugia": [Function],
-                    "propsConfig": Object {},
+                    "propsConfig": Object {
+                      "size": "default",
+                    },
                     "themeConfig": Object {
                       "__partName": "AmountInputPrefix",
                     },
@@ -999,46 +1518,240 @@ exports[`AmountInputDemo Component JSON 1`] = `
                   }
                 }
               >
-                $
+                ¥
               </ForwardRef(ResultForward)>
             }
             readOnly={false}
             size="default"
             style={
               Object {
-                "color": "#333333",
+                "color": "#363B40",
+                "fontSize": "1.4rem",
                 "paddingBottom": "0rem",
-                "paddingLeft": "3rem",
-                "paddingRight": "3.5rem",
+                "paddingLeft": "0.6rem",
+                "paddingRight": "1rem",
                 "paddingTop": "0rem",
               }
             }
+            type="text"
             value=""
           />
+          <i
+            className="lugia-icon-reminder_close   c5"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "fontSize": "1.2rem",
+              }
+            }
+          />
+        </div>
+        <div
+          className="c10"
+          style={Object {}}
+        >
+          验证出错
+        </div>
+      </div>
+    </div>
+    <p>
+      校验信息显示类型 inner 输入值 是否含有5
+    </p>
+    <div
+      className="c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      style={Object {}}
+    >
+      <div
+        className="c11"
+        style={Object {}}
+      >
+        <div
+          className="c2"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "height": "3.2rem",
+              "width": "100%",
+            }
+          }
+        >
+          <span
+            className="c3"
+            style={
+              Object {
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            <span
+              className=""
+              style={Object {}}
+            >
+              ¥
+            </span>
+          </span>
+          <input
+            autoFocus={false}
+            className="c4"
+            disabled={false}
+            maxLength="16"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            prefix={
+              <ForwardRef(ResultForward)
+                themeProps={
+                  Object {
+                    "onLugia": [Function],
+                    "propsConfig": Object {
+                      "size": "default",
+                    },
+                    "themeConfig": Object {
+                      "__partName": "AmountInputPrefix",
+                    },
+                    "themeState": Object {
+                      "disabled": false,
+                    },
+                  }
+                }
+              >
+                ¥
+              </ForwardRef(ResultForward)>
+            }
+            readOnly={false}
+            size="default"
+            style={
+              Object {
+                "color": "#363B40",
+                "fontSize": "1.4rem",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0.6rem",
+                "paddingRight": "1rem",
+                "paddingTop": "0rem",
+              }
+            }
+            type="text"
+            value=""
+          />
+          <i
+            className="lugia-icon-reminder_close   c5"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "fontSize": "1.2rem",
+              }
+            }
+          />
+        </div>
+        <span
+          className="c12"
+          style={Object {}}
+        >
+          验证出错
         </span>
-      </span>
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`AmountInputDemo props: placeholder  1`] = `
-.c0 {
-  display: inline-block;
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  visibility: hidden;
+  padding-right: 1rem;
 }
 
-.c4 {
-  box-sizing: border-box;
-  line-height: 1.5;
+.c0 {
   display: inline-block;
+  display: block;
+}
+
+.c3 {
+  box-sizing: border-box;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
   height: 100%;
   width: 100%;
-  font-size: 1.2rem;
+  border: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   cursor: text;
+  background-color: #ffffff;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #cccccc;
+  font-size: 1.4rem;
+}
+
+.c3::-moz-placeholder {
+  color: #cccccc;
+  font-size: 1.4rem;
+}
+
+.c3:-ms-input-placeholder {
+  color: #cccccc;
+  font-size: 1.4rem;
+}
+
+.c3::placeholder {
+  color: #cccccc;
+  font-size: 1.4rem;
+}
+
+.c1 {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  outline: none;
+  min-width: 3rem;
+  width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -1057,50 +1770,18 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c4::-webkit-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c4::-moz-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c4:-ms-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c4::placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
 .c2 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-}
-
-.c3 {
-  position: absolute;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: #999999;
-  left: 1rem;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
-  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #9EA4AE;
+  padding-left: 1rem;
+  color: #363B40;
 }
 
 <div
@@ -1109,98 +1790,176 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   onFocus={[Function]}
   style={Object {}}
 >
-  <span
+  <div
     className="c1"
-    style={Object {}}
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    style={
+      Object {
+        "height": "3.2rem",
+      }
+    }
   >
     <span
       className="c2"
+      style={
+        Object {
+          "fontSize": "1.4rem",
+        }
+      }
+    >
+      <span
+        className=""
+        style={Object {}}
+      >
+        ¥
+      </span>
+    </span>
+    <input
+      autoFocus={false}
+      className="c3"
+      disabled={false}
+      maxLength="16"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      placeholder="请填写内容"
+      prefix={
+        <ForwardRef(ResultForward)
+          themeProps={
+            Object {
+              "onLugia": [Function],
+              "propsConfig": Object {
+                "size": "default",
+              },
+              "themeConfig": Object {
+                "__partName": "AmountInputPrefix",
+              },
+              "themeState": Object {
+                "disabled": false,
+              },
+            }
+          }
+        >
+          ¥
+        </ForwardRef(ResultForward)>
+      }
+      readOnly={false}
+      size="default"
+      style={
+        Object {
+          "color": "#363B40",
+          "fontSize": "1.4rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "0.6rem",
+          "paddingRight": "1rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="text"
+      value=""
+    />
+    <i
+      className="lugia-icon-reminder_close   c4"
+      disabled={false}
+      onClick={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
       style={
         Object {
-          "height": "3.2rem",
+          "color": "#9EA4AE",
+          "fontSize": "1.2rem",
         }
       }
-    >
-      <span
-        className="c3"
-        style={Object {}}
-      >
-        <span
-          className=""
-          style={Object {}}
-        >
-          ¥
-        </span>
-      </span>
-      <input
-        autoFocus={false}
-        className="c4"
-        disabled={false}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        placeholder="请填写内容"
-        prefix={
-          <ForwardRef(ResultForward)
-            themeProps={
-              Object {
-                "onLugia": [Function],
-                "propsConfig": Object {},
-                "themeConfig": Object {
-                  "__partName": "AmountInputPrefix",
-                },
-                "themeState": Object {
-                  "disabled": false,
-                },
-              }
-            }
-          >
-            ¥
-          </ForwardRef(ResultForward)>
-        }
-        readOnly={false}
-        size="default"
-        style={
-          Object {
-            "color": "#333333",
-            "paddingBottom": "0rem",
-            "paddingLeft": "3rem",
-            "paddingRight": "3.5rem",
-            "paddingTop": "0rem",
-          }
-        }
-        value=""
-      />
-    </span>
-  </span>
+    />
+  </div>
 </div>
 `;
 
 exports[`AmountInputDemo props: placeholder  2`] = `
-.c0 {
-  display: inline-block;
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  visibility: hidden;
+  padding-right: 1rem;
 }
 
-.c4 {
-  box-sizing: border-box;
-  line-height: 1.5;
+.c0 {
   display: inline-block;
+  display: block;
+}
+
+.c3 {
+  box-sizing: border-box;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
   height: 100%;
   width: 100%;
-  font-size: 1.2rem;
+  border: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   cursor: text;
+  background-color: #ffffff;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #cccccc;
+  font-size: 1.4rem;
+}
+
+.c3::-moz-placeholder {
+  color: #cccccc;
+  font-size: 1.4rem;
+}
+
+.c3:-ms-input-placeholder {
+  color: #cccccc;
+  font-size: 1.4rem;
+}
+
+.c3::placeholder {
+  color: #cccccc;
+  font-size: 1.4rem;
+}
+
+.c1 {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  outline: none;
+  min-width: 3rem;
+  width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -1219,50 +1978,18 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c4::-webkit-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c4::-moz-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c4:-ms-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c4::placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
 .c2 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-}
-
-.c3 {
-  position: absolute;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: #999999;
-  left: 1rem;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
-  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #9EA4AE;
+  padding-left: 1rem;
+  color: #363B40;
 }
 
 <div
@@ -1271,77 +1998,102 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   onFocus={[Function]}
   style={Object {}}
 >
-  <span
+  <div
     className="c1"
-    style={Object {}}
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    style={
+      Object {
+        "height": "3.2rem",
+      }
+    }
   >
     <span
       className="c2"
+      style={
+        Object {
+          "fontSize": "1.4rem",
+        }
+      }
+    >
+      <span
+        className=""
+        style={Object {}}
+      >
+        ¥
+      </span>
+    </span>
+    <input
+      autoFocus={false}
+      className="c3"
+      disabled={false}
+      maxLength="16"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      placeholder=""
+      prefix={
+        <ForwardRef(ResultForward)
+          themeProps={
+            Object {
+              "onLugia": [Function],
+              "propsConfig": Object {
+                "size": "default",
+              },
+              "themeConfig": Object {
+                "__partName": "AmountInputPrefix",
+              },
+              "themeState": Object {
+                "disabled": false,
+              },
+            }
+          }
+        >
+          ¥
+        </ForwardRef(ResultForward)>
+      }
+      readOnly={false}
+      size="default"
+      style={
+        Object {
+          "color": "#363B40",
+          "fontSize": "1.4rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "0.6rem",
+          "paddingRight": "1rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="text"
+      value=""
+    />
+    <i
+      className="lugia-icon-reminder_close   c4"
+      disabled={false}
+      onClick={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
       style={
         Object {
-          "height": "3.2rem",
+          "color": "#9EA4AE",
+          "fontSize": "1.2rem",
         }
       }
-    >
-      <span
-        className="c3"
-        style={Object {}}
-      >
-        <span
-          className=""
-          style={Object {}}
-        >
-          ¥
-        </span>
-      </span>
-      <input
-        autoFocus={false}
-        className="c4"
-        disabled={false}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        placeholder=""
-        prefix={
-          <ForwardRef(ResultForward)
-            themeProps={
-              Object {
-                "onLugia": [Function],
-                "propsConfig": Object {},
-                "themeConfig": Object {
-                  "__partName": "AmountInputPrefix",
-                },
-                "themeState": Object {
-                  "disabled": false,
-                },
-              }
-            }
-          >
-            ¥
-          </ForwardRef(ResultForward)>
-        }
-        readOnly={false}
-        size="default"
-        style={
-          Object {
-            "color": "#333333",
-            "paddingBottom": "0rem",
-            "paddingLeft": "3rem",
-            "paddingRight": "3.5rem",
-            "paddingTop": "0rem",
-          }
-        }
-        value=""
-      />
-    </span>
-  </span>
+    />
+  </div>
 </div>
 `;

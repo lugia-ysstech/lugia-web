@@ -8,16 +8,22 @@ import '../common/shirm';
 import Theme from '../theme';
 import React from 'react';
 import InputTag from '../inputtag';
-import Trigger from '../trigger';
+import Trigger from '../trigger/OpenTrigger';
 import Tree from '../tree/index.js';
 import ThemeHoc from '@lugia/theme-hoc';
 import Widget from '../consts/index';
 import { deepMerge } from '@lugia/object-utils';
+import ValidateHoc from '../input/validateHoc';
 import Support from '../common/FormFieldWidgetSupport';
 import QueryInput from '../common/QueryInput';
 import { getNewValueOrOldValue } from '../select';
 import { appendCustomValue, getTheme, setNewValue } from '../common/selectFunction';
 import { DefaultHelp } from '../css/input';
+import { getInputtagThemeHoc } from '../select/utils';
+import { PopupMenuWrap, getDefaultPopupMenuWrap } from '../css/select';
+import changeColor from '../css/utilsColor';
+import get from '../css/theme-common-dict';
+import { getTreeData } from '../menu/utils';
 
 type ValidateStatus = 'success' | 'error';
 
@@ -38,6 +44,8 @@ type TreeSelectProps = {
   onTrigger?: Function,
   onChange?: Function,
   onSelect?: Function,
+  onFocus?: Function,
+  onBlur?: Function,
   expandAll: boolean,
   splitQuery?: string,
   onQuery?: Function,
@@ -55,6 +63,10 @@ type TreeSelectProps = {
   getPartOfThemeHocProps: Function,
   renderSuffixItems?: Function,
   onRightClick?: Function,
+  pullIconClass?: string,
+  clearIconClass?: string,
+  canClear?: boolean,
+  isShowClearButton?: boolean,
 };
 type TreeSelectState = {
   open: boolean,
@@ -68,6 +80,7 @@ type TreeSelectState = {
   end: number,
   start: number,
   themeConfig: Object,
+  menuVisible: Boolean,
 };
 
 const DefaultLimitCount = 999999;
@@ -89,6 +102,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     canSearch: false,
     expandAll: false,
     translateTreeData: false,
+    isShowClearButton: true,
+    pullIconClass: 'lugia-icon-direction_down',
+    clearIconClass: 'lugia-icon-reminder_close',
   };
 
   state: TreeSelectState;
@@ -117,11 +133,23 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       start: 0,
       selectAll: false,
       themeConfig: this.getCurrentTheme(),
+      menuVisible: false,
     };
     this.changeOldValue(value);
     this.treeVisible = false;
     this.inputTag = React.createRef();
   }
+
+  getDisplayValue = value => {
+    const { pathSeparator, displayField, valueField, data, translateTreeData } = this.props;
+    const translateData = translateTreeData ? getTreeData(this.props, pathSeparator) : data;
+    return value.map(item => {
+      const tem = translateData.find(dataItem => {
+        return dataItem[valueField] === item;
+      });
+      return tem ? tem[displayField] : item;
+    });
+  };
 
   //TODO:受限问题
   //TODO: 放到Table元素中半选状态的样式问题
@@ -130,7 +158,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { value, displayValue } = Support.getCodeItemArray(props);
     return {
       value,
-      displayValue: displayValue && displayValue.length > 0 ? displayValue : [...value],
+      displayValue:
+        displayValue && displayValue.length > 0
+          ? this.getDisplayValue(displayValue)
+          : this.getDisplayValue([...value]),
     };
   }
 
@@ -155,7 +186,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       props.svThemVersion !== nextProps.svThemVersion ||
       state.selectCount !== nextState.selectCount ||
       state.value !== nextState.value ||
-      state.displayValue !== nextState.displayValue
+      state.displayValue !== nextState.displayValue ||
+      state.menuVisible !== nextState.menuVisible
     );
   }
 
@@ -197,30 +229,42 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
 
   getContainerWidth = () => {
-    return this.state.treeWidth;
+    return (
+      this.inputTag &&
+      this.inputTag.current &&
+      this.inputTag.current.getThemeTarget().container.offsetWidth
+    );
   };
 
   getTreeTheme = () => {
+    const { mutliple } = this.props;
     const width = this.getContainerWidth();
 
     const initMenuTheme = {
       width,
+      boxShadow: null,
     };
+
     const defaultMenuTheme = {
       Container: {
         normal: initMenuTheme,
+      },
+      TreeItem: {
+        SelectedText: {
+          normal: {
+            background: {
+              color: mutliple ? 'transparent' : changeColor(get('themeColor'), 0, 0, 10).rgba,
+            },
+          },
+        },
       },
     };
     return this.mergeTheme('Tree', defaultMenuTheme);
   };
 
-  getInner(props, state) {
+  getPopupTree = () => {
     const {
       data,
-      disabled,
-      help,
-      validateStatus,
-      placeholder,
       canSearch,
       mutliple,
       canInput,
@@ -229,21 +273,31 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       displayField,
       expandAll,
       translateTreeData,
-      createPortal,
       renderSuffixItems,
       onRightClick,
-    } = props;
-    const { onSelect, ...res } = props;
-
-    const { current, start, treeFilter, value, displayValue, query, selectAll } = state;
-
+      getPartOfThemeProps,
+      switchIconNames,
+    } = this.props;
+    const { onSelect, ...res } = this.props;
+    const { current, start, treeFilter, value, displayValue, query, selectAll } = this.state;
     const getTree: Function = (cmp: Object) => {
       this.treeCmp = cmp;
+    };
+
+    const queryInputTheme = {
+      [Widget.QueryInput]: {
+        OutContainer: {
+          normal: {
+            margin: { top: 4, right: 4, bottom: 4, left: 4 },
+          },
+        },
+      },
     };
 
     const tree = [
       data && data.length !== 0 ? (
         <QueryInput
+          theme={queryInputTheme}
           query={query}
           onQueryInputChange={this.onQueryInputChange}
           onQueryInputKeyDown={this.onQueryInputKeyDown}
@@ -260,7 +314,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         data={data}
         key="tree"
         {...res}
+        size={'default'}
         {...this.getTreeTheme()}
+        switchIconNames={switchIconNames}
         current={current}
         start={start}
         expandAll={expandAll}
@@ -278,13 +334,43 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         onRightClick={onRightClick}
       />,
     ];
+    const menuThemeConfig = this.props.getPartOfThemeProps('Tree');
+    const { themeConfig } = menuThemeConfig;
+
+    const popupMenuWrapTheme = {
+      normal: {
+        ...getDefaultPopupMenuWrap(),
+      },
+    };
+    menuThemeConfig.themeConfig = deepMerge(popupMenuWrapTheme, themeConfig.Container);
+    return <PopupMenuWrap themeProps={menuThemeConfig}>{tree}</PopupMenuWrap>;
+  };
+
+  getInner(props, state) {
+    const {
+      disabled,
+      help,
+      validateStatus,
+      placeholder,
+      createPortal,
+      pullIconClass,
+      clearIconClass,
+      isShowClearButton,
+      canClear,
+      onFocus,
+      onBlur,
+      size = 'default',
+      alwaysOpen,
+      liquidLayout,
+    } = props;
+    const { value, displayValue, menuVisible } = state;
 
     const getTreeTriger: Function = (cmp: Object) => {
       this.treeTriger = cmp;
     };
-
+    const tree = this.getPopupTree();
     return (
-      <Theme config={this.getInputtagTheme()}>
+      <Theme config={getInputtagThemeHoc(props)}>
         <Trigger
           themePass
           popup={tree}
@@ -296,22 +382,32 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           createPortal={createPortal}
           action={disabled ? [] : ['click']}
           hideAction={['click']}
+          alwaysOpen={alwaysOpen}
+          liquidLayout={liquidLayout}
+          lazy={false}
         >
           <InputTag
+            size={size}
+            ref={this.inputTag}
             key="inputtag"
             help={help}
-            validateStatus={validateStatus}
-            onFocus={this.onFocus}
-            disabled={disabled}
+            menuVisible={menuVisible}
             value={value}
             displayValue={displayValue}
+            validateStatus={validateStatus}
             onChange={this.onInputTagChange}
-            mutliple={this.isMutliple()}
-            placeholder={placeholder}
-            ref={this.inputTag}
-            createPortal={createPortal}
-            onClear={this.onClear}
             onPopupVisibleChange={this.onInputTagPopupVisibleChange}
+            disabled={disabled}
+            createPortal={createPortal}
+            placeholder={placeholder}
+            mutliple={this.isMutliple()}
+            onClear={this.onClear}
+            pullIconClass={pullIconClass}
+            clearIconClass={clearIconClass}
+            canClear={canClear}
+            isShowClearButton={isShowClearButton}
+            onFocus={onFocus}
+            onBlur={onBlur}
           />
         </Trigger>
       </Theme>
@@ -323,23 +419,18 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     onClear && onClear(e);
   };
 
-  getInputtagTheme = () => {
-    const { getPartOfThemeConfig } = this.props;
-    const inputtagTheme = {
-      [Widget.InputTag]: {
-        InputTagWrap: getPartOfThemeConfig('Container'),
-        TagWrap: getPartOfThemeConfig('TagWrap'),
-        TagIcon: getPartOfThemeConfig('TagIcon'),
-        SwitchIcon: getPartOfThemeConfig('SwitchIcon'),
-        ClearIcon: getPartOfThemeConfig('ClearIcon'),
-        Menu: getPartOfThemeConfig('InputMenu'),
-      },
-    };
-    return inputtagTheme;
-  };
-
   setPopupVisible(...rest: any[]) {
-    this.treeTriger && this.treeTriger.setPopupVisible(...rest);
+    if (
+      this.treeTriger &&
+      this.treeTriger.getTrigger() &&
+      this.treeTriger.getTrigger().current &&
+      this.treeTriger.getTrigger().current.getThemeTarget()
+    ) {
+      this.treeTriger
+        .getTrigger()
+        .current.getThemeTarget()
+        .setPopupVisible(...rest);
+    }
   }
 
   render() {
@@ -347,8 +438,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
     return this.getInner(props, state);
   }
-
-  onFocus = () => {};
 
   onClearQuery = () => {
     this.onQueryInputChange('');
@@ -455,19 +544,37 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.setState({ selectAll: this.isSelectAll() });
   }
 
-  getItems = (value: string[]) => {
-    const length = value.length;
-
-    if (length === 0) {
+  getItems = (value: string[] = []) => {
+    if (value && value.length && value.length === 0) {
       return [];
     }
-
     const { data = [], valueField } = this.props;
-
-    return data.filter(item => {
-      const key = item[valueField];
-      return value.indexOf(key) !== -1;
-    });
+    function getItemsByValues(findValues = [], findFromSource, option, findResult = []) {
+      const { findKeyValue } = option;
+      const remainderValue = [...findValues];
+      const resultItems = findResult;
+      if (remainderValue.length === 0 || findFromSource.length <= 0) {
+        return [];
+      }
+      for (let i = 0; i < findFromSource.length; i++) {
+        const temItem = findFromSource[i];
+        const index = remainderValue.indexOf(temItem[findKeyValue]);
+        if (index > -1) {
+          remainderValue.slice(index);
+          resultItems.push(temItem);
+        }
+        if (temItem.children && temItem.children.length > 0) {
+          getItemsByValues(
+            remainderValue,
+            temItem.children,
+            { findKeyValue: valueField },
+            resultItems
+          );
+        }
+      }
+      return resultItems;
+    }
+    return getItemsByValues(value, data, { findKeyValue: valueField });
   };
 
   expandOnSelect = (value: string[], displayValue: string[]) => {
@@ -628,6 +735,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         }
       });
     }
+    this.setState({ menuVisible: visible });
     this.treeVisible = visible;
   };
 
@@ -685,8 +793,16 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   setTreePopupVisible(visible: boolean) {
-    if (this.treeTriger && this.treeTriger.getThemeTarget()) {
-      this.treeTriger.getThemeTarget().setPopupVisible(visible);
+    if (
+      this.treeTriger &&
+      this.treeTriger.getTrigger() &&
+      this.treeTriger.getTrigger().current &&
+      this.treeTriger.getTrigger().current.getThemeTarget()
+    ) {
+      this.treeTriger
+        .getTrigger()
+        .current.getThemeTarget()
+        .setPopupVisible(visible);
     }
   }
 
@@ -747,10 +863,12 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
 
   componentDidMount() {
-    const treeWidth = this.inputTag.current.getThemeTarget().container.offsetWidth;
-    this.setState({
-      treeWidth,
-    });
+    setTimeout(() => {
+      const treeWidth = this.inputTag.current.getThemeTarget().container.offsetWidth;
+      this.setState({
+        treeWidth,
+      });
+    }, 0);
   }
 
   componentDidCatch() {
@@ -758,4 +876,4 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 }
 
-export default ThemeHoc(TreeSelect, Widget.TreeSelect, { hover: true });
+export default ThemeHoc(ValidateHoc(TreeSelect), Widget.TreeSelect, { hover: true });

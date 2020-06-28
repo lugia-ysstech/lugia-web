@@ -19,9 +19,19 @@ describe('default', () => {
     themeState: {},
     propsConfig: {},
   };
+  const defaultThmeFunction = {
+    getPartOfThemeProps: () => {
+      return { ...defaultTheme };
+    },
+    getPartOfThemeHocProps: () => {
+      return { viewClass: {} };
+    },
+  };
   function getYears(title: string, props: Object, expValue: Object) {
     it(`onChange ${title}`, async () => {
-      const target = mount(<FacePanel themeProps={{ ...defaultTheme }} {...props} />);
+      const target = mount(
+        <FacePanel themeProps={{ ...defaultTheme }} {...defaultThmeFunction} {...props} />
+      );
       const newTarget = getTarget(target, 'FacePanel');
       const { start, step } = props;
       const years = newTarget.getYears(start, step);
@@ -108,7 +118,9 @@ describe('default', () => {
   ]);
   function getRangeYears(title: string, props: Object, expValue: Object) {
     it(`onChange ${title}`, async () => {
-      const target = mount(<FacePanel themeProps={{ ...defaultTheme }} {...props} />);
+      const target = mount(
+        <FacePanel themeProps={{ ...defaultTheme }} {...props} {...defaultThmeFunction} />
+      );
       const newTarget = getTarget(target, 'FacePanel');
       const { start, step } = props;
       const doubleYear = newTarget.getRangeYears(start, step);
@@ -196,7 +208,9 @@ describe('default', () => {
 
   function getMonthDate(title: string, props: Object, expValue: Object) {
     it(`onChange ${title}`, async () => {
-      const target = mount(<FacePanel themeProps={{ ...defaultTheme }} {...props} />);
+      const target = mount(
+        <FacePanel themeProps={{ ...defaultTheme }} {...props} {...defaultThmeFunction} />
+      );
       const newTarget = getTarget(target, 'FacePanel');
       const { lang, date } = props;
       const months = newTarget.getMonthDate(lang, date);
@@ -290,7 +304,9 @@ describe('default', () => {
 
   function getWeeks(title: string, props: Object, params: Object, expValue: Object) {
     it(`onChange ${title}`, async () => {
-      const target = mount(<FacePanel themeProps={{ ...defaultTheme }} {...props} />);
+      const target = mount(
+        <FacePanel themeProps={{ ...defaultTheme }} {...props} {...defaultThmeFunction} />
+      );
       const newTarget = getTarget(target, 'FacePanel');
       const { weeksDate, rangeIndex, weeksInYear } = params;
       const { weeks, step } = props;
@@ -400,7 +416,9 @@ describe('default', () => {
 
   function getEqualValue(title: string, props: Object, params: Object, expValue: Object) {
     it(`onChange ${title}`, async () => {
-      const target = mount(<FacePanel themeProps={{ ...defaultTheme }} {...props} />);
+      const target = mount(
+        <FacePanel themeProps={{ ...defaultTheme }} {...props} {...defaultThmeFunction} />
+      );
       const newTarget = getTarget(target, 'FacePanel');
       const equalValue = newTarget.getEqualValue(props, params.weekIndex);
       expect(equalValue).toEqual(expValue.value);
@@ -487,7 +505,9 @@ describe('default', () => {
 
   function getChildrenData(title: string, props: Object, params: Object, expValue: Object) {
     it(`onChange ${title}`, async () => {
-      const target = mount(<FacePanel themeProps={{ ...defaultTheme }} {...props} />);
+      const target = mount(
+        <FacePanel themeProps={{ ...defaultTheme }} {...props} {...defaultThmeFunction} />
+      );
       const newTarget = getTarget(target, 'FacePanel');
       const { data } = params;
       const childrenData = newTarget.getChildrenData(props, data);

@@ -10,14 +10,17 @@ import {
   RangeInputInnerInput,
   RangeMiddleSpan,
 } from '../styled/styledRangeInput';
+import { Box } from '../styled/styled';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 import { getBorder } from '@lugia/theme-utils';
-import { getWrapThemeProps, getIconTheme } from '../themeConfig/themeConfig';
+import getThemeProps, {
+  getIconTheme,
+  getRangeInputMiddleSymbolTheme,
+  getRangeInputPlaceholderTheme,
+} from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import getDateIcon from '../panel/InputIcon';
-import { themeColor } from '../styled/utils';
-const { borderSize } = themeColor;
 type TypeProps = {
   onChange?: Function,
   onClick?: Function,
@@ -29,9 +32,14 @@ type TypeProps = {
   value: Array<string>,
   disabled?: boolean,
   readOnly?: boolean,
+  size: boolean,
   placeholder: Array<string>,
-  theme: Object,
   mode?: string,
+  errorTipTheme: Object,
+  themeProps: Object,
+  validateStatus: string,
+  help: string,
+  validateType: string,
 };
 type TypeState = {
   value: Array<string>,
@@ -59,7 +67,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
   };
   onHandleClick = (e: any) => {
     const { onClick } = this.props;
-    onClick && onClick(e);
+    onClick && onClick(e, true);
   };
   onFocus = (e: any) => {
     const { value } = this.props;
@@ -87,8 +95,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
     return obj;
   };
   render() {
-    const { value } = this.props;
-    const { disabled, readOnly, placeholder } = this.props;
+    const { disabled, readOnly, placeholder, size, value, themeProps } = this.props;
     const config = {
       onFocus: disabled || readOnly ? '' : this.onFocus,
       disabled,
@@ -111,7 +118,8 @@ class RangeInput extends Component<TypeProps, TypeState> {
         ...this.getInputStyle(state),
       };
     };
-    const inputContainProps = getWrapThemeProps({ mode, getPartOfThemeProps }, 'Container');
+    const inputContainProps = themeProps;
+
     const { inputPrefixProps, inputSuffixProps, clearButtonProps } = getIconTheme(this.props);
     const {
       themeConfig: {
@@ -125,8 +133,8 @@ class RangeInput extends Component<TypeProps, TypeState> {
     const {
       height,
       border: {
-        top: { width: borderWidthT = borderSize } = {},
-        bottom: { width: borderWidthB = borderSize } = {},
+        top: { width: borderWidthT = 0 } = {},
+        bottom: { width: borderWidthB = 0 } = {},
       } = {},
     } = normal;
 
@@ -136,6 +144,12 @@ class RangeInput extends Component<TypeProps, TypeState> {
       onClear: this.onClear,
       clearButtonTheme: clearButtonProps,
     });
+    const middleSymbolTheme = getRangeInputMiddleSymbolTheme({ size, getPartOfThemeProps });
+    const { themeConfig: placeholderTheme } = getRangeInputPlaceholderTheme({
+      size,
+      getPartOfThemeProps,
+    });
+    const wrapBoxTheme = getThemeProps({ mode, getPartOfThemeProps }, 'Container');
     return (
       <Theme
         config={{
@@ -144,6 +158,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
               normal: {
                 width: '100%',
                 height: height - (borderWidthT * 1 + borderWidthB * 1),
+                border: getBorder({ style: '', width: 0, color: '' }),
               },
             },
             Input: {
@@ -181,50 +196,55 @@ class RangeInput extends Component<TypeProps, TypeState> {
               },
               ...inputSuffixProps.themeConfig,
             },
+            Placeholder: {
+              ...placeholderTheme,
+            },
           },
         }}
       >
-        <RangeInputWrap
-          mode={mode}
-          disabled={disabled}
-          onClick={readOnly || disabled ? '' : this.onHandleClick}
-          themeProps={inputContainProps}
-          {...addMouseEvent(this)}
-        >
-          <RangeInputInner themeProps={inputContainProps} disabled={disabled}>
-            <RangeInputInnerInput themeProps={inputContainProps}>
-              <Input
-                {...prefixIcon}
-                value={value[0]}
-                onChange={this.onChangeFirst}
-                placeholder={placeholder[0]}
-                onBlur={this.onBlur}
-                {...config}
-                suffix={<i />}
-                {...this.props.dispatchEvent([['hover']], 'f2c')}
-              />
-            </RangeInputInnerInput>
+        <Box themeProps={wrapBoxTheme}>
+          <RangeInputWrap
+            mode={mode}
+            disabled={disabled}
+            onClick={readOnly || disabled ? '' : this.onHandleClick}
+            themeProps={inputContainProps}
+            {...addMouseEvent(this)}
+          >
+            <RangeInputInner themeProps={inputContainProps} disabled={disabled}>
+              <RangeInputInnerInput themeProps={inputContainProps}>
+                <Input
+                  {...prefixIcon}
+                  value={value[0]}
+                  onChange={this.onChangeFirst}
+                  placeholder={placeholder[0]}
+                  onBlur={this.onBlur}
+                  {...config}
+                  suffix={<i />}
+                  {...this.props.dispatchEvent([['hover']], 'f2c')}
+                />
+              </RangeInputInnerInput>
 
-            <RangeMiddleSpan
-              themeProps={inputContainProps}
-              {...this.props.dispatchEvent([['hover']], 'f2c')}
-            >
-              ~
-            </RangeMiddleSpan>
-            <RangeInputInnerInput themeProps={inputContainProps}>
-              <Input
-                {...suffixIcon}
-                value={value[1]}
-                onChange={this.onChangeSecond}
-                onBlur={this.onBlur}
-                placeholder={placeholder[1]}
-                {...config}
-                // onClear={this.onClear}
+              <RangeMiddleSpan
+                themeProps={middleSymbolTheme}
                 {...this.props.dispatchEvent([['hover']], 'f2c')}
-              />
-            </RangeInputInnerInput>
-          </RangeInputInner>
-        </RangeInputWrap>
+              >
+                ~
+              </RangeMiddleSpan>
+              <RangeInputInnerInput themeProps={inputContainProps} last>
+                <Input
+                  {...suffixIcon}
+                  value={value[1]}
+                  onChange={this.onChangeSecond}
+                  onBlur={this.onBlur}
+                  placeholder={placeholder[1]}
+                  {...config}
+                  // onClear={this.onClear}
+                  {...this.props.dispatchEvent([['hover']], 'f2c')}
+                />
+              </RangeInputInnerInput>
+            </RangeInputInner>
+          </RangeInputWrap>
+        </Box>
       </Theme>
     );
   }

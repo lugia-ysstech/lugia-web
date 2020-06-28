@@ -3,6 +3,11 @@
   "title": "穿梭框",
   "desc": "穿梭框。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "data": {
       "type": "Object[]",
       "desc": "左右两个面板数据源",
@@ -65,6 +70,11 @@
       "type": "string",
       "desc": "指定 Transfer 面板选项 value 字段值",
       "defaultValue": "value"
+    },
+    "size": {
+      "type": "SizeType",
+      "desc": "指定 Transfer 的尺寸",
+      "defaultValue": "default"
     }
   },
   "event": {
@@ -120,6 +130,7 @@
     }
   },
   "type": {
+    "SizeType": ["default", "small", "large"],
     "TransferType": ["panel", "tree"],
     "DirectionType": ["left", "right"],
     "TransferStyle": {
@@ -199,7 +210,7 @@
         "TransferHeaderWrap": {
           "name": "穿梭框面板头部",
           "desc": "为穿梭框配置左右面板头部样式",
-          "normal": [["background"], ["border"]]
+          "normal": [["background"], [["border"],["bottom"]]]
         },
         "TransferPanelHeaderCheckbox": {
           "name": "穿梭框面板头部Checkbox",
@@ -306,7 +317,6 @@
               "normal": [
                 ["width"],
                 ["height"],
-                ["boxShadow"],
                 ["background"],
                 ["opacity"],
                 ["border"],
@@ -314,7 +324,7 @@
                 ["margin"],
                 ["padding"]
               ],
-              "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
+              "hover": [["background"], ["opacity"], ["border"], ["borderRadius"]],
               "clicked": [],
               "disabled": []
             },
@@ -507,7 +517,7 @@
     "TransferHeaderWrap": {
       "name": "穿梭框面板头部",
       "desc": "为穿梭框配置左右面板头部样式",
-      "normal": [["background"], ["border"]]
+      "normal": [["background"],[["border"],["bottom"]]]
     },
     "TransferPanelHeaderCheckbox": {
       "name": "穿梭框面板头部Checkbox",
@@ -574,14 +584,12 @@
       "desc": "为穿梭框配置左右面板搜索框样式",
       "theme": {
         "Container": {
-          "name": "输入框外部容器",
+          "name": "输入框",
           "desc": "输入框外部容器",
-          "normal": [["width"], ["height"], ["margin"]]
-        },
-        "Input": {
-          "name": "输入框主体",
-          "desc": "输入框主体结构",
           "normal": [
+            ["width"],
+            ["height"],
+            ["margin"],
             ["fontSize"],
             ["font"],
             ["color"],

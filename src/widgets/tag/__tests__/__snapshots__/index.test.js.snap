@@ -5,7 +5,6 @@ exports[`Tag Theme: type= basic, closable=false shape= round 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -17,7 +16,7 @@ exports[`Tag Theme: type= basic, closable=false shape= round 1`] = `
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   border-radius: 2rem;
-  color: #666666;
+  color: #646A6E;
   border: 1px solid #cccccc;
   padding: 0 0.8rem;
   opacity: 1;
@@ -60,7 +59,11 @@ exports[`Tag Theme: type= basic, closable=false shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -81,7 +84,6 @@ exports[`Tag Theme: type= basic, shape= round 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -93,7 +95,7 @@ exports[`Tag Theme: type= basic, shape= round 1`] = `
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   border-radius: 2rem;
-  color: #666666;
+  color: #646A6E;
   border: 1px solid #cccccc;
   padding: 0 0.8rem;
   opacity: 1;
@@ -136,7 +138,11 @@ exports[`Tag Theme: type= basic, shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -157,7 +163,6 @@ exports[`Tag Theme: type= customs, closable=false shape= round 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -169,7 +174,7 @@ exports[`Tag Theme: type= customs, closable=false shape= round 1`] = `
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   border-radius: 2rem;
-  color: #fff;
+  color: #ffffff;
   background: #4d63ff;
   border: 1px solid #4d63ff;
   padding: 0 0.8rem;
@@ -213,7 +218,11 @@ exports[`Tag Theme: type= customs, closable=false shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -234,7 +243,6 @@ exports[`Tag Theme: type= customs, shape= round 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -246,7 +254,7 @@ exports[`Tag Theme: type= customs, shape= round 1`] = `
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   border-radius: 2rem;
-  color: #fff;
+  color: #ffffff;
   background: #4d63ff;
   border: 1px solid #4d63ff;
   padding: 0 0.8rem;
@@ -290,7 +298,11 @@ exports[`Tag Theme: type= customs, shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -311,7 +323,6 @@ exports[`Tag Theme: type= presets, closable=false shape= round 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -367,7 +378,11 @@ exports[`Tag Theme: type= presets, closable=false shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -388,7 +403,6 @@ exports[`Tag Theme: type= presets, shape= round 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -444,7 +458,11 @@ exports[`Tag Theme: type= presets, shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -465,7 +483,6 @@ exports[`Tag Theme: type= primary, closable=false shape= round 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -477,7 +494,7 @@ exports[`Tag Theme: type= primary, closable=false shape= round 1`] = `
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   border-radius: 2rem;
-  color: #666666;
+  color: #646A6E;
   background: #e8e8e8;
   border: 1px solid #e8e8e8;
   padding: 0 0.8rem;
@@ -521,7 +538,11 @@ exports[`Tag Theme: type= primary, closable=false shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -542,7 +563,6 @@ exports[`Tag Theme: type= primary, shape= round 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -554,7 +574,7 @@ exports[`Tag Theme: type= primary, shape= round 1`] = `
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   border-radius: 2rem;
-  color: #666666;
+  color: #646A6E;
   background: #e8e8e8;
   border: 1px solid #e8e8e8;
   padding: 0 0.8rem;
@@ -598,7 +618,11 @@ exports[`Tag Theme: type= primary, shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -619,7 +643,6 @@ exports[`Tag default: type = basic 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -631,7 +654,7 @@ exports[`Tag default: type = basic 1`] = `
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   border-radius: 0.4rem;
-  color: #666666;
+  color: #646A6E;
   border: 1px solid #cccccc;
   padding: 0 0.8rem;
   opacity: 1;
@@ -674,7 +697,11 @@ exports[`Tag default: type = basic 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -695,7 +722,6 @@ exports[`Tag default: type = basic, shape = round 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -707,7 +733,7 @@ exports[`Tag default: type = basic, shape = round 1`] = `
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   border-radius: 2rem;
-  color: #666666;
+  color: #646A6E;
   border: 1px solid #cccccc;
   padding: 0 0.8rem;
   opacity: 1;
@@ -750,7 +776,11 @@ exports[`Tag default: type = basic, shape = round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -771,7 +801,6 @@ exports[`Tag default: type = customs 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -783,7 +812,7 @@ exports[`Tag default: type = customs 1`] = `
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   border-radius: 0.4rem;
-  color: #fff;
+  color: #ffffff;
   background: #4d63ff;
   border: 1px solid #4d63ff;
   padding: 0 0.8rem;
@@ -827,7 +856,11 @@ exports[`Tag default: type = customs 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -848,7 +881,6 @@ exports[`Tag default: type = customs, shape = round 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -860,7 +892,7 @@ exports[`Tag default: type = customs, shape = round 1`] = `
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   border-radius: 2rem;
-  color: #fff;
+  color: #ffffff;
   background: #4d63ff;
   border: 1px solid #4d63ff;
   padding: 0 0.8rem;
@@ -904,7 +936,11 @@ exports[`Tag default: type = customs, shape = round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -925,7 +961,6 @@ exports[`Tag default: type = presets 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -981,7 +1016,11 @@ exports[`Tag default: type = presets 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -1002,7 +1041,6 @@ exports[`Tag default: type = presets, shape = round 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -1058,7 +1096,11 @@ exports[`Tag default: type = presets, shape = round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -1079,7 +1121,6 @@ exports[`Tag default: type = primary 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -1091,7 +1132,7 @@ exports[`Tag default: type = primary 1`] = `
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   border-radius: 0.4rem;
-  color: #666666;
+  color: #646A6E;
   background: #e8e8e8;
   border: 1px solid #e8e8e8;
   padding: 0 0.8rem;
@@ -1135,7 +1176,11 @@ exports[`Tag default: type = primary 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -1156,7 +1201,6 @@ exports[`Tag default: type = primary, shape = round 1`] = `
   display: inline-block;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-user-select: none;
@@ -1168,7 +1212,7 @@ exports[`Tag default: type = primary, shape = round 1`] = `
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   border-radius: 2rem;
-  color: #666666;
+  color: #646A6E;
   background: #e8e8e8;
   border: 1px solid #e8e8e8;
   padding: 0 0.8rem;
@@ -1212,7 +1256,11 @@ exports[`Tag default: type = primary, shape = round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"

@@ -18,7 +18,6 @@ const Wrapper = styled.div`
 `;
 const TabsWrapper = styled.div`
   display: inline-block;
-  margin-left: 20px;
 `;
 const CardContainer = styled.div`
   text-align: center;
@@ -67,7 +66,7 @@ class AmountCard extends React.Component<Object, Object> {
       <CardContainer>
         <Price>{'价格'}</Price>
         <PriceNum>
-          <PriceNum style={{ fontSize: 32 }}>{int}</PriceNum>
+          <PriceNum style={{ fontSize: 60, marginTop: 16 }}>{int}</PriceNum>
           <PriceNum style={{ fontSize: 18 }}>{decimals}</PriceNum>
         </PriceNum>
         <Buy>{'购买'}</Buy>
@@ -76,106 +75,10 @@ class AmountCard extends React.Component<Object, Object> {
   }
 }
 export const CardDemo = () => {
-  const view = {
-    [Widget.Card]: {
-      Container: {
-        normal: {
-          width: 500,
-          height: 200,
-        },
-      },
-      CardTitleHeadContainer: {
-        normal: {
-          padding: {
-            top: 0,
-          },
-          height: 50,
-          background: {
-            color: '#e8e8e8',
-          },
-        },
-      },
-      CardTipTitleContainer: {
-        normal: {
-          height: 30,
-        },
-      },
-      CardTitleTipLine: {
-        normal: {
-          width: 4,
-          height: 30,
-          margin: {
-            left: 0,
-            right: 10,
-          },
-          borderRadius: {
-            topLeft: 0,
-            bottomLeft: 0,
-          },
-        },
-      },
-    },
-  };
-  const imageVCard = {
-    [Widget.Card]: {
-      Container: {
-        normal: {
-          width: 200,
-          height: 300,
-          opacity: 0.8,
-        },
-      },
-      CardImage: {
-        normal: {
-          width: 200,
-          height: 160,
-        },
-      },
-      CardDescription: {
-        normal: {
-          color: 'blue',
-        },
-      },
-      CardTitle: {
-        normal: {
-          height: 20,
-          color: 'pink',
-        },
-      },
-      CardOperation: {
-        normal: {
-          color: 'blue',
-        },
-      },
-    },
-  };
-  const imageHCard = {
-    [Widget.Card]: {
-      Container: {
-        normal: {
-          width: 360,
-          height: 150,
-        },
-      },
-      CardImage: {
-        normal: {
-          width: 200,
-        },
-      },
-    },
-  };
-  const avatarVCard = {
-    [Widget.Card]: {
-      Container: { normal: { width: 160, height: 220 } },
-      CardAvatar: { Container: { normal: { width: 80, height: 80, margin: { top: 20 } } } },
-    },
-  };
   const avatarHCard = {
     [Widget.Card]: {
-      Container: { normal: { width: 260, height: 140 } },
-      CardAvatar: {
-        Container: { normal: { width: 80, height: 80, margin: { top: 10, left: 10 } } },
-      },
+      Container: { normal: { width: 240 } },
+      CardTitle: { normal: { padding: { top: 30 } } },
     },
   };
   return (
@@ -205,31 +108,27 @@ export const CardDemo = () => {
         />
       </Wrapper>
 
-      <Theme config={view}>
-        <Wrapper>
-          <Card
-            showTipBottomLine
-            type={'tip'}
-            title={'this is title'}
-            description={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
-          />
-        </Wrapper>
-      </Theme>
+      <Wrapper>
+        <Card
+          showTipBottomLine
+          type={'tip'}
+          title={'this is title'}
+          description={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
+        />
+      </Wrapper>
 
-      <Theme config={avatarVCard}>
-        <p>头像样式</p>
-        <Wrapper>
-          <Card
-            type={'avatar'}
-            title={'this is title'}
-            description={'this is description'}
-            imageOrientation={'vertical'}
-            avatar={
-              'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png'
-            }
-          />
-        </Wrapper>
-      </Theme>
+      <p>头像样式</p>
+      <Wrapper>
+        <Card
+          type={'avatar'}
+          title={'this is title'}
+          description={'this is description'}
+          imageOrientation={'vertical'}
+          avatar={
+            'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png'
+          }
+        />
+      </Wrapper>
 
       <p>头像样式</p>
       <Theme config={avatarHCard}>
@@ -249,35 +148,31 @@ export const CardDemo = () => {
         </Wrapper>
       </Theme>
 
-      <Theme config={imageVCard}>
-        <p>图片样式</p>
-        <Wrapper>
-          <Card
-            viewClass={'cardImage'}
-            type={'image'}
-            imageOrientation={'vertical'}
-            title={'this is title'}
-            description={'this is description'}
-            image={
-              'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg'
-            }
-          />
-        </Wrapper>
-      </Theme>
       <p>图片样式</p>
-      <Theme config={imageHCard}>
-        <Wrapper>
-          <Card
-            type={'image'}
-            title={'this is title'}
-            imageOrientation={'horizontal'}
-            description={'this is description'}
-            image={
-              'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg'
-            }
-          />
-        </Wrapper>
-      </Theme>
+      <Wrapper>
+        <Card
+          viewClass={'cardImage'}
+          type={'image'}
+          imageOrientation={'vertical'}
+          title={'this is title'}
+          description={'this is description'}
+          image={
+            'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg'
+          }
+        />
+      </Wrapper>
+      <p>图片样式</p>
+      <Wrapper>
+        <Card
+          type={'image'}
+          title={'this is title'}
+          imageOrientation={'horizontal'}
+          description={'this is description'}
+          image={
+            'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg'
+          }
+        />
+      </Wrapper>
     </Wrapper>
   );
 };
@@ -292,7 +187,7 @@ export const ComboDemo = () => {
   const tabsCard = {
     [Widget.Card]: {
       Container: {
-        normal: { width: 400, height: 240 },
+        normal: { width: '100%', height: 240 },
       },
     },
   };

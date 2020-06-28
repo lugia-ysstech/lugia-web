@@ -1,7 +1,9 @@
 import Alert from './alert';
 import AmountInput from './amount-input';
+import Anchor from './anchor/index';
 import AutoComplete from './auto-complete';
 import Avatar from './avatar';
+import BackTop from './back-top/index';
 import Badge from './badge';
 import BasicElements from './basic-elements';
 import Breadcrumb from './breadcrumb';
@@ -10,17 +12,24 @@ import Card from './card';
 import Carousel from './carousel';
 import Cascader from './cascader';
 import Checkbox from './checkbox';
+import Collapse from './collapse';
 import DatePicker from './date-picker';
 import Divider from './divider';
+import Drawer from './drawer';
 import Dropmenu from './dropmenu';
 import Icon from './icon';
 import Input from './input';
 import Label from './label';
 import Loading from './loading';
 import Menu from './menu';
+import Message from './message/message';
+import Modal from './modal';
 import Navmenu from './navmenu';
+import Notification from './notification/notification';
 import NumberInput from './number-input';
 import Pagination from './pagination';
+import Popconfirm from './popconfirm/index';
+import Popover from './popover/index';
 import Progress from './progress';
 import Radio from './radio';
 import Rate from './rate';
@@ -34,11 +43,14 @@ import Tabs from './tabs';
 import Tag from './tag';
 import TimeLine from './time-line';
 import TimePicker from './time-picker';
+import Tooltip from './tooltip/index';
 import Transfer from './transfer';
 import Tree from './tree';
 import TreeSelect from './tree-select';
 import Upload from './upload';
 import Window from './window';
+import { load } from './css/theme-common-dict.js';
+export { load };
 export default [
   {
     meta: {
@@ -46,6 +58,7 @@ export default [
       title: '警告提示',
       desc: '警告提示信息。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         type: {
           type: 'AlertType',
           desc: '指定警告提示的样式，有四种可以选择：success、error、info、warning',
@@ -57,6 +70,7 @@ export default [
         closable: { type: 'boolean', desc: '是否显示关闭按钮', defaultValue: false },
         description: { type: 'React.node', desc: '提示内容的辅助性文字介绍' },
         icon: { type: 'string', desc: '自定义图标，showIcon 为 true 时有效' },
+        closeIcon: { type: 'string', desc: '自定义关闭图标, closable 为 true 时有效' },
       },
       events: {
         onClose: {
@@ -83,7 +97,7 @@ export default [
             ['width'],
             ['height'],
             ['background'],
-            ['border', 'left'],
+            ['border'],
             ['borderRadius'],
             ['boxShadow'],
           ],
@@ -102,11 +116,18 @@ export default [
           name: '警告提示关闭文字样式',
           desc: '为警告提示关闭文字配置样式',
           normal: [['color'], ['font']],
+          hover: [['color']],
+          active: [['color']],
+        },
+        CloseIcon: {
+          name: '警告提示关闭图标样式',
+          desc: '为警告提示关闭图标配置样式',
+          normal: [['color'], ['font']],
         },
         AlertIcon: {
           name: '警告提示图标样式',
           desc: '为警告提示图标配置样式',
-          normal: [['color'], ['fontSize']],
+          normal: [['color'], ['fontSize'], ['padding']],
         },
       },
       childrenWidget: [],
@@ -121,6 +142,7 @@ export default [
       title: '金额输入框',
       desc: '用于金额数字的填写,可切换人民币大小写显示效果.',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
         transform: {
           type: 'boolean',
@@ -138,6 +160,9 @@ export default [
         amountPrefix: { type: 'PrefixType', desc: "货币种类,默认'¥'", defaultValue: '¥' },
         defaultValue: { type: 'string', desc: '默认显示内容' },
         value: { type: 'string', desc: '显示内容' },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
       },
       events: {
         onChange: {
@@ -177,62 +202,78 @@ export default [
       category: ['数据录入'],
       theme: {
         Container: {
-          name: '金额输入框外部容器',
-          desc: '金额输入框外部容器',
-          normal: [['width'], ['height'], ['margin']],
-        },
-        InnerInput: {
           name: '金额输入框',
-          theme: {
-            Input: {
-              name: '金额输入框中输入框部分',
-              desc: '金额输入框中输入框部分',
-              normal: [
-                ['fontSize'],
-                ['font'],
-                ['color'],
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['cursor'],
-                ['opacity'],
-                ['boxShadow'],
-              ],
-              hover: [
-                ['border'],
-                ['borderRadius'],
-                ['cursor'],
-                ['background'],
-                ['opacity'],
-                ['boxShadow'],
-              ],
-              active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
-              disabled: [
-                ['fontSize'],
-                ['font'],
-                ['color'],
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['cursor'],
-                ['padding'],
-                ['opacity'],
-              ],
-            },
-            ClearButton: {
-              name: '输入框清除图标',
-              desc: '输入框后缀清除图标',
-              normal: [['color'], ['fontSize']],
-              hover: [],
-              clicked: [],
-              disabled: [],
-            },
-            Placeholder: {
-              name: '输入框提示信息文字',
-              desc: '输入框提示信息文字',
-              normal: [['color'], ['fontSize'], ['font']],
-            },
-          },
+          desc: '金额输入框配置',
+          normal: [
+            ['width'],
+            ['height'],
+            ['margin'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['cursor'],
+            ['opacity'],
+            ['boxShadow'],
+          ],
+          hover: [
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+            ['opacity'],
+            ['boxShadow'],
+            ['cursor'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          focus: [
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+            ['opacity'],
+            ['boxShadow'],
+            ['cursor'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          active: [
+            ['boxShadow'],
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+            ['opacity'],
+            ['cursor'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          disabled: [
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['opacity'],
+            ['cursor'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+        },
+        ClearButton: {
+          name: '输入框清除图标',
+          desc: '输入框后缀清除图标',
+          normal: [['color'], ['fontSize'], ['font']],
+          hover: [['color'], ['fontSize'], ['font']],
+          clicked: [],
+          disabled: [['color'], ['fontSize'], ['font']],
+        },
+        Placeholder: {
+          name: '输入框提示信息文字',
+          desc: '输入框提示信息文字',
+          normal: [['color'], ['fontSize'], ['font']],
         },
         AmountInputPrefix: {
           name: '金额输入框主体前缀',
@@ -257,7 +298,7 @@ export default [
                 ['borderRadius'],
                 ['border'],
               ],
-              hover: [],
+              hover: [['background'], ['boxShadow']],
               clicked: [],
               disabled: [],
             },
@@ -281,10 +322,47 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Anchor',
+      title: '锚点',
+      desc: '用于跳转到页面指定位置。',
+      props: {
+        affix: { type: 'boolean', desc: '是否固定在窗口', defaultValue: true },
+        offsetTop: { type: 'number', desc: '距离窗口顶部达到指定值后触发', defaultValue: 0 },
+        offsetBottom: { type: 'number', desc: '距离窗口底部达到指定值后触发' },
+        slideType: { type: 'SlideType', desc: '分割线样式', defaultValue: 'circle' },
+        slideLine: { type: 'boolean', desc: '是否展示分割线', defaultValue: true },
+        useHref: { type: 'boolean', desc: '是否启用a标签的href属性', defaultValue: true },
+      },
+      events: {
+        onClick: {
+          desc: '点击锚点时触发',
+          args: [
+            { name: 'event', desc: '点击的DOM事件', type: 'Object' },
+            { name: 'href', desc: '点击的锚点href值', type: 'string' },
+          ],
+        },
+      },
+      type: { SlideType: ['circle', 'line'] },
+      category: ['其他'],
+      childrenWidget: [],
+      hideInTollPanel: true,
+    },
+    target: Anchor,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAAAodJREFUeAHt3DFuFDEYhuGZkC6RAKXNAfYCcAbSQCqQKNIlh8oBKJBoKCg4B8UegGI7RKCFgYm0haNY2sb2b/mJFO3aGdmf3+/VFJtMpskXAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggg0COBuXXoy+vl4u8y3Z6eLGfvLu6+vXn17OVjmT58/Lw8Nv9w7v3b1/dn6v36h+eqNT6utVFun1WGZZnOf/2ep09fT1/krjNfh8BRnW3yu6wy7H/64+eT/VuvjQg0F6LRuW2bIUCIDJhRpwkxavOZcxMiA2bUaUKM2nzm3ITIgBl1mhCjNp85NyEyYEadJsSozWfOTYgMmFGnCTFq85lzNxdinqfv+2zPn/7Zv/XaiEBzIY7m6WaVYpXh6vKuEQbbhiOw2+2W9TtcsMECNb9DDMY7/HEJEb6iugEJUZd3+N0IEb6iugEJUZd3+N0IEb6iugEJUZd3+N2a/xn+oYS22+1Bn1FsNpv75zJKX39o7t6uc4forbHCeQlRGHBvyxOit8YK5yVEYcC9LU+I3hornJcQhQH3tjwhemuscF5CFAbc2/KE6K2xwnkJURhwb8sTorfGCuclRGHAvS1PiN4aK5yXEIUB97Y8IXprbJS8nsuI0bQ7RIwewqQgRJgqYgQhRIwewqQgRJgqYgQhRIwewqQgRJgqYgQhRIwewqTwXIbnOBIZ3SESHAaE4EBCgBAJDgNCcCAhQIgEhwEhOJAQIESCw4AQHEgIECLBYUAIDiQECJHgMCAEBxIChEhwGBCCAwmBSL/+/vI/2UH/ejA5gQECCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAALTP56nXGLoWD7zAAAAAElFTkSuQmCC',
+  },
+  {
+    meta: {
       widgetName: 'AutoComplete',
       title: '自动完成',
       desc: '需要自动完成数据时使用',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        size: {
+          type: 'sizeType',
+          desc: '可配置三种尺寸大小的autoComplete',
+          propsDefaultValue: 'default',
+        },
         data: {
           type: 'string[]',
           desc: '生成选择项的数据',
@@ -294,9 +372,11 @@ export default [
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
         value: { type: 'string', desc: '给定输入框的值' },
         defaultValue: { type: 'string', desc: '默认输入框的值，仅第一次生效' },
-        disabled: { type: 'boolean', desc: '是否禁用输入框', defaultValue: false },
-        showOldValue: { type: 'boolean', desc: '是否显示上一次选中的值', defaultValue: true },
+        disabled: { type: 'boolean', desc: '是否禁用输入框', propsDefaultValue: false },
+        showOldValue: { type: 'boolean', desc: '是否显示上一次选中的值', propsDefaultValue: true },
         placeholder: { type: 'string', desc: 'input输入提示信息' },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         prefix: { type: 'ReactNode', desc: '输入框前缀', isHidden: true },
         suffix: { type: 'ReactNode', desc: '输入框后缀', isHidden: true },
       },
@@ -318,81 +398,133 @@ export default [
           args: [{ name: 'selectedKeys', desc: '选中项的数据', type: 'string[]' }],
         },
       },
-      type: {},
+      type: {
+        sizeType: ['small', 'default', 'large'],
+        ValidateStatus: ['default', 'error'],
+        ValidateType: ['top', 'bottom', 'inner'],
+      },
       category: ['数据录入'],
       theme: {
-        AutoInput: {
-          name: '自动完成输入框',
-          theme: {
-            Container: {
-              name: '输入框外部容器',
-              desc: '输入框外部容器',
-              normal: [
-                ['width'],
-                ['height'],
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['boxShadow'],
-                ['margin'],
-                ['padding'],
-              ],
-              hover: [
-                ['width'],
-                ['height'],
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['boxShadow'],
-                ['margin'],
-                ['padding'],
-              ],
-              clicked: [
-                ['width'],
-                ['height'],
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['boxShadow'],
-                ['margin'],
-                ['padding'],
-              ],
-              disabled: [
-                ['width'],
-                ['height'],
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['boxShadow'],
-                ['margin'],
-                ['padding'],
-              ],
-            },
-            InputSuffix: {
-              name: '后缀图标',
-              desc: '输入框后缀自定义图标',
-              normal: [['color'], ['fontSize']],
-              hover: [],
-              clicked: [],
-              disabled: [],
-            },
-            InputPrefix: {
-              name: '前缀图标',
-              desc: '输入框前缀自定义图标',
-              normal: [['color'], ['fontSize']],
-              hover: [],
-              clicked: [],
-              disabled: [],
-            },
-            InputClearButton: {
-              name: '输入框清除图标',
-              desc: '输入框后缀清除图标',
-              normal: [['color'], ['fontSize']],
-              hover: [],
-              clicked: [],
-              disabled: [],
-            },
-          },
+        Container: {
+          name: '输入框主体',
+          desc: '输入框主体结构',
+          normal: [
+            ['width'],
+            ['height'],
+            ['margin'],
+            ['padding'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['background'],
+            ['opacity'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['cursor'],
+          ],
+          hover: [
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+            ['opacity'],
+            ['boxShadow'],
+            ['cursor'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          focus: [
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+            ['opacity'],
+            ['boxShadow'],
+            ['cursor'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          active: [
+            ['boxShadow'],
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+            ['opacity'],
+            ['cursor'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          disabled: [
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['opacity'],
+            ['cursor'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的输入框',
+          desc: '配置校验失败的输入框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
+        },
+        InputSuffix: {
+          name: '后缀图标',
+          desc: '输入框后缀自定义图标',
+          normal: [['color'], ['fontSize']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+        InputPrefix: {
+          name: '前缀图标',
+          desc: '输入框前缀自定义图标',
+          normal: [['color'], ['fontSize']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+        InputClearButton: {
+          name: '输入框清除图标',
+          desc: '输入框后缀清除图标',
+          normal: [['color'], ['fontSize']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+        Placeholder: {
+          name: '输入框提示信息文字',
+          desc: '输入框提示信息文字',
+          normal: [['color'], ['fontSize'], ['font']],
         },
         OldItem: {
           name: '展示上一次选中的值',
@@ -527,7 +659,7 @@ export default [
           },
         },
       },
-      defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+      defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
     },
     target: AutoComplete,
@@ -540,6 +672,7 @@ export default [
       title: '头像',
       desc: '用来代表用户或事物，支持图片、图标或字符展示。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         size: {
           type: 'AvatarSize',
@@ -634,7 +767,7 @@ export default [
             SrcAvatar: {
               name: '头像图片',
               desc: '对头像图片配置样式',
-              normal: [['borderRadius']],
+              normal: [['width'], ['height'], ['borderRadius']],
               hover: [],
               clicked: [],
               disabled: [],
@@ -664,15 +797,7 @@ export default [
         FontAvatar: {
           name: '头像文字',
           desc: '对头像文字配置样式',
-          normal: [
-            ['width'],
-            ['height'],
-            ['margin'],
-            ['padding'],
-            ['fontSize'],
-            ['color'],
-            ['background'],
-          ],
+          normal: [['width'], ['height'], ['fontSize'], ['color'], ['background']],
           hover: [['width'], ['height'], ['fontSize'], ['color'], ['background']],
           clicked: [],
           disabled: [],
@@ -690,6 +815,7 @@ export default [
       title: '图标头像',
       desc: '使用图标样式展示头像',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         size: {
           type: 'AvatarSize',
@@ -759,6 +885,7 @@ export default [
       title: '图片头像',
       desc: '使用图片资源展示头像',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         size: {
           type: 'AvatarSize',
@@ -809,7 +936,7 @@ export default [
         SrcAvatar: {
           name: '头像图片',
           desc: '对头像图片配置样式',
-          normal: [['borderRadius']],
+          normal: [['width'], ['height'], ['borderRadius']],
           hover: [],
           clicked: [],
           disabled: [],
@@ -824,10 +951,67 @@ export default [
   },
   {
     meta: {
+      widgetName: 'BackTop',
+      title: '回到顶部',
+      desc: '返回页面顶部。',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        visibilityHeight: {
+          type: 'number',
+          desc: '页面滚动高度达到指定值后出现BackTop',
+          defaultValue: 400,
+        },
+        target: {
+          type: 'Function',
+          desc: '设置监听滚动事件的元素，返回值为DOM元素的函数',
+          defaultValue: '() => window',
+        },
+        showType: { type: 'showType', desc: '选择backTop是图标类型，还是文字类型' },
+        text: { type: 'string', desc: 'showType为文字类型时，配置的文字信息' },
+        icon: { type: 'string', desc: 'showType为图标类型时，配置的图标信息' },
+      },
+      type: {
+        BackTopStyle: {
+          color: { type: 'string', desc: '组件颜色' },
+          backgroundColor: { type: 'string', desc: '组件背景颜色' },
+        },
+        showType: ['textType', 'iconType'],
+      },
+      category: ['其他'],
+      theme: {
+        Container: {
+          name: '返回顶部整体样式',
+          desc: '配置返回顶部整体样式',
+          normal: [
+            ['background'],
+            ['color'],
+            ['width'],
+            ['height'],
+            ['opacity'],
+            ['border'],
+            ['borderRadius'],
+          ],
+        },
+        BackTopIcon: {
+          name: '返回顶部图标样式',
+          desc: '配置返回顶部图标样式',
+          normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding']],
+        },
+      },
+      childrenWidget: [],
+      hideInTollPanel: true,
+    },
+    target: BackTop,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAABSlJREFUaAXlm8trE0Ecxydp+kobQl8aWyh9UnoqfYAIxcdNQRC81Yve/AN83PSgNx9/gDd7sbeCULA3HwRE6IPSg4Sei0UpEgSpbZr6/W53l93NZpPZR5LdDgw7u5n5/X6fmd88dnYSEwGFtbW1JETPI84iTsRisQlcMycnJymkU0gLpP8g/QfJPaRzuDKuI2bn5ub+4up7iPkpcWtr61yhULgDmbcRLwKixY18VMIhyn1DXE4kEu+mpqZ+upFjV8YX4I2NjcuAe4R4HUoSdoo8PCugAlYRX87MzHzxIEcp6gkYbnsNUp4h0nVrEbJNTU1PpqenP7lV5goYoBeg8DXiglvFHsstofwD9PMfsnKkgeG+N4rFIhWmZZX5nD8fj8cX4OYfZOTGZTKjZR+gn66gTL1haXaattAmGYaqWnhnZ6c1n8+/geC7MsJrmHcxnU7fHx8f/1dJZ0VguHAfavI94qVKwur5O0bxr4i34OK/nOxwdGm2bBhgCcgGoa202TUw3bjRW9YIR1vVrmd8bEqXbWF1MGjUPmuCsNzcdRrIbPswpx7U1gpi2QqxKGmoW/TlIuJNuymrBBi1cwHWf0dshKnHS0XmUXjSujixa0GuoMIOy4oiA1lMwdTCm5ubV4+Pjz+acoT8Bmvva8a1t6mFAfs85Hwl5luZdGAMVFeQu1ZvPSWGBfhgXmVTVOjAGJEfBqi0rqKNbEof5k7F0dHRLqzy++W9rqAG5YXm5uYB7pwoLaxuy9QMdmBgQHR1dRnsCTyZUBmF5tLcg6pJ6O3tFZlMRgwNDYnOzs6a6FSVKIwxLDSSWJX8hp+72nCTsRivcGJ0dFRAn1IMtS5yuZw4ODiQEeMqL3QegrGLLTxfC9hkMimGh4d1WFqNHUkxNjamXF1RSBRSGecJzH3jQENLS4sChkVAiZ7W1lblN2zXlPwWwINZapkIQLAukpDYiRAYJfVn1kRHR4cYGRmxPg7ifiIO3w4MmH2Vfbatra2i8ezfg4ODFfN5yUBWtnDGixCnshyJU6mUUxbTb319fcoIbnro700mjs5cvUUSyjnXdnd3S5Q4zdrf3x/YHE1WurTvwNpcK02LAuwG9Iwg5miy+j40+tEXOWJX2/dlK5Uuzc+VvgS7udat4CDmaLLSpX0Bdppr3UL7PUeTlS6959YgrRznWq6YnOZaLa/s1ec5eo8unZM1wpifgwz7W3t7u/Gxr2k/xgUaRFa+EnoC5jRC1zs85Ef74AKhe3p6xP7+vhclCvC6Fwm7u7uCMSRhnX04C7cMtnkaoDZUxmxcPS3DAyRRD9/Iqi08lqNOCz6FUQHm0SA8KEQYuqAynu5pcTcPPr4aVWCyaWe9NJfmov1lhIF1Nh1YPfSVjSB0VmVT0HRgFfRp1ICx7H1iZDIBY9jml0OewYpKWDJ+OSSUCVil5LknfkwOeyADWUyhBJhfzHnCDYNY0ZQzRDe0nQxksZpdAswMPBuBN4vH1sxhuaftduc7aP/pN48yJPgM8xY/he0kzyJa9l4ZJNs+rOfFK9l9uMdX/UGDJ2grbXYy09altQI8uwght8IATRtpa6Xzlo4urYGfqcOlGjSvPOGGWnyBQcHRM4xlgkzDliIHKPTZ19XqqaqFjcJ4Su/MHBAnuDrcTyJZzxUZdU+Wm3poZ7kg3cJGQepBNp7tqtVxp/r8ycMIzTTPQaEvPUQM8m88r9Cin626Ze89tbBV2fb29nls1y7gebT/qGUF5z0Py+BCV59FbJi/4v0HGOyzAj414u4AAAAASUVORK5CYII=',
+  },
+  {
+    meta: {
       widgetName: 'Badge',
       title: '徽标数',
       desc: '图标右上角的圆形徽标数字',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         showZero: { type: 'boolean', desc: '当数值为 0 时，是否展示 Badge', defaultValue: false },
         overflowCount: {
@@ -902,6 +1086,7 @@ export default [
       title: '数字徽标',
       desc: '徽标数大于0时,显示的数字',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         showZero: { type: 'boolean', desc: '当数值为 0 时，是否展示 Badge', defaultValue: true },
         overflowCount: {
@@ -950,7 +1135,10 @@ export default [
       widgetName: 'BasicElements',
       title: '基本元素',
       desc: '基本元素',
-      props: { shape: { type: 'shapeType', desc: '基本元素形状', defaultValue: 'square' } },
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        shape: { type: 'shapeType', desc: '基本元素形状', defaultValue: 'square' },
+      },
       type: { shapeType: ['circle', 'square'] },
       category: ['通用'],
       designInfo: {
@@ -1015,7 +1203,10 @@ export default [
       widgetName: 'BasicElements',
       title: '圆形元素',
       desc: '圆形元素',
-      props: { shape: { type: 'shapeType', desc: '基本元素形状', defaultValue: 'circle' } },
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        shape: { type: 'shapeType', desc: '基本元素形状', defaultValue: 'circle' },
+      },
       type: { shapeType: ['circle', 'square'] },
       category: ['通用'],
       theme: {
@@ -1052,6 +1243,7 @@ export default [
       title: '面包屑',
       desc: '显示系统的层级关系和当先所在的位置,并能向上返回',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         separator: { type: 'string', desc: '自定义层级分隔符', defaultPropsValue: '/' },
         lastSeparator: { type: 'string | React.Element<any>', desc: '最后一个元素的分隔符' },
         routes: {
@@ -1311,6 +1503,7 @@ export default [
       title: '按钮',
       desc: '方便用户点击操作',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
           type: 'boolean',
           desc: '按钮是否禁用，true 禁用 false 可用',
@@ -1334,8 +1527,8 @@ export default [
         },
         loading: { type: 'boolean', desc: '设置按钮加载状态' },
         circle: { type: 'boolean', desc: '设置圆形按钮' },
-        icon: { type: 'string', desc: '设置按钮前置图标类型' },
-        suffixIcon: { type: 'string', desc: '设置按钮后置图标类型' },
+        icon: { type: 'icon', desc: '设置按钮前置图标类型' },
+        suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
       },
@@ -1374,11 +1567,12 @@ export default [
                 ['padding'],
                 ['margin'],
                 ['borderRadius'],
+                ['boxShadow'],
               ],
-              hover: [['background'], ['border']],
-              active: [['background'], ['border']],
-              disabled: [['background'], ['border']],
-              focus: [['background'], ['border']],
+              hover: [['background'], ['border'], ['boxShadow']],
+              active: [['background'], ['border'], ['boxShadow']],
+              disabled: [['background'], ['border'], ['boxShadow']],
+              focus: [['background'], ['border'], ['boxShadow']],
             },
             ButtonText: {
               name: '按钮文字样式',
@@ -1426,11 +1620,12 @@ export default [
                 ['padding'],
                 ['margin'],
                 ['borderRadius'],
+                ['boxShadow'],
               ],
-              hover: [['background'], ['border']],
-              active: [['background'], ['border']],
-              disabled: [['background'], ['border']],
-              focus: [['background'], ['border']],
+              hover: [['background'], ['border'], ['boxShadow']],
+              active: [['background'], ['border'], ['boxShadow']],
+              disabled: [['background'], ['border'], ['boxShadow']],
+              focus: [['background'], ['border'], ['boxShadow']],
             },
             ButtonText: {
               name: '按钮文字样式',
@@ -1478,11 +1673,12 @@ export default [
                 ['padding'],
                 ['margin'],
                 ['borderRadius'],
+                ['boxShadow'],
               ],
-              hover: [['background'], ['border']],
-              active: [['background'], ['border']],
-              disabled: [['background'], ['border']],
-              focus: [['background'], ['border']],
+              hover: [['background'], ['border'], ['boxShadow']],
+              active: [['background'], ['border'], ['boxShadow']],
+              disabled: [['background'], ['border'], ['boxShadow']],
+              focus: [['background'], ['border'], ['boxShadow']],
             },
             ButtonText: {
               name: '按钮文字样式',
@@ -1579,11 +1775,12 @@ export default [
             ['padding'],
             ['margin'],
             ['borderRadius'],
+            ['boxShadow'],
           ],
-          hover: [['background'], ['border']],
-          active: [['background'], ['border']],
-          disabled: [['background'], ['border']],
-          focus: [['background'], ['border']],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+          disabled: [['background'], ['border'], ['boxShadow']],
+          focus: [['background'], ['border'], ['boxShadow']],
         },
         ButtonText: {
           name: '按钮文字样式',
@@ -1625,6 +1822,7 @@ export default [
       title: '朴素按钮',
       desc: '朴素按钮',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
           type: 'boolean',
           desc: '按钮是否禁用，true 禁用 false 可用',
@@ -1648,8 +1846,8 @@ export default [
         },
         loading: { type: 'boolean', desc: '设置按钮加载状态' },
         circle: { type: 'boolean', desc: '设置圆形按钮' },
-        icon: { type: 'string', desc: '设置按钮前置图标类型' },
-        suffixIcon: { type: 'string', desc: '设置按钮后置图标类型' },
+        icon: { type: 'icon', desc: '设置按钮前置图标类型' },
+        suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
       },
@@ -1682,11 +1880,12 @@ export default [
             ['padding'],
             ['margin'],
             ['borderRadius'],
+            ['boxShadow'],
           ],
-          hover: [['background'], ['border']],
-          active: [['background'], ['border']],
-          disabled: [['background'], ['border']],
-          focus: [['background'], ['border']],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+          disabled: [['background'], ['border'], ['boxShadow']],
+          focus: [['background'], ['border'], ['boxShadow']],
         },
         ButtonText: {
           name: '按钮文字样式',
@@ -1729,6 +1928,7 @@ export default [
       title: '图标按钮',
       desc: '图标按钮',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
           type: 'boolean',
           desc: '按钮是否禁用，true 禁用 false 可用',
@@ -1752,12 +1952,8 @@ export default [
         },
         loading: { type: 'boolean', desc: '设置按钮加载状态' },
         circle: { type: 'boolean', desc: '设置圆形按钮' },
-        icon: {
-          type: 'string',
-          desc: '设置按钮前置图标类型',
-          defaultValue: 'lugia-icon-logo_lugia',
-        },
-        suffixIcon: { type: 'string', desc: '设置按钮后置图标类型' },
+        icon: { type: 'icon', desc: '设置按钮前置图标类型', defaultValue: 'lugia-icon-logo_lugia' },
+        suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
       },
@@ -1790,11 +1986,12 @@ export default [
             ['padding'],
             ['margin'],
             ['borderRadius'],
+            ['boxShadow'],
           ],
-          hover: [['background'], ['border']],
-          active: [['background'], ['border']],
-          disabled: [['background'], ['border']],
-          focus: [['background'], ['border']],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+          disabled: [['background'], ['border'], ['boxShadow']],
+          focus: [['background'], ['border'], ['boxShadow']],
         },
         ButtonText: {
           name: '按钮文字样式',
@@ -1837,6 +2034,7 @@ export default [
       title: '圆形图标按钮',
       desc: '圆形图标按钮',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
           type: 'boolean',
           desc: '按钮是否禁用，true 禁用 false 可用',
@@ -1860,12 +2058,8 @@ export default [
         },
         loading: { type: 'boolean', desc: '设置按钮加载状态' },
         circle: { type: 'boolean', desc: '设置圆形按钮', defaultValue: true },
-        icon: {
-          type: 'string',
-          desc: '设置按钮前置图标类型',
-          defaultValue: 'lugia-icon-logo_lugia',
-        },
-        suffixIcon: { type: 'string', desc: '设置按钮后置图标类型' },
+        icon: { type: 'icon', desc: '设置按钮前置图标类型', defaultValue: 'lugia-icon-logo_lugia' },
+        suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: '' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
       },
@@ -1898,11 +2092,12 @@ export default [
             ['padding'],
             ['margin'],
             ['borderRadius'],
+            ['boxShadow'],
           ],
-          hover: [['background'], ['border']],
-          active: [['background'], ['border']],
-          disabled: [['background'], ['border']],
-          focus: [['background'], ['border']],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+          disabled: [['background'], ['border'], ['boxShadow']],
+          focus: [['background'], ['border'], ['boxShadow']],
         },
         ButtonText: {
           name: '按钮文字样式',
@@ -1936,6 +2131,7 @@ export default [
       title: '文字按钮',
       desc: '文字按钮',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
           type: 'boolean',
           desc: '按钮是否禁用，true 禁用 false 可用',
@@ -1959,8 +2155,8 @@ export default [
         },
         loading: { type: 'boolean', desc: '设置按钮加载状态' },
         circle: { type: 'boolean', desc: '设置圆形按钮' },
-        icon: { type: 'string', desc: '设置按钮前置图标类型' },
-        suffixIcon: { type: 'string', desc: '设置按钮后置图标类型' },
+        icon: { type: 'icon', desc: '设置按钮前置图标类型' },
+        suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
       },
@@ -2010,6 +2206,7 @@ export default [
       title: '文字图标按钮',
       desc: '文字图标按钮',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
           type: 'boolean',
           desc: '按钮是否禁用，true 禁用 false 可用',
@@ -2033,12 +2230,8 @@ export default [
         },
         loading: { type: 'boolean', desc: '设置按钮加载状态' },
         circle: { type: 'boolean', desc: '设置圆形按钮' },
-        icon: {
-          type: 'string',
-          desc: '设置按钮前置图标类型',
-          defaultValue: 'lugia-icon-logo_lugia',
-        },
-        suffixIcon: { type: 'string', desc: '设置按钮后置图标类型' },
+        icon: { type: 'icon', desc: '设置按钮前置图标类型', defaultValue: 'lugia-icon-logo_lugia' },
+        suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
       },
@@ -2106,18 +2299,14 @@ export default [
       title: '卡片',
       desc: '卡片容器，可添加文字、列表、图片等',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: '卡片头部标题' },
         description: { type: 'React.Node', desc: '卡片描述显示内容' },
         operation: { type: 'React.Node', desc: '卡片可操作内容' },
         image: { type: 'React.Node', desc: '卡片片显示内容' },
-        avatar: {
-          type: 'React.Node',
-          desc: '卡片头像显示内容',
-          defaultValue:
-            'data:image/jpeg;base64,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AAAAAABSR0JDAAAAAwAAAABSZCAgZG91YkBv4AAAAAAAAAAAAEdybiBkb3ViQG/gAAAAAAAAAAAAQmwgIGRvdWJAb+AAAAAAAAAAAABCcmRUVW50RiNSbHQAAAAAAAAAAAAAAABCbGQgVW50RiNSbHQAAAAAAAAAAAAAAABSc2x0VW50RiNQeGxAUgAAAAAAAAAAAAp2ZWN0b3JEYXRhYm9vbAEAAAAAUGdQc2VudW0AAAAAUGdQcwAAAABQZ1BDAAAAAExlZnRVbnRGI1JsdAAAAAAAAAAAAAAAAFRvcCBVbnRGI1JsdAAAAAAAAAAAAAAAAFNjbCBVbnRGI1ByY0BZAAAAAAAAAAAAEGNyb3BXaGVuUHJpbnRpbmdib29sAAAAAA5jcm9wUmVjdEJvdHRvbWxvbmcAAAAAAAAADGNyb3BSZWN0TGVmdGxvbmcAAAAAAAAADWNyb3BSZWN0UmlnaHRsb25nAAAAAAAAAAtjcm9wUmVjdFRvcGxvbmcAAAAAADhCSU0D7QAAAAAAEABIAAAAAQACAEgAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0D8gAAAAAACgAA////////AAA4QklNBA0AAAAAAAQAAAAeOEJJTQQZAAAAAAAEAAAAHjhCSU0D8wAAAAAACQAAAAAAAAAAAQA4QklNJxAAAAAAAAoAAQAAAAAAAAACOEJJTQP1AAAAAABIAC9mZgABAGxmZgAGAAAAAAABAC9mZgABAKGZmgAGAAAAAAABADIAAAABAFoAAAAGAAAAAAABADUAAAABAC0AAAAGAAAAAAABOEJJTQP4AAAAAABwAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAADhCSU0ECAAAAAAAEAAAAAEAAAJAAAACQAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAAM9AAAABgAAAAAAAAAAAAAAKAAAACgAAAAEAHoAaQBqAGkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA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Y29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDowNGU1MGQ3OC1lYzgxLTExN2ItYjFiYy1hZjNiNDY4NGI2M2QiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9IkNFMUQyNDhFREI0MjFFRENENjkxRkVEQ0MxMDM5NTA1IiBkYzpmb3JtYXQ9ImltYWdlL2pwZWciIHBob3Rvc2hvcDpMZWdhY3lJUFRDRGlnZXN0PSJDRENGRkE3REE4QzdCRTA5MDU3MDc2QUVBRjA1QzM0RSIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXA6Q3JlYXRlRGF0ZT0iMjAxNy0wOC0wOVQxNTo0NzozMiswODowMCIgeG1wOk1vZGlmeURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjBhYTM0MTlhLWMxNTctNDM3YS1iMzViLTVkMTY5NzhkNTg1MSIgc3RFdnQ6d2hlbj0iMjAxNy0wOS0xM1QxNzo0NDo0MiswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiBzdEV2dDp3aGVuPSIyMDE4LTA4LTMwVDA5OjE4OjI2KzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNS41IChNYWNpbnRvc2gpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg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',
-        },
+        avatar: { type: 'React.Node', desc: '卡片头像显示内容' },
         content: { type: 'React.Node', desc: '整个卡片显示内容' },
         children: {
           type: 'React.Node',
@@ -2139,7 +2328,7 @@ export default [
         },
       },
       type: {
-        CardType: ['simple', 'avatar', 'image', 'combo', 'tip'],
+        CardType: ['simple', 'avatar', 'image', 'combo', 'tip', 'transparent'],
         ImageOrientation: ['horizontal', 'vertical'],
       },
       category: ['数据展示'],
@@ -2148,7 +2337,12 @@ export default [
           sequence: 1,
           title: '水平头像卡片',
           desc: '水平头像卡片样式',
-          props: { type: 'avatar', imageOrientation: 'horizontal' },
+          props: {
+            type: 'avatar',
+            imageOrientation: 'horizontal',
+            avatar:
+              'data:image/jpeg;base64,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AAAAAABSR0JDAAAAAwAAAABSZCAgZG91YkBv4AAAAAAAAAAAAEdybiBkb3ViQG/gAAAAAAAAAAAAQmwgIGRvdWJAb+AAAAAAAAAAAABCcmRUVW50RiNSbHQAAAAAAAAAAAAAAABCbGQgVW50RiNSbHQAAAAAAAAAAAAAAABSc2x0VW50RiNQeGxAUgAAAAAAAAAAAAp2ZWN0b3JEYXRhYm9vbAEAAAAAUGdQc2VudW0AAAAAUGdQcwAAAABQZ1BDAAAAAExlZnRVbnRGI1JsdAAAAAAAAAAAAAAAAFRvcCBVbnRGI1JsdAAAAAAAAAAAAAAAAFNjbCBVbnRGI1ByY0BZAAAAAAAAAAAAEGNyb3BXaGVuUHJpbnRpbmdib29sAAAAAA5jcm9wUmVjdEJvdHRvbWxvbmcAAAAAAAAADGNyb3BSZWN0TGVmdGxvbmcAAAAAAAAADWNyb3BSZWN0UmlnaHRsb25nAAAAAAAAAAtjcm9wUmVjdFRvcGxvbmcAAAAAADhCSU0D7QAAAAAAEABIAAAAAQACAEgAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0D8gAAAAAACgAA////////AAA4QklNBA0AAAAAAAQAAAAeOEJJTQQZAAAAAAAEAAAAHjhCSU0D8wAAAAAACQAAAAAAAAAAAQA4QklNJxAAAAAAAAoAAQAAAAAAAAACOEJJTQP1AAAAAABIAC9mZgABAGxmZgAGAAAAAAABAC9mZgABAKGZmgAGAAAAAAABADIAAAABAFoAAAAGAAAAAAABADUAAAABAC0AAAAGAAAAAAABOEJJTQP4AAAAAABwAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAADhCSU0ECAAAAAAAEAAAAAEAAAJAAAACQAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAAM9AAAABgAAAAAAAAAAAAAAKAAAACgAAAAEAHoAaQBqAGkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA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Y29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDowNGU1MGQ3OC1lYzgxLTExN2ItYjFiYy1hZjNiNDY4NGI2M2QiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9IkNFMUQyNDhFREI0MjFFRENENjkxRkVEQ0MxMDM5NTA1IiBkYzpmb3JtYXQ9ImltYWdlL2pwZWciIHBob3Rvc2hvcDpMZWdhY3lJUFRDRGlnZXN0PSJDRENGRkE3REE4QzdCRTA5MDU3MDc2QUVBRjA1QzM0RSIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXA6Q3JlYXRlRGF0ZT0iMjAxNy0wOC0wOVQxNTo0NzozMiswODowMCIgeG1wOk1vZGlmeURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjBhYTM0MTlhLWMxNTctNDM3YS1iMzViLTVkMTY5NzhkNTg1MSIgc3RFdnQ6d2hlbj0iMjAxNy0wOS0xM1QxNzo0NDo0MiswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiBzdEV2dDp3aGVuPSIyMDE4LTA4LTMwVDA5OjE4OjI2KzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNS41IChNYWNpbnRvc2gpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg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',
+          },
           defaultTheme: { Container: { normal: { width: 320, height: 116 } } },
           theme: {
             Container: {
@@ -2279,7 +2473,12 @@ export default [
           sequence: 3,
           title: '垂直头像卡片',
           desc: '垂直头像卡片不同选择显示不同卡片样式',
-          props: { type: 'avatar', imageOrientation: 'vertical' },
+          props: {
+            type: 'avatar',
+            imageOrientation: 'vertical',
+            avatar:
+              'data:image/jpeg;base64,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AAAAAABSR0JDAAAAAwAAAABSZCAgZG91YkBv4AAAAAAAAAAAAEdybiBkb3ViQG/gAAAAAAAAAAAAQmwgIGRvdWJAb+AAAAAAAAAAAABCcmRUVW50RiNSbHQAAAAAAAAAAAAAAABCbGQgVW50RiNSbHQAAAAAAAAAAAAAAABSc2x0VW50RiNQeGxAUgAAAAAAAAAAAAp2ZWN0b3JEYXRhYm9vbAEAAAAAUGdQc2VudW0AAAAAUGdQcwAAAABQZ1BDAAAAAExlZnRVbnRGI1JsdAAAAAAAAAAAAAAAAFRvcCBVbnRGI1JsdAAAAAAAAAAAAAAAAFNjbCBVbnRGI1ByY0BZAAAAAAAAAAAAEGNyb3BXaGVuUHJpbnRpbmdib29sAAAAAA5jcm9wUmVjdEJvdHRvbWxvbmcAAAAAAAAADGNyb3BSZWN0TGVmdGxvbmcAAAAAAAAADWNyb3BSZWN0UmlnaHRsb25nAAAAAAAAAAtjcm9wUmVjdFRvcGxvbmcAAAAAADhCSU0D7QAAAAAAEABIAAAAAQACAEgAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0D8gAAAAAACgAA////////AAA4QklNBA0AAAAAAAQAAAAeOEJJTQQZAAAAAAAEAAAAHjhCSU0D8wAAAAAACQAAAAAAAAAAAQA4QklNJxAAAAAAAAoAAQAAAAAAAAACOEJJTQP1AAAAAABIAC9mZgABAGxmZgAGAAAAAAABAC9mZgABAKGZmgAGAAAAAAABADIAAAABAFoAAAAGAAAAAAABADUAAAABAC0AAAAGAAAAAAABOEJJTQP4AAAAAABwAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAADhCSU0ECAAAAAAAEAAAAAEAAAJAAAACQAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAAM9AAAABgAAAAAAAAAAAAAAKAAAACgAAAAEAHoAaQBqAGkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAABudWxsAAAAAgAAAAZib3VuZHNPYmpjAAAAAQAAAAAAAFJjdDEAAAAEAAAAAFRvcCBsb25nAAAAAAAAAABMZWZ0bG9uZwAAAAAAAAAAQnRvbWxvbmcAAAAoAAAAAFJnaHRsb25nAAAAKAAAAAZzbGljZXNWbExzAAAAAU9iamMAAAABAAAAAAAFc2xpY2UAAAASAAAAB3NsaWNlSURsb25nAAAAAAAAAAdncm91cElEbG9uZwAAAAAAAAAGb3JpZ2luZW51bQAAAAxFU2xpY2VPcmlnaW4AAAANYXV0b0dlbmVyYXRlZAAAAABUeXBlZW51bQAAAApFU2xpY2VUeXBlAAAAAEltZyAAAAAGYm91bmRzT2JqYwAAAAEAAAAAAABSY3QxAAAABAAAAABUb3AgbG9uZwAAAAAAAAAATGVmdGxvbmcAAAAAAAAAAEJ0b21sb25nAAAAKAAAAABSZ2h0bG9uZwAAACgAAAADdXJsVEVYVAAAAAEAAAAAAABudWxsVEVYVAAAAAEAAAAAAABNc2dlVEVYVAAAAAEAAAAAAAZhbHRUYWdURVhUAAAAAQAAAAAADmNlbGxUZXh0SXNIVE1MYm9vbAEAAAAIY2VsbFRleHRURVhUAAAAAQAAAAAACWhvcnpBbGlnbmVudW0AAAAPRVNsaWNlSG9yekFsaWduAAAAB2RlZmF1bHQAAAAJdmVydEFsaWduZW51bQAAAA9FU2xpY2VWZXJ0QWxpZ24AAAAHZGVmYXVsdAAAAAtiZ0NvbG9yVHlwZWVudW0AAAARRVNsaWNlQkdDb2xvclR5cGUAAAAATm9uZQAAAAl0b3BPdXRzZXRsb25nAAAAAAAAAApsZWZ0T3V0c2V0bG9uZwAAAAAAAAAMYm90dG9tT3V0c2V0bG9uZwAAAAAAAAALcmlnaHRPdXRzZXRsb25nAAAAAAA4QklNBCgAAAAAAAwAAAACP/AAAAAAAAA4QklNBBQAAAAAAAQAAAABOEJJTQQMAAAAAANgAAAAAQAAACgAAAAoAAAAeAAAEsAAAANEABgAAf/Y/+0ADEFkb2JlX0NNAAH/7gAOQWRvYmUAZIAAAAAB/9sAhAAMCAgICQgMCQkMEQsKCxEVDwwMDxUYExMVExMYEQwMDAwMDBEMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAQ0LCw0ODRAODhAUDg4OFBQODg4OFBEMDAwMDBERDAwMDAwMEQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAAoACgDASIAAhEBAxEB/90ABAAD/8QBPwAAAQUBAQEBAQEAAAAAAAAAAwABAgQFBgcICQoLAQABBQEBAQEBAQAAAAAAAAABAAIDBAUGBwgJCgsQAAEEAQMCBAIFBwYIBQMMMwEAAhEDBCESMQVBUWETInGBMgYUkaGxQiMkFVLBYjM0coLRQwclklPw4fFjczUWorKDJkSTVGRFwqN0NhfSVeJl8rOEw9N14/NGJ5SkhbSVxNTk9KW1xdXl9VZmdoaWprbG1ub2N0dXZ3eHl6e3x9fn9xEAAgIBAgQEAwQFBgcHBgU1AQACEQMhMRIEQVFhcSITBTKBkRShsUIjwVLR8DMkYuFygpJDUxVjczTxJQYWorKDByY1wtJEk1SjF2RFVTZ0ZeLys4TD03Xj80aUpIW0lcTU5PSltcXV5fVWZnaGlqa2xtbm9ic3R1dnd4eXp7fH/9oADAMBAAIRAxEAPwDtApghBLisv6ydVyel9FyMzEbvyW7a6BG6H2O9Nr9n52xBTuSNwaSA4iQ0kTHjt+kpQQYOh815jhfVPIzWPz+p9TLcp5myyS9zXH8215I/za11n1Ps6jQ3M6P1G05VmC9j8fKJJFlFw3V6v936NzEhME0F0oSAsvRQkpBJOWP/0OwcNVWzKDdSWQHDc1xB8GncrboUHv2MdZtLgwSQOSmnYpG4rVyWYeG691LmbmvAdw6A6d0yPb7ltYtDK7LLGtA9QNDndyWz/wBTuVLHYS8kOLQdY+K1KIdWCAYb7T8QmY92bKdNkgCSdJTMD//R7OoAmT8lY2t8JHBHiO6+b0kFP0Q3Be1+1mjOfUPEf+T/AJKujayv02fRHH96+akk2HDrTJPi04n6SJG2Z1BghJfNqSexv//ZOEJJTQQhAAAAAABhAAAAAQEAAAAPAEEAZABvAGIAZQAgAFAAaABvAHQAbwBzAGgAbwBwAAAAGQBBAGQAbwBiAGUAIABQAGgAbwB0AG8AcwBoAG8AcAAgAEMAQwAgADIAMAAxADUALgA1AAAAAQA4QklNBAYAAAAAAAcACAABAAEBAP/hDlJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDowNGU1MGQ3OC1lYzgxLTExN2ItYjFiYy1hZjNiNDY4NGI2M2QiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9IkNFMUQyNDhFREI0MjFFRENENjkxRkVEQ0MxMDM5NTA1IiBkYzpmb3JtYXQ9ImltYWdlL2pwZWciIHBob3Rvc2hvcDpMZWdhY3lJUFRDRGlnZXN0PSJDRENGRkE3REE4QzdCRTA5MDU3MDc2QUVBRjA1QzM0RSIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXA6Q3JlYXRlRGF0ZT0iMjAxNy0wOC0wOVQxNTo0NzozMiswODowMCIgeG1wOk1vZGlmeURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjBhYTM0MTlhLWMxNTctNDM3YS1iMzViLTVkMTY5NzhkNTg1MSIgc3RFdnQ6d2hlbj0iMjAxNy0wOS0xM1QxNzo0NDo0MiswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiBzdEV2dDp3aGVuPSIyMDE4LTA4LTMwVDA5OjE4OjI2KzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNS41IChNYWNpbnRvc2gpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg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',
+          },
           defaultTheme: { Container: { normal: { width: 150, height: 190 } } },
           theme: {
             Container: {
@@ -2473,6 +2672,30 @@ export default [
             },
           },
         },
+        TransparentCard: {
+          sequence: 6,
+          title: '空白盒子',
+          desc: '空白盒子样式',
+          props: { type: 'transparent' },
+          theme: {
+            Container: {
+              name: '卡片容器整体',
+              desc: '配置卡片容器整体',
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['boxShadow'],
+                ['border'],
+                ['margin'],
+                ['padding'],
+                ['boxShadow'],
+                ['opacity'],
+                ['borderRadius'],
+              ],
+            },
+          },
+        },
       },
       theme: {
         Container: {
@@ -2550,6 +2773,7 @@ export default [
       title: '水平头像卡片',
       desc: '水平头像卡片样式',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: '卡片头部标题' },
@@ -2584,7 +2808,7 @@ export default [
         },
       },
       type: {
-        CardType: ['simple', 'avatar', 'image', 'combo', 'tip'],
+        CardType: ['simple', 'avatar', 'image', 'combo', 'tip', 'transparent'],
         ImageOrientation: ['horizontal', 'vertical'],
       },
       category: ['数据展示'],
@@ -2658,18 +2882,14 @@ export default [
       title: '水平图片卡片',
       desc: '水平图片卡片样式',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: '卡片头部标题' },
         description: { type: 'React.Node', desc: '卡片描述显示内容' },
         operation: { type: 'React.Node', desc: '卡片可操作内容' },
         image: { type: 'React.Node', desc: '卡片片显示内容' },
-        avatar: {
-          type: 'React.Node',
-          desc: '卡片头像显示内容',
-          defaultValue:
-            'data:image/jpeg;base64,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AAAAAABSR0JDAAAAAwAAAABSZCAgZG91YkBv4AAAAAAAAAAAAEdybiBkb3ViQG/gAAAAAAAAAAAAQmwgIGRvdWJAb+AAAAAAAAAAAABCcmRUVW50RiNSbHQAAAAAAAAAAAAAAABCbGQgVW50RiNSbHQAAAAAAAAAAAAAAABSc2x0VW50RiNQeGxAUgAAAAAAAAAAAAp2ZWN0b3JEYXRhYm9vbAEAAAAAUGdQc2VudW0AAAAAUGdQcwAAAABQZ1BDAAAAAExlZnRVbnRGI1JsdAAAAAAAAAAAAAAAAFRvcCBVbnRGI1JsdAAAAAAAAAAAAAAAAFNjbCBVbnRGI1ByY0BZAAAAAAAAAAAAEGNyb3BXaGVuUHJpbnRpbmdib29sAAAAAA5jcm9wUmVjdEJvdHRvbWxvbmcAAAAAAAAADGNyb3BSZWN0TGVmdGxvbmcAAAAAAAAADWNyb3BSZWN0UmlnaHRsb25nAAAAAAAAAAtjcm9wUmVjdFRvcGxvbmcAAAAAADhCSU0D7QAAAAAAEABIAAAAAQACAEgAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0D8gAAAAAACgAA////////AAA4QklNBA0AAAAAAAQAAAAeOEJJTQQZAAAAAAAEAAAAHjhCSU0D8wAAAAAACQAAAAAAAAAAAQA4QklNJxAAAAAAAAoAAQAAAAAAAAACOEJJTQP1AAAAAABIAC9mZgABAGxmZgAGAAAAAAABAC9mZgABAKGZmgAGAAAAAAABADIAAAABAFoAAAAGAAAAAAABADUAAAABAC0AAAAGAAAAAAABOEJJTQP4AAAAAABwAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAADhCSU0ECAAAAAAAEAAAAAEAAAJAAAACQAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAAM9AAAABgAAAAAAAAAAAAAAKAAAACgAAAAEAHoAaQBqAGkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA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Y29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDowNGU1MGQ3OC1lYzgxLTExN2ItYjFiYy1hZjNiNDY4NGI2M2QiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9IkNFMUQyNDhFREI0MjFFRENENjkxRkVEQ0MxMDM5NTA1IiBkYzpmb3JtYXQ9ImltYWdlL2pwZWciIHBob3Rvc2hvcDpMZWdhY3lJUFRDRGlnZXN0PSJDRENGRkE3REE4QzdCRTA5MDU3MDc2QUVBRjA1QzM0RSIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXA6Q3JlYXRlRGF0ZT0iMjAxNy0wOC0wOVQxNTo0NzozMiswODowMCIgeG1wOk1vZGlmeURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjBhYTM0MTlhLWMxNTctNDM3YS1iMzViLTVkMTY5NzhkNTg1MSIgc3RFdnQ6d2hlbj0iMjAxNy0wOS0xM1QxNzo0NDo0MiswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiBzdEV2dDp3aGVuPSIyMDE4LTA4LTMwVDA5OjE4OjI2KzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNS41IChNYWNpbnRvc2gpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg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',
-        },
+        avatar: { type: 'React.Node', desc: '卡片头像显示内容' },
         content: { type: 'React.Node', desc: '整个卡片显示内容' },
         children: {
           type: 'React.Node',
@@ -2692,7 +2912,7 @@ export default [
         },
       },
       type: {
-        CardType: ['simple', 'avatar', 'image', 'combo', 'tip'],
+        CardType: ['simple', 'avatar', 'image', 'combo', 'tip', 'transparent'],
         ImageOrientation: ['horizontal', 'vertical'],
       },
       category: ['数据展示'],
@@ -2771,6 +2991,7 @@ export default [
       title: '垂直头像卡片',
       desc: '垂直头像卡片不同选择显示不同卡片样式',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: '卡片头部标题' },
@@ -2805,7 +3026,7 @@ export default [
         },
       },
       type: {
-        CardType: ['simple', 'avatar', 'image', 'combo', 'tip'],
+        CardType: ['simple', 'avatar', 'image', 'combo', 'tip', 'transparent'],
         ImageOrientation: ['horizontal', 'vertical'],
       },
       category: ['数据展示'],
@@ -2879,18 +3100,14 @@ export default [
       title: '垂直图片卡片',
       desc: '垂直图片卡片样式',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: '卡片头部标题' },
         description: { type: 'React.Node', desc: '卡片描述显示内容' },
         operation: { type: 'React.Node', desc: '卡片可操作内容' },
         image: { type: 'React.Node', desc: '卡片片显示内容' },
-        avatar: {
-          type: 'React.Node',
-          desc: '卡片头像显示内容',
-          defaultValue:
-            'data:image/jpeg;base64,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AAAAAABSR0JDAAAAAwAAAABSZCAgZG91YkBv4AAAAAAAAAAAAEdybiBkb3ViQG/gAAAAAAAAAAAAQmwgIGRvdWJAb+AAAAAAAAAAAABCcmRUVW50RiNSbHQAAAAAAAAAAAAAAABCbGQgVW50RiNSbHQAAAAAAAAAAAAAAABSc2x0VW50RiNQeGxAUgAAAAAAAAAAAAp2ZWN0b3JEYXRhYm9vbAEAAAAAUGdQc2VudW0AAAAAUGdQcwAAAABQZ1BDAAAAAExlZnRVbnRGI1JsdAAAAAAAAAAAAAAAAFRvcCBVbnRGI1JsdAAAAAAAAAAAAAAAAFNjbCBVbnRGI1ByY0BZAAAAAAAAAAAAEGNyb3BXaGVuUHJpbnRpbmdib29sAAAAAA5jcm9wUmVjdEJvdHRvbWxvbmcAAAAAAAAADGNyb3BSZWN0TGVmdGxvbmcAAAAAAAAADWNyb3BSZWN0UmlnaHRsb25nAAAAAAAAAAtjcm9wUmVjdFRvcGxvbmcAAAAAADhCSU0D7QAAAAAAEABIAAAAAQACAEgAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0D8gAAAAAACgAA////////AAA4QklNBA0AAAAAAAQAAAAeOEJJTQQZAAAAAAAEAAAAHjhCSU0D8wAAAAAACQAAAAAAAAAAAQA4QklNJxAAAAAAAAoAAQAAAAAAAAACOEJJTQP1AAAAAABIAC9mZgABAGxmZgAGAAAAAAABAC9mZgABAKGZmgAGAAAAAAABADIAAAABAFoAAAAGAAAAAAABADUAAAABAC0AAAAGAAAAAAABOEJJTQP4AAAAAABwAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAADhCSU0ECAAAAAAAEAAAAAEAAAJAAAACQAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAAM9AAAABgAAAAAAAAAAAAAAKAAAACgAAAAEAHoAaQBqAGkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA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Y29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDowNGU1MGQ3OC1lYzgxLTExN2ItYjFiYy1hZjNiNDY4NGI2M2QiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9IkNFMUQyNDhFREI0MjFFRENENjkxRkVEQ0MxMDM5NTA1IiBkYzpmb3JtYXQ9ImltYWdlL2pwZWciIHBob3Rvc2hvcDpMZWdhY3lJUFRDRGlnZXN0PSJDRENGRkE3REE4QzdCRTA5MDU3MDc2QUVBRjA1QzM0RSIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXA6Q3JlYXRlRGF0ZT0iMjAxNy0wOC0wOVQxNTo0NzozMiswODowMCIgeG1wOk1vZGlmeURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjBhYTM0MTlhLWMxNTctNDM3YS1iMzViLTVkMTY5NzhkNTg1MSIgc3RFdnQ6d2hlbj0iMjAxNy0wOS0xM1QxNzo0NDo0MiswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiBzdEV2dDp3aGVuPSIyMDE4LTA4LTMwVDA5OjE4OjI2KzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNS41IChNYWNpbnRvc2gpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg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',
-        },
+        avatar: { type: 'React.Node', desc: '卡片头像显示内容' },
         content: { type: 'React.Node', desc: '整个卡片显示内容' },
         children: {
           type: 'React.Node',
@@ -2913,7 +3130,7 @@ export default [
         },
       },
       type: {
-        CardType: ['simple', 'avatar', 'image', 'combo', 'tip'],
+        CardType: ['simple', 'avatar', 'image', 'combo', 'tip', 'transparent'],
         ImageOrientation: ['horizontal', 'vertical'],
       },
       category: ['数据展示'],
@@ -2992,18 +3209,14 @@ export default [
       title: '自定义组合卡片',
       desc: '组合卡片样式',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: '' },
         description: { type: 'React.Node', desc: '卡片描述显示内容' },
         operation: { type: 'React.Node', desc: '卡片可操作内容' },
         image: { type: 'React.Node', desc: '卡片片显示内容' },
-        avatar: {
-          type: 'React.Node',
-          desc: '卡片头像显示内容',
-          defaultValue:
-            'data:image/jpeg;base64,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AAAAAABSR0JDAAAAAwAAAABSZCAgZG91YkBv4AAAAAAAAAAAAEdybiBkb3ViQG/gAAAAAAAAAAAAQmwgIGRvdWJAb+AAAAAAAAAAAABCcmRUVW50RiNSbHQAAAAAAAAAAAAAAABCbGQgVW50RiNSbHQAAAAAAAAAAAAAAABSc2x0VW50RiNQeGxAUgAAAAAAAAAAAAp2ZWN0b3JEYXRhYm9vbAEAAAAAUGdQc2VudW0AAAAAUGdQcwAAAABQZ1BDAAAAAExlZnRVbnRGI1JsdAAAAAAAAAAAAAAAAFRvcCBVbnRGI1JsdAAAAAAAAAAAAAAAAFNjbCBVbnRGI1ByY0BZAAAAAAAAAAAAEGNyb3BXaGVuUHJpbnRpbmdib29sAAAAAA5jcm9wUmVjdEJvdHRvbWxvbmcAAAAAAAAADGNyb3BSZWN0TGVmdGxvbmcAAAAAAAAADWNyb3BSZWN0UmlnaHRsb25nAAAAAAAAAAtjcm9wUmVjdFRvcGxvbmcAAAAAADhCSU0D7QAAAAAAEABIAAAAAQACAEgAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0D8gAAAAAACgAA////////AAA4QklNBA0AAAAAAAQAAAAeOEJJTQQZAAAAAAAEAAAAHjhCSU0D8wAAAAAACQAAAAAAAAAAAQA4QklNJxAAAAAAAAoAAQAAAAAAAAACOEJJTQP1AAAAAABIAC9mZgABAGxmZgAGAAAAAAABAC9mZgABAKGZmgAGAAAAAAABADIAAAABAFoAAAAGAAAAAAABADUAAAABAC0AAAAGAAAAAAABOEJJTQP4AAAAAABwAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAADhCSU0ECAAAAAAAEAAAAAEAAAJAAAACQAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAAM9AAAABgAAAAAAAAAAAAAAKAAAACgAAAAEAHoAaQBqAGkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA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Y29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDowNGU1MGQ3OC1lYzgxLTExN2ItYjFiYy1hZjNiNDY4NGI2M2QiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9IkNFMUQyNDhFREI0MjFFRENENjkxRkVEQ0MxMDM5NTA1IiBkYzpmb3JtYXQ9ImltYWdlL2pwZWciIHBob3Rvc2hvcDpMZWdhY3lJUFRDRGlnZXN0PSJDRENGRkE3REE4QzdCRTA5MDU3MDc2QUVBRjA1QzM0RSIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXA6Q3JlYXRlRGF0ZT0iMjAxNy0wOC0wOVQxNTo0NzozMiswODowMCIgeG1wOk1vZGlmeURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjBhYTM0MTlhLWMxNTctNDM3YS1iMzViLTVkMTY5NzhkNTg1MSIgc3RFdnQ6d2hlbj0iMjAxNy0wOS0xM1QxNzo0NDo0MiswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiBzdEV2dDp3aGVuPSIyMDE4LTA4LTMwVDA5OjE4OjI2KzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNS41IChNYWNpbnRvc2gpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg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',
-        },
+        avatar: { type: 'React.Node', desc: '卡片头像显示内容' },
         content: { type: 'React.Node', desc: '整个卡片显示内容' },
         children: {
           type: 'React.Node',
@@ -3025,7 +3238,7 @@ export default [
         },
       },
       type: {
-        CardType: ['simple', 'avatar', 'image', 'combo', 'tip'],
+        CardType: ['simple', 'avatar', 'image', 'combo', 'tip', 'transparent'],
         ImageOrientation: ['horizontal', 'vertical'],
       },
       category: ['数据展示'],
@@ -3103,34 +3316,103 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Card',
+      title: '空白盒子',
+      desc: '空白盒子样式',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
+        viewClass: { type: 'string', desc: '用于配置通用主题属性' },
+        title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: '卡片头部标题' },
+        description: { type: 'React.Node', desc: '卡片描述显示内容' },
+        operation: { type: 'React.Node', desc: '卡片可操作内容' },
+        image: { type: 'React.Node', desc: '卡片片显示内容' },
+        avatar: { type: 'React.Node', desc: '卡片头像显示内容' },
+        content: { type: 'React.Node', desc: '整个卡片显示内容' },
+        children: {
+          type: 'React.Node',
+          desc: '卡片的children 可作为content显示,但优先于content显示',
+        },
+        type: {
+          type: 'CardType',
+          desc: '卡片风格 可配置 简洁,头像,图片,标题提示,自定义组合卡片几种风格',
+          defaultValue: 'transparent',
+        },
+        imageOrientation: {
+          type: 'ImageOrientation',
+          desc: '当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直',
+        },
+        showTipBottomLine: {
+          type: 'boolean',
+          desc: '当选择标题提示风格时,可配置是否显示标题下的分割线',
+          defaultValue: false,
+        },
+      },
+      type: {
+        CardType: ['simple', 'avatar', 'image', 'combo', 'tip', 'transparent'],
+        ImageOrientation: ['horizontal', 'vertical'],
+      },
+      category: ['数据展示'],
+      theme: {
+        Container: {
+          name: '卡片容器整体',
+          desc: '配置卡片容器整体',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['boxShadow'],
+            ['border'],
+            ['margin'],
+            ['padding'],
+            ['boxShadow'],
+            ['opacity'],
+            ['borderRadius'],
+          ],
+        },
+      },
+      defaultTheme: {
+        Container: { normal: { width: 750, height: 400 } },
+        CardTitleHeadContainer: { normal: { padding: { top: 0 }, height: 50 } },
+      },
+      childrenWidget: [],
+      aliasName: 'TransparentCard',
+    },
+    target: Card,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAABQhJREFUeAHtXbtuFEEQvPMZOHyWkEggt5zxB/wFH2AS/oMfIXLm4OycnC8hgQQC5EfA7TK1ulr1jOcaIUvcjrtGGndPP9bTVeXd0LOZlhAQAkJACAgBISAE/h2BudPi5Zw2pRpBoK/ds0Z6LYbeXfHacxWbHgJVAaRrZnFLsvU5jo3Rp2WN7LQRIOG0uK31efshdshTYUl6zTKGFusXj9BxjwhYwuFjgysbx/XK80ioJZY+bG3jQYzD15omAhQCbke/tMxxgr58Q9TEcJCqEae1YrD1fKjs/hDgX7y1FEGXrgUflgtncMj6GQRBUllEwikAWLuZp7V99GX/PwIjqelXw7cbIgBfFANy1k/HYc3tG4IEW7tIZRADLYVha+BrTQcBKwQSD/KxN2mDL9rkjgu1wyK5JP5Jij5L+3nax2m/OD8/f3N9fb3ebDbfeq2mEABn4A4cgsstp+AWHINr/rFTB4NicIAg8MZ4mvYy7VXagxi6rvvRFAq67D0EwKERBbgFx+AanIP7QRBUBS0/CVAN9mFS16ejo6N3yddqHIGbm5vL1Wr1IY3xO218NrD5ORk+NRBAuTJxLJfLt2WBzm0isOWSf/TkORvGCsIW0D9I61XWoUOzCGy5BOfkF7NYf/h2lAOygLbM69w2AuSVNpvGviGYYCEt47KPAwHySptNVQoCRVzVBiZlm0Wg5NVyXv1kYFIW0TY7vS5+DwFySpsVlG+ILKlDPAQ8QVQVFA+iRznxTm49QTxKJDSUj4AE4eMTLitBhKPcH1iC8PEJl5UgwlHuDyxB+PiEy0oQ4Sj3B5YgfHzCZSWIcJT7A0sQPj7hshJEOMr9gSUIH59wWQkiHOX+wBKEj0+4rAQRjnJ/YAnCxydcVoIIR7k/sATh4xMuK0GEo9wfWILw8QmXlSDCUe4PLEH4+ITLShDhKPcHliB8fMJlJYhwlPsDSxA+PuGyEkQ4yv2BJQgfn3BZCSIc5f7AEoSPT7isBBGOcn9gCcLHJ1xWgghHuT+wBOHjEy4rQYSj3B9YgvDxCZeVIMJR7g8sQfj4hMtKEOEo9weWIHx8wmUliHCU+wNLED4+4bISRDjK/YElCB+fcFkJIhzl/sAShI9PuKwEEY5yf2BPEOO//vUfoWyDCOzk1hNEg3Pqyg9FYJcgqCDah/4e9U8HAXJKm92sFIQtgm/PWaMOzSJQ8ppxXAoCU7KBttnJdfEqAuSVNiuSIDI4QhwoBNpsaCsIW0C/S+t71qFDswhsuezSAOQXs1i/+o9cWYDG7u7u7gu6tNpHYMvlwGuahjxng/ENwSQtm7r1ev2x7/ufWZcOzSEADsFluvjIbfLJN+1skYL8p57W0p9dXV39Ojk5uTw9PX29WCxezufz4+bQCHxhfCZub28/X1xcvD87O/uaoNikDVFQBLDjAvEknz4t3h4QjLXwsVlDm0JaE0HAEg3fvhEoBtqydnZohsiUkuI4o5FNfxMDxKG1PwQsf+SM1oqifDuwZrg5BIGAJRNnLDQyzibGGC/t0Kgfe0OA3FlruYNfCsJetrdvCCTQAJL5QMQoAuYQQw3FgLPW9BAAX+SRfmlxa9YME1hSaz5j1tLHA6w/PFA/JoGAJZkiwMUYL+2Ys4Ran1PZGH1a1shOG4Gd5BfXHupq5NZi6N0VL56r40QRoDDK62Vxj2QvVz5U5/YQyITQ3vV1YyEgBISAEBACQmBKCPwBV3aNjVY8W4AAAAAASUVORK5CYII=',
+  },
+  {
+    meta: {
       widgetName: 'Carousel',
       title: '走马灯',
       desc: '常用于展示一组图片或卡片轮播',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultStart: {
           type: 'number',
           desc: '幻灯片初始状态开始激活的索引，默认从0开始',
-          defaultValue: 0,
+          propsDefaultValue: 0,
         },
         start: { type: 'number', desc: '手动切换,指定幻灯片开始的索引' },
-        autoPlay: { type: 'boolean', desc: '是否自动切换', defaultValue: true },
-        delay: { type: 'number', desc: '自动切换的时间间隔，单位为毫秒', defaultValue: 3000 },
+        autoPlay: { type: 'boolean', desc: '是否自动切换', propsDefaultValue: true },
+        delay: { type: 'number', desc: '自动切换的时间间隔，单位为毫秒', propsDefaultValue: 3000 },
         indicatorType: {
           type: 'horizontal | vertical | outside',
           desc: '指示器的显示方式',
-          defaultValue: 'horizontal',
+          propsDefaultValue: 'horizontal',
         },
         switchType: {
           type: 'horizontal | vertical | fade',
           desc: '动画切换的方式',
-          defaultValue: 'horizontal',
+          propsDefaultValue: 'horizontal',
         },
         animationTime: {
           type: 'number',
           desc: '单次动画执行的时间，单位为毫秒',
-          defaultValue: 500,
+          propsDefaultValue: 500,
         },
-        action: { type: 'hover | click', desc: '指示器触发切换的方式', defaultValue: 'hover' },
+        action: { type: 'hover | click', desc: '指示器触发切换的方式', propsDefaultValue: 'hover' },
       },
       events: {
         onChange: {
@@ -3206,17 +3488,47 @@ export default [
       title: '级联选择',
       desc: '通过级联选择,可以清晰地显示层级数据结构',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         action: { type: 'hover | click', desc: '展开子菜单的方式' },
+        size: {
+          type: 'sizeType',
+          desc: '可配置三种尺寸大小的cascader',
+          propsDefaultValue: 'default',
+        },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
         offsetX: { type: 'number', desc: '菜单间的间隔', propsDefaultValue: 2 },
         offsetY: { type: 'number', desc: '显示框与菜单的间隔', propsDefaultValue: 5 },
         placeholder: { type: 'string', desc: '显示框占位符' },
+        pullIconClass: {
+          type: 'icon',
+          desc: '下拉图标',
+          propsDefaultValue: 'lugia-icon-direction_down',
+        },
+        clearIconClass: {
+          type: 'icon',
+          desc: '清除图标',
+          propsDefaultValue: 'lugia-icon-reminder_close',
+        },
+        switchIconClass: {
+          type: 'object',
+          desc: '展开图标',
+          meta: [{ key: 'iconClass', title: '展开图标', type: 'icon' }],
+          propsDefaultValue: { iconClass: 'lugia-icon-direction_right' },
+        },
+        autoHeight: {
+          type: 'boolean',
+          desc: '根据data数量，自动计算弹出菜单高度',
+          propsDefaultValue: false,
+        },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
           propsDefaultValue: 'text',
         },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: 'input校验提示信息' },
         data: {
           type: 'Object[]',
           desc: '生成选择项的数据',
@@ -3228,7 +3540,7 @@ export default [
               title: '前/后缀图标',
               type: 'object',
               children: [
-                { key: 'preIconClass', title: '前缀图标', type: 'icon' },
+                { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
                 { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
                 { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
                 { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
@@ -3263,8 +3575,12 @@ export default [
         },
         disabled: { type: 'boolean', desc: '是否禁选', propsDefaultValue: false },
         divided: { type: 'boolean', desc: '菜单项之间是否展示分割线', propsDefaultValue: false },
-        allowClear: { type: 'boolean', desc: '是否允许清空选中值', defaultValue: true },
-        showAllLevels: { type: 'boolean', desc: '是否显示所有层级关系的值', defaultValue: true },
+        allowClear: { type: 'boolean', desc: '是否允许清空选中值', propsDefaultValue: true },
+        showAllLevels: {
+          type: 'boolean',
+          desc: '是否显示所有层级关系的值',
+          propsDefaultValue: true,
+        },
       },
       events: {
         onClick: {
@@ -3293,6 +3609,11 @@ export default [
           ],
         },
       },
+      type: {
+        sizeType: ['small', 'default', 'large'],
+        ValidateStatus: ['default', 'error'],
+        ValidateType: ['top', 'bottom', 'inner'],
+      },
       category: ['数据录入'],
       theme: {
         Container: {
@@ -3311,6 +3632,14 @@ export default [
             ['font'],
             ['opacity'],
           ],
+          focus: [
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['opacity'],
+          ],
           hover: [
             ['color'],
             ['background'],
@@ -3320,7 +3649,14 @@ export default [
             ['font'],
             ['opacity'],
           ],
-          active: [],
+          active: [
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['opacity'],
+          ],
           disabled: [
             ['width'],
             ['height'],
@@ -3335,6 +3671,36 @@ export default [
             ['opacity'],
             ['cursor'],
           ],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的展示框',
+          desc: '配置校验失败的展示框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
         },
         SwitchIcon: {
           name: '下拉图标',
@@ -3351,6 +3717,17 @@ export default [
           hover: [['color'], ['fontSize']],
           active: [['color'], ['fontSize']],
           disabled: [['color'], ['fontSize'], ['cursor']],
+        },
+        Placeholder: {
+          name: '提示信息文字',
+          desc: '提示信息文字',
+          normal: [['color'], ['fontSize'], ['font'], ['padding']],
+        },
+        TextContent: {
+          name: '选中文本',
+          desc: '选中文本样式',
+          normal: [['color'], ['font'], ['fontSize']],
+          disabled: [['color'], ['font'], ['fontSize']],
         },
         Menu: {
           name: '弹开菜单',
@@ -3448,6 +3825,30 @@ export default [
                   name: '分割线',
                   desc: '配置每项之间的分割线，当divided为true时生效',
                   normal: [['background']],
+                  hover: [],
+                  active: [],
+                  disabled: [],
+                },
+                DesContainer: {
+                  name: '辅助字段框',
+                  desc: '配置辅助文本的样式和位置',
+                  normal: [['color'], ['font'], ['fontSize'], ['padding'], ['lineHeight']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [],
+                },
+                SelectedDesContainer: {
+                  name: '选中项辅助字段框',
+                  desc: '配置被选中项的辅助文本的样式和位置',
+                  normal: [['color'], ['font'], ['fontSize'], ['padding']],
+                  hover: [],
+                  active: [],
+                  disabled: [],
+                },
+                TextContainer: {
+                  name: '文本框',
+                  desc: '配置文本和前缀后缀图标的位置',
+                  normal: [['padding'], ['lineHeight']],
                   hover: [],
                   active: [],
                   disabled: [],
@@ -3614,6 +4015,14 @@ export default [
                       active: [['color'], ['font'], ['fontSize']],
                       disabled: [],
                     },
+                    SelectedDesContainer: {
+                      name: '选中项辅助字段框',
+                      desc: '配置被选中项的辅助文本的样式和位置',
+                      normal: [['color'], ['font'], ['fontSize'], ['padding']],
+                      hover: [],
+                      active: [],
+                      disabled: [],
+                    },
                     PrefixIcon: {
                       name: '前置图标配置',
                       desc: '前置图标或图片的样式配置',
@@ -3687,7 +4096,7 @@ export default [
           },
         },
       },
-      defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+      defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
     },
     target: Cascader,
@@ -3700,6 +4109,7 @@ export default [
       title: '多选框',
       desc: '多选框。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         checked: { type: 'boolean', desc: '指定Checkbox是否选中' },
         defaultChecked: { type: 'boolean', desc: '指定Checkbox初始是否选中' },
         disabled: { type: 'boolean', desc: '指定Checkbox是否禁用' },
@@ -3773,7 +4183,6 @@ export default [
             ['width'],
             ['height'],
           ],
-          hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
           disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
         },
         CheckboxEdgeIndeterminate: {
@@ -3787,7 +4196,6 @@ export default [
             ['width'],
             ['height'],
           ],
-          hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
           disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
         },
         CheckboxEdgeCancel: {
@@ -3833,6 +4241,7 @@ export default [
       title: '多选框组',
       desc: '多选框组。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string[]', desc: '指定CheckboxGroup初始选中值' },
         value: { type: 'string[]', desc: '指定CheckboxGroup选中值' },
         disabled: { type: 'boolean', desc: '指定CheckboxGroup是否禁用' },
@@ -3851,7 +4260,7 @@ export default [
           ],
         },
         displayField: { type: 'string', desc: '指定CheckboxGroup展示字段值' },
-        valueField: { type: 'string', desc: '指定 Checkbox 组件 value 值', defaultValue: false },
+        valueField: { type: 'string', desc: '指定 Checkbox 组件 value 值' },
         displayValue: {
           type: 'string[]',
           desc:
@@ -3928,6 +4337,13 @@ export default [
             CheckboxText: {
               name: '文字样式',
               desc: '文字样式',
+              normal: [['color'], ['font'], ['padding']],
+              hover: [['color'], ['font']],
+              disabled: [['color'], ['font']],
+            },
+            CheckboxCancelText: {
+              name: '取消状态文字样式',
+              desc: '取消状态文字样式',
               normal: [['color'], ['font'], ['padding']],
               hover: [['color'], ['font']],
               disabled: [['color'], ['font']],
@@ -4020,6 +4436,7 @@ export default [
       title: '按钮状多选框组',
       desc: '按钮形状的多选框组',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string[]', desc: '指定CheckboxGroup初始选中值' },
         value: { type: 'string[]', desc: '指定CheckboxGroup选中值' },
         disabled: { type: 'boolean', desc: '指定CheckboxGroup是否禁用' },
@@ -4038,7 +4455,7 @@ export default [
           ],
         },
         displayField: { type: 'string', desc: '指定CheckboxGroup展示字段值' },
-        valueField: { type: 'string', desc: '指定 Checkbox 组件 value 值', defaultValue: false },
+        valueField: { type: 'string', desc: '指定 Checkbox 组件 value 值' },
         displayValue: {
           type: 'string[]',
           desc:
@@ -4207,10 +4624,192 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Collapse',
+      title: '折叠面板',
+      desc: '折叠面板，用于展开/折叠内容区域。',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        activeValue: { type: 'string | string[]', desc: '当前展开面板的 value值 或者 value 集合' },
+        defaultActiveValue: {
+          type: 'string | string[]',
+          desc: '初始时展开面板的 value值 或者 value 集合',
+        },
+        showArrow: { type: 'boolean', desc: '是否展示面板箭头' },
+        accordion: { type: 'boolean', desc: '设置是否为手风琴模式' },
+        zebraStripe: { type: 'boolean', desc: '设置是否为斑马纹模式' },
+        data: {
+          type: 'Object[]',
+          desc: '指定折叠面板data数据源，仅用于设计器',
+          designOnly: true,
+          meta: [
+            { key: 'value', title: '对应字段', type: 'string' },
+            { key: 'title', title: '展示文字', type: 'string' },
+            { key: 'children', title: '展示内容', type: 'lugiaDPages' },
+          ],
+          defaultValue: [
+            { value: '1', title: '标题1', children: '内容1' },
+            { value: '2', title: '标题2', children: '内容2' },
+            { value: '3', title: '标题3', children: '内容3' },
+          ],
+        },
+      },
+      events: {
+        onChange: {
+          desc: 'Collapse面板展开/折叠时回调',
+          args: [
+            { name: 'event', desc: '关闭时的DOM事件', type: 'Object' },
+            { name: 'value', desc: '变化Collapse的value值', type: 'string' },
+          ],
+        },
+      },
+      type: {
+        CollapseStyle: {
+          width: { type: 'number', desc: 'Collapse宽度' },
+          color: { type: 'string', desc: 'Collapse颜色' },
+        },
+      },
+      childrenWidget: ['Collapse.Panel'],
+      category: ['数据展示'],
+      theme: {
+        Container: {
+          name: 'Collapse整体配置',
+          desc: 'Collapse整体配置',
+          normal: [
+            ['opacity'],
+            ['margin'],
+            ['padding'],
+            ['width'],
+            ['height'],
+            ['background'],
+            ['border'],
+          ],
+        },
+        Panel: {
+          theme: {
+            Container: { name: '面板整体配置', desc: '面板整体配置', normal: [['width']] },
+            PanelHeader: {
+              name: '面板头部配置',
+              desc: '面板头部样式配置',
+              normal: [
+                ['opacity'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+                ['padding'],
+                ['width'],
+                ['height'],
+                ['background'],
+              ],
+              hover: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
+              disabled: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
+            },
+            PanelHeaderText: {
+              name: '面板头部文字',
+              desc: '面板头部文字样式配置',
+              normal: [['font'], ['color']],
+              hover: [['color']],
+              disabled: [['color']],
+            },
+            PanelHeaderIcon: {
+              name: '面板头部图标',
+              desc: '面板头部图标样式配置',
+              normal: [['fontSize'], ['color']],
+              hover: [['color']],
+              disabled: [['color']],
+            },
+            PanelContent: {
+              name: '面板内容样式',
+              desc: '面板内容样式配置',
+              normal: [['width'], ['height'], ['background'], ['padding'], ['font'], ['color']],
+              hover: [['color']],
+              disabled: [['color']],
+            },
+          },
+        },
+      },
+    },
+    target: Collapse,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAAA/NJREFUeAHtnWtLFFEYxx9310tpdPkSfoOILiBEVGQKloUvim62RPRpKmq3G/SiXhhCVlDRCyE1y+zy0m+Q7xNW19V2lpQKZ2ZjzjnznJ3fyKLOOT6X3//PzOzucUeEDQIQgAAEIAABCEAAAhCAAAQgAAEIuCHQZjpNqVRaNx2TeOEEisWiUQ2NBgvKXq9v4eUzYppAW30zGTNnMhix/CeAIfzX0GgHGMIoTv+DYQj/NTTaQcFoNIPBno69aCrayPDJxjxt85sqXuEkjhAKRUmzJAyRJn2FuTGEQlHSLMnJNcTKyoo8evxEOrs65dzIWcnn8WGaokfltm6IarUqt8sPZWZ2rl7HulQqFRm9eL5uinxUXYylRMCqIRpmKD2Q6dlPUltdbbT4bvK91GprUrxyQQqYIiXZw9NaO3YHZrh5555Mf5yTtVpNgpfcg0fw8+TUjNy6e1+qv00SXh4jrglYM8TY+ITMf/suO3f0yJ7du/56BPs+f/kqz8afu+6XfDEErJ0yBvqPyWD/8cZRYasagjdFgy82XQSsGaKnu1tXp1TTFAFrp4ymsjNJHQEMoU6SdAvCEOnyV5cdQ6iTJN2CMES6/NVlN7pAM+iORbZuNWaRrVvemcvGKSNzkkc3jCGi+WRuFENkTvLohjFENJ/MjVp7LyMpyYWFhcgQvb29jfFWmRfZrMNBjhAOYfuQCkP4oJLDGjGEQ9g+pMIQPqjksEYM4RC2D6kwhA8qOawRQziE7UMqDOGDSg5rxBAOYfuQCkP4oJLDGjGEQ9g+pGLFlA8qRdTIiqkIOAwlJ8ApIznDloqAIVpKzuTNYIjkDFsqAoZoKTmTN2N8xVS5XE5eFRFSI8DTztTQm0nM004zHIkSQoBriBAwWd2NIbKqfEjfGCIETFZ3Y4isKh/SN4YIAZPV3cZfhzAFUtv9L/63HlMcXMfhCOGauPJ8GEK5QK7LwxCuiSvPZ+0a4ufSktQ/7jz2o435xFtdDrFmiImXr+XVm7eyratry44ry8ty4ugRGTlzastxdqZDwJohhocG5MfionyYm9+8V8ZGi/lCQQ7s2yunhwY3dvFdCQFrhmhvb5cb10Yll8vJ1B83UAnM0HdwPzdQUWKAf8uwZoggUWCK68XLjZsgbNxi6XDfIW6x9K8Kin63aohNU1y9JNvr1xLchE2R8iGlWDdEkLejo6Nxigipgd2KCPA6hCIxNJSCITSooKgGDKFIDA2lYAgNKiiqAUMoEkNDKSzD16BCghpYhp8AHn8aT4BTRjyjTM3AEJmSO75ZDBHPKFMzMESm5I5v1vh7Gfz3dzx0ZkAAAhCAAAQgAAEIQAACEIAABDJK4Bfzxb2WO4yWMwAAAABJRU5ErkJggg==',
+  },
+  {
+    meta: {
+      widgetName: 'Collapse.Panel',
+      title: 'Panel 面板',
+      desc: 'Panel 面板。',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        value: { type: 'string', desc: '指定Panel面板value值' },
+        title: { type: 'string | React.node', desc: '指定Panel面板头部内容' },
+        children: { type: 'string | React.node', desc: 'Panel面板内容' },
+        disabled: { type: 'boolean', desc: 'Panel面板是否禁用', defaultValue: false },
+        open: { type: 'boolean', desc: 'Panel面板是否展开', defaultValue: false },
+        showArrow: { type: 'boolean', desc: 'Panel面板是否展示箭头', defaultValue: true },
+        icon: { type: 'string', desc: '设置按钮前置图标类型' },
+      },
+      events: {
+        onClick: {
+          desc: 'Panel面板点击事件回调',
+          args: [{ name: 'value', desc: 'Panel面板点击时 value的值', type: 'string' }],
+        },
+      },
+      type: {},
+      category: ['数据展示'],
+      componentName: 'Panel',
+      needExport: true,
+      theme: {
+        Container: { name: '面板整体配置', desc: '面板整体配置', normal: [['width']] },
+        PanelHeader: {
+          name: '面板头部配置',
+          desc: '面板头部样式配置',
+          normal: [
+            ['opacity'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['padding'],
+            ['width'],
+            ['height'],
+            ['background'],
+          ],
+          hover: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
+          disabled: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
+        },
+        PanelHeaderText: {
+          name: '面板头部文字',
+          desc: '面板头部文字样式配置',
+          normal: [['font'], ['color']],
+          hover: [['color']],
+          disabled: [['color']],
+        },
+        PanelHeaderIcon: {
+          name: '面板头部图标',
+          desc: '面板头部图标样式配置',
+          normal: [['fontSize'], ['color']],
+          hover: [['color']],
+          disabled: [['color']],
+        },
+        PanelContent: {
+          name: '面板内容样式',
+          desc: '面板内容样式配置',
+          normal: [['width'], ['height'], ['background'], ['padding'], ['font'], ['color']],
+          hover: [['color']],
+          disabled: [['color']],
+        },
+      },
+      parentWidget: 'Collapse',
+    },
+    target: Collapse.Panel,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAAAnxJREFUeAHt2stqE1EYB/Av10br84h4gYKIC1GhWiULxVsNIj5Q8gIu3HkBdS1aLL6H3VuwUIkzUSxTbOjiTGeG+U0gdDLDd77zO/8202QibAQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBQvUAndQvT6XSeuqZ6RwtMJpOka5i0WN72PNuObt+R1AKdbEtZs5uymFrNFxCI5q9h0hkIRFLO5hcTiOavYdIZCERSzuYXE4jmr2HSGfSTVktY7OWrN8eqNt64vjivbucfq/kanuQvRA0XpcqWBKJK/RqOLRA1XJQqWyrtGuLH7m508scRn6zmn3DnjzOrq1XO39iHBEoLxOu37+Pdh49xajQ6NOSf3Z97e3Ht6pUY37n13+NerEagtEBsrN+I7zs78WX7W/za3y/Mrtfvx4VzZ+P2+s3C63aqFygtEIPBIF4824xutxuftr7+C0UehrWL52Py5EH0e73qBXRQECgtEPkoeSieTx5nVwoRn7e2s+d5XF67FJsP70dPGHKi2m2lBiKf7SIUTx/F6exaYmW0EvfGd7Mw+Oemdkn421DpgcjHGQ6Hi7eIuiLo60DAr+qBhZ8yAYEQg4KAQBQ47AiEDBQEBKLAYSfpLdw5p9vwTzZUbsM/We/WjeYto3VLvnzCArHcp3VHBaJ1S758wgKx3Kd1R5N/lzGbzVqHaMIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAgRIFfgNzuUnH0HtkpAAAAABJRU5ErkJggg==',
+  },
+  {
+    meta: {
       widgetName: 'DatePicker',
       title: '日期选择器',
       desc: '用于日期选择',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
@@ -4245,9 +4844,19 @@ export default [
             '自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ',
           defaultValue: '',
         },
-        step: { type: 'number', desc: '设置周,年的展示步长', propsDefaultValue: false },
+        step: { type: 'number', desc: '设置周,年的展示步长' },
         suffix: { type: 'icon', desc: '后缀图标' },
         prefix: { type: 'icon', desc: '前缀图标' },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
+        size: {
+          type: 'InputSize',
+          desc: '可配置三种尺寸大小的input',
+          propsDefaultValue: 'default',
+        },
+        alwaysOpen: { type: 'boolean', desc: '控制面板是否始终展开', propsDefaultValue: false },
+        liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -4262,7 +4871,12 @@ export default [
         onFocus: { desc: '输入框获取焦点', args: [] },
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      type: {
+        InputSize: ['small', 'default', 'large'],
+        ValidateType: ['top', 'bottom', 'inner'],
+        ValidateStatus: ['default', 'error'],
+        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
+      },
       childrenWidget: [
         'DatePicker.MonthPicker',
         'DatePicker.YearPicker',
@@ -4289,6 +4903,11 @@ export default [
           hover: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
           active: [],
           disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
+        },
+        Placeholder: {
+          name: '文本框提示信息',
+          desc: '文本框提示信息配置',
+          normal: [['color'], ['fontSize'], ['font']],
         },
         InputPrefix: {
           name: '前缀图标',
@@ -4331,44 +4950,156 @@ export default [
           active: [['color'], ['background'], ['borderRadius'], ['boxShadow'], ['border']],
         },
         OutMonthDate: { name: '非本月日期', desc: '非本月日期配置', normal: [['color']] },
+        SelectToday: {
+          name: '当天日期',
+          desc: '当天日期配置',
+          normal: [['border', 'style', 'color'], ['color']],
+        },
+        HeadSingleArrow: {
+          name: '头部单箭头',
+          desc: '头部单箭头',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadDoubleArrow: {
+          name: '头部双箭头',
+          desc: '头部双箭头',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadYearText: {
+          name: '头部年',
+          desc: '头部年的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadMonthText: {
+          name: '头部月',
+          desc: '头部月的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadWeekText: {
+          name: '头部周',
+          desc: '头部周的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
         SecondWeekDate: {
           name: '星期项',
           desc: '星期项配置',
           normal: [['color']],
           hover: [['color']],
         },
+        GroupDate: {
+          name: '分类日期',
+          desc: '年/月/周面板内容文字的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font'], ['background'], ['borderRadius']],
+        },
+        TimePanelHead: {
+          name: '时间板头部',
+          desc: '时间板头部配置',
+          normal: [['color'], ['font']],
+        },
+        TimePanel: {
+          name: '时间内容区',
+          desc: '时间内容配置',
+          normal: [['color'], ['background']],
+        },
+        timePanelListTheme: { name: '单列', desc: '单列时间配置', normal: [['border', 'right']] },
+        SelectTimeOption: {
+          name: '选中时间',
+          desc: '选中时间配置',
+          normal: [['color'], ['background']],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的输入框',
+          desc: '配置校验失败的输入框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
+        },
+        ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
+        FooterButtonOptions: {
+          name: '页脚按钮',
+          desc: '页脚按钮配置',
+          normal: [
+            ['color'],
+            ['font'],
+            ['margin'],
+            ['padding'],
+            ['width'],
+            ['height'],
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+          ],
+        },
+        FooterToday: {
+          name: "页脚'今天'按钮",
+          desc: "页脚'今天'按钮配置",
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+        },
+        FooterTimeButton: {
+          name: '页脚时间按钮',
+          desc: '页脚时间按钮配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+        },
+        FooterOkButton: {
+          name: '页脚确定按钮',
+          desc: '页脚确定按钮配置',
+          normal: [
+            ['background'],
+            ['margin'],
+            ['padding'],
+            ['borderRadius'],
+            ['color'],
+            ['font'],
+            ['fontSize'],
+          ],
+          hover: [['color'], ['font'], ['fontSize'], ['background']],
+        },
       },
       defaultTheme: {
-        Container: {
-          normal: {
-            width: 192,
-            height: 32,
-            background: { color: '#ffffff' },
-            border: {
-              top: { color: '#ccc', style: 'solid', width: 1 },
-              right: { color: '#ccc', style: 'solid', width: 1 },
-              bottom: { color: '#ccc', style: 'solid', width: 1 },
-              left: { color: '#ccc', style: 'solid', width: 1 },
-            },
-            borderRadius: { topLeft: 3, topRight: 3, bottomLeft: 3, bottomRight: 3 },
-            fontSize: 14,
-            color: '#333',
-          },
-        },
-        InputPrefix: { normal: { color: '#999999', font: { size: 14, weight: 'normal' } } },
-        InputSuffix: { normal: { color: '#999999', font: { size: 14, weight: 'normal' } } },
-        ClearButton: { normal: { color: '#999999', font: { size: 14, weight: 'normal' } } },
-        FacePanelContain: {
-          normal: {
-            width: 300,
-            height: 320,
-            background: { color: '#fff' },
-            boxShadow: '2px 2px 3px 2px rgba(0,0,0,0.1)',
-          },
-        },
-        InMonthDate: { normal: { color: '#666666', fontSize: 14 } },
-        OutMonthDate: { normal: { color: '#ccc', fontSize: 14 } },
-        SecondWeekDate: { normal: { color: '#333', fontSize: 14 } },
+        Container: { normal: { width: 300 } },
+        FacePanelContain: { normal: { width: 300, height: 320 } },
       },
     },
     target: DatePicker,
@@ -4381,6 +5112,7 @@ export default [
       title: '月选择器',
       desc: '用于月份选择,',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
@@ -4396,6 +5128,16 @@ export default [
           type: 'Object',
           desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
         },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
+        size: {
+          type: 'InputSize',
+          desc: '可配置三种尺寸大小的input',
+          propsDefaultValue: 'default',
+        },
+        alwaysOpen: { type: 'boolean', desc: '控制面板是否始终展开', propsDefaultValue: false },
+        liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -4405,10 +5147,131 @@ export default [
         onFocus: { desc: '输入框获取焦点', args: [] },
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      type: {
+        InputSize: ['small', 'default', 'large'],
+        ValidateType: ['top', 'bottom', 'inner'],
+        ValidateStatus: ['default', 'error'],
+        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
+      },
       category: ['数据录入'],
       componentName: 'MonthPicker',
       needExport: true,
+      theme: {
+        Container: {
+          name: '文本框',
+          desc: '文本框配置',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['fontSize'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['color'],
+            ['font'],
+          ],
+          hover: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
+          active: [],
+          disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
+        },
+        Placeholder: {
+          name: '文本框提示信息',
+          desc: '文本框提示信息配置',
+          normal: [['color'], ['fontSize'], ['font']],
+        },
+        InputPrefix: {
+          name: '前缀图标',
+          desc: '前缀图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        InputSuffix: {
+          name: '后缀图标',
+          desc: '后缀图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        ClearButton: {
+          name: '清除图标',
+          desc: '清除图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        FacePanelContain: {
+          name: '日期面板',
+          desc: '日期面板配置',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+          ],
+        },
+        GroupDate: {
+          name: '分类日期',
+          desc: '分类日期配置/年/月/周',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font'], ['background'], ['borderRadius']],
+        },
+        HeadSingleArrow: {
+          name: '头部单箭头',
+          desc: '头部单箭头',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadYearText: {
+          name: '头部年',
+          desc: '头部年的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的输入框',
+          desc: '配置校验失败的输入框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
+        },
+        ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
+      },
+      defaultTheme: {
+        Container: { normal: { width: 300 } },
+        FacePanelContain: { normal: { width: 300, height: 320 } },
+      },
       parentWidget: 'DatePicker',
     },
     target: DatePicker.MonthPicker,
@@ -4421,6 +5284,7 @@ export default [
       title: '年选择器',
       desc: '用于年选择,',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
@@ -4432,7 +5296,17 @@ export default [
           type: 'Object',
           desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
         },
-        step: { type: 'number', desc: '设置年的展示步长', propsDefaultValue: false },
+        step: { type: 'number', desc: '设置年的展示步长' },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
+        size: {
+          type: 'InputSize',
+          desc: '可配置三种尺寸大小的input',
+          propsDefaultValue: 'default',
+        },
+        alwaysOpen: { type: 'boolean', desc: '控制面板是否始终展开', propsDefaultValue: false },
+        liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -4442,10 +5316,131 @@ export default [
         onFocus: { desc: '输入框获取焦点', args: [] },
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      type: {
+        InputSize: ['small', 'default', 'large'],
+        ValidateType: ['top', 'bottom', 'inner'],
+        ValidateStatus: ['default', 'error'],
+        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
+      },
       category: ['数据录入'],
       componentName: 'YearPicker',
       needExport: true,
+      theme: {
+        Container: {
+          name: '文本框',
+          desc: '文本框配置',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['fontSize'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['color'],
+            ['font'],
+          ],
+          hover: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
+          active: [],
+          disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
+        },
+        Placeholder: {
+          name: '文本框提示信息',
+          desc: '文本框提示信息配置',
+          normal: [['color'], ['fontSize'], ['font']],
+        },
+        InputPrefix: {
+          name: '前缀图标',
+          desc: '前缀图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        InputSuffix: {
+          name: '后缀图标',
+          desc: '后缀图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        ClearButton: {
+          name: '清除图标',
+          desc: '清除图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        FacePanelContain: {
+          name: '日期面板',
+          desc: '日期面板配置',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+          ],
+        },
+        GroupDate: {
+          name: '分类日期',
+          desc: '分类日期配置/年/月/周',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font'], ['background'], ['borderRadius']],
+        },
+        HeadSingleArrow: {
+          name: '头部单箭头',
+          desc: '头部单箭头',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadYearText: {
+          name: '头部年',
+          desc: '头部年的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的输入框',
+          desc: '配置校验失败的输入框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
+        },
+        ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
+      },
+      defaultTheme: {
+        Container: { normal: { width: 300 } },
+        FacePanelContain: { normal: { width: 300, height: 320 } },
+      },
       parentWidget: 'DatePicker',
     },
     target: DatePicker.YearPicker,
@@ -4458,6 +5453,7 @@ export default [
       title: '周选择器',
       desc: '用于周选择,',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
@@ -4484,7 +5480,17 @@ export default [
           desc:
             '自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ',
         },
-        step: { type: 'number', desc: '设置周,年的展示步长', propsDefaultValue: false },
+        step: { type: 'number', desc: '设置周,年的展示步长' },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
+        size: {
+          type: 'InputSize',
+          desc: '可配置三种尺寸大小的input',
+          propsDefaultValue: 'default',
+        },
+        alwaysOpen: { type: 'boolean', desc: '控制面板是否始终展开', propsDefaultValue: false },
+        liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -4499,10 +5505,231 @@ export default [
         onFocus: { desc: '输入框获取焦点', args: [] },
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      type: {
+        InputSize: ['small', 'default', 'large'],
+        ValidateType: ['top', 'bottom', 'inner'],
+        ValidateStatus: ['default', 'error'],
+        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
+      },
       category: ['数据录入'],
       componentName: 'WeekPicker',
       needExport: true,
+      theme: {
+        Container: {
+          name: '文本框',
+          desc: '文本框配置',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['fontSize'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['color'],
+            ['font'],
+          ],
+          hover: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
+          active: [],
+          disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
+        },
+        Placeholder: {
+          name: '文本框提示信息',
+          desc: '文本框提示信息配置',
+          normal: [['color'], ['fontSize'], ['font']],
+        },
+        InputPrefix: {
+          name: '前缀图标',
+          desc: '前缀图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        InputSuffix: {
+          name: '后缀图标',
+          desc: '后缀图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        ClearButton: {
+          name: '清除图标',
+          desc: '清除图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        FacePanelContain: {
+          name: '日期面板',
+          desc: '日期面板配置',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+          ],
+        },
+        InMonthDate: {
+          name: '日期',
+          desc: '日期配置',
+          normal: [['color']],
+          hover: [['color'], ['background'], ['borderRadius'], ['boxShadow'], ['border']],
+          active: [['color'], ['background'], ['borderRadius'], ['boxShadow'], ['border']],
+        },
+        OutMonthDate: { name: '非本月日期', desc: '非本月日期配置', normal: [['color']] },
+        SelectToday: {
+          name: '当天日期',
+          desc: '当天日期配置',
+          normal: [['border', 'style', 'color'], ['color']],
+        },
+        HeadSingleArrow: {
+          name: '头部单箭头',
+          desc: '头部单箭头',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadDoubleArrow: {
+          name: '头部双箭头',
+          desc: '头部双箭头',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadYearText: {
+          name: '头部年',
+          desc: '头部年的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadMonthText: {
+          name: '头部月',
+          desc: '头部月的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadWeekText: {
+          name: '头部周',
+          desc: '头部周的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        SecondWeekDate: {
+          name: '星期项',
+          desc: '星期项配置',
+          normal: [['color']],
+          hover: [['color']],
+        },
+        GroupDate: {
+          name: '分类日期',
+          desc: '年/月/周面板内容文字的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font'], ['background'], ['borderRadius']],
+        },
+        TimePanelHead: {
+          name: '时间板头部',
+          desc: '时间板头部配置',
+          normal: [['color'], ['font']],
+        },
+        TimePanel: {
+          name: '时间内容区',
+          desc: '时间内容配置',
+          normal: [['color'], ['background']],
+        },
+        timePanelListTheme: { name: '单列', desc: '单列时间配置', normal: [['border', 'right']] },
+        SelectTimeOption: {
+          name: '选中时间',
+          desc: '选中时间配置',
+          normal: [['color'], ['background']],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的输入框',
+          desc: '配置校验失败的输入框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
+        },
+        ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
+        FooterButtonOptions: {
+          name: '页脚按钮',
+          desc: '页脚按钮配置',
+          normal: [
+            ['color'],
+            ['font'],
+            ['margin'],
+            ['padding'],
+            ['width'],
+            ['height'],
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+          ],
+        },
+        FooterToday: {
+          name: "页脚'今天'按钮",
+          desc: "页脚'今天'按钮配置",
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+        },
+        FooterTimeButton: {
+          name: '页脚时间按钮',
+          desc: '页脚时间按钮配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+        },
+        FooterOkButton: {
+          name: '页脚确定按钮',
+          desc: '页脚确定按钮配置',
+          normal: [
+            ['background'],
+            ['margin'],
+            ['padding'],
+            ['borderRadius'],
+            ['color'],
+            ['font'],
+            ['fontSize'],
+          ],
+          hover: [['color'], ['font'], ['fontSize'], ['background']],
+        },
+      },
+      defaultTheme: {
+        Container: { normal: { width: 300 } },
+        FacePanelContain: { normal: { width: 300, height: 320 } },
+      },
       parentWidget: 'DatePicker',
     },
     target: DatePicker.WeekPicker,
@@ -4515,6 +5742,7 @@ export default [
       title: '周选择器',
       desc: '用于周选择,',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
@@ -4530,7 +5758,17 @@ export default [
           type: 'Object',
           desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
         },
-        step: { type: 'number', desc: '设置周,年的展示步长', propsDefaultValue: false },
+        step: { type: 'number', desc: '设置周,年的展示步长' },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
+        size: {
+          type: 'InputSize',
+          desc: '可配置三种尺寸大小的input',
+          propsDefaultValue: 'default',
+        },
+        alwaysOpen: { type: 'boolean', desc: '控制面板是否始终展开', propsDefaultValue: false },
+        liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -4540,10 +5778,139 @@ export default [
         onFocus: { desc: '输入框获取焦点', args: [] },
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      type: {
+        InputSize: ['small', 'default', 'large'],
+        ValidateType: ['top', 'bottom', 'inner'],
+        ValidateStatus: ['default', 'error'],
+        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
+      },
       category: ['数据录入'],
       componentName: 'WeeksPicker',
       needExport: true,
+      theme: {
+        Container: {
+          name: '文本框',
+          desc: '文本框配置',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['fontSize'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['color'],
+            ['font'],
+          ],
+          hover: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
+          active: [],
+          disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
+        },
+        Placeholder: {
+          name: '文本框提示信息',
+          desc: '文本框提示信息配置',
+          normal: [['color'], ['fontSize'], ['font']],
+        },
+        InputPrefix: {
+          name: '前缀图标',
+          desc: '前缀图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        InputSuffix: {
+          name: '后缀图标',
+          desc: '后缀图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        ClearButton: {
+          name: '清除图标',
+          desc: '清除图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        FacePanelContain: {
+          name: '日期面板',
+          desc: '日期面板配置',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+          ],
+        },
+        GroupDate: {
+          name: '分类日期',
+          desc: '分类日期配置/年/月/周',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font'], ['background'], ['borderRadius']],
+        },
+        HeadSingleArrow: {
+          name: '头部单箭头',
+          desc: '头部单箭头',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadYearText: {
+          name: '头部年',
+          desc: '头部年的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadWeekText: {
+          name: '头部周',
+          desc: '头部周的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的输入框',
+          desc: '配置校验失败的输入框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
+        },
+        ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
+      },
+      defaultTheme: {
+        Container: { normal: { width: 300 } },
+        FacePanelContain: { normal: { width: 300, height: 320 } },
+      },
       parentWidget: 'DatePicker',
     },
     target: DatePicker.WeeksPicker,
@@ -4556,6 +5923,7 @@ export default [
       title: '日期范围选择器',
       desc: '用于日期范围选择,',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: {
           type: 'string[]',
           meta: [{ key: 'value', type: 'string' }],
@@ -4597,9 +5965,19 @@ export default [
           desc:
             '自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ',
         },
-        step: { type: 'number', desc: '设置周,年的展示步长', propsDefaultValue: false },
+        step: { type: 'number', desc: '设置周,年的展示步长' },
         suffix: { type: 'icon', desc: '后缀图标' },
         prefix: { type: 'icon', desc: '前缀图标' },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
+        size: {
+          type: 'InputSize',
+          desc: '可配置三种尺寸大小的input',
+          propsDefaultValue: 'default',
+        },
+        alwaysOpen: { type: 'boolean', desc: '控制面板是否始终展开', propsDefaultValue: false },
+        liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -4615,6 +5993,9 @@ export default [
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
       type: {
+        InputSize: ['small', 'default', 'large'],
+        ValidateType: ['top', 'bottom', 'inner'],
+        ValidateStatus: ['default', 'error'],
         ChangeType: {
           newValue: 'Array<string>',
           oldValue: 'Array<string>',
@@ -4642,6 +6023,11 @@ export default [
           hover: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
           active: [],
           disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
+        },
+        Placeholder: {
+          name: '文本框提示信息',
+          desc: '文本框提示信息配置',
+          normal: [['color'], ['fontSize'], ['font']],
         },
         InputPrefix: {
           name: '前缀图标',
@@ -4684,6 +6070,58 @@ export default [
           active: [['color'], ['background'], ['borderRadius'], ['boxShadow'], ['border']],
         },
         OutMonthDate: { name: '非本月日期', desc: '非本月日期配置', normal: [['color']] },
+        GroupDate: {
+          name: '分类日期',
+          desc: '分类日期配置/年/月/周',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font'], ['background'], ['borderRadius']],
+        },
+        SelectToday: {
+          name: '当天日期',
+          desc: '当天日期配置',
+          normal: [['border', 'style', 'color'], ['color']],
+        },
+        HeadSingleArrow: {
+          name: '头部单箭头',
+          desc: '头部单箭头',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadDoubleArrow: {
+          name: '头部双箭头',
+          desc: '头部双箭头',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadYearText: {
+          name: '头部年',
+          desc: '头部年的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadMonthText: {
+          name: '头部月',
+          desc: '头部月的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        HeadWeekText: {
+          name: '头部周',
+          desc: '头部周的配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
         RangeDate: {
           name: '范围日期',
           desc: '选中范围日期的配置',
@@ -4695,52 +6133,98 @@ export default [
           normal: [['color']],
           hover: [['color']],
         },
+        TimePanelHead: {
+          name: '时间板头部',
+          desc: '时间板头部配置',
+          normal: [['color'], ['font']],
+        },
+        TimePanel: {
+          name: '时间内容区',
+          desc: '时间内容配置',
+          normal: [['color'], ['background']],
+        },
+        timePanelListTheme: { name: '单列', desc: '单列时间配置', normal: [['border', 'right']] },
+        SelectTimeOption: {
+          name: '选中时间',
+          desc: '选中时间配置',
+          normal: [['color'], ['background']],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的输入框',
+          desc: '配置校验失败的输入框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
+        },
+        ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
+        FooterButtonOptions: {
+          name: '页脚按钮',
+          desc: '页脚按钮配置',
+          normal: [
+            ['color'],
+            ['font'],
+            ['margin'],
+            ['padding'],
+            ['width'],
+            ['height'],
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+          ],
+        },
+        FooterToday: {
+          name: "页脚'今天'按钮",
+          desc: "页脚'今天'按钮配置",
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+        },
+        FooterTimeButton: {
+          name: '页脚时间按钮',
+          desc: '页脚时间按钮配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+        },
+        FooterOkButton: {
+          name: '页脚确定按钮',
+          desc: '页脚确定按钮配置',
+          normal: [
+            ['background'],
+            ['margin'],
+            ['padding'],
+            ['borderRadius'],
+            ['color'],
+            ['font'],
+            ['fontSize'],
+          ],
+          hover: [['color'], ['font'], ['fontSize'], ['background']],
+        },
       },
       defaultTheme: {
-        Container: {
-          normal: {
-            width: 300,
-            height: 32,
-            background: { color: '#ffffff' },
-            border: {
-              top: { color: '#ccc', style: 'solid', width: 1 },
-              right: { color: '#ccc', style: 'solid', width: 1 },
-              bottom: { color: '#ccc', style: 'solid', width: 1 },
-              left: { color: '#ccc', style: 'solid', width: 1 },
-            },
-            borderRadius: { topLeft: 3, topRight: 3, bottomLeft: 3, bottomRight: 3 },
-            fontSize: 14,
-            color: '#333',
-          },
-        },
-        InputPrefix: { normal: { color: '#999999', font: { size: 14, weight: 'normal' } } },
-        InputSuffix: { normal: { color: '#999999', font: { size: 14, weight: 'normal' } } },
-        ClearButton: { normal: { color: '#999999', font: { size: 14, weight: 'normal' } } },
-        FacePanelContain: {
-          normal: {
-            width: 600,
-            height: 320,
-            background: { color: '#fff' },
-            boxShadow: '2px 2px 3px 2px rgba(0,0,0,0.1)',
-          },
-        },
-        InMonthDate: {
-          normal: {
-            color: '#666666',
-            fontSize: 14,
-            background: { color: '#ffffff' },
-            borderRadius: { topLeft: 0, topRight: 0, bottomLeft: 0, bottomRight: 0 },
-          },
-        },
-        OutMonthDate: { normal: { color: '#ccc', fontSize: 14 } },
-        SecondWeekDate: { normal: { color: '#333', fontSize: 14 } },
-        RangeDate: {
-          normal: {
-            color: '#666666',
-            background: { color: 'rgba(77,99,255,0.05)' },
-            borderRadius: { topLeft: 13, topRight: 13, bottomLeft: 13, bottomRight: 13 },
-          },
-        },
+        Container: { normal: { width: 600 } },
+        FacePanelContain: { normal: { width: 600, height: 320 } },
       },
       parentWidget: 'DatePicker',
     },
@@ -4754,6 +6238,7 @@ export default [
       title: '分割线',
       desc: '区隔内容的分割线',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         position: { type: 'DividerPosition', desc: '分割线中显示内容的位置,与content 配合使用' },
         dashed: {
           type: 'boolean',
@@ -4777,9 +6262,9 @@ export default [
           title: '垂直分割线',
           desc: '垂直分割线',
           props: { type: 'vertical' },
-          defaultTheme: { Divider: { normal: { width: 1, height: 200 } } },
+          defaultTheme: { Container: { normal: { width: 1, height: 200 } } },
           theme: {
-            Divider: {
+            Container: {
               name: '垂直分割线',
               desc: '分割线为垂直类型时的配置',
               normal: [
@@ -4796,7 +6281,7 @@ export default [
         },
       },
       theme: {
-        Divider: {
+        Container: {
           name: '水平分割线',
           desc: '分割线为水平类型时的配置',
           normal: [
@@ -4810,7 +6295,7 @@ export default [
           ],
         },
       },
-      defaultTheme: { Divider: { normal: { width: 200, height: 1 } } },
+      defaultTheme: { Container: { normal: { width: 200, height: 1 } } },
       childrenWidget: [],
     },
     target: Divider,
@@ -4823,6 +6308,7 @@ export default [
       title: '垂直分割线',
       desc: '垂直分割线',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         position: { type: 'DividerPosition', desc: '分割线中显示内容的位置,与content 配合使用' },
         dashed: {
           type: 'boolean',
@@ -4841,7 +6327,7 @@ export default [
       type: { DividerPosition: ['left', 'right'], DividerType: ['horizontal', 'vertical'] },
       category: ['其他'],
       theme: {
-        Divider: {
+        Container: {
           name: '垂直分割线',
           desc: '分割线为垂直类型时的配置',
           normal: [
@@ -4855,7 +6341,7 @@ export default [
           ],
         },
       },
-      defaultTheme: { Divider: { normal: { width: 1, height: 200 } } },
+      defaultTheme: { Container: { normal: { width: 1, height: 200 } } },
       childrenWidget: [],
       aliasName: 'VerticalDivider',
     },
@@ -4865,17 +6351,57 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Drawer',
+      title: '抽屉',
+      desc: '在屏幕边缘出现的浮层面板。',
+      props: {
+        injectLugiad: { type: 'Object', defaultValue: { type: 'Drawer' }, isHidden: true },
+        placement: { type: 'PlacementType', desc: '抽屉的方向', defaultValue: 'right' },
+        title: { type: 'React.node', desc: '抽屉的标题' },
+        visible: { type: 'boolean', desc: '抽屉是否展示' },
+        mask: { type: 'boolean', desc: '是否展示遮罩层', defaultValue: true },
+        maskClosable: { type: 'boolean', desc: '点击遮罩层是否允许关闭抽屉', defaultValue: true },
+        closable: { type: 'boolean', desc: '是否展示抽屉右上角关闭按钮', defaultValue: false },
+        sidebar: { type: 'boolean', desc: '是否展示抽屉侧边抽拉按钮', defaultValue: false },
+      },
+      events: {
+        onClose: { desc: '抽屉关闭时的回调', args: [] },
+        onToggle: { desc: '抽拉抽屉时的回调', args: [] },
+      },
+      type: {
+        PlacementType: ['top', 'right', 'left', 'bottom'],
+        DrawerStyle: {
+          width: { type: 'number', desc: 'Drawer的宽度' },
+          height: { type: 'number', desc: 'Drawer的高度，在 placement 为 top 或 bottom 时使用' },
+        },
+      },
+      category: ['反馈'],
+      childrenWidget: [],
+    },
+    target: Drawer,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAAAkVJREFUeAHtmTFOw1AQBRPEXXIaJBokaLgKXIUqBQUFp8ltQJFSvrUlb4jYmZS7znfevJEVybudHwlIQAISkIAEJCABCUhAAhKQgAQkIAEJSEACtyawX/sDHp9f39deS7zu6/jx9h9y738/1e+8q5bueAQUgtd5mVghSjy8pULwOi8TK0SJh7dUCF7nZWKFKPHwlve8yH+b+Pj5Xd7w5enhvF97XXlYw9InRAPESUcoxKQ2G7IoRAPESUcoxKQ2G7IoRAPESUcoxKQ2G7IoRAPESUcoxKQ2G7IoRAPESUcoxKQ2G7IoRAPESUcoxKQ2G7IoRAPESUf4tvPKbV7eZi7dZu11S+ds3fuE2Epw2PcVYlihW+MoxFaCw77vf4grF3o6nco7HA6H8777uvKmxdInRAGHuFIIYutFZoUo4BBXCkFsvcisEAUc4kohiK0XmRWigENcKQSx9SKzQhRwiCuFILZeZFaIAg5xpRDE1ovMClHAIa5823nl1i9vM5du033d0v3S3idEIgOdKwS0+BRbIRIZ6FwhoMWn2AqRyEDnCgEtPsVWiEQGOlcIaPEptkIkMtC5QkCLT7EVIpGBzhUCWnyKrRCJDHSuENDiU2yFSGSgc4WAFp9iK0QiA50rBLT4FFshEhnoXCGgxafYCpHIQOcKAS0+xVaIRAY6Vwho8Sm2QiQy0LlCQItPsRUikYHOFQJafIqtEIkMdK4Q0OJTbIVIZJxLQAISkIAEJCABCUhAAhKQgAQkIAEJSEACEpDAjQj8APR9Fu3uwZTVAAAAAElFTkSuQmCC',
+  },
+  {
+    meta: {
       widgetName: 'Dropmenu',
       title: '下拉菜单',
       desc: '选项过多时，弹出下拉菜单给用户选择操作',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
-        action: { type: 'ActionType', desc: '弹出项的打开方式', defaultValue: 'click' },
-        hideAction: { type: 'ActionType', desc: '弹出项的隐藏方式', defaultValue: 'click' },
+        size: {
+          type: 'SizeType',
+          desc: '可配置三种尺寸大小的dropmenu',
+          propsDefaultValue: 'default',
+        },
+        popupVisible: { type: 'boolean', desc: '是否展开菜单', propsDefaultValue: false },
+        action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
+        hideAction: { type: 'ActionType', desc: '弹出项的隐藏方式', propsDefaultValue: 'click' },
         menus: { type: 'React.Node', desc: '弹出项组件' },
-        align: { type: 'React.Node', desc: '弹出方向', defaultValue: 'bottom' },
+        align: { type: 'AlignType', desc: '弹出方向', propsDefaultValue: 'bottom' },
         text: { type: 'string', desc: '下拉菜单按钮的文本' },
-        type: { type: 'StyleType', desc: '按钮的风格,默认为customs', defaultValue: 'customs' },
+        type: { type: 'StyleType', desc: '按钮的风格,默认为customs', propsDefaultValue: 'customs' },
         switchIconClass: {
           type: 'object',
           desc: '自定义控制器图标',
@@ -4884,9 +6410,9 @@ export default [
             { key: 'iconSrc', title: '图片', type: 'string' },
           ],
         },
-        disabled: { type: 'boolean', desc: '是否禁选', defaultValue: false },
-        divided: { type: 'boolean', desc: '是否为分割线', defaultValue: true },
-        showSwitch: { type: 'boolean', desc: '是否展示switch图标', defaultValue: true },
+        disabled: { type: 'boolean', desc: '是否禁选', propsDefaultValue: false },
+        divided: { type: 'boolean', desc: '是否为分割线', propsDefaultValue: true },
+        showSwitch: { type: 'boolean', desc: '是否展示switch图标', propsDefaultValue: true },
         icons: {
           type: 'object',
           desc: '配置前置和后缀图标',
@@ -4952,7 +6478,12 @@ export default [
           ],
         },
       },
-      type: { StyleType: ['customs', 'primary', 'basic'], ActionType: ['hover', 'click'] },
+      type: {
+        AlignType: ['topLeft', 'top', 'topRight', 'bottomLeft', 'bottom', 'bottomRight'],
+        SizeType: ['small', 'default', 'large'],
+        StyleType: ['customs', 'primary', 'basic'],
+        ActionType: ['hover', 'click'],
+      },
       designInfo: {
         NoDividedDropmenu: {
           sequence: 1,
@@ -5162,6 +6693,14 @@ export default [
                       ],
                       disabled: [],
                     },
+                    Divider: {
+                      name: '分割线',
+                      desc: '配置每项之间的分割线，当divided为true时生效',
+                      normal: [['background']],
+                      hover: [],
+                      active: [],
+                      disabled: [],
+                    },
                     PrefixIcon: {
                       name: '前置图标配置',
                       desc: '前置图标或图片的样式配置',
@@ -5223,25 +6762,13 @@ export default [
             ['margin'],
             ['lineHeight'],
             ['opacity'],
-            ['color'],
-            ['font'],
-            ['fontSize'],
             ['cursor'],
             ['boxShadow'],
             ['borderRadius'],
           ],
           hover: [],
           active: [],
-          disabled: [
-            ['lineHeight'],
-            ['opacity'],
-            ['boxShadow'],
-            ['color'],
-            ['font'],
-            ['fontSize'],
-            ['cursor'],
-            ['borderRadius'],
-          ],
+          disabled: [['lineHeight'], ['opacity'], ['boxShadow'], ['cursor'], ['borderRadius']],
         },
         Divides: {
           name: '分割线配置',
@@ -5524,13 +7051,20 @@ export default [
       title: '无分隔符的按钮',
       desc: '无分隔符的下拉按钮',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
-        action: { type: 'ActionType', desc: '弹出项的打开方式', defaultValue: 'click' },
-        hideAction: { type: 'ActionType', desc: '弹出项的隐藏方式', defaultValue: 'click' },
+        size: {
+          type: 'SizeType',
+          desc: '可配置三种尺寸大小的dropmenu',
+          propsDefaultValue: 'default',
+        },
+        popupVisible: { type: 'boolean', desc: '是否展开菜单', propsDefaultValue: false },
+        action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
+        hideAction: { type: 'ActionType', desc: '弹出项的隐藏方式', propsDefaultValue: 'click' },
         menus: { type: 'React.Node', desc: '弹出项组件' },
-        align: { type: 'React.Node', desc: '弹出方向', defaultValue: 'bottom' },
+        align: { type: 'AlignType', desc: '弹出方向', propsDefaultValue: 'bottom' },
         text: { type: 'string', desc: '下拉菜单按钮的文本' },
-        type: { type: 'StyleType', desc: '按钮的风格,默认为customs', defaultValue: 'customs' },
+        type: { type: 'StyleType', desc: '按钮的风格,默认为customs', propsDefaultValue: 'customs' },
         switchIconClass: {
           type: 'object',
           desc: '自定义控制器图标',
@@ -5539,9 +7073,14 @@ export default [
             { key: 'iconSrc', title: '图片', type: 'string' },
           ],
         },
-        disabled: { type: 'boolean', desc: '是否禁选', defaultValue: false },
-        divided: { type: 'boolean', desc: '是否为分割线', defaultValue: false },
-        showSwitch: { type: 'boolean', desc: '是否展示switch图标', defaultValue: true },
+        disabled: { type: 'boolean', desc: '是否禁选', propsDefaultValue: false },
+        divided: {
+          type: 'boolean',
+          desc: '是否为分割线',
+          propsDefaultValue: true,
+          defaultValue: false,
+        },
+        showSwitch: { type: 'boolean', desc: '是否展示switch图标', propsDefaultValue: true },
         icons: {
           type: 'object',
           desc: '配置前置和后缀图标',
@@ -5607,7 +7146,12 @@ export default [
           ],
         },
       },
-      type: { StyleType: ['customs', 'primary', 'basic'], ActionType: ['hover', 'click'] },
+      type: {
+        AlignType: ['topLeft', 'top', 'topRight', 'bottomLeft', 'bottom', 'bottomRight'],
+        SizeType: ['small', 'default', 'large'],
+        StyleType: ['customs', 'primary', 'basic'],
+        ActionType: ['hover', 'click'],
+      },
       theme: {
         Container: {
           name: '下拉菜单整体配置',
@@ -5811,6 +7355,14 @@ export default [
                   ],
                   disabled: [],
                 },
+                Divider: {
+                  name: '分割线',
+                  desc: '配置每项之间的分割线，当divided为true时生效',
+                  normal: [['background']],
+                  hover: [],
+                  active: [],
+                  disabled: [],
+                },
                 PrefixIcon: {
                   name: '前置图标配置',
                   desc: '前置图标或图片的样式配置',
@@ -5860,6 +7412,7 @@ export default [
       title: '图标',
       desc: '语义化的矢量图形',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         iconClass: { type: 'icon', desc: '图标资源,需从图标库中获取.' },
         src: { type: 'image', desc: '头像显示图片资源' },
@@ -5894,6 +7447,7 @@ export default [
       title: '文本输入框',
       desc: '常用于昵称,名称,表格内容等填写.',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         size: {
@@ -5901,12 +7455,8 @@ export default [
           desc: '可配置三种尺寸大小的input',
           propsDefaultValue: 'default',
         },
-        validateStatus: { type: 'ValidateStatus', desc: '校验状态', propsDefaultValue: 'default' },
-        validateType: {
-          type: 'ValidateType',
-          desc: '校验信息显示类型',
-          propsDefaultValue: 'default',
-        },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         help: { type: 'string', desc: 'input校验提示信息' },
         placeholder: { type: 'string', desc: 'input输入提示信息' },
         prefix: { type: 'icon', desc: '带有前缀的 input' },
@@ -5959,6 +7509,14 @@ export default [
           desc: '当键入回车时触发事件',
           args: [{ name: 'event', desc: '当键入回车时触发', type: 'KeyboardEvent' }],
         },
+        onMouseEnter: {
+          desc: '当鼠标移入输入框内触发',
+          args: [{ name: 'event', desc: '当鼠标移入输入框内触发的事件', type: 'MouseEvent' }],
+        },
+        onMouseLeave: {
+          desc: '当鼠标移出输入框内触发',
+          args: [{ name: 'event', desc: '当鼠标移出输入框外触发的事件', type: 'MouseEvent' }],
+        },
       },
       type: {
         InputSize: ['small', 'default', 'large'],
@@ -5971,42 +7529,65 @@ export default [
       childrenWidget: ['Input.Textarea'],
       theme: {
         Container: {
-          name: '输入框外部容器',
-          desc: '输入框外部容器',
-          normal: [['width'], ['height'], ['margin']],
-        },
-        Input: {
           name: '输入框主体',
           desc: '输入框主体结构',
           normal: [
+            ['width'],
+            ['height'],
+            ['margin'],
+            ['padding'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['background'],
+            ['opacity'],
             ['fontSize'],
             ['font'],
             ['color'],
-            ['background'],
-            ['border'],
-            ['borderRadius'],
             ['cursor'],
-            ['opacity'],
           ],
           hover: [
             ['border'],
             ['borderRadius'],
-            ['cursor'],
             ['background'],
             ['opacity'],
             ['boxShadow'],
-          ],
-          active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
-          disabled: [
+            ['cursor'],
             ['fontSize'],
             ['font'],
             ['color'],
+          ],
+          focus: [
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+            ['opacity'],
+            ['boxShadow'],
+            ['cursor'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          active: [
+            ['boxShadow'],
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+            ['opacity'],
+            ['cursor'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          disabled: [
             ['background'],
             ['border'],
             ['borderRadius'],
-            ['cursor'],
-            ['padding'],
             ['opacity'],
+            ['cursor'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
           ],
         },
         Placeholder: {
@@ -6017,26 +7598,26 @@ export default [
         InputSuffix: {
           name: '后缀图标',
           desc: '输入框后缀自定义图标',
-          normal: [['color'], ['fontSize'], ['font']],
+          normal: [['color'], ['fontSize'], ['font'], ['padding'], ['margin']],
           hover: [],
           clicked: [],
-          disabled: [],
+          disabled: [['color'], ['fontSize'], ['font']],
         },
         InputPrefix: {
           name: '前缀图标',
           desc: '输入框前缀自定义图标',
-          normal: [['color'], ['fontSize'], ['font']],
+          normal: [['color'], ['fontSize'], ['font'], ['padding'], ['margin']],
           hover: [],
           clicked: [],
-          disabled: [],
+          disabled: [['color'], ['fontSize'], ['font']],
         },
         ClearButton: {
           name: '输入框清除图标',
           desc: '输入框后缀清除图标',
-          normal: [['color'], ['fontSize']],
-          hover: [],
+          normal: [['color'], ['fontSize'], ['font']],
+          hover: [['color'], ['fontSize'], ['font']],
           clicked: [],
-          disabled: [],
+          disabled: [['color'], ['fontSize'], ['font']],
         },
         ValidateErrorInput: {
           name: '校验失败的输入框',
@@ -6052,6 +7633,8 @@ export default [
           ],
           hover: [['background'], ['border'], ['boxShadow']],
           active: [['background'], ['border'], ['boxShadow']],
+          focus: [['background'], ['border'], ['boxShadow']],
+          disabled: [['background'], ['border'], ['boxShadow']],
         },
         ValidateErrorText: {
           name: '校验失败提示信息',
@@ -6081,6 +7664,7 @@ export default [
       title: '段落文本输入框',
       desc: '常用于多行文本输入',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', propsDefaultValue: false },
         placeholder: { type: 'string', desc: '段落文本输入框输入提示信息' },
         defaultValue: { type: 'string', desc: '默认显示内容' },
@@ -6093,13 +7677,11 @@ export default [
           desc: '可以调整段落文本输入框宽高的类型',
           propsDefaultValue: 'both',
         },
-        validateStatus: { type: 'ValidateStatus', desc: '校验状态', propsDefaultValue: 'default' },
-        validateType: {
-          type: 'ValidateType',
-          desc: '校验信息显示类型',
-          propsDefaultValue: 'default',
-        },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         help: { type: 'string', desc: '校验提示信息' },
+        cols: { type: 'number', desc: '段落文本输入框展示内容的字数' },
+        rows: { type: 'number', desc: '段落文本输入框展示内容的行数' },
       },
       events: {
         onChange: {
@@ -6159,6 +7741,7 @@ export default [
             ['cursor'],
             ['opacity'],
             ['margin'],
+            ['padding'],
           ],
           hover: [
             ['border'],
@@ -6168,6 +7751,7 @@ export default [
             ['opacity'],
             ['boxShadow'],
           ],
+          focus: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
           active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
           disabled: [
             ['fontSize'],
@@ -6189,8 +7773,8 @@ export default [
         ClearButton: {
           name: '清除图标',
           desc: '后缀清除图标',
-          normal: [['color'], ['fontSize']],
-          hover: [],
+          normal: [['color'], ['fontSize'], ['font']],
+          hover: [['color'], ['fontSize'], ['font']],
           clicked: [],
           disabled: [],
         },
@@ -6207,6 +7791,7 @@ export default [
             ['opacity'],
           ],
           hover: [['background'], ['border'], ['boxShadow']],
+          focus: [['background'], ['border'], ['boxShadow']],
           active: [['background'], ['border'], ['boxShadow']],
         },
         ValidateErrorText: {
@@ -6238,6 +7823,7 @@ export default [
       title: '文本',
       desc: '文本组件',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         text: { type: 'string', desc: '文本内容', defaultValue: 'Label' },
         showPrefix: { type: 'boolean', desc: '是否显示文本前缀', defaultValue: false },
         prefix: { type: 'string', desc: '文本前缀内容', defaultValue: '*' },
@@ -6295,6 +7881,10 @@ export default [
           disabled: [['color'], ['cursor']],
         },
       },
+      defaultTheme: {
+        Container: { normal: { fontSize: 12, color: '#333', textAlign: 'left' } },
+        LabelPrefix: { normal: { color: '#333', fontSize: 12, textAlign: 'left' } },
+      },
       childrenWidget: [],
     },
     target: Label,
@@ -6333,11 +7923,22 @@ export default [
       title: '菜单',
       desc: '为用户提供菜单列表',
       props: {
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        isShowAuxiliaryText: {
+          type: 'boolean',
+          desc: '是否展示辅助文本',
+          propsDefaultValue: false,
+        },
+        auxiliaryTextField: {
+          type: 'string',
+          desc: '辅助文本展示的对应字段名',
+          propsDefaultValue: 'des',
+        },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
         },
         data: {
           type: 'Object[]',
@@ -6364,34 +7965,37 @@ export default [
             { value: '选项三', text: '选项三' },
           ],
         },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
-        start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
+        mutliple: { type: 'boolean', desc: '是否多选', propsDefaultValue: false },
         selectedKeys: { type: 'string | string[] | number | number[]', desc: '指定当前选中的项' },
         defaultSelectedKeys: {
           type: 'string | string[] | number | number[]',
           desc: '默认指定当前选中的项,仅第一次生效',
         },
-        checkedCSS: { type: 'CheckedCSSType', desc: '选中项的样式', defaultValue: 'none' },
-        limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
-        offsety: { type: 'number', desc: '菜单间的间隔', defaultValue: 4 },
+        checkedCSS: { type: 'CheckedCSSType', desc: '选中项的样式', propsDefaultValue: 'none' },
+        limitCount: { type: 'number', desc: '多选时的最大选中数' },
+        offsety: { type: 'number', desc: '菜单间的间隔' },
+        start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
         autoHeight: {
           type: 'boolean',
           desc: '根据data数量，自动计算菜单高度',
-          defaultValue: false,
+          propsDefaultValue: false,
         },
-        divided: { type: 'boolean', desc: '项之间是否展示分割线', defaultValue: false },
+        divided: { type: 'boolean', desc: '项之间是否展示分割线', propsDefaultValue: false },
         expandedPath: { type: 'string[]', desc: '层级菜单时展开的数据' },
-        separator: { type: 'string', desc: '层级菜单时连接层级数据的分隔符', defaultValue: '|' },
-        offsetX: { type: 'number', desc: '层级菜单时，菜单间的间隔', defaultValue: 4 },
-        offsetY: { type: 'string', desc: '层级菜单时，子菜单相对父级菜单的top值' },
-        action: { type: 'ActionType', desc: '层级菜单时，展开子菜单的方式', defaultValue: 'click' },
-        size: {
-          type: 'large | default | bigger',
-          desc: '设置列表项的高度',
-          defaultValue: 'default',
+        separator: {
+          type: 'string',
+          desc: '层级菜单时连接层级数据的分隔符',
+          propsDefaultValue: '|',
         },
-        subsize: { type: 'SubsizeType', desc: '设置子菜单列表项的高度', defaultValue: 'default' },
-        popupVisible: { type: 'boolean', desc: '层级菜单,是否允许打开子菜单', defaultValue: true },
+        offsetX: { type: 'number', desc: '层级菜单时，菜单间的间隔' },
+        offsetY: { type: 'string', desc: '层级菜单时，子菜单相对父级菜单的top值' },
+        action: {
+          type: 'ActionType',
+          desc: '层级菜单时，展开子菜单的方式',
+          propsDefaultValue: 'click',
+        },
+        size: { type: 'SizeType', desc: '可配置三种尺寸大小的menu', propsDefaultValue: 'default' },
+        subsize: { type: 'SizeType', desc: '设置子菜单列表项的高度', propsDefaultValue: 'default' },
       },
       events: {
         onChange: {
@@ -6421,9 +8025,9 @@ export default [
         },
       },
       type: {
+        SizeType: ['small', 'default', 'large'],
         CheckedCSSType: ['background', 'checkbox', 'none'],
         ActionType: ['hover', 'click'],
-        SubsizeType: ['large', 'default', 'bigger'],
       },
       category: ['数据录入'],
       designInfo: {
@@ -6573,7 +8177,22 @@ export default [
                 },
                 PrefixIcon: {
                   name: '前置图标配置',
-                  desc: '前置图标或图片的样式配置',
+                  desc: '前置图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                SelectedPrefixIcon: {
+                  name: '选中项前置图标配置',
+                  desc: '选中项前置图标的样式配置',
                   normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                   hover: [['color'], ['font'], ['fontSize']],
                   active: [['color'], ['font'], ['fontSize']],
@@ -6588,7 +8207,22 @@ export default [
                 },
                 SuffixIcon: {
                   name: '后缀图标配置',
-                  desc: '后缀图标或图片的样式配置',
+                  desc: '后缀图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                SelectedSuffixIcon: {
+                  name: '选中项后缀图标配置',
+                  desc: '选中项后缀图标的样式配置',
                   normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                   hover: [['color'], ['font'], ['fontSize']],
                   active: [['color'], ['font'], ['fontSize']],
@@ -6769,7 +8403,15 @@ export default [
             },
             PrefixIcon: {
               name: '前置图标配置',
-              desc: '前置图标或图片的样式配置',
+              desc: '前置图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedPrefixIcon: {
+              name: '选中项前置图标配置',
+              desc: '选中项前置图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -6777,7 +8419,15 @@ export default [
             },
             SuffixIcon: {
               name: '后缀图标配置',
-              desc: '后缀图标或图片的样式配置',
+              desc: '后缀图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedSuffixIcon: {
+              name: '选中项后缀图标配置',
+              desc: '选中项后缀图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -6831,11 +8481,22 @@ export default [
       title: '多选菜单',
       desc: '多项选择的菜单',
       props: {
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        isShowAuxiliaryText: {
+          type: 'boolean',
+          desc: '是否展示辅助文本',
+          propsDefaultValue: false,
+        },
+        auxiliaryTextField: {
+          type: 'string',
+          desc: '辅助文本展示的对应字段名',
+          propsDefaultValue: 'des',
+        },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
         },
         data: {
           type: 'Object[]',
@@ -6862,34 +8523,42 @@ export default [
             { value: '选项三', text: '选项三' },
           ],
         },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: true },
-        start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
+        mutliple: {
+          type: 'boolean',
+          desc: '是否多选',
+          propsDefaultValue: false,
+          defaultValue: true,
+        },
         selectedKeys: { type: 'string | string[] | number | number[]', desc: '指定当前选中的项' },
         defaultSelectedKeys: {
           type: 'string | string[] | number | number[]',
           desc: '默认指定当前选中的项,仅第一次生效',
         },
-        checkedCSS: { type: 'CheckedCSSType', desc: '选中项的样式', defaultValue: 'none' },
-        limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
-        offsety: { type: 'number', desc: '菜单间的间隔', defaultValue: 4 },
+        checkedCSS: { type: 'CheckedCSSType', desc: '选中项的样式', propsDefaultValue: 'none' },
+        limitCount: { type: 'number', desc: '多选时的最大选中数' },
+        offsety: { type: 'number', desc: '菜单间的间隔' },
+        start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
         autoHeight: {
           type: 'boolean',
           desc: '根据data数量，自动计算菜单高度',
-          defaultValue: false,
+          propsDefaultValue: false,
         },
-        divided: { type: 'boolean', desc: '项之间是否展示分割线', defaultValue: false },
+        divided: { type: 'boolean', desc: '项之间是否展示分割线', propsDefaultValue: false },
         expandedPath: { type: 'string[]', desc: '层级菜单时展开的数据' },
-        separator: { type: 'string', desc: '层级菜单时连接层级数据的分隔符', defaultValue: '|' },
-        offsetX: { type: 'number', desc: '层级菜单时，菜单间的间隔', defaultValue: 4 },
-        offsetY: { type: 'string', desc: '层级菜单时，子菜单相对父级菜单的top值' },
-        action: { type: 'ActionType', desc: '层级菜单时，展开子菜单的方式', defaultValue: 'click' },
-        size: {
-          type: 'large | default | bigger',
-          desc: '设置列表项的高度',
-          defaultValue: 'default',
+        separator: {
+          type: 'string',
+          desc: '层级菜单时连接层级数据的分隔符',
+          propsDefaultValue: '|',
         },
-        subsize: { type: 'SubsizeType', desc: '设置子菜单列表项的高度', defaultValue: 'default' },
-        popupVisible: { type: 'boolean', desc: '层级菜单,是否允许打开子菜单', defaultValue: true },
+        offsetX: { type: 'number', desc: '层级菜单时，菜单间的间隔' },
+        offsetY: { type: 'string', desc: '层级菜单时，子菜单相对父级菜单的top值' },
+        action: {
+          type: 'ActionType',
+          desc: '层级菜单时，展开子菜单的方式',
+          propsDefaultValue: 'click',
+        },
+        size: { type: 'SizeType', desc: '可配置三种尺寸大小的menu', propsDefaultValue: 'default' },
+        subsize: { type: 'SizeType', desc: '设置子菜单列表项的高度', propsDefaultValue: 'default' },
       },
       events: {
         onChange: {
@@ -6919,9 +8588,9 @@ export default [
         },
       },
       type: {
+        SizeType: ['small', 'default', 'large'],
         CheckedCSSType: ['background', 'checkbox', 'none'],
         ActionType: ['hover', 'click'],
-        SubsizeType: ['large', 'default', 'bigger'],
       },
       category: ['数据录入'],
       theme: {
@@ -7065,7 +8734,15 @@ export default [
             },
             PrefixIcon: {
               name: '前置图标配置',
-              desc: '前置图标或图片的样式配置',
+              desc: '前置图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedPrefixIcon: {
+              name: '选中项前置图标配置',
+              desc: '选中项前置图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -7073,7 +8750,15 @@ export default [
             },
             SuffixIcon: {
               name: '后缀图标配置',
-              desc: '后缀图标或图片的样式配置',
+              desc: '后缀图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedSuffixIcon: {
+              name: '选中项后缀图标配置',
+              desc: '选中项后缀图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -7131,21 +8816,204 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Message',
+      title: '全局提示',
+      desc: '全局提示，展示操作反馈信息。',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        content: { type: 'React.node', desc: '提示消息的内容' },
+        time: { type: 'number', desc: '自动延时关闭，单位为 秒', defaultValue: 2 },
+        callBack: { type: 'Function', desc: '关闭时的回调' },
+      },
+      category: ['反馈'],
+      theme: {
+        Container: {
+          name: 'Message整体样式配置',
+          desc: '为Message整体配置样式',
+          normal: [
+            ['width'],
+            ['height'],
+            ['boxShadow'],
+            ['background'],
+            ['borderRadius'],
+            ['padding'],
+            ['opacity'],
+            ['border'],
+          ],
+        },
+        MessageText: {
+          name: 'Message文字样式配置',
+          desc: '为Message文字配置样式',
+          normal: [['color'], ['font']],
+        },
+        MessageIcon: {
+          name: 'Message图标样式配置',
+          desc: '为Message图标配置样式',
+          normal: [['color'], ['font']],
+        },
+      },
+      childrenWidget: [],
+      hideInTollPanel: true,
+    },
+    target: Message,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAA4CAYAAAA1p/DTAAAAAXNSR0IArs4c6QAABmxJREFUeAHtXL+LJEUUrpn1bt3REz3FU0xEVje4RDERuT/gAgNRRFhBEURDEUExOlDEXBQMBDmDTdw5NjrUwEQDMzWSBQPBwNPgThH2x+ns+L6a/npf19T0zvR29UzfvQc1r+q9VzWv3ve6uru6ZzpuMnUmq0zTwggMYz7HQI7J2LdMRxvj849AFOzMrYJOA6rregqUk1MXtik3Pp8IFIAVF9gmD73y8ltCqWoTYHBdhwnbytyqCxABgg0OjNiGa7qOticCSa7lkFHOOjnsqNN9WDeePgIhoGyD6wJPwja9G8ZWAIKseVd66DbBJ+eAYZty4/VGgGBzVLY10KgfSKEutPVtJIAGDXVdADzB13XaYBDdH22jZiNAgDX4AB4F2LCuvWKfjl4BCCTBJeDkSzKCTgZtrwe3erMRIJjgPOLBB1mb3kAGgh2wY7/8iAe4ABlJcVLKipTbpNyxsbFxdmdnZ3MwGFwZGi10BIARsAJmwC7DEFgCU2CrD2R/EOsjHgYnpNwqpSflFAY6ODi4utCzNufGIgDMsiQ4lWEJTIEtMOZK3iH4IsuFXAn8aiDZ9OnKysqzMDBqVwR2d3f7vV7vFfH6Pyk4JfC0wNOFBx2z8ktBxpkUSITu8vLyORgYtS8CGXYeR/GeuGqs8wTQs9OGnW63e0Yrrd6eCGTYFfAMvUd2aNLZgXqo17ZWb0cEgCGTAB4TY++9BpgKGpN7Q/tobQSIIzkmgronnQCUGb+JIlCWADpjbqKQ3HBTLcUxlgD58nDDhcImNIYtNgViNGYYM6oqG8jd6Pc/SPnRuV9+de7qX6ORTt/p3OqDzj3xqJTHZMsKOxFGdUUgiimELFgNUJAULCdki+mKtGsjAP/ZF879/mf5kPff69zLz40SodzStGUR6HQ694n+XynYDGLhA6IhwQdPmgBD2Xu62Hfu0pfyTTPQM+ede0n2If2e5Qz9tre3p7JeW1vzdotmP5XzUxgdlQCxa4Aphp3dpAr4+BYkDPoapYlAIwmAZX/WI19PF30xhlH9EUieALjgwzn/uIQxMJZRvRFIngA4co+64Aun9MhDzn3wtjzMvv1QgzFsFTiMR1219Akgt3qzEMB/9w3nzj4s/M3irSBuG43qjUDyBMB9fkgn8VpChAh+D++vCF3+prjsx8YaWdpn1QgkTwBu8tDBB+Su9JP3nXvycUpGPAT/o4vOff1t0SYcq6i1VpUIJE8A7RR29i687tw9p51767XDJJgGfIyDzQqjeiOQPAGwvUvCVfzHnzt3XfaluvLNSILnnxqd87nsx4589r9LjUWZ8eNFIHkCYG9f008/O/feh4dJ8MLT8vZpds4vAx9jhGPpca1eLQLJEwAPdkLSSUDdUeDDLjYW+xuvFoH0CSBP9fBgJyQmwf5156YBH2PgCaFRvRFIngC48MNTvRghCV59Z/xqP2aLMezxcCwyx5MlTwC4hyMXT/VidO3vmLQoQ187+osxqavVSALAWTzSnZQEZZPh4+AyG9NVj0Bj7wPQRezn2wshjEZ6ftT7AI0nAKZsr4SlB57fUDUB8DYeduxrfyWMjhlvJgIqAfBaGB6o47Ww/JWw2DVA/rvxZly0b2kwAmPYxhKA/sB4rAOVxlsTgVIcyxKgNTM0R6tHQCcAj3ZmDHn10a3nIkSAOJLDJ9Q96QSAgAoa839lRtb22cYIAEPiCf+JsZ9LmAA0YIeh/NXIH97SPloXgQy7HEuZQAF8TIgJQIU29rcK+/v737Vu5uawj0CGXX7LJ0LiC73HnAmQC5QROg62trYuyM/DrsHAqD0RAGbATjzGvf/E0wA2fPimFTln6dv9fv8f+flUf3V19czS0tLdsrGgXtamqfFFiQCW/b29va82NzdfXF9f/038Ivjk/sinv9wKRpsJgFUBdXBdkCxaR3tyURvNIQIEFJwgg/PIR52FNnDT99M/D4cAYHqFcHQiQYbCBIAdgSenrfFmI0C8iBF4CDja1MM79omCSHA1D4En6OQYFBS2R1L7rDsCOYDZwGwTZHINPGW0Rdfov4VrA28EQyk6ISAPwQ7bsDFKF4EYTvg2yHUJZWjnpEHTdRiwDa7rWoe60eJEgEmhua5rT72cwEKh69qQcnLqwjblxucTAQLNb2ebnHLysQSgogzYMh37G59/BCaBDs8KujJAy3Tzn6J5MGsECsCz8/9dlynLd6kZjQAAAABJRU5ErkJggg==',
+  },
+  {
+    meta: {
+      widgetName: 'Modal',
+      title: '对话框',
+      desc: 'Modal 对话框。',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        injectLugiad: { type: 'Object', defaultValue: { type: 'Modal' }, isHidden: true },
+        title: { type: 'React.node', desc: '标题' },
+        visible: { type: 'boolean', desc: 'Modal 是否可见' },
+        cancelText: { type: 'string', desc: '取消按钮文字', propsDefaultValue: '取消' },
+        cancelButtonProps: { type: 'Object', desc: '取消按钮 props ' },
+        okText: { type: 'string', desc: '确认按钮文字', propsDefaultValue: '确定' },
+        okButtonProps: { type: 'Object', desc: '确认按钮 props ' },
+        confirmLoading: { type: 'boolean', desc: '确定按钮是否 loading', propsDefaultValue: false },
+        footer: {
+          type: 'boolean | React.node',
+          desc: '底部内容是否显示, 或自定义底部内容',
+          propsDefaultValue: true,
+        },
+        maskClosable: { type: 'boolean', desc: '点击蒙层是否允许关闭', propsDefaultValue: true },
+        closable: { type: 'boolean', desc: '是否显示关闭按钮', propsDefaultValue: true },
+        mask: { type: 'boolean', desc: '是否显示遮罩', propsDefaultValue: true },
+        iconClass: { type: 'string', desc: '自定义前缀图标' },
+        closeIconClass: { type: 'string', desc: '自定义后缀图标' },
+        showIcon: { type: 'boolean', desc: '是否显示图标', propsDefaultValue: false },
+      },
+      events: {
+        onOk: { desc: '点击确定时的回调', args: [] },
+        onCancel: { desc: '点击取消时的回调', args: [] },
+      },
+      category: ['反馈'],
+      theme: {
+        Container: {
+          name: '弹窗整体样式',
+          desc: '为弹窗配置整体样式',
+          normal: [
+            ['width'],
+            ['height'],
+            ['opacity'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['background'],
+            ['padding'],
+            ['minWidth'],
+            ['maxWidth'],
+            ['maxHeight'],
+            ['minHeight'],
+          ],
+        },
+        ModalTitle: {
+          name: '弹窗标题样式',
+          desc: '为弹窗文字配置样式',
+          normal: [['font'], ['color'], ['padding']],
+        },
+        ModalContentText: {
+          name: '弹窗内容文本样式',
+          desc: '为弹窗内容文本配置样式',
+          normal: [['font'], ['color'], ['padding']],
+        },
+        ModalIcon: {
+          name: '弹窗前缀图标样式',
+          desc: '为弹窗前缀图标配置样式',
+          normal: [['fontSize'], ['color']],
+        },
+        ModalCloseIcon: {
+          name: '弹窗关闭图标样式',
+          desc: '为弹窗关闭图标配置样式',
+          normal: [['fontSize'], ['color']],
+        },
+        ModalOkButton: {
+          name: '弹窗确定按钮样式',
+          desc: '为弹窗确定按钮配置样式',
+          theme: {
+            Container: {
+              name: '弹窗确定按钮',
+              normal: [
+                ['background'],
+                ['border'],
+                ['height'],
+                ['width'],
+                ['padding'],
+                ['margin'],
+                ['borderRadius'],
+              ],
+              hover: [['background'], ['border']],
+              active: [['background'], ['border']],
+              disabled: [['background'], ['border']],
+              focus: [['background'], ['border']],
+            },
+          },
+        },
+        ModalCancelButton: {
+          name: '弹窗取消按钮样式',
+          desc: '为弹窗取消按钮配置样式',
+          theme: {
+            Container: {
+              name: '弹窗取消按钮',
+              normal: [
+                ['background'],
+                ['border'],
+                ['height'],
+                ['width'],
+                ['padding'],
+                ['margin'],
+                ['borderRadius'],
+              ],
+              hover: [['background'], ['border']],
+              active: [['background'], ['border']],
+              disabled: [['background'], ['border']],
+              focus: [['background'], ['border']],
+            },
+          },
+        },
+        ModalMask: { name: '弹窗遮罩样式', desc: '为弹窗遮罩配置样式', normal: [['background']] },
+      },
+      defaultTheme: { Container: { normal: { width: 520, height: 70 } } },
+      childrenWidget: [],
+    },
+    target: Modal,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAABBFJREFUeAHtnTtoFUEUhkeNeWEakWAikocgFlFBwdpCKxFtBG1CwEIEwUaxCZg0FlEQxcZCCWlUBBEsbawFAwkpxMIYxUREfBBIYio9uVzITfZmZ2Xn7Bn3u5V39uycf77/dza5Dl7neEEAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQKJrAJl8Bp8/2D/nWUmeXwPPHYxv6uNmudJQVQYBAFEHdcE8CYdicIqQRiCKoG+5JIAybU4Q0AlEEdcM9CYRhc4qQRiCKoG64J4EwbE4R0hpCNu3t6Wq7cH7g+O5dnd0tzc1tIXuVZe7FpaX5T59nP9x/MPry/fTMfN7rDrZDSBhuDA1e3Lundz9hyM82YSlMha0wzm/mykzBAiE7Q1NjY0vegpmvQkDYCuO8eQQLhDwm8hbLfLUEQjAOFggeE7XmhXgXgnGwQIQAwJzhCQT9LSNJ/qOnL5KG142dO3NyZSz2+nULMz7ADmHcIG15BEKbuPF+BMK4QdryCIQ2ceP9CIRxg7TlEQht4sb7EQjjBmnLIxDaxI33IxDGDdKWRyC0iRvvRyCMG6Qtj0BoEzfej0AYN0hbHoHQJm68H4EwbpC2PPXzENVzDr4Ljb3ed51W6tghrDhhRAeBMGKEFRkEwooTRnQQCCNGWJFBIKw4YUQHgTBihBUZBMKKE0Z0qH8OMT7l3L0x57591yGwY7tzl/qdO9RX22/uy1f3+s2kW1hYrL0Q6F1ra4s7cviA69jZHqhDPtOqB0IzDIJIgic9H47UApMwaBo0O1cJ4KkTx2qFGHun/sjQ2hlWc07qKTuD5t/Wzo52td1o9dqz/lk9EFkFUq9LQP2Rkba80VvJFQNXKuNp15Pvzj569fqdxJtuDl9eGU+7nnhzBIPsEBGYpCmRQGjSjqAXgYjAJE2JBEKTdgS9CEQEJmlKJBCatCPoRSAiMElTIoHQpB1BLwIRgUmaEs19Uln9RLIehLTr9e7LOl79RLLefWnX691nfZwdwrpDyvrUAyHnE7RfST3lfIL8k7TWS3pJT+sv9UeGHFbRPBNRPSCz1gg5C1HEAZm1Oqy9DxYI+V6HpP+LWU4urT2sUgQUOQth/bBKGhdhnFaT9XqwR4Z8yUdWMdRnIxCCcbBAyDe+/F5e1jmwmI3jf1EtbIVx3ovZ4jvhvr6DR31rpe7Hz1/L4xOTkz3dXdv+/jDVurWhoSnL/dQmE5DHxPTMx3cjt+8++ZevWHo7NfEqeebKaLCfIWR6EXxtcPjZRgK4ZotAsEeGrWWixpcAgfAlVZI6AlESo32XSSB8SZWkjkCUxGjfZRIIX1IlqSMQJTHad5kEwpdUSeoIREmMZpkQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABOIh8AfDrLm5svq1hQAAAABJRU5ErkJggg==',
+  },
+  {
+    meta: {
       widgetName: 'Navmenu',
       title: '导航菜单',
       desc: '为页面提供导航功能的菜单',
       props: {
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
-        pathSeparator: {
-          type: 'string',
-          desc: '指定结点数组中path信息的分隔符号',
-          defaultValue: '/',
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        parentIsHighlight: {
+          type: 'boolean',
+          desc: '父级元素是否高亮',
+          propsDefaultValue: true,
+          defaultValue: false,
+        },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
+        indentDistance: { type: 'number', desc: '每一项leftPadding的距离', propsDefaultValue: 14 },
+        selectLinePosition: {
+          type: 'PositionType',
+          desc: '选中项侧线标识线展示位置',
+          propsDefaultValue: 'left',
         },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
         },
+        pathSeparator: {
+          type: 'string',
+          desc: '指定结点数组中path信息的分隔符号',
+          propsDefaultValue: '|',
+        },
+        action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -7188,27 +9056,27 @@ export default [
         mode: {
           type: 'vertical | inline| horizontal',
           desc: '菜单类型，支持垂直、内嵌和水平模式',
-          defaultValue: 'inline',
+          propsDefaultValue: 'inline',
         },
         inlineType: {
           type: 'primary | ellipse',
           desc: '菜单类型为inline(内嵌模式)时,支持两种风格',
-          defaultValue: 'primary',
+          propsDefaultValue: 'primary',
         },
         themeStyle: {
-          type: 'light | dark',
+          type: 'ThemeStyleType',
           desc: '菜单类型为inline(内嵌模式)时,支持两种主题',
-          defaultValue: 'light',
+          propsDefaultValue: 'light',
         },
         inlineExpandAll: {
           type: 'boolean',
           desc: '菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true',
-          defaultValue: true,
+          propsDefaultValue: true,
         },
         separator: {
           type: 'string',
           desc: '自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ',
-          defaultValue: '|',
+          propsDefaultValue: '|',
         },
       },
       events: {
@@ -7226,6 +9094,7 @@ export default [
         },
       },
       category: ['导航'],
+      type: { ThemeStyleType: ['light', 'dark'], PositionType: ['left', 'right'] },
       designInfo: {
         HorizontalNavMenu: {
           sequence: 1,
@@ -7239,7 +9108,7 @@ export default [
                 TitleContainer: {
                   name: '头部标签区域',
                   desc: '头部标签区域宽度配置',
-                  normal: [['width']],
+                  normal: [['width'], ['background'], ['textAlign']],
                   hover: [],
                   clicked: [],
                   disabled: [],
@@ -7247,7 +9116,7 @@ export default [
                 BorderStyle: {
                   name: '默认线',
                   desc: '默认线样式配置',
-                  normal: [['border']],
+                  normal: [['background'], ['width']],
                   hover: [],
                   clicked: [],
                   disabled: [],
@@ -7286,6 +9155,39 @@ export default [
                       hover: [['color'], ['background'], ['border'], ['font'], ['opacity']],
                       clicked: [],
                       disabled: [],
+                    },
+                    PrefixIcon: {
+                      name: '前缀图标',
+                      desc: '前缀图标样式配置',
+                      normal: [['color'], ['font']],
+                      hover: [['color'], ['font']],
+                      disabled: [['color'], ['font']],
+                    },
+                    SelectPrefixIcon: {
+                      name: '前缀图标选中样式',
+                      desc: '前缀图标选中样式配置',
+                      normal: [['color'], ['font']],
+                      hover: [['color'], ['font']],
+                      disabled: [['color'], ['font']],
+                    },
+                    SuffixIcon: {
+                      name: '后缀图标',
+                      desc: '后缀图标样式配置',
+                      normal: [['color'], ['font']],
+                      hover: [['color'], ['font']],
+                      disabled: [['color'], ['font']],
+                    },
+                    SelectSuffixIcon: {
+                      name: '后缀图标选中样式',
+                      desc: '后缀图标选中样式配置',
+                      normal: [['color'], ['font']],
+                      hover: [['color'], ['font']],
+                      disabled: [['color'], ['font']],
+                    },
+                    SelectLine: {
+                      name: '选中页签底部标识线',
+                      desc: '选中页签底部标识线样式配置',
+                      normal: [['width'], ['height'], ['background']],
                     },
                   },
                 },
@@ -7380,6 +9282,14 @@ export default [
                         ['color'],
                         ['font'],
                       ],
+                      disabled: [],
+                    },
+                    Divider: {
+                      name: '分割线',
+                      desc: '配置每项之间的分割线，当divided为true时生效',
+                      normal: [['background']],
+                      hover: [],
+                      active: [],
                       disabled: [],
                     },
                   },
@@ -8000,6 +9910,24 @@ export default [
                       active: [],
                       disabled: [],
                     },
+                    SelectedParentText: {
+                      name: '选中项的父节点文本框区域',
+                      desc: '配置选中项的父节点文本框区域的样式',
+                      normal: [
+                        ['color'],
+                        ['font'],
+                        ['fontSize'],
+                        ['background'],
+                        ['padding'],
+                        ['border'],
+                        ['opacity'],
+                        ['boxShadow'],
+                        ['borderRadius'],
+                      ],
+                      hover: [],
+                      active: [],
+                      disabled: [],
+                    },
                     PrefixIcon: {
                       name: '前置图标配置',
                       desc: '前置图标或图片的样式配置',
@@ -8022,9 +9950,53 @@ export default [
                         ['cursor'],
                       ],
                     },
+                    SelectedPrefixIcon: {
+                      name: '选中项前置图标配置',
+                      desc: '选中项前置图标的样式配置',
+                      normal: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                      hover: [['color'], ['font'], ['fontSize']],
+                      active: [['color'], ['font'], ['fontSize']],
+                      disabled: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                    },
                     SuffixIcon: {
                       name: '后缀图标配置',
                       desc: '后缀图标或图片的样式配置',
+                      normal: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                      hover: [['color'], ['font'], ['fontSize']],
+                      active: [['color'], ['font'], ['fontSize']],
+                      disabled: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                    },
+                    SelectedSuffixIcon: {
+                      name: '选中项后缀图标配置',
+                      desc: '选中项后缀图标的样式配置',
                       normal: [
                         ['color'],
                         ['margin'],
@@ -8145,6 +10117,11 @@ export default [
                   active: [],
                   disabled: [],
                 },
+                SelectLine: {
+                  name: '选中项侧线标识线',
+                  desc: '选中项侧线标识线样式配置',
+                  normal: [['width'], ['height'], ['background'], ['borderRadius']],
+                },
                 Text: {
                   name: '文本框区域',
                   desc: '配置每一项文本区域的样式',
@@ -8211,6 +10188,24 @@ export default [
                   active: [],
                   disabled: [],
                 },
+                SelectedParentText: {
+                  name: '选中项的父节点文本框区域',
+                  desc: '配置选中项的父节点文本框区域的样式',
+                  normal: [
+                    ['color'],
+                    ['font'],
+                    ['fontSize'],
+                    ['background'],
+                    ['padding'],
+                    ['border'],
+                    ['opacity'],
+                    ['boxShadow'],
+                    ['borderRadius'],
+                  ],
+                  hover: [],
+                  active: [],
+                  disabled: [],
+                },
                 PrefixIcon: {
                   name: '前置图标配置',
                   desc: '前置图标或图片的样式配置',
@@ -8226,9 +10221,39 @@ export default [
                     ['cursor'],
                   ],
                 },
+                SelectedPrefixIcon: {
+                  name: '选中项前置图标配置',
+                  desc: '选中项前置图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
                 SuffixIcon: {
                   name: '后缀图标配置',
                   desc: '后缀图标或图片的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                SelectedSuffixIcon: {
+                  name: '选中项后缀图标配置',
+                  desc: '选中项后缀图标的样式配置',
                   normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                   hover: [['color'], ['font'], ['fontSize']],
                   active: [['color'], ['font'], ['fontSize']],
@@ -8288,17 +10313,31 @@ export default [
       title: '顶部导航菜单',
       desc: '水平的导航菜单',
       props: {
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
-        pathSeparator: {
-          type: 'string',
-          desc: '指定结点数组中path信息的分隔符号',
-          defaultValue: '/',
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        parentIsHighlight: {
+          type: 'boolean',
+          desc: '父级元素是否高亮',
+          propsDefaultValue: true,
+          defaultValue: false,
+        },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
+        indentDistance: { type: 'number', desc: '每一项leftPadding的距离', propsDefaultValue: 14 },
+        selectLinePosition: {
+          type: 'PositionType',
+          desc: '选中项侧线标识线展示位置',
+          propsDefaultValue: 'left',
         },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
         },
+        pathSeparator: {
+          type: 'string',
+          desc: '指定结点数组中path信息的分隔符号',
+          propsDefaultValue: '|',
+        },
+        action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -8341,27 +10380,28 @@ export default [
         mode: {
           type: 'vertical | inline| horizontal',
           desc: '菜单类型，支持垂直、内嵌和水平模式',
+          propsDefaultValue: 'inline',
           defaultValue: 'horizontal',
         },
         inlineType: {
           type: 'primary | ellipse',
           desc: '菜单类型为inline(内嵌模式)时,支持两种风格',
-          defaultValue: 'primary',
+          propsDefaultValue: 'primary',
         },
         themeStyle: {
-          type: 'light | dark',
+          type: 'ThemeStyleType',
           desc: '菜单类型为inline(内嵌模式)时,支持两种主题',
-          defaultValue: 'light',
+          propsDefaultValue: 'light',
         },
         inlineExpandAll: {
           type: 'boolean',
           desc: '菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true',
-          defaultValue: true,
+          propsDefaultValue: true,
         },
         separator: {
           type: 'string',
           desc: '自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ',
-          defaultValue: '|',
+          propsDefaultValue: '|',
         },
       },
       events: {
@@ -8379,6 +10419,7 @@ export default [
         },
       },
       category: ['导航'],
+      type: { ThemeStyleType: ['light', 'dark'], PositionType: ['left', 'right'] },
       theme: {
         Tabs: {
           name: '水平导航配置',
@@ -8386,7 +10427,7 @@ export default [
             TitleContainer: {
               name: '头部标签区域',
               desc: '头部标签区域宽度配置',
-              normal: [['width']],
+              normal: [['width'], ['background'], ['textAlign']],
               hover: [],
               clicked: [],
               disabled: [],
@@ -8394,7 +10435,7 @@ export default [
             BorderStyle: {
               name: '默认线',
               desc: '默认线样式配置',
-              normal: [['border']],
+              normal: [['background'], ['width']],
               hover: [],
               clicked: [],
               disabled: [],
@@ -8433,6 +10474,39 @@ export default [
                   hover: [['color'], ['background'], ['border'], ['font'], ['opacity']],
                   clicked: [],
                   disabled: [],
+                },
+                PrefixIcon: {
+                  name: '前缀图标',
+                  desc: '前缀图标样式配置',
+                  normal: [['color'], ['font']],
+                  hover: [['color'], ['font']],
+                  disabled: [['color'], ['font']],
+                },
+                SelectPrefixIcon: {
+                  name: '前缀图标选中样式',
+                  desc: '前缀图标选中样式配置',
+                  normal: [['color'], ['font']],
+                  hover: [['color'], ['font']],
+                  disabled: [['color'], ['font']],
+                },
+                SuffixIcon: {
+                  name: '后缀图标',
+                  desc: '后缀图标样式配置',
+                  normal: [['color'], ['font']],
+                  hover: [['color'], ['font']],
+                  disabled: [['color'], ['font']],
+                },
+                SelectSuffixIcon: {
+                  name: '后缀图标选中样式',
+                  desc: '后缀图标选中样式配置',
+                  normal: [['color'], ['font']],
+                  hover: [['color'], ['font']],
+                  disabled: [['color'], ['font']],
+                },
+                SelectLine: {
+                  name: '选中页签底部标识线',
+                  desc: '选中页签底部标识线样式配置',
+                  normal: [['width'], ['height'], ['background']],
                 },
               },
             },
@@ -8527,6 +10601,14 @@ export default [
                     ['color'],
                     ['font'],
                   ],
+                  disabled: [],
+                },
+                Divider: {
+                  name: '分割线',
+                  desc: '配置每项之间的分割线，当divided为true时生效',
+                  normal: [['background']],
+                  hover: [],
+                  active: [],
                   disabled: [],
                 },
               },
@@ -8650,17 +10732,31 @@ export default [
       title: '垂直导航菜单',
       desc: '子菜单从右侧弹开',
       props: {
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
-        pathSeparator: {
-          type: 'string',
-          desc: '指定结点数组中path信息的分隔符号',
-          defaultValue: '/',
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        parentIsHighlight: {
+          type: 'boolean',
+          desc: '父级元素是否高亮',
+          propsDefaultValue: true,
+          defaultValue: false,
+        },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
+        indentDistance: { type: 'number', desc: '每一项leftPadding的距离', propsDefaultValue: 14 },
+        selectLinePosition: {
+          type: 'PositionType',
+          desc: '选中项侧线标识线展示位置',
+          propsDefaultValue: 'left',
         },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
         },
+        pathSeparator: {
+          type: 'string',
+          desc: '指定结点数组中path信息的分隔符号',
+          propsDefaultValue: '|',
+        },
+        action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -8703,27 +10799,28 @@ export default [
         mode: {
           type: 'vertical | inline| horizontal',
           desc: '菜单类型，支持垂直、内嵌和水平模式',
+          propsDefaultValue: 'inline',
           defaultValue: 'vertical',
         },
         inlineType: {
           type: 'primary | ellipse',
           desc: '菜单类型为inline(内嵌模式)时,支持两种风格',
-          defaultValue: 'primary',
+          propsDefaultValue: 'primary',
         },
         themeStyle: {
-          type: 'light | dark',
+          type: 'ThemeStyleType',
           desc: '菜单类型为inline(内嵌模式)时,支持两种主题',
-          defaultValue: 'light',
+          propsDefaultValue: 'light',
         },
         inlineExpandAll: {
           type: 'boolean',
           desc: '菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true',
-          defaultValue: true,
+          propsDefaultValue: true,
         },
         separator: {
           type: 'string',
           desc: '自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ',
-          defaultValue: '|',
+          propsDefaultValue: '|',
         },
       },
       events: {
@@ -8741,6 +10838,7 @@ export default [
         },
       },
       category: ['导航'],
+      type: { ThemeStyleType: ['light', 'dark'], PositionType: ['left', 'right'] },
       theme: {
         Menu: {
           name: '垂直导航菜单配置',
@@ -9090,17 +11188,31 @@ export default [
       title: '内嵌导航菜单',
       desc: '点击菜单收起或展开子菜单,ellipse样式',
       props: {
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
-        pathSeparator: {
-          type: 'string',
-          desc: '指定结点数组中path信息的分隔符号',
-          defaultValue: '/',
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        parentIsHighlight: {
+          type: 'boolean',
+          desc: '父级元素是否高亮',
+          propsDefaultValue: true,
+          defaultValue: false,
+        },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
+        indentDistance: { type: 'number', desc: '每一项leftPadding的距离', propsDefaultValue: 14 },
+        selectLinePosition: {
+          type: 'PositionType',
+          desc: '选中项侧线标识线展示位置',
+          propsDefaultValue: 'left',
         },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
         },
+        pathSeparator: {
+          type: 'string',
+          desc: '指定结点数组中path信息的分隔符号',
+          propsDefaultValue: '|',
+        },
+        action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -9143,27 +11255,29 @@ export default [
         mode: {
           type: 'vertical | inline| horizontal',
           desc: '菜单类型，支持垂直、内嵌和水平模式',
+          propsDefaultValue: 'inline',
           defaultValue: 'inline',
         },
         inlineType: {
           type: 'primary | ellipse',
           desc: '菜单类型为inline(内嵌模式)时,支持两种风格',
+          propsDefaultValue: 'primary',
           defaultValue: 'ellipse',
         },
         themeStyle: {
-          type: 'light | dark',
+          type: 'ThemeStyleType',
           desc: '菜单类型为inline(内嵌模式)时,支持两种主题',
-          defaultValue: 'light',
+          propsDefaultValue: 'light',
         },
         inlineExpandAll: {
           type: 'boolean',
           desc: '菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true',
-          defaultValue: true,
+          propsDefaultValue: true,
         },
         separator: {
           type: 'string',
           desc: '自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ',
-          defaultValue: '|',
+          propsDefaultValue: '|',
         },
       },
       events: {
@@ -9181,6 +11295,7 @@ export default [
         },
       },
       category: ['导航'],
+      type: { ThemeStyleType: ['light', 'dark'], PositionType: ['left', 'right'] },
       theme: {
         Tree: {
           name: '内嵌导航菜单配置',
@@ -9304,6 +11419,24 @@ export default [
                   active: [],
                   disabled: [],
                 },
+                SelectedParentText: {
+                  name: '选中项的父节点文本框区域',
+                  desc: '配置选中项的父节点文本框区域的样式',
+                  normal: [
+                    ['color'],
+                    ['font'],
+                    ['fontSize'],
+                    ['background'],
+                    ['padding'],
+                    ['border'],
+                    ['opacity'],
+                    ['boxShadow'],
+                    ['borderRadius'],
+                  ],
+                  hover: [],
+                  active: [],
+                  disabled: [],
+                },
                 PrefixIcon: {
                   name: '前置图标配置',
                   desc: '前置图标或图片的样式配置',
@@ -9319,9 +11452,39 @@ export default [
                     ['cursor'],
                   ],
                 },
+                SelectedPrefixIcon: {
+                  name: '选中项前置图标配置',
+                  desc: '选中项前置图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
                 SuffixIcon: {
                   name: '后缀图标配置',
                   desc: '后缀图标或图片的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                SelectedSuffixIcon: {
+                  name: '选中项后缀图标配置',
+                  desc: '选中项后缀图标的样式配置',
                   normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                   hover: [['color'], ['font'], ['fontSize']],
                   active: [['color'], ['font'], ['fontSize']],
@@ -9378,10 +11541,36 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Notification',
+      title: '通知提醒框',
+      desc: 'Notification 通知提醒框。',
+      props: {
+        title: { type: 'React.node', desc: '标题' },
+        duration: { type: 'number', desc: '自定义演示关闭', defaultValue: 4.5 },
+        description: { type: 'React.node', desc: '通知提醒内容' },
+        icon: { type: 'string', desc: '自定义图标' },
+        placement: {
+          type: 'PlacementType',
+          desc: '弹出位置，topRight、bottomLeft、bottomRight、topLeft',
+          defaultValue: 'topRight',
+        },
+      },
+      type: { PlacementType: ['topRight', 'bottomLeft', 'bottomRight', 'topLeft'] },
+      category: ['反馈'],
+      childrenWidget: [],
+      hideInTollPanel: true,
+    },
+    target: Notification,
+    screenshot:
+      'data:image/png;base64,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',
+  },
+  {
+    meta: {
       widgetName: 'NumberInput',
       title: '数字输入框',
       desc: '常用于数字输入,可以进行快速加减显示',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         size: {
@@ -9389,17 +11578,9 @@ export default [
           desc: "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
           defaultValue: 'default',
         },
-        validateStatus: {
-          type: 'ValidateStatus',
-          desc: "input校验状态, 'success' 成功 | 'error'错误",
-          defaultValue: 'success',
-        },
-        validateType: {
-          type: 'InputValidateType',
-          desc: "input校验信息显示类型, 'top' | 'bottom' | 'inner' | 'default'",
-          defaultValue: 'default',
-        },
-        help: { type: 'string', desc: 'input校验提示信息' },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
         placeholder: { type: 'string', desc: 'input输入提示信息' },
         defaultValue: { type: 'string', desc: '默认显示内容' },
         value: { type: 'string', desc: '显示内容' },
@@ -9447,58 +11628,82 @@ export default [
         },
         onMouseEnter: {
           desc: '当鼠标移入输入框内触发',
-          args: [{ name: 'event', desc: '当鼠标移入输入框内触发的事件', type: 'Object' }],
+          args: [{ name: 'event', desc: '当鼠标移入输入框内触发的事件', type: 'MouseEvent' }],
         },
         onMouseLeave: {
-          desc: '当鼠标移入输入框内触发',
-          args: [{ name: 'event', desc: '当鼠标移出输入框外触发的事件', type: 'Object' }],
+          desc: '当鼠标移出输入框内触发',
+          args: [{ name: 'event', desc: '当鼠标移出输入框外触发的事件', type: 'MouseEvent' }],
         },
       },
       type: {
         InputSize: ['small', 'default', 'large'],
         ValidateStatus: ['default', 'error'],
-        InputValidateType: ['top', 'bottom', 'inner', 'default'],
+        ValidateType: ['top', 'bottom', 'inner'],
         ChangeType: { newValue: 'number', oldValue: 'number', event: 'SyntheticEvent' },
       },
       category: ['数据录入'],
       theme: {
         Container: {
-          name: '输入框外部容器',
-          desc: '输入框外部容器',
-          normal: [['width'], ['height'], ['margin']],
-        },
-        Input: {
-          name: '数字输入框中输入框部分',
+          name: '数字输入框',
           desc: '数字输入框中输入框部分',
           normal: [
+            ['width'],
+            ['height'],
+            ['margin'],
+            ['padding'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['background'],
+            ['opacity'],
             ['fontSize'],
             ['font'],
             ['color'],
-            ['background'],
-            ['border'],
-            ['borderRadius'],
             ['cursor'],
-            ['opacity'],
           ],
           hover: [
             ['border'],
             ['borderRadius'],
-            ['cursor'],
             ['background'],
             ['opacity'],
             ['boxShadow'],
-          ],
-          active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
-          disabled: [
+            ['cursor'],
             ['fontSize'],
             ['font'],
             ['color'],
-            ['background'],
+          ],
+          active: [
             ['border'],
             ['borderRadius'],
-            ['cursor'],
-            ['padding'],
+            ['background'],
             ['opacity'],
+            ['boxShadow'],
+            ['cursor'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          focus: [
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+            ['opacity'],
+            ['boxShadow'],
+            ['cursor'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          disabled: [
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+            ['opacity'],
+            ['boxShadow'],
+            ['cursor'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
           ],
         },
         ArrowIconContainer: {
@@ -9506,40 +11711,40 @@ export default [
           desc: '数字输入框步长图标包裹框',
           normal: [
             ['width'],
-            ['height'],
             ['fontSize'],
             ['font'],
             ['color'],
             ['background'],
+            ['border', 'left'],
             ['cursor'],
             ['margin'],
             ['padding'],
             ['opacity'],
           ],
           hover: [
-            ['width'],
-            ['height'],
             ['font'],
+            ['fontSize'],
             ['color'],
             ['background'],
+            ['border', 'left'],
             ['cursor'],
             ['opacity'],
           ],
-          clicked: [
-            ['width'],
-            ['height'],
+          active: [
             ['font'],
+            ['fontSize'],
             ['color'],
             ['background'],
+            ['border', 'left'],
             ['cursor'],
             ['opacity'],
           ],
           disabled: [
-            ['width'],
-            ['height'],
             ['font'],
+            ['fontSize'],
             ['color'],
             ['background'],
+            ['border', 'left'],
             ['cursor'],
             ['opacity'],
           ],
@@ -9547,10 +11752,49 @@ export default [
         InputArrowIcon: {
           name: '数字输入框步长图标',
           desc: '数字输入框步长图标',
-          normal: [['fontSize'], ['font'], ['color'], ['background'], ['cursor'], ['opacity']],
-          hover: [['fontSize'], ['font'], ['color'], ['background'], ['cursor'], ['opacity']],
-          active: [['fontSize'], ['font'], ['color'], ['background'], ['cursor'], ['opacity']],
-          disabled: [['fontSize'], ['font'], ['color'], ['background'], ['cursor'], ['opacity']],
+          normal: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity']],
+          hover: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity']],
+          active: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity']],
+          disabled: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity']],
+        },
+        InputArrowSubtractIcon: {
+          name: '数字输入框减少步长图标',
+          desc: '数字输入框减少步长图标',
+          normal: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity']],
+          hover: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity']],
+          active: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity']],
+          disabled: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity']],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的输入框',
+          desc: '配置校验失败的输入框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          focus: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
         },
       },
       childrenWidget: [],
@@ -9573,6 +11817,7 @@ export default [
         pageSizeOptions: {
           type: 'string[]',
           desc: '指定每页可以显示多少条',
+          meta: [{ key: 'pageSizes', title: '每页显示多少条的集合', type: 'string[]' }],
           propsDefaultValue: ['10', '20', '30', '50'],
         },
         showQuickJumper: {
@@ -9591,11 +11836,7 @@ export default [
           desc: '是否显示可以改变 pageSize',
           propsDefaultValue: false,
         },
-        isShowTotalData: {
-          type: 'boolean',
-          desc: '是否可以显示数据总量',
-          propsDefaultValue: false,
-        },
+        showTotalData: { type: 'boolean', desc: '是否可以显示数据总量', propsDefaultValue: false },
         simple: {
           type: 'boolean',
           desc: '当添加该属性时，显示为简单分页',
@@ -9613,11 +11854,27 @@ export default [
         },
         preIconSrc: { type: 'image', desc: '分页上一页图片资源' },
         nextIconSrc: { type: 'image', desc: '分页下一页图片资源' },
+        blockList: {
+          type: 'string[]',
+          desc: '分页各部位展示的位置列表',
+          meta: [{ key: 'displayLocation', title: '分页各部位展示的位置', type: 'string[]' }],
+          propsDefaultValue: ['Page', 'PageInput', 'Total', 'PageSize'],
+          defaultValue: ['Page', 'PageInput', 'Total', 'PageSize'],
+        },
+        align: { type: 'AlignType', desc: '分页各部位对齐的方式', propsDefaultValue: 'Left' },
+        size: {
+          type: 'SizeType',
+          desc: '可配置三种尺寸大小的Pagination',
+          propsDefaultValue: 'default',
+        },
+        divided: { type: 'boolean', desc: '是否展示菜单分割线', propsDefaultValue: 'false' },
       },
       events: {
         onChange: {
           desc: '页码改变的回调，参数是改变后的页码及每页条数',
           args: [
+            { name: 'newValue', desc: '页码改变后的页码', type: 'number' },
+            { name: 'oldValue', desc: '页码改变前的页码', type: 'number' },
             { name: 'page', desc: '页码改变后的页码', type: 'number' },
             { name: 'pageSize', desc: '每页条数', type: 'number' },
           ],
@@ -9629,7 +11886,16 @@ export default [
             { name: 'size', desc: '每页条数', type: 'number' },
           ],
         },
+        quickJumperInputBlur: {
+          desc: '快速跳转输入框失去焦点时触发',
+          args: [
+            { name: 'current', desc: '当前页数', type: 'number' },
+            { name: 'size', desc: '每页条数', type: 'number' },
+            { name: 'event', desc: '失去焦点的DOM事件', type: 'FocusEvent' },
+          ],
+        },
       },
+      type: { AlignType: ['Left', 'Right'] },
       designInfo: {
         SimplePagination: {
           sequence: 1,
@@ -9652,47 +11918,40 @@ export default [
             },
             SimplePaginationInput: {
               name: '简洁分页输入框',
-              theme: {
-                Container: {
-                  name: '输入框外部容器',
-                  desc: '输入框外部容器',
-                  normal: [['width'], ['height'], ['margin']],
-                },
-                Input: {
-                  name: '输入框主体内容',
-                  desc: '输入框主体内容',
-                  normal: [
-                    ['fontSize'],
-                    ['font'],
-                    ['color'],
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['cursor'],
-                    ['opacity'],
-                  ],
-                  hover: [
-                    ['border'],
-                    ['borderRadius'],
-                    ['cursor'],
-                    ['background'],
-                    ['opacity'],
-                    ['boxShadow'],
-                  ],
-                  active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
-                  disabled: [
-                    ['fontSize'],
-                    ['font'],
-                    ['color'],
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['cursor'],
-                    ['padding'],
-                    ['opacity'],
-                  ],
-                },
-              },
+              desc: '简洁分页输入框',
+              normal: [
+                ['width'],
+                ['height'],
+                ['margin'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['opacity'],
+              ],
+              hover: [
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+              ],
+              active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+              disabled: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['padding'],
+                ['opacity'],
+              ],
             },
             PaginationQuickJumpText: {
               name: '分页快速跳至文字',
@@ -9727,6 +11986,11 @@ export default [
             ['opacity'],
             ['margin'],
           ],
+        },
+        PaginationListContainer: {
+          name: '分页列表的容器',
+          desc: '分页列表的容器',
+          normal: [['margin']],
         },
         PaginationListItem: {
           name: '单个页数',
@@ -9819,56 +12083,49 @@ export default [
         },
         QuickJumpInput: {
           name: '快速跳至分页输入框',
-          theme: {
-            Container: {
-              name: '输入框外部容器',
-              desc: '输入框外部容器',
-              normal: [['width'], ['height'], ['margin']],
-            },
-            Input: {
-              name: '输入框主体内容',
-              desc: '输入框主体内容',
-              normal: [
-                ['fontSize'],
-                ['font'],
-                ['color'],
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['cursor'],
-                ['opacity'],
-                ['boxShadow'],
-              ],
-              hover: [
-                ['border'],
-                ['borderRadius'],
-                ['cursor'],
-                ['background'],
-                ['opacity'],
-                ['boxShadow'],
-              ],
-              active: [
-                ['boxShadow'],
-                ['border'],
-                ['borderRadius'],
-                ['cursor'],
-                ['background'],
-                ['boxShadow'],
-              ],
-              disabled: [
-                ['fontSize'],
-                ['font'],
-                ['color'],
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['cursor'],
-                ['padding'],
-                ['opacity'],
-                ['boxShadow'],
-              ],
-            },
-          },
+          desc: '快速跳至分页输入框',
+          normal: [
+            ['width'],
+            ['height'],
+            ['margin'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['cursor'],
+            ['opacity'],
+            ['boxShadow'],
+          ],
+          hover: [
+            ['border'],
+            ['borderRadius'],
+            ['cursor'],
+            ['background'],
+            ['opacity'],
+            ['boxShadow'],
+          ],
+          active: [
+            ['boxShadow'],
+            ['border'],
+            ['borderRadius'],
+            ['cursor'],
+            ['background'],
+            ['boxShadow'],
+          ],
+          disabled: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['cursor'],
+            ['padding'],
+            ['opacity'],
+            ['boxShadow'],
+          ],
         },
         PaginationQuickJumpContainer: {
           name: '分页快速跳至容器',
@@ -10030,6 +12287,14 @@ export default [
                         ['font'],
                       ],
                     },
+                    Divider: {
+                      name: '分割线',
+                      desc: '配置每项之间的分割线，当divided为true时生效',
+                      normal: [['background']],
+                      hover: [],
+                      active: [],
+                      disabled: [],
+                    },
                   },
                 },
               },
@@ -10058,6 +12323,7 @@ export default [
         pageSizeOptions: {
           type: 'string[]',
           desc: '指定每页可以显示多少条',
+          meta: [{ key: 'pageSizes', title: '每页显示多少条的集合', type: 'string[]' }],
           propsDefaultValue: ['10', '20', '30', '50'],
         },
         showQuickJumper: {
@@ -10076,11 +12342,7 @@ export default [
           desc: '是否显示可以改变 pageSize',
           propsDefaultValue: false,
         },
-        isShowTotalData: {
-          type: 'boolean',
-          desc: '是否可以显示数据总量',
-          propsDefaultValue: false,
-        },
+        showTotalData: { type: 'boolean', desc: '是否可以显示数据总量', propsDefaultValue: false },
         simple: {
           type: 'boolean',
           desc: '当添加该属性时，显示为简单分页',
@@ -10099,11 +12361,27 @@ export default [
         },
         preIconSrc: { type: 'image', desc: '分页上一页图片资源' },
         nextIconSrc: { type: 'image', desc: '分页下一页图片资源' },
+        blockList: {
+          type: 'string[]',
+          desc: '分页各部位展示的位置列表',
+          meta: [{ key: 'displayLocation', title: '分页各部位展示的位置', type: 'string[]' }],
+          propsDefaultValue: ['Page', 'PageInput', 'Total', 'PageSize'],
+          defaultValue: ['Page', 'PageInput', 'Total', 'PageSize'],
+        },
+        align: { type: 'AlignType', desc: '分页各部位对齐的方式', propsDefaultValue: 'Left' },
+        size: {
+          type: 'SizeType',
+          desc: '可配置三种尺寸大小的Pagination',
+          propsDefaultValue: 'default',
+        },
+        divided: { type: 'boolean', desc: '是否展示菜单分割线', propsDefaultValue: 'false' },
       },
       events: {
         onChange: {
           desc: '页码改变的回调，参数是改变后的页码及每页条数',
           args: [
+            { name: 'newValue', desc: '页码改变后的页码', type: 'number' },
+            { name: 'oldValue', desc: '页码改变前的页码', type: 'number' },
             { name: 'page', desc: '页码改变后的页码', type: 'number' },
             { name: 'pageSize', desc: '每页条数', type: 'number' },
           ],
@@ -10115,7 +12393,16 @@ export default [
             { name: 'size', desc: '每页条数', type: 'number' },
           ],
         },
+        quickJumperInputBlur: {
+          desc: '快速跳转输入框失去焦点时触发',
+          args: [
+            { name: 'current', desc: '当前页数', type: 'number' },
+            { name: 'size', desc: '每页条数', type: 'number' },
+            { name: 'event', desc: '失去焦点的DOM事件', type: 'FocusEvent' },
+          ],
+        },
       },
+      type: { AlignType: ['Left', 'Right'] },
       theme: {
         Container: {
           name: '分页外部容器',
@@ -10132,47 +12419,40 @@ export default [
         },
         SimplePaginationInput: {
           name: '简洁分页输入框',
-          theme: {
-            Container: {
-              name: '输入框外部容器',
-              desc: '输入框外部容器',
-              normal: [['width'], ['height'], ['margin']],
-            },
-            Input: {
-              name: '输入框主体内容',
-              desc: '输入框主体内容',
-              normal: [
-                ['fontSize'],
-                ['font'],
-                ['color'],
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['cursor'],
-                ['opacity'],
-              ],
-              hover: [
-                ['border'],
-                ['borderRadius'],
-                ['cursor'],
-                ['background'],
-                ['opacity'],
-                ['boxShadow'],
-              ],
-              active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
-              disabled: [
-                ['fontSize'],
-                ['font'],
-                ['color'],
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['cursor'],
-                ['padding'],
-                ['opacity'],
-              ],
-            },
-          },
+          desc: '简洁分页输入框',
+          normal: [
+            ['width'],
+            ['height'],
+            ['margin'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['cursor'],
+            ['opacity'],
+          ],
+          hover: [
+            ['border'],
+            ['borderRadius'],
+            ['cursor'],
+            ['background'],
+            ['opacity'],
+            ['boxShadow'],
+          ],
+          active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+          disabled: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['cursor'],
+            ['padding'],
+            ['opacity'],
+          ],
         },
         PaginationQuickJumpText: {
           name: '分页快速跳至文字',
@@ -10202,10 +12482,238 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Popconfirm',
+      title: '气泡确认框',
+      desc: '气泡式的确认框',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        title: { type: 'React.Node', desc: '确认框标题显示内容', defaultValue: '确定要删除吗' },
+        description: { type: 'React.Node', desc: '确认框描述显示内容' },
+        content: { type: 'React.Node', desc: '整个确认框显示内容' },
+        icon: { type: 'icon', desc: '确认框的标题的图标' },
+        placement: { type: 'DirectionType', desc: '气泡确认框显示的位置,十二个方向' },
+        visible: { type: 'boolean', desc: '是否显示出来', defaultValue: false },
+        defaultVisible: { type: 'boolean', desc: '默认是否显示出来', defaultValue: false },
+        action: {
+          type: 'ActionType',
+          desc: '页签位置，可配置 click,hover,focus',
+          defaultValue: 'click',
+        },
+        children: { type: 'React.Node', desc: '气泡确认框需要包含的子组件' },
+        okType: { type: 'ButtonType', desc: '气泡确认框确认按钮的类型', defaultValue: 'primary' },
+        cancelText: { type: 'string', desc: '取消按钮文字', defaultValue: '取消' },
+        okText: { type: 'string', desc: '确认按钮文字', defaultValue: '确定' },
+      },
+      events: {
+        onVisibleChange: {
+          desc: '气泡确认框改变时触发',
+          args: [{ name: 'event', desc: '气泡确认框显示改变的DOM事件', type: 'Object' }],
+        },
+        onCancel: {
+          desc: '气泡确认框点击取消时触发',
+          args: [{ name: 'event', desc: '气泡确认框点击取消的DOM事件', type: 'Object' }],
+        },
+        onConfirm: {
+          desc: '气泡确认框关闭时时触发',
+          args: [{ name: 'event', desc: '气泡确认框点击确认的DOM事件', type: 'Object' }],
+        },
+      },
+      type: {
+        DirectionType: [
+          'left',
+          'leftTop',
+          'leftBottom',
+          'right',
+          'rightTop',
+          'rightBottom',
+          'top',
+          'topLeft',
+          'topRight',
+          'bottom',
+          'bottomLeft',
+          'bottomRight',
+        ],
+        ActionType: ['click', 'hover', 'focus'],
+        ButtonType: ['default', 'primary', 'success', 'warning', 'danger'],
+      },
+      category: ['反馈'],
+      theme: {
+        PopconfirmContent: {
+          name: '气泡卡片框容器',
+          theme: {
+            Container: {
+              name: '气泡确认框内容部分',
+              desc: '气泡确认框内容部分',
+              normal: [
+                ['background'],
+                ['color'],
+                ['padding'],
+                ['font'],
+                ['fontSize'],
+                ['width'],
+                ['height'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+              ],
+            },
+          },
+        },
+        PopconfirmTitle: {
+          name: '气泡确认框标题',
+          desc: '气泡确认框标题',
+          normal: [['color'], ['background'], ['font'], ['fontSize']],
+        },
+        PopconfirmButton: {
+          name: '气泡确认框按钮',
+          desc: '气泡确认框按钮',
+          normal: [['opacity'], ['color'], ['font'], ['fontSize']],
+        },
+        PopconfirmIcon: {
+          name: '气泡确认框标题前图标',
+          desc: '气泡确认框标题前图标',
+          normal: [['opacity'], ['color'], ['font'], ['fontSize']],
+        },
+      },
+      childrenWidget: [],
+      hideInTollPanel: true,
+    },
+    target: Popconfirm,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAABWCAYAAAAaC2InAAAAAXNSR0IArs4c6QAABBxJREFUeAHtnTFMFEEUht8eXEMkUayM1lARSSgspaClMVpYQaK2JkRja2yNCYm1JlBRaGxoKbC0wGCIBdQaK9EEQ3OQc96xlxDCzb0l796+mfunAXZmZ97/f/tmj5u5vYJCWVtbu9lqtVbCr/MnJyfX+BhKWg6MjIz8CRFvNpvN5cXFxZ9FCXV3dnZ2fHJycnRsbCwtRYi248DR0RHt7+8fb29vHwa406OcqQx1ZmZmFB6l6wAnZMlwPMBdaQQp85yp6UpC5GcdKFnON/ieiun3rDVp/84smSlnLEqGDgBshlBZEsBmClb8omn9w4bIgocPFjrtBt1eFMwQN0LGZgofYAE2UwcylYWMBdhMHchUFjIWYDN1IFNZyFiAzdSBTGUhYwE2UwcylYWMBdhMHchUFjIWYDN1IFNZ4vXY7jqr1IdBt5fGMaztMBVnSl6csZnqryTrd9hrv/qRaHeP6OBvpVMv3XjiKtH0FNHSfaLrFT6jAbBCyxnq01dEh/+EJyg14wvo8xeir9+J3r6Uw8VULATAmWoN9WxoPDbHIC0AK3SKp9+6S5UYxFPx3l5c2dRUuBGE4r3dZeFI76mrby4eYen56fF+9ReffXpUGgO3RsbGnEy4DmAThhcLHWBj7iRcB7AJw4uFDrAxdxKuA9iE4cVCB9iYOwnXAWzC8GKhA2zMnYTrxO88JaxRJXReZZG889N9h6nXoP3qe53HxzkGaUHGCp3ipbO6S5UYAFZIi9dDx68IGw+gGY/NMUgLwAqd4kVuXg+9e6falCjsvmcznn55zCprsdyZ+B7bXb3pGUFZ4b1dv/hj9Qz32ZNYCz91yFg/LFQjAVhVO/10BrB+WKhGArCqdvrpDGD9sFCNpMFPpuaHGKPk4QCzZKacsZv8ZOo8ZEFFyXKzwc+Q58eN7+zsHCNz070wmB0zLB8dv1ywFHzZQ7pAu5Gf/7KH7nH8hANwAA7AATgAB3Qd6Lx40u2yf2/3Hrdvhf+vXoeWc+023eh/RnotioJ+hai3wvLZi0/vih/WCszBMtQW0Tdq04S12FrGK+igSXTbGq75W4qdTB0WqHwlBa3l7GR6XZmDDermTBX6GMxcsznYXO+pseunDs3mYGMGoE7PAfGeJ70hL9dTr0+Cn++tu2930O3Pj+vtb2SsNyJK8QCskpHeugFYb0SU4gFYJSO9dQOw3ogoxQOwSkZ66wZgvRFRigdglYz01g3AeiOiFA/AKhnprRuA9UZEKR6AVTLSWzcA642IUjwAq2Skt24A1hsRpXjMN7MtPAr7CYawbLwP+xYNCzLW0GzLoczBlvttLTXWPlYdms3BBpe3anfaPgBzzeZgeWc8hU3U9t7WNGLQ2tFsPLw5WN4Rzzvjw/S0XscUZeUva2ONdXwKgDX+B3PE4KApjmQzAAAAAElFTkSuQmCC',
+  },
+  {
+    meta: {
+      widgetName: 'Popover',
+      title: '气泡卡片',
+      desc: '气泡式的卡片浮层',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: 'This is title!' },
+        description: {
+          type: 'React.Node',
+          desc: '卡片描述显示内容',
+          defaultValue: 'This is description!',
+        },
+        content: { type: 'React.Node', desc: '整个卡片显示内容' },
+        clear: { type: 'React.Node', desc: '关闭卡片的操作内容' },
+        showClearButton: { type: 'boolean', desc: '是否显示关闭按钮', defaultValue: true },
+        placement: { type: 'DirectionType', desc: '气泡卡片显示的位置,十二个方向' },
+        visible: { type: 'boolean', desc: '是否显示出来', defaultValue: false },
+        defaultVisible: { type: 'boolean', desc: '默认是否显示出来', defaultValue: false },
+        action: {
+          type: 'ActionType',
+          desc: '页签位置，可配置 click,hover,focus',
+          defaultValue: 'click',
+        },
+        children: { type: 'React.Node', desc: '气泡卡片需要包含的子组件' },
+      },
+      events: {
+        onVisibleChange: {
+          desc: '气泡卡片改变时触发',
+          args: [{ name: 'event', desc: '气泡卡片显示改变的DOM事件', type: 'Object' }],
+        },
+        onClearClick: {
+          desc: '气泡卡片关闭时时触发',
+          args: [{ name: 'event', desc: '气泡卡片关闭的DOM事件', type: 'Object' }],
+        },
+      },
+      type: {
+        ActionType: ['click', 'hover', 'focus'],
+        DirectionType: [
+          'left',
+          'leftTop',
+          'leftBottom',
+          'right',
+          'rightTop',
+          'rightBottom',
+          'top',
+          'bottom',
+          'topLeft',
+          'top',
+          'topRight',
+          'bottom',
+          'bottomRight',
+          'bottomLeft',
+        ],
+      },
+      category: ['数据展示'],
+      theme: {
+        PopoverContent: {
+          name: '气泡卡片框容器',
+          theme: {
+            Container: {
+              name: '气泡卡片框内容部分',
+              desc: '气泡卡片框内容部分',
+              normal: [
+                ['background'],
+                ['color'],
+                ['padding'],
+                ['font'],
+                ['fontSize'],
+                ['width'],
+                ['height'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+              ],
+            },
+            TooltipTitle: {
+              name: '气泡卡片标题部分',
+              desc: '气泡卡片标题部分',
+              normal: [
+                ['opacity'],
+                ['background'],
+                ['width'],
+                ['height'],
+                ['color'],
+                ['font'],
+                ['fontSize'],
+              ],
+            },
+            TooltipDescription: {
+              name: '气泡卡片描述部分',
+              desc: '气泡卡片描述部分',
+              normal: [
+                ['opacity'],
+                ['background'],
+                ['width'],
+                ['height'],
+                ['color'],
+                ['font'],
+                ['fontSize'],
+              ],
+            },
+          },
+        },
+        PopoverClearIcon: {
+          name: '气泡卡片操作部分',
+          desc: '气泡卡片操作部分',
+          normal: [
+            ['opacity'],
+            ['background'],
+            ['width'],
+            ['height'],
+            ['color'],
+            ['font'],
+            ['fontSize'],
+          ],
+        },
+      },
+      childrenWidget: [],
+      hideInTollPanel: true,
+    },
+    target: Popover,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAABWCAYAAAAaC2InAAAAAXNSR0IArs4c6QAAA3xJREFUeAHtnb+LGkEUx2f90QhXJF1Iaq1CBP+BK2yvCaRIZSDB/uDIHxEOrlYSiNUVgTTXWtw/IBhSaZ2QLikCNp6YeXsrnIHzdofn2zfP7zan65uZ9/1+9o16jmPi/DEajZ4ul8sLf7O7Wq0e0TkccTlQrVb/+IzH9Xr9tNfr/UwyqN87nc5Rs9msNRqNuBQh29SBxWLh5vP5zWQy+evhPq9RpRLUdrtdg0fxOkAFmTE88nAvKl5Klyo1XknI/K4DGctuhZ5TMf3etSbu28SSmFLF4jDoAMAahEqSANYo2Nwvmi6/XOWy4PWrkzRu3/G5kjngIFSsUfgAC7BGHTAqCxULsEYdMCoLFQuwRh0wKgsVC7BGHTAqCxULsEYdMCoLFQuwRh0wKgsVC7BGHTAqK/fnsZvPWfP6sO/4vHkcahymYqPkARZgjTpgVBYqFmCNOmBUVu5XxXn1z2aznaGtVit9HHHbNm182T4bfg9Tcbh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsmg8Fg3e/3VSeJ5Io5MBwOsWtMMcviicZUHA+rQpkCbCG74gkG2HhYFcoUYAvZFU9whXampk2McdhwgFgSU6rYMe1MbUMWVGQsxxXaQ562G59Opzeo3HgvDGJHDLOt408TkoIfe4gX6Cbz/3/sYXMef+EAHIADcAAOwAFeB9IXT7xdPtzby3frZ/791QcfebxeuycPt4gvIkncL5/1tf9y1PuvH5Mf0grEwRLUpXPf3No9lhZbyniJ+1137oU0XPF/KaaVeihQ6UryWrPZSfS6Egfr1R2LKtQxmLhmcbBWn1N3XT9laBYHu8sAPMbnAPs32vlS2+7p8/n2/fvuvTm7fWTf8feNr+U8KlYLCeY8AJbZUC3dAawWEsx5ACyzoVq6A1gtJJjzAFhmQ7V0B7BaSDDnAbDMhmrpDmC1kGDOA2CZDdXSHcBqIcGcB8AyG6qlO4DVQoI5D4BlNlRLdwCrhQRzHuKL2U7e+vUEB3hcffLrFgUPVKyg2ZJDiYPN1ttKaix9rDI0i4P1Ll+X7rR8AuKaxcHSynjnF1HLe1vSiF5rqll4eHGwtCKeVsb76emyjClKyl/SRhrL+BYAafwHHZ2+Cpkpg+QAAAAASUVORK5CYII=',
+  },
+  {
+    meta: {
       widgetName: 'Progress',
       title: '进度条',
       desc: '展示操作的当前进度。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         type: {
           type: 'ProgressType',
           desc: '进度条类型，line、circle、dashboard',
@@ -10310,7 +12818,15 @@ export default [
         ProgressInnerLine_Default: {
           name: '进度条进度线默认配置',
           desc: '进度条进度线默认配置',
-          normal: [['height'], ['background'], ['border'], ['borderRadius'], ['boxShadow']],
+          normal: [
+            ['height'],
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['padding', 'right'],
+          ],
         },
         ProgressInnerLine_Success: {
           name: '进度条进度线成功配置',
@@ -10342,6 +12858,7 @@ export default [
           desc: '进度条失败图标配置',
           normal: [['color'], ['fontSize']],
         },
+        ProgressActiveLine: { name: '动效条样式配置', desc: '动效条样式配置', normal: [['color']] },
       },
       childrenWidget: [],
     },
@@ -10355,6 +12872,7 @@ export default [
       title: '圆形进度条',
       desc: '圆形进度条',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         type: {
           type: 'ProgressType',
           desc: '进度条类型，line、circle、dashboard',
@@ -10427,6 +12945,7 @@ export default [
       title: '仪表盘进度条',
       desc: '仪表盘进度条',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         type: {
           type: 'ProgressType',
           desc: '进度条类型，line、circle、dashboard',
@@ -10499,6 +13018,7 @@ export default [
       title: '单选框',
       desc: '单选框。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         checked: { type: 'boolean', desc: '单选框是否选中' },
         defaultChecked: { type: 'boolean', desc: '单选框初始是否选中' },
         disabled: { type: 'boolean', desc: '单选框是否禁用' },
@@ -10510,7 +13030,7 @@ export default [
           defaultValue: 'radio',
         },
       },
-      event: {
+      events: {
         onChange: {
           desc: '单选框改变时的回调',
           args: [
@@ -10599,6 +13119,7 @@ export default [
       title: '单选框组',
       desc: '单选框组。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '单选框初始选中值' },
         value: { type: 'string', desc: '单选框选中值' },
         disabled: { type: 'boolean', desc: '指定RadioGroup是否禁用' },
@@ -10626,7 +13147,7 @@ export default [
           desc: '指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设',
         },
       },
-      event: {
+      events: {
         onChange: {
           desc: 'Radio 改变时回调',
           args: [
@@ -10680,6 +13201,12 @@ export default [
               desc: '文字样式',
               normal: [['color'], ['font'], ['padding']],
               hover: [['color'], ['font']],
+              disabled: [['color'], ['font']],
+            },
+            RadioTextCancel: {
+              name: '取消状态文字样式',
+              desc: '取消状态文字样式',
+              normal: [['color'], ['font'], ['padding']],
               disabled: [['color'], ['font']],
             },
             RadioEdgeUnChecked: {
@@ -10746,6 +13273,7 @@ export default [
       title: '按钮状单选框组',
       desc: '按钮形状的单选框组',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '单选框初始选中值' },
         value: { type: 'string', desc: '单选框选中值' },
         disabled: { type: 'boolean', desc: '指定RadioGroup是否禁用' },
@@ -10777,7 +13305,7 @@ export default [
           desc: '指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设',
         },
       },
-      event: {
+      events: {
         onChange: {
           desc: 'Radio 改变时回调',
           args: [
@@ -10918,6 +13446,7 @@ export default [
       title: '评分',
       desc: '评分组件',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         count: { type: 'number', desc: '展示的 star 总数', defaultValue: 5 },
         max: { type: 'number', desc: '最大分值', defaultValue: 5 },
         disabled: { type: 'boolean', desc: '禁用状态,不可进行交互', defaultValue: false },
@@ -11002,6 +13531,10 @@ export default [
               disabled: [],
             },
           },
+          defaultTheme: {
+            DefaultRateIcon: { normal: { fontSize: 14, color: '#e8e8e8', margin: { right: 6 } } },
+            ActiveIcon: { normal: { color: '#f8ac30' } },
+          },
         },
         TextRate: {
           sequence: 2,
@@ -11026,6 +13559,10 @@ export default [
               disabled: [],
             },
           },
+          defaultTheme: {
+            DefaultTextIcon: { normal: { fontSize: 16, color: '#e8e8e8' } },
+            ActiveTextIcon: { normal: { color: '#f8ac30' } },
+          },
         },
       },
       theme: {
@@ -11040,7 +13577,7 @@ export default [
         DefaultRateIcon: {
           name: '默认状态的图标',
           desc: '默认的星星的样式',
-          normal: [['color'], ['margin'], ['fontSize']],
+          normal: [['color'], ['margin'], ['fontSize'], ['font']],
           hover: [],
           clicked: [],
           disabled: [],
@@ -11058,6 +13595,7 @@ export default [
       title: '分级图标评分',
       desc: '按分值等级展示不同图标样式和颜色',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         count: { type: 'number', desc: '展示的 star 总数', defaultValue: 5 },
         max: { type: 'number', desc: '最大分值', defaultValue: 5 },
         disabled: { type: 'boolean', desc: '禁用状态,不可进行交互', defaultValue: false },
@@ -11128,6 +13666,10 @@ export default [
         },
       },
       childrenWidget: [],
+      defaultTheme: {
+        DefaultRateIcon: { normal: { fontSize: 14, color: '#e8e8e8', margin: { right: 6 } } },
+        ActiveIcon: { normal: { color: '#f8ac30' } },
+      },
       aliasName: 'ClassifyRate',
     },
     target: Rate,
@@ -11140,6 +13682,7 @@ export default [
       title: '文字评分',
       desc: '按分值等级展示不同图标样式和颜色',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         count: { type: 'number', desc: '展示的 star 总数', defaultValue: 5 },
         max: { type: 'number', desc: '最大分值', defaultValue: 5 },
         disabled: { type: 'boolean', desc: '禁用状态,不可进行交互', defaultValue: false },
@@ -11200,6 +13743,10 @@ export default [
         },
       },
       childrenWidget: [],
+      defaultTheme: {
+        DefaultTextIcon: { normal: { fontSize: 16, color: '#e8e8e8' } },
+        ActiveTextIcon: { normal: { color: '#f8ac30' } },
+      },
       aliasName: 'TextRate',
     },
     target: Rate,
@@ -11212,6 +13759,7 @@ export default [
       title: '选择器',
       desc: '选项过多时，弹出下拉菜单给用户选择操作',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: {
           type: 'Object[]',
           desc: '生成选择项的数据',
@@ -11236,6 +13784,11 @@ export default [
             { value: '选项二', text: '选项二' },
             { value: '选项三', text: '选项三' },
           ],
+        },
+        size: {
+          type: 'sizeType',
+          desc: '可配置三种尺寸大小的select',
+          propsDefaultValue: 'default',
         },
         canSearch: { type: 'boolean', desc: '是否支持查询', propsDefaultValue: false },
         canInput: {
@@ -11267,11 +13820,8 @@ export default [
         },
         disabled: { type: 'boolean', desc: '是否禁选', propsDefaultValue: false },
         mutliple: { type: 'boolean', desc: '是否多选', propsDefaultValue: false },
-        validateStatus: {
-          type: 'ValidateStatus',
-          desc: "input校验状态, 'success' 成功 | 'error'错误",
-          propsDefaultValue: 'success',
-        },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         limitCount: { type: 'number', desc: '多选时最多个数' },
         placeholder: { type: 'string', desc: '占位符' },
         searchType: { type: 'SearchType', desc: '查询的方式', propsDefaultValue: 'include' },
@@ -11313,7 +13863,12 @@ export default [
         },
         onRefresh: { desc: '点击刷新按钮时触发' },
       },
-      type: { SearchType: ['start', 'end', 'include', 'eql'] },
+      type: {
+        sizeType: ['small', 'default', 'large'],
+        SearchType: ['start', 'end', 'include', 'eql'],
+        ValidateStatus: ['default', 'error'],
+        ValidateType: ['top', 'bottom', 'inner'],
+      },
       category: ['数据录入'],
       designInfo: {
         MutlipleSelect: {
@@ -11347,7 +13902,22 @@ export default [
                 ['font'],
                 ['opacity'],
               ],
-              active: [],
+              focus: [
+                ['color'],
+                ['background'],
+                ['border'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['opacity'],
+              ],
+              active: [
+                ['color'],
+                ['background'],
+                ['border'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['opacity'],
+              ],
               disabled: [
                 ['width'],
                 ['height'],
@@ -11362,6 +13932,36 @@ export default [
                 ['opacity'],
                 ['cursor'],
               ],
+            },
+            ValidateErrorInput: {
+              name: '校验失败的展示框',
+              desc: '配置校验失败的展示框',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['boxShadow'],
+                ['opacity'],
+              ],
+              hover: [['background'], ['border'], ['boxShadow']],
+              active: [['background'], ['border'], ['boxShadow']],
+            },
+            ValidateErrorText: {
+              name: '校验失败提示信息',
+              desc: '配置校验失败的提示信息',
+              normal: [
+                ['background'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+              ],
+              hover: [],
+              active: [],
             },
             SwitchIcon: {
               name: '下拉图标',
@@ -11417,6 +14017,11 @@ export default [
               hover: [['color'], ['fontSize']],
               active: [['color'], ['fontSize']],
               disabled: [['color'], ['fontSize'], ['cursor']],
+            },
+            Placeholder: {
+              name: '提示信息文字',
+              desc: '提示信息文字',
+              normal: [['color'], ['fontSize'], ['font'], ['padding']],
             },
             Menu: {
               name: '弹开菜单',
@@ -11493,7 +14098,6 @@ export default [
                       name: '选中项的外盒',
                       desc: '配置选中项的外盒',
                       normal: [
-                        ['height'],
                         ['color'],
                         ['font'],
                         ['fontSize'],
@@ -11657,7 +14261,7 @@ export default [
               },
             },
           },
-          defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+          defaultTheme: { Container: { normal: { width: 250 } } },
         },
       },
       theme: {
@@ -11686,7 +14290,22 @@ export default [
             ['font'],
             ['opacity'],
           ],
-          active: [],
+          focus: [
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['opacity'],
+          ],
+          active: [
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['opacity'],
+          ],
           disabled: [
             ['width'],
             ['height'],
@@ -11701,6 +14320,42 @@ export default [
             ['opacity'],
             ['cursor'],
           ],
+        },
+        TextContent: {
+          name: '单选文本样式',
+          desc: '单选文本样式',
+          normal: [['color'], ['font'], ['fontSize']],
+          disabled: [['color'], ['font'], ['fontSize']],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的展示框',
+          desc: '配置校验失败的展示框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
         },
         SwitchIcon: {
           name: '下拉图标',
@@ -11717,6 +14372,11 @@ export default [
           hover: [['color'], ['fontSize']],
           active: [['color'], ['fontSize']],
           disabled: [['color'], ['fontSize'], ['cursor']],
+        },
+        Placeholder: {
+          name: '提示信息文字',
+          desc: '提示信息文字',
+          normal: [['color'], ['fontSize'], ['font'], ['padding']],
         },
         Menu: {
           name: '弹开菜单',
@@ -11793,7 +14453,6 @@ export default [
                   name: '选中项的外盒',
                   desc: '配置选中项的外盒',
                   normal: [
-                    ['height'],
                     ['color'],
                     ['font'],
                     ['fontSize'],
@@ -11866,9 +14525,39 @@ export default [
                     ['cursor'],
                   ],
                 },
+                SelectedPrefixIcon: {
+                  name: '选中项前置图标配置',
+                  desc: '选中项前置图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
                 SuffixIcon: {
                   name: '后缀图标配置',
                   desc: '后缀图标或图片的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                SelectedSuffixIcon: {
+                  name: '选中项后缀图标配置',
+                  desc: '选中项后缀图标的样式配置',
                   normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                   hover: [['color'], ['font'], ['fontSize']],
                   active: [['color'], ['font'], ['fontSize']],
@@ -11886,7 +14575,7 @@ export default [
           },
         },
       },
-      defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+      defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
     },
     target: Select,
@@ -11899,6 +14588,7 @@ export default [
       title: '多项选择器',
       desc: '支持多项选择',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: {
           type: 'Object[]',
           desc: '生成选择项的数据',
@@ -11923,6 +14613,11 @@ export default [
             { value: '选项二', text: '选项二' },
             { value: '选项三', text: '选项三' },
           ],
+        },
+        size: {
+          type: 'sizeType',
+          desc: '可配置三种尺寸大小的select',
+          propsDefaultValue: 'default',
         },
         canSearch: { type: 'boolean', desc: '是否支持查询', propsDefaultValue: false },
         canInput: {
@@ -11959,11 +14654,8 @@ export default [
           propsDefaultValue: false,
           defaultValue: true,
         },
-        validateStatus: {
-          type: 'ValidateStatus',
-          desc: "input校验状态, 'success' 成功 | 'error'错误",
-          propsDefaultValue: 'success',
-        },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         limitCount: { type: 'number', desc: '多选时最多个数' },
         placeholder: { type: 'string', desc: '占位符' },
         searchType: { type: 'SearchType', desc: '查询的方式', propsDefaultValue: 'include' },
@@ -12005,7 +14697,12 @@ export default [
         },
         onRefresh: { desc: '点击刷新按钮时触发' },
       },
-      type: { SearchType: ['start', 'end', 'include', 'eql'] },
+      type: {
+        sizeType: ['small', 'default', 'large'],
+        SearchType: ['start', 'end', 'include', 'eql'],
+        ValidateStatus: ['default', 'error'],
+        ValidateType: ['top', 'bottom', 'inner'],
+      },
       category: ['数据录入'],
       theme: {
         Container: {
@@ -12033,7 +14730,22 @@ export default [
             ['font'],
             ['opacity'],
           ],
-          active: [],
+          focus: [
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['opacity'],
+          ],
+          active: [
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['opacity'],
+          ],
           disabled: [
             ['width'],
             ['height'],
@@ -12048,6 +14760,36 @@ export default [
             ['opacity'],
             ['cursor'],
           ],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的展示框',
+          desc: '配置校验失败的展示框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
         },
         SwitchIcon: {
           name: '下拉图标',
@@ -12103,6 +14845,11 @@ export default [
           hover: [['color'], ['fontSize']],
           active: [['color'], ['fontSize']],
           disabled: [['color'], ['fontSize'], ['cursor']],
+        },
+        Placeholder: {
+          name: '提示信息文字',
+          desc: '提示信息文字',
+          normal: [['color'], ['fontSize'], ['font'], ['padding']],
         },
         Menu: {
           name: '弹开菜单',
@@ -12179,7 +14926,6 @@ export default [
                   name: '选中项的外盒',
                   desc: '配置选中项的外盒',
                   normal: [
-                    ['height'],
                     ['color'],
                     ['font'],
                     ['fontSize'],
@@ -12329,7 +15075,7 @@ export default [
           },
         },
       },
-      defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+      defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
       aliasName: 'MutlipleSelect',
     },
@@ -12343,17 +15089,18 @@ export default [
       title: '加载占位符',
       desc: '在等待加载内容时，提供一个占位的图形组合',
       props: {
-        title: { type: 'boolean', desc: '是否展示标题占位符', defaultValue: true },
-        avatar: { type: 'boolean', desc: '是否展示头像占位符', defaultValue: true },
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        title: { type: 'boolean', desc: '是否展示标题占位符', propsDefaultValue: true },
+        avatar: { type: 'boolean', desc: '是否展示头像占位符', propsDefaultValue: true },
         paragraph: {
           type: 'object',
           desc: '段落占位符的数目',
           meta: [{ key: 'rows', title: '段落的数目', type: 'number' }],
           defaultValue: { rows: 3 },
         },
-        loading: { type: 'boolean', desc: '是否展示占位符组合', defaultValue: true },
-        picture: { type: 'boolean', desc: '是否展示图片占位符', defaultValue: false },
-        animation: { type: 'boolean', desc: '是否展示动画效果', defaultValue: false },
+        loading: { type: 'boolean', desc: '是否展示占位符组合', propsDefaultValue: true },
+        picture: { type: 'boolean', desc: '是否展示图片占位符', propsDefaultValue: false },
+        animation: { type: 'boolean', desc: '是否展示动画效果', propsDefaultValue: false },
       },
       category: ['反馈'],
       theme: {
@@ -12458,6 +15205,7 @@ export default [
       title: '滑动输入条',
       desc: '滑动型输入器，展示当前值和可选范围',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         maxValue: { type: 'number', desc: '最大值限制', propsDefaultValue: 30 },
         minValue: { type: 'number', desc: '最小值限制', propsDefaultValue: 0 },
         defaultValue: {
@@ -12498,80 +15246,7 @@ export default [
           title: '单个滑块的样式',
           desc: '单个滑块的样式配置',
           props: { defaultValue: 2, vertical: true, minValue: 0, maxValue: 30 },
-          defaultTheme: {
-            Container: {
-              normal: {
-                width: 300,
-                height: 6,
-                background: { color: '#e8e8e8' },
-                borderRadius: {
-                  topLeft: { radius: 6 },
-                  topRight: { radius: 6 },
-                  bottomLeft: { radius: 6 },
-                  bottomRight: { radius: 6 },
-                },
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-              },
-            },
-            SliderPassedWay: {
-              normal: {
-                background: { color: '#4d63ff' },
-                height: 6,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-              },
-            },
-            SliderButton: {
-              normal: {
-                background: { color: '#4d63ff' },
-                width: 16,
-                height: 16,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: {
-                  topLeft: { radius: 16 },
-                  topRight: { radius: 16 },
-                  bottomLeft: { radius: 16 },
-                  bottomRight: { radius: 16 },
-                },
-              },
-            },
-            SliderTips: {
-              normal: {
-                width: 30,
-                height: 30,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: {
-                  topLeft: { radius: 3 },
-                  topRight: { radius: 3 },
-                  bottomLeft: { radius: 3 },
-                  bottomRight: { radius: 3 },
-                },
-                background: { color: '#333' },
-                color: '#fff',
-                fontSize: 14,
-                font: { weight: 'normal' },
-              },
-            },
-          },
+          defaultTheme: { Container: { normal: { width: 300, height: 6 } } },
           theme: {
             SliderContainer: {
               name: '滑块组件外盒',
@@ -12645,96 +15320,7 @@ export default [
           title: '双滑块的样式',
           desc: '双滑块的样式配置',
           props: { defaultValue: [5, 15], minValue: 0, maxValue: 30 },
-          defaultTheme: {
-            SliderContainer: {
-              normal: {
-                background: { color: 'transparent' },
-                width: 300,
-                opacity: 1,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: {
-                  topLeft: { radius: 0 },
-                  topRight: { radius: 0 },
-                  bottomLeft: { radius: 0 },
-                  bottomRight: { radius: 0 },
-                },
-                margin: { top: 0, right: 0, bottom: 0, left: 0 },
-                padding: { top: 0, right: 0, bottom: 0, left: 0 },
-              },
-            },
-            Container: {
-              normal: {
-                width: 300,
-                height: 6,
-                background: { color: '#e8e8e8' },
-                borderRadius: {
-                  topLeft: { radius: 6 },
-                  topRight: { radius: 6 },
-                  bottomLeft: { radius: 6 },
-                  bottomRight: { radius: 6 },
-                },
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-              },
-            },
-            SliderPassedWay: {
-              normal: {
-                background: { color: '#4d63ff' },
-                height: 6,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-              },
-            },
-            SliderButton: {
-              normal: {
-                background: { color: '#4d63ff' },
-                width: 16,
-                height: 16,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: {
-                  topLeft: { radius: 16 },
-                  topRight: { radius: 16 },
-                  bottomLeft: { radius: 16 },
-                  bottomRight: { radius: 16 },
-                },
-              },
-            },
-            SliderTips: {
-              normal: {
-                width: 30,
-                height: 30,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: { topLeft: 3, topRight: 3, bottomLeft: 3, bottomRight: 3 },
-                background: { color: '#333' },
-                color: '#fff',
-                fontSize: 14,
-                font: { weight: 'normal' },
-              },
-            },
-          },
+          defaultTheme: { Container: { normal: { width: 300, height: 6 } } },
           theme: {
             SliderContainer: {
               name: '滑块组件外盒',
@@ -12813,88 +15399,7 @@ export default [
             maxValue: 15,
             marks: { 5: '5℃', 10: '10℃', 15: '15℃' },
           },
-          defaultTheme: {
-            SliderContainer: {
-              normal: {
-                background: { color: 'transparent' },
-                width: 300,
-                opacity: 1,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: { topLeft: 0, topRight: 0, bottomLeft: 0, bottomRight: 0 },
-                margin: { top: 0, right: 0, bottom: 0, left: 0 },
-                padding: { top: 0, right: 0, bottom: 0, left: 0 },
-              },
-            },
-            Container: {
-              normal: {
-                width: 300,
-                height: 6,
-                background: { color: '#e8e8e8' },
-                borderRadius: { topLeft: 6, topRight: 6, bottomLeft: 6, bottomRight: 6 },
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-              },
-            },
-            SliderPassedWay: {
-              normal: {
-                background: { color: '#4d63ff' },
-                height: 6,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-              },
-            },
-            SliderButton: {
-              normal: {
-                background: { color: '#4d63ff' },
-                width: 16,
-                height: 16,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: { topLeft: 16, topRight: 16, bottomLeft: 16, bottomRight: 16 },
-              },
-            },
-            SliderTips: {
-              normal: {
-                width: 30,
-                height: 30,
-                border: {
-                  top: { color: '', style: '', width: 0 },
-                  right: { color: '', style: '', width: 0 },
-                  bottom: { color: '', style: '', width: 0 },
-                  left: { color: '', style: '', width: 0 },
-                },
-                borderRadius: { topLeft: 3, topRight: 3, bottomLeft: 3, bottomRight: 3 },
-                background: { color: '#333' },
-                color: '#fff',
-                fontSize: 14,
-                font: { weight: 'normal' },
-              },
-            },
-            SliderMarks: {
-              normal: {
-                first: { color: '#333', font: { weight: 'normal', size: 14 } },
-                nth1: { color: '#999', font: { weight: 'normal', size: 14 } },
-                last: { color: '#999', font: { weight: 'normal', size: 14 } },
-              },
-            },
-          },
+          defaultTheme: { Container: { normal: { width: 300, height: 6 } } },
           theme: {
             SliderContainer: {
               name: '滑块组件外盒',
@@ -13045,81 +15550,7 @@ export default [
           ],
         },
       },
-      defaultTheme: {
-        SliderContainer: {
-          normal: {
-            background: { color: 'transparent' },
-            width: 300,
-            opacity: 1,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 0, topRight: 0, bottomLeft: 0, bottomRight: 0 },
-            margin: { top: 0, right: 0, bottom: 0, left: 0 },
-            padding: { top: 0, right: 0, bottom: 0, left: 0 },
-          },
-        },
-        Container: {
-          normal: {
-            width: 300,
-            height: 6,
-            background: { color: '#e8e8e8' },
-            borderRadius: { topLeft: 6, topRight: 6, bottomLeft: 6, bottomRight: 6 },
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderPassedWay: {
-          normal: {
-            background: { color: '#4d63ff' },
-            height: 6,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderButton: {
-          normal: {
-            background: { color: '#4d63ff' },
-            width: 16,
-            height: 16,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 16, topRight: 16, bottomLeft: 16, bottomRight: 16 },
-          },
-        },
-        SliderTips: {
-          normal: {
-            width: 30,
-            height: 30,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 3, topRight: 3, bottomLeft: 3, bottomRight: 3 },
-            background: { color: '#333' },
-            color: '#fff',
-            fontSize: 14,
-            font: { weight: 'normal' },
-          },
-        },
-      },
+      defaultTheme: { Container: { normal: { width: 300, height: 6 } } },
       childrenWidget: [],
     },
     target: Slider,
@@ -13132,6 +15563,7 @@ export default [
       title: '单个滑块的样式',
       desc: '单个滑块的样式配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         maxValue: { type: 'number', desc: '最大值限制', propsDefaultValue: 30, defaultValue: 30 },
         minValue: { type: 'number', desc: '最小值限制', propsDefaultValue: 0, defaultValue: 0 },
         defaultValue: {
@@ -13239,80 +15671,7 @@ export default [
           ],
         },
       },
-      defaultTheme: {
-        Container: {
-          normal: {
-            width: 300,
-            height: 6,
-            background: { color: '#e8e8e8' },
-            borderRadius: {
-              topLeft: { radius: 6 },
-              topRight: { radius: 6 },
-              bottomLeft: { radius: 6 },
-              bottomRight: { radius: 6 },
-            },
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderPassedWay: {
-          normal: {
-            background: { color: '#4d63ff' },
-            height: 6,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderButton: {
-          normal: {
-            background: { color: '#4d63ff' },
-            width: 16,
-            height: 16,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: {
-              topLeft: { radius: 16 },
-              topRight: { radius: 16 },
-              bottomLeft: { radius: 16 },
-              bottomRight: { radius: 16 },
-            },
-          },
-        },
-        SliderTips: {
-          normal: {
-            width: 30,
-            height: 30,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: {
-              topLeft: { radius: 3 },
-              topRight: { radius: 3 },
-              bottomLeft: { radius: 3 },
-              bottomRight: { radius: 3 },
-            },
-            background: { color: '#333' },
-            color: '#fff',
-            fontSize: 14,
-            font: { weight: 'normal' },
-          },
-        },
-      },
+      defaultTheme: { Container: { normal: { width: 300, height: 6 } } },
       childrenWidget: [],
       aliasName: 'SingleVerticalSlider',
     },
@@ -13326,6 +15685,7 @@ export default [
       title: '双滑块的样式',
       desc: '双滑块的样式配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         maxValue: { type: 'number', desc: '最大值限制', propsDefaultValue: 30, defaultValue: 30 },
         minValue: { type: 'number', desc: '最小值限制', propsDefaultValue: 0, defaultValue: 0 },
         defaultValue: {
@@ -13428,96 +15788,7 @@ export default [
           ],
         },
       },
-      defaultTheme: {
-        SliderContainer: {
-          normal: {
-            background: { color: 'transparent' },
-            width: 300,
-            opacity: 1,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: {
-              topLeft: { radius: 0 },
-              topRight: { radius: 0 },
-              bottomLeft: { radius: 0 },
-              bottomRight: { radius: 0 },
-            },
-            margin: { top: 0, right: 0, bottom: 0, left: 0 },
-            padding: { top: 0, right: 0, bottom: 0, left: 0 },
-          },
-        },
-        Container: {
-          normal: {
-            width: 300,
-            height: 6,
-            background: { color: '#e8e8e8' },
-            borderRadius: {
-              topLeft: { radius: 6 },
-              topRight: { radius: 6 },
-              bottomLeft: { radius: 6 },
-              bottomRight: { radius: 6 },
-            },
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderPassedWay: {
-          normal: {
-            background: { color: '#4d63ff' },
-            height: 6,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderButton: {
-          normal: {
-            background: { color: '#4d63ff' },
-            width: 16,
-            height: 16,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: {
-              topLeft: { radius: 16 },
-              topRight: { radius: 16 },
-              bottomLeft: { radius: 16 },
-              bottomRight: { radius: 16 },
-            },
-          },
-        },
-        SliderTips: {
-          normal: {
-            width: 30,
-            height: 30,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 3, topRight: 3, bottomLeft: 3, bottomRight: 3 },
-            background: { color: '#333' },
-            color: '#fff',
-            fontSize: 14,
-            font: { weight: 'normal' },
-          },
-        },
-      },
+      defaultTheme: { Container: { normal: { width: 300, height: 6 } } },
       childrenWidget: [],
       aliasName: 'DoubleSlider',
     },
@@ -13531,6 +15802,7 @@ export default [
       title: '离散值样式',
       desc: '带有离散值节点的样式配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         maxValue: { type: 'number', desc: '最大值限制', propsDefaultValue: 30, defaultValue: 15 },
         minValue: { type: 'number', desc: '最小值限制', propsDefaultValue: 0, defaultValue: 5 },
         defaultValue: {
@@ -13648,88 +15920,7 @@ export default [
           },
         },
       },
-      defaultTheme: {
-        SliderContainer: {
-          normal: {
-            background: { color: 'transparent' },
-            width: 300,
-            opacity: 1,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 0, topRight: 0, bottomLeft: 0, bottomRight: 0 },
-            margin: { top: 0, right: 0, bottom: 0, left: 0 },
-            padding: { top: 0, right: 0, bottom: 0, left: 0 },
-          },
-        },
-        Container: {
-          normal: {
-            width: 300,
-            height: 6,
-            background: { color: '#e8e8e8' },
-            borderRadius: { topLeft: 6, topRight: 6, bottomLeft: 6, bottomRight: 6 },
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderPassedWay: {
-          normal: {
-            background: { color: '#4d63ff' },
-            height: 6,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-          },
-        },
-        SliderButton: {
-          normal: {
-            background: { color: '#4d63ff' },
-            width: 16,
-            height: 16,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 16, topRight: 16, bottomLeft: 16, bottomRight: 16 },
-          },
-        },
-        SliderTips: {
-          normal: {
-            width: 30,
-            height: 30,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 3, topRight: 3, bottomLeft: 3, bottomRight: 3 },
-            background: { color: '#333' },
-            color: '#fff',
-            fontSize: 14,
-            font: { weight: 'normal' },
-          },
-        },
-        SliderMarks: {
-          normal: {
-            first: { color: '#333', font: { weight: 'normal', size: 14 } },
-            nth1: { color: '#999', font: { weight: 'normal', size: 14 } },
-            last: { color: '#999', font: { weight: 'normal', size: 14 } },
-          },
-        },
-      },
+      defaultTheme: { Container: { normal: { width: 300, height: 6 } } },
       childrenWidget: [],
       aliasName: 'MarksSlider',
     },
@@ -13743,6 +15934,7 @@ export default [
       title: '步骤条',
       desc: '引导用户按照流程完成任务的导航条',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
         data: {
           type: 'object[]',
@@ -13769,28 +15961,28 @@ export default [
         stepType: {
           type: 'StepType',
           desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
-          defaultValue: 'simple',
+          propsDefaultValue: 'simple',
         },
         size: {
           type: 'SizeType',
           desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
-          defaultValue: 'normal',
+          propsDefaultValue: 'default',
         },
         orientation: {
           type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
-          defaultValue: 'horizontal',
+          propsDefaultValue: 'horizontal',
         },
         desAlign: {
           type: 'AlignType',
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
-          defaultValue: 'left',
+          propsDefaultValue: 'left',
         },
-        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
+        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
         StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['normal', 'mini'],
+        SizeType: ['default', 'small'],
         OrientationType: ['horizontal', 'vertical'],
         AlignType: ['center', 'left'],
         StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
@@ -13804,7 +15996,7 @@ export default [
           desc: '垂直步骤条配置',
           props: { orientation: 'vertical' },
           theme: {
-            StepsOutContainer: {
+            Container: {
               name: '步骤条最外层容器',
               desc: '步骤条最外层容器',
               normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -14030,6 +16222,7 @@ export default [
               },
             },
           },
+          defaultTheme: { Container: { normal: { width: 100 } } },
         },
         FlatSteps: {
           sequence: 2,
@@ -14037,7 +16230,7 @@ export default [
           desc: '半扁平步骤条配置',
           props: { stepType: 'flat', orientation: 'horizontal' },
           theme: {
-            StepsOutContainer: {
+            Container: {
               name: '步骤条最外层容器',
               desc: '步骤条最外层容器',
               normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -14270,7 +16463,7 @@ export default [
           desc: '图标步骤条步骤条配置',
           props: { stepType: 'icon', orientation: 'horizontal' },
           theme: {
-            StepsOutContainer: {
+            Container: {
               name: '步骤条最外层容器',
               desc: '步骤条最外层容器',
               normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -14498,7 +16691,7 @@ export default [
           desc: '点状步骤条配置',
           props: { stepType: 'dot', orientation: 'horizontal' },
           theme: {
-            StepsOutContainer: {
+            Container: {
               name: '步骤条最外层容器',
               desc: '步骤条最外层容器',
               normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -14717,7 +16910,7 @@ export default [
         },
       },
       theme: {
-        StepsOutContainer: {
+        Container: {
           name: '步骤条最外层容器',
           desc: '步骤条最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -14943,6 +17136,7 @@ export default [
           },
         },
       },
+      defaultTheme: { Container: { normal: { width: 800 } } },
     },
     target: Steps,
     screenshot:
@@ -14954,6 +17148,7 @@ export default [
       title: '垂直步骤条',
       desc: '垂直步骤条配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
         data: {
           type: 'object[]',
@@ -14980,28 +17175,29 @@ export default [
         stepType: {
           type: 'StepType',
           desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
-          defaultValue: 'simple',
+          propsDefaultValue: 'simple',
         },
         size: {
           type: 'SizeType',
           desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
-          defaultValue: 'normal',
+          propsDefaultValue: 'default',
         },
         orientation: {
           type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
+          propsDefaultValue: 'horizontal',
           defaultValue: 'vertical',
         },
         desAlign: {
           type: 'AlignType',
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
-          defaultValue: 'left',
+          propsDefaultValue: 'left',
         },
-        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
+        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
         StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['normal', 'mini'],
+        SizeType: ['default', 'small'],
         OrientationType: ['horizontal', 'vertical'],
         AlignType: ['center', 'left'],
         StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
@@ -15009,7 +17205,7 @@ export default [
       childrenWidget: [],
       category: ['导航'],
       theme: {
-        StepsOutContainer: {
+        Container: {
           name: '步骤条最外层容器',
           desc: '步骤条最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -15235,6 +17431,7 @@ export default [
           },
         },
       },
+      defaultTheme: { Container: { normal: { width: 100 } } },
       aliasName: 'VSteps',
     },
     target: Steps,
@@ -15247,6 +17444,7 @@ export default [
       title: '半扁平步骤条',
       desc: '半扁平步骤条配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
         data: {
           type: 'object[]',
@@ -15273,28 +17471,30 @@ export default [
         stepType: {
           type: 'StepType',
           desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
+          propsDefaultValue: 'simple',
           defaultValue: 'flat',
         },
         size: {
           type: 'SizeType',
           desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
-          defaultValue: 'normal',
+          propsDefaultValue: 'default',
         },
         orientation: {
           type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
+          propsDefaultValue: 'horizontal',
           defaultValue: 'horizontal',
         },
         desAlign: {
           type: 'AlignType',
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
-          defaultValue: 'left',
+          propsDefaultValue: 'left',
         },
-        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
+        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
         StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['normal', 'mini'],
+        SizeType: ['default', 'small'],
         OrientationType: ['horizontal', 'vertical'],
         AlignType: ['center', 'left'],
         StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
@@ -15302,7 +17502,7 @@ export default [
       childrenWidget: [],
       category: ['导航'],
       theme: {
-        StepsOutContainer: {
+        Container: {
           name: '步骤条最外层容器',
           desc: '步骤条最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -15528,6 +17728,7 @@ export default [
           },
         },
       },
+      defaultTheme: { Container: { normal: { width: 800 } } },
       aliasName: 'FlatSteps',
     },
     target: Steps,
@@ -15540,6 +17741,7 @@ export default [
       title: '图标步骤条',
       desc: '图标步骤条步骤条配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
         data: {
           type: 'object[]',
@@ -15566,28 +17768,30 @@ export default [
         stepType: {
           type: 'StepType',
           desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
+          propsDefaultValue: 'simple',
           defaultValue: 'icon',
         },
         size: {
           type: 'SizeType',
           desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
-          defaultValue: 'normal',
+          propsDefaultValue: 'default',
         },
         orientation: {
           type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
+          propsDefaultValue: 'horizontal',
           defaultValue: 'horizontal',
         },
         desAlign: {
           type: 'AlignType',
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
-          defaultValue: 'left',
+          propsDefaultValue: 'left',
         },
-        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
+        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
         StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['normal', 'mini'],
+        SizeType: ['default', 'small'],
         OrientationType: ['horizontal', 'vertical'],
         AlignType: ['center', 'left'],
         StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
@@ -15595,7 +17799,7 @@ export default [
       childrenWidget: [],
       category: ['导航'],
       theme: {
-        StepsOutContainer: {
+        Container: {
           name: '步骤条最外层容器',
           desc: '步骤条最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -15816,6 +18020,7 @@ export default [
           },
         },
       },
+      defaultTheme: { Container: { normal: { width: 800 } } },
       aliasName: 'IconSteps',
     },
     target: Steps,
@@ -15828,6 +18033,7 @@ export default [
       title: '点状步骤条',
       desc: '点状步骤条配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
         data: {
           type: 'object[]',
@@ -15854,28 +18060,30 @@ export default [
         stepType: {
           type: 'StepType',
           desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
+          propsDefaultValue: 'simple',
           defaultValue: 'dot',
         },
         size: {
           type: 'SizeType',
           desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
-          defaultValue: 'normal',
+          propsDefaultValue: 'default',
         },
         orientation: {
           type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
+          propsDefaultValue: 'horizontal',
           defaultValue: 'horizontal',
         },
         desAlign: {
           type: 'AlignType',
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
-          defaultValue: 'left',
+          propsDefaultValue: 'left',
         },
-        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
+        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
         StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['normal', 'mini'],
+        SizeType: ['default', 'small'],
         OrientationType: ['horizontal', 'vertical'],
         AlignType: ['center', 'left'],
         StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
@@ -15883,7 +18091,7 @@ export default [
       childrenWidget: [],
       category: ['导航'],
       theme: {
-        StepsOutContainer: {
+        Container: {
           name: '步骤条最外层容器',
           desc: '步骤条最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
@@ -16099,6 +18307,7 @@ export default [
           },
         },
       },
+      defaultTheme: { Container: { normal: { width: 800 } } },
       aliasName: 'DotSteps',
     },
     target: Steps,
@@ -16111,6 +18320,7 @@ export default [
       title: '开关',
       desc: '开关选择器',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'boolean', desc: '默认开关状态', propsDefaultValue: false },
         value: { type: 'boolean', desc: '开关状态', propsDefaultValue: false },
         data: {
@@ -16225,79 +18435,7 @@ export default [
           ],
         },
       },
-      defaultTheme: {
-        Switch_SwitchOpen: {
-          normal: {
-            width: 38,
-            height: 20,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 20, topRight: 20, bottomLeft: 20, bottomRight: 20 },
-            boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
-            fontSize: 12,
-            color: 'rgba(255, 255, 255, 0.8)',
-            font: { fontWeight: 'normal' },
-            background: { color: '#4d63ff' },
-          },
-        },
-        Switch_SwitchClosed: {
-          normal: {
-            width: 38,
-            height: 20,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 20, topRight: 20, bottomLeft: 20, bottomRight: 20 },
-            boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
-            fontSize: 12,
-            color: 'rgba(255, 255, 255, 0.8)',
-            font: { fontWeight: 'normal' },
-            background: { color: '#ccc' },
-          },
-        },
-        SwitchButton: {
-          normal: {
-            width: 14,
-            height: 14,
-            background: { color: '#fff' },
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 7, topRight: 7, bottomLeft: 7, bottomRight: 7 },
-            boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
-          },
-        },
-        Container: {
-          normal: {
-            width: 38,
-            height: 20,
-            border: {
-              top: { color: '', style: '', width: 0 },
-              right: { color: '', style: '', width: 0 },
-              bottom: { color: '', style: '', width: 0 },
-              left: { color: '', style: '', width: 0 },
-            },
-            borderRadius: { topLeft: 0, topRight: 0, bottomLeft: 0, bottomRight: 0 },
-            boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
-            fontSize: 12,
-            color: 'rgba(255, 255, 255, 0.8)',
-            font: { fontWeight: 'normal' },
-            background: { color: 'transparent' },
-            margin: { top: 0, right: 0, bottom: 0, left: 0 },
-            padding: { top: 0, right: 0, bottom: 0, left: 0 },
-          },
-        },
-      },
+      defaultTheme: { Container: { normal: { width: 38 } } },
       childrenWidget: [],
     },
     target: Switch,
@@ -16310,6 +18448,7 @@ export default [
       title: '表格',
       desc: 'Table  表格。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         columns: {
           type: 'Object[]',
           meta: [
@@ -16366,6 +18505,11 @@ export default [
         },
         showHeader: { type: 'boolean', desc: '是否展示标头', defaultValue: true },
         title: { type: 'Function(currentPageData)', desc: '表格标题' },
+        size: {
+          type: 'SizeType',
+          desc: '设置表格单元格大小，可选 default、large、small，默认为 default;',
+          propsDefaultValue: 'default',
+        },
         onHeaderRow: { type: 'Function(column, index)', desc: '设置头部行属性' },
         onRow: { type: 'Function(record, index)', desc: '设置行属性' },
         tableStyle: { type: 'tableStyleType', desc: '表格标题', defaultValue: 'bordered' },
@@ -16383,7 +18527,10 @@ export default [
           ],
         },
       },
-      type: { tableStyleType: ['zebraStripe', 'linear', 'bordered'] },
+      type: {
+        tableStyleType: ['zebraStripe', 'linear', 'bordered'],
+        SizeType: ['default', 'large', 'small'],
+      },
       childrenWidget: [],
       category: ['数据展示'],
       theme: {
@@ -16404,8 +18551,9 @@ export default [
       title: '标签页',
       desc: '选项卡切换组件',
       props: {
-        activityValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
-        defaultActivityValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        activeValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
+        defaultActiveValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
         tabType: {
           type: 'TabType',
           desc: '可配置三种风格的标签页.可选 线性,卡片,窗口风格',
@@ -16421,13 +18569,27 @@ export default [
           desc: '配置标签页需要配置的数据',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'string' },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
+            { key: 'value', title: '唯一标识', type: 'string' },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
+            { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
+          ],
+          defaultValue: [
+            { title: 'Tab1', value: 'Tab1', content: 'content of Tab1' },
+            { title: 'Tab2', value: 'Tab2', content: 'content of Tab2' },
+          ],
+        },
+        defaultData: {
+          type: 'object[]',
+          desc: '默认配置标签页需要配置的数据,若有data,以data优先',
+          meta: [
+            { key: 'title', title: '页签', type: 'string' },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
           ],
         },
-        defaultData: { type: 'object[]', desc: '默认配置标签页需要配置的数据,若有data,以data优先' },
         forceRender: { type: 'boolean', desc: '切换时是否重新渲染面板', propsDefaultValue: false },
         pagedType: {
           type: 'PagedType',
@@ -16530,7 +18692,14 @@ export default [
             Container: {
               name: '标签页整体配置',
               desc: '标签页整体样式配置',
-              normal: [['width'], ['height']],
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+              ],
             },
             ContentBlock: {
               name: '内容区域',
@@ -16649,6 +18818,7 @@ export default [
               },
             },
           },
+          defaultTheme: { Container: { normal: { height: 400 } } },
         },
         WindowTabs: {
           sequence: 1,
@@ -16659,7 +18829,14 @@ export default [
             Container: {
               name: '标签页整体配置',
               desc: '标签页整体样式配置',
-              normal: [['width'], ['height']],
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+              ],
             },
             WindowContainer: {
               name: '窗口背景区域',
@@ -16773,13 +18950,21 @@ export default [
               },
             },
           },
+          defaultTheme: { Container: { normal: { height: 400 } } },
         },
       },
       theme: {
         Container: {
           name: '标签页整体配置',
           desc: '标签页整体样式配置',
-          normal: [['width'], ['height']],
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+          ],
         },
         ContentBlock: {
           name: '内容区域',
@@ -16806,6 +18991,13 @@ export default [
           name: '默认线',
           desc: '默认线样式配置',
           normal: [['background'], ['width']],
+        },
+        AddButton: {
+          name: '新增按钮',
+          desc: '新增按钮样式配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
         },
         ArrowIcon: {
           name: '翻页按钮',
@@ -16897,11 +19089,12 @@ export default [
             SelectLine: {
               name: '选中页签底部标识线',
               desc: '选中页签底部标识线样式配置',
-              normal: [['height'], ['background']],
+              normal: [['width'], ['height'], ['background']],
             },
           },
         },
       },
+      defaultTheme: { Container: { normal: { height: 400 } } },
     },
     target: Tabs,
     screenshot:
@@ -16913,8 +19106,9 @@ export default [
       title: '卡片风格标签页',
       desc: '卡片风格标签页',
       props: {
-        activityValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
-        defaultActivityValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        activeValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
+        defaultActiveValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
         tabType: {
           type: 'TabType',
           desc: '可配置三种风格的标签页.可选 线性,卡片,窗口风格',
@@ -16931,13 +19125,27 @@ export default [
           desc: '配置标签页需要配置的数据',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'string' },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
+            { key: 'value', title: '唯一标识', type: 'string' },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
+            { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
+          ],
+          defaultValue: [
+            { title: 'Tab1', value: 'Tab1', content: 'content of Tab1' },
+            { title: 'Tab2', value: 'Tab2', content: 'content of Tab2' },
+          ],
+        },
+        defaultData: {
+          type: 'object[]',
+          desc: '默认配置标签页需要配置的数据,若有data,以data优先',
+          meta: [
+            { key: 'title', title: '页签', type: 'string' },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
           ],
         },
-        defaultData: { type: 'object[]', desc: '默认配置标签页需要配置的数据,若有data,以data优先' },
         forceRender: { type: 'boolean', desc: '切换时是否重新渲染面板', propsDefaultValue: false },
         pagedType: {
           type: 'PagedType',
@@ -17034,7 +19242,14 @@ export default [
         Container: {
           name: '标签页整体配置',
           desc: '标签页整体样式配置',
-          normal: [['width'], ['height']],
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+          ],
         },
         ContentBlock: {
           name: '内容区域',
@@ -17153,6 +19368,7 @@ export default [
           },
         },
       },
+      defaultTheme: { Container: { normal: { height: 400 } } },
       aliasName: 'CardTabs',
     },
     target: Tabs,
@@ -17165,8 +19381,9 @@ export default [
       title: '窗口风格标签页',
       desc: '窗口风格标签页',
       props: {
-        activityValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
-        defaultActivityValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        activeValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
+        defaultActiveValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
         tabType: {
           type: 'TabType',
           desc: '可配置三种风格的标签页.可选 线性,卡片,窗口风格',
@@ -17183,13 +19400,27 @@ export default [
           desc: '配置标签页需要配置的数据',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            { key: 'content', title: '内容', type: 'string' },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
+            { key: 'value', title: '唯一标识', type: 'string' },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
+            { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
+          ],
+          defaultValue: [
+            { title: 'Tab1', value: 'Tab1', content: 'content of Tab1' },
+            { title: 'Tab2', value: 'Tab2', content: 'content of Tab2' },
+          ],
+        },
+        defaultData: {
+          type: 'object[]',
+          desc: '默认配置标签页需要配置的数据,若有data,以data优先',
+          meta: [
+            { key: 'title', title: '页签', type: 'string' },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
             { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
           ],
         },
-        defaultData: { type: 'object[]', desc: '默认配置标签页需要配置的数据,若有data,以data优先' },
         forceRender: { type: 'boolean', desc: '切换时是否重新渲染面板', propsDefaultValue: false },
         pagedType: {
           type: 'PagedType',
@@ -17286,7 +19517,14 @@ export default [
         Container: {
           name: '标签页整体配置',
           desc: '标签页整体样式配置',
-          normal: [['width'], ['height']],
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+          ],
         },
         WindowContainer: {
           name: '窗口背景区域',
@@ -17400,6 +19638,7 @@ export default [
           },
         },
       },
+      defaultTheme: { Container: { normal: { height: 400 } } },
       aliasName: 'WindowTabs',
     },
     target: Tabs,
@@ -17412,14 +19651,14 @@ export default [
       title: '标签',
       desc: '标记和分类的标签',
       props: {
-        closable: { type: 'boolean', desc: '标签是否可关闭', defaultValue: true },
-        text: { type: 'string', desc: '指定标签的文本值', defaultValue: 'Tag' },
+        closable: { type: 'boolean', desc: '标签是否可关闭', propsDefaultValue: false },
+        text: { type: 'string', desc: '指定标签的文本值', propsDefaultValue: 'Tag' },
         shape: {
           type: 'ShapeType',
           desc: '标签的圆角, basic为4px圆角,round为圆角标签',
-          defaultValue: 'basic',
+          propsDefaultValue: 'basic',
         },
-        type: { type: 'StyleType', desc: '标签的主题样式', defaultValue: 'customs' },
+        type: { type: 'StyleType', desc: '标签的主题样式', propsDefaultValue: 'customs' },
       },
       events: {
         onClick: {
@@ -17476,16 +19715,14 @@ export default [
                 ['font'],
               ],
               active: [],
-              clicked: [],
               disabled: [],
             },
             CloseButton: {
               name: '关闭按钮',
-              desc: '隐藏按钮的样式配置',
+              desc: '关闭按钮的样式配置',
               normal: [['font'], ['color'], ['margin']],
               hover: [['font'], ['color']],
               active: [],
-              clicked: [],
               disabled: [],
             },
           },
@@ -17530,7 +19767,6 @@ export default [
                 ['opacity'],
                 ['font'],
               ],
-              clicked: [],
               disabled: [],
             },
             CheckedTagWrap: {
@@ -17567,7 +19803,6 @@ export default [
                 ['font'],
                 ['borderRadius'],
               ],
-              clicked: [],
               disabled: [],
             },
           },
@@ -17600,7 +19835,14 @@ export default [
             ['font'],
           ],
           active: [],
-          clicked: [],
+          disabled: [],
+        },
+        CloseButton: {
+          name: '关闭按钮',
+          desc: '关闭按钮的样式配置',
+          normal: [['font'], ['color'], ['margin']],
+          hover: [['font'], ['color']],
+          active: [],
           disabled: [],
         },
       },
@@ -17616,14 +19858,19 @@ export default [
       title: '可关闭标签',
       desc: '点击关闭按钮可隐藏标签',
       props: {
-        closable: { type: 'boolean', desc: '标签是否可关闭', defaultValue: true },
-        text: { type: 'string', desc: '指定标签的文本值', defaultValue: 'Tag' },
+        closable: {
+          type: 'boolean',
+          desc: '标签是否可关闭',
+          propsDefaultValue: false,
+          defaultValue: true,
+        },
+        text: { type: 'string', desc: '指定标签的文本值', propsDefaultValue: 'Tag' },
         shape: {
           type: 'ShapeType',
           desc: '标签的圆角, basic为4px圆角,round为圆角标签',
-          defaultValue: 'basic',
+          propsDefaultValue: 'basic',
         },
-        type: { type: 'StyleType', desc: '标签的主题样式', defaultValue: 'customs' },
+        type: { type: 'StyleType', desc: '标签的主题样式', propsDefaultValue: 'customs' },
       },
       events: {
         onClick: {
@@ -17674,16 +19921,14 @@ export default [
             ['font'],
           ],
           active: [],
-          clicked: [],
           disabled: [],
         },
         CloseButton: {
           name: '关闭按钮',
-          desc: '隐藏按钮的样式配置',
+          desc: '关闭按钮的样式配置',
           normal: [['font'], ['color'], ['margin']],
           hover: [['font'], ['color']],
           active: [],
-          clicked: [],
           disabled: [],
         },
       },
@@ -17700,14 +19945,19 @@ export default [
       title: '可选择标签',
       desc: '点击标签可配置选中样式',
       props: {
-        closable: { type: 'boolean', desc: '标签是否可关闭', defaultValue: true },
-        text: { type: 'string', desc: '指定标签的文本值', defaultValue: 'Tag' },
+        closable: { type: 'boolean', desc: '标签是否可关闭', propsDefaultValue: false },
+        text: { type: 'string', desc: '指定标签的文本值', propsDefaultValue: 'Tag' },
         shape: {
           type: 'ShapeType',
           desc: '标签的圆角, basic为4px圆角,round为圆角标签',
-          defaultValue: 'basic',
+          propsDefaultValue: 'basic',
         },
-        type: { type: 'StyleType', desc: '标签的主题样式', defaultValue: 'optional' },
+        type: {
+          type: 'StyleType',
+          desc: '标签的主题样式',
+          propsDefaultValue: 'customs',
+          defaultValue: 'optional',
+        },
       },
       events: {
         onClick: {
@@ -17766,7 +20016,6 @@ export default [
             ['opacity'],
             ['font'],
           ],
-          clicked: [],
           disabled: [],
         },
         CheckedTagWrap: {
@@ -17803,7 +20052,6 @@ export default [
             ['font'],
             ['borderRadius'],
           ],
-          clicked: [],
           disabled: [],
         },
       },
@@ -17820,6 +20068,7 @@ export default [
       title: '时间轴',
       desc: '垂直展示的时间流信息',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '时间轴需要包含的子组件' },
         data: {
           type: 'object[]',
@@ -17846,11 +20095,11 @@ export default [
         pendingDot: { type: 'icon', desc: '当最后一个是幽灵节点时,指定其图标资源' },
         mode: {
           type: 'TimeLineMode',
-          desc: '时间轴 描述信息的显示位置 ,可选择右侧或者交错显示.',
+          desc: '时间轴 描述信息的显示位置 ,可选择右侧,左侧，或者交错显示.',
           defaultValue: 'right',
         },
       },
-      type: { TimeLineMode: ['right', 'alternate'] },
+      type: { TimeLineMode: ['left', 'right', 'alternate'] },
       childrenWidget: [],
       category: ['数据展示'],
       designInfo: {
@@ -17865,7 +20114,7 @@ export default [
               desc: '时间轴最外层容器',
               normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
             },
-            TimeLine: {
+            TimeLineItem: {
               name: '单个时间节点配置',
               theme: {
                 TimeLineIcon: {
@@ -17884,6 +20133,21 @@ export default [
                   name: '时间节点连接线',
                   desc: '时间节点连接线的配置',
                   normal: [['width'], ['height'], ['background']],
+                },
+                TimeLineExplainDot: {
+                  name: '隐藏的解释时间节点',
+                  desc: '隐藏的解释时间节点配置',
+                  normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+                },
+                TimeLineItemTip: {
+                  name: '隐藏信息弹框',
+                  theme: {
+                    Container: {
+                      name: '隐藏的解释时间节点显示容器',
+                      desc: '隐藏的解释时间节点显示容器配置',
+                      normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+                    },
+                  },
                 },
               },
             },
@@ -17922,32 +20186,6 @@ export default [
                   desc: '隐藏的解释时间节点显示容器配置',
                   normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
                 },
-                TooltipTitle: {
-                  name: '隐藏的解释时间节点标题',
-                  desc: '隐藏的解释时间节点标题配置',
-                  normal: [
-                    ['fontSize'],
-                    ['font'],
-                    ['color'],
-                    ['width'],
-                    ['height'],
-                    ['padding'],
-                    ['margin'],
-                  ],
-                },
-                TooltipDescription: {
-                  name: '隐藏的解释时间节点描述',
-                  desc: '隐藏的解释时间节点描述配置',
-                  normal: [
-                    ['fontSize'],
-                    ['font'],
-                    ['color'],
-                    ['width'],
-                    ['height'],
-                    ['padding'],
-                    ['margin'],
-                  ],
-                },
               },
             },
             TimeLineItemLine: {
@@ -17976,6 +20214,7 @@ export default [
       title: '幽灵节点时间轴',
       desc: '幽灵节点时间轴配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '时间轴需要包含的子组件' },
         data: {
           type: 'object[]',
@@ -18006,11 +20245,11 @@ export default [
         },
         mode: {
           type: 'TimeLineMode',
-          desc: '时间轴 描述信息的显示位置 ,可选择右侧或者交错显示.',
+          desc: '时间轴 描述信息的显示位置 ,可选择右侧,左侧，或者交错显示.',
           defaultValue: 'right',
         },
       },
-      type: { TimeLineMode: ['right', 'alternate'] },
+      type: { TimeLineMode: ['left', 'right', 'alternate'] },
       childrenWidget: [],
       category: ['数据展示'],
       theme: {
@@ -18019,7 +20258,7 @@ export default [
           desc: '时间轴最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
         },
-        TimeLine: {
+        TimeLineItem: {
           name: '单个时间节点配置',
           theme: {
             TimeLineIcon: {
@@ -18039,6 +20278,21 @@ export default [
               desc: '时间节点连接线的配置',
               normal: [['width'], ['height'], ['background']],
             },
+            TimeLineExplainDot: {
+              name: '隐藏的解释时间节点',
+              desc: '隐藏的解释时间节点配置',
+              normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+            },
+            TimeLineItemTip: {
+              name: '隐藏信息弹框',
+              theme: {
+                Container: {
+                  name: '隐藏的解释时间节点显示容器',
+                  desc: '隐藏的解释时间节点显示容器配置',
+                  normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+                },
+              },
+            },
           },
         },
       },
@@ -18054,6 +20308,7 @@ export default [
       title: '时间选择器',
       desc: '用于时间选择,',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '时间默认显示值' },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
         value: { type: 'string', desc: '时间显示值' },
@@ -18065,6 +20320,16 @@ export default [
         placeholder: { type: 'string', desc: 'input输入提示信息' },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', propsDefaultValue: false },
         readOnly: { type: 'boolean', desc: '只读input', propsDefaultValue: false },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
+        size: {
+          type: 'InputSize',
+          desc: '可配置三种尺寸大小的input',
+          propsDefaultValue: 'default',
+        },
+        alwaysOpen: { type: 'boolean', desc: '控制面板是否始终展开', propsDefaultValue: false },
+        liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -18074,8 +20339,125 @@ export default [
         onFocus: { desc: '输入框获取焦点', args: [] },
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      type: {
+        InputSize: ['small', 'default', 'large'],
+        ValidateType: ['top', 'bottom', 'inner'],
+        ValidateStatus: ['default', 'error'],
+        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
+      },
       category: ['数据录入'],
+      theme: {
+        Container: {
+          name: '文本框',
+          desc: '文本框配置',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['fontSize'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['color'],
+            ['font'],
+          ],
+          hover: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
+          active: [],
+          disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
+        },
+        Placeholder: {
+          name: '文本框提示信息',
+          desc: '文本框提示信息配置',
+          normal: [['color'], ['fontSize'], ['font']],
+        },
+        InputPrefix: {
+          name: '前缀图标',
+          desc: '前缀图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        InputSuffix: {
+          name: '后缀图标',
+          desc: '后缀图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        ClearButton: {
+          name: '清除图标',
+          desc: '清除图标配置',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
+        FacePanelContain: {
+          name: '日期面板',
+          desc: '日期面板配置',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius'],
+          ],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的输入框',
+          desc: '配置校验失败的输入框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
+        },
+        ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
+        GroupDate: {
+          name: '分类日期',
+          desc: '分类日期配置/年/月/周',
+          normal: [['color'], ['font']],
+          hover: [['color'], ['font']],
+          active: [['color'], ['font'], ['background'], ['borderRadius']],
+        },
+        TimePanelHead: {
+          name: '时间板头部',
+          desc: '时间板头部配置',
+          normal: [['color'], ['font']],
+        },
+        TimePanel: {
+          name: '时间内容区',
+          desc: '时间内容配置',
+          normal: [['color'], ['background']],
+        },
+        timePanelListTheme: { name: '单列', desc: '单列时间配置', normal: [['border', 'right']] },
+        SelectTimeOption: {
+          name: '选中时间',
+          desc: '选中时间配置',
+          normal: [['color'], ['background']],
+        },
+      },
       childrenWidget: [],
     },
     target: TimePicker,
@@ -18084,10 +20466,123 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Tooltip',
+      title: '文字提示',
+      desc: '简单的文字气泡提示框',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        size: {
+          type: 'ToolTipSize',
+          desc: '可配置三种尺寸大小的气泡提示框',
+          defaultValue: 'default',
+        },
+        placement: { type: 'DirectionType', desc: '气泡提示框显示的位置,十二个方向' },
+        visible: { type: 'boolean', desc: '是否显示出来', defaultValue: 'false' },
+        defaultVisible: { type: 'boolean', desc: '默认是否显示出来', defaultValue: 'false' },
+        popArrowType: {
+          type: 'PopArrowType',
+          desc: '可配置两种风格的箭头. 尖角,圆角',
+          defaultValue: 'sharp',
+        },
+        action: {
+          type: 'ActionType',
+          desc: '触发提示的动作，可配置 click,hover,focus',
+          defaultValue: 'click',
+        },
+        children: { type: 'React.Node', desc: '气泡提示框需要包含的子组件' },
+        title: {
+          type: 'React.Node',
+          desc: '配置气泡提示框需要显示的标题',
+          defaultValue: 'prompt text',
+        },
+        description: { type: 'React.Node', desc: '配置气泡提示框需要显示的描述' },
+        content: { type: 'React.Node', desc: '配置气泡提示框需要显示的自定义内容' },
+      },
+      events: {
+        onVisibleChange: {
+          desc: '气泡提示框改变时触发',
+          args: [{ name: 'event', desc: '气泡提示框显示改变的DOM事件', type: 'Object' }],
+        },
+      },
+      type: {
+        ActionType: ['click', 'hover', 'focus'],
+        ToolTipSize: ['small', 'default', 'large'],
+        PopArrowType: ['sharp', 'round'],
+        DirectionType: [
+          'left',
+          'leftTop',
+          'leftBottom',
+          'right',
+          'rightTop',
+          'rightBottom',
+          'topLeft',
+          'top',
+          'topRight',
+          'bottom',
+          'bottomRight',
+          'bottomLeft',
+        ],
+      },
+      category: ['数据展示'],
+      theme: {
+        Container: {
+          name: '文字提示框容器',
+          desc: '文字提示框容器部分',
+          normal: [
+            ['background'],
+            ['color'],
+            ['padding'],
+            ['font'],
+            ['fontSize'],
+            ['width'],
+            ['height'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+          ],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+        TooltipTitle: {
+          name: '标题部分',
+          desc: '标题部分',
+          normal: [['fontSize'], ['font'], ['color']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+        TooltipDescription: {
+          name: '描述信息部分',
+          desc: '描述信息部分',
+          normal: [['fontSize'], ['font'], ['color']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+        ChildrenContainer: {
+          name: '包裹子组件的容器',
+          desc: '包裹子组件的容器',
+          normal: [['width']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+      },
+      childrenWidget: [],
+      hideInTollPanel: true,
+    },
+    target: Tooltip,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABICAYAAAAJZ/BjAAAAAXNSR0IArs4c6QAAAy1JREFUeAHtm7GLGkEYxW93g0qQEMhB0GAvaVKo2F6ddClTnFXUNCFNEsh/ENKEVGpnivsPEkhnEUHxJKSzSXGFykGOhIOAFmq+zxhZQWWSc/Yh+xYWZmdm58383n6jrjPOgRz5fP72ZDJ5OpvNMo7j3NI8HnYICOMLYdz1PO9du90+dxT+dDo9kYIbdiTZ6joCYsKl67qPvEQi8Uoq3F1XiXlWCUTloT90ddqxKsPGNxJQ9i7n/I18rBcoe9e6CgW2EqABW/HYL6QB9hlvVbi2tdRX2Ol0sr7LjclcLneqhbbrb+zAnhUwAsCG0QAaACYAlmcE0AAwAbA8I4AGgAmA5RkBNABMACzPCKABYAJgeUYADQATAMs72Wy2A+5DqOU5BYHtpwE0AEwALK/LUi7AfQitvLLXZSnd0BIAD1zZu7pGURKX4L6ETl6ZK3uv3+//SqVSnyQcDuW8KQXXQ0cjwAHrtCOMPwv8F/PFuVfRlhUQRWnw8Zo2vsXj8XKj0fi5poxZPgKeL/3PycFg0E0mkxO5Mee7+UxW/T5pNps/fHlMbiBwJQO0TTHhi5gwlmRezn4kEim3Wq3vWsYjQAIyHT3MZDKJACUpRQIksPcEHB1BvV6/Mx6P38g3miO55DSiUOwdQ/ka2ohGo88LhULfUfij0ehUMt+KAe9LpdLQnjZbrlarCWF9LKyfxWKxrFOr1U4Ey9disfiaeIIjINxfito9fRl3pE9+cNJUUgLKXNkfSEjMiARDQNnzDxkM+6UqDViiwCRoAIb7UtXYgEql8kHP5Z1M7ISA8SY9+cS+vxNFNrJCwDgCVu7ixc4I0ICdofy/hoynINPme72e0e+KdDo9fw9lu75pv1H1GAEo8gtdGkADwATA8owAGgAmAJZnBNAAMAGwPCOABoAJgOUZATQATAAszwigAWACYPmdvw39+5bTdFy265v2A1WPUxCK/EKXBoANMJ6CZD3jR+mr0Z8t4DHtlbyxAeVy+cFejWxPOsspCGyUGjDUJdPgfoROfsF8qDvlG7pePXQEwANW5nP23KARrBP65Ct8Wej2Z4OGynOLUqAmrGxR+g1+2+iAljtZbQAAAABJRU5ErkJggg==',
+  },
+  {
+    meta: {
       widgetName: 'Transfer',
       title: '穿梭框',
       desc: '穿梭框。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: {
           type: 'Object[]',
           desc: '左右两个面板数据源',
@@ -18130,6 +20625,7 @@ export default [
           desc: '指定 Transfer 面板选项 value 字段值',
           defaultValue: 'value',
         },
+        size: { type: 'SizeType', desc: '指定 Transfer 的尺寸', defaultValue: 'default' },
       },
       event: {
         onSelectChange: {
@@ -18164,6 +20660,7 @@ export default [
         },
       },
       type: {
+        SizeType: ['default', 'small', 'large'],
         TransferType: ['panel', 'tree'],
         DirectionType: ['left', 'right'],
         TransferStyle: {
@@ -18237,7 +20734,7 @@ export default [
             TransferHeaderWrap: {
               name: '穿梭框面板头部',
               desc: '为穿梭框配置左右面板头部样式',
-              normal: [['background'], ['border']],
+              normal: [['background'], [['border'], ['bottom']]],
             },
             TransferPanelHeaderCheckbox: {
               name: '穿梭框面板头部Checkbox',
@@ -18344,7 +20841,6 @@ export default [
                   normal: [
                     ['width'],
                     ['height'],
-                    ['boxShadow'],
                     ['background'],
                     ['opacity'],
                     ['border'],
@@ -18352,7 +20848,7 @@ export default [
                     ['margin'],
                     ['padding'],
                   ],
-                  hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
+                  hover: [['background'], ['opacity'], ['border'], ['borderRadius']],
                   clicked: [],
                   disabled: [],
                 },
@@ -18557,7 +21053,7 @@ export default [
         TransferHeaderWrap: {
           name: '穿梭框面板头部',
           desc: '为穿梭框配置左右面板头部样式',
-          normal: [['background'], ['border']],
+          normal: [['background'], [['border'], ['bottom']]],
         },
         TransferPanelHeaderCheckbox: {
           name: '穿梭框面板头部Checkbox',
@@ -18624,14 +21120,12 @@ export default [
           desc: '为穿梭框配置左右面板搜索框样式',
           theme: {
             Container: {
-              name: '输入框外部容器',
+              name: '输入框',
               desc: '输入框外部容器',
-              normal: [['width'], ['height'], ['margin']],
-            },
-            Input: {
-              name: '输入框主体',
-              desc: '输入框主体结构',
               normal: [
+                ['width'],
+                ['height'],
+                ['margin'],
                 ['fontSize'],
                 ['font'],
                 ['color'],
@@ -18774,6 +21268,7 @@ export default [
       title: '树形穿梭框',
       desc: '树形穿梭框，展示树形数据',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: {
           type: 'Object[]',
           desc: '左右两个面板数据源',
@@ -18829,6 +21324,7 @@ export default [
           desc: '指定 Transfer 面板选项 value 字段值',
           defaultValue: 'value',
         },
+        size: { type: 'SizeType', desc: '指定 Transfer 的尺寸', defaultValue: 'default' },
       },
       event: {
         onSelectChange: {
@@ -18863,6 +21359,7 @@ export default [
         },
       },
       type: {
+        SizeType: ['default', 'small', 'large'],
         TransferType: ['panel', 'tree'],
         DirectionType: ['left', 'right'],
         TransferStyle: {
@@ -18903,7 +21400,7 @@ export default [
         TransferHeaderWrap: {
           name: '穿梭框面板头部',
           desc: '为穿梭框配置左右面板头部样式',
-          normal: [['background'], ['border']],
+          normal: [['background'], [['border'], ['bottom']]],
         },
         TransferPanelHeaderCheckbox: {
           name: '穿梭框面板头部Checkbox',
@@ -19010,7 +21507,6 @@ export default [
               normal: [
                 ['width'],
                 ['height'],
-                ['boxShadow'],
                 ['background'],
                 ['opacity'],
                 ['border'],
@@ -19018,7 +21514,7 @@ export default [
                 ['margin'],
                 ['padding'],
               ],
-              hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
+              hover: [['background'], ['opacity'], ['border'], ['borderRadius']],
               clicked: [],
               disabled: [],
             },
@@ -19190,14 +21686,25 @@ export default [
       title: '树形控件',
       desc: '清晰地展示层级结构的信息,可展开或折叠。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
         expandAll: { type: 'boolean', desc: '是否展开所有子元素', defaultValue: true },
         onlySelectLeaf: { type: 'boolean', desc: '是否只能选择根节点选项', defaultValue: false },
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
+        },
+        pathField: {
+          type: 'string',
+          desc: 'data数据的存储节点路径信息字段',
+          propsDefaultValue: 'path',
+        },
+        pidField: {
+          type: 'string',
+          desc: 'data数据的存储节点父节点信息字段',
+          propsDefaultValue: 'pid',
         },
         value: {
           type: 'string | string[] | number | number[]',
@@ -19207,12 +21714,14 @@ export default [
           type: 'string | string[] | number | number[]',
           desc: '指定当前选中的条目的displayField值',
         },
+        query: { type: 'string', desc: '检索关键字', defaultValue: '' },
         parentIsHighlight: { type: 'boolean', desc: '父级元素是否高亮', defaultValue: false },
         draggable: { type: 'boolean', desc: '设置节点可拖拽', propsDefaultValue: false },
         groupKey: {
           type: 'string',
           desc: '多tree的分组标识,当两个tree的groupKey值相同时.可实现相互拖拽',
         },
+        size: { type: 'sizeType', desc: '可配置三种尺寸大小的tree', propsDefaultValue: 'default' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -19226,8 +21735,6 @@ export default [
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
                 { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
-                { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
             { key: 'children', title: '子项数据', type: 'Object[]' },
@@ -19259,25 +21766,29 @@ export default [
             { key: 'close', title: '关闭图标', type: 'icon' },
           ],
         },
-        igronSelectField: { type: 'string', desc: '指定不可选的标识', defaultValue: 'disabled' },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
+        igronSelectField: {
+          type: 'string',
+          desc: '指定不可选的标识',
+          propsDefaultValue: 'disabled',
+        },
+        mutliple: { type: 'boolean', desc: '是否多选', propsDefaultValue: false },
         pathSeparator: {
           type: 'string',
           desc: '指定结点数组中path信息的分隔符号',
-          defaultValue: '/',
+          propsDefaultValue: '|',
         },
         searchType: {
           type: 'start | end | include | eql',
           desc: '生成过滤数据的方式',
           defaultValue: 'include',
         },
-        shpale: {
+        switchAtEnd: { type: 'boolean', desc: '控制器后置', propsDefaultValue: false },
+        showSwitch: { type: 'boolean', desc: '是否展示控制器', propsDefaultValue: true },
+        shape: {
           type: 'default | round',
           desc: '单选树形控件,选中时的样式',
-          defaultValue: 'default',
+          propsDefaultValue: 'default',
         },
-        switchAtEnd: { type: 'boolean', desc: '控制器后置', defaultValue: false },
-        showSwitch: { type: 'boolean', desc: '是否展示控制器', defaultValue: true },
         translateTreeData: {
           type: 'boolean',
           desc: '是否开启嵌套数据生成Tree',
@@ -19350,6 +21861,7 @@ export default [
           args: [{ name: 'item', desc: '节点数据', type: 'object' }],
         },
       },
+      type: { sizeType: ['small', 'default', 'large'] },
       category: ['数据录入'],
       designInfo: {
         MutlipleTree: {
@@ -19477,6 +21989,24 @@ export default [
                   active: [],
                   disabled: [],
                 },
+                SelectedParentText: {
+                  name: '选中项的父节点文本框区域',
+                  desc: '配置选中项的父节点文本框区域的样式',
+                  normal: [
+                    ['color'],
+                    ['font'],
+                    ['fontSize'],
+                    ['background'],
+                    ['padding'],
+                    ['border'],
+                    ['opacity'],
+                    ['boxShadow'],
+                    ['borderRadius'],
+                  ],
+                  hover: [],
+                  active: [],
+                  disabled: [],
+                },
                 TextExpanded: {
                   name: '父节点展开状态的文本框区域',
                   desc: '配置父节点展开状态的文本框区域的样式',
@@ -19497,7 +22027,22 @@ export default [
                 },
                 PrefixIcon: {
                   name: '前置图标配置',
-                  desc: '前置图标或图片的样式配置',
+                  desc: '前置图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                SelectedPrefixIcon: {
+                  name: '选中项前置图标配置',
+                  desc: '选中项前置图标的样式配置',
                   normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                   hover: [['color'], ['font'], ['fontSize']],
                   active: [['color'], ['font'], ['fontSize']],
@@ -19512,7 +22057,22 @@ export default [
                 },
                 SuffixIcon: {
                   name: '后缀图标配置',
-                  desc: '后缀图标或图片的样式配置',
+                  desc: '后缀图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                SelectedSuffixIcon: {
+                  name: '选中项后缀图标配置',
+                  desc: '选中项后缀图标的样式配置',
                   normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                   hover: [['color'], ['font'], ['fontSize']],
                   active: [['color'], ['font'], ['fontSize']],
@@ -19540,6 +22100,11 @@ export default [
                     ['cursor'],
                   ],
                 },
+                SelectedParentSwitchIcon: {
+                  name: '选中节点的父节点控制器配置',
+                  desc: '选中节点的父节点配置控制树节点展开或隐藏的控制器的样式',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                },
                 SwitchIconExpanded: {
                   name: '节点展开状态控制器',
                   desc: '配置在父节点展开状态下控制控制器的样式',
@@ -19554,6 +22119,11 @@ export default [
                     ['padding'],
                     ['cursor'],
                   ],
+                },
+                SelectedParentSwitchIconExpanded: {
+                  name: '选中节点的父节点展开状态控制器',
+                  desc: '选中节点的父节点配置在父节点展开状态下控制控制器的样式',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                 },
                 SubTreeWrap: {
                   name: '子树的外盒配置',
@@ -19594,12 +22164,39 @@ export default [
                       hover: [['background'], ['borderRadius'], ['border']],
                       disabled: [['background'], ['borderRadius'], ['border']],
                     },
+                    CheckboxEdgeIndeterminate: {
+                      name: '半选外框样式',
+                      desc: '半选状态外框样式',
+                      normal: [
+                        ['background'],
+                        ['borderRadius'],
+                        ['border'],
+                        ['boxShadow'],
+                        ['width'],
+                        ['height'],
+                      ],
+                      hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+                      disabled: [
+                        ['background'],
+                        ['borderRadius'],
+                        ['border'],
+                        ['width'],
+                        ['height'],
+                      ],
+                    },
                     CheckboxInnerChecked: {
                       name: 'Checkbox选中样式配置',
                       desc: 'Checkbox选中样式配置',
                       normal: [['color']],
                       hover: [['color']],
                       disabled: [['color']],
+                    },
+                    CheckboxInnerIndeterminate: {
+                      name: '半选内框样式',
+                      desc: '半选内框样式',
+                      normal: [['color'], ['width'], ['height']],
+                      hover: [['color'], ['width'], ['height']],
+                      disabled: [['color'], ['width'], ['height']],
                     },
                   },
                 },
@@ -19728,6 +22325,24 @@ export default [
               active: [],
               disabled: [],
             },
+            SelectedParentText: {
+              name: '选中项的父节点文本框区域',
+              desc: '配置选中项的父节点文本框区域的样式',
+              normal: [
+                ['color'],
+                ['font'],
+                ['fontSize'],
+                ['background'],
+                ['padding'],
+                ['border'],
+                ['opacity'],
+                ['boxShadow'],
+                ['borderRadius'],
+              ],
+              hover: [],
+              active: [],
+              disabled: [],
+            },
             TextExpanded: {
               name: '父节点展开状态的文本框区域',
               desc: '配置父节点展开状态的文本框区域的样式',
@@ -19748,7 +22363,15 @@ export default [
             },
             PrefixIcon: {
               name: '前置图标配置',
-              desc: '前置图标或图片的样式配置',
+              desc: '前置图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedPrefixIcon: {
+              name: '选中项前置图标配置',
+              desc: '选中项前置图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -19756,7 +22379,15 @@ export default [
             },
             SuffixIcon: {
               name: '后缀图标配置',
-              desc: '后缀图标或图片的样式配置',
+              desc: '后缀图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedSuffixIcon: {
+              name: '选中项后缀图标配置',
+              desc: '选中项后缀图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -19770,6 +22401,11 @@ export default [
               active: [['color'], ['font'], ['fontSize']],
               disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
             },
+            SelectedParentSwitchIcon: {
+              name: '选中节点的父节点控制器配置',
+              desc: '选中节点的父节点配置控制树节点展开或隐藏的控制器的样式',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
             SwitchIconExpanded: {
               name: '节点展开状态控制器',
               desc: '配置在父节点展开状态下控制控制器的样式',
@@ -19777,6 +22413,11 @@ export default [
               hover: [['color'], ['font'], ['fontSize']],
               active: [],
               disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedParentSwitchIconExpanded: {
+              name: '选中节点的父节点展开状态控制器',
+              desc: '选中节点的父节点配置在父节点展开状态下控制控制器的样式',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
             },
             SubTreeWrap: {
               name: '子树的外盒配置',
@@ -19808,14 +22449,25 @@ export default [
       title: '多选树形控件',
       desc: '多项选择的树形控件',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
         expandAll: { type: 'boolean', desc: '是否展开所有子元素', defaultValue: true },
         onlySelectLeaf: { type: 'boolean', desc: '是否只能选择根节点选项', defaultValue: false },
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
+        },
+        pathField: {
+          type: 'string',
+          desc: 'data数据的存储节点路径信息字段',
+          propsDefaultValue: 'path',
+        },
+        pidField: {
+          type: 'string',
+          desc: 'data数据的存储节点父节点信息字段',
+          propsDefaultValue: 'pid',
         },
         value: {
           type: 'string | string[] | number | number[]',
@@ -19825,12 +22477,14 @@ export default [
           type: 'string | string[] | number | number[]',
           desc: '指定当前选中的条目的displayField值',
         },
+        query: { type: 'string', desc: '检索关键字', defaultValue: '' },
         parentIsHighlight: { type: 'boolean', desc: '父级元素是否高亮', defaultValue: false },
         draggable: { type: 'boolean', desc: '设置节点可拖拽', propsDefaultValue: false },
         groupKey: {
           type: 'string',
           desc: '多tree的分组标识,当两个tree的groupKey值相同时.可实现相互拖拽',
         },
+        size: { type: 'sizeType', desc: '可配置三种尺寸大小的tree', propsDefaultValue: 'default' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -19844,8 +22498,6 @@ export default [
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
                 { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
-                { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
             { key: 'children', title: '子项数据', type: 'Object[]' },
@@ -19877,25 +22529,34 @@ export default [
             { key: 'close', title: '关闭图标', type: 'icon' },
           ],
         },
-        igronSelectField: { type: 'string', desc: '指定不可选的标识', defaultValue: 'disabled' },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: true },
+        igronSelectField: {
+          type: 'string',
+          desc: '指定不可选的标识',
+          propsDefaultValue: 'disabled',
+        },
+        mutliple: {
+          type: 'boolean',
+          desc: '是否多选',
+          propsDefaultValue: false,
+          defaultValue: true,
+        },
         pathSeparator: {
           type: 'string',
           desc: '指定结点数组中path信息的分隔符号',
-          defaultValue: '/',
+          propsDefaultValue: '|',
         },
         searchType: {
           type: 'start | end | include | eql',
           desc: '生成过滤数据的方式',
           defaultValue: 'include',
         },
-        shpale: {
+        switchAtEnd: { type: 'boolean', desc: '控制器后置', propsDefaultValue: false },
+        showSwitch: { type: 'boolean', desc: '是否展示控制器', propsDefaultValue: true },
+        shape: {
           type: 'default | round',
           desc: '单选树形控件,选中时的样式',
-          defaultValue: 'default',
+          propsDefaultValue: 'default',
         },
-        switchAtEnd: { type: 'boolean', desc: '控制器后置', defaultValue: false },
-        showSwitch: { type: 'boolean', desc: '是否展示控制器', defaultValue: true },
         translateTreeData: {
           type: 'boolean',
           desc: '是否开启嵌套数据生成Tree',
@@ -19968,6 +22629,7 @@ export default [
           args: [{ name: 'item', desc: '节点数据', type: 'object' }],
         },
       },
+      type: { sizeType: ['small', 'default', 'large'] },
       category: ['数据录入'],
       theme: {
         Container: {
@@ -20089,6 +22751,24 @@ export default [
               active: [],
               disabled: [],
             },
+            SelectedParentText: {
+              name: '选中项的父节点文本框区域',
+              desc: '配置选中项的父节点文本框区域的样式',
+              normal: [
+                ['color'],
+                ['font'],
+                ['fontSize'],
+                ['background'],
+                ['padding'],
+                ['border'],
+                ['opacity'],
+                ['boxShadow'],
+                ['borderRadius'],
+              ],
+              hover: [],
+              active: [],
+              disabled: [],
+            },
             TextExpanded: {
               name: '父节点展开状态的文本框区域',
               desc: '配置父节点展开状态的文本框区域的样式',
@@ -20109,7 +22789,15 @@ export default [
             },
             PrefixIcon: {
               name: '前置图标配置',
-              desc: '前置图标或图片的样式配置',
+              desc: '前置图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedPrefixIcon: {
+              name: '选中项前置图标配置',
+              desc: '选中项前置图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -20117,7 +22805,15 @@ export default [
             },
             SuffixIcon: {
               name: '后缀图标配置',
-              desc: '后缀图标或图片的样式配置',
+              desc: '后缀图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedSuffixIcon: {
+              name: '选中项后缀图标配置',
+              desc: '选中项后缀图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -20131,6 +22827,11 @@ export default [
               active: [['color'], ['font'], ['fontSize']],
               disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
             },
+            SelectedParentSwitchIcon: {
+              name: '选中节点的父节点控制器配置',
+              desc: '选中节点的父节点配置控制树节点展开或隐藏的控制器的样式',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
             SwitchIconExpanded: {
               name: '节点展开状态控制器',
               desc: '配置在父节点展开状态下控制控制器的样式',
@@ -20138,6 +22839,11 @@ export default [
               hover: [['color'], ['font'], ['fontSize']],
               active: [],
               disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedParentSwitchIconExpanded: {
+              name: '选中节点的父节点展开状态控制器',
+              desc: '选中节点的父节点配置在父节点展开状态下控制控制器的样式',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
             },
             SubTreeWrap: {
               name: '子树的外盒配置',
@@ -20178,12 +22884,33 @@ export default [
                   hover: [['background'], ['borderRadius'], ['border']],
                   disabled: [['background'], ['borderRadius'], ['border']],
                 },
+                CheckboxEdgeIndeterminate: {
+                  name: '半选外框样式',
+                  desc: '半选状态外框样式',
+                  normal: [
+                    ['background'],
+                    ['borderRadius'],
+                    ['border'],
+                    ['boxShadow'],
+                    ['width'],
+                    ['height'],
+                  ],
+                  hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+                  disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+                },
                 CheckboxInnerChecked: {
                   name: 'Checkbox选中样式配置',
                   desc: 'Checkbox选中样式配置',
                   normal: [['color']],
                   hover: [['color']],
                   disabled: [['color']],
+                },
+                CheckboxInnerIndeterminate: {
+                  name: '半选内框样式',
+                  desc: '半选内框样式',
+                  normal: [['color'], ['width'], ['height']],
+                  hover: [['color'], ['width'], ['height']],
+                  disabled: [['color'], ['width'], ['height']],
                 },
               },
             },
@@ -20203,11 +22930,36 @@ export default [
       title: '树形选择控件',
       desc: '类似Select选择器，弹出面板是一个树形控件，可以清晰地展示层级数据结构。',
       props: {
-        validateStatus: {
-          type: 'ValidateStatus',
-          desc: "input校验状态, 'success' 成功 | 'error'错误",
-          defaultValue: 'success',
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        pullIconClass: {
+          type: 'icon',
+          desc: '下拉图标icon名称',
+          propsDefaultValue: 'lugia-icon-direction_down',
         },
+        clearIconClass: {
+          type: 'icon',
+          desc: '清除图标icon名称',
+          propsDefaultValue: 'lugia-icon-reminder_close',
+        },
+        switchIconNames: {
+          type: 'object',
+          desc: '生成选择项的数据',
+          meta: [
+            { key: 'open', title: '展开图标', type: 'icon' },
+            { key: 'close', title: '关闭图标', type: 'icon' },
+          ],
+          propsDefaultValue: [
+            { open: 'lugia-icon-direction_caret_down', close: 'lugia-icon-direction_caret_right' },
+          ],
+        },
+        size: {
+          type: 'sizeType',
+          desc: '可配置三种尺寸大小的treeSelect',
+          propsDefaultValue: 'default',
+        },
+        help: { type: 'string', desc: '树形选择控件校验提示信息' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -20221,8 +22973,6 @@ export default [
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
                 { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
-                { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
             { key: 'children', title: '子项数据', type: 'array' },
@@ -20239,13 +22989,23 @@ export default [
             },
           ],
         },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
+        mutliple: { type: 'boolean', desc: '是否多选', propsDefaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
+        },
+        pathField: {
+          type: 'string',
+          desc: 'data数据的存储节点路径信息字段',
+          propsDefaultValue: 'path',
+        },
+        pidField: {
+          type: 'string',
+          desc: 'data数据的存储节点父节点信息字段',
+          propsDefaultValue: 'pid',
         },
         translateTreeData: {
           type: 'boolean',
@@ -20301,6 +23061,11 @@ export default [
           args: [{ name: 'event', desc: '清除输入框内容事件', type: 'Object' }],
         },
       },
+      type: {
+        sizeType: ['small', 'default', 'large'],
+        ValidateStatus: ['default', 'error'],
+        ValidateType: ['top', 'bottom', 'inner'],
+      },
       category: ['数据录入'],
       designInfo: {
         MutlipleTreeSelect: {
@@ -20350,6 +23115,36 @@ export default [
                 ['cursor'],
               ],
             },
+            ValidateErrorInput: {
+              name: '校验失败的展示框',
+              desc: '配置校验失败的展示框',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['boxShadow'],
+                ['opacity'],
+              ],
+              hover: [['background'], ['border'], ['boxShadow']],
+              active: [['background'], ['border'], ['boxShadow']],
+            },
+            ValidateErrorText: {
+              name: '校验失败提示信息',
+              desc: '配置校验失败的提示信息',
+              normal: [
+                ['background'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+              ],
+              hover: [],
+              active: [],
+            },
             SwitchIcon: {
               name: '下拉图标',
               desc: '配置下拉图标样式',
@@ -20365,6 +23160,11 @@ export default [
               hover: [['color'], ['fontSize']],
               active: [['color'], ['fontSize']],
               disabled: [['color'], ['fontSize'], ['cursor']],
+            },
+            Placeholder: {
+              name: '提示信息文字',
+              desc: '提示信息文字',
+              normal: [['color'], ['fontSize'], ['font'], ['padding']],
             },
             TagWrap: {
               name: '标签',
@@ -20638,6 +23438,39 @@ export default [
                           hover: [['background'], ['borderRadius'], ['border']],
                           disabled: [['background'], ['borderRadius'], ['border']],
                         },
+                        CheckboxEdgeIndeterminate: {
+                          name: '半选外框样式',
+                          desc: '半选状态外框样式',
+                          normal: [
+                            ['background'],
+                            ['borderRadius'],
+                            ['border'],
+                            ['boxShadow'],
+                            ['width'],
+                            ['height'],
+                          ],
+                          hover: [
+                            ['background'],
+                            ['borderRadius'],
+                            ['border'],
+                            ['width'],
+                            ['height'],
+                          ],
+                          disabled: [
+                            ['background'],
+                            ['borderRadius'],
+                            ['border'],
+                            ['width'],
+                            ['height'],
+                          ],
+                        },
+                        CheckboxInnerIndeterminate: {
+                          name: '半选内框样式',
+                          desc: '半选内框样式',
+                          normal: [['color'], ['width'], ['height']],
+                          hover: [['color'], ['width'], ['height']],
+                          disabled: [['color'], ['width'], ['height']],
+                        },
                         CheckboxInnerChecked: {
                           name: 'Checkbox选中样式配置',
                           desc: 'Checkbox选中样式配置',
@@ -20708,6 +23541,52 @@ export default [
                             ['font'],
                           ],
                         },
+                        SelectedMenuItemWrap: {
+                          name: '选中项的外盒',
+                          desc: '配置选中项的外盒',
+                          normal: [
+                            ['height'],
+                            ['color'],
+                            ['font'],
+                            ['fontSize'],
+                            ['cursor'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['padding'],
+                            ['background'],
+                            ['opacity'],
+                            ['boxShadow'],
+                          ],
+                          hover: [
+                            ['color'],
+                            ['font'],
+                            ['fontSize'],
+                            ['background'],
+                            ['opacity'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['boxShadow'],
+                          ],
+                          active: [
+                            ['color'],
+                            ['font'],
+                            ['fontSize'],
+                            ['background'],
+                            ['opacity'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['boxShadow'],
+                          ],
+                          disabled: [],
+                        },
+                        Divider: {
+                          name: '分割线',
+                          desc: '配置每项之间的分割线，当divided为true时生效',
+                          normal: [['background']],
+                          hover: [],
+                          active: [],
+                          disabled: [],
+                        },
                       },
                     },
                   },
@@ -20715,7 +23594,7 @@ export default [
               },
             },
           },
-          defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+          defaultTheme: { Container: { normal: { width: 250 } } },
         },
       },
       theme: {
@@ -20760,6 +23639,36 @@ export default [
             ['cursor'],
           ],
         },
+        ValidateErrorInput: {
+          name: '校验失败的展示框',
+          desc: '配置校验失败的展示框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
+        },
         SwitchIcon: {
           name: '下拉图标',
           desc: '配置下拉图标样式',
@@ -20775,6 +23684,17 @@ export default [
           hover: [['color'], ['fontSize']],
           active: [['color'], ['fontSize']],
           disabled: [['color'], ['fontSize'], ['cursor']],
+        },
+        TextContent: {
+          name: '选中文本',
+          desc: '选中文本样式',
+          normal: [['color'], ['font'], ['fontSize']],
+          disabled: [['color'], ['font'], ['fontSize']],
+        },
+        Placeholder: {
+          name: '提示信息文字',
+          desc: '提示信息文字',
+          normal: [['color'], ['fontSize'], ['font'], ['padding']],
         },
         Tree: {
           name: '弹开树形控件配置',
@@ -20963,7 +23883,7 @@ export default [
           },
         },
       },
-      defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+      defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
     },
     target: TreeSelect,
@@ -20976,11 +23896,36 @@ export default [
       title: '多项树形选择',
       desc: '支持多项树形选择',
       props: {
-        validateStatus: {
-          type: 'ValidateStatus',
-          desc: "input校验状态, 'success' 成功 | 'error'错误",
-          defaultValue: 'success',
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        pullIconClass: {
+          type: 'icon',
+          desc: '下拉图标icon名称',
+          propsDefaultValue: 'lugia-icon-direction_down',
         },
+        clearIconClass: {
+          type: 'icon',
+          desc: '清除图标icon名称',
+          propsDefaultValue: 'lugia-icon-reminder_close',
+        },
+        switchIconNames: {
+          type: 'object',
+          desc: '生成选择项的数据',
+          meta: [
+            { key: 'open', title: '展开图标', type: 'icon' },
+            { key: 'close', title: '关闭图标', type: 'icon' },
+          ],
+          propsDefaultValue: [
+            { open: 'lugia-icon-direction_caret_down', close: 'lugia-icon-direction_caret_right' },
+          ],
+        },
+        size: {
+          type: 'sizeType',
+          desc: '可配置三种尺寸大小的treeSelect',
+          propsDefaultValue: 'default',
+        },
+        help: { type: 'string', desc: '树形选择控件校验提示信息' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -20994,8 +23939,6 @@ export default [
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
                 { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
-                { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
             { key: 'children', title: '子项数据', type: 'array' },
@@ -21012,13 +23955,28 @@ export default [
             },
           ],
         },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: true },
+        mutliple: {
+          type: 'boolean',
+          desc: '是否多选',
+          propsDefaultValue: false,
+          defaultValue: true,
+        },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
+        },
+        pathField: {
+          type: 'string',
+          desc: 'data数据的存储节点路径信息字段',
+          propsDefaultValue: 'path',
+        },
+        pidField: {
+          type: 'string',
+          desc: 'data数据的存储节点父节点信息字段',
+          propsDefaultValue: 'pid',
         },
         translateTreeData: {
           type: 'boolean',
@@ -21074,6 +24032,11 @@ export default [
           args: [{ name: 'event', desc: '清除输入框内容事件', type: 'Object' }],
         },
       },
+      type: {
+        sizeType: ['small', 'default', 'large'],
+        ValidateStatus: ['default', 'error'],
+        ValidateType: ['top', 'bottom', 'inner'],
+      },
       category: ['数据录入'],
       theme: {
         Container: {
@@ -21117,6 +24080,36 @@ export default [
             ['cursor'],
           ],
         },
+        ValidateErrorInput: {
+          name: '校验失败的展示框',
+          desc: '配置校验失败的展示框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
+        },
         SwitchIcon: {
           name: '下拉图标',
           desc: '配置下拉图标样式',
@@ -21132,6 +24125,11 @@ export default [
           hover: [['color'], ['fontSize']],
           active: [['color'], ['fontSize']],
           disabled: [['color'], ['fontSize'], ['cursor']],
+        },
+        Placeholder: {
+          name: '提示信息文字',
+          desc: '提示信息文字',
+          normal: [['color'], ['fontSize'], ['font'], ['padding']],
         },
         TagWrap: {
           name: '标签',
@@ -21378,6 +24376,33 @@ export default [
                       hover: [['background'], ['borderRadius'], ['border']],
                       disabled: [['background'], ['borderRadius'], ['border']],
                     },
+                    CheckboxEdgeIndeterminate: {
+                      name: '半选外框样式',
+                      desc: '半选状态外框样式',
+                      normal: [
+                        ['background'],
+                        ['borderRadius'],
+                        ['border'],
+                        ['boxShadow'],
+                        ['width'],
+                        ['height'],
+                      ],
+                      hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+                      disabled: [
+                        ['background'],
+                        ['borderRadius'],
+                        ['border'],
+                        ['width'],
+                        ['height'],
+                      ],
+                    },
+                    CheckboxInnerIndeterminate: {
+                      name: '半选内框样式',
+                      desc: '半选内框样式',
+                      normal: [['color'], ['width'], ['height']],
+                      hover: [['color'], ['width'], ['height']],
+                      disabled: [['color'], ['width'], ['height']],
+                    },
                     CheckboxInnerChecked: {
                       name: 'Checkbox选中样式配置',
                       desc: 'Checkbox选中样式配置',
@@ -21442,6 +24467,52 @@ export default [
                         ['font'],
                       ],
                     },
+                    SelectedMenuItemWrap: {
+                      name: '选中项的外盒',
+                      desc: '配置选中项的外盒',
+                      normal: [
+                        ['height'],
+                        ['color'],
+                        ['font'],
+                        ['fontSize'],
+                        ['cursor'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['padding'],
+                        ['background'],
+                        ['opacity'],
+                        ['boxShadow'],
+                      ],
+                      hover: [
+                        ['color'],
+                        ['font'],
+                        ['fontSize'],
+                        ['background'],
+                        ['opacity'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['boxShadow'],
+                      ],
+                      active: [
+                        ['color'],
+                        ['font'],
+                        ['fontSize'],
+                        ['background'],
+                        ['opacity'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['boxShadow'],
+                      ],
+                      disabled: [],
+                    },
+                    Divider: {
+                      name: '分割线',
+                      desc: '配置每项之间的分割线，当divided为true时生效',
+                      normal: [['background']],
+                      hover: [],
+                      active: [],
+                      disabled: [],
+                    },
                   },
                 },
               },
@@ -21449,7 +24520,7 @@ export default [
           },
         },
       },
-      defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+      defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
       aliasName: 'MutlipleTreeSelect',
     },
@@ -21463,6 +24534,7 @@ export default [
       title: '上传',
       desc: '上传组件,可通过文件选择和拖拽上传',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
         areaType: { type: 'UploadType', desc: '上传组件的类型', propsDefaultValue: 'default' },
         disabled: { type: 'boolean', desc: '禁用状态', propsDefaultValue: false },
@@ -21486,6 +24558,7 @@ export default [
         autoUpload: { type: 'boolean', desc: '是否允许自动上传', propsDefaultValue: true },
         url: { type: 'string', desc: '上传的请求地址(必填参数)' },
         accept: { type: 'string', desc: '指定上传文件类型' },
+        name: { type: 'string', desc: '发送到后台的文件参数名' },
         size: {
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸',
@@ -21554,9 +24627,9 @@ export default [
           desc: '按钮上传模式的配置项',
           props: { areaType: 'button' },
           theme: {
-            UploadButtonType: {
-              name: '按钮',
-              desc: '按钮上传类型的样式配置',
+            Container: {
+              name: '上传组件整体样式',
+              desc: '按钮上传类型的整体样式配置',
               normal: [
                 ['background'],
                 ['width'],
@@ -21567,6 +24640,13 @@ export default [
               ],
               hover: [['background'], ['boxShadow'], ['border'], ['opacity']],
               disabled: [['background'], ['border']],
+            },
+            ButtonText: {
+              name: '上传类型为button时的文字',
+              desc: '文件上传失败后的文字样式',
+              normal: [['color']],
+              hover: [['color']],
+              disabled: [['color']],
             },
             UploadList: {
               name: '上传列表',
@@ -21597,6 +24677,7 @@ export default [
               },
             },
           },
+          defaultTheme: { UploadList: { UploadLiType: { normal: { width: '100%' } } } },
         },
         PictureTypeUpload: {
           sequence: 2,
@@ -21604,7 +24685,7 @@ export default [
           desc: '图片上传模式的配置项，仅支持图片',
           props: { areaType: 'picture' },
           theme: {
-            UploadPictureType: {
+            Container: {
               name: '图片上传区域',
               desc: '图片上传类型的样式配置',
               normal: [['background'], ['width'], ['height'], ['opacity'], ['border']],
@@ -21640,6 +24721,10 @@ export default [
               },
             },
           },
+          defaultTheme: {
+            UploadPictureType: { normal: { width: 80 } },
+            UploadList: { UploadLiType: { normal: { width: '100%' } } },
+          },
         },
         AreaTypeUpload: {
           sequence: 3,
@@ -21647,7 +24732,7 @@ export default [
           desc: '大面积区域拖拽上传模式的配置项',
           props: { areaType: 'area' },
           theme: {
-            UploadAreaType: {
+            Container: {
               name: '文件上传区域',
               desc: '区域拖拽上传类型的样式配置',
               normal: [['width'], ['height'], ['fontSize'], ['color']],
@@ -21682,6 +24767,10 @@ export default [
               },
             },
           },
+          defaultTheme: {
+            UploadAreaType: { normal: { width: 300 } },
+            UploadList: { UploadLiType: { normal: { width: '100%' } } },
+          },
         },
         BothTypeUpload: {
           sequence: 4,
@@ -21706,7 +24795,7 @@ export default [
                 },
               },
             },
-            UploadDefaultType: {
+            Container: {
               name: '文件上传区域',
               desc: '默认上传框的样式',
               normal: [['width'], ['height'], ['boxShadow'], ['border']],
@@ -21742,13 +24831,17 @@ export default [
               },
             },
           },
+          defaultTheme: {
+            Container: { normal: { width: 346 } },
+            UploadList: { UploadLiType: { normal: { width: '100%' } } },
+          },
         },
       },
       theme: {
-        UploadDefaultType: {
+        Container: {
           name: '文件上传区域',
           desc: '默认上传框的样式',
-          normal: [['width'], ['height'], ['boxShadow'], ['border']],
+          normal: [['width'], ['height'], ['boxShadow'], ['border'], ['padding']],
           hover: [['boxShadow'], ['border']],
           disabled: [['border'], ['cursor']],
         },
@@ -21774,6 +24867,10 @@ export default [
           },
         },
       },
+      defaultTheme: {
+        Container: { normal: { width: 346 } },
+        UploadList: { UploadLiType: { normal: { width: '100%' } } },
+      },
       childrenWidget: [],
     },
     target: Upload,
@@ -21786,6 +24883,7 @@ export default [
       title: '按钮上传',
       desc: '按钮上传模式的配置项',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
         areaType: {
           type: 'UploadType',
@@ -21814,6 +24912,7 @@ export default [
         autoUpload: { type: 'boolean', desc: '是否允许自动上传', propsDefaultValue: true },
         url: { type: 'string', desc: '上传的请求地址(必填参数)' },
         accept: { type: 'string', desc: '指定上传文件类型' },
+        name: { type: 'string', desc: '发送到后台的文件参数名' },
         size: {
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸',
@@ -21876,12 +24975,19 @@ export default [
       },
       category: ['数据录入'],
       theme: {
-        UploadButtonType: {
-          name: '按钮',
-          desc: '按钮上传类型的样式配置',
+        Container: {
+          name: '上传组件整体样式',
+          desc: '按钮上传类型的整体样式配置',
           normal: [['background'], ['width'], ['height'], ['boxShadow'], ['border'], ['opacity']],
           hover: [['background'], ['boxShadow'], ['border'], ['opacity']],
           disabled: [['background'], ['border']],
+        },
+        ButtonText: {
+          name: '上传类型为button时的文字',
+          desc: '文件上传失败后的文字样式',
+          normal: [['color']],
+          hover: [['color']],
+          disabled: [['color']],
         },
         UploadList: {
           name: '上传列表',
@@ -21905,6 +25011,7 @@ export default [
           },
         },
       },
+      defaultTheme: { UploadList: { UploadLiType: { normal: { width: '100%' } } } },
       childrenWidget: [],
       aliasName: 'ButtonTypeUpload',
     },
@@ -21918,6 +25025,7 @@ export default [
       title: '图片上传',
       desc: '图片上传模式的配置项，仅支持图片',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
         areaType: {
           type: 'UploadType',
@@ -21946,6 +25054,7 @@ export default [
         autoUpload: { type: 'boolean', desc: '是否允许自动上传', propsDefaultValue: true },
         url: { type: 'string', desc: '上传的请求地址(必填参数)' },
         accept: { type: 'string', desc: '指定上传文件类型' },
+        name: { type: 'string', desc: '发送到后台的文件参数名' },
         size: {
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸',
@@ -22008,7 +25117,7 @@ export default [
       },
       category: ['数据录入'],
       theme: {
-        UploadPictureType: {
+        Container: {
           name: '图片上传区域',
           desc: '图片上传类型的样式配置',
           normal: [['background'], ['width'], ['height'], ['opacity'], ['border']],
@@ -22037,6 +25146,10 @@ export default [
           },
         },
       },
+      defaultTheme: {
+        UploadPictureType: { normal: { width: 80 } },
+        UploadList: { UploadLiType: { normal: { width: '100%' } } },
+      },
       childrenWidget: [],
       aliasName: 'PictureTypeUpload',
     },
@@ -22050,6 +25163,7 @@ export default [
       title: '区域拖拽上传',
       desc: '大面积区域拖拽上传模式的配置项',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
         areaType: {
           type: 'UploadType',
@@ -22078,6 +25192,7 @@ export default [
         autoUpload: { type: 'boolean', desc: '是否允许自动上传', propsDefaultValue: true },
         url: { type: 'string', desc: '上传的请求地址(必填参数)' },
         accept: { type: 'string', desc: '指定上传文件类型' },
+        name: { type: 'string', desc: '发送到后台的文件参数名' },
         size: {
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸',
@@ -22140,7 +25255,7 @@ export default [
       },
       category: ['数据录入'],
       theme: {
-        UploadAreaType: {
+        Container: {
           name: '文件上传区域',
           desc: '区域拖拽上传类型的样式配置',
           normal: [['width'], ['height'], ['fontSize'], ['color']],
@@ -22168,6 +25283,10 @@ export default [
           },
         },
       },
+      defaultTheme: {
+        UploadAreaType: { normal: { width: 300 } },
+        UploadList: { UploadLiType: { normal: { width: '100%' } } },
+      },
       childrenWidget: [],
       aliasName: 'AreaTypeUpload',
     },
@@ -22181,6 +25300,7 @@ export default [
       title: '带按钮的拖拽上传',
       desc: '带按钮的拖拽上传模式的配置项',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
         areaType: {
           type: 'UploadType',
@@ -22209,6 +25329,7 @@ export default [
         autoUpload: { type: 'boolean', desc: '是否允许自动上传', propsDefaultValue: true },
         url: { type: 'string', desc: '上传的请求地址(必填参数)' },
         accept: { type: 'string', desc: '指定上传文件类型' },
+        name: { type: 'string', desc: '发送到后台的文件参数名' },
         size: {
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸',
@@ -22288,7 +25409,7 @@ export default [
             },
           },
         },
-        UploadDefaultType: {
+        Container: {
           name: '文件上传区域',
           desc: '默认上传框的样式',
           normal: [['width'], ['height'], ['boxShadow'], ['border']],
@@ -22316,6 +25437,10 @@ export default [
             },
           },
         },
+      },
+      defaultTheme: {
+        Container: { normal: { width: 346 } },
+        UploadList: { UploadLiType: { normal: { width: '100%' } } },
       },
       childrenWidget: [],
       aliasName: 'BothTypeUpload',

@@ -1,16 +1,16 @@
 import { deepMerge } from '@lugia/object-utils';
+import { btnWidthNormal, rangeHeightNormal, rangeWidthNormal } from './slider_public_size';
 import {
   trackBackground,
   throughRangeBackground,
   trackDisabledBackground,
   btnDisabledBackground,
-  tipBackground,
   tipColor,
+  themeColor,
+  themeHoverColor,
 } from './slider_public_color';
-import { btnWidthNormal, rangeHeightNormal, rangeWidthNormal } from './slider_public_size';
-import colorsFunc from '../css/stateColor';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
-export const { themeColor } = colorsFunc();
+import get from '../css/theme-common-dict';
 
 function verticalSize(props) {
   let { width, height, vertical } = props;
@@ -169,13 +169,13 @@ function getSliderPassedWayThemeProps(getPartOfThemeProps, height) {
     ...mergeNormal,
     hover: {
       background: {
-        color: colorsFunc(color).hoverColor,
+        color: themeHoverColor,
       },
       height: sliderPassedWayHeight,
     },
     active: {
       background: {
-        color: colorsFunc(color).hoverColor,
+        color: themeHoverColor,
       },
       height: sliderPassedWayHeight,
     },
@@ -236,14 +236,14 @@ export function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
       width: btnWidth + 4,
       height: btnHeight + 4,
       background: {
-        color: colorsFunc(color).hoverColor,
+        color: themeHoverColor,
       },
     },
     active: {
       width: btnWidth + 4,
       height: btnHeight + 4,
       background: {
-        color: colorsFunc(color).hoverColor,
+        color: themeHoverColor,
       },
     },
     disabled: {
@@ -272,12 +272,13 @@ function getTipsThemeProps(getPartOfThemeProps) {
   const defaultTipThemeProps = {
     normal: {
       background: {
-        color: tipBackground,
+        color: get('blackColor'),
       },
       height: 27,
       color: tipColor,
-      borderRadius: getBorderRadius(3),
-      fontSize: 14,
+      borderRadius: getBorderRadius(2),
+      fontSize: 12,
+      boxShadow: get('normalBoxShadow'),
     },
     disabled: {
       background: {

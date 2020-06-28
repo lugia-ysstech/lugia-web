@@ -5,6 +5,7 @@
  */
 import { px2emcss } from '../css/units';
 import styled, { css, keyframes } from 'styled-components';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 
 type Direction = 'top' | 'right' | 'bottom' | 'left';
 export type DrawerProps = {
@@ -14,6 +15,8 @@ export type DrawerProps = {
   mask?: boolean,
   maskClosable?: boolean,
   closable?: boolean,
+  sidebar?: boolean,
+  onToggle: Function,
   onClose?: Function,
   children: any,
   getTheme: Function,
@@ -88,21 +91,36 @@ const getAnimateDirection = (props: CSSProps): string => {
   }
   return 'right';
 };
+const getDefaultValue = (isHorizontal: boolean): number => (!isHorizontal && 256) || 100;
 const getWidthOrHeight = (props: CSSProps) => {
-  const { placement, theme } = props;
-  if (placement === 'top' || placement === 'bottom') {
-    return theme.height || 256;
+  const { placement } = props;
+  const isPlacedInHorizontal = placement === 'top' || placement === 'bottom';
+  const {
+    themeProps: {
+      themeConfig: {
+        normal: {
+          width = getDefaultValue(isPlacedInHorizontal),
+          height = getDefaultValue(!isPlacedInHorizontal),
+        } = {},
+      } = {},
+    } = {},
+  } = props;
+  if (isPlacedInHorizontal) {
+    return height;
   }
-  return theme.width || 256;
+  return width;
 };
 const getDrawerAnimate = (props: CSSProps): string => {
   const { open, opening, closing } = props;
   const distance = getWidthOrHeight(props);
   const Direction = getAnimateDirection(props);
-  const openFrom = `${Direction}: ${em(-distance)};`;
+  const isNumber = typeof distance === 'number';
+  const trueDistance = isNumber ? em(-distance) : `-${distance}`;
+  const closeDistance = isNumber ? em(-(distance + 8)) : `calc(-${distance} - 8px)`;
+  const openFrom = `${Direction}: ${trueDistance};`;
   const openTo = `${Direction}: 0;`;
   const closeFrom = `${Direction}: 0;`;
-  const closeTo = `${Direction}: ${em(-(distance + 8))};`;
+  const closeTo = `${Direction}: ${closeDistance};`;
   const OpenKeyframe = keyframes`
     from {
       ${openFrom}
@@ -128,7 +146,7 @@ const getDrawerAnimate = (props: CSSProps): string => {
   }
   if (closing) {
     return css`
-      ${Direction}: ${em(-(distance + 8))};
+      ${Direction}: ${closeDistance};
 
       animation: ${CloseKeyframe} 0.3s;
     `;
@@ -139,7 +157,7 @@ const getDrawerAnimate = (props: CSSProps): string => {
     `;
   }
   return `
-    ${Direction}: ${em(-(distance + 8))};
+    ${Direction}: ${closeDistance};
   `;
 };
 const getWidthOrHeightByDirection = (props: CSSProps) => {
@@ -164,14 +182,43 @@ const getTransform = (props: CSSProps) => {
     });`;
   }
 };
-export const DrawerContentWrap = styled.div`
-  position: fixed;
-  ${getWidthOrHeightByDirection};
-  ${getDrawerAnimate};
-  box-shadow: ${em(-2)} 0 ${em(8)} rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s;
-  ${getTransform};
-`;
+const getPositionCSS = (props: CSSProps): string => {
+  const { type } = props;
+  if (type === 'Drawer') {
+    return '';
+  }
+  return css`
+    position: fixed;
+  `;
+};
+const iconAngleData = {
+  visible: { top: -90, bottom: 90, right: 0, left: 180 },
+  invisible: { top: 90, bottom: -90, right: 180, left: 0 },
+};
+export const getIconTransfrom = (visible, placement) => {
+  if (visible) {
+    return `transform: rotateZ(${iconAngleData.visible[placement]}deg)`;
+  }
+  return `transform: rotateZ(${iconAngleData.invisible[placement]}deg)`;
+};
+export const DrawerContentWrap = CSSComponent({
+  tag: 'div',
+  className: 'Drawer',
+  css: css`
+    ${getPositionCSS};
+    ${getWidthOrHeightByDirection};
+    ${getDrawerAnimate};
+    box-shadow: ${em(-2)} 0 ${em(8)} rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s;
+    ${getTransform};
+    min-width: 256px;
+    min-height: 100px;
+  `,
+  normal: {
+    selectNames: [['width'], ['height']],
+  },
+});
+
 export const DrawerContent = styled.div`
   width: 100%;
   height: 100%;
@@ -180,12 +227,26 @@ export const DrawerContent = styled.div`
   border: 0;
   z-index: 1;
 `;
+const getHeaderLugiadCSS = (props: CSSProps): string => {
+  const { __lugiad__header__absolute__ = false, type } = props;
+  if (__lugiad__header__absolute__ || type === 'Drawer') {
+    return css`
+      position: absolute;
+      left: 20px;
+      top: 22px;
+      z-index: 4000;
+      padding: 0;
+    `;
+  }
+  return '';
+};
 export const DrawerContentHeader = styled.div`
   padding: ${HeaderEM(22)} ${HeaderEM(20)} ${HeaderEM(16)};
   font-size: ${em(16)};
   line-height: ${HeaderEM(22)};
   font-weight: 500;
   color: #333;
+  ${getHeaderLugiadCSS}
 `;
 export const DrawerContentMain = styled.div`
   font-size: ${em(14)};
@@ -201,6 +262,15 @@ export const DrawerClose = styled.div`
   right: 0;
   top: 0;
 `;
+const getCloseLugiadCSS = (props: CSSProps): string => {
+  const { __lugiad__header__absolute__ = false, type } = props;
+  if (__lugiad__header__absolute__ || type === 'Drawer') {
+    return css`
+      z-index: 4001;
+    `;
+  }
+  return '';
+};
 export const CloseText = styled.span`
   display: block;
   width: ${HeaderEM(56)};
@@ -208,4 +278,45 @@ export const CloseText = styled.span`
   text-align: center;
   line-height: ${HeaderEM(60)};
   cursor: pointer;
+  ${getCloseLugiadCSS}
 `;
+const horizontalCommonProperty = `
+  height:16px;
+  width:48px;
+  left:calc(50% - 24px);
+`;
+const verticalCommonProperty = `
+  height:48px;
+  width:16px;
+  top:calc(50% - 24px);
+`;
+const getHandleWidthOrHeightByDirection = (props: CSSProps) => {
+  const { visible, placement = 'right' } = props;
+  const absolutePosition = visible ? '-16px' : '-24px';
+  if (placement === 'top' || placement === 'bottom') {
+    const isLocateTop = placement === 'top';
+    return `
+      ${isLocateTop ? 'bottom' : 'top'}: ${absolutePosition}; ${horizontalCommonProperty};
+      border-radius: ${isLocateTop ? '0 0 3px 3px' : '3px 3px 0 0'}
+    `;
+  }
+  const isLoacteRight = placement === 'right';
+  return `
+    ${isLoacteRight ? 'left' : 'right'}: ${absolutePosition}; ${verticalCommonProperty}
+    border-radius: ${isLoacteRight ? '3px 0 0 3px' : '0 3px 3px 0'}
+  `;
+};
+export const HandleWrap = StaticComponent({
+  tag: 'div',
+  className: 'HandleWrap',
+  css: css`
+    position: absolute;
+    ${getHandleWidthOrHeightByDirection}
+    background: #fff;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  `,
+});

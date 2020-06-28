@@ -74,6 +74,8 @@ type TriggerProps = {
   align: string,
   offsetX?: number,
   offsetY?: number,
+  liquidLayout?: boolean,
+  onDocumentClick?: Function,
 };
 type TriggerState = {
   popupVisible: boolean,
@@ -115,6 +117,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   component: any;
   clickOutsideHandler: ?Function;
+  blurOutsideHandler: ?Function;
   touchOutsideHandler: ?Function;
   delayTimer: ?TimeoutID;
   focusTime: number;
@@ -154,7 +157,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   getComponent() {
     const { props, state } = this;
-    const { onPopupAlign, popup, offsetX, offsetY } = props;
+    const { onPopupAlign, popup, offsetX, offsetY, liquidLayout } = props;
     const { destroyPopupOnHide, mask, zIndex, align, getTheme, className } = props;
     const mouseProps = {};
     if (this.isMouseEnterToShow()) {
@@ -179,6 +182,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
         getRootDomNode={this.getRootDomNode}
         isMask={mask}
         zIndex={zIndex}
+        liquidLayout={liquidLayout}
       >
         {typeof popup === 'function' ? popup() : popup}
       </Popup>
@@ -203,7 +207,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   }
 
   componentDidUpdate() {
-    const { getDocument } = this.props;
+    const { getDocument, closeBlur } = this.props;
     const { popupVisible } = this.state;
     if (popupVisible) {
       let currentDocument;
@@ -214,6 +218,10 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
           'mousedown',
           this.onDocumentClick
         );
+        if (!this.blurOutsideHandler && closeBlur) {
+          currentDocument = getDocument();
+          this.blurOutsideHandler = addEventListener(currentDocument, 'blur', this.onDocumentClick);
+        }
       }
       // always hide on mobile
       if (!this.touchOutsideHandler) {
@@ -298,6 +306,11 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     if (this.touchOutsideHandler) {
       this.touchOutsideHandler.remove();
       this.touchOutsideHandler = null;
+    }
+
+    if (this.blurOutsideHandler) {
+      this.blurOutsideHandler.remove();
+      this.blurOutsideHandler = null;
     }
   }
 
@@ -471,11 +484,13 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   forcePopup: boolean;
   onDocumentClick = (e: Object) => {
+    const { onDocumentClick } = this.props;
     const target = e.target;
     const root = findDOMNode(this);
     const popupNode = this.getPopupDomNode();
     if (!contains(root, target) && !contains(popupNode, target) && !this.forcePopup) {
-      this.close();
+      onDocumentClick && onDocumentClick(this.close.bind(this));
+      !onDocumentClick && this.close();
     }
   };
 

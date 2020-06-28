@@ -1,0 +1,111 @@
+[
+  {
+    "widgetName": "Alert",
+    "title": "警告提示",
+    "viewProps": [
+      { "name": "showIcon", "text": "图标展示" },
+      { "name": "closable", "text": "关闭功能" },
+      { "name": "type", "text": "类型" }
+    ],
+    "data": [
+      {
+        "title": "整体背景",
+        "iconClass": "alertBackground",
+        "data": [
+          {
+            "name": "警告提示整体样式",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "提示文本",
+        "iconClass": "Text",
+        "data": [
+          {
+            "name": "警告提示内容样式",
+            "path": ["AlertMessage"],
+            "props": [
+              {
+                "name": "message",
+                "typeInTheme": "text"
+              }
+            ],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "警告提示辅助性文字样式",
+            "path": ["AlertDescription"],
+            "props": [
+              {
+                "name": "description",
+                "typeInTheme": "text"
+              }
+            ],
+            "description": {
+              "textPart": {
+                "text": "辅助文本",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "提示图标",
+        "iconClass": "alertIcon",
+        "data": [
+          {
+            "name": "警告提示图标样式",
+            "path": ["AlertIcon"],
+            "props": [
+              {
+                "name": "icon",
+                "typeInTheme": "icon"
+              }
+            ],
+            "description": {
+              "textPart": {
+                "text": "图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "可关闭功能",
+        "iconClass": "iconClose",
+        "data": [
+          {
+            "name": "警告提示关闭文字样式",
+            "path": ["CloseText"],
+            "props": [
+              {
+                "name": "closeText",
+                "typeInTheme": "text"
+              }
+            ],
+            "description": {
+              "textPart": {
+                "text": "文本",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

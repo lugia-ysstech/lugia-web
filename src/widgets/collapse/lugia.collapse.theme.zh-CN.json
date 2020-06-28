@@ -1,0 +1,166 @@
+[
+  {
+    "widgetName": "Collapse",
+    "title": "折叠面板",
+    "viewProps": [
+      { "name": "showArrow", "text": "展示箭头" },
+      { "name": "accordion", "text": "手风琴模式" },
+      { "name": "zebraStripe", "text": "斑马风格" }
+    ],
+    "data": [
+      {
+        "title": "整体面板",
+        "iconClass": "collapseBackground",
+        "data": [
+          {
+            "name": "Collapse整体配置",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体面板",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "头部面板",
+        "iconClass": "collapseTitle",
+        "data": [
+          {
+            "name": "面板头部配置",
+            "path": ["Panel", "PanelHeader"],
+            "description": {
+              "appearancePart": {
+                "text": "头部面板",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "面板头部文字",
+            "path": ["Panel", "PanelHeaderText"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "面板头部图标",
+            "path": ["Panel", "PanelHeaderIcon"],
+            "description": {
+              "textPart": {
+                "text": "箭头图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "内容面板",
+        "iconClass": "collapseContent",
+        "data": [
+          {
+            "name": "面板内容样式",
+            "path": ["Panel", "PanelContent"],
+            "description": {
+              "appearancePart": {
+                "text": "内容面板",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "内容文本",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Collapse.Panel",
+    "title": "Panel 面板",
+    "viewProps": [
+      { "name": "showArrow", "text": "展示箭头" }
+    ],
+    "data": [
+      {
+        "title": "整体面板",
+        "iconClass": "collapseBackground",
+        "data": [
+          {
+            "name": "面板整体配置",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体面板",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "头部面板",
+        "iconClass": "collapseTitle",
+        "data": [
+          {
+            "name": "面板头部配置",
+            "path": ["PanelHeader"],
+            "description": {
+              "appearancePart": {
+                "text": "头部面板",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "面板头部文字",
+            "path": ["PanelHeaderText"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "面板头部图标",
+            "path": ["PanelHeaderIcon"],
+            "description": {
+              "textPart": {
+                "text": "箭头图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "内容面板",
+        "iconClass": "collapseContent",
+        "data": [
+          {
+            "name": "面板内容样式",
+            "path": ["PanelContent"],
+            "description": {
+              "appearancePart": {
+                "text": "内容面板",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "内容文本",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

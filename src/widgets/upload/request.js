@@ -13,14 +13,14 @@ export function getRequestXHR(): Object {
     : new window.ActiveXobject('Microsoft.XMLHTTP');
 }
 
-export function getFormData(data: Object, file: Object): Object {
+export function getFormData(data: Object, file: Object, uploadFileName: string): Object {
   const newData: Object = new FormData();
   if (data) {
     for (const field in data) {
       newData.append(field, data[field]);
     }
   }
-  if (file) newData.append('file', file);
+  if (file) newData.append(uploadFileName, file);
   return newData;
 }
 
@@ -51,8 +51,8 @@ const doGet = function(xhr, url, data, asynch) {
   xhr.send();
 };
 
-const doPost = function(xhr, url, { data, headers, file }, asynch) {
-  const params = getFormData(data, file);
+const doPost = function(xhr, url, { data, headers, file, uploadFileName }, asynch) {
+  const params = getFormData(data, file, uploadFileName);
   xhr.open('post', url, asynch);
 
   if (headers) {
@@ -106,7 +106,7 @@ function request(dataObject: Object) {
     addEventListener(xhr, 'load', onComplete, false);
   }
 
-  const { method = 'get', asynch = true, data } = dataObject;
+  const { method = 'get', asynch = true, data, uploadFileName } = dataObject;
   const type = method.toLocaleLowerCase();
   switch (type) {
     case 'get':
@@ -115,7 +115,7 @@ function request(dataObject: Object) {
     case 'post':
     default:
       const { headers, file } = dataObject;
-      doPost(xhr, url, { data, file, headers }, asynch);
+      doPost(xhr, url, { data, file, headers, uploadFileName }, asynch);
       break;
   }
 

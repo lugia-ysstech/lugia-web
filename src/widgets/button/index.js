@@ -19,6 +19,7 @@ import {
   getTextNormalTheme,
   getTextHoverStyle,
   getTextActiveTheme,
+  getTextFocusStyle,
   getTextDisabledTheme,
   getTextLoadingTheme,
   getIconStyle,
@@ -26,8 +27,7 @@ import {
   getIconCursor,
 } from '../css/button';
 import type { ButtonOutProps } from '../css/button';
-import { TextSizeTheme } from './theme';
-import { px2remcss } from '../css/units';
+import { iconSizeTheme } from './theme';
 import Icon from '../icon';
 
 type ButtonState = { clicked: boolean };
@@ -72,16 +72,17 @@ export default ThemeProvider(
             disabled,
           } = this.props;
           const hasChildren = !!children || !!text;
-          const normalIconFont = TextSizeTheme[size] || TextSizeTheme.default;
+          const normalIconSize = iconSizeTheme[size] || iconSizeTheme.default;
           const normalColor = getTextNormalTheme({ type, plain, loading });
           const hoverTheme = getTextHoverStyle({ type, plain });
           const activeTheme = getTextActiveTheme({ type, plain });
+          const focusTheme = getTextFocusStyle({ type, plain });
           const disabledTheme = getTextDisabledTheme({ type, plain });
           return deepMerge(
             {
               [viewClass]: {
                 normal: {
-                  ...normalIconFont,
+                  ...normalIconSize,
                   ...normalColor,
                   getCSS() {
                     return `
@@ -93,7 +94,7 @@ export default ThemeProvider(
                 hover: hoverTheme,
                 active: activeTheme,
                 disabled: disabledTheme,
-                focus: hoverTheme,
+                focus: focusTheme,
               },
             },
             theme

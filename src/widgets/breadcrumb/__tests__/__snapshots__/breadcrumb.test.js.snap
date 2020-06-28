@@ -9,7 +9,6 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 1.4rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -23,26 +22,23 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
 .c5 {
   font-size: 1.6rem;
   display: inline-block;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-.c6 {
-  font-size: 1.6rem;
-  display: inline-block;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 .c0 {
   height: 3rem;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   box-sizing: border-box;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
-  line-height: 3rem;
 }
 
 .c2 {
@@ -106,7 +102,8 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -116,7 +113,11 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "marginBottom": "0rem",
+              "marginLeft": "1rem",
+              "marginRight": "1rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -140,7 +141,8 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -150,7 +152,11 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "marginBottom": "0rem",
+              "marginLeft": "1rem",
+              "marginRight": "1rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -174,17 +180,22 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
+              "fontSize": "1.4rem",
             }
           }
         >
           二级菜单
         </a>
         <span
-          className="c6"
+          className="c5"
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
+              "marginBottom": "0rem",
+              "marginLeft": "0rem",
+              "marginRight": "0rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -205,7 +216,6 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 1.4rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -219,26 +229,23 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
 .c5 {
   font-size: 1.6rem;
   display: inline-block;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-.c6 {
-  font-size: 1.6rem;
-  display: inline-block;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 .c0 {
   height: 3rem;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   box-sizing: border-box;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
-  line-height: 3rem;
 }
 
 .c2 {
@@ -301,7 +308,8 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -311,7 +319,11 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "marginBottom": "0rem",
+              "marginLeft": "1rem",
+              "marginRight": "1rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -334,7 +346,8 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -344,7 +357,11 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "marginBottom": "0rem",
+              "marginLeft": "1rem",
+              "marginRight": "1rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -367,17 +384,22 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
+              "fontSize": "1.4rem",
             }
           }
         >
           二级菜单
         </a>
         <span
-          className="c6"
+          className="c5"
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
+              "marginBottom": "0rem",
+              "marginLeft": "0rem",
+              "marginRight": "0rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -398,7 +420,6 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 1.4rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -412,26 +433,23 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
 .c6 {
   font-size: 1.6rem;
   display: inline-block;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-.c7 {
-  font-size: 1.6rem;
-  display: inline-block;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 .c0 {
   height: 3rem;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   box-sizing: border-box;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
-  line-height: 3rem;
 }
 
 .c2 {
@@ -502,7 +520,8 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -523,7 +542,11 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
           className="c6"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "marginBottom": "0rem",
+              "marginLeft": "1rem",
+              "marginRight": "1rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -546,7 +569,8 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -564,10 +588,14 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
           />
         </a>
         <span
-          className="c7"
+          className="c6"
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
+              "marginBottom": "0rem",
+              "marginLeft": "0rem",
+              "marginRight": "0rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -588,7 +616,6 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 1.4rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -602,26 +629,23 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
 .c5 {
   font-size: 1.6rem;
   display: inline-block;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-.c6 {
-  font-size: 1.6rem;
-  display: inline-block;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 .c0 {
   height: 3rem;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   box-sizing: border-box;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
-  line-height: 3rem;
 }
 
 .c2 {
@@ -685,7 +709,8 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -695,7 +720,11 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "marginBottom": "0rem",
+              "marginLeft": "1rem",
+              "marginRight": "1rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -719,7 +748,8 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -729,7 +759,11 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "marginBottom": "0rem",
+              "marginLeft": "1rem",
+              "marginRight": "1rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -753,7 +787,8 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -763,7 +798,11 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "marginBottom": "0rem",
+              "marginLeft": "1rem",
+              "marginRight": "1rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -787,17 +826,22 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
+              "fontSize": "1.4rem",
             }
           }
         >
           
         </a>
         <span
-          className="c6"
+          className="c5"
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
+              "marginBottom": "0rem",
+              "marginLeft": "0rem",
+              "marginRight": "0rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -818,7 +862,6 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 1.4rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -832,26 +875,23 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
 .c5 {
   font-size: 1.6rem;
   display: inline-block;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-.c6 {
-  font-size: 1.6rem;
-  display: inline-block;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 .c0 {
   height: 3rem;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   box-sizing: border-box;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
-  line-height: 3rem;
 }
 
 .c2 {
@@ -914,7 +954,8 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -924,7 +965,11 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "marginBottom": "0rem",
+              "marginLeft": "1rem",
+              "marginRight": "1rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -947,7 +992,8 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -957,7 +1003,11 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "marginBottom": "0rem",
+              "marginLeft": "1rem",
+              "marginRight": "1rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -980,17 +1030,22 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
+              "fontSize": "1.4rem",
             }
           }
         >
           二级菜单
         </a>
         <span
-          className="c6"
+          className="c5"
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
+              "marginBottom": "0rem",
+              "marginLeft": "0rem",
+              "marginRight": "0rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -1011,7 +1066,6 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 1.4rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1025,26 +1079,23 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
 .c5 {
   font-size: 1.6rem;
   display: inline-block;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-.c6 {
-  font-size: 1.6rem;
-  display: inline-block;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 .c0 {
   height: 3rem;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   box-sizing: border-box;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
-  line-height: 3rem;
 }
 
 .c2 {
@@ -1108,7 +1159,8 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -1118,7 +1170,11 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "marginBottom": "0rem",
+              "marginLeft": "1rem",
+              "marginRight": "1rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -1142,7 +1198,8 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -1152,7 +1209,11 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "marginBottom": "0rem",
+              "marginLeft": "1rem",
+              "marginRight": "1rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -1176,7 +1237,8 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "fontSize": "1.4rem",
             }
           }
         >
@@ -1186,7 +1248,11 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           className="c5"
           style={
             Object {
-              "color": "#999999",
+              "color": "#9EA4AE",
+              "marginBottom": "0rem",
+              "marginLeft": "1rem",
+              "marginRight": "1rem",
+              "marginTop": "0rem",
             }
           }
         >
@@ -1210,17 +1276,22 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
           onMouseLeave={[Function]}
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
+              "fontSize": "1.4rem",
             }
           }
         >
           
         </a>
         <span
-          className="c6"
+          className="c5"
           style={
             Object {
-              "color": "#000",
+              "color": "#363B40",
+              "marginBottom": "0rem",
+              "marginLeft": "0rem",
+              "marginRight": "0rem",
+              "marginTop": "0rem",
             }
           }
         >

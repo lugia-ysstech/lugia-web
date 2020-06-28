@@ -3,6 +3,11 @@
   "title": "开关",
   "desc": "开关选择器",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "defaultValue": {
       "type": "boolean",
       "desc": "默认开关状态",
@@ -156,119 +161,9 @@
     }
   },
   "defaultTheme": {
-    "Switch_SwitchOpen": {
-      "normal": {
-        "width": 38,
-        "height": 20,
-        "border": {
-          "top": { "color": "", "style": "", "width": 0 },
-          "right": { "color": "", "style": "", "width": 0 },
-          "bottom": { "color": "", "style": "", "width": 0 },
-          "left": { "color": "", "style": "", "width": 0 }
-        },
-        "borderRadius": {
-          "topLeft": 20,
-          "topRight": 20,
-          "bottomLeft": 20,
-          "bottomRight": 20
-        },
-        "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
-        "fontSize": 12,
-        "color": "rgba(255, 255, 255, 0.8)",
-        "font": {
-          "fontWeight": "normal"
-        },
-        "background": {
-          "color": "#4d63ff"
-        }
-      }
-    },
-    "Switch_SwitchClosed": {
-      "normal": {
-        "width": 38,
-        "height": 20,
-        "border": {
-          "top": { "color": "", "style": "", "width": 0 },
-          "right": { "color": "", "style": "", "width": 0 },
-          "bottom": { "color": "", "style": "", "width": 0 },
-          "left": { "color": "", "style": "", "width": 0 }
-        },
-        "borderRadius": {
-          "topLeft": 20,
-          "topRight": 20,
-          "bottomLeft": 20,
-          "bottomRight": 20
-        },
-        "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
-        "fontSize": 12,
-        "color": "rgba(255, 255, 255, 0.8)",
-        "font": {
-          "fontWeight": "normal"
-        },
-        "background": {
-          "color": "#ccc"
-        }
-      }
-    },
-    "SwitchButton": {
-      "normal": {
-        "width": 14,
-        "height": 14,
-        "background": {
-          "color": "#fff"
-        },
-        "border": {
-          "top": { "color": "", "style": "", "width": 0 },
-          "right": { "color": "", "style": "", "width": 0 },
-          "bottom": { "color": "", "style": "", "width": 0 },
-          "left": { "color": "", "style": "", "width": 0 }
-        },
-        "borderRadius": {
-          "topLeft": 7,
-          "topRight": 7,
-          "bottomLeft": 7,
-          "bottomRight": 7
-        },
-        "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)"
-      }
-    },
     "Container": {
       "normal": {
-        "width": 38,
-        "height": 20,
-        "border": {
-          "top": { "color": "", "style": "", "width": 0 },
-          "right": { "color": "", "style": "", "width": 0 },
-          "bottom": { "color": "", "style": "", "width": 0 },
-          "left": { "color": "", "style": "", "width": 0 }
-        },
-        "borderRadius": {
-          "topLeft": 0,
-          "topRight": 0,
-          "bottomLeft": 0,
-          "bottomRight": 0
-        },
-        "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
-        "fontSize": 12,
-        "color": "rgba(255, 255, 255, 0.8)",
-        "font": {
-          "fontWeight": "normal"
-        },
-        "background": {
-          "color": "transparent"
-        },
-        "margin": {
-          "top": 0,
-          "right": 0,
-          "bottom": 0,
-          "left": 0
-        },
-        "padding": {
-          "top": 0,
-          "right": 0,
-          "bottom": 0,
-          "left": 0
-        }
+        "width": 38
       }
     }
   }

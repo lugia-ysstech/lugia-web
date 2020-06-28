@@ -15,8 +15,10 @@ import { getAttributeFromObject } from '../common/ObjectUtils.js';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
-import colorsFunc from '../css/stateColor';
-const { superLightColor } = colorsFunc();
+import { getBorderRadius } from '@lugia/theme-utils';
+
+const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 
 const TabContentContainer = CSSComponent({
   tag: 'div',
@@ -34,6 +36,16 @@ const TabContentContainer = CSSComponent({
       ['font'],
       ['color'],
     ],
+    getThemeMeta: (theme: Object, themeProps: Object) => {
+      const {
+        propsConfig: { tabType },
+      } = themeProps;
+      const borderRadiusStyle =
+        tabType === 'window' ? { borderRadius: getBorderRadius(borderRadiusValue) } : {};
+      return {
+        ...borderRadiusStyle,
+      };
+    },
     getCSS: (theme: Object, themeProps: Object) => {
       const {
         propsConfig: { tabPosition },
@@ -102,11 +114,6 @@ const WindowContainer = CSSComponent({
       ['width'],
       ['height'],
     ],
-    defaultTheme: {
-      background: {
-        color: superLightColor,
-      },
-    },
   },
   disabled: {
     selectNames: [],
@@ -123,7 +130,14 @@ const OutContainer = CSSComponent({
   tag: 'div',
   className: 'OutContainer',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+    ],
   },
   disabled: {
     selectNames: [],
@@ -132,16 +146,22 @@ const OutContainer = CSSComponent({
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     position: relative;
-    min-height: 100%;
     display: flex;
     flex-direction: column;
   `,
 });
 const VerticalOutContainer = CSSComponent({
   tag: 'div',
-  className: 'OutContainer',
+  className: 'VerticalOutContainer',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+    ],
   },
   disabled: {
     selectNames: [],
@@ -168,6 +188,8 @@ type TabsState = {
 
 type TabsProps = {
   activityValue?: string,
+  activeValue?: string,
+  defaultActiveValue?: string,
   defaultActivityValue?: string,
   addIcon?: string,
   deleteIcon?: string,
@@ -229,7 +251,6 @@ export function getDefaultData(props: Object) {
           return;
         }
         const item = { ...child.props };
-        item.value = child.value;
         configData && configData.push(item);
       });
     } else {
@@ -253,11 +274,15 @@ class TabsBox extends Component<TabsProps, TabsState> {
   static displayName = Widget.Tabs;
 
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
-    const { activityValue, defaultActivityValue } = props;
+    const { activeValue, defaultActiveValue, activityValue, defaultActivityValue } = props;
 
     let theData = getDefaultData(props);
     let theActivityValue =
-      activityValue || defaultActivityValue || (theData.length !== 0 ? theData[0].value : null);
+      activeValue ||
+      defaultActiveValue ||
+      activityValue ||
+      defaultActivityValue ||
+      (theData.length !== 0 ? theData[0].value : null);
     if (state) {
       theActivityValue = hasTargetInProps('activityValue', props)
         ? theActivityValue
@@ -282,7 +307,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       tabType === 'line' && isVertical(tabPosition) ? VerticalOutContainer : OutContainer;
     const containerThemeProps = this.props.getPartOfThemeProps('Container');
     let target = (
-      <ContainerBox className={'OutContainer'} themeProps={containerThemeProps}>
+      <ContainerBox themeProps={containerThemeProps}>
         <TabHeader {...this.getTabHeaderProps()} />
         {this.getChildrenContent()}
       </ContainerBox>
@@ -309,7 +334,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
                 bottom: 10,
               },
               background: {
-                color: superLightColor,
+                color: disableColor,
               },
             },
           },
@@ -439,11 +464,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getChildrenContent() {
     const { activityValue, data } = this.state;
-    const { tabPosition, themeProps, hideContent } = this.props;
+    const { tabPosition, themeProps, hideContent, tabType } = this.props;
     if (data) {
       themeProps.propsConfig = { tabPosition };
       const contentThemeProps = this.props.getPartOfThemeProps('ContentBlock', {
-        props: { tabPosition },
+        props: { tabPosition, tabType },
       });
       if (hideContent) {
         return;

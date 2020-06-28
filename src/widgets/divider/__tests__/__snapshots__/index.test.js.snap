@@ -6,9 +6,8 @@ exports[`Divider css 1`] = `
   white-space: nowrap;
   vertical-align: middle;
   position: relative;
-  background-color: #e8e8e8;
-  min-width: 40rem;
-  min-height: 0.1rem;
+  background-color: #cccccc;
+  min-width: 0.8rem;
 }
 
 .c5 {
@@ -16,9 +15,8 @@ exports[`Divider css 1`] = `
   white-space: nowrap;
   vertical-align: middle;
   position: relative;
-  background-color: #e8e8e8;
-  min-width: 0.2rem;
-  min-height: 1rem;
+  background-color: #cccccc;
+  min-width: 0.1rem;
 }
 
 .c2 {

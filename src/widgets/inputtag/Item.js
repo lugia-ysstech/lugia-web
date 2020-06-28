@@ -9,10 +9,12 @@ import Widget from '../consts/index';
 import ThemeHoc from '@lugia/theme-hoc';
 import Icon from '../icon';
 import { deepMerge } from '@lugia/object-utils';
-import { ItemContainer, ItemText, ItemWrap, FontSize } from '../css/inputtag';
-import colorsFunc from '../css/stateColor';
-export const { mediumGreyColor } = colorsFunc();
+import { ItemContainer, ItemText, ItemWrap } from '../css/inputtag';
+import { px2remcss } from '../css/units';
+import changeColor from '../css/utilsColor';
+import get from '../css/theme-common-dict';
 
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 type ItemProps = {
   className?: string,
   closeable?: boolean,
@@ -21,6 +23,7 @@ type ItemProps = {
   onCloseClick?: Function,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
+  disabled?: boolean,
 };
 
 type ItemState = {};
@@ -30,8 +33,25 @@ class ItemTag extends React.Component<ItemProps, ItemState> {
   width: number;
   static displayName = Widget.InputTagItem;
   render() {
-    const { className, closeable = true, onClick, onCloseClick, getPartOfThemeProps } = this.props;
-    const TagWrapThemeProps = getPartOfThemeProps('TagWrap');
+    const {
+      className,
+      closeable = true,
+      onClick,
+      onCloseClick,
+      getPartOfThemeProps,
+      disabled,
+    } = this.props;
+    const defaultTagWrapTheme = {
+      themeConfig: {
+        normal: {
+          color: darkGreyColor,
+          background: {
+            color: changeColor(get('themeColor'), 0, 0, 10).rgba,
+          },
+        },
+      },
+    };
+    const TagWrapThemeProps = deepMerge(defaultTagWrapTheme, getPartOfThemeProps('TagWrap'));
     return (
       <ItemWrap>
         <ItemContainer
@@ -44,6 +64,7 @@ class ItemTag extends React.Component<ItemProps, ItemState> {
           <ItemText themeProps={TagWrapThemeProps}>{this.props.children}</ItemText>
           {closeable ? (
             <Icon
+              disabled={disabled}
               iconClass="lugia-icon-reminder_close_circle"
               {...this.getIconTheme()}
               singleTheme
@@ -59,15 +80,24 @@ class ItemTag extends React.Component<ItemProps, ItemState> {
     const { viewClass, theme } = this.props.getPartOfThemeHocProps('TagIcon');
     const defaultIconTheme = {
       normal: {
-        color: mediumGreyColor,
+        color: get('mediumGreyColor'),
         font: {
-          size: FontSize,
+          size: get('xxsFontSize'),
+        },
+        padding: {
+          left: px2remcss(4),
         },
         getCSS: () => {
           return `
           transition: all 0.3s
           `;
         },
+      },
+      disabled: {
+        color: get('disableTextColor'),
+      },
+      hover: {
+        color: get('themeColor'),
       },
     };
 

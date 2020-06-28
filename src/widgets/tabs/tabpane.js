@@ -15,13 +15,20 @@ import { ObjectUtils } from '@lugia/type-utils';
 
 import CSSComponent, { css, keyframes, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
-
+import get from '../css/theme-common-dict';
 import { deepMerge } from '@lugia/object-utils';
-import colorsFunc from '../css/stateColor';
 
 import { getBorder } from '@lugia/theme-utils';
-
-const { themeColor, defaultColor, disableTextColor, mediumGreyColor, darkGreyColor } = colorsFunc();
+const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
+const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const marginToSameElement = '$lugia-dict.@lugia/lugia-web.marginToSameElement';
+const xxsFontSize = '$lugia-dict.@lugia/lugia-web.xxsFontSize';
+const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
 
 const SelectTab = CSSComponent({
   tag: 'div',
@@ -41,6 +48,10 @@ const SelectTab = CSSComponent({
       ['boxShadow'],
       ['textAlign'],
     ],
+    defaultTheme: {
+      color: darkGreyColor,
+      fontSize: 14,
+    },
     getCSS: (theme: Object, themeProps: Object) => {
       const { color } = theme;
       const {
@@ -48,7 +59,11 @@ const SelectTab = CSSComponent({
           isSelect,
           tabType,
           tabPosition,
-          lineTheme: { height: lineHeight = 2, background: { color: lineColor } = {} } = {},
+          lineTheme: {
+            width: lineWidth,
+            height: lineHeight,
+            background: { color: lineColor } = {},
+          } = {},
         },
       } = themeProps;
       let display = 'inline-flex';
@@ -66,33 +81,29 @@ const SelectTab = CSSComponent({
       const textAlignStyle = `text-align:${textAlign};`;
       if (isSelect && tabType === 'line') {
         let cssString = css`
-          width: 100%;
-          height: ${lineHeight}px;
+          width: ${lineWidth ? lineWidth + 'px' : '100%'};
+          height: ${lineHeight || 2}px;
           left: 50%;
-          animation: ${addWidth} 0.2s linear forwards;
           transform: translateX(-50%);
         `;
         let pos = tabPosition === 'top' ? 'bottom: 0px;' : 'top: 0px;';
         if (isVertical(tabPosition)) {
           pos = tabPosition === 'left' ? 'right: -20px;' : 'left: -20px;';
           cssString = css`
-            width: ${lineHeight}px;
-            height: 100%;
+            width: ${lineWidth || 2}px;
+            height: ${lineHeight ? lineHeight + 'px' : '100%'};
             top: 50%;
-            animation: ${addHeight} 0.2s linear forwards;
             transform: translateY(-50%);
           `;
         }
         return css`
           display: ${display};
-          ${textAlignStyle}
-          & > div::before {
+          ${textAlignStyle} & > div::before {
             content: '';
-            background: ${lineColor || color || themeColor};
+            background: ${lineColor || color || get('themeColor')};
             border-radius: 2px;
             position: absolute;
-            ${pos}
-            ${cssString}
+            ${pos} ${cssString};
           }
         `;
       }
@@ -101,8 +112,7 @@ const SelectTab = CSSComponent({
       }
       return css`
         display: ${display};
-        ${textAlignStyle}
-        ${position}
+        ${textAlignStyle} ${position};
       `;
     },
   },
@@ -124,7 +134,7 @@ const SelectTab = CSSComponent({
         }`;
       }
       return css`
-        ${cssString}
+        ${cssString};
       `;
     },
   },
@@ -237,6 +247,9 @@ const Title = CSSComponent({
       max-width: 100%;
     }
   `,
+  option: {
+    hover: true,
+  },
 });
 
 const CardTitle = CSSComponent({
@@ -245,10 +258,10 @@ const CardTitle = CSSComponent({
   normal: {
     selectNames: [['height'], ['lineHeight']],
     defaultTheme: {
-      height: 31,
-      lineHeight: 31,
+      height: 32,
+      lineHeight: 32,
     },
-    getStyle: (theme: Object, themeProps: Object) => {
+    getThemeMeta: (theme: Object, themeProps: Object) => {
       const { height } = theme;
       const { propsConfig: { tabType } = {} } = themeProps;
       if (tabType === 'card') {
@@ -276,13 +289,17 @@ const CardTitle = CSSComponent({
   },
   css: css`
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     box-sizing: border-box;
     user-select: none;
     &:focus {
-      color: ${themeColor};
+      color: ${get('themeColor')};
     }
   `,
+  option: {
+    hover: true,
+  },
 });
 
 const ClearButtonContainer = CSSComponent({
@@ -370,6 +387,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       disabled,
       showDeleteBtn,
       showDividerLine,
+      createEventChannel,
     } = this.props;
     const { TargetTab, themeProps } = this.getHTabPaneThemeProps(
       tabType,
@@ -383,6 +401,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     const suffixIconTheme = this.getIconTheme('SuffixIcon', isSelect);
     const isLineType = matchType(tabType, 'line');
 
+    const channel = createEventChannel(['hover']);
     const Target = (
       <TargetTab
         themeProps={themeProps}
@@ -393,34 +412,38 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
         tabPosition={tabPosition}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
+        {...channel.provider}
       >
         {isLineType ? (
           <Title
+            lugiaConsumers={channel.consumer}
             className={'lineTitle'}
             themeProps={themeProps}
             tabType={tabType}
             isSelect={isSelect}
             disabled={disabled}
           >
-            {this.getTabIconContainer(icon, prefixIconTheme)}
+            {this.getTabIconContainer(icon, prefixIconTheme, channel)}
             {title}
-            {this.getTabIconContainer(suffixIcon, suffixIconTheme)}
+            {this.getTabIconContainer(suffixIcon, suffixIconTheme, channel)}
+            {this.getClearButton()}
           </Title>
         ) : (
           <CardTitle
+            lugiaConsumers={channel.consumer}
             className={'cardTitle'}
             themeProps={themeProps}
             tabType={tabType}
             isSelect={isSelect}
             disabled={disabled}
           >
-            {this.getTabIconContainer(icon, prefixIconTheme)}
+            {this.getTabIconContainer(icon, prefixIconTheme, channel)}
             {title}
-            {this.getTabIconContainer(suffixIcon, suffixIconTheme)}
+            {this.getTabIconContainer(suffixIcon, suffixIconTheme, channel)}
           </CardTitle>
         )}
 
-        {this.getClearButton()}
+        {!isLineType && this.getClearButton()}
       </TargetTab>
     );
     let resTabPan = Target;
@@ -456,31 +479,23 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     let selectThemeProps = this.props.getPartOfThemeProps('SelectTabPan', {
       props: { isSelect, tabType, tabPosition, showDeleteBtn, disabled },
     });
-    selectThemeProps = deepMerge(
-      titleThemeProps,
-      { themeConfig: { normal: { color: themeColor } } },
-      selectThemeProps
-    );
-    const baseDefaultTab = BaseTab;
+    const defaultSelectTheme = () => ({ themeConfig: { normal: { color: get('themeColor') } } });
+    selectThemeProps = deepMerge(titleThemeProps, defaultSelectTheme(), selectThemeProps);
     switch (tabType) {
       case 'card':
         const targetObj = {
           themeConfig: {
             normal: {
-              border: getBorder(
-                { color: '#e8e8e8', width: 1, style: 'solid' },
-                { directions: ['l', 'r', 't'] }
-              ),
               borderRadius: {
-                topLeft: 4,
-                topRight: 4,
+                topLeft: borderRadiusValue,
+                topRight: borderRadiusValue,
               },
               margin: {
                 left: 4,
                 right: 4,
               },
               background: {
-                color: '#e8e8e8',
+                color: disableColor,
               },
             },
           },
@@ -490,18 +505,18 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           themeConfig: {
             normal: {
               margin: {
-                left: 4,
-                right: 4,
+                left: borderRadiusValue,
+                right: borderRadiusValue,
               },
               border: getBorder(
-                { color: '#e8e8e8', width: 1, style: 'solid' },
+                { color: superLightColor, width: 1, style: 'solid' },
                 { directions: ['l', 'r', 't'] }
               ),
               borderRadius: {
-                topLeft: 4,
-                topRight: 4,
+                topLeft: borderRadiusValue,
+                topRight: borderRadiusValue,
               },
-              background: { color: defaultColor },
+              background: { color: 'white' },
             },
           },
         };
@@ -513,11 +528,11 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
             normal: {
               border: getBorder({ border: 'none' }),
               borderRadius: {
-                topLeft: 4,
-                topRight: 4,
+                topLeft: borderRadiusValue,
+                topRight: borderRadiusValue,
               },
               background: {
-                color: '#fff',
+                color: 'white',
               },
             },
           },
@@ -527,7 +542,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       default:
         break;
     }
-    const TargetTab = isSelect ? SelectTab : baseDefaultTab;
+    const TargetTab = isSelect ? SelectTab : BaseTab;
     const themeProps = isSelect ? selectThemeProps : titleThemeProps;
     return { TargetTab, themeProps };
   }
@@ -544,14 +559,26 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     const themeObj = {
       [viewClass]: {
         normal: {
+          color: darkGreyColor,
+          fontSize: sFontSize,
           getThemeMeta: (theme: Object, themeProps: Object) => {
-            return { margin: { left: suffixIcon ? 10 : 0, right: icon ? 10 : 0 } };
+            const { propsConfig: { isSelect } = {} } = themeProps;
+            const titleSelectColor = isSelect ? { color: themeColor } : {};
+            return {
+              margin: {
+                left: suffixIcon ? marginToSameElement : 0,
+                right: icon ? marginToSameElement : 0,
+              },
+              ...titleSelectColor,
+            };
           },
         },
+        hover: {
+          color: themeColor,
+        },
         disabled: {
-          getThemeMeta: (theme: Object, themeProps: Object) => {
-            return { cursor: 'not-allowed', color: disableTextColor };
-          },
+          color: disableTextColor,
+          cursor: 'not-allowed',
         },
       },
     };
@@ -579,16 +606,17 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     if (!disabled) onClick && onClick({ index, activityValue: keyVal });
   };
 
-  getTabIconContainer(icon: ?string, themeProps?: Object = {}) {
-    return icon ? this.getIcon(icon, themeProps) : null;
+  getTabIconContainer(icon: ?string, themeProps?: Object = {}, channel: any) {
+    return icon ? this.getIcon(icon, themeProps, channel) : null;
   }
-  getIcon(icon: string, themeProps: Object) {
-    const { isSelect, disabled } = this.props;
+  getIcon(icon: string, themeProps: Object, channel: any) {
+    const { disabled, isSelect } = this.props;
     if (ObjectUtils.isString(icon)) {
       return (
         <Icon
+          lugiaConsumers={channel.consumer}
+          propsConfig={{ isSelect }}
           {...themeProps}
-          isSelect={isSelect}
           iconClass={icon}
           disabled={disabled}
           singleTheme
@@ -608,7 +636,15 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     const themeObj = {
       [viewClass]: {
         Divider: {
-          normal: deepMerge({ [props]: size }, normal),
+          normal: deepMerge(
+            {
+              background: {
+                color: get('superLightColor'),
+              },
+              [props]: size,
+            },
+            normal
+          ),
         },
       },
     };
@@ -628,6 +664,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       [viewClass]: {
         normal: {
           color: mediumGreyColor,
+          fontSize: xxsFontSize,
         },
         hover: {
           color: darkGreyColor,

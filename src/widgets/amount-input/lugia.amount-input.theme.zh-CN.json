@@ -1,0 +1,160 @@
+[
+  {
+    "widgetName": "AmountInput",
+    "title": "金额输入框",
+    "viewProps": [
+      {
+        "name": "disabled",
+        "text": "禁用"
+      },
+      {
+        "name": "isShowClearButton",
+        "text": "清除功能"
+      },
+      {
+        "name": "validateType",
+        "text": "校验类型"
+      },
+      {
+        "name": "validateStatus",
+        "text": "校验状态"
+      }
+    ],
+    "data": [
+      {
+        "title": "主体",
+        "iconClass": "AmountInput",
+        "data": [
+          {
+            "name": "输入框整体配置",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "输入框",
+                "desc": "输入框配置"
+              }
+            },
+            "props": [
+              {
+                "name": "value",
+                "typeInTheme": "text"
+              }
+            ]
+          },
+          {
+            "name": "提示文本",
+            "path": ["Placeholder"],
+            "description": {
+              "textPart": {
+                "text": "提示文本",
+                "desc": "提示文本配置"
+              }
+            },
+            "props": [
+              {
+                "name": "placeHolder",
+                "typeInTheme": "text"
+              }
+            ]
+          },
+          {
+            "name": "清除图标",
+            "path": ["ClearButton"],
+            "description": {
+              "textPart": {
+                "text": "清除图标",
+                "desc": "清除图标配置"
+              }
+            },
+            "props": [
+              {
+                "name": "clearIcon",
+                "typeInTheme": "icon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "前缀符号",
+        "iconClass": "Amountsymbol",
+        "data": [
+          {
+            "name": "前缀符号配置",
+            "path": ["AmountInputPrefix"],
+            "description": {
+              "textPart": {
+                "text": "前缀符号",
+                "desc": "金额输入框前缀符号"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "提示框",
+        "iconClass": "Amountprompt",
+        "data": [
+          {
+            "name": "提示框",
+            "path": ["AmountTip", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "提示框外框",
+                "desc": "输入框提示框外框部分"
+              }
+            }
+          },
+          {
+            "name": "提示框",
+            "path": ["AmountTip", "TooltipTitle"],
+            "description": {
+              "textPart": {
+                "text": "提示信息文字",
+                "desc": "提示信息文字部分"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "校验失败",
+        "iconClass": "Verificationfailed",
+        "data": [
+          {
+            "name": "校验失败的输入框",
+            "path": ["ValidateErrorInput"],
+            "description": {
+              "textPart": {
+                "text": "校验失败的输入框",
+                "desc": "校验失败的输入框配置"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "失败提示",
+        "iconClass": "Failureprompt",
+        "data": [
+          {
+            "name": "校验失败提示信息",
+            "path": ["ValidateErrorText"],
+            "description": {
+              "textPart": {
+                "text": "校验失败提示信息",
+                "desc": "配置校验失败的提示信息"
+              }
+            },
+            "props": [
+              {
+                "name": "help",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

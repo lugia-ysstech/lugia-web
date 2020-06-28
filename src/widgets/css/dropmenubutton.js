@@ -8,33 +8,104 @@ import colorsFunc from './stateColor';
 import { px2remcss } from './units';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import { getBorder } from '@lugia/theme-utils';
+import { getThemeDefaultConfigFromSource } from '../utils';
+import get from './theme-common-dict';
 
-export const {
-  themeColor,
-  disableColor,
-  blackColor,
-  darkGreyColor,
-  lightGreyColor,
-  defaultColor,
-  hoverColor,
-  mouseDownColor,
-  borderRadius,
-} = colorsFunc();
+type SizeThemeConfig = {
+  small: { [key: string]: object },
+  default: { [key: string]: object },
+  large: { [key: string]: object },
+};
 
-const DefaultHeight = 32;
 const DefaultWidth = 92;
 
-const getHoverBgColorFromNormalOrHover = (params: Object) => {
+const smallSize = '$lugia-dict.@lugia/lugia-web.smallSize';
+const normalSize = '$lugia-dict.@lugia/lugia-web.normalSize';
+const largeSize = '$lugia-dict.@lugia/lugia-web.largeSize';
+
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const themeDisabledColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
+const themeFocusColor = '$lugia-dict.@lugia/lugia-web.themeFocusColor';
+const themeActiveColor = '$lugia-dict.@lugia/lugia-web.themeActiveColor';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const iconSamllSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
+const iconDefaultSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+const iconLargeSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+const descriptionFontSize = '$lugia-dict.@lugia/lugia-web.descriptionFontSize';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
+
+const heightSize = {
+  small: smallSize,
+  default: normalSize,
+  large: largeSize,
+};
+const textFontSize = {
+  small: descriptionFontSize,
+  default: sectionFontSize,
+  large: sectionFontSize,
+};
+const iconSize = {
+  small: iconSamllSize,
+  default: iconDefaultSize,
+  large: iconLargeSize,
+};
+
+const crateDropMenuThemeConfig = (type: SizeType) => {
+  return {
+    Container: {
+      normal: {
+        height: heightSize[type],
+      },
+    },
+    TextContainer: {
+      normal: {
+        fontSize: textFontSize[type],
+      },
+    },
+    PrefixIcon: {
+      normal: {
+        fontSize: iconSize[type],
+      },
+    },
+    SuffixIcon: {
+      normal: {
+        fontSize: iconSize[type],
+      },
+    },
+    SwitchIcon: {
+      normal: {
+        fontSize: iconSize[type],
+      },
+    },
+  };
+};
+
+export const dropMenuThemeDefaultConfig: SizeThemeConfig = {
+  small: crateDropMenuThemeConfig('small'),
+  default: crateDropMenuThemeConfig('default'),
+  large: crateDropMenuThemeConfig('large'),
+};
+
+export const getMenuThemeDefaultConfig = (sizeType: SizeType, themeName: string) => {
+  return getThemeDefaultConfigFromSource(dropMenuThemeDefaultConfig)(sizeType, themeName);
+};
+
+const getHoverBgColorFromNormalOrHover = (params: Object, checked) => {
   const { normal = {}, hover = {} } = params;
   const { background: hoverBg = {} } = hover;
 
   const { background: normalBg = {} } = normal;
-
   return hoverBg.color
     ? hoverBg.color
     : normalBg.color
     ? colorsFunc(normalBg.color).hoverColor
-    : hoverColor;
+    : checked
+    ? get('themeFocusColor')
+    : get('themeHoverColor');
 };
 
 const getActiveBgColorFromNormalOrActive = (params: Object) => {
@@ -47,7 +118,7 @@ const getActiveBgColorFromNormalOrActive = (params: Object) => {
     ? activeBg.color
     : normalBg.color
     ? colorsFunc(normalBg.color).mouseDownColor
-    : mouseDownColor;
+    : themeActiveColor;
 };
 
 const getNoDividedCustomsDefaultCSS = themeMeta => {
@@ -55,7 +126,7 @@ const getNoDividedCustomsDefaultCSS = themeMeta => {
   const { color = themeColor } = background;
 
   return {
-    color: '#fff',
+    color: defaultColor,
     border: getBorder({
       color,
       width: 1,
@@ -68,19 +139,43 @@ const getNoDividedCustomsDefaultCSS = themeMeta => {
 };
 
 const getNoDividedCheckedDefaultBasicCSS = param => {
-  const { normal: { color = themeColor } = {} } = param;
+  const { normal: { color = themeFocusColor } = {} } = param;
   return {
     border: 'none',
-    color: colorsFunc(color).hoverColor,
+    color,
+  };
+};
+
+const getNoDividedCheckedDefaultPrimary = param => {
+  const { normal: { color = themeFocusColor } = {} } = param;
+  return {
+    border: getBorder(get('focusBorder')),
+    color,
+  };
+};
+
+const getNoDividedCheckedDefaultCustoms = param => {
+  const { normal: { color = themeFocusColor } = {} } = param;
+  return {
+    color: defaultColor,
+    border: getBorder({
+      color,
+      width: 1,
+      style: 'solid',
+    }),
+    background: {
+      color,
+    },
   };
 };
 
 const getNoDividedCheckedDefaultCSS = (type, param) => {
   if (type === 'basic') {
     return getNoDividedCheckedDefaultBasicCSS(param);
+  } else if (type === 'primary') {
+    return getNoDividedCheckedDefaultPrimary(param);
   }
-
-  return getNoDividedHoverCSS(type, param);
+  return getNoDividedCheckedDefaultCustoms(param);
 };
 
 const getNoDividedDefaultCSS = (type, themeMeta) => {
@@ -90,12 +185,8 @@ const getNoDividedDefaultCSS = (type, themeMeta) => {
     color: themeColor,
   };
   const primaryCSS = {
-    color: darkGreyColor,
-    border: getBorder({
-      color: lightGreyColor,
-      width: 1,
-      style: 'solid',
-    }),
+    color: blackColor,
+    border: getBorder(get('normalBorder')),
   };
   return type === 'basic'
     ? basicCSS
@@ -110,7 +201,7 @@ const getColorFromNormalOrHover = (params: Object) => {
     ? hover.color
     : normal.color
     ? colorsFunc(normal.color).hoverColor
-    : hoverColor;
+    : themeColor;
 };
 
 const getColorFromNormalOrActive = params => {
@@ -120,18 +211,18 @@ const getColorFromNormalOrActive = params => {
     ? active.color
     : normal.color
     ? colorsFunc(normal.color).mouseDownColor
-    : mouseDownColor;
+    : themeActiveColor;
 };
 
 const getNoDividedBasicHoverCSS = param => {
-  const color = getColorFromNormalOrHover(param, themeColor);
+  const color = getColorFromNormalOrHover(param, get('themeColor'));
   return {
     color,
   };
 };
 
 const getNoDividedBasicActiveCSS = param => {
-  const color = getColorFromNormalOrActive(param, themeColor);
+  const color = getColorFromNormalOrActive(param, get('themeColor'));
   return {
     color,
   };
@@ -154,7 +245,7 @@ const getNoDividedCustomsHoverCSS = param => {
 };
 
 const getNoDividedCustomsActiveCSS = param => {
-  const activebgColor = getActiveBgColorFromNormalOrActive(param, themeColor);
+  const activebgColor = getActiveBgColorFromNormalOrActive(param);
   const activeCSS = {
     background: {
       color: activebgColor,
@@ -169,28 +260,20 @@ const getNoDividedCustomsActiveCSS = param => {
 };
 
 const getNoDividedPrimaryHoverCSS = param => {
-  const color = getColorFromNormalOrHover(param, themeColor);
+  const color = getColorFromNormalOrHover(param, get('themeColor'));
 
   return {
     color,
-    border: getBorder({
-      color,
-      width: 1,
-      style: 'solid',
-    }),
+    border: getBorder(get('hoverBorder')),
   };
 };
 
 const getNoDividedPrimaryAativeCSS = param => {
-  const color = getColorFromNormalOrActive(param, themeColor);
+  const color = getColorFromNormalOrActive(param, get('themeColor'));
 
   return {
     color,
-    border: getBorder({
-      color,
-      width: 1,
-      style: 'solid',
-    }),
+    border: getBorder(get('activeBorder')),
   };
 };
 
@@ -219,14 +302,15 @@ const getNoDividedActiveCSS = (type, param) => {
 const getNoDividedDisabledCSS = type => {
   if (type === 'basic') {
     return {
-      color: disableColor,
+      color: themeDisabledColor,
     };
   } else if (type === 'primary') {
     return {
-      color: disableColor,
+      color: disableTextColor,
+      border: getBorder(get('disabledBorder')),
     };
   }
-  const disColor = colorsFunc(themeColor).disabledColor;
+  const disColor = themeDisabledColor;
   return {
     border: getBorder({
       color: disColor,
@@ -237,6 +321,12 @@ const getNoDividedDisabledCSS = type => {
       color: disColor,
     },
   };
+};
+
+const getDividedContainerHeight = size => {
+  const height =
+    size === 'small' ? get('smallSize') : size === 'large' ? get('largeSize') : get('normalSize');
+  return height;
 };
 
 export const NoDividedContainer = CSSComponent({
@@ -264,17 +354,15 @@ export const NoDividedContainer = CSSComponent({
       const { propsConfig, themeConfig } = themeProps;
       const { normal = {}, hover = {} } = themeConfig;
       const { type, checked } = propsConfig;
-      const { height = DefaultHeight } = themeMeta;
-
+      const { height = get('normalSize') } = themeMeta;
       const defaultCSS = checked
         ? getNoDividedCheckedDefaultCSS(type, { normal, hover })
         : getNoDividedDefaultCSS(type, themeMeta);
       return {
-        lineHeight: px2remcss(height - 2),
+        height,
         ...defaultCSS,
       };
     },
-    defaultTheme: {},
   },
   hover: {
     selectNames: [
@@ -297,7 +385,6 @@ export const NoDividedContainer = CSSComponent({
 
       return { ...hoverCSS };
     },
-    defaultTheme: {},
   },
   active: {
     selectNames: [
@@ -345,9 +432,8 @@ export const NoDividedContainer = CSSComponent({
     },
   },
   css: css`
-    height: ${px2remcss(DefaultHeight)};
     width: ${px2remcss(DefaultWidth)};
-    border-radius: ${px2remcss(borderRadius)};
+    border-radius: ${() => px2remcss(get('borderRadiusValue'))};
     transition-property: background-color, border, border-radius, opacity, box-shadow;
     transition-duration: 0.3s;
     border-width: ${px2remcss(1)};
@@ -388,9 +474,10 @@ export const NoDividedWrap = StaticComponent({
   css: css`
     height: 100%;
     width: 100%;
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
     overflow: hidden;
-    padding: 0 ${px2remcss(4)};
+    justify-content: center;
     white-space: nowrap;
     & i {
       vertical-align: middle;
@@ -412,7 +499,6 @@ export const NoDividedIconWrap = CSSComponent({
       ['cursor'],
     ],
     getThemeMeta: (themeMeta, themeProps) => {},
-    defaultTheme: {},
   },
   css: css`
     display: inline-block;
@@ -424,13 +510,21 @@ export const NoDividedIconWrap = CSSComponent({
 
 const getDividedHoverCSS = (type, themeConfig = {}) => {
   const { hover = {} } = themeConfig;
-  const color = hover.color ? hover.color : type === 'primary' ? hoverColor : defaultColor;
+  const color = hover.color
+    ? hover.color
+    : type === 'primary'
+    ? get('hoverBorder').color
+    : get('defaultColor');
   return color;
 };
 
 const getDividedActiveCSS = (type, themeConfig = {}) => {
   const { active = {} } = themeConfig;
-  const color = active.color ? active.color : type === 'primary' ? mouseDownColor : defaultColor;
+  const color = active.color
+    ? active.color
+    : type === 'primary'
+    ? get('activeBorder').color
+    : get('defaultColor');
   return color;
 };
 
@@ -453,28 +547,30 @@ export const DividedContainer = CSSComponent({
       ['borderRadius'],
     ],
     getThemeMeta: themeMeta => {
-      const { height = DefaultHeight } = themeMeta;
-      return { lineHeight: px2remcss(height - 2) };
+      const { height = get('normalSize') } = themeMeta;
+      return {
+        height,
+      };
     },
     getCSS: (themeMeta, themeProps) => {
       const { propsConfig, themeConfig } = themeProps;
-      const { normal: { height = DefaultHeight } = {} } = themeConfig;
-      const { disabled, dividedThemeConfig, type } = propsConfig;
-
+      const { normal: { height = get('normalSize') } = {} } = themeConfig;
+      const { disabled, dividedThemeConfig, type, size = 'default' } = propsConfig;
+      const newHeight = isNaN(parseInt(height, 10)) ? getDividedContainerHeight(size) : height;
       const hoverCSS = `
-             &:hover > span { 
-             height: ${px2remcss(height)};
+             &:hover > span {
+             height: ${px2remcss(newHeight)};
               border-color: ${getDividedHoverCSS(type, dividedThemeConfig)}
              }
-             
+
              &:active > span {
-               height: ${px2remcss(height)};
+              height: ${px2remcss(newHeight)};
               border-color: ${getDividedActiveCSS(type, dividedThemeConfig)}
              }
              `;
+
       return disabled ? '' : hoverCSS;
     },
-    defaultTheme: {},
   },
 
   disabled: {
@@ -496,9 +592,8 @@ export const DividedContainer = CSSComponent({
     },
   },
   css: css`
-    height: ${px2remcss(DefaultHeight)};
     width: ${px2remcss(DefaultWidth)};
-    border-radius: ${px2remcss(borderRadius)};
+    border-radius: ${() => px2remcss(get('borderRadiusValue'))};
     transition: all 0.3s;
     position: relative;
     display: inline-block;
@@ -522,14 +617,10 @@ export const DividedWrap = StaticComponent({
   `,
 });
 
-const getDevidedTextContainerPrimaryDefaultCSS = () => {
+const getDevidedTextContainerPrimaryDefaultCSS = isPullContainer => {
   return {
-    border: getBorder({
-      width: 1,
-      style: 'solid',
-      color: lightGreyColor,
-    }),
-    color: darkGreyColor,
+    border: getBorder(get('normalBorder')),
+    color: isPullContainer ? mediumGreyColor : blackColor,
   };
 };
 
@@ -549,25 +640,21 @@ const getDevidedTextContainerCustomsDefaultCSS = themeMeta => {
   };
 };
 
-const getDevidedTextContainerDefaultCSS = (type, themeMeta) => {
+const getDevidedTextContainerDefaultCSS = (type, themeMeta, isPullContainer) => {
   return type === 'primary'
-    ? getDevidedTextContainerPrimaryDefaultCSS()
+    ? getDevidedTextContainerPrimaryDefaultCSS(isPullContainer)
     : getDevidedTextContainerCustomsDefaultCSS(themeMeta);
 };
 
-const getDevidedTextContainerPrimaryHoverCSS = () => {
+const getDevidedTextContainerPrimaryHoverCSS = checked => {
   return {
-    border: getBorder({
-      color: hoverColor,
-      style: 'solid',
-      width: 1,
-    }),
-    color: hoverColor,
+    border: checked ? getBorder(get('focusBorder')) : getBorder(get('hoverBorder')),
+    color: checked ? themeFocusColor : themeColor,
   };
 };
 
-const getDevidedTextContainerCustomsHoverCSS = themeConfig => {
-  const hoverbgColor = getHoverBgColorFromNormalOrHover(themeConfig);
+const getDevidedTextContainerCustomsHoverCSS = (themeConfig, checked) => {
+  const hoverbgColor = getHoverBgColorFromNormalOrHover(themeConfig, checked);
   const hoverCSS = {
     background: {
       color: hoverbgColor,
@@ -582,25 +669,21 @@ const getDevidedTextContainerCustomsHoverCSS = themeConfig => {
   return hoverCSS;
 };
 
-const getDevidedTextContainerHoverCSS = (type, themeConfig) => {
+const getDevidedTextContainerHoverCSS = (type, themeConfig, checked) => {
   return type === 'primary'
-    ? getDevidedTextContainerPrimaryHoverCSS()
-    : getDevidedTextContainerCustomsHoverCSS(themeConfig);
+    ? getDevidedTextContainerPrimaryHoverCSS(checked)
+    : getDevidedTextContainerCustomsHoverCSS(themeConfig, checked);
 };
 
 const getDevidedTextContainerPrimaryActiveCSS = () => {
   return {
-    border: getBorder({
-      color: mouseDownColor,
-      style: 'solid',
-      width: 1,
-    }),
-    color: mouseDownColor,
+    border: getBorder(get('activeBorder')),
+    color: themeActiveColor,
   };
 };
 
 const getDevidedTextContainerCustomsActiveCSS = themeConfig => {
-  const activebgColor = getActiveBgColorFromNormalOrActive(themeConfig, -themeColor);
+  const activebgColor = getActiveBgColorFromNormalOrActive(themeConfig);
   const activeCSS = {
     background: {
       color: activebgColor,
@@ -622,25 +705,20 @@ const getDevidedTextContainerActiveCSS = (type, themeConfig) => {
 
 const getDevidedTextContainerPrimaryDisabledCSS = () => {
   return {
-    border: getBorder({
-      color: lightGreyColor,
-      style: 'solid',
-      width: 1,
-    }),
-    color: lightGreyColor,
+    border: getBorder(get('disabledBorder')),
+    color: disableTextColor,
   };
 };
 
 const getDevidedTextContainerCustomsDisabledCSS = () => {
-  const disColor = colorsFunc(themeColor).disabledColor;
   return {
     border: getBorder({
-      color: disColor,
+      color: themeDisabledColor,
       width: 1,
       style: 'solid',
     }),
     background: {
-      color: disColor,
+      color: themeDisabledColor,
     },
   };
 };
@@ -674,7 +752,7 @@ export const DevidedTextContainer = CSSComponent({
       const { type, checked } = propsConfig;
 
       const defaultCSS = checked
-        ? getDevidedTextContainerHoverCSS(type, themeConfig)
+        ? getDevidedTextContainerHoverCSS(type, themeConfig, checked)
         : getDevidedTextContainerDefaultCSS(type, themeMeta);
       return {
         ...defaultCSS,
@@ -684,14 +762,14 @@ export const DevidedTextContainer = CSSComponent({
       const {
         propsConfig: { borderRadius: { topLeft, bottomLeft } = {} },
       } = themeProps;
-      const activeTopLeft = topLeft || topLeft === 0 ? topLeft : borderRadius;
-      const activeBottomLeft = bottomLeft || bottomLeft === 0 ? bottomLeft : borderRadius;
+      const activeTopLeft = topLeft || topLeft === 0 ? topLeft : get('borderRadiusValue');
+      const activeBottomLeft =
+        bottomLeft || bottomLeft === 0 ? bottomLeft : get('borderRadiusValue');
       return `
       border-top-left-radius: ${px2remcss(activeTopLeft)};
       border-bottom-left-radius: ${px2remcss(activeBottomLeft)};
       `;
     },
-    defaultTheme: {},
   },
   hover: {
     selectNames: [
@@ -712,7 +790,6 @@ export const DevidedTextContainer = CSSComponent({
         ...hoverCSS,
       };
     },
-    defaultTheme: {},
   },
   active: {
     selectNames: [
@@ -734,8 +811,6 @@ export const DevidedTextContainer = CSSComponent({
         ...activeCSS,
       };
     },
-
-    defaultTheme: {},
   },
   disabled: {
     selectNames: [
@@ -765,11 +840,12 @@ export const DevidedTextContainer = CSSComponent({
   css: css`
     transition: all 0.3s;
     border-right: 0;
-    display: inline-block;
     width: 75%;
     max-width: 90%;
     height: 100%;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     & i {
       vertical-align: middle;
     }
@@ -791,16 +867,12 @@ export const NoDevidedTextContainer = CSSComponent({
       ['fontSize'],
       ['cursor'],
     ],
-    defaultTheme: {},
   },
   hover: {
     selectNames: [['color'], ['opacity'], ['font'], ['fontSize']],
-    defaultTheme: {},
   },
   active: {
     selectNames: [['color'], ['opacity'], ['font'], ['fontSize']],
-
-    defaultTheme: {},
   },
   disabled: {
     selectNames: [['color'], ['opacity'], ['font'], ['fontSize']],
@@ -836,8 +908,8 @@ export const PullContainer = CSSComponent({
       const { propsConfig, themeConfig } = themeProps;
       const { type, checked } = propsConfig;
       const defaultCSS = checked
-        ? getDevidedTextContainerHoverCSS(type, themeConfig)
-        : getDevidedTextContainerDefaultCSS(type, themeMeta);
+        ? getDevidedTextContainerHoverCSS(type, themeConfig, checked)
+        : getDevidedTextContainerDefaultCSS(type, themeMeta, true);
       return {
         ...defaultCSS,
       };
@@ -846,14 +918,14 @@ export const PullContainer = CSSComponent({
       const {
         propsConfig: { borderRadius: { topRight, bottomRight } = {} },
       } = themeProps;
-      const activeTopRight = topRight || topRight === 0 ? topRight : borderRadius;
-      const activeBottomRight = bottomRight || bottomRight === 0 ? bottomRight : borderRadius;
+      const activeTopRight = topRight || topRight === 0 ? topRight : get('borderRadiusValue');
+      const activeBottomRight =
+        bottomRight || bottomRight === 0 ? bottomRight : get('borderRadiusValue');
       return `
       border-top-right-radius: ${px2remcss(activeTopRight)};
       border-bottom-right-radius: ${px2remcss(activeBottomRight)};
       `;
     },
-    defaultTheme: {},
   },
   hover: {
     selectNames: [
@@ -874,7 +946,6 @@ export const PullContainer = CSSComponent({
         ...hoverCSS,
       };
     },
-    defaultTheme: {},
   },
   active: {
     selectNames: [
@@ -896,8 +967,6 @@ export const PullContainer = CSSComponent({
         ...activeCSS,
       };
     },
-
-    defaultTheme: {},
   },
   disabled: {
     selectNames: [
@@ -925,7 +994,9 @@ export const PullContainer = CSSComponent({
     },
   },
   css: css`
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex: 1;
     height: 100%;
     position: relative;
@@ -949,21 +1020,20 @@ const getSeparatorBorderColor = props => {
 
   if (disabled) {
     const { disabled: disabledTheme = {} } = themeConfig;
-    const { color = lightGreyColor } = disabledTheme;
-    return type === 'primary' ? color : defaultColor;
+    const { color = get('borderDisableColor') } = disabledTheme;
+    return type === 'primary' ? color : get('defaultColor');
   }
   if (checked) {
     const { hover: { color } = {} } = themeConfig;
-
-    return color ? color : type === 'primary' ? hoverColor : defaultColor;
+    return color ? color : type === 'primary' ? get('focusBorder').color : get('defaultColor');
   }
-  const { normal: { color: normalColor } = {} } = themeConfig;
+  const { normal: { color: normalColor = get('borderColor') } = {} } = themeConfig;
 
   if (normalColor) {
-    return normalColor;
+    return type === 'primary' ? normalColor : get('defaultColor');
   }
 
-  return type === 'primary' ? lightGreyColor : defaultColor;
+  return type === 'primary' ? get('lightGreyColor') : get('defaultColor');
 };
 
 const getSeparatorBorderWidth = props => {

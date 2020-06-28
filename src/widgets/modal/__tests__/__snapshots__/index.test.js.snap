@@ -1,14 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal css 1`] = `
-.c9 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c3 {
   display: none;
   font-size: 1.4rem;
@@ -34,20 +26,18 @@ exports[`Modal css 1`] = `
 
 .c5 {
   position: fixed;
-  right: 0;
-  left: 0;
-  margin: auto;
+  left: 50%;
+  top: 100px;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
   z-index: 99999;
 }
 
 .c6 {
   box-sizing: border-box;
   font-size: 1.4rem;
-  position: relative;
-  top: 10rem;
-  margin: 0 auto;
-  z-index: 99999;
-  width: 52rem;
+  outline: none;
 }
 
 .c7 {
@@ -55,25 +45,25 @@ exports[`Modal css 1`] = `
   border: 0;
   border-radius: 0.4rem;
   box-shadow: 0 0.4rem 1.2rem rgba(0,0,0,0.15);
-  width: 52rem;
+  min-width: 52rem;
   box-shadow: 0px 0px 0px 0px;
   background-color: #fff;
-  border-top-width: 0rem;
+  border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #ccc;
-  border-bottom-width: 0rem;
+  border-bottom-width: 0.1rem;
   border-bottom-style: solid;
   border-bottom-color: #ccc;
-  border-left-width: 0rem;
+  border-left-width: 0.1rem;
   border-left-style: solid;
   border-left-color: #ccc;
-  border-right-width: 0rem;
+  border-right-width: 0.1rem;
   border-right-style: solid;
   border-right-color: #ccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
+  border-bottom-right-radius: 0.8rem;
+  border-bottom-left-radius: 0.8rem;
 }
 
 .c8 {
@@ -89,8 +79,8 @@ exports[`Modal css 1`] = `
 
 .c10 {
   border-radius: 0.4rem 0.4rem 0 0;
-  color: #333333;
-  font-size: 1.8rem;
+  color: #363B40;
+  font-size: 1.6rem;
   font-weight: 500;
   padding-top: 0rem;
   padding-bottom: 1.6rem;
@@ -100,7 +90,7 @@ exports[`Modal css 1`] = `
 
 .c11 {
   word-wrap: break-word;
-  color: #666666;
+  color: #646A6E;
   font-size: 1.4rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
@@ -138,7 +128,7 @@ exports[`Modal css 1`] = `
   position: relative;
   text-transform: none;
   outline: 0;
-  background-color: #ffffff;
+  background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -154,7 +144,6 @@ exports[`Modal css 1`] = `
 }
 
 .c2 {
-  color: #666666;
   font-size: 1.4rem;
 }
 
@@ -175,6 +164,14 @@ exports[`Modal css 1`] = `
   height: 100%;
 }
 
+.c9 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
 <div>
   <button
     className="c0"
@@ -190,7 +187,7 @@ exports[`Modal css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -222,7 +219,7 @@ exports[`Modal css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#666666",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -245,9 +242,11 @@ exports[`Modal css 1`] = `
         className="c6"
         style={
           Object {
+            "height": "50rem",
             "width": "80rem",
           }
         }
+        tabIndex="1"
       >
         <div
           className="c7"
@@ -313,6 +312,7 @@ exports[`Modal css 1`] = `
                 "paddingTop": "3rem",
               }
             }
+            title={true}
           >
             这是标题！
           </div>
@@ -397,7 +397,7 @@ exports[`Modal css 1`] = `
               size="default"
               style={
                 Object {
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "white",
                   "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.4rem",
                   "borderBottomRightRadius": "0.4rem",
@@ -429,7 +429,7 @@ exports[`Modal css 1`] = `
                   className="c2"
                   style={
                     Object {
-                      "color": "#666666",
+                      "color": "#363B40",
                       "fontSize": "1.4rem",
                     }
                   }
@@ -459,7 +459,7 @@ exports[`Modal css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -491,7 +491,7 @@ exports[`Modal css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#666666",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -513,6 +513,7 @@ exports[`Modal css 1`] = `
       <div
         className="c6"
         style={Object {}}
+        tabIndex="1"
       >
         <div
           className="c7"
@@ -538,7 +539,8 @@ exports[`Modal css 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "fontSize": "1.6rem",
+                  "color": "#9EA4AE",
+                  "fontSize": "1.4rem",
                 }
               }
             />
@@ -546,6 +548,7 @@ exports[`Modal css 1`] = `
           <div
             className="c10"
             style={Object {}}
+            title={true}
           >
             这是标题！
           </div>
@@ -675,7 +678,7 @@ exports[`Modal css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -707,7 +710,7 @@ exports[`Modal css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#666666",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -729,6 +732,7 @@ exports[`Modal css 1`] = `
       <div
         className="c6"
         style={Object {}}
+        tabIndex="1"
       >
         <div
           className="c7"
@@ -754,7 +758,8 @@ exports[`Modal css 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "fontSize": "1.6rem",
+                  "color": "#9EA4AE",
+                  "fontSize": "1.4rem",
                 }
               }
             />
@@ -762,6 +767,7 @@ exports[`Modal css 1`] = `
           <div
             className="c10"
             style={Object {}}
+            title={true}
           >
             这是标题！
           </div>
@@ -769,7 +775,15 @@ exports[`Modal css 1`] = `
             className="c11"
             style={Object {}}
           >
-            <div>
+            <div
+              style={
+                Object {
+                  "bottom": "30px",
+                  "position": "absolute",
+                  "right": "30px",
+                }
+              }
+            >
               <button
                 className="c0"
                 onBlur={[Function]}
@@ -784,7 +798,7 @@ exports[`Modal css 1`] = `
                 size="default"
                 style={
                   Object {
-                    "backgroundColor": "#ffffff",
+                    "backgroundColor": "white",
                     "borderBottomColor": "#cccccc",
                     "borderBottomLeftRadius": "0.4rem",
                     "borderBottomRightRadius": "0.4rem",
@@ -816,7 +830,7 @@ exports[`Modal css 1`] = `
                     className="c2"
                     style={
                       Object {
-                        "color": "#666666",
+                        "color": "#363B40",
                         "fontSize": "1.4rem",
                       }
                     }
@@ -838,6 +852,7 @@ exports[`Modal css 1`] = `
                   <div
                     className="c6"
                     style={Object {}}
+                    tabIndex="1"
                   >
                     <div
                       className="c7"
@@ -863,7 +878,8 @@ exports[`Modal css 1`] = `
                           onMouseUp={[Function]}
                           style={
                             Object {
-                              "fontSize": "1.6rem",
+                              "color": "#9EA4AE",
+                              "fontSize": "1.4rem",
                             }
                           }
                         />
@@ -871,6 +887,7 @@ exports[`Modal css 1`] = `
                       <div
                         className="c10"
                         style={Object {}}
+                        title={true}
                       >
                         另一个对话框！
                       </div>
@@ -954,7 +971,7 @@ exports[`Modal css 1`] = `
                           size="default"
                           style={
                             Object {
-                              "backgroundColor": "#ffffff",
+                              "backgroundColor": "white",
                               "borderBottomColor": "#cccccc",
                               "borderBottomLeftRadius": "0.4rem",
                               "borderBottomRightRadius": "0.4rem",
@@ -986,7 +1003,7 @@ exports[`Modal css 1`] = `
                               className="c2"
                               style={
                                 Object {
-                                  "color": "#666666",
+                                  "color": "#363B40",
                                   "fontSize": "1.4rem",
                                 }
                               }
@@ -1067,7 +1084,7 @@ exports[`Modal css 1`] = `
               size="default"
               style={
                 Object {
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "white",
                   "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.4rem",
                   "borderBottomRightRadius": "0.4rem",
@@ -1099,7 +1116,7 @@ exports[`Modal css 1`] = `
                   className="c2"
                   style={
                     Object {
-                      "color": "#666666",
+                      "color": "#363B40",
                       "fontSize": "1.4rem",
                     }
                   }
@@ -1129,7 +1146,7 @@ exports[`Modal css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -1161,7 +1178,7 @@ exports[`Modal css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#666666",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -1183,6 +1200,7 @@ exports[`Modal css 1`] = `
       <div
         className="c6"
         style={Object {}}
+        tabIndex="1"
       >
         <div
           className="c7"
@@ -1208,7 +1226,8 @@ exports[`Modal css 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "fontSize": "1.6rem",
+                  "color": "#9EA4AE",
+                  "fontSize": "1.4rem",
                 }
               }
             />
@@ -1216,6 +1235,7 @@ exports[`Modal css 1`] = `
           <div
             className="c10"
             style={Object {}}
+            title={true}
           >
             这是标题！
           </div>
@@ -1290,7 +1310,7 @@ exports[`Modal css 1`] = `
               size="default"
               style={
                 Object {
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "white",
                   "borderBottomColor": "#cccccc",
                   "borderBottomLeftRadius": "0.4rem",
                   "borderBottomRightRadius": "0.4rem",
@@ -1322,7 +1342,7 @@ exports[`Modal css 1`] = `
                   className="c2"
                   style={
                     Object {
-                      "color": "#666666",
+                      "color": "#363B40",
                       "fontSize": "1.4rem",
                     }
                   }
@@ -1352,7 +1372,7 @@ exports[`Modal css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -1384,7 +1404,7 @@ exports[`Modal css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#666666",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -1406,6 +1426,7 @@ exports[`Modal css 1`] = `
       <div
         className="c6"
         style={Object {}}
+        tabIndex="1"
       >
         <div
           className="c7"
@@ -1431,7 +1452,8 @@ exports[`Modal css 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "fontSize": "1.6rem",
+                  "color": "#9EA4AE",
+                  "fontSize": "1.4rem",
                 }
               }
             />
@@ -1439,6 +1461,7 @@ exports[`Modal css 1`] = `
           <div
             className="c10"
             style={Object {}}
+            title={true}
           >
             这是标题！
           </div>
@@ -1448,54 +1471,62 @@ exports[`Modal css 1`] = `
           >
             这是内容！
           </div>
-          <button
-            className="c0"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            onMouseUp={[Function]}
-            size="default"
+          <div
             style={
               Object {
-                "backgroundColor": "#4d63ff",
-                "borderBottomLeftRadius": "0.4rem",
-                "borderBottomRightRadius": "0.4rem",
-                "borderBottomWidth": 0,
-                "borderLeftWidth": 0,
-                "borderRightWidth": 0,
-                "borderTopLeftRadius": "0.4rem",
-                "borderTopRightRadius": "0.4rem",
-                "borderTopWidth": 0,
-                "height": "3.2rem",
-                "paddingBottom": "0rem",
-                "paddingLeft": "1.8rem",
-                "paddingRight": "1.8rem",
-                "paddingTop": "0rem",
+                "marginTop": "15px",
               }
             }
-            type="primary"
           >
-            <span
-              className="c1"
+            <button
+              className="c0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              style={
+                Object {
+                  "backgroundColor": "#4d63ff",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomWidth": 0,
+                  "borderLeftWidth": 0,
+                  "borderRightWidth": 0,
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopWidth": 0,
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                }
+              }
+              type="primary"
             >
               <span
-                className="c2"
-                style={
-                  Object {
-                    "color": "#ffffff",
-                    "fontSize": "1.4rem",
-                  }
-                }
+                className="c1"
               >
-                自定义页脚
+                <span
+                  className="c2"
+                  style={
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  自定义页脚
+                </span>
               </span>
-            </span>
-          </button>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1516,7 +1547,7 @@ exports[`Modal css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -1548,7 +1579,7 @@ exports[`Modal css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#666666",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -1573,7 +1604,7 @@ exports[`Modal css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -1605,7 +1636,7 @@ exports[`Modal css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#666666",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -1630,7 +1661,7 @@ exports[`Modal css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -1662,7 +1693,7 @@ exports[`Modal css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#666666",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -1687,7 +1718,7 @@ exports[`Modal css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -1719,7 +1750,7 @@ exports[`Modal css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#666666",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -1744,7 +1775,7 @@ exports[`Modal css 1`] = `
     size="default"
     style={
       Object {
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "white",
         "borderBottomColor": "#cccccc",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
@@ -1776,12 +1807,67 @@ exports[`Modal css 1`] = `
         className="c2"
         style={
           Object {
-            "color": "#666666",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
       >
         warning
+      </span>
+    </span>
+  </button>
+  <button
+    className="c0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomColor": "#cccccc",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#cccccc",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#cccccc",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#cccccc",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
+  >
+    <span
+      className="c1"
+    >
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        createModal
       </span>
     </span>
   </button>

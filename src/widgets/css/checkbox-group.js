@@ -3,14 +3,11 @@
  * create by guorg
  * @flow
  */
-
-import colorsFunc from '../css/stateColor';
 import { css } from 'styled-components';
 import CSSComponent from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-
-const { themeColor, borderColor, borderDisableColor, disabledColor } = colorsFunc();
+import get from './theme-common-dict';
 
 export type GroupCSSProps = {
   children: any,
@@ -24,24 +21,25 @@ const getFirstChildBorder = (props: GroupCSSProps): string => {
     const { checked = false } = children[0].props;
     const { cancel = false } = children[0].props;
     const { disabled = false } = children[0].props;
-    const colors = themes.color || themeColor;
+    const colors = themes.color || get('themeColor');
+    const borderRadiusValue = get('borderRadiusValue');
     if (childType === 'button') {
       if (disabled) {
         return `
-          border-left: 1px solid ${borderDisableColor};
+          border-left: 1px solid ${get('borderDisableColor')};
         `;
       }
       if (cancel) {
         return `
-          border-left: 1px solid ${disabledColor};
+          border-left: 1px solid ${get('disabledColor')};
           & > span {
-            border-radius: ${px2remcss(4)} 0 0 ${px2remcss(4)};
+            border-radius: ${px2remcss(borderRadiusValue)} 0 0 ${px2remcss(borderRadiusValue)};
           }
         `;
       }
-
+      const { color: normalBorderColor } = get('normalBorder');
       return `
-        border-left: 1px solid ${checked ? colors : borderColor};
+        border-left: 1px solid ${checked ? colors : normalBorderColor};
       `;
     }
   }
@@ -52,11 +50,11 @@ const getLastChildBorder = (props: GroupCSSProps): string => {
   const { themes = {}, children = [], childType = 'default' } = props;
   const { checked = false, disabled = false } =
     (children.length && children[children.length - 1].props) || {};
-  const colors = themes.color || themeColor;
+  const colors = themes.color || get('themeColor');
   if (childType === 'button') {
     if (checked) {
       return `
-      border-right: 1px solid ${disabled ? borderDisableColor : colors};
+      border-right: 1px solid ${disabled ? get('borderDisableColor') : colors};
     `;
     }
   }
@@ -64,14 +62,15 @@ const getLastChildBorder = (props: GroupCSSProps): string => {
   return '';
 };
 const getButtonCSS = (props: GroupCSSProps) => {
+  const borderRadiusValue = get('borderRadiusValue');
   const { childType = 'default' } = props;
   if (childType === 'button') {
     return `& > label:first-child > span {
       ${getFirstChildBorder(props)}; 
-      border-radius: ${px2remcss(4)} 0 0 ${px2remcss(4)};
+      border-radius: ${px2remcss(borderRadiusValue)} 0 0 ${px2remcss(borderRadiusValue)};
     }
     & > label:last-child > span {
-      border-radius: 0 ${px2remcss(4)} ${px2remcss(4)} 0;
+      border-radius: 0 ${px2remcss(borderRadiusValue)} ${px2remcss(borderRadiusValue)} 0;
       ${getLastChildBorder(props)};
     }`;
   }

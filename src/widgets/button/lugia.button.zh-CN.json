@@ -3,6 +3,11 @@
   "title": "按钮",
   "desc": "方便用户点击操作",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "disabled": {
       "type": "boolean",
       "desc": "按钮是否禁用，true 禁用 false 可用",
@@ -36,11 +41,11 @@
       "desc": "设置圆形按钮"
     },
     "icon": {
-      "type": "string",
+      "type": "icon",
       "desc": "设置按钮前置图标类型"
     },
     "suffixIcon": {
-      "type": "string",
+      "type": "icon",
       "desc": "设置按钮后置图标类型"
     },
     "text": {
@@ -105,12 +110,13 @@
             ["width"],
             ["padding"],
             ["margin"],
-            ["borderRadius"]
+            ["borderRadius"],
+            ["boxShadow"]
           ],
-          "hover": [["background"], ["border"]],
-          "active": [["background"], ["border"]],
-          "disabled": [["background"], ["border"]],
-          "focus": [["background"], ["border"]]
+          "hover": [["background"], ["border"], ["boxShadow"]],
+          "active": [["background"], ["border"], ["boxShadow"]],
+          "disabled": [["background"], ["border"], ["boxShadow"]],
+          "focus": [["background"], ["border"], ["boxShadow"]]
         },
         "ButtonText": {
           "name": "按钮文字样式",
@@ -159,12 +165,13 @@
             ["width"],
             ["padding"],
             ["margin"],
-            ["borderRadius"]
+            ["borderRadius"],
+            ["boxShadow"]
           ],
-          "hover": [["background"], ["border"]],
-          "active": [["background"], ["border"]],
-          "disabled": [["background"], ["border"]],
-          "focus": [["background"], ["border"]]
+          "hover": [["background"], ["border"], ["boxShadow"]],
+          "active": [["background"], ["border"], ["boxShadow"]],
+          "disabled": [["background"], ["border"], ["boxShadow"]],
+          "focus": [["background"], ["border"], ["boxShadow"]]
         },
         "ButtonText": {
           "name": "按钮文字样式",
@@ -216,12 +223,13 @@
             ["width"],
             ["padding"],
             ["margin"],
-            ["borderRadius"]
+            ["borderRadius"],
+            ["boxShadow"]
           ],
-          "hover": [["background"], ["border"]],
-          "active": [["background"], ["border"]],
-          "disabled": [["background"], ["border"]],
-          "focus": [["background"], ["border"]]
+          "hover": [["background"], ["border"], ["boxShadow"]],
+          "active": [["background"], ["border"], ["boxShadow"]],
+          "disabled": [["background"], ["border"], ["boxShadow"]],
+          "focus": [["background"], ["border"], ["boxShadow"]]
         },
         "ButtonText": {
           "name": "按钮文字样式",
@@ -322,12 +330,13 @@
         ["width"],
         ["padding"],
         ["margin"],
-        ["borderRadius"]
+        ["borderRadius"],
+        ["boxShadow"]
       ],
-      "hover": [["background"], ["border"]],
-      "active": [["background"], ["border"]],
-      "disabled": [["background"], ["border"]],
-      "focus": [["background"], ["border"]]
+      "hover": [["background"], ["border"], ["boxShadow"]],
+      "active": [["background"], ["border"], ["boxShadow"]],
+      "disabled": [["background"], ["border"], ["boxShadow"]],
+      "focus": [["background"], ["border"], ["boxShadow"]]
     },
     "ButtonText": {
       "name": "按钮文字样式",

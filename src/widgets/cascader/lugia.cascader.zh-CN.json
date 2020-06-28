@@ -3,9 +3,19 @@
   "title": "级联选择",
   "desc": "通过级联选择,可以清晰地显示层级数据结构",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "action": {
       "type": "hover | click",
       "desc": "展开子菜单的方式"
+    },
+    "size": {
+      "type": "sizeType",
+      "desc": "可配置三种尺寸大小的cascader",
+      "propsDefaultValue": "default"
     },
     "createPortal": {
       "type": "boolean",
@@ -30,6 +40,33 @@
       "desc": "显示框占位符"
     },
 
+    "pullIconClass": {
+      "type": "icon",
+      "desc": "下拉图标",
+      "propsDefaultValue": "lugia-icon-direction_down"
+    },
+
+    "clearIconClass": {
+      "type": "icon",
+      "desc": "清除图标",
+      "propsDefaultValue": "lugia-icon-reminder_close"
+    },
+
+    "switchIconClass": {
+      "type": "object",
+      "desc": "展开图标",
+      "meta": [{ "key": "iconClass", "title": "展开图标", "type": "icon" }],
+      "propsDefaultValue": {
+        "iconClass": "lugia-icon-direction_right"
+      }
+    },
+
+    "autoHeight": {
+      "type": "boolean",
+      "desc": "根据data数量，自动计算弹出菜单高度",
+      "propsDefaultValue": false
+    },
+
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
@@ -39,6 +76,21 @@
       "type": "string",
       "desc": "data数据的displayValue值的名称",
       "propsDefaultValue": "text"
+    },
+
+    "validateStatus": {
+      "type": "ValidateStatus",
+      "desc": "校验状态"
+    },
+    "validateType": {
+      "type": "ValidateType",
+      "desc": "校验信息显示类型",
+      "propsDefaultValue": "top"
+    },
+
+    "help": {
+      "type": "string",
+      "desc": "input校验提示信息"
     },
 
     "data": {
@@ -52,7 +104,7 @@
           "title": "前/后缀图标",
           "type": "object",
           "children": [
-            { "key": "preIconClass", "title": "前缀图标", "type": "icon" },
+            { "key": "prefixIconClass", "title": "前缀图标", "type": "icon" },
             { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
             { "key": "prefixIconSrc", "title": "前缀图片", "type": "image" },
             { "key": "suffixIconSrc", "title": "后缀图片", "type": "image" }
@@ -123,13 +175,13 @@
     "allowClear": {
       "type": "boolean",
       "desc": "是否允许清空选中值",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
 
     "showAllLevels": {
       "type": "boolean",
       "desc": "是否显示所有层级关系的值",
-      "defaultValue": true
+      "propsDefaultValue": true
     }
   },
   "events": {
@@ -166,6 +218,11 @@
       ]
     }
   },
+  "type": {
+    "sizeType": ["small", "default", "large"],
+    "ValidateStatus": ["default", "error"],
+    "ValidateType": ["top", "bottom", "inner"]
+  },
   "category": ["数据录入"],
   "theme": {
     "Container": {
@@ -184,6 +241,14 @@
         ["font"],
         ["opacity"]
       ],
+      "focus": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["opacity"]
+      ],
       "hover": [
         ["color"],
         ["background"],
@@ -193,7 +258,14 @@
         ["font"],
         ["opacity"]
       ],
-      "active": [],
+      "active": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["opacity"]
+      ],
       "disabled": [
         ["width"],
         ["height"],
@@ -208,6 +280,37 @@
         ["opacity"],
         ["cursor"]
       ]
+    },
+
+    "ValidateErrorInput": {
+      "name": "校验失败的展示框",
+      "desc": "配置校验失败的展示框",
+      "normal": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"]
+      ],
+      "hover": [["background"], ["border"], ["boxShadow"]],
+      "active": [["background"], ["border"], ["boxShadow"]]
+    },
+    "ValidateErrorText": {
+      "name": "校验失败提示信息",
+      "desc": "配置校验失败的提示信息",
+      "normal": [
+        ["background"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "hover": [],
+      "active": []
     },
 
     "SwitchIcon": {
@@ -226,6 +329,19 @@
       "hover": [["color"], ["fontSize"]],
       "active": [["color"], ["fontSize"]],
       "disabled": [["color"], ["fontSize"], ["cursor"]]
+    },
+
+    "Placeholder": {
+      "name": "提示信息文字",
+      "desc": "提示信息文字",
+      "normal": [["color"], ["fontSize"], ["font"], ["padding"]]
+    },
+
+    "TextContent": {
+      "name": "选中文本",
+      "desc": "选中文本样式",
+      "normal": [["color"], ["font"], ["fontSize"]],
+      "disabled": [["color"], ["font"], ["fontSize"]]
     },
 
     "Menu": {
@@ -326,6 +442,33 @@
               "name": "分割线",
               "desc": "配置每项之间的分割线，当divided为true时生效",
               "normal": [["background"]],
+              "hover": [],
+              "active": [],
+              "disabled": []
+            },
+
+            "DesContainer": {
+              "name": "辅助字段框",
+              "desc": "配置辅助文本的样式和位置",
+              "normal": [["color"], ["font"], ["fontSize"], ["padding"], ["lineHeight"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": []
+            },
+
+            "SelectedDesContainer": {
+              "name": "选中项辅助字段框",
+              "desc": "配置被选中项的辅助文本的样式和位置",
+              "normal": [["color"], ["font"], ["fontSize"], ["padding"]],
+              "hover": [],
+              "active": [],
+              "disabled": []
+            },
+
+            "TextContainer": {
+              "name": "文本框",
+              "desc": "配置文本和前缀后缀图标的位置",
+              "normal": [["padding"], ["lineHeight"]],
               "hover": [],
               "active": [],
               "disabled": []
@@ -481,6 +624,15 @@
                   "disabled": []
                 },
 
+                "SelectedDesContainer": {
+                  "name": "选中项辅助字段框",
+                  "desc": "配置被选中项的辅助文本的样式和位置",
+                  "normal": [["color"], ["font"], ["fontSize"], ["padding"]],
+                  "hover": [],
+                  "active": [],
+                  "disabled": []
+                },
+
                 "PrefixIcon": {
                   "name": "前置图标配置",
                   "desc": "前置图标或图片的样式配置",
@@ -559,8 +711,7 @@
   "defaultTheme": {
     "Container": {
       "normal": {
-        "width": 250,
-        "height": 32
+        "width": 250
       }
     }
   }

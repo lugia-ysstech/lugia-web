@@ -3,17 +3,13 @@
  * create by guorg
  * @flow
  */
-import colorsFunc from '../css/stateColor';
-import styled, { css, keyframes } from 'styled-components';
-import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import { css, keyframes } from 'styled-components';
+import CSSComponent from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import changeColor from '../css/utilsColor';
 import type { ThemeType } from '@lugia/lugia-web';
-
-const FontSize = 1.4;
-const defaultColor = '#fff';
-const { themeColor } = colorsFunc();
-const hoverColor = changeColor(themeColor, 0, 0, 10).rgba;
+import get from './theme-common-dict';
+import { getBorderRadius } from '@lugia/theme-utils';
 
 type BasicPropsType = {
   disabled?: boolean,
@@ -45,27 +41,20 @@ type CSSProps = {
 } & BasicPropsType &
   BasicStateType;
 
-const { darkGreyColor, blackColor, lightGreyColor } = colorsFunc();
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 
-export const PanelWrap = StaticComponent({
-  tag: 'div',
-  className: 'PanelWrap',
-  css: css`
-    box-sizing: border-box;
-    background: ${defaultColor};
-    border-color: #e8e8e8;
-    border-style: solid;
-    border-width: 0 0 1px;
-  `,
-});
-
+const getZebraStripeColor = index => {
+  return index % 2 === 0 ? '#F8F8F8' : '#fff';
+};
 export const PanelHeader = CSSComponent({
   tag: 'div',
   className: 'PanelHeader',
   css: css`
     box-sizing: border-box;
     position: relative;
-    font-size: ${FontSize}rem;
+    font-size: ${px2remcss(14)};
     cursor: ${(props: CSSProps) => (props.disabled ? 'not-allowed' : 'pointer')};
     line-height: 1;
     user-select: none;
@@ -87,38 +76,30 @@ export const PanelHeader = CSSComponent({
       ['background'],
     ],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig = {} } = themeProps;
-      const { showArrow } = propsConfig;
-      const padding = { top: 16, right: 0, bottom: 16, left: showArrow ? 30 : 20 };
-
-      return { padding };
+      const { propsConfig: { zebraStripe, count, open } = {} } = themeProps;
+      const padding = {
+        top: 16,
+        right: 0,
+        bottom: 16,
+        left: get('sFontSize') + get('marginToSameElement') + 10,
+      };
+      const background = zebraStripe ? { color: getZebraStripeColor(count) } : { color: '#fff' };
+      const borderRadius = zebraStripe
+        ? open
+          ? getBorderRadius(get('borderRadiusValue'), ['tl', 'tr'])
+          : getBorderRadius(get('borderRadiusValue'))
+        : null;
+      return { padding, background, borderRadius };
     },
   },
   hover: {
     selectNames: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
-    defaultTheme: {
-      background: { color: hoverColor },
-    },
-    getCSS(themeMeta, themeProps) {
-      const { propsConfig = {}, themeConfig = {} } = themeProps;
-      const { hover } = propsConfig;
-      const { width } = themeMeta;
-      const { normal = {} } = themeConfig;
-      const theWidth = width || normal.width;
-      let widthStyle;
-      if (hover) {
-        if (theWidth) {
-          if (typeof theWidth === 'number') {
-            widthStyle = px2remcss(theWidth + 24);
-          } else {
-            widthStyle = `calc(${theWidth} + 24px)`;
-          }
-        } else {
-          widthStyle = 'calc(100% + 24px)';
-        }
-
-        return `width: ${widthStyle} !important;transform: translateX(-24px);`;
-      }
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig: { zebraStripe, count } = {} } = themeProps;
+      const background = zebraStripe
+        ? { color: getZebraStripeColor(count) }
+        : { color: changeColor(get('themeColor'), 0, 0, 5).rgba };
+      return { background };
     },
   },
   disabled: {
@@ -130,7 +111,7 @@ export const PanelHeaderText = CSSComponent({
   className: 'PanelHeaderText',
   normal: {
     defaultTheme: {
-      font: { size: 14 },
+      font: { size: get('sectionFontSize') },
       color: blackColor,
     },
     selectNames: [['font'], ['color']],
@@ -144,7 +125,7 @@ export const PanelHeaderText = CSSComponent({
       const { propsConfig = {} } = themeProps;
       const { showArrow } = propsConfig;
       if (!showArrow) {
-        return `padding: 0 0 0 ${px2remcss(10)};`;
+        return 'padding: 0 0 0 0;';
       }
 
       return '';
@@ -152,7 +133,7 @@ export const PanelHeaderText = CSSComponent({
   },
   disabled: {
     defaultTheme: {
-      color: lightGreyColor,
+      color: disableTextColor,
     },
     selectNames: [['color']],
   },
@@ -217,25 +198,37 @@ export const PanelContent = CSSComponent({
   `,
   normal: {
     defaultTheme: {
-      font: { size: 14, weight: 300 },
+      font: { size: get('descriptionFontSize'), weight: 300 },
       color: darkGreyColor,
-      background: { color: defaultColor },
+      background: { color: get('defaultColor') },
     },
-    selectNames: [['width'], ['height'], ['background'], ['padding'], ['font'], ['color']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['padding'],
+      ['font'],
+      ['color'],
+      ['borderRadius'],
+    ],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig = {} } = themeProps;
-      const { showArrow, hasChildren } = propsConfig;
+      const { propsConfig: { showArrow, hasChildren, zebraStripe, count, open } = {} } = themeProps;
       if (!hasChildren) {
         return {};
       }
+      const background = zebraStripe ? { color: getZebraStripeColor(count) } : { color: '#fff' };
+      const borderRadius =
+        zebraStripe && open ? getBorderRadius(get('borderRadiusValue'), ['bl', 'br']) : null;
 
       return {
         padding: {
           top: 6,
           right: 30,
           bottom: 22,
-          left: showArrow ? 34 : 24,
+          left: showArrow ? 34 : get('sFontSize') + get('marginToSameElement') + 10,
         },
+        background,
+        borderRadius,
       };
     },
   },
@@ -244,6 +237,9 @@ export const PanelContent = CSSComponent({
   },
   disabled: {
     selectNames: [['color'], ['background']],
+    defaultTheme: {
+      color: disableTextColor,
+    },
   },
 });
 
@@ -269,15 +265,67 @@ export const getIconTransform = (props: Object) => {
 
   return 'transform: translateY(-50%);';
 };
-
+const getBorderColor = () => `border-color: ${get('borderColor')};`;
 export const Wrap = CSSComponent({
   tag: 'div',
   className: 'WrapPanel',
   css: css`
-    transition: all 0.2s;
-    font-size: ${FontSize}rem;
+    font-size: ${px2remcss(14)};
+    box-sizing: border-box;
+    background: ${get('defaultColor')};
+    border-style: solid;
+    transition: all 0.3s;
+    ${getBorderColor}
   `,
   normal: {
-    selectNames: [['width']],
+    selectNames: [['boxShadow'], ['borderRadius'], ['width']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig: { zebraStripe, open } = {} } = themeProps;
+      const boxShadow = zebraStripe && open ? get('normalBoxShadow') : null;
+      const borderRadius = zebraStripe ? getBorderRadius(get('borderRadiusValue')) : null;
+      return { boxShadow, borderRadius };
+    },
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig = {} } = themeProps;
+      const { open, zebraStripe } = propsConfig;
+      let borderWidth = 1;
+      zebraStripe && (borderWidth = 0);
+      if (zebraStripe && open) {
+        return `
+         position: relative;
+         z-index: 99;
+         border-width: 0 0 ${borderWidth}px;
+       `;
+      }
+      return `
+        border-width: 0 0 ${borderWidth}px;
+      `;
+    },
+  },
+  hover: {
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig = {}, themeConfig = {} } = themeProps;
+      const { hover } = propsConfig;
+      const { width } = themeMeta;
+      const { normal = {} } = themeConfig;
+      const theWidth = width || normal.width;
+      let widthStyle;
+      if (hover) {
+        if (theWidth) {
+          if (typeof theWidth === 'number') {
+            widthStyle = px2remcss(theWidth + 24);
+          } else {
+            widthStyle = `calc(${theWidth} + 24px)`;
+          }
+        } else {
+          widthStyle = 'calc(100% + 24px)';
+        }
+
+        return `
+        width: ${widthStyle} !important;
+        transform: translateX(-24px);
+        `;
+      }
+    },
   },
 });

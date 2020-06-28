@@ -1,0 +1,170 @@
+[
+  {
+    "widgetName": "Tag",
+    "title": "标签",
+    "viewProps": [{ "name": "closable", "text": "可关闭功能" }],
+    "data": [
+      {
+        "title": "标签区域",
+        "iconClass": "cardbackground",
+        "data": [
+          {
+            "name": "标签区域",
+            "path": ["TagWrap"],
+            "props": [
+              {
+                "name": "text",
+                "typeInTheme": "text"
+              }
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "标签区域外观配置"
+              },
+              "spacingPart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "文本",
+                "desc": "标签文本配置"
+              }
+            }
+          },
+          {
+            "name": "关闭按钮",
+            "path": ["CloseButton"],
+            "description": {
+              "textPart": {
+                "text": "可关闭图标",
+                "desc": "可关闭图标文本配置"
+              },
+              "spacingPart": {
+                "text": "margin/padding",
+                "desc": "关闭按钮内外边距配置区"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Tag",
+    "aliasName": "ClosableTag",
+    "title": "可关闭标签",
+    "viewProps": [{ "name": "closable", "text": "可关闭功能" }],
+    "data": [
+      {
+        "title": "标签区域",
+        "iconClass": "cardbackground",
+        "data": [
+          {
+            "name": "标签区域",
+            "path": ["TagWrap"],
+            "props": [
+              {
+                "name": "text",
+                "typeInTheme": "text"
+              }
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "标签区域外观配置"
+              },
+              "spacingPart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "文本",
+                "desc": "标签文本配置"
+              }
+            }
+          },
+          {
+            "name": "关闭按钮",
+            "path": ["CloseButton"],
+            "description": {
+              "spacingPart": {
+                "text": "margin/padding",
+                "desc": "关闭按钮内外边距配置区"
+              },
+              "textPart": {
+                "text": "可关闭图标",
+                "desc": "可关闭图标文本配置"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Tag",
+    "aliasName": "ChooseTag",
+    "title": "可选择标签",
+    "data": [
+      {
+        "title": "未选中标签",
+        "iconClass": "tag",
+        "data": [
+          {
+            "name": "未选中标签",
+            "path": ["TagWrap"],
+            "props": [
+              {
+                "name": "text",
+                "typeInTheme": "text"
+              }
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "未选中标签外观配置"
+              },
+              "spacingPart": {
+                "text": "margin/padding",
+                "desc": "未选中标签内外边距配置区"
+              },
+              "textPart": {
+                "text": "文本",
+                "desc": "未选中标签文本配置"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "选中标签",
+        "iconClass": "tagChecked",
+        "data": [
+          {
+            "name": "选中标签",
+            "path": ["CheckedTagWrap"],
+            "props": [
+              {
+                "name": "text",
+                "typeInTheme": "text"
+              }
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "选中标签外观配置"
+              },
+              "spacingPart": {
+                "text": "margin/padding",
+                "desc": "选中标签内外边距配置区"
+              },
+              "textPart": {
+                "text": "文本",
+                "desc": "选中标签文本配置"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

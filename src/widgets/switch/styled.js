@@ -2,12 +2,10 @@
  * by wangcuixia
  * */
 import { css } from 'styled-components';
-import colorsFunc from '../css/stateColor';
 import CSSProvider from '../theme/CSSProvider';
 import { px2remcss } from '../css/units';
+import get from '../css/theme-common-dict';
 const em = px2remcss;
-
-const { themeColor } = colorsFunc();
 export const Container = CSSProvider({
   tag: 'span',
   className: 'Container',
@@ -98,7 +96,6 @@ export const SwitchText = CSSProvider({
         propsConfig: { textPosition, textBox },
       } = themeProps;
       return `
-
           & > *:first-child {
           ${textBox};
             ${textPosition};
@@ -215,7 +212,7 @@ export const SwitchCircle = CSSProvider({
     -webkit-transition: all 0.2s;
     & > *:first-child {
       display: block;
-      color: ${themeColor};
+      color: ${get('themeColor')};
       animation: rotate 1.5s linear infinite;
       position: relative;
       & > *:first-child {

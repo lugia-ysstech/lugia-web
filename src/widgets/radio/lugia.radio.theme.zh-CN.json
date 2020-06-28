@@ -1,0 +1,271 @@
+[
+  {
+    "widgetName": "Radio",
+    "title": "单选框",
+    "viewProps": [{ "name": "disabled", "text": "禁用" }, { "name": "checked", "text": "选中" }],
+    "data": [
+      {
+        "title": "未选中",
+        "iconClass": "radioUnchecked",
+        "data": [
+          {
+            "name": "未选中",
+            "path": ["RadioEdgeUnChecked"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "选中",
+        "iconClass": "radioChecked",
+        "data": [
+          {
+            "name": "选中外框样式",
+            "path": ["RadioEdgeChecked"],
+            "description": {
+              "appearancePart": {
+                "text": "外框",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "选中内框样式",
+            "path": ["RadioInnerChecked"],
+            "description": {
+              "appearancePart": {
+                "text": "内框",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "后台取消",
+        "iconClass": "radioCancel",
+        "data": [
+          {
+            "name": "取消状态外框样式",
+            "path": ["RadioEdgeCancel"],
+            "description": {
+              "appearancePart": {
+                "text": "外框",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "取消状态内框样式",
+            "path": ["RadioInnerCancel"],
+            "description": {
+              "appearancePart": {
+                "text": "内框",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "文字",
+        "iconClass": "radioText",
+        "data": [
+          {
+            "name": "文字样式",
+            "path": ["RadioText"],
+            "props": [{ "name": "children", "typeInTheme": "text" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Radio.Group",
+    "title": "单选框组",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "value", "text": "选中" },
+      { "name": "data", "text": "数据编辑" }
+    ],
+    "data": [
+      {
+        "title": "未选中",
+        "iconClass": "radioUnchecked",
+        "data": [
+          {
+            "name": "未选中",
+            "path": ["Radio", "RadioEdgeUnChecked"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "选中",
+        "iconClass": "radioChecked",
+        "data": [
+          {
+            "name": "外框选中",
+            "path": ["Radio", "RadioEdgeChecked"],
+            "description": {
+              "appearancePart": {
+                "text": "外框",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "内框选中",
+            "path": ["Radio", "RadioInnerChecked"],
+            "description": {
+              "appearancePart": {
+                "text": "内框",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "后台取消",
+        "iconClass": "radioCancel",
+        "data": [
+          {
+            "name": "取消状态外框样式",
+            "path": ["Radio", "RadioEdgeCancel"],
+            "description": {
+              "appearancePart": {
+                "text": "外框",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "取消状态内框样式",
+            "path": ["Radio", "RadioInnerCancel"],
+            "description": {
+              "appearancePart": {
+                "text": "内框",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "文字",
+        "iconClass": "radioText",
+        "data": [
+          {
+            "name": "文字样式",
+            "path": ["Radio", "RadioText"]
+          }
+        ]
+      },
+      {
+        "title": "排列方式",
+        "iconClass": "Arrangement",
+        "data": [
+          {
+            "name": "整体样式",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体盒子",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "单个样式",
+            "path": ["Radio", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "单项盒子",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Radio.Group",
+    "aliasName": "RadioButtonGroup",
+    "title": "单选框组",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "value", "text": "选中" },
+      { "name": "data", "text": "数据编辑" }
+    ],
+    "data": [
+      {
+        "title": "未选中",
+        "iconClass": "buttonUnchecked",
+        "data": [
+          {
+            "name": "未选中",
+            "path": ["CheckButton", "CheckButtonUnChecked"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "选中",
+        "iconClass": "buttonChecked",
+        "data": [
+          {
+            "name": "选中",
+            "path": ["CheckButton", "CheckButtonChecked"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "后台取消",
+        "iconClass": "buttonCancel",
+        "data": [
+          {
+            "name": "取消状态外框样式",
+            "path": ["CheckButton", "CheckButtonCancel"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

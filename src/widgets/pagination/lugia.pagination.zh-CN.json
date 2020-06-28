@@ -29,6 +29,7 @@
     "pageSizeOptions": {
       "type": "string[]",
       "desc": "指定每页可以显示多少条",
+      "meta": [{ "key": "pageSizes", "title": "每页显示多少条的集合", "type": "string[]" }],
       "propsDefaultValue": ["10", "20", "30", "50"]
     },
     "showQuickJumper": {
@@ -50,7 +51,7 @@
       "desc": "是否显示可以改变 pageSize",
       "propsDefaultValue": false
     },
-    "isShowTotalData": {
+    "showTotalData": {
       "type": "boolean",
       "desc": "是否可以显示数据总量",
       "propsDefaultValue": false
@@ -77,12 +78,44 @@
     "nextIconSrc": {
       "type": "image",
       "desc": "分页下一页图片资源"
+    },
+    "blockList": {
+      "type": "string[]",
+      "desc": "分页各部位展示的位置列表",
+      "meta": [{ "key": "displayLocation", "title": "分页各部位展示的位置", "type": "string[]" }],
+      "propsDefaultValue": ["Page", "PageInput", "Total", "PageSize"],
+      "defaultValue": ["Page", "PageInput", "Total", "PageSize"]
+    },
+    "align": {
+      "type": "AlignType",
+      "desc": "分页各部位对齐的方式",
+      "propsDefaultValue": "Left"
+    },
+    "size": {
+      "type": "SizeType",
+      "desc": "可配置三种尺寸大小的Pagination",
+      "propsDefaultValue": "default"
+    },
+    "divided": {
+      "type": "boolean",
+      "desc": "是否展示菜单分割线",
+      "propsDefaultValue": "false"
     }
   },
   "events": {
     "onChange": {
       "desc": "页码改变的回调，参数是改变后的页码及每页条数",
       "args": [
+        {
+          "name": "newValue",
+          "desc": "页码改变后的页码",
+          "type": "number"
+        },
+        {
+          "name": "oldValue",
+          "desc": "页码改变前的页码",
+          "type": "number"
+        },
         {
           "name": "page",
           "desc": "页码改变后的页码",
@@ -109,7 +142,30 @@
           "type": "number"
         }
       ]
+    },
+    "quickJumperInputBlur": {
+      "desc": "快速跳转输入框失去焦点时触发",
+      "args": [
+        {
+          "name": "current",
+          "desc": "当前页数",
+          "type": "number"
+        },
+        {
+          "name": "size",
+          "desc": "每页条数",
+          "type": "number"
+        },
+        {
+          "name": "event",
+          "desc": "失去焦点的DOM事件",
+          "type": "FocusEvent"
+        }
+      ]
     }
+  },
+  "type": {
+    "AlignType": ["Left", "Right"]
   },
   "designInfo": {
     "SimplePagination": {
@@ -135,47 +191,40 @@
         },
         "SimplePaginationInput": {
           "name": "简洁分页输入框",
-          "theme": {
-            "Container": {
-              "name": "输入框外部容器",
-              "desc": "输入框外部容器",
-              "normal": [["width"], ["height"], ["margin"]]
-            },
-            "Input": {
-              "name": "输入框主体内容",
-              "desc": "输入框主体内容",
-              "normal": [
-                ["fontSize"],
-                ["font"],
-                ["color"],
-                ["background"],
-                ["border"],
-                ["borderRadius"],
-                ["cursor"],
-                ["opacity"]
-              ],
-              "hover": [
-                ["border"],
-                ["borderRadius"],
-                ["cursor"],
-                ["background"],
-                ["opacity"],
-                ["boxShadow"]
-              ],
-              "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
-              "disabled": [
-                ["fontSize"],
-                ["font"],
-                ["color"],
-                ["background"],
-                ["border"],
-                ["borderRadius"],
-                ["cursor"],
-                ["padding"],
-                ["opacity"]
-              ]
-            }
-          }
+          "desc": "简洁分页输入框",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["margin"],
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["opacity"]
+          ],
+          "hover": [
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["background"],
+            ["opacity"],
+            ["boxShadow"]
+          ],
+          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+          "disabled": [
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["padding"],
+            ["opacity"]
+          ]
         },
         "PaginationQuickJumpText": {
           "name": "分页快速跳至文字",
@@ -210,6 +259,11 @@
         ["opacity"],
         ["margin"]
       ]
+    },
+    "PaginationListContainer": {
+      "name": "分页列表的容器",
+      "desc": "分页列表的容器",
+      "normal": [["margin"]]
     },
     "PaginationListItem": {
       "name": "单个页数",
@@ -302,56 +356,49 @@
     },
     "QuickJumpInput": {
       "name": "快速跳至分页输入框",
-      "theme": {
-        "Container": {
-          "name": "输入框外部容器",
-          "desc": "输入框外部容器",
-          "normal": [["width"], ["height"], ["margin"]]
-        },
-        "Input": {
-          "name": "输入框主体内容",
-          "desc": "输入框主体内容",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["cursor"],
-            ["opacity"],
-            ["boxShadow"]
-          ],
-          "hover": [
-            ["border"],
-            ["borderRadius"],
-            ["cursor"],
-            ["background"],
-            ["opacity"],
-            ["boxShadow"]
-          ],
-          "active": [
-            ["boxShadow"],
-            ["border"],
-            ["borderRadius"],
-            ["cursor"],
-            ["background"],
-            ["boxShadow"]
-          ],
-          "disabled": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["cursor"],
-            ["padding"],
-            ["opacity"],
-            ["boxShadow"]
-          ]
-        }
-      }
+      "desc": "快速跳至分页输入框",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["opacity"],
+        ["boxShadow"]
+      ],
+      "hover": [
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"]
+      ],
+      "active": [
+        ["boxShadow"],
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["background"],
+        ["boxShadow"]
+      ],
+      "disabled": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["padding"],
+        ["opacity"],
+        ["boxShadow"]
+      ]
     },
     "PaginationQuickJumpContainer": {
       "name": "分页快速跳至容器",
@@ -512,6 +559,14 @@
                     ["color"],
                     ["font"]
                   ]
+                },
+                "Divider": {
+                  "name": "分割线",
+                  "desc": "配置每项之间的分割线，当divided为true时生效",
+                  "normal": [["background"]],
+                  "hover": [],
+                  "active": [],
+                  "disabled": []
                 }
               }
             }

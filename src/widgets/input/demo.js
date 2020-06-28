@@ -7,7 +7,6 @@
 import * as React from 'react';
 import Input from './index';
 import Widget from '../consts/index';
-import ClearIcon from '../icon/ClearIcon';
 import SearchIcon from '../icon/SearchIcon';
 import PullIcon from '../icon/PullIcon';
 import styled from 'styled-components';
@@ -46,23 +45,7 @@ export class LimitTextarea extends React.Component<any, any> {
   }
 }
 export class ValidateInput extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
-
-  static getDerivedStateFromProps(nextProps: Object, preState: Object) {
-    let { value } = nextProps;
-    const hasValueInprops = 'value' in nextProps;
-    value = fixControlledValue(value);
-    if (!preState) {
-      return {
-        value: hasValueInprops ? value : '',
-      };
-    }
-    if (hasValueInprops) {
-      return { value };
-    }
-  }
+  state = { value: '' };
   onChange = ({ newValue: value }: any) => {
     this.setState({ value });
     this.props.onChange({ newValue: value });
@@ -71,30 +54,26 @@ export class ValidateInput extends React.Component<any, any> {
   render() {
     const { validateType } = this.props;
     const value = this.state.value;
-    const validateStatus = value.indexOf('a') === -1 ? 'default' : 'error';
+    const validateStatus = value.indexOf('a') !== -1 ? 'error' : 'default';
 
     return (
-      <Input onChange={this.onChange} validateType={validateType} validateStatus={validateStatus} />
+      <Input
+        value={value}
+        onChange={this.onChange}
+        validateType={validateType}
+        validateStatus={validateStatus}
+      />
     );
   }
 }
 export class TopInput extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
-
   static getDerivedStateFromProps(nextProps: Object, preState: Object) {
-    let { value } = nextProps;
-    const hasValueInprops = 'value' in nextProps;
-    value = fixControlledValue(value);
+    const { value } = nextProps;
     if (!preState) {
       return {
-        value: hasValueInprops ? value : '',
+        value,
         validateStatus: 'default',
       };
-    }
-    if (hasValueInprops) {
-      return { value };
     }
   }
   onChange = (param: any) => {
@@ -105,9 +84,11 @@ export class TopInput extends React.Component<any, any> {
   };
   render() {
     const { validateType } = this.props;
-
+    const { value } = this.state;
     return (
       <Input
+        size={'small'}
+        value={value}
         onChange={this.onChange}
         validateType={validateType}
         validateStatus={this.state.validateStatus}
@@ -208,25 +189,8 @@ const Wrapper = styled.div`
 const InputDemo = () => {
   const register = {
     [Widget.Input]: {
-      Container: { normal: { width: 500, height: 40 } },
-      Input: { disabled: { background: { color: 'gray' } } },
-      Placeholder: {
-        normal: { font: { color: 'red', weight: 900, size: 16 }, color: 'blue', fontSize: 20 },
-      },
-      InputSuffix: { normal: { color: 'red', fontSize: 12 } },
-      InputPrefix: { normal: { color: 'pink', fontSize: 16 } },
-      ClearButton: { normal: { color: 'red', fontSize: 14 } },
-    },
-  };
-  const textarea = {
-    [Widget.Textarea]: {
-      Container: {
-        normal: { width: 300, height: 40 },
-        disabled: { background: { color: 'gray' } },
-      },
-      Placeholder: {
-        normal: { font: { color: 'red', weight: 900, size: 16 }, color: 'blue', fontSize: 20 },
-      },
+      InputPrefix: { normal: { fontSize: 14 } },
+      InputSuffix: { normal: { fontSize: 14 } },
     },
   };
   const onChange = (cmpName: string) => (value: any) => {};
@@ -240,16 +204,16 @@ const InputDemo = () => {
     <div>
       <Theme config={register}>
         <Wrapper>
-          <p>字体色值</p>
-          <Input value="色值:#333333" />
-          <p>default input</p>
+          <p>默认 Input</p>
+          <Input />
+          <p>placeholder input</p>
           <Input placeholder={'请填写内容'} />
           <p>autoFocus</p>
           <Input placeholder={'请填写内容'} autoFoucs />
           <p>isShowClearButton : false</p>
           <Input isShowClearButton={false} />
           <p>禁用状态 </p>
-          <Input theme={register} size={'default'} disabled={true} />
+          <Input size={'default'} disabled={true} />
         </Wrapper>
       </Theme>
       <Wrapper>
@@ -262,9 +226,9 @@ const InputDemo = () => {
       </Wrapper>
       <Wrapper>
         <p>delete</p>
-        <Input suffix={<ClearIcon />} />
+        <Input suffix={<SearchIcon />} />
         <p>search</p>
-        <Input prefix={<SearchIcon />} theme={register} suffix={<ClearIcon />} />
+        <Input prefix={<SearchIcon />} />
         <p>pull</p>
         <Input suffix={<PullIcon />} />
       </Wrapper>
@@ -283,6 +247,12 @@ const InputDemo = () => {
         <ValidateInput validateType="bottom" onChange={onChange('limit')} />
         <p>校验信息显示类型 inner 输入值 是否含有a </p>
         <ValidateInput validateType="inner" onChange={onChange('limit')} />
+        <p>校验信息显示类型 top 输入值 受限校验</p>
+        <Input validateType="top" validateStatus="error" />
+        <p>校验信息显示类型 bottom 输入值 受限校验</p>
+        <Input validateType="bottom" validateStatus="error" />
+        <p>校验信息显示类型 inner 输入值 受限校验 </p>
+        <Input validateType="inner" validateStatus="error" />
       </Wrapper>
       <Wrapper>
         <p>段落文本输入框 resizeType="horizontal" </p>
@@ -292,32 +262,36 @@ const InputDemo = () => {
         <p>段落文本输入框 resizeType="none" </p>
         <Textarea resizeType={'none'} />
       </Wrapper>
-      <Theme config={textarea}>
-        <Wrapper>
-          <p>段落文本输入框</p>
-          <Textarea value="我是受限内容" />
-          <p>段落文本输入框 提示信息 placeholder</p>
-          <Textarea placeholder={'请填写内容'} />
-          <p>段落文本输入框 autoFocus</p>
-          <Textarea placeholder={'请填写内容'} autoFoucs />
-          <p>段落文本输入框 禁用状态 </p>
-          <Textarea disabled={true} />
-        </Wrapper>
-        <Wrapper>
-          <p>受限 段落文本输入框 </p>
-          <LimitTextarea onChange={onChange('limit')} />
-          <p>有默认值的 受限段落文本输入框</p>
-          <DefaultValueTextarea onChange={onChange('limit')} />
-        </Wrapper>
-        <Wrapper>
-          <p>校验信息显示类型 top 输入值 是否含有a</p>
-          <TopTextarea validateType="top" onChange={onChange('limit')} />
-          <p>校验信息显示类型 bottom 输入值 是否含有a</p>
-          <ValidateTextarea validateType="bottom" onChange={onChange('limit')} />
-          <p>校验信息显示类型 inner 输入值 是否含有a </p>
-          <ValidateTextarea validateType="inner" onChange={onChange('limit')} />
-        </Wrapper>
-      </Theme>
+      <Wrapper>
+        <p>段落文本输入框</p>
+        <Textarea value="我是受限内容" />
+        <p>段落文本输入框 提示信息 placeholder</p>
+        <Textarea placeholder={'请填写内容'} />
+        <p>段落文本输入框 autoFocus</p>
+        <Textarea placeholder={'请填写内容'} autoFoucs />
+        <p>段落文本输入框 禁用状态 </p>
+        <Textarea disabled={true} />
+      </Wrapper>
+      <Wrapper>
+        <p>受限 段落文本输入框 </p>
+        <LimitTextarea onChange={onChange('limit')} />
+        <p>有默认值的 受限段落文本输入框</p>
+        <DefaultValueTextarea onChange={onChange('limit')} />
+      </Wrapper>
+      <Wrapper>
+        <p>校验信息显示类型 top 输入值 是否含有a</p>
+        <TopTextarea validateType="top" onChange={onChange('limit')} />
+        <p>校验信息显示类型 bottom 输入值 是否含有a</p>
+        <ValidateTextarea validateType="bottom" onChange={onChange('limit')} />
+        <p>校验信息显示类型 inner 输入值 是否含有a </p>
+        <ValidateTextarea validateType="inner" onChange={onChange('limit')} />
+        <p>校验信息显示类型 top 输入值 受限校验</p>
+        <Textarea validateType="top" validateStatus="error" />
+        <p>校验信息显示类型 bottom 输入值 受限校验</p>
+        <Textarea validateType="bottom" validateStatus="error" />
+        <p>校验信息显示类型 inner 输入值 受限校验 </p>
+        <Textarea validateType="inner" validateStatus="error" />
+      </Wrapper>
     </div>
   );
 };

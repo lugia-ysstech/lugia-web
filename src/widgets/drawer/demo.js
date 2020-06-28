@@ -39,6 +39,11 @@ export default class DrawerDemo extends React.Component<any, any> {
       ['visible' + cur]: false,
     });
   };
+  onSidebarClick = (cur: number) => () => {
+    this.setState({
+      ['visible' + cur]: !this.state['visible' + cur],
+    });
+  };
   openDrawer = (cur: number) => () => {
     this.setState({
       ['visible' + cur]: true,
@@ -53,8 +58,12 @@ export default class DrawerDemo extends React.Component<any, any> {
     const { radioValue, visible1, visible2, visible3, visible4, visible5, visible6 } = this.state;
     const view = {
       [Widget.Drawer]: {
-        width: 500,
-        height: 500,
+        Container: {
+          normal: {
+            width: 400,
+            height: 400,
+          },
+        },
       },
     };
     return (
@@ -85,6 +94,8 @@ export default class DrawerDemo extends React.Component<any, any> {
           placement={radioValue}
           onClose={this.onClick(2)}
           visible={visible2}
+          sidebar={true}
+          onToggle={this.onSidebarClick(2)}
         >
           <p>Direction Drawer</p>
           <p>Direction Drawer</p>
@@ -163,6 +174,21 @@ export default class DrawerDemo extends React.Component<any, any> {
             <p>Theme Drawer</p>
           </Drawer>
         </Theme>
+        <DemoBox>
+          <Button
+            type="primary"
+            onClick={() =>
+              Drawer.confirm({
+                title: '快弹Drawer',
+                closable: true,
+                children: [<p>抽屉内容第一条</p>, <p>抽屉内容第二条</p>, <p>抽屉内容第三条</p>],
+                onClose: () => console.log('onClose'),
+              })
+            }
+          >
+            confirm
+          </Button>
+        </DemoBox>
       </div>
     );
   }

@@ -72,7 +72,7 @@ const getTypeCSS = (props: RowCSSProps): string => {
 };
 
 const JustifyTypeCSS: { [key: justifyType]: string } = {
-  start: 'flex-star',
+  start: 'flex-start',
   end: 'flex-end',
   center: 'center',
   spaceAround: 'space-around',

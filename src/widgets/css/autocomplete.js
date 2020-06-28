@@ -4,8 +4,8 @@ import colorsFunc from '../css/stateColor';
 import styled from 'styled-components';
 import { px2remcss } from '../css/units';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
-
-const { disableColor, mediumGreyColor } = colorsFunc();
+import get from './theme-common-dict';
+import changeColor from './utilsColor';
 
 export const OldValueItem = CSSComponent({
   tag: 'div',
@@ -24,7 +24,7 @@ export const OldValueItem = CSSComponent({
       ['borderRadius'],
     ],
     getCSS: themeMeta => {
-      const { height = MenuItemHeight } = themeMeta;
+      const { height = get('smallSize') } = themeMeta;
       return `line-height: ${px2remcss(height)}`;
     },
   },
@@ -32,14 +32,13 @@ export const OldValueItem = CSSComponent({
     selectNames: [['color'], ['background'], ['opacity'], ['border'], ['borderRadius'], ['font']],
   },
   css: css`
+    display: flex;
+    align-items: center;
     transition: all 0.3s;
     width: 100%;
     overflow: hidden;
-    height: ${px2remcss(MenuItemHeight)};
-    line-height: ${px2remcss(MenuItemHeight)};
-    padding: 0 ${px2remcss(10)};
-    background: ${disableColor};
-    color: ${mediumGreyColor};
+    height: ${() => px2remcss(get('smallSize'))};
+    padding: 0 ${() => px2remcss(get('padding'))};
     font-size: ${px2remcss(14)};
     position: relative;
     cursor: pointer;
@@ -59,8 +58,7 @@ export const OldValueTitle = CSSComponent({
   },
   css: css`
     display: inline-block;
-    margin-left: ${px2remcss(10)};
-    height: ${px2remcss(MenuItemHeight)};
+    margin-left: ${() => px2remcss(get('paddingToText'))};
   `,
 });
 OldValueTitle.displayName = 'OldValueTitle';

@@ -5,6 +5,7 @@ exports[`default Wrapper 1`] = `
   display: inline-block;
   box-sizing: border-box;
   vertical-align: top;
+  font-size: 0;
 }
 
 .c1 {
@@ -20,7 +21,7 @@ exports[`default Wrapper 1`] = `
   font-size: 1.4rem;
   display: inline-block;
   vertical-align: top;
-  padding: 17px 58px 17px 38px;
+  padding: 7px 34px 7px 36px;
 }
 
 .c36 {
@@ -36,7 +37,7 @@ exports[`default Wrapper 1`] = `
   font-size: 1.4rem;
   display: inline-block;
   vertical-align: top;
-  padding: 58px 17px 58px 17px;
+  padding: 34px 6px 34px 6px;
 }
 
 .c2 {
@@ -274,7 +275,7 @@ exports[`default Wrapper 1`] = `
 .c4 {
   border-radius: 50%;
   position: absolute;
-  left: calc(116.66666666666666% + 0rem);
+  left: calc(63.84976525821595% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -288,7 +289,7 @@ exports[`default Wrapper 1`] = `
 .c6 {
   border-radius: 50%;
   position: absolute;
-  left: calc(50% + 0rem);
+  left: calc(-2.8169014084507045% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -302,7 +303,7 @@ exports[`default Wrapper 1`] = `
 .c8 {
   border-radius: 50%;
   position: absolute;
-  left: calc(100% + 0rem);
+  left: calc(47.183098591549296% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -316,7 +317,7 @@ exports[`default Wrapper 1`] = `
 .c10 {
   border-radius: 50%;
   position: absolute;
-  left: calc(66.66666666666666% + 0rem);
+  left: calc(13.84976525821596% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -330,7 +331,7 @@ exports[`default Wrapper 1`] = `
 .c12 {
   border-radius: 50%;
   position: absolute;
-  left: calc(150% + 0rem);
+  left: calc(97.1830985915493% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -344,7 +345,7 @@ exports[`default Wrapper 1`] = `
 .c14 {
   border-radius: 50%;
   position: absolute;
-  left: calc(116.66666666666666% + 0rem);
+  left: calc(63.84976525821595% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -353,7 +354,7 @@ exports[`default Wrapper 1`] = `
   z-index: 2;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-  left: calc(116.66666666666666% + 0rem);
+  left: calc(63.84976525821595% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -367,7 +368,7 @@ exports[`default Wrapper 1`] = `
 .c16 {
   border-radius: 50%;
   position: absolute;
-  left: calc(126.66666666666666% + 0rem);
+  left: calc(73.84976525821597% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -381,7 +382,7 @@ exports[`default Wrapper 1`] = `
 .c22 {
   border-radius: 50%;
   position: absolute;
-  left: calc(90% + 0rem);
+  left: calc(37.183098591549296% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -395,7 +396,21 @@ exports[`default Wrapper 1`] = `
 .c27 {
   border-radius: 50%;
   position: absolute;
-  left: calc(130% + 0rem);
+  left: calc(77.18309859154931% + 0rem);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  z-index: 2;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.c35 {
+  border-radius: 50%;
+  position: absolute;
+  left: calc(-3.4782608695652173% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -410,7 +425,7 @@ exports[`default Wrapper 1`] = `
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(50% + 0rem);
+  bottom: calc(-2.8169014084507045% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -424,7 +439,7 @@ exports[`default Wrapper 1`] = `
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(83.33333333333333% + 0rem);
+  bottom: calc(30.516431924882625% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -438,7 +453,7 @@ exports[`default Wrapper 1`] = `
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(116.66666666666666% + 0rem);
+  bottom: calc(63.84976525821595% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -452,7 +467,7 @@ exports[`default Wrapper 1`] = `
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(70% + 0rem);
+  bottom: calc(17.1830985915493% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -466,7 +481,7 @@ exports[`default Wrapper 1`] = `
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(90% + 0rem);
+  bottom: calc(37.183098591549296% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -480,7 +495,7 @@ exports[`default Wrapper 1`] = `
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(66.66666666666666% + 0rem);
+  bottom: calc(13.84976525821596% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -489,25 +504,11 @@ exports[`default Wrapper 1`] = `
   -webkit-transition: 0.3s;
   transition: 0.3s;
   left: 50%;
-  bottom: calc(66.66666666666666% + 0rem);
+  bottom: calc(13.84976525821596% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  z-index: 2;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.c35 {
-  border-radius: 50%;
-  position: absolute;
-  left: calc(8.333333333333332% + 0rem);
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
   z-index: 2;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -517,7 +518,7 @@ exports[`default Wrapper 1`] = `
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(6.896551724137931% + 0rem);
+  bottom: calc(-3.4482758620689653% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -532,7 +533,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 18.75%;
+  left: -1.056338028169014%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -542,8 +543,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c17::before {
@@ -560,8 +561,8 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
-  color: #333;
+  bottom: -25px;
+  color: #646A6E;
   color: undefined;
 }
 
@@ -570,7 +571,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 58.75%;
+  left: 38.94366197183099%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -580,8 +581,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c18::before {
@@ -598,7 +599,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
+  bottom: -25px;
   color: blue;
   color: undefined;
 }
@@ -608,7 +609,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 98.75%;
+  left: 78.94366197183099%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -618,8 +619,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c19::before {
@@ -636,7 +637,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
+  bottom: -25px;
   color: pink;
   color: undefined;
 }
@@ -646,7 +647,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 118.75%;
+  left: 98.94366197183099%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -656,8 +657,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c20::before {
@@ -674,8 +675,8 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
-  color: #999;
+  bottom: -25px;
+  color: #f22735;
   color: undefined;
 }
 
@@ -684,7 +685,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 18.75%;
+  left: -1.056338028169014%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -694,8 +695,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c23::before {
@@ -712,8 +713,8 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
-  color: #999;
+  bottom: -25px;
+  color: #9EA4AE;
   color: undefined;
 }
 
@@ -722,7 +723,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 58.75%;
+  left: 38.94366197183099%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -732,8 +733,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c24::before {
@@ -750,7 +751,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
+  bottom: -25px;
   color: blue;
   color: undefined;
 }
@@ -760,7 +761,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 98.75%;
+  left: 78.94366197183099%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -770,8 +771,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c25::before {
@@ -788,7 +789,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
+  bottom: -25px;
   color: pink;
   color: undefined;
 }
@@ -798,7 +799,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 18.75%;
+  left: -1.056338028169014%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -808,8 +809,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c28::before {
@@ -826,8 +827,8 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
-  color: #333;
+  bottom: -25px;
+  color: #646A6E;
   color: undefined;
 }
 
@@ -836,7 +837,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 52.08333333333333%;
+  left: 32.27699530516431%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -846,8 +847,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c29::before {
@@ -864,8 +865,8 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
-  color: #999;
+  bottom: -25px;
+  color: #9EA4AE;
   color: undefined;
 }
 
@@ -874,7 +875,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 118.75%;
+  left: 98.94366197183099%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -884,8 +885,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c30::before {
@@ -902,7 +903,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
+  bottom: -25px;
   color: red;
   color: undefined;
 }
@@ -913,7 +914,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 18.75%;
+  bottom: -1.056338028169014%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -922,8 +923,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c43::before {
@@ -941,7 +942,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #333;
+  color: #646A6E;
   color: undefined;
 }
 
@@ -951,7 +952,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 38.75%;
+  bottom: 18.943661971830988%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -960,8 +961,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c44::before {
@@ -979,7 +980,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #333;
+  color: #646A6E;
   color: undefined;
 }
 
@@ -989,7 +990,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 58.75%;
+  bottom: 38.94366197183099%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -998,8 +999,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c45::before {
@@ -1017,7 +1018,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #999;
+  color: #9EA4AE;
   color: undefined;
 }
 
@@ -1027,7 +1028,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 98.75%;
+  bottom: 78.94366197183099%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1036,8 +1037,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c46::before {
@@ -1065,7 +1066,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 118.75%;
+  bottom: 98.94366197183099%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1074,8 +1075,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c47::before {
@@ -1093,7 +1094,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #999;
+  color: #f22735;
   color: undefined;
 }
 
@@ -1103,7 +1104,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 18.75%;
+  bottom: -1.056338028169014%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1112,8 +1113,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c50::before {
@@ -1131,7 +1132,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #999;
+  color: #9EA4AE;
   color: undefined;
 }
 
@@ -1141,7 +1142,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 38.75%;
+  bottom: 18.943661971830988%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1150,8 +1151,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c51::before {
@@ -1169,7 +1170,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #333;
+  color: #646A6E;
   color: undefined;
 }
 
@@ -1179,7 +1180,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 58.75%;
+  bottom: 38.94366197183099%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1188,8 +1189,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c52::before {
@@ -1207,7 +1208,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #333;
+  color: #646A6E;
   color: undefined;
 }
 
@@ -1217,7 +1218,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 118.75%;
+  bottom: 98.94366197183099%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1226,8 +1227,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c53::before {
@@ -1245,7 +1246,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #999;
+  color: #f22735;
   color: undefined;
 }
 
@@ -1255,7 +1256,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 18.75%;
+  bottom: -1.056338028169014%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1264,8 +1265,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c58::before {
@@ -1283,7 +1284,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #333;
+  color: #646A6E;
   color: undefined;
 }
 
@@ -1293,7 +1294,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 68.75%;
+  bottom: 48.943661971830984%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1302,8 +1303,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c59::before {
@@ -1321,7 +1322,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #999;
+  color: #9EA4AE;
   color: undefined;
 }
 
@@ -1331,7 +1332,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 118.75%;
+  bottom: 98.94366197183099%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1340,8 +1341,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c60::before {
@@ -1359,7 +1360,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #999;
+  color: #f22735;
   color: undefined;
 }
 
@@ -1371,7 +1372,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
-  left: -3.8rem;
+  left: -3.6rem;
   color: #999;
   font-size: 2rem;
 }
@@ -1384,9 +1385,9 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
-  right: -5.8rem;
+  right: -3.4rem;
   color: #ccc;
-  font-size: 4rem;
+  font-size: 1.8rem;
 }
 
 .c62 {
@@ -1397,9 +1398,9 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -5.8rem;
+  bottom: -3.4rem;
   color: #999;
-  font-size: 4rem;
+  font-size: 1.8rem;
 }
 
 .c63 {
@@ -1410,9 +1411,9 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  top: -5.8rem;
+  top: -3.4rem;
   color: #ccc;
-  font-size: 4rem;
+  font-size: 1.8rem;
 }
 
 .c33 {
@@ -1487,7 +1488,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -1574,7 +1575,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -1658,7 +1659,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -1732,7 +1733,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -1840,7 +1841,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -1924,7 +1925,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2008,7 +2009,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2093,7 +2094,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2210,7 +2211,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2302,7 +2303,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2393,7 +2394,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2505,7 +2506,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2640,7 +2641,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2746,7 +2747,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-9.6rem",
+              "width": "23rem",
             }
           }
           value={
@@ -2773,7 +2774,7 @@ exports[`default Wrapper 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "color": "#666",
+                  "color": "#9EA4AE",
                 }
               }
             />
@@ -2796,7 +2797,7 @@ exports[`default Wrapper 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "color": "#666",
+                  "color": "#9EA4AE",
                 }
               }
             />
@@ -2885,7 +2886,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2990,7 +2991,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3081,7 +3082,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3172,7 +3173,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3264,7 +3265,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3380,7 +3381,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3495,7 +3496,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3612,7 +3613,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3754,7 +3755,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3846,7 +3847,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3952,7 +3953,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-11.6rem",
+              "height": "23.2rem",
               "width": "0.6rem",
             }
           }
@@ -3980,7 +3981,7 @@ exports[`default Wrapper 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "color": "#666",
+                  "color": "#9EA4AE",
                 }
               }
             />
@@ -4003,7 +4004,7 @@ exports[`default Wrapper 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "color": "#666",
+                  "color": "#9EA4AE",
                 }
               }
             />

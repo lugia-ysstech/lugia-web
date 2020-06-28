@@ -67,15 +67,53 @@ const titleStyle = { margin: '20px 0', fontWeight: 'bold' };
 export const defaultData = [
   {
     title: 'Tab1',
+    value: 'Tab1',
+    content: 'content of Tab1',
+  },
+  {
+    title: 'Tab2',
+    value: 'Tab2',
+    content: 'content of Tab2',
+  },
+  {
+    title: 'Tab3',
+    value: 'Tab3',
+    content: 'content of Tab3',
+  },
+];
+export const testThemeData = [
+  {
+    title: 'Tab1',
     content: 'content of Tab1',
   },
   {
     title: 'Tab2',
     content: 'content of Tab2',
+    suffixIcon: 'lugia-icon-financial_archive',
+    icon: 'lugia-icon-financial_archive',
   },
   {
     title: 'Tab3',
     content: 'content of Tab3',
+    suffixIcon: 'lugia-icon-financial_archive',
+    icon: 'lugia-icon-financial_archive',
+    disabled: true,
+  },
+  {
+    title: <Icon iconClass={'lugia-icon-financial_archive'} />,
+    content: 'content of Tab4',
+  },
+  {
+    title: 'Tab5',
+    content: 'content of Tab5',
+  },
+  {
+    title: 'Tab6',
+    content: 'content of Tab6',
+  },
+  {
+    title: 'Tab7',
+    content: 'content of Tab7',
   },
 ];
 export const suffixData = [
@@ -795,6 +833,15 @@ export default class TabsDemo extends React.Component<any, any> {
               color: '#ccc',
             },
           },
+          SelectLine: {
+            normal: {
+              background: {
+                color: 'black',
+              },
+              height: 5,
+              width: 5,
+            },
+          },
         },
       },
     };
@@ -1101,8 +1148,12 @@ export default class TabsDemo extends React.Component<any, any> {
     return (
       <div>
         <Tabs
-          // tabType={'card'}
+          tabType={'card'}
           data={defaultData}
+          activeValue={'Tab3'}
+          activityValue={'Tab1'}
+          defaultActivityValue={'Tab3'}
+          defaultActiveValue={'Tab2'}
         />
         <Tabs tabType={'card'} defaultData={getData()} showDeleteBtn={true} />
         <Theme config={tabpanTheme}>
@@ -1183,7 +1234,14 @@ export default class TabsDemo extends React.Component<any, any> {
           </Tabs>
         </ContainerBox>
 
-        <ContainerBox>{/*<Tabs />*/}</ContainerBox>
+        <ContainerBox>
+          <Theme config={lineViewTop}>
+            <Tabs />
+          </Theme>
+          <Theme config={lineViewLeft}>
+            <Tabs tabPosition={'left'} />
+          </Theme>
+        </ContainerBox>
 
         <ContainerBox>
           <Theme
@@ -1845,6 +1903,12 @@ export default class TabsDemo extends React.Component<any, any> {
             />
           </div>
         </Theme>
+        <br />
+        <br />
+        <p>测试 公共值</p>
+        <Tabs data={testThemeData} showDeleteBtn={true} showAddBtn={true} />
+        <Tabs tabType={'card'} data={testThemeData} showDeleteBtn={true} showAddBtn={true} />
+        <Tabs tabType={'window'} data={testThemeData} showDeleteBtn={true} showAddBtn={true} />
       </div>
     );
   }

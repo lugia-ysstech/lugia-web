@@ -1,0 +1,62 @@
+[
+  {
+    "widgetName": "Switch",
+    "title": "开关",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "loading", "text": "是否配置加载" },
+      { "name": "value", "text": "开关状态" },
+      { "name": "data", "text": "数据编辑" }
+    ],
+    "data": [
+      {
+        "title": "打开状态",
+        "iconClass": "SwitchOpen",
+        "data": [
+          {
+            "name": "组件打开",
+            "path": ["Switch_SwitchOpen"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "关闭状态",
+        "iconClass": "SwitchClose",
+        "data": [
+          {
+            "name": "组件关闭",
+            "path": ["Switch_SwitchClosed"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "按钮",
+        "iconClass": "Switchbutton",
+        "data": [
+          {
+            "name": "按钮",
+            "path": ["SwitchButton"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

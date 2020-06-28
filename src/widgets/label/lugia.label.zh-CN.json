@@ -3,6 +3,11 @@
   "title": "文本",
   "desc": "文本组件",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "text": {
       "type": "string",
       "desc": "文本内容",
@@ -83,6 +88,22 @@
       ],
       "hover": [["color"], ["cursor"]],
       "disabled": [["color"], ["cursor"]]
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "fontSize": 12,
+        "color": "#333",
+        "textAlign": "left"
+      }
+    },
+    "LabelPrefix": {
+      "normal": {
+        "color": "#333",
+        "fontSize": 12,
+        "textAlign": "left"
+      }
     }
   }
 }

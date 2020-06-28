@@ -3,15 +3,30 @@
   "title": "菜单",
   "desc": "为用户提供菜单列表",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
+    "isShowAuxiliaryText": {
+      "type": "boolean",
+      "desc": "是否展示辅助文本",
+      "propsDefaultValue": false
+    },
+    "auxiliaryTextField": {
+      "type": "string",
+      "desc": "辅助文本展示的对应字段名",
+      "propsDefaultValue": "des"
+    },
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
-      "defaultValue": "value"
+      "propsDefaultValue": "value"
     },
     "displayField": {
       "type": "string",
       "desc": "data数据的displayValue值的名称",
-      "defaultValue": "text"
+      "propsDefaultValue": "text"
     },
 
     "data": {
@@ -51,13 +66,7 @@
     "mutliple": {
       "type": "boolean",
       "desc": "是否多选",
-      "defaultValue": false
-    },
-
-    "start": {
-      "type": "number",
-      "desc": "开始展示数据的索引值",
-      "defaultValue": 0
+      "propsDefaultValue": false
     },
 
     "selectedKeys": {
@@ -73,30 +82,32 @@
     "checkedCSS": {
       "type": "CheckedCSSType",
       "desc": "选中项的样式",
-      "defaultValue": "none"
+      "propsDefaultValue": "none"
     },
 
     "limitCount": {
       "type": "number",
-      "desc": "多选时的最大选中数",
-      "defaultValue": 999999
+      "desc": "多选时的最大选中数"
     },
 
     "offsety": {
       "type": "number",
-      "desc": "菜单间的间隔",
-      "defaultValue": 4
+      "desc": "菜单间的间隔"
     },
-
+    "start": {
+      "type": "number",
+      "desc": "开始展示数据的索引值",
+      "defaultValue": 0
+    },
     "autoHeight": {
       "type": "boolean",
       "desc": "根据data数量，自动计算菜单高度",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "divided": {
       "type": "boolean",
       "desc": "项之间是否展示分割线",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "expandedPath": {
       "type": "string[]",
@@ -105,12 +116,11 @@
     "separator": {
       "type": "string",
       "desc": "层级菜单时连接层级数据的分隔符",
-      "defaultValue": "|"
+      "propsDefaultValue": "|"
     },
     "offsetX": {
       "type": "number",
-      "desc": "层级菜单时，菜单间的间隔",
-      "defaultValue": 4
+      "desc": "层级菜单时，菜单间的间隔"
     },
     "offsetY": {
       "type": "string",
@@ -119,22 +129,17 @@
     "action": {
       "type": "ActionType",
       "desc": "层级菜单时，展开子菜单的方式",
-      "defaultValue": "click"
+      "propsDefaultValue": "click"
     },
     "size": {
-      "type": "large | default | bigger",
-      "desc": "设置列表项的高度",
-      "defaultValue": "default"
+      "type": "SizeType",
+      "desc": "可配置三种尺寸大小的menu",
+      "propsDefaultValue": "default"
     },
     "subsize": {
-      "type": "SubsizeType",
+      "type": "SizeType",
       "desc": "设置子菜单列表项的高度",
-      "defaultValue": "default"
-    },
-    "popupVisible": {
-      "type": "boolean",
-      "desc": "层级菜单,是否允许打开子菜单",
-      "defaultValue": true
+      "propsDefaultValue": "default"
     }
   },
   "events": {
@@ -198,9 +203,9 @@
     }
   },
   "type": {
+    "SizeType": ["small", "default", "large"],
     "CheckedCSSType": ["background", "checkbox", "none"],
-    "ActionType": ["hover", "click"],
-    "SubsizeType": ["large", "default", "bigger"]
+    "ActionType": ["hover", "click"]
   },
   "category": ["数据录入"],
 
@@ -359,7 +364,16 @@
 
             "PrefixIcon": {
               "name": "前置图标配置",
-              "desc": "前置图标或图片的样式配置",
+              "desc": "前置图标的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            },
+
+            "SelectedPrefixIcon": {
+              "name": "选中项前置图标配置",
+              "desc": "选中项前置图标的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [["color"], ["font"], ["fontSize"]],
@@ -368,7 +382,16 @@
 
             "SuffixIcon": {
               "name": "后缀图标配置",
-              "desc": "后缀图标或图片的样式配置",
+              "desc": "后缀图标的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            },
+
+            "SelectedSuffixIcon": {
+              "name": "选中项后缀图标配置",
+              "desc": "选中项后缀图标的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [["color"], ["font"], ["fontSize"]],
@@ -548,7 +571,16 @@
 
         "PrefixIcon": {
           "name": "前置图标配置",
-          "desc": "前置图标或图片的样式配置",
+          "desc": "前置图标的样式配置",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+          "hover": [["color"], ["font"], ["fontSize"]],
+          "active": [["color"], ["font"], ["fontSize"]],
+          "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+        },
+
+        "SelectedPrefixIcon": {
+          "name": "选中项前置图标配置",
+          "desc": "选中项前置图标的样式配置",
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
           "hover": [["color"], ["font"], ["fontSize"]],
           "active": [["color"], ["font"], ["fontSize"]],
@@ -557,7 +589,16 @@
 
         "SuffixIcon": {
           "name": "后缀图标配置",
-          "desc": "后缀图标或图片的样式配置",
+          "desc": "后缀图标的样式配置",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+          "hover": [["color"], ["font"], ["fontSize"]],
+          "active": [["color"], ["font"], ["fontSize"]],
+          "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+        },
+
+        "SelectedSuffixIcon": {
+          "name": "选中项后缀图标配置",
+          "desc": "选中项后缀图标的样式配置",
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
           "hover": [["color"], ["font"], ["fontSize"]],
           "active": [["color"], ["font"], ["fontSize"]],

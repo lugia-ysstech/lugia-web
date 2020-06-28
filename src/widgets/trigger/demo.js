@@ -6,6 +6,7 @@
 
 import React from 'react';
 import Trigger from './';
+import OpenTrigger from './OpenTrigger';
 
 function preventDefault(e) {
   e.preventDefault();
@@ -172,11 +173,28 @@ class Test extends React.Component<PropsType, StateType> {
                 弹出来了
               </div>
             }
+            onDocumentClick={() => {
+              console.log('onDocumentClick事件触发！！！！！');
+            }}
           >
             <a href="#" style={{ margin: 20 }} onClick={preventDefault}>
               trigger
             </a>
           </Trigger>
+        </div>
+        <div style={{ position: 'relative', background: 'red' }}>
+          <OpenTrigger
+            alwaysOpen
+            popup={
+              <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
+                弹出来了
+              </div>
+            }
+          >
+            <a href="#" style={{ margin: 20 }} onClick={preventDefault}>
+              trigger alwaysOpen
+            </a>
+          </OpenTrigger>
         </div>
       </div>
     );

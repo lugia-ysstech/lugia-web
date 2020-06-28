@@ -1,0 +1,209 @@
+[
+  {
+    "widgetName": "TimeLine",
+    "title": "时间轴",
+    "viewProps": [
+      {
+        "name": "reverse",
+        "text": "节点是否正序"
+      },
+      {
+        "name": "pending",
+        "text": "隐藏节点开启"
+      },
+      {
+        "name": "mode",
+        "text": "信息描述位置"
+      },
+      {
+        "name": "data",
+        "text": "数据编辑"
+      }
+    ],
+    "data": [
+      {
+        "title": "时间节点",
+        "iconClass": "timeLineSpot",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["TimeLineItem", "TimeLineItemContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["TimeLineItem", "TimeLineDot"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["TimeLineItem", "TimeLineItemLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "隐藏节点",
+        "iconClass": "timeLineDot",
+        "data": [
+          {
+            "name": "隐藏节点",
+            "path": ["TimeLineItem", "TimeLineExplainDot"],
+            "description": {
+              "appearancePart": {
+                "text": "隐藏节点",
+                "desc": "隐藏节点"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "隐藏信息",
+        "iconClass": "timeLineMessage",
+        "data": [
+          {
+            "name": "背景",
+            "path": ["TimeLineItem", "TimeLineItemTip", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "TimeLine",
+    "aliasName": "PendingDotTimeLine",
+    "title": "幽灵节点时间轴",
+    "viewProps": [
+      {
+        "name": "reverse",
+        "text": "节点是否正序"
+      },
+      {
+        "name": "pending",
+        "text": "隐藏节点开启"
+      },
+      {
+        "name": "mode",
+        "text": "信息描述位置"
+      },
+      {
+        "name": "data",
+        "text": "数据编辑"
+      }
+    ],
+    "data": [
+      {
+        "title": "时间节点",
+        "iconClass": "timeLineSpot",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["TimeLineItem", "TimeLineItemContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": ["TimeLineItem", "TimeLineDot"],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["TimeLineItem", "TimeLineItemLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "隐藏节点",
+        "iconClass": "timeLineDot",
+        "data": [
+          {
+            "name": "隐藏节点",
+            "path": ["TimeLineItem", "TimeLineExplainDot"],
+            "description": {
+              "appearancePart": {
+                "text": "隐藏节点",
+                "desc": "隐藏节点"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "隐藏信息",
+        "iconClass": "timeLineMessage",
+        "data": [
+          {
+            "name": "背景",
+            "path": ["TimeLineItem", "TimeLineItemTip", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "幽灵节点",
+        "iconClass": "timeLineGhost",
+        "data": [
+          {
+            "name": "节点图标",
+            "path": ["TimeLineItem", "TimeLineIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            },
+            "props": [
+              {
+                "name": "pendingDot",
+                "typeInTheme": "icon"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

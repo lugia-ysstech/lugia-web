@@ -1,7 +1,7 @@
 // @flow
 import '../common/shirm';
 import React, { Component } from 'react';
-import InnerInput from '../input/index';
+import Input from '../input/index';
 import Widget from '../consts/index';
 import type { InputSize } from '../css/input';
 import { DefaultAmountPrefix } from '../css/input';
@@ -22,24 +22,12 @@ import {
 } from './amountUtils';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import { checkNumber } from '../common/Math';
-import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
-
-const InputContainer = CSSComponent({
-  tag: 'span',
-  className: 'AmountInputContainer',
-  normal: {
-    defaultTheme: {
-      width: '100%',
-    },
-    selectNames: [['width'], ['height'], ['margin']],
-  },
-  css: css`
-    position: relative;
-    display: inline-block;
-  `,
-});
+import type { ValidateStatus, ValidateType } from '../css/validateHoc';
+import get from '../css/theme-common-dict';
+import { getBorderRadius } from '@lugia/theme-utils';
 
 const Title = CSSComponent({
   tag: 'span',
@@ -53,17 +41,17 @@ const AmountInputPrefix = CSSComponent({
   tag: 'span',
   className: 'AmountInputPrefix',
   normal: {
-    selectNames: [['fontSize'], ['color']],
+    selectNames: [['fontSize'], ['font'], ['color']],
   },
 });
 Title.displayName = 'toolTip_title';
 
-type AmountInputState = {|
+type AmountInputState = {
   value: string,
   rmb: boolean,
-|};
+};
 
-type AmountInputProps = {|
+type AmountInputProps = {
   size?: InputSize,
   viewClass: string,
   disabled: boolean,
@@ -83,7 +71,10 @@ type AmountInputProps = {|
   themeProps: Object,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
-|};
+  validateStatus: ValidateStatus,
+  validateType: ValidateType,
+  help: string,
+};
 
 class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   static defaultProps = {
@@ -218,6 +209,11 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
         [viewClass]: {
           Container: {
             normal: {
+              borderRadius: getBorderRadius(2),
+              background: {
+                color: get('blackColor'),
+              },
+              boxShadow: get('normalShadow'),
               getThemeMeta(themeMeta: Object, themeProps: Object) {
                 const { propsConfig } = themeProps;
                 const { value } = propsConfig;
@@ -227,23 +223,39 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
                 };
               },
             },
+            hover: {
+              background: {
+                color: get('darkGreyColor'),
+              },
+              boxShadow: get('hoverShadow'),
+            },
+          },
+          TooltipTitle: deepMerge(
+            { normal: { color: get('defaultColor') } },
+            toolTipThemeProps[viewClass]
+          ),
+          ChildrenContainer: {
+            normal: {
+              getCSS(themeMeta, themeProps) {
+                return 'display: block;';
+              },
+            },
           },
         },
       },
       toolTipThemeProps
     );
-    const theThemeProps = this.props.getPartOfThemeProps('Container');
+
     return (
       <ToolTip
         propsConfig={{ value }}
         title={this.getTitle()}
         action={'focus'}
         placement={'topLeft'}
-        popArrowType={'round'}
         theme={newTheme}
         viewClass={viewClass}
       >
-        <InputContainer themeProps={theThemeProps}>{this.generateInput()}</InputContainer>
+        {this.generateInput()}
       </ToolTip>
     );
   }
@@ -272,40 +284,25 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
     return <Title themeProps={themeProps}>{titleValue}</Title>;
   }
 
-  onKeyDown = (event: KeyboardEvent) => {
-    const { onKeyDown, onEnter } = this.props;
-    onKeyDown && onKeyDown(event);
-    const { keyCode } = event;
-    onEnter && keyCode === 13 && onEnter(event);
-  };
-
   generateInput(): React$Element<any> {
-    const { props } = this;
     const { value, rmb } = this.state;
-    const { onKeyUp, onKeyPress, size, disabled, placeholder } = props;
+    const { size, disabled, placeholder, getPartOfThemeProps, getPartOfThemeHocProps } = this.props;
     const prefix = this.getPrefix();
     const thePlaceholder = disabled ? '' : placeholder;
     const actualValue = rmb ? tipTool(parser(value), convertCurrency) : amountFormatter(value);
-    const { theme: inputTheme, viewClass: inputViewClass } = this.props.getPartOfThemeHocProps(
-      'InnerInput'
-    );
 
-    inputTheme[inputViewClass].Container = deepMerge(
-      inputTheme[inputViewClass].Container,
-      this.props.getPartOfThemeProps('Container').themeConfig
-    );
+    const { theme: inputTheme } = getPartOfThemeHocProps('InnerInput');
 
+    const containerThemeProps = getPartOfThemeProps('Container');
+    const theInputTheme = deepMerge(inputTheme, containerThemeProps);
     return (
-      <InnerInput
+      <Input
         _maxLength="16"
-        theme={inputTheme}
-        viewClass={inputViewClass}
+        theme={theInputTheme}
+        {...this.props}
         ref={this.el}
         value={actualValue}
         size={size}
-        onKeyUp={onKeyUp}
-        onKeyPress={onKeyPress}
-        onKeyDown={this.onKeyDown}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         placeholder={thePlaceholder}
@@ -319,8 +316,8 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   }
 
   getPrefix() {
-    const { amountPrefix } = this.props;
-    const theThemeProps = this.props.getPartOfThemeProps('AmountInputPrefix');
+    const { amountPrefix, size } = this.props;
+    const theThemeProps = this.props.getPartOfThemeProps('AmountInputPrefix', { props: { size } });
     return <AmountInputPrefix themeProps={theThemeProps}>{amountPrefix}</AmountInputPrefix>;
   }
 }

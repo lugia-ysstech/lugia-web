@@ -6,22 +6,22 @@
     "closable": {
       "type": "boolean",
       "desc": "标签是否可关闭",
-      "defaultValue": true
+      "propsDefaultValue": false
     },
     "text": {
       "type": "string",
       "desc": "指定标签的文本值",
-      "defaultValue": "Tag"
+      "propsDefaultValue": "Tag"
     },
     "shape": {
       "type": "ShapeType",
       "desc": "标签的圆角, basic为4px圆角,round为圆角标签",
-      "defaultValue": "basic"
+      "propsDefaultValue": "basic"
     },
     "type": {
       "type": "StyleType",
       "desc": "标签的主题样式",
-      "defaultValue": "customs"
+      "propsDefaultValue": "customs"
     }
   },
   "events": {
@@ -92,17 +92,15 @@
             ["font"]
           ],
           "active": [],
-          "clicked": [],
           "disabled": []
         },
 
         "CloseButton": {
           "name": "关闭按钮",
-          "desc": "隐藏按钮的样式配置",
+          "desc": "关闭按钮的样式配置",
           "normal": [["font"], ["color"], ["margin"]],
           "hover": [["font"], ["color"]],
           "active": [],
-          "clicked": [],
           "disabled": []
         }
       }
@@ -150,7 +148,6 @@
             ["opacity"],
             ["font"]
           ],
-          "clicked": [],
           "disabled": []
         },
 
@@ -188,7 +185,6 @@
             ["font"],
             ["borderRadius"]
           ],
-          "clicked": [],
           "disabled": []
         }
       }
@@ -222,7 +218,14 @@
         ["font"]
       ],
       "active": [],
-      "clicked": [],
+      "disabled": []
+    },
+    "CloseButton": {
+      "name": "关闭按钮",
+      "desc": "关闭按钮的样式配置",
+      "normal": [["font"], ["color"], ["margin"]],
+      "hover": [["font"], ["color"]],
+      "active": [],
       "disabled": []
     }
   }

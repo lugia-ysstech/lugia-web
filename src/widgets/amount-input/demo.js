@@ -7,16 +7,10 @@
 import * as React from 'react';
 import Theme from '../theme';
 import AmountInput from './index';
-import Widget from '../consts/index';
 import styled from 'styled-components';
-import { getBoxShadow } from '@lugia/theme-utils';
 
 class LimitAmountInput extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-    this.state = { value: '' };
-  }
-
+  state = { value: '' };
   onChange = ({ newValue: value }: any) => {
     this.setState({ value });
     this.props.onChange({ newValue: value });
@@ -31,40 +25,38 @@ class DefaultValueAmountInput extends React.Component<any, any> {
     return <AmountInput defaultValue={'123456'} onChange={this.props.onChange} />;
   }
 }
+
+class ValidateInput extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+  }
+  state = { value: '' };
+
+  onChange = ({ newValue: value }: any) => {
+    this.setState({ value });
+    this.props.onChange({ newValue: value });
+  };
+
+  render() {
+    const { validateType } = this.props;
+    const value = this.state.value;
+    const validateStatus = String(value).indexOf('5') !== -1 ? 'error' : 'default';
+    return (
+      <AmountInput
+        value={value}
+        onChange={this.onChange}
+        validateType={validateType}
+        validateStatus={validateStatus}
+      />
+    );
+  }
+}
+
 const Wrapper = styled.div`
-  float: left;
   margin-left: 50px;
 `;
 export default () => {
-  const view = {
-    [Widget.AmountInput]: {
-      Container: {
-        normal: {
-          width: 400,
-          height: 40,
-          border: {
-            top: 10,
-          },
-        },
-      },
-      AmountInputPrefix: { normal: { fontSize: 14, color: 'blue' } },
-      AmountTip: {
-        Container: {
-          normal: {
-            background: {
-              color: '#eee',
-            },
-          },
-        },
-        TooltipTitle: {
-          normal: {
-            color: '#4d63ff',
-            fontSize: 16,
-          },
-        },
-      },
-    },
-  };
+  const view = {};
   const onChange = (cmpName: string) => (value: any) => {};
   return (
     <div>
@@ -97,6 +89,18 @@ export default () => {
         <AmountInput amountPrefix="¥" transform={false} />
         <p>amountPrefix: '$' transform: false </p>
         <AmountInput amountPrefix="$" transform={false} />
+      </Wrapper>
+      <Wrapper>
+        <p>校验信息显示类型 top 输入值 是否含有5</p>
+        <ValidateInput validateType="top" onChange={onChange('limit')} validateStatus={'error'} />
+        <p>校验信息显示类型 bottom 输入值 是否含有5</p>
+        <ValidateInput
+          validateType="bottom"
+          onChange={onChange('limit')}
+          validateStatus={'error'}
+        />
+        <p>校验信息显示类型 inner 输入值 是否含有5</p>
+        <ValidateInput validateType="inner" onChange={onChange('limit')} validateStatus={'error'} />
       </Wrapper>
     </div>
   );

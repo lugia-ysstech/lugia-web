@@ -3,6 +3,11 @@
   "title": "步骤条",
   "desc": "引导用户按照流程完成任务的导航条",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "children": {
       "type": "React.Node",
       "desc": "步骤条需要包含的子组件"
@@ -32,32 +37,32 @@
     "stepType": {
       "type": "StepType",
       "desc": "步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择",
-      "defaultValue": "simple"
+      "propsDefaultValue": "simple"
     },
     "size": {
       "type": "SizeType",
       "desc": "步骤条尺寸,有正常和迷你 两种尺寸可供选择",
-      "defaultValue": "normal"
+      "propsDefaultValue": "default"
     },
     "orientation": {
       "type": "OrientationType",
       "desc": "步骤条方向,可选择水平,垂直",
-      "defaultValue": "horizontal"
+      "propsDefaultValue": "horizontal"
     },
     "desAlign": {
       "type": "AlignType",
       "desc": "步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐",
-      "defaultValue": "left"
+      "propsDefaultValue": "left"
     },
     "currentStepNumber": {
       "type": "number",
       "desc": "当前显示的步骤条位置",
-      "defaultValue": 0
+      "propsDefaultValue": 0
     }
   },
   "type": {
     "StepType": ["simple", "flat", "icon", "dot"],
-    "SizeType": ["normal", "mini"],
+    "SizeType": ["default", "small"],
     "OrientationType": ["horizontal", "vertical"],
     "AlignType": ["center", "left"],
     "StepStatus": ["finish", "process", "next", "wait", "error"]
@@ -73,7 +78,7 @@
         "orientation": "vertical"
       },
       "theme": {
-        "StepsOutContainer": {
+        "Container": {
           "name": "步骤条最外层容器",
           "desc": "步骤条最外层容器",
           "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
@@ -303,6 +308,13 @@
             }
           }
         }
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "width": 100
+          }
+        }
       }
     },
     "FlatSteps": {
@@ -314,7 +326,7 @@
         "orientation": "horizontal"
       },
       "theme": {
-        "StepsOutContainer": {
+        "Container": {
           "name": "步骤条最外层容器",
           "desc": "步骤条最外层容器",
           "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
@@ -556,7 +568,7 @@
         "orientation": "horizontal"
       },
       "theme": {
-        "StepsOutContainer": {
+        "Container": {
           "name": "步骤条最外层容器",
           "desc": "步骤条最外层容器",
           "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
@@ -791,7 +803,7 @@
         "orientation": "horizontal"
       },
       "theme": {
-        "StepsOutContainer": {
+        "Container": {
           "name": "步骤条最外层容器",
           "desc": "步骤条最外层容器",
           "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
@@ -1014,7 +1026,7 @@
     }
   },
   "theme": {
-    "StepsOutContainer": {
+    "Container": {
       "name": "步骤条最外层容器",
       "desc": "步骤条最外层容器",
       "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
@@ -1243,6 +1255,13 @@
           "desc": "配置步骤条内容图标",
           "normal": [["fontSize"], ["font"], ["color"]]
         }
+      }
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 800
       }
     }
   }

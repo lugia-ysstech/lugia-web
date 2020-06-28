@@ -3,6 +3,16 @@
   "title": "对话框",
   "desc": "Modal 对话框。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
+    "injectLugiad": {
+      "type": "Object",
+      "defaultValue": { "type": "Modal" },
+      "isHidden": true
+    },
     "title": {
       "type": "React.node",
       "desc": "标题"
@@ -14,7 +24,7 @@
     "cancelText": {
       "type": "string",
       "desc": "取消按钮文字",
-      "defaultValue": "取消"
+      "propsDefaultValue": "取消"
     },
     "cancelButtonProps": {
       "type": "Object",
@@ -23,7 +33,7 @@
     "okText": {
       "type": "string",
       "desc": "确认按钮文字",
-      "defaultValue": "确定"
+      "propsDefaultValue": "确定"
     },
     "okButtonProps": {
       "type": "Object",
@@ -31,16 +41,41 @@
     },
     "confirmLoading": {
       "type": "boolean",
-      "desc": "确定按钮是否 loading"
+      "desc": "确定按钮是否 loading",
+      "propsDefaultValue": false
     },
     "footer": {
-      "type": "React.node",
-      "desc": "自定义底部内容，不需要底部内容可设置为 null"
+      "type": "boolean | React.node",
+      "desc": "底部内容是否显示, 或自定义底部内容",
+      "propsDefaultValue": true
     },
     "maskClosable": {
       "type": "boolean",
       "desc": "点击蒙层是否允许关闭",
-      "defaultValue": true
+      "propsDefaultValue": true
+    },
+    "closable": {
+      "type": "boolean",
+      "desc": "是否显示关闭按钮",
+      "propsDefaultValue": true
+    },
+    "mask": {
+      "type": "boolean",
+      "desc": "是否显示遮罩",
+      "propsDefaultValue": true
+    },
+    "iconClass": {
+      "type": "string",
+      "desc": "自定义前缀图标"
+    },
+    "closeIconClass": {
+      "type": "string",
+      "desc": "自定义后缀图标"
+    },
+    "showIcon": {
+      "type": "boolean",
+      "desc": "是否显示图标",
+      "propsDefaultValue": false
     }
   },
   "events": {
@@ -55,7 +90,7 @@
   },
   "category": ["反馈"],
   "theme": {
-    "ModalWrap": {
+    "Container": {
       "name": "弹窗整体样式",
       "desc": "为弹窗配置整体样式",
       "normal": [
@@ -66,7 +101,11 @@
         ["borderRadius"],
         ["border"],
         ["background"],
-        ["padding"]
+        ["padding"],
+        ["minWidth"],
+        ["maxWidth"],
+        ["maxHeight"],
+        ["minHeight"]
       ]
     },
     "ModalTitle": {
@@ -79,10 +118,72 @@
       "desc": "为弹窗内容文本配置样式",
       "normal": [["font"], ["color"], ["padding"]]
     },
+    "ModalIcon": {
+      "name": "弹窗前缀图标样式",
+      "desc": "为弹窗前缀图标配置样式",
+      "normal": [["fontSize"], ["color"]]
+    },
     "ModalCloseIcon": {
       "name": "弹窗关闭图标样式",
       "desc": "为弹窗关闭图标配置样式",
       "normal": [["fontSize"], ["color"]]
+    },
+    "ModalOkButton": {
+      "name": "弹窗确定按钮样式",
+      "desc": "为弹窗确定按钮配置样式",
+      "theme": {
+        "Container": {
+          "name": "弹窗确定按钮",
+          "normal": [
+            ["background"],
+            ["border"],
+            ["height"],
+            ["width"],
+            ["padding"],
+            ["margin"],
+            ["borderRadius"]
+          ],
+          "hover": [["background"], ["border"]],
+          "active": [["background"], ["border"]],
+          "disabled": [["background"], ["border"]],
+          "focus": [["background"], ["border"]]
+        }
+      }
+    },
+    "ModalCancelButton": {
+      "name": "弹窗取消按钮样式",
+      "desc": "为弹窗取消按钮配置样式",
+      "theme": {
+        "Container": {
+          "name": "弹窗取消按钮",
+          "normal": [
+            ["background"],
+            ["border"],
+            ["height"],
+            ["width"],
+            ["padding"],
+            ["margin"],
+            ["borderRadius"]
+          ],
+          "hover": [["background"], ["border"]],
+          "active": [["background"], ["border"]],
+          "disabled": [["background"], ["border"]],
+          "focus": [["background"], ["border"]]
+        }
+      }
+    },
+    "ModalMask": {
+      "name": "弹窗遮罩样式",
+      "desc": "为弹窗遮罩配置样式",
+      "normal": [["background"]]
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 520,
+        "height": 70
+      }
     }
   }
 }

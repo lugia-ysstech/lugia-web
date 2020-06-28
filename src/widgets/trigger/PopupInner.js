@@ -15,12 +15,12 @@ const getZIndex = props => {
 };
 
 const PopupInnerBox = styled(VisibleBox)`
-  position: absolute;
+  position: ${props => (props.liquidLayout ? 'unset !important' : ' absolute')};
   border-radius: 4px;
   box-sizing: border-box;
   left: -9999px;
   top: -9999px;
-  ${getZIndex}
+  ${props => (props.liquidLayout ? '' : getZIndex(props))};
 `;
 
 type PopupInnerProps = {
@@ -30,6 +30,7 @@ type PopupInnerProps = {
   onMouseLeave?: Function,
   children: ?React.Node,
   className: string,
+  liquidLayout: boolean,
 };
 
 class PopupInner extends React.Component<PopupInnerProps> {
@@ -42,7 +43,15 @@ class PopupInner extends React.Component<PopupInnerProps> {
   };
 
   render() {
-    const { visible, onMouseEnter, onMouseLeave, children, getTheme, className } = this.props;
+    const {
+      visible,
+      onMouseEnter,
+      onMouseLeave,
+      children,
+      getTheme,
+      className,
+      liquidLayout,
+    } = this.props;
     return (
       <PopupInnerBox
         className={className}
@@ -50,6 +59,7 @@ class PopupInner extends React.Component<PopupInnerProps> {
         theme={getTheme()}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        liquidLayout={liquidLayout}
       >
         <ContentBox visible={visible}>{children}</ContentBox>
       </PopupInnerBox>

@@ -12,13 +12,16 @@ import type { CardProps, CardState, ImageOrientation } from '../css/card';
 import { ObjectUtils } from '@lugia/type-utils';
 import CSSComponent, { css, StaticComponent } from '../theme/CSSProvider';
 import ThemeHoc from '../theme-provider/index';
-import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
-import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
-
+import { getBorderRadius } from '@lugia/theme-utils';
+import { blackColor } from '../css/inputtag';
+import get from '../css/theme-common-dict';
 const { px2remcss } = units;
-const { darkGreyColor, lightGreyColor, defaultColor, themeColor, superLightColor } = colorsFunc();
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const paddingToText = '$lugia-dict.@lugia/lugia-web.paddingToText';
 
 const checkSizeIsNumber = size => {
   let theSize = size;
@@ -33,6 +36,10 @@ const getDefaultSize = (size, defaultSize) => {
 
 const isHorizontal = (imageOrientation: ImageOrientation = 'horizontal') => {
   return imageOrientation === 'horizontal';
+};
+const getPositionCSS = (position: boolean) => {
+  const positionCSS = position ? 'position:absolute;z-index:4000;' : '';
+  return positionCSS;
 };
 
 const CardOutContainer = CSSComponent({
@@ -51,13 +58,20 @@ const CardOutContainer = CSSComponent({
       ['padding'],
       ['opacity'],
     ],
+    defaultTheme: {
+      background: {
+        color: 'white',
+      },
+    },
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { imageOrientation, type },
+        propsConfig: { imageOrientation, type, minHeight },
       } = themeProps;
       const textAlign = type === 'avatar' && !isHorizontal(imageOrientation) ? 'center' : '';
       const flexDirection = !isHorizontal(imageOrientation) ? 'column' : 'row';
+      const theHeight = minHeight ? checkSizeIsNumber(minHeight) : px2remcss(20);
       return `
+        min-height:${theHeight};
         text-align:${textAlign};
         flex-direction:${flexDirection};`;
     },
@@ -66,15 +80,13 @@ const CardOutContainer = CSSComponent({
         propsConfig: { type },
       } = themeProps;
       if (type === 'transparent') {
-        return {};
+        return {
+          background: { color: 'transparent' },
+          boxShadow: 'none',
+        };
       }
       return {
-        background: {
-          color: defaultColor,
-        },
-        border: getBorder({ color: lightGreyColor, width: 1, style: 'solid' }),
-        borderRadius: getBorderRadius(5),
-        boxShadow: getBoxShadow('0 0 6 rgba(0, 0, 50, 0.1)'),
+        borderRadius: getBorderRadius(borderRadiusValue),
       };
     },
   },
@@ -88,7 +100,6 @@ const CardOutContainer = CSSComponent({
     position: relative;
     display: flex;
     min-width: ${px2remcss(50)};
-    min-height: ${px2remcss(20)};
   `,
   option: { hover: true },
 });
@@ -214,6 +225,11 @@ const AvatarContainer = CSSComponent({
       ['boxShadow'],
       ['opacity'],
     ],
+    defaultTheme: {
+      padding: {
+        top: 28,
+      },
+    },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
       const {
@@ -250,14 +266,16 @@ const TextContainer = CSSComponent({
   className: 'TextContainer',
   normal: {
     selectNames: [['width'], ['height'], ['padding']],
+    width: '100%',
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { imageOrientation, type },
+        propsConfig: { imageOrientation, type, __lugiad__header__absolute__ },
       } = themeProps;
       const vCard = !isHorizontal(imageOrientation);
       const textAlign = type === 'avatar' && vCard ? 'center' : '';
       const flexDirection = vCard ? 'column' : 'row';
-      return `text-align:${textAlign};flex-direction:${flexDirection};`;
+      const positionCSS = getPositionCSS(__lugiad__header__absolute__);
+      return `text-align:${textAlign};flex-direction:${flexDirection};${positionCSS}`;
     },
     defaultTheme: {
       height: 'fit-content',
@@ -285,6 +303,7 @@ const Title = CSSComponent({
     defaultTheme: {
       fontSize: 16,
       width: '100%',
+      color: blackColor,
     },
   },
   css: css`
@@ -298,6 +317,7 @@ const TitleHeadContainer = CSSComponent({
   className: 'CardTitleTipLineContainer',
   normal: {
     selectNames: [
+      ['width'],
       ['height'],
       ['background'],
       ['padding'],
@@ -306,13 +326,21 @@ const TitleHeadContainer = CSSComponent({
       ['boxShadow'],
     ],
     defaultTheme: {
-      padding: {
-        top: 10,
-      },
+      width: '100%',
       borderRadius: {
         topLeft: 5,
         topRight: 5,
       },
+      padding: {
+        top: 10,
+      },
+    },
+    getCSS(themeMeta, themeProps) {
+      const {
+        propsConfig: { __lugiad__header__absolute__ },
+      } = themeProps;
+      const positionCSS = getPositionCSS(__lugiad__header__absolute__);
+      return `${positionCSS}`;
     },
   },
   css: css`
@@ -366,12 +394,8 @@ const TitleBottomLine = CSSComponent({
     defaultTheme: {
       height: 1,
       width: '100%',
-      border: {
-        bottom: {
-          style: 'solid',
-          width: 1,
-          color: superLightColor,
-        },
+      margin: {
+        top: 10,
       },
     },
     getCSS(themeMeta, themeProps) {
@@ -425,7 +449,7 @@ class Card extends React.Component<CardProps, CardState> {
   static getDerivedStateFromProps(nextProps, prevState) {}
 
   render() {
-    const { type, imageOrientation } = this.props;
+    const { type, imageOrientation, minHeight } = this.props;
     let resultTheme;
     const hCard = isHorizontal(imageOrientation);
     switch (type) {
@@ -450,14 +474,29 @@ class Card extends React.Component<CardProps, CardState> {
       default:
         break;
     }
+    const defaultTheme = {
+      themeConfig: { normal: { boxShadow: get('normalBoxShadow') } },
+    };
     resultTheme = deepMerge(
+      defaultTheme,
       resultTheme,
-      this.props.getPartOfThemeProps('Container', { props: { type, imageOrientation } })
+      this.props.getPartOfThemeProps('Container', { props: { type, imageOrientation, minHeight } })
     );
     const { operation, title, description, content, children } = this.props;
     const hasChildren = operation || title || description || content || children;
+    if (type === 'transparent') {
+      return (
+        <CardOutContainer
+          themeProps={this.props.getPartOfThemeProps('Container', {
+            props: { type },
+          })}
+        >
+          {children}
+        </CardOutContainer>
+      );
+    }
     return (
-      <CardOutContainer themeProps={resultTheme} type={type} imageOrientation={imageOrientation}>
+      <CardOutContainer themeProps={resultTheme}>
         {hasChildren ? (
           [this.getDetails('operation'), this.getImageContainer(), this.getInnerContent()]
         ) : (
@@ -489,11 +528,15 @@ class Card extends React.Component<CardProps, CardState> {
   }
 
   getTitleTipContainer() {
-    const { title, type, getPartOfThemeProps } = this.props;
+    const { title, type, getPartOfThemeProps, __lugiad__header__absolute__ } = this.props;
     const TitleCmp = this.getDetails('title');
     if (title && type === 'tip') {
       return (
-        <TitleHeadContainer themeProps={getPartOfThemeProps('CardTitleHeadContainer')}>
+        <TitleHeadContainer
+          themeProps={getPartOfThemeProps('CardTitleHeadContainer', {
+            props: { __lugiad__header__absolute__ },
+          })}
+        >
           <TitleTipContainer>
             <TitleTipLine themeProps={getPartOfThemeProps('CardTitleTipLine')} />
             {TitleCmp}
@@ -507,8 +550,28 @@ class Card extends React.Component<CardProps, CardState> {
 
   getTitleBottomLine() {
     const { showTipBottomLine } = this.props;
+    const defaultTheme = () => ({
+      themeConfig: {
+        normal: {
+          border: {
+            bottom: {
+              style: 'solid',
+              width: 1,
+              color: get('borderColor'),
+            },
+          },
+        },
+      },
+    });
     if (showTipBottomLine) {
-      return <TitleBottomLine themeProps={this.props.getPartOfThemeProps('CardTipBottomLine')} />;
+      return (
+        <TitleBottomLine
+          themeProps={deepMerge(
+            defaultTheme(),
+            this.props.getPartOfThemeProps('CardTipBottomLine')
+          )}
+        />
+      );
     }
   }
 
@@ -544,30 +607,32 @@ class Card extends React.Component<CardProps, CardState> {
   getPaddingByType(type: string, position: string, imageOrientation: ImageOrientation) {
     let left = 0;
     let top = 0;
-    if (type === 'avatar' && !isHorizontal(imageOrientation)) {
-      left = 0;
-    } else if (type === 'tip') {
+    let bottom = 0;
+
+    if (type === 'tip') {
       switch (position) {
         case 'description':
           left = 16;
           break;
         case 'title':
         default:
-          left = 10;
+          left = paddingToText;
           break;
       }
     } else {
-      left = 10;
+      left = 12;
     }
     switch (position) {
       case 'content':
         top = 16;
+        bottom = 10;
         break;
       case 'description':
         top = 14;
+        bottom = 10;
         break;
       case 'title':
-        top = 13;
+        top = 14;
         break;
       default:
         top = 0;
@@ -577,7 +642,8 @@ class Card extends React.Component<CardProps, CardState> {
       padding: {
         left,
         top,
-        right: 10,
+        right: 12,
+        bottom,
       },
     };
   }
@@ -587,7 +653,16 @@ class Card extends React.Component<CardProps, CardState> {
   }
 
   getDetails(information: string): React.Node | null {
-    const { operation, title, description, content, children, type, imageOrientation } = this.props;
+    const {
+      operation,
+      title,
+      description,
+      content,
+      children,
+      type,
+      imageOrientation,
+      __lugiad__header__absolute__,
+    } = this.props;
     const hasNoContent = !(content && children);
 
     switch (information) {
@@ -599,7 +674,9 @@ class Card extends React.Component<CardProps, CardState> {
       case 'title':
         const titleThemeProps = deepMerge(
           this.getThemeNormalConfig(this.getPaddingByType(type, 'title', imageOrientation)),
-          this.props.getPartOfThemeProps('CardTitle', { props: { type } })
+          this.props.getPartOfThemeProps('CardTitle', {
+            props: { type, __lugiad__header__absolute__ },
+          })
         );
         return title ? this.getTitle(titleThemeProps) : null;
       case 'description':

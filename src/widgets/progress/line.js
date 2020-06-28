@@ -22,7 +22,13 @@ import colorsFunc from '../css/stateColor';
 type LineProps = {
   getIconTheme: Function,
 } & ProgressProps;
-const { successColor, dangerColor, mediumGreyColor } = colorsFunc();
+const { mediumGreyColor } = colorsFunc();
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
+const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
+const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
+const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+const lFontSize = '$lugia-dict.@lugia/lugia-web.lFontSize';
+const xlFontSize = '$lugia-dict.@lugia/lugia-web.xlFontSize';
 
 export const getText = (inside?: boolean, props: Object) => {
   const { percent = 0, format, hasFormat = false, getIconTheme, iconClass } = props;
@@ -34,9 +40,9 @@ export const getText = (inside?: boolean, props: Object) => {
   const { status = 'default', size = 'default', type = 'line' } = props;
   let iconFont;
   if (type === 'circle' || type === 'dashboard') {
-    iconFont = size === 'small' ? 26 : 40;
+    iconFont = size === 'small' ? lFontSize : xlFontSize;
   } else {
-    iconFont = size === 'small' ? 12 : 14;
+    iconFont = size === 'small' ? xsFontSize : sFontSize;
   }
 
   const iconColor =
@@ -125,6 +131,7 @@ export default class extends React.Component<LineProps, ProgressState> {
     const innerLineErrorTheme = getPartOfThemeProps('ProgressInnerLine_Error');
     const insideTextTheme = getPartOfThemeProps('ProgressLineInsideText');
     const infoTextTheme = getPartOfThemeProps('ProgressLineInfoText');
+    const activeLineTheme = getPartOfThemeProps('ProgressActiveLine');
     const progressStatus = getStatus({ status, percent });
     const progressInnerLineTheme =
       progressStatus === 'success'
@@ -138,6 +145,7 @@ export default class extends React.Component<LineProps, ProgressState> {
       size,
       showType,
       active,
+      activeLineTheme,
     };
     infoTextTheme.propsConfig = {
       status: progressStatus,

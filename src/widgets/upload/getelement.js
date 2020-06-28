@@ -15,12 +15,31 @@ import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import CSSComponent, { css, keyframes } from '../theme/CSSProvider';
 import { getBorderRadius, getBorder } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
-
+import get from '../css/theme-common-dict';
 import { getListIconType } from '../css/upload';
-import colorsFunc from '../css/stateColor';
 
-const { themeColor } = colorsFunc();
-
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const padding = '$lugia-dict.@lugia/lugia-web.padding';
+const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const xxlFontSize = '$lugia-dict.@lugia/lugia-web.xxlFontSize';
+const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const themeDisabledColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
+const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
+const themeFocusColor = '$lugia-dict.@lugia/lugia-web.themeFocusColor';
+const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const lFontSize = '$lugia-dict.@lugia/lugia-web.lFontSize';
+const mFontSize = '$lugia-dict.@lugia/lugia-web.mFontSize';
+const descriptionFontSize = '$lugia-dict.@lugia/lugia-web.descriptionFontSize';
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const Container = CSSComponent({
   tag: 'div',
   className: 'upload_Container',
@@ -33,49 +52,159 @@ const Container = CSSComponent({
     box-sizing: border-box;
   `,
 });
+const BothContainer = CSSComponent({
+  tag: 'div',
+  className: 'BothContainer',
+  normal: {
+    selectNames: [['width'], ['height'], ['boxShadow'], ['borderRadius'], ['border'], ['color']],
+  },
+  disabled: {
+    selectNames: [['border'], ['borderRadius'], ['cursor']],
+  },
+  css: css`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 30px;
+  `,
+});
+const bothButtonTheme = {
+  height: 30,
+  borderRadius: getBorderRadius(0, ['tl', 'bl']),
+};
+const buttonHeightTheme = {
+  height: 30,
+};
+const buttonFailColor = {
+  normal: {
+    color: dangerColor,
+  },
+  hover: {
+    color: dangerColor,
+  },
+  active: {
+    color: dangerColor,
+  },
+  focus: {
+    color: dangerColor,
+  },
+  disabled: {
+    color: dangerColor,
+  },
+};
+const buttonStyle = {
+  fail: dangerColor,
+  done: themeFocusColor,
+};
+const getButtonStyle = (normalButtonTheme, classNameStatus) => {
+  return {
+    normal: { ...normalButtonTheme, background: { color: buttonStyle[classNameStatus] } },
+    hover: { background: { color: buttonStyle[classNameStatus] } },
+    active: { background: { color: buttonStyle[classNameStatus] } },
+    focus: { background: { color: buttonStyle[classNameStatus] } },
+    disabled: { background: { color: buttonStyle[classNameStatus] } },
+  };
+};
 
+const getDefaultStyle = status => {
+  if (status === 'fail') {
+    return {
+      border: getBorder({ width: 1, style: 'solid', color: dangerColor }),
+      color: dangerColor,
+      fontSize: descriptionFontSize,
+    };
+  } else if (status === 'loading') {
+    return {
+      border: getBorder({ width: 1, style: 'solid', color: themeColor }),
+      color: blackColor,
+    };
+  } else if (status === 'done') {
+    return {
+      border: getBorder(get('focusBorder')),
+      color: blackColor,
+    };
+  }
+  return {};
+};
+
+const bottonThemeStyle = () => ({
+  border: getBorder({ width: 1, style: 'solid', color: dangerColor }),
+  background: { color: 'transparent' },
+});
+const getButtonFailBorder = normalButtonTheme => {
+  return {
+    normal: {
+      ...normalButtonTheme,
+      ...bottonThemeStyle(),
+    },
+    hover: {
+      ...bottonThemeStyle(),
+    },
+    active: {
+      ...bottonThemeStyle(),
+    },
+    focus: {
+      ...bottonThemeStyle(),
+    },
+    disabled: {
+      ...bottonThemeStyle(),
+    },
+  };
+};
 const InputContent = CSSComponent({
   tag: 'div',
   className: 'UploadDefaultType',
   normal: {
-    selectNames: [['width'], ['height'], ['boxShadow'], ['borderRadius'], ['border']],
-    defaultTheme: {
-      borderRadius: getBorderRadius(4),
-    },
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['boxShadow'],
+      ['borderRadius'],
+      ['border'],
+      ['color'],
+      ['padding'],
+      ['fontSize'],
+      ['font'],
+    ],
     getThemeMeta(themeMeta, themeProps) {
-      const {
-        propsConfig: { areaType },
-      } = themeProps;
-      if (areaType === 'both') {
-        return {
-          borderRadius: {
-            topLeft: 4,
-            topRight: 0,
-            bottomLeft: 4,
-            bottomRight: 0,
-          },
-        };
-      }
+      return {
+        color: lightGreyColor,
+        border: getBorder(get('normalBorder')),
+        padding: { top: 0, right: 0, bottom: 0, left: padding },
+        fontSize: descriptionFontSize,
+      };
+    },
+  },
+  hover: {
+    selectNames: [['border']],
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        border: getBorder(get('hoverBorder')),
+      };
     },
   },
   disabled: {
     selectNames: [['border'], ['borderRadius'], ['cursor']],
     defaultTheme: {
-      border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }),
       cursor: 'not-allowed',
+      background: { color: disableColor },
+      color: disableTextColor,
+    },
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        border: getBorder(get('disabledBorder')),
+      };
     },
   },
   css: css`
-    width: 346px;
+    width: 100%;
     height: 30px;
-    border: 1px solid #9482ff;
-    color: #ccc;
-    padding: 0 0 0 10px;
     line-height: 30px;
     overflow: hidden;
     box-sizing: border-box;
     position: relative;
   `,
+  option: { hover: true, disabled: true },
 });
 
 const Ul = CSSComponent({
@@ -85,7 +214,8 @@ const Ul = CSSComponent({
     selectNames: [],
   },
   css: css`
-    min-width: 366px;
+    width: 100%;
+    min-width: 100px;
     padding: 6px 0 0;
     display: inline-block;
   `,
@@ -103,28 +233,42 @@ const Li = CSSComponent({
   tag: 'li',
   className: 'UploadLiType',
   normal: {
-    selectNames: [['fontSize'], ['color'], ['borderRadius'], ['border']],
-  },
-  hover: {
-    selectNames: [['background'], ['color']],
+    selectNames: [
+      ['fontSize'],
+      ['color'],
+      ['borderRadius'],
+      ['border'],
+      ['font'],
+      ['background'],
+      ['font'],
+    ],
     defaultTheme: {
-      background: { color: '#f2f2f2' },
+      color: darkGreyColor,
       cursor: 'pointer',
     },
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        fontSize: sFontSize,
+        border: { bottom: { width: 1, style: 'dashed', color: get('borderColor') } },
+      };
+    },
   },
-  disabled: {
-    selectNames: [],
+  hover: {
+    selectNames: [['background']],
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        background: { color: get('superLightColor') },
+      };
+    },
   },
   css: css`
     height: 36px;
-    border-bottom: 1px dashed #e8e8e8;
     position: relative;
     padding-left: 5px;
     & > span {
       line-height: 36px;
     }
     &:hover {
-      background: #f2f2f2;
       cursor: pointer;
       & .right {
         display: none;
@@ -136,12 +280,14 @@ const Li = CSSComponent({
   `,
   option: { hover: true },
 });
-
 const PrevCon = CSSComponent({
   tag: 'div',
   className: 'upload_PrevBox',
   normal: {
-    selectNames: [],
+    selectNames: [['fontSize'], ['color'], ['font']],
+    defaultTheme: {
+      color: darkGreyColor,
+    },
   },
   css: css`
     display: inline-block;
@@ -227,30 +373,61 @@ const Triangle = CSSComponent({
   `,
 });
 
+const pictureStyle = {
+  default: { color: darkGreyColor, borderColorStyle: borderColor },
+  fail: { color: dangerColor, borderColorStyle: dangerColor },
+  loading: { color: themeColor, borderColorStyle: themeColor },
+  done: { color: darkGreyColor, borderColorStyle: mediumGreyColor },
+};
+const getFailStyle = status => {
+  return {
+    border: getBorder({ width: 1, style: 'dashed', color: pictureStyle[status].borderColorStyle }),
+    color: pictureStyle[status].color,
+  };
+};
 const PictureView = CSSComponent({
   tag: 'div',
-  className: 'UploadPictureType',
+  className: 'Container',
   normal: {
-    selectNames: [['background'], ['width'], ['height'], ['opacity'], ['borderRadius'], ['border']],
-    defaultTheme: {
-      width: 80,
-      height: 80,
+    selectNames: [
+      ['background'],
+      ['width'],
+      ['height'],
+      ['opacity'],
+      ['borderRadius'],
+      ['border'],
+      ['fontSize'],
+      ['color'],
+      ['font'],
+    ],
+    getThemeMeta() {
+      return {
+        width: 80,
+        height: 80,
+        borderRadius: getBorderRadius(borderRadiusValue),
+      };
     },
   },
   hover: {
     selectNames: [['background'], ['opacity'], ['borderRadius'], ['border']],
+    getThemeMeta() {
+      return {
+        border: getBorder({ width: 1, style: 'dashed', color: themeColor }),
+      };
+    },
   },
   disabled: {
     selectNames: [['background'], ['color'], ['borderRadius'], ['border']],
     defaultTheme: {
       cursor: 'not-allowed',
       background: {
-        color: '#f2f2f2',
+        color: disableColor,
       },
+      color: disableTextColor,
+      border: getBorder({ width: 1, style: 'dashed', color: borderDisableColor }),
     },
   },
   css: css`
-    border: 1px dashed #999;
     border-radius: 4px;
     display: flex;
     justify-content: center;
@@ -270,29 +447,54 @@ const AreaView = CSSComponent({
   tag: 'div',
   className: 'UploadAreaType',
   normal: {
-    selectNames: [['width'], ['height'], ['fontSize'], ['color']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['fontSize'],
+      ['color'],
+      ['border'],
+      ['borderRadius'],
+      ['font'],
+    ],
     defaultTheme: {
-      width: 300,
+      width: '100%',
       height: 150,
+      fontSize: xxlFontSize,
+      color: dangerColor,
+    },
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        borderRadius: getBorderRadius(borderRadiusValue),
+      };
+    },
+  },
+  hover: {
+    selectNames: [['border']],
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        border: getBorder({ width: 1, style: 'dashed', color: themeColor }),
+      };
     },
   },
   disabled: {
-    selectNames: [['color']],
-    defaultTheme: {
-      cursor: 'not-allowed',
+    selectNames: [['color'], ['border'], ['background']],
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        border: getBorder({ width: 1, style: 'dashed', color: borderDisableColor }),
+        color: disableTextColor,
+        cursor: 'not-allowed',
+        background: {
+          color: disableColor,
+        },
+      };
     },
   },
+  option: { hover: true },
   css: css`
-    border: 1px dashed #999;
-    border-radius: 4px;
     display: flex;
     flex-flow: column;
     justify-content: center;
-    color: #999;
     text-align: center;
-    &:hover {
-      border: 1px dashed ${themeColor};
-    }
   `,
 });
 
@@ -300,17 +502,20 @@ const AreaText = CSSComponent({
   tag: 'div',
   className: 'upload_AreaText',
   normal: {
-    selectNames: [['color']],
+    selectNames: [['color'], ['fontSize'], ['font']],
+    defaultTheme: {
+      color: darkGreyColor,
+      fontSize: sectionFontSize,
+    },
   },
   disabled: {
     selectNames: [['color']],
     defaultTheme: {
-      color: '#ccc',
+      color: disableTextColor,
     },
   },
   css: css`
     width: 100%;
-    font-size: 14px;
     text-align: center;
     margin-top: 6px;
   `,
@@ -320,12 +525,28 @@ const AreaTextBlue = CSSComponent({
   tag: 'span',
   className: 'upload_AreaRemindText',
   normal: {
-    selectNames: [['color']],
+    selectNames: [['color'], ['border'], ['fontSize'], ['font']],
+    getThemeMeta() {
+      return {
+        color: themeColor,
+        border: { bottom: { width: 1, style: 'solid', color: themeColor } },
+        fontSize: sectionFontSize,
+      };
+    },
+  },
+  hover: {
+    selectNames: [['color'], ['border']],
+    getThemeMeta() {
+      return {
+        color: themeHoverColor,
+        border: { bottom: { width: 1, style: 'solid', color: themeHoverColor } },
+      };
+    },
   },
   disabled: {
     selectNames: [['color']],
     defaultTheme: {
-      color: '#ccc',
+      color: themeDisabledColor,
       border: {
         bottom: {
           width: 0,
@@ -336,10 +557,12 @@ const AreaTextBlue = CSSComponent({
       cursor: 'not-allowed',
     },
   },
+  option: {
+    hover: true,
+    disabled: true,
+  },
   css: css`
-    color: #684fff;
     padding: 0 4px;
-    border-bottom: 1px solid #684fff;
     cursor: pointer;
   `,
 });
@@ -363,6 +586,7 @@ const iconClassMap = {
   'p-default': 'lugia-icon-reminder_plus',
   'p-fail': 'lugia-icon-financial_monitoring',
   'li-done': 'lugia-icon-reminder_check_circle right success',
+  'li-default': 'lugia-icon-financial_upload right',
   'li-fail': 'lugia-icon-reminder_close_circle right error',
   'li-delete': 'lugia-icon-reminder_close right delete',
   'li-loading': 'lugia-icon-financial_loading_o right loading',
@@ -371,7 +595,7 @@ const iconClassMap = {
 export const getIconByType = (
   props: Object,
   status: ?string,
-  info?: Object = {}
+  info: ?Object = {}
 ): ?Object | string => {
   if (!status) return null;
   const { type } = info;
@@ -387,7 +611,8 @@ export const getIconByType = (
         {
           [successViewClass]: {
             normal: {
-              color: '#56c22d',
+              color: successColor,
+              fontSize: sFontSize,
             },
           },
         },
@@ -403,7 +628,8 @@ export const getIconByType = (
         {
           [failViewClass]: {
             normal: {
-              color: '#f22735',
+              color: dangerColor,
+              fontSize: sFontSize,
             },
           },
         },
@@ -425,7 +651,7 @@ export const getIconByType = (
               display: inline-block;
               &.right {
                 position: absolute;
-                right: 8px;
+                right: ${get('padding')}px;
                 top: 50%;
                 transform: translate(0, -50%);
               }
@@ -433,13 +659,14 @@ export const getIconByType = (
                 display: none;
               }
               &.areaIcon {
-                font-size: 30px;
+                font-size: ${get('xxlFontSize')}px;
               }
               &.icon-mark {
-                margin: 0 4px 0 0;
+                margin: 0 ${get('paddingToText')}px 0 0;
               }
               &.loading {
                 animation: ${load} 0.8s linear infinite;
+                margin: 0 ${get('padding')}px 0 0;
               }
             `;
           },
@@ -528,23 +755,25 @@ const getProgress = (item: Object, themeProps: Object) => {
     );
   }
 };
-
 const getDefaultSize = (size: string) => {
   switch (size) {
     case 'large':
       return {
         width: 100,
         height: 100,
+        fontSize: lFontSize,
       };
     case 'small':
       return {
         width: 60,
         height: 60,
+        fontSize: mFontSize,
       };
     default:
       return {
         width: 80,
         height: 80,
+        fontSize: lFontSize,
       };
   }
 };
@@ -596,6 +825,7 @@ type DefProps = {
   themeProps: Object,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
+  getInputRef: Function,
 };
 type StateProps = {
   status: string,
@@ -666,6 +896,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
     }
     const element = input;
     if (element) {
+      const { getInputRef } = this.props;
+      getInputRef && getInputRef(element);
       this.setState({
         inputElement: element,
       });
@@ -728,22 +960,36 @@ class GetElement extends React.Component<DefProps, StateProps> {
 
   getChildren(areaType: string, props: DefProps, classNameStatus: string, dragIn: boolean) {
     let children;
+    const normalButtonTheme =
+      areaType === 'both' ? bothButtonTheme : areaType === 'button' ? buttonHeightTheme : '';
     if (areaType === 'default') {
       const { handleClickToUpload } = this;
       const { defaultText, disabled } = props;
-      const defaultThemeProps = this.props.getPartOfThemeProps('UploadDefaultType', {
-        props: { areaType },
-      });
-
+      const inputTheme = {
+        themeConfig: {
+          normal: {
+            borderRadius: getBorderRadius(borderRadiusValue),
+            ...getDefaultStyle(classNameStatus),
+          },
+          hover: {
+            ...getDefaultStyle(classNameStatus),
+          },
+        },
+      };
+      const uploadTheme = deepMerge(
+        inputTheme,
+        this.props.getPartOfThemeProps('Container', { props: { areaType } })
+      );
       children = (
         <InputContent
-          themeProps={defaultThemeProps}
+          themeProps={uploadTheme}
           disabled={disabled}
           status={classNameStatus}
           onClick={handleClickToUpload}
           ref={this.dropArea}
         >
-          {getIconByType(props, classNameStatus)} {defaultText}
+          {getIconByType(props, classNameStatus)}
+          {defaultText}
         </InputContent>
       );
     }
@@ -753,82 +999,112 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'both') {
       const { handleClickToSubmit, handleClickToUpload } = this;
       const { defaultText, showFileList, disabled } = this.props;
-      const defaultThemeProps = this.props.getPartOfThemeProps('UploadDefaultType', {
-        props: { areaType },
-      });
+      const containerStyle = this.props.getPartOfThemeProps('Container');
       const { viewClass: buttonViewClass, theme: buttonTheme } = props.getPartOfThemeHocProps(
-        'UploadButtonType'
+        'UploadButtonType',
+        { props: { areaType } }
       );
+      const inputBorderTheme = {
+        themeConfig: {
+          normal: {
+            borderRadius: getBorderRadius(borderRadiusValue, ['tl', 'bl']),
+            ...getDefaultStyle(classNameStatus),
+          },
+          hover: {
+            ...getDefaultStyle(classNameStatus),
+          },
+        },
+      };
+      const inputStatusTheme = deepMerge(
+        inputBorderTheme,
+        this.props.getPartOfThemeProps('inputStyle', { props: { areaType } })
+      );
+      const buttonThemeStyle =
+        classNameStatus === 'fail' || classNameStatus === 'done'
+          ? { ...getButtonStyle(normalButtonTheme, classNameStatus) }
+          : {};
+
       const resultButtonTheme = deepMerge(
         {
           [buttonViewClass]: {
             Container: {
               normal: {
-                width: 60,
                 height: 30,
-                borderRadius: {
-                  topLeft: 0,
-                  topRight: 4,
-                  bottomLeft: 0,
-                  bottomRight: 4,
-                },
+                borderRadius: getBorderRadius(0, ['tl', 'bl']),
               },
+              ...buttonThemeStyle,
             },
           },
         },
         buttonTheme
       );
-
       const newTheme = { viewClass: buttonViewClass, theme: resultButtonTheme };
-
       children = (
         <React.Fragment>
-          <InputContent
-            themeProps={defaultThemeProps}
-            status={classNameStatus}
-            hasBtn="hasBtn"
-            disabled={disabled}
-            onClick={handleClickToUpload}
-            ref={this.dropArea}
-          >
-            {defaultText}
-            {showFileList
-              ? null
-              : classNameStatus === 'success' || classNameStatus === 'fail'
-              ? getIconByType(props, 'li-' + classNameStatus)
-              : null}
-          </InputContent>
-          <Button {...newTheme} type={'primary'} disabled={disabled} onClick={handleClickToSubmit}>
-            {getIconByType(props, classNameStatus, { type: 1 })}
-          </Button>
+          <BothContainer themeProps={containerStyle}>
+            <InputContent
+              themeProps={inputStatusTheme}
+              status={classNameStatus}
+              hasBtn="hasBtn"
+              disabled={disabled}
+              onClick={handleClickToUpload}
+              ref={this.dropArea}
+            >
+              {defaultText}
+              {showFileList
+                ? null
+                : classNameStatus === 'success' || classNameStatus === 'fail'
+                ? getIconByType(props, 'li-' + classNameStatus)
+                : null}
+            </InputContent>
+            <Button
+              {...newTheme}
+              type={'primary'}
+              disabled={disabled}
+              onClick={handleClickToSubmit}
+            >
+              {getIconByType(props, classNameStatus, { type: 1 })}
+            </Button>
+          </BothContainer>
         </React.Fragment>
       );
     }
     if (areaType === 'button') {
       const { disabled } = props;
       const { handleClickToUpload } = this;
+      const { themeConfig: useSetButtonColor } = this.props.getPartOfThemeHocProps('ButtonText');
       const { viewClass: buttonViewClass, theme: buttonTheme } = props.getPartOfThemeHocProps(
-        'UploadButtonType'
+        'Container'
       );
-      const resultButtonTheme = deepMerge(
-        {
-          [buttonViewClass]: {
-            Container: {
-              normal: {
-                width: 100,
-                height: 30,
-                borderRadius: getBorderRadius(4),
-              },
+      const buttonColorStyle = classNameStatus === 'fail' ? buttonFailColor : {};
+      const buttonStyleTheme =
+        classNameStatus === 'fail' ? getButtonFailBorder(normalButtonTheme) : {};
+      const buttonMergeStyle = deepMerge(buttonStyleTheme, buttonTheme[buttonViewClass]);
+      const resultButtonTheme = deepMerge({
+        [buttonViewClass]: {
+          Container: {
+            normal: {
+              height: 30,
             },
+            ...buttonStyleTheme,
+            buttonMergeStyle,
+          },
+          ButtonText: {
+            ...buttonColorStyle,
+            ...useSetButtonColor,
           },
         },
-        buttonTheme
-      );
-
+      });
       const newTheme = { viewClass: buttonViewClass, theme: resultButtonTheme };
       children = (
-        <Button {...newTheme} type={'primary'} disabled={disabled} onClick={handleClickToUpload}>
-          {uploadText}
+        <Button
+          {...newTheme}
+          block
+          type={'primary'}
+          disabled={disabled}
+          onClick={handleClickToUpload}
+        >
+          {classNameStatus === 'fail' ? failTips : uploadText}
         </Button>
       );
     }
@@ -839,21 +1115,38 @@ class GetElement extends React.Component<DefProps, StateProps> {
         children = React.cloneElement(userDefine, { disabled, onClick: handleClickToUpload });
       }
     }
+    const borderFailTheme =
+      classNameStatus === 'fail'
+        ? { border: getBorder({ width: 1, style: 'dashed', color: dangerColor }) }
+        : {};
     if (areaType === 'picture') {
       const { size, disabled, fileListDone, multiple, previewUrl } = props;
       const { handleClickToUpload, handleClickToDelete, dropArea } = this;
-      const pictureThemeProps = this.props.getPartOfThemeProps('UploadPictureType');
-      const resultTheme = deepMerge(
-        { themeConfig: { normal: getDefaultSize(size) } },
+      const pictureSizeFail = classNameStatus === 'fail' ? { fontSize: descriptionFontSize } : {};
+      const pictureThemeProps = this.props.getPartOfThemeProps('Container');
+      const pictureTheme = deepMerge(
+        {
+          themeConfig: {
+            normal: {
+              ...getFailStyle(classNameStatus),
+              ...getDefaultSize(size),
+              ...pictureSizeFail,
+            },
+            hover: {
+              ...borderFailTheme,
+            },
+          },
+        },
         pictureThemeProps
       );
+
       children = (
         <React.Fragment>
           {classNameStatus === 'done' &&
             multiple &&
             fileListDone.map((item, index) => (
               <PictureView
-                themeProps={resultTheme}
+                themeProps={pictureTheme}
                 size={size}
                 disabled={disabled}
                 status={classNameStatus}
@@ -870,7 +1163,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
               </PictureView>
             ))}
           <PictureView
-            themeProps={resultTheme}
+            themeProps={pictureTheme}
             size={size}
             disabled={disabled}
             ref={dropArea}
@@ -887,14 +1180,39 @@ class GetElement extends React.Component<DefProps, StateProps> {
         </React.Fragment>
       );
     }
+
     if (areaType === 'area') {
       const { dropArea, handleClickToUpload } = this;
       const { disabled } = props;
-      const themeProps = this.props.getPartOfThemeProps('UploadAreaType');
+      const areaThemeProps = this.props.getPartOfThemeProps('Container');
+      const areaCloudFail = classNameStatus === 'fail' ? { color: darkGreyColor } : {};
+      const areaTheme = deepMerge(
+        {
+          themeConfig: {
+            normal: {
+              ...getFailStyle(classNameStatus),
+              ...areaCloudFail,
+            },
+            hover: {
+              ...borderFailTheme,
+            },
+          },
+        },
+        areaThemeProps
+      );
+      const areaTextFail =
+        classNameStatus === 'fail' ? { fontSize: sectionFontSize, color: dangerColor } : {};
+      const areaTextFailStyle = {
+        themeConfig: {
+          normal: {
+            ...areaTextFail,
+          },
+        },
+      };
 
       children = (
         <AreaView
-          themeProps={themeProps}
+          themeProps={areaTheme}
           disabled={disabled}
           onClick={handleClickToUpload}
           dragIn={dragIn}
@@ -905,11 +1223,15 @@ class GetElement extends React.Component<DefProps, StateProps> {
             ? getIconByType(props, 'area-' + classNameStatus)
             : getIconByType(props, 'uploadcloud')}
           {classNameStatus === 'loading' ? (
-            <AreaText themeProps={themeProps}>{loadingTips}</AreaText>
+            <AreaText themeProps={areaTextFailStyle}>{loadingTips}</AreaText>
+          ) : classNameStatus === 'fail' ? (
+            <AreaText themeProps={areaTextFailStyle} disabled={disabled}>
+              {failTips}
+            </AreaText>
           ) : (
-            <AreaText themeProps={themeProps} disabled={disabled}>
+            <AreaText themeProps={areaTextFailStyle} disabled={disabled}>
               {uploadTips},或
-              <AreaTextBlue themeProps={themeProps} disabled={disabled}>
+              <AreaTextBlue themeProps={areaThemeProps} disabled={disabled}>
                 {uploadText}
               </AreaTextBlue>
             </AreaText>
@@ -924,7 +1246,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const { inputElement } = this.state;
     const { disabled } = this.props;
     if (disabled || !inputElement) return;
-
     inputElement.click();
   };
   handleClickToSubmit = () => {

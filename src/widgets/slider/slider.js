@@ -15,15 +15,17 @@ import {
   SliderWrapper,
   Tipinner,
   Tips,
-  IconsInner,
 } from './styled';
 import { getChangeValue } from './utils';
 import { iconStyles, rangeHeightNormal } from './slider_public_size';
+import { mediumGreyColor } from './slider_public_color';
 import { getThemeProps } from './styledConfig';
 import { findDOMNode } from 'react-dom';
 import { deepMerge } from '@lugia/object-utils';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import Icon from '../icon';
+import get from '../css/theme-common-dict';
+
 type TypeProps = {
   maxValue?: number,
   minValue?: number,
@@ -34,8 +36,10 @@ type TypeProps = {
   tips?: boolean,
   marks?: { [key: number]: string | Object },
   icons?: Array<Object>,
-  vertical?: boolean,
+  vertical?: boolean | void,
   getTheme: Function,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 type TypeState = {
   changeBackground?: boolean,
@@ -163,7 +167,7 @@ class Slider extends Component<TypeProps, TypeState> {
   mousedown = (e: SyntheticMouseEvent<HTMLButtonElement>) => {
     e = e || window.event;
     const { pageX, pageY } = e;
-    const { vertical } = this.props;
+    const { vertical = false } = this.props;
     const { offsetLeft, offsetTop } = this.getOffset(vertical);
     this.offsetLeft = offsetLeft;
     this.offsetTop = offsetTop;
@@ -309,7 +313,16 @@ class Slider extends Component<TypeProps, TypeState> {
   };
   componentDidMount() {
     this.addDocListener();
+    this.initWidthOrDistance();
+  }
+  componentWillUnmount() {
+    document.removeEventListener('mousemove', this.onDocMouseMove);
+    document.removeEventListener('mouseup', this.onDocMouseUp);
+    window.removeEventListener('resize', this.onWindowChange);
+  }
+  initWidthOrDistance = () => {
     const { disabled, vertical = false } = this.props;
+    this.sliderFatherWidth = this.getSliderFatherWidth(vertical);
     const { dotWidths, dotHeights } = this.getOffset(vertical);
     this.setState(
       {
@@ -325,24 +338,27 @@ class Slider extends Component<TypeProps, TypeState> {
     if (disabled) {
       this.mousedown = null;
     }
-    this.getSliderFatherWidth(vertical);
-  }
+  };
   getSliderFatherWidth = (vertical: boolean) => {
     if (this.SliderBigBox.current && this.SliderBigBox.current.parentNode) {
       const { offsetWidth = 0, offsetHeight = 0 } = this.SliderBigBox.current.parentNode;
-      this.sliderFatherWidth = vertical ? offsetHeight : offsetWidth;
+      return vertical ? offsetHeight : offsetWidth;
     }
+    return 300;
   };
   addDocListener = () => {
     document.addEventListener('mousemove', this.onDocMouseMove);
     document.addEventListener('mouseup', this.onDocMouseUp);
+    window.addEventListener('resize', this.onWindowChange);
   };
 
-  componentWillUnmount() {
-    document.removeEventListener('mousemove', this.onDocMouseMove);
-    document.removeEventListener('mouseup', this.onDocMouseUp);
-  }
-
+  onWindowChange = () => {
+    const { vertical = false } = this.props;
+    const sliderFatherWidth = this.getSliderFatherWidth(vertical);
+    if (this.sliderFatherWidth !== sliderFatherWidth) {
+      this.initWidthOrDistance();
+    }
+  };
   onDocMouseMove = (e: Object) => {
     if (this.draging) {
       e = e || window.event;
@@ -471,17 +487,18 @@ class Slider extends Component<TypeProps, TypeState> {
   ): Object {
     const hasIconsProps = 'icons' in this.props;
     const iconsChildren = [];
-    const { fontSizeNormal, marginNormal } = iconStyles;
+    const { marginNormal } = iconStyles;
     const halfBthSize = btnSize / 2;
-    const numbers = hasIconsProps ? marginNormal + fontSizeNormal + halfBthSize : halfBthSize;
+    const mFontSize = get('mFontSize');
+    const numbers = hasIconsProps ? marginNormal + mFontSize + halfBthSize : halfBthSize;
     const levelPaddings = this.getLevePadding(vertical, dotWidths, dotHeights, numbers);
-    const iconSize = hasIconsProps ? [fontSizeNormal, fontSizeNormal] : [0, 0];
+    const iconSize = hasIconsProps ? [mFontSize, mFontSize] : [0, 0];
     if (hasIconsProps && value.length === 1 && Array.isArray(icons) && icons.length > 0) {
       icons.forEach((icon, key) => {
         const index = key > 1 ? 1 : key;
         const { style } = icon;
         let iconDistancen = numbers;
-        let newFontSize = fontSizeNormal;
+        let newFontSize = mFontSize;
         if (style) {
           const { fontSize, margin = marginNormal } = style;
           newFontSize = fontSize > 0 && fontSize < 12 ? 12 : fontSize;
@@ -492,9 +509,9 @@ class Slider extends Component<TypeProps, TypeState> {
           levelPaddings[index] = paddings[index];
         }
         const sliderIcons = 'Icons';
-
-        const { viewClass, theme } = this.props.getPartOfThemeHocProps(sliderIcons);
-        const themeProps = this.props.getPartOfThemeProps(sliderIcons);
+        const { getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
+        const { viewClass, theme } = getPartOfThemeHocProps(sliderIcons);
+        const themeProps = getPartOfThemeProps(sliderIcons);
 
         const {
           themeConfig: { normal: { font: { size: fontObjSize } = {}, fontSize } = {} },
@@ -522,7 +539,7 @@ class Slider extends Component<TypeProps, TypeState> {
           {
             [viewClass]: {
               normal: {
-                color: '#666',
+                color: mediumGreyColor,
                 fontSize,
               },
             },
@@ -619,8 +636,7 @@ class Slider extends Component<TypeProps, TypeState> {
           rangeW: this.style.rangeW,
           rangeH: this.style.rangeH,
         };
-        const sliderMarksName = 'SliderMarks';
-        const sliderMarksThemeProps = getPartOfThemeProps(sliderMarksName, {
+        const sliderMarksThemeProps = getPartOfThemeProps('SliderMarks', {
           selector: { index: i, count: marksKeys.length },
         });
         dots.push(

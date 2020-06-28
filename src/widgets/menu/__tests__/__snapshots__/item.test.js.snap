@@ -20,8 +20,12 @@ exports[`Item Mutliple MenuItem 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   cursor: pointer;
-  height: 3.5rem;
+  height: 3.6rem;
 }
 
 .c0 > i {
@@ -29,7 +33,6 @@ exports[`Item Mutliple MenuItem 1`] = `
 }
 
 .c1 {
-  padding: 0rem 0.8rem;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -41,9 +44,10 @@ exports[`Item Mutliple MenuItem 1`] = `
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c1 i {
@@ -53,6 +57,9 @@ exports[`Item Mutliple MenuItem 1`] = `
 .c2 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
 }
 
 <li
@@ -63,15 +70,32 @@ exports[`Item Mutliple MenuItem 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "color": "#363B40",
+    }
+  }
   title=""
 >
   <div
     className="c1"
-    style={Object {}}
+    style={
+      Object {
+        "height": "3.2rem",
+      }
+    }
   >
     <span
       className="c2"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4rem",
+        }
+      }
     >
       <a>
         hello
@@ -101,8 +125,12 @@ exports[`Item Mutliple MenuItem checked 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   cursor: pointer;
-  height: 3.5rem;
+  height: 3.6rem;
 }
 
 .c0 > i {
@@ -110,7 +138,6 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 }
 
 .c1 {
-  padding: 0rem 0.8rem;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -122,9 +149,10 @@ exports[`Item Mutliple MenuItem checked 1`] = `
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c1 i {
@@ -134,6 +162,9 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 .c2 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
 }
 
 <li
@@ -146,18 +177,31 @@ exports[`Item Mutliple MenuItem checked 1`] = `
   onMouseUp={[Function]}
   style={
     Object {
-      "color": "#4d63ff",
-      "fontWeight": 900,
+      "backgroundColor": "transparent",
+      "color": "#363B40",
     }
   }
   title=""
 >
   <div
     className="c1"
-    style={Object {}}
+    style={
+      Object {
+        "height": "3.2rem",
+      }
+    }
   >
     <span
       className="c2"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4rem",
+        }
+      }
     >
       <a>
         hello
@@ -187,8 +231,12 @@ exports[`Item Single MenuItem 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   cursor: pointer;
-  height: 3.5rem;
+  height: 3.6rem;
 }
 
 .c0 > i {
@@ -196,7 +244,6 @@ exports[`Item Single MenuItem 1`] = `
 }
 
 .c1 {
-  padding: 0rem 0.8rem;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -208,9 +255,10 @@ exports[`Item Single MenuItem 1`] = `
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c1 i {
@@ -220,6 +268,9 @@ exports[`Item Single MenuItem 1`] = `
 .c2 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
 }
 
 <li
@@ -230,15 +281,32 @@ exports[`Item Single MenuItem 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "color": "#363B40",
+    }
+  }
   title="hello"
 >
   <div
     className="c1"
-    style={Object {}}
+    style={
+      Object {
+        "height": "3.2rem",
+      }
+    }
   >
     <span
       className="c2"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4rem",
+        }
+      }
     >
       hello
     </span>
@@ -266,8 +334,12 @@ exports[`Item Single MenuItem checked 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   cursor: pointer;
-  height: 3.5rem;
+  height: 3.6rem;
 }
 
 .c0 > i {
@@ -275,7 +347,6 @@ exports[`Item Single MenuItem checked 1`] = `
 }
 
 .c1 {
-  padding: 0rem 0.8rem;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -287,9 +358,10 @@ exports[`Item Single MenuItem checked 1`] = `
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c1 i {
@@ -299,6 +371,9 @@ exports[`Item Single MenuItem checked 1`] = `
 .c2 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
 }
 
 <li
@@ -311,18 +386,31 @@ exports[`Item Single MenuItem checked 1`] = `
   onMouseUp={[Function]}
   style={
     Object {
-      "color": "#4d63ff",
-      "fontWeight": 900,
+      "backgroundColor": "transparent",
+      "color": "#363B40",
     }
   }
   title=""
 >
   <div
     className="c1"
-    style={Object {}}
+    style={
+      Object {
+        "height": "3.2rem",
+      }
+    }
   >
     <span
       className="c2"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4rem",
+        }
+      }
     >
       <a>
         hello
@@ -352,8 +440,12 @@ exports[`Item children: null 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   cursor: pointer;
-  height: 3.5rem;
+  height: 3.6rem;
 }
 
 .c0 > i {
@@ -361,7 +453,6 @@ exports[`Item children: null 1`] = `
 }
 
 .c1 {
-  padding: 0rem 0.8rem;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -373,9 +464,10 @@ exports[`Item children: null 1`] = `
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c1 i {
@@ -385,6 +477,9 @@ exports[`Item children: null 1`] = `
 .c2 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
 }
 
 <li
@@ -395,15 +490,32 @@ exports[`Item children: null 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "color": "#363B40",
+    }
+  }
   title=""
 >
   <div
     className="c1"
-    style={Object {}}
+    style={
+      Object {
+        "height": "3.2rem",
+      }
+    }
   >
     <span
       className="c2"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4rem",
+        }
+      }
     />
   </div>
 </li>

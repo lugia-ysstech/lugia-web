@@ -2,17 +2,16 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import SwitchPanel from '../switchPanel/SwitchPanel';
-import Trigger from '../../trigger/index';
 import RangeInput from '../panel/RangeInput';
 import PageFooter from '../panel/PageFooter';
+import Trigger from '../../trigger/OpenTrigger';
 import { getDerivedForInput } from '../utils/getDerived';
-import { RangeWrap } from '../styled/styled';
+import { RangeWrap, RangeWrapInner, Box } from '../styled/styled';
 import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
-import { formatValueIsValid, getIsSame } from '../utils/booleanUtils';
-import { getformatSymbol } from '../utils/utils';
-import { getFacePanelContain } from '../themeConfig/themeConfig';
-import { addMouseEvent } from '@lugia/theme-hoc';
+import { formatValueIsValid, getIsSame, getOpenProps } from '../utils/booleanUtils';
+import { getformatSymbol, getNewStepProps } from '../utils/utils';
+import { getFacePanelContain, getWrapThemeProps } from '../themeConfig/themeConfig';
 type TypeProps = {
   defaultValue?: Array<string>,
   value?: Array<string>,
@@ -23,10 +22,19 @@ type TypeProps = {
   onFocus?: Function,
   onBlur?: Function,
   createPortal?: boolean,
+  open?: boolean,
+  liquidLayout?: boolean,
+  size?: boolean,
   showTime?: any,
   onOk?: any,
   theme: Object,
   mode: string,
+  getPartOfThemeProps: Function,
+  validateType?: string,
+  validateStatus?: string,
+  help?: string,
+  alwaysOpen?: boolean,
+  onDocumentClick?: Function,
 };
 type TypeState = {
   value: Array<string>,
@@ -37,11 +45,32 @@ type TypeState = {
   status: string,
   isScroll: boolean,
   panelValue: Array<string>,
+  rangeValue: Array<string>,
   valueIsValid: boolean,
+  isHover: boolean,
+  isClear: boolean,
+  visible: boolean,
+  hasNormalvalue: boolean,
+  rangeIndex: Array<number>,
+  choseDayIndex: Array<number>,
 };
-class Range extends Component {
+class Range extends Component<TypeProps, TypeState> {
   static displayName = 'Range';
-  constructor(props) {
+  trigger: Object;
+  monthAndYear: Array<string>;
+  oldValue: Array<string>;
+  changeOldValue: Array<string>;
+  oldMonthandYear: Array<string>;
+  panelDatesArray: Array<string>;
+  isClear: boolean;
+  targetModeFirst: Object;
+  targetModeSecond: Object;
+  pageFooterChange: Object;
+  normalStyleValueObj: Object;
+  choseDate: string;
+  validValue: string;
+  times: Array<number>;
+  constructor(props: TypeProps) {
     super(props);
     this.trigger = React.createRef();
     this.monthAndYear = [];
@@ -70,7 +99,7 @@ class Range extends Component {
       isHover,
     };
   }
-  getDatePanelValue = (value: []) => {
+  getDatePanelValue = (value: Array<string>) => {
     const { format } = this.state;
     const { monthAndYear } = this;
     const currentValue = [];
@@ -94,7 +123,7 @@ class Range extends Component {
       isValid,
     };
   };
-  onClickTrigger = (e, visible: boolean, number) => {
+  onClickTrigger = (e: any, visible: boolean) => {
     const { isClear } = this;
     if (isClear && visible) {
       return;
@@ -108,8 +137,7 @@ class Range extends Component {
     isValid && this.drawPageAgain(value, format);
     const { monthAndYear } = this;
     this.setTargetMode(monthAndYear);
-    this.setPopupVisible(visible);
-    this.setState({ visible });
+    this.setState({ visible: true });
   };
   onChange = (parmas: Object) => {
     const { isClear } = this;
@@ -118,13 +146,12 @@ class Range extends Component {
     }
     const { newValue, oldValue, number, event } = parmas;
     const { formatIsValids, isValid } = this.getIsValid(newValue);
-    let visible = true;
+    let visible = isValid;
     if (isValid) {
       this.oldValue = [...newValue];
       this.oldMonthandYear = [...this.monthAndYear];
       visible = false;
     }
-    this.setPopupVisible(visible);
     const hasOldValue = this.oldValue && this.oldValue[0] !== '' && this.oldValue !== '';
     const rangeValue = isValid
       ? newValue
@@ -161,7 +188,7 @@ class Range extends Component {
       this.drawPageAgain(['', ''], this.state.format);
     }
   };
-  getIsValid = (newValue: Array = []) => {
+  getIsValid = (newValue: Array<string> = []) => {
     const { normalStyleValueObj } = this;
     const { format } = this.state;
     const formatIsValids = [];
@@ -218,9 +245,8 @@ class Range extends Component {
         onChange({ newValue: sortValue, oldValue: this.changeOldValue, event });
       setStateData = { value: sortValue, rangeValue: [], isHover: false };
     }
-    this.setPopupVisible(visible);
     this.drawPageAgain(renderValue, format);
-    this.setState(setStateData);
+    this.setState({ ...setStateData, visible });
   };
   getSortValue = (rangeValue: Array<string>, format: string) => {
     const momentsA = moment(rangeValue[0], format);
@@ -267,16 +293,17 @@ class Range extends Component {
     rangeValue && this.drawPageAgain(renderValue, format);
   };
   setTriggerVisible = (open: boolean) => {
-    this.setPopupVisible(open);
+    this.setState({ visible: open });
   };
-  onFocus = () => {
+  onFocus = (e: any) => {
     const { value, panelValue, status } = this.state;
     const { isValid } = this.getIsValid(value);
     this.isClear = false;
-    this.changeOldValue = [...value];
+
     const { format } = this.state;
     if (isValid) {
       this.oldValue = [...value];
+      this.changeOldValue = [...value];
       this.oldMonthandYear = [...this.monthAndYear];
       this.monthAndYear = [...panelValue];
       this.panelDatesArray = getCurrentPageDates(panelValue, format);
@@ -291,14 +318,14 @@ class Range extends Component {
       this.pageFooterChange.onFocus({ status: 'showTime' });
       this.setState({ status: 'showDate' });
     }
-    this.onClickTrigger(true);
+    this.onClickTrigger(e, true);
     const { onFocus } = this.props;
     onFocus && onFocus();
   };
-  onBlur = (index: number) => {
+  onBlur = () => {
     const { value } = this.state;
-    const { isValid, formatIsValids } = this.getIsValid(value);
-    const hasValue = value[0] !== '' && value[1] !== '';
+    const { isValid } = this.getIsValid(value);
+    const hasValue = value[0] !== '' || value[1] !== '';
     const noValue = value[0] === '' && value[1] === '';
     if (noValue) {
       this.oldValue = ['', ''];
@@ -312,12 +339,6 @@ class Range extends Component {
           : ['', ''];
       this.setState({ value: newValue });
     }
-    if ((value[0] || value[1]) && !(value[0] !== '' && value[1] !== '')) {
-      if (!formatIsValids[index]) {
-        value[index] = '';
-        this.setState({ value });
-      }
-    }
     const { onBlur } = this.props;
     onBlur && onBlur();
   };
@@ -326,9 +347,7 @@ class Range extends Component {
     this.oldValue = ['', ''];
     this.isClear = true;
 
-    this.setState({ value: newValue, hasNormalvalue: false }, () => {
-      this.setPopupVisible(false);
-    });
+    this.setState({ value: newValue, hasNormalvalue: false, visible: false });
 
     const { onChange } = this.props;
     const { value } = this.state;
@@ -355,7 +374,6 @@ class Range extends Component {
       status === 'showDate' && this.drawPageAgain(value, this.state.format);
       stateData = { status };
     }
-    this.setPopupVisible(visible);
     this.setState({ ...stateData, visible, rangeValue: [] });
   };
   timeChange = (obj: Object) => {
@@ -383,24 +401,51 @@ class Range extends Component {
     this.normalStyleValueObj = getformatSymbol(value);
     this.monthAndYear = [...panelValue];
     this.panelDatesArray = getCurrentPageDates(panelValue, format);
+    const { hasOpenInProps, alwaysOpen } = getOpenProps(this.props);
+    if (hasOpenInProps) {
+      this.setState({ visible: alwaysOpen });
+    }
   }
-
+  onDocumentClick = () => {
+    const { hasOpenInProps, alwaysOpen } = getOpenProps(this.props);
+    let visible = false;
+    if (hasOpenInProps) {
+      visible = alwaysOpen;
+    }
+    this.setState({ visible });
+    const { onDocumentClick } = this.props;
+    if (onDocumentClick) {
+      onDocumentClick();
+    }
+  };
   render() {
     const {
       value,
       format,
       status,
       timeValue,
-      visible,
-      isClear,
       rangeIndex,
       choseDayIndex,
       rangeValue,
       valueIsValid,
+      visible,
+      isClear,
+      placeholder,
     } = this.state;
-    const { disabled, readOnly, theme, mode, getPartOfThemeProps } = this.props;
+    const {
+      disabled,
+      readOnly,
+      theme,
+      mode,
+      getPartOfThemeProps,
+      createPortal,
+      size,
+      validateStatus,
+      liquidLayout,
+      alwaysOpen,
+      open,
+    } = this.props;
     const { monthAndYear } = this;
-    const showTimeBtnIsDisabled = valueIsValid ? true : false;
     const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
     const config = {
       panelChoseDate: rangeValue && rangeValue[0],
@@ -415,81 +460,92 @@ class Range extends Component {
       format,
     };
     const { themeProps } = getFacePanelContain({ mode, getPartOfThemeProps });
-    return (
-      <Trigger
-        themePass
-        createPortal={this.props.createPortal}
-        popup={
-          <RangeWrap
-            {...addMouseEvent(this)}
-            {...theme}
-            isTime={status === 'showTime'}
-            mode={mode}
-            themeProps={themeProps}
-          >
-            <SwitchPanel
-              {...this.props}
-              value={monthAndYear[0]}
-              onChange={this.onChangeFirst}
-              index={0}
-              timeIndex={0}
-              hasTimeWrapBorder
-              {...config}
-              rangeRenderIndex={rangeIndex && rangeIndex[0]}
-              choseDayIndex={choseDayIndex && choseDayIndex[0]}
-              model={this.targetModeFirst}
-              timeValue={value[0]}
-              themeProps={themeProps}
-            />
-            <SwitchPanel
-              {...this.props}
-              value={monthAndYear[1]}
-              onChange={this.onChangeSecond}
-              index={1}
-              timeIndex={1}
-              {...config}
-              rangeRenderIndex={rangeIndex && rangeIndex[1]}
-              choseDayIndex={choseDayIndex && choseDayIndex[1]}
-              model={this.targetModeSecond}
-              timeValue={value[1]}
-              themeProps={themeProps}
-            />
-            <PageFooter
-              {...this.props}
-              format={format}
-              onChange={this.onChange}
-              footerChange={this.footerChange}
-              model={this.pageFooterChange}
-              showTimeBtnIsDisabled={showTimeBtnIsDisabled}
-            />
-          </RangeWrap>
-        }
-        align="bottomLeft"
-        key="trigger"
-        ref={this.trigger}
-        action={disabled || readOnly ? [] : ['click']}
-        hideAction={['click']}
-      >
-        <RangeInput
-          {...this.props}
-          placeholder={this.state.placeholder}
-          value={value}
-          onClick={this.onClickTrigger}
-          onChange={this.onChange}
-          onBlur={this.onBlur}
-          onFocus={this.onFocus}
-          onClear={this.onClear}
-          disabled={disabled}
-          readOnly={readOnly}
-          theme={theme}
-          visible={visible}
-          isClear={isClear}
-        />
-      </Trigger>
+    const inputContainProps = getWrapThemeProps(
+      { mode, size, getPartOfThemeProps, validateStatus, visible },
+      'Container'
     );
-  }
-  setPopupVisible(...rest: any[]) {
-    this.trigger.current && this.trigger.current.setPopupVisible(...rest);
+    return (
+      <Box themeProps={inputContainProps}>
+        <Trigger
+          themePass
+          createPortal={createPortal}
+          onDocumentClick={this.onDocumentClick}
+          popupVisible={visible}
+          alwaysOpen={alwaysOpen || open}
+          liquidLayout={liquidLayout}
+          popup={
+            <RangeWrap
+              {...theme}
+              isTime={status === 'showTime'}
+              mode={mode}
+              themeProps={themeProps}
+            >
+              <RangeWrapInner>
+                <SwitchPanel
+                  {...this.props}
+                  value={monthAndYear[0]}
+                  onChange={this.onChangeFirst}
+                  index={0}
+                  timeIndex={0}
+                  hasTimeWrapBorder
+                  {...config}
+                  rangeRenderIndex={rangeIndex && rangeIndex[0]}
+                  choseDayIndex={choseDayIndex && choseDayIndex[0]}
+                  model={this.targetModeFirst}
+                  timeValue={value[0]}
+                  themeProps={themeProps}
+                  step={getNewStepProps(this.props)}
+                />
+                <SwitchPanel
+                  {...this.props}
+                  value={monthAndYear[1]}
+                  onChange={this.onChangeSecond}
+                  index={1}
+                  timeIndex={1}
+                  {...config}
+                  rangeRenderIndex={rangeIndex && rangeIndex[1]}
+                  choseDayIndex={choseDayIndex && choseDayIndex[1]}
+                  model={this.targetModeSecond}
+                  timeValue={value[1]}
+                  themeProps={themeProps}
+                  noBorder
+                />
+              </RangeWrapInner>
+              <PageFooter
+                {...this.props}
+                format={format}
+                onChange={this.onChange}
+                footerChange={this.footerChange}
+                model={this.pageFooterChange}
+                showTimeBtnIsDisabled={valueIsValid}
+              />
+            </RangeWrap>
+          }
+          align="bottomLeft"
+          key="trigger"
+          ref={this.trigger}
+          action={disabled || readOnly ? [] : ['click']}
+          hideAction={['click']}
+        >
+          <RangeInput
+            {...this.props}
+            placeholder={placeholder}
+            value={value}
+            onClick={this.onClickTrigger}
+            onChange={this.onChange}
+            onBlur={this.onBlur}
+            onFocus={this.onFocus}
+            onClear={this.onClear}
+            disabled={disabled}
+            readOnly={readOnly}
+            theme={theme}
+            visible={visible}
+            isClear={isClear}
+            themeProps={inputContainProps}
+          />
+        </Trigger>
+      </Box>
+    );
   }
 }
 export default Range;

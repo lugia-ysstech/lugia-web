@@ -1,17 +1,36 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { valueInRange } from '../../common/Math';
 import { modeStyle } from '../utils/booleanUtils';
-import {
-  borderRadius,
-  distance,
-  em,
-  fontSize,
-  getDateWrrap,
-  getThemeProperty,
-  themeColor,
-} from './utils';
-import CSSComponent from '@lugia/theme-css-hoc';
-const { hoverColor, normalColor, defaultColor, darkGreyColor } = themeColor;
+import { distance, em, fontSize, getDateWrrap, getThemeProperty, getThemeUpdate } from './utils';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import Trigger from '../../trigger';
+export const Box = CSSComponent({
+  tag: 'div',
+  className: 'Box',
+  normal: {
+    selectNames: [['width']],
+    defaultTheme: {
+      width: '100%',
+    },
+  },
+  hover: {
+    selectNames: [],
+  },
+  focus: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    display: inline-block;
+    vertical-align: text-top;
+    font-size: 0;
+  `,
+});
 export const Icons = CSSComponent({
   tag: 'span',
   css: css`
@@ -26,21 +45,17 @@ export const PanelWrap = CSSComponent({
   className: 'FacePanelContain',
   normal: {
     selectNames: [['boxShadow'], ['borderRadius'], ['border'], ['background', 'color'], ['width']],
-    defaultTheme: {
-      boxShadow: {
-        color: 'rgba(0, 0, 0, 0.1)',
-        x: 2,
-        y: 2,
-        blur: 3,
-        spread: 2,
-        type: 'outset',
-      },
-      background: {
-        color: defaultColor,
-      },
-    },
   },
   hover: {
+    selectNames: [],
+  },
+  focus: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
     selectNames: [],
   },
   css: css`
@@ -74,40 +89,16 @@ export const DateWrapper = CSSComponent({
   `,
 });
 
-export const DateHeader = CSSComponent({
+export const DateHeader = StaticComponent({
   tag: 'div',
   className: 'DateHeader',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
   css: css`
     font-size: ${em(14)};
   `,
 });
-export const HeaderTop = CSSComponent({
+export const HeaderTop = StaticComponent({
   tag: 'div',
   className: 'HeaderTop',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
   css: css`
     text-align: center;
     margin-bottom: ${em(12)};
@@ -118,19 +109,9 @@ export const HeaderTopText = CSSComponent({
   className: 'HeaderTopText',
   normal: {
     selectNames: [['color'], ['font'], ['fontSize']],
-    defaultTheme: {
-      font: {
-        size: 14,
-        weight: 500,
-      },
-      color: darkGreyColor,
-    },
   },
   hover: {
     selectNames: [['color']],
-    defaultTheme: {
-      color: hoverColor,
-    },
   },
   active: {
     selectNames: [['color']],
@@ -172,21 +153,8 @@ export const HeaderTopArrow = CSSComponent({
   `,
 });
 
-export const HeaderWeekBox = CSSComponent({
+export const HeaderWeekBox = StaticComponent({
   tag: 'ul',
-  className: 'HeaderWeekBox',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
   css: css`
     padding: 0;
     margin: 0;
@@ -228,21 +196,13 @@ export const HeaderWeek = CSSComponent({
 });
 function getHeaderWeekStyle(props) {
   const { normalTheme, hoverTheme } = props;
-  const {
-    color,
-    fontSize,
-    font: { size },
-  } = normalTheme;
-  const {
-    color: hoverColor,
-    fontSize: hoverFont,
-    font: { size: hoverSize },
-  } = hoverTheme;
+  const { color, fontSize, font: { size } = {} } = normalTheme;
+  const { color: hoverC, fontSize: hoverFont, font: { size: hoverSize } = {} } = hoverTheme;
   return `
     color:${color};
     font-size:${em(size || fontSize)};
     &:hover{
-      color:${hoverColor};
+      color:${hoverC};
       font-size:${em(hoverSize || hoverFont)};
     }
   `;
@@ -389,7 +349,7 @@ export const OtherChild = CSSComponent({
   tag: 'span',
   className: 'OtherChild',
   normal: {
-    selectNames: [],
+    selectNames: [['color'], ['font'], ['fontSize']],
   },
   hover: {
     selectNames: [],
@@ -404,14 +364,8 @@ export const OtherChild = CSSComponent({
     display: inline-block;
     width: ${props => 100 / props.column}%;
     line-height: ${em(40)};
-    font-size: ${em(14)};
     text-align: center;
     white-space: nowrap;
-
-    &:hover {
-      color: ${hoverColor};
-    }
-
     cursor: pointer;
   `,
 });
@@ -433,29 +387,15 @@ export const OtherChildText = CSSComponent({
   css: css`
     padding: ${em(5)} ${em(10)};
     font-style: normal;
-    border-radius: ${em(borderRadius)};
-    ${props => (props.isChose ? `background:${normalColor};color:#fff;` : '')};
+    ${props => getOtherChildTextStyle(props)};
   `,
 });
+
 export const RangeWrap = CSSComponent({
   tag: 'div',
   className: 'RangeWrap',
   normal: {
     selectNames: [['boxShadow'], ['width'], ['borderRadius'], ['border'], ['background', 'color']],
-    defaultTheme: {
-      boxShadow: {
-        color: 'rgba(0, 0, 0, 0.1)',
-        x: 2,
-        y: 2,
-        blur: 3,
-        spread: 2,
-        type: 'outset',
-      },
-      background: {
-        color: defaultColor,
-      },
-      width: 600,
-    },
   },
   hover: {
     selectNames: [],
@@ -470,6 +410,14 @@ export const RangeWrap = CSSComponent({
     font-size: ${fontSize}rem;
   `,
 });
+export const RangeWrapInner = StaticComponent({
+  tag: 'div',
+  css: css`
+    display: flex;
+    flex-grow: 1;
+  `,
+});
+
 const getDateChildStyle = props => {
   const {
     choseDayIndex,
@@ -484,6 +432,7 @@ const getDateChildStyle = props => {
     selectToday,
     activeTheme = {},
     hoverTheme = {},
+    todayTheme = {},
   } = props;
   const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
   const {
@@ -517,6 +466,7 @@ const getDateChildStyle = props => {
   const radiusLvalueH = getRadiusValue(hoverRadiusL);
 
   const normalBorderRadius = `border-radius:${radiusTvalue} ${radiusRvalue} ${radiusBvalue} ${radiusLvalue};`;
+
   const chooseStyle = arrChoseDayIndex.reduce((p, n) => {
     return `${p}
     &:nth-child(${n})>i{
@@ -530,14 +480,15 @@ const getDateChildStyle = props => {
     }`;
   }, '');
   const todayInd = noToday ? '' : selectToday ? todayIndex : '';
+  const { border: todayBorder, color: todayColor } = todayTheme;
   let todayStyle = `
       &:nth-child(${todayInd})>i{
-        border:1px solid ${normalColor};
-        color:${darkGreyColor};
-        background:${defaultColor};
+       ${todayBorder};
+        color:${todayColor};
+        background:${getThemeUpdate().defaultColor};
         ${normalBorderRadius};
         &:hover {
-          background: ${hoverColor};
+          background: ${getThemeUpdate().hoverColor};
           color:#fff;
           border-radius:${radiusTvalueH} ${radiusRvalueH} ${radiusBvalueH} ${radiusLvalueH};
         }
@@ -546,7 +497,9 @@ const getDateChildStyle = props => {
   `;
   let chooseWeeks;
   if (isChooseWeek || isHoverWeek) {
-    const backG = isChooseWeek ? `${normalColor}` : `${hoverColor}`;
+    const backG = isChooseWeek
+      ? `${getThemeUpdate().normalColor}`
+      : `${getThemeUpdate().hoverColor}`;
     const start = isChooseWeek ? startInWeeks : weekHoverStart;
     const end = isChooseWeek ? endInWeeks : weekHoverEnd;
     const todayIn = valueInRange(todayIndex, [start, end]);
@@ -619,4 +572,33 @@ function getBorderStyle(border) {
       border-right:${em(borderWidthR)} ${botderColorR} ${borderSolidR};
       border-bottom:${em(borderWidthB)} ${botderColorB} ${borderSolidB};
       border-left:${em(borderWidthL)} ${botderColorL} ${borderSolidL};`;
+}
+function getOtherChildTextStyle(props) {
+  const { themeProps, isChose } = props;
+  const {
+    themeConfig: {
+      active,
+      hover: { color: hoverC },
+    },
+  } = themeProps;
+  const {
+    color,
+    borderRadius: { topLeft, topRight, bottomLeft, bottomRight },
+    background: { color: bgC },
+    fontSize,
+    font: { size } = {},
+  } = active;
+  if (!isChose) {
+    return `
+      &:hover{
+        color:${hoverC};
+      }
+    `;
+  }
+  return `
+    color:${color};
+    background:${bgC};
+    border-radius:${em(topLeft)} ${em(topRight)} ${em(bottomLeft)} ${em(bottomRight)};
+    font-size:${em(fontSize || size)}
+  `;
 }

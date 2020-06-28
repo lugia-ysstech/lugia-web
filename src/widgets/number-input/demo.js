@@ -8,7 +8,6 @@ import * as React from 'react';
 import Theme from '../theme';
 import NumberInput from './';
 import Button from '../button';
-import Widget from '../consts/index';
 import styled from 'styled-components';
 
 export class LimitNumberInput extends React.Component<any, any> {
@@ -66,26 +65,35 @@ class DisabledNumberInput extends React.Component<any, any> {
   }
 }
 
+class ValidateInput extends React.Component<any, any> {
+  state = { value: '' };
+
+  onChange = ({ newValue: value }: any) => {
+    this.setState({ value });
+    this.props.onChange({ newValue: value });
+  };
+
+  render() {
+    const { validateType } = this.props;
+    const value = this.state.value;
+    const validateStatus = String(value).indexOf('5') !== -1 ? 'error' : 'default';
+    return (
+      <NumberInput
+        value={value}
+        onChange={this.onChange}
+        validateType={validateType}
+        validateStatus={validateStatus}
+      />
+    );
+  }
+}
+
 const Wrapper = styled.div`
-  float: left;
   margin-left: 50px;
 `;
 
 const NumberInputDemo = () => {
-  const view = {
-    [Widget.NumberInput]: {
-      Container: {
-        normal: {
-          width: 800,
-          height: 40,
-        },
-      },
-      ArrowIconContainer: { normal: { fontSize: 14, width: 40 } },
-      ArrowIcon: {
-        hover: { color: 'blue', fontSize: 30 },
-      },
-    },
-  };
+  const view = {};
   const onChange = (cmpName: string) => (value: any) => {};
   const formatter = (value: string) => {
     return `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -107,6 +115,13 @@ const NumberInputDemo = () => {
           <NumberInput disabled={true} />
           <p>可控制disabled 的numberInput</p>
           <DisabledNumberInput />
+
+          <p>校验信息显示类型 top 输入值 是否含有5</p>
+          <ValidateInput validateType="top" onChange={onChange('limit')} />
+          <p>校验信息显示类型 bottom 输入值 是否含有5</p>
+          <ValidateInput validateType="bottom" onChange={onChange('limit')} />
+          <p>校验信息显示类型 inner 输入值 是否含有5</p>
+          <ValidateInput validateType="inner" onChange={onChange('limit')} />
         </Theme>
       </Wrapper>
       <Wrapper>

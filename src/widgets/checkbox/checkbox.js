@@ -7,7 +7,6 @@
 import * as React from 'react';
 import { getBorder } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
-import colorsFunc from '../css/stateColor';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { CheckBoxProps } from '../css/checkbox';
@@ -22,6 +21,7 @@ import {
 } from '../css/checkbox';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import { getBorderRadius } from '../theme/CSSProvider';
+import get from '../css/theme-common-dict';
 
 type CheckBoxState = {
   checked: boolean,
@@ -30,52 +30,91 @@ type CheckBoxState = {
   hasCancel: boolean,
 };
 
-const {
-  themeColor,
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const themeDisabledColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 
-  disableColor,
-  disabledColor,
-  lightGreyColor,
-} = colorsFunc();
-const defaultEdgeCancelProps = {
+const defaultEdgeCancelProps = () => ({
   themeConfig: {
     normal: {
-      border: getBorder({ color: disabledColor, width: 1, style: 'solid' }),
+      border: getBorder({ color: themeDisabledColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(2),
-      background: { color: disabledColor },
+      background: { color: themeDisabledColor },
     },
   },
-};
-const defaultEdgeTheme = {
+});
+const defaultCircleEdgeCheckedTheme = () => ({
   themeConfig: {
     normal: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
-      borderRadius: getBorderRadius(2),
-      background: { color: themeColor },
-    },
-    hover: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      border: getBorder(get('focusBorder')),
       borderRadius: getBorderRadius(2),
       background: { color: themeColor },
     },
     disabled: {
-      border: getBorder({ color: disableColor, width: 1, style: 'solid' }),
+      border: getBorder(get('disabledBorder')),
       borderRadius: getBorderRadius(2),
       background: { color: disableColor },
     },
   },
-};
+});
+
+const defaultEdgeTheme = () => ({
+  themeConfig: {
+    normal: {
+      border: getBorder(get('normalBorder')),
+      borderRadius: getBorderRadius(2),
+      background: { color: themeColor },
+    },
+    hover: {
+      border: getBorder(get('hoverBorder')),
+      borderRadius: getBorderRadius(2),
+      background: { color: themeColor },
+    },
+    disabled: {
+      border: getBorder(get('disabledBorder')),
+      borderRadius: getBorderRadius(2),
+      background: { color: disableColor },
+    },
+  },
+});
 const defaultInnerTheme = {
   normal: {
-    color: '#fff',
+    color: defaultColor,
   },
   hover: {
-    color: '#fff',
+    color: defaultColor,
   },
   disabled: {
-    color: lightGreyColor,
+    color: disableTextColor,
   },
 };
+const defaultCancelTextTheme = {
+  themeConfig: {
+    normal: {
+      color: darkGreyColor,
+    },
+  },
+};
+const defaultCircleEdgeUnCheckedTheme = () => ({
+  themeConfig: {
+    normal: {
+      border: getBorder(get('normalBorder')),
+      borderRadius: getBorderRadius(2),
+      background: { color: defaultColor },
+    },
+    hover: {
+      border: getBorder(get('hoverBorder')),
+    },
+    disabled: {
+      border: getBorder(get('disabledBorder')),
+      borderRadius: getBorderRadius(2),
+      background: { color: disableColor },
+    },
+  },
+});
 
 export default ThemeProvider(
   class extends React.Component<CheckBoxProps, CheckBoxState> {
@@ -125,7 +164,7 @@ export default ThemeProvider(
         hover: false,
       });
     };
-    handleCancel = e => {
+    handleCancel = () => {
       const { value, handleCancelItemClick } = this.props;
       handleCancelItemClick && handleCancelItemClick(value);
     };
@@ -155,14 +194,18 @@ export default ThemeProvider(
       const circleEdgeUnCheckedTheme = getPartOfThemeProps('CheckboxEdgeUnChecked');
       const circleEdgeCancelTheme = getPartOfThemeProps('CheckboxEdgeCancel');
       const circleEdgeIndeterminateTheme = getPartOfThemeProps('CheckboxEdgeIndeterminate');
-      const checkboxTextTheme = getPartOfThemeProps('CheckboxText');
+      const checkboxCommonTextTheme = getPartOfThemeProps('CheckboxText');
+      const checkboxCancelTextTheme = getPartOfThemeProps('CheckboxCancelText');
+      const checkboxTextTheme = cancel
+        ? deepMerge(defaultCancelTextTheme, checkboxCancelTextTheme)
+        : checkboxCommonTextTheme;
       const circleEdgeTheme = cancel
-        ? deepMerge(defaultEdgeCancelProps, circleEdgeCancelTheme)
+        ? deepMerge(defaultEdgeCancelProps(), circleEdgeCancelTheme)
         : checked
-        ? deepMerge(defaultEdgeTheme, circleEdgeCheckedTheme)
+        ? deepMerge(defaultCircleEdgeCheckedTheme(), circleEdgeCheckedTheme)
         : indeterminate
-        ? deepMerge(defaultEdgeTheme, circleEdgeIndeterminateTheme)
-        : circleEdgeUnCheckedTheme;
+        ? deepMerge(defaultEdgeTheme(), circleEdgeIndeterminateTheme)
+        : deepMerge(defaultCircleEdgeUnCheckedTheme(), circleEdgeUnCheckedTheme);
       const circleInnerCheckedTheme = getPartOfThemeConfig('CheckboxInnerChecked');
       const circleInnerCancelTheme = getPartOfThemeConfig('CheckboxInnerCancel');
       const circleInnerIndeterminateTheme = getPartOfThemeConfig('CheckboxInnerIndeterminate');

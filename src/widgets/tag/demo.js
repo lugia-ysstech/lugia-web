@@ -31,6 +31,7 @@ const commonConfig = {
         border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
         borderRadius: getBorderRadius(20),
         background: { color: '#ddd' },
+        cursor: 'grab',
         font: {
           size: 22,
           fontWeight: 100,
@@ -82,6 +83,7 @@ const optionalConfig = {
         border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
         borderRadius: getBorderRadius(4),
         background: { color: '#ddd' },
+        cursor: 'grab',
         font: {
           size: 22,
           fontWeight: 100,

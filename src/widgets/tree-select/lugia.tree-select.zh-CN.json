@@ -3,10 +3,56 @@
   "title": "树形选择控件",
   "desc": "类似Select选择器，弹出面板是一个树形控件，可以清晰地展示层级数据结构。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "validateStatus": {
       "type": "ValidateStatus",
-      "desc": "input校验状态, 'success' 成功 | 'error'错误",
-      "defaultValue": "success"
+      "desc": "校验状态"
+    },
+    "validateType": {
+      "type": "ValidateType",
+      "desc": "校验信息显示类型",
+      "propsDefaultValue": "top"
+    },
+
+    "pullIconClass": {
+      "type": "icon",
+      "desc": "下拉图标icon名称",
+      "propsDefaultValue": "lugia-icon-direction_down"
+    },
+
+    "clearIconClass": {
+      "type": "icon",
+      "desc": "清除图标icon名称",
+      "propsDefaultValue": "lugia-icon-reminder_close"
+    },
+
+    "switchIconNames": {
+      "type": "object",
+      "desc": "生成选择项的数据",
+      "meta": [
+        { "key": "open", "title": "展开图标", "type": "icon" },
+        { "key": "close", "title": "关闭图标", "type": "icon" }
+      ],
+      "propsDefaultValue": [
+        {
+          "open": "lugia-icon-direction_caret_down",
+          "close": "lugia-icon-direction_caret_right"
+        }
+      ]
+    },
+    "size": {
+      "type": "sizeType",
+      "desc": "可配置三种尺寸大小的treeSelect",
+      "propsDefaultValue": "default"
+    },
+
+    "help": {
+      "type": "string",
+      "desc": "树形选择控件校验提示信息"
     },
 
     "data": {
@@ -21,9 +67,7 @@
           "type": "object",
           "children": [
             { "key": "prefixIconClass", "title": "前缀图标", "type": "icon" },
-            { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
-            { "key": "prefixIconSrc", "title": "前缀图片", "type": "image" },
-            { "key": "suffixIconSrc", "title": "后缀图片", "type": "image" }
+            { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" }
           ]
         },
         { "key": "children", "title": "子项数据", "type": "array" }
@@ -43,7 +87,7 @@
     "mutliple": {
       "type": "boolean",
       "desc": "是否多选",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "createPortal": {
       "type": "boolean",
@@ -53,13 +97,26 @@
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
-      "defaultValue": "value"
+      "propsDefaultValue": "value"
     },
     "displayField": {
       "type": "string",
       "desc": "data数据的displayValue值的名称",
-      "defaultValue": "text"
+      "propsDefaultValue": "text"
     },
+
+    "pathField": {
+      "type": "string",
+      "desc": "data数据的存储节点路径信息字段",
+      "propsDefaultValue": "path"
+    },
+
+    "pidField": {
+      "type": "string",
+      "desc": "data数据的存储节点父节点信息字段",
+      "propsDefaultValue": "pid"
+    },
+
     "translateTreeData": {
       "type": "boolean",
       "desc": "是否开启嵌套数据生成Tree",
@@ -187,7 +244,11 @@
       ]
     }
   },
-
+  "type": {
+    "sizeType": ["small", "default", "large"],
+    "ValidateStatus": ["default", "error"],
+    "ValidateType": ["top", "bottom", "inner"]
+  },
   "category": ["数据录入"],
 
   "designInfo": {
@@ -241,6 +302,37 @@
           ]
         },
 
+        "ValidateErrorInput": {
+          "name": "校验失败的展示框",
+          "desc": "配置校验失败的展示框",
+          "normal": [
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["opacity"]
+          ],
+          "hover": [["background"], ["border"], ["boxShadow"]],
+          "active": [["background"], ["border"], ["boxShadow"]]
+        },
+        "ValidateErrorText": {
+          "name": "校验失败提示信息",
+          "desc": "配置校验失败的提示信息",
+          "normal": [
+            ["background"],
+            ["boxShadow"],
+            ["borderRadius"],
+            ["border"],
+            ["fontSize"],
+            ["font"],
+            ["color"]
+          ],
+          "hover": [],
+          "active": []
+        },
+
         "SwitchIcon": {
           "name": "下拉图标",
           "desc": "配置下拉图标样式",
@@ -257,6 +349,12 @@
           "hover": [["color"], ["fontSize"]],
           "active": [["color"], ["fontSize"]],
           "disabled": [["color"], ["fontSize"], ["cursor"]]
+        },
+
+        "Placeholder": {
+          "name": "提示信息文字",
+          "desc": "提示信息文字",
+          "normal": [["color"], ["fontSize"], ["font"], ["padding"]]
         },
 
         "TagWrap": {
@@ -539,6 +637,39 @@
                       "hover": [["background"], ["borderRadius"], ["border"]],
                       "disabled": [["background"], ["borderRadius"], ["border"]]
                     },
+                    "CheckboxEdgeIndeterminate": {
+                      "name": "半选外框样式",
+                      "desc": "半选状态外框样式",
+                      "normal": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["boxShadow"],
+                        ["width"],
+                        ["height"]
+                      ],
+                      "hover": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["width"],
+                        ["height"]
+                      ],
+                      "disabled": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["width"],
+                        ["height"]
+                      ]
+                    },
+                    "CheckboxInnerIndeterminate": {
+                      "name": "半选内框样式",
+                      "desc": "半选内框样式",
+                      "normal": [["color"], ["width"], ["height"]],
+                      "hover": [["color"], ["width"], ["height"]],
+                      "disabled": [["color"], ["width"], ["height"]]
+                    },
                     "CheckboxInnerChecked": {
                       "name": "Checkbox选中样式配置",
                       "desc": "Checkbox选中样式配置",
@@ -609,6 +740,53 @@
                         ["color"],
                         ["font"]
                       ]
+                    },
+                    "SelectedMenuItemWrap": {
+                      "name": "选中项的外盒",
+                      "desc": "配置选中项的外盒",
+                      "normal": [
+                        ["height"],
+                        ["color"],
+                        ["font"],
+                        ["fontSize"],
+                        ["cursor"],
+                        ["border"],
+                        ["borderRadius"],
+                        ["padding"],
+                        ["background"],
+                        ["opacity"],
+                        ["boxShadow"]
+                      ],
+                      "hover": [
+                        ["color"],
+                        ["font"],
+                        ["fontSize"],
+                        ["background"],
+                        ["opacity"],
+                        ["border"],
+                        ["borderRadius"],
+                        ["boxShadow"]
+                      ],
+                      "active": [
+                        ["color"],
+                        ["font"],
+                        ["fontSize"],
+                        ["background"],
+                        ["opacity"],
+                        ["border"],
+                        ["borderRadius"],
+                        ["boxShadow"]
+                      ],
+                      "disabled": []
+                    },
+
+                    "Divider": {
+                      "name": "分割线",
+                      "desc": "配置每项之间的分割线，当divided为true时生效",
+                      "normal": [["background"]],
+                      "hover": [],
+                      "active": [],
+                      "disabled": []
                     }
                   }
                 }
@@ -620,8 +798,7 @@
       "defaultTheme": {
         "Container": {
           "normal": {
-            "width": 250,
-            "height": 32
+            "width": 250
           }
         }
       }
@@ -671,6 +848,37 @@
       ]
     },
 
+    "ValidateErrorInput": {
+      "name": "校验失败的展示框",
+      "desc": "配置校验失败的展示框",
+      "normal": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"]
+      ],
+      "hover": [["background"], ["border"], ["boxShadow"]],
+      "active": [["background"], ["border"], ["boxShadow"]]
+    },
+    "ValidateErrorText": {
+      "name": "校验失败提示信息",
+      "desc": "配置校验失败的提示信息",
+      "normal": [
+        ["background"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "hover": [],
+      "active": []
+    },
+
     "SwitchIcon": {
       "name": "下拉图标",
       "desc": "配置下拉图标样式",
@@ -687,6 +895,19 @@
       "hover": [["color"], ["fontSize"]],
       "active": [["color"], ["fontSize"]],
       "disabled": [["color"], ["fontSize"], ["cursor"]]
+    },
+
+    "TextContent": {
+      "name": "选中文本",
+      "desc": "选中文本样式",
+      "normal": [["color"], ["font"], ["fontSize"]],
+      "disabled": [["color"], ["font"], ["fontSize"]]
+    },
+
+    "Placeholder": {
+      "name": "提示信息文字",
+      "desc": "提示信息文字",
+      "normal": [["color"], ["fontSize"], ["font"], ["padding"]]
     },
 
     "Tree": {
@@ -863,8 +1084,7 @@
   "defaultTheme": {
     "Container": {
       "normal": {
-        "width": 250,
-        "height": 32
+        "width": 250
       }
     }
   }

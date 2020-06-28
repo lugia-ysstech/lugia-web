@@ -103,6 +103,7 @@ class UploadDemo extends React.Component<any, any> {
       inputId: 'upload1',
       url: 'http://localhost:7001/upload',
       multiple: true,
+      name: 'lugiaRR',
       showFileList: true,
       fileList: [
         {
@@ -126,6 +127,39 @@ class UploadDemo extends React.Component<any, any> {
       ],
       defaultTips: {
         uploadText: '点击上传',
+        failTips: '上传失败',
+        loadingTips: '文件上传中...',
+      },
+    };
+
+    const defaultLongProps1 = {
+      areaType: 'button',
+      inputId: 'upload1',
+      url: 'http://localhost:7001/upload',
+      multiple: true,
+      showFileList: true,
+      fileList: [
+        {
+          id: 1,
+          name: '文件11111.jpg',
+          status: 'done',
+          url: 'http://pic18.nipic.com/20120204/8339340_144203764154_2.jpg',
+        },
+        {
+          id: 2,
+          name: '文件2222.mp4',
+          status: 'fail',
+          url: 'http://pic18.nipic.com/20120204/8339340_14420376454_2.mp4',
+        },
+        {
+          id: 3,
+          name: '文件33333.doc',
+          status: 'done',
+          url: 'http://pic18.nipic.com/20120204/8339340_144203764154_2.doc',
+        },
+      ],
+      defaultTips: {
+        uploadText: '很长很长很长的撑开的点击上传',
         failTips: '文件上传失败请重试',
         loadingTips: '文件上传中...',
       },
@@ -178,6 +212,7 @@ class UploadDemo extends React.Component<any, any> {
       ],
       multiple: true,
       autoUpload: false,
+      disabled: true,
       onChange: res => {},
     };
     const defaultProps3 = {
@@ -240,13 +275,20 @@ class UploadDemo extends React.Component<any, any> {
       showFileList: true,
       limit: 3,
     };
-
+    const configButton = {
+      [Widget.Upload]: {
+        Container: {
+          normal: {
+            width: 300,
+          },
+        },
+      },
+    };
     const config = {
       [Widget.Upload]: {
         UploadButtonType: {
           Container: {
             normal: {
-              width: 100,
               height: 30,
             },
           },
@@ -369,6 +411,7 @@ class UploadDemo extends React.Component<any, any> {
           <Upload {...defaultProps11} />
           <Title>Button： </Title>
           <Upload {...defaultProps1} />
+          <Upload {...defaultLongProps1} />
         </Theme>
         <Theme config={configBoth}>
           <Title>Both： </Title>
@@ -385,9 +428,15 @@ class UploadDemo extends React.Component<any, any> {
           <Upload {...defaultProps5} />
           <Title>default disabled： </Title>
           <Upload {...defaultProps7} />
-          <Title>Button disabled： </Title>
+          <Title>默认的Button disabled： </Title>
           <Upload {...defaultProps8} />
-          <Title>button limit 3： </Title>
+          <Title>默认default button limit 3： </Title>
+          <Upload {...defaultProps10} />
+        </Theme>
+        <Theme config={configButton}>
+          <Title>配置宽度的Button disabled ： </Title>
+          <Upload {...defaultProps8} />
+          <Title>配置宽度的button limit 3： </Title>
           <Upload {...defaultProps10} />
         </Theme>
         <Theme config={areaConfig}>

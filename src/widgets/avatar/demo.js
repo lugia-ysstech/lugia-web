@@ -10,7 +10,6 @@ import Avatar from './';
 import Widget from '../consts';
 import Theme from '../theme';
 import Badge from '../badge/index';
-import { getBorderRadius } from '@lugia/theme-utils';
 
 const Wrapper = styled.div`
   float: left;
@@ -171,7 +170,7 @@ export default () => {
           <br />
           <br />
           <Badge viewClass="badgeConfig" dot={true}>
-            <Avatar icon={'lugia-icon-financial_user'} size={'large'} type="icon" />
+            <Avatar icon={'lugia-icon-financial_user'} size={'small'} type="icon" />
           </Badge>
         </Theme>
       </Wrapper>

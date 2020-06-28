@@ -3,6 +3,11 @@
   "title": "单选框组",
   "desc": "单选框组。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "defaultValue": {
       "type": "string",
       "desc": "单选框初始选中值"
@@ -56,7 +61,7 @@
       "desc": "指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设"
     }
   },
-  "event": {
+  "events": {
     "onChange": {
       "desc": "Radio 改变时回调",
       "args": [
@@ -249,6 +254,12 @@
           "desc": "文字样式",
           "normal": [["color"], ["font"], ["padding"]],
           "hover": [["color"], ["font"]],
+          "disabled": [["color"], ["font"]]
+        },
+        "RadioTextCancel": {
+          "name": "取消状态文字样式",
+          "desc": "取消状态文字样式",
+          "normal": [["color"], ["font"], ["padding"]],
           "disabled": [["color"], ["font"]]
         },
         "RadioEdgeUnChecked": {

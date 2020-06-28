@@ -3,6 +3,11 @@
   "title": "表格",
   "desc": "Table  表格。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "columns": {
       "type": "Object[]",
       "meta": [
@@ -93,6 +98,11 @@
       "type": "Function(currentPageData)",
       "desc": "表格标题"
     },
+    "size": {
+      "type": "SizeType",
+      "desc": "设置表格单元格大小，可选 default、large、small，默认为 default;",
+      "propsDefaultValue": "default"
+    },
     "onHeaderRow": {
       "type": "Function(column, index)",
       "desc": "设置头部行属性"
@@ -135,7 +145,8 @@
     }
   },
   "type": {
-    "tableStyleType": ["zebraStripe", "linear", "bordered"]
+    "tableStyleType": ["zebraStripe", "linear", "bordered"],
+    "SizeType": ["default", "large", "small"]
   },
   "childrenWidget": ["column", "selectOptions"],
   "category": ["数据展示"],

@@ -27,5 +27,7 @@ export type CardProps = {
   getPartOfThemeHocProps: Function,
   getPartOfThemeConfig: Function,
   showTipBottomLine?: boolean,
+  minHeight?: string | number,
+  __lugiad__header__absolute__: boolean,
 };
 export type CardState = {};

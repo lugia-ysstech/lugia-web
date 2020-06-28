@@ -7,6 +7,7 @@
  */
 import * as React from 'react';
 import { createPortal } from 'react-dom';
+import { deepMerge } from '@lugia/object-utils';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import Icon from '../icon';
@@ -20,6 +21,8 @@ import {
   DrawerContentMain,
   DrawerClose,
   CloseText,
+  HandleWrap,
+  getIconTransfrom,
 } from '../css/drawer';
 
 export const DrawerContext: Object = React.createContext();
@@ -74,6 +77,33 @@ export default ThemeProvider(
         window.document.body.removeChild(this.node);
       }
     }
+
+    getIconTheme = () => {
+      const { getPartOfThemeHocProps, visible, placement } = this.props;
+      const { viewClass, theme } = getPartOfThemeHocProps('HandleIcon');
+      const iconTheme = deepMerge(
+        {
+          [viewClass]: {
+            Icon: {
+              normal: {
+                color: '#333',
+                font: {
+                  size: 12,
+                },
+                getCSS() {
+                  return `
+                  ${getIconTransfrom(visible, placement)}
+                  `;
+                },
+              },
+            },
+          },
+        },
+        theme
+      );
+      return { viewClass, theme: iconTheme };
+    };
+
     render() {
       if (!this.node) {
         return null;
@@ -86,39 +116,77 @@ export default ThemeProvider(
         title,
         mask = true,
         placement,
-        getTheme,
         maskClosable = true,
+        getPartOfThemeProps,
+        injectLugiad: { type } = {},
+        __lugiad__header__absolute__,
+        sidebar = false,
       } = this.props;
-
-      const maskElement = mask ? (
-        <DrawerMask onClick={this.handleMaskClick} visible={visible} />
-      ) : null;
+      const drawerWrapTheme = getPartOfThemeProps('Container');
+      const handleWrapTheme = getPartOfThemeProps('handleWrap');
+      const { themeConfig } = drawerWrapTheme;
+      const defaultTheme =
+        placement === 'top' || placement === 'bottom' ? { width: '100%' } : { height: '100%' };
+      drawerWrapTheme.themeConfig.normal = deepMerge(themeConfig.normal, defaultTheme);
       const hasCloseIcon = closable || !maskClosable;
       const closeIcon = hasCloseIcon ? (
         <DrawerClose>
-          <CloseText onClick={this.handleClose}>
+          <CloseText
+            __lugiad__header__absolute__={__lugiad__header__absolute__}
+            type={type}
+            onClick={this.handleClose}
+          >
             <Icon iconClass="lugia-icon-reminder_close" />
           </CloseText>
         </DrawerClose>
+      ) : null;
+      const drawerContent = (
+        <DrawerContentWrap
+          type={type}
+          themeProps={drawerWrapTheme}
+          placement={placement}
+          open={open}
+          opening={opening}
+          closing={closing}
+          transform={transform}
+        >
+          {sidebar ? (
+            <HandleWrap
+              themeProps={handleWrapTheme}
+              placement={placement}
+              visible={visible}
+              onClick={this.changeVisibleState}
+            >
+              <Icon iconClass={'lugia-icon-direction_right'} {...this.getIconTheme()} />
+            </HandleWrap>
+          ) : null}
+          <DrawerContent>
+            <DrawerContentHeader
+              __lugiad__header__absolute__={__lugiad__header__absolute__}
+              type={type}
+            >
+              {title}
+            </DrawerContentHeader>
+            {closeIcon}
+            {__lugiad__header__absolute__ ? (
+              children
+            ) : (
+              <DrawerContentMain>{children}</DrawerContentMain>
+            )}
+          </DrawerContent>
+        </DrawerContentWrap>
+      );
+      if (type === 'Drawer') {
+        return drawerContent;
+      }
+      const maskElement = mask ? (
+        <DrawerMask onClick={this.handleMaskClick} visible={visible} />
       ) : null;
 
       const drawer = (
         <Drawer visible={visible}>
           {maskElement}
-          <DrawerContentWrap
-            theme={getTheme()}
-            placement={placement}
-            open={open}
-            opening={opening}
-            closing={closing}
-            transform={transform}
-          >
-            <DrawerContent>
-              <DrawerContentHeader>{title}</DrawerContentHeader>
-              {closeIcon}
-              <DrawerContentMain>{children}</DrawerContentMain>
-            </DrawerContent>
-          </DrawerContentWrap>
+          {drawerContent}
         </Drawer>
       );
       return createPortal(
@@ -173,6 +241,10 @@ export default ThemeProvider(
     handleClose = () => {
       const { onClose } = this.props;
       onClose && onClose();
+    };
+    changeVisibleState = () => {
+      const { onToggle } = this.props;
+      onToggle && onToggle();
     };
   },
   Widget.Drawer

@@ -5,27 +5,22 @@
  * @flow
  */
 import type { ThemeType } from '@lugia/lugia-web';
-import colorsFunc from '../css/stateColor';
+import type { ValidateStatus, ValidateType } from './validateHoc';
+import get from '../css/theme-common-dict';
 
-const { disableColor } = colorsFunc();
-
-export function isValidateError(validateStatus: ValidateStatus): boolean {
-  return validateStatus === 'error';
-}
+const smallSize = '$lugia-dict.@lugia/lugia-web.smallSize';
+const normalSize = '$lugia-dict.@lugia/lugia-web.normalSize';
+const largeSize = '$lugia-dict.@lugia/lugia-web.largeSize';
+const xxsFontSize = '$lugia-dict.@lugia/lugia-web.xxsFontSize';
+const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
 
 export const FontSize = 1.2;
 export const RadiusSize = 4;
-export const LargeHeight = 40;
-export const SmallHeight = 24;
 export const DefaultHeight = 32;
 export const Padding = 2;
 export const DefaultHelp = '验证出错';
 export const DefaultAmountPrefix = '¥';
-
-export type ValidateStatus = 'default' | 'error';
-
 export type InputSize = 'small' | 'default' | 'large';
-export type ValidateType = 'top' | 'bottom' | 'inner';
 export type ResizeType = 'both' | 'horizontal' | 'vertical' | 'none';
 
 type CommonInputProps = {
@@ -41,17 +36,17 @@ type CommonInputProps = {
 export const getBackground = (props: CommonInputProps) => {
   const { disabled, theme } = props;
   const { backgroundColor } = theme;
-  return `background:${disabled === true ? disableColor : backgroundColor ? backgroundColor : ''}`;
+  return `background:${
+    disabled === true ? get('disableColor') : backgroundColor ? backgroundColor : ''
+  }`;
 };
 
-export function checkValidateResultFromStatusAndType(
-  validateStatus: ValidateStatus,
-  expStatus: ValidateStatus,
-  validateType: ValidateType,
-  expType: ValidateType
-): boolean {
-  return validateStatus === expStatus && checkValidateType(validateType, expType);
+export function getInputHeight(height: string | number, size: InputSize) {
+  return height ? height : size === 'large' ? largeSize : size === 'small' ? smallSize : normalSize;
 }
-export function checkValidateType(validateType: ValidateType, expType: ValidateType): boolean {
-  return expType === validateType;
+export function getInputIconSize(size: InputSize) {
+  return size === 'small' ? xxsFontSize : xsFontSize;
+}
+export function getInputFixSize(size: InputSize) {
+  return size === 'small' ? 12 : 14;
 }

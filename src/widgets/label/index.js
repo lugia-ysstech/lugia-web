@@ -11,6 +11,10 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+
 const LabelContainer = CSSComponent({
   tag: 'div',
   className: 'Container',
@@ -30,7 +34,14 @@ const LabelContainer = CSSComponent({
       ['border'],
       ['borderRadius'],
       ['boxShadow'],
+      ['font'],
     ],
+    getThemeMeta() {
+      return {
+        color: blackColor,
+        fontSize: sectionFontSize,
+      };
+    },
     getCSS: (theme: Object, themeProps: Object) => {
       const { textAlign } = theme;
       return `text-align: ${textAlign}`;
@@ -78,7 +89,14 @@ const LabelPrefix = CSSComponent({
       ['width'],
       ['height'],
       ['textAlign'],
+      ['font'],
     ],
+    getThemeMeta() {
+      return {
+        color: dangerColor,
+        fontSize: sectionFontSize,
+      };
+    },
     getCSS: (theme: Object, themeProps: Object) => {
       const { textAlign } = theme;
       return `text-align: ${textAlign}`;

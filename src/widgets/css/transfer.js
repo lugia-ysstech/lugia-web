@@ -7,9 +7,15 @@ import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import { css } from 'styled-components';
-import colorsFunc from '../css/stateColor';
+import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 
-const FontSize = 1.2;
+const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const paddingToText = '$lugia-dict.@lugia/lugia-web.paddingToText';
+const padding = '$lugia-dict.@lugia/lugia-web.padding';
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const normalBorder = '$lugia-dict.@lugia/lugia-web.normalBorder';
+
+export type SizeType = 'small' | 'default' | 'large';
 
 export type TransferProps = {
   getTheme: Function,
@@ -43,6 +49,7 @@ export type TransferProps = {
   menuTheme: Object,
   treeTheme: Object,
   inputTheme: Object,
+  size: SizeType,
 };
 export type TransferState = {
   inputValue: string,
@@ -58,20 +65,21 @@ type CSSProps = {
   disabled: boolean,
   height: number,
 };
-const { borderColor } = colorsFunc();
 
+const getHeightBySize = (size: SizeType) => {
+  return size === 'large' ? 42 : size === 'small' ? 32 : 40;
+};
+const getFontSizeBySize = (size: SizeType) => {
+  return size === 'small' ? 12 : 14;
+};
 export const TransFer = CSSComponent({
   className: 'TransFer',
   tag: 'div',
   css: css`
-    border: 1px solid ${borderColor};
-    border-radius: ${px2remcss(4)};
     display: inline-block;
-    font-size: ${FontSize}rem;
     overflow: hidden;
     position: relative;
     vertical-align: middle;
-    background: #fff;
   `,
   normal: {
     selectNames: [
@@ -84,7 +92,12 @@ export const TransFer = CSSComponent({
       ['borderRadius'],
       ['boxShadow'],
       ['opacity'],
+      ['fontSize'],
     ],
+    defaultTheme: {
+      background: { color: '#fff' },
+      fontSize: 12,
+    },
   },
 });
 
@@ -92,13 +105,29 @@ export const Check = CSSComponent({
   className: 'Check',
   tag: 'div',
   css: css`
-    background: #f8f8f8;
-    padding: ${px2remcss(10)};
-    border-bottom: 1px solid #e8e8e8;
     position: relative;
+    display: flex;
+    align-items: center;
   `,
   normal: {
-    selectNames: [['background'], ['border']],
+    selectNames: [['background'], [['border'], ['bottom']], ['padding'], ['height']],
+    defaultTheme: {
+      background: { color: '#f8f8f8' },
+      fontSize: 12,
+      padding: {
+        left: paddingToText,
+        right: padding,
+      },
+    },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { size },
+      } = themeProps;
+      const { height } = themeMeta;
+      return {
+        height: height || getHeightBySize(size),
+      };
+    },
   },
 });
 
@@ -109,11 +138,19 @@ export const CheckText = CSSComponent({
     position: absolute;
     right: ${px2remcss(10)};
     line-height: 1.5;
-    font-size: ${px2remcss(12)};
-    color: #ccc;
   `,
   normal: {
-    selectNames: [['padding'], ['color'], ['font']],
+    selectNames: [['padding'], ['color'], ['font'], ['fontSize']],
+    defaultTheme: { color: lightGreyColor, fontSize: 12 },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { size },
+      } = themeProps;
+      const { fontSize, font: { size: theFontSize } = {} } = themeMeta;
+      return {
+        fontSize: theFontSize || fontSize || getFontSizeBySize(size),
+      };
+    },
   },
 });
 

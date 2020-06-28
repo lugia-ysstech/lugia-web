@@ -13,12 +13,12 @@ import KeyBoardEventAdaptor from '../../common/KeyBoardEventAdaptor';
 import CSSComponent from '../../theme/CSSProvider';
 
 import { css } from '../../theme/CSSProvider';
-import colorsFunc from '../../css/stateColor';
 import { units } from '@lugia/css';
 
 const { px2remcss } = units;
-const { dangerColor, defaultColor } = colorsFunc();
 
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 type NumberTurnProps = {
   className?: string,
   getTheme: Function,
@@ -129,7 +129,6 @@ const Bit = CSSComponent({
 type NumberTurnState = {
   count: number,
   overflow: boolean,
-  beforeOverflow: boolean,
 };
 
 class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
@@ -143,7 +142,6 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
     return {
       count: Math.min(count < 0 ? 0 : count, overflowCount),
       overflow: count > overflowCount,
-      beforeOverflow: count > overflowCount - 1,
     };
   }
 
@@ -168,7 +166,7 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
   }
 
   getBitOut(count: number) {
-    const { overflow, beforeOverflow } = this.state;
+    const { overflow } = this.state;
     const bitCnt = this.getBitCnt(count);
     const countStr = (count + '').split('');
     const result = [];
@@ -181,7 +179,7 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
         </BitOut>
       );
     }
-    if (overflow || beforeOverflow) {
+    if (overflow) {
       result.push(this.getPlus());
     }
     return result;

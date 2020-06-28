@@ -1,0 +1,183 @@
+[
+  {
+    "widgetName": "TimePicker",
+    "title": "时间选择器",
+    "viewProps": [{ "name": "disabled", "text": "禁用" }, { "name": "format", "text": "显示格式" }],
+    "data": [
+      {
+        "title": "文本框",
+        "iconClass": "datePickerInput",
+        "children": [
+          {
+            "title": "主体",
+            "iconClass": "input",
+            "data": [
+              {
+                "name": "文本框",
+                "path": ["Container"],
+                "description": {
+                  "appearancePart": {
+                    "text": "输入框",
+                    "desc": "面板中外观配置的区块显示文本"
+                  },
+                  "textPart": {
+                    "text": "输入文本",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "文本框提示信息",
+                "path": ["Placeholder"],
+                "description": {
+                  "textPart": {
+                    "text": "默认文本",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "清除图标",
+                "path": ["ClearButton"],
+                "props": [
+                  {
+                    "name": "clearIcon",
+                    "typeInTheme": "icon"
+                  }
+                ],
+                "description": {
+                  "textPart": {
+                    "text": "清除图标",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "前/后缀图标",
+            "iconClass": "datePickerIcon",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["InputPrefix"],
+                "props": [
+                  {
+                    "name": "prefix",
+                    "typeInTheme": "icon"
+                  }
+                ],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "后缀图标",
+                "path": ["InputSuffix"],
+                "props": [
+                  {
+                    "name": "suffix",
+                    "typeInTheme": "icon"
+                  }
+                ],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "校验失败",
+            "iconClass": "Verificationfailed",
+            "data": [
+              {
+                "name": "校验失败的输入框",
+                "path": ["ValidateErrorInput"]
+              }
+            ]
+          },
+          {
+            "title": "校验提示",
+            "iconClass": "Failureprompt",
+            "data": [
+              {
+                "name": "校验失败提示信息",
+                "path": ["ValidateErrorText"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "展开面板",
+        "iconClass": "TimePickerMenu",
+        "data": [
+          {
+            "name": "日期面板",
+            "path": ["FacePanelContain"],
+            "description": {
+              "appearancePart": {
+                "text": "外框",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "单列",
+            "path": ["timePanelListTheme"],
+            "description": {
+              "appearancePart": {
+                "text": "分割线",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "时间内容区域",
+            "path": ["TimePanel"],
+            "description": {
+              "appearancePart": {
+                "text": "默认背景",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "默认时间",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "选中时间",
+            "path": ["SelectTimeOption"],
+            "description": {
+              "appearancePart": {
+                "text": "选中背景",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "选中时间",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "页脚标注",
+        "iconClass": "timePickerExtraFooter",
+        "data": [
+          {
+            "name": "额外页脚",
+            "path": ["ExtraFooter"]
+          }
+        ]
+      }
+    ]
+  }
+]

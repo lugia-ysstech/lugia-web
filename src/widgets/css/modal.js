@@ -4,14 +4,13 @@
  * @flow
  */
 import { px2remcss } from '../css/units';
-import colorsFunc from '../css/stateColor';
 import { css, keyframes } from 'styled-components';
 import type { ThemeType } from '@lugia/lugia-web';
-import Icon from '../icon';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 
 import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import { getBorderRadius } from '../theme/CSSProvider';
+import get from './theme-common-dict';
 
 type IconType = 'confirm' | 'info' | 'success' | 'warning' | 'error';
 type FunctionPropsType = {
@@ -27,7 +26,7 @@ export type ModalProps = {
   onOk: Function,
   onCancel: Function,
   confirmLoading?: boolean,
-  footer?: string | React.ReactNode,
+  footer?: boolean | string | React.ReactNode,
   maskClosable?: boolean,
   getTheme: Function,
   getPartOfThemeProps: Function,
@@ -47,25 +46,34 @@ type CSSProps = {
   iconType: IconType,
   closing: boolean,
   opening: boolean,
+  __lugiad__header__absolute__: boolean,
+  type: string,
   theme?: ThemeType,
 };
 
 const FontSize = 1.4;
 
-const {
-  themeColor,
-  successColor,
-  warningColor,
-  dangerColor,
-  blackColor,
-  darkGreyColor,
-} = colorsFunc();
 export const IconInfo = {
-  info: { class: 'lugia-icon-reminder_info_circle', color: themeColor },
-  confirm: { class: 'lugia-icon-reminder_question_circle', color: warningColor },
-  success: { class: 'lugia-icon-reminder_check_circle', color: successColor },
-  error: { class: 'lugia-icon-reminder_close_circle', color: dangerColor },
-  warning: { class: 'lugia-icon-reminder_exclamation_circle', color: warningColor },
+  info: {
+    class: 'lugia-icon-reminder_info_circle',
+    color: 'themeColor',
+  },
+  confirm: {
+    class: 'lugia-icon-reminder_question_circle',
+    color: 'warningColor',
+  },
+  success: {
+    class: 'lugia-icon-reminder_check_circle',
+    color: 'successColor',
+  },
+  error: {
+    class: 'lugia-icon-reminder_close_circle',
+    color: 'dangerColor',
+  },
+  warning: {
+    class: 'lugia-icon-reminder_exclamation_circle',
+    color: 'warningColor',
+  },
 };
 
 export const Wrap = StaticComponent({
@@ -112,7 +120,7 @@ const getAnimate = (props: CSSProps) => {
   }
 };
 
-export const ModalMask = StaticComponent({
+export const ModalMask = CSSComponent({
   tag: 'div',
   className: 'ModalMask',
   css: css`
@@ -127,6 +135,9 @@ export const ModalMask = StaticComponent({
     z-index: 99999;
     ${getAnimate};
   `,
+  normal: {
+    selectNames: [['background']],
+  },
 });
 
 export const ModalWrap = StaticComponent({
@@ -134,33 +145,25 @@ export const ModalWrap = StaticComponent({
   className: 'ModalWrap',
   css: css`
     position: fixed;
-    right: 0;
-    left: 0;
-    margin: auto;
+    left: 50%;
+    top: 100px;
+    transform: translateX(-50%);
     z-index: 99999;
   `,
 });
-
 export const Modal = CSSComponent({
   tag: 'div',
   className: 'Modal',
   css: css`
     box-sizing: border-box;
     font-size: ${FontSize}rem;
-    position: relative;
-    top: ${px2remcss(100)};
-    margin: 0 auto;
-    z-index: 99999;
+    outline: none;
     ${getAnimate};
   `,
   normal: {
-    selectNames: [['width']],
-    defaultTheme: {
-      width: 520,
-    },
+    selectNames: [['width'], ['height'], ['minWidth'], ['maxWidth'], ['maxHeight'], ['minHeight']],
   },
 });
-
 export const ModalContent = CSSComponent({
   tag: 'div',
   className: 'ModalContent',
@@ -169,6 +172,7 @@ export const ModalContent = CSSComponent({
     border: 0;
     border-radius: ${px2remcss(4)};
     box-shadow: 0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15);
+    min-width: ${px2remcss(520)};
   `,
   normal: {
     selectNames: [
@@ -180,24 +184,27 @@ export const ModalContent = CSSComponent({
       ['border'],
       ['background'],
       ['padding'],
+      ['minWidth'],
+      ['maxWidth'],
+      ['maxHeight'],
+      ['minHeight'],
     ],
     defaultTheme: {
-      width: 520,
       background: { color: '#fff' },
       boxShadow: getBoxShadow(`0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15)`),
-      border: getBorder({ width: 0, style: 'solid', color: '#ccc' }),
-      borderRadius: getBorderRadius(4),
+      border: getBorder({ width: 1, style: 'solid', color: '#ccc' }),
+      borderRadius: getBorderRadius('$lugia-dict.@lugia/lugia-web.largeBorderRadiusValue'),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
-      const { showIcon } = propsConfig;
-      const defaultLeft = showIcon ? 50 : 30;
-
+      const { showIcon, __lugiad__header__absolute__ } = propsConfig;
+      const defaultLeft = __lugiad__header__absolute__ ? 0 : showIcon ? 50 : 30;
+      const megaPadding = __lugiad__header__absolute__ ? 0 : 30;
       return {
         padding: {
-          top: 30,
-          right: 30,
-          bottom: 30,
+          top: megaPadding,
+          right: megaPadding,
+          bottom: megaPadding,
           left: defaultLeft,
         },
       };
@@ -205,6 +212,13 @@ export const ModalContent = CSSComponent({
   },
 });
 
+const getLugiaMegaCloseCSS = (props: CSSProps): string => {
+  const { __lugiad__header__absolute__ = false, type } = props;
+  if (__lugiad__header__absolute__ || type === 'Modal') {
+    return 'z-index:4001;';
+  }
+  return '';
+};
 export const ModalClose = StaticComponent({
   tag: 'div',
   className: 'ModalClose',
@@ -217,20 +231,39 @@ export const ModalClose = StaticComponent({
     cursor: pointer;
     text-align: center;
     line-height: ${px2remcss(64)};
+    ${getLugiaMegaCloseCSS}
   `,
 });
+
+const getLugiaMegaCSS = (props: CSSProps): string => {
+  const { __lugiad__header__absolute__ = false, type, title = false } = props;
+
+  if (__lugiad__header__absolute__ || type === 'Modal') {
+    const theCSS = title ? 'top: 30px;' : 'bottom: 30px;';
+
+    return css`
+      position: absolute;
+      left: 30px;
+      ${theCSS}
+      z-index: 4000;
+      padding-top: 0;
+    `;
+  }
+  return '';
+};
 
 export const ModalTitle = CSSComponent({
   tag: 'div',
   className: 'ModalTitle',
   css: css`
     border-radius: ${px2remcss(4)} ${px2remcss(4)} 0 0;
+    ${getLugiaMegaCSS}
   `,
   normal: {
     selectNames: [['font'], ['color'], ['padding']],
     defaultTheme: {
-      font: { size: 18, weight: 500 },
-      color: blackColor,
+      font: { size: 16, weight: 500 },
+      color: '$lugia-dict.@lugia/lugia-web.blackColor',
       padding: {
         top: 0,
         right: 0,
@@ -251,7 +284,7 @@ export const ModalBody = CSSComponent({
     selectNames: [['font'], ['color'], ['padding']],
     defaultTheme: {
       font: { size: 14 },
-      color: darkGreyColor,
+      color: '$lugia-dict.@lugia/lugia-web.darkGreyColor',
       padding: {
         top: 0,
         right: 0,
@@ -267,6 +300,7 @@ export const ModalFooter = StaticComponent({
   className: 'ModalFooter',
   css: css`
     padding-top: ${px2remcss(22)};
+    ${getLugiaMegaCSS};
     border-radius: 0 0 4px 4px;
     & > button {
       margin-left: ${px2remcss(14)};
@@ -281,5 +315,5 @@ export const getIconColor = (props: Object) => {
   const { iconType } = props;
   const typeTheme = IconInfo[iconType] || IconInfo.info;
 
-  return typeTheme.color;
+  return get(typeTheme.color);
 };

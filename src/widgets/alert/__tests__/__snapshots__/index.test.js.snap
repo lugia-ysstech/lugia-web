@@ -1,14 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Alert css 1`] = `
-.c6 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c1 {
   position: relative;
   box-sizing: border-box;
@@ -18,7 +10,7 @@ exports[`Alert css 1`] = `
   opacity: 1;
 }
 
-.c11 {
+.c7 {
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
@@ -27,34 +19,30 @@ exports[`Alert css 1`] = `
   opacity: 1;
 }
 
-.c5 {
-  color: #999999;
-}
-
 .c2 {
   vertical-align: text-bottom;
-  color: #333333;
+  color: #646A6E;
 }
 
 .c4 {
   overflow: hidden;
   position: absolute;
-  top: 1.2rem;
-  right: 1.4rem;
-  font-size: 1.6rem;
+  top: 1.3rem;
+  right: 1rem;
+  font-size: 1.4rem;
 }
 
-.c12 {
+.c8 {
   overflow: hidden;
   position: absolute;
   top: 2.4rem;
-  right: 1.4rem;
-  font-size: 1.6rem;
+  right: 1rem;
+  font-size: 1.4rem;
 }
 
 .c3 {
   display: block;
-  color: #666666;
+  color: #646A6E;
   font-size: 1.4rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
@@ -62,26 +50,15 @@ exports[`Alert css 1`] = `
   padding-right: 0rem;
 }
 
-.c0 {
-  margin: 50px;
-}
-
-.c0 > div {
-  margin-bottom: 16px;
-}
-
-.c7 {
+.c5 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  position: absolute;
-  top: 1.2rem;
-  left: 1rem;
 }
 
-.c8 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -99,107 +76,16 @@ exports[`Alert css 1`] = `
   user-select: none;
   cursor: pointer;
   position: absolute;
-  top: 1.2rem;
-  left: 1rem;
-}
-
-.c10 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 1.2rem;
-  left: 1rem;
-}
-
-.c13 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
   top: 2rem;
   left: 1rem;
 }
 
-.c14 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 2rem;
-  left: 1rem;
+.c0 {
+  margin: 50px;
 }
 
-.c15 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 2rem;
-  left: 1rem;
-}
-
-.c16 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 2rem;
-  left: 1rem;
-}
-
-.c17 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 1.2rem;
-  left: 1rem;
-}
-
-.c18 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 1.2rem;
-  left: 1rem;
-}
-
-.c19 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 1.2rem;
-  left: 1rem;
-}
-
-.c20 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 2rem;
-  left: 1rem;
+.c0 > div {
+  margin-bottom: 16px;
 }
 
 <div
@@ -207,12 +93,17 @@ exports[`Alert css 1`] = `
 >
   <div
     className="c1"
+    height={null}
     style={
       Object {
-        "backgroundColor": "rgba(77,99,255,0.2)",
+        "backgroundColor": "rgba(77,99,255,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#4d63ff",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -225,6 +116,7 @@ exports[`Alert css 1`] = `
       className="c2"
       style={
         Object {
+          "color": "#646A6E",
           "fontSize": "1.4rem",
         }
       }
@@ -238,12 +130,17 @@ exports[`Alert css 1`] = `
   </div>
   <div
     className="c1"
+    height={null}
     style={
       Object {
-        "backgroundColor": "rgba(86,194,45,0.2)",
+        "backgroundColor": "rgba(86,194,45,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#56c22d",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -256,6 +153,7 @@ exports[`Alert css 1`] = `
       className="c2"
       style={
         Object {
+          "color": "#646A6E",
           "fontSize": "1.4rem",
         }
       }
@@ -269,12 +167,17 @@ exports[`Alert css 1`] = `
   </div>
   <div
     className="c1"
+    height={null}
     style={
       Object {
-        "backgroundColor": "rgba(242,39,53,0.2)",
+        "backgroundColor": "rgba(242,39,53,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f22735",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -287,6 +190,7 @@ exports[`Alert css 1`] = `
       className="c2"
       style={
         Object {
+          "color": "#646A6E",
           "fontSize": "1.4rem",
         }
       }
@@ -300,12 +204,17 @@ exports[`Alert css 1`] = `
   </div>
   <div
     className="c1"
+    height={null}
     style={
       Object {
-        "backgroundColor": "rgba(248,172,48,0.2)",
+        "backgroundColor": "rgba(248,172,48,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f8ac30",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -318,6 +227,7 @@ exports[`Alert css 1`] = `
       className="c2"
       style={
         Object {
+          "color": "#646A6E",
           "fontSize": "1.4rem",
         }
       }
@@ -331,12 +241,17 @@ exports[`Alert css 1`] = `
   </div>
   <div
     className="c1"
+    height={null}
     style={
       Object {
-        "backgroundColor": "rgba(77,99,255,0.2)",
+        "backgroundColor": "rgba(77,99,255,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#4d63ff",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -349,6 +264,7 @@ exports[`Alert css 1`] = `
       className="c2"
       style={
         Object {
+          "color": "#646A6E",
           "fontSize": "1.4rem",
         }
       }
@@ -361,29 +277,45 @@ exports[`Alert css 1`] = `
     />
     <a
       className="c4"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
       style={Object {}}
       type="info"
     >
       <i
-        className="lugia-icon-reminder_close c5  c6"
+        className="lugia-icon-reminder_close   c5"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "color": "#9EA4AE",
+            "fontSize": "1.4rem",
+          }
+        }
       />
     </a>
   </div>
   <div
     className="c1"
+    height={null}
     style={
       Object {
-        "backgroundColor": "rgba(86,194,45,0.2)",
+        "backgroundColor": "rgba(86,194,45,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#56c22d",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -396,6 +328,7 @@ exports[`Alert css 1`] = `
       className="c2"
       style={
         Object {
+          "color": "#646A6E",
           "fontSize": "1.4rem",
         }
       }
@@ -408,29 +341,45 @@ exports[`Alert css 1`] = `
     />
     <a
       className="c4"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
       style={Object {}}
       type="success"
     >
       <i
-        className="lugia-icon-reminder_close c5  c6"
+        className="lugia-icon-reminder_close   c5"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "color": "#9EA4AE",
+            "fontSize": "1.4rem",
+          }
+        }
       />
     </a>
   </div>
   <div
     className="c1"
+    height={null}
     style={
       Object {
-        "backgroundColor": "rgba(242,39,53,0.2)",
+        "backgroundColor": "rgba(242,39,53,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f22735",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -443,6 +392,7 @@ exports[`Alert css 1`] = `
       className="c2"
       style={
         Object {
+          "color": "#646A6E",
           "fontSize": "1.4rem",
         }
       }
@@ -455,7 +405,13 @@ exports[`Alert css 1`] = `
     />
     <a
       className="c4"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
       style={
         Object {
           "color": "#f22735",
@@ -468,12 +424,17 @@ exports[`Alert css 1`] = `
   </div>
   <div
     className="c1"
+    height={null}
     style={
       Object {
-        "backgroundColor": "rgba(248,172,48,0.2)",
+        "backgroundColor": "rgba(248,172,48,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f8ac30",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -486,6 +447,7 @@ exports[`Alert css 1`] = `
       className="c2"
       style={
         Object {
+          "color": "#646A6E",
           "fontSize": "1.4rem",
         }
       }
@@ -498,7 +460,13 @@ exports[`Alert css 1`] = `
     />
     <a
       className="c4"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
       style={
         Object {
           "color": "#f8ac30",
@@ -511,12 +479,17 @@ exports[`Alert css 1`] = `
   </div>
   <div
     className="c1"
+    height={null}
     style={
       Object {
-        "backgroundColor": "rgba(77,99,255,0.2)",
+        "backgroundColor": "rgba(77,99,255,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#4d63ff",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "3.4rem",
         "paddingRight": "1rem",
@@ -526,7 +499,7 @@ exports[`Alert css 1`] = `
     type="info"
   >
     <i
-      className="lugia-icon-reminder_info_circle_o   c7"
+      className="lugia-icon-reminder_info_circle_o   c6"
       onClick={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
@@ -544,6 +517,7 @@ exports[`Alert css 1`] = `
       className="c2"
       style={
         Object {
+          "color": "#646A6E",
           "fontSize": "1.4rem",
         }
       }
@@ -557,12 +531,17 @@ exports[`Alert css 1`] = `
   </div>
   <div
     className="c1"
+    height={null}
     style={
       Object {
-        "backgroundColor": "rgba(86,194,45,0.2)",
+        "backgroundColor": "rgba(86,194,45,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#56c22d",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "3.4rem",
         "paddingRight": "1rem",
@@ -572,7 +551,7 @@ exports[`Alert css 1`] = `
     type="success"
   >
     <i
-      className="lugia-icon-reminder_check_circle_o   c8"
+      className="lugia-icon-reminder_check_circle_o   c6"
       onClick={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
@@ -590,6 +569,7 @@ exports[`Alert css 1`] = `
       className="c2"
       style={
         Object {
+          "color": "#646A6E",
           "fontSize": "1.4rem",
         }
       }
@@ -603,16 +583,533 @@ exports[`Alert css 1`] = `
   </div>
   <div
     className="c1"
+    height={null}
     style={
       Object {
-        "backgroundColor": "rgba(242,39,53,0.2)",
+        "backgroundColor": "rgba(242,39,53,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f22735",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "3.4rem",
         "paddingRight": "1rem",
         "paddingTop": "1.2rem",
+      }
+    }
+    type="error"
+  >
+    <i
+      className="lugia-icon-reminder_close_circle_o   c6"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "color": "#f22735",
+          "cursor": "default",
+          "fontSize": "1.4rem",
+        }
+      }
+    />
+    <span
+      className="c2"
+      style={
+        Object {
+          "color": "#646A6E",
+          "fontSize": "1.4rem",
+        }
+      }
+    >
+      Alert-error
+    </span>
+    <span
+      className="c3"
+      style={Object {}}
+    />
+  </div>
+  <div
+    className="c1"
+    height={null}
+    style={
+      Object {
+        "backgroundColor": "rgba(248,172,48,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderLeftColor": "#f8ac30",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "paddingBottom": "1.2rem",
+        "paddingLeft": "3.4rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1.2rem",
+      }
+    }
+    type="warning"
+  >
+    <i
+      className="lugia-icon-reminder_exclamation_circle_o   c6"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "color": "#f8ac30",
+          "cursor": "default",
+          "fontSize": "1.4rem",
+        }
+      }
+    />
+    <span
+      className="c2"
+      style={
+        Object {
+          "color": "#646A6E",
+          "fontSize": "1.4rem",
+        }
+      }
+    >
+      Alert-warning
+    </span>
+    <span
+      className="c3"
+      style={Object {}}
+    />
+  </div>
+  <div
+    className="c7"
+    height={null}
+    style={
+      Object {
+        "backgroundColor": "rgba(77,99,255,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderLeftColor": "#4d63ff",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "paddingBottom": "1.8rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1.8rem",
+      }
+    }
+    type="info"
+  >
+    <span
+      className="c2"
+      style={
+        Object {
+          "color": "#363B40",
+          "fontSize": "1.8rem",
+        }
+      }
+    >
+      Alert-info
+    </span>
+    <span
+      className="c3"
+      style={Object {}}
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c8"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
+      type="info"
+    >
+      <i
+        className="lugia-icon-reminder_close   c5"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#9EA4AE",
+            "fontSize": "1.4rem",
+          }
+        }
+      />
+    </a>
+  </div>
+  <div
+    className="c7"
+    height={null}
+    style={
+      Object {
+        "backgroundColor": "rgba(86,194,45,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderLeftColor": "#56c22d",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "paddingBottom": "1.8rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1.8rem",
+      }
+    }
+    type="success"
+  >
+    <span
+      className="c2"
+      style={
+        Object {
+          "color": "#363B40",
+          "fontSize": "1.8rem",
+        }
+      }
+    >
+      Alert-success
+    </span>
+    <span
+      className="c3"
+      style={Object {}}
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c8"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
+      type="success"
+    >
+      <i
+        className="lugia-icon-reminder_close   c5"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#9EA4AE",
+            "fontSize": "1.4rem",
+          }
+        }
+      />
+    </a>
+  </div>
+  <div
+    className="c7"
+    height={null}
+    style={
+      Object {
+        "backgroundColor": "rgba(242,39,53,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderLeftColor": "#f22735",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "paddingBottom": "1.8rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1.8rem",
+      }
+    }
+    type="error"
+  >
+    <span
+      className="c2"
+      style={
+        Object {
+          "color": "#363B40",
+          "fontSize": "1.8rem",
+        }
+      }
+    >
+      Alert-error
+    </span>
+    <span
+      className="c3"
+      style={Object {}}
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c8"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "color": "#f22735",
+        }
+      }
+      type="error"
+    >
+      确定
+    </a>
+  </div>
+  <div
+    className="c7"
+    height={null}
+    style={
+      Object {
+        "backgroundColor": "rgba(248,172,48,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderLeftColor": "#f8ac30",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "paddingBottom": "1.8rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1.8rem",
+      }
+    }
+    type="warning"
+  >
+    <span
+      className="c2"
+      style={
+        Object {
+          "color": "#363B40",
+          "fontSize": "1.8rem",
+        }
+      }
+    >
+      Alert-warning
+    </span>
+    <span
+      className="c3"
+      style={Object {}}
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c8"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "color": "#f8ac30",
+        }
+      }
+      type="warning"
+    >
+      ok
+    </a>
+  </div>
+  <div
+    className="c7"
+    height={null}
+    style={
+      Object {
+        "backgroundColor": "rgba(77,99,255,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderLeftColor": "#4d63ff",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "paddingBottom": "1.8rem",
+        "paddingLeft": "3.4rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1.8rem",
+      }
+    }
+    type="info"
+  >
+    <i
+      className="lugia-icon-reminder_info_circle_o   c9"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "color": "#4d63ff",
+          "cursor": "default",
+          "fontSize": "1.8rem",
+        }
+      }
+    />
+    <span
+      className="c2"
+      style={
+        Object {
+          "color": "#363B40",
+          "fontSize": "1.8rem",
+        }
+      }
+    >
+      Alert-info
+    </span>
+    <span
+      className="c3"
+      style={Object {}}
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c8"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
+      type="info"
+    >
+      <i
+        className="lugia-icon-reminder_close   c5"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#9EA4AE",
+            "fontSize": "1.4rem",
+          }
+        }
+      />
+    </a>
+  </div>
+  <div
+    className="c7"
+    height={null}
+    style={
+      Object {
+        "backgroundColor": "rgba(86,194,45,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderLeftColor": "#56c22d",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "paddingBottom": "1.8rem",
+        "paddingLeft": "3.4rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1.8rem",
+      }
+    }
+    type="success"
+  >
+    <i
+      className="lugia-icon-reminder_check_circle_o   c9"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "color": "#56c22d",
+          "cursor": "default",
+          "fontSize": "1.8rem",
+        }
+      }
+    />
+    <span
+      className="c2"
+      style={
+        Object {
+          "color": "#363B40",
+          "fontSize": "1.8rem",
+        }
+      }
+    >
+      Alert-success
+    </span>
+    <span
+      className="c3"
+      style={Object {}}
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c8"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
+      type="success"
+    >
+      <i
+        className="lugia-icon-reminder_close   c5"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#9EA4AE",
+            "fontSize": "1.4rem",
+          }
+        }
+      />
+    </a>
+  </div>
+  <div
+    className="c7"
+    height={null}
+    style={
+      Object {
+        "backgroundColor": "rgba(242,39,53,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderLeftColor": "#f22735",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "paddingBottom": "1.8rem",
+        "paddingLeft": "3.4rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1.8rem",
       }
     }
     type="error"
@@ -628,7 +1125,7 @@ exports[`Alert css 1`] = `
         Object {
           "color": "#f22735",
           "cursor": "default",
-          "fontSize": "1.4rem",
+          "fontSize": "1.8rem",
         }
       }
     />
@@ -636,7 +1133,8 @@ exports[`Alert css 1`] = `
       className="c2"
       style={
         Object {
-          "fontSize": "1.4rem",
+          "color": "#363B40",
+          "fontSize": "1.8rem",
         }
       }
     >
@@ -645,26 +1143,51 @@ exports[`Alert css 1`] = `
     <span
       className="c3"
       style={Object {}}
-    />
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c8"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "color": "#f22735",
+        }
+      }
+      type="error"
+    >
+      确定
+    </a>
   </div>
   <div
-    className="c1"
+    className="c7"
+    height={null}
     style={
       Object {
-        "backgroundColor": "rgba(248,172,48,0.2)",
+        "backgroundColor": "rgba(248,172,48,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f8ac30",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
-        "paddingBottom": "1.2rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "paddingBottom": "1.8rem",
         "paddingLeft": "3.4rem",
         "paddingRight": "1rem",
-        "paddingTop": "1.2rem",
+        "paddingTop": "1.8rem",
       }
     }
     type="warning"
   >
     <i
-      className="lugia-icon-reminder_exclamation_circle_o   c10"
+      className="lugia-icon-reminder_exclamation_circle_o   c9"
       onClick={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
@@ -674,7 +1197,7 @@ exports[`Alert css 1`] = `
         Object {
           "color": "#f8ac30",
           "cursor": "default",
-          "fontSize": "1.4rem",
+          "fontSize": "1.8rem",
         }
       }
     />
@@ -682,180 +1205,7 @@ exports[`Alert css 1`] = `
       className="c2"
       style={
         Object {
-          "fontSize": "1.4rem",
-        }
-      }
-    >
-      Alert-warning
-    </span>
-    <span
-      className="c3"
-      style={Object {}}
-    />
-  </div>
-  <div
-    className="c11"
-    style={
-      Object {
-        "backgroundColor": "rgba(77,99,255,0.2)",
-        "borderLeftColor": "#4d63ff",
-        "borderLeftStyle": "solid",
-        "borderLeftWidth": "0.4rem",
-        "paddingBottom": "1.8rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "1rem",
-        "paddingTop": "1.8rem",
-      }
-    }
-    type="info"
-  >
-    <span
-      className="c2"
-      style={
-        Object {
-          "fontSize": "1.8rem",
-        }
-      }
-    >
-      Alert-info
-    </span>
-    <span
-      className="c3"
-      style={Object {}}
-    >
-      这是辅助性文字介绍
-    </span>
-    <a
-      className="c12"
-      onClick={[Function]}
-      style={Object {}}
-      type="info"
-    >
-      <i
-        className="lugia-icon-reminder_close c5  c6"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={Object {}}
-      />
-    </a>
-  </div>
-  <div
-    className="c11"
-    style={
-      Object {
-        "backgroundColor": "rgba(86,194,45,0.2)",
-        "borderLeftColor": "#56c22d",
-        "borderLeftStyle": "solid",
-        "borderLeftWidth": "0.4rem",
-        "paddingBottom": "1.8rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "1rem",
-        "paddingTop": "1.8rem",
-      }
-    }
-    type="success"
-  >
-    <span
-      className="c2"
-      style={
-        Object {
-          "fontSize": "1.8rem",
-        }
-      }
-    >
-      Alert-success
-    </span>
-    <span
-      className="c3"
-      style={Object {}}
-    >
-      这是辅助性文字介绍
-    </span>
-    <a
-      className="c12"
-      onClick={[Function]}
-      style={Object {}}
-      type="success"
-    >
-      <i
-        className="lugia-icon-reminder_close c5  c6"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={Object {}}
-      />
-    </a>
-  </div>
-  <div
-    className="c11"
-    style={
-      Object {
-        "backgroundColor": "rgba(242,39,53,0.2)",
-        "borderLeftColor": "#f22735",
-        "borderLeftStyle": "solid",
-        "borderLeftWidth": "0.4rem",
-        "paddingBottom": "1.8rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "1rem",
-        "paddingTop": "1.8rem",
-      }
-    }
-    type="error"
-  >
-    <span
-      className="c2"
-      style={
-        Object {
-          "fontSize": "1.8rem",
-        }
-      }
-    >
-      Alert-error
-    </span>
-    <span
-      className="c3"
-      style={Object {}}
-    >
-      这是辅助性文字介绍
-    </span>
-    <a
-      className="c12"
-      onClick={[Function]}
-      style={
-        Object {
-          "color": "#f22735",
-        }
-      }
-      type="error"
-    >
-      确定
-    </a>
-  </div>
-  <div
-    className="c11"
-    style={
-      Object {
-        "backgroundColor": "rgba(248,172,48,0.2)",
-        "borderLeftColor": "#f8ac30",
-        "borderLeftStyle": "solid",
-        "borderLeftWidth": "0.4rem",
-        "paddingBottom": "1.8rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "1rem",
-        "paddingTop": "1.8rem",
-      }
-    }
-    type="warning"
-  >
-    <span
-      className="c2"
-      style={
-        Object {
+          "color": "#363B40",
           "fontSize": "1.8rem",
         }
       }
@@ -869,256 +1219,14 @@ exports[`Alert css 1`] = `
       这是辅助性文字介绍
     </span>
     <a
-      className="c12"
+      className="c8"
+      onBlur={[Function]}
       onClick={[Function]}
-      style={
-        Object {
-          "color": "#f8ac30",
-        }
-      }
-      type="warning"
-    >
-      ok
-    </a>
-  </div>
-  <div
-    className="c11"
-    style={
-      Object {
-        "backgroundColor": "rgba(77,99,255,0.2)",
-        "borderLeftColor": "#4d63ff",
-        "borderLeftStyle": "solid",
-        "borderLeftWidth": "0.4rem",
-        "paddingBottom": "1.8rem",
-        "paddingLeft": "4rem",
-        "paddingRight": "1rem",
-        "paddingTop": "1.8rem",
-      }
-    }
-    type="info"
-  >
-    <i
-      className="lugia-icon-reminder_info_circle_o   c13"
-      onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      style={
-        Object {
-          "color": "#4d63ff",
-          "cursor": "default",
-          "fontSize": "2rem",
-        }
-      }
-    />
-    <span
-      className="c2"
-      style={
-        Object {
-          "fontSize": "1.8rem",
-        }
-      }
-    >
-      Alert-info
-    </span>
-    <span
-      className="c3"
-      style={Object {}}
-    >
-      这是辅助性文字介绍
-    </span>
-    <a
-      className="c12"
-      onClick={[Function]}
-      style={Object {}}
-      type="info"
-    >
-      <i
-        className="lugia-icon-reminder_close c5  c6"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={Object {}}
-      />
-    </a>
-  </div>
-  <div
-    className="c11"
-    style={
-      Object {
-        "backgroundColor": "rgba(86,194,45,0.2)",
-        "borderLeftColor": "#56c22d",
-        "borderLeftStyle": "solid",
-        "borderLeftWidth": "0.4rem",
-        "paddingBottom": "1.8rem",
-        "paddingLeft": "4rem",
-        "paddingRight": "1rem",
-        "paddingTop": "1.8rem",
-      }
-    }
-    type="success"
-  >
-    <i
-      className="lugia-icon-reminder_check_circle_o   c14"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "color": "#56c22d",
-          "cursor": "default",
-          "fontSize": "2rem",
-        }
-      }
-    />
-    <span
-      className="c2"
-      style={
-        Object {
-          "fontSize": "1.8rem",
-        }
-      }
-    >
-      Alert-success
-    </span>
-    <span
-      className="c3"
-      style={Object {}}
-    >
-      这是辅助性文字介绍
-    </span>
-    <a
-      className="c12"
-      onClick={[Function]}
-      style={Object {}}
-      type="success"
-    >
-      <i
-        className="lugia-icon-reminder_close c5  c6"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={Object {}}
-      />
-    </a>
-  </div>
-  <div
-    className="c11"
-    style={
-      Object {
-        "backgroundColor": "rgba(242,39,53,0.2)",
-        "borderLeftColor": "#f22735",
-        "borderLeftStyle": "solid",
-        "borderLeftWidth": "0.4rem",
-        "paddingBottom": "1.8rem",
-        "paddingLeft": "4rem",
-        "paddingRight": "1rem",
-        "paddingTop": "1.8rem",
-      }
-    }
-    type="error"
-  >
-    <i
-      className="lugia-icon-reminder_close_circle_o   c15"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "color": "#f22735",
-          "cursor": "default",
-          "fontSize": "2rem",
-        }
-      }
-    />
-    <span
-      className="c2"
-      style={
-        Object {
-          "fontSize": "1.8rem",
-        }
-      }
-    >
-      Alert-error
-    </span>
-    <span
-      className="c3"
-      style={Object {}}
-    >
-      这是辅助性文字介绍
-    </span>
-    <a
-      className="c12"
-      onClick={[Function]}
-      style={
-        Object {
-          "color": "#f22735",
-        }
-      }
-      type="error"
-    >
-      确定
-    </a>
-  </div>
-  <div
-    className="c11"
-    style={
-      Object {
-        "backgroundColor": "rgba(248,172,48,0.2)",
-        "borderLeftColor": "#f8ac30",
-        "borderLeftStyle": "solid",
-        "borderLeftWidth": "0.4rem",
-        "paddingBottom": "1.8rem",
-        "paddingLeft": "4rem",
-        "paddingRight": "1rem",
-        "paddingTop": "1.8rem",
-      }
-    }
-    type="warning"
-  >
-    <i
-      className="lugia-icon-reminder_exclamation_circle_o   c16"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "color": "#f8ac30",
-          "cursor": "default",
-          "fontSize": "2rem",
-        }
-      }
-    />
-    <span
-      className="c2"
-      style={
-        Object {
-          "fontSize": "1.8rem",
-        }
-      }
-    >
-      Alert-warning
-    </span>
-    <span
-      className="c3"
-      style={Object {}}
-    >
-      这是辅助性文字介绍
-    </span>
-    <a
-      className="c12"
-      onClick={[Function]}
       style={
         Object {
           "color": "#f8ac30",
@@ -1131,12 +1239,17 @@ exports[`Alert css 1`] = `
   </div>
   <div
     className="c1"
+    height={null}
     style={
       Object {
-        "backgroundColor": "rgba(77,99,255,0.2)",
+        "backgroundColor": "rgba(77,99,255,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#4d63ff",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "3.4rem",
         "paddingRight": "1rem",
@@ -1146,7 +1259,7 @@ exports[`Alert css 1`] = `
     type="info"
   >
     <i
-      className="lugia-icon-logo_twitter   c17"
+      className="lugia-icon-logo_twitter   c6"
       onClick={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
@@ -1164,6 +1277,7 @@ exports[`Alert css 1`] = `
       className="c2"
       style={
         Object {
+          "color": "#646A6E",
           "fontSize": "1.4rem",
         }
       }
@@ -1180,12 +1294,17 @@ exports[`Alert css 1`] = `
   </p>
   <div
     className="c1"
+    height={null}
     style={
       Object {
         "backgroundColor": "orange",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "red",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "boxShadow": "undefinedpx undefinedpx 0px 0px",
         "height": "20rem",
         "marginBottom": "1rem",
@@ -1231,12 +1350,17 @@ exports[`Alert css 1`] = `
   </div>
   <div
     className="c1"
+    height={null}
     style={
       Object {
         "backgroundColor": "orange",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "red",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "boxShadow": "undefinedpx undefinedpx 0px 0px",
         "height": "20rem",
         "marginBottom": "1rem",
@@ -1254,7 +1378,7 @@ exports[`Alert css 1`] = `
     type="info"
   >
     <i
-      className="lugia-icon-reminder_info_circle_o   c18"
+      className="lugia-icon-reminder_info_circle_o   c6"
       onClick={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
@@ -1297,12 +1421,17 @@ exports[`Alert css 1`] = `
   </div>
   <div
     className="c1"
+    height={null}
     style={
       Object {
         "backgroundColor": "orange",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "red",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "boxShadow": "undefinedpx undefinedpx 0px 0px",
         "height": "20rem",
         "marginBottom": "1rem",
@@ -1320,7 +1449,7 @@ exports[`Alert css 1`] = `
     type="info"
   >
     <i
-      className="lugia-icon-reminder_info_circle_o   c19"
+      className="lugia-icon-reminder_info_circle_o   c6"
       onClick={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
@@ -1362,7 +1491,13 @@ exports[`Alert css 1`] = `
     />
     <a
       className="c4"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
       style={
         Object {
           "color": "green",
@@ -1376,13 +1511,18 @@ exports[`Alert css 1`] = `
     </a>
   </div>
   <div
-    className="c11"
+    className="c7"
+    height={null}
     style={
       Object {
         "backgroundColor": "orange",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "red",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "boxShadow": "undefinedpx undefinedpx 0px 0px",
         "height": "20rem",
         "marginBottom": "1rem",
@@ -1400,7 +1540,7 @@ exports[`Alert css 1`] = `
     type="info"
   >
     <i
-      className="lugia-icon-reminder_info_circle_o   c20"
+      className="lugia-icon-reminder_info_circle_o   c9"
       onClick={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
@@ -1410,7 +1550,7 @@ exports[`Alert css 1`] = `
         Object {
           "color": "green",
           "cursor": "default",
-          "fontSize": "2rem",
+          "fontSize": "1.8rem",
         }
       }
     />
@@ -1443,8 +1583,14 @@ exports[`Alert css 1`] = `
       这是辅助性文字介绍
     </span>
     <a
-      className="c12"
+      className="c8"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
       style={
         Object {
           "color": "green",
@@ -1455,24 +1601,34 @@ exports[`Alert css 1`] = `
       type="info"
     >
       <i
-        className="lugia-icon-reminder_close c5  c6"
+        className="lugia-icon-reminder_close   c5"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "color": "#9EA4AE",
+            "fontSize": "1.4rem",
+          }
+        }
       />
     </a>
   </div>
   <div
     className="c1"
+    height={null}
     style={
       Object {
         "backgroundColor": "orange",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "red",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "boxShadow": "undefinedpx undefinedpx 0px 0px",
         "height": "20rem",
         "marginBottom": "1rem",
@@ -1517,7 +1673,13 @@ exports[`Alert css 1`] = `
     />
     <a
       className="c4"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
       style={
         Object {
           "color": "green",

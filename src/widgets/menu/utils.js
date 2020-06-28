@@ -189,11 +189,22 @@ export function mapGetAllChildData(
   return target;
 }
 
-export function getTreeData(props: Object, pathSeparator: string = '/') {
+export function getTreeData(props: Object, pathSeparator: string = '|') {
   const newData = [];
-  const { data, valueField = 'value', displayField = 'text' } = props;
+  const {
+    data,
+    valueField = 'value',
+    displayField = 'text',
+    pathField = 'path',
+    pidField = 'pid',
+  } = props;
   if (data && data.length > 0) {
-    recurTreeData(data, newData, {}, { displayField, valueField, pathSeparator });
+    recurTreeData(
+      data,
+      newData,
+      {},
+      { displayField, valueField, pathSeparator, pathField, pidField }
+    );
   }
   return newData;
 }
@@ -206,18 +217,31 @@ export function recurTreeData(
     parentPath?: string[],
   },
 
-  opt?: { onAdd?: Function, displayField?: string, valueField?: string, pathSeparator: string } = {}
+  opt?: {
+    onAdd?: Function,
+    displayField?: string,
+    valueField?: string,
+    pathSeparator: string,
+    pathField: string,
+    pidField: string,
+  } = {}
 ) {
   const { parentKey, parentPath = [] } = recursion;
-  const { displayField = 'text', valueField = 'value', pathSeparator } = opt;
+  const {
+    displayField = 'text',
+    valueField = 'value',
+    pathSeparator,
+    pathField = 'path',
+    pidField = 'pid',
+  } = opt;
   const { onAdd } = opt;
 
   inTreeChildData &&
     inTreeChildData.forEach(item => {
       const { children, [valueField]: value, [displayField]: text, ...other } = item;
       const newObj = { ...other };
-      newObj.pid = parentKey;
-      newObj[valueField] = value;
+      newObj[pidField] = parentKey;
+      newObj[valueField] = value + '';
       newObj[displayField] = text;
 
       let path;
@@ -228,7 +252,7 @@ export function recurTreeData(
           parentPath.push(parentKey);
         }
         path = [...parentPath];
-        newObj.path = path.join(pathSeparator);
+        newObj[pathField] = path.join(pathSeparator);
       }
 
       const isLeaf = (newObj.isLeaf = !children || children.length === 0);
@@ -238,7 +262,7 @@ export function recurTreeData(
         recurTreeData(
           children,
           outTreeRowData,
-          { parentKey: item[valueField], parentPath: path },
+          { parentKey: item[valueField] + '', parentPath: path },
           opt
         );
       }

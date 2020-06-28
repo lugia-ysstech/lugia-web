@@ -3,11 +3,16 @@
   "title": "标签页",
   "desc": "选项卡切换组件",
   "props": {
-    "activityValue": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
+    "activeValue": {
       "type": "string",
       "desc": "当前激活 tab 面板的 value"
     },
-    "defaultActivityValue": {
+    "defaultActiveValue": {
       "type": "string",
       "desc": "默认激活 tab 面板的 value"
     },
@@ -26,15 +31,34 @@
       "desc": "配置标签页需要配置的数据",
       "meta": [
         { "key": "title", "title": "页签", "type": "string" },
-        { "key": "content", "title": "内容", "type": "string" },
+        { "key": "content", "title": "内容", "type": "lugiaDPages" },
         { "key": "value", "title": "唯一标识", "type": "string" },
         { "key": "icon", "title": "前缀图标", "type": "icon" },
         { "key": "suffixIcon", "title": "后缀图标", "type": "icon" }
+      ],
+      "defaultValue": [
+        {
+          "title": "Tab1",
+          "value": "Tab1",
+          "content": "content of Tab1"
+        },
+        {
+          "title": "Tab2",
+          "value": "Tab2",
+          "content": "content of Tab2"
+        }
       ]
     },
     "defaultData": {
       "type": "object[]",
-      "desc": "默认配置标签页需要配置的数据,若有data,以data优先"
+      "desc": "默认配置标签页需要配置的数据,若有data,以data优先",
+      "meta": [
+        { "key": "title", "title": "页签", "type": "string" },
+        { "key": "content", "title": "内容", "type": "lugiaDPages" },
+        { "key": "value", "title": "唯一标识", "type": "string" },
+        { "key": "icon", "title": "前缀图标", "type": "icon" },
+        { "key": "suffixIcon", "title": "后缀图标", "type": "icon" }
+      ]
     },
     "forceRender": {
       "type": "boolean",
@@ -170,7 +194,14 @@
         "Container": {
           "name": "标签页整体配置",
           "desc": "标签页整体样式配置",
-          "normal": [["width"], ["height"]]
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"]
+          ]
         },
         "ContentBlock": {
           "name": "内容区域",
@@ -288,6 +319,13 @@
             }
           }
         }
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "height": 400
+          }
+        }
       }
     },
     "WindowTabs": {
@@ -301,7 +339,14 @@
         "Container": {
           "name": "标签页整体配置",
           "desc": "标签页整体样式配置",
-          "normal": [["width"], ["height"]]
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"]
+          ]
         },
         "WindowContainer": {
           "name": "窗口背景区域",
@@ -414,6 +459,13 @@
             }
           }
         }
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "height": 400
+          }
+        }
       }
     }
   },
@@ -421,7 +473,7 @@
     "Container": {
       "name": "标签页整体配置",
       "desc": "标签页整体样式配置",
-      "normal": [["width"], ["height"]]
+      "normal": [["width"], ["height"], ["background"], ["border"], ["borderRadius"], ["boxShadow"]]
     },
     "ContentBlock": {
       "name": "内容区域",
@@ -448,6 +500,13 @@
       "name": "默认线",
       "desc": "默认线样式配置",
       "normal": [["background"], ["width"]]
+    },
+    "AddButton": {
+      "name": "新增按钮",
+      "desc": "新增按钮样式配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
     },
     "ArrowIcon": {
       "name": "翻页按钮",
@@ -539,8 +598,15 @@
         "SelectLine": {
           "name": "选中页签底部标识线",
           "desc": "选中页签底部标识线样式配置",
-          "normal": [["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"]]
         }
+      }
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "height": 400
       }
     }
   }

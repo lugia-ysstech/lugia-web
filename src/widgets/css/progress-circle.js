@@ -7,9 +7,13 @@ import styled, { css } from 'styled-components';
 import { px2remcss } from './units';
 import { getTextColor, getWrapFontSize } from './progress-line';
 import CSSComponent from '@lugia/theme-css-hoc';
-import colorsFunc from '../css/stateColor';
+import get from './theme-common-dict';
+type CSSProps = {
+  size: 'default' | 'small',
+};
 
-const { mediumGreyColor } = colorsFunc();
+const blackColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+
 export const SvgInner = styled.div`
   width: ${props => {
     return props.size === 'default' ? px2remcss(120) : px2remcss(80);
@@ -20,6 +24,11 @@ export const SvgInner = styled.div`
   position: relative;
   font-size: ${getWrapFontSize}rem;
 `;
+const getFontSize = (props: CSSProps) => {
+  const { size } = props;
+  const fontSize = size === 'small' ? 'headLineFontSize' : 'largeTitleFontSize';
+  return `font-size: ${px2remcss(get(fontSize))}`;
+};
 
 export const SvgText = CSSComponent({
   tag: 'span',
@@ -27,7 +36,6 @@ export const SvgText = CSSComponent({
   css: css`
     display: block;
     position: absolute;
-    font-size: ${px2remcss(24)};
     width: 100%;
     text-align: center;
     line-height: 1;
@@ -40,12 +48,12 @@ export const SvgText = CSSComponent({
     text-overflow: ellipsis;
     word-break: normal;
     white-space: nowrap;
+    ${getFontSize};
   `,
   normal: {
     selectNames: [['font'], ['color']],
     defaultTheme: {
-      font: { size: 24 },
-      color: mediumGreyColor,
+      color: blackColor,
     },
     getThemeMeta(themeMeta, themeProps): Object {
       const { propsConfig = {} } = themeProps;

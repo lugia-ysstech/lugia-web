@@ -8,10 +8,12 @@ exports[`CheckBox CheckBox CSS 1`] = `
   padding: 0;
   list-style: none;
   display: inline-block;
-  position: relative;
+  line-height: 1;
   white-space: nowrap;
   display: inline-block;
-  margin-right: 3rem;
+  margin-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   opacity: 1;
 }
 
@@ -22,10 +24,12 @@ exports[`CheckBox CheckBox CSS 1`] = `
   padding: 0;
   list-style: none;
   display: inline-block;
-  position: relative;
+  line-height: 1;
   white-space: nowrap;
   display: inline-block;
-  margin-right: 3rem;
+  margin-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   opacity: 1;
 }
 
@@ -33,14 +37,16 @@ exports[`CheckBox CheckBox CSS 1`] = `
   margin: 0;
   outline: none;
   line-height: 1;
-  vertical-align: text-bottom;
+  vertical-align: middle;
   display: inline-block;
+  position: relative;
 }
 
 .c5 {
   padding-left: 1rem;
-  color: #333333;
-  font-size: 14;
+  vertical-align: middle;
+  color: #363B40;
+  font-size: 1.4rem;
 }
 
 .c3 {
@@ -75,27 +81,10 @@ exports[`CheckBox CheckBox CSS 1`] = `
   top: 0;
   left: 0;
   display: block;
-  width: 1.8rem;
-  height: 1.8rem;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .c8 {
@@ -104,27 +93,10 @@ exports[`CheckBox CheckBox CSS 1`] = `
   top: 0;
   left: 0;
   display: block;
-  width: 1.8rem;
-  height: 1.8rem;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .c8::after {
@@ -137,8 +109,8 @@ exports[`CheckBox CheckBox CSS 1`] = `
   transition: all .2s cubic-bezier(.71,-.46,.88,.6);
   left: 50%;
   top: 50%;
-  width: 0.6rem;
-  height: 1rem;
+  width: 1rem;
+  height: 2rem;
   display: table;
   border: 0.2rem solid red;
   border-top: 0;
@@ -152,27 +124,10 @@ exports[`CheckBox CheckBox CSS 1`] = `
   top: 0;
   left: 0;
   display: block;
-  width: 1.8rem;
-  height: 1.8rem;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .c9::after {
@@ -200,27 +155,10 @@ exports[`CheckBox CheckBox CSS 1`] = `
   top: 0;
   left: 0;
   display: block;
-  width: 1.8rem;
-  height: 1.8rem;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .c10::after {
@@ -248,27 +186,10 @@ exports[`CheckBox CheckBox CSS 1`] = `
   top: 0;
   left: 0;
   display: block;
-  width: 1.8rem;
-  height: 1.8rem;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .c11::after {
@@ -296,27 +217,10 @@ exports[`CheckBox CheckBox CSS 1`] = `
   top: 0;
   left: 0;
   display: block;
-  width: 1.8rem;
-  height: 1.8rem;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .c12::after {
@@ -332,7 +236,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
   width: 0.6rem;
   height: 1rem;
   display: table;
-  border: 0.2rem solid #fff;
+  border: 0.2rem solid #ffffff;
   border-top: 0;
   border-left: 0;
   content: ' ';
@@ -344,27 +248,10 @@ exports[`CheckBox CheckBox CSS 1`] = `
   top: 0;
   left: 0;
   display: block;
-  width: 1.8rem;
-  height: 1.8rem;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .c13::after {
@@ -392,27 +279,10 @@ exports[`CheckBox CheckBox CSS 1`] = `
   top: 0;
   left: 0;
   display: block;
-  width: 1.8rem;
-  height: 1.8rem;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .c14::after {
@@ -428,7 +298,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
   width: 1rem;
   height: 0.1rem;
   display: table;
-  border: 0.2rem solid #fff;
+  border: 0.2rem solid #ffffff;
   border-top: 0;
   border-left: 0;
   content: ' ';
@@ -452,12 +322,19 @@ exports[`CheckBox CheckBox CSS 1`] = `
       style={
         Object {
           "height": "5rem",
-          "margin": "1rem 1rem 1rem 1rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
           "opacity": 1,
-          "padding": "1rem 1rem 1rem 1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
           "width": "10rem",
         }
       }
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -489,6 +366,9 @@ exports[`CheckBox CheckBox CSS 1`] = `
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.2rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "4rem",
+              "width": "4rem",
             }
           }
         />
@@ -498,8 +378,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
         style={
           Object {
             "color": "red",
-            "fontSize": 16,
-            "fontWeight": 500,
           }
         }
       >
@@ -521,12 +399,19 @@ exports[`CheckBox CheckBox CSS 1`] = `
       style={
         Object {
           "height": "5rem",
-          "margin": "1rem 1rem 1rem 1rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
           "opacity": 0.4,
-          "padding": "1rem 1rem 1rem 1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
           "width": "10rem",
         }
       }
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -560,6 +445,9 @@ exports[`CheckBox CheckBox CSS 1`] = `
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.2rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "4rem",
+              "width": "4rem",
             }
           }
         />
@@ -569,8 +457,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
         style={
           Object {
             "color": "yellow",
-            "fontSize": 16,
-            "fontWeight": 500,
           }
         }
       >
@@ -591,12 +477,19 @@ exports[`CheckBox CheckBox CSS 1`] = `
       style={
         Object {
           "height": "5rem",
-          "margin": "1rem 1rem 1rem 1rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
           "opacity": 1,
-          "padding": "1rem 1rem 1rem 1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
           "width": "10rem",
         }
       }
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -629,6 +522,9 @@ exports[`CheckBox CheckBox CSS 1`] = `
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.2rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "4rem",
+              "width": "4rem",
             }
           }
         />
@@ -638,8 +534,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
         style={
           Object {
             "color": "red",
-            "fontSize": 16,
-            "fontWeight": 500,
           }
         }
       >
@@ -661,12 +555,19 @@ exports[`CheckBox CheckBox CSS 1`] = `
       style={
         Object {
           "height": "5rem",
-          "margin": "1rem 1rem 1rem 1rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
           "opacity": 0.4,
-          "padding": "1rem 1rem 1rem 1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
           "width": "10rem",
         }
       }
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -701,6 +602,9 @@ exports[`CheckBox CheckBox CSS 1`] = `
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.2rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "4rem",
+              "width": "4rem",
             }
           }
         />
@@ -710,8 +614,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
         style={
           Object {
             "color": "yellow",
-            "fontSize": 16,
-            "fontWeight": 500,
           }
         }
       >
@@ -732,12 +634,19 @@ exports[`CheckBox CheckBox CSS 1`] = `
       style={
         Object {
           "height": "5rem",
-          "margin": "1rem 1rem 1rem 1rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
           "opacity": 1,
-          "padding": "1rem 1rem 1rem 1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
           "width": "10rem",
         }
       }
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -770,6 +679,9 @@ exports[`CheckBox CheckBox CSS 1`] = `
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.2rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "4rem",
+              "width": "4rem",
             }
           }
         />
@@ -779,8 +691,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
         style={
           Object {
             "color": "red",
-            "fontSize": 16,
-            "fontWeight": 500,
           }
         }
       >
@@ -801,12 +711,19 @@ exports[`CheckBox CheckBox CSS 1`] = `
       style={
         Object {
           "height": "5rem",
-          "margin": "1rem 1rem 1rem 1rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
           "opacity": 1,
-          "padding": "1rem 1rem 1rem 1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
           "width": "10rem",
         }
       }
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -838,6 +755,9 @@ exports[`CheckBox CheckBox CSS 1`] = `
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.2rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "4rem",
+              "width": "4rem",
             }
           }
         />
@@ -847,8 +767,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
         style={
           Object {
             "color": "red",
-            "fontSize": 16,
-            "fontWeight": 500,
           }
         }
       >
@@ -869,12 +787,19 @@ exports[`CheckBox CheckBox CSS 1`] = `
       style={
         Object {
           "height": "5rem",
-          "margin": "1rem 1rem 1rem 1rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
           "opacity": 1,
-          "padding": "1rem 1rem 1rem 1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
           "width": "10rem",
         }
       }
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -906,6 +831,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.2rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
             }
           }
         />
@@ -914,9 +840,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
         className="c5"
         style={
           Object {
-            "color": "red",
-            "fontSize": 16,
-            "fontWeight": 500,
+            "color": "#646A6E",
           }
         }
       >
@@ -935,6 +859,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
       style={Object {}}
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -947,7 +872,27 @@ exports[`CheckBox CheckBox CSS 1`] = `
         />
         <span
           className="c4"
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "#ffffff",
+              "borderBottomColor": "#cccccc",
+              "borderBottomLeftRadius": "0.2rem",
+              "borderBottomRightRadius": "0.2rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#cccccc",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#cccccc",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#cccccc",
+              "borderTopLeftRadius": "0.2rem",
+              "borderTopRightRadius": "0.2rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+            }
+          }
         />
       </span>
       <span
@@ -974,6 +919,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
           "opacity": 1,
         }
       }
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -1016,7 +962,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
         style={
           Object {
             "color": "#cccccc",
-            "fontSize": 14,
           }
         }
       >
@@ -1035,6 +980,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
       style={Object {}}
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -1095,6 +1041,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
           "opacity": 1,
         }
       }
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -1113,18 +1060,18 @@ exports[`CheckBox CheckBox CSS 1`] = `
           style={
             Object {
               "backgroundColor": "#f2f2f2",
-              "borderBottomColor": "#f2f2f2",
+              "borderBottomColor": "#e8e8e8",
               "borderBottomLeftRadius": "0.2rem",
               "borderBottomRightRadius": "0.2rem",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderLeftColor": "#f2f2f2",
+              "borderLeftColor": "#e8e8e8",
               "borderLeftStyle": "solid",
               "borderLeftWidth": "0.1rem",
-              "borderRightColor": "#f2f2f2",
+              "borderRightColor": "#e8e8e8",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#f2f2f2",
+              "borderTopColor": "#e8e8e8",
               "borderTopLeftRadius": "0.2rem",
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
@@ -1138,7 +1085,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
         style={
           Object {
             "color": "#cccccc",
-            "fontSize": 14,
           }
         }
       >
@@ -1157,6 +1103,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
       style={Object {}}
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -1172,18 +1119,18 @@ exports[`CheckBox CheckBox CSS 1`] = `
           style={
             Object {
               "backgroundColor": "#4d63ff",
-              "borderBottomColor": "#4d63ff",
+              "borderBottomColor": "#cccccc",
               "borderBottomLeftRadius": "0.2rem",
               "borderBottomRightRadius": "0.2rem",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderLeftColor": "#4d63ff",
+              "borderLeftColor": "#cccccc",
               "borderLeftStyle": "solid",
               "borderLeftWidth": "0.1rem",
-              "borderRightColor": "#4d63ff",
+              "borderRightColor": "#cccccc",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#4d63ff",
+              "borderTopColor": "#cccccc",
               "borderTopLeftRadius": "0.2rem",
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
@@ -1213,12 +1160,19 @@ exports[`CheckBox CheckBox CSS 1`] = `
       style={
         Object {
           "height": "5rem",
-          "margin": "1rem 1rem 1rem 1rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
           "opacity": 1,
-          "padding": "1rem 1rem 1rem 1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
           "width": "10rem",
         }
       }
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -1251,6 +1205,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.2rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
             }
           }
         />
@@ -1259,9 +1214,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
         className="c5"
         style={
           Object {
-            "color": "red",
-            "fontSize": 16,
-            "fontWeight": 500,
+            "color": "#646A6E",
           }
         }
       >
@@ -1280,6 +1233,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
       style={Object {}}
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -1318,7 +1272,11 @@ exports[`CheckBox CheckBox CSS 1`] = `
       </span>
       <span
         className="c5"
-        style={Object {}}
+        style={
+          Object {
+            "color": "#646A6E",
+          }
+        }
       >
         CheckBox
       </span>
@@ -1335,6 +1293,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
       style={Object {}}
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -1395,6 +1354,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
           "opacity": 1,
         }
       }
+      title="CheckBox"
     >
       <span
         className="c2"
@@ -1413,18 +1373,18 @@ exports[`CheckBox CheckBox CSS 1`] = `
           style={
             Object {
               "backgroundColor": "#f2f2f2",
-              "borderBottomColor": "#f2f2f2",
+              "borderBottomColor": "#e8e8e8",
               "borderBottomLeftRadius": "0.2rem",
               "borderBottomRightRadius": "0.2rem",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderLeftColor": "#f2f2f2",
+              "borderLeftColor": "#e8e8e8",
               "borderLeftStyle": "solid",
               "borderLeftWidth": "0.1rem",
-              "borderRightColor": "#f2f2f2",
+              "borderRightColor": "#e8e8e8",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#f2f2f2",
+              "borderTopColor": "#e8e8e8",
               "borderTopLeftRadius": "0.2rem",
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
@@ -1438,7 +1398,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
         style={
           Object {
             "color": "#cccccc",
-            "fontSize": 14,
           }
         }
       >

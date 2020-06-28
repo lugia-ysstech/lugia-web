@@ -1,73 +1,100 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Input props: getTheme: width:100,margin:10, 1`] = `
+.c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  visibility: hidden;
+  padding-right: 1rem;
+}
+
 .c1 {
+  background-color: transparent;
   box-sizing: border-box;
-  line-height: 1.5;
-  display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
   height: 100%;
   width: 100%;
-  font-size: 1.2rem;
+  border: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   cursor: text;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c1::-webkit-input-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1::-moz-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1:-ms-input-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1::placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c0 {
   position: relative;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: white;
 }
 
-<span
+<div
   className="c0"
+  onBlur={[Function]}
+  onFocus={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
   style={
     Object {
+      "borderBottomColor": "#cccccc",
+      "borderBottomLeftRadius": "0.4rem",
+      "borderBottomRightRadius": "0.4rem",
+      "borderBottomStyle": "solid",
+      "borderBottomWidth": "0.1rem",
+      "borderLeftColor": "#cccccc",
+      "borderLeftStyle": "solid",
+      "borderLeftWidth": "0.1rem",
+      "borderRightColor": "#cccccc",
+      "borderRightStyle": "solid",
+      "borderRightWidth": "0.1rem",
+      "borderTopColor": "#cccccc",
+      "borderTopLeftRadius": "0.4rem",
+      "borderTopRightRadius": "0.4rem",
+      "borderTopStyle": "solid",
+      "borderTopWidth": "0.1rem",
       "height": "3.2rem",
+      "marginBottom": "1rem",
+      "marginLeft": "1rem",
+      "marginRight": "1rem",
+      "marginTop": "1rem",
+      "width": "10rem",
     }
   }
 >
@@ -82,88 +109,135 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
     size="default"
     style={
       Object {
-        "color": "#333333",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "color": "#363B40",
+        "fontSize": "1.4rem",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
+        "paddingRight": "1rem",
         "paddingTop": "0rem",
       }
     }
+    type="text"
     value=""
   />
-</span>
+  <i
+    className="lugia-icon-reminder_close   c2"
+    disabled={false}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    style={
+      Object {
+        "color": "#9EA4AE",
+        "fontSize": "1.2rem",
+      }
+    }
+  />
+</div>
 `;
 
 exports[`Input props: null 1`] = `
+.c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  visibility: hidden;
+  padding-right: 1rem;
+}
+
 .c1 {
+  background-color: transparent;
   box-sizing: border-box;
-  line-height: 1.5;
-  display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
   height: 100%;
   width: 100%;
-  font-size: 1.2rem;
+  border: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   cursor: text;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c1::-webkit-input-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1::-moz-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1:-ms-input-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1::placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c0 {
   position: relative;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: white;
 }
 
-<span
+<div
   className="c0"
+  onBlur={[Function]}
+  onFocus={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
   style={
     Object {
+      "borderBottomColor": "#cccccc",
+      "borderBottomLeftRadius": "0.4rem",
+      "borderBottomRightRadius": "0.4rem",
+      "borderBottomStyle": "solid",
+      "borderBottomWidth": "0.1rem",
+      "borderLeftColor": "#cccccc",
+      "borderLeftStyle": "solid",
+      "borderLeftWidth": "0.1rem",
+      "borderRightColor": "#cccccc",
+      "borderRightStyle": "solid",
+      "borderRightWidth": "0.1rem",
+      "borderTopColor": "#cccccc",
+      "borderTopLeftRadius": "0.4rem",
+      "borderTopRightRadius": "0.4rem",
+      "borderTopStyle": "solid",
+      "borderTopWidth": "0.1rem",
       "height": "3.2rem",
     }
   }
@@ -179,88 +253,135 @@ exports[`Input props: null 1`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
     size="default"
     style={
       Object {
-        "color": "#333333",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "color": "#363B40",
+        "fontSize": "1.4rem",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
+        "paddingRight": "1rem",
         "paddingTop": "0rem",
       }
     }
+    type="text"
     value=""
   />
-</span>
+  <i
+    className="lugia-icon-reminder_close   c2"
+    disabled={false}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    style={
+      Object {
+        "color": "#9EA4AE",
+        "fontSize": "1.2rem",
+      }
+    }
+  />
+</div>
 `;
 
 exports[`Input props: placeholder  1`] = `
+.c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  visibility: hidden;
+  padding-right: 1rem;
+}
+
 .c1 {
+  background-color: transparent;
   box-sizing: border-box;
-  line-height: 1.5;
-  display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
   height: 100%;
   width: 100%;
-  font-size: 1.2rem;
+  border: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   cursor: text;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c1::-webkit-input-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1::-moz-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1:-ms-input-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1::placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c0 {
   position: relative;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: white;
 }
 
-<span
+<div
   className="c0"
+  onBlur={[Function]}
+  onFocus={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
   style={
     Object {
+      "borderBottomColor": "#cccccc",
+      "borderBottomLeftRadius": "0.4rem",
+      "borderBottomRightRadius": "0.4rem",
+      "borderBottomStyle": "solid",
+      "borderBottomWidth": "0.1rem",
+      "borderLeftColor": "#cccccc",
+      "borderLeftStyle": "solid",
+      "borderLeftWidth": "0.1rem",
+      "borderRightColor": "#cccccc",
+      "borderRightStyle": "solid",
+      "borderRightWidth": "0.1rem",
+      "borderTopColor": "#cccccc",
+      "borderTopLeftRadius": "0.4rem",
+      "borderTopRightRadius": "0.4rem",
+      "borderTopStyle": "solid",
+      "borderTopWidth": "0.1rem",
       "height": "3.2rem",
     }
   }
@@ -276,89 +397,136 @@ exports[`Input props: placeholder  1`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
     placeholder="请填写内容"
     size="default"
     style={
       Object {
-        "color": "#333333",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "color": "#363B40",
+        "fontSize": "1.4rem",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
+        "paddingRight": "1rem",
         "paddingTop": "0rem",
       }
     }
+    type="text"
     value=""
   />
-</span>
+  <i
+    className="lugia-icon-reminder_close   c2"
+    disabled={false}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    style={
+      Object {
+        "color": "#9EA4AE",
+        "fontSize": "1.2rem",
+      }
+    }
+  />
+</div>
 `;
 
 exports[`Input props: placeholder  2`] = `
+.c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  visibility: hidden;
+  padding-right: 1rem;
+}
+
 .c1 {
+  background-color: transparent;
   box-sizing: border-box;
-  line-height: 1.5;
-  display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
   height: 100%;
   width: 100%;
-  font-size: 1.2rem;
+  border: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   cursor: text;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c1::-webkit-input-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1::-moz-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1:-ms-input-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1::placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c0 {
   position: relative;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: white;
 }
 
-<span
+<div
   className="c0"
+  onBlur={[Function]}
+  onFocus={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
   style={
     Object {
+      "borderBottomColor": "#cccccc",
+      "borderBottomLeftRadius": "0.4rem",
+      "borderBottomRightRadius": "0.4rem",
+      "borderBottomStyle": "solid",
+      "borderBottomWidth": "0.1rem",
+      "borderLeftColor": "#cccccc",
+      "borderLeftStyle": "solid",
+      "borderLeftWidth": "0.1rem",
+      "borderRightColor": "#cccccc",
+      "borderRightStyle": "solid",
+      "borderRightWidth": "0.1rem",
+      "borderTopColor": "#cccccc",
+      "borderTopLeftRadius": "0.4rem",
+      "borderTopRightRadius": "0.4rem",
+      "borderTopStyle": "solid",
+      "borderTopWidth": "0.1rem",
       "height": "3.2rem",
     }
   }
@@ -374,51 +542,72 @@ exports[`Input props: placeholder  2`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
     placeholder=""
     size="default"
     style={
       Object {
-        "color": "#333333",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "color": "#363B40",
+        "fontSize": "1.4rem",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
+        "paddingRight": "1rem",
         "paddingTop": "0rem",
       }
     }
+    type="text"
     value=""
   />
-</span>
+  <i
+    className="lugia-icon-reminder_close   c2"
+    disabled={false}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    style={
+      Object {
+        "color": "#9EA4AE",
+        "fontSize": "1.2rem",
+      }
+    }
+  />
+</div>
 `;
 
 exports[`Input props: size 1`] = `
+.c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  visibility: hidden;
+  padding-right: 1rem;
+}
+
 .c1 {
+  background-color: transparent;
   box-sizing: border-box;
-  line-height: 1.5;
-  display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
   height: 100%;
   width: 100%;
-  font-size: 1.2rem;
+  border: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   cursor: text;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c1::-webkit-input-placeholder {
@@ -443,20 +632,46 @@ exports[`Input props: size 1`] = `
 
 .c0 {
   position: relative;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: white;
 }
 
-<span
+<div
   className="c0"
+  onBlur={[Function]}
+  onFocus={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
   style={
     Object {
+      "borderBottomColor": "#cccccc",
+      "borderBottomLeftRadius": "0.4rem",
+      "borderBottomRightRadius": "0.4rem",
+      "borderBottomStyle": "solid",
+      "borderBottomWidth": "0.1rem",
+      "borderLeftColor": "#cccccc",
+      "borderLeftStyle": "solid",
+      "borderLeftWidth": "0.1rem",
+      "borderRightColor": "#cccccc",
+      "borderRightStyle": "solid",
+      "borderRightWidth": "0.1rem",
+      "borderTopColor": "#cccccc",
+      "borderTopLeftRadius": "0.4rem",
+      "borderTopRightRadius": "0.4rem",
+      "borderTopStyle": "solid",
+      "borderTopWidth": "0.1rem",
       "height": "2.4rem",
     }
   }
@@ -472,88 +687,135 @@ exports[`Input props: size 1`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
     size="small"
     style={
       Object {
-        "color": "#333333",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "color": "#363B40",
+        "fontSize": "1.2rem",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
+        "paddingRight": "1rem",
         "paddingTop": "0rem",
       }
     }
+    type="text"
     value=""
   />
-</span>
+  <i
+    className="lugia-icon-reminder_close   c2"
+    disabled={false}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    style={
+      Object {
+        "color": "#9EA4AE",
+        "fontSize": "1rem",
+      }
+    }
+  />
+</div>
 `;
 
 exports[`Input props: size 2`] = `
+.c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  visibility: hidden;
+  padding-right: 1rem;
+}
+
 .c1 {
+  background-color: transparent;
   box-sizing: border-box;
-  line-height: 1.5;
-  display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
   height: 100%;
   width: 100%;
-  font-size: 1.2rem;
+  border: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   cursor: text;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c1::-webkit-input-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1::-moz-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1:-ms-input-placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c1::placeholder {
   color: #cccccc;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .c0 {
   position: relative;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: white;
 }
 
-<span
+<div
   className="c0"
+  onBlur={[Function]}
+  onFocus={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
   style={
     Object {
+      "borderBottomColor": "#cccccc",
+      "borderBottomLeftRadius": "0.4rem",
+      "borderBottomRightRadius": "0.4rem",
+      "borderBottomStyle": "solid",
+      "borderBottomWidth": "0.1rem",
+      "borderLeftColor": "#cccccc",
+      "borderLeftStyle": "solid",
+      "borderLeftWidth": "0.1rem",
+      "borderRightColor": "#cccccc",
+      "borderRightStyle": "solid",
+      "borderRightWidth": "0.1rem",
+      "borderTopColor": "#cccccc",
+      "borderTopLeftRadius": "0.4rem",
+      "borderTopRightRadius": "0.4rem",
+      "borderTopStyle": "solid",
+      "borderTopWidth": "0.1rem",
       "height": "4rem",
     }
   }
@@ -569,17 +831,42 @@ exports[`Input props: size 2`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
     size="large"
     style={
       Object {
-        "color": "#333333",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "color": "#363B40",
+        "fontSize": "1.4rem",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
+        "paddingRight": "1rem",
         "paddingTop": "0rem",
       }
     }
+    type="text"
     value=""
   />
-</span>
+  <i
+    className="lugia-icon-reminder_close   c2"
+    disabled={false}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    style={
+      Object {
+        "color": "#9EA4AE",
+        "fontSize": "1.2rem",
+      }
+    }
+  />
+</div>
 `;

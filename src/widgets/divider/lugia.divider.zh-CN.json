@@ -3,6 +3,11 @@
   "title": "分割线",
   "desc": "区隔内容的分割线",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "position": {
       "type": "DividerPosition",
       "desc": "分割线中显示内容的位置,与content 配合使用"
@@ -38,7 +43,7 @@
         "type": "vertical"
       },
       "defaultTheme": {
-        "Divider": {
+        "Container": {
           "normal": {
             "width": 1,
             "height": 200
@@ -46,7 +51,7 @@
         }
       },
       "theme": {
-        "Divider": {
+        "Container": {
           "name": "垂直分割线",
           "desc": "分割线为垂直类型时的配置",
           "normal": [
@@ -63,7 +68,7 @@
     }
   },
   "theme": {
-    "Divider": {
+    "Container": {
       "name": "水平分割线",
       "desc": "分割线为水平类型时的配置",
       "normal": [
@@ -78,7 +83,7 @@
     }
   },
   "defaultTheme": {
-    "Divider": {
+    "Container": {
       "normal": {
         "width": 200,
         "height": 1

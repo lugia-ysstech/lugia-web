@@ -3,6 +3,11 @@
   "title": "树形控件",
   "desc": "清晰地展示层级结构的信息,可展开或折叠。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "limitCount": {
       "type": "number",
       "desc": "多选时的最大选中数",
@@ -24,13 +29,25 @@
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
-      "defaultValue": "value"
+      "propsDefaultValue": "value"
     },
 
     "displayField": {
       "type": "string",
       "desc": "data数据的displayValue值的名称",
-      "defaultValue": "text"
+      "propsDefaultValue": "text"
+    },
+
+    "pathField": {
+      "type": "string",
+      "desc": "data数据的存储节点路径信息字段",
+      "propsDefaultValue": "path"
+    },
+
+    "pidField": {
+      "type": "string",
+      "desc": "data数据的存储节点父节点信息字段",
+      "propsDefaultValue": "pid"
     },
 
     "value": {
@@ -41,6 +58,12 @@
     "displayValue": {
       "type": "string | string[] | number | number[]",
       "desc": "指定当前选中的条目的displayField值"
+    },
+
+    "query": {
+      "type": "string",
+      "desc": "检索关键字",
+      "defaultValue": ""
     },
 
     "parentIsHighlight": {
@@ -60,6 +83,12 @@
       "desc": "多tree的分组标识,当两个tree的groupKey值相同时.可实现相互拖拽"
     },
 
+    "size": {
+      "type": "sizeType",
+      "desc": "可配置三种尺寸大小的tree",
+      "propsDefaultValue": "default"
+    },
+
     "data": {
       "type": "object[]",
       "desc": "生成选择项的数据",
@@ -72,9 +101,7 @@
           "type": "object",
           "children": [
             { "key": "prefixIconClass", "title": "前缀图标", "type": "icon" },
-            { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
-            { "key": "prefixIconSrc", "title": "前缀图片", "type": "image" },
-            { "key": "suffixIconSrc", "title": "后缀图片", "type": "image" }
+            { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" }
           ]
         },
         { "key": "children", "title": "子项数据", "type": "Object[]" }
@@ -121,39 +148,38 @@
     "igronSelectField": {
       "type": "string",
       "desc": "指定不可选的标识",
-      "defaultValue": "disabled"
+      "propsDefaultValue": "disabled"
     },
     "mutliple": {
       "type": "boolean",
       "desc": "是否多选",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "pathSeparator": {
       "type": "string",
       "desc": "指定结点数组中path信息的分隔符号",
-      "defaultValue": "/"
+      "propsDefaultValue": "|"
     },
-
     "searchType": {
       "type": "start | end | include | eql",
       "desc": "生成过滤数据的方式",
       "defaultValue": "include"
     },
-
-    "shpale": {
-      "type": "default | round",
-      "desc": "单选树形控件,选中时的样式",
-      "defaultValue": "default"
-    },
     "switchAtEnd": {
       "type": "boolean",
       "desc": "控制器后置",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "showSwitch": {
       "type": "boolean",
       "desc": "是否展示控制器",
-      "defaultValue": true
+      "propsDefaultValue": true
+    },
+
+    "shape": {
+      "type": "default | round",
+      "desc": "单选树形控件,选中时的样式",
+      "propsDefaultValue": "default"
     },
     "translateTreeData": {
       "type": "boolean",
@@ -306,6 +332,9 @@
       ]
     }
   },
+  "type": {
+    "sizeType": ["small", "default", "large"]
+  },
 
   "category": ["数据录入"],
 
@@ -421,9 +450,29 @@
                 ["borderRadius"]
               ]
             },
+
             "SelectedText": {
               "name": "选中项的文本框区域",
               "desc": "配置选中项的文本框区域的样式",
+              "normal": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["background"],
+                ["padding"],
+                ["border"],
+                ["opacity"],
+                ["boxShadow"],
+                ["borderRadius"]
+              ],
+              "hover": [],
+              "active": [],
+              "disabled": []
+            },
+
+            "SelectedParentText": {
+              "name": "选中项的父节点文本框区域",
+              "desc": "配置选中项的父节点文本框区域的样式",
               "normal": [
                 ["color"],
                 ["font"],
@@ -461,7 +510,16 @@
 
             "PrefixIcon": {
               "name": "前置图标配置",
-              "desc": "前置图标或图片的样式配置",
+              "desc": "前置图标的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            },
+
+            "SelectedPrefixIcon": {
+              "name": "选中项前置图标配置",
+              "desc": "选中项前置图标的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [["color"], ["font"], ["fontSize"]],
@@ -470,7 +528,16 @@
 
             "SuffixIcon": {
               "name": "后缀图标配置",
-              "desc": "后缀图标或图片的样式配置",
+              "desc": "后缀图标的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            },
+
+            "SelectedSuffixIcon": {
+              "name": "选中项后缀图标配置",
+              "desc": "选中项后缀图标的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [["color"], ["font"], ["fontSize"]],
@@ -486,6 +553,12 @@
               "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
             },
 
+            "SelectedParentSwitchIcon": {
+              "name": "选中节点的父节点控制器配置",
+              "desc": "选中节点的父节点配置控制树节点展开或隐藏的控制器的样式",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            },
+
             "SwitchIconExpanded": {
               "name": "节点展开状态控制器",
               "desc": "配置在父节点展开状态下控制控制器的样式",
@@ -493,6 +566,12 @@
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [],
               "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            },
+
+            "SelectedParentSwitchIconExpanded": {
+              "name": "选中节点的父节点展开状态控制器",
+              "desc": "选中节点的父节点配置在父节点展开状态下控制控制器的样式",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
             },
 
             "SubTreeWrap": {
@@ -535,12 +614,33 @@
                   "hover": [["background"], ["borderRadius"], ["border"]],
                   "disabled": [["background"], ["borderRadius"], ["border"]]
                 },
+                "CheckboxEdgeIndeterminate": {
+                  "name": "半选外框样式",
+                  "desc": "半选状态外框样式",
+                  "normal": [
+                    ["background"],
+                    ["borderRadius"],
+                    ["border"],
+                    ["boxShadow"],
+                    ["width"],
+                    ["height"]
+                  ],
+                  "hover": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
+                  "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+                },
                 "CheckboxInnerChecked": {
                   "name": "Checkbox选中样式配置",
                   "desc": "Checkbox选中样式配置",
                   "normal": [["color"]],
                   "hover": [["color"]],
                   "disabled": [["color"]]
+                },
+                "CheckboxInnerIndeterminate": {
+                  "name": "半选内框样式",
+                  "desc": "半选内框样式",
+                  "normal": [["color"], ["width"], ["height"]],
+                  "hover": [["color"], ["width"], ["height"]],
+                  "disabled": [["color"], ["width"], ["height"]]
                 }
               }
             }
@@ -671,6 +771,25 @@
           "disabled": []
         },
 
+        "SelectedParentText": {
+          "name": "选中项的父节点文本框区域",
+          "desc": "配置选中项的父节点文本框区域的样式",
+          "normal": [
+            ["color"],
+            ["font"],
+            ["fontSize"],
+            ["background"],
+            ["padding"],
+            ["border"],
+            ["opacity"],
+            ["boxShadow"],
+            ["borderRadius"]
+          ],
+          "hover": [],
+          "active": [],
+          "disabled": []
+        },
+
         "TextExpanded": {
           "name": "父节点展开状态的文本框区域",
           "desc": "配置父节点展开状态的文本框区域的样式",
@@ -692,7 +811,16 @@
 
         "PrefixIcon": {
           "name": "前置图标配置",
-          "desc": "前置图标或图片的样式配置",
+          "desc": "前置图标的样式配置",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+          "hover": [["color"], ["font"], ["fontSize"]],
+          "active": [["color"], ["font"], ["fontSize"]],
+          "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+        },
+
+        "SelectedPrefixIcon": {
+          "name": "选中项前置图标配置",
+          "desc": "选中项前置图标的样式配置",
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
           "hover": [["color"], ["font"], ["fontSize"]],
           "active": [["color"], ["font"], ["fontSize"]],
@@ -701,7 +829,16 @@
 
         "SuffixIcon": {
           "name": "后缀图标配置",
-          "desc": "后缀图标或图片的样式配置",
+          "desc": "后缀图标的样式配置",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+          "hover": [["color"], ["font"], ["fontSize"]],
+          "active": [["color"], ["font"], ["fontSize"]],
+          "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+        },
+
+        "SelectedSuffixIcon": {
+          "name": "选中项后缀图标配置",
+          "desc": "选中项后缀图标的样式配置",
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
           "hover": [["color"], ["font"], ["fontSize"]],
           "active": [["color"], ["font"], ["fontSize"]],
@@ -717,6 +854,12 @@
           "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
         },
 
+        "SelectedParentSwitchIcon": {
+          "name": "选中节点的父节点控制器配置",
+          "desc": "选中节点的父节点配置控制树节点展开或隐藏的控制器的样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+        },
+
         "SwitchIconExpanded": {
           "name": "节点展开状态控制器",
           "desc": "配置在父节点展开状态下控制控制器的样式",
@@ -724,6 +867,12 @@
           "hover": [["color"], ["font"], ["fontSize"]],
           "active": [],
           "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+        },
+
+        "SelectedParentSwitchIconExpanded": {
+          "name": "选中节点的父节点展开状态控制器",
+          "desc": "选中节点的父节点配置在父节点展开状态下控制控制器的样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
         },
 
         "SubTreeWrap": {

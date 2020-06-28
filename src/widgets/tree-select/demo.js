@@ -8,65 +8,69 @@ import Theme from '../theme/index';
 import TreeSelect from './index';
 import Widget from '../consts/index';
 import styled from 'styled-components';
-import colors from '../css/stateColor';
+import Icon from '../icon';
+import Modal from '../modal';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
+const Box = styled.div`
+  margin: 50px;
+`;
 
 const data = [
-  { key: '1', title: '1' },
-  { key: '1.1', title: '1.1', pid: '1', path: '1' },
-  { key: '1.1.1', title: '1.1.1', pid: '1.1', path: '1/1.1' },
-  { key: '1.1.1.1', title: '1.1.1.1', pid: '1.1.1', path: '1/1.1/1.1.1' },
-  {
-    key: '1.1.1.1.1',
-    title: '1.1.1.1.1',
-    pid: '1.1.1.1',
-    path: '1/1.1/1.1.1/1.1.1.1',
-    isLeaf: true,
-  },
-  { key: '1.2', title: '1.2', pid: '1', path: '1' },
-  { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true },
-  { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2' },
-  { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2' },
-  {
-    key: '1.2.2.1.1',
-    title: '1.2.2.1.1',
-    pid: '1.2.2.1',
-    path: '1/1.2/1.2.2/1.2.2.1',
-    isLeaf: true,
-  },
-  {
-    key: '1.2.2.1.2',
-    title: '1.2.2.1.2',
-    pid: '1.2.2.1',
-    path: '1/1.2/1.2.2/1.2.2.1',
-    isLeaf: true,
-  },
-  { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true },
+  { key: '1', title: '中国' },
+  { key: '1.1', title: '北京', pid: '1', path: '1' },
+  { key: '1.1.1', title: '昌平', pid: '1.1', path: '1/1.1' },
+  { key: '1.1.1.1', title: '海淀', pid: '1.1.1', path: '1/1.1/1.1.1', isLeaf: true },
 
-  { key: '1.3', title: '1.3', pid: '1', path: '1' },
-  { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3' },
-  { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
-  { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
-  { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3' },
-  { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
-  { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
-  { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true },
+  { key: '1.2', title: '山西', pid: '1', path: '1' },
+  { key: '1.2.1', title: '大同', pid: '1.2', path: '1/1.2', isLeaf: true },
+  { key: '1.2.2', title: '太原', pid: '1.2', path: '1/1.2' },
+  { key: '1.2.2.1', title: '迎泽街', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true },
 
-  { key: '2', title: '2' },
-  { key: '2.1', title: '2.1', pid: '2', path: '2' },
-  { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true },
-  { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1' },
-  { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true },
-  { key: '2.2', title: '2.2', pid: '2', path: '2' },
-  { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2' },
-  { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
-  { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
-  { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true },
+  { key: '1.3', title: '上海', pid: '1', path: '1' },
+  { key: '1.3.1', title: '外滩', pid: '1.3', path: '1/1.3' },
+  { key: '1.3.1.1', title: '外滩海边', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
+  { key: '1.3.1.2', title: '外滩小区', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
+  { key: '1.3.2', title: '黄浦区', pid: '1.3', path: '1/1.3' },
+  { key: '1.3.2.1', title: '海宁路', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
+  { key: '1.3.2.2', title: '延安路', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
+  { key: '1.3.3', title: '长宁区', pid: '1.3', path: '1/1.3', isLeaf: true },
 
-  { key: '3', title: '3' },
-  { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true },
-  { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true },
-  { key: '4', title: '4', isLeaf: true },
+  { key: '2', title: '朝鲜' },
+  { key: '2.1', title: '平壤', pid: '2', path: '2' },
+  { key: '2.1.2', title: '平壤街道', pid: '2.1', path: '2/2.1', isLeaf: true },
+
+  { key: '3', title: '韩国' },
+  { key: '3.1', title: '首尔', pid: '3', path: '3', isLeaf: true },
+  { key: '3.2', title: '釜山', pid: '3', path: '3', isLeaf: true },
+
+  { key: '4', title: '日本', isLeaf: true },
+];
+
+const info = [
+  {
+    value: '0',
+    text: '北京分行',
+
+    children: [
+      // { value: '0-1-0', text: '朝阳支行办事处-1' },
+      { value: '0-1', text: '朝阳支行办事处-2', children: [{ value: '0-111', text: '123' }] },
+      {
+        value: '0-2',
+        text: '海淀支行办事处',
+        icons: {
+          prefixIconClass: 'lugia-icon-financial_heart',
+          prefixIconSrc: '',
+          suffixIconClass: 'lugia-icon-financial_contacts',
+          suffixIconSrc: '',
+        },
+      },
+    ],
+  },
+  { value: '0-3', text: '天津分行' },
+  { value: '0-4', text: '山西分行' },
+  { value: '0-5', text: '上海分行' },
+  { value: '0-6', text: '汉南分行' },
+  { value: '0-7', text: '河南分行' },
 ];
 
 const theme = {
@@ -74,110 +78,61 @@ const theme = {
     Tree: {
       Container: {
         normal: {
-          width: 500,
-          height: 300,
-          opacity: 1,
-          background: { color: '#E086BB' },
-          boxShadow: getBoxShadow('2px 2px 5px 5px #9C2D6E'),
-          border: getBorder({ color: '#9C2D6E', width: 1, style: 'solid' }),
-          borderRadius: getBorderRadius(20),
-          // padding: {
-          //   left: 20,
-          //   right: 20,
-          // },
-          // margin: {
-          //   left: 20,
-          // },
+          height: 224,
+          background: { color: '#fff' },
+          boxShadow: getBoxShadow('0 0 6px 0 rgba(0,0,0,0.20)'),
+          borderRadius: getBorderRadius(1),
         },
-        hover: {
-          opacity: 0.9,
-          background: { color: '#F51196' },
-          boxShadow: getBoxShadow('2px 2px 5px 5px #F51196'),
-          border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
-          // borderRadius: getBorderRadius(40),
-        },
+        hover: {},
       },
 
       TreeItem: {
         TreeItemWrap: {
           normal: {
-            background: { color: '#21EBE8' },
-            border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
-
-            // padding: { left: 30, right: 30 },
+            height: 28,
           },
           hover: {
-            background: { color: '#119E9C' },
-            color: 'white',
-            // borderRadius: getBorderRadius(40),
-          },
-          active: {
-            background: { color: '#036664' },
-            // color: '#4d63ff',
+            background: {
+              color: '#4d63ff',
+            },
           },
         },
         SelectedTreeItemWrap: {
-          normal: {
+          normal: {},
+          hover: {
             background: {
-              color: '#000',
+              color: '#4d63ff',
             },
           },
         },
         Text: {
-          normal: {
-            color: '#fff',
-            width: 200,
-            // background: { color: '#333' },
-            font: { size: 14 },
-            padding: {
-              left: 20,
-            },
-            // border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(40),
-            // border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
-          },
+          normal: {},
           hover: {
-            color: 'red',
-            background: { color: '#2982F5' },
-            // border: getBorder({ color: '#F75993', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(10),
-          },
-          active: {
             color: '#fff',
-            background: { color: '#ddd' },
-            // border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(40),
+            background: { color: '' },
           },
         },
         SelectedText: {
-          normal: {
-            color: 'red',
-            font: { size: 20 },
+          normal: {},
+          hover: {
+            color: '#fff',
+            background: { color: '' },
           },
         },
         SubTreeWrap: {
-          normal: {
-            background: { color: '#66eecc' },
-          },
-          hover: {
-            background: { color: '#bbb' },
-          },
-        },
-        Checkbox: {
-          normal: {
-            color: '#4d63ff',
-          },
+          normal: {},
+          hover: {},
         },
 
-        Switch: {
+        SwitchIcon: {
           normal: {
-            color: '#F51196',
             font: {
-              size: 20,
+              size: 18,
             },
+            color: 'red',
           },
           hover: {
-            color: '#4d63ff',
+            color: 'blue',
           },
         },
       },
@@ -185,100 +140,125 @@ const theme = {
 
     Container: {
       normal: {
-        width: 340,
-        height: 60,
-        color: '#4d63ff',
-        boxShadow: '2px 2px 5px #000',
-        font: { size: 20 },
-        borderRadius: getBorderRadius(20),
-      },
-      hover: {
-        boxShadow: '2px 2px 5px #4d63ff',
-        color: '#4d63ff',
-        borderRadius: getBorderRadius(10),
-      },
-    },
-    TagWrap: {
-      normal: {
-        height: 20,
-        margin: {
-          left: 50,
-          right: 5,
-        },
+        width: 400,
+        height: 28,
         padding: {
           left: 10,
-          right: 10,
+          right: 4,
         },
-
-        // border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 10 }),
+        borderRadius: getBorderRadius(2),
+        border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }),
       },
       hover: {
-        background: { color: 'orange' },
+        borderRadius: getBorderRadius(2),
+        border: getBorder({ color: '#4d68ff', width: 1, style: 'solid' }),
+        boxShadow: getBoxShadow('0 0 4px 0 rgba(77,104,255,0.3)'),
       },
     },
-    TagIcon: {
+    SwitchIcon: {
       normal: {
-        font: { fontSize: 14, color: '#999' },
+        font: {
+          size: 10,
+        },
+        color: '#a6aab2',
       },
       hover: {
-        color: '#4d63ff',
+        color: '#a6aab2',
       },
     },
+  },
+};
+
+const iconConfig = {
+  [Widget.Icon]: {
     Icon: {
       normal: {
-        color: '#ddd',
-        font: { fontSize: 30 },
+        opacity: 0,
       },
-      hover: { color: '#4d63ff' },
-    },
-    Menu: {
-      Container: {
-        normal: {
-          width: 200,
-          height: 200,
-          opacity: 0.6,
-          boxShadow: '2px 2px 5px #4d63ff',
-          background: { color: '#000' },
-          border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
-        },
-        hover: {
-          opacity: 1,
-        },
-      },
-      MenuItem: {
-        normal: { color: '#ccc', fontSize: 14, font: { fontWeight: 900 } },
-        hover: {
-          color: '#fff',
-          fontSize: 20,
-          background: { color: 'green' },
-          font: { fontWeight: 400 },
-        },
-        active: {
-          color: 'blue',
-          fontSize: 14,
-          background: { color: 'pink' },
-          font: { fontWeight: 900 },
-        },
-        disabled: { color: 'red', background: { color: '#000' } },
+      hover: {
+        opacity: 1,
       },
     },
   },
 };
 
 export default class DefaultTreeSelect extends React.Component<any, any> {
+  constructor(props: TreeSelectProps) {
+    super(props);
+    this.state = {
+      value1: ['0'],
+      value: ['1.1.1.1', '1.2.1', '0-4'],
+      visible: false,
+    };
+  }
+
+  renderSuffix = item => {
+    const { isLeaf } = item;
+    if (isLeaf) {
+      return <Icon theme={iconConfig} iconClass={'lugia-icon-reminder_check_square'} />;
+    }
+  };
+  onClick = () => {
+    this.setState({ visible: !this.state.visible });
+  };
   render() {
-    return (
-      <TreeSelect
-        theme={theme}
-        data={data}
-        onlySelectLeaf
-        valueField={'key'}
-        displayField={'title'}
-        igronSelectField="notCanSelect"
-        expandAll
-        // autoHeight
-        mutliple
-      />
-    );
+    return [
+      <Box>
+        <Modal visible={this.state.visible} onOk={this.onClick} onCancel={this.onClick}>
+          <TreeSelect theme={theme} createPortal={true} />
+        </Modal>
+        <button onClick={this.onClick}>打开Modal对话框</button>
+      </Box>,
+      <Box>
+        <TreeSelect
+          theme={theme}
+          // valueField={'key'}
+          // displayField={'title'}
+          value={this.state.value1}
+          pathSeparator={'/'}
+          data={info}
+          translateTreeData
+          onlySelectLeaf
+          onSelect={obj => {
+            console.log('onSelect=====>', obj);
+          }}
+          onChange={obj => {
+            console.log('=====>', obj);
+            const { newValue } = obj;
+            this.setState({ value1: newValue });
+          }}
+          expandAll
+          autoHeight
+          pullIconClass="lugia-icon-direction_caret_down"
+          renderSuffixItems={this.renderSuffix}
+          // autoHeight
+          // mutliple
+        />
+      </Box>,
+      <Box>
+        <TreeSelect
+          theme={theme}
+          valueField={'key'}
+          displayField={'title'}
+          value={this.state.value}
+          pathSeparator={'/'}
+          data={data}
+          onlySelectLeaf={true}
+          onSelect={obj => {
+            console.log('onSelect=====>', obj);
+          }}
+          onChange={obj => {
+            console.log('onChange=====>', obj);
+            const { newValue } = obj;
+            this.setState({ value: newValue });
+          }}
+          expandAll
+          autoHeight
+          pullIconClass="lugia-icon-direction_caret_down"
+          renderSuffixItems={this.renderSuffix}
+          mutliple
+        />
+      </Box>,
+    ];
   }
 }

@@ -3,10 +3,19 @@
  * @flow
  * */
 import React, { Component } from 'react';
-import { FooterWrap, ExtraFooter, Footer, FooterBtn } from '../styled/styledFooter';
+import {
+  FooterWrap,
+  FooterButtonsWrap,
+  ExtraFooter,
+  Footer,
+  FooterBtn,
+  FooterBtnToday,
+  FooterBtnTime,
+  FooterBtnOk,
+} from '../styled/styledFooter';
 import { modeStyle } from '../utils/booleanUtils';
 import moment from 'moment';
-
+import { getExtraFooterTheme, getFooterButtonsTheme } from '../themeConfig/themeConfig';
 type TypeProps = {
   onChange?: Function,
   footerChange?: Function,
@@ -48,7 +57,6 @@ function getShowTimeMessage(showTime) {
 }
 class PageFooter extends Component<TypeProps, TypeState> {
   static displayName = 'PageFooter';
-  timeMessage: string;
   constructor(props: TypeProps) {
     super(props);
     const { model } = props;
@@ -127,16 +135,21 @@ class PageFooter extends Component<TypeProps, TypeState> {
     footerChange && footerChange(status);
   };
   render() {
-    const { extraFooter, buttonOptions, theme, themeProps } = this.props;
-
-    let ChildrenNode;
+    const { extraFooter, buttonOptions } = this.props;
+    const {
+      buttonOptionsTheme,
+      todayTheme,
+      timeButtonTheme,
+      okButtonTheme,
+    } = getFooterButtonsTheme(this.props);
+    let childrenNode;
     if (buttonOptions && buttonOptions.options) {
       const optionsKeys = [];
       const { options } = buttonOptions;
       for (const key in options) {
         optionsKeys.push(key);
       }
-      ChildrenNode = optionsKeys.map((item, index) => {
+      childrenNode = optionsKeys.map((item, index) => {
         let newItemValue = options[item];
         if (Array.isArray(options[item])) {
           const newOptions = [];
@@ -146,7 +159,11 @@ class PageFooter extends Component<TypeProps, TypeState> {
           newItemValue = newOptions;
         }
         return (
-          <FooterBtn themeProps={themeProps} buttonOptions onClick={this.handleClick(newItemValue)}>
+          <FooterBtn
+            themeProps={buttonOptionsTheme}
+            buttonOptions
+            onClick={this.handleClick(newItemValue)}
+          >
             {item}
           </FooterBtn>
         );
@@ -162,7 +179,7 @@ class PageFooter extends Component<TypeProps, TypeState> {
       isShowToday,
     } = this.state;
     const { showTimeMessage, status } = this.state;
-    const { format, mode } = this.props;
+    const { format, mode, showToday } = this.props;
     const todayValueStar = moment()
       .set({ hour: 0, minute: 0, second: 0 })
       .format(format);
@@ -175,57 +192,63 @@ class PageFooter extends Component<TypeProps, TypeState> {
       newTodayValue = [todayValueStar, todayValueEnd];
     }
     const { showTimeBtnIsDisabled } = this.props;
-    const newChildrenNode = (isDate || isRange) && buttonOptions ? ChildrenNode : '';
+    const newChildrenNode = (isDate || isRange) && buttonOptions ? childrenNode : '';
+    const extraFooterTheme = getExtraFooterTheme(this.props);
     return (
-      <FooterWrap {...theme} showFooter={showFooter} themeProps={themeProps}>
+      <FooterWrap showFooter={showFooter}>
         {showFooter ? (
-          <Footer {...this.props}>
+          <Footer showToday={showToday}>
             {showExtraFooter ? (
-              <ExtraFooter themeProps={themeProps} extraFooter>
+              <ExtraFooter themeProps={extraFooterTheme} extraFooter>
                 {extraFooter && extraFooter.message}
               </ExtraFooter>
             ) : (
               ''
             )}
-            {newChildrenNode}
-            {isShowToday ? (
-              <FooterBtn
-                themeProps={themeProps}
-                showToday
-                onClick={this.handleClick(newTodayValue)}
-              >
-                {showTodayMessage}
-              </FooterBtn>
-            ) : (
-              ''
-            )}
-            {isOnOk ? (
-              <FooterBtn
-                themeProps={themeProps}
-                onOk
-                background
-                border
-                onClick={this.onOkClick('onOk')}
-              >
-                {onOkMessage}
-              </FooterBtn>
-            ) : (
-              ''
-            )}
-            {isShowTime ? (
-              <FooterBtn
-                themeProps={themeProps}
-                showTime
-                showTimeButton={showTimeBtnIsDisabled}
-                onClick={this.statusClick(showTimeBtnIsDisabled ? status : '')}
-              >
-                {showTimeMessage && status === 'date'
-                  ? showTimeMessage.showTime
-                  : showTimeMessage[status]}
-              </FooterBtn>
-            ) : (
-              ''
-            )}
+            <FooterButtonsWrap>
+              <div>{newChildrenNode}</div>
+              {isShowToday ? (
+                <FooterBtnToday
+                  themeProps={todayTheme}
+                  showToday
+                  onClick={this.handleClick(newTodayValue)}
+                >
+                  {showTodayMessage}
+                </FooterBtnToday>
+              ) : (
+                ''
+              )}
+              <div>
+                {isShowTime ? (
+                  <FooterBtnTime
+                    themeProps={timeButtonTheme}
+                    showTime
+                    disabled={!showTimeBtnIsDisabled}
+                    onClick={this.statusClick(showTimeBtnIsDisabled ? status : '')}
+                  >
+                    {showTimeMessage && status === 'date'
+                      ? showTimeMessage.showTime
+                      : showTimeMessage[status]}
+                  </FooterBtnTime>
+                ) : (
+                  ''
+                )}
+                {isOnOk ? (
+                  <FooterBtnOk
+                    themeProps={okButtonTheme}
+                    onOk
+                    background
+                    border
+                    disabled={!showTimeBtnIsDisabled}
+                    onClick={showTimeBtnIsDisabled ? this.onOkClick('onOk') : ''}
+                  >
+                    {onOkMessage}
+                  </FooterBtnOk>
+                ) : (
+                  ''
+                )}
+              </div>
+            </FooterButtonsWrap>
           </Footer>
         ) : (
           ''

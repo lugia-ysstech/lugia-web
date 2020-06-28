@@ -20,6 +20,7 @@ import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import { DisplayField, ValueField } from '../consts/props';
 import contains from 'rc-util/lib/Dom/contains';
 import { getCanSeeCountRealy } from '../scroller/support';
+import { getMenuItemHeight } from '../css/menu';
 import {
   getExpandDataOrSelectData,
   getExpandedPath,
@@ -93,6 +94,9 @@ export type MenuProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeConfig: Function,
   getPartOfThemeHocProps: Function,
+  defaultHeight?: number,
+  isShowAuxiliaryText?: boolean,
+  auxiliaryTextField?: string,
 };
 const EmptyData = [];
 
@@ -122,6 +126,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
     getTheme: () => {
       return {};
     },
+    isShowAuxiliaryText: false,
+    auxiliaryTextField: 'des',
   };
   static displayName = Widget.Menu;
   isSelect: Function;
@@ -200,7 +206,15 @@ class Menu extends React.Component<MenuProps, MenuState> {
   render() {
     const { props } = this;
     const items = this.getItems(props);
-    const { data = [], autoHeight = false, getPartOfThemeProps, itemHeight, defaultHeight } = props;
+    const {
+      data = [],
+      autoHeight = false,
+      getPartOfThemeProps,
+      itemHeight,
+      defaultHeight,
+      mutliple,
+      checkedCSS,
+    } = props;
     const length = data ? data.length : 0;
     const wrapThemeProps = getPartOfThemeProps('Container', {
       props: {
@@ -217,7 +231,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
       </MenuContainer>
     );
 
-    if (!Array.isArray(this.state.childData) || this.state.childData.length === 0) {
+    if (
+      !Array.isArray(this.state.childData) ||
+      this.state.childData.length === 0 ||
+      !!mutliple ||
+      checkedCSS === 'checkbox'
+    ) {
       return bodyContent;
     }
 
@@ -249,7 +268,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   getItems(props: MenuProps): Object[] {
-    let { start, end, checkedCSS = 'none', mutliple, data } = props;
+    let { start, end, checkedCSS = 'none', mutliple, data, switchIconClass } = props;
     start = Math.round(start);
     end = Math.round(end);
     if (data && data.length > 0) {
@@ -261,6 +280,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
           itemHeight,
           marginBottom,
           renderSuffixItems,
+          size,
+          isShowAuxiliaryText,
+          auxiliaryTextField,
         } = this.props;
 
         const { [valueField]: key, [displayField]: value, disabled, icon, icons, divided } = obj;
@@ -268,10 +290,16 @@ class Menu extends React.Component<MenuProps, MenuState> {
           return <li />;
         }
 
-        const { wrapItem } = this.props;
+        const { wrapItem, separator } = this.props;
+        const { expandedPath } = this.state;
 
+        const expandedPathValues =
+          expandedPath.length === 0 ? [] : expandedPath[0].split(separator);
         const result = (
           <Item
+            switchIconClass={switchIconClass}
+            isShowAuxiliaryText={isShowAuxiliaryText}
+            auxiliaryTextField={auxiliaryTextField}
             key={key}
             item={obj}
             disabled={disabled}
@@ -286,6 +314,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
             icons={icons}
             marginBottom={marginBottom}
             renderSuffixItems={renderSuffixItems}
+            hoverState={expandedPathValues.indexOf(key) !== -1}
+            size={size}
           />
         );
         return wrapItem ? wrapItem(result, { key, value }) : result;
@@ -329,7 +359,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     indexOffsetY: number
   ) => {
     const { key, props } = child;
-    const { disabled } = props;
+    const { disabled, size } = props;
     return React.cloneElement(
       child,
       this.fetchExtendProps(key, isSelect, item, disabled, indexOffsetY)
@@ -580,7 +610,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
       valueField,
       mutliple,
       autoHeight,
+      divided,
       renderSuffixItems,
+      size,
+      isShowAuxiliaryText = false,
+      auxiliaryTextField = 'des',
+      switchIconClass,
     } = this.props;
 
     const { selectedKeys, expandedPath } = this.state;
@@ -591,10 +626,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
         Szf: this.props.getPartOfThemeConfig('SubMenu'),
       },
     };
-
     return (
       <SubMenu
+        switchIconClass={switchIconClass}
         mutliple={mutliple}
+        size={size}
+        divided={divided}
         theme={config}
         viewClass={'Szf'}
         autoHeight={autoHeight}
@@ -626,12 +663,14 @@ class Menu extends React.Component<MenuProps, MenuState> {
         selectedKeysData={this.getSelectedKeysData()}
         expandedPathInProps={this.getExpandedPathInProps()}
         renderSuffixItems={renderSuffixItems}
+        isShowAuxiliaryText={isShowAuxiliaryText}
+        auxiliaryTextField={auxiliaryTextField}
       />
     );
   }
 
   getSubMenuTheme() {
-    const { getPartOfThemeConfig, level } = this.props;
+    const { getPartOfThemeConfig } = this.props;
     const config = {
       [Widget.Menu]: getPartOfThemeConfig('SubMenu'),
     };
@@ -848,7 +887,8 @@ SubMenu = ThemeHoc(
 
     render() {
       const { props } = this;
-      const { SubMenu } = props.getPartOfThemeConfig('Szf');
+      const { SubMenu, MenuItem } = props.getPartOfThemeConfig('Szf');
+      const menuItemHeight = getMenuItemHeight(MenuItem, props);
 
       const { getPartOfThemeHocProps } = props;
       let { viewClass, theme } = getPartOfThemeHocProps('Szf');
@@ -864,7 +904,13 @@ SubMenu = ThemeHoc(
       }
 
       return (
-        <Result {...props} theme={theme} viewClass={viewClass} ref={cmp => (this.svtarget = cmp)} />
+        <Result
+          {...props}
+          theme={theme}
+          menuItemHeight={menuItemHeight}
+          viewClass={viewClass}
+          ref={cmp => (this.svtarget = cmp)}
+        />
       );
     }
   },

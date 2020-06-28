@@ -8,9 +8,7 @@ exports[`Card css 1`] = `
   white-space: nowrap;
   position: relative;
   vertical-align: middle;
-  color: rgba(0,0,0,0.65);
-  border-radius: 50%;
-  line-height: 3.2rem;
+  color: #ffffff;
   min-width: 2.4rem;
   min-height: 2.4rem;
 }
@@ -34,6 +32,7 @@ exports[`Card css 1`] = `
   display: -ms-flexbox;
   display: flex;
   min-width: 5rem;
+  background-color: white;
   min-height: 2rem;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -47,6 +46,7 @@ exports[`Card css 1`] = `
   display: -ms-flexbox;
   display: flex;
   min-width: 5rem;
+  background-color: white;
   min-height: 2rem;
   text-align: center;
   -webkit-flex-direction: column;
@@ -61,6 +61,7 @@ exports[`Card css 1`] = `
   display: -ms-flexbox;
   display: flex;
   min-width: 5rem;
+  background-color: white;
   min-height: 2rem;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -79,15 +80,7 @@ exports[`Card css 1`] = `
 }
 
 .c20 {
-  width: 20rem;
-  height: 16rem;
-  display: inline-block;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.c22 {
-  width: 20rem;
+  width: 100%;
   height: 100%;
   display: inline-block;
   max-width: 100%;
@@ -96,14 +89,14 @@ exports[`Card css 1`] = `
 
 .c19 {
   position: relative;
-  width: 20rem;
-  height: 16rem;
+  width: 100%;
+  height: 11.2rem;
   display: block;
 }
 
 .c21 {
   position: relative;
-  width: 20rem;
+  width: 12rem;
   height: 100%;
   display: inline-block;
 }
@@ -111,6 +104,10 @@ exports[`Card css 1`] = `
 .c13 {
   position: relative;
   text-align: center;
+  padding-top: 2.8rem;
+  padding-bottom: 0rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
   width: 100%;
   height: 11.2rem;
   display: block;
@@ -119,6 +116,10 @@ exports[`Card css 1`] = `
 .c17 {
   position: relative;
   text-align: center;
+  padding-top: 2.8rem;
+  padding-bottom: 0rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
   width: 12rem;
   height: 100%;
   display: inline-block;
@@ -147,6 +148,7 @@ exports[`Card css 1`] = `
   flex: 1;
   font-size: 1.6rem;
   width: 100%;
+  color: #363B40;
 }
 
 .c7 {
@@ -157,6 +159,7 @@ exports[`Card css 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  width: 100%;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   padding-top: 1rem;
@@ -197,16 +200,17 @@ exports[`Card css 1`] = `
 .c11 {
   width: 100%;
   height: 0.1rem;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #e8e8e8;
-  height: NaNrem;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+  margin-left: 0rem;
+  margin-right: 0rem;
+  height: 0.1rem;
 }
 
 .c6 {
   text-align: inherit;
   font-size: 1.4rem;
-  color: #666666;
+  color: #646A6E;
 }
 
 .c0 {
@@ -227,27 +231,13 @@ exports[`Card css 1`] = `
     onMouseLeave={[Function]}
     style={
       Object {
-        "backgroundColor": "#ffffff",
-        "borderBottomColor": "#cccccc",
-        "borderBottomLeftRadius": "0.5rem",
-        "borderBottomRightRadius": "0.5rem",
-        "borderBottomStyle": "solid",
-        "borderBottomWidth": "0.1rem",
-        "borderLeftColor": "#cccccc",
-        "borderLeftStyle": "solid",
-        "borderLeftWidth": "0.1rem",
-        "borderRightColor": "#cccccc",
-        "borderRightStyle": "solid",
-        "borderRightWidth": "0.1rem",
-        "borderTopColor": "#cccccc",
-        "borderTopLeftRadius": "0.5rem",
-        "borderTopRightRadius": "0.5rem",
-        "borderTopStyle": "solid",
-        "borderTopWidth": "0.1rem",
-        "boxShadow": "0px 0px 6px 0px rgba(0, 0, 50, 0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "boxShadow": "0px 0px 6px 0px #cccccc",
       }
     }
-    type="simple"
   >
     <div
       className="c2"
@@ -265,27 +255,13 @@ exports[`Card css 1`] = `
       onMouseLeave={[Function]}
       style={
         Object {
-          "backgroundColor": "#ffffff",
-          "borderBottomColor": "#cccccc",
-          "borderBottomLeftRadius": "0.5rem",
-          "borderBottomRightRadius": "0.5rem",
-          "borderBottomStyle": "solid",
-          "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
-          "borderLeftStyle": "solid",
-          "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
-          "borderRightStyle": "solid",
-          "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
-          "borderTopLeftRadius": "0.5rem",
-          "borderTopRightRadius": "0.5rem",
-          "borderTopStyle": "solid",
-          "borderTopWidth": "0.1rem",
-          "boxShadow": "0px 0px 6px 0px rgba(0, 0, 50, 0.1)",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "boxShadow": "0px 0px 6px 0px #cccccc",
         }
       }
-      type="simple"
     >
       <div
         className="c3"
@@ -297,9 +273,9 @@ exports[`Card css 1`] = `
           style={
             Object {
               "paddingBottom": "0rem",
-              "paddingLeft": "1rem",
-              "paddingRight": "1rem",
-              "paddingTop": "1.3rem",
+              "paddingLeft": "1.2rem",
+              "paddingRight": "1.2rem",
+              "paddingTop": "1.4rem",
             }
           }
         >
@@ -318,9 +294,9 @@ exports[`Card css 1`] = `
           className="c4"
           style={
             Object {
-              "paddingBottom": "0rem",
-              "paddingLeft": "1rem",
-              "paddingRight": "1rem",
+              "paddingBottom": "1rem",
+              "paddingLeft": "1.2rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "1.4rem",
             }
           }
@@ -365,27 +341,13 @@ exports[`Card css 1`] = `
       onMouseLeave={[Function]}
       style={
         Object {
-          "backgroundColor": "#ffffff",
-          "borderBottomColor": "#cccccc",
-          "borderBottomLeftRadius": "0.5rem",
-          "borderBottomRightRadius": "0.5rem",
-          "borderBottomStyle": "solid",
-          "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
-          "borderLeftStyle": "solid",
-          "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
-          "borderRightStyle": "solid",
-          "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
-          "borderTopLeftRadius": "0.5rem",
-          "borderTopRightRadius": "0.5rem",
-          "borderTopStyle": "solid",
-          "borderTopWidth": "0.1rem",
-          "boxShadow": "0px 0px 6px 0px rgba(0, 0, 50, 0.1)",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "boxShadow": "0px 0px 6px 0px #cccccc",
         }
       }
-      type="tip"
     >
       <div
         className="c3"
@@ -424,9 +386,9 @@ exports[`Card css 1`] = `
           className="c4"
           style={
             Object {
-              "paddingBottom": "0rem",
+              "paddingBottom": "1rem",
               "paddingLeft": "1.6rem",
-              "paddingRight": "1rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "1.4rem",
             }
           }
@@ -456,29 +418,13 @@ exports[`Card css 1`] = `
       onMouseLeave={[Function]}
       style={
         Object {
-          "backgroundColor": "#ffffff",
-          "borderBottomColor": "#cccccc",
-          "borderBottomLeftRadius": "0.5rem",
-          "borderBottomRightRadius": "0.5rem",
-          "borderBottomStyle": "solid",
-          "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
-          "borderLeftStyle": "solid",
-          "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
-          "borderRightStyle": "solid",
-          "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
-          "borderTopLeftRadius": "0.5rem",
-          "borderTopRightRadius": "0.5rem",
-          "borderTopStyle": "solid",
-          "borderTopWidth": "0.1rem",
-          "boxShadow": "0px 0px 6px 0px rgba(0, 0, 50, 0.1)",
-          "height": "20rem",
-          "width": "50rem",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "boxShadow": "0px 0px 6px 0px #cccccc",
         }
       }
-      type="tip"
     >
       <div
         className="c3"
@@ -487,34 +433,14 @@ exports[`Card css 1`] = `
       >
         <div
           className="c7"
-          style={
-            Object {
-              "backgroundColor": "#e8e8e8",
-              "height": "5rem",
-              "paddingBottom": "0rem",
-              "paddingLeft": "0rem",
-              "paddingRight": "0rem",
-              "paddingTop": "0rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c8"
           >
             <div
               className="c9"
-              style={
-                Object {
-                  "borderBottomLeftRadius": "0rem",
-                  "borderTopLeftRadius": "0rem",
-                  "height": "3rem",
-                  "marginBottom": "0rem",
-                  "marginLeft": "0rem",
-                  "marginRight": "1rem",
-                  "marginTop": "0rem",
-                  "width": "0.4rem",
-                }
-              }
+              style={Object {}}
             />
             <div
               className="c10"
@@ -534,16 +460,22 @@ exports[`Card css 1`] = `
           </div>
           <div
             className="c11"
-            style={Object {}}
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+              }
+            }
           />
         </div>
         <div
           className="c4"
           style={
             Object {
-              "paddingBottom": "0rem",
+              "paddingBottom": "1rem",
               "paddingLeft": "1.6rem",
-              "paddingRight": "1rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "1.4rem",
             }
           }
@@ -576,29 +508,15 @@ exports[`Card css 1`] = `
       onMouseLeave={[Function]}
       style={
         Object {
-          "backgroundColor": "#ffffff",
-          "borderBottomColor": "#cccccc",
-          "borderBottomLeftRadius": "0.5rem",
-          "borderBottomRightRadius": "0.5rem",
-          "borderBottomStyle": "solid",
-          "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
-          "borderLeftStyle": "solid",
-          "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
-          "borderRightStyle": "solid",
-          "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
-          "borderTopLeftRadius": "0.5rem",
-          "borderTopRightRadius": "0.5rem",
-          "borderTopStyle": "solid",
-          "borderTopWidth": "0.1rem",
-          "boxShadow": "0px 0px 6px 0px rgba(0, 0, 50, 0.1)",
-          "height": "22rem",
-          "width": "16rem",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "height": "19rem",
+          "width": "15rem",
         }
       }
-      type="avatar"
     >
       <div
         className="c13"
@@ -609,12 +527,10 @@ exports[`Card css 1`] = `
           style={
             Object {
               "backgroundColor": "transparent",
-              "height": "8rem",
-              "marginBottom": "0rem",
-              "marginLeft": "0rem",
-              "marginRight": "0rem",
-              "marginTop": "2rem",
-              "width": "8rem",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
             }
           }
         >
@@ -653,9 +569,9 @@ exports[`Card css 1`] = `
           style={
             Object {
               "paddingBottom": "0rem",
-              "paddingLeft": "0rem",
-              "paddingRight": "1rem",
-              "paddingTop": "1.3rem",
+              "paddingLeft": "1.2rem",
+              "paddingRight": "1.2rem",
+              "paddingTop": "1.4rem",
             }
           }
         >
@@ -674,9 +590,9 @@ exports[`Card css 1`] = `
           className="c4"
           style={
             Object {
-              "paddingBottom": "0rem",
-              "paddingLeft": "0rem",
-              "paddingRight": "1rem",
+              "paddingBottom": "1rem",
+              "paddingLeft": "1.2rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "1.4rem",
             }
           }
@@ -704,29 +620,15 @@ exports[`Card css 1`] = `
       onMouseLeave={[Function]}
       style={
         Object {
-          "backgroundColor": "#ffffff",
-          "borderBottomColor": "#cccccc",
-          "borderBottomLeftRadius": "0.5rem",
-          "borderBottomRightRadius": "0.5rem",
-          "borderBottomStyle": "solid",
-          "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
-          "borderLeftStyle": "solid",
-          "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
-          "borderRightStyle": "solid",
-          "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
-          "borderTopLeftRadius": "0.5rem",
-          "borderTopRightRadius": "0.5rem",
-          "borderTopStyle": "solid",
-          "borderTopWidth": "0.1rem",
-          "boxShadow": "0px 0px 6px 0px rgba(0, 0, 50, 0.1)",
-          "height": "14rem",
-          "width": "26rem",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "height": "11.6rem",
+          "width": "24rem",
         }
       }
-      type="avatar"
     >
       <div
         className="c17"
@@ -737,12 +639,10 @@ exports[`Card css 1`] = `
           style={
             Object {
               "backgroundColor": "transparent",
-              "height": "8rem",
-              "marginBottom": "0rem",
-              "marginLeft": "1rem",
-              "marginRight": "0rem",
-              "marginTop": "1rem",
-              "width": "8rem",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
             }
           }
         >
@@ -781,9 +681,9 @@ exports[`Card css 1`] = `
           style={
             Object {
               "paddingBottom": "0rem",
-              "paddingLeft": "1rem",
-              "paddingRight": "1rem",
-              "paddingTop": "1.3rem",
+              "paddingLeft": "1.2rem",
+              "paddingRight": "1.2rem",
+              "paddingTop": "3rem",
             }
           }
         >
@@ -802,9 +702,9 @@ exports[`Card css 1`] = `
           className="c4"
           style={
             Object {
-              "paddingBottom": "0rem",
-              "paddingLeft": "1rem",
-              "paddingRight": "1rem",
+              "paddingBottom": "1rem",
+              "paddingLeft": "1.2rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "1.4rem",
             }
           }
@@ -836,39 +736,19 @@ exports[`Card css 1`] = `
       onMouseLeave={[Function]}
       style={
         Object {
-          "backgroundColor": "#ffffff",
-          "borderBottomColor": "#cccccc",
-          "borderBottomLeftRadius": "0.5rem",
-          "borderBottomRightRadius": "0.5rem",
-          "borderBottomStyle": "solid",
-          "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
-          "borderLeftStyle": "solid",
-          "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
-          "borderRightStyle": "solid",
-          "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
-          "borderTopLeftRadius": "0.5rem",
-          "borderTopRightRadius": "0.5rem",
-          "borderTopStyle": "solid",
-          "borderTopWidth": "0.1rem",
-          "boxShadow": "0px 0px 6px 0px rgba(0, 0, 50, 0.1)",
-          "height": "30rem",
-          "opacity": 0.8,
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "height": "23rem",
           "width": "20rem",
         }
       }
-      type="image"
     >
       <div
         className="c19"
-        style={
-          Object {
-            "height": "16rem",
-            "width": "20rem",
-          }
-        }
+        style={Object {}}
       >
         <img
           className="c20"
@@ -885,11 +765,10 @@ exports[`Card css 1`] = `
           className="c4"
           style={
             Object {
-              "height": "2rem",
               "paddingBottom": "0rem",
-              "paddingLeft": "1rem",
-              "paddingRight": "1rem",
-              "paddingTop": "1.3rem",
+              "paddingLeft": "1.2rem",
+              "paddingRight": "1.2rem",
+              "paddingTop": "1.4rem",
             }
           }
         >
@@ -897,7 +776,6 @@ exports[`Card css 1`] = `
             className="c5"
             style={
               Object {
-                "color": "pink",
                 "fontWeight": 500,
               }
             }
@@ -909,20 +787,16 @@ exports[`Card css 1`] = `
           className="c4"
           style={
             Object {
-              "paddingBottom": "0rem",
-              "paddingLeft": "1rem",
-              "paddingRight": "1rem",
+              "paddingBottom": "1rem",
+              "paddingLeft": "1.2rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "1.4rem",
             }
           }
         >
           <div
             className="c6"
-            style={
-              Object {
-                "color": "blue",
-              }
-            }
+            style={Object {}}
           >
             this is description
              
@@ -943,40 +817,22 @@ exports[`Card css 1`] = `
       onMouseLeave={[Function]}
       style={
         Object {
-          "backgroundColor": "#ffffff",
-          "borderBottomColor": "#cccccc",
-          "borderBottomLeftRadius": "0.5rem",
-          "borderBottomRightRadius": "0.5rem",
-          "borderBottomStyle": "solid",
-          "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
-          "borderLeftStyle": "solid",
-          "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
-          "borderRightStyle": "solid",
-          "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
-          "borderTopLeftRadius": "0.5rem",
-          "borderTopRightRadius": "0.5rem",
-          "borderTopStyle": "solid",
-          "borderTopWidth": "0.1rem",
-          "boxShadow": "0px 0px 6px 0px rgba(0, 0, 50, 0.1)",
-          "height": "15rem",
-          "width": "36rem",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "height": "11.2rem",
+          "width": "32rem",
         }
       }
-      type="image"
     >
       <div
         className="c21"
-        style={
-          Object {
-            "width": "20rem",
-          }
-        }
+        style={Object {}}
       >
         <img
-          className="c22"
+          className="c20"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
           style={Object {}}
         />
@@ -991,9 +847,9 @@ exports[`Card css 1`] = `
           style={
             Object {
               "paddingBottom": "0rem",
-              "paddingLeft": "1rem",
-              "paddingRight": "1rem",
-              "paddingTop": "1.3rem",
+              "paddingLeft": "1.2rem",
+              "paddingRight": "1.2rem",
+              "paddingTop": "1.4rem",
             }
           }
         >
@@ -1012,9 +868,9 @@ exports[`Card css 1`] = `
           className="c4"
           style={
             Object {
-              "paddingBottom": "0rem",
-              "paddingLeft": "1rem",
-              "paddingRight": "1rem",
+              "paddingBottom": "1rem",
+              "paddingLeft": "1.2rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "1.4rem",
             }
           }

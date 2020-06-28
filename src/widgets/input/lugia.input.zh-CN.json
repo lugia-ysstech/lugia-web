@@ -3,6 +3,11 @@
   "title": "文本输入框",
   "desc": "常用于昵称,名称,表格内容等填写.",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
@@ -19,13 +24,12 @@
     },
     "validateStatus": {
       "type": "ValidateStatus",
-      "desc": "校验状态",
-      "propsDefaultValue": "default"
+      "desc": "校验状态"
     },
     "validateType": {
       "type": "ValidateType",
       "desc": "校验信息显示类型",
-      "propsDefaultValue": "default"
+      "propsDefaultValue": "top"
     },
     "help": {
       "type": "string",
@@ -179,6 +183,26 @@
           "type": "KeyboardEvent"
         }
       ]
+    },
+    "onMouseEnter": {
+      "desc": "当鼠标移入输入框内触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "当鼠标移入输入框内触发的事件",
+          "type": "MouseEvent"
+        }
+      ]
+    },
+    "onMouseLeave": {
+      "desc": "当鼠标移出输入框内触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "当鼠标移出输入框外触发的事件",
+          "type": "MouseEvent"
+        }
+      ]
     }
   },
   "type": {
@@ -196,42 +220,65 @@
   "childrenWidget": ["textarea"],
   "theme": {
     "Container": {
-      "name": "输入框外部容器",
-      "desc": "输入框外部容器",
-      "normal": [["width"], ["height"], ["margin"]]
-    },
-    "Input": {
       "name": "输入框主体",
       "desc": "输入框主体结构",
       "normal": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["padding"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["background"],
+        ["opacity"],
         ["fontSize"],
         ["font"],
         ["color"],
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["cursor"],
-        ["opacity"]
+        ["cursor"]
       ],
       "hover": [
         ["border"],
         ["borderRadius"],
-        ["cursor"],
         ["background"],
         ["opacity"],
-        ["boxShadow"]
-      ],
-      "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
-      "disabled": [
+        ["boxShadow"],
+        ["cursor"],
         ["fontSize"],
         ["font"],
-        ["color"],
+        ["color"]
+      ],
+      "focus": [
+        ["border"],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "active": [
+        ["boxShadow"],
+        ["border"],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "disabled": [
         ["background"],
         ["border"],
         ["borderRadius"],
+        ["opacity"],
         ["cursor"],
-        ["padding"],
-        ["opacity"]
+        ["fontSize"],
+        ["font"],
+        ["color"]
       ]
     },
     "Placeholder": {
@@ -242,26 +289,26 @@
     "InputSuffix": {
       "name": "后缀图标",
       "desc": "输入框后缀自定义图标",
-      "normal": [["color"], ["fontSize"], ["font"]],
+      "normal": [["color"], ["fontSize"], ["font"], ["padding"], ["margin"]],
       "hover": [],
       "clicked": [],
-      "disabled": []
+      "disabled": [["color"], ["fontSize"], ["font"]]
     },
     "InputPrefix": {
       "name": "前缀图标",
       "desc": "输入框前缀自定义图标",
-      "normal": [["color"], ["fontSize"], ["font"]],
+      "normal": [["color"], ["fontSize"], ["font"], ["padding"], ["margin"]],
       "hover": [],
       "clicked": [],
-      "disabled": []
+      "disabled": [["color"], ["fontSize"], ["font"]]
     },
     "ClearButton": {
       "name": "输入框清除图标",
       "desc": "输入框后缀清除图标",
-      "normal": [["color"], ["fontSize"]],
-      "hover": [],
+      "normal": [["color"], ["fontSize"], ["font"]],
+      "hover": [["color"], ["fontSize"], ["font"]],
       "clicked": [],
-      "disabled": []
+      "disabled": [["color"], ["fontSize"], ["font"]]
     },
     "ValidateErrorInput": {
       "name": "校验失败的输入框",
@@ -276,7 +323,9 @@
         ["opacity"]
       ],
       "hover": [["background"], ["border"], ["boxShadow"]],
-      "active": [["background"], ["border"], ["boxShadow"]]
+      "active": [["background"], ["border"], ["boxShadow"]],
+      "focus": [["background"], ["border"], ["boxShadow"]],
+      "disabled": [["background"], ["border"], ["boxShadow"]]
     },
     "ValidateErrorText": {
       "name": "校验失败提示信息",

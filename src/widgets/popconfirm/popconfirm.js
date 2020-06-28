@@ -6,7 +6,7 @@
  */
 import * as React from 'react';
 import Button from '../button/index';
-import Popover from '../popover/index';
+import Tooltip from '../tooltip/index';
 import Icon from '../icon/index';
 import Widget from '../consts/index';
 import type { DirectionType } from '../css/tooltip';
@@ -16,10 +16,12 @@ import { getStateFromProps, processOnVisibleChange } from '../tooltip';
 import ThemeHoc from '@lugia/theme-hoc';
 import CSSComponent, { css, StaticComponent } from '../theme/CSSProvider';
 import { units } from '@lugia/css';
-import colorsFunc from '../css/stateColor';
 import { deepMerge } from '@lugia/object-utils';
-const { blackColor } = colorsFunc();
+import get from '../css/theme-common-dict';
 const { px2remcss } = units;
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const padding = '$lugia-dict.@lugia/lugia-web.padding';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 
 type PopconfirmProps = {
   description: React.Node,
@@ -54,8 +56,8 @@ const IconContainer: Object = StaticComponent({
   },
   css: css`
     position: relative;
-    display: inline-block;
-    margin-right: ${px2remcss(6)};
+    display: flex;
+    margin-right: ${get('paddingToText')}px;
     text-align: center;
   `,
 });
@@ -63,12 +65,23 @@ const Title = CSSComponent({
   tag: 'span',
   className: 'PopconfirmTitle',
   normal: {
-    selectNames: [['font'], ['fontSize'], ['color'], ['background']],
+    selectNames: [['font'], ['fontSize'], ['color'], ['background'], ['padding']],
     defaultTheme: {
-      font: {
-        size: 14,
-        color: blackColor,
+      fontSize: 14,
+      padding: {
+        left: padding,
       },
+      color: blackColor,
+    },
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig: { icon } = {} } = themeProps;
+      const { padding } = themeMeta;
+      const thePadding = icon ? 0 : padding;
+      return {
+        padding: {
+          left: thePadding,
+        },
+      };
     },
   },
   css: css`
@@ -120,10 +133,16 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
   }
 
   getTitle(): React.Node | null {
-    const { title } = this.props;
-    return title ? (
-      <Title themeProps={this.props.getPartOfThemeProps('PopconfirmTitle')}>{title}</Title>
-    ) : null;
+    const { title, getPartOfThemeProps, icon } = this.props;
+
+    return title
+      ? [
+          this.getIcon(),
+          <Title themeProps={getPartOfThemeProps('PopconfirmTitle', { props: { icon } })}>
+            {title}
+          </Title>,
+        ]
+      : null;
   }
 
   getOperation(): React.Node | null {
@@ -171,13 +190,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
 
   getContent() {
     const contentThemeProps = this.props.getPartOfThemeProps('Container');
-    return (
-      <Content themeProps={contentThemeProps}>
-        {this.getIconContainer()}
-        {this.getTitle()}
-        {this.getOperation()}
-      </Content>
-    );
+    return <Content themeProps={contentThemeProps}>{this.getOperation()}</Content>;
   }
 
   onCancel = e => {
@@ -191,21 +204,46 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
     return onConfirm && onConfirm(e);
   };
 
-  getIconContainer(): React.Node | null {
+  getIcon(): React.Node {
     const { icon } = this.props;
-    return icon ? <IconContainer>{this.getIcon(icon)}</IconContainer> : null;
-  }
+    if (!icon) return null;
+    const { theme: popconfirmIconThemeProps, viewClass } = this.props.getPartOfThemeHocProps(
+      'PopconfirmIcon'
+    );
 
-  getIcon(icon: React.Node): React.Node {
-    return ObjectUtils.isString(icon) ? (
-      <Icon {...this.props.getPartOfThemeHocProps('PopconfirmIcon')} iconClass={icon} singleTheme />
-    ) : (
-      icon
+    const theIconTheme = deepMerge(
+      {
+        [viewClass]: {
+          normal: {
+            fontSize: 14,
+            color: blackColor,
+          },
+        },
+      },
+      popconfirmIconThemeProps
+    );
+
+    return (
+      <IconContainer>
+        {ObjectUtils.isString(icon) ? (
+          <Icon theme={theIconTheme} viewClass={viewClass} iconClass={icon} singleTheme />
+        ) : (
+          icon
+        )}
+      </IconContainer>
     );
   }
 
   render() {
-    const { children, action, placement = 'topLeft', defaultChildren } = this.props;
+    const {
+      children,
+      action,
+      placement = 'topLeft',
+      defaultChildren,
+      description,
+      alwaysOpen,
+      liquidLayout,
+    } = this.props;
     const getTarget: Function = cmp => (this.target = cmp);
     const theChildren = children ? children : defaultChildren;
 
@@ -214,10 +252,25 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
     const popoverTheme = deepMerge(
       {
         [viewClass]: {
-          PopoverContent: {
-            Container: {
-              normal: {
-                fontSize: 12,
+          Container: {
+            normal: {
+              background: {
+                color: 'white',
+              },
+              padding: 12,
+              fontSize: 12,
+            },
+            hover: {
+              background: {
+                color: 'white',
+              },
+            },
+          },
+          TooltipDescription: {
+            normal: {
+              color: darkGreyColor,
+              font: {
+                size: 12,
               },
             },
           },
@@ -225,20 +278,25 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
       },
       theTheme
     );
+
     return (
-      <Popover
+      <Tooltip
+        alwaysOpen={alwaysOpen}
+        liquidLayout={liquidLayout}
         theme={popoverTheme}
         viewClass={viewClass}
         showClearButton={false}
         visible={this.state.visible}
         action={action}
         onVisibleChange={this.onVisibleChange}
+        title={this.getTitle()}
+        description={description}
         content={this.getContent()}
         ref={getTarget}
         placement={placement}
       >
         {theChildren}
-      </Popover>
+      </Tooltip>
     );
   }
 

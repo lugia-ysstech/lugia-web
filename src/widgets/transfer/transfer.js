@@ -6,7 +6,7 @@
  *
  */
 import * as React from 'react';
-import { getBorder, getBoxShadow } from '@lugia/theme-utils';
+import { getBoxShadow, getBorderRadius, getBorder } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
@@ -19,9 +19,13 @@ import SearchIcon from '../icon/SearchIcon';
 import type { TransferProps, TransferState } from '../css/transfer';
 import { CancelBox, CancelBoxItem, Check, CheckText, TransFer, TreeWrap } from '../css/transfer';
 import { filterEnableKeysFromSelectKeys } from './utils';
+import get from '../css/theme-common-dict';
 
 const { MenuItem } = Menu;
 const cancelBoxHeight = 70;
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
@@ -126,6 +130,7 @@ export default ThemeProvider(
         headerTextTheme,
         headerTheme,
         cancelBoxTheme,
+        size,
       } = this.props;
       const cancelBox =
         needCancelBox && cancelItem && cancelItem.length ? (
@@ -141,10 +146,36 @@ export default ThemeProvider(
           : type === 'panel'
           ? selectKeyLength >= this.getDataLength()
           : selectKeyLength >= treeDataLength;
+
+      const defaultTheme = {
+        themeConfig: {
+          normal: {
+            border: getBorder(get('normalBorder')),
+            borderRadius: getBorderRadius(get('borderRadiusValue')),
+          },
+        },
+      };
+      const defaultHeaderTheme = {
+        themeConfig: {
+          normal: {
+            border: {
+              bottom: {
+                style: 'solid',
+                width: 1,
+                color: get('superLightColor'),
+              },
+            },
+            borderRadius: getBorderRadius(get('borderRadiusValue'), ['lt', 'rt']),
+          },
+        },
+      };
+      const theTheme = deepMerge(defaultTheme, theme);
+      const theHeaderTheme = deepMerge(defaultHeaderTheme, headerTheme);
       return (
-        <TransFer themeProps={theme}>
-          <Check themeProps={headerTheme}>
+        <TransFer themeProps={theTheme}>
+          <Check themeProps={theHeaderTheme}>
             <CheckBox
+              size={size}
               onChange={() => this.props.onCheckAll(!checked)}
               checked={checked}
               indeterminate={selectedKeys.length > 0}
@@ -172,12 +203,15 @@ export default ThemeProvider(
       }
 
       return showSearch ? (
-        <Input
-          onChange={this.handleInputChange}
-          placeholder={'搜索你想知道的内容'}
-          {...inputConfig}
-          {...this.getInputThemeConfig()}
-        />
+        <div style={{ display: 'flex' }}>
+          <Input
+            size={'small'}
+            onChange={this.handleInputChange}
+            placeholder={'搜索你想知道的内容'}
+            {...inputConfig}
+            {...this.getInputThemeConfig()}
+          />
+        </div>
       ) : null;
     }
 
@@ -220,29 +254,32 @@ export default ThemeProvider(
     getInputThemeConfig() {
       const { inputTheme = {} } = this.props;
       const { viewClass, theme } = inputTheme;
-      const width = 200;
       const inputView = {
         [viewClass]: {
           Container: {
             normal: {
-              width: width - 16,
               margin: {
                 top: 8,
-                right: 8,
-                bottom: 16,
-                left: 8,
+                bottom: 8,
+                left: 4,
+                right: 4,
               },
-            },
-          },
-          Input: {
-            normal: {
-              border: getBorder({ width: 1, style: 'solid', color: '#e8e8e8' }),
+              getThemeMeta(themeMeta: Object, themeProps: Object) {
+                const { height } = themeMeta;
+                const theBorderRadius = height / 2 || 12;
+                return {
+                  borderRadius: getBorderRadius(theBorderRadius),
+                };
+              },
             },
           },
           InputSuffix: {
             normal: {
-              color: '#999999',
-              fontSize: 12,
+              color: blackColor,
+              fontSize: xsFontSize,
+            },
+            hover: {
+              color: themeColor,
             },
           },
         },
@@ -263,7 +300,7 @@ export default ThemeProvider(
 
     getPanelThemeConfig = direction => {
       const { cancelItem } = this.state;
-      const { menuTheme, treeTheme } = this.props;
+      const { menuTheme = {}, treeTheme = {} } = this.props;
       const { viewClass: menuViewClass, theme: menuThemes } = menuTheme;
       const { viewClass: treeViewClass, theme: treeThemes } = treeTheme;
       const height = 206;
@@ -279,14 +316,17 @@ export default ThemeProvider(
       const menuDefaultView = {
         [menuViewClass]: {
           Container: {
-            normal: { ...defaultTheme, boxShadow: getBoxShadow('0 0') },
+            normal: { ...defaultTheme, boxShadow: 'none' },
           },
         },
       };
       const treeDefaultView = {
         [treeViewClass]: {
           Container: {
-            normal: defaultTheme,
+            normal: {
+              ...defaultTheme,
+              boxShadow: 'none',
+            },
           },
         },
       };

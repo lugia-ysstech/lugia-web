@@ -3,6 +3,11 @@
   "title": "评分",
   "desc": "评分组件",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "count": {
       "type": "number",
       "desc": "展示的 star 总数",
@@ -31,12 +36,12 @@
     "iconClass": {
       "type": "object[]",
       "desc": "自定义图标对象",
-      "meta":[
-        {"key":"default","title":"默认图标名称","type":"string"},
-        {"key":"primary","title":"选中状态图标名称","type":"string"},
-        {"key":"danger","title":"低分值图标名称","type":"string"},
-        {"key":"amazed","title":"高分值图标名称","type":"string"},
-        {"key":"half","title":"半星图标名称","type":"string"}
+      "meta": [
+        { "key": "default", "title": "默认图标名称", "type": "string" },
+        { "key": "primary", "title": "选中状态图标名称", "type": "string" },
+        { "key": "danger", "title": "低分值图标名称", "type": "string" },
+        { "key": "amazed", "title": "高分值图标名称", "type": "string" },
+        { "key": "half", "title": "半星图标名称", "type": "string" }
       ],
       "defaultValue": {
         "default": "lugia-icon-financial_star",
@@ -104,7 +109,7 @@
         "DefaultRateIcon": {
           "name": "默认状态的图标",
           "desc": "默认的星星的样式",
-          "normal": [["color"],["margin"], ["fontSize"]],
+          "normal": [["color"], ["margin"], ["fontSize"]],
           "hover": [],
           "clicked": [],
           "disabled": []
@@ -124,6 +129,22 @@
           "hover": [],
           "clicked": [],
           "disabled": []
+        }
+      },
+      "defaultTheme": {
+        "DefaultRateIcon": {
+          "normal": {
+            "fontSize": 14,
+            "color": "#e8e8e8",
+            "margin": {
+              "right": 6
+            }
+          }
+        },
+        "ActiveIcon": {
+          "normal": {
+            "color": "#f8ac30"
+          }
         }
       }
     },
@@ -151,6 +172,19 @@
           "clicked": [],
           "disabled": []
         }
+      },
+      "defaultTheme": {
+        "DefaultTextIcon": {
+          "normal": {
+            "fontSize": 16,
+            "color": "#e8e8e8"
+          }
+        },
+        "ActiveTextIcon": {
+          "normal": {
+            "color": "#f8ac30"
+          }
+        }
       }
     }
   },
@@ -166,7 +200,7 @@
     "DefaultRateIcon": {
       "name": "默认状态的图标",
       "desc": "默认的星星的样式",
-      "normal": [["color"], ["margin"], ["fontSize"]],
+      "normal": [["color"], ["margin"], ["fontSize"], ["font"]],
       "hover": [],
       "clicked": [],
       "disabled": []

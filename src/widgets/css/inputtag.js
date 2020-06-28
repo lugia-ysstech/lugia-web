@@ -7,30 +7,24 @@
 
 import { px2remcss } from '../css/units';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
-import colorsFunc from './stateColor';
 import Widget from '../consts/index';
 import Icon from '../icon';
+import get from './theme-common-dict';
 
-export const {
-  themeColor,
-  darkGreyColor,
-  blackColor,
-  mediumGreyColor,
-  lightGreyColor,
-  dangerColor,
-  defaultColor,
-  disableColor,
-} = colorsFunc();
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+export const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+export const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 
-export const FontSize = 12;
-export const MarginTop = 4;
-export const MarginRight = 4;
-export const PaddingLeft = 10;
-export const PadingRight = 20;
-export const Height = 32;
-export const SingleLineHeight = 30;
-export const ItemBackgroundColor = '#edf0fe';
-export const ItemContainerBackgroundColor = '#f6f5ff';
+export const fontSize = 12;
+export const marginTop = 4;
+export const marginRight = 4;
+export const paddingLeft = 10;
+export const paddingRight = 20;
+export const height = 32;
+export const singleLineHeight = 30;
+export const itemBackgroundColor = '#edf0fe';
+export const itemContainerBackgroundColor = '#f6f5ff';
 
 export const OutContainer = CSSComponent({
   tag: 'div',
@@ -51,28 +45,6 @@ export const OutContainer = CSSComponent({
     ],
     defaultTheme: {
       cursor: 'pointer',
-      border: {
-        top: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        left: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        bottom: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        right: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-      },
     },
   },
   hover: {
@@ -85,34 +57,12 @@ export const OutContainer = CSSComponent({
       ['opacity'],
       ['cursor'],
     ],
-    getStyle: (themeMeta, themeProps) => {},
-    defaultTheme: {
-      border: {
-        top: {
-          color: themeColor,
-          style: 'solid',
-          width: 1,
-        },
-        left: {
-          color: themeColor,
-          style: 'solid',
-          width: 1,
-        },
-        bottom: {
-          color: themeColor,
-          style: 'solid',
-          width: 1,
-        },
-        right: {
-          color: themeColor,
-          style: 'solid',
-          width: 1,
-        },
-      },
-    },
   },
   active: {
-    selectNames: [],
+    selectNames: [['border']],
+  },
+  focus: {
+    selectNames: [['border']],
   },
   disabled: {
     selectNames: [
@@ -137,20 +87,21 @@ export const OutContainer = CSSComponent({
   },
 
   css: css`
-    height: ${px2remcss(Height)};
+    height: ${px2remcss(height)};
     width: 100%;
     overflow: hidden;
-    border-radius: ${px2remcss(4)};
-    background: ${defaultColor};
-    color: ${blackColor};
-    font-size: ${px2remcss(FontSize)};
+    position: relative;
+    border-radius: ${() => px2remcss(get('borderRadiusValue'))};
+    color: ${() => get('blackColor')};
+    font-size: ${px2remcss(fontSize)};
     transition: all 0.3s;
+    outline: none;
     & > div {
       height: 100%;
       width: 100%;
     }
   `,
-  option: { hover: true, disabled: true },
+  option: { hover: true, disabled: true, active: true, focus: true },
 });
 
 export const InnerContainer = CSSComponent({
@@ -159,8 +110,10 @@ export const InnerContainer = CSSComponent({
   normal: {
     selectNames: [['padding']],
   },
-
   hover: {
+    selectNames: [],
+  },
+  focus: {
     selectNames: [],
   },
   disabled: {
@@ -171,23 +124,36 @@ export const InnerContainer = CSSComponent({
     height: 100%;
     position: relative;
     user-select: none;
-    padding-left: ${px2remcss(10)};
-    padding-right: ${px2remcss(10)};
+    padding-left: ${() => px2remcss(get('padding'))};
+    padding-right: ${() => px2remcss(get('padding'))};
     display: flex;
     align-items: center;
   `,
   option: { hover: false, active: false, disabled: true },
 });
 
-export const SingleInnerContainer = StaticComponent({
+export const SingleInnerContainer = CSSComponent({
   tag: 'div',
   className: 'SingleInnerContainer',
+  normal: {
+    selectNames: [['padding']],
+  },
+  hover: {
+    selectNames: [],
+  },
+  focus: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [['padding']],
+  },
   css: css`
+    width: 100%;
+    height: 100%;
     position: relative;
     user-select: none;
-    height: 100%;
-    padding-left: ${px2remcss(10)};
-    padding-right: ${px2remcss(10)};
+    padding-left: ${() => px2remcss(get('padding'))};
+    padding-right: ${() => px2remcss(get('padding'))};
     display: flex;
     align-items: center;
 
@@ -215,17 +181,47 @@ export const FlexResBox = StaticComponent({
   tag: 'div',
   className: 'FlexResBox',
   css: css`
+    display: flex;
     flex: 1;
     position: relative;
+    overflow: hidden;
   `,
+});
+
+export const TextContent = CSSComponent({
+  tag: 'span',
+  className: 'TextContent',
+  normal: {
+    selectNames: [['color'], ['fontSize'], ['font']],
+    defaultTheme: {
+      color: blackColor,
+    },
+  },
+  disabled: {
+    selectNames: [['color'], ['fontSize'], ['font']],
+    defaultTheme: {
+      color: disableTextColor,
+    },
+  },
+  css: css`
+    width: 100%;
+    flex: 1;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  `,
+  option: { disabled: true },
 });
 
 export const Prefix = StaticComponent({
   tag: 'span',
   className: 'Prefix',
   css: css`
+    padding-right: ${() => px2remcss(get('padding'))};
+    display: flex;
+    align-items: center;
     position: relative;
-    left: ${px2remcss(-5)};
   `,
 });
 
@@ -234,7 +230,6 @@ export const Suffix = StaticComponent({
   className: 'Suffix',
   css: css`
     position: relative;
-    right: ${px2remcss(5)};
     display: flex;
     align-items: center;
   `,
@@ -250,6 +245,7 @@ export const List = StaticComponent({
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex: 1;
   `,
 });
 
@@ -330,15 +326,19 @@ export const ItemContainer = CSSComponent({
       ['boxShadow'],
     ],
   },
+  disabled: {
+    selectNames: [['color'], ['background']],
+    defaultTheme: {
+      color: disableTextColor,
+    },
+  },
 
   css: css`
-    padding: 0 ${px2remcss(5)};
+    padding: 0 ${() => px2remcss(get('padding'))};
     height: ${px2remcss(20)};
-    font-size: ${px2remcss(FontSize)};
-    margin-right: ${px2remcss(5)};
+    font-size: ${() => px2remcss(get('xxsFontSize'))};
+    margin-right: ${px2remcss(4)};
     user-select: none;
-    background: ${ItemBackgroundColor};
-    color: ${darkGreyColor};
     cursor: default;
     display: flex;
     align-items: center;
@@ -346,13 +346,14 @@ export const ItemContainer = CSSComponent({
     transition: all 0.3s;
     box-sizing: border-box;
   `,
-  option: { hover: true },
+  option: { hover: true, disabled: true },
 });
 
 export const ItemText = StaticComponent({
   tag: 'span',
   className: 'ItemText',
   css: css`
+    font-size: ${() => px2remcss(get('descriptionFontSize'))};
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -360,6 +361,9 @@ export const ItemText = StaticComponent({
     margin: 0;
     padding: 0;
     flex: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
   `,
 });
 

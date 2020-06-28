@@ -5,7 +5,7 @@
  */
 import { css, keyframes } from 'styled-components';
 import CSSComponent from '@lugia/theme-css-hoc';
-import colorsFunc from '../css/stateColor';
+import get from '../css/theme-common-dict';
 import { px2remcss } from './units';
 
 type StatusType = 'success' | 'error' | 'default';
@@ -40,7 +40,6 @@ type CSSProps = {
   showType: 'default' | 'inside',
 };
 
-const { themeColor, successColor, dangerColor, mediumGreyColor } = colorsFunc();
 const FontSize = 1.4;
 const isSmall = size => size === 'small';
 export const getWrapFontSize = (props: Object) => {
@@ -50,6 +49,13 @@ export const getWrapFontSize = (props: Object) => {
   }
   return FontSize;
 };
+
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
 
 export const handlePercent = (per: number) => {
   per = per - 0;
@@ -88,7 +94,7 @@ const activeAnimate = keyframes`
 const getProgtrssWidth = (props: CSSProps) => {
   const { showInfo, showType } = props;
   if (showInfo && showType === 'default') {
-    return `width: calc(100% - ${px2remcss(30)});`;
+    return `width: calc(100% - ${px2remcss(get('marginToSameElement') + 20)});`;
   }
 
   return 'width: 100%;';
@@ -106,7 +112,7 @@ export const ProgressLine = CSSComponent({
   normal: {
     selectNames: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
     defaultTheme: {
-      background: { color: '#f5f5f5' },
+      background: { color: superLightColor },
     },
   },
 });
@@ -148,7 +154,14 @@ export const ProgressBackground = CSSComponent({
     box-sizing: border-box;
   `,
   normal: {
-    selectNames: [['height'], ['background'], ['border'], ['borderRadius'], ['boxShadow']],
+    selectNames: [
+      ['height'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['padding', 'right'],
+    ],
     defaultTheme: {
       background: {
         color: themeColor,
@@ -161,7 +174,9 @@ export const ProgressBackground = CSSComponent({
       const backgroundCSS = BackgroundCSS[status];
 
       return {
-        background: { color: backgroundCSS ? backgroundCSS.background : themeColor },
+        background: {
+          color: backgroundCSS ? backgroundCSS.background : themeColor,
+        },
         height,
       };
     },
@@ -169,7 +184,8 @@ export const ProgressBackground = CSSComponent({
       const { propsConfig = {} } = themeProps;
       const { height } = themeMeta;
       const lineHeight = height ? getLineHeight(height) : px2remcss(getHeight(propsConfig));
-      const { active } = propsConfig;
+      const { active, activeLineTheme } = propsConfig;
+      const { themeConfig: { normal: { color = '#fff' } = {} } = {} } = activeLineTheme;
       if (active) {
         return css`
           line-height: ${lineHeight};
@@ -181,7 +197,7 @@ export const ProgressBackground = CSSComponent({
             left: 0;
             right: 0;
             bottom: 0;
-            background: #fff;
+            background: ${color};
             border-radius: 50%;
             animation: ${activeAnimate} 2.4s ease infinite;
           }
@@ -200,7 +216,7 @@ export const getTextColor = (status: 'error' | 'success' | 'default') => {
     return successColor;
   }
 
-  return mediumGreyColor;
+  return blackColor;
 };
 
 export const getTextFont = (propsConfig: Object) => {
@@ -212,9 +228,10 @@ export const getTextFont = (propsConfig: Object) => {
     return 40;
   }
 
-  return isSmall(size) ? 12 : 14;
+  return isSmall(size) ? 12 : get('sectionFontSize');
 };
 
+const getMarginLeft = () => `margin-left: ${px2remcss(get('marginToSameElement'))};`;
 export const ProgressText = CSSComponent({
   tag: 'span',
   className: 'ProgressText',
@@ -222,10 +239,10 @@ export const ProgressText = CSSComponent({
     display: inline-block;
     width: ${px2remcss(20)};
     text-align: left;
-    margin-left: ${px2remcss(10)};
     white-space: nowrap;
     word-break: normal;
     vertical-align: middle;
+    ${getMarginLeft}
   `,
   normal: {
     selectNames: [['font'], ['color']],

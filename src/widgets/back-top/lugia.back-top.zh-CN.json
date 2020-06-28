@@ -3,6 +3,11 @@
   "title": "回到顶部",
   "desc": "返回页面顶部。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "visibilityHeight": {
       "type": "number",
       "desc": "页面滚动高度达到指定值后出现BackTop",
@@ -12,6 +17,18 @@
       "type": "Function",
       "desc": "设置监听滚动事件的元素，返回值为DOM元素的函数",
       "defaultValue": "() => window"
+    },
+    "showType": {
+      "type": "showType",
+      "desc": "选择backTop是图标类型，还是文字类型"
+    },
+    "text": {
+      "type": "string",
+      "desc": "showType为文字类型时，配置的文字信息"
+    },
+    "icon": {
+      "type": "string",
+      "desc": "showType为图标类型时，配置的图标信息"
     }
   },
   "type": {
@@ -24,7 +41,8 @@
         "type": "string",
         "desc": "组件背景颜色"
       }
-    }
+    },
+    "showType": ["textType" ,"iconType"]
   },
   "category": ["其他"],
   "theme": {

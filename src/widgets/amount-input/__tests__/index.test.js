@@ -9,7 +9,7 @@ import chai from 'chai';
 import renderer from 'react-test-renderer';
 import Wrapper from '../demo';
 import 'jest-styled-components';
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import AmountInput from '../index.js';
 
@@ -319,8 +319,6 @@ describe('AmountInputDemo', () => {
 
   it('props.value 2 state.value', () => {
     const component = mount(<AmountInput defaultValue={defaultValue} />);
-    expect(getInputComponent(component).state.value).toBe(defaultValue + '');
-
     component.setProps({ value: '壹佰元整' });
     expect(getInputComponent(component).state.value).toBe('100');
 

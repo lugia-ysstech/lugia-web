@@ -37,6 +37,9 @@ class ScrollerTree extends React.Component<any, any> {
       this.onCanSeeCountChange(nexProps.canSeeCount);
     }
     return (
+      JSON.stringify(nexProps.selectedKeys) !== JSON.stringify(this.props.selectedKeys) ||
+      JSON.stringify(nexProps.checkedKeys) !== JSON.stringify(this.props.checkedKeys) ||
+      nexProps.value !== this.props.value ||
       nexProps.mutliple !== this.props.mutliple ||
       nexProps.utils != this.props.utils ||
       nexProps.onSelect != this.props.onSelect ||
@@ -101,7 +104,7 @@ class ScrollerTree extends React.Component<any, any> {
     return theme;
   }
 
-  loopNode = (data: Array<RowData>) => {
+  loopNode = (data: Array<RowData>, subTreeLevel: number = 0) => {
     const { inlineType, shape, id2ExtendInfo, translateTreeData, draggable } = this.props;
     return data.map(item => {
       const {
@@ -121,6 +124,10 @@ class ScrollerTree extends React.Component<any, any> {
         switchAtEnd,
         checkedCSS,
         marginBottom,
+        pidField,
+        size,
+        selectLinePosition,
+        indentDistance,
       } = this.props;
 
       const {
@@ -133,7 +140,7 @@ class ScrollerTree extends React.Component<any, any> {
         icons,
         suffix,
         value,
-        pid,
+        [pidField]: pid,
       } = item;
       if (draggable) {
         const currentNodeIndex = id2ExtendInfo[value].index;
@@ -155,6 +162,7 @@ class ScrollerTree extends React.Component<any, any> {
             {...getPartOfThemeHocProps('TreeItem')}
             showSwitch={showSwitch}
             suffix={suffix}
+            selectLinePosition={selectLinePosition}
             __navmenu={__navmenu}
             switchAtEnd={switchAtEnd}
             renderSuffixItems={renderSuffixItems}
@@ -177,8 +185,11 @@ class ScrollerTree extends React.Component<any, any> {
             icons={icons}
             checkedCSS={checkedCSS}
             marginBottom={marginBottom}
+            size={size}
+            subTreeLevel={subTreeLevel}
+            indentDistance={indentDistance}
           >
-            {this.loopNode(children)}
+            {this.loopNode(children, subTreeLevel + 1)}
           </TreeNode>
         );
       }
@@ -188,10 +199,12 @@ class ScrollerTree extends React.Component<any, any> {
           showSwitch={showSwitch}
           suffix={suffix}
           __navmenu={__navmenu}
+          selectLinePosition={selectLinePosition}
           switchAtEnd={switchAtEnd}
           renderSuffixItems={renderSuffixItems}
           onRightClick={onRightClick}
           switchIconNames={switchIconNames}
+          subTreeLevel={subTreeLevel}
           key={key}
           title={title}
           item={item}
@@ -205,8 +218,11 @@ class ScrollerTree extends React.Component<any, any> {
           onlySelectLeaf={onlySelectLeaf}
           translateTreeData={translateTreeData}
           icon={icon}
+          icons={icons}
           checkedCSS={checkedCSS}
           marginBottom={marginBottom}
+          size={size}
+          indentDistance={indentDistance}
         />
       );
     });

@@ -3,6 +3,16 @@
   "title": "自动完成",
   "desc": "需要自动完成数据时使用",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
+    "size": {
+      "type": "sizeType",
+      "desc": "可配置三种尺寸大小的autoComplete",
+      "propsDefaultValue": "default"
+    },
     "data": {
       "type": "string[]",
       "desc": "生成选择项的数据",
@@ -27,13 +37,13 @@
     "disabled": {
       "type": "boolean",
       "desc": "是否禁用输入框",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
 
     "showOldValue": {
       "type": "boolean",
       "desc": "是否显示上一次选中的值",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
 
     "placeholder": {
@@ -41,13 +51,23 @@
       "desc": "input输入提示信息"
     },
 
+    "validateStatus": {
+      "type": "ValidateStatus",
+      "desc": "校验状态"
+    },
+    "validateType": {
+      "type": "ValidateType",
+      "desc": "校验信息显示类型",
+      "propsDefaultValue": "top"
+    },
+
     "prefix": {
-      "type": "ReactNode",
+      "type": "icon",
       "desc": "输入框前缀",
       "isHidden": true
     },
     "suffix": {
-      "type": "ReactNode",
+      "type": "icon",
       "desc": "输入框后缀",
       "isHidden": true
     }
@@ -94,85 +114,138 @@
       ]
     }
   },
-  "type": {},
+
+  "type": {
+    "sizeType": ["small", "default", "large"],
+    "ValidateStatus": ["default", "error"],
+    "ValidateType": ["top", "bottom", "inner"]
+  },
   "category": ["数据录入"],
 
   "theme": {
-    "AutoInput": {
-      "name": "自动完成输入框",
-      "theme": {
-        "Container": {
-          "name": "输入框外部容器",
-          "desc": "输入框外部容器",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"],
-            ["margin"],
-            ["padding"]
-          ],
-          "hover": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"],
-            ["margin"],
-            ["padding"]
-          ],
-          "clicked": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"],
-            ["margin"],
-            ["padding"]
-          ],
-          "disabled": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"],
-            ["margin"],
-            ["padding"]
-          ]
-        },
-
-        "InputSuffix": {
-          "name": "后缀图标",
-          "desc": "输入框后缀自定义图标",
-          "normal": [["color"], ["fontSize"]],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
-        },
-        "InputPrefix": {
-          "name": "前缀图标",
-          "desc": "输入框前缀自定义图标",
-          "normal": [["color"], ["fontSize"]],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
-        },
-        "InputClearButton": {
-          "name": "输入框清除图标",
-          "desc": "输入框后缀清除图标",
-          "normal": [["color"], ["fontSize"]],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
-        }
-      }
+    "Container": {
+      "name": "输入框主体",
+      "desc": "输入框主体结构",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["padding"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["background"],
+        ["opacity"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["cursor"]
+      ],
+      "hover": [
+        ["border"],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "focus": [
+        ["border"],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "active": [
+        ["boxShadow"],
+        ["border"],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "disabled": [
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["opacity"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ]
     },
 
+    "ValidateErrorInput": {
+      "name": "校验失败的输入框",
+      "desc": "配置校验失败的输入框",
+      "normal": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"]
+      ],
+      "hover": [["background"], ["border"], ["boxShadow"]],
+      "active": [["background"], ["border"], ["boxShadow"]]
+    },
+    "ValidateErrorText": {
+      "name": "校验失败提示信息",
+      "desc": "配置校验失败的提示信息",
+      "normal": [
+        ["background"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "hover": [],
+      "active": []
+    },
+
+    "InputSuffix": {
+      "name": "后缀图标",
+      "desc": "输入框后缀自定义图标",
+      "normal": [["color"], ["fontSize"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "InputPrefix": {
+      "name": "前缀图标",
+      "desc": "输入框前缀自定义图标",
+      "normal": [["color"], ["fontSize"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "InputClearButton": {
+      "name": "输入框清除图标",
+      "desc": "输入框后缀清除图标",
+      "normal": [["color"], ["fontSize"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "Placeholder": {
+      "name": "输入框提示信息文字",
+      "desc": "输入框提示信息文字",
+      "normal": [["color"], ["fontSize"], ["font"]]
+    },
     "OldItem": {
       "name": "展示上一次选中的值",
       "desc": "配置展示上一次选中值的样式",
@@ -311,8 +384,7 @@
   "defaultTheme": {
     "Container": {
       "normal": {
-        "width": 250,
-        "height": 32
+        "width": 250
       }
     }
   }

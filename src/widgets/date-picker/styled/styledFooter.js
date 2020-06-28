@@ -1,36 +1,32 @@
 import { css } from 'styled-components';
-import { px2emcss } from '../../css/units';
 
-import { themeColor, getDateWrrap, fontSize, em } from './utils';
-import CSSComponent from '@lugia/theme-css-hoc';
-const { normalColor } = themeColor;
+import { getDateWrrap, em, getThemeUpdate } from './utils';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 
-export const FooterWrap = CSSComponent({
+export const FooterButtonsWrap = StaticComponent({
   tag: 'div',
-  className: 'FooterWrap',
   css: css`
-    ${props => (props.showFooter ? 'border-top: 1px solid #ddd;' : '')};
-    padding: ${em(10)} ${props => getDateWrrap(props).left};
-    font-size: ${fontSize}rem;
-    color: ${normalColor};
-
-    &::after {
-      display: block;
-      content: '';
-      clear: both;
-      height: 0;
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   `,
 });
-export const Footer = CSSComponent({
+export const FooterWrap = StaticComponent({
   tag: 'div',
-  className: 'Footer',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
+  css: css`
+    ${props => getBorder(props)};
+    padding: ${em(10)} ${props => getDateWrrap(props).left};
+  `,
+});
+function getBorder(props) {
+  const { showFooter } = props;
+  if (showFooter) {
+    return `border-top: 1px solid ${getThemeUpdate().borderColor} ;`;
+  }
+  return '';
+}
+export const Footer = StaticComponent({
+  tag: 'div',
   css: css`
     text-align: ${props => (props.showToday ? 'center' : '')};
   `,
@@ -38,39 +34,151 @@ export const Footer = CSSComponent({
 export const FooterBtn = CSSComponent({
   tag: 'span',
   className: 'FooterBtn',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['padding'],
+      ['margin'],
+      ['color'],
+      ['font'],
+      ['fontSize'],
+      ['border'],
+      ['background'],
+      ['borderRadius'],
+    ],
+    getCSS(themeMeta) {
+      const { height } = themeMeta;
+      return `line-height:${em(height)};`;
+    },
+  },
+  hover: {
+    selectNames: [['color'], ['font'], ['fontSize'], ['border'], ['background']],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  focus: {
+    selectNames: [],
+  },
   css: css`
-    ${props => (props.border ? `border-radius:${em(3)};` : '')};
-    ${props => (props.background ? `background:${normalColor};` : '')};
-    font-size: ${em(14)};
-    line-height: ${em(26)};
-    color: ${props => (props.showTime && !props.showTimeButton ? '#ddd' : normalColor)};
-    ${props => getFooterStyle(props).marginSize};
     cursor: pointer;
-    float: ${props => (props.onOk || props.showTime ? 'right' : props.buttonOptions ? 'left' : '')};
-    ${props => (props.onOk ? `padding:0 ${em(10)};color:#fff;` : '')};
+    ${props => (props.showToday ? 'display:inline-block;margin:0 !important;' : '')};
   `,
+  option: { hover: true },
+});
+export const FooterBtnToday = CSSComponent({
+  tag: 'span',
+  className: 'FooterBtnToday',
+  normal: {
+    selectNames: [['color'], ['font'], ['fontSize']],
+  },
+  hover: {
+    selectNames: [['color'], ['font']],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  focus: {
+    selectNames: [],
+  },
+  css: css`
+    cursor: pointer;
+  `,
+  option: { hover: true },
+});
+export const FooterBtnTime = CSSComponent({
+  tag: 'span',
+  className: 'FooterBtnTime',
+  normal: {
+    selectNames: [['color'], ['font'], ['fontSize']],
+    getCSS(themeMeta) {
+      const { height } = themeMeta;
+      return `line-height:${em(height)};`;
+    },
+  },
+  hover: {
+    selectNames: [['color']],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [['color'], ['font'], ['fontSize']],
+  },
+  focus: {
+    selectNames: [],
+  },
+  css: css`
+    cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
+    display: inline-block;
+  `,
+  option: { hover: true },
+});
+export const FooterBtnOk = CSSComponent({
+  tag: 'span',
+  className: 'FooterBtnOk',
+  normal: {
+    selectNames: [
+      ['background'],
+      ['margin'],
+      ['padding'],
+      ['borderRadius'],
+      ['color'],
+      ['font'],
+      ['fontSize'],
+    ],
+    getCSS(themeMeta) {
+      const { height } = themeMeta;
+      return `line-height:${em(height)};`;
+    },
+  },
+  hover: {
+    selectNames: [['color'], ['font'], ['fontSize'], ['background']],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [['color'], ['background']],
+  },
+  focus: {
+    selectNames: [],
+  },
+  css: css`
+    cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
+    display: inline-block;
+  `,
+  option: { hover: true },
 });
 export const ExtraFooter = CSSComponent({
   tag: 'div',
   className: 'ExtraFooter',
+  normal: {
+    selectNames: [['color'], ['font'], ['fontSize']],
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  focus: {
+    selectNames: [],
+  },
   css: css`
-    font-size: ${em(14)};
     line-height: ${em(26)};
     text-align: left;
     color: #999;
   `,
+  option: { hover: true },
 });
-const getFooterStyle = props => {
-  const { buttonOptions, showToday } = props;
-  const direction = buttonOptions ? 'right' : 'left';
-  const distance = showToday ? '' : footerSize(5);
-  const marginSize = `margin-${direction}:${distance}`;
-  return {
-    marginSize,
-  };
-};
-export const footerSize = value => {
-  //const ems = px2emcss(1.4);
-  const size = em(value);
-  return size;
-};

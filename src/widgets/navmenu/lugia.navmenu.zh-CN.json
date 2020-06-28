@@ -3,22 +3,53 @@
   "title": "导航菜单",
   "desc": "为页面提供导航功能的菜单",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
+    "parentIsHighlight": {
+      "type": "boolean",
+      "desc": "父级元素是否高亮",
+      "propsDefaultValue": true,
+      "defaultValue": false
+    },
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
-      "defaultValue": "value"
+      "propsDefaultValue": "value"
+    },
+
+    "indentDistance": {
+      "type": "number",
+      "desc": "每一项leftPadding的距离",
+      "propsDefaultValue": 14
+    },
+
+    "selectLinePosition": {
+      "type": "PositionType",
+      "desc": "选中项侧线标识线展示位置",
+      "propsDefaultValue": "left"
+    },
+
+    "displayField": {
+      "type": "string",
+      "desc": "data数据的displayValue值的名称",
+      "propsDefaultValue": "text"
     },
 
     "pathSeparator": {
       "type": "string",
       "desc": "指定结点数组中path信息的分隔符号",
-      "defaultValue": "/"
+      "propsDefaultValue": "|"
     },
-    "displayField": {
-      "type": "string",
-      "desc": "data数据的displayValue值的名称",
-      "defaultValue": "text"
+
+    "action": {
+      "type": "ActionType",
+      "desc": "弹出项的打开方式",
+      "propsDefaultValue": "click"
     },
+
     "data": {
       "type": "object[]",
       "desc": "生成选择项的数据",
@@ -76,28 +107,28 @@
     "mode": {
       "type": "vertical | inline| horizontal",
       "desc": "菜单类型，支持垂直、内嵌和水平模式",
-      "defaultValue": "inline"
+      "propsDefaultValue": "inline"
     },
     "inlineType": {
       "type": "primary | ellipse",
       "desc": "菜单类型为inline(内嵌模式)时,支持两种风格",
-      "defaultValue": "primary"
+      "propsDefaultValue": "primary"
     },
     "themeStyle": {
-      "type": "light | dark",
+      "type": "ThemeStyleType",
       "desc": "菜单类型为inline(内嵌模式)时,支持两种主题",
-      "defaultValue": "light"
+      "propsDefaultValue": "light"
     },
     "inlineExpandAll": {
       "type": "boolean",
       "desc": "菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
 
     "separator": {
       "type": "string",
       "desc": "自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ",
-      "defaultValue": "|"
+      "propsDefaultValue": "|"
     }
   },
   "events": {
@@ -133,7 +164,10 @@
     }
   },
   "category": ["导航"],
-
+  "type": {
+    "ThemeStyleType": ["light", "dark"],
+    "PositionType": ["left", "right"]
+  },
   "designInfo": {
     "HorizontalNavMenu": {
       "sequence": 1,
@@ -149,7 +183,7 @@
             "TitleContainer": {
               "name": "头部标签区域",
               "desc": "头部标签区域宽度配置",
-              "normal": [["width"]],
+              "normal": [["width"], ["background"], ["textAlign"]],
               "hover": [],
               "clicked": [],
               "disabled": []
@@ -157,7 +191,7 @@
             "BorderStyle": {
               "name": "默认线",
               "desc": "默认线样式配置",
-              "normal": [["border"]],
+              "normal": [["background"], ["width"]],
               "hover": [],
               "clicked": [],
               "disabled": []
@@ -196,6 +230,39 @@
                   "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
                   "clicked": [],
                   "disabled": []
+                },
+                "PrefixIcon": {
+                  "name": "前缀图标",
+                  "desc": "前缀图标样式配置",
+                  "normal": [["color"], ["font"]],
+                  "hover": [["color"], ["font"]],
+                  "disabled": [["color"], ["font"]]
+                },
+                "SelectPrefixIcon": {
+                  "name": "前缀图标选中样式",
+                  "desc": "前缀图标选中样式配置",
+                  "normal": [["color"], ["font"]],
+                  "hover": [["color"], ["font"]],
+                  "disabled": [["color"], ["font"]]
+                },
+                "SuffixIcon": {
+                  "name": "后缀图标",
+                  "desc": "后缀图标样式配置",
+                  "normal": [["color"], ["font"]],
+                  "hover": [["color"], ["font"]],
+                  "disabled": [["color"], ["font"]]
+                },
+                "SelectSuffixIcon": {
+                  "name": "后缀图标选中样式",
+                  "desc": "后缀图标选中样式配置",
+                  "normal": [["color"], ["font"]],
+                  "hover": [["color"], ["font"]],
+                  "disabled": [["color"], ["font"]]
+                },
+                "SelectLine": {
+                  "name": "选中页签底部标识线",
+                  "desc": "选中页签底部标识线样式配置",
+                  "normal": [["width"], ["height"], ["background"]]
                 }
               }
             }
@@ -290,6 +357,14 @@
                     ["color"],
                     ["font"]
                   ],
+                  "disabled": []
+                },
+                "Divider": {
+                  "name": "分割线",
+                  "desc": "配置每项之间的分割线，当divided为true时生效",
+                  "normal": [["background"]],
+                  "hover": [],
+                  "active": [],
                   "disabled": []
                 }
               }
@@ -939,6 +1014,25 @@
                   "disabled": []
                 },
 
+                "SelectedParentText": {
+                  "name": "选中项的父节点文本框区域",
+                  "desc": "配置选中项的父节点文本框区域的样式",
+                  "normal": [
+                    ["color"],
+                    ["font"],
+                    ["fontSize"],
+                    ["background"],
+                    ["padding"],
+                    ["border"],
+                    ["opacity"],
+                    ["boxShadow"],
+                    ["borderRadius"]
+                  ],
+                  "hover": [],
+                  "active": [],
+                  "disabled": []
+                },
+
                 "PrefixIcon": {
                   "name": "前置图标配置",
                   "desc": "前置图标或图片的样式配置",
@@ -962,9 +1056,55 @@
                   ]
                 },
 
+                "SelectedPrefixIcon": {
+                  "name": "选中项前置图标配置",
+                  "desc": "选中项前置图标的样式配置",
+                  "normal": [
+                    ["color"],
+                    ["margin"],
+                    ["fontSize"],
+                    ["font"],
+                    ["padding"],
+                    ["cursor"]
+                  ],
+                  "hover": [["color"], ["font"], ["fontSize"]],
+                  "active": [["color"], ["font"], ["fontSize"]],
+                  "disabled": [
+                    ["color"],
+                    ["margin"],
+                    ["fontSize"],
+                    ["font"],
+                    ["padding"],
+                    ["cursor"]
+                  ]
+                },
+
                 "SuffixIcon": {
                   "name": "后缀图标配置",
                   "desc": "后缀图标或图片的样式配置",
+                  "normal": [
+                    ["color"],
+                    ["margin"],
+                    ["fontSize"],
+                    ["font"],
+                    ["padding"],
+                    ["cursor"]
+                  ],
+                  "hover": [["color"], ["font"], ["fontSize"]],
+                  "active": [["color"], ["font"], ["fontSize"]],
+                  "disabled": [
+                    ["color"],
+                    ["margin"],
+                    ["fontSize"],
+                    ["font"],
+                    ["padding"],
+                    ["cursor"]
+                  ]
+                },
+
+                "SelectedSuffixIcon": {
+                  "name": "选中项后缀图标配置",
+                  "desc": "选中项后缀图标的样式配置",
                   "normal": [
                     ["color"],
                     ["margin"],
@@ -1090,6 +1230,12 @@
               "disabled": []
             },
 
+            "SelectLine": {
+              "name": "选中项侧线标识线",
+              "desc": "选中项侧线标识线样式配置",
+              "normal": [["width"], ["height"], ["background"], ["borderRadius"]]
+            },
+
             "Text": {
               "name": "文本框区域",
               "desc": "配置每一项文本区域的样式",
@@ -1158,6 +1304,25 @@
               "disabled": []
             },
 
+            "SelectedParentText": {
+              "name": "选中项的父节点文本框区域",
+              "desc": "配置选中项的父节点文本框区域的样式",
+              "normal": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["background"],
+                ["padding"],
+                ["border"],
+                ["opacity"],
+                ["boxShadow"],
+                ["borderRadius"]
+              ],
+              "hover": [],
+              "active": [],
+              "disabled": []
+            },
+
             "PrefixIcon": {
               "name": "前置图标配置",
               "desc": "前置图标或图片的样式配置",
@@ -1167,9 +1332,27 @@
               "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
             },
 
+            "SelectedPrefixIcon": {
+              "name": "选中项前置图标配置",
+              "desc": "选中项前置图标的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            },
+
             "SuffixIcon": {
               "name": "后缀图标配置",
               "desc": "后缀图标或图片的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            },
+
+            "SelectedSuffixIcon": {
+              "name": "选中项后缀图标配置",
+              "desc": "选中项后缀图标的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [["color"], ["font"], ["fontSize"]],

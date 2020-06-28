@@ -5,71 +5,97 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts';
 import { LabelWrapper, CheckInput, CheckSpan, CancelSpan, IconWrap } from '../css/check-button';
 import type { CheckProps, CheckState } from '../css/check-button';
-import colorsFunc from '../css/stateColor';
+import { getBorder } from '@lugia/theme-utils';
+import get from '../css/theme-common-dict';
 
-const {
-  disabledColor,
-  themeColor,
-  borderDisableColor,
-  spiritColor,
-  lightGreyColor,
-  darkGreyColor,
-  borderColor,
-} = colorsFunc();
+const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
+const spiritColor = '$lugia-dict.@lugia/lugia-web.spiritColor';
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const themeDisabledColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+
 const cancelCommonTheme = {
-  color: '#fff',
-  background: { color: disabledColor },
+  color: defaultColor,
+  background: { color: themeDisabledColor },
 };
-const defaultRadioCancelTheme = {
-  themeConfig: {
-    normal: cancelCommonTheme,
+const normalCancelCommonTheme = () => ({
+  normal: {
+    ...cancelCommonTheme,
+    border: getBorder({ color: themeDisabledColor, width: 1, style: 'solid' }),
   },
-};
-const defaultCancelTheme = {
-  themeConfig: {
-    normal: cancelCommonTheme,
-    hover: cancelCommonTheme,
-  },
-};
-const checkedCommonTheme = {
-  color: '#fff',
+});
+const defaultRadioCancelTheme = () => ({
+  themeConfig: { ...normalCancelCommonTheme() },
+});
+const defaultCancelTheme = () => ({
+  themeConfig: { ...normalCancelCommonTheme(), hover: cancelCommonTheme },
+});
+const checkedCommonTheme = () => ({
+  color: defaultColor,
   background: { color: themeColor },
   border: {
-    top: { color: themeColor, width: 1, style: 'solid' },
-    right: { color: '#fff', width: 1, style: 'solid' },
-    bottom: { color: themeColor, width: 1, style: 'solid' },
+    ...getBorder(
+      {
+        color: themeColor,
+        width: 1,
+        style: 'solid',
+      },
+      { directions: ['t', 'b'] }
+    ),
+    ...getBorder(
+      {
+        color: '#fff',
+        width: 1,
+        style: 'solid',
+      },
+      { directions: ['r'] }
+    ),
   },
-};
+});
 const checkedDisabledCommonTheme = {
   color: lightGreyColor,
   background: { color: spiritColor },
   border: {
-    top: { color: borderDisableColor, width: 1, style: 'solid' },
-    right: { color: '#fff', width: 1, style: 'solid' },
-    bottom: { color: borderDisableColor, width: 1, style: 'solid' },
+    ...getBorder(
+      {
+        color: borderDisableColor,
+        width: 1,
+        style: 'solid',
+      },
+      { directions: ['t', 'b'] }
+    ),
+    ...getBorder(
+      {
+        color: '#fff',
+        width: 1,
+        style: 'solid',
+      },
+      { directions: ['r'] }
+    ),
   },
 };
-const defaultCheckedTheme = {
+const defaultCheckedTheme = () => ({
   themeConfig: {
-    normal: checkedCommonTheme,
-    hover: checkedCommonTheme,
+    normal: checkedCommonTheme(),
+    hover: checkedCommonTheme(),
     disabled: checkedDisabledCommonTheme,
   },
-};
-const defaultRadioCheckedTheme = {
+});
+const defaultRadioCheckedTheme = () => ({
   themeConfig: {
-    normal: checkedCommonTheme,
+    normal: checkedCommonTheme(),
     disabled: checkedDisabledCommonTheme,
   },
-};
-const defaultUnCheckedTheme = {
+});
+const defaultUnCheckedTheme = () => ({
   themeConfig: {
     normal: {
-      color: darkGreyColor,
+      color: blackColor,
       border: {
-        top: { color: borderColor, width: 1, style: 'solid' },
-        right: { color: borderColor, width: 1, style: 'solid' },
-        bottom: { color: borderColor, width: 1, style: 'solid' },
+        ...getBorder(get('normalBorder'), { directions: ['t', 'r', 'b'] }),
       },
       background: { color: '#fff' },
       fontSize: 12,
@@ -84,15 +110,13 @@ const defaultUnCheckedTheme = {
       color: themeColor,
     },
     disabled: {
-      color: lightGreyColor,
+      color: disableTextColor,
       border: {
-        top: { color: borderDisableColor, width: 1, style: 'solid' },
-        right: { color: borderDisableColor, width: 1, style: 'solid' },
-        bottom: { color: borderDisableColor, width: 1, style: 'solid' },
+        ...getBorder(get('disabledBorder'), { directions: ['t', 'r', 'b'] }),
       },
     },
   },
-};
+});
 
 CheckSpan.displayName = 'hello';
 CancelSpan.displayName = 'cancel';
@@ -123,16 +147,16 @@ export default ThemeProvider(
       } = this.props;
       const { hasChecked, hover, hasCancel } = this.state;
       const config = {};
-      let dftCancelTheme = defaultCancelTheme;
-      let dftCheckedTheme = defaultCheckedTheme;
+      let dftCancelTheme = defaultCancelTheme();
+      let dftCheckedTheme = defaultCheckedTheme();
       if (cancel) {
         config.enter = this.handleMouseEnter;
         config.leave = this.handleMouseLeave;
         if (type === 'radio') {
-          dftCancelTheme = defaultRadioCancelTheme;
+          dftCancelTheme = defaultRadioCancelTheme();
         }
       }
-      if (checked && type === 'radio') dftCheckedTheme = defaultRadioCheckedTheme;
+      if (checked && type === 'radio') dftCheckedTheme = defaultRadioCheckedTheme();
       const checkedTheme = getPartOfThemeProps('CheckButtonChecked', {
         selector: { index: childrenIndex, count: childrenCount },
       });
@@ -144,7 +168,7 @@ export default ThemeProvider(
         ? deepMerge(dftCancelTheme, cancelTheme)
         : checked
         ? deepMerge(dftCheckedTheme, checkedTheme)
-        : deepMerge(defaultUnCheckedTheme, unCheckedTheme);
+        : deepMerge(defaultUnCheckedTheme(), unCheckedTheme);
       return (
         <LabelWrapper
           size={size}

@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import Icon from '../../icon/index';
 import { DateHeader, HeaderTop, HeaderTopArrow, HeaderTopText } from '../styled/styled';
-import getThemeProps from '../themeConfig/themeConfig';
+import { getHeadArrowTheme, getHeadYearAndMonth } from '../themeConfig/themeConfig';
 const moment = require('moment');
 type TypeProps = {
   onChange?: Function,
@@ -39,7 +39,7 @@ class Head extends Component<TypeProps, TypeState> {
     const { start, title, mode, secondTitle, isWeekInner } = nextProps;
     const star = start - 1;
     const normalTitle = star + '-' + (star + 11);
-    const secontTit = isWeekInner && secondTitle ? `-${secondTitle}` : '';
+    const secontTit = isWeekInner && secondTitle ? `${secondTitle}` : '';
     return {
       year: start,
       title: mode !== 'year' ? start : title || normalTitle,
@@ -111,12 +111,14 @@ class Head extends Component<TypeProps, TypeState> {
   };
   render() {
     const { title, secondTitle } = this.state;
-    const { themeProps, getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
-    const headYearTextTheme = getThemeProps({ getPartOfThemeProps }, 'HeadYearText');
-    const headWeekTextTheme = getThemeProps({ getPartOfThemeProps }, 'HeadWeekText');
-    const { viewClass: singleViewClass, theme: singleTheme } = getPartOfThemeHocProps(
-      'HeadSingleArrow'
-    );
+    const { themeProps, getPartOfThemeHocProps, getPartOfThemeProps, mode } = this.props;
+    const { headYearTextTheme, headWeekTextTheme } = getHeadYearAndMonth({
+      mode,
+      getPartOfThemeProps,
+    });
+    const { single: { singleViewClass, singleTheme } = {} } = getHeadArrowTheme({
+      getPartOfThemeHocProps,
+    });
     const singleArrowConfig = {
       viewClass: singleViewClass,
       theme: singleTheme,
@@ -128,7 +130,7 @@ class Head extends Component<TypeProps, TypeState> {
             <Icon iconClass={'lugia-icon-direction_Left'} {...singleArrowConfig} />
           </HeaderTopArrow>
           <HeaderTopText themeProps={headYearTextTheme} onClick={this.headClick}>
-            {title}
+            {title}年
           </HeaderTopText>
           <HeaderTopText themeProps={headWeekTextTheme} onClick={this.secondHeadClick}>
             {secondTitle}

@@ -4,7 +4,7 @@
  *
  */
 import * as React from 'react';
-import Trigger from '../trigger';
+import Trigger from '../trigger/OpenTrigger';
 import Theme from '../theme';
 import ThemeProvider from '../theme-provider';
 import { deepMerge } from '@lugia/object-utils';
@@ -12,6 +12,7 @@ import Widget from '../consts/index';
 import '../common/shirm';
 import Menu from '../menu';
 import DropMenuButton from './dropmenuButton';
+export type SizeType = 'large' | 'default' | 'small';
 
 const alignType = 'topLeft | top | topRight | bottomLeft | bottom | bottomRight';
 
@@ -45,6 +46,7 @@ type DropMenuProps = {
   icons: Object,
   data: Array<Object>,
   defualtHeight?: number,
+  popupVisible: boolean,
   onPopupVisibleChange?: Function,
   _onClick?: Function,
   onClick?: Function,
@@ -52,10 +54,12 @@ type DropMenuProps = {
   onMouseEnter?: Function,
   onMouseLeave?: Function,
   onMenuClick?: Function,
+  size?: SizeType,
 };
 
 type DropMenuState = {
-  visible: boolean,
+  popupVisible: boolean,
+  filter: string,
 };
 
 class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
@@ -71,6 +75,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     autoHeight: false,
     icons: {},
     createPortal: true,
+    size: 'default',
   };
   state: DropMenuState;
   static displayName = Widget.DropMenu;
@@ -79,13 +84,25 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
   constructor(props: DropMenuProps) {
     super(props);
-    this.state = { filter: '', visible: false };
+    this.state = {
+      filter: '',
+      popupVisible: props.popupVisible !== undefined ? props.popupVisible : false,
+    };
     this.isLeaf = true;
   }
 
-  render() {
-    const { menus, action, hideAction, align, createPortal } = this.props;
+  static getDerivedStateFromProps(props: NavMenuProps, state: NavMenuState) {
+    if (!state) {
+      return {};
+    }
 
+    return {
+      popupVisible: props.popupVisible !== undefined ? props.popupVisible : state.popupVisible,
+    };
+  }
+
+  render() {
+    const { menus, action, hideAction, align, createPortal, alwaysOpen, liquidLayout } = this.props;
     const config = {
       [Widget.DropMenuButton]: this.getDropMenuButtonTheme(),
       [Widget.Menu]: this.getMenuTheme(),
@@ -93,13 +110,20 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
     let popup;
     if (!menus) {
-      const { data = defaultData, autoHeight, defualtHeight } = this.props;
+      const {
+        data = defaultData,
+        autoHeight,
+        defualtHeight,
+        checkedCSS = 'background',
+      } = this.props;
       popup = (
         <Menu
+          size={'default'}
           data={data}
           autoHeight={autoHeight}
           defualtHeight={defualtHeight}
           onClick={this.onMenuClick}
+          checkedCSS={checkedCSS}
         />
       );
     } else {
@@ -125,8 +149,10 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
           createPortal={createPortal}
           hideAction={hideAction}
           onPopupVisibleChange={this.onPopupVisibleChange}
-          popupVisible={this.state.visible}
+          popupVisible={this.state.popupVisible}
           popup={popup}
+          alwaysOpen={alwaysOpen}
+          liquidLayout={liquidLayout}
         >
           {this.getChildrenItem()}
         </Trigger>
@@ -151,10 +177,12 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       switchIconClass,
       showSwitch,
       icons,
+      size,
     } = this.props;
 
     return (
       <DropMenuButton
+        size={size}
         text={text}
         divided={divided}
         type={type}
@@ -171,10 +199,22 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   }
 
   setPopupVisible(...rest: any[]) {
-    this.trigger && this.trigger.setPopupVisible(...rest);
+    if (
+      this.trigger &&
+      this.trigger.getTrigger() &&
+      this.trigger.getTrigger().current &&
+      this.trigger.getTrigger().current.getThemeTarget()
+    ) {
+      this.trigger
+        .getTrigger()
+        .current.getThemeTarget()
+        .setPopupVisible(...rest);
+    }
   }
+
   ejectOnClick = (menu: Object): Object => {
-    const newChildProps = {};
+    const { checkedCSS = 'background' } = this.props;
+    const newChildProps = { checkedCSS };
     if (!menu.props.onClick) {
       newChildProps.onClick = this.onMenuClick;
     } else {
@@ -209,13 +249,13 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     onQuery && onQuery(value);
   };
 
-  onPopupVisibleChange = (visible: boolean) => {
+  onPopupVisibleChange = (popupVisible: boolean) => {
     const { onPopupVisibleChange } = this.props;
     if (this.isLeaf) {
       setTimeout(() => {
-        this.setState({ visible });
+        this.setState({ popupVisible });
       }, 200);
-      onPopupVisibleChange && onPopupVisibleChange(visible);
+      onPopupVisibleChange && onPopupVisibleChange(popupVisible);
     }
   };
 

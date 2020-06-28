@@ -61,26 +61,41 @@ export default class AffixDemo extends React.Component<any, any> {
         },
       },
     };
+
     return (
       <div style={{ height: '1600px' }}>
-        <BackTop />
         <Demo cur={1}>
-          <BackTop>
-            <DemoBack>UP</DemoBack>
-          </BackTop>
+          <Theme>
+            <BackTop showType="textType" text="up" />
+          </Theme>
         </Demo>
         <Demo cur={2}>
           <Theme config={view}>
+            <BackTop icon={'lugia-icon-logo_apple'} showType="iconType" />
+          </Theme>
+        </Demo>
+        <Demo>
+          <Theme>
             <BackTop />
           </Theme>
+        </Demo>
+        <Demo cur={4}>
+          <BackTop>
+            <DemoBack>UP</DemoBack>
+          </BackTop>
         </Demo>
         <div
           style={{ width: '200px', height: '200px', overflowY: 'scroll', marginTop: '400px' }}
           ref={node => (this.EleRef = node)}
         >
-          <Demo cur={3}>
+          <Demo cur={4}>
             <div style={{ width: '20px', height: '300px' }} />
-            <BackTop visibilityHeight={80} target={() => this.EleRef} />
+            <BackTop
+              showType="textType"
+              text="up"
+              visibilityHeight={80}
+              target={() => this.EleRef}
+            />
           </Demo>
         </div>
       </div>

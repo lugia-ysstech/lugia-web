@@ -10,9 +10,8 @@ import moment from 'moment';
 import DatePicker, { momentConfig } from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
-import NumberInput from '../number-input';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
-import Input from '../input';
+import Button from '../button';
 import TimePicker from '../time-picker/TimePicker';
 const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker } = DatePicker;
 
@@ -30,6 +29,7 @@ export default class Sl extends Component<any> {
       disabled: false,
       v: moment().year(),
       cv: moment().year(),
+      open: true,
     };
   }
   onChange = (obj: Object) => {
@@ -54,10 +54,15 @@ export default class Sl extends Component<any> {
     console.log(obj);
     this.setState({ rangeValue: newValue });
   };
-
+  onClick = () => {
+    const { open } = this.state;
+    this.setState({ open: !open });
+  };
   render() {
     const dateFormate = 'YYYY年MM月DD日';
     const config = {
+      ValidateErrorText: { normal: { color: 'green', fontSize: 16, background: { color: 'red' } } },
+      ValidateErrorInput: { normal: { border: getBorder({ color: '#000' }), color: 'blue' } },
       FacePanelContain: {
         normal: {
           boxShadow: {
@@ -71,7 +76,7 @@ export default class Sl extends Component<any> {
           // background: {
           //   color: 'green',
           // },
-          width: 300,
+          width: 500,
           height: 200,
         },
       },
@@ -85,8 +90,9 @@ export default class Sl extends Component<any> {
           //borderRadius: getBorderRadius({ radius: 5 }),
         },
         active: {
-          color: 'blue',
-          background: { color: 'red' },
+          color: 'yellow',
+          background: { color: 'blue' },
+          border: { top: { style: 'dashed', width: 1, color: 'red' } },
         },
       },
       RangeDate: {
@@ -222,7 +228,7 @@ export default class Sl extends Component<any> {
           fontSize: 16,
         },
         hover: {
-          color: 'pink',
+          color: 'blue',
           fontSize: 18,
         },
         active: {
@@ -252,24 +258,65 @@ export default class Sl extends Component<any> {
           fontSize: 14,
         },
       },
+      FooterButtonOptions: {
+        normal: {
+          color: 'pink',
+          background: { color: '#333' },
+        },
+      },
+      ExtraFooter: {
+        normal: { color: 'blue' },
+      },
+      FooterToday: {
+        normal: { color: 'blue' },
+      },
+      FooterTimeButton: { normal: { color: 'blue' } },
+      FooterOkButton: { normal: { color: 'blue' } },
+      BigDate: {
+        normal: {
+          color: 'red',
+          fontSize: 14,
+        },
+        hover: {
+          color: 'blue',
+          fontSize: 14,
+        },
+        active: {
+          color: '#000',
+          fontSize: 14,
+        },
+      },
+      TimePanel: {
+        normal: {
+          background: { color: 'red' },
+          color: '#fff',
+        },
+      },
+      SelectTimeOption: {
+        normal: {
+          background: { color: 'green' },
+          color: '#fff',
+        },
+      },
+      TimePanelHead: {
+        normal: {
+          color: '',
+        },
+      },
     };
+    const { open } = this.state;
     return (
       <div>
-        <RangePicker
-          onChange={this.onChange}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          showTime
-          format={'YYYY-MM-DD HH:mm:ss'}
-          buttonOptions={{
-            options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
-          }}
-          extraFooter={{ message: 'extraFooter' }}
-          onOk={this.onOk}
-          //disabled
-          suffix={'lugia-icon-financial_date'}
-        />
         <div style={{ margin: '30px', overflow: 'hidden' }}>
+          <h2 style={{ margin: '10px' }}>
+            open 占位/不占位 <Button onClick={this.onClick}>{open ? '关闭' : '开启'}</Button>
+          </h2>
+          <div>
+            <p>占位</p>
+            <DatePicker open={open} liquidLayout />
+            <p>不占位</p>
+            <DatePicker open={open} />
+          </div>
           <h2 style={{ margin: '10px' }}>Date</h2>
 
           <h2>date-normal-selectToday-theme</h2>
@@ -295,6 +342,8 @@ export default class Sl extends Component<any> {
               // },
             }}
           >
+            <RangePicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
+            <DatePicker validateStatus={'error'} validateType={'top'} help={'格式有误'} />
             <RangePicker
               onChange={this.onChange}
               onFocus={this.onFocus}
@@ -322,7 +371,7 @@ export default class Sl extends Component<any> {
             <YearPicker />
             <WeekPicker />
             <TimePicker />
-            {/*<WeeksPicker />*/}
+            <WeeksPicker />
           </Theme>
 
           <div style={{ float: 'left', marginRight: '30px' }}>
@@ -622,7 +671,6 @@ export default class Sl extends Component<any> {
             </Theme>
           </div>
         </div>
-
         <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>date-normal-theme5656</h2>
           <Theme config={{ [Widget.DatePicker]: { width: 200, color: '#e05959' } }}>
@@ -675,6 +723,25 @@ export default class Sl extends Component<any> {
           <Theme config={{ [Widget.WeeksPicker]: { width: 400 } }}>
             <WeeksPicker defaultValue={'2018-90'} />
           </Theme>
+        </div>
+        <div>
+          <h2>weeks-normal-valid</h2>
+          <DatePicker validateStatus={'error'} validateType={'inner'} help={'格式有误'} />
+          <YearPicker validateStatus={'error'} validateType={'top'} help={'格式有误'} />
+          <MonthPicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
+          <RangePicker validateStatus={'error'} validateType={'inner'} help={'格式有误'} />
+          <TimePicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
+        </div>
+        <div>
+          <h2>size</h2>
+          <h2>size-small</h2>
+          <DatePicker size={'small'} />
+          <h2>size-large</h2>
+          <DatePicker size={'large'} />
+          <YearPicker validateStatus={'error'} validateType={'top'} help={'格式有误'} />
+          <MonthPicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
+          <RangePicker validateStatus={'error'} validateType={'inner'} help={'格式有误'} />
+          <TimePicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
         </div>
       </div>
     );

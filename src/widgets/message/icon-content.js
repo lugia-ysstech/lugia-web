@@ -7,8 +7,7 @@
  */
 import * as React from 'react';
 import { deepMerge } from '@lugia/object-utils';
-import colorsFunc from '../css/stateColor';
-import styled, { css, keyframes } from 'styled-components';
+import { css } from 'styled-components';
 import Icon from '../icon';
 import type { IconConProps, IconConState } from '../css/component-iconwrap';
 import {
@@ -18,6 +17,7 @@ import {
   getLoadingIconStyle,
 } from '../css/component-iconwrap';
 import { px2remcss } from '../css/units';
+import get from '../css/theme-common-dict';
 
 export default class extends React.Component<IconConProps, IconConState> {
   getIconTheme = () => {
@@ -29,13 +29,13 @@ export default class extends React.Component<IconConProps, IconConState> {
       [viewClass]: {
         normal: {
           color: IconInfo[iconType].color,
-          font: { size: 16 },
+          font: { size: '$lugia-dict.@lugia/lugia-web.sFontSize' },
           cursor: 'default',
           getCSS() {
             return css`
               position: relative;
               top: ${px2remcss(3)};
-              margin-right: ${px2remcss(10)};
+              margin-right: ${px2remcss(get('paddingToText'))};
               ${getLoadingIconStyle({ iconType })};
             `;
           },

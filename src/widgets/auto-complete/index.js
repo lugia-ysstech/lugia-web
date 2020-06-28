@@ -7,17 +7,23 @@ import * as React from 'react';
 import Menu from '../menu';
 import Input from '../input';
 import { deepMerge } from '@lugia/object-utils';
-import Trigger from '../trigger';
+import Trigger from '../trigger/OpenTrigger';
 import ShortKeyBoard from '../common/ShortKeyBoard';
 import Keys from '../consts/KeyBoard';
 import Widget from '../consts/index';
 import { DisplayField, ValueField } from '../consts/props';
 import { OldValueItem, OldValueTitle, TimeIcon, EmptyBox } from '../css/autocomplete';
+import { PopupMenuWrap, getDefaultPopupMenuWrap } from '../css/select';
 import { MenuItemHeight } from '../css/menu';
+import changeColor from '../css/utilsColor';
 import ThemeHoc from '@lugia/theme-hoc';
 import Theme from '../theme';
 import { findDOMNode } from 'react-dom';
+import get from '../css/theme-common-dict';
+
 const ScrollerStep = 30;
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 
 type AutoCompleteProps = {
   getTheme: Function,
@@ -84,34 +90,53 @@ export default ShortKeyBoard(
         };
       }
 
+      getPopupMenu = () => {
+        const data = this.getMenuData();
+        const { value } = this.state;
+        const menuThemeConfig = this.props.getPartOfThemeProps('Menu');
+        const { themeConfig } = menuThemeConfig;
+        const popupMenuWrapTheme = {
+          normal: {
+            ...getDefaultPopupMenuWrap(),
+          },
+        };
+        menuThemeConfig.themeConfig = deepMerge(popupMenuWrapTheme, themeConfig.Container);
+        return (
+          <PopupMenuWrap themeProps={menuThemeConfig}>
+            {this.getOldValueItem()}
+            <Menu
+              data={data}
+              checkedCSS={'background'}
+              {...this.getMenuTheme()}
+              mutliple={false}
+              selectedKeys={value}
+              onClick={this.menuItemClickHandler}
+              step={ScrollerStep}
+              valueField={ValueField}
+              displayField={DisplayField}
+            />
+          </PopupMenuWrap>
+        );
+      };
       render() {
         const { props, state } = this;
         const { value } = state;
-        const { disabled, placeholder, prefix, suffix, getPartOfThemeHocProps } = props;
+        const {
+          disabled,
+          placeholder,
+          prefix,
+          suffix,
+          validateType,
+          validateStatus,
+          size = 'default',
+          alwaysOpen,
+          liquidLayout,
+        } = props;
         const data = this.getMenuData();
         const len = data.length;
         const menuLen = Math.min(5, len);
         const menuHeight = menuLen * MenuItemHeight;
-
-        const menu =
-          menuHeight === 0 ? (
-            <EmptyBox />
-          ) : (
-            [
-              this.getOldValueItem(),
-              <Menu
-                data={data}
-                {...this.getMenuTheme()}
-                mutliple={false}
-                selectedKeys={value}
-                onClick={this.menuItemClickHandler}
-                step={ScrollerStep}
-                valueField={ValueField}
-                displayField={DisplayField}
-              />,
-            ]
-          );
-
+        const menu = menuHeight === 0 ? <EmptyBox /> : this.getPopupMenu();
         return (
           <Theme config={this.getInputTheme()}>
             <Trigger
@@ -123,11 +148,15 @@ export default ShortKeyBoard(
               popup={menu}
               offsetY={4}
               ref={this.triggerEl}
+              alwaysOpen={alwaysOpen}
+              liquidLayout={liquidLayout}
             >
               <Input
+                size={size}
                 value={value}
                 disabled={disabled}
                 ref={this.inputEl}
+                getInputWidgetRef={this.getInputRef}
                 onChange={this.changeInputValue}
                 onClear={this.clearInputValue}
                 onFocus={this.onFocus}
@@ -135,6 +164,8 @@ export default ShortKeyBoard(
                 placeholder={placeholder}
                 prefix={prefix}
                 suffix={suffix}
+                validateType={validateType}
+                validateStatus={validateStatus}
               />
             </Trigger>
           </Theme>
@@ -146,16 +177,29 @@ export default ShortKeyBoard(
         const inputtagTheme = {
           [Widget.Input]: {
             Container: getPartOfThemeConfig('Container'),
-            InputSuffix: getPartOfThemeConfig('TagWrap'),
-            InputPrefix: getPartOfThemeConfig('TagIcon'),
-            InputClearButton: getPartOfThemeConfig('SwitchIcon'),
+            InputSuffix: getPartOfThemeConfig('InputSuffix'),
+            InputPrefix: getPartOfThemeConfig('InputPrefix'),
+            ClearButton: getPartOfThemeConfig('InputClearButton'),
+            ValidateErrorInput: getPartOfThemeConfig('ValidateErrorInput'),
+            ValidateErrorText: getPartOfThemeConfig('ValidateErrorText'),
+            Placeholder: getPartOfThemeConfig('Placeholder'),
           },
         };
         return inputtagTheme;
       }
 
       setPopupVisible(...rest: any[]) {
-        this.triggerEl.current && this.triggerEl.current.setPopupVisible(...rest);
+        if (
+          this.triggerEl &&
+          this.triggerEl.getTrigger() &&
+          this.triggerEl.getTrigger().current &&
+          this.triggerEl.getTrigger().current.getThemeTarget()
+        ) {
+          this.triggerEl
+            .getTrigger()
+            .current.getThemeTarget()
+            .setPopupVisible(...rest);
+        }
       }
       getOldValueItem() {
         const { preSelectValue = '' } = this.state;
@@ -163,7 +207,19 @@ export default ShortKeyBoard(
           return null;
         }
         const { showOldValue, getPartOfThemeProps } = this.props;
-        const themeProps = getPartOfThemeProps('OldItem');
+        const defaultThemeConfig = {
+          themeConfig: {
+            normal: {
+              background: {
+                color: changeColor(get('themeColor'), 0, 0, 10).rgba,
+              },
+              color: blackColor,
+            },
+            hover: { color: themeColor },
+          },
+        };
+        const themeProps = deepMerge(defaultThemeConfig, getPartOfThemeProps('OldItem'));
+
         return showOldValue ? (
           <OldValueItem onClick={this.handleClickOldValueItem} themeProps={themeProps}>
             <TimeIcon themeProps={themeProps} iconClass={'lugia-icon-reminder_clock_circle_o'} />
@@ -305,6 +361,7 @@ export default ShortKeyBoard(
         const width = this.getContainerWidth();
         const initMenuTheme = {
           width,
+          boxShadow: null,
         };
         const defaultMenuTheme = {
           Container: {
@@ -314,8 +371,13 @@ export default ShortKeyBoard(
         return this.mergeTheme('Menu', defaultMenuTheme);
       };
 
+      getInputRef = refs => {
+        const { ref } = refs;
+        this.inputRef = ref;
+      };
+
       componentDidMount() {
-        const menuWidth = this.inputEl.current.getThemeTarget().svtarget.input.current.offsetWidth;
+        const menuWidth = this.inputRef.current.offsetWidth;
         this.setState({
           menuWidth,
         });

@@ -3,29 +3,44 @@
   "title": "下拉菜单",
   "desc": "选项过多时，弹出下拉菜单给用户选择操作",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
       "propsDefaultValue": true
     },
+    "size": {
+      "type": "SizeType",
+      "desc": "可配置三种尺寸大小的dropmenu",
+      "propsDefaultValue": "default"
+    },
+    "popupVisible": {
+      "type": "boolean",
+      "desc": "是否展开菜单",
+      "propsDefaultValue": false
+    },
     "action": {
       "type": "ActionType",
       "desc": "弹出项的打开方式",
-      "defaultValue": "click"
+      "propsDefaultValue": "click"
     },
     "hideAction": {
       "type": "ActionType",
       "desc": "弹出项的隐藏方式",
-      "defaultValue": "click"
+      "propsDefaultValue": "click"
     },
     "menus": {
       "type": "React.Node",
       "desc": "弹出项组件"
     },
     "align": {
-      "type": "React.Node",
+      "type": "AlignType",
       "desc": "弹出方向",
-      "defaultValue": "bottom"
+      "propsDefaultValue": "bottom"
     },
     "text": {
       "type": "string",
@@ -34,7 +49,7 @@
     "type": {
       "type": "StyleType",
       "desc": "按钮的风格,默认为customs",
-      "defaultValue": "customs"
+      "propsDefaultValue": "customs"
     },
 
     "switchIconClass": {
@@ -48,19 +63,19 @@
     "disabled": {
       "type": "boolean",
       "desc": "是否禁选",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
 
     "divided": {
       "type": "boolean",
       "desc": "是否为分割线",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
 
     "showSwitch": {
       "type": "boolean",
       "desc": "是否展示switch图标",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
     "icons": {
       "type": "object",
@@ -182,6 +197,8 @@
     }
   },
   "type": {
+    "AlignType": ["topLeft", "top", "topRight", "bottomLeft", "bottom", "bottomRight"],
+    "SizeType": ["small", "default", "large"],
     "StyleType": ["customs", "primary", "basic"],
     "ActionType": ["hover", "click"]
   },
@@ -404,6 +421,15 @@
                   "disabled": []
                 },
 
+                "Divider": {
+                  "name": "分割线",
+                  "desc": "配置每项之间的分割线，当divided为true时生效",
+                  "normal": [["background"]],
+                  "hover": [],
+                  "active": [],
+                  "disabled": []
+                },
+
                 "PrefixIcon": {
                   "name": "前置图标配置",
                   "desc": "前置图标或图片的样式配置",
@@ -467,25 +493,13 @@
         ["margin"],
         ["lineHeight"],
         ["opacity"],
-        ["color"],
-        ["font"],
-        ["fontSize"],
         ["cursor"],
         ["boxShadow"],
         ["borderRadius"]
       ],
       "hover": [],
       "active": [],
-      "disabled": [
-        ["lineHeight"],
-        ["opacity"],
-        ["boxShadow"],
-        ["color"],
-        ["font"],
-        ["fontSize"],
-        ["cursor"],
-        ["borderRadius"]
-      ]
+      "disabled": [["lineHeight"], ["opacity"], ["boxShadow"], ["cursor"], ["borderRadius"]]
     },
 
     "Divides": {

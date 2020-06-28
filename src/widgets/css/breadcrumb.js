@@ -1,13 +1,14 @@
-import colorsFunc from '../css/stateColor';
 import { px2remcss } from '../css/units';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import '../css/theme-common-dict';
 
-export const { themeColor, mediumGreyColor, darkGreyColor, blackColor } = colorsFunc();
-export const DefaultColor = mediumGreyColor;
-export const HoverDefaultColor = blackColor;
-export const FontSize = px2remcss(14);
-export const separatorMarginLeft = px2remcss(10);
-export const separatorMarginRight = px2remcss(10);
+const noLastItemColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const marginToSameElement = '$lugia-dict.@lugia/lugia-web.marginToSameElement';
+export const defaultColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+export const hoverDefaultColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
+export const iconfontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+export const iconToTextMargin = '$lugia-dict.@lugia/lugia-web.paddingToText';
 
 export const CommonSpan = CSSComponent({
   tag: 'span',
@@ -15,22 +16,26 @@ export const CommonSpan = CSSComponent({
   normal: {
     selectNames: [['color'], ['fontSize'], ['font'], ['margin'], ['padding'], ['font']],
     getThemeMeta(themeMeta, themeConfig) {
-      const { propsConfig } = themeConfig;
-      const { isLastItem } = propsConfig;
-      const color = isLastItem ? '#000' : DefaultColor;
+      const { propsConfig: { isLastItem } = {} } = themeConfig;
+      const color = isLastItem ? defaultColor : noLastItemColor;
+      return {
+        color,
+        fontSize: sectionFontSize,
+      };
+    },
+  },
+
+  hover: {
+    selectNames: [['color'], ['font'], ['fontSize'], ['font']],
+    getThemeMeta(themeMeta, themeConfig) {
+      const { propsConfig: { isLastItem } = {} } = themeConfig;
+      const color = isLastItem ? defaultColor : hoverDefaultColor;
       return {
         color,
       };
     },
   },
-  hover: {
-    selectNames: [['color'], ['font'], ['fontSize'], ['font']],
-    defaultTheme: {
-      color: HoverDefaultColor,
-    },
-  },
   css: css`
-    font-size: ${FontSize};
     transition: font-size 0.3s;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -45,28 +50,25 @@ export const ALink = CSSComponent({
   tag: 'a',
   className: 'aLink',
   normal: {
-    selectNames: [
-      ['color'],
-      ['fontSize'],
-      ['font'],
-      ['margin', 'left'],
-      ['margin', 'right'],
-      ['padding', 'left'],
-      ['padding', 'right'],
-    ],
+    selectNames: [['color'], ['fontSize'], ['font'], ['margin'], ['padding']],
     getThemeMeta(themeMeta, themeConfig) {
-      const { propsConfig } = themeConfig;
-      const { isLastItem } = propsConfig;
-      const color = isLastItem ? '#000' : DefaultColor;
+      const { propsConfig: { isLastItem } = {} } = themeConfig;
+      const color = isLastItem ? defaultColor : noLastItemColor;
       return {
         color,
+        fontSize: sectionFontSize,
       };
     },
   },
+
   hover: {
     selectNames: [['color'], ['font'], ['fontSize']],
-    defaultTheme: {
-      color: HoverDefaultColor,
+    getThemeMeta(themeMeta, themeConfig) {
+      const { propsConfig: { isLastItem } = {} } = themeConfig;
+      const color = isLastItem ? defaultColor : hoverDefaultColor;
+      return {
+        color,
+      };
     },
   },
 
@@ -76,7 +78,6 @@ export const ALink = CSSComponent({
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    font-size: ${FontSize};
     display: flex;
     align-items: center;
   `,
@@ -87,31 +88,16 @@ export const SeparatorSpan = CSSComponent({
   tag: 'span',
   className: 'separatorSpan',
   normal: {
-    selectNames: [
-      ['color'],
-      ['fontSize'],
-      ['font'],
-      ['margin', 'left'],
-      ['margin', 'right'],
-      ['padding', 'left'],
-      ['padding', 'right'],
-    ],
+    selectNames: [['color'], ['fontSize'], ['font'], ['margin'], ['padding']],
     getThemeMeta(themeMeta, themeConfig) {
-      const { propsConfig } = themeConfig;
-      const { isLastItem } = propsConfig;
-      const color = isLastItem ? '#000' : DefaultColor;
+      const { propsConfig: { isLastItem } = {} } = themeConfig;
+      const color = isLastItem ? defaultColor : noLastItemColor;
+      const textToSeparatorLeft = isLastItem ? 0 : marginToSameElement;
+      const textToSeparatorLeftRight = isLastItem ? 0 : marginToSameElement;
       return {
         color,
+        margin: { top: 0, right: textToSeparatorLeftRight, bottom: 0, left: textToSeparatorLeft },
       };
-    },
-    getCSS(themeMeta, themeConfig) {
-      const {
-        propsConfig: { isLastItem },
-      } = themeConfig;
-      return `
-      margin-left: ${isLastItem ? 0 : separatorMarginLeft};
-      margin-right: ${isLastItem ? 0 : separatorMarginRight}
-      `;
     },
   },
 
@@ -136,21 +122,17 @@ export const BreadcrumbContainer = CSSComponent({
       ['boxShadow'],
       ['background'],
     ],
-    getCSS: themeMeta => {
-      const { height = 30 } = themeMeta;
-      return `line-height: ${px2remcss(height)}`;
-    },
-    defaultTheme: {},
   },
   hover: {
     selectNames: [['border'], ['borderRadius'], ['boxShadow'], ['background'], ['opacity']],
   },
   css: css`
     height: ${px2remcss(30)};
-    display: inline-block;
+    display: inline-flex;
     box-sizing: border-box;
     transition: all 0.3s;
     overflow: hidden;
+    align-items: center;
     width: 100%;
   `,
   option: { hover: true },

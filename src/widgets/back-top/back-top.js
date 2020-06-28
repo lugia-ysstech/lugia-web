@@ -11,9 +11,9 @@ import ThemeProvider from '../theme-provider';
 import Icon from '../icon';
 import Widget from '../consts/index';
 import { getScrollTop } from '../affix/affix';
-import { BackTop, BackTopContent, IconBox } from '../css/back-top';
+import { BackTop, BackTopContent, IconBox, textStyle, getThemeStyle } from '../css/back-top';
 import type { BackTopProps, BackTopState } from '../css/back-top';
-
+import { deepMerge } from '@lugia/object-utils';
 export default ThemeProvider(
   class extends React.Component<BackTopProps, BackTopState> {
     static displayName = 'BackTop';
@@ -116,15 +116,50 @@ export default ThemeProvider(
       }
     }
 
+    getTextTheme() {
+      const { showType } = this.props;
+      const containerTheme = this.props.getPartOfThemeProps('Container');
+      const backTopContentTheme = deepMerge(
+        {
+          themeConfig: {
+            normal: {
+              boxShadow: getThemeStyle().normalBoxShadow,
+            },
+            hover: {
+              boxShadow: getThemeStyle().hoverBoxShadow,
+            },
+            active: {
+              boxShadow: getThemeStyle().activeBoxShadow,
+            },
+          },
+        },
+        containerTheme
+      );
+      if (showType === 'textType') {
+        const resultTextTheme = deepMerge(
+          {
+            themeConfig: {
+              ...textStyle(),
+            },
+          },
+          containerTheme
+        );
+        return resultTextTheme;
+      }
+      return backTopContentTheme;
+    }
+
     render() {
       const {
         children,
         themeProps,
-        getPartOfThemeProps,
         getPartOfThemeHocProps,
-        icon = 'lugia-icon-direction_up',
+        icon,
+        showType = 'iconType',
+        text,
       } = this.props;
       const { fixed, posRight, posBottom } = this.state;
+
       return (
         <div {...addMouseEvent(this)}>
           {fixed ? (
@@ -139,9 +174,17 @@ export default ThemeProvider(
               {children ? (
                 children
               ) : (
-                <BackTopContent themeProps={getPartOfThemeProps('Container')}>
-                  <IconBox themeProps={themeProps} {...addMouseEvent(this)}>
-                    <Icon iconClass={icon} {...getPartOfThemeHocProps('BackTopIcon')} singleTheme />
+                <BackTopContent themeProps={this.getTextTheme()}>
+                  <IconBox themeProps={themeProps}>
+                    {showType === 'iconType' ? (
+                      <Icon
+                        iconClass={icon || 'lugia-icon-direction_up'}
+                        {...getPartOfThemeHocProps('BackTopIcon')}
+                        singleTheme
+                      />
+                    ) : (
+                      <text>{text || 'up'}</text>
+                    )}
                   </IconBox>
                 </BackTopContent>
               )}

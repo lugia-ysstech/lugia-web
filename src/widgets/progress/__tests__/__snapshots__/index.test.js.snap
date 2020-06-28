@@ -6,7 +6,7 @@ exports[`Progress css 1`] = `
   display: inline-block;
   border-radius: 5rem;
   vertical-align: middle;
-  background-color: #f5f5f5;
+  background-color: #e8e8e8;
 }
 
 .c10 {
@@ -14,7 +14,7 @@ exports[`Progress css 1`] = `
   display: inline-block;
   border-radius: 5rem;
   vertical-align: middle;
-  background-color: #f5f5f5;
+  background-color: #e8e8e8;
 }
 
 .c4 {
@@ -245,11 +245,11 @@ exports[`Progress css 1`] = `
   display: inline-block;
   width: 2rem;
   text-align: left;
-  margin-left: 1rem;
   white-space: nowrap;
   word-break: normal;
   vertical-align: middle;
-  color: #999999;
+  margin-left: 1rem;
+  color: #9EA4AE;
   font-size: 1.4rem;
 }
 
@@ -300,7 +300,6 @@ exports[`Progress css 1`] = `
 .c1 {
   display: block;
   position: absolute;
-  font-size: 2.4rem;
   width: 100%;
   text-align: center;
   line-height: 1;
@@ -310,13 +309,34 @@ exports[`Progress css 1`] = `
   transform: translateY(-50%);
   left: 0;
   margin: 0;
-  color: #999999;
+  color: $lugia-dict.@lugia/lugia-web.blackColor;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: normal;
   white-space: nowrap;
-  color: #999999;
-  font-size: 2.4rem;
+  font-size: 3.6rem;
+  color: #9EA4AE;
+}
+
+.c27 {
+  display: block;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  line-height: 1;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 0;
+  margin: 0;
+  color: $lugia-dict.@lugia/lugia-web.blackColor;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: normal;
+  white-space: nowrap;
+  font-size: 1.8rem;
+  color: #9EA4AE;
 }
 
 .c15 {
@@ -336,7 +356,7 @@ exports[`Progress css 1`] = `
   position: relative;
   text-transform: none;
   outline: 0;
-  background-color: #ffffff;
+  background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -352,7 +372,6 @@ exports[`Progress css 1`] = `
 }
 
 .c17 {
-  color: #666666;
   font-size: 1.4rem;
 }
 
@@ -387,7 +406,7 @@ exports[`Progress css 1`] = `
         cy={60}
         fill="none"
         r={56}
-        stroke="#f2f2f2"
+        stroke="#e8e8e8"
         strokeWidth={8}
       />
       <circle
@@ -586,7 +605,7 @@ exports[`Progress css 1`] = `
         style={
           Object {
             "fill": "none",
-            "stroke": "#f2f2f2",
+            "stroke": "#e8e8e8",
             "strokeWidth": 8,
             "transition": "all .3s",
           }
@@ -951,7 +970,7 @@ exports[`Progress css 1`] = `
         cy={60}
         fill="none"
         r={56}
-        stroke="#f2f2f2"
+        stroke="#e8e8e8"
         strokeWidth={8}
       />
       <circle
@@ -991,7 +1010,7 @@ exports[`Progress css 1`] = `
           Object {
             "color": "#56c22d",
             "cursor": "default",
-            "fontSize": "4rem",
+            "fontSize": "3rem",
           }
         }
       />
@@ -1010,7 +1029,7 @@ exports[`Progress css 1`] = `
         cy={60}
         fill="none"
         r={56}
-        stroke="#f2f2f2"
+        stroke="#e8e8e8"
         strokeWidth={8}
       />
       <circle
@@ -1050,7 +1069,7 @@ exports[`Progress css 1`] = `
           Object {
             "color": "#f22735",
             "cursor": "default",
-            "fontSize": "4rem",
+            "fontSize": "3rem",
           }
         }
       />
@@ -1591,7 +1610,7 @@ exports[`Progress css 1`] = `
         size="default"
         style={
           Object {
-            "color": "#999999",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -1634,7 +1653,7 @@ exports[`Progress css 1`] = `
         size="default"
         style={
           Object {
-            "color": "#999999",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -1889,7 +1908,7 @@ exports[`Progress css 1`] = `
         size="default"
         style={
           Object {
-            "color": "#999999",
+            "color": "#363B40",
             "fontSize": "1.4rem",
           }
         }
@@ -1912,7 +1931,7 @@ exports[`Progress css 1`] = `
       size="default"
       style={
         Object {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "white",
           "borderBottomColor": "#cccccc",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
@@ -1944,7 +1963,7 @@ exports[`Progress css 1`] = `
           className="c17"
           style={
             Object {
-              "color": "#666666",
+              "color": "#363B40",
               "fontSize": "1.4rem",
             }
           }
@@ -1968,7 +1987,7 @@ exports[`Progress css 1`] = `
       size="default"
       style={
         Object {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "white",
           "borderBottomColor": "#cccccc",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
@@ -2000,7 +2019,7 @@ exports[`Progress css 1`] = `
           className="c17"
           style={
             Object {
-              "color": "#666666",
+              "color": "#363B40",
               "fontSize": "1.4rem",
             }
           }
@@ -2175,7 +2194,7 @@ exports[`Progress css 1`] = `
           size="small"
           style={
             Object {
-              "color": "#999999",
+              "color": "#363B40",
               "fontSize": "1.4rem",
             }
           }
@@ -2218,7 +2237,7 @@ exports[`Progress css 1`] = `
           size="small"
           style={
             Object {
-              "color": "#999999",
+              "color": "#363B40",
               "fontSize": "1.4rem",
             }
           }
@@ -2795,7 +2814,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={8}
         />
         <circle
@@ -2803,7 +2822,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeDasharray="0 352"
           strokeLinecap="round"
           strokeWidth={8}
@@ -2845,7 +2864,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={8}
         />
         <circle
@@ -2853,7 +2872,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeDasharray="0 352"
           strokeLinecap="round"
           strokeWidth={8}
@@ -2909,7 +2928,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={8}
         />
         <circle
@@ -2978,7 +2997,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={8}
         />
         <circle
@@ -2986,7 +3005,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeDasharray="0 352"
           strokeLinecap="round"
           strokeWidth={8}
@@ -3003,7 +3022,7 @@ exports[`Progress css 1`] = `
         size="default"
         style={
           Object {
-            "color": "#999999",
+            "color": "#363B40",
           }
         }
       >
@@ -3029,7 +3048,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={8}
         />
         <circle
@@ -3054,7 +3073,7 @@ exports[`Progress css 1`] = `
         size="default"
         style={
           Object {
-            "color": "#999999",
+            "color": "#363B40",
           }
         }
       >
@@ -3075,7 +3094,7 @@ exports[`Progress css 1`] = `
       size="default"
       style={
         Object {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "white",
           "borderBottomColor": "#cccccc",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
@@ -3107,7 +3126,7 @@ exports[`Progress css 1`] = `
           className="c17"
           style={
             Object {
-              "color": "#666666",
+              "color": "#363B40",
               "fontSize": "1.4rem",
             }
           }
@@ -3131,7 +3150,7 @@ exports[`Progress css 1`] = `
       size="default"
       style={
         Object {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "white",
           "borderBottomColor": "#cccccc",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
@@ -3163,7 +3182,7 @@ exports[`Progress css 1`] = `
           className="c17"
           style={
             Object {
-              "color": "#666666",
+              "color": "#363B40",
               "fontSize": "1.4rem",
             }
           }
@@ -3191,7 +3210,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={8}
         />
         <circle
@@ -3231,7 +3250,7 @@ exports[`Progress css 1`] = `
             Object {
               "color": "#56c22d",
               "cursor": "default",
-              "fontSize": "4rem",
+              "fontSize": "3rem",
             }
           }
         />
@@ -3256,7 +3275,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={8}
         />
         <circle
@@ -3296,7 +3315,7 @@ exports[`Progress css 1`] = `
             Object {
               "color": "#56c22d",
               "cursor": "default",
-              "fontSize": "4rem",
+              "fontSize": "3rem",
             }
           }
         />
@@ -3321,7 +3340,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={8}
         />
         <circle
@@ -3361,7 +3380,7 @@ exports[`Progress css 1`] = `
             Object {
               "color": "#f22735",
               "cursor": "default",
-              "fontSize": "4rem",
+              "fontSize": "3rem",
             }
           }
         />
@@ -3386,7 +3405,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={8}
         />
         <circle
@@ -3426,7 +3445,7 @@ exports[`Progress css 1`] = `
             Object {
               "color": "#f22735",
               "cursor": "default",
-              "fontSize": "4rem",
+              "fontSize": "3rem",
             }
           }
         />
@@ -3452,7 +3471,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={8}
         />
         <circle
@@ -3503,7 +3522,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={8}
         />
         <circle
@@ -3555,7 +3574,7 @@ exports[`Progress css 1`] = `
           cy={40}
           fill="none"
           r={37}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={6}
         />
         <circle
@@ -3563,7 +3582,7 @@ exports[`Progress css 1`] = `
           cy={40}
           fill="none"
           r={37}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeDasharray="0 233"
           strokeLinecap="round"
           strokeWidth={6}
@@ -3576,11 +3595,11 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c27"
         size="small"
         style={
           Object {
-            "color": "#999999",
+            "color": "#363B40",
           }
         }
       >
@@ -3606,7 +3625,7 @@ exports[`Progress css 1`] = `
           cy={40}
           fill="none"
           r={37}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={6}
         />
         <circle
@@ -3627,11 +3646,11 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c27"
         size="small"
         style={
           Object {
-            "color": "#999999",
+            "color": "#363B40",
           }
         }
       >
@@ -3657,7 +3676,7 @@ exports[`Progress css 1`] = `
           cy={40}
           fill="none"
           r={37}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={6}
         />
         <circle
@@ -3678,7 +3697,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c27"
         size="small"
         style={
           Object {
@@ -3697,7 +3716,7 @@ exports[`Progress css 1`] = `
             Object {
               "color": "#56c22d",
               "cursor": "default",
-              "fontSize": "2.6rem",
+              "fontSize": "2.4rem",
             }
           }
         />
@@ -3722,7 +3741,7 @@ exports[`Progress css 1`] = `
           cy={40}
           fill="none"
           r={37}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={6}
         />
         <circle
@@ -3743,7 +3762,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c27"
         size="small"
         style={
           Object {
@@ -3762,7 +3781,7 @@ exports[`Progress css 1`] = `
             Object {
               "color": "#f22735",
               "cursor": "default",
-              "fontSize": "2.6rem",
+              "fontSize": "2.4rem",
             }
           }
         />
@@ -3787,7 +3806,7 @@ exports[`Progress css 1`] = `
           cy={40}
           fill="none"
           r={37}
-          stroke="#f2f2f2"
+          stroke="#e8e8e8"
           strokeWidth={6}
         />
         <circle
@@ -3808,7 +3827,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c27"
         size="small"
         style={
           Object {
@@ -3827,7 +3846,7 @@ exports[`Progress css 1`] = `
             Object {
               "color": "#f22735",
               "cursor": "default",
-              "fontSize": "2.6rem",
+              "fontSize": "2.4rem",
             }
           }
         />
@@ -3962,7 +3981,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#f2f2f2",
+                "stroke": "#e8e8e8",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -4167,7 +4186,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#f2f2f2",
+                "stroke": "#e8e8e8",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -4183,7 +4202,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#f2f2f2",
+                "stroke": "#e8e8e8",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -4336,7 +4355,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#f2f2f2",
+                "stroke": "#e8e8e8",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -4610,7 +4629,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#f2f2f2",
+                "stroke": "#e8e8e8",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -4688,7 +4707,7 @@ exports[`Progress css 1`] = `
           size="default"
           style={
             Object {
-              "color": "#999999",
+              "color": "#363B40",
             }
           }
         >
@@ -4819,7 +4838,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#f2f2f2",
+                "stroke": "#e8e8e8",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -4962,7 +4981,7 @@ exports[`Progress css 1`] = `
               Object {
                 "color": "#56c22d",
                 "cursor": "default",
-                "fontSize": "4rem",
+                "fontSize": "3rem",
               }
             }
           />
@@ -5093,7 +5112,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#f2f2f2",
+                "stroke": "#e8e8e8",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -5216,7 +5235,7 @@ exports[`Progress css 1`] = `
               Object {
                 "color": "#56c22d",
                 "cursor": "default",
-                "fontSize": "4rem",
+                "fontSize": "3rem",
               }
             }
           />
@@ -5347,7 +5366,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#f2f2f2",
+                "stroke": "#e8e8e8",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -5430,7 +5449,7 @@ exports[`Progress css 1`] = `
               Object {
                 "color": "#f22735",
                 "cursor": "default",
-                "fontSize": "4rem",
+                "fontSize": "3rem",
               }
             }
           />
@@ -5561,7 +5580,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#f2f2f2",
+                "stroke": "#e8e8e8",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -5704,7 +5723,7 @@ exports[`Progress css 1`] = `
               Object {
                 "color": "#f22735",
                 "cursor": "default",
-                "fontSize": "4rem",
+                "fontSize": "3rem",
               }
             }
           />
@@ -5835,7 +5854,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#f2f2f2",
+                "stroke": "#e8e8e8",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -5913,7 +5932,7 @@ exports[`Progress css 1`] = `
           size="default"
           style={
             Object {
-              "color": "#999999",
+              "color": "#363B40",
             }
           }
         >
@@ -6044,7 +6063,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#f2f2f2",
+                "stroke": "#e8e8e8",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -6102,7 +6121,7 @@ exports[`Progress css 1`] = `
           size="default"
           style={
             Object {
-              "color": "#999999",
+              "color": "#363B40",
             }
           }
         >
@@ -6123,7 +6142,7 @@ exports[`Progress css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "white",
             "borderBottomColor": "#cccccc",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
@@ -6155,7 +6174,7 @@ exports[`Progress css 1`] = `
             className="c17"
             style={
               Object {
-                "color": "#666666",
+                "color": "#363B40",
                 "fontSize": "1.4rem",
               }
             }
@@ -6179,7 +6198,7 @@ exports[`Progress css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "white",
             "borderBottomColor": "#cccccc",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
@@ -6211,7 +6230,7 @@ exports[`Progress css 1`] = `
             className="c17"
             style={
               Object {
-                "color": "#666666",
+                "color": "#363B40",
                 "fontSize": "1.4rem",
               }
             }
@@ -6344,7 +6363,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#f2f2f2",
+                "stroke": "#e8e8e8",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -6402,7 +6421,7 @@ exports[`Progress css 1`] = `
           size="default"
           style={
             Object {
-              "color": "#999999",
+              "color": "#363B40",
             }
           }
         >

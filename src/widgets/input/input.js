@@ -5,68 +5,56 @@ import React, { Component } from 'react';
 import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import { fixControlledValue } from '../utils';
-import type { InputSize, ValidateType, ValidateStatus } from '../css/input';
-import { DefaultHelp, checkValidateResultFromStatusAndType, isValidateError } from '../css/input';
-import ToolTip from '../tooltip/index';
+import type { InputSize } from '../css/input';
+import { getInputHeight, getInputIconSize, getInputFixSize } from '../css/input';
 import Icon from '../icon';
-import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
-
 import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import { ObjectUtils } from '@lugia/type-utils';
-import changeColor from '../css/utilsColor';
+import get from '../css/theme-common-dict';
+import MouseEventAdaptor from '../common/MouseEventAdaptor';
+import ValidateHoc from './validateHoc';
+import {
+  validateValueDefaultTheme,
+  validateBorderDefaultTheme,
+  isValidateError,
+  validateWidthTheme,
+} from '../css/validateHoc';
+import type { ValidateStatus, ValidateType } from '../css/validateHoc';
+
 const { px2remcss } = units;
-const {
-  themeColor,
-  disableColor,
-  borderColor,
-  dangerColor,
-  blackColor,
-  mediumGreyColor,
-  darkGreyColor,
-  lightGreyColor,
-  borderRadius,
-  padding,
-  borderSize,
-  shadowSpread,
-  hShadow,
-  vShadow,
-  transitionTime,
-  defaultColor,
-} = colorsFunc();
+const { hShadow, vShadow, transitionTime } = colorsFunc();
+
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const padding = '$lugia-dict.@lugia/lugia-web.padding';
+const paddingToText = '$lugia-dict.@lugia/lugia-web.paddingToText';
 
 const CommonInputStyle = CSSComponent({
   tag: 'input',
   className: 'InnerInput',
   normal: {
-    selectNames: [
-      ['fontSize'],
-      ['font'],
-      ['color'],
-      ['background'],
-      ['border'],
-      ['borderRadius'],
-      ['cursor'],
-      ['padding'],
-      ['opacity'],
-      ['boxShadow'],
-    ],
+    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['padding'], ['borderRadius']],
     defaultTheme: {
       cursor: 'text',
-      borderRadius: getBorderRadius(borderRadius),
-      fontSize: 12,
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const {
+        size,
         placeHolderColor,
-        placeHolderFont: { size, weight, color } = {},
+        placeHolderFont: { size: placeHolderSize, weight, color } = {},
         placeHolderFontSize,
       } = propsConfig;
-      const theColor = color ? color : placeHolderColor;
-      const theSize = size ? size : placeHolderFontSize ? placeHolderFontSize : 12;
+      const theColor = color || placeHolderColor || get('lightGreyColor');
+      const theSize = placeHolderFontSize || placeHolderSize || getInputFixSize(size);
       return css`
         &::placeholder {
           color: ${theColor};
@@ -77,32 +65,16 @@ const CommonInputStyle = CSSComponent({
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { prefix, validateStatus, validateType, suffix, isShowClearButton },
+        propsConfig: { prefix, suffix, size },
       } = themeProps;
-      const { width, color, border, boxShadow } = themeMeta;
+      const { color, fontSize, font: { color: fontColor, size: innerFontSize } = {} } = themeMeta;
 
-      const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : padding;
-      const paddingRight =
-        suffix || isShowClearButton ? 35 : width && width < 200 ? 15 + width / 10 : padding;
-      const theColor = color
-        ? color
-        : checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')
-        ? dangerColor
-        : blackColor;
-      const shadowCSS = boxShadow
-        ? boxShadow
-        : isValidateError(validateStatus)
-        ? getBoxShadow(
-            `${hShadow}px ${vShadow}px ${shadowSpread}px ${changeColor(dangerColor, 0, 0, 10).rgba}`
-          )
-        : {};
-      const theBorderColor = isValidateError(validateStatus) ? dangerColor : borderColor;
-      const borderOBJ = border
-        ? border
-        : { color: theBorderColor, width: borderSize, style: 'solid' };
+      const paddingLeft = prefix ? paddingToText : padding;
+      const paddingRight = suffix ? paddingToText : padding;
+      const theColor = fontColor || color || blackColor;
+      const theFontSize = innerFontSize || fontSize || getInputFixSize(size);
       return {
-        boxShadow: shadowCSS,
-        border: getBorder(borderOBJ),
+        fontSize: theFontSize,
         color: theColor,
         padding: {
           left: paddingLeft,
@@ -112,190 +84,130 @@ const CommonInputStyle = CSSComponent({
     },
   },
   hover: {
-    selectNames: [
-      ['padding'],
-      ['border'],
-      ['borderRadius'],
-      ['cursor'],
-      ['background'],
-      ['opacity'],
-      ['boxShadow'],
-    ],
-    defaultTheme: {
-      borderRadius: getBorderRadius(borderRadius),
-    },
-    getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const {
-        propsConfig: { validateStatus },
-      } = themeProps;
-      const { border } = themeMeta;
-      const theBorderColor = isValidateError(validateStatus) ? dangerColor : themeColor;
-      const borderOBJ = border
-        ? border
-        : { color: theBorderColor, width: borderSize, style: 'solid' };
-      return {
-        border: getBorder(borderOBJ),
-      };
-    },
+    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['background']],
+  },
+  focus: {
+    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['background']],
   },
   active: {
-    selectNames: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
-    getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const {
-        propsConfig: { validateStatus },
-      } = themeProps;
-      const { boxShadow } = themeMeta;
-      const theColor = isValidateError(validateStatus)
-        ? changeColor(dangerColor, 0, 0, 20).rgba
-        : changeColor(themeColor, 0, 0, 20).rgba;
-      const shadowCSS = `${hShadow}px ${vShadow}px ${shadowSpread}px ${theColor}`;
-      const shadowOBJ = boxShadow ? boxShadow : getBoxShadow(shadowCSS);
-      return { boxShadow: shadowOBJ };
-    },
+    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['background']],
   },
   disabled: {
-    selectNames: [
-      ['fontSize'],
-      ['font'],
-      ['color'],
-      ['background'],
-      ['border'],
-      ['borderRadius'],
-      ['cursor'],
-      ['padding'],
-      ['opacity'],
-    ],
+    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity'], ['background']],
     defaultTheme: {
       cursor: 'not-allowed',
-      background: { color: disableColor },
-      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
     },
   },
   css: css`
+    background-color: transparent;
     box-sizing: border-box;
-    line-height: 1.5;
-    display: inline-block;
     font-family: inherit;
     transition: all ${transitionTime};
     outline: none;
     height: 100%;
     width: 100%;
+    border: none;
+    flex: 1;
   `,
   option: { hover: true, active: true },
 });
 
-export const BaseInputContainer = StaticComponent({
-  tag: 'span',
-  className: 'InputBaseInputContainer',
-  css: css`
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-  `,
-});
-
 const InputContainer = CSSComponent({
-  tag: 'span',
+  tag: 'div',
   className: 'inputContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['margin']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['margin'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['background'],
+      ['opacity'],
+    ],
     defaultTheme: {
       width: '100%',
+      background: { color: 'white' },
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { size },
       } = themeProps;
       const { height } = themeMeta;
-
-      const theHeight = height ? height : size === 'large' ? 40 : size === 'small' ? 24 : 32;
+      const theHeight = getInputHeight(height, size);
       return {
         height: theHeight,
       };
     },
   },
   hover: {
-    selectNames: [],
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
+  },
+  focus: {
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
   },
   active: {
-    selectNames: [],
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
   },
   disabled: {
-    selectNames: [],
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
   },
   css: css`
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     outline: none;
     min-width: ${px2remcss(30)};
   `,
-});
-
-export const TipBottom = CSSComponent({
-  tag: 'div',
-  className: 'inputTipBottom',
-  normal: {
-    selectNames: [['color'], ['font'], ['fontSize']],
-    defaultTheme: {
-      color: dangerColor,
-      fontSize: 12,
-      height: 32,
-      margin: {
-        left: 10,
-        top: 4,
-      },
-    },
-    getCSS(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { validateStatus } = propsConfig;
-      const theVisibility = isValidateError(validateStatus) ? 'visible' : 'hidden';
-      return `visibility:${theVisibility}`;
-    },
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
+  option: { hover: true, focus: true, active: true },
 });
 
 const Fix = CSSComponent({
   tag: 'span',
   className: 'inputFix',
   normal: {
-    selectNames: [['font'], ['color']],
+    selectNames: [['font'], ['fontSize'], ['color']],
+    defaultTheme: {
+      color: blackColor,
+    },
+    getThemeMeta(themeMeta, themeProps) {
+      const {
+        propsConfig: { size },
+      } = themeProps;
+      const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
+      const theSize = innerFontSize || fontSize || getInputFixSize(size);
+      return { fontSize: theSize };
+    },
+  },
+  disabled: {
+    selectNames: [['font'], ['fontSize'], ['color']],
+    defaultTheme: {
+      color: disableTextColor,
+    },
   },
   css: css`
-    position: absolute;
-    transform: translateY(50%);
-    bottom: 50%;
-    line-height: ${px2remcss(10)};
-    font-size: 1.4em;
-    color: ${mediumGreyColor};
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
   `,
 });
 
 const Prefix: Object = CSSComponent({
   extend: Fix,
   className: 'inputPrefix',
-  normal: {
-    selectNames: [['font'], ['fontSize'], ['color']],
-  },
+  normal: {},
   css: css`
-    left: ${px2remcss(padding)};
+    padding-left: ${() => px2remcss(get('padding'))};
   `,
 });
 
 const Suffix: Object = CSSComponent({
   extend: Fix,
   className: 'inputSuffix',
-  normal: {
-    selectNames: [['font'], ['fontSize'], ['color']],
-  },
+  normal: {},
   css: css`
-    right: ${px2remcss(padding)};
+    padding-right: ${() => px2remcss(get('padding'))};
   `,
 });
 
@@ -307,6 +219,9 @@ type InputState = {
 
 type InsideProps = {
   _maxLength: string,
+  getInputRef: Function,
+  getInputWidgetRef: Function,
+  _focus: boolean,
 };
 
 type InputProps = {
@@ -341,17 +256,27 @@ type InputProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   isShowClearButton?: boolean,
+  onMouseEnter?: Function,
+  onMouseLeave?: Function,
 } & InsideProps;
+
+const defaultFixTheme = {
+  themeConfig: {
+    normal: {
+      color: blackColor,
+    },
+    disabled: {
+      color: disableTextColor,
+    },
+  },
+};
 
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
     disabled: false,
     autoFocus: false,
     viewClass: Widget.Input,
-    validateStatus: 'default',
-    validateType: 'inner',
     size: 'default',
-    help: DefaultHelp,
     defaultValue: '',
     isShowClearButton: true,
     formatter: (value: string | number) => {
@@ -362,12 +287,13 @@ class TextBox extends Component<InputProps, InputState> {
     },
   };
   input: any;
+  inputContainer: any;
   static displayName = Widget.Input;
-  actualValue = '';
 
   constructor(props: InputProps) {
     super(props);
     this.input = React.createRef();
+    this.inputContainer = React.createRef();
   }
 
   static getDerivedStateFromProps(nextProps: Object, preState: Object) {
@@ -383,6 +309,13 @@ class TextBox extends Component<InputProps, InputState> {
     if (hasValueInprops) {
       return { value };
     }
+  }
+  getRef() {
+    return this.input;
+  }
+
+  getContainerRef() {
+    return this.inputContainer;
   }
 
   onChange = (event: Object) => {
@@ -409,26 +342,17 @@ class TextBox extends Component<InputProps, InputState> {
       onChange && onChange(param);
     }
   }
-
   onFocus = (event: UIEvent) => {
-    const { onFocus, validateStatus, validateType, disabled, readOnly } = this.props;
-    if (disabled || readOnly) {
+    const { onFocus, disabled, readOnly, _focus } = this.props;
+    if (disabled || readOnly || _focus) {
       return;
-    }
-    if (checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')) {
-      this.setState({ value: this.actualValue });
     }
     onFocus && onFocus(event);
   };
-
   onBlur = (event: UIEvent) => {
-    const { onBlur, help, validateStatus, validateType, disabled } = this.props;
-    if (disabled) {
+    const { onBlur, disabled, readOnly, _focus } = this.props;
+    if (disabled || readOnly || _focus) {
       return;
-    }
-    if (checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')) {
-      this.setState({ value: help });
-      this.actualValue = help;
     }
     onBlur && onBlur(event);
   };
@@ -447,84 +371,32 @@ class TextBox extends Component<InputProps, InputState> {
     this.setValue('', e);
   };
 
-  getInputContainer(fetcher: Function) {
-    const { size } = this.props;
-    const theThemeProps = this.props.getPartOfThemeProps('Container', {
-      props: { size },
-    });
+  getInputContainer() {
+    const mouseConfig = {
+      enter: this.onMouseEnter,
+      leave: this.onMouseLeave,
+    };
     return (
-      <InputContainer themeProps={theThemeProps} {...addMouseEvent(this)}>
-        {fetcher()}
+      <InputContainer
+        ref={this.inputContainer}
+        themeProps={this.getFinalThemeProps()}
+        {...addMouseEvent(this, mouseConfig)}
+      >
+        {this.generatePrefix()}
+        {this.generateInput()}
+        {this.generateSuffix()}
       </InputContainer>
     );
   }
-
-  getInputInner = () => {
-    const { validateType, validateStatus, help, prefix, size } = this.props;
-    if (validateType === 'bottom') {
-      const result = [
-        <BaseInputContainer>
-          {this.generatePrefix()}
-          {this.generateInput()}
-          {this.generateSuffix()}
-        </BaseInputContainer>,
-      ];
-      const tipBottomThemeProps = this.props.getPartOfThemeProps('ValidateErrorText', {
-        props: { validateStatus, prefix, size },
-      });
-      result.push(<TipBottom themeProps={tipBottomThemeProps}>{help}</TipBottom>);
-      return result;
-    }
-    return [this.generatePrefix(), this.generateInput(), this.generateSuffix()];
-  };
-
   render() {
-    const { props } = this;
-    const { validateType, size, help, validateStatus, prefix, getPartOfThemeHocProps } = props;
-    const result = this.getInputContainer(this.getInputInner);
-
-    const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps(
-      'ValidateErrorText'
-    );
-    const newTheme = {
-      [viewClass]: {
-        Container: deepMerge(
-          {
-            normal: {
-              background: { color: darkGreyColor },
-              getCSS() {
-                return 'display: inline-block;';
-              },
-            },
-          },
-          validateTopTipThemeProps[viewClass]
-        ),
-        TooltipTitle: deepMerge(
-          { normal: { color: defaultColor } },
-          validateTopTipThemeProps[viewClass]
-        ),
-      },
-    };
-    if (validateType === 'top') {
-      const visible = isValidateError(validateStatus);
-      return (
-        <ToolTip
-          propsConfig={{ validateType, validateStatus, prefix, size }}
-          theme={newTheme}
-          viewClass={viewClass}
-          title={help}
-          action={'focus'}
-          popArrowType={'round'}
-          placement={'topLeft'}
-          visible={visible}
-        >
-          {result}
-        </ToolTip>
-      );
-    }
-    return result;
+    return this.getInputContainer();
   }
 
+  componentDidMount() {
+    const { getInputRef, getInputWidgetRef } = this.props;
+    getInputRef && getInputRef({ ref: this.getRef() });
+    getInputWidgetRef && getInputWidgetRef({ ref: this.getContainerRef() });
+  }
   getFixIcon(fix: React$Node, WidgetName: string): React$Node {
     if (ObjectUtils.isString(fix)) {
       return (
@@ -535,8 +407,8 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   generatePrefix(): React$Node | null {
-    const { prefix, getPartOfThemeProps } = this.props;
-    const PrefixThemeProps = getPartOfThemeProps('InputPrefix');
+    const { prefix, getPartOfThemeProps, size } = this.props;
+    const PrefixThemeProps = getPartOfThemeProps('InputPrefix', { props: { size } });
     if (prefix) {
       return (
         <Prefix themeProps={PrefixThemeProps}>{this.getFixIcon(prefix, 'InputPrefix')}</Prefix>
@@ -546,10 +418,10 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   generateSuffix(): React$Node | null {
-    const { suffix, getPartOfThemeProps } = this.props;
+    const { suffix, getPartOfThemeProps, size } = this.props;
     if (suffix) {
       return (
-        <Suffix themeProps={getPartOfThemeProps('InputSuffix')}>
+        <Suffix themeProps={getPartOfThemeProps('InputSuffix', { props: { size } })}>
           {this.getFixIcon(suffix, 'InputSuffix')}
         </Suffix>
       );
@@ -563,9 +435,6 @@ class TextBox extends Component<InputProps, InputState> {
 
   getClearButton() {
     const { canClear = true } = this.props;
-    if (this.isEmpty() || !canClear) {
-      return null;
-    }
     const {
       theme: ClearButtonThemeProps,
       viewClass: clearViewClass,
@@ -576,37 +445,58 @@ class TextBox extends Component<InputProps, InputState> {
         [clearViewClass]: {
           normal: {
             color: mediumGreyColor,
-            getCSS() {
-              return ` position: absolute;
-                   transform: translateY(50%);
-                   bottom: 50%;
-                   right: ${px2remcss(padding)};`;
+            getCSS(themeMeta, themeProps) {
+              const {
+                propsConfig: { hideClearButton },
+              } = themeProps;
+              const theVisible = hideClearButton ? 'hidden' : 'visible';
+              return `visibility: ${theVisible};padding-right: ${px2remcss(get('padding'))};`;
+            },
+            getThemeMeta(themeMeta, themeProps) {
+              const {
+                propsConfig: { size },
+              } = themeProps;
+              const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
+              const theSize = innerFontSize || fontSize || getInputIconSize(size);
+              return { fontSize: theSize };
             },
           },
-          hover: {
-            color: darkGreyColor,
-          },
-          disabled: {
-            cursor: 'not-allowed',
-          },
+          hover: { color: darkGreyColor },
+          disabled: { cursor: 'not-allowed', color: disableTextColor },
         },
       },
       ClearButtonThemeProps
     );
 
-    const { disabled, clearIcon } = this.props;
+    const { disabled, clearIcon, size } = this.props;
     return (
       <Icon
+        propsConfig={{ size, hideClearButton: this.isEmpty() || !canClear }}
         disabled={disabled}
         singleTheme
         viewClass={clearViewClass}
         theme={newTheme}
         iconClass={clearIcon || Clear}
         onClick={this.onClear}
-        {...addMouseEvent(this)}
       />
     );
   }
+
+  onMouseLeave = (event: SyntheticMouseEvent<HTMLInputElement>) => {
+    const { disabled, onMouseLeave } = this.props;
+    if (disabled) {
+      return;
+    }
+    onMouseLeave && onMouseLeave(event);
+  };
+
+  onMouseEnter = (event: SyntheticMouseEvent<HTMLInputElement>) => {
+    const { disabled, onMouseEnter } = this.props;
+    if (disabled) {
+      return;
+    }
+    onMouseEnter && onMouseEnter(event);
+  };
 
   generateInput(): React$Node {
     const { props } = this;
@@ -624,46 +514,17 @@ class TextBox extends Component<InputProps, InputState> {
       autoFocus,
       type,
       disabled,
-      isShowClearButton,
-      getPartOfThemeProps,
       _maxLength,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
     }
-
-    const {
-      themeConfig: { normal: { color = lightGreyColor, font = {}, fontSize } = {} },
-    } = this.props.getPartOfThemeProps('Placeholder');
-
-    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
-
-    const theValidateThemeProps = isValidateError(validateStatus)
-      ? validateErrorInputThemeProps
-      : {};
-
-    const theThemeProps = deepMerge(
-      this.props.getPartOfThemeProps('Input', {
-        props: {
-          validateType,
-          validateStatus,
-          prefix,
-          suffix,
-          placeHolderColor: color,
-          placeHolderFontSize: fontSize,
-          isShowClearButton,
-        },
-      }),
-      theValidateThemeProps,
-      this.props.getPartOfThemeProps('Container', {
-        props: { size },
-      })
-    );
     const theType = type === 'password' ? 'password' : 'text';
+
     return (
       <CommonInputStyle
         maxLength={_maxLength}
-        themeProps={theThemeProps}
+        themeProps={this.getFinalThemeProps()}
         autoFocus={autoFocus}
         ref={this.input}
         validateStatus={validateStatus}
@@ -689,6 +550,79 @@ class TextBox extends Component<InputProps, InputState> {
     );
   }
 
+  getFinalThemeProps() {
+    const {
+      getPartOfThemeProps,
+      validateStatus,
+      validateType,
+      prefix,
+      suffix,
+      isShowClearButton,
+      size,
+      _focus,
+    } = this.props;
+    const {
+      themeConfig: { normal: { color, font = {}, fontSize } = {} },
+    } = getPartOfThemeProps('Placeholder');
+
+    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
+    const defaultTheme = {
+      themeConfig: {
+        normal: {
+          borderRadius: getBorderRadius(borderRadius),
+          border: getBorder(get('normalBorder')),
+        },
+        hover: {
+          border: getBorder(get('hoverBorder')),
+        },
+        active: {
+          border: getBorder(get('activeBorder')),
+        },
+        focus: {
+          border: getBorder(get('focusBorder')),
+          boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px 4px ${get('inputFocusShadowColor')}`),
+        },
+        disabled: {
+          background: { color: disableColor },
+          color: disableTextColor,
+          border: getBorder(get('disabledBorder')),
+        },
+      },
+    };
+    const theValidateThemeProps = isValidateError(validateStatus)
+      ? deepMerge(
+          validateValueDefaultTheme,
+          validateBorderDefaultTheme(),
+          validateErrorInputThemeProps
+        )
+      : {};
+    const theValidateWidthThemeProps = validateType && validateStatus ? validateWidthTheme : {};
+
+    const theThemeProps = deepMerge(
+      defaultTheme,
+      getPartOfThemeProps('Input', {
+        props: {
+          prefix,
+          suffix,
+          placeHolderColor: color,
+          placeHolderFontSize: fontSize,
+          isShowClearButton,
+          placeHolderFont: font,
+        },
+      }),
+      getPartOfThemeProps('Container', {
+        props: { size },
+      }),
+      theValidateWidthThemeProps,
+      theValidateThemeProps
+    );
+    if (_focus) {
+      theThemeProps.themeState.active = false;
+      theThemeProps.themeState.focus = true;
+    }
+    return theThemeProps;
+  }
+
   onKeyDown = (event: KeyboardEvent) => {
     const { onKeyDown, onEnter, disabled, readOnly } = this.props;
     if (disabled || readOnly) {
@@ -699,8 +633,8 @@ class TextBox extends Component<InputProps, InputState> {
     onEnter && keyCode === 13 && onEnter(event);
   };
   onClick = (event: UIEvent) => {
-    const { onClick, disabled, readOnly } = this.props;
-    if (disabled || readOnly) {
+    const { onClick, disabled } = this.props;
+    if (disabled) {
       return;
     }
     onClick && onClick(event);
@@ -721,8 +655,13 @@ class TextBox extends Component<InputProps, InputState> {
   };
 }
 
-const TargetTxtBox = ThemeHoc(KeyBoardEventAdaptor(TextBox), Widget.Input, {
-  hover: true,
-  active: true,
-});
+const TargetTxtBox = ThemeHoc(
+  ValidateHoc(MouseEventAdaptor(KeyBoardEventAdaptor(TextBox))),
+  Widget.Input,
+  {
+    hover: true,
+    active: true,
+  }
+);
+
 export default TargetTxtBox;

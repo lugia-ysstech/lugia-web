@@ -10,13 +10,26 @@ import React from 'react';
 import GetElement from './getelement';
 import request from './request';
 import CSSComponent, { css } from '../theme/CSSProvider';
+import { deepMerge } from '@lugia/object-utils';
 
 const Container = CSSComponent({
   tag: 'div',
   className: 'upload_Container',
+  normal: {
+    selectNames: [['width'], ['height'], ['boxShadow'], ['borderRadius'], ['border'], ['color']],
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { areaType },
+      } = themeProps;
+      if (areaType === 'picture' || areaType === 'button') {
+        return `
+            display: inline-block;
+        `;
+      }
+    },
+  },
   css: css`
     position: relative;
-    display: inline-block;
   `,
 });
 
@@ -31,6 +44,7 @@ type UploadProps = {
   withCredentials?: boolean,
   autoUpload?: boolean,
   accept?: string,
+  name?: string,
   url: string,
   headers?: Object,
   inputId?: string,
@@ -132,25 +146,32 @@ class Upload extends React.Component<UploadProps, StateProps> {
     return {
       classNameStatus: 'classNameStatus' in stateProps ? classNameStatus : 'default',
       defaultText: 'defaultText' in stateProps ? defaultText : defaultUploadTips,
-      fileListDone: 'fileListDone' in stateProps ? fileListDone : defProps.fileList,
+      fileListDone: 'fileList' in defProps ? defProps.fileList : fileListDone,
       isAllowUpload: 'isAllowUpload' in stateProps ? isAllowUpload : defProps.autoUpload,
     };
   }
 
   render() {
-    const { themeProps } = this.props;
+    const { areaType } = this.props;
+    const themeProps = this.props.getPartOfThemeProps('Container');
+    const areaTypeTheme = deepMerge(themeProps, { propsConfig: { areaType } });
     return (
-      <Container themeProps={themeProps}>
+      <Container themeProps={areaTypeTheme}>
         <GetElement
           {...this.props}
           {...this.state}
           setChoosedFile={this.setChoosedFile}
           setAutoUploadState={this.setAutoUploadState}
           setDeleteList={this.setDeleteList}
+          getInputRef={this.getInputRef}
         />
       </Container>
     );
   }
+
+  getInputRef = (element: any) => {
+    this.input = element;
+  };
 
   setChoosedFile = (res: Array<Object>): void => {
     const { multiple } = this.props;
@@ -173,11 +194,12 @@ class Upload extends React.Component<UploadProps, StateProps> {
   getChangeUploadState = (typeState: string, name: string, hashMark: string) => {
     let list;
     const { fileListDone } = this.state;
-    if (isIdInArray(hashMark, fileListDone)) {
-      list = this.updateFieldList(fileListDone, hashMark, [{ target: 'status', value: 'loading' }]);
+    const newFileList = [...fileListDone];
+    if (isIdInArray(hashMark, newFileList)) {
+      list = this.updateFieldList(newFileList, hashMark, [{ target: 'status', value: 'loading' }]);
     } else {
       const { areaType } = this.props;
-      list = this.appendFileList(fileListDone, {
+      list = this.appendFileList(newFileList, {
         hashMark,
         name,
         areaType,
@@ -216,8 +238,24 @@ class Upload extends React.Component<UploadProps, StateProps> {
     }
     if (!autoUpload && !isAllowUpload) return;
 
-    const { url, withCredentials, data, headers, method = 'post', dataType = 'json' } = this.props;
-    const dataObject = { url, withCredentials, data, headers, method, dataType };
+    const {
+      url,
+      withCredentials,
+      data,
+      headers,
+      method = 'post',
+      dataType = 'json',
+      name = 'file',
+    } = this.props;
+    const dataObject = {
+      url,
+      withCredentials,
+      data,
+      headers,
+      method,
+      dataType,
+      uploadFileName: name,
+    };
 
     for (let i = 0; i < len; i++) {
       if (i >= limit) break;
@@ -261,7 +299,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
         this.uploadProgress(res, hashMark);
       },
       onComplete: res => {
-        this.uploadComplete(res, hashMark);
+        this.uploadComplete(res);
       },
     });
   };
@@ -282,7 +320,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
 
     const list = this.updateFieldList(fileListDone, hashMark, [
       { target: 'status', value: 'done' },
-      { target: 'url', value: res.data.url },
+      { target: 'url', value: res && res.data && res.data.url },
     ]);
     this.setStateValue({ classNameStatus: 'done', fileListDone: list });
     const { areaType } = this.props;
@@ -295,8 +333,9 @@ class Upload extends React.Component<UploadProps, StateProps> {
     onSuccess && onSuccess(res, this.getResponse(fileListDone));
   };
 
-  uploadComplete = (res: Object, hashMark: string): void => {
+  uploadComplete = (res: Object): void => {
     const { onComplete } = this.props;
+    this.input.value = '';
     onComplete && onComplete(res.currentTarget.response);
   };
 
@@ -321,7 +360,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
       { target: 'status', value: 'fail' },
     ]);
     this.setStateValue({ classNameStatus: 'fail', fileListDone: list });
-
+    this.input.value = '';
     const { onFail } = this.props;
     onFail && onFail(res);
   };

@@ -3,6 +3,11 @@
   "title": "多选框",
   "desc": "多选框。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "checked": {
       "type": "boolean",
       "desc": "指定Checkbox是否选中"
@@ -105,7 +110,6 @@
         ["width"],
         ["height"]
       ],
-      "hover": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
       "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
     },
     "CheckboxEdgeIndeterminate": {
@@ -119,7 +123,6 @@
         ["width"],
         ["height"]
       ],
-      "hover": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
       "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
     },
     "CheckboxEdgeCancel": {

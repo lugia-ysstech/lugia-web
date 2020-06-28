@@ -3,6 +3,11 @@
   "title": "多选框组",
   "desc": "多选框组。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "defaultValue": {
       "type": "string[]",
       "desc": "指定CheckboxGroup初始选中值"
@@ -35,8 +40,7 @@
     },
     "valueField": {
       "type": "string",
-      "desc": "指定 Checkbox 组件 value 值",
-      "defaultValue": false
+      "desc": "指定 Checkbox 组件 value 值"
     },
     "displayValue": {
       "type": "string[]",
@@ -264,6 +268,13 @@
         "CheckboxText": {
           "name": "文字样式",
           "desc": "文字样式",
+          "normal": [["color"], ["font"], ["padding"]],
+          "hover": [["color"], ["font"]],
+          "disabled": [["color"], ["font"]]
+        },
+        "CheckboxCancelText": {
+          "name": "取消状态文字样式",
+          "desc": "取消状态文字样式",
           "normal": [["color"], ["font"], ["padding"]],
           "hover": [["color"], ["font"]],
           "disabled": [["color"], ["font"]]

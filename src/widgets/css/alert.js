@@ -3,12 +3,10 @@
  * create by guorg
  * @flow
  */
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
-import colorsFunc from '../css/stateColor';
-import changeColor from './utilsColor';
-import styled, { css, keyframes } from 'styled-components';
-import Icon from '../icon';
+import { css, keyframes } from 'styled-components';
+import get from './theme-common-dict';
 
 const { px2remcss } = units;
 export type Type = 'info' | 'success' | 'error' | 'warning';
@@ -18,6 +16,7 @@ export type AlertProps = {
   showIcon?: boolean,
   getTheme: Function,
   closeText?: string | React.ReactNode,
+  closeIcon?: string,
   closable?: boolean,
   description?: string | React.ReactNode,
   onClose?: Function,
@@ -44,31 +43,37 @@ type CSSProps = {
   animateStart: boolean,
 };
 
-const {
-  themeColor,
-  successColor,
-  warningColor,
-  dangerColor,
-  mediumGreyColor,
-  blackColor,
-  darkGreyColor,
-} = colorsFunc();
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+
 export const TypeCSS = {
   info: {
-    color: themeColor,
-    background: changeColor(themeColor, 0, 0, 20).rgba,
+    color: '$lugia-dict.@lugia/lugia-web.themeColor',
+    hoverColor: '$lugia-dict.@lugia/lugia-web.themeHoverColor',
+    activeColor: '$lugia-dict.@lugia/lugia-web.themeActiveColor',
+    focusColor: '$lugia-dict.@lugia/lugia-web.themeFocusColor',
+    background: '$lugia-dict.@lugia/lugia-web.alertThemeColorReduceA',
   },
   success: {
-    color: successColor,
-    background: changeColor(successColor, 0, 0, 20).rgba,
+    color: '$lugia-dict.@lugia/lugia-web.successColor',
+    hoverColor: '$lugia-dict.@lugia/lugia-web.successHoverColor',
+    activeColor: '$lugia-dict.@lugia/lugia-web.successActiveColor',
+    focusColor: '$lugia-dict.@lugia/lugia-web.successFocusColor',
+    background: '$lugia-dict.@lugia/lugia-web.alertSuccessColorReduceA',
   },
   warning: {
-    color: warningColor,
-    background: changeColor(warningColor, 0, 0, 20).rgba,
+    color: '$lugia-dict.@lugia/lugia-web.warningColor',
+    hoverColor: '$lugia-dict.@lugia/lugia-web.warningHoverColor',
+    activeColor: '$lugia-dict.@lugia/lugia-web.warningActiveColor',
+    focusColor: '$lugia-dict.@lugia/lugia-web.warningFocusColor',
+    background: '$lugia-dict.@lugia/lugia-web.alertWarningColorReduceA',
   },
   error: {
-    color: dangerColor,
-    background: changeColor(dangerColor, 0, 0, 20).rgba,
+    color: '$lugia-dict.@lugia/lugia-web.dangerColor',
+    hoverColor: '$lugia-dict.@lugia/lugia-web.dangerHoverColor',
+    activeColor: '$lugia-dict.@lugia/lugia-web.dangerActiveColor',
+    focusColor: '$lugia-dict.@lugia/lugia-web.dangerFocusColor',
+    background: '$lugia-dict.@lugia/lugia-web.alertDangerColorReduceA',
   },
 };
 
@@ -119,7 +124,7 @@ export const Alert = CSSComponent({
     box-sizing: border-box;
     overflow: hidden;
     line-height: ${props => getLineHeight(props)};
-    border-radius: ${px2remcss(4)};
+    border-radius: ${px2remcss(get('borderRadiusValue'))};
     ${getAlertAnimate};
   `,
   normal: {
@@ -139,48 +144,35 @@ export const Alert = CSSComponent({
     ],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
-      const { hasDect, showIcon } = propsConfig;
+      const { hasDect } = propsConfig;
       let verticalPad = 12;
-      let leftPad = 10;
-      if (showIcon) {
-        leftPad = hasDect ? 40 : 34;
-      }
       if (hasDect) {
         verticalPad = 18;
       }
 
       return {
-        padding: { top: verticalPad, bottom: verticalPad, left: leftPad, right: 10 },
+        padding: { top: verticalPad, bottom: verticalPad, left: 0, right: 10 },
       };
     },
   },
 });
 
-export const getPosition = (props: Object) => {
-  const { hasDect } = props;
-
-  return `top: ${hasDect ? px2remcss(20) : px2remcss(12)};left: ${px2remcss(10)}`;
-};
-
-export const CloseIcon: Object = styled(Icon)`
-  color: ${mediumGreyColor};
-`;
-
 export const Message = CSSComponent({
   tag: 'span',
   className: 'alert-message',
   css: css`
-    vertical-align: text-bottom;
+    padding-left: ${px2remcss(get('paddingToText'))};
   `,
   normal: {
-    defaultTheme: { color: blackColor, font: { fontSize: 14 } },
+    defaultTheme: { color: darkGreyColor, font: { fontSize: 14 } },
     selectNames: [['color'], ['font']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
       const { hasDect } = propsConfig;
 
       return {
-        font: { size: hasDect ? 18 : 14 },
+        font: { size: hasDect ? get('headLineFontSize') : get('sectionFontSize') },
+        color: hasDect ? blackColor : darkGreyColor,
       };
     },
   },
@@ -191,7 +183,18 @@ const getCloseTop = (props: CSSProps): string => {
   if (hasDect) {
     return px2remcss(24);
   }
-  return px2remcss(12);
+  return px2remcss(13);
+};
+const getCloseTextColor = (props: Object, name: string) => {
+  const { propsConfig = {} } = props;
+  const { textInProps, type } = propsConfig;
+  if (textInProps) {
+    const typeCSSColor = TypeCSS[type];
+    const color = typeCSSColor ? typeCSSColor[name] : TypeCSS.info[name];
+    return {
+      color,
+    };
+  }
 };
 
 export const CloseText = CSSComponent({
@@ -201,23 +204,37 @@ export const CloseText = CSSComponent({
     overflow: hidden;
     position: absolute;
     top: ${props => getCloseTop(props)};
-    right: ${px2remcss(14)};
+    right: ${px2remcss(get('padding'))};
   `,
   normal: {
-    defaultTheme: { font: { size: 16 } },
+    defaultTheme: { font: { size: get('descriptionFontSize') } },
     selectNames: [['color'], ['font']],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig = {} } = themeProps;
-      const { textInProps, type } = propsConfig;
-      if (textInProps) {
-        const typeCSSCplor = TypeCSS[type];
-        const color = typeCSSCplor ? typeCSSCplor.color : TypeCSS.info.color;
-        return {
-          color,
-        };
-      }
+      return getCloseTextColor(themeProps, 'color');
     },
   },
+  hover: {
+    defaultTheme: {},
+    selectNames: [['color']],
+    getThemeMeta(themeMeta, themeProps) {
+      return getCloseTextColor(themeProps, 'hoverColor');
+    },
+  },
+  active: {
+    defaultTheme: {},
+    selectNames: [['color']],
+    getThemeMeta(themeMeta, themeProps) {
+      return getCloseTextColor(themeProps, 'activeColor');
+    },
+  },
+  focus: {
+    defaultTheme: {},
+    selectNames: [['color']],
+    getThemeMeta(themeMeta, themeProps) {
+      return getCloseTextColor(themeProps, 'focusColor');
+    },
+  },
+  option: { hover: true, active: true, focus: true },
 });
 
 export const Description = CSSComponent({
@@ -229,9 +246,31 @@ export const Description = CSSComponent({
   normal: {
     defaultTheme: {
       color: darkGreyColor,
-      font: { size: 14 },
+      font: { size: get('sectionFontSize') },
       padding: { top: 0, right: 0, bottom: 0, left: 0 },
     },
     selectNames: [['color'], ['font'], ['padding']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const { showIcon, iconSize } = propsConfig;
+      const paddingLeft = showIcon
+        ? iconSize + get('padding') + get('paddingToText')
+        : get('paddingToText');
+
+      return {
+        padding: {
+          left: paddingLeft,
+        },
+      };
+    },
   },
+});
+
+export const TitleWrap = StaticComponent({
+  tag: 'div',
+  className: 'alert-title-wrap',
+  css: css`
+    display: flex;
+    align-items: center;
+  `,
 });

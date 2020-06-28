@@ -1,0 +1,106 @@
+{
+  "widgetName": "NewTable",
+  "title": "表格",
+  "desc": "Table  表格",
+  "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
+    "columns": {
+      "type": "Object[]",
+      "meta": [
+        { "key": "title", "title": "表头文本", "type": "string" },
+        { "key": "key", "title": "对应key", "type": "any" },
+        { "key": "dataIndex", "title": "指定展示项", "type": "any" },
+        { "key": "width", "title": "列宽", "type": "number" }
+      ],
+      "desc": "表格每一行展示的内容",
+      "defaultValue": [
+        {
+          "title": "Name",
+          "dataIndex": "name",
+          "key": "name"
+        },
+        {
+          "title": "Age",
+          "dataIndex": "age",
+          "key": "age"
+        },
+        {
+          "title": "Address",
+          "dataIndex": "address",
+          "key": "address"
+        }
+      ]
+    },
+    "data": {
+      "type": "Object[]",
+      "meta": [],
+      "desc": "数据源，指定 table 组件的数据",
+      "defaultValue": [
+        { "name": "Jack", "age": 28, "address": "some where" },
+        { "name": "Rose", "age": 36, "address": "some where" },
+        { "name": "Bob", "age": 25, "address": "some where" }
+      ]
+    },
+    "footer": {
+      "type": "React.node",
+      "desc": "表格尾部"
+    },
+    "showHeader": {
+      "type": "boolean",
+      "desc": "是否展示表头",
+      "propsDefaultValue": true
+    },
+    "title": {
+      "type": "React.node",
+      "desc": "表格标题"
+    },
+    "tableStyle": {
+      "type": "tableStyleType",
+      "desc": "表格标题",
+      "propsDefaultValue": "bordered"
+    },
+    "rowKey": {
+      "type": "string",
+      "desc": "表格行 key 的取值，可以是字符串或一个返回值是字符串的函数",
+      "propsDefaultValue": "key"
+    }
+  },
+  "type": {
+    "tableStyleType": ["zebraStripe", "linear", "bordered"]
+  },
+  "childrenWidget": ["column"],
+  "category": ["数据展示"],
+  "theme": {
+    "Container": {
+      "name": "表格整体样式",
+      "desc": "为表格配置整体样式",
+      "normal": [["width"], ["height"]]
+    },
+    "Tr": {
+      "name": "表格行样式",
+      "desc": "为表格行配置样式",
+      "normal": [["background"]]
+    },
+    "Td": {
+      "name": "单元格样式",
+      "desc": "为单元格配置样式",
+      "normal": [["width"], ["height"], ["border"], ["padding"]]
+    },
+    "EmptyData": {
+      "name": "无数据提示",
+      "desc": "无数据提示配置样式",
+      "normal": [["height"], ["padding"], ["font"]]
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 400
+      }
+    }
+  }
+}

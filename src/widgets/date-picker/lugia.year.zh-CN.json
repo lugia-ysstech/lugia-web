@@ -3,6 +3,11 @@
   "title": "年选择器",
   "desc": "用于年选择,",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
@@ -41,7 +46,34 @@
     },
     "step": {
       "type": "number",
-      "desc": "设置年的展示步长",
+      "desc": "设置年的展示步长"
+    },
+    "validateStatus": {
+      "type": "ValidateStatus",
+      "desc": "校验状态"
+    },
+    "validateType": {
+      "type": "ValidateType",
+      "desc": "校验信息显示类型",
+      "propsDefaultValue": "top"
+    },
+    "help": {
+      "type": "string",
+      "desc": "校验提示信息"
+    },
+    "size": {
+      "type": "InputSize",
+      "desc": "可配置三种尺寸大小的input",
+      "propsDefaultValue": "default"
+    },
+    "alwaysOpen": {
+      "type": "boolean",
+      "desc": "控制面板是否始终展开",
+      "propsDefaultValue": false
+    },
+    "liquidLayout": {
+      "type": "boolean",
+      "desc": "是否开启流式布局",
       "propsDefaultValue": false
     }
   },
@@ -66,6 +98,9 @@
     }
   },
   "type": {
+    "InputSize": ["small", "default", "large"],
+    "ValidateType": ["top", "bottom", "inner"],
+    "ValidateStatus": ["default", "error"],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
@@ -74,5 +109,127 @@
   },
   "category": ["数据录入"],
   "componentName": "YearPicker",
-  "needExport": true
+  "needExport": true,
+  "theme": {
+    "Container": {
+      "name": "文本框",
+      "desc": "文本框配置",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["fontSize"],
+        ["borderRadius"],
+        ["border"],
+        ["boxShadow"],
+        ["color"],
+        ["font"]
+      ],
+      "hover": [["border"], ["borderRadius"], ["boxShadow"], ["background"]],
+      "active": [],
+      "disabled": [["background"], ["borderRadius"], ["border"], ["boxShadow"]]
+    },
+    "Placeholder": {
+      "name": "文本框提示信息",
+      "desc": "文本框提示信息配置",
+      "normal": [["color"], ["fontSize"], ["font"]]
+    },
+    "InputPrefix": {
+      "name": "前缀图标",
+      "desc": "前缀图标配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "InputSuffix": {
+      "name": "后缀图标",
+      "desc": "后缀图标配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "ClearButton": {
+      "name": "清除图标",
+      "desc": "清除图标配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "FacePanelContain": {
+      "name": "日期面板",
+      "desc": "日期面板配置",
+      "normal": [["width"], ["height"], ["background"], ["border"], ["boxShadow"], ["borderRadius"]]
+    },
+    "GroupDate": {
+      "name": "分类日期",
+      "desc": "分类日期配置/年/月/周",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"], ["background"], ["borderRadius"]]
+    },
+    "HeadSingleArrow": {
+      "name": "头部单箭头",
+      "desc": "头部单箭头",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "HeadYearText": {
+      "name": "头部年",
+      "desc": "头部年的配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "ValidateErrorInput": {
+      "name": "校验失败的输入框",
+      "desc": "配置校验失败的输入框",
+      "normal": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"]
+      ],
+      "hover": [["background"], ["border"], ["boxShadow"]],
+      "active": [["background"], ["border"], ["boxShadow"]]
+    },
+    "ValidateErrorText": {
+      "name": "校验失败提示信息",
+      "desc": "配置校验失败的提示信息",
+      "normal": [
+        ["background"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "hover": [],
+      "active": []
+    },
+    "ExtraFooter": {
+      "name": "额外页脚",
+      "desc": "额外页脚配置",
+      "normal": [["color"], ["font"]]
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 300
+      }
+    },
+    "FacePanelContain": {
+      "normal": {
+        "width": 300,
+        "height": 320
+      }
+    }
+  }
 }

@@ -3,6 +3,11 @@
   "title": "进度条",
   "desc": "展示操作的当前进度。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "type": {
       "type": "ProgressType",
       "desc": "进度条类型，line、circle、dashboard",
@@ -134,7 +139,15 @@
     "ProgressInnerLine_Default": {
       "name": "进度条进度线默认配置",
       "desc": "进度条进度线默认配置",
-      "normal": [["height"], ["background"], ["border"], ["borderRadius"], ["boxShadow"]]
+      "normal": [
+        ["height"],
+        ["background"],
+        ["borderRadius"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["padding", "right"]
+      ]
     },
     "ProgressInnerLine_Success": {
       "name": "进度条进度线成功配置",
@@ -165,6 +178,11 @@
       "name": "进度条失败图标配置",
       "desc": "进度条失败图标配置",
       "normal": [["color"], ["fontSize"]]
+    },
+    "ProgressActiveLine": {
+      "name": "动效条样式配置",
+      "desc": "动效条样式配置",
+      "normal": [["color"]]
     }
   }
 }

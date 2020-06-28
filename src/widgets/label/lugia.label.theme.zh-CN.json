@@ -1,0 +1,41 @@
+[
+  {
+    "widgetName": "Label",
+    "title": "文本",
+    "viewProps": [{ "name": "showPrefix", "text": "文本前缀" }],
+    "data": [
+      {
+        "title": "文本",
+        "iconClass": "radioText",
+        "data": [
+          {
+            "name": "文本",
+            "path": ["Container"],
+            "props": [
+              {
+                "name": "text",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "文本前缀",
+        "iconClass": "Prefixtext",
+        "data": [
+          {
+            "name": "前缀",
+            "path": ["LabelPrefix"],
+            "props": [
+              {
+                "name": "prefix",
+                "typeInTheme": "string"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

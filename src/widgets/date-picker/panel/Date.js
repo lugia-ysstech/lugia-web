@@ -16,7 +16,7 @@ import {
   HeaderTopText,
 } from '../styled/styled';
 import moment from 'moment';
-import getThemeProps from '../themeConfig/themeConfig';
+import { getHeadArrowTheme, getHeadYearAndMonth } from '../themeConfig/themeConfig';
 type TypeProps = {
   value?: string,
   firstWeekDay?: number,
@@ -25,8 +25,8 @@ type TypeProps = {
   onChange: Function,
   setTriggerVisible?: Function,
   getCurrentYandM?: Function,
-  getPartOfThemeProps: Function,
-  getPartOfThemeHocProps: Function,
+  getPartOfThemeProps?: Function,
+  getPartOfThemeHocProps?: Function,
   changeHead?: Function,
   mode: string,
   showToday?: boolean,
@@ -147,15 +147,17 @@ class Date extends Component<TypeProps, TypeState> {
     const { firstDayIndex } = getFirstDayIndex(days);
     const { themeProps } = this.props;
 
-    // const themeProp = getThemeProps({ mode, getPartOfThemeProps }, 'PanelTitle');
-    const headYearTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadYearText');
-    const headMonthTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadMonthText');
-    const { viewClass: singleViewClass, theme: singleTheme } = getPartOfThemeHocProps(
-      'HeadSingleArrow'
-    );
-    const { viewClass: doubleViewClass, theme: doubleTheme } = getPartOfThemeHocProps(
-      'HeadDoubleArrow'
-    );
+    const { headYearTextTheme, headMonthTextTheme } = getHeadYearAndMonth({
+      mode,
+      getPartOfThemeProps,
+    });
+
+    const {
+      single: { singleViewClass, singleTheme } = {},
+      double: { doubleViewClass, doubleTheme } = {},
+    } = getHeadArrowTheme({
+      getPartOfThemeHocProps,
+    });
     const singleArrowConfig = {
       viewClass: singleViewClass,
       theme: singleTheme,
@@ -167,8 +169,8 @@ class Date extends Component<TypeProps, TypeState> {
     return (
       <DateWrapper mode={mode} themeProps={themeProps}>
         <div>
-          <DateHeader themeProps={themeProps}>
-            <HeaderTop themeProps={themeProps}>
+          <DateHeader>
+            <HeaderTop>
               {differAyear && index === 1 ? (
                 ''
               ) : (

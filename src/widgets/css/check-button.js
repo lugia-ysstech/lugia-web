@@ -3,16 +3,18 @@
  * create by guorg
  * @flow
  */
-import colorsFunc from '../css/stateColor';
 import styled, { css } from 'styled-components';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import Icon from '../icon';
+import get from './theme-common-dict';
+import { getBorder } from '@lugia/theme-utils';
 
 type CheckSize = 'default' | 'small' | 'large' | 'bigger';
 type TypeSizeCSS = {
   height: number,
   lineHeight: number,
+  fontSize: number,
 };
 export type CheckProps = {
   size?: CheckSize,
@@ -39,39 +41,28 @@ export type CheckState = {
 };
 
 const em = px2remcss;
-const {
-  themeColor,
-  borderColor,
-  borderDisableColor,
-  darkGreyColor,
-  lightGreyColor,
-  mediumGreyColor,
-} = colorsFunc();
-const SizeCSS: { [key: CheckSize]: TypeSizeCSS } = {
+const SizeCSS: { [key: CheckSize]: TypeSizeCSS } = () => ({
   default: {
-    height: 32,
-    lineHeight: 30,
+    height: 'normalSize',
+    fontSize: get('sectionFontSize'),
   },
   small: {
-    height: 28,
-    lineHeight: 26,
+    height: 'smallSize',
+    fontSize: get('descriptionFontSize'),
   },
   large: {
-    height: 38,
-    lineHeight: 36,
+    height: 'largeSize',
+    fontSize: get('sectionFontSize'),
   },
-  bigger: {
-    height: 42,
-    lineHeight: 40,
-  },
-};
+});
 const getSizeCSS = (props: PropsType): string => {
   const { size = 'default' } = props;
-  const { height, lineHeight } = SizeCSS[size];
+  const { height, fontSize } = SizeCSS()[size];
 
   return `
-    height: ${em(height)};
-    line-height: ${em(lineHeight)};
+    height: ${em(get(height))};
+    line-height: ${em(get(height) - 2)};
+    font-size: ${em(fontSize)}
   `;
 };
 
@@ -99,7 +90,7 @@ const getCursor = (props: PropsType) => {
 const getHasCheckCSS = (props: PropsType) => {
   const { hasChecked = false } = props;
   if (hasChecked) {
-    return ` border: 1px solid ${themeColor};`;
+    return ` border: 1px solid ${get('themeColor')};`;
   }
 };
 
@@ -138,6 +129,8 @@ const getPadding = (themeProps: Object): Object => {
   return { padding };
 };
 
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
+const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 export const CheckSpan = CSSComponent({
   tag: 'span',
   className: 'CheckButtonCheckSpan',
@@ -168,14 +161,18 @@ export const CheckSpan = CSSComponent({
       ['padding'],
     ],
     defaultTheme: {
-      color: darkGreyColor,
+      color: '$lugia-dict.@lugia/lugia-web.darkGreyColor',
       border: {
-        top: { color: borderColor, width: 1, style: 'solid' },
-        right: { color: borderColor, width: 1, style: 'solid' },
-        bottom: { color: borderColor, width: 1, style: 'solid' },
+        ...getBorder(
+          {
+            color: borderColor,
+            width: 1,
+            style: 'solid',
+          },
+          { directions: ['t', 'r', 'b'] }
+        ),
       },
       background: { color: '#fff' },
-      fontSize: em(12),
       padding: {
         top: 0,
         right: 10,
@@ -185,6 +182,24 @@ export const CheckSpan = CSSComponent({
     },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       return getPadding(themeProps);
+    },
+    getCSS(themeMeta: Object, themeProps: Object): string {
+      const {
+        themeConfig: { normal },
+        themeState: { disabled },
+      } = themeProps;
+      const { height, padding } = normal;
+      let finalHeight = em(height);
+      if (height) {
+        if (!disabled && padding) {
+          const { top = 0, bottom = 0 } = padding;
+          finalHeight = em(height - top - bottom);
+        }
+        return `
+          line-height: ${finalHeight};                  
+        `;
+      }
+      return '';
     },
   },
   hover: {
@@ -198,22 +213,25 @@ export const CheckSpan = CSSComponent({
       ['padding'],
     ],
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
-      // console.log(themeMeta);
       return getPadding(themeProps);
     },
   },
   disabled: {
     selectNames: [['opacity'], ['borderRadius'], ['border'], ['background'], ['color']],
     defaultTheme: {
-      color: lightGreyColor,
+      color: '$lugia-dict.@lugia/lugia-web.lightGreyColor',
       opacity: 1,
       border: {
-        top: { color: borderDisableColor, width: 1, style: 'solid' },
-        right: { color: borderDisableColor, width: 1, style: 'solid' },
-        bottom: { color: borderDisableColor, width: 1, style: 'solid' },
+        ...getBorder(
+          {
+            color: borderDisableColor,
+            width: 1,
+            style: 'solid',
+          },
+          { directions: ['t', 'r', 'b'] }
+        ),
       },
       background: { color: '#fff' },
-      fontSize: em(12),
       padding: {
         top: 0,
         right: 10,
@@ -236,26 +254,29 @@ export const CancelSpan = StaticComponent({
     bottom: 0;
     left: 0;
     right: 0;
-    color: ${darkGreyColor};
-    background: ${lightGreyColor};
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: ${get('darkGreyColor')};
+    background: ${get('superLightColor')};
     ${getDisplayCSS};
   `,
 });
 
 const getIconFont = (props: Object) => {
   const { size = 'default' } = props;
-  if (size === 'default' || size === 'small') {
+  if (size === 'small') {
     return `
-      font-size: ${em(16)}!important;
+      font-size: ${em(12)}!important;
     `;
   }
 
   return `
-      font-size: ${em(18)}!important;
+      font-size: ${em(14)}!important;
     `;
 };
 export const IconWrap: Object = styled(Icon)`
   vertical-align: text-bottom !important;
   ${getIconFont}
-  color: ${mediumGreyColor};
+  color: ${get('darkGreyColor')};
 `;

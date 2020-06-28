@@ -8,7 +8,6 @@ import { modeStyle } from '../utils/booleanUtils';
 import { valueInRange, getMinAndMax } from '../../common/Math';
 import { getYandM } from '../utils/differUtils';
 import { getDateTheme } from '../themeConfig/themeConfig';
-import { addMouseEvent } from '@lugia/theme-hoc';
 type TypeProps = {
   choseDayIndex: Array<number> | number | string,
   onMouseOver?: Function,
@@ -147,6 +146,7 @@ class Dates extends Component<TypeProps, any> {
       activeTheme,
       outMonthNormalTheme,
       rangeNormalTheme,
+      todayTheme,
       dateTheme,
     } = getDateTheme(this.props);
     const dateChildren = days.map((currentValue, index) => {
@@ -164,6 +164,7 @@ class Dates extends Component<TypeProps, any> {
           activeTheme={activeTheme}
           hoverTheme={hoverTheme}
           rangeNormalTheme={rangeNormalTheme}
+          todayTheme={todayTheme}
           value={value}
           todayDate={todayDate}
           mode={mode}
@@ -199,6 +200,7 @@ class Dates extends Component<TypeProps, any> {
             activeTheme={activeTheme}
             normalTheme={normalTheme}
             outMonthNormalTheme={outMonthNormalTheme}
+            todayTheme={todayTheme}
             mode={mode}
             key={index}
             isToday={showToday && todayIndex === index + 1 ? true : false}

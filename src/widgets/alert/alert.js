@@ -10,69 +10,56 @@ import { deepMerge } from '@lugia/object-utils';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { AlertProps, AlertState, Type } from '../css/alert';
-import {
-  Alert,
-  CloseIcon,
-  CloseText,
-  Description,
-  Message,
-  getPosition,
-  TypeCSS,
-} from '../css/alert';
+import { Alert, CloseText, Description, Message, TitleWrap, TypeCSS } from '../css/alert';
 import changeColor from '../css/utilsColor';
-import colorsFunc from '../css/stateColor';
+import get from '../css/theme-common-dict';
 import Icon from '../icon';
+import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
+const warningColor = '$lugia-dict.@lugia/lugia-web.warningColor';
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 const AlertIcons = {
   info: 'lugia-icon-reminder_info_circle_o',
   success: 'lugia-icon-reminder_check_circle_o',
   error: 'lugia-icon-reminder_close_circle_o',
   warning: 'lugia-icon-reminder_exclamation_circle_o',
 };
-const { themeColor, successColor, warningColor, dangerColor } = colorsFunc();
-const TypeThemeProps = {
+const TypeThemeProps = () => ({
   info: {
     normal: {
       color: themeColor,
-      border: {
-        left: { color: themeColor, style: 'solid', width: 4 },
-        radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
-      },
-      background: { color: changeColor(themeColor, 0, 0, 20).rgba },
+      border: getBorder({ color: themeColor, width: 4, style: 'solid' }, ['l']),
+      borderRadius: getBorderRadius(get('borderRadiusValue')),
+      background: { color: changeColor(get('themeColor'), 0, 0, 10).rgba },
     },
   },
   success: {
     normal: {
       color: successColor,
-      border: {
-        left: { color: successColor, style: 'solid', width: 4 },
-        radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
-      },
-      background: { color: changeColor(successColor, 0, 0, 20).rgba },
+      border: getBorder({ color: successColor, width: 4, style: 'solid' }, ['l']),
+      borderRadius: getBorderRadius(get('borderRadiusValue')),
+      background: { color: changeColor(get('successColor'), 0, 0, 10).rgba },
     },
   },
   warning: {
     normal: {
       color: warningColor,
-      border: {
-        left: { color: warningColor, style: 'solid', width: 4 },
-        radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
-      },
-      background: { color: changeColor(warningColor, 0, 0, 20).rgba },
+      border: getBorder({ color: warningColor, width: 4, style: 'solid' }, ['l']),
+      borderRadius: getBorderRadius(get('borderRadiusValue')),
+      background: { color: changeColor(get('warningColor'), 0, 0, 10).rgba },
     },
   },
   error: {
     normal: {
       color: dangerColor,
-      border: {
-        left: { color: dangerColor, style: 'solid', width: 4 },
-        radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
-      },
-      background: { color: changeColor(dangerColor, 0, 0, 20).rgba },
+      border: getBorder({ color: dangerColor, width: 4, style: 'solid' }, ['l']),
+      borderRadius: getBorderRadius(get('borderRadiusValue')),
+      background: { color: changeColor(get('dangerColor'), 0, 0, 10).rgba },
     },
   },
-};
-
+});
 export default ThemeProvider(
   class extends React.Component<AlertProps, AlertState> {
     alert: any;
@@ -94,10 +81,10 @@ export default ThemeProvider(
     }
 
     getDefaultTheme(type: Type) {
-      if (TypeThemeProps[type]) {
-        return TypeThemeProps[type];
+      if (TypeThemeProps()[type]) {
+        return TypeThemeProps()[type];
       }
-      return TypeThemeProps.info;
+      return TypeThemeProps().info;
     }
 
     getAlertIconTheme = () => {
@@ -109,14 +96,11 @@ export default ThemeProvider(
         {
           [viewClass]: {
             normal: {
-              font: { size: hasDect ? 20 : 14 },
+              font: { size: hasDect ? get('mFontSize') : get('sFontSize') },
               cursor: 'default',
               color: typeTheme.color,
-              getCSS() {
-                return `
-                      position: absolute;
-                      ${getPosition({ hasDect })};
-                    `;
+              margin: {
+                left: get('padding'),
               },
             },
           },
@@ -152,6 +136,17 @@ export default ThemeProvider(
       alertWrapTheme.propsConfig.hasDect = hasDect;
       alertWrapTheme.propsConfig.showIcon = showIcon;
       alertMessageTheme.propsConfig.hasDect = hasDect;
+      const alertIconSyntheticalTheme = this.getAlertIconTheme();
+      const { viewClass, theme } = alertIconSyntheticalTheme;
+      const {
+        [viewClass]: {
+          normal: {
+            font: { size: iconSize },
+          },
+        },
+      } = theme;
+      alertDescriptionTheme.propsConfig.iconSize = iconSize;
+      alertDescriptionTheme.propsConfig.showIcon = showIcon;
 
       return visible ? (
         <Alert
@@ -164,12 +159,18 @@ export default ThemeProvider(
           hasDect={hasDect}
           themeProps={alertWrapTheme}
         >
-          {showIcon ? (
-            <Icon iconClass={icon || AlertIcons[type]} {...this.getAlertIconTheme()} singleTheme />
-          ) : null}
-          <Message hasDect={hasDect} showIcon={showIcon} themeProps={alertMessageTheme}>
-            {message}
-          </Message>
+          <TitleWrap>
+            {showIcon ? (
+              <Icon
+                iconClass={icon || AlertIcons[type]}
+                {...alertIconSyntheticalTheme}
+                singleTheme
+              />
+            ) : null}
+            <Message hasDect={hasDect} showIcon={showIcon} themeProps={alertMessageTheme}>
+              {message}
+            </Message>
+          </TitleWrap>
           <Description showIcon={showIcon} themeProps={alertDescriptionTheme}>
             {description}
           </Description>
@@ -179,8 +180,34 @@ export default ThemeProvider(
     }
 
     getCloseText = () => {
-      const { closeText, type = 'info', getPartOfThemeProps } = this.props;
+      const {
+        closeText,
+        closeIcon,
+        type = 'info',
+        getPartOfThemeProps,
+        getPartOfThemeHocProps,
+      } = this.props;
       const CloseTextTheme = getPartOfThemeProps('CloseText');
+      const { theme: IconThemeProps, viewClass: IconViewClass } = getPartOfThemeHocProps(
+        'CloseIcon'
+      );
+      const closeIconTheme = deepMerge(
+        {
+          [IconViewClass]: {
+            normal: {
+              color: get('mediumGreyColor'),
+              fontSize: get('sFontSize'),
+            },
+            hover: {
+              color: get('darkGreyColor'),
+            },
+            disabled: {
+              color: get('disableTextColor'),
+            },
+          },
+        },
+        IconThemeProps
+      );
       CloseTextTheme.propsConfig = { textInProps: this.isInProps('closeText'), type };
       return (
         <CloseText
@@ -189,7 +216,14 @@ export default ThemeProvider(
           type={type}
           hasDect={this.isInProps('description')}
         >
-          {closeText || <CloseIcon iconClass="lugia-icon-reminder_close" />}
+          {closeText || (
+            <Icon
+              theme={closeIconTheme}
+              viewClass={IconViewClass}
+              iconClass={closeIcon || 'lugia-icon-reminder_close'}
+              singleTheme
+            />
+          )}
         </CloseText>
       );
     };

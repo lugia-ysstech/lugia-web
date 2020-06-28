@@ -38,7 +38,7 @@ class ModalBox extends React.Component<any, any> {
   render() {
     const { visable } = this.state;
     return (
-      <div>
+      <div style={{ position: 'absolute', bottom: '30px', right: '30px' }}>
         <Button onClick={this.click}>弹出</Button>
         <Modal
           visible={visable}
@@ -101,7 +101,7 @@ export default class ModalDemo extends React.Component<any, any> {
     } = this.state;
     const view = {
       [Widgets.Modal]: {
-        ModalWrap: {
+        Container: {
           normal: {
             width: 800,
             height: 500,
@@ -148,12 +148,30 @@ export default class ModalDemo extends React.Component<any, any> {
             fontSize: 18,
           },
         },
-        // ModalIcon: {
-        //   normal: {
-        //     color: 'orange',
-        //     fontSize: 18,
-        //   },
-        // },
+        ModalMask: {
+          normal: {
+            background: {
+              color: 'green',
+            },
+          },
+        },
+        ModalOkButton: {
+          Container: {
+            normal: {
+              width: 200,
+            },
+          },
+        },
+        ModalCancelButton: {
+          Container: {
+            normal: {
+              width: 100,
+              background: {
+                color: 'red',
+              },
+            },
+          },
+        },
       },
     };
     return (
@@ -173,12 +191,14 @@ export default class ModalDemo extends React.Component<any, any> {
         <br />
         <Button onClick={this.Click(4)}>Modal</Button>
         <Modal
+          injectProps={{ type: 'Modal' }}
           visible={visable4}
           title="这是标题！"
           onOk={this.buttonClick(4)}
           onCancel={this.buttonClick(4)}
           okButtonProps={{ type: 'success' }}
           cancelButtonProps={{ type: 'danger' }}
+          closable={true}
         >
           这是内容！
         </Modal>
@@ -211,9 +231,11 @@ export default class ModalDemo extends React.Component<any, any> {
         <Modal
           visible={visable3}
           footer={[
-            <Button type="primary" onClick={this.buttonClick(3)}>
-              自定义页脚
-            </Button>,
+            <div style={{ marginTop: '15px' }}>
+              <Button type="primary" onClick={this.buttonClick(3)}>
+                自定义页脚
+              </Button>
+            </div>,
           ]}
           onCancel={this.buttonClick(3)}
           title="这是标题！"

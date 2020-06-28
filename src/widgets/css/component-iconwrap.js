@@ -4,7 +4,6 @@
  * @flow
  */
 import { px2remcss } from '../css/units';
-import colorsFunc from '../css/stateColor';
 import { css, keyframes } from 'styled-components';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 
@@ -18,14 +17,30 @@ export type IconConProps = {
 };
 export type IconConState = {};
 
-const { themeColor, successColor, warningColor, dangerColor } = colorsFunc();
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
 
 export const IconInfo = {
-  info: { class: 'lugia-icon-reminder_info_circle', color: themeColor },
-  success: { class: 'lugia-icon-reminder_check_circle', color: successColor },
-  error: { class: 'lugia-icon-reminder_close_circle', color: dangerColor },
-  warning: { class: 'lugia-icon-reminder_exclamation_circle', color: warningColor },
-  loading: { class: 'lugia-icon-financial_loading_o', color: themeColor },
+  info: {
+    class: 'lugia-icon-reminder_info_circle',
+    color: '$lugia-dict.@lugia/lugia-web.themeColor',
+  },
+  success: {
+    class: 'lugia-icon-reminder_check_circle',
+    color: '$lugia-dict.@lugia/lugia-web.successColor',
+  },
+  error: {
+    class: 'lugia-icon-reminder_close_circle',
+    color: '$lugia-dict.@lugia/lugia-web.dangerColor',
+  },
+  warning: {
+    class: 'lugia-icon-reminder_exclamation_circle',
+    color: '$lugia-dict.@lugia/lugia-web.warningColor',
+  },
+  loading: {
+    class: 'lugia-icon-financial_loading_o',
+    color: '$lugia-dict.@lugia/lugia-web.themeColor',
+  },
 };
 
 const IconSpin = keyframes`
@@ -53,9 +68,9 @@ export const MessageText = CSSComponent({
   normal: {
     selectNames: [['font'], ['color']],
     defaultTheme: {
-      color: '#000',
+      color: darkGreyColor,
       font: {
-        size: 14,
+        size: sectionFontSize,
       },
     },
   },

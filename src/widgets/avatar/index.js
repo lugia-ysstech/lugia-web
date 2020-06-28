@@ -13,13 +13,31 @@ import Icon from '../icon';
 import ThemeHoc from '@lugia/theme-hoc';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import CSSComponent, { css, getBorderRadius } from '../theme/CSSProvider';
-import { ObjectUtils } from '@lugia/type-utils';
-import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
+import get from '../css/theme-common-dict';
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
+const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+const mFontSize = '$lugia-dict.@lugia/lugia-web.mFontSize';
+const lFontSize = '$lugia-dict.@lugia/lugia-web.lFontSize';
+
+type AvatarProps = {
+  viewClass?: string,
+  shape?: AvatarShape,
+  size?: AvatarSize,
+  src?: string,
+  icon?: string,
+  type: AvatarType,
+  name: string,
+  themeProps: Object,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
+};
+type AvatarState = {};
 const { px2remcss } = units;
-const { lightGreyColor } = colorsFunc();
 const isLargeSize = size => {
   return size === 'large';
 };
@@ -58,6 +76,7 @@ const AvatarWrapper = CSSComponent({
     text-align: center;
   `,
 });
+
 const BaseAvatar = CSSComponent({
   tag: 'div',
   className: 'BaseAvatar',
@@ -73,24 +92,20 @@ const BaseAvatar = CSSComponent({
       ['border'],
       ['borderRadius'],
       ['boxShadow'],
+      ['lineHeight'],
     ],
     defaultTheme: {
-      color: 'rgba(0, 0, 0, 0.65)',
+      color: defaultColor,
     },
     getCSS(themeMeta: Object, themeProps: Object) {
-      const {
-        propsConfig: { size, shape },
-      } = themeProps;
-      const theBorderRadius = shape === 'circle' ? '50%' : '10%';
-      return `border-radius:${theBorderRadius};
-      line-height: ${px2remcss(getDefaultSize(size))};
+      return `;
       min-width: ${px2remcss(24)};
       min-height: ${px2remcss(24)};
       `;
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { size, type },
+        propsConfig: { size, type, shape },
       } = themeProps;
       const { width, height, background = {} } = themeMeta;
       const theBackgroundColor =
@@ -105,8 +120,10 @@ const BaseAvatar = CSSComponent({
       };
       const theWidth = newSize(width, theSize);
       const theHeight = newSize(height, theSize);
-
+      const theBorderRadius = shape === 'circle' ? '50%' : get('borderRadiusValue');
       return {
+        lineHeight: theHeight,
+        borderRadius: getBorderRadius(theBorderRadius),
         width: theWidth,
         height: theHeight,
         background: {
@@ -130,16 +147,18 @@ const Name = CSSComponent({
   className: 'AvatarName',
   normal: {
     selectNames: [['color'], ['width'], ['height'], ['fontSize']],
-    defaultTheme: { color: 'white' },
-    getCSS(themeMeta: Object, themeProps: Object) {
+    defaultTheme: { color: defaultColor },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { size },
       } = themeProps;
       const { width, height } = themeMeta;
       const theWidth = getSize(width, getDefaultSize(size));
       const theHeight = getSize(height, getDefaultSize(size));
-
-      return `width :${px2remcss(theWidth)};height:${px2remcss(theHeight)};`;
+      return {
+        width: theWidth,
+        height: theHeight,
+      };
     },
   },
   css: css`
@@ -156,7 +175,11 @@ const Picture = CSSComponent({
         propsConfig: { shape },
       } = themeProps;
       const { borderRadius } = themeMeta;
-      const theBorderRadius = borderRadius ? borderRadius : shape === 'circle' ? '50%' : '10%';
+      const theBorderRadius = borderRadius
+        ? borderRadius
+        : shape === 'circle'
+        ? '50%'
+        : borderRadiusValue;
       return {
         borderRadius: getBorderRadius(theBorderRadius),
       };
@@ -191,19 +214,6 @@ const ImageContainer = CSSComponent({
   `,
 });
 
-type AvatarProps = {
-  viewClass?: string,
-  shape?: AvatarShape,
-  size?: AvatarSize,
-  src?: string,
-  icon?: string,
-  type: AvatarType,
-  name: string,
-  themeProps: Object,
-  getPartOfThemeProps: Function,
-  getPartOfThemeHocProps: Function,
-};
-type AvatarState = {};
 class AvatarBox extends React.Component<AvatarProps, AvatarState> {
   static defaultProps = {
     viewClass: Widget.Avatar,
@@ -242,9 +252,12 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
                          vertical-align: middle !important;`;
               },
               getThemeMeta(themeMeta, themeProps) {
-                const { propsConfig } = themeProps;
-                const { size } = propsConfig;
-                const theFontSize = isLargeSize(size) ? 22 : isSmallSize(size) ? 12 : 18;
+                const { propsConfig: { size } = {} } = themeProps;
+                const theFontSize = isLargeSize(size)
+                  ? lFontSize
+                  : isSmallSize(size)
+                  ? sFontSize
+                  : mFontSize;
                 return { fontSize: theFontSize };
               },
             },

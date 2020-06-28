@@ -15,9 +15,10 @@ import { toNumber } from '../common/NumberUtils';
 
 import CSSComponent, { css, keyframes, StaticComponent } from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
+import get from '../css/theme-common-dict';
 
-import colorsFunc from '../css/stateColor';
-const { warningColor, mediumGreyColor, superLightColor } = colorsFunc();
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
 
 const showUp = keyframes`
   from {
@@ -68,7 +69,7 @@ const RateBox = StaticComponent({
 });
 
 const StarIconClass = 'lugia-icon-financial_star';
-const StarIconClassOpen = 'lugia-icon-finacial_half_star';
+const StarIconClassOpen = 'lugia-icon-financial_half_star';
 
 const Ratespan = CSSComponent({
   tag: 'span',
@@ -87,6 +88,7 @@ const Ratespan = CSSComponent({
   css: css`
     margin-right: 6px;
     position: relative;
+    font-size: 14px;
     & > i.bottom {
       position: absolute;
       left: 0;
@@ -120,13 +122,13 @@ const RateText = CSSComponent({
     selectNames: [['color']],
     defaultTheme: {
       color: superLightColor,
-      fontSize: 20,
+      fontSize: 16,
     },
   },
   disabled: {
     selectNames: [['color']],
     defaultTheme: {
-      color: '#ccc',
+      color: disableTextColor,
     },
   },
   css: css`
@@ -149,7 +151,7 @@ const RateTextBottom = CSSComponent({
     selectNames: [['color'], ['fontSize']],
     defaultTheme: {
       color: superLightColor,
-      fontSize: 20,
+      fontSize: 16,
     },
   },
   disabled: {
@@ -427,7 +429,7 @@ class Rate extends React.Component<RateProps, any> {
     if (ObjectUtils.isString(character)) {
       const defaultTextIconThemeProps = this.props.getPartOfThemeProps('DefaultTextIcon');
       const activeTextIconThemeProps = deepMerge(
-        { themeConfig: { normal: { color: warningColor } } },
+        { themeConfig: { normal: { color: get('warningColor') } } },
         defaultTextIconThemeProps,
         this.props.getPartOfThemeProps('ActiveTextIcon')
       );
@@ -435,7 +437,7 @@ class Rate extends React.Component<RateProps, any> {
         x !== 'default'
           ? activeTextIconThemeProps
           : deepMerge(defaultTextIconThemeProps, {
-              themeConfig: { disabled: { color: '#e8e8e8' } },
+              themeConfig: { disabled: { color: get('superLightColor') } },
             });
       return (
         <React.Fragment>
@@ -679,7 +681,7 @@ class Rate extends React.Component<RateProps, any> {
         } = this.props.getPartOfThemeHocProps('DangerIcon');
         resultTheme = deepMerge(
           getDefaultTheme(dangerIconViewClass, RateIconBottomTheme, RateIconBottomViewClass),
-          { [dangerIconViewClass]: { normal: { color: mediumGreyColor } } },
+          { [dangerIconViewClass]: { normal: { color: get('mediumGreyColor') } } },
           dangerIconTheme
         );
         resultViewClass = dangerIconViewClass;
@@ -690,7 +692,7 @@ class Rate extends React.Component<RateProps, any> {
         const { viewClass, theme } = this.props.getPartOfThemeHocProps('ActiveIcon');
         resultTheme = deepMerge(
           getDefaultTheme(viewClass, RateIconBottomTheme, RateIconBottomViewClass),
-          { [viewClass]: { normal: { color: warningColor } } },
+          { [viewClass]: { normal: { color: get('warningColor') } } },
           theme
         );
         resultViewClass = viewClass;
@@ -702,7 +704,7 @@ class Rate extends React.Component<RateProps, any> {
         const obj = {
           [RateIconBottomViewClass]: {
             normal: {
-              color: superLightColor,
+              color: get('superLightColor'),
             },
           },
         };
@@ -718,7 +720,7 @@ class Rate extends React.Component<RateProps, any> {
             getCSS: () => {
               return `              
               vertical-align: text-bottom !important;
-              color:${superLightColor};
+              color:${get('superLightColor')};
               position: absolute;
               left: 0;
               bottom: 0;

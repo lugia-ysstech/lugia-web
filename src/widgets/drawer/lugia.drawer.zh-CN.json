@@ -3,6 +3,11 @@
   "title": "抽屉",
   "desc": "在屏幕边缘出现的浮层面板。",
   "props": {
+    "injectLugiad": {
+      "type": "Object",
+      "defaultValue": { "type": "Drawer" },
+      "isHidden": true
+    },
     "placement": {
       "type": "PlacementType",
       "desc": "抽屉的方向",
@@ -30,11 +35,20 @@
       "type": "boolean",
       "desc": "是否展示抽屉右上角关闭按钮",
       "defaultValue": false
+    },
+    "sidebar": {
+      "type": "boolean",
+      "desc": "是否展示抽屉侧边抽拉按钮",
+      "defaultValue": false
     }
   },
   "events": {
     "onClose": {
       "desc": "抽屉关闭时的回调",
+      "args": []
+    },
+    "onToggle": {
+      "desc": "抽拉抽屉时的回调",
       "args": []
     }
   },

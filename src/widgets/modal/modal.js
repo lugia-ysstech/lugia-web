@@ -27,6 +27,7 @@ import Button from '../button';
 import Icon from '../icon';
 import { px2remcss } from '../css/units';
 import { deepMerge } from '@lugia/object-utils';
+import get from '../css/theme-common-dict';
 
 const BtnType = {
   confirm: 'warning',
@@ -50,6 +51,28 @@ export default ThemeProvider(
         opening: visible,
       };
     }
+    saveModalDom = el => {
+      this.modalEle = el;
+    };
+    componentDidMount() {
+      window.addEventListener('keydown', this.hideWindowPopUp, false);
+    }
+    componentWillUnmount() {
+      window.removeEventListener('keydown', this.hideWindowPopUp, false);
+    }
+    hideWindowPopUp = e => {
+      const { onCancel } = this.props;
+      if (this.modalEle === document.activeElement && e.keyCode === 27) {
+        if ('visible' in this.props) {
+          onCancel && onCancel();
+        } else {
+          this.setState({
+            visible: false,
+            closing: true,
+          });
+        }
+      }
+    };
 
     componentDidUpdate() {
       const { closing } = this.state;
@@ -69,7 +92,14 @@ export default ThemeProvider(
         {
           [viewClass]: {
             normal: {
-              fontSize: 16,
+              fontSize: get('sFontSize'),
+              color: get('mediumGreyColor'),
+            },
+            hover: {
+              color: get('darkGreyColor'),
+            },
+            disabled: {
+              color: get('disableTextColor'),
             },
           },
         },
@@ -89,7 +119,7 @@ export default ThemeProvider(
         {
           [viewClass]: {
             normal: {
-              fontSize: 20,
+              fontSize: get('mFontSize'),
               color: getIconColor({ iconType }),
               getCSS() {
                 return `
@@ -117,16 +147,19 @@ export default ThemeProvider(
         confirmLoading = false,
         cancelText = '取消',
         okText = '确定',
-        footer,
+        footer = true,
         showIcon = false,
         iconType = 'info',
-        getTheme,
         mask = true,
         okButtonProps = {},
         cancelButtonProps = {},
         getPartOfThemeProps,
         getPartOfThemeHocProps,
         iconClass,
+        injectLugiad: { type } = {},
+        __lugiad__header__absolute__ = false,
+        closable = true,
+        closeIconClass,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       const view = {
@@ -139,65 +172,101 @@ export default ThemeProvider(
         footerBtnProps.type = BtnType[iconType];
       }
 
-      const modalWrapTheme = getPartOfThemeProps('ModalWrap');
+      const modalWrapTheme = getPartOfThemeProps('Container');
       modalWrapTheme.propsConfig = {
         showIcon,
+        __lugiad__header__absolute__,
+        type,
       };
       const modalTitleTheme = getPartOfThemeProps('ModalTitle');
       const modalBodyTextTheme = getPartOfThemeProps('ModalContentText');
+      const modalMaskTheme = getPartOfThemeProps('ModalMask');
+      const modalContent = (
+        <ModalContent showIcon={showIcon} themeProps={modalWrapTheme}>
+          {showIcon ? (
+            <Icon
+              iconClass={iconClass || IconInfo[iconType].class}
+              singleTheme
+              {...this.getIconTheme()}
+            />
+          ) : closable ? (
+            <ModalClose
+              onClick={this.handleCancel}
+              __lugiad__header__absolute__={__lugiad__header__absolute__}
+              type={type}
+            >
+              <Icon
+                {...this.getCloseIconTheme()}
+                iconClass={closeIconClass || 'lugia-icon-reminder_close'}
+                singleTheme
+              />
+            </ModalClose>
+          ) : null}
+          {title !== null && (
+            <ModalTitle
+              __lugiad__header__absolute__={__lugiad__header__absolute__}
+              type={type}
+              themeProps={modalTitleTheme}
+              title
+            >
+              {title}
+            </ModalTitle>
+          )}
+          {__lugiad__header__absolute__ ? (
+            children
+          ) : (
+            <ModalBody themeProps={modalBodyTextTheme}>{children}</ModalBody>
+          )}
+          {this.isInprops('footer') && typeof footer !== 'boolean' ? (
+            footer
+          ) : footer === true ? (
+            <ModalFooter __lugiad__header__absolute__={__lugiad__header__absolute__} type={type}>
+              <Theme config={view}>
+                <Button
+                  onClick={this.handleOk}
+                  loading={confirmLoading}
+                  {...footerBtnProps}
+                  {...getPartOfThemeHocProps('ModalOkButton')}
+                  {...okButtonProps}
+                >
+                  {okText}
+                </Button>
+              </Theme>
+              <Theme config={view}>
+                <Button
+                  onClick={this.handleCancel}
+                  {...getPartOfThemeHocProps('ModalCancelButton')}
+                  {...cancelButtonProps}
+                >
+                  {cancelText}
+                </Button>
+              </Theme>
+            </ModalFooter>
+          ) : null}
+        </ModalContent>
+      );
+      if (type === 'Modal') {
+        return modalContent;
+      }
       return (
         <Wrap visible={closing ? true : visible}>
           {mask ? (
-            <ModalMask onClick={this.handleMaskClick} closing={closing} opening={opening} />
+            <ModalMask
+              onClick={this.handleMaskClick}
+              closing={closing}
+              opening={opening}
+              themeProps={modalMaskTheme}
+            />
           ) : null}
           <ModalWrap>
-            <Modal closing={closing} opening={opening} themeProps={modalWrapTheme}>
-              <ModalContent showIcon={showIcon} theme={getTheme()} themeProps={modalWrapTheme}>
-                {showIcon ? (
-                  <Icon
-                    iconClass={iconClass || IconInfo[iconType].class}
-                    singleTheme
-                    {...this.getIconTheme()}
-                  />
-                ) : (
-                  <ModalClose onClick={this.handleCancel}>
-                    <Icon
-                      {...this.getCloseIconTheme()}
-                      iconClass="lugia-icon-reminder_close"
-                      singleTheme
-                    />
-                  </ModalClose>
-                )}
-                {title !== null && <ModalTitle themeProps={modalTitleTheme}>{title}</ModalTitle>}
-                <ModalBody themeProps={modalBodyTextTheme}>{children}</ModalBody>
-
-                {this.isInprops('footer') ? (
-                  footer
-                ) : (
-                  <ModalFooter>
-                    <Theme config={view}>
-                      <Button
-                        onClick={this.handleOk}
-                        loading={confirmLoading}
-                        {...footerBtnProps}
-                        {...getPartOfThemeHocProps('ModalOkButton')}
-                        {...okButtonProps}
-                      >
-                        {okText}
-                      </Button>
-                    </Theme>
-                    <Theme config={view}>
-                      <Button
-                        onClick={this.handleCancel}
-                        {...getPartOfThemeHocProps('ModalCancelButton')}
-                        {...cancelButtonProps}
-                      >
-                        {cancelText}
-                      </Button>
-                    </Theme>
-                  </ModalFooter>
-                )}
-              </ModalContent>
+            <Modal
+              tabIndex="1"
+              ref={this.saveModalDom}
+              closing={closing}
+              opening={opening}
+              themeProps={modalWrapTheme}
+            >
+              {modalContent}
             </Modal>
           </ModalWrap>
         </Wrap>

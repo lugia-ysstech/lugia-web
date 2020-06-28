@@ -10,7 +10,9 @@ import Widget from '../consts/index';
 import { getBoxShadow } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import { DefaultHeight, ScrollerContainer, Col, ScrollerCol } from '../css/scroller';
-import { getCanSeeCount } from './support';
+import { getCanSeeCount, getCanRenderCompleteCount } from './support';
+import { getBorderRadius } from '../theme/CSSProvider';
+import get from '../css/theme-common-dict';
 type ThrottleScrollerState = {
   start: number,
 };
@@ -103,15 +105,16 @@ export default (
     }
 
     getActiveItemHeight = (props: Object) => {
-      const { normal: { height = MenuItemHeight } = {} } = this.getItemWrapThemeConfig();
-      return height;
+      const { normal: { height } = {} } = this.getItemWrapThemeConfig();
+      return height || props.menuItemHeight || MenuItemHeight;
     };
 
     getContainerThemeProps(target: string, params: Object) {
       const themeProps = this.props.getPartOfThemeProps(target, params);
       const { themeConfig = {} } = themeProps;
       const defaultTheme = {
-        boxShadow: getBoxShadow('0 1px 6px rgba(0, 0, 0, 0.2)'),
+        boxShadow: get('normalBoxShadow'),
+        borderRadius: getBorderRadius(get('borderRadiusValue')),
       };
       themeConfig.normal = deepMerge(defaultTheme, themeConfig.normal);
       return themeProps;
@@ -126,6 +129,9 @@ export default (
       const { data = [], autoHeight = false, getPartOfThemeProps } = this.props;
       const { themeConfig: { normal: { height } = {} } = {} } = getPartOfThemeProps(TargetWrapName);
 
+      if (!data || data.length === 0) {
+        return false;
+      }
       return autoHeight
         ? autoHeight
         : this.itemHeight * data.length <= this.getDefaultHeight() && !height
@@ -137,8 +143,8 @@ export default (
       const { props } = this;
       const start = this.getStart(props, this.state);
       const { level, autoHeight = false } = props;
-      const totalSize = this.fetchTotalSize();
       const activeAutoHeight = this.getActiveAutoHeight();
+      const totalSize = this.fetchTotalSize(activeAutoHeight);
       const defaultHeight = this.getDefaultHeight();
       const themeProps = this.getContainerThemeProps(TargetWrapName, {
         props: {
@@ -151,7 +157,10 @@ export default (
 
       const pack = (element: Object | Array<Object>) => {
         return (
-          <ScrollerContainer themeProps={themeProps} onWheel={this.onWheel}>
+          <ScrollerContainer
+            themeProps={themeProps}
+            onWheel={activeAutoHeight ? undefined : this.onWheel}
+          >
             {element}
           </ScrollerContainer>
         );
@@ -163,6 +172,7 @@ export default (
         return pack(
           <Target
             {...props}
+            autoHeight={activeAutoHeight}
             start={0}
             end={length}
             canSeeCount={length}
@@ -183,6 +193,7 @@ export default (
         <Col themeProps={themeProps} level={level}>
           <Target
             {...props}
+            autoHeight={activeAutoHeight}
             canSeeCount={canSeeCount}
             start={start}
             end={end}
@@ -230,11 +241,15 @@ export default (
 
     isNeedScroller() {
       const { length } = this.getTarget();
-      return this.canSeeCount() < length;
+      return this.canRendCompleteCount() < length;
     }
 
     canSeeCount(): number {
       return getCanSeeCount(this.viewSize, this.itemHeight);
+    }
+
+    canRendCompleteCount(): number {
+      return getCanRenderCompleteCount(this.viewSize, this.itemHeight);
     }
 
     fetchViewSize = () => {
@@ -251,10 +266,10 @@ export default (
       return autoHeight ? allItemHeight : height;
     };
 
-    fetchTotalSize(): number {
+    fetchTotalSize(autoHeight: boolean): number {
       const { length } = this.getTarget();
       let remainder;
-      if (this.viewSize % this.itemHeight === 0) {
+      if (this.viewSize % this.itemHeight === 0 || autoHeight) {
         remainder = 0;
       } else {
         remainder = this.viewSize % this.itemHeight;
@@ -294,7 +309,6 @@ export default (
 
     onScroller = (value: number) => {
       const { onScroller } = this.props;
-
       const start = value / this.itemHeight;
       onScroller ? onScroller(start, this.fetchEnd(start)) : this.setState({ start });
     };

@@ -1,0 +1,474 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`new-table  Table css  1`] = `
+.c0 {
+  background: #fff;
+  width: 100%;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c3 {
+  border-bottom: 1px solid #cccccc;
+  display: table-row;
+}
+
+.c4 {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 10px;
+  height: 100%;
+  text-align: center;
+}
+
+.c5 {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 10px;
+  height: 100%;
+}
+
+.c2 {
+  display: table-header-group;
+}
+
+.c6 {
+  display: table-row-group;
+}
+
+.c1 {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  border-top: 1px solid #cccccc;
+}
+
+<div
+  className="c0"
+  style={Object {}}
+  tabIndex={10}
+>
+  <div
+    className="c1"
+    style={Object {}}
+  >
+    <div
+      className="c2"
+    >
+       
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "10rem",
+            }
+          }
+        >
+          姓名
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+            }
+          }
+        >
+          Age
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        >
+          Address
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        >
+          isIn
+        </div>
+      </div>
+    </div>
+    <div
+      className="c6"
+    >
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "10rem",
+            }
+          }
+        >
+          
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+            }
+          }
+        >
+          28
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        />
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        />
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "10rem",
+            }
+          }
+        >
+          Rose
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+            }
+          }
+        >
+          36
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        >
+          some where
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        />
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "10rem",
+            }
+          }
+        >
+          Uzi
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+            }
+          }
+        >
+          36
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        >
+          some where
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        />
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "10rem",
+            }
+          }
+        >
+          ClearLove
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+            }
+          }
+        >
+          36
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        >
+          some where
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        />
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "10rem",
+            }
+          }
+        >
+          Rookie
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+            }
+          }
+        >
+          36
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        >
+          some where
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        />
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "10rem",
+            }
+          }
+        >
+          TheShy
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+            }
+          }
+        >
+          36
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        >
+          some where
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

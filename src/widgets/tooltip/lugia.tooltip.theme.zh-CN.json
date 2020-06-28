@@ -1,0 +1,72 @@
+[
+  {
+    "widgetName": "Tooltip",
+    "title": "文字提示",
+    "treeNodeHidden": true,
+    "viewProps": [
+      {
+        "name": "placement",
+        "text": "显示位置"
+      },
+      {
+        "name": "popArrowType",
+        "text": "箭头风格"
+      }
+    ],
+    "data": [
+      {
+        "title": "背景框",
+        "data": [
+          {
+            "name": "背景框",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景框",
+                "desc": "背景框"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["TooltipTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            },
+            "props": [
+              {
+                "name": "title",
+                "typeInTheme": "text"
+              }
+            ]
+          },
+          {
+            "name": "描述文本",
+            "path": ["TooltipDescription"],
+            "description": {
+              "textPart": {
+                "text": "描述文本",
+                "desc": "描述文本"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            },
+            "props": [
+              {
+                "name": "description",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

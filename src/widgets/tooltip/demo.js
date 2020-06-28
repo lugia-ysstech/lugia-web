@@ -12,7 +12,7 @@ import Theme from '../theme';
 import styled from 'styled-components';
 
 const buttonWidth = 80;
-const text = <span>prompt text</span>;
+const text = 'prompt text';
 const ButtonDemo = styled(Button)`
   width: ${buttonWidth}px;
 `;
@@ -63,21 +63,6 @@ const ToolTipRVWrapper = styled(ToolTipBaseWrapper)`
 `;
 export default () => {
   const config = {
-    [Widget.Tooltip]: {
-      Container: {
-        normal: {
-          background: {
-            color: '#ddd',
-          },
-        },
-      },
-      TooltipTitle: {
-        normal: {
-          color: '#4d63ff',
-          fontSize: 16,
-        },
-      },
-    },
     [Widget.Button]: {
       Container: {
         normal: {
@@ -159,6 +144,11 @@ export default () => {
         </DirectionBottomWrapper>
         <BottomWrapper />
       </Theme>
+      <div>
+        <Tooltip placement="top" title={text} description={'This is description'}>
+          <ButtonDemo type="primary">带有描述文本的提示</ButtonDemo>
+        </Tooltip>
+      </div>
     </OuterWarpper>
   );
 };
