@@ -151,6 +151,12 @@ class Upload extends React.Component<UploadProps, StateProps> {
     };
   }
 
+  componentDidMount() {
+    const { getInputRef } = this.props;
+    const { input } = this;
+    getInputRef && getInputRef(input);
+  }
+
   render() {
     const { areaType } = this.props;
     const themeProps = this.props.getPartOfThemeProps('Container');
