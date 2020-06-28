@@ -359,7 +359,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     const list = this.updateFieldList(fileListDone, hashMark, [
       { target: 'status', value: 'fail' },
     ]);
-    this.setStateValue({ classNameStatus: 'fail', fileListDone: list });
+    this.setStateValue({ classNameStatus: 'fail', fileListDone: list, isAllowUpload: false });
     this.input.value = '';
     const { onFail } = this.props;
     onFail && onFail(res);
