@@ -158,12 +158,5 @@
         ["opacity"]
       ]
     }
-  },
-  "defaultTheme": {
-    "Container": {
-      "normal": {
-        "width": 38
-      }
-    }
   }
 }
