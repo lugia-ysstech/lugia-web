@@ -145,11 +145,11 @@
       ]
     },
     "getInputRef": {
-      "desc": "获取触发文件选择的input实例",
+      "desc": "获取触发文件选择的input实例的引用",
       "args": [
         {
           "name": "result",
-          "desc": "获取触发文件选择的input实例",
+          "desc": "获取触发文件选择的input实例的引用",
           "type": "Object"
         }
       ]
