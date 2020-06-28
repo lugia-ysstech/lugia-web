@@ -17,10 +17,6 @@
       "type": "React.node",
       "desc": "标题"
     },
-    "children": {
-      "type": "string | React.node",
-      "desc": "内容"
-    },
     "visible": {
       "type": "boolean",
       "desc": "Modal 是否可见"
