@@ -143,6 +143,16 @@
           "type": "Object"
         }
       ]
+    },
+    "getInputRef": {
+      "desc": "获取触发文件选择的input实例",
+      "args": [
+        {
+          "name": "result",
+          "desc": "获取触发文件选择的input实例",
+          "type": "Object"
+        }
+      ]
     }
   },
   "type": {

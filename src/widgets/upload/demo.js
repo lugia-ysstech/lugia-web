@@ -105,26 +105,17 @@ class UploadDemo extends React.Component<any, any> {
       multiple: true,
       name: 'lugiaRR',
       showFileList: true,
-      fileList: [
-        {
-          id: 1,
-          name: '文件11111.jpg',
-          status: 'done',
-          url: 'http://pic18.nipic.com/20120204/8339340_144203764154_2.jpg',
-        },
-        {
-          id: 2,
-          name: '文件2222.mp4',
-          status: 'fail',
-          url: 'http://pic18.nipic.com/20120204/8339340_14420376454_2.mp4',
-        },
-        {
-          id: 3,
-          name: '文件33333.doc',
-          status: 'done',
-          url: 'http://pic18.nipic.com/20120204/8339340_144203764154_2.doc',
-        },
-      ],
+      autoUpload: false,
+      getInputRef: input => {
+        this.input = input;
+      },
+      onChange: res => {
+        console.log('res', res, 'this.input', this.input);
+        setTimeout(() => {
+          this.input.value = '';
+          this.setState({ aa: 123 });
+        }, 2000);
+      },
       defaultTips: {
         uploadText: '点击上传',
         failTips: '上传失败',
