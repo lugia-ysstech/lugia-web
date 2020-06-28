@@ -95,9 +95,25 @@
     "PanelContent": {
       "name": "面板内容样式",
       "desc": "面板内容样式配置",
-      "normal": [["width"], ["height"], ["background"], ["padding"], ["font"], ["color"],["border"],["boxShadow"]],
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["padding"],
+        ["font"],
+        ["color"],
+        ["border"],
+        ["boxShadow"]
+      ],
       "hover": [["color"]],
       "disabled": [["color"]]
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 400
+      }
     }
   }
 }
