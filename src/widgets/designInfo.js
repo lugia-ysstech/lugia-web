@@ -130,6 +130,7 @@ export default [
           normal: [['color'], ['fontSize'], ['padding']],
         },
       },
+      defaultTheme: { Container: { normal: { width: 400 } } },
       childrenWidget: [],
     },
     target: Alert,
@@ -4738,6 +4739,7 @@ export default [
           },
         },
       },
+      defaultTheme: { Container: { normal: { width: 400 } } },
     },
     target: Collapse,
     screenshot:
@@ -4817,6 +4819,7 @@ export default [
           disabled: [['color']],
         },
       },
+      defaultTheme: { Container: { normal: { width: 400 } } },
       parentWidget: 'Collapse',
     },
     target: Collapse.Panel,
@@ -7901,10 +7904,6 @@ export default [
           disabled: [['color'], ['cursor']],
         },
       },
-      defaultTheme: {
-        Container: { normal: { fontSize: 12, color: '#333', textAlign: 'left' } },
-        LabelPrefix: { normal: { color: '#333', fontSize: 12, textAlign: 'left' } },
-      },
       childrenWidget: [],
     },
     target: Label,
@@ -8902,8 +8901,8 @@ export default [
         maskClosable: { type: 'boolean', desc: '点击蒙层是否允许关闭', propsDefaultValue: true },
         closable: { type: 'boolean', desc: '是否显示关闭按钮', propsDefaultValue: true },
         mask: { type: 'boolean', desc: '是否显示遮罩', propsDefaultValue: true },
-        iconClass: { type: 'string', desc: '自定义前缀图标' },
-        closeIconClass: { type: 'string', desc: '自定义后缀图标' },
+        iconClass: { type: 'icon', desc: '自定义前缀图标' },
+        closeIconClass: { type: 'icon', desc: '自定义后缀图标' },
         showIcon: { type: 'boolean', desc: '是否显示图标', propsDefaultValue: false },
       },
       events: {
@@ -8970,6 +8969,15 @@ export default [
               disabled: [['background'], ['border']],
               focus: [['background'], ['border']],
             },
+            ButtonText: {
+              name: '确定按钮文字样式',
+              desc: '为确定按钮文字配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
           },
         },
         ModalCancelButton: {
@@ -8991,6 +8999,15 @@ export default [
               active: [['background'], ['border']],
               disabled: [['background'], ['border']],
               focus: [['background'], ['border']],
+            },
+            ButtonText: {
+              name: '取消按钮文字样式',
+              desc: '为取消按钮文字配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
             },
           },
         },
@@ -12883,6 +12900,7 @@ export default [
         },
         ProgressActiveLine: { name: '动效条样式配置', desc: '动效条样式配置', normal: [['color']] },
       },
+      defaultTheme: { Container: { normal: { width: 400 } } },
       childrenWidget: [],
     },
     target: Progress,
@@ -12955,6 +12973,7 @@ export default [
           normal: [['color'], ['fontSize']],
         },
       },
+      defaultTheme: { Container: { normal: { width: 400 } } },
       childrenWidget: [],
       aliasName: 'CircleProgress',
     },
@@ -13028,6 +13047,7 @@ export default [
           normal: [['color'], ['fontSize']],
         },
       },
+      defaultTheme: { Container: { normal: { width: 400 } } },
       childrenWidget: [],
       aliasName: 'DashboardProgress',
     },
@@ -24627,6 +24647,10 @@ export default [
           desc: '上传失败时触发',
           args: [{ name: 'result', desc: '上传失败后服务器响应内容', type: 'Object' }],
         },
+        getInputRef: {
+          desc: '获取触发文件选择的input实例的引用',
+          args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
+        },
       },
       type: {
         UploadSize: ['small', 'default', 'large'],
@@ -24981,6 +25005,10 @@ export default [
           desc: '上传失败时触发',
           args: [{ name: 'result', desc: '上传失败后服务器响应内容', type: 'Object' }],
         },
+        getInputRef: {
+          desc: '获取触发文件选择的input实例的引用',
+          args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
+        },
       },
       type: {
         UploadSize: ['small', 'default', 'large'],
@@ -25123,6 +25151,10 @@ export default [
           desc: '上传失败时触发',
           args: [{ name: 'result', desc: '上传失败后服务器响应内容', type: 'Object' }],
         },
+        getInputRef: {
+          desc: '获取触发文件选择的input实例的引用',
+          args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
+        },
       },
       type: {
         UploadSize: ['small', 'default', 'large'],
@@ -25261,6 +25293,10 @@ export default [
           desc: '上传失败时触发',
           args: [{ name: 'result', desc: '上传失败后服务器响应内容', type: 'Object' }],
         },
+        getInputRef: {
+          desc: '获取触发文件选择的input实例的引用',
+          args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
+        },
       },
       type: {
         UploadSize: ['small', 'default', 'large'],
@@ -25397,6 +25433,10 @@ export default [
         onFail: {
           desc: '上传失败时触发',
           args: [{ name: 'result', desc: '上传失败后服务器响应内容', type: 'Object' }],
+        },
+        getInputRef: {
+          desc: '获取触发文件选择的input实例的引用',
+          args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
         },
       },
       type: {
