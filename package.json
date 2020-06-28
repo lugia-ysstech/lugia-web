@@ -1,6 +1,6 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.2.5-alpha.0",
+  "version": "1.2.5-alpha.1",
   "keywords": [
     "lugia",
     "design",
@@ -22,7 +22,7 @@
     "@lugia/object-utils": "^1.0.19",
     "@lugia/ramada": "^1.0.5",
     "@lugia/theme-css-hoc": "^1.1.17",
-    "@lugia/theme-hoc": "^1.1.8",
+    "@lugia/theme-hoc": "^1.1.9",
     "@lugia/theme-utils": "^1.1.8",
     "@lugia/type-utils": "^1.0.6",
     "babel-polyfill": "6.26.0",
