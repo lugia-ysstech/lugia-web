@@ -15,11 +15,25 @@
         "iconClass": "progress",
         "data": [
           {
+            "name": "进度条整体配置",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          },
+          {
             "name": "进度条底色线配置",
             "path": ["ProgressOutLine"],
             "description": {
               "appearancePart": {
-                "text": "外观",
+                "text": "底色条外观",
                 "desc": "面板中外观配置的区块显示文本"
               },
               "spacingPart": {
@@ -52,7 +66,10 @@
             "name": "动效条样式配置",
             "path": ["ProgressActiveLine"],
             "description": {
-              "appearancePart": { "text": "动效条", "desc": "面板中外观配置的区块显示文本" }
+              "textPart": {
+                "text": "动效条",
+                "desc": "文本配置区块的显示文本"
+              }
             }
           }
         ]
