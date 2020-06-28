@@ -17,6 +17,10 @@
       "type": "React.node",
       "desc": "标题"
     },
+    "children": {
+      "type": "string | React.node",
+      "desc": "内容"
+    },
     "visible": {
       "type": "boolean",
       "desc": "Modal 是否可见"
@@ -65,11 +69,11 @@
       "propsDefaultValue": true
     },
     "iconClass": {
-      "type": "string",
+      "type": "icon",
       "desc": "自定义前缀图标"
     },
     "closeIconClass": {
-      "type": "string",
+      "type": "icon",
       "desc": "自定义后缀图标"
     },
     "showIcon": {
@@ -147,6 +151,15 @@
           "active": [["background"], ["border"]],
           "disabled": [["background"], ["border"]],
           "focus": [["background"], ["border"]]
+        },
+        "ButtonText": {
+          "name": "确定按钮文字样式",
+          "desc": "为确定按钮文字配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
         }
       }
     },
@@ -169,6 +182,15 @@
           "active": [["background"], ["border"]],
           "disabled": [["background"], ["border"]],
           "focus": [["background"], ["border"]]
+        },
+        "ButtonText": {
+          "name": "取消按钮文字样式",
+          "desc": "为取消按钮文字配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
         }
       }
     },
