@@ -121,8 +121,7 @@
         ["background"],
         ["borderRadius"],
         ["border"],
-        ["boxShadow"],
-        ["color"]
+        ["boxShadow"]
       ],
       "hover": [],
       "active": [
