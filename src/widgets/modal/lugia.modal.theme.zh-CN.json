@@ -25,6 +25,7 @@
           {
             "name": "弹窗标题样式",
             "path": ["ModalTitle"],
+            "props": [{ "name": "title", "typeInTheme": "text" }],
             "description": {
               "textPart": {
                 "text": "标题文本",
@@ -35,6 +36,7 @@
           {
             "name": "弹窗内容文本样式",
             "path": ["ModalContentText"],
+            "props": [{ "name": "children", "typeInTheme": "text" }],
             "description": {
               "textPart": {
                 "text": "描述文本",
@@ -43,8 +45,20 @@
             }
           },
           {
+            "name": "弹窗前缀图标样式",
+            "path": ["ModalIcon"],
+            "props": [{ "name": "iconClass", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
             "name": "弹窗关闭图标样式",
             "path": ["ModalCloseIcon"],
+            "props": [{ "name": "closeIconClass", "typeInTheme": "icon" }],
             "description": {
               "textPart": {
                 "text": "关闭图标",
@@ -64,6 +78,14 @@
             "description": {
               "appearancePart": { "text": "背景", "desc": "面板中外观配置的区块显示文本" }
             }
+          },
+          {
+            "name": "弹窗确定按钮文字样式",
+            "path": ["ModalOkButton", "ButtonText"],
+            "props": [{ "name": "okText", "typeInTheme": "text" }],
+            "description": {
+              "appearancePart": { "text": "文本", "desc": "面板中外观配置的区块显示文本" }
+            }
           }
         ]
       },
@@ -74,8 +96,17 @@
           {
             "name": "弹窗取消按钮样式",
             "path": ["ModalCancelButton", "Container"],
+            "props": [{ "name": "cancelText", "typeInTheme": "text" }],
             "description": {
               "appearancePart": { "text": "背景", "desc": "面板中外观配置的区块显示文本" }
+            }
+          },
+          {
+            "name": "弹窗取消按钮文字样式",
+            "path": ["ModalCancelButton", "ButtonText"],
+            "props": [{ "name": "cancelText", "typeInTheme": "text" }],
+            "description": {
+              "appearancePart": { "text": "文本", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
