@@ -89,21 +89,5 @@
       "hover": [["color"], ["cursor"]],
       "disabled": [["color"], ["cursor"]]
     }
-  },
-  "defaultTheme": {
-    "Container": {
-      "normal": {
-        "fontSize": 12,
-        "color": "#333",
-        "textAlign": "left"
-      }
-    },
-    "LabelPrefix": {
-      "normal": {
-        "color": "#333",
-        "fontSize": 12,
-        "textAlign": "left"
-      }
-    }
   }
 }
