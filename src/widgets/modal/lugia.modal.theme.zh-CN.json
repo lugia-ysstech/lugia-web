@@ -34,17 +34,6 @@
             }
           },
           {
-            "name": "弹窗内容文本样式",
-            "path": ["ModalContentText"],
-            "props": [{ "name": "children", "typeInTheme": "text" }],
-            "description": {
-              "textPart": {
-                "text": "描述文本",
-                "desc": "文本配置区块的显示文本"
-              }
-            }
-          },
-          {
             "name": "弹窗前缀图标样式",
             "path": ["ModalIcon"],
             "props": [{ "name": "iconClass", "typeInTheme": "icon" }],
