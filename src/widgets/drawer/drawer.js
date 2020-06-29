@@ -130,12 +130,8 @@ export default ThemeProvider(
       drawerWrapTheme.themeConfig.normal = deepMerge(themeConfig.normal, defaultTheme);
       const hasCloseIcon = closable || !maskClosable;
       const closeIcon = hasCloseIcon ? (
-        <DrawerClose>
-          <CloseText
-            __lugiad__header__absolute__={__lugiad__header__absolute__}
-            type={type}
-            onClick={this.handleClose}
-          >
+        <DrawerClose __lugiad__header__absolute__={__lugiad__header__absolute__} type={type}>
+          <CloseText onClick={this.handleClose}>
             <Icon iconClass="lugia-icon-reminder_close" />
           </CloseText>
         </DrawerClose>
