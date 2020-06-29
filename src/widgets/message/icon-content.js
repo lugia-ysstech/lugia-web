@@ -55,11 +55,7 @@ export default class extends React.Component<IconConProps, IconConState> {
     const { icon, iconType, content, textTheme, height } = this.props;
     return (
       <MessageTextWrap height={height}>
-        <Icon
-          iconClass={iconType ? IconInfo[iconType].class : icon}
-          {...this.getIconTheme()}
-          singleTheme
-        />
+        <Icon iconClass={icon || IconInfo[iconType].class} {...this.getIconTheme()} singleTheme />
         <MessageText themeProps={textTheme}>{content}</MessageText>
       </MessageTextWrap>
     );
