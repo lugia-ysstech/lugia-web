@@ -1,0 +1,73 @@
+[
+  {
+    "widgetName": "Notification",
+    "title": "通知提醒框",
+    "viewProps": [
+      { "name": "duration", "text": "延时关闭" },
+      { "name": "placement", "text": "弹出位置" }
+    ],
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "",
+        "iconClass": "",
+        "data": [
+          {
+            "name": "Notification整体样式配置",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景框",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "Notification标题文本样式配置",
+            "path": ["NotificationTitle"],
+            "props": [{ "name": "title", "typeInTheme": "text" }],
+            "description": {
+              "appearancePart": {
+                "text": "标题文本",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "Notification描述文本样式配置",
+            "path": ["NotificationText"],
+            "props": [{ "name": "description", "typeInTheme": "text" }],
+            "description": {
+              "appearancePart": {
+                "text": "描述文本",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "Notification前缀图标样式配置",
+            "path": ["NotificationIcon"],
+            "props": [{ "name": "icon", "typeInTheme": "icon" }],
+            "description": {
+              "appearancePart": {
+                "text": "前缀图标",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "Notification关闭图标样式配置",
+            "path": ["NotificationCloseIcon"],
+            "props": [{ "name": "closeIcon", "typeInTheme": "icon" }],
+            "description": {
+              "appearancePart": {
+                "text": "关闭图标",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
