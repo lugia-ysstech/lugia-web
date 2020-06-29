@@ -47,10 +47,10 @@ export default class NotificationDemo extends React.Component<any, any> {
             height: 100,
             borderRadius: getBorderRadius(10),
             background: {
-              color: 'green',
+              color: '#ccc',
             },
-            border: getBorder({ width: 2, style: 'solid', color: 'blue' }),
-            boxShadow: getBoxShadow('2 2 20 red'),
+            border: getBorder({ width: 1, style: 'solid', color: 'blue' }),
+            boxShadow: getBoxShadow('0 0 8 red'),
             margin: {
               left: 60,
             },
@@ -64,6 +64,20 @@ export default class NotificationDemo extends React.Component<any, any> {
         NotificationText: {
           normal: {
             color: 'yellow',
+          },
+        },
+        NotificationIcon: {
+          Icon: {
+            normal: {
+              color: 'yellow',
+            },
+          },
+        },
+        NotificationCloseIcon: {
+          Icon: {
+            normal: {
+              color: 'yellow',
+            },
           },
         },
       },
@@ -100,7 +114,7 @@ export default class NotificationDemo extends React.Component<any, any> {
         <br />
         <Theme config={notificationTheme}>
           <Notification
-            iconType="info"
+            icon={'lugia-icon-logo_ysstech'}
             duration={1000}
             title="我是标题"
             description={<div>我是内容</div>}

@@ -15,6 +15,7 @@ export type NotificationProps = {
   description: string | React.ReactNode,
   icon?: string,
   iconType?: string,
+  closeIcon?: string,
   placement?: 'topRight' | 'bottomLeft' | 'bottomRight' | 'topLeft',
 } & ForTestType &
   ForRemoveType;
