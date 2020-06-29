@@ -67,7 +67,7 @@ export default ThemeProvider(
 
     render() {
       const {
-        icon = '',
+        icon,
         iconType = 'info',
         content,
         getPartOfThemeProps,
