@@ -115,6 +115,7 @@ export default class NotificationDemo extends React.Component<any, any> {
         <Theme config={notificationTheme}>
           <Notification
             icon={'lugia-icon-logo_ysstech'}
+            closeIcon={'lugia-icon-reminder_close_circle_o'}
             duration={1000}
             title="我是标题"
             description={<div>我是内容</div>}
