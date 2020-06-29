@@ -647,7 +647,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       theme
     );
     const quickJumpTextTheme = getPartOfThemeProps('PaginationQuickJumpText', { props: { size } });
-    const { quickJumpValue, pageSize } = this.state;
+    const { current, pageSize } = this.state;
     const { total } = this.props;
     const totalPage = this.getTotalPages(pageSize, total);
     return (
@@ -659,11 +659,10 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           size={size}
           theme={InnerInputTheme}
           viewClass={viewClass}
-          onEnter={this.enterPage}
           onBlur={this.onInputBlur}
           showArrow={false}
-          value={quickJumpValue}
-          onChange={this.inputValueChange('quickJump')}
+          value={current}
+          onChange={this.inputValueChange}
           min={1}
           max={totalPage}
         />
@@ -687,28 +686,21 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     );
   }
 
-  enterPage = (e: Object) => {
-    if (e && e.target && e.target.value) {
-      this.handleChangePage(Number(e.target.value));
-    }
-  };
-  inputValueChange = (type?: string) => obj => {
+  inputValueChange = obj => {
     const { newValue } = obj;
-    const { quickJumpValue, current } = this.state;
-    let stateName = 'current';
-    let stateValue = current;
-    if (type === 'quickJump') {
-      stateName = 'quickJumpValue';
-      stateValue = quickJumpValue;
-    }
+    const { current, pageSize } = this.state;
+    const { disabled, total } = this.props;
     const theNewValue = (newValue + '').replace(/-/g, '');
-    if (theNewValue !== stateValue && theNewValue !== 'NaN' && newValue !== '-') {
-      this.setState({
-        [stateName]: theNewValue,
-      });
-    }
-    if (checkNumber(Number(theNewValue) + '')) {
-      this.handleChangePage(Number(theNewValue));
+    if (theNewValue !== current && theNewValue !== 'NaN' && newValue !== '-') {
+      const page = Number(theNewValue);
+      let thePage = page > 1 ? page : 1;
+      if (!disabled) {
+        const currentPage = computePage(pageSize, pageSize, total);
+        if (thePage > currentPage) {
+          thePage = currentPage;
+        }
+      }
+      this.handleChangePage(Number(thePage));
     }
   };
 
@@ -729,20 +721,15 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   };
 
   handleChangePage = (page: number) => {
-    const { disabled, total } = this.props;
+    const { disabled } = this.props;
     const { pageSize, current } = this.state;
-    let thePage = page > 1 ? page : 1;
     if (!disabled) {
-      const currentPage = computePage(pageSize, pageSize, total);
-      if (thePage > currentPage) {
-        thePage = currentPage;
-      }
       this.setState({
-        current: thePage,
+        current: page,
       });
     }
     const { onChange } = this.props;
-    onChange && onChange({ newValue: thePage, oldValue: current, current: thePage, pageSize });
+    onChange && onChange({ newValue: page, oldValue: current, current: page, pageSize });
   };
 
   handleChangePageSize = (obj: Object) => {
@@ -944,7 +931,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
             theme={InnerInputTheme}
             viewClass={viewClass}
             showArrow={false}
-            onChange={this.inputValueChange()}
+            onChange={this.inputValueChange}
             min={1}
             max={totalPage}
           />
