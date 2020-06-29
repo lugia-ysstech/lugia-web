@@ -20,6 +20,10 @@
     "callBack": {
       "type": "Function",
       "desc": "关闭时的回调"
+    },
+    "icon": {
+      "type": "string",
+      "desc": "自定义图标"
     }
   },
   "category": ["反馈"],
