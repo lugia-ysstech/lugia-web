@@ -7,6 +7,10 @@
 import * as React from 'react';
 import notification from './index';
 import Button from '../button';
+import Notification from './notification';
+import Theme from '../theme';
+import Widget from '../consts';
+import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 
 export default class NotificationDemo extends React.Component<any, any> {
   defaultOpen = () => {
@@ -35,6 +39,35 @@ export default class NotificationDemo extends React.Component<any, any> {
     });
   };
   render() {
+    const notificationTheme = {
+      [Widget.Notification]: {
+        Container: {
+          normal: {
+            width: 500,
+            height: 100,
+            borderRadius: getBorderRadius(10),
+            background: {
+              color: 'green',
+            },
+            border: getBorder({ width: 2, style: 'solid', color: 'blue' }),
+            boxShadow: getBoxShadow('2 2 20 red'),
+            margin: {
+              left: 60,
+            },
+          },
+        },
+        NotificationTitle: {
+          normal: {
+            color: 'red',
+          },
+        },
+        NotificationText: {
+          normal: {
+            color: 'yellow',
+          },
+        },
+      },
+    };
     return (
       <div>
         <br />
@@ -63,6 +96,16 @@ export default class NotificationDemo extends React.Component<any, any> {
         <Button onClick={() => this.placementOpen('bottomRight')}>自定义方向-bottomRight</Button>
         &nbsp;&nbsp;
         <Button onClick={() => this.placementOpen('topLeft')}>自定义方向-topLeft</Button>
+        <br />
+        <br />
+        <Theme config={notificationTheme}>
+          <Notification
+            iconType="info"
+            duration={1000}
+            title="我是标题"
+            description={<div>我是内容</div>}
+          />
+        </Theme>
       </div>
     );
   }
