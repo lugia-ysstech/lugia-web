@@ -34,5 +34,40 @@
     "PlacementType": ["topRight", "bottomLeft", "bottomRight", "topLeft"]
   },
   "category": ["反馈"],
-  "theme": {}
+  "theme": {
+    "Container": {
+      "name": "Notification整体样式配置",
+      "desc": "为Notification整体配置样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["borderRadius"],
+        ["opacity"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["margin"]
+      ]
+    },
+    "NotificationTitle": {
+      "name": "Notification标题样式配置",
+      "desc": "为Notification标题配置样式",
+      "normal": [["color"], ["font"], ["padding"]]
+    },
+    "NotificationText": {
+      "name": "Notification描述文本样式配置",
+      "desc": "为Notification描述文本配置样式",
+      "normal": [["color"], ["font"]]
+    },
+    "NotificationIcon": {
+      "name": "Notification前缀图标样式配置",
+      "desc": "为Notification前缀图标配置样式",
+      "normal": [["color"], ["font"]]
+    },
+    "NotificationCloseIcon": {
+      "name": "Notification关闭图标样式配置",
+      "desc": "为Notification关闭图标配置样式",
+      "normal": [["color"], ["font"]]
+    }
+  }
 }
