@@ -256,12 +256,6 @@ export const DrawerContentMain = styled.div`
   line-height: 1.5;
   word-wrap: break-word;
 `;
-export const DrawerClose = styled.div`
-  font-size: ${em(16)};
-  position: absolute;
-  right: 0;
-  top: 0;
-`;
 const getCloseLugiadCSS = (props: CSSProps): string => {
   const { __lugiad__header__absolute__ = false, type } = props;
   if (__lugiad__header__absolute__ || type === 'Drawer') {
@@ -271,6 +265,14 @@ const getCloseLugiadCSS = (props: CSSProps): string => {
   }
   return '';
 };
+export const DrawerClose = styled.div`
+  font-size: ${em(16)};
+  position: absolute;
+  right: 0;
+  top: 0;
+  ${getCloseLugiadCSS}
+`;
+
 export const CloseText = styled.span`
   display: block;
   width: ${HeaderEM(56)};
@@ -278,7 +280,6 @@ export const CloseText = styled.span`
   text-align: center;
   line-height: ${HeaderEM(60)};
   cursor: pointer;
-  ${getCloseLugiadCSS}
 `;
 const horizontalCommonProperty = `
   height:16px;
