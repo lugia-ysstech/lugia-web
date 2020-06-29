@@ -44,6 +44,10 @@
     "onHeaderCell": {
       "type": "Function(record, rowIndex)",
       "desc": "设置单元格属性"
+    },
+    "sorter": {
+      "type": "Function(a, b){}",
+      "desc": "排序函数"
     }
   },
   "event": {

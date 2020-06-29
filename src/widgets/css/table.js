@@ -20,4 +20,7 @@ export type TableState = {
   headIndeterminate: boolean,
   selectRowKeys: any[],
   scroll: Object,
+  data: Object[],
+  sortState: string,
+  sortOrder: boolean,
 };
