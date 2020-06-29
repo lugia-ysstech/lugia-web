@@ -115,6 +115,15 @@ const defaultCircleEdgeUnCheckedTheme = () => ({
     },
   },
 });
+const defaultCircleEdgeHasCheckedTheme = () => ({
+  themeConfig: {
+    normal: {
+      border: getBorder(get('focusBorder')),
+      borderRadius: getBorderRadius(2),
+      background: { color: defaultColor },
+    },
+  },
+});
 
 export default ThemeProvider(
   class extends React.Component<CheckBoxProps, CheckBoxState> {
@@ -205,6 +214,8 @@ export default ThemeProvider(
         ? deepMerge(defaultCircleEdgeCheckedTheme(), circleEdgeCheckedTheme)
         : indeterminate
         ? deepMerge(defaultIndeterminateEdgeTheme(), circleEdgeIndeterminateTheme)
+        : hasChecked
+        ? deepMerge(defaultCircleEdgeHasCheckedTheme(), circleEdgeUnCheckedTheme)
         : deepMerge(defaultCircleEdgeUnCheckedTheme(), circleEdgeUnCheckedTheme);
       const circleInnerCheckedTheme = getPartOfThemeConfig('CheckboxInnerChecked');
       const circleInnerCancelTheme = getPartOfThemeConfig('CheckboxInnerCancel');
