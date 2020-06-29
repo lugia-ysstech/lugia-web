@@ -2,45 +2,6 @@
 # yarn lockfile v1
 
 
-"@ant-design/colors@^3.1.0":
-  version "3.2.2"
-  resolved "https://registry.npm.taobao.org/@ant-design/colors/download/@ant-design/colors-3.2.2.tgz?cache=0&sync_timestamp=1592447248116&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40ant-design%2Fcolors%2Fdownload%2F%40ant-design%2Fcolors-3.2.2.tgz#5ad43d619e911f3488ebac303d606e66a8423903"
-  integrity sha1-WtQ9YZ6RHzSI66wwPWBuZqhCOQM=
-  dependencies:
-    tinycolor2 "^1.4.1"
-
-"@ant-design/css-animation@^1.7.2":
-  version "1.7.2"
-  resolved "https://registry.npm.taobao.org/@ant-design/css-animation/download/@ant-design/css-animation-1.7.2.tgz#4ee5d2ec0fb7cc0a78b44e1c82628bd4621ac7e3"
-  integrity sha1-TuXS7A+3zAp4tE4cgmKL1GIax+M=
-
-"@ant-design/icons-svg@^4.0.0":
-  version "4.1.0"
-  resolved "https://registry.npm.taobao.org/@ant-design/icons-svg/download/@ant-design/icons-svg-4.1.0.tgz#480b025f4b20ef7fe8f47d4a4846e4fee84ea06c"
-  integrity sha1-SAsCX0sg73/o9H1KSEbk/uhOoGw=
-
-"@ant-design/icons@^4.2.1":
-  version "4.2.1"
-  resolved "https://registry.npm.taobao.org/@ant-design/icons/download/@ant-design/icons-4.2.1.tgz#6f3ea5d98ab782072e4e9cbb70f25e4403ae1a6b"
-  integrity sha1-bz6l2Yq3ggcuTpy7cPJeRAOuGms=
-  dependencies:
-    "@ant-design/colors" "^3.1.0"
-    "@ant-design/icons-svg" "^4.0.0"
-    "@babel/runtime" "^7.10.1"
-    classnames "^2.2.6"
-    insert-css "^2.0.0"
-    rc-util "^5.0.1"
-
-"@ant-design/react-slick@~0.26.1":
-  version "0.26.2"
-  resolved "https://registry.npm.taobao.org/@ant-design/react-slick/download/@ant-design/react-slick-0.26.2.tgz?cache=0&sync_timestamp=1592395450746&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40ant-design%2Freact-slick%2Fdownload%2F%40ant-design%2Freact-slick-0.26.2.tgz#0ca89fe166c5035b0e49649d813663b92f73a90f"
-  integrity sha1-DKif4WbFA1sOSWSdgTZjuS9zqQ8=
-  dependencies:
-    classnames "^2.2.5"
-    json2mq "^0.2.0"
-    lodash "^4.17.15"
-    resize-observer-polyfill "^1.5.0"
-
 "@babel/code-frame@7.0.0-beta.44":
   version "7.0.0-beta.44"
   resolved "https://registry.npm.taobao.org/@babel/code-frame/download/@babel/code-frame-7.0.0-beta.44.tgz#2a02643368de80916162be70865c97774f3adbd9"
@@ -946,13 +907,6 @@
   integrity sha1-dPulbTXvvspEQJHHhQzNSU/S8TI=
   dependencies:
     regenerator-runtime "^0.13.2"
-
-"@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.8.4":
-  version "7.10.3"
-  resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.10.3.tgz#670d002655a7c366540c67f6fd3342cd09500364"
-  integrity sha1-Zw0AJlWnw2ZUDGf2/TNCzQlQA2Q=
-  dependencies:
-    regenerator-runtime "^0.13.4"
 
 "@babel/template@7.0.0-beta.44":
   version "7.0.0-beta.44"
@@ -1903,53 +1857,6 @@ ansi-wrap@0.1.0:
   version "0.1.0"
   resolved "https://registry.npm.taobao.org/ansi-wrap/download/ansi-wrap-0.1.0.tgz#a82250ddb0015e9a27ca82e82ea603bbfa45efaf"
   integrity sha1-qCJQ3bABXponyoLoLqYDu/pF768=
-
-antd@^4.3.5:
-  version "4.3.5"
-  resolved "https://registry.npm.taobao.org/antd/download/antd-4.3.5.tgz?cache=0&sync_timestamp=1592728623933&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fantd%2Fdownload%2Fantd-4.3.5.tgz#1bafbc2920a1b5266bcd46496532578b2fd0f98e"
-  integrity sha1-G6+8KSChtSZrzUZJZTJXiy/Q+Y4=
-  dependencies:
-    "@ant-design/css-animation" "^1.7.2"
-    "@ant-design/icons" "^4.2.1"
-    "@ant-design/react-slick" "~0.26.1"
-    array-tree-filter "^2.1.0"
-    classnames "^2.2.6"
-    copy-to-clipboard "^3.2.0"
-    lodash "^4.17.13"
-    moment "^2.25.3"
-    omit.js "^1.0.2"
-    raf "^3.4.1"
-    rc-animate "~3.1.0"
-    rc-cascader "~1.2.0"
-    rc-checkbox "~2.2.0"
-    rc-collapse "~2.0.0"
-    rc-dialog "~8.0.0"
-    rc-drawer "~4.0.0"
-    rc-dropdown "~3.1.2"
-    rc-field-form "~1.4.1"
-    rc-input-number "~5.0.0"
-    rc-mentions "~1.2.0"
-    rc-menu "~8.3.0"
-    rc-notification "~4.4.0"
-    rc-pagination "~2.2.5"
-    rc-picker "~1.6.1"
-    rc-progress "~3.0.0"
-    rc-rate "~2.7.0"
-    rc-resize-observer "^0.2.3"
-    rc-select "~11.0.0"
-    rc-slider "~9.3.0"
-    rc-steps "~4.0.0"
-    rc-switch "~3.2.0"
-    rc-table "~7.8.0"
-    rc-tabs "~11.4.1"
-    rc-tooltip "~4.2.0"
-    rc-tree "~3.3.0"
-    rc-tree-select "~4.0.0"
-    rc-trigger "~4.3.0"
-    rc-upload "~3.2.0"
-    rc-util "^5.0.1"
-    scroll-into-view-if-needed "^2.2.25"
-    warning "^4.0.3"
 
 any-observable@^0.3.0:
   version "0.3.0"
