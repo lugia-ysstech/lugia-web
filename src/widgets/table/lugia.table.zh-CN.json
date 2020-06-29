@@ -115,6 +115,10 @@
       "type": "tableStyleType",
       "desc": "表格标题",
       "defaultValue": "bordered"
+    },
+    "onChange": {
+      "type": "Function(sorter)",
+      "desc": "排序变化时触发"
     }
   },
   "events": {
