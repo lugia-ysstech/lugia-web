@@ -9,7 +9,7 @@ import React from 'react';
 import type { MorePageType, PaginationProps, PaginationState } from '../css/pagination';
 import { getThemeFontSize, getPaginationItemStyle } from '../css/pagination';
 import Select from '../select';
-import Input from '../number-input';
+import NumberInput from '../number-input';
 import Icon from '../icon';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '../theme-provider';
@@ -441,7 +441,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const { total } = this.props;
     const { current, pageSize } = this.state;
 
-    const totalPages = computePage(0, pageSize, total);
+    const totalPages = this.getTotalPages(pageSize, total);
     let pageList = [];
     const pageBufferSize = 2;
     if (totalPages <= 5 + pageBufferSize * 2) {
@@ -466,6 +466,10 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     }
 
     return pageList;
+  }
+
+  getTotalPages(pageSize: number, total: number) {
+    return computePage(0, pageSize, total);
   }
 
   getRightPage(totalPages: number) {
@@ -643,13 +647,15 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       theme
     );
     const quickJumpTextTheme = getPartOfThemeProps('PaginationQuickJumpText', { props: { size } });
-    const { quickJumpValue } = this.state;
+    const { quickJumpValue, pageSize } = this.state;
+    const { total } = this.props;
+    const totalPage = this.getTotalPages(pageSize, total);
     return (
       <PaginationTextContainer
         themeProps={getPartOfThemeProps('PaginationQuickJumpContainer', { props: { isLast } })}
       >
         <PaginationBaseText themeProps={quickJumpTextTheme}>跳至</PaginationBaseText>
-        <Input
+        <NumberInput
           size={size}
           theme={InnerInputTheme}
           viewClass={viewClass}
@@ -657,7 +663,9 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           onBlur={this.onInputBlur}
           showArrow={false}
           value={quickJumpValue}
-          onChange={this.quickJumpValueChange}
+          onChange={this.inputValueChange('quickJump')}
+          min={1}
+          max={totalPage}
         />
         <PaginationBaseText themeProps={quickJumpTextTheme}>页</PaginationBaseText>
       </PaginationTextContainer>
@@ -684,13 +692,19 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       this.handleChangePage(Number(e.target.value));
     }
   };
-  quickJumpValueChange = obj => {
+  inputValueChange = (type?: string) => obj => {
     const { newValue } = obj;
+    const { quickJumpValue, current } = this.state;
+    let stateName = 'current';
+    let stateValue = current;
+    if (type === 'quickJump') {
+      stateName = 'quickJumpValue';
+      stateValue = quickJumpValue;
+    }
     const theNewValue = (newValue + '').replace(/-/g, '');
-    const { quickJumpValue } = this.state;
-    if (theNewValue !== quickJumpValue && theNewValue !== 'NaN' && newValue !== '-') {
+    if (theNewValue !== stateValue && theNewValue !== 'NaN' && newValue !== '-') {
       this.setState({
-        quickJumpValue: theNewValue,
+        [stateName]: theNewValue,
       });
     }
     if (checkNumber(Number(theNewValue) + '')) {
@@ -892,13 +906,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const page = this.checkArrowChange(type);
     this.changePage(page)();
   };
-  inputChange = (obj: Object) => {
-    const { current } = this.state;
-    const { newValue } = obj;
-    if (current !== newValue) {
-      this.handleChangePage(Number(newValue));
-    }
-  };
 
   render() {
     const { simple } = this.props;
@@ -931,13 +938,15 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       return (
         <PaginationListContainer themeProps={getPartOfThemeProps('Container')}>
           {this.getArrowIcon('pre', current > 1)}
-          <Input
+          <NumberInput
             size={size}
             value={current}
             theme={InnerInputTheme}
             viewClass={viewClass}
             showArrow={false}
-            onChange={this.inputChange}
+            onChange={this.inputValueChange()}
+            min={1}
+            max={totalPage}
           />
           <PaginationTextDivider themeProps={textThemeProps}>/</PaginationTextDivider>
           <PaginationBaseText themeProps={textThemeProps}>{totalPage}</PaginationBaseText>
