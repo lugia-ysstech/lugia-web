@@ -213,7 +213,6 @@ export const CheckBoxInnerSpan = CSSComponent({
         isDisabled,
         isChecked,
         isIndeterminate,
-        hasChecked,
       } = propsConfig;
       if (isCancel || isChecked || isIndeterminate) {
         const {
@@ -246,10 +245,6 @@ export const CheckBoxInnerSpan = CSSComponent({
             content: ' ';
           }
         `;
-      }
-
-      if (hasChecked) {
-        return `border: 1px solid ${get('themeColor')};`;
       }
 
       return '';
