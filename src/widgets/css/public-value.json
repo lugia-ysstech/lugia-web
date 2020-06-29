@@ -31,7 +31,7 @@
   "defaultColor": "#ffffff",
   "primaryDataColor": "#8dabff",
   "lightDataColor": "#d4e1ff",
-  "ContrastDataColor": "#6fbdff",
+  "contrastDataColor": "#6fbdff",
   "superLightDataColor": "#cae6ff",
   "warningDataColor": "#f58f8a",
   "commonBackgroundColor": "#f5f5f9",
@@ -82,31 +82,11 @@
   "xlFontSize": 30,
   "xxlFontSize": 36,
   "xxxlFontSize": 48,
-  "normalBorder": {
-    "color": "#d0d3da",
-    "width": 1,
-    "style": "solid"
-  },
-  "hoverBorder": {
-    "color": "#4d63ff",
-    "width": 1,
-    "style": "solid"
-  },
-  "activeBorder": {
-    "color": "#3d53cc",
-    "width": 1,
-    "style": "solid"
-  },
-  "disabledBorder": {
-    "color": "#ebecf0",
-    "width": 1,
-    "style": "solid"
-  },
-  "focusBorder": {
-    "color": "#4d63ff",
-    "width": 1,
-    "style": "solid"
-  },
+  "normalBorder": { "color": "#d0d3da", "width": 1, "style": "solid" },
+  "hoverBorder": { "color": "#4d63ff", "width": 1, "style": "solid" },
+  "activeBorder": { "color": "#3d53cc", "width": 1, "style": "solid" },
+  "disabledBorder": { "color": "#ebecf0", "width": 1, "style": "solid" },
+  "focusBorder": { "color": "#4d63ff", "width": 1, "style": "solid" },
   "smallSize": 24,
   "normalSize": 32,
   "largeSize": 40,
