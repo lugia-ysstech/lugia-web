@@ -21,6 +21,5 @@ export type TableState = {
   selectRowKeys: any[],
   scroll: Object,
   data: Object[],
-  sortState: string,
   sortOrder: boolean,
 };
