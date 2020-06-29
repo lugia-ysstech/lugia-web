@@ -462,7 +462,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const { theme: inputThemeProps, inputViewClass } = getPartOfThemeHocProps('Input');
 
     const { theme: containerThemeProps, viewClass } = getPartOfThemeHocProps('Container');
-    const theInputTheme = deepMerge({
+    const theInputTheme = {
       [viewClass]: {
         InputSuffix: {
           normal: {
@@ -478,7 +478,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         },
         Container: deepMerge(inputThemeProps[inputViewClass], containerThemeProps[viewClass]),
       },
-    });
+    };
 
     const arrowContainerChannel = createEventChannel([['hover'], ['focus']]);
     return (
