@@ -291,8 +291,8 @@ export default ThemeProvider(
     };
     onSortChange = (columnData: Object, type: string) => {
       const { sortOrder } = this.state;
-      const { data, onChange } = this.props;
       const { sortState } = this;
+      const { data, onChange } = this.props;
       const { sorter, dataIndex } = columnData;
       let sortData = this.deepCopy(data);
       let newSortOrder = !sortOrder;

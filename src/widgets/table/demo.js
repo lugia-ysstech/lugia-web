@@ -906,7 +906,7 @@ export default class ModalDemo extends React.Component<any, any> {
       this.setState({ treeTable: data });
     });
   }
-  onHandlerChange(sorter) {
+  onHandleChange(sorter) {
     console.log('param', sorter);
   }
   render() {
@@ -1109,7 +1109,7 @@ export default class ModalDemo extends React.Component<any, any> {
         <Table
           columns={sortColumns}
           data={data}
-          onChange={this.onHandlerChange}
+          onChange={this.onHandleChange}
           tableStyle="linear"
         />
       </div>
