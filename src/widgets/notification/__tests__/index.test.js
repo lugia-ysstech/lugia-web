@@ -21,7 +21,10 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Notification', () => {
   const getState = (target: any): Object => {
-    const state = target.instance().state;
+    const state = target
+      .children()
+      .at(0)
+      .instance().state;
     return state;
   };
   it('css', () => {
@@ -56,7 +59,10 @@ describe('Notification', () => {
         description="因为今天的太阳很大。"
       />
     );
-    const cmp = target.instance();
+    const cmp = target
+      .children()
+      .at(0)
+      .instance();
     const result = cmp.handleDuration(4.5);
     expect(result).toBe(4.5);
 

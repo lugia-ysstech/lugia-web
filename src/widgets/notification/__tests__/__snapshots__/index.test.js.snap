@@ -1,6 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Notification css 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c3 {
+  font-size: 1.4rem;
+  box-sizing: border-box;
+  padding: 2rem 4.4rem;
+  background: #fff;
+  line-height: 1.5;
+  position: relative;
+  margin-bottom: 1.6rem;
+  box-shadow: 0rem 0rem 0.6rem 0rem #d0d3da;
+  border-radius: 0.8rem;
+  -webkit-animation: iBnjCl 0.3s ease-in;
+  animation: iBnjCl 0.3s ease-in;
+  z-index: 99999;
+}
+
+.c6 {
+  box-sizing: border-box;
+}
+
+.c7 {
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  line-height: 2.4rem;
+  display: inline-block;
+  word-break: break-all;
+  font-size: 1.8rem;
+  color: #363B40;
+}
+
+.c8 {
+  font-weight: 500;
+  word-break: break-all;
+  font-size: 1.4rem;
+  color: #646A6E;
+}
+
+.c10 {
+  font-size: 1.2rem;
+}
+
+.c9 {
+  position: absolute;
+  right: 1.6rem;
+  top: 1.15rem;
+  outline: none;
+  cursor: pointer;
+  color: #9EA4AE;
+}
+
+.c9:hover {
+  color: #646A6E;
+}
+
+.c4 {
+  position: absolute;
+  line-height: 2.2rem;
+  top: 2.2rem;
+  left: 1.6rem;
+  cursor: default;
+  font-size: 1.8rem;
+  color: #4d63ff;
+}
+
 .c0 {
   display: inline-block;
   margin-bottom: 0;
@@ -677,5 +748,96 @@ exports[`Notification css 1`] = `
       </span>
     </span>
   </button>
+  <br />
+  <br />
+  <div
+    className="c3"
+    style={
+      Object {
+        "backgroundColor": "#ccc",
+        "borderBottomColor": "blue",
+        "borderBottomLeftRadius": "1rem",
+        "borderBottomRightRadius": "1rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "blue",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "blue",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "blue",
+        "borderTopLeftRadius": "1rem",
+        "borderTopRightRadius": "1rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "boxShadow": "0px 0px 8px 0px red",
+        "height": "10rem",
+        "marginBottom": "0rem",
+        "marginLeft": "6rem",
+        "marginRight": "0rem",
+        "marginTop": "0rem",
+        "width": "50rem",
+      }
+    }
+  >
+    <i
+      className="lugia-icon-logo_ysstech c4  c5"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "color": "yellow",
+        }
+      }
+    />
+    <div
+      className="c6"
+    >
+      <div
+        className="c7"
+        style={
+          Object {
+            "color": "red",
+          }
+        }
+      >
+        我是标题
+      </div>
+      <div
+        className="c8"
+        style={
+          Object {
+            "color": "yellow",
+          }
+        }
+      >
+        <div>
+          我是内容
+        </div>
+      </div>
+    </div>
+    <div
+      className="c9"
+      onClick={[Function]}
+    >
+      <i
+        className="lugia-icon-reminder_close_circle_o c10  c5"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "yellow",
+          }
+        }
+      />
+    </div>
+  </div>
 </div>
 `;
