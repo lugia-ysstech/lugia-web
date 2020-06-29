@@ -458,44 +458,37 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
 
   render() {
     const { value, stepHover } = this.state;
-    const {
-      createEventChannel,
-      getPartOfThemeHocProps,
-      getPartOfThemeProps,
-      showArrow = true,
-    } = this.props;
-    const { theme: inputThemeProps } = getPartOfThemeHocProps('Input');
+    const { createEventChannel, getPartOfThemeHocProps, showArrow = true } = this.props;
+    const { theme: inputThemeProps, inputViewClass } = getPartOfThemeHocProps('Input');
 
-    const containerThemeProps = getPartOfThemeProps('Container');
-    const theInputTheme = deepMerge(
-      {
-        [Widget.Input]: {
-          InputSuffix: {
-            normal: {
-              getCSS() {
-                return 'opacity: 0;transition: all 0.3s;padding-right:0;';
-              },
+    const { theme: containerThemeProps, viewClass } = getPartOfThemeHocProps('Container');
+    const theInputTheme = deepMerge({
+      [viewClass]: {
+        InputSuffix: {
+          normal: {
+            getCSS() {
+              return 'opacity: 0;transition: all 0.3s;padding-right:0;';
             },
-            hover: {
-              getCSS() {
-                return 'opacity: 1;';
-              },
+          },
+          hover: {
+            getCSS() {
+              return 'opacity: 1;';
             },
           },
         },
+        Container: deepMerge(inputThemeProps[inputViewClass], containerThemeProps[viewClass]),
       },
-      inputThemeProps,
-      containerThemeProps
-    );
+    });
 
     const arrowContainerChannel = createEventChannel([['hover'], ['focus']]);
     return (
       <Input
+        {...this.props}
         _focus={stepHover === 'plus' || stepHover === 'minus'}
         getInputRef={this.getInputRef}
         lugiaConsumers={arrowContainerChannel.consumer}
         theme={theInputTheme}
-        {...this.props}
+        viewClass={viewClass}
         value={value}
         suffix={showArrow && this.getStepArrowIconContainer(arrowContainerChannel)}
         onBlur={this.onBlur}
