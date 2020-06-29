@@ -9,6 +9,7 @@ import { css, keyframes } from 'styled-components';
 import type { Type } from './component-iconwrap';
 
 export type MessageProps = {
+  icon?: string,
   iconType?: Type,
   time: number,
   content: string,

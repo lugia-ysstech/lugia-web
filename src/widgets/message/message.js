@@ -67,6 +67,7 @@ export default ThemeProvider(
 
     render() {
       const {
+        icon = '',
         iconType = 'info',
         content,
         getPartOfThemeProps,
@@ -83,6 +84,7 @@ export default ThemeProvider(
           <Message>
             <MessageContent opening={opening} closing={closing} themeProps={messageContentTheme}>
               <IconContent
+                icon={icon}
                 iconType={iconType}
                 content={content}
                 height={height - 20}

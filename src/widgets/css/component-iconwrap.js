@@ -9,6 +9,7 @@ import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 
 export type Type = 'info' | 'success' | 'error' | 'warning' | 'loading';
 export type IconConProps = {
+  icon?: string,
   iconType: Type,
   content: string,
   textTheme: Object,
