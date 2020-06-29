@@ -15,6 +15,7 @@ import 'rc-table/assets/index.css';
 import './style/lugia-table.css';
 import type { TableProps, TableState } from '../css/table';
 import { css } from 'styled-components';
+import TableTitle from './tableTitle';
 
 const sizePadding = {
   default: 8,
@@ -73,6 +74,8 @@ export default ThemeProvider(
         headIndeterminate: !!selectRowKeyLength,
         selectRowKeys: selectRowKeys || [],
         scroll,
+        data: JSON.parse(JSON.stringify(data)),
+        sortOrder: true,
       };
       this.tableWrap = React.createRef();
     }
@@ -227,13 +230,13 @@ export default ThemeProvider(
       const disabledSelectedKeys = [];
       const validRecords = [];
       const disabledSelectedRecords = [];
-      const { data = [], rowKey: cusRowKey = 'key', selectOptions = {} } = this.props;
+      const { rowKey: cusRowKey = 'key', selectOptions = {} } = this.props;
       const {
         setCheckboxProps = (record: Object) => {
           return {};
         },
       } = selectOptions;
-      const { selectRowKeys: stateSelectRowKeys } = this.state;
+      const { selectRowKeys: stateSelectRowKeys, data = [] } = this.state;
       data.forEach(record => {
         const rowKey = record[cusRowKey];
         const select = stateSelectRowKeys.includes(rowKey);
@@ -257,12 +260,53 @@ export default ThemeProvider(
       this.validRecords = validRecords;
       this.disabledSelectedRecords = disabledSelectedRecords;
     };
+    getSortColumns = (columns: Object[]) => {
+      const newColumns = this.deepCopy(columns);
+      newColumns.map(item => {
+        const { sorter } = item;
+        if (sorter) {
+          item.title = (
+            <TableTitle
+              title={item.title}
+              positiveSequence={() => this.onSortChange(sorter, 'ascend')}
+              negativeSequence={() => this.onSortChange(sorter, 'descend')}
+            />
+          );
+        }
+      });
+      return newColumns;
+    };
+    deepCopy = (arr: Object[]) => {
+      if (typeof arr !== 'object') return;
 
+      const newArr = arr instanceof Array ? [] : {};
+      for (const key in arr) {
+        if (arr.hasOwnProperty(key)) {
+          newArr[key] = typeof arr[key] === 'object' ? this.deepCopy(arr[key]) : arr[key];
+        }
+      }
+      return newArr;
+    };
+    onSortChange = (func: Function, type: string) => {
+      const { sortState, sortOrder } = this.state;
+      const { data } = this.props;
+      let sortData = JSON.parse(JSON.stringify(data));
+      let newSortOrder = !sortOrder;
+      if (sortOrder || (sortState && sortState !== type && !sortOrder)) {
+        if (sortState && sortState !== type && !sortOrder) {
+          newSortOrder = false;
+        }
+        sortData = sortData.sort(func);
+        if (type === 'descend') {
+          sortData = sortData.reverse();
+        }
+      }
+      this.setState({ data: sortData, sortState: type, sortOrder: newSortOrder });
+    };
     render() {
       const {
         children,
         columns = [],
-        data,
         showHeader = true,
         tableStyle = 'bordered',
         getPartOfThemeProps,
@@ -282,6 +326,7 @@ export default ThemeProvider(
         headIndeterminate,
         selectRowKeys: stateSelectRowKeys,
         scroll = {},
+        data,
       } = this.state;
 
       const containerPartOfThemeProps = getPartOfThemeProps('Container', {
@@ -308,7 +353,7 @@ export default ThemeProvider(
           </TableWrap>
         );
       }
-      const theColumns = [...columns];
+      const theColumns = [...this.getSortColumns(columns)];
       if ('selectOptions' in this.props) {
         this.getValidKey();
         const {
