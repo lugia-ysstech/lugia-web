@@ -35,6 +35,8 @@ const ArrowWrapper = StaticComponent({
 
 type TableTitleProps = {
   title: string,
+  positiveSequence: Function,
+  negativeSequence: Function,
 };
 
 const themeConfig = {

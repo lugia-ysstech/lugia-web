@@ -63,6 +63,7 @@ export default ThemeProvider(
     validKeys: any[];
     disabledSelectedKeys: any[];
     tableWrap: Object;
+    sortState: string;
     constructor(props) {
       super();
       const { data = [], selectOptions: { selectRowKeys = [] } = {}, scroll = {} } = props;
@@ -288,12 +289,12 @@ export default ThemeProvider(
       return newArr;
     };
     onSortChange = (func: Function, type: string) => {
-      const { sortState, sortOrder } = this.state;
+      const { sortOrder } = this.state;
       const { data } = this.props;
       let sortData = JSON.parse(JSON.stringify(data));
       let newSortOrder = !sortOrder;
-      if (sortOrder || (sortState && sortState !== type && !sortOrder)) {
-        if (sortState && sortState !== type && !sortOrder) {
+      if (sortOrder || (this.sortState && this.sortState !== type && !sortOrder)) {
+        if (this.sortState && this.sortState !== type && !sortOrder) {
           newSortOrder = false;
         }
         sortData = sortData.sort(func);
@@ -301,7 +302,8 @@ export default ThemeProvider(
           sortData = sortData.reverse();
         }
       }
-      this.setState({ data: sortData, sortState: type, sortOrder: newSortOrder });
+      this.sortState = type;
+      this.setState({ data: sortData, sortOrder: newSortOrder });
     };
     render() {
       const {
@@ -353,7 +355,7 @@ export default ThemeProvider(
           </TableWrap>
         );
       }
-      const theColumns = [...this.getSortColumns(columns)];
+      const theColumns = this.getSortColumns(columns);
       if ('selectOptions' in this.props) {
         this.getValidKey();
         const {
