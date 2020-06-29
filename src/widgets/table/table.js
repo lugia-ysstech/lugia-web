@@ -75,7 +75,7 @@ export default ThemeProvider(
         headIndeterminate: !!selectRowKeyLength,
         selectRowKeys: selectRowKeys || [],
         scroll,
-        data: JSON.parse(JSON.stringify(data)),
+        data: this.deepCopy(data),
         sortOrder: true,
       };
       this.tableWrap = React.createRef();
@@ -265,12 +265,13 @@ export default ThemeProvider(
       const newColumns = this.deepCopy(columns);
       newColumns.map(item => {
         const { sorter } = item;
+        const newItem = this.deepCopy(item);
         if (sorter) {
           item.title = (
             <TableTitle
               title={item.title}
-              positiveSequence={() => this.onSortChange(sorter, 'ascend')}
-              negativeSequence={() => this.onSortChange(sorter, 'descend')}
+              positiveSequence={() => this.onSortChange(newItem, 'ascend')}
+              negativeSequence={() => this.onSortChange(newItem, 'descend')}
             />
           );
         }
@@ -288,22 +289,25 @@ export default ThemeProvider(
       }
       return newArr;
     };
-    onSortChange = (func: Function, type: string) => {
+    onSortChange = (columnData: Object, type: string) => {
       const { sortOrder } = this.state;
-      const { data } = this.props;
-      let sortData = JSON.parse(JSON.stringify(data));
+      const { sortState } = this;
+      const { data, onChange } = this.props;
+      const { sorter, dataIndex } = columnData;
+      let sortData = this.deepCopy(data);
       let newSortOrder = !sortOrder;
-      if (sortOrder || (this.sortState && this.sortState !== type && !sortOrder)) {
-        if (this.sortState && this.sortState !== type && !sortOrder) {
+      if (sortOrder || (sortState && sortState !== type && !sortOrder)) {
+        if (sortState && sortState !== type && !sortOrder) {
           newSortOrder = false;
         }
-        sortData = sortData.sort(func);
+        sortData = sortData.sort(sorter);
         if (type === 'descend') {
           sortData = sortData.reverse();
         }
       }
       this.sortState = type;
       this.setState({ data: sortData, sortOrder: newSortOrder });
+      onChange && onChange({ column: columnData, field: dataIndex, order: type });
     };
     render() {
       const {
