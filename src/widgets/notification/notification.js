@@ -50,15 +50,23 @@ export default ThemeProvider(
     };
 
     render() {
-      const { icon, iconType, title = '标题', description, getPartOfThemeProps } = this.props;
+      const {
+        icon,
+        iconType,
+        closeIcon,
+        title = '标题',
+        description,
+        getPartOfThemeProps,
+        getPartOfThemeHocProps,
+      } = this.props;
       const { visible, opening, closing } = this.state;
       const { placement = 'topRight' } = this.props;
 
       const notificationTheme = getPartOfThemeProps('Container');
       const notificationTitleTheme = getPartOfThemeProps('NotificationTitle');
       const notificationTextTheme = getPartOfThemeProps('NotificationText');
-      const notificationIconTheme = getPartOfThemeProps('NotificationIcon');
-      const notificationCloseIconTheme = getPartOfThemeProps('NotificationCloseIcon');
+      const notificationIconTheme = getPartOfThemeHocProps('NotificationIcon');
+      const notificationCloseIconTheme = getPartOfThemeHocProps('NotificationCloseIcon');
 
       if (visible) {
         return (
@@ -73,7 +81,7 @@ export default ThemeProvider(
               <Icons
                 iconClass={iconType ? IconInfo[iconType].class : icon}
                 iconColor={iconType && IconInfo[iconType].color}
-                themeProps={notificationIconTheme}
+                {...notificationIconTheme}
               />
             ) : null}
             <Content>
@@ -82,8 +90,8 @@ export default ThemeProvider(
             </Content>
             <CloseIconWrap onClick={this.handleClose}>
               <CloseIcon
-                iconClass="lugia-icon-reminder_close"
-                themeProps={notificationCloseIconTheme}
+                iconClass={closeIcon || 'lugia-icon-reminder_close'}
+                {...notificationCloseIconTheme}
               />
             </CloseIconWrap>
           </Notification>

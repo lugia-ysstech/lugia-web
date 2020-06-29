@@ -20,6 +20,10 @@
       "type": "string",
       "desc": "自定义图标"
     },
+    "closeIcon": {
+      "type": "string",
+      "desc": "自定义图标"
+    },
     "placement": {
       "type": "PlacementType",
       "desc": "弹出位置，topRight、bottomLeft、bottomRight、topLeft",
@@ -30,7 +34,5 @@
     "PlacementType": ["topRight", "bottomLeft", "bottomRight", "topLeft"]
   },
   "category": ["反馈"],
-  "theme": {
-
-  }
+  "theme": {}
 }
