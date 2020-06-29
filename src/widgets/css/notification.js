@@ -4,6 +4,7 @@
  * @flow
  */
 import styled, { css, keyframes } from 'styled-components';
+import CSSComponent from '@lugia/theme-css-hoc';
 import Icon from '../icon';
 import get from './theme-common-dict';
 import { px2remcss } from './units';
@@ -86,37 +87,72 @@ const getNotificationCssStyle = () => {
     border-radius: ${em(get('largeBorderRadiusValue'))};
   `;
 };
-export const Notification = styled.div`
-  font-size: ${em(14)};
-  box-sizing: border-box;
-  padding: ${em(20)} ${props => (props.needIcon ? em(44) : em(20))};
-  background: #fff;
-  line-height: 1.5;
-  position: relative;
-  margin-bottom: ${em(16)};
-  ${getNotificationCssStyle}
-  ${getAnimate};
-`;
+
+export const Notification = CSSComponent({
+  tag: 'div',
+  className: 'Notification',
+  css: css`
+    font-size: ${em(14)};
+    box-sizing: border-box;
+    padding: ${em(20)} ${props => (props.needIcon ? em(44) : em(20))};
+    background: #fff;
+    line-height: 1.5;
+    position: relative;
+    margin-bottom: ${em(16)};
+    ${getNotificationCssStyle}
+    ${getAnimate};
+    z-index: 99999;
+  `,
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['borderRadius'],
+      ['opacity'],
+      ['background'],
+      ['border'],
+      ['boxShadow'],
+      ['margin'],
+    ],
+  },
+});
+
 export const Content = styled.div`
   box-sizing: border-box;
 `;
 const getTitleCssStyle = () =>
   `font-size: ${em(get('headLineFontSize'))};color: ${get('blackColor')};`;
-export const Title = styled.div`
-  font-weight: 500;
-  margin-bottom: ${em(8)};
-  line-height: ${em(24)};
-  display: inline-block;
-  word-break: break-all;
-  ${getTitleCssStyle}
-`;
+export const Title = CSSComponent({
+  tag: 'div',
+  className: 'Title',
+  css: css`
+    font-weight: 500;
+    margin-bottom: ${em(8)};
+    line-height: ${em(24)};
+    display: inline-block;
+    word-break: break-all;
+    ${getTitleCssStyle}
+  `,
+  normal: {
+    selectNames: [['color'], ['font'], ['padding']],
+  },
+});
+
 const getTextCssStyle = () =>
   `font-size: ${em(get('sectionFontSize'))};color: ${get('darkGreyColor')};`;
-export const Text = styled.div`
-  font-weight: 500;
-  word-break: break-all;
-  ${getTextCssStyle}
-`;
+export const Text = CSSComponent({
+  tag: 'div',
+  className: 'Text',
+  css: css`
+    font-weight: 500;
+    word-break: break-all;
+    ${getTextCssStyle}
+  `,
+  normal: {
+    selectNames: [['color'], ['font']],
+  },
+});
+
 const getCloseIconCssStyle = () => `font-size: ${em(get('xsFontSize'))};`;
 export const CloseIcon: Object = styled(Icon)`
   ${getCloseIconCssStyle}

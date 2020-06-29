@@ -29,5 +29,8 @@
   "type": {
     "PlacementType": ["topRight", "bottomLeft", "bottomRight", "topLeft"]
   },
-  "category": ["反馈"]
+  "category": ["反馈"],
+  "theme": {
+
+  }
 }
