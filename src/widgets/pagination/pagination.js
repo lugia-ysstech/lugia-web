@@ -9,7 +9,7 @@ import React from 'react';
 import type { MorePageType, PaginationProps, PaginationState } from '../css/pagination';
 import { getThemeFontSize, getPaginationItemStyle } from '../css/pagination';
 import Select from '../select';
-import Input from '../input';
+import Input from '../number-input';
 import Icon from '../icon';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '../theme-provider';
@@ -655,7 +655,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           viewClass={viewClass}
           onEnter={this.enterPage}
           onBlur={this.onInputBlur}
-          isShowClearButton={false}
+          showArrow={false}
           value={quickJumpValue}
           onChange={this.quickJumpValueChange}
         />
@@ -684,17 +684,18 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       this.handleChangePage(Number(e.target.value));
     }
   };
-  quickJumpValueChange = e => {
-    const { newValue } = e;
-    const theNewValue = newValue.replace(/-/g, '');
-    const theValue = checkNumber(theNewValue);
+  quickJumpValueChange = obj => {
+    const { newValue } = obj;
+    const theNewValue = (newValue + '').replace(/-/g, '');
     const { quickJumpValue } = this.state;
-    if (theValue !== quickJumpValue) {
+    if (theNewValue !== quickJumpValue && theNewValue !== 'NaN' && newValue !== '-') {
       this.setState({
-        quickJumpValue: theValue,
+        quickJumpValue: theNewValue,
       });
     }
-    this.handleChangePage(Number(theValue));
+    if (checkNumber(Number(theNewValue) + '')) {
+      this.handleChangePage(Number(theNewValue));
+    }
   };
 
   onInputBlur = (e: Object) => {
@@ -894,9 +895,8 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   inputChange = (obj: Object) => {
     const { current } = this.state;
     const { newValue } = obj;
-    const numberValue = checkNumber(newValue);
-    if (current !== numberValue) {
-      this.handleChangePage(Number(numberValue));
+    if (current !== newValue) {
+      this.handleChangePage(Number(newValue));
     }
   };
 
@@ -936,7 +936,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
             value={current}
             theme={InnerInputTheme}
             viewClass={viewClass}
-            isShowClearButton={false}
+            showArrow={false}
             onChange={this.inputChange}
           />
           <PaginationTextDivider themeProps={textThemeProps}>/</PaginationTextDivider>
