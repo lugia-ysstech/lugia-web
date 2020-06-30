@@ -8,6 +8,7 @@ import * as React from 'react';
 import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import Modal from './index';
 import Button from '../button';
+import Select from '../select';
 import Theme from '../theme';
 import Widgets from '../consts';
 import { getBorderRadius } from '../theme/CSSProvider';
@@ -15,6 +16,13 @@ import { getBorderRadius } from '../theme/CSSProvider';
 const Text = (props: Object) => {
   return <div>{props.text}</div>;
 };
+const data = (function(t) {
+  const res = [];
+  for (let i = 0; i < t; i++) {
+    res.push({ value: `key-${i}`, label: `txt${i}` });
+  }
+  return res;
+})(10);
 class ModalBox extends React.Component<any, any> {
   constructor() {
     super();
@@ -290,6 +298,13 @@ export default class ModalDemo extends React.Component<any, any> {
         >
           createModal
         </Button>
+        <Select
+          canSearch
+          canClear={false}
+          displayField={'label'}
+          data={data}
+          onTrigger={this.Click(4)}
+        />
       </div>
     );
   }

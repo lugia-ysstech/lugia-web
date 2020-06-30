@@ -87,7 +87,7 @@ export const Wrap = StaticComponent({
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 99999;
+    z-index: ${props => (props.zIndex ? props.zIndex : '99999')};
   `,
 });
 const getAnimate = (props: CSSProps) => {
@@ -132,7 +132,7 @@ export const ModalMask = CSSComponent({
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.65);
-    z-index: 99999;
+    z-index: ${props => (props.zIndex ? props.zIndex : '99999')};
     ${getAnimate};
   `,
   normal: {
@@ -148,7 +148,7 @@ export const ModalWrap = StaticComponent({
     left: 50%;
     top: 100px;
     transform: translateX(-50%);
-    z-index: 99999;
+    z-index: ${props => (props.zIndex ? props.zIndex : '99999')};
   `,
 });
 export const Modal = CSSComponent({
