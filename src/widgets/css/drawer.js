@@ -58,7 +58,7 @@ const getDrawerWidth = (props: CSSProps) => {
 };
 export const Drawer = styled.div`
   font-size: ${FontSize}rem;
-  position: fixed;
+  position: ${props => (!props.getContainer ? 'absolute' : 'fixed')};
   top: 0;
   ${getDrawerWidth};
   height: 100%;
@@ -78,7 +78,7 @@ const getMaskStyle = (props: CSSProps) => {
   `;
 };
 export const DrawerMask = styled.div`
-  position: fixed;
+  position: ${props => (!props.getContainer ? 'absolute' : 'fixed')};
   width: 100%;
   transition: opacity 0.3s linear;
   ${getMaskStyle};
@@ -213,6 +213,7 @@ export const DrawerContentWrap = CSSComponent({
     ${getTransform};
     min-width: 256px;
     min-height: 100px;
+    border: 1px solid red;
   `,
   normal: {
     selectNames: [['width'], ['height']],
