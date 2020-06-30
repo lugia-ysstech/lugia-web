@@ -69,7 +69,13 @@ export function getWrapThemeProps(props, partName) {
   };
 
   const deeMergeTheme = deepMerge(defaultNormal, themeConfig) || {};
-  const { normal: newNormal = {}, hover = {}, active = {}, disabled = {} } = deeMergeTheme;
+  const {
+    normal: newNormal = {},
+    hover = {},
+    active = {},
+    focus = {},
+    disabled = {},
+  } = deeMergeTheme;
   const normal = deepMerge(newNormal, validateWidthTheme.themeConfig.normal);
   const { borderRadius } = normal;
   const deafultHoverBorderColor = {
@@ -96,7 +102,7 @@ export function getWrapThemeProps(props, partName) {
 
   const hoverTheme = deepMerge(deafultHoverBorderColor, hover);
   const activeTheme = deepMerge(deafultActiveBorderColor, active);
-  const focusTheme = deepMerge(deafultFocusBorderColor, active);
+  const focusTheme = deepMerge(deafultFocusBorderColor, focus);
   const disabledTheme = deepMerge(defaultDisabled, disabled);
   const {
     normal: validateNormalTheme,
