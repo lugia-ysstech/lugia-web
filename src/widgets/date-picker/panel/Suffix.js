@@ -9,7 +9,7 @@ class Suffix extends Component {
   };
 
   clearBtn = () => {
-    const { onClear, clearButtonTheme } = this.props;
+    const { onClear, clearButtonTheme, clearIcon = 'lugia-icon-reminder_close' } = this.props;
     return (
       <Theme
         config={{
@@ -24,7 +24,7 @@ class Suffix extends Component {
         }}
       >
         <Icon
-          iconClass={'lugia-icon-reminder_close'}
+          iconClass={clearIcon}
           onClick={e => {
             onClear(e);
           }}
