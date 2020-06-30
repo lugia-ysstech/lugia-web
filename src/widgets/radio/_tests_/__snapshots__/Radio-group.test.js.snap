@@ -10,7 +10,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
   white-space: nowrap;
   cursor: pointer;
   display: inline-block;
-  margin-right: 3rem;
+  margin-right: 2.4rem;
   opacity: 1;
   padding-top: 0rem;
   padding-bottom: 0rem;
@@ -61,7 +61,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
   white-space: nowrap;
   cursor: pointer;
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   opacity: 1;
   padding-top: 0rem;
   padding-bottom: 0rem;
@@ -112,7 +112,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
   white-space: nowrap;
   cursor: not-allowed;
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   opacity: 1;
   padding-top: 0rem;
   padding-bottom: 0rem;
@@ -129,7 +129,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
 }
 
 .c3 {
-  padding-left: 1rem;
+  padding-left: 0.8rem;
   vertical-align: middle;
   color: #363B40;
   font-size: 1.4rem;
@@ -143,7 +143,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 50%;
-  border: 1px solid #cccccc;
+  border: 1px solid #d0d3da;
   background-color: #4d63ff;
   -webkit-transition: all 0.3s;
   -webkit-transition: all 0.3s;
@@ -153,16 +153,16 @@ exports[`RadioGroup RadioGroup css 1`] = `
   background-color: #4d63ff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-left-width: 0.1rem;
   border-left-style: solid;
-  border-left-color: #cccccc;
+  border-left-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   border-top-left-radius: 100%;
   border-top-right-radius: 100%;
   border-bottom-right-radius: 100%;
@@ -177,7 +177,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 50%;
-  border: 1px solid #cccccc;
+  border: 1px solid #d0d3da;
   background-color: #4d63ff;
   -webkit-transition: all 0.3s;
   -webkit-transition: all 0.3s;
@@ -187,16 +187,16 @@ exports[`RadioGroup RadioGroup css 1`] = `
   background-color: #4d63ff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-left-width: 0.1rem;
   border-left-style: solid;
-  border-left-color: #cccccc;
+  border-left-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   border-top-left-radius: 100%;
   border-top-right-radius: 100%;
   border-bottom-right-radius: 100%;
@@ -228,7 +228,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 50%;
-  border: 1px solid #cccccc;
+  border: 1px solid #d0d3da;
   background-color: #4d63ff;
   -webkit-transition: all 0.3s;
   -webkit-transition: all 0.3s;
@@ -238,16 +238,16 @@ exports[`RadioGroup RadioGroup css 1`] = `
   background-color: #4d63ff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-left-width: 0.1rem;
   border-left-style: solid;
-  border-left-color: #cccccc;
+  border-left-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   border-top-left-radius: 100%;
   border-top-right-radius: 100%;
   border-bottom-right-radius: 100%;
@@ -279,7 +279,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 50%;
-  border: 1px solid #cccccc;
+  border: 1px solid #d0d3da;
   background-color: #4d63ff;
   -webkit-transition: all 0.3s;
   -webkit-transition: all 0.3s;
@@ -289,16 +289,16 @@ exports[`RadioGroup RadioGroup css 1`] = `
   background-color: #4d63ff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-left-width: 0.1rem;
   border-left-style: solid;
-  border-left-color: #cccccc;
+  border-left-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   border-top-left-radius: 100%;
   border-top-right-radius: 100%;
   border-bottom-right-radius: 100%;
@@ -359,13 +359,13 @@ exports[`RadioGroup RadioGroup css 1`] = `
   background-color: #fff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   padding-top: 0rem;
   padding-bottom: 0rem;
   padding-left: 1rem;
@@ -395,13 +395,13 @@ exports[`RadioGroup RadioGroup css 1`] = `
   background-color: #fff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   padding-top: 0rem;
   padding-bottom: 0rem;
   padding-left: 1rem;
@@ -431,13 +431,13 @@ exports[`RadioGroup RadioGroup css 1`] = `
   background-color: #fff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   padding-top: 0rem;
   padding-bottom: 0rem;
   padding-left: 1rem;
@@ -466,13 +466,13 @@ exports[`RadioGroup RadioGroup css 1`] = `
   background-color: #fff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   padding-top: 0rem;
   padding-bottom: 0rem;
   padding-left: 1rem;
@@ -501,13 +501,13 @@ exports[`RadioGroup RadioGroup css 1`] = `
   background-color: #fff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   padding-top: 0rem;
   padding-bottom: 0rem;
   padding-left: 1rem;
@@ -536,13 +536,13 @@ exports[`RadioGroup RadioGroup css 1`] = `
   background-color: #fff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   padding-top: 0rem;
   padding-bottom: 0rem;
   padding-left: 1rem;
@@ -560,7 +560,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
 }
 
 .c19 > label:first-child > span {
-  border-left: 1px solid #e8e8e8;
+  border-left: 1px solid #ebecf0;
   border-radius: 0.4rem 0 0 0.4rem;
 }
 
@@ -792,7 +792,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
         className="c3"
         style={
           Object {
-            "color": "#cccccc",
+            "color": "#d0d3da",
             "paddingBottom": "1rem",
             "paddingLeft": "1rem",
             "paddingRight": "1rem",
@@ -879,18 +879,18 @@ exports[`RadioGroup RadioGroup css 1`] = `
             style={
               Object {
                 "backgroundColor": "#fff",
-                "borderBottomColor": "#cccccc",
+                "borderBottomColor": "#d0d3da",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#cccccc",
+                "borderLeftColor": "#d0d3da",
                 "borderLeftStyle": "solid",
                 "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#cccccc",
+                "borderRightColor": "#d0d3da",
                 "borderRightStyle": "solid",
                 "borderRightWidth": "0.1rem",
-                "borderTopColor": "#cccccc",
+                "borderTopColor": "#d0d3da",
                 "borderTopLeftRadius": "100%",
                 "borderTopRightRadius": "100%",
                 "borderTopStyle": "solid",
@@ -981,18 +981,18 @@ exports[`RadioGroup RadioGroup css 1`] = `
             style={
               Object {
                 "backgroundColor": "#fff",
-                "borderBottomColor": "#cccccc",
+                "borderBottomColor": "#d0d3da",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#cccccc",
+                "borderLeftColor": "#d0d3da",
                 "borderLeftStyle": "solid",
                 "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#cccccc",
+                "borderRightColor": "#d0d3da",
                 "borderRightStyle": "solid",
                 "borderRightWidth": "0.1rem",
-                "borderTopColor": "#cccccc",
+                "borderTopColor": "#d0d3da",
                 "borderTopLeftRadius": "100%",
                 "borderTopRightRadius": "100%",
                 "borderTopStyle": "solid",
@@ -1083,18 +1083,18 @@ exports[`RadioGroup RadioGroup css 1`] = `
             style={
               Object {
                 "backgroundColor": "#fff",
-                "borderBottomColor": "#cccccc",
+                "borderBottomColor": "#d0d3da",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#cccccc",
+                "borderLeftColor": "#d0d3da",
                 "borderLeftStyle": "solid",
                 "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#cccccc",
+                "borderRightColor": "#d0d3da",
                 "borderRightStyle": "solid",
                 "borderRightWidth": "0.1rem",
-                "borderTopColor": "#cccccc",
+                "borderTopColor": "#d0d3da",
                 "borderTopLeftRadius": "100%",
                 "borderTopRightRadius": "100%",
                 "borderTopStyle": "solid",
@@ -1185,18 +1185,18 @@ exports[`RadioGroup RadioGroup css 1`] = `
             style={
               Object {
                 "backgroundColor": "#fff",
-                "borderBottomColor": "#cccccc",
+                "borderBottomColor": "#d0d3da",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#cccccc",
+                "borderLeftColor": "#d0d3da",
                 "borderLeftStyle": "solid",
                 "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#cccccc",
+                "borderRightColor": "#d0d3da",
                 "borderRightStyle": "solid",
                 "borderRightWidth": "0.1rem",
-                "borderTopColor": "#cccccc",
+                "borderTopColor": "#d0d3da",
                 "borderTopLeftRadius": "100%",
                 "borderTopRightRadius": "100%",
                 "borderTopStyle": "solid",
@@ -1237,19 +1237,19 @@ exports[`RadioGroup RadioGroup css 1`] = `
             disabled={true}
             style={
               Object {
-                "backgroundColor": "#f2f2f2",
-                "borderBottomColor": "#e8e8e8",
+                "backgroundColor": "#f4f5f8",
+                "borderBottomColor": "#ebecf0",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#e8e8e8",
+                "borderLeftColor": "#ebecf0",
                 "borderLeftStyle": "solid",
                 "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#e8e8e8",
+                "borderRightColor": "#ebecf0",
                 "borderRightStyle": "solid",
                 "borderRightWidth": "0.1rem",
-                "borderTopColor": "#e8e8e8",
+                "borderTopColor": "#ebecf0",
                 "borderTopLeftRadius": "100%",
                 "borderTopRightRadius": "100%",
                 "borderTopStyle": "solid",
@@ -1264,7 +1264,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
           className="c3"
           style={
             Object {
-              "color": "#cccccc",
+              "color": "#d0d3da",
             }
           }
         >
@@ -1344,18 +1344,18 @@ exports[`RadioGroup RadioGroup css 1`] = `
             style={
               Object {
                 "backgroundColor": "#fff",
-                "borderBottomColor": "#cccccc",
+                "borderBottomColor": "#d0d3da",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#cccccc",
+                "borderLeftColor": "#d0d3da",
                 "borderLeftStyle": "solid",
                 "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#cccccc",
+                "borderRightColor": "#d0d3da",
                 "borderRightStyle": "solid",
                 "borderRightWidth": "0.1rem",
-                "borderTopColor": "#cccccc",
+                "borderTopColor": "#d0d3da",
                 "borderTopLeftRadius": "100%",
                 "borderTopRightRadius": "100%",
                 "borderTopStyle": "solid",
@@ -1396,19 +1396,19 @@ exports[`RadioGroup RadioGroup css 1`] = `
             disabled={true}
             style={
               Object {
-                "backgroundColor": "#f2f2f2",
-                "borderBottomColor": "#e8e8e8",
+                "backgroundColor": "#f4f5f8",
+                "borderBottomColor": "#ebecf0",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#e8e8e8",
+                "borderLeftColor": "#ebecf0",
                 "borderLeftStyle": "solid",
                 "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#e8e8e8",
+                "borderRightColor": "#ebecf0",
                 "borderRightStyle": "solid",
                 "borderRightWidth": "0.1rem",
-                "borderTopColor": "#e8e8e8",
+                "borderTopColor": "#ebecf0",
                 "borderTopLeftRadius": "100%",
                 "borderTopRightRadius": "100%",
                 "borderTopStyle": "solid",
@@ -1423,7 +1423,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
           className="c3"
           style={
             Object {
-              "color": "#cccccc",
+              "color": "#d0d3da",
             }
           }
         >
@@ -1817,7 +1817,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
           className="c3"
           style={
             Object {
-              "color": "#cccccc",
+              "color": "#d0d3da",
               "paddingBottom": "1rem",
               "paddingLeft": "1rem",
               "paddingRight": "1rem",
@@ -1909,18 +1909,18 @@ exports[`RadioGroup RadioGroup css 1`] = `
             style={
               Object {
                 "backgroundColor": "#fff",
-                "borderBottomColor": "#cccccc",
+                "borderBottomColor": "#d0d3da",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#cccccc",
+                "borderLeftColor": "#d0d3da",
                 "borderLeftStyle": "solid",
                 "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#cccccc",
+                "borderRightColor": "#d0d3da",
                 "borderRightStyle": "solid",
                 "borderRightWidth": "0.1rem",
-                "borderTopColor": "#cccccc",
+                "borderTopColor": "#d0d3da",
                 "borderTopLeftRadius": "100%",
                 "borderTopRightRadius": "100%",
                 "borderTopStyle": "solid",
@@ -1956,18 +1956,18 @@ exports[`RadioGroup RadioGroup css 1`] = `
             style={
               Object {
                 "backgroundColor": "#fff",
-                "borderBottomColor": "#cccccc",
+                "borderBottomColor": "#d0d3da",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#cccccc",
+                "borderLeftColor": "#d0d3da",
                 "borderLeftStyle": "solid",
                 "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#cccccc",
+                "borderRightColor": "#d0d3da",
                 "borderRightStyle": "solid",
                 "borderRightWidth": "0.1rem",
-                "borderTopColor": "#cccccc",
+                "borderTopColor": "#d0d3da",
                 "borderTopLeftRadius": "100%",
                 "borderTopRightRadius": "100%",
                 "borderTopStyle": "solid",
@@ -2008,19 +2008,19 @@ exports[`RadioGroup RadioGroup css 1`] = `
             disabled={true}
             style={
               Object {
-                "backgroundColor": "#f2f2f2",
-                "borderBottomColor": "#e8e8e8",
+                "backgroundColor": "#f4f5f8",
+                "borderBottomColor": "#ebecf0",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#e8e8e8",
+                "borderLeftColor": "#ebecf0",
                 "borderLeftStyle": "solid",
                 "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#e8e8e8",
+                "borderRightColor": "#ebecf0",
                 "borderRightStyle": "solid",
                 "borderRightWidth": "0.1rem",
-                "borderTopColor": "#e8e8e8",
+                "borderTopColor": "#ebecf0",
                 "borderTopLeftRadius": "100%",
                 "borderTopRightRadius": "100%",
                 "borderTopStyle": "solid",
@@ -2035,7 +2035,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
           className="c3"
           style={
             Object {
-              "color": "#cccccc",
+              "color": "#d0d3da",
             }
           }
         >
@@ -2123,18 +2123,18 @@ exports[`RadioGroup RadioGroup css 1`] = `
             style={
               Object {
                 "backgroundColor": "#fff",
-                "borderBottomColor": "#cccccc",
+                "borderBottomColor": "#d0d3da",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#cccccc",
+                "borderLeftColor": "#d0d3da",
                 "borderLeftStyle": "solid",
                 "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#cccccc",
+                "borderRightColor": "#d0d3da",
                 "borderRightStyle": "solid",
                 "borderRightWidth": "0.1rem",
-                "borderTopColor": "#cccccc",
+                "borderTopColor": "#d0d3da",
                 "borderTopLeftRadius": "100%",
                 "borderTopRightRadius": "100%",
                 "borderTopStyle": "solid",
@@ -2170,18 +2170,18 @@ exports[`RadioGroup RadioGroup css 1`] = `
             style={
               Object {
                 "backgroundColor": "#fff",
-                "borderBottomColor": "#cccccc",
+                "borderBottomColor": "#d0d3da",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#cccccc",
+                "borderLeftColor": "#d0d3da",
                 "borderLeftStyle": "solid",
                 "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#cccccc",
+                "borderRightColor": "#d0d3da",
                 "borderRightStyle": "solid",
                 "borderRightWidth": "0.1rem",
-                "borderTopColor": "#cccccc",
+                "borderTopColor": "#d0d3da",
                 "borderTopLeftRadius": "100%",
                 "borderTopRightRadius": "100%",
                 "borderTopStyle": "solid",
@@ -2222,19 +2222,19 @@ exports[`RadioGroup RadioGroup css 1`] = `
             disabled={true}
             style={
               Object {
-                "backgroundColor": "#f2f2f2",
-                "borderBottomColor": "#e8e8e8",
+                "backgroundColor": "#f4f5f8",
+                "borderBottomColor": "#ebecf0",
                 "borderBottomLeftRadius": "100%",
                 "borderBottomRightRadius": "100%",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#e8e8e8",
+                "borderLeftColor": "#ebecf0",
                 "borderLeftStyle": "solid",
                 "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#e8e8e8",
+                "borderRightColor": "#ebecf0",
                 "borderRightStyle": "solid",
                 "borderRightWidth": "0.1rem",
-                "borderTopColor": "#e8e8e8",
+                "borderTopColor": "#ebecf0",
                 "borderTopLeftRadius": "100%",
                 "borderTopRightRadius": "100%",
                 "borderTopStyle": "solid",
@@ -2249,7 +2249,7 @@ exports[`RadioGroup RadioGroup css 1`] = `
           className="c3"
           style={
             Object {
-              "color": "#cccccc",
+              "color": "#d0d3da",
             }
           }
         >
@@ -2677,16 +2677,16 @@ exports[`RadioGroup RadioGroup css 1`] = `
           style={
             Object {
               "backgroundColor": "rgba(77,99,255,0.05)",
-              "borderBottomColor": "#e8e8e8",
+              "borderBottomColor": "#ebecf0",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
               "borderRightColor": "#fff",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#e8e8e8",
+              "borderTopColor": "#ebecf0",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
-              "color": "#cccccc",
+              "color": "#c2c5ce",
               "opacity": 1,
               "paddingBottom": "0rem",
               "paddingLeft": "1rem",
@@ -2719,13 +2719,13 @@ exports[`RadioGroup RadioGroup css 1`] = `
           style={
             Object {
               "backgroundColor": "#fff",
-              "borderBottomColor": "#cccccc",
+              "borderBottomColor": "#d0d3da",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderRightColor": "#cccccc",
+              "borderRightColor": "#d0d3da",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#cccccc",
+              "borderTopColor": "#d0d3da",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
               "color": "#363B40",
@@ -2760,13 +2760,13 @@ exports[`RadioGroup RadioGroup css 1`] = `
           style={
             Object {
               "backgroundColor": "#fff",
-              "borderBottomColor": "#cccccc",
+              "borderBottomColor": "#d0d3da",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderRightColor": "#cccccc",
+              "borderRightColor": "#d0d3da",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#cccccc",
+              "borderTopColor": "#d0d3da",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
               "color": "#363B40",
@@ -2821,6 +2821,10 @@ exports[`RadioGroup RadioGroup css 1`] = `
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
               "color": "#ffffff",
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
             }
           }
           type="radio"
@@ -2848,13 +2852,13 @@ exports[`RadioGroup RadioGroup css 1`] = `
           style={
             Object {
               "backgroundColor": "#fff",
-              "borderBottomColor": "#cccccc",
+              "borderBottomColor": "#d0d3da",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderRightColor": "#cccccc",
+              "borderRightColor": "#d0d3da",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#cccccc",
+              "borderTopColor": "#d0d3da",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
               "color": "#363B40",
@@ -2889,13 +2893,13 @@ exports[`RadioGroup RadioGroup css 1`] = `
           style={
             Object {
               "backgroundColor": "#fff",
-              "borderBottomColor": "#cccccc",
+              "borderBottomColor": "#d0d3da",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderRightColor": "#cccccc",
+              "borderRightColor": "#d0d3da",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#cccccc",
+              "borderTopColor": "#d0d3da",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
               "color": "#363B40",
@@ -2955,6 +2959,10 @@ exports[`RadioGroup RadioGroup css 1`] = `
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
               "color": "#ffffff",
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
             }
           }
           type="radio"
@@ -2984,13 +2992,13 @@ exports[`RadioGroup RadioGroup css 1`] = `
           style={
             Object {
               "backgroundColor": "#fff",
-              "borderBottomColor": "#cccccc",
+              "borderBottomColor": "#d0d3da",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderRightColor": "#cccccc",
+              "borderRightColor": "#d0d3da",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#cccccc",
+              "borderTopColor": "#d0d3da",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
               "color": "#363B40",
@@ -3027,13 +3035,13 @@ exports[`RadioGroup RadioGroup css 1`] = `
           style={
             Object {
               "backgroundColor": "#fff",
-              "borderBottomColor": "#cccccc",
+              "borderBottomColor": "#d0d3da",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderRightColor": "#cccccc",
+              "borderRightColor": "#d0d3da",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#cccccc",
+              "borderTopColor": "#d0d3da",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
               "color": "#363B40",
@@ -3072,16 +3080,16 @@ exports[`RadioGroup RadioGroup css 1`] = `
           style={
             Object {
               "backgroundColor": "#fff",
-              "borderBottomColor": "#e8e8e8",
+              "borderBottomColor": "#ebecf0",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderRightColor": "#e8e8e8",
+              "borderRightColor": "#ebecf0",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#e8e8e8",
+              "borderTopColor": "#ebecf0",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
-              "color": "#cccccc",
+              "color": "#d0d3da",
               "opacity": 1,
               "paddingBottom": "0rem",
               "paddingLeft": "1rem",
@@ -3139,6 +3147,10 @@ exports[`RadioGroup RadioGroup css 1`] = `
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
               "color": "#ffffff",
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
             }
           }
           type="radio"
@@ -3168,13 +3180,13 @@ exports[`RadioGroup RadioGroup css 1`] = `
           style={
             Object {
               "backgroundColor": "#fff",
-              "borderBottomColor": "#cccccc",
+              "borderBottomColor": "#d0d3da",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderRightColor": "#cccccc",
+              "borderRightColor": "#d0d3da",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#cccccc",
+              "borderTopColor": "#d0d3da",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
               "color": "#363B40",
@@ -3211,13 +3223,13 @@ exports[`RadioGroup RadioGroup css 1`] = `
           style={
             Object {
               "backgroundColor": "#fff",
-              "borderBottomColor": "#cccccc",
+              "borderBottomColor": "#d0d3da",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderRightColor": "#cccccc",
+              "borderRightColor": "#d0d3da",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#cccccc",
+              "borderTopColor": "#d0d3da",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
               "color": "#363B40",
@@ -3256,16 +3268,16 @@ exports[`RadioGroup RadioGroup css 1`] = `
           style={
             Object {
               "backgroundColor": "#fff",
-              "borderBottomColor": "#e8e8e8",
+              "borderBottomColor": "#ebecf0",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderRightColor": "#e8e8e8",
+              "borderRightColor": "#ebecf0",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#e8e8e8",
+              "borderTopColor": "#ebecf0",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
-              "color": "#cccccc",
+              "color": "#d0d3da",
               "opacity": 1,
               "paddingBottom": "0rem",
               "paddingLeft": "1rem",

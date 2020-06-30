@@ -219,7 +219,7 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
 >
   <span
     checked={false}
-    className="sc-fBuWsC eMCLdn"
+    className="sc-fBuWsC hcHywv"
     disabled={false}
     type="primary"
   />
@@ -236,13 +236,13 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "borderBottomColor": "#cccccc",
+          "borderBottomColor": "#d0d3da",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
+          "borderLeftColor": "#d0d3da",
           "borderLeftStyle": "solid",
           "borderLeftWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
+          "borderTopColor": "#d0d3da",
           "borderTopStyle": "solid",
           "borderTopWidth": "0.1rem",
           "color": "#363B40",
@@ -270,13 +270,13 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "borderBottomColor": "#cccccc",
+          "borderBottomColor": "#d0d3da",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
+          "borderRightColor": "#d0d3da",
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
+          "borderTopColor": "#d0d3da",
           "borderTopStyle": "solid",
           "borderTopWidth": "0.1rem",
           "color": "#9EA4AE",

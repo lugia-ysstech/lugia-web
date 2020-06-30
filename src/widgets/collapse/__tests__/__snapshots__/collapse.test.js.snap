@@ -50,7 +50,7 @@ exports[`Collapse Collapse CSS 1`] = `
   border-style: solid;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border-color: #cccccc;
+  border-color: #d0d3da;
   border-width: 0 0 1px;
 }
 
@@ -61,7 +61,7 @@ exports[`Collapse Collapse CSS 1`] = `
   border-style: solid;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border-color: #cccccc;
+  border-color: #d0d3da;
   position: relative;
   z-index: 99;
   border-width: 0 0 0px;
@@ -74,7 +74,7 @@ exports[`Collapse Collapse CSS 1`] = `
   border-style: solid;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border-color: #cccccc;
+  border-color: #d0d3da;
   border-width: 0 0 0px;
 }
 
@@ -358,7 +358,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -427,7 +427,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -506,7 +506,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -575,7 +575,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -654,7 +654,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -723,7 +723,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -801,7 +801,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -870,7 +870,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -939,7 +939,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1008,7 +1008,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1086,7 +1086,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1150,7 +1150,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1222,7 +1222,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1286,7 +1286,7 @@ exports[`Collapse Collapse CSS 1`] = `
                     Object {
                       "backgroundColor": "#fff",
                       "paddingBottom": "1.6rem",
-                      "paddingLeft": "3.4rem",
+                      "paddingLeft": "3.2rem",
                       "paddingRight": "0rem",
                       "paddingTop": "1.6rem",
                     }
@@ -1355,7 +1355,7 @@ exports[`Collapse Collapse CSS 1`] = `
                     Object {
                       "backgroundColor": "#fff",
                       "paddingBottom": "1.6rem",
-                      "paddingLeft": "3.4rem",
+                      "paddingLeft": "3.2rem",
                       "paddingRight": "0rem",
                       "paddingTop": "1.6rem",
                     }
@@ -1428,7 +1428,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1507,7 +1507,7 @@ exports[`Collapse Collapse CSS 1`] = `
             "borderBottomRightRadius": "0.4rem",
             "borderTopLeftRadius": "0.4rem",
             "borderTopRightRadius": "0.4rem",
-            "boxShadow": "0px 0px 6px 0px #cccccc",
+            "boxShadow": "0px 0px 6px 0px #d0d3da",
           }
         }
       >
@@ -1521,7 +1521,7 @@ exports[`Collapse Collapse CSS 1`] = `
               "borderTopLeftRadius": "0.4rem",
               "borderTopRightRadius": "0.4rem",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1603,7 +1603,7 @@ exports[`Collapse Collapse CSS 1`] = `
               "borderTopLeftRadius": "0.4rem",
               "borderTopRightRadius": "0.4rem",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1683,7 +1683,7 @@ exports[`Collapse Collapse CSS 1`] = `
               "borderTopLeftRadius": "0.4rem",
               "borderTopRightRadius": "0.4rem",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1763,7 +1763,7 @@ exports[`Collapse Collapse CSS 1`] = `
               "borderTopLeftRadius": "0.4rem",
               "borderTopRightRadius": "0.4rem",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }

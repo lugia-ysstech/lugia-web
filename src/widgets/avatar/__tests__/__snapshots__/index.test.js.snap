@@ -1314,7 +1314,7 @@ exports[`Avatar css 1`] = `
         className="c1"
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderTopLeftRadius": "0.4rem",
@@ -1508,7 +1508,7 @@ exports[`Avatar css 1`] = `
         className="c1"
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderTopLeftRadius": "0.4rem",
@@ -1567,7 +1567,7 @@ exports[`Avatar css 1`] = `
         className="c1"
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "50%",
             "borderBottomRightRadius": "50%",
             "borderTopLeftRadius": "50%",
@@ -1762,7 +1762,7 @@ exports[`Avatar css 1`] = `
         className="c1"
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "50%",
             "borderBottomRightRadius": "50%",
             "borderTopLeftRadius": "50%",

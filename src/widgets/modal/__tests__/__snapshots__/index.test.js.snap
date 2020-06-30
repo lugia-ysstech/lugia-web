@@ -131,16 +131,16 @@ exports[`Modal css 1`] = `
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-left-width: 0.1rem;
   border-left-style: solid;
-  border-left-color: #cccccc;
+  border-left-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
 }
 
 .c2 {
@@ -188,18 +188,18 @@ exports[`Modal css 1`] = `
     style={
       Object {
         "backgroundColor": "white",
-        "borderBottomColor": "#cccccc",
+        "borderBottomColor": "#d0d3da",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "0.1rem",
-        "borderLeftColor": "#cccccc",
+        "borderLeftColor": "#d0d3da",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.1rem",
-        "borderRightColor": "#cccccc",
+        "borderRightColor": "#d0d3da",
         "borderRightStyle": "solid",
         "borderRightWidth": "0.1rem",
-        "borderTopColor": "#cccccc",
+        "borderTopColor": "#d0d3da",
         "borderTopLeftRadius": "0.4rem",
         "borderTopRightRadius": "0.4rem",
         "borderTopStyle": "solid",
@@ -234,6 +234,11 @@ exports[`Modal css 1`] = `
     <div
       className="c4"
       onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "green",
+        }
+      }
     />
     <div
       className="c5"
@@ -363,6 +368,7 @@ exports[`Modal css 1`] = `
                   "paddingLeft": "1.8rem",
                   "paddingRight": "1.8rem",
                   "paddingTop": "0rem",
+                  "width": "20rem",
                 }
               }
               type="primary"
@@ -397,19 +403,19 @@ exports[`Modal css 1`] = `
               size="default"
               style={
                 Object {
-                  "backgroundColor": "white",
-                  "borderBottomColor": "#cccccc",
+                  "backgroundColor": "red",
+                  "borderBottomColor": "#d0d3da",
                   "borderBottomLeftRadius": "0.4rem",
                   "borderBottomRightRadius": "0.4rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#cccccc",
+                  "borderLeftColor": "#d0d3da",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#cccccc",
+                  "borderRightColor": "#d0d3da",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#cccccc",
+                  "borderTopColor": "#d0d3da",
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "borderTopStyle": "solid",
@@ -419,6 +425,7 @@ exports[`Modal css 1`] = `
                   "paddingLeft": "1.8rem",
                   "paddingRight": "1.8rem",
                   "paddingTop": "0rem",
+                  "width": "10rem",
                 }
               }
             >
@@ -460,18 +467,18 @@ exports[`Modal css 1`] = `
     style={
       Object {
         "backgroundColor": "white",
-        "borderBottomColor": "#cccccc",
+        "borderBottomColor": "#d0d3da",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "0.1rem",
-        "borderLeftColor": "#cccccc",
+        "borderLeftColor": "#d0d3da",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.1rem",
-        "borderRightColor": "#cccccc",
+        "borderRightColor": "#d0d3da",
         "borderRightStyle": "solid",
         "borderRightWidth": "0.1rem",
-        "borderTopColor": "#cccccc",
+        "borderTopColor": "#d0d3da",
         "borderTopLeftRadius": "0.4rem",
         "borderTopRightRadius": "0.4rem",
         "borderTopStyle": "solid",
@@ -506,6 +513,7 @@ exports[`Modal css 1`] = `
     <div
       className="c4"
       onClick={[Function]}
+      style={Object {}}
     />
     <div
       className="c5"
@@ -679,18 +687,18 @@ exports[`Modal css 1`] = `
     style={
       Object {
         "backgroundColor": "white",
-        "borderBottomColor": "#cccccc",
+        "borderBottomColor": "#d0d3da",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "0.1rem",
-        "borderLeftColor": "#cccccc",
+        "borderLeftColor": "#d0d3da",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.1rem",
-        "borderRightColor": "#cccccc",
+        "borderRightColor": "#d0d3da",
         "borderRightStyle": "solid",
         "borderRightWidth": "0.1rem",
-        "borderTopColor": "#cccccc",
+        "borderTopColor": "#d0d3da",
         "borderTopLeftRadius": "0.4rem",
         "borderTopRightRadius": "0.4rem",
         "borderTopStyle": "solid",
@@ -725,6 +733,7 @@ exports[`Modal css 1`] = `
     <div
       className="c4"
       onClick={[Function]}
+      style={Object {}}
     />
     <div
       className="c5"
@@ -799,18 +808,18 @@ exports[`Modal css 1`] = `
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "borderBottomColor": "#cccccc",
+                    "borderBottomColor": "#d0d3da",
                     "borderBottomLeftRadius": "0.4rem",
                     "borderBottomRightRadius": "0.4rem",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": "0.1rem",
-                    "borderLeftColor": "#cccccc",
+                    "borderLeftColor": "#d0d3da",
                     "borderLeftStyle": "solid",
                     "borderLeftWidth": "0.1rem",
-                    "borderRightColor": "#cccccc",
+                    "borderRightColor": "#d0d3da",
                     "borderRightStyle": "solid",
                     "borderRightWidth": "0.1rem",
-                    "borderTopColor": "#cccccc",
+                    "borderTopColor": "#d0d3da",
                     "borderTopLeftRadius": "0.4rem",
                     "borderTopRightRadius": "0.4rem",
                     "borderTopStyle": "solid",
@@ -845,6 +854,7 @@ exports[`Modal css 1`] = `
                 <div
                   className="c4"
                   onClick={[Function]}
+                  style={Object {}}
                 />
                 <div
                   className="c5"
@@ -972,18 +982,18 @@ exports[`Modal css 1`] = `
                           style={
                             Object {
                               "backgroundColor": "white",
-                              "borderBottomColor": "#cccccc",
+                              "borderBottomColor": "#d0d3da",
                               "borderBottomLeftRadius": "0.4rem",
                               "borderBottomRightRadius": "0.4rem",
                               "borderBottomStyle": "solid",
                               "borderBottomWidth": "0.1rem",
-                              "borderLeftColor": "#cccccc",
+                              "borderLeftColor": "#d0d3da",
                               "borderLeftStyle": "solid",
                               "borderLeftWidth": "0.1rem",
-                              "borderRightColor": "#cccccc",
+                              "borderRightColor": "#d0d3da",
                               "borderRightStyle": "solid",
                               "borderRightWidth": "0.1rem",
-                              "borderTopColor": "#cccccc",
+                              "borderTopColor": "#d0d3da",
                               "borderTopLeftRadius": "0.4rem",
                               "borderTopRightRadius": "0.4rem",
                               "borderTopStyle": "solid",
@@ -1085,18 +1095,18 @@ exports[`Modal css 1`] = `
               style={
                 Object {
                   "backgroundColor": "white",
-                  "borderBottomColor": "#cccccc",
+                  "borderBottomColor": "#d0d3da",
                   "borderBottomLeftRadius": "0.4rem",
                   "borderBottomRightRadius": "0.4rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#cccccc",
+                  "borderLeftColor": "#d0d3da",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#cccccc",
+                  "borderRightColor": "#d0d3da",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#cccccc",
+                  "borderTopColor": "#d0d3da",
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "borderTopStyle": "solid",
@@ -1147,18 +1157,18 @@ exports[`Modal css 1`] = `
     style={
       Object {
         "backgroundColor": "white",
-        "borderBottomColor": "#cccccc",
+        "borderBottomColor": "#d0d3da",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "0.1rem",
-        "borderLeftColor": "#cccccc",
+        "borderLeftColor": "#d0d3da",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.1rem",
-        "borderRightColor": "#cccccc",
+        "borderRightColor": "#d0d3da",
         "borderRightStyle": "solid",
         "borderRightWidth": "0.1rem",
-        "borderTopColor": "#cccccc",
+        "borderTopColor": "#d0d3da",
         "borderTopLeftRadius": "0.4rem",
         "borderTopRightRadius": "0.4rem",
         "borderTopStyle": "solid",
@@ -1193,6 +1203,7 @@ exports[`Modal css 1`] = `
     <div
       className="c4"
       onClick={[Function]}
+      style={Object {}}
     />
     <div
       className="c5"
@@ -1311,18 +1322,18 @@ exports[`Modal css 1`] = `
               style={
                 Object {
                   "backgroundColor": "white",
-                  "borderBottomColor": "#cccccc",
+                  "borderBottomColor": "#d0d3da",
                   "borderBottomLeftRadius": "0.4rem",
                   "borderBottomRightRadius": "0.4rem",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "#cccccc",
+                  "borderLeftColor": "#d0d3da",
                   "borderLeftStyle": "solid",
                   "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "#cccccc",
+                  "borderRightColor": "#d0d3da",
                   "borderRightStyle": "solid",
                   "borderRightWidth": "0.1rem",
-                  "borderTopColor": "#cccccc",
+                  "borderTopColor": "#d0d3da",
                   "borderTopLeftRadius": "0.4rem",
                   "borderTopRightRadius": "0.4rem",
                   "borderTopStyle": "solid",
@@ -1373,18 +1384,18 @@ exports[`Modal css 1`] = `
     style={
       Object {
         "backgroundColor": "white",
-        "borderBottomColor": "#cccccc",
+        "borderBottomColor": "#d0d3da",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "0.1rem",
-        "borderLeftColor": "#cccccc",
+        "borderLeftColor": "#d0d3da",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.1rem",
-        "borderRightColor": "#cccccc",
+        "borderRightColor": "#d0d3da",
         "borderRightStyle": "solid",
         "borderRightWidth": "0.1rem",
-        "borderTopColor": "#cccccc",
+        "borderTopColor": "#d0d3da",
         "borderTopLeftRadius": "0.4rem",
         "borderTopRightRadius": "0.4rem",
         "borderTopStyle": "solid",
@@ -1419,6 +1430,7 @@ exports[`Modal css 1`] = `
     <div
       className="c4"
       onClick={[Function]}
+      style={Object {}}
     />
     <div
       className="c5"
@@ -1548,18 +1560,18 @@ exports[`Modal css 1`] = `
     style={
       Object {
         "backgroundColor": "white",
-        "borderBottomColor": "#cccccc",
+        "borderBottomColor": "#d0d3da",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "0.1rem",
-        "borderLeftColor": "#cccccc",
+        "borderLeftColor": "#d0d3da",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.1rem",
-        "borderRightColor": "#cccccc",
+        "borderRightColor": "#d0d3da",
         "borderRightStyle": "solid",
         "borderRightWidth": "0.1rem",
-        "borderTopColor": "#cccccc",
+        "borderTopColor": "#d0d3da",
         "borderTopLeftRadius": "0.4rem",
         "borderTopRightRadius": "0.4rem",
         "borderTopStyle": "solid",
@@ -1605,18 +1617,18 @@ exports[`Modal css 1`] = `
     style={
       Object {
         "backgroundColor": "white",
-        "borderBottomColor": "#cccccc",
+        "borderBottomColor": "#d0d3da",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "0.1rem",
-        "borderLeftColor": "#cccccc",
+        "borderLeftColor": "#d0d3da",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.1rem",
-        "borderRightColor": "#cccccc",
+        "borderRightColor": "#d0d3da",
         "borderRightStyle": "solid",
         "borderRightWidth": "0.1rem",
-        "borderTopColor": "#cccccc",
+        "borderTopColor": "#d0d3da",
         "borderTopLeftRadius": "0.4rem",
         "borderTopRightRadius": "0.4rem",
         "borderTopStyle": "solid",
@@ -1662,18 +1674,18 @@ exports[`Modal css 1`] = `
     style={
       Object {
         "backgroundColor": "white",
-        "borderBottomColor": "#cccccc",
+        "borderBottomColor": "#d0d3da",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "0.1rem",
-        "borderLeftColor": "#cccccc",
+        "borderLeftColor": "#d0d3da",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.1rem",
-        "borderRightColor": "#cccccc",
+        "borderRightColor": "#d0d3da",
         "borderRightStyle": "solid",
         "borderRightWidth": "0.1rem",
-        "borderTopColor": "#cccccc",
+        "borderTopColor": "#d0d3da",
         "borderTopLeftRadius": "0.4rem",
         "borderTopRightRadius": "0.4rem",
         "borderTopStyle": "solid",
@@ -1719,18 +1731,18 @@ exports[`Modal css 1`] = `
     style={
       Object {
         "backgroundColor": "white",
-        "borderBottomColor": "#cccccc",
+        "borderBottomColor": "#d0d3da",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "0.1rem",
-        "borderLeftColor": "#cccccc",
+        "borderLeftColor": "#d0d3da",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.1rem",
-        "borderRightColor": "#cccccc",
+        "borderRightColor": "#d0d3da",
         "borderRightStyle": "solid",
         "borderRightWidth": "0.1rem",
-        "borderTopColor": "#cccccc",
+        "borderTopColor": "#d0d3da",
         "borderTopLeftRadius": "0.4rem",
         "borderTopRightRadius": "0.4rem",
         "borderTopStyle": "solid",
@@ -1776,18 +1788,18 @@ exports[`Modal css 1`] = `
     style={
       Object {
         "backgroundColor": "white",
-        "borderBottomColor": "#cccccc",
+        "borderBottomColor": "#d0d3da",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "0.1rem",
-        "borderLeftColor": "#cccccc",
+        "borderLeftColor": "#d0d3da",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.1rem",
-        "borderRightColor": "#cccccc",
+        "borderRightColor": "#d0d3da",
         "borderRightStyle": "solid",
         "borderRightWidth": "0.1rem",
-        "borderTopColor": "#cccccc",
+        "borderTopColor": "#d0d3da",
         "borderTopLeftRadius": "0.4rem",
         "borderTopRightRadius": "0.4rem",
         "borderTopStyle": "solid",
@@ -1831,18 +1843,18 @@ exports[`Modal css 1`] = `
     style={
       Object {
         "backgroundColor": "white",
-        "borderBottomColor": "#cccccc",
+        "borderBottomColor": "#d0d3da",
         "borderBottomLeftRadius": "0.4rem",
         "borderBottomRightRadius": "0.4rem",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "0.1rem",
-        "borderLeftColor": "#cccccc",
+        "borderLeftColor": "#d0d3da",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.1rem",
-        "borderRightColor": "#cccccc",
+        "borderRightColor": "#d0d3da",
         "borderRightStyle": "solid",
         "borderRightWidth": "0.1rem",
-        "borderTopColor": "#cccccc",
+        "borderTopColor": "#d0d3da",
         "borderTopLeftRadius": "0.4rem",
         "borderTopRightRadius": "0.4rem",
         "borderTopStyle": "solid",

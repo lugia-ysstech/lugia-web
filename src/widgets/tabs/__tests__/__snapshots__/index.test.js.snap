@@ -124,7 +124,7 @@ exports[`tabsDemo Component JSON 1`] = `
   position: absolute;
   bottom: 0;
   height: 1px;
-  background-color: #e8e8e8;
+  background-color: #ebecf0;
   left: 0;
   width: 100%;
 }

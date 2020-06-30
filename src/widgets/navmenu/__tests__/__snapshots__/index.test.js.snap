@@ -12,6 +12,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
 }
 
 .c2 {
+  width: 100%;
   margin: 0;
   overflow: hidden;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -62,7 +63,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
-  padding-left: 1rem;
+  padding-left: 0.8rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -157,7 +158,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
   align-items: center;
   box-sizing: border-box;
   height: 100%;
-  padding-right: 1rem;
+  padding-right: 0.8rem;
 }
 
 .c8 {
@@ -202,7 +203,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
     onMouseLeave={[Function]}
     style={
       Object {
-        "backgroundColor": "#cccccc",
+        "backgroundColor": "#ffffff",
         "borderBottomLeftRadius": "0rem",
         "borderBottomRightRadius": "0rem",
         "borderTopLeftRadius": "0rem",
@@ -220,7 +221,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
       role="tree-node"
       style={
         Object {
-          "backgroundColor": "#cccccc",
+          "backgroundColor": "#ffffff",
         }
       }
       unselectable="on"
@@ -240,13 +241,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -254,8 +249,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -315,13 +310,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -329,8 +318,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -390,13 +379,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -404,8 +387,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -465,13 +448,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -479,8 +456,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -540,13 +517,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -554,8 +525,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -615,7 +586,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     "color": "#9EA4AE",
                     "fontSize": "1.2rem",
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
+                    "paddingLeft": "1.2rem",
                     "paddingRight": "0rem",
                     "paddingTop": "0rem",
                   }
@@ -646,13 +617,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -660,8 +625,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -718,7 +683,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -749,13 +714,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -763,8 +722,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -824,13 +783,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -838,8 +791,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -901,13 +854,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -915,8 +862,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -973,7 +920,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -1004,13 +951,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -1018,8 +959,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -1079,13 +1020,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -1093,8 +1028,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -1156,13 +1091,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -1170,8 +1099,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -1228,7 +1157,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -1259,13 +1188,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -1273,8 +1196,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -1334,13 +1257,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -1348,8 +1265,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -1409,13 +1326,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -1423,8 +1334,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -1484,13 +1395,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -1498,8 +1403,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -1559,13 +1464,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -1573,8 +1472,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -1634,13 +1533,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -1648,8 +1541,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -1711,13 +1604,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -1725,8 +1612,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -1783,7 +1670,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -1814,13 +1701,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -1828,8 +1709,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -1889,13 +1770,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -1903,8 +1778,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -1964,13 +1839,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -1978,8 +1847,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -2039,13 +1908,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -2053,8 +1916,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -2114,13 +1977,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -2128,8 +1985,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -2189,13 +2046,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -2203,8 +2054,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -2270,6 +2121,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
 }
 
 .c2 {
+  width: 100%;
   margin: 0;
   overflow: hidden;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -2320,7 +2172,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
-  padding-left: 1rem;
+  padding-left: 0.8rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -2415,7 +2267,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
   align-items: center;
   box-sizing: border-box;
   height: 100%;
-  padding-right: 1rem;
+  padding-right: 0.8rem;
 }
 
 .c8 {
@@ -2460,7 +2312,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
     onMouseLeave={[Function]}
     style={
       Object {
-        "backgroundColor": "#cccccc",
+        "backgroundColor": "#ffffff",
         "borderBottomLeftRadius": "0rem",
         "borderBottomRightRadius": "0rem",
         "borderTopLeftRadius": "0rem",
@@ -2478,7 +2330,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
       role="tree-node"
       style={
         Object {
-          "backgroundColor": "#cccccc",
+          "backgroundColor": "#ffffff",
         }
       }
       unselectable="on"
@@ -2498,13 +2350,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -2512,8 +2358,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -2573,13 +2419,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -2587,8 +2427,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -2648,13 +2488,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -2662,8 +2496,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -2723,13 +2557,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -2737,8 +2565,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -2798,13 +2626,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -2812,8 +2634,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -2873,7 +2695,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     "color": "#9EA4AE",
                     "fontSize": "1.2rem",
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
+                    "paddingLeft": "1.2rem",
                     "paddingRight": "0rem",
                     "paddingTop": "0rem",
                   }
@@ -2904,13 +2726,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -2918,8 +2734,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -2976,7 +2792,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -3007,13 +2823,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -3021,8 +2831,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -3082,13 +2892,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -3096,8 +2900,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -3159,13 +2963,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -3173,8 +2971,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -3231,7 +3029,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -3262,13 +3060,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -3276,8 +3068,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -3337,13 +3129,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -3351,8 +3137,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -3414,13 +3200,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -3428,8 +3208,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -3486,7 +3266,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -3517,13 +3297,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -3531,8 +3305,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -3592,13 +3366,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -3606,8 +3374,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -3667,13 +3435,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -3681,8 +3443,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -3742,13 +3504,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -3756,8 +3512,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -3817,13 +3573,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -3831,8 +3581,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -3892,13 +3642,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -3906,8 +3650,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -3969,13 +3713,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -3983,8 +3721,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -4041,7 +3779,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -4072,13 +3810,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -4086,8 +3818,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -4147,13 +3879,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -4161,8 +3887,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -4222,13 +3948,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -4236,8 +3956,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -4297,13 +4017,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -4311,8 +4025,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -4372,13 +4086,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -4386,8 +4094,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -4447,13 +4155,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -4461,8 +4163,8 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -4611,8 +4313,8 @@ exports[`NavMenu  mode=vertical  1`] = `
   overflow: hidden;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
 
 .c4 i {
@@ -4641,7 +4343,7 @@ exports[`NavMenu  mode=vertical  1`] = `
     onMouseLeave={[Function]}
     style={
       Object {
-        "backgroundColor": "#cccccc",
+        "backgroundColor": "#ffffff",
         "borderBottomLeftRadius": "0rem",
         "borderBottomRightRadius": "0rem",
         "borderTopLeftRadius": "0rem",
@@ -4655,7 +4357,7 @@ exports[`NavMenu  mode=vertical  1`] = `
       onMouseLeave={[Function]}
       style={
         Object {
-          "backgroundColor": "#cccccc",
+          "backgroundColor": "#ffffff",
         }
       }
     >
@@ -4670,7 +4372,7 @@ exports[`NavMenu  mode=vertical  1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "borderRightColor": "#e8e8e8",
+            "borderRightColor": "#ebecf0",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
             "color": "#363B40",
@@ -4713,7 +4415,7 @@ exports[`NavMenu  mode=vertical  1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "borderRightColor": "#e8e8e8",
+            "borderRightColor": "#ebecf0",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
             "color": "#363B40",
@@ -4756,7 +4458,7 @@ exports[`NavMenu  mode=vertical  1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "borderRightColor": "#e8e8e8",
+            "borderRightColor": "#ebecf0",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
             "color": "#363B40",
@@ -4799,7 +4501,7 @@ exports[`NavMenu  mode=vertical  1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "borderRightColor": "#e8e8e8",
+            "borderRightColor": "#ebecf0",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
             "color": "#363B40",
@@ -4842,7 +4544,7 @@ exports[`NavMenu  mode=vertical  1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "borderRightColor": "#e8e8e8",
+            "borderRightColor": "#ebecf0",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
             "color": "#363B40",
@@ -4909,6 +4611,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
 }
 
 .c2 {
+  width: 100%;
   margin: 0;
   overflow: hidden;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -4959,7 +4662,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
-  padding-left: 1rem;
+  padding-left: 0.8rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -5054,7 +4757,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   align-items: center;
   box-sizing: border-box;
   height: 100%;
-  padding-right: 1rem;
+  padding-right: 0.8rem;
 }
 
 .c8 {
@@ -5099,7 +4802,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
     onMouseLeave={[Function]}
     style={
       Object {
-        "backgroundColor": "#cccccc",
+        "backgroundColor": "#ffffff",
         "borderBottomLeftRadius": "0rem",
         "borderBottomRightRadius": "0rem",
         "borderTopLeftRadius": "0rem",
@@ -5117,7 +4820,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
       role="tree-node"
       style={
         Object {
-          "backgroundColor": "#cccccc",
+          "backgroundColor": "#ffffff",
         }
       }
       unselectable="on"
@@ -5137,13 +4840,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -5151,8 +4848,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -5212,13 +4909,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -5226,8 +4917,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -5287,13 +4978,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -5301,8 +4986,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -5362,13 +5047,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -5376,8 +5055,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -5437,13 +5116,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -5451,8 +5124,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -5512,7 +5185,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     "color": "#9EA4AE",
                     "fontSize": "1.2rem",
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
+                    "paddingLeft": "1.2rem",
                     "paddingRight": "0rem",
                     "paddingTop": "0rem",
                   }
@@ -5547,13 +5220,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -5561,8 +5228,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -5619,7 +5286,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -5650,13 +5317,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -5664,8 +5325,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -5725,13 +5386,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -5739,8 +5394,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -5802,13 +5457,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -5816,8 +5465,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -5874,7 +5523,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -5905,13 +5554,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -5919,8 +5562,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -5980,13 +5623,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -5994,8 +5631,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -6057,13 +5694,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -6071,8 +5702,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -6129,7 +5760,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -6160,13 +5791,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -6174,8 +5799,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -6235,13 +5860,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -6249,8 +5868,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -6310,13 +5929,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -6324,8 +5937,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -6385,13 +5998,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -6399,8 +6006,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -6460,13 +6067,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -6474,8 +6075,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -6535,13 +6136,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -6549,8 +6144,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -6612,13 +6207,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -6626,8 +6215,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -6684,7 +6273,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -6715,13 +6304,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -6729,8 +6312,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -6790,13 +6373,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -6804,8 +6381,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -6865,13 +6442,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -6879,8 +6450,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -6940,13 +6511,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -6954,8 +6519,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -7015,13 +6580,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -7029,8 +6588,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -7090,13 +6649,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -7104,8 +6657,8 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -7171,6 +6724,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
 }
 
 .c2 {
+  width: 100%;
   margin: 0;
   overflow: hidden;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -7221,7 +6775,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
-  padding-left: 1rem;
+  padding-left: 0.8rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
@@ -7316,7 +6870,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   align-items: center;
   box-sizing: border-box;
   height: 100%;
-  padding-right: 1rem;
+  padding-right: 0.8rem;
 }
 
 .c8 {
@@ -7361,7 +6915,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
     onMouseLeave={[Function]}
     style={
       Object {
-        "backgroundColor": "#cccccc",
+        "backgroundColor": "#ffffff",
         "borderBottomLeftRadius": "0rem",
         "borderBottomRightRadius": "0rem",
         "borderTopLeftRadius": "0rem",
@@ -7379,7 +6933,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
       role="tree-node"
       style={
         Object {
-          "backgroundColor": "#cccccc",
+          "backgroundColor": "#ffffff",
         }
       }
       unselectable="on"
@@ -7399,13 +6953,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -7413,8 +6961,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -7474,13 +7022,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -7488,8 +7030,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -7549,13 +7091,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -7563,8 +7099,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -7624,13 +7160,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -7638,8 +7168,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -7699,13 +7229,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         >
           <div
             className="c5"
@@ -7713,8 +7237,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
             style={
               Object {
                 "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
                 "paddingTop": "0rem",
               }
             }
@@ -7774,7 +7298,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     "color": "#9EA4AE",
                     "fontSize": "1.2rem",
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
+                    "paddingLeft": "1.2rem",
                     "paddingRight": "0rem",
                     "paddingTop": "0rem",
                   }
@@ -7809,13 +7333,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -7823,8 +7341,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -7881,7 +7399,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -7912,13 +7430,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -7926,8 +7438,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -7987,13 +7499,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -8001,8 +7507,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -8064,13 +7570,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -8078,8 +7578,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -8136,7 +7636,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -8167,13 +7667,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -8181,8 +7675,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -8242,13 +7736,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -8256,8 +7744,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -8319,13 +7807,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -8333,8 +7815,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -8391,7 +7873,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -8422,13 +7904,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -8436,8 +7912,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -8497,13 +7973,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -8511,8 +7981,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -8572,13 +8042,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -8586,8 +8050,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -8647,13 +8111,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -8661,8 +8119,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -8722,13 +8180,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -8736,8 +8188,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -8797,13 +8249,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -8811,8 +8257,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -8874,13 +8320,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={
-                Object {
-                  "borderRightColor": "#e8e8e8",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                }
-              }
+              style={Object {}}
             >
               <div
                 className="c5"
@@ -8888,8 +8328,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                 style={
                   Object {
                     "paddingBottom": "0rem",
-                    "paddingLeft": "1rem",
-                    "paddingRight": "1rem",
+                    "paddingLeft": "1.2rem",
+                    "paddingRight": "1.2rem",
                     "paddingTop": "0rem",
                   }
                 }
@@ -8946,7 +8386,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                         "color": "#9EA4AE",
                         "fontSize": "1.2rem",
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
+                        "paddingLeft": "1.2rem",
                         "paddingRight": "0rem",
                         "paddingTop": "0rem",
                       }
@@ -8977,13 +8417,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -8991,8 +8425,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -9052,13 +8486,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -9066,8 +8494,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -9127,13 +8555,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -9141,8 +8563,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -9202,13 +8624,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -9216,8 +8632,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -9277,13 +8693,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -9291,8 +8701,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }
@@ -9352,13 +8762,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                   onMouseUp={[Function]}
-                  style={
-                    Object {
-                      "borderRightColor": "#e8e8e8",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c5"
@@ -9366,8 +8770,8 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
                     style={
                       Object {
                         "paddingBottom": "0rem",
-                        "paddingLeft": "1rem",
-                        "paddingRight": "1rem",
+                        "paddingLeft": "1.2rem",
+                        "paddingRight": "1.2rem",
                         "paddingTop": "0rem",
                       }
                     }

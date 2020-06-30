@@ -587,7 +587,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -666,7 +666,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -903,7 +903,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -982,7 +982,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1061,7 +1061,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1140,7 +1140,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1219,7 +1219,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1298,7 +1298,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1378,7 +1378,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1457,7 +1457,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1536,7 +1536,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -1615,7 +1615,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -2006,7 +2006,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -2164,7 +2164,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -2243,7 +2243,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#cccccc",
+            "backgroundColor": "#c2c5ce",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -2407,7 +2407,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={null}
         style={
           Object {
-            "backgroundColor": "#f2f2f2",
+            "backgroundColor": "#f4f5f8",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -2466,7 +2466,7 @@ exports[`Switch Wrapper 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "#f2f2f2",
+                "color": "#f4f5f8",
                 "fontSize": "1rem",
               }
             }
@@ -2499,7 +2499,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={null}
         style={
           Object {
-            "backgroundColor": "#f2f2f2",
+            "backgroundColor": "#f4f5f8",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -2558,7 +2558,7 @@ exports[`Switch Wrapper 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "#f2f2f2",
+                "color": "#f4f5f8",
                 "fontSize": "1rem",
               }
             }
@@ -2591,7 +2591,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={null}
         style={
           Object {
-            "backgroundColor": "#f2f2f2",
+            "backgroundColor": "#f4f5f8",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -2670,7 +2670,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={null}
         style={
           Object {
-            "backgroundColor": "#f2f2f2",
+            "backgroundColor": "#f4f5f8",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -2729,7 +2729,7 @@ exports[`Switch Wrapper 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "#f2f2f2",
+                "color": "#f4f5f8",
                 "fontSize": "1rem",
               }
             }
@@ -2762,7 +2762,7 @@ exports[`Switch Wrapper 1`] = `
         onMouseUp={null}
         style={
           Object {
-            "backgroundColor": "#f2f2f2",
+            "backgroundColor": "#f4f5f8",
             "borderBottomLeftRadius": "2rem",
             "borderBottomRightRadius": "2rem",
             "borderBottomWidth": "0rem",
@@ -2821,7 +2821,7 @@ exports[`Switch Wrapper 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "#f2f2f2",
+                "color": "#f4f5f8",
                 "fontSize": "1rem",
               }
             }
