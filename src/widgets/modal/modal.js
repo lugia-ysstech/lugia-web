@@ -169,7 +169,7 @@ export default ThemeProvider(
         closeIconClass,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
-      if (!this.index && visible) {
+      if (!this.index && this.index !== 0 && visible) {
         this.index = getIndex();
       }
       const view = {

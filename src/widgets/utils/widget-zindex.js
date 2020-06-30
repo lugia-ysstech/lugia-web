@@ -5,29 +5,29 @@
  * @flow
  */
 const defaultIndex = 4000;
-let zIndex = defaultIndex,
-  initIndex;
+let zIndex = defaultIndex;
+let initIndex;
 
 function setInitIndex(index: number): void {
-  if (!index) {
+  if (!index && index !== 0) {
     return;
   }
   initIndex = index;
   zIndex = index;
 }
 
-function addIndex() {
-  zIndex++;
-}
-
 function getIndex() {
   const index = zIndex;
-  addIndex();
+  zIndex++;
   return index;
 }
 
 function resetIndex() {
-  zIndex = initIndex || defaultIndex;
+  if (!initIndex && initIndex !== 0) {
+    zIndex = defaultIndex;
+  } else {
+    zIndex = initIndex;
+  }
 }
 
-export { setInitIndex, addIndex, getIndex, resetIndex };
+export { setInitIndex, getIndex, resetIndex };
