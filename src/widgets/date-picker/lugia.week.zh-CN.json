@@ -52,7 +52,14 @@
     },
     "extraFooter": {
       "type": "Object",
-      "desc": "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}"
+      "desc": "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
+      "meta": [
+        {
+          "key": "message",
+          "title": "额外的页脚信息",
+          "type": "string"
+        }
+      ]
     },
     "buttonOptions": {
       "type": "Object",
@@ -79,6 +86,18 @@
       "type": "InputSize",
       "desc": "可配置三种尺寸大小的input",
       "propsDefaultValue": "default"
+    },
+    "suffix": {
+      "type": "icon",
+      "desc": "后缀图标"
+    },
+    "prefix": {
+      "type": "icon",
+      "desc": "前缀图标"
+    },
+    "clearIcon": {
+      "type": "icon",
+      "desc": "清除图标"
     },
     "alwaysOpen": {
       "type": "boolean",
@@ -141,7 +160,9 @@
         ["border"],
         ["boxShadow"],
         ["color"],
-        ["font"]
+        ["font"],
+        ["margin"],
+        ["padding"]
       ],
       "hover": [["border"], ["borderRadius"], ["boxShadow"], ["background"]],
       "active": [],
