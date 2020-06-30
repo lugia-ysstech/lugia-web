@@ -84,6 +84,7 @@ class Popup extends React.Component<PopupProps> {
       getTheme,
       className,
       liquidLayout,
+      zIndex,
     } = props;
 
     const hidden = !visible;
@@ -99,6 +100,7 @@ class Popup extends React.Component<PopupProps> {
       style: newStyle,
       getTheme,
       liquidLayout,
+      zIndex,
     };
 
     const inner =
