@@ -186,14 +186,14 @@
     "InputPrefix": {
       "name": "前缀图标",
       "desc": "前缀图标配置",
-      "normal": [["color"], ["font"]],
+      "normal": [["color"], ["font"], ["padding"], ["margin"]],
       "hover": [["color"], ["font"]],
       "disabled": [["color"], ["font"]]
     },
     "InputSuffix": {
       "name": "后缀图标",
       "desc": "后缀图标配置",
-      "normal": [["color"], ["font"]],
+      "normal": [["color"], ["font"], ["padding"], ["margin"]],
       "hover": [["color"], ["font"]],
       "disabled": [["color"], ["font"]]
     },
