@@ -17,6 +17,8 @@ export const RangeInputWrap = CSSComponent({
       ['boxShadow'],
       ['borderRadius'],
       ['background'],
+      ['margin'],
+      ['padding'],
     ],
   },
   hover: {

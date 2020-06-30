@@ -210,6 +210,7 @@ class DateInput extends Component<TypeProps, TypeState> {
                     isStartOfWeek={isStartOfWeek}
                     themeProps={themeProps}
                     step={getNewStepProps(newProps)}
+                    noBorder
                   />
 
                   {isTime ? (
