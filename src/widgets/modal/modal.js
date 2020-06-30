@@ -42,8 +42,10 @@ export default ThemeProvider(
   class extends React.Component<ModalProps, ModalState> {
     constructor(props: ModalProps) {
       super(props);
-      const { visible = false } = props;
-      this.index = visible ? getIndex() : undefined;
+      const { visible = false, zIndex } = props;
+      if (!zIndex && zIndex !== 0) {
+        this.index = visible ? getIndex() : undefined;
+      }
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -167,9 +169,10 @@ export default ThemeProvider(
         __lugiad__header__absolute__ = false,
         closable = true,
         closeIconClass,
+        zIndex,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
-      if (!this.index && this.index !== 0 && visible) {
+      if (!zIndex && zIndex !== 0 && !this.index && this.index !== 0 && visible) {
         this.index = getIndex();
       }
       const view = {
@@ -259,14 +262,14 @@ export default ThemeProvider(
         return modalContent;
       }
       return (
-        <Wrap visible={closing ? true : visible} zIndex={this.index}>
+        <Wrap visible={closing ? true : visible} zIndex={zIndex || this.index}>
           {mask ? (
             <ModalMask
               onClick={this.handleMaskClick}
               closing={closing}
               opening={opening}
               themeProps={modalMaskTheme}
-              zIndex={this.index}
+              zIndex={zIndex || this.index}
             />
           ) : null}
           <ModalWrap>
@@ -276,7 +279,7 @@ export default ThemeProvider(
               closing={closing}
               opening={opening}
               themeProps={modalWrapTheme}
-              zIndex={this.index}
+              zIndex={zIndex || this.index}
             >
               {modalContent}
             </Modal>
