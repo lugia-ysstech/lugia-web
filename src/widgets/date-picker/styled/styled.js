@@ -60,6 +60,7 @@ export const PanelWrap = CSSComponent({
   },
   css: css`
     font-size: ${fontSize}rem;
+    overflow: hidden;
   `,
 });
 export const DateWrapper = CSSComponent({
