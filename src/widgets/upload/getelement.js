@@ -47,6 +47,7 @@ const Container = CSSComponent({
     selectNames: [],
   },
   css: css`
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
@@ -65,11 +66,10 @@ const BothContainer = CSSComponent({
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 30px;
+    height: 100%;
   `,
 });
 const bothButtonTheme = {
-  height: 30,
   borderRadius: getBorderRadius(0, ['tl', 'bl']),
 };
 const buttonHeightTheme = {
@@ -156,7 +156,6 @@ const InputContent = CSSComponent({
   className: 'UploadDefaultType',
   normal: {
     selectNames: [
-      ['width'],
       ['height'],
       ['boxShadow'],
       ['borderRadius'],
@@ -198,8 +197,8 @@ const InputContent = CSSComponent({
   },
   css: css`
     width: 100%;
-    height: 30px;
-    line-height: 30px;
+    display: flex;
+    align-items: center;
     overflow: hidden;
     box-sizing: border-box;
     position: relative;
@@ -968,6 +967,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const inputTheme = {
         themeConfig: {
           normal: {
+            height: 30,
             borderRadius: getBorderRadius(borderRadiusValue),
             ...getDefaultStyle(classNameStatus),
           },
@@ -1004,17 +1004,25 @@ class GetElement extends React.Component<DefProps, StateProps> {
         'UploadButtonType',
         { props: { areaType } }
       );
-      const inputBorderTheme = {
-        themeConfig: {
-          normal: {
-            borderRadius: getBorderRadius(borderRadiusValue, ['tl', 'bl']),
-            ...getDefaultStyle(classNameStatus),
-          },
-          hover: {
-            ...getDefaultStyle(classNameStatus),
+      const bothButtonHigWid = deepMerge(
+        { themeConfig: { normal: { height: 30 } } },
+        containerStyle
+      );
+      const inputBorderTheme = deepMerge(
+        {
+          themeConfig: {
+            normal: {
+              borderRadius: getBorderRadius(borderRadiusValue, ['tl', 'bl']),
+              ...getDefaultStyle(classNameStatus),
+            },
+            hover: {
+              ...getDefaultStyle(classNameStatus),
+            },
           },
         },
-      };
+        bothButtonHigWid
+      );
+
       const inputStatusTheme = deepMerge(
         inputBorderTheme,
         this.props.getPartOfThemeProps('inputStyle', { props: { areaType } })
@@ -1023,21 +1031,25 @@ class GetElement extends React.Component<DefProps, StateProps> {
         classNameStatus === 'fail' || classNameStatus === 'done'
           ? { ...getButtonStyle(normalButtonTheme, classNameStatus) }
           : {};
+      const bothButtonWidth = deepMerge({ normal: { width: 100 } }, buttonTheme[buttonViewClass]);
 
-      const resultButtonTheme = deepMerge(
+      const buttonMergeStyle = deepMerge(
         {
-          [buttonViewClass]: {
-            Container: {
-              normal: {
-                height: 30,
-                borderRadius: getBorderRadius(0, ['tl', 'bl']),
-              },
-              ...buttonThemeStyle,
-            },
+          normal: {
+            height: bothButtonHigWid,
+            borderRadius: getBorderRadius(0, ['tl', 'bl']),
           },
         },
-        buttonTheme
+        bothButtonWidth,
+        buttonThemeStyle
       );
+      const resultButtonTheme = {
+        [buttonViewClass]: {
+          Container: {
+            ...buttonMergeStyle,
+          },
+        },
+      };
       const newTheme = { viewClass: buttonViewClass, theme: resultButtonTheme };
       children = (
         <React.Fragment>
@@ -1087,7 +1099,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
               height: 30,
             },
             ...buttonStyleTheme,
-            buttonMergeStyle,
+            ...buttonMergeStyle,
           },
           ButtonText: {
             ...buttonColorStyle,
@@ -1202,13 +1214,16 @@ class GetElement extends React.Component<DefProps, StateProps> {
       );
       const areaTextFail =
         classNameStatus === 'fail' ? { fontSize: sectionFontSize, color: dangerColor } : {};
-      const areaTextFailStyle = {
-        themeConfig: {
-          normal: {
-            ...areaTextFail,
+      const areaTextFailStyle = deepMerge(
+        {
+          themeConfig: {
+            normal: {
+              ...areaTextFail,
+            },
           },
         },
-      };
+        areaThemeProps
+      );
 
       children = (
         <AreaView
@@ -1231,7 +1246,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           ) : (
             <AreaText themeProps={areaTextFailStyle} disabled={disabled}>
               {uploadTips},或
-              <AreaTextBlue themeProps={areaThemeProps} disabled={disabled}>
+              <AreaTextBlue themeProps={areaTextFailStyle} disabled={disabled}>
                 {uploadText}
               </AreaTextBlue>
             </AreaText>

@@ -271,51 +271,25 @@ class UploadDemo extends React.Component<any, any> {
         Container: {
           normal: {
             width: 300,
+            height: 40,
           },
         },
       },
     };
     const config = {
       [Widget.Upload]: {
-        UploadButtonType: {
-          Container: {
-            normal: {
-              height: 30,
-            },
-          },
-        },
-        UploadDefaultType: {
+        Container: {
           normal: {
             width: 346,
-            height: 30,
-            border: getBorder({ color: '#9482ff', width: 1, style: 'solid' }),
+            height: 50,
             borderRadius: getBorderRadius(4),
           },
           hover: {},
           disabled: {
-            background: {
-              color: '#ccc',
-            },
-            border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }),
             borderRadius: getBorderRadius(4),
           },
         },
-        UploadPictureType: {
-          normal: {
-            width: 80,
-            height: 80,
-            border: getBorder({ color: '#9482ff', width: 1, style: 'dashed' }),
-            borderRadius: getBorderRadius(4),
-          },
-          hover: {},
-          disabled: {
-            background: {
-              color: '#f7f9f9',
-            },
-            border: getBorder({ color: '#e8e8e8', width: 1, style: 'dashed' }),
-            borderRadius: getBorderRadius(4),
-          },
-        },
+
         UploadLiType: {
           normal: {
             fontSize: 14,
@@ -338,13 +312,38 @@ class UploadDemo extends React.Component<any, any> {
         },
       },
     };
+    const configPicture = {
+      [Widget.Upload]: {
+        Container: {
+          normal: {
+            width: 346,
+            height: 150,
+            borderRadius: getBorderRadius(4),
+          },
+          hover: {},
+          disabled: {
+            borderRadius: getBorderRadius(4),
+          },
+        },
+
+        UploadLiType: {
+          normal: {
+            fontSize: 14,
+            border: getBorder(
+              { color: '#e8e8e8', width: 1, style: 'dashed' },
+              { directions: ['b'] }
+            ),
+          },
+          hover: {},
+        },
+      },
+    };
 
     const configBoth = {
       [Widget.Upload]: {
         UploadButtonType: {
           normal: {
-            width: 100,
-            height: 30,
+            width: 200,
           },
           hover: {
             boxShadow: ' 0 0 2px #ccc',
@@ -354,14 +353,12 @@ class UploadDemo extends React.Component<any, any> {
             background: {
               color: '#ccc',
             },
-            boxShadow: ' 0 0 2px #ccc',
           },
         },
-        UploadDefaultType: {
+        Container: {
           normal: {
-            width: 346,
-            height: 30,
-            border: getBorder({ color: '#9482ff', width: 1, style: 'solid' }),
+            width: 900,
+            height: 45,
             borderRadius: getBorderRadius(4, ['tl', 'bl']),
           },
           hover: {},
@@ -369,7 +366,6 @@ class UploadDemo extends React.Component<any, any> {
             background: {
               color: '#ccc',
             },
-            border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }),
             borderRadius: getBorderRadius(4, ['tl', 'bl']),
           },
         },
@@ -378,9 +374,9 @@ class UploadDemo extends React.Component<any, any> {
 
     const areaConfig = {
       [Widget.Upload]: {
-        UploadAreaType: {
+        Container: {
           normal: {
-            fontSize: 30,
+            fontSize: 20,
             width: 400,
             height: 180,
           },
@@ -394,46 +390,61 @@ class UploadDemo extends React.Component<any, any> {
         <Upload {...defaultProps2} />
         <Title>Both disabled： </Title>
         <Upload {...defaultProps13} />
-
-        <Theme config={config}>
-          <Title>默认： </Title>
-          <Upload {...defaultProps} />
-          <Title>默认 disabled： </Title>
-          <Upload {...defaultProps11} />
-          <Title>Button： </Title>
-          <Upload {...defaultProps1} />
-          <Upload {...defaultLongProps1} />
-        </Theme>
         <Theme config={configBoth}>
-          <Title>Both： </Title>
+          <Title>配置主题的Both： </Title>
           <Upload {...defaultProps2} />
-          <Title>Both disabled： </Title>
+          <Title>配置主题Both disabled： </Title>
           <Upload {...defaultProps12} />
         </Theme>
+
+        <Title>默认类型： </Title>
+        <Upload {...defaultProps} />
         <Theme config={config}>
-          <Title>picture large accept(image)： </Title>
+          <Title>配置主题的默认类型： </Title>
+          <Upload {...defaultProps} />
+          <Title>配置主题的默认类型 disabled： </Title>
+          <Upload {...defaultProps11} />
+        </Theme>
+
+        <Title>picture large accept(image)： </Title>
+        <Upload {...defaultProps3} />
+        <Title>picture middle disabled： </Title>
+        <Upload {...defaultProps4} />
+        <Title>picture small： </Title>
+        <Upload {...defaultProps5} />
+        <Theme config={configPicture}>
+          <Title>配置主题的picture large accept(image)： </Title>
           <Upload {...defaultProps3} />
-          <Title>picture middle disabled： </Title>
+          <Title>配置主题的picture middle disabled： </Title>
           <Upload {...defaultProps4} />
-          <Title>picture small： </Title>
+          <Title>配置主题的picture small： </Title>
           <Upload {...defaultProps5} />
           <Title>default disabled： </Title>
           <Upload {...defaultProps7} />
-          <Title>默认的Button disabled： </Title>
-          <Upload {...defaultProps8} />
-          <Title>默认default button limit 3： </Title>
-          <Upload {...defaultProps10} />
         </Theme>
+
+        <Title>Button： </Title>
+        <Upload {...defaultProps1} />
+        <Upload {...defaultLongProps1} />
+        <Title>默认的Button disabled： </Title>
+        <Upload {...defaultProps8} />
+        <Title>默认default button limit 3： </Title>
+        <Upload {...defaultProps10} />
         <Theme config={configButton}>
           <Title>配置宽度的Button disabled ： </Title>
           <Upload {...defaultProps8} />
           <Title>配置宽度的button limit 3： </Title>
           <Upload {...defaultProps10} />
         </Theme>
+
+        <Title>area： </Title>
+        <Upload {...defaultProps6} />
+        <Title>area disabled： </Title>
+        <Upload {...defaultProps9} />
         <Theme config={areaConfig}>
-          <Title>area： </Title>
+          <Title>配置主题的area： </Title>
           <Upload {...defaultProps6} />
-          <Title>area disabled： </Title>
+          <Title>配置主题的area disabled： </Title>
           <Upload {...defaultProps9} />
         </Theme>
       </div>
