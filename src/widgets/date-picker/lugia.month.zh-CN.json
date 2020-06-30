@@ -144,6 +144,7 @@
       ],
       "hover": [["border"], ["borderRadius"], ["boxShadow"], ["background"]],
       "active": [],
+      "focus": [["background"], ["borderRadius"], ["border"], ["boxShadow"]],
       "disabled": [["background"], ["borderRadius"], ["border"], ["boxShadow"]]
     },
     "Placeholder": {
