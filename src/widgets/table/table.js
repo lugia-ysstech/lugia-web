@@ -307,7 +307,7 @@ export default ThemeProvider(
       }
       this.sortState = type;
       this.setState({ data: sortData, sortOrder: newSortOrder });
-      onChange && onChange({ column: columnData, filed: dataIndex, order: type });
+      onChange && onChange({ column: columnData, filed: dataIndex, order: type, data: sortData });
     };
     render() {
       const {
