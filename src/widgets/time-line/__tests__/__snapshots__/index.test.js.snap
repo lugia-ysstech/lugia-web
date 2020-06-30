@@ -85,7 +85,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   left: 1rem;
   z-index: 2;
   width: 0.1rem;
-  border-left: 0.1rem solid #cccccc;
+  border-left: 0.1rem solid #d0d3da;
 }
 
 .c7 {
@@ -94,7 +94,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   z-index: 2;
   width: 0.1rem;
   display: none;
-  border-left: 0.1rem solid #cccccc;
+  border-left: 0.1rem solid #d0d3da;
 }
 
 .c3 {
@@ -128,16 +128,16 @@ exports[`timeLineDemo Component JSON 1`] = `
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-left-width: 0.1rem;
   border-left-style: solid;
-  border-left-color: #cccccc;
+  border-left-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
 }
 
 .c15 {
@@ -217,7 +217,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2020-06-18
+            2020-06-30
           </div>
         </div>
       </div>
@@ -258,7 +258,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2020-06-19
+            2020-07-01
           </div>
         </div>
       </div>
@@ -299,7 +299,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2020-06-20
+            2020-07-02
           </div>
         </div>
       </div>
@@ -340,7 +340,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2020-06-21
+            2020-07-03
           </div>
         </div>
       </div>
@@ -381,7 +381,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2020-06-22
+            2020-07-04
           </div>
         </div>
       </div>

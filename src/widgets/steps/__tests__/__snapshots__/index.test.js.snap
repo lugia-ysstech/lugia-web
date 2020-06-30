@@ -633,16 +633,16 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-left-width: 0.1rem;
   border-left-style: solid;
-  border-left-color: #cccccc;
+  border-left-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
 }
 
 .c53 {
@@ -1014,7 +1014,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c9"
                       style={
                         Object {
-                          "color": "#cccccc",
+                          "color": "#d0d3da",
                         }
                       }
                     >
@@ -1024,7 +1024,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c10"
                       style={
                         Object {
-                          "color": "#cccccc",
+                          "color": "#d0d3da",
                         }
                       }
                     >
@@ -1067,7 +1067,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c13"
                       style={
                         Object {
-                          "borderBottomColor": "#cccccc",
+                          "borderBottomColor": "#d0d3da",
                           "borderBottomStyle": "solid",
                           "borderBottomWidth": "0.1rem",
                           "width": "100%",
@@ -1091,16 +1091,16 @@ exports[`stepsDemo Component JSON 1`] = `
                       style={
                         Object {
                           "backgroundColor": "white",
-                          "borderBottomColor": "#cccccc",
+                          "borderBottomColor": "#d0d3da",
                           "borderBottomStyle": "solid",
                           "borderBottomWidth": "0.1rem",
-                          "borderLeftColor": "#cccccc",
+                          "borderLeftColor": "#d0d3da",
                           "borderLeftStyle": "solid",
                           "borderLeftWidth": "0.1rem",
-                          "borderRightColor": "#cccccc",
+                          "borderRightColor": "#d0d3da",
                           "borderRightStyle": "solid",
                           "borderRightWidth": "0.1rem",
-                          "borderTopColor": "#cccccc",
+                          "borderTopColor": "#d0d3da",
                           "borderTopStyle": "solid",
                           "borderTopWidth": "0.1rem",
                           "height": "2rem",
@@ -1127,7 +1127,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c9"
                       style={
                         Object {
-                          "color": "#cccccc",
+                          "color": "#d0d3da",
                         }
                       }
                     >
@@ -1137,7 +1137,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c10"
                       style={
                         Object {
-                          "color": "#cccccc",
+                          "color": "#d0d3da",
                         }
                       }
                     >
@@ -1711,7 +1711,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c9"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -1721,7 +1721,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -1764,7 +1764,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
                         "width": "100%",
@@ -1788,16 +1788,16 @@ exports[`stepsDemo Component JSON 1`] = `
                     style={
                       Object {
                         "backgroundColor": "white",
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
-                        "borderLeftColor": "#cccccc",
+                        "borderLeftColor": "#d0d3da",
                         "borderLeftStyle": "solid",
                         "borderLeftWidth": "0.1rem",
-                        "borderRightColor": "#cccccc",
+                        "borderRightColor": "#d0d3da",
                         "borderRightStyle": "solid",
                         "borderRightWidth": "0.1rem",
-                        "borderTopColor": "#cccccc",
+                        "borderTopColor": "#d0d3da",
                         "borderTopStyle": "solid",
                         "borderTopWidth": "0.1rem",
                         "height": "2rem",
@@ -1824,7 +1824,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c9"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -1834,7 +1834,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -2407,7 +2407,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c17"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -2417,7 +2417,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c18"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -2460,7 +2460,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
                         "width": "100%",
@@ -2484,16 +2484,16 @@ exports[`stepsDemo Component JSON 1`] = `
                     style={
                       Object {
                         "backgroundColor": "white",
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
-                        "borderLeftColor": "#cccccc",
+                        "borderLeftColor": "#d0d3da",
                         "borderLeftStyle": "solid",
                         "borderLeftWidth": "0.1rem",
-                        "borderRightColor": "#cccccc",
+                        "borderRightColor": "#d0d3da",
                         "borderRightStyle": "solid",
                         "borderRightWidth": "0.1rem",
-                        "borderTopColor": "#cccccc",
+                        "borderTopColor": "#d0d3da",
                         "borderTopStyle": "solid",
                         "borderTopWidth": "0.1rem",
                         "height": "2rem",
@@ -2520,7 +2520,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c17"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -2530,7 +2530,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c18"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -3093,7 +3093,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c19"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -3136,7 +3136,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
                         "width": "100%",
@@ -3160,16 +3160,16 @@ exports[`stepsDemo Component JSON 1`] = `
                     style={
                       Object {
                         "backgroundColor": "white",
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
-                        "borderLeftColor": "#cccccc",
+                        "borderLeftColor": "#d0d3da",
                         "borderLeftStyle": "solid",
                         "borderLeftWidth": "0.1rem",
-                        "borderRightColor": "#cccccc",
+                        "borderRightColor": "#d0d3da",
                         "borderRightStyle": "solid",
                         "borderRightWidth": "0.1rem",
-                        "borderTopColor": "#cccccc",
+                        "borderTopColor": "#d0d3da",
                         "borderTopStyle": "solid",
                         "borderTopWidth": "0.1rem",
                         "height": "1.2rem",
@@ -3196,7 +3196,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c19"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -3699,7 +3699,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c19"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -3790,7 +3790,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c19"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -4260,7 +4260,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c9"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -4351,7 +4351,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c9"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -4788,7 +4788,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c17"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -4798,7 +4798,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c27"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -4841,7 +4841,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
                         "width": "100%",
@@ -4867,7 +4867,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     onMouseUp={[Function]}
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                         "fontSize": "2.4rem",
                       }
                     }
@@ -4876,7 +4876,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c17"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -4886,7 +4886,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c27"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -5277,7 +5277,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c17"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -5287,7 +5287,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c31"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -5330,7 +5330,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "dashed",
                         "borderBottomWidth": "0.1rem",
                         "width": "100%",
@@ -5346,7 +5346,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c30"
                     style={
                       Object {
-                        "backgroundColor": "#cccccc",
+                        "backgroundColor": "#d0d3da",
                       }
                     }
                   />
@@ -5354,7 +5354,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c17"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -5364,7 +5364,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c31"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -5734,7 +5734,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c9"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -5744,7 +5744,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c33"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -5787,7 +5787,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
                         "width": "100%",
@@ -5803,7 +5803,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c30"
                     style={
                       Object {
-                        "backgroundColor": "#cccccc",
+                        "backgroundColor": "#d0d3da",
                       }
                     }
                   />
@@ -5811,7 +5811,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c9"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -5821,7 +5821,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c33"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -6354,7 +6354,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c38"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -6364,7 +6364,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c39"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -6407,7 +6407,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "borderLeftColor": "#cccccc",
+                        "borderLeftColor": "#d0d3da",
                         "borderLeftStyle": "solid",
                         "borderLeftWidth": "0.1rem",
                         "height": "100%",
@@ -6431,16 +6431,16 @@ exports[`stepsDemo Component JSON 1`] = `
                     style={
                       Object {
                         "backgroundColor": "white",
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
-                        "borderLeftColor": "#cccccc",
+                        "borderLeftColor": "#d0d3da",
                         "borderLeftStyle": "solid",
                         "borderLeftWidth": "0.1rem",
-                        "borderRightColor": "#cccccc",
+                        "borderRightColor": "#d0d3da",
                         "borderRightStyle": "solid",
                         "borderRightWidth": "0.1rem",
-                        "borderTopColor": "#cccccc",
+                        "borderTopColor": "#d0d3da",
                         "borderTopStyle": "solid",
                         "borderTopWidth": "0.1rem",
                         "height": "1.2rem",
@@ -6467,7 +6467,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c38"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -6477,7 +6477,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c39"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -7046,7 +7046,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c42"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -7056,7 +7056,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c43"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -7099,7 +7099,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "borderLeftColor": "#cccccc",
+                        "borderLeftColor": "#d0d3da",
                         "borderLeftStyle": "solid",
                         "borderLeftWidth": "0.1rem",
                         "height": "100%",
@@ -7123,16 +7123,16 @@ exports[`stepsDemo Component JSON 1`] = `
                     style={
                       Object {
                         "backgroundColor": "white",
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
-                        "borderLeftColor": "#cccccc",
+                        "borderLeftColor": "#d0d3da",
                         "borderLeftStyle": "solid",
                         "borderLeftWidth": "0.1rem",
-                        "borderRightColor": "#cccccc",
+                        "borderRightColor": "#d0d3da",
                         "borderRightStyle": "solid",
                         "borderRightWidth": "0.1rem",
-                        "borderTopColor": "#cccccc",
+                        "borderTopColor": "#d0d3da",
                         "borderTopStyle": "solid",
                         "borderTopWidth": "0.1rem",
                         "height": "2rem",
@@ -7159,7 +7159,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c42"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -7169,7 +7169,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c43"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -7740,7 +7740,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c42"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -7750,7 +7750,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c43"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -7793,7 +7793,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "borderLeftColor": "#cccccc",
+                        "borderLeftColor": "#d0d3da",
                         "borderLeftStyle": "solid",
                         "borderLeftWidth": "0.1rem",
                         "height": "100%",
@@ -7817,16 +7817,16 @@ exports[`stepsDemo Component JSON 1`] = `
                     style={
                       Object {
                         "backgroundColor": "white",
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
-                        "borderLeftColor": "#cccccc",
+                        "borderLeftColor": "#d0d3da",
                         "borderLeftStyle": "solid",
                         "borderLeftWidth": "0.1rem",
-                        "borderRightColor": "#cccccc",
+                        "borderRightColor": "#d0d3da",
                         "borderRightStyle": "solid",
                         "borderRightWidth": "0.1rem",
-                        "borderTopColor": "#cccccc",
+                        "borderTopColor": "#d0d3da",
                         "borderTopStyle": "solid",
                         "borderTopWidth": "0.1rem",
                         "height": "2rem",
@@ -7853,7 +7853,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c42"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -7863,7 +7863,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c43"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -8382,7 +8382,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c42"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -8392,7 +8392,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c43"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -8483,7 +8483,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c42"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -8493,7 +8493,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c43"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -8936,7 +8936,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c38"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -8946,7 +8946,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c39"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -8989,7 +8989,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "borderLeftColor": "#cccccc",
+                        "borderLeftColor": "#d0d3da",
                         "borderLeftStyle": "solid",
                         "borderLeftWidth": "0.1rem",
                         "height": "100%",
@@ -9015,7 +9015,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     onMouseUp={[Function]}
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                         "fontSize": "2.4rem",
                       }
                     }
@@ -9024,7 +9024,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c38"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -9034,7 +9034,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c39"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -9391,7 +9391,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c48"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -9434,7 +9434,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "borderLeftColor": "#cccccc",
+                        "borderLeftColor": "#d0d3da",
                         "borderLeftStyle": "dashed",
                         "borderLeftWidth": "0.1rem",
                         "height": "100%",
@@ -9450,7 +9450,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c30"
                     style={
                       Object {
-                        "backgroundColor": "#cccccc",
+                        "backgroundColor": "#d0d3da",
                       }
                     }
                   />
@@ -9458,7 +9458,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c48"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -9824,7 +9824,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c48"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -9834,7 +9834,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c49"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -9877,7 +9877,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "borderLeftColor": "#cccccc",
+                        "borderLeftColor": "#d0d3da",
                         "borderLeftStyle": "solid",
                         "borderLeftWidth": "0.1rem",
                         "height": "100%",
@@ -9893,7 +9893,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c30"
                     style={
                       Object {
-                        "backgroundColor": "#cccccc",
+                        "backgroundColor": "#d0d3da",
                       }
                     }
                   />
@@ -9901,7 +9901,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c48"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -9911,7 +9911,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c49"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -10149,7 +10149,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
                         "width": "100%",
@@ -10173,16 +10173,16 @@ exports[`stepsDemo Component JSON 1`] = `
                     style={
                       Object {
                         "backgroundColor": "white",
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
-                        "borderLeftColor": "#cccccc",
+                        "borderLeftColor": "#d0d3da",
                         "borderLeftStyle": "solid",
                         "borderLeftWidth": "0.1rem",
-                        "borderRightColor": "#cccccc",
+                        "borderRightColor": "#d0d3da",
                         "borderRightStyle": "solid",
                         "borderRightWidth": "0.1rem",
-                        "borderTopColor": "#cccccc",
+                        "borderTopColor": "#d0d3da",
                         "borderTopStyle": "solid",
                         "borderTopWidth": "0.1rem",
                         "height": "2rem",
@@ -10209,7 +10209,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c9"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >
@@ -10252,7 +10252,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
                         "width": "100%",
@@ -10276,16 +10276,16 @@ exports[`stepsDemo Component JSON 1`] = `
                     style={
                       Object {
                         "backgroundColor": "white",
-                        "borderBottomColor": "#cccccc",
+                        "borderBottomColor": "#d0d3da",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": "0.1rem",
-                        "borderLeftColor": "#cccccc",
+                        "borderLeftColor": "#d0d3da",
                         "borderLeftStyle": "solid",
                         "borderLeftWidth": "0.1rem",
-                        "borderRightColor": "#cccccc",
+                        "borderRightColor": "#d0d3da",
                         "borderRightStyle": "solid",
                         "borderRightWidth": "0.1rem",
-                        "borderTopColor": "#cccccc",
+                        "borderTopColor": "#d0d3da",
                         "borderTopStyle": "solid",
                         "borderTopWidth": "0.1rem",
                         "height": "2rem",
@@ -10312,7 +10312,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c9"
                     style={
                       Object {
-                        "color": "#cccccc",
+                        "color": "#d0d3da",
                       }
                     }
                   >

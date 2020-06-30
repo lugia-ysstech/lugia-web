@@ -46,8 +46,8 @@ exports[`Item Mutliple MenuItem 1`] = `
   overflow: hidden;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
 
 .c1 i {
@@ -151,8 +151,8 @@ exports[`Item Mutliple MenuItem checked 1`] = `
   overflow: hidden;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
 
 .c1 i {
@@ -257,8 +257,8 @@ exports[`Item Single MenuItem 1`] = `
   overflow: hidden;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
 
 .c1 i {
@@ -360,8 +360,8 @@ exports[`Item Single MenuItem checked 1`] = `
   overflow: hidden;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
 
 .c1 i {
@@ -466,8 +466,8 @@ exports[`Item children: null 1`] = `
   overflow: hidden;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
 
 .c1 i {

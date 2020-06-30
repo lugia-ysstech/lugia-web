@@ -66,7 +66,7 @@ exports[`Panel Panel CSS 1`] = `
   border-style: solid;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border-color: #cccccc;
+  border-color: #d0d3da;
   border-width: 0 0 1px;
 }
 
@@ -127,7 +127,7 @@ exports[`Panel Panel CSS 1`] = `
           Object {
             "backgroundColor": "#fff",
             "paddingBottom": "1.6rem",
-            "paddingLeft": "3.4rem",
+            "paddingLeft": "3.2rem",
             "paddingRight": "0rem",
             "paddingTop": "1.6rem",
           }
@@ -181,7 +181,7 @@ exports[`Panel Panel CSS 1`] = `
           Object {
             "backgroundColor": "#fff",
             "paddingBottom": "1.6rem",
-            "paddingLeft": "3.4rem",
+            "paddingLeft": "3.2rem",
             "paddingRight": "0rem",
             "paddingTop": "1.6rem",
           }
@@ -251,7 +251,7 @@ exports[`Panel Panel CSS 1`] = `
           Object {
             "backgroundColor": "#fff",
             "paddingBottom": "1.6rem",
-            "paddingLeft": "3.4rem",
+            "paddingLeft": "3.2rem",
             "paddingRight": "0rem",
             "paddingTop": "1.6rem",
           }
@@ -320,7 +320,7 @@ exports[`Panel Panel CSS 1`] = `
           Object {
             "backgroundColor": "#fff",
             "paddingBottom": "1.6rem",
-            "paddingLeft": "3.4rem",
+            "paddingLeft": "3.2rem",
             "paddingRight": "0rem",
             "paddingTop": "1.6rem",
           }
@@ -390,7 +390,7 @@ exports[`Panel Panel CSS 1`] = `
           Object {
             "backgroundColor": "#fff",
             "paddingBottom": "1.6rem",
-            "paddingLeft": "3.4rem",
+            "paddingLeft": "3.2rem",
             "paddingRight": "0rem",
             "paddingTop": "1.6rem",
           }
@@ -414,7 +414,7 @@ exports[`Panel Panel CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "2.2rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "3rem",
               "paddingTop": "0.6rem",
             }
@@ -694,7 +694,7 @@ exports[`Panel Panel CSS 1`] = `
           style={
             Object {
               "backgroundColor": "#f7f4ef",
-              "color": "#cccccc",
+              "color": "#d0d3da",
               "fontSize": "1.6rem",
               "fontWeight": 300,
               "height": "20rem",
