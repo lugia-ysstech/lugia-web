@@ -76,6 +76,10 @@
       "type": "boolean",
       "desc": "是否显示图标",
       "propsDefaultValue": false
+    },
+    "zIndex": {
+      "type": "number",
+      "desc": "设置 Modal 的 z-index"
     }
   },
   "events": {
