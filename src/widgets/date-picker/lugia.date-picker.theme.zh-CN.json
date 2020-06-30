@@ -8,6 +8,7 @@
       { "name": "showToday", "text": "'切换今天'功能" },
       { "name": "showTime", "text": "'时间选择'功能" },
       { "name": "format", "text": "显示格式" },
+      { "name": "extraFooter", "text": "页脚标注" },
       { "name": "buttonOptions", "text": "页脚按钮" }
     ],
     "data": [
@@ -257,7 +258,7 @@
             "iconClass": "timePickerExtraFooter",
             "data": [
               {
-                "name": "额外页脚",
+                "name": "页脚标注",
                 "path": ["ExtraFooter"],
                 "description": {
                   "textPart": {
@@ -397,6 +398,7 @@
       { "name": "showToday", "text": "'切换今天'功能" },
       { "name": "showTime", "text": "'时间选择'功能" },
       { "name": "format", "text": "显示格式" },
+      { "name": "extraFooter", "text": "页脚标注" },
       { "name": "buttonOptions", "text": "页脚按钮" }
     ],
     "data": [
@@ -660,7 +662,7 @@
             "iconClass": "timePickerExtraFooter",
             "data": [
               {
-                "name": "额外页脚",
+                "name": "页脚标注",
                 "path": ["ExtraFooter"],
                 "description": {
                   "textPart": {
@@ -797,7 +799,7 @@
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
       { "name": "format", "text": "显示格式" },
-      { "name": "buttonOptions", "text": "页脚按钮" }
+      { "name": "extraFooter", "text": "页脚标注" }
     ],
     "data": [
       {
@@ -956,7 +958,7 @@
         "iconClass": "datePickerMonthBottom",
         "data": [
           {
-            "name": "额外页脚",
+            "name": "页脚标注",
             "path": ["ExtraFooter"],
             "description": {
               "textPart": {
@@ -975,7 +977,7 @@
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
       { "name": "format", "text": "显示格式" },
-      { "name": "buttonOptions", "text": "页脚按钮" }
+      { "name": "extraFooter", "text": "页脚信息" }
     ],
     "data": [
       {
@@ -1144,7 +1146,7 @@
         "iconClass": "datePickerMonthBottom",
         "data": [
           {
-            "name": "额外页脚",
+            "name": "页脚标注",
             "path": ["ExtraFooter"],
             "description": {
               "textPart": {
@@ -1164,6 +1166,7 @@
       { "name": "disabled", "text": "禁用" },
       { "name": "selectToday", "text": "默认选中今天日期" },
       { "name": "format", "text": "显示格式" },
+      { "name": "extraFooter", "text": "页脚标注" },
       { "name": "buttonOptions", "text": "页脚按钮" }
     ],
     "data": [
@@ -1413,7 +1416,7 @@
             "iconClass": "datePickerBottom",
             "data": [
               {
-                "name": "额外页脚",
+                "name": "页脚标注",
                 "path": ["ExtraFooter"],
                 "description": {
                   "textPart": {
@@ -1484,6 +1487,7 @@
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
       { "name": "format", "text": "显示格式" },
+      { "name": "extraFooter", "text": "页脚标注" },
       { "name": "buttonOptions", "text": "页脚按钮" }
     ],
 
@@ -1644,7 +1648,7 @@
         "iconClass": "datePickerMonthBottom",
         "data": [
           {
-            "name": "额外页脚",
+            "name": "页脚标注",
             "path": ["ExtraFooter"],
             "description": {
               "textPart": {
