@@ -588,6 +588,11 @@ export function getTimeTheme(props) {
   const selectTimeOptionTheme = getPartOfThemeProps('SelectTimeOption');
   const timePanelHeadTheme = getPartOfThemeProps('TimePanelHead');
   const { superLightColor, blackColor, normalColor } = getThemeUpdate();
+  const defaultTimePanelTheme = {
+    normal: {
+      borderRadius: getBorderRadius(0),
+    },
+  };
   const defaultTimePanelListTheme = {
     normal: {
       border: getBorder({ width: 1, style: 'solid', color: superLightColor }),
@@ -605,7 +610,7 @@ export function getTimeTheme(props) {
     },
   };
   return {
-    timePanelTheme,
+    timePanelTheme: deepMerge({ themeConfig: defaultTimePanelTheme }, timePanelTheme),
     timePanelListTheme: deepMerge({ themeConfig: defaultTimePanelListTheme }, timePanelListTheme),
     timePanelHeadTheme: deepMerge({ themeConfig: defaultTimePanelHeadTheme }, timePanelHeadTheme),
     selectTimeOptionTheme: deepMerge(

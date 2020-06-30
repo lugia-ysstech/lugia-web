@@ -58,6 +58,18 @@
       "desc": "可配置三种尺寸大小的input",
       "propsDefaultValue": "default"
     },
+    "suffix": {
+      "type": "icon",
+      "desc": "后缀图标"
+    },
+    "prefix": {
+      "type": "icon",
+      "desc": "前缀图标"
+    },
+    "clearIcon": {
+      "type": "icon",
+      "desc": "清除图标"
+    },
     "alwaysOpen": {
       "type": "boolean",
       "desc": "控制面板是否始终展开",
@@ -113,7 +125,9 @@
         ["border"],
         ["boxShadow"],
         ["color"],
-        ["font"]
+        ["font"],
+        ["margin"],
+        ["padding"]
       ],
       "hover": [["border"], ["borderRadius"], ["boxShadow"], ["background"]],
       "active": [],
@@ -202,7 +216,7 @@
       "desc": "时间内容配置",
       "normal": [["color"], ["background"]]
     },
-    "timePanelListTheme": {
+    "TimePanelList": {
       "name": "单列",
       "desc": "单列时间配置",
       "normal": [["border", "right"]]
