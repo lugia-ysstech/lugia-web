@@ -167,7 +167,7 @@ const Fix = CSSComponent({
   tag: 'span',
   className: 'inputFix',
   normal: {
-    selectNames: [['font'], ['fontSize'], ['color']],
+    selectNames: [['font'], ['fontSize'], ['color'], ['padding'], ['margin']],
     defaultTheme: {
       color: blackColor,
     },
@@ -196,19 +196,25 @@ const Fix = CSSComponent({
 const Prefix: Object = CSSComponent({
   extend: Fix,
   className: 'inputPrefix',
-  normal: {},
-  css: css`
-    padding-left: ${() => px2remcss(get('padding'))};
-  `,
+  normal: {
+    defaultTheme: {
+      padding: {
+        left: padding,
+      },
+    },
+  },
 });
 
 const Suffix: Object = CSSComponent({
   extend: Fix,
   className: 'inputSuffix',
-  normal: {},
-  css: css`
-    padding-right: ${() => px2remcss(get('padding'))};
-  `,
+  normal: {
+    defaultTheme: {
+      padding: {
+        right: padding,
+      },
+    },
+  },
 });
 
 const Clear = 'lugia-icon-reminder_close';
