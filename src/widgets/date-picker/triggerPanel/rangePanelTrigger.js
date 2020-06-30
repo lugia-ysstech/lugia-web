@@ -438,7 +438,7 @@ class Range extends Component<TypeProps, TypeState> {
       theme,
       mode,
       getPartOfThemeProps,
-      createPortal,
+      createPortal = true,
       size,
       validateStatus,
       liquidLayout,
