@@ -111,7 +111,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       validateType,
       validateStatus,
       help,
-      createPortal,
+      createPortal = true,
       size,
       liquidLayout,
       alwaysOpen,

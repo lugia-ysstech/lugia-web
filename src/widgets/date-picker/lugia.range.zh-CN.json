@@ -21,7 +21,7 @@
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
-      "propsDefaultValue": false
+      "propsDefaultValue": true
     },
     "format": {
       "type": "string",
