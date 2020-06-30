@@ -207,6 +207,7 @@ export default class ModalDemo extends React.Component<any, any> {
           okButtonProps={{ type: 'success' }}
           cancelButtonProps={{ type: 'danger' }}
           closable={true}
+          zIndex={99999}
         >
           这是内容！
         </Modal>
