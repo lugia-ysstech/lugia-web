@@ -12,7 +12,7 @@ exports[`Upload Test css 1`] = `
 
 .c4.right {
   position: absolute;
-  right: 10px;
+  right: 12px;
   top: 50%;
   -webkit-transform: translate(0,-50%);
   -ms-transform: translate(0,-50%);
@@ -34,7 +34,7 @@ exports[`Upload Test css 1`] = `
 .c4.loading {
   -webkit-animation: iECmZH 0.8s linear infinite;
   animation: iECmZH 0.8s linear infinite;
-  margin: 0 10px 0 0;
+  margin: 0 12px 0 0;
 }
 
 .c2 {
@@ -92,26 +92,26 @@ exports[`Upload Test css 1`] = `
       onMouseLeave={[Function]}
       style={
         Object {
-          "borderBottomColor": "#cccccc",
+          "borderBottomColor": "#d0d3da",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
+          "borderLeftColor": "#d0d3da",
           "borderLeftStyle": "solid",
           "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
+          "borderRightColor": "#d0d3da",
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
+          "borderTopColor": "#d0d3da",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
           "borderTopStyle": "solid",
           "borderTopWidth": "0.1rem",
-          "color": "#cccccc",
+          "color": "#c2c5ce",
           "fontSize": "1.4rem",
           "paddingBottom": "0rem",
-          "paddingLeft": "1rem",
+          "paddingLeft": "1.2rem",
           "paddingRight": "0rem",
           "paddingTop": "0rem",
         }

@@ -561,7 +561,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -25px;
+  bottom: -27px;
   color: #646A6E;
   color: undefined;
 }
@@ -579,7 +579,7 @@ exports[`default Wrapper 1`] = `
   -webkit-transform: translateY(-50%);
   border-width: 0.1rem;
   border-style: solid;
-  border-color: #cccccc;
+  border-color: #c2c5ce;
   background: #ffffff;
   width: 0.6rem;
   height: 0.6rem;
@@ -599,7 +599,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -25px;
+  bottom: -27px;
   color: blue;
   color: undefined;
 }
@@ -617,7 +617,7 @@ exports[`default Wrapper 1`] = `
   -webkit-transform: translateY(-50%);
   border-width: 0.1rem;
   border-style: solid;
-  border-color: #cccccc;
+  border-color: #c2c5ce;
   background: #ffffff;
   width: 0.6rem;
   height: 0.6rem;
@@ -637,7 +637,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -25px;
+  bottom: -27px;
   color: pink;
   color: undefined;
 }
@@ -675,7 +675,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -25px;
+  bottom: -27px;
   color: #f22735;
   color: undefined;
 }
@@ -713,7 +713,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -25px;
+  bottom: -27px;
   color: #9EA4AE;
   color: undefined;
 }
@@ -751,7 +751,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -25px;
+  bottom: -27px;
   color: blue;
   color: undefined;
 }
@@ -789,7 +789,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -25px;
+  bottom: -27px;
   color: pink;
   color: undefined;
 }
@@ -827,7 +827,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -25px;
+  bottom: -27px;
   color: #646A6E;
   color: undefined;
 }
@@ -845,7 +845,7 @@ exports[`default Wrapper 1`] = `
   -webkit-transform: translateY(-50%);
   border-width: 0.1rem;
   border-style: solid;
-  border-color: #cccccc;
+  border-color: #c2c5ce;
   background: #ffffff;
   width: 0.6rem;
   height: 0.6rem;
@@ -865,7 +865,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -25px;
+  bottom: -27px;
   color: #9EA4AE;
   color: undefined;
 }
@@ -903,7 +903,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -25px;
+  bottom: -27px;
   color: red;
   color: undefined;
 }
@@ -936,7 +936,7 @@ exports[`default Wrapper 1`] = `
   content: '0';
   font-size: 1.4rem;
   line-height: 1;
-  left: calc(100% + 10px);
+  left: calc(100% + 12px);
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -959,7 +959,7 @@ exports[`default Wrapper 1`] = `
   -webkit-transform: translateX(-50%);
   border-width: 0.1rem;
   border-style: solid;
-  border-color: #cccccc;
+  border-color: #c2c5ce;
   background: #ffffff;
   width: 0.6rem;
   height: 0.6rem;
@@ -974,7 +974,7 @@ exports[`default Wrapper 1`] = `
   content: '10℃';
   font-size: 1.4rem;
   line-height: 1;
-  left: calc(100% + 10px);
+  left: calc(100% + 12px);
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -997,7 +997,7 @@ exports[`default Wrapper 1`] = `
   -webkit-transform: translateX(-50%);
   border-width: 0.1rem;
   border-style: solid;
-  border-color: #cccccc;
+  border-color: #c2c5ce;
   background: #ffffff;
   width: 0.6rem;
   height: 0.6rem;
@@ -1012,7 +1012,7 @@ exports[`default Wrapper 1`] = `
   content: '20℃';
   font-size: 1.4rem;
   line-height: 1;
-  left: calc(100% + 10px);
+  left: calc(100% + 12px);
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -1035,7 +1035,7 @@ exports[`default Wrapper 1`] = `
   -webkit-transform: translateX(-50%);
   border-width: 0.1rem;
   border-style: solid;
-  border-color: #cccccc;
+  border-color: #c2c5ce;
   background: #ffffff;
   width: 0.6rem;
   height: 0.6rem;
@@ -1050,7 +1050,7 @@ exports[`default Wrapper 1`] = `
   content: '40℃';
   font-size: 1.4rem;
   line-height: 1;
-  left: calc(100% + 10px);
+  left: calc(100% + 12px);
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -1088,7 +1088,7 @@ exports[`default Wrapper 1`] = `
   content: '50';
   font-size: 1.4rem;
   line-height: 1;
-  left: calc(100% + 10px);
+  left: calc(100% + 12px);
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -1126,7 +1126,7 @@ exports[`default Wrapper 1`] = `
   content: '0℃';
   font-size: 1.4rem;
   line-height: 1;
-  left: calc(100% + 10px);
+  left: calc(100% + 12px);
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -1164,7 +1164,7 @@ exports[`default Wrapper 1`] = `
   content: '10℃';
   font-size: 1.4rem;
   line-height: 1;
-  left: calc(100% + 10px);
+  left: calc(100% + 12px);
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -1202,7 +1202,7 @@ exports[`default Wrapper 1`] = `
   content: '20℃';
   font-size: 1.4rem;
   line-height: 1;
-  left: calc(100% + 10px);
+  left: calc(100% + 12px);
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -1240,7 +1240,7 @@ exports[`default Wrapper 1`] = `
   content: '50℃';
   font-size: 1.4rem;
   line-height: 1;
-  left: calc(100% + 10px);
+  left: calc(100% + 12px);
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -1278,7 +1278,7 @@ exports[`default Wrapper 1`] = `
   content: '0℃';
   font-size: 1.4rem;
   line-height: 1;
-  left: calc(100% + 10px);
+  left: calc(100% + 12px);
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -1301,7 +1301,7 @@ exports[`default Wrapper 1`] = `
   -webkit-transform: translateX(-50%);
   border-width: 0.1rem;
   border-style: solid;
-  border-color: #cccccc;
+  border-color: #c2c5ce;
   background: #ffffff;
   width: 0.6rem;
   height: 0.6rem;
@@ -1316,7 +1316,7 @@ exports[`default Wrapper 1`] = `
   content: '5';
   font-size: 1.4rem;
   line-height: 1;
-  left: calc(100% + 10px);
+  left: calc(100% + 12px);
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -1354,7 +1354,7 @@ exports[`default Wrapper 1`] = `
   content: '10℃';
   font-size: 1.4rem;
   line-height: 1;
-  left: calc(100% + 10px);
+  left: calc(100% + 12px);
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -1565,7 +1565,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -1649,7 +1649,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -1723,7 +1723,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -1831,7 +1831,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -1915,7 +1915,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -1999,7 +1999,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -2084,7 +2084,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -2201,7 +2201,7 @@ exports[`default Wrapper 1`] = `
           disabled={true}
           style={
             Object {
-              "backgroundColor": "#f2f2f2",
+              "backgroundColor": "#f4f5f8",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -2224,7 +2224,7 @@ exports[`default Wrapper 1`] = `
             className="c13"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
+                "backgroundColor": "#ebecf0",
               }
             }
           />
@@ -2237,7 +2237,7 @@ exports[`default Wrapper 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
+                "backgroundColor": "#ebecf0",
                 "height": "1.6rem",
                 "width": "1.6rem",
               }
@@ -2293,7 +2293,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -2384,7 +2384,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -2496,7 +2496,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -2631,7 +2631,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -2737,7 +2737,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -2876,7 +2876,7 @@ exports[`default Wrapper 1`] = `
           disabled={false}
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -2982,7 +2982,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -3073,7 +3073,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -3164,7 +3164,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -3256,7 +3256,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -3372,7 +3372,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -3487,7 +3487,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -3604,7 +3604,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -3746,7 +3746,7 @@ exports[`default Wrapper 1`] = `
           disabled={true}
           style={
             Object {
-              "backgroundColor": "#f2f2f2",
+              "backgroundColor": "#f4f5f8",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -3769,7 +3769,7 @@ exports[`default Wrapper 1`] = `
             className="c56"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
+                "backgroundColor": "#ebecf0",
               }
             }
           />
@@ -3782,7 +3782,7 @@ exports[`default Wrapper 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
+                "backgroundColor": "#ebecf0",
                 "height": "1.6rem",
                 "width": "1.6rem",
               }
@@ -3838,7 +3838,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",
@@ -3944,7 +3944,7 @@ exports[`default Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "#e8e8e8",
+              "backgroundColor": "#ebecf0",
               "borderBottomLeftRadius": "0.6rem",
               "borderBottomRightRadius": "0.6rem",
               "borderBottomWidth": "0rem",

@@ -16,7 +16,7 @@ exports[`Rate Test css 1`] = `
   user-select: none;
   cursor: pointer;
   vertical-align: text-bottom !important;
-  color: #e8e8e8;
+  color: #ebecf0;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -86,7 +86,7 @@ exports[`Rate Test css 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "color": "#e8e8e8",
+            "color": "#ebecf0",
           }
         }
       />
@@ -100,7 +100,7 @@ exports[`Rate Test css 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "color": "#e8e8e8",
+            "color": "#ebecf0",
           }
         }
       />
@@ -123,7 +123,7 @@ exports[`Rate Test css 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "color": "#e8e8e8",
+            "color": "#ebecf0",
           }
         }
       />
@@ -137,7 +137,7 @@ exports[`Rate Test css 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "color": "#e8e8e8",
+            "color": "#ebecf0",
           }
         }
       />
@@ -160,7 +160,7 @@ exports[`Rate Test css 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "color": "#e8e8e8",
+            "color": "#ebecf0",
           }
         }
       />
@@ -174,7 +174,7 @@ exports[`Rate Test css 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "color": "#e8e8e8",
+            "color": "#ebecf0",
           }
         }
       />
@@ -197,7 +197,7 @@ exports[`Rate Test css 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "color": "#e8e8e8",
+            "color": "#ebecf0",
           }
         }
       />
@@ -211,7 +211,7 @@ exports[`Rate Test css 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "color": "#e8e8e8",
+            "color": "#ebecf0",
           }
         }
       />
@@ -234,7 +234,7 @@ exports[`Rate Test css 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "color": "#e8e8e8",
+            "color": "#ebecf0",
           }
         }
       />
@@ -248,7 +248,7 @@ exports[`Rate Test css 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "color": "#e8e8e8",
+            "color": "#ebecf0",
           }
         }
       />

@@ -115,8 +115,8 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
             Object {
               "color": "#9EA4AE",
               "marginBottom": "0rem",
-              "marginLeft": "1rem",
-              "marginRight": "1rem",
+              "marginLeft": "0.8rem",
+              "marginRight": "0.8rem",
               "marginTop": "0rem",
             }
           }
@@ -154,8 +154,8 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
             Object {
               "color": "#9EA4AE",
               "marginBottom": "0rem",
-              "marginLeft": "1rem",
-              "marginRight": "1rem",
+              "marginLeft": "0.8rem",
+              "marginRight": "0.8rem",
               "marginTop": "0rem",
             }
           }
@@ -321,8 +321,8 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
             Object {
               "color": "#9EA4AE",
               "marginBottom": "0rem",
-              "marginLeft": "1rem",
-              "marginRight": "1rem",
+              "marginLeft": "0.8rem",
+              "marginRight": "0.8rem",
               "marginTop": "0rem",
             }
           }
@@ -359,8 +359,8 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
             Object {
               "color": "#9EA4AE",
               "marginBottom": "0rem",
-              "marginLeft": "1rem",
-              "marginRight": "1rem",
+              "marginLeft": "0.8rem",
+              "marginRight": "0.8rem",
               "marginTop": "0rem",
             }
           }
@@ -544,8 +544,8 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
             Object {
               "color": "#9EA4AE",
               "marginBottom": "0rem",
-              "marginLeft": "1rem",
-              "marginRight": "1rem",
+              "marginLeft": "0.8rem",
+              "marginRight": "0.8rem",
               "marginTop": "0rem",
             }
           }
@@ -722,8 +722,8 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
             Object {
               "color": "#9EA4AE",
               "marginBottom": "0rem",
-              "marginLeft": "1rem",
-              "marginRight": "1rem",
+              "marginLeft": "0.8rem",
+              "marginRight": "0.8rem",
               "marginTop": "0rem",
             }
           }
@@ -761,8 +761,8 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
             Object {
               "color": "#9EA4AE",
               "marginBottom": "0rem",
-              "marginLeft": "1rem",
-              "marginRight": "1rem",
+              "marginLeft": "0.8rem",
+              "marginRight": "0.8rem",
               "marginTop": "0rem",
             }
           }
@@ -800,8 +800,8 @@ exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = 
             Object {
               "color": "#9EA4AE",
               "marginBottom": "0rem",
-              "marginLeft": "1rem",
-              "marginRight": "1rem",
+              "marginLeft": "0.8rem",
+              "marginRight": "0.8rem",
               "marginTop": "0rem",
             }
           }
@@ -967,8 +967,8 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
             Object {
               "color": "#9EA4AE",
               "marginBottom": "0rem",
-              "marginLeft": "1rem",
-              "marginRight": "1rem",
+              "marginLeft": "0.8rem",
+              "marginRight": "0.8rem",
               "marginTop": "0rem",
             }
           }
@@ -1005,8 +1005,8 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
             Object {
               "color": "#9EA4AE",
               "marginBottom": "0rem",
-              "marginLeft": "1rem",
-              "marginRight": "1rem",
+              "marginLeft": "0.8rem",
+              "marginRight": "0.8rem",
               "marginTop": "0rem",
             }
           }
@@ -1172,8 +1172,8 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
             Object {
               "color": "#9EA4AE",
               "marginBottom": "0rem",
-              "marginLeft": "1rem",
-              "marginRight": "1rem",
+              "marginLeft": "0.8rem",
+              "marginRight": "0.8rem",
               "marginTop": "0rem",
             }
           }
@@ -1211,8 +1211,8 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
             Object {
               "color": "#9EA4AE",
               "marginBottom": "0rem",
-              "marginLeft": "1rem",
-              "marginRight": "1rem",
+              "marginLeft": "0.8rem",
+              "marginRight": "0.8rem",
               "marginTop": "0rem",
             }
           }
@@ -1250,8 +1250,8 @@ exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
             Object {
               "color": "#9EA4AE",
               "marginBottom": "0rem",
-              "marginLeft": "1rem",
-              "marginRight": "1rem",
+              "marginLeft": "0.8rem",
+              "marginRight": "0.8rem",
               "marginTop": "0rem",
             }
           }
