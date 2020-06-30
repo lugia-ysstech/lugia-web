@@ -121,6 +121,7 @@ export default ThemeProvider(
         injectLugiad: { type } = {},
         __lugiad__header__absolute__,
         sidebar = false,
+        getContainer = true,
       } = this.props;
       const drawerWrapTheme = getPartOfThemeProps('Container');
       const handleWrapTheme = getPartOfThemeProps('handleWrap');
@@ -145,6 +146,7 @@ export default ThemeProvider(
           opening={opening}
           closing={closing}
           transform={transform}
+          getContainer={getContainer}
         >
           {sidebar ? (
             <HandleWrap
@@ -176,16 +178,16 @@ export default ThemeProvider(
         return drawerContent;
       }
       const maskElement = mask ? (
-        <DrawerMask onClick={this.handleMaskClick} visible={visible} />
+        <DrawerMask onClick={this.handleMaskClick} visible={visible} getContainer={getContainer} />
       ) : null;
 
       const drawer = (
-        <Drawer visible={visible}>
+        <Drawer visible={visible} getContainer={getContainer}>
           {maskElement}
           {drawerContent}
         </Drawer>
       );
-      return createPortal(
+      const darwerDemo = (
         <DrawerContext.Consumer>
           {context => {
             if (!context) {
@@ -214,9 +216,12 @@ export default ThemeProvider(
             context.level = selfLevel;
             return drawer;
           }}
-        </DrawerContext.Consumer>,
-        this.node
+        </DrawerContext.Consumer>
       );
+      if (!getContainer) {
+        return <React.Fragment>{darwerDemo}</React.Fragment>;
+      }
+      return createPortal(darwerDemo, this.node);
     }
 
     getLevelSymbol(level: string | number): string {
