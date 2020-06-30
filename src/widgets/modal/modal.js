@@ -28,6 +28,7 @@ import Icon from '../icon';
 import { px2remcss } from '../css/units';
 import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
+import { getIndex } from '../utils/widget-zindex';
 
 const BtnType = {
   confirm: 'warning',
@@ -39,6 +40,12 @@ const BtnType = {
 
 export default ThemeProvider(
   class extends React.Component<ModalProps, ModalState> {
+    constructor(props: ModalProps) {
+      super(props);
+      const { visible = false } = props;
+      this.index = visible ? getIndex() : undefined;
+    }
+
     static getDerivedStateFromProps(props, state) {
       const { visible = false } = props;
       const { visible: stateVisible } = state || {};
@@ -162,6 +169,9 @@ export default ThemeProvider(
         closeIconClass,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
+      if (!this.index && visible) {
+        this.index = getIndex();
+      }
       const view = {
         [Widget.Button]: {
           width: 80,
@@ -249,13 +259,14 @@ export default ThemeProvider(
         return modalContent;
       }
       return (
-        <Wrap visible={closing ? true : visible}>
+        <Wrap visible={closing ? true : visible} zIndex={this.index}>
           {mask ? (
             <ModalMask
               onClick={this.handleMaskClick}
               closing={closing}
               opening={opening}
               themeProps={modalMaskTheme}
+              zIndex={this.index}
             />
           ) : null}
           <ModalWrap>
@@ -265,6 +276,7 @@ export default ThemeProvider(
               closing={closing}
               opening={opening}
               themeProps={modalWrapTheme}
+              zIndex={this.index}
             >
               {modalContent}
             </Modal>
