@@ -116,7 +116,7 @@
     "TooltipTitle": {
       "name": "标题部分",
       "desc": "标题部分",
-      "normal": [["fontSize"], ["font"], ["color"]],
+      "normal": [["fontSize"], ["font"], ["color"],["margin","bottom"]],
       "hover": [],
       "clicked": [],
       "disabled": []
