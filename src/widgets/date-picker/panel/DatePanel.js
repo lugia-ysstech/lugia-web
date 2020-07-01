@@ -146,6 +146,7 @@ class Dates extends Component<TypeProps, any> {
       activeTheme,
       outMonthNormalTheme,
       rangeNormalTheme,
+      rangeWeekDate,
       todayTheme,
       dateTheme,
     } = getDateTheme(this.props);
@@ -164,6 +165,7 @@ class Dates extends Component<TypeProps, any> {
           activeTheme={activeTheme}
           hoverTheme={hoverTheme}
           rangeNormalTheme={rangeNormalTheme}
+          rangeWeekDate={rangeWeekDate}
           todayTheme={todayTheme}
           value={value}
           todayDate={todayDate}
@@ -201,6 +203,7 @@ class Dates extends Component<TypeProps, any> {
             normalTheme={normalTheme}
             outMonthNormalTheme={outMonthNormalTheme}
             todayTheme={todayTheme}
+            rangeWeekDate={rangeWeekDate}
             mode={mode}
             key={index}
             isToday={showToday && todayIndex === index + 1 ? true : false}
