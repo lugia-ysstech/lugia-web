@@ -187,7 +187,7 @@
       "desc": "分类日期配置/年/月/周",
       "normal": [["color"], ["font"]],
       "hover": [["color"], ["font"]],
-      "active": [["color"], ["font"], ["background"], ["borderRadius"]]
+      "active": [["color"], ["font"], ["background"], ["borderRadius"], ["border"], ["boxShadow"]]
     },
     "HeadSingleArrow": {
       "name": "头部单箭头",

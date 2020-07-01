@@ -249,7 +249,18 @@
           {
             "title": "年月周板",
             "iconClass": "datePickerAllDate",
-            "data": [{ "name": "分类日期", "path": ["GroupDate"] }]
+            "data": [
+              {
+                "name": "分类日期",
+                "path": ["GroupDate"],
+                "description": {
+                  "appearancePart": {
+                    "text": "当前项外框",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       },
@@ -657,7 +668,18 @@
           {
             "title": "年月周板",
             "iconClass": "datePickerAllDate",
-            "data": [{ "name": "分类日期", "path": ["GroupDate"] }]
+            "data": [
+              {
+                "name": "分类日期",
+                "path": ["GroupDate"],
+                "description": {
+                  "appearancePart": {
+                    "text": "当前项外框",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       },
@@ -959,7 +981,18 @@
       {
         "title": "面板内容区",
         "iconClass": "datePickerPanel",
-        "data": [{ "name": "分类日期", "path": ["GroupDate"] }]
+        "data": [
+          {
+            "name": "分类日期",
+            "path": ["GroupDate"],
+            "description": {
+              "appearancePart": {
+                "text": "当前项外框",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
       },
       {
         "title": "面板底部",
@@ -1147,7 +1180,18 @@
       {
         "title": "面板内容区",
         "iconClass": "datePickerPanel",
-        "data": [{ "name": "分类日期", "path": ["GroupDate"] }]
+        "data": [
+          {
+            "name": "分类日期",
+            "path": ["GroupDate"],
+            "description": {
+              "appearancePart": {
+                "text": "当前项外框",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
       },
       {
         "title": "面板底部",
@@ -1415,7 +1459,18 @@
           {
             "title": "年月周板",
             "iconClass": "datePickerAllDate",
-            "data": [{ "name": "分类日期", "path": ["GroupDate"] }]
+            "data": [
+              {
+                "name": "分类日期",
+                "path": ["GroupDate"],
+                "description": {
+                  "appearancePart": {
+                    "text": "当前项外框",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       },
@@ -1653,7 +1708,18 @@
       {
         "title": "面板内容区",
         "iconClass": "datePickerPanel",
-        "data": [{ "name": "分类日期", "path": ["GroupDate"] }]
+        "data": [
+          {
+            "name": "分类日期",
+            "path": ["GroupDate"],
+            "description": {
+              "appearancePart": {
+                "text": "当前项外框",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
       },
       {
         "title": "面板底部",
