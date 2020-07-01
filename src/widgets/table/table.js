@@ -16,7 +16,7 @@ import './style/lugia-table.css';
 import type { TableProps, TableState } from '../css/table';
 import { css } from 'styled-components';
 import TableTitle from './tableTitle';
-import isEqual from 'lodash/isEqual';
+import { deepCopy, isEqualArray } from './utils';
 
 const sizePadding = {
   default: 8,
@@ -76,7 +76,7 @@ export default ThemeProvider(
         headIndeterminate: !!selectRowKeyLength,
         selectRowKeys: selectRowKeys || [],
         scroll,
-        data: this.deepCopy(data),
+        data: deepCopy(data),
         sortOrder: true,
       };
       this.tableWrap = React.createRef();
@@ -131,8 +131,10 @@ export default ThemeProvider(
       }, 0);
     }
 
-    static getDerivedStateFromProps(props) {
+    static getDerivedStateFromProps(props, nextState) {
       const { data = [], selectOptions = {}, rowKey = 'key' } = props;
+      const { data: stateData = [], sortOrder } = nextState;
+      const dataIsSame = isEqualArray(stateData, data);
       if ('selectRowKeys' in selectOptions) {
         const {
           selectRowKeys = [],
@@ -159,10 +161,10 @@ export default ThemeProvider(
           headChecked: allValidSelected,
           headIndeterminate: !!validSelectRowKeys.length,
           selectRowKeys,
-          sortOrder: true,
+          sortOrder: dataIsSame ? sortOrder : true,
         };
       }
-      return { sortOrder: true };
+      return { sortOrder: dataIsSame ? sortOrder : true };
     }
 
     tableItemChange = (key, record) => () => {
@@ -263,10 +265,10 @@ export default ThemeProvider(
       this.disabledSelectedRecords = disabledSelectedRecords;
     };
     getSortColumns = (columns: Object[]) => {
-      const newColumns = this.deepCopy(columns);
+      const newColumns = deepCopy(columns);
       newColumns.map(item => {
         const { sorter } = item;
-        const newItem = this.deepCopy(item);
+        const newItem = deepCopy(item);
         if (sorter) {
           item.title = (
             <TableTitle
@@ -279,23 +281,12 @@ export default ThemeProvider(
       });
       return newColumns;
     };
-    deepCopy = (arr: Object[]) => {
-      if (typeof arr !== 'object') return;
-
-      const newArr = arr instanceof Array ? [] : {};
-      for (const key in arr) {
-        if (arr.hasOwnProperty(key)) {
-          newArr[key] = typeof arr[key] === 'object' ? this.deepCopy(arr[key]) : arr[key];
-        }
-      }
-      return newArr;
-    };
     onSortChange = (columnData: Object, type: string) => {
       const { sortOrder } = this.state;
       const { data, onChange } = this.props;
       const { sortState } = this;
       const { sorter, dataIndex } = columnData;
-      let sortData = this.deepCopy(data);
+      let sortData = deepCopy(data);
       let newSortOrder = !sortOrder;
       if (sortOrder || (sortState && sortState !== type && !sortOrder)) {
         if (sortState && sortState !== type && !sortOrder) {
@@ -321,7 +312,7 @@ export default ThemeProvider(
         size = 'default',
         rowKey: cusRowKey = 'key',
         scroll: propsScroll = {},
-        data: propsData,
+        data: propsData = [],
       } = this.props;
 
       this.selectedRecords = [];
@@ -336,7 +327,9 @@ export default ThemeProvider(
         scroll = {},
         data = [],
       } = this.state;
-      const tableData = isEqual(data, propsData) ? data : propsData;
+      const dataIsSame = isEqualArray(data, propsData);
+      if (!dataIsSame) this.sortState = '';
+      const tableData = dataIsSame ? data : propsData;
       const containerPartOfThemeProps = getPartOfThemeProps('Container', {
         props: { size },
       });

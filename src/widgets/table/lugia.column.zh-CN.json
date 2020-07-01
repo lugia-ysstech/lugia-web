@@ -50,7 +50,7 @@
       "desc": "排序函数"
     }
   },
-  "event": {
+  "events": {
     "onExpandedRowsChange": {
       "desc": "展开的行改变时的回调",
       "args": [
