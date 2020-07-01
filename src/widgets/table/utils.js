@@ -17,7 +17,6 @@ export const isEqualArray = (arr: any[], newArr: any[]) => {
   arr = arr.map(item => JSON.stringify(item));
   newArr = newArr.map(item => JSON.stringify(item));
   let flag = true;
-  // console.log(333, arr, newArr);
   newArr.forEach(item => {
     if (arr.indexOf(item) <= -1) {
       flag = false;
