@@ -352,7 +352,8 @@
       "name": "页脚时间按钮",
       "desc": "页脚时间按钮配置",
       "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]]
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
     },
     "FooterOkButton": {
       "name": "页脚确定按钮",
@@ -364,9 +365,12 @@
         ["borderRadius"],
         ["color"],
         ["font"],
-        ["fontSize"]
+        ["fontSize"],
+        ["boxShadow"],
+        ["border"]
       ],
-      "hover": [["color"], ["font"], ["fontSize"], ["background"]]
+      "hover": [["color"], ["font"], ["fontSize"], ["background"]],
+      "disabled": [["color"], ["background"], ["boxShadow"], ["border"]]
     },
     "FooterLine": {
       "name": "页脚分割线",
