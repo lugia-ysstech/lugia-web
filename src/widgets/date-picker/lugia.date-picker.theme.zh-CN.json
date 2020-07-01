@@ -1540,11 +1540,11 @@
       },
       {
         "title": "面板底部",
-        "iconClass": "datePickerMonthBottom",
+        "iconClass": "datePickerBottom",
         "children": [
           {
             "title": "页脚标注",
-            "iconClass": "datePickerBottom",
+            "iconClass": "timePickerExtraFooter",
             "data": [
               {
                 "name": "页脚标注",
