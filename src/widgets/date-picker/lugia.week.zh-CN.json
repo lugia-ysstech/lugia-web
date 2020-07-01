@@ -279,7 +279,8 @@
     "TimePanel": {
       "name": "时间内容区",
       "desc": "时间内容配置",
-      "normal": [["color"], ["background"]]
+      "normal": [["color"], ["background"]],
+      "hover": [["color"]]
     },
     "TimePanelList": {
       "name": "单列",
