@@ -203,14 +203,18 @@
     "InMonthDate": {
       "name": "日期",
       "desc": "日期配置",
-      "normal": [["color"]],
-      "hover": [["color"], ["background"], ["borderRadius"], ["boxShadow"], ["border"]],
-      "active": [["color"], ["background"], ["borderRadius"], ["boxShadow"], ["border"]]
+      "normal": [["color"]]
     },
     "OutMonthDate": {
       "name": "非本月日期",
       "desc": "非本月日期配置",
       "normal": [["color"]]
+    },
+    "RangeDate": {
+      "name": "范围日期",
+      "desc": "选中范围日期的配置",
+      "normal": [["color"], ["background"], ["borderRadius"]],
+      "hover": [["color"], ["background"]]
     },
     "SelectToday": {
       "name": "当天日期",
@@ -269,12 +273,6 @@
       "normal": [["color"], ["font"]],
       "hover": [["color"], ["font"]],
       "active": [["color"], ["font"], ["background"], ["borderRadius"], ["border"], ["boxShadow"]]
-    },
-    "RangeDate": {
-      "name": "范围日期",
-      "desc": "选中范围日期的配置",
-      "normal": [["color"], ["background"], ["borderRadius"]],
-      "hover": [["color"], ["background"]]
     },
     "TimePanelHead": {
       "name": "时间板头部",
