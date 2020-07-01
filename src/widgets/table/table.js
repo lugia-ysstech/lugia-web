@@ -16,6 +16,7 @@ import './style/lugia-table.css';
 import type { TableProps, TableState } from '../css/table';
 import { css } from 'styled-components';
 import TableTitle from './tableTitle';
+import isEqual from 'lodash/isEqual';
 
 const sizePadding = {
   default: 8,
@@ -158,10 +159,10 @@ export default ThemeProvider(
           headChecked: allValidSelected,
           headIndeterminate: !!validSelectRowKeys.length,
           selectRowKeys,
+          sortOrder: true,
         };
       }
-
-      return null;
+      return { sortOrder: true };
     }
 
     tableItemChange = (key, record) => () => {
@@ -320,6 +321,7 @@ export default ThemeProvider(
         size = 'default',
         rowKey: cusRowKey = 'key',
         scroll: propsScroll = {},
+        data: propsData,
       } = this.props;
 
       this.selectedRecords = [];
@@ -332,9 +334,9 @@ export default ThemeProvider(
         headIndeterminate,
         selectRowKeys: stateSelectRowKeys,
         scroll = {},
-        data,
+        data = [],
       } = this.state;
-
+      const tableData = isEqual(data, propsData) ? data : propsData;
       const containerPartOfThemeProps = getPartOfThemeProps('Container', {
         props: { size },
       });
@@ -349,7 +351,7 @@ export default ThemeProvider(
           >
             <RcTable
               {...this.props}
-              data={data}
+              data={tableData}
               showHeader={showHeader}
               rowClassName={(record, i) => `row-${i}`}
               className="table"
@@ -419,7 +421,7 @@ export default ThemeProvider(
           <RcTable
             {...this.props}
             columns={theColumns}
-            data={data}
+            data={tableData}
             showHeader={showHeader}
             expandIconColumnIndex={expandIconColumnIndex}
             scroll={{ ...scroll, ...propsScroll }}
