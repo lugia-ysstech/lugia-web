@@ -20,8 +20,8 @@ const DemoBox = styled.div`
 const BoxWrap = styled.div`
   border: 1px solid #ccc;
   width: 600px;
-  height: 500px;
-  margin: 60px auto;
+  height: 200px;
+  margin: 20px auto;
   padding: 20px;
   position: relative;
   overflow: hidden;
@@ -208,6 +208,8 @@ export default class DrawerDemo extends React.Component<any, any> {
             confirm
           </Button>
         </DemoBox>
+
+        <BoxWrap ref={dom => (this.mountedDom = dom)}>指定抽屉在这里弹出</BoxWrap>
         <BoxWrap>
           <Button type="primary" onClick={this.openDrawer(10)}>
             click me
@@ -216,7 +218,7 @@ export default class DrawerDemo extends React.Component<any, any> {
             title="Basic Drawer"
             onClose={this.onClick(10)}
             visible={visible10}
-            getContainer={false}
+            getContainer={() => this.mountedDom}
             placement={'right'}
             sidebar={true}
             onToggle={this.onSidebarClick(10)}
