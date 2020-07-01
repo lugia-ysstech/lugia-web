@@ -333,6 +333,22 @@
                 "path": ["FooterOkButton"]
               }
             ]
+          },
+          {
+            "title": "页脚分割线",
+            "iconClass": "Dividingline",
+            "data": [
+              {
+                "name": "页脚分割线",
+                "path": ["FooterLine"],
+                "description": {
+                  "appearancePart": {
+                    "text": "分割线",
+                    "desc": "面板中外观配置的区块显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       },
@@ -752,6 +768,22 @@
                 "path": ["FooterOkButton"]
               }
             ]
+          },
+          {
+            "title": "页脚分割线",
+            "iconClass": "Dividingline",
+            "data": [
+              {
+                "name": "页脚分割线",
+                "path": ["FooterLine"],
+                "description": {
+                  "appearancePart": {
+                    "text": "分割线",
+                    "desc": "面板中外观配置的区块显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       },
@@ -1007,6 +1039,22 @@
                 "desc": "文本配置区块的显示文本"
               }
             }
+          },
+          {
+            "title": "页脚分割线",
+            "iconClass": "Dividingline",
+            "data": [
+              {
+                "name": "页脚分割线",
+                "path": ["FooterLine"],
+                "description": {
+                  "appearancePart": {
+                    "text": "分割线",
+                    "desc": "面板中外观配置的区块显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       }
@@ -1206,6 +1254,22 @@
                 "desc": "文本配置区块的显示文本"
               }
             }
+          },
+          {
+            "title": "页脚分割线",
+            "iconClass": "Dividingline",
+            "data": [
+              {
+                "name": "页脚分割线",
+                "path": ["FooterLine"],
+                "description": {
+                  "appearancePart": {
+                    "text": "分割线",
+                    "desc": "面板中外观配置的区块显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       }
@@ -1543,6 +1607,22 @@
                 "path": ["FooterOkButton"]
               }
             ]
+          },
+          {
+            "title": "页脚分割线",
+            "iconClass": "Dividingline",
+            "data": [
+              {
+                "name": "页脚分割线",
+                "path": ["FooterLine"],
+                "description": {
+                  "appearancePart": {
+                    "text": "分割线",
+                    "desc": "面板中外观配置的区块显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       }
@@ -1734,6 +1814,22 @@
                 "desc": "文本配置区块的显示文本"
               }
             }
+          },
+          {
+            "title": "页脚分割线",
+            "iconClass": "Dividingline",
+            "data": [
+              {
+                "name": "页脚分割线",
+                "path": ["FooterLine"],
+                "description": {
+                  "appearancePart": {
+                    "text": "分割线",
+                    "desc": "面板中外观配置的区块显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       }
