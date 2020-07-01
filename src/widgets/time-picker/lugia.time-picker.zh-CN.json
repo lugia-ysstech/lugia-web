@@ -195,18 +195,6 @@
       "hover": [],
       "active": []
     },
-    "ExtraFooter": {
-      "name": "额外页脚",
-      "desc": "额外页脚配置",
-      "normal": [["color"], ["font"]]
-    },
-    "GroupDate": {
-      "name": "分类日期",
-      "desc": "分类日期配置/年/月/周",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]],
-      "active": [["color"], ["font"], ["background"], ["borderRadius"]]
-    },
     "TimePanelHead": {
       "name": "时间板头部",
       "desc": "时间板头部配置",
