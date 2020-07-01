@@ -367,6 +367,11 @@
         ["fontSize"]
       ],
       "hover": [["color"], ["font"], ["fontSize"], ["background"]]
+    },
+    "FooterLine": {
+      "name": "页脚分割线",
+      "desc": "页脚分割线配置",
+      "normal": [["background"]]
     }
   },
   "defaultTheme": {
