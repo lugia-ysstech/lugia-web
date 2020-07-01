@@ -94,7 +94,6 @@ const TabContent = CSSComponent({
   },
   css: css`
     overflow: hidden;
-    padding: 10px;
     width: 100%;
     height: 0;
     display: none;
