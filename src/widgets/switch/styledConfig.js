@@ -188,7 +188,6 @@ export function getThemeProps(props, value) {
     switchClosedTheme.themeConfig
   );
   const switchThemeProps = value ? openThemeProps : closedThemeProps;
-  console.log(openThemeProps);
   const switchButtonThemeProps = deepMerge(defaultChildrenThemeProps, childrenConfig);
   childrenThemeProps.themeConfig = switchButtonThemeProps;
   const { switchButtonPosition, textPosition, textBox } = getSwitchButtonPosition(
