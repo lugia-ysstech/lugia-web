@@ -425,14 +425,19 @@ export function getHeadArrowTheme(props) {
       },
     },
   };
+
+  function getMergeTheme(viewClass, theme, mergeDefaultTheme) {
+    return { [viewClass]: deepMerge(mergeDefaultTheme, { Icon: theme[viewClass] }) };
+  }
+
   return {
     single: {
       singleViewClass,
-      singleTheme: deepMerge({ [singleViewClass]: defaultTheme }, singleTheme),
+      singleTheme: getMergeTheme(singleViewClass, singleTheme, defaultTheme),
     },
     double: {
       doubleViewClass,
-      doubleTheme: deepMerge({ [doubleViewClass]: defaultTheme }, doubleTheme),
+      doubleTheme: getMergeTheme(doubleViewClass, doubleTheme, defaultTheme),
     },
   };
 }
