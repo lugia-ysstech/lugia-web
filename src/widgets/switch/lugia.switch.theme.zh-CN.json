@@ -14,6 +14,16 @@
         "iconClass": "SwitchOpen",
         "data": [
           {
+            "name": "整体样式",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
             "name": "组件打开",
             "path": ["Switch_SwitchOpen"],
             "description": {

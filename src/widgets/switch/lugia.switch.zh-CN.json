@@ -80,8 +80,6 @@
       "name": "组件打开",
       "desc": "开关组件打开的样式配置",
       "normal": [
-        ["width"],
-        ["height"],
         ["background"],
         ["fontSize"],
         ["borderRadius"],
@@ -98,8 +96,6 @@
       "name": "组件关闭",
       "desc": "开关组件打开的样式配置",
       "normal": [
-        ["width"],
-        ["height"],
         ["background"],
         ["fontSize"],
         ["borderRadius"],
@@ -140,22 +136,16 @@
       "normal": [
         ["width"],
         ["height"],
-        ["border"],
         ["margin"],
-        ["padding"],
-        ["background"],
-        ["opacity"]
+        ["padding"]
       ],
       "hover": [],
       "active": [],
       "disabled": [
         ["width"],
         ["height"],
-        ["border"],
         ["margin"],
-        ["padding"],
-        ["background"],
-        ["opacity"]
+        ["padding"]
       ]
     }
   }

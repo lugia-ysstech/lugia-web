@@ -87,10 +87,9 @@ export function getThemeProps(props, value) {
     circleSize: { width: circleWidth, height: circleHeight },
   } = getStyled(props);
   const { getPartOfThemeProps, loading, disabled } = props;
-  const switchOpenName = 'Switch_SwitchOpen';
-  const switchClosedName = 'Switch_SwitchClosed';
-  const open = getPartOfThemeProps(switchOpenName);
-  const closed = getPartOfThemeProps(switchClosedName);
+  const containerWidHig = getPartOfThemeProps('Container');
+  const switchOpenTheme = getPartOfThemeProps('Switch_SwitchOpen');
+  const switchClosedTheme = getPartOfThemeProps('Switch_SwitchClosed');
   const openColor = getBackground(props, true);
   const closedColor = getBackground(props, false);
   const disabledOpenColor = getDisableBackground(props, true);
@@ -98,13 +97,13 @@ export function getThemeProps(props, value) {
   const { getInternalThemeProps } = props;
   const nessecaryProps = (getInternalThemeProps && getInternalThemeProps()) || {};
   const {
-    themeConfig: { normal: { width: closedWidth, height: closedHeight } = {} } = {},
-  } = closed;
-  const { themeConfig: { normal: { width: openWidth, height: openHeight } = {} } = {} } = open;
+    themeConfig: { normal: { width: containerWidth, height: containerHeight } = {} } = {},
+  } = containerWidHig;
+
   const defaultOpenThemeProps = {
     normal: {
-      width: closedWidth || wrapWidth,
-      height: closedHeight || wrapHeight,
+      width: containerWidth || wrapWidth,
+      height: containerHeight || wrapHeight,
       border: getBorder({ color: '', style: '', width: 0 }),
       borderRadius: getBorderRadius(20),
       boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
@@ -126,8 +125,8 @@ export function getThemeProps(props, value) {
 
   const defaultClosedThemeProps = {
     normal: {
-      width: openWidth || wrapWidth,
-      height: openHeight || wrapHeight,
+      width: containerWidth || wrapWidth,
+      height: containerHeight || wrapHeight,
       border: getBorder({ color: '', style: '', width: 0 }),
       borderRadius: getBorderRadius(20),
       fontSize: 12,
@@ -182,10 +181,14 @@ export function getThemeProps(props, value) {
     ),
   };
 
-  const openThemeProps = deepMerge(defaultOpenThemeProps, open.themeConfig);
-  const closedThemeProps = deepMerge(openThemeProps, defaultClosedThemeProps, closed.themeConfig);
+  const openThemeProps = deepMerge(defaultOpenThemeProps, switchOpenTheme.themeConfig);
+  const closedThemeProps = deepMerge(
+    openThemeProps,
+    defaultClosedThemeProps,
+    switchClosedTheme.themeConfig
+  );
   const switchThemeProps = value ? openThemeProps : closedThemeProps;
-
+  console.log(openThemeProps);
   const switchButtonThemeProps = deepMerge(defaultChildrenThemeProps, childrenConfig);
   childrenThemeProps.themeConfig = switchButtonThemeProps;
   const { switchButtonPosition, textPosition, textBox } = getSwitchButtonPosition(
