@@ -12,12 +12,11 @@ export type EditTableProps = TableProps & {
   showAddCol?: boolean,
   showAddRow?: boolean,
   allowEditHead?: boolean,
-  onChange: Function,
-  onCell: Function,
-  onHeaderCell: Function,
-  customContainerElement: any,
-  customEditElement: any,
-  selectSuffixElement: any,
+  onChange?: Function,
+  onCell?: Function,
+  onHeaderCell?: Function,
+  customEditElement?: any,
+  selectSuffixElement?: any,
 };
 
 export type EditTableState = {};
