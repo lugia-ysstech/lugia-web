@@ -7,7 +7,7 @@ import { Container, LugiaTable, CustomBlock, Tr, Td, NoData, TBody, THead } from
 import Widget from '../consts';
 
 class Table extends React.Component<TableProps, TableState> {
-  defaultProps = {
+  static defaultProps = {
     tableSize: 'middle',
     tableStyle: 'linear',
   };

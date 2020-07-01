@@ -15,7 +15,6 @@ const defaultEditTheme = {
 };
 
 export default class TableCell extends React.Component<TableCellProps, TableCellState> {
-  defaultProps = {};
   currentCell: Object;
   setSelectListener: Object;
   clearSelectInfoListener: Object;
