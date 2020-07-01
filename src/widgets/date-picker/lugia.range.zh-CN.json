@@ -231,7 +231,7 @@
     "SelectToday": {
       "name": "当天日期",
       "desc": "当天日期配置",
-      "normal": [["border", "style", "color"], ["color"]]
+      "normal": [["border", "style", "color"], ["color"], ["background"], ["borderRadius"]]
     },
     "HeadSingleArrow": {
       "name": "头部单箭头",

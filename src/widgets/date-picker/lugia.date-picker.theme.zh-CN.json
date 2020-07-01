@@ -210,6 +210,10 @@
                 "name": "日期",
                 "path": ["InMonthDate"],
                 "description": {
+                  "appearancePart": {
+                    "text": "日期外框",
+                    "desc": "文本配置区块的显示文本"
+                  },
                   "textPart": {
                     "text": "本月日期",
                     "desc": "文本配置区块的显示文本"
@@ -600,6 +604,10 @@
                 "name": "日期",
                 "path": ["InMonthDate"],
                 "description": {
+                  "appearancePart": {
+                    "text": "日期外框",
+                    "desc": "文本配置区块的显示文本"
+                  },
                   "textPart": {
                     "text": "本月日期",
                     "desc": "文本配置区块的显示文本"
@@ -1368,6 +1376,10 @@
                 "name": "日期",
                 "path": ["InMonthDate"],
                 "description": {
+                  "appearancePart": {
+                    "text": "日期外框",
+                    "desc": "文本配置区块的显示文本"
+                  },
                   "textPart": {
                     "text": "本月日期",
                     "desc": "文本配置区块的显示文本"
