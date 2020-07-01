@@ -378,7 +378,7 @@
             "data": [
               {
                 "name": "单列",
-                "path": ["timePanelListTheme"],
+                "path": ["TimePanelList"],
                 "description": {
                   "appearancePart": {
                     "text": "分割线",
@@ -813,7 +813,7 @@
             "data": [
               {
                 "name": "单列",
-                "path": ["timePanelListTheme"],
+                "path": ["TimePanelList"],
                 "description": {
                   "appearancePart": {
                     "text": "分割线",
