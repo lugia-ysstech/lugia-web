@@ -56,10 +56,19 @@ const getDrawerWidth = (props: CSSProps) => {
     width: 0;
   `;
 };
+const getDrawerPosition = (props: CSSProps) => {
+  const { getContainer } = props;
+  if (getContainer === false) {
+    return '';
+  }
+  return `
+    position: fixed;
+    top: 0;  
+  `;
+};
 export const Drawer = styled.div`
   font-size: ${FontSize}rem;
-  position: ${props => (!props.getContainer ? 'absolute' : 'fixed')};
-  top: 0;
+  ${getDrawerPosition}
   ${getDrawerWidth};
   height: 100%;
   z-index: 1000;
@@ -77,8 +86,21 @@ const getMaskStyle = (props: CSSProps) => {
     opacity: 0;
   `;
 };
+const getDrawerMaskPosition = (props: CSSProps) => {
+  const { getContainer } = props;
+  if (getContainer === false) {
+    return `
+      position: absolute;
+      top: 0;
+      left: 0;
+    `;
+  }
+  return `
+    position: fixed;
+  `;
+};
 export const DrawerMask = styled.div`
-  position: ${props => (!props.getContainer ? 'absolute' : 'fixed')};
+  ${getDrawerMaskPosition}
   width: 100%;
   transition: opacity 0.3s linear;
   ${getMaskStyle};
@@ -183,9 +205,15 @@ const getTransform = (props: CSSProps) => {
   }
 };
 const getPositionCSS = (props: CSSProps): string => {
-  const { type } = props;
+  const { type, getContainer, placement } = props;
   if (type === 'Drawer') {
     return '';
+  }
+  if (getContainer === false) {
+    return css`
+      position: absolute;
+      ${placement === 'top' || placement === 'bottom' ? 'left:0;' : 'top:0;'}
+    `;
   }
   return css`
     position: fixed;
@@ -195,7 +223,7 @@ const iconAngleData = {
   visible: { top: -90, bottom: 90, right: 0, left: 180 },
   invisible: { top: 90, bottom: -90, right: 180, left: 0 },
 };
-export const getIconTransfrom = (visible, placement) => {
+export const getIconTransfrom = (visible, placement = 'right') => {
   if (visible) {
     return `transform: rotateZ(${iconAngleData.visible[placement]}deg)`;
   }
@@ -213,7 +241,6 @@ export const DrawerContentWrap = CSSComponent({
     ${getTransform};
     min-width: 256px;
     min-height: 100px;
-    border: 1px solid red;
   `,
   normal: {
     selectNames: [['width'], ['height']],

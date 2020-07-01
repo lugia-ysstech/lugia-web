@@ -17,6 +17,15 @@ const DemoBox = styled.div`
   padding: 20px;
   border-bottom: 1px solid #e8e8e8;
 `;
+const BoxWrap = styled.div`
+  border: 1px solid #ccc;
+  width: 600px;
+  height: 500px;
+  margin: 60px auto;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+`;
 
 export default class DrawerDemo extends React.Component<any, any> {
   constructor() {
@@ -31,6 +40,7 @@ export default class DrawerDemo extends React.Component<any, any> {
       visible7: false,
       visible8: false,
       visible9: false,
+      visible10: false,
       radioValue: 'right',
     };
   }
@@ -55,7 +65,16 @@ export default class DrawerDemo extends React.Component<any, any> {
     });
   };
   render() {
-    const { radioValue, visible1, visible2, visible3, visible4, visible5, visible6 } = this.state;
+    const {
+      radioValue,
+      visible1,
+      visible2,
+      visible3,
+      visible4,
+      visible5,
+      visible6,
+      visible10,
+    } = this.state;
     const view = {
       [Widget.Drawer]: {
         Container: {
@@ -189,6 +208,24 @@ export default class DrawerDemo extends React.Component<any, any> {
             confirm
           </Button>
         </DemoBox>
+        <BoxWrap>
+          <Button type="primary" onClick={this.openDrawer(10)}>
+            click me
+          </Button>
+          <Drawer
+            title="Basic Drawer"
+            onClose={this.onClick(10)}
+            visible={visible10}
+            getContainer={false}
+            placement={'right'}
+            sidebar={true}
+            onToggle={this.onSidebarClick(10)}
+          >
+            <p>Basic Drawer</p>
+            <p>Basic Drawer</p>
+            <p>Basic Drawer</p>
+          </Drawer>
+        </BoxWrap>
       </div>
     );
   }
