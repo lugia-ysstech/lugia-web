@@ -5,6 +5,7 @@
  * @flow
  */
 import React from 'react';
+import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
 import { WrapperDemo } from '../demo';
 import Popover from '../popover';
@@ -16,12 +17,6 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('popover Demo', () => {
-  it('Component JSON', () => {
-    global.svtest = true;
-    const render = renderer.create(<WrapperDemo />);
-    expect(render.toJSON()).toMatchSnapshot();
-    global.svtest = false;
-  });
   it('props: title', () => {
     const title = 'this is  title!';
     const component = mount(
@@ -188,5 +183,12 @@ describe('popover Demo', () => {
     input.simulate('click', {});
     input.simulate('click', {});
     expect(await onVisibleChangePromise).toEqual([true, false]);
+  });
+  it('Component JSON', () => {
+    global.svtest = true;
+    ReactDOM.createPortal = node => node;
+    const render = renderer.create(<WrapperDemo />);
+    expect(render.toJSON()).toMatchSnapshot();
+    global.svtest = false;
   });
 });
