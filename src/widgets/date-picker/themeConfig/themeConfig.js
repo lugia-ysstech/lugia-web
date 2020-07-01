@@ -487,7 +487,7 @@ export function getFooterButtonsTheme(props) {
   const themeProps = getPartOfThemeProps('FooterButtonOptions');
   const themePropsFooterToday = getPartOfThemeProps('FooterToday');
   const themePropsFooterTime = getPartOfThemeProps('FooterTimeButton');
-  const themePropsFooterOk = getPartOfThemeProps('FooterOkButton');
+  const themePropsFooterOk = JSON.parse(JSON.stringify(getPartOfThemeProps('FooterOkButton')));
   const {
     defaultColor,
     disableColor,
@@ -635,8 +635,17 @@ export function getTimeTheme(props) {
       background: { color: changeColor(normalColor, 0, 0, 10).rgba },
     },
   };
+  const timePanelContainerTheme = deepMerge({ themeConfig: defaultTimePanelTheme }, timePanelTheme);
+  const {
+    themeConfig: { normal: { color } = {}, hover: { color: hoverColor } = {} } = {},
+  } = timePanelContainerTheme;
+  const timePanelInnerTheme = {
+    normal: { color },
+    hover: { color: hoverColor },
+  };
   return {
-    timePanelTheme: deepMerge({ themeConfig: defaultTimePanelTheme }, timePanelTheme),
+    timePanelTheme: timePanelContainerTheme,
+    timePanelInnerTheme,
     timePanelListTheme: deepMerge({ themeConfig: defaultTimePanelListTheme }, timePanelListTheme),
     timePanelHeadTheme: deepMerge({ themeConfig: defaultTimePanelHeadTheme }, timePanelHeadTheme),
     selectTimeOptionTheme: deepMerge(
