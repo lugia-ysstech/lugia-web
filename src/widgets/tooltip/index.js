@@ -141,7 +141,7 @@ const Title: Object = CSSComponent({
   tag: 'div',
   className: 'TooltipTitle',
   normal: {
-    selectNames: [['color'], ['font'], ['fontSize'], ['padding']],
+    selectNames: [['color'], ['font'], ['fontSize'], ['margin']],
     defaultTheme: {
       color: defaultColor,
       fontSize: 12,
