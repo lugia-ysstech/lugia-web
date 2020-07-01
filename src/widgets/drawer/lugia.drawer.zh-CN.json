@@ -40,6 +40,10 @@
       "type": "boolean",
       "desc": "是否展示抽屉侧边抽拉按钮",
       "defaultValue": false
+    },
+    "getContainer": {
+      "type": "boolean | React.node | function",
+      "desc": "是否在指定容器内展示抽屉"
     }
   },
   "events": {
