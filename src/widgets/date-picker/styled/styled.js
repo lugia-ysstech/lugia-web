@@ -322,7 +322,7 @@ function getHoverStyle(props) {
       color,
       background: { color: bgColor } = {},
       borderRadius: { topLeft, topRight, bottomRight, bottomLeft },
-      boxShadow: { x, y, blur, spread, color: boxShadowColor, type } = {},
+      boxShadow = {},
       border,
     } = {},
   } = props;
@@ -334,10 +334,8 @@ function getHoverStyle(props) {
     color:${color};
     background:${bgColor};
     border-radius:${t} ${r} ${b} ${l};
-    box-shadow:${x}px ${y}px ${blur}px ${spread}px ${boxShadowColor} ${
-    type === 'inset' ? type : ''
-  };
-     ${getBorderStyle(border)};
+    ${getBoxShadow(boxShadow)};
+    ${getBorderStyle(border)};
   `;
 }
 function getNormalStyle(props) {
@@ -432,7 +430,6 @@ const getDateChildStyle = props => {
     noToday,
     selectToday,
     activeTheme = {},
-    hoverTheme = {},
     todayTheme = {},
   } = props;
   const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
@@ -445,26 +442,13 @@ const getDateChildStyle = props => {
       bottomRight: radiusB,
       bottomLeft: radiusL,
     },
-    boxShadow: { x, y, blur, spread, color: boxShadowColor, type } = {},
+    boxShadow = {},
     border,
   } = activeTheme;
-  const {
-    borderRadius: {
-      topLeft: hoverRadiusT,
-      topRight: hoverRadiusR,
-      bottomRight: hoverRadiusB,
-      bottomLeft: hoverRadiusL,
-    },
-  } = hoverTheme;
   const radiusTvalue = getRadiusValue(radiusT);
   const radiusRvalue = getRadiusValue(radiusR);
   const radiusBvalue = getRadiusValue(radiusB);
   const radiusLvalue = getRadiusValue(radiusL);
-
-  const radiusTvalueH = getRadiusValue(hoverRadiusT);
-  const radiusRvalueH = getRadiusValue(hoverRadiusR);
-  const radiusBvalueH = getRadiusValue(hoverRadiusB);
-  const radiusLvalueH = getRadiusValue(hoverRadiusL);
 
   const normalBorderRadius = `border-radius:${radiusTvalue} ${radiusRvalue} ${radiusBvalue} ${radiusLvalue};`;
 
@@ -475,9 +459,7 @@ const getDateChildStyle = props => {
       color:${color};
       ${normalBorderRadius};
       ${getBorderStyle(border)};
-      box-shadow:${x}px ${y}px ${blur}px ${spread}px ${boxShadowColor} ${
-      type === 'inset' ? type : ''
-    };
+      ${getBoxShadow(boxShadow)};
     }`;
   }, '');
   const todayInd = noToday ? '' : selectToday ? todayIndex : '';
@@ -549,15 +531,21 @@ function getRadiusValue(radiusValue: string | number) {
 }
 function getBorderStyle(border) {
   const {
-    top: { width: borderWidthT, color: botderColorT, style: borderSolidT },
-    right: { width: borderWidthR, color: botderColorR, style: borderSolidR },
-    bottom: { width: borderWidthB, color: botderColorB, style: borderSolidB },
-    left: { width: borderWidthL, color: botderColorL, style: borderSolidL },
+    top: { width: borderWidthT, color: botderColorT, style: borderSolidT } = {},
+    right: { width: borderWidthR, color: botderColorR, style: borderSolidR } = {},
+    bottom: { width: borderWidthB, color: botderColorB, style: borderSolidB } = {},
+    left: { width: borderWidthL, color: botderColorL, style: borderSolidL } = {},
   } = border;
   return `border-top:${em(borderWidthT)} ${botderColorT} ${borderSolidT};
       border-right:${em(borderWidthR)} ${botderColorR} ${borderSolidR};
       border-bottom:${em(borderWidthB)} ${botderColorB} ${borderSolidB};
       border-left:${em(borderWidthL)} ${botderColorL} ${borderSolidL};`;
+}
+function getBoxShadow(boxShadow) {
+  const { x = 0, y = 0, blur = 0, spread = 0, color: boxShadowColor, type } = boxShadow || {};
+  return `box-shadow:${x}px ${y}px ${blur}px ${spread}px ${boxShadowColor} ${
+    type === 'inset' ? type : ''
+  }`;
 }
 function getOtherChildTextStyle(props) {
   const { themeProps, isChose } = props;
@@ -573,6 +561,8 @@ function getOtherChildTextStyle(props) {
     background: { color: bgC },
     fontSize,
     font: { size } = {},
+    border = {},
+    boxShadow = {},
   } = active;
   if (!isChose) {
     return `
@@ -585,6 +575,8 @@ function getOtherChildTextStyle(props) {
     color:${color};
     background:${bgC};
     border-radius:${em(topLeft)} ${em(topRight)} ${em(bottomLeft)} ${em(bottomRight)};
-    font-size:${em(fontSize || size)}
+    font-size:${em(fontSize || size)};
+    border:${getBorderStyle(border)};
+    ${getBoxShadow(boxShadow)};
   `;
 }

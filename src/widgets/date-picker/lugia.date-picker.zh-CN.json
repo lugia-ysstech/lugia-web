@@ -274,7 +274,7 @@
       "desc": "年/月/周面板内容文字的配置",
       "normal": [["color"], ["font"]],
       "hover": [["color"], ["font"]],
-      "active": [["color"], ["font"], ["background"], ["borderRadius"]]
+      "active": [["color"], ["font"], ["background"], ["borderRadius"], ["border"], ["boxShadow"]]
     },
 
     "TimePanelHead": {
