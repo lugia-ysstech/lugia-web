@@ -481,20 +481,14 @@ const getDateChildStyle = props => {
     }`;
   }, '');
   const todayInd = noToday ? '' : selectToday ? todayIndex : '';
-  const { border: todayBorder, color: todayColor } = todayTheme;
-  let todayStyle = `
+  const { border: todayBorder, color: todayColor, borderRadius, background } = todayTheme;
+  const todayStyle = `
       &:nth-child(${todayInd})>i{
        ${todayBorder};
         color:${todayColor};
-        background:${getThemeUpdate().defaultColor};
-        ${normalBorderRadius};
-        &:hover {
-          background: ${getThemeUpdate().hoverColor};
-          color:#fff;
-          border-radius:${radiusTvalueH} ${radiusRvalueH} ${radiusBvalueH} ${radiusLvalueH};
-        }
+        ${background};
+        ${borderRadius};
       }
-
   `;
   let chooseWeeks;
   if (isChooseWeek || isHoverWeek) {
@@ -503,15 +497,6 @@ const getDateChildStyle = props => {
       : `${getThemeUpdate().hoverColor}`;
     const start = isChooseWeek ? startInWeeks : weekHoverStart;
     const end = isChooseWeek ? endInWeeks : weekHoverEnd;
-    const todayIn = valueInRange(todayIndex, [start, end]);
-    if (todayIn) {
-      todayStyle = `
-      &:nth-child(${todayInd})>i{
-        border:1px solid transparent;
-        border-radius:50%;
-      }
-  `;
-    }
     chooseWeeks = `
     background:${backG};
 

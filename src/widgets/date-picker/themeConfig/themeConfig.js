@@ -222,9 +222,17 @@ export function getTodayTheme(props, dateNormalTheme) {
   const {
     themeConfig: { normal },
   } = themeProps;
+  const { color } = dateNormalTheme || {};
   const defaultNormal = {
     border: getBorder({ width: 1, color: normalColor, style: 'solid' }),
     background: { color: 'transparent' },
+    color,
+    borderRadius: {
+      topLeft: 13,
+      topRight: 13,
+      bottomRight: 13,
+      bottomLeft: 13,
+    },
   };
   const normalTheme = deepMerge(defaultNormal, { ...normal });
 
@@ -235,6 +243,9 @@ export function getTodayTheme(props, dateNormalTheme) {
       bottom: { style: todayBorderBS, color: todayBorderBC } = {},
       left: { style: todayBorderLS, color: todayBorderLC } = {},
     } = {},
+    borderRadius: { topLeft, topRight, bottomRight, bottomLeft } = {},
+    background: { color: bgColor } = {},
+    color: todayColor,
   } = normalTheme;
   const border = `
       border-top:1px ${todayBorderTS} ${todayBorderTC};
@@ -242,8 +253,12 @@ export function getTodayTheme(props, dateNormalTheme) {
       border-bottom:1px ${todayBorderBS} ${todayBorderBC};
       border-left:1px ${todayBorderLS} ${todayBorderLC};
     `;
-  const { color } = dateNormalTheme || {};
-  return { border, color };
+  const borderRadius = `
+    border-radius:${topLeft || 0}px ${topRight || 0}px ${bottomRight || 0}px ${bottomLeft || 0}px;
+  `;
+  const background = `background:${bgColor};`;
+
+  return { border, color: todayColor, borderRadius, background };
 }
 export function getSecondWeekDateTheme(props) {
   const { getPartOfThemeProps } = props;
