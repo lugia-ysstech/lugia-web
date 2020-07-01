@@ -119,7 +119,7 @@ export const FooterBtnTime = CSSComponent({
     cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
     display: inline-block;
   `,
-  option: { hover: true },
+  option: { hover: true, disabled: true },
 });
 export const FooterBtnOk = CSSComponent({
   tag: 'span',
@@ -133,8 +133,10 @@ export const FooterBtnOk = CSSComponent({
       ['color'],
       ['font'],
       ['fontSize'],
+      ['border'],
+      ['boxShadow'],
     ],
-    getCSS(themeMeta) {
+    getCSS(themeMeta, a) {
       const { height } = themeMeta;
       return `line-height:${em(height)};`;
     },
@@ -146,7 +148,7 @@ export const FooterBtnOk = CSSComponent({
     selectNames: [],
   },
   disabled: {
-    selectNames: [['color'], ['background']],
+    selectNames: [['color'], ['background'], ['border'], ['boxShadow']],
   },
   focus: {
     selectNames: [],
@@ -155,7 +157,7 @@ export const FooterBtnOk = CSSComponent({
     cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
     display: inline-block;
   `,
-  option: { hover: true },
+  option: { hover: true, disabled: true },
 });
 export const ExtraFooter = CSSComponent({
   tag: 'div',
