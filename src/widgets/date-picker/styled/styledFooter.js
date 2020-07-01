@@ -19,9 +19,9 @@ export const FooterWrap = StaticComponent({
   `,
 });
 function getBorder(props) {
-  const { showFooter } = props;
+  const { showFooter, footerWrapBorder } = props;
   if (showFooter) {
-    return `border-top: 1px solid ${getThemeUpdate().borderColor} ;`;
+    return footerWrapBorder;
   }
   return '';
 }

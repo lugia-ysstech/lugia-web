@@ -645,3 +645,12 @@ export function getTimeTheme(props) {
     ),
   };
 }
+export function getPageFooterLineTheme(props) {
+  const { getPartOfThemeProps } = props;
+  const timePanelTheme = getPartOfThemeProps('FooterLine');
+  const { borderColor } = getThemeUpdate();
+  const {
+    themeConfig: { normal: { background: { color = borderColor } = {} } = {} } = {},
+  } = timePanelTheme;
+  return `border-top: 1px solid ${color} ;`;
+}
