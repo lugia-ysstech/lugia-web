@@ -28,6 +28,9 @@
               "appearancePart": {
                 "text": "背景框",
                 "desc": "背景框"
+              },
+              "textPart": {
+                "hidden": true
               }
             }
           },
@@ -68,6 +71,59 @@
                 "typeInTheme": "text"
               }
             ]
+          },
+          {
+            "name": "关闭图标",
+            "path": ["PopoverClearIcon"],
+            "description": {
+              "textPart": {
+                "text": "关闭图标",
+                "desc": "关闭图标"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Popover",
+    "aliasName": "CustomPopover",
+    "title": "自定义气泡卡片",
+    "treeNodeHidden": true,
+    "viewProps": [
+      {
+        "name": "showClearButton",
+        "text": "是否显示关闭按钮"
+      },
+      {
+        "name": "placement",
+        "text": "显示位置"
+      },
+      {
+        "name": "popArrowType",
+        "text": "箭头风格"
+      }
+    ],
+    "data": [
+      {
+        "title": "背景框",
+        "data": [
+          {
+            "name": "背景框",
+            "path": ["PopoverContent", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景框",
+                "desc": "背景框"
+              },
+              "textPart": {
+                "hidden": true
+              }
+            }
           },
           {
             "name": "关闭图标",

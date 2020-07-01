@@ -27,9 +27,9 @@
       "type": "React.Node",
       "desc": "整个卡片显示内容"
     },
-    "clear": {
-      "type": "React.Node",
-      "desc": "关闭卡片的操作内容"
+    "clearIcon": {
+      "type": "icon",
+      "desc": "关闭气泡卡片的图标"
     },
     "showClearButton": {
       "type": "boolean",
@@ -83,7 +83,7 @@
     }
   },
   "type": {
-    "ActionType": ["click","hover","focus" ],
+    "ActionType": ["click", "hover", "focus"],
     "DirectionType": [
       "left",
       "leftTop",
@@ -102,6 +102,56 @@
     ]
   },
   "category": ["数据展示"],
+  "designInfo": {
+    "CustomPopover": {
+      "sequence": 1,
+      "title": "自定义气泡卡片",
+      "desc": "自定义气泡卡片",
+      "props": {
+        "title": "",
+        "description": ""
+      },
+      "defaultTheme": {
+        "PopoverContent": {
+          "Container": {
+            "normal": {
+              "width": 250,
+              "height": 120
+            }
+          }
+        }
+      },
+      "theme": {
+        "PopoverContent": {
+          "name": "气泡卡片框容器",
+          "theme": {
+            "Container": {
+              "name": "气泡卡片框内容部分",
+              "desc": "气泡卡片框内容部分",
+              "normal": [
+                ["background"],
+                ["color"],
+                ["padding"],
+                ["font"],
+                ["fontSize"],
+                ["width"],
+                ["height"],
+                ["boxShadow"],
+                ["borderRadius"],
+                ["border"]
+              ]
+            }
+          }
+        },
+        "PopoverClearIcon": {
+          "name": "气泡卡片操作部分",
+          "desc": "气泡卡片操作部分",
+          "normal": [["color"], ["font"], ["fontSize"]],
+          "hover": [["color"]]
+        }
+      }
+    }
+  },
   "theme": {
     "PopoverContent": {
       "name": "气泡卡片框容器",
@@ -125,28 +175,12 @@
         "TooltipTitle": {
           "name": "气泡卡片标题部分",
           "desc": "气泡卡片标题部分",
-          "normal": [
-            ["opacity"],
-            ["background"],
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["fontSize"]
-          ]
+          "normal": [["color"], ["font"], ["fontSize"], ["margin", "bottom"]]
         },
         "TooltipDescription": {
           "name": "气泡卡片描述部分",
           "desc": "气泡卡片描述部分",
-          "normal": [
-            ["opacity"],
-            ["background"],
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["fontSize"]
-          ]
+          "normal": [["color"], ["font"], ["fontSize"]]
         }
       }
     },
