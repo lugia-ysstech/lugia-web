@@ -204,6 +204,7 @@ class Dates extends Component<TypeProps, any> {
             outMonthNormalTheme={outMonthNormalTheme}
             todayTheme={todayTheme}
             rangeWeekDate={rangeWeekDate}
+            noSingleHoverState={isWeeks || rangeChose}
             mode={mode}
             key={index}
             isToday={showToday && todayIndex === index + 1 ? true : false}

@@ -325,7 +325,12 @@ function getHoverStyle(props) {
       boxShadow = {},
       border,
     } = {},
+    noSingleHoverState,
   } = props;
+  console.log(noSingleHoverState);
+  if (noSingleHoverState) {
+    return '';
+  }
   const t = getRadiusValue(topLeft);
   const r = getRadiusValue(topRight);
   const b = getRadiusValue(bottomRight);
