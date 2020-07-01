@@ -137,10 +137,10 @@ export default ThemeProvider(
           </CloseText>
         </DrawerClose>
       ) : null;
-      const hasContainer =
-        getContainer === false ||
-        (typeof getContainer === 'function' && typeof getContainer() === 'object') ||
-        typeof getContainer === 'object';
+      const isBoolean = getContainer === false;
+      const isFunction = typeof getContainer === 'function' && typeof getContainer() === 'object';
+      const isObject = typeof getContainer === 'object';
+      const hasContainer = isBoolean || isFunction || isObject;
       const drawerContent = (
         <DrawerContentWrap
           type={type}
@@ -223,13 +223,13 @@ export default ThemeProvider(
         </DrawerContext.Consumer>
       );
       if (hasContainer) {
-        if (getContainer === false) {
+        if (isBoolean) {
           return <React.Fragment>{darwerDemo}</React.Fragment>;
         }
-        if (typeof getContainer === 'function' && typeof getContainer() === 'object') {
+        if (isFunction) {
           return createPortal(darwerDemo, getContainer());
         }
-        if (typeof getContainer === 'object') {
+        if (isObject) {
           return createPortal(darwerDemo, getContainer);
         }
       }
