@@ -4,6 +4,7 @@
     "title": "对话框",
     "viewProps": [
       { "name": "mask", "text": "显示遮罩" },
+      { "name": "showIcon", "text": "显示图标" },
       { "name": "footer", "text": "按钮关闭" },
       { "name": "maskClosable", "text": "点击遮罩关闭" }
     ],
