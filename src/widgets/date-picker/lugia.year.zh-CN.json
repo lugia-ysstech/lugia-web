@@ -239,6 +239,11 @@
       "name": "额外页脚",
       "desc": "额外页脚配置",
       "normal": [["color"], ["font"]]
+    },
+    "FooterLine": {
+      "name": "页脚分割线",
+      "desc": "页脚分割线配置",
+      "normal": [["background"]]
     }
   },
   "defaultTheme": {
