@@ -121,7 +121,7 @@ export default ThemeProvider(
         injectLugiad: { type } = {},
         __lugiad__header__absolute__,
         sidebar = false,
-        getContainer = true,
+        getContainer,
       } = this.props;
       const drawerWrapTheme = getPartOfThemeProps('Container');
       const handleWrapTheme = getPartOfThemeProps('handleWrap');
@@ -137,6 +137,10 @@ export default ThemeProvider(
           </CloseText>
         </DrawerClose>
       ) : null;
+      const hasContainer =
+        getContainer === false ||
+        (typeof getContainer === 'function' && typeof getContainer() === 'object') ||
+        typeof getContainer === 'object';
       const drawerContent = (
         <DrawerContentWrap
           type={type}
@@ -146,7 +150,7 @@ export default ThemeProvider(
           opening={opening}
           closing={closing}
           transform={transform}
-          getContainer={getContainer}
+          hasContainer={hasContainer}
         >
           {sidebar ? (
             <HandleWrap
@@ -178,11 +182,11 @@ export default ThemeProvider(
         return drawerContent;
       }
       const maskElement = mask ? (
-        <DrawerMask onClick={this.handleMaskClick} visible={visible} getContainer={getContainer} />
+        <DrawerMask onClick={this.handleMaskClick} visible={visible} hasContainer={hasContainer} />
       ) : null;
 
       const drawer = (
-        <Drawer visible={visible} getContainer={getContainer}>
+        <Drawer visible={visible} hasContainer={hasContainer}>
           {maskElement}
           {drawerContent}
         </Drawer>
@@ -218,8 +222,16 @@ export default ThemeProvider(
           }}
         </DrawerContext.Consumer>
       );
-      if (!getContainer) {
-        return <React.Fragment>{darwerDemo}</React.Fragment>;
+      if (hasContainer) {
+        if (getContainer === false) {
+          return <React.Fragment>{darwerDemo}</React.Fragment>;
+        }
+        if (typeof getContainer === 'function' && typeof getContainer() === 'object') {
+          return createPortal(darwerDemo, getContainer());
+        }
+        if (typeof getContainer === 'object') {
+          return createPortal(darwerDemo, getContainer);
+        }
       }
       return createPortal(darwerDemo, this.node);
     }

@@ -20,6 +20,7 @@ export type DrawerProps = {
   onClose?: Function,
   children: any,
   getTheme: Function,
+  getContainer?: boolean | Function | React.ReactNode,
 };
 export type DrawerState = {
   open: boolean,
@@ -57,8 +58,8 @@ const getDrawerWidth = (props: CSSProps) => {
   `;
 };
 const getDrawerPosition = (props: CSSProps) => {
-  const { getContainer } = props;
-  if (getContainer === false) {
+  const { hasContainer } = props;
+  if (hasContainer) {
     return '';
   }
   return `
@@ -87,8 +88,8 @@ const getMaskStyle = (props: CSSProps) => {
   `;
 };
 const getDrawerMaskPosition = (props: CSSProps) => {
-  const { getContainer } = props;
-  if (getContainer === false) {
+  const { hasContainer } = props;
+  if (hasContainer) {
     return `
       position: absolute;
       top: 0;
@@ -205,11 +206,11 @@ const getTransform = (props: CSSProps) => {
   }
 };
 const getPositionCSS = (props: CSSProps): string => {
-  const { type, getContainer, placement } = props;
+  const { type, hasContainer, placement } = props;
   if (type === 'Drawer') {
     return '';
   }
-  if (getContainer === false) {
+  if (hasContainer) {
     return css`
       position: absolute;
       ${placement === 'top' || placement === 'bottom' ? 'left:0;' : 'top:0;'}
