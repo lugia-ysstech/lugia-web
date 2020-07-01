@@ -431,25 +431,22 @@ const getDateChildStyle = props => {
     selectToday,
     activeTheme = {},
     todayTheme = {},
+    rangeWeekDate = {},
   } = props;
   const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
   const {
     background: { color: bgColor },
     color,
-    borderRadius: {
-      topLeft: radiusT,
-      topRight: radiusR,
-      bottomRight: radiusB,
-      bottomLeft: radiusL,
-    },
+    borderRadius: activeBorderRadius,
     boxShadow = {},
     border,
   } = activeTheme;
-  const radiusTvalue = getRadiusValue(radiusT);
-  const radiusRvalue = getRadiusValue(radiusR);
-  const radiusBvalue = getRadiusValue(radiusB);
-  const radiusLvalue = getRadiusValue(radiusL);
-
+  const {
+    top: radiusTvalue,
+    right: radiusRvalue,
+    bottom: radiusBvalue,
+    left: radiusLvalue,
+  } = getBorderRadius(activeBorderRadius);
   const normalBorderRadius = `border-radius:${radiusTvalue} ${radiusRvalue} ${radiusBvalue} ${radiusLvalue};`;
 
   const chooseStyle = arrChoseDayIndex.reduce((p, n) => {
@@ -474,27 +471,36 @@ const getDateChildStyle = props => {
   `;
   let chooseWeeks;
   if (isChooseWeek || isHoverWeek) {
-    const backG = isChooseWeek
-      ? `${getThemeUpdate().normalColor}`
-      : `${getThemeUpdate().hoverColor}`;
+    const {
+      normal: {
+        background: { color: normalBgColor },
+        color: normalWeekColor,
+        borderRadius: rangeWeekBorderRadius = {},
+      } = {},
+      hover: { background: { color: hoverBgColor }, color: hoverWeekColor } = {},
+    } = rangeWeekDate;
+    const backG = isChooseWeek ? `${normalBgColor}` : `${hoverBgColor}`;
+    const textColor = isChooseWeek ? `${normalWeekColor}` : `${hoverWeekColor}`;
     const start = isChooseWeek ? startInWeeks : weekHoverStart;
     const end = isChooseWeek ? endInWeeks : weekHoverEnd;
+    const { top: t, right: r, bottom: b, left: l } = getBorderRadius(rangeWeekBorderRadius);
     chooseWeeks = `
     background:${backG};
 
       &>i{
-        color:#fff;
+        color:${textColor};
         border-radius:50%;
+
       }
 
       &:nth-child(${start}){
-        border-top-left-radius:20px;
-        border-bottom-left-radius:20px;
+        border-top-left-radius:${t};
+        border-bottom-left-radius:${b};
       }
 
       &:nth-child(${end}){
-        border-top-right-radius:20px;
-        border-bottom-right-radius:20px;
+        border-top-right-radius:${r};
+        border-bottom-right-radius:${l};
       }
     `;
   }
@@ -525,6 +531,15 @@ function rangeBorderDireStyle(index, dire, rangeNormalTheme) {
     border-top-${dire}-radius:${topRadiusValue};
     border-bottom-${dire}-radius:${botRadiusValue};
   }`;
+}
+function getBorderRadius(borderRadius) {
+  const { topLeft, topRight, bottomRight, bottomLeft } = borderRadius || {};
+  return {
+    top: getRadiusValue(topLeft || 0),
+    right: getRadiusValue(topRight || 0),
+    bottom: getRadiusValue(bottomRight || 0),
+    left: getRadiusValue(bottomLeft || 0),
+  };
 }
 function getRadiusValue(radiusValue: string | number) {
   return typeof radiusValue === 'number' ? em(radiusValue) : radiusValue;
