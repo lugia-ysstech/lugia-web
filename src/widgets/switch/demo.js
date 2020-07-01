@@ -45,8 +45,6 @@ export default class Sw extends Component<any, TypeState> {
               [Widgets.Switch]: {
                 Switch_SwitchOpen: {
                   normal: {
-                    width: 150,
-                    height: 40,
                     fontSize: 20,
                     color: '#fff',
                     background: {
@@ -62,8 +60,6 @@ export default class Sw extends Component<any, TypeState> {
                 },
                 Switch_SwitchClosed: {
                   normal: {
-                    width: 150,
-                    height: 40,
                     fontSize: 20,
                     color: '#000',
                     background: {
@@ -102,8 +98,8 @@ export default class Sw extends Component<any, TypeState> {
                 },
                 Container: {
                   normal: {
-                    width: 200,
-                    height: 60,
+                    width: 150,
+                    height: 40,
                     margin: {
                       top: 10,
                       right: 10,
@@ -116,8 +112,6 @@ export default class Sw extends Component<any, TypeState> {
                       bottom: 10,
                       left: 10,
                     },
-                    border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
-                    //opacity: 0.5,
                   },
                 },
               },
