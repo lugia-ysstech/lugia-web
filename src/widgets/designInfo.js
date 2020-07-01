@@ -4929,6 +4929,7 @@ export default [
           ],
           hover: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
           active: [],
+          focus: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
           disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
         },
         Placeholder: {
@@ -5206,6 +5207,7 @@ export default [
           ],
           hover: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
           active: [],
+          focus: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
           disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
         },
         Placeholder: {
@@ -5381,6 +5383,7 @@ export default [
           ],
           hover: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
           active: [],
+          focus: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
           disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
         },
         Placeholder: {
@@ -5576,6 +5579,7 @@ export default [
           ],
           hover: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
           active: [],
+          focus: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
           disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
         },
         Placeholder: {
@@ -5855,6 +5859,7 @@ export default [
           ],
           hover: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
           active: [],
+          focus: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
           disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
         },
         Placeholder: {
@@ -6077,6 +6082,7 @@ export default [
           ],
           hover: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
           active: [],
+          focus: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
           disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
         },
         Placeholder: {
@@ -20444,6 +20450,7 @@ export default [
           ],
           hover: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
           active: [],
+          focus: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
           disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
         },
         Placeholder: {
@@ -20475,14 +20482,7 @@ export default [
         FacePanelContain: {
           name: '日期面板',
           desc: '日期面板配置',
-          normal: [
-            ['width'],
-            ['height'],
-            ['background'],
-            ['border'],
-            ['boxShadow'],
-            ['borderRadius'],
-          ],
+          normal: [['width'], ['height'], ['border'], ['boxShadow'], ['borderRadius']],
         },
         ValidateErrorInput: {
           name: '校验失败的输入框',
@@ -24647,7 +24647,7 @@ export default [
           propsDefaultValue: 'default',
         },
         defaultTips: {
-          type: 'TipsType',
+          type: 'Object',
           desc: '默认的上传提示语',
           meta: [
             { key: 'uploadText', title: '上传按钮文字', type: 'string' },
@@ -24694,16 +24694,6 @@ export default [
         UploadSize: ['small', 'default', 'large'],
         UploadType: ['default', 'both', 'button', 'picture', 'area', 'custom'],
         FileType: ['done', 'fail'],
-        TipsType: {
-          uploadText: { type: 'string', desc: '上传按钮文字', defaultValue: '上传' },
-          uploadTips: {
-            type: 'string',
-            desc: '上传区域提示文字',
-            defaultValue: '请将文件拖到此处',
-          },
-          failTips: { type: 'string', desc: '上传失败提示', defaultValue: '文件上传失败请重试' },
-          loadingTips: { type: 'string', desc: '文件上传加载提示', defaultValue: '文件上传中...' },
-        },
       },
       category: ['数据录入'],
       designInfo: {
@@ -24870,7 +24860,7 @@ export default [
                 Container: {
                   name: '按钮整体样式',
                   desc: '按钮部分的样式配置',
-                  normal: [['width'], ['height'], ['fontSize'], ['background']],
+                  normal: [['width'], ['fontSize'], ['background']],
                   disabled: [['background']],
                 },
                 ButtonText: {
@@ -25005,7 +24995,7 @@ export default [
           propsDefaultValue: 'default',
         },
         defaultTips: {
-          type: 'TipsType',
+          type: 'Object',
           desc: '默认的上传提示语',
           meta: [
             { key: 'uploadText', title: '上传按钮文字', type: 'string' },
@@ -25052,16 +25042,6 @@ export default [
         UploadSize: ['small', 'default', 'large'],
         UploadType: ['default', 'both', 'button', 'picture', 'area', 'custom'],
         FileType: ['done', 'fail'],
-        TipsType: {
-          uploadText: { type: 'string', desc: '上传按钮文字', defaultValue: '上传' },
-          uploadTips: {
-            type: 'string',
-            desc: '上传区域提示文字',
-            defaultValue: '请将文件拖到此处',
-          },
-          failTips: { type: 'string', desc: '上传失败提示', defaultValue: '文件上传失败请重试' },
-          loadingTips: { type: 'string', desc: '文件上传加载提示', defaultValue: '文件上传中...' },
-        },
       },
       category: ['数据录入'],
       theme: {
@@ -25151,7 +25131,7 @@ export default [
           propsDefaultValue: 'default',
         },
         defaultTips: {
-          type: 'TipsType',
+          type: 'Object',
           desc: '默认的上传提示语',
           meta: [
             { key: 'uploadText', title: '上传按钮文字', type: 'string' },
@@ -25198,16 +25178,6 @@ export default [
         UploadSize: ['small', 'default', 'large'],
         UploadType: ['default', 'both', 'button', 'picture', 'area', 'custom'],
         FileType: ['done', 'fail'],
-        TipsType: {
-          uploadText: { type: 'string', desc: '上传按钮文字', defaultValue: '上传' },
-          uploadTips: {
-            type: 'string',
-            desc: '上传区域提示文字',
-            defaultValue: '请将文件拖到此处',
-          },
-          failTips: { type: 'string', desc: '上传失败提示', defaultValue: '文件上传失败请重试' },
-          loadingTips: { type: 'string', desc: '文件上传加载提示', defaultValue: '文件上传中...' },
-        },
       },
       category: ['数据录入'],
       theme: {
@@ -25293,7 +25263,7 @@ export default [
           propsDefaultValue: 'default',
         },
         defaultTips: {
-          type: 'TipsType',
+          type: 'Object',
           desc: '默认的上传提示语',
           meta: [
             { key: 'uploadText', title: '上传按钮文字', type: 'string' },
@@ -25340,16 +25310,6 @@ export default [
         UploadSize: ['small', 'default', 'large'],
         UploadType: ['default', 'both', 'button', 'picture', 'area', 'custom'],
         FileType: ['done', 'fail'],
-        TipsType: {
-          uploadText: { type: 'string', desc: '上传按钮文字', defaultValue: '上传' },
-          uploadTips: {
-            type: 'string',
-            desc: '上传区域提示文字',
-            defaultValue: '请将文件拖到此处',
-          },
-          failTips: { type: 'string', desc: '上传失败提示', defaultValue: '文件上传失败请重试' },
-          loadingTips: { type: 'string', desc: '文件上传加载提示', defaultValue: '文件上传中...' },
-        },
       },
       category: ['数据录入'],
       theme: {
@@ -25434,7 +25394,7 @@ export default [
           propsDefaultValue: 'default',
         },
         defaultTips: {
-          type: 'TipsType',
+          type: 'Object',
           desc: '默认的上传提示语',
           meta: [
             { key: 'uploadText', title: '上传按钮文字', type: 'string' },
@@ -25481,16 +25441,6 @@ export default [
         UploadSize: ['small', 'default', 'large'],
         UploadType: ['default', 'both', 'button', 'picture', 'area', 'custom'],
         FileType: ['done', 'fail'],
-        TipsType: {
-          uploadText: { type: 'string', desc: '上传按钮文字', defaultValue: '上传' },
-          uploadTips: {
-            type: 'string',
-            desc: '上传区域提示文字',
-            defaultValue: '请将文件拖到此处',
-          },
-          failTips: { type: 'string', desc: '上传失败提示', defaultValue: '文件上传失败请重试' },
-          loadingTips: { type: 'string', desc: '文件上传加载提示', defaultValue: '文件上传中...' },
-        },
       },
       category: ['数据录入'],
       theme: {
@@ -25500,7 +25450,7 @@ export default [
             Container: {
               name: '按钮整体样式',
               desc: '按钮部分的样式配置',
-              normal: [['width'], ['height'], ['fontSize'], ['background']],
+              normal: [['width'], ['fontSize'], ['background']],
               disabled: [['background']],
             },
             ButtonText: {
