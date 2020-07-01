@@ -1517,6 +1517,20 @@
                     "desc": "文本配置区块的显示文本"
                   }
                 }
+              },
+              {
+                "name": "范围日期",
+                "path": ["RangeDate"],
+                "description": {
+                  "appearancePart": {
+                    "text": "选中范围整体",
+                    "desc": "面板中外观配置的区块显示文本"
+                  },
+                  "textPart": {
+                    "text": "选中范围内文字",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
               }
             ]
           },

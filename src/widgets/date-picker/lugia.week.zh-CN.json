@@ -270,7 +270,12 @@
       "hover": [["color"], ["font"]],
       "active": [["color"], ["font"], ["background"], ["borderRadius"], ["border"], ["boxShadow"]]
     },
-
+    "RangeDate": {
+      "name": "范围日期",
+      "desc": "选中范围日期的配置",
+      "normal": [["color"], ["background"], ["borderRadius"]],
+      "hover": [["color"], ["background"]]
+    },
     "TimePanelHead": {
       "name": "时间板头部",
       "desc": "时间板头部配置",

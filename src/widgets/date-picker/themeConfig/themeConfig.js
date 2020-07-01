@@ -167,7 +167,9 @@ export function getDateTheme(props) {
   const outMonthDateThemeProps = getPartOfThemeProps('OutMonthDate');
   const rangeDateDateThemeProps = getPartOfThemeProps('RangeDate');
 
-  const { themeConfig: { normal: rangeNormal = {} } = {} } = rangeDateDateThemeProps;
+  const {
+    themeConfig: { normal: rangeNormal = {}, hover: rangeHover = {} } = {},
+  } = rangeDateDateThemeProps;
 
   const { themeConfig: { normal: outNormal = {} } = {} } = outMonthDateThemeProps;
   const { lightGreyColor, blackColor, normalColor, hoverColor, defaultColor } = getThemeUpdate();
@@ -203,13 +205,23 @@ export function getDateTheme(props) {
     borderRadius:
       !hover.borderRadius && !active.borderRadius ? getBorderRadius(20) : activeTheme.borderRadius,
   };
+  const defaultRangeWeekDateHover = {
+    background: { color: hoverColor },
+    color: '#fff',
+  };
   const rangeNormalTheme = deepMerge(defaultRangeNormal, rangeNormal);
+  const rangeWeekHoverTheme = deepMerge(defaultRangeWeekDateHover, rangeHover);
+  const rangeWeekDate = {
+    normal: rangeNormalTheme,
+    hover: rangeWeekHoverTheme,
+  };
   return {
     hoverTheme,
     normalTheme,
     activeTheme,
     outMonthNormalTheme,
     rangeNormalTheme,
+    rangeWeekDate,
     todayTheme: getTodayTheme(props, normal),
     dateTheme: themeProps,
   };
