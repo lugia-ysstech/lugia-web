@@ -281,7 +281,7 @@
       "desc": "时间内容配置",
       "normal": [["color"], ["background"]]
     },
-    "timePanelListTheme": {
+    "TimePanelList": {
       "name": "单列",
       "desc": "单列时间配置",
       "normal": [["border", "right"]]
