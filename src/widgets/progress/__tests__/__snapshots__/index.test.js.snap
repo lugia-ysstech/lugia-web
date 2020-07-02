@@ -3,6 +3,7 @@
 exports[`Progress css 1`] = `
 .c3 {
   width: calc(100% - 2.8rem);
+  margin-right: 0.8rem;
   display: inline-block;
   border-radius: 5rem;
   vertical-align: middle;
@@ -248,7 +249,6 @@ exports[`Progress css 1`] = `
   white-space: nowrap;
   word-break: normal;
   vertical-align: middle;
-  margin-left: 0.8rem;
   color: #9EA4AE;
   font-size: 1.4rem;
 }
