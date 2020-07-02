@@ -91,10 +91,15 @@ const activeAnimate = keyframes`
   }
 `;
 
+const getProgressCSS = (value: number): string => `
+  width: calc(100% - ${px2remcss(value + 20)}); 
+  margin-right:${px2remcss(value)}
+`;
+
 const getProgtrssWidth = (props: CSSProps) => {
   const { showInfo, showType } = props;
   if (showInfo && showType === 'default') {
-    return `width: calc(100% - ${px2remcss(get('marginToSameElement') + 20)});`;
+    return ` ${getProgressCSS(get('marginToSameElement'))} `;
   }
 
   return 'width: 100%;';
@@ -110,9 +115,15 @@ export const ProgressLine = CSSComponent({
     vertical-align: middle;
   `,
   normal: {
-    selectNames: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
+    selectNames: [['background'], ['borderRadius'], ['border'], ['boxShadow'], ['margin', 'right']],
     defaultTheme: {
       background: { color: superLightColor },
+    },
+    getCSS(themeMeta): string {
+      const { margin: { right } = {} } = themeMeta;
+      if (right) {
+        return ` ${getProgressCSS(right)} `;
+      }
     },
   },
 });
@@ -231,7 +242,6 @@ export const getTextFont = (propsConfig: Object) => {
   return isSmall(size) ? 12 : get('sectionFontSize');
 };
 
-const getMarginLeft = () => `margin-left: ${px2remcss(get('marginToSameElement'))};`;
 export const ProgressText = CSSComponent({
   tag: 'span',
   className: 'ProgressText',
@@ -242,7 +252,6 @@ export const ProgressText = CSSComponent({
     white-space: nowrap;
     word-break: normal;
     vertical-align: middle;
-    ${getMarginLeft}
   `,
   normal: {
     selectNames: [['font'], ['color']],
