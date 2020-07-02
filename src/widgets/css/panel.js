@@ -274,7 +274,7 @@ export const Wrap = CSSComponent({
   css: css`
     font-size: ${px2remcss(14)};
     box-sizing: border-box;
-    background: ${get('defaultColor')};
+    background: transparent;
     border-style: solid;
     transition: all 0.3s;
     ${getBorderColor}
