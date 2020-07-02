@@ -401,18 +401,9 @@ class Range extends Component<TypeProps, TypeState> {
     this.normalStyleValueObj = getformatSymbol(value);
     this.monthAndYear = [...panelValue];
     this.panelDatesArray = getCurrentPageDates(panelValue, format);
-    const { hasOpenInProps, alwaysOpen } = getOpenProps(this.props);
-    if (hasOpenInProps) {
-      this.setState({ visible: alwaysOpen });
-    }
   }
   onDocumentClick = () => {
-    const { hasOpenInProps, alwaysOpen } = getOpenProps(this.props);
-    let visible = false;
-    if (hasOpenInProps) {
-      visible = alwaysOpen;
-    }
-    this.setState({ visible });
+    this.setState({ visible: false });
     const { onDocumentClick } = this.props;
     if (onDocumentClick) {
       onDocumentClick();
