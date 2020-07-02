@@ -305,6 +305,7 @@ export function getFacePanelContain(props) {
     borderRadius: getBorderRadius(borderRadiusValue),
     boxShadow: normalBoxShadow,
     width: isRange ? 600 : 300,
+    border: getBorder({ width: 0 }),
   };
   const normalTheme = deepMerge(defaultNormal, normal);
   const { width } = normalTheme;
