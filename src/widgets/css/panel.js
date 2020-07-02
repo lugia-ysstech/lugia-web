@@ -280,7 +280,7 @@ export const Wrap = CSSComponent({
     ${getBorderColor}
   `,
   normal: {
-    selectNames: [['boxShadow'], ['borderRadius'], ['width']],
+    selectNames: [['boxShadow'], ['borderRadius'], ['width'], ['border', 'bottom']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig: { zebraStripe, open } = {} } = themeProps;
       const boxShadow = zebraStripe && open ? get('normalBoxShadow') : null;
