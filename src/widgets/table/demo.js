@@ -22,7 +22,33 @@ const columns = [
     title: 'Age',
     dataIndex: 'age',
     key: 'age',
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+    // width: 200,
+    key: 'address',
+  },
+  {
+    title: 'Operations',
+    dataIndex: '',
     // width: 100,
+    key: 'operations',
+    render: () => <a href="#">Delete</a>,
+  },
+];
+const sortColumns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+    // width: 100,
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+    key: 'age',
+    sorter: (a, b) => a.age - b.age,
   },
   {
     title: 'Address',
@@ -880,7 +906,9 @@ export default class ModalDemo extends React.Component<any, any> {
       this.setState({ treeTable: data });
     });
   }
-
+  onHandleChange(sorter) {
+    console.log('param', sorter);
+  }
   render() {
     console.log('this.state', this.state.selectRowKeys);
     const config = {
@@ -1076,6 +1104,14 @@ export default class ModalDemo extends React.Component<any, any> {
             )}
           />
         </Table>
+        <br />
+        <h1>排序表格</h1>
+        <Table
+          columns={sortColumns}
+          data={data}
+          onChange={this.onHandleChange}
+          tableStyle="linear"
+        />
       </div>
     );
   }

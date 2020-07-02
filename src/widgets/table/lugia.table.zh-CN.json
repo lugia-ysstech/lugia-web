@@ -142,6 +142,31 @@
           "type": "Object"
         }
       ]
+    },
+    "onChange": {
+      "desc": "点击排序变化时触发",
+      "args": [
+        {
+          "name": "column",
+          "desc": "当前列的表头数据",
+          "type": "Object"
+        },
+        {
+          "name": "filed",
+          "desc": "当前列数据在数据项中对应的key",
+          "type": "String"
+        },
+        {
+          "name": "order",
+          "desc": "当前排序类型",
+          "type": "String"
+        },
+        {
+          "name": "data",
+          "desc": "当前排完序的数据",
+          "type": "Array"
+        }
+      ]
     }
   },
   "type": {
