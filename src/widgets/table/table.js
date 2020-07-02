@@ -15,6 +15,8 @@ import 'rc-table/assets/index.css';
 import './style/lugia-table.css';
 import type { TableProps, TableState } from '../css/table';
 import { css } from 'styled-components';
+import TableTitle from './tableTitle';
+import { deepCopy, isEqualArray } from './utils';
 
 const sizePadding = {
   default: 8,
@@ -62,6 +64,7 @@ export default ThemeProvider(
     validKeys: any[];
     disabledSelectedKeys: any[];
     tableWrap: Object;
+    sortState: string;
     constructor(props) {
       super();
       const { data = [], selectOptions: { selectRowKeys = [] } = {}, scroll = {} } = props;
@@ -73,6 +76,8 @@ export default ThemeProvider(
         headIndeterminate: !!selectRowKeyLength,
         selectRowKeys: selectRowKeys || [],
         scroll,
+        data: deepCopy(data),
+        sortOrder: true,
       };
       this.tableWrap = React.createRef();
     }
@@ -126,8 +131,10 @@ export default ThemeProvider(
       }, 0);
     }
 
-    static getDerivedStateFromProps(props) {
+    static getDerivedStateFromProps(props, nextState) {
       const { data = [], selectOptions = {}, rowKey = 'key' } = props;
+      const { data: stateData = [], sortOrder } = nextState;
+      const dataIsSame = isEqualArray(stateData, data);
       if ('selectRowKeys' in selectOptions) {
         const {
           selectRowKeys = [],
@@ -154,10 +161,10 @@ export default ThemeProvider(
           headChecked: allValidSelected,
           headIndeterminate: !!validSelectRowKeys.length,
           selectRowKeys,
+          sortOrder: dataIsSame ? sortOrder : true,
         };
       }
-
-      return null;
+      return { sortOrder: dataIsSame ? sortOrder : true };
     }
 
     tableItemChange = (key, record) => () => {
@@ -227,13 +234,13 @@ export default ThemeProvider(
       const disabledSelectedKeys = [];
       const validRecords = [];
       const disabledSelectedRecords = [];
-      const { data = [], rowKey: cusRowKey = 'key', selectOptions = {} } = this.props;
+      const { rowKey: cusRowKey = 'key', selectOptions = {} } = this.props;
       const {
         setCheckboxProps = (record: Object) => {
           return {};
         },
       } = selectOptions;
-      const { selectRowKeys: stateSelectRowKeys } = this.state;
+      const { selectRowKeys: stateSelectRowKeys, data = [] } = this.state;
       data.forEach(record => {
         const rowKey = record[cusRowKey];
         const select = stateSelectRowKeys.includes(rowKey);
@@ -257,12 +264,47 @@ export default ThemeProvider(
       this.validRecords = validRecords;
       this.disabledSelectedRecords = disabledSelectedRecords;
     };
-
+    getSortColumns = (columns: Object[]) => {
+      const newColumns = deepCopy(columns);
+      newColumns.map(item => {
+        const { sorter } = item;
+        const newItem = deepCopy(item);
+        if (sorter) {
+          item.title = (
+            <TableTitle
+              title={item.title}
+              positiveSequence={() => this.onSortChange(newItem, 'ascend')}
+              negativeSequence={() => this.onSortChange(newItem, 'descend')}
+            />
+          );
+        }
+      });
+      return newColumns;
+    };
+    onSortChange = (columnData: Object, type: string) => {
+      const { sortOrder } = this.state;
+      const { data, onChange } = this.props;
+      const { sortState } = this;
+      const { sorter, dataIndex } = columnData;
+      let sortData = deepCopy(data);
+      let newSortOrder = !sortOrder;
+      if (sortOrder || (sortState && sortState !== type && !sortOrder)) {
+        if (sortState && sortState !== type && !sortOrder) {
+          newSortOrder = false;
+        }
+        sortData = sortData.sort(sorter);
+        if (type === 'descend') {
+          sortData = sortData.reverse();
+        }
+      }
+      this.sortState = type;
+      this.setState({ data: sortData, sortOrder: newSortOrder });
+      onChange && onChange({ column: columnData, filed: dataIndex, order: type, data: sortData });
+    };
     render() {
       const {
         children,
         columns = [],
-        data,
         showHeader = true,
         tableStyle = 'bordered',
         getPartOfThemeProps,
@@ -270,6 +312,7 @@ export default ThemeProvider(
         size = 'default',
         rowKey: cusRowKey = 'key',
         scroll: propsScroll = {},
+        data: propsData = [],
       } = this.props;
 
       this.selectedRecords = [];
@@ -282,8 +325,11 @@ export default ThemeProvider(
         headIndeterminate,
         selectRowKeys: stateSelectRowKeys,
         scroll = {},
+        data = [],
       } = this.state;
-
+      const dataIsSame = isEqualArray(data, propsData);
+      if (!dataIsSame) this.sortState = '';
+      const tableData = dataIsSame ? data : propsData;
       const containerPartOfThemeProps = getPartOfThemeProps('Container', {
         props: { size },
       });
@@ -298,7 +344,7 @@ export default ThemeProvider(
           >
             <RcTable
               {...this.props}
-              data={data}
+              data={tableData}
               showHeader={showHeader}
               rowClassName={(record, i) => `row-${i}`}
               className="table"
@@ -308,7 +354,7 @@ export default ThemeProvider(
           </TableWrap>
         );
       }
-      const theColumns = [...columns];
+      const theColumns = this.getSortColumns(columns);
       if ('selectOptions' in this.props) {
         this.getValidKey();
         const {
@@ -368,7 +414,7 @@ export default ThemeProvider(
           <RcTable
             {...this.props}
             columns={theColumns}
-            data={data}
+            data={tableData}
             showHeader={showHeader}
             expandIconColumnIndex={expandIconColumnIndex}
             scroll={{ ...scroll, ...propsScroll }}
