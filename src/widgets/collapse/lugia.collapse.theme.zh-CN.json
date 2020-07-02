@@ -52,6 +52,7 @@
           {
             "name": "面板头部图标",
             "path": ["Panel", "PanelHeaderIcon"],
+            "props": [{ "name": "icon", "typeInTheme": "icon" }],
             "description": {
               "textPart": {
                 "text": "箭头图标",
