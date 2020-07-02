@@ -42,6 +42,10 @@
         { "value": "2", "title": "标题2", "children": "内容2" },
         { "value": "3", "title": "标题3", "children": "内容3" }
       ]
+    },
+    "icon": {
+      "type": "string",
+      "desc": "自定义图标，showArrow 为 true 时有效"
     }
   },
   "events": {
