@@ -43,7 +43,7 @@
         { "value": "3", "title": "标题3", "children": "内容3" }
       ]
     },
-    "icon": {
+    "arrowIcon": {
       "type": "string",
       "desc": "自定义图标，showArrow 为 true 时有效"
     }

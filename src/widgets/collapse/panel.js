@@ -104,10 +104,10 @@ export default ThemeProvider(
         themeProps,
         zebraStripe,
         count,
-        icon,
+        arrowIcon,
       } = this.props;
       const config = {};
-      const iconType = icon || 'lugia-icon-direction_caret_right';
+      const iconType = arrowIcon || 'lugia-icon-direction_caret_right';
       if (!showArrow) {
         config.enter = this.changeHover(true);
         config.leave = this.changeHover(false);
