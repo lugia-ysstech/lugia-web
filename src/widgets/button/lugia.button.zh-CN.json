@@ -57,6 +57,11 @@
       "type": "boolean",
       "desc": "按钮宽度为父元素宽度",
       "defaultValue": false
+    },
+    "transition": {
+      "type": "boolean",
+      "desc": "是否开启过渡效果，默认开启true，关闭为false",
+      "propsDefaultValue":false
     }
   },
   "events": {

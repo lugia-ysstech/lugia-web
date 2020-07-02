@@ -6,7 +6,8 @@
       { "name": "disabled", "text": "禁用" },
       { "name": "loading", "text": "加载中" },
       { "name": "shape", "text": "形状" },
-      { "name": "type", "text": "类型" }
+      { "name": "type", "text": "类型" },
+      { "name": "transition", "text": "过渡效果" }
     ],
     "treeNodeHidden": true,
     "data": [
@@ -47,7 +48,8 @@
       { "name": "disabled", "text": "禁用" },
       { "name": "loading", "text": "加载中" },
       { "name": "shape", "text": "形状" },
-      { "name": "type", "text": "类型" }
+      { "name": "type", "text": "类型" },
+      { "name": "transition", "text": "过渡效果" }
     ],
     "treeNodeHidden": true,
     "data": [
@@ -88,7 +90,8 @@
       { "name": "disabled", "text": "禁用" },
       { "name": "loading", "text": "加载中" },
       { "name": "shape", "text": "形状" },
-      { "name": "type", "text": "类型" }
+      { "name": "type", "text": "类型" },
+      { "name": "transition", "text": "过渡效果" }
     ],
     "treeNodeHidden": true,
     "data": [
@@ -133,7 +136,8 @@
       { "name": "disabled", "text": "禁用" },
       { "name": "loading", "text": "加载中" },
       { "name": "shape", "text": "形状" },
-      { "name": "type", "text": "类型" }
+      { "name": "type", "text": "类型" },
+      { "name": "transition", "text": "过渡效果" }
     ],
     "treeNodeHidden": true,
     "data": [
@@ -174,7 +178,8 @@
       { "name": "disabled", "text": "禁用" },
       { "name": "loading", "text": "加载中" },
       { "name": "shape", "text": "形状" },
-      { "name": "type", "text": "类型" }
+      { "name": "type", "text": "类型" },
+      { "name": "transition", "text": "过渡效果" }
     ],
     "treeNodeHidden": true,
     "data": [
@@ -215,7 +220,8 @@
       { "name": "disabled", "text": "禁用" },
       { "name": "loading", "text": "加载中" },
       { "name": "shape", "text": "形状" },
-      { "name": "type", "text": "类型" }
+      { "name": "type", "text": "类型" },
+      { "name": "transition", "text": "过渡效果" }
     ],
     "treeNodeHidden": true,
     "data": [
