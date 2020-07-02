@@ -327,7 +327,6 @@ function getHoverStyle(props) {
     } = {},
     noSingleHoverState,
   } = props;
-  console.log(noSingleHoverState);
   if (noSingleHoverState) {
     return '';
   }
