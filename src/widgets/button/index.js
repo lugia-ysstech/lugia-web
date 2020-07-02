@@ -217,6 +217,7 @@ export default ThemeProvider(
             onMouseUp,
             onMouseDown,
             block,
+            transition,
             getPartOfThemeProps,
           } = this.props;
           const { clicked } = this.state;
@@ -252,6 +253,7 @@ export default ThemeProvider(
               onMouseOver={onMouseOver}
               themes={getTheme()}
               block={block}
+              transition={transition}
               themeProps={buttonWrapTheme}
               {...addMouseEvent(this, mouseConfig)}
               {...addFocusBlurEvent(this)}
