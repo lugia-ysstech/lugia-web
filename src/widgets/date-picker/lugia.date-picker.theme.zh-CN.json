@@ -1648,8 +1648,7 @@
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
       { "name": "format", "text": "显示格式" },
-      { "name": "extraFooter", "text": "页脚标注" },
-      { "name": "buttonOptions", "text": "页脚按钮" }
+      { "name": "extraFooter", "text": "页脚标注" }
     ],
 
     "data": [
