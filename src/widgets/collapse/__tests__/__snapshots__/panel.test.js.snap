@@ -62,7 +62,7 @@ exports[`Panel Panel CSS 1`] = `
 .c1 {
   font-size: 1.4rem;
   box-sizing: border-box;
-  background: #ffffff;
+  background: transparent;
   border-style: solid;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
