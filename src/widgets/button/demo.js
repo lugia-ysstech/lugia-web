@@ -306,6 +306,38 @@ export default () => {
         <Button type="warning">Warning</Button>
         <Button type="danger">Danger</Button>
       </div>
+      <div>
+        <p>有过渡效果的default button</p>
+        <Button>hello</Button>
+        <Button type="primary" transition>
+          Primary
+        </Button>
+        <Button type="success" transition>
+          Success
+        </Button>
+        <Button type="warning" transition>
+          Warning
+        </Button>
+        <Button type="danger" transition>
+          Danger
+        </Button>
+      </div>
+      <div>
+        <p>有过渡效果的plain button</p>
+        <Button>hello</Button>
+        <Button type="primary" plain transition>
+          Primary
+        </Button>
+        <Button type="success" plain transition>
+          Success
+        </Button>
+        <Button type="warning" plain transition>
+          Warning
+        </Button>
+        <Button type="danger" plain transition>
+          Danger
+        </Button>
+      </div>
     </React.Fragment>
   );
 };

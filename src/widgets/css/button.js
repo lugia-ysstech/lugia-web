@@ -66,10 +66,10 @@ type CSSProps = {
   onClick?: (SyntheticEvent<HTMLButtonElement>) => any,
   getTheme: Function,
   viewClass?: string,
-  loading?: boolean,
   em: Function,
   hasChildren?: boolean,
   block?: boolean,
+  transition?: boolean,
 };
 export type ButtonOutProps = CSSProps & {
   clicked: boolean,
@@ -400,16 +400,18 @@ export const ButtonOut = CSSComponent({
     white-space: nowrap;
     font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
     user-select: none;
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     position: relative;
     text-transform: none;
     outline: 0;
     ${props => (props.block ? 'width: 100%;' : '')}
     ${props => (props.loading ? 'pointer-events: none;' : '')}
+    ${props =>
+      (props.transition
+        ? 'transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);'
+        : 'transition: none')}
     ${getClickCSS}
   `,
 });
-
 export const getTextLoadingTheme = (props: Object) => {
   const { plain, type = 'default' } = props;
   if (plain) {
