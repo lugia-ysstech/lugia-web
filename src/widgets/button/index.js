@@ -217,7 +217,7 @@ export default ThemeProvider(
             onMouseUp,
             onMouseDown,
             block,
-            transition,
+            transition = true,
             getPartOfThemeProps,
           } = this.props;
           const { clicked } = this.state;
