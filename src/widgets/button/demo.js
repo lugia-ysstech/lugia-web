@@ -307,34 +307,34 @@ export default () => {
         <Button type="danger">Danger</Button>
       </div>
       <div>
-        <p>有过渡效果的default button</p>
+        <p>没有过渡效果的default button</p>
         <Button>hello</Button>
-        <Button type="primary" transition>
+        <Button type="primary" transition={false}>
           Primary
         </Button>
-        <Button type="success" transition>
+        <Button type="success" transition={false}>
           Success
         </Button>
-        <Button type="warning" transition>
+        <Button type="warning" transition={false}>
           Warning
         </Button>
-        <Button type="danger" transition>
+        <Button type="danger" transition={false}>
           Danger
         </Button>
       </div>
       <div>
-        <p>有过渡效果的plain button</p>
+        <p>没有过渡效果的plain button</p>
         <Button>hello</Button>
-        <Button type="primary" plain transition>
+        <Button type="primary" plain transition={false}>
           Primary
         </Button>
-        <Button type="success" plain transition>
+        <Button type="success" plain transition={false}>
           Success
         </Button>
-        <Button type="warning" plain transition>
+        <Button type="warning" plain transition={false}>
           Warning
         </Button>
-        <Button type="danger" plain transition>
+        <Button type="danger" plain transition={false}>
           Danger
         </Button>
       </div>
