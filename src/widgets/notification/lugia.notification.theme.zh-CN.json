@@ -30,6 +30,10 @@
               "appearancePart": {
                 "text": "标题文本",
                 "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "标题文本",
+                "desc": "文本配置区块的显示文本"
               }
             }
           },
@@ -41,6 +45,10 @@
               "appearancePart": {
                 "text": "描述文本",
                 "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "描述文本",
+                "desc": "文本配置区块的显示文本"
               }
             }
           },
@@ -52,6 +60,10 @@
               "appearancePart": {
                 "text": "前缀图标",
                 "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "文本配置区块的显示文本"
               }
             }
           },
@@ -63,6 +75,10 @@
               "appearancePart": {
                 "text": "关闭图标",
                 "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "关闭图标",
+                "desc": "文本配置区块的显示文本"
               }
             }
           }
