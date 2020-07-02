@@ -32,9 +32,9 @@ function getSizeHeight(size: string) {
   return height;
 }
 function getDefaultStyleFromSize(size: string) {
-  const { largeBorderRadiusValue, borderRadiusValue } = getThemeUpdate();
+  const { borderRadiusValue } = getThemeUpdate();
   return {
-    defaultBorderRadius: size === 'large' ? largeBorderRadiusValue : borderRadiusValue,
+    defaultBorderRadius: borderRadiusValue,
     defaultFontSize: size === 'small' ? 12 : 14,
   };
 }
