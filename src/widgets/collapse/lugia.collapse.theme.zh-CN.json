@@ -78,6 +78,20 @@
                 "desc": "文本配置区块的显示文本"
               }
             }
+          },
+          {
+            "name": "面板分割线样式",
+            "path": ["Panel", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "分割线",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "textPart": {
+                "text": "分割线",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
           }
         ]
       }
