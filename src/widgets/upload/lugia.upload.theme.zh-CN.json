@@ -239,6 +239,16 @@
                 "desc": "面板中外观配置的区块显示文本"
               }
             }
+          },
+          {
+            "name": "点击上传文本",
+            "path": ["uploadAreaText"],
+            "description": {
+              "appearancePart": {
+                "text": "「上传」文本样式",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
           }
         ]
       },
@@ -307,7 +317,17 @@
             "path": ["Container"],
             "description": {
               "appearancePart": {
-                "text": "外观",
+                "text": "整体外框",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "上传框外框",
+            "path": ["UploadInputTheme"],
+            "description": {
+              "appearancePart": {
+                "text": "上传框外框",
                 "desc": "面板中外观配置的区块显示文本"
               }
             }

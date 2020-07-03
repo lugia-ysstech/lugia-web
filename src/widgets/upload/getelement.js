@@ -544,16 +544,10 @@ const AreaTextBlue = CSSComponent({
     },
   },
   disabled: {
-    selectNames: [['color']],
+    selectNames: [['color'], ['border'], ['cursor']],
     defaultTheme: {
       color: themeDisabledColor,
-      border: {
-        bottom: {
-          width: 0,
-          style: 'solid',
-          color: 'transparent',
-        },
-      },
+      border: { bottom: { width: 1, style: 'solid', color: themeDisabledColor } },
       cursor: 'not-allowed',
     },
   },
@@ -1195,8 +1189,21 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const { dropArea, handleClickToUpload } = this;
       const { disabled } = props;
       const areaThemeProps = this.props.getPartOfThemeProps('Container');
-      const uploadAreaTextBlue = this.props.getPartOfThemeProps('uploadAreaTextBlue');
-
+      const uploadAreaText = this.props.getPartOfThemeProps('uploadAreaText');
+      const TextColor = deepMerge(
+        { themeConfig: { normal: { border: { bottom: {} } } } },
+        uploadAreaText
+      );
+      const areaTextBlue = deepMerge(
+        {
+          normal: {
+            border: {
+              bottom: { width: 1, style: 'solid', color: TextColor.themeConfig.normal.color },
+            },
+          },
+        },
+        uploadAreaText
+      );
       const areaCloudFail = classNameStatus === 'fail' ? { color: darkGreyColor } : {};
       const areaTheme = deepMerge(
         {
@@ -1246,7 +1253,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           ) : (
             <AreaText themeProps={areaTextFailStyle} disabled={disabled}>
               {uploadTips},或
-              <AreaTextBlue themeProps={uploadAreaTextBlue} disabled={disabled}>
+              <AreaTextBlue themeProps={areaTextBlue} disabled={disabled}>
                 {uploadText}
               </AreaTextBlue>
             </AreaText>

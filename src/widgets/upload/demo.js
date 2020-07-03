@@ -425,9 +425,9 @@ class UploadDemo extends React.Component<any, any> {
             border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
         },
-        uploadAreaTextBlue: {
+        uploadAreaText: {
           normal: {
-            color: 'pink',
+            color: 'blue',
           },
         },
       },
