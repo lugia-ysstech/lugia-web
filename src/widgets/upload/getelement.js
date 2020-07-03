@@ -57,7 +57,7 @@ const BothContainer = CSSComponent({
   tag: 'div',
   className: 'BothContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['boxShadow'], ['borderRadius'], ['border'], ['color']],
+    selectNames: [['width'], ['height'], ['boxShadow'], ['borderRadius'], ['color']],
   },
   disabled: {
     selectNames: [['border'], ['borderRadius'], ['cursor']],
@@ -66,7 +66,7 @@ const BothContainer = CSSComponent({
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100%;
+    height: 30px;
   `,
 });
 const bothButtonTheme = {
@@ -157,6 +157,7 @@ const InputContent = CSSComponent({
   normal: {
     selectNames: [
       ['height'],
+      ['width'],
       ['boxShadow'],
       ['borderRadius'],
       ['border'],
@@ -1000,18 +1001,17 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const { handleClickToSubmit, handleClickToUpload } = this;
       const { defaultText, showFileList, disabled } = this.props;
       const containerStyle = this.props.getPartOfThemeProps('Container');
+      const uploadInputTheme = this.props.getPartOfThemeProps('UploadInputTheme');
       const { viewClass: buttonViewClass, theme: buttonTheme } = props.getPartOfThemeHocProps(
         'UploadButtonType',
         { props: { areaType } }
       );
-      const bothButtonHigWid = deepMerge(
-        { themeConfig: { normal: { height: 30 } } },
-        containerStyle
-      );
-      const inputBorderTheme = deepMerge(
+
+      const inputContentTheme = deepMerge(
         {
           themeConfig: {
             normal: {
+              height: '100%',
               borderRadius: getBorderRadius(borderRadiusValue, ['tl', 'bl']),
               ...getDefaultStyle(classNameStatus),
             },
@@ -1020,12 +1020,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
             },
           },
         },
-        bothButtonHigWid
-      );
-
-      const inputStatusTheme = deepMerge(
-        inputBorderTheme,
-        this.props.getPartOfThemeProps('inputStyle', { props: { areaType } })
+        uploadInputTheme
       );
       const buttonThemeStyle =
         classNameStatus === 'fail' || classNameStatus === 'done'
@@ -1036,13 +1031,15 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const buttonMergeStyle = deepMerge(
         {
           normal: {
-            height: bothButtonHigWid,
+            width: bothButtonWidth.normal.width,
+            height: '100%',
             borderRadius: getBorderRadius(0, ['tl', 'bl']),
           },
         },
         bothButtonWidth,
         buttonThemeStyle
       );
+
       const resultButtonTheme = {
         [buttonViewClass]: {
           Container: {
@@ -1050,12 +1047,13 @@ class GetElement extends React.Component<DefProps, StateProps> {
           },
         },
       };
+
       const newTheme = { viewClass: buttonViewClass, theme: resultButtonTheme };
       children = (
         <React.Fragment>
           <BothContainer themeProps={containerStyle}>
             <InputContent
-              themeProps={inputStatusTheme}
+              themeProps={inputContentTheme}
               status={classNameStatus}
               hasBtn="hasBtn"
               disabled={disabled}
@@ -1197,6 +1195,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const { dropArea, handleClickToUpload } = this;
       const { disabled } = props;
       const areaThemeProps = this.props.getPartOfThemeProps('Container');
+      const uploadAreaTextBlue = this.props.getPartOfThemeProps('uploadAreaTextBlue');
+
       const areaCloudFail = classNameStatus === 'fail' ? { color: darkGreyColor } : {};
       const areaTheme = deepMerge(
         {
@@ -1246,7 +1246,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           ) : (
             <AreaText themeProps={areaTextFailStyle} disabled={disabled}>
               {uploadTips},或
-              <AreaTextBlue themeProps={areaTextFailStyle} disabled={disabled}>
+              <AreaTextBlue themeProps={uploadAreaTextBlue} disabled={disabled}>
                 {uploadText}
               </AreaTextBlue>
             </AreaText>

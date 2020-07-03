@@ -71,6 +71,8 @@ exports[`Upload Test css 1`] = `
 
 .c0 {
   position: relative;
+  box-sizing: border-box;
+  height: 100%;
 }
 
 <div
