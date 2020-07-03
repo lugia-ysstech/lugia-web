@@ -61,7 +61,8 @@
     "transition": {
       "type": "boolean",
       "desc": "是否开启过渡效果，默认开启true，关闭为false",
-      "propsDefaultValue":false
+      "defaultValue": false,
+      "propsDefaultValue":true
     }
   },
   "events": {
