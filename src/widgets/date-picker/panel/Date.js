@@ -17,6 +17,8 @@ import {
 } from '../styled/styled';
 import moment from 'moment';
 import { getHeadArrowTheme, getHeadYearAndMonth } from '../themeConfig/themeConfig';
+import { getHeadIconClass } from '../utils/getHeadIcon';
+
 type TypeProps = {
   value?: string,
   firstWeekDay?: number,
@@ -166,6 +168,12 @@ class Date extends Component<TypeProps, TypeState> {
       viewClass: doubleViewClass,
       theme: doubleTheme,
     };
+    const {
+      singleLeftIconClass,
+      singleRightIconClass,
+      doubleLeftIconClass,
+      doubleRightIconClass,
+    } = getHeadIconClass(this.props);
     return (
       <DateWrapper mode={mode} themeProps={themeProps}>
         <div>
@@ -179,7 +187,7 @@ class Date extends Component<TypeProps, TypeState> {
                   position={'left'}
                   onClick={this.getDaysInMonth('year', 'subtract')}
                 >
-                  <Icon iconClass={'lugia-icon-direction_double_right'} {...doubleArrowConfig} />
+                  <Icon iconClass={doubleLeftIconClass} {...doubleArrowConfig} />
                 </HeaderTopArrow>
               )}
               {differAmonth && index === 1 ? (
@@ -191,7 +199,7 @@ class Date extends Component<TypeProps, TypeState> {
                   margin={20}
                   onClick={this.getDaysInMonth('month', 'subtract')}
                 >
-                  <Icon iconClass={'lugia-icon-direction_Left'} {...singleArrowConfig} />
+                  <Icon iconClass={singleLeftIconClass} {...singleArrowConfig} />
                 </HeaderTopArrow>
               )}
 
@@ -209,7 +217,7 @@ class Date extends Component<TypeProps, TypeState> {
                   themeProps={themeProps}
                   onClick={this.getDaysInMonth('year', 'add')}
                 >
-                  <Icon iconClass={'lugia-icon-direction_double_left'} {...doubleArrowConfig} />
+                  <Icon iconClass={doubleRightIconClass} {...doubleArrowConfig} />
                 </HeaderTopArrow>
               )}
               {differAmonth && index === 0 ? (
@@ -221,7 +229,7 @@ class Date extends Component<TypeProps, TypeState> {
                   margin={20}
                   onClick={this.getDaysInMonth('month', 'add')}
                 >
-                  <Icon iconClass={'lugia-icon-direction_right'} {...singleArrowConfig} />
+                  <Icon iconClass={singleRightIconClass} {...singleArrowConfig} />
                 </HeaderTopArrow>
               )}
             </HeaderTop>
