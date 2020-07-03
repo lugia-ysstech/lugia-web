@@ -294,8 +294,17 @@
         "Container": {
           "name": "文件上传区域",
           "desc": "区域拖拽上传类型的样式配置",
-          "normal": [["width"], ["height"], ["fontSize"], ["color"]],
-          "disabled": [["color"]]
+          "normal": [
+            ["width"],
+            ["height"],
+            ["fontSize"],
+            ["color"],
+            ["border"],
+            ["borderRadius"],
+            ["font"]
+          ],
+          "hover": [["border"]],
+          "disabled": [["color"], ["border"], ["background"]]
         },
         "UploadList": {
           "name": "上传列表",

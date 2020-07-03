@@ -16,7 +16,7 @@ const Container = CSSComponent({
   tag: 'div',
   className: 'upload_Container',
   normal: {
-    selectNames: [['width'], ['height'], ['boxShadow'], ['borderRadius'], ['border'], ['color']],
+    selectNames: [],
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { areaType },
@@ -30,6 +30,8 @@ const Container = CSSComponent({
   },
   css: css`
     position: relative;
+    box-sizing: border-box;
+    height: 100%;
   `,
 });
 

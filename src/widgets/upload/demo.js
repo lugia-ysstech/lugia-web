@@ -280,9 +280,10 @@ class UploadDemo extends React.Component<any, any> {
       [Widget.Upload]: {
         Container: {
           normal: {
-            width: 346,
-            height: 50,
+            width: 900,
+            height: 80,
             borderRadius: getBorderRadius(4),
+            border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
           hover: {},
           disabled: {
@@ -319,6 +320,7 @@ class UploadDemo extends React.Component<any, any> {
             width: 346,
             height: 150,
             borderRadius: getBorderRadius(4),
+            border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
           hover: {},
           disabled: {
@@ -341,6 +343,46 @@ class UploadDemo extends React.Component<any, any> {
 
     const configBoth = {
       [Widget.Upload]: {
+        Container: {
+          normal: {
+            width: 800,
+            height: 40,
+            borderRadius: getBorderRadius(4, ['tl', 'bl']),
+            border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
+          },
+          hover: {},
+          disabled: {
+            borderRadius: getBorderRadius(4, ['tl', 'bl']),
+          },
+        },
+        UploadButtonType: {
+          normal: {
+            width: 80,
+          },
+          hover: {
+            boxShadow: ' 0 0 2px #ccc',
+            opacity: 0.5,
+          },
+          disabled: {
+            background: {
+              color: '#ccc',
+            },
+          },
+        },
+        UploadInputTheme: {
+          normal: {
+            borderRadius: getBorderRadius(4, ['tl', 'bl']),
+            border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
+          },
+          hover: {},
+          disabled: {
+            borderRadius: getBorderRadius(4, ['tl', 'bl']),
+          },
+        },
+      },
+    };
+    const configBoth100 = {
+      [Widget.Upload]: {
         UploadButtonType: {
           normal: {
             width: 200,
@@ -358,7 +400,7 @@ class UploadDemo extends React.Component<any, any> {
         Container: {
           normal: {
             width: 900,
-            height: 45,
+            height: '100%',
             borderRadius: getBorderRadius(4, ['tl', 'bl']),
           },
           hover: {},
@@ -376,9 +418,16 @@ class UploadDemo extends React.Component<any, any> {
       [Widget.Upload]: {
         Container: {
           normal: {
-            fontSize: 20,
             width: 400,
             height: 180,
+            fontSize: 15,
+            color: 'orange',
+            border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
+          },
+        },
+        uploadAreaTextBlue: {
+          normal: {
+            color: 'pink',
           },
         },
       },
@@ -396,6 +445,12 @@ class UploadDemo extends React.Component<any, any> {
           <Title>配置主题Both disabled： </Title>
           <Upload {...defaultProps12} />
         </Theme>
+
+        <div style={{ height: '30px', margin: '10px 0' }}>
+          <Theme config={configBoth100}>
+            <Upload {...defaultProps2} />
+          </Theme>
+        </div>
 
         <Title>默认类型： </Title>
         <Upload {...defaultProps} />
