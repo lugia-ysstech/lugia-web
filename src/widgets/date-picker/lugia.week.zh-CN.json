@@ -108,6 +108,38 @@
       "type": "boolean",
       "desc": "是否开启流式布局",
       "propsDefaultValue": false
+    },
+    "headSwitchIconLevelOne": {
+      "type": "Object",
+      "desc": "头部一级图标",
+      "meta": [
+        {
+          "key": "left",
+          "title": "左边图标",
+          "type": "icon"
+        },
+        {
+          "key": "right",
+          "title": "右边图标",
+          "type": "icon"
+        }
+      ]
+    },
+    "headSwitchIconLevelTwo": {
+      "type": "Object",
+      "desc": "头部二级图标",
+      "meta": [
+        {
+          "key": "left",
+          "title": "左边图标",
+          "type": "icon"
+        },
+        {
+          "key": "right",
+          "title": "右边图标",
+          "type": "icon"
+        }
+      ]
     }
   },
   "events": {
