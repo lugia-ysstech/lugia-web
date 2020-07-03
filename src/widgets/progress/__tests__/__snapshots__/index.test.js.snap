@@ -13,7 +13,7 @@ exports[`Progress css 1`] = `
 .c2 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  width: 100%;
+  width: 0%;
   border-radius: 5rem;
   position: relative;
   text-align: right;
@@ -65,7 +65,7 @@ exports[`Progress css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#f22735",
+            "backgroundColor": "#56c22d",
             "height": "0.8rem",
           }
         }
@@ -76,14 +76,14 @@ exports[`Progress css 1`] = `
       size="default"
       style={
         Object {
-          "color": "#f22735",
+          "color": "#56c22d",
           "fontSize": "1.4rem",
         }
       }
       type="line"
     >
       <i
-        className="lugia-icon-financial_lock   c4"
+        className="lugia-icon-reminder_check_circle   c4"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -91,7 +91,7 @@ exports[`Progress css 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "color": "#f22735",
+            "color": "#56c22d",
             "cursor": "default",
             "fontSize": "1.4rem",
           }
