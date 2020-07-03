@@ -192,7 +192,11 @@ class DateInput extends Component<TypeProps, TypeState> {
             liquidLayout={liquidLayout}
             popup={
               <React.Fragment>
-                <PanelWrap themeProps={themeProps} {...addMouseEvent(this)} disabled={disabled}>
+                <PanelWrap
+                  themeProps={themeProps}
+                  {...addMouseEvent(this)}
+                  disabled={disabled || readOnly}
+                >
                   <SwitchPanel
                     {...newProps}
                     hasStateValue={hasStateValue}
