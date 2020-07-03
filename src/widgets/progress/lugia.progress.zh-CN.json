@@ -49,9 +49,13 @@
     },
     "iconClass": {
       "type": "string",
-      "desc": "进度条展示的图标,仅在success状态生效"
+      "desc": "进度条展示的图标,在success或error状态下无配置successIconClass或errorIconClass时生效"
     },
     "errorIconClass": {
+      "type": "string",
+      "desc": "进度条展示的图标,仅在error状态生效"
+    },
+    "successIconClass": {
       "type": "string",
       "desc": "进度条展示的图标,仅在error状态生效"
     }
