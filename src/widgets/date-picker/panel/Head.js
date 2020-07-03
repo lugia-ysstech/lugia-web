@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import Icon from '../../icon/index';
 import { DateHeader, HeaderTop, HeaderTopArrow, HeaderTopText } from '../styled/styled';
 import { getHeadArrowTheme, getHeadYearAndMonth } from '../themeConfig/themeConfig';
+import { getHeadIconClass } from '../utils/getHeadIcon';
 const moment = require('moment');
 type TypeProps = {
   onChange?: Function,
@@ -123,11 +124,12 @@ class Head extends Component<TypeProps, TypeState> {
       viewClass: singleViewClass,
       theme: singleTheme,
     };
+    const { singleLeftIconClass, singleRightIconClass } = getHeadIconClass(this.props);
     return (
       <DateHeader themeProps={themeProps}>
         <HeaderTop themeProps={themeProps}>
           <HeaderTopArrow themeProps={themeProps} position={'left'} onClick={this.changeYear(-1)}>
-            <Icon iconClass={'lugia-icon-direction_Left'} {...singleArrowConfig} />
+            <Icon iconClass={singleLeftIconClass} {...singleArrowConfig} />
           </HeaderTopArrow>
           <HeaderTopText themeProps={headYearTextTheme} onClick={this.headClick}>
             {title}年
@@ -136,7 +138,7 @@ class Head extends Component<TypeProps, TypeState> {
             {secondTitle}
           </HeaderTopText>
           <HeaderTopArrow themeProps={themeProps} position={'right'} onClick={this.changeYear(1)}>
-            <Icon iconClass={'lugia-icon-direction_right'} {...singleArrowConfig} />
+            <Icon iconClass={singleRightIconClass} {...singleArrowConfig} />
           </HeaderTopArrow>
         </HeaderTop>
       </DateHeader>
