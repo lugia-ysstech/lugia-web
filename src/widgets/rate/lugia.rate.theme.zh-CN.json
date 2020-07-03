@@ -5,7 +5,6 @@
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
       { "name": "allowHalf", "text": "是否半选" },
-      { "name": "classify", "text": "是否多色区分" },
       { "name": "count", "text": "分数总数" },
       { "name": "max", "text": "最大分数" },
       { "name": "value", "text": "当前分数" },
@@ -35,38 +34,6 @@
           {
             "name": "选中状态的图标",
             "path": ["ActiveIcon"],
-            "description": {
-              "textPart": {
-                "text": "图标",
-                "desc": "文本配置区块的显示文本"
-              }
-            }
-          }
-        ]
-      },
-      {
-        "title": "低分样式",
-        "iconClass": "rateLowScore",
-        "data": [
-          {
-            "name": "低分值样式",
-            "path": ["DangerIcon"],
-            "description": {
-              "textPart": {
-                "text": "图标",
-                "desc": "文本配置区块的显示文本"
-              }
-            }
-          }
-        ]
-      },
-      {
-        "title": "高分样式",
-        "iconClass": "HighScoreRate",
-        "data": [
-          {
-            "name": "高分值样式",
-            "path": ["AmazedIcon"],
             "description": {
               "textPart": {
                 "text": "图标",
@@ -165,7 +132,6 @@
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
       { "name": "allowHalf", "text": "是否半选" },
-      { "name": "classify", "text": "是否多色区分" },
       { "name": "count", "text": "分数总数" },
       { "name": "max", "text": "最大分数" },
       { "name": "value", "text": "当前分数" }
@@ -181,7 +147,7 @@
             "props": [
               {
                 "name": "character",
-                "typeInTheme": "string"
+                "typeInTheme": "text"
               }
             ],
             "description": {
