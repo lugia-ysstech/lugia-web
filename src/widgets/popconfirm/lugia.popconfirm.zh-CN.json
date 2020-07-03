@@ -120,9 +120,117 @@
     "ButtonType": ["default", "primary", "success", "warning", "danger"]
   },
   "category": ["反馈"],
+  "designInfo": {
+    "CustomPopconfirm": {
+      "sequence": 1,
+      "title": "自定义气泡确认框",
+      "desc": "自定义气泡确认框",
+      "props": {
+        "title": "",
+        "description": ""
+      },
+      "defaultTheme": {
+        "PopconfirmContent": {
+          "Container": {
+            "normal": {
+              "width": 250,
+              "height": 120
+            }
+          }
+        }
+      },
+      "theme": {
+        "PopconfirmContent": {
+          "name": "气泡确认框容器",
+          "theme": {
+            "Container": {
+              "name": "气泡确认框内容部分",
+              "desc": "气泡确认框内容部分",
+              "normal": [
+                ["background"],
+                ["color"],
+                ["padding"],
+                ["font"],
+                ["fontSize"],
+                ["width"],
+                ["height"],
+                ["boxShadow"],
+                ["borderRadius"],
+                ["border"]
+              ]
+            }
+          }
+        },
+        "PopconfirmOkButton": {
+          "name": "气泡确认框确定按钮",
+          "theme": {
+            "Container": {
+              "name": "按钮整体样式",
+              "desc": "为按钮配置整体样式",
+              "normal": [
+                ["background"],
+                ["border"],
+                ["height"],
+                ["width"],
+                ["padding"],
+                ["margin"],
+                ["borderRadius"],
+                ["boxShadow"]
+              ],
+              "hover": [["background"], ["border"], ["boxShadow"]],
+              "active": [["background"], ["border"], ["boxShadow"]],
+              "disabled": [["background"], ["border"], ["boxShadow"]],
+              "focus": [["background"], ["border"], ["boxShadow"]]
+            },
+            "ButtonText": {
+              "name": "按钮文字样式",
+              "desc": "为按钮文字配置样式",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"]],
+              "active": [["color"]],
+              "disabled": [["color"]],
+              "focus": [["color"]]
+            }
+          }
+        },
+        "PopconfirmCancelButton": {
+          "name": "气泡确认框取消按钮",
+          "theme": {
+            "Container": {
+              "name": "按钮整体样式",
+              "desc": "为按钮配置整体样式",
+              "normal": [
+                ["background"],
+                ["border"],
+                ["height"],
+                ["width"],
+                ["padding"],
+                ["margin"],
+                ["borderRadius"],
+                ["boxShadow"]
+              ],
+              "hover": [["background"], ["border"], ["boxShadow"]],
+              "active": [["background"], ["border"], ["boxShadow"]],
+              "disabled": [["background"], ["border"], ["boxShadow"]],
+              "focus": [["background"], ["border"], ["boxShadow"]]
+            },
+            "ButtonText": {
+              "name": "按钮文字样式",
+              "desc": "为按钮文字配置样式",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"]],
+              "active": [["color"]],
+              "disabled": [["color"]],
+              "focus": [["color"]]
+            }
+          }
+        }
+      }
+    }
+  },
   "theme": {
     "PopconfirmContent": {
-      "name": "气泡卡片框容器",
+      "name": "气泡确认框容器",
       "theme": {
         "Container": {
           "name": "气泡确认框内容部分",
@@ -145,12 +253,71 @@
     "PopconfirmTitle": {
       "name": "气泡确认框标题",
       "desc": "气泡确认框标题",
-      "normal": [["color"], ["background"], ["font"], ["fontSize"]]
+      "normal": [["color"], ["font"], ["fontSize"], ["margin", "bottom"]]
     },
-    "PopconfirmButton": {
-      "name": "气泡确认框按钮",
-      "desc": "气泡确认框按钮",
-      "normal": [["opacity"], ["color"], ["font"], ["fontSize"]]
+    "PopconfirmOkButton": {
+      "name": "气泡确认框确定按钮",
+      "theme": {
+        "Container": {
+          "name": "按钮整体样式",
+          "desc": "为按钮配置整体样式",
+          "normal": [
+            ["background"],
+            ["border"],
+            ["height"],
+            ["width"],
+            ["padding"],
+            ["margin"],
+            ["borderRadius"],
+            ["boxShadow"]
+          ],
+          "hover": [["background"], ["border"], ["boxShadow"]],
+          "active": [["background"], ["border"], ["boxShadow"]],
+          "disabled": [["background"], ["border"], ["boxShadow"]],
+          "focus": [["background"], ["border"], ["boxShadow"]]
+        },
+        "ButtonText": {
+          "name": "按钮文字样式",
+          "desc": "为按钮文字配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        }
+      }
+    },
+    "PopconfirmCancelButton": {
+      "name": "气泡确认框取消按钮",
+      "theme": {
+        "Container": {
+          "name": "按钮整体样式",
+          "desc": "为按钮配置整体样式",
+          "normal": [
+            ["background"],
+            ["border"],
+            ["height"],
+            ["width"],
+            ["padding"],
+            ["margin"],
+            ["borderRadius"],
+            ["boxShadow"]
+          ],
+          "hover": [["background"], ["border"], ["boxShadow"]],
+          "active": [["background"], ["border"], ["boxShadow"]],
+          "disabled": [["background"], ["border"], ["boxShadow"]],
+          "focus": [["background"], ["border"], ["boxShadow"]]
+        },
+        "ButtonText": {
+          "name": "按钮文字样式",
+          "desc": "为按钮文字配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        }
+      }
     },
     "PopconfirmIcon": {
       "name": "气泡确认框标题前图标",
