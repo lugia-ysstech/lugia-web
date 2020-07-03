@@ -31,7 +31,7 @@ const lFontSize = '$lugia-dict.@lugia/lugia-web.lFontSize';
 const xlFontSize = '$lugia-dict.@lugia/lugia-web.xlFontSize';
 
 export const getText = (inside?: boolean, props: Object) => {
-  const { percent = 0, format, hasFormat = false, getIconTheme, iconClass } = props;
+  const { percent = 0, format, hasFormat = false, getIconTheme, iconClass, errorIconClass } = props;
 
   if (hasFormat && typeof format === 'function') {
     return format(percent);
@@ -73,7 +73,7 @@ export const getText = (inside?: boolean, props: Object) => {
       <Icon
         viewClass={viewClass}
         theme={iconTheme}
-        iconClass={iconClass || iconClassName}
+        iconClass={errorIconClass || iconClassName}
         singleTheme
       />
     );
@@ -198,6 +198,7 @@ export default class extends React.Component<LineProps, ProgressState> {
       type = 'line',
       getIconTheme,
       iconClass,
+      errorIconClass,
     } = this.props;
 
     return getText(inside, {
@@ -209,6 +210,7 @@ export default class extends React.Component<LineProps, ProgressState> {
       type,
       getIconTheme,
       iconClass,
+      errorIconClass,
     });
   };
 

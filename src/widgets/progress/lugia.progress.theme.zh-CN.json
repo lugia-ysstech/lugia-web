@@ -176,7 +176,7 @@
           {
             "name": "进度条失败图标配置",
             "path": ["ProgressLineErrorIcon"],
-            "props": [{ "name": "iconClass", "typeInTheme": "icon" }],
+            "props": [{ "name": "errorIconClass", "typeInTheme": "icon" }],
             "description": {
               "appearancePart": {
                 "text": "外观",
