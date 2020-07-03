@@ -61,8 +61,30 @@ export const PanelWrap = CSSComponent({
   css: css`
     font-size: ${fontSize}rem;
     overflow: hidden;
+    ${props => getDisabledMask(props)}
   `,
 });
+function getDisabledMask(props) {
+  const { disabled } = props;
+  if (disabled) {
+    return `
+    position: relative;
+
+    ::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.6);
+      z-index: 222;
+      cursor: not-allowed;
+    }
+    `;
+  }
+  return '';
+}
 export const DateWrapper = CSSComponent({
   tag: 'div',
   className: 'DateWrapper',
@@ -411,6 +433,7 @@ export const RangeWrap = CSSComponent({
   },
   css: css`
     font-size: ${fontSize}rem;
+    ${props => getDisabledMask(props)};
   `,
 });
 export const RangeWrapInner = StaticComponent({

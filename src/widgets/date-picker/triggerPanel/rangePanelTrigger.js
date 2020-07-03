@@ -470,6 +470,7 @@ class Range extends Component<TypeProps, TypeState> {
               isTime={status === 'showTime'}
               mode={mode}
               themeProps={themeProps}
+              disabled={disabled}
             >
               <RangeWrapInner>
                 <SwitchPanel
