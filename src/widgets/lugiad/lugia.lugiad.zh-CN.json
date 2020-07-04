@@ -1,0 +1,46 @@
+{
+  "widgetName": "Lugiad",
+  "title": "子页面组件",
+  "desc": "用于放入一个lugiad格式的子页面",
+  "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
+    "content": {
+      "type": "lugiaDPages",
+      "desc": "mega项目中包含的子页面"
+    }
+  },
+  "category": ["数据展示"],
+  "designInfo": {},
+  "theme": {
+    "Container": {
+      "name": "容器整体",
+      "desc": "配置容器整体",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["boxShadow"],
+        ["border"],
+        ["borderRadius"],
+        ["margin"],
+        ["padding"],
+        ["boxShadow"],
+        ["opacity"],
+        ["borderRadius"]
+      ],
+      "hover": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["opacity"]]
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 750,
+        "height": 400
+      }
+    }
+  }
+}
