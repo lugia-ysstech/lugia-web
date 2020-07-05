@@ -44,11 +44,14 @@ const LugiadContainer = CSSComponent({
   option: { hover: true },
 });
 
-const Lugiad = (props: Object) => {
-  return (
-    <LugiadContainer themeProps={props.getPartOfThemeProps('Container')}>
-      {props.children}
-    </LugiadContainer>
-  );
-};
+class Lugiad extends React.Component<any> {
+  render() {
+    const { props } = this;
+    return (
+      <LugiadContainer themeProps={props.getPartOfThemeProps('Container')}>
+        {props.children}
+      </LugiadContainer>
+    );
+  }
+}
 export default ThemeHoc(Lugiad, Widget.Lugiad, { hover: true, active: true });
