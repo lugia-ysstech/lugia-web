@@ -197,7 +197,7 @@
           },
           {
             "name": "标题文本",
-            "path": ["PopconfirmContent", "TooltipTitle"],
+            "path": ["PopconfirmContent", "PopconfirmTitle"],
             "description": {
               "textPart": {
                 "text": "标题文本",
@@ -215,27 +215,8 @@
             ]
           },
           {
-            "name": "描述文本",
-            "path": ["PopconfirmContent", "TooltipDescription"],
-            "description": {
-              "textPart": {
-                "text": "描述文本",
-                "desc": "描述文本"
-              },
-              "appearancePart": {
-                "hidden": true
-              }
-            },
-            "props": [
-              {
-                "name": "description",
-                "typeInTheme": "text"
-              }
-            ]
-          },
-          {
             "name": "前缀图标",
-            "path": ["PopconfirmContent", "PopconfirmIcon"],
+            "path": ["PopconfirmIcon"],
             "description": {
               "textPart": {
                 "text": "前缀图标",
