@@ -21,6 +21,7 @@ import Icon from './icon';
 import Input from './input';
 import Label from './label';
 import Loading from './loading';
+import Lugiad from './lugiad';
 import Menu from './menu';
 import Message from './message/message';
 import Modal from './modal';
@@ -1532,6 +1533,12 @@ export default [
         suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
+        transition: {
+          type: 'boolean',
+          desc: '是否开启过渡效果，默认开启true，关闭为false',
+          defaultValue: false,
+          propsDefaultValue: true,
+        },
       },
       events: {
         onClick: {
@@ -1851,6 +1858,12 @@ export default [
         suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
+        transition: {
+          type: 'boolean',
+          desc: '是否开启过渡效果，默认开启true，关闭为false',
+          defaultValue: false,
+          propsDefaultValue: true,
+        },
       },
       events: {
         onClick: {
@@ -1957,6 +1970,12 @@ export default [
         suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
+        transition: {
+          type: 'boolean',
+          desc: '是否开启过渡效果，默认开启true，关闭为false',
+          defaultValue: false,
+          propsDefaultValue: true,
+        },
       },
       events: {
         onClick: {
@@ -2063,6 +2082,12 @@ export default [
         suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: '' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
+        transition: {
+          type: 'boolean',
+          desc: '是否开启过渡效果，默认开启true，关闭为false',
+          defaultValue: false,
+          propsDefaultValue: true,
+        },
       },
       events: {
         onClick: {
@@ -2160,6 +2185,12 @@ export default [
         suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
+        transition: {
+          type: 'boolean',
+          desc: '是否开启过渡效果，默认开启true，关闭为false',
+          defaultValue: false,
+          propsDefaultValue: true,
+        },
       },
       events: {
         onClick: {
@@ -2235,6 +2266,12 @@ export default [
         suffixIcon: { type: 'icon', desc: '设置按钮后置图标类型' },
         text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
+        transition: {
+          type: 'boolean',
+          desc: '是否开启过渡效果，默认开启true，关闭为false',
+          defaultValue: false,
+          propsDefaultValue: true,
+        },
       },
       events: {
         onClick: {
@@ -4653,6 +4690,7 @@ export default [
             { value: '3', title: '标题3', children: '内容3' },
           ],
         },
+        arrowIcon: { type: 'icon', desc: '自定义图标，showArrow 为 true 时有效' },
       },
       events: {
         onChange: {
@@ -4689,7 +4727,11 @@ export default [
         },
         Panel: {
           theme: {
-            Container: { name: '面板整体配置', desc: '面板整体配置', normal: [['width']] },
+            Container: {
+              name: '面板整体配置',
+              desc: '面板整体配置',
+              normal: [['width'], ['border', 'bottom']],
+            },
             PanelHeader: {
               name: '面板头部配置',
               desc: '面板头部样式配置',
@@ -4882,6 +4924,22 @@ export default [
         },
         alwaysOpen: { type: 'boolean', desc: '控制面板是否始终展开', propsDefaultValue: false },
         liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
+        headSwitchIconLevelOne: {
+          type: 'Object',
+          desc: '头部一级图标',
+          meta: [
+            { key: 'left', title: '左边图标', type: 'icon' },
+            { key: 'right', title: '右边图标', type: 'icon' },
+          ],
+        },
+        headSwitchIconLevelTwo: {
+          type: 'Object',
+          desc: '头部二级图标',
+          meta: [
+            { key: 'left', title: '左边图标', type: 'icon' },
+            { key: 'right', title: '右边图标', type: 'icon' },
+          ],
+        },
       },
       events: {
         onChange: {
@@ -4940,14 +4998,14 @@ export default [
         InputPrefix: {
           name: '前缀图标',
           desc: '前缀图标配置',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['padding'], ['margin']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
         InputSuffix: {
           name: '后缀图标',
           desc: '后缀图标配置',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['padding'], ['margin']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
@@ -4981,7 +5039,7 @@ export default [
         SelectToday: {
           name: '当天日期',
           desc: '当天日期配置',
-          normal: [['border', 'style', 'color'], ['color']],
+          normal: [['border', 'style', 'color'], ['color'], ['background'], ['borderRadius']],
         },
         HeadSingleArrow: {
           name: '头部单箭头',
@@ -5034,7 +5092,14 @@ export default [
           desc: '年/月/周面板内容文字的配置',
           normal: [['color'], ['font']],
           hover: [['color'], ['font']],
-          active: [['color'], ['font'], ['background'], ['borderRadius']],
+          active: [
+            ['color'],
+            ['font'],
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+          ],
         },
         TimePanelHead: {
           name: '时间板头部',
@@ -5045,8 +5110,9 @@ export default [
           name: '时间内容区',
           desc: '时间内容配置',
           normal: [['color'], ['background']],
+          hover: [['color']],
         },
-        timePanelListTheme: { name: '单列', desc: '单列时间配置', normal: [['border', 'right']] },
+        TimePanelList: { name: '单列', desc: '单列时间配置', normal: [['border', 'right']] },
         SelectTimeOption: {
           name: '选中时间',
           desc: '选中时间配置',
@@ -5109,6 +5175,7 @@ export default [
           desc: '页脚时间按钮配置',
           normal: [['color'], ['font']],
           hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
         },
         FooterOkButton: {
           name: '页脚确定按钮',
@@ -5121,9 +5188,13 @@ export default [
             ['color'],
             ['font'],
             ['fontSize'],
+            ['boxShadow'],
+            ['border'],
           ],
           hover: [['color'], ['font'], ['fontSize'], ['background']],
+          disabled: [['color'], ['background'], ['boxShadow'], ['border']],
         },
+        FooterLine: { name: '页脚分割线', desc: '页脚分割线配置', normal: [['background']] },
       },
       defaultTheme: {
         Container: { normal: { width: 300 } },
@@ -5170,6 +5241,14 @@ export default [
         clearIcon: { type: 'icon', desc: '清除图标' },
         alwaysOpen: { type: 'boolean', desc: '控制面板是否始终展开', propsDefaultValue: false },
         liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
+        headSwitchIconLevelOne: {
+          type: 'Object',
+          desc: '头部一级图标',
+          meta: [
+            { key: 'left', title: '左边图标', type: 'icon' },
+            { key: 'right', title: '右边图标', type: 'icon' },
+          ],
+        },
       },
       events: {
         onChange: {
@@ -5218,14 +5297,14 @@ export default [
         InputPrefix: {
           name: '前缀图标',
           desc: '前缀图标配置',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['padding'], ['margin']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
         InputSuffix: {
           name: '后缀图标',
           desc: '后缀图标配置',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['padding'], ['margin']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
@@ -5253,7 +5332,14 @@ export default [
           desc: '分类日期配置/年/月/周',
           normal: [['color'], ['font']],
           hover: [['color'], ['font']],
-          active: [['color'], ['font'], ['background'], ['borderRadius']],
+          active: [
+            ['color'],
+            ['font'],
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+          ],
         },
         HeadSingleArrow: {
           name: '头部单箭头',
@@ -5302,6 +5388,7 @@ export default [
           active: [],
         },
         ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
+        FooterLine: { name: '页脚分割线', desc: '页脚分割线配置', normal: [['background']] },
       },
       defaultTheme: {
         Container: { normal: { width: 300 } },
@@ -5346,6 +5433,14 @@ export default [
         clearIcon: { type: 'icon', desc: '清除图标' },
         alwaysOpen: { type: 'boolean', desc: '控制面板是否始终展开', propsDefaultValue: false },
         liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
+        headSwitchIconLevelOne: {
+          type: 'Object',
+          desc: '头部一级图标',
+          meta: [
+            { key: 'left', title: '左边图标', type: 'icon' },
+            { key: 'right', title: '右边图标', type: 'icon' },
+          ],
+        },
       },
       events: {
         onChange: {
@@ -5394,14 +5489,14 @@ export default [
         InputPrefix: {
           name: '前缀图标',
           desc: '前缀图标配置',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['padding'], ['margin']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
         InputSuffix: {
           name: '后缀图标',
           desc: '后缀图标配置',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['padding'], ['margin']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
@@ -5429,7 +5524,14 @@ export default [
           desc: '分类日期配置/年/月/周',
           normal: [['color'], ['font']],
           hover: [['color'], ['font']],
-          active: [['color'], ['font'], ['background'], ['borderRadius']],
+          active: [
+            ['color'],
+            ['font'],
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+          ],
         },
         HeadSingleArrow: {
           name: '头部单箭头',
@@ -5478,6 +5580,7 @@ export default [
           active: [],
         },
         ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
+        FooterLine: { name: '页脚分割线', desc: '页脚分割线配置', normal: [['background']] },
       },
       defaultTheme: {
         Container: { normal: { width: 300 } },
@@ -5537,6 +5640,22 @@ export default [
         clearIcon: { type: 'icon', desc: '清除图标' },
         alwaysOpen: { type: 'boolean', desc: '控制面板是否始终展开', propsDefaultValue: false },
         liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
+        headSwitchIconLevelOne: {
+          type: 'Object',
+          desc: '头部一级图标',
+          meta: [
+            { key: 'left', title: '左边图标', type: 'icon' },
+            { key: 'right', title: '右边图标', type: 'icon' },
+          ],
+        },
+        headSwitchIconLevelTwo: {
+          type: 'Object',
+          desc: '头部二级图标',
+          meta: [
+            { key: 'left', title: '左边图标', type: 'icon' },
+            { key: 'right', title: '右边图标', type: 'icon' },
+          ],
+        },
       },
       events: {
         onChange: {
@@ -5590,14 +5709,14 @@ export default [
         InputPrefix: {
           name: '前缀图标',
           desc: '前缀图标配置',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['padding'], ['margin']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
         InputSuffix: {
           name: '后缀图标',
           desc: '后缀图标配置',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['padding'], ['margin']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
@@ -5620,18 +5739,18 @@ export default [
             ['borderRadius'],
           ],
         },
-        InMonthDate: {
-          name: '日期',
-          desc: '日期配置',
-          normal: [['color']],
-          hover: [['color'], ['background'], ['borderRadius'], ['boxShadow'], ['border']],
-          active: [['color'], ['background'], ['borderRadius'], ['boxShadow'], ['border']],
-        },
+        InMonthDate: { name: '日期', desc: '日期配置', normal: [['color']] },
         OutMonthDate: { name: '非本月日期', desc: '非本月日期配置', normal: [['color']] },
+        RangeDate: {
+          name: '范围日期',
+          desc: '选中范围日期的配置',
+          normal: [['color'], ['background'], ['borderRadius']],
+          hover: [['color'], ['background']],
+        },
         SelectToday: {
           name: '当天日期',
           desc: '当天日期配置',
-          normal: [['border', 'style', 'color'], ['color']],
+          normal: [['border', 'style', 'color'], ['color'], ['background'], ['borderRadius']],
         },
         HeadSingleArrow: {
           name: '头部单箭头',
@@ -5684,7 +5803,14 @@ export default [
           desc: '年/月/周面板内容文字的配置',
           normal: [['color'], ['font']],
           hover: [['color'], ['font']],
-          active: [['color'], ['font'], ['background'], ['borderRadius']],
+          active: [
+            ['color'],
+            ['font'],
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+          ],
         },
         TimePanelHead: {
           name: '时间板头部',
@@ -5695,8 +5821,9 @@ export default [
           name: '时间内容区',
           desc: '时间内容配置',
           normal: [['color'], ['background']],
+          hover: [['color']],
         },
-        timePanelListTheme: { name: '单列', desc: '单列时间配置', normal: [['border', 'right']] },
+        TimePanelList: { name: '单列', desc: '单列时间配置', normal: [['border', 'right']] },
         SelectTimeOption: {
           name: '选中时间',
           desc: '选中时间配置',
@@ -5759,6 +5886,7 @@ export default [
           desc: '页脚时间按钮配置',
           normal: [['color'], ['font']],
           hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
         },
         FooterOkButton: {
           name: '页脚确定按钮',
@@ -5771,9 +5899,13 @@ export default [
             ['color'],
             ['font'],
             ['fontSize'],
+            ['boxShadow'],
+            ['border'],
           ],
           hover: [['color'], ['font'], ['fontSize'], ['background']],
+          disabled: [['color'], ['background'], ['boxShadow'], ['border']],
         },
+        FooterLine: { name: '页脚分割线', desc: '页脚分割线配置', normal: [['background']] },
       },
       defaultTheme: {
         Container: { normal: { width: 300 } },
@@ -5822,6 +5954,14 @@ export default [
         clearIcon: { type: 'icon', desc: '清除图标' },
         alwaysOpen: { type: 'boolean', desc: '控制面板是否始终展开', propsDefaultValue: false },
         liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
+        headSwitchIconLevelOne: {
+          type: 'Object',
+          desc: '头部一级图标',
+          meta: [
+            { key: 'left', title: '左边图标', type: 'icon' },
+            { key: 'right', title: '右边图标', type: 'icon' },
+          ],
+        },
       },
       events: {
         onChange: {
@@ -5870,14 +6010,14 @@ export default [
         InputPrefix: {
           name: '前缀图标',
           desc: '前缀图标配置',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['padding'], ['margin']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
         InputSuffix: {
           name: '后缀图标',
           desc: '后缀图标配置',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['padding'], ['margin']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
@@ -5905,7 +6045,14 @@ export default [
           desc: '分类日期配置/年/月/周',
           normal: [['color'], ['font']],
           hover: [['color'], ['font']],
-          active: [['color'], ['font'], ['background'], ['borderRadius']],
+          active: [
+            ['color'],
+            ['font'],
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+          ],
         },
         HeadSingleArrow: {
           name: '头部单箭头',
@@ -5962,6 +6109,7 @@ export default [
           active: [],
         },
         ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
+        FooterLine: { name: '页脚分割线', desc: '页脚分割线配置', normal: [['background']] },
       },
       defaultTheme: {
         Container: { normal: { width: 300 } },
@@ -6036,6 +6184,22 @@ export default [
         },
         alwaysOpen: { type: 'boolean', desc: '控制面板是否始终展开', propsDefaultValue: false },
         liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
+        headSwitchIconLevelOne: {
+          type: 'Object',
+          desc: '头部一级图标',
+          meta: [
+            { key: 'left', title: '左边图标', type: 'icon' },
+            { key: 'right', title: '右边图标', type: 'icon' },
+          ],
+        },
+        headSwitchIconLevelTwo: {
+          type: 'Object',
+          desc: '头部二级图标',
+          meta: [
+            { key: 'left', title: '左边图标', type: 'icon' },
+            { key: 'right', title: '右边图标', type: 'icon' },
+          ],
+        },
       },
       events: {
         onChange: {
@@ -6093,14 +6257,14 @@ export default [
         InputPrefix: {
           name: '前缀图标',
           desc: '前缀图标配置',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['padding'], ['margin']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
         InputSuffix: {
           name: '后缀图标',
           desc: '后缀图标配置',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['padding'], ['margin']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
@@ -6136,12 +6300,19 @@ export default [
           desc: '分类日期配置/年/月/周',
           normal: [['color'], ['font']],
           hover: [['color'], ['font']],
-          active: [['color'], ['font'], ['background'], ['borderRadius']],
+          active: [
+            ['color'],
+            ['font'],
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+          ],
         },
         SelectToday: {
           name: '当天日期',
           desc: '当天日期配置',
-          normal: [['border', 'style', 'color'], ['color']],
+          normal: [['border', 'style', 'color'], ['color'], ['background'], ['borderRadius']],
         },
         HeadSingleArrow: {
           name: '头部单箭头',
@@ -6203,8 +6374,9 @@ export default [
           name: '时间内容区',
           desc: '时间内容配置',
           normal: [['color'], ['background']],
+          hover: [['color']],
         },
-        timePanelListTheme: { name: '单列', desc: '单列时间配置', normal: [['border', 'right']] },
+        TimePanelList: { name: '单列', desc: '单列时间配置', normal: [['border', 'right']] },
         SelectTimeOption: {
           name: '选中时间',
           desc: '选中时间配置',
@@ -6267,6 +6439,7 @@ export default [
           desc: '页脚时间按钮配置',
           normal: [['color'], ['font']],
           hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
         },
         FooterOkButton: {
           name: '页脚确定按钮',
@@ -6279,9 +6452,13 @@ export default [
             ['color'],
             ['font'],
             ['fontSize'],
+            ['boxShadow'],
+            ['border'],
           ],
           hover: [['color'], ['font'], ['fontSize'], ['background']],
+          disabled: [['color'], ['background'], ['boxShadow'], ['border']],
         },
+        FooterLine: { name: '页脚分割线', desc: '页脚分割线配置', normal: [['background']] },
       },
       defaultTheme: {
         Container: { normal: { width: 600 } },
@@ -6424,6 +6601,7 @@ export default [
         maskClosable: { type: 'boolean', desc: '点击遮罩层是否允许关闭抽屉', defaultValue: true },
         closable: { type: 'boolean', desc: '是否展示抽屉右上角关闭按钮', defaultValue: false },
         sidebar: { type: 'boolean', desc: '是否展示抽屉侧边抽拉按钮', defaultValue: false },
+        getContainer: { type: 'boolean | React.node | function', desc: '是否在指定容器内展示抽屉' },
       },
       events: {
         onClose: { desc: '抽屉关闭时的回调', args: [] },
@@ -7973,6 +8151,44 @@ export default [
     target: Loading,
     screenshot:
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAABzNJREFUeAHtnH1sFEUUwOfN3hUoZwl+ACJGrUoIItIUidFEjEThDyMoH2JUUEioQGmr6bUFKTe9WPk4EnstWPqH/lHUQJGQoEJAAmoQoxIjQZGkETUIBGKsRdpSejfjW+Da693u8tEe6ey9TS47896b3Z3fvM7H7psyRgcRIAJEgAgQASJABIgAESACRIAIEAEiQASIABEgAkSACBABIkAEiAARIAJEgAgQASJABIgAESACRIAIEAEiQASIABEgAkSACBABIkAEiAARIAJEgAj0LgHo3cvpdbUSUf28kvJNxdg4BqwFGOxmHhYMlRc26lWT3nvatHWIEhEOSqnKk1ACnPUaxtMrV+R/l6RLAwFPgzomVbFUhB+1dAbTUqmsSDTycUNDg5FUMA0EaekQUcbmObWtUiz74K+nnnCycasuLR0CJLvvig2q2L1XtHGhgcctdRKiOquFKcEUm4S/O7BeP2H/XxcKFm1JrKPi7BiTbGKivFse1O/d8mmScUUPgauFES1KHVZSvaGUGquYugV/k3D10FAcqK6xaMs9FrJOEa42mjPVoB86BWmUcMUqwx8I70RHmGLXbobBn10dKPg0Xu9fEd6NTvNUvCyWBs7nh0TBB7F8/HlZZdXQjgsQxPvdxRl8tCZYuDFer3ta+x5CiNohTs5gNpCMqrmJDTWQ958GHNYD4OARO4D9DcyYbecMpllHO2zG+y3A5GTJVH1pRc3kWHE3nLWfQ7RC+0NXaggFKslGiLxWLJcfCtWXnmlrHueRqqkfW3JUVOCU0+aoq6vzNp44/3i8Wkr5JOZ3xct0TmvvEEzxZuwDnNtAAdpYH37/nBbUfHNJW2BtdFmal5fX4Q9UHcJl6bhOQ6UOdqZdkNB+yMhkD/6I7XDCqS1waNjupL8WnQc8L6D9LgZwFOca5VarmGu5Xl+zdceksqJquoqyT6zg4oqhEQb6cteUzv/PSk+y7gS07yHM6oQCRVvBYDMA4GT36rGd3n79J5IzJFBxyLqih4jVT4h9nnb+S25ERgcbLOPoKrHwj5iOzkSACBABItBTAtoOGUIo3s5qRklg93gM/nPl8vw/ewqDyjOME9LwKAtWPRyJQj3GLoyKPT5OKPdkeD3zKpcvPh6T0fnaCWjnEGWi9u6IunAYncGXVF18N+CDrBwhXjufpEuhoEy8lx1lkZdBycHomFtXi8L9KbxdSi+t3bITnWGlpTOYmLDHaJXNi1NKLOHiS8W6kfhM32JsZoVUrCgq2Zf49XVGgpk2We0cAhv9MSe6ioGj3qns9egiTC7A+IshXWWVgeF5y7ryeqX0cwiAQU6I8UOWo96p7PXp5IikcqDMAB0tD+0cAic93zuRxlfVjnqnsten4zsSy+EzJskSbfpqXjuHMIBXdothiCOLztCU4c1YFydKeRJjJ+rxeYJmlBUu2jrwvG2I7+b8lN84RTfQbpVhcvCL6jk4iduAyQFxXE4ZHGbgDP9AnOyGJc2w/SNHmvpdjrO4Yfft7Rtp6RAmBCHqbm2VbVMlg2EGZ40DWNb2G73c7O3GoOsRASJABIgAEdCIgLZzCCvGZcHqnKhUZhT0cJDqUCbnW4QoOGtlSzJrAq5xiGIRfgeUKsUA2Pil9HGvxzOzN3dym19Zz/NwrozAaOWF/aHygt+s0eopdYVDlKyofkky+aFNExz3cT6mN3oKDNkfePrcPzvwVXVnKD5+zFobqij029xbO3H8X5N2Dx97YNww49Qgd7YyNTtm25Pz6Zam2nhnMK+Fm3aK8b3Iqz25bl8qq71DCNGQAaAecIKKw0iOk/5qdTgvmWZpaye3NO7bQu0dIhCY2YGvjCOOmIG1OeqvUombh89ZmnIbuaVx3xZqv3MLx3CFG3c/R8zT7VAbjH9mpbsYy8AigkkYj7FjTXipjWtEkf23EIBtOEYsSroWqG1JMk0F2vcQJneDe0vMD1uWbQCwaZVYsjdRt1TUjMJw/a+VZC/iLvD7cS4wQUpWUxKoejfRNpbnmb4yTHfu47z4kY3DSnNfSMxG97MrHGKVWHTMw41H0Cm+wOEDe3Y8gP1rfoX0wdhXrBqpQ8pN6AhDE3Vm1FNxRXhqotzMmxt+1gaLpgD35nBuPIcxnNlrRaG2wTBWdXTFsjO+YiWr378J2s4Nzh19+4lZs2bhv5NKPvxi/TAlO04lay5JcBjagEvJhXZ6N8u1n0MkNs7lbXuO+zgzsDtpv5BYsiuPc4m0/A90JgFXDBldTXl1qbffev0kDi+NttaSf2Wrc7kiLR3CXJkojzEXx8ukngQ42zx+zLBNLm932+qlbdd4YN+OvyZOemavVHIkOshtSOgM9pe1E0YPX2w397ClSAoiQASIABEgAkSACBABIkAEiAARIAJEgAgQASJABIgAESACRIAIEAEiQASIABEgAkSACBABIkAEiAARIAJEgAgQASJABIgAEUgTAv8DfYUHIdvNaXQAAAAASUVORK5CYII=',
+  },
+  {
+    meta: {
+      widgetName: 'Lugiad',
+      title: '子页面组件',
+      desc: '用于放入一个lugiad格式的子页面',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        content: { type: 'lugiaDPages', desc: 'mega项目中包含的子页面' },
+      },
+      category: ['数据展示'],
+      designInfo: {},
+      theme: {
+        Container: {
+          name: '容器整体',
+          desc: '配置容器整体',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['boxShadow'],
+            ['border'],
+            ['borderRadius'],
+            ['margin'],
+            ['padding'],
+            ['boxShadow'],
+            ['opacity'],
+            ['borderRadius'],
+          ],
+          hover: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
+        },
+      },
+      defaultTheme: { Container: { normal: { width: 750, height: 400 } } },
+      childrenWidget: [],
+    },
+    target: Lugiad,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAABQhJREFUeAHtXbtuFEEQvPMZOHyWkEggt5zxB/wFH2AS/oMfIXLm4OycnC8hgQQC5EfA7TK1ulr1jOcaIUvcjrtGGndPP9bTVeXd0LOZlhAQAkJACAgBISAE/h2BudPi5Zw2pRpBoK/ds0Z6LYbeXfHacxWbHgJVAaRrZnFLsvU5jo3Rp2WN7LQRIOG0uK31efshdshTYUl6zTKGFusXj9BxjwhYwuFjgysbx/XK80ioJZY+bG3jQYzD15omAhQCbke/tMxxgr58Q9TEcJCqEae1YrD1fKjs/hDgX7y1FEGXrgUflgtncMj6GQRBUllEwikAWLuZp7V99GX/PwIjqelXw7cbIgBfFANy1k/HYc3tG4IEW7tIZRADLYVha+BrTQcBKwQSD/KxN2mDL9rkjgu1wyK5JP5Jij5L+3nax2m/OD8/f3N9fb3ebDbfeq2mEABn4A4cgsstp+AWHINr/rFTB4NicIAg8MZ4mvYy7VXagxi6rvvRFAq67D0EwKERBbgFx+AanIP7QRBUBS0/CVAN9mFS16ejo6N3yddqHIGbm5vL1Wr1IY3xO218NrD5ORk+NRBAuTJxLJfLt2WBzm0isOWSf/TkORvGCsIW0D9I61XWoUOzCGy5BOfkF7NYf/h2lAOygLbM69w2AuSVNpvGviGYYCEt47KPAwHySptNVQoCRVzVBiZlm0Wg5NVyXv1kYFIW0TY7vS5+DwFySpsVlG+ILKlDPAQ8QVQVFA+iRznxTm49QTxKJDSUj4AE4eMTLitBhKPcH1iC8PEJl5UgwlHuDyxB+PiEy0oQ4Sj3B5YgfHzCZSWIcJT7A0sQPj7hshJEOMr9gSUIH59wWQkiHOX+wBKEj0+4rAQRjnJ/YAnCxydcVoIIR7k/sATh4xMuK0GEo9wfWILw8QmXlSDCUe4PLEH4+ITLShDhKPcHliB8fMJlJYhwlPsDSxA+PuGyEkQ4yv2BJQgfn3BZCSIc5f7AEoSPT7isBBGOcn9gCcLHJ1xWgghHuT+wBOHjEy4rQYSj3B9YgvDxCZeVIMJR7g8sQfj4hMtKEOEo9weWIHx8wmUliHCU+wNLED4+4bISRDjK/YElCB+fcFkJIhzl/sAShI9PuKwEEY5yf2BPEOO//vUfoWyDCOzk1hNEg3Pqyg9FYJcgqCDah/4e9U8HAXJKm92sFIQtgm/PWaMOzSJQ8ppxXAoCU7KBttnJdfEqAuSVNiuSIDI4QhwoBNpsaCsIW0C/S+t71qFDswhsuezSAOQXs1i/+o9cWYDG7u7u7gu6tNpHYMvlwGuahjxng/ENwSQtm7r1ev2x7/ufWZcOzSEADsFluvjIbfLJN+1skYL8p57W0p9dXV39Ojk5uTw9PX29WCxezufz4+bQCHxhfCZub28/X1xcvD87O/uaoNikDVFQBLDjAvEknz4t3h4QjLXwsVlDm0JaE0HAEg3fvhEoBtqydnZohsiUkuI4o5FNfxMDxKG1PwQsf+SM1oqifDuwZrg5BIGAJRNnLDQyzibGGC/t0Kgfe0OA3FlruYNfCsJetrdvCCTQAJL5QMQoAuYQQw3FgLPW9BAAX+SRfmlxa9YME1hSaz5j1tLHA6w/PFA/JoGAJZkiwMUYL+2Ys4Ran1PZGH1a1shOG4Gd5BfXHupq5NZi6N0VL56r40QRoDDK62Vxj2QvVz5U5/YQyITQ3vV1YyEgBISAEBACQmBKCPwBV3aNjVY8W4AAAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -11625,6 +11841,7 @@ export default [
         duration: { type: 'number', desc: '自定义演示关闭', defaultValue: 4.5 },
         description: { type: 'React.node', desc: '通知提醒内容' },
         icon: { type: 'string', desc: '自定义图标' },
+        closeIcon: { type: 'string', desc: '自定义图标' },
         placement: {
           type: 'PlacementType',
           desc: '弹出位置，topRight、bottomLeft、bottomRight、topLeft',
@@ -11633,6 +11850,42 @@ export default [
       },
       type: { PlacementType: ['topRight', 'bottomLeft', 'bottomRight', 'topLeft'] },
       category: ['反馈'],
+      theme: {
+        Container: {
+          name: 'Notification整体样式配置',
+          desc: '为Notification整体配置样式',
+          normal: [
+            ['width'],
+            ['height'],
+            ['borderRadius'],
+            ['opacity'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['margin'],
+          ],
+        },
+        NotificationTitle: {
+          name: 'Notification标题样式配置',
+          desc: '为Notification标题配置样式',
+          normal: [['color'], ['font'], ['padding']],
+        },
+        NotificationText: {
+          name: 'Notification描述文本样式配置',
+          desc: '为Notification描述文本配置样式',
+          normal: [['color'], ['font']],
+        },
+        NotificationIcon: {
+          name: 'Notification前缀图标样式配置',
+          desc: '为Notification前缀图标配置样式',
+          normal: [['color'], ['font']],
+        },
+        NotificationCloseIcon: {
+          name: 'Notification关闭图标样式配置',
+          desc: '为Notification关闭图标配置样式',
+          normal: [['color'], ['font']],
+        },
+      },
       childrenWidget: [],
       hideInTollPanel: true,
     },
@@ -12615,9 +12868,107 @@ export default [
         ButtonType: ['default', 'primary', 'success', 'warning', 'danger'],
       },
       category: ['反馈'],
+      designInfo: {
+        CustomPopconfirm: {
+          sequence: 1,
+          title: '自定义气泡确认框',
+          desc: '自定义气泡确认框',
+          props: { title: '', description: '' },
+          defaultTheme: {
+            PopconfirmContent: { Container: { normal: { width: 250, height: 120 } } },
+          },
+          theme: {
+            PopconfirmContent: {
+              name: '气泡确认框容器',
+              theme: {
+                Container: {
+                  name: '气泡确认框内容部分',
+                  desc: '气泡确认框内容部分',
+                  normal: [
+                    ['background'],
+                    ['color'],
+                    ['padding'],
+                    ['font'],
+                    ['fontSize'],
+                    ['width'],
+                    ['height'],
+                    ['boxShadow'],
+                    ['borderRadius'],
+                    ['border'],
+                  ],
+                },
+              },
+            },
+            PopconfirmOkButton: {
+              name: '气泡确认框确定按钮',
+              theme: {
+                Container: {
+                  name: '按钮整体样式',
+                  desc: '为按钮配置整体样式',
+                  normal: [
+                    ['background'],
+                    ['border'],
+                    ['height'],
+                    ['width'],
+                    ['padding'],
+                    ['margin'],
+                    ['borderRadius'],
+                    ['boxShadow'],
+                  ],
+                  hover: [['background'], ['border'], ['boxShadow']],
+                  active: [['background'], ['border'], ['boxShadow']],
+                  disabled: [['background'], ['border'], ['boxShadow']],
+                  focus: [['background'], ['border'], ['boxShadow']],
+                },
+                ButtonText: {
+                  name: '按钮文字样式',
+                  desc: '为按钮文字配置样式',
+                  normal: [['color'], ['font']],
+                  hover: [['color']],
+                  active: [['color']],
+                  disabled: [['color']],
+                  focus: [['color']],
+                },
+              },
+            },
+            PopconfirmCancelButton: {
+              name: '气泡确认框取消按钮',
+              theme: {
+                Container: {
+                  name: '按钮整体样式',
+                  desc: '为按钮配置整体样式',
+                  normal: [
+                    ['background'],
+                    ['border'],
+                    ['height'],
+                    ['width'],
+                    ['padding'],
+                    ['margin'],
+                    ['borderRadius'],
+                    ['boxShadow'],
+                  ],
+                  hover: [['background'], ['border'], ['boxShadow']],
+                  active: [['background'], ['border'], ['boxShadow']],
+                  disabled: [['background'], ['border'], ['boxShadow']],
+                  focus: [['background'], ['border'], ['boxShadow']],
+                },
+                ButtonText: {
+                  name: '按钮文字样式',
+                  desc: '为按钮文字配置样式',
+                  normal: [['color'], ['font']],
+                  hover: [['color']],
+                  active: [['color']],
+                  disabled: [['color']],
+                  focus: [['color']],
+                },
+              },
+            },
+          },
+        },
+      },
       theme: {
         PopconfirmContent: {
-          name: '气泡卡片框容器',
+          name: '气泡确认框容器',
           theme: {
             Container: {
               name: '气泡确认框内容部分',
@@ -12640,12 +12991,71 @@ export default [
         PopconfirmTitle: {
           name: '气泡确认框标题',
           desc: '气泡确认框标题',
-          normal: [['color'], ['background'], ['font'], ['fontSize']],
+          normal: [['color'], ['font'], ['fontSize'], ['margin', 'bottom']],
         },
-        PopconfirmButton: {
-          name: '气泡确认框按钮',
-          desc: '气泡确认框按钮',
-          normal: [['opacity'], ['color'], ['font'], ['fontSize']],
+        PopconfirmOkButton: {
+          name: '气泡确认框确定按钮',
+          theme: {
+            Container: {
+              name: '按钮整体样式',
+              desc: '为按钮配置整体样式',
+              normal: [
+                ['background'],
+                ['border'],
+                ['height'],
+                ['width'],
+                ['padding'],
+                ['margin'],
+                ['borderRadius'],
+                ['boxShadow'],
+              ],
+              hover: [['background'], ['border'], ['boxShadow']],
+              active: [['background'], ['border'], ['boxShadow']],
+              disabled: [['background'], ['border'], ['boxShadow']],
+              focus: [['background'], ['border'], ['boxShadow']],
+            },
+            ButtonText: {
+              name: '按钮文字样式',
+              desc: '为按钮文字配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+          },
+        },
+        PopconfirmCancelButton: {
+          name: '气泡确认框取消按钮',
+          theme: {
+            Container: {
+              name: '按钮整体样式',
+              desc: '为按钮配置整体样式',
+              normal: [
+                ['background'],
+                ['border'],
+                ['height'],
+                ['width'],
+                ['padding'],
+                ['margin'],
+                ['borderRadius'],
+                ['boxShadow'],
+              ],
+              hover: [['background'], ['border'], ['boxShadow']],
+              active: [['background'], ['border'], ['boxShadow']],
+              disabled: [['background'], ['border'], ['boxShadow']],
+              focus: [['background'], ['border'], ['boxShadow']],
+            },
+            ButtonText: {
+              name: '按钮文字样式',
+              desc: '为按钮文字配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+          },
         },
         PopconfirmIcon: {
           name: '气泡确认框标题前图标',
@@ -12662,6 +13072,160 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Popconfirm',
+      title: '自定义气泡确认框',
+      desc: '自定义气泡确认框',
+      props: {
+        createPortal: { type: 'boolean', desc: '是否全局弹出器气泡框', propsDefaultValue: true },
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        title: { type: 'React.Node', desc: '确认框标题显示内容', defaultValue: '' },
+        description: { type: 'React.Node', desc: '确认框描述显示内容', defaultValue: '' },
+        content: { type: 'React.Node', desc: '整个确认框显示内容' },
+        icon: { type: 'icon', desc: '确认框的标题的图标' },
+        placement: { type: 'DirectionType', desc: '气泡确认框显示的位置,十二个方向' },
+        visible: { type: 'boolean', desc: '是否显示出来', defaultValue: false },
+        defaultVisible: { type: 'boolean', desc: '默认是否显示出来', defaultValue: false },
+        action: {
+          type: 'ActionType',
+          desc: '页签位置，可配置 click,hover,focus',
+          defaultValue: 'click',
+        },
+        children: { type: 'React.Node', desc: '气泡确认框需要包含的子组件' },
+        okType: { type: 'ButtonType', desc: '气泡确认框确认按钮的类型', defaultValue: 'primary' },
+        cancelText: { type: 'string', desc: '取消按钮文字', defaultValue: '取消' },
+        okText: { type: 'string', desc: '确认按钮文字', defaultValue: '确定' },
+      },
+      events: {
+        onVisibleChange: {
+          desc: '气泡确认框改变时触发',
+          args: [{ name: 'event', desc: '气泡确认框显示改变的DOM事件', type: 'Object' }],
+        },
+        onCancel: {
+          desc: '气泡确认框点击取消时触发',
+          args: [{ name: 'event', desc: '气泡确认框点击取消的DOM事件', type: 'Object' }],
+        },
+        onConfirm: {
+          desc: '气泡确认框关闭时时触发',
+          args: [{ name: 'event', desc: '气泡确认框点击确认的DOM事件', type: 'Object' }],
+        },
+      },
+      type: {
+        DirectionType: [
+          'left',
+          'leftTop',
+          'leftBottom',
+          'right',
+          'rightTop',
+          'rightBottom',
+          'top',
+          'topLeft',
+          'topRight',
+          'bottom',
+          'bottomLeft',
+          'bottomRight',
+        ],
+        ActionType: ['click', 'hover', 'focus'],
+        ButtonType: ['default', 'primary', 'success', 'warning', 'danger'],
+      },
+      category: ['反馈'],
+      theme: {
+        PopconfirmContent: {
+          name: '气泡确认框容器',
+          theme: {
+            Container: {
+              name: '气泡确认框内容部分',
+              desc: '气泡确认框内容部分',
+              normal: [
+                ['background'],
+                ['color'],
+                ['padding'],
+                ['font'],
+                ['fontSize'],
+                ['width'],
+                ['height'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+              ],
+            },
+          },
+        },
+        PopconfirmOkButton: {
+          name: '气泡确认框确定按钮',
+          theme: {
+            Container: {
+              name: '按钮整体样式',
+              desc: '为按钮配置整体样式',
+              normal: [
+                ['background'],
+                ['border'],
+                ['height'],
+                ['width'],
+                ['padding'],
+                ['margin'],
+                ['borderRadius'],
+                ['boxShadow'],
+              ],
+              hover: [['background'], ['border'], ['boxShadow']],
+              active: [['background'], ['border'], ['boxShadow']],
+              disabled: [['background'], ['border'], ['boxShadow']],
+              focus: [['background'], ['border'], ['boxShadow']],
+            },
+            ButtonText: {
+              name: '按钮文字样式',
+              desc: '为按钮文字配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+          },
+        },
+        PopconfirmCancelButton: {
+          name: '气泡确认框取消按钮',
+          theme: {
+            Container: {
+              name: '按钮整体样式',
+              desc: '为按钮配置整体样式',
+              normal: [
+                ['background'],
+                ['border'],
+                ['height'],
+                ['width'],
+                ['padding'],
+                ['margin'],
+                ['borderRadius'],
+                ['boxShadow'],
+              ],
+              hover: [['background'], ['border'], ['boxShadow']],
+              active: [['background'], ['border'], ['boxShadow']],
+              disabled: [['background'], ['border'], ['boxShadow']],
+              focus: [['background'], ['border'], ['boxShadow']],
+            },
+            ButtonText: {
+              name: '按钮文字样式',
+              desc: '为按钮文字配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+          },
+        },
+      },
+      childrenWidget: [],
+      hideInTollPanel: true,
+      defaultTheme: { PopconfirmContent: { Container: { normal: { width: 250, height: 120 } } } },
+      aliasName: 'CustomPopconfirm',
+    },
+    target: Popconfirm,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAABFVJREFUeAHtnc+KE0EQxjvB5GaCQQiswr6AgcVnyGUPguDFkwiiJy8LPoUIXjwpinjyIggevOQZJKAvsKCBgEQSb8mSOLVOliQsU72d6kl17TeX/Onumqrv+6UnMD20czigABSAAlAACkABKHBxBSo+Q/r9/o35fP4y69vNXq/5jEEfHQpUq9U/WSa97PXo4ODgF5cVC0QOw/e9vb2rrVbrSq1W42KiXZECs9nMjUajk8Fg8DeDosNBUeVyp5mBYGi324CBE0thO/2AyTvyMJ/lC7NkgchGd2lmKIyCRvUK5B52uURZIOg/Ay4TnIz628lDn/9/LBD6S0WGkgoACEk1DcQCEAZMlCwBQEiqaSAWgDBgomQJAEJSTQOxAIQBEyVLABCSahqIBSAMmChZAoCQVNNALABhwETJEgCEpJoGYgEIAyZKlgAgJNU0EAtAGDBRsgQAIammgVgAwoCJkiUACEk1DcQCEAZMlCwBQEiqaSAWgDBgomQJAEJSTQOxAIQBEyVLUPsAzmQyccfHx246nUrWGxyrXq+7/f1912g01mJ8++Hcqw/O/R6tfb2zD9dbzj194NztW2EpqAWCYDjPgLAytx81Ho9PAe10OmvBNMFAiRGYlNO752tpen9Qe8mgmWHz1+hdVYSOzWbz3NlKy8ywWvI2OakFYrVAvC9PAbWXDF8JPn76Wtj1/r3D03bffoXBtmh8/6J48MNn/9t9+xVHC2/FDBGuncmRAMKkreFFAYhw7UyOBBAmbQ0vCkCEa2dyJIAwaWt4UQAiXDuTIwGESVvDiwIQ4dqZHAkgTNoaXhSACNfO5Mjk72Us71Vw7vj24+KEti/vVXDjfftxcULbMUOEKmd0nFogaIUSLUrRclAulNPmQSuUtB3b5KT2kkGrpTQuods0n5araVo1tVxCt5mn72e1QNBqqc3lar5FldmP1i6GLlcrM0/fc6m9ZPgWgH6yCrBA0I4stAkHjrQVIA/z3XUKC2GByEb3aEeWwihoVK9A7mGPS5QFgvZqou15hsPhCWYKTk597eQZeZdvsXTEZcjuuUUBsAkbJ6Pe9vwy4b0Jm95KkBkUgAK7V8DrklFmmncfLw7nC/d6sXA3yzzvrs5Vqbif1Yp78vlNpfgBk5ISZP9UlpTH2WkuEwxUNIFPNZ8JsOM36oC4LDPDqu+aalYHxKpQeF++AgCifM1VnxFAqLan/OTU3u28qBTcU9PLeMsVSbH7L8+X2itmiNQci5wvgIgscGrhAURqjkXOF0BEFji18AAiNcci5wsgIgucWngAkZpjkfMFEJEFTi08gEjNscj5AojIAqcWHkCk5ljkfAFEZIFTCw8gUnMscr4AIrLAqYUHEKk5Fjlfdauu7zzKVhhewuPL22z9tYIDM4QCEzSlACA0uaEgFwChwARNKagDgp5k0iRQGbloqlkdEPRYmyaBYgNBtVLNsc+D+FAACkABKAAFoAAUiKnAP6YC1AiIuEaEAAAAAElFTkSuQmCC',
+  },
+  {
+    meta: {
       widgetName: 'Popover',
       title: '气泡卡片',
       desc: '气泡式的卡片浮层',
@@ -12675,7 +13239,151 @@ export default [
           defaultValue: 'This is description!',
         },
         content: { type: 'React.Node', desc: '整个卡片显示内容' },
-        clear: { type: 'React.Node', desc: '关闭卡片的操作内容' },
+        clearIcon: { type: 'icon', desc: '关闭气泡卡片的图标' },
+        showClearButton: { type: 'boolean', desc: '是否显示关闭按钮', defaultValue: true },
+        placement: { type: 'DirectionType', desc: '气泡卡片显示的位置,十二个方向' },
+        visible: { type: 'boolean', desc: '是否显示出来', defaultValue: false },
+        defaultVisible: { type: 'boolean', desc: '默认是否显示出来', defaultValue: false },
+        action: {
+          type: 'ActionType',
+          desc: '页签位置，可配置 click,hover,focus',
+          defaultValue: 'click',
+        },
+        children: { type: 'React.Node', desc: '气泡卡片需要包含的子组件' },
+      },
+      events: {
+        onVisibleChange: {
+          desc: '气泡卡片改变时触发',
+          args: [{ name: 'event', desc: '气泡卡片显示改变的DOM事件', type: 'Object' }],
+        },
+        onClearClick: {
+          desc: '气泡卡片关闭时时触发',
+          args: [{ name: 'event', desc: '气泡卡片关闭的DOM事件', type: 'Object' }],
+        },
+      },
+      type: {
+        ActionType: ['click', 'hover', 'focus'],
+        DirectionType: [
+          'left',
+          'leftTop',
+          'leftBottom',
+          'right',
+          'rightTop',
+          'rightBottom',
+          'top',
+          'bottom',
+          'topLeft',
+          'top',
+          'topRight',
+          'bottom',
+          'bottomRight',
+          'bottomLeft',
+        ],
+      },
+      category: ['数据展示'],
+      designInfo: {
+        CustomPopover: {
+          sequence: 1,
+          title: '自定义气泡卡片',
+          desc: '自定义气泡卡片',
+          props: { title: '', description: '' },
+          defaultTheme: { PopoverContent: { Container: { normal: { width: 250, height: 120 } } } },
+          theme: {
+            PopoverContent: {
+              name: '气泡卡片框容器',
+              theme: {
+                Container: {
+                  name: '气泡卡片框内容部分',
+                  desc: '气泡卡片框内容部分',
+                  normal: [
+                    ['background'],
+                    ['color'],
+                    ['padding'],
+                    ['font'],
+                    ['fontSize'],
+                    ['width'],
+                    ['height'],
+                    ['boxShadow'],
+                    ['borderRadius'],
+                    ['border'],
+                  ],
+                },
+              },
+            },
+            PopoverClearIcon: {
+              name: '气泡卡片操作部分',
+              desc: '气泡卡片操作部分',
+              normal: [['color'], ['font'], ['fontSize']],
+              hover: [['color']],
+            },
+          },
+        },
+      },
+      theme: {
+        PopoverContent: {
+          name: '气泡卡片框容器',
+          theme: {
+            Container: {
+              name: '气泡卡片框内容部分',
+              desc: '气泡卡片框内容部分',
+              normal: [
+                ['background'],
+                ['color'],
+                ['padding'],
+                ['font'],
+                ['fontSize'],
+                ['width'],
+                ['height'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+              ],
+            },
+            TooltipTitle: {
+              name: '气泡卡片标题部分',
+              desc: '气泡卡片标题部分',
+              normal: [['color'], ['font'], ['fontSize'], ['margin', 'bottom']],
+            },
+            TooltipDescription: {
+              name: '气泡卡片描述部分',
+              desc: '气泡卡片描述部分',
+              normal: [['color'], ['font'], ['fontSize']],
+            },
+          },
+        },
+        PopoverClearIcon: {
+          name: '气泡卡片操作部分',
+          desc: '气泡卡片操作部分',
+          normal: [
+            ['opacity'],
+            ['background'],
+            ['width'],
+            ['height'],
+            ['color'],
+            ['font'],
+            ['fontSize'],
+          ],
+        },
+      },
+      childrenWidget: [],
+      hideInTollPanel: true,
+    },
+    target: Popover,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAABWCAYAAAAaC2InAAAAAXNSR0IArs4c6QAAA3xJREFUeAHtnb+LGkEUx2f90QhXJF1Iaq1CBP+BK2yvCaRIZSDB/uDIHxEOrlYSiNUVgTTXWtw/IBhSaZ2QLikCNp6YeXsrnIHzdofn2zfP7zan65uZ9/1+9o16jmPi/DEajZ4ul8sLf7O7Wq0e0TkccTlQrVb/+IzH9Xr9tNfr/UwyqN87nc5Rs9msNRqNuBQh29SBxWLh5vP5zWQy+evhPq9RpRLUdrtdg0fxOkAFmTE88nAvKl5Klyo1XknI/K4DGctuhZ5TMf3etSbu28SSmFLF4jDoAMAahEqSANYo2Nwvmi6/XOWy4PWrkzRu3/G5kjngIFSsUfgAC7BGHTAqCxULsEYdMCoLFQuwRh0wKgsVC7BGHTAqCxULsEYdMCoLFQuwRh0wKgsVC7BGHTAqK/fnsZvPWfP6sO/4vHkcahymYqPkARZgjTpgVBYqFmCNOmBUVu5XxXn1z2aznaGtVit9HHHbNm182T4bfg9Tcbh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsmg8Fg3e/3VSeJ5Io5MBwOsWtMMcviicZUHA+rQpkCbCG74gkG2HhYFcoUYAvZFU9whXampk2McdhwgFgSU6rYMe1MbUMWVGQsxxXaQ562G59Opzeo3HgvDGJHDLOt408TkoIfe4gX6Cbz/3/sYXMef+EAHIADcAAOwAFeB9IXT7xdPtzby3frZ/791QcfebxeuycPt4gvIkncL5/1tf9y1PuvH5Mf0grEwRLUpXPf3No9lhZbyniJ+1137oU0XPF/KaaVeihQ6UryWrPZSfS6Egfr1R2LKtQxmLhmcbBWn1N3XT9laBYHu8sAPMbnAPs32vlS2+7p8/n2/fvuvTm7fWTf8feNr+U8KlYLCeY8AJbZUC3dAawWEsx5ACyzoVq6A1gtJJjzAFhmQ7V0B7BaSDDnAbDMhmrpDmC1kGDOA2CZDdXSHcBqIcGcB8AyG6qlO4DVQoI5D4BlNlRLdwCrhQRzHuKL2U7e+vUEB3hcffLrFgUPVKyg2ZJDiYPN1ttKaix9rDI0i4P1Ll+X7rR8AuKaxcHSynjnF1HLe1vSiF5rqll4eHGwtCKeVsb76emyjClKyl/SRhrL+BYAafwHHZ2+Cpkpg+QAAAAASUVORK5CYII=',
+  },
+  {
+    meta: {
+      widgetName: 'Popover',
+      title: '自定义气泡卡片',
+      desc: '自定义气泡卡片',
+      props: {
+        createPortal: { type: 'boolean', desc: '是否全局弹出器气泡框', propsDefaultValue: true },
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: '' },
+        description: { type: 'React.Node', desc: '卡片描述显示内容', defaultValue: '' },
+        content: { type: 'React.Node', desc: '整个卡片显示内容' },
+        clearIcon: { type: 'icon', desc: '关闭气泡卡片的图标' },
         showClearButton: { type: 'boolean', desc: '是否显示关闭按钮', defaultValue: true },
         placement: { type: 'DirectionType', desc: '气泡卡片显示的位置,十二个方向' },
         visible: { type: 'boolean', desc: '是否显示出来', defaultValue: false },
@@ -12737,54 +13445,23 @@ export default [
                 ['border'],
               ],
             },
-            TooltipTitle: {
-              name: '气泡卡片标题部分',
-              desc: '气泡卡片标题部分',
-              normal: [
-                ['opacity'],
-                ['background'],
-                ['width'],
-                ['height'],
-                ['color'],
-                ['font'],
-                ['fontSize'],
-              ],
-            },
-            TooltipDescription: {
-              name: '气泡卡片描述部分',
-              desc: '气泡卡片描述部分',
-              normal: [
-                ['opacity'],
-                ['background'],
-                ['width'],
-                ['height'],
-                ['color'],
-                ['font'],
-                ['fontSize'],
-              ],
-            },
           },
         },
         PopoverClearIcon: {
           name: '气泡卡片操作部分',
           desc: '气泡卡片操作部分',
-          normal: [
-            ['opacity'],
-            ['background'],
-            ['width'],
-            ['height'],
-            ['color'],
-            ['font'],
-            ['fontSize'],
-          ],
+          normal: [['color'], ['font'], ['fontSize']],
+          hover: [['color']],
         },
       },
       childrenWidget: [],
       hideInTollPanel: true,
+      defaultTheme: { PopoverContent: { Container: { normal: { width: 250, height: 120 } } } },
+      aliasName: 'CustomPopover',
     },
     target: Popover,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAABWCAYAAAAaC2InAAAAAXNSR0IArs4c6QAAA3xJREFUeAHtnb+LGkEUx2f90QhXJF1Iaq1CBP+BK2yvCaRIZSDB/uDIHxEOrlYSiNUVgTTXWtw/IBhSaZ2QLikCNp6YeXsrnIHzdofn2zfP7zan65uZ9/1+9o16jmPi/DEajZ4ul8sLf7O7Wq0e0TkccTlQrVb/+IzH9Xr9tNfr/UwyqN87nc5Rs9msNRqNuBQh29SBxWLh5vP5zWQy+evhPq9RpRLUdrtdg0fxOkAFmTE88nAvKl5Klyo1XknI/K4DGctuhZ5TMf3etSbu28SSmFLF4jDoAMAahEqSANYo2Nwvmi6/XOWy4PWrkzRu3/G5kjngIFSsUfgAC7BGHTAqCxULsEYdMCoLFQuwRh0wKgsVC7BGHTAqCxULsEYdMCoLFQuwRh0wKgsVC7BGHTAqK/fnsZvPWfP6sO/4vHkcahymYqPkARZgjTpgVBYqFmCNOmBUVu5XxXn1z2aznaGtVit9HHHbNm182T4bfg9Tcbh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsCrGo84ckBbLh3qlsmg8Fg3e/3VSeJ5Io5MBwOsWtMMcviicZUHA+rQpkCbCG74gkG2HhYFcoUYAvZFU9whXampk2McdhwgFgSU6rYMe1MbUMWVGQsxxXaQ562G59Opzeo3HgvDGJHDLOt408TkoIfe4gX6Cbz/3/sYXMef+EAHIADcAAOwAFeB9IXT7xdPtzby3frZ/791QcfebxeuycPt4gvIkncL5/1tf9y1PuvH5Mf0grEwRLUpXPf3No9lhZbyniJ+1137oU0XPF/KaaVeihQ6UryWrPZSfS6Egfr1R2LKtQxmLhmcbBWn1N3XT9laBYHu8sAPMbnAPs32vlS2+7p8/n2/fvuvTm7fWTf8feNr+U8KlYLCeY8AJbZUC3dAawWEsx5ACyzoVq6A1gtJJjzAFhmQ7V0B7BaSDDnAbDMhmrpDmC1kGDOA2CZDdXSHcBqIcGcB8AyG6qlO4DVQoI5D4BlNlRLdwCrhQRzHuKL2U7e+vUEB3hcffLrFgUPVKyg2ZJDiYPN1ttKaix9rDI0i4P1Ll+X7rR8AuKaxcHSynjnF1HLe1vSiF5rqll4eHGwtCKeVsb76emyjClKyl/SRhrL+BYAafwHHZ2+Cpkpg+QAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -12821,7 +13498,13 @@ export default [
           desc: '进度条展示内容展示位置，可设置为 inside 或不设',
           defaultValue: 'default',
         },
-        iconClass: { type: 'string', desc: '进度条展示的图标,仅在success或error状态生效' },
+        iconClass: {
+          type: 'string',
+          desc:
+            '进度条展示的图标,在success或error状态下无配置successIconClass或errorIconClass时生效',
+        },
+        errorIconClass: { type: 'string', desc: '进度条展示的图标,仅在error状态生效' },
+        successIconClass: { type: 'string', desc: '进度条展示的图标,仅在success状态生效' },
       },
       type: {
         ProgressType: ['line', 'circle', 'dashboard'],
@@ -12892,7 +13575,13 @@ export default [
         ProgressOutLine: {
           name: '进度条底色线配置',
           desc: '进度条底色线配置',
-          normal: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
+          normal: [
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['margin', 'right'],
+          ],
         },
         ProgressInnerLine_Default: {
           name: '进度条进度线默认配置',
@@ -12981,7 +13670,13 @@ export default [
           desc: '进度条展示内容展示位置，可设置为 inside 或不设',
           defaultValue: 'default',
         },
-        iconClass: { type: 'string', desc: '进度条展示的图标,仅在success或error状态生效' },
+        iconClass: {
+          type: 'string',
+          desc:
+            '进度条展示的图标,在success或error状态下无配置successIconClass或errorIconClass时生效',
+        },
+        errorIconClass: { type: 'string', desc: '进度条展示的图标,仅在error状态生效' },
+        successIconClass: { type: 'string', desc: '进度条展示的图标,仅在success状态生效' },
       },
       type: {
         ProgressType: ['line', 'circle', 'dashboard'],
@@ -13055,7 +13750,13 @@ export default [
           desc: '进度条展示内容展示位置，可设置为 inside 或不设',
           defaultValue: 'default',
         },
-        iconClass: { type: 'string', desc: '进度条展示的图标,仅在success或error状态生效' },
+        iconClass: {
+          type: 'string',
+          desc:
+            '进度条展示的图标,在success或error状态下无配置successIconClass或errorIconClass时生效',
+        },
+        errorIconClass: { type: 'string', desc: '进度条展示的图标,仅在error状态生效' },
+        successIconClass: { type: 'string', desc: '进度条展示的图标,仅在success状态生效' },
       },
       type: {
         ProgressType: ['line', 'circle', 'dashboard'],
@@ -13538,8 +14239,8 @@ export default [
           type: 'object[]',
           desc: '自定义图标对象',
           meta: [
-            { key: 'default', title: '默认图标名称', type: 'string' },
-            { key: 'primary', title: '选中状态图标名称', type: 'string' },
+            { key: 'default', title: '默认图标名称', type: 'icon' },
+            { key: 'primary', title: '选中状态图标名称', type: 'icon' },
             { key: 'danger', title: '低分值图标名称', type: 'string' },
             { key: 'amazed', title: '高分值图标名称', type: 'string' },
             { key: 'half', title: '半星图标名称', type: 'string' },
@@ -13552,7 +14253,7 @@ export default [
             half: 'lugia-icon-finacial_half_star',
           },
         },
-        value: { type: 'number', desc: '当前分值', defaultValue: 0 },
+        value: { type: 'number', desc: '当前分值' },
         character: { type: 'string | React$Element<any>', desc: '自定义展示字符' },
       },
       events: {
@@ -13687,8 +14388,8 @@ export default [
           type: 'object[]',
           desc: '自定义图标对象',
           meta: [
-            { key: 'default', title: '默认图标名称', type: 'string' },
-            { key: 'primary', title: '选中状态图标名称', type: 'string' },
+            { key: 'default', title: '默认图标名称', type: 'icon' },
+            { key: 'primary', title: '选中状态图标名称', type: 'icon' },
             { key: 'danger', title: '低分值图标名称', type: 'string' },
             { key: 'amazed', title: '高分值图标名称', type: 'string' },
             { key: 'half', title: '半星图标名称', type: 'string' },
@@ -13699,7 +14400,7 @@ export default [
             amazed: 'lugia-icon-financial_smile',
           },
         },
-        value: { type: 'number', desc: '当前分值', defaultValue: 0 },
+        value: { type: 'number', desc: '当前分值' },
         character: { type: 'string | React$Element<any>', desc: '自定义展示字符' },
       },
       events: {
@@ -13774,8 +14475,8 @@ export default [
           type: 'object[]',
           desc: '自定义图标对象',
           meta: [
-            { key: 'default', title: '默认图标名称', type: 'string' },
-            { key: 'primary', title: '选中状态图标名称', type: 'string' },
+            { key: 'default', title: '默认图标名称', type: 'icon' },
+            { key: 'primary', title: '选中状态图标名称', type: 'icon' },
             { key: 'danger', title: '低分值图标名称', type: 'string' },
             { key: 'amazed', title: '高分值图标名称', type: 'string' },
             { key: 'half', title: '半星图标名称', type: 'string' },
@@ -13788,7 +14489,7 @@ export default [
             half: 'lugia-icon-finacial_half_star',
           },
         },
-        value: { type: 'number', desc: '当前分值', defaultValue: 0 },
+        value: { type: 'number', desc: '当前分值' },
         character: {
           type: 'string | React$Element<any>',
           desc: '自定义展示字符',
@@ -18437,8 +19138,6 @@ export default [
           name: '组件打开',
           desc: '开关组件打开的样式配置',
           normal: [
-            ['width'],
-            ['height'],
             ['background'],
             ['fontSize'],
             ['borderRadius'],
@@ -18455,8 +19154,6 @@ export default [
           name: '组件关闭',
           desc: '开关组件打开的样式配置',
           normal: [
-            ['width'],
-            ['height'],
             ['background'],
             ['fontSize'],
             ['borderRadius'],
@@ -18479,7 +19176,6 @@ export default [
             ['borderRadius'],
             ['border'],
             ['boxShadow'],
-            ['color'],
           ],
           hover: [],
           active: [
@@ -18495,29 +19191,12 @@ export default [
         Container: {
           name: '开关整体',
           desc: '开关整体的样式配置',
-          normal: [
-            ['width'],
-            ['height'],
-            ['border'],
-            ['margin'],
-            ['padding'],
-            ['background'],
-            ['opacity'],
-          ],
+          normal: [['width'], ['height'], ['margin'], ['padding']],
           hover: [],
           active: [],
-          disabled: [
-            ['width'],
-            ['height'],
-            ['border'],
-            ['margin'],
-            ['padding'],
-            ['background'],
-            ['opacity'],
-          ],
+          disabled: [['width'], ['height'], ['margin'], ['padding']],
         },
       },
-      defaultTheme: { Container: { normal: { width: 38 } } },
       childrenWidget: [],
     },
     target: Switch,
@@ -18606,6 +19285,15 @@ export default [
           args: [
             { name: 'expanded', desc: '当前是否展开', type: 'boolean' },
             { name: 'record', desc: '当前行数据', type: 'Object' },
+          ],
+        },
+        onChange: {
+          desc: '点击排序变化时触发',
+          args: [
+            { name: 'column', desc: '当前列的表头数据', type: 'Object' },
+            { name: 'filed', desc: '当前列数据在数据项中对应的key', type: 'String' },
+            { name: 'order', desc: '当前排序类型', type: 'String' },
+            { name: 'data', desc: '当前排完序的数据', type: 'Array' },
           ],
         },
       },
@@ -20461,14 +21149,14 @@ export default [
         InputPrefix: {
           name: '前缀图标',
           desc: '前缀图标配置',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['padding'], ['margin']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
         InputSuffix: {
           name: '后缀图标',
           desc: '后缀图标配置',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['padding'], ['margin']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
@@ -20513,14 +21201,6 @@ export default [
           ],
           hover: [],
           active: [],
-        },
-        ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
-        GroupDate: {
-          name: '分类日期',
-          desc: '分类日期配置/年/月/周',
-          normal: [['color'], ['font']],
-          hover: [['color'], ['font']],
-          active: [['color'], ['font'], ['background'], ['borderRadius']],
         },
         TimePanelHead: {
           name: '时间板头部',
@@ -20629,7 +21309,7 @@ export default [
         TooltipTitle: {
           name: '标题部分',
           desc: '标题部分',
-          normal: [['fontSize'], ['font'], ['color']],
+          normal: [['fontSize'], ['font'], ['color'], ['margin', 'bottom']],
           hover: [],
           clicked: [],
           disabled: [],
@@ -24811,8 +25491,24 @@ export default [
             Container: {
               name: '文件上传区域',
               desc: '区域拖拽上传类型的样式配置',
-              normal: [['width'], ['height'], ['fontSize'], ['color']],
-              disabled: [['color']],
+              normal: [
+                ['width'],
+                ['height'],
+                ['fontSize'],
+                ['color'],
+                ['border'],
+                ['borderRadius'],
+                ['font'],
+              ],
+              hover: [['border']],
+              disabled: [['color'], ['border'], ['background']],
+            },
+            uploadAreaText: {
+              name: '上传文字',
+              desc: '上传文字的样式配置',
+              normal: [['fontSize'], ['color'], ['font']],
+              hover: [['color']],
+              disabled: [['color'], ['cursor']],
             },
             UploadList: {
               name: '上传列表',
@@ -24860,23 +25556,37 @@ export default [
                 Container: {
                   name: '按钮整体样式',
                   desc: '按钮部分的样式配置',
-                  normal: [['width'], ['fontSize'], ['background']],
+                  normal: [['width'], ['fontSize'], ['font'], ['background']],
                   disabled: [['background']],
                 },
                 ButtonText: {
                   name: '按钮文字样式',
                   desc: '为按钮文字配置样式',
-                  normal: [['color'], ['font']],
+                  normal: [['color'], ['font'], ['fontSize']],
                   disabled: [['color']],
                 },
               },
             },
-            Container: {
-              name: '文件上传区域',
+            UploadInputTheme: {
+              name: '上传框配置',
               desc: '默认上传框的样式',
-              normal: [['width'], ['height'], ['boxShadow'], ['border']],
+              normal: [
+                ['boxShadow'],
+                ['border'],
+                ['borderRadius'],
+                ['background'],
+                ['padding'],
+                ['margin'],
+              ],
               hover: [['boxShadow'], ['border']],
               disabled: [['border'], ['cursor']],
+            },
+            Container: {
+              name: '文件上传区域',
+              desc: '整体样式样式',
+              normal: [['width'], ['height'], ['boxShadow']],
+              hover: [['boxShadow']],
+              disabled: [['cursor']],
             },
             UploadList: {
               name: '上传列表',
@@ -25316,8 +26026,24 @@ export default [
         Container: {
           name: '文件上传区域',
           desc: '区域拖拽上传类型的样式配置',
-          normal: [['width'], ['height'], ['fontSize'], ['color']],
-          disabled: [['color']],
+          normal: [
+            ['width'],
+            ['height'],
+            ['fontSize'],
+            ['color'],
+            ['border'],
+            ['borderRadius'],
+            ['font'],
+          ],
+          hover: [['border']],
+          disabled: [['color'], ['border'], ['background']],
+        },
+        uploadAreaText: {
+          name: '上传文字',
+          desc: '上传文字的样式配置',
+          normal: [['fontSize'], ['color'], ['font']],
+          hover: [['color']],
+          disabled: [['color'], ['cursor']],
         },
         UploadList: {
           name: '上传列表',
@@ -25450,23 +26176,37 @@ export default [
             Container: {
               name: '按钮整体样式',
               desc: '按钮部分的样式配置',
-              normal: [['width'], ['fontSize'], ['background']],
+              normal: [['width'], ['fontSize'], ['font'], ['background']],
               disabled: [['background']],
             },
             ButtonText: {
               name: '按钮文字样式',
               desc: '为按钮文字配置样式',
-              normal: [['color'], ['font']],
+              normal: [['color'], ['font'], ['fontSize']],
               disabled: [['color']],
             },
           },
         },
-        Container: {
-          name: '文件上传区域',
+        UploadInputTheme: {
+          name: '上传框配置',
           desc: '默认上传框的样式',
-          normal: [['width'], ['height'], ['boxShadow'], ['border']],
+          normal: [
+            ['boxShadow'],
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+            ['padding'],
+            ['margin'],
+          ],
           hover: [['boxShadow'], ['border']],
           disabled: [['border'], ['cursor']],
+        },
+        Container: {
+          name: '文件上传区域',
+          desc: '整体样式样式',
+          normal: [['width'], ['height'], ['boxShadow']],
+          hover: [['boxShadow']],
+          disabled: [['cursor']],
         },
         UploadList: {
           name: '上传列表',
