@@ -1190,15 +1190,12 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const { disabled } = props;
       const areaThemeProps = this.props.getPartOfThemeProps('Container');
       const uploadAreaText = this.props.getPartOfThemeProps('uploadAreaText');
-      const TextColor = deepMerge(
-        { themeConfig: { normal: { border: { bottom: {} } } } },
-        uploadAreaText
-      );
+      const { themeConfig: { normal: { color: textColor } = {} } = {} } = uploadAreaText;
       const areaTextBlue = deepMerge(
         {
           normal: {
             border: {
-              bottom: { width: 1, style: 'solid', color: TextColor.themeConfig.normal.color },
+              bottom: { width: 1, style: 'solid', color: textColor },
             },
           },
         },
