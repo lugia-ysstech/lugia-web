@@ -34,12 +34,12 @@ export const isEqualArray = (oldValue: ?Array<Object>, newValue: ?Array<Object>)
   return JSON.stringify(oldValue) === JSON.stringify(newValue);
 };
 
-export const isObject = obj => {
+export const isObject = (obj: any) => {
   return Object.prototype.toString.call(obj) === '[object Object]';
 };
 
 export const isEqualObject = (oldValue: ?Object, newValue: ?Object): boolean => {
-  if (!isObject(oldValue) || !isObject(newValue)) {
+  if (!oldValue || !newValue || !isObject(oldValue) || !isObject(newValue)) {
     return false;
   }
   const oldObjKeys = Object.keys(oldValue);
@@ -52,7 +52,7 @@ export const isEqualObject = (oldValue: ?Object, newValue: ?Object): boolean => 
   });
 };
 
-export const isInArray = (arrayData: Array<Object>, target: Object): boolean => {
+export const isInArray = (arrayData: ?Array<Object>, target: Object): boolean => {
   return (
     arrayData &&
     target &&
