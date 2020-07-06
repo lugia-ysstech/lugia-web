@@ -55,6 +55,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
     const {
       customEditElement,
       editType,
+      columnType,
       selectData,
       align,
       allowEdit,
@@ -78,12 +79,13 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
       : '';
     const isAllowSelect = allowEdit;
     if (editing && !disableEdit) {
+      const currentEditType = isLugiaHead ? columnType : editType;
       return (
         <TdContainer>
           <EditElement
             value={defaultText}
             autoFocus={true}
-            type={editType}
+            type={currentEditType}
             listener={listener}
             data={selectData}
           />
