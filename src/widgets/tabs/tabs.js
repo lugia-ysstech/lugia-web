@@ -259,6 +259,10 @@ export function getDefaultData(props: Object) {
   return setKeyValue(configData);
 }
 
+export function hasTargetInPropsActiveValue(props: Object) {
+  return hasTargetInProps('activeValue', props) || hasTargetInProps('activityValue', props);
+}
+
 class TabsBox extends Component<TabsProps, TabsState> {
   static defaultProps = {
     tabType: 'line',
@@ -283,7 +287,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       defaultActivityValue ||
       (theData.length !== 0 ? theData[0].value : null);
     if (state) {
-      theActivityValue = hasTargetInProps('activityValue', props)
+      theActivityValue = hasTargetInPropsActiveValue(props)
         ? theActivityValue
         : state.activityValue;
       theData =
@@ -400,7 +404,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
   onChange = (res: Object) => {
     const { onChange } = this.props;
     onChange && onChange(res);
-    if (hasTargetInProps('activityValue', this.props)) {
+    if (hasTargetInPropsActiveValue(this.props)) {
       return;
     }
     const { activityValue } = res;
