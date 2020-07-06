@@ -74,7 +74,7 @@
           },
           {
             "name": "前缀图标",
-            "path": ["PopconfirmContent", "PopconfirmIcon"],
+            "path": ["PopconfirmIcon"],
             "description": {
               "textPart": {
                 "text": "前缀图标",
@@ -197,7 +197,7 @@
           },
           {
             "name": "标题文本",
-            "path": ["PopconfirmContent", "PopconfirmTitle"],
+            "path": ["PopconfirmTitle"],
             "description": {
               "textPart": {
                 "text": "标题文本",
