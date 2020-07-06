@@ -157,7 +157,7 @@ export default class EditTableEventListener extends Listener<any> {
     this.dataKeyMap = this.getKeyMaps(props);
   };
 
-  getKeyMaps = (props: Object) => {
+  getKeyMaps = (props: Object = {}) => {
     const { columns, data, rowKey = 'key' } = props;
     const dataKeyMap = { dataMap: {}, columnsMap: {} };
     data &&
