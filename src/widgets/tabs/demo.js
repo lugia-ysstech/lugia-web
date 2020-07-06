@@ -1147,6 +1147,7 @@ export default class TabsDemo extends React.Component<any, any> {
     };
     return (
       <div>
+        <Tabs data={defaultData} activeValue={'Tab3'} />
         <Tabs
           tabType={'card'}
           data={defaultData}
