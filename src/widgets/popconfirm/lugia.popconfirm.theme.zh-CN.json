@@ -194,44 +194,6 @@
                 "hidden": true
               }
             }
-          },
-          {
-            "name": "标题文本",
-            "path": ["PopconfirmTitle"],
-            "description": {
-              "textPart": {
-                "text": "标题文本",
-                "desc": "标题文本"
-              },
-              "appearancePart": {
-                "hidden": true
-              }
-            },
-            "props": [
-              {
-                "name": "title",
-                "typeInTheme": "text"
-              }
-            ]
-          },
-          {
-            "name": "前缀图标",
-            "path": ["PopconfirmIcon"],
-            "description": {
-              "textPart": {
-                "text": "前缀图标",
-                "desc": "前缀图标"
-              },
-              "appearancePart": {
-                "hidden": true
-              }
-            },
-            "props": [
-              {
-                "name": "icon",
-                "typeInTheme": "icon"
-              }
-            ]
           }
         ]
       },
