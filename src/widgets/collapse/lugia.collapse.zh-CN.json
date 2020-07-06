@@ -44,7 +44,7 @@
       ]
     },
     "arrowIcon": {
-      "type": "string",
+      "type": "icon",
       "desc": "自定义图标，showArrow 为 true 时有效"
     }
   },
