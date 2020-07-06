@@ -19,7 +19,9 @@ const ContentContainer = CSSComponent({
   disabled: {
     selectNames: [],
   },
-  css: '',
+  css: `
+  height: 100%;
+  `,
 });
 
 type TabContentState = {};
