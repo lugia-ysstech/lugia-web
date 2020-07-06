@@ -36,7 +36,7 @@
           },
           {
             "name": "标题文本",
-            "path": ["PopconfirmContent", "TooltipTitle"],
+            "path": [ "PopconfirmTitle"],
             "description": {
               "textPart": {
                 "text": "标题文本",
@@ -49,25 +49,6 @@
             "props": [
               {
                 "name": "title",
-                "typeInTheme": "text"
-              }
-            ]
-          },
-          {
-            "name": "描述文本",
-            "path": ["PopconfirmContent", "TooltipDescription"],
-            "description": {
-              "textPart": {
-                "text": "描述文本",
-                "desc": "描述文本"
-              },
-              "appearancePart": {
-                "hidden": true
-              }
-            },
-            "props": [
-              {
-                "name": "description",
                 "typeInTheme": "text"
               }
             ]
