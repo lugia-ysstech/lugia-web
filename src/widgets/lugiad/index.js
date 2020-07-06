@@ -49,7 +49,7 @@ class Lugiad extends React.Component<any> {
     const { props } = this;
     return (
       <LugiadContainer themeProps={props.getPartOfThemeProps('Container')}>
-        {props.children}
+        {props.content}
       </LugiadContainer>
     );
   }
