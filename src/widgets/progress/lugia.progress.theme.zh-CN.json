@@ -137,6 +137,7 @@
           {
             "name": "进度条成功图标配置",
             "path": ["ProgressLineSuccessIcon"],
+            "props": [{ "name": "successIconClass", "typeInTheme": "icon" }],
             "description": {
               "appearancePart": {
                 "text": "成功图标",
@@ -175,6 +176,7 @@
           {
             "name": "进度条失败图标配置",
             "path": ["ProgressLineErrorIcon"],
+            "props": [{ "name": "errorIconClass", "typeInTheme": "icon" }],
             "description": {
               "appearancePart": {
                 "text": "外观",

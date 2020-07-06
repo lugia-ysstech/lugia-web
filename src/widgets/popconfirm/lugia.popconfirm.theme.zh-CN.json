@@ -18,7 +18,7 @@
     ],
     "data": [
       {
-        "title": "背景框",
+        "title": "气泡框",
         "iconClass": "popconfirm",
         "data": [
           {
@@ -28,12 +28,15 @@
               "appearancePart": {
                 "text": "背景框",
                 "desc": "背景框"
+              },
+              "textPart": {
+                "hidden": true
               }
             }
           },
           {
             "name": "标题文本",
-            "path": ["PopconfirmContent", "TooltipTitle"],
+            "path": [ "PopconfirmTitle"],
             "description": {
               "textPart": {
                 "text": "标题文本",
@@ -51,12 +54,12 @@
             ]
           },
           {
-            "name": "描述文本",
-            "path": ["PopconfirmContent", "TooltipDescription"],
+            "name": "前缀图标",
+            "path": ["PopconfirmIcon"],
             "description": {
               "textPart": {
-                "text": "描述文本",
-                "desc": "描述文本"
+                "text": "前缀图标",
+                "desc": "前缀图标"
               },
               "appearancePart": {
                 "hidden": true
@@ -64,8 +67,8 @@
             },
             "props": [
               {
-                "name": "description",
-                "typeInTheme": "text"
+                "name": "icon",
+                "typeInTheme": "icon"
               }
             ]
           }
@@ -77,13 +80,165 @@
         "data": [
           {
             "name": "背景",
-            "path": ["PopconfirmButton"],
+            "path": ["PopconfirmOkButton", "Container"],
             "description": {
               "appearancePart": {
                 "text": "背景",
                 "desc": "背景"
               }
             }
+          },
+          {
+            "name": "文本",
+            "path": ["PopconfirmOkButton", "ButtonText"],
+            "description": {
+              "textPart": {
+                "text": "文本",
+                "desc": "文本"
+              }
+            },
+            "props": [
+              {
+                "name": "okText",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "取消按钮",
+        "iconClass": "buttonCancel",
+        "data": [
+          {
+            "name": "背景",
+            "path": ["PopconfirmCancelButton", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "文本",
+            "path": ["PopconfirmCancelButton", "ButtonText"],
+            "description": {
+              "textPart": {
+                "text": "文本",
+                "desc": "文本"
+              }
+            },
+            "props": [
+              {
+                "name": "cancelText",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Popconfirm",
+    "aliasName": "CustomPopconfirm",
+    "title": "气泡确认框",
+    "viewProps": [
+      {
+        "name": "placement",
+        "text": "显示位置"
+      },
+      {
+        "name": "popArrowType",
+        "text": "箭头风格"
+      },
+      {
+        "name": "okType",
+        "text": "确定按钮类型"
+      }
+    ],
+    "data": [
+      {
+        "title": "气泡框",
+        "iconClass": "popconfirm",
+        "data": [
+          {
+            "name": "背景框",
+            "path": ["PopconfirmContent", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景框",
+                "desc": "背景框"
+              },
+              "textPart": {
+                "hidden": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "确认按钮",
+        "iconClass": "buttonAffirm",
+        "data": [
+          {
+            "name": "背景",
+            "path": ["PopconfirmOkButton", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "文本",
+            "path": ["PopconfirmOkButton", "ButtonText"],
+            "description": {
+              "textPart": {
+                "text": "文本",
+                "desc": "文本"
+              }
+            },
+            "props": [
+              {
+                "name": "okText",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "取消按钮",
+        "iconClass": "buttonCancel",
+        "data": [
+          {
+            "name": "背景",
+            "path": ["PopconfirmCancelButton", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "文本",
+            "path": ["PopconfirmCancelButton", "ButtonText"],
+            "description": {
+              "textPart": {
+                "text": "文本",
+                "desc": "文本"
+              }
+            },
+            "props": [
+              {
+                "name": "cancelText",
+                "typeInTheme": "text"
+              }
+            ]
           }
         ]
       }

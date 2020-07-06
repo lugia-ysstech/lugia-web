@@ -169,6 +169,12 @@
           {
             "name": "头部单箭头",
             "path": ["HeadSingleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelOne",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部单箭头",
@@ -179,6 +185,12 @@
           {
             "name": "头部双箭头",
             "path": ["HeadDoubleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelTwo",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部双箭头",
@@ -590,6 +602,12 @@
           {
             "name": "头部单箭头",
             "path": ["HeadSingleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelOne",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部单箭头",
@@ -600,6 +618,12 @@
           {
             "name": "头部双箭头",
             "path": ["HeadDoubleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelTwo",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部双箭头",
@@ -1001,6 +1025,12 @@
           {
             "name": "头部单箭头",
             "path": ["HeadSingleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelOne",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部单箭头",
@@ -1216,6 +1246,12 @@
           {
             "name": "头部单箭头",
             "path": ["HeadSingleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelOne",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部单箭头",
@@ -1443,6 +1479,12 @@
           {
             "name": "头部单箭头",
             "path": ["HeadSingleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelOne",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部单箭头",
@@ -1453,6 +1495,12 @@
           {
             "name": "头部双箭头",
             "path": ["HeadDoubleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelTwo",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部双箭头",
@@ -1789,6 +1837,12 @@
           {
             "name": "头部单箭头",
             "path": ["HeadSingleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelOne",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部单箭头",

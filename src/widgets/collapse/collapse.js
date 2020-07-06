@@ -46,6 +46,7 @@ export default ThemeProvider(
         accordion,
         zebraStripe,
         showArrow,
+        arrowIcon,
         data,
         getPartOfThemeHocProps,
       } = this.props;
@@ -58,6 +59,7 @@ export default ThemeProvider(
             {...getPartOfThemeHocProps('Panel')}
             count={0}
             showArrow={showArrow}
+            arrowIcon={arrowIcon}
           >
             Default Panel
           </Panel>
@@ -72,6 +74,7 @@ export default ThemeProvider(
             accordion={accordion}
             zebraStripe={zebraStripe}
             showArrow={showArrow}
+            arrowIcon={arrowIcon}
             {...getPartOfThemeHocProps('Panel')}
             count={index}
           >
@@ -81,6 +84,7 @@ export default ThemeProvider(
       }
       return React.Children.map(children, (child, index) => {
         if (React.isValidElement(child)) {
+          const chosenIcon = child.props.arrowIcon || arrowIcon;
           return React.cloneElement(child, {
             onClick: this.handleClick,
             open: this.handleOpen(child.props.value),
@@ -89,6 +93,7 @@ export default ThemeProvider(
             showArrow,
             ...getPartOfThemeHocProps('Panel'),
             count: index,
+            arrowIcon: chosenIcon,
           });
         }
       });
