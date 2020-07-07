@@ -107,16 +107,6 @@
                 "desc": "面板中外观配置的区块显示文本"
               }
             }
-          },
-          {
-            "name": "选中内框样式",
-            "path": ["Checkbox", "CheckboxInnerChecked"],
-            "description": {
-              "appearancePart": {
-                "text": "内框",
-                "desc": "面板中外观配置的区块显示文本"
-              }
-            }
           }
         ]
       },
@@ -133,16 +123,6 @@
                 "desc": "面板中外观配置的区块显示文本"
               }
             }
-          },
-          {
-            "name": "半选内框样式",
-            "path": ["Checkbox", "CheckboxInnerIndeterminate"],
-            "description": {
-              "appearancePart": {
-                "text": "内框",
-                "desc": "面板中外观配置的区块显示文本"
-              }
-            }
           }
         ]
       },
@@ -156,16 +136,6 @@
             "description": {
               "appearancePart": {
                 "text": "外框",
-                "desc": "面板中外观配置的区块显示文本"
-              }
-            }
-          },
-          {
-            "name": "取消状态内框样式",
-            "path": ["Checkbox", "CheckboxInnerCancel"],
-            "description": {
-              "appearancePart": {
-                "text": "内框",
                 "desc": "面板中外观配置的区块显示文本"
               }
             }
