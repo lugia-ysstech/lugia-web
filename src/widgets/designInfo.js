@@ -13866,11 +13866,19 @@ export default [
             ['width'],
             ['height'],
           ],
+          disabled: [
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
         },
         RadioInnerChecked: {
           name: '选中内框样式',
           desc: '选中内框样式',
-          normal: [['background'], ['width'], ['height']],
+          normal: [['background'], ['width'], ['height'], ['borderRadius']],
         },
         RadioEdgeCancel: {
           name: '取消状态外框样式',
@@ -13883,12 +13891,11 @@ export default [
             ['width'],
             ['height'],
           ],
-          disabled: [['background'], ['borderRadius'], ['border']],
         },
         RadioInnerCancel: {
           name: '取消状态内框样式',
           desc: '取消状态内框样式',
-          normal: [['background'], ['width'], ['height']],
+          normal: [['background'], ['width'], ['height'], ['borderRadius']],
         },
       },
     },
@@ -13958,7 +13965,6 @@ export default [
           name: '单选框组整体配置',
           desc: '单选框组整体配置',
           normal: [
-            ['opacity'],
             ['border'],
             ['borderRadius'],
             ['background'],
@@ -13975,9 +13981,7 @@ export default [
             Container: {
               name: '整体样式',
               desc: '整体样式',
-              normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-              hover: [['opacity']],
-              disabled: [['opacity']],
+              normal: [['margin'], ['padding'], ['width'], ['height']],
             },
             RadioText: {
               name: '文字样式',
@@ -14017,11 +14021,19 @@ export default [
                 ['width'],
                 ['height'],
               ],
+              disabled: [
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
             },
             RadioInnerChecked: {
               name: '选中内框样式',
               desc: '选中内框样式',
-              normal: [['background'], ['width'], ['height']],
+              normal: [['background'], ['width'], ['height'], ['borderRadius']],
             },
             RadioEdgeCancel: {
               name: '取消状态外框样式',
@@ -14034,12 +14046,11 @@ export default [
                 ['width'],
                 ['height'],
               ],
-              disabled: [['background'], ['borderRadius'], ['border']],
             },
             RadioInnerCancel: {
               name: '取消状态内框样式',
               desc: '取消状态内框样式',
-              normal: [['background'], ['width'], ['height']],
+              normal: [['background'], ['width'], ['height'], ['borderRadius']],
             },
           },
         },
