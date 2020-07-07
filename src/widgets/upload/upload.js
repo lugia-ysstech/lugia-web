@@ -16,7 +16,7 @@ const Container = CSSComponent({
   tag: 'div',
   className: 'upload_Container',
   normal: {
-    selectNames: [],
+    selectNames: [['width']],
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { areaType },
@@ -65,6 +65,7 @@ type UploadProps = {
   getPartOfThemeProps: Function,
   defaultTips?: Object,
   userDefine?: any,
+  isProgress?: boolean,
 };
 type StateProps = {
   defaultText?: string,
