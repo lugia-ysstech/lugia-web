@@ -18,6 +18,10 @@
       {
         "name": "validateStatus",
         "text": "校验状态"
+      },
+      {
+        "name": "amountPrefix",
+        "text": "模式"
       }
     ],
     "data": [
@@ -32,6 +36,10 @@
               "appearancePart": {
                 "text": "输入框",
                 "desc": "输入框配置"
+              },
+              "textPart": {
+                "text": "输入文本",
+                "desc": "文本配置区块的显示文本"
               }
             },
             "props": [
@@ -52,7 +60,7 @@
             },
             "props": [
               {
-                "name": "placeHolder",
+                "name": "placeholder",
                 "typeInTheme": "text"
               }
             ]
