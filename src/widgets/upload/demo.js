@@ -33,7 +33,7 @@ class UploadDemo extends React.Component<any, any> {
       showFileList: true,
       url: 'http://localhost:7001/upload',
       multiple: true,
-      isProgress: false,
+      isShowProgress: false,
       accessKey: ['uploadToken'],
       beforeUpload: (file: Object) => {
         return new Promise((resolve, reject) => {

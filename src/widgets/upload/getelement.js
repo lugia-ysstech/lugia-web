@@ -781,7 +781,7 @@ const getFileList = (
 ) => {
   if (!data || data.length === 0) return;
   const liThemeProps = props.getPartOfThemeProps('UploadLiType');
-  const { isProgress = {} } = props;
+  const { isShowProgress = true } = props;
   return (
     <Ul themeProps={themeProps} disabled={disabled}>
       {data.map((item, index) => {
@@ -791,7 +791,7 @@ const getFileList = (
             <span>{item.name}</span>
             {item.status !== 'loading' && getIconByType(props, 'li-' + item.status)}
             {getIconByType(props, 'li-delete', { doFunction: close, index })}
-            {isProgress ? getProgress(item, themeProps) : []}
+            {isShowProgress ? getProgress(item, themeProps) : []}
           </Li>
         );
       })}
