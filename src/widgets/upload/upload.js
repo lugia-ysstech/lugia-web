@@ -65,7 +65,7 @@ type UploadProps = {
   getPartOfThemeProps: Function,
   defaultTips?: Object,
   userDefine?: any,
-  isProgress?: boolean,
+  isShowProgress?: boolean,
 };
 type StateProps = {
   defaultText?: string,
