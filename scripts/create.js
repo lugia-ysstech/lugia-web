@@ -11,7 +11,7 @@ const ensureFileSync = require('fs-extra').ensureFileSync;
 const writeFileSync = require('fs-extra').writeFileSync;
 
 const targetPath = path.join(__dirname, '../src/widgets');
-const commonInvalid = ['common', 'consts', 'css', 'utils'];
+const commonInvalid = ['common', 'consts', 'css', 'utils', 'static'];
 const componentInvalid = [
   ...commonInvalid,
   'align',
@@ -29,7 +29,7 @@ const componentInvalid = [
   'affix',
   'grid',
   'layout',
-  'new-table'
+  'new-table',
 ];
 const hideInTollPanelComponents = {
   message: 'message',
