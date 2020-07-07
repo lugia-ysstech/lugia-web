@@ -109,6 +109,8 @@ export default class extends React.Component<any, any> {
       type = 'circle',
       getIconTheme,
       iconClass,
+      errorIconClass,
+      successIconClass,
     } = this.props;
 
     return getText(true, {
@@ -120,6 +122,8 @@ export default class extends React.Component<any, any> {
       type,
       getIconTheme,
       iconClass,
+      errorIconClass,
+      successIconClass,
     });
   };
   getColor = (backgroundLineColor: string, lineColor?: string) => {

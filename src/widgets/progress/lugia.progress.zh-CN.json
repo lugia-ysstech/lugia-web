@@ -104,6 +104,16 @@
           "name": "进度条失败图标配置",
           "desc": "进度条失败图标配置",
           "normal": [["color"], ["fontSize"]]
+        },
+        "ProgressCircleBackground": {
+          "name": "进度条底色条颜色配置",
+          "desc": "进度条底色条颜色配置",
+          "normal": [["color"]]
+        },
+        "ProgressCircleLine": {
+          "name": "进度条进度线颜色配置",
+          "desc": "进度条进度线颜色配置",
+          "normal": [["color"]]
         }
       }
     },
@@ -129,6 +139,16 @@
           "name": "进度条失败图标配置",
           "desc": "进度条失败图标配置",
           "normal": [["color"], ["fontSize"]]
+        },
+        "DashboardBackground": {
+          "name": "进度条底色条颜色配置",
+          "desc": "进度条底色条颜色配置",
+          "normal": [["color"]]
+        },
+        "DashboardLine": {
+          "name": "进度条进度线颜色配置",
+          "desc": "进度条进度线颜色配置",
+          "normal": [["color"]]
         }
       }
     }
