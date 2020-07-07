@@ -32,7 +32,7 @@
       "desc": "input输入提示信息"
     },
     "amountPrefix": {
-      "type": ["¥", "$"],
+      "type": "PrefixType",
       "desc": "货币种类,默认'¥'",
       "defaultValue": "¥"
     },
@@ -45,11 +45,11 @@
       "desc": "显示内容"
     },
     "validateStatus": {
-      "type": ["default", "error"],
+      "type": "validateStatus",
       "desc": "校验状态"
     },
     "validateType": {
-      "type": ["top", "bottom", "inner"],
+      "type": "ValidateType",
       "desc": "校验信息显示类型",
       "propsDefaultValue": "top"
     },
@@ -142,6 +142,8 @@
   "type": {
     "InputSize": ["small", "default", "large"],
     "PrefixType": ["¥", "$"],
+    "validateStatus": ["default", "error"],
+    "ValidateType": ["top", "bottom", "inner"],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
