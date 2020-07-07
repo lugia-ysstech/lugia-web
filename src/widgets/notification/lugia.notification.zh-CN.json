@@ -69,5 +69,12 @@
       "desc": "为Notification关闭图标配置样式",
       "normal": [["color"], ["font"]]
     }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 500
+      }
+    }
   }
 }
