@@ -168,7 +168,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     if (this.isMouseLeaveToHide()) {
       mouseProps.onMouseLeave = this.onPopupMouseLeave;
     }
-    console.log('this.index', this.index);
+
     return (
       <Popup
         getTheme={getTheme}
@@ -365,7 +365,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
     newChildProps.key = 'container';
     const { popupVisible } = this.state;
-    if (!this.index && popupVisible) {
+    if (!this.index && this.index !== 0 && popupVisible) {
       this.index = getIndex();
     }
     const portal = this.props.createPortal
