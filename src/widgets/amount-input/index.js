@@ -41,7 +41,7 @@ const AmountInputPrefix = CSSComponent({
   tag: 'span',
   className: 'AmountInputPrefix',
   normal: {
-    selectNames: [['fontSize'], ['font'], ['color']],
+    selectNames: [['fontSize'], ['font'], ['color'], ['padding']],
   },
 });
 Title.displayName = 'toolTip_title';
