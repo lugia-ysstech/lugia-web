@@ -45,7 +45,7 @@
       "desc": "显示内容"
     },
     "validateStatus": {
-      "type": "validateStatus",
+      "type": "ValidateStatus",
       "desc": "校验状态"
     },
     "validateType": {
@@ -142,7 +142,7 @@
   "type": {
     "InputSize": ["small", "default", "large"],
     "PrefixType": ["¥", "$"],
-    "validateStatus": ["default", "error"],
+    "ValidateStatus": ["default", "error"],
     "ValidateType": ["top", "bottom", "inner"],
     "ChangeType": {
       "newValue": "string",
