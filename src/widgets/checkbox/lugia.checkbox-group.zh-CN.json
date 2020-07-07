@@ -245,7 +245,6 @@
       "name": "多选框组整体配置",
       "desc": "多选框组整体配置",
       "normal": [
-        ["opacity"],
         ["border"],
         ["borderRadius"],
         ["background"],
@@ -261,9 +260,7 @@
         "Container": {
           "name": "整体样式",
           "desc": "整体样式",
-          "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
-          "hover": [["opacity"]],
-          "disabled": [["opacity"]]
+          "normal": [["margin"], ["padding"], ["width"], ["height"]]
         },
         "CheckboxText": {
           "name": "文字样式",
