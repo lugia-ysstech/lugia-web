@@ -791,7 +791,7 @@ const getFileList = (
             <span>{item.name}</span>
             {item.status !== 'loading' && getIconByType(props, 'li-' + item.status)}
             {getIconByType(props, 'li-delete', { doFunction: close, index })}
-            {isShowProgress ? getProgress(item, themeProps) : []}
+            {isShowProgress && getProgress(item, themeProps)}
           </Li>
         );
       })}
