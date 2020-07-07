@@ -147,7 +147,7 @@ export default ThemeProvider(
       const radioEdgeUnCheckedTheme = getPartOfThemeProps('RadioEdgeUnChecked');
       const radioEdgeCancelTheme = getPartOfThemeProps('RadioEdgeCancel');
       const radioInnerCheckedTheme = getPartOfThemeConfig('RadioInnerChecked');
-      const radioInnerCancelTheme = getPartOfThemeConfig('RadioInnerChecked');
+      const radioInnerCancelTheme = getPartOfThemeConfig('RadioInnerCancel');
       const circleEdgeTheme = cancel
         ? deepMerge(defaultEdgeCancelProps(), radioEdgeCancelTheme)
         : checked
