@@ -146,11 +146,9 @@ class Range extends Component<TypeProps, TypeState> {
     }
     const { newValue, oldValue, number, event } = parmas;
     const { formatIsValids, isValid } = this.getIsValid(newValue);
-    let visible = isValid;
     if (isValid) {
       this.oldValue = [...newValue];
       this.oldMonthandYear = [...this.monthAndYear];
-      visible = false;
     }
     const hasOldValue = this.oldValue && this.oldValue[0] !== '' && this.oldValue !== '';
     const rangeValue = isValid
@@ -169,7 +167,7 @@ class Range extends Component<TypeProps, TypeState> {
       {
         value: newValue,
         rangeValue: isValid || hasOldValue || noValue ? [] : rangeValue,
-        visible,
+        visible: true,
       },
       () => {
         const { panelValue, isHover } = this.state;
@@ -244,6 +242,9 @@ class Range extends Component<TypeProps, TypeState> {
         onChange &&
         onChange({ newValue: sortValue, oldValue: this.changeOldValue, event });
       setStateData = { value: sortValue, rangeValue: [], isHover: false };
+      if (isValid) {
+        this.onBlur();
+      }
     }
     this.drawPageAgain(renderValue, format);
     this.setState({ ...setStateData, visible });
@@ -408,6 +409,7 @@ class Range extends Component<TypeProps, TypeState> {
     if (onDocumentClick) {
       onDocumentClick();
     }
+    this.onBlur();
   };
   render() {
     const {
@@ -525,7 +527,7 @@ class Range extends Component<TypeProps, TypeState> {
             value={value}
             onClick={this.onClickTrigger}
             onChange={this.onChange}
-            onBlur={this.onBlur}
+            onBlur={() => {}}
             onFocus={this.onFocus}
             onClear={this.onClear}
             disabled={disabled}
