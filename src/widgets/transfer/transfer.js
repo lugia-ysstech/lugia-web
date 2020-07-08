@@ -196,10 +196,10 @@ export default ThemeProvider(
 
     getSearchBox() {
       const { inputValue } = this.state;
-      const { showSearch } = this.props;
+      const { showSearch, transferClearIcon, transferPrefixIcon, transferSuffixIcon } = this.props;
       const inputConfig = {};
       if (!inputValue) {
-        inputConfig.suffix = <SearchIcon />;
+        inputConfig.suffix = <SearchIcon transferSuffixIcon={transferSuffixIcon} />;
       }
 
       return showSearch ? (
@@ -208,6 +208,8 @@ export default ThemeProvider(
             size={'small'}
             onChange={this.handleInputChange}
             placeholder={'搜索你想知道的内容'}
+            prefix={transferPrefixIcon}
+            clearIcon={transferClearIcon}
             {...inputConfig}
             {...this.getInputThemeConfig()}
           />

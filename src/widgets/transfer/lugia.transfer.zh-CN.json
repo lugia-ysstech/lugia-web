@@ -75,6 +75,22 @@
       "type": "SizeType",
       "desc": "指定 Transfer 的尺寸",
       "defaultValue": "default"
+    },
+    "transferClearIcon": {
+      "type": "icon",
+      "desc": "清除图标类型"
+    },
+    "transferPrefixIcon": {
+      "type": "icon",
+      "desc": "前缀图标类型"
+    },
+    "transferSuffixIcon": {
+      "type": "icon",
+      "desc": "后缀图标类型"
+    },
+    "title": {
+      "type": "string",
+      "desc": "穿梭框面板头部标题"
     }
   },
   "event": {
@@ -210,7 +226,7 @@
         "TransferHeaderWrap": {
           "name": "穿梭框面板头部",
           "desc": "为穿梭框配置左右面板头部样式",
-          "normal": [["background"], [["border"],["bottom"]]]
+          "normal": [["background"], ["border", "bottom"], ["padding"]]
         },
         "TransferPanelHeaderCheckbox": {
           "name": "穿梭框面板头部Checkbox",
@@ -271,6 +287,73 @@
           "name": "穿梭框面板头部文字样式",
           "desc": "为穿梭框配置左右面板头部文字样式",
           "normal": [["padding"], ["color"], ["font"]]
+        },
+        "TransferSearchInput": {
+          "name": "穿梭框面板搜索框样式",
+          "desc": "为穿梭框配置左右面板搜索框样式",
+          "theme": {
+            "Container": {
+              "name": "输入框",
+              "desc": "输入框外部容器",
+              "normal": [
+                ["width"],
+                ["height"],
+                ["margin"],
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["cursor"],
+                ["opacity"]
+              ],
+              "hover": [
+                ["border"],
+                ["borderRadius"],
+                ["cursor"],
+                ["background"],
+                ["opacity"],
+                ["boxShadow"]
+              ],
+              "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+              "disabled": [
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["cursor"],
+                ["padding"],
+                ["opacity"]
+              ]
+            },
+            "InputSuffix": {
+              "name": "后缀图标",
+              "desc": "输入框后缀自定义图标",
+              "normal": [["color"], ["fontSize"], ["font"]],
+              "hover": [],
+              "clicked": [],
+              "disabled": []
+            },
+            "InputPrefix": {
+              "name": "前缀图标",
+              "desc": "输入框前缀自定义图标",
+              "normal": [["color"], ["fontSize"], ["font"], ["padding"], ["margin"]],
+              "hover": [],
+              "clicked": [],
+              "disabled": [["color"], ["fontSize"], ["font"]]
+            },
+            "ClearButton": {
+              "name": "输入框清除图标",
+              "desc": "输入框后缀清除图标",
+              "normal": [["color"], ["fontSize"], ["font"]],
+              "hover": [["color"], ["fontSize"], ["font"]],
+              "clicked": [],
+              "disabled": [["color"], ["fontSize"], ["font"]]
+            }
+          }
         },
         "TransferCancelBox": {
           "name": "穿梭框面板取消项盒子样式",
@@ -434,6 +517,25 @@
                       "normal": [["color"]],
                       "hover": [["color"]],
                       "disabled": [["color"]]
+                    },
+                    "CheckboxEdgeIndeterminate": {
+                      "name": "半选外框样式",
+                      "desc": "半选状态外框样式",
+                      "normal": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["boxShadow"],
+                        ["width"],
+                        ["height"]
+                      ],
+                      "disabled": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["width"],
+                        ["height"]
+                      ]
                     }
                   }
                 }
@@ -517,7 +619,7 @@
     "TransferHeaderWrap": {
       "name": "穿梭框面板头部",
       "desc": "为穿梭框配置左右面板头部样式",
-      "normal": [["background"],[["border"],["bottom"]]]
+      "normal": [["background"], ["border", "bottom"], ["padding"]]
     },
     "TransferPanelHeaderCheckbox": {
       "name": "穿梭框面板头部Checkbox",
