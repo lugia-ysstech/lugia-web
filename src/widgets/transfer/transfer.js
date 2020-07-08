@@ -109,6 +109,7 @@ export default ThemeProvider(
             normal: {
               height: cancelBoxHeight,
               width: 200,
+              boxShadow: null,
             },
           },
         },
