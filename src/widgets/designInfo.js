@@ -9164,6 +9164,7 @@ export default [
         iconClass: { type: 'icon', desc: '自定义前缀图标' },
         closeIconClass: { type: 'icon', desc: '自定义后缀图标' },
         showIcon: { type: 'boolean', desc: '是否显示图标', propsDefaultValue: false },
+        zIndex: { type: 'number', desc: '设置 Modal 的 z-index' },
       },
       events: {
         onOk: { desc: '点击确定时的回调', args: [] },
