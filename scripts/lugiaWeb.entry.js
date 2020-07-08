@@ -1,6 +1,5 @@
-const designInfo = require('../src/widgets/designInfo.js');
-const { load } = require('../src/widgets/designInfo.js');
-const { version } = require('../package.json');
+import designInfo, { load } from '../src/widgets/designInfo.js';
+import { version } from '../package.json';
 
 function getComponentPropsArr(props, componentTypes) {
   const componentPropsKeys = props && Object.keys(props);
