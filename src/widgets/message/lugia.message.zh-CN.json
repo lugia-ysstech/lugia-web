@@ -15,7 +15,7 @@
     "time": {
       "type": "number",
       "desc": "自动延时关闭，单位为 秒",
-      "defaultValue": 2
+      "defaultValue": 10000
     },
     "callBack": {
       "type": "Function",
