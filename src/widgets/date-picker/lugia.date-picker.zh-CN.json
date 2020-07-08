@@ -69,6 +69,20 @@
     },
     "buttonOptions": {
       "type": "Object",
+      "meta": [
+        {
+          "key": "options",
+          "title": "页脚按钮",
+          "type": "Object",
+          "children": [
+            {
+              "key": "自定义按钮文本",
+              "title": "页脚按钮",
+              "type": "date"
+            }
+          ]
+        }
+      ],
       "desc": "自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ",
       "defaultValue": ""
     },
