@@ -264,7 +264,7 @@
       },
       {
         "title": "成功状态",
-        "iconClass": "progressDashboardSuccess",
+        "iconClass": "progressSuccess",
         "data": [
           {
             "name": "进度条成功图标配置",
@@ -289,7 +289,7 @@
       },
       {
         "title": "错误状态",
-        "iconClass": "progressDashboardError",
+        "iconClass": "progressError",
         "data": [
           {
             "name": "进度条失败图标配置",
@@ -326,7 +326,7 @@
     "data": [
       {
         "title": "底色条",
-        "iconClass": "progressCricle",
+        "iconClass": "progressDashboard",
         "data": [
           {
             "name": "进度条底色条颜色配置",
@@ -342,7 +342,7 @@
       },
       {
         "title": "进度条",
-        "iconClass": "progressingCircle",
+        "iconClass": "progressingDashboard",
         "data": [
           {
             "name": "进度条进度线颜色配置",
