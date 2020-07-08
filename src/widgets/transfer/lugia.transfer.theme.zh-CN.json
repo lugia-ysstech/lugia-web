@@ -216,7 +216,7 @@
         "children": [
           {
             "title": "面板",
-            "iconClass": "treeBackground",
+            "iconClass": "transferCancelBackground",
             "data": [
               {
                 "name": "面板",
@@ -232,7 +232,7 @@
           },
           {
             "title": "取消项",
-            "iconClass": "TransferCancelCheckbox",
+            "iconClass": "transferCancelCheckbox",
             "children": [
               {
                 "title": "后台取消",
@@ -758,7 +758,7 @@
         "children": [
           {
             "title": "面板",
-            "iconClass": "treeBackground",
+            "iconClass": "transferCancelBackground",
             "data": [
               {
                 "name": "面板",
@@ -774,7 +774,7 @@
           },
           {
             "title": "取消项",
-            "iconClass": "TransferCancelCheckbox",
+            "iconClass": "transferCancelCheckbox",
             "children": [
               {
                 "title": "后台取消",
