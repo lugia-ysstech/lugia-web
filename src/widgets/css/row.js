@@ -53,7 +53,7 @@ const getTypeCSS = (props: RowCSSProps): string => {
     zoom: 1;
     display: block;
     box-sizing: border-box;
-    
+
     &:after {
       content: "";
       clear: both;
@@ -62,12 +62,12 @@ const getTypeCSS = (props: RowCSSProps): string => {
       height:0;
       visibility:hidden;
     }
-    
+
     &::before {
       content: "";
       display: table;
     }
-   
+
   `;
 };
 
@@ -99,14 +99,40 @@ const getAlignCSS = (props: RowCSSProps) => {
     `;
   }
 };
-const getGutterCSS = (props: RowCSSProps) => {
-  const { gutter } = props;
-  if (gutter && typeof gutter === 'number') {
-    return `
-      margin-left: -${gutter / 2}px;
-      margin-right: -${gutter / 2}px;
-    `;
+
+export function getHalfGutter(gutter: number[]): { halfGutterX?: number, halfGutterY?: number } {
+  const result = {};
+  if (typeof gutter[0] === 'number') {
+    result.halfGutterX = gutter[0] / 2;
   }
+
+  if (typeof gutter[1] === 'number') {
+    result.halfGutterY = gutter[1] / 2;
+  }
+
+  return result;
+}
+
+const getGutterCSS = (props: RowCSSProps): string => {
+  const { gutter } = props;
+  const marginCSS = [];
+  if (gutter && Array.isArray(gutter)) {
+    const { halfGutterX, halfGutterY } = getHalfGutter(gutter);
+    if (halfGutterX) {
+      marginCSS.push(`
+      margin-left: -${halfGutterX}px;
+      margin-right: -${halfGutterX}px;
+    `);
+    }
+    if (halfGutterY) {
+      marginCSS.push(`
+      margin-top: -${halfGutterY}px;
+      margin-bottom: ${halfGutterY}px;
+    `);
+    }
+  }
+
+  return marginCSS.join(';');
 };
 
 export const RowWrap = styled.div`

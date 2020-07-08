@@ -33,10 +33,10 @@ exports[`row css 1`] = `
   -webkit-flex-flow: row wrap;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
-  -webkit-box-pack: star;
-  -webkit-justify-content: flex-star;
-  -ms-flex-pack: star;
-  justify-content: flex-star;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 
 .c8 {
@@ -103,10 +103,10 @@ exports[`row css 1`] = `
   -webkit-flex-flow: row wrap;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
-  -webkit-box-pack: star;
-  -webkit-justify-content: flex-star;
-  -ms-flex-pack: star;
-  justify-content: flex-star;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -139,8 +139,8 @@ exports[`row css 1`] = `
   zoom: 1;
   display: block;
   box-sizing: border-box;
-  margin-left: -12px;
-  margin-right: -12px;
+  margin-left: -31px;
+  margin-right: -31px;
 }
 
 .c18:after {
@@ -153,6 +153,34 @@ exports[`row css 1`] = `
 }
 
 .c18::before {
+  content: "";
+  display: table;
+}
+
+.c20 {
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+  height: auto;
+  zoom: 1;
+  display: block;
+  box-sizing: border-box;
+  margin-left: -12px;
+  margin-right: -12px;
+  margin-top: -24px;
+  margin-bottom: 24px;
+}
+
+.c20:after {
+  content: "";
+  clear: both;
+  display: block;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.c20::before {
   content: "";
   display: table;
 }
@@ -269,11 +297,25 @@ exports[`row css 1`] = `
   min-height: 1px;
   width: 25%;
   margin-left: 0%;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 31px;
+  padding-right: 31px;
 }
 
-.c20 {
+.c21 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  width: 25%;
+  margin-left: 0%;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.c22 {
   display: block;
   box-sizing: border-box;
   float: left;
@@ -283,7 +325,7 @@ exports[`row css 1`] = `
   margin-left: 0%;
 }
 
-.c21 {
+.c23 {
   display: block;
   box-sizing: border-box;
   float: left;
@@ -989,95 +1031,6 @@ exports[`row css 1`] = `
     }
   >
     <div
-      className="c1"
-      onMouseEnter={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      type="default"
-    >
-      <div
-        className="c2"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={6}
-        width={4.166666666666667}
-      >
-        <div
-          style={
-            Object {
-              "background": "rgba(0, 160, 233, 0.7)",
-            }
-          }
-        >
-          col-6
-        </div>
-      </div>
-      <div
-        className="c2"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={6}
-        width={4.166666666666667}
-      >
-        <div
-          style={
-            Object {
-              "background": " #00a0e9",
-            }
-          }
-        >
-          col-6
-        </div>
-      </div>
-      <div
-        className="c2"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={6}
-        width={4.166666666666667}
-      >
-        <div
-          style={
-            Object {
-              "background": "rgba(0, 160, 233, 0.7)",
-            }
-          }
-        >
-          col-6
-        </div>
-      </div>
-      <div
-        className="c2"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={6}
-        width={4.166666666666667}
-      >
-        <div
-          style={
-            Object {
-              "background": " #00a0e9",
-            }
-          }
-        >
-          col-6
-        </div>
-      </div>
-    </div>
-  </div>
-  <br />
-  <div
-    style={
-      Object {
-        "width": "1200px",
-      }
-    }
-  >
-    <div
       className="c18"
       onMouseEnter={[Function]}
       onMouseOut={[Function]}
@@ -1140,6 +1093,95 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c19"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={6}
+        width={4.166666666666667}
+      >
+        <div
+          style={
+            Object {
+              "background": " #00a0e9",
+            }
+          }
+        >
+          col-6
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    style={
+      Object {
+        "width": "1200px",
+      }
+    }
+  >
+    <div
+      className="c20"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      type="default"
+    >
+      <div
+        className="c21"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={6}
+        width={4.166666666666667}
+      >
+        <div
+          style={
+            Object {
+              "background": "rgba(0, 160, 233, 0.7)",
+            }
+          }
+        >
+          col-6
+        </div>
+      </div>
+      <div
+        className="c21"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={6}
+        width={4.166666666666667}
+      >
+        <div
+          style={
+            Object {
+              "background": " #00a0e9",
+            }
+          }
+        >
+          col-6
+        </div>
+      </div>
+      <div
+        className="c21"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={6}
+        width={4.166666666666667}
+      >
+        <div
+          style={
+            Object {
+              "background": "rgba(0, 160, 233, 0.7)",
+            }
+          }
+        >
+          col-6
+        </div>
+      </div>
+      <div
+        className="c21"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1226,7 +1268,7 @@ exports[`row css 1`] = `
       type="default"
     >
       <div
-        className="c20"
+        className="c22"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1236,7 +1278,7 @@ exports[`row css 1`] = `
         col-6
       </div>
       <div
-        className="c20"
+        className="c22"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1246,7 +1288,7 @@ exports[`row css 1`] = `
         col-6
       </div>
       <div
-        className="c20"
+        className="c22"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1256,7 +1298,7 @@ exports[`row css 1`] = `
         col-6
       </div>
       <div
-        className="c20"
+        className="c22"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1279,7 +1321,7 @@ exports[`row css 1`] = `
       type="default"
     >
       <div
-        className="c21"
+        className="c23"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1289,7 +1331,7 @@ exports[`row css 1`] = `
         col-6
       </div>
       <div
-        className="c21"
+        className="c23"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1299,7 +1341,7 @@ exports[`row css 1`] = `
         col-6
       </div>
       <div
-        className="c21"
+        className="c23"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1309,7 +1351,7 @@ exports[`row css 1`] = `
         col-6
       </div>
       <div
-        className="c21"
+        className="c23"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}

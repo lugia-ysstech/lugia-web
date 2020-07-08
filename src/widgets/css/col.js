@@ -4,6 +4,7 @@
  * @flow
  */
 import styled from 'styled-components';
+import { getHalfGutter } from './row';
 
 // const share = 24;
 // const width = 100 / share;
@@ -67,13 +68,24 @@ const getOrderCSS = (props: ColCSSProps) => {
 };
 const getGutterCSS = (props: ColCSSProps) => {
   const { gutter } = props;
-  if (gutter && typeof gutter === 'number') {
-    const result = gutter / 2;
-    return `
-      padding-left: ${result}px;
-      padding-right: ${result}px;
-    `;
+  const gutterCSS = [];
+  if (gutter && Array.isArray(gutter)) {
+    const { halfGutterX, halfGutterY } = getHalfGutter(gutter);
+    if (halfGutterX) {
+      gutterCSS.push(`
+      padding-left: ${halfGutterX}px;
+      padding-right: ${halfGutterX}px;
+    `);
+    }
+    if (halfGutterY) {
+      gutterCSS.push(`
+      padding-top: ${halfGutterY}px;
+      padding-bottom: ${halfGutterY}px;
+    `);
+    }
   }
+
+  return gutterCSS.join(';');
 };
 
 export const ColWrap = styled.div`
