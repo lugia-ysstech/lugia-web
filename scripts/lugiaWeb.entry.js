@@ -41,7 +41,7 @@ function getComponentPropsArr(props, componentTypes) {
 
 const componentMetas = [];
 const componentTargets = {};
-console.log('designInfo', designInfo);
+
 designInfo.forEach(item => {
   const componentMeta = item.meta;
   const componentScreenshot = item.screenshot;
