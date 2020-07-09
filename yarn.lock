@@ -5693,6 +5693,19 @@ ejs@^2.5.7:
   resolved "https://registry.npm.taobao.org/ejs/download/ejs-2.6.2.tgz#3a32c63d1cd16d11266cd4703b14fec4e74ab4f6"
   integrity sha1-OjLGPRzRbREmbNRwOxT+xOdKtPY=
 
+electron-is-dev@^0.3.0:
+  version "0.3.0"
+  resolved "http://192.168.102.79:5001/electron-is-dev/-/electron-is-dev-0.3.0.tgz#14e6fda5c68e9e4ecbeff9ccf037cbd7c05c5afe"
+  integrity sha1-FOb9pcaOnk7L7/nM8DfL18BcWv4=
+
+electron-is@^3.0.0:
+  version "3.0.0"
+  resolved "http://192.168.102.79:5001/electron-is/-/electron-is-3.0.0.tgz#bd4c27651fbe03f243f3607c2a098be884f9ed50"
+  integrity sha1-vUwnZR++A/JD82B8KgmL6IT57VA=
+  dependencies:
+    electron-is-dev "^0.3.0"
+    semver "^5.5.0"
+
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.191, electron-to-chromium@^1.3.30, electron-to-chromium@^1.3.47:
   version "1.3.223"
   resolved "https://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.223.tgz#3472d5260096cfc9be8b7350252a4c577f68f80a"
@@ -15797,6 +15810,11 @@ tr46@^1.0.1:
   version "0.3.9"
   resolved "https://registry.npm.taobao.org/traverse/download/traverse-0.3.9.tgz#717b8f220cc0bb7b44e40514c22b2e8bbc70d8b9"
   integrity sha1-cXuPIgzAu3tE5AUUwisui7xw2Lk=
+
+tree-kill@^1.2.2:
+  version "1.2.2"
+  resolved "http://192.168.102.79:5001/tree-kill/-/tree-kill-1.2.2.tgz#4ca09a9092c88b73a7cdc5e8a01b507b0790a0cc"
+  integrity sha1-TKCakJLIi3OnzcXooBtQeweQoMw=
 
 trim-newlines@^1.0.0:
   version "1.0.0"
