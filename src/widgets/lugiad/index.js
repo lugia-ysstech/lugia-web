@@ -25,11 +25,7 @@ const LugiadContainer = CSSComponent({
       ['padding'],
       ['opacity'],
     ],
-    defaultTheme: {
-      background: {
-        color: 'white',
-      },
-    },
+    defaultTheme: {},
   },
   hover: {
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
