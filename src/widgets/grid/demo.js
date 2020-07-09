@@ -194,7 +194,7 @@ export default () => {
       </Wrapper>
       <br />
       <div style={{ width: '1200px' }}>
-        <Row gutter={{ xs: 8, sm: 16, md: 24, xl: 24, lg: 24 }}>
+        <Row gutter={{ xs: 8, sm: 16, md: 24, xl: 48, xxl: 62, lg: 86 }}>
           <Col span={6}>
             <div style={{ background: 'rgba(0, 160, 233, 0.7)' }}>col-6</div>
           </Col>
@@ -211,7 +211,7 @@ export default () => {
       </div>
       <br />
       <div style={{ width: '1200px' }}>
-        <Row gutter={24}>
+        <Row gutter={[24, 48]}>
           <Col span={6}>
             <div style={{ background: 'rgba(0, 160, 233, 0.7)' }}>col-6</div>
           </Col>

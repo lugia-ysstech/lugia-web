@@ -108,10 +108,18 @@ export default ThemeProvider(
 
       getGutter = (size: string) => {
         const { gutter } = this.props;
-        if (typeof gutter === 'object') {
-          return gutter[size];
-        }
-        return gutter;
+        const isArray = Array.isArray(gutter);
+        const theGutter = isArray ? gutter : [gutter, 0];
+        const validGutter = [0, 0];
+        theGutter.forEach((gutterItem, index) => {
+          if (typeof gutterItem === 'object') {
+            validGutter[index] = gutterItem[size] || 0;
+          } else {
+            validGutter[index] = gutterItem || 0;
+          }
+        });
+
+        return validGutter;
       };
 
       renderChildren = (scrrenSize?: string, gutter?: number | Object) => {
