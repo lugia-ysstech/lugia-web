@@ -34,7 +34,7 @@ type RadioGroupProps = {
   styles: 'default' | 'vertical',
   cache?: boolean,
   childType?: 'default' | 'button',
-  size?: 'default' | 'small' | 'large' | 'bigger',
+  size?: 'default' | 'small' | 'large',
   themeProps: Object,
   getPartOfThemeProps: Function,
   getPartOfThemeConfig: Function,
