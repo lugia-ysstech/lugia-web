@@ -4,6 +4,10 @@
  *
  * @flow
  */
+
+const is = require('electron-is');
+const kill = require('tree-kill');
+
 const { outputJson, readJsonSync } = require('fs-extra');
 const { join } = require('path');
 const path = require('path');
@@ -29,21 +33,25 @@ function getEnv() {
     process.env.PATH,
   ].filter(e => !!e);
 
-  const e = Object.keys(process.env);
-  const hasLowerPath = e.indexOf('Path') !== -1;
-  const hasUpperPath = e.indexOf('PATH') !== -1;
-
-  const newPathString = newPath.join(path.delimiter);
-  if (hasUpperPath) {
-    result.PATH = newPathString;
-  } else if (hasLowerPath) {
-    result.Path = newPathString;
+  const isWindows = is.windows();
+  if (isWindows) {
+    const e = Object.keys(process.env);
+    const hasLowerPath = e.indexOf('Path') !== -1;
+    const hasUpperPath = e.indexOf('PATH') !== -1;
+    const newPathString = newPath.join(path.delimiter);
+    if (hasUpperPath) {
+      result.PATH = newPathString;
+    } else if (hasLowerPath) {
+      result.Path = newPathString;
+    } else {
+      result.path = newPathString;
+    }
+    console.info('pack in windows');
   } else {
-    result.path = newPathString;
+    newPath.push('/usr/local/bin');
+    result.PATH = newPath.join(path.delimiter);
+    console.info('pack in mac');
   }
-
-  // newPath.push('/usr/local/bin');
-  // result.PATH = newPath.join(path.delimiter);
 
   return result;
 }
@@ -131,8 +139,12 @@ async function getLugiaWeb() {
         reject(e);
       }
     });
-
-    lugiaResult.finally(() => processInfo.kill());
+    lugiaResult.catch(err => {
+      console.error(err);
+    });
+    lugiaResult.finally(() => {
+      kill(processInfo.pid, 'SIGKILL');
+    });
 
     return lugiaResult;
   };
