@@ -10,7 +10,7 @@ import Icon from '../icon';
 import get from './theme-common-dict';
 import { getBorder } from '@lugia/theme-utils';
 
-type CheckSize = 'default' | 'small' | 'large' | 'bigger';
+type CheckSize = 'default' | 'small' | 'large';
 type TypeSizeCSS = {
   height: number,
   lineHeight: number,

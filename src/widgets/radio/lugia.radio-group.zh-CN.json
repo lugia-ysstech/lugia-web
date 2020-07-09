@@ -58,7 +58,7 @@
     },
     "size": {
       "type": "RadioButtonSizeType",
-      "desc": "指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设"
+      "desc": "指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large 或不设"
     }
   },
   "events": {
@@ -76,7 +76,7 @@
   "type": {
     "RadioStylesType": ["default", "vertical"],
     "RadioChildType": ["default", "button"],
-    "RadioButtonSizeType": ["default", "small", "large", "bigger"],
+    "RadioButtonSizeType": ["default", "small", "large"],
     "RadioStyle": {
       "color": {
         "type": "string",

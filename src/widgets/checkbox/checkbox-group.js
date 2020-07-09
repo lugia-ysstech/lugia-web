@@ -39,7 +39,7 @@ type CheckBoxGroupProps = {
   styles?: 'default' | 'vertical',
   cache?: boolean,
   childType?: 'default' | 'button',
-  size?: 'default' | 'small' | 'large' | 'bigger',
+  size?: 'default' | 'small' | 'large',
 };
 type CheckBoxGroupState = {
   value: Array<string>,
