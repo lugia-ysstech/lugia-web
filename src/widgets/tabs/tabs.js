@@ -16,6 +16,10 @@ import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import { getBorderRadius } from '@lugia/theme-utils';
+import { px2emcss } from '../css/units';
+
+const FontSize = 1.2;
+const em = px2emcss(FontSize);
 
 const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
@@ -276,6 +280,13 @@ class TabsBox extends Component<TabsProps, TabsState> {
   };
   static displayName = Widget.Tabs;
 
+  header: Object;
+
+  constructor(props: TabsProps) {
+    super(props);
+    this.header = React.createRef();
+  }
+
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
     const { activeValue, defaultActiveValue, activityValue, defaultActivityValue } = props;
 
@@ -311,7 +322,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const containerThemeProps = this.props.getPartOfThemeProps('Container');
     let target = (
       <ContainerBox themeProps={containerThemeProps}>
-        <TabHeader {...this.getTabHeaderProps()} />
+        <TabHeader {...this.getTabHeaderProps()} ref={this.header} />
         {this.getChildrenContent()}
       </ContainerBox>
     );
@@ -320,7 +331,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
         target = (
           <ContainerBox themeProps={containerThemeProps}>
             {this.getChildrenContent()}
-            <TabHeader {...this.getTabHeaderProps()} />
+            <TabHeader {...this.getTabHeaderProps()} ref={this.header} />
           </ContainerBox>
         );
       }
@@ -349,7 +360,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       target = (
         <WindowContainer themeProps={outContainerThemeProps}>
           <OutContainer themeProps={themeProps}>
-            <TabHeader {...this.getTabHeaderProps()} />
+            <TabHeader {...this.getTabHeaderProps()} ref={this.header} />
             {this.getChildrenContent()}
           </OutContainer>
         </WindowContainer>
@@ -530,6 +541,25 @@ class TabsBox extends Component<TabsProps, TabsState> {
       );
     }
   }
+
+  getAutoContentHeightTheme = (totalHeight: number) => {
+    const { tabPosition } = this.props;
+    if (tabPosition === 'left' || tabPosition === 'right') {
+      return {};
+    }
+    let headerHeight = 0;
+    const hearDom = this.header.current;
+    if (hearDom) {
+      headerHeight = hearDom.offsetHeight;
+    }
+    return {
+      ContentBlock: {
+        normal: {
+          height: em(totalHeight - headerHeight),
+        },
+      },
+    };
+  };
 }
 
 export default ThemeHoc(TabsBox, Widget.Tabs, {
