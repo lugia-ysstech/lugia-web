@@ -60,7 +60,7 @@
     },
     "size": {
       "type": "CheckboxButtonSizeType",
-      "desc": "指定CheckboxGroup大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设"
+      "desc": "指定CheckboxGroup大小，仅展示类型为button 时生效，可设置为 small、large、 或不设"
     },
     "cache": {
       "type": "boolean",
@@ -82,7 +82,7 @@
   "type": {
     "CheckboxType": ["default", "vertical"],
     "CheckboxGroupChildType": ["default", "button"],
-    "CheckboxButtonSizeType": ["default", "small", "large", "bigger"],
+    "CheckboxButtonSizeType": ["default", "small", "large"],
     "CheckboxGroupStyle": {
       "width": {
         "type": "number",
