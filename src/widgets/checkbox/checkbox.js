@@ -82,13 +82,19 @@ const defaultIndeterminateEdgeTheme = () => ({
 });
 const defaultInnerTheme = {
   normal: {
-    color: defaultColor,
+    background: {
+      color: defaultColor,
+    },
   },
   hover: {
-    color: defaultColor,
+    background: {
+      color: defaultColor,
+    },
   },
   disabled: {
-    color: disableTextColor,
+    background: {
+      color: disableTextColor,
+    },
   },
 };
 const defaultCancelTextTheme = {
