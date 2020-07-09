@@ -56,6 +56,15 @@
     "help": {
       "type": "string",
       "desc": "校验提示信息"
+    },
+    "isShowClearButton": {
+      "type": "boolean",
+      "desc": "是否显示清除按钮",
+      "propsDefaultValue": true
+    },
+    "clearIcon": {
+      "type": "icon",
+      "desc": "清除图标类型"
     }
   },
   "events": {
@@ -133,6 +142,8 @@
   "type": {
     "InputSize": ["small", "default", "large"],
     "PrefixType": ["¥", "$"],
+    "ValidateStatus": ["default", "error"],
+    "ValidateType": ["top", "bottom", "inner"],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
@@ -218,7 +229,7 @@
     "AmountInputPrefix": {
       "name": "金额输入框主体前缀",
       "desc": "金额输入框主体前缀",
-      "normal": [["fontSize"], ["font"], ["color"]],
+      "normal": [["fontSize"], ["font"], ["color"], ["padding"]],
       "hover": [],
       "clicked": [],
       "disabled": []

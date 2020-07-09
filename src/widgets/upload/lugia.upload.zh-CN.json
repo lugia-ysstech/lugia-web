@@ -91,6 +91,11 @@
     "userDefine": {
       "type": "React$Element<any>",
       "desc": "用户自定义上传按钮"
+    },
+    "isShowProgress": {
+      "type": "boolean",
+      "desc": "是否有进度条",
+      "propsDefaultValue": true
     }
   },
   "events": {

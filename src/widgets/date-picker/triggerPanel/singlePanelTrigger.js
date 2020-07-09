@@ -246,8 +246,6 @@ class DateInput extends Component<TypeProps, TypeState> {
               placeholder={placeholder}
               onFocus={this.onFocus}
               focus={visible}
-              onBlur={this.onBlur}
-              //onClear={this.onClear}
               disabled={disabled}
               readOnly={readOnly}
               validateType={validateType}
@@ -272,6 +270,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     if (onDocumentClick) {
       onDocumentClick();
     }
+    this.onBlur();
   };
 
   onChange = (param: Object) => {
@@ -300,6 +299,9 @@ class DateInput extends Component<TypeProps, TypeState> {
     onChange && onChange({ event, newValue, oldValue: this.oldValue });
     const visibleState = isTime ? {} : { visible };
     this.setState({ value: newValue, isValid, ...visibleState });
+    if (!visible) {
+      this.onBlur();
+    }
   };
   setModeState = (value: string, format: string, isWeeks: boolean) => {
     const newFormat = isWeeks ? 'YYYY-MM-DD' : format;

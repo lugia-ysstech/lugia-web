@@ -9,9 +9,9 @@ import { ZIndex } from '../common/MaskBox';
 import styled from 'styled-components';
 
 const getZIndex = props => {
-  const { theme = {} } = props;
+  const { theme = {}, zIndex: propsZIndex } = props;
   const { zIndex } = theme;
-  return zIndex ? `z-index: ${zIndex ? zIndex : ZIndex + 1};` : 'z-index: 999999;';
+  return zIndex ? `z-index: ${zIndex ? zIndex : ZIndex + 1};` : `z-index: ${propsZIndex};`;
 };
 
 const PopupInnerBox = styled(VisibleBox)`
@@ -51,6 +51,7 @@ class PopupInner extends React.Component<PopupInnerProps> {
       getTheme,
       className,
       liquidLayout,
+      zIndex,
     } = this.props;
     return (
       <PopupInnerBox
@@ -60,6 +61,7 @@ class PopupInner extends React.Component<PopupInnerProps> {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         liquidLayout={liquidLayout}
+        zIndex={zIndex}
       >
         <ContentBox visible={visible}>{children}</ContentBox>
       </PopupInnerBox>

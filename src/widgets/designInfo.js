@@ -165,6 +165,8 @@ export default [
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
         validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         help: { type: 'string', desc: '校验提示信息' },
+        isShowClearButton: { type: 'boolean', desc: '是否显示清除按钮', propsDefaultValue: true },
+        clearIcon: { type: 'icon', desc: '清除图标类型' },
       },
       events: {
         onChange: {
@@ -199,6 +201,8 @@ export default [
       type: {
         InputSize: ['small', 'default', 'large'],
         PrefixType: ['¥', '$'],
+        ValidateStatus: ['default', 'error'],
+        ValidateType: ['top', 'bottom', 'inner'],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
       },
       category: ['数据录入'],
@@ -280,7 +284,7 @@ export default [
         AmountInputPrefix: {
           name: '金额输入框主体前缀',
           desc: '金额输入框主体前缀',
-          normal: [['fontSize'], ['font'], ['color']],
+          normal: [['fontSize'], ['font'], ['color'], ['padding']],
           hover: [],
           clicked: [],
           disabled: [],
@@ -4679,6 +4683,7 @@ export default [
           type: 'Object[]',
           desc: '指定折叠面板data数据源，仅用于设计器',
           designOnly: true,
+          injectProps: false,
           meta: [
             { key: 'value', title: '对应字段', type: 'string' },
             { key: 'title', title: '展示文字', type: 'string' },
@@ -7891,7 +7896,7 @@ export default [
           active: [],
         },
       },
-      defaultTheme: { Container: { normal: { width: 250, height: 32 } } },
+      defaultTheme: { Container: { normal: { width: 250 } } },
     },
     target: Input,
     screenshot:
@@ -9159,6 +9164,7 @@ export default [
         iconClass: { type: 'icon', desc: '自定义前缀图标' },
         closeIconClass: { type: 'icon', desc: '自定义后缀图标' },
         showIcon: { type: 'boolean', desc: '是否显示图标', propsDefaultValue: false },
+        zIndex: { type: 'number', desc: '设置 Modal 的 z-index' },
       },
       events: {
         onOk: { desc: '点击确定时的回调', args: [] },
@@ -13866,11 +13872,19 @@ export default [
             ['width'],
             ['height'],
           ],
+          disabled: [
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
         },
         RadioInnerChecked: {
           name: '选中内框样式',
           desc: '选中内框样式',
-          normal: [['background'], ['width'], ['height']],
+          normal: [['background'], ['width'], ['height'], ['borderRadius']],
         },
         RadioEdgeCancel: {
           name: '取消状态外框样式',
@@ -13883,12 +13897,11 @@ export default [
             ['width'],
             ['height'],
           ],
-          disabled: [['background'], ['borderRadius'], ['border']],
         },
         RadioInnerCancel: {
           name: '取消状态内框样式',
           desc: '取消状态内框样式',
-          normal: [['background'], ['width'], ['height']],
+          normal: [['background'], ['width'], ['height'], ['borderRadius']],
         },
       },
     },
@@ -13958,7 +13971,6 @@ export default [
           name: '单选框组整体配置',
           desc: '单选框组整体配置',
           normal: [
-            ['opacity'],
             ['border'],
             ['borderRadius'],
             ['background'],
@@ -13975,9 +13987,7 @@ export default [
             Container: {
               name: '整体样式',
               desc: '整体样式',
-              normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-              hover: [['opacity']],
-              disabled: [['opacity']],
+              normal: [['margin'], ['padding'], ['width'], ['height']],
             },
             RadioText: {
               name: '文字样式',
@@ -14017,11 +14027,19 @@ export default [
                 ['width'],
                 ['height'],
               ],
+              disabled: [
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
             },
             RadioInnerChecked: {
               name: '选中内框样式',
               desc: '选中内框样式',
-              normal: [['background'], ['width'], ['height']],
+              normal: [['background'], ['width'], ['height'], ['borderRadius']],
             },
             RadioEdgeCancel: {
               name: '取消状态外框样式',
@@ -14034,12 +14052,11 @@ export default [
                 ['width'],
                 ['height'],
               ],
-              disabled: [['background'], ['borderRadius'], ['border']],
             },
             RadioInnerCancel: {
               name: '取消状态内框样式',
               desc: '取消状态内框样式',
-              normal: [['background'], ['width'], ['height']],
+              normal: [['background'], ['width'], ['height'], ['borderRadius']],
             },
           },
         },
@@ -19337,6 +19354,7 @@ export default [
         data: {
           type: 'object[]',
           desc: '配置标签页需要配置的数据',
+          injectProps: false,
           meta: [
             { key: 'title', title: '页签', type: 'string' },
             { key: 'content', title: '内容', type: 'lugiaDPages' },
@@ -19893,6 +19911,7 @@ export default [
         data: {
           type: 'object[]',
           desc: '配置标签页需要配置的数据',
+          injectProps: false,
           meta: [
             { key: 'title', title: '页签', type: 'string' },
             { key: 'content', title: '内容', type: 'lugiaDPages' },
@@ -20168,6 +20187,7 @@ export default [
         data: {
           type: 'object[]',
           desc: '配置标签页需要配置的数据',
+          injectProps: false,
           meta: [
             { key: 'title', title: '页签', type: 'string' },
             { key: 'content', title: '内容', type: 'lugiaDPages' },
@@ -25343,6 +25363,7 @@ export default [
           },
         },
         userDefine: { type: 'React$Element<any>', desc: '用户自定义上传按钮' },
+        isShowProgress: { type: 'boolean', desc: '是否有进度条', propsDefaultValue: true },
       },
       events: {
         onProgress: {
@@ -25721,6 +25742,7 @@ export default [
           },
         },
         userDefine: { type: 'React$Element<any>', desc: '用户自定义上传按钮' },
+        isShowProgress: { type: 'boolean', desc: '是否有进度条', propsDefaultValue: true },
       },
       events: {
         onProgress: {
@@ -25857,6 +25879,7 @@ export default [
           },
         },
         userDefine: { type: 'React$Element<any>', desc: '用户自定义上传按钮' },
+        isShowProgress: { type: 'boolean', desc: '是否有进度条', propsDefaultValue: true },
       },
       events: {
         onProgress: {
@@ -25989,6 +26012,7 @@ export default [
           },
         },
         userDefine: { type: 'React$Element<any>', desc: '用户自定义上传按钮' },
+        isShowProgress: { type: 'boolean', desc: '是否有进度条', propsDefaultValue: true },
       },
       events: {
         onProgress: {
@@ -26136,6 +26160,7 @@ export default [
           },
         },
         userDefine: { type: 'React$Element<any>', desc: '用户自定义上传按钮' },
+        isShowProgress: { type: 'boolean', desc: '是否有进度条', propsDefaultValue: true },
       },
       events: {
         onProgress: {

@@ -13,6 +13,7 @@ import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import Popup from './Popup';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
+import { getIndex } from '../utils/widget-zindex';
 
 function noop() {}
 
@@ -136,6 +137,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     this.state = {
       popupVisible,
     };
+    this.index = popupVisible ? getIndex() : undefined;
   }
 
   popupContainer: ?Object;
@@ -158,7 +160,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   getComponent() {
     const { props, state } = this;
     const { onPopupAlign, popup, offsetX, offsetY, liquidLayout } = props;
-    const { destroyPopupOnHide, mask, zIndex, align, getTheme, className } = props;
+    const { destroyPopupOnHide, mask, align, getTheme, className } = props;
     const mouseProps = {};
     if (this.isMouseEnterToShow()) {
       mouseProps.onMouseEnter = this.onPopupMouseEnter;
@@ -166,6 +168,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     if (this.isMouseLeaveToHide()) {
       mouseProps.onMouseLeave = this.onPopupMouseLeave;
     }
+
     return (
       <Popup
         getTheme={getTheme}
@@ -181,7 +184,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
         {...mouseProps}
         getRootDomNode={this.getRootDomNode}
         isMask={mask}
-        zIndex={zIndex}
+        zIndex={this.index}
         liquidLayout={liquidLayout}
       >
         {typeof popup === 'function' ? popup() : popup}
@@ -263,11 +266,13 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     this.setFirstShow(popupVisible);
     if (this.state.popupVisible !== popupVisible) {
       if (!('popupVisible' in this.props)) {
-        this.setState({
-          popupVisible,
-        });
+        this.setState(
+          {
+            popupVisible,
+          },
+          () => this.props.onPopupVisibleChange(popupVisible)
+        );
       }
-      this.props.onPopupVisibleChange(popupVisible);
     }
   }
 
@@ -359,6 +364,10 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
       newChildProps.onBlur = this.createTwoChains('onBlur');
     }
     newChildProps.key = 'container';
+    const { popupVisible } = this.state;
+    if (!this.index && this.index !== 0 && popupVisible) {
+      this.index = getIndex();
+    }
     const portal = this.props.createPortal
       ? createPortal(this.getComponent(), this.getContainer())
       : this.getComponent();

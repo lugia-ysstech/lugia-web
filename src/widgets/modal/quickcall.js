@@ -24,6 +24,7 @@ export const quickcall = (
       okButtonProps = {},
       iconClass,
       mask,
+      zIndex,
     } = props;
 
     const config: Object = {
@@ -39,6 +40,7 @@ export const quickcall = (
       okButtonProps,
       iconClass,
       mask,
+      zIndex,
     };
 
     const div = document.createElement('div');
