@@ -545,7 +545,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
   getAutoContentHeightTheme = (totalHeight: number) => {
     const { tabPosition } = this.props;
     if (tabPosition === 'left' || tabPosition === 'right') {
-      return {};
+      return;
     }
     let headerHeight = 0;
     const hearDom = this.header.current;
