@@ -730,7 +730,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       });
     }
     const { onChange } = this.props;
-    onChange && onChange({ newValue: page, oldValue: current, current: page, pageSize });
+    onChange && onChange({ newValue: thePage, oldValue: current, current: page, pageSize });
   };
 
   handleChangePageSize = (obj: Object) => {
