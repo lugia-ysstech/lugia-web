@@ -8160,7 +8160,7 @@ export default [
   {
     meta: {
       widgetName: 'Lugiad',
-      title: '子页面组件',
+      title: 'Lugiad页面',
       desc: '用于放入一个lugiad格式的子页面',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
