@@ -692,15 +692,15 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const { disabled, total } = this.props;
     const theNewValue = (newValue + '').replace(/-/g, '');
     if (theNewValue !== current && theNewValue !== 'NaN' && newValue !== '-') {
-      const page = Number(theNewValue);
-      let thePage = page > 1 ? page : 1;
+      let page = Number(theNewValue);
+
       if (!disabled) {
         const currentPage = computePage(pageSize, pageSize, total);
-        if (thePage > currentPage) {
-          thePage = currentPage;
+        if (page > currentPage) {
+          page = currentPage;
         }
       }
-      this.handleChangePage(Number(thePage));
+      this.handleChangePage(Number(page));
     }
   };
 
@@ -723,9 +723,10 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   handleChangePage = (page: number) => {
     const { disabled } = this.props;
     const { pageSize, current } = this.state;
+    const thePage = page > 1 ? page : 1;
     if (!disabled) {
       this.setState({
-        current: page,
+        current: thePage,
       });
     }
     const { onChange } = this.props;
