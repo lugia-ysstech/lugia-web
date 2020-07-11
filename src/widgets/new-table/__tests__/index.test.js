@@ -7,6 +7,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import EditTable from '../editTableView';
 import Table from '../table';
 import renderer from 'react-test-renderer';
+import { delay } from '@lugia/react-test-utils';
 
 const { mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
 
@@ -821,6 +822,303 @@ describe('new-table', () => {
   onKeyDownMockData.forEach(item => {
     it(`Connection onKeyDown  ${item.key} ${item.canMoveCells} `, () => {
       ConnectionOnKeyDown(item);
+    });
+  });
+
+  const getMovedCellsPropsMap = [
+    {
+      item: { directions: 'left', key: 'ArrowLeft', data, columns },
+      defaultCell: [{ selectColumn: 2, selectRow: 1 }],
+      expectResult: [{ selectColumn: 1, selectRow: 1 }],
+    },
+    {
+      item: { directions: 'top', key: 'ArrowUp', data, columns },
+
+      defaultCell: [{ selectColumn: 2, selectRow: 1 }],
+
+      expectResult: [{ selectColumn: 2, selectRow: 0 }],
+    },
+    {
+      item: { directions: 'right', key: 'ArrowRight', data, columns },
+
+      defaultCell: [{ selectColumn: 2, selectRow: 1 }],
+      expectResult: [{ selectColumn: 3, selectRow: 1 }],
+    },
+    {
+      item: { directions: 'bottom', key: 'ArrowDown', data, columns },
+
+      defaultCell: [{ selectColumn: 2, selectRow: 1 }],
+      expectResult: [{ selectColumn: 2, selectRow: 2 }],
+    },
+    {
+      item: { directions: 'backToBottom', key: 'Enter', data, columns },
+      defaultCell: [{ selectColumn: 2, selectRow: 1 }],
+      expectResult: [{ selectColumn: 2, selectRow: 2 }],
+    },
+    {
+      item: { directions: 'left', key: 'ArrowLeft', data, columns },
+      defaultCell: undefined,
+      expectResult: [{ selectColumn: undefined, selectRow: undefined }],
+    },
+  ];
+
+  function getMoveCellsTest(props) {
+    const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
+    const { editTableListener, mockEditTableListener } = mockListener(cmp);
+    const { defaultCell, item, expectResult } = props;
+    mockEditTableListener.mockFunction('isCanMoveCells').returned(true);
+    mockEditTableListener
+      .mockFunction('getMoveTrack')
+      .returned([{ selectColumn: 2, selectRow: 1 }]);
+
+    editTableListener.emit('updateSelectCell', defaultCell);
+    expect(editTableListener.selectCell).toEqual(defaultCell);
+    const { selectColumn, selectRow, oldSelectInfo } = editTableListener.getMovedCells(item) || {};
+    expect([{ selectColumn, selectRow }]).toEqual(expectResult);
+    expect(oldSelectInfo).toEqual(defaultCell);
+  }
+
+  getMovedCellsPropsMap.forEach(item => {
+    it(`Connection getMovedCells  ${item.item.directions} `, () => {
+      getMoveCellsTest(item);
+    });
+  });
+
+  //updateSelectCell
+  it(' Connection updateSelectCell & getSelectCell()', () => {
+    const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
+    const { editTableListener } = mockListener(cmp);
+    expect(editTableListener.getSelectCell()).toEqual([]);
+    editTableListener.updateSelectCell([{ selectColumn: 2, selectRow: 1 }]);
+    expect(editTableListener.getSelectCell()).toEqual([{ selectColumn: 2, selectRow: 1 }]);
+    editTableListener.updateSelectCell([{ selectColumn: 1, selectRow: 1 }]);
+    expect(editTableListener.getSelectCell()).toEqual([{ selectColumn: 1, selectRow: 1 }]);
+    editTableListener.updateSelectCell([{ selectColumn: 1, selectRow: 5 }]);
+    expect(editTableListener.getSelectCell()).toEqual([{ selectColumn: 1, selectRow: 5 }]);
+    editTableListener.updateSelectCell();
+    expect(editTableListener.getSelectCell()).toEqual(undefined);
+    editTableListener.updateSelectCell(undefined);
+    expect(editTableListener.getSelectCell()).toEqual(undefined);
+  });
+
+  it(' Connection updateEditCell & getEditCell', () => {
+    const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
+    const { editTableListener } = mockListener(cmp);
+    expect(editTableListener.getEditCell()).toEqual({});
+    editTableListener.updateEditCell({ selectColumn: 2, selectRow: 1 });
+    expect(editTableListener.getEditCell()).toEqual({ selectColumn: 2, selectRow: 1 });
+    editTableListener.updateEditCell({ selectColumn: 1, selectRow: 1 });
+    expect(editTableListener.getEditCell()).toEqual({ selectColumn: 1, selectRow: 1 });
+    editTableListener.updateEditCell({ selectColumn: 1, selectRow: 5 });
+    expect(editTableListener.getEditCell()).toEqual({ selectColumn: 1, selectRow: 5 });
+    editTableListener.updateEditCell();
+    expect(editTableListener.getEditCell()).toEqual(undefined);
+    editTableListener.updateEditCell(undefined);
+    expect(editTableListener.getEditCell()).toEqual(undefined);
+  });
+
+  const setInputChangedValuePropsMap = [
+    {
+      info: {
+        value: 45,
+        editCell: { selectColumn: 1, selectRow: 2 },
+        data,
+        columns,
+        showHeader: true,
+      },
+      expectResult: [
+        { name: '', age: 28, key: '1', isIn: true },
+        { name: 'Rose', age: 45, address: 'some where', key: '2', isIn: true },
+        { name: 'Uzi', age: 36, address: 'some where', key: '3', isIn: false },
+        { name: 'ClearLove', age: 36, address: 'some where', key: '4', isIn: true },
+        { name: 'Rookie', age: 36, address: 'some where', key: '5', isIn: true },
+        { name: 'TheShy', age: 36, address: 'some where', key: '6', isIn: true },
+      ],
+    },
+    {
+      info: {
+        value: 'wsd',
+        editCell: { selectColumn: 0, selectRow: 1 },
+        data,
+        columns,
+        showHeader: true,
+      },
+      expectResult: [
+        { name: 'wsd', age: 28, key: '1', isIn: true },
+        { name: 'Rose', age: 36, address: 'some where', key: '2', isIn: true },
+        { name: 'Uzi', age: 36, address: 'some where', key: '3', isIn: false },
+        { name: 'ClearLove', age: 36, address: 'some where', key: '4', isIn: true },
+        { name: 'Rookie', age: 36, address: 'some where', key: '5', isIn: true },
+        { name: 'TheShy', age: 36, address: 'some where', key: '6', isIn: true },
+      ],
+    },
+    {
+      info: {
+        value: 'abc',
+        editCell: {},
+        data,
+        columns,
+        showHeader: true,
+      },
+      expectResult: data,
+    },
+  ];
+
+  setInputChangedValuePropsMap.forEach(item => {
+    it(`Connection setInputChangedValue  ${item.info.value} `, () => {
+      const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
+      const { editTableListener } = mockListener(cmp);
+      const { info, expectResult } = item;
+      const { data: newRowData } = editTableListener.setInputChangedValue(info);
+      expect(newRowData).toEqual(expectResult);
+    });
+  });
+
+  const changeDataPropsMap = [
+    {
+      selectRow: 1,
+      data,
+      keyName: 'name',
+      value: 'newName',
+      expectResult: [
+        { name: 'newName', age: 28, key: '1', isIn: true },
+        { name: 'Rose', age: 36, address: 'some where', key: '2', isIn: true },
+        { name: 'Uzi', age: 36, address: 'some where', key: '3', isIn: false },
+        { name: 'ClearLove', age: 36, address: 'some where', key: '4', isIn: true },
+        { name: 'Rookie', age: 36, address: 'some where', key: '5', isIn: true },
+        { name: 'TheShy', age: 36, address: 'some where', key: '6', isIn: true },
+      ],
+    },
+    {
+      selectRow: 2,
+      data,
+      keyName: 'age',
+      value: 122,
+      expectResult: [
+        { name: '', age: 28, key: '1', isIn: true },
+        { name: 'Rose', age: 122, address: 'some where', key: '2', isIn: true },
+        { name: 'Uzi', age: 36, address: 'some where', key: '3', isIn: false },
+        { name: 'ClearLove', age: 36, address: 'some where', key: '4', isIn: true },
+        { name: 'Rookie', age: 36, address: 'some where', key: '5', isIn: true },
+        { name: 'TheShy', age: 36, address: 'some where', key: '6', isIn: true },
+      ],
+    },
+    {
+      selectRow: undefined,
+      data,
+      keyName: 'name',
+      value: 'newName',
+      expectResult: data,
+    },
+  ];
+
+  changeDataPropsMap.forEach(item => {
+    it(`Connection changeData  ${item.keyName} `, () => {
+      const { selectRow, data, keyName, value, expectResult } = item;
+      const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
+      const { editTableListener } = mockListener(cmp);
+      const newRowData = editTableListener.changeData(data, selectRow, keyName, value);
+      expect(newRowData).toEqual(expectResult);
+    });
+  });
+
+  const onCellClickPropsMap = [
+    {
+      info: {
+        e: {},
+        selectColumn: 0,
+        selectRow: 1,
+        isLugiaHead: false,
+        isAllowSelect: true,
+      },
+      isSelected: false,
+      isMultiple: false,
+      selectCell: [],
+      expectResult: [{ selectColumn: 0, selectRow: 1 }],
+    },
+    {
+      info: {
+        e: {},
+        selectColumn: 2,
+        selectRow: 1,
+        isLugiaHead: false,
+        isAllowSelect: true,
+      },
+      isSelected: false,
+      isMultiple: false,
+      selectCell: [],
+      expectResult: [{ selectColumn: 2, selectRow: 1 }],
+    },
+    {
+      info: {
+        e: {},
+        selectColumn: 2,
+        selectRow: 1,
+        isLugiaHead: false,
+        isAllowSelect: true,
+      },
+      isSelected: false,
+      isMultiple: false,
+      selectCell: [{ selectColumn: 2, selectRow: 2 }],
+      expectResult: [{ selectColumn: 2, selectRow: 1 }],
+    },
+    {
+      info: {
+        e: {},
+        selectColumn: 2,
+        selectRow: 1,
+        isLugiaHead: false,
+        isAllowSelect: true,
+      },
+      isSelected: true,
+      isMultiple: false,
+      selectCell: [{ selectColumn: 2, selectRow: 1 }],
+      expectResult: [],
+    },
+    {
+      info: {
+        e: {},
+        selectColumn: 2,
+        selectRow: 1,
+        isLugiaHead: false,
+        isAllowSelect: true,
+      },
+      isSelected: false,
+      isMultiple: true,
+      selectCell: [{ selectColumn: 2, selectRow: 2 }],
+      expectResult: [{ selectColumn: 2, selectRow: 2 }, { selectColumn: 2, selectRow: 1 }],
+    },
+  ];
+
+  onCellClickPropsMap.forEach(item => {
+    it(`Connection onCellClick  selectColumn:${item.info.selectColumn} selectRow: ${item.info.selectRow} `, async () => {
+      const { info, isSelected, isMultiple, selectCell, expectResult } = item;
+      const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
+      const { editTableListener, mockEditTableListener, order } = mockListener(cmp);
+      mockEditTableListener.mockFunction('getClickNumber').returned(0);
+      mockEditTableListener.mockFunction('doStopPropagation').returned(true);
+      mockEditTableListener.mockFunction('setClickNumber').returned(true);
+      mockEditTableListener.mockFunction('getSelectCell').returned(selectCell);
+      mockEditTableListener.mockFunction('isSelected').returned(isSelected);
+      mockEditTableListener.mockFunction('isMultiple').returned(isMultiple);
+
+      editTableListener.onCellClick(info);
+      await delay(500);
+      order.verify(param => {
+        const { editTableListener } = param;
+        editTableListener.getClickNumber();
+        editTableListener.doStopPropagation(info.e);
+        editTableListener.setClickNumber(1);
+        editTableListener.getSelectCell();
+        editTableListener.isSelected(
+          { selectColumn: info.selectColumn, selectRow: info.selectRow },
+          selectCell
+        );
+        editTableListener.setClickNumber(0);
+        editTableListener.isMultiple();
+      });
+
+      expect(editTableListener.getSelectCell()).toEqual(expectResult);
     });
   });
 });
