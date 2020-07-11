@@ -133,21 +133,21 @@
     "CheckboxInnerChecked": {
       "name": "选中内框样式",
       "desc": "选中内框样式",
-      "normal": [["color"], ["width"], ["height"]],
-      "hover": [["color"], ["width"], ["height"]],
-      "disabled": [["color"], ["width"], ["height"]]
+      "normal": [["background"], ["width"], ["height"]],
+      "hover": [["background"], ["width"], ["height"]],
+      "disabled": [["background"], ["width"], ["height"]]
     },
     "CheckboxInnerIndeterminate": {
       "name": "半选内框样式",
       "desc": "半选内框样式",
-      "normal": [["color"], ["width"], ["height"]],
-      "hover": [["color"], ["width"], ["height"]],
-      "disabled": [["color"], ["width"], ["height"]]
+      "normal": [["background"], ["width"], ["height"]],
+      "hover": [["background"], ["width"], ["height"]],
+      "disabled": [["background"], ["width"], ["height"]]
     },
     "CheckboxInnerCancel": {
       "name": "取消状态内框样式",
       "desc": "取消状态内框样式",
-      "normal": [["color"], ["width"], ["height"]]
+      "normal": [["background"], ["width"], ["height"]]
     }
   }
 }
