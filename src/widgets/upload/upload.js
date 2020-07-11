@@ -405,9 +405,12 @@ class Upload extends React.Component<UploadProps, StateProps> {
     };
   };
 
-  setDeleteList = (index: number) => {
-    const { fileListDone } = this.state;
+  setDeleteList = (index: number, item: object) => {
+    const { fileListDone, defaultText } = this.state;
     fileListDone.splice(index, 1);
+    if (item.name === defaultText) {
+      this.setState({ defaultText: '' });
+    }
     this.setStateValue({ fileListDone });
   };
 
