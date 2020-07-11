@@ -34,21 +34,21 @@
       "defaultValue": false
     },
     "iconClass": {
-      "type": "object[]",
+      "type": "object",
       "desc": "自定义图标对象",
       "meta": [
         { "key": "default", "title": "默认图标名称", "type": "icon" },
         { "key": "primary", "title": "选中状态图标名称", "type": "icon" },
-        { "key": "danger", "title": "低分值图标名称", "type": "string" },
-        { "key": "amazed", "title": "高分值图标名称", "type": "string" },
-        { "key": "half", "title": "半星图标名称", "type": "string" }
+        { "key": "danger", "title": "低分值图标名称", "type": "icon" },
+        { "key": "amazed", "title": "高分值图标名称", "type": "icon" },
+        { "key": "half", "title": "半星图标名称", "type": "icon" }
       ],
       "defaultValue": {
         "default": "lugia-icon-financial_star",
         "primary": "lugia-icon-financial_star",
         "danger": "lugia-icon-financial_star",
         "amazed": "lugia-icon-financial_star",
-        "half": "lugia-icon-finacial_half_star"
+        "half": "lugia-icon-financial_half_star"
       }
     },
     "value": {
