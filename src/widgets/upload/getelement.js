@@ -679,7 +679,7 @@ export const getIconByType = (
     return uploadText;
   }
   if (info && (status === 'li-fail' || status === 'li-delete')) {
-    const { doFunction, index } = info;
+    const { doFunction, index, item } = info;
     return (
       <LoadIcon
         singleTheme
@@ -688,7 +688,7 @@ export const getIconByType = (
         iconClass={`${iconClassMap[status]} `}
         disabled={disabled}
         onClick={() => {
-          doFunction(index);
+          doFunction(index, item);
         }}
       />
     );
@@ -790,7 +790,7 @@ const getFileList = (
             {getIconByType(props, getListIconType(item.name), item)}
             <span>{item.name}</span>
             {item.status !== 'loading' && getIconByType(props, 'li-' + item.status)}
-            {getIconByType(props, 'li-delete', { doFunction: close, index })}
+            {getIconByType(props, 'li-delete', { doFunction: close, index, item })}
             {isShowProgress && getProgress(item, themeProps)}
           </Li>
         );
@@ -1272,9 +1272,10 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const { setAutoUploadState } = this.props;
     setAutoUploadState && setAutoUploadState(true);
   };
-  handleClickToDelete = (index: number) => {
-    const { setDeleteList } = this.props;
-    setDeleteList && setDeleteList(index);
+  handleClickToDelete = (index: number, item: object) => {
+    const { setDeleteList, onDelete } = this.props;
+    onDelete && onDelete(item, index);
+    setDeleteList && setDeleteList(index, item);
   };
 }
 
