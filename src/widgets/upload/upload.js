@@ -412,6 +412,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
       this.setState({ defaultText: '' });
     }
     this.setStateValue({ fileListDone });
+    this.input.value = '';
   };
 
   setAutoUploadState = (value: boolean) => {
