@@ -9,7 +9,6 @@ export default class EditTableEventListener extends Listener<any> {
   canMoveCells: boolean;
   isShift: boolean;
   isKeyBoardDown: boolean;
-  clickNumber: number;
   moveTrack: Array<Object>;
   dataKeyMap: Object;
   keyDownListener: Object;
@@ -36,7 +35,6 @@ export default class EditTableEventListener extends Listener<any> {
     this.moveTrack = [];
     this.selectCell = [];
     this.editCell = {};
-    this.clickNumber = 0;
     this.dataKeyMap = {
       columnsMap: {},
       dataMap: {},
@@ -92,6 +90,7 @@ export default class EditTableEventListener extends Listener<any> {
       this.emit('enterMultipleSelect');
       return;
     }
+
     if (this.isCanMoveCells()) {
       let directions;
       switch (key) {
@@ -109,6 +108,7 @@ export default class EditTableEventListener extends Listener<any> {
           break;
         case 'ArrowRight':
         case 'Tab':
+          this.doStopPropagation(e, true);
           directions = 'right';
           break;
         default:
@@ -143,14 +143,6 @@ export default class EditTableEventListener extends Listener<any> {
 
   getMoveTrack = (): Array<Object> => {
     return this.moveTrack;
-  };
-
-  getClickNumber = (): number => {
-    return this.clickNumber;
-  };
-
-  setClickNumber = (number: number): void => {
-    this.clickNumber = number;
   };
 
   setUpdateDataKeyMap = (props: Object): void => {
@@ -341,16 +333,16 @@ export default class EditTableEventListener extends Listener<any> {
     return newSelectCell;
   };
 
-  getMovedCells = (props: Object): ?Object => {
+  getMovedCells = (props: Object): Object => {
     const { directions, key } = props;
     const { selectCell } = this;
 
     if (!selectCell || selectCell.length <= 0) {
-      return;
+      return {};
     }
     let { selectColumn, selectRow } = selectCell[0];
     if ((!selectColumn && selectColumn !== 0) || (!selectRow && selectRow !== 0)) {
-      return;
+      return {};
     }
     switch (directions) {
       case 'left':
@@ -376,9 +368,9 @@ export default class EditTableEventListener extends Listener<any> {
         break;
     }
 
-    const { data = [], columns = [] } = props;
+    const { data = [], columns = [], showHeader } = props;
     const maxColumn = columns.length && columns.length - 1;
-    const maxData = data.length || 0;
+    const maxData = (showHeader ? data.length : data.length - 1) || 0;
     selectColumn = Math.max(Math.min(maxColumn, selectColumn), 0);
     selectRow = Math.max(Math.min(maxData, selectRow), 0);
     if (key && key === 'Tab' && selectCell) {
@@ -450,66 +442,69 @@ export default class EditTableEventListener extends Listener<any> {
 
   onCellClick = (props: Object): void => {
     const { e } = props;
-    let count = this.getClickNumber();
     this.doStopPropagation(e);
-    count += 1;
-    this.setClickNumber(count);
-    setTimeout(() => {
-      const selectCell = this.getSelectCell() || [];
-      const { selectColumn, selectRow, isAllowSelect } = props;
-      if (!isAllowSelect) {
-        this.setClickNumber(0);
-        this.emit('updateSelectCell', []);
-        this.emit('updateEditCell', {});
-        this.emit('clearSelect');
-        this.emit('clearEditing');
-        return;
-      }
+    const selectCell = this.getSelectCell() || [];
+    const { selectColumn, selectRow, isAllowSelect } = props;
+    if (!isAllowSelect) {
+      this.clearSelectInfo();
+      return;
+    }
 
-      const currentCell = { selectColumn, selectRow };
-      if (count === 1) {
-        const isSelected = this.isSelected(currentCell, selectCell);
-        let selectCellResult = [currentCell];
-        let currentItem = currentCell;
-        if (isSelected) {
-          this.emit('quitMoveCells');
-          selectCellResult = this.getClearSingleSelectCell(currentCell, selectCell);
-          currentItem = {};
-        }
-        this.setClickNumber(0);
-        this.emit('quiteMoveTrack');
-        this.emit('enterMoveTrack', currentCell);
-        const isMultiple = this.isMultiple();
+    const currentCell = { selectColumn, selectRow };
+    const isSelected = this.isSelected(currentCell, selectCell);
+    let selectCellResult = [currentCell];
+    let currentItem = currentCell;
+    if (isSelected) {
+      this.emit('quitMoveCells');
+      selectCellResult = this.getClearSingleSelectCell(currentCell, selectCell);
+      currentItem = {};
+    }
 
-        if (isMultiple && !isSelected) {
-          selectCellResult = selectCell.concat(selectCellResult);
-        } else {
-          this.emit('enterMoveCells');
-        }
+    this.emit('quiteMoveTrack');
+    this.emit('enterMoveTrack', currentCell);
+    const isMultiple = this.isMultiple();
 
-        this.emit('updateSelectCell', selectCellResult);
-        this.emit('updateEditCell', currentItem);
-        this.emit('setCellSelect', { selectCell: selectCellResult, editCell: currentItem });
+    if (isMultiple && !isSelected) {
+      selectCellResult = selectCell.concat(selectCellResult);
+    } else {
+      this.emit('enterMoveCells');
+    }
 
-        const { isLugiaHead } = props;
-        let emitName = 'exportOnCell';
-        if (isLugiaHead) {
-          emitName = 'exportOnHeaderCell';
-        }
-        this.emit(emitName, {
-          currentItem,
-          newValue: selectCellResult,
-          oldValue: selectCell,
-        });
-      } else if (count === 2) {
-        this.setClickNumber(0);
-        this.emit('quitMoveCells');
-        this.emit('quiteMoveTrack');
-        this.emit('updateSelectCell', [currentCell]);
-        this.emit('updateEditCell', currentCell);
-        this.emit('setCellSelect', { editing: true, editCell: currentCell });
-      }
-    }, 220);
+    this.emit('updateSelectCell', selectCellResult);
+    this.emit('updateEditCell', currentItem);
+    this.emit('setCellSelect', { selectCell: selectCellResult, editCell: currentItem });
+
+    const { isLugiaHead } = props;
+    let emitName = 'exportOnCell';
+    if (isLugiaHead) {
+      emitName = 'exportOnHeaderCell';
+    }
+    this.emit(emitName, {
+      currentItem,
+      newValue: selectCellResult,
+      oldValue: selectCell,
+    });
+  };
+
+  onCellDBClick = (props: Object): void => {
+    const { e } = props;
+    this.doStopPropagation(e);
+    const { selectColumn, selectRow, isAllowSelect } = props;
+    if (!isAllowSelect) {
+      this.clearSelectInfo();
+      return;
+    }
+    const currentCell = { selectColumn, selectRow };
+    this.emit('updateSelectCell', [currentCell]);
+    this.emit('updateEditCell', currentCell);
+    this.emit('setCellSelect', { editing: true, editCell: currentCell });
+  };
+
+  clearSelectInfo = () => {
+    this.emit('updateSelectCell', []);
+    this.emit('updateEditCell', {});
+    this.emit('clearSelect');
+    this.emit('clearEditing');
   };
 
   focusTable = (table: Object): void => {

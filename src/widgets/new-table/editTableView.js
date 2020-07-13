@@ -181,11 +181,12 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   };
 
   doMoveCells = (props: Object): void => {
-    const { data, columns, allowEditHead } = this.props;
+    const { data, columns, allowEditHead, showHeader } = this.props;
     const { editTableListener } = this;
     const { selectRow, oldSelectInfo, selectColumn } = editTableListener.getMovedCells({
       data,
       columns,
+      showHeader,
       ...props,
     });
     const selectInfo = { selectRow, selectColumn };
