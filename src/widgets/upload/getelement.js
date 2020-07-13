@@ -1274,7 +1274,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
   };
   handleClickToDelete = (index: number, item: object) => {
     const { setDeleteList, onDelete } = this.props;
-    onDelete && onDelete(item, index);
+    onDelete && onDelete({ item, index });
     setDeleteList && setDeleteList(index, item);
   };
 }
