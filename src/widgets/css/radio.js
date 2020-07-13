@@ -43,7 +43,12 @@ type ForGroupType = {
   last: ?boolean,
 };
 type RadioType = RadioProps & CSStype;
-type BorderRadiusValue = ?Object;
+type BorderRadiusValue = {
+  topLeft?: number | string,
+  topRight?: number | string,
+  bottomRight?: number | string,
+  bottomLeft?: number | string,
+};
 
 const getStyleCSS = (props: RadioType): string => {
   const { styles = 'default', last } = props;
@@ -152,27 +157,21 @@ export const RadioChildrenSpan = CSSComponent({
   },
 });
 
-const isStringType = (borderRadiusValue: BorderRadiusValue) => {
-  let flag;
-  for (const i in borderRadiusValue) {
-    typeof borderRadiusValue[i] === 'string' && (flag = true);
-  }
-  return flag;
+const getBorderRadiusValue = (value: number | string): string => {
+  return typeof value === 'number' ? em(value) : value;
 };
 
-const getInnerCircleBorderRadius = (borderRadiusValue: BorderRadiusValue) => {
+const getInnerCircleBorderRadius = (borderRadiusValue: BorderRadiusValue): string => {
   if (borderRadiusValue && typeof borderRadiusValue === 'object') {
-    if (isStringType(borderRadiusValue)) {
-      const {
-        topLeft = '50%',
-        topRight = '50%',
-        bottomRight = '50%',
-        bottomLeft = '50%',
-      } = borderRadiusValue;
-      return `${topLeft} ${topRight} ${bottomRight} ${bottomLeft}`;
-    }
-    const { topLeft = 5, topRight = 5, bottomRight = 5, bottomLeft = 5 } = borderRadiusValue;
-    return `${em(topLeft)} ${em(topRight)} ${em(bottomRight)} ${em(bottomLeft)}`;
+    const {
+      topLeft = '50%',
+      topRight = '50%',
+      bottomRight = '50%',
+      bottomLeft = '50%',
+    } = borderRadiusValue;
+    return `${getBorderRadiusValue(topLeft)} ${getBorderRadiusValue(
+      topRight
+    )} ${getBorderRadiusValue(bottomRight)} ${getBorderRadiusValue(bottomLeft)}`;
   }
   return '50%';
 };
