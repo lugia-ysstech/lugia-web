@@ -43,6 +43,7 @@ type ForGroupType = {
   last: ?boolean,
 };
 type RadioType = RadioProps & CSStype;
+type BorderRadiusValue = ?Object;
 
 const getStyleCSS = (props: RadioType): string => {
   const { styles = 'default', last } = props;
@@ -151,6 +152,31 @@ export const RadioChildrenSpan = CSSComponent({
   },
 });
 
+const isStringType = (borderRadiusValue: BorderRadiusValue) => {
+  let flag;
+  for (const i in borderRadiusValue) {
+    typeof borderRadiusValue[i] === 'string' && (flag = true);
+  }
+  return flag;
+};
+
+const getInnerCircleBorderRadius = (borderRadiusValue: BorderRadiusValue) => {
+  if (borderRadiusValue && typeof borderRadiusValue === 'object') {
+    if (isStringType(borderRadiusValue)) {
+      const {
+        topLeft = '50%',
+        topRight = '50%',
+        bottomRight = '50%',
+        bottomLeft = '50%',
+      } = borderRadiusValue;
+      return `${topLeft} ${topRight} ${bottomRight} ${bottomLeft}`;
+    }
+    const { topLeft = 5, topRight = 5, bottomRight = 5, bottomLeft = 5 } = borderRadiusValue;
+    return `${em(topLeft)} ${em(topRight)} ${em(bottomRight)} ${em(bottomLeft)}`;
+  }
+  return '50%';
+};
+
 export const RadioCircleSpan = CSSComponent({
   tag: 'span',
   className: 'RadioCircleSpan',
@@ -187,7 +213,7 @@ export const RadioCircleSpan = CSSComponent({
           normal: normalTheme,
         } = afterThemeConfig;
         const theme = isDisabled ? disabledTheme : hover ? hoverTheme || normalTheme : normalTheme;
-        const { background: { color } = {} } = theme;
+        const { background: { color } = {}, borderRadius } = theme;
         const { width = 10, height = 10 } = normalTheme;
         const backgroundColor = judgeStarts(color) ? getDictValue(color) : color;
 
@@ -199,7 +225,7 @@ export const RadioCircleSpan = CSSComponent({
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            border-radius: 100%;
+            border-radius: ${getInnerCircleBorderRadius(borderRadius)};
             display: table;
             border-top: 0;
             border-left: 0;
