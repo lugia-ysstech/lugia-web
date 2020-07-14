@@ -1,9 +1,7 @@
-import styled, { css } from 'styled-components';
-import { valueInRange } from '../../common/Math';
+import { css } from 'styled-components';
 import { modeStyle } from '../utils/booleanUtils';
-import { distance, em, fontSize, getDateWrrap, getThemeProperty, getThemeUpdate } from './utils';
+import { distance, em, fontSize, getDateWrrap, getThemeProperty } from './utils';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-import Trigger from '../../trigger';
 export const Box = CSSComponent({
   tag: 'div',
   className: 'Box',
@@ -459,25 +457,29 @@ const getDateChildStyle = props => {
     activeTheme = {},
     todayTheme = {},
     rangeWeekDate = {},
+    mode,
   } = props;
-  const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
-  const {
-    background: { color: bgColor },
-    color,
-    borderRadius: activeBorderRadius,
-    boxShadow = {},
-    border,
-  } = activeTheme;
-  const {
-    top: radiusTvalue,
-    right: radiusRvalue,
-    bottom: radiusBvalue,
-    left: radiusLvalue,
-  } = getBorderRadius(activeBorderRadius);
-  const normalBorderRadius = `border-radius:${radiusTvalue} ${radiusRvalue} ${radiusBvalue} ${radiusLvalue};`;
+  const { isDate, isRange, isWeeks } = modeStyle(mode);
+  let chooseStyle;
+  if (isDate || isRange) {
+    const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
+    const {
+      background: { color: bgColor },
+      color,
+      borderRadius: activeBorderRadius,
+      boxShadow = {},
+      border,
+    } = activeTheme;
+    const {
+      top: radiusTvalue,
+      right: radiusRvalue,
+      bottom: radiusBvalue,
+      left: radiusLvalue,
+    } = getBorderRadius(activeBorderRadius);
+    const normalBorderRadius = `border-radius:${radiusTvalue} ${radiusRvalue} ${radiusBvalue} ${radiusLvalue};`;
 
-  const chooseStyle = arrChoseDayIndex.reduce((p, n) => {
-    return `${p}
+    chooseStyle = arrChoseDayIndex.reduce((p, n) => {
+      return `${p}
     &:nth-child(${n})>i{
       background:${bgColor};
       color:${color};
@@ -485,7 +487,9 @@ const getDateChildStyle = props => {
       ${getBorderStyle(border)};
       ${getBoxShadow(boxShadow)};
     }`;
-  }, '');
+    }, '');
+  }
+
   const todayInd = noToday ? '' : selectToday ? todayIndex : '';
   const { border: todayBorder, color: todayColor, borderRadius, background } = todayTheme;
   const todayStyle = `
@@ -496,8 +500,9 @@ const getDateChildStyle = props => {
         ${borderRadius};
       }
   `;
+
   let chooseWeeks;
-  if (isChooseWeek || isHoverWeek) {
+  if (isWeeks && (isChooseWeek || isHoverWeek)) {
     const {
       normal: {
         background: { color: normalBgColor },
