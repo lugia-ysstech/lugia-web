@@ -66,7 +66,7 @@
       },
       {
         "title": "加载中",
-        "iconClass": "uploadImageLoading",
+        "iconClass": "uploadLoading",
         "data": [
           {
             "name": "加载中整体样式",
@@ -85,7 +85,7 @@
       },
       {
         "title": "已完成",
-        "iconClass": "upload",
+        "iconClass": "UploadSuccess",
         "data": [
           {
             "name": "已完成整体样式",
@@ -141,14 +141,14 @@
         "data": [
           {
             "name": "文件上传区域",
-            "path": ["Container"],
+            "path": ["Container","Container"],
             "description": {
               "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
           },
           {
             "name": "按钮文字",
-            "path": ["ButtonText"],
+            "path": ["Container","ButtonText"],
             "description": {
               "appearancePart": { "text": "按钮文字", "desc": "面板中外观配置的区块显示文本" }
             }
@@ -165,7 +165,14 @@
             "description": {
               "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
+          },
+          {
+            "name": "展开图标",
+            "path": ["UploadIcon"],
+            "props": [{ "name": "icon", "typeInTheme": "icon" }],
+            "description": { "textPart": { "text": "图标", "desc": "展开图标文本配置区" } }
           }
+
         ]
       },
       {
@@ -186,36 +193,36 @@
       },
       {
         "title": "已完成",
-        "iconClass": "upload",
+        "iconClass": "uploadButtonSuccess",
         "data": [
           {
             "name": "文件上传区域",
-            "path": ["UploadButtonDone"],
+            "path": ["UploadButtonDone","Container"],
             "description": {
               "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
           },
           {
             "name": "失败文字",
-            "path": ["ButtonTextDone"],
+            "path": ["UploadButtonDone","ButtonText"],
             "description": { "appearancePart": { "text": "文字", "desc": "面板中外观配置的区块显示文本" } }
           }
         ]
       },
       {
         "title": "上传失败",
-        "iconClass": "uploadError",
+        "iconClass": "uploadButtonError",
         "data": [
           {
             "name": "文件上传区域",
-            "path": ["UploadButtonFail"],
+            "path": ["UploadButtonFail","Container"],
             "description": {
               "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
           },
           {
             "name": "失败文字",
-            "path": ["ButtonTextFail"],
+            "path": ["UploadButtonFail","ButtonText"],
             "description": { "appearancePart": { "text": "文字", "desc": "面板中外观配置的区块显示文本" } }
           }
         ]
@@ -295,7 +302,7 @@
         "data": [
           {
             "name": "加载中整体样式",
-            "path": ["UploadPictureLoading"],
+            "path": ["PictureAreaLoading"],
             "description": {
               "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
@@ -310,11 +317,11 @@
       },
       {
         "title": "已完成",
-        "iconClass": "upload",
+        "iconClass": "uploadImageSuccess",
         "data": [
           {
             "name": "已完成整体样式",
-            "path": ["UploadPictureDone"],
+            "path": ["PictureAreaDone"],
             "description": {
               "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
@@ -329,11 +336,11 @@
       },
       {
         "title": "上传失败",
-        "iconClass": "uploadError",
+        "iconClass": "uploadImageError",
         "data": [
           {
             "name": "上传失败整体样式",
-            "path": ["UploadPictureFail"],
+            "path": ["PictureAreaFail"],
             "description": {
               "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
@@ -423,11 +430,11 @@
       },
       {
         "title": "加载中",
-        "iconClass": "uploadImageLoading",
+        "iconClass": "uploadAreaLoading",
         "data": [
           {
             "name": "加载中整体样式",
-            "path": ["UploadAreaLoading"],
+            "path": ["PictureAreaLoading"],
             "description": {
               "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
@@ -442,11 +449,11 @@
       },
       {
         "title": "已完成",
-        "iconClass": "upload",
+        "iconClass": "uploadAreaSuccess",
         "data": [
           {
             "name": "已完成整体样式",
-            "path": ["UploadAreaDone"],
+            "path": ["PictureAreaDone"],
             "description": {
               "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
@@ -461,11 +468,11 @@
       },
       {
         "title": "上传失败",
-        "iconClass": "uploadError",
+        "iconClass": "uploadAreaError",
         "data": [
           {
             "name": "上传失败整体样式",
-            "path": ["UploadAreaFail"],
+            "path": ["PictureAreaFail"],
             "description": {
               "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
@@ -518,14 +525,14 @@
         "data": [
           {
             "name": "按钮整体样式",
-            "path": ["UploadButtonType", "Container"],
+            "path": ["UploadButtonType","Container"],
             "description": {
               "appearancePart": { "text": "整体样式", "desc": "面板中外观配置的区块显示文本" }
             }
           },
           {
             "name": "按钮文字样式",
-            "path": ["UploadButtonType", "ButtonText"],
+            "path": ["UploadButtonType","ButtonText"],
             "description": {
               "textPart": { "text": "文字", "desc": "文本配置区块的显示文本" }
             }
@@ -569,7 +576,7 @@
       },
       {
         "title": "上传框失败",
-        "iconClass": "",
+        "iconClass": "uploadInputError",
         "data": [
           {
             "name": "上传框失败样式",
@@ -582,7 +589,7 @@
       },
       {
         "title": "上传框完成",
-        "iconClass": "",
+        "iconClass": "uploadInputSuccess",
         "data": [
           {
             "name": "上传框失败样式",
@@ -595,18 +602,18 @@
       },
       {
         "title": "按钮失败",
-        "iconClass": "",
+        "iconClass": "uploadGroupError",
         "data": [
           {
             "name": "按钮失败整体样式",
-            "path": ["UploadButtonFail"],
+            "path": ["UploadButtonFail","Container"],
             "description": {
               "appearancePart": { "text": "整体样式", "desc": "面板中外观配置的上传按钮失败样式" }
             }
           },
           {
             "name": "按钮文字失败样式",
-            "path": ["ButtonTextFail"],
+            "path": ["UploadButtonFail","ButtonText"],
             "description": {
               "appearancePart": { "text": "文字", "desc": "面板中外观配置的上传按钮失败样式" }
             }
@@ -615,11 +622,11 @@
       },
       {
         "title": "按钮加载",
-        "iconClass": "",
+        "iconClass": "uploadBoxButtonLoading",
         "data": [
           {
             "name": "按钮加载整体样式",
-            "path": ["UploadButtonLoading"],
+            "path": ["UploadButtonLoading","Container"],
             "description": {
               "appearancePart": { "text": "整体样式", "desc": "面板中外观配置的上传按钮失败样式" }
             }
@@ -635,18 +642,18 @@
       },
       {
         "title": "按钮完成",
-        "iconClass": "",
+        "iconClass": "uploadBoxButtonSuccess",
         "data": [
           {
             "name": "按钮成功整体样式",
-            "path": ["UploadButtonDone"],
+            "path": ["UploadButtonDone","Container"],
             "description": {
               "appearancePart": { "text": "整体样式", "desc": "面板中外观配置的上传按钮失败样式" }
             }
           },
           {
             "name": "按钮文字成功样式",
-            "path": ["ButtonTextDone"],
+            "path": ["UploadButtonDone","ButtonText"],
             "description": {
               "appearancePart": { "text": "文字", "desc": "面板中外观配置的上传按钮失败样式" }
             }
