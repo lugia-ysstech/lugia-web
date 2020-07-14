@@ -492,6 +492,22 @@
                     "desc": "文本配置区块的显示文本"
                   }
                 }
+              },
+              {
+                "name": "日期连接符",
+                "path": ["RangeInputMiddleSymbol"],
+                "props": [
+                  {
+                    "name": "middleSymbol",
+                    "typeInTheme": "text"
+                  }
+                ],
+                "description": {
+                  "textPart": {
+                    "text": "区间符号",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
               }
             ]
           },
