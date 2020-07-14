@@ -1071,20 +1071,11 @@
             }
           },
           {
-            "title": "页脚分割线",
-            "iconClass": "Dividingline",
-            "data": [
-              {
-                "name": "页脚分割线",
-                "path": ["FooterLine"],
-                "description": {
-                  "appearancePart": {
-                    "text": "分割线",
-                    "desc": "面板中外观配置的区块显示文本"
-                  }
-                }
-              }
-            ]
+            "name": "页脚分割线",
+            "path": ["FooterLine"],
+            "description": {
+              "appearancePart": { "text": "分割线", "desc": "面板中外观配置的区块显示文本" }
+            }
           }
         ]
       }
@@ -1211,7 +1202,7 @@
       },
       {
         "title": "整体面板",
-        "iconClass": "datePickerMonthBottom",
+        "iconClass": "datePickerBackground",
         "data": [
           {
             "name": "日期面板",
@@ -1292,20 +1283,11 @@
             }
           },
           {
-            "title": "页脚分割线",
-            "iconClass": "Dividingline",
-            "data": [
-              {
-                "name": "页脚分割线",
-                "path": ["FooterLine"],
-                "description": {
-                  "appearancePart": {
-                    "text": "分割线",
-                    "desc": "面板中外观配置的区块显示文本"
-                  }
-                }
-              }
-            ]
+            "name": "页脚分割线",
+            "path": ["FooterLine"],
+            "description": {
+              "appearancePart": { "text": "分割线", "desc": "面板中外观配置的区块显示文本" }
+            }
           }
         ]
       }
@@ -1883,20 +1865,11 @@
             }
           },
           {
-            "title": "页脚分割线",
-            "iconClass": "Dividingline",
-            "data": [
-              {
-                "name": "页脚分割线",
-                "path": ["FooterLine"],
-                "description": {
-                  "appearancePart": {
-                    "text": "分割线",
-                    "desc": "面板中外观配置的区块显示文本"
-                  }
-                }
-              }
-            ]
+            "name": "页脚分割线",
+            "path": ["FooterLine"],
+            "description": {
+              "appearancePart": { "text": "分割线", "desc": "面板中外观配置的区块显示文本" }
+            }
           }
         ]
       }
