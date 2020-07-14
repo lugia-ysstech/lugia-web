@@ -1,7 +1,6 @@
-import { css } from 'styled-components';
 import { modeStyle } from '../utils/booleanUtils';
 import { distance, em, fontSize, getDateWrrap, getThemeProperty } from './utils';
-import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent, css } from '@lugia/theme-css-hoc';
 export const Box = CSSComponent({
   tag: 'div',
   className: 'Box',
