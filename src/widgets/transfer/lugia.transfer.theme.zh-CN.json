@@ -805,16 +805,6 @@
                         "desc": "文字"
                       }
                     }
-                  },
-                  {
-                    "name": "外观",
-                    "path": ["TransferCancelCheckbox", "CheckboxInnerCancel"],
-                    "description": {
-                      "textPart": {
-                        "text": "文本",
-                        "desc": "文本配置区块的显示文本"
-                      }
-                    }
                   }
                 ]
               }
