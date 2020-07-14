@@ -295,13 +295,26 @@ export const DateChild = CSSComponent({
   `,
 });
 function getRangeChoseStyle(props) {
-  const { rangeNormalTheme: { background: { color: bgColor } = {} } = {}, rangeChose } = props;
+  const {
+    rangeNormalTheme: { color: textColor, background: { color: bgColor } = {} } = {},
+    rangeChose,
+  } = props;
   let color = '';
+  let newTextColor;
   if (rangeChose) {
     color = bgColor;
+
+    if (textColor) {
+      newTextColor = `
+        & > i{
+            color:${textColor}
+            }
+        `;
+    }
   }
   return `
       background:${color};
+      ${newTextColor};
     `;
 }
 export const DateChildInner = CSSComponent({
