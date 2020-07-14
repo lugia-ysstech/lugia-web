@@ -5,7 +5,7 @@ import DateInput from '../triggerPanel/singlePanelTrigger';
 export default ThemeProvider(
   class YearPicker extends Component {
     render() {
-      return <DateInput {...this.props} mode={'year'} />;
+      return <DateInput placeholder={'请选择年'} {...this.props} mode={'year'} />;
     }
   },
   Widget.YearPicker,
