@@ -113,7 +113,6 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
             e,
             selectColumn,
             selectRow: index,
-            isLugiaHead,
             isAllowSelect,
           })
         }
