@@ -214,9 +214,9 @@
             "name": "进度条底色条颜色配置",
             "path": ["ProgressCircleBackground"],
             "description": {
-              "appearancePart": {
+              "textPart": {
                 "text": "外观",
-                "desc": "面板中外观配置的区块显示文本"
+                "desc": "文本配置区块的显示文本"
               }
             }
           }
@@ -230,9 +230,9 @@
             "name": "进度条进度线颜色配置",
             "path": ["ProgressCircleLine"],
             "description": {
-              "appearancePart": {
+              "textPart": {
                 "text": "外观",
-                "desc": "面板中外观配置的区块显示文本"
+                "desc": "文本配置区块的显示文本"
               }
             }
           }
@@ -332,9 +332,9 @@
             "name": "进度条底色条颜色配置",
             "path": ["DashboardBackground"],
             "description": {
-              "appearancePart": {
+              "textPart": {
                 "text": "外观",
-                "desc": "面板中外观配置的区块显示文本"
+                "desc": "文本配置区块的显示文本"
               }
             }
           }
@@ -348,9 +348,9 @@
             "name": "进度条进度线颜色配置",
             "path": ["DashboardLine"],
             "description": {
-              "appearancePart": {
+              "textPart": {
                 "text": "外观",
-                "desc": "面板中外观配置的区块显示文本"
+                "desc": "文本配置区块的显示文本"
               }
             }
           }
