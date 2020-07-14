@@ -5,7 +5,7 @@ import DateInput from '../triggerPanel/singlePanelTrigger';
 export default ThemeProvider(
   class MonthPicker extends Component {
     render() {
-      return <DateInput {...this.props} mode={'month'} />;
+      return <DateInput placeholder={'请选择月'} {...this.props} mode={'month'} />;
     }
   },
   Widget.MonthPicker,
