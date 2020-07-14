@@ -4280,6 +4280,7 @@ export default [
   {
     meta: {
       widgetName: 'Checkbox.Group',
+      viewClassName: 'CheckboxGroup',
       title: '多选框组',
       desc: '多选框组。',
       props: {
@@ -4471,6 +4472,7 @@ export default [
   {
     meta: {
       widgetName: 'Checkbox.Group',
+      viewClassName: 'CheckboxGroup',
       title: '按钮状多选框组',
       desc: '按钮形状的多选框组',
       props: {
@@ -6197,6 +6199,7 @@ export default [
         step: { type: 'number', desc: '设置周,年的展示步长' },
         suffix: { type: 'icon', desc: '后缀图标' },
         prefix: { type: 'icon', desc: '前缀图标' },
+        middleSymbol: { type: 'string', desc: '日期连接符', propsDefaultValue: '~' },
         clearIcon: { type: 'icon', desc: '清除图标' },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
         validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
@@ -6483,6 +6486,13 @@ export default [
           disabled: [['color'], ['background'], ['boxShadow'], ['border']],
         },
         FooterLine: { name: '页脚分割线', desc: '页脚分割线配置', normal: [['background']] },
+        RangeInputMiddleSymbol: {
+          name: '日期连接符',
+          desc: '日期连接符',
+          normal: [['color'], ['font'], ['margin']],
+          hover: [['color'], ['font']],
+          disabled: [['color'], ['font']],
+        },
       },
       defaultTheme: {
         Container: { normal: { width: 600 } },
@@ -13981,6 +13991,7 @@ export default [
   {
     meta: {
       widgetName: 'Radio.Group',
+      viewClassName: 'RadioGroup',
       title: '单选框组',
       desc: '单选框组。',
       props: {
@@ -14139,6 +14150,7 @@ export default [
   {
     meta: {
       widgetName: 'Radio.Group',
+      viewClassName: 'RadioGroup',
       title: '按钮状单选框组',
       desc: '按钮形状的单选框组',
       props: {
