@@ -270,31 +270,16 @@ class UploadDemo extends React.Component<any, any> {
     const configButton = {
       [Widget.Upload]: {
         Container: {
-          normal: {
-            width: 300,
-            height: 40,
+          Container: {
+            normal: {
+              width: 300,
+              height: 80,
+            },
           },
-        },
-        ButtonText: {
-          normal: {
-            color: 'orange',
-          },
-        },
-        ButtonTextFail: {
-          normal: {
-            color: 'orange',
-          },
-          hover: {
-            color: 'orange',
-          },
-          active: {
-            color: 'orange',
-          },
-          focus: {
-            color: 'orange',
-          },
-          disabled: {
-            color: 'orange',
+          ButtonText: {
+            normal: {
+              color: 'orange',
+            },
           },
         },
         UploadLiType: {
@@ -304,20 +289,27 @@ class UploadDemo extends React.Component<any, any> {
           },
         },
         UploadButtonFail: {
-          normal: {
-            border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
+          Container: {
+            normal: {
+              border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
+            },
+            hover: {
+              border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
+            },
+            active: {
+              border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
+            },
+            focus: {
+              border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
+            },
+            disabled: {
+              border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
+            },
           },
-          hover: {
-            border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
-          },
-          active: {
-            border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
-          },
-          focus: {
-            border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
-          },
-          disabled: {
-            border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
+          ButtonText: {
+            normal: {
+              color: 'orange',
+            },
           },
         },
       },
@@ -389,9 +381,9 @@ class UploadDemo extends React.Component<any, any> {
             borderRadius: getBorderRadius(4),
           },
         },
-        UploadPictureFail: {
+        PictureAreaFail: {
           normal: {
-            border: getBorder({ color: 'red', width: 1, style: 'solid' }),
+            border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
         },
         UploadLiType: {
@@ -426,51 +418,65 @@ class UploadDemo extends React.Component<any, any> {
             border: getBorder({ color: 'red', width: 1, style: 'solid' }),
           },
         },
-        ButtonText: {
-          normal: {
-            color: 'orange',
-            fontSize: 30,
-          },
-        },
-        ButtonTextFail: {
-          normal: {
-            color: 'red',
-          },
-          hover: {
-            color: 'red',
-          },
-          active: {
-            color: 'red',
-          },
-          focus: {
-            color: 'red',
-          },
-          disabled: {
-            color: 'red',
-          },
-        },
         UploadButtonType: {
-          normal: {
-            width: 80,
+          Container: {
+            normal: {
+              width: 100,
+              background: { color: 'orange' },
+            },
           },
         },
         UploadButtonFail: {
-          normal: {
-            background: { color: 'orange' },
+          Container: {
+            normal: {
+              width: 200,
+              background: { color: 'orange' },
+            },
+            hover: {
+              background: { color: 'orange' },
+            },
+            active: {
+              background: { color: 'orange' },
+            },
+            focus: {
+              background: { color: 'orange' },
+            },
+            disabled: {
+              background: { color: 'orange' },
+            },
           },
-          hover: {
-            background: { color: 'orange' },
-          },
-          active: {
-            background: { color: 'orange' },
-          },
-          focus: {
-            background: { color: 'orange' },
-          },
-          disabled: {
-            background: { color: 'orange' },
+          ButtonText: {
+            normal: {
+              color: 'black',
+            },
           },
         },
+        UploadButtonLoading: {
+          Container: {
+            normal: {
+              width: 200,
+              background: { color: 'orange' },
+            },
+            hover: {
+              background: { color: 'orange' },
+            },
+            active: {
+              background: { color: 'orange' },
+            },
+            focus: {
+              background: { color: 'orange' },
+            },
+            disabled: {
+              background: { color: 'orange' },
+            },
+          },
+          UploadIcon: {
+            normal: {
+              color: 'black',
+            },
+          },
+        },
+
         UploadInputTheme: {
           normal: {
             borderRadius: getBorderRadius(4, ['tl', 'bl']),
@@ -527,12 +533,12 @@ class UploadDemo extends React.Component<any, any> {
             border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
         },
-        uploadAreaFail: {
+        PictureAreaFail: {
           normal: {
-            border: getBorder({ color: 'red', width: 1, style: 'solid' }),
+            border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
         },
-        uploadAreaText: {
+        UploadAreaText: {
           normal: {
             color: 'blue',
           },

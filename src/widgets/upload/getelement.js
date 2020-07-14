@@ -100,11 +100,13 @@ const buttonStyle = {
 };
 const getButtonStyle = (normalButtonTheme, classNameStatus) => {
   return {
-    normal: { ...normalButtonTheme, background: { color: buttonStyle[classNameStatus] } },
-    hover: { background: { color: buttonStyle[classNameStatus] } },
-    active: { background: { color: buttonStyle[classNameStatus] } },
-    focus: { background: { color: buttonStyle[classNameStatus] } },
-    disabled: { background: { color: buttonStyle[classNameStatus] } },
+    Container: {
+      normal: { ...normalButtonTheme, background: { color: buttonStyle[classNameStatus] } },
+      hover: { background: { color: buttonStyle[classNameStatus] } },
+      active: { background: { color: buttonStyle[classNameStatus] } },
+      focus: { background: { color: buttonStyle[classNameStatus] } },
+      disabled: { background: { color: buttonStyle[classNameStatus] } },
+    },
   };
 };
 
@@ -253,7 +255,7 @@ const ProgressCon = CSSComponent({
 
 const Li = CSSComponent({
   tag: 'li',
-  className: ' f',
+  className: 'UploadLiType',
   normal: {
     selectNames: [
       ['fontSize'],
@@ -1037,61 +1039,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const {
       defaultTips: { uploadText, uploadTips, failTips, loadingTips },
     } = props;
-    const { viewClass: buttonTextViewClass, theme: buttonTextTheme } = props.getPartOfThemeHocProps(
-      'ButtonText'
-    );
-    const {
-      viewClass: buttonTextfFailViewClass,
-      theme: buttonTextFail,
-    } = props.getPartOfThemeHocProps('ButtonTextFail');
-    const {
-      viewClass: buttonTextLoadingViewClass,
-      theme: buttonTextLoading,
-    } = props.getPartOfThemeHocProps('ButtonTextLoading');
-    const {
-      viewClass: buttonTextDoneViewClass,
-      theme: buttonTextDone,
-    } = props.getPartOfThemeHocProps('ButtonTextDone');
     const uploadIconTheme = props.getPartOfThemeHocProps('UploadIcon');
-    const buttonTextType =
-      areaType === 'button'
-        ? buttonTextLoading[buttonTextLoadingViewClass]
-        : areaType === 'both'
-        ? uploadIconTheme
-        : '';
-
-    const buttonTextStatus =
-      classNameStatus === 'fail'
-        ? buttonTextFail[buttonTextfFailViewClass]
-        : classNameStatus === 'loading'
-        ? buttonTextType
-        : classNameStatus === 'done'
-        ? buttonTextDone[buttonTextDoneViewClass]
-        : {};
-    const buttonFailMerge = deepMerge(buttonTextTheme[buttonTextViewClass], buttonTextStatus);
-
-    const {
-      viewClass: buttonFailViewClass,
-      theme: uploadButtonFail,
-    } = this.props.getPartOfThemeHocProps('UploadButtonFail');
-    const {
-      viewClass: buttonLoadingViewClass,
-      theme: uploadButtonLoading,
-    } = this.props.getPartOfThemeHocProps('UploadButtonLoading');
-    const {
-      viewClass: buttonDoneViewClass,
-      theme: uploadButtonDone,
-    } = this.props.getPartOfThemeHocProps('UploadButtonDone');
-
-    const UploadButtonStatus =
-      classNameStatus === 'fail'
-        ? uploadButtonFail[buttonFailViewClass]
-        : classNameStatus === 'loading'
-        ? uploadButtonLoading[buttonLoadingViewClass]
-        : classNameStatus === 'done'
-        ? uploadButtonDone[buttonDoneViewClass]
-        : {};
-
     if (areaType === 'both') {
       const { handleClickToSubmit, handleClickToUpload } = this;
       const { defaultText, showFileList, disabled } = this.props;
@@ -1121,32 +1069,41 @@ class GetElement extends React.Component<DefProps, StateProps> {
         classNameStatus === 'fail' || classNameStatus === 'done'
           ? { ...getButtonStyle(normalButtonTheme, classNameStatus) }
           : {};
-      const bothButtonWidth = deepMerge({ normal: { width: 100 } }, buttonTheme[buttonViewClass]);
 
+      const bothButtonWidth = deepMerge({ normal: { width: 100 } }, buttonTheme[buttonViewClass]);
+      const themeType =
+        classNameStatus === 'fail'
+          ? 'UploadButtonFail'
+          : classNameStatus === 'loading'
+          ? 'UploadButtonLoading'
+          : classNameStatus === 'done'
+          ? 'UploadButtonDone'
+          : classNameStatus === 'default'
+          ? 'UploadButtonType'
+          : {};
+      const {
+        viewClass: buttonViewClassType,
+        theme: buttonThemeType,
+      } = this.props.getPartOfThemeHocProps(themeType);
       const buttonMergeStyle = deepMerge(
         {
-          normal: {
-            width: bothButtonWidth.normal.width,
-            height: '100%',
-            borderRadius: getBorderRadius(0, ['tl', 'bl']),
-          },
-        },
-        bothButtonWidth,
-        buttonThemeStyle,
-        buttonTheme[buttonViewClass],
-        UploadButtonStatus
-      );
-      const resultButtonTheme = {
-        [buttonViewClass]: {
           Container: {
-            ...buttonMergeStyle,
-          },
-          ButtonText: {
-            ...buttonFailMerge,
+            normal: {
+              width: bothButtonWidth.normal.width,
+              height: '100%',
+              borderRadius: getBorderRadius(0, ['tl', 'bl']),
+            },
           },
         },
-      };
-      const newTheme = { viewClass: buttonViewClass, theme: resultButtonTheme };
+        buttonThemeStyle
+      );
+      const resultButtonTheme = deepMerge({
+        [buttonViewClassType]: {
+          ...buttonMergeStyle,
+        },
+      });
+      const themeTypeMerge = deepMerge(resultButtonTheme, buttonThemeType);
+      const newTheme = { viewClass: buttonViewClassType, theme: themeTypeMerge };
       children = (
         <React.Fragment>
           <BothContainer themeProps={containerStyle}>
@@ -1180,37 +1137,44 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'button') {
       const { disabled } = props;
       const { handleClickToUpload } = this;
-      const { viewClass: buttonViewClass, theme: buttonTheme } = this.props.getPartOfThemeHocProps(
-        'Container'
-      );
-      const buttonFailBorder =
+      const themeType =
+        classNameStatus === 'fail'
+          ? 'UploadButtonFail'
+          : classNameStatus === 'loading'
+          ? 'UploadButtonLoading'
+          : classNameStatus === 'done'
+          ? 'UploadButtonDone'
+          : classNameStatus === 'default'
+          ? 'Container'
+          : {};
+      const {
+        viewClass: buttonViewClassType,
+        theme: buttonThemeType,
+      } = this.props.getPartOfThemeHocProps(themeType);
+      const buttonBorderStatus =
         classNameStatus === 'fail' || classNameStatus === 'done'
           ? { ...getButtonFailBorder(normalButtonTheme, classNameStatus) }
           : {};
-      const buttonFailText =
+      const buttonTextStatus =
         classNameStatus === 'fail' || classNameStatus === 'done'
           ? { ...buttonFailColor(classNameStatus) }
           : {};
-
-      const buttonTextMerge = deepMerge(buttonTextTheme[buttonTextViewClass], buttonFailText);
-      const buttonText = deepMerge(buttonTextMerge, buttonTextStatus);
-      const buttonMergeStyle = deepMerge(buttonTheme[buttonViewClass], buttonFailBorder);
-      const buttonContainerMerge = deepMerge(buttonMergeStyle, UploadButtonStatus);
-
       const resultButtonTheme = deepMerge({
-        [buttonViewClass]: {
+        [buttonViewClassType]: {
           Container: {
             normal: {
               height: 30,
             },
-            ...buttonContainerMerge,
+            ...buttonBorderStatus,
           },
           ButtonText: {
-            ...buttonText,
+            ...buttonTextStatus,
           },
         },
       });
-      const newTheme = { viewClass: buttonViewClass, theme: resultButtonTheme };
+      const buttonMerge = deepMerge(resultButtonTheme, buttonThemeType);
+      const newTheme = { viewClass: buttonViewClassType, theme: buttonMerge };
+
       children = (
         <Button
           {...newTheme}
@@ -1234,22 +1198,22 @@ class GetElement extends React.Component<DefProps, StateProps> {
       classNameStatus === 'fail'
         ? { border: getBorder({ width: 1, style: 'dashed', color: dangerColor }) }
         : {};
+    const pictureAreaFail = this.props.getPartOfThemeProps('PictureAreaFail');
+    const pictureAreaDone = this.props.getPartOfThemeProps('PictureAreaDone');
+    const pictureAreaLoading = this.props.getPartOfThemeProps('PictureAreaLoading');
+    const uploadAfterTheme =
+      classNameStatus === 'fail'
+        ? pictureAreaFail
+        : classNameStatus === 'done'
+        ? pictureAreaDone
+        : classNameStatus === 'loading'
+        ? pictureAreaLoading
+        : {};
     if (areaType === 'picture') {
       const { size, disabled, fileListDone, multiple, previewUrl } = props;
       const { handleClickToUpload, handleClickToDelete, dropArea } = this;
       const pictureSizeFail = classNameStatus === 'fail' ? { fontSize: descriptionFontSize } : {};
       const pictureThemeProps = this.props.getPartOfThemeProps('Container');
-      const uploadPictureFail = this.props.getPartOfThemeProps('UploadPictureFail');
-      const uploadPictureDone = this.props.getPartOfThemeProps('UploadPictureDone');
-      const uploadPictureLoading = this.props.getPartOfThemeProps('UploadPictureLoading');
-      const uploadAfterTheme =
-        classNameStatus === 'fail'
-          ? uploadPictureFail
-          : classNameStatus === 'done'
-          ? uploadPictureDone
-          : classNameStatus === 'loading'
-          ? uploadPictureLoading
-          : {};
       const pictureTheme = deepMerge(
         {
           themeConfig: {
@@ -1313,17 +1277,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const { disabled } = props;
       const areaThemeProps = this.props.getPartOfThemeProps('Container');
       const uploadAreaText = this.props.getPartOfThemeProps('UploadAreaText');
-      const uploadAreaFail = this.props.getPartOfThemeProps('UploadAreaFail');
-      const uploadAreaaDone = this.props.getPartOfThemeProps('UploadAreaDone');
-      const uploadAreaLoading = this.props.getPartOfThemeProps('UploadAreaLoading');
-      const uploadAfterTheme =
-        classNameStatus === 'fail'
-          ? uploadAreaFail
-          : classNameStatus === 'done'
-          ? uploadAreaaDone
-          : classNameStatus === 'loading'
-          ? uploadAreaLoading
-          : {};
       const { themeConfig: { normal: { color: textColor } = {} } = {} } = uploadAreaText;
       const areaTextBlue = deepMerge(
         {
