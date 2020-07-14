@@ -9119,7 +9119,11 @@ export default [
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         content: { type: 'React.node', desc: '提示消息的内容' },
-        time: { type: 'number', desc: '自动延时关闭，单位为 秒', defaultValue: 2 },
+        time: {
+          type: 'number',
+          desc: '自定义延时关闭时间，单位为 秒, 设置 0 或 null 时不关闭',
+          defaultValue: 0,
+        },
         callBack: { type: 'Function', desc: '关闭时的回调' },
         icon: { type: 'string', desc: '自定义图标' },
       },
@@ -9150,6 +9154,7 @@ export default [
           normal: [['color'], ['font']],
         },
       },
+      defaultTheme: { Container: { normal: { width: 500 } } },
       childrenWidget: [],
       hideInTollPanel: true,
     },
@@ -11863,10 +11868,14 @@ export default [
       desc: 'Notification 通知提醒框。',
       props: {
         title: { type: 'React.node', desc: '标题' },
-        duration: { type: 'number', desc: '自定义演示关闭', defaultValue: 4.5 },
+        duration: {
+          type: 'number',
+          desc: '自定义延时关闭时间，单位为 秒, 设置 0 或 null 时不关闭',
+          defaultValue: 0,
+        },
         description: { type: 'React.node', desc: '通知提醒内容' },
-        icon: { type: 'string', desc: '自定义图标' },
-        closeIcon: { type: 'string', desc: '自定义图标' },
+        icon: { type: 'icon', desc: '自定义图标' },
+        closeIcon: { type: 'icon', desc: '自定义图标' },
         placement: {
           type: 'PlacementType',
           desc: '弹出位置，topRight、bottomLeft、bottomRight、topLeft',
@@ -11911,6 +11920,7 @@ export default [
           normal: [['color'], ['font']],
         },
       },
+      defaultTheme: { Container: { normal: { width: 500 } } },
       childrenWidget: [],
       hideInTollPanel: true,
     },
@@ -25629,10 +25639,6 @@ export default [
           desc: '获取触发文件选择的input实例的引用',
           args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
         },
-        onDelete: {
-          desc: '删除列表项时触发',
-          args: [{ name: 'result', desc: '删除列表项时的回调函数', type: 'Object' }],
-        },
       },
       type: {
         UploadSize: ['small', 'default', 'large'],
@@ -26012,10 +26018,6 @@ export default [
           desc: '获取触发文件选择的input实例的引用',
           args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
         },
-        onDelete: {
-          desc: '删除列表项时触发',
-          args: [{ name: 'result', desc: '删除列表项时的回调函数', type: 'Object' }],
-        },
       },
       type: {
         UploadSize: ['small', 'default', 'large'],
@@ -26153,10 +26155,6 @@ export default [
           desc: '获取触发文件选择的input实例的引用',
           args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
         },
-        onDelete: {
-          desc: '删除列表项时触发',
-          args: [{ name: 'result', desc: '删除列表项时的回调函数', type: 'Object' }],
-        },
       },
       type: {
         UploadSize: ['small', 'default', 'large'],
@@ -26289,10 +26287,6 @@ export default [
         getInputRef: {
           desc: '获取触发文件选择的input实例的引用',
           args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
-        },
-        onDelete: {
-          desc: '删除列表项时触发',
-          args: [{ name: 'result', desc: '删除列表项时的回调函数', type: 'Object' }],
         },
       },
       type: {
@@ -26441,10 +26435,6 @@ export default [
         getInputRef: {
           desc: '获取触发文件选择的input实例的引用',
           args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
-        },
-        onDelete: {
-          desc: '删除列表项时触发',
-          args: [{ name: 'result', desc: '删除列表项时的回调函数', type: 'Object' }],
         },
       },
       type: {
