@@ -4255,21 +4255,21 @@ export default [
         CheckboxInnerChecked: {
           name: '选中内框样式',
           desc: '选中内框样式',
-          normal: [['color'], ['width'], ['height']],
-          hover: [['color'], ['width'], ['height']],
-          disabled: [['color'], ['width'], ['height']],
+          normal: [['background'], ['width'], ['height']],
+          hover: [['background'], ['width'], ['height']],
+          disabled: [['background'], ['width'], ['height']],
         },
         CheckboxInnerIndeterminate: {
           name: '半选内框样式',
           desc: '半选内框样式',
-          normal: [['color'], ['width'], ['height']],
-          hover: [['color'], ['width'], ['height']],
-          disabled: [['color'], ['width'], ['height']],
+          normal: [['background'], ['width'], ['height']],
+          hover: [['background'], ['width'], ['height']],
+          disabled: [['background'], ['width'], ['height']],
         },
         CheckboxInnerCancel: {
           name: '取消状态内框样式',
           desc: '取消状态内框样式',
-          normal: [['color'], ['width'], ['height']],
+          normal: [['background'], ['width'], ['height']],
         },
       },
     },
@@ -4323,8 +4323,7 @@ export default [
         },
         size: {
           type: 'CheckboxButtonSizeType',
-          desc:
-            '指定CheckboxGroup大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设',
+          desc: '指定CheckboxGroup大小，仅展示类型为button 时生效，可设置为 small、large、 或不设',
         },
         cache: { type: 'boolean', desc: '指定CheckboxGroup中实时更新data 数据源信息' },
       },
@@ -4343,7 +4342,7 @@ export default [
       type: {
         CheckboxType: ['default', 'vertical'],
         CheckboxGroupChildType: ['default', 'button'],
-        CheckboxButtonSizeType: ['default', 'small', 'large', 'bigger'],
+        CheckboxButtonSizeType: ['default', 'small', 'large'],
         CheckboxGroupStyle: {
           width: { type: 'number', desc: 'Checkbox宽度' },
           color: { type: 'string', desc: 'Checkbox颜色' },
@@ -4356,7 +4355,6 @@ export default [
           name: '多选框组整体配置',
           desc: '多选框组整体配置',
           normal: [
-            ['opacity'],
             ['border'],
             ['borderRadius'],
             ['background'],
@@ -4372,9 +4370,7 @@ export default [
             Container: {
               name: '整体样式',
               desc: '整体样式',
-              normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-              hover: [['opacity']],
-              disabled: [['opacity']],
+              normal: [['margin'], ['padding'], ['width'], ['height']],
             },
             CheckboxText: {
               name: '文字样式',
@@ -4447,21 +4443,21 @@ export default [
             CheckboxInnerChecked: {
               name: '选中内框样式',
               desc: '选中内框样式',
-              normal: [['color'], ['width'], ['height']],
-              hover: [['color'], ['width'], ['height']],
-              disabled: [['color'], ['width'], ['height']],
+              normal: [['background'], ['width'], ['height']],
+              hover: [['background'], ['width'], ['height']],
+              disabled: [['background'], ['width'], ['height']],
             },
             CheckboxInnerIndeterminate: {
               name: '半选内框样式',
               desc: '半选内框样式',
-              normal: [['color'], ['width'], ['height']],
-              hover: [['color'], ['width'], ['height']],
-              disabled: [['color'], ['width'], ['height']],
+              normal: [['background'], ['width'], ['height']],
+              hover: [['background'], ['width'], ['height']],
+              disabled: [['background'], ['width'], ['height']],
             },
             CheckboxInnerCancel: {
               name: '取消状态内框样式',
               desc: '取消状态内框样式',
-              normal: [['color'], ['width'], ['height']],
+              normal: [['background'], ['width'], ['height']],
             },
           },
         },
@@ -4519,8 +4515,7 @@ export default [
         },
         size: {
           type: 'CheckboxButtonSizeType',
-          desc:
-            '指定CheckboxGroup大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设',
+          desc: '指定CheckboxGroup大小，仅展示类型为button 时生效，可设置为 small、large、 或不设',
         },
         cache: { type: 'boolean', desc: '指定CheckboxGroup中实时更新data 数据源信息' },
       },
@@ -4539,7 +4534,7 @@ export default [
       type: {
         CheckboxType: ['default', 'vertical'],
         CheckboxGroupChildType: ['default', 'button'],
-        CheckboxButtonSizeType: ['default', 'small', 'large', 'bigger'],
+        CheckboxButtonSizeType: ['default', 'small', 'large'],
         CheckboxGroupStyle: {
           width: { type: 'number', desc: 'Checkbox宽度' },
           color: { type: 'string', desc: 'Checkbox颜色' },
@@ -4911,6 +4906,14 @@ export default [
         },
         buttonOptions: {
           type: 'Object',
+          meta: [
+            {
+              key: 'options',
+              title: '页脚按钮',
+              type: 'Object',
+              children: [{ key: '自定义按钮文本', title: '页脚按钮', type: 'date' }],
+            },
+          ],
           desc:
             '自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ',
           defaultValue: '',
@@ -5628,6 +5631,14 @@ export default [
         },
         buttonOptions: {
           type: 'Object',
+          meta: [
+            {
+              key: 'options',
+              title: '页脚按钮',
+              type: 'Object',
+              children: [{ key: '自定义按钮文本', title: '页脚按钮', type: 'date' }],
+            },
+          ],
           desc:
             '自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ',
         },
@@ -6172,6 +6183,14 @@ export default [
         },
         buttonOptions: {
           type: 'Object',
+          meta: [
+            {
+              key: 'options',
+              title: '页脚按钮',
+              type: 'Object',
+              children: [{ key: '自定义按钮文本', title: '页脚按钮', type: 'date' }],
+            },
+          ],
           desc:
             '自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ',
         },
@@ -13505,12 +13524,12 @@ export default [
           defaultValue: 'default',
         },
         iconClass: {
-          type: 'string',
+          type: 'icon',
           desc:
             '进度条展示的图标,在success或error状态下无配置successIconClass或errorIconClass时生效',
         },
-        errorIconClass: { type: 'string', desc: '进度条展示的图标,仅在error状态生效' },
-        successIconClass: { type: 'string', desc: '进度条展示的图标,仅在success状态生效' },
+        errorIconClass: { type: 'icon', desc: '进度条展示的图标,仅在error状态生效' },
+        successIconClass: { type: 'icon', desc: '进度条展示的图标,仅在success状态生效' },
       },
       type: {
         ProgressType: ['line', 'circle', 'dashboard'],
@@ -13546,6 +13565,16 @@ export default [
               desc: '进度条失败图标配置',
               normal: [['color'], ['fontSize']],
             },
+            ProgressCircleBackground: {
+              name: '进度条底色条颜色配置',
+              desc: '进度条底色条颜色配置',
+              normal: [['color']],
+            },
+            ProgressCircleLine: {
+              name: '进度条进度线颜色配置',
+              desc: '进度条进度线颜色配置',
+              normal: [['color']],
+            },
           },
         },
         DashboardProgress: {
@@ -13568,6 +13597,16 @@ export default [
               name: '进度条失败图标配置',
               desc: '进度条失败图标配置',
               normal: [['color'], ['fontSize']],
+            },
+            DashboardBackground: {
+              name: '进度条底色条颜色配置',
+              desc: '进度条底色条颜色配置',
+              normal: [['color']],
+            },
+            DashboardLine: {
+              name: '进度条进度线颜色配置',
+              desc: '进度条进度线颜色配置',
+              normal: [['color']],
             },
           },
         },
@@ -13677,12 +13716,12 @@ export default [
           defaultValue: 'default',
         },
         iconClass: {
-          type: 'string',
+          type: 'icon',
           desc:
             '进度条展示的图标,在success或error状态下无配置successIconClass或errorIconClass时生效',
         },
-        errorIconClass: { type: 'string', desc: '进度条展示的图标,仅在error状态生效' },
-        successIconClass: { type: 'string', desc: '进度条展示的图标,仅在success状态生效' },
+        errorIconClass: { type: 'icon', desc: '进度条展示的图标,仅在error状态生效' },
+        successIconClass: { type: 'icon', desc: '进度条展示的图标,仅在success状态生效' },
       },
       type: {
         ProgressType: ['line', 'circle', 'dashboard'],
@@ -13711,6 +13750,16 @@ export default [
           name: '进度条失败图标配置',
           desc: '进度条失败图标配置',
           normal: [['color'], ['fontSize']],
+        },
+        ProgressCircleBackground: {
+          name: '进度条底色条颜色配置',
+          desc: '进度条底色条颜色配置',
+          normal: [['color']],
+        },
+        ProgressCircleLine: {
+          name: '进度条进度线颜色配置',
+          desc: '进度条进度线颜色配置',
+          normal: [['color']],
         },
       },
       defaultTheme: { Container: { normal: { width: 400 } } },
@@ -13757,12 +13806,12 @@ export default [
           defaultValue: 'default',
         },
         iconClass: {
-          type: 'string',
+          type: 'icon',
           desc:
             '进度条展示的图标,在success或error状态下无配置successIconClass或errorIconClass时生效',
         },
-        errorIconClass: { type: 'string', desc: '进度条展示的图标,仅在error状态生效' },
-        successIconClass: { type: 'string', desc: '进度条展示的图标,仅在success状态生效' },
+        errorIconClass: { type: 'icon', desc: '进度条展示的图标,仅在error状态生效' },
+        successIconClass: { type: 'icon', desc: '进度条展示的图标,仅在success状态生效' },
       },
       type: {
         ProgressType: ['line', 'circle', 'dashboard'],
@@ -13791,6 +13840,16 @@ export default [
           name: '进度条失败图标配置',
           desc: '进度条失败图标配置',
           normal: [['color'], ['fontSize']],
+        },
+        DashboardBackground: {
+          name: '进度条底色条颜色配置',
+          desc: '进度条底色条颜色配置',
+          normal: [['color']],
+        },
+        DashboardLine: {
+          name: '进度条进度线颜色配置',
+          desc: '进度条进度线颜色配置',
+          normal: [['color']],
         },
       },
       defaultTheme: { Container: { normal: { width: 400 } } },
@@ -13940,7 +13999,7 @@ export default [
         childType: { type: 'RadioChildType', desc: '指定Radio展示类型，可设置为 button 或不设' },
         size: {
           type: 'RadioButtonSizeType',
-          desc: '指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设',
+          desc: '指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large 或不设',
         },
       },
       events: {
@@ -13958,7 +14017,7 @@ export default [
       type: {
         RadioStylesType: ['default', 'vertical'],
         RadioChildType: ['default', 'button'],
-        RadioButtonSizeType: ['default', 'small', 'large', 'bigger'],
+        RadioButtonSizeType: ['default', 'small', 'large'],
         RadioStyle: {
           color: { type: 'string', desc: 'Radio 的颜色' },
           width: { type: 'number', desc: 'Radio 的宽度' },
@@ -14102,7 +14161,7 @@ export default [
         },
         size: {
           type: 'RadioButtonSizeType',
-          desc: '指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设',
+          desc: '指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large 或不设',
         },
       },
       events: {
@@ -14120,7 +14179,7 @@ export default [
       type: {
         RadioStylesType: ['default', 'vertical'],
         RadioChildType: ['default', 'button'],
-        RadioButtonSizeType: ['default', 'small', 'large', 'bigger'],
+        RadioButtonSizeType: ['default', 'small', 'large'],
         RadioStyle: {
           color: { type: 'string', desc: 'Radio 的颜色' },
           width: { type: 'number', desc: 'Radio 的宽度' },
@@ -14253,21 +14312,21 @@ export default [
         allowHalf: { type: 'boolean', desc: '是否允许半选', defaultValue: false },
         classify: { type: 'boolean', desc: '是否区分颜色', defaultValue: false },
         iconClass: {
-          type: 'object[]',
+          type: 'object',
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'icon' },
             { key: 'primary', title: '选中状态图标名称', type: 'icon' },
-            { key: 'danger', title: '低分值图标名称', type: 'string' },
-            { key: 'amazed', title: '高分值图标名称', type: 'string' },
-            { key: 'half', title: '半星图标名称', type: 'string' },
+            { key: 'danger', title: '低分值图标名称', type: 'icon' },
+            { key: 'amazed', title: '高分值图标名称', type: 'icon' },
+            { key: 'half', title: '半星图标名称', type: 'icon' },
           ],
           defaultValue: {
             default: 'lugia-icon-financial_star',
             primary: 'lugia-icon-financial_star',
             danger: 'lugia-icon-financial_star',
             amazed: 'lugia-icon-financial_star',
-            half: 'lugia-icon-finacial_half_star',
+            half: 'lugia-icon-financial_half_star',
           },
         },
         value: { type: 'number', desc: '当前分值' },
@@ -14402,14 +14461,14 @@ export default [
         allowHalf: { type: 'boolean', desc: '是否允许半选', defaultValue: false },
         classify: { type: 'boolean', desc: '是否区分颜色', defaultValue: true },
         iconClass: {
-          type: 'object[]',
+          type: 'object',
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'icon' },
             { key: 'primary', title: '选中状态图标名称', type: 'icon' },
-            { key: 'danger', title: '低分值图标名称', type: 'string' },
-            { key: 'amazed', title: '高分值图标名称', type: 'string' },
-            { key: 'half', title: '半星图标名称', type: 'string' },
+            { key: 'danger', title: '低分值图标名称', type: 'icon' },
+            { key: 'amazed', title: '高分值图标名称', type: 'icon' },
+            { key: 'half', title: '半星图标名称', type: 'icon' },
           ],
           defaultValue: {
             default: 'lugia-icon-financial_meh',
@@ -14489,21 +14548,21 @@ export default [
         allowHalf: { type: 'boolean', desc: '是否允许半选', defaultValue: false },
         classify: { type: 'boolean', desc: '是否区分颜色', defaultValue: false },
         iconClass: {
-          type: 'object[]',
+          type: 'object',
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'icon' },
             { key: 'primary', title: '选中状态图标名称', type: 'icon' },
-            { key: 'danger', title: '低分值图标名称', type: 'string' },
-            { key: 'amazed', title: '高分值图标名称', type: 'string' },
-            { key: 'half', title: '半星图标名称', type: 'string' },
+            { key: 'danger', title: '低分值图标名称', type: 'icon' },
+            { key: 'amazed', title: '高分值图标名称', type: 'icon' },
+            { key: 'half', title: '半星图标名称', type: 'icon' },
           ],
           defaultValue: {
             default: 'lugia-icon-financial_star',
             primary: 'lugia-icon-financial_star',
             danger: 'lugia-icon-financial_star',
             amazed: 'lugia-icon-financial_star',
-            half: 'lugia-icon-finacial_half_star',
+            half: 'lugia-icon-financial_half_star',
           },
         },
         value: { type: 'number', desc: '当前分值' },
@@ -21408,6 +21467,10 @@ export default [
           defaultValue: 'value',
         },
         size: { type: 'SizeType', desc: '指定 Transfer 的尺寸', defaultValue: 'default' },
+        transferClearIcon: { type: 'icon', desc: '清除图标类型' },
+        transferPrefixIcon: { type: 'icon', desc: '前缀图标类型' },
+        transferSuffixIcon: { type: 'icon', desc: '后缀图标类型' },
+        title: { type: 'string', desc: '穿梭框面板头部标题' },
       },
       event: {
         onSelectChange: {
@@ -21516,7 +21579,7 @@ export default [
             TransferHeaderWrap: {
               name: '穿梭框面板头部',
               desc: '为穿梭框配置左右面板头部样式',
-              normal: [['background'], [['border'], ['bottom']]],
+              normal: [['background'], ['border', 'bottom'], ['padding']],
             },
             TransferPanelHeaderCheckbox: {
               name: '穿梭框面板头部Checkbox',
@@ -21577,6 +21640,73 @@ export default [
               name: '穿梭框面板头部文字样式',
               desc: '为穿梭框配置左右面板头部文字样式',
               normal: [['padding'], ['color'], ['font']],
+            },
+            TransferSearchInput: {
+              name: '穿梭框面板搜索框样式',
+              desc: '为穿梭框配置左右面板搜索框样式',
+              theme: {
+                Container: {
+                  name: '输入框',
+                  desc: '输入框外部容器',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['opacity'],
+                  ],
+                  hover: [
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['background'],
+                    ['opacity'],
+                    ['boxShadow'],
+                  ],
+                  active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+                  disabled: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['padding'],
+                    ['opacity'],
+                  ],
+                },
+                InputSuffix: {
+                  name: '后缀图标',
+                  desc: '输入框后缀自定义图标',
+                  normal: [['color'], ['fontSize'], ['font']],
+                  hover: [],
+                  clicked: [],
+                  disabled: [],
+                },
+                InputPrefix: {
+                  name: '前缀图标',
+                  desc: '输入框前缀自定义图标',
+                  normal: [['color'], ['fontSize'], ['font'], ['padding'], ['margin']],
+                  hover: [],
+                  clicked: [],
+                  disabled: [['color'], ['fontSize'], ['font']],
+                },
+                ClearButton: {
+                  name: '输入框清除图标',
+                  desc: '输入框后缀清除图标',
+                  normal: [['color'], ['fontSize'], ['font']],
+                  hover: [['color'], ['fontSize'], ['font']],
+                  clicked: [],
+                  disabled: [['color'], ['fontSize'], ['font']],
+                },
+              },
             },
             TransferCancelBox: {
               name: '穿梭框面板取消项盒子样式',
@@ -21753,6 +21883,25 @@ export default [
                           hover: [['color']],
                           disabled: [['color']],
                         },
+                        CheckboxEdgeIndeterminate: {
+                          name: '半选外框样式',
+                          desc: '半选状态外框样式',
+                          normal: [
+                            ['background'],
+                            ['borderRadius'],
+                            ['border'],
+                            ['boxShadow'],
+                            ['width'],
+                            ['height'],
+                          ],
+                          disabled: [
+                            ['background'],
+                            ['borderRadius'],
+                            ['border'],
+                            ['width'],
+                            ['height'],
+                          ],
+                        },
                       },
                     },
                   },
@@ -21835,7 +21984,7 @@ export default [
         TransferHeaderWrap: {
           name: '穿梭框面板头部',
           desc: '为穿梭框配置左右面板头部样式',
-          normal: [['background'], [['border'], ['bottom']]],
+          normal: [['background'], ['border', 'bottom'], ['padding']],
         },
         TransferPanelHeaderCheckbox: {
           name: '穿梭框面板头部Checkbox',
@@ -22107,6 +22256,10 @@ export default [
           defaultValue: 'value',
         },
         size: { type: 'SizeType', desc: '指定 Transfer 的尺寸', defaultValue: 'default' },
+        transferClearIcon: { type: 'icon', desc: '清除图标类型' },
+        transferPrefixIcon: { type: 'icon', desc: '前缀图标类型' },
+        transferSuffixIcon: { type: 'icon', desc: '后缀图标类型' },
+        title: { type: 'string', desc: '穿梭框面板头部标题' },
       },
       event: {
         onSelectChange: {
@@ -22182,7 +22335,7 @@ export default [
         TransferHeaderWrap: {
           name: '穿梭框面板头部',
           desc: '为穿梭框配置左右面板头部样式',
-          normal: [['background'], [['border'], ['bottom']]],
+          normal: [['background'], ['border', 'bottom'], ['padding']],
         },
         TransferPanelHeaderCheckbox: {
           name: '穿梭框面板头部Checkbox',
@@ -22243,6 +22396,73 @@ export default [
           name: '穿梭框面板头部文字样式',
           desc: '为穿梭框配置左右面板头部文字样式',
           normal: [['padding'], ['color'], ['font']],
+        },
+        TransferSearchInput: {
+          name: '穿梭框面板搜索框样式',
+          desc: '为穿梭框配置左右面板搜索框样式',
+          theme: {
+            Container: {
+              name: '输入框',
+              desc: '输入框外部容器',
+              normal: [
+                ['width'],
+                ['height'],
+                ['margin'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['opacity'],
+              ],
+              hover: [
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+              ],
+              active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+              disabled: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['padding'],
+                ['opacity'],
+              ],
+            },
+            InputSuffix: {
+              name: '后缀图标',
+              desc: '输入框后缀自定义图标',
+              normal: [['color'], ['fontSize'], ['font']],
+              hover: [],
+              clicked: [],
+              disabled: [],
+            },
+            InputPrefix: {
+              name: '前缀图标',
+              desc: '输入框前缀自定义图标',
+              normal: [['color'], ['fontSize'], ['font'], ['padding'], ['margin']],
+              hover: [],
+              clicked: [],
+              disabled: [['color'], ['fontSize'], ['font']],
+            },
+            ClearButton: {
+              name: '输入框清除图标',
+              desc: '输入框后缀清除图标',
+              normal: [['color'], ['fontSize'], ['font']],
+              hover: [['color'], ['fontSize'], ['font']],
+              clicked: [],
+              disabled: [['color'], ['fontSize'], ['font']],
+            },
+          },
         },
         TransferCancelBox: {
           name: '穿梭框面板取消项盒子样式',
@@ -22406,6 +22626,25 @@ export default [
                       normal: [['color']],
                       hover: [['color']],
                       disabled: [['color']],
+                    },
+                    CheckboxEdgeIndeterminate: {
+                      name: '半选外框样式',
+                      desc: '半选状态外框样式',
+                      normal: [
+                        ['background'],
+                        ['borderRadius'],
+                        ['border'],
+                        ['boxShadow'],
+                        ['width'],
+                        ['height'],
+                      ],
+                      disabled: [
+                        ['background'],
+                        ['borderRadius'],
+                        ['border'],
+                        ['width'],
+                        ['height'],
+                      ],
                     },
                   },
                 },
@@ -25390,6 +25629,10 @@ export default [
           desc: '获取触发文件选择的input实例的引用',
           args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
         },
+        onDelete: {
+          desc: '删除列表项时触发',
+          args: [{ name: 'result', desc: '删除列表项时的回调函数', type: 'Object' }],
+        },
       },
       type: {
         UploadSize: ['small', 'default', 'large'],
@@ -25769,6 +26012,10 @@ export default [
           desc: '获取触发文件选择的input实例的引用',
           args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
         },
+        onDelete: {
+          desc: '删除列表项时触发',
+          args: [{ name: 'result', desc: '删除列表项时的回调函数', type: 'Object' }],
+        },
       },
       type: {
         UploadSize: ['small', 'default', 'large'],
@@ -25906,6 +26153,10 @@ export default [
           desc: '获取触发文件选择的input实例的引用',
           args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
         },
+        onDelete: {
+          desc: '删除列表项时触发',
+          args: [{ name: 'result', desc: '删除列表项时的回调函数', type: 'Object' }],
+        },
       },
       type: {
         UploadSize: ['small', 'default', 'large'],
@@ -26038,6 +26289,10 @@ export default [
         getInputRef: {
           desc: '获取触发文件选择的input实例的引用',
           args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
+        },
+        onDelete: {
+          desc: '删除列表项时触发',
+          args: [{ name: 'result', desc: '删除列表项时的回调函数', type: 'Object' }],
         },
       },
       type: {
@@ -26186,6 +26441,10 @@ export default [
         getInputRef: {
           desc: '获取触发文件选择的input实例的引用',
           args: [{ name: 'result', desc: '获取触发文件选择的input实例的引用', type: 'Object' }],
+        },
+        onDelete: {
+          desc: '删除列表项时触发',
+          args: [{ name: 'result', desc: '删除列表项时的回调函数', type: 'Object' }],
         },
       },
       type: {
