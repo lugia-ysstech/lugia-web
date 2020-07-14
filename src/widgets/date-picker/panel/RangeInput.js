@@ -40,6 +40,7 @@ type TypeProps = {
   validateStatus: string,
   help: string,
   validateType: string,
+  middleSymbol?: string,
 };
 type TypeState = {
   value: Array<string>,
@@ -95,7 +96,15 @@ class RangeInput extends Component<TypeProps, TypeState> {
     return obj;
   };
   render() {
-    const { disabled, readOnly, placeholder, size, value, themeProps } = this.props;
+    const {
+      disabled,
+      readOnly,
+      placeholder,
+      size,
+      value,
+      themeProps,
+      middleSymbol = '~',
+    } = this.props;
     const config = {
       onFocus: disabled || readOnly ? '' : this.onFocus,
       disabled,
@@ -228,7 +237,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 themeProps={middleSymbolTheme}
                 {...this.props.dispatchEvent([['hover']], 'f2c')}
               >
-                ~
+                {middleSymbol}
               </RangeMiddleSpan>
               <RangeInputInnerInput themeProps={inputContainProps} last>
                 <Input
