@@ -635,16 +635,6 @@ describe('new-table', () => {
     expect(publicEditTableListener.getMoveTrack()).toEqual([]);
   });
 
-  it(' Connection getClickNumber & setClickNumber ', () => {
-    expect(publicEditTableListener.getClickNumber()).toEqual(0);
-    publicEditTableListener.setClickNumber(1);
-    expect(publicEditTableListener.getClickNumber()).toEqual(1);
-    publicEditTableListener.setClickNumber(2);
-    expect(publicEditTableListener.getClickNumber()).toEqual(2);
-    publicEditTableListener.setClickNumber(0);
-    expect(publicEditTableListener.getClickNumber()).toEqual(0);
-  });
-
   it(' Connection setUpdateDataKeyMap & getSelectColumnMark & getSelectDataMark', () => {
     const cmp = getCmp(mount(<EditTable />));
     const { mockEditTableListener, editTableListener } = mockListener(cmp);
@@ -1095,30 +1085,125 @@ describe('new-table', () => {
       const { info, isSelected, isMultiple, selectCell, expectResult } = item;
       const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
       const { editTableListener, mockEditTableListener, order } = mockListener(cmp);
-      mockEditTableListener.mockFunction('getClickNumber').returned(0);
       mockEditTableListener.mockFunction('doStopPropagation').returned(true);
-      mockEditTableListener.mockFunction('setClickNumber').returned(true);
       mockEditTableListener.mockFunction('getSelectCell').returned(selectCell);
       mockEditTableListener.mockFunction('isSelected').returned(isSelected);
       mockEditTableListener.mockFunction('isMultiple').returned(isMultiple);
 
       editTableListener.onCellClick(info);
-      await delay(500);
+
       order.verify(param => {
         const { editTableListener } = param;
-        editTableListener.getClickNumber();
         editTableListener.doStopPropagation(info.e);
-        editTableListener.setClickNumber(1);
         editTableListener.getSelectCell();
         editTableListener.isSelected(
           { selectColumn: info.selectColumn, selectRow: info.selectRow },
           selectCell
         );
-        editTableListener.setClickNumber(0);
         editTableListener.isMultiple();
       });
 
       expect(editTableListener.getSelectCell()).toEqual(expectResult);
     });
+  });
+
+  const onCellDBClickPropsMap = [
+    {
+      info: {
+        e: {},
+        selectColumn: 0,
+        selectRow: 1,
+        isLugiaHead: false,
+        isAllowSelect: true,
+      },
+      isSelected: false,
+      isMultiple: false,
+      selectCell: [],
+      expectResult: [{ selectColumn: 0, selectRow: 1 }],
+    },
+    {
+      info: {
+        e: {},
+        selectColumn: 2,
+        selectRow: 1,
+        isLugiaHead: false,
+        isAllowSelect: true,
+      },
+      isSelected: false,
+      isMultiple: false,
+      selectCell: [],
+      expectResult: [{ selectColumn: 2, selectRow: 1 }],
+    },
+    {
+      info: {
+        e: {},
+        selectColumn: 2,
+        selectRow: 1,
+        isLugiaHead: false,
+        isAllowSelect: true,
+      },
+      isSelected: false,
+      isMultiple: false,
+      selectCell: [{ selectColumn: 2, selectRow: 2 }],
+      expectResult: [{ selectColumn: 2, selectRow: 1 }],
+    },
+    {
+      info: {
+        e: {},
+        selectColumn: 2,
+        selectRow: 1,
+        isLugiaHead: false,
+        isAllowSelect: true,
+      },
+      isSelected: true,
+      isMultiple: false,
+      selectCell: [{ selectColumn: 2, selectRow: 1 }],
+      expectResult: [{ selectColumn: 2, selectRow: 1 }],
+    },
+    {
+      info: {
+        e: {},
+        selectColumn: 2,
+        selectRow: 1,
+        isLugiaHead: false,
+        isAllowSelect: true,
+      },
+      isSelected: false,
+      isMultiple: true,
+      selectCell: [{ selectColumn: 2, selectRow: 2 }],
+      expectResult: [{ selectColumn: 2, selectRow: 1 }],
+    },
+  ];
+
+  onCellDBClickPropsMap.forEach((item, index) => {
+    it(`Connection onCellDBClick ${index} selectColumn:${item.info.selectColumn} selectRow: ${item.info.selectRow} `, async () => {
+      const { info, expectResult } = item;
+      const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
+      const { editTableListener, mockEditTableListener, order } = mockListener(cmp);
+      mockEditTableListener.mockFunction('doStopPropagation').returned(true);
+
+      editTableListener.onCellDBClick(info);
+
+      order.verify(param => {
+        const { editTableListener } = param;
+        editTableListener.doStopPropagation(info.e);
+      });
+
+      expect(editTableListener.getSelectCell()).toEqual(expectResult);
+      expect(editTableListener.getEditCell()).toEqual(expectResult[0]);
+    });
+  });
+
+  it('Connection clearSelectInfo ', async () => {
+    const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
+    const { editTableListener } = mockListener(cmp);
+    editTableListener.updateSelectCell([{ selectColumn: 2, selectRow: 1 }]);
+    expect(editTableListener.getSelectCell()).toEqual([{ selectColumn: 2, selectRow: 1 }]);
+    editTableListener.updateEditCell({ selectColumn: 2, selectRow: 1 });
+    expect(editTableListener.getEditCell()).toEqual({ selectColumn: 2, selectRow: 1 });
+
+    editTableListener.clearSelectInfo();
+    expect(editTableListener.getSelectCell()).toEqual([]);
+    expect(editTableListener.getEditCell()).toEqual({});
   });
 });

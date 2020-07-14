@@ -94,7 +94,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
     }
 
     const { dataIndex, index, selectSuffixElement, customRender } = this.props;
-    const { getSelectColumnMark, onCellClick } = listener;
+    const { getSelectColumnMark, onCellClick, onCellDBClick } = listener;
     const selectColumn = getSelectColumnMark(dataIndex);
     return (
       <EditDiv
@@ -105,6 +105,14 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
             selectColumn,
             selectRow: index,
             isLugiaHead,
+            isAllowSelect,
+          })
+        }
+        onDoubleClick={e =>
+          onCellDBClick({
+            e,
+            selectColumn,
+            selectRow: index,
             isAllowSelect,
           })
         }
