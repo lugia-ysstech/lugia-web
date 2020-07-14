@@ -100,6 +100,10 @@
       "type": "icon",
       "desc": "前缀图标"
     },
+    "middleSymbol": {
+      "type": "string",
+      "desc": "日期连接符"
+    },
     "clearIcon": {
       "type": "icon",
       "desc": "清除图标"
@@ -435,6 +439,13 @@
       "name": "页脚分割线",
       "desc": "页脚分割线配置",
       "normal": [["background"]]
+    },
+    "RangeInputMiddleSymbol": {
+      "name": "日期连接符",
+      "desc": "日期连接符",
+      "normal": [["color"], ["font"], ["margin"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
     }
   },
   "defaultTheme": {

@@ -103,7 +103,7 @@ export const RangeMiddleSpan = CSSComponent({
   tag: 'span',
   className: 'RangeMiddleSpan',
   normal: {
-    selectNames: [['color'], ['font']],
+    selectNames: [['color'], ['font'], ['margin']],
   },
   hover: {
     selectNames: [['color'], ['font']],

@@ -33,6 +33,7 @@ type TypeProps = {
   validateType?: string,
   validateStatus?: string,
   help?: string,
+  middleSymbol?: string,
   alwaysOpen?: boolean,
   onDocumentClick?: Function,
 };
