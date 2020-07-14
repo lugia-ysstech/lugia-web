@@ -5,7 +5,7 @@ import DateInput from '../triggerPanel/singlePanelTrigger';
 export default ThemeProvider(
   class WeekPicker extends Component {
     render() {
-      return <DateInput {...this.props} mode={'weeks'} />;
+      return <DateInput placeholder={'请选择周'} {...this.props} mode={'weeks'} />;
     }
   },
   Widget.WeekPicker,
