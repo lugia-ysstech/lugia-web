@@ -9,6 +9,7 @@ import {
   splitStr,
   fixControlledValue,
   createExistMap,
+  handleDuration,
 } from '../';
 
 const { expect: exp } = chai;
@@ -112,5 +113,16 @@ describe('utils', () => {
     expect(createExistMap(['a', 'b', 'c'])).toEqual({ a: true, b: true, c: true });
     expect(createExistMap([])).toEqual({});
     expect(createExistMap(undefined)).toEqual({});
+  });
+  it('handleDuration', () => {
+    const result = handleDuration(4.5);
+    expect(result).toBe(4.5);
+
+    const res = handleDuration(0);
+    expect(res).toBe('no');
+    const res2 = handleDuration(null);
+    expect(res2).toBe('no');
+    const res3 = handleDuration();
+    expect(res3).toBe(2);
   });
 });
