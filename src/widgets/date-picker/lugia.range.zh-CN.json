@@ -102,7 +102,8 @@
     },
     "middleSymbol": {
       "type": "string",
-      "desc": "日期连接符"
+      "desc": "日期连接符",
+      "propsDefaultValue": "~"
     },
     "clearIcon": {
       "type": "icon",
