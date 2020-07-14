@@ -131,6 +131,16 @@
                 "desc": "面板中外观配置的区块显示文本"
               }
             }
+          },
+          {
+            "name": "选中图标样式",
+            "path": ["Checkbox", "CheckboxInnerChecked"],
+            "description": {
+              "appearancePart": {
+                "text": "图标",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
           }
         ]
       },
@@ -147,6 +157,13 @@
                 "desc": "面板中外观配置的区块显示文本"
               }
             }
+          },
+          {
+            "name": "半选图标样式",
+            "path": ["Checkbox", "CheckboxInnerIndeterminate"],
+            "description": {
+              "appearancePart": { "text": "图标", "desc": "面板中外观配置的区块显示文本" }
+            }
           }
         ]
       },
@@ -162,6 +179,13 @@
                 "text": "外框",
                 "desc": "面板中外观配置的区块显示文本"
               }
+            }
+          },
+          {
+            "name": "取消状态图标样式",
+            "path": ["Checkbox", "CheckboxInnerCancel"],
+            "description": {
+              "appearancePart": { "text": "图标", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
