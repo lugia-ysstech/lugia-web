@@ -10,7 +10,7 @@
     "duration": {
       "type": "number",
       "desc": "自定义演示关闭",
-      "defaultValue": 10000
+      "defaultValue": 0
     },
     "description": {
       "type": "React.node",

@@ -20,6 +20,7 @@ import {
 import type { NotificationProps, NotificationState } from '../css/notification';
 import { IconInfo } from '../css/modal';
 import Widget from '../consts';
+import { handleDuration } from '../utils';
 
 export default ThemeProvider(
   class extends React.Component<NotificationProps, NotificationState> {
@@ -34,20 +35,11 @@ export default ThemeProvider(
     }
     componentDidMount() {
       const { duration } = this.props;
-      const time = this.handleDuration(duration);
+      const time = handleDuration(duration, 4.5);
       if (typeof time === 'number') {
         this.timer = setTimeout(this.handleClose, time * 1000);
       }
     }
-    handleDuration = (duration?: number | null) => {
-      if (typeof duration !== 'undefined') {
-        if (duration === 0 || duration === null) {
-          return 'no';
-        }
-        return duration;
-      }
-      return 4.5;
-    };
 
     render() {
       const {
