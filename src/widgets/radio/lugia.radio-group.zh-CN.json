@@ -1,5 +1,6 @@
 {
   "widgetName": "Group",
+  "viewClassName": "RadioGroup",
   "title": "单选框组",
   "desc": "单选框组。",
   "props": {
