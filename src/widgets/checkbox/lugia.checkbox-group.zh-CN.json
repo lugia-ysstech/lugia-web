@@ -1,5 +1,6 @@
 {
   "widgetName": "Group",
+  "viewClassName": "CheckboxGroup",
   "title": "多选框组",
   "desc": "多选框组。",
   "props": {
