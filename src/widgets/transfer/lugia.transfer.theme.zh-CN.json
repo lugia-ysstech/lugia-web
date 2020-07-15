@@ -368,12 +368,12 @@
                 }
               },
               {
-                "name": "外观",
+                "name": "选中图标样式",
                 "path": ["TransferPanelHeaderCheckbox", "CheckboxInnerChecked"],
                 "description": {
                   "appearancePart": {
-                    "text": "外观",
-                    "desc": "外观"
+                    "text": "图标",
+                    "desc": "面板中外观配置的区块显示文本"
                   }
                 }
               }
@@ -394,13 +394,10 @@
                 }
               },
               {
-                "name": "外观",
+                "name": "半选图标样式",
                 "path": ["TransferPanelHeaderCheckbox", "CheckboxInnerIndeterminate"],
                 "description": {
-                  "appearancePart": {
-                    "text": "外观",
-                    "desc": "外观"
-                  }
+                  "appearancePart": { "text": "图标", "desc": "面板中外观配置的区块显示文本" }
                 }
               }
             ]
@@ -411,7 +408,8 @@
             "data": [
               {
                 "name": "文字",
-                "path": ["TransferHeaderText"],
+                "path": ["TransferPanelHeaderCheckbox", "CheckboxText"],
+                "props": [{ "name": "title", "typeInTheme": "text" }],
                 "description": {
                   "textPart": {
                     "text": "文字",
@@ -538,6 +536,7 @@
               {
                 "name": "展开图标",
                 "path": ["TransferPanelTree", "TreeItem", "Switch"],
+                "props": [{ "name": "switchIconNames", "typeInTheme": "icon" }],
                 "description": {
                   "textPart": {
                     "text": "展开图标",
@@ -586,7 +585,7 @@
                     "path": ["TransferPanelTree", "TreeItem", "Checkbox", "CheckboxInnerChecked"],
                     "description": {
                       "appearancePart": {
-                        "text": "内框",
+                        "text": "图标",
                         "desc": "面板中外观配置的区块显示文本"
                       }
                     }
@@ -622,7 +621,7 @@
                     ],
                     "description": {
                       "appearancePart": {
-                        "text": "内框",
+                        "text": "图标",
                         "desc": "面板中外观配置的区块显示文本"
                       }
                     }
@@ -762,7 +761,7 @@
             "data": [
               {
                 "name": "面板",
-                "path": ["TransferCancelCheckbox", "CheckboxWrap"],
+                "path": ["TransferCancelBox"],
                 "description": {
                   "appearancePart": {
                     "text": "面板",
@@ -788,6 +787,13 @@
                         "text": "外观",
                         "desc": "外观"
                       }
+                    }
+                  },
+                  {
+                    "name": "取消状态图标样式",
+                    "path": ["TransferCancelCheckbox", "CheckboxInnerCancel"],
+                    "description": {
+                      "appearancePart": { "text": "图标", "desc": "面板中外观配置的区块显示文本" }
                     }
                   }
                 ]

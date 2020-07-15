@@ -220,7 +220,16 @@ export default ThemeProvider(
 
     getTransferPanel() {
       const { selectedKeys = [], typeList, treeData, inputValue } = this.state;
-      const { type, direction, displayField, valueField } = this.props;
+      const {
+        type,
+        direction,
+        displayField,
+        valueField,
+        switchIconNames = {
+          open: 'lugia-icon-direction_caret_down',
+          close: 'lugia-icon-direction_caret_right',
+        },
+      } = this.props;
 
       const { menuTheme, treeTheme, wrapHeight } = this.getPanelThemeConfig(direction);
 
@@ -249,6 +258,7 @@ export default ThemeProvider(
             {...typeList}
             getTreeData={this.getTreeData}
             {...treeTheme}
+            switchIconNames={switchIconNames}
           />
         </TreeWrap>
       );
