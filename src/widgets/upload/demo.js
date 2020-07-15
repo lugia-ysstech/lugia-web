@@ -340,7 +340,7 @@ class UploadDemo extends React.Component<any, any> {
             color: 'grey',
           },
         },
-        uploadInputLoading: {
+        uploadLoading: {
           normal: {
             border: getBorder({ color: 'blue', width: 1, style: 'solid' }),
           },
@@ -381,7 +381,7 @@ class UploadDemo extends React.Component<any, any> {
             borderRadius: getBorderRadius(4),
           },
         },
-        PictureAreaFail: {
+        UploadFail: {
           normal: {
             border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
@@ -413,7 +413,7 @@ class UploadDemo extends React.Component<any, any> {
             borderRadius: getBorderRadius(4, ['tl', 'bl']),
           },
         },
-        UploadInputFail: {
+        UploadFail: {
           normal: {
             border: getBorder({ color: 'red', width: 1, style: 'solid' }),
           },
@@ -533,7 +533,7 @@ class UploadDemo extends React.Component<any, any> {
             border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
         },
-        PictureAreaFail: {
+        UploadFail: {
           normal: {
             border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
