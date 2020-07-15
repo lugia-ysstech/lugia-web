@@ -88,6 +88,14 @@
       "type": "icon",
       "desc": "后缀图标类型"
     },
+    "switchIconNames": {
+      "type": "object",
+      "desc": "生成选择项的数据",
+      "meta": [
+        { "key": "open", "title": "展开图标", "type": "icon" },
+        { "key": "close", "title": "关闭图标", "type": "icon" }
+      ]
+    },
     "title": {
       "type": "string",
       "desc": "穿梭框面板头部标题"
@@ -270,16 +278,16 @@
             "CheckboxInnerChecked": {
               "name": "Checkbox选中样式配置",
               "desc": "Checkbox选中样式配置",
-              "normal": [["color"]],
-              "hover": [["color"]],
-              "disabled": [["color"]]
+              "normal": [["background"], ["width"], ["height"]],
+              "hover": [["background"], ["width"], ["height"]],
+              "disabled": [["background"], ["width"], ["height"]]
             },
             "CheckboxInnerIndeterminate": {
               "name": "Checkbox半选样式配置",
               "desc": "Checkbox半选状态样式配置",
-              "normal": [["color"]],
-              "hover": [["color"]],
-              "disabled": [["color"]]
+              "normal": [["background"], ["width"], ["height"]],
+              "hover": [["background"], ["width"], ["height"]],
+              "disabled": [["background"], ["width"], ["height"]]
             }
           }
         },
@@ -315,6 +323,17 @@
                 ["background"],
                 ["opacity"],
                 ["boxShadow"]
+              ],
+              "focus": [
+                ["border"],
+                ["borderRadius"],
+                ["background"],
+                ["opacity"],
+                ["boxShadow"],
+                ["cursor"],
+                ["fontSize"],
+                ["font"],
+                ["color"]
               ],
               "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
               "disabled": [
@@ -358,7 +377,14 @@
         "TransferCancelBox": {
           "name": "穿梭框面板取消项盒子样式",
           "desc": "为穿梭框配置右面板取消项盒子样式",
-          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]]
+          "normal": [
+            ["width"],
+            ["height"],
+            ["margin"],
+            ["padding"],
+            ["background"],
+            ["border", "top"]
+          ]
         },
         "TransferCancelCheckbox": {
           "name": "穿梭框面板取消项盒子样式",
@@ -386,7 +412,7 @@
             "CheckboxInnerCancel": {
               "name": "Checkbox取消状态样式配置",
               "desc": "Checkbox取消状态样式配置",
-              "normal": [["color"]]
+              "normal": [["background"], ["width"], ["height"]]
             }
           }
         },
@@ -514,9 +540,9 @@
                     "CheckboxInnerChecked": {
                       "name": "Checkbox选中样式配置",
                       "desc": "Checkbox选中样式配置",
-                      "normal": [["color"]],
-                      "hover": [["color"]],
-                      "disabled": [["color"]]
+                      "normal": [["background"], ["width"], ["height"]],
+                      "hover": [["background"], ["width"], ["height"]],
+                      "disabled": [["background"], ["width"], ["height"]]
                     },
                     "CheckboxEdgeIndeterminate": {
                       "name": "半选外框样式",
@@ -536,6 +562,13 @@
                         ["width"],
                         ["height"]
                       ]
+                    },
+                    "CheckboxInnerIndeterminate": {
+                      "name": "Checkbox半选样式配置",
+                      "desc": "Checkbox半选状态样式配置",
+                      "normal": [["background"], ["width"], ["height"]],
+                      "hover": [["background"], ["width"], ["height"]],
+                      "disabled": [["background"], ["width"], ["height"]]
                     }
                   }
                 }
