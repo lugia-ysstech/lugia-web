@@ -4,18 +4,14 @@
  * @flow
  */
 import * as React from 'react';
-import chai from 'chai';
 import Tag from '../';
 import Widget from '../../consts/index';
 import Theme from '../../theme';
 import 'jest-styled-components';
 import renderer from 'react-test-renderer';
-import Enzyme, { mount } from 'enzyme';
+import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { delay } from '@lugia/react-test-utils';
 Enzyme.configure({ adapter: new Adapter() });
-
-const { expect: exp } = chai;
 
 const config = {
   [Widget.Tag]: {
@@ -155,51 +151,5 @@ describe('Tag', () => {
   const data = [];
   for (let i = 0; i < 10; i++) {
     data.push(i);
-  }
-  class TagDemo extends React.Component<any, any> {
-    constructor(props) {
-      super(props);
-      this.state = { data };
-    }
-    render() {
-      return this.getTag();
-    }
-
-    getTag = () => {
-      const { data } = this.state;
-      return data.map((item, index) => {
-        return (
-          <Tag key={item} onClose={this.onClose.bind(this, item)} closable>
-            {item}
-          </Tag>
-        );
-      });
-    };
-
-    onClose(item, e) {
-      const { data } = this.state;
-      const index = data.indexOf(item);
-      data.splice(index, 1);
-      this.setState({ data });
-    }
-  }
-
-  it('click and close', async () => {
-    const cmp = mount(<TagDemo />);
-    expect(findCloseButton(cmp).length).toEqual(10);
-    clickCloseButton(cmp, 1);
-    await delay(500);
-    cmp.update();
-    expect(findCloseButton(cmp).length).toEqual(10);
-  });
-
-  function findCloseButton(cmp: Object) {
-    return cmp.find('CloseButtonWrap');
-  }
-
-  function clickCloseButton(cmp: Object, index: number) {
-    findCloseButton(cmp)
-      .at(index)
-      .simulate('click');
   }
 });
