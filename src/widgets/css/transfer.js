@@ -178,7 +178,14 @@ export const CancelBox = CSSComponent({
     box-sizing: border-box;
   `,
   normal: {
-    selectNames: [['width'], ['height'], ['margin'], ['padding'], ['background']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['margin'],
+      ['padding'],
+      ['background'],
+      ['border', 'top'],
+    ],
     defaultTheme: {
       border: { top: { width: 6, style: 'solid', color: '#f2f2f2' } },
     },
