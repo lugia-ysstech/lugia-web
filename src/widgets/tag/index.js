@@ -27,6 +27,7 @@ type TagProps = {
   text: String,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
+  icon: string,
 };
 
 type TagState = {
@@ -76,7 +77,13 @@ class Tag extends React.Component<TagProps, TagState> {
 
   render() {
     const { isClose, checked } = this.state;
-    const { getPartOfThemeProps, type, shape, closable = false } = this.props;
+    const {
+      getPartOfThemeProps,
+      type,
+      shape,
+      closable = false,
+      icon = 'lugia-icon-reminder_close',
+    } = this.props;
 
     const params = {
       shape,
@@ -111,7 +118,7 @@ class Tag extends React.Component<TagProps, TagState> {
             <Icon
               {...this.getCloseTheme('CloseButton')}
               singleTheme
-              iconClass="lugia-icon-reminder_close"
+              iconClass={icon}
               onClick={this.onCloseClick.bind(this)}
             />
           ) : null}
@@ -135,7 +142,6 @@ class Tag extends React.Component<TagProps, TagState> {
     const { getPartOfThemeHocProps } = this.props;
     const { viewClass, theme } = getPartOfThemeHocProps(target);
     const { normal = {}, hover = {} } = theme[viewClass];
-    normal.margin = {};
     normal.padding = {};
     hover.margin = {};
     const iconTheme = deepMerge(

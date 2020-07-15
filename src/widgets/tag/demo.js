@@ -185,7 +185,33 @@ export class LimitCase extends React.Component<any, any> {
 
   onClick = (e: Object) => {};
 }
+class TagDemo extends React.Component<any, any> {
+  constructor(props) {
+    super(props);
+    this.state = { data };
+  }
+  render() {
+    return this.getTag();
+  }
 
+  getTag = () => {
+    const { data } = this.state;
+    return data.map((item, index) => {
+      return (
+        <Tag key={item} onClose={this.onClose.bind(this, item)} closable>
+          {item}
+        </Tag>
+      );
+    });
+  };
+
+  onClose(item, e) {
+    const { data } = this.state;
+    const index = data.indexOf(item);
+    data.splice(index, 1);
+    this.setState({ data });
+  }
+}
 export class NormalCase extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
@@ -212,6 +238,7 @@ export class NormalCase extends React.Component<any, any> {
               Optional
             </Tag>
           </Box>
+
           <h2>主题配置</h2>
           <Box>
             <Tag
@@ -267,6 +294,20 @@ export class NormalCase extends React.Component<any, any> {
               customs
             </Tag>
           </Box>
+
+          <h2>更换图标的默认样式</h2>
+          <div>
+            <Box>
+              <Tag
+                onClick={this.onClick}
+                closable
+                onClose={this.onClose}
+                icon="lugia-icon-reminder_close_circle_o"
+              >
+                customs
+              </Tag>
+            </Box>
+          </div>
           <h2>主题配置</h2>
 
           <Box>
@@ -433,5 +474,5 @@ export class NormalCase extends React.Component<any, any> {
 }
 
 export default () => {
-  return [<LimitCase />, <NormalCase />];
+  return [<LimitCase />, <NormalCase />, <TagDemo />];
 };
