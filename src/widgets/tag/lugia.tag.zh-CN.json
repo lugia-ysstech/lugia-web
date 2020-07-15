@@ -22,6 +22,11 @@
       "type": "StyleType",
       "desc": "标签的主题样式",
       "propsDefaultValue": "customs"
+    },
+    "icon": {
+      "type": "string",
+      "desc": "标签图标样式",
+      "propsDefaultValue": "lugia-icon-reminder_close"
     }
   },
   "events": {
