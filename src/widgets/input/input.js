@@ -129,6 +129,7 @@ const InputContainer = CSSComponent({
     defaultTheme: {
       width: '100%',
       background: { color: 'white' },
+      borderRadius: getBorderRadius(borderRadius),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
@@ -265,17 +266,6 @@ type InputProps = {
   onMouseEnter?: Function,
   onMouseLeave?: Function,
 } & InsideProps;
-
-const defaultFixTheme = {
-  themeConfig: {
-    normal: {
-      color: blackColor,
-    },
-    disabled: {
-      color: disableTextColor,
-    },
-  },
-};
 
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
@@ -575,7 +565,6 @@ class TextBox extends Component<InputProps, InputState> {
     const defaultTheme = {
       themeConfig: {
         normal: {
-          borderRadius: getBorderRadius(borderRadius),
           border: getBorder(get('normalBorder')),
         },
         hover: {
