@@ -452,12 +452,6 @@
             "description": {
               "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
-          },
-          {
-            "name": "展开图标",
-            "path": ["UploadIcon"],
-            "props": [{ "name": "icon", "typeInTheme": "icon" }],
-            "description": { "textPart": { "text": "图标", "desc": "展开图标文本配置区" } }
           }
         ]
       },
