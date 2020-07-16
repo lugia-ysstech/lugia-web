@@ -83,7 +83,16 @@
     "Container": {
       "name": "抽屉整体样式",
       "desc": "为抽屉配置整体样式",
-      "normal": [["width"], ["height"]]
+      "normal": [
+        ["width"],
+        ["height"],
+        ["borderRadius"],
+        ["opacity"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["padding"]
+      ]
     },
     "DrawerTitle": {
       "name": "抽屉标题样式",
