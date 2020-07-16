@@ -27,7 +27,7 @@ type TagProps = {
   text: String,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
-  icon: string,
+  closeIcon: string,
 };
 
 type TagState = {
@@ -82,7 +82,7 @@ class Tag extends React.Component<TagProps, TagState> {
       type,
       shape,
       closable = false,
-      icon = 'lugia-icon-reminder_close',
+      closeIcon = 'lugia-icon-reminder_close',
     } = this.props;
 
     const params = {
@@ -118,7 +118,7 @@ class Tag extends React.Component<TagProps, TagState> {
             <Icon
               {...this.getCloseTheme('CloseButton')}
               singleTheme
-              iconClass={icon}
+              iconClass={closeIcon}
               onClick={this.onCloseClick.bind(this)}
             />
           ) : null}
