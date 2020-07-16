@@ -49,6 +49,10 @@
     "getContainer": {
       "type": "boolean | React.node | function",
       "desc": "是否在指定容器内展示抽屉"
+    },
+    "drawerCloseIcon": {
+      "type": "icon",
+      "desc": "自定义关闭图标"
     }
   },
   "events": {
@@ -79,16 +83,12 @@
     "Container": {
       "name": "抽屉整体样式",
       "desc": "为抽屉配置整体样式",
-      "normal": {
-        "selectNames": [["width"], ["height"]]
-      }
+      "normal": [["width"], ["height"]]
     },
     "DrawerTitle": {
       "name": "抽屉标题样式",
       "desc": "为抽屉标题配置样式",
-      "normal": {
-        "selectNames": [["font"], ["color"]]
-      }
+      "normal": [["font"], ["color"]]
     },
     "DrawerCloseIcon": {
       "name": "抽屉关闭图标样式",
@@ -103,6 +103,11 @@
           "disabled": [["color"], ["cursor"]]
         }
       }
+    },
+    "DrawerMask": {
+      "name": "抽屉遮罩样式",
+      "desc": "为抽屉遮罩配置样式",
+      "normal": [["opacity"], ["background"]]
     }
   }
 }
