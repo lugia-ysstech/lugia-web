@@ -81,7 +81,7 @@
             {
               "key": "自定义按钮文本",
               "title": "页脚按钮",
-              "type": "date"
+              "type": "rangedate"
             }
           ]
         }
