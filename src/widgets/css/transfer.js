@@ -50,6 +50,9 @@ export type TransferProps = {
   treeTheme: Object,
   inputTheme: Object,
   size: SizeType,
+  transferClearIcon?: string,
+  transferPrefixIcon?: string,
+  transferSuffixIcon?: string,
 };
 export type TransferState = {
   inputValue: string,
