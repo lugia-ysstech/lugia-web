@@ -3,6 +3,11 @@
   "title": "抽屉",
   "desc": "在屏幕边缘出现的浮层面板。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "injectLugiad": {
       "type": "Object",
       "defaultValue": { "type": "Drawer" },
@@ -69,5 +74,35 @@
       }
     }
   },
-  "category": ["反馈"]
+  "category": ["反馈"],
+  "theme": {
+    "Container": {
+      "name": "抽屉整体样式",
+      "desc": "为抽屉配置整体样式",
+      "normal": {
+        "selectNames": [["width"], ["height"]]
+      }
+    },
+    "DrawerTitle": {
+      "name": "抽屉标题样式",
+      "desc": "为抽屉标题配置样式",
+      "normal": {
+        "selectNames": [["font"], ["color"]]
+      }
+    },
+    "DrawerCloseIcon": {
+      "name": "抽屉关闭图标样式",
+      "desc": "为抽屉关闭图标配置样式",
+      "theme": {
+        "Icon": {
+          "name": "图标",
+          "desc": "图标",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+          "hover": [["color"], ["margin"], ["cursor"]],
+          "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+          "disabled": [["color"], ["cursor"]]
+        }
+      }
+    }
+  }
 }
