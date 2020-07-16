@@ -21,6 +21,7 @@ export type DrawerProps = {
   children: any,
   getTheme: Function,
   getContainer?: boolean | Function | React.ReactNode,
+  closeIcon?: string,
 };
 export type DrawerState = {
   open: boolean,
@@ -269,14 +270,23 @@ const getHeaderLugiadCSS = (props: CSSProps): string => {
   }
   return '';
 };
-export const DrawerContentHeader = styled.div`
-  padding: ${HeaderEM(22)} ${HeaderEM(20)} ${HeaderEM(16)};
-  font-size: ${em(16)};
-  line-height: ${HeaderEM(22)};
-  font-weight: 500;
-  color: #333;
-  ${getHeaderLugiadCSS}
-`;
+
+export const DrawerContentHeader = CSSComponent({
+  tag: 'div',
+  className: 'DrawerContentHeader',
+  css: css`
+    padding: ${HeaderEM(22)} ${HeaderEM(20)} ${HeaderEM(16)};
+    font-size: ${em(16)};
+    line-height: ${HeaderEM(22)};
+    font-weight: 500;
+    color: #333;
+    ${getHeaderLugiadCSS}
+  `,
+  normal: {
+    selectNames: [['font'], ['color']],
+  },
+});
+
 export const DrawerContentMain = styled.div`
   font-size: ${em(14)};
   color: #666;

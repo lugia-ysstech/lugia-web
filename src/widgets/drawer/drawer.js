@@ -24,6 +24,7 @@ import {
   HandleWrap,
   getIconTransfrom,
 } from '../css/drawer';
+import get from '../css/theme-common-dict';
 
 export const DrawerContext: Object = React.createContext();
 
@@ -104,6 +105,33 @@ export default ThemeProvider(
       return { viewClass, theme: iconTheme };
     };
 
+    getCloseIconTheme = () => {
+      const { getPartOfThemeHocProps } = this.props;
+      const { viewClass, theme } = getPartOfThemeHocProps('DrawerCloseIcon');
+      const iconTheme = deepMerge(
+        {
+          [viewClass]: {
+            normal: {
+              fontSize: get('sFontSize'),
+              color: get('mediumGreyColor'),
+            },
+            hover: {
+              color: get('darkGreyColor'),
+            },
+            disabled: {
+              color: get('disableTextColor'),
+            },
+          },
+        },
+        theme
+      );
+
+      return {
+        viewClass,
+        theme: iconTheme,
+      };
+    };
+
     render() {
       if (!this.node) {
         return null;
@@ -124,6 +152,7 @@ export default ThemeProvider(
         getContainer,
       } = this.props;
       const drawerWrapTheme = getPartOfThemeProps('Container');
+      const drawerTitleTheme = getPartOfThemeProps('DrawerTitle');
       const handleWrapTheme = getPartOfThemeProps('handleWrap');
       const { themeConfig } = drawerWrapTheme;
       const defaultTheme =
@@ -133,7 +162,7 @@ export default ThemeProvider(
       const closeIcon = hasCloseIcon ? (
         <DrawerClose __lugiad__header__absolute__={__lugiad__header__absolute__} type={type}>
           <CloseText onClick={this.handleClose}>
-            <Icon iconClass="lugia-icon-reminder_close" />
+            <Icon iconClass="lugia-icon-reminder_close" {...this.getCloseIconTheme()} />
           </CloseText>
         </DrawerClose>
       ) : null;
@@ -166,6 +195,7 @@ export default ThemeProvider(
             <DrawerContentHeader
               __lugiad__header__absolute__={__lugiad__header__absolute__}
               type={type}
+              themeProps={drawerTitleTheme}
             >
               {title}
             </DrawerContentHeader>
