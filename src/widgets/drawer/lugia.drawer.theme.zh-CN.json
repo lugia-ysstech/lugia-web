@@ -1,0 +1,68 @@
+[
+  {
+    "widgetName": "Drawer",
+    "title": "抽屉",
+    "viewProps": [
+      { "name": "mask", "text": "显示遮罩" },
+      { "name": "closable", "text": "按钮关闭" },
+      { "name": "maskClosable", "text": "点击遮罩关闭" },
+      { "name": "placement", "text": "抽屉方向" }
+    ],
+    "data": [
+      {
+        "title": "主体部分",
+        "iconClass": "cardbackground",
+        "data": [
+          {
+            "name": "抽屉整体样式",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "背景框",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "抽屉标题样式",
+            "path": ["DrawerTitle"],
+            "props": [{ "name": "title", "typeInTheme": "text" }],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
+            "name": "抽屉关闭图标样式",
+            "path": ["DrawerCloseIcon", "Icon"],
+            "props": [{ "name": "drawerCloseIcon", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": {
+                "text": "关闭图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "遮罩部分",
+        "iconClass": "mask",
+        "data": [
+          {
+            "name": "抽屉整体样式",
+            "path": ["DrawerMask"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

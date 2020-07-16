@@ -11,6 +11,7 @@ import Widget from '../consts/index';
 import Drawer from './drawer';
 import Button from '../button';
 import Radio from '../radio';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 
 const RadioGroup = Radio.Group;
 const DemoBox = styled.div`
@@ -93,6 +94,14 @@ export default class DrawerDemo extends React.Component<any, any> {
           normal: {
             width: 300,
             height: 500,
+            background: {
+              color: 'lightblue',
+            },
+            border: getBorder({ color: 'black', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(5),
+            opacity: 0.5,
+            boxShadow: getBoxShadow('1px 2px 2px 2px #ccc'),
+            padding: 20,
           },
         },
         DrawerTitle: {

@@ -254,7 +254,16 @@ export const DrawerContentWrap = CSSComponent({
     min-height: 100px;
   `,
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['borderRadius'],
+      ['opacity'],
+      ['background'],
+      ['border'],
+      ['boxShadow'],
+      ['padding'],
+    ],
   },
 });
 
@@ -262,7 +271,7 @@ export const DrawerContent = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-  background-color: #fff;
+  background-color: transparent;
   border: 0;
   z-index: 1;
 `;
