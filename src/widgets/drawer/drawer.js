@@ -150,19 +150,21 @@ export default ThemeProvider(
         __lugiad__header__absolute__,
         sidebar = false,
         getContainer,
+        drawerCloseIcon,
       } = this.props;
       const drawerWrapTheme = getPartOfThemeProps('Container');
       const drawerTitleTheme = getPartOfThemeProps('DrawerTitle');
+      const drawerMaskTheme = getPartOfThemeProps('DrawerMask');
       const handleWrapTheme = getPartOfThemeProps('handleWrap');
-      const { themeConfig } = drawerWrapTheme;
-      const defaultTheme =
-        placement === 'top' || placement === 'bottom' ? { width: '100%' } : { height: '100%' };
-      drawerWrapTheme.themeConfig.normal = deepMerge(themeConfig.normal, defaultTheme);
+
       const hasCloseIcon = closable || !maskClosable;
       const closeIcon = hasCloseIcon ? (
         <DrawerClose __lugiad__header__absolute__={__lugiad__header__absolute__} type={type}>
           <CloseText onClick={this.handleClose}>
-            <Icon iconClass="lugia-icon-reminder_close" {...this.getCloseIconTheme()} />
+            <Icon
+              iconClass={drawerCloseIcon || 'lugia-icon-reminder_close'}
+              {...this.getCloseIconTheme()}
+            />
           </CloseText>
         </DrawerClose>
       ) : null;
@@ -212,7 +214,12 @@ export default ThemeProvider(
         return drawerContent;
       }
       const maskElement = mask ? (
-        <DrawerMask onClick={this.handleMaskClick} visible={visible} hasContainer={hasContainer} />
+        <DrawerMask
+          onClick={this.handleMaskClick}
+          visible={visible}
+          hasContainer={hasContainer}
+          themeProps={drawerMaskTheme}
+        />
       ) : null;
 
       const drawer = (

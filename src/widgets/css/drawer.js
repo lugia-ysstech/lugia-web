@@ -21,7 +21,7 @@ export type DrawerProps = {
   children: any,
   getTheme: Function,
   getContainer?: boolean | Function | React.ReactNode,
-  closeIcon?: string,
+  drawerCloseIcon?: string,
 };
 export type DrawerState = {
   open: boolean,
@@ -101,13 +101,22 @@ const getDrawerMaskPosition = (props: CSSProps) => {
     position: fixed;
   `;
 };
-export const DrawerMask = styled.div`
-  ${getDrawerMaskPosition}
-  width: 100%;
-  transition: opacity 0.3s linear;
-  ${getMaskStyle};
-  background-color: rgba(0, 0, 0, 0.65);
-`;
+
+export const DrawerMask = CSSComponent({
+  tag: 'div',
+  className: 'DrawerMask',
+  css: css`
+    ${getDrawerMaskPosition}
+    width: 100%;
+    transition: opacity 0.3s linear;
+    ${getMaskStyle};
+    background-color: rgba(0, 0, 0, 0.65);
+  `,
+  normal: {
+    selectNames: [['opacity'], ['background']],
+  },
+});
+
 const getAnimateDirection = (props: CSSProps): string => {
   const { placement } = props;
   if (direction.includes(placement)) {
