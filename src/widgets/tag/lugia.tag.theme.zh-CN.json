@@ -45,7 +45,7 @@
           {
             "name": "关闭按钮",
             "path": ["CloseButton"],
-            "props": [{ "name": "icon", "typeInTheme": "icon" }],
+            "props": [{ "name": "closeIcon", "typeInTheme": "icon" }],
             "description": {
               "spacingPart": { "text": "margin/padding", "desc": "关闭按钮内外边距配置区" },
               "textPart": { "text": "可关闭图标", "desc": "可关闭图标文本配置" }
