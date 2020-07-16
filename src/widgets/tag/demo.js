@@ -302,7 +302,7 @@ export class NormalCase extends React.Component<any, any> {
                 onClick={this.onClick}
                 closable
                 onClose={this.onClose}
-                icon="lugia-icon-reminder_close_circle_o"
+                closeIcon="lugia-icon-reminder_close_circle_o"
               >
                 customs
               </Tag>
