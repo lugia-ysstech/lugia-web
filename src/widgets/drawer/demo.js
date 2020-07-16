@@ -41,6 +41,7 @@ export default class DrawerDemo extends React.Component<any, any> {
       visible8: false,
       visible9: false,
       visible10: false,
+      visible11: false,
       radioValue: 'right',
     };
   }
@@ -74,6 +75,7 @@ export default class DrawerDemo extends React.Component<any, any> {
       visible5,
       visible6,
       visible10,
+      visible11,
     } = this.state;
     const view = {
       [Widget.Drawer]: {
@@ -81,6 +83,40 @@ export default class DrawerDemo extends React.Component<any, any> {
           normal: {
             width: 400,
             height: 400,
+          },
+        },
+      },
+    };
+    const drawerTheme = {
+      [Widget.Drawer]: {
+        Container: {
+          normal: {
+            width: 300,
+            height: 500,
+          },
+        },
+        DrawerTitle: {
+          normal: {
+            color: 'red',
+            font: {
+              size: 30,
+            },
+          },
+        },
+        DrawerCloseIcon: {
+          Icon: {
+            normal: {
+              color: 'blue',
+              fontSize: 24,
+            },
+          },
+        },
+        DrawerMask: {
+          normal: {
+            background: {
+              color: '#333',
+            },
+            opacity: 0.3,
           },
         },
       },
@@ -228,6 +264,27 @@ export default class DrawerDemo extends React.Component<any, any> {
             <p>Basic Drawer</p>
           </Drawer>
         </BoxWrap>
+
+        <p>theme</p>
+        <Theme config={drawerTheme}>
+          <DemoBox>
+            <Button type="primary" onClick={this.openDrawer(11)}>
+              click me
+            </Button>
+          </DemoBox>
+          <Drawer
+            title="Basic Drawer"
+            onClose={this.onClick(11)}
+            visible={visible11}
+            closable
+            drawerCloseIcon="lugia-icon-reminder_close_circle"
+            placement="right"
+          >
+            <p>Basic Drawer</p>
+            <p>Basic Drawer</p>
+            <p>Basic Drawer</p>
+          </Drawer>
+        </Theme>
       </div>
     );
   }
