@@ -4,14 +4,8 @@
     "title": "文字头像",
     "treeNodeHidden": true,
     "viewProps": [
-      {
-        "name": "size",
-        "text": "大小"
-      },
-      {
-        "name": "shape",
-        "text": "形状"
-      }
+      { "name": "size", "text": "大小" },
+      { "name": "shape", "text": "形状" }
     ],
     "data": [
       {
@@ -20,27 +14,18 @@
           {
             "name": "外观",
             "path": ["Container"],
-            "description": {
-              "appearancePart": {
-                "text": "外观",
-                "desc": "外观"
-              }
+            "description": { "appearancePart": { "text": "外观", "desc": "头像的整体样式" }
             }
           },
           {
             "name": "文本",
             "path": ["FontAvatar"],
             "description": {
-              "textPart": {
-                "text": "文本",
-                "desc": "文本"
+              "appearancePart":{
+                "hidden": true
               },
-              "props": [
-                {
-                  "name": "name",
-                  "typeInTheme": "text"
-                }
-              ]
+              "textPart": { "text": "文本", "desc": "头像文本" },
+              "props": [{ "name": "name", "typeInTheme": "text" }]
             }
           }
         ]
@@ -53,14 +38,8 @@
     "title": "图标头像",
     "treeNodeHidden": true,
     "viewProps": [
-      {
-        "name": "size",
-        "text": "大小"
-      },
-      {
-        "name": "shape",
-        "text": "形状"
-      }
+      { "name": "size", "text": "大小" },
+      { "name": "shape", "text": "形状" }
     ],
     "data": [
       {
@@ -69,27 +48,17 @@
           {
             "name": "外观",
             "path": ["Container"],
-            "description": {
-              "appearancePart": {
-                "text": "外观",
-                "desc": "外观"
-              }
-            }
+            "description": { "appearancePart": { "text": "外观", "desc": "外观" } }
           },
           {
             "name": "图标",
             "path": ["IconAvatar"],
             "description": {
-              "textPart": {
-                "text": "图标",
-                "desc": "图标"
+              "appearancePart":{
+                "hidden": true
               },
-              "props": [
-                {
-                  "name": "icon",
-                  "typeInTheme": "icon"
-                }
-              ]
+              "textPart": { "text": "图标", "desc": "图标" },
+              "props": [{ "name": "icon", "typeInTheme": "icon" }]
             }
           }
         ]
@@ -102,14 +71,8 @@
     "title": "图片头像",
     "treeNodeHidden": true,
     "viewProps": [
-      {
-        "name": "size",
-        "text": "大小"
-      },
-      {
-        "name": "shape",
-        "text": "形状"
-      }
+      { "name": "size", "text": "大小" },
+      { "name": "shape", "text": "形状" }
     ],
     "data": [
       {
@@ -118,27 +81,17 @@
           {
             "name": "外观",
             "path": ["Container"],
-            "description": {
-              "appearancePart": {
-                "text": "外观",
-                "desc": "外观"
-              }
-            }
+            "description": { "appearancePart": { "text": "外观", "desc": "外观" } }
           },
           {
             "name": "头像图片",
             "path": ["SrcAvatar"],
             "description": {
-              "textPart": {
-                "text": "头像图片",
-                "desc": "头像图片"
+              "appearancePart":{
+                "hidden": true
               },
-              "props": [
-                {
-                  "name": "src",
-                  "typeInTheme": "icon"
-                }
-              ]
+              "textPart": { "text": "头像图片", "desc": "头像图片" },
+              "props": [{ "name": "src", "typeInTheme": "icon" }]
             }
           }
         ]
