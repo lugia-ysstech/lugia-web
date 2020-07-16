@@ -278,10 +278,10 @@ export default ThemeProvider(
                 right: 4,
               },
               getThemeMeta(themeMeta: Object, themeProps: Object) {
-                const { height } = themeMeta;
+                const { height, borderRadius } = themeMeta;
                 const theBorderRadius = height / 2 || 12;
                 return {
-                  borderRadius: getBorderRadius(theBorderRadius),
+                  borderRadius: deepMerge(getBorderRadius(theBorderRadius), borderRadius),
                 };
               },
             },
