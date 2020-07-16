@@ -210,6 +210,7 @@ describe('Upload Test', () => {
     it('Function GetIconByType ', () => {
       const res = getIconByType(
         {
+          getPartOfThemeHocProps: themeHocProps,
           defaultTips: {
             uploadText: '上传',
             uploadTips: '请将文件拖到此处',

@@ -1095,11 +1095,11 @@ class GetElement extends React.Component<DefProps, StateProps> {
         },
         buttonThemeStyle
       );
-      const resultButtonTheme = deepMerge({
+      const resultButtonTheme = {
         [buttonViewClassType]: {
           ...buttonMergeStyle,
         },
-      });
+      };
       const themeTypeMerge = deepMerge(resultButtonTheme, buttonThemeType);
       const newTheme = { viewClass: buttonViewClassType, theme: themeTypeMerge };
       children = (
