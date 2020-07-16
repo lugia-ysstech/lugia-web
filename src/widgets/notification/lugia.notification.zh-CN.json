@@ -10,6 +10,7 @@
     "duration": {
       "type": "number",
       "desc": "自定义延时关闭时间，单位为 秒, 设置 0 或 null 时不关闭",
+      "propsDefaultValue": 4.5,
       "defaultValue": 0
     },
     "description": {
