@@ -392,8 +392,8 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const theThemeProps = deepMerge(defaultTheme(), this.getThemePropsByType('container'));
     const arrowIconPlusButtonThemeProps = this.getThemePropsByType('plus');
     const arrowIconMinusButtonThemeProps = deepMerge(
-      this.props.getPartOfThemeProps('ArrowDivider'),
-      this.getThemePropsByType('minus')
+      this.getThemePropsByType('minus'),
+      this.props.getPartOfThemeProps('ArrowDivider')
     );
     const plusChannel = createEventChannel([['hover'], ['focus']]);
     const minusChannel = createEventChannel(['hover'], ['focus']);
