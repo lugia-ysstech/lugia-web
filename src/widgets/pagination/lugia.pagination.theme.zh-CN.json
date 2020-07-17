@@ -72,17 +72,33 @@
             }
           },
           {
-            "name": "图标",
-            "path": ["ChangePageIcon"],
+            "name": "上一页图标",
+            "path": ["ChangePagePreIcon"],
             "description": {
               "textPart": {
-                "text": "图标",
-                "desc": "分页图标"
+                "text": "上一页图标",
+                "desc": "上一页图标"
               }
             },
             "props": [
               {
                 "name": "preIconClass",
+                "typeInTheme": "icon"
+              }
+            ]
+          },
+          {
+            "name": "下一页图标",
+            "path": ["ChangePageIcon"],
+            "description": {
+              "textPart": {
+                "text": "下一页图标",
+                "desc": "下一页图标"
+              }
+            },
+            "props": [
+              {
+                "name": "nextIconClass",
                 "typeInTheme": "icon"
               }
             ]
@@ -125,7 +141,7 @@
         "children": [
           {
             "title": "整体背景",
-            "iconClass": "paginationJump",
+            "iconClass": "mask",
             "data": [
               {
                 "name": "整体背景",
@@ -141,7 +157,7 @@
           },
           {
             "title": "输入框",
-            "iconClass": "input",
+            "iconClass": "AmountInput",
             "data": [
               {
                 "name": "输入框",
@@ -188,6 +204,19 @@
                   "appearancePart": {
                     "text": "主体",
                     "desc": "主体"
+                  },
+                  "textPart": {
+                    "hidden": true
+                  }
+                }
+              },
+              {
+                "name": "文本",
+                "path": ["PaginationPageSizeSelect", "TextContent"],
+                "description": {
+                  "textPart": {
+                    "text": "文本",
+                    "desc": "文本"
                   }
                 }
               }
@@ -312,17 +341,33 @@
         "iconClass": "paginationSimpleIcon",
         "data": [
           {
-            "name": "图标",
-            "path": ["ChangePageIcon"],
+            "name": "上一页图标",
+            "path": ["ChangePagePreIcon"],
             "description": {
               "textPart": {
-                "text": "图标",
-                "desc": "分页图标"
+                "text": "上一页图标",
+                "desc": "上一页图标"
               }
             },
             "props": [
               {
                 "name": "preIconClass",
+                "typeInTheme": "icon"
+              }
+            ]
+          },
+          {
+            "name": "下一页图标",
+            "path": ["ChangePageIcon"],
+            "description": {
+              "textPart": {
+                "text": "下一页图标",
+                "desc": "下一页图标"
+              }
+            },
+            "props": [
+              {
+                "name": "nextIconClass",
                 "typeInTheme": "icon"
               }
             ]

@@ -846,18 +846,29 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     if (hideOnSinglePage) {
       return null;
     }
-    const preIcon = preIconClass ? preIconClass : 'lugia-icon-direction_Left';
-    const nextIcon = nextIconClass ? nextIconClass : 'lugia-icon-direction_right';
-    const iconClass = type === 'pre' ? preIcon : nextIcon;
-    const iconSrc = type === 'pre' ? preIconSrc : nextIconSrc;
-    const { theme: IconThemeProps, viewClass: IconViewClass } = getPartOfThemeHocProps(
+    const preIcon = preIconClass || 'lugia-icon-direction_Left';
+    const nextIcon = nextIconClass || 'lugia-icon-direction_right';
+    const { theme: nextIconThemeProps, viewClass: nextIconViewClass } = getPartOfThemeHocProps(
       'ChangePageIcon'
     );
-    const iconCursor = clickable ? 'pointer' : 'not-allowed';
+    const { theme: preIconThemeProps, viewClass: preIconViewClass } = getPartOfThemeHocProps(
+      'ChangePagePreIcon'
+    );
+    let iconClass = nextIcon;
+    let iconSrc = nextIconSrc;
+    let iconViewClass = nextIconViewClass;
+    let iconThemeProps = nextIconThemeProps;
 
-    const iconTheme = deepMerge(
-      {
-        [IconViewClass]: {
+    if (type === 'pre') {
+      iconClass = preIcon;
+      iconSrc = preIconSrc;
+      iconViewClass = preIconViewClass;
+      iconThemeProps = preIconThemeProps;
+    }
+    const iconCursor = clickable ? 'pointer' : 'not-allowed';
+    const getIconTheme = viewClass => {
+      return {
+        [viewClass]: {
           normal: {
             color: darkGreyColor,
             cursor: iconCursor,
@@ -874,9 +885,9 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
             cursor: 'not-allowed',
           },
         },
-      },
-      IconThemeProps
-    );
+      };
+    };
+    const iconTheme = deepMerge(getIconTheme(iconViewClass), iconThemeProps);
     return (
       <Icon
         propsConfig={{ size }}
@@ -884,7 +895,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
         src={iconSrc}
         iconClass={iconClass}
         theme={iconTheme}
-        viewClass={IconViewClass}
+        viewClass={iconViewClass}
         onClick={this.simpleArrowClick(type)}
         singleTheme
       />
