@@ -265,18 +265,21 @@ export default ThemeProvider(
       this.disabledSelectedRecords = disabledSelectedRecords;
     };
     getSortColumns = (columns: Object[]) => {
-      const newColumns = deepCopy(columns);
-      newColumns.map(item => {
+      const newColumns = [];
+      columns.map(item => {
         const { sorter } = item;
-        const newItem = deepCopy(item);
         if (sorter) {
-          item.title = (
+          const newItem = deepCopy(item);
+          newItem.title = (
             <TableTitle
               title={item.title}
-              positiveSequence={() => this.onSortChange(newItem, 'ascend')}
-              negativeSequence={() => this.onSortChange(newItem, 'descend')}
+              positiveSequence={() => this.onSortChange(item, 'ascend')}
+              negativeSequence={() => this.onSortChange(item, 'descend')}
             />
           );
+          newColumns.push(newItem);
+        } else {
+          newColumns.push(item);
         }
       });
       return newColumns;
