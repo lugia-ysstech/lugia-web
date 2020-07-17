@@ -254,6 +254,17 @@ export default class ProgressDemo extends React.Component<any, any> {
         },
       },
     };
+    const circleTheme = {
+      [Widget.Progress]: {
+        Container: {
+          normal: {
+            width: 300,
+            strokeWidth: 20,
+          },
+        },
+      },
+    };
+
     return (
       <div>
         <Theme config={CircleView}>
@@ -509,6 +520,10 @@ export default class ProgressDemo extends React.Component<any, any> {
             </Theme>
           </div>
         </div>
+
+        <Theme config={circleTheme}>
+          <Progress type="dashboard" percent={30} />
+        </Theme>
       </div>
     );
   }
