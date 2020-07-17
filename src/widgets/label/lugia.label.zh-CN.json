@@ -54,7 +54,11 @@
         ["textAlign"],
         ["border"],
         ["borderRadius"],
-        ["boxShadow"]
+        ["boxShadow"],
+        ["wordBreak"],
+        ["whiteSpace"],
+        ["textOverflow"],
+        ["overflow"]
       ],
       "hover": [
         ["color"],
@@ -78,14 +82,7 @@
     "LabelPrefix": {
       "name": "文本前缀",
       "desc": "文本前缀的样式",
-      "normal": [
-        ["color"],
-        ["font"],
-        ["lineHeight"],
-        ["margin"],
-        ["cursor"],
-        ["textAlign"]
-      ],
+      "normal": [["color"], ["font"], ["lineHeight"], ["margin"], ["cursor"], ["textAlign"]],
       "hover": [["color"], ["cursor"]],
       "disabled": [["color"], ["cursor"]]
     }

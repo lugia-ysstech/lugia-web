@@ -114,8 +114,38 @@ class LabelDemo extends React.Component<PropsType, StateType> {
         },
       },
     };
+    const wordBreak = {
+      [Widget.Label]: {
+        Container: {
+          normal: {
+            width: 50,
+            textOverflow: 'ellipsis',
+            overflow: 'hidden',
+          },
+        },
+      },
+    };
+    const wordBreakClip = {
+      [Widget.Label]: {
+        Container: {
+          normal: {
+            width: 50,
+            textOverflow: 'clip',
+            overflow: 'hidden',
+          },
+        },
+      },
+    };
     return (
       <div>
+        <Theme config={wordBreak}>
+          <LabelBox>主题配置 textOverflow: 'ellipsis', overflow:'hidden',</LabelBox>
+          <Label>这是一段很长很长的文本</Label>
+        </Theme>
+        <Theme config={wordBreakClip}>
+          <LabelBox>主题配置 textOverflow: 'clip', overflow:'hidden',</LabelBox>
+          <Label>这是一段很长很长的文本</Label>
+        </Theme>
         <Theme config={configBorder}>
           <LabelBox>主题配置 text: showPrefix : *</LabelBox>
           <Label>这是一段很长很长的文本</Label>

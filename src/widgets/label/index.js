@@ -35,6 +35,10 @@ const LabelContainer = CSSComponent({
       ['borderRadius'],
       ['boxShadow'],
       ['font'],
+      ['wordBreak'],
+      ['whiteSpace'],
+      ['textOverflow'],
+      ['overflow'],
     ],
     getThemeMeta() {
       return {

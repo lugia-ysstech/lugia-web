@@ -214,4 +214,7 @@ export default {
   '/ValidateDemo': {
     render: async () => import('./ValidateDemo'),
   },
+  '/label': {
+    render: async () => import('./widgets/label/demo'),
+  },
 };
