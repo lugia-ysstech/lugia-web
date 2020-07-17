@@ -6627,6 +6627,7 @@ export default [
       title: '抽屉',
       desc: '在屏幕边缘出现的浮层面板。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         injectLugiad: { type: 'Object', defaultValue: { type: 'Drawer' }, isHidden: true },
         placement: { type: 'PlacementType', desc: '抽屉的方向', defaultValue: 'right' },
         title: { type: 'React.node', desc: '抽屉的标题' },
@@ -6636,6 +6637,7 @@ export default [
         closable: { type: 'boolean', desc: '是否展示抽屉右上角关闭按钮', defaultValue: false },
         sidebar: { type: 'boolean', desc: '是否展示抽屉侧边抽拉按钮', defaultValue: false },
         getContainer: { type: 'boolean | React.node | function', desc: '是否在指定容器内展示抽屉' },
+        drawerCloseIcon: { type: 'icon', desc: '自定义关闭图标' },
       },
       events: {
         onClose: { desc: '抽屉关闭时的回调', args: [] },
@@ -6649,6 +6651,56 @@ export default [
         },
       },
       category: ['反馈'],
+      theme: {
+        Container: {
+          name: '抽屉整体样式',
+          desc: '为抽屉配置整体样式',
+          normal: [
+            ['width'],
+            ['height'],
+            ['borderRadius'],
+            ['opacity'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['padding'],
+          ],
+        },
+        DrawerContent: {
+          name: '抽屉内容样式',
+          desc: '为抽屉内容配置样式',
+          normal: [['background']],
+        },
+        DrawerTitle: {
+          name: '抽屉标题样式',
+          desc: '为抽屉标题配置样式',
+          normal: [['font'], ['color']],
+        },
+        DrawerCloseIcon: {
+          name: '抽屉关闭图标样式',
+          desc: '为抽屉关闭图标配置样式',
+          theme: {
+            Icon: {
+              name: '图标',
+              desc: '图标',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+              hover: [['color'], ['margin'], ['cursor']],
+              active: [['color'], ['cursor'], ['fontSize'], ['font']],
+              disabled: [['color'], ['cursor']],
+            },
+          },
+        },
+        DrawerMask: {
+          name: '抽屉遮罩样式',
+          desc: '为抽屉遮罩配置样式',
+          normal: [['opacity'], ['background']],
+        },
+        HandleWrap: {
+          name: '抽屉把手样式',
+          desc: '为抽屉把手配置样式',
+          normal: [['opacity'], ['background']],
+        },
+      },
       childrenWidget: [],
     },
     target: Drawer,
