@@ -252,6 +252,7 @@ export const DrawerContentWrap = CSSComponent({
     ${getTransform};
     min-width: 256px;
     min-height: 100px;
+    background-color: #fff;
   `,
   normal: {
     selectNames: [
