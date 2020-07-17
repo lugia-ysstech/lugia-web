@@ -355,6 +355,11 @@
       ],
       "hover": [],
       "active": []
+    },
+    "ArrowDivider": {
+      "name": "步长箭头图标分割线",
+      "desc": "步长箭头图标分割线",
+      "normal": [["border", "top"]]
     }
   }
 }

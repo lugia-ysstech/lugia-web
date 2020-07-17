@@ -105,6 +105,19 @@
                 "typeInTheme": "icon"
               }
             ]
+          },
+          {
+            "name": "图标分割线",
+            "path": ["ArrowDivider"],
+            "description": {
+              "textPart": {
+                "hidden": true
+              },
+              "appearancePart": {
+                "text": "图标分割线",
+                "desc": "步长箭头图标分割线"
+              }
+            }
           }
         ]
       },

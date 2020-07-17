@@ -119,7 +119,18 @@ const MinusButton = CSSComponent({
   extend: StepButton,
   className: 'NumberInputMinusButton',
   normal: {
-    selectNames: [],
+    getCSS(themeMeta, themeProps) {
+      const {
+        propsConfig: {
+          borderConfig: { border: { top: { style, width, color } = {} } = {} } = {},
+        } = {},
+      } = themeProps;
+      const theWidth = px2remcss(width || 1);
+      const theStyle = style || 'solid';
+      return css`
+        border-top: ${theWidth} ${theStyle} ${() => color || get('borderColor')};
+      `;
+    },
   },
   hover: {
     selectNames: [['height'], ['cursor']],
@@ -142,7 +153,6 @@ const MinusButton = CSSComponent({
     },
   },
   css: css`
-    border-top: ${px2remcss(1)} solid ${() => get('borderColor')};
     height: 50%;
   `,
   option: { hover: true, active: true },
@@ -221,9 +231,6 @@ export type NumberInputProps = {
   formatter?: (value: string) => string,
   parser?: (displayValue: string) => string,
   precision: number,
-  validateStatus: ValidateStatus,
-  validateType: ValidateType,
-  help: string,
   themeProps: Object,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
@@ -340,13 +347,15 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   getThemePropsByType = type => {
     const { stepHover, value } = this.state;
     const { size, getPartOfThemeProps, max, min, disabled } = this.props;
+    const lineBorder = getPartOfThemeProps('ArrowDivider');
+    const { themeConfig: { normal: borderThemeConfig } = {} } = lineBorder;
     const propsConfig =
       type === 'container'
         ? { disabled }
         : type === 'plus'
         ? { outRange: getOverMax(value, max) }
         : type === 'minus'
-        ? { outRange: getBelowMin(value, min) }
+        ? { outRange: getBelowMin(value, min), borderConfig: borderThemeConfig }
         : {};
     return getPartOfThemeProps('ArrowIconContainer', {
       props: { size, hover: stepHover, ...propsConfig },
