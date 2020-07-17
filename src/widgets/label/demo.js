@@ -148,6 +148,12 @@ class LabelDemo extends React.Component<PropsType, StateType> {
         <Label>这是一段文本</Label>
         <LabelBox>默认文本 无参数:</LabelBox>
         <Label />
+
+        <LabelBox>text props中放多个空格</LabelBox>
+        <Label text={'很多空格                       的文本'} />
+        <br />
+        <br />
+        <br />
       </div>
     );
   }
