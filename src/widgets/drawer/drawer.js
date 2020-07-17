@@ -153,9 +153,10 @@ export default ThemeProvider(
         drawerCloseIcon,
       } = this.props;
       const drawerWrapTheme = getPartOfThemeProps('Container');
+      const drawerContentTheme = getPartOfThemeProps('DrawerContent');
       const drawerTitleTheme = getPartOfThemeProps('DrawerTitle');
       const drawerMaskTheme = getPartOfThemeProps('DrawerMask');
-      const handleWrapTheme = getPartOfThemeProps('handleWrap');
+      const handleWrapTheme = getPartOfThemeProps('HandleWrap');
 
       const hasCloseIcon = closable || !maskClosable;
       const closeIcon = hasCloseIcon ? (
@@ -193,7 +194,7 @@ export default ThemeProvider(
               <Icon iconClass={'lugia-icon-direction_right'} {...this.getIconTheme()} />
             </HandleWrap>
           ) : null}
-          <DrawerContent>
+          <DrawerContent themeProps={drawerContentTheme}>
             <DrawerContentHeader
               __lugiad__header__absolute__={__lugiad__header__absolute__}
               type={type}

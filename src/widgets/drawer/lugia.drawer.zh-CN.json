@@ -94,6 +94,11 @@
         ["padding"]
       ]
     },
+    "DrawerContent": {
+      "name": "抽屉内容样式",
+      "desc": "为抽屉内容配置样式",
+      "normal": [["background"]]
+    },
     "DrawerTitle": {
       "name": "抽屉标题样式",
       "desc": "为抽屉标题配置样式",
@@ -116,6 +121,11 @@
     "DrawerMask": {
       "name": "抽屉遮罩样式",
       "desc": "为抽屉遮罩配置样式",
+      "normal": [["opacity"], ["background"]]
+    },
+    "HandleWrap": {
+      "name": "抽屉把手样式",
+      "desc": "为抽屉把手配置样式",
       "normal": [["opacity"], ["background"]]
     }
   }

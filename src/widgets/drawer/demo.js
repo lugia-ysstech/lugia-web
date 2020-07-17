@@ -94,14 +94,18 @@ export default class DrawerDemo extends React.Component<any, any> {
           normal: {
             width: 300,
             height: 500,
+            border: getBorder({ color: 'black', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(5),
+            opacity: 0.8,
+            boxShadow: getBoxShadow('1px 2px 2px 2px red'),
+            padding: 20,
+          },
+        },
+        DrawerContent: {
+          normal: {
             background: {
               color: 'lightblue',
             },
-            border: getBorder({ color: 'black', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(5),
-            opacity: 0.5,
-            boxShadow: getBoxShadow('1px 2px 2px 2px #ccc'),
-            padding: 20,
           },
         },
         DrawerTitle: {
@@ -126,6 +130,13 @@ export default class DrawerDemo extends React.Component<any, any> {
               color: '#333',
             },
             opacity: 0.3,
+          },
+        },
+        HandleWrap: {
+          normal: {
+            background: {
+              color: 'pink',
+            },
           },
         },
       },
@@ -288,6 +299,8 @@ export default class DrawerDemo extends React.Component<any, any> {
             closable
             drawerCloseIcon="lugia-icon-reminder_close_circle"
             placement="right"
+            sidebar={true}
+            onToggle={this.onSidebarClick(11)}
           >
             <p>Basic Drawer</p>
             <p>Basic Drawer</p>
