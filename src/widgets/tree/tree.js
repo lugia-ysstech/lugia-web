@@ -346,7 +346,23 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { query, blackList, whiteList, searchType = 'include' } = props;
 
     this.search(this.getUtils(props), result, query, searchType, blackList, whiteList);
+    const utils = this.getUtils(props);
+    if (this.state) {
+      const usableExpandKeys = this.filterUsableExpandKeys(
+        this.state.expandedKeys,
+        result.id2ExtendInfo
+      );
+      if (usableExpandKeys.length > 0) {
+        usableExpandKeys.forEach(item => {
+          utils.expandNode(item, result.id2ExtendInfo);
+        });
+      }
+    }
     return result;
+  }
+
+  filterUsableExpandKeys(source, id2ExtendInfo) {
+    return source.filter(item => id2ExtendInfo[item]);
   }
 
   getEmptyExpandInfo(): ExpandInfo {
@@ -358,7 +374,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
       const utils = this.getUtils(props);
       if (this.allExpandKeys == undefined || utils.isWhiteOrBlackListChanged()) {
         const { expandAll } = this.props;
-        this.allExpandKeys = expandAll ? Object.keys(id2ExtendInfo) : [];
+        this.allExpandKeys = expandAll
+          ? Object.keys(id2ExtendInfo)
+          : this.state
+          ? this.filterUsableExpandKeys(this.state.expandedKeys, id2ExtendInfo)
+          : [];
       }
       return this.allExpandKeys;
     }
