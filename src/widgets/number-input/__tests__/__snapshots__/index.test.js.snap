@@ -109,7 +109,9 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   font-weight: bold;
   height: 50%;
   cursor: pointer;
-  border-top: 0.1rem solid #d0d3da;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
 }
 
 .c4 {
@@ -381,7 +383,9 @@ exports[`NumberInput props: null 1`] = `
   font-weight: bold;
   height: 50%;
   cursor: pointer;
-  border-top: 0.1rem solid #d0d3da;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
 }
 
 .c4 {
@@ -653,7 +657,9 @@ exports[`NumberInput props: placeholder  1`] = `
   font-weight: bold;
   height: 50%;
   cursor: pointer;
-  border-top: 0.1rem solid #d0d3da;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
 }
 
 .c4 {
@@ -926,7 +932,9 @@ exports[`NumberInput props: placeholder  2`] = `
   font-weight: bold;
   height: 50%;
   cursor: pointer;
-  border-top: 0.1rem solid #d0d3da;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
 }
 
 .c4 {
@@ -1199,7 +1207,9 @@ exports[`NumberInput props: size 1`] = `
   font-weight: bold;
   height: 50%;
   cursor: pointer;
-  border-top: 0.1rem solid #d0d3da;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
 }
 
 .c4 {
@@ -1471,7 +1481,9 @@ exports[`NumberInput props: size 2`] = `
   font-weight: bold;
   height: 50%;
   cursor: pointer;
-  border-top: 0.1rem solid #d0d3da;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
 }
 
 .c4 {
