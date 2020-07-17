@@ -8,6 +8,7 @@ import * as React from 'react';
 import Tree from './index.js';
 import Widget from '../consts/index';
 import { getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
+import styled from 'styled-components';
 
 const config = {
   [Widget.Tree]: {
@@ -179,9 +180,28 @@ const info = [
     value: '1',
     text: '天津分行',
     children: [
-      { value: '1-1', text: '和平支行办事处' },
+      {
+        value: '1-1',
+        text: '和平支行办事处',
+        children: [
+          { value: '0-3-0', text: '朝阳支行办事处-1' },
+          { value: '0-3-1', text: '朝阳支行办事处-2' },
+        ],
+      },
       { value: '1-2', text: '河东支行办事处' },
       { value: '1-3', text: '南开支行办事处' },
+      { value: '1-4', text: '和平支行办事处1' },
+    ],
+  },
+  {
+    value: '2',
+    text: '南京分行',
+    children: [
+      {
+        value: '2-3',
+        text: '南京分行--1',
+      },
+      { value: '2-4', text: '南京分行--1' },
     ],
   },
 ];
@@ -190,33 +210,122 @@ const switchIconNames = {
   close: 'lugia-icon-direction_right',
 };
 
-export default () => {
-  return (
-    <div>
-      <Tree
-        data={info}
-        expandAll
-        theme={config}
-        translateTreeData
-        autoHeight
-        parentIsHighlight
-        onlySelectLeaf
-        // mutliple
-        // __navmenu
-        switchIconNames={switchIconNames}
-      />
-      <Tree
-        data={info}
-        expandAll
-        theme={config}
-        translateTreeData
-        autoHeight
-        parentIsHighlight
-        onlySelectLeaf
-        mutliple
-        // __navmenu
-        switchIconNames={switchIconNames}
-      />
-    </div>
-  );
-};
+const RowWrap = styled.div`
+  display: flex;
+  padding: 10px;
+  flex-direction: row;
+`;
+
+const RowWrapItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+`;
+const H1 = styled.h1`
+  text-align: center;
+  background: #000;
+  color: #fff;
+`;
+
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+export default class TreeDome extends React.Component {
+  constructor(props: TreeProps) {
+    super(props);
+    this.state = {
+      expandKeys: [],
+      data: info,
+    };
+  }
+  onExpand = (a, b, c) => {
+    console.log('a', a, b);
+    // this.setState({ expandKeys: a });
+  };
+  onSelect = (a, b, c) => {
+    console.log('onSelect', a, b);
+  };
+  onClick = () => {
+    const obj = {
+      value: random(3, 100),
+      text: `xx${random(3, 100)}分行`,
+    };
+    this.setState({
+      data: [
+        {
+          value: '0',
+          text: '北京分行',
+          icons: {
+            prefixIconClass: 'lugia-icon-financial_heart',
+            prefixIconSrc: '',
+            suffixIconClass: 'lugia-icon-financial_contacts',
+            suffixIconSrc: '',
+          },
+          icon: 'lugia-icon-direction_play_circle',
+          children: [
+            {
+              value: '0-1',
+              text: '朝阳支行办事处',
+              children: [
+                { value: '0-1-0', text: '朝阳支行办事处-1' },
+                { value: '0-1-1', text: '朝阳支行办事处-2' },
+              ],
+            },
+            { value: '0-2', text: '海淀支行办事处' },
+            { value: '0-3', text: '石景山支行办事处' },
+          ],
+        },
+        obj,
+      ],
+    });
+  };
+  render() {
+    return [
+      <H1>普通</H1>,
+      <RowWrap>
+        <RowWrapItem>
+          <Tree
+            data={info}
+            expandAll
+            theme={config}
+            translateTreeData
+            autoHeight
+            parentIsHighlight
+            onlySelectLeaf
+            // mutliple
+            // __navmenu
+            switchIconNames={switchIconNames}
+          />
+        </RowWrapItem>
+        <RowWrapItem>
+          <Tree
+            data={info}
+            expandAll
+            theme={config}
+            translateTreeData
+            autoHeight
+            parentIsHighlight
+            onlySelectLeaf
+            mutliple
+            // __navmenu
+            switchIconNames={switchIconNames}
+          />
+        </RowWrapItem>
+      </RowWrap>,
+      <H1>刷新data数据,不丢失展开项</H1>,
+      <RowWrap>
+        <Tree
+          data={this.state.data}
+          parentIsHighlight
+          autoHeight
+          translateTreeData
+          onExpand={this.onExpand}
+          switchIconNames={switchIconNames}
+        />
+        <button onClick={this.onClick}>修改data数据</button>
+      </RowWrap>,
+    ];
+  }
+}
