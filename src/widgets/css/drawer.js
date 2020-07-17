@@ -252,7 +252,7 @@ export const DrawerContentWrap = CSSComponent({
     ${getTransform};
     min-width: 256px;
     min-height: 100px;
-    background-color: #fff;
+    background: #fff;
   `,
   normal: {
     selectNames: [
@@ -268,14 +268,22 @@ export const DrawerContentWrap = CSSComponent({
   },
 });
 
-export const DrawerContent = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background-color: transparent;
-  border: 0;
-  z-index: 1;
-`;
+export const DrawerContent = CSSComponent({
+  tag: 'div',
+  className: 'DrawerContent',
+  css: css`
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #fff;
+    border: 0;
+    z-index: 1;
+  `,
+  normal: {
+    selectNames: [['background']],
+  },
+});
+
 const getHeaderLugiadCSS = (props: CSSProps): string => {
   const { __lugiad__header__absolute__ = false, type } = props;
   if (__lugiad__header__absolute__ || type === 'Drawer') {
@@ -365,7 +373,7 @@ const getHandleWidthOrHeightByDirection = (props: CSSProps) => {
     border-radius: ${isLoacteRight ? '3px 0 0 3px' : '0 3px 3px 0'}
   `;
 };
-export const HandleWrap = StaticComponent({
+export const HandleWrap = CSSComponent({
   tag: 'div',
   className: 'HandleWrap',
   css: css`
@@ -378,4 +386,7 @@ export const HandleWrap = StaticComponent({
     align-items: center;
     cursor: pointer;
   `,
+  normal: {
+    selectNames: [['background'], ['opacity']],
+  },
 });
