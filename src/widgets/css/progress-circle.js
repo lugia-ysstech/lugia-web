@@ -6,7 +6,7 @@
 import styled, { css } from 'styled-components';
 import { px2remcss } from './units';
 import { getTextColor, getWrapFontSize } from './progress-line';
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import get from './theme-common-dict';
 type CSSProps = {
   size: 'default' | 'small',
@@ -14,16 +14,28 @@ type CSSProps = {
 
 const blackColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 
-export const SvgInner = styled.div`
-  width: ${props => {
-    return props.size === 'default' ? px2remcss(120) : px2remcss(80);
-  }};
-  height: ${props => {
-    return props.size === 'default' ? px2remcss(120) : px2remcss(80);
-  }};
-  position: relative;
-  font-size: ${getWrapFontSize}rem;
-`;
+const getWidthAndHeight = (props: CSSProps) => {
+  const { size } = props;
+  const distance = size === 'default' ? px2remcss(120) : px2remcss(80);
+  return `
+    width: ${distance};
+    height: ${distance};
+  `;
+};
+
+export const SvgInner = CSSComponent({
+  tag: 'div',
+  className: 'SvgInner',
+  css: css`
+    ${getWidthAndHeight}
+    position: relative;
+    font-size: ${getWrapFontSize}rem;
+  `,
+  normal: {
+    selectNames: [['width'], ['height']],
+  },
+});
+
 const getFontSize = (props: CSSProps) => {
   const { size } = props;
   const fontSize = size === 'small' ? 'headLineFontSize' : 'largeTitleFontSize';
@@ -65,4 +77,13 @@ export const SvgText = CSSComponent({
       };
     },
   },
+});
+
+export const CircleWrap = StaticComponent({
+  tag: 'svg',
+  className: 'CircleWrap',
+  css: css`
+    width: 100%;
+    height: 100%;
+  `,
 });

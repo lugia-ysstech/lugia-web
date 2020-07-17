@@ -211,6 +211,16 @@
         "iconClass": "progressCricle",
         "data": [
           {
+            "name": "进度条整体配置",
+            "path": ["Container"],
+            "description": {
+              "textPart": {
+                "text": "整体",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
+          {
             "name": "进度条底色条颜色配置",
             "path": ["ProgressCircleBackground"],
             "description": {
@@ -328,6 +338,16 @@
         "title": "底色条",
         "iconClass": "progressDashboard",
         "data": [
+          {
+            "name": "进度条整体配置",
+            "path": ["Container"],
+            "description": {
+              "textPart": {
+                "text": "整体",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          },
           {
             "name": "进度条底色条颜色配置",
             "path": ["DashboardBackground"],
