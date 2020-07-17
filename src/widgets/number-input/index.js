@@ -13,14 +13,14 @@ import Widget from '../consts';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import Icon from '../icon/index';
 import { accAdd, checkNumber, limit } from '../common/Math';
-import { units } from '@lugia/css';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
 import type { ValidateStatus, ValidateType } from '../css/validateHoc';
 import { getInputIconSize } from '../css/input';
+import { getBorder } from '@lugia/theme-utils';
 
-const { px2remcss } = units;
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 
 const ArrowIconContainer = CSSComponent({
   tag: 'div',
@@ -119,17 +119,9 @@ const MinusButton = CSSComponent({
   extend: StepButton,
   className: 'NumberInputMinusButton',
   normal: {
-    getCSS(themeMeta, themeProps) {
-      const {
-        propsConfig: {
-          borderConfig: { border: { top: { style, width, color } = {} } = {} } = {},
-        } = {},
-      } = themeProps;
-      const theWidth = px2remcss(width || 1);
-      const theStyle = style || 'solid';
-      return css`
-        border-top: ${theWidth} ${theStyle} ${() => color || get('borderColor')};
-      `;
+    selectNames: [['border', 'top']],
+    defaultTheme: {
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { directions: ['t'] }),
     },
   },
   hover: {
@@ -347,15 +339,13 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   getThemePropsByType = type => {
     const { stepHover, value } = this.state;
     const { size, getPartOfThemeProps, max, min, disabled } = this.props;
-    const lineBorder = getPartOfThemeProps('ArrowDivider');
-    const { themeConfig: { normal: borderThemeConfig } = {} } = lineBorder;
     const propsConfig =
       type === 'container'
         ? { disabled }
         : type === 'plus'
         ? { outRange: getOverMax(value, max) }
         : type === 'minus'
-        ? { outRange: getBelowMin(value, min), borderConfig: borderThemeConfig }
+        ? { outRange: getBelowMin(value, min) }
         : {};
     return getPartOfThemeProps('ArrowIconContainer', {
       props: { size, hover: stepHover, ...propsConfig },
@@ -401,8 +391,10 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     });
     const theThemeProps = deepMerge(defaultTheme(), this.getThemePropsByType('container'));
     const arrowIconPlusButtonThemeProps = this.getThemePropsByType('plus');
-    const arrowIconMinusButtonThemeProps = this.getThemePropsByType('minus');
-
+    const arrowIconMinusButtonThemeProps = deepMerge(
+      this.props.getPartOfThemeProps('ArrowDivider'),
+      this.getThemePropsByType('minus')
+    );
     const plusChannel = createEventChannel([['hover'], ['focus']]);
     const minusChannel = createEventChannel(['hover'], ['focus']);
     const { size } = this.props;
