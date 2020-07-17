@@ -21,7 +21,7 @@
     "@lugia/math": "^1.0.10",
     "@lugia/object-utils": "^1.0.19",
     "@lugia/ramada": "^1.0.5",
-    "@lugia/theme-css-hoc": "^1.1.17",
+    "@lugia/theme-css-hoc": "^1.1.18",
     "@lugia/theme-hoc": "^1.1.9",
     "@lugia/theme-utils": "^1.1.8",
     "@lugia/type-utils": "^1.0.6",
