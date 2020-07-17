@@ -43,7 +43,7 @@ function getIconSize(size: SizeType) {
 export function getThemeFontSize(themeMeta, themeProps, iconType?: boolean) {
   const { propsConfig: { size } = {} } = themeProps;
   const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
-  const theSize = innerFontSize || fontSize || iconType ? getIconSize(size) : getSize(size);
+  const theSize = innerFontSize || fontSize || (iconType ? getIconSize(size) : getSize(size));
   return { fontSize: theSize };
 }
 export function getPaginationSize(size: SizeType) {
