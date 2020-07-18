@@ -24,7 +24,7 @@
       "propsDefaultValue": "customs"
     },
     "closeIcon": {
-      "type": "string",
+      "type": "icon",
       "desc": "标签图标样式",
       "propsDefaultValue": "lugia-icon-reminder_close"
     }
