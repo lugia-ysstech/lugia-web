@@ -241,7 +241,10 @@ function getSwitchButtonPosition(switchThemeProps, switchButtonThemeProps, value
     },
   } = switchButtonThemeProps;
   const distance = (switchHeight - circleHeight - circleborderTop - circleborderBottom) / 2;
-  const switchButtonPosition = value ? `right:${distance}px` : `left:${distance}px`;
+  const switchButtonDistance = !isNaN(distance) ? distance : 1;
+  const switchButtonPosition = value
+    ? `right:${switchButtonDistance}px`
+    : `left:${switchButtonDistance}px`;
   const textPosition = value ? 'left:0;' : 'right:0;';
   const textBox = `
      width:${rem(
