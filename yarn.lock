@@ -1342,10 +1342,10 @@
     debug "^4.1.1"
     tslib "^1.11.1"
 
-"@lugia/theme-css-hoc@^1.1.17":
-  version "1.1.17"
-  resolved "https://registry.npmjs.org/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.17.tgz#d4b7ff6127df85d530fe5c69a89876158aa9288a"
-  integrity sha512-wQkiYHhpTdUo7oS2QXwfCumvh4B97fjmuVuxO5LzYNEc/uQ6AadyW7lglheqmuKaK4ldzZiEr5ZmxcYYNL77jw==
+"@lugia/theme-css-hoc@^1.1.18":
+  version "1.1.18"
+  resolved "https://registry.npmjs.org/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.18.tgz#40bff6a9582005c8cdf031478533229a610e42b6"
+  integrity sha512-I62GfRFOBsioKChObEmp1GMwnVYIB+io9huRtnZd4Hsqao2Zqq8cq4ff78n14GOIhR6WYfMiLLLRcl8g40PYgA==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.24"
