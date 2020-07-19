@@ -79,8 +79,11 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-right: 1.2rem;
   color: #363B40;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 0rem;
+  padding-right: 1.2rem;
   opacity: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -104,9 +107,11 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   display: block;
   width: 100%;
   font-weight: bold;
-  border-top: 0.1rem solid #d0d3da;
   height: 50%;
   cursor: pointer;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
 }
 
 .c4 {
@@ -348,8 +353,11 @@ exports[`NumberInput props: null 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-right: 1.2rem;
   color: #363B40;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 0rem;
+  padding-right: 1.2rem;
   opacity: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -373,9 +381,11 @@ exports[`NumberInput props: null 1`] = `
   display: block;
   width: 100%;
   font-weight: bold;
-  border-top: 0.1rem solid #d0d3da;
   height: 50%;
   cursor: pointer;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
 }
 
 .c4 {
@@ -617,8 +627,11 @@ exports[`NumberInput props: placeholder  1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-right: 1.2rem;
   color: #363B40;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 0rem;
+  padding-right: 1.2rem;
   opacity: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -642,9 +655,11 @@ exports[`NumberInput props: placeholder  1`] = `
   display: block;
   width: 100%;
   font-weight: bold;
-  border-top: 0.1rem solid #d0d3da;
   height: 50%;
   cursor: pointer;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
 }
 
 .c4 {
@@ -887,8 +902,11 @@ exports[`NumberInput props: placeholder  2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-right: 1.2rem;
   color: #363B40;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 0rem;
+  padding-right: 1.2rem;
   opacity: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -912,9 +930,11 @@ exports[`NumberInput props: placeholder  2`] = `
   display: block;
   width: 100%;
   font-weight: bold;
-  border-top: 0.1rem solid #d0d3da;
   height: 50%;
   cursor: pointer;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
 }
 
 .c4 {
@@ -1157,8 +1177,11 @@ exports[`NumberInput props: size 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-right: 1.2rem;
   color: #363B40;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 0rem;
+  padding-right: 1.2rem;
   opacity: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -1182,9 +1205,11 @@ exports[`NumberInput props: size 1`] = `
   display: block;
   width: 100%;
   font-weight: bold;
-  border-top: 0.1rem solid #d0d3da;
   height: 50%;
   cursor: pointer;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
 }
 
 .c4 {
@@ -1426,8 +1451,11 @@ exports[`NumberInput props: size 2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-right: 1.2rem;
   color: #363B40;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 0rem;
+  padding-right: 1.2rem;
   opacity: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -1451,9 +1479,11 @@ exports[`NumberInput props: size 2`] = `
   display: block;
   width: 100%;
   font-weight: bold;
-  border-top: 0.1rem solid #d0d3da;
   height: 50%;
   cursor: pointer;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
 }
 
 .c4 {
