@@ -170,6 +170,7 @@ const InputContent = CSSComponent({
       ['fontSize'],
       ['font'],
       ['opacity'],
+      ['background'],
     ],
     getThemeMeta(themeMeta, themeProps) {
       return {
