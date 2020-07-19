@@ -67,7 +67,7 @@
       },
       {
         "title": "已完成",
-        "iconClass": "UploadSuccess",
+        "iconClass": "uploadSuccess",
         "data": [
           {
             "name": "已完成整体样式",
@@ -262,7 +262,7 @@
       },
       {
         "title": "已完成",
-        "iconClass": "uploadImageSuccess",
+        "iconClass": "UploadImageSuccess",
         "data": [
           {
             "name": "已完成整体样式",
@@ -275,7 +275,7 @@
       },
       {
         "title": "上传失败",
-        "iconClass": "uploadImageError",
+        "iconClass": "UploadImageError",
         "data": [
           {
             "name": "上传失败整体样式",
@@ -486,7 +486,7 @@
       },
       {
         "title": "上传框完成",
-        "iconClass": "uploadInputSuccess",
+        "iconClass": "uploadGroupSuccess",
         "data": [
           {
             "name": "上传框失败样式",
