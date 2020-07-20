@@ -26,6 +26,7 @@
     "aliasName": "ClosableTag",
     "treeNodeHidden": true,
     "title": "可关闭标签",
+    "viewProps": [{ "name": "closable", "text": "可关闭功能" }],
     "data": [
       {
         "title": "标签区域",
