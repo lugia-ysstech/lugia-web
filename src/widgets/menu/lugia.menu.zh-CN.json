@@ -203,9 +203,20 @@
     }
   },
   "type": {
-    "SizeType": ["small", "default", "large"],
-    "CheckedCSSType": ["background", "checkbox", "none"],
-    "ActionType": ["hover", "click"]
+    "SizeType": [
+      { "value": "small", "text": "小" },
+      { "value": "default", "text": "正常" },
+      { "value": "large", "text": "大" }
+    ],
+    "CheckedCSSType": [
+      { "value": "background", "text": "填充背景风格" },
+      { "value": "checkbox", "text": "多选框风格" },
+      { "value": "none", "text": "高亮文本风格" }
+    ],
+    "ActionType": [
+      { "value": "hover", "text": "悬浮展开" },
+      { "value": "click", "text": "点击展开" }
+    ]
   },
   "category": ["数据录入"],
 

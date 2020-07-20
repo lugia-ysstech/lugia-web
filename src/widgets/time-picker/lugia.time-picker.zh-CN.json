@@ -102,9 +102,20 @@
     }
   },
   "type": {
-    "InputSize": ["small", "default", "large"],
-    "ValidateType": ["top", "bottom", "inner"],
-    "ValidateStatus": ["default", "error"],
+    "InputSize": [
+      { "value": "small", "text": "小" },
+      { "value": "default", "text": "正常" },
+      { "value": "large", "text": "大" }
+    ],
+    "ValidateType": [
+      { "value": "top", "text": "顶部弹窗" },
+      { "value": "bottom", "text": "底部文本" },
+      { "value": "inner", "text": "框内文本" }
+    ],
+    "ValidateStatus": [
+      { "value": "default", "text": "正常" },
+      { "value": "error", "text": "错误" }
+    ],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",

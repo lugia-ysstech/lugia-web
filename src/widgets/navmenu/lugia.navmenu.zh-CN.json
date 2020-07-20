@@ -165,8 +165,14 @@
   },
   "category": ["导航"],
   "type": {
-    "ThemeStyleType": ["light", "dark"],
-    "PositionType": ["left", "right"]
+    "ThemeStyleType": [
+      { "value": "light", "text": "白昼风格" },
+      { "value": "dark", "text": "暗黑风格" }
+    ],
+    "PositionType": [
+      { "value": "left", "text": "选中线在左" },
+      { "value": "right", "text": "选中线在右" }
+    ]
   },
   "designInfo": {
     "HorizontalNavMenu": {

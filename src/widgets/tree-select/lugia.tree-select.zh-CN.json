@@ -245,9 +245,20 @@
     }
   },
   "type": {
-    "sizeType": ["small", "default", "large"],
-    "ValidateStatus": ["default", "error"],
-    "ValidateType": ["top", "bottom", "inner"]
+    "sizeType": [
+      { "value": "small", "text": "小" },
+      { "value": "default", "text": "正常" },
+      { "value": "large", "text": "大" }
+    ],
+    "ValidateStatus": [
+      { "value": "default", "text": "正常" },
+      { "value": "error", "text": "错误" }
+    ],
+    "ValidateType": [
+      { "value": "top", "text": "顶部弹窗" },
+      { "value": "bottom", "text": "底部文本" },
+      { "value": "inner", "text": "框内文本" }
+    ]
   },
   "category": ["数据录入"],
 
