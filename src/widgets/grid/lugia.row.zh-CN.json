@@ -29,11 +29,11 @@
   "type": {
     "RowType": [{ "value": "default", "text": "默认" }, { "value": "flex", "text": "弹性" }],
     "JustifyType": [
-      { "value": "start", "text": "起点" },
-      { "value": "end", "text": "终点" },
-      { "value": "center", "text": "中点" },
-      { "value": "spaceAround", "text": "项目间隔相等" },
-      { "value": "spaceBetween", "text": "项目两侧间隔相等" }
+      { "value": "start", "text": "左对齐" },
+      { "value": "end", "text": "右对齐" },
+      { "value": "center", "text": "居中" },
+      { "value": "spaceAround", "text": "项目间等间距" },
+      { "value": "spaceBetween", "text": "项目两侧等间距" }
     ],
     "AlignType": [
       { "value": "top", "text": "顶部" },
