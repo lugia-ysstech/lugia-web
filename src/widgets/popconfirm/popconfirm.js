@@ -174,7 +174,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
           },
         },
       },
-      theme[viewClass]
+      theme
     );
   }
   getOperation(): React.Node | null {
@@ -269,6 +269,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
       alwaysOpen,
       liquidLayout,
       createPortal = true,
+      popArrowType = 'sharp',
     } = this.props;
     const getTarget: Function = cmp => (this.target = cmp);
     const theChildren = children ? children : defaultChildren;
@@ -321,6 +322,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
         content={this.getContent()}
         ref={getTarget}
         placement={placement}
+        popArrowType={popArrowType}
       >
         {theChildren}
       </Tooltip>
