@@ -67,6 +67,11 @@
       "type": "string",
       "desc": "确认按钮文字",
       "defaultValue": "确定"
+    },
+    "popArrowType": {
+      "type": "PopArrowType",
+      "desc": "可配置两种风格的箭头. 尖角,圆角",
+      "defaultValue": "sharp"
     }
   },
   "events": {
@@ -117,7 +122,8 @@
       "bottomRight"
     ],
     "ActionType": ["click", "hover", "focus"],
-    "ButtonType": ["default", "primary", "success", "warning", "danger"]
+    "ButtonType": ["default", "primary", "success", "warning", "danger"],
+    "PopArrowType": ["sharp", "round"]
   },
   "category": ["反馈"],
   "designInfo": {
