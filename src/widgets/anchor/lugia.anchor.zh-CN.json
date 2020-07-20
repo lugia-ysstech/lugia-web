@@ -51,7 +51,7 @@
     }
   },
   "type": {
-    "SlideType": ["circle", "line"]
+    "SlideType": [{ "value": "circle", "text": "圆型" }, { "value": "line", "text": "线型" }]
   },
   "category": ["其他"]
 }

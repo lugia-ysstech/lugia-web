@@ -14,7 +14,7 @@
     }
   },
   "type": {
-    "LayoutDirectionType": ["row", "column"],
+    "LayoutDirectionType": [{ "value": "row", "text": "行" }, { "value": "column", "text": "列" }],
     "LayoutStyle": {
       "width": {
         "type": "number",

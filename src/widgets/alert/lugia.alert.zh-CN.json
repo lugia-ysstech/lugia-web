@@ -57,7 +57,12 @@
     }
   },
   "type": {
-    "AlertType": ["info", "success", "error", "warning"],
+    "AlertType": [
+      { "value": "info", "text": "信息" },
+      { "value": "success", "text": "成功" },
+      { "value": "error", "text": "错误" },
+      { "value": "warning", "text": "警告" }
+    ],
     "AlertStyle": {
       "width": {
         "type": "number",

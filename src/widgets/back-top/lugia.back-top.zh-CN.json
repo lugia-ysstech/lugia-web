@@ -42,7 +42,7 @@
         "desc": "组件背景颜色"
       }
     },
-    "showType": ["textType" ,"iconType"]
+    "showType": [{ "value": "textType", "text": "文本" }, { "value": "iconType", "text": "图标" }]
   },
   "category": ["其他"],
   "theme": {

@@ -27,9 +27,19 @@
     }
   },
   "type": {
-    "RowType": ["flex", "default"],
-    "JustifyType": ["start", "end", "center", "spaceAround", "spaceBetween"],
-    "AlignType": ["top", "middle", "bottom"]
+    "RowType": [{ "value": "default", "text": "默认" }, { "value": "flex", "text": "弹性" }],
+    "JustifyType": [
+      { "value": "start", "text": "起点" },
+      { "value": "end", "text": "终点" },
+      { "value": "center", "text": "中点" },
+      { "value": "spaceAround", "text": "项目间隔相等" },
+      { "value": "spaceBetween", "text": "项目两侧间隔相等" }
+    ],
+    "AlignType": [
+      { "value": "top", "text": "顶部" },
+      { "value": "middle", "text": "中部" },
+      { "value": "bottom", "text": "底部" }
+    ]
   },
   "category": ["布局"],
   "needExport": true
