@@ -124,7 +124,7 @@
         "data": [
           {
             "name": "整体尺寸",
-            "path": ["TimeLineContainer"],
+            "path": ["Container"],
             "description": {
               "appearancePart": {
                 "text": "整体尺寸",
@@ -281,7 +281,7 @@
         "data": [
           {
             "name": "整体尺寸",
-            "path": ["TimeLineContainer"],
+            "path": ["Container"],
             "description": {
               "appearancePart": {
                 "text": "整体尺寸",
