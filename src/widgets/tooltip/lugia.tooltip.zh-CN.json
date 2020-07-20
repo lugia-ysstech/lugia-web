@@ -13,11 +13,6 @@
       "desc": "是否全局弹出提示框",
       "propsDefaultValue": true
     },
-    "size": {
-      "type": "ToolTipSize",
-      "desc": "可配置三种尺寸大小的气泡提示框",
-      "defaultValue": "default"
-    },
     "placement": {
       "type": "DirectionType",
       "desc": "气泡提示框显示的位置,十二个方向"
@@ -25,12 +20,12 @@
     "visible": {
       "type": "boolean",
       "desc": "是否显示出来",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "defaultVisible": {
       "type": "boolean",
       "desc": "默认是否显示出来",
-      "defaultValue": "false"
+      "defaultValue": false
     },
 
     "popArrowType": {
@@ -74,22 +69,46 @@
     }
   },
   "type": {
-    "ActionType": ["click", "hover", "focus"],
-    "ToolTipSize": ["small", "default", "large"],
-    "PopArrowType": ["sharp", "round"],
+    "ActionType": [
+      {
+        "value": "click",
+        "text": "点击"
+      },
+      {
+        "value": "hover",
+        "text": "滑过"
+      },
+      {
+        "value": "focus",
+        "text": "聚焦"
+      }
+    ],
+    "PopArrowType": [
+      {
+        "value": "sharp",
+        "text": "尖角"
+      },
+      {
+        "value": "round",
+        "text": "圆角"
+      }
+    ],
     "DirectionType": [
-      "left",
-      "leftTop",
-      "leftBottom",
-      "right",
-      "rightTop",
-      "rightBottom",
-      "topLeft",
-      "top",
-      "topRight",
-      "bottom",
-      "bottomRight",
-      "bottomLeft"
+      { "value": "topLeft", "text": "上左" },
+      { "value": "top", "text": "上" },
+      { "value": "topRight", "text": "上右" },
+
+      { "value": "bottomLeft", "text": "下左" },
+      { "value": "bottom", "text": "下" },
+      { "value": "bottomRight", "text": "下右" },
+
+      { "value": "leftTop", "text": "左上" },
+      { "value": "left", "text": "左" },
+      { "value": "leftBottom", "text": "左下" },
+
+      { "value": "rightTop", "text": "右上" },
+      { "value": "right", "text": "右" },
+      { "value": "rightBottom", "text": "右下" }
     ]
   },
   "category": ["数据展示"],

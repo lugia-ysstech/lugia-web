@@ -140,10 +140,54 @@
     }
   },
   "type": {
-    "InputSize": ["small", "default", "large"],
-    "PrefixType": ["¥", "$"],
-    "ValidateStatus": ["default", "error"],
-    "ValidateType": ["top", "bottom", "inner"],
+    "InputSize": [
+      {
+        "value": "small",
+        "text": "小"
+      },
+      {
+        "value": "default",
+        "text": "正常"
+      },
+      {
+        "value": "large",
+        "text": "大"
+      }
+    ],
+    "PrefixType": [
+      {
+        "value": "¥",
+        "text": "人民币"
+      },
+      {
+        "value": "$",
+        "text": "美元"
+      }
+    ],
+    "ValidateStatus": [
+      {
+        "value": "default",
+        "text": "正常"
+      },
+      {
+        "value": "error",
+        "text": "错误"
+      }
+    ],
+    "ValidateType": [
+      {
+        "value": "top",
+        "text": "顶部弹窗"
+      },
+      {
+        "value": "bottom",
+        "text": "底部文本"
+      },
+      {
+        "value": "inner",
+        "text": "框内文本"
+      }
+    ],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",

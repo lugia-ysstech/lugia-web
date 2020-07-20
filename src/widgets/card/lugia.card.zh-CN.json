@@ -61,8 +61,42 @@
     }
   },
   "type": {
-    "CardType": ["simple", "avatar", "image", "combo", "tip", "transparent"],
-    "ImageOrientation": ["horizontal", "vertical"]
+    "CardType": [
+      {
+        "value": "simple",
+        "text": "简洁卡片"
+      },
+      {
+        "value": "avatar",
+        "text": "带头像卡片"
+      },
+      {
+        "value": "image",
+        "text": "带图片卡片"
+      },
+      {
+        "value": "combo",
+        "text": "自定义卡片"
+      },
+      {
+        "value": "tip",
+        "text": "头部提示卡片"
+      },
+      {
+        "value": "transparent",
+        "text": "空白盒子"
+      }
+    ],
+    "ImageOrientation": [
+      {
+        "value": "horizontal",
+        "text": "水平"
+      },
+      {
+        "value": "vertical",
+        "text": "垂直"
+      }
+    ]
   },
   "category": ["数据展示"],
   "designInfo": {

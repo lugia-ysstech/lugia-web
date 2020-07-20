@@ -30,8 +30,26 @@
     }
   },
   "type": {
-    "DividerPosition": ["left", "right"],
-    "DividerType": ["horizontal", "vertical"]
+    "DividerPosition": [
+      {
+        "value": "left",
+        "text": "居左"
+      },
+      {
+        "value": "right",
+        "text": "居右"
+      }
+    ],
+    "DividerType": [
+      {
+        "value": "horizontal",
+        "text": "水平"
+      },
+      {
+        "value": "vertical",
+        "text": "垂直"
+      }
+    ]
   },
   "category": ["其他"],
   "designInfo": {
