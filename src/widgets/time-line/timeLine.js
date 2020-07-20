@@ -82,7 +82,8 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   render() {
     const theThemeProps = deepMerge(
       { themeConfig: { normal: this.getContainerWidth() } },
-      this.props.getPartOfThemeProps('TimeLineContainer')
+      this.props.getPartOfThemeProps('TimeLineContainer'),
+      this.props.getPartOfThemeProps('Container')
     );
     return <OutContainer themeProps={theThemeProps}>{this.getChildren()}</OutContainer>;
   }
