@@ -75,19 +75,19 @@
     }
   },
   "type": {
-    "RadioStylesType": ["default", "vertical"],
-    "RadioChildType": ["default", "button"],
-    "RadioButtonSizeType": ["default", "small", "large"],
-    "RadioStyle": {
-      "color": {
-        "type": "string",
-        "desc": "Radio 的颜色"
-      },
-      "width": {
-        "type": "number",
-        "desc": "Radio 的宽度"
-      }
-    }
+    "RadioStylesType": [
+      { "value": "default", "text": "默认" },
+      { "value": "vertical", "text": "竖直" }
+    ],
+    "RadioChildType": [
+      { "value": "default", "text": "默认" },
+      { "value": "button", "text": "按钮" }
+    ],
+    "RadioButtonSizeType": [
+      { "value": "default", "text": "默认" },
+      { "value": "small", "text": "小" },
+      { "value": "large", "text": "大" }
+    ]
   },
   "category": ["数据录入"],
   "designInfo": {
