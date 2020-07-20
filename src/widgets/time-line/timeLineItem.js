@@ -19,6 +19,7 @@ import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
 
 import { units } from '@lugia/css';
 import get from '../css/theme-common-dict';
+import { getBorderRadius, getBorder } from '@lugia/theme-utils';
 
 const { px2remcss } = units;
 
@@ -28,6 +29,7 @@ const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 
 const ItemContainer = CSSComponent({
   tag: 'div',
@@ -63,7 +65,7 @@ const Description = CSSComponent({
   tag: 'div',
   className: 'TimeLineItemBaseText',
   normal: {
-    selectNames: [['width'], ['height'], ['font'], ['fontSize'], ['color'], ['margin']],
+    selectNames: [['font'], ['fontSize'], ['color'], ['margin'], ['lineHeight']],
     defaultTheme: {
       color: darkGreyColor,
       margin: {
@@ -77,7 +79,7 @@ const Time = CSSComponent({
   extend: BaseText,
   className: 'TimeLineItemBaseText',
   normal: {
-    selectNames: [['width'], ['height'], ['font'], ['fontSize'], ['color']],
+    selectNames: [['font'], ['fontSize'], ['color'], ['margin'], ['lineHeight']],
     defaultTheme: {
       color: blackColor,
     },
@@ -121,9 +123,9 @@ const Line = CSSComponent({
   tag: 'div',
   className: 'TimeLineItemLine',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['border']],
     defaultTheme: {
-      width: 1,
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { directions: ['l'] }),
     },
     getCSS(themeMeta, themeProps) {
       const { background } = themeMeta;
@@ -147,10 +149,11 @@ const Dot = CSSComponent({
   tag: 'div',
   className: 'TimeLineItemDot',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background'], ['borderRadius']],
     defaultTheme: {
       width: 10,
       height: 10,
+      borderRadius: getBorderRadius('50%'),
     },
     getThemeMeta(themeMeta, themeProps) {
       const { background } = themeMeta;
@@ -174,7 +177,6 @@ const Dot = CSSComponent({
     position: absolute;
     left: ${px2remcss(5.5)};
     z-index: 3;
-    border-radius: 50%;
     transition: all 0.3s linear 0.1s;
   `,
 });
@@ -321,7 +323,7 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
             props: { direction },
           })}
         >
-          <Time ref={this.time} themeProps={this.props.themeProps}>
+          <Time ref={this.time} themeProps={this.props.getPartOfThemeProps('TimeLineItemTitle')}>
             {theTime}
           </Time>
           {this.getDescription()}
@@ -386,7 +388,7 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
                       from {
                         transform: rotate(0deg);
                       }
-                      
+
                       to {
                         transform: rotate(359deg);
                       }
@@ -450,7 +452,10 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
     const { timeLineType, description } = this.props;
     if (timeLineType !== 'explain' && getString(description)) {
       return (
-        <Description ref={this.desc} themeProps={this.props.themeProps}>
+        <Description
+          ref={this.desc}
+          themeProps={this.props.getPartOfThemeProps('TimeLineItemDescription')}
+        >
           {description}
         </Description>
       );

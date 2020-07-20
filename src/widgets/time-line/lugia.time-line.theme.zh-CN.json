@@ -32,6 +32,9 @@
               "appearancePart": {
                 "text": "整体尺寸",
                 "desc": "整体尺寸"
+              },
+              "spacingPart": {
+                "hidden": true
               }
             }
           },
@@ -52,6 +55,32 @@
               "appearancePart": {
                 "text": "连接线",
                 "desc": "连接线"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "节点文本",
+        "iconClass": "timeLineText",
+        "data": [
+          {
+            "name": "标题文本",
+            "path": ["TimeLineItem", "TimeLineItemTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "描述文本",
+            "path": ["TimeLineItem", "TimeLineItemDescription"],
+            "description": {
+              "textPart": {
+                "text": "描述文本",
+                "desc": "描述文本"
               }
             }
           }
@@ -84,6 +113,22 @@
               "appearancePart": {
                 "text": "背景",
                 "desc": "背景"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "整体尺寸",
+        "iconClass": "background",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["TimeLineContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
               }
             }
           }
@@ -151,6 +196,32 @@
         ]
       },
       {
+        "title": "节点文本",
+        "iconClass": "timeLineText",
+        "data": [
+          {
+            "name": "标题文本",
+            "path": ["TimeLineItem", "TimeLineItemTitle"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "描述文本",
+            "path": ["TimeLineItem", "TimeLineItemDescription"],
+            "description": {
+              "textPart": {
+                "text": "描述文本",
+                "desc": "描述文本"
+              }
+            }
+          }
+        ]
+      },
+      {
         "title": "隐藏节点",
         "iconClass": "timeLineDot",
         "data": [
@@ -201,6 +272,22 @@
                 "typeInTheme": "icon"
               }
             ]
+          }
+        ]
+      },
+      {
+        "title": "整体尺寸",
+        "iconClass": "background",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["TimeLineContainer"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
           }
         ]
       }
