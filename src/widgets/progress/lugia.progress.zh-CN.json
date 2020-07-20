@@ -61,10 +61,24 @@
     }
   },
   "type": {
-    "ProgressType": ["line", "circle", "dashboard"],
-    "ProgressSizeType": ["default", "small"],
-    "ProgressStatusType": ["success", "error", "default"],
-    "ProgressShowType": ["default", "inside"],
+    "ProgressType": [
+      { "value": "line", "text": "线型" },
+      { "value": "circle", "text": "圆型" },
+      { "value": "dashboard", "text": "仪表盘" }
+    ],
+    "ProgressSizeType": [
+      { "value": "default", "text": "默认" },
+      { "value": "small", "text": "小尺寸" }
+    ],
+    "ProgressStatusType": [
+      { "value": "default", "text": "默认" },
+      { "value": "success", "text": "成功" },
+      { "value": "error", "text": "错误" }
+    ],
+    "ProgressShowType": [
+      { "value": "default", "text": "默认" },
+      { "value": "inside", "text": "内部" }
+    ],
     "ProgressStyle": {
       "color": {
         "type": "string",

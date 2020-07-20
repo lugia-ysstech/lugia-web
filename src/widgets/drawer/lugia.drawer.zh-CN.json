@@ -66,7 +66,12 @@
     }
   },
   "type": {
-    "PlacementType": ["top", "right", "left", "bottom"],
+    "PlacementType": [
+      { "value": "top", "text": "顶部" },
+      { "value": "right", "text": "右侧" },
+      { "value": "left", "text": "左侧" },
+      { "value": "bottom", "text": "底部" }
+    ],
     "DrawerStyle": {
       "width": {
         "type": "number",

@@ -15,7 +15,7 @@
     }
   },
   "type": {
-    "shapeType": ["circle", "square"]
+    "shapeType": [{ "value": "circle", "text": "圆形" }, { "value": "square", "text": "方形" }]
   },
   "category": ["通用"],
   "designInfo": {
