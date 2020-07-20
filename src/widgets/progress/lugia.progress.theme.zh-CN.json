@@ -214,9 +214,9 @@
             "name": "进度条整体配置",
             "path": ["Container"],
             "description": {
-              "textPart": {
+              "appearancePart": {
                 "text": "整体",
-                "desc": "文本配置区块的显示文本"
+                "desc": "面板中外观配置的区块显示文本"
               }
             }
           },
@@ -342,9 +342,9 @@
             "name": "进度条整体配置",
             "path": ["Container"],
             "description": {
-              "textPart": {
+              "appearancePart": {
                 "text": "整体",
-                "desc": "文本配置区块的显示文本"
+                "desc": "面板中外观配置的区块显示文本"
               }
             }
           },
@@ -407,6 +407,7 @@
           {
             "name": "进度条成功图标配置",
             "path": ["ProgressDashboardSuccessIcon"],
+            "props": [{ "name": "successIconClass", "typeInTheme": "icon" }],
             "description": {
               "appearancePart": {
                 "text": "外观",
@@ -431,6 +432,7 @@
           {
             "name": "进度条失败图标配置",
             "path": ["ProgressDashboardErrorIcon"],
+            "props": [{ "name": "errorIconClass", "typeInTheme": "icon" }],
             "description": {
               "appearancePart": {
                 "text": "外观",
