@@ -154,8 +154,15 @@
     }
   },
   "type": {
-    "SizeType": ["default", "small", "large"],
-    "TransferType": ["panel", "tree"],
+    "SizeType": [
+      { "value": "small", "text": "小" },
+      { "value": "default", "text": "正常" },
+      { "value": "large", "text": "大" }
+    ],
+    "TransferType": [
+      { "value": "panel", "text": "基本穿梭框" },
+      { "value": "tree", "text": "树型穿梭框" }
+    ],
     "DirectionType": ["left", "right"],
     "TransferStyle": {
       "height": {
