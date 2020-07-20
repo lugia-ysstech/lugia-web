@@ -78,21 +78,7 @@
     "ProgressShowType": [
       { "value": "default", "text": "默认" },
       { "value": "inside", "text": "内部" }
-    ],
-    "ProgressStyle": {
-      "color": {
-        "type": "string",
-        "desc": "Progress的颜色"
-      },
-      "width": {
-        "type": "number",
-        "desc": "Progress的宽度"
-      },
-      "height": {
-        "type": "number",
-        "desc": "Progress的高度"
-      }
-    }
+    ]
   },
   "category": ["反馈"],
   "designInfo": {
