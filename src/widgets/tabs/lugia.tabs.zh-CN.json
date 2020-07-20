@@ -175,11 +175,58 @@
     }
   },
   "type": {
-    "TabType": ["line", "card", "window"],
-    "PagedType": ["single", "page"],
-    "TabPositionType": ["top", "bottom", "left", "right"],
-    "ReturnType": ["newValue", "oldValue", "newItem", "oldItem"],
-    "DeleteType": ["value", "item"]
+    "TabType": [
+      {
+        "value": "line",
+        "text": "线性标签页"
+      },
+      {
+        "value": "card",
+        "text": "卡片标签页"
+      },
+      {
+        "value": "window",
+        "text": "窗口标签页"
+      }
+    ],
+    "PagedType": [
+      {
+        "value": "single",
+        "text": "单个切换"
+      },
+      {
+        "value": "page",
+        "text": "整页切换"
+      }
+    ],
+    "TabPositionType": [
+      {
+        "value": "top",
+        "text": "上"
+      },
+      {
+        "value": "bottom",
+        "text": "下"
+      },
+      {
+        "value": "left",
+        "text": "左"
+      },
+      {
+        "value": "right",
+        "text": "右"
+      }
+    ],
+    "ReturnType": {
+      "newValue": "string",
+      "oldValue": "string",
+      "newItem": "Object",
+      "oldItem": "Object"
+    },
+    "DeleteType": {
+      "value": "string",
+      "item": "string"
+    }
   },
   "childrenWidget": ["tabpane"],
   "category": ["数据展示"],
