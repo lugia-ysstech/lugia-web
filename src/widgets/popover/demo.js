@@ -204,6 +204,19 @@ export const WrapperDemo = () => {
         <Direction type="primary">点击</Direction>
       </Popover>
       <br />
+      <br />
+      <br />
+      <p>箭头样式</p>
+      <Popover
+        title={title}
+        action={'click'}
+        placement="bottom"
+        description={[<div>{description}</div>]}
+        popArrowType={'round'}
+      >
+        <Direction type="primary">点击</Direction>
+      </Popover>
+      <br />
     </Wrapper>
   );
 };
