@@ -85,6 +85,38 @@ export const WrapperDemo = () => {
       },
     },
   };
+  const buttonTheme = {
+    [Widget.Popconfirm]: {
+      PopconfirmOkButton: {
+        Container: {
+          normal: {
+            background: {
+              color: 'purple',
+            },
+          },
+        },
+        ButtonText: {
+          normal: {
+            color: '#eee',
+          },
+        },
+      },
+      PopconfirmCancelButton: {
+        Container: {
+          normal: {
+            background: {
+              color: '#eee',
+            },
+          },
+        },
+        ButtonText: {
+          normal: {
+            color: 'blue',
+          },
+        },
+      },
+    },
+  };
   return (
     <Wrapper>
       <Theme config={config}>
@@ -181,6 +213,20 @@ export const WrapperDemo = () => {
             <Direction type="primary">危险操作</Direction>
           </Popconfirm>
         </div>
+      </Theme>
+      <br />
+      <p>按钮主题</p>
+      <Theme config={buttonTheme}>
+        <Popconfirm
+          title={text}
+          action={'click'}
+          cancelText="No"
+          okText="yes"
+          okType="danger"
+          placement="bottom"
+        >
+          <Direction type="primary">点击</Direction>
+        </Popconfirm>
       </Theme>
     </Wrapper>
   );
