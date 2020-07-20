@@ -9,13 +9,13 @@
       "defaultValue": false
     },
     "shape": {
-      "type": "shapeType",
+      "type": "ShapeType",
       "desc": "基本元素形状",
       "defaultValue": "square"
     }
   },
   "type": {
-    "shapeType": [{ "value": "circle", "text": "圆形" }, { "value": "square", "text": "方形" }]
+    "ShapeType": [{ "value": "circle", "text": "圆形" }, { "value": "square", "text": "方形" }]
   },
   "category": ["通用"],
   "designInfo": {
