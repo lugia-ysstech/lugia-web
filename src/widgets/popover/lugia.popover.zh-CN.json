@@ -58,6 +58,11 @@
     "children": {
       "type": "React.Node",
       "desc": "气泡卡片需要包含的子组件"
+    },
+    "popArrowType": {
+      "type": "PopArrowType",
+      "desc": "可配置两种风格的箭头. 尖角,圆角",
+      "defaultValue": "sharp"
     }
   },
   "events": {
@@ -99,7 +104,8 @@
       "bottom",
       "bottomRight",
       "bottomLeft"
-    ]
+    ],
+    "PopArrowType": ["sharp", "round"]
   },
   "category": ["数据展示"],
   "designInfo": {

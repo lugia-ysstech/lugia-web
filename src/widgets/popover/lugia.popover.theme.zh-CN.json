@@ -75,6 +75,7 @@
           {
             "name": "关闭图标",
             "path": ["PopoverClearIcon"],
+            "props": [{ "name": "clearIcon", "typeInTheme": "icon" }],
             "description": {
               "textPart": {
                 "text": "关闭图标",
@@ -128,6 +129,7 @@
           {
             "name": "关闭图标",
             "path": ["PopoverClearIcon"],
+            "props": [{ "name": "clearIcon", "typeInTheme": "icon" }],
             "description": {
               "textPart": {
                 "text": "关闭图标",
