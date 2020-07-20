@@ -53,9 +53,48 @@
     }
   },
   "type": {
-    "TimeLineMode": ["left", "right", "alternate"],
-    "TimeLineType": ["dot", "icon", "explain"],
-    "TimeLineStatus": ["success", "failed", "normal"]
+    "TimeLineMode": [
+      {
+        "value": "left",
+        "text": "左侧展示"
+      },
+      {
+        "value": "right",
+        "text": "右侧展示"
+      },
+      {
+        "value": "alternate",
+        "text": "交替展示"
+      }
+    ],
+    "TimeLineType": [
+      {
+        "value": "dot",
+        "text": "点状节点"
+      },
+      {
+        "value": "icon",
+        "text": "图标节点"
+      },
+      {
+        "value": "explain",
+        "text": "隐藏节点"
+      }
+    ],
+    "TimeLineStatus": [
+      {
+        "value": "success",
+        "text": "成功状态"
+      },
+      {
+        "value": "failed",
+        "text": "失败状态"
+      },
+      {
+        "value": "normal",
+        "text": "正常状态"
+      }
+    ]
   },
   "childrenWidget": ["timeLineItem"],
   "category": ["数据展示"],
@@ -69,7 +108,7 @@
         "pendingDot": "lugia-icon-financial_abort"
       },
       "theme": {
-        "TimeLineContainer": {
+        "Container": {
           "name": "时间轴最外层容器",
           "desc": "时间轴最外层容器",
           "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]]
@@ -123,7 +162,7 @@
             "TimeLineItemTip": {
               "name": "隐藏信息弹框",
               "theme": {
-                "TooltipContent": {
+                "Container": {
                   "name": "隐藏的解释时间节点显示容器",
                   "desc": "隐藏的解释时间节点显示容器配置",
                   "normal": [
@@ -169,7 +208,7 @@
     }
   },
   "theme": {
-    "TimeLineContainer": {
+    "Container": {
       "name": "时间轴最外层容器",
       "desc": "时间轴最外层容器",
       "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]]
@@ -228,7 +267,7 @@
         "TimeLineItemTip": {
           "name": "隐藏信息弹框",
           "theme": {
-            "TooltipContent": {
+            "Container": {
               "name": "隐藏的解释时间节点显示容器",
               "desc": "隐藏的解释时间节点显示容器配置",
               "normal": [
