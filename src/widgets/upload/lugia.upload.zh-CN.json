@@ -171,9 +171,56 @@
     }
   },
   "type": {
-    "UploadSize": ["small", "default", "large"],
-    "UploadType": ["default", "both", "button", "picture", "area", "custom"],
-    "FileType": ["done", "fail"]
+    "UploadSize": [
+      {
+        "value": "small",
+        "text": "小"
+      },
+      {
+        "value": "default",
+        "text": "默认"
+      },
+      {
+        "value": "large",
+        "text": "大"
+      }
+    ],
+    "UploadType": [
+      {
+        "value": "default",
+        "text": "默认上传"
+      },
+      {
+        "value": "both",
+        "text": "带按钮的默认上传"
+      },
+      {
+        "value": "button",
+        "text": "按钮上传"
+      },
+      {
+        "value": "picture",
+        "text": "图片上传"
+      },
+      {
+        "value": "area",
+        "text": "区域上传"
+      },
+      {
+        "value": "custom",
+        "text": "自定义上传"
+      }
+    ],
+    "FileType": [
+      {
+        "value": "done",
+        "text": "成功"
+      },
+      {
+        "value": "fail",
+        "text": "失败"
+      }
+    ]
   },
   "category": ["数据录入"],
   "designInfo": {
@@ -451,13 +498,7 @@
             "Container": {
               "name": "按钮整体样式",
               "desc": "为按钮配置整体样式",
-              "normal": [
-                ["width"],
-                ["background"],
-                ["borderRadius"],
-                ["opacity"],
-                ["boxShadow"]
-              ],
+              "normal": [["width"], ["background"], ["borderRadius"], ["opacity"], ["boxShadow"]],
               "hover": [["background"], ["borderRadius"], ["opacity"], ["boxShadow"]],
               "active": [["background"], ["borderRadius"], ["opacity"], ["boxShadow"]],
               "focus": [["background"], ["borderRadius"], ["opacity"], ["boxShadow"]],
