@@ -19,7 +19,7 @@
       "defaultValue": "() => window"
     },
     "showType": {
-      "type": "showType",
+      "type": "ShowType",
       "desc": "选择backTop是图标类型，还是文字类型"
     },
     "text": {
@@ -42,7 +42,7 @@
         "desc": "组件背景颜色"
       }
     },
-    "showType": [{ "value": "textType", "text": "文本" }, { "value": "iconType", "text": "图标" }]
+    "ShowType": [{ "value": "textType", "text": "文本" }, { "value": "iconType", "text": "图标" }]
   },
   "category": ["其他"],
   "theme": {
