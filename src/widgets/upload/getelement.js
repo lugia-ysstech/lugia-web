@@ -231,7 +231,20 @@ const InputContent = CSSComponent({
   `,
   option: { hover: true, disabled: true },
 });
-
+const TextTheme = CSSComponent({
+  tag: 'div',
+  className: 'UploadText',
+  normal: {
+    selectNames: [['color'], ['fontSize'], ['font']],
+  },
+  hover: {
+    selectNames: [['color'], ['fontSize'], ['font']],
+  },
+  disabled: {
+    selectNames: [['color'], ['fontSize'], ['font']],
+  },
+  option: { hover: true, disabled: true },
+});
 const Ul = CSSComponent({
   tag: 'ul',
   className: 'upload_Ul',
@@ -601,21 +614,22 @@ const load = keyframes`
     transform: rotate(360deg);
   }
 `;
-
-const iconClassMap = {
-  default: 'lugia-icon-financial_upload right',
-  loading: 'lugia-icon-financial_loading_o loading',
-  done: 'lugia-icon-financial_upload right',
-  video: 'lugia-icon-financial_video_camera icon-mark ccc',
-  file: 'lugia-icon-financial_folder icon-mark ccc',
-  uploadcloud: 'lugia-icon-financial_upload_cloud areaIcon',
-  'p-default': 'lugia-icon-reminder_plus',
-  'p-fail': 'lugia-icon-financial_monitoring',
-  'li-done': 'lugia-icon-reminder_check_circle right success',
-  'li-default': 'lugia-icon-financial_upload right',
-  'li-fail': 'lugia-icon-reminder_close_circle right error',
-  'li-delete': 'lugia-icon-reminder_close right delete',
-  'li-loading': 'lugia-icon-financial_loading_o right loading',
+const iconClassMap = icon => {
+  return {
+    default: `${icon || 'lugia-icon-financial_upload'} right`,
+    loading: `${icon || 'lugia-icon-financial_loading_o'} loading`,
+    done: `${icon || 'lugia-icon-financial_upload right'}`,
+    video: `${icon || 'lugia-icon-financial_video_camera'} icon-mark ccc`,
+    file: `${icon || 'lugia-icon-financial_folder'} icon-mark ccc`,
+    uploadcloud: `${icon || 'lugia-icon-financial_upload_cloud'} areaIcon`,
+    'p-default': `${icon || 'lugia-icon-reminder_plus'}`,
+    'p-fail': 'lugia-icon-financial_monitoring',
+    'li-done': `${icon || 'lugia-icon-reminder_check_circle'} right success`,
+    'li-default': 'lugia-icon-financial_upload right',
+    'li-fail': `${icon || 'lugia-icon-reminder_close_circle'} right error`,
+    'li-delete': 'lugia-icon-reminder_close right delete',
+    'li-loading': 'lugia-icon-financial_loading_o right loading',
+  };
 };
 
 export const getIconByType = (
@@ -625,8 +639,28 @@ export const getIconByType = (
 ): ?Object | string => {
   if (!status) return null;
   const { type } = info;
-  const { disabled } = props;
+  const {
+    disabled,
+    icon,
+    liFileIcon,
+    loadingIcon,
+    doneIcon,
+    liFailIcon,
+    liDoneIcon,
+    failIcon,
+  } = props;
+
   let resultTheme;
+  const diffIconStatus =
+    status === 'file' || status === 'video' || status === 'picture' || status === 'li-delete'
+      ? liFileIcon
+      : status === 'loading'
+      ? loadingIcon
+      : status === 'fail'
+      ? failIcon
+      : status === 'done'
+      ? doneIcon
+      : icon;
   let resultViewClass;
   switch (status) {
     case 'li-done':
@@ -664,8 +698,18 @@ export const getIconByType = (
       resultViewClass = failViewClass;
       break;
     default:
+      const getDiffIconTheme =
+        status === 'file' || status === 'video' || status === 'picture' || status === 'li-delete'
+          ? 'liIconTheme'
+          : status === 'loading' || status === 'area-loading'
+          ? 'UploadLoadingIcon'
+          : status === 'fail'
+          ? 'UploadFailIcon'
+          : status === 'done'
+          ? 'UploadDoneIcon'
+          : 'UploadIcon';
       const { viewClass: uploadViewClass, theme: uploadIcon } = props.getPartOfThemeHocProps(
-        'UploadIcon'
+        getDiffIconTheme
       );
       resultTheme = uploadIcon;
       resultViewClass = uploadViewClass;
@@ -713,14 +757,15 @@ export const getIconByType = (
     } = props;
     return uploadText;
   }
-  if (info && (status === 'li-fail' || status === 'li-delete')) {
+  if (info && (status === 'li-fail' || status === 'li-delete' || status === 'li-done')) {
     const { doFunction, index, item } = info;
+    const liUploadIcon = status === 'li-fail' ? liFailIcon : status === 'li-done' ? liDoneIcon : '';
     return (
       <LoadIcon
         singleTheme
         theme={resultTheme}
         viewClass={resultViewClass}
-        iconClass={`${iconClassMap[status]} `}
+        iconClass={`${iconClassMap(liUploadIcon)[status]} `}
         disabled={disabled}
         onClick={() => {
           doFunction(index, item);
@@ -737,7 +782,7 @@ export const getIconByType = (
           disabled={disabled}
           theme={resultTheme}
           viewClass={resultViewClass}
-          iconClass="lugia-icon-financial_pic icon-mark ccc"
+          iconClass={`${liFileIcon || 'lugia-icon-financial_pic icon-mark ccc'}`}
         />
         {getListIconType(info.name) === 'picture' && info.url ? (
           <PrevImg themeProps={themeProps}>
@@ -756,7 +801,7 @@ export const getIconByType = (
         disabled={disabled}
         theme={resultTheme}
         viewClass={resultViewClass}
-        iconClass={iconClassMap.loading}
+        iconClass={iconClassMap(loadingIcon).loading}
         active={true}
       />
     );
@@ -767,7 +812,7 @@ export const getIconByType = (
       theme={resultTheme}
       viewClass={resultViewClass}
       disabled={disabled}
-      iconClass={iconClassMap[status]}
+      iconClass={iconClassMap(diffIconStatus)[status]}
     />
   );
 };
@@ -1001,7 +1046,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
         ? 'UploadLoading'
         : '';
     const uploadStatusTheme = props.getPartOfThemeProps(uploadAfter);
-
+    const textTheme = this.props.getPartOfThemeProps('UploadText');
     if (areaType === 'default') {
       const { handleClickToUpload } = this;
       const { defaultText, disabled } = props;
@@ -1031,14 +1076,13 @@ class GetElement extends React.Component<DefProps, StateProps> {
           ref={this.dropArea}
         >
           {getIconByType(props, classNameStatus)}
-          {defaultText}
+          <TextTheme themeProps={textTheme}>{defaultText}</TextTheme>
         </InputContent>
       );
     }
     const {
       defaultTips: { uploadText, uploadTips, failTips, loadingTips },
     } = props;
-    const uploadIconTheme = props.getPartOfThemeHocProps('UploadIcon');
     if (areaType === 'both') {
       const { handleClickToSubmit, handleClickToUpload } = this;
       const { defaultText, showFileList, disabled } = this.props;
@@ -1266,6 +1310,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const { disabled } = props;
       const areaThemeProps = this.props.getPartOfThemeProps('Container');
       const uploadAreaText = this.props.getPartOfThemeProps('UploadAreaText');
+      const uploadTipText = this.props.getPartOfThemeProps('UploadTipText');
       const { themeConfig: { normal: { color: textColor } = {} } = {} } = uploadAreaText;
       const areaTextBlue = deepMerge(
         {
@@ -1293,13 +1338,13 @@ class GetElement extends React.Component<DefProps, StateProps> {
         areaThemeProps,
         uploadStatusTheme
       );
-      const areaTextFail =
+      const areaTextStatus =
         classNameStatus === 'fail' ? { fontSize: sectionFontSize, color: dangerColor } : {};
       const areaTextStatusTheme = deepMerge(
         {
           themeConfig: {
             normal: {
-              ...areaTextFail,
+              ...areaTextStatus,
             },
           },
         },
@@ -1325,7 +1370,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
               {failTips}
             </AreaText>
           ) : (
-            <AreaText themeProps={areaTextStatusTheme} disabled={disabled}>
+            <AreaText themeProps={uploadTipText} disabled={disabled}>
               {uploadTips},或
               <AreaTextBlue themeProps={areaTextBlue} disabled={disabled}>
                 {uploadText}
