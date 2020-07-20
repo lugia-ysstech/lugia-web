@@ -32,7 +32,12 @@
     }
   },
   "type": {
-    "PlacementType": ["topRight", "bottomLeft", "bottomRight", "topLeft"]
+    "PlacementType": [
+      { "value": "topRight", "text": "右上" },
+      { "value": "bottomLeft", "text": "左下" },
+      { "value": "bottomRight", "text": "右下" },
+      { "value": "topLeft", "text": "左上" }
+    ]
   },
   "category": ["反馈"],
   "theme": {
