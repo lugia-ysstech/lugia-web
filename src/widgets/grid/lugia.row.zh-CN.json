@@ -27,7 +27,7 @@
     }
   },
   "type": {
-    "RowType": [{ "value": "default", "text": "默认" }, { "value": "flex", "text": "弹性" }],
+    "RowType": [{ "value": "default", "text": "正常" }, { "value": "flex", "text": "弹性" }],
     "JustifyType": [
       { "value": "start", "text": "左对齐" },
       { "value": "end", "text": "右对齐" },

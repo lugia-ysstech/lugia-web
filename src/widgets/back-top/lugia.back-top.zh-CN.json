@@ -32,16 +32,6 @@
     }
   },
   "type": {
-    "BackTopStyle": {
-      "color": {
-        "type": "string",
-        "desc": "组件颜色"
-      },
-      "backgroundColor": {
-        "type": "string",
-        "desc": "组件背景颜色"
-      }
-    },
     "ShowType": [{ "value": "textType", "text": "文本" }, { "value": "iconType", "text": "图标" }]
   },
   "category": ["其他"],
