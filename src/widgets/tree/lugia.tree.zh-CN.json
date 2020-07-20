@@ -333,7 +333,11 @@
     }
   },
   "type": {
-    "sizeType": ["small", "default", "large"]
+    "sizeType": [
+      { "value": "small", "text": "小" },
+      { "value": "default", "text": "正常" },
+      { "value": "large", "text": "大" }
+    ]
   },
 
   "category": ["数据录入"],

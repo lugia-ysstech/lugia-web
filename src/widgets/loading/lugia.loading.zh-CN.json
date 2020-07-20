@@ -35,7 +35,11 @@
     }
   },
   "type": {
-    "sizeType": ["default", "small", "large"]
+    "sizeType": [
+      { "value": "small", "text": "小" },
+      { "value": "default", "text": "正常" },
+      { "value": "large", "text": "大" }
+    ]
   },
   "category": ["其他"]
 }

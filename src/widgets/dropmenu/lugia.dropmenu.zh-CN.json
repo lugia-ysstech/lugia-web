@@ -197,10 +197,28 @@
     }
   },
   "type": {
-    "AlignType": ["topLeft", "top", "topRight", "bottomLeft", "bottom", "bottomRight"],
-    "SizeType": ["small", "default", "large"],
-    "StyleType": ["customs", "primary", "basic"],
-    "ActionType": ["hover", "click"]
+    "AlignType": [
+      { "value": "topLeft", "text": "上左" },
+      { "value": "top", "text": "上" },
+      { "value": "topRight", "text": "上右" },
+      { "value": "bottomLeft", "text": "下左" },
+      { "value": "bottom", "text": "下" },
+      { "value": "bottomRight", "text": "下右" }
+    ],
+    "SizeType": [
+      { "value": "small", "text": "小" },
+      { "value": "default", "text": "正常" },
+      { "value": "large", "text": "大" }
+    ],
+    "StyleType": [
+      { "value": "customs", "text": "填充风格" },
+      { "value": "primary", "text": "文本风格" },
+      { "value": "basic", "text": "线框风格" }
+    ],
+    "ActionType": [
+      { "value": "hover", "text": "悬浮展开" },
+      { "value": "click", "text": "点击展开" }
+    ]
   },
 
   "designInfo": {
