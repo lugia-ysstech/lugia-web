@@ -108,22 +108,68 @@
   },
   "type": {
     "DirectionType": [
-      "left",
-      "leftTop",
-      "leftBottom",
-      "right",
-      "rightTop",
-      "rightBottom",
-      "top",
-      "topLeft",
-      "topRight",
-      "bottom",
-      "bottomLeft",
-      "bottomRight"
+      { "value": "topLeft", "text": "上左" },
+      { "value": "top", "text": "上" },
+      { "value": "topRight", "text": "上右" },
+
+      { "value": "bottomLeft", "text": "下左" },
+      { "value": "bottom", "text": "下" },
+      { "value": "bottomRight", "text": "下右" },
+
+      { "value": "leftTop", "text": "左上" },
+      { "value": "left", "text": "左" },
+      { "value": "leftBottom", "text": "左下" },
+
+      { "value": "rightTop", "text": "右上" },
+      { "value": "right", "text": "右" },
+      { "value": "rightBottom", "text": "右下" }
     ],
-    "ActionType": ["click", "hover", "focus"],
-    "ButtonType": ["default", "primary", "success", "warning", "danger"],
-    "PopArrowType": ["sharp", "round"]
+    "ActionType": [
+      {
+        "value": "click",
+        "text": "点击"
+      },
+      {
+        "value": "hover",
+        "text": "滑过"
+      },
+      {
+        "value": "focus",
+        "text": "聚焦"
+      }
+    ],
+    "ButtonType": [
+      {
+        "value": "default",
+        "text": "默认"
+      },
+      {
+        "value": "primary",
+        "text": "线框"
+      },
+      {
+        "value": "success",
+        "text": "成功"
+      },
+      {
+        "value": "warning",
+        "text": "警告"
+      },
+      {
+        "value": "danger",
+        "text": "危险"
+      }
+    ],
+    "PopArrowType": [
+      {
+        "value": "sharp",
+        "text": "尖角"
+      },
+      {
+        "value": "round",
+        "text": "圆角"
+      }
+    ]
   },
   "category": ["反馈"],
   "designInfo": {
