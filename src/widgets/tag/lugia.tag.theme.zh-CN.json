@@ -3,7 +3,6 @@
     "widgetName": "Tag",
     "title": "标签",
     "treeNodeHidden": true,
-    "viewProps": [{ "name": "closable", "text": "可关闭功能" }],
     "data": [
       {
         "title": "标签区域",
