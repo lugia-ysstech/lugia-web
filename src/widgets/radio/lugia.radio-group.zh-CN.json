@@ -76,15 +76,15 @@
   },
   "type": {
     "RadioStylesType": [
-      { "value": "default", "text": "默认" },
+      { "value": "default", "text": "正常" },
       { "value": "vertical", "text": "竖直" }
     ],
     "RadioChildType": [
-      { "value": "default", "text": "默认" },
+      { "value": "default", "text": "正常" },
       { "value": "button", "text": "按钮" }
     ],
     "RadioButtonSizeType": [
-      { "value": "default", "text": "默认" },
+      { "value": "default", "text": "正常" },
       { "value": "small", "text": "小" },
       { "value": "large", "text": "大" }
     ]

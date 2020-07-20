@@ -14,17 +14,7 @@
     }
   },
   "type": {
-    "LayoutDirectionType": [{ "value": "row", "text": "行" }, { "value": "column", "text": "列" }],
-    "LayoutStyle": {
-      "width": {
-        "type": "number",
-        "desc": "Layout 宽度"
-      },
-      "margin": {
-        "type": "number | Object",
-        "desc": "Layout 间距"
-      }
-    }
+    "LayoutDirectionType": [{ "value": "row", "text": "行" }, { "value": "column", "text": "列" }]
   },
   "childrenWidget": ["aside"],
   "category": ["布局"],
