@@ -120,6 +120,13 @@
           "desc": "进度条进度线颜色配置",
           "normal": [["color"]]
         }
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "width": 60
+          }
+        }
       }
     },
     "DashboardProgress": {
@@ -159,6 +166,13 @@
           "name": "进度条进度线颜色配置",
           "desc": "进度条进度线颜色配置",
           "normal": [["color"]]
+        }
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "width": 60
+          }
         }
       }
     }
