@@ -154,9 +154,48 @@
       "oldValue": "string",
       "event": "SyntheticEvent"
     },
-    "ResizeType": ["both", "horizontal", "vertical", "none"],
-    "ValidateStatus": ["default", "error"],
-    "ValidateType": ["top", "bottom", "inner"]
+    "ResizeType": [
+      {
+        "value": "both",
+        "text": "可调整宽高"
+      },
+      {
+        "value": "horizontal",
+        "text": "可调整宽"
+      },
+      {
+        "value": "vertical",
+        "text": "可调整高"
+      },
+      {
+        "value": "none",
+        "text": "宽高固定"
+      }
+    ],
+    "ValidateStatus": [
+      {
+        "value": "default",
+        "text": "正常"
+      },
+      {
+        "value": "error",
+        "text": "错误"
+      }
+    ],
+    "ValidateType": [
+      {
+        "value": "top",
+        "text": "顶部弹窗"
+      },
+      {
+        "value": "bottom",
+        "text": "底部文本"
+      },
+      {
+        "value": "inner",
+        "text": "框内文本"
+      }
+    ]
   },
   "category": ["数据录入"],
   "needExport": true,

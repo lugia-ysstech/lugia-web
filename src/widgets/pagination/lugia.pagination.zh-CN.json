@@ -165,8 +165,34 @@
     }
   },
   "type": {
-    "BlockType": ["Page", "PageInput", "Total", "PageSize"],
-    "AlignType": ["Left", "Right"]
+    "BlockType": [
+      {
+        "value": "Page",
+        "text": "主体"
+      },
+      {
+        "value": "PageInput",
+        "text": "快速跳转"
+      },
+      {
+        "value": "Total",
+        "text": "总共数据"
+      },
+      {
+        "value": "PageSize",
+        "text": "每页数量"
+      }
+    ],
+    "AlignType": [
+      {
+        "value": "left",
+        "text": "居左"
+      },
+      {
+        "value": "right",
+        "text": "居右"
+      }
+    ]
   },
   "designInfo": {
     "SimplePagination": {

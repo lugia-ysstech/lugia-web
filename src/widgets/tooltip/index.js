@@ -245,7 +245,6 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       action,
       popArrowType,
       children = <div />,
-      size,
       getPartOfThemeProps,
       alwaysOpen,
       liquidLayout,
@@ -256,7 +255,6 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     const getTarget: Function = cmp => (this.trigger = cmp);
     const contentThemeProps = getPartOfThemeProps('Container', {
       props: {
-        size,
         popArrowType,
         direction,
       },
