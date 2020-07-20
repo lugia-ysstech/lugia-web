@@ -345,8 +345,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.createQueryTreeUtils(props);
     const { query, blackList, whiteList, searchType = 'include' } = props;
 
-    this.search(this.getUtils(props), result, query, searchType, blackList, whiteList);
     const utils = this.getUtils(props);
+
+    this.search(utils, result, query, searchType, blackList, whiteList);
     if (this.state) {
       const usableExpandKeys = this.filterUsableExpandKeys(
         this.state.expandedKeys,
