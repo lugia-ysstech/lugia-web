@@ -224,6 +224,7 @@ export const WrapperDemo = () => {
           okText="yes"
           okType="danger"
           placement="bottom"
+          popArrowType="round"
         >
           <Direction type="primary">点击</Direction>
         </Popconfirm>
