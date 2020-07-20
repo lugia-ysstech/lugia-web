@@ -195,9 +195,44 @@
     }
   },
   "type": {
-    "InputSize": ["small", "default", "large"],
-    "ValidateType": ["top", "bottom", "inner"],
-    "ValidateStatus": ["default", "error"],
+    "InputSize": [
+      {
+        "value": "small",
+        "text": "小"
+      },
+      {
+        "value": "default",
+        "text": "默认"
+      },
+      {
+        "value": "large",
+        "text": "大"
+      }
+    ],
+    "ValidateType": [
+      {
+        "value": "top",
+        "text": "上"
+      },
+      {
+        "value": "bottom",
+        "text": "下"
+      },
+      {
+        "value": "inner",
+        "text": "内部"
+      }
+    ],
+    "ValidateStatus": [
+      {
+        "value": "default",
+        "text": "默认"
+      },
+      {
+        "value": "error",
+        "text": "错误"
+      }
+    ],
     "ChangeType": {
       "newValue": "Array<string>",
       "oldValue": "Array<string>",
