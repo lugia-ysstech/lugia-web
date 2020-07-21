@@ -78,6 +78,9 @@ type SelectProps = {
   autoHeight?: boolean,
   pullIconClass?: string,
   clearIconClass?: string,
+  searchClearIconClass?: string,
+  toggleIconClass?: string,
+  resetIconClass?: string,
   isShowClearButton?: boolean,
   size?: Size,
   checkedCSS?: CheckedCSS,
@@ -337,7 +340,17 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   getPopupMenu = () => {
     const { props, state } = this;
-    const { mutliple, canSearch, canInput, data } = props;
+    const {
+      mutliple,
+      canSearch,
+      canInput,
+      data,
+      getPartOfThemeProps,
+      getPartOfThemeHocProps,
+      searchClearIconClass,
+      toggleIconClass,
+      resetIconClass,
+    } = props;
     const { query, isCheckedAll } = state;
     const getMenu: Function = (cmp: Object) => {
       this.menuCmp = cmp;
@@ -351,10 +364,17 @@ class Select extends React.Component<SelectProps, SelectState> {
         },
       },
     };
+    const receivedQueryInputTheme = getPartOfThemeProps('QueryInput');
+    const toggleIconTheme = getPartOfThemeHocProps('ToggleIcon');
+    const resetIconTheme = getPartOfThemeHocProps('ResetIcon');
+
     const menu = [
       data && data.length !== 0 ? (
         <QueryInput
           theme={queryInputTheme}
+          receivedTheme={receivedQueryInputTheme}
+          toggleIconTheme={toggleIconTheme}
+          resetIconTheme={resetIconTheme}
           query={query}
           onQueryInputChange={this.onQueryInputChange}
           onQueryInputKeyDown={this.onQueryInputKeyDown}
@@ -365,6 +385,9 @@ class Select extends React.Component<SelectProps, SelectState> {
           canSearch={canSearch}
           mutliple={mutliple}
           canInput={canInput}
+          searchClearIconClass={searchClearIconClass}
+          toggleIconClass={toggleIconClass}
+          resetIconClass={resetIconClass}
         />
       ) : null,
       this.getMenuItems(getMenu),
