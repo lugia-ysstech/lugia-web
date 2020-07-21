@@ -690,7 +690,7 @@
               {
                 "name": "清除图标",
                 "path": ["QueryInput", "ClearButton"],
-                "props": [{ "name": "searchClearIconClass", "typeInTheme": "icon" }],
+                "props": [{ "name": "searchClearIcon", "typeInTheme": "icon" }],
                 "description": {
                   "textPart": {
                     "text": "清除图标",
@@ -707,7 +707,7 @@
               {
                 "name": "切换图标",
                 "path": ["ToggleIcon"],
-                "props": [{ "name": "toggleIconClass", "typeInTheme": "icon" }],
+                "props": [{ "name": "toggleIcon", "typeInTheme": "icon" }],
                 "description": {
                   "textPart": {
                     "text": "切换图标",
@@ -718,7 +718,7 @@
               {
                 "name": "重置图标",
                 "path": ["ResetIcon"],
-                "props": [{ "name": "resetIconClass", "typeInTheme": "icon" }],
+                "props": [{ "name": "resetIcon", "typeInTheme": "icon" }],
                 "description": {
                   "textPart": {
                     "text": "重置图标",
