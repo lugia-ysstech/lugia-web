@@ -117,25 +117,19 @@
           "name": "单个时间节点配置",
           "theme": {
             "TimeLineIcon": {
-              "normal": {
-                "name": "时间节点内容图标",
-                "desc": "时间节点连接线的配置",
-                "normal": [["font"], ["fontSize"], ["color"]]
-              }
+              "name": "时间节点内容图标",
+              "desc": "时间节点连接线的配置",
+              "normal": [["font"], ["fontSize"], ["color"]]
             },
             "TimeLineItemTitle": {
-              "normal": {
-                "name": "时间节点时间文本",
-                "desc": "时间节点时间文本配置",
-                "normal": [["font"], ["fontSize"], ["color"], ["margin"], ["lineHeight"]]
-              }
+              "name": "时间节点时间文本",
+              "desc": "时间节点时间文本配置",
+              "normal": [["font"], ["fontSize"], ["color"], ["margin"], ["lineHeight"]]
             },
             "TimeLineItemDescription": {
-              "normal": {
-                "name": "时间节点描述信息",
-                "desc": "时间节点描述信息配置",
-                "normal": [["font"], ["fontSize"], ["color"], ["margin"], ["lineHeight"]]
-              }
+              "name": "时间节点描述信息",
+              "desc": "时间节点描述信息配置",
+              "normal": [["font"], ["fontSize"], ["color"], ["margin"], ["lineHeight"]]
             },
             "TimeLineItemContainer": {
               "name": "时间节点外层容器",
@@ -145,7 +139,7 @@
             "TimeLineItemLine": {
               "name": "时间节点连接线",
               "desc": "时间节点连接线的配置",
-              "normal": [["width"], ["height"], ["background"]]
+              "normal": [["width"], ["height"], ["border", "left"]]
             },
             "TimeLineExplainDot": {
               "name": "隐藏的解释时间节点",
@@ -241,28 +235,22 @@
         "TimeLineItemLine": {
           "name": "时间节点连接线",
           "desc": "时间节点连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["border", "left"]]
         },
         "TimeLineIcon": {
-          "normal": {
-            "name": "时间节点内容图标",
-            "desc": "时间节点连接线的配置",
-            "normal": [["font"], ["fontSize"], ["color"]]
-          }
+          "name": "时间节点内容图标",
+          "desc": "时间节点连接线的配置",
+          "normal": [["font"], ["fontSize"], ["color"]]
         },
         "TimeLineItemTitle": {
-          "normal": {
-            "name": "时间节点时间文本",
-            "desc": "时间节点时间文本配置",
-            "normal": [["font"], ["fontSize"], ["color"], ["margin"], ["lineHeight"]]
-          }
+          "name": "时间节点时间文本",
+          "desc": "时间节点时间文本配置",
+          "normal": [["font"], ["fontSize"], ["color"], ["margin"], ["lineHeight"]]
         },
         "TimeLineItemDescription": {
-          "normal": {
-            "name": "时间节点描述信息",
-            "desc": "时间节点描述信息配置",
-            "normal": [["font"], ["fontSize"], ["color"], ["margin"], ["lineHeight"]]
-          }
+          "name": "时间节点描述信息",
+          "desc": "时间节点描述信息配置",
+          "normal": [["font"], ["fontSize"], ["color"], ["margin"], ["lineHeight"]]
         },
         "TimeLineItemTip": {
           "name": "隐藏信息弹框",
