@@ -687,7 +687,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   getTree() {
-    return this.treeCmp.innerTree.current.getThemeTarget();
+    return this.treeCmp.getThemeTarget().innerTree.current.getThemeTarget();
   }
 
   isSelectAll(): boolean {
@@ -698,7 +698,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   treeCompontIsEmpty() {
-    return !this.treeCmp || !this.treeCmp.innerTree.current;
+    return (
+      !this.treeCmp ||
+      !this.treeCmp.getThemeTarget ||
+      !this.treeCmp.getThemeTarget().innerTree.current
+    );
   }
 
   onQueryInputChange = (nextValue: any) => {
