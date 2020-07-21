@@ -28,12 +28,12 @@
       "propsDefaultValue": 3000
     },
     "indicatorType": {
-      "type": "horizontal | vertical | outside",
+      "type": "IndicatorType",
       "desc": "指示器的显示方式",
       "propsDefaultValue": "horizontal"
     },
     "switchType": {
-      "type": "horizontal | vertical | fade",
+      "type": "SwitchType",
       "desc": "动画切换的方式",
       "propsDefaultValue": "horizontal"
     },
@@ -43,7 +43,7 @@
       "propsDefaultValue": 500
     },
     "action": {
-      "type": "hover | click",
+      "type": "Action",
       "desc": "指示器触发切换的方式",
       "propsDefaultValue": "hover"
     }
@@ -64,6 +64,21 @@
         }
       ]
     }
+  },
+  "type": {
+    "IndicatorType": [
+      { "value": "horizontal", "text": "默认水平显示" },
+      { "value": "hertical", "text": "垂直显示" },
+      { "value": "outside", "text": "外部显示" }
+    ],
+    "SwitchType": [
+      { "value": "horizontal", "text": "默认水平切换" },
+      { "value": "vertical", "text": "垂直切换" },
+      { "value": "fade", "text": "渐显切换" }
+    ],
+    "action": [
+      { "value": "hover", "text": "默认hover触发切换" },
+      { "value": "click", "text": "click触发切换" }]
   },
   "category": ["数据展示"],
   "theme": {
