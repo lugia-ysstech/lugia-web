@@ -43,7 +43,7 @@
       "propsDefaultValue": 500
     },
     "action": {
-      "type": "Action",
+      "type": "ActionType",
       "desc": "指示器触发切换的方式",
       "propsDefaultValue": "hover"
     }
@@ -67,17 +67,17 @@
   },
   "type": {
     "IndicatorType": [
-      { "value": "horizontal", "text": "默认水平显示" },
-      { "value": "hertical", "text": "垂直显示" },
+      { "value": "horizontal", "text": "水平显示" },
+      { "value": "vertical", "text": "垂直显示" },
       { "value": "outside", "text": "外部显示" }
     ],
     "SwitchType": [
-      { "value": "horizontal", "text": "默认水平切换" },
+      { "value": "horizontal", "text": "水平切换" },
       { "value": "vertical", "text": "垂直切换" },
       { "value": "fade", "text": "渐显切换" }
     ],
-    "action": [
-      { "value": "hover", "text": "默认hover触发切换" },
+    "ActionType": [
+      { "value": "hover", "text": "hover触发切换" },
       { "value": "click", "text": "click触发切换" }]
   },
   "category": ["数据展示"],
