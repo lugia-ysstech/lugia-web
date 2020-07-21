@@ -20,23 +20,23 @@
     "visible": {
       "type": "boolean",
       "desc": "是否显示出来",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "defaultVisible": {
       "type": "boolean",
       "desc": "默认是否显示出来",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
 
     "popArrowType": {
       "type": "PopArrowType",
       "desc": "可配置两种风格的箭头. 尖角,圆角",
-      "defaultValue": "sharp"
+      "propsDefaultValue": "sharp"
     },
     "action": {
       "type": "ActionType",
       "desc": "触发提示的动作，可配置 click,hover,focus",
-      "defaultValue": "click"
+      "propsDefaultValue": "click"
     },
     "children": {
       "type": "React.Node",
