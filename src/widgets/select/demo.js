@@ -10,6 +10,7 @@ import Widget from '../consts/index';
 import styled from 'styled-components';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 import Icon from '../icon';
+import Theme from '../theme';
 const H2 = styled.h2`
   padding: 20px;
 `;
@@ -55,6 +56,43 @@ const config = {
     ValidateErrorInput: {
       normal: {
         border: getBorder({ color: 'yellow', width: 1, style: 'solid' }),
+      },
+    },
+  },
+};
+
+const selectTheme = {
+  [Widget.Select]: {
+    QueryInput: {
+      Container: {
+        normal: {
+          width: 400,
+          border: getBorder({ width: 1, style: 'solid', color: 'red' }),
+        },
+      },
+      ClearButton: {
+        normal: {
+          color: 'blue',
+        },
+      },
+      Placeholder: {
+        normal: {
+          color: 'green',
+        },
+      },
+    },
+    ToggleIcon: {
+      Icon: {
+        normal: {
+          color: 'blue',
+        },
+      },
+    },
+    ResetIcon: {
+      Icon: {
+        normal: {
+          color: 'yellow',
+        },
       },
     },
   },
@@ -173,6 +211,21 @@ export default class Demo extends React.Component {
           onQuery={this.onQuery}
           onChange={this.onChange}
         />
+
+        <H2>主题配置</H2>
+        <Theme config={selectTheme}>
+          <Select
+            data={data}
+            displayField={'label'}
+            mutliple
+            limitCount={5}
+            pullIconClass="lugia-icon-direction_backtop"
+            clearIconClass="lugia-icon-financial_deselection"
+            searchClearIconClass="lugia-icon-reminder_clock_circle"
+            toggleIconClass="lugia-icon-direction_folding_up"
+            resetIconClass="lugia-icon-financial_loading"
+          />
+        </Theme>
       </Box>
     );
   }
