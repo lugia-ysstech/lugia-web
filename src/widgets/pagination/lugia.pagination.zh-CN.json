@@ -447,7 +447,7 @@
     "PaginationQuickJumpContainer": {
       "name": "分页快速跳至容器",
       "desc": "配置分页快速跳至整体外部容器",
-      "normal": [["margin"]]
+      "normal": [["width"],["height"],["margin"]]
     },
     "PaginationQuickJumpText": {
       "name": "分页快速跳至文字",
