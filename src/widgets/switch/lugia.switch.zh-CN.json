@@ -67,7 +67,7 @@
     }
   },
   "type": {
-    "sizeType": ["default", "small"],
+    "sizeType": [{ "value": "default", "text": "默认尺寸" },{ "value": "small", "text": "小尺寸" }],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
