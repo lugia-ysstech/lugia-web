@@ -123,19 +123,15 @@ const Line = CSSComponent({
   tag: 'div',
   className: 'TimeLineItemLine',
   normal: {
-    selectNames: [['width'], ['height'], ['border']],
+    selectNames: [['width'], ['height'], ['border', 'left']],
     defaultTheme: {
       border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { directions: ['l'] }),
     },
     getCSS(themeMeta, themeProps) {
-      const { background } = themeMeta;
       const { propsConfig } = themeProps;
       const { isLast } = propsConfig;
       const display = isLast ? 'none' : '';
-      const borderColor = background && background.color ? background.color : get('borderColor');
-      return `display:${display};
-         border-left: ${px2remcss(1)} solid ${borderColor};
-      `;
+      return `display:${display};`;
     },
   },
   css: css`
