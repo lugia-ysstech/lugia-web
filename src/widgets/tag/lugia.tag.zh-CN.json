@@ -61,7 +61,7 @@
       { "value": "basic", "text": "默认类型" },
       { "value": "round", "text": "圆角类型" }],
     "StyleType": [
-      { "value": "customs", "text": "默认自定义风格" },
+      { "value": "customs", "text": "自定义风格" },
       { "value": "primary", "text": "主题风格" },
       { "value": "basic", "text": "基本风格" },
       { "value": "presets", "text": "预设类型" }]
