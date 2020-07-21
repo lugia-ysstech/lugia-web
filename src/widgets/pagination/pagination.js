@@ -68,7 +68,7 @@ const PaginationTextContainer = CSSComponent({
   tag: 'div',
   className: 'PaginationTextContainer',
   normal: {
-    selectNames: [['margin']],
+    selectNames: [['width'], ['height'], ['margin']],
     getThemeMeta(themeMeta, themeProps) {
       const {
         propsConfig: { isLast },
