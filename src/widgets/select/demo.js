@@ -85,6 +85,7 @@ export default class Demo extends React.Component {
           displayField={'label'}
           validateStatus={'error'}
           validateType={'inner'}
+          help={'您输入的有误'}
           suffix={
             <Icon
               onClick={e => {
