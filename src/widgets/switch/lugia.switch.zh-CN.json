@@ -25,7 +25,7 @@
     },
 
     "size": {
-      "type": "sizeType",
+      "type": "SizeType",
       "desc": "设置开关大小 default | small"
     },
     "isInverse": {
@@ -67,7 +67,7 @@
     }
   },
   "type": {
-    "sizeType": [{ "value": "default", "text": "默认尺寸" },{ "value": "small", "text": "小尺寸" }],
+    "SizeType": [{ "value": "default", "text": "默认尺寸" },{ "value": "small", "text": "小尺寸" }],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
