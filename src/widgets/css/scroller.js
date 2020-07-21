@@ -32,10 +32,10 @@ export const ScrollerContainer = CSSComponent({
       ['borderRadius'],
     ],
     getCSS: (themeMeta, themeProps) => {
-      const { autoHeight, totalSize, defaultHeight, __isPerformance } = themeProps.propsConfig;
+      const { autoHeight, totalSize, defaultHeight, __virtual } = themeProps.propsConfig;
       const { height = defaultHeight } = themeMeta;
       const activeHeight = autoHeight ? totalSize : height;
-      const overFlow = __isPerformance ? '' : 'overflow-y: auto';
+      const overFlow = __virtual ? '' : 'overflow-y: auto';
       return `
       ${overFlow}
         height: ${px2remcss(activeHeight)}

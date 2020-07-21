@@ -107,21 +107,21 @@ export default class Demo extends React.Component {
         />
 
         <H2>single search</H2>
-        <Select isPerformance canSearch canClear={false} displayField={'label'} data={data} />
+        <Select virtual canSearch canClear={false} displayField={'label'} data={data} />
 
-        <Select isPerformance canSearch displayField={'label'} disabled data={data} />
+        <Select virtual canSearch displayField={'label'} disabled data={data} />
 
         <H2>single canInput</H2>
-        <Select isPerformance canSearch canInput displayField={'label'} data={data} />
+        <Select virtual canSearch canInput displayField={'label'} data={data} />
 
         <H2>非受限 mutliple</H2>
-        <Select isPerformance data={data} displayField={'label'} mutliple limitCount={5} />
+        <Select virtual data={data} displayField={'label'} mutliple limitCount={5} />
 
         <H2>非受限 mutliple DefaultValue</H2>
         <Select
           theme={newView}
           mutliple
-          isPerformance
+          virtual
           defaultValue={['key-0', 'key-1']}
           defaultDisplayValue={['txt0', 'txt1']}
           displayField={'label'}
@@ -135,7 +135,7 @@ export default class Demo extends React.Component {
         <Select
           value={value}
           displayValue={[]}
-          isPerformance
+          virtual
           mutliple
           canSearch
           limitCount={3}
@@ -163,7 +163,7 @@ export default class Demo extends React.Component {
           value={value}
           displayValue={[]}
           mutliple
-          isPerformance
+          virtual
           canSearch
           limitCount={3}
           canInput
