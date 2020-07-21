@@ -56,3 +56,20 @@ export function addWidth2Data(data: Array<Object>, widthSize: Array<number>): Ar
   }
   return [];
 }
+export function getTextAlign(textAlign: string) {
+  let justify = 'center';
+  switch (textAlign) {
+    case 'left':
+      justify = 'flex-start';
+      break;
+    case 'right':
+      justify = 'flex-end';
+      break;
+    case 'justify':
+      justify = 'space-between';
+      break;
+    default:
+      break;
+  }
+  return `${justify}`;
+}
