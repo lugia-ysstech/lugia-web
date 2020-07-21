@@ -78,9 +78,9 @@ type SelectProps = {
   autoHeight?: boolean,
   pullIconClass?: string,
   clearIconClass?: string,
-  searchClearIconClass?: string,
-  toggleIconClass?: string,
-  resetIconClass?: string,
+  searchClearIcon?: string,
+  toggleIcon?: string,
+  resetIcon?: string,
   isShowClearButton?: boolean,
   size?: Size,
   checkedCSS?: CheckedCSS,
@@ -349,9 +349,9 @@ class Select extends React.Component<SelectProps, SelectState> {
       data,
       getPartOfThemeProps,
       getPartOfThemeHocProps,
-      searchClearIconClass,
-      toggleIconClass,
-      resetIconClass,
+      searchClearIcon,
+      toggleIcon,
+      resetIcon,
     } = props;
     const { query, isCheckedAll } = state;
     const getMenu: Function = (cmp: Object) => {
@@ -387,9 +387,9 @@ class Select extends React.Component<SelectProps, SelectState> {
           canSearch={canSearch}
           mutliple={mutliple}
           canInput={canInput}
-          searchClearIconClass={searchClearIconClass}
-          toggleIconClass={toggleIconClass}
-          resetIconClass={resetIconClass}
+          searchClearIcon={searchClearIcon}
+          toggleIcon={toggleIcon}
+          resetIcon={resetIcon}
         />
       ) : null,
       this.getMenuItems(getMenu),
