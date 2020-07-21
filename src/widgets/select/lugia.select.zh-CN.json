@@ -52,7 +52,7 @@
       "desc": "是否支持查询",
       "propsDefaultValue": false
     },
-    "isPerformance": {
+    "virtual": {
       "type": "boolean",
       "desc": "是否性能加载",
       "propsDefaultValue": false
