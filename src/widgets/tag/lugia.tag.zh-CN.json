@@ -58,7 +58,7 @@
   },
   "type": {
     "ShapeType": [
-      { "value": "basic", "text": "默认类型" },
+      { "value": "basic", "text": "基本类型" },
       { "value": "round", "text": "圆角类型" }],
     "StyleType": [
       { "value": "customs", "text": "自定义风格" },
