@@ -22,6 +22,10 @@
       {
         "name": "data",
         "text": "数据编辑"
+      },
+      {
+        "name": "divided",
+        "text": "是否展示分割线"
       }
     ],
     "data": [
@@ -314,6 +318,10 @@
       {
         "name": "data",
         "text": "数据编辑"
+      },
+      {
+        "name": "divided",
+        "text": "是否展示分割线"
       }
     ],
     "data": [
@@ -644,6 +652,77 @@
                   "spacingPart": {
                     "text": "padding/margin",
                     "desc": "后缀图标内外边距配置区"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "搜索框",
+        "iconClass": "search",
+        "children": [
+          {
+            "title": "主体",
+            "iconClass": "search",
+            "data": [
+              {
+                "name": "搜索框",
+                "path": ["QueryInput", "Container"],
+                "description": {
+                  "textPart": {
+                    "text": "输入文本",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "默认文本",
+                "path": ["QueryInput", "Placeholder"],
+                "description": {
+                  "textPart": {
+                    "text": "默认文本",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "清除图标",
+                "path": ["QueryInput", "ClearButton"],
+                "props": [{ "name": "searchClearIconClass", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "清除图标",
+                    "desc": "清除图标"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "功能图标",
+            "iconClass": "timeLineGhost",
+            "data": [
+              {
+                "name": "切换图标",
+                "path": ["ToggleIcon"],
+                "props": [{ "name": "toggleIconClass", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "切换图标",
+                    "desc": "切换图标"
+                  }
+                }
+              },
+              {
+                "name": "重置图标",
+                "path": ["ResetIcon"],
+                "props": [{ "name": "resetIconClass", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "重置图标",
+                    "desc": "重置图标"
                   }
                 }
               }

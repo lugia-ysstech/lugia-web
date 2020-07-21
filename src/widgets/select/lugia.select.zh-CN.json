@@ -155,6 +155,18 @@
     "clearIconClass": {
       "type": "icon",
       "desc": "清空按钮图标"
+    },
+    "searchClearIconClass": {
+      "type": "icon",
+      "desc": "搜索框清空按钮图标"
+    },
+    "toggleIconClass": {
+      "type": "icon",
+      "desc": "搜索框切换按钮图标"
+    },
+    "resetIconClass": {
+      "type": "icon",
+      "desc": "搜索框重置按钮图标"
     }
   },
   "events": {
@@ -683,8 +695,105 @@
               }
             }
           }
+        },
+
+        "QueryInput": {
+          "name": "菜单搜索框样式",
+          "desc": "为菜单搜索框配置样式",
+          "theme": {
+            "Container": {
+              "name": "输入框",
+              "desc": "输入框外部容器",
+              "normal": [
+                ["width"],
+                ["height"],
+                ["margin"],
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["cursor"],
+                ["opacity"]
+              ],
+              "hover": [
+                ["border"],
+                ["borderRadius"],
+                ["cursor"],
+                ["background"],
+                ["opacity"],
+                ["boxShadow"]
+              ],
+              "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+              "focus": [
+                ["border"],
+                ["borderRadius"],
+                ["background"],
+                ["opacity"],
+                ["boxShadow"],
+                ["cursor"],
+                ["fontSize"],
+                ["font"],
+                ["color"]
+              ],
+              "disabled": [
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["cursor"],
+                ["padding"],
+                ["opacity"]
+              ]
+            },
+            "ClearButton": {
+              "name": "输入框清除图标",
+              "desc": "输入框后缀清除图标",
+              "normal": [["color"], ["fontSize"], ["font"]],
+              "hover": [["color"], ["fontSize"], ["font"]],
+              "clicked": [],
+              "disabled": [["color"], ["fontSize"], ["font"]]
+            },
+            "Placeholder": {
+              "name": "输入框提示信息文字",
+              "desc": "输入框提示信息文字",
+              "normal": [["color"], ["fontSize"], ["font"]]
+            }
+          }
+        },
+        "ToggleIcon": {
+          "name": "菜单搜索框切换按钮样式",
+          "desc": "为菜单搜索框切换按钮配置样式",
+          "theme": {
+            "Icon": {
+              "name": "图标",
+              "desc": "图标",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+              "hover": [["color"], ["margin"], ["cursor"]],
+              "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+              "disabled": [["color"], ["cursor"]]
+            }
+          }
+        },
+        "ResetIcon": {
+          "name": "菜单搜索框重置按钮样式",
+          "desc": "为菜单搜索框重置按钮配置样式",
+          "theme": {
+            "Icon": {
+              "name": "图标",
+              "desc": "图标",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+              "hover": [["color"], ["margin"], ["cursor"]],
+              "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+              "disabled": [["color"], ["cursor"]]
+            }
+          }
         }
       },
+
       "defaultTheme": {
         "Container": {
           "normal": {
