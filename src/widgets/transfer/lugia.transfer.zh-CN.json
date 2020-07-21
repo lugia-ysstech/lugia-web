@@ -417,9 +417,9 @@
               "disabled": [["color"], ["font"]]
             },
             "CheckboxEdgeCancel": {
-              "name": "Checkbox取消项边框配置",
-              "desc": "Checkbox取消状态边框配置样式",
-              "normal": [["background"], ["borderRadius"], ["border"]]
+              "name": "取消状态外框样式",
+              "desc": "取消状态外框样式",
+              "normal": [["background"], ["borderRadius"], ["border"], ["boxShadow"], ["width"], ["height"]]
             },
             "CheckboxInnerCancel": {
               "name": "Checkbox取消状态样式配置",
@@ -846,7 +846,14 @@
     "TransferCancelBox": {
       "name": "穿梭框面板取消项盒子样式",
       "desc": "为穿梭框配置右面板取消项盒子样式",
-      "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]]
+      "normal": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["padding"],
+        ["background"],
+        ["border", "top"]
+      ]
     },
     "TransferCancelCheckbox": {
       "name": "穿梭框面板取消项盒子样式",
@@ -867,9 +874,9 @@
           "disabled": [["color"], ["font"]]
         },
         "CheckboxEdgeCancel": {
-          "name": "Checkbox取消项边框配置",
-          "desc": "Checkbox取消状态边框配置样式",
-          "normal": [["background"], ["borderRadius"], ["border"]]
+          "name": "取消状态外框样式",
+          "desc": "取消状态外框样式",
+          "normal": [["background"], ["borderRadius"], ["border"], ["boxShadow"], ["width"], ["height"]]
         },
         "CheckboxInnerCancel": {
           "name": "Checkbox取消状态样式配置",
@@ -1101,14 +1108,7 @@
                 "CheckboxEdgeCancel": {
                   "name": "取消状态外框样式",
                   "desc": "取消状态外框样式",
-                  "normal": [
-                    ["background"],
-                    ["borderRadius"],
-                    ["border"],
-                    ["boxShadow"],
-                    ["width"],
-                    ["height"]
-                  ]
+                  "normal": [["background"], ["borderRadius"], ["border"], ["boxShadow"], ["width"], ["height"]]
                 },
                 "CheckboxInnerChecked": {
                   "name": "选中内框样式",

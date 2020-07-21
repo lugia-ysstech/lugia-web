@@ -172,17 +172,8 @@
               },
               {
                 "name": "文本框",
-                "path": ["TransferPanelMenu", "MenuItem", "TextContainer"],
-                "description": { "textPart": { "text": "文本", "desc": "文本框置内外边距配置区" } }
-              },
-              {
-                "name": "辅助字段框",
-                "path": ["TransferPanelMenu", "MenuItem", "DesContainer"],
-                "description": {
-                  "appearancePart": { "text": "外观", "desc": "辅助文本外盒外观配置区" },
-                  "textPart": { "text": "辅助文本", "desc": "辅助文本文本配置区" },
-                  "spacingPart": { "text": "padding/margin", "desc": "辅助文本内外边距配置区" }
-                }
+                "path": ["TransferPanelMenu", "MenuItem", "Checkbox", "CheckboxText"],
+                "description": { "textPart": { "text": "标题文本", "desc": "文本框置内外边距配置区" } }
               }
             ]
           },
@@ -197,14 +188,6 @@
                   "appearancePart": { "text": "选项背景", "desc": "文本配置区块的显示文本" },
                   "textPart": { "text": "标题文本", "desc": "选中项辅助文本文本配置区" },
                   "spacingPart": { "text": "padding/margin", "desc": "选中项内外边距配置区" }
-                }
-              },
-              {
-                "name": "选中项辅助字段框",
-                "path": ["TransferPanelMenu", "MenuItem", "SelectedDesContainer"],
-                "description": {
-                  "textPart": { "text": "辅助文本", "desc": "辅助文本配置区块的" },
-                  "spacingPart": { "text": "padding/margin", "desc": "辅助文本内外边距配置区" }
                 }
               }
             ]
@@ -351,7 +334,7 @@
             "data": [
               {
                 "name": "面板",
-                "path": ["TransferCancelCheckbox", "CheckboxWrap"],
+                "path": ["TransferCancelBox"],
                 "description": {
                   "appearancePart": {
                     "text": "面板",
