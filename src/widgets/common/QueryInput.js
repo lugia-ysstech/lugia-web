@@ -128,9 +128,9 @@ type QueryInputProps = {
   receivedTheme?: Object,
   toggleIconTheme?: Object,
   resetIconTheme?: Object,
-  searchClearIconClass?: string,
-  toggleIconClass?: string,
-  resetIconClass?: string,
+  searchClearIcon?: string,
+  toggleIcon?: string,
+  resetIcon?: string,
   getPartOfThemeProps: (str: string) => any,
 };
 
@@ -173,9 +173,9 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
       width,
       getPartOfThemeProps,
       receivedTheme,
-      searchClearIconClass,
-      toggleIconClass,
-      resetIconClass,
+      searchClearIcon,
+      toggleIcon,
+      resetIcon,
       toggleIconTheme,
       resetIconTheme,
     } = props;
@@ -234,7 +234,7 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
             <RefreshButton onClick={refreshValue}>
               <CommonIcon
                 {...resetIconTheme}
-                iconClass={resetIconClass || 'lugia-icon-reminder_refresh'}
+                iconClass={resetIcon || 'lugia-icon-reminder_refresh'}
               />
             </RefreshButton>
             {this.getSearchInputButton()}
@@ -250,9 +250,9 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
                 value={query}
                 onChange={onQueryInputChange}
                 onKeyDown={onQueryInputKeyDown}
-                prefix={this.getQueryInputPrefix(toggleIconClass, toggleIconTheme)}
+                prefix={this.getQueryInputPrefix(toggleIcon, toggleIconTheme)}
                 suffix={this.getQueryInputSuffix()}
-                clearIcon={searchClearIconClass}
+                clearIcon={searchClearIcon}
               />
             </QueryInputContainer>
             {/* </Theme> */}
@@ -262,12 +262,12 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
     );
   }
 
-  getQueryInputPrefix(toggleIconClass, toggleIconTheme) {
+  getQueryInputPrefix(toggleIcon, toggleIconTheme) {
     return (
       <ShowCheckAllButton onClick={this.onHideSearchInput}>
         <CommonIcon
           {...toggleIconTheme}
-          iconClass={toggleIconClass || 'lugia-icon-direction_arrow_up'}
+          iconClass={toggleIcon || 'lugia-icon-direction_arrow_up'}
         />
       </ShowCheckAllButton>
     );

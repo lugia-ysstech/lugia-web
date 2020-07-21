@@ -156,15 +156,15 @@
       "type": "icon",
       "desc": "清空按钮图标"
     },
-    "searchClearIconClass": {
+    "searchClearIcon": {
       "type": "icon",
       "desc": "搜索框清空按钮图标"
     },
-    "toggleIconClass": {
+    "toggleIcon": {
       "type": "icon",
       "desc": "搜索框切换按钮图标"
     },
-    "resetIconClass": {
+    "resetIcon": {
       "type": "icon",
       "desc": "搜索框重置按钮图标"
     }

@@ -221,9 +221,9 @@ export default class Demo extends React.Component {
             limitCount={5}
             pullIconClass="lugia-icon-direction_backtop"
             clearIconClass="lugia-icon-financial_deselection"
-            searchClearIconClass="lugia-icon-reminder_clock_circle"
-            toggleIconClass="lugia-icon-direction_folding_up"
-            resetIconClass="lugia-icon-financial_loading"
+            searchClearIcon="lugia-icon-reminder_clock_circle"
+            toggleIcon="lugia-icon-direction_folding_up"
+            resetIcon="lugia-icon-financial_loading"
           />
         </Theme>
       </Box>
