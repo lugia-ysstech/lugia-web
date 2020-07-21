@@ -9,6 +9,7 @@ import Tree from './index.js';
 import Widget from '../consts/index';
 import { getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 import styled from 'styled-components';
+import Theme from '../theme';
 
 const config = {
   [Widget.Tree]: {
@@ -325,6 +326,49 @@ export default class TreeDome extends React.Component {
           switchIconNames={switchIconNames}
         />
         <button onClick={this.onClick}>修改data数据</button>
+      </RowWrap>,
+      <H1>InjectProps传入data值</H1>,
+      <RowWrap>
+        <Theme
+          config={{
+            HHHHH: {
+              InjectProps: {
+                data: [
+                  {
+                    value: '一级节点-1',
+                    text: '一级节点-1',
+                    children: [
+                      {
+                        value: '二级节点1-1',
+                        text: '二级节点1-1',
+                      },
+                      {
+                        value: '二级节点1-2',
+                        text: '二级节点1-2',
+                      },
+                    ],
+                  },
+                  {
+                    value: '一级节点-2',
+                    text: '一级节点-2',
+                    children: [
+                      {
+                        value: '二级节点2-1',
+                        text: '二级节点2-1',
+                      },
+                      {
+                        value: '二级节点2-2',
+                        text: '二级节点2-2',
+                      },
+                    ],
+                  },
+                ],
+              },
+            },
+          }}
+        >
+          <Tree viewClass={'HHHHH'} translateTreeData />
+        </Theme>
       </RowWrap>,
     ];
   }
