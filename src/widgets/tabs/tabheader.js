@@ -11,7 +11,7 @@ import Widget from '../consts/index';
 import { EditEventType, PagedType, TabPositionType, TabType } from '../css/tabs';
 
 import { px2remcss } from '../css/units';
-import { computePage, isVertical, matchType } from './utils';
+import { computePage, isVertical, matchType, getTextAlign } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
 import Icon from '../icon';
@@ -170,6 +170,7 @@ const TabPanBox = StaticComponent({
   className: 'TabPanBox',
   css: css`
     display: flex;
+    justify-content: ${props => getTextAlign(props.textAlign)};
   `,
 });
 
@@ -250,7 +251,7 @@ const HTabsOutContainer = CSSComponent({
       return { background };
     },
     getCSS: (theme: Object, themeProps: Object) => {
-      const { textAlign = 'left', border = {} } = theme;
+      const { border = {} } = theme;
 
       const { propsConfig: { tabPosition, tabType } = {} } = themeProps;
       if (tabType === 'window') {
@@ -263,7 +264,7 @@ const HTabsOutContainer = CSSComponent({
       };
       const resPosition = `${position} : 0 ;height:${width}px;background-color:${color}`;
 
-      return `text-align: ${textAlign}
+      return `
               &::before{
                content: '';
                 position: absolute;
@@ -271,7 +272,7 @@ const HTabsOutContainer = CSSComponent({
                 left: 0;
                 width: 100%;
               }
-              
+
       `;
     },
   },
@@ -729,6 +730,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer', {
       props: { tabType, tabPosition },
     });
+
     const borderThemeProps = this.handleBorderStyle(
       this.props.getPartOfThemeProps('BorderStyle'),
       tabPosition,
@@ -755,6 +757,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       this.props.getPartOfThemeProps('ArrowIcon')
     );
     const IconThemeProps = this.props.getPartOfThemeHocProps('ArrowIcon');
+    const { themeConfig: { normal: { textAlign = 'left' } = {} } = {} } = tabsThemeProps;
     return (
       <HTabsOutContainer
         themeProps={tabsOutContainerThemeProps}
@@ -771,7 +774,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         )}
         <HTabsContainer themeProps={themeProps}>
           <HscrollerContainer themeProps={themeProps} x={moveDistance} ref={this.tabPanBox}>
-            <TabPanBox>{this.getChildren()}</TabPanBox>
+            <TabPanBox textAlign={textAlign}>{this.getChildren()}</TabPanBox>
           </HscrollerContainer>
         </HTabsContainer>
         {this.getPrevOrNextPage(

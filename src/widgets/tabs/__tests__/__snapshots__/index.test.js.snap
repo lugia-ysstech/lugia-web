@@ -90,6 +90,10 @@ exports[`tabsDemo Component JSON 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 
 .c3 {
@@ -116,7 +120,6 @@ exports[`tabsDemo Component JSON 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  text-align: left;
 }
 
 .c1::before {
