@@ -80,11 +80,12 @@ export default [
         },
       },
       type: {
-        AlertType: ['info', 'success', 'error', 'warning'],
-        AlertStyle: {
-          width: { type: 'number', desc: '组件宽度' },
-          color: { type: 'string', desc: '组件颜色' },
-        },
+        AlertType: [
+          { value: 'info', text: '信息' },
+          { value: 'success', text: '成功' },
+          { value: 'error', text: '错误' },
+          { value: 'warning', text: '警告' },
+        ],
       },
       category: ['反馈'],
       theme: {
@@ -199,10 +200,18 @@ export default [
         },
       },
       type: {
-        InputSize: ['small', 'default', 'large'],
-        PrefixType: ['¥', '$'],
-        ValidateStatus: ['default', 'error'],
-        ValidateType: ['top', 'bottom', 'inner'],
+        InputSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        PrefixType: [{ value: '¥', text: '人民币' }, { value: '$', text: '美元' }],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'bottom', text: '底部文本' },
+          { value: 'inner', text: '框内文本' },
+        ],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
       },
       category: ['数据录入'],
@@ -348,7 +357,7 @@ export default [
           ],
         },
       },
-      type: { SlideType: ['circle', 'line'] },
+      type: { SlideType: [{ value: 'circle', text: '圆型' }, { value: 'line', text: '线型' }] },
       category: ['其他'],
       childrenWidget: [],
       hideInTollPanel: true,
@@ -702,9 +711,17 @@ export default [
         shape: { type: 'AvatarShape', desc: '头像显示形状风格', defaultValue: 'circle' },
       },
       type: {
-        AvatarType: ['text', 'icon', 'img'],
-        AvatarSize: ['small', 'default', 'large'],
-        AvatarShape: ['circle', 'square'],
+        AvatarType: [
+          { value: 'text', text: '文本' },
+          { value: 'icon', text: '图标' },
+          { value: 'img', text: '图片' },
+        ],
+        AvatarSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        AvatarShape: [{ value: 'circle', text: '圆形' }, { value: 'square', text: '正方形' }],
       },
       category: ['数据展示'],
       designInfo: {
@@ -845,9 +862,17 @@ export default [
         shape: { type: 'AvatarShape', desc: '头像显示形状风格', defaultValue: 'circle' },
       },
       type: {
-        AvatarType: ['text', 'icon', 'img'],
-        AvatarSize: ['small', 'default', 'large'],
-        AvatarShape: ['circle', 'square'],
+        AvatarType: [
+          { value: 'text', text: '文本' },
+          { value: 'icon', text: '图标' },
+          { value: 'img', text: '图片' },
+        ],
+        AvatarSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        AvatarShape: [{ value: 'circle', text: '圆形' }, { value: 'square', text: '正方形' }],
       },
       category: ['数据展示'],
       theme: {
@@ -915,9 +940,17 @@ export default [
         shape: { type: 'AvatarShape', desc: '头像显示形状风格', defaultValue: 'circle' },
       },
       type: {
-        AvatarType: ['text', 'icon', 'img'],
-        AvatarSize: ['small', 'default', 'large'],
-        AvatarShape: ['circle', 'square'],
+        AvatarType: [
+          { value: 'text', text: '文本' },
+          { value: 'icon', text: '图标' },
+          { value: 'img', text: '图片' },
+        ],
+        AvatarSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        AvatarShape: [{ value: 'circle', text: '圆形' }, { value: 'square', text: '正方形' }],
       },
       category: ['数据展示'],
       theme: {
@@ -972,16 +1005,12 @@ export default [
           desc: '设置监听滚动事件的元素，返回值为DOM元素的函数',
           defaultValue: '() => window',
         },
-        showType: { type: 'showType', desc: '选择backTop是图标类型，还是文字类型' },
+        showType: { type: 'ShowType', desc: '选择backTop是图标类型，还是文字类型' },
         text: { type: 'string', desc: 'showType为文字类型时，配置的文字信息' },
         icon: { type: 'string', desc: 'showType为图标类型时，配置的图标信息' },
       },
       type: {
-        BackTopStyle: {
-          color: { type: 'string', desc: '组件颜色' },
-          backgroundColor: { type: 'string', desc: '组件背景颜色' },
-        },
-        showType: ['textType', 'iconType'],
+        ShowType: [{ value: 'textType', text: '文本' }, { value: 'iconType', text: '图标' }],
       },
       category: ['其他'],
       theme: {
@@ -1143,9 +1172,9 @@ export default [
       desc: '基本元素',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
-        shape: { type: 'shapeType', desc: '基本元素形状', defaultValue: 'square' },
+        shape: { type: 'ShapeType', desc: '基本元素形状', defaultValue: 'square' },
       },
-      type: { shapeType: ['circle', 'square'] },
+      type: { ShapeType: [{ value: 'circle', text: '圆形' }, { value: 'square', text: '方形' }] },
       category: ['通用'],
       designInfo: {
         Circle: {
@@ -1211,9 +1240,9 @@ export default [
       desc: '圆形元素',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
-        shape: { type: 'shapeType', desc: '基本元素形状', defaultValue: 'circle' },
+        shape: { type: 'ShapeType', desc: '基本元素形状', defaultValue: 'circle' },
       },
-      type: { shapeType: ['circle', 'square'] },
+      type: { ShapeType: [{ value: 'circle', text: '圆形' }, { value: 'square', text: '方形' }] },
       category: ['通用'],
       theme: {
         Container: {
@@ -1277,10 +1306,7 @@ export default [
           args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],
         },
       },
-      type: {
-        ButtonShape: ['default', 'round'],
-        ButtonStyle: { width: { type: 'number', desc: '组件宽度' } },
-      },
+      type: {},
       category: ['通用'],
       theme: {
         Container: {
@@ -1551,9 +1577,20 @@ export default [
         },
       },
       type: {
-        ButtonShape: ['default', 'round'],
-        ButtonType: ['default', 'primary', 'success', 'warning', 'danger', 'link'],
-        ButtonSize: ['default', 'small', 'large'],
+        ButtonShape: [{ value: 'default', text: '默认型' }, { value: 'round', text: '圆角型' }],
+        ButtonType: [
+          { value: 'default', text: '默认类型' },
+          { value: 'primary', text: '主题类型' },
+          { value: 'success', text: '成功类型' },
+          { value: 'warning', text: '警告类型' },
+          { value: 'danger', text: '危险类型' },
+          { value: 'link', text: '链接类型' },
+        ],
+        ButtonSize: [
+          { value: 'default', text: '默认尺寸' },
+          { value: 'small', text: '小尺寸' },
+          { value: 'large', text: '大尺寸' },
+        ],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
           margin: { type: 'number | Object', desc: '组件外间距' },
@@ -1876,9 +1913,20 @@ export default [
         },
       },
       type: {
-        ButtonShape: ['default', 'round'],
-        ButtonType: ['default', 'primary', 'success', 'warning', 'danger', 'link'],
-        ButtonSize: ['default', 'small', 'large'],
+        ButtonShape: [{ value: 'default', text: '默认型' }, { value: 'round', text: '圆角型' }],
+        ButtonType: [
+          { value: 'default', text: '默认类型' },
+          { value: 'primary', text: '主题类型' },
+          { value: 'success', text: '成功类型' },
+          { value: 'warning', text: '警告类型' },
+          { value: 'danger', text: '危险类型' },
+          { value: 'link', text: '链接类型' },
+        ],
+        ButtonSize: [
+          { value: 'default', text: '默认尺寸' },
+          { value: 'small', text: '小尺寸' },
+          { value: 'large', text: '大尺寸' },
+        ],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
           margin: { type: 'number | Object', desc: '组件外间距' },
@@ -1988,9 +2036,20 @@ export default [
         },
       },
       type: {
-        ButtonShape: ['default', 'round'],
-        ButtonType: ['default', 'primary', 'success', 'warning', 'danger', 'link'],
-        ButtonSize: ['default', 'small', 'large'],
+        ButtonShape: [{ value: 'default', text: '默认型' }, { value: 'round', text: '圆角型' }],
+        ButtonType: [
+          { value: 'default', text: '默认类型' },
+          { value: 'primary', text: '主题类型' },
+          { value: 'success', text: '成功类型' },
+          { value: 'warning', text: '警告类型' },
+          { value: 'danger', text: '危险类型' },
+          { value: 'link', text: '链接类型' },
+        ],
+        ButtonSize: [
+          { value: 'default', text: '默认尺寸' },
+          { value: 'small', text: '小尺寸' },
+          { value: 'large', text: '大尺寸' },
+        ],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
           margin: { type: 'number | Object', desc: '组件外间距' },
@@ -2100,9 +2159,20 @@ export default [
         },
       },
       type: {
-        ButtonShape: ['default', 'round'],
-        ButtonType: ['default', 'primary', 'success', 'warning', 'danger', 'link'],
-        ButtonSize: ['default', 'small', 'large'],
+        ButtonShape: [{ value: 'default', text: '默认型' }, { value: 'round', text: '圆角型' }],
+        ButtonType: [
+          { value: 'default', text: '默认类型' },
+          { value: 'primary', text: '主题类型' },
+          { value: 'success', text: '成功类型' },
+          { value: 'warning', text: '警告类型' },
+          { value: 'danger', text: '危险类型' },
+          { value: 'link', text: '链接类型' },
+        ],
+        ButtonSize: [
+          { value: 'default', text: '默认尺寸' },
+          { value: 'small', text: '小尺寸' },
+          { value: 'large', text: '大尺寸' },
+        ],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
           margin: { type: 'number | Object', desc: '组件外间距' },
@@ -2203,9 +2273,20 @@ export default [
         },
       },
       type: {
-        ButtonShape: ['default', 'round'],
-        ButtonType: ['default', 'primary', 'success', 'warning', 'danger', 'link'],
-        ButtonSize: ['default', 'small', 'large'],
+        ButtonShape: [{ value: 'default', text: '默认型' }, { value: 'round', text: '圆角型' }],
+        ButtonType: [
+          { value: 'default', text: '默认类型' },
+          { value: 'primary', text: '主题类型' },
+          { value: 'success', text: '成功类型' },
+          { value: 'warning', text: '警告类型' },
+          { value: 'danger', text: '危险类型' },
+          { value: 'link', text: '链接类型' },
+        ],
+        ButtonSize: [
+          { value: 'default', text: '默认尺寸' },
+          { value: 'small', text: '小尺寸' },
+          { value: 'large', text: '大尺寸' },
+        ],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
           margin: { type: 'number | Object', desc: '组件外间距' },
@@ -2284,9 +2365,20 @@ export default [
         },
       },
       type: {
-        ButtonShape: ['default', 'round'],
-        ButtonType: ['default', 'primary', 'success', 'warning', 'danger', 'link'],
-        ButtonSize: ['default', 'small', 'large'],
+        ButtonShape: [{ value: 'default', text: '默认型' }, { value: 'round', text: '圆角型' }],
+        ButtonType: [
+          { value: 'default', text: '默认类型' },
+          { value: 'primary', text: '主题类型' },
+          { value: 'success', text: '成功类型' },
+          { value: 'warning', text: '警告类型' },
+          { value: 'danger', text: '危险类型' },
+          { value: 'link', text: '链接类型' },
+        ],
+        ButtonSize: [
+          { value: 'default', text: '默认尺寸' },
+          { value: 'small', text: '小尺寸' },
+          { value: 'large', text: '大尺寸' },
+        ],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
           margin: { type: 'number | Object', desc: '组件外间距' },
@@ -2370,8 +2462,18 @@ export default [
         },
       },
       type: {
-        CardType: ['simple', 'avatar', 'image', 'combo', 'tip', 'transparent'],
-        ImageOrientation: ['horizontal', 'vertical'],
+        CardType: [
+          { value: 'simple', text: '简洁卡片' },
+          { value: 'avatar', text: '带头像卡片' },
+          { value: 'image', text: '带图片卡片' },
+          { value: 'combo', text: '自定义卡片' },
+          { value: 'tip', text: '头部提示卡片' },
+          { value: 'transparent', text: '空白盒子' },
+        ],
+        ImageOrientation: [
+          { value: 'horizontal', text: '水平' },
+          { value: 'vertical', text: '垂直' },
+        ],
       },
       category: ['数据展示'],
       designInfo: {
@@ -2850,8 +2952,18 @@ export default [
         },
       },
       type: {
-        CardType: ['simple', 'avatar', 'image', 'combo', 'tip', 'transparent'],
-        ImageOrientation: ['horizontal', 'vertical'],
+        CardType: [
+          { value: 'simple', text: '简洁卡片' },
+          { value: 'avatar', text: '带头像卡片' },
+          { value: 'image', text: '带图片卡片' },
+          { value: 'combo', text: '自定义卡片' },
+          { value: 'tip', text: '头部提示卡片' },
+          { value: 'transparent', text: '空白盒子' },
+        ],
+        ImageOrientation: [
+          { value: 'horizontal', text: '水平' },
+          { value: 'vertical', text: '垂直' },
+        ],
       },
       category: ['数据展示'],
       theme: {
@@ -2954,8 +3066,18 @@ export default [
         },
       },
       type: {
-        CardType: ['simple', 'avatar', 'image', 'combo', 'tip', 'transparent'],
-        ImageOrientation: ['horizontal', 'vertical'],
+        CardType: [
+          { value: 'simple', text: '简洁卡片' },
+          { value: 'avatar', text: '带头像卡片' },
+          { value: 'image', text: '带图片卡片' },
+          { value: 'combo', text: '自定义卡片' },
+          { value: 'tip', text: '头部提示卡片' },
+          { value: 'transparent', text: '空白盒子' },
+        ],
+        ImageOrientation: [
+          { value: 'horizontal', text: '水平' },
+          { value: 'vertical', text: '垂直' },
+        ],
       },
       category: ['数据展示'],
       theme: {
@@ -3068,8 +3190,18 @@ export default [
         },
       },
       type: {
-        CardType: ['simple', 'avatar', 'image', 'combo', 'tip', 'transparent'],
-        ImageOrientation: ['horizontal', 'vertical'],
+        CardType: [
+          { value: 'simple', text: '简洁卡片' },
+          { value: 'avatar', text: '带头像卡片' },
+          { value: 'image', text: '带图片卡片' },
+          { value: 'combo', text: '自定义卡片' },
+          { value: 'tip', text: '头部提示卡片' },
+          { value: 'transparent', text: '空白盒子' },
+        ],
+        ImageOrientation: [
+          { value: 'horizontal', text: '水平' },
+          { value: 'vertical', text: '垂直' },
+        ],
       },
       category: ['数据展示'],
       theme: {
@@ -3172,8 +3304,18 @@ export default [
         },
       },
       type: {
-        CardType: ['simple', 'avatar', 'image', 'combo', 'tip', 'transparent'],
-        ImageOrientation: ['horizontal', 'vertical'],
+        CardType: [
+          { value: 'simple', text: '简洁卡片' },
+          { value: 'avatar', text: '带头像卡片' },
+          { value: 'image', text: '带图片卡片' },
+          { value: 'combo', text: '自定义卡片' },
+          { value: 'tip', text: '头部提示卡片' },
+          { value: 'transparent', text: '空白盒子' },
+        ],
+        ImageOrientation: [
+          { value: 'horizontal', text: '水平' },
+          { value: 'vertical', text: '垂直' },
+        ],
       },
       category: ['数据展示'],
       theme: {
@@ -3280,8 +3422,18 @@ export default [
         },
       },
       type: {
-        CardType: ['simple', 'avatar', 'image', 'combo', 'tip', 'transparent'],
-        ImageOrientation: ['horizontal', 'vertical'],
+        CardType: [
+          { value: 'simple', text: '简洁卡片' },
+          { value: 'avatar', text: '带头像卡片' },
+          { value: 'image', text: '带图片卡片' },
+          { value: 'combo', text: '自定义卡片' },
+          { value: 'tip', text: '头部提示卡片' },
+          { value: 'transparent', text: '空白盒子' },
+        ],
+        ImageOrientation: [
+          { value: 'horizontal', text: '水平' },
+          { value: 'vertical', text: '垂直' },
+        ],
       },
       category: ['数据展示'],
       theme: {
@@ -3391,8 +3543,18 @@ export default [
         },
       },
       type: {
-        CardType: ['simple', 'avatar', 'image', 'combo', 'tip', 'transparent'],
-        ImageOrientation: ['horizontal', 'vertical'],
+        CardType: [
+          { value: 'simple', text: '简洁卡片' },
+          { value: 'avatar', text: '带头像卡片' },
+          { value: 'image', text: '带图片卡片' },
+          { value: 'combo', text: '自定义卡片' },
+          { value: 'tip', text: '头部提示卡片' },
+          { value: 'transparent', text: '空白盒子' },
+        ],
+        ImageOrientation: [
+          { value: 'horizontal', text: '水平' },
+          { value: 'vertical', text: '垂直' },
+        ],
       },
       category: ['数据展示'],
       theme: {
@@ -3440,21 +3602,17 @@ export default [
         autoPlay: { type: 'boolean', desc: '是否自动切换', propsDefaultValue: true },
         delay: { type: 'number', desc: '自动切换的时间间隔，单位为毫秒', propsDefaultValue: 3000 },
         indicatorType: {
-          type: 'horizontal | vertical | outside',
+          type: 'IndicatorType',
           desc: '指示器的显示方式',
           propsDefaultValue: 'horizontal',
         },
-        switchType: {
-          type: 'horizontal | vertical | fade',
-          desc: '动画切换的方式',
-          propsDefaultValue: 'horizontal',
-        },
+        switchType: { type: 'SwitchType', desc: '动画切换的方式', propsDefaultValue: 'horizontal' },
         animationTime: {
           type: 'number',
           desc: '单次动画执行的时间，单位为毫秒',
           propsDefaultValue: 500,
         },
-        action: { type: 'hover | click', desc: '指示器触发切换的方式', propsDefaultValue: 'hover' },
+        action: { type: 'ActionType', desc: '指示器触发切换的方式', propsDefaultValue: 'hover' },
       },
       events: {
         onChange: {
@@ -3464,6 +3622,22 @@ export default [
             { name: 'oldValue', desc: '本次的索引值', type: 'number' },
           ],
         },
+      },
+      type: {
+        IndicatorType: [
+          { value: 'horizontal', text: '水平显示' },
+          { value: 'vertical', text: '垂直显示' },
+          { value: 'outside', text: '外部显示' },
+        ],
+        SwitchType: [
+          { value: 'horizontal', text: '水平切换' },
+          { value: 'vertical', text: '垂直切换' },
+          { value: 'fade', text: '渐显切换' },
+        ],
+        ActionType: [
+          { value: 'hover', text: 'hover触发切换' },
+          { value: 'click', text: 'click触发切换' },
+        ],
       },
       category: ['数据展示'],
       theme: {
@@ -3652,9 +3826,17 @@ export default [
         },
       },
       type: {
-        sizeType: ['small', 'default', 'large'],
-        ValidateStatus: ['default', 'error'],
-        ValidateType: ['top', 'bottom', 'inner'],
+        sizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'bottom', text: '底部文本' },
+          { value: 'inner', text: '框内文本' },
+        ],
       },
       category: ['数据录入'],
       theme: {
@@ -4965,9 +5147,17 @@ export default [
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
       type: {
-        InputSize: ['small', 'default', 'large'],
-        ValidateType: ['top', 'bottom', 'inner'],
-        ValidateStatus: ['default', 'error'],
+        InputSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '默认' },
+          { value: 'large', text: '大' },
+        ],
+        ValidateType: [
+          { value: 'top', text: '上' },
+          { value: 'bottom', text: '下' },
+          { value: 'inner', text: '内部' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '默认' }, { value: 'error', text: '错误' }],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
       },
       childrenWidget: [
@@ -5269,9 +5459,17 @@ export default [
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
       type: {
-        InputSize: ['small', 'default', 'large'],
-        ValidateType: ['top', 'bottom', 'inner'],
-        ValidateStatus: ['default', 'error'],
+        InputSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '默认' },
+          { value: 'large', text: '大' },
+        ],
+        ValidateType: [
+          { value: 'top', text: '上' },
+          { value: 'bottom', text: '下' },
+          { value: 'inner', text: '内部' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '默认' }, { value: 'error', text: '错误' }],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
       },
       category: ['数据录入'],
@@ -5461,9 +5659,17 @@ export default [
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
       type: {
-        InputSize: ['small', 'default', 'large'],
-        ValidateType: ['top', 'bottom', 'inner'],
-        ValidateStatus: ['default', 'error'],
+        InputSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '默认' },
+          { value: 'large', text: '大' },
+        ],
+        ValidateType: [
+          { value: 'top', text: '上' },
+          { value: 'bottom', text: '下' },
+          { value: 'inner', text: '内部' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '默认' }, { value: 'error', text: '错误' }],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
       },
       category: ['数据录入'],
@@ -5689,9 +5895,17 @@ export default [
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
       type: {
-        InputSize: ['small', 'default', 'large'],
-        ValidateType: ['top', 'bottom', 'inner'],
-        ValidateStatus: ['default', 'error'],
+        InputSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '默认' },
+          { value: 'large', text: '大' },
+        ],
+        ValidateType: [
+          { value: 'top', text: '上' },
+          { value: 'bottom', text: '下' },
+          { value: 'inner', text: '内部' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '默认' }, { value: 'error', text: '错误' }],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
       },
       category: ['数据录入'],
@@ -5990,9 +6204,17 @@ export default [
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
       type: {
-        InputSize: ['small', 'default', 'large'],
-        ValidateType: ['top', 'bottom', 'inner'],
-        ValidateStatus: ['default', 'error'],
+        InputSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '默认' },
+          { value: 'large', text: '大' },
+        ],
+        ValidateType: [
+          { value: 'top', text: '上' },
+          { value: 'bottom', text: '下' },
+          { value: 'inner', text: '内部' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '默认' }, { value: 'error', text: '错误' }],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
       },
       category: ['数据录入'],
@@ -6242,9 +6464,17 @@ export default [
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
       type: {
-        InputSize: ['small', 'default', 'large'],
-        ValidateType: ['top', 'bottom', 'inner'],
-        ValidateStatus: ['default', 'error'],
+        InputSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '默认' },
+          { value: 'large', text: '大' },
+        ],
+        ValidateType: [
+          { value: 'top', text: '上' },
+          { value: 'bottom', text: '下' },
+          { value: 'inner', text: '内部' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '默认' }, { value: 'error', text: '错误' }],
         ChangeType: {
           newValue: 'Array<string>',
           oldValue: 'Array<string>',
@@ -6526,7 +6756,10 @@ export default [
           propsDefaultValue: 'horizontal',
         },
       },
-      type: { DividerPosition: ['left', 'right'], DividerType: ['horizontal', 'vertical'] },
+      type: {
+        DividerPosition: [{ value: 'left', text: '居左' }, { value: 'right', text: '居右' }],
+        DividerType: [{ value: 'horizontal', text: '水平' }, { value: 'vertical', text: '垂直' }],
+      },
       category: ['其他'],
       designInfo: {
         VerticalDivider: {
@@ -6596,7 +6829,10 @@ export default [
           propsDefaultValue: 'horizontal',
         },
       },
-      type: { DividerPosition: ['left', 'right'], DividerType: ['horizontal', 'vertical'] },
+      type: {
+        DividerPosition: [{ value: 'left', text: '居左' }, { value: 'right', text: '居右' }],
+        DividerType: [{ value: 'horizontal', text: '水平' }, { value: 'vertical', text: '垂直' }],
+      },
       category: ['其他'],
       theme: {
         Container: {
@@ -6644,11 +6880,12 @@ export default [
         onToggle: { desc: '抽拉抽屉时的回调', args: [] },
       },
       type: {
-        PlacementType: ['top', 'right', 'left', 'bottom'],
-        DrawerStyle: {
-          width: { type: 'number', desc: 'Drawer的宽度' },
-          height: { type: 'number', desc: 'Drawer的高度，在 placement 为 top 或 bottom 时使用' },
-        },
+        PlacementType: [
+          { value: 'top', text: '顶部' },
+          { value: 'right', text: '右侧' },
+          { value: 'left', text: '左侧' },
+          { value: 'bottom', text: '底部' },
+        ],
       },
       category: ['反馈'],
       theme: {
@@ -6804,10 +7041,25 @@ export default [
         },
       },
       type: {
-        AlignType: ['topLeft', 'top', 'topRight', 'bottomLeft', 'bottom', 'bottomRight'],
-        SizeType: ['small', 'default', 'large'],
-        StyleType: ['customs', 'primary', 'basic'],
-        ActionType: ['hover', 'click'],
+        AlignType: [
+          { value: 'topLeft', text: '上左' },
+          { value: 'top', text: '上' },
+          { value: 'topRight', text: '上右' },
+          { value: 'bottomLeft', text: '下左' },
+          { value: 'bottom', text: '下' },
+          { value: 'bottomRight', text: '下右' },
+        ],
+        SizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        StyleType: [
+          { value: 'customs', text: '填充风格' },
+          { value: 'primary', text: '文本风格' },
+          { value: 'basic', text: '线框风格' },
+        ],
+        ActionType: [{ value: 'hover', text: '悬浮展开' }, { value: 'click', text: '点击展开' }],
       },
       designInfo: {
         NoDividedDropmenu: {
@@ -7472,10 +7724,25 @@ export default [
         },
       },
       type: {
-        AlignType: ['topLeft', 'top', 'topRight', 'bottomLeft', 'bottom', 'bottomRight'],
-        SizeType: ['small', 'default', 'large'],
-        StyleType: ['customs', 'primary', 'basic'],
-        ActionType: ['hover', 'click'],
+        AlignType: [
+          { value: 'topLeft', text: '上左' },
+          { value: 'top', text: '上' },
+          { value: 'topRight', text: '上右' },
+          { value: 'bottomLeft', text: '下左' },
+          { value: 'bottom', text: '下' },
+          { value: 'bottomRight', text: '下右' },
+        ],
+        SizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        StyleType: [
+          { value: 'customs', text: '填充风格' },
+          { value: 'primary', text: '文本风格' },
+          { value: 'basic', text: '线框风格' },
+        ],
+        ActionType: [{ value: 'hover', text: '悬浮展开' }, { value: 'click', text: '点击展开' }],
       },
       theme: {
         Container: {
@@ -7844,10 +8111,18 @@ export default [
         },
       },
       type: {
-        InputSize: ['small', 'default', 'large'],
-        InputType: ['text', 'password'],
-        ValidateStatus: ['default', 'error'],
-        ValidateType: ['top', 'bottom', 'inner'],
+        InputType: [{ value: 'text', text: '文本' }, { value: 'password', text: '密码' }],
+        InputSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'bottom', text: '底部文本' },
+          { value: 'inner', text: '框内文本' },
+        ],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
       },
       category: ['数据录入'],
@@ -8044,9 +8319,18 @@ export default [
       },
       type: {
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
-        ResizeType: ['both', 'horizontal', 'vertical', 'none'],
-        ValidateStatus: ['default', 'error'],
-        ValidateType: ['top', 'bottom', 'inner'],
+        ResizeType: [
+          { value: 'both', text: '可调整宽高' },
+          { value: 'horizontal', text: '可调整宽' },
+          { value: 'vertical', text: '可调整高' },
+          { value: 'none', text: '宽高固定' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'bottom', text: '底部文本' },
+          { value: 'inner', text: '框内文本' },
+        ],
       },
       category: ['数据录入'],
       needExport: true,
@@ -8178,6 +8462,10 @@ export default [
             ['border'],
             ['borderRadius'],
             ['boxShadow'],
+            ['wordBreak'],
+            ['whiteSpace'],
+            ['textOverflow'],
+            ['overflow'],
           ],
           hover: [
             ['color'],
@@ -8230,7 +8518,13 @@ export default [
         children: { type: 'any', desc: 'Loading组件允许内嵌容器' },
         data: { type: 'any', desc: '与children属性一样，在Loading组件内嵌入内容' },
       },
-      type: { sizeType: ['default', 'small', 'large'] },
+      type: {
+        sizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+      },
       category: ['其他'],
       childrenWidget: [],
     },
@@ -8384,9 +8678,17 @@ export default [
         },
       },
       type: {
-        SizeType: ['small', 'default', 'large'],
-        CheckedCSSType: ['background', 'checkbox', 'none'],
-        ActionType: ['hover', 'click'],
+        SizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        CheckedCSSType: [
+          { value: 'background', text: '填充背景风格' },
+          { value: 'checkbox', text: '多选框风格' },
+          { value: 'none', text: '高亮文本风格' },
+        ],
+        ActionType: [{ value: 'hover', text: '悬浮展开' }, { value: 'click', text: '点击展开' }],
       },
       category: ['数据录入'],
       designInfo: {
@@ -8947,9 +9249,17 @@ export default [
         },
       },
       type: {
-        SizeType: ['small', 'default', 'large'],
-        CheckedCSSType: ['background', 'checkbox', 'none'],
-        ActionType: ['hover', 'click'],
+        SizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        CheckedCSSType: [
+          { value: 'background', text: '填充背景风格' },
+          { value: 'checkbox', text: '多选框风格' },
+          { value: 'none', text: '高亮文本风格' },
+        ],
+        ActionType: [{ value: 'hover', text: '悬浮展开' }, { value: 'click', text: '点击展开' }],
       },
       category: ['数据录入'],
       theme: {
@@ -9479,7 +9789,13 @@ export default [
         },
       },
       category: ['导航'],
-      type: { ThemeStyleType: ['light', 'dark'], PositionType: ['left', 'right'] },
+      type: {
+        ThemeStyleType: [{ value: 'light', text: '白昼风格' }, { value: 'dark', text: '暗黑风格' }],
+        PositionType: [
+          { value: 'left', text: '选中线在左' },
+          { value: 'right', text: '选中线在右' },
+        ],
+      },
       designInfo: {
         HorizontalNavMenu: {
           sequence: 1,
@@ -10804,7 +11120,13 @@ export default [
         },
       },
       category: ['导航'],
-      type: { ThemeStyleType: ['light', 'dark'], PositionType: ['left', 'right'] },
+      type: {
+        ThemeStyleType: [{ value: 'light', text: '白昼风格' }, { value: 'dark', text: '暗黑风格' }],
+        PositionType: [
+          { value: 'left', text: '选中线在左' },
+          { value: 'right', text: '选中线在右' },
+        ],
+      },
       theme: {
         Tabs: {
           name: '水平导航配置',
@@ -11223,7 +11545,13 @@ export default [
         },
       },
       category: ['导航'],
-      type: { ThemeStyleType: ['light', 'dark'], PositionType: ['left', 'right'] },
+      type: {
+        ThemeStyleType: [{ value: 'light', text: '白昼风格' }, { value: 'dark', text: '暗黑风格' }],
+        PositionType: [
+          { value: 'left', text: '选中线在左' },
+          { value: 'right', text: '选中线在右' },
+        ],
+      },
       theme: {
         Menu: {
           name: '垂直导航菜单配置',
@@ -11680,7 +12008,13 @@ export default [
         },
       },
       category: ['导航'],
-      type: { ThemeStyleType: ['light', 'dark'], PositionType: ['left', 'right'] },
+      type: {
+        ThemeStyleType: [{ value: 'light', text: '白昼风格' }, { value: 'dark', text: '暗黑风格' }],
+        PositionType: [
+          { value: 'left', text: '选中线在左' },
+          { value: 'right', text: '选中线在右' },
+        ],
+      },
       theme: {
         Tree: {
           name: '内嵌导航菜单配置',
@@ -11946,7 +12280,14 @@ export default [
           defaultValue: 'topRight',
         },
       },
-      type: { PlacementType: ['topRight', 'bottomLeft', 'bottomRight', 'topLeft'] },
+      type: {
+        PlacementType: [
+          { value: 'topRight', text: '右上' },
+          { value: 'bottomLeft', text: '左下' },
+          { value: 'bottomRight', text: '右下' },
+          { value: 'topLeft', text: '左上' },
+        ],
+      },
       category: ['反馈'],
       theme: {
         Container: {
@@ -12065,9 +12406,17 @@ export default [
         },
       },
       type: {
-        InputSize: ['small', 'default', 'large'],
-        ValidateStatus: ['default', 'error'],
-        ValidateType: ['top', 'bottom', 'inner'],
+        InputSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'bottom', text: '底部文本' },
+          { value: 'inner', text: '框内文本' },
+        ],
         ChangeType: { newValue: 'number', oldValue: 'number', event: 'SyntheticEvent' },
       },
       category: ['数据录入'],
@@ -12225,6 +12574,11 @@ export default [
           hover: [],
           active: [],
         },
+        ArrowDivider: {
+          name: '步长箭头图标分割线',
+          desc: '步长箭头图标分割线',
+          normal: [['border', 'top']],
+        },
       },
       childrenWidget: [],
     },
@@ -12246,7 +12600,7 @@ export default [
         pageSizeOptions: {
           type: 'string[]',
           desc: '指定每页可以显示多少条',
-          meta: [{ key: 'pageSizes', title: '每页显示多少条的集合', type: 'string[]' }],
+          meta: [{ key: 'pageSizes', title: '每页显示多少条的集合', type: 'string' }],
           propsDefaultValue: ['10', '20', '30', '50'],
         },
         showQuickJumper: {
@@ -12286,7 +12640,7 @@ export default [
         blockList: {
           type: 'string[]',
           desc: '分页各部位展示的位置列表',
-          meta: [{ key: 'displayLocation', title: '分页各部位展示的位置', type: 'string[]' }],
+          meta: [{ key: 'displayLocation', title: '分页各部位展示的位置', type: 'BlockType' }],
           propsDefaultValue: ['Page', 'PageInput', 'Total', 'PageSize'],
           defaultValue: ['Page', 'PageInput', 'Total', 'PageSize'],
         },
@@ -12296,7 +12650,7 @@ export default [
           desc: '可配置三种尺寸大小的Pagination',
           propsDefaultValue: 'default',
         },
-        divided: { type: 'boolean', desc: '是否展示菜单分割线', propsDefaultValue: 'false' },
+        divided: { type: 'boolean', desc: '是否展示菜单分割线', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -12324,7 +12678,15 @@ export default [
           ],
         },
       },
-      type: { AlignType: ['Left', 'Right'] },
+      type: {
+        BlockType: [
+          { value: 'Page', text: '主体' },
+          { value: 'PageInput', text: '快速跳转' },
+          { value: 'Total', text: '总共数据' },
+          { value: 'PageSize', text: '每页数量' },
+        ],
+        AlignType: [{ value: 'left', text: '居左' }, { value: 'right', text: '居右' }],
+      },
       designInfo: {
         SimplePagination: {
           sequence: 1,
@@ -12348,39 +12710,45 @@ export default [
             SimplePaginationInput: {
               name: '简洁分页输入框',
               desc: '简洁分页输入框',
-              normal: [
-                ['width'],
-                ['height'],
-                ['margin'],
-                ['fontSize'],
-                ['font'],
-                ['color'],
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['cursor'],
-                ['opacity'],
-              ],
-              hover: [
-                ['border'],
-                ['borderRadius'],
-                ['cursor'],
-                ['background'],
-                ['opacity'],
-                ['boxShadow'],
-              ],
-              active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
-              disabled: [
-                ['fontSize'],
-                ['font'],
-                ['color'],
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['cursor'],
-                ['padding'],
-                ['opacity'],
-              ],
+              theme: {
+                Container: {
+                  name: '输入框',
+                  desc: '输入框外部容器',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['opacity'],
+                  ],
+                  hover: [
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['background'],
+                    ['opacity'],
+                    ['boxShadow'],
+                  ],
+                  active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+                  disabled: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['padding'],
+                    ['opacity'],
+                  ],
+                },
+              },
             },
             PaginationQuickJumpText: {
               name: '分页快速跳至文字',
@@ -12388,8 +12756,15 @@ export default [
               normal: [['color'], ['font'], ['fontSize'], ['cursor']],
             },
             ChangePageIcon: {
-              name: '分页切换页数图标',
-              desc: '配置分页切换页数图标',
+              name: '分页切换页数下一页图标',
+              desc: '配置分页切换页数下一页图标',
+              normal: [['color'], ['fontSize'], ['font']],
+              hover: [['color'], ['fontSize'], ['font']],
+              disabled: [['color'], ['fontSize'], ['font']],
+            },
+            ChangePagePreIcon: {
+              name: '分页切换页数上一页图标',
+              desc: '配置分页切换页数上一页图标',
               normal: [['color'], ['fontSize'], ['font']],
               hover: [['color'], ['fontSize'], ['font']],
               disabled: [['color'], ['fontSize'], ['font']],
@@ -12472,8 +12847,15 @@ export default [
           ],
         },
         ChangePageIcon: {
-          name: '切换显示每页页数图标',
-          desc: '配置切换显示每页页数图标',
+          name: '分页切换页数下一页图标',
+          desc: '配置分页切换页数下一页图标',
+          normal: [['color'], ['fontSize'], ['font']],
+          hover: [['color'], ['fontSize'], ['font']],
+          disabled: [['color'], ['fontSize'], ['font']],
+        },
+        ChangePagePreIcon: {
+          name: '分页切换页数上一页图标',
+          desc: '配置分页切换页数上一页图标',
           normal: [['color'], ['fontSize'], ['font']],
           hover: [['color'], ['fontSize'], ['font']],
           disabled: [['color'], ['fontSize'], ['font']],
@@ -12513,53 +12895,50 @@ export default [
         QuickJumpInput: {
           name: '快速跳至分页输入框',
           desc: '快速跳至分页输入框',
-          normal: [
-            ['width'],
-            ['height'],
-            ['margin'],
-            ['fontSize'],
-            ['font'],
-            ['color'],
-            ['background'],
-            ['border'],
-            ['borderRadius'],
-            ['cursor'],
-            ['opacity'],
-            ['boxShadow'],
-          ],
-          hover: [
-            ['border'],
-            ['borderRadius'],
-            ['cursor'],
-            ['background'],
-            ['opacity'],
-            ['boxShadow'],
-          ],
-          active: [
-            ['boxShadow'],
-            ['border'],
-            ['borderRadius'],
-            ['cursor'],
-            ['background'],
-            ['boxShadow'],
-          ],
-          disabled: [
-            ['fontSize'],
-            ['font'],
-            ['color'],
-            ['background'],
-            ['border'],
-            ['borderRadius'],
-            ['cursor'],
-            ['padding'],
-            ['opacity'],
-            ['boxShadow'],
-          ],
+          theme: {
+            Container: {
+              name: '输入框',
+              desc: '输入框外部容器',
+              normal: [
+                ['width'],
+                ['height'],
+                ['margin'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['opacity'],
+              ],
+              hover: [
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+              ],
+              active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+              disabled: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['padding'],
+                ['opacity'],
+              ],
+            },
+          },
         },
         PaginationQuickJumpContainer: {
           name: '分页快速跳至容器',
           desc: '配置分页快速跳至整体外部容器',
-          normal: [['margin']],
+          normal: [['width'], ['height'], ['margin']],
         },
         PaginationQuickJumpText: {
           name: '分页快速跳至文字',
@@ -12611,6 +12990,12 @@ export default [
                 ['font'],
                 ['opacity'],
               ],
+            },
+            TextContent: {
+              name: '文本样式',
+              desc: '文本样式',
+              normal: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['font'], ['fontSize']],
             },
             SwitchIcon: {
               name: '下拉图标',
@@ -12752,7 +13137,7 @@ export default [
         pageSizeOptions: {
           type: 'string[]',
           desc: '指定每页可以显示多少条',
-          meta: [{ key: 'pageSizes', title: '每页显示多少条的集合', type: 'string[]' }],
+          meta: [{ key: 'pageSizes', title: '每页显示多少条的集合', type: 'string' }],
           propsDefaultValue: ['10', '20', '30', '50'],
         },
         showQuickJumper: {
@@ -12793,7 +13178,7 @@ export default [
         blockList: {
           type: 'string[]',
           desc: '分页各部位展示的位置列表',
-          meta: [{ key: 'displayLocation', title: '分页各部位展示的位置', type: 'string[]' }],
+          meta: [{ key: 'displayLocation', title: '分页各部位展示的位置', type: 'BlockType' }],
           propsDefaultValue: ['Page', 'PageInput', 'Total', 'PageSize'],
           defaultValue: ['Page', 'PageInput', 'Total', 'PageSize'],
         },
@@ -12803,7 +13188,7 @@ export default [
           desc: '可配置三种尺寸大小的Pagination',
           propsDefaultValue: 'default',
         },
-        divided: { type: 'boolean', desc: '是否展示菜单分割线', propsDefaultValue: 'false' },
+        divided: { type: 'boolean', desc: '是否展示菜单分割线', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -12831,7 +13216,15 @@ export default [
           ],
         },
       },
-      type: { AlignType: ['Left', 'Right'] },
+      type: {
+        BlockType: [
+          { value: 'Page', text: '主体' },
+          { value: 'PageInput', text: '快速跳转' },
+          { value: 'Total', text: '总共数据' },
+          { value: 'PageSize', text: '每页数量' },
+        ],
+        AlignType: [{ value: 'left', text: '居左' }, { value: 'right', text: '居右' }],
+      },
       theme: {
         Container: {
           name: '分页外部容器',
@@ -12849,39 +13242,45 @@ export default [
         SimplePaginationInput: {
           name: '简洁分页输入框',
           desc: '简洁分页输入框',
-          normal: [
-            ['width'],
-            ['height'],
-            ['margin'],
-            ['fontSize'],
-            ['font'],
-            ['color'],
-            ['background'],
-            ['border'],
-            ['borderRadius'],
-            ['cursor'],
-            ['opacity'],
-          ],
-          hover: [
-            ['border'],
-            ['borderRadius'],
-            ['cursor'],
-            ['background'],
-            ['opacity'],
-            ['boxShadow'],
-          ],
-          active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
-          disabled: [
-            ['fontSize'],
-            ['font'],
-            ['color'],
-            ['background'],
-            ['border'],
-            ['borderRadius'],
-            ['cursor'],
-            ['padding'],
-            ['opacity'],
-          ],
+          theme: {
+            Container: {
+              name: '输入框',
+              desc: '输入框外部容器',
+              normal: [
+                ['width'],
+                ['height'],
+                ['margin'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['opacity'],
+              ],
+              hover: [
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+              ],
+              active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+              disabled: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['padding'],
+                ['opacity'],
+              ],
+            },
+          },
         },
         PaginationQuickJumpText: {
           name: '分页快速跳至文字',
@@ -12889,8 +13288,15 @@ export default [
           normal: [['color'], ['font'], ['fontSize'], ['cursor']],
         },
         ChangePageIcon: {
-          name: '分页切换页数图标',
-          desc: '配置分页切换页数图标',
+          name: '分页切换页数下一页图标',
+          desc: '配置分页切换页数下一页图标',
+          normal: [['color'], ['fontSize'], ['font']],
+          hover: [['color'], ['fontSize'], ['font']],
+          disabled: [['color'], ['fontSize'], ['font']],
+        },
+        ChangePagePreIcon: {
+          name: '分页切换页数上一页图标',
+          desc: '配置分页切换页数上一页图标',
           normal: [['color'], ['fontSize'], ['font']],
           hover: [['color'], ['fontSize'], ['font']],
           disabled: [['color'], ['fontSize'], ['font']],
@@ -12933,6 +13339,11 @@ export default [
         okType: { type: 'ButtonType', desc: '气泡确认框确认按钮的类型', defaultValue: 'primary' },
         cancelText: { type: 'string', desc: '取消按钮文字', defaultValue: '取消' },
         okText: { type: 'string', desc: '确认按钮文字', defaultValue: '确定' },
+        popArrowType: {
+          type: 'PopArrowType',
+          desc: '可配置两种风格的箭头. 尖角,圆角',
+          propsDefaultValue: 'sharp',
+        },
       },
       events: {
         onVisibleChange: {
@@ -12950,21 +13361,32 @@ export default [
       },
       type: {
         DirectionType: [
-          'left',
-          'leftTop',
-          'leftBottom',
-          'right',
-          'rightTop',
-          'rightBottom',
-          'top',
-          'topLeft',
-          'topRight',
-          'bottom',
-          'bottomLeft',
-          'bottomRight',
+          { value: 'topLeft', text: '上左' },
+          { value: 'top', text: '上' },
+          { value: 'topRight', text: '上右' },
+          { value: 'bottomLeft', text: '下左' },
+          { value: 'bottom', text: '下' },
+          { value: 'bottomRight', text: '下右' },
+          { value: 'leftTop', text: '左上' },
+          { value: 'left', text: '左' },
+          { value: 'leftBottom', text: '左下' },
+          { value: 'rightTop', text: '右上' },
+          { value: 'right', text: '右' },
+          { value: 'rightBottom', text: '右下' },
         ],
-        ActionType: ['click', 'hover', 'focus'],
-        ButtonType: ['default', 'primary', 'success', 'warning', 'danger'],
+        ActionType: [
+          { value: 'click', text: '点击' },
+          { value: 'hover', text: '滑过' },
+          { value: 'focus', text: '聚焦' },
+        ],
+        ButtonType: [
+          { value: 'default', text: '默认' },
+          { value: 'primary', text: '线框' },
+          { value: 'success', text: '成功' },
+          { value: 'warning', text: '警告' },
+          { value: 'danger', text: '危险' },
+        ],
+        PopArrowType: [{ value: 'sharp', text: '尖角' }, { value: 'round', text: '圆角' }],
       },
       category: ['反馈'],
       designInfo: {
@@ -13193,6 +13615,11 @@ export default [
         okType: { type: 'ButtonType', desc: '气泡确认框确认按钮的类型', defaultValue: 'primary' },
         cancelText: { type: 'string', desc: '取消按钮文字', defaultValue: '取消' },
         okText: { type: 'string', desc: '确认按钮文字', defaultValue: '确定' },
+        popArrowType: {
+          type: 'PopArrowType',
+          desc: '可配置两种风格的箭头. 尖角,圆角',
+          propsDefaultValue: 'sharp',
+        },
       },
       events: {
         onVisibleChange: {
@@ -13210,21 +13637,32 @@ export default [
       },
       type: {
         DirectionType: [
-          'left',
-          'leftTop',
-          'leftBottom',
-          'right',
-          'rightTop',
-          'rightBottom',
-          'top',
-          'topLeft',
-          'topRight',
-          'bottom',
-          'bottomLeft',
-          'bottomRight',
+          { value: 'topLeft', text: '上左' },
+          { value: 'top', text: '上' },
+          { value: 'topRight', text: '上右' },
+          { value: 'bottomLeft', text: '下左' },
+          { value: 'bottom', text: '下' },
+          { value: 'bottomRight', text: '下右' },
+          { value: 'leftTop', text: '左上' },
+          { value: 'left', text: '左' },
+          { value: 'leftBottom', text: '左下' },
+          { value: 'rightTop', text: '右上' },
+          { value: 'right', text: '右' },
+          { value: 'rightBottom', text: '右下' },
         ],
-        ActionType: ['click', 'hover', 'focus'],
-        ButtonType: ['default', 'primary', 'success', 'warning', 'danger'],
+        ActionType: [
+          { value: 'click', text: '点击' },
+          { value: 'hover', text: '滑过' },
+          { value: 'focus', text: '聚焦' },
+        ],
+        ButtonType: [
+          { value: 'default', text: '默认' },
+          { value: 'primary', text: '线框' },
+          { value: 'success', text: '成功' },
+          { value: 'warning', text: '警告' },
+          { value: 'danger', text: '危险' },
+        ],
+        PopArrowType: [{ value: 'sharp', text: '尖角' }, { value: 'round', text: '圆角' }],
       },
       category: ['反馈'],
       theme: {
@@ -13349,6 +13787,11 @@ export default [
           defaultValue: 'click',
         },
         children: { type: 'React.Node', desc: '气泡卡片需要包含的子组件' },
+        popArrowType: {
+          type: 'PopArrowType',
+          desc: '可配置两种风格的箭头. 尖角,圆角',
+          propsDefaultValue: 'sharp',
+        },
       },
       events: {
         onVisibleChange: {
@@ -13361,23 +13804,26 @@ export default [
         },
       },
       type: {
-        ActionType: ['click', 'hover', 'focus'],
         DirectionType: [
-          'left',
-          'leftTop',
-          'leftBottom',
-          'right',
-          'rightTop',
-          'rightBottom',
-          'top',
-          'bottom',
-          'topLeft',
-          'top',
-          'topRight',
-          'bottom',
-          'bottomRight',
-          'bottomLeft',
+          { value: 'topLeft', text: '上左' },
+          { value: 'top', text: '上' },
+          { value: 'topRight', text: '上右' },
+          { value: 'bottomLeft', text: '下左' },
+          { value: 'bottom', text: '下' },
+          { value: 'bottomRight', text: '下右' },
+          { value: 'leftTop', text: '左上' },
+          { value: 'left', text: '左' },
+          { value: 'leftBottom', text: '左下' },
+          { value: 'rightTop', text: '右上' },
+          { value: 'right', text: '右' },
+          { value: 'rightBottom', text: '右下' },
         ],
+        ActionType: [
+          { value: 'click', text: '点击' },
+          { value: 'hover', text: '滑过' },
+          { value: 'focus', text: '聚焦' },
+        ],
+        PopArrowType: [{ value: 'sharp', text: '尖角' }, { value: 'round', text: '圆角' }],
       },
       category: ['数据展示'],
       designInfo: {
@@ -13493,6 +13939,11 @@ export default [
           defaultValue: 'click',
         },
         children: { type: 'React.Node', desc: '气泡卡片需要包含的子组件' },
+        popArrowType: {
+          type: 'PopArrowType',
+          desc: '可配置两种风格的箭头. 尖角,圆角',
+          propsDefaultValue: 'sharp',
+        },
       },
       events: {
         onVisibleChange: {
@@ -13505,23 +13956,26 @@ export default [
         },
       },
       type: {
-        ActionType: ['click', 'hover', 'focus'],
         DirectionType: [
-          'left',
-          'leftTop',
-          'leftBottom',
-          'right',
-          'rightTop',
-          'rightBottom',
-          'top',
-          'bottom',
-          'topLeft',
-          'top',
-          'topRight',
-          'bottom',
-          'bottomRight',
-          'bottomLeft',
+          { value: 'topLeft', text: '上左' },
+          { value: 'top', text: '上' },
+          { value: 'topRight', text: '上右' },
+          { value: 'bottomLeft', text: '下左' },
+          { value: 'bottom', text: '下' },
+          { value: 'bottomRight', text: '下右' },
+          { value: 'leftTop', text: '左上' },
+          { value: 'left', text: '左' },
+          { value: 'leftBottom', text: '左下' },
+          { value: 'rightTop', text: '右上' },
+          { value: 'right', text: '右' },
+          { value: 'rightBottom', text: '右下' },
         ],
+        ActionType: [
+          { value: 'click', text: '点击' },
+          { value: 'hover', text: '滑过' },
+          { value: 'focus', text: '聚焦' },
+        ],
+        PopArrowType: [{ value: 'sharp', text: '尖角' }, { value: 'round', text: '圆角' }],
       },
       category: ['数据展示'],
       theme: {
@@ -13606,15 +14060,18 @@ export default [
         successIconClass: { type: 'icon', desc: '进度条展示的图标,仅在success状态生效' },
       },
       type: {
-        ProgressType: ['line', 'circle', 'dashboard'],
-        ProgressSizeType: ['default', 'small'],
-        ProgressStatusType: ['success', 'error', 'default'],
-        ProgressShowType: ['default', 'inside'],
-        ProgressStyle: {
-          color: { type: 'string', desc: 'Progress的颜色' },
-          width: { type: 'number', desc: 'Progress的宽度' },
-          height: { type: 'number', desc: 'Progress的高度' },
-        },
+        ProgressType: [
+          { value: 'line', text: '线型' },
+          { value: 'circle', text: '圆型' },
+          { value: 'dashboard', text: '仪表盘' },
+        ],
+        ProgressSizeType: [{ value: 'default', text: '正常' }, { value: 'small', text: '小尺寸' }],
+        ProgressStatusType: [
+          { value: 'default', text: '正常' },
+          { value: 'success', text: '成功' },
+          { value: 'error', text: '错误' },
+        ],
+        ProgressShowType: [{ value: 'default', text: '正常' }, { value: 'inside', text: '内部' }],
       },
       category: ['反馈'],
       designInfo: {
@@ -13624,6 +14081,11 @@ export default [
           desc: '圆形进度条',
           props: { type: 'circle' },
           theme: {
+            Container: {
+              name: '进度条整体配置',
+              desc: '进度条整体配置',
+              normal: [['width'], ['strokeWidth']],
+            },
             ProgressCircleText: {
               name: '进度条文字配置',
               desc: '进度条文字配置',
@@ -13650,6 +14112,7 @@ export default [
               normal: [['color']],
             },
           },
+          defaultTheme: { Container: { normal: { width: 60 } } },
         },
         DashboardProgress: {
           sequence: 1,
@@ -13657,6 +14120,11 @@ export default [
           desc: '仪表盘进度条',
           props: { type: 'dashboard' },
           theme: {
+            Container: {
+              name: '进度条整体配置',
+              desc: '进度条整体配置',
+              normal: [['width'], ['strokeWidth']],
+            },
             DashboardText: {
               name: '进度条文字配置',
               desc: '仪表盘进度条文字配置',
@@ -13683,6 +14151,7 @@ export default [
               normal: [['color']],
             },
           },
+          defaultTheme: { Container: { normal: { width: 60 } } },
         },
       },
       theme: {
@@ -13798,18 +14267,26 @@ export default [
         successIconClass: { type: 'icon', desc: '进度条展示的图标,仅在success状态生效' },
       },
       type: {
-        ProgressType: ['line', 'circle', 'dashboard'],
-        ProgressSizeType: ['default', 'small'],
-        ProgressStatusType: ['success', 'error', 'default'],
-        ProgressShowType: ['default', 'inside'],
-        ProgressStyle: {
-          color: { type: 'string', desc: 'Progress的颜色' },
-          width: { type: 'number', desc: 'Progress的宽度' },
-          height: { type: 'number', desc: 'Progress的高度' },
-        },
+        ProgressType: [
+          { value: 'line', text: '线型' },
+          { value: 'circle', text: '圆型' },
+          { value: 'dashboard', text: '仪表盘' },
+        ],
+        ProgressSizeType: [{ value: 'default', text: '正常' }, { value: 'small', text: '小尺寸' }],
+        ProgressStatusType: [
+          { value: 'default', text: '正常' },
+          { value: 'success', text: '成功' },
+          { value: 'error', text: '错误' },
+        ],
+        ProgressShowType: [{ value: 'default', text: '正常' }, { value: 'inside', text: '内部' }],
       },
       category: ['反馈'],
       theme: {
+        Container: {
+          name: '进度条整体配置',
+          desc: '进度条整体配置',
+          normal: [['width'], ['strokeWidth']],
+        },
         ProgressCircleText: {
           name: '进度条文字配置',
           desc: '进度条文字配置',
@@ -13836,7 +14313,7 @@ export default [
           normal: [['color']],
         },
       },
-      defaultTheme: { Container: { normal: { width: 400 } } },
+      defaultTheme: { Container: { normal: { width: 60 } } },
       childrenWidget: [],
       aliasName: 'CircleProgress',
     },
@@ -13888,18 +14365,26 @@ export default [
         successIconClass: { type: 'icon', desc: '进度条展示的图标,仅在success状态生效' },
       },
       type: {
-        ProgressType: ['line', 'circle', 'dashboard'],
-        ProgressSizeType: ['default', 'small'],
-        ProgressStatusType: ['success', 'error', 'default'],
-        ProgressShowType: ['default', 'inside'],
-        ProgressStyle: {
-          color: { type: 'string', desc: 'Progress的颜色' },
-          width: { type: 'number', desc: 'Progress的宽度' },
-          height: { type: 'number', desc: 'Progress的高度' },
-        },
+        ProgressType: [
+          { value: 'line', text: '线型' },
+          { value: 'circle', text: '圆型' },
+          { value: 'dashboard', text: '仪表盘' },
+        ],
+        ProgressSizeType: [{ value: 'default', text: '正常' }, { value: 'small', text: '小尺寸' }],
+        ProgressStatusType: [
+          { value: 'default', text: '正常' },
+          { value: 'success', text: '成功' },
+          { value: 'error', text: '错误' },
+        ],
+        ProgressShowType: [{ value: 'default', text: '正常' }, { value: 'inside', text: '内部' }],
       },
       category: ['反馈'],
       theme: {
+        Container: {
+          name: '进度条整体配置',
+          desc: '进度条整体配置',
+          normal: [['width'], ['strokeWidth']],
+        },
         DashboardText: {
           name: '进度条文字配置',
           desc: '仪表盘进度条文字配置',
@@ -13926,7 +14411,7 @@ export default [
           normal: [['color']],
         },
       },
-      defaultTheme: { Container: { normal: { width: 400 } } },
+      defaultTheme: { Container: { normal: { width: 60 } } },
       childrenWidget: [],
       aliasName: 'DashboardProgress',
     },
@@ -14090,13 +14575,13 @@ export default [
         },
       },
       type: {
-        RadioStylesType: ['default', 'vertical'],
-        RadioChildType: ['default', 'button'],
-        RadioButtonSizeType: ['default', 'small', 'large'],
-        RadioStyle: {
-          color: { type: 'string', desc: 'Radio 的颜色' },
-          width: { type: 'number', desc: 'Radio 的宽度' },
-        },
+        RadioStylesType: [{ value: 'default', text: '正常' }, { value: 'vertical', text: '竖直' }],
+        RadioChildType: [{ value: 'default', text: '正常' }, { value: 'button', text: '按钮' }],
+        RadioButtonSizeType: [
+          { value: 'default', text: '正常' },
+          { value: 'small', text: '小' },
+          { value: 'large', text: '大' },
+        ],
       },
       category: ['数据录入'],
       needExport: true,
@@ -14253,13 +14738,13 @@ export default [
         },
       },
       type: {
-        RadioStylesType: ['default', 'vertical'],
-        RadioChildType: ['default', 'button'],
-        RadioButtonSizeType: ['default', 'small', 'large'],
-        RadioStyle: {
-          color: { type: 'string', desc: 'Radio 的颜色' },
-          width: { type: 'number', desc: 'Radio 的宽度' },
-        },
+        RadioStylesType: [{ value: 'default', text: '正常' }, { value: 'vertical', text: '竖直' }],
+        RadioChildType: [{ value: 'default', text: '正常' }, { value: 'button', text: '按钮' }],
+        RadioButtonSizeType: [
+          { value: 'default', text: '正常' },
+          { value: 'small', text: '小' },
+          { value: 'large', text: '大' },
+        ],
       },
       category: ['数据录入'],
       needExport: true,
@@ -14726,6 +15211,7 @@ export default [
           propsDefaultValue: 'default',
         },
         canSearch: { type: 'boolean', desc: '是否支持查询', propsDefaultValue: false },
+        virtual: { type: 'boolean', desc: '是否性能加载', propsDefaultValue: false },
         canInput: {
           type: 'boolean',
           desc: '是否支持自定义值,只有在canSearch为true时才生效',
@@ -14760,9 +15246,13 @@ export default [
         limitCount: { type: 'number', desc: '多选时最多个数' },
         placeholder: { type: 'string', desc: '占位符' },
         searchType: { type: 'SearchType', desc: '查询的方式', propsDefaultValue: 'include' },
+        help: { type: 'string', desc: '树形选择控件校验提示信息' },
         divided: { type: 'boolean', desc: '弹出菜单中是否展示分割线' },
         pullIconClass: { type: 'icon', desc: '下拉按钮图标' },
         clearIconClass: { type: 'icon', desc: '清空按钮图标' },
+        searchClearIcon: { type: 'icon', desc: '搜索框清空按钮图标' },
+        toggleIcon: { type: 'icon', desc: '搜索框切换按钮图标' },
+        resetIcon: { type: 'icon', desc: '搜索框重置按钮图标' },
       },
       events: {
         onChange: {
@@ -14799,10 +15289,23 @@ export default [
         onRefresh: { desc: '点击刷新按钮时触发' },
       },
       type: {
-        sizeType: ['small', 'default', 'large'],
-        SearchType: ['start', 'end', 'include', 'eql'],
-        ValidateStatus: ['default', 'error'],
-        ValidateType: ['top', 'bottom', 'inner'],
+        sizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        SearchType: [
+          { value: 'start', text: '以关键字开头' },
+          { value: 'end', text: '以关键字结尾' },
+          { value: 'include', text: '包含关键字' },
+          { value: 'eql', text: '等于关键字' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'bottom', text: '底部文本' },
+          { value: 'inner', text: '框内文本' },
+        ],
       },
       category: ['数据录入'],
       designInfo: {
@@ -15195,6 +15698,101 @@ export default [
                 },
               },
             },
+            QueryInput: {
+              name: '菜单搜索框样式',
+              desc: '为菜单搜索框配置样式',
+              theme: {
+                Container: {
+                  name: '输入框',
+                  desc: '输入框外部容器',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['opacity'],
+                  ],
+                  hover: [
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['background'],
+                    ['opacity'],
+                    ['boxShadow'],
+                  ],
+                  active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+                  focus: [
+                    ['border'],
+                    ['borderRadius'],
+                    ['background'],
+                    ['opacity'],
+                    ['boxShadow'],
+                    ['cursor'],
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                  ],
+                  disabled: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['padding'],
+                    ['opacity'],
+                  ],
+                },
+                ClearButton: {
+                  name: '输入框清除图标',
+                  desc: '输入框后缀清除图标',
+                  normal: [['color'], ['fontSize'], ['font']],
+                  hover: [['color'], ['fontSize'], ['font']],
+                  clicked: [],
+                  disabled: [['color'], ['fontSize'], ['font']],
+                },
+                Placeholder: {
+                  name: '输入框提示信息文字',
+                  desc: '输入框提示信息文字',
+                  normal: [['color'], ['fontSize'], ['font']],
+                },
+              },
+            },
+            ToggleIcon: {
+              name: '菜单搜索框切换按钮样式',
+              desc: '为菜单搜索框切换按钮配置样式',
+              theme: {
+                Icon: {
+                  name: '图标',
+                  desc: '图标',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+                  hover: [['color'], ['margin'], ['cursor']],
+                  active: [['color'], ['cursor'], ['fontSize'], ['font']],
+                  disabled: [['color'], ['cursor']],
+                },
+              },
+            },
+            ResetIcon: {
+              name: '菜单搜索框重置按钮样式',
+              desc: '为菜单搜索框重置按钮配置样式',
+              theme: {
+                Icon: {
+                  name: '图标',
+                  desc: '图标',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+                  hover: [['color'], ['margin'], ['cursor']],
+                  active: [['color'], ['cursor'], ['fontSize'], ['font']],
+                  disabled: [['color'], ['cursor']],
+                },
+              },
+            },
           },
           defaultTheme: { Container: { normal: { width: 250 } } },
         },
@@ -15555,6 +16153,7 @@ export default [
           propsDefaultValue: 'default',
         },
         canSearch: { type: 'boolean', desc: '是否支持查询', propsDefaultValue: false },
+        virtual: { type: 'boolean', desc: '是否性能加载', propsDefaultValue: false },
         canInput: {
           type: 'boolean',
           desc: '是否支持自定义值,只有在canSearch为true时才生效',
@@ -15594,9 +16193,13 @@ export default [
         limitCount: { type: 'number', desc: '多选时最多个数' },
         placeholder: { type: 'string', desc: '占位符' },
         searchType: { type: 'SearchType', desc: '查询的方式', propsDefaultValue: 'include' },
+        help: { type: 'string', desc: '树形选择控件校验提示信息' },
         divided: { type: 'boolean', desc: '弹出菜单中是否展示分割线' },
         pullIconClass: { type: 'icon', desc: '下拉按钮图标' },
         clearIconClass: { type: 'icon', desc: '清空按钮图标' },
+        searchClearIcon: { type: 'icon', desc: '搜索框清空按钮图标' },
+        toggleIcon: { type: 'icon', desc: '搜索框切换按钮图标' },
+        resetIcon: { type: 'icon', desc: '搜索框重置按钮图标' },
       },
       events: {
         onChange: {
@@ -15633,10 +16236,23 @@ export default [
         onRefresh: { desc: '点击刷新按钮时触发' },
       },
       type: {
-        sizeType: ['small', 'default', 'large'],
-        SearchType: ['start', 'end', 'include', 'eql'],
-        ValidateStatus: ['default', 'error'],
-        ValidateType: ['top', 'bottom', 'inner'],
+        sizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        SearchType: [
+          { value: 'start', text: '以关键字开头' },
+          { value: 'end', text: '以关键字结尾' },
+          { value: 'include', text: '包含关键字' },
+          { value: 'eql', text: '等于关键字' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'bottom', text: '底部文本' },
+          { value: 'inner', text: '框内文本' },
+        ],
       },
       category: ['数据录入'],
       theme: {
@@ -16006,6 +16622,101 @@ export default [
                   ],
                 },
               },
+            },
+          },
+        },
+        QueryInput: {
+          name: '菜单搜索框样式',
+          desc: '为菜单搜索框配置样式',
+          theme: {
+            Container: {
+              name: '输入框',
+              desc: '输入框外部容器',
+              normal: [
+                ['width'],
+                ['height'],
+                ['margin'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['opacity'],
+              ],
+              hover: [
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+              ],
+              active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+              focus: [
+                ['border'],
+                ['borderRadius'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+                ['cursor'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+              ],
+              disabled: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['padding'],
+                ['opacity'],
+              ],
+            },
+            ClearButton: {
+              name: '输入框清除图标',
+              desc: '输入框后缀清除图标',
+              normal: [['color'], ['fontSize'], ['font']],
+              hover: [['color'], ['fontSize'], ['font']],
+              clicked: [],
+              disabled: [['color'], ['fontSize'], ['font']],
+            },
+            Placeholder: {
+              name: '输入框提示信息文字',
+              desc: '输入框提示信息文字',
+              normal: [['color'], ['fontSize'], ['font']],
+            },
+          },
+        },
+        ToggleIcon: {
+          name: '菜单搜索框切换按钮样式',
+          desc: '为菜单搜索框切换按钮配置样式',
+          theme: {
+            Icon: {
+              name: '图标',
+              desc: '图标',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+              hover: [['color'], ['margin'], ['cursor']],
+              active: [['color'], ['cursor'], ['fontSize'], ['font']],
+              disabled: [['color'], ['cursor']],
+            },
+          },
+        },
+        ResetIcon: {
+          name: '菜单搜索框重置按钮样式',
+          desc: '为菜单搜索框重置按钮配置样式',
+          theme: {
+            Icon: {
+              name: '图标',
+              desc: '图标',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+              hover: [['color'], ['margin'], ['cursor']],
+              active: [['color'], ['cursor'], ['fontSize'], ['font']],
+              disabled: [['color'], ['cursor']],
             },
           },
         },
@@ -16916,11 +17627,25 @@ export default [
         currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
-        StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['default', 'small'],
-        OrientationType: ['horizontal', 'vertical'],
-        AlignType: ['center', 'left'],
-        StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
+        StepType: [
+          { value: 'simple', text: '简洁风格' },
+          { value: 'flat', text: '半扁平风格' },
+          { value: 'icon', text: '图标风格' },
+          { value: 'dot', text: '点状风格' },
+        ],
+        SizeType: [{ value: 'default', text: '正常' }, { value: 'small', text: '小' }],
+        OrientationType: [
+          { value: 'horizontal', text: '水平' },
+          { value: 'vertical', text: '垂直' },
+        ],
+        AlignType: [{ value: 'center', text: '居中' }, { value: 'left', text: '居左' }],
+        StepStatus: [
+          { value: 'finish', text: '已完成' },
+          { value: 'process', text: '进行中' },
+          { value: 'next', text: '下一步' },
+          { value: 'wait', text: '等待中' },
+          { value: 'error', text: '异常' },
+        ],
       },
       childrenWidget: [],
       category: ['导航'],
@@ -18131,11 +18856,25 @@ export default [
         currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
-        StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['default', 'small'],
-        OrientationType: ['horizontal', 'vertical'],
-        AlignType: ['center', 'left'],
-        StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
+        StepType: [
+          { value: 'simple', text: '简洁风格' },
+          { value: 'flat', text: '半扁平风格' },
+          { value: 'icon', text: '图标风格' },
+          { value: 'dot', text: '点状风格' },
+        ],
+        SizeType: [{ value: 'default', text: '正常' }, { value: 'small', text: '小' }],
+        OrientationType: [
+          { value: 'horizontal', text: '水平' },
+          { value: 'vertical', text: '垂直' },
+        ],
+        AlignType: [{ value: 'center', text: '居中' }, { value: 'left', text: '居左' }],
+        StepStatus: [
+          { value: 'finish', text: '已完成' },
+          { value: 'process', text: '进行中' },
+          { value: 'next', text: '下一步' },
+          { value: 'wait', text: '等待中' },
+          { value: 'error', text: '异常' },
+        ],
       },
       childrenWidget: [],
       category: ['导航'],
@@ -18428,11 +19167,25 @@ export default [
         currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
-        StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['default', 'small'],
-        OrientationType: ['horizontal', 'vertical'],
-        AlignType: ['center', 'left'],
-        StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
+        StepType: [
+          { value: 'simple', text: '简洁风格' },
+          { value: 'flat', text: '半扁平风格' },
+          { value: 'icon', text: '图标风格' },
+          { value: 'dot', text: '点状风格' },
+        ],
+        SizeType: [{ value: 'default', text: '正常' }, { value: 'small', text: '小' }],
+        OrientationType: [
+          { value: 'horizontal', text: '水平' },
+          { value: 'vertical', text: '垂直' },
+        ],
+        AlignType: [{ value: 'center', text: '居中' }, { value: 'left', text: '居左' }],
+        StepStatus: [
+          { value: 'finish', text: '已完成' },
+          { value: 'process', text: '进行中' },
+          { value: 'next', text: '下一步' },
+          { value: 'wait', text: '等待中' },
+          { value: 'error', text: '异常' },
+        ],
       },
       childrenWidget: [],
       category: ['导航'],
@@ -18725,11 +19478,25 @@ export default [
         currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
-        StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['default', 'small'],
-        OrientationType: ['horizontal', 'vertical'],
-        AlignType: ['center', 'left'],
-        StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
+        StepType: [
+          { value: 'simple', text: '简洁风格' },
+          { value: 'flat', text: '半扁平风格' },
+          { value: 'icon', text: '图标风格' },
+          { value: 'dot', text: '点状风格' },
+        ],
+        SizeType: [{ value: 'default', text: '正常' }, { value: 'small', text: '小' }],
+        OrientationType: [
+          { value: 'horizontal', text: '水平' },
+          { value: 'vertical', text: '垂直' },
+        ],
+        AlignType: [{ value: 'center', text: '居中' }, { value: 'left', text: '居左' }],
+        StepStatus: [
+          { value: 'finish', text: '已完成' },
+          { value: 'process', text: '进行中' },
+          { value: 'next', text: '下一步' },
+          { value: 'wait', text: '等待中' },
+          { value: 'error', text: '异常' },
+        ],
       },
       childrenWidget: [],
       category: ['导航'],
@@ -19017,11 +19784,25 @@ export default [
         currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
-        StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['default', 'small'],
-        OrientationType: ['horizontal', 'vertical'],
-        AlignType: ['center', 'left'],
-        StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
+        StepType: [
+          { value: 'simple', text: '简洁风格' },
+          { value: 'flat', text: '半扁平风格' },
+          { value: 'icon', text: '图标风格' },
+          { value: 'dot', text: '点状风格' },
+        ],
+        SizeType: [{ value: 'default', text: '正常' }, { value: 'small', text: '小' }],
+        OrientationType: [
+          { value: 'horizontal', text: '水平' },
+          { value: 'vertical', text: '垂直' },
+        ],
+        AlignType: [{ value: 'center', text: '居中' }, { value: 'left', text: '居左' }],
+        StepStatus: [
+          { value: 'finish', text: '已完成' },
+          { value: 'process', text: '进行中' },
+          { value: 'next', text: '下一步' },
+          { value: 'wait', text: '等待中' },
+          { value: 'error', text: '异常' },
+        ],
       },
       childrenWidget: [],
       category: ['导航'],
@@ -19263,7 +20044,7 @@ export default [
           meta: [{ key: 'text', title: '显示文本', type: 'any' }],
           desc: '开关配置的展示信息',
         },
-        size: { type: 'sizeType', desc: '设置开关大小 default | small' },
+        size: { type: 'SizeType', desc: '设置开关大小 default | small' },
         isInverse: { type: 'boolean', desc: '开关翻转', propsDefaultValue: false },
         loading: { type: 'boolean', desc: '是否配置加载', propsDefaultValue: false },
         autoFocus: { type: 'boolean', desc: '是否自动聚焦', propsDefaultValue: false },
@@ -19281,7 +20062,7 @@ export default [
         },
       },
       type: {
-        sizeType: ['default', 'small'],
+        SizeType: [{ value: 'default', text: '默认尺寸' }, { value: 'small', text: '小尺寸' }],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
       },
       category: ['数据录入'],
@@ -19597,11 +20378,25 @@ export default [
         },
       },
       type: {
-        TabType: ['line', 'card', 'window'],
-        PagedType: ['single', 'page'],
-        TabPositionType: ['top', 'bottom', 'left', 'right'],
-        ReturnType: ['newValue', 'oldValue', 'newItem', 'oldItem'],
-        DeleteType: ['value', 'item'],
+        TabType: [
+          { value: 'line', text: '线性标签页' },
+          { value: 'card', text: '卡片标签页' },
+          { value: 'window', text: '窗口标签页' },
+        ],
+        PagedType: [{ value: 'single', text: '单个切换' }, { value: 'page', text: '整页切换' }],
+        TabPositionType: [
+          { value: 'top', text: '上' },
+          { value: 'bottom', text: '下' },
+          { value: 'left', text: '左' },
+          { value: 'right', text: '右' },
+        ],
+        ReturnType: {
+          newValue: 'string',
+          oldValue: 'string',
+          newItem: 'Object',
+          oldItem: 'Object',
+        },
+        DeleteType: { value: 'string', item: 'string' },
       },
       childrenWidget: [],
       category: ['数据展示'],
@@ -19871,6 +20666,11 @@ export default [
                   disabled: [['color'], ['font']],
                 },
               },
+            },
+            TitleContainer: {
+              name: '页签区域',
+              desc: '页签区域样式配置',
+              normal: [['background'], ['textAlign']],
             },
           },
           defaultTheme: { Container: { normal: { height: 400 } } },
@@ -20154,11 +20954,25 @@ export default [
         },
       },
       type: {
-        TabType: ['line', 'card', 'window'],
-        PagedType: ['single', 'page'],
-        TabPositionType: ['top', 'bottom', 'left', 'right'],
-        ReturnType: ['newValue', 'oldValue', 'newItem', 'oldItem'],
-        DeleteType: ['value', 'item'],
+        TabType: [
+          { value: 'line', text: '线性标签页' },
+          { value: 'card', text: '卡片标签页' },
+          { value: 'window', text: '窗口标签页' },
+        ],
+        PagedType: [{ value: 'single', text: '单个切换' }, { value: 'page', text: '整页切换' }],
+        TabPositionType: [
+          { value: 'top', text: '上' },
+          { value: 'bottom', text: '下' },
+          { value: 'left', text: '左' },
+          { value: 'right', text: '右' },
+        ],
+        ReturnType: {
+          newValue: 'string',
+          oldValue: 'string',
+          newItem: 'Object',
+          oldItem: 'Object',
+        },
+        DeleteType: { value: 'string', item: 'string' },
       },
       childrenWidget: [],
       category: ['数据展示'],
@@ -20430,11 +21244,25 @@ export default [
         },
       },
       type: {
-        TabType: ['line', 'card', 'window'],
-        PagedType: ['single', 'page'],
-        TabPositionType: ['top', 'bottom', 'left', 'right'],
-        ReturnType: ['newValue', 'oldValue', 'newItem', 'oldItem'],
-        DeleteType: ['value', 'item'],
+        TabType: [
+          { value: 'line', text: '线性标签页' },
+          { value: 'card', text: '卡片标签页' },
+          { value: 'window', text: '窗口标签页' },
+        ],
+        PagedType: [{ value: 'single', text: '单个切换' }, { value: 'page', text: '整页切换' }],
+        TabPositionType: [
+          { value: 'top', text: '上' },
+          { value: 'bottom', text: '下' },
+          { value: 'left', text: '左' },
+          { value: 'right', text: '右' },
+        ],
+        ReturnType: {
+          newValue: 'string',
+          oldValue: 'string',
+          newItem: 'Object',
+          oldItem: 'Object',
+        },
+        DeleteType: { value: 'string', item: 'string' },
       },
       childrenWidget: [],
       category: ['数据展示'],
@@ -20562,6 +21390,11 @@ export default [
             },
           },
         },
+        TitleContainer: {
+          name: '页签区域',
+          desc: '页签区域样式配置',
+          normal: [['background'], ['textAlign']],
+        },
       },
       defaultTheme: { Container: { normal: { height: 400 } } },
       aliasName: 'WindowTabs',
@@ -20585,7 +21418,7 @@ export default [
         },
         type: { type: 'StyleType', desc: '标签的主题样式', propsDefaultValue: 'customs' },
         closeIcon: {
-          type: 'string',
+          type: 'icon',
           desc: '标签图标样式',
           propsDefaultValue: 'lugia-icon-reminder_close',
         },
@@ -20608,8 +21441,13 @@ export default [
         },
       },
       type: {
-        ShapeType: ['basic', 'round'],
-        StyleType: ['customs', 'primary', 'basic', 'presets'],
+        ShapeType: [{ value: 'basic', text: '基本类型' }, { value: 'round', text: '圆角类型' }],
+        StyleType: [
+          { value: 'customs', text: '自定义风格' },
+          { value: 'primary', text: '主题风格' },
+          { value: 'basic', text: '基本风格' },
+          { value: 'presets', text: '预设类型' },
+        ],
       },
       category: ['数据展示'],
       designInfo: {
@@ -20802,7 +21640,7 @@ export default [
         },
         type: { type: 'StyleType', desc: '标签的主题样式', propsDefaultValue: 'customs' },
         closeIcon: {
-          type: 'string',
+          type: 'icon',
           desc: '标签图标样式',
           propsDefaultValue: 'lugia-icon-reminder_close',
         },
@@ -20825,8 +21663,13 @@ export default [
         },
       },
       type: {
-        ShapeType: ['basic', 'round'],
-        StyleType: ['customs', 'primary', 'basic', 'presets'],
+        ShapeType: [{ value: 'basic', text: '基本类型' }, { value: 'round', text: '圆角类型' }],
+        StyleType: [
+          { value: 'customs', text: '自定义风格' },
+          { value: 'primary', text: '主题风格' },
+          { value: 'basic', text: '基本风格' },
+          { value: 'presets', text: '预设类型' },
+        ],
       },
       category: ['数据展示'],
       theme: {
@@ -20894,7 +21737,7 @@ export default [
           defaultValue: 'optional',
         },
         closeIcon: {
-          type: 'string',
+          type: 'icon',
           desc: '标签图标样式',
           propsDefaultValue: 'lugia-icon-reminder_close',
         },
@@ -20917,8 +21760,13 @@ export default [
         },
       },
       type: {
-        ShapeType: ['basic', 'round'],
-        StyleType: ['customs', 'primary', 'basic', 'presets'],
+        ShapeType: [{ value: 'basic', text: '基本类型' }, { value: 'round', text: '圆角类型' }],
+        StyleType: [
+          { value: 'customs', text: '自定义风格' },
+          { value: 'primary', text: '主题风格' },
+          { value: 'basic', text: '基本风格' },
+          { value: 'presets', text: '预设类型' },
+        ],
       },
       category: ['数据展示'],
       theme: {
@@ -21016,6 +21864,8 @@ export default [
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
             { key: 'description', title: '时间节点详细描述', type: 'string' },
+            { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineType' },
+            { key: 'status', title: '时间节点状态', type: 'TimeLineStatus' },
           ],
         },
         defaultData: {
@@ -21024,6 +21874,8 @@ export default [
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
             { key: 'description', title: '时间节点详细描述', type: 'string' },
+            { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineType' },
+            { key: 'status', title: '时间节点状态', type: 'TimeLineStatus' },
           ],
         },
         reverse: {
@@ -21039,7 +21891,23 @@ export default [
           defaultValue: 'right',
         },
       },
-      type: { TimeLineMode: ['left', 'right', 'alternate'] },
+      type: {
+        TimeLineMode: [
+          { value: 'left', text: '左侧展示' },
+          { value: 'right', text: '右侧展示' },
+          { value: 'alternate', text: '交替展示' },
+        ],
+        TimeLineType: [
+          { value: 'dot', text: '点状节点' },
+          { value: 'icon', text: '图标节点' },
+          { value: 'explain', text: '隐藏节点' },
+        ],
+        TimeLineStatus: [
+          { value: 'success', text: '成功状态' },
+          { value: 'failed', text: '失败状态' },
+          { value: 'normal', text: '正常状态' },
+        ],
+      },
       childrenWidget: [],
       category: ['数据展示'],
       designInfo: {
@@ -21049,7 +21917,7 @@ export default [
           desc: '幽灵节点时间轴配置',
           props: { pending: true, pendingDot: 'lugia-icon-financial_abort' },
           theme: {
-            TimeLineContainer: {
+            Container: {
               name: '时间轴最外层容器',
               desc: '时间轴最外层容器',
               normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
@@ -21058,11 +21926,19 @@ export default [
               name: '单个时间节点配置',
               theme: {
                 TimeLineIcon: {
-                  normal: {
-                    name: '时间节点内容图标',
-                    desc: '时间节点连接线的配置',
-                    normal: [['font'], ['fontSize'], ['color']],
-                  },
+                  name: '时间节点内容图标',
+                  desc: '时间节点连接线的配置',
+                  normal: [['font'], ['fontSize'], ['color']],
+                },
+                TimeLineItemTitle: {
+                  name: '时间节点时间文本',
+                  desc: '时间节点时间文本配置',
+                  normal: [['font'], ['fontSize'], ['color'], ['margin'], ['lineHeight']],
+                },
+                TimeLineItemDescription: {
+                  name: '时间节点描述信息',
+                  desc: '时间节点描述信息配置',
+                  normal: [['font'], ['fontSize'], ['color'], ['margin'], ['lineHeight']],
                 },
                 TimeLineItemContainer: {
                   name: '时间节点外层容器',
@@ -21072,12 +21948,19 @@ export default [
                 TimeLineItemLine: {
                   name: '时间节点连接线',
                   desc: '时间节点连接线的配置',
-                  normal: [['width'], ['height'], ['background']],
+                  normal: [['width'], ['height'], ['border', 'left']],
                 },
                 TimeLineExplainDot: {
                   name: '隐藏的解释时间节点',
                   desc: '隐藏的解释时间节点配置',
-                  normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['background'],
+                    ['boxShadow'],
+                    ['border'],
+                    ['margin'],
+                  ],
                 },
                 TimeLineItemTip: {
                   name: '隐藏信息弹框',
@@ -21085,7 +21968,40 @@ export default [
                     Container: {
                       name: '隐藏的解释时间节点显示容器',
                       desc: '隐藏的解释时间节点显示容器配置',
-                      normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+                      normal: [
+                        ['width'],
+                        ['height'],
+                        ['background'],
+                        ['boxShadow'],
+                        ['border'],
+                        ['borderRadius'],
+                      ],
+                    },
+                    TooltipTitle: {
+                      name: '隐藏的解释时间节点标题',
+                      desc: '隐藏的解释时间节点标题配置',
+                      normal: [
+                        ['fontSize'],
+                        ['font'],
+                        ['color'],
+                        ['width'],
+                        ['height'],
+                        ['padding'],
+                        ['margin'],
+                      ],
+                    },
+                    TooltipDescription: {
+                      name: '隐藏的解释时间节点描述',
+                      desc: '隐藏的解释时间节点描述配置',
+                      normal: [
+                        ['fontSize'],
+                        ['font'],
+                        ['color'],
+                        ['width'],
+                        ['height'],
+                        ['padding'],
+                        ['margin'],
+                      ],
                     },
                   },
                 },
@@ -21095,7 +22011,7 @@ export default [
         },
       },
       theme: {
-        TimeLineContainer: {
+        Container: {
           name: '时间轴最外层容器',
           desc: '时间轴最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
@@ -21106,7 +22022,14 @@ export default [
             TimeLineDot: {
               name: '时间节点',
               desc: '时间节点配置',
-              normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['boxShadow'],
+                ['border'],
+                ['borderRadius'],
+              ],
             },
             TimeLineItemContainer: {
               name: '时间节点外层容器',
@@ -21116,7 +22039,34 @@ export default [
             TimeLineExplainDot: {
               name: '隐藏的解释时间节点',
               desc: '隐藏的解释时间节点配置',
-              normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['boxShadow'],
+                ['border'],
+                ['margin'],
+              ],
+            },
+            TimeLineItemLine: {
+              name: '时间节点连接线',
+              desc: '时间节点连接线的配置',
+              normal: [['width'], ['height'], ['border', 'left']],
+            },
+            TimeLineIcon: {
+              name: '时间节点内容图标',
+              desc: '时间节点连接线的配置',
+              normal: [['font'], ['fontSize'], ['color']],
+            },
+            TimeLineItemTitle: {
+              name: '时间节点时间文本',
+              desc: '时间节点时间文本配置',
+              normal: [['font'], ['fontSize'], ['color'], ['margin'], ['lineHeight']],
+            },
+            TimeLineItemDescription: {
+              name: '时间节点描述信息',
+              desc: '时间节点描述信息配置',
+              normal: [['font'], ['fontSize'], ['color'], ['margin'], ['lineHeight']],
             },
             TimeLineItemTip: {
               name: '隐藏信息弹框',
@@ -21124,20 +22074,41 @@ export default [
                 Container: {
                   name: '隐藏的解释时间节点显示容器',
                   desc: '隐藏的解释时间节点显示容器配置',
-                  normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['background'],
+                    ['boxShadow'],
+                    ['border'],
+                    ['borderRadius'],
+                  ],
                 },
-              },
-            },
-            TimeLineItemLine: {
-              name: '时间节点连接线',
-              desc: '时间节点连接线的配置',
-              normal: [['width'], ['height'], ['background']],
-            },
-            TimeLineIcon: {
-              normal: {
-                name: '时间节点内容图标',
-                desc: '时间节点连接线的配置',
-                normal: [['font'], ['fontSize'], ['color']],
+                TooltipTitle: {
+                  name: '隐藏的解释时间节点标题',
+                  desc: '隐藏的解释时间节点标题配置',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                TooltipDescription: {
+                  name: '隐藏的解释时间节点描述',
+                  desc: '隐藏的解释时间节点描述配置',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
               },
             },
           },
@@ -21162,6 +22133,8 @@ export default [
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
             { key: 'description', title: '时间节点详细描述', type: 'string' },
+            { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineType' },
+            { key: 'status', title: '时间节点状态', type: 'TimeLineStatus' },
           ],
         },
         defaultData: {
@@ -21170,6 +22143,8 @@ export default [
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
             { key: 'description', title: '时间节点详细描述', type: 'string' },
+            { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineType' },
+            { key: 'status', title: '时间节点状态', type: 'TimeLineStatus' },
           ],
         },
         reverse: {
@@ -21189,11 +22164,27 @@ export default [
           defaultValue: 'right',
         },
       },
-      type: { TimeLineMode: ['left', 'right', 'alternate'] },
+      type: {
+        TimeLineMode: [
+          { value: 'left', text: '左侧展示' },
+          { value: 'right', text: '右侧展示' },
+          { value: 'alternate', text: '交替展示' },
+        ],
+        TimeLineType: [
+          { value: 'dot', text: '点状节点' },
+          { value: 'icon', text: '图标节点' },
+          { value: 'explain', text: '隐藏节点' },
+        ],
+        TimeLineStatus: [
+          { value: 'success', text: '成功状态' },
+          { value: 'failed', text: '失败状态' },
+          { value: 'normal', text: '正常状态' },
+        ],
+      },
       childrenWidget: [],
       category: ['数据展示'],
       theme: {
-        TimeLineContainer: {
+        Container: {
           name: '时间轴最外层容器',
           desc: '时间轴最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
@@ -21202,11 +22193,19 @@ export default [
           name: '单个时间节点配置',
           theme: {
             TimeLineIcon: {
-              normal: {
-                name: '时间节点内容图标',
-                desc: '时间节点连接线的配置',
-                normal: [['font'], ['fontSize'], ['color']],
-              },
+              name: '时间节点内容图标',
+              desc: '时间节点连接线的配置',
+              normal: [['font'], ['fontSize'], ['color']],
+            },
+            TimeLineItemTitle: {
+              name: '时间节点时间文本',
+              desc: '时间节点时间文本配置',
+              normal: [['font'], ['fontSize'], ['color'], ['margin'], ['lineHeight']],
+            },
+            TimeLineItemDescription: {
+              name: '时间节点描述信息',
+              desc: '时间节点描述信息配置',
+              normal: [['font'], ['fontSize'], ['color'], ['margin'], ['lineHeight']],
             },
             TimeLineItemContainer: {
               name: '时间节点外层容器',
@@ -21216,12 +22215,19 @@ export default [
             TimeLineItemLine: {
               name: '时间节点连接线',
               desc: '时间节点连接线的配置',
-              normal: [['width'], ['height'], ['background']],
+              normal: [['width'], ['height'], ['border', 'left']],
             },
             TimeLineExplainDot: {
               name: '隐藏的解释时间节点',
               desc: '隐藏的解释时间节点配置',
-              normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['boxShadow'],
+                ['border'],
+                ['margin'],
+              ],
             },
             TimeLineItemTip: {
               name: '隐藏信息弹框',
@@ -21229,7 +22235,40 @@ export default [
                 Container: {
                   name: '隐藏的解释时间节点显示容器',
                   desc: '隐藏的解释时间节点显示容器配置',
-                  normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['background'],
+                    ['boxShadow'],
+                    ['border'],
+                    ['borderRadius'],
+                  ],
+                },
+                TooltipTitle: {
+                  name: '隐藏的解释时间节点标题',
+                  desc: '隐藏的解释时间节点标题配置',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                TooltipDescription: {
+                  name: '隐藏的解释时间节点描述',
+                  desc: '隐藏的解释时间节点描述配置',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
                 },
               },
             },
@@ -21283,9 +22322,17 @@ export default [
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
       type: {
-        InputSize: ['small', 'default', 'large'],
-        ValidateType: ['top', 'bottom', 'inner'],
-        ValidateStatus: ['default', 'error'],
+        InputSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'bottom', text: '底部文本' },
+          { value: 'inner', text: '框内文本' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
       },
       category: ['数据录入'],
@@ -21403,23 +22450,18 @@ export default [
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出提示框', propsDefaultValue: true },
-        size: {
-          type: 'ToolTipSize',
-          desc: '可配置三种尺寸大小的气泡提示框',
-          defaultValue: 'default',
-        },
         placement: { type: 'DirectionType', desc: '气泡提示框显示的位置,十二个方向' },
-        visible: { type: 'boolean', desc: '是否显示出来', defaultValue: 'false' },
-        defaultVisible: { type: 'boolean', desc: '默认是否显示出来', defaultValue: 'false' },
+        visible: { type: 'boolean', desc: '是否显示出来', propsDefaultValue: false },
+        defaultVisible: { type: 'boolean', desc: '默认是否显示出来', propsDefaultValue: false },
         popArrowType: {
           type: 'PopArrowType',
           desc: '可配置两种风格的箭头. 尖角,圆角',
-          defaultValue: 'sharp',
+          propsDefaultValue: 'sharp',
         },
         action: {
           type: 'ActionType',
           desc: '触发提示的动作，可配置 click,hover,focus',
-          defaultValue: 'click',
+          propsDefaultValue: 'click',
         },
         children: { type: 'React.Node', desc: '气泡提示框需要包含的子组件' },
         title: {
@@ -21437,22 +22479,25 @@ export default [
         },
       },
       type: {
-        ActionType: ['click', 'hover', 'focus'],
-        ToolTipSize: ['small', 'default', 'large'],
-        PopArrowType: ['sharp', 'round'],
+        ActionType: [
+          { value: 'click', text: '点击' },
+          { value: 'hover', text: '滑过' },
+          { value: 'focus', text: '聚焦' },
+        ],
+        PopArrowType: [{ value: 'sharp', text: '尖角' }, { value: 'round', text: '圆角' }],
         DirectionType: [
-          'left',
-          'leftTop',
-          'leftBottom',
-          'right',
-          'rightTop',
-          'rightBottom',
-          'topLeft',
-          'top',
-          'topRight',
-          'bottom',
-          'bottomRight',
-          'bottomLeft',
+          { value: 'topLeft', text: '上左' },
+          { value: 'top', text: '上' },
+          { value: 'topRight', text: '上右' },
+          { value: 'bottomLeft', text: '下左' },
+          { value: 'bottom', text: '下' },
+          { value: 'bottomRight', text: '下右' },
+          { value: 'leftTop', text: '左上' },
+          { value: 'left', text: '左' },
+          { value: 'leftBottom', text: '左下' },
+          { value: 'rightTop', text: '右上' },
+          { value: 'right', text: '右' },
+          { value: 'rightBottom', text: '右下' },
         ],
       },
       category: ['数据展示'],
@@ -21604,8 +22649,15 @@ export default [
         },
       },
       type: {
-        SizeType: ['default', 'small', 'large'],
-        TransferType: ['panel', 'tree'],
+        SizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        TransferType: [
+          { value: 'panel', text: '基本穿梭框' },
+          { value: 'tree', text: '树型穿梭框' },
+        ],
         DirectionType: ['left', 'right'],
         TransferStyle: {
           height: { type: 'number', desc: 'Transfer 的高度' },
@@ -21854,9 +22906,16 @@ export default [
                   disabled: [['color'], ['font']],
                 },
                 CheckboxEdgeCancel: {
-                  name: 'Checkbox取消项边框配置',
-                  desc: 'Checkbox取消状态边框配置样式',
-                  normal: [['background'], ['borderRadius'], ['border']],
+                  name: '取消状态外框样式',
+                  desc: '取消状态外框样式',
+                  normal: [
+                    ['background'],
+                    ['borderRadius'],
+                    ['border'],
+                    ['boxShadow'],
+                    ['width'],
+                    ['height'],
+                  ],
                 },
                 CheckboxInnerCancel: {
                   name: 'Checkbox取消状态样式配置',
@@ -22295,7 +23354,14 @@ export default [
         TransferCancelBox: {
           name: '穿梭框面板取消项盒子样式',
           desc: '为穿梭框配置右面板取消项盒子样式',
-          normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
+          normal: [
+            ['width'],
+            ['height'],
+            ['margin'],
+            ['padding'],
+            ['background'],
+            ['border', 'top'],
+          ],
         },
         TransferCancelCheckbox: {
           name: '穿梭框面板取消项盒子样式',
@@ -22316,9 +23382,16 @@ export default [
               disabled: [['color'], ['font']],
             },
             CheckboxEdgeCancel: {
-              name: 'Checkbox取消项边框配置',
-              desc: 'Checkbox取消状态边框配置样式',
-              normal: [['background'], ['borderRadius'], ['border']],
+              name: '取消状态外框样式',
+              desc: '取消状态外框样式',
+              normal: [
+                ['background'],
+                ['borderRadius'],
+                ['border'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
             },
             CheckboxInnerCancel: {
               name: 'Checkbox取消状态样式配置',
@@ -22778,8 +23851,15 @@ export default [
         },
       },
       type: {
-        SizeType: ['default', 'small', 'large'],
-        TransferType: ['panel', 'tree'],
+        SizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        TransferType: [
+          { value: 'panel', text: '基本穿梭框' },
+          { value: 'tree', text: '树型穿梭框' },
+        ],
         DirectionType: ['left', 'right'],
         TransferStyle: {
           height: { type: 'number', desc: 'Transfer 的高度' },
@@ -22995,9 +24075,16 @@ export default [
               disabled: [['color'], ['font']],
             },
             CheckboxEdgeCancel: {
-              name: 'Checkbox取消项边框配置',
-              desc: 'Checkbox取消状态边框配置样式',
-              normal: [['background'], ['borderRadius'], ['border']],
+              name: '取消状态外框样式',
+              desc: '取消状态外框样式',
+              normal: [
+                ['background'],
+                ['borderRadius'],
+                ['border'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
             },
             CheckboxInnerCancel: {
               name: 'Checkbox取消状态样式配置',
@@ -23396,7 +24483,13 @@ export default [
           args: [{ name: 'item', desc: '节点数据', type: 'object' }],
         },
       },
-      type: { sizeType: ['small', 'default', 'large'] },
+      type: {
+        sizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+      },
       category: ['数据录入'],
       designInfo: {
         MutlipleTree: {
@@ -24164,7 +25257,13 @@ export default [
           args: [{ name: 'item', desc: '节点数据', type: 'object' }],
         },
       },
-      type: { sizeType: ['small', 'default', 'large'] },
+      type: {
+        sizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+      },
       category: ['数据录入'],
       theme: {
         Container: {
@@ -24597,9 +25696,17 @@ export default [
         },
       },
       type: {
-        sizeType: ['small', 'default', 'large'],
-        ValidateStatus: ['default', 'error'],
-        ValidateType: ['top', 'bottom', 'inner'],
+        sizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'bottom', text: '底部文本' },
+          { value: 'inner', text: '框内文本' },
+        ],
       },
       category: ['数据录入'],
       designInfo: {
@@ -25568,9 +26675,17 @@ export default [
         },
       },
       type: {
-        sizeType: ['small', 'default', 'large'],
-        ValidateStatus: ['default', 'error'],
-        ValidateType: ['top', 'bottom', 'inner'],
+        sizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'bottom', text: '底部文本' },
+          { value: 'inner', text: '框内文本' },
+        ],
       },
       category: ['数据录入'],
       theme: {
@@ -26149,9 +27264,20 @@ export default [
         },
       },
       type: {
-        UploadSize: ['small', 'default', 'large'],
-        UploadType: ['default', 'both', 'button', 'picture', 'area', 'custom'],
-        FileType: ['done', 'fail'],
+        UploadSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '默认' },
+          { value: 'large', text: '大' },
+        ],
+        UploadType: [
+          { value: 'default', text: '默认上传' },
+          { value: 'both', text: '带按钮的默认上传' },
+          { value: 'button', text: '按钮上传' },
+          { value: 'picture', text: '图片上传' },
+          { value: 'area', text: '区域上传' },
+          { value: 'custom', text: '自定义上传' },
+        ],
+        FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
       },
       category: ['数据录入'],
       designInfo: {
@@ -26777,9 +27903,20 @@ export default [
         },
       },
       type: {
-        UploadSize: ['small', 'default', 'large'],
-        UploadType: ['default', 'both', 'button', 'picture', 'area', 'custom'],
-        FileType: ['done', 'fail'],
+        UploadSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '默认' },
+          { value: 'large', text: '大' },
+        ],
+        UploadType: [
+          { value: 'default', text: '默认上传' },
+          { value: 'both', text: '带按钮的默认上传' },
+          { value: 'button', text: '按钮上传' },
+          { value: 'picture', text: '图片上传' },
+          { value: 'area', text: '区域上传' },
+          { value: 'custom', text: '自定义上传' },
+        ],
+        FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
       },
       category: ['数据录入'],
       theme: {
@@ -26971,9 +28108,20 @@ export default [
         },
       },
       type: {
-        UploadSize: ['small', 'default', 'large'],
-        UploadType: ['default', 'both', 'button', 'picture', 'area', 'custom'],
-        FileType: ['done', 'fail'],
+        UploadSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '默认' },
+          { value: 'large', text: '大' },
+        ],
+        UploadType: [
+          { value: 'default', text: '默认上传' },
+          { value: 'both', text: '带按钮的默认上传' },
+          { value: 'button', text: '按钮上传' },
+          { value: 'picture', text: '图片上传' },
+          { value: 'area', text: '区域上传' },
+          { value: 'custom', text: '自定义上传' },
+        ],
+        FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
       },
       category: ['数据录入'],
       theme: {
@@ -27120,9 +28268,20 @@ export default [
         },
       },
       type: {
-        UploadSize: ['small', 'default', 'large'],
-        UploadType: ['default', 'both', 'button', 'picture', 'area', 'custom'],
-        FileType: ['done', 'fail'],
+        UploadSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '默认' },
+          { value: 'large', text: '大' },
+        ],
+        UploadType: [
+          { value: 'default', text: '默认上传' },
+          { value: 'both', text: '带按钮的默认上传' },
+          { value: 'button', text: '按钮上传' },
+          { value: 'picture', text: '图片上传' },
+          { value: 'area', text: '区域上传' },
+          { value: 'custom', text: '自定义上传' },
+        ],
+        FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
       },
       category: ['数据录入'],
       theme: {
@@ -27299,9 +28458,20 @@ export default [
         },
       },
       type: {
-        UploadSize: ['small', 'default', 'large'],
-        UploadType: ['default', 'both', 'button', 'picture', 'area', 'custom'],
-        FileType: ['done', 'fail'],
+        UploadSize: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '默认' },
+          { value: 'large', text: '大' },
+        ],
+        UploadType: [
+          { value: 'default', text: '默认上传' },
+          { value: 'both', text: '带按钮的默认上传' },
+          { value: 'button', text: '按钮上传' },
+          { value: 'picture', text: '图片上传' },
+          { value: 'area', text: '区域上传' },
+          { value: 'custom', text: '自定义上传' },
+        ],
+        FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
       },
       category: ['数据录入'],
       theme: {
