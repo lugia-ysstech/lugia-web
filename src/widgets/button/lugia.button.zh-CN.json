@@ -62,7 +62,7 @@
       "type": "boolean",
       "desc": "是否开启过渡效果，默认开启true，关闭为false",
       "defaultValue": false,
-      "propsDefaultValue":true
+      "propsDefaultValue": true
     }
   },
   "events": {
@@ -78,9 +78,22 @@
     }
   },
   "type": {
-    "ButtonShape": ["default", "round"],
-    "ButtonType": ["default", "primary", "success", "warning", "danger", "link"],
-    "ButtonSize": ["default", "small", "large"],
+    "ButtonShape": [
+      { "value": "default", "text": "默认型" },
+      { "value": "round", "text": "圆角型" }
+    ],
+    "ButtonType": [
+      { "value": "default", "text": "默认类型" },
+      { "value": "primary", "text": "主题类型" },
+      { "value": "success", "text": "成功类型" },
+      { "value": "warning", "text": "警告类型" },
+      { "value": "danger", "text": "危险类型" },
+      { "value": "link", "text": "链接类型" }
+    ],
+    "ButtonSize": [
+      { "value": "default", "text": "默认尺寸" },
+      { "value": "small", "text": "小尺寸" },
+      { "value": "large", "text": "大尺寸" }],
     "ButtonStyle": {
       "width": {
         "type": "number",
