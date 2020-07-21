@@ -138,6 +138,11 @@
       "propsDefaultValue": "include"
     },
 
+    "help": {
+      "type": "string",
+      "desc": "树形选择控件校验提示信息"
+    },
+
     "divided": {
       "type": "boolean",
       "desc": "弹出菜单中是否展示分割线"
