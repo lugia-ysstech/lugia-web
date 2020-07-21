@@ -10,10 +10,9 @@ import Widget from '../consts/index';
 import { TabType, TabPositionType } from '../css/tabs';
 import Icon from '../icon';
 import Divider from '../divider';
-import { isVertical, matchType } from './utils';
+import { isVertical, matchType, getTextAlign } from './utils';
 import { ObjectUtils } from '@lugia/type-utils';
-
-import CSSComponent, { css, keyframes, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import get from '../css/theme-common-dict';
 import { deepMerge } from '@lugia/object-utils';
@@ -172,24 +171,6 @@ const BaseTab = CSSComponent({
 
 SelectTab.displayName = 'Tabpane';
 
-const addWidth = keyframes`
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 100%;
-    }
-`;
-
-const addHeight = keyframes`
-    0% {
-      height: 0;
-    }
-    100% {
-      height: 100%;
-    }
-`;
-
 const Title = CSSComponent({
   tag: 'div',
   className: 'TitleLine',
@@ -200,21 +181,7 @@ const Title = CSSComponent({
     },
     getCSS: (theme: Object, themeProps: Object) => {
       const { textAlign } = theme;
-      let justify = 'center';
-      switch (textAlign) {
-        case 'left':
-          justify = 'flex-start';
-          break;
-        case 'right':
-          justify = 'flex-end';
-          break;
-        case 'justify':
-          justify = 'space-between';
-          break;
-        default:
-          break;
-      }
-      return `justify-content: ${justify};`;
+      return `justify-content:${getTextAlign(textAlign)};`;
     },
     getThemeMeta: (theme: Object, themeProps: Object) => {
       const { height } = theme;

@@ -854,7 +854,7 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         TitleContainer: {
           normal: {
-            // textAlign: 'center',
+            textAlign: 'center',
           },
         },
         AddButton: {

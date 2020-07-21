@@ -506,6 +506,11 @@
               "disabled": [["color"], ["font"]]
             }
           }
+        },
+        "TitleContainer": {
+          "name": "页签区域",
+          "desc": "页签区域样式配置",
+          "normal": [["background"], ["textAlign"]]
         }
       },
       "defaultTheme": {
