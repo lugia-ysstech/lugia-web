@@ -141,7 +141,7 @@
         "children": [
           {
             "title": "整体背景",
-            "iconClass": "mask",
+            "iconClass": "background",
             "data": [
               {
                 "name": "整体背景",
@@ -161,7 +161,7 @@
             "data": [
               {
                 "name": "输入框",
-                "path": ["QuickJumpInput"],
+                "path": ["QuickJumpInput","Container"],
                 "description": {
                   "appearancePart": {
                     "text": "输入框",
@@ -173,7 +173,7 @@
           },
           {
             "title": "提醒文字",
-            "iconClass": "paginationJump",
+            "iconClass": "paginationJumpText",
             "data": [
               {
                 "name": "提醒文字",
@@ -380,7 +380,7 @@
         "data": [
           {
             "name": "输入框",
-            "path": ["SimplePaginationInput"],
+            "path": ["SimplePaginationInput","Container"],
             "description": {
               "appearancePart": {
                 "text": "输入框",
