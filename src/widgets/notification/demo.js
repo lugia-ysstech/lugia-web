@@ -67,17 +67,13 @@ export default class NotificationDemo extends React.Component<any, any> {
           },
         },
         NotificationIcon: {
-          Icon: {
-            normal: {
-              color: 'yellow',
-            },
+          normal: {
+            color: 'yellow',
           },
         },
         NotificationCloseIcon: {
-          Icon: {
-            normal: {
-              color: 'yellow',
-            },
+          normal: {
+            color: 'yellow',
           },
         },
       },
