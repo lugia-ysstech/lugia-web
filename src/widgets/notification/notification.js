@@ -74,6 +74,7 @@ export default ThemeProvider(
                 iconClass={iconType ? IconInfo[iconType].class : icon}
                 iconColor={iconType && IconInfo[iconType].color}
                 {...notificationIconTheme}
+                singleTheme
               />
             ) : null}
             <Content>
@@ -84,6 +85,7 @@ export default ThemeProvider(
               <CloseIcon
                 iconClass={closeIcon || 'lugia-icon-reminder_close'}
                 {...notificationCloseIconTheme}
+                singleTheme
               />
             </CloseIconWrap>
           </Notification>
