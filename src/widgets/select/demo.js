@@ -82,17 +82,13 @@ const selectTheme = {
       },
     },
     ToggleIcon: {
-      Icon: {
-        normal: {
-          color: 'blue',
-        },
+      normal: {
+        color: 'blue',
       },
     },
     ResetIcon: {
-      Icon: {
-        normal: {
-          color: 'yellow',
-        },
+      normal: {
+        color: 'yellow',
       },
     },
   },

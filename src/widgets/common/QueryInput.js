@@ -235,6 +235,7 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
               <CommonIcon
                 {...resetIconTheme}
                 iconClass={resetIcon || 'lugia-icon-reminder_refresh'}
+                singleTheme
               />
             </RefreshButton>
             {this.getSearchInputButton()}
@@ -268,6 +269,7 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
         <CommonIcon
           {...toggleIconTheme}
           iconClass={toggleIcon || 'lugia-icon-direction_arrow_up'}
+          singleTheme
         />
       </ShowCheckAllButton>
     );
