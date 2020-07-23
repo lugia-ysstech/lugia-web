@@ -40,6 +40,8 @@ type AutoCompleteProps = {
   placeholder?: string,
   prefix?: React$Element<any>,
   suffix?: React$Element<any>,
+  clearIcon: string,
+  oldTimeIcon: string,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   getPartOfThemeConfig: Function,
@@ -118,6 +120,22 @@ export default ShortKeyBoard(
           </PopupMenuWrap>
         );
       };
+      getIconTheme = () => {
+        const { getPartOfThemeHocProps } = this.props;
+        const { viewClass, theme } = getPartOfThemeHocProps('OldTimeIcon');
+        const iconTheme = deepMerge(
+          {
+            [viewClass]: {
+              normal: {
+                color: get('blackColor'),
+              },
+            },
+          },
+          theme
+        );
+
+        return { viewClass, theme: iconTheme };
+      };
       render() {
         const { props, state } = this;
         const { value } = state;
@@ -131,6 +149,7 @@ export default ShortKeyBoard(
           size = 'default',
           alwaysOpen,
           liquidLayout,
+          clearIcon,
         } = props;
         const data = this.getMenuData();
         const len = data.length;
@@ -164,6 +183,7 @@ export default ShortKeyBoard(
                 placeholder={placeholder}
                 prefix={prefix}
                 suffix={suffix}
+                clearIcon={clearIcon}
                 validateType={validateType}
                 validateStatus={validateStatus}
               />
@@ -206,7 +226,7 @@ export default ShortKeyBoard(
         if (preSelectValue === '') {
           return null;
         }
-        const { showOldValue, getPartOfThemeProps } = this.props;
+        const { showOldValue, getPartOfThemeProps, oldTimeIcon } = this.props;
         const defaultThemeConfig = {
           themeConfig: {
             normal: {
@@ -222,7 +242,11 @@ export default ShortKeyBoard(
 
         return showOldValue ? (
           <OldValueItem onClick={this.handleClickOldValueItem} themeProps={themeProps}>
-            <TimeIcon themeProps={themeProps} iconClass={'lugia-icon-reminder_clock_circle_o'} />
+            <TimeIcon
+              singleTheme
+              {...this.getIconTheme()}
+              iconClass={oldTimeIcon || 'lugia-icon-reminder_clock_circle_o'}
+            />
             <OldValueTitle themeProps={themeProps}>{preSelectValue}</OldValueTitle>
           </OldValueItem>
         ) : null;

@@ -70,6 +70,16 @@
       "type": "icon",
       "desc": "输入框后缀",
       "isHidden": true
+    },
+    "clearIcon": {
+      "type": "icon",
+      "desc": "清除图标",
+      "propsDefaultValue": ""
+    },
+    "oldTimeIcon": {
+      "type": "icon",
+      "desc": "上次选择值Icon",
+      "propsDefaultValue": ""
     }
   },
   "events": {
@@ -378,7 +388,16 @@
           }
         }
       }
+    },
+    "OldTimeIcon": {
+      "name": "选中值的图标",
+      "desc": "上一次选中值的图标",
+      "normal": [["color"], ["fontSize"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
     }
+
   },
 
   "defaultTheme": {
