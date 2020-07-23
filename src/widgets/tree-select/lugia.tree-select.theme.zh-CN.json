@@ -346,8 +346,8 @@
             "data": [
               {
                 "name": "前缀图标",
-                "path": ["QueryInput", "InputPrefix"],
-                "props": [{ "name": "transferPrefixIcon", "typeInTheme": "icon" }],
+                "path": ["ToggleIcon"],
+                "props": [{ "name": "toggleIcon", "typeInTheme": "icon" }],
                 "description": {
                   "textPart": {
                     "text": "前缀图标",
@@ -357,8 +357,8 @@
               },
               {
                 "name": "后缀图标",
-                "path": ["QueryInput", "InputSuffix"],
-                "props": [{ "name": "transferSuffixIcon", "typeInTheme": "icon" }],
+                "path": ["SearchAddIcon"],
+                "props": [{ "name": "searchAddIcon", "typeInTheme": "icon" }],
                 "description": {
                   "textPart": {
                     "text": "后缀图标",

@@ -278,9 +278,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       renderSuffixItems,
       onRightClick,
       getPartOfThemeProps,
+      getPartOfThemeHocProps,
       switchIconNames,
       toggleIcon,
       searchClearIcon,
+      searchAddIcon,
     } = this.props;
     const { onSelect, ...res } = this.props;
     const { current, start, treeFilter, value, displayValue, query, selectAll } = this.state;
@@ -298,12 +300,18 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       },
     };
     const receivedQueryInputTheme = getPartOfThemeProps('QueryInput');
+    const toggleIconTheme = getPartOfThemeHocProps('ToggleIcon');
+    const resetIconTheme = getPartOfThemeHocProps('ResetIcon');
+    const searchAddIconTheme = getPartOfThemeHocProps('SearchAddIcon');
 
     const tree = [
       data && data.length !== 0 ? (
         <QueryInput
           theme={queryInputTheme}
           receivedTheme={receivedQueryInputTheme}
+          toggleIconTheme={toggleIconTheme}
+          resetIconTheme={resetIconTheme}
+          searchAddIconTheme={searchAddIconTheme}
           query={query}
           onQueryInputChange={this.onQueryInputChange}
           onQueryInputKeyDown={this.onQueryInputKeyDown}
@@ -316,6 +324,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           canInput={canInput}
           toggleIcon={toggleIcon}
           searchClearIcon={searchClearIcon}
+          searchAddIcon={searchAddIcon}
         />
       ) : null,
       <Tree
