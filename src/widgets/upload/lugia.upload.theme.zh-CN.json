@@ -20,6 +20,14 @@
             "description": {
               "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
+          },
+          {
+            "name": "上传图标",
+            "path": ["UploadIcon"],
+            "props": [{ "name": "icon", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": { "text": "图标", "desc": "面板中外观配置的区块显示文本" }
+            }
           }
         ]
       },
@@ -43,11 +51,13 @@
           {
             "name": "上传成功图标样式",
             "path": ["UploadListSuccessIcon"],
+            "props": [{ "name": "successIcon", "typeInTheme": "icon" }],
             "description": { "textPart": { "text": "成功图标", "desc": "文本配置区块的显示文本" } }
           },
           {
             "name": "上传失败图标样式",
             "path": ["UploadListFailedIcon"],
+            "props": [{ "name": "failIcon", "typeInTheme": "icon" }],
             "description": { "textPart": { "text": "失败图标", "desc": "文本配置区块的显示文本" } }
           }
         ]
@@ -146,11 +156,13 @@
           {
             "name": "上传成功图标样式",
             "path": ["UploadListSuccessIcon"],
+            "props": [{ "name": "successIcon", "typeInTheme": "icon" }],
             "description": { "textPart": { "text": "成功图标", "desc": "文本配置区块的显示文本" } }
           },
           {
             "name": "上传失败图标样式",
             "path": ["UploadListFailedIcon"],
+            "props": [{ "name": "failIcon", "typeInTheme": "icon" }],
             "description": { "textPart": { "text": "失败图标", "desc": "文本配置区块的显示文本" } }
           }
         ]
@@ -215,6 +227,14 @@
             "description": {
               "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
+          },
+          {
+            "name": "上传图标",
+            "path": ["UploadIcon"],
+            "props": [{ "name": "icon", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": { "text": "图标", "desc": "面板中外观配置的区块显示文本" }
+            }
           }
         ]
       },
@@ -238,11 +258,13 @@
           {
             "name": "上传成功图标样式",
             "path": ["UploadListSuccessIcon"],
+            "props": [{ "name": "successIcon", "typeInTheme": "icon" }],
             "description": { "textPart": { "text": "成功图标", "desc": "文本配置区块的显示文本" } }
           },
           {
             "name": "上传失败图标样式",
             "path": ["UploadListFailedIcon"],
+            "props": [{ "name": "failIcon", "typeInTheme": "icon" }],
             "description": { "textPart": { "text": "失败图标", "desc": "文本配置区块的显示文本" } }
           }
         ]
@@ -317,6 +339,14 @@
             "description": {
               "textPart": {"text": "「上传」文本样式", "desc": "面板中外观配置的点击上传的文本样式"}
             }
+          },
+          {
+            "name": "上传图标",
+            "path": ["UploadIcon"],
+            "props": [{ "name": "icon", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": { "text": "图标", "desc": "面板中外观配置的区块显示文本" }
+            }
           }
         ]
       },
@@ -340,11 +370,13 @@
           {
             "name": "上传成功图标样式",
             "path": ["UploadListSuccessIcon"],
+            "props": [{ "name": "successIcon", "typeInTheme": "icon" }],
             "description": { "textPart": { "text": "成功图标", "desc": "文本配置区块的显示文本" } }
           },
           {
             "name": "上传失败图标样式",
             "path": ["UploadListFailedIcon"],
+            "props": [{ "name": "failIcon", "typeInTheme": "icon" }],
             "description": { "textPart": { "text": "失败图标", "desc": "文本配置区块的显示文本" } }
           }
         ]
@@ -462,11 +494,13 @@
           {
             "name": "上传成功图标样式",
             "path": ["UploadListSuccessIcon"],
+            "props": [{ "name": "successIcon", "typeInTheme": "icon" }],
             "description": { "textPart": { "text": "成功图标", "desc": "文本配置区块的显示文本" } }
           },
           {
             "name": "上传失败图标样式",
             "path": ["UploadListFailedIcon"],
+            "props": [{ "name": "failIcon", "typeInTheme": "icon" }],
             "description": { "textPart": { "text": "失败图标", "desc": "文本配置区块的显示文本" } }
           }
         ]

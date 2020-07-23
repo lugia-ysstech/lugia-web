@@ -66,6 +66,7 @@ type UploadProps = {
   defaultTips?: Object,
   userDefine?: any,
   isShowProgress?: boolean,
+  getInputRef?: Function,
 };
 type StateProps = {
   defaultText?: string,
@@ -408,9 +409,11 @@ class Upload extends React.Component<UploadProps, StateProps> {
   setDeleteList = (index: number, item: object) => {
     const { fileListDone } = this.state;
     fileListDone.splice(index, 1);
-    if (this.input.value.indexOf(item.name) !== -1) {
-      this.setState({ defaultText: '' });
-      this.input.value = '';
+    if (item) {
+      if (this.input.value.indexOf(item.name) !== -1) {
+        this.setState({ defaultText: '' });
+        this.input.value = '';
+      }
     }
     this.setStateValue({ fileListDone });
   };
