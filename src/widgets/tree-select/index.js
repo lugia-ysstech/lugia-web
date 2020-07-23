@@ -65,6 +65,8 @@ type TreeSelectProps = {
   onRightClick?: Function,
   pullIconClass?: string,
   clearIconClass?: string,
+  toggleIcon?: string,
+  searchClearIcon?: string,
   canClear?: boolean,
   isShowClearButton?: boolean,
 };
@@ -277,6 +279,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       onRightClick,
       getPartOfThemeProps,
       switchIconNames,
+      toggleIcon,
+      searchClearIcon,
     } = this.props;
     const { onSelect, ...res } = this.props;
     const { current, start, treeFilter, value, displayValue, query, selectAll } = this.state;
@@ -293,11 +297,13 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         },
       },
     };
+    const receivedQueryInputTheme = getPartOfThemeProps('QueryInput');
 
     const tree = [
       data && data.length !== 0 ? (
         <QueryInput
           theme={queryInputTheme}
+          receivedTheme={receivedQueryInputTheme}
           query={query}
           onQueryInputChange={this.onQueryInputChange}
           onQueryInputKeyDown={this.onQueryInputKeyDown}
@@ -308,6 +314,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           canSearch={canSearch}
           mutliple={mutliple}
           canInput={canInput}
+          toggleIcon={toggleIcon}
+          searchClearIcon={searchClearIcon}
         />
       ) : null,
       <Tree

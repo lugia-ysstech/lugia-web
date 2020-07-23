@@ -187,6 +187,15 @@
       "type": "boolean",
       "desc": "是否支持自定义值,只有在canSearch为true时才生效",
       "defaultValue": false
+    },
+
+    "toggleIcon": {
+      "type": "icon",
+      "desc": "搜索框切换图标icon名称"
+    },
+    "searchClearIcon": {
+      "type": "icon",
+      "desc": "搜索框清除图标icon名称"
     }
   },
 
@@ -1053,10 +1062,26 @@
               "active": [["color"], ["font"], ["fontSize"]],
               "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
             },
+            "SelectedPrefixIcon": {
+              "name": "选中项前置图标配置",
+              "desc": "选中项前置图标或图片的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            },
 
             "SuffixIcon": {
               "name": "后缀图标配置",
               "desc": "后缀图标或图片的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            },
+            "SelectedSuffixIcon": {
+              "name": "选中项后缀图标配置",
+              "desc": "选中项后缀图标或图片的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [["color"], ["font"], ["fontSize"]],
@@ -1088,6 +1113,90 @@
               "disabled": []
             }
           }
+        }
+      }
+    },
+
+    "QueryInput": {
+      "name": "菜单搜索框样式",
+      "desc": "为菜单搜索框配置样式",
+      "theme": {
+        "Container": {
+          "name": "输入框",
+          "desc": "输入框外部容器",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["margin"],
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["opacity"]
+          ],
+          "hover": [
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["background"],
+            ["opacity"],
+            ["boxShadow"]
+          ],
+          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+          "focus": [
+            ["border"],
+            ["borderRadius"],
+            ["background"],
+            ["opacity"],
+            ["boxShadow"],
+            ["cursor"],
+            ["fontSize"],
+            ["font"],
+            ["color"]
+          ],
+          "disabled": [
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["padding"],
+            ["opacity"]
+          ]
+        },
+        "ClearButton": {
+          "name": "输入框清除图标",
+          "desc": "输入框后缀清除图标",
+          "normal": [["color"], ["fontSize"], ["font"]],
+          "hover": [["color"], ["fontSize"], ["font"]],
+          "clicked": [],
+          "disabled": [["color"], ["fontSize"], ["font"]]
+        },
+        "Placeholder": {
+          "name": "输入框提示信息文字",
+          "desc": "输入框提示信息文字",
+          "normal": [["color"], ["fontSize"], ["font"]]
+        },
+        "InputSuffix": {
+          "name": "后缀图标",
+          "desc": "输入框后缀自定义图标",
+          "normal": [["color"], ["fontSize"], ["font"], ["padding"], ["margin"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": [["color"], ["fontSize"], ["font"]]
+        },
+        "InputPrefix": {
+          "name": "前缀图标",
+          "desc": "输入框前缀自定义图标",
+          "normal": [["color"], ["fontSize"], ["font"], ["padding"], ["margin"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": [["color"], ["fontSize"], ["font"]]
         }
       }
     }

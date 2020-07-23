@@ -169,6 +169,31 @@
                     "desc": "子选项背景内外边距配置区"
                   }
                 }
+              },
+              {
+                "name": "前缀图标",
+                "path": ["Tree", "TreeItem", "PrefixIcon"],
+                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标文本配置区"
+                  },
+                  "spacingPart": {
+                    "hidden": true
+                  }
+                }
+              },
+              {
+                "name": "后缀图标",
+                "path": ["Tree", "TreeItem", "SuffixIcon"],
+                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标文本配置区"
+                  }
+                }
               }
             ]
           },
@@ -193,16 +218,10 @@
                     "desc": "子选项背景内外边距配置区"
                   }
                 }
-              }
-            ]
-          },
-          {
-            "title": "前后缀图标",
-            "iconClass": "iconsearch",
-            "data": [
+              },
               {
                 "name": "前缀图标",
-                "path": ["Tree", "TreeItem", "PrefixIcon"],
+                "path": ["Tree", "TreeItem", "SelectedPrefixIcon"],
                 "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
                 "description": {
                   "textPart": {
@@ -216,7 +235,7 @@
               },
               {
                 "name": "后缀图标",
-                "path": ["Tree", "TreeItem", "SuffixIcon"],
+                "path": ["Tree", "TreeItem", "SelectedSuffixIcon"],
                 "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
                 "description": {
                   "textPart": {
@@ -284,6 +303,66 @@
                   "spacingPart": {
                     "text": "padding/margin",
                     "desc": "选中项底色内外边距配置区"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "搜索框",
+        "iconClass": "search",
+        "children": [
+          {
+            "title": "主体",
+            "iconClass": "input",
+            "data": [
+              {
+                "name": "选择框",
+                "path": ["QueryInput", "Container"],
+                "description": {
+                  "textPart": {
+                    "text": "选择文本",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "默认文本",
+                "path": ["QueryInput", "Placeholder"],
+                "description": {
+                  "textPart": {
+                    "text": "提示文本",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "前/后缀图标",
+            "iconClass": "iconsearch",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["QueryInput", "InputPrefix"],
+                "props": [{ "name": "transferPrefixIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标"
+                  }
+                }
+              },
+              {
+                "name": "后缀图标",
+                "path": ["QueryInput", "InputSuffix"],
+                "props": [{ "name": "transferSuffixIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标"
                   }
                 }
               }
