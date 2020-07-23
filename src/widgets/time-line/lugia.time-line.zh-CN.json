@@ -139,7 +139,7 @@
             "TimeLineItemLine": {
               "name": "时间节点连接线",
               "desc": "时间节点连接线的配置",
-              "normal": [["width"], ["height"], ["border", "left"]]
+              "normal": [["height"], ["border", "left"], ["margin"]]
             },
             "TimeLineExplainDot": {
               "name": "隐藏的解释时间节点",
@@ -235,7 +235,7 @@
         "TimeLineItemLine": {
           "name": "时间节点连接线",
           "desc": "时间节点连接线的配置",
-          "normal": [["width"], ["height"], ["border", "left"]]
+          "normal": [["height"], ["border", "left"], ["margin"]]
         },
         "TimeLineIcon": {
           "name": "时间节点内容图标",
