@@ -128,9 +128,11 @@ type QueryInputProps = {
   receivedTheme?: Object,
   toggleIconTheme?: Object,
   resetIconTheme?: Object,
+  searchAddIconTheme?: Object,
   searchClearIcon?: string,
   toggleIcon?: string,
   resetIcon?: string,
+  searchAddIcon?: string,
   getPartOfThemeProps: (str: string) => any,
 };
 
