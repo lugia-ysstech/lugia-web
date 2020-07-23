@@ -246,6 +246,12 @@
                 "typeInTheme": "icon"
               }
             ]
+          },
+          {
+            "name": "增加图标",
+            "path": ["AddButton"],
+            "description": { "textPart": { "text": "增加图标", "desc": "增加图标" } },
+            "props": [{ "name": "addIcon", "typeInTheme": "icon" }]
           }
         ]
       }
