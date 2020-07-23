@@ -52,12 +52,8 @@
           {
             "name": "输入框清除图标",
             "path": ["InputClearButton"],
-            "description": {
-              "textPart": {
-                "text": "清除图标",
-                "desc": "清除图标文字置区"
-              }
-            }
+            "props": [{ "name": "clearIcon", "typeInTheme": "icon" }],
+            "description": { "textPart": { "text": "清除图标", "desc": "清除图标文字置区" } }
           }
         ]
       },
@@ -115,6 +111,12 @@
                 "desc": "选中文本内外边距配置区块"
               }
             }
+          },
+          {
+            "name": "上次选择值图标",
+            "path": ["OldTimeIcon"],
+            "props": [{ "name": "oldTimeIcon", "typeInTheme": "icon" }],
+            "description": { "textPart": { "text": "清除图标", "desc": "清除图标文字置区" } }
           }
         ]
       },
