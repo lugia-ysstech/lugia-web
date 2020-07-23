@@ -172,7 +172,7 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
       onQueryInputKeyDown,
       width,
       getPartOfThemeProps,
-      receivedTheme,
+      receivedTheme = {},
       searchClearIcon,
       toggleIcon,
       resetIcon,
