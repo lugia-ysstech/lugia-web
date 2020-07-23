@@ -176,8 +176,10 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
       searchClearIcon,
       toggleIcon,
       resetIcon,
-      toggleIconTheme,
-      resetIconTheme,
+      searchAddIcon,
+      toggleIconTheme = {},
+      resetIconTheme = {},
+      searchAddIconTheme = {},
     } = props;
     const { state } = this;
     const {
@@ -252,7 +254,7 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
                 onChange={onQueryInputChange}
                 onKeyDown={onQueryInputKeyDown}
                 prefix={this.getQueryInputPrefix(toggleIcon, toggleIconTheme)}
-                suffix={this.getQueryInputSuffix()}
+                suffix={this.getQueryInputSuffix(searchAddIcon, searchAddIconTheme)}
                 clearIcon={searchClearIcon}
               />
             </QueryInputContainer>
@@ -275,34 +277,37 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
     );
   }
 
-  getQueryInputSuffix() {
+  getQueryInputSuffix(searchAddIcon, searchAddIconTheme) {
     const { props } = this;
     if (isCanInput(props)) {
       const { addClick } = props;
+      const { viewClass = '', theme = {} } = searchAddIconTheme;
       const themeConfig = {
-        [Widget.Icon]: {
-          Icon: {
-            normal: {
-              color: mediumGreyColor,
-              fontSize: xxsFontSize,
-            },
-            hover: {
-              color: themeColor,
-              fontSize: xxsFontSize,
-            },
-            disabled: {
-              color: disableTextColor,
-              fontSize: xxsFontSize,
-            },
+        [viewClass]: {
+          normal: {
+            color: mediumGreyColor,
+            fontSize: xxsFontSize,
+          },
+          hover: {
+            color: themeColor,
+            fontSize: xxsFontSize,
+          },
+          disabled: {
+            color: disableTextColor,
+            fontSize: xxsFontSize,
           },
         },
       };
+
+      const addIconTheme = { viewClass, theme: deepMerge(themeConfig, theme) };
+
       return (
         <AppendValueButton>
           <CommonIcon
-            theme={themeConfig}
-            iconClass={'lugia-icon-reminder_plus'}
+            {...addIconTheme}
+            iconClass={searchAddIcon || 'lugia-icon-reminder_plus'}
             onClick={addClick}
+            singleTheme
           />
         </AppendValueButton>
       );
