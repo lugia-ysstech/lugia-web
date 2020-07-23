@@ -193,6 +193,10 @@
       "type": "icon",
       "desc": "搜索框切换图标icon名称"
     },
+    "SearchAddIcon": {
+      "type": "icon",
+      "desc": "搜索框添加图标icon名称"
+    },
     "searchClearIcon": {
       "type": "icon",
       "desc": "搜索框清除图标icon名称"
@@ -1181,24 +1185,32 @@
           "name": "输入框提示信息文字",
           "desc": "输入框提示信息文字",
           "normal": [["color"], ["fontSize"], ["font"]]
-        },
-        "InputSuffix": {
-          "name": "后缀图标",
-          "desc": "输入框后缀自定义图标",
-          "normal": [["color"], ["fontSize"], ["font"], ["padding"], ["margin"]],
-          "hover": [],
-          "clicked": [],
-          "disabled": [["color"], ["fontSize"], ["font"]]
-        },
-        "InputPrefix": {
-          "name": "前缀图标",
-          "desc": "输入框前缀自定义图标",
-          "normal": [["color"], ["fontSize"], ["font"], ["padding"], ["margin"]],
-          "hover": [],
-          "clicked": [],
-          "disabled": [["color"], ["fontSize"], ["font"]]
         }
       }
+    },
+    "ToggleIcon": {
+      "name": "菜单搜索框切换按钮样式",
+      "desc": "为菜单搜索框切换按钮配置样式",
+      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+      "hover": [["color"], ["margin"], ["cursor"]],
+      "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+      "disabled": [["color"], ["cursor"]]
+    },
+    "ResetIcon": {
+      "name": "菜单搜索框重置按钮样式",
+      "desc": "为菜单搜索框重置按钮配置样式",
+      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+      "hover": [["color"], ["margin"], ["cursor"]],
+      "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+      "disabled": [["color"], ["cursor"]]
+    },
+    "SearchAddIcon": {
+      "name": "菜单搜索框添加按钮样式",
+      "desc": "为菜单搜索框添加按钮配置样式",
+      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+      "hover": [["color"], ["margin"], ["cursor"]],
+      "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+      "disabled": [["color"], ["cursor"]]
     }
   },
   "defaultTheme": {

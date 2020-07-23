@@ -17,9 +17,24 @@ const Box = styled.div`
 
 const data = [
   { key: '1', title: '中国' },
-  { key: '1.1', title: '北京', pid: '1', path: '1' },
+  {
+    key: '1.1',
+    title: '北京',
+    pid: '1',
+    path: '1',
+  },
   { key: '1.1.1', title: '昌平', pid: '1.1', path: '1/1.1' },
-  { key: '1.1.1.1', title: '海淀', pid: '1.1.1', path: '1/1.1/1.1.1', isLeaf: true },
+  {
+    key: '1.1.1.1',
+    title: '海淀',
+    pid: '1.1.1',
+    path: '1/1.1/1.1.1',
+    isLeaf: true,
+    icons: {
+      prefixIconClass: 'lugia-icon-financial_heart',
+      suffixIconClass: 'lugia-icon-financial_contacts',
+    },
+  },
 
   { key: '1.2', title: '山西', pid: '1', path: '1' },
   { key: '1.2.1', title: '大同', pid: '1.2', path: '1/1.2', isLeaf: true },
@@ -182,6 +197,68 @@ const iconConfig = {
   },
 };
 
+const treeSelectTheme = {
+  [Widget.TreeSelect]: {
+    QueryInput: {
+      Container: {
+        normal: {
+          width: 200,
+          border: getBorder({ width: 1, color: 'red', style: 'solid' }),
+        },
+      },
+      Placeholder: {
+        normal: {
+          color: '#eee',
+        },
+      },
+      ClearButton: {
+        normal: {
+          color: 'yellow',
+        },
+      },
+    },
+    ToggleIcon: {
+      normal: {
+        color: 'red',
+      },
+    },
+    ResetIcon: {
+      normal: {
+        color: 'yellow',
+      },
+    },
+    SearchAddIcon: {
+      normal: {
+        color: 'lightblue',
+      },
+    },
+    Tree: {
+      TreeItem: {
+        PrefixIcon: {
+          normal: {
+            color: 'blue',
+          },
+        },
+        SuffixIcon: {
+          normal: {
+            color: 'orange',
+          },
+        },
+        SelectedPrefixIcon: {
+          normal: {
+            color: 'red',
+          },
+        },
+        SelectedSuffixIcon: {
+          normal: {
+            color: 'yellow',
+          },
+        },
+      },
+    },
+  },
+};
+
 export default class DefaultTreeSelect extends React.Component<any, any> {
   constructor(props: TreeSelectProps) {
     super(props);
@@ -258,6 +335,35 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
           renderSuffixItems={this.renderSuffix}
           mutliple
         />
+      </Box>,
+      <Box>
+        <Theme config={treeSelectTheme}>
+          <TreeSelect
+            valueField={'key'}
+            displayField={'title'}
+            value={this.state.value}
+            pathSeparator={'/'}
+            data={data}
+            onlySelectLeaf={true}
+            onSelect={obj => {
+              console.log('onSelect=====>', obj);
+            }}
+            onChange={obj => {
+              console.log('onChange=====>', obj);
+              const { newValue } = obj;
+              this.setState({ value: newValue });
+            }}
+            expandAll
+            autoHeight
+            pullIconClass="lugia-icon-direction_caret_down"
+            renderSuffixItems={this.renderSuffix}
+            toggleIcon="lugia-icon-logo_twitter"
+            searchClearIcon="lugia-icon-logo_android"
+            searchAddIcon="lugia-icon-logo_baidu"
+            canSearch
+            canInput
+          />
+        </Theme>
       </Box>,
     ];
   }
