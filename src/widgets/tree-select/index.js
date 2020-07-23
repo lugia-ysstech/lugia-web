@@ -67,6 +67,7 @@ type TreeSelectProps = {
   clearIconClass?: string,
   toggleIcon?: string,
   searchClearIcon?: string,
+  searchAddIcon?: string,
   canClear?: boolean,
   isShowClearButton?: boolean,
 };
