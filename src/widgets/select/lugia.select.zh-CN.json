@@ -767,30 +767,18 @@
         "ToggleIcon": {
           "name": "菜单搜索框切换按钮样式",
           "desc": "为菜单搜索框切换按钮配置样式",
-          "theme": {
-            "Icon": {
-              "name": "图标",
-              "desc": "图标",
-              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
-              "hover": [["color"], ["margin"], ["cursor"]],
-              "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
-              "disabled": [["color"], ["cursor"]]
-            }
-          }
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+          "hover": [["color"], ["margin"], ["cursor"]],
+          "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+          "disabled": [["color"], ["cursor"]]
         },
         "ResetIcon": {
           "name": "菜单搜索框重置按钮样式",
           "desc": "为菜单搜索框重置按钮配置样式",
-          "theme": {
-            "Icon": {
-              "name": "图标",
-              "desc": "图标",
-              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
-              "hover": [["color"], ["margin"], ["cursor"]],
-              "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
-              "disabled": [["color"], ["cursor"]]
-            }
-          }
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+          "hover": [["color"], ["margin"], ["cursor"]],
+          "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+          "disabled": [["color"], ["cursor"]]
         }
       },
 
@@ -1170,30 +1158,18 @@
     "ToggleIcon": {
       "name": "菜单搜索框切换按钮样式",
       "desc": "为菜单搜索框切换按钮配置样式",
-      "theme": {
-        "Icon": {
-          "name": "图标",
-          "desc": "图标",
-          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
-          "hover": [["color"], ["margin"], ["cursor"]],
-          "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
-          "disabled": [["color"], ["cursor"]]
-        }
-      }
+      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+      "hover": [["color"], ["margin"], ["cursor"]],
+      "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+      "disabled": [["color"], ["cursor"]]
     },
     "ResetIcon": {
       "name": "菜单搜索框重置按钮样式",
       "desc": "为菜单搜索框重置按钮配置样式",
-      "theme": {
-        "Icon": {
-          "name": "图标",
-          "desc": "图标",
-          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
-          "hover": [["color"], ["margin"], ["cursor"]],
-          "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
-          "disabled": [["color"], ["cursor"]]
-        }
-      }
+      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+      "hover": [["color"], ["margin"], ["cursor"]],
+      "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+      "disabled": [["color"], ["cursor"]]
     }
   },
   "defaultTheme": {
