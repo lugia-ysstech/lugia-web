@@ -151,6 +151,7 @@ const OutContainer = CSSComponent({
     position: relative;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   `,
 });
 const VerticalOutContainer = CSSComponent({
@@ -222,6 +223,7 @@ type TabsProps = {
   hideContent?: boolean,
   showDividerLine?: boolean,
   hideTabBar?: boolean,
+  isShowArrowIcon?: boolean,
 };
 export function hasTargetInProps(target: string, props: TabsProps) {
   return `${target}` in props;
@@ -279,6 +281,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     addIcon: 'lugia-icon-reminder_plus',
     deleteIcon: 'lugia-icon-reminder_close',
     hideTabBar: false,
+    isShowArrowIcon: true,
   };
   static displayName = Widget.Tabs;
 
@@ -386,8 +389,10 @@ class TabsBox extends Component<TabsProps, TabsState> {
       addIcon,
       deleteIcon,
       pageArrowIcon,
+      isShowArrowIcon,
     } = this.props;
     let { tabPosition } = this.props;
+    console.log('getTabHeaderProps', isShowArrowIcon);
     tabPosition = tabType === 'line' ? tabPosition : 'top';
     return {
       activityValue,
@@ -411,6 +416,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       addIcon,
       deleteIcon,
       pageArrowIcon,
+      isShowArrowIcon,
     };
   }
 
