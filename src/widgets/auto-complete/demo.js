@@ -1,6 +1,6 @@
 import * as React from 'react';
 import AutoComplete from './';
-import { getBorder } from '@lugia/theme-utils';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 import Widget from '../consts/index';
 import styled from 'styled-components';
 const data = [
@@ -92,18 +92,77 @@ export default class AutoCompleteBounded extends React.Component<any, any> {
         },
       },
     };
+    const config_icon = {
+      [Widget.AutoComplete]: {
+        InputClearButton: {
+          normal: {
+            color: 'red',
+          },
+        },
+        OldItem: {
+          normal: {
+            color: 'orange',
+            background: { color: '#4A90E2' },
+            opacity: 1,
+            boxShadow: getBoxShadow('5px 2px 5px orange'),
+            border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(20),
+            height: 30,
+          },
+          hover: {
+            color: 'orange',
+          },
+        },
+        OldTimeIcon: {
+          normal: {
+            color: 'white',
+          },
+        },
+        Container: {
+          normal: {
+            width: 300,
+            height: 40,
+          },
+        },
+      },
+    };
     const { menuData, value } = this.state;
     return (
-      <Box>
-        <AutoComplete
-          theme={config}
-          showOldValue
-          value={value}
-          data={menuData}
-          validateStatus={'error'}
-          onChange={this.onChange}
-        />
-      </Box>
+      <div>
+        <Box>
+          <h4> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;加检验的demo</h4>
+          <AutoComplete
+            theme={config}
+            showOldValue
+            value={value}
+            data={menuData}
+            validateStatus={'error'}
+            onChange={this.onChange}
+          />
+        </Box>
+        <Box>
+          <h4>demo</h4>
+          <AutoComplete
+            theme={config}
+            showOldValue
+            value={value}
+            data={menuData}
+            onChange={this.onChange}
+          />
+        </Box>
+        <Box>
+          <h4>设置清除图标和上一次选中值图标的demo</h4>
+          <AutoComplete
+            theme={config_icon}
+            showOldValue
+            value={value}
+            data={menuData}
+            onChange={this.onChange}
+            clearIcon="lugia-icon-reminder_close_square_o"
+            oldTimeIcon="lugia-icon-financial_remind"
+          />
+        </Box>
+      </div>
     );
   }
 
