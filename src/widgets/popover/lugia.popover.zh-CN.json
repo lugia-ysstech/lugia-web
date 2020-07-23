@@ -40,7 +40,6 @@
       "type": "DirectionType",
       "desc": "气泡卡片显示的位置,十二个方向",
       "propsDefaultValue": "topLeft",
-      "defaultValue": "topLeft"
     },
     "visible": {
       "type": "boolean",

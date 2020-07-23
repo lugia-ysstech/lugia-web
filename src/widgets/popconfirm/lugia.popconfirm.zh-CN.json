@@ -34,7 +34,6 @@
       "type": "DirectionType",
       "desc": "气泡确认框显示的位置,十二个方向",
       "propsDefaultValue": "topLeft",
-      "defaultValue": "topLeft"
     },
     "visible": {
       "type": "boolean",
