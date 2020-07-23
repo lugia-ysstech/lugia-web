@@ -120,20 +120,17 @@ export default () => {
             title="步骤1"
             description={
               <div>
-                很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度
+                <div>很长很长的描述,想要撑开高度</div>
+                <div>很长很长的描述,想要撑开高度</div>
+                <div>很长很长的描述,想要撑开高度</div>
+                <div>很长很长的描述,想要撑开高度</div>
+                <div>很长很长的描述,想要撑开高度</div>
+                <div>很长很长的描述,想要撑开高度</div>
               </div>
             }
             stepStatus="finish"
           />
-          <Step
-            title="步骤2"
-            description={
-              <div>
-                很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度
-              </div>
-            }
-            stepStatus="process"
-          />
+          <Step title="步骤2" description={'描述性文本2'} stepStatus="process" />
           <Step title="步骤3" description={'描述性文本3'} stepStatus="next" />
           <Step title="步骤4" description={'描述性文本4'} stepStatus="wait" />
           <Step title="步骤5" description={'描述性文本5'} stepStatus="error" />
