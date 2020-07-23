@@ -112,6 +112,11 @@
       "type": "boolean",
       "desc": "否渲染页签头部区域",
       "propsDefaultValue": false
+    },
+    "isShowArrowIcon": {
+      "type": "boolean",
+      "desc": "是否显示分页箭头",
+      "propsDefaultValue": true
     }
   },
   "events": {

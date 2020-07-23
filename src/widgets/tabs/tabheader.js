@@ -362,6 +362,7 @@ type TabsProps = {
   addIcon?: string,
   deleteIcon?: string,
   pageArrowIcon?: Object,
+  isShowArrowIcon?: boolean,
 };
 
 const arrowSize = 48;
@@ -566,7 +567,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   getVtabs() {
-    const { tabPosition, themeProps } = this.props;
+    const { tabPosition, themeProps, isShowArrowIcon } = this.props;
     const { arrowShow } = this.state;
     const borderThemeProps = this.handleBorderStyle(
       this.props.getPartOfThemeProps('BorderStyle'),
@@ -586,25 +587,29 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const IconThemeProps = this.props.getPartOfThemeHocProps('ArrowIcon');
     return (
       <VTabsOutContainer themeProps={tabsOutContainerThemeProps} ref={this.scrollBox}>
-        {this.getPrevOrNextPage(
-          'prev',
-          prevPageThemeProps,
-          IconThemeProps,
-          isDisabledToPrev,
-          isDisabledToNext
-        )}
+        {isShowArrowIcon
+          ? this.getPrevOrNextPage(
+              'prev',
+              prevPageThemeProps,
+              IconThemeProps,
+              isDisabledToPrev,
+              isDisabledToNext
+            )
+          : null}
         <VTabsContainer themeProps={themeProps}>
           <YscrollerContainer y={moveDistance} themeProps={themeProps} ref={this.tabPanBox}>
             {this.getChildren()}
           </YscrollerContainer>
         </VTabsContainer>
-        {this.getPrevOrNextPage(
-          'next',
-          prevPageThemeProps,
-          IconThemeProps,
-          isDisabledToPrev,
-          isDisabledToNext
-        )}
+        {isShowArrowIcon
+          ? this.getPrevOrNextPage(
+              'next',
+              prevPageThemeProps,
+              IconThemeProps,
+              isDisabledToPrev,
+              isDisabledToNext
+            )
+          : null}
       </VTabsOutContainer>
     );
   }
@@ -724,7 +729,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   getHorizonTabPan() {
-    const { tabType, tabPosition, themeProps, showAddBtn } = this.props;
+    const { tabType, tabPosition, themeProps, showAddBtn, isShowArrowIcon } = this.props;
     const { arrowShow } = this.state;
 
     const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer', {
@@ -765,25 +770,29 @@ class TabHeader extends Component<TabsProps, TabsState> {
         tabPosition={tabPosition}
         ref={this.scrollBox}
       >
-        {this.getPrevOrNextPage(
-          'prev',
-          prevPageThemeProps,
-          IconThemeProps,
-          isDisabledToPrev,
-          isDisabledToNext
-        )}
+        {isShowArrowIcon
+          ? this.getPrevOrNextPage(
+              'prev',
+              prevPageThemeProps,
+              IconThemeProps,
+              isDisabledToPrev,
+              isDisabledToNext
+            )
+          : null}
         <HTabsContainer themeProps={themeProps}>
           <HscrollerContainer themeProps={themeProps} x={moveDistance} ref={this.tabPanBox}>
             <TabPanBox textAlign={textAlign}>{this.getChildren()}</TabPanBox>
           </HscrollerContainer>
         </HTabsContainer>
-        {this.getPrevOrNextPage(
-          'next',
-          prevPageThemeProps,
-          IconThemeProps,
-          isDisabledToPrev,
-          isDisabledToNext
-        )}
+        {isShowArrowIcon
+          ? this.getPrevOrNextPage(
+              'next',
+              prevPageThemeProps,
+              IconThemeProps,
+              isDisabledToPrev,
+              isDisabledToNext
+            )
+          : null}
         {this.getAddButton()}
       </HTabsOutContainer>
     );
