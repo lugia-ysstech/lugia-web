@@ -138,7 +138,6 @@
             ["height"],
             ["margin"],
             ["padding"],
-            ["background"],
             ["opacity"],
             ["border"],
             ["borderRadius"],
