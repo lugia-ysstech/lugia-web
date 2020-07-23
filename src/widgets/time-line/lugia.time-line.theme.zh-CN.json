@@ -115,6 +115,32 @@
                 "desc": "背景"
               }
             }
+          },
+          {
+            "name": "标题文本",
+            "path": ["TimeLineItem", "TimeLineItemTip", "TooltipTitle"],
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "描述文本",
+            "path": ["TimeLineItem", "TimeLineItemTip", "TooltipDescription"],
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "描述文本",
+                "desc": "描述文本"
+              }
+            }
           }
         ]
       },
@@ -147,7 +173,7 @@
       },
       {
         "name": "pending",
-        "text": "隐藏节点开启"
+        "text": "幽灵节点开启"
       },
       {
         "name": "mode",
@@ -248,6 +274,32 @@
               "appearancePart": {
                 "text": "背景",
                 "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": ["TimeLineItem", "TimeLineItemTip", "TooltipTitle"],
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "描述文本",
+            "path": ["TimeLineItem", "TimeLineItemTip", "TooltipDescription"],
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "描述文本",
+                "desc": "描述文本"
               }
             }
           }
