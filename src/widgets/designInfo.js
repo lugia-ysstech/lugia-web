@@ -777,7 +777,6 @@ export default [
                 ['height'],
                 ['margin'],
                 ['padding'],
-                ['background'],
                 ['opacity'],
                 ['border'],
                 ['borderRadius'],
@@ -962,7 +961,6 @@ export default [
             ['height'],
             ['margin'],
             ['padding'],
-            ['background'],
             ['opacity'],
             ['border'],
             ['borderRadius'],
@@ -20448,6 +20446,7 @@ export default [
             { key: 'suffixIcon', title: '下一页图标', type: 'icon' },
           ],
         },
+        hideTabBar: { type: 'boolean', desc: '否渲染页签头部区域', propsDefaultValue: false },
       },
       events: {
         onTabClick: {
@@ -21024,6 +21023,7 @@ export default [
             { key: 'suffixIcon', title: '下一页图标', type: 'icon' },
           ],
         },
+        hideTabBar: { type: 'boolean', desc: '否渲染页签头部区域', propsDefaultValue: false },
       },
       events: {
         onTabClick: {
@@ -21314,6 +21314,7 @@ export default [
             { key: 'suffixIcon', title: '下一页图标', type: 'icon' },
           ],
         },
+        hideTabBar: { type: 'boolean', desc: '否渲染页签头部区域', propsDefaultValue: false },
       },
       events: {
         onTabClick: {
