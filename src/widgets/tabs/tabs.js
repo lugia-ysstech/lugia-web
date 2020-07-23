@@ -221,6 +221,7 @@ type TabsProps = {
   getPartOfThemeProps: Function,
   hideContent?: boolean,
   showDividerLine?: boolean,
+  hideTabBar?: boolean,
 };
 export function hasTargetInProps(target: string, props: TabsProps) {
   return `${target}` in props;
@@ -277,6 +278,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     showDeleteBtn: false,
     addIcon: 'lugia-icon-reminder_plus',
     deleteIcon: 'lugia-icon-reminder_close',
+    hideTabBar: false,
   };
   static displayName = Widget.Tabs;
 
@@ -316,13 +318,13 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { themeProps, tabType, tabPosition } = this.props;
+    const { themeProps, tabType, tabPosition, hideTabBar } = this.props;
     const ContainerBox =
       tabType === 'line' && isVertical(tabPosition) ? VerticalOutContainer : OutContainer;
     const containerThemeProps = this.props.getPartOfThemeProps('Container');
     let target = (
       <ContainerBox themeProps={containerThemeProps}>
-        <TabHeader {...this.getTabHeaderProps()} ref={this.header} />
+        {!hideTabBar ? <TabHeader {...this.getTabHeaderProps()} ref={this.header} /> : null}
         {this.getChildrenContent()}
       </ContainerBox>
     );
