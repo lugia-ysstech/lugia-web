@@ -42,18 +42,8 @@
             }
           },
           {
-            "name": "连接线",
-            "path": ["Step", "FinishStepLine"],
-            "description": {
-              "appearancePart": {
-                "text": "连接线",
-                "desc": "连接线"
-              }
-            }
-          },
-          {
             "name": "节点图标",
-            "path": ["Step", "StepInnerIcon"],
+            "path": ["Step", "FinishStepInnerIcon"],
             "description": {
               "textPart": {
                 "text": "节点图标",
@@ -68,6 +58,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -78,6 +72,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -134,6 +132,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -144,6 +146,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -190,6 +196,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -200,6 +210,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -246,6 +260,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -256,6 +274,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -296,12 +318,26 @@
             }
           },
           {
+            "name": "节点图标",
+            "path": ["Step", "ErrorStepInnerIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
             "name": "标题文本",
             "path": ["Step", "ErrorStepTitle"],
             "description": {
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -312,6 +348,26 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "整体尺寸",
+        "iconClass": "background",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
               }
             }
           }
@@ -363,18 +419,8 @@
             }
           },
           {
-            "name": "连接线",
-            "path": ["Step", "FinishStepLine"],
-            "description": {
-              "appearancePart": {
-                "text": "连接线",
-                "desc": "连接线"
-              }
-            }
-          },
-          {
             "name": "节点图标",
-            "path": ["Step", "StepInnerIcon"],
+            "path": ["Step", "FinishStepInnerIcon"],
             "description": {
               "textPart": {
                 "text": "节点图标",
@@ -389,6 +435,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -399,6 +449,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -455,6 +509,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -465,6 +523,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -511,6 +573,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -521,6 +587,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -567,6 +637,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -577,6 +651,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -617,12 +695,26 @@
             }
           },
           {
+            "name": "节点图标",
+            "path": ["Step", "ErrorStepInnerIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
             "name": "标题文本",
             "path": ["Step", "ErrorStepTitle"],
             "description": {
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -633,6 +725,26 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "整体尺寸",
+        "iconClass": "background",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
               }
             }
           }
@@ -684,18 +796,8 @@
             }
           },
           {
-            "name": "连接线",
-            "path": ["Step", "FinishStepLine"],
-            "description": {
-              "appearancePart": {
-                "text": "连接线",
-                "desc": "连接线"
-              }
-            }
-          },
-          {
             "name": "节点图标",
-            "path": ["Step", "StepInnerIcon"],
+            "path": ["Step", "FinishStepInnerIcon"],
             "description": {
               "textPart": {
                 "text": "节点图标",
@@ -710,6 +812,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -720,6 +826,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -751,7 +861,7 @@
           },
           {
             "name": "连接线",
-            "path": ["Step", "ProcessStepLine"],
+            "path": ["Step", "ProcessStepFlatLine"],
             "description": {
               "appearancePart": {
                 "text": "连接线",
@@ -776,6 +886,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -786,6 +900,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -817,7 +935,7 @@
           },
           {
             "name": "连接线",
-            "path": ["Step", "NextStepLine"],
+            "path": ["Step", "NextStepFlatLine"],
             "description": {
               "appearancePart": {
                 "text": "连接线",
@@ -832,6 +950,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -842,6 +964,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -873,7 +999,7 @@
           },
           {
             "name": "连接线",
-            "path": ["Step", "WaitStepLine"],
+            "path": ["Step", "WaitStepFlatLine"],
             "description": {
               "appearancePart": {
                 "text": "连接线",
@@ -888,6 +1014,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -898,6 +1028,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -929,11 +1063,21 @@
           },
           {
             "name": "连接线",
-            "path": ["Step", "ErrorStepLine"],
+            "path": ["Step", "ErrorStepFlatLine"],
             "description": {
               "appearancePart": {
                 "text": "连接线",
                 "desc": "连接线"
+              }
+            }
+          },
+          {
+            "name": "节点图标",
+            "path": ["Step", "ErrorStepInnerIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
               }
             }
           },
@@ -944,6 +1088,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -954,6 +1102,26 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "整体尺寸",
+        "iconClass": "background",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
               }
             }
           }
@@ -995,18 +1163,8 @@
             }
           },
           {
-            "name": "连接线",
-            "path": ["Step", "FinishStepLine"],
-            "description": {
-              "appearancePart": {
-                "text": "连接线",
-                "desc": "连接线"
-              }
-            }
-          },
-          {
             "name": "节点图标",
-            "path": ["Step", "StepIcon"],
+            "path": ["Step", "FinishStepIcon"],
             "description": {
               "textPart": {
                 "text": "节点图标",
@@ -1021,6 +1179,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -1031,6 +1193,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -1061,12 +1227,26 @@
             }
           },
           {
+            "name": "节点图标",
+            "path": ["Step", "ProcessStepIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
             "name": "标题文本",
             "path": ["Step", "ProcessStepTitle"],
             "description": {
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -1077,6 +1257,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -1107,12 +1291,26 @@
             }
           },
           {
+            "name": "节点图标",
+            "path": ["Step", "NextStepIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
             "name": "标题文本",
             "path": ["Step", "NextStepTitle"],
             "description": {
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -1123,6 +1321,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -1153,12 +1355,26 @@
             }
           },
           {
+            "name": "节点图标",
+            "path": ["Step", "WaitStepIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
             "name": "标题文本",
             "path": ["Step", "WaitStepTitle"],
             "description": {
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -1169,6 +1385,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -1199,12 +1419,26 @@
             }
           },
           {
+            "name": "节点图标",
+            "path": ["Step", "ErrorStepIcon"],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            }
+          },
+          {
             "name": "标题文本",
             "path": ["Step", "ErrorStepTitle"],
             "description": {
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -1215,6 +1449,26 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "整体尺寸",
+        "iconClass": "background",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
               }
             }
           }
@@ -1256,16 +1510,6 @@
             }
           },
           {
-            "name": "连接线",
-            "path": ["Step", "FinishStepLine"],
-            "description": {
-              "appearancePart": {
-                "text": "连接线",
-                "desc": "连接线"
-              }
-            }
-          },
-          {
             "name": "节点",
             "path": ["Step", "FinishStepDot"],
             "description": {
@@ -1282,6 +1526,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -1292,6 +1540,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -1338,6 +1590,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -1348,6 +1604,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -1394,6 +1654,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -1404,6 +1668,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -1450,6 +1718,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -1460,6 +1732,10 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
               }
             }
           }
@@ -1506,6 +1782,10 @@
               "textPart": {
                 "text": "标题文本",
                 "desc": "标题文本"
+              },
+              "appearancePart": {
+                "text": "标题区域",
+                "desc": "标题区域"
               }
             }
           },
@@ -1516,6 +1796,26 @@
               "textPart": {
                 "text": "内容文本",
                 "desc": "内容文本"
+              },
+              "appearancePart": {
+                "text": "内容区域",
+                "desc": "内容区域"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "整体尺寸",
+        "iconClass": "background",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
               }
             }
           }

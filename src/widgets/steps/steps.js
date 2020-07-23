@@ -33,7 +33,6 @@ const StepsOutContainer = CSSComponent({
   },
   css: css`
     display: inline-block;
-    position: relative;
     font-size: 1.2rem;
   `,
 });
@@ -77,10 +76,9 @@ const ContentContainer = CSSComponent({
 });
 const OrientationContainer = StaticComponent({
   tag: 'div',
-  className: 'StepsContentContainer',
+  className: 'StepsOrientationContainer',
   css: css`
     width: 100%;
-    display: ${props => (isHorizontal(props.orientation) ? 'block' : 'inline-block')};
   `,
 });
 
@@ -139,7 +137,7 @@ class Steps extends Component<StepsProps, StepsState> {
     );
 
     const normalConfig = isHorizontal(orientation)
-      ? { height: this.contentHeight }
+      ? { height: this.contentHeight + 10 }
       : { width: this.contentWidth };
     const contentThemeProps = deepMerge(
       { themeConfig: { normal: normalConfig } },
