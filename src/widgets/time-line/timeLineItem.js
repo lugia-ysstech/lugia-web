@@ -123,7 +123,7 @@ const Line = CSSComponent({
   tag: 'div',
   className: 'TimeLineItemLine',
   normal: {
-    selectNames: [['width'], ['height'], ['border', 'left']],
+    selectNames: [['height'], ['border', 'left'], ['margin']],
     defaultTheme: {
       border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { directions: ['l'] }),
     },
