@@ -56,8 +56,7 @@
       "type": "object",
       "desc": "自定义控制器图标",
       "meta": [
-        { "key": "iconClass", "title": "图标", "type": "icon" },
-        { "key": "iconSrc", "title": "图片", "type": "string" }
+        { "key": "iconClass", "title": "图标", "type": "icon" }
       ]
     },
     "disabled": {
@@ -82,9 +81,7 @@
       "desc": "配置前置和后缀图标",
       "meta": [
         { "key": "prefixIconClass", "title": "前置图标", "type": "icon" },
-        { "key": "prefixIconSrc", "title": "前置图片", "type": "image" },
-        { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
-        { "key": "suffixIconSrc", "title": "后缀图片", "type": "image" }
+        { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" }
       ]
     },
 
@@ -515,15 +512,31 @@
         ["boxShadow"],
         ["borderRadius"]
       ],
-      "hover": [],
-      "active": [],
+      "hover": [
+        ["margin"],
+        ["lineHeight"],
+        ["opacity"],
+        ["cursor"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"]
+      ],
+      "active": [
+        ["margin"],
+        ["lineHeight"],
+        ["opacity"],
+        ["cursor"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"]
+      ],
       "disabled": [["lineHeight"], ["opacity"], ["boxShadow"], ["cursor"], ["borderRadius"]]
     },
 
     "Divides": {
       "name": "分割线配置",
       "desc": "分割线的样式配置",
-      "normal": [["width"], ["height"], ["color"]],
+      "normal": [["width"], ["height"], ["background"]],
       "hover": [["color"]],
       "active": [["color"]],
       "disabled": []

@@ -21,6 +21,7 @@
                 "text": "整体背景",
                 "desc": "整体背景外观配置的区"
               },
+              "textPart": { "hidden": true },
               "spacingPart": {
                 "hidden": true
               }
@@ -59,35 +60,23 @@
         "iconClass": "dropmenuTrueButton",
         "data": [
           {
-            "name": "下拉图标配置",
-            "path": ["SwitchIcon"],
-            "props": [
-              {
-                "name": "switchIconClass",
-                "typeInTheme": "icon"
-              }
-            ],
-            "description": {
-              "textPart": {
-                "text": "下拉图标",
-                "desc": "下拉图标外观配置的区"
-              },
-              "spacingPart": {
-                "desc": "下拉图标内外边距配置"
-              }
-            }
-          },
-          {
             "name": "下拉按钮外盒",
             "path": ["SwitchIconContainer"],
             "description": {
-              "appearancePart": {
-                "text": "背景",
-                "desc": "选择框外观配置的区"
-              },
-              "spacingPart": {
+              "appearancePart": { "text": "背景", "desc": "选择框外观配置的区" },
+              "textPart": {
                 "hidden": true
-              }
+              },
+              "spacingPart": { "hidden": true }
+            }
+          },
+          {
+            "name": "下拉图标配置",
+            "path": ["SwitchIcon"],
+            "props": [{ "name": "switchIconClass", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": { "text": "下拉图标", "desc": "下拉图标外观配置的区" },
+              "spacingPart": { "desc": "下拉图标内外边距配置" }
             }
           }
         ]
@@ -312,8 +301,7 @@
                 "desc": "整体背景外观配置的区"
               },
               "textPart": {
-                "text": "整体文本/图标",
-                "desc": "整体文本/图标文本配置"
+                "hidden": true
               },
               "spacingPart": {
                 "desc": "整体配置内外边距配置"
