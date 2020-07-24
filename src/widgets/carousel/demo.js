@@ -230,6 +230,11 @@ export default class SkeletonDemo extends React.Component<any, any> {
             {getImgWrap()}
           </Carousel>
         </DemoWrap>
+
+        <h2>双击输入文本后页面报错demo</h2>
+        <Carousel theme={config} autoPlay={true} switchType={'fade'} delay={3000} deafultStart={2}>
+          66666
+        </Carousel>
       </div>
     );
   }
