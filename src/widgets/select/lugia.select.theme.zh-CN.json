@@ -788,6 +788,39 @@
                 }
               },
               {
+                "name": "添加图标",
+                "path": ["SearchAddIcon"],
+                "props": [{ "name": "searchAddIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "添加图标",
+                    "desc": "添加图标"
+                  }
+                }
+              },
+              {
+                "name": "全选图标",
+                "path": ["CheckAllIcon"],
+                "props": [{ "name": "checkAllIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "全选图标",
+                    "desc": "全选图标"
+                  }
+                }
+              },
+              {
+                "name": "取消全选图标",
+                "path": ["DeselectionIcon"],
+                "props": [{ "name": "deselectionIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "取消全选图标",
+                    "desc": "取消全选图标"
+                  }
+                }
+              },
+              {
                 "name": "重置图标",
                 "path": ["ResetIcon"],
                 "props": [{ "name": "resetIcon", "typeInTheme": "icon" }],

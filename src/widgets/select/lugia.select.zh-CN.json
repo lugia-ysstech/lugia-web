@@ -171,6 +171,18 @@
     "tagCloseIcon": {
       "type": "icon",
       "desc": "标签删除按钮图标"
+    },
+    "searchAddIcon": {
+      "type": "icon",
+      "desc": "搜索框添加图标icon名称"
+    },
+    "checkAllIcon": {
+      "type": "icon",
+      "desc": "全选图标icon名称"
+    },
+    "deselectionIcon":{
+      "type": "icon",
+      "desc": "取消全选图标icon名称"
     }
   },
   "events": {
@@ -779,6 +791,30 @@
         "ResetIcon": {
           "name": "菜单搜索框重置按钮样式",
           "desc": "为菜单搜索框重置按钮配置样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+          "hover": [["color"], ["margin"], ["cursor"]],
+          "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+          "disabled": [["color"], ["cursor"]]
+        },
+        "SearchAddIcon": {
+          "name": "菜单搜索框添加按钮样式",
+          "desc": "为菜单搜索框添加按钮配置样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+          "hover": [["color"], ["margin"], ["cursor"]],
+          "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+          "disabled": [["color"], ["cursor"]]
+        },
+        "CheckAllIcon": {
+          "name": "全选按钮样式",
+          "desc": "为全选按钮配置样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+          "hover": [["color"], ["margin"], ["cursor"]],
+          "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+          "disabled": [["color"], ["cursor"]]
+        },
+        "DeselectionIcon": {
+          "name": "全选按钮样式",
+          "desc": "为全选按钮配置样式",
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
           "hover": [["color"], ["margin"], ["cursor"]],
           "active": [["color"], ["cursor"], ["fontSize"], ["font"]],

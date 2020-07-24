@@ -129,10 +129,14 @@ type QueryInputProps = {
   toggleIconTheme?: Object,
   resetIconTheme?: Object,
   searchAddIconTheme?: Object,
+  checkAllIconTheme?: Object,
+  deselectionIconTheme?: Object,
   searchClearIcon?: string,
   toggleIcon?: string,
   resetIcon?: string,
   searchAddIcon?: string,
+  checkAllIcon?: string,
+  deselectionIcon?: string,
   getPartOfThemeProps: (str: string) => any,
 };
 
@@ -318,17 +322,32 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
   }
 
   getCheckAllButton() {
-    const { isCheckedAll, onCheckAll } = this.props;
+    const {
+      isCheckedAll,
+      onCheckAll,
+      checkAllIcon,
+      deselectionIcon,
+      checkAllIconTheme = {},
+      deselectionIconTheme = {},
+    } = this.props;
     if (isCheckedAll) {
       return (
         <CancelCheckAllButton isCheckedAll={isCheckedAll} onClick={onCheckAll}>
-          <CommonIcon iconClass={'lugia-icon-finacial_deselection'} />
+          <CommonIcon
+            {...deselectionIconTheme}
+            iconClass={deselectionIcon || 'lugia-icon-financial_deselection'}
+            singleTheme
+          />
         </CancelCheckAllButton>
       );
     }
     return (
       <CheckAllButton isCheckedAll={isCheckedAll} onClick={onCheckAll}>
-        <CommonIcon iconClass={'lugia-icon-finacial_check_all'} />
+        <CommonIcon
+          {...checkAllIconTheme}
+          iconClass={checkAllIcon || 'lugia-icon-financial_check_all'}
+          singleTheme
+        />
       </CheckAllButton>
     );
   }
