@@ -260,6 +260,21 @@ export default class ProgressDemo extends React.Component<any, any> {
           normal: {
             width: 300,
             strokeWidth: 20,
+            border: getBorder({ width: 5, style: 'solid', color: 'red' }, ['r']),
+          },
+        },
+        ProgressCircleLine_Error: {
+          normal: {
+            background: {
+              color: 'blue',
+            },
+          },
+        },
+        ProgressCircleLine_Success: {
+          normal: {
+            background: {
+              color: 'skyblue',
+            },
           },
         },
       },
@@ -522,7 +537,7 @@ export default class ProgressDemo extends React.Component<any, any> {
         </div>
 
         <Theme config={circleTheme}>
-          <Progress type="dashboard" percent={30} />
+          <Progress type="dashboard" percent={30} status="success" />
         </Theme>
       </div>
     );
