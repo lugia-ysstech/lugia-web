@@ -533,6 +533,7 @@
           {
             "name": "标签删除按钮",
             "path": ["TagIcon"],
+            "props": [{ "name": "tagCloseIcon", "typeInTheme": "icon" }],
             "description": {
               "textPart": {
                 "text": "关闭图标",
