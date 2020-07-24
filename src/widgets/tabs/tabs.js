@@ -392,7 +392,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
       isShowArrowIcon,
     } = this.props;
     let { tabPosition } = this.props;
-    console.log('getTabHeaderProps', isShowArrowIcon);
     tabPosition = tabType === 'line' ? tabPosition : 'top';
     return {
       activityValue,
