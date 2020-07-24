@@ -277,6 +277,16 @@
         "iconClass": "progressSuccess",
         "data": [
           {
+            "name": "圆形进度条成功外观配置",
+            "path": ["ProgressCircleLine_Success"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
             "name": "进度条成功图标配置",
             "path": ["ProgressCircleSuccessIcon"],
             "props": [{ "name": "successIconClass", "typeInTheme": "icon" }],
@@ -301,6 +311,16 @@
         "title": "错误状态",
         "iconClass": "progressError",
         "data": [
+          {
+            "name": "圆形进度条失败外观配置",
+            "path": ["ProgressCircleLine_Error"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
           {
             "name": "进度条失败图标配置",
             "path": ["ProgressCircleErrorIcon"],
@@ -405,6 +425,16 @@
         "iconClass": "progressDashboardSuccess",
         "data": [
           {
+            "name": "仪表盘进度条成功外观配置",
+            "path": ["ProgressCircleLine_Success"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
             "name": "进度条成功图标配置",
             "path": ["ProgressDashboardSuccessIcon"],
             "props": [{ "name": "successIconClass", "typeInTheme": "icon" }],
@@ -429,6 +459,16 @@
         "title": "错误状态",
         "iconClass": "progressDashboardError",
         "data": [
+          {
+            "name": "仪表盘进度条失败外观配置",
+            "path": ["ProgressCircleLine_Error"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
           {
             "name": "进度条失败图标配置",
             "path": ["ProgressDashboardErrorIcon"],

@@ -93,13 +93,25 @@ export default class extends React.Component<any, any> {
 
   getCircleInfo = (svgInnerTheme: Object = {}) => {
     const {
-      themeConfig: { normal: { width, strokeWidth: circleWidth } = {} } = {},
+      themeConfig: {
+        normal: {
+          width,
+          strokeWidth: circleWidth,
+          border: {
+            top: { width: topWidth } = {},
+            right: { width: rightWidth } = {},
+            bottom: { width: bottomWidth } = {},
+            left: { width: leftWidth } = {},
+          } = {},
+        } = {},
+      } = {},
     } = svgInnerTheme;
     const { size = 'default' } = this.props;
     const isDefault = size === 'default';
     const halfWidth = width / 2;
     const cxOrCy = width ? halfWidth : isDefault ? 60 : 40;
-    const strokeWidth = circleWidth ? circleWidth : isDefault ? 8 : 6;
+    const borderWidth = topWidth || rightWidth || bottomWidth || leftWidth;
+    const strokeWidth = borderWidth ? borderWidth : circleWidth ? circleWidth : isDefault ? 8 : 6;
     const halfStrokeWidth = strokeWidth / 2;
     const radius = width
       ? halfWidth - halfStrokeWidth
@@ -156,13 +168,15 @@ export default class extends React.Component<any, any> {
 
     if (lineColor) return lineColor;
 
-    const { status } = this.props;
+    const { status, getPartOfThemeProps } = this.props;
     if (status === 'error') {
-      return get('dangerColor');
+      const errorColor = this.getCircleColor(getPartOfThemeProps('ProgressCircleLine_Error'));
+      return errorColor || get('dangerColor');
     }
 
     if (status === 'success' || percent === 100) {
-      return get('successColor');
+      const successColor = this.getCircleColor(getPartOfThemeProps('ProgressCircleLine_Success'));
+      return successColor || get('successColor');
     }
 
     const { getTheme } = this.props;
@@ -183,6 +197,11 @@ export default class extends React.Component<any, any> {
     const { themeConfig = {} } = theme;
     const { normal = {} } = themeConfig;
     const { color = defaultValue } = normal;
+    return color;
+  }
+
+  getCircleColor(theme: Object = {}): string {
+    const { themeConfig: { normal: { background: { color } = {} } = {} } = {} } = theme;
     return color;
   }
 
