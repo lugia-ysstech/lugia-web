@@ -241,13 +241,17 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     return limit(toNumber(animationTime, defaultAnimationTime), [200, 100000]);
   }
 
+  getIsArray(children) {
+    return !children || children.length === 0 || !Array.isArray(children);
+  }
+
   createIndicators = () => {
     let items = [];
     const { indicatorType, children } = this.props;
     if (children) {
       const { start } = this.state;
       const length = children.length;
-      if (!children || children.length === 0 || !Array.isArray(children)) {
+      if (this.getIsArray(children)) {
         return [];
       }
       items = children.map((item, index) => {
@@ -362,8 +366,10 @@ export default class Carousel extends React.Component<any, CarouselProps> {
 
   getItems = (channel: Object) => {
     const { children, getPartOfThemeProps } = this.props;
+
     const EmptyThemeProps = getPartOfThemeProps('CarouselWrap');
-    if (!children || children.length === 0 || !Array.isArray(children)) {
+
+    if (this.getIsArray(children)) {
       return <Empty themeProps={EmptyThemeProps}>暂无切换框</Empty>;
     }
     const { start: nextStart } = this.state;
@@ -391,7 +397,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     const { props, state } = this;
     const { switchType } = props;
     const { start = 0 } = state;
-    if (!children || children.length === 0 || !Array.isArray(children)) {
+    if (this.getIsArray(children)) {
       return [];
     }
 
