@@ -167,6 +167,10 @@
     "resetIcon": {
       "type": "icon",
       "desc": "搜索框重置按钮图标"
+    },
+    "tagCloseIcon": {
+      "type": "icon",
+      "desc": "标签删除按钮图标"
     }
   },
   "events": {
