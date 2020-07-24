@@ -82,7 +82,7 @@ type SelectProps = {
   searchAddIcon?: string,
   toggleIcon?: string,
   resetIcon?: string,
-  tagCloseIcon?: string,
+  singleClearIcon?: string,
   checkAllIcon?: string,
   deselectionIcon?: string,
   isShowClearButton?: boolean,
@@ -134,7 +134,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     query: '',
     pullIconClass: 'lugia-icon-direction_down',
     clearIconClass: 'lugia-icon-reminder_close',
-    tagCloseIcon: 'lugia-icon-reminder_close_circle',
+    singleClearIcon: 'lugia-icon-reminder_close_circle',
     searchAddIcon: 'lugia-icon-reminder_plus',
     checkAllIcon: 'lugia-icon-financial_check_all',
     deselectionIcon: 'lugia-icon-financial_deselection',
@@ -440,7 +440,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       canClear,
       pullIconClass,
       clearIconClass,
-      tagCloseIcon,
+      singleClearIcon,
       isShowClearButton,
       onFocus,
       onBlur,
@@ -492,7 +492,7 @@ class Select extends React.Component<SelectProps, SelectState> {
             isShowClearButton={isShowClearButton}
             onFocus={onFocus}
             onBlur={onBlur}
-            tagCloseIcon={tagCloseIcon}
+            singleClearIcon={singleClearIcon}
           />
         </Trigger>
       </Theme>

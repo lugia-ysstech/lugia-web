@@ -84,7 +84,7 @@ type InputTagProps = {
   getPartOfThemeConfig: Function,
   pullIconClass?: string,
   clearIconClass?: string,
-  tagCloseIcon?: string,
+  singleClearIcon?: string,
   createPortal?: boolean,
   menuVisible?: boolean,
   isShowClearButton?: boolean,
@@ -112,7 +112,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     isShowClearButton: true,
     pullIconClass: 'lugia-icon-direction_down',
     clearIconClass: 'lugia-icon-reminder_close',
-    tagCloseIcon: 'lugia-icon-reminder_close_circle',
+    singleClearIcon: 'lugia-icon-reminder_close_circle',
   };
 
   container: Object;
@@ -225,14 +225,14 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const clearButton = this.getClearButton();
     const placeholder = this.getPlaceholder();
     const FontItemThemeProps = props.getPartOfThemeProps('TagWrap');
-    const { tagCloseIcon } = props;
+    const { singleClearIcon } = props;
     const font = (
       <FontItem
         themeProps={FontItemThemeProps}
         theme={this.getTagItemTheme()}
         ref={this.fontItem}
         key="fontItem"
-        tagCloseIcon={tagCloseIcon}
+        singleClearIcon={singleClearIcon}
       />
     );
     const { focus } = state;
@@ -699,7 +699,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   async adaptiveItems(listWidth: number): Promise<boolean> {
-    const { disabled, tagCloseIcon } = this.props;
+    const { disabled, singleClearIcon } = this.props;
     if (!this.isMutliple()) {
       return true;
     }
@@ -734,7 +734,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
               disabled={disabled}
               key={key}
               onCloseClick={this.onDelItem.bind(this, key)}
-              tagCloseIcon={tagCloseIcon}
+              singleClearIcon={singleClearIcon}
             >
               {text}
             </Item>
