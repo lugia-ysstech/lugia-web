@@ -79,9 +79,12 @@ type SelectProps = {
   pullIconClass?: string,
   clearIconClass?: string,
   searchClearIcon?: string,
+  searchAddIcon?: string,
   toggleIcon?: string,
   resetIcon?: string,
   tagCloseIcon?: string,
+  checkAllIcon?: string,
+  deselectionIcon?: string,
   isShowClearButton?: boolean,
   size?: Size,
   checkedCSS?: CheckedCSS,
@@ -132,6 +135,9 @@ class Select extends React.Component<SelectProps, SelectState> {
     pullIconClass: 'lugia-icon-direction_down',
     clearIconClass: 'lugia-icon-reminder_close',
     tagCloseIcon: 'lugia-icon-reminder_close_circle',
+    searchAddIcon: 'lugia-icon-reminder_plus',
+    checkAllIcon: 'lugia-icon-financial_check_all',
+    deselectionIcon: 'lugia-icon-financial_deselection',
     isShowClearButton: true,
     size: 'default',
   };
@@ -354,6 +360,9 @@ class Select extends React.Component<SelectProps, SelectState> {
       searchClearIcon,
       toggleIcon,
       resetIcon,
+      searchAddIcon,
+      checkAllIcon,
+      deselectionIcon,
     } = props;
     const { query, isCheckedAll } = state;
     const getMenu: Function = (cmp: Object) => {
@@ -371,6 +380,9 @@ class Select extends React.Component<SelectProps, SelectState> {
     const receivedQueryInputTheme = getPartOfThemeProps('QueryInput');
     const toggleIconTheme = getPartOfThemeHocProps('ToggleIcon');
     const resetIconTheme = getPartOfThemeHocProps('ResetIcon');
+    const searchAddIconTheme = getPartOfThemeHocProps('SearchAddIcon');
+    const checkAllIconTheme = getPartOfThemeHocProps('CheckAllIcon');
+    const deselectionIconTheme = getPartOfThemeHocProps('DeselectionIcon');
 
     const menu = [
       data && data.length !== 0 ? (
@@ -379,6 +391,9 @@ class Select extends React.Component<SelectProps, SelectState> {
           receivedTheme={receivedQueryInputTheme}
           toggleIconTheme={toggleIconTheme}
           resetIconTheme={resetIconTheme}
+          searchAddIconTheme={searchAddIconTheme}
+          checkAllIconTheme={checkAllIconTheme}
+          deselectionIconTheme={deselectionIconTheme}
           query={query}
           onQueryInputChange={this.onQueryInputChange}
           onQueryInputKeyDown={this.onQueryInputKeyDown}
@@ -392,6 +407,9 @@ class Select extends React.Component<SelectProps, SelectState> {
           searchClearIcon={searchClearIcon}
           toggleIcon={toggleIcon}
           resetIcon={resetIcon}
+          searchAddIcon={searchAddIcon}
+          checkAllIcon={checkAllIcon}
+          deselectionIcon={deselectionIcon}
         />
       ) : null,
       this.getMenuItems(getMenu),
