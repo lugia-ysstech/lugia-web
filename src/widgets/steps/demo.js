@@ -106,6 +106,18 @@ const data = [
   { title: '步骤4', description: '描述性文本4', stepStatus: 'wait' },
   { title: '步骤5', description: '描述性文本5', stepStatus: 'error' },
 ];
+const desWidthConfig = {
+  [Widget.Steps]: {
+    Step: {
+      FinishStepDescription: {
+        normal: {
+          width: 80,
+        },
+      },
+    },
+  },
+};
+
 export default () => {
   return (
     <div>
@@ -114,27 +126,32 @@ export default () => {
           <Steps data={data} />
         </Wrapper>
         <p>带有描述</p>
-        <Steps orientation="horizontal" size={'default'}>
-          <Step title="步骤1" description={'描述性文本1'} stepStatus="finish" />
-          <Step
-            title="步骤1"
-            description={
-              <div>
-                <div>很长很长的描述,想要撑开高度</div>
-                <div>很长很长的描述,想要撑开高度</div>
-                <div>很长很长的描述,想要撑开高度</div>
-                <div>很长很长的描述,想要撑开高度</div>
-                <div>很长很长的描述,想要撑开高度</div>
-                <div>很长很长的描述,想要撑开高度</div>
-              </div>
-            }
-            stepStatus="finish"
-          />
-          <Step title="步骤2" description={'描述性文本2'} stepStatus="process" />
-          <Step title="步骤3" description={'描述性文本3'} stepStatus="next" />
-          <Step title="步骤4" description={'描述性文本4'} stepStatus="wait" />
-          <Step title="步骤5" description={'描述性文本5'} stepStatus="error" />
-        </Steps>
+        <Theme config={desWidthConfig}>
+          <Steps orientation="horizontal" size={'default'}>
+            <Step title="步骤1" description={'描述性文本1'} stepStatus="finish" />
+            <Step
+              title="步骤1"
+              description={
+                <div>
+                  很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度
+                </div>
+              }
+              stepStatus="finish"
+            />
+            <Step
+              title="步骤2"
+              description={
+                <div>
+                  很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度
+                </div>
+              }
+              stepStatus="process"
+            />
+            <Step title="步骤3" description={'描述性文本3'} stepStatus="next" />
+            <Step title="步骤4" description={'描述性文本4'} stepStatus="wait" />
+            <Step title="步骤5" description={'描述性文本5'} stepStatus="error" />
+          </Steps>
+        </Theme>
       </Wrapper>
       <Wrapper>
         <p>带有描述 居中显示</p>
