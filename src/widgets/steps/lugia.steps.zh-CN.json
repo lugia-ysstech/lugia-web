@@ -27,8 +27,7 @@
         { "title": "步骤2", "description": "步骤2的描述文本", "stepStatus": "process" },
         { "title": "步骤3", "description": "步骤3的描述文本", "stepStatus": "next" },
         { "title": "步骤4", "description": "步骤4的描述文本", "stepStatus": "wait" }
-      ],
-      "defaultValue": []
+      ]
     },
     "defaultData": {
       "type": "object[]",
