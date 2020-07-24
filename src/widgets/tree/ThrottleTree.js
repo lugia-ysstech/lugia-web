@@ -43,7 +43,7 @@ class ScrollerTree extends React.Component<any, any> {
       nexProps.mutliple !== this.props.mutliple ||
       nexProps.utils != this.props.utils ||
       nexProps.onSelect != this.props.onSelect ||
-      nexProps.getTheme() != this.props.getTheme() ||
+      JSON.stringify(nexProps.theme) !== JSON.stringify(this.props.theme) ||
       nexProps.id2ExtendInfo != this.props.id2ExtendInfo ||
       nexProps.start != this.props.start ||
       endChange

@@ -144,7 +144,8 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       props.activityValue !== nextProps.activityValue ||
       props.switchIconNames !== nextProps.switchIconNames ||
       props.renderSuffixItems !== nextProps.renderSuffixItems ||
-      props.igronSelectField !== nextProps.igronSelectField
+      props.igronSelectField !== nextProps.igronSelectField ||
+      JSON.stringify(props.theme) !== JSON.stringify(nextProps.theme)
     );
   }
 
@@ -176,13 +177,17 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       divided,
       renderSuffixItems,
       size = 'large',
+      isShowAuxiliaryText,
+      switchIconClass,
     } = this.props;
     const { popupVisible, value, expandedPath } = this.state;
     return (
       <MenuWrap>
         <Menu
           size={size}
+          switchIconClass={switchIconClass}
           {...this.getMenuTheme(themeStyle)}
+          isShowAuxiliaryText={isShowAuxiliaryText}
           data={data}
           separator={separator}
           autoHeight={autoHeight}
@@ -263,6 +268,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           tabPosition={'top'}
           hideContent={true}
           data={defaultTabsData}
+          isShowArrowIcon={false}
         />
       );
     }
@@ -276,6 +282,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
         onTabClick={this.onTabClick}
         activityValue={this.getActivityValue(activityValue)}
         getTabpane={this.getTabpane}
+        isShowArrowIcon={false}
       >
         {this.getTabpanes(tabsData)}
       </Tabs>
@@ -374,7 +381,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getHorizontaMenu = (i: number) => {
-    const { data = [], autoHeight = true, themeStyle } = this.props;
+    const { data = [], autoHeight = true, themeStyle, switchIconClass } = this.props;
     const { children } = data[i];
     const { tabsMenuExpandedPath, tabsMenuValue } = this.state;
     return (
@@ -388,6 +395,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
         onExpandPathChange={this.onTabsMenuExpandPathChange}
         onClick={this.onClickTabsMenu}
         selectedKeys={tabsMenuValue}
+        switchIconClass={switchIconClass}
       />
     );
   };

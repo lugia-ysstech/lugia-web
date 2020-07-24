@@ -24,10 +24,17 @@ const transparency70 = 70;
 
 export const HorizontalLightTheme = () => {
   return {
-    TitleContainer: {
+    Container: {
       normal: {
         background: {
           color: navLightBackgroundColor,
+        },
+      },
+    },
+    TitleContainer: {
+      normal: {
+        background: {
+          color: 'transparent',
         },
       },
     },
