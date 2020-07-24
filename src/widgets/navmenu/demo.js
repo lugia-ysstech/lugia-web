@@ -41,10 +41,7 @@ const newData = [
   {
     value: 'Lugia Design of React',
     text: 'Lugia Design of React',
-    icon: 'lugia-icon-financial_add_pic',
-    icons: {
-      suffixIconClass: 'lugia-icon-finacial1_lock_o',
-    },
+    icon: 'lugia-icon-financial_columns',
   },
   { value: '快速上手', text: '快速上手', icon: 'lugia-icon-financial_columns' },
   { value: '项目实战', text: '项目实战' },
