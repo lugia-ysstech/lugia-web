@@ -1910,6 +1910,109 @@ export default class TabsDemo extends React.Component<any, any> {
         <Tabs data={testThemeData} showDeleteBtn={true} showAddBtn={true} />
         <Tabs tabType={'card'} data={testThemeData} showDeleteBtn={true} showAddBtn={true} />
         <Tabs tabType={'window'} data={testThemeData} showDeleteBtn={true} showAddBtn={true} />
+
+        <p>测试 isShowArrowIcon属性</p>
+        <br />
+        <Theme
+          config={{
+            [Widget.Tabs]: {
+              Container: { normal: { height: 60, width: 540 } },
+              ContentBlock: { normal: { background: 'none' } },
+              TabHeader: {
+                DefaultTabPan: {
+                  normal: {
+                    color: '#737b89',
+                    font: {
+                      family: '',
+                      size: 14,
+                      style: 'normal',
+                      weight: 'normal',
+                    },
+                    height: 58,
+                    padding: { bottom: '', left: '', right: '', top: '' },
+                    width: 132,
+                  },
+                },
+                SelectTabPan: {
+                  normal: {
+                    color: '#0052db',
+                    font: {
+                      family: '',
+                      size: 14,
+                      style: 'normal',
+                      weight: 'normal',
+                    },
+                  },
+                },
+              },
+              WindowContainer: {
+                normal: {
+                  background: { color: '#F0F2F5' },
+                  padding: { bottom: '2', left: '2', right: '', top: '2' },
+                },
+              },
+            },
+          }}
+        >
+          <Tabs
+            viewClass="wbGmRn0"
+            data={[
+              {
+                content: 'content',
+                icon: 'icon',
+                key: '1',
+                suffixIcon: 'suffixIcon',
+                title: '待办事项',
+              },
+              {
+                content: 'content',
+                icon: 'icon',
+                key: '2',
+                suffixIcon: 'suffixIcon',
+                title: '消息通知',
+              },
+              {
+                content: 'content',
+                icon: 'icon',
+                key: '3',
+                suffixIcon: 'suffixIcon',
+                title: '我的收藏',
+              },
+              {
+                content: 'content',
+                icon: 'icon',
+                key: '4',
+                suffixIcon: 'suffixIcon',
+                title: '资源下载',
+              },
+              {
+                content: 'content',
+                icon: 'icon',
+                key: '5',
+                suffixIcon: 'suffixIcon',
+                title: '我的收藏',
+              },
+              {
+                content: 'content',
+                icon: 'icon',
+                key: '6',
+                suffixIcon: 'suffixIcon',
+                title: '资源下载',
+              },
+            ]}
+            defaultActivityValue=""
+            forceRender=""
+            pagedType={'single'}
+            showAddBtn=""
+            showDeleteBtn=""
+            tabPosition={'top`'}
+            tabType={'window'}
+            isShowArrowIcon={false}
+          />
+        </Theme>
+        <p>测试 hideTabBar</p>
+        <br />
+        <Tabs data={defaultData} activeValue={'Tab3'} hideTabBar={true} />
       </div>
     );
   }
