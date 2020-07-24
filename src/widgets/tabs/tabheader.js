@@ -577,7 +577,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const tabsOutContainerThemeProps = deepMerge(tabsThemeProps, borderThemeProps);
     const moveDistance = this.computeMoveDistance();
     const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove();
-    themeProps.propsConfig = { arrowShow };
+    themeProps.propsConfig = { arrowShow, isShowArrowIcon };
     tabsOutContainerThemeProps.propsConfig = { tabPosition };
 
     const prevPageThemeProps = deepMerge(
@@ -752,7 +752,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         addSize = width ? width : addSize;
       }
     }
-    themeProps.propsConfig = { arrowShow, showAddBtn, addSize };
+    themeProps.propsConfig = { arrowShow, showAddBtn, addSize, isShowArrowIcon };
     const moveDistance = this.computeMoveDistance();
 
     const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove();
