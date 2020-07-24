@@ -111,7 +111,7 @@ export default class extends React.Component<any, any> {
     const halfWidth = width / 2;
     const cxOrCy = width ? halfWidth : isDefault ? 60 : 40;
     const borderWidth = topWidth || rightWidth || bottomWidth || leftWidth;
-    const strokeWidth = borderWidth ? borderWidth : circleWidth ? circleWidth : isDefault ? 8 : 6;
+    const strokeWidth = borderWidth || circleWidth || (isDefault ? 8 : 6);
     const halfStrokeWidth = strokeWidth / 2;
     const radius = width
       ? halfWidth - halfStrokeWidth
