@@ -32,22 +32,31 @@ const data = [
     value: 'Lugia Design of React',
     text: 'Lugia Design of React',
     icon: 'lugia-icon-financial_add_pic',
+    des: '2234234',
     disabled: true,
   },
-  { value: 'Lugia-mobile', text: 'Lugia-mobile', icon: 'lugia-icon-financial_add_pic' },
+  {
+    value: 'Lugia-mobile',
+    text: 'Lugia-mobile',
+    icon: 'lugia-icon-financial_add_pic',
+    des: '2234234',
+  },
   {
     value: 'Components',
     text: 'Components',
     icon: 'lugia-icon-financial_add_pic',
+    des: '2234234',
     children: [
       {
         value: 'General',
         text: 'General',
+        des: '2234234',
       },
 
       {
         value: 'Layout',
         text: 'Layout',
+        des: '2234234',
         disabled: true,
       },
 
@@ -55,7 +64,11 @@ const data = [
         value: 'Navigation',
         text: 'Navigation',
         icon: 'lugia-icon-financial_add_pic',
-        children: [{ value: 'Affix', text: 'Affix' }, { value: 'tag', text: 'tag' }],
+        des: '2234234',
+        children: [
+          { value: 'Affix', text: 'Affix', des: '2234234' },
+          { value: 'tag', text: 'tag', des: '2234234' },
+        ],
       },
     ],
   },
@@ -113,7 +126,6 @@ const horizontalData = [
       {
         value: 'Data Entry',
         text: 'Data Entry',
-        describe: true,
         children: [{ value: 'rate', text: 'rate' }, { value: 'Cascader', text: 'Cascader' }],
       },
     ],
@@ -148,13 +160,43 @@ const menuTheme = {
 const menuTheme1 = {
   [Widget.NavMenu]: {
     Tabs: {
-      TabHeader: {
-        SelectLine: {
-          normal: {
-            width: 100,
-            height: 10,
-            background: {
-              color: 'red',
+      Container: {
+        normal: {
+          width: 900,
+          height: 90,
+          boxShadow: {
+            color: '#cc1e1e',
+            x: 2,
+            y: 2,
+            blur: 3,
+            spread: 3,
+            type: 'outset',
+          },
+          border: {
+            top: {
+              width: 3,
+              color: '#3c19eb',
+              style: 'solid',
+            },
+            right: {
+              width: 3,
+              color: '#3c19eb',
+              style: 'solid',
+            },
+            bottom: {
+              width: 3,
+              color: '#3c19eb',
+              style: 'solid',
+            },
+            left: {
+              width: 3,
+              color: '#3c19eb',
+              style: 'solid',
+            },
+            all: {
+              width: 3,
+              style: 'solid',
+              color: '#3c19eb',
             },
           },
         },
@@ -163,26 +205,42 @@ const menuTheme1 = {
   },
 };
 
-const primaryMenuTheme = {
+const verticalMenuTheme = {
   [Widget.NavMenu]: {
+    Menu: {
+      MenuItem: {
+        SwitchIcon: {
+          normal: {
+            font: {
+              weight: '',
+              style: '',
+              size: '',
+            },
+            color: '#df0d0d',
+            lineHeight: '',
+          },
+        },
+      },
+    },
+  },
+};
+
+const primaryMenuTheme = {
+  lugia_widget_NavMenu: {
     Tree: {
       TreeItem: {
         SubTreeWrap: {
           normal: {
             background: {
-              color: '#e20c0c',
+              color: 'blue',
             },
           },
         },
-        SelectedText: {
-          normal: {
-            background: {
-              color: '#50e3c2',
-            },
-            font: {
-              size: '',
-            },
-            color: '#f8e71c',
+      },
+      Container: {
+        normal: {
+          background: {
+            color: '#e61111',
           },
         },
       },
@@ -194,7 +252,26 @@ export default class LimitDemo extends React.Component<Object, Object> {
   all: boolean;
   constructor(props) {
     super(props);
-    this.state = { value: ['Affix 固钉'], activityValue: '项目实战', height: 500 };
+    this.state = {
+      value: ['Affix 固钉'],
+      activityValue: '项目实战',
+      height: 500,
+      primaryMenuTheme: {
+        lugia_widget_NavMenu: {
+          Tree: {
+            TreeItem: {
+              SubTreeWrap: {
+                normal: {
+                  background: {
+                    color: 'red',
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    };
   }
 
   tabsOnChange = (target: Object) => {
@@ -208,7 +285,14 @@ export default class LimitDemo extends React.Component<Object, Object> {
       <RowWrap>
         <RowWrapItem>
           <H1> themeStyle：light 垂直菜单 </H1>
-          <Navmenu data={data} mode={'vertical'} />,
+          <Navmenu
+            data={data}
+            theme={verticalMenuTheme}
+            mode={'vertical'}
+            isShowAuxiliaryText
+            switchIconClass={{ iconClass: 'lugia-icon-direction_down_circle_new' }}
+          />
+          ,
         </RowWrapItem>
         <RowWrapItem>
           <H1> themeStyle：dark 垂直菜单 </H1>
@@ -219,7 +303,13 @@ export default class LimitDemo extends React.Component<Object, Object> {
       <RowWrap>
         <RowWrapItem>
           <H1> themeStyle：light </H1>
-          <Navmenu theme={menuTheme1} data={horizontalData} mode={'horizontal'} />,
+          <Navmenu
+            theme={menuTheme1}
+            data={horizontalData}
+            mode={'horizontal'}
+            switchIconClass={{ iconClass: 'lugia-icon-direction_down_circle_new' }}
+          />
+          ,
         </RowWrapItem>
         <RowWrapItem>
           <H1> themeStyle：dark </H1>
@@ -230,11 +320,18 @@ export default class LimitDemo extends React.Component<Object, Object> {
       <RowWrap>
         <RowWrapItem>
           <H1> themeStyle：light </H1>
+          <button
+            onClick={() => {
+              this.setState({ primaryMenuTheme: { ...primaryMenuTheme } });
+            }}
+          >
+            xxx
+          </button>
           <Navmenu
             indentDistance={26}
             data={data}
             parentIsHighlight={false}
-            theme={primaryMenuTheme}
+            theme={this.state.primaryMenuTheme}
             selectLinePosition="left"
           />
           ,
