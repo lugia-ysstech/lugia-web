@@ -25,7 +25,7 @@ import Icon from '../icon';
 import get from '../css/theme-common-dict';
 import changeColor from '../css/utilsColor';
 import { px2remcss } from '../css/units';
-import { getMenuThemeDefaultConfig } from '../css//menu';
+import { getMenuThemeDefaultConfig } from '../css/menu';
 
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
@@ -311,8 +311,8 @@ class MenuItem extends React.Component<MenuItemProps> {
   }
 
   getTextThemeProps = () => {
-    const { getPartOfThemeProps, size } = this.props;
-    const themeProps = getPartOfThemeProps('Text');
+    const { getPartOfThemeProps, size, checked } = this.props;
+    const themeProps = checked ? getPartOfThemeProps('CheckedText') : getPartOfThemeProps('Text');
     const defaultTextTheme = getMenuThemeDefaultConfig(size, 'Text');
     return deepMerge({ themeConfig: { ...defaultTextTheme } }, themeProps);
   };

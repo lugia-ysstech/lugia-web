@@ -419,7 +419,14 @@
             "CheckboxEdgeCancel": {
               "name": "取消状态外框样式",
               "desc": "取消状态外框样式",
-              "normal": [["background"], ["borderRadius"], ["border"], ["boxShadow"], ["width"], ["height"]]
+              "normal": [
+                ["background"],
+                ["borderRadius"],
+                ["border"],
+                ["boxShadow"],
+                ["width"],
+                ["height"]
+              ]
             },
             "CheckboxInnerCancel": {
               "name": "Checkbox取消状态样式配置",
@@ -846,14 +853,7 @@
     "TransferCancelBox": {
       "name": "穿梭框面板取消项盒子样式",
       "desc": "为穿梭框配置右面板取消项盒子样式",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["margin"],
-        ["padding"],
-        ["background"],
-        ["border", "top"]
-      ]
+      "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["border", "top"]]
     },
     "TransferCancelCheckbox": {
       "name": "穿梭框面板取消项盒子样式",
@@ -876,7 +876,14 @@
         "CheckboxEdgeCancel": {
           "name": "取消状态外框样式",
           "desc": "取消状态外框样式",
-          "normal": [["background"], ["borderRadius"], ["border"], ["boxShadow"], ["width"], ["height"]]
+          "normal": [
+            ["background"],
+            ["borderRadius"],
+            ["border"],
+            ["boxShadow"],
+            ["width"],
+            ["height"]
+          ]
         },
         "CheckboxInnerCancel": {
           "name": "Checkbox取消状态样式配置",
@@ -915,9 +922,6 @@
               "desc": "配置每一项的外盒",
               "normal": [
                 ["height"],
-                ["color"],
-                ["font"],
-                ["fontSize"],
                 ["cursor"],
                 ["border"],
                 ["borderRadius"],
@@ -927,9 +931,6 @@
                 ["boxShadow"]
               ],
               "hover": [
-                ["color"],
-                ["font"],
-                ["fontSize"],
                 ["background"],
                 ["opacity"],
                 ["border"],
@@ -937,9 +938,6 @@
                 ["boxShadow"]
               ],
               "active": [
-                ["color"],
-                ["font"],
-                ["fontSize"],
                 ["background"],
                 ["opacity"],
                 ["border"],
@@ -947,12 +945,9 @@
                 ["boxShadow"]
               ],
               "disabled": [
-                ["color"],
-                ["font"],
                 ["cursor"],
                 ["borderRadius"],
                 ["padding"],
-                ["fontSize"],
                 ["background"],
                 ["opacity"]
               ]
@@ -1108,7 +1103,14 @@
                 "CheckboxEdgeCancel": {
                   "name": "取消状态外框样式",
                   "desc": "取消状态外框样式",
-                  "normal": [["background"], ["borderRadius"], ["border"], ["boxShadow"], ["width"], ["height"]]
+                  "normal": [
+                    ["background"],
+                    ["borderRadius"],
+                    ["border"],
+                    ["boxShadow"],
+                    ["width"],
+                    ["height"]
+                  ]
                 },
                 "CheckboxInnerChecked": {
                   "name": "选中内框样式",
@@ -1130,6 +1132,19 @@
                   "normal": [["background"], ["width"], ["height"]]
                 }
               }
+            },
+
+            "Text": {
+              "name": "默认项文本",
+              "desc": "为默认项文本配置样式",
+              "normal": [["color"], ["font"], ["fontSize"]],
+              "hover": [["color"], ["font"], ["fontSize"]]
+            },
+            "CheckedText": {
+              "name": "选中项文本",
+              "desc": "为选中项文本配置样式",
+              "normal": [["color"], ["font"], ["fontSize"]],
+              "hover": [["color"], ["font"], ["fontSize"]]
             }
           }
         }
