@@ -32,12 +32,18 @@ const treeData = [
       {
         text: '2.1',
         value: '2.1',
-        children: [{ text: '2.1.1', value: '2.1.1' }, { text: '2.1.2', value: '2.1.2' }],
+        children: [
+          { text: '2.1.1', value: '2.1.1' },
+          { text: '2.1.2', value: '2.1.2' },
+        ],
       },
       {
         text: '2.2',
         value: '2.2',
-        children: [{ text: '2.2.1', value: '2.2.1' }, { text: '2.2.2', value: '2.2.2' }],
+        children: [
+          { text: '2.2.1', value: '2.2.1' },
+          { text: '2.2.2', value: '2.2.2' },
+        ],
       },
     ],
   },
@@ -212,6 +218,27 @@ export default class TransferDemo extends React.Component<any, any> {
         },
       },
     };
+    const transferTheme = {
+      [Widget.Transfer]: {
+        TransferPanelMenu: {
+          Container: {
+            normal: { height: 500 },
+          },
+          MenuItem: {
+            Text: {
+              normal: {
+                color: 'blue',
+              },
+            },
+            CheckedText: {
+              normal: {
+                color: 'red',
+              },
+            },
+          },
+        },
+      },
+    };
     return (
       <div style={{ marginLeft: '30px', marginTop: '30px' }}>
         <Transfer />
@@ -302,6 +329,22 @@ export default class TransferDemo extends React.Component<any, any> {
           showSearch
           defaultDisplayValue={['dis1', 'dis2', '2.1.1']}
         />
+
+        <br />
+        <br />
+        <br />
+        <h2>主题</h2>
+        <Theme config={transferTheme}>
+          <Transfer
+            data={data}
+            showSearch
+            sourceSelectedKeys={sourceSelectedKeys}
+            targetSelectedKeys={targetSelectedKeys}
+            value={targetKeys}
+            onSelectChange={this.handleSelectChange}
+            onDirectionClick={this.handleDirectionClick}
+          />
+        </Theme>
       </div>
     );
   }
