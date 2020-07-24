@@ -240,7 +240,7 @@ export default class Demo extends React.Component {
             searchClearIcon="lugia-icon-reminder_clock_circle"
             toggleIcon="lugia-icon-direction_folding_up"
             resetIcon="lugia-icon-financial_loading"
-            tagCloseIcon="lugia-icon-reminder_close"
+            singleClearIcon="lugia-icon-reminder_close"
             searchAddIcon="lugia-icon-reminder_plus_circle"
             checkAllIcon="lugia-icon-reminder_check_square_o"
             deselectionIcon="lugia-icon-reminder_close_square_o"
