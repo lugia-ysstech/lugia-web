@@ -234,7 +234,8 @@
                 ["border"],
                 ["borderRadius"],
                 ["cursor"],
-                ["opacity"]
+                ["opacity"],
+                ["boxShadow"]
               ],
               "hover": [
                 ["border"],
@@ -245,6 +246,7 @@
                 ["boxShadow"]
               ],
               "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+              "focus": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
               "disabled": [
                 ["fontSize"],
                 ["font"],
@@ -254,7 +256,8 @@
                 ["borderRadius"],
                 ["cursor"],
                 ["padding"],
-                ["opacity"]
+                ["opacity"],
+                ["boxShadow"]
               ]
             }
           }
@@ -419,7 +422,8 @@
             ["border"],
             ["borderRadius"],
             ["cursor"],
-            ["opacity"]
+            ["opacity"],
+            ["boxShadow"]
           ],
           "hover": [
             ["border"],
@@ -430,6 +434,7 @@
             ["boxShadow"]
           ],
           "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+          "focus": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
           "disabled": [
             ["fontSize"],
             ["font"],
@@ -439,7 +444,8 @@
             ["borderRadius"],
             ["cursor"],
             ["padding"],
-            ["opacity"]
+            ["opacity"],
+            ["boxShadow"]
           ]
         }
       }
