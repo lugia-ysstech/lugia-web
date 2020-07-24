@@ -87,8 +87,8 @@ const HTabsContainer = CSSComponent({
   normal: {
     selectNames: [['width']],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig: { arrowShow, showAddBtn, addSize } = {} } = themeProps;
-      if (arrowShow) {
+      const { propsConfig: { arrowShow, showAddBtn, addSize, isShowArrowIcon } = {} } = themeProps;
+      if (arrowShow && isShowArrowIcon) {
         const W = showAddBtn ? (addSize ? addSize + 8 + 'px' : '80px') : '48px';
         return {
           width: `calc( 100% - ${W} )`,
@@ -199,8 +199,8 @@ const VTabsContainer = CSSComponent({
   normal: {
     selectNames: [['height'], ['border']],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig: { arrowShow } = {} } = themeProps;
-      if (arrowShow) {
+      const { propsConfig: { arrowShow, isShowArrowIcon } = {} } = themeProps;
+      if (arrowShow && isShowArrowIcon) {
         return {
           height: 'calc( 100% - 48px )',
         };
