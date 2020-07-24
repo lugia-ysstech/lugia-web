@@ -673,10 +673,7 @@ export const getDefaultIconName = (param: Object, defaultClass?: Object): Object
 
 export const getIconClassName = (props: Object, status: string, defaultClass: Object): string => {
   const className = getDefaultIconName(props, defaultClass)[status];
-  let extraClass = '';
-  if (status === 'loading') {
-    extraClass = 'loading';
-  }
+  const extraClass = status === 'loading' ? 'loading' : '';
   return `${className} ${extraClass}`;
 };
 
@@ -754,6 +751,10 @@ export const getIconByType = (param: Object) => {
   return getIcon(iconProps);
 };
 
+const getLiStatus = classNameStatus => {
+  return `li-${classNameStatus}`;
+};
+
 const getProgress = (item: Object, themeProps: Object) => {
   const { status } = item;
   if (status === 'done') return;
@@ -803,7 +804,8 @@ const getFileList = (
     <Ul themeProps={themeProps} disabled={disabled}>
       {data.map((item, index) => {
         const { status } = item;
-        const iconClassName = getIconClassName(props, `li-${status}`);
+        const liStatus = getLiStatus(status);
+        const iconClassName = getIconClassName(props, liStatus);
         const defaultIconProps = { props, status };
         const fileTypeIconProps = {
           ...defaultIconProps,
@@ -814,7 +816,7 @@ const getFileList = (
         const iconProps = {
           ...defaultIconProps,
           iconClassName,
-          status: `li-${status}`,
+          status: liStatus,
           className: 'floatRight',
         };
         const deleteIconProps = {
@@ -1112,7 +1114,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const newTheme = { viewClass: buttonViewClassType, theme: themeTypeMerge };
       const innerInputIconProps = {
         ...defaultIconProps,
-        iconClassName: 'li-' + classNameStatus,
+        iconClassName: getLiStatus(classNameStatus),
         className: 'right',
       };
       children = (
