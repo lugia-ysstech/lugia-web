@@ -67,6 +67,21 @@
       "type": "string",
       "desc": "发送到后台的文件参数名"
     },
+    "icon": {
+      "type": "icon",
+      "desc": "默认上传图标",
+      "propsDefaultValue": "lugia-icon-financial_upload"
+    },
+    "successIcon": {
+      "type": "icon",
+      "desc": "上传成功提示图标",
+      "propsDefaultValue": "lugia-icon-reminder_check_circle"
+    },
+    "failIcon": {
+      "type": "icon",
+      "desc": "上传失败提示图标",
+      "propsDefaultValue": "lugia-icon-reminder_close_circle"
+    },
     "size": {
       "type": "UploadSize",
       "desc": "picture类型可配置的三种尺寸",

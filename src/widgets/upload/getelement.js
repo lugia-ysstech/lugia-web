@@ -12,7 +12,7 @@ import Progress from '../progress';
 import Button from '../button';
 import FileInput from './fileInput';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
-import CSSComponent, { css, keyframes } from '../theme/CSSProvider';
+import CSSComponent, { css, keyframes, StaticComponent } from '../theme/CSSProvider';
 import { getBorderRadius, getBorder } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
@@ -250,7 +250,10 @@ const ProgressCon = CSSComponent({
   tag: 'div',
   className: 'upload_ProgressContainer',
   css: css`
-    margin-top: -10px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
   `,
 });
 
@@ -288,17 +291,18 @@ const Li = CSSComponent({
   },
   css: css`
     height: 36px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 ${get('padding')}px 0 4px;
+    align-items: center;
     position: relative;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     padding-left: 5px;
     & > span {
       line-height: 36px;
     }
     &:hover {
       cursor: pointer;
-      & .right {
+      & .floatRight {
         display: none;
       }
       & .delete {
@@ -308,6 +312,22 @@ const Li = CSSComponent({
   `,
   option: { hover: true },
 });
+
+const LiText = StaticComponent({
+  tag: 'div',
+  className: 'LiText',
+  css: css`
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    & > i,
+    span {
+      vertical-align: text-top;
+    }
+  `,
+});
+
 const PrevCon = CSSComponent({
   tag: 'div',
   className: 'upload_PrevBox',
@@ -602,79 +622,90 @@ const load = keyframes`
   }
 `;
 
-const iconClassMap = {
-  default: 'lugia-icon-financial_upload right',
-  loading: 'lugia-icon-financial_loading_o loading',
-  done: 'lugia-icon-financial_upload right',
-  video: 'lugia-icon-financial_video_camera icon-mark ccc',
-  file: 'lugia-icon-financial_folder icon-mark ccc',
-  uploadcloud: 'lugia-icon-financial_upload_cloud areaIcon',
-  'p-default': 'lugia-icon-reminder_plus',
-  'p-fail': 'lugia-icon-financial_monitoring',
-  'li-done': 'lugia-icon-reminder_check_circle right success',
-  'li-default': 'lugia-icon-financial_upload right',
-  'li-fail': 'lugia-icon-reminder_close_circle right error',
-  'li-delete': 'lugia-icon-reminder_close right delete',
-  'li-loading': 'lugia-icon-financial_loading_o right loading',
+export const getIcon = (props: Object) => {
+  const { iconClassName, theme, disabled, info, className = '', status } = props;
+  const iconProps = { disabled, iconClass: `${iconClassName} ${className}` };
+  if (info) {
+    const { doFunction, index, item } = info;
+    if (doFunction) {
+      iconProps.onClick = () => {
+        doFunction(index, item);
+      };
+    }
+  }
+
+  if (status === 'picture' && info) {
+    const { themeProps } = props;
+    return (
+      <PrevCon themeProps={themeProps}>
+        <LoadIcon singleTheme {...theme} {...iconProps} />
+        {getListIconType(info.name) === 'picture' && info.url ? (
+          <PrevImg themeProps={themeProps}>
+            <Img themeProps={themeProps} src={info.url} alt="lost" />{' '}
+            <Triangle themeProps={themeProps} />
+            <div>{info.url}</div>
+          </PrevImg>
+        ) : null}
+      </PrevCon>
+    );
+  }
+
+  return iconClassName ? <LoadIcon singleTheme {...theme} {...iconProps} /> : null;
 };
 
-export const getIconByType = (
-  props: Object,
-  status: ?string,
-  info: ?Object = {}
-): ?Object | string => {
-  if (!status) return null;
-  const { type } = info;
-  const { disabled } = props;
-  let resultTheme;
-  let resultViewClass;
+export const getDefaultIconName = (param: Object, defaultClass?: Object): Object => {
+  const { icon, successIcon, failIcon } = param;
+  const { defaultClassName } = defaultClass || {};
+  return {
+    default: icon || defaultClassName || 'lugia-icon-financial_upload',
+    loading: 'lugia-icon-financial_loading_o',
+    done: 'lugia-icon-financial_upload',
+    video: 'lugia-icon-financial_video_camera',
+    file: 'lugia-icon-financial_folder',
+    picture: 'lugia-icon-financial_pic',
+    'li-done': successIcon || 'lugia-icon-reminder_check_circle',
+    'li-default': 'lugia-icon-financial_upload',
+    'li-fail': failIcon || 'lugia-icon-reminder_close_circle',
+    'li-delete': 'lugia-icon-reminder_close',
+    'li-loading': 'lugia-icon-financial_loading_o',
+  };
+};
+
+export const getIconClassName = (props: Object, status: string, defaultClass: Object): string => {
+  const className = getDefaultIconName(props, defaultClass)[status];
+  const extraClass = status === 'loading' ? 'loading' : '';
+  return `${className} ${extraClass}`;
+};
+
+export const getIconTheme = (props: Object, status: string): Object | string => {
+  let defaultTheme = {};
+  let themeName = 'UploadIcon';
   switch (status) {
     case 'li-done':
-      const { viewClass: successViewClass, theme: successTheme } = props.getPartOfThemeHocProps(
-        'UploadListSuccessIcon'
-      );
-      resultTheme = deepMerge(
-        {
-          [successViewClass]: {
-            normal: {
-              color: successColor,
-              fontSize: sFontSize,
-            },
-          },
-        },
-        successTheme
-      );
-      resultViewClass = successViewClass;
+      defaultTheme = {
+        color: successColor,
+        fontSize: sFontSize,
+      };
+      themeName = 'UploadListSuccessIcon';
       break;
     case 'li-fail':
-      const { viewClass: failViewClass, theme: failTheme } = props.getPartOfThemeHocProps(
-        'UploadListFailedIcon'
-      );
-      resultTheme = deepMerge(
-        {
-          [failViewClass]: {
-            normal: {
-              color: dangerColor,
-              fontSize: sFontSize,
-            },
-          },
-        },
-        failTheme
-      );
-      resultViewClass = failViewClass;
+      themeName = 'UploadListFailedIcon';
+      defaultTheme = {
+        color: dangerColor,
+        fontSize: sFontSize,
+      };
       break;
     default:
-      const { viewClass: uploadViewClass, theme: uploadIcon } = props.getPartOfThemeHocProps(
-        'UploadIcon'
-      );
-      resultTheme = uploadIcon;
-      resultViewClass = uploadViewClass;
       break;
   }
-  resultTheme = deepMerge(
+
+  const { viewClass: uploadViewClass, theme: uploadIcon } = props.getPartOfThemeHocProps(themeName);
+
+  const resultTheme = deepMerge(
     {
-      [resultViewClass]: {
+      [uploadViewClass]: {
         normal: {
+          ...defaultTheme,
           getCSS: (themeMeta, themeProps) => {
             return css`
               display: inline-block;
@@ -705,71 +736,23 @@ export const getIconByType = (
         },
       },
     },
-    resultTheme
+    uploadIcon
   );
-  if (type === 1 && status !== 'loading') {
-    const {
-      defaultTips: { uploadText },
-    } = props;
-    return uploadText;
-  }
-  if (info && (status === 'li-fail' || status === 'li-delete')) {
-    const { doFunction, index, item } = info;
-    return (
-      <LoadIcon
-        singleTheme
-        theme={resultTheme}
-        viewClass={resultViewClass}
-        iconClass={`${iconClassMap[status]} `}
-        disabled={disabled}
-        onClick={() => {
-          doFunction(index, item);
-        }}
-      />
-    );
-  }
-  if (status === 'picture') {
-    const { themeProps } = props;
-    return (
-      <PrevCon themeProps={themeProps}>
-        <LoadIcon
-          singleTheme
-          disabled={disabled}
-          theme={resultTheme}
-          viewClass={resultViewClass}
-          iconClass="lugia-icon-financial_pic icon-mark ccc"
-        />
-        {getListIconType(info.name) === 'picture' && info.url ? (
-          <PrevImg themeProps={themeProps}>
-            <Img themeProps={themeProps} src={info.url} alt="lost" />{' '}
-            <Triangle themeProps={themeProps} />
-            <div>{info.url}</div>
-          </PrevImg>
-        ) : null}
-      </PrevCon>
-    );
-  }
-  if (status === 'area-loading') {
-    return (
-      <LoadIcon
-        singleTheme
-        disabled={disabled}
-        theme={resultTheme}
-        viewClass={resultViewClass}
-        iconClass={iconClassMap.loading}
-        active={true}
-      />
-    );
-  }
-  return (
-    <LoadIcon
-      singleTheme
-      theme={resultTheme}
-      viewClass={resultViewClass}
-      disabled={disabled}
-      iconClass={iconClassMap[status]}
-    />
-  );
+
+  return { theme: resultTheme, viewClass: uploadViewClass };
+};
+
+export const getIconByType = (param: Object) => {
+  const { props, status, info, iconClassName, className = '' } = param;
+  if (!status) return null;
+  const { disabled } = props;
+  const theme = getIconTheme(props, status);
+  const iconProps = { iconClassName, className, theme, disabled, info };
+  return getIcon(iconProps);
+};
+
+const getLiStatus = classNameStatus => {
+  return `li-${classNameStatus}`;
 };
 
 const getProgress = (item: Object, themeProps: Object) => {
@@ -779,7 +762,7 @@ const getProgress = (item: Object, themeProps: Object) => {
     const { percent } = item;
     return (
       <ProgressCon themeProps={themeProps}>
-        <Progress themeProps={themeProps} percent={percent} />
+        <Progress size={'small'} themeProps={themeProps} percent={percent} />
       </ProgressCon>
     );
   }
@@ -820,12 +803,36 @@ const getFileList = (
   return (
     <Ul themeProps={themeProps} disabled={disabled}>
       {data.map((item, index) => {
+        const { status } = item;
+        const liStatus = getLiStatus(status);
+        const iconClassName = getIconClassName(props, liStatus);
+        const defaultIconProps = { props, status };
+        const fileTypeIconProps = {
+          ...defaultIconProps,
+          iconClassName: getIconClassName(props, getListIconType(item.name)),
+          info: item,
+          className: 'icon-mark ccc',
+        };
+        const iconProps = {
+          ...defaultIconProps,
+          iconClassName,
+          status: liStatus,
+          className: 'floatRight',
+        };
+        const deleteIconProps = {
+          ...defaultIconProps,
+          iconClassName: getIconClassName(props, 'li-delete'),
+          info: { doFunction: close, index, item },
+          className: 'delete right',
+        };
         return (
           <Li status={item.status} themeProps={liThemeProps}>
-            {getIconByType(props, getListIconType(item.name), item)}
-            <span>{item.name}</span>
-            {item.status !== 'loading' && getIconByType(props, 'li-' + item.status)}
-            {getIconByType(props, 'li-delete', { doFunction: close, index, item })}
+            <LiText>
+              {getIconByType(fileTypeIconProps)}
+              <span>{item.name}</span>
+            </LiText>
+            {item.status !== 'loading' && getIconByType(iconProps)}
+            {getIconByType(deleteIconProps)}
             {isShowProgress && getProgress(item, themeProps)}
           </Li>
         );
@@ -1001,7 +1008,9 @@ class GetElement extends React.Component<DefProps, StateProps> {
         ? 'UploadLoading'
         : '';
     const uploadStatusTheme = props.getPartOfThemeProps(uploadAfter);
-
+    const iconClassName = getIconClassName(props, classNameStatus);
+    const defaultIconProps = { props, status: classNameStatus };
+    const iconProps = { ...defaultIconProps, iconClassName };
     if (areaType === 'default') {
       const { handleClickToUpload } = this;
       const { defaultText, disabled } = props;
@@ -1030,7 +1039,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           onClick={handleClickToUpload}
           ref={this.dropArea}
         >
-          {getIconByType(props, classNameStatus)}
+          {getIconByType({ ...iconProps, className: classNameStatus === 'loading' ? '' : 'right' })}
           {defaultText}
         </InputContent>
       );
@@ -1038,7 +1047,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const {
       defaultTips: { uploadText, uploadTips, failTips, loadingTips },
     } = props;
-    const uploadIconTheme = props.getPartOfThemeHocProps('UploadIcon');
+
     if (areaType === 'both') {
       const { handleClickToSubmit, handleClickToUpload } = this;
       const { defaultText, showFileList, disabled } = this.props;
@@ -1103,6 +1112,11 @@ class GetElement extends React.Component<DefProps, StateProps> {
       };
       const themeTypeMerge = deepMerge(resultButtonTheme, buttonThemeType);
       const newTheme = { viewClass: buttonViewClassType, theme: themeTypeMerge };
+      const innerInputIconProps = {
+        ...defaultIconProps,
+        iconClassName: getLiStatus(classNameStatus),
+        className: 'right',
+      };
       children = (
         <React.Fragment>
           <BothContainer themeProps={containerStyle}>
@@ -1118,7 +1132,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
               {showFileList
                 ? null
                 : classNameStatus === 'success' || classNameStatus === 'fail'
-                ? getIconByType(props, 'li-' + classNameStatus)
+                ? getIconByType(innerInputIconProps)
                 : null}
             </InputContent>
             <Button
@@ -1127,7 +1141,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
               disabled={disabled}
               onClick={handleClickToSubmit}
             >
-              {getIconByType(props, classNameStatus, { type: 1 })}
+              {classNameStatus === 'loading' ? getIconByType(iconProps) : uploadText}
             </Button>
           </BothContainer>
         </React.Fragment>
@@ -1173,7 +1187,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
       });
       const buttonMerge = deepMerge(resultButtonTheme, buttonThemeType);
       const newTheme = { viewClass: buttonViewClassType, theme: buttonMerge };
-
       children = (
         <Button
           {...newTheme}
@@ -1182,7 +1195,11 @@ class GetElement extends React.Component<DefProps, StateProps> {
           disabled={disabled}
           onClick={handleClickToUpload}
         >
-          {classNameStatus === 'fail' ? failTips : uploadText}
+          {classNameStatus === 'loading'
+            ? getIconByType({ ...iconProps })
+            : classNameStatus === 'fail'
+            ? failTips
+            : uploadText}
         </Button>
       );
     }
@@ -1219,29 +1236,14 @@ class GetElement extends React.Component<DefProps, StateProps> {
         pictureThemeProps,
         uploadStatusTheme
       );
-
+      const pictureIconProps = {
+        ...defaultIconProps,
+        iconClassName: getIconClassName(props, classNameStatus, {
+          defaultClassName: 'lugia-icon-reminder_plus',
+        }),
+      };
       children = (
         <React.Fragment>
-          {classNameStatus === 'done' &&
-            multiple &&
-            fileListDone.map((item, index) => (
-              <PictureView
-                themeProps={pictureTheme}
-                size={size}
-                disabled={disabled}
-                status={classNameStatus}
-              >
-                {getIconByType(props, 'li-fail', {
-                  doFunction: handleClickToDelete,
-                  index,
-                })}
-                {classNameStatus === 'fail' && size !== 'small' ? (
-                  <span>{failTips}</span>
-                ) : (
-                  <img src={item.url} alt="" />
-                )}
-              </PictureView>
-            ))}
           <PictureView
             themeProps={pictureTheme}
             size={size}
@@ -1250,12 +1252,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
             status={multiple && classNameStatus === 'done' ? 'default' : classNameStatus}
             onClick={handleClickToUpload}
           >
-            {!multiple && previewUrl ? (
-              <img src={previewUrl} alt="" />
-            ) : (
-              getIconByType(props, `p-${classNameStatus === 'done' ? 'default' : classNameStatus}`)
-            )}
-            {classNameStatus === 'fail' && size !== 'small' ? <span>{failTips}</span> : null}
+            {previewUrl ? <img src={previewUrl} alt="" /> : getIconByType(pictureIconProps)}
+            {classNameStatus === 'fail' ? <span>{failTips}</span> : null}
           </PictureView>
         </React.Fragment>
       );
@@ -1305,7 +1303,16 @@ class GetElement extends React.Component<DefProps, StateProps> {
         },
         areaThemeProps
       );
-
+      const areaIconProps = {
+        ...defaultIconProps,
+        iconClassName:
+          classNameStatus === 'default'
+            ? getIconClassName(props, classNameStatus, {
+                defaultClassName: 'lugia-icon-financial_upload_cloud',
+              })
+            : iconClassName,
+        className: 'areaIcon',
+      };
       children = (
         <AreaView
           themeProps={areaTheme}
@@ -1315,9 +1322,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           classNameStatus={classNameStatus}
           ref={dropArea}
         >
-          {classNameStatus === 'loading'
-            ? getIconByType(props, 'area-' + classNameStatus)
-            : getIconByType(props, 'uploadcloud')}
+          {getIconByType(areaIconProps)}
           {classNameStatus === 'loading' ? (
             <AreaText themeProps={areaTextStatusTheme}>{loadingTips}</AreaText>
           ) : classNameStatus === 'fail' ? (

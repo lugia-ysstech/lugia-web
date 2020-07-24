@@ -15,7 +15,7 @@ import {
 } from '../upload';
 
 import { getFormData, getRequestXHR, getQueryString } from '../request';
-import { getIconByType } from '../getelement';
+import { getIconByType, getIcon, getDefaultIconName, getIconClassName } from '../getelement';
 import { getListIconType } from '../../css/upload';
 import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
@@ -206,38 +206,52 @@ describe('Upload Test', () => {
   checkGetParamsData({ data: { a: 123, b: 223 }, name: 'file', file: '666' });
   checkGetParamsData({ data: { a: 777, b: 888 }, name: 'abc', file: '567' });
 
-  function checkGetIconByType(status: ?string, expectation: ?string, props?: Object = {}) {
+  function checkGetIconByType(props: ?string, expectation: ?string) {
     it('Function GetIconByType ', () => {
-      const res = getIconByType(
-        {
-          getPartOfThemeHocProps: themeHocProps,
-          defaultTips: {
-            uploadText: '上传',
-            uploadTips: '请将文件拖到此处',
-            failTips: '文件上传失败请重试',
-            loadingTips: '文件上传中...',
-          },
-        },
-        status,
-        props
-      );
-      const { type } = props;
-      if (!status || !res) {
-        expect(res).toBe(expectation);
-      } else if (typeof res === 'string' || (type === 1 && status === 'default')) {
-        expect(res).toEqual(expectation);
-      } else {
-        const { iconClass } = res.props;
-        expect(iconClass).toBe(expectation);
-      }
+      const res = getIconByType(props) || {};
+      const { iconClass } = res.props || {};
+      expect(iconClass).toBe(expectation);
     });
   }
 
-  checkGetIconByType('default', '上传', { type: 1 });
-  checkGetIconByType('default', 'lugia-icon-financial_upload right');
-  checkGetIconByType('loading', 'lugia-icon-financial_loading_o loading');
-  checkGetIconByType(undefined, null);
-  checkGetIconByType(undefined, null, { type: 1 });
+  const defaultProps = {
+    getPartOfThemeHocProps: themeHocProps,
+    defaultTips: {
+      uploadText: '上传',
+      uploadTips: '请将文件拖到此处',
+      failTips: '文件上传失败请重试',
+      loadingTips: '文件上传中...',
+    },
+  };
+  checkGetIconByType(
+    {
+      props: defaultProps,
+      status: 'default',
+      iconClassName: 'lugia-icon-financial_upload',
+      className: 'right',
+    },
+    'lugia-icon-financial_upload right'
+  );
+  checkGetIconByType(
+    {
+      props: defaultProps,
+      status: 'loading',
+      iconClassName: 'lugia-icon-financial_loading_o',
+      className: 'loading',
+    },
+    'lugia-icon-financial_loading_o loading'
+  );
+  checkGetIconByType(
+    { props: defaultProps, status: 'loading', iconClassName: undefined, className: 'loading' },
+    undefined
+  );
+  checkGetIconByType(
+    { props: defaultProps, status: 'li-fail', iconClassName: 'lugia-icon-reminder_plus' },
+    'lugia-icon-reminder_plus '
+  );
+  // checkGetIconByType('loading', 'lugia-icon-financial_loading_o loading');
+  // checkGetIconByType(undefined, null);
+  // checkGetIconByType(undefined, null, { type: 1 });
 
   function setStateValue(props: Object, expectation: Object) {
     it('Function setStateValue ', () => {
@@ -430,7 +444,7 @@ describe('Upload Test', () => {
   setAutoUploadState(true, files, true);
   setAutoUploadState(false, files, false);
 
-  function setDeleteList(index: number, expectation: Array<Object>) {
+  function setDeleteList(index: number, item: Object, expectation: Array<Object>) {
     it('Function setDeleteList ', () => {
       getCmp(target).setStateValue({
         fileListDone: [
@@ -438,14 +452,18 @@ describe('Upload Test', () => {
           { hashMark: 2, name: '文件2222.jpg', status: 'default' },
         ],
       });
-      getCmp(target).setDeleteList(index);
+      getCmp(target).setDeleteList(index, item);
       expect(getCmp(target).state.fileListDone).toEqual(expectation);
     });
   }
 
-  setDeleteList(1, [{ hashMark: 1, name: '文件11111.jpg', status: 'done' }]);
-  setDeleteList(0, [{ hashMark: 2, name: '文件2222.jpg', status: 'default' }]);
-  setDeleteList(2, [
+  setDeleteList(1, { hashMark: 2, name: '文件2222.jpg', status: 'default' }, [
+    { hashMark: 1, name: '文件11111.jpg', status: 'done' },
+  ]);
+  setDeleteList(0, { hashMark: 1, name: '文件11111.jpg', status: 'done' }, [
+    { hashMark: 2, name: '文件2222.jpg', status: 'default' },
+  ]);
+  setDeleteList(2, undefined, [
     { hashMark: 1, name: '文件11111.jpg', status: 'done' },
     { hashMark: 2, name: '文件2222.jpg', status: 'default' },
   ]);
@@ -477,4 +495,125 @@ describe('Upload Test', () => {
   }
 
   checkSetChoosedFile(files);
+
+  it('css getIcon', () => {
+    const props = { iconClassName: 'lugia-icon-financial_key', theme: {} };
+    const target = getIcon(props);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
+  });
+
+  it('css getIcon picture', () => {
+    const props = {
+      iconClassName: 'lugia-icon-financial_key',
+      status: 'picture',
+      themeProps: {},
+      theme: {},
+      info: { name: '文件11111.jpg', url: '', status: 'fail' },
+    };
+    const target = getIcon(props);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
+  });
+
+  it('css getIcon undefined', () => {
+    const target = getIcon({});
+    expect(target).toBe(null);
+  });
+
+  const iconNameMap = [
+    { props: { param: {} }, status: 'default', exception: 'lugia-icon-financial_upload' },
+    {
+      props: { param: {}, defaultClass: { defaultClassName: 'lugia-icon-financial_like' } },
+      status: 'default',
+      exception: 'lugia-icon-financial_like',
+    },
+    {
+      props: { param: { icon: 'lugia-icon-financial_heart' } },
+      defaultClass: { defaultClassName: 'lugia-icon-financial_like' },
+      status: 'default',
+      exception: 'lugia-icon-financial_heart',
+    },
+    { props: { param: {} }, status: 'loading', exception: 'lugia-icon-financial_loading_o' },
+    { props: { param: {} }, status: 'done', exception: 'lugia-icon-financial_upload' },
+    { props: { param: {} }, status: 'video', exception: 'lugia-icon-financial_video_camera' },
+    { props: { param: {} }, status: 'file', exception: 'lugia-icon-financial_folder' },
+    { props: { param: {} }, status: 'picture', exception: 'lugia-icon-financial_pic' },
+    { props: { param: {} }, status: 'li-done', exception: 'lugia-icon-reminder_check_circle' },
+    {
+      props: { param: { successIcon: 'lugia-icon-financial_heart' } },
+      status: 'li-done',
+      exception: 'lugia-icon-financial_heart',
+    },
+    { props: { param: {} }, status: 'li-default', exception: 'lugia-icon-financial_upload' },
+    { props: { param: {} }, status: 'li-fail', exception: 'lugia-icon-reminder_close_circle' },
+    {
+      props: { param: { failIcon: 'lugia-icon-financial_statistics' } },
+      status: 'li-fail',
+      exception: 'lugia-icon-financial_statistics',
+    },
+    { props: { param: {} }, status: 'li-delete', exception: 'lugia-icon-reminder_close' },
+    { props: { param: {} }, status: 'li-loading', exception: 'lugia-icon-financial_loading_o' },
+  ];
+
+  iconNameMap.forEach((item, index) => {
+    const {
+      props: { param, defaultClass },
+      exception,
+      status,
+    } = item;
+    it(`css getIcon getDefaultIconName ${index} ${exception}`, () => {
+      const target = getDefaultIconName(param, defaultClass)[status];
+      expect(target).toBe(exception);
+    });
+  });
+
+  //getIconClassName
+  const iconClassNameMap = [
+    { props: { param: {} }, status: 'default', exception: 'lugia-icon-financial_upload ' },
+    {
+      props: { param: {}, defaultClass: { defaultClassName: 'lugia-icon-financial_like' } },
+      status: 'default',
+      exception: 'lugia-icon-financial_like ',
+    },
+    {
+      props: { param: { icon: 'lugia-icon-financial_heart' } },
+      defaultClass: { defaultClassName: 'lugia-icon-financial_like' },
+      status: 'default',
+      exception: 'lugia-icon-financial_heart ',
+    },
+    {
+      props: { param: {} },
+      status: 'loading',
+      exception: 'lugia-icon-financial_loading_o loading',
+    },
+    { props: { param: {} }, status: 'done', exception: 'lugia-icon-financial_upload ' },
+    { props: { param: {} }, status: 'video', exception: 'lugia-icon-financial_video_camera ' },
+    { props: { param: {} }, status: 'file', exception: 'lugia-icon-financial_folder ' },
+    { props: { param: {} }, status: 'picture', exception: 'lugia-icon-financial_pic ' },
+    { props: { param: {} }, status: 'li-done', exception: 'lugia-icon-reminder_check_circle ' },
+    {
+      props: { param: { successIcon: 'lugia-icon-financial_heart' } },
+      status: 'li-done',
+      exception: 'lugia-icon-financial_heart ',
+    },
+    { props: { param: {} }, status: 'li-default', exception: 'lugia-icon-financial_upload ' },
+    { props: { param: {} }, status: 'li-fail', exception: 'lugia-icon-reminder_close_circle ' },
+    {
+      props: { param: { failIcon: 'lugia-icon-financial_statistics' } },
+      status: 'li-fail',
+      exception: 'lugia-icon-financial_statistics ',
+    },
+    { props: { param: {} }, status: 'li-delete', exception: 'lugia-icon-reminder_close ' },
+    { props: { param: {} }, status: 'li-loading', exception: 'lugia-icon-financial_loading_o ' },
+  ];
+  iconClassNameMap.forEach((item, index) => {
+    const {
+      props: { param, defaultClass },
+      exception,
+      status,
+    } = item;
+    it('css getIcon getIconClassName ', () => {
+      const target = getIconClassName(param, status, defaultClass);
+      expect(target).toBe(exception);
+    });
+  });
 });

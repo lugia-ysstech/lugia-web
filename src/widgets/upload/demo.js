@@ -546,8 +546,25 @@ class UploadDemo extends React.Component<any, any> {
       },
     };
 
+    const defaultIconProps = {
+      url: 'http://localhost:7001/upload',
+      icon: 'lugia-icon-financial_service',
+      successIcon: 'lugia-icon-financial_notification',
+      failIcon: 'lugia-icon-financial_meh',
+    };
+    const typeMap = ['default', 'button', 'both', 'picture', 'area'];
     return (
       <div>
+        <Title>---------------配置Icon 的上传</Title>
+        {typeMap.map(item => {
+          return (
+            <div>
+              <Title>{item}： </Title>
+              <Upload areaType={item} {...defaultIconProps} />
+            </div>
+          );
+        })}
+        <Title>--------------- END ---------------</Title>
         <Title>Both： </Title>
         <Upload {...defaultProps2} />
         <Title>Both disabled： </Title>
@@ -558,13 +575,11 @@ class UploadDemo extends React.Component<any, any> {
           <Title>配置主题Both disabled： </Title>
           <Upload {...defaultProps12} />
         </Theme>
-
         <div style={{ height: '30px', margin: '10px 0' }}>
           <Theme config={configBoth100}>
             <Upload {...defaultProps2} />
           </Theme>
         </div>
-
         <Title>默认类型： </Title>
         <Upload {...defaultProps} />
         <Theme config={config}>
@@ -573,7 +588,6 @@ class UploadDemo extends React.Component<any, any> {
           <Title>配置主题的默认类型 disabled： </Title>
           <Upload {...defaultProps11} />
         </Theme>
-
         <Title>picture large accept(image)： </Title>
         <Upload {...defaultProps3} />
         <Title>picture middle disabled： </Title>
@@ -590,7 +604,6 @@ class UploadDemo extends React.Component<any, any> {
           <Title>default disabled： </Title>
           <Upload {...defaultProps7} />
         </Theme>
-
         <Title>Button： </Title>
         <Upload {...defaultProps1} />
         <Upload {...defaultLongProps1} />
@@ -604,7 +617,6 @@ class UploadDemo extends React.Component<any, any> {
           <Title>配置宽度的button limit 3： </Title>
           <Upload {...defaultProps10} />
         </Theme>
-
         <Title>area： </Title>
         <Upload {...defaultProps6} />
         <Title>area disabled： </Title>
