@@ -17,6 +17,7 @@ const Wrapper = styled.div`
   text-align: center;
   padding: 20px;
 `;
+
 export default () => {
   const badgeConfig = {
     [Widget.Badge]: {
@@ -42,8 +43,94 @@ export default () => {
       IconAvatar: { normal: { color: 'purple', fontSize: 16 } },
     },
   };
+
+  const textNoCenter = {
+    [Widget.Avatar]: {
+      Container: {
+        normal: {
+          height: '100%',
+          width: '100%',
+          background: {
+            color: '#4a90e2',
+          },
+        },
+      },
+      FontAvatar: { normal: { color: 'red', lineHeight: '' } },
+    },
+  };
+
+  const tagNoCenter = {
+    [Widget.Avatar]: {
+      Container: {
+        normal: {
+          height: '100%',
+          width: '100%',
+          background: {
+            color: '#587453',
+          },
+        },
+      },
+    },
+  };
   return (
     <div>
+      <div
+        style={{
+          width: '5%',
+          height: '10%',
+          position: 'absolute',
+          display: 'flex',
+          left: '14.4375%',
+          top: '10.75%',
+          textAlign: 'center',
+        }}
+      >
+        <Theme config={textNoCenter}>
+          <Avatar viewClass="config" shape={'circle'} name={'lugia'} />
+        </Theme>
+      </div>
+
+      <h4
+        style={{
+          width: 200,
+          position: 'absolute',
+          display: 'flex',
+          left: '3.4375%',
+          top: '13.75%',
+        }}
+      >
+        还原预览图标不居中demo, line-height不能接收百分百值, 已修改为flex布局
+      </h4>
+      <div
+        style={{
+          width: '5%',
+          height: '10%',
+          position: 'absolute',
+          display: 'flex',
+          left: '14.4375%',
+          top: '10.75%',
+          textAlign: 'center',
+        }}
+      >
+        <Theme config={textNoCenter}>
+          <Avatar viewClass="config" shape={'circle'} name={'lugia'} />
+        </Theme>
+      </div>
+      <div
+        style={{
+          width: '5%',
+          height: '10%',
+          position: 'absolute',
+          display: 'flex',
+          left: '20.5625%',
+          top: '10.75%',
+        }}
+      >
+        <Theme config={tagNoCenter}>
+          <Avatar shape={'circle'} type="icon" icon={'lugia-icon-financial_user'} size={'large'} />
+        </Theme>
+      </div>
+
       <Theme config={config}>
         <Wrapper>
           <Avatar shape={'square'} name={'l'} />
