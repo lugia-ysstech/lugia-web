@@ -488,10 +488,10 @@ export const Text = CSSComponent({
   tag: 'span',
   className: 'Text',
   normal: {
-    selectNames: [['font'], ['fontSize']],
+    selectNames: [['font'], ['fontSize'], ['color']],
   },
   hover: {
-    selectNames: [['font'], ['fontSize']],
+    selectNames: [['font'], ['fontSize'], ['color']],
   },
   css: css`
     transition: all 0.3s;

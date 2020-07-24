@@ -172,7 +172,7 @@
               },
               {
                 "name": "文本框",
-                "path": ["TransferPanelMenu", "MenuItem", "Checkbox", "CheckboxText"],
+                "path": ["TransferPanelMenu", "MenuItem", "Text"],
                 "description": { "textPart": { "text": "标题文本", "desc": "文本框置内外边距配置区" } }
               }
             ]
@@ -186,9 +186,13 @@
                 "path": ["TransferPanelMenu", "MenuItem", "SelectedMenuItemWrap"],
                 "description": {
                   "appearancePart": { "text": "选项背景", "desc": "文本配置区块的显示文本" },
-                  "textPart": { "text": "标题文本", "desc": "选中项辅助文本文本配置区" },
                   "spacingPart": { "text": "padding/margin", "desc": "选中项内外边距配置区" }
                 }
+              },
+              {
+                "name": "文本框",
+                "path": ["TransferPanelMenu", "MenuItem", "CheckedText"],
+                "description": { "textPart": { "text": "标题文本", "desc": "文本框置内外边距配置区" } }
               }
             ]
           },
