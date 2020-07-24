@@ -193,7 +193,7 @@
       "type": "icon",
       "desc": "搜索框切换图标icon名称"
     },
-    "SearchAddIcon": {
+    "searchAddIcon": {
       "type": "icon",
       "desc": "搜索框添加图标icon名称"
     },
@@ -309,6 +309,7 @@
             ["font"],
             ["opacity"]
           ],
+          "focus": [["background"], ["border"], ["boxShadow"]],
           "active": [],
           "disabled": [
             ["width"],
@@ -640,26 +641,44 @@
                 "Checkbox": {
                   "name": "多选树的选择框配置",
                   "theme": {
-                    "CheckboxWrap": {
-                      "name": "Checkbox整体配置",
-                      "desc": "Checkbox整体配置",
-                      "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
-                      "hover": [["opacity"]],
-                      "disabled": [["opacity"]]
+                    "Container": {
+                      "name": "整体样式",
+                      "desc": "整体样式",
+                      "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]]
                     },
-                    "CheckboxEdgeChecked": {
-                      "name": "Checkbox选中后边框配置",
-                      "desc": "Checkbox选中后边框配置样式",
-                      "normal": [["background"], ["borderRadius"], ["border"]],
-                      "hover": [["background"], ["borderRadius"], ["border"]],
-                      "disabled": [["background"], ["borderRadius"], ["border"]]
+                    "CheckboxText": {
+                      "name": "文字样式",
+                      "desc": "文字样式",
+                      "normal": [["color"], ["font"], ["padding"]],
+                      "hover": [["color"], ["font"]],
+                      "disabled": [["color"], ["font"]]
                     },
                     "CheckboxEdgeUnChecked": {
-                      "name": "Checkbox未选中边框配置",
-                      "desc": "Checkbox未选中边框配置样式",
-                      "normal": [["background"], ["borderRadius"], ["border"]],
-                      "hover": [["background"], ["borderRadius"], ["border"]],
-                      "disabled": [["background"], ["borderRadius"], ["border"]]
+                      "name": "未选中外框样式",
+                      "desc": "未选中外框样式",
+                      "normal": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["boxShadow"],
+                        ["width"],
+                        ["height"]
+                      ],
+                      "hover": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
+                      "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+                    },
+                    "CheckboxEdgeChecked": {
+                      "name": "选中外框样式",
+                      "desc": "选中外框样式",
+                      "normal": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["boxShadow"],
+                        ["width"],
+                        ["height"]
+                      ],
+                      "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
                     },
                     "CheckboxEdgeIndeterminate": {
                       "name": "半选外框样式",
@@ -672,34 +691,31 @@
                         ["width"],
                         ["height"]
                       ],
-                      "hover": [
-                        ["background"],
-                        ["borderRadius"],
-                        ["border"],
-                        ["width"],
-                        ["height"]
-                      ],
-                      "disabled": [
-                        ["background"],
-                        ["borderRadius"],
-                        ["border"],
-                        ["width"],
-                        ["height"]
-                      ]
+                      "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+                    },
+                    "CheckboxEdgeCancel": {
+                      "name": "取消状态外框样式",
+                      "desc": "取消状态外框样式",
+                      "normal": [["background"], ["borderRadius"], ["border"], ["boxShadow"], ["width"], ["height"]]
+                    },
+                    "CheckboxInnerChecked": {
+                      "name": "选中内框样式",
+                      "desc": "选中内框样式",
+                      "normal": [["background"], ["width"], ["height"]],
+                      "hover": [["background"], ["width"], ["height"]],
+                      "disabled": [["background"], ["width"], ["height"]]
                     },
                     "CheckboxInnerIndeterminate": {
                       "name": "半选内框样式",
                       "desc": "半选内框样式",
-                      "normal": [["color"], ["width"], ["height"]],
-                      "hover": [["color"], ["width"], ["height"]],
-                      "disabled": [["color"], ["width"], ["height"]]
+                      "normal": [["background"], ["width"], ["height"]],
+                      "hover": [["background"], ["width"], ["height"]],
+                      "disabled": [["background"], ["width"], ["height"]]
                     },
-                    "CheckboxInnerChecked": {
-                      "name": "Checkbox选中样式配置",
-                      "desc": "Checkbox选中样式配置",
-                      "normal": [["color"]],
-                      "hover": [["color"]],
-                      "disabled": [["color"]]
+                    "CheckboxInnerCancel": {
+                      "name": "取消状态内框样式",
+                      "desc": "取消状态内框样式",
+                      "normal": [["background"], ["width"], ["height"]]
                     }
                   }
                 }
@@ -817,6 +833,98 @@
               }
             }
           }
+        },
+
+        "QueryInput": {
+          "name": "菜单搜索框样式",
+          "desc": "为菜单搜索框配置样式",
+          "theme": {
+            "Container": {
+              "name": "输入框",
+              "desc": "输入框外部容器",
+              "normal": [
+                ["width"],
+                ["height"],
+                ["margin"],
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["cursor"],
+                ["opacity"]
+              ],
+              "hover": [
+                ["border"],
+                ["borderRadius"],
+                ["cursor"],
+                ["background"],
+                ["opacity"],
+                ["boxShadow"]
+              ],
+              "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+              "focus": [
+                ["border"],
+                ["borderRadius"],
+                ["background"],
+                ["opacity"],
+                ["boxShadow"],
+                ["cursor"],
+                ["fontSize"],
+                ["font"],
+                ["color"]
+              ],
+              "disabled": [
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["cursor"],
+                ["padding"],
+                ["opacity"]
+              ]
+            },
+            "ClearButton": {
+              "name": "输入框清除图标",
+              "desc": "输入框后缀清除图标",
+              "normal": [["color"], ["fontSize"], ["font"]],
+              "hover": [["color"], ["fontSize"], ["font"]],
+              "clicked": [],
+              "disabled": [["color"], ["fontSize"], ["font"]]
+            },
+            "Placeholder": {
+              "name": "输入框提示信息文字",
+              "desc": "输入框提示信息文字",
+              "normal": [["color"], ["fontSize"], ["font"]]
+            }
+          }
+        },
+        "ToggleIcon": {
+          "name": "菜单搜索框切换按钮样式",
+          "desc": "为菜单搜索框切换按钮配置样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+          "hover": [["color"], ["margin"], ["cursor"]],
+          "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+          "disabled": [["color"], ["cursor"]]
+        },
+        "ResetIcon": {
+          "name": "菜单搜索框重置按钮样式",
+          "desc": "为菜单搜索框重置按钮配置样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+          "hover": [["color"], ["margin"], ["cursor"]],
+          "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+          "disabled": [["color"], ["cursor"]]
+        },
+        "SearchAddIcon": {
+          "name": "菜单搜索框添加按钮样式",
+          "desc": "为菜单搜索框添加按钮配置样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+          "hover": [["color"], ["margin"], ["cursor"]],
+          "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+          "disabled": [["color"], ["cursor"]]
         }
       },
       "defaultTheme": {
@@ -855,6 +963,7 @@
         ["font"],
         ["opacity"]
       ],
+      "focus": [["background"], ["border"], ["boxShadow"]],
       "active": [],
       "disabled": [
         ["width"],
