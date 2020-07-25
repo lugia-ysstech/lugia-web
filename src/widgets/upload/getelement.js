@@ -231,7 +231,28 @@ const InputContent = CSSComponent({
   `,
   option: { hover: true, disabled: true },
 });
-
+const TextTheme = CSSComponent({
+  tag: 'div',
+  className: 'UploadDefaultType',
+  normal: {
+    selectNames: [['color'], ['fontSize'], ['font']],
+    getThemeMeta(themeMeta, themeProps) {
+      return {
+        color: lightGreyColor,
+        border: getBorder(get('normalBorder')),
+        padding: { top: 0, right: 0, bottom: 0, left: padding },
+        fontSize: descriptionFontSize,
+      };
+    },
+  },
+  hover: {
+    selectNames: [['color'], ['fontSize'], ['font']],
+  },
+  disabled: {
+    selectNames: [['color'], ['fontSize'], ['font']],
+  },
+  option: { hover: true, disabled: true },
+});
 const Ul = CSSComponent({
   tag: 'ul',
   className: 'upload_Ul',
@@ -654,20 +675,28 @@ export const getIcon = (props: Object) => {
 };
 
 export const getDefaultIconName = (param: Object, defaultClass?: Object): Object => {
-  const { icon, successIcon, failIcon } = param;
+  const {
+    icon,
+    successIcon,
+    failIcon,
+    loadingIcon,
+    liVideoIcon,
+    liFileIcon,
+    liPictureIcon,
+    liDeleteIcon,
+  } = param;
   const { defaultClassName } = defaultClass || {};
   return {
     default: icon || defaultClassName || 'lugia-icon-financial_upload',
-    loading: 'lugia-icon-financial_loading_o',
+    loading: loadingIcon || 'lugia-icon-financial_loading_o',
     done: 'lugia-icon-financial_upload',
-    video: 'lugia-icon-financial_video_camera',
-    file: 'lugia-icon-financial_folder',
-    picture: 'lugia-icon-financial_pic',
+    video: liVideoIcon || 'lugia-icon-financial_video_camera',
+    file: liFileIcon || 'lugia-icon-financial_folder',
+    picture: liPictureIcon || 'lugia-icon-financial_pic',
     'li-done': successIcon || 'lugia-icon-reminder_check_circle',
-    'li-default': 'lugia-icon-financial_upload',
+    'li-default': icon || defaultClassName || 'lugia-icon-financial_upload',
     'li-fail': failIcon || 'lugia-icon-reminder_close_circle',
-    'li-delete': 'lugia-icon-reminder_close',
-    'li-loading': 'lugia-icon-financial_loading_o',
+    'li-delete': liDeleteIcon || 'lugia-icon-reminder_close',
   };
 };
 
@@ -677,9 +706,37 @@ export const getIconClassName = (props: Object, status: string, defaultClass: Ob
   return `${className} ${extraClass}`;
 };
 
-export const getIconTheme = (props: Object, status: string): Object | string => {
+export const getIconTheme = (
+  props: Object,
+  status: string,
+  listIconName: string,
+  className: string
+): Object | string => {
   let defaultTheme = {};
   let themeName = 'UploadIcon';
+  switch (listIconName) {
+    case 'li-delete':
+      themeName = 'LiDeleteIcon';
+      break;
+    case 'video':
+      themeName = 'LiVideoIcon';
+      break;
+    case 'file':
+      themeName = 'LiFileIcon';
+      break;
+    case 'picture':
+      themeName = 'LiPictureIcon';
+      break;
+    default:
+      break;
+  }
+  switch (className) {
+    case 'delete right':
+      themeName = 'LiDeleteIcon';
+      break;
+    default:
+      break;
+  }
   switch (status) {
     case 'li-done':
       defaultTheme = {
@@ -694,6 +751,12 @@ export const getIconTheme = (props: Object, status: string): Object | string => 
         color: dangerColor,
         fontSize: sFontSize,
       };
+      break;
+    case 'loading':
+      themeName = 'UploadLoadingIcon';
+      break;
+    case 'li-default':
+      themeName = 'UploadIcon';
       break;
     default:
       break;
@@ -743,10 +806,10 @@ export const getIconTheme = (props: Object, status: string): Object | string => 
 };
 
 export const getIconByType = (param: Object) => {
-  const { props, status, info, iconClassName, className = '' } = param;
+  const { props, status, info, iconClassName, className = '', listIconName } = param;
   if (!status) return null;
   const { disabled } = props;
-  const theme = getIconTheme(props, status);
+  const theme = getIconTheme(props, status, listIconName, className);
   const iconProps = { iconClassName, className, theme, disabled, info };
   return getIcon(iconProps);
 };
@@ -799,6 +862,7 @@ const getFileList = (
 ) => {
   if (!data || data.length === 0) return;
   const liThemeProps = props.getPartOfThemeProps('UploadLiType');
+  const liTextTheme = props.getPartOfThemeProps('LiTextTheme');
   const { isShowProgress = true } = props;
   return (
     <Ul themeProps={themeProps} disabled={disabled}>
@@ -807,11 +871,13 @@ const getFileList = (
         const liStatus = getLiStatus(status);
         const iconClassName = getIconClassName(props, liStatus);
         const defaultIconProps = { props, status };
+        const listIconType = getListIconType(item.name);
         const fileTypeIconProps = {
           ...defaultIconProps,
           iconClassName: getIconClassName(props, getListIconType(item.name)),
           info: item,
           className: 'icon-mark ccc',
+          listIconName: listIconType,
         };
         const iconProps = {
           ...defaultIconProps,
@@ -827,7 +893,7 @@ const getFileList = (
         };
         return (
           <Li status={item.status} themeProps={liThemeProps}>
-            <LiText>
+            <LiText themeProps={liTextTheme}>
               {getIconByType(fileTypeIconProps)}
               <span>{item.name}</span>
             </LiText>
@@ -1013,6 +1079,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const iconProps = { ...defaultIconProps, iconClassName };
     if (areaType === 'default') {
       const { handleClickToUpload } = this;
+      const textTheme = this.props.getPartOfThemeProps('UploadText');
       const { defaultText, disabled } = props;
       const inputTheme = {
         themeConfig: {
@@ -1040,7 +1107,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           ref={this.dropArea}
         >
           {getIconByType({ ...iconProps, className: classNameStatus === 'loading' ? '' : 'right' })}
-          {defaultText}
+          <TextTheme themeProps={textTheme}>{defaultText}</TextTheme>
         </InputContent>
       );
     }
@@ -1264,6 +1331,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const { disabled } = props;
       const areaThemeProps = this.props.getPartOfThemeProps('Container');
       const uploadAreaText = this.props.getPartOfThemeProps('UploadAreaText');
+      const uploadTipText = this.props.getPartOfThemeProps('UploadTipText');
       const { themeConfig: { normal: { color: textColor } = {} } = {} } = uploadAreaText;
       const areaTextBlue = deepMerge(
         {
@@ -1330,7 +1398,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
               {failTips}
             </AreaText>
           ) : (
-            <AreaText themeProps={areaTextStatusTheme} disabled={disabled}>
+            <AreaText themeProps={uploadTipText} disabled={disabled}>
               {uploadTips},或
               <AreaTextBlue themeProps={areaTextBlue} disabled={disabled}>
                 {uploadText}
