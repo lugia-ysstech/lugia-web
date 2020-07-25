@@ -608,68 +608,68 @@ class UploadDemo extends React.Component<any, any> {
           );
         })}
         <Title>--------------- END ---------------</Title>
-        {/*<Title>Both： </Title>*/}
-        {/*<Upload {...defaultProps2} />*/}
-        {/*<Title>Both disabled： </Title>*/}
-        {/*<Upload {...defaultProps13} />*/}
-        {/*<Theme config={configBoth}>*/}
-        {/*  <Title>配置主题的Both： </Title>*/}
-        {/*  <Upload {...defaultProps2} />*/}
-        {/*  <Title>配置主题Both disabled： </Title>*/}
-        {/*  <Upload {...defaultProps12} />*/}
-        {/*</Theme>*/}
-        {/*<div style={{ height: '30px', margin: '10px 0' }}>*/}
-        {/*  <Theme config={configBoth100}>*/}
-        {/*    <Upload {...defaultProps2} />*/}
-        {/*  </Theme>*/}
-        {/*</div>*/}
-        {/*<Title>默认类型： </Title>*/}
-        {/*<Upload {...defaultProps} />*/}
-        {/*<Theme config={config}>*/}
-        {/*  <Title>配置主题的默认类型： </Title>*/}
-        {/*  <Upload {...defaultProps} />*/}
-        {/*  <Title>配置主题的默认类型 disabled： </Title>*/}
-        {/*  <Upload {...defaultProps11} />*/}
-        {/*</Theme>*/}
-        {/*<Title>picture large accept(image)： </Title>*/}
-        {/*<Upload {...defaultProps3} />*/}
-        {/*<Title>picture middle disabled： </Title>*/}
-        {/*<Upload {...defaultProps4} />*/}
-        {/*<Title>picture small： </Title>*/}
-        {/*<Upload {...defaultProps5} />*/}
-        {/*<Theme config={configPicture}>*/}
-        {/*  <Title>配置主题的picture large accept(image)： </Title>*/}
-        {/*  <Upload {...defaultProps3} />*/}
-        {/*  <Title>配置主题的picture middle disabled： </Title>*/}
-        {/*  <Upload {...defaultProps4} />*/}
-        {/*  <Title>配置主题的picture small： </Title>*/}
-        {/*  <Upload {...defaultProps5} />*/}
-        {/*  <Title>default disabled： </Title>*/}
-        {/*  <Upload {...defaultProps7} />*/}
-        {/*</Theme>*/}
-        {/*<Title>Button： </Title>*/}
-        {/*<Upload {...defaultProps1} />*/}
-        {/*<Upload {...defaultLongProps1} />*/}
-        {/*<Title>默认的Button disabled： </Title>*/}
-        {/*<Upload {...defaultProps8} />*/}
-        {/*<Title>默认default button limit 3： </Title>*/}
-        {/*<Upload {...defaultProps10} />*/}
-        {/*<Theme config={configButton}>*/}
-        {/*  <Title>配置宽度的Button disabled ： </Title>*/}
-        {/*  <Upload {...defaultProps8} />*/}
-        {/*  <Title>配置宽度的button limit 3： </Title>*/}
-        {/*  <Upload {...defaultProps10} />*/}
-        {/*</Theme>*/}
-        {/*<Title>area： </Title>*/}
-        {/*<Upload {...defaultProps6} />*/}
-        {/*<Title>area disabled： </Title>*/}
-        {/*<Upload {...defaultProps9} />*/}
-        {/*<Theme config={areaConfig}>*/}
-        {/*  <Title>配置主题的area： </Title>*/}
-        {/*  <Upload {...defaultProps6} />*/}
-        {/*  <Title>配置主题的area disabled： </Title>*/}
-        {/*  <Upload {...defaultProps9} />*/}
-        {/*</Theme>*/}
+        <Title>Both： </Title>
+        <Upload {...defaultProps2} />
+        <Title>Both disabled： </Title>
+        <Upload {...defaultProps13} />
+        <Theme config={configBoth}>
+          <Title>配置主题的Both： </Title>
+          <Upload {...defaultProps2} />
+          <Title>配置主题Both disabled： </Title>
+          <Upload {...defaultProps12} />
+        </Theme>
+        <div style={{ height: '30px', margin: '10px 0' }}>
+          <Theme config={configBoth100}>
+            <Upload {...defaultProps2} />
+          </Theme>
+        </div>
+        <Title>默认类型： </Title>
+        <Upload {...defaultProps} />
+        <Theme config={config}>
+          <Title>配置主题的默认类型： </Title>
+          <Upload {...defaultProps} />
+          <Title>配置主题的默认类型 disabled： </Title>
+          <Upload {...defaultProps11} />
+        </Theme>
+        <Title>picture large accept(image)： </Title>
+        <Upload {...defaultProps3} />
+        <Title>picture middle disabled： </Title>
+        <Upload {...defaultProps4} />
+        <Title>picture small： </Title>
+        <Upload {...defaultProps5} />
+        <Theme config={configPicture}>
+          <Title>配置主题的picture large accept(image)： </Title>
+          <Upload {...defaultProps3} />
+          <Title>配置主题的picture middle disabled： </Title>
+          <Upload {...defaultProps4} />
+          <Title>配置主题的picture small： </Title>
+          <Upload {...defaultProps5} />
+          <Title>default disabled： </Title>
+          <Upload {...defaultProps7} />
+        </Theme>
+        <Title>Button： </Title>
+        <Upload {...defaultProps1} />
+        <Upload {...defaultLongProps1} />
+        <Title>默认的Button disabled： </Title>
+        <Upload {...defaultProps8} />
+        <Title>默认default button limit 3： </Title>
+        <Upload {...defaultProps10} />
+        <Theme config={configButton}>
+          <Title>配置宽度的Button disabled ： </Title>
+          <Upload {...defaultProps8} />
+          <Title>配置宽度的button limit 3： </Title>
+          <Upload {...defaultProps10} />
+        </Theme>
+        <Title>area： </Title>
+        <Upload {...defaultProps6} />
+        <Title>area disabled： </Title>
+        <Upload {...defaultProps9} />
+        <Theme config={areaConfig}>
+          <Title>配置主题的area： </Title>
+          <Upload {...defaultProps6} />
+          <Title>配置主题的area disabled： </Title>
+          <Upload {...defaultProps9} />
+        </Theme>
       </div>
     );
   }
