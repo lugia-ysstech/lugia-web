@@ -111,6 +111,11 @@ const selectTheme = {
         color: 'skyblue',
       },
     },
+    SearchIcon: {
+      normal: {
+        color: 'brown',
+      },
+    },
   },
 };
 
@@ -244,6 +249,7 @@ export default class Demo extends React.Component {
             searchAddIcon="lugia-icon-reminder_plus_circle"
             checkAllIcon="lugia-icon-reminder_check_square_o"
             deselectionIcon="lugia-icon-reminder_close_square_o"
+            searchIcon="lugia-icon-financial_reverse_audit"
             closeable
             canInput
           />
