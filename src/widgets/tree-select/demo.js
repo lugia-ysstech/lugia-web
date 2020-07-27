@@ -232,6 +232,21 @@ const treeSelectTheme = {
         color: 'lightblue',
       },
     },
+    SearchIcon: {
+      normal: {
+        color: 'red',
+      },
+    },
+    CheckAllIcon: {
+      normal: {
+        color: 'brown',
+      },
+    },
+    DeselectionIcon: {
+      normal: {
+        color: 'pink',
+      },
+    },
     Tree: {
       TreeItem: {
         PrefixIcon: {
@@ -337,6 +352,7 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
         />
       </Box>,
       <Box>
+        <h2>主题配置</h2>
         <Theme config={treeSelectTheme}>
           <TreeSelect
             valueField={'key'}
@@ -360,8 +376,13 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
             toggleIcon="lugia-icon-logo_twitter"
             searchClearIcon="lugia-icon-logo_android"
             searchAddIcon="lugia-icon-logo_baidu"
+            resetIcon="lugia-icon-financial_remote_control"
+            searchIcon="lugia-icon-financial_wifi"
+            checkAllIcon="lugia-icon-financial_like_o"
+            deselectionIcon="lugia-icon-financial_unlike_o"
             canSearch
             canInput
+            mutliple
           />
         </Theme>
       </Box>,
