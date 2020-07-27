@@ -23,7 +23,7 @@ describe('stepsDemo', () => {
   });
 
   function TestgetStepValue(stepNumber: number, status: StepStatus, exceptNumber: number) {
-    it('getIconByStepStatus', () => {
+    it('getStepValue', () => {
       expect(_Step.prototype.getStepValue(stepNumber, status)).toBe(exceptNumber);
     });
   }
@@ -32,15 +32,6 @@ describe('stepsDemo', () => {
   TestgetStepValue(1, 'wait', 0);
   TestgetStepValue(0, 'process', 0);
   TestgetStepValue(1, 'process', 1);
-  function TestgetIcon(status: StepStatus, exceptIcon: string) {
-    it('getIconByStepStatus', () => {
-      expect(_Step.prototype.getIconByStepStatus(status)).toBe(exceptIcon);
-    });
-  }
-  TestgetIcon('finish', 'lugia-icon-reminder_check');
-  TestgetIcon('process', '');
-  TestgetIcon('next', '');
-  TestgetIcon('error', 'lugia-icon-reminder_close');
 
   function testGetStepColor(props: Object, exceptColor) {
     it('getStepColor', () => {
