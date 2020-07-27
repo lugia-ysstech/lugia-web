@@ -55,9 +55,13 @@
     "switchIconClass": {
       "type": "object",
       "desc": "展开图标",
-      "meta": [{ "key": "iconClass", "title": "展开图标", "type": "icon" }],
+      "meta": [
+        { "key": "iconClass", "title": "展开图标", "type": "icon" },
+        { "key": "closeIcon", "title": "关闭图标", "type": "icon" }
+      ],
       "propsDefaultValue": {
-        "iconClass": "lugia-icon-direction_right"
+        "iconClass": "lugia-icon-direction_right",
+        "closeIcon": "lugia-icon-direction_down"
       }
     },
 

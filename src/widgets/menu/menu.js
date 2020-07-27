@@ -97,6 +97,7 @@ export type MenuProps = {
   defaultHeight?: number,
   isShowAuxiliaryText?: boolean,
   auxiliaryTextField?: string,
+  switchIconClass?: Object,
 };
 const EmptyData = [];
 

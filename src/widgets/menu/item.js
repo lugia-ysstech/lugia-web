@@ -65,6 +65,8 @@ export type MenuItemProps = {
   getPartOfThemeProps: Function,
   createEventChannel: Function,
   size: SizeType,
+  switchIconClass?: Object,
+  closeIcon?: string,
 };
 
 class MenuItem extends React.Component<MenuItemProps> {
@@ -75,6 +77,7 @@ class MenuItem extends React.Component<MenuItemProps> {
     divided: false,
     switchIconClass: {
       iconClass: 'lugia-icon-direction_right',
+      closeIcon: 'lugia-icon-direction_down',
     },
     size: 'default',
   };
@@ -210,15 +213,21 @@ class MenuItem extends React.Component<MenuItemProps> {
       mutliple,
       checkedCSS,
       item: { children, disabled } = {},
-      switchIconClass: { iconClass, iconSrc },
+      switchIconClass: {
+        iconClass = 'lugia-icon-direction_right',
+        iconSrc,
+        closeIcon = 'lugia-icon-direction_down',
+      },
+      checked,
     } = this.props;
     if (mutliple === true || checkedCSS === 'checkbox' || !children || children.length === 0) {
       return null;
     }
+    const chosenIconClass = checked ? closeIcon : iconClass;
     return (
       <SwitchIconContainer>
         <Icon
-          iconClass={iconClass}
+          iconClass={chosenIconClass}
           disabled={disabled}
           src={iconSrc}
           singleTheme

@@ -43,6 +43,7 @@ type CascaderProps = {
   allowClear?: boolean,
   pullIconClass?: string,
   clearIconClass?: string,
+  switchIconClass?: Object,
 };
 type CascaderState = {
   popupVisible: boolean,
