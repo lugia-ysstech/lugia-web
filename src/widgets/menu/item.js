@@ -457,7 +457,11 @@ class MenuItem extends React.Component<MenuItemProps> {
             {...dispatchEvent(['hover'], 'f2c')}
           >
             {this.getPreIcon()}
-            <Text {...dispatchEvent(['hover'], 'f2c')} themeProps={this.getTextThemeProps()}>
+            <Text
+              {...dispatchEvent(['hover'], 'f2c')}
+              themeProps={this.getTextThemeProps()}
+              title={value}
+            >
               {value ? value : children}
             </Text>
             {this.getSuffixIcon()}
