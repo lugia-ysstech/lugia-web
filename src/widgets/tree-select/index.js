@@ -687,7 +687,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   getTree() {
-    return this.treeCmp.getThemeTarget().innerTree.current.getThemeTarget();
+    return (
+      this.treeCmp &&
+      this.treeCmp.getThemeTarget &&
+      this.treeCmp.getThemeTarget().innerTree.current.getThemeTarget()
+    );
   }
 
   isSelectAll(): boolean {
