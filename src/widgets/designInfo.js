@@ -14505,7 +14505,7 @@ export default [
           { value: 'success', text: '成功' },
           { value: 'error', text: '错误' },
         ],
-        ProgressShowType: [{ value: 'default', text: '正常' }, { value: 'inside', text: '内部' }],
+        ProgressShowType: [{ value: 'default', text: '外部' }, { value: 'inside', text: '内部' }],
       },
       category: ['反馈'],
       designInfo: {
@@ -14726,7 +14726,7 @@ export default [
           { value: 'success', text: '成功' },
           { value: 'error', text: '错误' },
         ],
-        ProgressShowType: [{ value: 'default', text: '正常' }, { value: 'inside', text: '内部' }],
+        ProgressShowType: [{ value: 'default', text: '外部' }, { value: 'inside', text: '内部' }],
       },
       category: ['反馈'],
       theme: {
@@ -14828,7 +14828,7 @@ export default [
           { value: 'success', text: '成功' },
           { value: 'error', text: '错误' },
         ],
-        ProgressShowType: [{ value: 'default', text: '正常' }, { value: 'inside', text: '内部' }],
+        ProgressShowType: [{ value: 'default', text: '外部' }, { value: 'inside', text: '内部' }],
       },
       category: ['反馈'],
       theme: {
@@ -15719,6 +15719,7 @@ export default [
         searchAddIcon: { type: 'icon', desc: '搜索框添加图标icon名称' },
         checkAllIcon: { type: 'icon', desc: '全选图标icon名称' },
         deselectionIcon: { type: 'icon', desc: '取消全选图标icon名称' },
+        searchIcon: { type: 'icon', desc: '搜索图标icon名称' },
       },
       events: {
         onChange: {
@@ -16271,6 +16272,14 @@ export default [
               active: [['color'], ['cursor'], ['fontSize'], ['font']],
               disabled: [['color'], ['cursor']],
             },
+            SearchIcon: {
+              name: '菜单搜索框搜索按钮样式',
+              desc: '为菜单搜索框搜索按钮配置样式',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+              hover: [['color'], ['margin'], ['cursor']],
+              active: [['color'], ['cursor'], ['fontSize'], ['font']],
+              disabled: [['color'], ['cursor']],
+            },
           },
           defaultTheme: { Container: { normal: { width: 250 } } },
         },
@@ -16668,6 +16677,14 @@ export default [
           active: [['color'], ['cursor'], ['fontSize'], ['font']],
           disabled: [['color'], ['cursor']],
         },
+        SearchIcon: {
+          name: '菜单搜索框搜索按钮样式',
+          desc: '为菜单搜索框搜索按钮配置样式',
+          normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+          hover: [['color'], ['margin'], ['cursor']],
+          active: [['color'], ['cursor'], ['fontSize'], ['font']],
+          disabled: [['color'], ['cursor']],
+        },
       },
       defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
@@ -16765,6 +16782,7 @@ export default [
         searchAddIcon: { type: 'icon', desc: '搜索框添加图标icon名称' },
         checkAllIcon: { type: 'icon', desc: '全选图标icon名称' },
         deselectionIcon: { type: 'icon', desc: '取消全选图标icon名称' },
+        searchIcon: { type: 'icon', desc: '搜索图标icon名称' },
       },
       events: {
         onChange: {
@@ -17292,6 +17310,14 @@ export default [
         DeselectionIcon: {
           name: '全选按钮样式',
           desc: '为全选按钮配置样式',
+          normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+          hover: [['color'], ['margin'], ['cursor']],
+          active: [['color'], ['cursor'], ['fontSize'], ['font']],
+          disabled: [['color'], ['cursor']],
+        },
+        SearchIcon: {
+          name: '菜单搜索框搜索按钮样式',
+          desc: '为菜单搜索框搜索按钮配置样式',
           normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
           hover: [['color'], ['margin'], ['cursor']],
           active: [['color'], ['cursor'], ['fontSize'], ['font']],
@@ -18207,6 +18233,16 @@ export default [
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
           propsDefaultValue: 'left',
         },
+        finishIcon: {
+          type: 'icon',
+          desc: '步骤条成功状态显示的图标',
+          propsDefaultValue: 'lugia-icon-reminder_check',
+        },
+        errorIcon: {
+          type: 'icon',
+          desc: '步骤条异常状态显示的图标',
+          propsDefaultValue: 'lugia-icon-reminder_close',
+        },
         currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
@@ -18271,6 +18307,11 @@ export default [
                   name: '异常状态单个步骤外部',
                   desc: '异常状态单个步骤外部容器配置',
                   normal: [['width'], ['height']],
+                },
+                FinishStepLine: {
+                  name: '已完成状态步骤间连接线',
+                  desc: '已完成状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background'], ['margin']],
                 },
                 ProcessStepLine: {
                   name: '进行中状态步骤间连接线',
@@ -18461,25 +18502,30 @@ export default [
                   desc: '异常状态单个步骤外部容器配置',
                   normal: [['width'], ['height']],
                 },
+                FinishStepFlatLine: {
+                  name: '已完成状态步骤间连接线',
+                  desc: '已完成状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['boxShadow'], ['border']],
+                },
                 ProcessStepFlatLine: {
                   name: '进行中状态步骤间连接线',
                   desc: '进行中状态步骤间连接线的配置',
-                  normal: [['width'], ['height'], ['boxShadow']],
+                  normal: [['width'], ['height'], ['boxShadow'], ['border']],
                 },
                 NextStepFlatLine: {
                   name: '下一步状态步骤间连接线',
                   desc: '下一步状态步骤间连接线的配置',
-                  normal: [['width'], ['height'], ['boxShadow']],
+                  normal: [['width'], ['height'], ['boxShadow'], ['border']],
                 },
                 WaitStepFlatLine: {
                   name: '等待中状态步骤间连接线',
                   desc: '等待中状态步骤间连接线的配置',
-                  normal: [['width'], ['height'], ['boxShadow']],
+                  normal: [['width'], ['height'], ['boxShadow'], ['border']],
                 },
                 ErrorStepFlatLine: {
                   name: '异常状态步骤间连接线',
                   desc: '异常状态步骤间连接线的配置',
-                  normal: [['width'], ['height'], ['boxShadow']],
+                  normal: [['width'], ['height'], ['boxShadow'], ['border']],
                 },
                 FinishStepInnerContainer: {
                   name: '已完成状态单个步骤内部',
@@ -18648,6 +18694,11 @@ export default [
                   name: '异常状态单个步骤外部',
                   desc: '异常状态单个步骤外部容器配置',
                   normal: [['width'], ['height']],
+                },
+                FinishStepLine: {
+                  name: '已完成状态步骤间连接线',
+                  desc: '已完成状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background'], ['margin']],
                 },
                 ProcessStepLine: {
                   name: '进行中状态步骤间连接线',
@@ -18847,6 +18898,11 @@ export default [
                   desc: '异常状态单个步骤外部容器配置',
                   normal: [['width'], ['height']],
                 },
+                FinishStepLine: {
+                  name: '已完成状态步骤间连接线',
+                  desc: '已完成状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background'], ['margin']],
+                },
                 ProcessStepLine: {
                   name: '进行中状态步骤间连接线',
                   desc: '进行中状态步骤间连接线的配置',
@@ -19015,6 +19071,11 @@ export default [
               name: '异常状态单个步骤外部',
               desc: '异常状态单个步骤外部容器配置',
               normal: [['width'], ['height']],
+            },
+            FinishStepLine: {
+              name: '已完成状态步骤间连接线',
+              desc: '已完成状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background'], ['margin']],
             },
             ProcessStepLine: {
               name: '进行中状态步骤间连接线',
@@ -19227,6 +19288,16 @@ export default [
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
           propsDefaultValue: 'left',
         },
+        finishIcon: {
+          type: 'icon',
+          desc: '步骤条成功状态显示的图标',
+          propsDefaultValue: 'lugia-icon-reminder_check',
+        },
+        errorIcon: {
+          type: 'icon',
+          desc: '步骤条异常状态显示的图标',
+          propsDefaultValue: 'lugia-icon-reminder_close',
+        },
         currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
@@ -19285,6 +19356,11 @@ export default [
               name: '异常状态单个步骤外部',
               desc: '异常状态单个步骤外部容器配置',
               normal: [['width'], ['height']],
+            },
+            FinishStepLine: {
+              name: '已完成状态步骤间连接线',
+              desc: '已完成状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background'], ['margin']],
             },
             ProcessStepLine: {
               name: '进行中状态步骤间连接线',
@@ -19499,6 +19575,16 @@ export default [
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
           propsDefaultValue: 'left',
         },
+        finishIcon: {
+          type: 'icon',
+          desc: '步骤条成功状态显示的图标',
+          propsDefaultValue: 'lugia-icon-reminder_check',
+        },
+        errorIcon: {
+          type: 'icon',
+          desc: '步骤条异常状态显示的图标',
+          propsDefaultValue: 'lugia-icon-reminder_close',
+        },
         currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
@@ -19558,25 +19644,30 @@ export default [
               desc: '异常状态单个步骤外部容器配置',
               normal: [['width'], ['height']],
             },
+            FinishStepFlatLine: {
+              name: '已完成状态步骤间连接线',
+              desc: '已完成状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['boxShadow'], ['border']],
+            },
             ProcessStepFlatLine: {
               name: '进行中状态步骤间连接线',
               desc: '进行中状态步骤间连接线的配置',
-              normal: [['width'], ['height'], ['boxShadow']],
+              normal: [['width'], ['height'], ['boxShadow'], ['border']],
             },
             NextStepFlatLine: {
               name: '下一步状态步骤间连接线',
               desc: '下一步状态步骤间连接线的配置',
-              normal: [['width'], ['height'], ['boxShadow']],
+              normal: [['width'], ['height'], ['boxShadow'], ['border']],
             },
             WaitStepFlatLine: {
               name: '等待中状态步骤间连接线',
               desc: '等待中状态步骤间连接线的配置',
-              normal: [['width'], ['height'], ['boxShadow']],
+              normal: [['width'], ['height'], ['boxShadow'], ['border']],
             },
             ErrorStepFlatLine: {
               name: '异常状态步骤间连接线',
               desc: '异常状态步骤间连接线的配置',
-              normal: [['width'], ['height'], ['boxShadow']],
+              normal: [['width'], ['height'], ['boxShadow'], ['border']],
             },
             FinishStepInnerContainer: {
               name: '已完成状态单个步骤内部',
@@ -19771,6 +19862,16 @@ export default [
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
           propsDefaultValue: 'left',
         },
+        finishIcon: {
+          type: 'icon',
+          desc: '步骤条成功状态显示的图标',
+          propsDefaultValue: 'lugia-icon-reminder_check',
+        },
+        errorIcon: {
+          type: 'icon',
+          desc: '步骤条异常状态显示的图标',
+          propsDefaultValue: 'lugia-icon-reminder_close',
+        },
         currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
@@ -19829,6 +19930,11 @@ export default [
               name: '异常状态单个步骤外部',
               desc: '异常状态单个步骤外部容器配置',
               normal: [['width'], ['height']],
+            },
+            FinishStepLine: {
+              name: '已完成状态步骤间连接线',
+              desc: '已完成状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background'], ['margin']],
             },
             ProcessStepLine: {
               name: '进行中状态步骤间连接线',
@@ -20053,6 +20159,16 @@ export default [
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
           propsDefaultValue: 'left',
         },
+        finishIcon: {
+          type: 'icon',
+          desc: '步骤条成功状态显示的图标',
+          propsDefaultValue: 'lugia-icon-reminder_check',
+        },
+        errorIcon: {
+          type: 'icon',
+          desc: '步骤条异常状态显示的图标',
+          propsDefaultValue: 'lugia-icon-reminder_close',
+        },
         currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
@@ -20111,6 +20227,11 @@ export default [
               name: '异常状态单个步骤外部',
               desc: '异常状态单个步骤外部容器配置',
               normal: [['width'], ['height']],
+            },
+            FinishStepLine: {
+              name: '已完成状态步骤间连接线',
+              desc: '已完成状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background'], ['margin']],
             },
             ProcessStepLine: {
               name: '进行中状态步骤间连接线',
@@ -23691,9 +23812,6 @@ export default [
                   desc: '配置选中项的外盒',
                   normal: [
                     ['height'],
-                    ['color'],
-                    ['font'],
-                    ['fontSize'],
                     ['cursor'],
                     ['border'],
                     ['borderRadius'],
