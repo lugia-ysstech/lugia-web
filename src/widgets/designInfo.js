@@ -8638,7 +8638,11 @@ export default [
           type: 'string | string[] | number | number[]',
           desc: '默认指定当前选中的项,仅第一次生效',
         },
-        checkedCSS: { type: 'CheckedCSSType', desc: '选中项的样式', propsDefaultValue: 'none' },
+        checkedCSS: {
+          type: 'CheckedCSSType',
+          desc: '选中项的样式',
+          propsDefaultValue: 'background',
+        },
         limitCount: { type: 'number', desc: '多选时的最大选中数' },
         offsety: { type: 'number', desc: '菜单间的间隔' },
         start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
@@ -8831,6 +8835,22 @@ export default [
                   desc: '配置文本和前缀后缀图标的位置',
                   normal: [['padding']],
                   hover: [],
+                  active: [],
+                  disabled: [],
+                },
+                Text: {
+                  name: '文本',
+                  desc: '配置文本',
+                  normal: [['font'], ['fontSize'], ['color']],
+                  hover: [['font'], ['fontSize'], ['color']],
+                  active: [],
+                  disabled: [],
+                },
+                CheckedText: {
+                  name: '选中文本',
+                  desc: '配置选中文本',
+                  normal: [['font'], ['fontSize'], ['color']],
+                  hover: [['font'], ['fontSize'], ['color']],
                   active: [],
                   disabled: [],
                 },
@@ -9060,6 +9080,22 @@ export default [
               active: [],
               disabled: [],
             },
+            Text: {
+              name: '文本',
+              desc: '配置文本',
+              normal: [['font'], ['fontSize'], ['color']],
+              hover: [['font'], ['fontSize'], ['color']],
+              active: [],
+              disabled: [],
+            },
+            CheckedText: {
+              name: '选中文本',
+              desc: '配置选中文本',
+              normal: [['font'], ['fontSize'], ['color']],
+              hover: [['font'], ['fontSize'], ['color']],
+              active: [],
+              disabled: [],
+            },
             DesContainer: {
               name: '辅助字段框',
               desc: '配置辅助文本的样式和位置',
@@ -9209,7 +9245,11 @@ export default [
           type: 'string | string[] | number | number[]',
           desc: '默认指定当前选中的项,仅第一次生效',
         },
-        checkedCSS: { type: 'CheckedCSSType', desc: '选中项的样式', propsDefaultValue: 'none' },
+        checkedCSS: {
+          type: 'CheckedCSSType',
+          desc: '选中项的样式',
+          propsDefaultValue: 'background',
+        },
         limitCount: { type: 'number', desc: '多选时的最大选中数' },
         offsety: { type: 'number', desc: '菜单间的间隔' },
         start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
@@ -9396,6 +9436,22 @@ export default [
               desc: '配置文本和前缀后缀图标的位置',
               normal: [['padding']],
               hover: [],
+              active: [],
+              disabled: [],
+            },
+            Text: {
+              name: '文本',
+              desc: '配置文本',
+              normal: [['font'], ['fontSize'], ['color']],
+              hover: [['font'], ['fontSize'], ['color']],
+              active: [],
+              disabled: [],
+            },
+            CheckedText: {
+              name: '选中文本',
+              desc: '配置选中文本',
+              normal: [['font'], ['fontSize'], ['color']],
+              hover: [['font'], ['fontSize'], ['color']],
               active: [],
               disabled: [],
             },
@@ -9699,6 +9755,16 @@ export default [
       desc: '为页面提供导航功能的菜单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        isShowAuxiliaryText: {
+          type: 'boolean',
+          desc: '是否展示辅助文本',
+          propsDefaultValue: false,
+        },
+        auxiliaryTextField: {
+          type: 'string',
+          desc: '辅助文本展示的对应字段名',
+          propsDefaultValue: 'des',
+        },
         parentIsHighlight: {
           type: 'boolean',
           desc: '父级元素是否高亮',
@@ -9706,6 +9772,14 @@ export default [
           defaultValue: false,
         },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
+        switchIconNames: {
+          type: 'object',
+          desc: '生成选择项的数据',
+          meta: [
+            { key: 'open', title: '展开图标', type: 'icon' },
+            { key: 'close', title: '关闭图标', type: 'icon' },
+          ],
+        },
         indentDistance: { type: 'number', desc: '每一项leftPadding的距离', propsDefaultValue: 14 },
         selectLinePosition: {
           type: 'PositionType',
@@ -9723,12 +9797,19 @@ export default [
           propsDefaultValue: '|',
         },
         action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
+        switchIconClass: {
+          type: 'object',
+          desc: '展开图标',
+          meta: [{ key: 'iconClass', title: '展开图标', type: 'icon' }],
+          propsDefaultValue: { iconClass: 'lugia-icon-direction_right' },
+        },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
             { key: 'text', title: '文本值', type: 'string' },
+            { key: 'des', title: '辅助文本', type: 'string' },
             {
               key: 'icons',
               title: '前/后缀图标',
@@ -9820,13 +9901,15 @@ export default [
             Tabs: {
               name: '水平导航配置',
               theme: {
+                Container: {
+                  name: '标签页整体配置',
+                  desc: '标签页整体样式配置',
+                  normal: [['width'], ['border'], ['borderRadius'], ['boxShadow']],
+                },
                 TitleContainer: {
-                  name: '头部标签区域',
-                  desc: '头部标签区域宽度配置',
-                  normal: [['width'], ['background'], ['textAlign']],
-                  hover: [],
-                  clicked: [],
-                  disabled: [],
+                  name: '页签区域',
+                  desc: '页签区域样式配置',
+                  normal: [['background']],
                 },
                 BorderStyle: {
                   name: '默认线',
@@ -9844,6 +9927,7 @@ export default [
                       desc: '默认标签样式配置',
                       normal: [
                         ['color'],
+                        ['height'],
                         ['background'],
                         ['border'],
                         ['margin'],
@@ -10007,6 +10091,28 @@ export default [
                       active: [],
                       disabled: [],
                     },
+                    SwitchIcon: {
+                      name: '下拉图标配置',
+                      desc: '下拉图标配置的样式配置',
+                      normal: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                      hover: [['color'], ['font'], ['fontSize']],
+                      active: [['color'], ['font'], ['fontSize']],
+                      disabled: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                    },
                   },
                 },
                 SubMenu: {
@@ -10113,6 +10219,28 @@ export default [
                           hover: [],
                           active: [],
                           disabled: [],
+                        },
+                        SwitchIcon: {
+                          name: '下拉图标配置',
+                          desc: '下拉图标配置的样式配置',
+                          normal: [
+                            ['color'],
+                            ['margin'],
+                            ['fontSize'],
+                            ['font'],
+                            ['padding'],
+                            ['cursor'],
+                          ],
+                          hover: [['color'], ['font'], ['fontSize']],
+                          active: [['color'], ['font'], ['fontSize']],
+                          disabled: [
+                            ['color'],
+                            ['margin'],
+                            ['fontSize'],
+                            ['font'],
+                            ['padding'],
+                            ['cursor'],
+                          ],
                         },
                       },
                     },
@@ -10250,6 +10378,28 @@ export default [
                         ['cursor'],
                       ],
                     },
+                    SelectedPrefixIcon: {
+                      name: '选中项前置图标配置',
+                      desc: '选中项前置图标的样式配置',
+                      normal: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                      hover: [['color'], ['font'], ['fontSize']],
+                      active: [['color'], ['font'], ['fontSize']],
+                      disabled: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                    },
                     SuffixIcon: {
                       name: '后缀图标配置',
                       desc: '后缀图标或图片的样式配置',
@@ -10271,6 +10421,44 @@ export default [
                         ['padding'],
                         ['cursor'],
                       ],
+                    },
+                    SelectedSuffixIcon: {
+                      name: '选中项后缀图标配置',
+                      desc: '选中项后缀图标的样式配置',
+                      normal: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                      hover: [['color'], ['font'], ['fontSize']],
+                      active: [['color'], ['font'], ['fontSize']],
+                      disabled: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                    },
+                    DesContainer: {
+                      name: '辅助字段框',
+                      desc: '配置辅助文本的样式和位置',
+                      normal: [['color'], ['font'], ['fontSize'], ['padding']],
+                      hover: [['color'], ['font'], ['fontSize']],
+                      active: [['color'], ['font'], ['fontSize']],
+                      disabled: [],
+                    },
+                    SelectedDesContainer: {
+                      name: '选中项辅助字段框',
+                      desc: '配置被选中项的辅助文本的样式和位置',
+                      normal: [['color'], ['font'], ['fontSize'], ['padding']],
+                      hover: [],
+                      active: [],
+                      disabled: [],
                     },
                     SwitchIcon: {
                       name: '下拉图标配置',
@@ -10753,6 +10941,28 @@ export default [
                         ['cursor'],
                       ],
                     },
+                    SwitchIconExpanded: {
+                      name: '节点展开状态控制器',
+                      desc: '配置在父节点展开状态下控制控制器的样式',
+                      normal: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                      hover: [['color'], ['font'], ['fontSize']],
+                      active: [],
+                      disabled: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                    },
                     SubTreeWrap: {
                       name: '子树的外盒配置',
                       desc: '展开项下的子树的外盒配置',
@@ -10996,6 +11206,21 @@ export default [
                     ['cursor'],
                   ],
                 },
+                SwitchIconExpanded: {
+                  name: '节点展开状态控制器',
+                  desc: '配置在父节点展开状态下控制控制器的样式',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
                 SubTreeWrap: {
                   name: '子树的外盒配置',
                   desc: '展开项下的子树的外盒配置',
@@ -11029,6 +11254,16 @@ export default [
       desc: '水平的导航菜单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        isShowAuxiliaryText: {
+          type: 'boolean',
+          desc: '是否展示辅助文本',
+          propsDefaultValue: false,
+        },
+        auxiliaryTextField: {
+          type: 'string',
+          desc: '辅助文本展示的对应字段名',
+          propsDefaultValue: 'des',
+        },
         parentIsHighlight: {
           type: 'boolean',
           desc: '父级元素是否高亮',
@@ -11036,6 +11271,14 @@ export default [
           defaultValue: false,
         },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
+        switchIconNames: {
+          type: 'object',
+          desc: '生成选择项的数据',
+          meta: [
+            { key: 'open', title: '展开图标', type: 'icon' },
+            { key: 'close', title: '关闭图标', type: 'icon' },
+          ],
+        },
         indentDistance: { type: 'number', desc: '每一项leftPadding的距离', propsDefaultValue: 14 },
         selectLinePosition: {
           type: 'PositionType',
@@ -11053,12 +11296,19 @@ export default [
           propsDefaultValue: '|',
         },
         action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
+        switchIconClass: {
+          type: 'object',
+          desc: '展开图标',
+          meta: [{ key: 'iconClass', title: '展开图标', type: 'icon' }],
+          propsDefaultValue: { iconClass: 'lugia-icon-direction_right' },
+        },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
             { key: 'text', title: '文本值', type: 'string' },
+            { key: 'des', title: '辅助文本', type: 'string' },
             {
               key: 'icons',
               title: '前/后缀图标',
@@ -11145,13 +11395,15 @@ export default [
         Tabs: {
           name: '水平导航配置',
           theme: {
+            Container: {
+              name: '标签页整体配置',
+              desc: '标签页整体样式配置',
+              normal: [['width'], ['border'], ['borderRadius'], ['boxShadow']],
+            },
             TitleContainer: {
-              name: '头部标签区域',
-              desc: '头部标签区域宽度配置',
-              normal: [['width'], ['background'], ['textAlign']],
-              hover: [],
-              clicked: [],
-              disabled: [],
+              name: '页签区域',
+              desc: '页签区域样式配置',
+              normal: [['background']],
             },
             BorderStyle: {
               name: '默认线',
@@ -11169,6 +11421,7 @@ export default [
                   desc: '默认标签样式配置',
                   normal: [
                     ['color'],
+                    ['height'],
                     ['background'],
                     ['border'],
                     ['margin'],
@@ -11332,6 +11585,21 @@ export default [
                   active: [],
                   disabled: [],
                 },
+                SwitchIcon: {
+                  name: '下拉图标配置',
+                  desc: '下拉图标配置的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
               },
             },
             SubMenu: {
@@ -11433,6 +11701,28 @@ export default [
                       active: [],
                       disabled: [],
                     },
+                    SwitchIcon: {
+                      name: '下拉图标配置',
+                      desc: '下拉图标配置的样式配置',
+                      normal: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                      hover: [['color'], ['font'], ['fontSize']],
+                      active: [['color'], ['font'], ['fontSize']],
+                      disabled: [
+                        ['color'],
+                        ['margin'],
+                        ['fontSize'],
+                        ['font'],
+                        ['padding'],
+                        ['cursor'],
+                      ],
+                    },
                   },
                 },
               },
@@ -11454,6 +11744,16 @@ export default [
       desc: '子菜单从右侧弹开',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        isShowAuxiliaryText: {
+          type: 'boolean',
+          desc: '是否展示辅助文本',
+          propsDefaultValue: false,
+        },
+        auxiliaryTextField: {
+          type: 'string',
+          desc: '辅助文本展示的对应字段名',
+          propsDefaultValue: 'des',
+        },
         parentIsHighlight: {
           type: 'boolean',
           desc: '父级元素是否高亮',
@@ -11461,6 +11761,14 @@ export default [
           defaultValue: false,
         },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
+        switchIconNames: {
+          type: 'object',
+          desc: '生成选择项的数据',
+          meta: [
+            { key: 'open', title: '展开图标', type: 'icon' },
+            { key: 'close', title: '关闭图标', type: 'icon' },
+          ],
+        },
         indentDistance: { type: 'number', desc: '每一项leftPadding的距离', propsDefaultValue: 14 },
         selectLinePosition: {
           type: 'PositionType',
@@ -11478,12 +11786,19 @@ export default [
           propsDefaultValue: '|',
         },
         action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
+        switchIconClass: {
+          type: 'object',
+          desc: '展开图标',
+          meta: [{ key: 'iconClass', title: '展开图标', type: 'icon' }],
+          propsDefaultValue: { iconClass: 'lugia-icon-direction_right' },
+        },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
             { key: 'text', title: '文本值', type: 'string' },
+            { key: 'des', title: '辅助文本', type: 'string' },
             {
               key: 'icons',
               title: '前/后缀图标',
@@ -11682,6 +11997,21 @@ export default [
                     ['cursor'],
                   ],
                 },
+                SelectedPrefixIcon: {
+                  name: '选中项前置图标配置',
+                  desc: '选中项前置图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
                 SuffixIcon: {
                   name: '后缀图标配置',
                   desc: '后缀图标或图片的样式配置',
@@ -11696,6 +12026,37 @@ export default [
                     ['padding'],
                     ['cursor'],
                   ],
+                },
+                SelectedSuffixIcon: {
+                  name: '选中项后缀图标配置',
+                  desc: '选中项后缀图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                DesContainer: {
+                  name: '辅助字段框',
+                  desc: '配置辅助文本的样式和位置',
+                  normal: [['color'], ['font'], ['fontSize'], ['padding']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [],
+                },
+                SelectedDesContainer: {
+                  name: '选中项辅助字段框',
+                  desc: '配置被选中项的辅助文本的样式和位置',
+                  normal: [['color'], ['font'], ['fontSize'], ['padding']],
+                  hover: [],
+                  active: [],
+                  disabled: [],
                 },
                 SwitchIcon: {
                   name: '下拉图标配置',
@@ -11916,6 +12277,16 @@ export default [
       desc: '点击菜单收起或展开子菜单,ellipse样式',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        isShowAuxiliaryText: {
+          type: 'boolean',
+          desc: '是否展示辅助文本',
+          propsDefaultValue: false,
+        },
+        auxiliaryTextField: {
+          type: 'string',
+          desc: '辅助文本展示的对应字段名',
+          propsDefaultValue: 'des',
+        },
         parentIsHighlight: {
           type: 'boolean',
           desc: '父级元素是否高亮',
@@ -11923,6 +12294,14 @@ export default [
           defaultValue: false,
         },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
+        switchIconNames: {
+          type: 'object',
+          desc: '生成选择项的数据',
+          meta: [
+            { key: 'open', title: '展开图标', type: 'icon' },
+            { key: 'close', title: '关闭图标', type: 'icon' },
+          ],
+        },
         indentDistance: { type: 'number', desc: '每一项leftPadding的距离', propsDefaultValue: 14 },
         selectLinePosition: {
           type: 'PositionType',
@@ -11940,12 +12319,19 @@ export default [
           propsDefaultValue: '|',
         },
         action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
+        switchIconClass: {
+          type: 'object',
+          desc: '展开图标',
+          meta: [{ key: 'iconClass', title: '展开图标', type: 'icon' }],
+          propsDefaultValue: { iconClass: 'lugia-icon-direction_right' },
+        },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
             { key: 'text', title: '文本值', type: 'string' },
+            { key: 'des', title: '辅助文本', type: 'string' },
             {
               key: 'icons',
               title: '前/后缀图标',
@@ -12236,6 +12622,21 @@ export default [
                   normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                   hover: [['color'], ['font'], ['fontSize']],
                   active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                SwitchIconExpanded: {
+                  name: '节点展开状态控制器',
+                  desc: '配置在父节点展开状态下控制控制器的样式',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [],
                   disabled: [
                     ['color'],
                     ['margin'],
@@ -14117,7 +14518,7 @@ export default [
             Container: {
               name: '进度条整体配置',
               desc: '进度条整体配置',
-              normal: [['width'], ['strokeWidth']],
+              normal: [['width'], ['strokeWidth'], ['border']],
             },
             ProgressCircleText: {
               name: '进度条文字配置',
@@ -14166,7 +14567,7 @@ export default [
             Container: {
               name: '进度条整体配置',
               desc: '进度条整体配置',
-              normal: [['width'], ['strokeWidth']],
+              normal: [['width'], ['strokeWidth'], ['border']],
             },
             DashboardText: {
               name: '进度条文字配置',
@@ -14332,7 +14733,7 @@ export default [
         Container: {
           name: '进度条整体配置',
           desc: '进度条整体配置',
-          normal: [['width'], ['strokeWidth']],
+          normal: [['width'], ['strokeWidth'], ['border']],
         },
         ProgressCircleText: {
           name: '进度条文字配置',
@@ -14434,7 +14835,7 @@ export default [
         Container: {
           name: '进度条整体配置',
           desc: '进度条整体配置',
-          normal: [['width'], ['strokeWidth']],
+          normal: [['width'], ['strokeWidth'], ['border']],
         },
         DashboardText: {
           name: '进度条文字配置',
