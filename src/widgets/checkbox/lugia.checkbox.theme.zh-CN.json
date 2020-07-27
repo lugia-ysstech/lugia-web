@@ -100,7 +100,11 @@
   {
     "widgetName": "Checkbox.Group",
     "title": "多选框组",
-    "viewProps": [{ "name": "disabled", "text": "禁用" }, { "name": "data", "text": "数据编辑" }],
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "value", "text": "选中" },
+      { "name": "data", "text": "数据编辑" }
+    ],
     "data": [
       {
         "title": "未选中",
@@ -238,7 +242,11 @@
     "widgetName": "Checkbox.Group",
     "aliasName": "CheckboxButtonGroup",
     "title": "多选按钮组",
-    "viewProps": [{ "name": "disabled", "text": "禁用" }, { "name": "data", "text": "数据编辑" }],
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "value", "text": "选中" },
+      { "name": "data", "text": "数据编辑" }
+    ],
     "data": [
       {
         "title": "未选中",
