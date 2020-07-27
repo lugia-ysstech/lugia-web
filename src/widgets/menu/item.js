@@ -223,11 +223,11 @@ class MenuItem extends React.Component<MenuItemProps> {
     if (mutliple === true || checkedCSS === 'checkbox' || !children || children.length === 0) {
       return null;
     }
-    const chosenIconClass = checked ? closeIcon : iconClass;
+    const chosenIcon = checked ? closeIcon : iconClass;
     return (
       <SwitchIconContainer>
         <Icon
-          iconClass={chosenIconClass}
+          iconClass={chosenIcon}
           disabled={disabled}
           src={iconSrc}
           singleTheme
