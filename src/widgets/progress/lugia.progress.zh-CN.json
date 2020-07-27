@@ -67,7 +67,7 @@
       { "value": "error", "text": "错误" }
     ],
     "ProgressShowType": [
-      { "value": "default", "text": "正常" },
+      { "value": "default", "text": "外部" },
       { "value": "inside", "text": "内部" }
     ]
   },
