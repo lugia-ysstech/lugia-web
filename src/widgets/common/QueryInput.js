@@ -131,12 +131,14 @@ type QueryInputProps = {
   searchAddIconTheme?: Object,
   checkAllIconTheme?: Object,
   deselectionIconTheme?: Object,
+  searchIconTheme?: Object,
   searchClearIcon?: string,
   toggleIcon?: string,
   resetIcon?: string,
   searchAddIcon?: string,
   checkAllIcon?: string,
   deselectionIcon?: string,
+  searchIcon?: string,
   getPartOfThemeProps: (str: string) => any,
 };
 
@@ -381,9 +383,14 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
   };
 
   getSearchInputButton() {
+    const { searchIconTheme = {}, searchIcon } = this.props;
     return (
       <SearchButton onClick={this.onShowSearchInput}>
-        <CommonIcon iconClass="lugia-icon-financial_search" />
+        <CommonIcon
+          {...searchIconTheme}
+          iconClass={searchIcon || 'lugia-icon-financial_search'}
+          singleTheme
+        />
       </SearchButton>
     );
   }
