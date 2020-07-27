@@ -82,7 +82,7 @@
     "checkedCSS": {
       "type": "CheckedCSSType",
       "desc": "选中项的样式",
-      "propsDefaultValue": "none"
+      "propsDefaultValue": "background"
     },
 
     "limitCount": {
@@ -228,7 +228,6 @@
       "props": {
         "mutliple": true
       },
-
       "theme": {
         "Container": {
           "name": "菜单整体配置",
@@ -354,6 +353,22 @@
               "active": [],
               "disabled": []
             },
+            "Text": {
+              "name": "文本",
+              "desc": "配置文本",
+              "normal": [["font"], ["fontSize"], ["color"]],
+              "hover": [["font"], ["fontSize"], ["color"]],
+              "active": [],
+              "disabled": []
+            },
+            "CheckedText": {
+              "name": "选中文本",
+              "desc": "配置选中文本",
+              "normal": [["font"], ["fontSize"], ["color"]],
+              "hover": [["font"], ["fontSize"], ["color"]],
+              "active": [],
+              "disabled": []
+            },
 
             "DesContainer": {
               "name": "辅助字段框",
@@ -453,7 +468,6 @@
       }
     }
   },
-
   "theme": {
     "Container": {
       "name": "菜单整体配置",
@@ -561,6 +575,22 @@
           "active": [],
           "disabled": []
         },
+        "Text": {
+          "name": "文本",
+          "desc": "配置文本",
+          "normal": [["font"], ["fontSize"], ["color"]],
+          "hover": [["font"], ["fontSize"], ["color"]],
+          "active": [],
+          "disabled": []
+        },
+        "CheckedText": {
+          "name": "选中文本",
+          "desc": "配置选中文本",
+          "normal": [["font"], ["fontSize"], ["color"]],
+          "hover": [["font"], ["fontSize"], ["color"]],
+          "active": [],
+          "disabled": []
+        },
 
         "DesContainer": {
           "name": "辅助字段框",
@@ -570,7 +600,6 @@
           "active": [["color"], ["font"], ["fontSize"]],
           "disabled": []
         },
-
         "SelectedDesContainer": {
           "name": "选中项辅助字段框",
           "desc": "配置被选中项的辅助文本的样式和位置",
