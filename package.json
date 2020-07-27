@@ -1,6 +1,6 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.2.5-alpha.44",
+  "version": "1.2.5-alpha.45",
   "keywords": [
     "lugia",
     "design",
@@ -84,7 +84,7 @@
     "@lugia/dict": "^1.0.4",
     "@lugia/jverify": "^1.0.10",
     "@lugia/lugiax-router": "^1.0.22",
-    "@lugia/mega-scripts": "^1.4.17",
+    "@lugia/mega-scripts": "^1.5.3",
     "@lugia/react-test-utils": "^1.0.1",
     "@lugia/theme-config": "^1.1.5",
     "@lugia/theme-core": "^1.1.9",
