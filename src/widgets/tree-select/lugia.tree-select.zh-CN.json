@@ -200,6 +200,14 @@
     "searchClearIcon": {
       "type": "icon",
       "desc": "搜索框清除图标icon名称"
+    },
+    "resetIcon": {
+      "type": "icon",
+      "desc": "搜索框重置图标icon名称"
+    },
+    "searchIcon": {
+      "type": "icon",
+      "desc": "搜索图标icon名称"
     }
   },
 
@@ -664,8 +672,20 @@
                         ["width"],
                         ["height"]
                       ],
-                      "hover": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
-                      "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+                      "hover": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["width"],
+                        ["height"]
+                      ],
+                      "disabled": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["width"],
+                        ["height"]
+                      ]
                     },
                     "CheckboxEdgeChecked": {
                       "name": "选中外框样式",
@@ -678,7 +698,13 @@
                         ["width"],
                         ["height"]
                       ],
-                      "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+                      "disabled": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["width"],
+                        ["height"]
+                      ]
                     },
                     "CheckboxEdgeIndeterminate": {
                       "name": "半选外框样式",
@@ -691,12 +717,25 @@
                         ["width"],
                         ["height"]
                       ],
-                      "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+                      "disabled": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["width"],
+                        ["height"]
+                      ]
                     },
                     "CheckboxEdgeCancel": {
                       "name": "取消状态外框样式",
                       "desc": "取消状态外框样式",
-                      "normal": [["background"], ["borderRadius"], ["border"], ["boxShadow"], ["width"], ["height"]]
+                      "normal": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["boxShadow"],
+                        ["width"],
+                        ["height"]
+                      ]
                     },
                     "CheckboxInnerChecked": {
                       "name": "选中内框样式",
@@ -1316,6 +1355,14 @@
     "SearchAddIcon": {
       "name": "菜单搜索框添加按钮样式",
       "desc": "为菜单搜索框添加按钮配置样式",
+      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+      "hover": [["color"], ["margin"], ["cursor"]],
+      "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+      "disabled": [["color"], ["cursor"]]
+    },
+    "SearchIcon": {
+      "name": "菜单搜索框搜索按钮样式",
+      "desc": "为菜单搜索框搜索按钮配置样式",
       "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
       "hover": [["color"], ["margin"], ["cursor"]],
       "active": [["color"], ["cursor"], ["fontSize"], ["font"]],

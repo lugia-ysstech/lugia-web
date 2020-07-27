@@ -68,6 +68,8 @@ type TreeSelectProps = {
   toggleIcon?: string,
   searchClearIcon?: string,
   searchAddIcon?: string,
+  resetIcon?: string,
+  searchIcon?: string,
   canClear?: boolean,
   isShowClearButton?: boolean,
 };
@@ -108,6 +110,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     isShowClearButton: true,
     pullIconClass: 'lugia-icon-direction_down',
     clearIconClass: 'lugia-icon-reminder_close',
+    resetIcon: 'lugia-icon-reminder_refresh',
+    searchIcon: 'lugia-icon-financial_search',
   };
 
   state: TreeSelectState;
@@ -284,6 +288,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       toggleIcon,
       searchClearIcon,
       searchAddIcon,
+      resetIcon,
+      searchIcon,
     } = this.props;
     const { onSelect, ...res } = this.props;
     const { current, start, treeFilter, value, displayValue, query, selectAll } = this.state;
@@ -304,6 +310,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const toggleIconTheme = getPartOfThemeHocProps('ToggleIcon');
     const resetIconTheme = getPartOfThemeHocProps('ResetIcon');
     const searchAddIconTheme = getPartOfThemeHocProps('SearchAddIcon');
+    const searchIconTheme = getPartOfThemeHocProps('SearchIcon');
 
     const tree = [
       data && data.length !== 0 ? (
@@ -313,6 +320,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           toggleIconTheme={toggleIconTheme}
           resetIconTheme={resetIconTheme}
           searchAddIconTheme={searchAddIconTheme}
+          searchIconTheme={searchIconTheme}
           query={query}
           onQueryInputChange={this.onQueryInputChange}
           onQueryInputKeyDown={this.onQueryInputKeyDown}
@@ -326,6 +334,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           toggleIcon={toggleIcon}
           searchClearIcon={searchClearIcon}
           searchAddIcon={searchAddIcon}
+          resetIcon={resetIcon}
+          searchIcon={searchIcon}
         />
       ) : null,
       <Tree
