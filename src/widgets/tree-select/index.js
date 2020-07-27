@@ -70,6 +70,8 @@ type TreeSelectProps = {
   searchAddIcon?: string,
   resetIcon?: string,
   searchIcon?: string,
+  checkAllIcon?: string,
+  deselectionIcon?: string,
   canClear?: boolean,
   isShowClearButton?: boolean,
 };
@@ -112,6 +114,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     clearIconClass: 'lugia-icon-reminder_close',
     resetIcon: 'lugia-icon-reminder_refresh',
     searchIcon: 'lugia-icon-financial_search',
+    checkAllIcon: 'lugia-icon-financial_check_all',
+    deselectionIcon: 'lugia-icon-financial_deselection',
   };
 
   state: TreeSelectState;
@@ -290,6 +294,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       searchAddIcon,
       resetIcon,
       searchIcon,
+      checkAllIcon,
+      deselectionIcon,
     } = this.props;
     const { onSelect, ...res } = this.props;
     const { current, start, treeFilter, value, displayValue, query, selectAll } = this.state;
@@ -311,6 +317,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const resetIconTheme = getPartOfThemeHocProps('ResetIcon');
     const searchAddIconTheme = getPartOfThemeHocProps('SearchAddIcon');
     const searchIconTheme = getPartOfThemeHocProps('SearchIcon');
+    const checkAllIconTheme = getPartOfThemeHocProps('CheckAllIcon');
+    const deselectionIconTheme = getPartOfThemeHocProps('DeselectionIcon');
 
     const tree = [
       data && data.length !== 0 ? (
@@ -321,6 +329,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           resetIconTheme={resetIconTheme}
           searchAddIconTheme={searchAddIconTheme}
           searchIconTheme={searchIconTheme}
+          checkAllIconTheme={checkAllIconTheme}
+          deselectionIconTheme={deselectionIconTheme}
           query={query}
           onQueryInputChange={this.onQueryInputChange}
           onQueryInputKeyDown={this.onQueryInputKeyDown}
@@ -336,6 +346,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           searchAddIcon={searchAddIcon}
           resetIcon={resetIcon}
           searchIcon={searchIcon}
+          checkAllIcon={checkAllIcon}
+          deselectionIcon={deselectionIcon}
         />
       ) : null,
       <Tree
