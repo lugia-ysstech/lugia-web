@@ -180,9 +180,13 @@
       "type": "icon",
       "desc": "全选图标icon名称"
     },
-    "deselectionIcon":{
+    "deselectionIcon": {
       "type": "icon",
       "desc": "取消全选图标icon名称"
+    },
+    "searchIcon": {
+      "type": "icon",
+      "desc": "搜索图标icon名称"
     }
   },
   "events": {
@@ -819,6 +823,14 @@
           "hover": [["color"], ["margin"], ["cursor"]],
           "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
           "disabled": [["color"], ["cursor"]]
+        },
+        "SearchIcon": {
+          "name": "菜单搜索框搜索按钮样式",
+          "desc": "为菜单搜索框搜索按钮配置样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+          "hover": [["color"], ["margin"], ["cursor"]],
+          "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+          "disabled": [["color"], ["cursor"]]
         }
       },
 
@@ -1206,6 +1218,14 @@
     "ResetIcon": {
       "name": "菜单搜索框重置按钮样式",
       "desc": "为菜单搜索框重置按钮配置样式",
+      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+      "hover": [["color"], ["margin"], ["cursor"]],
+      "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+      "disabled": [["color"], ["cursor"]]
+    },
+    "SearchIcon": {
+      "name": "菜单搜索框搜索按钮样式",
+      "desc": "为菜单搜索框搜索按钮配置样式",
       "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
       "hover": [["color"], ["margin"], ["cursor"]],
       "active": [["color"], ["cursor"], ["fontSize"], ["font"]],

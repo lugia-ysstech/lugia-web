@@ -85,6 +85,7 @@ type SelectProps = {
   singleClearIcon?: string,
   checkAllIcon?: string,
   deselectionIcon?: string,
+  searchIcon?: string,
   isShowClearButton?: boolean,
   size?: Size,
   checkedCSS?: CheckedCSS,
@@ -363,6 +364,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       searchAddIcon,
       checkAllIcon,
       deselectionIcon,
+      searchIcon,
     } = props;
     const { query, isCheckedAll } = state;
     const getMenu: Function = (cmp: Object) => {
@@ -383,6 +385,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     const searchAddIconTheme = getPartOfThemeHocProps('SearchAddIcon');
     const checkAllIconTheme = getPartOfThemeHocProps('CheckAllIcon');
     const deselectionIconTheme = getPartOfThemeHocProps('DeselectionIcon');
+    const searchIconTheme = getPartOfThemeHocProps('SearchIcon');
 
     const menu = [
       data && data.length !== 0 ? (
@@ -394,6 +397,7 @@ class Select extends React.Component<SelectProps, SelectState> {
           searchAddIconTheme={searchAddIconTheme}
           checkAllIconTheme={checkAllIconTheme}
           deselectionIconTheme={deselectionIconTheme}
+          searchIconTheme={searchIconTheme}
           query={query}
           onQueryInputChange={this.onQueryInputChange}
           onQueryInputKeyDown={this.onQueryInputKeyDown}
@@ -410,6 +414,7 @@ class Select extends React.Component<SelectProps, SelectState> {
           searchAddIcon={searchAddIcon}
           checkAllIcon={checkAllIcon}
           deselectionIcon={deselectionIcon}
+          searchIcon={searchIcon}
         />
       ) : null,
       this.getMenuItems(getMenu),

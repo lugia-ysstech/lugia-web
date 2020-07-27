@@ -358,6 +358,17 @@
                     "desc": "重置图标"
                   }
                 }
+              },
+              {
+                "name": "搜索图标",
+                "path": ["SearchIcon"],
+                "props": [{ "name": "searchIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "搜索图标",
+                    "desc": "搜索图标"
+                  }
+                }
               }
             ]
           }
@@ -389,6 +400,10 @@
       {
         "name": "divided",
         "text": "是否展示分割线"
+      },
+      {
+        "name": "canInput",
+        "text": "增加可选项功能"
       },
       {
         "name": "data",
@@ -828,6 +843,17 @@
                   "textPart": {
                     "text": "重置图标",
                     "desc": "重置图标"
+                  }
+                }
+              },
+              {
+                "name": "搜索图标",
+                "path": ["SearchIcon"],
+                "props": [{ "name": "searchIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "搜索图标",
+                    "desc": "搜索图标"
                   }
                 }
               }
