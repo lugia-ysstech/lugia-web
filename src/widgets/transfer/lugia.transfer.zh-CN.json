@@ -957,9 +957,6 @@
               "desc": "配置选中项的外盒",
               "normal": [
                 ["height"],
-                ["color"],
-                ["font"],
-                ["fontSize"],
                 ["cursor"],
                 ["border"],
                 ["borderRadius"],
