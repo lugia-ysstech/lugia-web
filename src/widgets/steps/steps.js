@@ -176,6 +176,8 @@ class Steps extends Component<StepsProps, StepsState> {
       currentStepNumber,
       desAlign,
       getPartOfThemeHocProps,
+      finishIcon,
+      errorIcon,
     } = this.props;
     return {
       ...getPartOfThemeHocProps('Step'),
@@ -212,6 +214,8 @@ class Steps extends Component<StepsProps, StepsState> {
         getAttributeFromObject(child.props, 'isDashed', false)
       ),
       getChildWidths: this.getChildWidths,
+      finishIcon,
+      errorIcon,
     };
   }
   childrenLength = 0;

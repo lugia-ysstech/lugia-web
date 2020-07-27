@@ -22,16 +22,6 @@
         "iconClass": "stepsCompleted",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "FinishStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "节点",
             "path": ["Step", "FinishStepInnerContainer"],
             "description": {
@@ -42,8 +32,24 @@
             }
           },
           {
+            "name": "连接线",
+            "path": ["Step", "FinishStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
             "name": "节点图标",
             "path": ["Step", "FinishStepInnerIcon"],
+            "props": [
+              {
+                "name": "finishIcon",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "节点图标",
@@ -85,16 +91,6 @@
         "title": "进行中",
         "iconClass": "stepsOngoing",
         "data": [
-          {
-            "name": "整体尺寸",
-            "path": ["Step", "ProcessStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
           {
             "name": "节点",
             "path": ["Step", "ProcessStepInnerContainer"],
@@ -160,16 +156,6 @@
         "iconClass": "stepsNextstep",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "NextStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "节点",
             "path": ["Step", "NextStepInnerContainer"],
             "description": {
@@ -223,16 +209,6 @@
         "title": "等待中",
         "iconClass": "stepsWaiting",
         "data": [
-          {
-            "name": "整体尺寸",
-            "path": ["Step", "WaitStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
           {
             "name": "节点",
             "path": ["Step", "WaitStepInnerContainer"],
@@ -288,16 +264,6 @@
         "iconClass": "stepsError",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "ErrorStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "节点",
             "path": ["Step", "ErrorStepInnerContainer"],
             "description": {
@@ -320,6 +286,12 @@
           {
             "name": "节点图标",
             "path": ["Step", "ErrorStepInnerIcon"],
+            "props": [
+              {
+                "name": "errorIcon",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "节点图标",
@@ -399,16 +371,6 @@
         "iconClass": "stepsCompletedVertical",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "FinishStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "节点",
             "path": ["Step", "FinishStepInnerContainer"],
             "description": {
@@ -419,8 +381,24 @@
             }
           },
           {
+            "name": "连接线",
+            "path": ["Step", "FinishStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
             "name": "节点图标",
             "path": ["Step", "FinishStepInnerIcon"],
+            "props": [
+              {
+                "name": "finishIcon",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "节点图标",
@@ -462,16 +440,6 @@
         "title": "进行中",
         "iconClass": "stepsOngoingVertical",
         "data": [
-          {
-            "name": "整体尺寸",
-            "path": ["Step", "ProcessStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
           {
             "name": "节点",
             "path": ["Step", "ProcessStepInnerContainer"],
@@ -537,16 +505,6 @@
         "iconClass": "stepsNextstepVertical",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "NextStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "节点",
             "path": ["Step", "NextStepInnerContainer"],
             "description": {
@@ -600,16 +558,6 @@
         "title": "等待中",
         "iconClass": "stepsWaitingVertical",
         "data": [
-          {
-            "name": "整体尺寸",
-            "path": ["Step", "WaitStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
           {
             "name": "节点",
             "path": ["Step", "WaitStepInnerContainer"],
@@ -665,16 +613,6 @@
         "iconClass": "stepsErrorVertical",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "ErrorStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "节点",
             "path": ["Step", "ErrorStepInnerContainer"],
             "description": {
@@ -697,6 +635,12 @@
           {
             "name": "节点图标",
             "path": ["Step", "ErrorStepInnerIcon"],
+            "props": [
+              {
+                "name": "errorIcon",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "节点图标",
@@ -776,16 +720,6 @@
         "iconClass": "stepsCompletedFlat",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "FinishStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "节点",
             "path": ["Step", "FinishStepInnerContainer"],
             "description": {
@@ -796,8 +730,24 @@
             }
           },
           {
+            "name": "连接线",
+            "path": ["Step", "FinishStepFlatLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          },
+          {
             "name": "节点图标",
             "path": ["Step", "FinishStepInnerIcon"],
+            "props": [
+              {
+                "name": "finishIcon",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "节点图标",
@@ -839,16 +789,6 @@
         "title": "进行中",
         "iconClass": "stepsOngoingFlat",
         "data": [
-          {
-            "name": "整体尺寸",
-            "path": ["Step", "ProcessStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
           {
             "name": "节点",
             "path": ["Step", "ProcessStepInnerContainer"],
@@ -914,16 +854,6 @@
         "iconClass": "stepsNextStepFlat",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "NextStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "节点",
             "path": ["Step", "NextStepInnerContainer"],
             "description": {
@@ -977,16 +907,6 @@
         "title": "等待中",
         "iconClass": "stepsNextStepFlat",
         "data": [
-          {
-            "name": "整体尺寸",
-            "path": ["Step", "WaitStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
           {
             "name": "节点",
             "path": ["Step", "WaitStepInnerContainer"],
@@ -1042,16 +962,6 @@
         "iconClass": "stepsErrorFlat",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "ErrorStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "节点",
             "path": ["Step", "ErrorStepInnerContainer"],
             "description": {
@@ -1074,6 +984,12 @@
           {
             "name": "节点图标",
             "path": ["Step", "ErrorStepInnerIcon"],
+            "props": [
+              {
+                "name": "errorIcon",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "节点图标",
@@ -1153,22 +1069,22 @@
         "iconClass": "stepsCompletedIcon",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "FinishStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "节点图标",
             "path": ["Step", "FinishStepIcon"],
             "description": {
               "textPart": {
                 "text": "节点图标",
                 "desc": "节点图标"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "FinishStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
               }
             }
           },
@@ -1206,16 +1122,6 @@
         "title": "进行中",
         "iconClass": "stepsOngoingIcon",
         "data": [
-          {
-            "name": "整体尺寸",
-            "path": ["Step", "ProcessStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
           {
             "name": "连接线",
             "path": ["Step", "ProcessStepLine"],
@@ -1271,16 +1177,6 @@
         "iconClass": "stepsOngoingIcon",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "NextStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "连接线",
             "path": ["Step", "NextStepLine"],
             "description": {
@@ -1335,16 +1231,6 @@
         "iconClass": "stepsWaitingIcon",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "WaitStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "连接线",
             "path": ["Step", "WaitStepLine"],
             "description": {
@@ -1398,16 +1284,6 @@
         "title": "异常状态",
         "iconClass": "stepsErrorIcon",
         "data": [
-          {
-            "name": "整体尺寸",
-            "path": ["Step", "ErrorStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
           {
             "name": "连接线",
             "path": ["Step", "ErrorStepLine"],
@@ -1500,22 +1376,22 @@
         "iconClass": "stepsCompletedDot",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "FinishStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "节点",
             "path": ["Step", "FinishStepDot"],
             "description": {
               "appearancePart": {
                 "text": "节点",
                 "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": ["Step", "FinishStepLine"],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
               }
             }
           },
@@ -1553,16 +1429,6 @@
         "title": "进行中",
         "iconClass": "stepsOngoingDot",
         "data": [
-          {
-            "name": "整体尺寸",
-            "path": ["Step", "ProcessStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
           {
             "name": "连接线",
             "path": ["Step", "ProcessStepLine"],
@@ -1618,16 +1484,6 @@
         "iconClass": "stepsNextStepDot",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "NextStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "节点",
             "path": ["Step", "NextStepDot"],
             "description": {
@@ -1682,16 +1538,6 @@
         "iconClass": "stepsWaitingDot",
         "data": [
           {
-            "name": "整体尺寸",
-            "path": ["Step", "WaitStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
-          {
             "name": "节点",
             "path": ["Step", "WaitStepDot"],
             "description": {
@@ -1745,16 +1591,6 @@
         "title": "异常状态",
         "iconClass": "stepsErrorDot",
         "data": [
-          {
-            "name": "整体尺寸",
-            "path": ["Step", "ErrorStepOutContainer"],
-            "description": {
-              "appearancePart": {
-                "text": "整体尺寸",
-                "desc": "整体尺寸"
-              }
-            }
-          },
           {
             "name": "节点",
             "path": ["Step", "ErrorStepDot"],
