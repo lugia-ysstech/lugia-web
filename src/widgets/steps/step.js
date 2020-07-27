@@ -276,7 +276,7 @@ const FlatLine = CSSComponent({
   tag: 'div',
   className: 'StepFlatLine',
   normal: {
-    selectNames: [['width'], ['height'], ['boxShadow']],
+    selectNames: [['width'], ['height'], ['boxShadow'], ['border']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { height, width, boxShadow } = themeMeta;
@@ -335,7 +335,7 @@ const NormalFlatLine = CSSComponent({
   tag: 'div',
   className: 'StepNormalFlatLine',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background'], ['border']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { height, width } = themeMeta;
@@ -947,13 +947,6 @@ class Step extends React.Component<StepProps, StepState> {
     return <SimpleLine themeProps={lineThemeProps} />;
   }
 
-  getIconByStepStatus(stepStatus: StepStatus): string {
-    return stepStatus === 'finish'
-      ? 'lugia-icon-reminder_check'
-      : stepStatus === 'error'
-      ? 'lugia-icon-reminder_close'
-      : '';
-  }
   getStepBackgroundColor(stepStatus: StepStatus, stepType: StepType) {
     const color =
       (stepStatus === 'finish' || stepStatus === 'process') && isFlatType(stepType)
@@ -1045,7 +1038,13 @@ class Step extends React.Component<StepProps, StepState> {
         },
         iconThemeProps
       );
-      const theIcon = this.getIconByStepStatus(stepStatus);
+      const { finishIcon, errorIcon } = this.props;
+      const theIcon =
+        stepStatus === 'finish'
+          ? finishIcon || 'lugia-icon-reminder_check'
+          : stepStatus === 'error'
+          ? errorIcon || 'lugia-icon-reminder_close'
+          : '';
       return (
         <StepInnerContainer themeProps={innerContainerThemeProps}>
           <StepInner
@@ -1055,13 +1054,15 @@ class Step extends React.Component<StepProps, StepState> {
             orientation={orientation}
             stepStatus={stepStatus}
           >
-            <Icon
-              propsConfig={{ ...this.getConfigs(), size }}
-              iconClass={theIcon}
-              theme={newIconTheme}
-              viewClass={iconViewClass}
-              singleTheme
-            />
+            {stepStatus === 'finish' || stepStatus === 'error' ? (
+              <Icon
+                propsConfig={{ ...this.getConfigs(), size }}
+                iconClass={theIcon}
+                theme={newIconTheme}
+                viewClass={iconViewClass}
+                singleTheme
+              />
+            ) : null}
             {this.getStepNumber()}
           </StepInner>
           {this.getTitle()}

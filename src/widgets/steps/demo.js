@@ -377,6 +377,20 @@ export default () => {
           <Step title="步骤5" stepStatus="error" description="描述性文本5" />
         </Steps>
       </VWrapper>
+      <Wrapper>
+        <p>可配置已完成状态和异常状态的图标</p>
+        <Steps
+          size="normal"
+          finishIcon={'lugia-icon-financial_heart'}
+          errorIcon={'lugia-icon-financial_editor'}
+        >
+          <Step title="步骤1" stepStatus="finish" description="描述性文本" />
+          <Step title="步骤2" stepStatus="process" description="描述性文本2" />
+          <Step title="步骤3" stepStatus="next" description="描述性文本3" />
+          <Step title="步骤4" stepStatus="wait" description="描述性文本4" />
+          <Step title="步骤5" stepStatus="error" description="描述性文本5" />
+        </Steps>
+      </Wrapper>
       <StepsDemo />
     </div>
   );

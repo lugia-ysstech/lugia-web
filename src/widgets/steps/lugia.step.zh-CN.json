@@ -58,6 +58,16 @@
       "desc": "步骤条显示的图标",
       "propsDefaultValue": "lugia-icon-financial_cloud"
     },
+    "finishIcon": {
+      "type": "icon",
+      "desc": "步骤条成功状态显示的图标",
+      "propsDefaultValue": "lugia-icon-reminder_check"
+    },
+    "errorIcon": {
+      "type": "icon",
+      "desc": "步骤条异常状态显示的图标",
+      "propsDefaultValue": "lugia-icon-reminder_close"
+    },
     "isFirst": {
       "type": "boolean",
       "desc": "该步骤是否是第一步",
@@ -176,7 +186,11 @@
           "desc": "异常状态单个步骤外部容器配置",
           "normal": [["width"], ["height"]]
         },
-
+        "FinishStepLine": {
+          "name": "已完成状态步骤间连接线",
+          "desc": "已完成状态步骤间连接线的配置",
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
+        },
         "ProcessStepLine": {
           "name": "进行中状态步骤间连接线",
           "desc": "进行中状态步骤间连接线的配置",
@@ -339,33 +353,31 @@
           "desc": "异常状态单个步骤外部容器配置",
           "normal": [["width"], ["height"]]
         },
-
         "FinishStepFlatLine": {
           "name": "已完成状态步骤间连接线",
           "desc": "已完成状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["boxShadow"]]
+          "normal": [["width"], ["height"], ["boxShadow"], ["border"]]
         },
         "ProcessStepFlatLine": {
           "name": "进行中状态步骤间连接线",
           "desc": "进行中状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["boxShadow"]]
+          "normal": [["width"], ["height"], ["boxShadow"], ["border"]]
         },
         "NextStepFlatLine": {
           "name": "下一步状态步骤间连接线",
           "desc": "下一步状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["boxShadow"]]
+          "normal": [["width"], ["height"], ["boxShadow"], ["border"]]
         },
         "WaitStepFlatLine": {
           "name": "等待中状态步骤间连接线",
           "desc": "等待中状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["boxShadow"]]
+          "normal": [["width"], ["height"], ["boxShadow"], ["border"]]
         },
         "ErrorStepFlatLine": {
           "name": "异常状态步骤间连接线",
           "desc": "异常状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["boxShadow"]]
+          "normal": [["width"], ["height"], ["boxShadow"], ["border"]]
         },
-
         "FinishStepInnerContainer": {
           "name": "已完成状态单个步骤内部",
           "desc": "已完成状态单个步骤内部容器配置",
@@ -498,7 +510,11 @@
           "desc": "异常状态单个步骤外部容器配置",
           "normal": [["width"], ["height"]]
         },
-
+        "FinishStepLine": {
+          "name": "已完成状态步骤间连接线",
+          "desc": "已完成状态步骤间连接线的配置",
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
+        },
         "ProcessStepLine": {
           "name": "进行中状态步骤间连接线",
           "desc": "进行中状态步骤间连接线的配置",
@@ -657,7 +673,11 @@
           "desc": "异常状态单个步骤外部容器配置",
           "normal": [["width"], ["height"]]
         },
-
+        "FinishStepLine": {
+          "name": "已完成状态步骤间连接线",
+          "desc": "已完成状态步骤间连接线的配置",
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
+        },
         "ProcessStepLine": {
           "name": "进行中状态步骤间连接线",
           "desc": "进行中状态步骤间连接线的配置",
@@ -810,6 +830,11 @@
       "name": "异常状态单个步骤外部",
       "desc": "异常状态单个步骤外部容器配置",
       "normal": [["width"], ["height"]]
+    },
+    "FinishStepLine": {
+      "name": "已完成状态步骤间连接线",
+      "desc": "已完成状态步骤间连接线的配置",
+      "normal": [["width"], ["height"], ["background"], ["margin"]]
     },
     "ProcessStepLine": {
       "name": "进行中状态步骤间连接线",

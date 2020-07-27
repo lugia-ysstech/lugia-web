@@ -877,20 +877,6 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      <i
-                        className="   c7"
-                        onClick={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
-                        onMouseUp={[Function]}
-                        style={
-                          Object {
-                            "color": "#4d63ff",
-                            "fontSize": "1.8rem",
-                          }
-                        }
-                      />
                       <div
                         className="c13"
                         size="default"
@@ -1002,22 +988,7 @@ exports[`stepsDemo Component JSON 1`] = `
                           "width": "2rem",
                         }
                       }
-                    >
-                      <i
-                        className="   c7"
-                        onClick={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
-                        onMouseUp={[Function]}
-                        style={
-                          Object {
-                            "color": "#4d63ff",
-                            "fontSize": "1.8rem",
-                          }
-                        }
-                      />
-                    </div>
+                    />
                     <div
                       className="c8"
                       style={
@@ -1115,22 +1086,7 @@ exports[`stepsDemo Component JSON 1`] = `
                           "width": "2rem",
                         }
                       }
-                    >
-                      <i
-                        className="   c7"
-                        onClick={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
-                        onMouseUp={[Function]}
-                        style={
-                          Object {
-                            "color": "#4d63ff",
-                            "fontSize": "1.8rem",
-                          }
-                        }
-                      />
-                    </div>
+                    />
                     <div
                       className="c8"
                       style={
@@ -1574,20 +1530,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
                     <div
                       className="c13"
                       size="default"
@@ -1701,22 +1643,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c8"
                     style={
@@ -1814,22 +1741,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c8"
                     style={
@@ -2272,20 +2184,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
                     <div
                       className="c13"
                       size="default"
@@ -2397,22 +2295,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c17"
                     style={
@@ -2510,22 +2393,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c17"
                     style={
@@ -2968,20 +2836,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
                     <div
                       className="c13"
                       size="small"
@@ -3083,22 +2937,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "1.2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c19"
                     style={
@@ -3186,22 +3025,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "1.2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c19"
                     style={
@@ -3586,20 +3410,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "white",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
                     <div
                       className="c13"
                       size="small"
@@ -3689,22 +3499,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "2.4rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "white",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c19"
                     style={
@@ -3780,22 +3575,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "2.4rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "white",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c19"
                     style={
@@ -4147,20 +3927,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "white",
-                          "fontSize": "2.4rem",
-                        }
-                      }
-                    />
                     <div
                       className="c13"
                       size="default"
@@ -4250,22 +4016,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "3.2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "white",
-                          "fontSize": "2.4rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c8"
                     style={
@@ -4341,22 +4092,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "3.2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "white",
-                          "fontSize": "2.4rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c8"
                     style={
@@ -6219,20 +5955,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
                     <div
                       className="c13"
                       size="mini"
@@ -6344,22 +6066,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "1.2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c40"
                     style={
@@ -6457,22 +6164,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "1.2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c40"
                     style={
@@ -6911,20 +6603,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
                     <div
                       className="c13"
                       size="normal"
@@ -7036,22 +6714,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c44"
                     style={
@@ -7149,22 +6812,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c44"
                     style={
@@ -7603,20 +7251,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
                     <div
                       className="c13"
                       size="default"
@@ -7730,22 +7364,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c44"
                     style={
@@ -7843,22 +7462,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c44"
                     style={
@@ -8259,20 +7863,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "white",
-                          "fontSize": "2.4rem",
-                        }
-                      }
-                    />
                     <div
                       className="c13"
                       size="normal"
@@ -8372,22 +7962,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "3.2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "white",
-                          "fontSize": "2.4rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c44"
                     style={
@@ -8473,22 +8048,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "3.2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "white",
-                          "fontSize": "2.4rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c44"
                     style={
@@ -10019,6 +9579,545 @@ exports[`stepsDemo Component JSON 1`] = `
   <div
     className="c0"
   >
+    <p>
+      可配置已完成状态和异常状态的图标
+    </p>
+    <div
+      className="c1"
+      orientation="horizontal"
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        className="c2"
+      >
+        <div
+          className="c3"
+          orientation="horizontal"
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            className=""
+            style={
+              Object {
+                "width": "3.2rem",
+              }
+            }
+          >
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "height": "3.2rem",
+                    "width": "3.2rem",
+                  }
+                }
+              >
+                <div
+                  className="c6"
+                  orientation="horizontal"
+                  size="normal"
+                  style={
+                    Object {
+                      "backgroundColor": "white",
+                      "borderBottomColor": "#56c22d",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": "0.1rem",
+                      "borderLeftColor": "#56c22d",
+                      "borderLeftStyle": "solid",
+                      "borderLeftWidth": "0.1rem",
+                      "borderRightColor": "#56c22d",
+                      "borderRightStyle": "solid",
+                      "borderRightWidth": "0.1rem",
+                      "borderTopColor": "#56c22d",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": "0.1rem",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
+                    }
+                  }
+                >
+                  <i
+                    className="lugia-icon-financial_heart   c7"
+                    onClick={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    style={
+                      Object {
+                        "color": "#56c22d",
+                        "fontSize": "1.8rem",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="c8"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                    }
+                  }
+                >
+                  步骤1
+                </div>
+                <div
+                  className="c9"
+                  style={
+                    Object {
+                      "color": "#646A6E",
+                    }
+                  }
+                >
+                  描述性文本
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c10"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+          >
+            <div
+              className=""
+              style={
+                Object {
+                  "width": "100%",
+                }
+              }
+            >
+              <div
+                className="c4"
+                style={Object {}}
+              >
+                <div
+                  className="c11"
+                  style={
+                    Object {
+                      "height": "100%",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <div
+                    className="c12"
+                    style={
+                      Object {
+                        "borderBottomColor": "#4d63ff",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "width": "100%",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="c5"
+                  style={
+                    Object {
+                      "height": "3.2rem",
+                      "width": "3.2rem",
+                    }
+                  }
+                >
+                  <div
+                    className="c6"
+                    orientation="horizontal"
+                    size="normal"
+                    style={
+                      Object {
+                        "backgroundColor": "#4d63ff",
+                        "borderBottomColor": "#4d63ff",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#4d63ff",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#4d63ff",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#4d63ff",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "3.2rem",
+                        "width": "3.2rem",
+                      }
+                    }
+                  >
+                    <div
+                      className="c13"
+                      size="normal"
+                      style={
+                        Object {
+                          "color": "white",
+                          "fontSize": "2rem",
+                          "fontWeight": 700,
+                        }
+                      }
+                    >
+                      2
+                    </div>
+                  </div>
+                  <div
+                    className="c8"
+                    style={
+                      Object {
+                        "color": "#363B40",
+                      }
+                    }
+                  >
+                    步骤2
+                  </div>
+                  <div
+                    className="c9"
+                    style={
+                      Object {
+                        "color": "#646A6E",
+                      }
+                    }
+                  >
+                    描述性文本2
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c10"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+          >
+            <div
+              className=""
+              style={
+                Object {
+                  "width": "100%",
+                }
+              }
+            >
+              <div
+                className="c4"
+                style={Object {}}
+              >
+                <div
+                  className="c11"
+                  style={
+                    Object {
+                      "height": "100%",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <div
+                    className="c12"
+                    style={
+                      Object {
+                        "borderBottomColor": "#4d63ff",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "width": "100%",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="c5"
+                  style={
+                    Object {
+                      "height": "3.2rem",
+                      "width": "3.2rem",
+                    }
+                  }
+                >
+                  <div
+                    className="c6"
+                    orientation="horizontal"
+                    size="normal"
+                    style={
+                      Object {
+                        "backgroundColor": "white",
+                        "borderBottomColor": "#4d63ff",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#4d63ff",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#4d63ff",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#4d63ff",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "2rem",
+                        "width": "2rem",
+                      }
+                    }
+                  />
+                  <div
+                    className="c8"
+                    style={
+                      Object {
+                        "color": "#d0d3da",
+                      }
+                    }
+                  >
+                    步骤3
+                  </div>
+                  <div
+                    className="c9"
+                    style={
+                      Object {
+                        "color": "#d0d3da",
+                      }
+                    }
+                  >
+                    描述性文本3
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c10"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+          >
+            <div
+              className=""
+              style={
+                Object {
+                  "width": "100%",
+                }
+              }
+            >
+              <div
+                className="c4"
+                style={Object {}}
+              >
+                <div
+                  className="c11"
+                  style={
+                    Object {
+                      "height": "100%",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <div
+                    className="c12"
+                    style={
+                      Object {
+                        "borderBottomColor": "#d0d3da",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "width": "100%",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="c5"
+                  style={
+                    Object {
+                      "height": "3.2rem",
+                      "width": "3.2rem",
+                    }
+                  }
+                >
+                  <div
+                    className="c6"
+                    orientation="horizontal"
+                    size="normal"
+                    style={
+                      Object {
+                        "backgroundColor": "white",
+                        "borderBottomColor": "#d0d3da",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#d0d3da",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#d0d3da",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#d0d3da",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "2rem",
+                        "width": "2rem",
+                      }
+                    }
+                  />
+                  <div
+                    className="c8"
+                    style={
+                      Object {
+                        "color": "#d0d3da",
+                      }
+                    }
+                  >
+                    步骤4
+                  </div>
+                  <div
+                    className="c9"
+                    style={
+                      Object {
+                        "color": "#d0d3da",
+                      }
+                    }
+                  >
+                    描述性文本4
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c10"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+          >
+            <div
+              className=""
+              style={
+                Object {
+                  "width": "100%",
+                }
+              }
+            >
+              <div
+                className="c4"
+                style={Object {}}
+              >
+                <div
+                  className="c11"
+                  style={
+                    Object {
+                      "height": "100%",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <div
+                    className="c12"
+                    style={
+                      Object {
+                        "borderBottomColor": "#f22735",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "width": "100%",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="c5"
+                  style={
+                    Object {
+                      "height": "3.2rem",
+                      "width": "3.2rem",
+                    }
+                  }
+                >
+                  <div
+                    className="c6"
+                    orientation="horizontal"
+                    size="normal"
+                    style={
+                      Object {
+                        "backgroundColor": "white",
+                        "borderBottomColor": "#f22735",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "0.1rem",
+                        "borderLeftColor": "#f22735",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "0.1rem",
+                        "borderRightColor": "#f22735",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "0.1rem",
+                        "borderTopColor": "#f22735",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "0.1rem",
+                        "height": "3.2rem",
+                        "width": "3.2rem",
+                      }
+                    }
+                  >
+                    <i
+                      className="lugia-icon-financial_editor   c7"
+                      onClick={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      style={
+                        Object {
+                          "color": "#f22735",
+                          "fontSize": "1.8rem",
+                        }
+                      }
+                    />
+                  </div>
+                  <div
+                    className="c8"
+                    style={
+                      Object {
+                        "color": "#f22735",
+                      }
+                    }
+                  >
+                    步骤5
+                  </div>
+                  <div
+                    className="c9"
+                    style={
+                      Object {
+                        "color": "#f22735",
+                      }
+                    }
+                  >
+                    描述性文本5
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c14"
+        style={Object {}}
+      />
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
     <div
       className="c1"
       orientation="horizontal"
@@ -10085,20 +10184,6 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   }
                 >
-                  <i
-                    className="   c7"
-                    onClick={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                    onMouseUp={[Function]}
-                    style={
-                      Object {
-                        "color": "#4d63ff",
-                        "fontSize": "1.8rem",
-                      }
-                    }
-                  />
                   <div
                     className="c13"
                     size="default"
@@ -10199,22 +10284,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c8"
                     style={
@@ -10302,22 +10372,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         "width": "2rem",
                       }
                     }
-                  >
-                    <i
-                      className="   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
+                  />
                   <div
                     className="c8"
                     style={
