@@ -263,6 +263,10 @@
     "title": "卡片风格标签页",
     "viewProps": [
       {
+        "name": "isShowArrowIcon",
+        "text": "翻页功能"
+      },
+      {
         "name": "showAddBtn",
         "text": "新增功能"
       },
