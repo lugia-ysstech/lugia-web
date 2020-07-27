@@ -1,0 +1,24 @@
+[
+  {
+    "widgetName": "Table",
+    "title": "表格",
+    "data": [
+      {
+        "title": "表格整体样式",
+        "iconClass": "icon",
+        "data": [
+          {
+            "name": "表格整体样式",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "为表格配置整体样式"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
