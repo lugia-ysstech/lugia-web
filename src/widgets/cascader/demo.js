@@ -64,6 +64,11 @@ const data = [
   { text: '一级菜单10', value: 'a10', disabled: false },
 ];
 
+const testSwitchIconClass = {
+  iconClass: 'lugia-icon-direction_arrow_right',
+  closeIcon: 'lugia-icon-direction_arrow_down',
+};
+
 export default class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
@@ -168,6 +173,21 @@ export default class extends React.Component<any, any> {
           placeholder={'请选择'}
           allowClear={true}
           onClear={this.onClear}
+        />
+        <br />
+        <br />
+        <Cascader
+          data={data}
+          action={'click'}
+          separator={'/'}
+          onClick={this.onClick}
+          onChange={this.onChange}
+          disabled={false}
+          showAllLevels={false}
+          placeholder={'请选择'}
+          allowClear={true}
+          onClear={this.onClear}
+          switchIconClass={testSwitchIconClass}
         />
       </Box>
     );
