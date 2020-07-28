@@ -26015,6 +26015,10 @@ export default [
         toggleIcon: { type: 'icon', desc: '搜索框切换图标icon名称' },
         searchAddIcon: { type: 'icon', desc: '搜索框添加图标icon名称' },
         searchClearIcon: { type: 'icon', desc: '搜索框清除图标icon名称' },
+        resetIcon: { type: 'icon', desc: '搜索框重置图标icon名称' },
+        searchIcon: { type: 'icon', desc: '搜索图标icon名称' },
+        checkAllIcon: { type: 'icon', desc: '全选图标icon名称' },
+        deselectionIcon: { type: 'icon', desc: '取消全选图标icon名称' },
       },
       events: {
         onSelect: {
@@ -26720,6 +26724,30 @@ export default [
               active: [['color'], ['cursor'], ['fontSize'], ['font']],
               disabled: [['color'], ['cursor']],
             },
+            CheckAllIcon: {
+              name: '全选按钮样式',
+              desc: '为全选按钮配置样式',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+              hover: [['color'], ['margin'], ['cursor']],
+              active: [['color'], ['cursor'], ['fontSize'], ['font']],
+              disabled: [['color'], ['cursor']],
+            },
+            DeselectionIcon: {
+              name: '全选按钮样式',
+              desc: '为全选按钮配置样式',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+              hover: [['color'], ['margin'], ['cursor']],
+              active: [['color'], ['cursor'], ['fontSize'], ['font']],
+              disabled: [['color'], ['cursor']],
+            },
+            SearchIcon: {
+              name: '菜单搜索框搜索按钮样式',
+              desc: '为菜单搜索框搜索按钮配置样式',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+              hover: [['color'], ['margin'], ['cursor']],
+              active: [['color'], ['cursor'], ['fontSize'], ['font']],
+              disabled: [['color'], ['cursor']],
+            },
           },
           defaultTheme: { Container: { normal: { width: 250 } } },
         },
@@ -27131,6 +27159,14 @@ export default [
           active: [['color'], ['cursor'], ['fontSize'], ['font']],
           disabled: [['color'], ['cursor']],
         },
+        SearchIcon: {
+          name: '菜单搜索框搜索按钮样式',
+          desc: '为菜单搜索框搜索按钮配置样式',
+          normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+          hover: [['color'], ['margin'], ['cursor']],
+          active: [['color'], ['cursor'], ['fontSize'], ['font']],
+          disabled: [['color'], ['cursor']],
+        },
       },
       defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
@@ -27257,6 +27293,10 @@ export default [
         toggleIcon: { type: 'icon', desc: '搜索框切换图标icon名称' },
         searchAddIcon: { type: 'icon', desc: '搜索框添加图标icon名称' },
         searchClearIcon: { type: 'icon', desc: '搜索框清除图标icon名称' },
+        resetIcon: { type: 'icon', desc: '搜索框重置图标icon名称' },
+        searchIcon: { type: 'icon', desc: '搜索图标icon名称' },
+        checkAllIcon: { type: 'icon', desc: '全选图标icon名称' },
+        deselectionIcon: { type: 'icon', desc: '取消全选图标icon名称' },
       },
       events: {
         onSelect: {
@@ -27917,6 +27957,30 @@ export default [
           active: [['color'], ['cursor'], ['fontSize'], ['font']],
           disabled: [['color'], ['cursor']],
         },
+        CheckAllIcon: {
+          name: '全选按钮样式',
+          desc: '为全选按钮配置样式',
+          normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+          hover: [['color'], ['margin'], ['cursor']],
+          active: [['color'], ['cursor'], ['fontSize'], ['font']],
+          disabled: [['color'], ['cursor']],
+        },
+        DeselectionIcon: {
+          name: '全选按钮样式',
+          desc: '为全选按钮配置样式',
+          normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+          hover: [['color'], ['margin'], ['cursor']],
+          active: [['color'], ['cursor'], ['fontSize'], ['font']],
+          disabled: [['color'], ['cursor']],
+        },
+        SearchIcon: {
+          name: '菜单搜索框搜索按钮样式',
+          desc: '为菜单搜索框搜索按钮配置样式',
+          normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
+          hover: [['color'], ['margin'], ['cursor']],
+          active: [['color'], ['cursor'], ['fontSize'], ['font']],
+          disabled: [['color'], ['cursor']],
+        },
       },
       defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
@@ -27971,6 +28035,31 @@ export default [
           type: 'icon',
           desc: '上传失败提示图标',
           propsDefaultValue: 'lugia-icon-reminder_close_circle',
+        },
+        loadingIcon: {
+          type: 'icon',
+          desc: '加载中图标',
+          propsDefaultValue: 'lugia-icon-financial_loading_o',
+        },
+        liDeleteIcon: {
+          type: 'icon',
+          desc: '列表删除图标',
+          propsDefaultValue: 'lugia-icon-reminder_close',
+        },
+        liVideoIcon: {
+          type: 'icon',
+          desc: '列表视频图标',
+          propsDefaultValue: 'lugia-icon-financial_video_camera',
+        },
+        liFileIcon: {
+          type: 'icon',
+          desc: '列表文件图标',
+          propsDefaultValue: 'lugia-icon-financial_folder',
+        },
+        liPictureIcon: {
+          type: 'icon',
+          desc: '列表图片图标',
+          propsDefaultValue: 'lugia-icon-financial_pic',
         },
         size: {
           type: 'UploadSize',
@@ -28063,6 +28152,7 @@ export default [
                     ['boxShadow'],
                     ['border'],
                     ['opacity'],
+                    ['borderRadius'],
                   ],
                   hover: [['background'], ['boxShadow'], ['border'], ['opacity']],
                   focus: [['background'], ['boxShadow'], ['border'], ['opacity']],
@@ -28082,6 +28172,11 @@ export default [
               desc: '上传列表的行样式',
               normal: [['width'], ['height'], ['background'], ['border'], ['color'], ['fontSize']],
               hover: [['border'], ['background'], ['color']],
+            },
+            liIconTheme: {
+              name: '上传列表图标样式',
+              desc: '默认类型的上传图标',
+              normal: [['color'], ['fontSize']],
             },
             UploadListSuccessIcon: {
               name: '上传成功图标样式',
@@ -28138,6 +28233,36 @@ export default [
                 },
               },
             },
+            UploadIcon: {
+              name: '上传图标样式',
+              desc: '默认类型的上传图标',
+              normal: [['color'], ['fontSize']],
+            },
+            UploadLoadingIcon: {
+              name: '加载中图标样式',
+              desc: '默认类型的上传图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiFileIcon: {
+              name: '列表文件样式',
+              desc: '默认类型的列表文件图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiPictureIcon: {
+              name: '列表图片样式',
+              desc: '默认类型的列表图片图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiVideoIcon: {
+              name: '列表视频样式',
+              desc: '默认类型的列表视频图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiDeleteIcon: {
+              name: '列表删除样式',
+              desc: '默认类型的列表删除图标',
+              normal: [['color'], ['fontSize']],
+            },
           },
           defaultTheme: { UploadLiType: { normal: { width: '100%' } } },
         },
@@ -28147,52 +28272,78 @@ export default [
           desc: '图片上传模式的配置项，仅支持图片',
           props: { areaType: 'picture' },
           theme: {
-            theme: {
-              Container: {
-                name: '图片上传区域',
-                desc: '图片上传类型的样式配置',
-                normal: [['background'], ['width'], ['height'], ['opacity'], ['border']],
-                hover: [['background'], ['opacity'], ['border']],
-                disabled: [['background'], ['color'], ['border']],
-              },
-              UploadLiType: {
-                name: '上传文件列表',
-                desc: '上传列表的行样式',
-                normal: [
-                  ['width'],
-                  ['height'],
-                  ['background'],
-                  ['border'],
-                  ['color'],
-                  ['fontSize'],
-                ],
-                hover: [['border'], ['background'], ['color']],
-              },
-              UploadListSuccessIcon: {
-                name: '上传成功图标样式',
-                desc: '上传成功时列表图标的样式',
-                normal: [['color'], ['fontSize']],
-              },
-              UploadListFailedIcon: {
-                name: '上传失败图标样式',
-                desc: '上传失败时列表图标的样式',
-                normal: [['color'], ['fontSize']],
-              },
-              UploadLoading: {
-                name: '加载中样式',
-                desc: '图片类型的加载图标',
-                normal: [['border'], ['color'], ['fontSize'], ['font']],
-              },
-              UploadDone: {
-                name: '上传成功样式',
-                desc: '图片类型的上传成功图标',
-                normal: [['border'], ['color'], ['fontSize'], ['font']],
-              },
-              UploadFail: {
-                name: '上传失败样式',
-                desc: '图片类型的上传失败图标',
-                normal: [['border'], ['color'], ['fontSize'], ['font']],
-              },
+            Container: {
+              name: '图片上传区域',
+              desc: '图片上传类型的样式配置',
+              normal: [['background'], ['width'], ['height'], ['opacity'], ['border']],
+              hover: [['background'], ['opacity'], ['border']],
+              disabled: [['background'], ['color'], ['border']],
+            },
+            UploadLiType: {
+              name: '上传文件列表',
+              desc: '上传列表的行样式',
+              normal: [['width'], ['height'], ['background'], ['border'], ['color'], ['fontSize']],
+              hover: [['border'], ['background'], ['color']],
+            },
+            liIconTheme: {
+              name: '上传列表图标样式',
+              desc: '默认类型的上传图标',
+              normal: [['color'], ['fontSize']],
+            },
+            UploadListSuccessIcon: {
+              name: '上传成功图标样式',
+              desc: '上传成功时列表图标的样式',
+              normal: [['color'], ['fontSize']],
+            },
+            UploadListFailedIcon: {
+              name: '上传失败图标样式',
+              desc: '上传失败时列表图标的样式',
+              normal: [['color'], ['fontSize']],
+            },
+            UploadLoading: {
+              name: '加载中样式',
+              desc: '图片类型的加载图标',
+              normal: [['border'], ['color'], ['fontSize'], ['font']],
+            },
+            UploadDone: {
+              name: '上传成功样式',
+              desc: '图片类型的上传成功图标',
+              normal: [['border'], ['color'], ['fontSize'], ['font']],
+            },
+            UploadFail: {
+              name: '上传失败样式',
+              desc: '图片类型的上传失败图标',
+              normal: [['border'], ['color'], ['fontSize'], ['font']],
+            },
+            UploadIcon: {
+              name: '上传图标样式',
+              desc: '默认类型的上传图标',
+              normal: [['color'], ['fontSize']],
+            },
+            UploadLoadingIcon: {
+              name: '加载中图标样式',
+              desc: '默认类型的上传图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiFileIcon: {
+              name: '列表文件样式',
+              desc: '默认类型的列表文件图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiPictureIcon: {
+              name: '列表图片样式',
+              desc: '默认类型的列表图片图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiVideoIcon: {
+              name: '列表视频样式',
+              desc: '默认类型的列表视频图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiDeleteIcon: {
+              name: '列表删除样式',
+              desc: '默认类型的列表删除图标',
+              normal: [['color'], ['fontSize']],
             },
           },
           defaultTheme: {
@@ -28212,14 +28363,14 @@ export default [
               normal: [
                 ['width'],
                 ['height'],
-                ['fontSize'],
-                ['font'],
-                ['color'],
                 ['border'],
                 ['borderRadius'],
                 ['boxShadow'],
                 ['opacity'],
                 ['background'],
+                ['color'],
+                ['fontSize'],
+                ['font'],
               ],
               hover: [
                 ['fontSize'],
@@ -28246,6 +28397,11 @@ export default [
               normal: [['width'], ['height'], ['background'], ['border'], ['color'], ['fontSize']],
               hover: [['border'], ['background'], ['color']],
             },
+            liIconTheme: {
+              name: '上传列表图标样式',
+              desc: '默认类型的上传图标',
+              normal: [['color'], ['fontSize']],
+            },
             UploadListSuccessIcon: {
               name: '上传成功图标样式',
               desc: '上传成功时列表图标的样式',
@@ -28264,7 +28420,7 @@ export default [
             UploadLoading: {
               name: '加载中样式',
               desc: '区域类型的加载图标',
-              normal: [['border'], ['color'], ['fontSize'], ['font']],
+              normal: [['border'], ['color'], ['font'], ['fontSize']],
             },
             UploadDone: {
               name: '上传成功样式',
@@ -28275,6 +28431,36 @@ export default [
               name: '上传失败样式',
               desc: '区域类型的上传失败图标',
               normal: [['border'], ['color'], ['fontSize'], ['font']],
+            },
+            UploadIcon: {
+              name: '上传图标样式',
+              desc: '默认类型的上传图标',
+              normal: [['color'], ['fontSize']],
+            },
+            UploadLoadingIcon: {
+              name: '加载中图标样式',
+              desc: '默认类型的上传图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiFileIcon: {
+              name: '列表文件样式',
+              desc: '默认类型的列表文件图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiPictureIcon: {
+              name: '列表图片样式',
+              desc: '默认类型的列表图片图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiVideoIcon: {
+              name: '列表视频样式',
+              desc: '默认类型的列表视频图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiDeleteIcon: {
+              name: '列表删除样式',
+              desc: '默认类型的列表删除图标',
+              normal: [['color'], ['fontSize']],
             },
           },
           defaultTheme: {
@@ -28366,6 +28552,19 @@ export default [
                 ['font'],
               ],
             },
+            UploadLoading: {
+              name: '上传框加载样式',
+              desc: '带按钮类型的按钮加白图标',
+              normal: [
+                ['border'],
+                ['boxShadow'],
+                ['borderRadius', 'left'],
+                ['opacity'],
+                ['color'],
+                ['fontSize'],
+                ['font'],
+              ],
+            },
             UploadDone: {
               name: '上传框成功样式',
               desc: '带按钮类型的按钮失败图标',
@@ -28384,6 +28583,11 @@ export default [
               desc: '上传列表的行样式',
               normal: [['width'], ['height'], ['background'], ['border'], ['color'], ['fontSize']],
               hover: [['border'], ['background'], ['color']],
+            },
+            liIconTheme: {
+              name: '上传列表图标样式',
+              desc: '默认类型的上传图标',
+              normal: [['color'], ['fontSize']],
             },
             UploadListSuccessIcon: {
               name: '上传成功图标样式',
@@ -28452,6 +28656,36 @@ export default [
                 },
               },
             },
+            UploadIcon: {
+              name: '上传图标样式',
+              desc: '默认类型的上传图标',
+              normal: [['color'], ['fontSize']],
+            },
+            UploadLoadingIcon: {
+              name: '加载中图标样式',
+              desc: '默认类型的上传图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiFileIcon: {
+              name: '列表文件样式',
+              desc: '默认类型的列表文件图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiPictureIcon: {
+              name: '列表图片样式',
+              desc: '默认类型的列表图片图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiVideoIcon: {
+              name: '列表视频样式',
+              desc: '默认类型的列表视频图标',
+              normal: [['color'], ['fontSize']],
+            },
+            LiDeleteIcon: {
+              name: '列表删除样式',
+              desc: '默认类型的列表删除图标',
+              normal: [['color'], ['fontSize']],
+            },
           },
           defaultTheme: {
             Container: { normal: { width: 346 } },
@@ -28468,13 +28702,13 @@ export default [
             ['height'],
             ['boxShadow'],
             ['border'],
-            ['color'],
-            ['fontSize'],
-            ['font'],
             ['opacity'],
             ['padding'],
             ['borderRadius'],
             ['background'],
+            ['color'],
+            ['fontSize'],
+            ['font'],
           ],
           hover: [
             ['boxShadow'],
@@ -28564,6 +28798,36 @@ export default [
             ['boxShadow'],
           ],
         },
+        UploadIcon: {
+          name: '上传图标样式',
+          desc: '默认类型的上传图标',
+          normal: [['color'], ['fontSize']],
+        },
+        UploadLoadingIcon: {
+          name: '加载中图标样式',
+          desc: '默认类型的上传图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiFileIcon: {
+          name: '列表文件样式',
+          desc: '默认类型的列表文件图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiPictureIcon: {
+          name: '列表图片样式',
+          desc: '默认类型的列表图片图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiVideoIcon: {
+          name: '列表视频样式',
+          desc: '默认类型的列表视频图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiDeleteIcon: {
+          name: '列表删除样式',
+          desc: '默认类型的列表删除图标',
+          normal: [['color'], ['fontSize']],
+        },
       },
       defaultTheme: {
         Container: { normal: { width: 346 } },
@@ -28625,6 +28889,31 @@ export default [
           type: 'icon',
           desc: '上传失败提示图标',
           propsDefaultValue: 'lugia-icon-reminder_close_circle',
+        },
+        loadingIcon: {
+          type: 'icon',
+          desc: '加载中图标',
+          propsDefaultValue: 'lugia-icon-financial_loading_o',
+        },
+        liDeleteIcon: {
+          type: 'icon',
+          desc: '列表删除图标',
+          propsDefaultValue: 'lugia-icon-reminder_close',
+        },
+        liVideoIcon: {
+          type: 'icon',
+          desc: '列表视频图标',
+          propsDefaultValue: 'lugia-icon-financial_video_camera',
+        },
+        liFileIcon: {
+          type: 'icon',
+          desc: '列表文件图标',
+          propsDefaultValue: 'lugia-icon-financial_folder',
+        },
+        liPictureIcon: {
+          type: 'icon',
+          desc: '列表图片图标',
+          propsDefaultValue: 'lugia-icon-financial_pic',
         },
         size: {
           type: 'UploadSize',
@@ -28711,6 +29000,7 @@ export default [
                 ['boxShadow'],
                 ['border'],
                 ['opacity'],
+                ['borderRadius'],
               ],
               hover: [['background'], ['boxShadow'], ['border'], ['opacity']],
               focus: [['background'], ['boxShadow'], ['border'], ['opacity']],
@@ -28730,6 +29020,11 @@ export default [
           desc: '上传列表的行样式',
           normal: [['width'], ['height'], ['background'], ['border'], ['color'], ['fontSize']],
           hover: [['border'], ['background'], ['color']],
+        },
+        liIconTheme: {
+          name: '上传列表图标样式',
+          desc: '默认类型的上传图标',
+          normal: [['color'], ['fontSize']],
         },
         UploadListSuccessIcon: {
           name: '上传成功图标样式',
@@ -28785,6 +29080,36 @@ export default [
               disabled: [['font'], ['color'], ['fontSize']],
             },
           },
+        },
+        UploadIcon: {
+          name: '上传图标样式',
+          desc: '默认类型的上传图标',
+          normal: [['color'], ['fontSize']],
+        },
+        UploadLoadingIcon: {
+          name: '加载中图标样式',
+          desc: '默认类型的上传图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiFileIcon: {
+          name: '列表文件样式',
+          desc: '默认类型的列表文件图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiPictureIcon: {
+          name: '列表图片样式',
+          desc: '默认类型的列表图片图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiVideoIcon: {
+          name: '列表视频样式',
+          desc: '默认类型的列表视频图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiDeleteIcon: {
+          name: '列表删除样式',
+          desc: '默认类型的列表删除图标',
+          normal: [['color'], ['fontSize']],
         },
       },
       defaultTheme: { UploadLiType: { normal: { width: '100%' } } },
@@ -28845,6 +29170,31 @@ export default [
           type: 'icon',
           desc: '上传失败提示图标',
           propsDefaultValue: 'lugia-icon-reminder_close_circle',
+        },
+        loadingIcon: {
+          type: 'icon',
+          desc: '加载中图标',
+          propsDefaultValue: 'lugia-icon-financial_loading_o',
+        },
+        liDeleteIcon: {
+          type: 'icon',
+          desc: '列表删除图标',
+          propsDefaultValue: 'lugia-icon-reminder_close',
+        },
+        liVideoIcon: {
+          type: 'icon',
+          desc: '列表视频图标',
+          propsDefaultValue: 'lugia-icon-financial_video_camera',
+        },
+        liFileIcon: {
+          type: 'icon',
+          desc: '列表文件图标',
+          propsDefaultValue: 'lugia-icon-financial_folder',
+        },
+        liPictureIcon: {
+          type: 'icon',
+          desc: '列表图片图标',
+          propsDefaultValue: 'lugia-icon-financial_pic',
         },
         size: {
           type: 'UploadSize',
@@ -28918,45 +29268,78 @@ export default [
       },
       category: ['数据录入'],
       theme: {
-        theme: {
-          Container: {
-            name: '图片上传区域',
-            desc: '图片上传类型的样式配置',
-            normal: [['background'], ['width'], ['height'], ['opacity'], ['border']],
-            hover: [['background'], ['opacity'], ['border']],
-            disabled: [['background'], ['color'], ['border']],
-          },
-          UploadLiType: {
-            name: '上传文件列表',
-            desc: '上传列表的行样式',
-            normal: [['width'], ['height'], ['background'], ['border'], ['color'], ['fontSize']],
-            hover: [['border'], ['background'], ['color']],
-          },
-          UploadListSuccessIcon: {
-            name: '上传成功图标样式',
-            desc: '上传成功时列表图标的样式',
-            normal: [['color'], ['fontSize']],
-          },
-          UploadListFailedIcon: {
-            name: '上传失败图标样式',
-            desc: '上传失败时列表图标的样式',
-            normal: [['color'], ['fontSize']],
-          },
-          UploadLoading: {
-            name: '加载中样式',
-            desc: '图片类型的加载图标',
-            normal: [['border'], ['color'], ['fontSize'], ['font']],
-          },
-          UploadDone: {
-            name: '上传成功样式',
-            desc: '图片类型的上传成功图标',
-            normal: [['border'], ['color'], ['fontSize'], ['font']],
-          },
-          UploadFail: {
-            name: '上传失败样式',
-            desc: '图片类型的上传失败图标',
-            normal: [['border'], ['color'], ['fontSize'], ['font']],
-          },
+        Container: {
+          name: '图片上传区域',
+          desc: '图片上传类型的样式配置',
+          normal: [['background'], ['width'], ['height'], ['opacity'], ['border']],
+          hover: [['background'], ['opacity'], ['border']],
+          disabled: [['background'], ['color'], ['border']],
+        },
+        UploadLiType: {
+          name: '上传文件列表',
+          desc: '上传列表的行样式',
+          normal: [['width'], ['height'], ['background'], ['border'], ['color'], ['fontSize']],
+          hover: [['border'], ['background'], ['color']],
+        },
+        liIconTheme: {
+          name: '上传列表图标样式',
+          desc: '默认类型的上传图标',
+          normal: [['color'], ['fontSize']],
+        },
+        UploadListSuccessIcon: {
+          name: '上传成功图标样式',
+          desc: '上传成功时列表图标的样式',
+          normal: [['color'], ['fontSize']],
+        },
+        UploadListFailedIcon: {
+          name: '上传失败图标样式',
+          desc: '上传失败时列表图标的样式',
+          normal: [['color'], ['fontSize']],
+        },
+        UploadLoading: {
+          name: '加载中样式',
+          desc: '图片类型的加载图标',
+          normal: [['border'], ['color'], ['fontSize'], ['font']],
+        },
+        UploadDone: {
+          name: '上传成功样式',
+          desc: '图片类型的上传成功图标',
+          normal: [['border'], ['color'], ['fontSize'], ['font']],
+        },
+        UploadFail: {
+          name: '上传失败样式',
+          desc: '图片类型的上传失败图标',
+          normal: [['border'], ['color'], ['fontSize'], ['font']],
+        },
+        UploadIcon: {
+          name: '上传图标样式',
+          desc: '默认类型的上传图标',
+          normal: [['color'], ['fontSize']],
+        },
+        UploadLoadingIcon: {
+          name: '加载中图标样式',
+          desc: '默认类型的上传图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiFileIcon: {
+          name: '列表文件样式',
+          desc: '默认类型的列表文件图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiPictureIcon: {
+          name: '列表图片样式',
+          desc: '默认类型的列表图片图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiVideoIcon: {
+          name: '列表视频样式',
+          desc: '默认类型的列表视频图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiDeleteIcon: {
+          name: '列表删除样式',
+          desc: '默认类型的列表删除图标',
+          normal: [['color'], ['fontSize']],
         },
       },
       defaultTheme: {
@@ -29020,6 +29403,31 @@ export default [
           type: 'icon',
           desc: '上传失败提示图标',
           propsDefaultValue: 'lugia-icon-reminder_close_circle',
+        },
+        loadingIcon: {
+          type: 'icon',
+          desc: '加载中图标',
+          propsDefaultValue: 'lugia-icon-financial_loading_o',
+        },
+        liDeleteIcon: {
+          type: 'icon',
+          desc: '列表删除图标',
+          propsDefaultValue: 'lugia-icon-reminder_close',
+        },
+        liVideoIcon: {
+          type: 'icon',
+          desc: '列表视频图标',
+          propsDefaultValue: 'lugia-icon-financial_video_camera',
+        },
+        liFileIcon: {
+          type: 'icon',
+          desc: '列表文件图标',
+          propsDefaultValue: 'lugia-icon-financial_folder',
+        },
+        liPictureIcon: {
+          type: 'icon',
+          desc: '列表图片图标',
+          propsDefaultValue: 'lugia-icon-financial_pic',
         },
         size: {
           type: 'UploadSize',
@@ -29099,14 +29507,14 @@ export default [
           normal: [
             ['width'],
             ['height'],
-            ['fontSize'],
-            ['font'],
-            ['color'],
             ['border'],
             ['borderRadius'],
             ['boxShadow'],
             ['opacity'],
             ['background'],
+            ['color'],
+            ['fontSize'],
+            ['font'],
           ],
           hover: [
             ['fontSize'],
@@ -29133,6 +29541,11 @@ export default [
           normal: [['width'], ['height'], ['background'], ['border'], ['color'], ['fontSize']],
           hover: [['border'], ['background'], ['color']],
         },
+        liIconTheme: {
+          name: '上传列表图标样式',
+          desc: '默认类型的上传图标',
+          normal: [['color'], ['fontSize']],
+        },
         UploadListSuccessIcon: {
           name: '上传成功图标样式',
           desc: '上传成功时列表图标的样式',
@@ -29151,7 +29564,7 @@ export default [
         UploadLoading: {
           name: '加载中样式',
           desc: '区域类型的加载图标',
-          normal: [['border'], ['color'], ['fontSize'], ['font']],
+          normal: [['border'], ['color'], ['font'], ['fontSize']],
         },
         UploadDone: {
           name: '上传成功样式',
@@ -29162,6 +29575,36 @@ export default [
           name: '上传失败样式',
           desc: '区域类型的上传失败图标',
           normal: [['border'], ['color'], ['fontSize'], ['font']],
+        },
+        UploadIcon: {
+          name: '上传图标样式',
+          desc: '默认类型的上传图标',
+          normal: [['color'], ['fontSize']],
+        },
+        UploadLoadingIcon: {
+          name: '加载中图标样式',
+          desc: '默认类型的上传图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiFileIcon: {
+          name: '列表文件样式',
+          desc: '默认类型的列表文件图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiPictureIcon: {
+          name: '列表图片样式',
+          desc: '默认类型的列表图片图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiVideoIcon: {
+          name: '列表视频样式',
+          desc: '默认类型的列表视频图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiDeleteIcon: {
+          name: '列表删除样式',
+          desc: '默认类型的列表删除图标',
+          normal: [['color'], ['fontSize']],
         },
       },
       defaultTheme: {
@@ -29225,6 +29668,31 @@ export default [
           type: 'icon',
           desc: '上传失败提示图标',
           propsDefaultValue: 'lugia-icon-reminder_close_circle',
+        },
+        loadingIcon: {
+          type: 'icon',
+          desc: '加载中图标',
+          propsDefaultValue: 'lugia-icon-financial_loading_o',
+        },
+        liDeleteIcon: {
+          type: 'icon',
+          desc: '列表删除图标',
+          propsDefaultValue: 'lugia-icon-reminder_close',
+        },
+        liVideoIcon: {
+          type: 'icon',
+          desc: '列表视频图标',
+          propsDefaultValue: 'lugia-icon-financial_video_camera',
+        },
+        liFileIcon: {
+          type: 'icon',
+          desc: '列表文件图标',
+          propsDefaultValue: 'lugia-icon-financial_folder',
+        },
+        liPictureIcon: {
+          type: 'icon',
+          desc: '列表图片图标',
+          propsDefaultValue: 'lugia-icon-financial_pic',
         },
         size: {
           type: 'UploadSize',
@@ -29376,6 +29844,19 @@ export default [
             ['font'],
           ],
         },
+        UploadLoading: {
+          name: '上传框加载样式',
+          desc: '带按钮类型的按钮加白图标',
+          normal: [
+            ['border'],
+            ['boxShadow'],
+            ['borderRadius', 'left'],
+            ['opacity'],
+            ['color'],
+            ['fontSize'],
+            ['font'],
+          ],
+        },
         UploadDone: {
           name: '上传框成功样式',
           desc: '带按钮类型的按钮失败图标',
@@ -29394,6 +29875,11 @@ export default [
           desc: '上传列表的行样式',
           normal: [['width'], ['height'], ['background'], ['border'], ['color'], ['fontSize']],
           hover: [['border'], ['background'], ['color']],
+        },
+        liIconTheme: {
+          name: '上传列表图标样式',
+          desc: '默认类型的上传图标',
+          normal: [['color'], ['fontSize']],
         },
         UploadListSuccessIcon: {
           name: '上传成功图标样式',
@@ -29461,6 +29947,36 @@ export default [
               disabled: [['font'], ['color'], ['fontSize']],
             },
           },
+        },
+        UploadIcon: {
+          name: '上传图标样式',
+          desc: '默认类型的上传图标',
+          normal: [['color'], ['fontSize']],
+        },
+        UploadLoadingIcon: {
+          name: '加载中图标样式',
+          desc: '默认类型的上传图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiFileIcon: {
+          name: '列表文件样式',
+          desc: '默认类型的列表文件图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiPictureIcon: {
+          name: '列表图片样式',
+          desc: '默认类型的列表图片图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiVideoIcon: {
+          name: '列表视频样式',
+          desc: '默认类型的列表视频图标',
+          normal: [['color'], ['fontSize']],
+        },
+        LiDeleteIcon: {
+          name: '列表删除样式',
+          desc: '默认类型的列表删除图标',
+          normal: [['color'], ['fontSize']],
         },
       },
       defaultTheme: {
