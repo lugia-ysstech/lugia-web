@@ -135,7 +135,11 @@ exports[`Upload Test css 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "color": "#363B40",
+          }
+        }
       />
       请将文件拖到此处
     </div>
@@ -189,42 +193,6 @@ exports[`Upload Test css getIcon picture 1`] = `
 >
   <i
     className="lugia-icon-financial_key    c1"
-    onClick={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    style={Object {}}
-  />
-</div>
-`;
-
-exports[`Upload Test css getIcon undefined 1`] = `
-.c1 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
-.c0 {
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-  color: #646A6E;
-}
-
-.c0:hover > div {
-  display: block;
-}
-
-<div
-  className="c0"
-  style={Object {}}
->
-  <i
-    className="undefined    c1"
     onClick={[Function]}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
