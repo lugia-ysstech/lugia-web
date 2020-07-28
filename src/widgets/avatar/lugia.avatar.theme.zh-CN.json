@@ -69,7 +69,7 @@
     "treeNodeHidden": true,
     "viewProps": [
       { "name": "shape", "text": "形状" },
-      { "name": "avatar", "text": "头像图片" }
+      { "name": "src", "text": "头像图片" }
     ],
     "data": [
       {
