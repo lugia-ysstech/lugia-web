@@ -216,14 +216,12 @@ export const HeaderWeek = CSSComponent({
 });
 function getHeaderWeekStyle(props) {
   const { normalTheme, hoverTheme } = props;
-  const { color, fontSize, font: { size } = {} } = normalTheme;
-  const { color: hoverC, fontSize: hoverFont, font: { size: hoverSize } = {} } = hoverTheme;
+  const { color } = normalTheme;
+  const { color: hoverC } = hoverTheme;
   return `
     color:${color};
-    font-size:${em(size || fontSize)};
     &:hover{
       color:${hoverC};
-      font-size:${em(hoverSize || hoverFont)};
     }
   `;
 }

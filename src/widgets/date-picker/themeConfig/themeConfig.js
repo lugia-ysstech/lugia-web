@@ -279,7 +279,6 @@ export function getSecondWeekDateTheme(props) {
   const { blackColor, normalColor } = getThemeUpdate();
   const defaultNormal = {
     color: blackColor,
-    fontSize: 14,
   };
   const normalTheme = deepMerge(defaultNormal, normal);
   const defaultHover = {
