@@ -1449,7 +1449,7 @@
 
 "@lugia/theme-hoc@^1.1.10":
   version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@lugia/theme-hoc/-/theme-hoc-1.1.10.tgz#bcb952ec745dd9e82ac5e0b64d9351079cf09b1e"
+  resolved "https://registry.npmjs.org/@lugia/theme-hoc/-/theme-hoc-1.1.10.tgz#bcb952ec745dd9e82ac5e0b64d9351079cf09b1e"
   integrity sha512-vM+NhOnr7qpSPXq0qbsIKeh44OYR5G2+INbUOXyYiJX66HwCyp32BGlXW/tygF1PhJtF+QsQE5phngj6B/i7BA==
   dependencies:
     "@babel/runtime" "^7.4.5"
