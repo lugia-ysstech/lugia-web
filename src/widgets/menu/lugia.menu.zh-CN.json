@@ -301,7 +301,6 @@
               "name": "选中项的外盒",
               "desc": "配置选中项的外盒",
               "normal": [
-                ["height"],
                 ["color"],
                 ["font"],
                 ["fontSize"],
@@ -356,7 +355,7 @@
             "Text": {
               "name": "文本",
               "desc": "配置文本",
-              "normal": [["font"], ["fontSize"], ["color"]],
+              "normal": [["font"], ["fontSize"], ["color"],["margin"],["padding"]],
               "hover": [["font"], ["fontSize"], ["color"]],
               "active": [],
               "disabled": []
@@ -364,7 +363,7 @@
             "CheckedText": {
               "name": "选中文本",
               "desc": "配置选中文本",
-              "normal": [["font"], ["fontSize"], ["color"]],
+              "normal": [["font"], ["fontSize"], ["color"],["margin"],["padding"]],
               "hover": [["font"], ["fontSize"], ["color"]],
               "active": [],
               "disabled": []
@@ -541,7 +540,6 @@
           "name": "选中项的外盒",
           "desc": "配置选中项的外盒",
           "normal": [
-            ["height"],
             ["color"],
             ["font"],
             ["fontSize"],
@@ -578,7 +576,7 @@
         "Text": {
           "name": "文本",
           "desc": "配置文本",
-          "normal": [["font"], ["fontSize"], ["color"]],
+          "normal": [["font"], ["fontSize"], ["color"],["margin"],["padding"]],
           "hover": [["font"], ["fontSize"], ["color"]],
           "active": [],
           "disabled": []
@@ -586,7 +584,7 @@
         "CheckedText": {
           "name": "选中文本",
           "desc": "配置选中文本",
-          "normal": [["font"], ["fontSize"], ["color"]],
+          "normal": [["font"], ["fontSize"], ["color"],["margin"],["padding"]],
           "hover": [["font"], ["fontSize"], ["color"]],
           "active": [],
           "disabled": []

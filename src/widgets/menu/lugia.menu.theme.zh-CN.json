@@ -16,6 +16,10 @@
         "text": "选择样式"
       },
       {
+        "name": "isShowAuxiliaryText",
+        "text": "是否展示辅助文本"
+      },
+      {
         "name": "data",
         "text": "数据绑定"
       }
@@ -280,6 +284,10 @@
       {
         "name": "checkedCSS",
         "text": "选择样式"
+      },
+      {
+        "name": "isShowAuxiliaryText",
+        "text": "是否展示辅助文本"
       },
       {
         "name": "data",
