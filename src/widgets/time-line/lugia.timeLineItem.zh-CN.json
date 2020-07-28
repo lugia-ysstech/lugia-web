@@ -36,7 +36,7 @@
       "defaultValue": "normal"
     },
     "timeLineType": {
-      "type": "TimeLineType",
+      "type": "TimeLineItemType",
       "desc": "时间节点的风格 可配置 图标风格和隐藏解释类型,默认是点状类型",
       "propsDefaultValue": "dot"
     },
@@ -51,7 +51,7 @@
     }
   },
   "type": {
-    "TimeLineType": [
+    "TimeLineItemType": [
       {
         "value": "dot",
         "text": "点状节点"
