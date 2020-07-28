@@ -110,7 +110,6 @@ const HTabsContainer = CSSComponent({
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    z-index: 5;
   `,
 });
 
@@ -213,7 +212,6 @@ const VTabsContainer = CSSComponent({
   },
   css: css`
     height: 100%;
-    width: 100%;
     box-sizing: border-box;
     white-space: nowrap;
     display: inline-block;
@@ -231,7 +229,6 @@ const YscrollerContainer = CSSComponent({
     selectNames: [],
   },
   css: css`
-    width: 100%;
     display: inline-block;
     box-sizing: border-box;
     white-space: nowrap;
@@ -284,9 +281,10 @@ const HTabsOutContainer = CSSComponent({
   },
   css: css`
     position: relative;
+    z-index: 99;
+    overflow: hidden;
     display: flex;
     align-items: center;
-    clear: both;
   `,
 });
 
@@ -294,7 +292,7 @@ const VTabsOutContainer = CSSComponent({
   tag: 'div',
   className: 'TitleContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['height'], ['background']],
     getCSS(themeMeta, themeProps) {
       const { border = {} } = themeMeta;
       const { propsConfig: { tabPosition } = {} } = themeProps;
