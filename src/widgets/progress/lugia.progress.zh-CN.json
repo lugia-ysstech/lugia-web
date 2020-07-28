@@ -84,7 +84,7 @@
         "Container": {
           "name": "进度条整体配置",
           "desc": "进度条整体配置",
-          "normal": [["width"], ["strokeWidth"], ["border"]]
+          "normal": [["width"], ["strokeWidth"], ["border", "width"]]
         },
         "ProgressCircleText": {
           "name": "进度条文字配置",
@@ -141,7 +141,7 @@
         "Container": {
           "name": "进度条整体配置",
           "desc": "进度条整体配置",
-          "normal": [["width"], ["strokeWidth"], ["border"]]
+          "normal": [["width"], ["strokeWidth"], ["border", "width"]]
         },
         "DashboardText": {
           "name": "进度条文字配置",

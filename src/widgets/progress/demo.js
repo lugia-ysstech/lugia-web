@@ -260,7 +260,7 @@ export default class ProgressDemo extends React.Component<any, any> {
           normal: {
             width: 300,
             strokeWidth: 20,
-            border: getBorder({ width: 5, style: 'solid', color: 'red' }, ['r']),
+            border: getBorder({ width: 10 }, ['r']),
           },
         },
         ProgressCircleLine_Error: {
