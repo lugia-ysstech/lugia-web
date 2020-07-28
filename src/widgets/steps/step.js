@@ -276,7 +276,7 @@ const FlatLine = CSSComponent({
   tag: 'div',
   className: 'StepFlatLine',
   normal: {
-    selectNames: [['width'], ['height'], ['boxShadow'], ['border']],
+    selectNames: [['width'], ['height'], ['boxShadow'], ['border'], ['background']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { height, width, boxShadow } = themeMeta;
