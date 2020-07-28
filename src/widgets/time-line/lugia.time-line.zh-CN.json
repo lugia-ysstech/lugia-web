@@ -18,8 +18,14 @@
       "meta": [
         { "key": "time", "title": "时间节点信息", "type": "string" },
         { "key": "description", "title": "时间节点详细描述", "type": "string" },
-        { "key": "timeLineType", "title": "时间节点类型", "type": "TimeLineType" },
+        { "key": "timeLineType", "title": "时间节点类型", "type": "TimeLineItemType" },
         { "key": "status", "title": "时间节点状态", "type": "TimeLineStatus" }
+      ],
+      "propsDefaultValue": [
+        { "time": "时间节点1", "description": "时间节点1的描述文本" },
+        { "time": "时间节点2", "description": "时间节点2的描述文本" },
+        { "time": "时间节点3", "description": "时间节点3的描述文本" },
+        { "time": "时间节点4", "description": "时间节点4的描述文本" }
       ]
     },
     "defaultData": {
@@ -28,7 +34,7 @@
       "meta": [
         { "key": "time", "title": "时间节点信息", "type": "string" },
         { "key": "description", "title": "时间节点详细描述", "type": "string" },
-        { "key": "timeLineType", "title": "时间节点类型", "type": "TimeLineType" },
+        { "key": "timeLineType", "title": "时间节点类型", "type": "TimeLineItemType" },
         { "key": "status", "title": "时间节点状态", "type": "TimeLineStatus" }
       ]
     },
@@ -67,7 +73,7 @@
         "text": "交替展示"
       }
     ],
-    "TimeLineType": [
+    "TimeLineItemType": [
       {
         "value": "dot",
         "text": "点状节点"

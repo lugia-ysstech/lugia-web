@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`timeLineDemo Component JSON 1`] = `
-.c11 {
+.c14 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -20,7 +20,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   animation: yqACP 1s linear infinite;
 }
 
-.c12 {
+.c15 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -28,18 +28,38 @@ exports[`timeLineDemo Component JSON 1`] = `
   cursor: pointer;
 }
 
-.c1 {
+.c2 {
   position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
-.c9 {
+.c12 {
   position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-transform: translateX(0px);
   -ms-transform: translateX(0px);
   transform: translateX(0px);
 }
 
-.c8 {
+.c11 {
   color: #646A6E;
   margin-top: 0.4rem;
   margin-bottom: 0rem;
@@ -47,14 +67,14 @@ exports[`timeLineDemo Component JSON 1`] = `
   margin-right: 0rem;
 }
 
-.c6 {
+.c7 {
   text-align: inherit;
   overflow: hidden;
   white-space: nowrap;
   color: #363B40;
 }
 
-.c5 {
+.c6 {
   text-align: inherit;
   overflow: hidden;
   white-space: nowrap;
@@ -64,7 +84,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   left: 2rem;
 }
 
-.c10 {
+.c13 {
   text-align: inherit;
   overflow: hidden;
   white-space: nowrap;
@@ -74,34 +94,50 @@ exports[`timeLineDemo Component JSON 1`] = `
   right: 100%;
 }
 
-.c2 {
-  position: relative;
-  text-align: center;
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   width: 2rem;
 }
 
-.c4 {
+.c9 {
   position: relative;
-  left: 1rem;
-  z-index: 2;
+  height: 100%;
   border-left-width: 0.1rem;
   border-left-style: solid;
   border-left-color: #d0d3da;
-  border-left: 0.1rem solid #d0d3da;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  margin-left: 1rem;
+  margin-right: 0rem;
 }
 
-.c7 {
+.c10 {
   position: relative;
-  left: 1rem;
-  z-index: 2;
+  height: 100%;
   border-left-width: 0.1rem;
   border-left-style: solid;
   border-left-color: #d0d3da;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  margin-left: 1rem;
+  margin-right: 0rem;
   display: none;
-  border-left: 0.1rem solid #d0d3da;
 }
 
-.c3 {
+.c8 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c5 {
   position: absolute;
   left: 0.55rem;
   z-index: 3;
@@ -115,7 +151,24 @@ exports[`timeLineDemo Component JSON 1`] = `
   border-bottom-left-radius: 50%;
 }
 
-.c13 {
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c16 {
   display: inline-block;
   margin-bottom: 0;
   box-sizing: border-box;
@@ -147,11 +200,11 @@ exports[`timeLineDemo Component JSON 1`] = `
   border-right-color: #d0d3da;
 }
 
-.c15 {
+.c18 {
   font-size: 1.4rem;
 }
 
-.c14 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -189,208 +242,258 @@ exports[`timeLineDemo Component JSON 1`] = `
     >
       <div
         className="c1"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
       >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2020-07-20
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2020-07-28
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2020-07-21
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2020-07-29
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2020-07-22
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2020-07-30
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2020-07-23
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2020-07-31
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c7"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2020-07-24
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2020-08-01
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c10"
+              style={Object {}}
+            />
           </div>
         </div>
+         
       </div>
     </div>
   </div>
@@ -407,208 +510,258 @@ exports[`timeLineDemo Component JSON 1`] = `
     >
       <div
         className="c1"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
       >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-01
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-01
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-02
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-02
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-03
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-03
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-04
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-04
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c7"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-05
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-05
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c10"
+              style={Object {}}
+            />
           </div>
         </div>
+         
       </div>
     </div>
   </div>
@@ -625,238 +778,288 @@ exports[`timeLineDemo Component JSON 1`] = `
     >
       <div
         className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
       >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-01
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-01
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description111
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description111
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-02
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-02
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description222
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description222
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-03
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-03
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description333
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description333
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-04
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-04
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description444
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description444
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c7"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-05
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-05
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description555
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description555
+            <div
+              className="c10"
+              style={Object {}}
+            />
           </div>
         </div>
+         
       </div>
     </div>
   </div>
@@ -872,209 +1075,259 @@ exports[`timeLineDemo Component JSON 1`] = `
       style={Object {}}
     >
       <div
-        className="c9"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
+        className="c1"
       >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c10"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-01
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c13"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-01
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c9"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-02
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-02
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c9"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c10"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-03
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c13"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-03
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c9"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-04
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-04
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c9"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c7"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c10"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-05
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c13"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-05
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c10"
+              style={Object {}}
+            />
           </div>
         </div>
+         
       </div>
     </div>
   </div>
@@ -1090,239 +1343,289 @@ exports[`timeLineDemo Component JSON 1`] = `
       style={Object {}}
     >
       <div
-        className="c9"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
+        className="c1"
       >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c10"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-01
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c13"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-01
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description111
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description111
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c9"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-02
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-02
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description222
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description222
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c9"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c10"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-03
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c13"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-03
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description333
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description333
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c9"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-04
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-04
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description444
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description444
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c9"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c7"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c10"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-05
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c13"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-05
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description555
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description555
+            <div
+              className="c10"
+              style={Object {}}
+            />
           </div>
         </div>
+         
       </div>
     </div>
   </div>
@@ -1338,209 +1641,259 @@ exports[`timeLineDemo Component JSON 1`] = `
       style={Object {}}
     >
       <div
-        className="c9"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
+        className="c1"
       >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#56c22d",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c10"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-01
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#56c22d",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c13"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-01
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c9"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c10"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-02
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c13"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-02
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c9"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#f22735",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c10"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-03
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#f22735",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c13"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-03
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c9"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c10"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-04
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c13"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-04
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c9"
-        style={
-          Object {
-            "height": "4.2rem",
-          }
-        }
-      >
         <div
-          className="c2"
-          style={Object {}}
+          className="c12"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c7"
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
-        <div
-          className="c10"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-05
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c13"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-05
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c10"
+              style={Object {}}
+            />
           </div>
         </div>
+         
       </div>
     </div>
   </div>
@@ -1557,238 +1910,288 @@ exports[`timeLineDemo Component JSON 1`] = `
     >
       <div
         className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
       >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-01
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-01
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description111
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description111
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-02
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-02
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description222
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description222
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-03
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-03
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description333
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description333
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-04
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-04
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description444
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description444
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c7"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-05
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-05
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description555
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description555
+            <div
+              className="c10"
+              style={Object {}}
+            />
           </div>
         </div>
+         
       </div>
     </div>
   </div>
@@ -1805,243 +2208,293 @@ exports[`timeLineDemo Component JSON 1`] = `
     >
       <div
         className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
       >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-01
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-01
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description111
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description111
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-02
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-02
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description222
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description222
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-03
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-03
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description333
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description333
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-04
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-04
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description444
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description444
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
-        >
-          <i
-            className="lugia-icon-financial_loading_o   c11"
-            onClick={[Function]}
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            style={
-              Object {
-                "color": "#646A6E",
-              }
-            }
-          />
-        </div>
-        <div
-          className="c7"
           style={
             Object {
-              "height": "inherit",
+              "height": "5.4rem",
             }
           }
-        />
-        <div
-          className="c5"
-          style={Object {}}
         >
           <div
-            className="c6"
-            style={Object {}}
+            className="c3"
+            style={
+              Object {
+                "height": "1rem",
+              }
+            }
           >
-            2018-01-05
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <i
+                className="lugia-icon-financial_loading_o   c14"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={
+                  Object {
+                    "color": "#646A6E",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-05
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description555
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description555
+            <div
+              className="c10"
+              style={Object {}}
+            />
           </div>
         </div>
+         
       </div>
     </div>
   </div>
@@ -2058,239 +2511,289 @@ exports[`timeLineDemo Component JSON 1`] = `
     >
       <div
         className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
       >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-01
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-01
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description111
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description111
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-02
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-02
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description222
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description222
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-03
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-03
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description333
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description333
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-04
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-04
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description444
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description444
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
-        >
-          <i
-            className="lugia-icon-financial_abort   c12"
-            onClick={[Function]}
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            style={Object {}}
-          />
-        </div>
-        <div
-          className="c7"
           style={
             Object {
-              "height": "inherit",
+              "height": "5.4rem",
             }
           }
-        />
-        <div
-          className="c5"
-          style={Object {}}
         >
           <div
-            className="c6"
-            style={Object {}}
+            className="c3"
+            style={
+              Object {
+                "height": "1rem",
+              }
+            }
           >
-            2018-01-05
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <i
+                className="lugia-icon-financial_abort   c15"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={Object {}}
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-05
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description555
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description555
+            <div
+              className="c10"
+              style={Object {}}
+            />
           </div>
         </div>
+         
       </div>
     </div>
   </div>
@@ -2302,7 +2805,7 @@ exports[`timeLineDemo Component JSON 1`] = `
     }
   >
     <button
-      className="c13"
+      className="c16"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2334,10 +2837,10 @@ exports[`timeLineDemo Component JSON 1`] = `
       type="primary"
     >
       <span
-        className="c14"
+        className="c17"
       >
         <span
-          className="c15"
+          className="c18"
           style={
             Object {
               "color": "#ffffff",
@@ -2355,238 +2858,288 @@ exports[`timeLineDemo Component JSON 1`] = `
     >
       <div
         className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
       >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-01
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-01
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description111
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description111
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-02
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-02
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description222
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description222
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-03
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-03
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description333
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description333
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c4"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-04
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-04
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description444
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description444
+            <div
+              className="c9"
+              style={Object {}}
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "5.4rem",
-          }
-        }
-      >
         <div
           className="c2"
-          style={Object {}}
+          style={
+            Object {
+              "height": "5.4rem",
+            }
+          }
         >
           <div
             className="c3"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
+                "height": "1rem",
               }
             }
-          />
-        </div>
-        <div
-          className="c7"
-          style={
-            Object {
-              "height": "inherit",
-            }
-          }
-        />
-        <div
-          className="c5"
-          style={Object {}}
-        >
-          <div
-            className="c6"
-            style={Object {}}
           >
-            2018-01-05
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-05
+              </div>
+              <div
+                className="c11"
+                style={Object {}}
+              >
+                description555
+              </div>
+            </div>
           </div>
           <div
             className="c8"
-            style={Object {}}
           >
-            description555
+            <div
+              className="c10"
+              style={Object {}}
+            />
           </div>
         </div>
+         
       </div>
     </div>
   </div>
