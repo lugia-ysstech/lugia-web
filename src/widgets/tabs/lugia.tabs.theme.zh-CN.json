@@ -15,6 +15,7 @@
         "name": "showDeleteBtn",
         "text": "删除功能"
       },
+      { "name": "hideTabBar", "text": "隐藏页签" },
       {
         "name": "showDividerLine",
         "text": "显示分割线"
@@ -274,6 +275,7 @@
         "name": "showDeleteBtn",
         "text": "删除功能"
       },
+      { "name": "hideTabBar", "text": "隐藏页签" },
       {
         "name": "pagedType",
         "text": "翻页类型"
@@ -517,6 +519,7 @@
         "name": "showDeleteBtn",
         "text": "删除功能"
       },
+      { "name": "hideTabBar", "text": "隐藏页签" },
       {
         "name": "pagedType",
         "text": "翻页类型"
