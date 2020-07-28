@@ -85,7 +85,7 @@
     "loadingIcon": {
       "type": "icon",
       "desc": "加载中图标",
-      "propsDefaultValue": ""
+      "propsDefaultValue": "lugia-icon-financial_loading_o"
     },
     "liDeleteIcon": {
       "type": "icon",

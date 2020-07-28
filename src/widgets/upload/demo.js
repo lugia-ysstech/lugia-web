@@ -556,7 +556,7 @@ class UploadDemo extends React.Component<any, any> {
         },
         UploadIcon: {
           normal: {
-            color: 'blue',
+            color: 'orange',
           },
         },
         LiFileIcon: {

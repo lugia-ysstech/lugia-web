@@ -691,9 +691,8 @@ export const getIconClassName = (props: Object, status: string, defaultClass: Ob
 };
 
 export const getIconTheme = (props: Object, status: string): Object | string => {
-  const { areaType, disabled } = props;
-  const areaTypeColor =
-    disabled === true ? disableTextColor : areaType === 'default' ? blackColor : darkGreyColor;
+  const { areaType } = props;
+  const areaTypeColor = areaType === 'default' ? blackColor : darkGreyColor;
   let defaultTheme = {
     color: areaTypeColor,
   };
@@ -769,6 +768,7 @@ export const getIconTheme = (props: Object, status: string): Object | string => 
         },
         disabled: {
           cursor: 'not-allowed',
+          color: disableTextColor,
         },
       },
     },
@@ -869,7 +869,6 @@ const getFileList = (
 ) => {
   if (!data || data.length === 0) return;
   const liThemeProps = props.getPartOfThemeProps('UploadLiType');
-  const liTextTheme = props.getPartOfThemeProps('LiTextTheme');
   const { isShowProgress = true } = props;
   return (
     <Ul themeProps={themeProps} disabled={disabled}>
@@ -881,7 +880,7 @@ const getFileList = (
         const listIconType = getListIconType(item.name);
         const fileTypeIconProps = {
           ...defaultIconProps,
-          iconClassName: getIconClassName(props, getListIconType(item.name)),
+          iconClassName: getIconClassName(props, listIconType),
           info: item,
           className: 'icon-mark ccc',
           status: listIconType,
@@ -901,7 +900,7 @@ const getFileList = (
         };
         return (
           <Li status={item.status} themeProps={liThemeProps}>
-            <LiText themeProps={liTextTheme}>
+            <LiText>
               {getIconByType(fileTypeIconProps)}
               <span>{item.name}</span>
             </LiText>

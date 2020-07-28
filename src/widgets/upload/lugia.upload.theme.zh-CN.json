@@ -45,7 +45,7 @@
           {
             "name": "列表文件图标",
             "path": ["LiFileIcon"],
-            "props": [{ "name": "liFileIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liFileIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "文件图标", "desc": "上传列表文件图标" }
             }
@@ -53,7 +53,7 @@
           {
             "name": "列表图片图标",
             "path": ["LiPictureIcon"],
-            "props": [{ "name": "liPictureIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liPictureIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "图片图标", "desc": "上传列表图片图标" }
             }
@@ -61,7 +61,7 @@
           {
             "name": "列表视频图标",
             "path": ["LiVideoIcon"],
-            "props": [{ "name": "liVideoIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liVideoIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "视频图标", "desc": "上传列表视频图标" }
             }
@@ -69,7 +69,7 @@
           {
             "name": "列表删除图标",
             "path": ["LiDeleteIcon"],
-            "props": [{ "name": "liDeleteIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liDeleteIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "删除图标", "desc": "上传列表删除图标" }
             }
@@ -189,7 +189,7 @@
           {
             "name": "列表文件图标",
             "path": ["LiFileIcon"],
-            "props": [{ "name": "liFileIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liFileIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "文件图标", "desc": "上传列表文件图标" }
             }
@@ -197,7 +197,7 @@
           {
             "name": "列表图片图标",
             "path": ["LiPictureIcon"],
-            "props": [{ "name": "liPictureIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liPictureIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "图片图标", "desc": "上传列表图片图标" }
             }
@@ -205,7 +205,7 @@
           {
             "name": "列表视频图标",
             "path": ["LiVideoIcon"],
-            "props": [{ "name": "liVideoIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liVideoIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "视频图标", "desc": "上传列表视频图标" }
             }
@@ -213,7 +213,7 @@
           {
             "name": "列表删除图标",
             "path": ["LiDeleteIcon"],
-            "props": [{ "name": "liDeleteIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liDeleteIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "删除图标", "desc": "上传列表删除图标" }
             }
@@ -328,7 +328,7 @@
           {
             "name": "列表文件图标",
             "path": ["LiFileIcon"],
-            "props": [{ "name": "liFileIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liFileIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "文件图标", "desc": "上传列表文件图标" }
             }
@@ -336,7 +336,7 @@
           {
             "name": "列表图片图标",
             "path": ["LiPictureIcon"],
-            "props": [{ "name": "liPictureIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liPictureIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "图片图标", "desc": "上传列表图片图标" }
             }
@@ -344,7 +344,7 @@
           {
             "name": "列表视频图标",
             "path": ["LiVideoIcon"],
-            "props": [{ "name": "liVideoIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liVideoIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "视频图标", "desc": "上传列表视频图标" }
             }
@@ -352,7 +352,7 @@
           {
             "name": "列表删除图标",
             "path": ["LiDeleteIcon"],
-            "props": [{ "name": "liDeleteIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liDeleteIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "删除图标", "desc": "上传列表删除图标" }
             }
@@ -385,6 +385,9 @@
             "name": "加载中整体样式",
             "path": ["UploadLoading"],
             "description": {
+              "textPart": {
+                "hidden": true
+              },
               "appearancePart": { "text": "外观", "desc": "面板中外观配置的区块显示文本" }
             }
           },
@@ -483,7 +486,7 @@
           {
             "name": "列表文件图标",
             "path": ["LiFileIcon"],
-            "props": [{ "name": "liFileIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liFileIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "文件图标", "desc": "上传列表文件图标" }
             }
@@ -491,7 +494,7 @@
           {
             "name": "列表图片图标",
             "path": ["LiPictureIcon"],
-            "props": [{ "name": "liPictureIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liPictureIcon", "typeInTheme": "icon" }],
             "description": {
               "textPart": { "text": "图片图标", "desc": "上传列表图片图标" }
             }
@@ -499,7 +502,7 @@
           {
             "name": "列表视频图标",
             "path": ["LiVideoIcon"],
-            "props": [{ "name": "liVideoIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liVideoIcon", "typeInTheme": "icon" }],
             "description": {
               "textPart": { "text": "视频图标", "desc": "上传列表视频图标" }
             }
@@ -507,7 +510,7 @@
           {
             "name": "列表删除图标",
             "path": ["LiDeleteIcon"],
-            "props": [{ "name": "liDeleteIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liDeleteIcon", "typeInTheme": "icon" }],
             "description": {
               "textPart": { "text": "删除图标", "desc": "上传列表删除图标" }
             }
@@ -647,7 +650,7 @@
           {
             "name": "列表文件图标",
             "path": ["LiFileIcon"],
-            "props": [{ "name": "liFileIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liFileIcon", "typeInTheme": "icon" }],
             "description": {
               "textPart": { "text": "文件图标", "desc": "上传列表文件图标" }
             }
@@ -655,7 +658,7 @@
           {
             "name": "列表图片图标",
             "path": ["LiPictureIcon"],
-            "props": [{ "name": "liPictureIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liPictureIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "图片图标", "desc": "上传列表图片图标" }
             }
@@ -663,7 +666,7 @@
           {
             "name": "列表视频图标",
             "path": ["LiVideoIcon"],
-            "props": [{ "name": "liVideoIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liVideoIcon", "typeInTheme": "icon"}],
             "description": {
               "textPart": { "text": "视频图标", "desc": "上传列表视频图标" }
             }
@@ -671,7 +674,7 @@
           {
             "name": "列表删除图标",
             "path": ["LiDeleteIcon"],
-            "props": [{ "name": "liDeleteIcon", "typeInTheme": "icon", "disabled": true }],
+            "props": [{ "name": "liDeleteIcon", "typeInTheme": "icon" }],
             "description": {
               "textPart": { "text": "删除图标", "desc": "上传列表删除图标" }
             }
