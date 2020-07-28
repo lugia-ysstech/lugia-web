@@ -2,6 +2,7 @@
   {
     "widgetName": "Table",
     "title": "表格",
+    "treeNodeHidden": true,
     "data": [
       {
         "title": "表格整体样式",
