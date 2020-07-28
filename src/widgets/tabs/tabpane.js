@@ -50,6 +50,7 @@ const SelectTab = CSSComponent({
     defaultTheme: {
       color: darkGreyColor,
       fontSize: 14,
+      height: 32,
     },
     getCSS: (theme: Object, themeProps: Object) => {
       const { color } = theme;
