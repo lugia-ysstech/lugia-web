@@ -8788,7 +8788,6 @@ export default [
                   name: '选中项的外盒',
                   desc: '配置选中项的外盒',
                   normal: [
-                    ['height'],
                     ['color'],
                     ['font'],
                     ['fontSize'],
@@ -8841,7 +8840,7 @@ export default [
                 Text: {
                   name: '文本',
                   desc: '配置文本',
-                  normal: [['font'], ['fontSize'], ['color']],
+                  normal: [['font'], ['fontSize'], ['color'], ['margin'], ['padding']],
                   hover: [['font'], ['fontSize'], ['color']],
                   active: [],
                   disabled: [],
@@ -8849,7 +8848,7 @@ export default [
                 CheckedText: {
                   name: '选中文本',
                   desc: '配置选中文本',
-                  normal: [['font'], ['fontSize'], ['color']],
+                  normal: [['font'], ['fontSize'], ['color'], ['margin'], ['padding']],
                   hover: [['font'], ['fontSize'], ['color']],
                   active: [],
                   disabled: [],
@@ -9048,7 +9047,6 @@ export default [
               name: '选中项的外盒',
               desc: '配置选中项的外盒',
               normal: [
-                ['height'],
                 ['color'],
                 ['font'],
                 ['fontSize'],
@@ -9083,7 +9081,7 @@ export default [
             Text: {
               name: '文本',
               desc: '配置文本',
-              normal: [['font'], ['fontSize'], ['color']],
+              normal: [['font'], ['fontSize'], ['color'], ['margin'], ['padding']],
               hover: [['font'], ['fontSize'], ['color']],
               active: [],
               disabled: [],
@@ -9091,7 +9089,7 @@ export default [
             CheckedText: {
               name: '选中文本',
               desc: '配置选中文本',
-              normal: [['font'], ['fontSize'], ['color']],
+              normal: [['font'], ['fontSize'], ['color'], ['margin'], ['padding']],
               hover: [['font'], ['fontSize'], ['color']],
               active: [],
               disabled: [],
@@ -9389,7 +9387,6 @@ export default [
               name: '选中项的外盒',
               desc: '配置选中项的外盒',
               normal: [
-                ['height'],
                 ['color'],
                 ['font'],
                 ['fontSize'],
@@ -9442,7 +9439,7 @@ export default [
             Text: {
               name: '文本',
               desc: '配置文本',
-              normal: [['font'], ['fontSize'], ['color']],
+              normal: [['font'], ['fontSize'], ['color'], ['margin'], ['padding']],
               hover: [['font'], ['fontSize'], ['color']],
               active: [],
               disabled: [],
@@ -9450,7 +9447,7 @@ export default [
             CheckedText: {
               name: '选中文本',
               desc: '配置选中文本',
-              normal: [['font'], ['fontSize'], ['color']],
+              normal: [['font'], ['fontSize'], ['color'], ['margin'], ['padding']],
               hover: [['font'], ['fontSize'], ['color']],
               active: [],
               disabled: [],
@@ -14518,7 +14515,7 @@ export default [
             Container: {
               name: '进度条整体配置',
               desc: '进度条整体配置',
-              normal: [['width'], ['strokeWidth'], ['border']],
+              normal: [['width'], ['strokeWidth'], ['border', 'width']],
             },
             ProgressCircleText: {
               name: '进度条文字配置',
@@ -14567,7 +14564,7 @@ export default [
             Container: {
               name: '进度条整体配置',
               desc: '进度条整体配置',
-              normal: [['width'], ['strokeWidth'], ['border']],
+              normal: [['width'], ['strokeWidth'], ['border', 'width']],
             },
             DashboardText: {
               name: '进度条文字配置',
@@ -14733,7 +14730,7 @@ export default [
         Container: {
           name: '进度条整体配置',
           desc: '进度条整体配置',
-          normal: [['width'], ['strokeWidth'], ['border']],
+          normal: [['width'], ['strokeWidth'], ['border', 'width']],
         },
         ProgressCircleText: {
           name: '进度条文字配置',
@@ -14835,7 +14832,7 @@ export default [
         Container: {
           name: '进度条整体配置',
           desc: '进度条整体配置',
-          normal: [['width'], ['strokeWidth'], ['border']],
+          normal: [['width'], ['strokeWidth'], ['border', 'width']],
         },
         DashboardText: {
           name: '进度条文字配置',
@@ -18505,27 +18502,27 @@ export default [
                 FinishStepFlatLine: {
                   name: '已完成状态步骤间连接线',
                   desc: '已完成状态步骤间连接线的配置',
-                  normal: [['width'], ['height'], ['boxShadow'], ['border']],
+                  normal: [['width'], ['height'], ['boxShadow'], ['border'], ['background']],
                 },
                 ProcessStepFlatLine: {
                   name: '进行中状态步骤间连接线',
                   desc: '进行中状态步骤间连接线的配置',
-                  normal: [['width'], ['height'], ['boxShadow'], ['border']],
+                  normal: [['width'], ['height'], ['boxShadow'], ['border'], ['background']],
                 },
                 NextStepFlatLine: {
                   name: '下一步状态步骤间连接线',
                   desc: '下一步状态步骤间连接线的配置',
-                  normal: [['width'], ['height'], ['boxShadow'], ['border']],
+                  normal: [['width'], ['height'], ['boxShadow'], ['border'], ['background']],
                 },
                 WaitStepFlatLine: {
                   name: '等待中状态步骤间连接线',
                   desc: '等待中状态步骤间连接线的配置',
-                  normal: [['width'], ['height'], ['boxShadow'], ['border']],
+                  normal: [['width'], ['height'], ['boxShadow'], ['border'], ['background']],
                 },
                 ErrorStepFlatLine: {
                   name: '异常状态步骤间连接线',
                   desc: '异常状态步骤间连接线的配置',
-                  normal: [['width'], ['height'], ['boxShadow'], ['border']],
+                  normal: [['width'], ['height'], ['boxShadow'], ['border'], ['background']],
                 },
                 FinishStepInnerContainer: {
                   name: '已完成状态单个步骤内部',
@@ -19647,27 +19644,27 @@ export default [
             FinishStepFlatLine: {
               name: '已完成状态步骤间连接线',
               desc: '已完成状态步骤间连接线的配置',
-              normal: [['width'], ['height'], ['boxShadow'], ['border']],
+              normal: [['width'], ['height'], ['boxShadow'], ['border'], ['background']],
             },
             ProcessStepFlatLine: {
               name: '进行中状态步骤间连接线',
               desc: '进行中状态步骤间连接线的配置',
-              normal: [['width'], ['height'], ['boxShadow'], ['border']],
+              normal: [['width'], ['height'], ['boxShadow'], ['border'], ['background']],
             },
             NextStepFlatLine: {
               name: '下一步状态步骤间连接线',
               desc: '下一步状态步骤间连接线的配置',
-              normal: [['width'], ['height'], ['boxShadow'], ['border']],
+              normal: [['width'], ['height'], ['boxShadow'], ['border'], ['background']],
             },
             WaitStepFlatLine: {
               name: '等待中状态步骤间连接线',
               desc: '等待中状态步骤间连接线的配置',
-              normal: [['width'], ['height'], ['boxShadow'], ['border']],
+              normal: [['width'], ['height'], ['boxShadow'], ['border'], ['background']],
             },
             ErrorStepFlatLine: {
               name: '异常状态步骤间连接线',
               desc: '异常状态步骤间连接线的配置',
-              normal: [['width'], ['height'], ['boxShadow'], ['border']],
+              normal: [['width'], ['height'], ['boxShadow'], ['border'], ['background']],
             },
             FinishStepInnerContainer: {
               name: '已完成状态单个步骤内部',
@@ -22213,8 +22210,14 @@ export default [
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
             { key: 'description', title: '时间节点详细描述', type: 'string' },
-            { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineType' },
+            { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineItemType' },
             { key: 'status', title: '时间节点状态', type: 'TimeLineStatus' },
+          ],
+          propsDefaultValue: [
+            { time: '时间节点1', description: '时间节点1的描述文本' },
+            { time: '时间节点2', description: '时间节点2的描述文本' },
+            { time: '时间节点3', description: '时间节点3的描述文本' },
+            { time: '时间节点4', description: '时间节点4的描述文本' },
           ],
         },
         defaultData: {
@@ -22223,7 +22226,7 @@ export default [
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
             { key: 'description', title: '时间节点详细描述', type: 'string' },
-            { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineType' },
+            { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineItemType' },
             { key: 'status', title: '时间节点状态', type: 'TimeLineStatus' },
           ],
         },
@@ -22246,7 +22249,7 @@ export default [
           { value: 'right', text: '右侧展示' },
           { value: 'alternate', text: '交替展示' },
         ],
-        TimeLineType: [
+        TimeLineItemType: [
           { value: 'dot', text: '点状节点' },
           { value: 'icon', text: '图标节点' },
           { value: 'explain', text: '隐藏节点' },
@@ -22482,8 +22485,14 @@ export default [
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
             { key: 'description', title: '时间节点详细描述', type: 'string' },
-            { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineType' },
+            { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineItemType' },
             { key: 'status', title: '时间节点状态', type: 'TimeLineStatus' },
+          ],
+          propsDefaultValue: [
+            { time: '时间节点1', description: '时间节点1的描述文本' },
+            { time: '时间节点2', description: '时间节点2的描述文本' },
+            { time: '时间节点3', description: '时间节点3的描述文本' },
+            { time: '时间节点4', description: '时间节点4的描述文本' },
           ],
         },
         defaultData: {
@@ -22492,7 +22501,7 @@ export default [
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
             { key: 'description', title: '时间节点详细描述', type: 'string' },
-            { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineType' },
+            { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineItemType' },
             { key: 'status', title: '时间节点状态', type: 'TimeLineStatus' },
           ],
         },
@@ -22519,7 +22528,7 @@ export default [
           { value: 'right', text: '右侧展示' },
           { value: 'alternate', text: '交替展示' },
         ],
-        TimeLineType: [
+        TimeLineItemType: [
           { value: 'dot', text: '点状节点' },
           { value: 'icon', text: '图标节点' },
           { value: 'explain', text: '隐藏节点' },
