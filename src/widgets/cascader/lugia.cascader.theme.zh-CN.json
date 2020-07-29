@@ -151,6 +151,47 @@
                     "desc": "辅助文本内外边距配置区"
                   }
                 }
+              },
+              {
+                "name": "前缀图标",
+                "path": ["Menu", "MenuItem", "PrefixIcon"],
+                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标文本配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "前缀图标内外边距配置区"
+                  }
+                }
+              },
+              {
+                "name": "后缀图标",
+                "path": ["Menu", "MenuItem", "SuffixIcon"],
+                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标文本配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "后缀图标内外边距配置区"
+                  }
+                }
+              },
+              {
+                "name": "下拉图标",
+                "path": ["Menu", "MenuItem", "SwitchIcon"],
+                "props": [{ "name": "switchIconClass", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "图标",
+                    "desc": "下拉图标文本配置"
+                  }
+                }
               }
             ]
           },
@@ -189,6 +230,45 @@
                     "desc": "辅助文本内外边距配置区"
                   }
                 }
+              },
+              {
+                "name": "前缀图标",
+                "path": ["Menu","MenuItem", "SelectedPrefixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标文本配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "前缀图标内外边距配置区"
+                  }
+                }
+              },
+              {
+                "name": "后缀图标",
+                "path": ["Menu","MenuItem", "SelectedSuffixIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标文本配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "后缀图标内外边距配置区"
+                  }
+                }
+              },
+              {
+                "name": "下拉图标",
+                "path": ["Menu", "MenuItem", "SwitchIconSelected"],
+                "props": [{ "name": "switchIconClass", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "图标",
+                    "desc": "下拉图标文本配置"
+                  }
+                }
               }
             ]
           },
@@ -207,59 +287,6 @@
                   "spacingPart": {
                     "text": "padding/margin",
                     "desc": "分割线内外边距配置区"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "title": "前后缀图标",
-            "iconClass": "iconsearch",
-            "data": [
-              {
-                "name": "前缀图标",
-                "path": ["Menu", "MenuItem", "PrefixIcon"],
-                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
-                "description": {
-                  "textPart": {
-                    "text": "前缀图标",
-                    "desc": "前缀图标文本配置区"
-                  },
-                  "spacingPart": {
-                    "text": "padding/margin",
-                    "desc": "前缀图标内外边距配置区"
-                  }
-                }
-              },
-              {
-                "name": "后缀图标",
-                "path": ["Menu", "MenuItem", "SuffixIcon"],
-                "props": [{ "name": "data", "typeInTheme": "icon", "disabled": true }],
-                "description": {
-                  "textPart": {
-                    "text": "后缀图标",
-                    "desc": "后缀图标文本配置区"
-                  },
-                  "spacingPart": {
-                    "text": "padding/margin",
-                    "desc": "后缀图标内外边距配置区"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "title": "展开图标",
-            "iconClass": "menuExpandIcon",
-            "data": [
-              {
-                "name": "下拉图标",
-                "path": ["Menu", "MenuItem", "SwitchIcon"],
-                "props": [{ "name": "switchIconClass", "typeInTheme": "icon" }],
-                "description": {
-                  "textPart": {
-                    "text": "图标",
-                    "desc": "下拉图标文本配置"
                   }
                 }
               }
