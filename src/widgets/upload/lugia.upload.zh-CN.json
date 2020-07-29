@@ -615,17 +615,17 @@
         },
         "UploadLoading": {
           "name": "加载中样式",
-          "desc": "区域类型的加载图标",
+          "desc": "区域类型的加载样式",
           "normal": [["border"],["color"],["font"],["fontSize"]]
         },
         "UploadDone": {
           "name": "上传成功样式",
-          "desc": "区域类型的上传成功图标",
+          "desc": "区域类型的上传成功样式",
           "normal": [["border"], ["color"], ["fontSize"], ["font"]]
         },
         "UploadFail": {
           "name": "上传失败样式",
-          "desc": "区域类型的上传失败图标",
+          "desc": "区域类型的上传失败样式",
           "normal": [["border"], ["color"], ["fontSize"], ["font"]]
         },
         "UploadIcon": {
@@ -708,14 +708,14 @@
               "normal": [
                 ["width"],
                 ["background"],
-                ["borderRadius","right"],
+                ["borderRadius","topRight","bottomRight"],
                 ["opacity"],
                 ["border"]
               ],
-              "hover": [["background"], ["borderRadius","right"], ["opacity"],["border"]],
-              "active": [["background"], ["borderRadius","right"], ["opacity"],["border"]],
-              "focus": [["background"], ["borderRadius","right"], ["opacity"],["border"]],
-              "disabled": [["background"], ["borderRadius","right"], ["opacity"],["border"]]
+              "hover": [["background"], ["borderRadius","topRight","bottomRight"], ["opacity"],["border"]],
+              "active": [["background"], ["borderRadius","topRight","bottomRight"], ["opacity"],["border"]],
+              "focus": [["background"], ["borderRadius","topRight","bottomRight"], ["opacity"],["border"]],
+              "disabled": [["background"],["borderRadius","topRight","bottomRight"], ["opacity"],["border"]]
             },
             "ButtonText": {
               "name": "按钮文字样式",
@@ -741,7 +741,7 @@
             ["border"],
             ["fontSize"],
             ["font"],
-            ["borderRadius", "left"],
+            ["borderRadius", "topLeft","bottomLeft"],
             ["opacity"],
             ["color"],
             ["padding"],
@@ -751,7 +751,7 @@
             ["border"],
             ["fontSize"],
             ["font"],
-            ["borderRadius", "left"],
+            ["borderRadius", "topLeft","bottomLeft"],
             ["opacity"],
             ["color"],
             ["padding"],
@@ -761,7 +761,7 @@
             ["border"],
             ["fontSize"],
             ["font"],
-            ["borderRadius", "left"],
+            ["borderRadius", "topLeft","bottomLeft"],
             ["opacity"],
             ["color"],
             ["padding"],
@@ -771,11 +771,11 @@
         },
         "UploadFail": {
           "name": "上传框失败样式",
-          "desc": "带按钮类型的按钮失败图标",
+          "desc": "带按钮类型上传框失败样式",
           "normal": [
             ["border"],
             ["boxShadow"],
-            ["borderRadius", "left"],
+            ["borderRadius", "topLeft","bottomLeft"],
             ["opacity"],
             ["color"],
             ["fontSize"],
@@ -785,11 +785,11 @@
         },
         "UploadLoading": {
           "name": "上传框加载样式",
-          "desc": "带按钮类型的按钮加白图标",
+          "desc": "带按钮类型加载中的上传框样式",
           "normal": [
             ["border"],
             ["boxShadow"],
-            ["borderRadius", "left"],
+            ["borderRadius", "topLeft","bottomLeft"],
             ["opacity"],
             ["color"],
             ["fontSize"],
@@ -799,11 +799,11 @@
         },
         "UploadDone": {
           "name": "上传框成功样式",
-          "desc": "带按钮类型的按钮失败图标",
+          "desc": "带按钮类型上传框成功样式",
           "normal": [
             ["border"],
             ["boxShadow"],
-            ["borderRadius", "left"],
+            ["borderRadius", "topLeft","bottomLeft"],
             ["opacity"],
             ["color"],
             ["fontSize"],
@@ -840,11 +840,11 @@
           "theme": {
             "Container": {
               "desc": "带按钮类型的上传框失败整体配置",
-              "normal": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]],
-              "hover": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]],
-              "active": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]],
-              "focus": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]],
-              "disabled": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]]
+              "normal": [["boxShadow"], ["opacity"], ["background"], ["borderRadius","topRight","bottomRight"],["border"]],
+              "hover": [["boxShadow"], ["opacity"], ["background"], ["borderRadius","topRight","bottomRight"],["border"]],
+              "active": [["boxShadow"], ["opacity"], ["background"],["borderRadius","topRight","bottomRight"],["border"]],
+              "focus": [["boxShadow"], ["opacity"], ["background"],["borderRadius","topRight","bottomRight"],["border"]],
+              "disabled": [["boxShadow"], ["opacity"], ["background"],["borderRadius","topRight","bottomRight"],["border"]]
             },
             "ButtonText": {
               "name": "按钮文字失败样式",
@@ -862,11 +862,11 @@
           "theme": {
             "Container": {
               "desc": "带按钮类型的上传框失败整体配置",
-              "normal": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]],
-              "hover": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]],
-              "active": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]],
-              "focus": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]],
-              "disabled": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]]
+              "normal": [["boxShadow"], ["opacity"], ["background"],["borderRadius","topRight","bottomRight"],["border"]],
+              "hover": [["boxShadow"], ["opacity"], ["background"], ["borderRadius","topRight","bottomRight"],["border"]],
+              "active": [["boxShadow"], ["opacity"], ["background"],["borderRadius","topRight","bottomRight"],["border"]],
+              "focus": [["boxShadow"], ["opacity"], ["background"],["borderRadius","topRight","bottomRight"],["border"]],
+              "disabled": [["boxShadow"], ["opacity"], ["background"], ["borderRadius","topRight","bottomRight"],["border"]]
             }
           }
         },
@@ -875,11 +875,11 @@
           "theme": {
             "Container": {
               "desc": "带按钮类型的上传框失败整体配置",
-              "normal": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]],
-              "hover": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]],
-              "active": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]],
-              "focus": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]],
-              "disabled": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"],["border"]]
+              "normal": [["boxShadow"], ["opacity"], ["background"],["borderRadius","topRight","bottomRight"],["border"]],
+              "hover": [["boxShadow"], ["opacity"], ["background"],["borderRadius","topRight","bottomRight"],["border"]],
+              "active": [["boxShadow"], ["opacity"], ["background"],["borderRadius","topRight","bottomRight"],["border"]],
+              "focus": [["boxShadow"], ["opacity"], ["background"], ["borderRadius","topRight","bottomRight"],["border"]],
+              "disabled": [["boxShadow"], ["opacity"], ["background"],["borderRadius","topRight","bottomRight"],["border"]]
             },
             "ButtonText": {
               "name": "按钮文字失败样式",
