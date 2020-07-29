@@ -129,22 +129,6 @@
           "clicked": [],
           "disabled": []
         }
-      },
-      "defaultTheme": {
-        "DefaultRateIcon": {
-          "normal": {
-            "fontSize": 14,
-            "color": "#e8e8e8",
-            "margin": {
-              "right": 6
-            }
-          }
-        },
-        "ActiveIcon": {
-          "normal": {
-            "color": "#f8ac30"
-          }
-        }
       }
     },
     "TextRate": {
@@ -170,19 +154,6 @@
           "hover": [],
           "clicked": [],
           "disabled": []
-        }
-      },
-      "defaultTheme": {
-        "DefaultTextIcon": {
-          "normal": {
-            "fontSize": 16,
-            "color": "#e8e8e8"
-          }
-        },
-        "ActiveTextIcon": {
-          "normal": {
-            "color": "#f8ac30"
-          }
         }
       }
     }
