@@ -36,7 +36,11 @@
       "meta": [
         { "key": "open", "title": "展开图标", "type": "icon" },
         { "key": "close", "title": "关闭图标", "type": "icon" }
-      ]
+      ],
+      "propsDefaultValue": {
+        "open": "lugia-icon-direction_caret_down",
+        "close": "lugia-icon-direction_caret_right"
+      }
     },
     "size": {
       "type": "sizeType",
