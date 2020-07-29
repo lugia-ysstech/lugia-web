@@ -558,6 +558,7 @@
           {
             "name": "标签删除按钮",
             "path": ["TagIcon"],
+            "props": [{ "name": "singleClearIcon", "typeInTheme": "icon" }],
             "description": {
               "appearancePart": {
                 "hidden": true
