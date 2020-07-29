@@ -401,18 +401,16 @@ class Upload extends React.Component<UploadProps, StateProps> {
 
   customUploadStatus = (type: string, hashMark: string) => {
     const { fileListDone } = this.state;
+    const doUpdateFieldList = (status: Array<Object>, classNameStatus: string) => {
+      const list = this.updateFieldList(fileListDone, hashMark, status);
+      this.setStateValue({ classNameStatus, fileListDone: list });
+    };
     switch (type) {
       case 'success':
-        const successList = this.updateFieldList(fileListDone, hashMark, [
-          { target: 'status', value: 'done' },
-        ]);
-        this.setStateValue({ classNameStatus: 'done', fileListDone: successList });
+        doUpdateFieldList([{ target: 'status', value: 'done' }], 'done');
         break;
       case 'fail':
-        const list = this.updateFieldList(fileListDone, hashMark, [
-          { target: 'status', value: 'fail' },
-        ]);
-        this.setStateValue({ classNameStatus: 'fail', fileListDone: list });
+        doUpdateFieldList([{ target: 'status', value: 'fail' }], 'fail');
         break;
       default:
         return;
