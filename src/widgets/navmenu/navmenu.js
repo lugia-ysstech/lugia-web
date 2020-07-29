@@ -294,7 +294,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     const tabpanes = [];
     tabsData.forEach((item, index) => {
       const { title, value, disabled, icon } = item;
-      const {} = tabpanes.push(
+      tabpanes.push(
         <TabPane
           title={title}
           onMouseEnter={this.onTabsMouseEnter}
