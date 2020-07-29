@@ -183,7 +183,7 @@
                 }
               },
               {
-                "name": "下拉图标",
+                "name": "展开图标",
                 "path": ["Menu", "MenuItem", "SwitchIcon"],
                 "props": [{ "name": "switchIconClass", "typeInTheme": "icon" }],
                 "description": {
@@ -260,7 +260,7 @@
                 }
               },
               {
-                "name": "下拉图标",
+                "name": "展开图标",
                 "path": ["Menu", "MenuItem", "SwitchIconSelected"],
                 "props": [{ "name": "switchIconClass", "typeInTheme": "icon" }],
                 "description": {
