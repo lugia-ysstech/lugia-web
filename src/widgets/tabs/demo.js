@@ -55,7 +55,14 @@ const CustomContent = StaticComponent({
     padding: 20px;
   `,
 });
-
+const TestContainer = StaticComponent({
+  tag: 'div',
+  className: 'TestContainer',
+  css: css`
+    width: 100px;
+    height: 60px;
+  `,
+});
 const onPreClick = e => {
   console.log('res onPreClick', e);
 };
@@ -68,7 +75,8 @@ export const defaultData = [
   {
     title: 'Tab1',
     value: 'Tab1',
-    content: 'content of Tab1',
+    content:
+      'content of Tab1第三方的顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶但是犯得上房贷首付但是犯得上房贷首付撒旦发射点发射点大师傅士大夫撒旦大师傅士大夫第三方手动阀手动阀大师傅似的',
   },
   {
     title: 'Tab2',
@@ -1145,6 +1153,16 @@ export default class TabsDemo extends React.Component<any, any> {
         },
       },
     };
+    const testHeader = {
+      [Widget.Tabs]: {
+        Container: {
+          normal: {
+            width: 151,
+            height: 60,
+          },
+        },
+      },
+    };
     return (
       <div>
         <Tabs data={defaultData} activeValue={'Tab3'} />
@@ -2013,6 +2031,11 @@ export default class TabsDemo extends React.Component<any, any> {
         <p>测试 hideTabBar</p>
         <br />
         <Tabs data={defaultData} activeValue={'Tab3'} hideTabBar={true} />
+        <TestContainer>
+          <Theme config={testHeader}>
+            <Tabs data={defaultData} activeValue={'Tab1'} />
+          </Theme>
+        </TestContainer>
       </div>
     );
   }
