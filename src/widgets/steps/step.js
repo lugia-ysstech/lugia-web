@@ -335,7 +335,7 @@ const NormalFlatLine = CSSComponent({
   tag: 'div',
   className: 'StepNormalFlatLine',
   normal: {
-    selectNames: [['width'], ['height'], ['background'], ['border']],
+    selectNames: [['width'], ['height'], ['background'], ['border'], ['boxShadow']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { height, width } = themeMeta;
