@@ -161,6 +161,11 @@
       "type": "string",
       "desc": "自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ",
       "propsDefaultValue": "|"
+    },
+    "divided": {
+      "type": "boolean",
+      "desc": "项之间是否展示分割线",
+      "propsDefaultValue": false
     }
   },
   "events": {
