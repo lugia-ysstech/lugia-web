@@ -267,6 +267,17 @@ class UploadDemo extends React.Component<any, any> {
       showFileList: true,
       limit: 3,
     };
+    const customUploadProps = {
+      areaType: 'custom',
+      inputId: 'upload1',
+      url: 'http://localhost:7001/upload',
+      userDefine: <div>点这里进行上传</div>,
+      showFileList: true,
+      customUpload: (file, func) => {
+        console.log('file,func', file, func);
+        func.start();
+      },
+    };
     const configButton = {
       [Widget.Upload]: {
         Container: {
@@ -594,9 +605,13 @@ class UploadDemo extends React.Component<any, any> {
       liDeleteIcon: 'lugia-icon-reminder_close_circle_o',
       showFileList: true,
     };
+
     const typeMap = ['default', 'button', 'both', 'picture', 'area'];
     return (
       <div>
+        <Title>-------------customUploadProps</Title>
+        <Upload {...customUploadProps} />
+        <Title>-------------</Title>
         <Title>---------------配置Icon 的上传</Title>
         {typeMap.map(item => {
           return (
