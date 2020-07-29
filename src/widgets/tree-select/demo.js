@@ -271,7 +271,16 @@ const treeSelectTheme = {
         },
       },
     },
+    TagIcon: {
+      normal: {
+        color: 'red',
+      },
+    },
   },
+};
+const switchIconNames = {
+  open: 'lugia-icon-logo_windows',
+  close: 'lugia-icon-logo_windows_o',
 };
 
 export default class DefaultTreeSelect extends React.Component<any, any> {
@@ -380,6 +389,8 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
             searchIcon="lugia-icon-financial_wifi"
             checkAllIcon="lugia-icon-financial_like_o"
             deselectionIcon="lugia-icon-financial_unlike_o"
+            switchIconNames={switchIconNames}
+            singleClearIcon="lugia-icon-reminder_close_square"
             canSearch
             canInput
             mutliple
