@@ -188,7 +188,7 @@
                 "props": [{ "name": "switchIconClass", "typeInTheme": "icon" }],
                 "description": {
                   "textPart": {
-                    "text": "图标",
+                    "text": "展开图标",
                     "desc": "下拉图标文本配置"
                   }
                 }
@@ -265,7 +265,7 @@
                 "props": [{ "name": "switchIconClass", "typeInTheme": "icon" }],
                 "description": {
                   "textPart": {
-                    "text": "图标",
+                    "text": "展开图标",
                     "desc": "下拉图标文本配置"
                   }
                 }
