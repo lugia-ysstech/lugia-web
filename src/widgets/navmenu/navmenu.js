@@ -290,17 +290,18 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getTabpanes = (tabsData: Object) => {
+    const { switchIconClass: { iconClass = 'lugia-icon-direction_down' } = {} } = this.props;
     const tabpanes = [];
     tabsData.forEach((item, index) => {
       const { title, value, disabled, icon } = item;
-      tabpanes.push(
+      const {} = tabpanes.push(
         <TabPane
           title={title}
           onMouseEnter={this.onTabsMouseEnter}
           value={value}
           disabled={disabled}
           icon={icon}
-          suffixIcon={this.isHasChildren(index) ? 'lugia-icon-direction_down' : null}
+          suffixIcon={this.isHasChildren(index) ? iconClass : null}
         />
       );
     });
