@@ -714,7 +714,7 @@
       },
       {
         "title": "分割线",
-        "iconClass": "VerticalDividingLine",
+        "iconClass": "Dividingline",
         "data": [
           {
             "name": "分割线",
