@@ -66,6 +66,7 @@ exports[`Panel Panel CSS 1`] = `
   border-style: solid;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  overflow: hidden;
   border-color: #d0d3da;
   border-width: 0 0 1px;
 }
