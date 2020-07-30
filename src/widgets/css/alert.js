@@ -138,7 +138,7 @@ export const Alert = CSSComponent({
       ['width'],
       ['height'],
       ['background'],
-      ['border', 'left'],
+      ['border'],
       ['borderRadius'],
       ['boxShadow'],
     ],
