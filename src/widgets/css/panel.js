@@ -277,6 +277,7 @@ export const Wrap = CSSComponent({
     background: transparent;
     border-style: solid;
     transition: all 0.3s;
+    overflow: hidden;
     ${getBorderColor}
   `,
   normal: {
