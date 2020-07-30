@@ -33,7 +33,7 @@
     },
     "src": {
       "type": "image",
-      "desc": "头像显示图片资源",
+      "desc": "头像显示图片资源"
     },
     "shape": {
       "type": "AvatarShape",
