@@ -49,7 +49,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c8 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   font-size: 1.4rem;
   white-space: nowrap;
   top: 0;
@@ -60,7 +59,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c17 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   font-size: 1.4rem;
   white-space: nowrap;
   top: 0;
@@ -71,7 +69,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c19 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   font-size: 1.4rem;
   white-space: nowrap;
   top: 0;
@@ -82,7 +79,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c27 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   font-size: 1.4rem;
   white-space: nowrap;
   top: 0;
@@ -93,7 +89,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c32 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   font-size: 1.4rem;
   white-space: nowrap;
   top: 0;
@@ -104,7 +99,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c35 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   font-size: 1.4rem;
   white-space: nowrap;
   top: 0;
@@ -115,7 +109,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c40 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   font-size: 1.4rem;
   white-space: nowrap;
   -webkit-transform: translateY(-50%);
@@ -129,7 +122,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c44 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   font-size: 1.4rem;
   white-space: nowrap;
   -webkit-transform: translateY(-50%);
@@ -143,7 +135,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c49 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   font-size: 1.4rem;
   white-space: nowrap;
   -webkit-transform: translateY(-50%);
@@ -157,7 +148,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c9 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
   white-space: nowrap;
@@ -170,7 +160,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c15 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
   white-space: normal;
@@ -183,7 +172,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c18 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
   white-space: nowrap;
@@ -196,7 +184,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c20 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
   white-space: nowrap;
@@ -209,7 +196,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c28 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
   white-space: nowrap;
@@ -222,7 +208,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c33 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
   white-space: nowrap;
@@ -235,7 +220,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c36 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
   white-space: nowrap;
@@ -248,7 +232,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c41 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
   white-space: nowrap;
@@ -261,7 +244,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c45 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
   white-space: nowrap;
@@ -274,7 +256,6 @@ exports[`stepsDemo Component JSON 1`] = `
 .c50 {
   position: absolute;
   display: block;
-  word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
   white-space: nowrap;
