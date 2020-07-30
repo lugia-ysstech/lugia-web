@@ -234,14 +234,15 @@ export default ThemeProvider(
       const disabledSelectedKeys = [];
       const validRecords = [];
       const disabledSelectedRecords = [];
-      const { rowKey: cusRowKey = 'key', selectOptions = {} } = this.props;
+      const { rowKey: cusRowKey = 'key', selectOptions = {}, data: propsData } = this.props;
       const {
         setCheckboxProps = (record: Object) => {
           return {};
         },
       } = selectOptions;
       const { selectRowKeys: stateSelectRowKeys, data = [] } = this.state;
-      data.forEach(record => {
+      const tableData = this.getTableData(propsData, data);
+      tableData.forEach(record => {
         const rowKey = record[cusRowKey];
         const select = stateSelectRowKeys.includes(rowKey);
         const checkboxProps = setCheckboxProps(record) || {};
@@ -304,6 +305,12 @@ export default ThemeProvider(
       this.setState({ data: sortData, sortOrder: newSortOrder });
       onChange && onChange({ column: columnData, filed: dataIndex, order: type, data: sortData });
     };
+    getTableData = (propsData, stateData) => {
+      const dataIsSame = isEqualArray(stateData, propsData);
+      if (!dataIsSame) this.sortState = '';
+      const tableData = dataIsSame ? stateData : propsData;
+      return tableData;
+    };
     render() {
       const {
         children,
@@ -330,9 +337,7 @@ export default ThemeProvider(
         scroll = {},
         data = [],
       } = this.state;
-      const dataIsSame = isEqualArray(data, propsData);
-      if (!dataIsSame) this.sortState = '';
-      const tableData = dataIsSame ? data : propsData;
+      const tableData = this.getTableData(propsData, data);
       const containerPartOfThemeProps = getPartOfThemeProps('Container', {
         props: { size },
       });

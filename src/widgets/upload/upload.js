@@ -67,6 +67,7 @@ type UploadProps = {
   userDefine?: any,
   isShowProgress?: boolean,
   getInputRef?: Function,
+  customUpload?: Function,
 };
 type StateProps = {
   defaultText?: string,
@@ -275,7 +276,15 @@ class Upload extends React.Component<UploadProps, StateProps> {
   };
 
   beforeUpload = (dataObject: Object, file: Object, hashMark: string) => {
-    const { beforeUpload } = this.props;
+    const { beforeUpload, customUpload } = this.props;
+    if (customUpload) {
+      customUpload(file, {
+        success: () => this.customUploadStatus('success', hashMark),
+        fail: () => this.customUploadStatus('fail', hashMark),
+        start: () => this.startRequest(dataObject, file, hashMark),
+      });
+      return;
+    }
     if (!beforeUpload) {
       this.startRequest(dataObject, file, hashMark);
     } else {
@@ -388,6 +397,24 @@ class Upload extends React.Component<UploadProps, StateProps> {
       }
     });
     return fileListDone;
+  };
+
+  customUploadStatus = (type: string, hashMark: string) => {
+    const { fileListDone } = this.state;
+    const doUpdateFieldList = (status: Array<Object>, classNameStatus: string) => {
+      const list = this.updateFieldList(fileListDone, hashMark, status);
+      this.setStateValue({ classNameStatus, fileListDone: list });
+    };
+    switch (type) {
+      case 'success':
+        doUpdateFieldList([{ target: 'status', value: 'done' }], 'done');
+        break;
+      case 'fail':
+        doUpdateFieldList([{ target: 'status', value: 'fail' }], 'fail');
+        break;
+      default:
+        return;
+    }
   };
 
   appendFileList = (fileListDone: Array<Object>, props: Object): Array<Object> => {

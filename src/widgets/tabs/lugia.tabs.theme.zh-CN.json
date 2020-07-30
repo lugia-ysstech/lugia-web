@@ -4,6 +4,10 @@
     "title": "标签页",
     "viewProps": [
       {
+        "name": "isShowArrowIcon",
+        "text": "翻页功能"
+      },
+      {
         "name": "tabPosition",
         "text": "页签位置"
       },
@@ -15,6 +19,7 @@
         "name": "showDeleteBtn",
         "text": "删除功能"
       },
+      { "name": "hideTabBar", "text": "隐藏页签" },
       {
         "name": "showDividerLine",
         "text": "显示分割线"
@@ -263,6 +268,10 @@
     "title": "卡片风格标签页",
     "viewProps": [
       {
+        "name": "isShowArrowIcon",
+        "text": "翻页功能"
+      },
+      {
         "name": "showAddBtn",
         "text": "新增功能"
       },
@@ -270,6 +279,7 @@
         "name": "showDeleteBtn",
         "text": "删除功能"
       },
+      { "name": "hideTabBar", "text": "隐藏页签" },
       {
         "name": "pagedType",
         "text": "翻页类型"
@@ -506,6 +516,10 @@
     "title": "窗口风格标签页",
     "viewProps": [
       {
+        "name": "isShowArrowIcon",
+        "text": "翻页功能"
+      },
+      {
         "name": "showAddBtn",
         "text": "新增功能"
       },
@@ -513,6 +527,7 @@
         "name": "showDeleteBtn",
         "text": "删除功能"
       },
+      { "name": "hideTabBar", "text": "隐藏页签" },
       {
         "name": "pagedType",
         "text": "翻页类型"

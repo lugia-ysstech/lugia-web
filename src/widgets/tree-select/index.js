@@ -68,8 +68,14 @@ type TreeSelectProps = {
   toggleIcon?: string,
   searchClearIcon?: string,
   searchAddIcon?: string,
+  resetIcon?: string,
+  searchIcon?: string,
+  checkAllIcon?: string,
+  deselectionIcon?: string,
   canClear?: boolean,
   isShowClearButton?: boolean,
+  switchIconNames?: Object,
+  singleClearIcon?: string,
 };
 type TreeSelectState = {
   open: boolean,
@@ -108,6 +114,15 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     isShowClearButton: true,
     pullIconClass: 'lugia-icon-direction_down',
     clearIconClass: 'lugia-icon-reminder_close',
+    resetIcon: 'lugia-icon-reminder_refresh',
+    searchIcon: 'lugia-icon-financial_search',
+    checkAllIcon: 'lugia-icon-financial_check_all',
+    deselectionIcon: 'lugia-icon-financial_deselection',
+    switchIconNames: {
+      open: 'lugia-icon-direction_caret_down',
+      close: 'lugia-icon-direction_caret_right',
+    },
+    singleClearIcon: 'lugia-icon-reminder_close_circle',
   };
 
   state: TreeSelectState;
@@ -284,6 +299,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       toggleIcon,
       searchClearIcon,
       searchAddIcon,
+      resetIcon,
+      searchIcon,
+      checkAllIcon,
+      deselectionIcon,
     } = this.props;
     const { onSelect, ...res } = this.props;
     const { current, start, treeFilter, value, displayValue, query, selectAll } = this.state;
@@ -304,6 +323,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const toggleIconTheme = getPartOfThemeHocProps('ToggleIcon');
     const resetIconTheme = getPartOfThemeHocProps('ResetIcon');
     const searchAddIconTheme = getPartOfThemeHocProps('SearchAddIcon');
+    const searchIconTheme = getPartOfThemeHocProps('SearchIcon');
+    const checkAllIconTheme = getPartOfThemeHocProps('CheckAllIcon');
+    const deselectionIconTheme = getPartOfThemeHocProps('DeselectionIcon');
 
     const tree = [
       data && data.length !== 0 ? (
@@ -313,6 +335,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           toggleIconTheme={toggleIconTheme}
           resetIconTheme={resetIconTheme}
           searchAddIconTheme={searchAddIconTheme}
+          searchIconTheme={searchIconTheme}
+          checkAllIconTheme={checkAllIconTheme}
+          deselectionIconTheme={deselectionIconTheme}
           query={query}
           onQueryInputChange={this.onQueryInputChange}
           onQueryInputKeyDown={this.onQueryInputKeyDown}
@@ -326,6 +351,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           toggleIcon={toggleIcon}
           searchClearIcon={searchClearIcon}
           searchAddIcon={searchAddIcon}
+          resetIcon={resetIcon}
+          searchIcon={searchIcon}
+          checkAllIcon={checkAllIcon}
+          deselectionIcon={deselectionIcon}
         />
       ) : null,
       <Tree
@@ -373,6 +402,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       createPortal,
       pullIconClass,
       clearIconClass,
+      singleClearIcon,
       isShowClearButton,
       canClear,
       onFocus,
@@ -426,6 +456,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
             isShowClearButton={isShowClearButton}
             onFocus={onFocus}
             onBlur={onBlur}
+            singleClearIcon={singleClearIcon}
           />
         </Trigger>
       </Theme>

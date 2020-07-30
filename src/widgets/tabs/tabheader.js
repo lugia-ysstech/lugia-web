@@ -282,9 +282,9 @@ const HTabsOutContainer = CSSComponent({
   css: css`
     position: relative;
     z-index: 99;
-    overflow: hidden;
     display: flex;
     align-items: center;
+    clear: both;
   `,
 });
 

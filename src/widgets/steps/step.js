@@ -107,7 +107,6 @@ const BaseText = CSSComponent({
   css: css`
     position: absolute;
     display: block;
-    word-break: keep-all;
   `,
 });
 
@@ -276,7 +275,7 @@ const FlatLine = CSSComponent({
   tag: 'div',
   className: 'StepFlatLine',
   normal: {
-    selectNames: [['width'], ['height'], ['boxShadow'], ['border']],
+    selectNames: [['width'], ['height'], ['boxShadow'], ['border'], ['background']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { height, width, boxShadow } = themeMeta;
@@ -295,6 +294,7 @@ const FlatLine = CSSComponent({
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
+      const { background: { color } = {} } = themeMeta;
 
       const getPosition = (type: 'after' | 'before') => {
         const before = type === 'before';
@@ -312,7 +312,7 @@ const FlatLine = CSSComponent({
         position: absolute;
         width: ${px2remcss(4)};
         height: ${px2remcss(4)};
-        background:white`;
+        background:${color || 'white'}`;
       return `
        &::before {
         ${commonCSS}
@@ -335,7 +335,7 @@ const NormalFlatLine = CSSComponent({
   tag: 'div',
   className: 'StepNormalFlatLine',
   normal: {
-    selectNames: [['width'], ['height'], ['background'], ['border']],
+    selectNames: [['width'], ['height'], ['background'], ['border'], ['boxShadow']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { height, width } = themeMeta;
@@ -926,7 +926,7 @@ class Step extends React.Component<StepProps, StepState> {
 
     const finalThemeProps = deepMerge(resultTheme, theThemeProps);
     if (stepStatus === 'wait' || stepStatus === 'next') {
-      return <FlatLine themeProps={finalThemeProps} />;
+      return <FlatLine themeProps={theThemeProps} />;
     }
     return <NormalFlatLine themeProps={finalThemeProps} />;
   }

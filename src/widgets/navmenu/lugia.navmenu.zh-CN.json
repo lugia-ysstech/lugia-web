@@ -88,6 +88,7 @@
         { "key": "value", "title": "value值", "type": "string" },
         { "key": "text", "title": "文本值", "type": "string" },
         { "key": "des", "title": "辅助文本", "type": "string" },
+        { "key": "icon", "title": "前缀图标", "type": "icon" },
         {
           "key": "icons",
           "title": "前/后缀图标",
@@ -161,6 +162,11 @@
       "type": "string",
       "desc": "自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ",
       "propsDefaultValue": "|"
+    },
+    "divided": {
+      "type": "boolean",
+      "desc": "项之间是否展示分割线",
+      "propsDefaultValue": false
     }
   },
   "events": {

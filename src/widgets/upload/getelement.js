@@ -422,12 +422,14 @@ const Triangle = CSSComponent({
 });
 
 const pictureStyle = {
-  default: { color: darkGreyColor, borderColorStyle: borderColor },
   fail: { color: dangerColor, borderColorStyle: dangerColor },
   loading: { color: themeColor, borderColorStyle: themeColor },
   done: { color: darkGreyColor, borderColorStyle: mediumGreyColor },
 };
 const getStatusStyle = status => {
+  if (status === 'default') {
+    return {};
+  }
   return {
     border: getBorder({ width: 1, style: 'dashed', color: pictureStyle[status].borderColorStyle }),
     color: pictureStyle[status].color,
@@ -454,6 +456,8 @@ const PictureView = CSSComponent({
         width: 80,
         height: 80,
         borderRadius: getBorderRadius(borderRadiusValue),
+        color: darkGreyColor,
+        border: getBorder({ width: 1, style: 'dashed', color: borderColor }),
       };
     },
   },
@@ -512,11 +516,12 @@ const AreaView = CSSComponent({
       width: '100%',
       height: 150,
       fontSize: xxlFontSize,
-      color: dangerColor,
+      color: darkGreyColor,
     },
     getThemeMeta(themeMeta, themeProps) {
       return {
         borderRadius: getBorderRadius(borderRadiusValue),
+        border: getBorder({ width: 1, style: 'dashed', color: borderColor }),
       };
     },
   },
@@ -654,20 +659,28 @@ export const getIcon = (props: Object) => {
 };
 
 export const getDefaultIconName = (param: Object, defaultClass?: Object): Object => {
-  const { icon, successIcon, failIcon } = param;
+  const {
+    icon,
+    successIcon,
+    failIcon,
+    loadingIcon,
+    liVideoIcon,
+    liFileIcon,
+    liPictureIcon,
+    liDeleteIcon,
+  } = param;
   const { defaultClassName } = defaultClass || {};
   return {
     default: icon || defaultClassName || 'lugia-icon-financial_upload',
-    loading: 'lugia-icon-financial_loading_o',
+    loading: loadingIcon || 'lugia-icon-financial_loading_o',
     done: 'lugia-icon-financial_upload',
-    video: 'lugia-icon-financial_video_camera',
-    file: 'lugia-icon-financial_folder',
-    picture: 'lugia-icon-financial_pic',
+    video: liVideoIcon || 'lugia-icon-financial_video_camera',
+    file: liFileIcon || 'lugia-icon-financial_folder',
+    picture: liPictureIcon || 'lugia-icon-financial_pic',
     'li-done': successIcon || 'lugia-icon-reminder_check_circle',
-    'li-default': 'lugia-icon-financial_upload',
+    'li-default': icon || defaultClassName || 'lugia-icon-financial_upload',
     'li-fail': failIcon || 'lugia-icon-reminder_close_circle',
-    'li-delete': 'lugia-icon-reminder_close',
-    'li-loading': 'lugia-icon-financial_loading_o',
+    'li-delete': liDeleteIcon || 'lugia-icon-reminder_close',
   };
 };
 
@@ -678,7 +691,11 @@ export const getIconClassName = (props: Object, status: string, defaultClass: Ob
 };
 
 export const getIconTheme = (props: Object, status: string): Object | string => {
-  let defaultTheme = {};
+  const { areaType } = props;
+  const areaTypeColor = areaType === 'default' ? blackColor : darkGreyColor;
+  let defaultTheme = {
+    color: areaTypeColor,
+  };
   let themeName = 'UploadIcon';
   switch (status) {
     case 'li-done':
@@ -694,6 +711,24 @@ export const getIconTheme = (props: Object, status: string): Object | string => 
         color: dangerColor,
         fontSize: sFontSize,
       };
+      break;
+    case 'loading':
+      themeName = 'UploadLoadingIcon';
+      break;
+    case 'li-default':
+      themeName = 'UploadIcon';
+      break;
+    case 'video':
+      themeName = 'LiVideoIcon';
+      break;
+    case 'file':
+      themeName = 'LiFileIcon';
+      break;
+    case 'picture':
+      themeName = 'LiPictureIcon';
+      break;
+    case 'li-delete':
+      themeName = 'LiDeleteIcon';
       break;
     default:
       break;
@@ -733,6 +768,7 @@ export const getIconTheme = (props: Object, status: string): Object | string => 
         },
         disabled: {
           cursor: 'not-allowed',
+          color: disableTextColor,
         },
       },
     },
@@ -789,7 +825,41 @@ const getDefaultSize = (size: string) => {
       };
   }
 };
+const getStatusConfig = (props, classNameStatus, areaType) => {
+  const uploadAfter =
+    classNameStatus === 'fail'
+      ? 'UploadFail'
+      : classNameStatus === 'done'
+      ? 'UploadDone'
+      : classNameStatus === 'loading'
+      ? 'UploadLoading'
+      : '';
+  let diffStatus = {};
+  switch (areaType) {
+    case 'default':
+    case 'both':
+      diffStatus = {
+        themeConfig: {
+          normal: { ...getDefaultStyle(classNameStatus) },
+          hover: { ...getDefaultStyle(classNameStatus) },
+        },
+      };
 
+      break;
+    case 'picture':
+    case 'area':
+      diffStatus = {
+        themeConfig: {
+          normal: { ...getStatusStyle(classNameStatus) },
+          hover: { ...getStatusStyle(classNameStatus) },
+        },
+      };
+      break;
+    default:
+      break;
+  }
+  return deepMerge(diffStatus, props.getPartOfThemeProps(uploadAfter));
+};
 const getFileList = (
   data: Array<Object>,
   close: Function,
@@ -807,11 +877,13 @@ const getFileList = (
         const liStatus = getLiStatus(status);
         const iconClassName = getIconClassName(props, liStatus);
         const defaultIconProps = { props, status };
+        const listIconType = getListIconType(item.name);
         const fileTypeIconProps = {
           ...defaultIconProps,
-          iconClassName: getIconClassName(props, getListIconType(item.name)),
+          iconClassName: getIconClassName(props, listIconType),
           info: item,
           className: 'icon-mark ccc',
+          status: listIconType,
         };
         const iconProps = {
           ...defaultIconProps,
@@ -824,6 +896,7 @@ const getFileList = (
           iconClassName: getIconClassName(props, 'li-delete'),
           info: { doFunction: close, index, item },
           className: 'delete right',
+          status: 'li-delete',
         };
         return (
           <Li status={item.status} themeProps={liThemeProps}>
@@ -999,15 +1072,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
     let children;
     const normalButtonTheme =
       areaType === 'both' ? bothButtonTheme : areaType === 'button' ? buttonHeightTheme : '';
-    const uploadAfter =
-      classNameStatus === 'fail'
-        ? 'UploadFail'
-        : classNameStatus === 'done'
-        ? 'UploadDone'
-        : classNameStatus === 'loading'
-        ? 'UploadLoading'
-        : '';
-    const uploadStatusTheme = props.getPartOfThemeProps(uploadAfter);
+    const uploadStatusTheme = getStatusConfig(props, classNameStatus, areaType);
+
     const iconClassName = getIconClassName(props, classNameStatus);
     const defaultIconProps = { props, status: classNameStatus };
     const iconProps = { ...defaultIconProps, iconClassName };
@@ -1019,10 +1085,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
           normal: {
             height: 30,
             borderRadius: getBorderRadius(borderRadiusValue),
-            ...getDefaultStyle(classNameStatus),
-          },
-          hover: {
-            ...getDefaultStyle(classNameStatus),
           },
         },
       };
@@ -1064,10 +1126,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
             normal: {
               height: '100%',
               borderRadius: getBorderRadius(borderRadiusValue, ['tl', 'bl']),
-              ...getDefaultStyle(classNameStatus),
-            },
-            hover: {
-              ...getDefaultStyle(classNameStatus),
             },
           },
         },
@@ -1210,26 +1268,18 @@ class GetElement extends React.Component<DefProps, StateProps> {
         children = React.cloneElement(userDefine, { disabled, onClick: handleClickToUpload });
       }
     }
-    const borderFailTheme =
-      classNameStatus === 'fail'
-        ? { border: getBorder({ width: 1, style: 'dashed', color: dangerColor }) }
-        : {};
 
     if (areaType === 'picture') {
-      const { size, disabled, fileListDone, multiple, previewUrl } = props;
-      const { handleClickToUpload, handleClickToDelete, dropArea } = this;
+      const { size, disabled, multiple, previewUrl } = props;
+      const { handleClickToUpload, dropArea } = this;
       const pictureSizeFail = classNameStatus === 'fail' ? { fontSize: descriptionFontSize } : {};
       const pictureThemeProps = this.props.getPartOfThemeProps('Container');
       const pictureTheme = deepMerge(
         {
           themeConfig: {
             normal: {
-              ...getStatusStyle(classNameStatus),
               ...getDefaultSize(size),
               ...pictureSizeFail,
-            },
-            hover: {
-              ...borderFailTheme,
             },
           },
         },
@@ -1275,25 +1325,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
         },
         uploadAreaText
       );
-      const areaCloudFail = classNameStatus === 'fail' ? { color: darkGreyColor } : {};
+      const areaTextFail = classNameStatus === 'fail' ? { fontSize: sectionFontSize } : {};
       const areaTheme = deepMerge(
-        {
-          themeConfig: {
-            normal: {
-              ...getStatusStyle(classNameStatus),
-              ...areaCloudFail,
-            },
-            hover: {
-              ...borderFailTheme,
-            },
-          },
-        },
-        areaThemeProps,
-        uploadStatusTheme
-      );
-      const areaTextFail =
-        classNameStatus === 'fail' ? { fontSize: sectionFontSize, color: dangerColor } : {};
-      const areaTextStatusTheme = deepMerge(
         {
           themeConfig: {
             normal: {
@@ -1301,7 +1334,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
             },
           },
         },
-        areaThemeProps
+        areaThemeProps,
+        uploadStatusTheme
       );
       const areaIconProps = {
         ...defaultIconProps,
@@ -1324,13 +1358,13 @@ class GetElement extends React.Component<DefProps, StateProps> {
         >
           {getIconByType(areaIconProps)}
           {classNameStatus === 'loading' ? (
-            <AreaText themeProps={areaTextStatusTheme}>{loadingTips}</AreaText>
+            <AreaText themeProps={areaTheme}>{loadingTips}</AreaText>
           ) : classNameStatus === 'fail' ? (
-            <AreaText themeProps={areaTextStatusTheme} disabled={disabled}>
+            <AreaText themeProps={areaTheme} disabled={disabled}>
               {failTips}
             </AreaText>
           ) : (
-            <AreaText themeProps={areaTextStatusTheme} disabled={disabled}>
+            <AreaText themeProps={areaTheme} disabled={disabled}>
               {uploadTips},或
               <AreaTextBlue themeProps={areaTextBlue} disabled={disabled}>
                 {uploadText}

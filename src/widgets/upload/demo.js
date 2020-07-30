@@ -267,6 +267,17 @@ class UploadDemo extends React.Component<any, any> {
       showFileList: true,
       limit: 3,
     };
+    const customUploadProps = {
+      areaType: 'custom',
+      inputId: 'upload1',
+      url: 'http://localhost:7001/upload',
+      userDefine: <div>点这里进行上传</div>,
+      showFileList: true,
+      customUpload: (file, func) => {
+        console.log('file,func', file, func);
+        func.start();
+      },
+    };
     const configButton = {
       [Widget.Upload]: {
         Container: {
@@ -320,6 +331,7 @@ class UploadDemo extends React.Component<any, any> {
           normal: {
             width: 900,
             height: 80,
+            color: 'red',
             borderRadius: getBorderRadius(4),
             border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
@@ -373,6 +385,7 @@ class UploadDemo extends React.Component<any, any> {
           normal: {
             width: 346,
             height: 150,
+            color: 'orange',
             borderRadius: getBorderRadius(4),
             border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
@@ -529,7 +542,7 @@ class UploadDemo extends React.Component<any, any> {
             width: 400,
             height: 180,
             fontSize: 15,
-            color: 'orange',
+            color: 'red',
             border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
         },
@@ -545,23 +558,69 @@ class UploadDemo extends React.Component<any, any> {
         },
       },
     };
-
+    const Iconconfig = {
+      [Widget.Upload]: {
+        Container: {
+          normal: {
+            color: 'orange',
+          },
+        },
+        UploadIcon: {
+          normal: {
+            color: 'orange',
+          },
+        },
+        LiFileIcon: {
+          normal: {
+            color: 'orange',
+          },
+        },
+        LiVideoIcon: {
+          normal: {
+            color: 'orange',
+          },
+        },
+        LiPictureIcon: {
+          normal: {
+            color: 'green',
+          },
+        },
+        LiDeleteIcon: {
+          normal: {
+            color: 'orange',
+          },
+        },
+        UploadListFailedIcon: {
+          normal: {
+            color: 'red',
+          },
+        },
+      },
+    };
     const defaultIconProps = {
       url: 'http://localhost:7001/upload',
       icon: 'lugia-icon-financial_service',
       successIcon: 'lugia-icon-financial_notification',
       failIcon: 'lugia-icon-financial_meh',
+      liDeleteIcon: 'lugia-icon-reminder_close_circle_o',
+      showFileList: true,
     };
+
     const typeMap = ['default', 'button', 'both', 'picture', 'area'];
     return (
       <div>
+        <Title>-------------customUploadProps</Title>
+        <Upload {...customUploadProps} />
+        <Title>-------------</Title>
         <Title>---------------配置Icon 的上传</Title>
         {typeMap.map(item => {
           return (
-            <div>
-              <Title>{item}： </Title>
-              <Upload areaType={item} {...defaultIconProps} />
-            </div>
+            <Theme config={Iconconfig}>
+              <div>
+                <Title>{item}： </Title>
+                <Upload areaType={item} {...defaultIconProps} />
+              </div>
+            </Theme>
           );
         })}
         <Title>--------------- END ---------------</Title>

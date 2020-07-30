@@ -402,27 +402,27 @@
             "FinishStepFlatLine": {
               "name": "已完成状态步骤间连接线",
               "desc": "已完成状态步骤间连接线的配置",
-              "normal": [["width"], ["height"], ["boxShadow"], ["border"]]
+              "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
             },
             "ProcessStepFlatLine": {
               "name": "进行中状态步骤间连接线",
               "desc": "进行中状态步骤间连接线的配置",
-              "normal": [["width"], ["height"], ["boxShadow"], ["border"]]
+              "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
             },
             "NextStepFlatLine": {
               "name": "下一步状态步骤间连接线",
               "desc": "下一步状态步骤间连接线的配置",
-              "normal": [["width"], ["height"], ["boxShadow"], ["border"]]
+              "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
             },
             "WaitStepFlatLine": {
               "name": "等待中状态步骤间连接线",
               "desc": "等待中状态步骤间连接线的配置",
-              "normal": [["width"], ["height"], ["boxShadow"], ["border"]]
+              "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
             },
             "ErrorStepFlatLine": {
               "name": "异常状态步骤间连接线",
               "desc": "异常状态步骤间连接线的配置",
-              "normal": [["width"], ["height"], ["boxShadow"], ["border"]]
+              "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
             },
 
             "FinishStepInnerContainer": {

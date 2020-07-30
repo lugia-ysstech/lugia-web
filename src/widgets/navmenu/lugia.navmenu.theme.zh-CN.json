@@ -533,6 +533,7 @@
     "viewProps": [
       { "name": "inlineExpandAll", "text": "是否展开子元素" },
       { "name": "isShowAuxiliaryText", "text": "显示辅助文本" },
+      { "name": "divided", "text": "是否展示分割线" },
       { "name": "themeStyle", "text": "主题" },
       { "name": "data", "text": "数据编辑" }
     ],
@@ -567,18 +568,28 @@
             "description": {
               "appearancePart": {
                 "text": "选项背景",
-                "desc": "默认项外观配置区"
-              },
-              "textPart": {
-                "text": "标题文本",
-                "desc": "默认项文本配置区"
+                "desc": "项的外盒外观配置区"
               },
               "spacingPart": {
                 "text": "padding/margin",
-                "desc": "默认项内外边距配置区"
+                "desc": "项的外盒内外边距配置区"
+              },
+              "textPart": {
+                "hidden": true
               }
             }
           },
+          {
+            "name": "标题文本",
+            "path": ["Menu", "MenuItem", "Text"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本配置"
+              }
+            }
+          },
+
           {
             "name": "前缀图标",
             "path": ["Menu", "MenuItem", "PrefixIcon"],
@@ -637,11 +648,10 @@
             "description": {
               "appearancePart": {
                 "text": "选项背景",
-                "desc": "选中项外观配置区"
+                "desc": "文本配置区块的显示文本"
               },
               "textPart": {
-                "text": "标题文本",
-                "desc": "选中项文本配置区"
+                "hidden": true
               },
               "spacingPart": {
                 "text": "padding/margin",
@@ -650,8 +660,17 @@
             }
           },
           {
+            "name": "标题文本",
+            "path": ["Menu", "MenuItem", "CheckedText"],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本配置"
+              }
+            }
+          },
+          {
             "name": "前缀图标",
-            "path": ["Menu", "MenuItem", "SelectedPrefixIcon"],
             "description": {
               "textPart": {
                 "text": "前缀图标",
@@ -990,12 +1009,24 @@
             }
           },
           {
-            "name": "后缀图标",
+            "name": "展开图标",
             "path": ["Tabs", "TabHeader", "SuffixIcon"],
+            "props": [
+              {
+                "name": "switchIconClass",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "spacingPart": {
+                "hidden": true
+              },
               "textPart": {
-                "text": "后缀图标",
-                "desc": "后缀图标文本配置区"
+                "text": "展开图标",
+                "desc": "展开图标文本配置区"
               }
             }
           }
@@ -1040,40 +1071,14 @@
             }
           },
           {
-            "name": "后缀图标",
-            "path": ["Tabs", "TabHeader", "SelectSuffixIcon"],
-            "description": {
-              "appearancePart": {
-                "hidden": true
-              },
-              "spacingPart": {
-                "hidden": true
-              },
-              "textPart": {
-                "text": "后缀图标",
-                "desc": "后缀图标文本配置区"
-              }
-            }
-          },
-          {
-            "name": "选中页签底部标识线",
-            "path": ["Tabs", "TabHeader", "SelectLine"],
-            "description": {
-              "appearancePart": {
-                "text": "选中线",
-                "desc": "选中线外观配置区"
-              }
-            }
-          }
-        ]
-      },
-      {
-        "title": "展开图标",
-        "iconClass": "expandIcon",
-        "data": [
-          {
             "name": "展开图标",
             "path": ["Tabs", "TabHeader", "SelectSuffixIcon"],
+            "props": [
+              {
+                "name": "switchIconClass",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "appearancePart": {
                 "hidden": true
@@ -1084,6 +1089,16 @@
               "textPart": {
                 "text": "展开图标",
                 "desc": "展开图标文本配置区"
+              }
+            }
+          },
+          {
+            "name": "选中页签底部标识线",
+            "path": ["Tabs", "TabHeader", "SelectLine"],
+            "description": {
+              "appearancePart": {
+                "text": "选中线",
+                "desc": "选中线外观配置区"
               }
             }
           }

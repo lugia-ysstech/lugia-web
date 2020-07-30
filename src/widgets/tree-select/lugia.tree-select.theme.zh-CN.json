@@ -316,14 +316,14 @@
         "children": [
           {
             "title": "主体",
-            "iconClass": "input",
+            "iconClass": "search",
             "data": [
               {
-                "name": "选择框",
+                "name": "搜索框",
                 "path": ["QueryInput", "Container"],
                 "description": {
                   "textPart": {
-                    "text": "选择文本",
+                    "text": "输入文本",
                     "desc": "文本配置区块的显示文本"
                   }
                 }
@@ -333,36 +333,58 @@
                 "path": ["QueryInput", "Placeholder"],
                 "description": {
                   "textPart": {
-                    "text": "提示文本",
+                    "text": "默认文本",
                     "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "清除图标",
+                "path": ["QueryInput", "ClearButton"],
+                "props": [{ "name": "searchClearIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "清除图标",
+                    "desc": "清除图标"
                   }
                 }
               }
             ]
           },
           {
-            "title": "前/后缀图标",
-            "iconClass": "iconsearch",
+            "title": "功能图标",
+            "iconClass": "timeLineGhost",
             "data": [
               {
-                "name": "前缀图标",
+                "name": "切换图标",
                 "path": ["ToggleIcon"],
                 "props": [{ "name": "toggleIcon", "typeInTheme": "icon" }],
                 "description": {
                   "textPart": {
-                    "text": "前缀图标",
-                    "desc": "前缀图标"
+                    "text": "切换图标",
+                    "desc": "切换图标"
                   }
                 }
               },
               {
-                "name": "后缀图标",
-                "path": ["SearchAddIcon"],
-                "props": [{ "name": "searchAddIcon", "typeInTheme": "icon" }],
+                "name": "重置图标",
+                "path": ["ResetIcon"],
+                "props": [{ "name": "resetIcon", "typeInTheme": "icon" }],
                 "description": {
                   "textPart": {
-                    "text": "后缀图标",
-                    "desc": "后缀图标"
+                    "text": "重置图标",
+                    "desc": "重置图标"
+                  }
+                }
+              },
+              {
+                "name": "搜索图标",
+                "path": ["SearchIcon"],
+                "props": [{ "name": "searchIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "搜索图标",
+                    "desc": "搜索图标"
                   }
                 }
               }
@@ -536,6 +558,7 @@
           {
             "name": "标签删除按钮",
             "path": ["TagIcon"],
+            "props": [{ "name": "singleClearIcon", "typeInTheme": "icon" }],
             "description": {
               "appearancePart": {
                 "hidden": true
@@ -845,14 +868,14 @@
         "children": [
           {
             "title": "主体",
-            "iconClass": "input",
+            "iconClass": "search",
             "data": [
               {
-                "name": "选择框",
+                "name": "搜索框",
                 "path": ["QueryInput", "Container"],
                 "description": {
                   "textPart": {
-                    "text": "选择文本",
+                    "text": "输入文本",
                     "desc": "文本配置区块的显示文本"
                   }
                 }
@@ -862,36 +885,91 @@
                 "path": ["QueryInput", "Placeholder"],
                 "description": {
                   "textPart": {
-                    "text": "提示文本",
+                    "text": "默认文本",
                     "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "清除图标",
+                "path": ["QueryInput", "ClearButton"],
+                "props": [{ "name": "searchClearIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "清除图标",
+                    "desc": "清除图标"
                   }
                 }
               }
             ]
           },
           {
-            "title": "前/后缀图标",
-            "iconClass": "iconsearch",
+            "title": "功能图标",
+            "iconClass": "timeLineGhost",
             "data": [
               {
-                "name": "前缀图标",
+                "name": "切换图标",
                 "path": ["ToggleIcon"],
                 "props": [{ "name": "toggleIcon", "typeInTheme": "icon" }],
                 "description": {
                   "textPart": {
-                    "text": "前缀图标",
-                    "desc": "前缀图标"
+                    "text": "切换图标",
+                    "desc": "切换图标"
                   }
                 }
               },
               {
-                "name": "后缀图标",
+                "name": "添加图标",
                 "path": ["SearchAddIcon"],
                 "props": [{ "name": "searchAddIcon", "typeInTheme": "icon" }],
                 "description": {
                   "textPart": {
-                    "text": "后缀图标",
-                    "desc": "后缀图标"
+                    "text": "添加图标",
+                    "desc": "添加图标"
+                  }
+                }
+              },
+              {
+                "name": "全选图标",
+                "path": ["CheckAllIcon"],
+                "props": [{ "name": "checkAllIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "全选图标",
+                    "desc": "全选图标"
+                  }
+                }
+              },
+              {
+                "name": "取消全选图标",
+                "path": ["DeselectionIcon"],
+                "props": [{ "name": "deselectionIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "取消全选图标",
+                    "desc": "取消全选图标"
+                  }
+                }
+              },
+              {
+                "name": "重置图标",
+                "path": ["ResetIcon"],
+                "props": [{ "name": "resetIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "重置图标",
+                    "desc": "重置图标"
+                  }
+                }
+              },
+              {
+                "name": "搜索图标",
+                "path": ["SearchIcon"],
+                "props": [{ "name": "searchIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "搜索图标",
+                    "desc": "搜索图标"
                   }
                 }
               }

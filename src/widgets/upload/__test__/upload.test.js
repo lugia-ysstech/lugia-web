@@ -551,7 +551,6 @@ describe('Upload Test', () => {
       exception: 'lugia-icon-financial_statistics',
     },
     { props: { param: {} }, status: 'li-delete', exception: 'lugia-icon-reminder_close' },
-    { props: { param: {} }, status: 'li-loading', exception: 'lugia-icon-financial_loading_o' },
   ];
 
   iconNameMap.forEach((item, index) => {
@@ -587,8 +586,26 @@ describe('Upload Test', () => {
     },
     { props: { param: {} }, status: 'done', exception: 'lugia-icon-financial_upload ' },
     { props: { param: {} }, status: 'video', exception: 'lugia-icon-financial_video_camera ' },
+    {
+      props: { param: { liVideoIcon: 'lugia-icon-financial_heart' } },
+      status: 'video',
+      exception: 'lugia-icon-financial_heart ',
+    },
+
     { props: { param: {} }, status: 'file', exception: 'lugia-icon-financial_folder ' },
+    {
+      props: { param: { liFileIcon: 'lugia-icon-financial_heart' } },
+      status: 'file',
+      exception: 'lugia-icon-financial_heart ',
+    },
+
     { props: { param: {} }, status: 'picture', exception: 'lugia-icon-financial_pic ' },
+    {
+      props: { param: { liPictureIcon: 'lugia-icon-financial_heart' } },
+      status: 'picture',
+      exception: 'lugia-icon-financial_heart ',
+    },
+
     { props: { param: {} }, status: 'li-done', exception: 'lugia-icon-reminder_check_circle ' },
     {
       props: { param: { successIcon: 'lugia-icon-financial_heart' } },
@@ -596,6 +613,18 @@ describe('Upload Test', () => {
       exception: 'lugia-icon-financial_heart ',
     },
     { props: { param: {} }, status: 'li-default', exception: 'lugia-icon-financial_upload ' },
+    {
+      props: { param: {}, defaultClass: { defaultClassName: 'lugia-icon-financial_like' } },
+      status: 'li-default',
+      exception: 'lugia-icon-financial_like ',
+    },
+    {
+      props: { param: { icon: 'lugia-icon-financial_heart' } },
+      defaultClass: { defaultClassName: 'lugia-icon-financial_upload' },
+      status: 'li-default',
+      exception: 'lugia-icon-financial_heart ',
+    },
+
     { props: { param: {} }, status: 'li-fail', exception: 'lugia-icon-reminder_close_circle ' },
     {
       props: { param: { failIcon: 'lugia-icon-financial_statistics' } },
@@ -603,7 +632,11 @@ describe('Upload Test', () => {
       exception: 'lugia-icon-financial_statistics ',
     },
     { props: { param: {} }, status: 'li-delete', exception: 'lugia-icon-reminder_close ' },
-    { props: { param: {} }, status: 'li-loading', exception: 'lugia-icon-financial_loading_o ' },
+    {
+      props: { param: { liDeleteIcon: 'lugia-icon-reminder_close_circle_o' } },
+      status: 'li-delete',
+      exception: 'lugia-icon-reminder_close_circle_o ',
+    },
   ];
   iconClassNameMap.forEach((item, index) => {
     const {
