@@ -1980,5 +1980,56 @@ exports[`Alert css 1`] = `
       确定
     </a>
   </div>
+  <div
+    className="c1"
+    height={null}
+    style={
+      Object {
+        "backgroundColor": "rgba(77,99,255,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderLeftColor": "red",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.2rem",
+        "borderTopColor": "red",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.2rem",
+        "paddingBottom": "1.2rem",
+        "paddingLeft": "0rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1.2rem",
+      }
+    }
+    type="info"
+  >
+    <div
+      className="c2"
+    >
+      <span
+        className="c3"
+        style={
+          Object {
+            "color": "#646A6E",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        Alert-info
+      </span>
+    </div>
+    <span
+      className="c4"
+      style={
+        Object {
+          "paddingBottom": "0rem",
+          "paddingLeft": "0.6rem",
+          "paddingRight": "0rem",
+          "paddingTop": "0rem",
+        }
+      }
+    />
+  </div>
 </div>
 `;
