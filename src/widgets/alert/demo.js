@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Alert from './alert';
 import Widget from '../consts/index';
 import Theme from '../theme';
+import { getBorder } from '@lugia/theme-utils';
 
 const Demo = styled.div`
   margin: 50px;
@@ -71,6 +72,18 @@ export default class AlertDemo extends React.Component<any, any> {
           normal: {
             color: 'green',
             fontSize: 30,
+          },
+        },
+      },
+    };
+    const borderTheme = {
+      [Widget.Alert]: {
+        Container: {
+          normal: {
+            border: getBorder(
+              { width: 2, color: 'red', style: 'solid' },
+              { directions: ['l', 't'] }
+            ),
           },
         },
       },
@@ -151,6 +164,10 @@ export default class AlertDemo extends React.Component<any, any> {
         </Theme>
         <Theme config={view}>
           <Alert type="error" message="Alert-error" closable closeText="确定" />
+        </Theme>
+
+        <Theme config={borderTheme}>
+          <Alert message="Alert-info" />
         </Theme>
       </Demo>
     );
