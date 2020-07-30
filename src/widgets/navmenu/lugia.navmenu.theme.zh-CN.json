@@ -533,9 +533,9 @@
     "viewProps": [
       { "name": "inlineExpandAll", "text": "是否展开子元素" },
       { "name": "isShowAuxiliaryText", "text": "显示辅助文本" },
+      { "name": "divided", "text": "是否展示分割线" },
       { "name": "themeStyle", "text": "主题" },
-      { "name": "data", "text": "数据编辑" },
-      { "name": "divided", "text": "是否展示分割线" }
+      { "name": "data", "text": "数据编辑" }
     ],
     "data": [
       {
