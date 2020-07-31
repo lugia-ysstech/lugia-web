@@ -175,6 +175,7 @@ const ChildrenContainer: Object = CSSComponent({
   },
   css: css`
     display: inline-block;
+    height: 100%;
   `,
 });
 
