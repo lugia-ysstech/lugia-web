@@ -19,12 +19,19 @@ export default class PaginationDemo extends React.Component<any, any> {
   constructor() {
     super();
   }
+  state = {
+    quickJumperValue: 1,
+  };
   onShowSizeChange = (current: number, pageSize: number) => {
     console.log(current, pageSize);
   };
   onChange(pageNumber: number, pageSize: number) {
-    console.log('Page: ', pageNumber);
+    console.log('pageNumber: ', pageNumber);
   }
+  onQuickJumperInputChange = obj => {
+    const { newValue } = obj;
+    this.setState({ quickJumperValue: newValue });
+  };
 
   render() {
     return (
@@ -110,6 +117,14 @@ export default class PaginationDemo extends React.Component<any, any> {
         <Pagination simple defaultCurrent={2} total={500} />
         <Title>单页 不显示翻页箭头。</Title>
         <Pagination hideOnSinglePage defaultCurrent={2} total={200} />
+        <Title> manualQuickJumper true 手动控制分页跳转 由 quickJumperValue 受限控制</Title>
+        <Pagination
+          total={500}
+          blockList={['Total', 'Page', 'PageInput', 'PageSize']}
+          manualQuickJumper
+          quickJumperValue={this.state.quickJumperValue}
+          onQuickJumperInputChange={this.onQuickJumperInputChange}
+        />
       </div>
     );
   }
