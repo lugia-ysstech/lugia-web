@@ -1180,9 +1180,7 @@ export default [
           title: '圆形元素',
           desc: '圆形元素',
           props: { shape: 'circle' },
-          defaultTheme: {
-            Container: { normal: { width: 32, height: 32, background: { color: '#4d63ff' } } },
-          },
+          defaultTheme: { Container: { normal: { width: 32, height: 32 } } },
           theme: {
             Container: {
               name: '配置圆形',
@@ -1222,9 +1220,7 @@ export default [
           disabled: [],
         },
       },
-      defaultTheme: {
-        Container: { normal: { width: 32, height: 32, background: { color: '#4d63ff' } } },
-      },
+      defaultTheme: { Container: { normal: { width: 32, height: 32 } } },
       childrenWidget: [],
     },
     target: BasicElements,
@@ -1260,9 +1256,7 @@ export default [
           disabled: [],
         },
       },
-      defaultTheme: {
-        Container: { normal: { width: 32, height: 32, background: { color: '#4d63ff' } } },
-      },
+      defaultTheme: { Container: { normal: { width: 32, height: 32 } } },
       childrenWidget: [],
       aliasName: 'Circle',
     },
@@ -8485,6 +8479,7 @@ export default [
         text: { type: 'string', desc: '文本内容', defaultValue: 'Label' },
         showPrefix: { type: 'boolean', desc: '是否显示文本前缀', defaultValue: false },
         prefix: { type: 'string', desc: '文本前缀内容', defaultValue: '*' },
+        title: { type: 'string', desc: '文本提示内容' },
       },
       events: {
         onClick: {
