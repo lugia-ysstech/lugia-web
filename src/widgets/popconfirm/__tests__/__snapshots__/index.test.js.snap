@@ -4836,5 +4836,89 @@ exports[`popconfirm Demo Component JSON 1`] = `
       </div>
     </div>
   </div>
+  <br />
+  <br />
+  <br />
+  <p>
+    包含的组件 继承容器的高度
+  </p>
+  <div
+    style={
+      Object {
+        "height": 50,
+        "width": 100,
+      }
+    }
+  >
+    <div
+      className="c1"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onTouchStart={[Function]}
+      style={Object {}}
+    >
+      <div
+        style={
+          Object {
+            "border": "1px solid red",
+            "height": "100%",
+          }
+        }
+      >
+        点击触发
+      </div>
+    </div>
+    <div
+      className="c5"
+    >
+      <div
+        className="c6"
+      >
+        <div
+          className="c7"
+          style={Object {}}
+        >
+          <div
+            className="c8"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "backgroundColor": "white",
+                "borderBottomLeftRadius": "0.4rem",
+                "borderBottomRightRadius": "0.4rem",
+                "borderTopLeftRadius": "0.4rem",
+                "borderTopRightRadius": "0.4rem",
+                "boxShadow": "0px 0px 6px 0px #d0d3da",
+                "paddingBottom": "0.8rem",
+                "paddingLeft": "0.8rem",
+                "paddingRight": "0.8rem",
+                "paddingTop": "0.8rem",
+              }
+            }
+          >
+            <div
+              className="c15"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+            <div
+              className="c10"
+              style={
+                Object {
+                  "color": "#363B40",
+                  "fontSize": "1.4rem",
+                }
+              }
+            >
+              确定删除这个选项吗?
+            </div>
+            <div />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;
