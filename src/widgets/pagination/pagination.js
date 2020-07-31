@@ -368,23 +368,30 @@ const defaultPaginationTheme = () => ({
   },
 });
 
+const handleZero = value => {
+  return value === 0 ? '' : value;
+};
+
 class Pagination extends React.Component<PaginationProps, PaginationState> {
   static displayName = Widget.Pagination;
   static defaultProps = {
     defaultCurrent: 1,
-    quickJumperValue: 1,
     total: 1,
     defaultPageSize: 10,
     size: 'default',
   };
+  state = {
+    quickJumperValue: 1,
+  };
 
   static getDerivedStateFromProps(props: PaginationProps, state: PaginationState) {
-    const statePageSize = state ? state.pageSize : 0;
-    const propsPageSize = props.pageSize && props.pageSize !== '' ? props.pageSize : 0;
+    const statePageSize = (state && state.pageSize) || 1;
+    const propsPageSize =
+      props.pageSize && props.pageSize !== '' ? props.pageSize : props.defaultPageSize;
     const propsCurrent = props.current;
 
-    let theCurrent = state ? state.current : props.defaultCurrent;
-    let thePageSize = state ? statePageSize : props.defaultPageSize;
+    let theCurrent = (state && state.current) || props.defaultCurrent;
+    let thePageSize = (state && state.pageSize) || props.defaultPageSize;
     if ('current' in props) {
       theCurrent = propsCurrent;
     }
@@ -650,8 +657,10 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     );
     const quickJumpTextTheme = getPartOfThemeProps('PaginationQuickJumpText', { props: { size } });
     const { pageSize } = this.state;
-    const { total } = this.props;
+    const { total, quickJumperValue } = this.props;
     const totalPage = this.getTotalPages(pageSize, total);
+    const theQuickJumperValue = quickJumperValue || this.state.quickJumperValue;
+
     return (
       <PaginationTextContainer
         themeProps={getPartOfThemeProps('PaginationQuickJumpContainer', { props: { isLast } })}
@@ -668,7 +677,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           onKeyUp={this.onInputKeyUp}
           onEnter={this.onInputEnter}
           showArrow={false}
-          value={this.getQuickJumperValue()}
+          value={theQuickJumperValue}
           onChange={this.inputValueChange('quickJumper')}
           max={totalPage}
         />
@@ -695,7 +704,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   inputValueChange = type => obj => {
     const { newValue } = obj;
     const { pageSize } = this.state;
-    const { disabled, total, manualQuickJumper } = this.props;
+    const { disabled, total } = this.props;
     const theValue = this.getQuickJumperValue();
     const theNewValue = (newValue + '').replace(/-/g, '');
     if (theNewValue !== theValue && theNewValue !== 'NaN' && newValue !== '-') {
@@ -705,20 +714,17 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
         if (page > currentPage) {
           page = currentPage;
         }
-        let finaleValue = Number(page);
+
         if (type === 'quickJumper') {
           const { onQuickJumperInputChange } = this.props;
-          if (manualQuickJumper && page === 0) {
-            finaleValue = '';
-          }
+          this.setState({ quickJumperValue: handleZero(Number(page)) });
           onQuickJumperInputChange &&
             onQuickJumperInputChange({
-              newValue: finaleValue,
+              newValue: handleZero(Number(page)),
               oldValue: theValue,
             });
-        }
-        if (!manualQuickJumper) {
-          this.handleChangePage(finaleValue);
+        } else {
+          this.handleChangePage(Number(page));
         }
       }
     }
@@ -727,7 +733,9 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   getQuickJumperValue() {
     const { current } = this.state;
     const { quickJumperValue, manualQuickJumper } = this.props;
-    const theCurrent = manualQuickJumper ? quickJumperValue : current;
+    const theCurrent = manualQuickJumper
+      ? quickJumperValue || this.state.quickJumperValue
+      : current;
     return Number(theCurrent);
   }
 
@@ -751,6 +759,10 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
         current: value,
         e,
       };
+      const { manualQuickJumper } = this.props;
+      if (!manualQuickJumper) {
+        this.handleChangePage(value);
+      }
       const newEventFunction = eventFunction || oldEventFunction;
       newEventFunction && newEventFunction(params);
     }

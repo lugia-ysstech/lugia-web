@@ -108,8 +108,7 @@
     },
     "quickJumperValue": {
       "type": "number",
-      "desc": "当manualQuickJumper值为true时,控制分页跳转的值",
-      "propsDefaultValue": 1
+      "desc": "当manualQuickJumper值为true时,控制分页跳转的值"
     }
   },
   "events": {
