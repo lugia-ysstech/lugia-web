@@ -184,6 +184,10 @@ class LabelDemo extends React.Component<PropsType, StateType> {
         <br />
         <br />
         <br />
+        <LabelBox title="我是title">我是有title的文本</LabelBox>
+        <br />
+        <br />
+        <br />
       </div>
     );
   }
