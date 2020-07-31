@@ -316,17 +316,17 @@ export const Wrap = CSSComponent({
       if (hover) {
         if (theWidth) {
           if (typeof theWidth === 'number') {
-            widthStyle = px2remcss(theWidth + 24);
+            widthStyle = px2remcss(theWidth - 24);
           } else {
-            widthStyle = `calc(${theWidth} + 24px)`;
+            widthStyle = `calc(${theWidth} - 24px)`;
           }
         } else {
-          widthStyle = 'calc(100% + 24px)';
+          widthStyle = 'calc(100% - 24px)';
         }
 
         return `
         width: ${widthStyle} !important;
-        transform: translateX(-24px);
+        transform: translateX(24px);
         `;
       }
     },
