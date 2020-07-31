@@ -373,6 +373,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   static defaultProps = {
     defaultCurrent: 1,
     quickJumperValue: 1,
+    total: 1,
     defaultPageSize: 10,
     size: 'default',
   };
@@ -716,9 +717,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
               oldValue: theValue,
             });
         }
-        if (!manualQuickJumper) {
-          this.handleChangePage(finaleValue);
-        }
+        this.handleChangePage(finaleValue);
       }
     }
   };
@@ -726,7 +725,8 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   getQuickJumperValue() {
     const { current } = this.state;
     const { quickJumperValue, manualQuickJumper } = this.props;
-    return manualQuickJumper ? quickJumperValue : current;
+    const theCurrent = manualQuickJumper ? quickJumperValue : current;
+    return Number(theCurrent);
   }
 
   onInputBlur = (e: Object) => {
@@ -749,7 +749,8 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
         current: value,
         e,
       };
-      (eventFunction || oldEventFunction) && (eventFunction(params) || oldEventFunction(params));
+      const newEventFunction = eventFunction || oldEventFunction;
+      newEventFunction && newEventFunction(params);
     }
   }
 
@@ -769,21 +770,27 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   };
 
   handleChangePage = (page: number) => {
-    const { disabled } = this.props;
-    const { pageSize, current } = this.state;
+    const { disabled, manualQuickJumper } = this.props;
+    const { pageSize } = this.state;
     const thePage = page > 1 ? page : 1;
-    if (!disabled) {
+    if (!disabled && !manualQuickJumper) {
       this.setState({
         current: thePage,
       });
     }
     const { onChange } = this.props;
-    onChange && onChange({ newValue: thePage, oldValue: current, current: thePage, pageSize });
+    onChange &&
+      onChange({
+        newValue: thePage,
+        oldValue: this.getQuickJumperValue(),
+        current: thePage,
+        pageSize,
+      });
   };
 
   handleChangePageSize = (obj: Object) => {
     const { onShowSizeChange } = this.props;
-    const { current, pageSize } = this.state;
+    const { pageSize } = this.state;
     const { newValue } = obj;
     const unit = '条/页';
     const start = newValue.indexOf(unit);
@@ -791,22 +798,26 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     if (pageSize !== thePageSize) {
       this.setState({ pageSize: thePageSize });
     }
-    onShowSizeChange && onShowSizeChange(current, thePageSize);
+    onShowSizeChange && onShowSizeChange(this.getQuickJumperValue(), thePageSize);
   };
 
   changePage = (page: number) => () => {
-    this.handleChangePage(page);
+    const { manualQuickJumper } = this.props;
+    if (!manualQuickJumper) {
+      this.handleChangePage(page);
+    }
   };
 
   goPrePage = () => {
-    const { current } = this.state;
-    return Math.max(1, current - 5);
+    const theCurrent = this.getQuickJumperValue();
+    return Math.max(1, theCurrent - 5);
   };
 
   goNextPage = () => {
-    const { current, pageSize } = this.state;
+    const { pageSize } = this.state;
+    const theCurrent = this.getQuickJumperValue();
     const { total } = this.props;
-    return Math.min(computePage(0, pageSize, total), current + 5);
+    return Math.min(computePage(0, pageSize, total), theCurrent + 5);
   };
 
   changePageSize = (type: MorePageType) => () => {
@@ -816,10 +827,11 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
 
   showTotal() {
     const { showTotal, total } = this.props;
-    const { current, pageSize } = this.state;
+    const { pageSize } = this.state;
+    const theCurrent = this.getQuickJumperValue();
     const range = [
-      total === 0 ? 0 : (current - 1) * pageSize + 1,
-      current * pageSize > total ? total : current * pageSize,
+      total === 0 ? 0 : (theCurrent - 1) * pageSize + 1,
+      theCurrent * pageSize > total ? total : theCurrent * pageSize,
     ];
     showTotal && showTotal(total, range);
   }
@@ -837,31 +849,30 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
 
   checkArrowChange(type: MorePageType) {
     const { total } = this.props;
-    const { current, pageSize } = this.state;
+    const { pageSize } = this.state;
+    const theCurrent = this.getQuickJumperValue();
     const preMore = type === 'pre';
-    const min = current === 1 && preMore;
-    const max = current === total && type === 'next';
-    let page = current;
+    const min = theCurrent === 1 && preMore;
+    const max = theCurrent === total && type === 'next';
+    let page = theCurrent;
     if (!min && !max) {
       page = preMore
-        ? current - 1
-        : current < computePage(0, pageSize, total)
-        ? current + 1
-        : current;
+        ? theCurrent - 1
+        : theCurrent < computePage(0, pageSize, total)
+        ? theCurrent + 1
+        : theCurrent;
     }
     return page;
   }
 
   getArrow(type: MorePageType) {
     const { hideOnSinglePage, size, getPartOfThemeProps } = this.props;
-    const { current } = this.state;
-
+    const theCurrent = this.getQuickJumperValue();
     if (hideOnSinglePage) {
       return null;
     }
     const page = this.checkArrowChange(type);
-
-    const clickable = type === 'pre' ? current > 1 : current < page;
+    const clickable = type === 'pre' ? theCurrent > 1 : theCurrent < page;
 
     const theThemeProps = deepMerge(
       defaultPaginationTheme(),
@@ -982,9 +993,10 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       const textThemeProps = getPartOfThemeProps('PaginationSimpleText', {
         props: { size, simple },
       });
+      const theCurrent = this.getQuickJumperValue();
       return (
         <PaginationListContainer themeProps={getPartOfThemeProps('Container')}>
-          {this.getArrowIcon('pre', current > 1)}
+          {this.getArrowIcon('pre', theCurrent > 1)}
           <NumberInput
             size={size}
             value={current}
@@ -997,7 +1009,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           />
           <PaginationTextDivider themeProps={textThemeProps}>/</PaginationTextDivider>
           <PaginationBaseText themeProps={textThemeProps}>{totalPage}</PaginationBaseText>
-          {this.getArrowIcon('next', current < totalPage)}
+          {this.getArrowIcon('next', theCurrent < totalPage)}
         </PaginationListContainer>
       );
     }
