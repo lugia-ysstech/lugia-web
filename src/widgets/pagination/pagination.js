@@ -717,7 +717,9 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
               oldValue: theValue,
             });
         }
-        this.handleChangePage(finaleValue);
+        if (!manualQuickJumper) {
+          this.handleChangePage(finaleValue);
+        }
       }
     }
   };
