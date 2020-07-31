@@ -13,11 +13,11 @@ exports[`popover Demo Component JSON 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   position: relative;
   text-transform: none;
   outline: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -74,7 +74,7 @@ exports[`popover Demo Component JSON 1`] = `
   box-sizing: border-box;
   left: -9999px;
   top: -9999px;
-  z-index: 999999;
+  z-index: undefined;
 }
 
 .c7 {
@@ -246,6 +246,34 @@ exports[`popover Demo Component JSON 1`] = `
   border-width: 0 0.5rem 0.5rem;
 }
 
+.c29 {
+  position: absolute;
+  border-style: solid;
+  border-width: 0.4rem;
+  border-top-left-radius: 0.4rem;
+  z-index: -1;
+  border-color: white transparent transparent white;
+  -webkit-transform: rotateZ(45deg);
+  -ms-transform: rotateZ(45deg);
+  transform: rotateZ(45deg);
+  left: calc(50% - 5px);
+  top: -0.3rem;
+}
+
+.c30 {
+  position: absolute;
+  border-style: solid;
+  border-width: 0.4rem;
+  border-top-left-radius: 0.4rem;
+  z-index: 0;
+  border-color: white transparent transparent white;
+  -webkit-transform: rotateZ(45deg);
+  -ms-transform: rotateZ(45deg);
+  transform: rotateZ(45deg);
+  left: calc(50% - 5px);
+  top: -0.3rem;
+}
+
 .c10 {
   box-sizing: border-box;
   -webkit-user-select: none;
@@ -280,6 +308,7 @@ exports[`popover Demo Component JSON 1`] = `
 
 .c1 {
   display: inline-block;
+  height: 100%;
 }
 
 .c27 {
@@ -332,6 +361,10 @@ exports[`popover Demo Component JSON 1`] = `
   min-width: 3rem;
   width: 100%;
   background-color: white;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c0 {
@@ -1847,8 +1880,6 @@ exports[`popover Demo Component JSON 1`] = `
       style={
         Object {
           "borderBottomColor": "#d0d3da",
-          "borderBottomLeftRadius": "0.4rem",
-          "borderBottomRightRadius": "0.4rem",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
           "borderLeftColor": "#d0d3da",
@@ -1858,8 +1889,6 @@ exports[`popover Demo Component JSON 1`] = `
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
           "borderTopColor": "#d0d3da",
-          "borderTopLeftRadius": "0.4rem",
-          "borderTopRightRadius": "0.4rem",
           "borderTopStyle": "solid",
           "borderTopWidth": "0.1rem",
           "height": "3.2rem",
@@ -1885,10 +1914,6 @@ exports[`popover Demo Component JSON 1`] = `
         size="default"
         style={
           Object {
-            "borderBottomLeftRadius": "0.4rem",
-            "borderBottomRightRadius": "0.4rem",
-            "borderTopLeftRadius": "0.4rem",
-            "borderTopRightRadius": "0.4rem",
             "color": "#363B40",
             "fontSize": "1.4rem",
             "paddingBottom": "0rem",
@@ -2189,6 +2214,138 @@ exports[`popover Demo Component JSON 1`] = `
         >
           <div
             className="c24"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="c10"
+            style={
+              Object {
+                "color": "#363B40",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            This is title
+          </div>
+          <div
+            className="c11"
+            style={
+              Object {
+                "color": "#646A6E",
+                "fontSize": "1.2rem",
+              }
+            }
+          >
+            <div>
+              This is description
+            </div>
+          </div>
+          <div />
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
+  <p>
+    箭头样式
+  </p>
+  <div
+    className="c1"
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onTouchStart={[Function]}
+    style={Object {}}
+  >
+    <button
+      className="c2"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="primary"
+    >
+      <span
+        className="c3"
+      >
+        <span
+          className="c4"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          点击
+        </span>
+      </span>
+    </button>
+  </div>
+  <div
+    className="c5"
+  >
+    <div
+      className="c6"
+    >
+      <div
+        className="c22"
+        style={Object {}}
+      >
+        <div
+          className="c8"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "backgroundColor": "white",
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
+              "boxShadow": "0px 0px 6px 0px #d0d3da",
+              "paddingBottom": "0.8rem",
+              "paddingLeft": "0.8rem",
+              "paddingRight": "0.8rem",
+              "paddingTop": "0.8rem",
+            }
+          }
+        >
+          <div
+            className="c29"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="c30"
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             style={Object {}}
