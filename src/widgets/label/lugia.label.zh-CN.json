@@ -22,6 +22,10 @@
       "type": "string",
       "desc": "文本前缀内容",
       "defaultValue": "*"
+    },
+    "title": {
+      "type": "string",
+      "desc": "文本提示内容"
     }
   },
   "events": {
