@@ -11,6 +11,7 @@ exports[`tabsDemo Component JSON 1`] = `
   -ms-flex-align: center;
   align-items: center;
   font-size: 1.4rem;
+  height: 3.2rem;
   color: #646A6E;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -43,6 +44,7 @@ exports[`tabsDemo Component JSON 1`] = `
   -ms-flex-align: center;
   align-items: center;
   font-size: 1.4rem;
+  height: 3.2rem;
   color: #646A6E;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -111,7 +113,6 @@ exports[`tabsDemo Component JSON 1`] = `
 .c1 {
   position: relative;
   z-index: 99;
-  overflow: hidden;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -120,6 +121,7 @@ exports[`tabsDemo Component JSON 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  clear: both;
 }
 
 .c1::before {
