@@ -761,7 +761,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       };
       const { manualQuickJumper } = this.props;
       if (!manualQuickJumper) {
-        this.handleChangePage(value);
+        this.handleChangePage(Number(value));
       }
       const newEventFunction = eventFunction || oldEventFunction;
       newEventFunction && newEventFunction(params);
