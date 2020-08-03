@@ -153,11 +153,11 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
     }
   };
 
-  doEnterEditing = (props): void => {
-    const { listener } = this.props;
+  doEnterEditing = (props: Object): void => {
+    const { listener, disableEdit } = this.props;
     const editCell = listener.getEditCell();
     const isCurrentCell = this.isCurrentCell({ editCell });
-    if (!isCurrentCell) {
+    if (!isCurrentCell || disableEdit) {
       return;
     }
 
