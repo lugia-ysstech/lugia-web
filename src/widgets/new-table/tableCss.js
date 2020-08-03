@@ -44,6 +44,8 @@ export type TableCellProps = ColumnsType & {
   listener: EditTableEventListenerHandle,
   customRender: ?Function,
   selectSuffixElement: ?Function,
+  selectData: ?Array<{ value: string, text: string }>,
+  allowEdit: boolean,
 };
 
 export type TableCellState = {
