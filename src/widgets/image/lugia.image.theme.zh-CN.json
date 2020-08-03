@@ -1,0 +1,17 @@
+[
+  {
+    "widgetName": "Input",
+    "title": "文本输入框",
+    "viewProps": [
+      {
+        "name": "src",
+        "text": "图片配置"
+      },
+      {
+        "name": "isBackground",
+        "text": "是否为背景图片"
+      }
+    ],
+    "data": []
+  }
+]

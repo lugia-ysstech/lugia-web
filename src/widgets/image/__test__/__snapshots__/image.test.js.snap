@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image background: isBackground = true 1`] = `
+.c0 {
+  box-sizing: content-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-image: url(https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg);
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "height": "20rem",
+      "width": "25rem",
+    }
+  }
+/>
+`;
+
+exports[`Image image: isBackground = false 1`] = `
+<img
+  alt="我是可爱的西柚"
+  height="200"
+  src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
+  title="I am lovely grapefruit"
+  width="250"
+/>
+`;

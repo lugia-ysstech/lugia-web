@@ -129,6 +129,9 @@ const Textarea = 'lugia_widget_Textarea';
 const EditTable = 'lugia_widget_EditTable';
 const Lugiad = 'lugia_widget_Lugiad';
 
+/* add by zhanglunyu */
+const Image = 'lugia_widget_Image';
+
 export default {
   Button,
   Input,
@@ -240,4 +243,5 @@ export default {
   Textarea,
   EditTable,
   Lugiad,
+  Image,
 };
