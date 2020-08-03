@@ -13101,6 +13101,15 @@ export default [
           propsDefaultValue: 'default',
         },
         divided: { type: 'boolean', desc: '是否展示菜单分割线', propsDefaultValue: false },
+        manualQuickJumper: {
+          type: 'boolean',
+          desc: '是否手动控制分页快速跳转,值为true时,分页跳转由quickJumperValue控制',
+          propsDefaultValue: false,
+        },
+        quickJumperValue: {
+          type: 'number',
+          desc: '当manualQuickJumper值为true时,控制分页跳转的值',
+        },
       },
       events: {
         onChange: {
@@ -13119,13 +13128,39 @@ export default [
             { name: 'size', desc: '每页条数', type: 'number' },
           ],
         },
-        quickJumperInputBlur: {
+        onQuickJumperInputBlur: {
           desc: '快速跳转输入框失去焦点时触发',
           args: [
-            { name: 'current', desc: '当前页数', type: 'number' },
-            { name: 'size', desc: '每页条数', type: 'number' },
+            { name: 'current', desc: '当前输入框的值', type: 'number' },
             { name: 'event', desc: '失去焦点的DOM事件', type: 'FocusEvent' },
           ],
+        },
+        onQuickJumperInputEnter: {
+          desc: '键盘按下去并松开后执行',
+          args: [
+            { name: 'current', desc: '当前输入框的值', type: 'number' },
+            { name: 'event', desc: '键盘按下回车键的DOM事件', type: 'KeyboardEvent' },
+          ],
+        },
+        onQuickJumperInputChange: {
+          desc: '快速跳转输入框,输入内容改变时触发',
+          args: [{ name: 'event', desc: '改变内容的DOM事件', type: 'ChangeType' }],
+        },
+        onQuickJumperInputKeyUp: {
+          desc: '快速跳转输入框,当键盘按下去并松开后执行',
+          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],
+        },
+        onQuickJumperInputKeyDown: {
+          desc: '快速跳转输入框,当键盘按下任何键时触发',
+          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],
+        },
+        onQuickJumperInputKeyPress: {
+          desc: '快速跳转输入框,当键盘按下任何键时触发',
+          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],
+        },
+        onQuickJumperInputFocus: {
+          desc: '快速跳转输入框,当输入框获得焦点时触发',
+          args: [{ name: 'event', desc: '获取焦点的DOM事件', type: 'FocusEvent' }],
         },
       },
       type: {
@@ -13136,6 +13171,12 @@ export default [
           { value: 'PageSize', text: '每页数量' },
         ],
         AlignType: [{ value: 'left', text: '居左' }, { value: 'right', text: '居右' }],
+        SizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        ChangeType: { newValue: 'number', oldValue: 'number', event: 'SyntheticEvent' },
       },
       designInfo: {
         SimplePagination: {
@@ -13645,6 +13686,15 @@ export default [
           propsDefaultValue: 'default',
         },
         divided: { type: 'boolean', desc: '是否展示菜单分割线', propsDefaultValue: false },
+        manualQuickJumper: {
+          type: 'boolean',
+          desc: '是否手动控制分页快速跳转,值为true时,分页跳转由quickJumperValue控制',
+          propsDefaultValue: false,
+        },
+        quickJumperValue: {
+          type: 'number',
+          desc: '当manualQuickJumper值为true时,控制分页跳转的值',
+        },
       },
       events: {
         onChange: {
@@ -13663,13 +13713,39 @@ export default [
             { name: 'size', desc: '每页条数', type: 'number' },
           ],
         },
-        quickJumperInputBlur: {
+        onQuickJumperInputBlur: {
           desc: '快速跳转输入框失去焦点时触发',
           args: [
-            { name: 'current', desc: '当前页数', type: 'number' },
-            { name: 'size', desc: '每页条数', type: 'number' },
+            { name: 'current', desc: '当前输入框的值', type: 'number' },
             { name: 'event', desc: '失去焦点的DOM事件', type: 'FocusEvent' },
           ],
+        },
+        onQuickJumperInputEnter: {
+          desc: '键盘按下去并松开后执行',
+          args: [
+            { name: 'current', desc: '当前输入框的值', type: 'number' },
+            { name: 'event', desc: '键盘按下回车键的DOM事件', type: 'KeyboardEvent' },
+          ],
+        },
+        onQuickJumperInputChange: {
+          desc: '快速跳转输入框,输入内容改变时触发',
+          args: [{ name: 'event', desc: '改变内容的DOM事件', type: 'ChangeType' }],
+        },
+        onQuickJumperInputKeyUp: {
+          desc: '快速跳转输入框,当键盘按下去并松开后执行',
+          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],
+        },
+        onQuickJumperInputKeyDown: {
+          desc: '快速跳转输入框,当键盘按下任何键时触发',
+          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],
+        },
+        onQuickJumperInputKeyPress: {
+          desc: '快速跳转输入框,当键盘按下任何键时触发',
+          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],
+        },
+        onQuickJumperInputFocus: {
+          desc: '快速跳转输入框,当输入框获得焦点时触发',
+          args: [{ name: 'event', desc: '获取焦点的DOM事件', type: 'FocusEvent' }],
         },
       },
       type: {
@@ -13680,6 +13756,12 @@ export default [
           { value: 'PageSize', text: '每页数量' },
         ],
         AlignType: [{ value: 'left', text: '居左' }, { value: 'right', text: '居右' }],
+        SizeType: [
+          { value: 'small', text: '小' },
+          { value: 'default', text: '正常' },
+          { value: 'large', text: '大' },
+        ],
+        ChangeType: { newValue: 'number', oldValue: 'number', event: 'SyntheticEvent' },
       },
       theme: {
         Container: {
