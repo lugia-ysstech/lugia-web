@@ -277,6 +277,10 @@ const data = [
     value: '/window',
     text: 'Window 窗体',
   },
+  {
+    value: '/image',
+    text: 'Image 图片',
+  },
 ];
 
 const processMap = {

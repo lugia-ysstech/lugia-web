@@ -1,0 +1,45 @@
+{
+  "widgetName": "Input",
+  "title": "文本输入框",
+  "desc": "常用于昵称,名称,表格内容等填写.",
+  "props": {
+    "src": {
+      "type": "string",
+      "desc": "图片资源地址"
+    },
+    "alt": {
+      "type": "string",
+      "desc": "图片的文字描述信息"
+    },
+    "title": {
+      "type": "string",
+      "desc": "鼠标悬停提示信息"
+    },
+    "isBackground": {
+      "type": "boolean",
+      "desc": "是否为背景图,如果是,则显示背景图,如果不是,则显示前景图",
+      "propsDefaultValue": false
+    }
+  },
+  "events": {},
+  "type": {},
+  "category": ["数据录入"],
+  "theme": {
+    "Container": {
+      "name": "图片展示区域",
+      "desc": "图片展示的样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["borderRadius"],
+        ["border"],
+        ["boxShadow"],
+        ["padding"],
+        ["margin"],
+        ["color"]
+      ]
+    }
+  },
+  "defaultTheme": {}
+}
