@@ -18,11 +18,11 @@ exports[`Affix css 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   position: relative;
   text-transform: none;
   outline: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
