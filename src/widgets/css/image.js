@@ -32,6 +32,7 @@ export const BackgroundImgContainer = CSSComponent({
     ],
     defaultTheme: {
       width: 200,
+      height: 100,
     },
     getThemeMeta(themeMeta, themeProps) {
       const {
