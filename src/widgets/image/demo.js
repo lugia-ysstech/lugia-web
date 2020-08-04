@@ -14,6 +14,37 @@ type PropsType = {};
 
 export class ImageDemo extends React.Component<PropsType> {
   render() {
+    const imageTheme = {
+      [Widget.Image]: {
+        Container: {
+          normal: {
+            borderRadius: getBorderRadius(40),
+            boxShadow: getBoxShadow('2px 2px 2px 2px orange'),
+            padding: 10,
+            margin: { left: 50 },
+          },
+        },
+      },
+    };
+
+    const backgroundText = {
+      [Widget.Image]: {
+        Container: {
+          normal: {
+            borderRadius: getBorderRadius(40),
+            border: getBorder({ color: 'grey', width: 10, style: 'dashed' }),
+            background: {
+              clip: 'content-box',
+            },
+            boxShadow: getBoxShadow('2px 2px 2px 2px orange'),
+            padding: 10,
+            color: 'white',
+            margin: { left: 50 },
+          },
+        },
+      },
+    };
+
     const imageClip1 = {
       [Widget.Image]: {
         Container: {
@@ -206,8 +237,7 @@ export class ImageDemo extends React.Component<PropsType> {
         Container: {
           normal: {
             border: getBorder({ color: 'grey', width: 10, style: 'dashed' }),
-            background: { repeatX: 'no-repeat', size: '90%' },
-
+            background: { repeatX: 'no-repeat', size: '90%', color: 'orange' },
             padding: 5,
             margin: { left: 50 },
           },
@@ -252,26 +282,76 @@ export class ImageDemo extends React.Component<PropsType> {
     };
     return (
       <div style={{ display: 'flex', flexDirection: 'column', marginTop: 30, marginLeft: 30 }}>
-        <span
-          style={{
-            fontSize: 15,
-            marginLeft: 20,
-          }}
-        >
-          <h4>无主题的demo</h4>
-          <Image
-            src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
-            alt="我是可爱的西柚"
-            title="I am lovely grapefruit"
-            height="200"
-            width="250"
-          />
-        </span>
-
         <div
           style={{
             width: 1200,
-            height: 300,
+            height: 200,
+            border: '5px dashed grey',
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            margin: 20,
+          }}
+        >
+          <span
+            style={{
+              fontSize: 15,
+              marginLeft: 20,
+            }}
+          >
+            <h4>无主题的demo</h4>
+            <Image
+              src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
+              alt="我是可爱的西柚"
+              title="I am lovely grapefruit"
+            />
+          </span>
+          <Theme config={imageTheme}>
+            <span
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                fontSize: 15,
+              }}
+            >
+              <h4>有主题的图片demo</h4>
+              <Image
+                src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
+                alt="我是可爱的西柚"
+                title="I am lovely grapefruit"
+              />
+            </span>
+          </Theme>
+
+          <Theme config={backgroundText}>
+            <span
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                fontSize: 15,
+              }}
+            >
+              <text style={{ color: 'gray' }}> 背景文字</text>
+              <Image
+                src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
+                alt="我是很酸的柚子"
+                title="A T-Rex on display in the Manchester University Museum"
+                isBackground={true}
+              >
+                <span style={{ padding: 10 }}>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                  euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                </span>
+              </Image>
+            </span>
+          </Theme>
+        </div>
+        <div
+          style={{
+            width: 1200,
+            height: 200,
             border: '5px dashed grey',
             display: 'flex',
             flexDirection: 'row',
@@ -293,8 +373,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://static.1sapp.com/qupost/images/2020/06/06/1591431846082798163.jpg"
                 alt="我是很甜的猕猴桃"
                 title="A T-Rex on display in the Manchester University Museum"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -315,8 +393,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -341,8 +417,7 @@ export class ImageDemo extends React.Component<PropsType> {
                 isBackground={true}
               >
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
-                minim veniam, quis nostrud exerci tation ullamcorper .
+                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
               </Image>
             </span>
           </Theme>
@@ -361,8 +436,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -372,7 +445,7 @@ export class ImageDemo extends React.Component<PropsType> {
         <div
           style={{
             width: 1200,
-            height: 300,
+            height: 200,
             border: '5px dashed grey',
             display: 'flex',
             flexDirection: 'row',
@@ -394,8 +467,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -414,8 +485,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -434,8 +503,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -445,7 +512,7 @@ export class ImageDemo extends React.Component<PropsType> {
         <div
           style={{
             width: 1200,
-            height: 300,
+            height: 200,
             border: '5px dashed grey',
             display: 'flex',
             flexDirection: 'row',
@@ -467,8 +534,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -488,8 +553,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -509,8 +572,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -520,7 +581,7 @@ export class ImageDemo extends React.Component<PropsType> {
         <div
           style={{
             width: 1200,
-            height: 300,
+            height: 200,
             border: '5px dashed grey',
             display: 'flex',
             flexDirection: 'row',
@@ -542,8 +603,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -563,8 +622,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -584,8 +641,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -595,7 +650,7 @@ export class ImageDemo extends React.Component<PropsType> {
         <div
           style={{
             width: 1200,
-            height: 300,
+            height: 200,
             border: '5px dashed grey',
             display: 'flex',
             flexDirection: 'row',
@@ -617,8 +672,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -638,8 +691,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -659,8 +710,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>
@@ -680,8 +729,6 @@ export class ImageDemo extends React.Component<PropsType> {
                 src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"
                 alt="我是可爱的西柚"
                 title="I am lovely grapefruit"
-                height="200"
-                width="200"
                 isBackground={true}
               />
             </span>

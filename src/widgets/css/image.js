@@ -13,9 +13,9 @@ export type ImageTypeProps = {
   isBackground?: boolean,
 };
 
-export const ImageContainer = CSSComponent({
+export const BackgroundImgContainer = CSSComponent({
   tag: 'div',
-  className: 'ImageContainer',
+  className: 'BackgroundContainer',
   normal: {
     selectNames: [
       ['width'],
@@ -28,17 +28,19 @@ export const ImageContainer = CSSComponent({
       ['margin'],
       ['color'],
       ['fontSize'],
+      ['font'],
     ],
+    defaultTheme: {
+      height: 100,
+      width: 200,
+    },
     getThemeMeta(themeMeta, themeProps) {
       const {
         themeConfig: { normal: { background: { clip: bgImgClip } = {} } = {} } = {},
-        propsConfig: { height: bgImgHeight, width: bgImgWidth },
       } = themeProps;
       const clipTextColor = bgImgClip === 'text' ? 'transparent' : '';
       return {
         color: clipTextColor,
-        height: bgImgHeight,
-        width: bgImgWidth,
       };
     },
     getCSS: (themeMeta, themeProps) => {
@@ -58,6 +60,27 @@ export const ImageContainer = CSSComponent({
   },
   css: `
     box-sizing:content-box;
-    display: flex;
   `,
+});
+export const ImageContainer = CSSComponent({
+  tag: 'img',
+  className: 'ImageContainer',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['borderRadius'],
+      ['border'],
+      ['boxShadow'],
+      ['padding'],
+      ['margin'],
+      ['color'],
+      ['fontSize'],
+      ['font'],
+    ],
+    defaultTheme: {
+      height: 100,
+      width: 200,
+    },
+  },
 });

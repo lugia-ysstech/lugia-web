@@ -1,7 +1,8 @@
 [
   {
-    "widgetName": "Input",
-    "title": "文本输入框",
+    "widgetName": "Image",
+    "title": "图片配置",
+    "treeNodeHidden": true,
     "viewProps": [
       {
         "name": "src",
@@ -12,6 +13,26 @@
         "text": "是否为背景图片"
       }
     ],
-    "data": []
+    "data": [
+      {
+        "title": "未选中",
+        "data": [
+          {
+            "name": "未选中",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块整体文本"
+              },
+              "textPart": {
+                "hidden": true
+              }
+
+            }
+          }
+        ]
+      }
+    ]
   }
 ]
