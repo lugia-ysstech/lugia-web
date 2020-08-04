@@ -469,7 +469,7 @@
         "UploadFail": {
           "name": "上传失败样式",
           "desc": "图片类型的上传失败图标",
-          "normal": [["background"], ["opacity"], ["border"], ["borderRadius"], ["boxShadow"]]
+          "normal": [["background"], ["opacity"], ["border"], ["borderRadius"], ["boxShadow"],["font"],["fontSize"],["color"]]
         },
         "UploadIcon": {
           "name": "上传图标样式",
