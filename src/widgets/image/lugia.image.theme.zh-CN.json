@@ -15,10 +15,10 @@
     ],
     "data": [
       {
-        "title": "未选中",
+        "title": "图片整体配置",
         "data": [
           {
-            "name": "未选中",
+            "name": "图片整体样式配置",
             "path": ["Container"],
             "description": {
               "appearancePart": {
