@@ -4,6 +4,7 @@
     "title": "下拉菜单",
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
+      { "name": "divided", "text": "显示菜单分割线" },
       { "name": "action", "text": "弹出方式" },
       { "name": "align", "text": "弹出方向" },
       { "name": "data", "text": "数据编辑" }
@@ -283,6 +284,7 @@
     "title": "无分隔符的下拉按钮",
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
+      { "name": "divided", "text": "显示菜单分割线" },
       { "name": "action", "text": "弹出方式" },
       { "name": "align", "text": "弹出方向" },
       { "name": "data", "text": "数据编辑" }
