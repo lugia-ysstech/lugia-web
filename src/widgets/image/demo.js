@@ -251,6 +251,7 @@ export class ImageDemo extends React.Component<PropsType> {
             border: getBorder({ color: 'grey', width: 10, style: 'dashed' }),
             background: { repeatY: 'no-repeat', size: '90%' },
             padding: 5,
+            height: 200,
             margin: { left: 50 },
           },
         },
@@ -285,12 +286,13 @@ export class ImageDemo extends React.Component<PropsType> {
         <div
           style={{
             width: 1200,
-            height: 200,
+            height: 300,
             border: '5px dashed grey',
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
             margin: 20,
+            padding: 20,
           }}
         >
           <span
@@ -351,12 +353,12 @@ export class ImageDemo extends React.Component<PropsType> {
         <div
           style={{
             width: 1200,
-            height: 200,
             border: '5px dashed grey',
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
             margin: 20,
+            padding: 20,
           }}
         >
           <Theme config={imageClip1}>
@@ -445,12 +447,12 @@ export class ImageDemo extends React.Component<PropsType> {
         <div
           style={{
             width: 1200,
-            height: 200,
             border: '5px dashed grey',
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
             margin: 20,
+            padding: 20,
           }}
         >
           <Theme config={imageAttachment1}>
@@ -512,12 +514,12 @@ export class ImageDemo extends React.Component<PropsType> {
         <div
           style={{
             width: 1200,
-            height: 200,
             border: '5px dashed grey',
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
             margin: 20,
+            padding: 20,
           }}
         >
           <Theme config={imageSize1}>
@@ -581,12 +583,12 @@ export class ImageDemo extends React.Component<PropsType> {
         <div
           style={{
             width: 1200,
-            height: 200,
             border: '5px dashed grey',
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
             margin: 20,
+            padding: 20,
           }}
         >
           <Theme config={imagePosition1}>
@@ -650,12 +652,12 @@ export class ImageDemo extends React.Component<PropsType> {
         <div
           style={{
             width: 1200,
-            height: 200,
             border: '5px dashed grey',
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
             margin: 20,
+            padding: 20,
           }}
         >
           <Theme config={imageRepeat1}>
