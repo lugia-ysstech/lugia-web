@@ -533,7 +533,7 @@
       "disabled": [["lineHeight"], ["opacity"], ["boxShadow"], ["cursor"], ["borderRadius"]]
     },
 
-    "Divides": {
+    "Divided": {
       "name": "分割线配置",
       "desc": "分割线的样式配置",
       "normal": [["width"], ["height"], ["color"]],
