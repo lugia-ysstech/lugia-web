@@ -31,7 +31,6 @@ export const BackgroundImgContainer = CSSComponent({
       ['font'],
     ],
     defaultTheme: {
-      height: 100,
       width: 200,
     },
     getThemeMeta(themeMeta, themeProps) {
@@ -79,7 +78,6 @@ export const ImageContainer = CSSComponent({
       ['font'],
     ],
     defaultTheme: {
-      height: 100,
       width: 200,
     },
   },
