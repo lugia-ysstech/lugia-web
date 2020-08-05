@@ -356,6 +356,10 @@ export default class LimitDemo extends React.Component<Object, Object> {
     this.setState({ activityValue: newValue });
   };
 
+  onClickTree = (target: Object) => {
+    console.log('onClickTree', target);
+  };
+
   render() {
     return (
       <div>
@@ -435,6 +439,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
             inlineExpandAll={true}
             onChange={this.onChange}
             onSelect={this.onSelect}
+            onClick={this.onClickTree}
             renderSuffixItems={this.renderSuffixItems}
           />
 
