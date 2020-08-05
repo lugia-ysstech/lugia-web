@@ -558,6 +558,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           displayField={displayField}
           onlySelectLeaf={true}
           onChange={this.onChange}
+          onSelect={this.onSelectTree}
           igronSelectField={igronSelectField}
           pathSeparator={pathSeparator}
           renderSuffixItems={renderSuffixItems}
@@ -592,10 +593,28 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     const { value = [] } = this.state;
 
     const oldValue = value[0];
-    const { onChange, onSelect, onClick, displayField } = this.props;
+    const { onChange, onSelect, onClick, mode = 'inline' } = this.props;
+    const obj = this.getExposeTarget(newValue, oldValue);
+    onChange && onChange(obj);
+    onSelect && onSelect(obj);
+    mode !== 'inline' && onClick && onClick(obj);
+  }
+
+  getStringValue = (value: string | Array) => {
+    const isArray = value instanceof Array;
+    if (isArray) {
+      return value[0];
+    }
+    return value;
+  };
+
+  getExposeTarget = (newValue: string, oldValue: string) => {
+    const { displayField } = this.props;
+    newValue = this.getStringValue(newValue);
+    oldValue = this.getStringValue(oldValue);
     const newItem = this.getCheckedItem(newValue);
     const oldItem = this.getCheckedItem(oldValue);
-    const obj = {
+    return {
       value: newValue,
       newValue,
       oldValue,
@@ -603,15 +622,20 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       oldItem,
       newDisplayValue: newItem[displayField],
     };
-    onChange && onChange(obj);
-    onSelect && onSelect(obj);
-    onClick && onClick(obj);
-  }
+  };
 
   onChange = (value: string[]) => {
     const key = value[0];
     this.exposeOnChange(key);
     this.setState({ value });
+  };
+
+  onSelectTree = (value: string[]) => {
+    const { value: stateValue } = this.state;
+    const newValue = value[0] ? value[0] : stateValue;
+    const obj = this.getExposeTarget(newValue, stateValue);
+    const { onClick } = this.props;
+    onClick && onClick(obj);
   };
 
   getCheckedItem(key: string): ?Object {
