@@ -167,8 +167,27 @@ export default ThemeProvider(
         icon,
         showType = 'iconType',
         text,
+        injectLugiad: { type } = {},
       } = this.props;
       const { fixed, posRight, posBottom } = this.state;
+      const content = (
+        <BackTopContent themeProps={this.getTextTheme()}>
+          <IconBox themeProps={themeProps}>
+            {showType === 'iconType' ? (
+              <Icon
+                iconClass={icon || 'lugia-icon-direction_up'}
+                {...getPartOfThemeHocProps('BackTopIcon')}
+                singleTheme
+              />
+            ) : (
+              <text>{text || 'up'}</text>
+            )}
+          </IconBox>
+        </BackTopContent>
+      );
+      if (type === 'BackTop') {
+        return content;
+      }
 
       return (
         <div {...addMouseEvent(this)}>
@@ -181,23 +200,7 @@ export default ThemeProvider(
               onClick={this.handleClick}
               hasTarget={this.hasTarget()}
             >
-              {children ? (
-                children
-              ) : (
-                <BackTopContent themeProps={this.getTextTheme()}>
-                  <IconBox themeProps={themeProps}>
-                    {showType === 'iconType' ? (
-                      <Icon
-                        iconClass={icon || 'lugia-icon-direction_up'}
-                        {...getPartOfThemeHocProps('BackTopIcon')}
-                        singleTheme
-                      />
-                    ) : (
-                      <text>{text || 'up'}</text>
-                    )}
-                  </IconBox>
-                </BackTopContent>
-              )}
+              {children ? children : content}
             </BackTop>
           ) : null}
         </div>
