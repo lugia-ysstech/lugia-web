@@ -1,6 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BackTop css 1`] = `
+.c4 {
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  background: #ffffff;
+  width: 4rem;
+  height: 4rem;
+  color: #4d63ff;
+  opacity: 1;
+  border-top-left-radius: 4rem;
+  border-top-right-radius: 4rem;
+  border-bottom-right-radius: 4rem;
+  border-bottom-left-radius: 4rem;
+}
+
+.c5 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
 .c0 > div > div {
   bottom: 100px;
 }
@@ -66,6 +90,57 @@ exports[`BackTop css 1`] = `
         }
       />
       <div />
+    </div>
+  </div>
+  <br />
+  <br />
+  <h2>
+    injectLugiad属性, 展示使用
+  </h2>
+  <div
+    style={
+      Object {
+        "margin": "20px",
+      }
+    }
+  >
+    <div
+      className="c4"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "borderBottomColor": "#d0d3da",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#d0d3da",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#d0d3da",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#d0d3da",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "boxShadow": "0px 0px 0px 0px transparent",
+          "color": "#363B40",
+        }
+      }
+    >
+      <span
+        className="c5"
+        style={Object {}}
+      >
+        <text>
+          up
+        </text>
+      </span>
     </div>
   </div>
 </div>
