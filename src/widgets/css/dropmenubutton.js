@@ -572,7 +572,12 @@ export const DividedContainer = CSSComponent({
       return disabled ? '' : hoverCSS;
     },
   },
-
+  hover: {
+    selectNames: [['lineHeight'], ['opacity'], ['cursor'], ['boxShadow'], ['borderRadius']],
+  },
+  active: {
+    selectNames: [['lineHeight'], ['opacity'], ['cursor'], ['boxShadow'], ['borderRadius']],
+  },
   disabled: {
     selectNames: [
       ['lineHeight'],
@@ -601,7 +606,7 @@ export const DividedContainer = CSSComponent({
     box-sizing: border-box;
     font-size: ${px2remcss(14)};
   `,
-  option: { hover: false, active: false, disabled: true },
+  option: { hover: true, active: true, disabled: true },
 });
 
 export const DividedWrap = StaticComponent({
