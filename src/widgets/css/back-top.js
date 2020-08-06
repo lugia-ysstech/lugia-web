@@ -37,6 +37,7 @@ export type BackTopProps = {
   icon?: string,
   text: string,
   showType: showType,
+  injectLugiad?: Object,
 };
 export type BackTopState = {
   fixed: boolean,
