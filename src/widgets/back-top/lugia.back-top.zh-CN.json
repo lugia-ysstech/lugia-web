@@ -8,6 +8,11 @@
       "desc": "是否渲染当前组件",
       "defaultValue": false
     },
+    "injectLugiad": {
+      "type": "Object",
+      "defaultValue": { "type": "BackTop" },
+      "isHidden": true
+    },
     "visibilityHeight": {
       "type": "number",
       "desc": "页面滚动高度达到指定值后出现BackTop",
