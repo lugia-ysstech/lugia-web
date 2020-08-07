@@ -50,13 +50,15 @@ export const ALink = CSSComponent({
   tag: 'a',
   className: 'aLink',
   normal: {
-    selectNames: [['color'], ['fontSize'], ['font'], ['margin'], ['padding']],
+    selectNames: [['color'], ['fontSize'], ['font'], ['margin'], ['padding'], ['cursor']],
     getThemeMeta(themeMeta, themeConfig) {
-      const { propsConfig: { isLastItem } = {} } = themeConfig;
+      const { propsConfig: { isLastItem, href } = {} } = themeConfig;
       const color = isLastItem ? defaultColor : noLastItemColor;
+      const cursorOptions = typeof href === 'string' ? 'pointer' : 'default';
       return {
         color,
         fontSize: sectionFontSize,
+        cursor: cursorOptions,
       };
     },
   },
@@ -134,6 +136,7 @@ export const BreadcrumbContainer = CSSComponent({
     overflow: hidden;
     align-items: center;
     width: 100%;
+    cursor: default;
   `,
   option: { hover: true },
 });

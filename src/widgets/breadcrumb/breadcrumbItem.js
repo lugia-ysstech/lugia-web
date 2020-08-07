@@ -130,7 +130,7 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
             href={href}
             themeProps={getPartOfThemeProps('Text', {
               selector: { index, count },
-              props: { isLastItem },
+              props: { isLastItem, href },
             })}
           >
             {this.getPrefixIcon()}
