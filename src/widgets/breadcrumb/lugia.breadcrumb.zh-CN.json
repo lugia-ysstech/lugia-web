@@ -140,7 +140,8 @@
               ["margin", "right"],
               ["padding", "left"],
               ["padding", "right"],
-              ["font"]
+              ["font"],
+              ["cursor"]
             ],
             "nth": [
               ["color"],
