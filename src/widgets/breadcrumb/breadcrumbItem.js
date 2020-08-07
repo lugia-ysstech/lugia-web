@@ -115,7 +115,17 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
   };
 
   render() {
-    const { separator, children, getPartOfThemeProps, isLastItem, href, index, count } = this.props;
+    const {
+      separator,
+      children,
+      getPartOfThemeProps,
+      isLastItem,
+      href,
+      index,
+      count,
+      path,
+    } = this.props;
+    const cursorOptions = href || path ? 'pointer' : 'default';
     let Link = CommonSpan;
     if ('href' in this.props) {
       Link = ALink;
@@ -130,7 +140,7 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
             href={href}
             themeProps={getPartOfThemeProps('Text', {
               selector: { index, count },
-              props: { isLastItem, href },
+              props: { isLastItem, cursorOptions },
             })}
           >
             {this.getPrefixIcon()}
