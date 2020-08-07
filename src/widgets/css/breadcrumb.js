@@ -27,13 +27,6 @@ export const CommonSpan = CSSComponent({
 
   hover: {
     selectNames: [['color'], ['font'], ['fontSize'], ['font']],
-    getThemeMeta(themeMeta, themeConfig) {
-      const { propsConfig: { isLastItem } = {} } = themeConfig;
-      const color = isLastItem ? defaultColor : hoverDefaultColor;
-      return {
-        color,
-      };
-    },
   },
   css: css`
     transition: font-size 0.3s;
@@ -52,9 +45,8 @@ export const ALink = CSSComponent({
   normal: {
     selectNames: [['color'], ['fontSize'], ['font'], ['margin'], ['padding'], ['cursor']],
     getThemeMeta(themeMeta, themeConfig) {
-      const { propsConfig: { isLastItem, href } = {} } = themeConfig;
+      const { propsConfig: { isLastItem, cursorOptions } = {} } = themeConfig;
       const color = isLastItem ? defaultColor : noLastItemColor;
-      const cursorOptions = typeof href === 'string' ? 'pointer' : 'default';
       return {
         color,
         fontSize: sectionFontSize,
