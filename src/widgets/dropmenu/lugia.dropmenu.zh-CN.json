@@ -513,22 +513,14 @@
         ["borderRadius"]
       ],
       "hover": [
-        ["margin"],
-        ["lineHeight"],
         ["opacity"],
-        ["cursor"],
         ["boxShadow"],
-        ["borderRadius"],
-        ["border"]
+        ["borderRadius"]
       ],
       "active": [
-        ["margin"],
-        ["lineHeight"],
         ["opacity"],
-        ["cursor"],
         ["boxShadow"],
-        ["borderRadius"],
-        ["border"]
+        ["borderRadius"]
       ],
       "disabled": [["lineHeight"], ["opacity"], ["boxShadow"], ["cursor"], ["borderRadius"]]
     },

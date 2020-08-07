@@ -573,10 +573,10 @@ export const DividedContainer = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['lineHeight'], ['opacity'], ['cursor'], ['boxShadow'], ['borderRadius']],
+    selectNames: [['opacity'], ['boxShadow'], ['borderRadius']],
   },
   active: {
-    selectNames: [['lineHeight'], ['opacity'], ['cursor'], ['boxShadow'], ['borderRadius']],
+    selectNames: [['opacity'], ['boxShadow'], ['borderRadius']],
   },
   disabled: {
     selectNames: [
