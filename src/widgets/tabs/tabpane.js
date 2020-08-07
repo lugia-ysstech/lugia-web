@@ -527,17 +527,14 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     const themeObj = {
       [viewClass]: {
         normal: {
-          color: darkGreyColor,
+          color: isSelect ? themeColor : darkGreyColor,
           fontSize: sFontSize,
           getThemeMeta: (theme: Object, themeProps: Object) => {
-            const { propsConfig: { isSelect } = {} } = themeProps;
-            const titleSelectColor = isSelect ? { color: themeColor } : {};
             return {
               margin: {
                 left: suffixIcon ? marginToSameElement : 0,
                 right: icon ? marginToSameElement : 0,
               },
-              ...titleSelectColor,
             };
           },
         },

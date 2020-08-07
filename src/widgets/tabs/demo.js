@@ -733,7 +733,13 @@ export default class TabsDemo extends React.Component<any, any> {
               color: '#ccc',
             },
           },
+          SelectSuffixIcon: {
+            normal: {
+              color: '#830ba5',
+            },
+          },
         },
+
         BorderStyle: {
           normal: {
             border: {
