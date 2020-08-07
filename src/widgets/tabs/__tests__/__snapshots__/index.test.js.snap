@@ -112,7 +112,7 @@ exports[`tabsDemo Component JSON 1`] = `
 
 .c1 {
   position: relative;
-  z-index: 99;
+  z-index: 5;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
