@@ -85,6 +85,7 @@ exports[`tabsDemo Component JSON 1`] = `
   white-space: nowrap;
   overflow: hidden;
   float: left;
+  z-index: 5;
 }
 
 .c4 {
@@ -112,7 +113,6 @@ exports[`tabsDemo Component JSON 1`] = `
 
 .c1 {
   position: relative;
-  z-index: 99;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
