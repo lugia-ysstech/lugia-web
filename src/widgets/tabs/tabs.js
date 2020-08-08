@@ -71,6 +71,7 @@ const TabContentContainer = CSSComponent({
     position: relative;
     background: #fff;
     min-width: 100px;
+    padding: 10px;
     flex: 1;
   `,
 });
@@ -365,7 +366,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       target = (
         <WindowContainer themeProps={outContainerThemeProps}>
           <OutContainer themeProps={themeProps}>
-            <TabHeader {...this.getTabHeaderProps()} ref={this.header} />
+            {!hideTabBar ? <TabHeader {...this.getTabHeaderProps()} ref={this.header} /> : null}
             {this.getChildrenContent()}
           </OutContainer>
         </WindowContainer>
@@ -461,10 +462,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   onAddClick = (e: Event) => {
     const { onAddClick } = this.props;
-    onAddClick && onAddClick(e);
-    if (hasTargetInProps('activityValue', this.props)) {
+    if (onAddClick) {
+      onAddClick(e);
       return;
     }
+
     if (hasTargetInProps('data', this.props) || hasTargetInProps('children', this.props)) {
       return;
     }
