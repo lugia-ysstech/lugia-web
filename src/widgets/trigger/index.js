@@ -143,9 +143,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   popupContainer: ?Object;
 
   getContainer(popupContainerId?: string) {
-    if (popupContainerId && this.popupContainer) {
-      return this.popupContainer;
-    } else if (this.popupContainer) {
+    if (popupContainerId) {
       return this.popupContainer;
     }
     const { getPopupContainer, getDocument } = this.props;
@@ -213,8 +211,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   componentDidMount() {
     const { popupContainerId } = this.props;
-    if (popupContainerId) {
-      this.popupContainer = document.getElementById(popupContainerId);
+    const geTriggerContainerDomId = document.getElementById(popupContainerId);
+    if (popupContainerId && geTriggerContainerDomId) {
+      this.popupContainer = geTriggerContainerDomId;
     }
   }
 
