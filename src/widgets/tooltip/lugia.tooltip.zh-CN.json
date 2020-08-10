@@ -115,9 +115,6 @@
       { "value": "right", "text": "右" },
       { "value": "rightBottom", "text": "右下" }
     ],
-    "DomIdType": [
-      { "value": "", "text": "" }
-    ]
   },
   "category": ["数据展示"],
   "theme": {
