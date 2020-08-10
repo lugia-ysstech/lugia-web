@@ -123,9 +123,10 @@ const ValidateHoc = (Target: Object) => {
       };
       const { normal: { width } = {} } = getPartOfThemeConfig('Container');
       const theWidth = width || '100%';
-      const { createPortal = true } = this.props;
+      const { createPortal = true, popupPosition } = this.props;
       return (
         <ToolTip
+          popupPosition={popupPosition}
           createPortal={createPortal}
           theme={newTheme}
           viewClass={viewClass}
