@@ -14,8 +14,8 @@
       "propsDefaultValue": true
     },
     "popupPosition": {
-      "type": "string",
-      "desc": "弹出提示框的位置"
+      "type": "DomIdType",
+      "desc": "配置弹出提示框的作用容器id"
     },
     "placement": {
       "type": "DirectionType",
@@ -114,6 +114,9 @@
       { "value": "rightTop", "text": "右上" },
       { "value": "right", "text": "右" },
       { "value": "rightBottom", "text": "右下" }
+    ],
+    "DomIdType": [
+      { "value": "", "text": "" }
     ]
   },
   "category": ["数据展示"],
