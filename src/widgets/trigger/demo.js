@@ -239,32 +239,53 @@ class Test extends React.Component<PropsType, StateType> {
         <br />
         <br />
         <br />
+        <p>popupContainerId 跨多个盒子 的id </p>
         <div
           id="outerContainerId"
           style={{ width: 400, height: 100, position: 'relative', border: '1px solid green' }}
         >
-          <Trigger
-            createPortal
-            action={'click'}
-            align={'bottom'}
-            popup={
-              <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
-                根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id
-                弹出弹窗
-              </div>
-            }
-            popupContainerId={'outerContainerId'}
+          <div
+            id="innerContainerId"
+            style={{
+              width: 350,
+              height: 100,
+              position: 'relative',
+              border: '1px solid blue',
+            }}
           >
             <div
+              id="innerContainerId"
               style={{
-                width: 50,
-                height: 20,
-                border: '1px solid red',
+                width: 250,
+                height: 100,
+                position: 'relative',
+                border: '1px solid blue',
               }}
             >
-              点击弹窗
+              <Trigger
+                createPortal
+                action={'click'}
+                align={'bottom'}
+                popup={
+                  <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
+                    根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id
+                    弹出弹窗
+                  </div>
+                }
+                popupContainerId={'outerContainerId'}
+              >
+                <div
+                  style={{
+                    width: 50,
+                    height: 20,
+                    border: '1px solid red',
+                  }}
+                >
+                  点击弹窗
+                </div>
+              </Trigger>
             </div>
-          </Trigger>
+          </div>
         </div>
         <br />
         <br />
