@@ -61,6 +61,7 @@ exports[`tabsDemo Component JSON 1`] = `
   -ms-user-select: none;
   user-select: none;
   width: 100%;
+  height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -69,7 +70,6 @@ exports[`tabsDemo Component JSON 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 4.2rem;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -138,9 +138,8 @@ exports[`tabsDemo Component JSON 1`] = `
   position: relative;
   background: #fff;
   min-width: 100px;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  height: 100%;
+  padding: 10px;
   text-align: left;
 }
 
@@ -245,7 +244,7 @@ exports[`tabsDemo Component JSON 1`] = `
     </div>
   </div>
   <div
-    className="c8"
+    className="TabContentContainerS  c8"
     style={Object {}}
   />
 </div>

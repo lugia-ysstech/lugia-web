@@ -71,7 +71,8 @@ const TabContentContainer = CSSComponent({
     position: relative;
     background: #fff;
     min-width: 100px;
-    flex: 1;
+    height: 100%;
+    padding: 10px;
   `,
 });
 const TabContent = CSSComponent({
@@ -141,6 +142,14 @@ const OutContainer = CSSComponent({
       ['borderRadius'],
       ['boxShadow'],
     ],
+    getThemeMeta(themeMeta, themeConfig) {
+      const {
+        propsConfig: { tabType },
+      } = themeConfig;
+      if (tabType === 'window') {
+        return { height: '100%' };
+      }
+    },
   },
   disabled: {
     selectNames: [],
@@ -361,11 +370,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
         containerThemeProps,
         this.props.getPartOfThemeProps('WindowContainer')
       );
-
+      const outContainerTheme = deepMerge(themeProps, { propsConfig: { tabType } });
       target = (
         <WindowContainer themeProps={outContainerThemeProps}>
-          <OutContainer themeProps={themeProps}>
-            <TabHeader {...this.getTabHeaderProps()} ref={this.header} />
+          <OutContainer className={'OutContainer'} themeProps={outContainerTheme}>
+            {!hideTabBar ? <TabHeader {...this.getTabHeaderProps()} ref={this.header} /> : null}
             {this.getChildrenContent()}
           </OutContainer>
         </WindowContainer>
@@ -462,10 +471,12 @@ class TabsBox extends Component<TabsProps, TabsState> {
   onAddClick = (e: Event) => {
     const { onAddClick } = this.props;
     onAddClick && onAddClick(e);
-    if (hasTargetInProps('activityValue', this.props)) {
-      return;
-    }
-    if (hasTargetInProps('data', this.props) || hasTargetInProps('children', this.props)) {
+    if (
+      hasTargetInProps('data', this.props) ||
+      hasTargetInProps('activeValue', this.props) ||
+      hasTargetInProps('activityValue', this.props) ||
+      hasTargetInProps('children', this.props)
+    ) {
       return;
     }
     const { data } = this.state;
@@ -548,25 +559,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
       );
     }
   }
-
-  getAutoContentHeightTheme = (totalHeight: number) => {
-    const { tabPosition } = this.props;
-    if (tabPosition === 'left' || tabPosition === 'right') {
-      return;
-    }
-    let headerHeight = 0;
-    const hearDom = this.header.current;
-    if (hearDom) {
-      headerHeight = hearDom.offsetHeight;
-    }
-    return {
-      ContentBlock: {
-        normal: {
-          height: em(totalHeight - headerHeight),
-        },
-      },
-    };
-  };
 }
 
 export default ThemeHoc(TabsBox, Widget.Tabs, {
