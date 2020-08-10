@@ -13,6 +13,10 @@
       "desc": "是否全局弹出下拉框",
       "propsDefaultValue": true
     },
+    "popupContainerId": {
+      "type": "ContainerDomIdType",
+      "desc": "配置弹出框的作用容器id"
+    },
     "defaultValue": {
       "type": "string",
       "desc": "日期默认显示值"

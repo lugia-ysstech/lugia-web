@@ -102,7 +102,16 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   }
 
   render() {
-    const { menus, action, hideAction, align, createPortal, alwaysOpen, liquidLayout } = this.props;
+    const {
+      menus,
+      action,
+      hideAction,
+      align,
+      createPortal,
+      alwaysOpen,
+      liquidLayout,
+      popupContainerId,
+    } = this.props;
     const config = {
       [Widget.DropMenuButton]: this.getDropMenuButtonTheme(),
       [Widget.Menu]: this.getMenuTheme(),
@@ -140,6 +149,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
         }}
       >
         <Trigger
+          popupContainerId={popupContainerId}
           themePass
           ref={cmp => (this.trigger = cmp)}
           align={align}

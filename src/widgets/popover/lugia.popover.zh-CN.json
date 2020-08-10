@@ -8,6 +8,10 @@
       "desc": "是否全局弹出器气泡框",
       "propsDefaultValue": true
     },
+    "popupContainerId": {
+      "type": "ContainerDomIdType",
+      "desc": "配置弹出框的作用容器id"
+    },
     "lugiaHidden": {
       "type": "boolean",
       "desc": "是否渲染当前组件",

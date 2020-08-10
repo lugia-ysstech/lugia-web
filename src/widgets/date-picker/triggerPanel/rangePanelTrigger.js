@@ -438,6 +438,7 @@ class Range extends Component<TypeProps, TypeState> {
       liquidLayout,
       alwaysOpen,
       open,
+      popupContainerId,
     } = this.props;
     const { monthAndYear } = this;
     const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
@@ -461,6 +462,7 @@ class Range extends Component<TypeProps, TypeState> {
     return (
       <Box themeProps={inputContainProps}>
         <Trigger
+          popupContainerId={popupContainerId}
           themePass
           createPortal={createPortal}
           onDocumentClick={this.onDocumentClick}
