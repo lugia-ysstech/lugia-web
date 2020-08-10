@@ -138,10 +138,8 @@ exports[`tabsDemo Component JSON 1`] = `
   position: relative;
   background: #fff;
   min-width: 100px;
+  height: 100%;
   padding: 10px;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   text-align: left;
 }
 
@@ -246,7 +244,7 @@ exports[`tabsDemo Component JSON 1`] = `
     </div>
   </div>
   <div
-    className="c8"
+    className="TabContentContainerS  c8"
     style={Object {}}
   />
 </div>

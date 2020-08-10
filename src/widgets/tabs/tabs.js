@@ -71,8 +71,8 @@ const TabContentContainer = CSSComponent({
     position: relative;
     background: #fff;
     min-width: 100px;
+    height: 100%;
     padding: 10px;
-    flex: 1;
   `,
 });
 const TabContent = CSSComponent({
@@ -142,6 +142,14 @@ const OutContainer = CSSComponent({
       ['borderRadius'],
       ['boxShadow'],
     ],
+    getThemeMeta(themeMeta, themeConfig) {
+      const {
+        propsConfig: { tabType },
+      } = themeConfig;
+      if (tabType === 'window') {
+        return { height: '100%' };
+      }
+    },
   },
   disabled: {
     selectNames: [],
@@ -362,10 +370,10 @@ class TabsBox extends Component<TabsProps, TabsState> {
         containerThemeProps,
         this.props.getPartOfThemeProps('WindowContainer')
       );
-
+      const outContainerTheme = deepMerge(themeProps, { propsConfig: { tabType } });
       target = (
         <WindowContainer themeProps={outContainerThemeProps}>
-          <OutContainer themeProps={themeProps}>
+          <OutContainer className={'OutContainer'} themeProps={outContainerTheme}>
             {!hideTabBar ? <TabHeader {...this.getTabHeaderProps()} ref={this.header} /> : null}
             {this.getChildrenContent()}
           </OutContainer>
@@ -550,25 +558,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
       );
     }
   }
-
-  getAutoContentHeightTheme = (totalHeight: number) => {
-    const { tabPosition } = this.props;
-    if (tabPosition === 'left' || tabPosition === 'right') {
-      return;
-    }
-    let headerHeight = 0;
-    const hearDom = this.header.current;
-    if (hearDom) {
-      headerHeight = hearDom.offsetHeight;
-    }
-    return {
-      ContentBlock: {
-        normal: {
-          height: em(totalHeight - headerHeight),
-        },
-      },
-    };
-  };
 }
 
 export default ThemeHoc(TabsBox, Widget.Tabs, {
