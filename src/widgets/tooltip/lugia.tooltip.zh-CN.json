@@ -14,7 +14,7 @@
       "propsDefaultValue": true
     },
     "popupContainerId": {
-      "type": "DomIdType",
+      "type": "ContainerDomIdType",
       "desc": "配置弹出提示框的作用容器id"
     },
     "placement": {
