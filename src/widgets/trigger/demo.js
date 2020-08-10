@@ -254,7 +254,7 @@ class Test extends React.Component<PropsType, StateType> {
             }}
           >
             <div
-              id="innerContainerId"
+              id="ContainerId"
               style={{
                 width: 250,
                 height: 100,
