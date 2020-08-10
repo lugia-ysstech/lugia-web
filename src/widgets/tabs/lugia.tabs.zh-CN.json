@@ -295,11 +295,6 @@
           "desc": "页签区域样式配置",
           "normal": [["background"], ["textAlign"]]
         },
-        "BorderStyle": {
-          "name": "默认线",
-          "desc": "默认线样式配置",
-          "normal": [["background"], ["width"]]
-        },
         "TabHeader": {
           "name": "标签配置",
           "theme": {
@@ -403,13 +398,10 @@
             ["background"],
             ["border"],
             ["borderRadius"],
-            ["boxShadow"]
+            ["boxShadow"],
+            ["padding"],
+            ["opacity"]
           ]
-        },
-        "WindowContainer": {
-          "name": "窗口背景区域",
-          "desc": "窗口背景区域样式配置",
-          "normal": [["background"], ["padding"], ["border"], ["borderRadius"], ["opacity"]]
         },
         "ContentBlock": {
           "name": "内容区域",
