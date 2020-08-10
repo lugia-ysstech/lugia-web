@@ -277,6 +277,7 @@ export const Wrap = CSSComponent({
     background: transparent;
     border-style: solid;
     transition: all 0.3s;
+    overflow: hidden;
     ${getBorderColor}
   `,
   normal: {
@@ -302,32 +303,6 @@ export const Wrap = CSSComponent({
       return `
         border-width: 0 0 ${borderWidth}px;
       `;
-    },
-  },
-  hover: {
-    getCSS(themeMeta, themeProps) {
-      const { propsConfig = {}, themeConfig = {} } = themeProps;
-      const { hover } = propsConfig;
-      const { width } = themeMeta;
-      const { normal = {} } = themeConfig;
-      const theWidth = width || normal.width;
-      let widthStyle;
-      if (hover) {
-        if (theWidth) {
-          if (typeof theWidth === 'number') {
-            widthStyle = px2remcss(theWidth + 24);
-          } else {
-            widthStyle = `calc(${theWidth} + 24px)`;
-          }
-        } else {
-          widthStyle = 'calc(100% + 24px)';
-        }
-
-        return `
-        width: ${widthStyle} !important;
-        transform: translateX(-24px);
-        `;
-      }
     },
   },
 });

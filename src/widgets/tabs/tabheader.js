@@ -110,6 +110,7 @@ const HTabsContainer = CSSComponent({
     white-space: nowrap;
     overflow: hidden;
     float: left;
+    z-index: 5;
   `,
 });
 
@@ -281,7 +282,6 @@ const HTabsOutContainer = CSSComponent({
   },
   css: css`
     position: relative;
-    z-index: 99;
     display: flex;
     align-items: center;
     clear: both;

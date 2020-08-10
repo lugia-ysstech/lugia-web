@@ -20,12 +20,18 @@ export type PaginationProps = {
   nextIconClass?: string,
   preIconSrc?: string,
   nextIconSrc?: string,
-  quickJumperInputBlur?: (page: number, pageSize: number, event: UIEvent) => void,
   blockList?: string[],
   align?: AlignType,
   showTotalData?: boolean,
   size: SizeType,
   divided: boolean,
+  quickJumperValue?: number,
+  onQuickJumperInputKeyUp?: (event: KeyboardEvent) => void,
+  onQuickJumperInputKeyDown?: (event: KeyboardEvent) => void,
+  onQuickJumperInputKeyPress?: (event: KeyboardEvent) => void,
+  onQuickJumperInputFocus?: (event: UIEvent) => void,
+  onQuickJumperInputBlur?: (current: number, event: UIEvent) => void,
+  onQuickJumperInputEnter?: (current: number, event: KeyboardEvent) => void,
 };
 
 export type PaginationState = {

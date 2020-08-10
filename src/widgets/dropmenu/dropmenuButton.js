@@ -252,8 +252,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
       'TextContainer'
     );
 
-    const dividedThemeConfig = getPartOfThemeConfig('Divides');
-
+    const dividedThemeConfig = getPartOfThemeConfig('Divided');
     return (
       <DividedContainer
         themeProps={this.getWrapThemeProps(dividedThemeConfig)}

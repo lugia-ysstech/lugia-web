@@ -6,26 +6,39 @@
  */
 import * as React from 'react';
 import Tabs from './';
-import Button from '../button';
 import Tabpane from './tabpane';
 import Widget from '../consts/index';
 import Icon from '../icon';
 import Theme from '../theme/';
 
-import colorsFunc from '../css/stateColor';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 import { css, StaticComponent } from '@lugia/theme-css-hoc';
 
-const { themeColor } = colorsFunc();
-
-const ContainerBox = StaticComponent({
+const Description = StaticComponent({
   tag: 'div',
-  className: 'ContentBlock',
+  className: 'Description',
   css: css`
-    margin: 10px;
-    &:last-child {
-      margin-bottom: 200px;
-    }
+    margin: 20px 0;
+    font-weight: bold;
+  `,
+});
+
+const FlexContainer = StaticComponent({
+  tag: 'div',
+  className: 'FlexContainer',
+  css: css`
+    display: flex;
+    flex-wrap: wrap;
+  `,
+});
+
+const BlockContainer = StaticComponent({
+  tag: 'div',
+  className: 'BlockContainer',
+  css: css`
+    width: 50%;
+    padding: 10px;
+    border-right: 2px solid #ccc;
   `,
 });
 
@@ -63,20 +76,11 @@ const TestContainer = StaticComponent({
     height: 60px;
   `,
 });
-const onPreClick = e => {
-  console.log('res onPreClick', e);
-};
-const onNextClick = e => {
-  console.log('res onNextClick', e);
-};
-
-const titleStyle = { margin: '20px 0', fontWeight: 'bold' };
 export const defaultData = [
   {
     title: 'Tab1',
     value: 'Tab1',
-    content:
-      'content of Tab1第三方的顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶但是犯得上房贷首付但是犯得上房贷首付撒旦发射点发射点大师傅士大夫撒旦大师傅士大夫第三方手动阀手动阀大师傅似的',
+    content: 'content of Tab1',
   },
   {
     title: 'Tab2',
@@ -86,6 +90,43 @@ export const defaultData = [
   {
     title: 'Tab3',
     value: 'Tab3',
+    content: 'content of Tab3',
+  },
+];
+export const iconClassData = [
+  {
+    title: 'Tab1',
+    value: 'Tab1',
+    suffixIcon: 'lugia-icon-financial_archive',
+    icon: 'lugia-icon-financial_archive',
+    content: 'content of Tab1',
+  },
+  {
+    title: 'Tab2',
+    value: 'Tab2',
+    icon: 'lugia-icon-financial_archive',
+    content: 'content of Tab2',
+    disabled: true,
+  },
+  {
+    title: 'Tab3',
+    value: 'Tab3',
+    suffixIcon: 'lugia-icon-financial_archive',
+    content: 'content of Tab3',
+  },
+];
+export const disabledData = [
+  {
+    title: 'Tab1',
+    content: 'content of Tab1',
+  },
+  {
+    title: 'Tab2',
+    content: 'content of Tab2',
+    disabled: true,
+  },
+  {
+    title: 'Tab3',
     content: 'content of Tab3',
   },
 ];
@@ -124,7 +165,7 @@ export const testThemeData = [
     content: 'content of Tab7',
   },
 ];
-export const suffixData = [
+export const iconElementData = [
   {
     title: 'Tab1',
     content: 'content of Tab1',
@@ -139,19 +180,95 @@ export const suffixData = [
     content: 'content of Tab3',
   },
 ];
-export const disabledData = [
+
+export const pageTypeData = [
   {
     title: 'Tab1',
-    content: 'content of Tab1',
+    content: <div>1111111111</div>,
+    value: '0',
   },
   {
     title: 'Tab2',
-    content: 'content of Tab2',
-    disabled: true,
+    content: (
+      <div>
+        <div>222222</div>
+      </div>
+    ),
+    value: '1',
   },
   {
+    value: '2',
     title: 'Tab3',
-    content: 'content of Tab3',
+    content: (
+      <div>
+        <div>
+          <div>33333</div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    value: '3',
+    title: 'Tab4',
+    disabled: true,
+    content: (
+      <div>
+        <div>
+          <div>44444</div>
+          <div>44444</div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    value: '4',
+    title: 'Tab5',
+    content: 55555,
+  },
+  {
+    value: '5',
+    title: 'Tab6',
+    content: 66666,
+  },
+  {
+    value: '6',
+    title: 'Tab7',
+    content: 77777,
+  },
+  {
+    value: '7',
+    title: 'Tab8',
+    content: 888888,
+  },
+  {
+    value: '8',
+    title: 'Tab9',
+    content: 999999,
+  },
+  {
+    value: '9',
+    title: 'Tab10',
+    content: 101010100101010100101,
+  },
+  {
+    value: '10',
+    title: 'Tab11',
+    content: 11111111111111111111111111,
+  },
+  {
+    value: '11',
+    title: 'Tab12',
+    content: 1212121212121212121212112212121,
+  },
+  {
+    value: '12',
+    title: 'Tab13',
+    content: 13131313313131331313131313313331,
+  },
+  {
+    value: '13',
+    title: 'Tab14',
+    content: 141414141444141414141414141,
   },
 ];
 export const hasActivityValueData = [
@@ -325,131 +442,6 @@ export const shortChildren = [
     value={'2'}
   />,
 ];
-const hasActivityValueChildren = [
-  <Tabpane title={'11111'} content={'1111'} value={'0'} />,
-  <Tabpane title={'2222'} content={<div>2222</div>} value={'1'} />,
-  <Tabpane
-    title={'3333'}
-    content={
-      <div>
-        <div>
-          <div>33333333</div>
-        </div>
-      </div>
-    }
-    value={'2'}
-  />,
-  <Tabpane
-    title={'44444'}
-    content={
-      <div>
-        <div>
-          <div>444444444</div>
-        </div>
-      </div>
-    }
-    value={'3'}
-  />,
-  <Tabpane
-    title={'55555'}
-    content={
-      <div>
-        <div>
-          <div>55555555555</div>
-        </div>
-      </div>
-    }
-    value={'4'}
-  />,
-  <Tabpane
-    title={'66666'}
-    content={
-      <div>
-        <div>
-          <div>66666666666</div>
-        </div>
-      </div>
-    }
-    value={'5'}
-  />,
-  <Tabpane
-    title={'7777777'}
-    content={
-      <div>
-        <div>
-          <div>77777777777</div>
-        </div>
-      </div>
-    }
-    value={'6'}
-  />,
-  <Tabpane
-    title={'8888888'}
-    content={
-      <div>
-        <div>
-          <div>88888888888</div>
-        </div>
-      </div>
-    }
-    value={'7'}
-  />,
-  <Tabpane
-    title={'999999'}
-    content={
-      <div>
-        <div>
-          <div>9999999999</div>
-        </div>
-      </div>
-    }
-    value={'8'}
-  />,
-  <Tabpane
-    title={'10101010'}
-    content={
-      <div>
-        <div>
-          <div>10101101010</div>
-        </div>
-      </div>
-    }
-    value={'9'}
-  />,
-  <Tabpane
-    title={'1111111'}
-    content={
-      <div>
-        <div>
-          <div>111111111111</div>
-        </div>
-      </div>
-    }
-    value={'10'}
-  />,
-  <Tabpane
-    title={'12121212'}
-    content={
-      <div>
-        <div>
-          <div>121212</div>
-        </div>
-      </div>
-    }
-    value={'11'}
-  />,
-  <Tabpane
-    title={'131313'}
-    content={
-      <div>
-        <div>
-          <div>131313131313</div>
-        </div>
-      </div>
-    }
-    value={'12'}
-  />,
-];
 export const defaulttestDelayData = [
   {
     title: '猪蹄',
@@ -466,6 +458,50 @@ export const defaulttestDelayData = [
   },
   { title: '排骨', content: '排骨啊啊啊啊' },
   { title: '鸡腿', content: '鸡腿啊啊啊啊' },
+];
+export const customData = [
+  {
+    content: 'content',
+    icon: 'icon',
+    key: '1',
+    suffixIcon: 'suffixIcon',
+    title: '待办事项',
+  },
+  {
+    content: 'content',
+    icon: 'icon',
+    key: '2',
+    suffixIcon: 'suffixIcon',
+    title: '消息通知',
+  },
+  {
+    content: 'content',
+    icon: 'icon',
+    key: '3',
+    suffixIcon: 'suffixIcon',
+    title: '我的收藏',
+  },
+  {
+    content: 'content',
+    icon: 'icon',
+    key: '4',
+    suffixIcon: 'suffixIcon',
+    title: '资源下载',
+  },
+  {
+    content: 'content',
+    icon: 'icon',
+    key: '5',
+    suffixIcon: 'suffixIcon',
+    title: '我的收藏',
+  },
+  {
+    content: 'content',
+    icon: 'icon',
+    key: '6',
+    suffixIcon: 'suffixIcon',
+    title: '资源下载',
+  },
 ];
 
 const addItem = [
@@ -510,6 +546,247 @@ const getData = () => {
   return defaultHome.concat(defaultData);
 };
 
+const pageTypeTheme = {
+  [Widget.Tabs]: {
+    Container: {
+      normal: {
+        width: 560,
+        height: 210,
+      },
+    },
+  },
+};
+
+const contentTheme = {
+  [Widget.Tabs]: {
+    ContentBlock: {
+      normal: {
+        padding: {
+          top: 20,
+          bottom: 20,
+        },
+        background: {
+          color: 'rgba(246,247,229,0.72)',
+        },
+      },
+    },
+  },
+};
+const containerContentTheme = {
+  [Widget.Tabs]: {
+    ContentBlock: {
+      normal: {
+        padding: {
+          top: 20,
+          bottom: 20,
+        },
+        height: 200,
+        background: {
+          color: 'rgb(252,211,248)',
+        },
+      },
+    },
+    Container: {
+      normal: {
+        height: 300,
+        background: {
+          color: 'rgb(251,246,219)',
+        },
+      },
+    },
+  },
+};
+
+const titleTheme = {
+  [Widget.Tabs]: {
+    TitleContainer: {
+      normal: {
+        background: {
+          color: 'rgba(246,247,229,0.72)',
+        },
+      },
+    },
+    TabHeader: {
+      DefaultTabPan: {
+        normal: {
+          color: 'orange',
+          height: 48,
+          width: 232,
+          font: {
+            family: '',
+            size: 14,
+            style: 'normal',
+            weight: 'normal',
+          },
+          borderRadius: getBorderRadius(4),
+          padding: {
+            left: 20,
+            right: 20,
+          },
+          textAlign: 'center',
+        },
+        disabled: {
+          color: 'red',
+        },
+      },
+      SelectTabPan: {
+        normal: {
+          color: '#9310ec',
+          background: {
+            color: '#d4ed96',
+          },
+          padding: {
+            left: 40,
+            right: 40,
+          },
+          borderRadius: getBorderRadius(10),
+        },
+      },
+      DividerTheme: {
+        normal: {
+          background: {
+            color: '#9310ec',
+          },
+        },
+      },
+      PrefixIcon: {
+        normal: {
+          color: '#1056ec',
+        },
+      },
+      SelectPrefixIcon: {
+        normal: {
+          color: '#ec3510',
+        },
+      },
+      SuffixIcon: {
+        normal: {
+          color: '#ec1064',
+        },
+      },
+      SelectSuffixIcon: {
+        normal: {
+          color: '#4eec10',
+        },
+      },
+      SelectLine: {
+        normal: {
+          background: {
+            color: '#ecda10',
+          },
+        },
+      },
+    },
+  },
+};
+
+const titleCenterTheme = {
+  [Widget.Tabs]: {
+    TitleContainer: {
+      normal: {
+        background: {
+          color: '#f0eeb6',
+        },
+        textAlign: 'center',
+      },
+    },
+  },
+};
+
+const titleRightTheme = {
+  [Widget.Tabs]: {
+    TitleContainer: {
+      normal: {
+        background: {
+          color: '#f0eeb6',
+        },
+        textAlign: 'right',
+      },
+    },
+  },
+};
+
+const tabsTheme = {
+  [Widget.Tabs]: {
+    Container: {
+      normal: {
+        width: 300,
+        padding: {
+          left: 40,
+        },
+        background: {
+          color: '#e86da0',
+        },
+      },
+    },
+    BorderStyle: {
+      normal: {
+        background: {
+          color: '#cd90ea',
+        },
+        width: 4,
+      },
+    },
+    AddButton: {
+      normal: {
+        color: '#99ec85',
+        font: {
+          size: 20,
+        },
+      },
+    },
+    ArrowIcon: {
+      normal: {
+        color: '#99ec85',
+        font: {
+          size: 20,
+        },
+      },
+    },
+    TabHeader: {
+      DeleteIcon: {
+        normal: {
+          color: '#99ec85',
+          font: {
+            size: 20,
+          },
+        },
+      },
+      SelectLine: {
+        normal: {
+          background: {
+            color: '#ecda10',
+          },
+          height: 4,
+        },
+      },
+    },
+    ContentBlock: {
+      normal: {
+        boxShadow: { x: 0, y: 0, color: '#ffb69e', type: 'outset', blur: 2, spread: 3 },
+        border: getBorder({ color: 'blue', width: 1, style: 'solid' }),
+        borderRadius: getBorderRadius(20),
+        textAlign: 'center',
+      },
+    },
+  },
+};
+
+const customTheme = {
+  [Widget.Tabs]: {
+    TabHeader: {
+      DefaultTabPan: {
+        normal: {
+          padding: {
+            left: 0,
+            right: 0,
+          },
+        },
+      },
+    },
+  },
+};
+
 type TabpaneProps = {};
 
 type TabpaneState = {
@@ -520,12 +797,9 @@ type TabpaneState = {
 };
 
 export default class TabsDemo extends React.Component<any, any> {
-  onChange = event => {
-    console.log('switch event onChange');
-  };
   static getDerivedStateFromProps(nextProps: TabpaneProps, state: TabpaneState) {
-    let data = hasActivityValueData;
-    let dataWindow = hasActivityValueData;
+    let data = pageTypeData;
+    let dataWindow = pageTypeData;
     let activityValue = 0;
     let abc = [
       {
@@ -580,13 +854,13 @@ export default class TabsDemo extends React.Component<any, any> {
 
   componentDidMount() {}
 
-  onAddClick = () => {
-    const { data } = this.state;
+  onAddClick = targetData => () => {
+    const data = this.state[targetData];
     const newData = [...data];
     const activeIndex = `Tab${data.length + 1}`;
     const item = this.getAddItem();
     newData.push(item);
-    this.setState({ data: newData, activityValue: activeIndex });
+    this.setState({ [targetData]: newData, activityValue: activeIndex });
   };
 
   onChange = (res: Object) => {
@@ -645,494 +919,13 @@ export default class TabsDemo extends React.Component<any, any> {
   };
 
   render() {
-    const lineView = {
-      [Widget.Tabs]: {
-        ContentBlock: {
-          normal: {
-            padding: {
-              top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
-            },
-          },
-        },
-
-        BorderStyle: {
-          normal: {
-            color: '#ffa6ca',
-            width: 1,
-            border: {
-              right: {
-                color: '#ff3946',
-                width: 1,
-                style: 'solid',
-              },
-            },
-          },
-        },
-        TitleContainer: {
-          normal: {
-            width: 330,
-            height: 300,
-          },
-        },
-
-        TabHeader: {
-          SelectTabPan: {
-            normal: {
-              color: 'red',
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-          DefaultTabPan: {
-            normal: {
-              height: 31,
-            },
-            hover: {
-              color: 'orange',
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-        },
-      },
-    };
-    const lineViewBot = {
-      [Widget.Tabs]: {
-        ContentBlock: {
-          normal: {
-            padding: {
-              top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
-            },
-          },
-        },
-        TabHeader: {
-          SelectTabPan: {
-            normal: {
-              color: 'red',
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-          DefaultTabPan: {
-            normal: {
-              height: 31,
-            },
-            hover: {
-              color: 'orange',
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-        },
-        BorderStyle: {
-          normal: {
-            border: {
-              bottom: {
-                color: '#FFCCFF',
-                width: 1,
-                style: 'solid',
-              },
-            },
-          },
-        },
-        TitleContainer: {
-          normal: {
-            width: 330,
-            height: 300,
-          },
-        },
-      },
-    };
-    const lineViewLeft = {
-      [Widget.Tabs]: {
-        ContentBlock: {
-          normal: {
-            padding: {
-              top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
-            },
-          },
-        },
-        BorderStyle: {
-          normal: {
-            border: {
-              left: {
-                color: '#FFCCFF',
-                width: 1,
-                style: 'solid',
-              },
-            },
-          },
-        },
-
-        TitleContainer: {
-          normal: {
-            width: 330,
-            height: 300,
-          },
-        },
-        TabHeader: {
-          SelectTabPan: {
-            normal: {
-              color: 'red',
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-          DefaultTabPan: {
-            hover: {
-              color: 'orange',
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-        },
-      },
-    };
-    const lineViewTop = {
-      [Widget.Tabs]: {
-        ContentBlock: {
-          normal: {
-            padding: {
-              top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
-            },
-          },
-        },
-        TitleContainer: {
-          normal: {
-            width: 330,
-            // height: 300,
-          },
-        },
-        TabHeader: {
-          SelectTabPan: {
-            normal: {
-              color: 'red',
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-          DefaultTabPan: {
-            normal: {
-              height: 31,
-            },
-            hover: {
-              color: 'orange',
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-          SelectLine: {
-            normal: {
-              background: {
-                color: 'black',
-              },
-              height: 5,
-              width: 5,
-            },
-          },
-        },
-      },
-    };
-    const cardView = {
-      [Widget.Tabs]: {
-        Container: {
-          normal: {
-            width: '100%',
-          },
-        },
-        TitleContainer: {
-          normal: {
-            textAlign: 'center',
-          },
-        },
-        AddButton: {
-          normal: {},
-          hover: {
-            background: {
-              color: '#ccc',
-            },
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
-        TabHeader: {
-          SelectTabPan: {
-            normal: {
-              color: 'red',
-              background: {
-                color: '#fff',
-              },
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-          DefaultTabPan: {
-            normal: {
-              background: {
-                color: 'pink',
-              },
-            },
-            hover: {
-              color: 'orange',
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-        },
-      },
-    };
-    const defaultCardView = {
-      [Widget.Tabs]: {
-        TabHeader: {},
-        TitleContainer: {
-          normal: {
-            width: 330,
-            height: 300,
-          },
-        },
-        DisabledTabPan: {
-          normal: {
-            color: '#999',
-          },
-        },
-        AddButton: {
-          normal: {
-            color: '#000',
-            width: 20,
-            height: 20,
-            opacity: 1,
-            background: {
-              color: '#e8e8e8',
-            },
-            boxShadow: { x: 0, y: 0, color: '#e8e8e8', type: 'outset', blur: 1, spread: 1 },
-            border: getBorder({ color: 'blue', width: 1, style: 'solid' }),
-          },
-          hover: {
-            background: {
-              color: '#ccc',
-            },
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
-      },
-    };
-
-    const windowView = {
-      [Widget.Tabs]: {
-        Container: {
-          normal: {
-            width: 300,
-          },
-        },
-        WindowContainer: {
-          normal: {
-            padding: {
-              left: 10,
-              right: 10,
-              top: 10,
-              bottom: 10,
-            },
-            background: {
-              color: 'orange',
-            },
-          },
-        },
-        TitleContainer: {
-          normal: {
-            width: '100%',
-          },
-        },
-        TabHeader: {
-          SelectTabPan: {
-            normal: {
-              color: 'green',
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-          DefaultTabPan: {
-            normal: {
-              height: 40,
-            },
-            hover: {
-              color: 'orange',
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-        },
-        ContentBlock: {
-          normal: {
-            height: 300,
-          },
-        },
-      },
-    };
-    const { testDelayData, data, dataWindow, activityValue, abc, abcActivityValue } = this.state;
-
-    const updateTheme = {
-      [Widget.Tabs]: {
-        Container: {
-          normal: {
-            // width: '330',
-            // height: 300,
-            margin: {
-              top: 10,
-              left: 10,
-              // right: 10,
-              bottom: 10,
-            },
-          },
-        },
-        TitleContainer: {
-          normal: {
-            textAlign: 'center',
-          },
-        },
-        ContentBlock: {
-          normal: {
-            padding: {
-              top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
-            },
-            margin: {
-              // top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
-            },
-            background: {
-              color: '#aabbcc',
-            },
-            boxShadow: { x: 0, y: 0, color: '#ffb69e', type: 'outset', blur: 6, spread: 3 },
-            border: getBorder({ color: 'blue', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(20),
-            textAlign: 'center',
-          },
-        },
-        BorderStyle: {
-          normal: {
-            color: '#6e6ccc',
-            width: 1,
-          },
-        },
-        TabHeader: {
-          SelectTabPan: {
-            normal: {
-              color: 'red',
-              boxShadow: getBoxShadow('0 0 6px pink'),
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-          DefaultTabPan: {
-            normal: {
-              height: 31,
-              borderRadius: {
-                bottomLeft: 0,
-                bottomRight: 0,
-                topLeft: 6,
-                topRight: 6,
-              },
-              margin: {
-                top: 4,
-              },
-            },
-            hover: {
-              color: 'orange',
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-        },
-      },
-    };
-    const borderTheme = {
-      [Widget.Tabs]: {
-        TabHeader: {
-          DividerTheme: {
-            normal: {
-              background: {
-                color: '#ffce5a',
-              },
-              width: 30,
-              // height: 30,
-            },
-          },
-        },
-      },
-    };
-    const IconTheme = {
-      [Widget.Tabs]: {
-        Container: {
-          normal: {
-            width: '530',
-            height: 300,
-          },
-        },
-        ArrowIcon: {
-          normal: {
-            color: 'red',
-          },
-          hover: {
-            color: '#9c1a82',
-          },
-          disabled: {
-            // color:'#6e782b'
-          },
-        },
-
-        AddButton: {
-          normal: {
-            color: '#0cac9c',
-          },
-        },
-        TabHeader: {
-          DeleteIcon: {
-            normal: {
-              color: 'red',
-            },
-            hover: {
-              color: '#16bc20',
-            },
-            disabled: {
-              color: '#6e782b',
-            },
-          },
-        },
-      },
-    };
+    const {
+      data: addItemPageTypeData,
+      testDelayData,
+      dataWindow,
+      abc,
+      abcActivityValue,
+    } = this.state;
 
     const tabpanTheme = {
       [Widget.Tabs]: {
@@ -1163,765 +956,451 @@ export default class TabsDemo extends React.Component<any, any> {
         },
       },
     };
+
+    const typeList = ['line', 'card', 'window'];
     return (
       <div>
-        <Tabs data={defaultData} activeValue={'Tab3'} />
-        <Tabs
-          tabType={'card'}
-          data={defaultData}
-          activeValue={'Tab3'}
-          activityValue={'Tab1'}
-          defaultActivityValue={'Tab3'}
-          defaultActiveValue={'Tab2'}
-        />
-        <Tabs tabType={'card'} defaultData={getData()} showDeleteBtn={true} />
-        <Theme config={tabpanTheme}>
-          <Tabs tabType={'card'} data={getData()} />
-          <Tabs tabType={'window'} data={getData()} />
-          <Tabs
-            // tabType={'card'}
-            data={getData()}
-          />
-
-          <Tabs tabPosition={'left'} data={getData()} />
-
-          <Tabs tabPosition={'left'} data={defaultData} />
-
-          <Tabs tabPosition={'right'} data={getData()} />
-          <Tabs tabPosition={'bottom'} data={getData()} />
-          <Tabs tabType={'window'} data={getData()} />
-        </Theme>
-        <Theme config={tabpanTheme}>
-          <ContainerBox>
-            <div onClick={this.addTabPan}>add tabPane</div>
-            <Tabs data={abc} activityValue={abcActivityValue} showDividerLine showAddBtn={true} />
-          </ContainerBox>
-        </Theme>
-        <ContainerBox>
-          <Tabs>
-            <Tabpane
-              title={
-                <div
-                  style={{
-                    textOverflow: 'ellipsis',
-                    overflow: 'hidden',
-                    whitespace: 'nowrap',
-                    width: '120px',
-                  }}
-                >
-                  这里是很长很长超过了宽度要隐藏的文本吧
-                </div>
-              }
-              content={'11111'}
-              value={'0'}
-              suffixIcon={'lugia-icon-direction_backward'}
-            />
-            <Tabpane title={'2222'} content={<div>2222</div>} value={'1'} />
-            <Tabpane
-              title={'3333'}
-              content={
-                <div>
-                  <div>
-                    <div>3333</div>
-                  </div>
-                </div>
-              }
-              value={'2'}
-            />
-            <Tabpane
-              title={'4444'}
-              content={
-                <div>
-                  <div>
-                    <div>44444</div>
-                  </div>
-                </div>
-              }
-              value={'3'}
-            />
-            <Tabpane
-              title={'555555'}
-              content={
-                <div>
-                  <div>
-                    <div>55555</div>
-                  </div>
-                </div>
-              }
-              value={'4'}
-            />
-          </Tabs>
-        </ContainerBox>
-
-        <ContainerBox>
-          <Theme config={lineViewTop}>
+        <FlexContainer>
+          <BlockContainer>
+            <Description>默认无属性Tabs</Description>
             <Tabs />
-          </Theme>
-          <Theme config={lineViewLeft}>
-            <Tabs tabPosition={'left'} />
-          </Theme>
-        </ContainerBox>
+            <Description>默认无属性Tabs------------------------end</Description>
+          </BlockContainer>
 
-        <ContainerBox>
-          <Theme
-            config={{
-              [Widget.Tabs]: {
-                Container: { normal: { height: 32, width: 540 } },
-                ContentBlock: { normal: { background: 'none' } },
-                TabHeader: {
-                  DefaultTabPan: {
-                    normal: {
-                      color: '#737b89',
-                      font: {
-                        family: '',
-                        size: 14,
-                        style: 'normal',
-                        weight: 'normal',
-                      },
-                      height: 28,
-                      padding: { bottom: '', left: '', right: '', top: '' },
-                      width: 132,
-                    },
-                  },
-                  SelectTabPan: {
-                    normal: {
-                      color: '#0052db',
-                      font: {
-                        family: '',
-                        size: 14,
-                        style: 'normal',
-                        weight: 'normal',
-                      },
-                    },
-                  },
-                },
-                WindowContainer: {
-                  normal: {
-                    background: { color: '#F0F2F5' },
-                    padding: { bottom: '2', left: '2', right: '', top: '2' },
-                  },
-                },
-              },
-            }}
-          >
-            <Tabs
-              viewClass="wbGmRn0"
-              data={[
-                {
-                  content: 'content',
-                  icon: 'icon',
-                  key: '1',
-                  suffixIcon: 'suffixIcon',
-                  title: '待办事项',
-                },
-                {
-                  content: 'content',
-                  icon: 'icon',
-                  key: '2',
-                  suffixIcon: 'suffixIcon',
-                  title: '消息通知',
-                },
-                {
-                  content: 'content',
-                  icon: 'icon',
-                  key: '3',
-                  suffixIcon: 'suffixIcon',
-                  title: '我的收藏',
-                },
-                {
-                  content: 'content',
-                  icon: 'icon',
-                  key: '4',
-                  suffixIcon: 'suffixIcon',
-                  title: '资源下载',
-                },
-                {
-                  content: 'content',
-                  icon: 'icon',
-                  key: '5',
-                  suffixIcon: 'suffixIcon',
-                  title: '我的收藏',
-                },
-                {
-                  content: 'content',
-                  icon: 'icon',
-                  key: '6',
-                  suffixIcon: 'suffixIcon',
-                  title: '资源下载',
-                },
-              ]}
-              defaultActivityValue=""
-              forceRender=""
-              pagedType={'single'}
-              showAddBtn=""
-              showDeleteBtn=""
-              tabPosition={'top`'}
-              tabType={'window'}
-            />
-          </Theme>
-        </ContainerBox>
+          <BlockContainer>
+            <Description>默认无数据Tabs</Description>
+            {typeList.map(item => {
+              return <Tabs tabType={item} />;
+            })}
+            <Description>默认无数据Tabs------------------------end</Description>
+          </BlockContainer>
 
-        <Theme
-          config={{
-            [Widget.Tabs]: {
-              Container: { normal: { height: 60, width: 540 } },
-              ContentBlock: { normal: { background: 'none' } },
-              TabHeader: {
-                DefaultTabPan: {
-                  normal: {
-                    color: '#737b89',
-                    font: {
-                      family: '',
-                      size: 14,
-                      style: 'normal',
-                      weight: 'normal',
-                    },
-                    height: 58,
-                    padding: { bottom: '', left: '', right: '', top: '' },
-                    width: 132,
-                  },
-                },
-                SelectTabPan: {
-                  normal: {
-                    color: '#0052db',
-                    font: {
-                      family: '',
-                      size: 14,
-                      style: 'normal',
-                      weight: 'normal',
-                    },
-                  },
-                },
-              },
-              WindowContainer: {
-                normal: {
-                  background: { color: '#F0F2F5' },
-                  padding: { bottom: '2', left: '2', right: '', top: '2' },
-                },
-              },
-            },
-          }}
-        >
-          <Tabs
-            viewClass="wbGmRn0"
-            data={[
-              {
-                content: 'content',
-                icon: 'icon',
-                key: '1',
-                suffixIcon: 'suffixIcon',
-                title: '待办事项',
-              },
-              {
-                content: 'content',
-                icon: 'icon',
-                key: '2',
-                suffixIcon: 'suffixIcon',
-                title: '消息通知',
-              },
-              {
-                content: 'content',
-                icon: 'icon',
-                key: '3',
-                suffixIcon: 'suffixIcon',
-                title: '我的收藏',
-              },
-              {
-                content: 'content',
-                icon: 'icon',
-                key: '4',
-                suffixIcon: 'suffixIcon',
-                title: '资源下载',
-              },
-              {
-                content: 'content',
-                icon: 'icon',
-                key: '5',
-                suffixIcon: 'suffixIcon',
-                title: '我的收藏',
-              },
-              {
-                content: 'content',
-                icon: 'icon',
-                key: '6',
-                suffixIcon: 'suffixIcon',
-                title: '资源下载',
-              },
-            ]}
-            defaultActivityValue=""
-            forceRender=""
-            pagedType={'single'}
-            showAddBtn=""
-            showDeleteBtn=""
-            tabPosition={'top`'}
-            tabType={'window'}
-          />
-        </Theme>
-        <Theme config={tabpanTheme}>
-          <p style={{ titleStyle }}>tabpanTheme</p>
-          <ContainerBox>
-            <Tabs
-              tabType={'card'}
-              data={hasActivityValueData}
-              showDeleteBtn={true}
-              showAddBtn={true}
-              addIcon={'lugia-icon-direction_logout'}
-            />
-          </ContainerBox>
-          <ContainerBox>
-            <Tabs
-              // tabType={'card'}
-              data={hasActivityValueData}
-              showDeleteBtn={true}
-              showAddBtn={true}
-              addIcon={'lugia-icon-direction_logout'}
-            />
-          </ContainerBox>
+          <BlockContainer>
+            <Description>默认Tabs</Description>
+            {typeList.map(item => {
+              return <Tabs data={defaultData} tabType={item} />;
+            })}
+            <Description>默认Tabs------------------------end</Description>
+          </BlockContainer>
 
-          <ContainerBox>
-            <Tabs
-              // tabType={'card'}
-              tabPosition={'bottom'}
-              data={hasActivityValueData}
-              showDeleteBtn={true}
-              showAddBtn={true}
-              addIcon={'lugia-icon-direction_logout'}
-            />
-          </ContainerBox>
+          <BlockContainer>
+            <Description>有IconClass的Tabs</Description>
+            {typeList.map(item => {
+              return <Tabs data={iconClassData} tabType={item} />;
+            })}
+            <Description>有IconClass的Tabs------------------------end</Description>
+          </BlockContainer>
 
-          <ContainerBox>
-            <Tabs
-              // tabType={'card'}
-              tabPosition={'left'}
-              data={hasActivityValueData}
-              showDeleteBtn={true}
-              showAddBtn={true}
-              addIcon={'lugia-icon-direction_logout'}
-            />
-          </ContainerBox>
+          <BlockContainer>
+            <Description>有iconElementData的Tabs</Description>
+            {typeList.map(item => {
+              return <Tabs data={iconElementData} tabType={item} />;
+            })}
+            <Description>有iconElementData的Tabs------------------------end</Description>
+          </BlockContainer>
 
-          <ContainerBox>
-            <Tabs
-              // tabType={'card'}
-              tabPosition={'right'}
-              data={hasActivityValueData}
-              showDeleteBtn={true}
-              showAddBtn={true}
-              addIcon={'lugia-icon-direction_logout'}
-            />
-          </ContainerBox>
+          <BlockContainer>
+            <Description>有disabled的Tabs</Description>
+            {typeList.map(item => {
+              return <Tabs data={disabledData} tabType={item} />;
+            })}
+            <Description>有disabled的Tabs------------------------end</Description>
+          </BlockContainer>
 
-          <ContainerBox>
-            <Tabs
-              tabType={'window'}
-              data={hasActivityValueData}
-              showDeleteBtn={true}
-              showAddBtn={true}
-              addIcon={'lugia-icon-direction_logout'}
-            />
-          </ContainerBox>
-        </Theme>
-        <Theme config={IconTheme}>
-          <p style={{ titleStyle }}>IconTheme</p>
-          <ContainerBox>
-            <Tabs
-              tabType={'card'}
-              data={hasActivityValueData}
-              showDeleteBtn={true}
-              showAddBtn={true}
-              addIcon={'lugia-icon-direction_logout'}
-            />
-          </ContainerBox>
-          <ContainerBox>
-            <Tabs
-              tabType={'window'}
-              data={hasActivityValueData}
-              showDeleteBtn={true}
-              showAddBtn={true}
-              deleteIcon={'lugia-icon-financial_abort'}
-            />
-          </ContainerBox>
-          <ContainerBox>
-            <Tabs
-              tabPosition={'left'}
-              data={hasActivityValueData}
-              showDeleteBtn={true}
-              showAddBtn={true}
-              pageArrowIcon={{
-                preIcon: 'lugia-icon-direction_rollback',
-                suffixIcon: 'lugia-icon-direction_enter',
-              }}
-            />
-          </ContainerBox>
-        </Theme>
-        <p style={{ titleStyle }}>default IconTheme</p>
-        <ContainerBox>
-          <Tabs
-            tabType={'card'}
-            data={hasActivityValueData}
-            showDeleteBtn={true}
-            showAddBtn={true}
-            addIcon={'lugia-icon-direction_logout'}
-          />
-        </ContainerBox>
-        <ContainerBox>
-          <Tabs
-            tabType={'window'}
-            data={hasActivityValueData}
-            showDeleteBtn={true}
-            showAddBtn={true}
-            deleteIcon={'lugia-icon-financial_abort'}
-          />
-        </ContainerBox>
-        <ContainerBox>
-          <Tabs
-            tabPosition={'left'}
-            data={hasActivityValueData}
-            showDeleteBtn={true}
-            showAddBtn={true}
-            pageArrowIcon={{
-              preIcon: 'lugia-icon-direction_rollback',
-              suffixIcon: 'lugia-icon-direction_enter',
-            }}
-          />
-        </ContainerBox>
+          <BlockContainer>
+            <Description>受限的Tabs activeValue:Tab3</Description>
+            {typeList.map(item => {
+              return <Tabs data={defaultData} tabType={item} activeValue={'Tab3'} />;
+            })}
+            <Description>受限的Tabs------------------------end</Description>
+          </BlockContainer>
 
-        <Theme config={borderTheme}>
-          <p style={{ titleStyle }}>borderTheme</p>
-          <ContainerBox>
-            <Tabs showDividerLine={true}>
-              <Tabpane
-                title={'1111'}
-                value={'0'}
-                icon={'lugia-icon-financial_heart'}
-                suffixIcon={'lugia-icon-financial_like'}
-              />
-              <Tabpane title={'2222'} showDeleteBtn={true} />
-            </Tabs>
-          </ContainerBox>
-          <ContainerBox>
-            <Tabs showDividerLine={true} tabPosition={'left'}>
-              <Tabpane title={'1111'} value={'0'} />
-              <Tabpane title={'2222'} showDeleteBtn={true} />
-            </Tabs>
-          </ContainerBox>
-        </Theme>
+          <BlockContainer>
+            <Description>受限的Tabs activityValue:Tab3</Description>
+            {typeList.map(item => {
+              return <Tabs data={defaultData} tabType={item} activityValue={'Tab3'} />;
+            })}
+            <Description>受限的Tabs------------------------end</Description>
+          </BlockContainer>
 
-        <Theme config={updateTheme}>
-          <ContainerBox>
-            <Tabs>
-              <Tabpane title={'1111'} value={'0'} />
-              <Tabpane title={'2222'} showDeleteBtn={true} />
-            </Tabs>
-          </ContainerBox>
-          <ContainerBox>
-            <Tabs tabPosition={'bottom'}>
-              <Tabpane title={'1111'} value={'0'} />
-              <Tabpane title={'2222'} showDeleteBtn={true} />
-            </Tabs>
-          </ContainerBox>
-          <ContainerBox>
-            <Tabs tabType={'card'} data={defaulttestDelayData} showDeleteBtn={true} />
-          </ContainerBox>
-          <ContainerBox>
-            <Tabs
-              tabType={'card'}
-              data={defaulttestDelayData}
-              showDeleteBtn={true}
-              forceRender={true}
-            />
-          </ContainerBox>
-          <ContainerBox>
-            <Tabs tabType={'window'} data={defaulttestDelayData} showDeleteBtn={true} />
-          </ContainerBox>
+          <BlockContainer>
+            <Description>有分割线的Tabs showDividerLine: true </Description>
+            {typeList.map(item => {
+              return <Tabs data={dataWindow} tabType={item} showDividerLine />;
+            })}
 
-          <Tabs tabPosition={'left'} data={defaulttestDelayData} />
-        </Theme>
+            <Description>有分割线的Tabs------------------------end</Description>
+          </BlockContainer>
 
-        <Theme config={cardView}>
-          <div>
-            <p style={{ titleStyle }}>tabType=card pagedType=single</p>
-            <Tabs
-              tabType={'card'}
-              pagedType={'single'}
-              data={hasActivityValueData}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              showDeleteBtn={true}
-            />
-          </div>
-          <br />
-        </Theme>
-        <Tabs tabType={'card'} />
-        <br />
-        <Tabs tabType={'window'} />
-        <Theme config={lineViewBot}>
-          <div>
-            <p style={{ ...titleStyle }}>defaultData pagedType=single forceRender=true </p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'top'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              pagedType={'single'}
-              forceRender={true}
-              data={testDelayData}
-            />
-          </div>
-          <div>
-            <p style={{ ...titleStyle }}>defaultData pagedType=single forceRender=false </p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'top'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              pagedType={'single'}
-              activityValue={activityValue}
-              onChange={this.onChange}
-              data={testDelayData}
-            />
-          </div>
+          <BlockContainer>
+            <Description>单项翻页的Tabs pagedType: single</Description>
+            <Theme config={pageTypeTheme}>
+              {typeList.map(item => {
+                return <Tabs data={pageTypeData} tabType={item} pagedType={'single'} />;
+              })}
+            </Theme>
+            <Description>单项翻页的Tabs------------------------end</Description>
+          </BlockContainer>
 
-          <div>
-            <p style={{ ...titleStyle }}>height 60 </p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'top'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              defaultData={defaultData}
-              pagedType={'single'}
-            />
-          </div>
-          <div>
-            <p style={{ ...titleStyle }}>suffixIcon </p>
-            <Tabs tabType={'line'} tabPosition={'top'} data={suffixData} />
-          </div>
-          <div>
-            <p style={{ ...titleStyle }}>disabled </p>
-            <Tabs tabType={'line'} tabPosition={'top'} data={disabledData} />
-          </div>
-          <div>
-            <p style={{ ...titleStyle }}>data tabPosition=top</p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'top'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              children={children}
-              data={defaultData}
-            />
-          </div>
-        </Theme>
+          <BlockContainer>
+            <Description>单项翻页的Tabs pagedType: single tabPosition: left</Description>
+            <Theme config={pageTypeTheme}>
+              {typeList.map(item => {
+                return (
+                  <Tabs
+                    data={pageTypeData}
+                    tabType={item}
+                    tabPosition={'left'}
+                    pagedType={'single'}
+                  />
+                );
+              })}
+            </Theme>
+            <Description>单项翻页的Tabs------------------------end</Description>
+          </BlockContainer>
 
-        <Theme config={lineViewTop}>
-          <div>
-            <p style={{ ...titleStyle }}>defaultData pagedType=page</p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'bottom'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              children={hasActivityValueChildren}
-              pagedType={'page'}
-            />
-          </div>
-          <p style={{ ...titleStyle }}>children tabPosition=bottom</p>
-          <div>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'bottom'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              pagedType={'single'}
-              children={longChildren}
-            />
-          </div>
-          <p style={{ ...titleStyle }}>children tabPosition=bottom</p>
-          <div>
-            <Tabs
-              tabType={'line'}
-              data={defaultData}
-              tabPosition={'bottom'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-            />
-          </div>
-          <br />
+          <BlockContainer>
+            <Description>
+              整页翻页的Tabs pagedType: page preIcon: lugia-icon-direction_verticle_left suffixIcon:
+              lugia-icon-direction_verticle_right
+            </Description>
+            <Theme config={pageTypeTheme}>
+              {typeList.map(item => {
+                return (
+                  <Tabs
+                    data={pageTypeData}
+                    pageArrowIcon={{
+                      preIcon: 'lugia-icon-direction_verticle_left',
+                      suffixIcon: 'lugia-icon-direction_verticle_right',
+                    }}
+                    tabType={item}
+                    pagedType={'page'}
+                  />
+                );
+              })}
+            </Theme>
+            <Description>整页翻页的Tabs------------------------end</Description>
+          </BlockContainer>
 
-          <br />
-        </Theme>
+          <BlockContainer>
+            <Description>
+              整页翻页的Tabs pagedType: page preIcon: lugia-icon-direction_verticle_left suffixIcon:
+              lugia-icon-direction_verticle_right tabPosition: left
+            </Description>
+            <Theme config={pageTypeTheme}>
+              {typeList.map(item => {
+                return (
+                  <Tabs
+                    data={pageTypeData}
+                    pageArrowIcon={{
+                      preIcon: 'lugia-icon-direction_verticle_left',
+                      suffixIcon: 'lugia-icon-direction_verticle_right',
+                    }}
+                    tabType={item}
+                    pagedType={'page'}
+                    tabPosition={'left'}
+                  />
+                );
+              })}
+            </Theme>
+            <Description>整页翻页的Tabs------------------------end</Description>
+          </BlockContainer>
 
-        <Theme config={lineView}>
-          <div>
-            <p style={{ ...titleStyle }}>data tabPosition=left </p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'left'}
-              data={hasActivityValueData}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-            />
-          </div>
-          <div>
-            <p style={{ ...titleStyle }}>children tabPosition=left pagedType = page</p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'left'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              pagedType={'page'}
-              children={hasActivityValueChildren}
-            />
-          </div>
-          <div>
-            <p style={{ ...titleStyle }}>children tabPosition=left pagedType = single</p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'left'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              pagedType={'single'}
-              children={hasActivityValueChildren}
-            />
-          </div>
-          <div>
-            <p style={{ ...titleStyle }}>data tabPosition=left </p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'left'}
-              data={hasActivityValueData}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-            />
-          </div>
-          <br />
-        </Theme>
-        <Theme config={lineViewLeft}>
-          <p style={{ ...titleStyle }}>children tabPosition=right</p>
-          <div>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'right'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              pagedType={'single'}
-              children={shortChildren}
-            />
-          </div>
-          <br />
-          <p style={{ ...titleStyle }}>data tabPosition=right && pagedType=single</p>
-          <div>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'right'}
-              data={hasActivityValueData}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              defaultActivityValue={'2'}
-            />
-          </div>
-          <br />
-        </Theme>
+          <BlockContainer>
+            <Description>
+              非受限 默认的可增加的Tabs showAddBtn: true onAddClick:this.onAddClick
+            </Description>
+            {typeList.map(item => {
+              return <Tabs defaultData={testDelayData} tabType={item} showAddBtn />;
+            })}
 
-        <Theme config={cardView}>
-          <div>
-            <p style={{ ...titleStyle }}>tabType=card pagedType=single</p>
-            <Tabs tabType={'card'} pagedType={'page'} showDeleteBtn={true} />
-          </div>
-          <br />
-          <br />
-        </Theme>
+            <Description>非受限 默认的可增加的Tabs------------------------end</Description>
+          </BlockContainer>
 
-        <Theme config={cardView}>
-          <div>
-            <p style={{ ...titleStyle }}>
-              tabType=card pagedType=single showadd 非受限 无指定增加项
-            </p>
-            <Tabs
-              tabType={'card'}
-              pagedType={'single'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              showAddBtn={true}
-            />
-          </div>
-          <div>
-            <p style={{ ...titleStyle }}>
-              tabType=card pagedType=single showadd 非受限 有指定增加项
-            </p>
-            <Tabs
-              tabType={'card'}
-              pagedType={'single'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              showAddBtn={true}
-              getAddItem={this.getAddItem}
-            />
-          </div>
-          <br />
-          <br />
-          <div>
-            <p style={{ ...titleStyle }}>tabType=card pagedType=single showadd 受限</p>
-            <Tabs
-              tabType={'card'}
-              pagedType={'single'}
-              data={data}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              showAddBtn={true}
-              onAddClick={this.onAddClick}
-              activityValue={activityValue}
-              onChange={this.onChange}
-            />
-          </div>
-          <br />
-          <div>
-            <p style={{ ...titleStyle }}>
-              defaultData pagedType=single 受限 无增加函数 内部不做处理
-            </p>
-            <Tabs
-              tabType={'card'}
-              pagedType={'single'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              showAddBtn={true}
-              showDeleteBtn={true}
-              getAddItem={this.getAddItem}
-            >
-              <Tabpane title={'酥肉'} content={<div>酥肉啊啊啊 </div>} />
-              <Tabpane title={'海带'} content={<div>海带啊啊啊啊 </div>} key={'1'} />
-              <Tabpane title={'土豆'} content={'土豆啊啊啊'} key={'2'} />
-              <Tabpane title={'火锅'} content={<div>火锅啊啊啊啊</div>} key={'3'} />
-            </Tabs>
-          </div>
-        </Theme>
+          <BlockContainer>
+            <Description>
+              非受限 指定的可增加的Tabs showAddBtn: true onAddClick:this.onAddClick
+            </Description>
+            {typeList.map(item => {
+              return (
+                <Tabs
+                  defaultData={testDelayData}
+                  tabType={item}
+                  showAddBtn
+                  getAddItem={this.getAddItem}
+                />
+              );
+            })}
 
-        <Theme config={windowView}>
-          <div>
-            <p style={{ ...titleStyle }}>tabType=window pagedType=page 受限 delete</p>
-            <Tabs
-              tabType={'window'}
-              pagedType={'page'}
-              data={dataWindow}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              showDeleteBtn={true}
-              onDelete={this.onDelete}
-              onTabClick={this.onTabClick}
-            />
-          </div>
-          <div>
-            <p style={{ ...titleStyle }}>tabType=window pagedType=page 非受限 delete</p>
-            <Tabs
-              tabType={'window'}
-              pagedType={'page'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              showDeleteBtn={true}
-            />
-          </div>
-        </Theme>
+            <Description>非受限 指定的可增加的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>
+              受限 指定的可增加的Tabs addIcon：lugia-icon-financial_pin showAddBtn: true
+              onAddClick:this.onAddClick
+            </Description>
+            {typeList.map(item => {
+              return (
+                <Tabs
+                  data={addItemPageTypeData}
+                  addIcon={'lugia-icon-reminder_plus_circle_o'}
+                  tabType={item}
+                  showAddBtn
+                  onAddClick={this.onAddClick('data')}
+                />
+              );
+            })}
+
+            <Description>受限 指定的可增加的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>非受限 可删除的Tabs showDeleteBtn: true </Description>
+            {typeList.map(item => {
+              return <Tabs defaultData={addItemPageTypeData} tabType={item} showDeleteBtn />;
+            })}
+
+            <Description>非受限 可删除的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>
+              受限 可删除的Tabs deleteIcon:lugia-icon-financial_sad showDeleteBtn: true
+              onDelete:this.onDelete{' '}
+            </Description>
+            {typeList.map(item => {
+              return (
+                <Tabs
+                  data={dataWindow}
+                  deleteIcon={'lugia-icon-financial_sad'}
+                  tabType={item}
+                  showDeleteBtn
+                  onDelete={this.onDelete}
+                />
+              );
+            })}
+
+            <Description>受限 可删除的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>隐藏页签的Tabs hideTabBar: true</Description>
+            {typeList.map(item => {
+              return <Tabs data={defaultData} tabType={item} hideTabBar />;
+            })}
+            <Description>隐藏页签的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>隐藏内容的Tabs hideContent: true isShowArrowIcon：false</Description>
+            {typeList.map(item => {
+              return <Tabs data={defaultData} tabType={item} hideContent isShowArrowIcon={false} />;
+            })}
+
+            <Description>隐藏内容的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>配置Content主题的Tabs isShowArrowIcon：false</Description>
+            <Theme config={contentTheme}>
+              {typeList.map(item => {
+                return <Tabs data={defaultData} tabType={item} isShowArrowIcon={false} />;
+              })}
+            </Theme>
+            <Description>配置Content主题的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>页签位于底部的Tabs ShowArrowIcon：false</Description>
+            {typeList.map(item => {
+              return (
+                <Tabs
+                  data={defaulttestDelayData}
+                  tabType={item}
+                  isShowArrowIcon={false}
+                  tabPosition={'bottom'}
+                />
+              );
+            })}
+            <Description>页签位于底部的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>页签位于左侧的Tabs isShowArrowIcon：false</Description>
+            {typeList.map(item => {
+              return (
+                <Tabs
+                  data={defaulttestDelayData}
+                  tabType={item}
+                  isShowArrowIcon={false}
+                  tabPosition={'left'}
+                />
+              );
+            })}
+            <Description>页签位于左侧的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>页签位于右侧的Tabs isShowArrowIcon：false</Description>
+            {typeList.map(item => {
+              return (
+                <Tabs
+                  data={defaulttestDelayData}
+                  tabType={item}
+                  isShowArrowIcon={false}
+                  tabPosition={'right'}
+                />
+              );
+            })}
+            <Description>页签位于右侧的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>配置Title主题的Tabs showDividerLine：true</Description>
+            <Theme config={titleTheme}>
+              {typeList.map(item => {
+                return <Tabs data={iconClassData} showDividerLine tabType={item} />;
+              })}
+            </Theme>
+            <Description>配置Title主题的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>配置Title主题的Tabs 页签居中 </Description>
+            <Theme config={titleCenterTheme}>
+              {typeList.map(item => {
+                return <Tabs data={iconClassData} showDividerLine tabType={item} />;
+              })}
+            </Theme>
+            <Description>配置Title主题的Tabs 页签居中------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>配置Title主题的Tabs 页签居右 </Description>
+            <Theme config={titleRightTheme}>
+              {typeList.map(item => {
+                return <Tabs data={iconClassData} showDividerLine tabType={item} />;
+              })}
+            </Theme>
+            <Description>配置Title主题的Tabs 页签居右------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>配置主题的Tabs showAddBtn showDeleteBtn </Description>
+            <Theme config={tabsTheme}>
+              {typeList.map(item => {
+                return <Tabs data={iconClassData} showAddBtn showDeleteBtn tabType={item} />;
+              })}
+            </Theme>
+            <Description>配置主题的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>自定义页签 超出隐藏 </Description>
+            {typeList.map(item => {
+              return (
+                <Tabs tabType={item}>
+                  <Tabpane
+                    title={
+                      <div
+                        style={{
+                          textOverflow: 'ellipsis',
+                          overflow: 'hidden',
+                          whitespace: 'nowrap',
+                          width: '120px',
+                        }}
+                      >
+                        这里是很长很长超过了宽度要隐藏的文本吧
+                      </div>
+                    }
+                    content={'11111'}
+                    value={'0'}
+                    suffixIcon={'lugia-icon-direction_backward'}
+                  />
+                  <Tabpane title={'2222'} content={<div>2222</div>} value={'1'} />
+                </Tabs>
+              );
+            })}
+            <Description>自定义页签 超出隐藏------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>自定义主题的Tabs </Description>
+            <Theme config={customTheme}>
+              {typeList.map(item => {
+                return <Tabs data={customData} tabType={item} />;
+              })}
+            </Theme>
+            <Description>自定义主题的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>children用法的Tabs </Description>
+            {typeList.map(item => {
+              return (
+                <Tabs tabType={item}>
+                  <Tabpane
+                    title={'11111'}
+                    content={'这里是菜单啊~排骨，猪蹄，茴香小油条，豆腐，白菜，大萝卜'}
+                    icon={'lugia-icon-financial_archive'}
+                  />
+                  <Tabpane title={'2222'} content={<div>22222222222222</div>} value={'1'} />
+                  <Tabpane
+                    title={'3333'}
+                    content={
+                      <div>
+                        <div>
+                          <div>33333333</div>
+                        </div>
+                      </div>
+                    }
+                    value={'2'}
+                  />
+                  ,
+                </Tabs>
+              );
+            })}
+            <Description>children用法的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description> activityValue:activityValue showDividerLine showAddBtn </Description>
+            <Theme config={tabpanTheme}>
+              {typeList.map(item => {
+                return (
+                  <Tabs
+                    data={abc}
+                    tabType={item}
+                    activityValue={abcActivityValue}
+                    showDividerLine
+                    showAddBtn={true}
+                  />
+                );
+              })}
+            </Theme>
+            <Description>------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>自定义首页的Tabs data getData()</Description>
+            {typeList.map(item => {
+              return <Tabs data={getData()} tabType={item} />;
+            })}
+            <Description>自定义首页的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>验证Content主题的Tabs data getData()</Description>
+            <Theme config={containerContentTheme}>
+              {typeList.map(item => {
+                return <Tabs data={getData()} tabType={item} />;
+              })}
+            </Theme>
+            <Description>验证Content主题的Tabs------------------------end</Description>
+          </BlockContainer>
+        </FlexContainer>
+
         <br />
         <br />
         <p>测试 公共值</p>
@@ -1974,50 +1453,7 @@ export default class TabsDemo extends React.Component<any, any> {
         >
           <Tabs
             viewClass="wbGmRn0"
-            data={[
-              {
-                content: 'content',
-                icon: 'icon',
-                key: '1',
-                suffixIcon: 'suffixIcon',
-                title: '待办事项',
-              },
-              {
-                content: 'content',
-                icon: 'icon',
-                key: '2',
-                suffixIcon: 'suffixIcon',
-                title: '消息通知',
-              },
-              {
-                content: 'content',
-                icon: 'icon',
-                key: '3',
-                suffixIcon: 'suffixIcon',
-                title: '我的收藏',
-              },
-              {
-                content: 'content',
-                icon: 'icon',
-                key: '4',
-                suffixIcon: 'suffixIcon',
-                title: '资源下载',
-              },
-              {
-                content: 'content',
-                icon: 'icon',
-                key: '5',
-                suffixIcon: 'suffixIcon',
-                title: '我的收藏',
-              },
-              {
-                content: 'content',
-                icon: 'icon',
-                key: '6',
-                suffixIcon: 'suffixIcon',
-                title: '资源下载',
-              },
-            ]}
+            data={customData}
             defaultActivityValue=""
             forceRender=""
             pagedType={'single'}

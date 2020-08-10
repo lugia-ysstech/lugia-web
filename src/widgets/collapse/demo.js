@@ -197,7 +197,7 @@ export const CollapseDemo = class extends React.Component<any, any> {
     ];
     const view = {
       [Widget.Collapse]: {
-        Wrap: {
+        Container: {
           normal: {
             width: 410,
             height: 500,
@@ -283,6 +283,16 @@ export const CollapseDemo = class extends React.Component<any, any> {
               color: 'red',
               font: { size: 16, weight: 300 },
             },
+          },
+        },
+      },
+    };
+    const collapseTheme = {
+      [Widget.Collapse]: {
+        Container: {
+          normal: {
+            border: getBorder({ color: 'green', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(20),
           },
         },
       },
@@ -400,6 +410,28 @@ export const CollapseDemo = class extends React.Component<any, any> {
               <div>PanelContent...</div>
             </Panel>
           </Collapse>
+          <br />
+          <h2>不展示箭头</h2>
+          <Theme config={collapseTheme}>
+            <Collapse showArrow={false}>
+              <Panel value="1" title="LUGIA">
+                <div>PanelContent...</div>
+                <div>PanelContent...</div>
+              </Panel>
+              <Panel value="2" title="LUGIA">
+                <div>PanelContent...</div>
+                <div>PanelContent...</div>
+              </Panel>
+              <Panel value="3" title="LUGIA">
+                <div>PanelContent...</div>
+                <div>PanelContent...</div>
+              </Panel>
+              <Panel value="4" title="LUGIA">
+                <div>PanelContent...</div>
+                <div>PanelContent...</div>
+              </Panel>
+            </Collapse>
+          </Theme>
         </Wrapper>
       </div>
     );

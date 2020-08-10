@@ -175,6 +175,7 @@ const ChildrenContainer: Object = CSSComponent({
   },
   css: css`
     display: inline-block;
+    height: 100%;
   `,
 });
 
@@ -249,6 +250,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       alwaysOpen,
       liquidLayout,
       createPortal = true,
+      popupContainerId,
     } = this.props;
     const { visible } = this.state;
     const direction = this.getDirection(placement);
@@ -272,6 +274,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     const childrenThemeProps = deepMerge(defaultTheme(), contentThemeProps);
     return (
       <Trigger
+        popupContainerId={popupContainerId}
         createPortal={createPortal}
         lazy={false}
         alwaysOpen={alwaysOpen}

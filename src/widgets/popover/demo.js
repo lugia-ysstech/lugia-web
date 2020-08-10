@@ -217,6 +217,14 @@ export const WrapperDemo = () => {
         <Direction type="primary">点击</Direction>
       </Popover>
       <br />
+      <br />
+      <br />
+      <p>包含的组件 继承容器的高度</p>
+      <div style={{ width: 100, height: 50 }}>
+        <Popover title={title} action={'click'} placement="top">
+          <div style={{ height: '100%', border: '1px solid red' }}>点击触发</div>
+        </Popover>
+      </div>
     </Wrapper>
   );
 };

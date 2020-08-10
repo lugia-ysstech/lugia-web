@@ -513,30 +513,22 @@
         ["borderRadius"]
       ],
       "hover": [
-        ["margin"],
-        ["lineHeight"],
         ["opacity"],
-        ["cursor"],
         ["boxShadow"],
-        ["borderRadius"],
-        ["border"]
+        ["borderRadius"]
       ],
       "active": [
-        ["margin"],
-        ["lineHeight"],
         ["opacity"],
-        ["cursor"],
         ["boxShadow"],
-        ["borderRadius"],
-        ["border"]
+        ["borderRadius"]
       ],
       "disabled": [["lineHeight"], ["opacity"], ["boxShadow"], ["cursor"], ["borderRadius"]]
     },
 
-    "Divides": {
+    "Divided": {
       "name": "分割线配置",
       "desc": "分割线的样式配置",
-      "normal": [["width"], ["height"], ["background"]],
+      "normal": [["width"], ["height"], ["color"]],
       "hover": [["color"]],
       "active": [["color"]],
       "disabled": []
