@@ -24,6 +24,10 @@
       "desc": "是否全局弹出下拉框",
       "propsDefaultValue": true
     },
+    "popupContainerId": {
+      "type": "ContainerDomIdType",
+      "desc": "配置弹出框的作用容器id"
+    },
     "value": {
       "type": "string",
       "desc": "给定输入框的值"

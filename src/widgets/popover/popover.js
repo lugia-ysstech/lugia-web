@@ -114,6 +114,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
       liquidLayout,
       createPortal = true,
       popArrowType = 'sharp',
+      popupContainerId,
     } = this.props;
     const { visible } = this.state;
     const getTarget: Function = cmp => (this.target = cmp);
@@ -155,6 +156,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     );
     return (
       <Tooltip
+        popupContainerId={popupContainerId}
         createPortal={createPortal}
         alwaysOpen={alwaysOpen}
         liquidLayout={liquidLayout}
