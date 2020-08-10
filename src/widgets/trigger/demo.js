@@ -201,7 +201,43 @@ class Test extends React.Component<PropsType, StateType> {
         <br />
         <br />
         <br />
-
+        <div
+          id="innerContainerId"
+          style={{
+            width: 250,
+            height: 100,
+            border: '1px solid blue',
+          }}
+        >
+          <Trigger
+            createPortal
+            action={'click'}
+            align={'bottom'}
+            popup={
+              <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
+                根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id
+                弹出弹窗
+              </div>
+            }
+            popupContainerId={'innerContainerId'}
+          >
+            <div
+              style={{
+                width: 50,
+                height: 20,
+                border: '1px solid red',
+              }}
+            >
+              点击弹窗
+            </div>
+          </Trigger>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p> 默认没有定位的盒子</p>
         <div
           id="innerContainerId"
           style={{
@@ -286,6 +322,39 @@ class Test extends React.Component<PropsType, StateType> {
               </Trigger>
             </div>
           </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>popupContainerId id找不到的情况 </p>
+        <div
+          id="outerContainerId"
+          style={{ width: 400, height: 100, position: 'relative', border: '1px solid green' }}
+        >
+          <Trigger
+            createPortal
+            action={'click'}
+            align={'bottom'}
+            popup={
+              <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
+                根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id
+                弹出弹窗
+              </div>
+            }
+            popupContainerId={'findNoId'}
+          >
+            <div
+              style={{
+                width: 50,
+                height: 20,
+                border: '1px solid red',
+              }}
+            >
+              点击弹窗
+            </div>
+          </Trigger>
         </div>
         <br />
         <br />
