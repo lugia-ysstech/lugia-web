@@ -38,7 +38,7 @@ export type TooltipProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   createPortal: boolean,
-  popupPosition: string,
+  popupContainerId: string,
 };
 
 export type TooltipState = {
