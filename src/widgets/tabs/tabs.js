@@ -473,6 +473,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     onAddClick && onAddClick(e);
     if (
       hasTargetInProps('data', this.props) ||
+      hasTargetInProps('activeValue', this.props) ||
       hasTargetInProps('activityValue', this.props) ||
       hasTargetInProps('children', this.props)
     ) {
