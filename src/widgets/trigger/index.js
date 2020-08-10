@@ -381,9 +381,14 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     if (!this.index && this.index !== 0 && popupVisible) {
       this.index = getIndex();
     }
-    const portal = this.props.createPortal
-      ? createPortal(this.getComponent(), this.getContainer())
-      : this.getComponent();
+
+    const { popupContainerId } = this.props;
+    const portal =
+      popupContainerId && this.popupContainer
+        ? createPortal(this.getComponent(), this.popupContainer)
+        : this.props.createPortal
+        ? createPortal(this.getComponent(), this.getContainer())
+        : this.getComponent();
 
     return (
       <React.Fragment>
