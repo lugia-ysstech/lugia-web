@@ -38,6 +38,7 @@ export type TooltipProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   createPortal: boolean,
+  popupPosition: string,
 };
 
 export type TooltipState = {
@@ -143,7 +144,7 @@ export function getArrowCSS(themeMeta, themeProps) {
 
   const borderTopCSS = `border-top-color: ${bgColor};
    border-width: ${px2remcss(5)} ${px2remcss(5)} 0;`;
-  const borderBottomCSS = `border-bottom-color: ${bgColor}; 
+  const borderBottomCSS = `border-bottom-color: ${bgColor};
   border-width: 0 ${px2remcss(5)} ${px2remcss(5)};`;
   const borderRightCSS = `border-left-color: ${bgColor};
   border-width: ${px2remcss(5)} 0 ${px2remcss(5)} ${px2remcss(5)} `;
