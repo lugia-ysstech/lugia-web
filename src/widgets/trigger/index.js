@@ -211,12 +211,16 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   componentDidMount() {
     const { popupContainerId } = this.props;
-    const triggerContainerDom = document.getElementById(popupContainerId);
-    if (triggerContainerDom) {
-      const targetPosition = window.getComputedStyle(triggerContainerDom).position;
-      triggerContainerDom.style.position =
-        targetPosition === 'static' ? 'relative' : targetPosition;
-      this.popupContainer = triggerContainerDom;
+    if (popupContainerId) {
+      setTimeout(() => {
+        const triggerContainerDom = document.getElementById(popupContainerId);
+        if (triggerContainerDom) {
+          const targetPosition = window.getComputedStyle(triggerContainerDom).position;
+          triggerContainerDom.style.position =
+            targetPosition === 'static' ? 'relative' : targetPosition;
+          this.popupContainer = triggerContainerDom;
+        }
+      }, 0);
     }
   }
 
