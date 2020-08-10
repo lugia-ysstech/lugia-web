@@ -13,7 +13,7 @@
       "desc": "是否全局弹出提示框",
       "propsDefaultValue": true
     },
-    "popupPosition": {
+    "popupContainerId": {
       "type": "DomIdType",
       "desc": "配置弹出提示框的作用容器id"
     },
