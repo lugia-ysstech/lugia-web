@@ -176,19 +176,10 @@ const Title = CSSComponent({
   tag: 'div',
   className: 'TitleLine',
   normal: {
-    selectNames: [['height']],
-    defaultTheme: {
-      height: 42,
-    },
+    selectNames: [],
     getCSS: (theme: Object, themeProps: Object) => {
       const { textAlign } = theme;
       return `justify-content:${getTextAlign(textAlign)};`;
-    },
-    getThemeMeta: (theme: Object, themeProps: Object) => {
-      const { height } = theme;
-      return {
-        lineHeight: height ? `${height}` : '3.4rem',
-      };
     },
   },
   hover: {
@@ -208,6 +199,7 @@ const Title = CSSComponent({
     box-sizing: border-box;
     user-select: none;
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
 
@@ -221,53 +213,14 @@ const Title = CSSComponent({
 });
 
 const CardTitle = CSSComponent({
-  tag: 'div',
+  extend: Title,
   className: 'TitleCard',
-  normal: {
-    selectNames: [['height'], ['lineHeight']],
-    defaultTheme: {
-      height: 32,
-      lineHeight: 32,
-    },
-    getThemeMeta: (theme: Object, themeProps: Object) => {
-      const { height } = theme;
-      const { propsConfig: { tabType } = {} } = themeProps;
-      if (tabType === 'card') {
-        return {
-          lineHeight: height ? `${height}px` : '32px',
-          width: '100%',
-        };
-      }
-      return {
-        lineHeight: height ? `${height}px` : '32px',
-      };
-    },
-  },
-  hover: {
-    selectNames: [['color']],
-    defaultTheme: {
-      color: themeColor,
-    },
-  },
-  disabled: {
-    selectNames: [['color']],
-    defaultTheme: {
-      color: disableTextColor,
-    },
-  },
   css: css`
-    position: relative;
     display: inline-flex;
-    align-items: center;
-    box-sizing: border-box;
-    user-select: none;
     &:focus {
       color: ${get('themeColor')};
     }
   `,
-  option: {
-    hover: true,
-  },
 });
 
 const ClearButtonContainer = CSSComponent({
