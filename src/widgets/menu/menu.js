@@ -214,6 +214,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       defaultHeight,
       mutliple,
       checkedCSS,
+      popupContainerId,
     } = props;
     const length = data ? data.length : 0;
     const wrapThemeProps = getPartOfThemeProps('Container', {
@@ -252,6 +253,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { popupVisible = false, childData } = this.state;
     return (
       <Trigger
+        popupContainerId={popupContainerId}
         themePass
         ref={cmp => (this.trigger = cmp)}
         align={'rightTop'}

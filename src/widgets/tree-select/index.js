@@ -410,6 +410,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       size = 'default',
       alwaysOpen,
       liquidLayout,
+      popupContainerId,
     } = props;
     const { value, displayValue, menuVisible } = state;
 
@@ -420,6 +421,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return (
       <Theme config={getInputtagThemeHoc(props)}>
         <Trigger
+          popupContainerId={popupContainerId}
           themePass
           popup={tree}
           onPopupVisibleChange={this.onTreePopupVisibleChange}

@@ -270,6 +270,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
       liquidLayout,
       createPortal = true,
       popArrowType = 'sharp',
+      popupContainerId,
     } = this.props;
     const getTarget: Function = cmp => (this.target = cmp);
     const theChildren = children ? children : defaultChildren;
@@ -308,6 +309,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
 
     return (
       <Tooltip
+        popupContainerId={popupContainerId}
         createPortal={createPortal}
         alwaysOpen={alwaysOpen}
         liquidLayout={liquidLayout}

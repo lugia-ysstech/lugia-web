@@ -451,6 +451,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       onBlur,
       alwaysOpen,
       liquidLayout,
+      popupContainerId,
     } = props;
     const { displayValue = [] } = this;
     const { value = [], menuVisible } = state;
@@ -463,6 +464,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     const result = (
       <Theme config={getInputtagThemeHoc(props)}>
         <Trigger
+          popupContainerId={popupContainerId}
           themePass
           popup={menu}
           key="trigger"

@@ -8,6 +8,10 @@
       "desc": "是否渲染当前组件",
       "defaultValue": false
     },
+    "popupContainerId": {
+      "type": "ContainerDomIdType",
+      "desc": "配置弹出框的作用容器id"
+    },
     "action": {
       "type": "hover | click",
       "desc": "展开子菜单的方式"

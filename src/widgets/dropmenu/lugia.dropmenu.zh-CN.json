@@ -13,6 +13,10 @@
       "desc": "是否全局弹出下拉框",
       "propsDefaultValue": true
     },
+    "popupContainerId": {
+      "type": "ContainerDomIdType",
+      "desc": "配置弹出框的作用容器id"
+    },
     "size": {
       "type": "SizeType",
       "desc": "可配置三种尺寸大小的dropmenu",
@@ -55,9 +59,7 @@
     "switchIconClass": {
       "type": "object",
       "desc": "自定义控制器图标",
-      "meta": [
-        { "key": "iconClass", "title": "图标", "type": "icon" }
-      ]
+      "meta": [{ "key": "iconClass", "title": "图标", "type": "icon" }]
     },
     "disabled": {
       "type": "boolean",
@@ -512,16 +514,8 @@
         ["boxShadow"],
         ["borderRadius"]
       ],
-      "hover": [
-        ["opacity"],
-        ["boxShadow"],
-        ["borderRadius"]
-      ],
-      "active": [
-        ["opacity"],
-        ["boxShadow"],
-        ["borderRadius"]
-      ],
+      "hover": [["opacity"], ["boxShadow"], ["borderRadius"]],
+      "active": [["opacity"], ["boxShadow"], ["borderRadius"]],
       "disabled": [["lineHeight"], ["opacity"], ["boxShadow"], ["cursor"], ["borderRadius"]]
     },
 

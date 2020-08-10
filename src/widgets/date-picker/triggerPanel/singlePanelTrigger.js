@@ -116,6 +116,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       liquidLayout,
       alwaysOpen,
       open,
+      popupContainerId,
     } = this.props;
     const {
       value,
@@ -184,6 +185,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       >
         <Box themeProps={inputContainProps}>
           <Trigger
+            popupContainerId={popupContainerId}
             themePass
             createPortal={createPortal}
             onDocumentClick={this.onDocumentClick}

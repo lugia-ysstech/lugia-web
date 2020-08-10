@@ -107,13 +107,22 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
   render() {
     const { props, state } = this;
     const { popupVisible, inputValue } = state;
-    const { placeholder, offsetY, disabled, createPortal, clearIconClass, pullIconClass } = props;
+    const {
+      placeholder,
+      offsetY,
+      disabled,
+      createPortal,
+      clearIconClass,
+      pullIconClass,
+      popupContainerId,
+    } = props;
     return (
       <Theme config={getInputtagThemeHoc(props)}>
         <Trigger
           ref={cmp => {
             this.trigger = cmp;
           }}
+          popupContainerId={popupContainerId}
           themePass
           align={'bottomLeft'}
           action={disabled ? [] : this.props.action || ['click']}
