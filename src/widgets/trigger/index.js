@@ -142,13 +142,15 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   popupContainer: ?Object;
 
-  getContainer() {
-    if (this.popupContainer) {
+  getContainer(popupContainerId?: string) {
+    if (popupContainerId && this.popupContainer) {
+      return this.popupContainer;
+    } else if (this.popupContainer) {
       return this.popupContainer;
     }
     const { getPopupContainer, getDocument } = this.props;
     const popupContainer = document.createElement('div');
-    popupContainer.style.position = 'releative';
+    popupContainer.style.position = 'relative';
     popupContainer.style.top = '0';
     popupContainer.style.left = '0';
     const mountNode = getPopupContainer ? getPopupContainer(findDOMNode(this)) : getDocument().body;
@@ -207,6 +209,13 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
         this.fireEvents(h, e);
       };
     });
+  }
+
+  componentDidMount() {
+    const { popupContainerId } = this.props;
+    if (popupContainerId) {
+      this.popupContainer = document.getElementById(popupContainerId);
+    }
   }
 
   componentDidUpdate() {
@@ -370,8 +379,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     if (!this.index && this.index !== 0 && popupVisible) {
       this.index = getIndex();
     }
+    const { popupContainerId } = this.props;
     const portal = this.props.createPortal
-      ? createPortal(this.getComponent(), this.getContainer())
+      ? createPortal(this.getComponent(), this.getContainer(popupContainerId))
       : this.getComponent();
 
     return (
