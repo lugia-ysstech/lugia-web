@@ -67,6 +67,17 @@
       "type": "string",
       "desc": "表格行 key 的取值，可以是字符串或一个返回值是字符串的函数",
       "propsDefaultValue": "key"
+    },
+    "allowSelect": {
+      "type": "boolean",
+      "desc": "是否显示选中单元格样式",
+      "propsDefaultValue": true
+    }
+  },
+  "event": {
+    "onCell": {
+      "type": "Function",
+      "desc": "设置单元格属性"
     }
   },
   "type": {
