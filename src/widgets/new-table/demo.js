@@ -358,6 +358,7 @@ export default class TableDemo extends React.Component<Object, Object> {
             columns={treeColumns}
             allowEditHead={false}
             allowSelect={false}
+            showCellTitle={true}
             tableSize={'large'}
             title={'这是一个有边框的表格'}
             footer={<div>这是表格底部信息</div>}

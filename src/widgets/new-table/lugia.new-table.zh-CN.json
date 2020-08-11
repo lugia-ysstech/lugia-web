@@ -76,6 +76,11 @@
       "type": "boolean",
       "desc": "是否显示选中单元格样式",
       "propsDefaultValue": true
+    },
+    "showCellTitle": {
+      "type": "boolean",
+      "desc": "是否显示单元格title提示",
+      "propsDefaultValue": false
     }
   },
   "event": {
