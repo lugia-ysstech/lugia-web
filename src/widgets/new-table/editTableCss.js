@@ -68,6 +68,7 @@ export const EditDiv = CSSComponent({
     display: flex;
     align-items: center;
     padding: 0 10px;
+    word-break: break-all;
     position: relative;`,
 });
 
