@@ -103,7 +103,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
       );
     }
 
-    const { dataIndex, index, selectSuffixElement, customRender } = this.props;
+    const { dataIndex, index, selectSuffixElement, customRender, showCellTitle } = this.props;
     const { getSelectColumnMark, onCellClick, onCellDBClick } = listener;
     const selectColumn = getSelectColumnMark(dataIndex);
     return (
@@ -126,6 +126,8 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
             isAllowEdit,
           })
         }
+        title={showCellTitle ? defaultText : null}
+        S
       >
         {customRender && !isLugiaHead
           ? customRender(text, record, index)
