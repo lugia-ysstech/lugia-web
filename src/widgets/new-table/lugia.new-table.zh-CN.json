@@ -68,6 +68,10 @@
       "desc": "表格行 key 的取值，可以是字符串或一个返回值是字符串的函数",
       "propsDefaultValue": "key"
     },
+    "selectSuffixElement": {
+      "type": "React.node",
+      "desc": "选中单元格时渲染在单元格右侧的元素"
+    },
     "allowSelect": {
       "type": "boolean",
       "desc": "是否显示选中单元格样式",
@@ -75,9 +79,35 @@
     }
   },
   "event": {
+    "onChange": {
+      "desc": "表格数据变化时触发",
+      "args": [
+        {
+          "name": "result",
+          "desc": "点击单元格时触发",
+          "type": "Object"
+        }
+      ]
+    },
     "onCell": {
-      "type": "Function",
-      "desc": "设置单元格属性"
+      "desc": "点击单元格时触发",
+      "args": [
+        {
+          "name": "result",
+          "desc": "点击单元格时触发",
+          "type": "Object"
+        }
+      ]
+    },
+    "onHeaderCell": {
+      "desc": "点击表头单元格时触发",
+      "args": [
+        {
+          "name": "result",
+          "desc": "点击表头单元格时触发",
+          "type": "Object"
+        }
+      ]
     }
   },
   "type": {
