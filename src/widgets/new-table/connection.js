@@ -444,11 +444,7 @@ export default class EditTableEventListener extends Listener<any> {
     const { e } = props;
     this.doStopPropagation(e);
     const selectCell = this.getSelectCell() || [];
-    const { selectColumn, selectRow, isAllowSelect } = props;
-    if (!isAllowSelect) {
-      this.clearSelectInfo();
-      return;
-    }
+    const { selectColumn, selectRow } = props;
 
     const currentCell = { selectColumn, selectRow };
     const isSelected = this.isSelected(currentCell, selectCell);
@@ -489,8 +485,8 @@ export default class EditTableEventListener extends Listener<any> {
   onCellDBClick = (props: Object): void => {
     const { e } = props;
     this.doStopPropagation(e);
-    const { selectColumn, selectRow, isAllowSelect } = props;
-    if (!isAllowSelect) {
+    const { selectColumn, selectRow, isAllowEdit } = props;
+    if (!isAllowEdit) {
       this.clearSelectInfo();
       return;
     }

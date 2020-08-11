@@ -35,20 +35,30 @@ export const EditDiv = CSSComponent({
   tag: 'div',
   className: 'EditDiv',
   normal: {
-    selectNames: [['width'], ['height'], ['border'], ['background'], ['padding'], ['color']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['border'],
+      ['background'],
+      ['padding'],
+      ['color'],
+      ['cursor'],
+    ],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { isSelect, isLugiaHead, isDisableEdit },
+        propsConfig: { isSelect, isLugiaHead, isDisableEdit, isAllowSelect },
       } = themeProps;
       const editBorderColor = isSelect ? themeColor : 'transparent';
       const backgroundColor = isLugiaHead ? disableColor : 'transparent';
       let border = getBorder({ color: editBorderColor, width: borderSize, style: 'solid' });
-      if (isDisableEdit) {
+      const cursor = isDisableEdit ? 'default' : 'pointer';
+      if (!isAllowSelect) {
         border = getBorder({ color: 'transparent', width: borderSize, style: 'solid' });
       }
       return {
         border,
         background: { color: backgroundColor },
+        cursor,
       };
     },
     getCSS(themeMeta: Object, themeProps: Object) {
