@@ -127,7 +127,6 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
           })
         }
         title={showCellTitle ? defaultText : null}
-        S
       >
         {customRender && !isLugiaHead
           ? customRender(text, record, index)
