@@ -72,6 +72,7 @@ export default class ModalDemo extends React.Component<any, any> {
       visable5: false,
       visable6: false,
       visable7: false,
+      visable8: false,
     };
   }
 
@@ -105,6 +106,7 @@ export default class ModalDemo extends React.Component<any, any> {
       visable5,
       visable6,
       visable7,
+      visable8,
       confirmLoading,
     } = this.state;
     const view = {
@@ -305,6 +307,17 @@ export default class ModalDemo extends React.Component<any, any> {
           displayField={'label'}
           data={data}
           onTrigger={this.Click(4)}
+        />
+
+        <br />
+        <br />
+        <Button onClick={this.Click(8)}>挂载在body上</Button>
+        <Modal
+          visible={visable8}
+          title="这是标题！"
+          onOk={this.buttonClick(8)}
+          onCancel={this.buttonClick(8)}
+          mountBody={true}
         />
       </div>
     );
