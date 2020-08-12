@@ -14,7 +14,6 @@ import Popconfirm from './popconfirm';
 import Input from '../input/index';
 import Widget from '../consts';
 import Theme from '../theme';
-import Popover from '../popover/popover';
 
 const Wrapper = styled.div`
   margin: 100px;
