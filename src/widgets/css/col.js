@@ -35,6 +35,10 @@ type ColCSSProps = {
 
 const getSpanCSS = (props: ColCSSProps): string => {
   const { span = 1, width } = props;
+
+  if (span === 0) {
+    return 'display: none;';
+  }
   return `
       width: ${width * span}%;
     `;
