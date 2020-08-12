@@ -1110,6 +1110,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const uploadTheme = deepMerge(
         inputTheme,
         this.props.getPartOfThemeProps('Container', { props: { areaType } }),
+        uploadStatusTheme,
         getValidateTheme(validateErrorInputThemeProps, validateStatus)
       );
       children = (
