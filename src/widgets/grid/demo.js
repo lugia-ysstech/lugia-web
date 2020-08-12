@@ -274,6 +274,30 @@ export default () => {
           </Col>
         </Row>
       </Wrapper>
+
+      <p>响应式 span=0时隐藏</p>
+      <Row>
+        <Col
+          span={0}
+          xs={{ span: 0 }}
+          sm={{ span: 4 }}
+          md={{ span: 6 }}
+          xl={{ span: 8 }}
+          xxl={{ span: 12 }}
+        >
+          col-
+        </Col>
+        <Col
+          span={0}
+          xs={{ span: 0 }}
+          sm={{ span: 4 }}
+          md={{ span: 6 }}
+          xl={{ span: 8 }}
+          xxl={{ span: 12 }}
+        >
+          col-
+        </Col>
+      </Row>
     </div>
   );
 };
