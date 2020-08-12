@@ -28,7 +28,7 @@ describe('Modal', () => {
     return state;
   };
   it('css', () => {
-    const Target = <ModalDemo />;
+    const Target = <Modal />;
     expect(renderer.create(Target).toJSON()).toMatchSnapshot();
   });
   it('Modal state: visible and opening and closing', async () => {
