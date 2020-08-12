@@ -335,6 +335,16 @@ exports[`row css 1`] = `
   margin-left: 0%;
 }
 
+.c24 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  width: 50%;
+  margin-left: 0%;
+}
+
 .c0 > div > div {
   text-align: center;
 }
@@ -1411,6 +1421,43 @@ exports[`row css 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         span={4}
+        width={4.166666666666667}
+      >
+        col-
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div
+    className="c0"
+  >
+    <p>
+      响应式 span=0时隐藏
+    </p>
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      type="default"
+    >
+      <div
+        className="c24"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={12}
+        width={4.166666666666667}
+      >
+        col-
+      </div>
+      <div
+        className="c24"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={12}
         width={4.166666666666667}
       >
         col-
