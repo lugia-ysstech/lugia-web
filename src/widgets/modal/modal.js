@@ -29,6 +29,7 @@ import { px2remcss } from '../css/units';
 import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
 import { getIndex } from '../utils/widget-zindex';
+import { createPortal } from 'react-dom';
 
 const BtnType = {
   confirm: 'warning',
@@ -46,6 +47,7 @@ export default ThemeProvider(
       if (!zIndex && zIndex !== 0) {
         this.index = visible ? getIndex() : undefined;
       }
+      this.node = null;
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -170,6 +172,7 @@ export default ThemeProvider(
         closable = true,
         closeIconClass,
         zIndex,
+        mountBody = false,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       if (!zIndex && zIndex !== 0 && !this.index && this.index !== 0 && visible) {
@@ -261,7 +264,8 @@ export default ThemeProvider(
       if (type === 'Modal') {
         return modalContent;
       }
-      return (
+
+      const ModalDemo = (
         <Wrap visible={closing ? true : visible} zIndex={zIndex || this.index}>
           {mask ? (
             <ModalMask
@@ -286,6 +290,20 @@ export default ThemeProvider(
           </ModalWrap>
         </Wrap>
       );
+      if (mountBody) {
+        if (typeof window !== 'undefined') {
+          const doc = window && window.document;
+          if (doc) {
+            this.node = doc.createElement('div');
+            doc.body && doc.body.appendChild(this.node);
+          }
+        }
+        if (!this.node) {
+          return null;
+        }
+        return createPortal(ModalDemo, this.node);
+      }
+      return ModalDemo;
     }
     handleMaskClick = () => {
       const { maskClosable = true } = this.props;

@@ -80,6 +80,11 @@
     "zIndex": {
       "type": "number",
       "desc": "设置 Modal 的 z-index"
+    },
+    "mountBody": {
+      "type": "boolean",
+      "desc": "是否挂载body上",
+      "propsDefaultValue": false
     }
   },
   "events": {
