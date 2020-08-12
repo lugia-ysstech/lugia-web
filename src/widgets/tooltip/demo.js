@@ -61,6 +61,17 @@ const ToolTipRVWrapper = styled(ToolTipBaseWrapper)`
   margin-right: 50px;
   margin-left: 10px;
 `;
+
+const childrenContainerConfig = {
+  [Widget.Tooltip]: {
+    ChildrenContainer: {
+      normal: {
+        width: '100%',
+      },
+    },
+  },
+};
+
 export default () => {
   const config = {
     [Widget.Button]: {
@@ -148,6 +159,20 @@ export default () => {
         <Tooltip placement="top" title={text} description={'This is description'}>
           <ButtonDemo type="primary">带有描述文本的提示</ButtonDemo>
         </Tooltip>
+      </div>
+      <p>包含的组件 继承容器的高度</p>
+      <div style={{ width: 100, height: 50 }}>
+        <Tooltip title={text} action={'click'} placement="top">
+          <div style={{ height: '100%', border: '1px solid red' }}>点击触发</div>
+        </Tooltip>
+      </div>
+      <p>包含的组件 继承容器的宽度 </p>
+      <div style={{ width: 100, height: 50 }}>
+        <Theme config={childrenContainerConfig}>
+          <Tooltip title={text} action={'click'} placement="top">
+            <div style={{ height: '100%', border: '1px solid red' }}>点击触发</div>
+          </Tooltip>
+        </Theme>
       </div>
     </OuterWarpper>
   );
