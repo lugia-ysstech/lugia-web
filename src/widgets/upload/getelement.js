@@ -17,6 +17,12 @@ import { getBorderRadius, getBorder } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
 import { getListIconType } from '../css/upload';
+import type { ValidateStatus, ValidateType } from '../css/validateHoc';
+import {
+  isValidateError,
+  validateBorderDefaultTheme,
+  validateValueDefaultTheme,
+} from '../css/validateHoc';
 
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
@@ -791,6 +797,16 @@ const getLiStatus = classNameStatus => {
   return `li-${classNameStatus}`;
 };
 
+const getValidateTheme = (validateErrorInputThemeProps, validateStatus) => {
+  return isValidateError(validateStatus)
+    ? deepMerge(
+        validateValueDefaultTheme,
+        validateBorderDefaultTheme(),
+        validateErrorInputThemeProps
+      )
+    : {};
+};
+
 const getProgress = (item: Object, themeProps: Object) => {
   const { status } = item;
   if (status === 'done') return;
@@ -936,6 +952,8 @@ type DefProps = {
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
   getInputRef: Function,
+  validateStatus: ValidateStatus,
+  validateType: ValidateType,
 };
 type StateProps = {
   status: string,
@@ -1077,9 +1095,10 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const iconClassName = getIconClassName(props, classNameStatus);
     const defaultIconProps = { props, status: classNameStatus };
     const iconProps = { ...defaultIconProps, iconClassName };
+    const validateErrorInputThemeProps = props.getPartOfThemeProps('ValidateErrorInput');
     if (areaType === 'default') {
       const { handleClickToUpload } = this;
-      const { defaultText, disabled } = props;
+      const { defaultText, disabled, validateStatus } = props;
       const inputTheme = {
         themeConfig: {
           normal: {
@@ -1091,7 +1110,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const uploadTheme = deepMerge(
         inputTheme,
         this.props.getPartOfThemeProps('Container', { props: { areaType } }),
-        uploadStatusTheme
+        getValidateTheme(validateErrorInputThemeProps, validateStatus)
       );
       children = (
         <InputContent
@@ -1112,7 +1131,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
 
     if (areaType === 'both') {
       const { handleClickToSubmit, handleClickToUpload } = this;
-      const { defaultText, showFileList, disabled } = this.props;
+      const { defaultText, showFileList, disabled, validateStatus } = this.props;
       const containerStyle = this.props.getPartOfThemeProps('Container');
       const uploadInputTheme = this.props.getPartOfThemeProps('UploadInputTheme');
       const uploadAfterTheme = deepMerge(uploadInputTheme, uploadStatusTheme);
@@ -1129,7 +1148,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
             },
           },
         },
-        uploadAfterTheme
+        uploadAfterTheme,
+        getValidateTheme(validateErrorInputThemeProps, validateStatus)
       );
       const buttonThemeStyle =
         classNameStatus === 'fail' || classNameStatus === 'done'
@@ -1270,7 +1290,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     }
 
     if (areaType === 'picture') {
-      const { size, disabled, multiple, previewUrl } = props;
+      const { size, disabled, multiple, previewUrl, validateStatus } = props;
       const { handleClickToUpload, dropArea } = this;
       const pictureSizeFail = classNameStatus === 'fail' ? { fontSize: descriptionFontSize } : {};
       const pictureThemeProps = this.props.getPartOfThemeProps('Container');
@@ -1284,7 +1304,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
           },
         },
         pictureThemeProps,
-        uploadStatusTheme
+        uploadStatusTheme,
+        getValidateTheme(validateErrorInputThemeProps, validateStatus)
       );
       const pictureIconProps = {
         ...defaultIconProps,
@@ -1311,7 +1332,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
 
     if (areaType === 'area') {
       const { dropArea, handleClickToUpload } = this;
-      const { disabled } = props;
+      const { disabled, validateStatus } = props;
       const areaThemeProps = this.props.getPartOfThemeProps('Container');
       const uploadAreaText = this.props.getPartOfThemeProps('UploadAreaText');
       const { themeConfig: { normal: { color: textColor } = {} } = {} } = uploadAreaText;
@@ -1335,7 +1356,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
           },
         },
         areaThemeProps,
-        uploadStatusTheme
+        uploadStatusTheme,
+        getValidateTheme(validateErrorInputThemeProps, validateStatus)
       );
       const areaIconProps = {
         ...defaultIconProps,

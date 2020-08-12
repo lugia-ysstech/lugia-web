@@ -63,6 +63,27 @@ class UploadDemo extends React.Component<any, any> {
       onProgress: res => {},
       onFail: res => {},
     };
+    const defaultValidateTop = {
+      areaType: 'default',
+      inputId: 'upload',
+      validateType: 'top',
+      validateStatus: 'error',
+      url: 'http://localhost:7001/upload',
+    };
+    const defaultValidateInner = {
+      areaType: 'default',
+      inputId: 'upload',
+      validateType: 'inner',
+      validateStatus: 'error',
+      url: 'http://localhost:7001/upload',
+    };
+    const defaultValidateBottom = {
+      areaType: 'default',
+      inputId: 'upload',
+      validateType: 'bottom',
+      validateStatus: 'error',
+      url: 'http://localhost:7001/upload',
+    };
     const defaultProps11 = {
       areaType: 'default',
       inputId: 'upload',
@@ -167,6 +188,27 @@ class UploadDemo extends React.Component<any, any> {
       onChange: res => {},
       defaultTips: { uploadText: '上传', uploadTips: '请将文件拖到此处或者点击选择' },
     };
+    const bothValidateTop = {
+      areaType: 'both',
+      inputId: 'upload2',
+      url: 'http://localhost:7001/upload',
+      validateType: 'top',
+      validateStatus: 'error',
+    };
+    const bothValidateInner = {
+      areaType: 'both',
+      inputId: 'upload2',
+      url: 'http://localhost:7001/upload',
+      validateType: 'inner',
+      validateStatus: 'error',
+    };
+    const bothValidateBottom = {
+      areaType: 'both',
+      inputId: 'upload2',
+      url: 'http://localhost:7001/upload',
+      validateType: 'bottom',
+      validateStatus: 'error',
+    };
     const defaultProps12 = {
       areaType: 'both',
       inputId: 'upload2',
@@ -234,12 +276,54 @@ class UploadDemo extends React.Component<any, any> {
       showFileList: true,
       url: 'http://localhost:7001/upload',
     };
+    const areaValidateTop = {
+      areaType: 'area',
+      inputId: 'upload6',
+      validateType: 'top',
+      validateStatus: 'error',
+      url: 'http://localhost:7001/upload',
+    };
+    const areaValidateInner = {
+      areaType: 'area',
+      inputId: 'upload6',
+      validateType: 'inner',
+      validateStatus: 'error',
+      url: 'http://localhost:7001/upload',
+    };
+    const areaValidateBottom = {
+      areaType: 'area',
+      inputId: 'upload6',
+      validateType: 'bottom',
+      validateStatus: 'error',
+      url: 'http://localhost:7001/upload',
+    };
     const defaultProps7 = {
       areaType: 'default',
       inputId: 'upload',
       showFileList: true,
       url: 'http://localhost:7001/upload',
       disabled: true,
+    };
+    const pictureValidateTop = {
+      areaType: 'picture',
+      inputId: 'upload',
+      validateType: 'top',
+      validateStatus: 'error',
+      url: 'http://localhost:7001/upload',
+    };
+    const pictureValidateInner = {
+      areaType: 'picture',
+      inputId: 'upload',
+      validateType: 'inner',
+      validateStatus: 'error',
+      url: 'http://localhost:7001/upload',
+    };
+    const pictureValidateBottom = {
+      areaType: 'picture',
+      inputId: 'upload',
+      validateType: 'bottom',
+      validateStatus: 'error',
+      url: 'http://localhost:7001/upload',
     };
     const defaultProps9 = {
       areaType: 'area',
@@ -331,7 +415,7 @@ class UploadDemo extends React.Component<any, any> {
           normal: {
             width: 900,
             height: 80,
-            color: 'red',
+            color: 'grey',
             borderRadius: getBorderRadius(4),
             border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
@@ -385,7 +469,6 @@ class UploadDemo extends React.Component<any, any> {
           normal: {
             width: 346,
             height: 150,
-            color: 'orange',
             borderRadius: getBorderRadius(4),
             border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
@@ -542,7 +625,7 @@ class UploadDemo extends React.Component<any, any> {
             width: 400,
             height: 180,
             fontSize: 15,
-            color: 'red',
+            color: 'grey',
             border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
         },
@@ -639,6 +722,13 @@ class UploadDemo extends React.Component<any, any> {
             <Upload {...defaultProps2} />
           </Theme>
         </div>
+        <Title>both类型 top校验： </Title>
+        <Upload {...bothValidateTop} />
+        <Title>both类型 inner校验： </Title>
+        <Upload {...bothValidateInner} />
+        <Title>both类型 bottom校验： </Title>
+        <Upload {...bothValidateBottom} />
+
         <Title>默认类型： </Title>
         <Upload {...defaultProps} />
         <Theme config={config}>
@@ -647,6 +737,13 @@ class UploadDemo extends React.Component<any, any> {
           <Title>配置主题的默认类型 disabled： </Title>
           <Upload {...defaultProps11} />
         </Theme>
+        <Title>default top校验 </Title>
+        <Upload {...defaultValidateTop} />
+        <Title>default inner校验 </Title>
+        <Upload {...defaultValidateInner} />
+        <Title>default bottom校验 </Title>
+        <Upload {...defaultValidateBottom} />
+
         <Title>picture large accept(image)： </Title>
         <Upload {...defaultProps3} />
         <Title>picture middle disabled： </Title>
@@ -660,9 +757,17 @@ class UploadDemo extends React.Component<any, any> {
           <Upload {...defaultProps4} />
           <Title>配置主题的picture small： </Title>
           <Upload {...defaultProps5} />
+          <Title>picture top校验 </Title>
+          <Upload {...pictureValidateTop} />
+          <Title>picture inner校验 </Title>
+          <Upload {...pictureValidateInner} />
+          <Title>picture bottom校验 </Title>
+          <Upload {...pictureValidateBottom} />
+
           <Title>default disabled： </Title>
           <Upload {...defaultProps7} />
         </Theme>
+
         <Title>Button： </Title>
         <Upload {...defaultProps1} />
         <Upload {...defaultLongProps1} />
@@ -676,6 +781,7 @@ class UploadDemo extends React.Component<any, any> {
           <Title>配置宽度的button limit 3： </Title>
           <Upload {...defaultProps10} />
         </Theme>
+
         <Title>area： </Title>
         <Upload {...defaultProps6} />
         <Title>area disabled： </Title>
@@ -686,6 +792,12 @@ class UploadDemo extends React.Component<any, any> {
           <Title>配置主题的area disabled： </Title>
           <Upload {...defaultProps9} />
         </Theme>
+        <Title>area Top校验 </Title>
+        <Upload {...areaValidateTop} />
+        <Title>area Inner校验 </Title>
+        <Upload {...areaValidateInner} />
+        <Title>area bottom校验 </Title>
+        <Upload {...areaValidateBottom} />
       </div>
     );
   }

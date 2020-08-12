@@ -7,10 +7,17 @@
  *
  */
 import Upload from './upload';
-import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
+import ThemeHoc from '@lugia/theme-hoc';
+import ValidateHoc from '../input/validateHoc';
+import MouseEventAdaptor from '../common/MouseEventAdaptor';
+import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 
-export default ThemeProvider(Upload, Widget.Upload, {
-  hover: true,
-  active: false,
-});
+export default ThemeHoc(
+  ValidateHoc(MouseEventAdaptor(KeyBoardEventAdaptor(Upload))),
+  Widget.Upload,
+  {
+    hover: true,
+    active: false,
+  }
+);
