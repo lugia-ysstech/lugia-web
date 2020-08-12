@@ -215,6 +215,14 @@
                 ["borderRadius"],
                 ["border"]
               ]
+            },
+            "ChildrenContainer": {
+              "name": "包裹子组件的容器",
+              "desc": "包裹子组件的容器",
+              "normal": [["width"]],
+              "hover": [],
+              "clicked": [],
+              "disabled": []
             }
           }
         },
