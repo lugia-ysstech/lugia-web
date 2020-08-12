@@ -244,7 +244,7 @@ exports[`tabsDemo Component JSON 1`] = `
     </div>
   </div>
   <div
-    className="TabContentContainerS  c8"
+    className="c8"
     style={Object {}}
   />
 </div>
