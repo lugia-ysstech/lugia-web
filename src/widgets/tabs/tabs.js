@@ -10,7 +10,7 @@ import TabHeader from './tabheader';
 import TabContentInner from './tabcontent';
 import Widget from '../consts/index';
 import { PagedType, TabPositionType, TabType } from '../css/tabs';
-import { isVertical } from './utils';
+import { isVertical, isBatchValued } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
@@ -305,12 +305,17 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { activeValue, defaultActiveValue, activityValue, defaultActivityValue } = props;
 
     let theData = getDefaultData(props);
-    let theActivityValue =
-      activeValue ||
-      defaultActiveValue ||
-      activityValue ||
-      defaultActivityValue ||
-      (theData.length !== 0 ? theData[0].value : null);
+    const hasActiveValue = isBatchValued([
+      activeValue,
+      activityValue,
+      defaultActiveValue,
+      defaultActivityValue,
+    ]);
+    let theActivityValue = hasActiveValue
+      ? activeValue || defaultActiveValue || activityValue || defaultActivityValue
+      : theData.length !== 0
+      ? theData[0].value
+      : null;
     if (state) {
       theActivityValue = hasTargetInPropsActiveValue(props)
         ? theActivityValue
