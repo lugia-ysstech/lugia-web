@@ -11,7 +11,6 @@ import Popover from './popover';
 import Input from '../input/index';
 import Widget from '../consts';
 import Theme from '../theme';
-import Popconfirm from '../popconfirm/popconfirm';
 
 const buttonWidth = 80;
 const Direction = styled(Button)`
