@@ -35,6 +35,7 @@ export type ModalProps = {
   okButtonProps?: Object,
   cancelButtonProps?: Object,
   iconClass?: string,
+  mountBody?: boolean,
 } & FunctionPropsType;
 export type ModalState = {
   visible: boolean,
