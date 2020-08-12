@@ -143,6 +143,16 @@
         { "name": "file", "desc": "用户上传的文件", "type": "file" },
         { "name": "operate", "desc": "所有可执行函数(success,fail,start)", "type": "Object" }
       ]
+    },
+    "validateStatus": {
+      "type": "ValidateStatus",
+      "desc": "校验状态",
+      "propsDefaultValue": "default"
+    },
+    "validateType": {
+      "type": "ValidateType",
+      "desc": "校验类型",
+      "propsDefaultValue": "default"
     }
   },
   "events": {
@@ -266,6 +276,30 @@
       {
         "value": "fail",
         "text": "失败"
+      }
+    ],
+    "ValidateStatus": [
+      {
+        "value": "default",
+        "text": "默认状态"
+      },
+      {
+        "value": "error",
+        "text": "校验失败状态"
+      }
+    ],
+    "ValidateType": [
+      {
+        "value": "top",
+        "text": "顶部类型"
+      },
+      {
+        "value": "inner",
+        "text": "内部类型"
+      },
+      {
+        "value": "bottom",
+        "text": "底部类型"
       }
     ]
   },
