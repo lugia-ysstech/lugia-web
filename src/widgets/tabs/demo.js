@@ -800,7 +800,8 @@ export default class TabsDemo extends React.Component<any, any> {
   static getDerivedStateFromProps(nextProps: TabpaneProps, state: TabpaneState) {
     let data = pageTypeData;
     let dataWindow = pageTypeData;
-    let activityValue = 0;
+    let activityValue = '';
+    let nullActiveData = getData();
     let abc = [
       {
         title: (
@@ -842,6 +843,7 @@ export default class TabsDemo extends React.Component<any, any> {
       dataWindow = state.dataWindow;
       activityValue = state.activityValue;
       abc = state.abc;
+      nullActiveData = state.nullActiveData;
     }
     return {
       testDelayData: defaulttestDelayData,
@@ -849,6 +851,7 @@ export default class TabsDemo extends React.Component<any, any> {
       dataWindow,
       activityValue,
       abc,
+      nullActiveData,
     };
   }
 
@@ -925,6 +928,8 @@ export default class TabsDemo extends React.Component<any, any> {
       dataWindow,
       abc,
       abcActivityValue,
+      activityValue,
+      nullActiveData,
     } = this.state;
 
     const tabpanTheme = {
@@ -1018,7 +1023,7 @@ export default class TabsDemo extends React.Component<any, any> {
           <BlockContainer>
             <Description>受限的Tabs activityValue:Tab3</Description>
             {typeList.map(item => {
-              return <Tabs data={defaultData} tabType={item} activityValue={'Tab3'} />;
+              return <Tabs data={defaultData} tabType={item} activityValue={''} />;
             })}
             <Description>受限的Tabs------------------------end</Description>
           </BlockContainer>
@@ -1397,6 +1402,21 @@ export default class TabsDemo extends React.Component<any, any> {
                 return <Tabs data={getData()} tabType={item} />;
               })}
             </Theme>
+            <Description>验证Content主题的Tabs------------------------end</Description>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>验证activeValue 为'' 时，没有选中项</Description>
+            {typeList.map(item => {
+              return (
+                <Tabs
+                  data={nullActiveData}
+                  activeValue={activityValue}
+                  onChange={this.onChange}
+                  tabType={item}
+                />
+              );
+            })}
             <Description>验证Content主题的Tabs------------------------end</Description>
           </BlockContainer>
         </FlexContainer>

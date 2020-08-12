@@ -73,3 +73,11 @@ export function getTextAlign(textAlign: string) {
   }
   return `${justify}`;
 }
+
+export function isValued(value: string) {
+  return value || value === '' || value === 0;
+}
+
+export function isBatchValued(value: string[]) {
+  return value.some(item => isValued(item));
+}
