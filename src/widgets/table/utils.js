@@ -10,16 +10,23 @@ export const deepCopy = (arr: Object[]) => {
   }
   return newArr;
 };
-export const isEqualArray = (arr: any[], newArr: any[]) => {
+export const isEqualArray = (arr: any[], newArr: any[], opt: { isStrengthen: false }) => {
   if (arr.length !== newArr.length) {
     return false;
   }
+  const { isStrengthen } = opt;
   arr = arr.map(item => JSON.stringify(item));
   newArr = newArr.map(item => JSON.stringify(item));
   let flag = true;
-  newArr.forEach(item => {
-    if (arr.indexOf(item) <= -1) {
-      flag = false;
+  newArr.forEach((item, index) => {
+    if (isStrengthen) {
+      if (arr.indexOf(item) !== index) {
+        flag = false;
+      }
+    } else {
+      if (arr.indexOf(item) <= -1) {
+        flag = false;
+      }
     }
   });
   return flag;

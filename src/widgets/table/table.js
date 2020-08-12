@@ -65,6 +65,7 @@ export default ThemeProvider(
     disabledSelectedKeys: any[];
     tableWrap: Object;
     sortState: string;
+    oldPropsData: Object[];
     constructor(props) {
       super();
       const { data = [], selectOptions: { selectRowKeys = [] } = {}, scroll = {} } = props;
@@ -80,6 +81,7 @@ export default ThemeProvider(
         sortOrder: true,
       };
       this.tableWrap = React.createRef();
+      this.oldPropsData = [];
     }
     componentDidMount() {
       setTimeout(() => {
@@ -134,7 +136,7 @@ export default ThemeProvider(
     static getDerivedStateFromProps(props, nextState) {
       const { data = [], selectOptions = {}, rowKey = 'key' } = props;
       const { data: stateData = [], sortOrder } = nextState;
-      const dataIsSame = isEqualArray(stateData, data);
+      const dataIsSame = isEqualArray(stateData, data, { isStrengthen: false });
       if ('selectRowKeys' in selectOptions) {
         const {
           selectRowKeys = [],
@@ -306,7 +308,7 @@ export default ThemeProvider(
       onChange && onChange({ column: columnData, filed: dataIndex, order: type, data: sortData });
     };
     getTableData = (propsData, stateData) => {
-      const dataIsSame = isEqualArray(stateData, propsData);
+      const dataIsSame = isEqualArray(stateData, propsData, { isStrengthen: false });
       if (!dataIsSame) this.sortState = '';
       const tableData = dataIsSame ? stateData : propsData;
       return tableData;
@@ -337,7 +339,13 @@ export default ThemeProvider(
         scroll = {},
         data = [],
       } = this.state;
-      const tableData = this.getTableData(propsData, data);
+      const propsDataIsChange = isEqualArray(this.oldPropsData, propsData, { isStrengthen: true });
+
+      const tableData = propsDataIsChange ? data : propsData;
+      if (!propsDataIsChange) {
+        this.oldPropsData = propsData;
+        this.setState({ data: propsData });
+      }
       const containerPartOfThemeProps = getPartOfThemeProps('Container', {
         props: { size },
       });
