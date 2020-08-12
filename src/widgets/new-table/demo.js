@@ -89,8 +89,17 @@ const treeColumns = [
     key: 'value',
     editType: 'string',
     columnType: '',
+    disableEdit: true,
+    allowSelect: false,
   },
-  { title: 'text', dataIndex: 'text', key: 'text', editType: 'string', columnType: '' },
+  {
+    title: 'text',
+    dataIndex: 'text',
+    key: 'text',
+    editType: 'string',
+    columnType: '',
+    disableEdit: true,
+  },
   {
     title: 'icons',
     dataIndex: 'icons',
@@ -113,7 +122,7 @@ const treeColumns = [
 const treeData = [
   {
     value: '一级节点-1',
-    text: '一级节点-1',
+    text: 't一级节点-1',
     key: 1,
     children: [
       { key: 11, value: '二级节点1-1', text: '二级节点1-1' },
@@ -153,9 +162,20 @@ const checkboxColumns = [
     dataIndex: 'checkbox',
     key: 'checkbox',
     width: 200,
+    disableEdit: true,
     render: (text, record) => {
       const { isHead } = record;
-      return isHead ? <Checkbox>全选</Checkbox> : <Checkbox>text</Checkbox>;
+      return isHead ? (
+        <Checkbox>全选</Checkbox>
+      ) : (
+        <Checkbox
+          onChange={res => {
+            console.log('----------', res);
+          }}
+        >
+          text
+        </Checkbox>
+      );
     },
   },
   {
@@ -163,6 +183,7 @@ const checkboxColumns = [
     dataIndex: 'name',
     key: 'name',
     width: 200,
+    disableEdit: true,
   },
   {
     title: 'Age',
@@ -187,13 +208,23 @@ const checkboxColumns = [
 
 const checkBoxdata = [
   {
-    name: 'long and long and long and long Jack',
+    name: 'long and long and long and long long and long andlong and long and long and long Jack',
     age: 28,
     address: 'long and long and long and long long and long and long and long some where',
     key: '1',
   },
-  { name: 'Rose', age: 36, address: 'some where', key: '2' },
-  { name: 'Uzi', age: 36, address: 'some where', key: '3' },
+  {
+    name: 'long and long and long and long long and long andlong and long and Rose',
+    age: 36,
+    address: 'some where',
+    key: '2',
+  },
+  {
+    name: 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqUzi',
+    age: 36,
+    address: 'some where',
+    key: '3',
+  },
   { name: 'ClearLove', age: 36, address: 'some where', key: '4' },
   { name: 'Rookie', age: 36, address: 'some where', key: '5' },
   { name: 'TheShy', age: 36, address: 'some where', key: '6' },
@@ -310,6 +341,24 @@ export default class TableDemo extends React.Component<Object, Object> {
             data={treeData}
             columns={treeColumns}
             allowEditHead={false}
+            tableSize={'large'}
+            title={'这是一个有边框的表格'}
+            footer={<div>这是表格底部信息</div>}
+            onChange={this.onChangeTreeData}
+            onCell={this.onCell}
+            onHeaderCell={this.onHeaderCell}
+            selectSuffixElement={<div>00</div>}
+          />
+        </Theme>
+        <Title>可编辑表格 嵌套数据 禁止选中</Title>
+        <div>{JSON.stringify(treeData)}</div>
+        <Theme config={config}>
+          <EditTable
+            data={treeData}
+            columns={treeColumns}
+            allowEditHead={false}
+            allowSelect={false}
+            showCellTitle={true}
             tableSize={'large'}
             title={'这是一个有边框的表格'}
             footer={<div>这是表格底部信息</div>}
