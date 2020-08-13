@@ -9715,6 +9715,7 @@ export default [
         closeIconClass: { type: 'icon', desc: '自定义后缀图标' },
         showIcon: { type: 'boolean', desc: '是否显示图标', propsDefaultValue: false },
         zIndex: { type: 'number', desc: '设置 Modal 的 z-index' },
+        mountBody: { type: 'boolean', desc: '是否挂载body上', propsDefaultValue: false },
       },
       events: {
         onOk: { desc: '点击确定时的回调', args: [] },
@@ -10528,6 +10529,22 @@ export default [
                         ['padding'],
                         ['cursor'],
                       ],
+                    },
+                    Text: {
+                      name: '文本',
+                      desc: '配置文本',
+                      normal: [['font'], ['fontSize'], ['color'], ['margin'], ['padding']],
+                      hover: [['font'], ['fontSize'], ['color']],
+                      active: [],
+                      disabled: [],
+                    },
+                    CheckedText: {
+                      name: '选中文本',
+                      desc: '配置选中文本',
+                      normal: [['font'], ['fontSize'], ['color'], ['margin'], ['padding']],
+                      hover: [['font'], ['fontSize'], ['color']],
+                      active: [],
+                      disabled: [],
                     },
                     DesContainer: {
                       name: '辅助字段框',
@@ -12130,6 +12147,22 @@ export default [
                     ['padding'],
                     ['cursor'],
                   ],
+                },
+                Text: {
+                  name: '文本',
+                  desc: '配置文本',
+                  normal: [['font'], ['fontSize'], ['color'], ['margin'], ['padding']],
+                  hover: [['font'], ['fontSize'], ['color']],
+                  active: [],
+                  disabled: [],
+                },
+                CheckedText: {
+                  name: '选中文本',
+                  desc: '配置选中文本',
+                  normal: [['font'], ['fontSize'], ['color'], ['margin'], ['padding']],
+                  hover: [['font'], ['fontSize'], ['color']],
+                  active: [],
+                  disabled: [],
                 },
                 DesContainer: {
                   name: '辅助字段框',
@@ -14022,6 +14055,14 @@ export default [
                     ['border'],
                   ],
                 },
+                ChildrenContainer: {
+                  name: '包裹子组件的容器',
+                  desc: '包裹子组件的容器',
+                  normal: [['width']],
+                  hover: [],
+                  clicked: [],
+                  disabled: [],
+                },
               },
             },
             PopconfirmOkButton: {
@@ -14294,6 +14335,14 @@ export default [
                 ['border'],
               ],
             },
+            ChildrenContainer: {
+              name: '包裹子组件的容器',
+              desc: '包裹子组件的容器',
+              normal: [['width']],
+              hover: [],
+              clicked: [],
+              disabled: [],
+            },
           },
         },
         PopconfirmOkButton: {
@@ -14467,6 +14516,14 @@ export default [
                     ['border'],
                   ],
                 },
+                ChildrenContainer: {
+                  name: '包裹子组件的容器',
+                  desc: '包裹子组件的容器',
+                  normal: [['width']],
+                  hover: [],
+                  clicked: [],
+                  disabled: [],
+                },
               },
             },
             PopoverClearIcon: {
@@ -14497,6 +14554,14 @@ export default [
                 ['borderRadius'],
                 ['border'],
               ],
+            },
+            ChildrenContainer: {
+              name: '包裹子组件的容器',
+              desc: '包裹子组件的容器',
+              normal: [['width']],
+              hover: [],
+              clicked: [],
+              disabled: [],
             },
             TooltipTitle: {
               name: '气泡卡片标题部分',
@@ -14616,6 +14681,14 @@ export default [
                 ['borderRadius'],
                 ['border'],
               ],
+            },
+            ChildrenContainer: {
+              name: '包裹子组件的容器',
+              desc: '包裹子组件的容器',
+              normal: [['width']],
+              hover: [],
+              clicked: [],
+              disabled: [],
             },
           },
         },
@@ -28256,6 +28329,8 @@ export default [
             { name: 'operate', desc: '所有可执行函数(success,fail,start)', type: 'Object' },
           ],
         },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
       },
       events: {
         onProgress: {
@@ -28302,6 +28377,12 @@ export default [
           { value: 'custom', text: '自定义上传' },
         ],
         FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'inner', text: '框内文本' },
+          { value: 'bottom', text: '底部文本' },
+        ],
       },
       category: ['数据录入'],
       designInfo: {
@@ -29244,6 +29325,8 @@ export default [
             { name: 'operate', desc: '所有可执行函数(success,fail,start)', type: 'Object' },
           ],
         },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
       },
       events: {
         onProgress: {
@@ -29290,6 +29373,12 @@ export default [
           { value: 'custom', text: '自定义上传' },
         ],
         FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'inner', text: '框内文本' },
+          { value: 'bottom', text: '底部文本' },
+        ],
       },
       category: ['数据录入'],
       theme: {
@@ -29529,6 +29618,8 @@ export default [
             { name: 'operate', desc: '所有可执行函数(success,fail,start)', type: 'Object' },
           ],
         },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
       },
       events: {
         onProgress: {
@@ -29575,6 +29666,12 @@ export default [
           { value: 'custom', text: '自定义上传' },
         ],
         FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'inner', text: '框内文本' },
+          { value: 'bottom', text: '底部文本' },
+        ],
       },
       category: ['数据录入'],
       theme: {
@@ -29783,6 +29880,8 @@ export default [
             { name: 'operate', desc: '所有可执行函数(success,fail,start)', type: 'Object' },
           ],
         },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
       },
       events: {
         onProgress: {
@@ -29829,6 +29928,12 @@ export default [
           { value: 'custom', text: '自定义上传' },
         ],
         FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'inner', text: '框内文本' },
+          { value: 'bottom', text: '底部文本' },
+        ],
       },
       category: ['数据录入'],
       theme: {
@@ -30046,6 +30151,8 @@ export default [
             { name: 'operate', desc: '所有可执行函数(success,fail,start)', type: 'Object' },
           ],
         },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
       },
       events: {
         onProgress: {
@@ -30092,6 +30199,12 @@ export default [
           { value: 'custom', text: '自定义上传' },
         ],
         FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
+        ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
+        ValidateType: [
+          { value: 'top', text: '顶部弹窗' },
+          { value: 'inner', text: '框内文本' },
+          { value: 'bottom', text: '底部文本' },
+        ],
       },
       category: ['数据录入'],
       theme: {
