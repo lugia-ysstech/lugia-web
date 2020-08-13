@@ -251,11 +251,7 @@ export function setKeyValue(data: Array<Object>): Array<Object> {
 
 export function getDefaultData(props: Object) {
   const { defaultData, data, children } = props;
-  let configData = [
-    { title: 'Tab1', value: 'Tab1' },
-    { title: 'Tab2', value: 'Tab2' },
-    { title: 'Tab3', value: 'Tab3' },
-  ];
+  let configData = [];
   if (hasTargetInProps('data', props) && Array.isArray(data)) {
     configData = data ? data : [];
   } else {
