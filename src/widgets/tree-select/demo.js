@@ -379,7 +379,6 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
               this.setState({ value: newValue });
             }}
             expandAll
-            autoHeight
             pullIconClass="lugia-icon-direction_caret_down"
             renderSuffixItems={this.renderSuffix}
             toggleIcon="lugia-icon-logo_twitter"
