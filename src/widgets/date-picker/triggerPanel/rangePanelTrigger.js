@@ -9,7 +9,7 @@ import { getDerivedForInput } from '../utils/getDerived';
 import { RangeWrap, RangeWrapInner, Box } from '../styled/styled';
 import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
-import { formatValueIsValid, getIsSame, getOpenProps } from '../utils/booleanUtils';
+import { formatValueIsValid, getIsSame } from '../utils/booleanUtils';
 import { getformatSymbol, getNewStepProps } from '../utils/utils';
 import { getFacePanelContain, getWrapThemeProps } from '../themeConfig/themeConfig';
 type TypeProps = {
@@ -36,6 +36,7 @@ type TypeProps = {
   middleSymbol?: string,
   alwaysOpen?: boolean,
   onDocumentClick?: Function,
+  popupContainerId?: string,
 };
 type TypeState = {
   value: Array<string>,
