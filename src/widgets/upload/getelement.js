@@ -1097,6 +1097,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const iconProps = { ...defaultIconProps, iconClassName };
     const validateErrorInputThemeProps = props.getPartOfThemeProps('ValidateErrorInput');
     const { defaultText, disabled, validateStatus } = props;
+    const ValidateTheme = getValidateTheme(validateErrorInputThemeProps, validateStatus);
     if (areaType === 'default') {
       const { handleClickToUpload } = this;
       const inputTheme = {
@@ -1111,7 +1112,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
         inputTheme,
         this.props.getPartOfThemeProps('Container', { props: { areaType } }),
         uploadStatusTheme,
-        getValidateTheme(validateErrorInputThemeProps, validateStatus)
+        ValidateTheme
       );
       children = (
         <InputContent
@@ -1150,7 +1151,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           },
         },
         uploadAfterTheme,
-        getValidateTheme(validateErrorInputThemeProps, validateStatus)
+        ValidateTheme
       );
       const buttonThemeStyle =
         classNameStatus === 'fail' || classNameStatus === 'done'
@@ -1305,7 +1306,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
         },
         pictureThemeProps,
         uploadStatusTheme,
-        getValidateTheme(validateErrorInputThemeProps, validateStatus)
+        ValidateTheme
       );
       const pictureIconProps = {
         ...defaultIconProps,
@@ -1356,7 +1357,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
         },
         areaThemeProps,
         uploadStatusTheme,
-        getValidateTheme(validateErrorInputThemeProps, validateStatus)
+        ValidateTheme
       );
       const areaIconProps = {
         ...defaultIconProps,
