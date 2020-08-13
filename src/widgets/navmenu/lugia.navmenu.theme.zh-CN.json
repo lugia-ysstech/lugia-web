@@ -635,6 +635,26 @@
                 "desc": "辅助文本内外边距配置区"
               }
             }
+          },
+          {
+            "name": "展开图标",
+            "path": ["Menu", "MenuItem", "SwitchIcon"],
+            "props": [
+              {
+                "name": "switchIconClass",
+                "typeInTheme": "icon"
+              }
+            ],
+            "description": {
+              "textPart": {
+                "text": "图标",
+                "desc": "展开图标文本配置区"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "展开图标内外边距配置区"
+              }
+            }
           }
         ]
       },
@@ -723,33 +743,6 @@
               "appearancePart": {
                 "text": "分割线",
                 "desc": "分割线外观配置"
-              }
-            }
-          }
-        ]
-      },
-      {
-        "title": "展开图标",
-        "iconClass": "menuExpandIcon",
-        "data": [
-          {
-            "name": "展开图标",
-
-            "path": ["Menu", "MenuItem", "SwitchIcon"],
-            "props": [
-              {
-                "name": "switchIconClass",
-                "typeInTheme": "icon"
-              }
-            ],
-            "description": {
-              "textPart": {
-                "text": "图标",
-                "desc": "展开图标文本配置区"
-              },
-              "spacingPart": {
-                "text": "padding/margin",
-                "desc": "展开图标内外边距配置区"
               }
             }
           }

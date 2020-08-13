@@ -781,7 +781,22 @@
                     ["cursor"]
                   ]
                 },
-
+                "Text": {
+                  "name": "文本",
+                  "desc": "配置文本",
+                  "normal": [["font"], ["fontSize"], ["color"],["margin"],["padding"]],
+                  "hover": [["font"], ["fontSize"], ["color"]],
+                  "active": [],
+                  "disabled": []
+                },
+                "CheckedText": {
+                  "name": "选中文本",
+                  "desc": "配置选中文本",
+                  "normal": [["font"], ["fontSize"], ["color"],["margin"],["padding"]],
+                  "hover": [["font"], ["fontSize"], ["color"]],
+                  "active": [],
+                  "disabled": []
+                },
                 "DesContainer": {
                   "name": "辅助字段框",
                   "desc": "配置辅助文本的样式和位置",
