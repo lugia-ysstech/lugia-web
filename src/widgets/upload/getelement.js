@@ -1096,9 +1096,9 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const defaultIconProps = { props, status: classNameStatus };
     const iconProps = { ...defaultIconProps, iconClassName };
     const validateErrorInputThemeProps = props.getPartOfThemeProps('ValidateErrorInput');
+    const { defaultText, disabled, validateStatus } = props;
     if (areaType === 'default') {
       const { handleClickToUpload } = this;
-      const { defaultText, disabled, validateStatus } = props;
       const inputTheme = {
         themeConfig: {
           normal: {
@@ -1132,7 +1132,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
 
     if (areaType === 'both') {
       const { handleClickToSubmit, handleClickToUpload } = this;
-      const { defaultText, showFileList, disabled, validateStatus } = this.props;
+      const { showFileList } = this.props;
       const containerStyle = this.props.getPartOfThemeProps('Container');
       const uploadInputTheme = this.props.getPartOfThemeProps('UploadInputTheme');
       const uploadAfterTheme = deepMerge(uploadInputTheme, uploadStatusTheme);
@@ -1227,7 +1227,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
       );
     }
     if (areaType === 'button') {
-      const { disabled } = props;
       const { handleClickToUpload } = this;
       const themeType =
         classNameStatus === 'fail'
@@ -1291,7 +1290,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     }
 
     if (areaType === 'picture') {
-      const { size, disabled, multiple, previewUrl, validateStatus } = props;
+      const { size, multiple, previewUrl } = props;
       const { handleClickToUpload, dropArea } = this;
       const pictureSizeFail = classNameStatus === 'fail' ? { fontSize: descriptionFontSize } : {};
       const pictureThemeProps = this.props.getPartOfThemeProps('Container');
@@ -1333,7 +1332,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
 
     if (areaType === 'area') {
       const { dropArea, handleClickToUpload } = this;
-      const { disabled, validateStatus } = props;
       const areaThemeProps = this.props.getPartOfThemeProps('Container');
       const uploadAreaText = this.props.getPartOfThemeProps('UploadAreaText');
       const { themeConfig: { normal: { color: textColor } = {} } = {} } = uploadAreaText;
