@@ -641,9 +641,10 @@ class TreeUtils {
     const containPath: Object = {};
     const rowSet = [];
     const len = rows.length - 1;
+    const discardChildrenRow = [];
     for (let i = len; i >= 0; i--) {
       const row: RowData = rows[i];
-      const { [this.valueField]: key, [this.pathField]: path } = row;
+      const { [this.valueField]: key, [this.pathField]: path, isLeaf } = row;
       if (matchCondition(row)) {
         if (needPushCondition(row, need) && path !== undefined && containPath[path] === undefined) {
           const pathArray = this.getPathArray(path);
@@ -654,10 +655,22 @@ class TreeUtils {
             need[key] = true;
           }
         }
+        if (!isLeaf) {
+          const delIndex = [];
+          const newChildren = discardChildrenRow.filter((item, index) => {
+            const pathStartWiths = path ? `${path}${this.pathSeparator}${key}` : key;
+            delIndex.push(index);
+            return item.path && item.path.startsWith(pathStartWiths);
+          });
+          delIndex.length > 0 && discardChildrenRow.slice(delIndex[0], delIndex.length);
+          rowSet.unshift(...newChildren);
+        }
         needPushCondition(row, need) && rowSet.push(row);
       } else if (need[key] === true) {
         rowSet.push(row);
         delete need[key];
+      } else {
+        discardChildrenRow.push(row);
       }
     }
     return rowSet;
