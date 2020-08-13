@@ -8,7 +8,6 @@ import Navmenu from './';
 import Widget from '../consts/index';
 import styled from 'styled-components';
 import Icon from '../icon';
-import get from '../css/theme-common-dict';
 const Box = styled.div`
   display: inline-block;
   padding: 10px;
