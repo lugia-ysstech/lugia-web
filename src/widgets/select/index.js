@@ -636,7 +636,7 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   updateMenuData(data: Array<Object>, query: string | number, searchType?: QueryType = 'include') {
-    const { displayField = DisplayField } = this.props;
+    const { displayField = DisplayField, valueField = ValueField } = this.props;
     let menuData;
     const queryAll = query === '' || !query;
     const isQueryZero = query === 0 || query === '0';
@@ -650,8 +650,12 @@ class Select extends React.Component<SelectProps, SelectState> {
 
       for (let i = 0; i < len; i++) {
         const row: RowData = data[i];
-        const searchKey = row[displayField];
-        if (toMatchFromType(searchKey, queryArray, searchType)) {
+        const displayValue = row[displayField];
+        const value = row[valueField];
+        if (
+          toMatchFromType(displayValue, queryArray, searchType) ||
+          toMatchFromType(value, queryArray, searchType)
+        ) {
           rowSet.push(row);
         }
       }
