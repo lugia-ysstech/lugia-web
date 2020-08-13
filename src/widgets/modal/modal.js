@@ -265,7 +265,7 @@ export default ThemeProvider(
         return modalContent;
       }
 
-      const ModalDemo = (
+      const integrateModal = (
         <Wrap visible={closing ? true : visible} zIndex={zIndex || this.index}>
           {mask ? (
             <ModalMask
@@ -301,9 +301,9 @@ export default ThemeProvider(
         if (!this.node) {
           return null;
         }
-        return createPortal(ModalDemo, this.node);
+        return createPortal(integrateModal, this.node);
       }
-      return ModalDemo;
+      return integrateModal;
     }
     handleMaskClick = () => {
       const { maskClosable = true } = this.props;
