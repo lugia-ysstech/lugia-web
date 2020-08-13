@@ -8,6 +8,7 @@ import Navmenu from './';
 import Widget from '../consts/index';
 import styled from 'styled-components';
 import Icon from '../icon';
+import get from '../css/theme-common-dict';
 const Box = styled.div`
   display: inline-block;
   padding: 10px;
@@ -343,6 +344,28 @@ const tabsHoverTheme = {
   },
 };
 
+const noDataTheme = {
+  [Widget.NavMenu]: {
+    Tabs: {
+      Container: {
+        normal: {
+          height: 40,
+          background: {
+            color: '#000033',
+          },
+        },
+      },
+      BorderStyle: {
+        normal: {
+          background: {
+            color: '#000033',
+          },
+        },
+      },
+    },
+  },
+};
+
 export default class LimitDemo extends React.Component<Object, Object> {
   all: boolean;
 
@@ -363,6 +386,35 @@ export default class LimitDemo extends React.Component<Object, Object> {
   render() {
     return (
       <div>
+        <H2>无数据的水平导航菜单</H2>
+
+        <HoriBox>
+          <H3>数据的水平导航菜单</H3>
+          <Navmenu
+            theme={tabsHoverTheme}
+            data={[]}
+            pathSeparator={'@'}
+            themeStyle={'dark'}
+            activityValue={this.state.activityValue}
+            mode={'horizontal'}
+            action={'hover'}
+            onChange={this.tabsOnChange}
+          />
+        </HoriBox>
+
+        <HoriBox>
+          <H3>主题样式配置的无数据的水平导航菜单</H3>
+          <Navmenu
+            theme={noDataTheme}
+            data={[]}
+            pathSeparator={'@'}
+            activityValue={this.state.activityValue}
+            mode={'horizontal'}
+            action={'hover'}
+            onChange={this.tabsOnChange}
+          />
+        </HoriBox>
+
         <H2>水平导航菜单</H2>
 
         <HoriBox>
