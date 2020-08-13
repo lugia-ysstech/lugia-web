@@ -146,13 +146,12 @@
     },
     "validateStatus": {
       "type": "ValidateStatus",
-      "desc": "校验状态",
-      "propsDefaultValue": "default"
+      "desc": "校验状态"
     },
     "validateType": {
       "type": "ValidateType",
-      "desc": "校验类型",
-      "propsDefaultValue": "default"
+      "desc": "校验信息显示类型",
+      "propsDefaultValue": "top"
     }
   },
   "events": {
@@ -281,25 +280,25 @@
     "ValidateStatus": [
       {
         "value": "default",
-        "text": "默认状态"
+        "text": "正常"
       },
       {
         "value": "error",
-        "text": "校验失败状态"
+        "text": "错误"
       }
     ],
     "ValidateType": [
       {
         "value": "top",
-        "text": "顶部类型"
+        "text": "顶部弹窗"
       },
       {
         "value": "inner",
-        "text": "内部类型"
+        "text": "框内文本"
       },
       {
         "value": "bottom",
-        "text": "底部类型"
+        "text": "底部文本"
       }
     ]
   },
