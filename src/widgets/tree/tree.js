@@ -349,6 +349,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     this.search(utils, result, query, searchType, blackList, whiteList);
     if (this.state) {
+      this.allExpandKeys = this.state.expandedKeys;
       const usableExpandKeys = this.filterUsableExpandKeys(
         this.state.expandedKeys,
         result.id2ExtendInfo
@@ -363,7 +364,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   filterUsableExpandKeys(source, id2ExtendInfo) {
-    return source.filter(item => id2ExtendInfo[item]);
+    return source.filter(item => id2ExtendInfo[item] && item !== 'lugia_tree_root');
   }
 
   getEmptyExpandInfo(): ExpandInfo {
@@ -383,7 +384,12 @@ class Tree extends React.Component<TreeProps, TreeState> {
       }
       return this.allExpandKeys;
     }
-    return Object.keys(id2ExtendInfo);
+    return Array.from(
+      new Set([
+        ...this.allExpandKeys.filter(item => item !== 'lugia_tree_root'),
+        ...Object.keys(id2ExtendInfo).filter(item => item !== 'lugia_tree_root'),
+      ])
+    );
   }
 
   isQueryAll({ query }): boolean {
