@@ -72,6 +72,8 @@ export const RangeInputInner = CSSComponent({
     }
 
     display: flex;
+    height: 100%;
+    align-items: center;
   `,
 });
 export const RangeInputInnerInput = CSSComponent({
