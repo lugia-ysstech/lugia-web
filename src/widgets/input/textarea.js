@@ -284,11 +284,14 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
       </TextareaContainer>
     );
   }
+  focus() {
+    this.textarea.current.focus();
+  }
+
   componentDidMount() {
-    const { focus } = this.props;
-    if (focus && this.textarea) {
-      this.textarea.current.focus();
-      focus();
+    const { getFocus } = this.props;
+    if (getFocus && this.textarea) {
+      return getFocus(this.focus());
     }
   }
 
