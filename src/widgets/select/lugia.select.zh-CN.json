@@ -70,6 +70,10 @@
       "desc": "是否支持自定义值,只有在canSearch为true时才生效",
       "propsDefaultValue": false
     },
+    "searchFields": {
+      "type": "string[]",
+      "desc": "配置查询字段"
+    },
     "canClear": {
       "type": "boolean",
       "desc": "是否展示清空图标",

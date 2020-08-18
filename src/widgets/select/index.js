@@ -635,8 +635,21 @@ class Select extends React.Component<SelectProps, SelectState> {
     this.setState({ query });
   }
 
+  needPush(row: RowData, queryField: string[], queryArray: Array<string>, searchType: QueryType) {
+    return queryField.some(field => {
+      const value = row[field];
+      return toMatchFromType(value, queryArray, searchType);
+    });
+  }
+
+  isOpenMultiConditionQuery() {
+    const { searchFields = [] } = this.props;
+    return searchFields && Array.isArray(searchFields) && searchFields.length > 0;
+  }
+
   updateMenuData(data: Array<Object>, query: string | number, searchType?: QueryType = 'include') {
-    const { displayField = DisplayField, valueField = ValueField } = this.props;
+    const { displayField = DisplayField, searchFields = [] } = this.props;
+
     let menuData;
     const queryAll = query === '' || !query;
     const isQueryZero = query === 0 || query === '0';
@@ -647,15 +660,10 @@ class Select extends React.Component<SelectProps, SelectState> {
       const queryArray = this.getQueryArray(query);
       const rowSet = [];
       const len = data.length;
-
+      const queryField = this.isOpenMultiConditionQuery() ? searchFields : [displayField];
       for (let i = 0; i < len; i++) {
         const row: RowData = data[i];
-        const displayValue = row[displayField];
-        const value = row[valueField];
-        if (
-          toMatchFromType(displayValue, queryArray, searchType) ||
-          toMatchFromType(value, queryArray, searchType)
-        ) {
+        if (this.needPush(row, queryField, queryArray, searchType)) {
           rowSet.push(row);
         }
       }

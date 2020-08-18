@@ -22,7 +22,7 @@ const Box = styled.div`
 const data = (function(t) {
   const res = [];
   for (let i = 0; i < t; i++) {
-    res.push({ value: `key-${i}`, label: `txt${i}` });
+    res.push({ value: `key-${i}`, label: `txt${i}`, name: `name${i}`, address: `name${i + 1}` });
   }
   return res;
 })(10);
@@ -170,6 +170,20 @@ export default class Demo extends React.Component {
         <Select virtual canSearch canClear={false} displayField={'label'} data={data} />
 
         <Select virtual canSearch displayField={'label'} disabled data={data} />
+        <H2>多条件过滤</H2>
+        <Select
+          value={value}
+          displayValue={[]}
+          mutliple
+          canSearch
+          limitCount={3}
+          canInput
+          displayField={'label'}
+          data={data}
+          onQuery={this.onQuery}
+          onChange={this.onChange}
+          searchFields={['value', 'label', 'address', 'name']}
+        />
 
         <H2>single canInput</H2>
         <Select virtual canSearch canInput displayField={'label'} data={data} />
