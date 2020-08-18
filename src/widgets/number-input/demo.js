@@ -115,6 +115,8 @@ const NumberInputDemo = () => {
           <NumberInput disabled={true} />
           <p>可控制disabled 的numberInput</p>
           <DisabledNumberInput />
+          <p>主动聚焦的numberInput</p>
+          <NumberInput focus={() => {}} />
 
           <p>校验信息显示类型 top 输入值 是否含有5</p>
           <ValidateInput validateType="top" onChange={onChange('limit')} />

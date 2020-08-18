@@ -197,6 +197,10 @@
           "type": "MouseEvent"
         }
       ]
+    },
+    "focus": {
+      "desc": "数字输入框主动聚焦事件",
+      "args": []
     }
   },
   "type": {
