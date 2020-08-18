@@ -389,16 +389,18 @@ class TextBox extends Component<InputProps, InputState> {
   render() {
     return this.getInputContainer();
   }
-
+  focus() {
+    this.getRef().current.focus();
+  }
   componentDidMount() {
-    const { getInputRef, getInputWidgetRef, focus } = this.props;
+    const { getInputRef, getInputWidgetRef, getFocus } = this.props;
     getInputRef && getInputRef({ ref: this.getRef() });
     getInputWidgetRef && getInputWidgetRef({ ref: this.getContainerRef() });
-    if (focus && this.getRef()) {
-      this.getRef().current.focus();
-      focus();
+    if (getFocus && this.getRef()) {
+      return getFocus(this.focus());
     }
   }
+
   getFixIcon(fix: React$Node, WidgetName: string): React$Node {
     if (ObjectUtils.isString(fix)) {
       return (
