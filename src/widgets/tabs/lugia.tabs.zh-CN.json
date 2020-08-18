@@ -295,6 +295,11 @@
           "desc": "页签区域样式配置",
           "normal": [["background"], ["textAlign"]]
         },
+        "BorderStyle": {
+          "name": "默认线",
+          "desc": "默认线样式配置",
+          "normal": [["background"], ["width"]]
+        },
         "TabHeader": {
           "name": "标签配置",
           "theme": {
