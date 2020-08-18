@@ -8,10 +8,6 @@
       "desc": "是否渲染当前组件",
       "defaultValue": false
     },
-    "createPortal": {
-      "type": "boolean",
-      "desc": "是否全局弹出框"
-    },
     "popupContainerId": {
       "type": "ContainerDomIdType",
       "desc": "配置弹出框的作用容器id"
