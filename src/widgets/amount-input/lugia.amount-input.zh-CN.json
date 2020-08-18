@@ -145,6 +145,10 @@
           "type": "KeyboardEvent"
         }
       ]
+    },
+    "focus": {
+      "desc": "金额输入框主动聚焦事件",
+      "args": []
     }
   },
   "type": {

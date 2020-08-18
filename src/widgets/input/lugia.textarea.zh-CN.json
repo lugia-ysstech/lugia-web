@@ -154,6 +154,10 @@
           "type": "KeyboardEvent"
         }
       ]
+    },
+    "focus": {
+      "desc": "段落文本输入框主动聚焦事件",
+      "args": []
     }
   },
   "type": {

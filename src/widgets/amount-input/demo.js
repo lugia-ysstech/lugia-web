@@ -83,6 +83,8 @@ export default () => {
         <LimitAmountInput onChange={onChange('limit')} />
         <p>有默认值的 受限Input</p>
         <DefaultValueAmountInput value={'123456'} onChange={onChange('limit')} />
+        <p>主动聚焦的 Input</p>
+        <AmountInput focus={() => {}} />
       </Wrapper>
       <Wrapper>
         <p>amountPrefix: '¥' transform: false </p>
