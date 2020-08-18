@@ -265,6 +265,7 @@ type InputProps = {
   isShowClearButton?: boolean,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
+  focus?: Function,
 } & InsideProps;
 
 class TextBox extends Component<InputProps, InputState> {
@@ -275,6 +276,7 @@ class TextBox extends Component<InputProps, InputState> {
     size: 'default',
     defaultValue: '',
     isShowClearButton: true,
+    canClear: true,
     formatter: (value: string | number) => {
       return value;
     },
@@ -389,9 +391,13 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   componentDidMount() {
-    const { getInputRef, getInputWidgetRef } = this.props;
+    const { getInputRef, getInputWidgetRef, focus } = this.props;
     getInputRef && getInputRef({ ref: this.getRef() });
     getInputWidgetRef && getInputWidgetRef({ ref: this.getContainerRef() });
+    if (focus && this.getRef()) {
+      this.getRef().current.focus();
+      focus();
+    }
   }
   getFixIcon(fix: React$Node, WidgetName: string): React$Node {
     if (ObjectUtils.isString(fix)) {
@@ -422,15 +428,14 @@ class TextBox extends Component<InputProps, InputState> {
         </Suffix>
       );
     }
-    const { isShowClearButton } = this.props;
-    if (isShowClearButton) {
+    const { isShowClearButton, canClear } = this.props;
+    if (isShowClearButton && canClear) {
       return this.getClearButton();
     }
     return null;
   }
 
   getClearButton() {
-    const { canClear = true } = this.props;
     const {
       theme: ClearButtonThemeProps,
       viewClass: clearViewClass,
@@ -467,7 +472,7 @@ class TextBox extends Component<InputProps, InputState> {
     const { disabled, clearIcon, size } = this.props;
     return (
       <Icon
-        propsConfig={{ size, hideClearButton: this.isEmpty() || !canClear }}
+        propsConfig={{ size, hideClearButton: this.isEmpty() }}
         disabled={disabled}
         singleTheme
         viewClass={clearViewClass}

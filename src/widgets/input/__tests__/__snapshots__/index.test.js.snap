@@ -61,6 +61,10 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   min-width: 3rem;
   width: 100%;
   background-color: white;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 <div
@@ -74,8 +78,6 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   style={
     Object {
       "borderBottomColor": "#d0d3da",
-      "borderBottomLeftRadius": "0.4rem",
-      "borderBottomRightRadius": "0.4rem",
       "borderBottomStyle": "solid",
       "borderBottomWidth": "0.1rem",
       "borderLeftColor": "#d0d3da",
@@ -85,8 +87,6 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
       "borderRightStyle": "solid",
       "borderRightWidth": "0.1rem",
       "borderTopColor": "#d0d3da",
-      "borderTopLeftRadius": "0.4rem",
-      "borderTopRightRadius": "0.4rem",
       "borderTopStyle": "solid",
       "borderTopWidth": "0.1rem",
       "height": "3.2rem",
@@ -116,10 +116,6 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
     size="default"
     style={
       Object {
-        "borderBottomLeftRadius": "0.4rem",
-        "borderBottomRightRadius": "0.4rem",
-        "borderTopLeftRadius": "0.4rem",
-        "borderTopRightRadius": "0.4rem",
         "color": "#363B40",
         "fontSize": "1.4rem",
         "paddingBottom": "0rem",
@@ -210,6 +206,10 @@ exports[`Input props: null 1`] = `
   min-width: 3rem;
   width: 100%;
   background-color: white;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 <div
@@ -223,8 +223,6 @@ exports[`Input props: null 1`] = `
   style={
     Object {
       "borderBottomColor": "#d0d3da",
-      "borderBottomLeftRadius": "0.4rem",
-      "borderBottomRightRadius": "0.4rem",
       "borderBottomStyle": "solid",
       "borderBottomWidth": "0.1rem",
       "borderLeftColor": "#d0d3da",
@@ -234,8 +232,6 @@ exports[`Input props: null 1`] = `
       "borderRightStyle": "solid",
       "borderRightWidth": "0.1rem",
       "borderTopColor": "#d0d3da",
-      "borderTopLeftRadius": "0.4rem",
-      "borderTopRightRadius": "0.4rem",
       "borderTopStyle": "solid",
       "borderTopWidth": "0.1rem",
       "height": "3.2rem",
@@ -260,10 +256,6 @@ exports[`Input props: null 1`] = `
     size="default"
     style={
       Object {
-        "borderBottomLeftRadius": "0.4rem",
-        "borderBottomRightRadius": "0.4rem",
-        "borderTopLeftRadius": "0.4rem",
-        "borderTopRightRadius": "0.4rem",
         "color": "#363B40",
         "fontSize": "1.4rem",
         "paddingBottom": "0rem",
@@ -354,6 +346,10 @@ exports[`Input props: placeholder  1`] = `
   min-width: 3rem;
   width: 100%;
   background-color: white;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 <div
@@ -367,8 +363,6 @@ exports[`Input props: placeholder  1`] = `
   style={
     Object {
       "borderBottomColor": "#d0d3da",
-      "borderBottomLeftRadius": "0.4rem",
-      "borderBottomRightRadius": "0.4rem",
       "borderBottomStyle": "solid",
       "borderBottomWidth": "0.1rem",
       "borderLeftColor": "#d0d3da",
@@ -378,8 +372,6 @@ exports[`Input props: placeholder  1`] = `
       "borderRightStyle": "solid",
       "borderRightWidth": "0.1rem",
       "borderTopColor": "#d0d3da",
-      "borderTopLeftRadius": "0.4rem",
-      "borderTopRightRadius": "0.4rem",
       "borderTopStyle": "solid",
       "borderTopWidth": "0.1rem",
       "height": "3.2rem",
@@ -405,10 +397,6 @@ exports[`Input props: placeholder  1`] = `
     size="default"
     style={
       Object {
-        "borderBottomLeftRadius": "0.4rem",
-        "borderBottomRightRadius": "0.4rem",
-        "borderTopLeftRadius": "0.4rem",
-        "borderTopRightRadius": "0.4rem",
         "color": "#363B40",
         "fontSize": "1.4rem",
         "paddingBottom": "0rem",
@@ -499,6 +487,10 @@ exports[`Input props: placeholder  2`] = `
   min-width: 3rem;
   width: 100%;
   background-color: white;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 <div
@@ -512,8 +504,6 @@ exports[`Input props: placeholder  2`] = `
   style={
     Object {
       "borderBottomColor": "#d0d3da",
-      "borderBottomLeftRadius": "0.4rem",
-      "borderBottomRightRadius": "0.4rem",
       "borderBottomStyle": "solid",
       "borderBottomWidth": "0.1rem",
       "borderLeftColor": "#d0d3da",
@@ -523,8 +513,6 @@ exports[`Input props: placeholder  2`] = `
       "borderRightStyle": "solid",
       "borderRightWidth": "0.1rem",
       "borderTopColor": "#d0d3da",
-      "borderTopLeftRadius": "0.4rem",
-      "borderTopRightRadius": "0.4rem",
       "borderTopStyle": "solid",
       "borderTopWidth": "0.1rem",
       "height": "3.2rem",
@@ -550,10 +538,6 @@ exports[`Input props: placeholder  2`] = `
     size="default"
     style={
       Object {
-        "borderBottomLeftRadius": "0.4rem",
-        "borderBottomRightRadius": "0.4rem",
-        "borderTopLeftRadius": "0.4rem",
-        "borderTopRightRadius": "0.4rem",
         "color": "#363B40",
         "fontSize": "1.4rem",
         "paddingBottom": "0rem",
@@ -644,6 +628,10 @@ exports[`Input props: size 1`] = `
   min-width: 3rem;
   width: 100%;
   background-color: white;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 <div
@@ -657,8 +645,6 @@ exports[`Input props: size 1`] = `
   style={
     Object {
       "borderBottomColor": "#d0d3da",
-      "borderBottomLeftRadius": "0.4rem",
-      "borderBottomRightRadius": "0.4rem",
       "borderBottomStyle": "solid",
       "borderBottomWidth": "0.1rem",
       "borderLeftColor": "#d0d3da",
@@ -668,8 +654,6 @@ exports[`Input props: size 1`] = `
       "borderRightStyle": "solid",
       "borderRightWidth": "0.1rem",
       "borderTopColor": "#d0d3da",
-      "borderTopLeftRadius": "0.4rem",
-      "borderTopRightRadius": "0.4rem",
       "borderTopStyle": "solid",
       "borderTopWidth": "0.1rem",
       "height": "2.4rem",
@@ -694,10 +678,6 @@ exports[`Input props: size 1`] = `
     size="small"
     style={
       Object {
-        "borderBottomLeftRadius": "0.4rem",
-        "borderBottomRightRadius": "0.4rem",
-        "borderTopLeftRadius": "0.4rem",
-        "borderTopRightRadius": "0.4rem",
         "color": "#363B40",
         "fontSize": "1.2rem",
         "paddingBottom": "0rem",
@@ -788,6 +768,10 @@ exports[`Input props: size 2`] = `
   min-width: 3rem;
   width: 100%;
   background-color: white;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 <div
@@ -801,8 +785,6 @@ exports[`Input props: size 2`] = `
   style={
     Object {
       "borderBottomColor": "#d0d3da",
-      "borderBottomLeftRadius": "0.4rem",
-      "borderBottomRightRadius": "0.4rem",
       "borderBottomStyle": "solid",
       "borderBottomWidth": "0.1rem",
       "borderLeftColor": "#d0d3da",
@@ -812,8 +794,6 @@ exports[`Input props: size 2`] = `
       "borderRightStyle": "solid",
       "borderRightWidth": "0.1rem",
       "borderTopColor": "#d0d3da",
-      "borderTopLeftRadius": "0.4rem",
-      "borderTopRightRadius": "0.4rem",
       "borderTopStyle": "solid",
       "borderTopWidth": "0.1rem",
       "height": "4rem",
@@ -838,10 +818,6 @@ exports[`Input props: size 2`] = `
     size="large"
     style={
       Object {
-        "borderBottomLeftRadius": "0.4rem",
-        "borderBottomRightRadius": "0.4rem",
-        "borderTopLeftRadius": "0.4rem",
-        "borderTopRightRadius": "0.4rem",
         "color": "#363B40",
         "fontSize": "1.4rem",
         "paddingBottom": "0rem",

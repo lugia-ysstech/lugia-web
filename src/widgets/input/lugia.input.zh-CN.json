@@ -211,6 +211,10 @@
           "type": "MouseEvent"
         }
       ]
+    },
+    "focus": {
+      "desc": "输入框主动聚焦事件",
+      "args": []
     }
   },
   "type": {
