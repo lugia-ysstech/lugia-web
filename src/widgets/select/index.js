@@ -637,8 +637,7 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   needPush(row: RowData, queryField: string[], queryArray: Array<string>, searchType: QueryType) {
     return queryField.some(field => {
-      const value = row[field];
-      return toMatchFromType(value, queryArray, searchType);
+      return toMatchFromType(row[field], queryArray, searchType);
     });
   }
 
