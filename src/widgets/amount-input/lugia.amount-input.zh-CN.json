@@ -148,7 +148,13 @@
     },
     "getFocus": {
       "desc": "金额输入框主动聚焦事件",
-      "args": []
+      "args": [
+        {
+          "name": "focus",
+          "desc": "输入框的聚焦方法",
+          "type": "Function"
+        }
+      ]
     }
   },
   "type": {

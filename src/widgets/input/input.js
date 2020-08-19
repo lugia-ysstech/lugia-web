@@ -389,15 +389,15 @@ class TextBox extends Component<InputProps, InputState> {
   render() {
     return this.getInputContainer();
   }
-  focus() {
-    return this.getRef().current.focus();
-  }
+  focus = () => {
+    this.getRef().current.focus();
+  };
   componentDidMount() {
     const { getInputRef, getInputWidgetRef, getFocus } = this.props;
     getInputRef && getInputRef({ ref: this.getRef() });
     getInputWidgetRef && getInputWidgetRef({ ref: this.getContainerRef() });
     if (getFocus && this.getRef()) {
-      getFocus(this.focus());
+      getFocus(this.focus);
     }
   }
 
