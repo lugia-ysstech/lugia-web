@@ -123,5 +123,13 @@
       "desc": "为抽屉把手配置样式",
       "normal": [["opacity"], ["background"]]
     }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 256,
+        "height": 100
+      }
+    }
   }
 }
