@@ -144,7 +144,7 @@ const getWidthOrHeight = (props: CSSProps) => {
   return width;
 };
 const getDrawerAnimate = (props: CSSProps): string => {
-  const { open, opening, closing, placement } = props;
+  const { open, opening, closing, placement, hasContainer } = props;
   const distance = getWidthOrHeight(props);
   const Direction = getAnimateDirection(props);
   const isNumber = typeof distance === 'number';
@@ -152,7 +152,7 @@ const getDrawerAnimate = (props: CSSProps): string => {
   const isPlacedInHorizontal = placement === 'top' || placement === 'bottom';
 
   let newDistance;
-  if (!isNumber) {
+  if (!isNumber && !hasContainer) {
     const currentClientWidth = document.documentElement.clientWidth;
     if (distance.endsWith('vm') || distance.endsWith('%')) {
       newDistance = (currentClientWidth / 100) * parseFloat(distance);
