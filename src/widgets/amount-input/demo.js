@@ -84,7 +84,18 @@ export default () => {
         <p>有默认值的 受限Input</p>
         <DefaultValueAmountInput value={'123456'} onChange={onChange('limit')} />
         <p>主动聚焦的 Input</p>
-        <AmountInput getFocus={() => {}} />
+        <button
+          onClick={() => {
+            this.inputFocus();
+          }}
+        >
+          点击主动聚焦
+        </button>
+        <AmountInput
+          getFocus={focus => {
+            this.inputFocus = focus;
+          }}
+        />
       </Wrapper>
       <Wrapper>
         <p>amountPrefix: '¥' transform: false </p>
