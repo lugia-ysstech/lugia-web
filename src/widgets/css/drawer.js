@@ -21,6 +21,7 @@ export type DrawerProps = {
   children: any,
   getTheme: Function,
   getContainer?: boolean | Function | React.ReactNode,
+  hasContainer?: boolean,
   drawerCloseIcon?: string,
 };
 export type DrawerState = {
@@ -143,6 +144,19 @@ const getWidthOrHeight = (props: CSSProps) => {
   }
   return width;
 };
+
+const getNewDistance = (distance, isPlacedInHorizontal) => {
+  const currentClientPara = isPlacedInHorizontal ? 'clientHeight' : 'clientWidth';
+  const currentDirection = isPlacedInHorizontal ? 'vh' : 'vw';
+  const currentClientDistance = window.document.documentElement[currentClientPara];
+  if (distance.endsWith(currentDirection) || distance.endsWith('%')) {
+    return (currentClientDistance / 100) * parseFloat(distance);
+  } else if (distance.endsWith('px')) {
+    return parseFloat(distance);
+  }
+  return distance;
+};
+
 const getDrawerAnimate = (props: CSSProps): string => {
   const { open, opening, closing, placement, hasContainer } = props;
   const distance = getWidthOrHeight(props);
@@ -153,14 +167,7 @@ const getDrawerAnimate = (props: CSSProps): string => {
 
   let newDistance;
   if (!isNumber && !hasContainer) {
-    const currentClientWidth = document.documentElement.clientWidth;
-    if (distance.endsWith('vm') || distance.endsWith('%')) {
-      newDistance = (currentClientWidth / 100) * parseFloat(distance);
-    } else if (distance.endsWith('px')) {
-      newDistance = parseFloat(distance);
-    } else {
-      newDistance = distance;
-    }
+    newDistance = getNewDistance(distance, isPlacedInHorizontal);
     if (typeof newDistance === 'number') {
       if (isPlacedInHorizontal) {
         newDistance = newDistance > 100 ? newDistance : 100;
@@ -169,11 +176,11 @@ const getDrawerAnimate = (props: CSSProps): string => {
       }
     }
   }
-  const isAnotherNubmer = typeof newDistance === 'number';
+  const isAlsoNubmer = typeof newDistance === 'number';
 
   const closeDistance = isNumber
     ? em(-(distance + 8))
-    : isAnotherNubmer
+    : isAlsoNubmer
     ? `-${newDistance + 8}px`
     : `calc(-${newDistance} - 8px)`;
   const openFrom = `${Direction}: ${trueDistance};`;
