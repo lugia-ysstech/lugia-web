@@ -250,8 +250,6 @@ export const DrawerContentWrap = CSSComponent({
     box-shadow: ${em(-2)} 0 ${em(8)} rgba(0, 0, 0, 0.15);
     transition: transform 0.3s;
     ${getTransform};
-    min-width: 256px;
-    min-height: 100px;
     background: #fff;
   `,
   normal: {
