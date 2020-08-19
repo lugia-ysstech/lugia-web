@@ -265,7 +265,7 @@ type InputProps = {
   isShowClearButton?: boolean,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
-  focus?: Function,
+  getFocus?: Function,
 } & InsideProps;
 
 class TextBox extends Component<InputProps, InputState> {
@@ -390,14 +390,14 @@ class TextBox extends Component<InputProps, InputState> {
     return this.getInputContainer();
   }
   focus() {
-    this.getRef().current.focus();
+    return this.getRef().current.focus();
   }
   componentDidMount() {
     const { getInputRef, getInputWidgetRef, getFocus } = this.props;
     getInputRef && getInputRef({ ref: this.getRef() });
     getInputWidgetRef && getInputWidgetRef({ ref: this.getContainerRef() });
     if (getFocus && this.getRef()) {
-      return getFocus(this.focus());
+      getFocus(this.focus());
     }
   }
 

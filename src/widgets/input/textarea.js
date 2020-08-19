@@ -197,6 +197,7 @@ type TextareaProps = {
   cols?: number,
   rows?: number,
   readOnly: boolean,
+  getFocus?: Function,
 };
 function getTheValidateWidthThemeProps(validateType: ValidateType, validateStatus: ValidateStatus) {
   return validateType && validateStatus ? validateWidthTheme : {};
@@ -285,13 +286,13 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     );
   }
   focus() {
-    this.textarea.current.focus();
+    return this.textarea.current.focus();
   }
 
   componentDidMount() {
     const { getFocus } = this.props;
     if (getFocus && this.textarea) {
-      return getFocus(this.focus());
+      getFocus(this.focus());
     }
   }
 
