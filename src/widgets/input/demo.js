@@ -200,7 +200,6 @@ const InputDemo = () => {
   const parser = value => {
     return value.replace(/\$\s?|(,*)/g, '');
   };
-  const getFocus = () => {};
   return (
     <div>
       <Theme config={register}>
@@ -241,7 +240,18 @@ const InputDemo = () => {
         <p>formatter input</p>
         <Input placeholder={'请填写金额'} formatter={formatter} parser={parser} />
         <p>主动聚焦的 input</p>
-        <Input getFocus={getFocus} />
+        <button
+          onClick={() => {
+            this.inputFocus();
+          }}
+        >
+          点击主动聚焦
+        </button>
+        <Input
+          getFocus={focus => {
+            this.inputFocus = focus;
+          }}
+        />
       </Wrapper>
       <Wrapper>
         <p>校验信息显示类型 top 输入值 是否含有a</p>
@@ -281,7 +291,18 @@ const InputDemo = () => {
         <p>有默认值的 受限段落文本输入框</p>
         <DefaultValueTextarea onChange={onChange('limit')} />
         <p>主动聚焦的 段落文本输入框</p>
-        <Textarea getFocus={getFocus} />
+        <button
+          onClick={() => {
+            this.textareaFocus();
+          }}
+        >
+          点击主动聚焦
+        </button>
+        <Textarea
+          getFocus={focus => {
+            this.textareaFocus = focus;
+          }}
+        />
       </Wrapper>
       <Wrapper>
         <p>校验信息显示类型 top 输入值 是否含有a</p>
