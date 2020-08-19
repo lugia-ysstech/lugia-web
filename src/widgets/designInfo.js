@@ -201,6 +201,10 @@ export default [
           desc: '当键入回车时触发事件',
           args: [{ name: 'event', desc: '当键入回车时触发', type: 'KeyboardEvent' }],
         },
+        getFocus: {
+          desc: '金额输入框主动聚焦事件',
+          args: [{ name: 'focus', desc: '输入框的聚焦方法', type: 'Function' }],
+        },
       },
       type: {
         InputSize: [
@@ -8202,6 +8206,10 @@ export default [
           desc: '当鼠标移出输入框内触发',
           args: [{ name: 'event', desc: '当鼠标移出输入框外触发的事件', type: 'MouseEvent' }],
         },
+        getFocus: {
+          desc: '输入框主动聚焦事件',
+          args: [{ name: 'focus', desc: '输入框的聚焦方法', type: 'Function' }],
+        },
       },
       type: {
         InputType: [{ value: 'text', text: '文本' }, { value: 'password', text: '密码' }],
@@ -8410,6 +8418,10 @@ export default [
         onEnter: {
           desc: '当键入回车时触发事件',
           args: [{ name: 'event', desc: '当键入回车时触发', type: 'KeyboardEvent' }],
+        },
+        getFocus: {
+          desc: '段落文本输入框主动聚焦事件',
+          args: [{ name: 'focus', desc: '输入框的聚焦方法', type: 'Function' }],
         },
       },
       type: {
@@ -12945,6 +12957,10 @@ export default [
           desc: '当鼠标移出输入框内触发',
           args: [{ name: 'event', desc: '当鼠标移出输入框外触发的事件', type: 'MouseEvent' }],
         },
+        getFocus: {
+          desc: '数字输入框主动聚焦事件',
+          args: [{ name: 'focus', desc: '输入框的聚焦方法', type: 'Function' }],
+        },
       },
       type: {
         InputSize: [
@@ -15878,7 +15894,6 @@ export default [
       desc: '选项过多时，弹出下拉菜单给用户选择操作',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
-        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
         popupContainerId: { type: 'ContainerDomIdType', desc: '配置弹出框的作用容器id' },
         data: {
           type: 'Object[]',
@@ -15917,7 +15932,9 @@ export default [
           desc: '是否支持自定义值,只有在canSearch为true时才生效',
           propsDefaultValue: false,
         },
+        searchFields: { type: 'string[]', desc: '配置查询字段' },
         canClear: { type: 'boolean', desc: '是否展示清空图标', propsDefaultValue: true },
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
         throttle: { type: 'number', desc: '查询的延迟时间，单位为毫秒', propsDefaultValue: 100 },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
@@ -16937,7 +16954,6 @@ export default [
       desc: '支持多项选择',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
-        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
         popupContainerId: { type: 'ContainerDomIdType', desc: '配置弹出框的作用容器id' },
         data: {
           type: 'Object[]',
@@ -16976,7 +16992,9 @@ export default [
           desc: '是否支持自定义值,只有在canSearch为true时才生效',
           propsDefaultValue: false,
         },
+        searchFields: { type: 'string[]', desc: '配置查询字段' },
         canClear: { type: 'boolean', desc: '是否展示清空图标', propsDefaultValue: true },
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
         throttle: { type: 'number', desc: '查询的延迟时间，单位为毫秒', propsDefaultValue: 100 },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
@@ -21036,6 +21054,11 @@ export default [
               desc: '页签区域样式配置',
               normal: [['background'], ['textAlign']],
             },
+            BorderStyle: {
+              name: '默认线',
+              desc: '默认线样式配置',
+              normal: [['background'], ['width']],
+            },
             TabHeader: {
               name: '标签配置',
               theme: {
@@ -21599,6 +21622,11 @@ export default [
           name: '页签区域',
           desc: '页签区域样式配置',
           normal: [['background'], ['textAlign']],
+        },
+        BorderStyle: {
+          name: '默认线',
+          desc: '默认线样式配置',
+          normal: [['background'], ['width']],
         },
         TabHeader: {
           name: '标签配置',
@@ -26144,7 +26172,6 @@ export default [
       desc: '类似Select选择器，弹出面板是一个树形控件，可以清晰地展示层级数据结构。',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
-        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
         popupContainerId: { type: 'ContainerDomIdType', desc: '配置弹出校验框的作用容器id' },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
         validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
@@ -26206,6 +26233,7 @@ export default [
           ],
         },
         mutliple: { type: 'boolean', desc: '是否多选', propsDefaultValue: false },
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
@@ -27420,7 +27448,6 @@ export default [
       desc: '支持多项树形选择',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
-        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
         popupContainerId: { type: 'ContainerDomIdType', desc: '配置弹出校验框的作用容器id' },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
         validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
@@ -27487,6 +27514,7 @@ export default [
           propsDefaultValue: false,
           defaultValue: true,
         },
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
