@@ -144,12 +144,38 @@ const getWidthOrHeight = (props: CSSProps) => {
   return width;
 };
 const getDrawerAnimate = (props: CSSProps): string => {
-  const { open, opening, closing } = props;
+  const { open, opening, closing, placement } = props;
   const distance = getWidthOrHeight(props);
   const Direction = getAnimateDirection(props);
   const isNumber = typeof distance === 'number';
   const trueDistance = isNumber ? em(-distance) : `-${distance}`;
-  const closeDistance = isNumber ? em(-(distance + 8)) : `calc(-${distance} - 8px)`;
+  const isPlacedInHorizontal = placement === 'top' || placement === 'bottom';
+
+  let newDistance;
+  if (!isNumber) {
+    const currentClientWidth = document.documentElement.clientWidth;
+    if (distance.endsWith('vm') || distance.endsWith('%')) {
+      newDistance = (currentClientWidth / 100) * parseFloat(distance);
+    } else if (distance.endsWith('px')) {
+      newDistance = parseFloat(distance);
+    } else {
+      newDistance = distance;
+    }
+    if (typeof newDistance === 'number') {
+      if (isPlacedInHorizontal) {
+        newDistance = newDistance > 100 ? newDistance : 100;
+      } else {
+        newDistance = newDistance > 256 ? newDistance : 256;
+      }
+    }
+  }
+  const isAnotherNubmer = typeof newDistance === 'number';
+
+  const closeDistance = isNumber
+    ? em(-(distance + 8))
+    : isAnotherNubmer
+    ? `-${newDistance + 8}px`
+    : `calc(-${newDistance} - 8px)`;
   const openFrom = `${Direction}: ${trueDistance};`;
   const openTo = `${Direction}: 0;`;
   const closeFrom = `${Direction}: 0;`;
