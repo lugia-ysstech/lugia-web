@@ -166,17 +166,14 @@ const getDrawerAnimate = (props: CSSProps): string => {
   const isPlacedInHorizontal = placement === 'top' || placement === 'bottom';
 
   let newDistance;
+  let isAlsoNubmer = false;
   if (!isNumber && !hasContainer) {
     newDistance = getNewDistance(distance, isPlacedInHorizontal);
-    if (typeof newDistance === 'number') {
-      if (isPlacedInHorizontal) {
-        newDistance = newDistance > 100 ? newDistance : 100;
-      } else {
-        newDistance = newDistance > 256 ? newDistance : 256;
-      }
+    isAlsoNubmer = typeof newDistance === 'number';
+    if (isAlsoNubmer) {
+      newDistance = isPlacedInHorizontal ? Math.max(newDistance, 100) : Math.max(newDistance, 256);
     }
   }
-  const isAlsoNubmer = typeof newDistance === 'number';
 
   const closeDistance = isNumber
     ? em(-(distance + 8))
