@@ -21,7 +21,6 @@ export type DrawerProps = {
   children: any,
   getTheme: Function,
   getContainer?: boolean | Function | React.ReactNode,
-  hasContainer?: boolean,
   drawerCloseIcon?: string,
 };
 export type DrawerState = {
@@ -39,6 +38,7 @@ type CSSProps = {
   transform: boolean,
   placement: Direction,
   theme: Object,
+  hasContainer?: boolean,
 };
 
 const FontSize = 1.2;
@@ -145,7 +145,7 @@ const getWidthOrHeight = (props: CSSProps) => {
   return width;
 };
 
-const getNewDistance = (distance, isPlacedInHorizontal) => {
+const getNewDistance = (distance: string, isPlacedInHorizontal: boolean) => {
   const currentClientPara = isPlacedInHorizontal ? 'clientHeight' : 'clientWidth';
   const currentDirection = isPlacedInHorizontal ? 'vh' : 'vw';
   const currentClientDistance = window.document.documentElement[currentClientPara];
