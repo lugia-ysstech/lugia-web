@@ -22,7 +22,7 @@ export const TipBottom = CSSComponent({
     defaultTheme: {
       color: dangerColor,
       fontSize: 12,
-      height: 32,
+      height: 16,
       margin: {
         left: 10,
         top: 4,
@@ -74,7 +74,9 @@ export const BottomContainer: Object = CSSComponent({
     selectNames: [['width']],
     getCSS(themeMeta, themeProps) {
       const { width } = themeMeta;
-      return getWidthCSS(width);
+      const { propsConfig: { inMega } = {} } = themeProps;
+      const disPlayCSS = inMega ? 'display: flex;flex-direction: column;' : '';
+      return `${getWidthCSS(width)}${disPlayCSS}`;
     },
   },
   hover: {
