@@ -67,7 +67,7 @@ const ValidateHoc = (Target: Object) => {
       });
       const { __lugiad__header__absolute__ } = this.props;
       const innerThemeProps = deepMerge(validateThemeProps, getPartOfThemeProps('Container'));
-      const bottomProps = __lugiad__header__absolute__ ? { inMega: true } : {};
+      const bottomProps = { inMega: __lugiad__header__absolute__ };
       const ContainerThemeProps = getPartOfThemeProps('Container', { props: bottomProps });
 
       if (validateType === 'bottom') {
