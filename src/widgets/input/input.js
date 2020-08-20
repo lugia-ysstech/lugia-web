@@ -129,7 +129,6 @@ const InputContainer = CSSComponent({
     defaultTheme: {
       width: '100%',
       background: { color: 'white' },
-      borderRadius: getBorderRadius(borderRadius),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
@@ -573,6 +572,7 @@ class TextBox extends Component<InputProps, InputState> {
       themeConfig: {
         normal: {
           border: getBorder(get('normalBorder')),
+          borderRadius: getBorderRadius(borderRadius),
         },
         hover: {
           border: getBorder(get('hoverBorder')),
