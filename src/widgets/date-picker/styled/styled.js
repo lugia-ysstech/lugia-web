@@ -5,7 +5,7 @@ export const Box = CSSComponent({
   tag: 'div',
   className: 'Box',
   normal: {
-    selectNames: [['width']],
+    selectNames: [['width'], ['height']],
     defaultTheme: {
       width: '100%',
     },
@@ -26,7 +26,6 @@ export const Box = CSSComponent({
     display: inline-block;
     vertical-align: text-top;
     font-size: 0;
-    height: 100%;
   `,
 });
 export const Icons = CSSComponent({

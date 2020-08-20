@@ -44,6 +44,7 @@ type TypeProps = {
   size?: string,
   liquidLayout?: boolean,
   alwaysOpen?: boolean,
+  popupContainerId?: string,
 };
 type TypeState = {
   value: string,
@@ -160,6 +161,8 @@ class DateInput extends Component<TypeProps, TypeState> {
       getPartOfThemeProps,
     });
     const { normal = {} } = themeConfig;
+    const { height } = normal;
+    const inputHeight = height !== undefined ? { height: '100%' } : {};
     return (
       <Theme
         config={{
@@ -169,6 +172,7 @@ class DateInput extends Component<TypeProps, TypeState> {
               normal: {
                 ...normal,
                 width: '100%',
+                ...inputHeight,
               },
             },
             InputPrefix: {
