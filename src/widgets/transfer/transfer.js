@@ -267,6 +267,8 @@ export default ThemeProvider(
     getInputThemeConfig() {
       const { inputTheme = {} } = this.props;
       const { viewClass, theme } = inputTheme;
+      const { Container: { normal: { height } = {} } = {} } = theme[viewClass];
+      const theBorderRadius = height / 2 || 12;
       const inputView = {
         [viewClass]: {
           Container: {
@@ -277,13 +279,7 @@ export default ThemeProvider(
                 left: 4,
                 right: 4,
               },
-              getThemeMeta(themeMeta: Object, themeProps: Object) {
-                const { height, borderRadius } = themeMeta;
-                const theBorderRadius = height / 2 || 12;
-                return {
-                  borderRadius: deepMerge(getBorderRadius(theBorderRadius), borderRadius),
-                };
-              },
+              borderRadius: getBorderRadius(theBorderRadius),
             },
           },
           InputSuffix: {

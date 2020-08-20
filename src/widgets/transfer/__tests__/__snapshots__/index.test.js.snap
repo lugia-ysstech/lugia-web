@@ -850,10 +850,6 @@ exports[`Transfer css 1`] = `
   min-width: 3rem;
   width: 100%;
   background-color: white;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c22 {
@@ -9270,7 +9266,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
         >
           1
           /
-          7
+          9
         </span>
       </div>
       <div
@@ -10435,7 +10431,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                 onMouseUp={[Function]}
                 style={
                   Object {
-                    "height": "17.8rem",
+                    "height": "14.1rem",
                     "top": "0rem",
                   }
                 }
@@ -11345,7 +11341,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
         >
           1
           /
-          7
+          9
         </span>
       </div>
       <div
@@ -12510,7 +12506,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                 onMouseUp={[Function]}
                 style={
                   Object {
-                    "height": "17.8rem",
+                    "height": "14.1rem",
                     "top": "0rem",
                   }
                 }
@@ -13786,7 +13782,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
         >
           1
           /
-          7
+          9
         </span>
       </div>
       <div
@@ -14951,7 +14947,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                 onMouseUp={[Function]}
                 style={
                   Object {
-                    "height": "17.8rem",
+                    "height": "14.1rem",
                     "top": "0rem",
                   }
                 }
@@ -16135,7 +16131,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
         >
           1
           /
-          7
+          9
         </span>
       </div>
       <div
@@ -16831,6 +16827,280 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                                 className="c48"
                               >
                                 2.1.2
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li
+                      className="c40"
+                      height={32}
+                      selected={false}
+                      style={Object {}}
+                      title="2.1.1"
+                      unselectable="on"
+                    >
+                      <div
+                        className="c51"
+                        disabled={false}
+                        onMouseDown={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        style={Object {}}
+                      >
+                        <div
+                          className="c42"
+                          disabled={false}
+                          style={Object {}}
+                        >
+                          <span
+                            className="c43  c44"
+                          >
+                            <i
+                              className="lugia-icon-financial_omit   c23"
+                              onClick={[Function]}
+                              onMouseDown={[Function]}
+                              onMouseEnter={[Function]}
+                              onMouseLeave={[Function]}
+                              onMouseUp={[Function]}
+                              style={
+                                Object {
+                                  "paddingBottom": "0rem",
+                                  "paddingLeft": "1.2rem",
+                                  "paddingRight": "0rem",
+                                  "paddingTop": "0rem",
+                                }
+                              }
+                            />
+                          </span>
+                          <div
+                            className="c45"
+                          >
+                            <label
+                              className="c2"
+                              disabled={false}
+                              onClick={[Function]}
+                              onMouseDown={[Function]}
+                              onMouseEnter={[Function]}
+                              onMouseLeave={[Function]}
+                              onMouseUp={[Function]}
+                              style={Object {}}
+                            >
+                              <span
+                                className="c3"
+                                onClick={null}
+                              >
+                                <input
+                                  className="c4"
+                                  disabled={false}
+                                  onBlur={[Function]}
+                                  type="checkbox"
+                                />
+                                <span
+                                  checked={false}
+                                  className="c5"
+                                  disabled={false}
+                                  style={
+                                    Object {
+                                      "backgroundColor": "#ffffff",
+                                      "borderBottomColor": "#d0d3da",
+                                      "borderBottomLeftRadius": "0.2rem",
+                                      "borderBottomRightRadius": "0.2rem",
+                                      "borderBottomStyle": "solid",
+                                      "borderBottomWidth": "0.1rem",
+                                      "borderLeftColor": "#d0d3da",
+                                      "borderLeftStyle": "solid",
+                                      "borderLeftWidth": "0.1rem",
+                                      "borderRightColor": "#d0d3da",
+                                      "borderRightStyle": "solid",
+                                      "borderRightWidth": "0.1rem",
+                                      "borderTopColor": "#d0d3da",
+                                      "borderTopLeftRadius": "0.2rem",
+                                      "borderTopRightRadius": "0.2rem",
+                                      "borderTopStyle": "solid",
+                                      "borderTopWidth": "0.1rem",
+                                      "height": "1.6rem",
+                                      "width": "1.6rem",
+                                    }
+                                  }
+                                />
+                              </span>
+                              <span
+                                className="c46"
+                                style={
+                                  Object {
+                                    "color": "#363B40",
+                                  }
+                                }
+                              />
+                            </label>
+                            <div
+                              checked={false}
+                              className="c47"
+                              disabled={false}
+                              onClick={[Function]}
+                              onContextMenu={[Function]}
+                              onMouseDown={[Function]}
+                              onMouseEnter={[Function]}
+                              onMouseLeave={[Function]}
+                              onMouseUp={[Function]}
+                              selected={false}
+                              shape="default"
+                              style={
+                                Object {
+                                  "borderBottomLeftRadius": "0.4rem",
+                                  "borderBottomRightRadius": "0.4rem",
+                                  "borderTopLeftRadius": "0.4rem",
+                                  "borderTopRightRadius": "0.4rem",
+                                  "color": "#363B40",
+                                  "fontSize": "1.4rem",
+                                }
+                              }
+                              title="2.1.1"
+                            >
+                              <span
+                                className="c48"
+                              >
+                                2.1.1
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li
+                      className="c40"
+                      height={32}
+                      selected={false}
+                      style={Object {}}
+                      title="2.1.1"
+                      unselectable="on"
+                    >
+                      <div
+                        className="c51"
+                        disabled={false}
+                        onMouseDown={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        style={Object {}}
+                      >
+                        <div
+                          className="c42"
+                          disabled={false}
+                          style={Object {}}
+                        >
+                          <span
+                            className="c43  c44"
+                          >
+                            <i
+                              className="lugia-icon-financial_omit   c23"
+                              onClick={[Function]}
+                              onMouseDown={[Function]}
+                              onMouseEnter={[Function]}
+                              onMouseLeave={[Function]}
+                              onMouseUp={[Function]}
+                              style={
+                                Object {
+                                  "paddingBottom": "0rem",
+                                  "paddingLeft": "1.2rem",
+                                  "paddingRight": "0rem",
+                                  "paddingTop": "0rem",
+                                }
+                              }
+                            />
+                          </span>
+                          <div
+                            className="c45"
+                          >
+                            <label
+                              className="c2"
+                              disabled={false}
+                              onClick={[Function]}
+                              onMouseDown={[Function]}
+                              onMouseEnter={[Function]}
+                              onMouseLeave={[Function]}
+                              onMouseUp={[Function]}
+                              style={Object {}}
+                            >
+                              <span
+                                className="c3"
+                                onClick={null}
+                              >
+                                <input
+                                  className="c4"
+                                  disabled={false}
+                                  onBlur={[Function]}
+                                  type="checkbox"
+                                />
+                                <span
+                                  checked={false}
+                                  className="c5"
+                                  disabled={false}
+                                  style={
+                                    Object {
+                                      "backgroundColor": "#ffffff",
+                                      "borderBottomColor": "#d0d3da",
+                                      "borderBottomLeftRadius": "0.2rem",
+                                      "borderBottomRightRadius": "0.2rem",
+                                      "borderBottomStyle": "solid",
+                                      "borderBottomWidth": "0.1rem",
+                                      "borderLeftColor": "#d0d3da",
+                                      "borderLeftStyle": "solid",
+                                      "borderLeftWidth": "0.1rem",
+                                      "borderRightColor": "#d0d3da",
+                                      "borderRightStyle": "solid",
+                                      "borderRightWidth": "0.1rem",
+                                      "borderTopColor": "#d0d3da",
+                                      "borderTopLeftRadius": "0.2rem",
+                                      "borderTopRightRadius": "0.2rem",
+                                      "borderTopStyle": "solid",
+                                      "borderTopWidth": "0.1rem",
+                                      "height": "1.6rem",
+                                      "width": "1.6rem",
+                                    }
+                                  }
+                                />
+                              </span>
+                              <span
+                                className="c46"
+                                style={
+                                  Object {
+                                    "color": "#363B40",
+                                  }
+                                }
+                              />
+                            </label>
+                            <div
+                              checked={false}
+                              className="c47"
+                              disabled={false}
+                              onClick={[Function]}
+                              onContextMenu={[Function]}
+                              onMouseDown={[Function]}
+                              onMouseEnter={[Function]}
+                              onMouseLeave={[Function]}
+                              onMouseUp={[Function]}
+                              selected={false}
+                              shape="default"
+                              style={
+                                Object {
+                                  "borderBottomLeftRadius": "0.4rem",
+                                  "borderBottomRightRadius": "0.4rem",
+                                  "borderTopLeftRadius": "0.4rem",
+                                  "borderTopRightRadius": "0.4rem",
+                                  "color": "#363B40",
+                                  "fontSize": "1.4rem",
+                                }
+                              }
+                              title="2.1.1"
+                            >
+                              <span
+                                className="c48"
+                              >
+                                2.1.1
                               </span>
                             </div>
                           </div>
@@ -20392,7 +20662,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
         >
           1
           /
-          7
+          9
         </span>
       </div>
       <div
@@ -21557,7 +21827,7 @@ Zxhb6zvgS3PO95Qw/LbPxspkNOieEj//HwAzjd6QLHtY/QAAAABJRU5ErkJggg=="
                 onMouseUp={[Function]}
                 style={
                   Object {
-                    "height": "17.8rem",
+                    "height": "14.1rem",
                     "top": "0rem",
                   }
                 }
