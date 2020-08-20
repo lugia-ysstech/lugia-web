@@ -22,6 +22,9 @@ export const validateBorderDefaultTheme = () => ({
       boxShadow: getBoxShadow(
         `${hShadow}px ${vShadow}px ${shadowSpread}px ${get('inputDangerColor')}`
       ),
+      getCSS() {
+        return 'flex:1;';
+      },
     },
     hover: {
       border: getBorder({ color: dangerColor, width: borderSize, style: 'solid' }),

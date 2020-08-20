@@ -12,7 +12,7 @@ const hasValidateStatusInProps = (props: Object) => {
 const ValidateHoc = (Target: Object) => {
   class ValidateContainer extends React.Component {
     state = {
-      _isValidateVisible: true,
+      _isValidateVisible: false,
     };
     static defaultProps = {
       validateType: 'top',
@@ -65,8 +65,10 @@ const ValidateHoc = (Target: Object) => {
       const validateThemeProps = getPartOfThemeProps('ValidateErrorText', {
         props: { validateStatus, ...innerProps },
       });
+      const { __lugiad__header__absolute__ } = this.props;
       const innerThemeProps = deepMerge(validateThemeProps, getPartOfThemeProps('Container'));
-      const ContainerThemeProps = getPartOfThemeProps('Container');
+      const bottomProps = __lugiad__header__absolute__ ? { inMega: true } : {};
+      const ContainerThemeProps = getPartOfThemeProps('Container', { props: bottomProps });
 
       if (validateType === 'bottom') {
         return (
