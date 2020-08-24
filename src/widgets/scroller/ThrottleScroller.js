@@ -87,6 +87,11 @@ export default (
       this.marginBottom = this.getItemMarginBottom();
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+      this.itemHeight = this.getActiveItemHeight(nextProps);
+      return true;
+    }
+
     componentWillUpdate() {
       this.viewSize = this.fetchViewSize();
     }
