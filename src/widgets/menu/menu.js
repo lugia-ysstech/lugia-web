@@ -178,7 +178,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { props, state } = this;
     const dataChanged = props.data !== nextProps.data || props.children !== nextProps.children;
     const selectedChange = state.selectedKeys !== nextState.selectedKeys;
-
+    const isShowAuxiliaryTextChange = props.isShowAuxiliaryText !== nextProps.isShowAuxiliaryText;
     const themeChange = nextProps.theme !== props.theme;
     if (dataChanged || selectedChange) {
       this.updateIsSelect(nextState, nextProps);
@@ -199,7 +199,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
       props.svThemVersion !== nextProps.svThemVersion ||
       selectedChange ||
       expandedPathChanged ||
-      themeChange
+      themeChange ||
+      isShowAuxiliaryTextChange
     );
   }
 

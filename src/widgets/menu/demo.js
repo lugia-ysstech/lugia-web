@@ -167,11 +167,29 @@ export default class extends React.Component<any, any> {
       expandedPath: [],
       scrollerValue: 0,
       start: 0,
+      dynamicData: [...objData],
+      isShowAuxiliaryText: false,
     };
   }
+  changeData = () => {
+    function createData() {
+      const result = [];
+      const names = ['Jave', 'javaScript', 'PHP', 'C#'];
+      const des = ['适用于后台开发', '适用于浏览器', '适用于快捷开发', '桌面应用'];
+      for (let i = 0; i < 4; i++) {
+        result.push({
+          value: i,
+          text: names[Math.floor(Math.random() * 3) + 1],
+          des: des[Math.floor(Math.random() * 3) + 1],
+        });
+      }
+      return result;
+    }
+    this.setState({ dynamicData: createData() });
+  };
 
   render() {
-    const { selectedKeys, expandedPath } = this.state;
+    const { selectedKeys, expandedPath, isShowAuxiliaryText, dynamicData } = this.state;
 
     const view = {
       [Widget.Menu]: {
@@ -268,9 +286,27 @@ export default class extends React.Component<any, any> {
         },
       },
     };
-
     return (
       <div>
+        <H2>动态开启辅助文本</H2>
+        <Box>
+          <Menu
+            theme={view}
+            autoHeight
+            isShowAuxiliaryText={isShowAuxiliaryText}
+            divided
+            data={dynamicData}
+            renderSuffixItems={this.renderSuffixItems}
+          />
+          <button onClick={this.changeData}>动态修改menu的辅助文本</button>
+          <button
+            onClick={() => {
+              this.setState({ isShowAuxiliaryText: !isShowAuxiliaryText });
+            }}
+          >
+            显示辅助文本
+          </button>
+        </Box>
         <H2>带有辅助文本的菜单</H2>
         <Box>
           <Menu
