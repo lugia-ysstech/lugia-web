@@ -17,8 +17,8 @@ Array [
   position: relative;
   text-transform: none;
   outline: 0;
-  -webkit-transition: none;
-  transition: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -50,8 +50,8 @@ Array [
   text-transform: none;
   outline: 0;
   pointer-events: none;
-  -webkit-transition: none;
-  transition: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -2374,8 +2374,8 @@ Array [
   text-transform: none;
   outline: 0;
   width: 100%;
-  -webkit-transition: none;
-  transition: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -2408,8 +2408,8 @@ Array [
   outline: 0;
   width: 100%;
   pointer-events: none;
-  -webkit-transition: none;
-  transition: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -3184,8 +3184,8 @@ Array [
   position: relative;
   text-transform: none;
   outline: 0;
-  -webkit-transition: none;
-  transition: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -3489,8 +3489,8 @@ Array [
   position: relative;
   text-transform: none;
   outline: 0;
-  -webkit-transition: none;
-  transition: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -3521,8 +3521,8 @@ Array [
   position: relative;
   text-transform: none;
   outline: 0;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transition: none;
+  transition: none;
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -3561,7 +3561,7 @@ Array [
 
 <div>
     <p>
-      有过渡效果的default button
+      没有过渡效果的default button
     </p>
     <button
       className="c0"
@@ -3826,8 +3826,8 @@ Array [
   position: relative;
   text-transform: none;
   outline: 0;
-  -webkit-transition: none;
-  transition: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -3858,8 +3858,8 @@ Array [
   position: relative;
   text-transform: none;
   outline: 0;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transition: none;
+  transition: none;
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -3898,7 +3898,7 @@ Array [
 
 <div>
     <p>
-      有过渡效果的plain button
+      没有过渡效果的plain button
     </p>
     <button
       className="c0"
