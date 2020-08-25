@@ -97,17 +97,17 @@ exports[`Switch Wrapper 1`] = `
 }
 
 .c7 > *:first-child {
-  width: 1.6rem;
+  width: 9.25rem;
   right: 0;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   font-weight: undefined;
-  color: rgba(255,255,255,0.8);
+  color: grey;
 }
 
 .c7 > *:first-child > *:first-child {
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   font-weight: undefined;
-  color: rgba(255,255,255,0.8);
+  color: grey;
 }
 
 .c9 {
@@ -131,17 +131,17 @@ exports[`Switch Wrapper 1`] = `
 }
 
 .c9 > *:first-child {
-  width: 2.1rem;
+  width: NaNrem;
   right: 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: undefined;
-  color: rgba(255,255,255,0.8);
+  color: white;
 }
 
 .c9 > *:first-child > *:first-child {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: undefined;
-  color: rgba(255,255,255,0.8);
+  color: white;
 }
 
 .c11 {
@@ -165,8 +165,8 @@ exports[`Switch Wrapper 1`] = `
 }
 
 .c11 > *:first-child {
-  width: 2.1rem;
-  left: 0;
+  width: 1.6rem;
+  right: 0;
   font-size: 1.2rem;
   font-weight: undefined;
   color: rgba(255,255,255,0.8);
@@ -183,7 +183,6 @@ exports[`Switch Wrapper 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  cursor: not-allowed;
 }
 
 .c13 > *:first-child {
@@ -208,6 +207,75 @@ exports[`Switch Wrapper 1`] = `
 }
 
 .c13 > *:first-child > *:first-child {
+  font-size: 1.2rem;
+  font-weight: undefined;
+  color: rgba(255,255,255,0.8);
+}
+
+.c15 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c15 > *:first-child {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 1.2rem;
+}
+
+.c15 > *:first-child {
+  width: 2.1rem;
+  left: 0;
+  font-size: 1.2rem;
+  font-weight: undefined;
+  color: rgba(255,255,255,0.8);
+}
+
+.c15 > *:first-child > *:first-child {
+  font-size: 1.2rem;
+  font-weight: undefined;
+  color: rgba(255,255,255,0.8);
+}
+
+.c17 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: not-allowed;
+}
+
+.c17 > *:first-child {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 1.2rem;
+}
+
+.c17 > *:first-child {
+  width: 2.1rem;
+  right: 0;
+  font-size: 1.2rem;
+  font-weight: undefined;
+  color: rgba(255,255,255,0.8);
+}
+
+.c17 > *:first-child > *:first-child {
   font-size: 1.2rem;
   font-weight: undefined;
   color: rgba(255,255,255,0.8);
@@ -275,7 +343,7 @@ exports[`Switch Wrapper 1`] = `
   -webkit-transition: 1s;
   transition: 1s;
   -webkit-transition: all 0.2s;
-  left: 2px;
+  left: 2.5px;
 }
 
 .c8 > *:first-child {
@@ -302,7 +370,7 @@ exports[`Switch Wrapper 1`] = `
 }
 
 .c8 > *:first-child {
-  height: 1.2rem;
+  height: 2.5rem;
 }
 
 .c10 {
@@ -315,7 +383,7 @@ exports[`Switch Wrapper 1`] = `
   -webkit-transition: 1s;
   transition: 1s;
   -webkit-transition: all 0.2s;
-  left: 3px;
+  left: 1px;
 }
 
 .c10 > *:first-child {
@@ -342,7 +410,7 @@ exports[`Switch Wrapper 1`] = `
 }
 
 .c10 > *:first-child {
-  height: 1.4rem;
+  height: NaNrem;
 }
 
 .c12 {
@@ -355,7 +423,7 @@ exports[`Switch Wrapper 1`] = `
   -webkit-transition: 1s;
   transition: 1s;
   -webkit-transition: all 0.2s;
-  right: 3px;
+  left: 2px;
 }
 
 .c12 > *:first-child {
@@ -382,7 +450,7 @@ exports[`Switch Wrapper 1`] = `
 }
 
 .c12 > *:first-child {
-  height: 1.4rem;
+  height: 1.2rem;
 }
 
 .c14 {
@@ -395,7 +463,6 @@ exports[`Switch Wrapper 1`] = `
   -webkit-transition: 1s;
   transition: 1s;
   -webkit-transition: all 0.2s;
-  left: 3px;
   left: 3px;
 }
 
@@ -426,12 +493,93 @@ exports[`Switch Wrapper 1`] = `
   height: 1.4rem;
 }
 
-.c14 > *:first-child {
+.c16 {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition: all 0.2s;
+  right: 3px;
+}
+
+.c16 > *:first-child {
+  display: block;
+  color: #4d63ff;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
+  position: relative;
+}
+
+.c16 > *:first-child > *:first-child {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.c16 > *:first-child::before {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+  transform: scale(0.65);
+}
+
+.c16 > *:first-child {
+  height: 1.4rem;
+}
+
+.c18 {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition: all 0.2s;
+  left: 3px;
+  left: 3px;
+}
+
+.c18 > *:first-child {
+  display: block;
+  color: #4d63ff;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
+  position: relative;
+}
+
+.c18 > *:first-child > *:first-child {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.c18 > *:first-child::before {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+  transform: scale(0.65);
+}
+
+.c18 > *:first-child {
+  height: 1.4rem;
+}
+
+.c18 > *:first-child {
   cursor: not-allowed;
   height: 1.4rem;
 }
 
-.c14 > *:first-child::before {
+.c18 > *:first-child::before {
   display: inline-block;
   width: 1.4rem;
   height: 1.4rem;
@@ -559,6 +707,187 @@ exports[`Switch Wrapper 1`] = `
     }
   >
     <h3>
+      高度为字符串
+    </h3>
+    <span
+      className="c5"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "height": "3rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
+          "width": "12rem",
+        }
+      }
+    >
+      <span
+        className="c6"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "orange",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderBottomWidth": "0rem",
+            "borderLeftWidth": "0rem",
+            "borderRightWidth": "0rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "borderTopWidth": "0rem",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
+            "color": "grey",
+            "fontSize": "1.8rem",
+            "height": "3rem",
+            "width": "12rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c7"
+          style={
+            Object {
+              "color": "grey",
+              "fontSize": "1.8rem",
+            }
+          }
+        >
+          <i>
+            国
+          </i>
+        </span>
+        <span
+          className="c8"
+          style={
+            Object {
+              "backgroundColor": "yellow",
+              "borderBottomLeftRadius": "4rem",
+              "borderBottomRightRadius": "4rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "4rem",
+              "borderTopRightRadius": "4rem",
+              "borderTopWidth": "0rem",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
+              "height": "2.5rem",
+              "width": "2.5rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "height": 30,
+        "marginBottom": "50px",
+      }
+    }
+  >
+    <h3>
+      高度为百分百
+    </h3>
+    <span
+      className="c5"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "height": "100%",
+          "marginBottom": "1rem",
+          "marginLeft": "2rem",
+          "marginRight": "0rem",
+          "marginTop": "1rem",
+          "width": "12rem",
+        }
+      }
+    >
+      <span
+        className="c6"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "green",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderBottomWidth": "0rem",
+            "borderLeftWidth": "0rem",
+            "borderRightWidth": "0rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "borderTopWidth": "0rem",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
+            "color": "white",
+            "fontSize": "1rem",
+            "height": "100%",
+            "width": "12rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c9"
+          style={
+            Object {
+              "color": "white",
+              "fontSize": "1rem",
+            }
+          }
+        >
+          <i>
+            国
+          </i>
+        </span>
+        <span
+          className="c10"
+          style={
+            Object {
+              "backgroundColor": "yellow",
+              "borderBottomLeftRadius": "4rem",
+              "borderBottomRightRadius": "4rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "4rem",
+              "borderTopRightRadius": "4rem",
+              "borderTopWidth": "0rem",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
+              "height": "100%",
+              "width": "2.5rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
       size=‘small’
     </h3>
     <span
@@ -594,7 +923,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c7"
+          className="c11"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -607,7 +936,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c12"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -673,7 +1002,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -686,7 +1015,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -752,7 +1081,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c11"
+          className="c15"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -765,7 +1094,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c12"
+          className="c16"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -831,7 +1160,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -844,7 +1173,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -910,7 +1239,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -923,7 +1252,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -989,7 +1318,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1002,7 +1331,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -1068,7 +1397,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1081,7 +1410,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -1147,7 +1476,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1160,7 +1489,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -1226,7 +1555,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1239,7 +1568,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -1305,7 +1634,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1318,7 +1647,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -1385,7 +1714,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1398,7 +1727,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -1464,7 +1793,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1477,7 +1806,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -1543,7 +1872,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1556,7 +1885,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -1622,7 +1951,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1631,7 +1960,7 @@ exports[`Switch Wrapper 1`] = `
           }
         />
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -1697,7 +2026,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1710,7 +2039,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -1776,7 +2105,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c11"
+          className="c15"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1789,7 +2118,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c12"
+          className="c16"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -1855,7 +2184,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c11"
+          className="c15"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1868,7 +2197,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c12"
+          className="c16"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -1934,7 +2263,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c11"
+          className="c15"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -1947,7 +2276,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c12"
+          className="c16"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -2013,7 +2342,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2026,7 +2355,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -2092,7 +2421,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c11"
+          className="c15"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2105,7 +2434,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c12"
+          className="c16"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -2171,7 +2500,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2184,7 +2513,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -2250,7 +2579,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c9"
+          className="c13"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2263,7 +2592,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c10"
+          className="c14"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -2329,7 +2658,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c11"
+          className="c15"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2348,7 +2677,7 @@ exports[`Switch Wrapper 1`] = `
           />
         </span>
         <span
-          className="c12"
+          className="c16"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -2414,7 +2743,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c13"
+          className="c17"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2427,7 +2756,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c14"
+          className="c18"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -2506,7 +2835,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={0}
       >
         <span
-          className="c13"
+          className="c17"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2519,7 +2848,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c14"
+          className="c18"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -2598,7 +2927,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={-1}
       >
         <span
-          className="c13"
+          className="c17"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2611,7 +2940,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c14"
+          className="c18"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -2677,7 +3006,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={-1}
       >
         <span
-          className="c13"
+          className="c17"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2690,7 +3019,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c14"
+          className="c18"
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -2769,7 +3098,7 @@ exports[`Switch Wrapper 1`] = `
         tabIndex={-1}
       >
         <span
-          className="c13"
+          className="c17"
           style={
             Object {
               "color": "rgba(255, 255, 255, 0.8)",
@@ -2782,7 +3111,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c14"
+          className="c18"
           style={
             Object {
               "backgroundColor": "#ffffff",
