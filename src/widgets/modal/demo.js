@@ -73,6 +73,7 @@ export default class ModalDemo extends React.Component<any, any> {
       visable6: false,
       visable7: false,
       visable8: false,
+      buttonValue: 'testValue',
     };
   }
 
@@ -96,6 +97,13 @@ export default class ModalDemo extends React.Component<any, any> {
       });
     }, 2000);
   };
+  handleTestButtonClick = () => {
+    const { buttonValue } = this.state;
+    const newValue = buttonValue === 'testValue' ? 'anotherTestValue' : 'testValue';
+    this.setState({
+      buttonValue: newValue,
+    });
+  };
 
   render() {
     const {
@@ -108,6 +116,7 @@ export default class ModalDemo extends React.Component<any, any> {
       visable7,
       visable8,
       confirmLoading,
+      buttonValue,
     } = this.state;
     const view = {
       [Widgets.Modal]: {
@@ -318,7 +327,9 @@ export default class ModalDemo extends React.Component<any, any> {
           onOk={this.buttonClick(8)}
           onCancel={this.buttonClick(8)}
           mountBody={true}
-        />
+        >
+          <button onClick={this.handleTestButtonClick}>{buttonValue}</button>
+        </Modal>
       </div>
     );
   }
