@@ -74,9 +74,9 @@ export default ThemeProvider(
       this.changeNodeMountStatus(true);
     }
 
-    changeNodeMountStatus = (isMount: boolean) => {
+    changeNodeMountStatus = (mounted: boolean) => {
       const doc = window && window.document;
-      const handleChild = isMount ? 'removeChild' : 'appendChild';
+      const handleChild = mounted ? 'removeChild' : 'appendChild';
       if (doc) {
         doc.body && doc.body[handleChild](this.node);
       }
