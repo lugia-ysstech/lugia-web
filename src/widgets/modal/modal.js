@@ -47,7 +47,7 @@ export default ThemeProvider(
       if (!zIndex && zIndex !== 0) {
         this.index = visible ? getIndex() : undefined;
       }
-      this.node = null;
+      this.node = document.createElement('div');
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -67,10 +67,21 @@ export default ThemeProvider(
     };
     componentDidMount() {
       window.addEventListener('keydown', this.hideWindowPopUp, false);
+      this.changeNodeMountStatus(false);
     }
     componentWillUnmount() {
       window.removeEventListener('keydown', this.hideWindowPopUp, false);
+      this.changeNodeMountStatus(true);
     }
+
+    changeNodeMountStatus = (isMount: boolean) => {
+      const doc = window && window.document;
+      const handleChild = isMount ? 'removeChild' : 'appendChild';
+      if (doc) {
+        doc.body && doc.body[handleChild](this.node);
+      }
+    };
+
     hideWindowPopUp = e => {
       const { onCancel } = this.props;
       if (this.modalEle === document.activeElement && e.keyCode === 27) {
@@ -291,13 +302,6 @@ export default ThemeProvider(
         </Wrap>
       );
       if (mountBody) {
-        if (typeof window !== 'undefined') {
-          const doc = window && window.document;
-          if (doc) {
-            this.node = doc.createElement('div');
-            doc.body && doc.body.appendChild(this.node);
-          }
-        }
         if (!this.node) {
           return null;
         }
