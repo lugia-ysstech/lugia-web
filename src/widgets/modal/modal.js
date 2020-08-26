@@ -67,16 +67,16 @@ export default ThemeProvider(
     };
     componentDidMount() {
       window.addEventListener('keydown', this.hideWindowPopUp, false);
-      this.changeNodeMountStatus(false);
+      this.changeNodeMountStatus(true);
     }
     componentWillUnmount() {
       window.removeEventListener('keydown', this.hideWindowPopUp, false);
-      this.changeNodeMountStatus(true);
+      this.changeNodeMountStatus(false);
     }
 
     changeNodeMountStatus = (mounted: boolean) => {
       const doc = window && window.document;
-      const handleChild = mounted ? 'removeChild' : 'appendChild';
+      const handleChild = mounted ? 'appendChild' : 'removeChild';
       if (doc) {
         doc.body && doc.body[handleChild](this.node);
       }
