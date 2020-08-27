@@ -59,6 +59,7 @@ export default [
       widgetName: 'Alert',
       title: '警告提示',
       desc: '警告提示信息。',
+      tag: '警告提示 Alert 提示信息 标注信息 提示框 高亮提示 说明信息 补充信息 解释说明',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         type: {
@@ -145,6 +146,7 @@ export default [
       widgetName: 'AmountInput',
       title: '金额输入框',
       desc: '用于金额数字的填写,可切换人民币大小写显示效果.',
+      tag: '金额输入框 AmountInput ¥ $ 数额输入框 核算输入框 统计输入 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出框' },
@@ -347,6 +349,7 @@ export default [
       widgetName: 'Anchor',
       title: '锚点',
       desc: '用于跳转到页面指定位置。',
+      tag: '锚点 Anchor 跳至 页面节点',
       props: {
         affix: { type: 'boolean', desc: '是否固定在窗口', defaultValue: true },
         offsetTop: { type: 'number', desc: '距离窗口顶部达到指定值后触发', defaultValue: 0 },
@@ -378,6 +381,7 @@ export default [
       widgetName: 'AutoComplete',
       title: '自动完成',
       desc: '需要自动完成数据时使用',
+      tag: '自动完成 AutoComplete 自动补充输入框 自动选择 自动补全输入框 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         size: {
@@ -704,6 +708,7 @@ export default [
       widgetName: 'Avatar',
       title: '头像',
       desc: '用来代表用户或事物，支持图片、图标或字符展示。',
+      tag: '头像 Avatar 文字头像 文本头像',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
@@ -742,6 +747,7 @@ export default [
           sequence: 1,
           title: '图标头像',
           desc: '使用图标样式展示头像',
+          tag: '图标头像 Avatar Icon头像',
           props: { type: 'icon', icon: 'lugia-icon-financial_user' },
           theme: {
             Container: {
@@ -776,6 +782,7 @@ export default [
           sequence: 2,
           title: '图片头像',
           desc: '使用图片资源展示头像',
+          tag: '图片头像 Avatar 相片头像',
           props: {
             type: 'img',
             src:
@@ -849,6 +856,7 @@ export default [
       widgetName: 'Avatar',
       title: '图标头像',
       desc: '使用图标样式展示头像',
+      tag: '头像 Avatar 文字头像 文本头像',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
@@ -922,6 +930,7 @@ export default [
       widgetName: 'Avatar',
       title: '图片头像',
       desc: '使用图片资源展示头像',
+      tag: '头像 Avatar 文字头像 文本头像',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
@@ -999,6 +1008,7 @@ export default [
       widgetName: 'BackTop',
       title: '回到顶部',
       desc: '返回页面顶部。',
+      tag: '回到顶部 返回顶部 返回页面顶部 BackTop 置顶 回到页面顶部',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         injectLugiad: { type: 'Object', defaultValue: { type: 'BackTop' }, isHidden: true },
@@ -1052,6 +1062,7 @@ export default [
       widgetName: 'Badge',
       title: '徽标数',
       desc: '图标右上角的圆形徽标数字',
+      tag: '徽标数 小红点 数字提示 数字提醒 红点警告 报错提醒 消息提醒 Badge',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
@@ -1074,6 +1085,7 @@ export default [
           sequence: 1,
           title: '数字徽标',
           desc: '徽标数大于0时,显示的数字',
+          tag: '数字徽标数 小红点 数字提示 数字提醒 红点警告 报错提醒 消息提醒 Badge',
           props: { showZero: true, count: 1 },
           theme: {
             Badge: {
@@ -1127,6 +1139,7 @@ export default [
       widgetName: 'Badge',
       title: '数字徽标',
       desc: '徽标数大于0时,显示的数字',
+      tag: '徽标数 小红点 数字提示 数字提醒 红点警告 报错提醒 消息提醒 Badge',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
@@ -1177,6 +1190,7 @@ export default [
       widgetName: 'BasicElements',
       title: '基本元素',
       desc: '基本元素',
+      tag: '基本元素 BasicElements 矩形 正方形 长方形 基本形状 rectangle square 通用元素',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         shape: { type: 'ShapeType', desc: '基本元素形状', defaultValue: 'square' },
@@ -1188,6 +1202,7 @@ export default [
           sequence: 2,
           title: '圆形元素',
           desc: '圆形元素',
+          tag: '圆形元素 BasicElements circular 椭圆形',
           props: { shape: 'circle' },
           defaultTheme: { Container: { normal: { width: 32, height: 32 } } },
           theme: {
@@ -1241,6 +1256,7 @@ export default [
       widgetName: 'BasicElements',
       title: '圆形元素',
       desc: '圆形元素',
+      tag: '基本元素 BasicElements 矩形 正方形 长方形 基本形状 rectangle square 通用元素',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         shape: { type: 'ShapeType', desc: '基本元素形状', defaultValue: 'circle' },
@@ -1278,6 +1294,7 @@ export default [
       widgetName: 'Breadcrumb',
       title: '面包屑',
       desc: '显示系统的层级关系和当先所在的位置,并能向上返回',
+      tag: '面包屑导航 Breadcrumb 路径导航 层级位置 定位',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         separator: { type: 'string', desc: '自定义层级分隔符', defaultPropsValue: '/' },
@@ -1536,6 +1553,7 @@ export default [
       widgetName: 'Button',
       title: '按钮',
       desc: '方便用户点击操作',
+      tag: '按钮 button 按键 主按钮 背景按钮 主要按钮 基本按钮',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
@@ -1605,6 +1623,7 @@ export default [
           sequence: 1,
           title: '朴素按钮',
           desc: '朴素按钮',
+          tag: '按钮 button 次要按钮 边框按钮 线框按钮',
           props: { plain: true },
           theme: {
             Container: {
@@ -1658,6 +1677,7 @@ export default [
           sequence: 1,
           title: '图标按钮',
           desc: '图标按钮',
+          tag: '按钮 button 组合按钮 图标背景按钮 Icon按钮',
           props: { icon: 'lugia-icon-logo_lugia' },
           theme: {
             Container: {
@@ -1709,8 +1729,9 @@ export default [
         },
         CircleButton: {
           sequence: 1,
-          title: '圆形图标按钮',
-          desc: '圆形图标按钮',
+          title: '仅图标按钮',
+          desc: '仅图标按钮',
+          tag: '按钮 button 图标按钮 Icon按钮',
           props: { circle: true, icon: 'lugia-icon-logo_lugia', text: '', type: 'primary' },
           theme: {
             Container: {
@@ -1755,6 +1776,7 @@ export default [
           sequence: 1,
           title: '文字按钮',
           desc: '文字按钮',
+          tag: '按钮 button 文本按钮 链接按钮 链接文本 Label按钮',
           props: { type: 'link' },
           theme: {
             Container: {
@@ -1777,6 +1799,7 @@ export default [
           sequence: 1,
           title: '文字图标按钮',
           desc: '文字图标按钮',
+          tag: '按钮 button 文本链接 链接按钮 图标文本按钮',
           props: { type: 'link', icon: 'lugia-icon-logo_lugia' },
           theme: {
             Container: {
@@ -1872,6 +1895,7 @@ export default [
       widgetName: 'Button',
       title: '朴素按钮',
       desc: '朴素按钮',
+      tag: '按钮 button 按键 主按钮 背景按钮 主要按钮 基本按钮',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
@@ -1995,6 +2019,7 @@ export default [
       widgetName: 'Button',
       title: '图标按钮',
       desc: '图标按钮',
+      tag: '按钮 button 按键 主按钮 背景按钮 主要按钮 基本按钮',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
@@ -2116,8 +2141,9 @@ export default [
   {
     meta: {
       widgetName: 'Button',
-      title: '圆形图标按钮',
-      desc: '圆形图标按钮',
+      title: '仅图标按钮',
+      desc: '仅图标按钮',
+      tag: '按钮 button 按键 主按钮 背景按钮 主要按钮 基本按钮',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
@@ -2232,6 +2258,7 @@ export default [
       widgetName: 'Button',
       title: '文字按钮',
       desc: '文字按钮',
+      tag: '按钮 button 按键 主按钮 背景按钮 主要按钮 基本按钮',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
@@ -2324,6 +2351,7 @@ export default [
       widgetName: 'Button',
       title: '文字图标按钮',
       desc: '文字图标按钮',
+      tag: '按钮 button 按键 主按钮 背景按钮 主要按钮 基本按钮',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
@@ -2434,6 +2462,7 @@ export default [
       widgetName: 'Card',
       title: '卡片',
       desc: '卡片容器，可添加文字、列表、图片等',
+      tag: 'card 卡片 背景板 父容器 父卡片 区块背景 标题卡片 头部卡片 标题卡片 标示卡片',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
@@ -2483,6 +2512,7 @@ export default [
           sequence: 1,
           title: '水平头像卡片',
           desc: '水平头像卡片样式',
+          tag: 'card 卡片 水平头像卡片 横向头像卡片 父容器',
           props: {
             type: 'avatar',
             imageOrientation: 'horizontal',
@@ -2551,6 +2581,7 @@ export default [
           sequence: 2,
           title: '水平图片卡片',
           desc: '水平图片卡片样式',
+          tag: 'card 卡片 水平图片卡片 横向图片卡片 父容器',
           props: { type: 'image', imageOrientation: 'horizontal' },
           defaultTheme: { Container: { normal: { width: 120, height: 112 } } },
           theme: {
@@ -2619,6 +2650,7 @@ export default [
           sequence: 3,
           title: '垂直头像卡片',
           desc: '垂直头像卡片不同选择显示不同卡片样式',
+          tag: 'card 卡片 垂直头像卡片 竖向头像卡片 父容器',
           props: {
             type: 'avatar',
             imageOrientation: 'vertical',
@@ -2687,6 +2719,7 @@ export default [
           sequence: 4,
           title: '垂直图片卡片',
           desc: '垂直图片卡片样式',
+          tag: 'card 卡片 垂直图片卡片 竖向图片卡片 父容器',
           props: { type: 'image', imageOrientation: 'vertical' },
           defaultTheme: { Container: { normal: { width: 200, height: 220 } } },
           theme: {
@@ -2753,8 +2786,10 @@ export default [
         },
         ComboCard: {
           sequence: 5,
-          title: '自定义组合卡片',
+          title: '自定义卡片',
           desc: '组合卡片样式',
+          tag:
+            'card 卡片 自定义组合卡片 自定义卡片 空白卡片 父容器 背景板 父卡片 区块背景 普通卡片 基础卡片',
           props: { type: 'combo', title: '' },
           theme: {
             Container: {
@@ -2822,6 +2857,7 @@ export default [
           sequence: 6,
           title: '空白盒子',
           desc: '空白盒子样式',
+          tag: 'card 卡片 空白盒子 空白背景板 父容器 空盒子 父卡片',
           props: { type: 'transparent' },
           theme: {
             Container: {
@@ -2918,6 +2954,7 @@ export default [
       widgetName: 'Card',
       title: '水平头像卡片',
       desc: '水平头像卡片样式',
+      tag: 'card 卡片 背景板 父容器 父卡片 区块背景 标题卡片 头部卡片 标题卡片 标示卡片',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
@@ -3037,6 +3074,7 @@ export default [
       widgetName: 'Card',
       title: '水平图片卡片',
       desc: '水平图片卡片样式',
+      tag: 'card 卡片 背景板 父容器 父卡片 区块背景 标题卡片 头部卡片 标题卡片 标示卡片',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
@@ -3156,6 +3194,7 @@ export default [
       widgetName: 'Card',
       title: '垂直头像卡片',
       desc: '垂直头像卡片不同选择显示不同卡片样式',
+      tag: 'card 卡片 背景板 父容器 父卡片 区块背景 标题卡片 头部卡片 标题卡片 标示卡片',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
@@ -3275,6 +3314,7 @@ export default [
       widgetName: 'Card',
       title: '垂直图片卡片',
       desc: '垂直图片卡片样式',
+      tag: 'card 卡片 背景板 父容器 父卡片 区块背景 标题卡片 头部卡片 标题卡片 标示卡片',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
@@ -3392,8 +3432,9 @@ export default [
   {
     meta: {
       widgetName: 'Card',
-      title: '自定义组合卡片',
+      title: '自定义卡片',
       desc: '组合卡片样式',
+      tag: 'card 卡片 背景板 父容器 父卡片 区块背景 标题卡片 头部卡片 标题卡片 标示卡片',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
@@ -3515,6 +3556,7 @@ export default [
       widgetName: 'Card',
       title: '空白盒子',
       desc: '空白盒子样式',
+      tag: 'card 卡片 背景板 父容器 父卡片 区块背景 标题卡片 头部卡片 标题卡片 标示卡片',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
@@ -3593,6 +3635,7 @@ export default [
       widgetName: 'Carousel',
       title: '走马灯',
       desc: '常用于展示一组图片或卡片轮播',
+      tag: '走马灯 carousel 轮播图 banner图',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultStart: {
@@ -3705,6 +3748,7 @@ export default [
       widgetName: 'Cascader',
       title: '级联选择',
       desc: '通过级联选择,可以清晰地显示层级数据结构',
+      tag: '级联选择器 cascader 层级下拉框 层级选择框 多层选择框 多层选择器 层级选择器 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         popupContainerId: { type: 'ContainerDomIdType', desc: '配置弹出框的作用容器id' },
@@ -4380,6 +4424,7 @@ export default [
       widgetName: 'Checkbox',
       title: '多选框',
       desc: '多选框。',
+      tag: '多选框 checkbox 复选框 多项选择框',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         checked: { type: 'boolean', desc: '指定Checkbox是否选中' },
@@ -4896,6 +4941,7 @@ export default [
       widgetName: 'Collapse',
       title: '折叠面板',
       desc: '折叠面板，用于展开/折叠内容区域。',
+      tag: '折叠面板 Collapse 组合折叠面板 收起展开面板 多项折叠面板',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         activeValue: { type: 'string | string[]', desc: '当前展开面板的 value值 或者 value 集合' },
@@ -5024,6 +5070,7 @@ export default [
       widgetName: 'Collapse.Panel',
       title: 'Panel 面板',
       desc: 'Panel 面板。',
+      tag: 'panel面板 折叠面板头部 折叠面板收起 Collapse 收起折叠面板 单项折叠面板 收起展开面板',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         value: { type: 'string', desc: '指定Panel面板value值' },
@@ -5105,6 +5152,7 @@ export default [
       widgetName: 'DatePicker',
       title: '日期选择器',
       desc: '用于日期选择',
+      tag: '日期选择器 日期选择框 DatePicker 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
@@ -5459,6 +5507,7 @@ export default [
       widgetName: 'DatePicker.MonthPicker',
       title: '月选择器',
       desc: '用于月份选择,',
+      tag: '月份选择器 月份选择框 月选择器 月选择器 MonthPicker 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
@@ -5663,6 +5712,7 @@ export default [
       widgetName: 'DatePicker.YearPicker',
       title: '年选择器',
       desc: '用于年选择,',
+      tag: '年选择器 年选择框 年份选择器 年份选择器 YearPicker 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
@@ -5862,8 +5912,9 @@ export default [
   {
     meta: {
       widgetName: 'DatePicker.WeekPicker',
-      title: '周选择器',
+      title: '周选择器-日期范围',
       desc: '用于周选择,',
+      tag: '周选择器 周选择框 星期选择器 星期选择器 WeekPicker 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
@@ -6204,8 +6255,9 @@ export default [
   {
     meta: {
       widgetName: 'DatePicker.WeeksPicker',
-      title: '周选择器',
+      title: '周选择器-单项周',
       desc: '用于周选择,',
+      tag: '周选择器 周选择框 星期选择器 星期选择器 WeekPicker 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
@@ -6419,6 +6471,7 @@ export default [
       widgetName: 'DatePicker.RangePicker',
       title: '日期范围选择器',
       desc: '用于日期范围选择,',
+      tag: '日期范围选择器 日期范围选择框 日期区域选择器 日期区域选择框 RangePicker 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: {
@@ -6793,6 +6846,7 @@ export default [
       widgetName: 'Divider',
       title: '分割线',
       desc: '区隔内容的分割线',
+      tag: '分割线 Divider 直线 水平线 水平分割线',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         position: { type: 'DividerPosition', desc: '分割线中显示内容的位置,与content 配合使用' },
@@ -6820,6 +6874,7 @@ export default [
           sequence: 1,
           title: '垂直分割线',
           desc: '垂直分割线',
+          tag: '分割线 Divider 直线 垂直线 垂直分割线',
           props: { type: 'vertical' },
           defaultTheme: { Container: { normal: { width: 1, height: 200 } } },
           theme: {
@@ -6866,6 +6921,7 @@ export default [
       widgetName: 'Divider',
       title: '垂直分割线',
       desc: '垂直分割线',
+      tag: '分割线 Divider 直线 水平线 水平分割线',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         position: { type: 'DividerPosition', desc: '分割线中显示内容的位置,与content 配合使用' },
@@ -6916,6 +6972,7 @@ export default [
       widgetName: 'Drawer',
       title: '抽屉',
       desc: '在屏幕边缘出现的浮层面板。',
+      tag: '抽屉 Drawer 弹窗 弹层 弹出面板',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         injectLugiad: { type: 'Object', defaultValue: { type: 'Drawer' }, isHidden: true },
@@ -7003,6 +7060,7 @@ export default [
       widgetName: 'Dropmenu',
       title: '下拉菜单',
       desc: '选项过多时，弹出下拉菜单给用户选择操作',
+      tag: '下拉菜单 按钮弹出菜单 下拉按钮 Dropmenu 选择按钮 展开菜单 展开按钮菜单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
@@ -7114,8 +7172,10 @@ export default [
       designInfo: {
         NoDividedDropmenu: {
           sequence: 1,
-          title: '无分隔符的按钮',
+          title: '无分隔符下拉菜单',
           desc: '无分隔符的下拉按钮',
+          tag:
+            '下拉菜单 无分割线按钮弹出菜单 Dropmenu 无分割线选择按钮 无分割线下拉按钮 无分割线下拉菜单 无分割线展开按钮菜单 无分割线展开菜单',
           props: { divided: false },
           theme: {
             Container: {
@@ -7675,8 +7735,9 @@ export default [
   {
     meta: {
       widgetName: 'Dropmenu',
-      title: '无分隔符的按钮',
+      title: '无分隔符下拉菜单',
       desc: '无分隔符的下拉按钮',
+      tag: '下拉菜单 按钮弹出菜单 下拉按钮 Dropmenu 选择按钮 展开菜单 展开按钮菜单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
@@ -8049,6 +8110,7 @@ export default [
       widgetName: 'Icon',
       title: '图标',
       desc: '语义化的矢量图形',
+      tag: '图标 Icon 表情 标识 标志 图形',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
@@ -8084,6 +8146,7 @@ export default [
       widgetName: 'Image',
       title: '图片',
       desc: '图片配置',
+      tag: '图片 Image picture photograph 照片 相片',
       props: {
         src: {
           type: 'image',
@@ -8133,6 +8196,7 @@ export default [
       widgetName: 'Input',
       title: '文本输入框',
       desc: '常用于昵称,名称,表格内容等填写.',
+      tag: 'input 文本输入框 文本框 搜索框 输入框 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出校验框' },
@@ -8364,6 +8428,8 @@ export default [
       widgetName: 'Input.Textarea',
       title: '段落文本输入框',
       desc: '常用于多行文本输入',
+      tag:
+        'input textarea 段落文本输入框 段落框 段落文本框 段落输入框 多行文本框 多行输入框 区域文本框 区域输入框 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出校验框' },
@@ -8538,6 +8604,7 @@ export default [
       widgetName: 'Label',
       title: '文本',
       desc: '文本组件',
+      tag: 'label 文本 文字 字符 字符串 中文 英文 text',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         text: { type: 'string', desc: '文本内容', defaultValue: 'Label' },
@@ -8613,6 +8680,7 @@ export default [
       widgetName: 'Loading',
       title: '加载中',
       desc: '用于页面和区块的加载中状态',
+      tag: 'loading 加载中 载入',
       props: {
         size: {
           type: 'sizeType',
@@ -8645,6 +8713,7 @@ export default [
       widgetName: 'Lugiad',
       title: 'Lugiad页面',
       desc: '用于放入一个lugiad格式的子页面',
+      tag: 'lugiad Lugiad页面 子页面 页面容器 页面卡片',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         content: { type: 'lugiaDPages', desc: 'mega项目中包含的子页面' },
@@ -8683,6 +8752,7 @@ export default [
       widgetName: 'Menu',
       title: '菜单',
       desc: '为用户提供菜单列表',
+      tag: 'menu 菜单列表 多列文本',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出框' },
@@ -9285,6 +9355,7 @@ export default [
       widgetName: 'Menu',
       title: '多选菜单',
       desc: '多项选择的菜单',
+      tag: 'menu 菜单列表 多列文本',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出框' },
@@ -9653,6 +9724,7 @@ export default [
       widgetName: 'Message',
       title: '全局提示',
       desc: '全局提示，展示操作反馈信息。',
+      tag: 'message 全局提示 提示信息 消息提示 提示窗口 提示弹窗 操作反馈 展示信息',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         content: { type: 'React.node', desc: '提示消息的内容' },
@@ -9705,6 +9777,7 @@ export default [
       widgetName: 'Modal',
       title: '对话框',
       desc: 'Modal 对话框。',
+      tag: 'model 对话框 弹出窗口 弹窗 弹层',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         injectLugiad: { type: 'Object', defaultValue: { type: 'Modal' }, isHidden: true },
@@ -9756,7 +9829,7 @@ export default [
         ModalTitle: {
           name: '弹窗标题样式',
           desc: '为弹窗文字配置样式',
-          normal: [['font'], ['color'], ['padding']],
+          normal: [['font'], ['color'], ['padding'], ['margin']],
         },
         ModalContentText: {
           name: '弹窗内容文本样式',
@@ -9849,6 +9922,7 @@ export default [
       widgetName: 'Navmenu',
       title: '导航菜单',
       desc: '为页面提供导航功能的菜单',
+      tag: 'navmenu 内嵌导航菜单 垂直展开导航 树形导航 垂直菜单 垂直展开菜单 通栏导航',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         isShowAuxiliaryText: {
@@ -9994,6 +10068,7 @@ export default [
           sequence: 1,
           title: '顶部导航菜单',
           desc: '水平的导航菜单',
+          tag: 'navmenu HorizontalNavMenu 顶部导航菜单 水平导航 水平展开导航 标签导航 水平菜单',
           props: { mode: 'horizontal' },
           theme: {
             Tabs: {
@@ -10352,6 +10427,8 @@ export default [
           sequence: 2,
           title: '垂直导航菜单',
           desc: '子菜单从右侧弹开',
+          tag:
+            'navmenu VerticalNavMenu 垂直导航菜单 侧边展开导航 多级菜单 多级展开导航 侧边展开菜单',
           props: { mode: 'vertical' },
           theme: {
             Menu: {
@@ -10797,6 +10874,8 @@ export default [
           sequence: 3,
           title: '内嵌导航菜单',
           desc: '点击菜单收起或展开子菜单,ellipse样式',
+          tag:
+            'navmenu InlineEllipseNavMenu 垂直展开导航 树形导航 垂直菜单 内嵌导航菜单 垂直展开菜单 不通栏导航',
           props: { mode: 'inline', inlineType: 'ellipse' },
           theme: {
             Tree: {
@@ -11366,6 +11445,7 @@ export default [
       widgetName: 'Navmenu',
       title: '顶部导航菜单',
       desc: '水平的导航菜单',
+      tag: 'navmenu 内嵌导航菜单 垂直展开导航 树形导航 垂直菜单 垂直展开菜单 通栏导航',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         isShowAuxiliaryText: {
@@ -11858,6 +11938,7 @@ export default [
       widgetName: 'Navmenu',
       title: '垂直导航菜单',
       desc: '子菜单从右侧弹开',
+      tag: 'navmenu 内嵌导航菜单 垂直展开导航 树形导航 垂直菜单 垂直展开菜单 通栏导航',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         isShowAuxiliaryText: {
@@ -12409,6 +12490,7 @@ export default [
       widgetName: 'Navmenu',
       title: '内嵌导航菜单',
       desc: '点击菜单收起或展开子菜单,ellipse样式',
+      tag: 'navmenu 内嵌导航菜单 垂直展开导航 树形导航 垂直菜单 垂直展开菜单 通栏导航',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         isShowAuxiliaryText: {
@@ -12814,6 +12896,7 @@ export default [
       widgetName: 'Notification',
       title: '通知提醒框',
       desc: 'Notification 通知提醒框。',
+      tag: 'notification 通知提醒框 提示信息 消息提醒 信息弹窗 信息提示 消息通知',
       props: {
         title: { type: 'React.node', desc: '标题' },
         duration: {
@@ -12889,6 +12972,7 @@ export default [
       widgetName: 'NumberInput',
       title: '数字输入框',
       desc: '常用于数字输入,可以进行快速加减显示',
+      tag: 'numberinput 数字输入框 进步器 表单 数值输入框 number输入框 数字调节器',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出校验框' },
@@ -13148,6 +13232,7 @@ export default [
       widgetName: 'Pagination',
       title: '分页',
       desc: '分页组件，分页展示数据。',
+      tag: 'pagination 分页 分页选择器 页数选择 跳转页面',
       props: {
         current: { type: 'number', desc: '当前页数' },
         defaultCurrent: { type: 'number', desc: '默认的当前页数', propsDefaultValue: 1 },
@@ -13290,6 +13375,7 @@ export default [
           sequence: 1,
           title: '简洁分页',
           desc: '简洁分页',
+          tag: 'SimplePagination 简洁分页选择器 简单分页 迷你分页 页数选择 跳转页面',
           props: { simple: true },
           theme: {
             Container: {
@@ -13732,6 +13818,7 @@ export default [
       widgetName: 'Pagination',
       title: '简洁分页',
       desc: '简洁分页',
+      tag: 'pagination 分页 分页选择器 页数选择 跳转页面',
       props: {
         current: { type: 'number', desc: '当前页数' },
         defaultCurrent: { type: 'number', desc: '默认的当前页数', propsDefaultValue: 1 },
@@ -13968,6 +14055,7 @@ export default [
       widgetName: 'Popconfirm',
       title: '气泡确认框',
       desc: '气泡式的确认框',
+      tag: 'Popconfirm 气泡确认框 弹出确认框 弹出对话框 展开确认框 浮现确认框',
       props: {
         createPortal: { type: 'boolean', desc: '是否全局弹出器气泡框', propsDefaultValue: true },
         popupContainerId: { type: 'ContainerDomIdType', desc: '配置弹出框的作用容器id' },
@@ -14257,6 +14345,7 @@ export default [
       widgetName: 'Popconfirm',
       title: '自定义气泡确认框',
       desc: '自定义气泡确认框',
+      tag: 'Popconfirm 气泡确认框 弹出确认框 弹出对话框 展开确认框 浮现确认框',
       props: {
         createPortal: { type: 'boolean', desc: '是否全局弹出器气泡框', propsDefaultValue: true },
         popupContainerId: { type: 'ContainerDomIdType', desc: '配置弹出框的作用容器id' },
@@ -14440,6 +14529,7 @@ export default [
       widgetName: 'Popover',
       title: '气泡卡片',
       desc: '气泡式的卡片浮层',
+      tag: 'Popover 气泡卡片 弹出卡片 展开卡片 浮现卡片',
       props: {
         createPortal: { type: 'boolean', desc: '是否全局弹出器气泡框', propsDefaultValue: true },
         popupContainerId: { type: 'ContainerDomIdType', desc: '配置弹出框的作用容器id' },
@@ -14617,6 +14707,7 @@ export default [
       widgetName: 'Popover',
       title: '自定义气泡卡片',
       desc: '自定义气泡卡片',
+      tag: 'Popover 气泡卡片 弹出卡片 展开卡片 浮现卡片',
       props: {
         createPortal: { type: 'boolean', desc: '是否全局弹出器气泡框', propsDefaultValue: true },
         popupContainerId: { type: 'ContainerDomIdType', desc: '配置弹出框的作用容器id' },
@@ -14729,6 +14820,7 @@ export default [
       widgetName: 'Progress',
       title: '进度条',
       desc: '展示操作的当前进度。',
+      tag: 'progress 进度条 进程条 速度条 完成条 百分比条',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         type: {
@@ -14781,6 +14873,7 @@ export default [
           sequence: 1,
           title: '圆形进度条',
           desc: '圆形进度条',
+          tag: 'CircleProgress 圆形进度条 圆形进程条 圆形速度条 圆形完成条 圆形百分比条',
           props: { type: 'circle' },
           theme: {
             Container: {
@@ -14830,6 +14923,8 @@ export default [
           sequence: 1,
           title: '仪表盘进度条',
           desc: '仪表盘进度条',
+          tag:
+            'DashboardProgress 仪表盘进度条 仪表盘进程条 仪表盘速度条 仪表盘完成条 仪表盘百分比条',
           props: { type: 'dashboard' },
           theme: {
             Container: {
@@ -14950,6 +15045,7 @@ export default [
       widgetName: 'Progress',
       title: '圆形进度条',
       desc: '圆形进度条',
+      tag: 'progress 进度条 进程条 速度条 完成条 百分比条',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         type: {
@@ -15052,6 +15148,7 @@ export default [
       widgetName: 'Progress',
       title: '仪表盘进度条',
       desc: '仪表盘进度条',
+      tag: 'progress 进度条 进程条 速度条 完成条 百分比条',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         type: {
@@ -15154,6 +15251,7 @@ export default [
       widgetName: 'Radio',
       title: '单选框',
       desc: '单选框。',
+      tag: 'Radio 单选框 单项选择框',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         checked: { type: 'boolean', desc: '单选框是否选中' },
@@ -15595,6 +15693,7 @@ export default [
       widgetName: 'Rate',
       title: '评分',
       desc: '评分组件',
+      tag: 'Rate 评分 分数 评价 星级',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         count: { type: 'number', desc: '展示的 star 总数', defaultValue: 5 },
@@ -15736,6 +15835,7 @@ export default [
       widgetName: 'Rate',
       title: '分级图标评分',
       desc: '按分值等级展示不同图标样式和颜色',
+      tag: 'Rate 评分 分数 评价 星级',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         count: { type: 'number', desc: '展示的 star 总数', defaultValue: 5 },
@@ -15819,6 +15919,7 @@ export default [
       widgetName: 'Rate',
       title: '文字评分',
       desc: '按分值等级展示不同图标样式和颜色',
+      tag: 'Rate 评分 分数 评价 星级',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         count: { type: 'number', desc: '展示的 star 总数', defaultValue: 5 },
@@ -15892,6 +15993,8 @@ export default [
       widgetName: 'Select',
       title: '选择器',
       desc: '选项过多时，弹出下拉菜单给用户选择操作',
+      tag:
+        'Select 单项选择器 单项选择框 下拉选择框 下拉选择器 下拉菜单 弹出菜单 展开菜单 展开选择框 展开选择器 弹出选择框 弹出选择器 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         popupContainerId: { type: 'ContainerDomIdType', desc: '配置弹出框的作用容器id' },
@@ -16034,6 +16137,8 @@ export default [
           sequence: 1,
           title: '多项选择器',
           desc: '支持多项选择',
+          tag:
+            'MutlipleSelect 多项选择器 多项选择框 多项下拉选择框 多项下拉选择器 多项下拉菜单 多项弹出菜单 多项展开菜单 多项展开选择框 多项展开选择器 多项弹出选择框 多项弹出选择器 多项选择菜单 表单',
           props: { mutliple: true },
           theme: {
             Container: {
@@ -16952,6 +17057,8 @@ export default [
       widgetName: 'Select',
       title: '多项选择器',
       desc: '支持多项选择',
+      tag:
+        'Select 单项选择器 单项选择框 下拉选择框 下拉选择器 下拉菜单 弹出菜单 展开菜单 展开选择框 展开选择器 弹出选择框 弹出选择器 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         popupContainerId: { type: 'ContainerDomIdType', desc: '配置弹出框的作用容器id' },
@@ -17593,6 +17700,7 @@ export default [
       widgetName: 'Skeleton',
       title: '加载占位符',
       desc: '在等待加载内容时，提供一个占位的图形组合',
+      tag: 'Skeleton 加载占位符 加载占位框',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         title: { type: 'boolean', desc: '是否展示标题占位符', propsDefaultValue: true },
@@ -17709,6 +17817,7 @@ export default [
       widgetName: 'Slider',
       title: '滑动输入条',
       desc: '滑动型输入器，展示当前值和可选范围',
+      tag: 'Slider 滑动输入条 滑动输入框 滑块 调整数值 调节数值 改变数值',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         maxValue: { type: 'number', desc: '最大值限制', propsDefaultValue: 30 },
@@ -18067,6 +18176,7 @@ export default [
       widgetName: 'Slider',
       title: '单个滑块的样式',
       desc: '单个滑块的样式配置',
+      tag: 'Slider 滑动输入条 滑动输入框 滑块 调整数值 调节数值 改变数值',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         maxValue: { type: 'number', desc: '最大值限制', propsDefaultValue: 30, defaultValue: 30 },
@@ -18189,6 +18299,7 @@ export default [
       widgetName: 'Slider',
       title: '双滑块的样式',
       desc: '双滑块的样式配置',
+      tag: 'Slider 滑动输入条 滑动输入框 滑块 调整数值 调节数值 改变数值',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         maxValue: { type: 'number', desc: '最大值限制', propsDefaultValue: 30, defaultValue: 30 },
@@ -18306,6 +18417,7 @@ export default [
       widgetName: 'Slider',
       title: '离散值样式',
       desc: '带有离散值节点的样式配置',
+      tag: 'Slider 滑动输入条 滑动输入框 滑块 调整数值 调节数值 改变数值',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         maxValue: { type: 'number', desc: '最大值限制', propsDefaultValue: 30, defaultValue: 15 },
@@ -18438,6 +18550,7 @@ export default [
       widgetName: 'Steps',
       title: '步骤条',
       desc: '引导用户按照流程完成任务的导航条',
+      tag: 'Steps 水平步骤条 普通步骤条 基础步骤条',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
@@ -18529,6 +18642,7 @@ export default [
           sequence: 1,
           title: '垂直步骤条',
           desc: '垂直步骤条配置',
+          tag: 'Steps 垂直步骤条',
           props: { orientation: 'vertical' },
           theme: {
             Container: {
@@ -18723,6 +18837,7 @@ export default [
           sequence: 2,
           title: '半扁平步骤条',
           desc: '半扁平步骤条配置',
+          tag: 'FlatSteps 半扁平步骤条 半扁平风格',
           props: { stepType: 'flat', orientation: 'horizontal' },
           theme: {
             Container: {
@@ -18916,6 +19031,7 @@ export default [
           sequence: 3,
           title: '图标步骤条',
           desc: '图标步骤条步骤条配置',
+          tag: 'IconSteps 图标步骤条 Icon步骤条 图形步骤条',
           props: { stepType: 'icon', orientation: 'horizontal' },
           theme: {
             Container: {
@@ -19119,6 +19235,7 @@ export default [
           sequence: 4,
           title: '点状步骤条',
           desc: '点状步骤条配置',
+          tag: 'DotSteps 点状步骤条 Spot步骤条 圆点步骤条',
           props: { stepType: 'dot', orientation: 'horizontal' },
           theme: {
             Container: {
@@ -19492,6 +19609,7 @@ export default [
       widgetName: 'Steps',
       title: '垂直步骤条',
       desc: '垂直步骤条配置',
+      tag: 'Steps 水平步骤条 普通步骤条 基础步骤条',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
@@ -19778,6 +19896,7 @@ export default [
       widgetName: 'Steps',
       title: '半扁平步骤条',
       desc: '半扁平步骤条配置',
+      tag: 'Steps 水平步骤条 普通步骤条 基础步骤条',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
@@ -20065,6 +20184,7 @@ export default [
       widgetName: 'Steps',
       title: '图标步骤条',
       desc: '图标步骤条步骤条配置',
+      tag: 'Steps 水平步骤条 普通步骤条 基础步骤条',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
@@ -20362,6 +20482,7 @@ export default [
       widgetName: 'Steps',
       title: '点状步骤条',
       desc: '点状步骤条配置',
+      tag: 'Steps 水平步骤条 普通步骤条 基础步骤条',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
@@ -20634,6 +20755,7 @@ export default [
       widgetName: 'Switch',
       title: '开关',
       desc: '开关选择器',
+      tag: 'Switch 开关',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'boolean', desc: '默认开关状态', propsDefaultValue: false },
@@ -20740,6 +20862,7 @@ export default [
       widgetName: 'Table',
       title: '表格',
       desc: 'Table  表格。',
+      tag: '表格 tabel',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         columns: {
@@ -20852,6 +20975,7 @@ export default [
       widgetName: 'Tabs',
       title: '标签页',
       desc: '选项卡切换组件',
+      tag: 'tabs 普通标签页 基础标签页 页签 选项卡 切页卡 切换页面',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         activeValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
@@ -21006,6 +21130,7 @@ export default [
           sequence: 1,
           title: '卡片风格标签页',
           desc: '卡片风格标签页',
+          tag: 'cardtabs 卡片风格标签页 页签 选项卡 切页卡 切换页面',
           props: { tabType: 'card' },
           theme: {
             Container: {
@@ -21143,6 +21268,7 @@ export default [
           sequence: 1,
           title: '窗口风格标签页',
           desc: '窗口风格标签页',
+          tag: 'windowtabs 窗口风格标签页 页签 选项卡 切页卡 切换页面',
           props: { tabType: 'window' },
           theme: {
             Container: {
@@ -21426,6 +21552,7 @@ export default [
       widgetName: 'Tabs',
       title: '卡片风格标签页',
       desc: '卡片风格标签页',
+      tag: 'tabs 普通标签页 基础标签页 页签 选项卡 切页卡 切换页面',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         activeValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
@@ -21718,6 +21845,7 @@ export default [
       widgetName: 'Tabs',
       title: '窗口风格标签页',
       desc: '窗口风格标签页',
+      tag: 'tabs 普通标签页 基础标签页 页签 选项卡 切页卡 切换页面',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         activeValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
@@ -22007,6 +22135,7 @@ export default [
       widgetName: 'Tag',
       title: '标签',
       desc: '标记和分类的标签',
+      tag: 'tag 标签 标注 标记 分类',
       props: {
         closable: { type: 'boolean', desc: '标签是否可关闭', propsDefaultValue: false },
         text: { type: 'string', desc: '指定标签的文本值', propsDefaultValue: 'Tag' },
@@ -22054,6 +22183,7 @@ export default [
           sequence: 1,
           title: '可关闭标签',
           desc: '点击关闭按钮可隐藏标签',
+          tag: 'closabletag 可关闭标签 标注 标记 分类',
           props: { closable: true },
           theme: {
             TagWrap: {
@@ -22098,6 +22228,7 @@ export default [
           sequence: 2,
           title: '可选择标签',
           desc: '点击标签可配置选中样式',
+          tag: 'choosetag 可选择标签 标注 标记 分类',
           props: { type: 'optional' },
           theme: {
             TagWrap: {
@@ -22224,6 +22355,7 @@ export default [
       widgetName: 'Tag',
       title: '可关闭标签',
       desc: '点击关闭按钮可隐藏标签',
+      tag: 'tag 标签 标注 标记 分类',
       props: {
         closable: {
           type: 'boolean',
@@ -22321,6 +22453,7 @@ export default [
       widgetName: 'Tag',
       title: '可选择标签',
       desc: '点击标签可配置选中样式',
+      tag: 'tag 标签 标注 标记 分类',
       props: {
         closable: { type: 'boolean', desc: '标签是否可关闭', propsDefaultValue: false },
         text: { type: 'string', desc: '指定标签的文本值', propsDefaultValue: 'Tag' },
@@ -22454,6 +22587,7 @@ export default [
       widgetName: 'TimeLine',
       title: '时间轴',
       desc: '垂直展示的时间流信息',
+      tag: 'timeline 垂直时间轴 时间节点',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '时间轴需要包含的子组件' },
@@ -22520,6 +22654,7 @@ export default [
           sequence: 1,
           title: '幽灵节点时间轴',
           desc: '幽灵节点时间轴配置',
+          tag: 'PendingDottimeline 幽灵节点时间轴 时间节点 加载时间轴',
           props: { pending: true, pendingDot: 'lugia-icon-financial_abort' },
           theme: {
             Container: {
@@ -22729,6 +22864,7 @@ export default [
       widgetName: 'TimeLine',
       title: '幽灵节点时间轴',
       desc: '幽灵节点时间轴配置',
+      tag: 'timeline 垂直时间轴 时间节点',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '时间轴需要包含的子组件' },
@@ -22897,6 +23033,7 @@ export default [
       widgetName: 'TimePicker',
       title: '时间选择器',
       desc: '用于时间选择,',
+      tag: 'TimePicker 时间选择器 时间选择框 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '时间默认显示值' },
@@ -23058,6 +23195,7 @@ export default [
       widgetName: 'Tooltip',
       title: '文字提示',
       desc: '简单的文字气泡提示框',
+      tag: 'Tooltip 文字提示框 文字提醒框 文本提示框 文本提醒框 文字气泡 文本气泡',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出提示框', propsDefaultValue: true },
@@ -23174,6 +23312,7 @@ export default [
       widgetName: 'Transfer',
       title: '穿梭框',
       desc: '穿梭框。',
+      tag: 'transfer 基本穿梭框 基础穿梭框 选项穿梭框 选择穿梭框 数据展示 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: {
@@ -23286,6 +23425,7 @@ export default [
           sequence: 1,
           title: '树形穿梭框',
           desc: '树形穿梭框，展示树形数据',
+          tag: 'transfer 树形穿梭框 展示树形数据 表单',
           props: {
             type: 'tree',
             data: [
@@ -24354,6 +24494,7 @@ export default [
       widgetName: 'Transfer',
       title: '树形穿梭框',
       desc: '树形穿梭框，展示树形数据',
+      tag: 'transfer 基本穿梭框 基础穿梭框 选项穿梭框 选择穿梭框 数据展示 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: {
@@ -24914,6 +25055,7 @@ export default [
       widgetName: 'Tree',
       title: '树形控件',
       desc: '清晰地展示层级结构的信息,可展开或折叠。',
+      tag: 'tree 树形控件 树组件 树控件 层级结构 树结构 树列表',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
@@ -25103,6 +25245,7 @@ export default [
           sequence: 1,
           title: '多选树形控件',
           desc: '多项选择的树形控件',
+          tag: 'Mutlipletree 多选树形控件 多选树组件 多选树控件 多选层级结构 多选树结构 多选树列表',
           props: { mutliple: true },
           theme: {
             Container: {
@@ -25683,6 +25826,7 @@ export default [
       widgetName: 'Tree',
       title: '多选树形控件',
       desc: '多项选择的树形控件',
+      tag: 'tree 树形控件 树组件 树控件 层级结构 树结构 树列表',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
@@ -26170,6 +26314,7 @@ export default [
       widgetName: 'TreeSelect',
       title: '树形选择控件',
       desc: '类似Select选择器，弹出面板是一个树形控件，可以清晰地展示层级数据结构。',
+      tag: 'treeselect 树形选择 树选择 单项树选择 数据选择 下拉树菜单 展开树菜单 弹出树菜单 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         popupContainerId: { type: 'ContainerDomIdType', desc: '配置弹出校验框的作用容器id' },
@@ -26331,6 +26476,8 @@ export default [
           sequence: 1,
           title: '多项树形选择',
           desc: '支持多项树形选择',
+          tag:
+            'Mutlipletreeselect 多选树形选择 多项树选择 多项数据选择 下拉多选树菜单 展开多选树菜单 弹出多选树菜单 表单',
           props: { mutliple: true },
           theme: {
             Container: {
@@ -27446,6 +27593,7 @@ export default [
       widgetName: 'TreeSelect',
       title: '多项树形选择',
       desc: '支持多项树形选择',
+      tag: 'treeselect 树形选择 树选择 单项树选择 数据选择 下拉树菜单 展开树菜单 弹出树菜单 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         popupContainerId: { type: 'ContainerDomIdType', desc: '配置弹出校验框的作用容器id' },
@@ -28264,6 +28412,7 @@ export default [
       widgetName: 'Upload',
       title: '上传',
       desc: '上传组件,可通过文件选择和拖拽上传',
+      tag: 'upload 上传框 上传文件框 传输框 普通上传 基础上传 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
@@ -28418,6 +28567,7 @@ export default [
           sequence: 1,
           title: '按钮上传',
           desc: '按钮上传模式的配置项',
+          tag: 'buttomtypeupload 按钮上传框 按钮上传文件框 按钮传输框 表单',
           props: { areaType: 'button' },
           theme: {
             Container: {
@@ -28551,6 +28701,7 @@ export default [
           sequence: 2,
           title: '图片上传',
           desc: '图片上传模式的配置项，仅支持图片',
+          tag: 'PictureTypeUpload 图片上传框 图片上传文件框 图片传输框 image上传 表单',
           props: { areaType: 'picture' },
           theme: {
             Container: {
@@ -28653,6 +28804,7 @@ export default [
           sequence: 3,
           title: '区域拖拽上传',
           desc: '大面积区域拖拽上传模式的配置项',
+          tag: 'AreaTypeupload 区域上传框 区域上传文件框 区域传输框 多文件拖拽上传 表单',
           props: { areaType: 'area' },
           theme: {
             Container: {
@@ -29255,6 +29407,7 @@ export default [
       widgetName: 'Upload',
       title: '按钮上传',
       desc: '按钮上传模式的配置项',
+      tag: 'upload 上传框 上传文件框 传输框 普通上传 基础上传 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
@@ -29548,6 +29701,7 @@ export default [
       widgetName: 'Upload',
       title: '图片上传',
       desc: '图片上传模式的配置项，仅支持图片',
+      tag: 'upload 上传框 上传文件框 传输框 普通上传 基础上传 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
@@ -29810,6 +29964,7 @@ export default [
       widgetName: 'Upload',
       title: '区域拖拽上传',
       desc: '大面积区域拖拽上传模式的配置项',
+      tag: 'upload 上传框 上传文件框 传输框 普通上传 基础上传 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
@@ -30081,6 +30236,7 @@ export default [
       widgetName: 'Upload',
       title: '带按钮的拖拽上传',
       desc: '带按钮的拖拽上传模式的配置项',
+      tag: 'upload 上传框 上传文件框 传输框 普通上传 基础上传 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
@@ -30584,6 +30740,7 @@ export default [
       widgetName: 'Window',
       title: '窗体',
       desc: '支持拖拽的窗体组件',
+      tag: 'window 窗体 窗口 弹窗 悬浮窗 弹层 可拖拽窗口',
       props: {
         visible: { type: 'boolean', desc: '组件是否显示', defaultValue: true },
         width: { type: 'number', desc: '窗体宽度', defaultValue: 50 },
