@@ -27,7 +27,10 @@ describe('Upload Test', () => {
   const themeHocProps = () => true;
   const themeProps = { themeConfig: {}, themeState: {} };
   const getCmp = (target: any): Object => {
-    return target.children().instance();
+    return target
+      .children()
+      .children()
+      .instance();
   };
   const target = mount(
     <Upload
