@@ -2,6 +2,7 @@
   "widgetName": "Collapse",
   "title": "折叠面板",
   "desc": "折叠面板，用于展开/折叠内容区域。",
+  "tag": "折叠面板 Collapse 组合折叠面板 收起展开面板 多项折叠面板",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

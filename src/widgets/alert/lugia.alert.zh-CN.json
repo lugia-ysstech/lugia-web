@@ -2,6 +2,7 @@
   "widgetName": "Alert",
   "title": "警告提示",
   "desc": "警告提示信息。",
+  "tag": "警告提示 Alert 提示信息 标注信息 提示框 高亮提示 说明信息 补充信息 解释说明",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

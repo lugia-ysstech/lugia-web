@@ -2,6 +2,7 @@
   "widgetName": "Pagination",
   "title": "分页",
   "desc": "分页组件，分页展示数据。",
+  "tag": "pagination 分页 分页选择器 页数选择 跳转页面",
   "props": {
     "current": {
       "type": "number",
@@ -278,6 +279,7 @@
       "sequence": 1,
       "title": "简洁分页",
       "desc": "简洁分页",
+      "tag": "SimplePagination 简洁分页选择器 简单分页 迷你分页 页数选择 跳转页面",
       "props": {
         "simple": true
       },

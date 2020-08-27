@@ -2,6 +2,7 @@
   "widgetName": "Affix",
   "title": "固钉",
   "desc": "将元素展示在可视区域。",
+  "tag": "固钉 Affix 返回顶部 返回底部 回到顶部 回到底部 置顶 置底 跳至",
   "props": {
     "offsetTop": {
       "type": "number",

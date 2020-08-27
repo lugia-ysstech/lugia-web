@@ -2,6 +2,7 @@
   "widgetName": "Notification",
   "title": "通知提醒框",
   "desc": "Notification 通知提醒框。",
+  "tag": "notification 通知提醒框 提示信息 消息提醒 信息弹窗 信息提示 消息通知",
   "props": {
     "title": {
       "type": "React.node",

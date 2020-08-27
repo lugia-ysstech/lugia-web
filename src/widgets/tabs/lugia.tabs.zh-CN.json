@@ -2,6 +2,7 @@
   "widgetName": "Tabs",
   "title": "标签页",
   "desc": "选项卡切换组件",
+  "tag": "tabs 普通标签页 基础标签页 页签 选项卡 切页卡 切换页面",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -245,6 +246,7 @@
       "sequence": 1,
       "title": "卡片风格标签页",
       "desc": "卡片风格标签页",
+      "tag": "cardtabs 卡片风格标签页 页签 选项卡 切页卡 切换页面",
       "props": {
         "tabType": "card"
       },
@@ -390,6 +392,7 @@
       "sequence": 1,
       "title": "窗口风格标签页",
       "desc": "窗口风格标签页",
+      "tag": "windowtabs 窗口风格标签页 页签 选项卡 切页卡 切换页面",
       "props": {
         "tabType": "window"
       },
