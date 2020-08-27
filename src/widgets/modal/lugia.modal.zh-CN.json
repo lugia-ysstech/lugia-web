@@ -120,7 +120,7 @@
     "ModalTitle": {
       "name": "弹窗标题样式",
       "desc": "为弹窗文字配置样式",
-      "normal": [["font"], ["color"], ["padding"]]
+      "normal": [["font"], ["color"], ["padding"], ["margin"]]
     },
     "ModalContentText": {
       "name": "弹窗内容文本样式",
