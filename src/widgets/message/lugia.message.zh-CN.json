@@ -2,6 +2,7 @@
   "widgetName": "Message",
   "title": "全局提示",
   "desc": "全局提示，展示操作反馈信息。",
+  "tag": "message 全局提示 提示信息 消息提示 提示窗口 提示弹窗 操作反馈 展示信息",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

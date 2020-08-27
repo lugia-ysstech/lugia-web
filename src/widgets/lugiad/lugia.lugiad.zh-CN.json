@@ -2,6 +2,7 @@
   "widgetName": "Lugiad",
   "title": "Lugiad页面",
   "desc": "用于放入一个lugiad格式的子页面",
+  "tag": "lugiad Lugiad页面 子页面 页面容器 页面卡片",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

@@ -2,6 +2,7 @@
   "widgetName": "Divider",
   "title": "分割线",
   "desc": "区隔内容的分割线",
+  "tag": "分割线 Divider 直线 水平线 水平分割线",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -57,6 +58,7 @@
       "sequence": 1,
       "title": "垂直分割线",
       "desc": "垂直分割线",
+      "tag": "分割线 Divider 直线 垂直线 垂直分割线",
       "props": {
         "type": "vertical"
       },

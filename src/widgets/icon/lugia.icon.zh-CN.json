@@ -2,6 +2,7 @@
   "widgetName": "Icon",
   "title": "图标",
   "desc": "语义化的矢量图形",
+  "tag": "图标 Icon 表情 标识 标志 图形",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

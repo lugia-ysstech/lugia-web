@@ -2,6 +2,7 @@
   "widgetName": "Carousel",
   "title": "走马灯",
   "desc": "常用于展示一组图片或卡片轮播",
+  "tag": "走马灯 carousel 轮播图 banner图",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

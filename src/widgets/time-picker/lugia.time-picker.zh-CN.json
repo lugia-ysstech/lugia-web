@@ -2,6 +2,7 @@
   "widgetName": "TimePicker",
   "title": "时间选择器",
   "desc": "用于时间选择,",
+  "tag": "TimePicker 时间选择器 时间选择框 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

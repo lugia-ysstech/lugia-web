@@ -2,6 +2,7 @@
   "widgetName": "Skeleton",
   "title": "加载占位符",
   "desc": "在等待加载内容时，提供一个占位的图形组合",
+  "tag": "Skeleton 加载占位符 加载占位框",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

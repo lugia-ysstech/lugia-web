@@ -2,6 +2,7 @@
   "widgetName": "Menu",
   "title": "菜单",
   "desc": "为用户提供菜单列表",
+  "tag": "menu 菜单列表 多列文本",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

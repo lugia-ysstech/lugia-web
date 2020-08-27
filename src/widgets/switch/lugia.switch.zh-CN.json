@@ -2,6 +2,7 @@
   "widgetName": "Switch",
   "title": "开关",
   "desc": "开关选择器",
+  "tag": "Switch 开关",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

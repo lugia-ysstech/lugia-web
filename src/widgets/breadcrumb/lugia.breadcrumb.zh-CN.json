@@ -2,6 +2,7 @@
   "widgetName": "Breadcrumb",
   "title": "面包屑",
   "desc": "显示系统的层级关系和当先所在的位置,并能向上返回",
+  "tag": "面包屑导航 Breadcrumb 路径导航 层级位置 定位",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

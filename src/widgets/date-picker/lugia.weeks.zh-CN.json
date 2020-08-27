@@ -1,7 +1,8 @@
 {
   "widgetName": "WeeksPicker",
-  "title": "周选择器",
+  "title": "周选择器-单项周",
   "desc": "用于周选择,",
+  "tag": "周选择器 周选择框 星期选择器 星期选择器 WeekPicker 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

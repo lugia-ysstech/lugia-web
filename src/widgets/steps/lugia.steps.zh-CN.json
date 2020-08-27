@@ -2,6 +2,7 @@
   "widgetName": "Steps",
   "title": "步骤条",
   "desc": "引导用户按照流程完成任务的导航条",
+  "tag": "Steps 水平步骤条 普通步骤条 基础步骤条",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -155,6 +156,7 @@
       "sequence": 1,
       "title": "垂直步骤条",
       "desc": "垂直步骤条配置",
+      "tag": "Steps 垂直步骤条",
       "props": {
         "orientation": "vertical"
       },
@@ -361,6 +363,7 @@
       "sequence": 2,
       "title": "半扁平步骤条",
       "desc": "半扁平步骤条配置",
+      "tag": "FlatSteps 半扁平步骤条 半扁平风格",
       "props": {
         "stepType": "flat",
         "orientation": "horizontal"
@@ -561,6 +564,7 @@
       "sequence": 3,
       "title": "图标步骤条",
       "desc": "图标步骤条步骤条配置",
+      "tag": "IconSteps 图标步骤条 Icon步骤条 图形步骤条",
       "props": {
         "stepType": "icon",
         "orientation": "horizontal"
@@ -770,6 +774,7 @@
       "sequence": 4,
       "title": "点状步骤条",
       "desc": "点状步骤条配置",
+      "tag": "DotSteps 点状步骤条 Spot步骤条 圆点步骤条",
       "props": {
         "stepType": "dot",
         "orientation": "horizontal"

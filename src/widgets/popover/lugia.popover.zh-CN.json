@@ -2,6 +2,7 @@
   "widgetName": "Popover",
   "title": "气泡卡片",
   "desc": "气泡式的卡片浮层",
+  "tag": "Popover 气泡卡片 弹出卡片 展开卡片 浮现卡片",
   "props": {
     "createPortal": {
       "type": "boolean",

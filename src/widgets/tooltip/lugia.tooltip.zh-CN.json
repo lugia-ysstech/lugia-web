@@ -2,6 +2,7 @@
   "widgetName": "Tooltip",
   "title": "文字提示",
   "desc": "简单的文字气泡提示框",
+  "tag": "Tooltip 文字提示框 文字提醒框 文本提示框 文本提醒框 文字气泡 文本气泡",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

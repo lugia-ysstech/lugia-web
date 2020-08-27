@@ -2,6 +2,7 @@
   "widgetName": "BasicElements",
   "title": "基本元素",
   "desc": "基本元素",
+  "tag": "基本元素 BasicElements 矩形 正方形 长方形 基本形状 rectangle square 通用元素",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -23,6 +24,7 @@
       "sequence": 2,
       "title": "圆形元素",
       "desc": "圆形元素",
+      "tag": "圆形元素 BasicElements circular 椭圆形",
       "props": {
         "shape": "circle"
       },

@@ -2,6 +2,7 @@
   "widgetName": "Anchor",
   "title": "锚点",
   "desc": "用于跳转到页面指定位置。",
+  "tag":"锚点 Anchor 跳至 页面节点",
   "props": {
     "affix": {
       "type": "boolean",

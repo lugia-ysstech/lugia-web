@@ -2,6 +2,7 @@
   "widgetName": "MonthPicker",
   "title": "月选择器",
   "desc": "用于月份选择,",
+  "tag": "月份选择器 月份选择框 月选择器 月选择器 MonthPicker 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

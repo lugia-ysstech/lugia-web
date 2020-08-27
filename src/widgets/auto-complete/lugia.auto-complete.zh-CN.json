@@ -2,6 +2,7 @@
   "widgetName": "AutoComplete",
   "title": "自动完成",
   "desc": "需要自动完成数据时使用",
+  "tag": "自动完成 AutoComplete 自动补充输入框 自动选择 自动补全输入框 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

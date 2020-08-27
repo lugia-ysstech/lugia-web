@@ -2,6 +2,7 @@
   "widgetName": "Image",
   "title": "图片",
   "desc": "图片配置",
+  "tag": "图片 Image picture photograph 照片 相片",
   "props": {
     "src": {
       "type": "image",

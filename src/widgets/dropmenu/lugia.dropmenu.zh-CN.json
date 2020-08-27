@@ -2,6 +2,7 @@
   "widgetName": "Dropmenu",
   "title": "下拉菜单",
   "desc": "选项过多时，弹出下拉菜单给用户选择操作",
+  "tag": "下拉菜单 按钮弹出菜单 下拉按钮 Dropmenu 选择按钮 展开菜单 展开按钮菜单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -223,8 +224,9 @@
   "designInfo": {
     "NoDividedDropmenu": {
       "sequence": 1,
-      "title": "无分隔符的按钮",
+      "title": "无分隔符下拉菜单",
       "desc": "无分隔符的下拉按钮",
+      "tag": "下拉菜单 无分割线按钮弹出菜单 Dropmenu 无分割线选择按钮 无分割线下拉按钮 无分割线下拉菜单 无分割线展开按钮菜单 无分割线展开菜单",
       "props": {
         "divided": false
       },

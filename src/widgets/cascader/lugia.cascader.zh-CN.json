@@ -2,6 +2,7 @@
   "widgetName": "Cascader",
   "title": "级联选择",
   "desc": "通过级联选择,可以清晰地显示层级数据结构",
+  "tag": "级联选择器 cascader 层级下拉框 层级选择框 多层选择框 多层选择器 层级选择器 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

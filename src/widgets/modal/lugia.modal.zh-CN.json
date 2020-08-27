@@ -2,6 +2,7 @@
   "widgetName": "Modal",
   "title": "对话框",
   "desc": "Modal 对话框。",
+  "tag": "model 对话框 弹出窗口 弹窗 弹层",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

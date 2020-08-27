@@ -2,6 +2,7 @@
   "widgetName": "Badge",
   "title": "徽标数",
   "desc": "图标右上角的圆形徽标数字",
+  "tag": "徽标数 小红点 数字提示 数字提醒 红点警告 报错提醒 消息提醒 Badge",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -38,6 +39,7 @@
       "sequence": 1,
       "title": "数字徽标",
       "desc": "徽标数大于0时,显示的数字",
+      "tag": "数字徽标数 小红点 数字提示 数字提醒 红点警告 报错提醒 消息提醒 Badge",
       "props": {
         "showZero": true,
         "count": 1

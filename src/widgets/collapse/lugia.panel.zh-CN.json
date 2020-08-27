@@ -2,6 +2,7 @@
   "widgetName": "Panel",
   "title": "Panel 面板",
   "desc": "Panel 面板。",
+  "tag": "panel面板 折叠面板头部 折叠面板收起 Collapse 收起折叠面板 单项折叠面板 收起展开面板",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

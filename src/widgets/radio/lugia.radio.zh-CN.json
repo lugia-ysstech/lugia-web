@@ -2,6 +2,7 @@
   "widgetName": "Radio",
   "title": "单选框",
   "desc": "单选框。",
+  "tag": "Radio 单选框 单项选择框",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

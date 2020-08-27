@@ -2,6 +2,7 @@
   "widgetName": "BackTop",
   "title": "回到顶部",
   "desc": "返回页面顶部。",
+  "tag": "回到顶部 返回顶部 返回页面顶部 BackTop 置顶 回到页面顶部",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
