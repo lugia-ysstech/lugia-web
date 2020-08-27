@@ -2,6 +2,7 @@
   "widgetName": "YearPicker",
   "title": "年选择器",
   "desc": "用于年选择,",
+  "tag": "年选择器 年选择框 年份选择器 年份选择器 YearPicker 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

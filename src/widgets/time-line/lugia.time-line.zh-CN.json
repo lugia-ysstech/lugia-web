@@ -2,6 +2,7 @@
   "widgetName": "TimeLine",
   "title": "时间轴",
   "desc": "垂直展示的时间流信息",
+  "tag": "timeline 垂直时间轴 时间节点",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -109,6 +110,7 @@
       "sequence": 1,
       "title": "幽灵节点时间轴",
       "desc": "幽灵节点时间轴配置",
+      "tag": "PendingDottimeline 幽灵节点时间轴 时间节点 加载时间轴",
       "props": {
         "pending": true,
         "pendingDot": "lugia-icon-financial_abort"

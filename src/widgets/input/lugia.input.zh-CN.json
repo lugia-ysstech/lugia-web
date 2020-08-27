@@ -2,6 +2,7 @@
   "widgetName": "Input",
   "title": "文本输入框",
   "desc": "常用于昵称,名称,表格内容等填写.",
+  "tag": "input 文本输入框 文本框 搜索框 输入框 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

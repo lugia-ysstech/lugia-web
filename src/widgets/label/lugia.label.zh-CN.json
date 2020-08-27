@@ -2,6 +2,7 @@
   "widgetName": "Label",
   "title": "文本",
   "desc": "文本组件",
+  "tag": "label 文本 文字 字符 字符串 中文 英文 text",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

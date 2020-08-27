@@ -2,6 +2,7 @@
   "widgetName": "Transfer",
   "title": "穿梭框",
   "desc": "穿梭框。",
+  "tag": "transfer 基本穿梭框 基础穿梭框 选项穿梭框 选择穿梭框 数据展示 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -181,6 +182,7 @@
       "sequence": 1,
       "title": "树形穿梭框",
       "desc": "树形穿梭框，展示树形数据",
+      "tag": "transfer 树形穿梭框 展示树形数据 表单",
       "props": {
         "type": "tree",
         "data": [

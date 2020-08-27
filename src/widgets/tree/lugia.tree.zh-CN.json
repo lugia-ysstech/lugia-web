@@ -2,6 +2,7 @@
   "widgetName": "Tree",
   "title": "树形控件",
   "desc": "清晰地展示层级结构的信息,可展开或折叠。",
+  "tag": "tree 树形控件 树组件 树控件 层级结构 树结构 树列表",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -347,6 +348,7 @@
       "sequence": 1,
       "title": "多选树形控件",
       "desc": "多项选择的树形控件",
+      "tag": "Mutlipletree 多选树形控件 多选树组件 多选树控件 多选层级结构 多选树结构 多选树列表",
       "props": {
         "mutliple": true
       },

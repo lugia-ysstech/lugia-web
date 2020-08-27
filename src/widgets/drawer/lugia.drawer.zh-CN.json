@@ -2,6 +2,7 @@
   "widgetName": "Drawer",
   "title": "抽屉",
   "desc": "在屏幕边缘出现的浮层面板。",
+  "tag": "抽屉 Drawer 弹窗 弹层 弹出面板",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
