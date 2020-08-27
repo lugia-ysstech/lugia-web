@@ -53,6 +53,7 @@ designInfo.forEach(item => {
   const theme = componentMeta.theme;
   const defaultTheme = componentMeta.defaultTheme;
   const aliasName = componentMeta.aliasName;
+  const tag = componentMeta.tag;
   const componentPropsArr = componentProps
     ? getComponentPropsArr(componentProps, componentTypes)
     : componentProps;
@@ -80,6 +81,7 @@ designInfo.forEach(item => {
     categories: category,
     description: desc,
     title,
+    tag,
     widgetName,
     viewClassName,
     aliasName,
