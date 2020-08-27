@@ -7,10 +7,11 @@
  *
  */
 import Upload from './upload';
-import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
+import ThemeHoc from '@lugia/theme-hoc';
+import ValidateHoc from '../input/validateHoc';
 
-export default ThemeProvider(Upload, Widget.Upload, {
+export default ThemeHoc(ValidateHoc(Upload), Widget.Upload, {
   hover: true,
   active: false,
 });

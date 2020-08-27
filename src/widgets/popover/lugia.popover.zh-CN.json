@@ -2,6 +2,7 @@
   "widgetName": "Popover",
   "title": "气泡卡片",
   "desc": "气泡式的卡片浮层",
+  "tag": "Popover 气泡卡片 弹出卡片 展开卡片 浮现卡片",
   "props": {
     "createPortal": {
       "type": "boolean",
@@ -174,6 +175,14 @@
                 ["borderRadius"],
                 ["border"]
               ]
+            },
+            "ChildrenContainer": {
+              "name": "包裹子组件的容器",
+              "desc": "包裹子组件的容器",
+              "normal": [["width"]],
+              "hover": [],
+              "clicked": [],
+              "disabled": []
             }
           }
         },
@@ -205,6 +214,14 @@
             ["borderRadius"],
             ["border"]
           ]
+        },
+        "ChildrenContainer": {
+          "name": "包裹子组件的容器",
+          "desc": "包裹子组件的容器",
+          "normal": [["width"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
         },
         "TooltipTitle": {
           "name": "气泡卡片标题部分",

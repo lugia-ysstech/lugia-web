@@ -118,7 +118,17 @@ class HoverAndClickDemo extends React.Component<any, any> {
 const Wrapper = styled.div`
   margin: 100px;
 `;
-
+const childrenContainerConfig = {
+  [Widget.Popover]: {
+    PopoverContent: {
+      ChildrenContainer: {
+        normal: {
+          width: '100%',
+        },
+      },
+    },
+  },
+};
 export const WrapperDemo = () => {
   const config = {
     [Widget.Button]: {
@@ -224,6 +234,14 @@ export const WrapperDemo = () => {
         <Popover title={title} action={'click'} placement="top">
           <div style={{ height: '100%', border: '1px solid red' }}>点击触发</div>
         </Popover>
+      </div>
+      <p>包含的组件 继承容器的宽度 </p>
+      <div style={{ width: 100, height: 50 }}>
+        <Theme config={childrenContainerConfig}>
+          <Popover title={title} action={'click'} placement="top">
+            <div style={{ height: '100%', border: '1px solid red' }}>点击触发</div>
+          </Popover>
+        </Theme>
       </div>
     </Wrapper>
   );

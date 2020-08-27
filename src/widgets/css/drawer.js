@@ -38,6 +38,7 @@ type CSSProps = {
   transform: boolean,
   placement: Direction,
   theme: Object,
+  hasContainer?: boolean,
 };
 
 const FontSize = 1.2;
@@ -143,13 +144,42 @@ const getWidthOrHeight = (props: CSSProps) => {
   }
   return width;
 };
+
+const getNewDistance = (distance: string, isPlacedInHorizontal: boolean) => {
+  const currentClientPara = isPlacedInHorizontal ? 'clientHeight' : 'clientWidth';
+  const currentDirection = isPlacedInHorizontal ? 'vh' : 'vw';
+  const currentClientDistance = window.document.documentElement[currentClientPara];
+  if (distance.endsWith(currentDirection) || distance.endsWith('%')) {
+    return (currentClientDistance / 100) * parseFloat(distance);
+  } else if (distance.endsWith('px')) {
+    return parseFloat(distance);
+  }
+  return distance;
+};
+
 const getDrawerAnimate = (props: CSSProps): string => {
-  const { open, opening, closing } = props;
+  const { open, opening, closing, placement, hasContainer } = props;
   const distance = getWidthOrHeight(props);
   const Direction = getAnimateDirection(props);
   const isNumber = typeof distance === 'number';
   const trueDistance = isNumber ? em(-distance) : `-${distance}`;
-  const closeDistance = isNumber ? em(-(distance + 8)) : `calc(-${distance} - 8px)`;
+  const isPlacedInHorizontal = placement === 'top' || placement === 'bottom';
+
+  let newDistance;
+  let isAlsoNubmer = false;
+  if (!isNumber && !hasContainer) {
+    newDistance = getNewDistance(distance, isPlacedInHorizontal);
+    isAlsoNubmer = typeof newDistance === 'number';
+    if (isAlsoNubmer) {
+      newDistance = isPlacedInHorizontal ? Math.max(newDistance, 100) : Math.max(newDistance, 256);
+    }
+  }
+
+  const closeDistance = isNumber
+    ? em(-(distance + 8))
+    : isAlsoNubmer
+    ? `-${newDistance + 8}px`
+    : `calc(-${newDistance} - 8px)`;
   const openFrom = `${Direction}: ${trueDistance};`;
   const openTo = `${Direction}: 0;`;
   const closeFrom = `${Direction}: 0;`;

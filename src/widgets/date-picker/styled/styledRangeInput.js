@@ -12,7 +12,6 @@ export const RangeInputWrap = CSSComponent({
   normal: {
     selectNames: [
       ['width'],
-      ['height'],
       ['border'],
       ['boxShadow'],
       ['borderRadius'],
@@ -38,6 +37,7 @@ export const RangeInputWrap = CSSComponent({
     display: inline-block;
     transition: all 0.3s;
     overflow: hidden;
+    height: 100%;
   `,
   option: {
     hover: true,
@@ -72,6 +72,8 @@ export const RangeInputInner = CSSComponent({
     }
 
     display: flex;
+    height: 100%;
+    align-items: center;
   `,
 });
 export const RangeInputInnerInput = CSSComponent({

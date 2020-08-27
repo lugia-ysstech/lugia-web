@@ -72,6 +72,8 @@ export default class ModalDemo extends React.Component<any, any> {
       visable5: false,
       visable6: false,
       visable7: false,
+      visable8: false,
+      buttonValue: 'testValue',
     };
   }
 
@@ -95,6 +97,13 @@ export default class ModalDemo extends React.Component<any, any> {
       });
     }, 2000);
   };
+  handleTestButtonClick = () => {
+    const { buttonValue } = this.state;
+    const newValue = buttonValue === 'testValue' ? 'anotherTestValue' : 'testValue';
+    this.setState({
+      buttonValue: newValue,
+    });
+  };
 
   render() {
     const {
@@ -105,7 +114,9 @@ export default class ModalDemo extends React.Component<any, any> {
       visable5,
       visable6,
       visable7,
+      visable8,
       confirmLoading,
+      buttonValue,
     } = this.state;
     const view = {
       [Widgets.Modal]: {
@@ -306,6 +317,19 @@ export default class ModalDemo extends React.Component<any, any> {
           data={data}
           onTrigger={this.Click(4)}
         />
+
+        <br />
+        <br />
+        <Button onClick={this.Click(8)}>挂载在body上</Button>
+        <Modal
+          visible={visable8}
+          title="这是标题！"
+          onOk={this.buttonClick(8)}
+          onCancel={this.buttonClick(8)}
+          mountBody={true}
+        >
+          <button onClick={this.handleTestButtonClick}>{buttonValue}</button>
+        </Modal>
       </div>
     );
   }

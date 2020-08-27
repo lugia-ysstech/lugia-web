@@ -2,6 +2,7 @@
   "widgetName": "DatePicker",
   "title": "日期选择器",
   "desc": "用于日期选择",
+  "tag": "日期选择器 日期选择框 DatePicker 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

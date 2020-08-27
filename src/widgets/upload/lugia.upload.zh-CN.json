@@ -2,6 +2,7 @@
   "widgetName": "Upload",
   "title": "上传",
   "desc": "上传组件,可通过文件选择和拖拽上传",
+  "tag": "upload 上传框 上传文件框 传输框 普通上传 基础上传 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -143,6 +144,15 @@
         { "name": "file", "desc": "用户上传的文件", "type": "file" },
         { "name": "operate", "desc": "所有可执行函数(success,fail,start)", "type": "Object" }
       ]
+    },
+    "validateStatus": {
+      "type": "ValidateStatus",
+      "desc": "校验状态"
+    },
+    "validateType": {
+      "type": "ValidateType",
+      "desc": "校验信息显示类型",
+      "propsDefaultValue": "top"
     }
   },
   "events": {
@@ -267,6 +277,30 @@
         "value": "fail",
         "text": "失败"
       }
+    ],
+    "ValidateStatus": [
+      {
+        "value": "default",
+        "text": "正常"
+      },
+      {
+        "value": "error",
+        "text": "错误"
+      }
+    ],
+    "ValidateType": [
+      {
+        "value": "top",
+        "text": "顶部弹窗"
+      },
+      {
+        "value": "inner",
+        "text": "框内文本"
+      },
+      {
+        "value": "bottom",
+        "text": "底部文本"
+      }
     ]
   },
   "category": ["数据录入"],
@@ -275,6 +309,7 @@
       "sequence": 1,
       "title": "按钮上传",
       "desc": "按钮上传模式的配置项",
+      "tag": "buttomtypeupload 按钮上传框 按钮上传文件框 按钮传输框 表单",
       "props": {
         "areaType": "button"
       },
@@ -416,6 +451,7 @@
       "sequence": 2,
       "title": "图片上传",
       "desc": "图片上传模式的配置项，仅支持图片",
+      "tag": "PictureTypeUpload 图片上传框 图片上传文件框 图片传输框 image上传 表单",
       "props": {
         "areaType": "picture"
       },
@@ -519,6 +555,7 @@
       "sequence": 3,
       "title": "区域拖拽上传",
       "desc": "大面积区域拖拽上传模式的配置项",
+      "tag": "AreaTypeupload 区域上传框 区域上传文件框 区域传输框 多文件拖拽上传 表单",
       "props": {
         "areaType": "area"
       },

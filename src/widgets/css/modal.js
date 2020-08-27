@@ -35,6 +35,7 @@ export type ModalProps = {
   okButtonProps?: Object,
   cancelButtonProps?: Object,
   iconClass?: string,
+  mountBody?: boolean,
 } & FunctionPropsType;
 export type ModalState = {
   visible: boolean,
@@ -260,7 +261,7 @@ export const ModalTitle = CSSComponent({
     ${getLugiaMegaCSS}
   `,
   normal: {
-    selectNames: [['font'], ['color'], ['padding']],
+    selectNames: [['font'], ['color'], ['padding'], ['margin']],
     defaultTheme: {
       font: { size: 16, weight: 500 },
       color: '$lugia-dict.@lugia/lugia-web.blackColor',

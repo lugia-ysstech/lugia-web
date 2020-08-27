@@ -2,6 +2,7 @@
   "widgetName": "AmountInput",
   "title": "金额输入框",
   "desc": "用于金额数字的填写,可切换人民币大小写显示效果.",
+  "tag": "金额输入框 AmountInput ¥ $ 数额输入框 核算输入框 统计输入 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -143,6 +144,16 @@
           "name": "event",
           "desc": "当键入回车时触发",
           "type": "KeyboardEvent"
+        }
+      ]
+    },
+    "getFocus": {
+      "desc": "金额输入框主动聚焦事件",
+      "args": [
+        {
+          "name": "focus",
+          "desc": "输入框的聚焦方法",
+          "type": "Function"
         }
       ]
     }

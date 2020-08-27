@@ -2,6 +2,7 @@
   "widgetName": "Textarea",
   "title": "段落文本输入框",
   "desc": "常用于多行文本输入",
+  "tag": "input textarea 段落文本输入框 段落框 段落文本框 段落输入框 多行文本框 多行输入框 区域文本框 区域输入框 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -152,6 +153,16 @@
           "name": "event",
           "desc": "当键入回车时触发",
           "type": "KeyboardEvent"
+        }
+      ]
+    },
+    "getFocus": {
+      "desc": "段落文本输入框主动聚焦事件",
+      "args": [
+        {
+          "name": "focus",
+          "desc": "输入框的聚焦方法",
+          "type": "Function"
         }
       ]
     }

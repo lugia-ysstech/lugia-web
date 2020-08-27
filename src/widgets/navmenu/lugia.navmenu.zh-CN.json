@@ -2,6 +2,7 @@
   "widgetName": "Navmenu",
   "title": "导航菜单",
   "desc": "为页面提供导航功能的菜单",
+  "tag": "navmenu 内嵌导航菜单 垂直展开导航 树形导航 垂直菜单 垂直展开菜单 通栏导航",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -217,6 +218,7 @@
       "sequence": 1,
       "title": "顶部导航菜单",
       "desc": "水平的导航菜单",
+      "tag": "navmenu HorizontalNavMenu 顶部导航菜单 水平导航 水平展开导航 标签导航 水平菜单",
       "props": {
         "mode": "horizontal"
       },
@@ -582,6 +584,7 @@
       "sequence": 2,
       "title": "垂直导航菜单",
       "desc": "子菜单从右侧弹开",
+      "tag": "navmenu VerticalNavMenu 垂直导航菜单 侧边展开导航 多级菜单 多级展开导航 侧边展开菜单",
       "props": {
         "mode": "vertical"
       },
@@ -781,7 +784,22 @@
                     ["cursor"]
                   ]
                 },
-
+                "Text": {
+                  "name": "文本",
+                  "desc": "配置文本",
+                  "normal": [["font"], ["fontSize"], ["color"],["margin"],["padding"]],
+                  "hover": [["font"], ["fontSize"], ["color"]],
+                  "active": [],
+                  "disabled": []
+                },
+                "CheckedText": {
+                  "name": "选中文本",
+                  "desc": "配置选中文本",
+                  "normal": [["font"], ["fontSize"], ["color"],["margin"],["padding"]],
+                  "hover": [["font"], ["fontSize"], ["color"]],
+                  "active": [],
+                  "disabled": []
+                },
                 "DesContainer": {
                   "name": "辅助字段框",
                   "desc": "配置辅助文本的样式和位置",
@@ -1033,6 +1051,7 @@
       "sequence": 3,
       "title": "内嵌导航菜单",
       "desc": "点击菜单收起或展开子菜单,ellipse样式",
+      "tag": "navmenu InlineEllipseNavMenu 垂直展开导航 树形导航 垂直菜单 内嵌导航菜单 垂直展开菜单 不通栏导航",
       "props": {
         "mode": "inline",
         "inlineType": "ellipse"

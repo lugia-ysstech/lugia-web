@@ -2,15 +2,12 @@
   "widgetName": "TreeSelect",
   "title": "树形选择控件",
   "desc": "类似Select选择器，弹出面板是一个树形控件，可以清晰地展示层级数据结构。",
+  "tag": "treeselect 树形选择 树选择 单项树选择 数据选择 下拉树菜单 展开树菜单 弹出树菜单 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
       "desc": "是否渲染当前组件",
       "defaultValue": false
-    },
-    "createPortal": {
-      "type": "boolean",
-      "desc": "是否全局弹出校验框"
     },
     "popupContainerId": {
       "type": "ContainerDomIdType",
@@ -306,6 +303,7 @@
       "sequence": 1,
       "title": "多项树形选择",
       "desc": "支持多项树形选择",
+      "tag": "Mutlipletreeselect 多选树形选择 多项树选择 多项数据选择 下拉多选树菜单 展开多选树菜单 弹出多选树菜单 表单",
       "props": {
         "mutliple": true
       },

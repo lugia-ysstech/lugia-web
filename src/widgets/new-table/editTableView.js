@@ -23,6 +23,8 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   static defaultProps = {
     allowEditHead: true,
     showHeader: true,
+    allowSelect: true,
+    showCellTitle: false,
   };
 
   constructor(props: EditTableProps) {
@@ -102,7 +104,13 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   }
 
   renderFunc = (renderObject: Object) => {
-    const { getPartOfThemeProps, allowEditHead, selectSuffixElement } = this.props;
+    const {
+      getPartOfThemeProps,
+      allowEditHead,
+      selectSuffixElement,
+      allowSelect,
+      showCellTitle,
+    } = this.props;
     const { editTableListener } = this;
     const { index } = renderObject;
     const allowEdit = allowEditHead ? true : index !== 0;
@@ -111,6 +119,8 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       <TableCell
         {...renderObject}
         allowEdit={allowEdit}
+        showCellTitle={showCellTitle}
+        propsAllowSelect={allowSelect}
         selectSuffixElement={selectSuffixElement}
         getPartOfThemeProps={getPartOfThemeProps}
         listener={editTableListener}

@@ -4890,10 +4890,10 @@ exports[`popconfirm Demo Component JSON 1`] = `
                 "borderTopLeftRadius": "0.4rem",
                 "borderTopRightRadius": "0.4rem",
                 "boxShadow": "0px 0px 6px 0px #d0d3da",
-                "paddingBottom": "0.8rem",
-                "paddingLeft": "0.8rem",
-                "paddingRight": "0.8rem",
-                "paddingTop": "0.8rem",
+                "paddingBottom": "1.2rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
+                "paddingTop": "1.2rem",
               }
             }
           >
@@ -4905,16 +4905,361 @@ exports[`popconfirm Demo Component JSON 1`] = `
             />
             <div
               className="c10"
-              style={
-                Object {
-                  "color": "#363B40",
-                  "fontSize": "1.4rem",
-                }
-              }
+              style={Object {}}
             >
-              确定删除这个选项吗?
+              <div
+                className="c11"
+              >
+                <span
+                  className="c12"
+                  style={
+                    Object {
+                      "paddingBottom": "0rem",
+                      "paddingLeft": "0rem",
+                      "paddingRight": "0rem",
+                      "paddingTop": "0rem",
+                    }
+                  }
+                >
+                  确定删除这个选项吗?
+                </span>
+              </div>
             </div>
-            <div />
+            <div
+              className="c13"
+              style={Object {}}
+            >
+              <div
+                className="c14"
+              >
+                <button
+                  className="c2"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseOut={[Function]}
+                  onMouseOver={[Function]}
+                  onMouseUp={[Function]}
+                  size="small"
+                  style={
+                    Object {
+                      "backgroundColor": "white",
+                      "borderBottomColor": "#d0d3da",
+                      "borderBottomLeftRadius": "0.4rem",
+                      "borderBottomRightRadius": "0.4rem",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": "0.1rem",
+                      "borderLeftColor": "#d0d3da",
+                      "borderLeftStyle": "solid",
+                      "borderLeftWidth": "0.1rem",
+                      "borderRightColor": "#d0d3da",
+                      "borderRightStyle": "solid",
+                      "borderRightWidth": "0.1rem",
+                      "borderTopColor": "#d0d3da",
+                      "borderTopLeftRadius": "0.4rem",
+                      "borderTopRightRadius": "0.4rem",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": "0.1rem",
+                      "height": "2.4rem",
+                      "marginBottom": "0rem",
+                      "marginLeft": "0.6rem",
+                      "marginRight": "0rem",
+                      "marginTop": "0rem",
+                      "paddingBottom": "0rem",
+                      "paddingLeft": "1.4rem",
+                      "paddingRight": "1.4rem",
+                      "paddingTop": "0rem",
+                    }
+                  }
+                >
+                  <span
+                    className="c3"
+                  >
+                    <span
+                      className="c4"
+                      style={
+                        Object {
+                          "color": "#363B40",
+                          "fontSize": "1.2rem",
+                        }
+                      }
+                    >
+                      取消
+                    </span>
+                  </span>
+                </button>
+                <button
+                  className="c2"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseOut={[Function]}
+                  onMouseOver={[Function]}
+                  onMouseUp={[Function]}
+                  size="small"
+                  style={
+                    Object {
+                      "backgroundColor": "#4d63ff",
+                      "borderBottomLeftRadius": "0.4rem",
+                      "borderBottomRightRadius": "0.4rem",
+                      "borderBottomWidth": 0,
+                      "borderLeftWidth": 0,
+                      "borderRightWidth": 0,
+                      "borderTopLeftRadius": "0.4rem",
+                      "borderTopRightRadius": "0.4rem",
+                      "borderTopWidth": 0,
+                      "height": "2.4rem",
+                      "marginBottom": "0rem",
+                      "marginLeft": "0.6rem",
+                      "marginRight": "0rem",
+                      "marginTop": "0rem",
+                      "paddingBottom": "0rem",
+                      "paddingLeft": "1.4rem",
+                      "paddingRight": "1.4rem",
+                      "paddingTop": "0rem",
+                    }
+                  }
+                  type="primary"
+                >
+                  <span
+                    className="c3"
+                  >
+                    <span
+                      className="c4"
+                      style={
+                        Object {
+                          "color": "#ffffff",
+                          "fontSize": "1.2rem",
+                        }
+                      }
+                    >
+                      确定
+                    </span>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    包含的组件 继承容器的宽度 
+  </p>
+  <div
+    style={
+      Object {
+        "height": 50,
+        "width": 100,
+      }
+    }
+  >
+    <div
+      className="c1"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "border": "1px solid red",
+            "height": "100%",
+          }
+        }
+      >
+        点击触发
+      </div>
+    </div>
+    <div
+      className="c5"
+    >
+      <div
+        className="c6"
+      >
+        <div
+          className="c7"
+          style={Object {}}
+        >
+          <div
+            className="c8"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "backgroundColor": "white",
+                "borderBottomLeftRadius": "0.4rem",
+                "borderBottomRightRadius": "0.4rem",
+                "borderTopLeftRadius": "0.4rem",
+                "borderTopRightRadius": "0.4rem",
+                "boxShadow": "0px 0px 6px 0px #d0d3da",
+                "paddingBottom": "1.2rem",
+                "paddingLeft": "1.2rem",
+                "paddingRight": "1.2rem",
+                "paddingTop": "1.2rem",
+              }
+            }
+          >
+            <div
+              className="c15"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+            <div
+              className="c10"
+              style={Object {}}
+            >
+              <div
+                className="c11"
+              >
+                <span
+                  className="c12"
+                  style={
+                    Object {
+                      "paddingBottom": "0rem",
+                      "paddingLeft": "0rem",
+                      "paddingRight": "0rem",
+                      "paddingTop": "0rem",
+                    }
+                  }
+                >
+                  确定删除这个选项吗?
+                </span>
+              </div>
+            </div>
+            <div
+              className="c13"
+              style={Object {}}
+            >
+              <div
+                className="c14"
+              >
+                <button
+                  className="c2"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseOut={[Function]}
+                  onMouseOver={[Function]}
+                  onMouseUp={[Function]}
+                  size="small"
+                  style={
+                    Object {
+                      "backgroundColor": "white",
+                      "borderBottomColor": "#d0d3da",
+                      "borderBottomLeftRadius": "0.4rem",
+                      "borderBottomRightRadius": "0.4rem",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": "0.1rem",
+                      "borderLeftColor": "#d0d3da",
+                      "borderLeftStyle": "solid",
+                      "borderLeftWidth": "0.1rem",
+                      "borderRightColor": "#d0d3da",
+                      "borderRightStyle": "solid",
+                      "borderRightWidth": "0.1rem",
+                      "borderTopColor": "#d0d3da",
+                      "borderTopLeftRadius": "0.4rem",
+                      "borderTopRightRadius": "0.4rem",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": "0.1rem",
+                      "height": "2.4rem",
+                      "marginBottom": "0rem",
+                      "marginLeft": "0.6rem",
+                      "marginRight": "0rem",
+                      "marginTop": "0rem",
+                      "paddingBottom": "0rem",
+                      "paddingLeft": "1.4rem",
+                      "paddingRight": "1.4rem",
+                      "paddingTop": "0rem",
+                    }
+                  }
+                >
+                  <span
+                    className="c3"
+                  >
+                    <span
+                      className="c4"
+                      style={
+                        Object {
+                          "color": "#363B40",
+                          "fontSize": "1.2rem",
+                        }
+                      }
+                    >
+                      取消
+                    </span>
+                  </span>
+                </button>
+                <button
+                  className="c2"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseOut={[Function]}
+                  onMouseOver={[Function]}
+                  onMouseUp={[Function]}
+                  size="small"
+                  style={
+                    Object {
+                      "backgroundColor": "#4d63ff",
+                      "borderBottomLeftRadius": "0.4rem",
+                      "borderBottomRightRadius": "0.4rem",
+                      "borderBottomWidth": 0,
+                      "borderLeftWidth": 0,
+                      "borderRightWidth": 0,
+                      "borderTopLeftRadius": "0.4rem",
+                      "borderTopRightRadius": "0.4rem",
+                      "borderTopWidth": 0,
+                      "height": "2.4rem",
+                      "marginBottom": "0rem",
+                      "marginLeft": "0.6rem",
+                      "marginRight": "0rem",
+                      "marginTop": "0rem",
+                      "paddingBottom": "0rem",
+                      "paddingLeft": "1.4rem",
+                      "paddingRight": "1.4rem",
+                      "paddingTop": "0rem",
+                    }
+                  }
+                  type="primary"
+                >
+                  <span
+                    className="c3"
+                  >
+                    <span
+                      className="c4"
+                      style={
+                        Object {
+                          "color": "#ffffff",
+                          "fontSize": "1.2rem",
+                        }
+                      }
+                    >
+                      确定
+                    </span>
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@
   "widgetName": "Card",
   "title": "卡片",
   "desc": "卡片容器，可添加文字、列表、图片等",
+  "tag": "card 卡片 背景板 父容器 父卡片 区块背景 标题卡片 头部卡片 标题卡片 标示卡片",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -104,6 +105,7 @@
       "sequence": 1,
       "title": "水平头像卡片",
       "desc": "水平头像卡片样式",
+      "tag": "card 卡片 水平头像卡片 横向头像卡片 父容器",
       "props": {
         "type": "avatar",
         "imageOrientation": "horizontal",
@@ -178,6 +180,7 @@
       "sequence": 2,
       "title": "水平图片卡片",
       "desc": "水平图片卡片样式",
+      "tag": "card 卡片 水平图片卡片 横向图片卡片 父容器",
       "props": {
         "type": "image",
         "imageOrientation": "horizontal"
@@ -256,6 +259,7 @@
       "sequence": 3,
       "title": "垂直头像卡片",
       "desc": "垂直头像卡片不同选择显示不同卡片样式",
+      "tag": "card 卡片 垂直头像卡片 竖向头像卡片 父容器",
       "props": {
         "type": "avatar",
         "imageOrientation": "vertical",
@@ -330,6 +334,7 @@
       "sequence": 4,
       "title": "垂直图片卡片",
       "desc": "垂直图片卡片样式",
+      "tag": "card 卡片 垂直图片卡片 竖向图片卡片 父容器",
       "props": {
         "type": "image",
         "imageOrientation": "vertical"
@@ -406,8 +411,9 @@
     },
     "ComboCard": {
       "sequence": 5,
-      "title": "自定义组合卡片",
+      "title": "自定义卡片",
       "desc": "组合卡片样式",
+      "tag": "card 卡片 自定义组合卡片 自定义卡片 空白卡片 父容器 背景板 父卡片 区块背景 普通卡片 基础卡片",
       "props": {
         "type": "combo",
         "title": ""
@@ -478,6 +484,7 @@
       "sequence": 6,
       "title": "空白盒子",
       "desc": "空白盒子样式",
+      "tag": "card 卡片 空白盒子 空白背景板 父容器 空盒子 父卡片",
       "props": {
         "type": "transparent"
       },

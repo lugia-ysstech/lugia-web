@@ -129,7 +129,6 @@ const InputContainer = CSSComponent({
     defaultTheme: {
       width: '100%',
       background: { color: 'white' },
-      borderRadius: getBorderRadius(borderRadius),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
@@ -265,6 +264,7 @@ type InputProps = {
   isShowClearButton?: boolean,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
+  getFocus?: Function,
 } & InsideProps;
 
 class TextBox extends Component<InputProps, InputState> {
@@ -275,6 +275,7 @@ class TextBox extends Component<InputProps, InputState> {
     size: 'default',
     defaultValue: '',
     isShowClearButton: true,
+    canClear: true,
     formatter: (value: string | number) => {
       return value;
     },
@@ -387,12 +388,18 @@ class TextBox extends Component<InputProps, InputState> {
   render() {
     return this.getInputContainer();
   }
-
+  focus = () => {
+    this.getRef().current.focus();
+  };
   componentDidMount() {
-    const { getInputRef, getInputWidgetRef } = this.props;
+    const { getInputRef, getInputWidgetRef, getFocus } = this.props;
     getInputRef && getInputRef({ ref: this.getRef() });
     getInputWidgetRef && getInputWidgetRef({ ref: this.getContainerRef() });
+    if (getFocus && this.getRef()) {
+      getFocus(this.focus);
+    }
   }
+
   getFixIcon(fix: React$Node, WidgetName: string): React$Node {
     if (ObjectUtils.isString(fix)) {
       return (
@@ -422,15 +429,14 @@ class TextBox extends Component<InputProps, InputState> {
         </Suffix>
       );
     }
-    const { isShowClearButton } = this.props;
-    if (isShowClearButton) {
+    const { isShowClearButton, canClear } = this.props;
+    if (isShowClearButton && canClear) {
       return this.getClearButton();
     }
     return null;
   }
 
   getClearButton() {
-    const { canClear = true } = this.props;
     const {
       theme: ClearButtonThemeProps,
       viewClass: clearViewClass,
@@ -467,7 +473,7 @@ class TextBox extends Component<InputProps, InputState> {
     const { disabled, clearIcon, size } = this.props;
     return (
       <Icon
-        propsConfig={{ size, hideClearButton: this.isEmpty() || !canClear }}
+        propsConfig={{ size, hideClearButton: this.isEmpty() }}
         disabled={disabled}
         singleTheme
         viewClass={clearViewClass}
@@ -566,6 +572,7 @@ class TextBox extends Component<InputProps, InputState> {
       themeConfig: {
         normal: {
           border: getBorder(get('normalBorder')),
+          borderRadius: getBorderRadius(borderRadius),
         },
         hover: {
           border: getBorder(get('hoverBorder')),

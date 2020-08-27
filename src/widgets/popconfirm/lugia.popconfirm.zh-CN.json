@@ -2,6 +2,7 @@
   "widgetName": "Popconfirm",
   "title": "气泡确认框",
   "desc": "气泡式的确认框",
+  "tag": "Popconfirm 气泡确认框 弹出确认框 弹出对话框 展开确认框 浮现确认框",
   "props": {
     "createPortal": {
       "type": "boolean",
@@ -215,6 +216,14 @@
                 ["borderRadius"],
                 ["border"]
               ]
+            },
+            "ChildrenContainer": {
+              "name": "包裹子组件的容器",
+              "desc": "包裹子组件的容器",
+              "normal": [["width"]],
+              "hover": [],
+              "clicked": [],
+              "disabled": []
             }
           }
         },

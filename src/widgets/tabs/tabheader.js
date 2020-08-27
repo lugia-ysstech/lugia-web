@@ -213,6 +213,7 @@ const VTabsContainer = CSSComponent({
   },
   css: css`
     height: 100%;
+    width: 100%;
     box-sizing: border-box;
     white-space: nowrap;
     display: inline-block;
@@ -230,6 +231,7 @@ const YscrollerContainer = CSSComponent({
     selectNames: [],
   },
   css: css`
+    width: 100%;
     display: inline-block;
     box-sizing: border-box;
     white-space: nowrap;
@@ -292,7 +294,7 @@ const VTabsOutContainer = CSSComponent({
   tag: 'div',
   className: 'TitleContainer',
   normal: {
-    selectNames: [['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background']],
     getCSS(themeMeta, themeProps) {
       const { border = {} } = themeMeta;
       const { propsConfig: { tabPosition } = {} } = themeProps;

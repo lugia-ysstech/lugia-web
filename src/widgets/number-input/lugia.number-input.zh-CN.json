@@ -2,6 +2,7 @@
   "widgetName": "NumberInput",
   "title": "数字输入框",
   "desc": "常用于数字输入,可以进行快速加减显示",
+  "tag": "numberinput 数字输入框 进步器 表单 数值输入框 number输入框 数字调节器",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -195,6 +196,16 @@
           "name": "event",
           "desc": "当鼠标移出输入框外触发的事件",
           "type": "MouseEvent"
+        }
+      ]
+    },
+    "getFocus": {
+      "desc": "数字输入框主动聚焦事件",
+      "args": [
+        {
+          "name": "focus",
+          "desc": "输入框的聚焦方法",
+          "type": "Function"
         }
       ]
     }

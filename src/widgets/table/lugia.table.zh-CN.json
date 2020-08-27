@@ -2,6 +2,7 @@
   "widgetName": "Table",
   "title": "表格",
   "desc": "Table  表格。",
+  "tag": "表格 tabel",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

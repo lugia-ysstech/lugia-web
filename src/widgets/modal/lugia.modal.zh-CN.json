@@ -2,6 +2,7 @@
   "widgetName": "Modal",
   "title": "对话框",
   "desc": "Modal 对话框。",
+  "tag": "model 对话框 弹出窗口 弹窗 弹层",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -80,6 +81,11 @@
     "zIndex": {
       "type": "number",
       "desc": "设置 Modal 的 z-index"
+    },
+    "mountBody": {
+      "type": "boolean",
+      "desc": "是否挂载body上",
+      "propsDefaultValue": false
     }
   },
   "events": {
@@ -115,7 +121,7 @@
     "ModalTitle": {
       "name": "弹窗标题样式",
       "desc": "为弹窗文字配置样式",
-      "normal": [["font"], ["color"], ["padding"]]
+      "normal": [["font"], ["color"], ["padding"], ["margin"]]
     },
     "ModalContentText": {
       "name": "弹窗内容文本样式",

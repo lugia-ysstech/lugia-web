@@ -29,6 +29,7 @@ import { px2remcss } from '../css/units';
 import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
 import { getIndex } from '../utils/widget-zindex';
+import { createPortal } from 'react-dom';
 
 const BtnType = {
   confirm: 'warning',
@@ -46,6 +47,7 @@ export default ThemeProvider(
       if (!zIndex && zIndex !== 0) {
         this.index = visible ? getIndex() : undefined;
       }
+      this.node = document.createElement('div');
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -65,10 +67,21 @@ export default ThemeProvider(
     };
     componentDidMount() {
       window.addEventListener('keydown', this.hideWindowPopUp, false);
+      this.changeNodeMountStatus(true);
     }
     componentWillUnmount() {
       window.removeEventListener('keydown', this.hideWindowPopUp, false);
+      this.changeNodeMountStatus(false);
     }
+
+    changeNodeMountStatus = (mounted: boolean) => {
+      const doc = window && window.document;
+      const handleChild = mounted ? 'appendChild' : 'removeChild';
+      if (doc) {
+        doc.body && doc.body[handleChild](this.node);
+      }
+    };
+
     hideWindowPopUp = e => {
       const { onCancel } = this.props;
       if (this.modalEle === document.activeElement && e.keyCode === 27) {
@@ -170,6 +183,7 @@ export default ThemeProvider(
         closable = true,
         closeIconClass,
         zIndex,
+        mountBody = false,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       if (!zIndex && zIndex !== 0 && !this.index && this.index !== 0 && visible) {
@@ -261,7 +275,8 @@ export default ThemeProvider(
       if (type === 'Modal') {
         return modalContent;
       }
-      return (
+
+      const integrateModal = (
         <Wrap visible={closing ? true : visible} zIndex={zIndex || this.index}>
           {mask ? (
             <ModalMask
@@ -286,6 +301,13 @@ export default ThemeProvider(
           </ModalWrap>
         </Wrap>
       );
+      if (mountBody) {
+        if (!this.node) {
+          return null;
+        }
+        return createPortal(integrateModal, this.node);
+      }
+      return integrateModal;
     }
     handleMaskClick = () => {
       const { maskClosable = true } = this.props;

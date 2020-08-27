@@ -5,7 +5,7 @@ export const Box = CSSComponent({
   tag: 'div',
   className: 'Box',
   normal: {
-    selectNames: [['width']],
+    selectNames: [['width'], ['height']],
     defaultTheme: {
       width: '100%',
     },

@@ -2,15 +2,12 @@
   "widgetName": "Select",
   "title": "选择器",
   "desc": "选项过多时，弹出下拉菜单给用户选择操作",
+  "tag": "Select 单项选择器 单项选择框 下拉选择框 下拉选择器 下拉菜单 弹出菜单 展开菜单 展开选择框 展开选择器 弹出选择框 弹出选择器 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
       "desc": "是否渲染当前组件",
       "defaultValue": false
-    },
-    "createPortal": {
-      "type": "boolean",
-      "desc": "是否全局弹出框"
     },
     "popupContainerId": {
       "type": "ContainerDomIdType",
@@ -69,6 +66,10 @@
       "type": "boolean",
       "desc": "是否支持自定义值,只有在canSearch为true时才生效",
       "propsDefaultValue": false
+    },
+    "searchFields": {
+      "type": "string[]",
+      "desc": "配置查询字段"
     },
     "canClear": {
       "type": "boolean",
@@ -324,6 +325,7 @@
       "sequence": 1,
       "title": "多项选择器",
       "desc": "支持多项选择",
+      "tag": "MutlipleSelect 多项选择器 多项选择框 多项下拉选择框 多项下拉选择器 多项下拉菜单 多项弹出菜单 多项展开菜单 多项展开选择框 多项展开选择器 多项弹出选择框 多项弹出选择器 多项选择菜单 表单",
       "props": {
         "mutliple": true
       },

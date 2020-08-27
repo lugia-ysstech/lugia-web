@@ -14,7 +14,6 @@ import Popconfirm from './popconfirm';
 import Input from '../input/index';
 import Widget from '../consts';
 import Theme from '../theme';
-import Popover from '../popover/popover';
 
 const Wrapper = styled.div`
   margin: 100px;
@@ -118,6 +117,18 @@ export const WrapperDemo = () => {
       },
     },
   };
+  const childrenContainerConfig = {
+    [Widget.Popconfirm]: {
+      PopconfirmContent: {
+        ChildrenContainer: {
+          normal: {
+            width: '100%',
+          },
+        },
+      },
+    },
+  };
+
   return (
     <Wrapper>
       <Theme config={config}>
@@ -235,9 +246,17 @@ export const WrapperDemo = () => {
       <br />
       <p>包含的组件 继承容器的高度</p>
       <div style={{ width: 100, height: 50 }}>
-        <Popover title={text} action={'click'} placement="top">
+        <Popconfirm title={text} action={'click'} placement="top">
           <div style={{ height: '100%', border: '1px solid red' }}>点击触发</div>
-        </Popover>
+        </Popconfirm>
+      </div>
+      <p>包含的组件 继承容器的宽度 </p>
+      <div style={{ width: 100, height: 50 }}>
+        <Theme config={childrenContainerConfig}>
+          <Popconfirm title={text} action={'click'} placement="top">
+            <div style={{ height: '100%', border: '1px solid red' }}>点击触发</div>
+          </Popconfirm>
+        </Theme>
       </div>
     </Wrapper>
   );

@@ -331,7 +331,7 @@ class UploadDemo extends React.Component<any, any> {
           normal: {
             width: 900,
             height: 80,
-            color: 'red',
+            color: 'grey',
             borderRadius: getBorderRadius(4),
             border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
@@ -385,7 +385,6 @@ class UploadDemo extends React.Component<any, any> {
           normal: {
             width: 346,
             height: 150,
-            color: 'orange',
             borderRadius: getBorderRadius(4),
             border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
@@ -542,7 +541,7 @@ class UploadDemo extends React.Component<any, any> {
             width: 400,
             height: 180,
             fontSize: 15,
-            color: 'red',
+            color: 'grey',
             border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
           },
         },
@@ -607,6 +606,8 @@ class UploadDemo extends React.Component<any, any> {
     };
 
     const typeMap = ['default', 'button', 'both', 'picture', 'area'];
+    const validateTypeOption = ['top', 'inner', 'bottom'];
+
     return (
       <div>
         <Title>-------------customUploadProps</Title>
@@ -639,6 +640,7 @@ class UploadDemo extends React.Component<any, any> {
             <Upload {...defaultProps2} />
           </Theme>
         </div>
+
         <Title>默认类型： </Title>
         <Upload {...defaultProps} />
         <Theme config={config}>
@@ -647,6 +649,7 @@ class UploadDemo extends React.Component<any, any> {
           <Title>配置主题的默认类型 disabled： </Title>
           <Upload {...defaultProps11} />
         </Theme>
+
         <Title>picture large accept(image)： </Title>
         <Upload {...defaultProps3} />
         <Title>picture middle disabled： </Title>
@@ -660,9 +663,11 @@ class UploadDemo extends React.Component<any, any> {
           <Upload {...defaultProps4} />
           <Title>配置主题的picture small： </Title>
           <Upload {...defaultProps5} />
+
           <Title>default disabled： </Title>
           <Upload {...defaultProps7} />
         </Theme>
+
         <Title>Button： </Title>
         <Upload {...defaultProps1} />
         <Upload {...defaultLongProps1} />
@@ -676,6 +681,7 @@ class UploadDemo extends React.Component<any, any> {
           <Title>配置宽度的button limit 3： </Title>
           <Upload {...defaultProps10} />
         </Theme>
+
         <Title>area： </Title>
         <Upload {...defaultProps6} />
         <Title>area disabled： </Title>
@@ -686,6 +692,25 @@ class UploadDemo extends React.Component<any, any> {
           <Title>配置主题的area disabled： </Title>
           <Upload {...defaultProps9} />
         </Theme>
+
+        {typeMap.map(typeItem => {
+          if (typeItem !== 'button') {
+            return validateTypeOption.map(validateItem => {
+              return (
+                <div>
+                  <Title>
+                    {typeItem}类型 {validateItem}校验：{' '}
+                  </Title>
+                  <Upload
+                    validateType={validateItem}
+                    areaType={typeItem}
+                    validateStatus={'error'}
+                  />
+                </div>
+              );
+            });
+          }
+        })}
       </div>
     );
   }

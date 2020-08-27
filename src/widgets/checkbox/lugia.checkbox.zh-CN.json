@@ -2,6 +2,7 @@
   "widgetName": "Checkbox",
   "title": "多选框",
   "desc": "多选框。",
+  "tag": "多选框 checkbox 复选框 多项选择框",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

@@ -2,6 +2,7 @@
   "widgetName": "Loading",
   "title": "加载中",
   "desc": "用于页面和区块的加载中状态",
+  "tag": "loading 加载中 载入",
   "props": {
     "size": {
       "type": "sizeType",

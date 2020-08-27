@@ -2,6 +2,7 @@
   "widgetName": "Tag",
   "title": "标签",
   "desc": "标记和分类的标签",
+  "tag": "tag 标签 标注 标记 分类",
   "props": {
     "closable": {
       "type": "boolean",
@@ -73,6 +74,7 @@
       "sequence": 1,
       "title": "可关闭标签",
       "desc": "点击关闭按钮可隐藏标签",
+      "tag": "closabletag 可关闭标签 标注 标记 分类",
       "props": {
         "closable": true
       },
@@ -121,6 +123,7 @@
       "sequence": 2,
       "title": "可选择标签",
       "desc": "点击标签可配置选中样式",
+      "tag": "choosetag 可选择标签 标注 标记 分类",
       "props": {
         "type": "optional"
       },
