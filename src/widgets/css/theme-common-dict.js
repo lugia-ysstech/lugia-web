@@ -13,11 +13,6 @@ const dict = getDict('@lugia/lugia-web');
 const NameSpace = 'Default';
 const reduceS = 45;
 const bgReduceA = 5;
-/**
- * 加载lugia-web的默认主题
- */
-dict.load(NameSpace, PublicValue);
-load(PublicValue);
 
 /**
  * 变更发布（生产）环境下的公共值
