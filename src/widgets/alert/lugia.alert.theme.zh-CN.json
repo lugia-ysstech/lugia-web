@@ -103,6 +103,22 @@
                 "desc": "文本配置区块的显示文本"
               }
             }
+          },
+          {
+            "name": "警告提示关闭图标样式",
+            "path": ["CloseIcon"],
+            "props": [
+              {
+                "name": "closeIcon",
+                "typeInTheme": "icon"
+              }
+            ],
+            "description": {
+              "textPart": {
+                "text": "图标",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
           }
         ]
       }
