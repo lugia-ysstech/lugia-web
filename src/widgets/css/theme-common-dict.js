@@ -164,6 +164,14 @@ function getReduceColor(
   return undefined;
 }
 
+/**
+ * 加载lugia-web的默认主题
+ */
+if (!dict[NameSpace]) {
+  dict.load(NameSpace, PublicValue);
+  load(PublicValue);
+}
+
 const DevNameSpace = 'DevNameSpace';
 /**
  * 加载并切换到开发环境的公共值
