@@ -39,9 +39,7 @@ export const circleKeyframes = keyframes`
     opacity: 0.5;
   }
 `;
-const circleKeyframesAnimation = css`
-  ${circleKeyframes};
-`;
+
 const getStyled = (props?: CssProps) => {
   const { width, color, circleDiameter, delay, scale } = props;
   const LodingWrapperStyle = `
@@ -64,7 +62,7 @@ const getStyled = (props?: CssProps) => {
   `;
   const scaleAnimation = css`
     transform: scale(1.2);
-    animation: ${circleKeyframesAnimation} 2.5s infinite;
+    animation: ${circleKeyframes} 2.5s infinite;
     animation-delay: 0.6s;
   `;
   const LodingInnerCircleStyle = css`
