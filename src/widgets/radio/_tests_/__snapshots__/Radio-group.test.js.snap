@@ -581,6 +581,15 @@ exports[`RadioGroup RadioGroup css 1`] = `
   border-radius: 0 0.4rem 0.4rem 0;
 }
 
+.c25 > label:first-child > span {
+  border-left: 1px solid #d0d3da;
+  border-radius: 0.4rem 0 0 0.4rem;
+}
+
+.c25 > label:last-child > span {
+  border-radius: 0 0.4rem 0.4rem 0;
+}
+
 .c6 {
   margin-left: 50px;
   width: 50%;
@@ -3750,6 +3759,191 @@ exports[`RadioGroup RadioGroup css 1`] = `
           type="radio"
         >
           radio3
+        </span>
+      </label>
+    </div>
+  </div>
+  <div
+    className="c6"
+    style={
+      Object {
+        "marginBottom": "50px",
+      }
+    }
+  >
+    <p>
+      checkButton index
+    </p>
+    <div
+      className="c25"
+      style={Object {}}
+    >
+      <label
+        checked={false}
+        className="c15"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+      >
+        <input
+          className="c16"
+          onBlur={[Function]}
+          type="radio"
+        />
+        <span
+          checked={false}
+          className="c21"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomColor": "#d0d3da",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderRightColor": "#d0d3da",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#d0d3da",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "color": "red",
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+              "width": "15rem",
+            }
+          }
+          type="radio"
+        >
+          radio1
+        </span>
+      </label>
+      <label
+        checked={false}
+        className="c15"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+      >
+        <input
+          className="c16"
+          onBlur={[Function]}
+          type="radio"
+        />
+        <span
+          checked={false}
+          className="c21"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomColor": "#d0d3da",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderRightColor": "#d0d3da",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#d0d3da",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "color": "#363B40",
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+              "width": "10rem",
+            }
+          }
+          type="radio"
+        >
+          radio2
+        </span>
+      </label>
+      <label
+        checked={false}
+        className="c15"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+      >
+        <input
+          className="c16"
+          onBlur={[Function]}
+          type="radio"
+        />
+        <span
+          checked={false}
+          className="c21"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomColor": "#d0d3da",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderRightColor": "#d0d3da",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#d0d3da",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "color": "#363B40",
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+              "width": "10rem",
+            }
+          }
+          type="radio"
+        >
+          radio3
+        </span>
+      </label>
+      <label
+        checked={false}
+        className="c15"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+      >
+        <input
+          className="c16"
+          onBlur={[Function]}
+          type="radio"
+        />
+        <span
+          checked={false}
+          className="c21"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomColor": "#d0d3da",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderRightColor": "#d0d3da",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#d0d3da",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "color": "#363B40",
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+              "width": "10rem",
+            }
+          }
+          type="radio"
+        >
+          radio4
         </span>
       </label>
     </div>
