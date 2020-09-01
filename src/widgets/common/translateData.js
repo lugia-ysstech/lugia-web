@@ -143,6 +143,8 @@ export function handleCreate(
     result.push(
       params.getChildDom(item, cancel, {
         last: data.length + cancelItem.length === index + 1,
+        childrenIndex: index,
+        childrenCount: data.length,
       })
     );
   };
@@ -193,6 +195,8 @@ function renderChildren(
         styles: styles || child.props.styles,
         hasValue: params.hasValueProps(),
         last: childrenCount === index + 1,
+        childrenIndex: index,
+        childrenCount,
       });
     }
   });

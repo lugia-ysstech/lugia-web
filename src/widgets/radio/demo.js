@@ -568,6 +568,21 @@ export class RadioGroupDemo extends React.Component<any, any> {
         },
       },
     };
+    const checkButtonIndexTheme = {
+      [Widget.RadioGroup]: {
+        CheckButton: {
+          CheckButtonUnChecked: {
+            normal: {
+              width: 100,
+              nth0: {
+                width: 150,
+                color: 'red',
+              },
+            },
+          },
+        },
+      },
+    };
     return (
       <div>
         <p>RadioGroup Theme</p>
@@ -739,6 +754,18 @@ export class RadioGroupDemo extends React.Component<any, any> {
               defaultValue={'Apple'}
               childType="button"
             />
+          </Theme>
+        </Wrapper>
+
+        <Wrapper style={{ marginBottom: '50px' }}>
+          <p>checkButton index</p>
+          <Theme config={checkButtonIndexTheme}>
+            <RadioGroup childType="button">
+              <RadioButton value="1">radio1</RadioButton>
+              <RadioButton value="2">radio2</RadioButton>
+              <RadioButton value="3">radio3</RadioButton>
+              <RadioButton value="4">radio4</RadioButton>
+            </RadioGroup>
           </Theme>
         </Wrapper>
       </div>
