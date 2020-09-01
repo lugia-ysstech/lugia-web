@@ -18,6 +18,12 @@ class LoadingDemo extends React.Component {
   render() {
     return (
       <div>
+        <h2>继承父级宽高</h2>
+        <div style={{ width: '100%', height: 300 }}>
+          <Loading isInherit>
+            <div style={{ width: '100%', height: '100%', background: 'red' }}>1</div>
+          </Loading>
+        </div>
         <Theme config={{ [Widgets.Loading]: { width: 400, color: 'red' } }}>
           <h2>Theme delay</h2>
           <Loading delay={5} />
@@ -164,6 +170,7 @@ class LoadingDemo extends React.Component {
           为前端开发人员赋能，让用户体验 知性。"
           />
         </Loading>
+
         <Switch onChange={this.onChange} />
       </div>
     );
