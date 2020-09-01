@@ -153,7 +153,7 @@ export default ThemeProvider(
       } = this.props;
       const { value } = this.state;
       const config = {};
-      const { last } = options;
+      const { last, childrenIndex, childrenCount } = options;
       isCancel ? (config.cancel = true) : (config.disabled = disabled || item.disabled);
       const itemValue = item[valueField];
       if (childType === 'button') {
@@ -166,6 +166,8 @@ export default ThemeProvider(
             {...config}
             size={size}
             hasValue={this.hasValueProps()}
+            childrenIndex={childrenIndex}
+            childrenCount={childrenCount}
           >
             {item[displayField]}
           </CheckButton>
