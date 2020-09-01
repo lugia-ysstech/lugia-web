@@ -5092,7 +5092,11 @@ export default [
       componentName: 'Panel',
       needExport: true,
       theme: {
-        Container: { name: '面板整体配置', desc: '面板整体配置', normal: [['width']] },
+        Container: {
+          name: '面板整体配置',
+          desc: '面板整体配置',
+          normal: [['width'], ['border', 'bottom']],
+        },
         PanelHeader: {
           name: '面板头部配置',
           desc: '面板头部样式配置',

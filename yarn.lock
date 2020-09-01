@@ -1433,16 +1433,16 @@
     debug "^4.1.1"
     tslib "^1.11.1"
 
-"@lugia/theme-css-hoc@^1.1.18":
-  version "1.1.18"
-  resolved "https://registry.npmjs.org/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.18.tgz#40bff6a9582005c8cdf031478533229a610e42b6"
-  integrity sha512-I62GfRFOBsioKChObEmp1GMwnVYIB+io9huRtnZd4Hsqao2Zqq8cq4ff78n14GOIhR6WYfMiLLLRcl8g40PYgA==
+"@lugia/theme-css-hoc@^1.1.19":
+  version "1.1.19"
+  resolved "https://registry.npmjs.org/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.19.tgz#143618279d5f04640e05de0e8113dd668e72f06e"
+  integrity sha512-pBucapv1ac68iC3tOQU+WVyv4jou8El1uyyxzCMjG9uyV09/hAZ9PE6hFCElTJswPXcRF1cjUDMI0s9SQCXDmA==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.24"
     "@lugia/object-utils" "^1.0.19"
     "@lugia/ramada" "^1.0.5"
-    "@lugia/theme-utils" "^1.1.8"
+    "@lugia/theme-utils" "^1.1.9"
     "@types/react" "^16.9.32"
     "@types/styled-components" "^4.4.3"
     tslib "^1.11.1"
@@ -1458,10 +1458,10 @@
     "@types/styled-components" "^5.0.1"
     tslib "^1.11.1"
 
-"@lugia/theme-utils@^1.1.8":
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/@lugia/theme-utils/-/theme-utils-1.1.8.tgz#7375354767bea7f301066c5385db1875f756ef6e"
-  integrity sha512-LWG/qANa6n/htwccLwaQBdH2StoWujdF7k7LhlJb24kwlIc4B4eqtcTVklGgM6qzIrWRsCfManoVLfMDA6xyjw==
+"@lugia/theme-utils@^1.1.9":
+  version "1.1.9"
+  resolved "https://registry.npmjs.org/@lugia/theme-utils/-/theme-utils-1.1.9.tgz#987b794894ecbf661f6da1de0703ec1683f99713"
+  integrity sha512-wdktPzonXm4Dx4pP8AS0lZ3FYqWw9XCh0I/HXL1/NnX2MhW1KCI63QsjR9qKERyzVFEedtdjmOIWksNjbYJ/Aw==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.24"
