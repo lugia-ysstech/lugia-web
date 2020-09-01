@@ -112,13 +112,13 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
         <Icon iconClass={iconClass} />
       </IconLoading>
     );
-    const { data, children } = this.props;
+    const { data, children, isInherit } = this.props;
     const Children = data || children;
     const hasChildren = delay ? !!Children && loading && isLoading : !!Children && loading;
     const showTips = delay ? isLoading && tip : tip;
     const isShowLoading = delay ? loading && isLoading : loading;
     return (
-      <LoadingFatherBox hasChildren={hasChildren}>
+      <LoadingFatherBox hasChildren={hasChildren} isInherit={isInherit}>
         {Children}
         {!isShowLoading ? (
           ''
