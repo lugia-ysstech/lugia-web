@@ -13,6 +13,10 @@
       "type": "number",
       "desc": "延迟加载时间"
     },
+    "isInherit": {
+      "type": "boolean",
+      "desc": "是否继承父级宽高"
+    },
     "scale": {
       "type": "boolean",
       "desc": "是否缩放",
