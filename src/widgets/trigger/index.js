@@ -259,8 +259,17 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   componentWillUnmount() {
     this.clearDelayTimer();
     this.clearOutsideHandler();
-    this.popupContainer && document.body && document.body.removeChild(this.popupContainer);
-    this.popupContainer = undefined;
+    const { popupContainerId } = this.props;
+    if (popupContainerId) {
+      const childNode = document.getElementById(popupContainerId);
+      if (childNode) {
+        const parentNode = childNode.parentNode;
+        parentNode && parentNode.removeChild(childNode);
+      }
+    } else {
+      this.popupContainer && document.body && document.body.removeChild(this.popupContainer);
+      this.popupContainer = undefined;
+    }
   }
 
   getPopupDomNode() {
