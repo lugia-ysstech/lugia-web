@@ -168,40 +168,18 @@
             "CheckButtonChecked": {
               "name": "选中样式",
               "desc": "选中样式",
-              "normal": {
-                "selectNames": [
-                  ["opacity"],
-                  ["border"],
-                  ["borderRadius"],
-                  ["background"],
-                  ["width"],
-                  ["height"],
-                  ["color"],
-                  ["font"],
-                  ["padding"]
-                ],
-                "nth": [
-                  ["opacity"],
-                  ["border"],
-                  ["borderRadius"],
-                  ["background"],
-                  ["width"],
-                  ["height"],
-                  ["color"],
-                  ["font"],
-                  ["padding"]
-                ]
-              },
-              "disabled": {
-                "selectNames": [
-                  ["opacity"],
-                  ["border"],
-                  ["borderRadius"],
-                  ["background"],
-                  ["color"]
-                ],
-                "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
-              }
+              "normal": [
+                ["opacity"],
+                ["border"],
+                ["borderRadius"],
+                ["background"],
+                ["width"],
+                ["height"],
+                ["color"],
+                ["font"],
+                ["padding"]
+              ],
+              "disabled": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
             },
             "CheckButtonCancel": {
               "name": "取消状态样式",
