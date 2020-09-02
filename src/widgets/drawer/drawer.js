@@ -46,6 +46,7 @@ export default ThemeProvider(
         opening: false,
         closing: false,
         transform: false,
+        randomValue: 0,
       };
       this.isOpen = false;
       this.isClose = false;
@@ -73,10 +74,15 @@ export default ThemeProvider(
       return result;
     }
 
+    componentDidMount() {
+      window.addEventListener('resize', this.renderComponent);
+    }
+
     componentWillUnmount() {
       if (window.document) {
         window.document.body.removeChild(this.node);
       }
+      window.removeEventListener('resize', this.renderComponent);
     }
 
     getIconTheme = () => {
@@ -130,6 +136,10 @@ export default ThemeProvider(
         viewClass,
         theme: iconTheme,
       };
+    };
+
+    renderComponent = () => {
+      this.setState({ randomValue: Math.random() });
     };
 
     render() {
