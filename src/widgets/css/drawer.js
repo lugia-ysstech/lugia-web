@@ -28,6 +28,7 @@ export type DrawerState = {
   opening: boolean,
   closing: boolean,
   transform: boolean,
+  randomValue: number,
 };
 type CSSProps = {
   open: boolean,
