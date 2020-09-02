@@ -8692,6 +8692,7 @@ export default [
           propsDefaultValue: 'default',
         },
         delay: { type: 'number', desc: '延迟加载时间' },
+        isInherit: { type: 'boolean', desc: '是否继承父级宽高' },
         scale: { type: 'boolean', desc: '是否缩放', propsDefaultValue: false },
         iconClass: { type: 'string', desc: '自定义Loading,iconClass接受一个图标名的字符串' },
         tip: { type: 'string', desc: '自定义Loading加载文本' },
