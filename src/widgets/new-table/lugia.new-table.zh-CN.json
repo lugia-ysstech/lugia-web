@@ -130,7 +130,10 @@
     "Tr": {
       "name": "表格行样式",
       "desc": "为表格行配置样式",
-      "normal": [["background"]]
+      "normal": {
+        "selectNames": [["background"]],
+        "nth": [["background"]]
+      }
     },
     "Td": {
       "name": "单元格样式",
