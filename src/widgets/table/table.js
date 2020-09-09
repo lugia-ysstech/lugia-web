@@ -130,7 +130,7 @@ export default ThemeProvider(
         } else {
           this.setState({ scroll: undefined });
         }
-        // this.tableHeight = tableHeight;
+        this.tableHeight = tableHeight;
       }, 0);
     }
 
