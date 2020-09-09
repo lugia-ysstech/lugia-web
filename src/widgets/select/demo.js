@@ -119,6 +119,30 @@ const selectTheme = {
   },
 };
 
+const pageLifeCycle: any = [
+  { eventValue: 'constructor', eventName: '页面初始化' },
+  { eventValue: 'componentDidMount', eventName: '页面打开' },
+  { eventValue: 'componentWillUnmount', eventName: '页面关闭' },
+];
+
+const EventWarpNumber = styled.div`
+  display: flex;
+  width: 40px;
+  height: 18px;
+  background: #d8d8d8;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+`;
+const Test = props => {
+  return (
+    <EventWarpNumber>
+      <Icon iconClass={'lugia-icon-financial_lightning_o'} />1
+    </EventWarpNumber>
+  );
+};
+
 export default class Demo extends React.Component {
   constructor(props) {
     super(props);
@@ -128,13 +152,38 @@ export default class Demo extends React.Component {
     };
   }
 
+  renderSuffixItems(item) {
+    return [<Test data={item} />];
+  }
+
   render() {
     const { value } = this.state;
 
     return (
       <Box>
-        <H2>select 自定义后缀 demo</H2>
+        <H2>single value 是constructor</H2>
+        <Select
+          createPortal
+          data={pageLifeCycle}
+          onSelect={this.onSelect}
+          isShowClearButton={false}
+          valueField={'eventValue'}
+          displayField={'eventName'}
+        />
+        <H2>renderSuffixItems属性</H2>
+        <Select
+          createPortal
+          data={pageLifeCycle}
+          onSelect={this.onSelect}
+          isShowClearButton={false}
+          valueField={'eventValue'}
+          displayField={'eventName'}
+          renderSuffixItems={this.renderSuffixItems}
+        />
+        <H2>single search</H2>
+        <Select virtual canSearch canClear={false} displayField={'label'} data={data} />
 
+        <H2>select 自定义后缀 demo</H2>
         <Select
           theme={config}
           createPortal
