@@ -790,7 +790,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       }
     }
     return (key: number | string) => {
-      return existKey[key];
+      return existKey[key] && existKey.hasOwnProperty(key);
     };
   };
 

@@ -519,6 +519,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       autoHeight,
       defaultHeight,
       checkedCSS = 'background',
+      renderSuffixItems,
     } = props;
     const menuData = this.updateMenuData(data, query, searchType);
     return (
@@ -538,6 +539,7 @@ class Select extends React.Component<SelectProps, SelectState> {
         onClick={this.menuItemClickHandler}
         step={ScrollerStep}
         autoHeight={autoHeight}
+        renderSuffixItems={renderSuffixItems}
       />
     );
   }
