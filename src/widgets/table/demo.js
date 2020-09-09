@@ -8,6 +8,8 @@ import * as React from 'react';
 import Table from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
+import Input from '../input';
+import Button from '../button';
 
 const { ColumnGroup, Column } = Table;
 
@@ -868,6 +870,30 @@ const treeColumns = [
   },
 ];
 
+const columnsDom = [
+  { title: '表格标题', dataIndex: 'title', key: 'title', width: 200, align: 'center', mark: 1 },
+  {
+    title: '编辑表头数据',
+    dataIndex: 'columns',
+    key: 'columns',
+    width: 200,
+    align: 'center',
+    mark: 2,
+    columns: [
+      { title: '列名(英文)', dataIndex: 'key', key: 'key', width: 200, mark: 1 },
+      { title: '列名显示文本', dataIndex: 'title', key: 'title', width: 200, mark: 2 },
+    ],
+  },
+  {
+    title: '编辑表体数据',
+    dataIndex: 'data',
+    key: 'data',
+    width: 200,
+    align: 'center',
+    mark: 3,
+  },
+];
+
 export default class ModalDemo extends React.Component<any, any> {
   constructor() {
     super();
@@ -911,6 +937,13 @@ export default class ModalDemo extends React.Component<any, any> {
   }
   render() {
     console.log('this.state', this.state.selectRowKeys);
+    const dataDom = [
+      {
+        title: <Input value={'title'} />,
+        columns: <Button>eeee</Button>,
+        data: <Button>eee22</Button>,
+      },
+    ];
     const config = {
       [Widget.Table]: {
         Container: {
@@ -964,7 +997,7 @@ export default class ModalDemo extends React.Component<any, any> {
         },
       },
     };
-    const { updateData, treeTable } = this.state;
+    const { updateData, treeTable, isTable } = this.state;
 
     return (
       <div style={{ padding: '20px' }}>
@@ -1098,8 +1131,8 @@ export default class ModalDemo extends React.Component<any, any> {
             key="action"
             render={(text, record) => (
               <span>
-                <a href="javascript:;">Invite {record.lastName}</a>
-                <a href="javascript:;">Delete</a>
+                <a href="">Invite {record.lastName}</a>
+                <a href="">Delete</a>
               </span>
             )}
           />
@@ -1112,7 +1145,14 @@ export default class ModalDemo extends React.Component<any, any> {
           onChange={this.onHandleChange}
           tableStyle="linear"
         />
+        <div style={{ padding: '20px' }}>
+          <Button onClick={this.changeTAble}>点击动态渲染包含dom的table</Button>
+          {isTable ? <Table columns={columnsDom} data={dataDom} /> : <div>ddd</div>}
+        </div>
       </div>
     );
   }
+  changeTAble = () => {
+    this.setState({ isTable: true });
+  };
 }
