@@ -17,6 +17,7 @@ import type { TableProps, TableState } from '../css/table';
 import { css } from 'styled-components';
 import TableTitle from './tableTitle';
 import { deepCopy, isEqualArray } from './utils';
+import isEqual from 'lodash/isEqual';
 
 const sizePadding = {
   default: 8,
@@ -340,7 +341,7 @@ export default ThemeProvider(
         scroll = {},
         data = [],
       } = this.state;
-      const propsDataIsChange = isEqualArray(this.oldPropsData, propsData, { isStrengthen: true });
+      const propsDataIsChange = isEqual(this.oldPropsData, propsData, { isStrengthen: true });
 
       const tableData = propsDataIsChange ? data : propsData;
       if (!propsDataIsChange) {
