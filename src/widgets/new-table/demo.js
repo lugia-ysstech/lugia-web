@@ -20,7 +20,7 @@ const selectData = (function(t) {
 
 const columns = [
   {
-    title: '姓名',
+    title: <div>标签样子的姓名</div>,
     dataIndex: 'name',
     key: 'name',
     width: 100,
@@ -166,7 +166,9 @@ const checkboxColumns = [
     render: (text, record) => {
       const { isHead } = record;
       return isHead ? (
-        <Checkbox>全选</Checkbox>
+        <div style={{ width: '100%', height: '100%' }}>
+          <Checkbox>全选</Checkbox>
+        </div>
       ) : (
         <Checkbox
           onChange={res => {
@@ -184,6 +186,10 @@ const checkboxColumns = [
     key: 'name',
     width: 200,
     disableEdit: true,
+    render: (text, record) => {
+      const { isHead } = record;
+      return isHead ? <div style={{ width: '100%', height: '100%' }}>text</div> : text;
+    },
   },
   {
     title: 'Age',
@@ -322,18 +328,48 @@ export default class TableDemo extends React.Component<Object, Object> {
       },
     };
 
+    const checkBoxConfig = {
+      [Widgets.EditTable]: {
+        Table: {
+          Tr: {
+            normal: {
+              border: 'none',
+              first: {
+                background: {
+                  color: '#d68b8b',
+                },
+              },
+              last: {
+                background: {
+                  color: '#d6c28b',
+                },
+              },
+              nth3: {
+                background: {
+                  color: '#d6c28b',
+                },
+              },
+            },
+          },
+        },
+      },
+    };
+
     return (
       <div>
         <Title>多选可编辑表格 嵌套数据</Title>
         <div>{JSON.stringify(treeData)}</div>
-        <EditTable
-          data={checkBoxdata}
-          columns={checkboxColumns}
-          showHeader={false}
-          allowEditHead={false}
-          tableStyle={'bordered'}
-          onChange={this.onChangeCheckData}
-        />
+        <Theme config={checkBoxConfig}>
+          <EditTable
+            data={checkBoxdata}
+            columns={checkboxColumns}
+            showHeader={false}
+            allowEditHead={false}
+            tableStyle={'linear'}
+            onChange={this.onChangeCheckData}
+          />
+        </Theme>
+
         <Title>可编辑表格 嵌套数据</Title>
         <div>{JSON.stringify(treeData)}</div>
         <Theme config={config}>

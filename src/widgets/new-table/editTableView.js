@@ -9,7 +9,7 @@ import EditTableEventListener from './connection';
 import TableCell from './tableCell';
 import Widget from '../consts';
 import { findDOMNode } from 'react-dom';
-import { isEqualArray } from './utils';
+import { isEqualArray } from '../table/utils';
 
 class EditTable extends React.Component<EditTableProps, EditTableState> {
   editTableListener: EditTableEventListenerHandle;
