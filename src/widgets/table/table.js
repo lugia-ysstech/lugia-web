@@ -17,7 +17,6 @@ import type { TableProps, TableState } from '../css/table';
 import { css } from 'styled-components';
 import TableTitle from './tableTitle';
 import { deepCopy, isEqualArray } from './utils';
-import isEqual from 'lodash/isEqual';
 
 const sizePadding = {
   default: 8,
@@ -78,7 +77,7 @@ export default ThemeProvider(
         headIndeterminate: !!selectRowKeyLength,
         selectRowKeys: selectRowKeys || [],
         scroll,
-        data: deepCopy(data),
+        data,
         sortOrder: true,
       };
       this.tableWrap = React.createRef();
@@ -130,7 +129,7 @@ export default ThemeProvider(
         } else {
           this.setState({ scroll: undefined });
         }
-        this.tableHeight = tableHeight;
+        // this.tableHeight = tableHeight;
       }, 0);
     }
 
@@ -165,9 +164,10 @@ export default ThemeProvider(
           headIndeterminate: !!validSelectRowKeys.length,
           selectRowKeys,
           sortOrder: dataIsSame ? sortOrder : true,
+          data,
         };
       }
-      return { sortOrder: dataIsSame ? sortOrder : true };
+      return { sortOrder: dataIsSame ? sortOrder : true, data };
     }
 
     tableItemChange = (key, record) => () => {
@@ -340,7 +340,7 @@ export default ThemeProvider(
         scroll = {},
         data = [],
       } = this.state;
-      const propsDataIsChange = isEqual(this.oldPropsData, propsData, { isStrengthen: true });
+      const propsDataIsChange = isEqualArray(this.oldPropsData, propsData, { isStrengthen: true });
 
       const tableData = propsDataIsChange ? data : propsData;
       if (!propsDataIsChange) {
