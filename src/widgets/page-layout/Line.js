@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const DEFAULTMARGIN = 6;
+const DEFAULTMARGIN = 4;
 
-const FlexRowLine = styled.div`
+const CommonFlexLine = styled.div`
   width: 100%;
-  height: ${DEFAULTMARGIN}px;
-  cursor: s-resize;
+  height: 100%;
   background: #fff;
+  &:hover {
+    background: #4d63ff;
+    opacity: 0.5;
+  }
 `;
 
-const FlexColLine = styled.div`
+const FlexRowLine = styled(CommonFlexLine)`
+  height: ${DEFAULTMARGIN}px;
+  cursor: s-resize;
+`;
+
+const FlexColLine = styled(CommonFlexLine)`
   width: ${DEFAULTMARGIN}px;
-  height: 100%;
   cursor: w-resize;
-  background: #fff;
 `;
 
 class Line extends Component {
@@ -25,8 +31,11 @@ class Line extends Component {
 
   render() {
     const { type = 'col' } = this.props;
-    const FlexLine = type === 'row' ? FlexRowLine : FlexColLine;
-    return <FlexLine onMouseDown={this.onMouseDown} />;
+    return type === 'row' ? (
+      <FlexRowLine type={'row'} onMouseDown={this.onMouseDown} />
+    ) : (
+      <FlexColLine type={'col'} onMouseDown={this.onMouseDown} />
+    );
   }
 }
 
