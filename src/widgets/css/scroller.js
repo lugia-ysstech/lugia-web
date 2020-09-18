@@ -35,10 +35,10 @@ export const ScrollerContainer = CSSComponent({
       const { autoHeight, totalSize, defaultHeight, __virtual } = themeProps.propsConfig;
       const { height = defaultHeight } = themeMeta;
       const activeHeight = autoHeight ? totalSize : height;
-      const overFlow = __virtual ? '' : 'overflow-y: auto';
+      const overFlow = __virtual ? '' : 'overflow-y: auto;';
       return `
       ${overFlow}
-        height: ${px2remcss(activeHeight)}
+        height: ${px2remcss(activeHeight)};
       `;
     },
     defaultTheme: {
