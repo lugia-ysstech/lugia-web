@@ -248,4 +248,7 @@ export default {
   '/label': {
     render: async () => import('./widgets/label/demo'),
   },
+  '/pageLayout': {
+    render: async () => import('./widgets/page-layout/demo'),
+  },
 };
