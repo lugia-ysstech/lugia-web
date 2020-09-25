@@ -1,0 +1,93 @@
+{
+  "widgetName": "PageLayout",
+  "title": "页面布局",
+  "desc": "快速生成页面布局的组件",
+  "tag": "page pagelayout 页面 布局 页面布局",
+  "props": {
+    "drag": {
+      "type": "boolean",
+      "desc": "页面布局是否支持拖拽切换内容",
+      "defaultValue": false
+    },
+    "enlarge": {
+      "type": "boolean",
+      "desc": "是否支持指定区域全屏展示",
+      "defaultValue": false
+    },
+    "title": {
+      "type": "string",
+      "desc": "页面布局组件的title",
+      "defaultValue": "页面布局"
+    },
+    "hiddenInfo": {
+      "type": "Object",
+      "desc": "被隐藏区域的信息"
+    },
+    "contentInfo": {
+      "type": "Object",
+      "desc": "区域内的内容"
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "当区域大小发生变化时触发",
+      "args": [
+        {
+          "name": "data",
+          "desc": "新的data信息",
+          "type": "Object"
+        }
+      ]
+    },
+    "onHiddenInfoChange": {
+      "desc": "当隐藏对象发生变化时触发",
+      "args": [
+        {
+          "name": "hiddenInfo",
+          "desc": "新的hiddenInfo信息",
+          "type": "Object"
+        }
+      ]
+    },
+    "onContentInfoChange": {
+      "desc": "当某区域内容发生改变时触发",
+      "args": [
+        {
+          "name": "contentInfo",
+          "desc": "新的contentInfo信息",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "category": [
+    "数据录入"
+  ],
+  "theme": {
+    "Container": {
+      "name": "页面布局",
+      "desc": "页面布局组件外盒配置",
+      "normal": [
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ]
+      ],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 800
+      }
+    }
+  }
+}
