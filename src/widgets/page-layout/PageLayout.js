@@ -9,8 +9,9 @@ import FlexLine from './Line';
 import Icon from '../icon';
 import EnlargeContainer from './EnlargeContainer';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import { defaultMargin } from './utils';
 
-const DEFAULTMARGIN = 4;
+type typeType = typeType;
 
 export const PageLayoutWrap = CSSComponent({
   tag: 'div',
@@ -332,7 +333,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     });
   };
 
-  getFlexWrap = (type: 'row' | 'col') => {
+  getFlexWrap = (type: typeType) => {
     return type === 'row' ? RowFlexWrap : ColFlexWrap;
   };
 
@@ -376,7 +377,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     return null;
   };
 
-  getSpacingItemInfo = (type: 'row' | 'col', data: Object) => {
+  getSpacingItemInfo = (type: typeType, data: Object) => {
     let totalCount = 0;
     let totalSpacing = 0;
     data.forEach((item: Object) => {
@@ -391,11 +392,11 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     return { totalCount, totalSpacing };
   };
 
-  fetchFatherSize = (type: 'row' | 'col', element: Object, data: Object) => {
+  fetchFatherSize = (type: typeType, element: Object, data: Object) => {
     const fatherWidth = element.offsetWidth;
     const fatherHeight = element.offsetHeight;
     const { totalCount, totalSpacing } = this.getSpacingItemInfo(type, data);
-    const allMarginValue = DEFAULTMARGIN * totalCount;
+    const allMarginValue = defaultMargin * totalCount;
     const allSize = type === 'row' ? fatherHeight : fatherWidth;
     return allSize - allMarginValue - totalSpacing;
   };
@@ -404,7 +405,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     return (fatherSize * flexValue) / letter;
   };
 
-  fetchAllBrotherItemsFlex = (type: 'row' | 'col', brotherItems: Object[]) => {
+  fetchAllBrotherItemsFlex = (type: typeType, brotherItems: Object[]) => {
     let allFlex = 0;
     brotherItems.forEach((item: Object) => {
       const { size, spacing = false } = item;
@@ -420,7 +421,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   };
 
   fetchCloselyTargetInfo = (
-    type: 'row' | 'col',
+    type: typeType,
     preItem: Object,
     nextItem: Object,
     fatherSize: number,
@@ -457,7 +458,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     };
   };
 
-  onLineMouseDown = (type: 'row' | 'col', index: number, data: Object, targetItem: Object) => (
+  onLineMouseDown = (type: typeType, index: number, data: Object, targetItem: Object) => (
     event: any
   ) => {
     this.canDropItem = false;
@@ -603,12 +604,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     return Number(this.newPreFlex.toFixed(3));
   };
 
-  getTopLine = (
-    id: string,
-    type: 'row' | 'col',
-    index: number,
-    data: Object
-  ): null | React.Node => {
+  getTopLine = (id: string, type: typeType, index: number, data: Object): null | React.Node => {
     const dropItem = this.allDropInfo[id];
     const { topLine = false } = dropItem;
 
@@ -619,7 +615,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
 
   getSpacingTopLine = (
     id: string,
-    type: 'row' | 'col',
+    type: typeType,
     index: number,
     data: Object
   ): null | React.Node => {
@@ -633,7 +629,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
 
   getSpacingBottomLine = (
     id: string,
-    type: 'row' | 'col',
+    type: typeType,
     index: number,
     data: Object
   ): null | React.Node => {

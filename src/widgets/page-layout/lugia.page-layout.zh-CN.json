@@ -7,17 +7,17 @@
     "drag": {
       "type": "boolean",
       "desc": "页面布局是否支持拖拽切换内容",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "enlarge": {
       "type": "boolean",
       "desc": "是否支持指定区域全屏展示",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "title": {
       "type": "string",
       "desc": "页面布局组件的title",
-      "defaultValue": "页面布局"
+      "propsDefaultValue": "页面布局"
     },
     "hiddenInfo": {
       "type": "Object",

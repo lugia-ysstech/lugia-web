@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
-const DEFAULTMARGIN = 4;
+import { defaultMargin } from './utils';
 
 const CommonFlexLine = styled.div`
   width: 100%;
@@ -14,12 +13,12 @@ const CommonFlexLine = styled.div`
 `;
 
 const FlexRowLine = styled(CommonFlexLine)`
-  height: ${DEFAULTMARGIN}px;
+  height: ${defaultMargin}px;
   cursor: s-resize;
 `;
 
 const FlexColLine = styled(CommonFlexLine)`
-  width: ${DEFAULTMARGIN}px;
+  width: ${defaultMargin}px;
   cursor: w-resize;
 `;
 
