@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { defaultMargin } from './utils';
+import { defaultMargin, typeType } from './utils';
 
 const CommonFlexLine = styled.div`
   width: 100%;
@@ -23,7 +23,7 @@ const FlexColLine = styled(CommonFlexLine)`
 `;
 
 type LineProps = {
-  type: 'col' | 'row',
+  type: typeType,
   onMouseDown: Function,
 };
 
