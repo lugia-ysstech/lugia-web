@@ -1,0 +1,36 @@
+[
+  {
+    "widgetName": "PageLayout",
+    "title": "布局组件",
+    "viewProps": [
+      {
+        "name": "drag",
+        "text": "模块可替换位置"
+      },
+      {
+        "name": "enlarge",
+        "text": "全屏查看"
+      }
+    ],
+    "treeNodeHidden": false,
+    "data": [
+      {
+        "title": "布局组件",
+        "data": [
+          {
+            "name": "布局组件整体样式",
+            "path": [
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "布局组件的背景"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

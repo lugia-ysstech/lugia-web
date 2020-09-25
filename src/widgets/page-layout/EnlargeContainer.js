@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Icon from '../icon';
 import styled, { keyframes } from 'styled-components';
-import PagesEditPanel from './PagesEditPanel';
 
 const openAnimation = keyframes`
   0% {
@@ -19,7 +18,7 @@ const EnlargeWrap = styled.div`
   height: 100vh;
   background: rgba(0, 0, 0, 0.3);
   display: ${props => (props.visible ? 'block' : 'none')};
-  z-index: 99999;
+  z-index: 10000;
   position: fixed;
   left: 0;
   top: 0;
@@ -40,8 +39,7 @@ const CloseIconWrap = styled.div`
   position: absolute;
   top: 20px;
   right: 30px;
-  font-size: 16px;
-  background: #fff;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,13 +47,19 @@ const CloseIconWrap = styled.div`
   border-radius: 2px;
 `;
 
-class EnlargeContainer extends Component {
+type EnlargeContainerProps = {};
+
+type EnlargeContainerState = {
+  visible: boolean,
+  content: React.Node | null,
+};
+
+class EnlargeContainer extends Component<EnlargeContainerProps, EnlargeContainerState> {
   constructor(props) {
     super(props);
     this.state = {
       visible: false,
       content: null,
-      isPage: false,
     };
   }
 
@@ -67,42 +71,8 @@ class EnlargeContainer extends Component {
     document.body.removeEventListener('keydown', this.onKeyPress);
   }
 
-  getContentKeys = (contentInfo: Object) => {
-    const contentKeys = [];
-    for (const key in contentInfo) {
-      if (contentInfo[key]) {
-        contentKeys.push(key);
-      }
-    }
-    return contentKeys;
-  };
-
   onKeyPress = (event: Object) => {
-    const { visible = false, content = null } = this.state;
-    if (event.key === 'F9') {
-      if (visible) {
-        this.onClose();
-      } else {
-        const { contentInfo = {}, hiddenInfo = {}, titleInfo = {} } = this.props;
-        const contentKeys = this.getContentKeys(contentInfo);
-        if (!content && contentKeys.length !== 0) {
-          this.setState({
-            visible: true,
-            isPage: false,
-            content: (
-              <PagesEditPanel
-                onClose={this.onClose}
-                contentKeys={contentKeys}
-                hiddenInfo={hiddenInfo}
-                titleInfo={titleInfo}
-                onChange={this.onHiddenInfoChange}
-              />
-            ),
-          });
-        }
-      }
-      return;
-    }
+    const { visible = false } = this.state;
     if (!visible) {
       return;
     }
@@ -111,22 +81,10 @@ class EnlargeContainer extends Component {
     }
   };
 
-  onHiddenInfoChange = (hiddenInfo: Object) => {
-    const { onHiddenInfoChange } = this.props;
-    onHiddenInfoChange && onHiddenInfoChange(hiddenInfo);
-    setTimeout(() => {
-      this.setState({
-        visible: false,
-        content: null,
-      });
-    }, 100);
-  };
-
-  setVisible = (visible: boolean, content: any, id: string) => {
+  setVisible = (visible: boolean, content: any) => {
     this.setState({
       visible,
       content,
-      isPage: true,
     });
   };
 
@@ -134,21 +92,19 @@ class EnlargeContainer extends Component {
     this.setState({
       visible: false,
       content: null,
-      isPage: false,
     });
   };
 
   render() {
-    const { content, visible = false, isPage = false } = this.state;
+    const { content, visible = false } = this.state;
 
     return visible ? (
       <EnlargeWrap visible={visible}>
         <ContentWrap>{content}</ContentWrap>
-        {isPage ? (
-          <CloseIconWrap onClick={this.onClose}>
-            <Icon iconClass={'lugia-icon-logo_codepen'} />
-          </CloseIconWrap>
-        ) : null}
+
+        <CloseIconWrap onClick={this.onClose}>
+          <Icon iconClass={'lugia-icon-reminder_close'} />
+        </CloseIconWrap>
       </EnlargeWrap>
     ) : null;
   }

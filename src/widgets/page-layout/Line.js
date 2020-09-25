@@ -7,9 +7,9 @@ const CommonFlexLine = styled.div`
   width: 100%;
   height: 100%;
   background: #fff;
+
   &:hover {
     background: #4d63ff;
-    opacity: 0.5;
   }
 `;
 
@@ -23,7 +23,14 @@ const FlexColLine = styled(CommonFlexLine)`
   cursor: w-resize;
 `;
 
-class Line extends Component {
+type LineProps = {
+  type: 'col' | 'row',
+  onMouseDown: Function,
+};
+
+type LineState = {};
+
+class Line extends Component<LineProps, LineState> {
   onMouseDown = event => {
     const { onMouseDown } = this.props;
     onMouseDown && onMouseDown(event);
