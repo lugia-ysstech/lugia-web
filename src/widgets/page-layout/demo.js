@@ -5,15 +5,15 @@
  */
 
 import React, { Component } from 'react';
-import Index from './index';
+import PageLayoutCom from './index';
 import styled from 'styled-components';
+import Widget from '../consts/index';
+
+const PageLayoutWrap = PageLayoutCom.PageLayoutWrap;
 
 const Wrap = styled.div`
   width: 100%;
-  height: 100vh;
-  display: flex;
   padding: 20px;
-  background: #eee;
 `;
 
 const LineMargin = styled.div`
@@ -75,11 +75,6 @@ const Page5Content = styled(CommonPageContent)`
   color: #fff;
 `;
 
-const PageLayoutWrap = styled.div`
-  flex: 2;
-  height: 100%;
-`;
-
 const pageContent = {
   0: <Page1Content>页面一内容</Page1Content>,
   1: <Page2Content>页面二内容</Page2Content>,
@@ -88,25 +83,18 @@ const pageContent = {
   4: <Page5Content>页面五内容</Page5Content>,
 };
 
-const contentInfo = {
-  com1C1C1: <Page1Content>页面一内容</Page1Content>,
-  com1C2C1: <Page2Content>页面二内容</Page2Content>,
-  com2C1: <Page3Content>页面三内容</Page3Content>,
-  com3: <Page4Content>页面四内容</Page4Content>,
-};
-
-const data = [
+const data1 = [
   {
     id: 'c-spacing-0',
     spacing: true,
     type: 'row',
-    numHeight: 50,
+    numHeight: 20,
   },
   {
     id: 'c-spacing-1',
     spacing: true,
     type: 'row',
-    numHeight: 50,
+    numHeight: 20,
   },
   {
     id: 'com1',
@@ -119,7 +107,7 @@ const data = [
         type: 'col',
         fatherId: 'com1',
         path: 'com1',
-        numWidth: 50,
+        numWidth: 20,
       },
       {
         id: 'com1C1',
@@ -245,7 +233,7 @@ const data = [
     id: 'c-spacing-2',
     spacing: true,
     type: 'row',
-    numHeight: 50,
+    numHeight: 20,
   },
 
   {
@@ -269,7 +257,7 @@ const data = [
         type: 'col',
         fatherId: 'com2',
         path: 'com2',
-        numWidth: 50,
+        numWidth: 20,
       },
       {
         id: 'com2C2',
@@ -298,19 +286,19 @@ const data = [
     id: 'c-spacing-3',
     spacing: true,
     type: 'row',
-    numHeight: 50,
+    numHeight: 20,
   },
   {
     id: 'c-spacing-4',
     spacing: true,
     type: 'row',
-    numHeight: 50,
+    numHeight: 20,
   },
   {
     id: 'c-spacing-5',
     spacing: true,
     type: 'row',
-    numHeight: 50,
+    numHeight: 20,
   },
 
   {
@@ -327,348 +315,198 @@ const data = [
     id: 'c-spacing-6',
     spacing: true,
     type: 'row',
-    numHeight: 50,
+    numHeight: 20,
   },
   {
     id: 'c-spacing-7',
     spacing: true,
     type: 'row',
-    numHeight: 50,
+    numHeight: 20,
   },
 ];
 
 const data2 = [
   {
-    id: 'zoom1',
+    id: 'zom1',
     type: 'row',
-    size: {
-      width: '100%',
-      height: '100%',
+    size: { width: '100%', height: '40%' },
+    children: [
+      {
+        id: 'zom1C1',
+        type: 'col',
+        fatherId: 'zom1',
+        path: 'zom1',
+        size: {
+          width: '70%',
+          height: '100%',
+        },
+      },
+      {
+        id: 'zom1C2',
+        type: 'col',
+        fatherId: 'zom1',
+        path: 'zom1',
+        size: {
+          width: '30%',
+          height: '100%',
+        },
+      },
+    ],
+  },
+  {
+    id: 'zom2',
+    type: 'row',
+    size: { width: '100%', height: '40%' },
+    children: [
+      {
+        id: 'zom2C1',
+        type: 'col',
+        fatherId: 'zom2',
+        path: 'zom2',
+        size: {
+          width: '30%',
+          height: '100%',
+        },
+      },
+      {
+        id: 'zom2C2',
+        type: 'col',
+        fatherId: 'zom2',
+        path: 'zom2',
+        size: {
+          width: '70%',
+          height: '100%',
+        },
+      },
+    ],
+  },
+  {
+    id: 'zom3',
+    type: 'row',
+    size: { width: '100%', height: '20%' },
+    children: [],
+  },
+];
+
+const config = {
+  [Widget.PageLayout]: {
+    Container: {
+      normal: {
+        width: 1200,
+        height: 800,
+        background: {
+          color: '#E6E6FA',
+        },
+      },
     },
-    children: [
-      {
-        id: 'zoom1C1',
-        type: 'col',
-        fatherId: 'zoom1',
-        path: 'zoom1',
-        size: { width: ' 20%', height: '100%' },
-        children: [
-          {
-            id: 'zoom1C1C1',
-            type: 'row',
-            fatherId: 'zoom1C1',
-            path: 'zoom1/zoom1C1',
-            size: { width: '100%', height: '30%' },
-          },
-          {
-            id: 'zoom1C1C2',
-            type: 'row',
-            fatherId: 'zoom1C1',
-            path: 'zoom1/zoom1C1',
-            size: { width: '100%', height: '40%' },
-          },
-          {
-            id: 'zoom1C1C3',
-            type: 'row',
-            fatherId: 'zoom1C1',
-            path: 'zoom1/zoom1C1',
-            size: { width: '100%', height: '30%' },
-          },
-        ],
-      },
-      {
-        id: 'zoom1C2',
-        type: 'col',
-        fatherId: 'zoom1',
-        path: 'zoom1',
-        size: { width: '40%', height: '100%' },
-        children: [
-          {
-            id: 'zoom1C2C1',
-            type: 'row',
-            fatherId: 'zoom1C2',
-            path: 'zoom1/zoom1C2',
-            size: { width: '100%', height: '50%' },
-          },
-          {
-            id: 'zoom1C2C2',
-            type: 'row',
-            fatherId: 'zoom1C2',
-            path: 'zoom1/zoom1C2',
-            size: { width: '100%', height: '30%' },
-          },
-          {
-            id: 'zoom1C2C3',
-            type: 'row',
-            fatherId: 'zoom1C2',
-            path: 'zoom1/zoom1C2',
-            size: { width: '100%', height: '20%' },
-          },
-        ],
-      },
-      {
-        id: 'zoom1C3',
-        type: 'col',
-        fatherId: 'zoom1',
-        path: 'zoom1',
-        size: { width: '40%', height: '100%' },
-        children: [
-          {
-            id: 'zoom1C3C1',
-            type: 'row',
-            fatherId: 'zoom1C3',
-            path: 'zoom1/zoom1C3',
-            size: { width: '100%', height: '40%' },
-            children: [
-              {
-                id: 'zoom1C3C1C1',
-                type: 'col',
-                fatherId: 'zoom1C3C1',
-                path: 'zoom1/zoom1C3/zoom1C3C1',
-                size: { width: '30%', height: '100%' },
-              },
-              {
-                id: 'zoom1C3C1C2',
-                type: 'col',
-                fatherId: 'zoom1C3C1',
-                path: 'zoom1/zoom1C3/zoom1C3C1',
-                size: { width: '70%', height: '100%' },
-              },
-            ],
-          },
-          {
-            id: 'zoom1C3C2',
-            type: 'row',
-            fatherId: 'zoom1C3',
-            path: 'zoom1/zoom1C3',
-            size: { width: '100%', height: '30%' },
-          },
-          {
-            id: 'zoom1C3C3',
-            type: 'row',
-            fatherId: 'zoom1C3',
-            path: 'zoom1/zoom1C3',
-            size: { width: '100%', height: '30%' },
-            children: [
-              {
-                id: 'zoom1C3C3C1',
-                type: 'col',
-                fatherId: 'zoom1C3C3',
-                path: 'zoom1/zoom1C3/zoom1C3C3',
-                size: { width: '60%', height: '100%' },
-              },
-              {
-                id: 'zoom1C3C3C2',
-                type: 'col',
-                fatherId: 'zoom1C3C3',
-                path: 'zoom1/zoom1C3/zoom1C3C3',
-                size: { width: '40%', height: '100%' },
-              },
-            ],
-          },
-        ],
-      },
-    ],
   },
-];
+};
 
-const data3 = [
-  {
-    id: 'c-spacing-0',
-    spacing: true,
-    type: 'row',
-    numHeight: 50,
-  },
-  {
-    id: 'c-spacing-1',
-    spacing: true,
-    type: 'row',
-    numHeight: 50,
-  },
-  {
-    id: 'c-com1',
-    type: 'row',
-    size: { width: '100%', height: '40%' },
-  },
-  {
-    id: 'c-spacing-2',
-    spacing: true,
-    type: 'row',
-    numHeight: 50,
-  },
-  {
-    id: 'c-com2',
-    type: 'row',
-    size: { width: '100%', height: '40%' },
-  },
-  {
-    id: 'c-spacing-3',
-    spacing: true,
-    type: 'row',
-    numHeight: 50,
-  },
-  {
-    id: 'c-spacing-4',
-    spacing: true,
-    type: 'row',
-    numHeight: 50,
-  },
-  {
-    id: 'c-spacing-5',
-    spacing: true,
-    type: 'row',
-    numHeight: 50,
-  },
-  {
-    id: 'c-com3',
-    type: 'row',
-    size: { width: '100%', height: '10%' },
-  },
-  {
-    id: 'c-com4',
-    type: 'row',
-    size: { width: '100%', height: '10%' },
-  },
-  {
-    id: 'c-spacing-6',
-    spacing: true,
-    type: 'row',
-    numHeight: 50,
-  },
-  {
-    id: 'c-spacing-7',
-    spacing: true,
-    type: 'row',
-    numHeight: 50,
-  },
-];
+const contentInfo1 = {
+  com1C1C1: { component: <Page1Content>页面一内容</Page1Content>, title: '页面一' },
+  com1C2C1: { component: <Page2Content>页面二内容</Page2Content>, title: '页面二' },
+  com2C1: { component: <Page3Content>页面三内容</Page3Content>, title: '页面三' },
+  com3: { component: <Page4Content>页面四内容</Page4Content>, title: '页面四' },
+};
 
-const data4 = [
-  {
-    id: 'data4-com1',
-    type: 'row',
-    size: { width: '100%', height: '40%' },
-    children: [
-      {
-        id: 'com2C1',
-        type: 'col',
-        fatherId: 'data4-com1',
-        path: 'data4-com1',
-        size: {
-          width: '20%',
-          height: '100%',
-        },
-      },
-      {
-        id: 'spacing2-3',
-        spacing: true,
-        type: 'col',
-        fatherId: 'data4-com1',
-        path: 'data4-com1',
-        numWidth: 50,
-      },
-      {
-        id: 'com2C2',
-        type: 'col',
-        fatherId: 'data4-com1',
-        path: 'data4-com1',
-        size: {
-          width: '40%',
-          height: '100%',
-        },
-      },
-      {
-        id: 'com2C3',
-        type: 'col',
-        fatherId: 'data4-com1',
-        path: 'data4-com1',
-        size: {
-          width: '40%',
-          height: '100%',
-        },
-      },
-    ],
-  },
-];
+const contentInfo2 = {
+  zom1C1: { component: <Page3Content>页面三内容</Page3Content>, title: '页面三' },
+  zom3: { component: <Page4Content>页面四内容</Page4Content>, title: '页面四' },
+  zom2C2: { component: <Page2Content>页面二内容</Page2Content>, title: '页面二' },
+};
 
-const data5 = [
-  {
-    id: 'com1',
-    type: 'row',
-    size: { width: '100%', height: '40%' },
-    children: [
-      {
-        id: 'com1-spacing-1',
-        spacing: true,
-        type: 'col',
-        fatherId: 'com1',
-        path: 'com1',
-        numWidth: 50,
-      },
-      {
-        id: 'com1C1',
-        type: 'col',
-        fatherId: 'com1',
-        path: 'com1',
-        size: {
-          width: '50%',
-          height: '100%',
-        },
-      },
+const hiddenInfo1 = {
+  com1C1C1: true,
+};
 
-      {
-        id: 'com1C2',
-        type: 'col',
-        fatherId: 'com1',
-        path: 'com1',
-        size: {
-          width: '50%',
-          height: '100%',
-        },
-      },
-    ],
-  },
-];
+const hiddenInfo2 = {
+  zom2C2: true,
+};
 
 class Demo extends Component {
-  onChange = data => {
-    console.log('onChange', data);
+  constructor(props) {
+    super(props);
+    this.state = {
+      data1,
+      data2,
+      contentInfo1,
+      contentInfo2,
+      hiddenInfo1,
+      hiddenInfo2,
+    };
+  }
+
+  onChange1 = data1 => {
+    this.setState({ data1 });
+    console.log('onChange', data1);
   };
 
-  onPageMouseDown = index => () => {
-    console.log('onPageMouseDown', index);
+  onChange2 = data2 => {
+    this.setState({ data2 });
+    console.log('onChange', data2);
   };
 
-  getImagePages = () => {
-    const arr = [];
-    for (let i = 0; i < 5; i++) {
-      arr.push(
-        <CommonPage onMouseDown={this.onPageMouseDown(i)} onMouseUp={this.onMouseUp}>
-          页面{i}
-        </CommonPage>
-      );
-    }
-    return arr;
+  onContentInfoChange1 = contentInfo1 => {
+    this.setState({ contentInfo1 });
+  };
+
+  onContentInfoChange2 = contentInfo2 => {
+    this.setState({ contentInfo2 });
+  };
+
+  onHiddenInfoChange1 = target => {
+    const { hiddenInfo = {} } = target;
+    this.setState({
+      hiddenInfo1: hiddenInfo,
+    });
+    console.log('onHiddenInfoChange 1', target);
+  };
+
+  onHiddenInfoChange2 = target => {
+    const { hiddenInfo = {} } = target;
+    this.setState({
+      hiddenInfo2: hiddenInfo,
+    });
+    console.log('onHiddenInfoChange 2', target);
   };
 
   render() {
+    const {
+      data1 = [],
+      data2 = [],
+      contentInfo1 = {},
+      contentInfo2 = {},
+      hiddenInfo1 = {},
+      hiddenInfo2 = {},
+    } = this.state;
     return (
       <Wrap>
-        <PagesButtonContainer>{this.getImagePages()}</PagesButtonContainer>
         <PageLayoutWrap>
-          {/*<Index data={data3} />*/}
-          {/*<Index data={data4} contentInfo={{ com2C2: <Page1Content>页面一内容</Page1Content> }} />*/}
-          {/*<Index data={data2} onChange={this.onChange} />*/}
-          {/*<Index data={data5} />*/}
-          <Index
-            data={data}
-            onChange={this.onChange}
-            contentInfo={contentInfo}
-            // hiddenInfo={{ com1C1C1: true }}
-            hiddenInfo={{}}
-            titleInfo={{ com1C1C1: '导航菜单页面' }}
+          <PageLayoutCom
+            theme={config}
+            data={data1}
+            drag
+            enlarge
+            title={'模块一'}
+            hiddenInfo={hiddenInfo1}
+            contentInfo={contentInfo1}
+            onChange={this.onChange1}
+            onHiddenInfoChange={this.onHiddenInfoChange1}
+            onContentInfoChange={this.onContentInfoChange1}
           />
+
           <LineMargin />
+
+          <PageLayoutCom
+            theme={config}
+            data={data2}
+            title={'模块二'}
+            hiddenInfo={hiddenInfo2}
+            contentInfo={contentInfo2}
+            onChange={this.onChange2}
+            onHiddenInfoChange={this.onHiddenInfoChange2}
+            onContentInfoChange={this.onContentInfoChange2}
+          />
         </PageLayoutWrap>
       </Wrap>
     );

@@ -8,17 +8,30 @@ import styled from 'styled-components';
 import FlexLine from './Line';
 import Icon from '../icon';
 import EnlargeContainer from './EnlargeContainer';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 
 const DEFAULTMARGIN = 4;
 
-const Wrap = styled.div`
-  width: 100%;
-  height: 100%;
-  background: #d9d9d9;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-`;
+export const PageLayoutWrap = CSSComponent({
+  tag: 'div',
+  className: 'PageLayoutWrap',
+  normal: {
+    selectNames: [['width'], ['height'], ['background']],
+  },
+  hover: {
+    selectNames: [],
+  },
+  css: css`
+    width: 100%;
+    height: 600px;
+    display: flex;
+    background: #f5f5f5;
+    flex-direction: column;
+    box-sizing: border-box;
+  `,
+  option: { hover: false },
+});
+PageLayoutWrap.displayName = 'PageLayoutWrap';
 
 const CommonFlexWrap = styled.div`
   width: 100%;
@@ -46,7 +59,6 @@ const ColFlexWrap = styled(CommonFlexWrap)`
 export const EnlargeIconWrap = styled.div`
   width: 20px;
   height: 20px;
-  background: #fff;
   position: absolute;
   top: 5px;
   right: 5px;
@@ -63,7 +75,7 @@ export const EnlargeIconWrap = styled.div`
 `;
 
 export const CommonSpacingBox = styled.div`
-  background: #000;
+  background: #fff;
   width: 100%;
   height: 100%;
 `;
@@ -76,63 +88,90 @@ export const SpacingColBox = styled(CommonSpacingBox)`
   width: ${props => `${props.width}px`};
 `;
 
-class PageLayout extends Component {
+function fetchShowData(data: Object, hiddenInfo: Object = {}) {
+  if (Object.keys(hiddenInfo).length === 0) {
+    return data;
+  }
+  const showData = [];
+  filterShowData(showData, data, hiddenInfo);
+  return showData;
+}
+
+function filterShowData(showData: Object, data: Object, hiddenInfo: Object) {
+  data.forEach(item => {
+    const { id, children = [] } = item;
+    const newItem = JSON.parse(JSON.stringify(item));
+    if (!hiddenInfo[id]) {
+      if (children.length !== 0) {
+        const newChildren = [];
+        filterShowData(newChildren, children, hiddenInfo);
+        newItem.children = newChildren;
+      }
+      showData.push(newItem);
+    }
+  });
+}
+
+type PageLayoutProps = {
+  theme: Object,
+  data: Object[],
+  drag?: boolean,
+  enlarge?: boolean,
+  title: string,
+  contentInfo: Object,
+  hiddenInfo: Object,
+  onChange?: Function,
+  onContentInfoChange?: Function,
+  onHiddenInfoChange?: Function,
+};
+type PageLayoutState = {
+  data: Object[],
+  showData: Object[],
+};
+
+class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   constructor(props) {
     super(props);
-    const { data, contentInfo = {}, hiddenInfo = {} } = this.props;
-    const showData = this.fetchShowData(data, hiddenInfo);
+    const { data = [], hiddenInfo = {} } = this.props;
+    const showData = fetchShowData(data, hiddenInfo);
+    this.updateAllItemInfo(data, showData);
+
     this.state = {
+      data,
       showData,
-      contentInfo,
-      hiddenInfo,
     };
-    this.canDrop = false;
+
+    this.canDropLine = false;
+    this.canDropItem = true;
+    this.isMoveLine = false;
     this.dragItem = {};
     this.cloneNode = null;
 
-    this.updataAllItemInfo(showData);
-
     this.enlargeContainer = React.createRef();
     this.wrapId = this.getWrapId();
-    this.originalData = data;
   }
 
-  updataAllItemInfo = (data: Object) => {
-    const { allShowItemInfo, allDropInfo } = this.fetchAllItemInfo(data);
-    this.allShowItemInfo = allShowItemInfo;
-    this.allDropInfo = allDropInfo;
-  };
-
-  getWrapId = () => {
-    const date = new Date();
-    return `__page_layout_wrap__${date.getTime()}`;
-  };
-
-  fetchShowData = (data: Object, hiddenInfo: Object = {}) => {
-    if (Object.keys(hiddenInfo).length === 0) {
-      return data;
+  static getDerivedStateFromProps(props: any, state: any) {
+    const { data: propsData = [], hiddenInfo = {}, onChange } = props;
+    let data;
+    if (onChange) {
+      data = propsData;
+    } else {
+      data = state.data;
     }
-    const showData = [];
-    this.filterShowData(showData, data, hiddenInfo);
-    return showData;
-  };
+    const showData = fetchShowData(data, hiddenInfo);
 
-  filterShowData = (showData: Object, data: Object, hiddenInfo: Object) => {
-    data.forEach(item => {
-      const { id, children = [] } = item;
-      const newItem = JSON.parse(JSON.stringify(item));
-      if (!hiddenInfo[id]) {
-        if (children.length !== 0) {
-          const newChildren = [];
-          this.filterShowData(newChildren, children, hiddenInfo);
-          newItem.children = newChildren;
-        }
-        showData.push(newItem);
-      }
-    });
-  };
+    return {
+      data,
+      showData,
+    };
+  }
 
   componentDidMount() {
+    const { __initHiddenInfo__ = {}, __initHiddenInfoChangeEvents__ = {} } = this.props;
+    if (__initHiddenInfo__) {
+      this.gatherChildrenHiddenInfo(__initHiddenInfo__, __initHiddenInfoChangeEvents__);
+    }
     document.body.addEventListener('mousemove', this.onMouseMove);
     document.body.addEventListener('mouseup', this.onMouseUp);
   }
@@ -142,39 +181,74 @@ class PageLayout extends Component {
     document.body.removeEventListener('mouseup', this.onMouseUp);
   }
 
-  exposeData = (data: Object) => {
-    const { onChange } = this.props;
-    onChange && onChange(data);
-  };
+  shouldComponentUpdate(nextProps, nextState) {
+    const {
+      __initHiddenInfo__ = {},
+      __initHiddenInfoChangeEvents__ = {},
+      theme: nextTheme,
+      data: nextData,
+      title: nextTitle,
+      hiddenInfo: nextHiddenInfo,
+      contentInfo: nextContentInfo,
+    } = nextProps;
 
-  getPreItem = (data: Object, preIndex: Number) => {
-    for (let i = preIndex; i >= 0; i--) {
-      const preItem = data[i];
-      const { spacing = false } = preItem;
-      if (!spacing) {
-        return preItem;
-      }
+    const { theme, data, title, hiddenInfo, contentInfo } = this.props;
+
+    const { data: nextStateData = [], showData: nextStateShowData = [] } = nextState;
+    const { data: stateData = [], showData: stateShowData = [] } = this.state;
+
+    if (__initHiddenInfo__) {
+      this.gatherChildrenHiddenInfo(__initHiddenInfo__, __initHiddenInfoChangeEvents__);
     }
-    return null;
+    this.updateAllItemInfo(nextStateData, nextStateShowData);
+
+    return (
+      title !== nextTitle ||
+      this.isObjectChange(theme, nextTheme) ||
+      this.isObjectChange(data, nextData) ||
+      this.isObjectChange(hiddenInfo, nextHiddenInfo) ||
+      this.isObjectChange(contentInfo, nextContentInfo) ||
+      this.isObjectChange(stateData, nextStateData) ||
+      this.isObjectChange(stateShowData, nextStateShowData)
+    );
+  }
+
+  gatherChildrenHiddenInfo = (
+    __initHiddenInfo__: Object,
+    __initHiddenInfoChangeEvents__: Object
+  ) => {
+    const { hiddenInfo = {}, title = '页面布局', contentInfo = {} } = this.props;
+    __initHiddenInfo__[this.wrapId] = {
+      hiddenInfo,
+      contentInfo,
+      title,
+    };
+    __initHiddenInfoChangeEvents__[this.wrapId] = this.onHiddenInfoChange;
   };
 
-  getNextItem = (data: Object, nextIndex: Number) => {
-    for (let i = nextIndex; i < data.length; i++) {
-      const nextItem = data[i];
-      const { spacing = false } = nextItem;
-      if (!spacing) {
-        return nextItem;
-      }
-    }
-    return null;
+  isObjectChange = (preObject: Object, nextObject: Object) =>
+    JSON.stringify(preObject) !== JSON.stringify(nextObject);
+
+  onHiddenInfoChange = target => {
+    const { onHiddenInfoChange } = this.props;
+    onHiddenInfoChange && onHiddenInfoChange(target);
   };
 
-  fetchAllItemInfo = (data: Object) => {
+  updateAllItemInfo = (data: Object, showData: Object) => {
+    const { allItemInfo, allShowItemInfo, allDropInfo } = this.fetchAllItemInfo(data, showData);
+    this.allItemInfo = allItemInfo;
+    this.allShowItemInfo = allShowItemInfo;
+    this.allDropInfo = allDropInfo;
+  };
+
+  fetchAllItemInfo = (data: Object, showData: Object) => {
+    const allItemInfo = {};
     const allShowItemInfo = {};
     const allDropInfo = {};
-    this.filterAllItem(allShowItemInfo, data);
-    this.filterDropItem(allDropInfo, data);
-    return { allShowItemInfo, allDropInfo };
+    this.filterAllItem(allItemInfo, data);
+    this.filterAllItem(allShowItemInfo, showData);
+    this.filterDropItem(allDropInfo, showData);
+    return { allItemInfo, allShowItemInfo, allDropInfo };
   };
 
   filterDropItem = (allDropInfo: Object, data: Object) => {
@@ -266,6 +340,42 @@ class PageLayout extends Component {
     return document.getElementById(id);
   };
 
+  getWrapId = () => {
+    const date = new Date();
+    return `__page_layout_wrap__${date.getTime()}`;
+  };
+
+  exposeData = (data: Object) => {
+    const { onChange } = this.props;
+    if (onChange) {
+      onChange(data);
+    } else {
+      this.setState({ data });
+    }
+  };
+
+  getPreItem = (data: Object, preIndex: Number) => {
+    for (let i = preIndex; i >= 0; i--) {
+      const preItem = data[i];
+      const { spacing = false } = preItem;
+      if (!spacing) {
+        return preItem;
+      }
+    }
+    return null;
+  };
+
+  getNextItem = (data: Object, nextIndex: Number) => {
+    for (let i = nextIndex; i < data.length; i++) {
+      const nextItem = data[i];
+      const { spacing = false } = nextItem;
+      if (!spacing) {
+        return nextItem;
+      }
+    }
+    return null;
+  };
+
   getSpacingItemInfo = (type: 'row' | 'col', data: Object) => {
     let totalCount = 0;
     let totalSpacing = 0;
@@ -350,6 +460,7 @@ class PageLayout extends Component {
   onLineMouseDown = (type: 'row' | 'col', index: number, data: Object, targetItem: Object) => (
     event: any
   ) => {
+    this.canDropItem = false;
     const { preItem, nextItem } = targetItem;
     if (!preItem || !nextItem) {
       return;
@@ -379,8 +490,6 @@ class PageLayout extends Component {
     if (!this.preElement || !this.nextElement) {
       return;
     }
-    this.preItem = preItem;
-    this.nextItem = nextItem;
 
     this.closelyTargetInfo = this.fetchCloselyTargetInfo(
       type,
@@ -389,13 +498,11 @@ class PageLayout extends Component {
       this.fatherSize,
       brotherItems
     );
-    console.log('targetItem allDropInfo', targetItem);
-    console.log('closelyTargetInfo allDropInfo', this.closelyTargetInfo);
-
     this.initMouseOffsetX = event.clientX;
     this.initMouseOffsetY = event.clientY;
-
-    this.canDrop = true;
+    this.preItem = this.allItemInfo[preId];
+    this.nextItem = this.allItemInfo[nextId];
+    this.canDropLine = true;
   };
 
   fetchSize2Flex = (size: number, fatherSize: number, letter: number = 100) => {
@@ -408,8 +515,12 @@ class PageLayout extends Component {
   };
 
   onMouseMove = (event: any) => {
-    if (!this.canDrop) {
+    if (!this.canDropLine) {
       return;
+    }
+
+    if (!this.isMoveLine) {
+      this.isMoveLine = true;
     }
 
     let newPreItemSize;
@@ -436,10 +547,12 @@ class PageLayout extends Component {
   };
 
   onMouseUp = () => {
-    if (!this.canDrop) {
+    this.canDropItem = true;
+    if (!this.canDropLine || !this.isMoveLine) {
       return;
     }
-    this.canDrop = false;
+    this.isMoveLine = false;
+    this.canDropLine = false;
     const { totalFlex } = this.closelyTargetInfo;
     const { id: preId, size: preSize } = this.preItem;
     const { id: nextId, size: nextSize } = this.nextItem;
@@ -457,21 +570,14 @@ class PageLayout extends Component {
       newNextItem.size = { ...nextSize, width: newNextPercent };
     }
 
-    const { showData = [] } = this.state;
+    const { data = [] } = this.state;
     const changeItems = {
       [preId]: newPreItem,
       [nextId]: newNextItem,
     };
-    const nextShowData = this.fetchNextData(changeItems, showData);
-    const nextOriginalData = this.fetchNextData(changeItems, this.originalData);
-    this.originalData = nextOriginalData;
 
-    this.updataAllItemInfo(nextShowData);
-
-    this.setState({
-      showData: nextShowData,
-    });
-    this.exposeData(nextOriginalData);
+    const nextData = this.fetchNextData(changeItems, data);
+    this.exposeData(nextData);
   };
 
   fetchNextData = (target: Object, data: Object) => {
@@ -505,6 +611,7 @@ class PageLayout extends Component {
   ): null | React.Node => {
     const dropItem = this.allDropInfo[id];
     const { topLine = false } = dropItem;
+
     return topLine ? (
       <FlexLine type={type} onMouseDown={this.onLineMouseDown(type, index, data, dropItem)} />
     ) : null;
@@ -556,17 +663,21 @@ class PageLayout extends Component {
   };
 
   getPageItemWrap = (id: string) => {
-    const { contentInfo = {} } = this.state;
-    const target = contentInfo[id];
-    if (!target) {
+    const { contentInfo = {}, enlarge = false } = this.props;
+    const target = contentInfo[id] || {};
+    const { component } = target;
+    if (!component) {
       return null;
     }
+
     return (
       <React.Fragment>
-        {target}
-        <EnlargeIconWrap onClick={this.onEnlargePage(id, target)}>
-          <Icon iconClass={'lugia-icon-logo_codepen'} />
-        </EnlargeIconWrap>
+        {component}
+        {enlarge ? (
+          <EnlargeIconWrap onClick={this.onEnlargePage(id, component)}>
+            <Icon iconClass={'lugia-icon-logo_codepen'} />
+          </EnlargeIconWrap>
+        ) : null}
       </React.Fragment>
     );
   };
@@ -591,8 +702,8 @@ class PageLayout extends Component {
   onDragStart = (item: Object) => event => {
     event.stopPropagation();
     const { id = '' } = item;
-    const { contentInfo = {} } = this.state;
-    if (!contentInfo[id]) {
+    const { contentInfo = {} } = this.props;
+    if (!contentInfo[id] || !this.canDropItem) {
       return;
     }
 
@@ -614,7 +725,7 @@ class PageLayout extends Component {
 
     event.dataTransfer.setDragImage(node, 0, 0);
     this.dragItem = item;
-    this.changeTargetCSS(event);
+    event.target.style.opacity = '0.7';
   };
 
   onDragEnd = (event: Object) => {
@@ -666,42 +777,29 @@ class PageLayout extends Component {
 
     this.clearTargetCSS(event);
 
-    const { contentInfo = {} } = this.state;
+    const { contentInfo = {} } = this.props;
     const nextContentInfo = { ...contentInfo };
     const dragItemElement = nextContentInfo[dragId];
     const dropItemElement = nextContentInfo[targetId];
     nextContentInfo[targetId] = dragItemElement;
     nextContentInfo[dragId] = dropItemElement;
 
-    this.setState({
-      contentInfo: nextContentInfo,
-    });
     this.removeCloneNode();
     this.dragItem = {};
+    this.exposeContentInfo(nextContentInfo);
   };
 
-  onHiddenInfoChange = (hiddenInfo: Object) => {
-    const data = this.originalData;
-    let showData;
-    if (Object.keys(hiddenInfo).length === 0) {
-      showData = [...data];
-    } else {
-      showData = this.fetchShowData(data, hiddenInfo);
-    }
-
-    this.updataAllItemInfo(showData);
-
-    this.setState({
-      showData,
-      hiddenInfo,
-    });
+  exposeContentInfo = (contentInfo: Object) => {
+    const { onContentInfoChange } = this.props;
+    onContentInfoChange && onContentInfoChange(contentInfo);
   };
 
   getPageLayoutComponent = (data: Object = []) => {
     if (data.length === 0) {
       return null;
     }
-    const { contentInfo = {} } = this.state;
+    const { contentInfo = {}, drag = false } = this.props;
+
     return data.map((item: Object, index: number) => {
       const { id = '', type = 'row', size = {}, spacing = false, children = [] } = item;
       if (!id) {
@@ -724,17 +822,18 @@ class PageLayout extends Component {
       const flexValue = type === 'row' ? heightFlex : widthFlex;
       const noChild = children.length === 0;
 
-      const dragEvent = noChild
-        ? {
-            onDragStart: this.onDragStart(item),
-            onDragEnd: this.onDragEnd,
-            onDragEnter: this.onDragEnter(item),
-            onDragLeave: this.onDragLeave(item),
-            onDragOver: this.onDragOver,
-            onDrop: this.onDrop(item),
-            draggable: !!contentInfo[id],
-          }
-        : {};
+      const dragEvent =
+        noChild && drag
+          ? {
+              onDragStart: this.onDragStart(item),
+              onDragEnd: this.onDragEnd,
+              onDragEnter: this.onDragEnter(item),
+              onDragLeave: this.onDragLeave(item),
+              onDragOver: this.onDragOver,
+              onDrop: this.onDrop(item),
+              draggable: !!contentInfo[id],
+            }
+          : {};
       return (
         <React.Fragment key={`${id}-Fragment-${type}`}>
           {this.getTopLine(id, type, index, data)}
@@ -754,22 +853,23 @@ class PageLayout extends Component {
   };
 
   render() {
-    const { showData = [], contentInfo = {}, hiddenInfo = {} } = this.state;
-    const { titleInfo = {} } = this.props;
-    console.log('allDropInfo', this.allDropInfo);
+    const { showData = [] } = this.state;
+    const { contentInfo = {} } = this.props;
+
     return (
       <React.Fragment>
-        <Wrap id={this.wrapId}>{this.getPageLayoutComponent(showData)}</Wrap>
-        <EnlargeContainer
-          ref={this.enlargeContainer}
-          contentInfo={contentInfo}
-          hiddenInfo={hiddenInfo}
-          titleInfo={titleInfo}
-          onHiddenInfoChange={this.onHiddenInfoChange}
-        />
+        <PageLayoutWrap id={this.wrapId} themeProps={this.getWrapThemeProps()}>
+          {this.getPageLayoutComponent(showData)}
+        </PageLayoutWrap>
+        <EnlargeContainer ref={this.enlargeContainer} contentInfo={contentInfo} />
       </React.Fragment>
     );
   }
+
+  getWrapThemeProps = () => {
+    const { getPartOfThemeProps } = this.props;
+    return getPartOfThemeProps('Container');
+  };
 }
 
 export default PageLayout;
