@@ -78,7 +78,8 @@ class PageLayoutWrap extends Component<PageLayoutWrapProps, PageLayoutWrapState>
 
   onKeyPress = (event: Object) => {
     const { visible = false } = this.state;
-    if (event.key === 'F9') {
+    const { key, repeat } = event;
+    if (key === 'F9' && !repeat) {
       if (visible) {
         this.onClose();
       } else {
