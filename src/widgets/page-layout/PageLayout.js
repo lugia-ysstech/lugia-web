@@ -9,9 +9,7 @@ import FlexLine from './Line';
 import Icon from '../icon';
 import EnlargeContainer from './EnlargeContainer';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
-import { defaultMargin } from './utils';
-
-type typeType = typeType;
+import { defaultMargin, typeType } from './utils';
 
 export const PageLayoutWrap = CSSComponent({
   tag: 'div',
