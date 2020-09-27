@@ -22,7 +22,9 @@ export class FncModal extends React.Component<any, any> {
       {
         visible: false,
       },
-      this.removeDom()
+      function() {
+        this.removeDom();
+      }
     );
     onOk && onOk();
   };
@@ -32,7 +34,9 @@ export class FncModal extends React.Component<any, any> {
       {
         visible: false,
       },
-      this.removeDom()
+      function() {
+        this.removeDom();
+      }
     );
     onCancel && onCancel();
   };
