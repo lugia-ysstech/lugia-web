@@ -379,11 +379,11 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     let totalCount = 0;
     let totalSpacing = 0;
     data.forEach((item: Object) => {
-      const { id, spacing = false, numWidth = 0, numHeight = 0 } = item;
+      const { id, spacing = false, numberWidth = 0, numberHeight = 0 } = item;
       const { lineCount = 0 } = this.allDropInfo[id];
       totalCount = totalCount + lineCount;
       if (spacing) {
-        const spacingSize = type === 'row' ? Number(numHeight) : Number(numWidth);
+        const spacingSize = type === 'row' ? Number(numberHeight) : Number(numberWidth);
         totalSpacing = totalSpacing + spacingSize;
       }
     });
@@ -800,12 +800,12 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
         return null;
       }
       if (spacing) {
-        const { numWidth = 50, numHeight = 50 } = item;
+        const { numberWidth = 50, numberHeight = 50 } = item;
         const SpacingBox = type === 'row' ? SpacingRowBox : SpacingColBox;
         return (
           <React.Fragment>
             {this.getSpacingTopLine(id, type, index, data)}
-            <SpacingBox width={numWidth} height={numHeight} />
+            <SpacingBox width={numberWidth} height={numberHeight} />
             {this.getSpacingBottomLine(id, type, index, data)}
           </React.Fragment>
         );
