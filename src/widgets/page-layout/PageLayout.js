@@ -15,7 +15,7 @@ export const PageLayoutWrap = CSSComponent({
   tag: 'div',
   className: 'PageLayoutWrap',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height']],
   },
   hover: {
     selectNames: [],
@@ -24,7 +24,6 @@ export const PageLayoutWrap = CSSComponent({
     width: 100%;
     height: 600px;
     display: flex;
-    background: #f5f5f5;
     flex-direction: column;
     box-sizing: border-box;
   `,
@@ -39,6 +38,7 @@ const CommonFlexWrap = styled.div`
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
+  background: ${props => props.background};
   &:hover > div {
     opacity: 1;
   }
@@ -74,7 +74,6 @@ export const EnlargeIconWrap = styled.div`
 `;
 
 export const CommonSpacingBox = styled.div`
-  background: #fff;
   width: 100%;
   height: 100%;
 `;
@@ -145,7 +144,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     this.isMoveLine = false;
     this.dragItem = {};
     this.cloneNode = null;
-
+    this.flexBackground = this.getContainerBackground();
     this.enlargeContainer = React.createRef();
     this.wrapId = this.getWrapId();
   }
@@ -788,6 +787,12 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     onContentInfoChange && onContentInfoChange(contentInfo);
   };
 
+  getContainerBackground = () => {
+    const { getPartOfThemeConfig } = this.props;
+    const config = getPartOfThemeConfig('Container');
+    const { normal: { background: { color = '#f5f5f5' } = {} } = {} } = config;
+    return color;
+  };
   getPageLayoutComponent = (data: Object = []) => {
     if (data.length === 0) {
       return null;
@@ -815,7 +820,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
       const FlexWrap = this.getFlexWrap(type);
       const flexValue = type === 'row' ? heightFlex : widthFlex;
       const noChild = children.length === 0;
-
+      const flexboxBackground = !noChild ? 'transparent' : this.flexBackground;
       const dragEvent =
         noChild && drag
           ? {
@@ -837,6 +842,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
             width={width}
             height={height}
             flexValue={flexValue}
+            background={flexboxBackground}
             {...dragEvent}
           >
             {noChild ? this.getPageItemWrap(id) : this.getPageLayoutComponent(children)}
