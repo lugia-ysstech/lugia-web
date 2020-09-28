@@ -88,13 +88,13 @@ const data1 = [
     id: 'c-spacing-0',
     spacing: true,
     type: 'row',
-    numHeight: 20,
+    numberHeight: 20,
   },
   {
     id: 'c-spacing-1',
     spacing: true,
     type: 'row',
-    numHeight: 20,
+    numberHeight: 20,
   },
   {
     id: 'com1',
@@ -107,7 +107,7 @@ const data1 = [
         type: 'col',
         fatherId: 'com1',
         path: 'com1',
-        numWidth: 20,
+        numberWidth: 20,
       },
       {
         id: 'com1C1',
@@ -233,7 +233,7 @@ const data1 = [
     id: 'c-spacing-2',
     spacing: true,
     type: 'row',
-    numHeight: 20,
+    numberHeight: 20,
   },
 
   {
@@ -257,7 +257,7 @@ const data1 = [
         type: 'col',
         fatherId: 'com2',
         path: 'com2',
-        numWidth: 20,
+        numberWidth: 20,
       },
       {
         id: 'com2C2',
@@ -286,19 +286,19 @@ const data1 = [
     id: 'c-spacing-3',
     spacing: true,
     type: 'row',
-    numHeight: 20,
+    numberHeight: 20,
   },
   {
     id: 'c-spacing-4',
     spacing: true,
     type: 'row',
-    numHeight: 20,
+    numberHeight: 20,
   },
   {
     id: 'c-spacing-5',
     spacing: true,
     type: 'row',
-    numHeight: 20,
+    numberHeight: 20,
   },
 
   {
@@ -315,13 +315,13 @@ const data1 = [
     id: 'c-spacing-6',
     spacing: true,
     type: 'row',
-    numHeight: 20,
+    numberHeight: 20,
   },
   {
     id: 'c-spacing-7',
     spacing: true,
     type: 'row',
-    numHeight: 20,
+    numberHeight: 20,
   },
 ];
 
@@ -395,7 +395,7 @@ const config = {
         width: 1200,
         height: 800,
         background: {
-          color: '#E6E6FA',
+          color: 'pink',
         },
       },
     },

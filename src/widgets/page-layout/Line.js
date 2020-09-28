@@ -5,7 +5,6 @@ import { defaultMargin, typeType } from './utils';
 const CommonFlexLine = styled.div`
   width: 100%;
   height: 100%;
-  background: #fff;
 
   &:hover {
     background: #4d63ff;
