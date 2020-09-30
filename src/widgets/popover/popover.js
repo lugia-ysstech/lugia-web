@@ -115,6 +115,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
       createPortal = true,
       popArrowType = 'sharp',
       popupContainerId,
+      getPopTargetDom,
     } = this.props;
     const { visible } = this.state;
     const getTarget: Function = cmp => (this.target = cmp);
@@ -170,6 +171,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
         title={this.getTitle()}
         description={this.getDescription()}
         ref={getTarget}
+        getPopTargetDom={getPopTargetDom}
         popArrowType={popArrowType}
       >
         {children}
