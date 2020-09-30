@@ -274,6 +274,10 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   }
 
   getRootDomNode = () => {
+    const { getPopTargetDom } = this.props;
+    if (getPopTargetDom && getPopTargetDom()) {
+      return getPopTargetDom();
+    }
     return findDOMNode(this);
   };
   isFirstShow: boolean;
