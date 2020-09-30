@@ -271,6 +271,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
       createPortal = true,
       popArrowType = 'sharp',
       popupContainerId,
+      getPopTargetDom,
     } = this.props;
     const getTarget: Function = cmp => (this.target = cmp);
     const theChildren = children ? children : defaultChildren;
@@ -323,6 +324,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
         description={description}
         content={this.getContent()}
         ref={getTarget}
+        getPopTargetDom={getPopTargetDom}
         placement={placement}
         popArrowType={popArrowType}
       >
