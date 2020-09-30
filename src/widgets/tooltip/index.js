@@ -251,6 +251,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       liquidLayout,
       createPortal = true,
       popupContainerId,
+      getPopTargetDom,
     } = this.props;
     const { visible } = this.state;
     const direction = this.getDirection(placement);
@@ -283,6 +284,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
         popupVisible={visible}
         align={placement}
         ref={getTarget}
+        getPopTargetDom={getPopTargetDom}
         onPopupVisibleChange={this.onVisibleChange}
         action={action}
         direction={direction}
