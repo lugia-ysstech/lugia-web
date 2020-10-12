@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Message from '../message/message';
 import Notification from '../notification/notification';
 import { FncModal } from '../modal/fncmodal';
+import { FncDrawer } from '../drawer/fncdrawer';
 import PopupComps from './fncPopupComps';
 
 let wrap = '';
@@ -89,6 +90,12 @@ const popupComps = {
     const div = document.createElement('div');
     document.body && document.body.appendChild(div);
     ReactDOM.render(<FncModal parentDom={div} {...props} />, div);
+  },
+
+  drawer(props = {}) {
+    const div = document.createElement('div');
+    document.body && document.body.appendChild(div);
+    ReactDOM.render(<FncDrawer parentDom={div} {...props} />, div);
   },
 
   tooltip(props, nodeId) {
