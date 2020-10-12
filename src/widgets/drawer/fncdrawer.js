@@ -23,7 +23,9 @@ export class FncDrawer extends React.Component<any, any> {
       {
         visible: false,
       },
-      this.removeDom()
+      function() {
+        this.removeDom();
+      }
     );
     onClose && onClose();
   };
