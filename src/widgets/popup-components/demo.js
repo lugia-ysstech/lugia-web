@@ -34,6 +34,9 @@ export default class DrawerDemo extends React.Component<any, any> {
   handlePopupModal = (props: Object) => {
     popupComps.modal(props);
   };
+  handlePopupDrawer = (props: Object) => {
+    popupComps.drawer(props);
+  };
   handlePopupTooltip = (props: Object, nodeId: string) => {
     popupComps.tooltip(props, nodeId);
   };
@@ -209,6 +212,67 @@ export default class DrawerDemo extends React.Component<any, any> {
       theme: modalTheme,
     };
 
+    const drawerTheme = {
+      [Widget.Drawer]: {
+        Container: {
+          normal: {
+            width: 300,
+            height: 500,
+            border: getBorder({ color: 'black', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(5),
+            opacity: 0.8,
+            boxShadow: getBoxShadow('1px 2px 2px 2px red'),
+            padding: 20,
+          },
+        },
+        DrawerContent: {
+          normal: {
+            background: {
+              color: 'lightblue',
+            },
+          },
+        },
+        DrawerTitle: {
+          normal: {
+            color: 'red',
+            font: {
+              size: 30,
+            },
+          },
+        },
+        DrawerCloseIcon: {
+          Icon: {
+            normal: {
+              color: 'blue',
+              fontSize: 24,
+            },
+          },
+        },
+        DrawerMask: {
+          normal: {
+            background: {
+              color: '#333',
+            },
+            opacity: 0.3,
+          },
+        },
+        HandleWrap: {
+          normal: {
+            background: {
+              color: 'pink',
+            },
+          },
+        },
+      },
+    };
+    const drawerProps = {
+      title: '抽屉的标题',
+      placement: 'right',
+      closable: true,
+      maskClosable: false,
+      theme: drawerTheme,
+    };
+
     const tooltipTheme = {
       [Widget.Tooltip]: {
         Container: {
@@ -304,6 +368,12 @@ export default class DrawerDemo extends React.Component<any, any> {
         <BoxWrap>
           <Button type="primary" onClick={() => this.handlePopupModal(modalProps)}>
             弹出Modal
+          </Button>
+        </BoxWrap>
+
+        <BoxWrap>
+          <Button type="primary" onClick={() => this.handlePopupDrawer(drawerProps)}>
+            弹出Drawer
           </Button>
         </BoxWrap>
 
