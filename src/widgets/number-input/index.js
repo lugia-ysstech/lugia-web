@@ -229,6 +229,7 @@ export type NumberInputProps = {
   createEventChannel: Function,
   addIcon?: string,
   subtractIcon?: string,
+  suffix?: React$Node,
   dispatchEvent: Function,
   showArrow: boolean,
 };
@@ -352,6 +353,13 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     });
   };
 
+  getStepArrowIconContainerOrSuffix = arrowContainerChannel => {
+    const { showArrow = true, suffix } = this.props;
+    if (!showArrow && suffix) {
+      return suffix;
+    }
+    return showArrow && this.getStepArrowIconContainer(arrowContainerChannel);
+  };
   getStepArrowIconContainer(arrowContainerChannel): React$Element<any> {
     const { value } = this.state;
     const {
@@ -468,6 +476,9 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         InputSuffix: {
           normal: {
             getCSS() {
+              if (!showArrow) {
+                return 'opacity: 1;';
+              }
               return 'opacity: 0;transition: all 0.3s;padding-right:0;';
             },
           },
@@ -491,7 +502,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         theme={theInputTheme}
         viewClass={viewClass}
         value={value}
-        suffix={showArrow && this.getStepArrowIconContainer(arrowContainerChannel)}
+        suffix={this.getStepArrowIconContainerOrSuffix(arrowContainerChannel)}
         onBlur={this.onBlur}
         onFocus={this.onFocus}
         onChange={this.handleChange}
