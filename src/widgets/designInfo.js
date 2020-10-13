@@ -13005,6 +13005,7 @@ export default [
         subtractIcon: { type: 'icon', desc: '向下减少的图标类型' },
         parser: { type: 'function', desc: '解析格式化显示内容的规则,需与 formatter 属性配套使用' },
         showArrow: { type: 'boolean', desc: '是否显示步长的箭头图标', propsDefaultValue: true },
+        suffix: { type: 'icon', desc: '后缀图标, showArrow为false时生效' },
       },
       events: {
         onClick: {
