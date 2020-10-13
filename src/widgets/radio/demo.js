@@ -29,6 +29,14 @@ const data2 = [
   { text: 'radio2', value: 'Pear' },
   { text: 'radio3', value: 'Orange' },
 ];
+
+const indexData = [
+  { text: 'radio1', value: 'Apple' },
+  { text: 'radio2', value: 'Pear' },
+  { text: 'radio3', value: 'Orange' },
+  { text: 'radio4', value: 'banana' },
+];
+
 const onChange = obj => {
   console.info('obj-demo', obj);
 };
@@ -583,6 +591,31 @@ export class RadioGroupDemo extends React.Component<any, any> {
         },
       },
     };
+
+    const testProps = {
+      viewClass: 'themeRadioGroup',
+      theme: {
+        themeRadioGroup: {
+          Container: {
+            normal: {
+              width: 600,
+            },
+          },
+          CheckButton: {
+            CheckButtonUnChecked: {
+              normal: {
+                width: 100,
+                first: {
+                  width: 200,
+                  color: 'blue',
+                },
+              },
+            },
+          },
+        },
+      },
+    };
+
     return (
       <div>
         <p>RadioGroup Theme</p>
@@ -767,6 +800,11 @@ export class RadioGroupDemo extends React.Component<any, any> {
               <RadioButton value="4">radio4</RadioButton>
             </RadioGroup>
           </Theme>
+        </Wrapper>
+
+        <Wrapper style={{ marginBottom: '50px' }}>
+          <p>checkButton index with data props</p>
+          <RadioGroup childType="button" {...testProps} data={indexData} />
         </Wrapper>
       </div>
     );

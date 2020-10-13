@@ -166,6 +166,7 @@ export default ThemeProvider(
             {...config}
             size={size}
             hasValue={this.hasValueProps()}
+            {...options}
           >
             {item[displayField]}
           </CheckButton>
