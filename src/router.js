@@ -251,4 +251,7 @@ export default {
   '/pageLayout': {
     render: async () => import('./widgets/page-layout/demo'),
   },
+  '/popComponent': {
+    render: async () => import('./widgets/popup-components/demo'),
+  },
 };
