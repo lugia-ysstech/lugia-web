@@ -102,7 +102,7 @@ const popupComps = {
     if (!nodeId) {
       return;
     }
-    props.popupName = 'Tootiple';
+    props.popupName = 'Tooltip';
     renderPopupComponent(props, nodeId);
   },
 

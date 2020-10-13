@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { unmountComponentAtNode, findDOMNode } from 'react-dom';
 import Popconfirm from '../popconfirm/';
-import Tootiple from '../tooltip/';
+import Tooltip from '../tooltip/';
 import Popover from '../popover/';
 
 export default class FncPopupComps extends Component {
@@ -43,8 +43,8 @@ export default class FncPopupComps extends Component {
             onConfirm={this.handleConfirm}
           />
         );
-      case 'Tootiple':
-        return <Tootiple {...this.props} visible={visible} />;
+      case 'Tooltip':
+        return <Tooltip {...this.props} visible={visible} />;
       case 'Popover':
         return <Popover {...this.props} visible={visible} />;
       default:
