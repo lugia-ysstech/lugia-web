@@ -96,6 +96,10 @@
       "type": "boolean",
       "desc": "是否显示步长的箭头图标",
       "propsDefaultValue": true
+    },
+    "suffix": {
+      "type": "icon",
+      "desc": "后缀图标, showArrow为false时生效"
     }
   },
   "events": {

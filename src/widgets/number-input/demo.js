@@ -9,6 +9,7 @@ import Theme from '../theme';
 import NumberInput from './';
 import Button from '../button';
 import styled from 'styled-components';
+import SearchIcon from '../icon/SearchIcon';
 
 export class LimitNumberInput extends React.Component<any, any> {
   constructor(props: any) {
@@ -174,6 +175,17 @@ const NumberInputDemo = () => {
           <NumberInput showArrow={false} />
         </Wrapper>
       </Theme>
+
+      <Wrapper style={{ marginTop: '10px' }}>
+        <Theme config={view}>
+          <p>配置后缀图标</p>
+          <NumberInput
+            placeholder="NumberInput"
+            showArrow={false}
+            suffix={<SearchIcon transferSuffixIcon="lugia-icon-direction_caret_down" />}
+          />
+        </Theme>
+      </Wrapper>
     </div>
   );
 };
