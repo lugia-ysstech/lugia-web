@@ -97,7 +97,10 @@ class PageLayoutWrap extends Component<PageLayoutWrapProps, PageLayoutWrapState>
 
   getCloneChildren = (children: Object) => {
     return React.Children.map(children, child => {
-      return React.cloneElement(child, this.getChildProps());
+      if (typeof child === 'object') {
+        return React.cloneElement(child, this.getChildProps());
+      }
+      return child;
     });
   };
 
@@ -134,6 +137,7 @@ class PageLayoutWrap extends Component<PageLayoutWrapProps, PageLayoutWrapState>
     } = this.state;
 
     const { children } = this.props;
+
     return !children ? null : (
       <React.Fragment>
         {this.getCloneChildren(children)}
