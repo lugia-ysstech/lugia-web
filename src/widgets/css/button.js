@@ -191,7 +191,7 @@ export const getClickCSS = (props: ButtonOutProps) => {
     ? '50%'
     : shape === 'default'
     ? px2remcss(NotCircleSize.borderRadius)
-    : px2remcss(ShapeCSS[size].borderRadius);
+    : (ShapeCSS[size] && px2remcss(ShapeCSS[size].borderRadius)) || '';
 
   const clickAnimate = keyframes`
     0% {
