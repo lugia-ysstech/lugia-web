@@ -494,9 +494,8 @@ class Demo extends Component {
             onHiddenInfoChange={this.onHiddenInfoChange1}
             onContentInfoChange={this.onContentInfoChange1}
           />
-
+          {'a '}
           <LineMargin />
-
           <PageLayoutCom
             theme={config}
             data={data2}
