@@ -131,7 +131,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
         {customRender && !isLugiaHead
           ? customRender(text, record, index)
           : defaultText && defaultText.toString()}
-        {isAllowEdit && isSelect && selectSuffixElement ? (
+        {allowEdit && isSelect && selectSuffixElement ? (
           <InnerTriggerDiv>{selectSuffixElement}</InnerTriggerDiv>
         ) : null}
       </EditDiv>
