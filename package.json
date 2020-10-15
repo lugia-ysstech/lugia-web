@@ -1,6 +1,6 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.2.5-alpha.92",
+  "version": "1.2.5-alpha.93",
   "keywords": [
     "lugia",
     "design",
@@ -80,11 +80,11 @@
     "create-info": "lugia-create-info"
   },
   "devDependencies": {
-    "@lugia/devtools-material": "^1.0.43",
-    "@lugia/dict": "^1.0.4",
+    "@lugia/devtools-material": "^1.0.44",
+    "@lugia/dict": "^1.0.5",
     "@lugia/jverify": "^1.0.10",
     "@lugia/lugiax-router": "^1.0.22",
-    "@lugia/mega-scripts": "^1.5.3",
+    "@lugia/mega-scripts": "^1.6.0-alpha.6",
     "@lugia/react-test-utils": "^1.0.1",
     "@lugia/theme-config": "^1.1.5",
     "@lugia/theme-core": "^1.1.9",
