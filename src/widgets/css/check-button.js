@@ -57,7 +57,7 @@ const SizeCSS: { [key: CheckSize]: TypeSizeCSS } = () => ({
 });
 const getSizeCSS = (props: PropsType): string => {
   const { size = 'default' } = props;
-  const { height, fontSize } = SizeCSS()[size];
+  const { height, fontSize } = SizeCSS()[size] || {};
 
   return `
     height: ${em(get(height))};
@@ -185,7 +185,7 @@ export const CheckSpan = CSSComponent({
     },
     getCSS(themeMeta: Object, themeProps: Object): string {
       const {
-        themeConfig: { normal },
+        themeConfig: { normal = {} },
         themeState: { disabled },
       } = themeProps;
       const { height, padding } = normal;
@@ -196,7 +196,7 @@ export const CheckSpan = CSSComponent({
           finalHeight = em(height - top - bottom);
         }
         return `
-          line-height: ${finalHeight};                  
+          line-height: ${finalHeight};
         `;
       }
       return '';
