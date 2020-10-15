@@ -200,9 +200,13 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   };
 
   data2Item(data: Array<Object>) {
-    return data.map((child, i) => {
-      return this.getItem(child, i);
-    });
+    return (
+      data &&
+      Array.isArray(data) &&
+      data.map((child, i) => {
+        return this.getItem(child, i);
+      })
+    );
   }
 
   getItem(child: Object, i: number) {
