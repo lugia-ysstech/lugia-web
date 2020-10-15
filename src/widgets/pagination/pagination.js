@@ -17,7 +17,6 @@ import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import Widget from '../consts';
 import { ObjectUtils } from '@lugia/type-utils';
-import { checkNumber } from '../common/Math';
 import get from '../css/theme-common-dict';
 
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
@@ -1042,9 +1041,10 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     if (showTotalData || isShowTotalData) defaultList.push('Total');
     if (showSizeChanger) defaultList.push('PageSize');
 
-    blockList.forEach((child, i) => {
-      positionMap[child] = i + 1;
-    });
+    blockList &&
+      blockList.forEach((child, i) => {
+        positionMap[child] = i + 1;
+      });
     const length = blockList.length;
     return (
       <PaginationListContainer themeProps={this.props.getPartOfThemeProps('Container')}>
