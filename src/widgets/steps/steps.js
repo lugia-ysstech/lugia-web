@@ -264,9 +264,13 @@ class Steps extends Component<StepsProps, StepsState> {
   };
 
   data2Step(data: Array<Object>) {
-    return data.map((child, i) => {
-      return this.getStep(child, i);
-    });
+    return (
+      data &&
+      Array.isArray(data) &&
+      data.map((child, i) => {
+        return this.getStep(child, i);
+      })
+    );
   }
 
   getStep(child: Object, i: number) {
