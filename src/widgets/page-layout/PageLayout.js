@@ -205,7 +205,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
       this.isObjectChange(theme, nextTheme) ||
       this.isObjectChange(data, nextData) ||
       this.isObjectChange(hiddenInfo, nextHiddenInfo) ||
-      this.isObjectChange(contentInfo, nextContentInfo) ||
+      contentInfo !== nextContentInfo ||
       this.isObjectChange(stateData, nextStateData) ||
       this.isObjectChange(stateShowData, nextStateShowData)
     );
