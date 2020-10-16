@@ -19,7 +19,8 @@ const Wrap = styled.div`
 const LineMargin = styled.div`
   width: 100%;
   height: 20px;
-  background: #eee;
+  background: #000;
+  margin: 20px 0;
 `;
 
 const PagesButtonContainer = styled.div`
@@ -403,10 +404,10 @@ const config = {
 };
 
 const contentInfo1 = {
-  com1C1C1: { component: <Page1Content>页面一内容</Page1Content>, title: '页面一' },
-  com1C2C1: { component: <Page2Content>页面二内容</Page2Content>, title: '页面二' },
-  com2C1: { component: <Page3Content>页面三内容</Page3Content>, title: '页面三' },
-  com3: { component: <Page4Content>页面四内容</Page4Content>, title: '页面四' },
+  com1C1C1: { component: <Page1Content>页面一内容</Page1Content>, title: '页面' },
+  com1C2C1: { component: <Page2Content>页面二内容</Page2Content>, title: '页面' },
+  com2C1: { component: <Page3Content>页面三内容</Page3Content>, title: '页面' },
+  com3: { component: <Page4Content>页面四内容</Page4Content>, title: '页面' },
 };
 
 const contentInfo2 = {
@@ -481,23 +482,38 @@ class Demo extends Component {
     } = this.state;
     return (
       <Wrap>
+        <PageLayoutCom
+          data={data2}
+          title={'模块二'}
+          hiddenInfo={hiddenInfo2}
+          contentInfo={contentInfo2}
+          onChange={this.onChange2}
+          onHiddenInfoChange={this.onHiddenInfoChange2}
+          onContentInfoChange={this.onContentInfoChange2}
+        />
+
+        <LineMargin />
+
         <PageLayoutWrap>
-          <PageLayoutCom
-            theme={config}
-            data={data1}
-            drag
-            enlarge
-            title={'模块一'}
-            hiddenInfo={hiddenInfo1}
-            contentInfo={contentInfo1}
-            onChange={this.onChange1}
-            onHiddenInfoChange={this.onHiddenInfoChange1}
-            onContentInfoChange={this.onContentInfoChange1}
-          />
+          <div>
+            <PageLayoutCom
+              theme={config}
+              data={data1}
+              drag
+              enlarge
+              title={'模块一'}
+              hiddenInfo={hiddenInfo1}
+              contentInfo={contentInfo1}
+              onChange={this.onChange1}
+              onHiddenInfoChange={this.onHiddenInfoChange1}
+              onContentInfoChange={this.onContentInfoChange1}
+            />
+          </div>
+
           {'a '}
           <LineMargin />
           <PageLayoutCom
-            theme={config}
+            // theme={config}
             data={data2}
             title={'模块二'}
             hiddenInfo={hiddenInfo2}
