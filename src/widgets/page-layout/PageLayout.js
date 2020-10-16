@@ -10,6 +10,7 @@ import Icon from '../icon';
 import EnlargeContainer from './EnlargeContainer';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { defaultMargin, typeType } from './utils';
+import { PageLayoutContext } from './PageLayoutWrap';
 
 export const PageLayoutWrap = CSSComponent({
   tag: 'div',
@@ -128,6 +129,8 @@ type PageLayoutState = {
 };
 
 class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
+  static contextType = PageLayoutContext;
+
   constructor(props) {
     super(props);
     const { data = [], hiddenInfo = {} } = this.props;
@@ -166,7 +169,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   }
 
   componentDidMount() {
-    const { __initHiddenInfo__ = {}, __initHiddenInfoChangeEvents__ = {} } = this.props;
+    const { __initHiddenInfo__, __initHiddenInfoChangeEvents__ = {} } = this.context;
     if (__initHiddenInfo__) {
       this.gatherChildrenHiddenInfo(__initHiddenInfo__, __initHiddenInfoChangeEvents__);
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PagesEditPanel from './PagesEditPanel';
+export const PageLayoutContext: Object = React.createContext({});
 
 type PageLayoutWrapProps = {};
 
@@ -95,15 +96,6 @@ class PageLayoutWrap extends Component<PageLayoutWrapProps, PageLayoutWrapState>
     };
   };
 
-  getCloneChildren = (children: Object) => {
-    return React.Children.map(children, child => {
-      if (typeof child === 'object') {
-        return React.cloneElement(child, this.getChildProps());
-      }
-      return child;
-    });
-  };
-
   onSelectKeyChange = (selectKey: string) => {
     this.selectKey = selectKey;
   };
@@ -139,8 +131,8 @@ class PageLayoutWrap extends Component<PageLayoutWrapProps, PageLayoutWrapState>
     const { children } = this.props;
 
     return !children ? null : (
-      <React.Fragment>
-        {this.getCloneChildren(children)}
+      <PageLayoutContext.Provider value={this.getChildProps()}>
+        {children}
         {visible ? (
           <PagesEditPanel
             isShowSelectModel={isShowSelectModel}
@@ -152,7 +144,7 @@ class PageLayoutWrap extends Component<PageLayoutWrapProps, PageLayoutWrapState>
             onSelectKeyChange={this.onSelectKeyChange}
           />
         ) : null}
-      </React.Fragment>
+      </PageLayoutContext.Provider>
     );
   }
 }
