@@ -24,6 +24,7 @@ class PageLayoutWrap extends Component<PageLayoutWrapProps, PageLayoutWrapState>
     };
     this.initHiddenInfo = {};
     this.initHiddenInfoChangeEvents = {};
+    this.initSetStateHiddenInfo = {};
   }
 
   componentDidMount() {
@@ -93,6 +94,7 @@ class PageLayoutWrap extends Component<PageLayoutWrapProps, PageLayoutWrapState>
     return {
       __initHiddenInfo__: this.initHiddenInfo,
       __initHiddenInfoChangeEvents__: this.initHiddenInfoChangeEvents,
+      __initSetStateHiddenInfo__: this.initSetStateHiddenInfo,
     };
   };
 
@@ -107,9 +109,14 @@ class PageLayoutWrap extends Component<PageLayoutWrapProps, PageLayoutWrapState>
         const item = allHiddenInfo[key];
         const newItem = newAllHiddenInfo[key];
         if (JSON.stringify(item) !== JSON.stringify(newItem)) {
-          const { hiddenInfo = {}, title } = newItem;
-          const onHiddenInfoChange = this.initHiddenInfoChangeEvents[key];
-          onHiddenInfoChange && onHiddenInfoChange({ title, hiddenInfo });
+          const { hiddenInfo = {}, title, isLimit = true } = newItem;
+          if (isLimit) {
+            const onHiddenInfoChange = this.initHiddenInfoChangeEvents[key];
+            onHiddenInfoChange && onHiddenInfoChange({ title, hiddenInfo });
+          } else {
+            const setStateHiddenInfo = this.initSetStateHiddenInfo[key];
+            setStateHiddenInfo && setStateHiddenInfo(hiddenInfo);
+          }
         }
       }
     }
