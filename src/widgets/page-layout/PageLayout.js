@@ -125,6 +125,8 @@ type PageLayoutProps = {
 };
 type PageLayoutState = {
   data: Object[],
+  contentInfo: Object,
+  hiddenInfo: Object,
   showData: Object[],
 };
 
@@ -133,13 +135,13 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
 
   constructor(props) {
     super(props);
-    const { data = [], hiddenInfo = {} } = this.props;
+    const { data = [], hiddenInfo = {}, contentInfo = {} } = this.props;
     const showData = fetchShowData(data, hiddenInfo);
-    this.updateAllItemInfo(data, showData);
-
     this.state = {
       data,
       showData,
+      contentInfo,
+      hiddenInfo,
     };
 
     this.canDropLine = false;
@@ -153,26 +155,35 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   }
 
   static getDerivedStateFromProps(props: any, state: any) {
-    const { data: propsData = [], hiddenInfo = {}, onChange } = props;
+    const {
+      data: propsData = [],
+      hiddenInfo = {},
+      contentInfo = {},
+      onChange,
+      __lugiad__header__absolute__ = false,
+    } = props;
     let data;
     if (onChange) {
       data = propsData;
     } else {
       data = state.data;
     }
-    const showData = fetchShowData(data, hiddenInfo);
+    const isLimitHiddenInfo = !__lugiad__header__absolute__ && 'hiddenInfo' in props;
+    const activeHiddenInfo = isLimitHiddenInfo ? hiddenInfo : state.hiddenInfo;
+    const showData = fetchShowData(data, activeHiddenInfo);
+
+    const isLimitContentInfo = !__lugiad__header__absolute__ && 'contentInfo' in props;
+    const activeContentInfo = isLimitContentInfo ? contentInfo : state.contentInfo;
 
     return {
       data,
       showData,
+      hiddenInfo: activeHiddenInfo,
+      contentInfo: activeContentInfo,
     };
   }
 
   componentDidMount() {
-    const { __initHiddenInfo__, __initHiddenInfoChangeEvents__ = {} } = this.context;
-    if (__initHiddenInfo__) {
-      this.gatherChildrenHiddenInfo(__initHiddenInfo__, __initHiddenInfoChangeEvents__);
-    }
     document.body.addEventListener('mousemove', this.onMouseMove);
     document.body.addEventListener('mouseup', this.onMouseUp);
   }
@@ -184,47 +195,70 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
 
   shouldComponentUpdate(nextProps, nextState) {
     const {
-      __initHiddenInfo__ = {},
-      __initHiddenInfoChangeEvents__ = {},
       theme: nextTheme,
       data: nextData,
       title: nextTitle,
-      hiddenInfo: nextHiddenInfo,
-      contentInfo: nextContentInfo,
+      hiddenInfo: nextHiddenInfo = {},
+      contentInfo: nextContentInfo = {},
+      __lugiad__header__absolute__: __next__lugiad__header__absolute__,
     } = nextProps;
 
-    const { theme, data, title, hiddenInfo, contentInfo } = this.props;
+    const {
+      theme,
+      data,
+      title,
+      hiddenInfo = {},
+      contentInfo = {},
+      __lugiad__header__absolute__,
+    } = this.props;
 
-    const { data: nextStateData = [], showData: nextStateShowData = [] } = nextState;
-    const { data: stateData = [], showData: stateShowData = [] } = this.state;
-
-    if (__initHiddenInfo__) {
-      this.gatherChildrenHiddenInfo(__initHiddenInfo__, __initHiddenInfoChangeEvents__);
-    }
-    this.updateAllItemInfo(nextStateData, nextStateShowData);
+    const {
+      data: nextStateData = [],
+      showData: nextStateShowData = [],
+      contentInfo: nextStateContentInfo = {},
+      hiddenInfo: nextStateHiddenInfo = {},
+    } = nextState;
+    const {
+      data: stateData = [],
+      showData: stateShowData = [],
+      contentInfo: stateContentInfo = {},
+      hiddenInfo: stateHiddenInfo = {},
+    } = this.state;
 
     return (
       title !== nextTitle ||
+      __lugiad__header__absolute__ !== __next__lugiad__header__absolute__ ||
       this.isObjectChange(theme, nextTheme) ||
       this.isObjectChange(data, nextData) ||
       this.isObjectChange(hiddenInfo, nextHiddenInfo) ||
       contentInfo !== nextContentInfo ||
       this.isObjectChange(stateData, nextStateData) ||
-      this.isObjectChange(stateShowData, nextStateShowData)
+      this.isObjectChange(stateShowData, nextStateShowData) ||
+      this.isObjectChange(stateContentInfo, nextStateContentInfo) ||
+      this.isObjectChange(stateHiddenInfo, nextStateHiddenInfo)
     );
   }
 
+  isLimitHiddenInfo = () => {
+    const { __lugiad__header__absolute__ = false } = this.props;
+    return !__lugiad__header__absolute__ && 'hiddenInfo' in this.props;
+  };
+
   gatherChildrenHiddenInfo = (
     __initHiddenInfo__: Object,
-    __initHiddenInfoChangeEvents__: Object
+    __initHiddenInfoChangeEvents__: Object,
+    __initSetStateHiddenInfo__: Object
   ) => {
-    const { hiddenInfo = {}, title = '页面布局', contentInfo = {} } = this.props;
+    const { title = '页面布局' } = this.props;
+    const { hiddenInfo = {}, contentInfo = {} } = this.state;
     __initHiddenInfo__[this.wrapId] = {
       hiddenInfo,
       contentInfo,
       title,
+      isLimit: this.isLimitHiddenInfo(),
     };
     __initHiddenInfoChangeEvents__[this.wrapId] = this.onHiddenInfoChange;
+    __initSetStateHiddenInfo__[this.wrapId] = this.setHiddenInfoState;
   };
 
   isObjectChange = (preObject: Object, nextObject: Object) =>
@@ -233,6 +267,12 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   onHiddenInfoChange = target => {
     const { onHiddenInfoChange } = this.props;
     onHiddenInfoChange && onHiddenInfoChange(target);
+  };
+
+  setHiddenInfoState = hiddenInfo => {
+    this.setState({
+      hiddenInfo,
+    });
   };
 
   updateAllItemInfo = (data: Object, showData: Object) => {
@@ -659,7 +699,8 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   };
 
   getPageItemWrap = (id: string) => {
-    const { contentInfo = {}, enlarge = false } = this.props;
+    const { enlarge = false } = this.props;
+    const { contentInfo = {} } = this.state;
     const target = contentInfo[id] || {};
     const { component } = target;
     if (!component) {
@@ -698,7 +739,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   onDragStart = (item: Object) => event => {
     event.stopPropagation();
     const { id = '' } = item;
-    const { contentInfo = {} } = this.props;
+    const { contentInfo = {} } = this.state;
     if (!contentInfo[id] || !this.canDropItem) {
       return;
     }
@@ -773,7 +814,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
 
     this.clearTargetCSS(event);
 
-    const { contentInfo = {} } = this.props;
+    const { contentInfo = {} } = this.state;
     const nextContentInfo = { ...contentInfo };
     const dragItemElement = nextContentInfo[dragId];
     const dropItemElement = nextContentInfo[targetId];
@@ -782,7 +823,16 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
 
     this.removeCloneNode();
     this.dragItem = {};
-    this.exposeContentInfo(nextContentInfo);
+    const { __lugiad__header__absolute__ = false } = this.props;
+    const isLimitContentInfo = !__lugiad__header__absolute__ && 'contentInfo' in this.props;
+
+    if (isLimitContentInfo) {
+      this.exposeContentInfo(nextContentInfo);
+    } else {
+      this.setState({
+        contentInfo: nextContentInfo,
+      });
+    }
   };
 
   exposeContentInfo = (contentInfo: Object) => {
@@ -800,7 +850,8 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     if (data.length === 0) {
       return null;
     }
-    const { contentInfo = {}, drag = false } = this.props;
+    const { drag = false } = this.props;
+    const { contentInfo = {} } = this.state;
 
     return data.map((item: Object, index: number) => {
       const { id = '', type = 'row', size = {}, spacing = false, children = [] } = item;
@@ -855,10 +906,26 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     });
   };
 
-  render() {
-    const { showData = [] } = this.state;
-    const { contentInfo = {} } = this.props;
+  updateInfo = () => {
+    const { data = [], showData = [] } = this.state;
+    const {
+      __initHiddenInfo__,
+      __initHiddenInfoChangeEvents__ = {},
+      __initSetStateHiddenInfo__ = {},
+    } = this.context;
+    if (__initHiddenInfo__) {
+      this.gatherChildrenHiddenInfo(
+        __initHiddenInfo__,
+        __initHiddenInfoChangeEvents__,
+        __initSetStateHiddenInfo__
+      );
+    }
+    this.updateAllItemInfo(data, showData);
+  };
 
+  render() {
+    const { showData = [], contentInfo = {} } = this.state;
+    this.updateInfo();
     return (
       <React.Fragment>
         <PageLayoutWrap id={this.wrapId} themeProps={this.getWrapThemeProps()}>

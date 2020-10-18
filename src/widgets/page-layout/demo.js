@@ -444,7 +444,6 @@ class Demo extends Component {
 
   onChange2 = data2 => {
     this.setState({ data2 });
-    console.log('onChange', data2);
   };
 
   onContentInfoChange1 = contentInfo1 => {
@@ -482,16 +481,6 @@ class Demo extends Component {
     } = this.state;
     return (
       <Wrap>
-        <PageLayoutCom
-          data={data2}
-          title={'模块二'}
-          hiddenInfo={hiddenInfo2}
-          contentInfo={contentInfo2}
-          onChange={this.onChange2}
-          onHiddenInfoChange={this.onHiddenInfoChange2}
-          onContentInfoChange={this.onContentInfoChange2}
-        />
-
         <LineMargin />
 
         <PageLayoutWrap>
@@ -505,6 +494,7 @@ class Demo extends Component {
               hiddenInfo={hiddenInfo1}
               contentInfo={contentInfo1}
               onChange={this.onChange1}
+              __lugiad__header__absolute__
               onHiddenInfoChange={this.onHiddenInfoChange1}
               onContentInfoChange={this.onContentInfoChange1}
             />
@@ -513,7 +503,7 @@ class Demo extends Component {
           {'a '}
           <LineMargin />
           <PageLayoutCom
-            // theme={config}
+            theme={config}
             data={data2}
             title={'模块二'}
             hiddenInfo={hiddenInfo2}
