@@ -927,12 +927,14 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     const { showData = [], contentInfo = {} } = this.state;
     this.updateInfo();
     return (
-      <React.Fragment>
-        <PageLayoutWrap id={this.wrapId} themeProps={this.getWrapThemeProps()}>
-          {this.getPageLayoutComponent(showData)}
-        </PageLayoutWrap>
-        <EnlargeContainer ref={this.enlargeContainer} contentInfo={contentInfo} />
-      </React.Fragment>
+      <PageLayoutWrap id={this.wrapId} themeProps={this.getWrapThemeProps()}>
+        {this.getPageLayoutComponent(showData)}
+        <EnlargeContainer
+          wrapId={this.wrapId}
+          ref={this.enlargeContainer}
+          contentInfo={contentInfo}
+        />
+      </PageLayoutWrap>
     );
   }
 
