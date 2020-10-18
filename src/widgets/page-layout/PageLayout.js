@@ -149,7 +149,6 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     this.isMoveLine = false;
     this.dragItem = {};
     this.cloneNode = null;
-    this.flexBackground = this.getContainerBackground();
     this.enlargeContainer = React.createRef();
     this.wrapId = this.getWrapId();
   }
@@ -196,6 +195,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   shouldComponentUpdate(nextProps, nextState) {
     const {
       theme: nextTheme,
+      themeProps: nextThemeProps,
       data: nextData,
       title: nextTitle,
       hiddenInfo: nextHiddenInfo = {},
@@ -205,6 +205,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
 
     const {
       theme,
+      themeProps,
       data,
       title,
       hiddenInfo = {},
@@ -229,6 +230,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
       title !== nextTitle ||
       __lugiad__header__absolute__ !== __next__lugiad__header__absolute__ ||
       this.isObjectChange(theme, nextTheme) ||
+      this.isObjectChange(themeProps, nextThemeProps) ||
       this.isObjectChange(data, nextData) ||
       this.isObjectChange(hiddenInfo, nextHiddenInfo) ||
       contentInfo !== nextContentInfo ||
@@ -874,7 +876,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
       const FlexWrap = this.getFlexWrap(type);
       const flexValue = type === 'row' ? heightFlex : widthFlex;
       const noChild = children.length === 0;
-      const flexboxBackground = !noChild ? 'transparent' : this.flexBackground;
+      const flexboxBackground = !noChild ? 'transparent' : this.getContainerBackground();
       const dragEvent =
         noChild && drag
           ? {
