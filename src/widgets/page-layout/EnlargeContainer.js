@@ -14,9 +14,9 @@ const openAnimation = keyframes`
 `;
 
 const EnlargeWrap = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.3);
+  width: 0;
+  height: 0;
+  background: #000;
   display: ${props => (props.visible ? 'block' : 'none')};
   z-index: 10000;
   position: fixed;
@@ -36,6 +36,7 @@ const ContentWrap = styled.div`
 const CloseIconWrap = styled.div`
   width: 20px;
   height: 20px;
+  background: #fff;
   position: absolute;
   top: 20px;
   right: 30px;
@@ -61,6 +62,8 @@ class EnlargeContainer extends Component<EnlargeContainerProps, EnlargeContainer
       visible: false,
       content: null,
     };
+    const { wrapId = '' } = props;
+    this.containerId = `${wrapId}-enlarge-container`;
   }
 
   componentDidMount() {
@@ -82,13 +85,31 @@ class EnlargeContainer extends Component<EnlargeContainerProps, EnlargeContainer
   };
 
   setVisible = (visible: boolean, content: any) => {
-    this.setState({
-      visible,
-      content,
-    });
+    this.setState(
+      {
+        visible,
+        content,
+      },
+      () => {
+        const node = document.getElementById(this.containerId);
+        this.cloneNode = node;
+        node.parentNode.removeChild(node);
+
+        node.style.left = '0px';
+        node.style.top = '0px';
+        node.style.width = '100vw';
+        node.style.height = '100vh';
+        document.body.appendChild(node);
+      }
+    );
   };
 
   onClose = () => {
+    document.body.removeChild(this.cloneNode);
+    const { wrapId } = this.props;
+    const wrapNode = document.getElementById(wrapId);
+    wrapNode.appendChild(this.cloneNode);
+    this.cloneNode = null;
     this.setState({
       visible: false,
       content: null,
@@ -99,9 +120,8 @@ class EnlargeContainer extends Component<EnlargeContainerProps, EnlargeContainer
     const { content, visible = false } = this.state;
 
     return visible ? (
-      <EnlargeWrap visible={visible}>
+      <EnlargeWrap id={this.containerId} visible={visible}>
         <ContentWrap>{content}</ContentWrap>
-
         <CloseIconWrap onClick={this.onClose}>
           <Icon iconClass={'lugia-icon-reminder_close'} />
         </CloseIconWrap>
