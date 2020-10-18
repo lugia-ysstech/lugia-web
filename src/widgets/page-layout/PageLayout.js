@@ -234,7 +234,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
       contentInfo !== nextContentInfo ||
       this.isObjectChange(stateData, nextStateData) ||
       this.isObjectChange(stateShowData, nextStateShowData) ||
-      this.isObjectChange(stateContentInfo, nextStateContentInfo) ||
+      stateContentInfo !== nextStateContentInfo ||
       this.isObjectChange(stateHiddenInfo, nextStateHiddenInfo)
     );
   }
