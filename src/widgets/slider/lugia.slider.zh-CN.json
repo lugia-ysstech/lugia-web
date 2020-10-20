@@ -2,6 +2,7 @@
   "widgetName": "Slider",
   "title": "滑动输入条",
   "desc": "滑动型输入器，展示当前值和可选范围",
+  "tag": "Slider 滑动输入条 滑动输入框 滑块 调整数值 调节数值 改变数值",
   "props": {
     "lugiaHidden": {
       "type": "boolean",

@@ -28,6 +28,8 @@ import Icon from '../icon';
 import { px2remcss } from '../css/units';
 import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
+import { getIndex } from '../utils/widget-zindex';
+import { createPortal } from 'react-dom';
 
 const BtnType = {
   confirm: 'warning',
@@ -39,6 +41,15 @@ const BtnType = {
 
 export default ThemeProvider(
   class extends React.Component<ModalProps, ModalState> {
+    constructor(props: ModalProps) {
+      super(props);
+      const { visible = false, zIndex } = props;
+      if (!zIndex && zIndex !== 0) {
+        this.index = visible ? getIndex() : undefined;
+      }
+      this.node = document.createElement('div');
+    }
+
     static getDerivedStateFromProps(props, state) {
       const { visible = false } = props;
       const { visible: stateVisible } = state || {};
@@ -56,10 +67,21 @@ export default ThemeProvider(
     };
     componentDidMount() {
       window.addEventListener('keydown', this.hideWindowPopUp, false);
+      this.changeNodeMountStatus(true);
     }
     componentWillUnmount() {
       window.removeEventListener('keydown', this.hideWindowPopUp, false);
+      this.changeNodeMountStatus(false);
     }
+
+    changeNodeMountStatus = (mounted: boolean) => {
+      const doc = window && window.document;
+      const handleChild = mounted ? 'appendChild' : 'removeChild';
+      if (doc) {
+        doc.body && doc.body[handleChild](this.node);
+      }
+    };
+
     hideWindowPopUp = e => {
       const { onCancel } = this.props;
       if (this.modalEle === document.activeElement && e.keyCode === 27) {
@@ -160,8 +182,13 @@ export default ThemeProvider(
         __lugiad__header__absolute__ = false,
         closable = true,
         closeIconClass,
+        zIndex,
+        mountBody = false,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
+      if (!zIndex && zIndex !== 0 && !this.index && this.index !== 0 && visible) {
+        this.index = getIndex();
+      }
       const view = {
         [Widget.Button]: {
           width: 80,
@@ -248,14 +275,16 @@ export default ThemeProvider(
       if (type === 'Modal') {
         return modalContent;
       }
-      return (
-        <Wrap visible={closing ? true : visible}>
+
+      const integrateModal = (
+        <Wrap visible={closing ? true : visible} zIndex={zIndex || this.index}>
           {mask ? (
             <ModalMask
               onClick={this.handleMaskClick}
               closing={closing}
               opening={opening}
               themeProps={modalMaskTheme}
+              zIndex={zIndex || this.index}
             />
           ) : null}
           <ModalWrap>
@@ -265,12 +294,20 @@ export default ThemeProvider(
               closing={closing}
               opening={opening}
               themeProps={modalWrapTheme}
+              zIndex={zIndex || this.index}
             >
               {modalContent}
             </Modal>
           </ModalWrap>
         </Wrap>
       );
+      if (mountBody) {
+        if (!this.node) {
+          return null;
+        }
+        return createPortal(integrateModal, this.node);
+      }
+      return integrateModal;
     }
     handleMaskClick = () => {
       const { maskClosable = true } = this.props;

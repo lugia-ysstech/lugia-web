@@ -11,7 +11,7 @@ import Widget from '../consts/index';
 import { EditEventType, PagedType, TabPositionType, TabType } from '../css/tabs';
 
 import { px2remcss } from '../css/units';
-import { computePage, isVertical, matchType } from './utils';
+import { computePage, isVertical, matchType, getTextAlign } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
 import Icon from '../icon';
@@ -87,8 +87,8 @@ const HTabsContainer = CSSComponent({
   normal: {
     selectNames: [['width']],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig: { arrowShow, showAddBtn, addSize } = {} } = themeProps;
-      if (arrowShow) {
+      const { propsConfig: { arrowShow, showAddBtn, addSize, isShowArrowIcon } = {} } = themeProps;
+      if (arrowShow && isShowArrowIcon) {
         const W = showAddBtn ? (addSize ? addSize + 8 + 'px' : '80px') : '48px';
         return {
           width: `calc( 100% - ${W} )`,
@@ -110,6 +110,7 @@ const HTabsContainer = CSSComponent({
     white-space: nowrap;
     overflow: hidden;
     float: left;
+    z-index: 5;
   `,
 });
 
@@ -170,6 +171,7 @@ const TabPanBox = StaticComponent({
   className: 'TabPanBox',
   css: css`
     display: flex;
+    justify-content: ${props => getTextAlign(props.textAlign)};
   `,
 });
 
@@ -198,8 +200,8 @@ const VTabsContainer = CSSComponent({
   normal: {
     selectNames: [['height'], ['border']],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig: { arrowShow } = {} } = themeProps;
-      if (arrowShow) {
+      const { propsConfig: { arrowShow, isShowArrowIcon } = {} } = themeProps;
+      if (arrowShow && isShowArrowIcon) {
         return {
           height: 'calc( 100% - 48px )',
         };
@@ -211,6 +213,7 @@ const VTabsContainer = CSSComponent({
   },
   css: css`
     height: 100%;
+    width: 100%;
     box-sizing: border-box;
     white-space: nowrap;
     display: inline-block;
@@ -228,6 +231,7 @@ const YscrollerContainer = CSSComponent({
     selectNames: [],
   },
   css: css`
+    width: 100%;
     display: inline-block;
     box-sizing: border-box;
     white-space: nowrap;
@@ -250,7 +254,7 @@ const HTabsOutContainer = CSSComponent({
       return { background };
     },
     getCSS: (theme: Object, themeProps: Object) => {
-      const { textAlign = 'left', border = {} } = theme;
+      const { border = {} } = theme;
 
       const { propsConfig: { tabPosition, tabType } = {} } = themeProps;
       if (tabType === 'window') {
@@ -263,7 +267,7 @@ const HTabsOutContainer = CSSComponent({
       };
       const resPosition = `${position} : 0 ;height:${width}px;background-color:${color}`;
 
-      return `text-align: ${textAlign}
+      return `
               &::before{
                content: '';
                 position: absolute;
@@ -271,7 +275,7 @@ const HTabsOutContainer = CSSComponent({
                 left: 0;
                 width: 100%;
               }
-              
+
       `;
     },
   },
@@ -280,10 +284,9 @@ const HTabsOutContainer = CSSComponent({
   },
   css: css`
     position: relative;
-    z-index: 99;
-    overflow: hidden;
     display: flex;
     align-items: center;
+    clear: both;
   `,
 });
 
@@ -291,7 +294,7 @@ const VTabsOutContainer = CSSComponent({
   tag: 'div',
   className: 'TitleContainer',
   normal: {
-    selectNames: [['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background']],
     getCSS(themeMeta, themeProps) {
       const { border = {} } = themeMeta;
       const { propsConfig: { tabPosition } = {} } = themeProps;
@@ -361,6 +364,7 @@ type TabsProps = {
   addIcon?: string,
   deleteIcon?: string,
   pageArrowIcon?: Object,
+  isShowArrowIcon?: boolean,
 };
 
 const arrowSize = 48;
@@ -565,7 +569,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   getVtabs() {
-    const { tabPosition, themeProps } = this.props;
+    const { tabPosition, themeProps, isShowArrowIcon } = this.props;
     const { arrowShow } = this.state;
     const borderThemeProps = this.handleBorderStyle(
       this.props.getPartOfThemeProps('BorderStyle'),
@@ -575,7 +579,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const tabsOutContainerThemeProps = deepMerge(tabsThemeProps, borderThemeProps);
     const moveDistance = this.computeMoveDistance();
     const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove();
-    themeProps.propsConfig = { arrowShow };
+    themeProps.propsConfig = { arrowShow, isShowArrowIcon };
     tabsOutContainerThemeProps.propsConfig = { tabPosition };
 
     const prevPageThemeProps = deepMerge(
@@ -585,25 +589,29 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const IconThemeProps = this.props.getPartOfThemeHocProps('ArrowIcon');
     return (
       <VTabsOutContainer themeProps={tabsOutContainerThemeProps} ref={this.scrollBox}>
-        {this.getPrevOrNextPage(
-          'prev',
-          prevPageThemeProps,
-          IconThemeProps,
-          isDisabledToPrev,
-          isDisabledToNext
-        )}
+        {isShowArrowIcon
+          ? this.getPrevOrNextPage(
+              'prev',
+              prevPageThemeProps,
+              IconThemeProps,
+              isDisabledToPrev,
+              isDisabledToNext
+            )
+          : null}
         <VTabsContainer themeProps={themeProps}>
           <YscrollerContainer y={moveDistance} themeProps={themeProps} ref={this.tabPanBox}>
             {this.getChildren()}
           </YscrollerContainer>
         </VTabsContainer>
-        {this.getPrevOrNextPage(
-          'next',
-          prevPageThemeProps,
-          IconThemeProps,
-          isDisabledToPrev,
-          isDisabledToNext
-        )}
+        {isShowArrowIcon
+          ? this.getPrevOrNextPage(
+              'next',
+              prevPageThemeProps,
+              IconThemeProps,
+              isDisabledToPrev,
+              isDisabledToNext
+            )
+          : null}
       </VTabsOutContainer>
     );
   }
@@ -723,12 +731,13 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   getHorizonTabPan() {
-    const { tabType, tabPosition, themeProps, showAddBtn } = this.props;
+    const { tabType, tabPosition, themeProps, showAddBtn, isShowArrowIcon } = this.props;
     const { arrowShow } = this.state;
 
     const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer', {
       props: { tabType, tabPosition },
     });
+
     const borderThemeProps = this.handleBorderStyle(
       this.props.getPartOfThemeProps('BorderStyle'),
       tabPosition,
@@ -745,7 +754,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         addSize = width ? width : addSize;
       }
     }
-    themeProps.propsConfig = { arrowShow, showAddBtn, addSize };
+    themeProps.propsConfig = { arrowShow, showAddBtn, addSize, isShowArrowIcon };
     const moveDistance = this.computeMoveDistance();
 
     const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove();
@@ -755,6 +764,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       this.props.getPartOfThemeProps('ArrowIcon')
     );
     const IconThemeProps = this.props.getPartOfThemeHocProps('ArrowIcon');
+    const { themeConfig: { normal: { textAlign = 'left' } = {} } = {} } = tabsThemeProps;
     return (
       <HTabsOutContainer
         themeProps={tabsOutContainerThemeProps}
@@ -762,25 +772,29 @@ class TabHeader extends Component<TabsProps, TabsState> {
         tabPosition={tabPosition}
         ref={this.scrollBox}
       >
-        {this.getPrevOrNextPage(
-          'prev',
-          prevPageThemeProps,
-          IconThemeProps,
-          isDisabledToPrev,
-          isDisabledToNext
-        )}
+        {isShowArrowIcon
+          ? this.getPrevOrNextPage(
+              'prev',
+              prevPageThemeProps,
+              IconThemeProps,
+              isDisabledToPrev,
+              isDisabledToNext
+            )
+          : null}
         <HTabsContainer themeProps={themeProps}>
           <HscrollerContainer themeProps={themeProps} x={moveDistance} ref={this.tabPanBox}>
-            <TabPanBox>{this.getChildren()}</TabPanBox>
+            <TabPanBox textAlign={textAlign}>{this.getChildren()}</TabPanBox>
           </HscrollerContainer>
         </HTabsContainer>
-        {this.getPrevOrNextPage(
-          'next',
-          prevPageThemeProps,
-          IconThemeProps,
-          isDisabledToPrev,
-          isDisabledToNext
-        )}
+        {isShowArrowIcon
+          ? this.getPrevOrNextPage(
+              'next',
+              prevPageThemeProps,
+              IconThemeProps,
+              isDisabledToPrev,
+              isDisabledToNext
+            )
+          : null}
         {this.getAddButton()}
       </HTabsOutContainer>
     );

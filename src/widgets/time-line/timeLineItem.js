@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import type { TimeLineMode, TimeLineStatus, TimeLineType } from '../css/time-line';
+import type { TimeLineMode, TimeLineStatus, TimeLineItemType } from '../css/time-line';
 import '../common/shirm';
 import * as React from 'react';
 import { Component } from 'react';
@@ -15,10 +15,10 @@ import ThemeProvider from '../theme-provider';
 import Icon from '../icon';
 import Tooltip from '../tooltip';
 import { deepMerge } from '@lugia/object-utils';
-import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, keyframes, StaticComponent } from '@lugia/theme-css-hoc';
 
 import { units } from '@lugia/css';
-import get from '../css/theme-common-dict';
+import { getBorderRadius, getBorder } from '@lugia/theme-utils';
 
 const { px2remcss } = units;
 
@@ -28,6 +28,7 @@ const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 
 const ItemContainer = CSSComponent({
   tag: 'div',
@@ -44,6 +45,9 @@ const ItemContainer = CSSComponent({
   },
   css: css`
     position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   `,
 });
 const BaseText = CSSComponent({
@@ -63,7 +67,7 @@ const Description = CSSComponent({
   tag: 'div',
   className: 'TimeLineItemBaseText',
   normal: {
-    selectNames: [['width'], ['height'], ['font'], ['fontSize'], ['color'], ['margin']],
+    selectNames: [['font'], ['fontSize'], ['color'], ['margin'], ['lineHeight']],
     defaultTheme: {
       color: darkGreyColor,
       margin: {
@@ -77,7 +81,7 @@ const Time = CSSComponent({
   extend: BaseText,
   className: 'TimeLineItemBaseText',
   normal: {
-    selectNames: [['width'], ['height'], ['font'], ['fontSize'], ['color']],
+    selectNames: [['font'], ['fontSize'], ['color'], ['margin'], ['lineHeight']],
     defaultTheme: {
       color: blackColor,
     },
@@ -112,8 +116,8 @@ const DotContainer = CSSComponent({
     },
   },
   css: css`
-    position: relative;
-    text-align: center;
+    display: flex;
+    justify-content: center;
   `,
 });
 
@@ -121,25 +125,30 @@ const Line = CSSComponent({
   tag: 'div',
   className: 'TimeLineItemLine',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['height'], ['border', 'left'], ['margin']],
     defaultTheme: {
-      width: 1,
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { directions: ['l'] }),
+      height: '100%',
+      margin: {
+        left: 10,
+      },
     },
     getCSS(themeMeta, themeProps) {
-      const { background } = themeMeta;
       const { propsConfig } = themeProps;
       const { isLast } = propsConfig;
       const display = isLast ? 'none' : '';
-      const borderColor = background && background.color ? background.color : get('borderColor');
-      return `display:${display};
-         border-left: ${px2remcss(1)} solid ${borderColor};
-      `;
+      return `display:${display};`;
     },
   },
   css: css`
     position: relative;
-    left: ${px2remcss(10)};
-    z-index: 2;
+  `,
+});
+const LineContainer = StaticComponent({
+  tag: 'div',
+  className: 'TimeLineItemLineContainer',
+  css: css`
+    flex: 1;
   `,
 });
 
@@ -147,10 +156,11 @@ const Dot = CSSComponent({
   tag: 'div',
   className: 'TimeLineItemDot',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background'], ['borderRadius']],
     defaultTheme: {
       width: 10,
       height: 10,
+      borderRadius: getBorderRadius('50%'),
     },
     getThemeMeta(themeMeta, themeProps) {
       const { background } = themeMeta;
@@ -174,7 +184,6 @@ const Dot = CSSComponent({
     position: absolute;
     left: ${px2remcss(5.5)};
     z-index: 3;
-    border-radius: 50%;
     transition: all 0.3s linear 0.1s;
   `,
 });
@@ -208,6 +217,24 @@ const ExplainDot = CSSComponent({
     hover: true,
   },
 });
+const DotItemContainer = CSSComponent({
+  tag: 'div',
+  className: 'DotItemContainer',
+  normal: {
+    selectNames: [['width'], ['height'], ['margin'], ['padding']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { height } = themeMeta;
+      const { propsConfig } = themeProps;
+      const { timeLineType } = propsConfig;
+      const theHeight =
+        height || (timeLineType === 'explain' ? 6 : timeLineType === 'icon' ? 12 : 10);
+      return { height: theHeight };
+    },
+  },
+  css: css`
+    display: flex;
+  `,
+});
 
 type TimeLineState = {};
 
@@ -219,7 +246,7 @@ type TimeLineProps = {
   getTheme: Function,
   isLast: boolean,
   status: TimeLineStatus,
-  timeLineType: TimeLineType,
+  timeLineType: TimeLineItemType,
   pendingDot: React.Node,
   pending: boolean,
   mode: TimeLineMode,
@@ -259,10 +286,6 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
       height: theHeight,
     };
   }
-  getLineHeightByType(type: string, description: React.Node) {
-    const theHeight = description ? 'inherit' : '100%';
-    return { height: theHeight };
-  }
   componentDidMount() {
     if (this.desc.current) {
       this.descHeight = this.desc.current.offsetHeight;
@@ -298,34 +321,40 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
         },
       })
     );
-    const lineThemeProps = deepMerge(
-      { themeConfig: { normal: this.getLineHeightByType(timeLineType, this.props.description) } },
-      this.props.getPartOfThemeProps('TimeLineItemLine', {
-        props: {
-          isLast,
-          description,
-          timeLineType,
-        },
-      })
-    );
+    const lineThemeProps = this.props.getPartOfThemeProps('TimeLineItemLine', {
+      props: {
+        isLast,
+        description,
+        timeLineType,
+      },
+    });
+    const themeProps = this.props.getPartOfThemeProps('TimeLineDot', {
+      props: {
+        timeLineType,
+      },
+    });
     return (
       <ItemContainer
         themeProps={itemThemeProps}
         description={description}
         timeLineType={timeLineType}
       >
-        <DotContainer themeProps={this.props.themeProps}>{this.getDot()}</DotContainer>
-        <Line themeProps={lineThemeProps} />
-        <Content
-          themeProps={this.props.getPartOfThemeProps('TimeLineItemContentContainer', {
-            props: { direction },
-          })}
-        >
-          <Time ref={this.time} themeProps={this.props.themeProps}>
-            {theTime}
-          </Time>
-          {this.getDescription()}
-        </Content>
+        <DotItemContainer themeProps={themeProps}>
+          <DotContainer themeProps={themeProps}>{this.getDot()}</DotContainer>
+          <Content
+            themeProps={this.props.getPartOfThemeProps('TimeLineItemContentContainer', {
+              props: { direction },
+            })}
+          >
+            <Time ref={this.time} themeProps={this.props.getPartOfThemeProps('TimeLineItemTitle')}>
+              {theTime}
+            </Time>
+            {this.getDescription()}
+          </Content>
+        </DotItemContainer>
+        <LineContainer>
+          <Line themeProps={lineThemeProps} />
+        </LineContainer>
       </ItemContainer>
     );
   }
@@ -386,7 +415,7 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
                       from {
                         transform: rotate(0deg);
                       }
-                      
+
                       to {
                         transform: rotate(359deg);
                       }
@@ -450,7 +479,10 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
     const { timeLineType, description } = this.props;
     if (timeLineType !== 'explain' && getString(description)) {
       return (
-        <Description ref={this.desc} themeProps={this.props.themeProps}>
+        <Description
+          ref={this.desc}
+          themeProps={this.props.getPartOfThemeProps('TimeLineItemDescription')}
+        >
           {description}
         </Description>
       );

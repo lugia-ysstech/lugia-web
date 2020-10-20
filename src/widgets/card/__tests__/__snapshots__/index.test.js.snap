@@ -235,7 +235,7 @@ exports[`Card css 1`] = `
         "borderBottomRightRadius": "0.4rem",
         "borderTopLeftRadius": "0.4rem",
         "borderTopRightRadius": "0.4rem",
-        "boxShadow": "0px 0px 6px 0px #cccccc",
+        "boxShadow": "0px 0px 6px 0px #d0d3da",
       }
     }
   >
@@ -259,7 +259,7 @@ exports[`Card css 1`] = `
           "borderBottomRightRadius": "0.4rem",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
-          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "boxShadow": "0px 0px 6px 0px #d0d3da",
         }
       }
     >
@@ -345,7 +345,7 @@ exports[`Card css 1`] = `
           "borderBottomRightRadius": "0.4rem",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
-          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "boxShadow": "0px 0px 6px 0px #d0d3da",
         }
       }
     >
@@ -422,7 +422,7 @@ exports[`Card css 1`] = `
           "borderBottomRightRadius": "0.4rem",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
-          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "boxShadow": "0px 0px 6px 0px #d0d3da",
         }
       }
     >
@@ -462,7 +462,7 @@ exports[`Card css 1`] = `
             className="c11"
             style={
               Object {
-                "borderBottomColor": "#cccccc",
+                "borderBottomColor": "#d0d3da",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
               }
@@ -512,7 +512,7 @@ exports[`Card css 1`] = `
           "borderBottomRightRadius": "0.4rem",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
-          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "boxShadow": "0px 0px 6px 0px #d0d3da",
           "height": "19rem",
           "width": "15rem",
         }
@@ -624,7 +624,7 @@ exports[`Card css 1`] = `
           "borderBottomRightRadius": "0.4rem",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
-          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "boxShadow": "0px 0px 6px 0px #d0d3da",
           "height": "11.6rem",
           "width": "24rem",
         }
@@ -740,7 +740,7 @@ exports[`Card css 1`] = `
           "borderBottomRightRadius": "0.4rem",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
-          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "boxShadow": "0px 0px 6px 0px #d0d3da",
           "height": "23rem",
           "width": "20rem",
         }
@@ -821,7 +821,7 @@ exports[`Card css 1`] = `
           "borderBottomRightRadius": "0.4rem",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
-          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "boxShadow": "0px 0px 6px 0px #d0d3da",
           "height": "11.2rem",
           "width": "32rem",
         }

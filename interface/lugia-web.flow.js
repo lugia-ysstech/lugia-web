@@ -172,7 +172,7 @@ declare module '@lugia/lugia-web' {
     resetSelectRowFromArray(selectCell: SelectItem[]): Array<Object>,
     getClearSingleSelectCell(currentItem: SelectItem, selectCell: SelectItem[]): Array<Object>,
     resetItemName(selectItem: SelectItem): Object,
-    getMovedCells(props: Object): ?Object,
+    getMovedCells(props: Object): Object,
     setInputChangedValue(props: Object): Object,
     changeData(
       data: Array<Object>,
@@ -182,6 +182,8 @@ declare module '@lugia/lugia-web' {
     ): Array<Object>,
     changeColumns(props: Object): ?Array<Object>,
     onCellClick(props: Object): void,
+    onCellDBClick(props: Object): void,
+    clearSelectInfo(): void,
     isEqualArray(oldValue: ?Array<Object>, newValue: ?Array<Object>): boolean,
     getHeaderCell(props: Object): Object,
     focusTable(table: Object): void,

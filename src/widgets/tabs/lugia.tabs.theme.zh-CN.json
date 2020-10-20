@@ -4,6 +4,10 @@
     "title": "标签页",
     "viewProps": [
       {
+        "name": "isShowArrowIcon",
+        "text": "翻页功能"
+      },
+      {
         "name": "tabPosition",
         "text": "页签位置"
       },
@@ -15,6 +19,7 @@
         "name": "showDeleteBtn",
         "text": "删除功能"
       },
+      { "name": "hideTabBar", "text": "隐藏页签" },
       {
         "name": "showDividerLine",
         "text": "显示分割线"
@@ -246,6 +251,12 @@
                 "typeInTheme": "icon"
               }
             ]
+          },
+          {
+            "name": "增加图标",
+            "path": ["AddButton"],
+            "description": { "textPart": { "text": "增加图标", "desc": "增加图标" } },
+            "props": [{ "name": "addIcon", "typeInTheme": "icon" }]
           }
         ]
       }
@@ -257,6 +268,10 @@
     "title": "卡片风格标签页",
     "viewProps": [
       {
+        "name": "isShowArrowIcon",
+        "text": "翻页功能"
+      },
+      {
         "name": "showAddBtn",
         "text": "新增功能"
       },
@@ -264,6 +279,7 @@
         "name": "showDeleteBtn",
         "text": "删除功能"
       },
+      { "name": "hideTabBar", "text": "隐藏页签" },
       {
         "name": "pagedType",
         "text": "翻页类型"
@@ -500,6 +516,10 @@
     "title": "窗口风格标签页",
     "viewProps": [
       {
+        "name": "isShowArrowIcon",
+        "text": "翻页功能"
+      },
+      {
         "name": "showAddBtn",
         "text": "新增功能"
       },
@@ -507,6 +527,7 @@
         "name": "showDeleteBtn",
         "text": "删除功能"
       },
+      { "name": "hideTabBar", "text": "隐藏页签" },
       {
         "name": "pagedType",
         "text": "翻页类型"
@@ -628,25 +649,22 @@
           {
             "name": "整体背景",
             "path": ["Container"],
+            "description": { "appearancePart": { "text": "整体背景", "desc": "整体背景" } }
+          },
+          {
+            "name": "页签背景",
+            "path": ["TitleContainer"],
             "description": {
-              "appearancePart": {
-                "text": "整体背景",
-                "desc": "整体背景"
-              }
+              "appearancePart": { "text": "页签背景", "desc": "页签背景" },
+              "textPart": { "text": "页签对齐方式", "desc": "页签对齐方式" }
             }
           },
           {
             "name": "内容区域",
             "path": ["ContentBlock"],
             "description": {
-              "appearancePart": {
-                "text": "内容区域",
-                "desc": "内容区域"
-              },
-              "textPart": {
-                "text": "内容文本",
-                "desc": "内容文本"
-              }
+              "appearancePart": { "text": "内容区域", "desc": "内容区域" },
+              "textPart": { "text": "内容文本", "desc": "内容文本" }
             }
           }
         ]

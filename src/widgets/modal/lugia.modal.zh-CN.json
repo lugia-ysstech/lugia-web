@@ -2,6 +2,7 @@
   "widgetName": "Modal",
   "title": "对话框",
   "desc": "Modal 对话框。",
+  "tag": "model 对话框 弹出窗口 弹窗 弹层",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -65,16 +66,25 @@
       "propsDefaultValue": true
     },
     "iconClass": {
-      "type": "string",
+      "type": "icon",
       "desc": "自定义前缀图标"
     },
     "closeIconClass": {
-      "type": "string",
+      "type": "icon",
       "desc": "自定义后缀图标"
     },
     "showIcon": {
       "type": "boolean",
       "desc": "是否显示图标",
+      "propsDefaultValue": false
+    },
+    "zIndex": {
+      "type": "number",
+      "desc": "设置 Modal 的 z-index"
+    },
+    "mountBody": {
+      "type": "boolean",
+      "desc": "是否挂载body上",
       "propsDefaultValue": false
     }
   },
@@ -111,7 +121,7 @@
     "ModalTitle": {
       "name": "弹窗标题样式",
       "desc": "为弹窗文字配置样式",
-      "normal": [["font"], ["color"], ["padding"]]
+      "normal": [["font"], ["color"], ["padding"], ["margin"]]
     },
     "ModalContentText": {
       "name": "弹窗内容文本样式",
@@ -147,6 +157,15 @@
           "active": [["background"], ["border"]],
           "disabled": [["background"], ["border"]],
           "focus": [["background"], ["border"]]
+        },
+        "ButtonText": {
+          "name": "确定按钮文字样式",
+          "desc": "为确定按钮文字配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
         }
       }
     },
@@ -169,6 +188,15 @@
           "active": [["background"], ["border"]],
           "disabled": [["background"], ["border"]],
           "focus": [["background"], ["border"]]
+        },
+        "ButtonText": {
+          "name": "取消按钮文字样式",
+          "desc": "为取消按钮文字配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
         }
       }
     },

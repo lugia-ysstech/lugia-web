@@ -1,14 +1,11 @@
-import styled, { css } from 'styled-components';
-import { valueInRange } from '../../common/Math';
 import { modeStyle } from '../utils/booleanUtils';
-import { distance, em, fontSize, getDateWrrap, getThemeProperty, getThemeUpdate } from './utils';
-import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-import Trigger from '../../trigger';
+import { distance, em, fontSize, getDateWrrap, getThemeProperty } from './utils';
+import CSSComponent, { StaticComponent, css } from '@lugia/theme-css-hoc';
 export const Box = CSSComponent({
   tag: 'div',
   className: 'Box',
   normal: {
-    selectNames: [['width']],
+    selectNames: [['width'], ['height']],
     defaultTheme: {
       width: '100%',
     },
@@ -60,8 +57,31 @@ export const PanelWrap = CSSComponent({
   },
   css: css`
     font-size: ${fontSize}rem;
+    overflow: hidden;
+    ${props => getDisabledMask(props)}
   `,
 });
+function getDisabledMask(props) {
+  const { disabled } = props;
+  if (disabled) {
+    return `
+    position: relative;
+
+    ::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.6);
+      z-index: 222;
+      cursor: not-allowed;
+    }
+    `;
+  }
+  return '';
+}
 export const DateWrapper = CSSComponent({
   tag: 'div',
   className: 'DateWrapper',
@@ -196,14 +216,12 @@ export const HeaderWeek = CSSComponent({
 });
 function getHeaderWeekStyle(props) {
   const { normalTheme, hoverTheme } = props;
-  const { color, fontSize, font: { size } = {} } = normalTheme;
-  const { color: hoverC, fontSize: hoverFont, font: { size: hoverSize } = {} } = hoverTheme;
+  const { color } = normalTheme;
+  const { color: hoverC } = hoverTheme;
   return `
     color:${color};
-    font-size:${em(size || fontSize)};
     &:hover{
       color:${hoverC};
-      font-size:${em(hoverSize || hoverFont)};
     }
   `;
 }
@@ -274,13 +292,26 @@ export const DateChild = CSSComponent({
   `,
 });
 function getRangeChoseStyle(props) {
-  const { rangeNormalTheme: { background: { color: bgColor } = {} } = {}, rangeChose } = props;
+  const {
+    rangeNormalTheme: { color: textColor, background: { color: bgColor } = {} } = {},
+    rangeChose,
+  } = props;
   let color = '';
+  let newTextColor;
   if (rangeChose) {
     color = bgColor;
+
+    if (textColor) {
+      newTextColor = `
+        & > i{
+            color:${textColor}
+            }
+        `;
+    }
   }
   return `
       background:${color};
+      ${newTextColor};
     `;
 }
 export const DateChildInner = CSSComponent({
@@ -321,10 +352,14 @@ function getHoverStyle(props) {
       color,
       background: { color: bgColor } = {},
       borderRadius: { topLeft, topRight, bottomRight, bottomLeft },
-      boxShadow: { x, y, blur, spread, color: boxShadowColor, type } = {},
+      boxShadow = {},
       border,
     } = {},
+    noSingleHoverState,
   } = props;
+  if (noSingleHoverState) {
+    return '';
+  }
   const t = getRadiusValue(topLeft);
   const r = getRadiusValue(topRight);
   const b = getRadiusValue(bottomRight);
@@ -333,10 +368,8 @@ function getHoverStyle(props) {
     color:${color};
     background:${bgColor};
     border-radius:${t} ${r} ${b} ${l};
-    box-shadow:${x}px ${y}px ${blur}px ${spread}px ${boxShadowColor} ${
-    type === 'inset' ? type : ''
-  };
-     ${getBorderStyle(border)};
+    ${getBoxShadow(boxShadow)};
+    ${getBorderStyle(border)};
   `;
 }
 function getNormalStyle(props) {
@@ -408,6 +441,7 @@ export const RangeWrap = CSSComponent({
   },
   css: css`
     font-size: ${fontSize}rem;
+    ${props => getDisabledMask(props)};
   `,
 });
 export const RangeWrapInner = StaticComponent({
@@ -431,102 +465,84 @@ const getDateChildStyle = props => {
     noToday,
     selectToday,
     activeTheme = {},
-    hoverTheme = {},
     todayTheme = {},
+    rangeWeekDate = {},
+    mode,
   } = props;
-  const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
-  const {
-    background: { color: bgColor },
-    color,
-    borderRadius: {
-      topLeft: radiusT,
-      topRight: radiusR,
-      bottomRight: radiusB,
-      bottomLeft: radiusL,
-    },
-    boxShadow: { x, y, blur, spread, color: boxShadowColor, type } = {},
-    border,
-  } = activeTheme;
-  const {
-    borderRadius: {
-      topLeft: hoverRadiusT,
-      topRight: hoverRadiusR,
-      bottomRight: hoverRadiusB,
-      bottomLeft: hoverRadiusL,
-    },
-  } = hoverTheme;
-  const radiusTvalue = getRadiusValue(radiusT);
-  const radiusRvalue = getRadiusValue(radiusR);
-  const radiusBvalue = getRadiusValue(radiusB);
-  const radiusLvalue = getRadiusValue(radiusL);
+  const { isDate, isRange, isWeeks } = modeStyle(mode);
+  let chooseStyle;
+  if (isDate || isRange) {
+    const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
+    const {
+      background: { color: bgColor },
+      color,
+      borderRadius: activeBorderRadius,
+      boxShadow = {},
+      border,
+    } = activeTheme;
+    const {
+      top: radiusTvalue,
+      right: radiusRvalue,
+      bottom: radiusBvalue,
+      left: radiusLvalue,
+    } = getBorderRadius(activeBorderRadius);
+    const normalBorderRadius = `border-radius:${radiusTvalue} ${radiusRvalue} ${radiusBvalue} ${radiusLvalue};`;
 
-  const radiusTvalueH = getRadiusValue(hoverRadiusT);
-  const radiusRvalueH = getRadiusValue(hoverRadiusR);
-  const radiusBvalueH = getRadiusValue(hoverRadiusB);
-  const radiusLvalueH = getRadiusValue(hoverRadiusL);
-
-  const normalBorderRadius = `border-radius:${radiusTvalue} ${radiusRvalue} ${radiusBvalue} ${radiusLvalue};`;
-
-  const chooseStyle = arrChoseDayIndex.reduce((p, n) => {
-    return `${p}
+    chooseStyle = arrChoseDayIndex.reduce((p, n) => {
+      return `${p}
     &:nth-child(${n})>i{
       background:${bgColor};
       color:${color};
       ${normalBorderRadius};
       ${getBorderStyle(border)};
-      box-shadow:${x}px ${y}px ${blur}px ${spread}px ${boxShadowColor} ${
-      type === 'inset' ? type : ''
-    };
+      ${getBoxShadow(boxShadow)};
     }`;
-  }, '');
+    }, '');
+  }
+
   const todayInd = noToday ? '' : selectToday ? todayIndex : '';
-  const { border: todayBorder, color: todayColor } = todayTheme;
-  let todayStyle = `
+  const { border: todayBorder, color: todayColor, borderRadius, background } = todayTheme;
+  const todayStyle = `
       &:nth-child(${todayInd})>i{
        ${todayBorder};
         color:${todayColor};
-        background:${getThemeUpdate().defaultColor};
-        ${normalBorderRadius};
-        &:hover {
-          background: ${getThemeUpdate().hoverColor};
-          color:#fff;
-          border-radius:${radiusTvalueH} ${radiusRvalueH} ${radiusBvalueH} ${radiusLvalueH};
-        }
+        ${background};
+        ${borderRadius};
       }
-
   `;
+
   let chooseWeeks;
-  if (isChooseWeek || isHoverWeek) {
-    const backG = isChooseWeek
-      ? `${getThemeUpdate().normalColor}`
-      : `${getThemeUpdate().hoverColor}`;
+  if (isWeeks && (isChooseWeek || isHoverWeek)) {
+    const {
+      normal: {
+        background: { color: normalBgColor },
+        color: normalWeekColor,
+        borderRadius: rangeWeekBorderRadius = {},
+      } = {},
+      hover: { background: { color: hoverBgColor }, color: hoverWeekColor } = {},
+    } = rangeWeekDate;
+    const backG = isChooseWeek ? `${normalBgColor}` : `${hoverBgColor}`;
+    const textColor = isChooseWeek ? `${normalWeekColor}` : `${hoverWeekColor}`;
     const start = isChooseWeek ? startInWeeks : weekHoverStart;
     const end = isChooseWeek ? endInWeeks : weekHoverEnd;
-    const todayIn = valueInRange(todayIndex, [start, end]);
-    if (todayIn) {
-      todayStyle = `
-      &:nth-child(${todayInd})>i{
-        border:1px solid transparent;
-        border-radius:50%;
-      }
-  `;
-    }
+    const { top: t, right: r, bottom: b, left: l } = getBorderRadius(rangeWeekBorderRadius);
     chooseWeeks = `
     background:${backG};
 
       &>i{
-        color:#fff;
+        color:${textColor};
         border-radius:50%;
+
       }
 
       &:nth-child(${start}){
-        border-top-left-radius:20px;
-        border-bottom-left-radius:20px;
+        border-top-left-radius:${t};
+        border-bottom-left-radius:${b};
       }
 
       &:nth-child(${end}){
-        border-top-right-radius:20px;
-        border-bottom-right-radius:20px;
+        border-top-right-radius:${r};
+        border-bottom-right-radius:${l};
       }
     `;
   }
@@ -558,20 +574,35 @@ function rangeBorderDireStyle(index, dire, rangeNormalTheme) {
     border-bottom-${dire}-radius:${botRadiusValue};
   }`;
 }
+function getBorderRadius(borderRadius) {
+  const { topLeft, topRight, bottomRight, bottomLeft } = borderRadius || {};
+  return {
+    top: getRadiusValue(topLeft || 0),
+    right: getRadiusValue(topRight || 0),
+    bottom: getRadiusValue(bottomRight || 0),
+    left: getRadiusValue(bottomLeft || 0),
+  };
+}
 function getRadiusValue(radiusValue: string | number) {
   return typeof radiusValue === 'number' ? em(radiusValue) : radiusValue;
 }
 function getBorderStyle(border) {
   const {
-    top: { width: borderWidthT, color: botderColorT, style: borderSolidT },
-    right: { width: borderWidthR, color: botderColorR, style: borderSolidR },
-    bottom: { width: borderWidthB, color: botderColorB, style: borderSolidB },
-    left: { width: borderWidthL, color: botderColorL, style: borderSolidL },
+    top: { width: borderWidthT, color: botderColorT, style: borderSolidT } = {},
+    right: { width: borderWidthR, color: botderColorR, style: borderSolidR } = {},
+    bottom: { width: borderWidthB, color: botderColorB, style: borderSolidB } = {},
+    left: { width: borderWidthL, color: botderColorL, style: borderSolidL } = {},
   } = border;
   return `border-top:${em(borderWidthT)} ${botderColorT} ${borderSolidT};
       border-right:${em(borderWidthR)} ${botderColorR} ${borderSolidR};
       border-bottom:${em(borderWidthB)} ${botderColorB} ${borderSolidB};
       border-left:${em(borderWidthL)} ${botderColorL} ${borderSolidL};`;
+}
+function getBoxShadow(boxShadow) {
+  const { x = 0, y = 0, blur = 0, spread = 0, color: boxShadowColor, type } = boxShadow || {};
+  return `box-shadow:${x}px ${y}px ${blur}px ${spread}px ${boxShadowColor} ${
+    type === 'inset' ? type : ''
+  }`;
 }
 function getOtherChildTextStyle(props) {
   const { themeProps, isChose } = props;
@@ -587,6 +618,8 @@ function getOtherChildTextStyle(props) {
     background: { color: bgC },
     fontSize,
     font: { size } = {},
+    border = {},
+    boxShadow = {},
   } = active;
   if (!isChose) {
     return `
@@ -599,6 +632,8 @@ function getOtherChildTextStyle(props) {
     color:${color};
     background:${bgC};
     border-radius:${em(topLeft)} ${em(topRight)} ${em(bottomLeft)} ${em(bottomRight)};
-    font-size:${em(fontSize || size)}
+    font-size:${em(fontSize || size)};
+    border:${getBorderStyle(border)};
+    ${getBoxShadow(boxShadow)};
   `;
 }

@@ -44,6 +44,7 @@ type TypeProps = {
   size?: string,
   liquidLayout?: boolean,
   alwaysOpen?: boolean,
+  popupContainerId?: string,
 };
 type TypeState = {
   value: string,
@@ -111,11 +112,12 @@ class DateInput extends Component<TypeProps, TypeState> {
       validateType,
       validateStatus,
       help,
-      createPortal,
+      createPortal = true,
       size,
       liquidLayout,
       alwaysOpen,
       open,
+      popupContainerId,
     } = this.props;
     const {
       value,
@@ -159,6 +161,8 @@ class DateInput extends Component<TypeProps, TypeState> {
       getPartOfThemeProps,
     });
     const { normal = {} } = themeConfig;
+    const { height } = normal;
+    const inputHeight = height !== undefined ? { height: '100%' } : {};
     return (
       <Theme
         config={{
@@ -168,6 +172,7 @@ class DateInput extends Component<TypeProps, TypeState> {
               normal: {
                 ...normal,
                 width: '100%',
+                ...inputHeight,
               },
             },
             InputPrefix: {
@@ -184,6 +189,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       >
         <Box themeProps={inputContainProps}>
           <Trigger
+            popupContainerId={popupContainerId}
             themePass
             createPortal={createPortal}
             onDocumentClick={this.onDocumentClick}
@@ -192,7 +198,11 @@ class DateInput extends Component<TypeProps, TypeState> {
             liquidLayout={liquidLayout}
             popup={
               <React.Fragment>
-                <PanelWrap themeProps={themeProps} {...addMouseEvent(this)}>
+                <PanelWrap
+                  themeProps={themeProps}
+                  {...addMouseEvent(this)}
+                  disabled={disabled || readOnly}
+                >
                   <SwitchPanel
                     {...newProps}
                     hasStateValue={hasStateValue}
@@ -210,6 +220,7 @@ class DateInput extends Component<TypeProps, TypeState> {
                     isStartOfWeek={isStartOfWeek}
                     themeProps={themeProps}
                     step={getNewStepProps(newProps)}
+                    noBorder
                   />
 
                   {isTime ? (
@@ -241,8 +252,6 @@ class DateInput extends Component<TypeProps, TypeState> {
               placeholder={placeholder}
               onFocus={this.onFocus}
               focus={visible}
-              onBlur={this.onBlur}
-              //onClear={this.onClear}
               disabled={disabled}
               readOnly={readOnly}
               validateType={validateType}
@@ -267,6 +276,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     if (onDocumentClick) {
       onDocumentClick();
     }
+    this.onBlur();
   };
 
   onChange = (param: Object) => {
@@ -295,6 +305,9 @@ class DateInput extends Component<TypeProps, TypeState> {
     onChange && onChange({ event, newValue, oldValue: this.oldValue });
     const visibleState = isTime ? {} : { visible };
     this.setState({ value: newValue, isValid, ...visibleState });
+    if (!visible) {
+      this.onBlur();
+    }
   };
   setModeState = (value: string, format: string, isWeeks: boolean) => {
     const newFormat = isWeeks ? 'YYYY-MM-DD' : format;

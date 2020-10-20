@@ -24,6 +24,7 @@ import {
   HandleWrap,
   getIconTransfrom,
 } from '../css/drawer';
+import get from '../css/theme-common-dict';
 
 export const DrawerContext: Object = React.createContext();
 
@@ -45,6 +46,7 @@ export default ThemeProvider(
         opening: false,
         closing: false,
         transform: false,
+        randomValue: 0,
       };
       this.isOpen = false;
       this.isClose = false;
@@ -72,10 +74,15 @@ export default ThemeProvider(
       return result;
     }
 
+    componentDidMount() {
+      window.addEventListener('resize', this.renderComponent);
+    }
+
     componentWillUnmount() {
       if (window.document) {
         window.document.body.removeChild(this.node);
       }
+      window.removeEventListener('resize', this.renderComponent);
     }
 
     getIconTheme = () => {
@@ -104,6 +111,37 @@ export default ThemeProvider(
       return { viewClass, theme: iconTheme };
     };
 
+    getCloseIconTheme = () => {
+      const { getPartOfThemeHocProps } = this.props;
+      const { viewClass, theme } = getPartOfThemeHocProps('DrawerCloseIcon');
+      const iconTheme = deepMerge(
+        {
+          [viewClass]: {
+            normal: {
+              fontSize: get('sFontSize'),
+              color: get('mediumGreyColor'),
+            },
+            hover: {
+              color: get('darkGreyColor'),
+            },
+            disabled: {
+              color: get('disableTextColor'),
+            },
+          },
+        },
+        theme
+      );
+
+      return {
+        viewClass,
+        theme: iconTheme,
+      };
+    };
+
+    renderComponent = () => {
+      this.setState({ randomValue: Math.random() });
+    };
+
     render() {
       if (!this.node) {
         return null;
@@ -121,25 +159,30 @@ export default ThemeProvider(
         injectLugiad: { type } = {},
         __lugiad__header__absolute__,
         sidebar = false,
+        getContainer,
+        drawerCloseIcon,
       } = this.props;
       const drawerWrapTheme = getPartOfThemeProps('Container');
-      const handleWrapTheme = getPartOfThemeProps('handleWrap');
-      const { themeConfig } = drawerWrapTheme;
-      const defaultTheme =
-        placement === 'top' || placement === 'bottom' ? { width: '100%' } : { height: '100%' };
-      drawerWrapTheme.themeConfig.normal = deepMerge(themeConfig.normal, defaultTheme);
+      const drawerContentTheme = getPartOfThemeProps('DrawerContent');
+      const drawerTitleTheme = getPartOfThemeProps('DrawerTitle');
+      const drawerMaskTheme = getPartOfThemeProps('DrawerMask');
+      const handleWrapTheme = getPartOfThemeProps('HandleWrap');
+
       const hasCloseIcon = closable || !maskClosable;
       const closeIcon = hasCloseIcon ? (
-        <DrawerClose>
-          <CloseText
-            __lugiad__header__absolute__={__lugiad__header__absolute__}
-            type={type}
-            onClick={this.handleClose}
-          >
-            <Icon iconClass="lugia-icon-reminder_close" />
+        <DrawerClose __lugiad__header__absolute__={__lugiad__header__absolute__} type={type}>
+          <CloseText onClick={this.handleClose}>
+            <Icon
+              iconClass={drawerCloseIcon || 'lugia-icon-reminder_close'}
+              {...this.getCloseIconTheme()}
+            />
           </CloseText>
         </DrawerClose>
       ) : null;
+      const isBoolean = getContainer === false;
+      const isFunction = typeof getContainer === 'function' && typeof getContainer() === 'object';
+      const isObject = typeof getContainer === 'object';
+      const hasContainer = isBoolean || isFunction || isObject;
       const drawerContent = (
         <DrawerContentWrap
           type={type}
@@ -149,6 +192,7 @@ export default ThemeProvider(
           opening={opening}
           closing={closing}
           transform={transform}
+          hasContainer={hasContainer}
         >
           {sidebar ? (
             <HandleWrap
@@ -160,10 +204,11 @@ export default ThemeProvider(
               <Icon iconClass={'lugia-icon-direction_right'} {...this.getIconTheme()} />
             </HandleWrap>
           ) : null}
-          <DrawerContent>
+          <DrawerContent themeProps={drawerContentTheme}>
             <DrawerContentHeader
               __lugiad__header__absolute__={__lugiad__header__absolute__}
               type={type}
+              themeProps={drawerTitleTheme}
             >
               {title}
             </DrawerContentHeader>
@@ -180,16 +225,21 @@ export default ThemeProvider(
         return drawerContent;
       }
       const maskElement = mask ? (
-        <DrawerMask onClick={this.handleMaskClick} visible={visible} />
+        <DrawerMask
+          onClick={this.handleMaskClick}
+          visible={visible}
+          hasContainer={hasContainer}
+          themeProps={drawerMaskTheme}
+        />
       ) : null;
 
       const drawer = (
-        <Drawer visible={visible}>
+        <Drawer visible={visible} hasContainer={hasContainer}>
           {maskElement}
           {drawerContent}
         </Drawer>
       );
-      return createPortal(
+      const darwerDemo = (
         <DrawerContext.Consumer>
           {context => {
             if (!context) {
@@ -218,9 +268,20 @@ export default ThemeProvider(
             context.level = selfLevel;
             return drawer;
           }}
-        </DrawerContext.Consumer>,
-        this.node
+        </DrawerContext.Consumer>
       );
+      if (hasContainer) {
+        if (isBoolean) {
+          return <React.Fragment>{darwerDemo}</React.Fragment>;
+        }
+        if (isFunction) {
+          return createPortal(darwerDemo, getContainer());
+        }
+        if (isObject) {
+          return createPortal(darwerDemo, getContainer);
+        }
+      }
+      return createPortal(darwerDemo, this.node);
     }
 
     getLevelSymbol(level: string | number): string {

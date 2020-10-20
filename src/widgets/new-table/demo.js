@@ -20,7 +20,7 @@ const selectData = (function(t) {
 
 const columns = [
   {
-    title: '姓名',
+    title: <div>标签样子的姓名</div>,
     dataIndex: 'name',
     key: 'name',
     width: 100,
@@ -89,8 +89,17 @@ const treeColumns = [
     key: 'value',
     editType: 'string',
     columnType: '',
+    disableEdit: true,
+    allowSelect: false,
   },
-  { title: 'text', dataIndex: 'text', key: 'text', editType: 'string', columnType: '' },
+  {
+    title: 'text',
+    dataIndex: 'text',
+    key: 'text',
+    editType: 'string',
+    columnType: '',
+    disableEdit: true,
+  },
   {
     title: 'icons',
     dataIndex: 'icons',
@@ -113,7 +122,7 @@ const treeColumns = [
 const treeData = [
   {
     value: '一级节点-1',
-    text: '一级节点-1',
+    text: 't一级节点-1',
     key: 1,
     children: [
       { key: 11, value: '二级节点1-1', text: '二级节点1-1' },
@@ -153,9 +162,22 @@ const checkboxColumns = [
     dataIndex: 'checkbox',
     key: 'checkbox',
     width: 200,
+    disableEdit: true,
     render: (text, record) => {
       const { isHead } = record;
-      return isHead ? <Checkbox>全选</Checkbox> : <Checkbox>text</Checkbox>;
+      return isHead ? (
+        <div style={{ width: '100%', height: '100%' }}>
+          <Checkbox>全选</Checkbox>
+        </div>
+      ) : (
+        <Checkbox
+          onChange={res => {
+            console.log('----------', res);
+          }}
+        >
+          text
+        </Checkbox>
+      );
     },
   },
   {
@@ -163,6 +185,11 @@ const checkboxColumns = [
     dataIndex: 'name',
     key: 'name',
     width: 200,
+    disableEdit: true,
+    render: (text, record) => {
+      const { isHead } = record;
+      return isHead ? <div style={{ width: '100%', height: '100%' }}>text</div> : text;
+    },
   },
   {
     title: 'Age',
@@ -187,13 +214,23 @@ const checkboxColumns = [
 
 const checkBoxdata = [
   {
-    name: 'long and long and long and long Jack',
+    name: 'long and long and long and long long and long andlong and long and long and long Jack',
     age: 28,
     address: 'long and long and long and long long and long and long and long some where',
     key: '1',
   },
-  { name: 'Rose', age: 36, address: 'some where', key: '2' },
-  { name: 'Uzi', age: 36, address: 'some where', key: '3' },
+  {
+    name: 'long and long and long and long long and long andlong and long and Rose',
+    age: 36,
+    address: 'some where',
+    key: '2',
+  },
+  {
+    name: 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqUzi',
+    age: 36,
+    address: 'some where',
+    key: '3',
+  },
   { name: 'ClearLove', age: 36, address: 'some where', key: '4' },
   { name: 'Rookie', age: 36, address: 'some where', key: '5' },
   { name: 'TheShy', age: 36, address: 'some where', key: '6' },
@@ -291,18 +328,48 @@ export default class TableDemo extends React.Component<Object, Object> {
       },
     };
 
+    const checkBoxConfig = {
+      [Widgets.EditTable]: {
+        Table: {
+          Tr: {
+            normal: {
+              border: 'none',
+              first: {
+                background: {
+                  color: '#d68b8b',
+                },
+              },
+              last: {
+                background: {
+                  color: '#d6c28b',
+                },
+              },
+              nth3: {
+                background: {
+                  color: '#d6c28b',
+                },
+              },
+            },
+          },
+        },
+      },
+    };
+
     return (
       <div>
         <Title>多选可编辑表格 嵌套数据</Title>
         <div>{JSON.stringify(treeData)}</div>
-        <EditTable
-          data={checkBoxdata}
-          columns={checkboxColumns}
-          showHeader={false}
-          allowEditHead={false}
-          tableStyle={'bordered'}
-          onChange={this.onChangeCheckData}
-        />
+        <Theme config={checkBoxConfig}>
+          <EditTable
+            data={checkBoxdata}
+            columns={checkboxColumns}
+            showHeader={false}
+            allowEditHead={false}
+            tableStyle={'linear'}
+            onChange={this.onChangeCheckData}
+          />
+        </Theme>
+
         <Title>可编辑表格 嵌套数据</Title>
         <div>{JSON.stringify(treeData)}</div>
         <Theme config={config}>
@@ -310,6 +377,24 @@ export default class TableDemo extends React.Component<Object, Object> {
             data={treeData}
             columns={treeColumns}
             allowEditHead={false}
+            tableSize={'large'}
+            title={'这是一个有边框的表格'}
+            footer={<div>这是表格底部信息</div>}
+            onChange={this.onChangeTreeData}
+            onCell={this.onCell}
+            onHeaderCell={this.onHeaderCell}
+            selectSuffixElement={<div>00</div>}
+          />
+        </Theme>
+        <Title>可编辑表格 嵌套数据 禁止选中</Title>
+        <div>{JSON.stringify(treeData)}</div>
+        <Theme config={config}>
+          <EditTable
+            data={treeData}
+            columns={treeColumns}
+            allowEditHead={false}
+            allowSelect={false}
+            showCellTitle={true}
             tableSize={'large'}
             title={'这是一个有边框的表格'}
             footer={<div>这是表格底部信息</div>}

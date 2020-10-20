@@ -2,6 +2,7 @@
   "widgetName": "Alert",
   "title": "警告提示",
   "desc": "警告提示信息。",
+  "tag": "警告提示 Alert 提示信息 标注信息 提示框 高亮提示 说明信息 补充信息 解释说明",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -57,17 +58,12 @@
     }
   },
   "type": {
-    "AlertType": ["info", "success", "error", "warning"],
-    "AlertStyle": {
-      "width": {
-        "type": "number",
-        "desc": "组件宽度"
-      },
-      "color": {
-        "type": "string",
-        "desc": "组件颜色"
-      }
-    }
+    "AlertType": [
+      { "value": "info", "text": "信息" },
+      { "value": "success", "text": "成功" },
+      { "value": "error", "text": "错误" },
+      { "value": "warning", "text": "警告" }
+    ]
   },
   "category": ["反馈"],
   "theme": {
@@ -112,6 +108,13 @@
       "name": "警告提示图标样式",
       "desc": "为警告提示图标配置样式",
       "normal": [["color"], ["fontSize"], ["padding"]]
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 400
+      }
     }
   }
 }

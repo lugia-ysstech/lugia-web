@@ -38,6 +38,12 @@
           {
             "name": "Message图标样式配置",
             "path": ["MessageIcon"],
+            "props": [
+              {
+                "name": "icon",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "前缀图标",

@@ -17,7 +17,7 @@ exports[`Tag Theme: type= basic, closable=false shape= round 1`] = `
   transition: all 0.15s ease-in;
   border-radius: 2rem;
   color: #646A6E;
-  border: 1px solid #cccccc;
+  border: 1px solid #d0d3da;
   padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
@@ -96,7 +96,7 @@ exports[`Tag Theme: type= basic, shape= round 1`] = `
   transition: all 0.15s ease-in;
   border-radius: 2rem;
   color: #646A6E;
-  border: 1px solid #cccccc;
+  border: 1px solid #d0d3da;
   padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
@@ -495,8 +495,8 @@ exports[`Tag Theme: type= primary, closable=false shape= round 1`] = `
   transition: all 0.15s ease-in;
   border-radius: 2rem;
   color: #646A6E;
-  background: #e8e8e8;
-  border: 1px solid #e8e8e8;
+  background: #ebecf0;
+  border: 1px solid #ebecf0;
   padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
@@ -575,8 +575,8 @@ exports[`Tag Theme: type= primary, shape= round 1`] = `
   transition: all 0.15s ease-in;
   border-radius: 2rem;
   color: #646A6E;
-  background: #e8e8e8;
-  border: 1px solid #e8e8e8;
+  background: #ebecf0;
+  border: 1px solid #ebecf0;
   padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
@@ -655,7 +655,7 @@ exports[`Tag default: type = basic 1`] = `
   transition: all 0.15s ease-in;
   border-radius: 0.4rem;
   color: #646A6E;
-  border: 1px solid #cccccc;
+  border: 1px solid #d0d3da;
   padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
@@ -734,7 +734,7 @@ exports[`Tag default: type = basic, shape = round 1`] = `
   transition: all 0.15s ease-in;
   border-radius: 2rem;
   color: #646A6E;
-  border: 1px solid #cccccc;
+  border: 1px solid #d0d3da;
   padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
@@ -1133,8 +1133,8 @@ exports[`Tag default: type = primary 1`] = `
   transition: all 0.15s ease-in;
   border-radius: 0.4rem;
   color: #646A6E;
-  background: #e8e8e8;
-  border: 1px solid #e8e8e8;
+  background: #ebecf0;
+  border: 1px solid #ebecf0;
   padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
@@ -1213,8 +1213,8 @@ exports[`Tag default: type = primary, shape = round 1`] = `
   transition: all 0.15s ease-in;
   border-radius: 2rem;
   color: #646A6E;
-  background: #e8e8e8;
-  border: 1px solid #e8e8e8;
+  background: #ebecf0;
+  border: 1px solid #ebecf0;
   padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);

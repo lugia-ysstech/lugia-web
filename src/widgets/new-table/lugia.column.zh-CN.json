@@ -27,14 +27,19 @@
     "width": {
       "type": "string | number",
       "desc": "列宽度"
+    },
+    "disableEdit": {
+      "type": "boolean",
+      "desc": "是否允许编辑此列",
+      "propsDefaultValue": true
+    },
+    "allowSelect": {
+      "type": "boolean",
+      "desc": "是否显示选中单元格样式",
+      "propsDefaultValue": true
     }
   },
-  "event": {
-    "onCell": {
-      "type": "Function(record, rowIndex)",
-      "desc": "设置单元格属性"
-    }
-  },
+
   "type": {
     "AlignType": ["left", "right", "center"]
   },

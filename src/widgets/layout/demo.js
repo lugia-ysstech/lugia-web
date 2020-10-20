@@ -57,36 +57,96 @@ const aside = (
 export const LayoutDemo = () => {
   const layoutView = {
     [Widget.Layout]: {
-      width: 500,
-      margin: {
-        top: 20,
-        bottom: 30,
-        left: 50,
-        right: 40,
+      Container: {
+        normal: {
+          width: 500,
+          margin: {
+            top: 20,
+            bottom: 30,
+            left: 50,
+            right: 40,
+          },
+        },
       },
     },
     [Widget.Header]: {
-      margin: {
-        top: 10,
-        bottom: 10,
-        left: 20,
-        right: 20,
+      Container: {
+        normal: {
+          width: 400,
+          height: 100,
+          margin: {
+            top: 10,
+            bottom: 10,
+            left: 20,
+            right: 20,
+          },
+          background: {
+            color: 'red',
+          },
+        },
       },
     },
     [Widget.Footer]: {
-      margin: {
-        top: 10,
-        bottom: 10,
-        left: 20,
-        right: 20,
+      Container: {
+        normal: {
+          width: 400,
+          height: 100,
+          margin: {
+            top: 10,
+            bottom: 10,
+            left: 20,
+            right: 20,
+          },
+          background: {
+            color: 'blue',
+          },
+        },
       },
     },
     [Widget.Content]: {
-      margin: {
-        top: 20,
-        bottom: 20,
-        left: 10,
-        right: 10,
+      Container: {
+        normal: {
+          width: 400,
+          height: 100,
+          margin: {
+            top: 10,
+            bottom: 10,
+            left: 20,
+            right: 20,
+          },
+          background: {
+            color: 'green',
+          },
+        },
+      },
+    },
+  };
+  const asideTheme = {
+    [Widget.Aside]: {
+      ChildrenWrap: {
+        normal: {
+          background: {
+            color: 'red',
+          },
+        },
+      },
+      Trigger: {
+        normal: {
+          height: 60,
+          background: {
+            color: 'green',
+          },
+        },
+      },
+    },
+  };
+  const singleLayoutTheme = {
+    [Widget.Layout]: {
+      Container: {
+        normal: {
+          width: 500,
+          height: 500,
+        },
       },
     },
   };
@@ -194,7 +254,7 @@ export const LayoutDemo = () => {
         </Layout>
       </Layout>
       <p>flex-direction: row; Aside collapsible</p>
-      <Theme config={{ [Widget.Aside]: { backgroundColor: 'red' } }}>
+      <Theme config={asideTheme}>
         <Layout direction="row">
           <Layout>
             <Header>{header}</Header>
@@ -209,13 +269,13 @@ export const LayoutDemo = () => {
       <p>theme</p>
       <Theme config={layoutView}>
         <Layout>
-          <Header>{header}</Header>
-          <Content>{content}</Content>
-          <Footer>{footer}</Footer>
+          <Header>header</Header>
+          <Content>content</Content>
+          <Footer>footer</Footer>
         </Layout>
       </Theme>
       <p>flex-direction: row;</p>
-      <Theme config={{ [Widget.Layout]: { width: 500, height: 500 } }}>
+      <Theme config={singleLayoutTheme}>
         <Layout direction="row" needEnlarge>
           <Aside>
             <div
@@ -244,7 +304,7 @@ export const LayoutDemo = () => {
         </Layout>
       </Theme>
       <p>flex-direction: row;</p>
-      <Theme config={{ [Widget.Layout]: { width: 500, height: 500 } }}>
+      <Theme config={singleLayoutTheme}>
         <Layout direction="row">
           <Aside>
             <div
@@ -273,7 +333,7 @@ export const LayoutDemo = () => {
         </Layout>
       </Theme>
       <p>flex-direction: row;</p>
-      <Theme config={{ [Widget.Layout]: { width: 500, height: 500 } }}>
+      <Theme config={singleLayoutTheme}>
         <Layout direction="row" needEnlarge>
           <Aside>
             <div

@@ -14,7 +14,7 @@ import type { TimeLineMode } from '../css/time-line';
 import TimeLineItem from './timeLineItem';
 import { getAttributeFromObject } from '../common/ObjectUtils';
 import moment from 'moment';
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent, css } from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
 
 const OutContainer = CSSComponent({
@@ -23,6 +23,14 @@ const OutContainer = CSSComponent({
   normal: {
     selectNames: [['width'], ['height'], ['padding'], ['margin']],
   },
+});
+const ItemContainer = StaticComponent({
+  tag: 'div',
+  className: 'TimeLineItemContainer',
+  css: css`
+    display: flex;
+    flex-direction: column;
+  `,
 });
 
 type TimeLineState = {
@@ -82,9 +90,14 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   render() {
     const theThemeProps = deepMerge(
       { themeConfig: { normal: this.getContainerWidth() } },
-      this.props.getPartOfThemeProps('TimeLineContainer')
+      this.props.getPartOfThemeProps('TimeLineContainer'),
+      this.props.getPartOfThemeProps('Container')
     );
-    return <OutContainer themeProps={theThemeProps}>{this.getChildren()}</OutContainer>;
+    return (
+      <OutContainer themeProps={theThemeProps}>
+        <ItemContainer>{this.getChildren()} </ItemContainer>
+      </OutContainer>
+    );
   }
 
   getChildren() {
@@ -187,9 +200,13 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   };
 
   data2Item(data: Array<Object>) {
-    return data.map((child, i) => {
-      return this.getItem(child, i);
-    });
+    return (
+      data &&
+      Array.isArray(data) &&
+      data.map((child, i) => {
+        return this.getItem(child, i);
+      })
+    );
   }
 
   getItem(child: Object, i: number) {
@@ -197,8 +214,9 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   }
 
   getDirection(mode: TimeLineMode): (index: number) => 'left' | 'right' {
-    return (index: number) =>
-      (mode === 'left' || (mode === 'alternate' && index % 2 === 0) ? 'left' : 'right');
+    return (index: number) => {
+      return mode === 'left' || (mode === 'alternate' && index % 2 === 0) ? 'left' : 'right';
+    };
   }
 
   isLast(index: number, size: number, reverse: boolean): boolean {

@@ -15,6 +15,7 @@ import IconContent from './icon-content';
 import get from '../css/theme-common-dict';
 import { getBorderRadius } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
+import { handleDuration } from '../utils';
 
 const defaultMessageContentTheme = () => ({
   themeConfig: {
@@ -44,21 +45,23 @@ export default ThemeProvider(
         });
       }, 300);
       const { time, callBack } = this.props;
-      const endTime = time * 1000;
-      const closeStart = endTime - 150;
-      this.closeTimer = setTimeout(() => {
-        this.setState({
-          closing: true,
-        });
-      }, closeStart);
-      this.removeTimer = setTimeout(() => {
-        this.setState({
-          visible: false,
-          closing: false,
-        });
-        callBack && callBack();
-        this.removeDom();
-      }, endTime);
+      const translatedTime = handleDuration(time, 2);
+      if (typeof translatedTime === 'number') {
+        const endTime = translatedTime * 1000;
+        this.closeTimer = setTimeout(() => {
+          this.setState({
+            closing: true,
+          });
+        }, endTime - 150);
+        this.removeTimer = setTimeout(() => {
+          this.setState({
+            visible: false,
+            closing: false,
+          });
+          callBack && callBack();
+          this.removeDom();
+        }, endTime);
+      }
     }
     componentWillUnmount() {
       clearTimeout(this.closeTimer);
@@ -67,6 +70,7 @@ export default ThemeProvider(
 
     render() {
       const {
+        icon,
         iconType = 'info',
         content,
         getPartOfThemeProps,
@@ -83,6 +87,7 @@ export default ThemeProvider(
           <Message>
             <MessageContent opening={opening} closing={closing} themeProps={messageContentTheme}>
               <IconContent
+                icon={icon}
                 iconType={iconType}
                 content={content}
                 height={height - 20}

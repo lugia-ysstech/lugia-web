@@ -1,5 +1,6 @@
 {
   "widgetName": "Group",
+  "viewClassName": "CheckboxGroup",
   "title": "多选框组",
   "desc": "多选框组。",
   "props": {
@@ -60,7 +61,7 @@
     },
     "size": {
       "type": "CheckboxButtonSizeType",
-      "desc": "指定CheckboxGroup大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设"
+      "desc": "指定CheckboxGroup大小，仅展示类型为button 时生效，可设置为 small、large、 或不设"
     },
     "cache": {
       "type": "boolean",
@@ -82,7 +83,7 @@
   "type": {
     "CheckboxType": ["default", "vertical"],
     "CheckboxGroupChildType": ["default", "button"],
-    "CheckboxButtonSizeType": ["default", "small", "large", "bigger"],
+    "CheckboxButtonSizeType": ["default", "small", "large"],
     "CheckboxGroupStyle": {
       "width": {
         "type": "number",
@@ -245,7 +246,6 @@
       "name": "多选框组整体配置",
       "desc": "多选框组整体配置",
       "normal": [
-        ["opacity"],
         ["border"],
         ["borderRadius"],
         ["background"],
@@ -261,9 +261,7 @@
         "Container": {
           "name": "整体样式",
           "desc": "整体样式",
-          "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
-          "hover": [["opacity"]],
-          "disabled": [["opacity"]]
+          "normal": [["margin"], ["padding"], ["width"], ["height"]]
         },
         "CheckboxText": {
           "name": "文字样式",
@@ -336,21 +334,21 @@
         "CheckboxInnerChecked": {
           "name": "选中内框样式",
           "desc": "选中内框样式",
-          "normal": [["color"], ["width"], ["height"]],
-          "hover": [["color"], ["width"], ["height"]],
-          "disabled": [["color"], ["width"], ["height"]]
+          "normal": [["background"], ["width"], ["height"]],
+          "hover": [["background"], ["width"], ["height"]],
+          "disabled": [["background"], ["width"], ["height"]]
         },
         "CheckboxInnerIndeterminate": {
           "name": "半选内框样式",
           "desc": "半选内框样式",
-          "normal": [["color"], ["width"], ["height"]],
-          "hover": [["color"], ["width"], ["height"]],
-          "disabled": [["color"], ["width"], ["height"]]
+          "normal": [["background"], ["width"], ["height"]],
+          "hover": [["background"], ["width"], ["height"]],
+          "disabled": [["background"], ["width"], ["height"]]
         },
         "CheckboxInnerCancel": {
           "name": "取消状态内框样式",
           "desc": "取消状态内框样式",
-          "normal": [["color"], ["width"], ["height"]]
+          "normal": [["background"], ["width"], ["height"]]
         }
       }
     }

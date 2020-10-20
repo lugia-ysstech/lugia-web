@@ -2,6 +2,7 @@
   "widgetName": "Progress",
   "title": "进度条",
   "desc": "展示操作的当前进度。",
+  "tag": "progress 进度条 进程条 速度条 完成条 百分比条",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -12,11 +13,6 @@
       "type": "ProgressType",
       "desc": "进度条类型，line、circle、dashboard",
       "defaultValue": "line"
-    },
-    "size": {
-      "type": "ProgressSizeType",
-      "desc": "进度条大小，可设置为 small 或不设",
-      "defaultValue": "default"
     },
     "percent": {
       "type": "number",
@@ -48,29 +44,33 @@
       "defaultValue": "default"
     },
     "iconClass": {
-      "type": "string",
-      "desc": "进度条展示的图标,仅在success或error状态生效"
+      "type": "icon",
+      "desc": "进度条展示的图标,在success或error状态下无配置successIconClass或errorIconClass时生效"
+    },
+    "errorIconClass": {
+      "type": "icon",
+      "desc": "进度条展示的图标,仅在error状态生效"
+    },
+    "successIconClass": {
+      "type": "icon",
+      "desc": "进度条展示的图标,仅在success状态生效"
     }
   },
   "type": {
-    "ProgressType": ["line", "circle", "dashboard"],
-    "ProgressSizeType": ["default", "small"],
-    "ProgressStatusType": ["success", "error", "default"],
-    "ProgressShowType": ["default", "inside"],
-    "ProgressStyle": {
-      "color": {
-        "type": "string",
-        "desc": "Progress的颜色"
-      },
-      "width": {
-        "type": "number",
-        "desc": "Progress的宽度"
-      },
-      "height": {
-        "type": "number",
-        "desc": "Progress的高度"
-      }
-    }
+    "ProgressType": [
+      { "value": "line", "text": "线型" },
+      { "value": "circle", "text": "圆型" },
+      { "value": "dashboard", "text": "仪表盘" }
+    ],
+    "ProgressStatusType": [
+      { "value": "default", "text": "正常" },
+      { "value": "success", "text": "成功" },
+      { "value": "error", "text": "错误" }
+    ],
+    "ProgressShowType": [
+      { "value": "default", "text": "外部" },
+      { "value": "inside", "text": "内部" }
+    ]
   },
   "category": ["反馈"],
   "designInfo": {
@@ -78,10 +78,16 @@
       "sequence": 1,
       "title": "圆形进度条",
       "desc": "圆形进度条",
+      "tag": "CircleProgress 圆形进度条 圆形进程条 圆形速度条 圆形完成条 圆形百分比条",
       "props": {
         "type": "circle"
       },
       "theme": {
+        "Container": {
+          "name": "进度条整体配置",
+          "desc": "进度条整体配置",
+          "normal": [["width"], ["strokeWidth"], ["border", "width"]]
+        },
         "ProgressCircleText": {
           "name": "进度条文字配置",
           "desc": "进度条文字配置",
@@ -96,6 +102,33 @@
           "name": "进度条失败图标配置",
           "desc": "进度条失败图标配置",
           "normal": [["color"], ["fontSize"]]
+        },
+        "ProgressCircleBackground": {
+          "name": "进度条底色条颜色配置",
+          "desc": "进度条底色条颜色配置",
+          "normal": [["color"]]
+        },
+        "ProgressCircleLine": {
+          "name": "进度条进度线颜色配置",
+          "desc": "进度条进度线颜色配置",
+          "normal": [["color"]]
+        },
+        "ProgressCircleLine_Success": {
+          "name": "圆形进度条进度线成功配置",
+          "desc": "圆形进度条进度线成功配置",
+          "normal": [["background"]]
+        },
+        "ProgressCircleLine_Error": {
+          "name": "圆形进度条进度线失败配置",
+          "desc": "圆形进度条进度线失败配置",
+          "normal": [["background"]]
+        }
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "width": 120
+          }
         }
       }
     },
@@ -103,10 +136,16 @@
       "sequence": 1,
       "title": "仪表盘进度条",
       "desc": "仪表盘进度条",
+      "tag": "DashboardProgress 仪表盘进度条 仪表盘进程条 仪表盘速度条 仪表盘完成条 仪表盘百分比条",
       "props": {
         "type": "dashboard"
       },
       "theme": {
+        "Container": {
+          "name": "进度条整体配置",
+          "desc": "进度条整体配置",
+          "normal": [["width"], ["strokeWidth"], ["border", "width"]]
+        },
         "DashboardText": {
           "name": "进度条文字配置",
           "desc": "仪表盘进度条文字配置",
@@ -121,6 +160,33 @@
           "name": "进度条失败图标配置",
           "desc": "进度条失败图标配置",
           "normal": [["color"], ["fontSize"]]
+        },
+        "DashboardBackground": {
+          "name": "进度条底色条颜色配置",
+          "desc": "进度条底色条颜色配置",
+          "normal": [["color"]]
+        },
+        "DashboardLine": {
+          "name": "进度条进度线颜色配置",
+          "desc": "进度条进度线颜色配置",
+          "normal": [["color"]]
+        },
+        "ProgressCircleLine_Success": {
+          "name": "仪表盘进度条进度线成功配置",
+          "desc": "仪表盘进度条进度线成功配置",
+          "normal": [["background"]]
+        },
+        "ProgressCircleLine_Error": {
+          "name": "仪表盘进度条进度线失败配置",
+          "desc": "仪表盘进度条进度线失败配置",
+          "normal": [["background"]]
+        }
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "width": 120
+          }
         }
       }
     }
@@ -134,7 +200,7 @@
     "ProgressOutLine": {
       "name": "进度条底色线配置",
       "desc": "进度条底色线配置",
-      "normal": [["background"], ["borderRadius"], ["border"], ["boxShadow"]]
+      "normal": [["background"], ["borderRadius"], ["border"], ["boxShadow"], ["margin", "right"]]
     },
     "ProgressInnerLine_Default": {
       "name": "进度条进度线默认配置",
@@ -183,6 +249,13 @@
       "name": "动效条样式配置",
       "desc": "动效条样式配置",
       "normal": [["color"]]
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 400
+      }
     }
   }
 }

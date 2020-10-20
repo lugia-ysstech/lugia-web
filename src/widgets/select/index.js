@@ -78,6 +78,14 @@ type SelectProps = {
   autoHeight?: boolean,
   pullIconClass?: string,
   clearIconClass?: string,
+  searchClearIcon?: string,
+  searchAddIcon?: string,
+  toggleIcon?: string,
+  resetIcon?: string,
+  singleClearIcon?: string,
+  checkAllIcon?: string,
+  deselectionIcon?: string,
+  searchIcon?: string,
   isShowClearButton?: boolean,
   size?: Size,
   checkedCSS?: CheckedCSS,
@@ -127,6 +135,10 @@ class Select extends React.Component<SelectProps, SelectState> {
     query: '',
     pullIconClass: 'lugia-icon-direction_down',
     clearIconClass: 'lugia-icon-reminder_close',
+    singleClearIcon: 'lugia-icon-reminder_close_circle',
+    searchAddIcon: 'lugia-icon-reminder_plus',
+    checkAllIcon: 'lugia-icon-financial_check_all',
+    deselectionIcon: 'lugia-icon-financial_deselection',
     isShowClearButton: true,
     size: 'default',
   };
@@ -165,7 +177,7 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   static getDerivedStateFromProps(props: SelectProps, state: SelectState) {
-    const { data = [], validateStatus = 'success', query } = props;
+    const { data = [], validateStatus = 'success', query, virtual = false } = props;
     const length = data.length;
 
     const { value, displayValue } = getValueAndDisplayValue(props, state);
@@ -180,6 +192,7 @@ class Select extends React.Component<SelectProps, SelectState> {
         query: getQuery(query),
         validateStatus,
         isCheckedAll: false,
+        __virtual: virtual,
       };
     }
     return {
@@ -189,6 +202,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       length,
       query: getQuery(query, state.query),
       validateStatus,
+      __virtual: virtual,
     };
   }
 
@@ -337,7 +351,21 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   getPopupMenu = () => {
     const { props, state } = this;
-    const { mutliple, canSearch, canInput, data } = props;
+    const {
+      mutliple,
+      canSearch,
+      canInput,
+      data,
+      getPartOfThemeProps,
+      getPartOfThemeHocProps,
+      searchClearIcon,
+      toggleIcon,
+      resetIcon,
+      searchAddIcon,
+      checkAllIcon,
+      deselectionIcon,
+      searchIcon,
+    } = props;
     const { query, isCheckedAll } = state;
     const getMenu: Function = (cmp: Object) => {
       this.menuCmp = cmp;
@@ -351,10 +379,25 @@ class Select extends React.Component<SelectProps, SelectState> {
         },
       },
     };
+    const receivedQueryInputTheme = getPartOfThemeProps('QueryInput');
+    const toggleIconTheme = getPartOfThemeHocProps('ToggleIcon');
+    const resetIconTheme = getPartOfThemeHocProps('ResetIcon');
+    const searchAddIconTheme = getPartOfThemeHocProps('SearchAddIcon');
+    const checkAllIconTheme = getPartOfThemeHocProps('CheckAllIcon');
+    const deselectionIconTheme = getPartOfThemeHocProps('DeselectionIcon');
+    const searchIconTheme = getPartOfThemeHocProps('SearchIcon');
+
     const menu = [
       data && data.length !== 0 ? (
         <QueryInput
           theme={queryInputTheme}
+          receivedTheme={receivedQueryInputTheme}
+          toggleIconTheme={toggleIconTheme}
+          resetIconTheme={resetIconTheme}
+          searchAddIconTheme={searchAddIconTheme}
+          checkAllIconTheme={checkAllIconTheme}
+          deselectionIconTheme={deselectionIconTheme}
+          searchIconTheme={searchIconTheme}
           query={query}
           onQueryInputChange={this.onQueryInputChange}
           onQueryInputKeyDown={this.onQueryInputKeyDown}
@@ -365,6 +408,13 @@ class Select extends React.Component<SelectProps, SelectState> {
           canSearch={canSearch}
           mutliple={mutliple}
           canInput={canInput}
+          searchClearIcon={searchClearIcon}
+          toggleIcon={toggleIcon}
+          resetIcon={resetIcon}
+          searchAddIcon={searchAddIcon}
+          checkAllIcon={checkAllIcon}
+          deselectionIcon={deselectionIcon}
+          searchIcon={searchIcon}
         />
       ) : null,
       this.getMenuItems(getMenu),
@@ -395,11 +445,13 @@ class Select extends React.Component<SelectProps, SelectState> {
       canClear,
       pullIconClass,
       clearIconClass,
+      singleClearIcon,
       isShowClearButton,
       onFocus,
       onBlur,
       alwaysOpen,
       liquidLayout,
+      popupContainerId,
     } = props;
     const { displayValue = [] } = this;
     const { value = [], menuVisible } = state;
@@ -412,6 +464,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     const result = (
       <Theme config={getInputtagThemeHoc(props)}>
         <Trigger
+          popupContainerId={popupContainerId}
           themePass
           popup={menu}
           key="trigger"
@@ -446,6 +499,7 @@ class Select extends React.Component<SelectProps, SelectState> {
             isShowClearButton={isShowClearButton}
             onFocus={onFocus}
             onBlur={onBlur}
+            singleClearIcon={singleClearIcon}
           />
         </Trigger>
       </Theme>
@@ -455,7 +509,7 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   getMenuItems(getMenu?: Function) {
     const { state, props } = this;
-    const { value, query, data } = state;
+    const { value, query, data, __virtual } = state;
     const {
       displayField,
       valueField,
@@ -465,11 +519,13 @@ class Select extends React.Component<SelectProps, SelectState> {
       autoHeight,
       defaultHeight,
       checkedCSS = 'background',
+      renderSuffixItems,
     } = props;
     const menuData = this.updateMenuData(data, query, searchType);
     return (
       <Menu
         {...this.getMenuTheme()}
+        __virtual={__virtual}
         checkedCSS={checkedCSS}
         displayField={displayField}
         valueField={valueField}
@@ -483,6 +539,7 @@ class Select extends React.Component<SelectProps, SelectState> {
         onClick={this.menuItemClickHandler}
         step={ScrollerStep}
         autoHeight={autoHeight}
+        renderSuffixItems={renderSuffixItems}
       />
     );
   }
@@ -580,8 +637,20 @@ class Select extends React.Component<SelectProps, SelectState> {
     this.setState({ query });
   }
 
+  needPush(row: RowData, queryField: string[], queryArray: Array<string>, searchType: QueryType) {
+    return queryField.some(field => {
+      return toMatchFromType(row[field], queryArray, searchType);
+    });
+  }
+
+  isOpenMultiConditionQuery() {
+    const { searchFields = [] } = this.props;
+    return searchFields && Array.isArray(searchFields) && searchFields.length > 0;
+  }
+
   updateMenuData(data: Array<Object>, query: string | number, searchType?: QueryType = 'include') {
-    const { displayField = DisplayField } = this.props;
+    const { displayField = DisplayField, searchFields = [] } = this.props;
+
     let menuData;
     const queryAll = query === '' || !query;
     const isQueryZero = query === 0 || query === '0';
@@ -592,11 +661,10 @@ class Select extends React.Component<SelectProps, SelectState> {
       const queryArray = this.getQueryArray(query);
       const rowSet = [];
       const len = data.length;
-
+      const queryField = this.isOpenMultiConditionQuery() ? searchFields : [displayField];
       for (let i = 0; i < len; i++) {
         const row: RowData = data[i];
-        const searchKey = row[displayField];
-        if (toMatchFromType(searchKey, queryArray, searchType)) {
+        if (this.needPush(row, queryField, queryArray, searchType)) {
           rowSet.push(row);
         }
       }

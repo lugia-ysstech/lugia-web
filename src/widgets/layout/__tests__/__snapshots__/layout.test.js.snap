@@ -29,54 +29,6 @@ exports[`Layout css 1`] = `
   flex-direction: row;
 }
 
-.c11 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-  font-size: 1.2rem;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 41.66666666666667em;
-  margin: 1.6666666666666667em 3.3333333333333335em 2.5em 4.166666666666667em;
-}
-
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-  font-size: 1.2rem;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 41.66666666666667em;
-  height: 41.66666666666667em;
-}
-
-.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-  font-size: 1.2rem;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 41.66666666666667em;
-  height: 41.66666666666667em;
-}
-
 .c8 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -103,27 +55,7 @@ exports[`Layout css 1`] = `
   position: relative;
 }
 
-.c12 {
-  font-size: 1.2rem;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  display: block;
-  position: relative;
-  margin: 0.8333333333333334em 1.6666666666666667em 0.8333333333333334em 1.6666666666666667em;
-}
-
-.c13 {
-  font-size: 1.2rem;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-  display: block;
-  position: relative;
-  margin: 1.6666666666666667em 0.8333333333333334em 1.6666666666666667em 0.8333333333333334em;
-}
-
-.c16 {
+.c9 {
   position: absolute;
   top: 0.8333333333333334em;
   right: 0.8333333333333334em;
@@ -134,7 +66,7 @@ exports[`Layout css 1`] = `
   cursor: pointer;
 }
 
-.c17 {
+.c10 {
   vertical-align: bottom !important;
 }
 
@@ -159,19 +91,6 @@ exports[`Layout css 1`] = `
   cursor: pointer;
 }
 
-.c10 {
-  position: absolute;
-  bottom: 0;
-  height: 4em;
-  line-height: 4em;
-  text-align: center;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  background: red;
-  width: 16.666666666666668em;
-  cursor: pointer;
-}
-
 .c7 {
   color: #fff;
 }
@@ -181,21 +100,18 @@ exports[`Layout css 1`] = `
   background: #4d63ff;
 }
 
-.c9 {
-  height: 100%;
-  background: red;
-}
-
 <div>
   <p>
     default flex-direction: column;
   </p>
   <div
     className="c0"
+    style={Object {}}
   >
     <div
       className="c1"
       display={true}
+      style={Object {}}
     >
       <div
         style={
@@ -213,6 +129,7 @@ exports[`Layout css 1`] = `
     <div
       className="c2"
       display={true}
+      style={Object {}}
     >
       <div
         style={
@@ -230,6 +147,7 @@ exports[`Layout css 1`] = `
     <div
       className="c1"
       display={true}
+      style={Object {}}
     >
       <div
         style={
@@ -250,10 +168,12 @@ exports[`Layout css 1`] = `
   </p>
   <div
     className="c0"
+    style={Object {}}
   >
     <div
       className="c1"
       display={true}
+      style={Object {}}
     >
       <div
         style={
@@ -271,12 +191,14 @@ exports[`Layout css 1`] = `
     <div
       className="c3"
       direction="row"
+      style={Object {}}
     >
       <div
         className="c4"
       >
         <div
           className="c5"
+          style={Object {}}
         >
           <div>
             <div
@@ -298,6 +220,7 @@ exports[`Layout css 1`] = `
       <div
         className="c2"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -316,6 +239,7 @@ exports[`Layout css 1`] = `
     <div
       className="c1"
       display={true}
+      style={Object {}}
     >
       <div
         style={
@@ -336,10 +260,12 @@ exports[`Layout css 1`] = `
   </p>
   <div
     className="c0"
+    style={Object {}}
   >
     <div
       className="c1"
       display={true}
+      style={Object {}}
     >
       <div
         style={
@@ -357,10 +283,12 @@ exports[`Layout css 1`] = `
     <div
       className="c3"
       direction="row"
+      style={Object {}}
     >
       <div
         className="c2"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -380,6 +308,7 @@ exports[`Layout css 1`] = `
       >
         <div
           className="c5"
+          style={Object {}}
         >
           <div>
             <div
@@ -402,6 +331,7 @@ exports[`Layout css 1`] = `
     <div
       className="c1"
       display={true}
+      style={Object {}}
     >
       <div
         style={
@@ -423,12 +353,14 @@ exports[`Layout css 1`] = `
   <div
     className="c3"
     direction="row"
+    style={Object {}}
   >
     <div
       className="c4"
     >
       <div
         className="c5"
+        style={Object {}}
       >
         <div>
           <div
@@ -449,10 +381,12 @@ exports[`Layout css 1`] = `
     </div>
     <div
       className="c0"
+      style={Object {}}
     >
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -470,6 +404,7 @@ exports[`Layout css 1`] = `
       <div
         className="c2"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -487,6 +422,7 @@ exports[`Layout css 1`] = `
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -509,12 +445,14 @@ exports[`Layout css 1`] = `
   <div
     className="c3"
     direction="row"
+    style={Object {}}
   >
     <div
       className="c4"
     >
       <div
         className="c5"
+        style={Object {}}
       >
         <div>
           <div
@@ -535,10 +473,12 @@ exports[`Layout css 1`] = `
     </div>
     <div
       className="c0"
+      style={Object {}}
     >
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -556,6 +496,7 @@ exports[`Layout css 1`] = `
       <div
         className="c2"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -573,6 +514,7 @@ exports[`Layout css 1`] = `
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -593,6 +535,7 @@ exports[`Layout css 1`] = `
     >
       <div
         className="c5"
+        style={Object {}}
       >
         <div>
           <div
@@ -618,13 +561,16 @@ exports[`Layout css 1`] = `
   <div
     className="c3"
     direction="row"
+    style={Object {}}
   >
     <div
       className="c0"
+      style={Object {}}
     >
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -642,6 +588,7 @@ exports[`Layout css 1`] = `
       <div
         className="c2"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -659,6 +606,7 @@ exports[`Layout css 1`] = `
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -679,6 +627,7 @@ exports[`Layout css 1`] = `
     >
       <div
         className="c5"
+        style={Object {}}
       >
         <div>
           <div>
@@ -688,6 +637,7 @@ exports[`Layout css 1`] = `
         <div
           className="c6"
           onClick={[Function]}
+          style={Object {}}
         >
           <i
             className="lugia-icon-direction_right c7  c8"
@@ -708,12 +658,14 @@ exports[`Layout css 1`] = `
   <div
     className="c3"
     direction="row"
+    style={Object {}}
   >
     <div
       className="c4"
     >
       <div
         className="c5"
+        style={Object {}}
       >
         <div>
           <div>
@@ -723,6 +675,7 @@ exports[`Layout css 1`] = `
         <div
           className="c6"
           onClick={[Function]}
+          style={Object {}}
         >
           <i
             className="lugia-icon-direction_Left c7  c8"
@@ -738,10 +691,12 @@ exports[`Layout css 1`] = `
     </div>
     <div
       className="c0"
+      style={Object {}}
     >
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -759,6 +714,7 @@ exports[`Layout css 1`] = `
       <div
         className="c2"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -776,6 +732,7 @@ exports[`Layout css 1`] = `
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -798,13 +755,16 @@ exports[`Layout css 1`] = `
   <div
     className="c3"
     direction="row"
+    style={Object {}}
   >
     <div
       className="c0"
+      style={Object {}}
     >
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -822,6 +782,7 @@ exports[`Layout css 1`] = `
       <div
         className="c2"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -839,6 +800,7 @@ exports[`Layout css 1`] = `
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -858,7 +820,12 @@ exports[`Layout css 1`] = `
       className="c4"
     >
       <div
-        className="c9"
+        className="c5"
+        style={
+          Object {
+            "backgroundColor": "red",
+          }
+        }
       >
         <div>
           <div>
@@ -866,8 +833,14 @@ exports[`Layout css 1`] = `
           </div>
         </div>
         <div
-          className="c10"
+          className="c6"
           onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "green",
+              "height": "6rem",
+            }
+          }
         >
           <i
             className="lugia-icon-direction_right c7  c8"
@@ -886,72 +859,88 @@ exports[`Layout css 1`] = `
     theme
   </p>
   <div
-    className="c11"
+    className="c0"
+    style={
+      Object {
+        "marginBottom": "3rem",
+        "marginLeft": "5rem",
+        "marginRight": "4rem",
+        "marginTop": "2rem",
+        "width": "50rem",
+      }
+    }
   >
     <div
-      className="c12"
+      className="c1"
       display={true}
-    >
-      <div
-        style={
-          Object {
-            "background": "#381be5",
-            "height": "60px",
-            "lineHeight": "60px",
-            "textAlign": "center",
-          }
+      style={
+        Object {
+          "backgroundColor": "red",
+          "height": "10rem",
+          "marginBottom": "1rem",
+          "marginLeft": "2rem",
+          "marginRight": "2rem",
+          "marginTop": "1rem",
+          "width": "40rem",
         }
-      >
-        Header
-      </div>
+      }
+    >
+      header
     </div>
     <div
-      className="c13"
+      className="c2"
       display={true}
-    >
-      <div
-        style={
-          Object {
-            "background": "#0F89FF",
-            "height": "200px",
-            "lineHeight": "200px",
-            "textAlign": "center",
-          }
+      style={
+        Object {
+          "backgroundColor": "green",
+          "height": "10rem",
+          "marginBottom": "1rem",
+          "marginLeft": "2rem",
+          "marginRight": "2rem",
+          "marginTop": "1rem",
+          "width": "40rem",
         }
-      >
-        Content
-      </div>
+      }
+    >
+      content
     </div>
     <div
-      className="c12"
+      className="c1"
       display={true}
-    >
-      <div
-        style={
-          Object {
-            "background": "#0f13ff",
-            "height": "60px",
-            "lineHeight": "60px",
-            "textAlign": "center",
-          }
+      style={
+        Object {
+          "backgroundColor": "blue",
+          "height": "10rem",
+          "marginBottom": "1rem",
+          "marginLeft": "2rem",
+          "marginRight": "2rem",
+          "marginTop": "1rem",
+          "width": "40rem",
         }
-      >
-        Footer
-      </div>
+      }
+    >
+      footer
     </div>
   </div>
   <p>
     flex-direction: row;
   </p>
   <div
-    className="c14"
+    className="c3"
     direction="row"
+    style={
+      Object {
+        "height": "50rem",
+        "width": "50rem",
+      }
+    }
   >
     <div
       className="c4"
     >
       <div
         className="c5"
+        style={Object {}}
       >
         <div>
           <div
@@ -971,11 +960,18 @@ exports[`Layout css 1`] = `
       </div>
     </div>
     <div
-      className="c15"
+      className="c0"
+      style={
+        Object {
+          "height": "50rem",
+          "width": "50rem",
+        }
+      }
     >
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -991,6 +987,7 @@ exports[`Layout css 1`] = `
       <div
         className="c2"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -1003,12 +1000,12 @@ exports[`Layout css 1`] = `
           content
         </div>
         <div
-          className="c16"
+          className="c9"
           onClick={[Function]}
           order={2}
         >
           <i
-            className="lugia-icon-direction_arrows_alt c17  c8"
+            className="lugia-icon-direction_arrows_alt c10  c8"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -1021,6 +1018,7 @@ exports[`Layout css 1`] = `
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -1039,14 +1037,21 @@ exports[`Layout css 1`] = `
     flex-direction: row;
   </p>
   <div
-    className="c14"
+    className="c3"
     direction="row"
+    style={
+      Object {
+        "height": "50rem",
+        "width": "50rem",
+      }
+    }
   >
     <div
       className="c4"
     >
       <div
         className="c5"
+        style={Object {}}
       >
         <div>
           <div
@@ -1066,11 +1071,18 @@ exports[`Layout css 1`] = `
       </div>
     </div>
     <div
-      className="c15"
+      className="c0"
+      style={
+        Object {
+          "height": "50rem",
+          "width": "50rem",
+        }
+      }
     >
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -1083,12 +1095,12 @@ exports[`Layout css 1`] = `
           heder
         </div>
         <div
-          className="c16"
+          className="c9"
           onClick={[Function]}
           order={1}
         >
           <i
-            className="lugia-icon-direction_arrows_alt c17  c8"
+            className="lugia-icon-direction_arrows_alt c10  c8"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -1101,6 +1113,7 @@ exports[`Layout css 1`] = `
       <div
         className="c2"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -1116,6 +1129,7 @@ exports[`Layout css 1`] = `
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -1134,14 +1148,21 @@ exports[`Layout css 1`] = `
     flex-direction: row;
   </p>
   <div
-    className="c14"
+    className="c3"
     direction="row"
+    style={
+      Object {
+        "height": "50rem",
+        "width": "50rem",
+      }
+    }
   >
     <div
       className="c4"
     >
       <div
         className="c5"
+        style={Object {}}
       >
         <div>
           <div
@@ -1161,11 +1182,18 @@ exports[`Layout css 1`] = `
       </div>
     </div>
     <div
-      className="c15"
+      className="c0"
+      style={
+        Object {
+          "height": "50rem",
+          "width": "50rem",
+        }
+      }
     >
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -1178,12 +1206,12 @@ exports[`Layout css 1`] = `
           heder
         </div>
         <div
-          className="c16"
+          className="c9"
           onClick={[Function]}
           order={1}
         >
           <i
-            className="lugia-icon-direction_arrows_alt c17  c8"
+            className="lugia-icon-direction_arrows_alt c10  c8"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -1196,14 +1224,22 @@ exports[`Layout css 1`] = `
       <div
         className="c2"
         display={true}
+        style={Object {}}
       >
         <div
-          className="c14"
+          className="c3"
           direction="row"
+          style={
+            Object {
+              "height": "50rem",
+              "width": "50rem",
+            }
+          }
         >
           <div
             className="c1"
             display={true}
+            style={Object {}}
           >
             <div
               style={
@@ -1217,12 +1253,12 @@ exports[`Layout css 1`] = `
               好好好好
             </div>
             <div
-              className="c16"
+              className="c9"
               onClick={[Function]}
               order={3}
             >
               <i
-                className="lugia-icon-direction_arrows_alt c17  c8"
+                className="lugia-icon-direction_arrows_alt c10  c8"
                 onClick={[Function]}
                 onMouseDown={[Function]}
                 onMouseEnter={[Function]}
@@ -1235,6 +1271,7 @@ exports[`Layout css 1`] = `
           <div
             className="c2"
             display={true}
+            style={Object {}}
           >
             <div
               style={
@@ -1247,12 +1284,12 @@ exports[`Layout css 1`] = `
               好
             </div>
             <div
-              className="c16"
+              className="c9"
               onClick={[Function]}
               order={4}
             >
               <i
-                className="lugia-icon-direction_arrows_alt c17  c8"
+                className="lugia-icon-direction_arrows_alt c10  c8"
                 onClick={[Function]}
                 onMouseDown={[Function]}
                 onMouseEnter={[Function]}
@@ -1265,6 +1302,7 @@ exports[`Layout css 1`] = `
           <div
             className="c1"
             display={true}
+            style={Object {}}
           >
             <div
               style={
@@ -1278,12 +1316,12 @@ exports[`Layout css 1`] = `
               好好好好
             </div>
             <div
-              className="c16"
+              className="c9"
               onClick={[Function]}
               order={5}
             >
               <i
-                className="lugia-icon-direction_arrows_alt c17  c8"
+                className="lugia-icon-direction_arrows_alt c10  c8"
                 onClick={[Function]}
                 onMouseDown={[Function]}
                 onMouseEnter={[Function]}
@@ -1298,6 +1336,7 @@ exports[`Layout css 1`] = `
       <div
         className="c1"
         display={true}
+        style={Object {}}
       >
         <div
           style={
@@ -1310,12 +1349,12 @@ exports[`Layout css 1`] = `
           footer
         </div>
         <div
-          className="c16"
+          className="c9"
           onClick={[Function]}
           order={6}
         >
           <i
-            className="lugia-icon-direction_arrows_alt c17  c8"
+            className="lugia-icon-direction_arrows_alt c10  c8"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}

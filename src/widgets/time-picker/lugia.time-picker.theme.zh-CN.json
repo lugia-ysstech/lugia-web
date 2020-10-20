@@ -130,7 +130,7 @@
           },
           {
             "name": "单列",
-            "path": ["timePanelListTheme"],
+            "path": ["TimePanelList"],
             "description": {
               "appearancePart": {
                 "text": "分割线",
@@ -165,16 +165,6 @@
                 "desc": "文本配置区块的显示文本"
               }
             }
-          }
-        ]
-      },
-      {
-        "title": "页脚标注",
-        "iconClass": "timePickerExtraFooter",
-        "data": [
-          {
-            "name": "额外页脚",
-            "path": ["ExtraFooter"]
           }
         ]
       }

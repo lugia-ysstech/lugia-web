@@ -2,6 +2,7 @@
   "widgetName": "Rate",
   "title": "评分",
   "desc": "评分组件",
+  "tag": "Rate 评分 分数 评价 星级",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -34,27 +35,26 @@
       "defaultValue": false
     },
     "iconClass": {
-      "type": "object[]",
+      "type": "object",
       "desc": "自定义图标对象",
       "meta": [
-        { "key": "default", "title": "默认图标名称", "type": "string" },
-        { "key": "primary", "title": "选中状态图标名称", "type": "string" },
-        { "key": "danger", "title": "低分值图标名称", "type": "string" },
-        { "key": "amazed", "title": "高分值图标名称", "type": "string" },
-        { "key": "half", "title": "半星图标名称", "type": "string" }
+        { "key": "default", "title": "默认图标名称", "type": "icon" },
+        { "key": "primary", "title": "选中状态图标名称", "type": "icon" },
+        { "key": "danger", "title": "低分值图标名称", "type": "icon" },
+        { "key": "amazed", "title": "高分值图标名称", "type": "icon" },
+        { "key": "half", "title": "半星图标名称", "type": "icon" }
       ],
       "defaultValue": {
         "default": "lugia-icon-financial_star",
         "primary": "lugia-icon-financial_star",
         "danger": "lugia-icon-financial_star",
         "amazed": "lugia-icon-financial_star",
-        "half": "lugia-icon-finacial_half_star"
+        "half": "lugia-icon-financial_half_star"
       }
     },
     "value": {
       "type": "number",
-      "desc": "当前分值",
-      "defaultValue": 0
+      "desc": "当前分值"
     },
     "character": {
       "type": "string | React$Element<any>",
@@ -130,22 +130,6 @@
           "clicked": [],
           "disabled": []
         }
-      },
-      "defaultTheme": {
-        "DefaultRateIcon": {
-          "normal": {
-            "fontSize": 14,
-            "color": "#e8e8e8",
-            "margin": {
-              "right": 6
-            }
-          }
-        },
-        "ActiveIcon": {
-          "normal": {
-            "color": "#f8ac30"
-          }
-        }
       }
     },
     "TextRate": {
@@ -171,19 +155,6 @@
           "hover": [],
           "clicked": [],
           "disabled": []
-        }
-      },
-      "defaultTheme": {
-        "DefaultTextIcon": {
-          "normal": {
-            "fontSize": 16,
-            "color": "#e8e8e8"
-          }
-        },
-        "ActiveTextIcon": {
-          "normal": {
-            "color": "#f8ac30"
-          }
         }
       }
     }

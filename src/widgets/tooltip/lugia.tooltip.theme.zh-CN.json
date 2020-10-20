@@ -24,6 +24,9 @@
               "appearancePart": {
                 "text": "背景框",
                 "desc": "背景框"
+              },
+              "textPart": {
+                "hidden": true
               }
             }
           },

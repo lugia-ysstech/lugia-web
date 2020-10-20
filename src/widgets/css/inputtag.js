@@ -59,10 +59,10 @@ export const OutContainer = CSSComponent({
     ],
   },
   active: {
-    selectNames: [['border']],
+    selectNames: [['border'], ['background'], ['boxShadow']],
   },
   focus: {
-    selectNames: [['border']],
+    selectNames: [['border'], ['background'], ['boxShadow']],
   },
   disabled: {
     selectNames: [

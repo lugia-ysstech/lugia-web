@@ -167,7 +167,7 @@ const Fix = CSSComponent({
   tag: 'span',
   className: 'inputFix',
   normal: {
-    selectNames: [['font'], ['fontSize'], ['color']],
+    selectNames: [['font'], ['fontSize'], ['color'], ['padding'], ['margin']],
     defaultTheme: {
       color: blackColor,
     },
@@ -196,19 +196,25 @@ const Fix = CSSComponent({
 const Prefix: Object = CSSComponent({
   extend: Fix,
   className: 'inputPrefix',
-  normal: {},
-  css: css`
-    padding-left: ${() => px2remcss(get('padding'))};
-  `,
+  normal: {
+    defaultTheme: {
+      padding: {
+        left: padding,
+      },
+    },
+  },
 });
 
 const Suffix: Object = CSSComponent({
   extend: Fix,
   className: 'inputSuffix',
-  normal: {},
-  css: css`
-    padding-right: ${() => px2remcss(get('padding'))};
-  `,
+  normal: {
+    defaultTheme: {
+      padding: {
+        right: padding,
+      },
+    },
+  },
 });
 
 const Clear = 'lugia-icon-reminder_close';
@@ -258,18 +264,8 @@ type InputProps = {
   isShowClearButton?: boolean,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
+  getFocus?: Function,
 } & InsideProps;
-
-const defaultFixTheme = {
-  themeConfig: {
-    normal: {
-      color: blackColor,
-    },
-    disabled: {
-      color: disableTextColor,
-    },
-  },
-};
 
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
@@ -279,6 +275,7 @@ class TextBox extends Component<InputProps, InputState> {
     size: 'default',
     defaultValue: '',
     isShowClearButton: true,
+    canClear: true,
     formatter: (value: string | number) => {
       return value;
     },
@@ -391,12 +388,18 @@ class TextBox extends Component<InputProps, InputState> {
   render() {
     return this.getInputContainer();
   }
-
+  focus = () => {
+    this.getRef().current.focus();
+  };
   componentDidMount() {
-    const { getInputRef, getInputWidgetRef } = this.props;
+    const { getInputRef, getInputWidgetRef, getFocus } = this.props;
     getInputRef && getInputRef({ ref: this.getRef() });
     getInputWidgetRef && getInputWidgetRef({ ref: this.getContainerRef() });
+    if (getFocus && this.getRef()) {
+      getFocus(this.focus);
+    }
   }
+
   getFixIcon(fix: React$Node, WidgetName: string): React$Node {
     if (ObjectUtils.isString(fix)) {
       return (
@@ -426,15 +429,14 @@ class TextBox extends Component<InputProps, InputState> {
         </Suffix>
       );
     }
-    const { isShowClearButton } = this.props;
-    if (isShowClearButton) {
+    const { isShowClearButton, canClear } = this.props;
+    if (isShowClearButton && canClear) {
       return this.getClearButton();
     }
     return null;
   }
 
   getClearButton() {
-    const { canClear = true } = this.props;
     const {
       theme: ClearButtonThemeProps,
       viewClass: clearViewClass,
@@ -471,7 +473,7 @@ class TextBox extends Component<InputProps, InputState> {
     const { disabled, clearIcon, size } = this.props;
     return (
       <Icon
-        propsConfig={{ size, hideClearButton: this.isEmpty() || !canClear }}
+        propsConfig={{ size, hideClearButton: this.isEmpty() }}
         disabled={disabled}
         singleTheme
         viewClass={clearViewClass}
@@ -569,8 +571,8 @@ class TextBox extends Component<InputProps, InputState> {
     const defaultTheme = {
       themeConfig: {
         normal: {
-          borderRadius: getBorderRadius(borderRadius),
           border: getBorder(get('normalBorder')),
+          borderRadius: getBorderRadius(borderRadius),
         },
         hover: {
           border: getBorder(get('hoverBorder')),

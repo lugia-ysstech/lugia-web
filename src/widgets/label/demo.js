@@ -114,8 +114,38 @@ class LabelDemo extends React.Component<PropsType, StateType> {
         },
       },
     };
+    const wordBreak = {
+      [Widget.Label]: {
+        Container: {
+          normal: {
+            width: 50,
+            textOverflow: 'ellipsis',
+            overflow: 'hidden',
+          },
+        },
+      },
+    };
+    const wordBreakClip = {
+      [Widget.Label]: {
+        Container: {
+          normal: {
+            width: 50,
+            textOverflow: 'clip',
+            overflow: 'hidden',
+          },
+        },
+      },
+    };
     return (
       <div>
+        <Theme config={wordBreak}>
+          <LabelBox>主题配置 textOverflow: 'ellipsis', overflow:'hidden',</LabelBox>
+          <Label>这是一段很长很长的文本</Label>
+        </Theme>
+        <Theme config={wordBreakClip}>
+          <LabelBox>主题配置 textOverflow: 'clip', overflow:'hidden',</LabelBox>
+          <Label>这是一段很长很长的文本</Label>
+        </Theme>
         <Theme config={configBorder}>
           <LabelBox>主题配置 text: showPrefix : *</LabelBox>
           <Label>这是一段很长很长的文本</Label>
@@ -148,6 +178,16 @@ class LabelDemo extends React.Component<PropsType, StateType> {
         <Label>这是一段文本</Label>
         <LabelBox>默认文本 无参数:</LabelBox>
         <Label />
+
+        <LabelBox>text props中放多个空格</LabelBox>
+        <Label text={'很多空格                       的文本'} />
+        <br />
+        <br />
+        <br />
+        <LabelBox title="我是title">我是有title的文本</LabelBox>
+        <br />
+        <br />
+        <br />
       </div>
     );
   }

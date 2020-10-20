@@ -2,11 +2,20 @@
   "widgetName": "AmountInput",
   "title": "金额输入框",
   "desc": "用于金额数字的填写,可切换人民币大小写显示效果.",
+  "tag": "金额输入框 AmountInput ¥ $ 数额输入框 核算输入框 统计输入 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
       "desc": "是否渲染当前组件",
       "defaultValue": false
+    },
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出框"
+    },
+    "popupContainerId": {
+      "type": "ContainerDomIdType",
+      "desc": "配置弹出框的作用容器id"
     },
     "disabled": {
       "type": "boolean",
@@ -56,6 +65,15 @@
     "help": {
       "type": "string",
       "desc": "校验提示信息"
+    },
+    "isShowClearButton": {
+      "type": "boolean",
+      "desc": "是否显示清除按钮",
+      "propsDefaultValue": true
+    },
+    "clearIcon": {
+      "type": "icon",
+      "desc": "清除图标类型"
     }
   },
   "events": {
@@ -128,11 +146,67 @@
           "type": "KeyboardEvent"
         }
       ]
+    },
+    "getFocus": {
+      "desc": "金额输入框主动聚焦事件",
+      "args": [
+        {
+          "name": "focus",
+          "desc": "输入框的聚焦方法",
+          "type": "Function"
+        }
+      ]
     }
   },
   "type": {
-    "InputSize": ["small", "default", "large"],
-    "PrefixType": ["¥", "$"],
+    "InputSize": [
+      {
+        "value": "small",
+        "text": "小"
+      },
+      {
+        "value": "default",
+        "text": "正常"
+      },
+      {
+        "value": "large",
+        "text": "大"
+      }
+    ],
+    "PrefixType": [
+      {
+        "value": "¥",
+        "text": "人民币"
+      },
+      {
+        "value": "$",
+        "text": "美元"
+      }
+    ],
+    "ValidateStatus": [
+      {
+        "value": "default",
+        "text": "正常"
+      },
+      {
+        "value": "error",
+        "text": "错误"
+      }
+    ],
+    "ValidateType": [
+      {
+        "value": "top",
+        "text": "顶部弹窗"
+      },
+      {
+        "value": "bottom",
+        "text": "底部文本"
+      },
+      {
+        "value": "inner",
+        "text": "框内文本"
+      }
+    ],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
@@ -218,7 +292,7 @@
     "AmountInputPrefix": {
       "name": "金额输入框主体前缀",
       "desc": "金额输入框主体前缀",
-      "normal": [["fontSize"], ["font"], ["color"]],
+      "normal": [["fontSize"], ["font"], ["color"], ["padding"]],
       "hover": [],
       "clicked": [],
       "disabled": []

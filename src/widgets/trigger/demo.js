@@ -6,7 +6,9 @@
 
 import React from 'react';
 import Trigger from './';
+import Grid from '../grid';
 import OpenTrigger from './OpenTrigger';
+const { Row, Col } = Grid;
 
 function preventDefault(e) {
   e.preventDefault();
@@ -195,6 +197,272 @@ class Test extends React.Component<PropsType, StateType> {
               trigger alwaysOpen
             </a>
           </OpenTrigger>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div
+          id="innerContainerId"
+          style={{
+            width: 250,
+            height: 100,
+            border: '1px solid blue',
+          }}
+        >
+          <Trigger
+            action={'click'}
+            align={'bottom'}
+            popup={
+              <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
+                根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id
+                弹出弹窗
+              </div>
+            }
+            popupContainerId={'innerContainerId'}
+          >
+            <div
+              style={{
+                width: 50,
+                height: 20,
+                border: '1px solid red',
+              }}
+            >
+              点击弹窗
+            </div>
+          </Trigger>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p> 默认没有定位的盒子</p>
+        <div
+          id="innerContainerId"
+          style={{
+            width: 250,
+            height: 100,
+            position: 'relative',
+            border: '1px solid blue',
+          }}
+        >
+          <Trigger
+            action={'click'}
+            align={'bottom'}
+            popup={
+              <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
+                根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id
+                弹出弹窗
+              </div>
+            }
+            popupContainerId={'innerContainerId'}
+          >
+            <div
+              style={{
+                width: 50,
+                height: 20,
+                border: '1px solid red',
+              }}
+            >
+              点击弹窗
+            </div>
+          </Trigger>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>popupContainerId 跨多个盒子 的id </p>
+        <div
+          id="outerContainerId"
+          style={{ width: 400, height: 100, position: 'relative', border: '1px solid green' }}
+        >
+          <div
+            id="innerContainerId"
+            style={{
+              width: 350,
+              height: 100,
+              position: 'relative',
+              border: '1px solid blue',
+            }}
+          >
+            <div
+              id="ContainerId"
+              style={{
+                width: 250,
+                height: 100,
+                position: 'relative',
+                border: '1px solid blue',
+              }}
+            >
+              <Trigger
+                createPortal
+                action={'click'}
+                align={'bottom'}
+                popup={
+                  <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
+                    根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id
+                    弹出弹窗
+                  </div>
+                }
+                popupContainerId={'outerContainerId'}
+              >
+                <div
+                  style={{
+                    width: 50,
+                    height: 20,
+                    border: '1px solid red',
+                  }}
+                >
+                  点击弹窗
+                </div>
+              </Trigger>
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>popupContainerId id找不到的情况 </p>
+        <div
+          id="outerContainerId"
+          style={{ width: 400, height: 100, position: 'relative', border: '1px solid green' }}
+        >
+          <Trigger
+            action={'click'}
+            align={'bottom'}
+            popup={
+              <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
+                根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id
+                弹出弹窗
+              </div>
+            }
+            popupContainerId={'findNoId'}
+          >
+            <div
+              style={{
+                width: 50,
+                height: 20,
+                border: '1px solid red',
+              }}
+            >
+              点击弹窗
+            </div>
+          </Trigger>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>popupContainerId 赋值 和trigger无关的盒子 的id </p>
+        <Trigger
+          action={'click'}
+          align={'bottom'}
+          popup={
+            <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
+              根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id
+              弹出弹窗
+            </div>
+          }
+          popupContainerId={'otherContainer'}
+        >
+          <div
+            style={{
+              width: 50,
+              height: 20,
+              border: '1px solid red',
+            }}
+          >
+            点击弹窗
+          </div>
+        </Trigger>
+        <div
+          id="otherContainer"
+          style={{ width: 400, height: 100, position: 'relative', border: '1px solid green' }}
+        />
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>createPortal </p>
+        <Trigger
+          createPortal
+          action={'click'}
+          align={'bottom'}
+          popup={
+            <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
+              根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id
+              弹出弹窗
+            </div>
+          }
+        >
+          <div
+            style={{
+              width: 50,
+              height: 20,
+              border: '1px solid red',
+            }}
+          >
+            点击弹窗
+          </div>
+        </Trigger>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>模拟ide预览的情况</p>
+        <div>
+          <Row>
+            <Col span={6}>
+              <div
+                id="container"
+                style={{ height: 50, position: 'relative', border: '1px solid green' }}
+              />
+            </Col>
+          </Row>
+
+          <Row>
+            <Col span={6}>
+              <div style={{ height: 50 }}>
+                <div style={{ height: '100%', position: 'absolute' }}>
+                  <Trigger
+                    action={'click'}
+                    align={'top'}
+                    popup={
+                      <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
+                        根据父容器id 弹出弹窗 根据父容器id 弹出弹窗 根据父容器id 弹出弹窗
+                        根据父容器id 弹出弹窗
+                      </div>
+                    }
+                    popupContainerId={'container'}
+                  >
+                    <div
+                      style={{
+                        width: 50,
+                        height: 20,
+                        border: '1px solid red',
+                      }}
+                    >
+                      点击弹窗
+                    </div>
+                  </Trigger>
+                </div>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={6}>
+              <div style={{ height: 50, position: 'relative', border: '1px solid green' }} />
+            </Col>
+          </Row>
         </div>
       </div>
     );

@@ -141,7 +141,7 @@ const Title: Object = CSSComponent({
   tag: 'div',
   className: 'TooltipTitle',
   normal: {
-    selectNames: [['color'], ['font'], ['fontSize'], ['padding']],
+    selectNames: [['color'], ['font'], ['fontSize'], ['margin']],
     defaultTheme: {
       color: defaultColor,
       fontSize: 12,
@@ -175,6 +175,7 @@ const ChildrenContainer: Object = CSSComponent({
   },
   css: css`
     display: inline-block;
+    height: 100%;
   `,
 });
 
@@ -245,17 +246,18 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       action,
       popArrowType,
       children = <div />,
-      size,
       getPartOfThemeProps,
       alwaysOpen,
       liquidLayout,
+      createPortal = true,
+      popupContainerId,
+      getPopTargetDom,
     } = this.props;
     const { visible } = this.state;
     const direction = this.getDirection(placement);
     const getTarget: Function = cmp => (this.trigger = cmp);
     const contentThemeProps = getPartOfThemeProps('Container', {
       props: {
-        size,
         popArrowType,
         direction,
       },
@@ -273,7 +275,8 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     const childrenThemeProps = deepMerge(defaultTheme(), contentThemeProps);
     return (
       <Trigger
-        createPortal={false}
+        popupContainerId={popupContainerId}
+        createPortal={createPortal}
         lazy={false}
         alwaysOpen={alwaysOpen}
         liquidLayout={liquidLayout}
@@ -281,6 +284,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
         popupVisible={visible}
         align={placement}
         ref={getTarget}
+        getPopTargetDom={getPopTargetDom}
         onPopupVisibleChange={this.onVisibleChange}
         action={action}
         direction={direction}

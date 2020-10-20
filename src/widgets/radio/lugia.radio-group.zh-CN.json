@@ -1,5 +1,6 @@
 {
   "widgetName": "Group",
+  "viewClassName": "RadioGroup",
   "title": "单选框组",
   "desc": "单选框组。",
   "props": {
@@ -58,7 +59,7 @@
     },
     "size": {
       "type": "RadioButtonSizeType",
-      "desc": "指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设"
+      "desc": "指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large 或不设"
     }
   },
   "events": {
@@ -74,19 +75,19 @@
     }
   },
   "type": {
-    "RadioStylesType": ["default", "vertical"],
-    "RadioChildType": ["default", "button"],
-    "RadioButtonSizeType": ["default", "small", "large", "bigger"],
-    "RadioStyle": {
-      "color": {
-        "type": "string",
-        "desc": "Radio 的颜色"
-      },
-      "width": {
-        "type": "number",
-        "desc": "Radio 的宽度"
-      }
-    }
+    "RadioStylesType": [
+      { "value": "default", "text": "正常" },
+      { "value": "vertical", "text": "竖直" }
+    ],
+    "RadioChildType": [
+      { "value": "default", "text": "正常" },
+      { "value": "button", "text": "按钮" }
+    ],
+    "RadioButtonSizeType": [
+      { "value": "default", "text": "正常" },
+      { "value": "small", "text": "小" },
+      { "value": "large", "text": "大" }
+    ]
   },
   "category": ["数据录入"],
   "designInfo": {
@@ -167,40 +168,18 @@
             "CheckButtonChecked": {
               "name": "选中样式",
               "desc": "选中样式",
-              "normal": {
-                "selectNames": [
-                  ["opacity"],
-                  ["border"],
-                  ["borderRadius"],
-                  ["background"],
-                  ["width"],
-                  ["height"],
-                  ["color"],
-                  ["font"],
-                  ["padding"]
-                ],
-                "nth": [
-                  ["opacity"],
-                  ["border"],
-                  ["borderRadius"],
-                  ["background"],
-                  ["width"],
-                  ["height"],
-                  ["color"],
-                  ["font"],
-                  ["padding"]
-                ]
-              },
-              "disabled": {
-                "selectNames": [
-                  ["opacity"],
-                  ["border"],
-                  ["borderRadius"],
-                  ["background"],
-                  ["color"]
-                ],
-                "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
-              }
+              "normal": [
+                ["opacity"],
+                ["border"],
+                ["borderRadius"],
+                ["background"],
+                ["width"],
+                ["height"],
+                ["color"],
+                ["font"],
+                ["padding"]
+              ],
+              "disabled": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
             },
             "CheckButtonCancel": {
               "name": "取消状态样式",
@@ -228,7 +207,6 @@
       "name": "单选框组整体配置",
       "desc": "单选框组整体配置",
       "normal": [
-        ["opacity"],
         ["border"],
         ["borderRadius"],
         ["background"],
@@ -245,9 +223,7 @@
         "Container": {
           "name": "整体样式",
           "desc": "整体样式",
-          "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
-          "hover": [["opacity"]],
-          "disabled": [["opacity"]]
+          "normal": [["margin"], ["padding"], ["width"], ["height"]]
         },
         "RadioText": {
           "name": "文字样式",
@@ -286,12 +262,20 @@
             ["boxShadow"],
             ["width"],
             ["height"]
+          ],
+          "disabled": [
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"],
+            ["width"],
+            ["height"]
           ]
         },
         "RadioInnerChecked": {
           "name": "选中内框样式",
           "desc": "选中内框样式",
-          "normal": [["background"], ["width"], ["height"]]
+          "normal": [["background"], ["width"], ["height"], ["borderRadius"]]
         },
         "RadioEdgeCancel": {
           "name": "取消状态外框样式",
@@ -303,13 +287,12 @@
             ["boxShadow"],
             ["width"],
             ["height"]
-          ],
-          "disabled": [["background"], ["borderRadius"], ["border"]]
+          ]
         },
         "RadioInnerCancel": {
           "name": "取消状态内框样式",
           "desc": "取消状态内框样式",
-          "normal": [["background"], ["width"], ["height"]]
+          "normal": [["background"], ["width"], ["height"], ["borderRadius"]]
         }
       }
     }

@@ -35,6 +35,7 @@ const TreeSelect = 'lugia_widget_TreeSelect';
 const TreeSelectLimitTitle = 'lugia_widget_TreeSelectLimitTitle';
 const ThrottleScroller = 'lugia_widget_ThrottleScroller';
 const Empty = 'lugia_widget_Empty';
+const PageLayout = 'lugia_widget_PageLayout';
 
 /* add by wangcuixia */
 const Switch = 'lugia_widget_Switch';
@@ -127,6 +128,10 @@ const Pagination = 'lugia_widget_Pagination';
 const BasicElements = 'lugia_widget_BasicElements';
 const Textarea = 'lugia_widget_Textarea';
 const EditTable = 'lugia_widget_EditTable';
+const Lugiad = 'lugia_widget_Lugiad';
+
+/* add by zhanglunyu */
+const Image = 'lugia_widget_Image';
 
 export default {
   Button,
@@ -154,6 +159,7 @@ export default {
   CheckIcon,
   ClearIcon,
   DropMenu,
+  Dropmenu: DropMenu,
   Tree,
   TreeSelect,
   TreeSelectLimitTitle,
@@ -228,6 +234,7 @@ export default {
   Popconfirm,
   Breadcrumb,
   NavMenu,
+  Navmenu: NavMenu,
   AutoComplete,
   PageLoading,
   Table,
@@ -236,4 +243,7 @@ export default {
   BasicElements,
   Textarea,
   EditTable,
+  Lugiad,
+  Image,
+  PageLayout,
 };

@@ -10,10 +10,9 @@ import Widget from '../consts/index';
 import { TabType, TabPositionType } from '../css/tabs';
 import Icon from '../icon';
 import Divider from '../divider';
-import { isVertical, matchType } from './utils';
+import { isVertical, matchType, getTextAlign } from './utils';
 import { ObjectUtils } from '@lugia/type-utils';
-
-import CSSComponent, { css, keyframes, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import get from '../css/theme-common-dict';
 import { deepMerge } from '@lugia/object-utils';
@@ -51,6 +50,7 @@ const SelectTab = CSSComponent({
     defaultTheme: {
       color: darkGreyColor,
       fontSize: 14,
+      height: 32,
     },
     getCSS: (theme: Object, themeProps: Object) => {
       const { color } = theme;
@@ -172,55 +172,14 @@ const BaseTab = CSSComponent({
 
 SelectTab.displayName = 'Tabpane';
 
-const addWidth = keyframes`
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 100%;
-    }
-`;
-
-const addHeight = keyframes`
-    0% {
-      height: 0;
-    }
-    100% {
-      height: 100%;
-    }
-`;
-
 const Title = CSSComponent({
   tag: 'div',
   className: 'TitleLine',
   normal: {
-    selectNames: [['height']],
-    defaultTheme: {
-      height: 42,
-    },
+    selectNames: [],
     getCSS: (theme: Object, themeProps: Object) => {
       const { textAlign } = theme;
-      let justify = 'center';
-      switch (textAlign) {
-        case 'left':
-          justify = 'flex-start';
-          break;
-        case 'right':
-          justify = 'flex-end';
-          break;
-        case 'justify':
-          justify = 'space-between';
-          break;
-        default:
-          break;
-      }
-      return `justify-content: ${justify};`;
-    },
-    getThemeMeta: (theme: Object, themeProps: Object) => {
-      const { height } = theme;
-      return {
-        lineHeight: height ? `${height}` : '3.4rem',
-      };
+      return `justify-content:${getTextAlign(textAlign)};`;
     },
   },
   hover: {
@@ -240,6 +199,7 @@ const Title = CSSComponent({
     box-sizing: border-box;
     user-select: none;
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
 
@@ -253,53 +213,14 @@ const Title = CSSComponent({
 });
 
 const CardTitle = CSSComponent({
-  tag: 'div',
+  extend: Title,
   className: 'TitleCard',
-  normal: {
-    selectNames: [['height'], ['lineHeight']],
-    defaultTheme: {
-      height: 32,
-      lineHeight: 32,
-    },
-    getThemeMeta: (theme: Object, themeProps: Object) => {
-      const { height } = theme;
-      const { propsConfig: { tabType } = {} } = themeProps;
-      if (tabType === 'card') {
-        return {
-          lineHeight: height ? `${height}px` : '32px',
-          width: '100%',
-        };
-      }
-      return {
-        lineHeight: height ? `${height}px` : '32px',
-      };
-    },
-  },
-  hover: {
-    selectNames: [['color']],
-    defaultTheme: {
-      color: themeColor,
-    },
-  },
-  disabled: {
-    selectNames: [['color']],
-    defaultTheme: {
-      color: disableTextColor,
-    },
-  },
   css: css`
-    position: relative;
     display: inline-flex;
-    align-items: center;
-    box-sizing: border-box;
-    user-select: none;
     &:focus {
       color: ${get('themeColor')};
     }
   `,
-  option: {
-    hover: true,
-  },
 });
 
 const ClearButtonContainer = CSSComponent({
@@ -559,17 +480,14 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     const themeObj = {
       [viewClass]: {
         normal: {
-          color: darkGreyColor,
+          color: isSelect ? themeColor : darkGreyColor,
           fontSize: sFontSize,
           getThemeMeta: (theme: Object, themeProps: Object) => {
-            const { propsConfig: { isSelect } = {} } = themeProps;
-            const titleSelectColor = isSelect ? { color: themeColor } : {};
             return {
               margin: {
                 left: suffixIcon ? marginToSameElement : 0,
                 right: icon ? marginToSameElement : 0,
               },
-              ...titleSelectColor,
             };
           },
         },

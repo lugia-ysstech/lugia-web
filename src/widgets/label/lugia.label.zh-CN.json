@@ -2,6 +2,7 @@
   "widgetName": "Label",
   "title": "文本",
   "desc": "文本组件",
+  "tag": "label 文本 文字 字符 字符串 中文 英文 text",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -22,6 +23,10 @@
       "type": "string",
       "desc": "文本前缀内容",
       "defaultValue": "*"
+    },
+    "title": {
+      "type": "string",
+      "desc": "文本提示内容"
     }
   },
   "events": {
@@ -54,7 +59,11 @@
         ["textAlign"],
         ["border"],
         ["borderRadius"],
-        ["boxShadow"]
+        ["boxShadow"],
+        ["wordBreak"],
+        ["whiteSpace"],
+        ["textOverflow"],
+        ["overflow"]
       ],
       "hover": [
         ["color"],
@@ -78,32 +87,9 @@
     "LabelPrefix": {
       "name": "文本前缀",
       "desc": "文本前缀的样式",
-      "normal": [
-        ["color"],
-        ["font"],
-        ["lineHeight"],
-        ["margin"],
-        ["cursor"],
-        ["textAlign"]
-      ],
+      "normal": [["color"], ["font"], ["lineHeight"], ["margin"], ["cursor"], ["textAlign"]],
       "hover": [["color"], ["cursor"]],
       "disabled": [["color"], ["cursor"]]
-    }
-  },
-  "defaultTheme": {
-    "Container": {
-      "normal": {
-        "fontSize": 12,
-        "color": "#333",
-        "textAlign": "left"
-      }
-    },
-    "LabelPrefix": {
-      "normal": {
-        "color": "#333",
-        "fontSize": 12,
-        "textAlign": "left"
-      }
     }
   }
 }

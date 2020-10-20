@@ -41,9 +41,9 @@
             "name": "总数文字",
             "path": ["TransferHeaderText"],
             "description": {
-              "appearancePart": {
-                "text": "总数文字",
-                "desc": "总数文字"
+              "textPart": {
+                "text": "总数文本",
+                "desc": "文本配置区块的显示文本"
               }
             }
           }
@@ -84,11 +84,11 @@
                 }
               },
               {
-                "name": "外观",
+                "name": "图标",
                 "path": ["TransferPanelHeaderCheckbox", "CheckboxInnerChecked"],
                 "description": {
                   "appearancePart": {
-                    "text": "外观",
+                    "text": "图标",
                     "desc": "外观"
                   }
                 }
@@ -110,11 +110,11 @@
                 }
               },
               {
-                "name": "外观",
+                "name": "图标",
                 "path": ["TransferPanelHeaderCheckbox", "CheckboxInnerIndeterminate"],
                 "description": {
                   "appearancePart": {
-                    "text": "外观",
+                    "text": "图标",
                     "desc": "外观"
                   }
                 }
@@ -127,13 +127,109 @@
             "data": [
               {
                 "name": "文字",
-                "path": ["TransferPanelHeaderCheckbox","CheckboxText"],
+                "path": ["TransferPanelHeaderCheckbox", "CheckboxText"],
+                "props": [{ "name": "title", "typeInTheme": "text" }],
                 "description": {
                   "textPart": {
                     "text": "文字",
                     "desc": "文字"
                   }
                 }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "列表菜单",
+        "iconClass": "transferList",
+        "children": [
+          {
+            "title": "整体面板",
+            "iconClass": "menubackground",
+            "data": [
+              {
+                "name": "选择框整体配置",
+                "path": ["TransferPanelMenu", "Container"],
+                "description": {
+                  "appearancePart": { "text": "外框", "desc": "面板中外观配置的区" },
+                  "spacingPart": { "text": "padding/margin", "desc": "面板内外边距配置区" }
+                }
+              }
+            ]
+          },
+          {
+            "title": "默认项",
+            "iconClass": "Default",
+            "data": [
+              {
+                "name": "项的外盒",
+                "path": ["TransferPanelMenu", "MenuItem", "MenuItemWrap"],
+                "description": {
+                  "appearancePart": { "text": "选项背景", "desc": "项的外盒外观配置区" },
+                  "spacingPart": { "text": "padding/margin", "desc": "项的外盒内外边距配置区" }
+                }
+              },
+              {
+                "name": "文本框",
+                "path": ["TransferPanelMenu", "MenuItem", "Text"],
+                "description": { "textPart": { "text": "标题文本", "desc": "文本框置内外边距配置区" } }
+              }
+            ]
+          },
+          {
+            "title": "选中项",
+            "iconClass": "Checked",
+            "data": [
+              {
+                "name": "选中项的外盒",
+                "path": ["TransferPanelMenu", "MenuItem", "SelectedMenuItemWrap"],
+                "description": {
+                  "appearancePart": { "text": "选项背景", "desc": "文本配置区块的显示文本" },
+                  "spacingPart": { "text": "padding/margin", "desc": "选中项内外边距配置区" }
+                }
+              },
+              {
+                "name": "文本框",
+                "path": ["TransferPanelMenu", "MenuItem", "CheckedText"],
+                "description": { "textPart": { "text": "标题文本", "desc": "文本框置内外边距配置区" } }
+              }
+            ]
+          },
+          {
+            "title": "选择器",
+            "iconClass": "checkboxCheck",
+            "children": [
+              {
+                "title": "未选中",
+                "iconClass": "checkboxUncheck",
+                "data": [
+                  {
+                    "name": "Checkbox未选中边框配置",
+                    "path": ["TransferPanelMenu", "MenuItem", "Checkbox", "CheckboxEdgeUnChecked"],
+                    "description": { "appearancePart": { "desc": "文本配置区块的显示文本" } }
+                  }
+                ]
+              },
+              {
+                "title": "选中",
+                "iconClass": "checkboxCheck",
+                "data": [
+                  {
+                    "name": "Checkbox选中后边框配置",
+                    "path": ["TransferPanelMenu", "MenuItem", "Checkbox", "CheckboxEdgeChecked"],
+                    "description": {
+                      "appearancePart": { "text": "外框", "desc": "Checkbox选中后边框配置" }
+                    }
+                  },
+                  {
+                    "name": "Checkbox选中样式配置",
+                    "path": ["TransferPanelMenu", "MenuItem", "Checkbox", "CheckboxInnerChecked"],
+                    "description": {
+                      "appearancePart": { "text": "图标", "desc": "Checkbox选中样式配置" }
+                    }
+                  }
+                ]
               }
             ]
           }
@@ -173,15 +269,26 @@
                 "name": "输入框",
                 "path": ["TransferSearchInput", "Container"],
                 "description": {
-                  "appearancePart": {
-                    "text": "输入框",
-                    "desc": "输入框"
+                  "textPart": {
+                    "text": "输入文本",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "默认文本",
+                "path": ["TransferSearchInput", "Placeholder"],
+                "description": {
+                  "textPart": {
+                    "text": "默认文本",
+                    "desc": "文本配置区块的显示文本"
                   }
                 }
               },
               {
                 "name": "清除图标",
-                "path": ["TransferSearchInput", "InputClearButton"],
+                "path": ["TransferSearchInput", "ClearButton"],
+                "props": [{ "name": "transferClearIcon", "typeInTheme": "icon" }],
                 "description": {
                   "textPart": {
                     "text": "清除图标",
@@ -196,8 +303,20 @@
             "iconClass": "iconsearch",
             "data": [
               {
+                "name": "前缀图标",
+                "path": ["TransferSearchInput", "InputPrefix"],
+                "props": [{ "name": "transferPrefixIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标"
+                  }
+                }
+              },
+              {
                 "name": "后缀图标",
                 "path": ["TransferSearchInput", "InputSuffix"],
+                "props": [{ "name": "transferSuffixIcon", "typeInTheme": "icon" }],
                 "description": {
                   "textPart": {
                     "text": "后缀图标",
@@ -215,11 +334,11 @@
         "children": [
           {
             "title": "面板",
-            "iconClass": "treeBackground",
+            "iconClass": "transferCancelBackground",
             "data": [
               {
                 "name": "面板",
-                "path": ["TransferCancelCheckbox", "CheckboxWrap"],
+                "path": ["TransferCancelBox"],
                 "description": {
                   "appearancePart": {
                     "text": "面板",
@@ -231,7 +350,7 @@
           },
           {
             "title": "取消项",
-            "iconClass": "TransferCancelCheckbox",
+            "iconClass": "transferCancelCheckbox",
             "children": [
               {
                 "title": "后台取消",
@@ -245,6 +364,13 @@
                         "text": "外观",
                         "desc": "外观"
                       }
+                    }
+                  },
+                  {
+                    "name": "取消状态图标样式",
+                    "path": ["TransferCancelCheckbox", "CheckboxInnerCancel"],
+                    "description": {
+                      "appearancePart": { "text": "图标", "desc": "面板中外观配置的区块显示文本" }
                     }
                   }
                 ]
@@ -260,16 +386,6 @@
                       "textPart": {
                         "text": "文字",
                         "desc": "文字"
-                      }
-                    }
-                  },
-                  {
-                    "name": "外观",
-                    "path": ["TransferCancelCheckbox", "CheckboxInnerCancel"],
-                    "description": {
-                      "textPart": {
-                        "text": "外观",
-                        "desc": "外观"
                       }
                     }
                   }
@@ -319,6 +435,16 @@
                 "desc": "头部面板"
               }
             }
+          },
+          {
+            "name": "总数文本",
+            "path": ["TransferHeaderText"],
+            "description": {
+              "textPart": {
+                "text": "总数文本",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
           }
         ]
       },
@@ -357,12 +483,12 @@
                 }
               },
               {
-                "name": "外观",
+                "name": "选中图标样式",
                 "path": ["TransferPanelHeaderCheckbox", "CheckboxInnerChecked"],
                 "description": {
                   "appearancePart": {
-                    "text": "外观",
-                    "desc": "外观"
+                    "text": "图标",
+                    "desc": "面板中外观配置的区块显示文本"
                   }
                 }
               }
@@ -383,13 +509,10 @@
                 }
               },
               {
-                "name": "外观",
+                "name": "半选图标样式",
                 "path": ["TransferPanelHeaderCheckbox", "CheckboxInnerIndeterminate"],
                 "description": {
-                  "appearancePart": {
-                    "text": "外观",
-                    "desc": "外观"
-                  }
+                  "appearancePart": { "text": "图标", "desc": "面板中外观配置的区块显示文本" }
                 }
               }
             ]
@@ -400,7 +523,8 @@
             "data": [
               {
                 "name": "文字",
-                "path": ["TransferHeaderText"],
+                "path": ["TransferPanelHeaderCheckbox", "CheckboxText"],
+                "props": [{ "name": "title", "typeInTheme": "text" }],
                 "description": {
                   "textPart": {
                     "text": "文字",
@@ -521,6 +645,23 @@
             ]
           },
           {
+            "title": "展开图标",
+            "iconClass": "expandIcon",
+            "data": [
+              {
+                "name": "展开图标",
+                "path": ["TransferPanelTree", "TreeItem", "Switch"],
+                "props": [{ "name": "switchIconNames", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "展开图标",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              }
+            ]
+          },
+          {
             "title": "多选框",
             "iconClass": "checkboxCheck",
             "children": [
@@ -559,7 +700,7 @@
                     "path": ["TransferPanelTree", "TreeItem", "Checkbox", "CheckboxInnerChecked"],
                     "description": {
                       "appearancePart": {
-                        "text": "内框",
+                        "text": "图标",
                         "desc": "面板中外观配置的区块显示文本"
                       }
                     }
@@ -595,7 +736,7 @@
                     ],
                     "description": {
                       "appearancePart": {
-                        "text": "内框",
+                        "text": "图标",
                         "desc": "面板中外观配置的区块显示文本"
                       }
                     }
@@ -665,16 +806,87 @@
         ]
       },
       {
+        "title": "搜索框",
+        "iconClass": "search",
+        "children": [
+          {
+            "title": "主体",
+            "iconClass": "input",
+            "data": [
+              {
+                "name": "输入框",
+                "path": ["TransferSearchInput", "Container"],
+                "description": {
+                  "textPart": {
+                    "text": "输入文本",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "默认文本",
+                "path": ["TransferSearchInput", "Placeholder"],
+                "description": {
+                  "textPart": {
+                    "text": "默认文本",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "清除图标",
+                "path": ["TransferSearchInput", "ClearButton"],
+                "props": [{ "name": "transferClearIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "清除图标",
+                    "desc": "清除图标"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "前/后缀图标",
+            "iconClass": "iconsearch",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["TransferSearchInput", "InputPrefix"],
+                "props": [{ "name": "transferPrefixIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标"
+                  }
+                }
+              },
+              {
+                "name": "后缀图标",
+                "path": ["TransferSearchInput", "InputSuffix"],
+                "props": [{ "name": "transferSuffixIcon", "typeInTheme": "icon" }],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
         "title": "取消项面板",
         "iconClass": "transferCancel",
         "children": [
           {
             "title": "面板",
-            "iconClass": "treeBackground",
+            "iconClass": "transferCancelBackground",
             "data": [
               {
                 "name": "面板",
-                "path": ["TransferCancelCheckbox", "CheckboxWrap"],
+                "path": ["TransferCancelBox"],
                 "description": {
                   "appearancePart": {
                     "text": "面板",
@@ -686,7 +898,7 @@
           },
           {
             "title": "取消项",
-            "iconClass": "TransferCancelCheckbox",
+            "iconClass": "transferCancelCheckbox",
             "children": [
               {
                 "title": "后台取消",
@@ -700,6 +912,13 @@
                         "text": "外观",
                         "desc": "外观"
                       }
+                    }
+                  },
+                  {
+                    "name": "取消状态图标样式",
+                    "path": ["TransferCancelCheckbox", "CheckboxInnerCancel"],
+                    "description": {
+                      "appearancePart": { "text": "图标", "desc": "面板中外观配置的区块显示文本" }
                     }
                   }
                 ]
@@ -715,16 +934,6 @@
                       "textPart": {
                         "text": "文字",
                         "desc": "文字"
-                      }
-                    }
-                  },
-                  {
-                    "name": "外观",
-                    "path": ["TransferCancelCheckbox", "CheckboxInnerCancel"],
-                    "description": {
-                      "textPart": {
-                        "text": "外观",
-                        "desc": "外观"
                       }
                     }
                   }

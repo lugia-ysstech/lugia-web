@@ -276,7 +276,6 @@ export const MenuContainer = CSSComponent({
     user-select: none;
     padding-left: 0;
     list-style: none;
-    overflow: hidden;
     transition: all 0.3s;
   `,
   option: { hover: true },
@@ -489,10 +488,10 @@ export const Text = CSSComponent({
   tag: 'span',
   className: 'Text',
   normal: {
-    selectNames: [['font'], ['fontSize']],
+    selectNames: [['font'], ['fontSize'], ['color'], ['margin'], ['padding']],
   },
   hover: {
-    selectNames: [['font'], ['fontSize']],
+    selectNames: [['font'], ['fontSize'], ['color'], ['margin'], ['padding']],
   },
   css: css`
     transition: all 0.3s;

@@ -2,6 +2,7 @@
   "widgetName": "Button",
   "title": "按钮",
   "desc": "方便用户点击操作",
+  "tag": "按钮 button 按键 主按钮 背景按钮 主要按钮 基本按钮",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -57,6 +58,12 @@
       "type": "boolean",
       "desc": "按钮宽度为父元素宽度",
       "defaultValue": false
+    },
+    "transition": {
+      "type": "boolean",
+      "desc": "是否开启过渡效果，默认开启true，关闭为false",
+      "defaultValue": false,
+      "propsDefaultValue": true
     }
   },
   "events": {
@@ -72,9 +79,22 @@
     }
   },
   "type": {
-    "ButtonShape": ["default", "round"],
-    "ButtonType": ["default", "primary", "success", "warning", "danger", "link"],
-    "ButtonSize": ["default", "small", "large"],
+    "ButtonShape": [
+      { "value": "default", "text": "默认型" },
+      { "value": "round", "text": "圆角型" }
+    ],
+    "ButtonType": [
+      { "value": "default", "text": "默认类型" },
+      { "value": "primary", "text": "主题类型" },
+      { "value": "success", "text": "成功类型" },
+      { "value": "warning", "text": "警告类型" },
+      { "value": "danger", "text": "危险类型" },
+      { "value": "link", "text": "链接类型" }
+    ],
+    "ButtonSize": [
+      { "value": "default", "text": "默认尺寸" },
+      { "value": "small", "text": "小尺寸" },
+      { "value": "large", "text": "大尺寸" }],
     "ButtonStyle": {
       "width": {
         "type": "number",
@@ -96,6 +116,7 @@
       "sequence": 1,
       "title": "朴素按钮",
       "desc": "朴素按钮",
+      "tag": "按钮 button 次要按钮 边框按钮 线框按钮",
       "props": {
         "plain": true
       },
@@ -151,6 +172,7 @@
       "sequence": 1,
       "title": "图标按钮",
       "desc": "图标按钮",
+      "tag": "按钮 button 组合按钮 图标背景按钮 Icon按钮",
       "props": {
         "icon": "lugia-icon-logo_lugia"
       },
@@ -204,8 +226,9 @@
     },
     "CircleButton": {
       "sequence": 1,
-      "title": "圆形图标按钮",
-      "desc": "圆形图标按钮",
+      "title": "仅图标按钮",
+      "desc": "仅图标按钮",
+      "tag": "按钮 button 图标按钮 Icon按钮",
       "props": {
         "circle": true,
         "icon": "lugia-icon-logo_lugia",
@@ -255,6 +278,7 @@
       "sequence": 1,
       "title": "文字按钮",
       "desc": "文字按钮",
+      "tag": "按钮 button 文本按钮 链接按钮 链接文本 Label按钮",
       "props": {
         "type": "link"
       },
@@ -279,6 +303,7 @@
       "sequence": 1,
       "title": "文字图标按钮",
       "desc": "文字图标按钮",
+      "tag": "按钮 button 文本链接 链接按钮 图标文本按钮",
       "props": {
         "type": "link",
         "icon": "lugia-icon-logo_lugia"

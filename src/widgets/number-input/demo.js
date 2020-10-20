@@ -9,6 +9,7 @@ import Theme from '../theme';
 import NumberInput from './';
 import Button from '../button';
 import styled from 'styled-components';
+import SearchIcon from '../icon/SearchIcon';
 
 export class LimitNumberInput extends React.Component<any, any> {
   constructor(props: any) {
@@ -115,7 +116,19 @@ const NumberInputDemo = () => {
           <NumberInput disabled={true} />
           <p>可控制disabled 的numberInput</p>
           <DisabledNumberInput />
-
+          <p>主动聚焦的numberInput</p>
+          <button
+            onClick={() => {
+              this.inputFocus();
+            }}
+          >
+            点击主动聚焦
+          </button>
+          <NumberInput
+            getFocus={focus => {
+              this.inputFocus = focus;
+            }}
+          />
           <p>校验信息显示类型 top 输入值 是否含有5</p>
           <ValidateInput validateType="top" onChange={onChange('limit')} />
           <p>校验信息显示类型 bottom 输入值 是否含有5</p>
@@ -158,8 +171,21 @@ const NumberInputDemo = () => {
             min={30}
             step={10}
           />
+          <p>showArrow false 不显示步长箭头</p>
+          <NumberInput showArrow={false} />
         </Wrapper>
       </Theme>
+
+      <Wrapper style={{ marginTop: '10px' }}>
+        <Theme config={view}>
+          <p>配置后缀图标</p>
+          <NumberInput
+            placeholder="NumberInput"
+            showArrow={false}
+            suffix={<SearchIcon transferSuffixIcon="lugia-icon-direction_caret_down" />}
+          />
+        </Theme>
+      </Wrapper>
     </div>
   );
 };

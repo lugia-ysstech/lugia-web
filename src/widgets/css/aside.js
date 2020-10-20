@@ -4,17 +4,18 @@
  * @flow
  */
 import { px2emcss } from '../css/units';
-import colorsFunc from '../css/stateColor';
 import type { ThemeType } from '@lugia/lugia-web';
 import type { screensType } from '../css/row';
 import styled from 'styled-components';
 import { getMargin, createGetWidthOrHeight } from '../common/ThemeUtils';
 import { getThemeHeightCSS } from './layout';
 import Icon from '../icon';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import { css } from 'styled-components';
+import get from './theme-common-dict';
 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
-const { themeColor } = colorsFunc();
 const getWidth = createGetWidthOrHeight('width', { fontSize: FontSize, defaultWidth: 200 });
 
 type BasicType = {
@@ -48,36 +49,56 @@ const getCollapsedWidth = (props: CSSProps) => {
     return `width: ${em(collapsedWidth)};`;
   }
 };
-const getBackgroundCSS = (props: CSSProps): string => {
-  const { backgroundColor } = props.theme;
-  const background = backgroundColor || themeColor;
-
-  return `background: ${background}`;
+const getBackgroundCSS = () => {
+  return `background: ${get('themeColor')}`;
 };
-export const Aside = styled.div`
-  font-size: ${FontSize}rem;
-  position: relative;
-  transition: all 0.3s;
-  ${getWidth};
-  ${getCollapsedWidth};
-  ${getThemeHeightCSS};
-  ${getMargin};
-`;
-export const Trigger = styled.div`
-  position: absolute;
-  bottom: 0;
-  height: ${em(48)};
-  line-height: ${em(48)};
-  text-align: center;
-  transition: all 0.3s;
-  ${getBackgroundCSS};
-  ${getWidth};
-  ${getCollapsedWidth} cursor: pointer;
-`;
+
+export const Aside = StaticComponent({
+  tag: 'div',
+  className: 'Aside',
+  css: css`
+    font-size: ${FontSize}rem;
+    position: relative;
+    transition: all 0.3s;
+    ${getWidth};
+    ${getCollapsedWidth};
+    ${getThemeHeightCSS};
+    ${getMargin};
+  `,
+});
+
+export const Trigger = CSSComponent({
+  tag: 'div',
+  className: 'Trigger',
+  css: css`
+    position: absolute;
+    bottom: 0;
+    height: ${em(48)};
+    line-height: ${em(48)};
+    text-align: center;
+    transition: all 0.3s;
+    ${getBackgroundCSS};
+    ${getWidth};
+    ${getCollapsedWidth};
+    cursor: pointer;
+  `,
+  normal: {
+    selectNames: [['height'], ['background']],
+  },
+});
+
 export const IconWrap: Object = styled(Icon)`
   color: #fff;
 `;
-export const ChildrenWrap = styled.div`
-  height: 100%;
-  ${getBackgroundCSS};
-`;
+
+export const ChildrenWrap = CSSComponent({
+  tag: 'div',
+  className: 'ChildrenWrap',
+  css: css`
+    height: 100%;
+    ${getBackgroundCSS};
+  `,
+  normal: {
+    selectNames: [['background']],
+  },
+});

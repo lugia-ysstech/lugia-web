@@ -2,6 +2,7 @@
   "widgetName": "BasicElements",
   "title": "基本元素",
   "desc": "基本元素",
+  "tag": "基本元素 BasicElements 矩形 正方形 长方形 基本形状 rectangle square 通用元素",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -9,13 +10,13 @@
       "defaultValue": false
     },
     "shape": {
-      "type": "shapeType",
+      "type": "ShapeType",
       "desc": "基本元素形状",
       "defaultValue": "square"
     }
   },
   "type": {
-    "shapeType": ["circle", "square"]
+    "ShapeType": [{ "value": "circle", "text": "圆形" }, { "value": "square", "text": "方形" }]
   },
   "category": ["通用"],
   "designInfo": {
@@ -23,6 +24,7 @@
       "sequence": 2,
       "title": "圆形元素",
       "desc": "圆形元素",
+      "tag": "圆形元素 BasicElements circular 椭圆形",
       "props": {
         "shape": "circle"
       },
@@ -30,10 +32,7 @@
         "Container": {
           "normal": {
             "width": 32,
-            "height": 32,
-            "background": {
-              "color": "#4d63ff"
-            }
+            "height": 32
           }
         }
       },
@@ -80,10 +79,7 @@
     "Container": {
       "normal": {
         "width": 32,
-        "height": 32,
-        "background": {
-          "color": "#4d63ff"
-        }
+        "height": 32
       }
     }
   }

@@ -2,6 +2,7 @@
   "widgetName": "Message",
   "title": "全局提示",
   "desc": "全局提示，展示操作反馈信息。",
+  "tag": "message 全局提示 提示信息 消息提示 提示窗口 提示弹窗 操作反馈 展示信息",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -14,12 +15,17 @@
     },
     "time": {
       "type": "number",
-      "desc": "自动延时关闭，单位为 秒",
-      "defaultValue": 2
+      "desc": "自定义延时关闭时间，单位为 秒, 设置 0 或 null 时不关闭",
+      "propsDefaultValue": 2,
+      "defaultValue": 0
     },
     "callBack": {
       "type": "Function",
       "desc": "关闭时的回调"
+    },
+    "icon": {
+      "type": "string",
+      "desc": "自定义图标"
     }
   },
   "category": ["反馈"],
@@ -47,6 +53,13 @@
       "name": "Message图标样式配置",
       "desc": "为Message图标配置样式",
       "normal": [["color"], ["font"]]
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 500
+      }
     }
   }
 }

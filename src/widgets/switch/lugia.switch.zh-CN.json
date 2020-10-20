@@ -2,6 +2,7 @@
   "widgetName": "Switch",
   "title": "开关",
   "desc": "开关选择器",
+  "tag": "Switch 开关",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -25,7 +26,7 @@
     },
 
     "size": {
-      "type": "sizeType",
+      "type": "SizeType",
       "desc": "设置开关大小 default | small"
     },
     "isInverse": {
@@ -67,7 +68,7 @@
     }
   },
   "type": {
-    "sizeType": ["default", "small"],
+    "SizeType": [{ "value": "default", "text": "默认尺寸" },{ "value": "small", "text": "小尺寸" }],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
@@ -80,8 +81,6 @@
       "name": "组件打开",
       "desc": "开关组件打开的样式配置",
       "normal": [
-        ["width"],
-        ["height"],
         ["background"],
         ["fontSize"],
         ["borderRadius"],
@@ -98,8 +97,6 @@
       "name": "组件关闭",
       "desc": "开关组件打开的样式配置",
       "normal": [
-        ["width"],
-        ["height"],
         ["background"],
         ["fontSize"],
         ["borderRadius"],
@@ -121,8 +118,7 @@
         ["background"],
         ["borderRadius"],
         ["border"],
-        ["boxShadow"],
-        ["color"]
+        ["boxShadow"]
       ],
       "hover": [],
       "active": [
@@ -141,30 +137,17 @@
       "normal": [
         ["width"],
         ["height"],
-        ["border"],
         ["margin"],
-        ["padding"],
-        ["background"],
-        ["opacity"]
+        ["padding"]
       ],
       "hover": [],
       "active": [],
       "disabled": [
         ["width"],
         ["height"],
-        ["border"],
         ["margin"],
-        ["padding"],
-        ["background"],
-        ["opacity"]
+        ["padding"]
       ]
-    }
-  },
-  "defaultTheme": {
-    "Container": {
-      "normal": {
-        "width": 38
-      }
     }
   }
 }

@@ -3,11 +3,12 @@
  * create by guorg
  * @flow
  */
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { getMargin, getWidth } from '../common/ThemeUtils';
 import { getThemeHeightCSS } from './layout';
 import { px2emcss } from './units';
 import Icon from '../icon';
+import CSSComponent from '@lugia/theme-css-hoc';
 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
@@ -22,15 +23,22 @@ export type BlockProps = {
 };
 export type BlockState = {};
 
-export const Block = styled.div`
-  font-size: ${FontSize}rem;
-  flex: ${props => (props.enlarge ? 'auto' : props.isContent ? 'auto' : '0 0 auto')};
-  display: ${props => (props.display ? 'block' : 'none')};
-  position: relative;
-  ${getWidth}
-  ${getThemeHeightCSS}
-  ${getMargin}
-`;
+export const Block = CSSComponent({
+  tag: 'div',
+  className: 'Block',
+  css: css`
+    font-size: ${FontSize}rem;
+    flex: ${props => (props.enlarge ? 'auto' : props.isContent ? 'auto' : '0 0 auto')};
+    display: ${props => (props.display ? 'block' : 'none')};
+    position: relative;
+    ${getWidth}
+    ${getThemeHeightCSS}
+    ${getMargin}
+  `,
+  normal: {
+    selectNames: [['width'], ['height'], ['margin'], ['background']],
+  },
+});
 export const Enlarge = styled.div`
   position: absolute;
   top: ${em(10)};

@@ -15,7 +15,6 @@ const defaultEditTheme = {
 };
 
 export default class TableCell extends React.Component<TableCellProps, TableCellState> {
-  defaultProps = {};
   currentCell: Object;
   setSelectListener: Object;
   clearSelectInfoListener: Object;
@@ -56,6 +55,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
     const {
       customEditElement,
       editType,
+      columnType,
       selectData,
       align,
       allowEdit,
@@ -63,6 +63,8 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
       record,
       disableEdit,
       listener,
+      allowSelect = true,
+      propsAllowSelect,
     } = this.props;
 
     const { isSelect, editing, clearValue } = this.state;
@@ -70,21 +72,30 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
     const EditElement = customEditElement || EditInput;
     const editingTheme = editing ? defaultEditTheme : {};
     const { isLugiaHead } = record;
-    const propsConfig = { isSelect, align, isLugiaHead, isDisableEdit: !allowEdit };
+    const isAllowSelect = allowSelect && propsAllowSelect;
+    const isAllowEdit = allowEdit && !disableEdit;
+    const propsConfig = {
+      isSelect,
+      align,
+      isLugiaHead,
+      isDisableEdit: !isAllowEdit,
+      isAllowSelect,
+    };
     const editDivTheme = getEditDivTheme(this.props, isLugiaHead, propsConfig, editingTheme);
     const defaultText = clearValue
       ? ''
       : typeof text !== 'object' && isValued(text)
       ? record[text] || text
       : '';
-    const isAllowSelect = allowEdit;
+
     if (editing && !disableEdit) {
+      const currentEditType = isLugiaHead ? columnType : editType;
       return (
         <TdContainer>
           <EditElement
             value={defaultText}
             autoFocus={true}
-            type={editType}
+            type={currentEditType}
             listener={listener}
             data={selectData}
           />
@@ -92,8 +103,8 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
       );
     }
 
-    const { dataIndex, index, selectSuffixElement, customRender } = this.props;
-    const { getSelectColumnMark, onCellClick } = listener;
+    const { dataIndex, index, selectSuffixElement, customRender, showCellTitle } = this.props;
+    const { getSelectColumnMark, onCellClick, onCellDBClick } = listener;
     const selectColumn = getSelectColumnMark(dataIndex);
     return (
       <EditDiv
@@ -107,11 +118,20 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
             isAllowSelect,
           })
         }
+        onDoubleClick={e =>
+          onCellDBClick({
+            e,
+            selectColumn,
+            selectRow: index,
+            isAllowEdit,
+          })
+        }
+        title={showCellTitle ? defaultText : null}
       >
         {customRender && !isLugiaHead
           ? customRender(text, record, index)
           : defaultText && defaultText.toString()}
-        {isAllowSelect && isSelect && selectSuffixElement ? (
+        {allowEdit && isSelect && selectSuffixElement ? (
           <InnerTriggerDiv>{selectSuffixElement}</InnerTriggerDiv>
         ) : null}
       </EditDiv>
@@ -144,11 +164,11 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
     }
   };
 
-  doEnterEditing = (props): void => {
-    const { listener } = this.props;
+  doEnterEditing = (props: Object): void => {
+    const { listener, disableEdit } = this.props;
     const editCell = listener.getEditCell();
     const isCurrentCell = this.isCurrentCell({ editCell });
-    if (!isCurrentCell) {
+    if (!isCurrentCell || disableEdit) {
       return;
     }
 

@@ -553,7 +553,7 @@ describe('NumberInput', () => {
 
       const component = mount(<NumberInput {...props} onChange={onChange} />);
       component.find('input').simulate('change', { target: { value: config.keyPressValue } });
-      expect(getInputComponent(component).state.value).toBe(config.stateValue);
+      expect(Number(getInputComponent(component).state.value)).toBe(config.stateValue);
 
       order.verify(({ onChange }) => {
         const { value, defaultValue } = props;

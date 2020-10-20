@@ -59,7 +59,7 @@ const AvatarWrapper = CSSComponent({
   tag: 'div',
   className: 'AvatarWrapper',
   normal: {
-    selectNames: [['width'], ['height'], ['lineHeight']],
+    selectNames: [['width'], ['height']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { size },
@@ -68,12 +68,14 @@ const AvatarWrapper = CSSComponent({
       const theHeight = getSize(height, getDefaultSize(size));
       return {
         height: theHeight,
-        lineHeight: theHeight,
       };
     },
   },
   css: css`
     text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   `,
 });
 
@@ -92,7 +94,6 @@ const BaseAvatar = CSSComponent({
       ['border'],
       ['borderRadius'],
       ['boxShadow'],
-      ['lineHeight'],
     ],
     defaultTheme: {
       color: defaultColor,
@@ -122,7 +123,6 @@ const BaseAvatar = CSSComponent({
       const theHeight = newSize(height, theSize);
       const theBorderRadius = shape === 'circle' ? '50%' : get('borderRadiusValue');
       return {
-        lineHeight: theHeight,
         borderRadius: getBorderRadius(theBorderRadius),
         width: theWidth,
         height: theHeight,
@@ -163,6 +163,9 @@ const Name = CSSComponent({
   },
   css: css`
     user-select: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   `,
 });
 const Picture = CSSComponent({

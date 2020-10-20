@@ -20,12 +20,15 @@ export type DrawerProps = {
   onClose?: Function,
   children: any,
   getTheme: Function,
+  getContainer?: boolean | Function | React.ReactNode,
+  drawerCloseIcon?: string,
 };
 export type DrawerState = {
   open: boolean,
   opening: boolean,
   closing: boolean,
   transform: boolean,
+  randomValue: number,
 };
 type CSSProps = {
   open: boolean,
@@ -36,6 +39,7 @@ type CSSProps = {
   transform: boolean,
   placement: Direction,
   theme: Object,
+  hasContainer?: boolean,
 };
 
 const FontSize = 1.2;
@@ -56,10 +60,19 @@ const getDrawerWidth = (props: CSSProps) => {
     width: 0;
   `;
 };
+const getDrawerPosition = (props: CSSProps) => {
+  const { hasContainer } = props;
+  if (hasContainer) {
+    return '';
+  }
+  return `
+    position: fixed;
+    top: 0;  
+  `;
+};
 export const Drawer = styled.div`
   font-size: ${FontSize}rem;
-  position: fixed;
-  top: 0;
+  ${getDrawerPosition}
   ${getDrawerWidth};
   height: 100%;
   z-index: 1000;
@@ -77,13 +90,35 @@ const getMaskStyle = (props: CSSProps) => {
     opacity: 0;
   `;
 };
-export const DrawerMask = styled.div`
-  position: fixed;
-  width: 100%;
-  transition: opacity 0.3s linear;
-  ${getMaskStyle};
-  background-color: rgba(0, 0, 0, 0.65);
-`;
+const getDrawerMaskPosition = (props: CSSProps) => {
+  const { hasContainer } = props;
+  if (hasContainer) {
+    return `
+      position: absolute;
+      top: 0;
+      left: 0;
+    `;
+  }
+  return `
+    position: fixed;
+  `;
+};
+
+export const DrawerMask = CSSComponent({
+  tag: 'div',
+  className: 'DrawerMask',
+  css: css`
+    ${getDrawerMaskPosition}
+    width: 100%;
+    transition: opacity 0.3s linear;
+    ${getMaskStyle};
+    background-color: rgba(0, 0, 0, 0.65);
+  `,
+  normal: {
+    selectNames: [['opacity'], ['background']],
+  },
+});
+
 const getAnimateDirection = (props: CSSProps): string => {
   const { placement } = props;
   if (direction.includes(placement)) {
@@ -110,13 +145,42 @@ const getWidthOrHeight = (props: CSSProps) => {
   }
   return width;
 };
+
+const getNewDistance = (distance: string, isPlacedInHorizontal: boolean) => {
+  const currentClientPara = isPlacedInHorizontal ? 'clientHeight' : 'clientWidth';
+  const currentDirection = isPlacedInHorizontal ? 'vh' : 'vw';
+  const currentClientDistance = window.document.documentElement[currentClientPara];
+  if (distance.endsWith(currentDirection) || distance.endsWith('%')) {
+    return (currentClientDistance / 100) * parseFloat(distance);
+  } else if (distance.endsWith('px')) {
+    return parseFloat(distance);
+  }
+  return distance;
+};
+
 const getDrawerAnimate = (props: CSSProps): string => {
-  const { open, opening, closing } = props;
+  const { open, opening, closing, placement, hasContainer } = props;
   const distance = getWidthOrHeight(props);
   const Direction = getAnimateDirection(props);
   const isNumber = typeof distance === 'number';
   const trueDistance = isNumber ? em(-distance) : `-${distance}`;
-  const closeDistance = isNumber ? em(-(distance + 8)) : `calc(-${distance} - 8px)`;
+  const isPlacedInHorizontal = placement === 'top' || placement === 'bottom';
+
+  let newDistance;
+  let isAlsoNubmer = false;
+  if (!isNumber && !hasContainer) {
+    newDistance = getNewDistance(distance, isPlacedInHorizontal);
+    isAlsoNubmer = typeof newDistance === 'number';
+    if (isAlsoNubmer) {
+      newDistance = isPlacedInHorizontal ? Math.max(newDistance, 100) : Math.max(newDistance, 256);
+    }
+  }
+
+  const closeDistance = isNumber
+    ? em(-(distance + 8))
+    : isAlsoNubmer
+    ? `-${newDistance + 8}px`
+    : `calc(-${newDistance} - 8px)`;
   const openFrom = `${Direction}: ${trueDistance};`;
   const openTo = `${Direction}: 0;`;
   const closeFrom = `${Direction}: 0;`;
@@ -183,9 +247,15 @@ const getTransform = (props: CSSProps) => {
   }
 };
 const getPositionCSS = (props: CSSProps): string => {
-  const { type } = props;
+  const { type, hasContainer, placement } = props;
   if (type === 'Drawer') {
     return '';
+  }
+  if (hasContainer) {
+    return css`
+      position: absolute;
+      ${placement === 'top' || placement === 'bottom' ? 'left:0;' : 'top:0;'}
+    `;
   }
   return css`
     position: fixed;
@@ -195,7 +265,7 @@ const iconAngleData = {
   visible: { top: -90, bottom: 90, right: 0, left: 180 },
   invisible: { top: 90, bottom: -90, right: 180, left: 0 },
 };
-export const getIconTransfrom = (visible, placement) => {
+export const getIconTransfrom = (visible, placement = 'right') => {
   if (visible) {
     return `transform: rotateZ(${iconAngleData.visible[placement]}deg)`;
   }
@@ -213,20 +283,38 @@ export const DrawerContentWrap = CSSComponent({
     ${getTransform};
     min-width: 256px;
     min-height: 100px;
+    background: #fff;
   `,
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['borderRadius'],
+      ['opacity'],
+      ['background'],
+      ['border'],
+      ['boxShadow'],
+      ['padding'],
+    ],
   },
 });
 
-export const DrawerContent = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background-color: #fff;
-  border: 0;
-  z-index: 1;
-`;
+export const DrawerContent = CSSComponent({
+  tag: 'div',
+  className: 'DrawerContent',
+  css: css`
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #fff;
+    border: 0;
+    z-index: 1;
+  `,
+  normal: {
+    selectNames: [['background']],
+  },
+});
+
 const getHeaderLugiadCSS = (props: CSSProps): string => {
   const { __lugiad__header__absolute__ = false, type } = props;
   if (__lugiad__header__absolute__ || type === 'Drawer') {
@@ -240,14 +328,23 @@ const getHeaderLugiadCSS = (props: CSSProps): string => {
   }
   return '';
 };
-export const DrawerContentHeader = styled.div`
-  padding: ${HeaderEM(22)} ${HeaderEM(20)} ${HeaderEM(16)};
-  font-size: ${em(16)};
-  line-height: ${HeaderEM(22)};
-  font-weight: 500;
-  color: #333;
-  ${getHeaderLugiadCSS}
-`;
+
+export const DrawerContentHeader = CSSComponent({
+  tag: 'div',
+  className: 'DrawerContentHeader',
+  css: css`
+    padding: ${HeaderEM(22)} ${HeaderEM(20)} ${HeaderEM(16)};
+    font-size: ${em(16)};
+    line-height: ${HeaderEM(22)};
+    font-weight: 500;
+    color: #333;
+    ${getHeaderLugiadCSS}
+  `,
+  normal: {
+    selectNames: [['font'], ['color']],
+  },
+});
+
 export const DrawerContentMain = styled.div`
   font-size: ${em(14)};
   color: #666;
@@ -255,12 +352,6 @@ export const DrawerContentMain = styled.div`
   padding-right: ${ContentEM(20)};
   line-height: 1.5;
   word-wrap: break-word;
-`;
-export const DrawerClose = styled.div`
-  font-size: ${em(16)};
-  position: absolute;
-  right: 0;
-  top: 0;
 `;
 const getCloseLugiadCSS = (props: CSSProps): string => {
   const { __lugiad__header__absolute__ = false, type } = props;
@@ -271,6 +362,14 @@ const getCloseLugiadCSS = (props: CSSProps): string => {
   }
   return '';
 };
+export const DrawerClose = styled.div`
+  font-size: ${em(16)};
+  position: absolute;
+  right: 0;
+  top: 0;
+  ${getCloseLugiadCSS}
+`;
+
 export const CloseText = styled.span`
   display: block;
   width: ${HeaderEM(56)};
@@ -278,7 +377,6 @@ export const CloseText = styled.span`
   text-align: center;
   line-height: ${HeaderEM(60)};
   cursor: pointer;
-  ${getCloseLugiadCSS}
 `;
 const horizontalCommonProperty = `
   height:16px;
@@ -306,7 +404,7 @@ const getHandleWidthOrHeightByDirection = (props: CSSProps) => {
     border-radius: ${isLoacteRight ? '3px 0 0 3px' : '0 3px 3px 0'}
   `;
 };
-export const HandleWrap = StaticComponent({
+export const HandleWrap = CSSComponent({
   tag: 'div',
   className: 'HandleWrap',
   css: css`
@@ -319,4 +417,7 @@ export const HandleWrap = StaticComponent({
     align-items: center;
     cursor: pointer;
   `,
+  normal: {
+    selectNames: [['background'], ['opacity']],
+  },
 });

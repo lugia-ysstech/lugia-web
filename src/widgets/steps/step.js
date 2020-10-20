@@ -14,7 +14,7 @@ import ThemeProvider from '../theme-provider';
 import Icon from '../icon';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
-import { getBorder, getBoxShadow } from '@lugia/theme-utils';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
 import changeColor from '../css/utilsColor';
@@ -47,6 +47,9 @@ const isFlatType = (stepType: StepType): boolean => {
 
 const getStepSize = (size: SizeType) => {
   return isNormalSize(size) ? 32 : 24;
+};
+const getTopCSS = top => {
+  return `top:0;margin-top:${px2remcss(top)};`;
 };
 
 const flatBoxShadowColor = () => changeColor(get('themeColor'), 0, 0, 40).rgba;
@@ -91,7 +94,6 @@ const StepOutContainer = CSSComponent({
   },
   css: css`
     display: inline-flex;
-    position: relative;
     cursor: pointer;
   `,
 });
@@ -100,20 +102,11 @@ const BaseText = CSSComponent({
   tag: 'div',
   className: 'StepBaseText',
   normal: {
-    selectNames: [
-      ['fontSize'],
-      ['font'],
-      ['color'],
-      ['width'],
-      ['height'],
-      ['padding'],
-      ['margin'],
-    ],
+    selectNames: [['fontSize'], ['font'], ['color'], ['width'], ['height']],
   },
   css: css`
     position: absolute;
     display: block;
-    word-break: keep-all;
   `,
 });
 
@@ -121,24 +114,16 @@ const Title = CSSComponent({
   extend: BaseText,
   className: 'StepTitle',
   normal: {
-    selectNames: [
-      ['fontSize'],
-      ['font'],
-      ['color'],
-      ['width'],
-      ['height'],
-      ['padding'],
-      ['margin'],
-    ],
+    selectNames: [['fontSize'], ['font'], ['color'], ['width'], ['height'], ['margin']],
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { size, stepType, orientation, desAlign } = propsConfig;
       let dirCSS = '';
       let positionCSS = '';
-      const top = isDotType(stepType) || stepType === 'icon' ? -20 : isNormalSize(size) ? -20 : -25;
+      const top = isDotType(stepType) ? 20 : isNormalSize(size) ? 40 : 30;
       const left = isDotType(stepType) ? 20 : isNormalSize(size) ? 35 : 30;
       if (isHorizontal(orientation)) {
-        dirCSS = `bottom:${px2remcss(top)};`;
+        dirCSS = getTopCSS(top);
       } else {
         positionCSS = `transform: translateY(-50%);top:50%;left:${px2remcss(left)};`;
       }
@@ -155,15 +140,7 @@ const Description = CSSComponent({
   extend: BaseText,
   className: 'StepDescription',
   normal: {
-    selectNames: [
-      ['fontSize'],
-      ['font'],
-      ['color'],
-      ['width'],
-      ['height'],
-      ['padding'],
-      ['margin'],
-    ],
+    selectNames: [['fontSize'], ['font'], ['color'], ['width'], ['height'], ['margin']],
     getCSS(themeMeta, themeProps) {
       const { width } = themeMeta;
       const { propsConfig } = themeProps;
@@ -172,7 +149,7 @@ const Description = CSSComponent({
       let left = 0;
       let maxWidthCSS = '';
       if (isHorizontal(orientation)) {
-        top = isDotType(stepType) ? 35 : isNormalSize(size) ? 55 : 50;
+        top = isDotType(stepType) ? 40 : isNormalSize(size) ? 60 : 50;
         const maxWidth =
           stepContainerWidth && stepContainerWidth > 220 ? stepContainerWidth - 15 : 200;
         maxWidthCSS = `max-width:${px2remcss(maxWidth)};`;
@@ -180,7 +157,7 @@ const Description = CSSComponent({
         top = isDotType(stepType) ? 15 : isNormalSize(size) ? 25 : 25;
         left = isDotType(stepType) ? 20 : isNormalSize(size) ? 35 : 30;
       }
-      const topCSS = `top:${px2remcss(top)};`;
+      const topCSS = getTopCSS(top);
       const leftPosition = !isHorizontal(orientation) ? `left:${px2remcss(left)};` : '';
       const alignCSS = `text-align:${desAlign && desAlign === 'center' ? 'center' : 'left'};`;
       return `${getWhiteSpaceCSS(width)}${topCSS}${leftPosition}${maxWidthCSS}${alignCSS}`;
@@ -200,24 +177,17 @@ const FlatLineContainer = CSSComponent({
     selectNames: [['width'], ['height']],
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
-      const { isFirst, stepType, orientation } = propsConfig;
-      const padding = isFlatType(stepType) ? 0 : px2remcss(6);
-      let hSize = padding;
-      let vSize = 0;
-      if (isHorizontal(orientation)) {
-        hSize = 0;
-        vSize = padding;
-      }
+      const { isFirst } = propsConfig;
       const display = isFirst ? 'width:0;' : 'flex: 1;';
-      return `padding: ${hSize} ${vSize};${display}`;
+      return `${display}`;
     },
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
-      const { orientation } = propsConfig;
+      const { orientation, size } = propsConfig;
       const { width, height } = themeMeta;
-      const theWidth = getSize(true, width, orientation, 32);
-      const theHeight = getSize(false, height, orientation, 32);
-
+      const defaultSize = isSmallSize(size) ? 24 : 32;
+      const theWidth = getSize(true, width, orientation, defaultSize);
+      const theHeight = getSize(false, height, orientation, defaultSize);
       return {
         width: theWidth,
         height: theHeight,
@@ -226,7 +196,6 @@ const FlatLineContainer = CSSComponent({
   },
   css: css`
     display: inline-flex;
-    position: relative;
     z-index: 10;
   `,
 });
@@ -238,24 +207,22 @@ const SimpleLineContainer = CSSComponent({
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { isFirst, orientation } = propsConfig;
-      const padding = px2remcss(6);
-      let hSize = padding;
+      const margin = px2remcss(6);
+      let hSize = margin;
       let vSize = 0;
       if (isHorizontal(orientation)) {
         hSize = 0;
-        vSize = padding;
+        vSize = margin;
       }
       const display = isFirst ? 'width:0;' : 'flex: 1;';
-      return `padding: ${hSize} ${vSize};${display}`;
+      return `margin: ${hSize} ${vSize};${display}`;
     },
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
       const { width, height } = themeMeta;
-      const lineWith = isHorizontal(orientation) ? '50%' : '100%';
-      const theWidth = getSize(true, width, orientation, lineWith);
-      const theHeight = getSize(false, height, orientation, lineWith);
-
+      const theWidth = getSize(true, width, orientation, '100%');
+      const theHeight = getSize(false, height, orientation, '100%');
       return {
         width: theWidth,
         height: theHeight,
@@ -264,14 +231,13 @@ const SimpleLineContainer = CSSComponent({
   },
   css: css`
     display: inline-flex;
-    position: relative;
   `,
 });
 const SimpleLine = CSSComponent({
   tag: 'div',
   className: 'StepSimpleLine',
   normal: {
-    selectNames: [['width'], ['height'], ['border']],
+    selectNames: [['width'], ['height'], ['border'], ['margin']],
     getThemeMeta(themeMeta, themeProps) {
       const { background = {} } = themeMeta;
       const { propsConfig } = themeProps;
@@ -309,7 +275,7 @@ const FlatLine = CSSComponent({
   tag: 'div',
   className: 'StepFlatLine',
   normal: {
-    selectNames: [['width'], ['height'], ['boxShadow']],
+    selectNames: [['width'], ['height'], ['boxShadow'], ['border'], ['background']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { height, width, boxShadow } = themeMeta;
@@ -328,6 +294,7 @@ const FlatLine = CSSComponent({
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
+      const { background: { color } = {} } = themeMeta;
 
       const getPosition = (type: 'after' | 'before') => {
         const before = type === 'before';
@@ -335,7 +302,7 @@ const FlatLine = CSSComponent({
         const HAfterDirection = before ? 'left' : 'right';
         const VAfterDirection = before ? 'top' : 'bottom';
         const afterDirection = isHorizontal(orientation) ? HAfterDirection : VAfterDirection;
-        return `  
+        return `
            ${beforeDirection}:${px2remcss(1)};
            ${afterDirection}:${px2remcss(-2)};
        `;
@@ -345,7 +312,7 @@ const FlatLine = CSSComponent({
         position: absolute;
         width: ${px2remcss(4)};
         height: ${px2remcss(4)};
-        background:white`;
+        background:${color || 'white'}`;
       return `
        &::before {
         ${commonCSS}
@@ -368,7 +335,7 @@ const NormalFlatLine = CSSComponent({
   tag: 'div',
   className: 'StepNormalFlatLine',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background'], ['border'], ['boxShadow']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { height, width } = themeMeta;
@@ -395,25 +362,28 @@ const StepHeadContainer = CSSComponent({
   normal: {
     selectNames: [['width'], ['height']],
   },
-  css: css`
-    position: relative;
-  `,
 });
 
 const Dot = CSSComponent({
   tag: 'div',
   className: 'StepDot',
   normal: {
-    selectNames: [['background'], ['width'], ['height']],
+    selectNames: [
+      ['background'],
+      ['width'],
+      ['height'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+    ],
     defaultTheme: {
       width: 12,
       height: 12,
+      borderRadius: getBorderRadius('50%'),
     },
   },
   css: css`
-    position: relative;
     display: inLine-block;
-    border-radius: 50%;
   `,
 });
 const IconContainer = CSSComponent({
@@ -473,7 +443,18 @@ const StepInner = CSSComponent({
   tag: 'div',
   className: 'StepInner',
   normal: {
-    selectNames: [['fontSize'], ['width'], ['height'], ['background'], ['border'], ['boxShadow']],
+    selectNames: [
+      ['fontSize'],
+      ['width'],
+      ['height'],
+      ['background'],
+      ['border'],
+      ['boxShadow'],
+      ['borderRadius'],
+    ],
+    defaultTheme: {
+      borderRadius: getBorderRadius('50%'),
+    },
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { width, height } = themeMeta;
@@ -513,7 +494,6 @@ const StepInner = CSSComponent({
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
     margin: auto;
   `,
 });
@@ -526,7 +506,10 @@ const StepContainer = CSSComponent({
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
       const direction = isHorizontal(orientation) ? 'row' : 'column';
-      return `flex-direction: ${direction};`;
+      const position = isHorizontal(orientation)
+        ? 'align-items: center;'
+        : 'justify-content: center;';
+      return `flex-direction: ${direction}; ${position}`;
     },
   },
   css: css`
@@ -591,13 +574,10 @@ const StepInnerContainer = CSSComponent({
     },
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
-      const { orientation, stepStatus, stepType, desAlign } = propsConfig;
-      const position = isHorizontal(orientation)
-        ? 'align-items: center;top: 50%;transform: translateY(-50%);'
-        : 'justify-content: center;';
+      const { stepStatus, stepType, desAlign } = propsConfig;
       const index =
         isFlatType(stepType) && (stepStatus === 'wait' || stepStatus === 'next') ? 9 : 11;
-      return `z-index: ${index};${position};${getTextAlignCenterCSS(desAlign)};`;
+      return `z-index: ${index};${getTextAlignCenterCSS(desAlign)};`;
     },
   },
 });
@@ -672,29 +652,29 @@ class Step extends React.Component<StepProps, StepState> {
     return { stepStatus: theStepStatus };
   }
 
-  getThemeByPartName(partName: string) {
-    const { getPartOfThemeProps } = this.props;
+  getThemeByPartName(partName: string, isHoc?: boolean) {
+    const { getPartOfThemeProps, getPartOfThemeHocProps } = this.props;
     const { stepStatus } = this.state;
-    let theme;
+    let thePartName;
     switch (stepStatus) {
       case 'finish':
-        theme = getPartOfThemeProps(`Finish${partName}`);
+        thePartName = `Finish${partName}`;
         break;
       case 'process':
-        theme = getPartOfThemeProps(`Process${partName}`);
+        thePartName = `Process${partName}`;
         break;
       case 'next':
-        theme = getPartOfThemeProps(`Next${partName}`);
+        thePartName = `Next${partName}`;
         break;
       case 'error':
-        theme = getPartOfThemeProps(`Error${partName}`);
+        thePartName = `Error${partName}`;
         break;
       case 'wait':
       default:
-        theme = getPartOfThemeProps(`Wait${partName}`);
+        thePartName = `Wait${partName}`;
         break;
     }
-    return theme;
+    return isHoc ? getPartOfThemeHocProps(thePartName) : getPartOfThemeProps(thePartName);
   }
 
   componentDidMount() {
@@ -746,7 +726,6 @@ class Step extends React.Component<StepProps, StepState> {
   getThemeColorConfig(CSSType: string, color: string): Object {
     return CSSType === 'background' ? { background: { color } } : { color };
   }
-
   getStepFontColor(stepStatus: StepStatus, stepType: StepType, type?: string) {
     let resultConfigColor;
     switch (stepStatus) {
@@ -911,7 +890,7 @@ class Step extends React.Component<StepProps, StepState> {
   }
 
   matchLine() {
-    const { stepType, isFirst, orientation } = this.props;
+    const { stepType, isFirst, orientation, size } = this.props;
     if (isFirst) {
       return null;
     }
@@ -921,6 +900,7 @@ class Step extends React.Component<StepProps, StepState> {
       isFirst,
       stepType,
       orientation,
+      size,
     };
 
     return isFlatType(stepType) ? (
@@ -946,7 +926,7 @@ class Step extends React.Component<StepProps, StepState> {
 
     const finalThemeProps = deepMerge(resultTheme, theThemeProps);
     if (stepStatus === 'wait' || stepStatus === 'next') {
-      return <FlatLine themeProps={finalThemeProps} />;
+      return <FlatLine themeProps={theThemeProps} />;
     }
     return <NormalFlatLine themeProps={finalThemeProps} />;
   }
@@ -967,13 +947,6 @@ class Step extends React.Component<StepProps, StepState> {
     return <SimpleLine themeProps={lineThemeProps} />;
   }
 
-  getIconByStepStatus(stepStatus: StepStatus): string {
-    return stepStatus === 'finish'
-      ? 'lugia-icon-reminder_check'
-      : stepStatus === 'error'
-      ? 'lugia-icon-reminder_close'
-      : '';
-  }
   getStepBackgroundColor(stepStatus: StepStatus, stepType: StepType) {
     const color =
       (stepStatus === 'finish' || stepStatus === 'process') && isFlatType(stepType)
@@ -1023,15 +996,17 @@ class Step extends React.Component<StepProps, StepState> {
         innerContainerThemeProps
       );
 
-      const { theme: iconThemeProps, viewClass: iconViewClass } = this.props.getPartOfThemeHocProps(
-        'StepInnerIcon'
+      const { theme: iconThemeProps, viewClass: iconViewClass } = this.getThemeByPartName(
+        'StepInnerIcon',
+        true
       );
+
       const newIconTheme = deepMerge(
         {
           [iconViewClass]: {
             normal: {
               getCSS() {
-                return `  
+                return `
                 display: inline-block;
                 user-select: none;
                 text-align: center;
@@ -1063,7 +1038,13 @@ class Step extends React.Component<StepProps, StepState> {
         },
         iconThemeProps
       );
-      const theIcon = this.getIconByStepStatus(stepStatus);
+      const { finishIcon, errorIcon } = this.props;
+      const theIcon =
+        stepStatus === 'finish'
+          ? finishIcon || 'lugia-icon-reminder_check'
+          : stepStatus === 'error'
+          ? errorIcon || 'lugia-icon-reminder_close'
+          : '';
       return (
         <StepInnerContainer themeProps={innerContainerThemeProps}>
           <StepInner
@@ -1073,13 +1054,15 @@ class Step extends React.Component<StepProps, StepState> {
             orientation={orientation}
             stepStatus={stepStatus}
           >
-            <Icon
-              propsConfig={{ ...this.getConfigs(), size }}
-              iconClass={theIcon}
-              theme={newIconTheme}
-              viewClass={iconViewClass}
-              singleTheme
-            />
+            {stepStatus === 'finish' || stepStatus === 'error' ? (
+              <Icon
+                propsConfig={{ ...this.getConfigs(), size }}
+                iconClass={theIcon}
+                theme={newIconTheme}
+                viewClass={iconViewClass}
+                singleTheme
+              />
+            ) : null}
             {this.getStepNumber()}
           </StepInner>
           {this.getTitle()}
@@ -1095,15 +1078,16 @@ class Step extends React.Component<StepProps, StepState> {
     const { icon = 'lugia-icon-financial_cloud', size, desAlign } = this.props;
     const { stepStatus } = this.state;
 
-    const { theme: iconThemeProps, viewClass: iconViewClass } = this.props.getPartOfThemeHocProps(
-      'StepIcon'
+    const { theme: iconThemeProps, viewClass: iconViewClass } = this.getThemeByPartName(
+      'StepIcon',
+      true
     );
     const newIconTheme = deepMerge(
       {
         [iconViewClass]: {
           normal: {
             getCSS() {
-              return `  
+              return `
                   position: absolute;
                   user-select: none;
                   text-align: center;

@@ -9,7 +9,7 @@ import { getDerivedForInput } from '../utils/getDerived';
 import { RangeWrap, RangeWrapInner, Box } from '../styled/styled';
 import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
-import { formatValueIsValid, getIsSame, getOpenProps } from '../utils/booleanUtils';
+import { formatValueIsValid, getIsSame } from '../utils/booleanUtils';
 import { getformatSymbol, getNewStepProps } from '../utils/utils';
 import { getFacePanelContain, getWrapThemeProps } from '../themeConfig/themeConfig';
 type TypeProps = {
@@ -33,8 +33,10 @@ type TypeProps = {
   validateType?: string,
   validateStatus?: string,
   help?: string,
+  middleSymbol?: string,
   alwaysOpen?: boolean,
   onDocumentClick?: Function,
+  popupContainerId?: string,
 };
 type TypeState = {
   value: Array<string>,
@@ -146,11 +148,9 @@ class Range extends Component<TypeProps, TypeState> {
     }
     const { newValue, oldValue, number, event } = parmas;
     const { formatIsValids, isValid } = this.getIsValid(newValue);
-    let visible = isValid;
     if (isValid) {
       this.oldValue = [...newValue];
       this.oldMonthandYear = [...this.monthAndYear];
-      visible = false;
     }
     const hasOldValue = this.oldValue && this.oldValue[0] !== '' && this.oldValue !== '';
     const rangeValue = isValid
@@ -169,7 +169,7 @@ class Range extends Component<TypeProps, TypeState> {
       {
         value: newValue,
         rangeValue: isValid || hasOldValue || noValue ? [] : rangeValue,
-        visible,
+        visible: true,
       },
       () => {
         const { panelValue, isHover } = this.state;
@@ -244,6 +244,9 @@ class Range extends Component<TypeProps, TypeState> {
         onChange &&
         onChange({ newValue: sortValue, oldValue: this.changeOldValue, event });
       setStateData = { value: sortValue, rangeValue: [], isHover: false };
+      if (isValid) {
+        this.onBlur();
+      }
     }
     this.drawPageAgain(renderValue, format);
     this.setState({ ...setStateData, visible });
@@ -401,22 +404,14 @@ class Range extends Component<TypeProps, TypeState> {
     this.normalStyleValueObj = getformatSymbol(value);
     this.monthAndYear = [...panelValue];
     this.panelDatesArray = getCurrentPageDates(panelValue, format);
-    const { hasOpenInProps, alwaysOpen } = getOpenProps(this.props);
-    if (hasOpenInProps) {
-      this.setState({ visible: alwaysOpen });
-    }
   }
   onDocumentClick = () => {
-    const { hasOpenInProps, alwaysOpen } = getOpenProps(this.props);
-    let visible = false;
-    if (hasOpenInProps) {
-      visible = alwaysOpen;
-    }
-    this.setState({ visible });
+    this.setState({ visible: false });
     const { onDocumentClick } = this.props;
     if (onDocumentClick) {
       onDocumentClick();
     }
+    this.onBlur();
   };
   render() {
     const {
@@ -438,12 +433,13 @@ class Range extends Component<TypeProps, TypeState> {
       theme,
       mode,
       getPartOfThemeProps,
-      createPortal,
+      createPortal = true,
       size,
       validateStatus,
       liquidLayout,
       alwaysOpen,
       open,
+      popupContainerId,
     } = this.props;
     const { monthAndYear } = this;
     const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
@@ -467,6 +463,7 @@ class Range extends Component<TypeProps, TypeState> {
     return (
       <Box themeProps={inputContainProps}>
         <Trigger
+          popupContainerId={popupContainerId}
           themePass
           createPortal={createPortal}
           onDocumentClick={this.onDocumentClick}
@@ -479,6 +476,7 @@ class Range extends Component<TypeProps, TypeState> {
               isTime={status === 'showTime'}
               mode={mode}
               themeProps={themeProps}
+              disabled={disabled || readOnly}
             >
               <RangeWrapInner>
                 <SwitchPanel
@@ -533,7 +531,7 @@ class Range extends Component<TypeProps, TypeState> {
             value={value}
             onClick={this.onClickTrigger}
             onChange={this.onChange}
-            onBlur={this.onBlur}
+            onBlur={() => {}}
             onFocus={this.onFocus}
             onClear={this.onClear}
             disabled={disabled}

@@ -2,11 +2,17 @@
   "widgetName": "BackTop",
   "title": "回到顶部",
   "desc": "返回页面顶部。",
+  "tag": "回到顶部 返回顶部 返回页面顶部 BackTop 置顶 回到页面顶部",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
       "desc": "是否渲染当前组件",
       "defaultValue": false
+    },
+    "injectLugiad": {
+      "type": "Object",
+      "defaultValue": { "type": "BackTop" },
+      "isHidden": true
     },
     "visibilityHeight": {
       "type": "number",
@@ -19,7 +25,7 @@
       "defaultValue": "() => window"
     },
     "showType": {
-      "type": "showType",
+      "type": "ShowType",
       "desc": "选择backTop是图标类型，还是文字类型"
     },
     "text": {
@@ -32,17 +38,7 @@
     }
   },
   "type": {
-    "BackTopStyle": {
-      "color": {
-        "type": "string",
-        "desc": "组件颜色"
-      },
-      "backgroundColor": {
-        "type": "string",
-        "desc": "组件背景颜色"
-      }
-    },
-    "showType": ["textType" ,"iconType"]
+    "ShowType": [{ "value": "textType", "text": "文本" }, { "value": "iconType", "text": "图标" }]
   },
   "category": ["其他"],
   "theme": {

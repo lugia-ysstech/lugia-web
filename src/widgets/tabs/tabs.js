@@ -10,12 +10,16 @@ import TabHeader from './tabheader';
 import TabContentInner from './tabcontent';
 import Widget from '../consts/index';
 import { PagedType, TabPositionType, TabType } from '../css/tabs';
-import { isVertical } from './utils';
+import { isVertical, isBatchValued } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import { getBorderRadius } from '@lugia/theme-utils';
+import { px2emcss } from '../css/units';
+
+const FontSize = 1.2;
+const em = px2emcss(FontSize);
 
 const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
@@ -67,7 +71,8 @@ const TabContentContainer = CSSComponent({
     position: relative;
     background: #fff;
     min-width: 100px;
-    flex: 1;
+    height: 100%;
+    padding: 10px;
   `,
 });
 const TabContent = CSSComponent({
@@ -94,7 +99,6 @@ const TabContent = CSSComponent({
   },
   css: css`
     overflow: hidden;
-    padding: 10px;
     width: 100%;
     height: 0;
     display: none;
@@ -138,6 +142,14 @@ const OutContainer = CSSComponent({
       ['borderRadius'],
       ['boxShadow'],
     ],
+    getThemeMeta(themeMeta, themeConfig) {
+      const {
+        propsConfig: { tabType },
+      } = themeConfig;
+      if (tabType === 'window') {
+        return { height: '100%' };
+      }
+    },
   },
   disabled: {
     selectNames: [],
@@ -148,6 +160,7 @@ const OutContainer = CSSComponent({
     position: relative;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   `,
 });
 const VerticalOutContainer = CSSComponent({
@@ -218,6 +231,8 @@ type TabsProps = {
   getPartOfThemeProps: Function,
   hideContent?: boolean,
   showDividerLine?: boolean,
+  hideTabBar?: boolean,
+  isShowArrowIcon?: boolean,
 };
 export function hasTargetInProps(target: string, props: TabsProps) {
   return `${target}` in props;
@@ -236,11 +251,7 @@ export function setKeyValue(data: Array<Object>): Array<Object> {
 
 export function getDefaultData(props: Object) {
   const { defaultData, data, children } = props;
-  let configData = [
-    { title: 'Tab1', value: 'Tab1' },
-    { title: 'Tab2', value: 'Tab2' },
-    { title: 'Tab3', value: 'Tab3' },
-  ];
+  let configData = [];
   if (hasTargetInProps('data', props) && Array.isArray(data)) {
     configData = data ? data : [];
   } else {
@@ -260,6 +271,10 @@ export function getDefaultData(props: Object) {
   return setKeyValue(configData);
 }
 
+export function hasTargetInPropsActiveValue(props: Object) {
+  return hasTargetInProps('activeValue', props) || hasTargetInProps('activityValue', props);
+}
+
 class TabsBox extends Component<TabsProps, TabsState> {
   static defaultProps = {
     tabType: 'line',
@@ -270,21 +285,35 @@ class TabsBox extends Component<TabsProps, TabsState> {
     showDeleteBtn: false,
     addIcon: 'lugia-icon-reminder_plus',
     deleteIcon: 'lugia-icon-reminder_close',
+    hideTabBar: false,
+    isShowArrowIcon: true,
   };
   static displayName = Widget.Tabs;
+
+  header: Object;
+
+  constructor(props: TabsProps) {
+    super(props);
+    this.header = React.createRef();
+  }
 
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
     const { activeValue, defaultActiveValue, activityValue, defaultActivityValue } = props;
 
     let theData = getDefaultData(props);
-    let theActivityValue =
-      activeValue ||
-      defaultActiveValue ||
-      activityValue ||
-      defaultActivityValue ||
-      (theData.length !== 0 ? theData[0].value : null);
+    const hasActiveValue = isBatchValued([
+      activeValue,
+      activityValue,
+      defaultActiveValue,
+      defaultActivityValue,
+    ]);
+    let theActivityValue = hasActiveValue
+      ? activeValue || defaultActiveValue || activityValue || defaultActivityValue
+      : theData.length !== 0
+      ? theData[0].value
+      : null;
     if (state) {
-      theActivityValue = hasTargetInProps('activityValue', props)
+      theActivityValue = hasTargetInPropsActiveValue(props)
         ? theActivityValue
         : state.activityValue;
       theData =
@@ -302,13 +331,13 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { themeProps, tabType, tabPosition } = this.props;
+    const { themeProps, tabType, tabPosition, hideTabBar } = this.props;
     const ContainerBox =
       tabType === 'line' && isVertical(tabPosition) ? VerticalOutContainer : OutContainer;
     const containerThemeProps = this.props.getPartOfThemeProps('Container');
     let target = (
       <ContainerBox themeProps={containerThemeProps}>
-        <TabHeader {...this.getTabHeaderProps()} />
+        {!hideTabBar ? <TabHeader {...this.getTabHeaderProps()} ref={this.header} /> : null}
         {this.getChildrenContent()}
       </ContainerBox>
     );
@@ -317,7 +346,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
         target = (
           <ContainerBox themeProps={containerThemeProps}>
             {this.getChildrenContent()}
-            <TabHeader {...this.getTabHeaderProps()} />
+            <TabHeader {...this.getTabHeaderProps()} ref={this.header} />
           </ContainerBox>
         );
       }
@@ -342,11 +371,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
         containerThemeProps,
         this.props.getPartOfThemeProps('WindowContainer')
       );
-
+      const outContainerTheme = deepMerge(themeProps, { propsConfig: { tabType } });
       target = (
         <WindowContainer themeProps={outContainerThemeProps}>
-          <OutContainer themeProps={themeProps}>
-            <TabHeader {...this.getTabHeaderProps()} />
+          <OutContainer className={'OutContainer'} themeProps={outContainerTheme}>
+            {!hideTabBar ? <TabHeader {...this.getTabHeaderProps()} ref={this.header} /> : null}
             {this.getChildrenContent()}
           </OutContainer>
         </WindowContainer>
@@ -370,6 +399,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       addIcon,
       deleteIcon,
       pageArrowIcon,
+      isShowArrowIcon,
     } = this.props;
     let { tabPosition } = this.props;
     tabPosition = tabType === 'line' ? tabPosition : 'top';
@@ -395,13 +425,14 @@ class TabsBox extends Component<TabsProps, TabsState> {
       addIcon,
       deleteIcon,
       pageArrowIcon,
+      isShowArrowIcon,
     };
   }
 
   onChange = (res: Object) => {
     const { onChange } = this.props;
     onChange && onChange(res);
-    if (hasTargetInProps('activityValue', this.props)) {
+    if (hasTargetInPropsActiveValue(this.props)) {
       return;
     }
     const { activityValue } = res;
@@ -441,10 +472,12 @@ class TabsBox extends Component<TabsProps, TabsState> {
   onAddClick = (e: Event) => {
     const { onAddClick } = this.props;
     onAddClick && onAddClick(e);
-    if (hasTargetInProps('activityValue', this.props)) {
-      return;
-    }
-    if (hasTargetInProps('data', this.props) || hasTargetInProps('children', this.props)) {
+    if (
+      hasTargetInProps('data', this.props) ||
+      hasTargetInProps('activeValue', this.props) ||
+      hasTargetInProps('activityValue', this.props) ||
+      hasTargetInProps('children', this.props)
+    ) {
       return;
     }
     const { data } = this.state;

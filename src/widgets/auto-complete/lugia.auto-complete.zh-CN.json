@@ -2,6 +2,7 @@
   "widgetName": "AutoComplete",
   "title": "自动完成",
   "desc": "需要自动完成数据时使用",
+  "tag": "自动完成 AutoComplete 自动补充输入框 自动选择 自动补全输入框 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -23,6 +24,10 @@
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
       "propsDefaultValue": true
+    },
+    "popupContainerId": {
+      "type": "ContainerDomIdType",
+      "desc": "配置弹出框的作用容器id"
     },
     "value": {
       "type": "string",
@@ -70,6 +75,16 @@
       "type": "icon",
       "desc": "输入框后缀",
       "isHidden": true
+    },
+    "clearIcon": {
+      "type": "icon",
+      "desc": "清除图标",
+      "propsDefaultValue": ""
+    },
+    "oldTimeIcon": {
+      "type": "icon",
+      "desc": "上次选择值Icon",
+      "propsDefaultValue": ""
     }
   },
   "events": {
@@ -378,7 +393,16 @@
           }
         }
       }
+    },
+    "OldTimeIcon": {
+      "name": "选中值的图标",
+      "desc": "上一次选中值的图标",
+      "normal": [["color"], ["fontSize"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
     }
+
   },
 
   "defaultTheme": {

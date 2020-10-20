@@ -98,6 +98,12 @@ export default class AffixDemo extends React.Component<any, any> {
             />
           </Demo>
         </div>
+        <br />
+        <br />
+        <h2>injectLugiad属性, 展示使用</h2>
+        <div style={{ margin: '20px' }}>
+          <BackTop showType="textType" text="up" injectLugiad={{ type: 'BackTop' }} />
+        </div>
       </div>
     );
   }

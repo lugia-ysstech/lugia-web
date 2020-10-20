@@ -93,3 +93,13 @@ export const getThemeDefaultConfigFromSource = sourceThemeConfig => (
     ? sourceThemeConfig[sizeType][themeName] || {}
     : sourceThemeConfig.default[themeName] || {};
 };
+
+export const handleDuration = (duration?: number | null, defaultTime?: number = 2) => {
+  if (typeof duration !== 'undefined') {
+    if (duration === 0 || duration === null) {
+      return 'no';
+    }
+    return duration;
+  }
+  return defaultTime;
+};

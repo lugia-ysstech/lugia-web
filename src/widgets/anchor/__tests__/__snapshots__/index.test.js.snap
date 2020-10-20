@@ -10,7 +10,7 @@ exports[`Anchor css 1`] = `
   font-size: 1.2rem;
   position: relative;
   background-color: #fff;
-  border-left: 0.08333333333333334em solid #cccccc;
+  border-left: 0.08333333333333334em solid #d0d3da;
   box-sizing: border-box;
   padding-bottom: 0.5em;
 }
@@ -49,7 +49,7 @@ exports[`Anchor css 1`] = `
 .c3 {
   font-size: 1.2rem;
   padding-top: 1em;
-  padding-left: 0.8333333333333334em;
+  padding-left: 0.6666666666666667em;
   line-height: 1;
 }
 

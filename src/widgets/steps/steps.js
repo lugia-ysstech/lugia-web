@@ -33,7 +33,6 @@ const StepsOutContainer = CSSComponent({
   },
   css: css`
     display: inline-block;
-    position: relative;
     font-size: 1.2rem;
   `,
 });
@@ -77,10 +76,9 @@ const ContentContainer = CSSComponent({
 });
 const OrientationContainer = StaticComponent({
   tag: 'div',
-  className: 'StepsContentContainer',
+  className: 'StepsOrientationContainer',
   css: css`
     width: 100%;
-    display: ${props => (isHorizontal(props.orientation) ? 'block' : 'inline-block')};
   `,
 });
 
@@ -139,7 +137,7 @@ class Steps extends Component<StepsProps, StepsState> {
     );
 
     const normalConfig = isHorizontal(orientation)
-      ? { height: this.contentHeight }
+      ? { height: this.contentHeight + 10 }
       : { width: this.contentWidth };
     const contentThemeProps = deepMerge(
       { themeConfig: { normal: normalConfig } },
@@ -178,6 +176,8 @@ class Steps extends Component<StepsProps, StepsState> {
       currentStepNumber,
       desAlign,
       getPartOfThemeHocProps,
+      finishIcon,
+      errorIcon,
     } = this.props;
     return {
       ...getPartOfThemeHocProps('Step'),
@@ -214,6 +214,8 @@ class Steps extends Component<StepsProps, StepsState> {
         getAttributeFromObject(child.props, 'isDashed', false)
       ),
       getChildWidths: this.getChildWidths,
+      finishIcon,
+      errorIcon,
     };
   }
   childrenLength = 0;
@@ -262,9 +264,13 @@ class Steps extends Component<StepsProps, StepsState> {
   };
 
   data2Step(data: Array<Object>) {
-    return data.map((child, i) => {
-      return this.getStep(child, i);
-    });
+    return (
+      data &&
+      Array.isArray(data) &&
+      data.map((child, i) => {
+        return this.getStep(child, i);
+      })
+    );
   }
 
   getStep(child: Object, i: number) {

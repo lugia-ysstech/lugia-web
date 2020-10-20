@@ -5,7 +5,6 @@ import {
   validateValueDefaultTheme,
   validateBorderDefaultTheme,
   isValidateError,
-  validateWidthTheme,
 } from '../../css/validateHoc';
 import changeColor from '../../css/utilsColor';
 import { getThemeUpdate } from '../styled/utils';
@@ -32,15 +31,15 @@ function getSizeHeight(size: string) {
   return height;
 }
 function getDefaultStyleFromSize(size: string) {
-  const { largeBorderRadiusValue, borderRadiusValue } = getThemeUpdate();
+  const { borderRadiusValue } = getThemeUpdate();
   return {
-    defaultBorderRadius: size === 'large' ? largeBorderRadiusValue : borderRadiusValue,
+    defaultBorderRadius: borderRadiusValue,
     defaultFontSize: size === 'small' ? 12 : 14,
   };
 }
 export function getWrapThemeProps(props, partName) {
   const { getPartOfThemeProps, mode, validateStatus, size, visible } = props;
-  const themeProps = JSON.parse(JSON.stringify(getPartOfThemeProps(partName)));
+  const themeProps = deepMerge(getPartOfThemeProps(partName), {});
   themeProps.propsConfig = { mode };
   themeProps.themeState.focus = visible;
   const { themeConfig = {} } = themeProps;
@@ -69,8 +68,7 @@ export function getWrapThemeProps(props, partName) {
   };
 
   const deeMergeTheme = deepMerge(defaultNormal, themeConfig) || {};
-  const { normal: newNormal = {}, hover = {}, active = {}, disabled = {} } = deeMergeTheme;
-  const normal = deepMerge(newNormal, validateWidthTheme.themeConfig.normal);
+  const { normal = {}, hover = {}, active = {}, focus = {}, disabled = {} } = deeMergeTheme;
   const { borderRadius } = normal;
   const deafultHoverBorderColor = {
     border: getBorder(hoverBorder),
@@ -96,7 +94,7 @@ export function getWrapThemeProps(props, partName) {
 
   const hoverTheme = deepMerge(deafultHoverBorderColor, hover);
   const activeTheme = deepMerge(deafultActiveBorderColor, active);
-  const focusTheme = deepMerge(deafultFocusBorderColor, active);
+  const focusTheme = deepMerge(deafultFocusBorderColor, focus);
   const disabledTheme = deepMerge(defaultDisabled, disabled);
   const {
     normal: validateNormalTheme,
@@ -161,7 +159,9 @@ export function getDateTheme(props) {
   const outMonthDateThemeProps = getPartOfThemeProps('OutMonthDate');
   const rangeDateDateThemeProps = getPartOfThemeProps('RangeDate');
 
-  const { themeConfig: { normal: rangeNormal = {} } = {} } = rangeDateDateThemeProps;
+  const {
+    themeConfig: { normal: rangeNormal = {}, hover: rangeHover = {} } = {},
+  } = rangeDateDateThemeProps;
 
   const { themeConfig: { normal: outNormal = {} } = {} } = outMonthDateThemeProps;
   const { lightGreyColor, blackColor, normalColor, hoverColor, defaultColor } = getThemeUpdate();
@@ -197,13 +197,23 @@ export function getDateTheme(props) {
     borderRadius:
       !hover.borderRadius && !active.borderRadius ? getBorderRadius(20) : activeTheme.borderRadius,
   };
+  const defaultRangeWeekDateHover = {
+    background: { color: hoverColor },
+    color: '#fff',
+  };
   const rangeNormalTheme = deepMerge(defaultRangeNormal, rangeNormal);
+  const rangeWeekHoverTheme = deepMerge(defaultRangeWeekDateHover, rangeHover);
+  const rangeWeekDate = {
+    normal: rangeNormalTheme,
+    hover: rangeWeekHoverTheme,
+  };
   return {
     hoverTheme,
     normalTheme,
     activeTheme,
     outMonthNormalTheme,
     rangeNormalTheme,
+    rangeWeekDate,
     todayTheme: getTodayTheme(props, normal),
     dateTheme: themeProps,
   };
@@ -216,9 +226,17 @@ export function getTodayTheme(props, dateNormalTheme) {
   const {
     themeConfig: { normal },
   } = themeProps;
+  const { color } = dateNormalTheme || {};
   const defaultNormal = {
     border: getBorder({ width: 1, color: normalColor, style: 'solid' }),
     background: { color: 'transparent' },
+    color,
+    borderRadius: {
+      topLeft: 13,
+      topRight: 13,
+      bottomRight: 13,
+      bottomLeft: 13,
+    },
   };
   const normalTheme = deepMerge(defaultNormal, { ...normal });
 
@@ -229,6 +247,9 @@ export function getTodayTheme(props, dateNormalTheme) {
       bottom: { style: todayBorderBS, color: todayBorderBC } = {},
       left: { style: todayBorderLS, color: todayBorderLC } = {},
     } = {},
+    borderRadius: { topLeft, topRight, bottomRight, bottomLeft } = {},
+    background: { color: bgColor } = {},
+    color: todayColor,
   } = normalTheme;
   const border = `
       border-top:1px ${todayBorderTS} ${todayBorderTC};
@@ -236,8 +257,12 @@ export function getTodayTheme(props, dateNormalTheme) {
       border-bottom:1px ${todayBorderBS} ${todayBorderBC};
       border-left:1px ${todayBorderLS} ${todayBorderLC};
     `;
-  const { color } = dateNormalTheme || {};
-  return { border, color };
+  const borderRadius = `
+    border-radius:${topLeft || 0}px ${topRight || 0}px ${bottomRight || 0}px ${bottomLeft || 0}px;
+  `;
+  const background = `background:${bgColor};`;
+
+  return { border, color: todayColor, borderRadius, background };
 }
 export function getSecondWeekDateTheme(props) {
   const { getPartOfThemeProps } = props;
@@ -246,7 +271,6 @@ export function getSecondWeekDateTheme(props) {
   const { blackColor, normalColor } = getThemeUpdate();
   const defaultNormal = {
     color: blackColor,
-    fontSize: 14,
   };
   const normalTheme = deepMerge(defaultNormal, normal);
   const defaultHover = {
@@ -272,6 +296,7 @@ export function getFacePanelContain(props) {
     borderRadius: getBorderRadius(borderRadiusValue),
     boxShadow: normalBoxShadow,
     width: isRange ? 600 : 300,
+    border: getBorder({ width: 0, color: 'transparent' }),
   };
   const normalTheme = deepMerge(defaultNormal, normal);
   const { width } = normalTheme;
@@ -419,14 +444,19 @@ export function getHeadArrowTheme(props) {
       },
     },
   };
+
+  function getMergeTheme(viewClass, theme, mergeDefaultTheme) {
+    return { [viewClass]: deepMerge(mergeDefaultTheme, { Icon: theme[viewClass] }) };
+  }
+
   return {
     single: {
       singleViewClass,
-      singleTheme: deepMerge({ [singleViewClass]: defaultTheme }, singleTheme),
+      singleTheme: getMergeTheme(singleViewClass, singleTheme, defaultTheme),
     },
     double: {
       doubleViewClass,
-      doubleTheme: deepMerge({ [doubleViewClass]: defaultTheme }, doubleTheme),
+      doubleTheme: getMergeTheme(doubleViewClass, doubleTheme, defaultTheme),
     },
   };
 }
@@ -461,7 +491,7 @@ export function getFooterButtonsTheme(props) {
   const themeProps = getPartOfThemeProps('FooterButtonOptions');
   const themePropsFooterToday = getPartOfThemeProps('FooterToday');
   const themePropsFooterTime = getPartOfThemeProps('FooterTimeButton');
-  const themePropsFooterOk = getPartOfThemeProps('FooterOkButton');
+  const themePropsFooterOk = JSON.parse(JSON.stringify(getPartOfThemeProps('FooterOkButton')));
   const {
     defaultColor,
     disableColor,
@@ -588,6 +618,11 @@ export function getTimeTheme(props) {
   const selectTimeOptionTheme = getPartOfThemeProps('SelectTimeOption');
   const timePanelHeadTheme = getPartOfThemeProps('TimePanelHead');
   const { superLightColor, blackColor, normalColor } = getThemeUpdate();
+  const defaultTimePanelTheme = {
+    normal: {
+      borderRadius: getBorderRadius(0),
+    },
+  };
   const defaultTimePanelListTheme = {
     normal: {
       border: getBorder({ width: 1, style: 'solid', color: superLightColor }),
@@ -604,8 +639,17 @@ export function getTimeTheme(props) {
       background: { color: changeColor(normalColor, 0, 0, 10).rgba },
     },
   };
+  const timePanelContainerTheme = deepMerge({ themeConfig: defaultTimePanelTheme }, timePanelTheme);
+  const {
+    themeConfig: { normal: { color } = {}, hover: { color: hoverColor } = {} } = {},
+  } = timePanelContainerTheme;
+  const timePanelInnerTheme = {
+    normal: { color },
+    hover: { color: hoverColor },
+  };
   return {
-    timePanelTheme,
+    timePanelTheme: timePanelContainerTheme,
+    timePanelInnerTheme,
     timePanelListTheme: deepMerge({ themeConfig: defaultTimePanelListTheme }, timePanelListTheme),
     timePanelHeadTheme: deepMerge({ themeConfig: defaultTimePanelHeadTheme }, timePanelHeadTheme),
     selectTimeOptionTheme: deepMerge(
@@ -613,4 +657,13 @@ export function getTimeTheme(props) {
       selectTimeOptionTheme
     ),
   };
+}
+export function getPageFooterLineTheme(props) {
+  const { getPartOfThemeProps } = props;
+  const timePanelTheme = getPartOfThemeProps('FooterLine');
+  const { borderColor } = getThemeUpdate();
+  const {
+    themeConfig: { normal: { background: { color = borderColor } = {} } = {} } = {},
+  } = timePanelTheme;
+  return `border-top: 1px solid ${color} ;`;
 }

@@ -12,7 +12,7 @@ const hasValidateStatusInProps = (props: Object) => {
 const ValidateHoc = (Target: Object) => {
   class ValidateContainer extends React.Component {
     state = {
-      _isValidateVisible: true,
+      _isValidateVisible: false,
     };
     static defaultProps = {
       validateType: 'top',
@@ -65,8 +65,10 @@ const ValidateHoc = (Target: Object) => {
       const validateThemeProps = getPartOfThemeProps('ValidateErrorText', {
         props: { validateStatus, ...innerProps },
       });
+      const { __lugiad__header__absolute__ } = this.props;
       const innerThemeProps = deepMerge(validateThemeProps, getPartOfThemeProps('Container'));
-      const ContainerThemeProps = getPartOfThemeProps('Container');
+      const bottomProps = { inMega: __lugiad__header__absolute__ };
+      const ContainerThemeProps = getPartOfThemeProps('Container', { props: bottomProps });
 
       if (validateType === 'bottom') {
         return (
@@ -123,8 +125,11 @@ const ValidateHoc = (Target: Object) => {
       };
       const { normal: { width } = {} } = getPartOfThemeConfig('Container');
       const theWidth = width || '100%';
+      const { createPortal = true, popupContainerId } = this.props;
       return (
         <ToolTip
+          popupContainerId={popupContainerId}
+          createPortal={createPortal}
           theme={newTheme}
           viewClass={viewClass}
           propsConfig={{ width: theWidth }}

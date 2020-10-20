@@ -17,7 +17,14 @@ class SearchIcon extends React.Component<IconProps> {
   static displayName = Widget.SearchIcon;
 
   render() {
-    return <Icon iconClass="lugia-icon-financial_search" key="refresh" {...this.props} />;
+    const { transferSuffixIcon } = this.props;
+    return (
+      <Icon
+        iconClass={transferSuffixIcon || 'lugia-icon-financial_search'}
+        key="refresh"
+        {...this.props}
+      />
+    );
   }
 }
 

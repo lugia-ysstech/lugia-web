@@ -2,6 +2,7 @@
   "widgetName": "Window",
   "title": "窗体",
   "desc": "支持拖拽的窗体组件",
+  "tag": "window 窗体 窗口 弹窗 悬浮窗 弹层 可拖拽窗口",
   "props": {
     "visible": {
       "type": "boolean",

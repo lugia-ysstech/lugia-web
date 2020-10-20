@@ -85,6 +85,50 @@ export const WrapperDemo = () => {
       },
     },
   };
+  const buttonTheme = {
+    [Widget.Popconfirm]: {
+      PopconfirmOkButton: {
+        Container: {
+          normal: {
+            background: {
+              color: 'purple',
+            },
+          },
+        },
+        ButtonText: {
+          normal: {
+            color: '#eee',
+          },
+        },
+      },
+      PopconfirmCancelButton: {
+        Container: {
+          normal: {
+            background: {
+              color: '#eee',
+            },
+          },
+        },
+        ButtonText: {
+          normal: {
+            color: 'blue',
+          },
+        },
+      },
+    },
+  };
+  const childrenContainerConfig = {
+    [Widget.Popconfirm]: {
+      PopconfirmContent: {
+        ChildrenContainer: {
+          normal: {
+            width: '100%',
+          },
+        },
+      },
+    },
+  };
+
   return (
     <Wrapper>
       <Theme config={config}>
@@ -182,6 +226,38 @@ export const WrapperDemo = () => {
           </Popconfirm>
         </div>
       </Theme>
+      <br />
+      <p>按钮主题</p>
+      <Theme config={buttonTheme}>
+        <Popconfirm
+          title={text}
+          action={'click'}
+          cancelText="No"
+          okText="yes"
+          okType="danger"
+          placement="bottom"
+          popArrowType="round"
+        >
+          <Direction type="primary">点击</Direction>
+        </Popconfirm>
+      </Theme>
+      <br />
+      <br />
+      <br />
+      <p>包含的组件 继承容器的高度</p>
+      <div style={{ width: 100, height: 50 }}>
+        <Popconfirm title={text} action={'click'} placement="top">
+          <div style={{ height: '100%', border: '1px solid red' }}>点击触发</div>
+        </Popconfirm>
+      </div>
+      <p>包含的组件 继承容器的宽度 </p>
+      <div style={{ width: 100, height: 50 }}>
+        <Theme config={childrenContainerConfig}>
+          <Popconfirm title={text} action={'click'} placement="top">
+            <div style={{ height: '100%', border: '1px solid red' }}>点击触发</div>
+          </Popconfirm>
+        </Theme>
+      </div>
     </Wrapper>
   );
 };

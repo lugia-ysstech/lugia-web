@@ -8,6 +8,7 @@ import * as React from 'react';
 import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import Modal from './index';
 import Button from '../button';
+import Select from '../select';
 import Theme from '../theme';
 import Widgets from '../consts';
 import { getBorderRadius } from '../theme/CSSProvider';
@@ -15,6 +16,13 @@ import { getBorderRadius } from '../theme/CSSProvider';
 const Text = (props: Object) => {
   return <div>{props.text}</div>;
 };
+const data = (function(t) {
+  const res = [];
+  for (let i = 0; i < t; i++) {
+    res.push({ value: `key-${i}`, label: `txt${i}` });
+  }
+  return res;
+})(10);
 class ModalBox extends React.Component<any, any> {
   constructor() {
     super();
@@ -64,6 +72,8 @@ export default class ModalDemo extends React.Component<any, any> {
       visable5: false,
       visable6: false,
       visable7: false,
+      visable8: false,
+      buttonValue: 'testValue',
     };
   }
 
@@ -87,6 +97,13 @@ export default class ModalDemo extends React.Component<any, any> {
       });
     }, 2000);
   };
+  handleTestButtonClick = () => {
+    const { buttonValue } = this.state;
+    const newValue = buttonValue === 'testValue' ? 'anotherTestValue' : 'testValue';
+    this.setState({
+      buttonValue: newValue,
+    });
+  };
 
   render() {
     const {
@@ -97,7 +114,9 @@ export default class ModalDemo extends React.Component<any, any> {
       visable5,
       visable6,
       visable7,
+      visable8,
       confirmLoading,
+      buttonValue,
     } = this.state;
     const view = {
       [Widgets.Modal]: {
@@ -199,6 +218,7 @@ export default class ModalDemo extends React.Component<any, any> {
           okButtonProps={{ type: 'success' }}
           cancelButtonProps={{ type: 'danger' }}
           closable={true}
+          zIndex={99999}
         >
           这是内容！
         </Modal>
@@ -290,6 +310,26 @@ export default class ModalDemo extends React.Component<any, any> {
         >
           createModal
         </Button>
+        <Select
+          canSearch
+          canClear={false}
+          displayField={'label'}
+          data={data}
+          onTrigger={this.Click(4)}
+        />
+
+        <br />
+        <br />
+        <Button onClick={this.Click(8)}>挂载在body上</Button>
+        <Modal
+          visible={visable8}
+          title="这是标题！"
+          onOk={this.buttonClick(8)}
+          onCancel={this.buttonClick(8)}
+          mountBody={true}
+        >
+          <button onClick={this.handleTestButtonClick}>{buttonValue}</button>
+        </Modal>
       </div>
     );
   }

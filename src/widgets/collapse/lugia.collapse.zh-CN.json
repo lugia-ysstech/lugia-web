@@ -2,6 +2,7 @@
   "widgetName": "Collapse",
   "title": "折叠面板",
   "desc": "折叠面板，用于展开/折叠内容区域。",
+  "tag": "折叠面板 Collapse 组合折叠面板 收起展开面板 多项折叠面板",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -32,6 +33,7 @@
       "type": "Object[]",
       "desc": "指定折叠面板data数据源，仅用于设计器",
       "designOnly": true,
+      "injectProps": false,
       "meta": [
         { "key": "value", "title": "对应字段", "type": "string" },
         { "key": "title", "title": "展示文字", "type": "string" },
@@ -42,6 +44,10 @@
         { "value": "2", "title": "标题2", "children": "内容2" },
         { "value": "3", "title": "标题3", "children": "内容3" }
       ]
+    },
+    "arrowIcon": {
+      "type": "icon",
+      "desc": "自定义图标，showArrow 为 true 时有效"
     }
   },
   "events": {
@@ -86,7 +92,9 @@
         ["width"],
         ["height"],
         ["background"],
-        ["border"]
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"]
       ]
     },
     "Panel": {
@@ -94,7 +102,7 @@
         "Container": {
           "name": "面板整体配置",
           "desc": "面板整体配置",
-          "normal": [["width"]]
+          "normal": [["width"], ["border", "bottom"]]
         },
         "PanelHeader": {
           "name": "面板头部配置",
@@ -122,17 +130,33 @@
         "PanelHeaderIcon": {
           "name": "面板头部图标",
           "desc": "面板头部图标样式配置",
-          "normal": [["fontSize"], ["color"]],
-          "hover": [["color"]],
+          "normal": [["fontSize"], ["color"], ["padding"]],
+          "hover": [["color"], ["padding"]],
           "disabled": [["color"]]
         },
         "PanelContent": {
           "name": "面板内容样式",
           "desc": "面板内容样式配置",
-          "normal": [["width"], ["height"], ["background"], ["padding"], ["font"], ["color"]],
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["padding"],
+            ["font"],
+            ["color"],
+            ["border"],
+            ["boxShadow"]
+          ],
           "hover": [["color"]],
           "disabled": [["color"]]
         }
+      }
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 400
       }
     }
   }

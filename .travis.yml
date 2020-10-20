@@ -12,14 +12,9 @@ cache:
     - node_modules
 
 install:
-  - yarn
+  - yarn install
 
-#项目执行命令  
+#项目执行命令
 script:
    # 执行测试的命令
-  - yarn run dist
-  - yarn run cover
-  - codecov
-after_success:
-  - CODECOV_TOKEN=$CODECOV_TOKEN
-  - bash <(curl -s https://codecov.io/bash)
+  - yarn cover

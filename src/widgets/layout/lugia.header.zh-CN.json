@@ -1,0 +1,26 @@
+{
+  "widgetName": "Header",
+  "title": "头部",
+  "desc": "页面整体布局-头部。",
+  "props": {
+    "enlarged": {
+      "type": "boolean",
+      "desc": "指定 Header 是否可以放大",
+      "propsDefaultValue": false
+    },
+    "isContent": {
+      "type": "boolean",
+      "desc": "指定 Header 是否是内容",
+      "propsDefaultValue": false
+    }
+  },
+  "category": ["布局"],
+  "needExport": true,
+  "theme": {
+    "Container": {
+      "name": "头部区域样式",
+      "desc": "为头部区域配置样式",
+      "normal": [["width"], ["height"], ["margin"], ["background"]]
+    }
+  }
+}

@@ -24,6 +24,7 @@ type ItemProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   disabled?: boolean,
+  singleClearIcon?: string,
 };
 
 type ItemState = {};
@@ -40,6 +41,7 @@ class ItemTag extends React.Component<ItemProps, ItemState> {
       onCloseClick,
       getPartOfThemeProps,
       disabled,
+      singleClearIcon,
     } = this.props;
     const defaultTagWrapTheme = {
       themeConfig: {
@@ -65,7 +67,7 @@ class ItemTag extends React.Component<ItemProps, ItemState> {
           {closeable ? (
             <Icon
               disabled={disabled}
-              iconClass="lugia-icon-reminder_close_circle"
+              iconClass={singleClearIcon || 'lugia-icon-reminder_close_circle'}
               {...this.getIconTheme()}
               singleTheme
               onClick={onCloseClick}

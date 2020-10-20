@@ -7,7 +7,7 @@ import { Container, LugiaTable, CustomBlock, Tr, Td, NoData, TBody, THead } from
 import Widget from '../consts';
 
 class Table extends React.Component<TableProps, TableState> {
-  defaultProps = {
+  static defaultProps = {
     tableSize: 'middle',
     tableStyle: 'linear',
   };
@@ -51,16 +51,16 @@ class Table extends React.Component<TableProps, TableState> {
   };
 
   getData = data => {
-    const {
-      columns = [],
-      tableSize = 'middle',
-      tableStyle = 'linear',
-      rowKey = 'key',
-    } = this.props;
-    const trTheme = this.props.getPartOfThemeProps('Tr', { props: { tableStyle } });
+    const { columns = [], tableSize = 'middle', tableStyle = 'linear' } = this.props;
+    const count = data.length;
+
     return data.map((item, index) => {
+      const trTheme = this.props.getPartOfThemeProps('Tr', {
+        props: { tableStyle },
+        selector: { index, count },
+      });
       return (
-        <Tr themeProps={trTheme} key={item[rowKey]}>
+        <Tr themeProps={trTheme}>
           {columns.map(column => {
             const { dataIndex, render, align, ellipsis, width } = column;
 

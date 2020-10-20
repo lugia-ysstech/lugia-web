@@ -2,6 +2,7 @@
   "widgetName": "TimePicker",
   "title": "时间选择器",
   "desc": "用于时间选择,",
+  "tag": "TimePicker 时间选择器 时间选择框 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -15,7 +16,7 @@
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
-      "propsDefaultValue": false
+      "propsDefaultValue": true
     },
     "value": {
       "type": "string",
@@ -58,6 +59,18 @@
       "desc": "可配置三种尺寸大小的input",
       "propsDefaultValue": "default"
     },
+    "suffix": {
+      "type": "icon",
+      "desc": "后缀图标"
+    },
+    "prefix": {
+      "type": "icon",
+      "desc": "前缀图标"
+    },
+    "clearIcon": {
+      "type": "icon",
+      "desc": "清除图标"
+    },
     "alwaysOpen": {
       "type": "boolean",
       "desc": "控制面板是否始终展开",
@@ -90,9 +103,20 @@
     }
   },
   "type": {
-    "InputSize": ["small", "default", "large"],
-    "ValidateType": ["top", "bottom", "inner"],
-    "ValidateStatus": ["default", "error"],
+    "InputSize": [
+      { "value": "small", "text": "小" },
+      { "value": "default", "text": "正常" },
+      { "value": "large", "text": "大" }
+    ],
+    "ValidateType": [
+      { "value": "top", "text": "顶部弹窗" },
+      { "value": "bottom", "text": "底部文本" },
+      { "value": "inner", "text": "框内文本" }
+    ],
+    "ValidateStatus": [
+      { "value": "default", "text": "正常" },
+      { "value": "error", "text": "错误" }
+    ],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
@@ -113,10 +137,13 @@
         ["border"],
         ["boxShadow"],
         ["color"],
-        ["font"]
+        ["font"],
+        ["margin"],
+        ["padding"]
       ],
       "hover": [["border"], ["borderRadius"], ["boxShadow"], ["background"]],
       "active": [],
+      "focus": [["background"], ["borderRadius"], ["border"], ["boxShadow"]],
       "disabled": [["background"], ["borderRadius"], ["border"], ["boxShadow"]]
     },
     "Placeholder": {
@@ -127,14 +154,14 @@
     "InputPrefix": {
       "name": "前缀图标",
       "desc": "前缀图标配置",
-      "normal": [["color"], ["font"]],
+      "normal": [["color"], ["font"], ["padding"], ["margin"]],
       "hover": [["color"], ["font"]],
       "disabled": [["color"], ["font"]]
     },
     "InputSuffix": {
       "name": "后缀图标",
       "desc": "后缀图标配置",
-      "normal": [["color"], ["font"]],
+      "normal": [["color"], ["font"], ["padding"], ["margin"]],
       "hover": [["color"], ["font"]],
       "disabled": [["color"], ["font"]]
     },
@@ -148,7 +175,7 @@
     "FacePanelContain": {
       "name": "日期面板",
       "desc": "日期面板配置",
-      "normal": [["width"], ["height"], ["background"], ["border"], ["boxShadow"], ["borderRadius"]]
+      "normal": [["width"], ["height"], ["border"], ["boxShadow"], ["borderRadius"]]
     },
     "ValidateErrorInput": {
       "name": "校验失败的输入框",
@@ -180,18 +207,6 @@
       "hover": [],
       "active": []
     },
-    "ExtraFooter": {
-      "name": "额外页脚",
-      "desc": "额外页脚配置",
-      "normal": [["color"], ["font"]]
-    },
-    "GroupDate": {
-      "name": "分类日期",
-      "desc": "分类日期配置/年/月/周",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]],
-      "active": [["color"], ["font"], ["background"], ["borderRadius"]]
-    },
     "TimePanelHead": {
       "name": "时间板头部",
       "desc": "时间板头部配置",
@@ -202,7 +217,7 @@
       "desc": "时间内容配置",
       "normal": [["color"], ["background"]]
     },
-    "timePanelListTheme": {
+    "TimePanelList": {
       "name": "单列",
       "desc": "单列时间配置",
       "normal": [["border", "right"]]

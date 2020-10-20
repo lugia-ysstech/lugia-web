@@ -11,6 +11,7 @@ import {
   matchType,
   addActivityValue2Data,
   addWidth2Data,
+  getTextAlign,
 } from '../utils';
 import { hasActivityValueData } from '../demo';
 import type { EditEventType, TabPositionType, TabType } from '../../css/tabs';
@@ -80,4 +81,15 @@ describe('utils', () => {
   }
   testAddWidth2Data(data, sampleWidthSize, sampleWithWidths);
   testAddWidth2Data(data, anotherWidthSize, anotherWithWidths);
+
+  function testGetTextAlign(textAlign: string, expectValue: string) {
+    it(` testGetTextAlign ${textAlign} `, () => {
+      expect(getTextAlign(textAlign)).toBe(expectValue);
+    });
+  }
+  testGetTextAlign('left', 'flex-start');
+  testGetTextAlign('right', 'flex-end');
+  testGetTextAlign('center', 'center');
+  testGetTextAlign('justify', 'space-between');
+  testGetTextAlign('12323', 'center');
 });

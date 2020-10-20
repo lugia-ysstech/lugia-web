@@ -213,7 +213,6 @@ export const CheckBoxInnerSpan = CSSComponent({
         isDisabled,
         isChecked,
         isIndeterminate,
-        hasChecked,
       } = propsConfig;
       if (isCancel || isChecked || isIndeterminate) {
         const {
@@ -224,7 +223,11 @@ export const CheckBoxInnerSpan = CSSComponent({
         const defaultWidth = isChecked ? 6 : isIndeterminate ? 10 : 6;
         const defaultHeight = isChecked ? 10 : isIndeterminate ? 1 : 10;
         const currentTheme = isDisabled ? disabledTheme : hover ? hoverTheme : normalTheme;
-        const { color, width = defaultWidth, height = defaultHeight } = currentTheme;
+        const {
+          background: { color },
+          width = defaultWidth,
+          height = defaultHeight,
+        } = currentTheme;
         const borderColor = judgeStarts(color) ? getDictValue(color) : color;
 
         return css`
@@ -246,10 +249,6 @@ export const CheckBoxInnerSpan = CSSComponent({
             content: ' ';
           }
         `;
-      }
-
-      if (hasChecked) {
-        return `border: 1px solid ${get('themeColor')};`;
       }
 
       return '';

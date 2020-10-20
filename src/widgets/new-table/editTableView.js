@@ -9,7 +9,7 @@ import EditTableEventListener from './connection';
 import TableCell from './tableCell';
 import Widget from '../consts';
 import { findDOMNode } from 'react-dom';
-import { isEqualArray } from './utils';
+import { isEqualArray } from '../table/utils';
 
 class EditTable extends React.Component<EditTableProps, EditTableState> {
   editTableListener: EditTableEventListenerHandle;
@@ -23,6 +23,8 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   static defaultProps = {
     allowEditHead: true,
     showHeader: true,
+    allowSelect: true,
+    showCellTitle: false,
   };
 
   constructor(props: EditTableProps) {
@@ -102,7 +104,13 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   }
 
   renderFunc = (renderObject: Object) => {
-    const { getPartOfThemeProps, allowEditHead, selectSuffixElement } = this.props;
+    const {
+      getPartOfThemeProps,
+      allowEditHead,
+      selectSuffixElement,
+      allowSelect,
+      showCellTitle,
+    } = this.props;
     const { editTableListener } = this;
     const { index } = renderObject;
     const allowEdit = allowEditHead ? true : index !== 0;
@@ -111,6 +119,8 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       <TableCell
         {...renderObject}
         allowEdit={allowEdit}
+        showCellTitle={showCellTitle}
+        propsAllowSelect={allowSelect}
         selectSuffixElement={selectSuffixElement}
         getPartOfThemeProps={getPartOfThemeProps}
         listener={editTableListener}
@@ -181,11 +191,12 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   };
 
   doMoveCells = (props: Object): void => {
-    const { data, columns, allowEditHead } = this.props;
+    const { data, columns, allowEditHead, showHeader } = this.props;
     const { editTableListener } = this;
     const { selectRow, oldSelectInfo, selectColumn } = editTableListener.getMovedCells({
       data,
       columns,
+      showHeader,
       ...props,
     });
     const selectInfo = { selectRow, selectColumn };

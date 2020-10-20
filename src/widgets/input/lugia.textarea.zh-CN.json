@@ -2,11 +2,20 @@
   "widgetName": "Textarea",
   "title": "段落文本输入框",
   "desc": "常用于多行文本输入",
+  "tag": "input textarea 段落文本输入框 段落框 段落文本框 段落输入框 多行文本框 多行输入框 区域文本框 区域输入框 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
       "desc": "是否渲染当前组件",
       "defaultValue": false
+    },
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出校验框"
+    },
+    "popupContainerId": {
+      "type": "ContainerDomIdType",
+      "desc": "配置弹出校验框的作用容器id"
     },
     "disabled": {
       "type": "boolean",
@@ -146,6 +155,16 @@
           "type": "KeyboardEvent"
         }
       ]
+    },
+    "getFocus": {
+      "desc": "段落文本输入框主动聚焦事件",
+      "args": [
+        {
+          "name": "focus",
+          "desc": "输入框的聚焦方法",
+          "type": "Function"
+        }
+      ]
     }
   },
   "type": {
@@ -154,9 +173,48 @@
       "oldValue": "string",
       "event": "SyntheticEvent"
     },
-    "ResizeType": ["both", "horizontal", "vertical", "none"],
-    "ValidateStatus": ["default", "error"],
-    "ValidateType": ["top", "bottom", "inner"]
+    "ResizeType": [
+      {
+        "value": "both",
+        "text": "可调整宽高"
+      },
+      {
+        "value": "horizontal",
+        "text": "可调整宽"
+      },
+      {
+        "value": "vertical",
+        "text": "可调整高"
+      },
+      {
+        "value": "none",
+        "text": "宽高固定"
+      }
+    ],
+    "ValidateStatus": [
+      {
+        "value": "default",
+        "text": "正常"
+      },
+      {
+        "value": "error",
+        "text": "错误"
+      }
+    ],
+    "ValidateType": [
+      {
+        "value": "top",
+        "text": "顶部弹窗"
+      },
+      {
+        "value": "bottom",
+        "text": "底部文本"
+      },
+      {
+        "value": "inner",
+        "text": "框内文本"
+      }
+    ]
   },
   "category": ["数据录入"],
   "needExport": true,

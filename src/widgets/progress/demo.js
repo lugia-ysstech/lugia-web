@@ -254,6 +254,32 @@ export default class ProgressDemo extends React.Component<any, any> {
         },
       },
     };
+    const circleTheme = {
+      [Widget.Progress]: {
+        Container: {
+          normal: {
+            width: 300,
+            strokeWidth: 20,
+            border: getBorder({ width: 10 }, ['r']),
+          },
+        },
+        ProgressCircleLine_Error: {
+          normal: {
+            background: {
+              color: 'blue',
+            },
+          },
+        },
+        ProgressCircleLine_Success: {
+          normal: {
+            background: {
+              color: 'skyblue',
+            },
+          },
+        },
+      },
+    };
+
     return (
       <div>
         <Theme config={CircleView}>
@@ -509,6 +535,10 @@ export default class ProgressDemo extends React.Component<any, any> {
             </Theme>
           </div>
         </div>
+
+        <Theme config={circleTheme}>
+          <Progress type="dashboard" percent={30} status="success" />
+        </Theme>
       </div>
     );
   }

@@ -35,6 +35,10 @@ const LabelContainer = CSSComponent({
       ['borderRadius'],
       ['boxShadow'],
       ['font'],
+      ['wordBreak'],
+      ['whiteSpace'],
+      ['textOverflow'],
+      ['overflow'],
     ],
     getThemeMeta() {
       return {
@@ -72,6 +76,7 @@ const LabelContainer = CSSComponent({
   css: css`
     display: inline-block;
     box-sizing: border-box;
+    white-space: pre;
   `,
   option: { hover: true },
 });
@@ -120,6 +125,7 @@ const LabelPrefix = CSSComponent({
 type LabelProps = {
   text?: string,
   prefix?: string,
+  title?: string,
   showPrefix?: boolean,
   children?: React.Element<any>,
   themeProps: Object,
@@ -131,13 +137,13 @@ type LabelState = {};
 
 class Label extends React.Component<LabelProps, LabelState> {
   render() {
-    const { text, children, onClick = () => {}, showPrefix, prefix } = this.props;
+    const { text, title, children, onClick = () => {}, showPrefix, prefix } = this.props;
     const target = children ? children : text;
     const themeProps = this.props.getPartOfThemeProps('Container');
     const prefixThemeProps = this.props.getPartOfThemeProps('LabelPrefix');
     return (
       <React.Fragment>
-        <LabelContainer themeProps={themeProps} onClick={onClick}>
+        <LabelContainer themeProps={themeProps} onClick={onClick} title={title}>
           {showPrefix && <LabelPrefix themeProps={prefixThemeProps}>{prefix}</LabelPrefix>}
           {target}
         </LabelContainer>

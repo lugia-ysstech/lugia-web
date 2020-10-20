@@ -8,7 +8,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   user-select: none;
   cursor: pointer;
   visibility: hidden;
-  padding-right: 1rem;
+  padding-right: 1.2rem;
 }
 
 .c1 {
@@ -28,22 +28,22 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c1::-webkit-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1::-moz-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1:-ms-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1::placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
@@ -73,18 +73,18 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   onMouseUp={[Function]}
   style={
     Object {
-      "borderBottomColor": "#cccccc",
+      "borderBottomColor": "#d0d3da",
       "borderBottomLeftRadius": "0.4rem",
       "borderBottomRightRadius": "0.4rem",
       "borderBottomStyle": "solid",
       "borderBottomWidth": "0.1rem",
-      "borderLeftColor": "#cccccc",
+      "borderLeftColor": "#d0d3da",
       "borderLeftStyle": "solid",
       "borderLeftWidth": "0.1rem",
-      "borderRightColor": "#cccccc",
+      "borderRightColor": "#d0d3da",
       "borderRightStyle": "solid",
       "borderRightWidth": "0.1rem",
-      "borderTopColor": "#cccccc",
+      "borderTopColor": "#d0d3da",
       "borderTopLeftRadius": "0.4rem",
       "borderTopRightRadius": "0.4rem",
       "borderTopStyle": "solid",
@@ -123,8 +123,8 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
         "color": "#363B40",
         "fontSize": "1.4rem",
         "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "1rem",
+        "paddingLeft": "1.2rem",
+        "paddingRight": "1.2rem",
         "paddingTop": "0rem",
       }
     }
@@ -157,7 +157,7 @@ exports[`Input props: null 1`] = `
   user-select: none;
   cursor: pointer;
   visibility: hidden;
-  padding-right: 1rem;
+  padding-right: 1.2rem;
 }
 
 .c1 {
@@ -177,22 +177,22 @@ exports[`Input props: null 1`] = `
 }
 
 .c1::-webkit-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1::-moz-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1:-ms-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1::placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
@@ -222,18 +222,18 @@ exports[`Input props: null 1`] = `
   onMouseUp={[Function]}
   style={
     Object {
-      "borderBottomColor": "#cccccc",
+      "borderBottomColor": "#d0d3da",
       "borderBottomLeftRadius": "0.4rem",
       "borderBottomRightRadius": "0.4rem",
       "borderBottomStyle": "solid",
       "borderBottomWidth": "0.1rem",
-      "borderLeftColor": "#cccccc",
+      "borderLeftColor": "#d0d3da",
       "borderLeftStyle": "solid",
       "borderLeftWidth": "0.1rem",
-      "borderRightColor": "#cccccc",
+      "borderRightColor": "#d0d3da",
       "borderRightStyle": "solid",
       "borderRightWidth": "0.1rem",
-      "borderTopColor": "#cccccc",
+      "borderTopColor": "#d0d3da",
       "borderTopLeftRadius": "0.4rem",
       "borderTopRightRadius": "0.4rem",
       "borderTopStyle": "solid",
@@ -267,8 +267,8 @@ exports[`Input props: null 1`] = `
         "color": "#363B40",
         "fontSize": "1.4rem",
         "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "1rem",
+        "paddingLeft": "1.2rem",
+        "paddingRight": "1.2rem",
         "paddingTop": "0rem",
       }
     }
@@ -301,7 +301,7 @@ exports[`Input props: placeholder  1`] = `
   user-select: none;
   cursor: pointer;
   visibility: hidden;
-  padding-right: 1rem;
+  padding-right: 1.2rem;
 }
 
 .c1 {
@@ -321,22 +321,22 @@ exports[`Input props: placeholder  1`] = `
 }
 
 .c1::-webkit-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1::-moz-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1:-ms-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1::placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
@@ -366,18 +366,18 @@ exports[`Input props: placeholder  1`] = `
   onMouseUp={[Function]}
   style={
     Object {
-      "borderBottomColor": "#cccccc",
+      "borderBottomColor": "#d0d3da",
       "borderBottomLeftRadius": "0.4rem",
       "borderBottomRightRadius": "0.4rem",
       "borderBottomStyle": "solid",
       "borderBottomWidth": "0.1rem",
-      "borderLeftColor": "#cccccc",
+      "borderLeftColor": "#d0d3da",
       "borderLeftStyle": "solid",
       "borderLeftWidth": "0.1rem",
-      "borderRightColor": "#cccccc",
+      "borderRightColor": "#d0d3da",
       "borderRightStyle": "solid",
       "borderRightWidth": "0.1rem",
-      "borderTopColor": "#cccccc",
+      "borderTopColor": "#d0d3da",
       "borderTopLeftRadius": "0.4rem",
       "borderTopRightRadius": "0.4rem",
       "borderTopStyle": "solid",
@@ -412,8 +412,8 @@ exports[`Input props: placeholder  1`] = `
         "color": "#363B40",
         "fontSize": "1.4rem",
         "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "1rem",
+        "paddingLeft": "1.2rem",
+        "paddingRight": "1.2rem",
         "paddingTop": "0rem",
       }
     }
@@ -446,7 +446,7 @@ exports[`Input props: placeholder  2`] = `
   user-select: none;
   cursor: pointer;
   visibility: hidden;
-  padding-right: 1rem;
+  padding-right: 1.2rem;
 }
 
 .c1 {
@@ -466,22 +466,22 @@ exports[`Input props: placeholder  2`] = `
 }
 
 .c1::-webkit-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1::-moz-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1:-ms-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1::placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
@@ -511,18 +511,18 @@ exports[`Input props: placeholder  2`] = `
   onMouseUp={[Function]}
   style={
     Object {
-      "borderBottomColor": "#cccccc",
+      "borderBottomColor": "#d0d3da",
       "borderBottomLeftRadius": "0.4rem",
       "borderBottomRightRadius": "0.4rem",
       "borderBottomStyle": "solid",
       "borderBottomWidth": "0.1rem",
-      "borderLeftColor": "#cccccc",
+      "borderLeftColor": "#d0d3da",
       "borderLeftStyle": "solid",
       "borderLeftWidth": "0.1rem",
-      "borderRightColor": "#cccccc",
+      "borderRightColor": "#d0d3da",
       "borderRightStyle": "solid",
       "borderRightWidth": "0.1rem",
-      "borderTopColor": "#cccccc",
+      "borderTopColor": "#d0d3da",
       "borderTopLeftRadius": "0.4rem",
       "borderTopRightRadius": "0.4rem",
       "borderTopStyle": "solid",
@@ -557,8 +557,8 @@ exports[`Input props: placeholder  2`] = `
         "color": "#363B40",
         "fontSize": "1.4rem",
         "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "1rem",
+        "paddingLeft": "1.2rem",
+        "paddingRight": "1.2rem",
         "paddingTop": "0rem",
       }
     }
@@ -591,7 +591,7 @@ exports[`Input props: size 1`] = `
   user-select: none;
   cursor: pointer;
   visibility: hidden;
-  padding-right: 1rem;
+  padding-right: 1.2rem;
 }
 
 .c1 {
@@ -611,22 +611,22 @@ exports[`Input props: size 1`] = `
 }
 
 .c1::-webkit-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.2rem;
 }
 
 .c1::-moz-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.2rem;
 }
 
 .c1:-ms-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.2rem;
 }
 
 .c1::placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.2rem;
 }
 
@@ -656,18 +656,18 @@ exports[`Input props: size 1`] = `
   onMouseUp={[Function]}
   style={
     Object {
-      "borderBottomColor": "#cccccc",
+      "borderBottomColor": "#d0d3da",
       "borderBottomLeftRadius": "0.4rem",
       "borderBottomRightRadius": "0.4rem",
       "borderBottomStyle": "solid",
       "borderBottomWidth": "0.1rem",
-      "borderLeftColor": "#cccccc",
+      "borderLeftColor": "#d0d3da",
       "borderLeftStyle": "solid",
       "borderLeftWidth": "0.1rem",
-      "borderRightColor": "#cccccc",
+      "borderRightColor": "#d0d3da",
       "borderRightStyle": "solid",
       "borderRightWidth": "0.1rem",
-      "borderTopColor": "#cccccc",
+      "borderTopColor": "#d0d3da",
       "borderTopLeftRadius": "0.4rem",
       "borderTopRightRadius": "0.4rem",
       "borderTopStyle": "solid",
@@ -701,8 +701,8 @@ exports[`Input props: size 1`] = `
         "color": "#363B40",
         "fontSize": "1.2rem",
         "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "1rem",
+        "paddingLeft": "1.2rem",
+        "paddingRight": "1.2rem",
         "paddingTop": "0rem",
       }
     }
@@ -720,7 +720,7 @@ exports[`Input props: size 1`] = `
     style={
       Object {
         "color": "#9EA4AE",
-        "fontSize": "1rem",
+        "fontSize": "1.2rem",
       }
     }
   />
@@ -735,7 +735,7 @@ exports[`Input props: size 2`] = `
   user-select: none;
   cursor: pointer;
   visibility: hidden;
-  padding-right: 1rem;
+  padding-right: 1.2rem;
 }
 
 .c1 {
@@ -755,22 +755,22 @@ exports[`Input props: size 2`] = `
 }
 
 .c1::-webkit-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1::-moz-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1:-ms-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c1::placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
@@ -800,18 +800,18 @@ exports[`Input props: size 2`] = `
   onMouseUp={[Function]}
   style={
     Object {
-      "borderBottomColor": "#cccccc",
+      "borderBottomColor": "#d0d3da",
       "borderBottomLeftRadius": "0.4rem",
       "borderBottomRightRadius": "0.4rem",
       "borderBottomStyle": "solid",
       "borderBottomWidth": "0.1rem",
-      "borderLeftColor": "#cccccc",
+      "borderLeftColor": "#d0d3da",
       "borderLeftStyle": "solid",
       "borderLeftWidth": "0.1rem",
-      "borderRightColor": "#cccccc",
+      "borderRightColor": "#d0d3da",
       "borderRightStyle": "solid",
       "borderRightWidth": "0.1rem",
-      "borderTopColor": "#cccccc",
+      "borderTopColor": "#d0d3da",
       "borderTopLeftRadius": "0.4rem",
       "borderTopRightRadius": "0.4rem",
       "borderTopStyle": "solid",
@@ -845,8 +845,8 @@ exports[`Input props: size 2`] = `
         "color": "#363B40",
         "fontSize": "1.4rem",
         "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "1rem",
+        "paddingLeft": "1.2rem",
+        "paddingRight": "1.2rem",
         "paddingTop": "0rem",
       }
     }

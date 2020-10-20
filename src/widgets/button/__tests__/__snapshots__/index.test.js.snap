@@ -14,24 +14,24 @@ Array [
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   position: relative;
   text-transform: none;
   outline: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-left-width: 0.1rem;
   border-left-style: solid;
-  border-left-color: #cccccc;
+  border-left-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
 }
 
 .c5 {
@@ -46,25 +46,25 @@ Array [
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   position: relative;
   text-transform: none;
   outline: 0;
   pointer-events: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-left-width: 0.1rem;
   border-left-style: solid;
-  border-left-color: #cccccc;
+  border-left-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
 }
 
 .c3 {
@@ -162,18 +162,18 @@ Array [
         style={
           Object {
             "backgroundColor": "white",
-            "borderBottomColor": "#cccccc",
+            "borderBottomColor": "#d0d3da",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#cccccc",
+            "borderLeftColor": "#d0d3da",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#cccccc",
+            "borderRightColor": "#d0d3da",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#cccccc",
+            "borderTopColor": "#d0d3da",
             "borderTopLeftRadius": "0.4rem",
             "borderTopRightRadius": "0.4rem",
             "borderTopStyle": "solid",
@@ -475,18 +475,18 @@ Array [
         style={
           Object {
             "backgroundColor": "transparent",
-            "borderBottomColor": "#cccccc",
+            "borderBottomColor": "#d0d3da",
             "borderBottomLeftRadius": "1.6rem",
             "borderBottomRightRadius": "1.6rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#cccccc",
+            "borderLeftColor": "#d0d3da",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#cccccc",
+            "borderRightColor": "#d0d3da",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#cccccc",
+            "borderTopColor": "#d0d3da",
             "borderTopLeftRadius": "1.6rem",
             "borderTopRightRadius": "1.6rem",
             "borderTopStyle": "solid",
@@ -824,18 +824,18 @@ Array [
         style={
           Object {
             "backgroundColor": "white",
-            "borderBottomColor": "#cccccc",
+            "borderBottomColor": "#d0d3da",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#cccccc",
+            "borderLeftColor": "#d0d3da",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#cccccc",
+            "borderRightColor": "#d0d3da",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#cccccc",
+            "borderTopColor": "#d0d3da",
             "borderTopLeftRadius": "0.4rem",
             "borderTopRightRadius": "0.4rem",
             "borderTopStyle": "solid",
@@ -992,18 +992,18 @@ Array [
         style={
           Object {
             "backgroundColor": "white",
-            "borderBottomColor": "#e8e8e8",
+            "borderBottomColor": "#ebecf0",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#e8e8e8",
+            "borderLeftColor": "#ebecf0",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#e8e8e8",
+            "borderRightColor": "#ebecf0",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#e8e8e8",
+            "borderTopColor": "#ebecf0",
             "borderTopLeftRadius": "0.4rem",
             "borderTopRightRadius": "0.4rem",
             "borderTopStyle": "solid",
@@ -1024,7 +1024,7 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#cccccc",
+                "color": "#d0d3da",
                 "fontSize": "1.4rem",
               }
             }
@@ -1104,7 +1104,7 @@ Array [
         size="default"
         style={
           Object {
-            "backgroundColor": "#95c284",
+            "backgroundColor": "#cde7c5",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomWidth": 0,
@@ -1157,7 +1157,7 @@ Array [
         size="default"
         style={
           Object {
-            "backgroundColor": "#f8d6a0",
+            "backgroundColor": "#fce5c2",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomWidth": 0,
@@ -1210,7 +1210,7 @@ Array [
         size="default"
         style={
           Object {
-            "backgroundColor": "#f2949a",
+            "backgroundColor": "#f8d4d5",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomWidth": 0,
@@ -1316,18 +1316,18 @@ Array [
         style={
           Object {
             "backgroundColor": "transparent",
-            "borderBottomColor": "#e8e8e8",
+            "borderBottomColor": "#ebecf0",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#e8e8e8",
+            "borderLeftColor": "#ebecf0",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#e8e8e8",
+            "borderRightColor": "#ebecf0",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#e8e8e8",
+            "borderTopColor": "#ebecf0",
             "borderTopLeftRadius": "0.4rem",
             "borderTopRightRadius": "0.4rem",
             "borderTopStyle": "solid",
@@ -1348,7 +1348,7 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#cccccc",
+                "color": "#d0d3da",
                 "fontSize": "1.4rem",
               }
             }
@@ -1437,18 +1437,18 @@ Array [
         style={
           Object {
             "backgroundColor": "rgba(86,194,45,0.05)",
-            "borderBottomColor": "#95c284",
+            "borderBottomColor": "#cde7c5",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#95c284",
+            "borderLeftColor": "#cde7c5",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#95c284",
+            "borderRightColor": "#cde7c5",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#95c284",
+            "borderTopColor": "#cde7c5",
             "borderTopLeftRadius": "0.4rem",
             "borderTopRightRadius": "0.4rem",
             "borderTopStyle": "solid",
@@ -1470,7 +1470,7 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#95c284",
+                "color": "#cde7c5",
                 "fontSize": "1.4rem",
               }
             }
@@ -1498,18 +1498,18 @@ Array [
         style={
           Object {
             "backgroundColor": "rgba(248,172,48,0.05)",
-            "borderBottomColor": "#f8d6a0",
+            "borderBottomColor": "#fce5c2",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#f8d6a0",
+            "borderLeftColor": "#fce5c2",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#f8d6a0",
+            "borderRightColor": "#fce5c2",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#f8d6a0",
+            "borderTopColor": "#fce5c2",
             "borderTopLeftRadius": "0.4rem",
             "borderTopRightRadius": "0.4rem",
             "borderTopStyle": "solid",
@@ -1531,7 +1531,7 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#f8d6a0",
+                "color": "#fce5c2",
                 "fontSize": "1.4rem",
               }
             }
@@ -1559,18 +1559,18 @@ Array [
         style={
           Object {
             "backgroundColor": "rgba(242,39,53,0.05)",
-            "borderBottomColor": "#f2949a",
+            "borderBottomColor": "#f8d4d5",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#f2949a",
+            "borderLeftColor": "#f8d4d5",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#f2949a",
+            "borderRightColor": "#f8d4d5",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#f2949a",
+            "borderTopColor": "#f8d4d5",
             "borderTopLeftRadius": "0.4rem",
             "borderTopRightRadius": "0.4rem",
             "borderTopStyle": "solid",
@@ -1592,7 +1592,7 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#f2949a",
+                "color": "#f8d4d5",
                 "fontSize": "1.4rem",
               }
             }
@@ -1668,18 +1668,18 @@ Array [
         style={
           Object {
             "backgroundColor": "transparent",
-            "borderBottomColor": "#cccccc",
+            "borderBottomColor": "#d0d3da",
             "borderBottomLeftRadius": "50%",
             "borderBottomRightRadius": "50%",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#cccccc",
+            "borderLeftColor": "#d0d3da",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#cccccc",
+            "borderRightColor": "#d0d3da",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#cccccc",
+            "borderTopColor": "#d0d3da",
             "borderTopLeftRadius": "50%",
             "borderTopRightRadius": "50%",
             "borderTopStyle": "solid",
@@ -1793,18 +1793,18 @@ Array [
         style={
           Object {
             "backgroundColor": "white",
-            "borderBottomColor": "#cccccc",
+            "borderBottomColor": "#d0d3da",
             "borderBottomLeftRadius": "50%",
             "borderBottomRightRadius": "50%",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#cccccc",
+            "borderLeftColor": "#d0d3da",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#cccccc",
+            "borderRightColor": "#d0d3da",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#cccccc",
+            "borderTopColor": "#d0d3da",
             "borderTopLeftRadius": "50%",
             "borderTopRightRadius": "50%",
             "borderTopStyle": "solid",
@@ -2070,18 +2070,18 @@ Array [
         style={
           Object {
             "backgroundColor": "white",
-            "borderBottomColor": "#cccccc",
+            "borderBottomColor": "#d0d3da",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#cccccc",
+            "borderLeftColor": "#d0d3da",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#cccccc",
+            "borderRightColor": "#d0d3da",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#cccccc",
+            "borderTopColor": "#d0d3da",
             "borderTopLeftRadius": "0.4rem",
             "borderTopRightRadius": "0.4rem",
             "borderTopStyle": "solid",
@@ -2370,25 +2370,25 @@ Array [
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   position: relative;
   text-transform: none;
   outline: 0;
   width: 100%;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-left-width: 0.1rem;
   border-left-style: solid;
-  border-left-color: #cccccc;
+  border-left-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
 }
 
 .c3 {
@@ -2403,26 +2403,26 @@ Array [
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   position: relative;
   text-transform: none;
   outline: 0;
   width: 100%;
   pointer-events: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-left-width: 0.1rem;
   border-left-style: solid;
-  border-left-color: #cccccc;
+  border-left-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
 }
 
 .c2 {
@@ -2488,18 +2488,18 @@ Array [
       style={
         Object {
           "backgroundColor": "white",
-          "borderBottomColor": "#cccccc",
+          "borderBottomColor": "#d0d3da",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
+          "borderLeftColor": "#d0d3da",
           "borderLeftStyle": "solid",
           "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
+          "borderRightColor": "#d0d3da",
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
+          "borderTopColor": "#d0d3da",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
           "borderTopStyle": "solid",
@@ -3114,18 +3114,18 @@ Array [
       style={
         Object {
           "backgroundColor": "white",
-          "borderBottomColor": "#cccccc",
+          "borderBottomColor": "#d0d3da",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
+          "borderLeftColor": "#d0d3da",
           "borderLeftStyle": "solid",
           "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
+          "borderRightColor": "#d0d3da",
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
+          "borderTopColor": "#d0d3da",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
           "borderTopStyle": "solid",
@@ -3181,24 +3181,24 @@ Array [
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   position: relative;
   text-transform: none;
   outline: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-left-width: 0.1rem;
   border-left-style: solid;
-  border-left-color: #cccccc;
+  border-left-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
 }
 
 .c2 {
@@ -3241,18 +3241,18 @@ Array [
       style={
         Object {
           "backgroundColor": "white",
-          "borderBottomColor": "#cccccc",
+          "borderBottomColor": "#d0d3da",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
+          "borderLeftColor": "#d0d3da",
           "borderLeftStyle": "solid",
           "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
+          "borderRightColor": "#d0d3da",
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
+          "borderTopColor": "#d0d3da",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
           "borderTopStyle": "solid",
@@ -3465,6 +3465,712 @@ Array [
           style={
             Object {
               "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Danger
+        </span>
+      </span>
+    </button>
+  </div>,
+  .c0 {
+  display: inline-block;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  background-color: white;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #d0d3da;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #d0d3da;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #d0d3da;
+}
+
+.c3 {
+  display: inline-block;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  -webkit-transition: none;
+  transition: none;
+  background-color: white;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #d0d3da;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #d0d3da;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #d0d3da;
+}
+
+.c2 {
+  font-size: 1.4rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+<div>
+    <p>
+      没有过渡效果的default button
+    </p>
+    <button
+      className="c0"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "white",
+          "borderBottomColor": "#d0d3da",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#d0d3da",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#d0d3da",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#d0d3da",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          hello
+        </span>
+      </span>
+    </button>
+    <button
+      className="c3"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="primary"
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Primary
+        </span>
+      </span>
+    </button>
+    <button
+      className="c3"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#56c22d",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="success"
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Success
+        </span>
+      </span>
+    </button>
+    <button
+      className="c3"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#f8ac30",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="warning"
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Warning
+        </span>
+      </span>
+    </button>
+    <button
+      className="c3"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#f22735",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="danger"
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Danger
+        </span>
+      </span>
+    </button>
+  </div>,
+  .c0 {
+  display: inline-block;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  background-color: white;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #d0d3da;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #d0d3da;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #d0d3da;
+}
+
+.c3 {
+  display: inline-block;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  -webkit-transition: none;
+  transition: none;
+  background-color: white;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #d0d3da;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #d0d3da;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #d0d3da;
+}
+
+.c2 {
+  font-size: 1.4rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+<div>
+    <p>
+      没有过渡效果的plain button
+    </p>
+    <button
+      className="c0"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "white",
+          "borderBottomColor": "#d0d3da",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#d0d3da",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#d0d3da",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#d0d3da",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          hello
+        </span>
+      </span>
+    </button>
+    <button
+      className="c3"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "rgba(77,99,255,0.05)",
+          "borderBottomColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#4d63ff",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#4d63ff",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#4d63ff",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="primary"
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#4d63ff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Primary
+        </span>
+      </span>
+    </button>
+    <button
+      className="c3"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "rgba(86,194,45,0.05)",
+          "borderBottomColor": "#56c22d",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#56c22d",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#56c22d",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#56c22d",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="success"
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#56c22d",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Success
+        </span>
+      </span>
+    </button>
+    <button
+      className="c3"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "rgba(248,172,48,0.05)",
+          "borderBottomColor": "#f8ac30",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#f8ac30",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#f8ac30",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#f8ac30",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="warning"
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#f8ac30",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Warning
+        </span>
+      </span>
+    </button>
+    <button
+      className="c3"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "rgba(242,39,53,0.05)",
+          "borderBottomColor": "#f22735",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#f22735",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#f22735",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#f22735",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="danger"
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#f22735",
               "fontSize": "1.4rem",
             }
           }

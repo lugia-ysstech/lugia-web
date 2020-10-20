@@ -7,7 +7,7 @@ exports[`Popup Popup snapshot 1`] = `
   box-sizing: border-box;
   left: -9999px;
   top: -9999px;
-  z-index: 999999;
+  z-index: undefined;
 }
 
 <div

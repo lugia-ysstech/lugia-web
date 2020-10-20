@@ -2,11 +2,20 @@
   "widgetName": "Menu",
   "title": "菜单",
   "desc": "为用户提供菜单列表",
+  "tag": "menu 菜单列表 多列文本",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
       "desc": "是否渲染当前组件",
       "defaultValue": false
+    },
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出框"
+    },
+    "popupContainerId": {
+      "type": "ContainerDomIdType",
+      "desc": "配置弹出框的作用容器id"
     },
     "isShowAuxiliaryText": {
       "type": "boolean",
@@ -82,7 +91,7 @@
     "checkedCSS": {
       "type": "CheckedCSSType",
       "desc": "选中项的样式",
-      "propsDefaultValue": "none"
+      "propsDefaultValue": "background"
     },
 
     "limitCount": {
@@ -203,9 +212,20 @@
     }
   },
   "type": {
-    "SizeType": ["small", "default", "large"],
-    "CheckedCSSType": ["background", "checkbox", "none"],
-    "ActionType": ["hover", "click"]
+    "SizeType": [
+      { "value": "small", "text": "小" },
+      { "value": "default", "text": "正常" },
+      { "value": "large", "text": "大" }
+    ],
+    "CheckedCSSType": [
+      { "value": "background", "text": "填充背景风格" },
+      { "value": "checkbox", "text": "多选框风格" },
+      { "value": "none", "text": "高亮文本风格" }
+    ],
+    "ActionType": [
+      { "value": "hover", "text": "悬浮展开" },
+      { "value": "click", "text": "点击展开" }
+    ]
   },
   "category": ["数据录入"],
 
@@ -217,7 +237,6 @@
       "props": {
         "mutliple": true
       },
-
       "theme": {
         "Container": {
           "name": "菜单整体配置",
@@ -291,7 +310,6 @@
               "name": "选中项的外盒",
               "desc": "配置选中项的外盒",
               "normal": [
-                ["height"],
                 ["color"],
                 ["font"],
                 ["fontSize"],
@@ -340,6 +358,22 @@
               "desc": "配置文本和前缀后缀图标的位置",
               "normal": [["padding"]],
               "hover": [],
+              "active": [],
+              "disabled": []
+            },
+            "Text": {
+              "name": "文本",
+              "desc": "配置文本",
+              "normal": [["font"], ["fontSize"], ["color"],["margin"],["padding"]],
+              "hover": [["font"], ["fontSize"], ["color"]],
+              "active": [],
+              "disabled": []
+            },
+            "CheckedText": {
+              "name": "选中文本",
+              "desc": "配置选中文本",
+              "normal": [["font"], ["fontSize"], ["color"],["margin"],["padding"]],
+              "hover": [["font"], ["fontSize"], ["color"]],
               "active": [],
               "disabled": []
             },
@@ -442,7 +476,6 @@
       }
     }
   },
-
   "theme": {
     "Container": {
       "name": "菜单整体配置",
@@ -516,7 +549,6 @@
           "name": "选中项的外盒",
           "desc": "配置选中项的外盒",
           "normal": [
-            ["height"],
             ["color"],
             ["font"],
             ["fontSize"],
@@ -550,6 +582,22 @@
           "active": [],
           "disabled": []
         },
+        "Text": {
+          "name": "文本",
+          "desc": "配置文本",
+          "normal": [["font"], ["fontSize"], ["color"],["margin"],["padding"]],
+          "hover": [["font"], ["fontSize"], ["color"]],
+          "active": [],
+          "disabled": []
+        },
+        "CheckedText": {
+          "name": "选中文本",
+          "desc": "配置选中文本",
+          "normal": [["font"], ["fontSize"], ["color"],["margin"],["padding"]],
+          "hover": [["font"], ["fontSize"], ["color"]],
+          "active": [],
+          "disabled": []
+        },
 
         "DesContainer": {
           "name": "辅助字段框",
@@ -559,7 +607,6 @@
           "active": [["color"], ["font"], ["fontSize"]],
           "disabled": []
         },
-
         "SelectedDesContainer": {
           "name": "选中项辅助字段框",
           "desc": "配置被选中项的辅助文本的样式和位置",

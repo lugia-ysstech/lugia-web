@@ -41,10 +41,7 @@ const newData = [
   {
     value: 'Lugia Design of React',
     text: 'Lugia Design of React',
-    icon: 'lugia-icon-financial_add_pic',
-    icons: {
-      suffixIconClass: 'lugia-icon-finacial1_lock_o',
-    },
+    icon: 'lugia-icon-financial_columns',
   },
   { value: '快速上手', text: '快速上手', icon: 'lugia-icon-financial_columns' },
   { value: '项目实战', text: '项目实战' },
@@ -346,6 +343,28 @@ const tabsHoverTheme = {
   },
 };
 
+const noDataTheme = {
+  [Widget.NavMenu]: {
+    Tabs: {
+      Container: {
+        normal: {
+          height: 40,
+          background: {
+            color: '#000033',
+          },
+        },
+      },
+      BorderStyle: {
+        normal: {
+          background: {
+            color: '#000033',
+          },
+        },
+      },
+    },
+  },
+};
+
 export default class LimitDemo extends React.Component<Object, Object> {
   all: boolean;
 
@@ -359,9 +378,42 @@ export default class LimitDemo extends React.Component<Object, Object> {
     this.setState({ activityValue: newValue });
   };
 
+  onClickTree = (target: Object) => {
+    console.log('onClickTree', target);
+  };
+
   render() {
     return (
       <div>
+        <H2>无数据的水平导航菜单</H2>
+
+        <HoriBox>
+          <H3>数据的水平导航菜单</H3>
+          <Navmenu
+            theme={tabsHoverTheme}
+            data={[]}
+            pathSeparator={'@'}
+            themeStyle={'dark'}
+            activityValue={this.state.activityValue}
+            mode={'horizontal'}
+            action={'hover'}
+            onChange={this.tabsOnChange}
+          />
+        </HoriBox>
+
+        <HoriBox>
+          <H3>主题样式配置的无数据的水平导航菜单</H3>
+          <Navmenu
+            theme={noDataTheme}
+            data={[]}
+            pathSeparator={'@'}
+            activityValue={this.state.activityValue}
+            mode={'horizontal'}
+            action={'hover'}
+            onChange={this.tabsOnChange}
+          />
+        </HoriBox>
+
         <H2>水平导航菜单</H2>
 
         <HoriBox>
@@ -438,6 +490,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
             inlineExpandAll={true}
             onChange={this.onChange}
             onSelect={this.onSelect}
+            onClick={this.onClickTree}
             renderSuffixItems={this.renderSuffixItems}
           />
 

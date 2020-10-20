@@ -136,6 +136,12 @@ const view = {
         boxShadow: getBoxShadow('2 2 20 red'),
         opacity: 0.9,
       },
+      hover: {
+        boxShadow: getBoxShadow('2 2 20 orange'),
+      },
+      active: {
+        boxShadow: getBoxShadow('2 2 20 blue'),
+      },
     },
     Divided: {
       normal: {
@@ -292,7 +298,7 @@ export default class extends React.Component<any, any> {
               suffixIconClass: 'lugia-icon-direction_play_circle',
               prefixIconSrc: imgs,
             }}
-          ></DropMenu>
+          />
         </Box>
 
         <Box>
@@ -300,19 +306,19 @@ export default class extends React.Component<any, any> {
             text={'下拉菜单'}
             divided={true}
             // disabled
-          ></DropMenu>
+          />
         </Box>
 
         <Box>
-          <DropMenu text={'下拉菜单'} divided={true} theme={view} disabled></DropMenu>
+          <DropMenu text={'下拉菜单'} divided={true} theme={view} disabled />
         </Box>
 
         <Box>
-          <DropMenu text={'下拉菜单'} divided={true} type={'primary'}></DropMenu>
+          <DropMenu text={'下拉菜单'} divided={true} type={'primary'} />
         </Box>
 
         <Box>
-          <DropMenu text={'下拉菜单'} type={'primary'} divided={true} disabled></DropMenu>
+          <DropMenu text={'下拉菜单'} type={'primary'} divided={true} disabled />
         </Box>
 
         <div>
@@ -330,7 +336,7 @@ export default class extends React.Component<any, any> {
                 prefixIconSrc: imgs,
               }}
               // switchIconClass={imgs}
-            ></DropMenu>
+            />
           </Box>
           <Box>
             <DropMenu menus={menu}>
@@ -426,7 +432,7 @@ export default class extends React.Component<any, any> {
               suffixIconClass: 'lugia-icon-direction_play_circle',
               prefixIconSrc: imgs,
             }}
-          ></DropMenu>
+          />
         </Box>
         <h1>createPortal 为 true </h1>
         <Box>
@@ -444,7 +450,7 @@ export default class extends React.Component<any, any> {
               suffixIconClass: 'lugia-icon-direction_play_circle',
               prefixIconSrc: imgs,
             }}
-          ></DropMenu>
+          />
         </Box>
       </div>
     );

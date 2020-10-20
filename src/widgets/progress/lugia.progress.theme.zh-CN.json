@@ -15,11 +15,25 @@
         "iconClass": "progress",
         "data": [
           {
+            "name": "进度条整体配置",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "面板中外观配置的区块显示文本"
+              },
+              "spacingPart": {
+                "text": "padding/margin",
+                "desc": "内外边距配置区块的显示文本"
+              }
+            }
+          },
+          {
             "name": "进度条底色线配置",
             "path": ["ProgressOutLine"],
             "description": {
               "appearancePart": {
-                "text": "外观",
+                "text": "底色条外观",
                 "desc": "面板中外观配置的区块显示文本"
               },
               "spacingPart": {
@@ -52,7 +66,10 @@
             "name": "动效条样式配置",
             "path": ["ProgressActiveLine"],
             "description": {
-              "appearancePart": { "text": "动效条", "desc": "面板中外观配置的区块显示文本" }
+              "textPart": {
+                "text": "动效条",
+                "desc": "文本配置区块的显示文本"
+              }
             }
           }
         ]
@@ -120,6 +137,7 @@
           {
             "name": "进度条成功图标配置",
             "path": ["ProgressLineSuccessIcon"],
+            "props": [{ "name": "successIconClass", "typeInTheme": "icon" }],
             "description": {
               "appearancePart": {
                 "text": "成功图标",
@@ -158,6 +176,7 @@
           {
             "name": "进度条失败图标配置",
             "path": ["ProgressLineErrorIcon"],
+            "props": [{ "name": "errorIconClass", "typeInTheme": "icon" }],
             "description": {
               "appearancePart": {
                 "text": "外观",
@@ -188,6 +207,48 @@
     ],
     "data": [
       {
+        "title": "底色条",
+        "iconClass": "progressCricle",
+        "data": [
+          {
+            "name": "进度条整体配置",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "进度条底色条颜色配置",
+            "path": ["ProgressCircleBackground"],
+            "description": {
+              "textPart": {
+                "text": "外观",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "进度条",
+        "iconClass": "progressingCircle",
+        "data": [
+          {
+            "name": "进度条进度线颜色配置",
+            "path": ["ProgressCircleLine"],
+            "description": {
+              "textPart": {
+                "text": "外观",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
         "title": "数值",
         "iconClass": "progressNumber",
         "data": [
@@ -213,11 +274,22 @@
       },
       {
         "title": "成功状态",
-        "iconClass": "progressDashboardSuccess",
+        "iconClass": "progressSuccess",
         "data": [
+          {
+            "name": "圆形进度条成功外观配置",
+            "path": ["ProgressCircleLine_Success"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
           {
             "name": "进度条成功图标配置",
             "path": ["ProgressCircleSuccessIcon"],
+            "props": [{ "name": "successIconClass", "typeInTheme": "icon" }],
             "description": {
               "appearancePart": {
                 "text": "外观",
@@ -237,11 +309,22 @@
       },
       {
         "title": "错误状态",
-        "iconClass": "progressDashboardError",
+        "iconClass": "progressError",
         "data": [
+          {
+            "name": "圆形进度条失败外观配置",
+            "path": ["ProgressCircleLine_Error"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
           {
             "name": "进度条失败图标配置",
             "path": ["ProgressCircleErrorIcon"],
+            "props": [{ "name": "errorIconClass", "typeInTheme": "icon" }],
             "description": {
               "appearancePart": {
                 "text": "外观",
@@ -272,6 +355,48 @@
     ],
     "data": [
       {
+        "title": "底色条",
+        "iconClass": "progressDashboard",
+        "data": [
+          {
+            "name": "进度条整体配置",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "整体",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
+            "name": "进度条底色条颜色配置",
+            "path": ["DashboardBackground"],
+            "description": {
+              "textPart": {
+                "text": "外观",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "进度条",
+        "iconClass": "progressingDashboard",
+        "data": [
+          {
+            "name": "进度条进度线颜色配置",
+            "path": ["DashboardLine"],
+            "description": {
+              "textPart": {
+                "text": "外观",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
+      },
+      {
         "title": "数值",
         "iconClass": "progressNumber",
         "data": [
@@ -300,8 +425,19 @@
         "iconClass": "progressDashboardSuccess",
         "data": [
           {
+            "name": "仪表盘进度条成功外观配置",
+            "path": ["ProgressCircleLine_Success"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
             "name": "进度条成功图标配置",
             "path": ["ProgressDashboardSuccessIcon"],
+            "props": [{ "name": "successIconClass", "typeInTheme": "icon" }],
             "description": {
               "appearancePart": {
                 "text": "外观",
@@ -324,8 +460,19 @@
         "iconClass": "progressDashboardError",
         "data": [
           {
+            "name": "仪表盘进度条失败外观配置",
+            "path": ["ProgressCircleLine_Error"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
+          },
+          {
             "name": "进度条失败图标配置",
             "path": ["ProgressDashboardErrorIcon"],
+            "props": [{ "name": "errorIconClass", "typeInTheme": "icon" }],
             "description": {
               "appearancePart": {
                 "text": "外观",

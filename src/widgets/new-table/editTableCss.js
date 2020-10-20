@@ -12,12 +12,11 @@ export type EditTableProps = TableProps & {
   showAddCol?: boolean,
   showAddRow?: boolean,
   allowEditHead?: boolean,
-  onChange: Function,
-  onCell: Function,
-  onHeaderCell: Function,
-  customContainerElement: any,
-  customEditElement: any,
-  selectSuffixElement: any,
+  onChange?: Function,
+  onCell?: Function,
+  onHeaderCell?: Function,
+  customEditElement?: any,
+  selectSuffixElement?: any,
 };
 
 export type EditTableState = {};
@@ -36,20 +35,30 @@ export const EditDiv = CSSComponent({
   tag: 'div',
   className: 'EditDiv',
   normal: {
-    selectNames: [['width'], ['height'], ['border'], ['background'], ['padding'], ['color']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['border'],
+      ['background'],
+      ['padding'],
+      ['color'],
+      ['cursor'],
+    ],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { isSelect, isLugiaHead, isDisableEdit },
+        propsConfig: { isSelect, isLugiaHead, isDisableEdit, isAllowSelect },
       } = themeProps;
       const editBorderColor = isSelect ? themeColor : 'transparent';
       const backgroundColor = isLugiaHead ? disableColor : 'transparent';
       let border = getBorder({ color: editBorderColor, width: borderSize, style: 'solid' });
-      if (isDisableEdit) {
+      const cursor = isDisableEdit ? 'default' : 'pointer';
+      if (!isAllowSelect) {
         border = getBorder({ color: 'transparent', width: borderSize, style: 'solid' });
       }
       return {
         border,
         background: { color: backgroundColor },
+        cursor,
       };
     },
     getCSS(themeMeta: Object, themeProps: Object) {
@@ -69,6 +78,7 @@ export const EditDiv = CSSComponent({
     display: flex;
     align-items: center;
     padding: 0 10px;
+    word-break: break-all;
     position: relative;`,
 });
 

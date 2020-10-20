@@ -58,6 +58,16 @@
       "desc": "步骤条显示的图标",
       "propsDefaultValue": "lugia-icon-financial_cloud"
     },
+    "finishIcon": {
+      "type": "icon",
+      "desc": "步骤条成功状态显示的图标",
+      "propsDefaultValue": "lugia-icon-reminder_check"
+    },
+    "errorIcon": {
+      "type": "icon",
+      "desc": "步骤条异常状态显示的图标",
+      "propsDefaultValue": "lugia-icon-reminder_close"
+    },
     "isFirst": {
       "type": "boolean",
       "desc": "该步骤是否是第一步",
@@ -70,11 +80,76 @@
     }
   },
   "type": {
-    "StepType": ["simple", "flat", "icon", "dot"],
-    "StepStatus": ["finish", "process", "next", "wait", "error"],
-    "SizeType": ["default", "small"],
-    "OrientationType": ["horizontal", "vertical"],
-    "AlignType": ["center", "left"]
+    "StepType": [
+      {
+        "value": "simple",
+        "text": "简洁风格"
+      },
+      {
+        "value": "flat",
+        "text": "半扁平风格"
+      },
+      {
+        "value": "icon",
+        "text": "图标风格"
+      },
+      {
+        "value": "dot",
+        "text": "点状风格"
+      }
+    ],
+    "SizeType": [
+      {
+        "value": "default",
+        "text": "正常"
+      },
+      {
+        "value": "small",
+        "text": "小"
+      }
+    ],
+    "OrientationType": [
+      {
+        "value": "horizontal",
+        "text": "水平"
+      },
+      {
+        "value": "vertical",
+        "text": "垂直"
+      }
+    ],
+    "AlignType": [
+      {
+        "value": "center",
+        "text": "居中"
+      },
+      {
+        "value": "left",
+        "text": "居左"
+      }
+    ],
+    "StepStatus": [
+      {
+        "value": "finish",
+        "text": "已完成"
+      },
+      {
+        "value": "process",
+        "text": "进行中"
+      },
+      {
+        "value": "next",
+        "text": "下一步"
+      },
+      {
+        "value": "wait",
+        "text": "等待中"
+      },
+      {
+        "value": "error",
+        "text": "异常"
+      }
+    ]
   },
   "category": ["导航"],
   "designInfo": {
@@ -111,31 +186,30 @@
           "desc": "异常状态单个步骤外部容器配置",
           "normal": [["width"], ["height"]]
         },
-
         "FinishStepLine": {
           "name": "已完成状态步骤间连接线",
           "desc": "已完成状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
         "ProcessStepLine": {
           "name": "进行中状态步骤间连接线",
           "desc": "进行中状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
         "NextStepLine": {
           "name": "下一步状态步骤间连接线",
           "desc": "下一步状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
         "WaitStepLine": {
           "name": "等待中状态步骤间连接线",
           "desc": "等待中状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
         "ErrorStepLine": {
           "name": "异常状态步骤间连接线",
           "desc": "异常状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
 
         "FinishStepInnerContainer": {
@@ -167,67 +241,27 @@
         "FinishStepTitle": {
           "name": "已完成状态步骤标题",
           "desc": "已完成状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ProcessStepTitle": {
           "name": "进行中状态步骤标题",
           "desc": "进行中状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "NextStepTitle": {
           "name": "下一步状态步骤标题",
           "desc": "下一步状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "WaitStepTitle": {
           "name": "等待中状态步骤标题",
           "desc": "等待中状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ErrorStepTitle": {
           "name": "异常状态步骤标题",
           "desc": "异常状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
 
         "FinishStepDescription": {
@@ -246,54 +280,22 @@
         "ProcessStepDescription": {
           "name": "进行中状态步骤条内容描述",
           "desc": "进行中状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "NextStepDescription": {
           "name": "下一步状态步骤条内容描述",
           "desc": "下一步状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "WaitStepDescription": {
           "name": "等待中状态步骤条内容描述",
           "desc": "等待中状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ErrorStepDescription": {
           "name": "异常状态步骤条内容描述",
           "desc": "异常状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
 
         "ProcessStepNumber": {
@@ -304,6 +306,16 @@
         "StepInnerIcon": {
           "name": "步骤条内容图标",
           "desc": "配置步骤条内容图标",
+          "normal": [["fontSize"], ["font"], ["color"]]
+        },
+        "FinishStepInnerIcon": {
+          "name": "已完成步骤条内容图标",
+          "desc": "配置已完成步骤条内容图标",
+          "normal": [["fontSize"], ["font"], ["color"]]
+        },
+        "ErrorStepInnerIcon": {
+          "name": "异常步骤条内容图标",
+          "desc": "异常配置步骤条内容图标",
           "normal": [["fontSize"], ["font"], ["color"]]
         }
       }
@@ -341,33 +353,31 @@
           "desc": "异常状态单个步骤外部容器配置",
           "normal": [["width"], ["height"]]
         },
-
         "FinishStepFlatLine": {
           "name": "已完成状态步骤间连接线",
           "desc": "已完成状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["boxShadow"]]
+          "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
         },
         "ProcessStepFlatLine": {
           "name": "进行中状态步骤间连接线",
           "desc": "进行中状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["boxShadow"]]
+          "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
         },
         "NextStepFlatLine": {
           "name": "下一步状态步骤间连接线",
           "desc": "下一步状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["boxShadow"]]
+          "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
         },
         "WaitStepFlatLine": {
           "name": "等待中状态步骤间连接线",
           "desc": "等待中状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["boxShadow"]]
+          "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
         },
         "ErrorStepFlatLine": {
           "name": "异常状态步骤间连接线",
           "desc": "异常状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["boxShadow"]]
+          "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
         },
-
         "FinishStepInnerContainer": {
           "name": "已完成状态单个步骤内部",
           "desc": "已完成状态单个步骤内部容器配置",
@@ -397,133 +407,53 @@
         "FinishStepTitle": {
           "name": "已完成状态步骤标题",
           "desc": "已完成状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ProcessStepTitle": {
           "name": "进行中状态步骤标题",
           "desc": "进行中状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "NextStepTitle": {
           "name": "下一步状态步骤标题",
           "desc": "下一步状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "WaitStepTitle": {
           "name": "等待中状态步骤标题",
           "desc": "等待中状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ErrorStepTitle": {
           "name": "异常状态步骤标题",
           "desc": "异常状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
 
         "FinishStepDescription": {
           "name": "已完成状态步骤条内容描述",
           "desc": "已完成状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ProcessStepDescription": {
           "name": "进行中状态步骤条内容描述",
           "desc": "进行中状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "NextStepDescription": {
           "name": "下一步状态步骤条内容描述",
           "desc": "下一步状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "WaitStepDescription": {
           "name": "等待中状态步骤条内容描述",
           "desc": "等待中状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ErrorStepDescription": {
           "name": "异常状态步骤条内容描述",
           "desc": "异常状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "StepInnerIcon": {
           "name": "步骤条内容图标",
@@ -533,6 +463,16 @@
         "ProcessStepNumber": {
           "name": "进行中状态步骤条步骤数字",
           "desc": "进行中状态配置步骤条步骤数字",
+          "normal": [["fontSize"], ["font"], ["color"]]
+        },
+        "FinishStepInnerIcon": {
+          "name": "已完成步骤条内容图标",
+          "desc": "配置已完成步骤条内容图标",
+          "normal": [["fontSize"], ["font"], ["color"]]
+        },
+        "ErrorStepInnerIcon": {
+          "name": "异常步骤条内容图标",
+          "desc": "异常配置步骤条内容图标",
           "normal": [["fontSize"], ["font"], ["color"]]
         }
       }
@@ -570,31 +510,30 @@
           "desc": "异常状态单个步骤外部容器配置",
           "normal": [["width"], ["height"]]
         },
-
         "FinishStepLine": {
           "name": "已完成状态步骤间连接线",
           "desc": "已完成状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
         "ProcessStepLine": {
           "name": "进行中状态步骤间连接线",
           "desc": "进行中状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
         "NextStepLine": {
           "name": "下一步状态步骤间连接线",
           "desc": "下一步状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
         "WaitStepLine": {
           "name": "等待中状态步骤间连接线",
           "desc": "等待中状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
         "ErrorStepLine": {
           "name": "异常状态步骤间连接线",
           "desc": "异常状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
 
         "FinishStepInnerContainer": {
@@ -626,137 +565,77 @@
         "FinishStepTitle": {
           "name": "已完成状态步骤标题",
           "desc": "已完成状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ProcessStepTitle": {
           "name": "进行中状态步骤标题",
           "desc": "进行中状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "NextStepTitle": {
           "name": "下一步状态步骤标题",
           "desc": "下一步状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "WaitStepTitle": {
           "name": "等待中状态步骤标题",
           "desc": "等待中状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ErrorStepTitle": {
           "name": "异常状态步骤标题",
           "desc": "异常状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
 
         "FinishStepDescription": {
           "name": "已完成状态步骤条内容描述",
           "desc": "已完成状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ProcessStepDescription": {
           "name": "进行中状态步骤条内容描述",
           "desc": "进行中状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "NextStepDescription": {
           "name": "下一步状态步骤条内容描述",
           "desc": "下一步状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "WaitStepDescription": {
           "name": "等待中状态步骤条内容描述",
           "desc": "等待中状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ErrorStepDescription": {
           "name": "异常状态步骤条内容描述",
           "desc": "异常状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
-        "StepIcon": {
-          "name": "步骤条图标",
-          "desc": "配置步骤条图标",
+        "FinishStepIcon": {
+          "name": "已完成步骤条图标",
+          "desc": "配置已完成步骤条图标",
+          "normal": [["fontSize"], ["font"], ["color"]]
+        },
+        "ProcessStepIcon": {
+          "name": "进行中步骤条图标",
+          "desc": "配置进行中步骤条图标",
+          "normal": [["fontSize"], ["font"], ["color"]]
+        },
+        "NextStepIcon": {
+          "name": "下一步步骤条图标",
+          "desc": "配置下一步步骤条图标",
+          "normal": [["fontSize"], ["font"], ["color"]]
+        },
+        "WaitStepIcon": {
+          "name": "等待中步骤条图标",
+          "desc": "配置等待中步骤条图标",
+          "normal": [["fontSize"], ["font"], ["color"]]
+        },
+        "ErrorStepIcon": {
+          "name": "异常步骤条图标",
+          "desc": "配置异常步骤条图标",
           "normal": [["fontSize"], ["font"], ["color"]]
         }
       }
@@ -794,31 +673,30 @@
           "desc": "异常状态单个步骤外部容器配置",
           "normal": [["width"], ["height"]]
         },
-
         "FinishStepLine": {
           "name": "已完成状态步骤间连接线",
           "desc": "已完成状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
         "ProcessStepLine": {
           "name": "进行中状态步骤间连接线",
           "desc": "进行中状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
         "NextStepLine": {
           "name": "下一步状态步骤间连接线",
           "desc": "下一步状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
         "WaitStepLine": {
           "name": "等待中状态步骤间连接线",
           "desc": "等待中状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
         "ErrorStepLine": {
           "name": "异常状态步骤间连接线",
           "desc": "异常状态步骤间连接线的配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [["width"], ["height"], ["background"], ["margin"]]
         },
 
         "FinishStepInnerContainer": {
@@ -850,133 +728,53 @@
         "FinishStepTitle": {
           "name": "已完成状态步骤标题",
           "desc": "已完成状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ProcessStepTitle": {
           "name": "进行中状态步骤标题",
           "desc": "进行中状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "NextStepTitle": {
           "name": "下一步状态步骤标题",
           "desc": "下一步状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "WaitStepTitle": {
           "name": "等待中状态步骤标题",
           "desc": "等待中状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ErrorStepTitle": {
           "name": "异常状态步骤标题",
           "desc": "异常状态配置步骤标题",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
 
         "FinishStepDescription": {
           "name": "已完成状态步骤条内容描述",
           "desc": "已完成状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ProcessStepDescription": {
           "name": "进行中状态步骤条内容描述",
           "desc": "进行中状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "NextStepDescription": {
           "name": "下一步状态步骤条内容描述",
           "desc": "下一步状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "WaitStepDescription": {
           "name": "等待中状态步骤条内容描述",
           "desc": "等待中状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
         "ErrorStepDescription": {
           "name": "异常状态步骤条内容描述",
           "desc": "异常状态配置步骤条内容描述",
-          "normal": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["margin"]
-          ]
+          "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
         },
 
         "FinishStepDot": {
@@ -1033,31 +831,30 @@
       "desc": "异常状态单个步骤外部容器配置",
       "normal": [["width"], ["height"]]
     },
-
     "FinishStepLine": {
       "name": "已完成状态步骤间连接线",
       "desc": "已完成状态步骤间连接线的配置",
-      "normal": [["width"], ["height"], ["background"]]
+      "normal": [["width"], ["height"], ["background"], ["margin"]]
     },
     "ProcessStepLine": {
       "name": "进行中状态步骤间连接线",
       "desc": "进行中状态步骤间连接线的配置",
-      "normal": [["width"], ["height"], ["background"]]
+      "normal": [["width"], ["height"], ["background"], ["margin"]]
     },
     "NextStepLine": {
       "name": "下一步状态步骤间连接线",
       "desc": "下一步状态步骤间连接线的配置",
-      "normal": [["width"], ["height"], ["background"]]
+      "normal": [["width"], ["height"], ["background"], ["margin"]]
     },
     "WaitStepLine": {
       "name": "等待中状态步骤间连接线",
       "desc": "等待中状态步骤间连接线的配置",
-      "normal": [["width"], ["height"], ["background"]]
+      "normal": [["width"], ["height"], ["background"], ["margin"]]
     },
     "ErrorStepLine": {
       "name": "异常状态步骤间连接线",
       "desc": "异常状态步骤间连接线的配置",
-      "normal": [["width"], ["height"], ["background"]]
+      "normal": [["width"], ["height"], ["background"], ["margin"]]
     },
 
     "FinishStepInnerContainer": {
@@ -1089,53 +886,53 @@
     "FinishStepTitle": {
       "name": "已完成状态步骤标题",
       "desc": "已完成状态配置步骤标题",
-      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["padding"], ["margin"]]
+      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
     },
     "ProcessStepTitle": {
       "name": "进行中状态步骤标题",
       "desc": "进行中状态配置步骤标题",
-      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["padding"], ["margin"]]
+      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
     },
     "NextStepTitle": {
       "name": "下一步状态步骤标题",
       "desc": "下一步状态配置步骤标题",
-      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["padding"], ["margin"]]
+      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
     },
     "WaitStepTitle": {
       "name": "等待中状态步骤标题",
       "desc": "等待中状态配置步骤标题",
-      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["padding"], ["margin"]]
+      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
     },
     "ErrorStepTitle": {
       "name": "异常状态步骤标题",
       "desc": "异常状态配置步骤标题",
-      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["padding"], ["margin"]]
+      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
     },
 
     "FinishStepDescription": {
       "name": "已完成状态步骤条内容描述",
       "desc": "已完成状态配置步骤条内容描述",
-      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["padding"], ["margin"]]
+      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
     },
     "ProcessStepDescription": {
       "name": "进行中状态步骤条内容描述",
       "desc": "进行中状态配置步骤条内容描述",
-      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["padding"], ["margin"]]
+      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
     },
     "NextStepDescription": {
       "name": "下一步状态步骤条内容描述",
       "desc": "下一步状态配置步骤条内容描述",
-      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["padding"], ["margin"]]
+      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
     },
     "WaitStepDescription": {
       "name": "等待中状态步骤条内容描述",
       "desc": "等待中状态配置步骤条内容描述",
-      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["padding"], ["margin"]]
+      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
     },
     "ErrorStepDescription": {
       "name": "异常状态步骤条内容描述",
       "desc": "异常状态配置步骤条内容描述",
-      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["padding"], ["margin"]]
+      "normal": [["fontSize"], ["font"], ["color"], ["width"], ["height"], ["margin"]]
     },
 
     "ProcessStepNumber": {
@@ -1149,6 +946,17 @@
       "desc": "配置步骤条内容图标",
       "normal": [["fontSize"], ["font"], ["color"]]
     },
+    "FinishStepInnerIcon": {
+      "name": "已完成步骤条内容图标",
+      "desc": "配置已完成步骤条内容图标",
+      "normal": [["fontSize"], ["font"], ["color"]]
+    },
+    "ErrorStepInnerIcon": {
+      "name": "异常步骤条内容图标",
+      "desc": "异常配置步骤条内容图标",
+      "normal": [["fontSize"], ["font"], ["color"]]
+    },
+
     "StepIcon": {
       "name": "步骤条图标",
       "desc": "配置步骤条图标",

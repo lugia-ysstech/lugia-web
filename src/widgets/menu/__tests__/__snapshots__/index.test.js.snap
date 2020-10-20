@@ -63,8 +63,8 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   overflow: hidden;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
 
 .c3 i {
@@ -104,7 +104,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
       "borderBottomRightRadius": "0.4rem",
       "borderTopLeftRadius": "0.4rem",
       "borderTopRightRadius": "0.4rem",
-      "boxShadow": "0px 0px 6px 0px #cccccc",
+      "boxShadow": "0px 0px 6px 0px #d0d3da",
     }
   }
 >
@@ -343,8 +343,8 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   overflow: hidden;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
 
 .c3 i {
@@ -384,7 +384,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
       "borderBottomRightRadius": "0.4rem",
       "borderTopLeftRadius": "0.4rem",
       "borderTopRightRadius": "0.4rem",
-      "boxShadow": "0px 0px 6px 0px #cccccc",
+      "boxShadow": "0px 0px 6px 0px #d0d3da",
     }
   }
 >
@@ -622,8 +622,8 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
   overflow: hidden;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
 
 .c3 i {
@@ -663,7 +663,7 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
       "borderBottomRightRadius": "0.4rem",
       "borderTopLeftRadius": "0.4rem",
       "borderTopRightRadius": "0.4rem",
-      "boxShadow": "0px 0px 6px 0px #cccccc",
+      "boxShadow": "0px 0px 6px 0px #d0d3da",
     }
   }
 >
@@ -900,8 +900,8 @@ exports[`Menu children: items 1`] = `
   overflow: hidden;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
 
 .c4 i {
@@ -993,7 +993,7 @@ exports[`Menu children: items 1`] = `
       "borderBottomRightRadius": "0.4rem",
       "borderTopLeftRadius": "0.4rem",
       "borderTopRightRadius": "0.4rem",
-      "boxShadow": "0px 0px 6px 0px #cccccc",
+      "boxShadow": "0px 0px 6px 0px #d0d3da",
       "width": "20rem",
     }
   }

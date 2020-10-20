@@ -109,6 +109,7 @@ export default ThemeProvider(
             normal: {
               height: cancelBoxHeight,
               width: 200,
+              boxShadow: null,
             },
           },
         },
@@ -196,10 +197,10 @@ export default ThemeProvider(
 
     getSearchBox() {
       const { inputValue } = this.state;
-      const { showSearch } = this.props;
+      const { showSearch, transferClearIcon, transferPrefixIcon, transferSuffixIcon } = this.props;
       const inputConfig = {};
       if (!inputValue) {
-        inputConfig.suffix = <SearchIcon />;
+        inputConfig.suffix = <SearchIcon transferSuffixIcon={transferSuffixIcon} />;
       }
 
       return showSearch ? (
@@ -208,6 +209,8 @@ export default ThemeProvider(
             size={'small'}
             onChange={this.handleInputChange}
             placeholder={'搜索你想知道的内容'}
+            prefix={transferPrefixIcon}
+            clearIcon={transferClearIcon}
             {...inputConfig}
             {...this.getInputThemeConfig()}
           />
@@ -217,7 +220,16 @@ export default ThemeProvider(
 
     getTransferPanel() {
       const { selectedKeys = [], typeList, treeData, inputValue } = this.state;
-      const { type, direction, displayField, valueField } = this.props;
+      const {
+        type,
+        direction,
+        displayField,
+        valueField,
+        switchIconNames = {
+          open: 'lugia-icon-direction_caret_down',
+          close: 'lugia-icon-direction_caret_right',
+        },
+      } = this.props;
 
       const { menuTheme, treeTheme, wrapHeight } = this.getPanelThemeConfig(direction);
 
@@ -246,6 +258,7 @@ export default ThemeProvider(
             {...typeList}
             getTreeData={this.getTreeData}
             {...treeTheme}
+            switchIconNames={switchIconNames}
           />
         </TreeWrap>
       );
@@ -254,6 +267,8 @@ export default ThemeProvider(
     getInputThemeConfig() {
       const { inputTheme = {} } = this.props;
       const { viewClass, theme } = inputTheme;
+      const { Container: { normal: { height } = {} } = {} } = theme[viewClass];
+      const theBorderRadius = height / 2 || 12;
       const inputView = {
         [viewClass]: {
           Container: {
@@ -264,13 +279,7 @@ export default ThemeProvider(
                 left: 4,
                 right: 4,
               },
-              getThemeMeta(themeMeta: Object, themeProps: Object) {
-                const { height } = themeMeta;
-                const theBorderRadius = height / 2 || 12;
-                return {
-                  borderRadius: getBorderRadius(theBorderRadius),
-                };
-              },
+              borderRadius: getBorderRadius(theBorderRadius),
             },
           },
           InputSuffix: {

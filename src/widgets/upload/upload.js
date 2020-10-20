@@ -16,7 +16,7 @@ const Container = CSSComponent({
   tag: 'div',
   className: 'upload_Container',
   normal: {
-    selectNames: [['width'], ['height'], ['boxShadow'], ['borderRadius'], ['border'], ['color']],
+    selectNames: [['width']],
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { areaType },
@@ -30,6 +30,8 @@ const Container = CSSComponent({
   },
   css: css`
     position: relative;
+    box-sizing: border-box;
+    height: 100%;
   `,
 });
 
@@ -63,6 +65,9 @@ type UploadProps = {
   getPartOfThemeProps: Function,
   defaultTips?: Object,
   userDefine?: any,
+  isShowProgress?: boolean,
+  getInputRef?: Function,
+  customUpload?: Function,
 };
 type StateProps = {
   defaultText?: string,
@@ -151,12 +156,18 @@ class Upload extends React.Component<UploadProps, StateProps> {
     };
   }
 
+  componentDidMount() {
+    const { getInputRef } = this.props;
+    const { input } = this;
+    getInputRef && getInputRef(input);
+  }
+
   render() {
     const { areaType } = this.props;
     const themeProps = this.props.getPartOfThemeProps('Container');
-    const areaTypeTheme = deepMerge(themeProps, { propsConfig: { areaType } });
+    const theme = deepMerge(themeProps, { propsConfig: { areaType } });
     return (
-      <Container themeProps={areaTypeTheme}>
+      <Container themeProps={theme}>
         <GetElement
           {...this.props}
           {...this.state}
@@ -265,7 +276,15 @@ class Upload extends React.Component<UploadProps, StateProps> {
   };
 
   beforeUpload = (dataObject: Object, file: Object, hashMark: string) => {
-    const { beforeUpload } = this.props;
+    const { beforeUpload, customUpload } = this.props;
+    if (customUpload) {
+      customUpload(file, {
+        success: () => this.customUploadStatus('success', hashMark),
+        fail: () => this.customUploadStatus('fail', hashMark),
+        start: () => this.startRequest(dataObject, file, hashMark),
+      });
+      return;
+    }
     if (!beforeUpload) {
       this.startRequest(dataObject, file, hashMark);
     } else {
@@ -359,7 +378,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     const list = this.updateFieldList(fileListDone, hashMark, [
       { target: 'status', value: 'fail' },
     ]);
-    this.setStateValue({ classNameStatus: 'fail', fileListDone: list });
+    this.setStateValue({ classNameStatus: 'fail', fileListDone: list, isAllowUpload: false });
     this.input.value = '';
     const { onFail } = this.props;
     onFail && onFail(res);
@@ -380,6 +399,24 @@ class Upload extends React.Component<UploadProps, StateProps> {
     return fileListDone;
   };
 
+  customUploadStatus = (type: string, hashMark: string) => {
+    const { fileListDone } = this.state;
+    const doUpdateFieldList = (status: Array<Object>, classNameStatus: string) => {
+      const list = this.updateFieldList(fileListDone, hashMark, status);
+      this.setStateValue({ classNameStatus, fileListDone: list });
+    };
+    switch (type) {
+      case 'success':
+        doUpdateFieldList([{ target: 'status', value: 'done' }], 'done');
+        break;
+      case 'fail':
+        doUpdateFieldList([{ target: 'status', value: 'fail' }], 'fail');
+        break;
+      default:
+        return;
+    }
+  };
+
   appendFileList = (fileListDone: Array<Object>, props: Object): Array<Object> => {
     if (!isEmptyObject(props)) {
       fileListDone.push(props);
@@ -396,9 +433,13 @@ class Upload extends React.Component<UploadProps, StateProps> {
     };
   };
 
-  setDeleteList = (index: number) => {
+  setDeleteList = (index: number, item: Object) => {
     const { fileListDone } = this.state;
     fileListDone.splice(index, 1);
+    if (item && this.input.value.indexOf(item.name) !== -1) {
+      this.setState({ defaultText: '' });
+      this.input.value = '';
+    }
     this.setStateValue({ fileListDone });
   };
 

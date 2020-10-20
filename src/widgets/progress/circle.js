@@ -7,10 +7,11 @@
  */
 import * as React from 'react';
 import { handlePercent } from '../css/progress-line';
-import { SvgInner, SvgText } from '../css/progress-circle';
+import { SvgInner, SvgText, CircleWrap } from '../css/progress-circle';
 import { getText, getStatus } from './line';
 import get from '../css/theme-common-dict';
 import { getPoints } from '../common/circleUtils';
+import { deepMerge } from '@lugia/object-utils';
 
 function getPolyLine(radius: number, strokeWidth: number, cnt: number, stroke: string) {
   return (
@@ -24,17 +25,22 @@ function getPolyLine(radius: number, strokeWidth: number, cnt: number, stroke: s
 
 export default class extends React.Component<any, any> {
   render() {
-    const { percent = 0, type = 'circle', size = 'default', status = 'default' } = this.props;
     const {
-      viewWidth,
-      viewHeight,
-      cx,
-      cy,
-      radius,
-      strokeWidth,
-      circleLength,
-      transform,
-    } = this.getCircleInfo();
+      percent = 0,
+      type = 'circle',
+      size = 'default',
+      status = 'default',
+      getPartOfThemeProps,
+    } = this.props;
+    const svgInnerTheme = getPartOfThemeProps('Container');
+    const { themeConfig = {} } = svgInnerTheme;
+    const { normal: { width } = {} } = themeConfig;
+    const handledSvgInnerTheme = { width, height: width };
+    svgInnerTheme.themeConfig.normal = deepMerge(themeConfig.normal, handledSvgInnerTheme);
+
+    const { cx, cy, radius, strokeWidth, circleLength, transform } = this.getCircleInfo(
+      svgInnerTheme
+    );
     const config = {
       cx,
       cy,
@@ -51,10 +57,11 @@ export default class extends React.Component<any, any> {
     const lineTarget = type === 'circle' ? 'ProgressCircleLine' : 'DashboardLine';
     const lineTheme = this.getTargetTheme(lineTarget);
     const lineColor = this.getLineColor(lineTheme);
+
     return (
-      <SvgInner size={size}>
+      <SvgInner size={size} themeProps={svgInnerTheme}>
         {type === 'circle' ? (
-          <svg width={viewWidth} height={viewHeight}>
+          <CircleWrap>
             <circle {...config} stroke={backgroundLineColor} />
             <circle
               {...config}
@@ -64,17 +71,17 @@ export default class extends React.Component<any, any> {
               strokeDasharray={`${(handlePercent(percent) / 100) * circleLength} ${circleLength}`}
               style={{ transition: 'all .3s' }}
             />
-          </svg>
+          </CircleWrap>
         ) : (
-          <svg width={viewWidth} height={viewHeight}>
-            {getPolyLine(radius, 8, 100, backgroundLineColor)}
+          <CircleWrap>
+            {getPolyLine(radius, strokeWidth, 100, backgroundLineColor)}
             {getPolyLine(
               radius,
-              8,
+              strokeWidth,
               handlePercent(percent),
               this.getColor(backgroundLineColor, lineColor)
             )}
-          </svg>
+          </CircleWrap>
         )}
 
         <SvgText themeProps={textTheme} percent={percent} status={status} size={size}>
@@ -84,20 +91,45 @@ export default class extends React.Component<any, any> {
     );
   }
 
-  getCircleInfo = () => {
+  getCircleInfo = (svgInnerTheme: Object = {}) => {
+    const {
+      themeConfig: {
+        normal: {
+          width,
+          strokeWidth: circleWidth,
+          border: {
+            top: { width: topWidth } = {},
+            right: { width: rightWidth } = {},
+            bottom: { width: bottomWidth } = {},
+            left: { width: leftWidth } = {},
+          } = {},
+        } = {},
+      } = {},
+    } = svgInnerTheme;
     const { size = 'default' } = this.props;
     const isDefault = size === 'default';
-    const cxOrCy = isDefault ? 60 : 40;
-    const widthOrHeight = isDefault ? 120 : 80;
+    const halfWidth = width / 2;
+    const cxOrCy = width ? halfWidth : isDefault ? 60 : 40;
+    const borderWidth = topWidth || rightWidth || bottomWidth || leftWidth;
+    const strokeWidth = borderWidth || circleWidth || (isDefault ? 8 : 6);
+    const halfStrokeWidth = strokeWidth / 2;
+    const radius = width
+      ? halfWidth - halfStrokeWidth
+      : isDefault
+      ? 60 - halfStrokeWidth
+      : 40 - halfStrokeWidth;
+    const circleLength = 2 * radius * Math.PI;
     return {
-      viewWidth: widthOrHeight,
-      viewHeight: widthOrHeight,
       cx: cxOrCy,
       cy: cxOrCy,
-      radius: isDefault ? 56 : 37,
-      strokeWidth: isDefault ? 8 : 6,
-      circleLength: isDefault ? 352 : 233,
-      transform: isDefault ? 'matrix(0,-1,1,0,0,120)' : 'matrix(0,-1,1,0,0,80)',
+      radius,
+      strokeWidth,
+      circleLength,
+      transform: width
+        ? `matrix(0,-1,1,0,0,${width})`
+        : isDefault
+        ? 'matrix(0,-1,1,0,0,120)'
+        : 'matrix(0,-1,1,0,0,80)',
     };
   };
   getPercentText = () => {
@@ -109,6 +141,8 @@ export default class extends React.Component<any, any> {
       type = 'circle',
       getIconTheme,
       iconClass,
+      errorIconClass,
+      successIconClass,
     } = this.props;
 
     return getText(true, {
@@ -120,6 +154,8 @@ export default class extends React.Component<any, any> {
       type,
       getIconTheme,
       iconClass,
+      errorIconClass,
+      successIconClass,
     });
   };
   getColor = (backgroundLineColor: string, lineColor?: string) => {
@@ -132,13 +168,15 @@ export default class extends React.Component<any, any> {
 
     if (lineColor) return lineColor;
 
-    const { status } = this.props;
+    const { status, getPartOfThemeProps } = this.props;
     if (status === 'error') {
-      return get('dangerColor');
+      const errorColor = this.getCircleColor(getPartOfThemeProps('ProgressCircleLine_Error'));
+      return errorColor || get('dangerColor');
     }
 
     if (status === 'success' || percent === 100) {
-      return get('successColor');
+      const successColor = this.getCircleColor(getPartOfThemeProps('ProgressCircleLine_Success'));
+      return successColor || get('successColor');
     }
 
     const { getTheme } = this.props;
@@ -159,6 +197,11 @@ export default class extends React.Component<any, any> {
     const { themeConfig = {} } = theme;
     const { normal = {} } = themeConfig;
     const { color = defaultValue } = normal;
+    return color;
+  }
+
+  getCircleColor(theme: Object = {}): string {
+    const { themeConfig: { normal: { background: { color } = {} } = {} } = {} } = theme;
     return color;
   }
 

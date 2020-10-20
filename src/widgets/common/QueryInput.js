@@ -11,6 +11,7 @@ import Widget from '../consts/index';
 import QueryInputContainer from '../common/QueryInputContainer';
 import styled from 'styled-components';
 import CommonIcon from '../icon';
+import { deepMerge } from '@lugia/object-utils';
 
 import { isCanInput, isCanSearch, isMutliple } from '../common/selectFunction';
 import { IsShowSearchInputHandle } from '../css/queryInput';
@@ -124,6 +125,21 @@ type QueryInputProps = {
   onCheckAll?: Function,
   canSearch: boolean,
   width?: number,
+  receivedTheme?: Object,
+  toggleIconTheme?: Object,
+  resetIconTheme?: Object,
+  searchAddIconTheme?: Object,
+  checkAllIconTheme?: Object,
+  deselectionIconTheme?: Object,
+  searchIconTheme?: Object,
+  searchClearIcon?: string,
+  toggleIcon?: string,
+  resetIcon?: string,
+  searchAddIcon?: string,
+  checkAllIcon?: string,
+  deselectionIcon?: string,
+  searchIcon?: string,
+  getPartOfThemeProps: (str: string) => any,
 };
 
 type QueryInputState = {
@@ -164,6 +180,14 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
       onQueryInputKeyDown,
       width,
       getPartOfThemeProps,
+      receivedTheme = {},
+      searchClearIcon,
+      toggleIcon,
+      resetIcon,
+      searchAddIcon,
+      toggleIconTheme = {},
+      resetIconTheme = {},
+      searchAddIconTheme = {},
     } = props;
     const { state } = this;
     const {
@@ -173,7 +197,7 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
       toShowCheckAllButtonIng,
     } = state;
 
-    const theme = {
+    const defaultTheme = {
       [Widget.Input]: {
         Container: {
           normal: {
@@ -201,6 +225,10 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
         },
       },
     };
+    const handleReceivedTheme = {
+      [Widget.Input]: receivedTheme.themeConfig,
+    };
+    const theme = deepMerge(defaultTheme, handleReceivedTheme);
 
     return (
       <OutContainer themeProps={getPartOfThemeProps('OutContainer')}>
@@ -214,7 +242,11 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
           <CheckAllContainer>
             {mutliple ? this.getCheckAllButton() : null}
             <RefreshButton onClick={refreshValue}>
-              <CommonIcon iconClass="lugia-icon-reminder_refresh" />
+              <CommonIcon
+                {...resetIconTheme}
+                iconClass={resetIcon || 'lugia-icon-reminder_refresh'}
+                singleTheme
+              />
             </RefreshButton>
             {this.getSearchInputButton()}
           </CheckAllContainer>
@@ -229,8 +261,9 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
                 value={query}
                 onChange={onQueryInputChange}
                 onKeyDown={onQueryInputKeyDown}
-                prefix={this.getQueryInputPrefix()}
-                suffix={this.getQueryInputSuffix()}
+                prefix={this.getQueryInputPrefix(toggleIcon, toggleIconTheme)}
+                suffix={this.getQueryInputSuffix(searchAddIcon, searchAddIconTheme)}
+                clearIcon={searchClearIcon}
               />
             </QueryInputContainer>
             {/* </Theme> */}
@@ -240,42 +273,49 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
     );
   }
 
-  getQueryInputPrefix() {
+  getQueryInputPrefix(toggleIcon, toggleIconTheme) {
     return (
       <ShowCheckAllButton onClick={this.onHideSearchInput}>
-        <CommonIcon iconClass={'lugia-icon-direction_arrow_up'} />
+        <CommonIcon
+          {...toggleIconTheme}
+          iconClass={toggleIcon || 'lugia-icon-direction_arrow_up'}
+          singleTheme
+        />
       </ShowCheckAllButton>
     );
   }
 
-  getQueryInputSuffix() {
+  getQueryInputSuffix(searchAddIcon, searchAddIconTheme) {
     const { props } = this;
     if (isCanInput(props)) {
       const { addClick } = props;
+      const { viewClass = '', theme = {} } = searchAddIconTheme;
       const themeConfig = {
-        [Widget.Icon]: {
-          Icon: {
-            normal: {
-              color: mediumGreyColor,
-              fontSize: xxsFontSize,
-            },
-            hover: {
-              color: themeColor,
-              fontSize: xxsFontSize,
-            },
-            disabled: {
-              color: disableTextColor,
-              fontSize: xxsFontSize,
-            },
+        [viewClass]: {
+          normal: {
+            color: mediumGreyColor,
+            fontSize: xxsFontSize,
+          },
+          hover: {
+            color: themeColor,
+            fontSize: xxsFontSize,
+          },
+          disabled: {
+            color: disableTextColor,
+            fontSize: xxsFontSize,
           },
         },
       };
+
+      const addIconTheme = { viewClass, theme: deepMerge(themeConfig, theme) };
+
       return (
         <AppendValueButton>
           <CommonIcon
-            theme={themeConfig}
-            iconClass={'lugia-icon-reminder_plus'}
+            {...addIconTheme}
+            iconClass={searchAddIcon || 'lugia-icon-reminder_plus'}
             onClick={addClick}
+            singleTheme
           />
         </AppendValueButton>
       );
@@ -284,17 +324,32 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
   }
 
   getCheckAllButton() {
-    const { isCheckedAll, onCheckAll } = this.props;
+    const {
+      isCheckedAll,
+      onCheckAll,
+      checkAllIcon,
+      deselectionIcon,
+      checkAllIconTheme = {},
+      deselectionIconTheme = {},
+    } = this.props;
     if (isCheckedAll) {
       return (
         <CancelCheckAllButton isCheckedAll={isCheckedAll} onClick={onCheckAll}>
-          <CommonIcon iconClass={'lugia-icon-finacial_deselection'} />
+          <CommonIcon
+            {...deselectionIconTheme}
+            iconClass={deselectionIcon || 'lugia-icon-financial_deselection'}
+            singleTheme
+          />
         </CancelCheckAllButton>
       );
     }
     return (
       <CheckAllButton isCheckedAll={isCheckedAll} onClick={onCheckAll}>
-        <CommonIcon iconClass={'lugia-icon-finacial_check_all'} />
+        <CommonIcon
+          {...checkAllIconTheme}
+          iconClass={checkAllIcon || 'lugia-icon-financial_check_all'}
+          singleTheme
+        />
       </CheckAllButton>
     );
   }
@@ -328,9 +383,14 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
   };
 
   getSearchInputButton() {
+    const { searchIconTheme = {}, searchIcon } = this.props;
     return (
       <SearchButton onClick={this.onShowSearchInput}>
-        <CommonIcon iconClass="lugia-icon-financial_search" />
+        <CommonIcon
+          {...searchIconTheme}
+          iconClass={searchIcon || 'lugia-icon-financial_search'}
+          singleTheme
+        />
       </SearchButton>
     );
   }

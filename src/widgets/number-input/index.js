@@ -13,14 +13,14 @@ import Widget from '../consts';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import Icon from '../icon/index';
 import { accAdd, checkNumber, limit } from '../common/Math';
-import { units } from '@lugia/css';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
 import type { ValidateStatus, ValidateType } from '../css/validateHoc';
 import { getInputIconSize } from '../css/input';
+import { getBorder } from '@lugia/theme-utils';
 
-const { px2remcss } = units;
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 
 const ArrowIconContainer = CSSComponent({
   tag: 'div',
@@ -119,7 +119,10 @@ const MinusButton = CSSComponent({
   extend: StepButton,
   className: 'NumberInputMinusButton',
   normal: {
-    selectNames: [],
+    selectNames: [['border', 'top']],
+    defaultTheme: {
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { directions: ['t'] }),
+    },
   },
   hover: {
     selectNames: [['height'], ['cursor']],
@@ -142,7 +145,6 @@ const MinusButton = CSSComponent({
     },
   },
   css: css`
-    border-top: ${px2remcss(1)} solid ${() => get('borderColor')};
     height: 50%;
   `,
   option: { hover: true, active: true },
@@ -221,16 +223,15 @@ export type NumberInputProps = {
   formatter?: (value: string) => string,
   parser?: (displayValue: string) => string,
   precision: number,
-  validateStatus: ValidateStatus,
-  validateType: ValidateType,
-  help: string,
   themeProps: Object,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   createEventChannel: Function,
   addIcon?: string,
   subtractIcon?: string,
+  suffix?: React$Node,
   dispatchEvent: Function,
+  showArrow: boolean,
 };
 
 function hasValueProps(props: Object) {
@@ -352,6 +353,13 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     });
   };
 
+  getStepArrowIconContainerOrSuffix = arrowContainerChannel => {
+    const { showArrow = true, suffix } = this.props;
+    if (!showArrow && suffix) {
+      return suffix;
+    }
+    return showArrow && this.getStepArrowIconContainer(arrowContainerChannel);
+  };
   getStepArrowIconContainer(arrowContainerChannel): React$Element<any> {
     const { value } = this.state;
     const {
@@ -391,8 +399,10 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     });
     const theThemeProps = deepMerge(defaultTheme(), this.getThemePropsByType('container'));
     const arrowIconPlusButtonThemeProps = this.getThemePropsByType('plus');
-    const arrowIconMinusButtonThemeProps = this.getThemePropsByType('minus');
-
+    const arrowIconMinusButtonThemeProps = deepMerge(
+      this.getThemePropsByType('minus'),
+      this.props.getPartOfThemeProps('ArrowDivider')
+    );
     const plusChannel = createEventChannel([['hover'], ['focus']]);
     const minusChannel = createEventChannel(['hover'], ['focus']);
     const { size } = this.props;
@@ -457,45 +467,47 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
 
   render() {
     const { value, stepHover } = this.state;
-    const { createEventChannel, getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
-    const { theme: inputThemeProps } = getPartOfThemeHocProps('Input');
+    const { createEventChannel, getPartOfThemeHocProps, showArrow = true } = this.props;
+    const { theme: inputThemeProps, inputViewClass } = getPartOfThemeHocProps('Input');
 
-    const containerThemeProps = getPartOfThemeProps('Container');
-    const theInputTheme = deepMerge(
-      {
-        [Widget.Input]: {
-          InputSuffix: {
-            normal: {
-              getCSS() {
-                return 'opacity: 0;transition: all 0.3s;padding-right:0;';
-              },
-            },
-            hover: {
-              getCSS() {
+    const { theme: containerThemeProps, viewClass } = getPartOfThemeHocProps('Container');
+    const theInputTheme = {
+      [viewClass]: {
+        InputSuffix: {
+          normal: {
+            getCSS() {
+              if (!showArrow) {
                 return 'opacity: 1;';
-              },
+              }
+              return 'opacity: 0;transition: all 0.3s;padding-right:0;';
+            },
+          },
+          hover: {
+            getCSS() {
+              return 'opacity: 1;';
             },
           },
         },
+        Container: deepMerge(inputThemeProps[inputViewClass], containerThemeProps[viewClass]),
       },
-      inputThemeProps,
-      containerThemeProps
-    );
+    };
 
     const arrowContainerChannel = createEventChannel([['hover'], ['focus']]);
     return (
       <Input
+        {...this.props}
         _focus={stepHover === 'plus' || stepHover === 'minus'}
         getInputRef={this.getInputRef}
         lugiaConsumers={arrowContainerChannel.consumer}
         theme={theInputTheme}
-        {...this.props}
+        viewClass={viewClass}
         value={value}
-        suffix={this.getStepArrowIconContainer(arrowContainerChannel)}
+        suffix={this.getStepArrowIconContainerOrSuffix(arrowContainerChannel)}
         onBlur={this.onBlur}
         onFocus={this.onFocus}
         onChange={this.handleChange}
         {...addMouseEvent(this)}
+        isShowClearButton={false}
       />
     );
   }
@@ -530,14 +542,19 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
 
   handleChange = (event: Object) => {
     const value = event.newValue;
-    const theValue = handleEmpty(value, checkNumber(value + ''));
-    this.setValue(theValue, event);
+    const { value: sValue } = this.state;
+    const handleNumberValue = checkNumber(value + '');
+    const theValue = handleEmpty(value, handleNumberValue);
+    if (sValue !== handleNumberValue) {
+      this.setValue(theValue, event);
+    }
   };
 
   setValue(value: number, event: any): void {
     const oldValue = this.state.value;
     const { disabled, onChange } = this.props;
-    const param = { newValue: Number(value), oldValue, event };
+    const theNewValue = handleEmpty(value, Number(value));
+    const param = { newValue: theNewValue, oldValue, event };
     if (hasValueProps(this.props) === false) {
       if (disabled) {
         return;

@@ -144,7 +144,8 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       props.activityValue !== nextProps.activityValue ||
       props.switchIconNames !== nextProps.switchIconNames ||
       props.renderSuffixItems !== nextProps.renderSuffixItems ||
-      props.igronSelectField !== nextProps.igronSelectField
+      props.igronSelectField !== nextProps.igronSelectField ||
+      JSON.stringify(props.theme) !== JSON.stringify(nextProps.theme)
     );
   }
 
@@ -176,13 +177,17 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       divided,
       renderSuffixItems,
       size = 'large',
+      isShowAuxiliaryText,
+      switchIconClass,
     } = this.props;
     const { popupVisible, value, expandedPath } = this.state;
     return (
       <MenuWrap>
         <Menu
           size={size}
+          switchIconClass={switchIconClass}
           {...this.getMenuTheme(themeStyle)}
+          isShowAuxiliaryText={isShowAuxiliaryText}
           data={data}
           separator={separator}
           autoHeight={autoHeight}
@@ -233,39 +238,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
 
   getHorizontalNavMenu = () => {
     const tabsData = this.getTabsData();
-    if (tabsData.length === 0) {
-      const defaultTabsData = [
-        {
-          title: '皮卡丘',
-          activityValue: '皮卡丘',
-        },
-        {
-          title: '独角虫',
-          activityValue: '独角虫',
-        },
-        {
-          title: '小拉达',
-          activityValue: '小拉达',
-        },
-        {
-          title: '尼多兰',
-          activityValue: '尼多兰',
-        },
-        {
-          title: '皮皮',
-          activityValue: '皮皮',
-        },
-      ];
-      return (
-        <Tabs
-          tabType={'line'}
-          {...this.getTabsTheme(this.props.themeStyle)}
-          tabPosition={'top'}
-          hideContent={true}
-          data={defaultTabsData}
-        />
-      );
-    }
     const { activityValue } = this.state;
     return (
       <Tabs
@@ -276,6 +248,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
         onTabClick={this.onTabClick}
         activityValue={this.getActivityValue(activityValue)}
         getTabpane={this.getTabpane}
+        isShowArrowIcon={false}
       >
         {this.getTabpanes(tabsData)}
       </Tabs>
@@ -283,6 +256,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getTabpanes = (tabsData: Object) => {
+    const { switchIconClass: { iconClass = 'lugia-icon-direction_down' } = {} } = this.props;
     const tabpanes = [];
     tabsData.forEach((item, index) => {
       const { title, value, disabled, icon } = item;
@@ -293,7 +267,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           value={value}
           disabled={disabled}
           icon={icon}
-          suffixIcon={this.isHasChildren(index) ? 'lugia-icon-direction_down' : null}
+          suffixIcon={this.isHasChildren(index) ? iconClass : null}
         />
       );
     });
@@ -374,7 +348,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getHorizontaMenu = (i: number) => {
-    const { data = [], autoHeight = true, themeStyle } = this.props;
+    const { data = [], autoHeight = true, themeStyle, switchIconClass } = this.props;
     const { children } = data[i];
     const { tabsMenuExpandedPath, tabsMenuValue } = this.state;
     return (
@@ -388,6 +362,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
         onExpandPathChange={this.onTabsMenuExpandPathChange}
         onClick={this.onClickTabsMenu}
         selectedKeys={tabsMenuValue}
+        switchIconClass={switchIconClass}
       />
     );
   };
@@ -549,6 +524,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           displayField={displayField}
           onlySelectLeaf={true}
           onChange={this.onChange}
+          onSelect={this.onSelectTree}
           igronSelectField={igronSelectField}
           pathSeparator={pathSeparator}
           renderSuffixItems={renderSuffixItems}
@@ -583,10 +559,28 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     const { value = [] } = this.state;
 
     const oldValue = value[0];
-    const { onChange, onSelect, onClick, displayField } = this.props;
+    const { onChange, onSelect, onClick, mode = 'inline' } = this.props;
+    const obj = this.getExposeTarget(newValue, oldValue);
+    onChange && onChange(obj);
+    onSelect && onSelect(obj);
+    mode !== 'inline' && onClick && onClick(obj);
+  }
+
+  getStringValue = (value: string | Array) => {
+    const isArray = value instanceof Array;
+    if (isArray) {
+      return value[0];
+    }
+    return value;
+  };
+
+  getExposeTarget = (newValue: string, oldValue: string) => {
+    const { displayField } = this.props;
+    newValue = this.getStringValue(newValue);
+    oldValue = this.getStringValue(oldValue);
     const newItem = this.getCheckedItem(newValue);
     const oldItem = this.getCheckedItem(oldValue);
-    const obj = {
+    return {
       value: newValue,
       newValue,
       oldValue,
@@ -594,15 +588,20 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       oldItem,
       newDisplayValue: newItem[displayField],
     };
-    onChange && onChange(obj);
-    onSelect && onSelect(obj);
-    onClick && onClick(obj);
-  }
+  };
 
   onChange = (value: string[]) => {
     const key = value[0];
     this.exposeOnChange(key);
     this.setState({ value });
+  };
+
+  onSelectTree = (value: string[]) => {
+    const { value: stateValue } = this.state;
+    const newValue = value[0] ? value[0] : stateValue;
+    const obj = this.getExposeTarget(newValue, stateValue);
+    const { onClick } = this.props;
+    onClick && onClick(obj);
   };
 
   getCheckedItem(key: string): ?Object {

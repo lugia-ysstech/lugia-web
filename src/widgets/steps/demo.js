@@ -106,6 +106,18 @@ const data = [
   { title: '步骤4', description: '描述性文本4', stepStatus: 'wait' },
   { title: '步骤5', description: '描述性文本5', stepStatus: 'error' },
 ];
+const desWidthConfig = {
+  [Widget.Steps]: {
+    Step: {
+      FinishStepDescription: {
+        normal: {
+          width: 80,
+        },
+      },
+    },
+  },
+};
+
 export default () => {
   return (
     <div>
@@ -114,30 +126,32 @@ export default () => {
           <Steps data={data} />
         </Wrapper>
         <p>带有描述</p>
-        <Steps orientation="horizontal" size={'default'}>
-          <Step title="步骤1" description={'描述性文本1'} stepStatus="finish" />
-          <Step
-            title="步骤1"
-            description={
-              <div>
-                很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度
-              </div>
-            }
-            stepStatus="finish"
-          />
-          <Step
-            title="步骤2"
-            description={
-              <div>
-                很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度
-              </div>
-            }
-            stepStatus="process"
-          />
-          <Step title="步骤3" description={'描述性文本3'} stepStatus="next" />
-          <Step title="步骤4" description={'描述性文本4'} stepStatus="wait" />
-          <Step title="步骤5" description={'描述性文本5'} stepStatus="error" />
-        </Steps>
+        <Theme config={desWidthConfig}>
+          <Steps orientation="horizontal" size={'default'}>
+            <Step title="步骤1" description={'描述性文本1'} stepStatus="finish" />
+            <Step
+              title="步骤1"
+              description={
+                <div>
+                  很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度
+                </div>
+              }
+              stepStatus="finish"
+            />
+            <Step
+              title="步骤2"
+              description={
+                <div>
+                  很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度
+                </div>
+              }
+              stepStatus="process"
+            />
+            <Step title="步骤3" description={'描述性文本3'} stepStatus="next" />
+            <Step title="步骤4" description={'描述性文本4'} stepStatus="wait" />
+            <Step title="步骤5" description={'描述性文本5'} stepStatus="error" />
+          </Steps>
+        </Theme>
       </Wrapper>
       <Wrapper>
         <p>带有描述 居中显示</p>
@@ -363,6 +377,20 @@ export default () => {
           <Step title="步骤5" stepStatus="error" description="描述性文本5" />
         </Steps>
       </VWrapper>
+      <Wrapper>
+        <p>可配置已完成状态和异常状态的图标</p>
+        <Steps
+          size="normal"
+          finishIcon={'lugia-icon-financial_heart'}
+          errorIcon={'lugia-icon-financial_editor'}
+        >
+          <Step title="步骤1" stepStatus="finish" description="描述性文本" />
+          <Step title="步骤2" stepStatus="process" description="描述性文本2" />
+          <Step title="步骤3" stepStatus="next" description="描述性文本3" />
+          <Step title="步骤4" stepStatus="wait" description="描述性文本4" />
+          <Step title="步骤5" stepStatus="error" description="描述性文本5" />
+        </Steps>
+      </Wrapper>
       <StepsDemo />
     </div>
   );

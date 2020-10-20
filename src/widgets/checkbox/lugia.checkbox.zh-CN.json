@@ -2,6 +2,7 @@
   "widgetName": "Checkbox",
   "title": "多选框",
   "desc": "多选框。",
+  "tag": "多选框 checkbox 复选框 多项选择框",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -133,21 +134,21 @@
     "CheckboxInnerChecked": {
       "name": "选中内框样式",
       "desc": "选中内框样式",
-      "normal": [["color"], ["width"], ["height"]],
-      "hover": [["color"], ["width"], ["height"]],
-      "disabled": [["color"], ["width"], ["height"]]
+      "normal": [["background"], ["width"], ["height"]],
+      "hover": [["background"], ["width"], ["height"]],
+      "disabled": [["background"], ["width"], ["height"]]
     },
     "CheckboxInnerIndeterminate": {
       "name": "半选内框样式",
       "desc": "半选内框样式",
-      "normal": [["color"], ["width"], ["height"]],
-      "hover": [["color"], ["width"], ["height"]],
-      "disabled": [["color"], ["width"], ["height"]]
+      "normal": [["background"], ["width"], ["height"]],
+      "hover": [["background"], ["width"], ["height"]],
+      "disabled": [["background"], ["width"], ["height"]]
     },
     "CheckboxInnerCancel": {
       "name": "取消状态内框样式",
       "desc": "取消状态内框样式",
-      "normal": [["color"], ["width"], ["height"]]
+      "normal": [["background"], ["width"], ["height"]]
     }
   }
 }

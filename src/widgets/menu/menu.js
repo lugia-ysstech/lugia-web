@@ -178,7 +178,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { props, state } = this;
     const dataChanged = props.data !== nextProps.data || props.children !== nextProps.children;
     const selectedChange = state.selectedKeys !== nextState.selectedKeys;
-
+    const isShowAuxiliaryTextChange = props.isShowAuxiliaryText !== nextProps.isShowAuxiliaryText;
     const themeChange = nextProps.theme !== props.theme;
     if (dataChanged || selectedChange) {
       this.updateIsSelect(nextState, nextProps);
@@ -199,7 +199,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
       props.svThemVersion !== nextProps.svThemVersion ||
       selectedChange ||
       expandedPathChanged ||
-      themeChange
+      themeChange ||
+      isShowAuxiliaryTextChange
     );
   }
 
@@ -214,6 +215,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       defaultHeight,
       mutliple,
       checkedCSS,
+      popupContainerId,
     } = props;
     const length = data ? data.length : 0;
     const wrapThemeProps = getPartOfThemeProps('Container', {
@@ -252,6 +254,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { popupVisible = false, childData } = this.state;
     return (
       <Trigger
+        popupContainerId={popupContainerId}
         themePass
         ref={cmp => (this.trigger = cmp)}
         align={'rightTop'}
@@ -787,7 +790,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       }
     }
     return (key: number | string) => {
-      return existKey[key];
+      return existKey[key] && existKey.hasOwnProperty(key);
     };
   };
 

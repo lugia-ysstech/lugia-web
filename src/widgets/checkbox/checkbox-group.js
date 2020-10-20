@@ -39,7 +39,7 @@ type CheckBoxGroupProps = {
   styles?: 'default' | 'vertical',
   cache?: boolean,
   childType?: 'default' | 'button',
-  size?: 'default' | 'small' | 'large' | 'bigger',
+  size?: 'default' | 'small' | 'large',
 };
 type CheckBoxGroupState = {
   value: Array<string>,
@@ -268,7 +268,7 @@ export default ThemeProvider(
 
     hasValueProps() {
       const { value } = this.props;
-      return 'value' in this.props && value !== undefined && value.length !== 0;
+      return 'value' in this.props && value !== undefined;
     }
 
     handleCancelItemClick = (value: any) => {

@@ -2,6 +2,7 @@
   "widgetName": "YearPicker",
   "title": "年选择器",
   "desc": "用于年选择,",
+  "tag": "年选择器 年选择框 年份选择器 年份选择器 YearPicker 表单",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -11,7 +12,11 @@
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
-      "propsDefaultValue": false
+      "propsDefaultValue": true
+    },
+    "popupContainerId": {
+      "type": "ContainerDomIdType",
+      "desc": "配置弹出框的作用容器id"
     },
     "defaultValue": {
       "type": "string",
@@ -42,7 +47,14 @@
     },
     "extraFooter": {
       "type": "Object",
-      "desc": "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}"
+      "desc": "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
+      "meta": [
+        {
+          "key": "message",
+          "title": "额外的页脚信息",
+          "type": "string"
+        }
+      ]
     },
     "step": {
       "type": "number",
@@ -66,6 +78,18 @@
       "desc": "可配置三种尺寸大小的input",
       "propsDefaultValue": "default"
     },
+    "suffix": {
+      "type": "icon",
+      "desc": "后缀图标"
+    },
+    "prefix": {
+      "type": "icon",
+      "desc": "前缀图标"
+    },
+    "clearIcon": {
+      "type": "icon",
+      "desc": "清除图标"
+    },
     "alwaysOpen": {
       "type": "boolean",
       "desc": "控制面板是否始终展开",
@@ -75,6 +99,22 @@
       "type": "boolean",
       "desc": "是否开启流式布局",
       "propsDefaultValue": false
+    },
+    "headSwitchIconLevelOne": {
+      "type": "Object",
+      "desc": "头部一级图标",
+      "meta": [
+        {
+          "key": "left",
+          "title": "左边图标",
+          "type": "icon"
+        },
+        {
+          "key": "right",
+          "title": "右边图标",
+          "type": "icon"
+        }
+      ]
     }
   },
   "events": {
@@ -98,9 +138,44 @@
     }
   },
   "type": {
-    "InputSize": ["small", "default", "large"],
-    "ValidateType": ["top", "bottom", "inner"],
-    "ValidateStatus": ["default", "error"],
+    "InputSize": [
+      {
+        "value": "small",
+        "text": "小"
+      },
+      {
+        "value": "default",
+        "text": "默认"
+      },
+      {
+        "value": "large",
+        "text": "大"
+      }
+    ],
+    "ValidateType": [
+      {
+        "value": "top",
+        "text": "上"
+      },
+      {
+        "value": "bottom",
+        "text": "下"
+      },
+      {
+        "value": "inner",
+        "text": "内部"
+      }
+    ],
+    "ValidateStatus": [
+      {
+        "value": "default",
+        "text": "默认"
+      },
+      {
+        "value": "error",
+        "text": "错误"
+      }
+    ],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
@@ -123,10 +198,13 @@
         ["border"],
         ["boxShadow"],
         ["color"],
-        ["font"]
+        ["font"],
+        ["margin"],
+        ["padding"]
       ],
       "hover": [["border"], ["borderRadius"], ["boxShadow"], ["background"]],
       "active": [],
+      "focus": [["background"], ["borderRadius"], ["border"], ["boxShadow"]],
       "disabled": [["background"], ["borderRadius"], ["border"], ["boxShadow"]]
     },
     "Placeholder": {
@@ -137,14 +215,14 @@
     "InputPrefix": {
       "name": "前缀图标",
       "desc": "前缀图标配置",
-      "normal": [["color"], ["font"]],
+      "normal": [["color"], ["font"], ["padding"], ["margin"]],
       "hover": [["color"], ["font"]],
       "disabled": [["color"], ["font"]]
     },
     "InputSuffix": {
       "name": "后缀图标",
       "desc": "后缀图标配置",
-      "normal": [["color"], ["font"]],
+      "normal": [["color"], ["font"], ["padding"], ["margin"]],
       "hover": [["color"], ["font"]],
       "disabled": [["color"], ["font"]]
     },
@@ -165,7 +243,7 @@
       "desc": "分类日期配置/年/月/周",
       "normal": [["color"], ["font"]],
       "hover": [["color"], ["font"]],
-      "active": [["color"], ["font"], ["background"], ["borderRadius"]]
+      "active": [["color"], ["font"], ["background"], ["borderRadius"], ["border"], ["boxShadow"]]
     },
     "HeadSingleArrow": {
       "name": "头部单箭头",
@@ -217,6 +295,11 @@
       "name": "额外页脚",
       "desc": "额外页脚配置",
       "normal": [["color"], ["font"]]
+    },
+    "FooterLine": {
+      "name": "页脚分割线",
+      "desc": "页脚分割线配置",
+      "normal": [["background"]]
     }
   },
   "defaultTheme": {

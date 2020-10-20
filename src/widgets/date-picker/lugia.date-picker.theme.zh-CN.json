@@ -8,6 +8,7 @@
       { "name": "showToday", "text": "'切换今天'功能" },
       { "name": "showTime", "text": "'时间选择'功能" },
       { "name": "format", "text": "显示格式" },
+      { "name": "extraFooter", "text": "页脚标注" },
       { "name": "buttonOptions", "text": "页脚按钮" }
     ],
     "data": [
@@ -168,6 +169,12 @@
           {
             "name": "头部单箭头",
             "path": ["HeadSingleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelOne",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部单箭头",
@@ -178,6 +185,12 @@
           {
             "name": "头部双箭头",
             "path": ["HeadDoubleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelTwo",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部双箭头",
@@ -209,6 +222,10 @@
                 "name": "日期",
                 "path": ["InMonthDate"],
                 "description": {
+                  "appearancePart": {
+                    "text": "日期外框",
+                    "desc": "文本配置区块的显示文本"
+                  },
                   "textPart": {
                     "text": "本月日期",
                     "desc": "文本配置区块的显示文本"
@@ -244,7 +261,18 @@
           {
             "title": "年月周板",
             "iconClass": "datePickerAllDate",
-            "data": [{ "name": "分类日期", "path": ["GroupDate"] }]
+            "data": [
+              {
+                "name": "分类日期",
+                "path": ["GroupDate"],
+                "description": {
+                  "appearancePart": {
+                    "text": "当前项外框",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       },
@@ -257,7 +285,7 @@
             "iconClass": "timePickerExtraFooter",
             "data": [
               {
-                "name": "额外页脚",
+                "name": "页脚标注",
                 "path": ["ExtraFooter"],
                 "description": {
                   "textPart": {
@@ -317,6 +345,22 @@
                 "path": ["FooterOkButton"]
               }
             ]
+          },
+          {
+            "title": "页脚分割线",
+            "iconClass": "Dividingline",
+            "data": [
+              {
+                "name": "页脚分割线",
+                "path": ["FooterLine"],
+                "description": {
+                  "appearancePart": {
+                    "text": "分割线",
+                    "desc": "面板中外观配置的区块显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       },
@@ -346,7 +390,7 @@
             "data": [
               {
                 "name": "单列",
-                "path": ["timePanelListTheme"],
+                "path": ["TimePanelList"],
                 "description": {
                   "appearancePart": {
                     "text": "分割线",
@@ -397,6 +441,7 @@
       { "name": "showToday", "text": "'切换今天'功能" },
       { "name": "showTime", "text": "'时间选择'功能" },
       { "name": "format", "text": "显示格式" },
+      { "name": "extraFooter", "text": "页脚标注" },
       { "name": "buttonOptions", "text": "页脚按钮" }
     ],
     "data": [
@@ -444,6 +489,22 @@
                 "description": {
                   "textPart": {
                     "text": "清除图标",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              },
+              {
+                "name": "日期连接符",
+                "path": ["RangeInputMiddleSymbol"],
+                "props": [
+                  {
+                    "name": "middleSymbol",
+                    "typeInTheme": "text"
+                  }
+                ],
+                "description": {
+                  "textPart": {
+                    "text": "区间符号",
                     "desc": "文本配置区块的显示文本"
                   }
                 }
@@ -557,6 +618,12 @@
           {
             "name": "头部单箭头",
             "path": ["HeadSingleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelOne",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部单箭头",
@@ -567,6 +634,12 @@
           {
             "name": "头部双箭头",
             "path": ["HeadDoubleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelTwo",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部双箭头",
@@ -598,6 +671,10 @@
                 "name": "日期",
                 "path": ["InMonthDate"],
                 "description": {
+                  "appearancePart": {
+                    "text": "日期外框",
+                    "desc": "文本配置区块的显示文本"
+                  },
                   "textPart": {
                     "text": "本月日期",
                     "desc": "文本配置区块的显示文本"
@@ -647,7 +724,18 @@
           {
             "title": "年月周板",
             "iconClass": "datePickerAllDate",
-            "data": [{ "name": "分类日期", "path": ["GroupDate"] }]
+            "data": [
+              {
+                "name": "分类日期",
+                "path": ["GroupDate"],
+                "description": {
+                  "appearancePart": {
+                    "text": "当前项外框",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       },
@@ -660,7 +748,7 @@
             "iconClass": "timePickerExtraFooter",
             "data": [
               {
-                "name": "额外页脚",
+                "name": "页脚标注",
                 "path": ["ExtraFooter"],
                 "description": {
                   "textPart": {
@@ -720,6 +808,22 @@
                 "path": ["FooterOkButton"]
               }
             ]
+          },
+          {
+            "title": "页脚分割线",
+            "iconClass": "Dividingline",
+            "data": [
+              {
+                "name": "页脚分割线",
+                "path": ["FooterLine"],
+                "description": {
+                  "appearancePart": {
+                    "text": "分割线",
+                    "desc": "面板中外观配置的区块显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       },
@@ -749,7 +853,7 @@
             "data": [
               {
                 "name": "单列",
-                "path": ["timePanelListTheme"],
+                "path": ["TimePanelList"],
                 "description": {
                   "appearancePart": {
                     "text": "分割线",
@@ -797,7 +901,7 @@
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
       { "name": "format", "text": "显示格式" },
-      { "name": "buttonOptions", "text": "页脚按钮" }
+      { "name": "extraFooter", "text": "页脚标注" }
     ],
     "data": [
       {
@@ -937,6 +1041,12 @@
           {
             "name": "头部单箭头",
             "path": ["HeadSingleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelOne",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部单箭头",
@@ -949,20 +1059,38 @@
       {
         "title": "面板内容区",
         "iconClass": "datePickerPanel",
-        "data": [{ "name": "分类日期", "path": ["GroupDate"] }]
+        "data": [
+          {
+            "name": "分类日期",
+            "path": ["GroupDate"],
+            "description": {
+              "appearancePart": {
+                "text": "当前项外框",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
       },
       {
         "title": "面板底部",
         "iconClass": "datePickerMonthBottom",
         "data": [
           {
-            "name": "额外页脚",
+            "name": "页脚标注",
             "path": ["ExtraFooter"],
             "description": {
               "textPart": {
                 "text": "页脚文字",
                 "desc": "文本配置区块的显示文本"
               }
+            }
+          },
+          {
+            "name": "页脚分割线",
+            "path": ["FooterLine"],
+            "description": {
+              "appearancePart": { "text": "分割线", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
@@ -975,7 +1103,7 @@
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
       { "name": "format", "text": "显示格式" },
-      { "name": "buttonOptions", "text": "页脚按钮" }
+      { "name": "extraFooter", "text": "页脚信息" }
     ],
     "data": [
       {
@@ -1090,7 +1218,7 @@
       },
       {
         "title": "整体面板",
-        "iconClass": "datePickerMonthBottom",
+        "iconClass": "datePickerBackground",
         "data": [
           {
             "name": "日期面板",
@@ -1125,6 +1253,12 @@
           {
             "name": "头部单箭头",
             "path": ["HeadSingleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelOne",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部单箭头",
@@ -1137,20 +1271,38 @@
       {
         "title": "面板内容区",
         "iconClass": "datePickerPanel",
-        "data": [{ "name": "分类日期", "path": ["GroupDate"] }]
+        "data": [
+          {
+            "name": "分类日期",
+            "path": ["GroupDate"],
+            "description": {
+              "appearancePart": {
+                "text": "当前项外框",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
       },
       {
         "title": "面板底部",
         "iconClass": "datePickerMonthBottom",
         "data": [
           {
-            "name": "额外页脚",
+            "name": "页脚标注",
             "path": ["ExtraFooter"],
             "description": {
               "textPart": {
                 "text": "页脚文字",
                 "desc": "文本配置区块的显示文本"
               }
+            }
+          },
+          {
+            "name": "页脚分割线",
+            "path": ["FooterLine"],
+            "description": {
+              "appearancePart": { "text": "分割线", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
@@ -1164,6 +1316,7 @@
       { "name": "disabled", "text": "禁用" },
       { "name": "selectToday", "text": "默认选中今天日期" },
       { "name": "format", "text": "显示格式" },
+      { "name": "extraFooter", "text": "页脚标注" },
       { "name": "buttonOptions", "text": "页脚按钮" }
     ],
     "data": [
@@ -1324,6 +1477,12 @@
           {
             "name": "头部单箭头",
             "path": ["HeadSingleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelOne",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部单箭头",
@@ -1334,6 +1493,12 @@
           {
             "name": "头部双箭头",
             "path": ["HeadDoubleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelTwo",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部双箭头",
@@ -1365,6 +1530,10 @@
                 "name": "日期",
                 "path": ["InMonthDate"],
                 "description": {
+                  "appearancePart": {
+                    "text": "日期外框",
+                    "desc": "文本配置区块的显示文本"
+                  },
                   "textPart": {
                     "text": "本月日期",
                     "desc": "文本配置区块的显示文本"
@@ -1394,26 +1563,51 @@
                     "desc": "文本配置区块的显示文本"
                   }
                 }
+              },
+              {
+                "name": "范围日期",
+                "path": ["RangeDate"],
+                "description": {
+                  "appearancePart": {
+                    "text": "选中范围整体",
+                    "desc": "面板中外观配置的区块显示文本"
+                  },
+                  "textPart": {
+                    "text": "选中范围内文字",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
               }
             ]
           },
           {
             "title": "年月周板",
             "iconClass": "datePickerAllDate",
-            "data": [{ "name": "分类日期", "path": ["GroupDate"] }]
+            "data": [
+              {
+                "name": "分类日期",
+                "path": ["GroupDate"],
+                "description": {
+                  "appearancePart": {
+                    "text": "当前项外框",
+                    "desc": "文本配置区块的显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       },
       {
         "title": "面板底部",
-        "iconClass": "datePickerMonthBottom",
+        "iconClass": "datePickerBottom",
         "children": [
           {
             "title": "页脚标注",
-            "iconClass": "datePickerBottom",
+            "iconClass": "timePickerExtraFooter",
             "data": [
               {
-                "name": "额外页脚",
+                "name": "页脚标注",
                 "path": ["ExtraFooter"],
                 "description": {
                   "textPart": {
@@ -1473,6 +1667,22 @@
                 "path": ["FooterOkButton"]
               }
             ]
+          },
+          {
+            "title": "页脚分割线",
+            "iconClass": "Dividingline",
+            "data": [
+              {
+                "name": "页脚分割线",
+                "path": ["FooterLine"],
+                "description": {
+                  "appearancePart": {
+                    "text": "分割线",
+                    "desc": "面板中外观配置的区块显示文本"
+                  }
+                }
+              }
+            ]
           }
         ]
       }
@@ -1484,7 +1694,7 @@
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
       { "name": "format", "text": "显示格式" },
-      { "name": "buttonOptions", "text": "页脚按钮" }
+      { "name": "extraFooter", "text": "页脚标注" }
     ],
 
     "data": [
@@ -1625,6 +1835,12 @@
           {
             "name": "头部单箭头",
             "path": ["HeadSingleArrow"],
+            "props": [
+              {
+                "name": "headSwitchIconLevelOne",
+                "typeInTheme": "icon"
+              }
+            ],
             "description": {
               "textPart": {
                 "text": "头部单箭头",
@@ -1637,20 +1853,38 @@
       {
         "title": "面板内容区",
         "iconClass": "datePickerPanel",
-        "data": [{ "name": "分类日期", "path": ["GroupDate"] }]
+        "data": [
+          {
+            "name": "分类日期",
+            "path": ["GroupDate"],
+            "description": {
+              "appearancePart": {
+                "text": "当前项外框",
+                "desc": "文本配置区块的显示文本"
+              }
+            }
+          }
+        ]
       },
       {
         "title": "面板底部",
         "iconClass": "datePickerMonthBottom",
         "data": [
           {
-            "name": "额外页脚",
+            "name": "页脚标注",
             "path": ["ExtraFooter"],
             "description": {
               "textPart": {
                 "text": "页脚文字",
                 "desc": "文本配置区块的显示文本"
               }
+            }
+          },
+          {
+            "name": "页脚分割线",
+            "path": ["FooterLine"],
+            "description": {
+              "appearancePart": { "text": "分割线", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]

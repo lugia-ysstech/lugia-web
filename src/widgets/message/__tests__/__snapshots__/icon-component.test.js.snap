@@ -150,7 +150,7 @@ exports[`Message css 1`] = `
           "borderBottomRightRadius": "0.4rem",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
-          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "boxShadow": "0px 0px 6px 0px #d0d3da",
         }
       }
     >
@@ -195,7 +195,7 @@ exports[`Message css 1`] = `
           "borderBottomRightRadius": "0.4rem",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
-          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "boxShadow": "0px 0px 6px 0px #d0d3da",
         }
       }
     >
@@ -240,7 +240,7 @@ exports[`Message css 1`] = `
           "borderBottomRightRadius": "0.4rem",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
-          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "boxShadow": "0px 0px 6px 0px #d0d3da",
         }
       }
     >
@@ -285,7 +285,7 @@ exports[`Message css 1`] = `
           "borderBottomRightRadius": "0.4rem",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
-          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "boxShadow": "0px 0px 6px 0px #d0d3da",
         }
       }
     >
@@ -330,7 +330,7 @@ exports[`Message css 1`] = `
           "borderBottomRightRadius": "0.4rem",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
-          "boxShadow": "0px 0px 6px 0px #cccccc",
+          "boxShadow": "0px 0px 6px 0px #d0d3da",
         }
       }
     >

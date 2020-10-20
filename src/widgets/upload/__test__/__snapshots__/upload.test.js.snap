@@ -12,7 +12,7 @@ exports[`Upload Test css 1`] = `
 
 .c4.right {
   position: absolute;
-  right: 10px;
+  right: 12px;
   top: 50%;
   -webkit-transform: translate(0,-50%);
   -ms-transform: translate(0,-50%);
@@ -34,7 +34,7 @@ exports[`Upload Test css 1`] = `
 .c4.loading {
   -webkit-animation: iECmZH 0.8s linear infinite;
   animation: iECmZH 0.8s linear infinite;
-  margin: 0 10px 0 0;
+  margin: 0 12px 0 0;
 }
 
 .c2 {
@@ -43,6 +43,7 @@ exports[`Upload Test css 1`] = `
 }
 
 .c1 {
+  height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -55,8 +56,14 @@ exports[`Upload Test css 1`] = `
 
 .c3 {
   width: 100%;
-  height: 30px;
-  line-height: 30px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
@@ -64,6 +71,8 @@ exports[`Upload Test css 1`] = `
 
 .c0 {
   position: relative;
+  box-sizing: border-box;
+  height: 100%;
 }
 
 <div
@@ -92,43 +101,104 @@ exports[`Upload Test css 1`] = `
       onMouseLeave={[Function]}
       style={
         Object {
-          "borderBottomColor": "#cccccc",
+          "borderBottomColor": "#d0d3da",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
+          "borderLeftColor": "#d0d3da",
           "borderLeftStyle": "solid",
           "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
+          "borderRightColor": "#d0d3da",
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
+          "borderTopColor": "#d0d3da",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
           "borderTopStyle": "solid",
           "borderTopWidth": "0.1rem",
-          "color": "#cccccc",
+          "color": "#c2c5ce",
           "fontSize": "1.4rem",
+          "height": "3rem",
           "paddingBottom": "0rem",
-          "paddingLeft": "1rem",
+          "paddingLeft": "1.2rem",
           "paddingRight": "0rem",
           "paddingTop": "0rem",
         }
       }
     >
       <i
-        className="lugia-icon-financial_upload right   c4"
+        className="lugia-icon-financial_upload  right   c4"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "color": "#363B40",
+          }
+        }
       />
       请将文件拖到此处
     </div>
   </div>
+</div>
+`;
+
+exports[`Upload Test css getIcon 1`] = `
+.c0 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+<i
+  className="lugia-icon-financial_key    c0"
+  onClick={[Function]}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={Object {}}
+/>
+`;
+
+exports[`Upload Test css getIcon picture 1`] = `
+.c1 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  color: #646A6E;
+}
+
+.c0:hover > div {
+  display: block;
+}
+
+<div
+  className="c0"
+  style={Object {}}
+>
+  <i
+    className="lugia-icon-financial_key    c1"
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    style={Object {}}
+  />
 </div>
 `;

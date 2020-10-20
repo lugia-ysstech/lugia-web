@@ -31,6 +31,16 @@
             "description": {
               "appearancePart": { "text": "外框", "desc": "面板中外观配置的区块显示文本" }
             }
+          },
+          {
+            "name": "选中图标样式",
+            "path": ["CheckboxInnerChecked"],
+            "description": {
+              "appearancePart": {
+                "text": "图标",
+                "desc": "面板中外观配置的区块显示文本"
+              }
+            }
           }
         ]
       },
@@ -44,6 +54,13 @@
             "description": {
               "appearancePart": { "text": "外框", "desc": "面板中外观配置的区块显示文本" }
             }
+          },
+          {
+            "name": "半选图标样式",
+            "path": ["CheckboxInnerIndeterminate"],
+            "description": {
+              "appearancePart": { "text": "图标", "desc": "面板中外观配置的区块显示文本" }
+            }
           }
         ]
       },
@@ -56,6 +73,13 @@
             "path": ["CheckboxEdgeCancel"],
             "description": {
               "appearancePart": { "text": "外框", "desc": "面板中外观配置的区块显示文本" }
+            }
+          },
+          {
+            "name": "取消状态图标样式",
+            "path": ["CheckboxInnerCancel"],
+            "description": {
+              "appearancePart": { "text": "图标", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
@@ -76,7 +100,11 @@
   {
     "widgetName": "Checkbox.Group",
     "title": "多选框组",
-    "viewProps": [{ "name": "disabled", "text": "禁用" }, { "name": "data", "text": "数据编辑" }],
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "value", "text": "选中" },
+      { "name": "data", "text": "数据编辑" }
+    ],
     "data": [
       {
         "title": "未选中",
@@ -109,11 +137,11 @@
             }
           },
           {
-            "name": "选中内框样式",
+            "name": "选中图标样式",
             "path": ["Checkbox", "CheckboxInnerChecked"],
             "description": {
               "appearancePart": {
-                "text": "内框",
+                "text": "图标",
                 "desc": "面板中外观配置的区块显示文本"
               }
             }
@@ -135,13 +163,10 @@
             }
           },
           {
-            "name": "半选内框样式",
+            "name": "半选图标样式",
             "path": ["Checkbox", "CheckboxInnerIndeterminate"],
             "description": {
-              "appearancePart": {
-                "text": "内框",
-                "desc": "面板中外观配置的区块显示文本"
-              }
+              "appearancePart": { "text": "图标", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
@@ -161,13 +186,10 @@
             }
           },
           {
-            "name": "取消状态内框样式",
+            "name": "取消状态图标样式",
             "path": ["Checkbox", "CheckboxInnerCancel"],
             "description": {
-              "appearancePart": {
-                "text": "内框",
-                "desc": "面板中外观配置的区块显示文本"
-              }
+              "appearancePart": { "text": "图标", "desc": "面板中外观配置的区块显示文本" }
             }
           }
         ]
@@ -220,7 +242,11 @@
     "widgetName": "Checkbox.Group",
     "aliasName": "CheckboxButtonGroup",
     "title": "多选按钮组",
-    "viewProps": [{ "name": "disabled", "text": "禁用" }, { "name": "data", "text": "数据编辑" }],
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "value", "text": "选中" },
+      { "name": "data", "text": "数据编辑" }
+    ],
     "data": [
       {
         "title": "未选中",
@@ -256,7 +282,7 @@
       },
       {
         "title": "后台取消",
-        "iconClass": "buttonCancel",
+        "iconClass": "buttoBackstageCancel",
         "data": [
           {
             "name": "取消状态样式",

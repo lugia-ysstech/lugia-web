@@ -2,6 +2,7 @@
   "widgetName": "Breadcrumb",
   "title": "面包屑",
   "desc": "显示系统的层级关系和当先所在的位置,并能向上返回",
+  "tag": "面包屑导航 Breadcrumb 路径导航 层级位置 定位",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
@@ -53,15 +54,7 @@
       ]
     }
   },
-  "type": {
-    "ButtonShape": ["default", "round"],
-    "ButtonStyle": {
-      "width": {
-        "type": "number",
-        "desc": "组件宽度"
-      }
-    }
-  },
+  "type": {},
 
   "category": ["通用"],
   "theme": {
@@ -148,7 +141,8 @@
               ["margin", "right"],
               ["padding", "left"],
               ["padding", "right"],
-              ["font"]
+              ["font"],
+              ["cursor"]
             ],
             "nth": [
               ["color"],

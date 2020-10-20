@@ -1,23 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Progress css 1`] = `
-.c3 {
-  width: calc(100% - 3rem);
+.c4 {
+  width: calc(100% - 2.8rem);
+  margin-right: 0.8rem;
   display: inline-block;
   border-radius: 5rem;
   vertical-align: middle;
-  background-color: #e8e8e8;
+  background-color: #ebecf0;
 }
 
-.c10 {
+.c11 {
   width: 100%;
   display: inline-block;
   border-radius: 5rem;
   vertical-align: middle;
-  background-color: #e8e8e8;
+  background-color: #ebecf0;
 }
 
-.c4 {
+.c5 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
@@ -29,22 +30,10 @@ exports[`Progress css 1`] = `
   line-height: 0.8rem;
 }
 
-.c7 {
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  width: 30%;
-  border-radius: 5rem;
-  position: relative;
-  text-align: right;
-  box-sizing: border-box;
-  background-color: #4d63ff;
-  line-height: 2.5rem;
-}
-
 .c8 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  width: 100%;
+  width: 30%;
   border-radius: 5rem;
   position: relative;
   text-align: right;
@@ -56,6 +45,18 @@ exports[`Progress css 1`] = `
 .c9 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  width: 100%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 2.5rem;
+}
+
+.c10 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
   width: 60%;
   border-radius: 5rem;
   position: relative;
@@ -65,7 +66,7 @@ exports[`Progress css 1`] = `
   line-height: 2.5rem;
 }
 
-.c11 {
+.c12 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
@@ -77,33 +78,7 @@ exports[`Progress css 1`] = `
   line-height: 2.5rem;
 }
 
-.c11::before {
-  content: '';
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #fff;
-  border-radius: 50%;
-  -webkit-animation: evMZmO 2.4s ease infinite;
-  animation: evMZmO 2.4s ease infinite;
-}
-
-.c13 {
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  width: 30%;
-  border-radius: 5rem;
-  position: relative;
-  text-align: right;
-  box-sizing: border-box;
-  background-color: #4d63ff;
-  line-height: 0.8rem;
-}
-
-.c13::before {
+.c12::before {
   content: '';
   opacity: 0;
   position: absolute;
@@ -120,7 +95,7 @@ exports[`Progress css 1`] = `
 .c14 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  width: 100%;
+  width: 30%;
   border-radius: 5rem;
   position: relative;
   text-align: right;
@@ -129,16 +104,30 @@ exports[`Progress css 1`] = `
   line-height: 0.8rem;
 }
 
-.c19 {
+.c14::before {
+  content: '';
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 50%;
+  -webkit-animation: evMZmO 2.4s ease infinite;
+  animation: evMZmO 2.4s ease infinite;
+}
+
+.c15 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  width: 30%;
+  width: 100%;
   border-radius: 5rem;
   position: relative;
   text-align: right;
   box-sizing: border-box;
   background-color: #4d63ff;
-  line-height: 0.6rem;
+  line-height: 0.8rem;
 }
 
 .c20 {
@@ -153,7 +142,19 @@ exports[`Progress css 1`] = `
   line-height: 0.6rem;
 }
 
-.c20::before {
+.c21 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 30%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 0.6rem;
+}
+
+.c21::before {
   content: '';
   opacity: 0;
   position: absolute;
@@ -167,7 +168,7 @@ exports[`Progress css 1`] = `
   animation: evMZmO 2.4s ease infinite;
 }
 
-.c21 {
+.c22 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 100%;
@@ -179,7 +180,7 @@ exports[`Progress css 1`] = `
   line-height: 0.6rem;
 }
 
-.c22 {
+.c23 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 0%;
@@ -189,32 +190,6 @@ exports[`Progress css 1`] = `
   box-sizing: border-box;
   background-color: #4d63ff;
   line-height: 1.6rem;
-}
-
-.c23 {
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  width: 30%;
-  border-radius: 5rem;
-  position: relative;
-  text-align: right;
-  box-sizing: border-box;
-  background-color: #4d63ff;
-  line-height: 1.6rem;
-}
-
-.c23::before {
-  content: '';
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #fff;
-  border-radius: 50%;
-  -webkit-animation: evMZmO 2.4s ease infinite;
-  animation: evMZmO 2.4s ease infinite;
 }
 
 .c24 {
@@ -229,7 +204,33 @@ exports[`Progress css 1`] = `
   line-height: 1.6rem;
 }
 
+.c24::before {
+  content: '';
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 50%;
+  -webkit-animation: evMZmO 2.4s ease infinite;
+  animation: evMZmO 2.4s ease infinite;
+}
+
 .c25 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 30%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 1.6rem;
+}
+
+.c26 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 100%;
@@ -241,31 +242,30 @@ exports[`Progress css 1`] = `
   line-height: 1.6rem;
 }
 
-.c5 {
+.c6 {
   display: inline-block;
   width: 2rem;
   text-align: left;
   white-space: nowrap;
   word-break: normal;
   vertical-align: middle;
-  margin-left: 1rem;
   color: #9EA4AE;
   font-size: 1.4rem;
 }
 
-.c2 {
+.c3 {
   font-size: 1.4rem;
   min-width: 6rem;
   opacity: 1;
 }
 
-.c18 {
+.c19 {
   font-size: 1.2rem;
   min-width: 5.6rem;
   opacity: 1;
 }
 
-.c12 {
+.c13 {
   text-align: left;
   margin: 0 0.6rem;
   white-space: nowrap;
@@ -274,7 +274,7 @@ exports[`Progress css 1`] = `
   font-size: 1.4rem;
 }
 
-.c6 {
+.c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -290,14 +290,14 @@ exports[`Progress css 1`] = `
   font-size: 1.4rem;
 }
 
-.c26 {
+.c27 {
   width: 8rem;
   height: 8rem;
   position: relative;
   font-size: 1.2rem;
 }
 
-.c1 {
+.c2 {
   display: block;
   position: absolute;
   width: 100%;
@@ -318,7 +318,7 @@ exports[`Progress css 1`] = `
   color: #9EA4AE;
 }
 
-.c27 {
+.c28 {
   display: block;
   position: absolute;
   width: 100%;
@@ -339,7 +339,12 @@ exports[`Progress css 1`] = `
   color: #9EA4AE;
 }
 
-.c15 {
+.c1 {
+  width: 100%;
+  height: 100%;
+}
+
+.c16 {
   display: inline-block;
   margin-bottom: 0;
   box-sizing: border-box;
@@ -351,31 +356,31 @@ exports[`Progress css 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   position: relative;
   text-transform: none;
   outline: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   background-color: white;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-left-width: 0.1rem;
   border-left-style: solid;
-  border-left-color: #cccccc;
+  border-left-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
 }
 
-.c17 {
+.c18 {
   font-size: 1.4rem;
 }
 
-.c16 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -396,17 +401,17 @@ exports[`Progress css 1`] = `
   <div
     className="c0"
     size="default"
+    style={Object {}}
   >
     <svg
-      height={120}
-      width={120}
+      className="c1"
     >
       <circle
         cx={60}
         cy={60}
         fill="none"
         r={56}
-        stroke="#e8e8e8"
+        stroke="#ebecf0"
         strokeWidth={8}
       />
       <circle
@@ -415,7 +420,7 @@ exports[`Progress css 1`] = `
         fill="none"
         r={56}
         stroke="#4d63ff"
-        strokeDasharray="105.6 352"
+        strokeDasharray="105.55751316061705 351.85837720205683"
         strokeLinecap="round"
         strokeWidth={8}
         style={
@@ -427,7 +432,7 @@ exports[`Progress css 1`] = `
       />
     </svg>
     <span
-      className="c1"
+      className="c2"
       size="default"
       style={
         Object {
@@ -443,10 +448,10 @@ exports[`Progress css 1`] = `
   <div
     className="c0"
     size="default"
+    style={Object {}}
   >
     <svg
-      height={120}
-      width={120}
+      className="c1"
     >
       <circle
         cx={60}
@@ -462,7 +467,7 @@ exports[`Progress css 1`] = `
         fill="none"
         r={56}
         stroke="red"
-        strokeDasharray="105.6 352"
+        strokeDasharray="105.55751316061705 351.85837720205683"
         strokeLinecap="round"
         strokeWidth={8}
         style={
@@ -474,7 +479,7 @@ exports[`Progress css 1`] = `
       />
     </svg>
     <span
-      className="c1"
+      className="c2"
       size="default"
       style={
         Object {
@@ -490,10 +495,10 @@ exports[`Progress css 1`] = `
   <div
     className="c0"
     size="default"
+    style={Object {}}
   >
     <svg
-      height={120}
-      width={120}
+      className="c1"
     >
       <polyline
         points={
@@ -605,7 +610,7 @@ exports[`Progress css 1`] = `
         style={
           Object {
             "fill": "none",
-            "stroke": "#e8e8e8",
+            "stroke": "#ebecf0",
             "strokeWidth": 8,
             "transition": "all .3s",
           }
@@ -659,7 +664,7 @@ exports[`Progress css 1`] = `
       />
     </svg>
     <span
-      className="c1"
+      className="c2"
       size="default"
       style={
         Object {
@@ -675,10 +680,10 @@ exports[`Progress css 1`] = `
   <div
     className="c0"
     size="default"
+    style={Object {}}
   >
     <svg
-      height={120}
-      width={120}
+      className="c1"
     >
       <polyline
         points={
@@ -844,7 +849,7 @@ exports[`Progress css 1`] = `
       />
     </svg>
     <span
-      className="c1"
+      className="c2"
       size="default"
       style={
         Object {
@@ -858,18 +863,18 @@ exports[`Progress css 1`] = `
     </span>
   </div>
   <div
-    className="c2"
+    className="c3"
     size="default"
     style={Object {}}
     type="line"
   >
     <div
-      className="c3"
+      className="c4"
       size="default"
       style={Object {}}
     >
       <div
-        className="c4"
+        className="c5"
         size="default"
         style={
           Object {
@@ -880,7 +885,7 @@ exports[`Progress css 1`] = `
       />
     </div>
     <span
-      className="c5"
+      className="c6"
       size="default"
       style={
         Object {
@@ -891,7 +896,7 @@ exports[`Progress css 1`] = `
       type="line"
     >
       <i
-        className="lugia-icon-direction_play_circle_o   c6"
+        className="lugia-icon-direction_play_circle_o   c7"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -908,18 +913,18 @@ exports[`Progress css 1`] = `
     </span>
   </div>
   <div
-    className="c2"
+    className="c3"
     size="default"
     style={Object {}}
     type="line"
   >
     <div
-      className="c3"
+      className="c4"
       size="default"
       style={Object {}}
     >
       <div
-        className="c4"
+        className="c5"
         size="default"
         style={
           Object {
@@ -930,7 +935,7 @@ exports[`Progress css 1`] = `
       />
     </div>
     <span
-      className="c5"
+      className="c6"
       size="default"
       style={
         Object {
@@ -941,7 +946,7 @@ exports[`Progress css 1`] = `
       type="line"
     >
       <i
-        className="lugia-icon-direction_play_circle_o   c6"
+        className="lugia-icon-direction_play_circle_o   c7"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -960,17 +965,17 @@ exports[`Progress css 1`] = `
   <div
     className="c0"
     size="default"
+    style={Object {}}
   >
     <svg
-      height={120}
-      width={120}
+      className="c1"
     >
       <circle
         cx={60}
         cy={60}
         fill="none"
         r={56}
-        stroke="#e8e8e8"
+        stroke="#ebecf0"
         strokeWidth={8}
       />
       <circle
@@ -979,7 +984,7 @@ exports[`Progress css 1`] = `
         fill="none"
         r={56}
         stroke="#56c22d"
-        strokeDasharray="176 352"
+        strokeDasharray="175.92918860102841 351.85837720205683"
         strokeLinecap="round"
         strokeWidth={8}
         style={
@@ -991,7 +996,7 @@ exports[`Progress css 1`] = `
       />
     </svg>
     <span
-      className="c1"
+      className="c2"
       size="default"
       style={
         Object {
@@ -1000,7 +1005,7 @@ exports[`Progress css 1`] = `
       }
     >
       <i
-        className="lugia-icon-direction_play_circle_o   c6"
+        className="lugia-icon-direction_play_circle_o   c7"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -1019,17 +1024,17 @@ exports[`Progress css 1`] = `
   <div
     className="c0"
     size="default"
+    style={Object {}}
   >
     <svg
-      height={120}
-      width={120}
+      className="c1"
     >
       <circle
         cx={60}
         cy={60}
         fill="none"
         r={56}
-        stroke="#e8e8e8"
+        stroke="#ebecf0"
         strokeWidth={8}
       />
       <circle
@@ -1038,7 +1043,7 @@ exports[`Progress css 1`] = `
         fill="none"
         r={56}
         stroke="#f22735"
-        strokeDasharray="176 352"
+        strokeDasharray="175.92918860102841 351.85837720205683"
         strokeLinecap="round"
         strokeWidth={8}
         style={
@@ -1050,7 +1055,7 @@ exports[`Progress css 1`] = `
       />
     </svg>
     <span
-      className="c1"
+      className="c2"
       size="default"
       style={
         Object {
@@ -1059,7 +1064,7 @@ exports[`Progress css 1`] = `
       }
     >
       <i
-        className="lugia-icon-direction_play_circle_o   c6"
+        className="lugia-icon-direction_play_circle_o   c7"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -1076,7 +1081,7 @@ exports[`Progress css 1`] = `
     </span>
   </div>
   <div
-    className="c2"
+    className="c3"
     size="default"
     style={
       Object {
@@ -1097,7 +1102,7 @@ exports[`Progress css 1`] = `
     type="line"
   >
     <div
-      className="c3"
+      className="c4"
       size="default"
       style={
         Object {
@@ -1123,7 +1128,7 @@ exports[`Progress css 1`] = `
       }
     >
       <div
-        className="c7"
+        className="c8"
         size="default"
         style={
           Object {
@@ -1151,7 +1156,7 @@ exports[`Progress css 1`] = `
       />
     </div>
     <span
-      className="c5"
+      className="c6"
       size="default"
       style={
         Object {
@@ -1166,7 +1171,7 @@ exports[`Progress css 1`] = `
     </span>
   </div>
   <div
-    className="c2"
+    className="c3"
     size="default"
     style={
       Object {
@@ -1187,215 +1192,7 @@ exports[`Progress css 1`] = `
     type="line"
   >
     <div
-      className="c3"
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "green",
-          "borderBottomColor": "#4d63ff",
-          "borderBottomLeftRadius": "5rem",
-          "borderBottomRightRadius": "5rem",
-          "borderBottomStyle": "solid",
-          "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#4d63ff",
-          "borderLeftStyle": "solid",
-          "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#4d63ff",
-          "borderRightStyle": "solid",
-          "borderRightWidth": "0.1rem",
-          "borderTopColor": "#4d63ff",
-          "borderTopLeftRadius": "5rem",
-          "borderTopRightRadius": "5rem",
-          "borderTopStyle": "solid",
-          "borderTopWidth": "0.1rem",
-          "boxShadow": "1px 2px 2px 2px #e8e8e8",
-        }
-      }
-    >
-      <div
-        className="c8"
-        size="default"
-        style={
-          Object {
-            "backgroundColor": "green",
-            "borderBottomColor": "red",
-            "borderBottomLeftRadius": "5rem",
-            "borderBottomRightRadius": "5rem",
-            "borderBottomStyle": "solid",
-            "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "red",
-            "borderLeftStyle": "solid",
-            "borderLeftWidth": "0.1rem",
-            "borderRightColor": "red",
-            "borderRightStyle": "solid",
-            "borderRightWidth": "0.1rem",
-            "borderTopColor": "red",
-            "borderTopLeftRadius": "5rem",
-            "borderTopRightRadius": "5rem",
-            "borderTopStyle": "solid",
-            "borderTopWidth": "0.1rem",
-            "boxShadow": "1px 2px 2px 2px green",
-            "height": "2.5rem",
-          }
-        }
-      />
-    </div>
-    <span
-      className="c5"
-      size="default"
-      style={
-        Object {
-          "color": "green",
-          "fontSize": "1.6rem",
-          "fontWeight": 500,
-        }
-      }
-      type="line"
-    >
-      <i
-        className="lugia-icon-reminder_check_circle   c6"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={
-          Object {
-            "color": "yellow",
-            "cursor": "default",
-            "fontSize": "1.6rem",
-          }
-        }
-      />
-    </span>
-  </div>
-  <div
-    className="c2"
-    size="default"
-    style={
-      Object {
-        "backgroundColor": "red",
-        "height": "5rem",
-        "marginBottom": "1rem",
-        "marginLeft": "1rem",
-        "marginRight": "1rem",
-        "marginTop": "1rem",
-        "opacity": 0.8,
-        "paddingBottom": "1rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "1rem",
-        "paddingTop": "1rem",
-        "width": "30rem",
-      }
-    }
-    type="line"
-  >
-    <div
-      className="c3"
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "green",
-          "borderBottomColor": "#4d63ff",
-          "borderBottomLeftRadius": "5rem",
-          "borderBottomRightRadius": "5rem",
-          "borderBottomStyle": "solid",
-          "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#4d63ff",
-          "borderLeftStyle": "solid",
-          "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#4d63ff",
-          "borderRightStyle": "solid",
-          "borderRightWidth": "0.1rem",
-          "borderTopColor": "#4d63ff",
-          "borderTopLeftRadius": "5rem",
-          "borderTopRightRadius": "5rem",
-          "borderTopStyle": "solid",
-          "borderTopWidth": "0.1rem",
-          "boxShadow": "1px 2px 2px 2px #e8e8e8",
-        }
-      }
-    >
-      <div
-        className="c8"
-        size="default"
-        style={
-          Object {
-            "backgroundColor": "red",
-            "borderBottomColor": "green",
-            "borderBottomLeftRadius": "5rem",
-            "borderBottomRightRadius": "5rem",
-            "borderBottomStyle": "solid",
-            "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "green",
-            "borderLeftStyle": "solid",
-            "borderLeftWidth": "0.1rem",
-            "borderRightColor": "green",
-            "borderRightStyle": "solid",
-            "borderRightWidth": "0.1rem",
-            "borderTopColor": "green",
-            "borderTopLeftRadius": "5rem",
-            "borderTopRightRadius": "5rem",
-            "borderTopStyle": "solid",
-            "borderTopWidth": "0.1rem",
-            "boxShadow": "1px 2px 2px 2px red",
-            "height": "2.5rem",
-          }
-        }
-      />
-    </div>
-    <span
-      className="c5"
-      size="default"
-      style={
-        Object {
-          "color": "green",
-          "fontSize": "1.6rem",
-          "fontWeight": 500,
-        }
-      }
-      type="line"
-    >
-      <i
-        className="lugia-icon-reminder_close_circle   c6"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={
-          Object {
-            "color": "green",
-            "cursor": "default",
-            "fontSize": "2rem",
-          }
-        }
-      />
-    </span>
-  </div>
-  <div
-    className="c2"
-    size="default"
-    style={
-      Object {
-        "backgroundColor": "red",
-        "height": "5rem",
-        "marginBottom": "1rem",
-        "marginLeft": "1rem",
-        "marginRight": "1rem",
-        "marginTop": "1rem",
-        "opacity": 0.8,
-        "paddingBottom": "1rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "1rem",
-        "paddingTop": "1rem",
-        "width": "30rem",
-      }
-    }
-    type="line"
-  >
-    <div
-      className="c3"
+      className="c4"
       size="default"
       style={
         Object {
@@ -1449,7 +1246,7 @@ exports[`Progress css 1`] = `
       />
     </div>
     <span
-      className="c5"
+      className="c6"
       size="default"
       style={
         Object {
@@ -1461,7 +1258,7 @@ exports[`Progress css 1`] = `
       type="line"
     >
       <i
-        className="lugia-icon-reminder_check_circle   c6"
+        className="lugia-icon-reminder_check_circle   c7"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -1478,7 +1275,7 @@ exports[`Progress css 1`] = `
     </span>
   </div>
   <div
-    className="c2"
+    className="c3"
     size="default"
     style={
       Object {
@@ -1499,7 +1296,7 @@ exports[`Progress css 1`] = `
     type="line"
   >
     <div
-      className="c10"
+      className="c4"
       size="default"
       style={
         Object {
@@ -1525,7 +1322,215 @@ exports[`Progress css 1`] = `
       }
     >
       <div
-        className="c11"
+        className="c9"
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "red",
+            "borderBottomColor": "green",
+            "borderBottomLeftRadius": "5rem",
+            "borderBottomRightRadius": "5rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "green",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "green",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "green",
+            "borderTopLeftRadius": "5rem",
+            "borderTopRightRadius": "5rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "boxShadow": "1px 2px 2px 2px red",
+            "height": "2.5rem",
+          }
+        }
+      />
+    </div>
+    <span
+      className="c6"
+      size="default"
+      style={
+        Object {
+          "color": "green",
+          "fontSize": "1.6rem",
+          "fontWeight": 500,
+        }
+      }
+      type="line"
+    >
+      <i
+        className="lugia-icon-reminder_close_circle   c7"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "green",
+            "cursor": "default",
+            "fontSize": "2rem",
+          }
+        }
+      />
+    </span>
+  </div>
+  <div
+    className="c3"
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "red",
+        "height": "5rem",
+        "marginBottom": "1rem",
+        "marginLeft": "1rem",
+        "marginRight": "1rem",
+        "marginTop": "1rem",
+        "opacity": 0.8,
+        "paddingBottom": "1rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1rem",
+        "width": "30rem",
+      }
+    }
+    type="line"
+  >
+    <div
+      className="c4"
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "green",
+          "borderBottomColor": "#4d63ff",
+          "borderBottomLeftRadius": "5rem",
+          "borderBottomRightRadius": "5rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#4d63ff",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#4d63ff",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#4d63ff",
+          "borderTopLeftRadius": "5rem",
+          "borderTopRightRadius": "5rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "boxShadow": "1px 2px 2px 2px #e8e8e8",
+        }
+      }
+    >
+      <div
+        className="c10"
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "green",
+            "borderBottomColor": "red",
+            "borderBottomLeftRadius": "5rem",
+            "borderBottomRightRadius": "5rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "red",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "red",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "red",
+            "borderTopLeftRadius": "5rem",
+            "borderTopRightRadius": "5rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "boxShadow": "1px 2px 2px 2px green",
+            "height": "2.5rem",
+          }
+        }
+      />
+    </div>
+    <span
+      className="c6"
+      size="default"
+      style={
+        Object {
+          "color": "green",
+          "fontSize": "1.6rem",
+          "fontWeight": 500,
+        }
+      }
+      type="line"
+    >
+      <i
+        className="lugia-icon-reminder_check_circle   c7"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "yellow",
+            "cursor": "default",
+            "fontSize": "1.6rem",
+          }
+        }
+      />
+    </span>
+  </div>
+  <div
+    className="c3"
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "red",
+        "height": "5rem",
+        "marginBottom": "1rem",
+        "marginLeft": "1rem",
+        "marginRight": "1rem",
+        "marginTop": "1rem",
+        "opacity": 0.8,
+        "paddingBottom": "1rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1rem",
+        "width": "30rem",
+      }
+    }
+    type="line"
+  >
+    <div
+      className="c11"
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "green",
+          "borderBottomColor": "#4d63ff",
+          "borderBottomLeftRadius": "5rem",
+          "borderBottomRightRadius": "5rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#4d63ff",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#4d63ff",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#4d63ff",
+          "borderTopLeftRadius": "5rem",
+          "borderTopRightRadius": "5rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "boxShadow": "1px 2px 2px 2px #e8e8e8",
+        }
+      }
+    >
+      <div
+        className="c12"
         size="default"
         style={
           Object {
@@ -1552,7 +1557,7 @@ exports[`Progress css 1`] = `
         }
       >
         <span
-          className="c12"
+          className="c13"
           size="default"
           style={
             Object {
@@ -1584,18 +1589,18 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c2"
+      className="c3"
       size="default"
       style={Object {}}
       type="line"
     >
       <div
-        className="c3"
+        className="c4"
         size="default"
         style={Object {}}
       >
         <div
-          className="c4"
+          className="c5"
           size="default"
           style={
             Object {
@@ -1606,7 +1611,7 @@ exports[`Progress css 1`] = `
         />
       </div>
       <span
-        className="c5"
+        className="c6"
         size="default"
         style={
           Object {
@@ -1623,22 +1628,22 @@ exports[`Progress css 1`] = `
     <p>
       props: percent=
       30
-      active 
+      active
     </p>
     <br />
     <div
-      className="c2"
+      className="c3"
       size="default"
       style={Object {}}
       type="line"
     >
       <div
-        className="c3"
+        className="c4"
         size="default"
         style={Object {}}
       >
         <div
-          className="c13"
+          className="c14"
           size="default"
           style={
             Object {
@@ -1649,7 +1654,7 @@ exports[`Progress css 1`] = `
         />
       </div>
       <span
-        className="c5"
+        className="c6"
         size="default"
         style={
           Object {
@@ -1670,18 +1675,18 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c2"
+      className="c3"
       size="default"
       style={Object {}}
       type="line"
     >
       <div
-        className="c3"
+        className="c4"
         size="default"
         style={Object {}}
       >
         <div
-          className="c4"
+          className="c5"
           size="default"
           style={
             Object {
@@ -1692,7 +1697,7 @@ exports[`Progress css 1`] = `
         />
       </div>
       <span
-        className="c5"
+        className="c6"
         size="default"
         style={
           Object {
@@ -1713,18 +1718,18 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c2"
+      className="c3"
       size="default"
       style={Object {}}
       type="line"
     >
       <div
-        className="c3"
+        className="c4"
         size="default"
         style={Object {}}
       >
         <div
-          className="c4"
+          className="c5"
           size="default"
           style={
             Object {
@@ -1735,7 +1740,7 @@ exports[`Progress css 1`] = `
         />
       </div>
       <span
-        className="c5"
+        className="c6"
         size="default"
         style={
           Object {
@@ -1746,7 +1751,7 @@ exports[`Progress css 1`] = `
         type="line"
       >
         <i
-          className="lugia-icon-reminder_check_circle   c6"
+          className="lugia-icon-reminder_check_circle   c7"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -1770,18 +1775,18 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c2"
+      className="c3"
       size="default"
       style={Object {}}
       type="line"
     >
       <div
-        className="c3"
+        className="c4"
         size="default"
         style={Object {}}
       >
         <div
-          className="c4"
+          className="c5"
           size="default"
           style={
             Object {
@@ -1792,7 +1797,7 @@ exports[`Progress css 1`] = `
         />
       </div>
       <span
-        className="c5"
+        className="c6"
         size="default"
         style={
           Object {
@@ -1803,7 +1808,7 @@ exports[`Progress css 1`] = `
         type="line"
       >
         <i
-          className="lugia-icon-reminder_close_circle   c6"
+          className="lugia-icon-reminder_close_circle   c7"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -1827,18 +1832,18 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c2"
+      className="c3"
       size="default"
       style={Object {}}
       type="line"
     >
       <div
-        className="c3"
+        className="c4"
         size="default"
         style={Object {}}
       >
         <div
-          className="c14"
+          className="c15"
           size="default"
           style={
             Object {
@@ -1849,7 +1854,7 @@ exports[`Progress css 1`] = `
         />
       </div>
       <span
-        className="c5"
+        className="c6"
         size="default"
         style={
           Object {
@@ -1860,7 +1865,7 @@ exports[`Progress css 1`] = `
         type="line"
       >
         <i
-          className="lugia-icon-reminder_close_circle   c6"
+          className="lugia-icon-reminder_close_circle   c7"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -1878,22 +1883,22 @@ exports[`Progress css 1`] = `
     </div>
     <br />
     <p>
-      props: percent=this.state.percent active 
+      props: percent=this.state.percent active
     </p>
     <br />
     <div
-      className="c2"
+      className="c3"
       size="default"
       style={Object {}}
       type="line"
     >
       <div
-        className="c3"
+        className="c4"
         size="default"
         style={Object {}}
       >
         <div
-          className="c13"
+          className="c14"
           size="default"
           style={
             Object {
@@ -1904,7 +1909,7 @@ exports[`Progress css 1`] = `
         />
       </div>
       <span
-        className="c5"
+        className="c6"
         size="default"
         style={
           Object {
@@ -1918,7 +1923,7 @@ exports[`Progress css 1`] = `
       </span>
     </div>
     <button
-      className="c15"
+      className="c16"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1932,18 +1937,18 @@ exports[`Progress css 1`] = `
       style={
         Object {
           "backgroundColor": "white",
-          "borderBottomColor": "#cccccc",
+          "borderBottomColor": "#d0d3da",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
+          "borderLeftColor": "#d0d3da",
           "borderLeftStyle": "solid",
           "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
+          "borderRightColor": "#d0d3da",
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
+          "borderTopColor": "#d0d3da",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
           "borderTopStyle": "solid",
@@ -1957,10 +1962,10 @@ exports[`Progress css 1`] = `
       }
     >
       <span
-        className="c16"
+        className="c17"
       >
         <span
-          className="c17"
+          className="c18"
           style={
             Object {
               "color": "#363B40",
@@ -1974,7 +1979,7 @@ exports[`Progress css 1`] = `
     </button>
      
     <button
-      className="c15"
+      className="c16"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1988,18 +1993,18 @@ exports[`Progress css 1`] = `
       style={
         Object {
           "backgroundColor": "white",
-          "borderBottomColor": "#cccccc",
+          "borderBottomColor": "#d0d3da",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
+          "borderLeftColor": "#d0d3da",
           "borderLeftStyle": "solid",
           "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
+          "borderRightColor": "#d0d3da",
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
+          "borderTopColor": "#d0d3da",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
           "borderTopStyle": "solid",
@@ -2013,10 +2018,10 @@ exports[`Progress css 1`] = `
       }
     >
       <span
-        className="c16"
+        className="c17"
       >
         <span
-          className="c17"
+          className="c18"
           style={
             Object {
               "color": "#363B40",
@@ -2036,18 +2041,18 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c2"
+      className="c3"
       size="default"
       style={Object {}}
       type="line"
     >
       <div
-        className="c10"
+        className="c11"
         size="default"
         style={Object {}}
       >
         <div
-          className="c4"
+          className="c5"
           size="default"
           style={
             Object {
@@ -2065,7 +2070,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c2"
+      className="c3"
       size="default"
       style={
         Object {
@@ -2086,7 +2091,7 @@ exports[`Progress css 1`] = `
       type="line"
     >
       <div
-        className="c3"
+        className="c4"
         size="default"
         style={
           Object {
@@ -2112,7 +2117,7 @@ exports[`Progress css 1`] = `
         }
       >
         <div
-          className="c7"
+          className="c8"
           size="default"
           style={
             Object {
@@ -2140,7 +2145,7 @@ exports[`Progress css 1`] = `
         />
       </div>
       <span
-        className="c5"
+        className="c6"
         size="default"
         style={
           Object {
@@ -2168,18 +2173,18 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c18"
+        className="c19"
         size="small"
         style={Object {}}
         type="line"
       >
         <div
-          className="c3"
+          className="c4"
           size="small"
           style={Object {}}
         >
           <div
-            className="c19"
+            className="c20"
             size="small"
             style={
               Object {
@@ -2190,7 +2195,7 @@ exports[`Progress css 1`] = `
           />
         </div>
         <span
-          className="c5"
+          className="c6"
           size="small"
           style={
             Object {
@@ -2207,22 +2212,22 @@ exports[`Progress css 1`] = `
       <p>
         props: size=small percent=
         30
-         active 
+         active
       </p>
       <br />
       <div
-        className="c18"
+        className="c19"
         size="small"
         style={Object {}}
         type="line"
       >
         <div
-          className="c3"
+          className="c4"
           size="small"
           style={Object {}}
         >
           <div
-            className="c20"
+            className="c21"
             size="small"
             style={
               Object {
@@ -2233,7 +2238,7 @@ exports[`Progress css 1`] = `
           />
         </div>
         <span
-          className="c5"
+          className="c6"
           size="small"
           style={
             Object {
@@ -2254,18 +2259,18 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c18"
+        className="c19"
         size="small"
         style={Object {}}
         type="line"
       >
         <div
-          className="c3"
+          className="c4"
           size="small"
           style={Object {}}
         >
           <div
-            className="c19"
+            className="c20"
             size="small"
             style={
               Object {
@@ -2276,7 +2281,7 @@ exports[`Progress css 1`] = `
           />
         </div>
         <span
-          className="c5"
+          className="c6"
           size="small"
           style={
             Object {
@@ -2287,7 +2292,7 @@ exports[`Progress css 1`] = `
           type="line"
         >
           <i
-            className="lugia-icon-reminder_check_circle   c6"
+            className="lugia-icon-reminder_check_circle   c7"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -2311,18 +2316,18 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c18"
+        className="c19"
         size="small"
         style={Object {}}
         type="line"
       >
         <div
-          className="c3"
+          className="c4"
           size="small"
           style={Object {}}
         >
           <div
-            className="c19"
+            className="c20"
             size="small"
             style={
               Object {
@@ -2333,7 +2338,7 @@ exports[`Progress css 1`] = `
           />
         </div>
         <span
-          className="c5"
+          className="c6"
           size="small"
           style={
             Object {
@@ -2344,7 +2349,7 @@ exports[`Progress css 1`] = `
           type="line"
         >
           <i
-            className="lugia-icon-reminder_close_circle   c6"
+            className="lugia-icon-reminder_close_circle   c7"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -2368,18 +2373,18 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c18"
+        className="c19"
         size="small"
         style={Object {}}
         type="line"
       >
         <div
-          className="c3"
+          className="c4"
           size="small"
           style={Object {}}
         >
           <div
-            className="c21"
+            className="c22"
             size="small"
             style={
               Object {
@@ -2390,7 +2395,7 @@ exports[`Progress css 1`] = `
           />
         </div>
         <span
-          className="c5"
+          className="c6"
           size="small"
           style={
             Object {
@@ -2401,7 +2406,7 @@ exports[`Progress css 1`] = `
           type="line"
         >
           <i
-            className="lugia-icon-reminder_close_circle   c6"
+            className="lugia-icon-reminder_close_circle   c7"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -2433,18 +2438,18 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c2"
+        className="c3"
         size="default"
         style={Object {}}
         type="line"
       >
         <div
-          className="c10"
+          className="c11"
           size="default"
           style={Object {}}
         >
           <div
-            className="c22"
+            className="c23"
             size="default"
             style={
               Object {
@@ -2454,7 +2459,7 @@ exports[`Progress css 1`] = `
             }
           >
             <span
-              className="c12"
+              className="c13"
               size="default"
               style={Object {}}
             >
@@ -2471,18 +2476,18 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c2"
+        className="c3"
         size="default"
         style={Object {}}
         type="line"
       >
         <div
-          className="c10"
+          className="c11"
           size="default"
           style={Object {}}
         >
           <div
-            className="c23"
+            className="c24"
             size="default"
             style={
               Object {
@@ -2492,7 +2497,7 @@ exports[`Progress css 1`] = `
             }
           >
             <span
-              className="c12"
+              className="c13"
               size="default"
               style={Object {}}
             >
@@ -2509,18 +2514,18 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c2"
+        className="c3"
         size="default"
         style={Object {}}
         type="line"
       >
         <div
-          className="c10"
+          className="c11"
           size="default"
           style={Object {}}
         >
           <div
-            className="c24"
+            className="c25"
             size="default"
             style={
               Object {
@@ -2530,7 +2535,7 @@ exports[`Progress css 1`] = `
             }
           >
             <span
-              className="c12"
+              className="c13"
               size="default"
               style={Object {}}
             >
@@ -2547,18 +2552,18 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c2"
+        className="c3"
         size="default"
         style={Object {}}
         type="line"
       >
         <div
-          className="c10"
+          className="c11"
           size="default"
           style={Object {}}
         >
           <div
-            className="c25"
+            className="c26"
             size="default"
             style={
               Object {
@@ -2568,12 +2573,12 @@ exports[`Progress css 1`] = `
             }
           >
             <span
-              className="c12"
+              className="c13"
               size="default"
               style={Object {}}
             >
               <i
-                className="lugia-icon-reminder_check   c6"
+                className="lugia-icon-reminder_check   c7"
                 onClick={[Function]}
                 onMouseDown={[Function]}
                 onMouseEnter={[Function]}
@@ -2599,18 +2604,18 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c2"
+        className="c3"
         size="default"
         style={Object {}}
         type="line"
       >
         <div
-          className="c10"
+          className="c11"
           size="default"
           style={Object {}}
         >
           <div
-            className="c24"
+            className="c25"
             size="default"
             style={
               Object {
@@ -2620,12 +2625,12 @@ exports[`Progress css 1`] = `
             }
           >
             <span
-              className="c12"
+              className="c13"
               size="default"
               style={Object {}}
             >
               <i
-                className="lugia-icon-reminder_close   c6"
+                className="lugia-icon-reminder_close   c7"
                 onClick={[Function]}
                 onMouseDown={[Function]}
                 onMouseEnter={[Function]}
@@ -2652,18 +2657,18 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c2"
+        className="c3"
         size="default"
         style={Object {}}
         type="line"
       >
         <div
-          className="c10"
+          className="c11"
           size="default"
           style={Object {}}
         >
           <div
-            className="c25"
+            className="c26"
             size="default"
             style={
               Object {
@@ -2673,12 +2678,12 @@ exports[`Progress css 1`] = `
             }
           >
             <span
-              className="c12"
+              className="c13"
               size="default"
               style={Object {}}
             >
               <i
-                className="lugia-icon-reminder_close   c6"
+                className="lugia-icon-reminder_close   c7"
                 onClick={[Function]}
                 onMouseDown={[Function]}
                 onMouseEnter={[Function]}
@@ -2703,7 +2708,7 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c2"
+        className="c3"
         size="default"
         style={
           Object {
@@ -2724,7 +2729,7 @@ exports[`Progress css 1`] = `
         type="line"
       >
         <div
-          className="c10"
+          className="c11"
           size="default"
           style={
             Object {
@@ -2750,7 +2755,7 @@ exports[`Progress css 1`] = `
           }
         >
           <div
-            className="c7"
+            className="c8"
             size="default"
             style={
               Object {
@@ -2777,7 +2782,7 @@ exports[`Progress css 1`] = `
             }
           >
             <span
-              className="c12"
+              className="c13"
               size="default"
               style={
                 Object {
@@ -2804,17 +2809,17 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      style={Object {}}
     >
       <svg
-        height={120}
-        width={120}
+        className="c1"
       >
         <circle
           cx={60}
           cy={60}
           fill="none"
           r={56}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={8}
         />
         <circle
@@ -2822,8 +2827,8 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#e8e8e8"
-          strokeDasharray="0 352"
+          stroke="#ebecf0"
+          strokeDasharray="0 351.85837720205683"
           strokeLinecap="round"
           strokeWidth={8}
           style={
@@ -2835,7 +2840,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c2"
         size="default"
         style={
           Object {
@@ -2854,17 +2859,17 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      style={Object {}}
     >
       <svg
-        height={120}
-        width={120}
+        className="c1"
       >
         <circle
           cx={60}
           cy={60}
           fill="none"
           r={56}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={8}
         />
         <circle
@@ -2872,8 +2877,8 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#e8e8e8"
-          strokeDasharray="0 352"
+          stroke="#ebecf0"
+          strokeDasharray="0 351.85837720205683"
           strokeLinecap="round"
           strokeWidth={8}
           style={
@@ -2885,7 +2890,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c2"
         size="default"
         style={
           Object {
@@ -2896,7 +2901,7 @@ exports[`Progress css 1`] = `
         }
       >
         <i
-          className="lugia-icon-reminder_close   c6"
+          className="lugia-icon-reminder_close   c7"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -2918,17 +2923,17 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      style={Object {}}
     >
       <svg
-        height={120}
-        width={120}
+        className="c1"
       >
         <circle
           cx={60}
           cy={60}
           fill="none"
           r={56}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={8}
         />
         <circle
@@ -2937,7 +2942,7 @@ exports[`Progress css 1`] = `
           fill="none"
           r={56}
           stroke="#56c22d"
-          strokeDasharray="352 352"
+          strokeDasharray="351.85837720205683 351.85837720205683"
           strokeLinecap="round"
           strokeWidth={8}
           style={
@@ -2949,7 +2954,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c2"
         size="default"
         style={
           Object {
@@ -2960,7 +2965,7 @@ exports[`Progress css 1`] = `
         }
       >
         <i
-          className="lugia-icon-reminder_check   c6"
+          className="lugia-icon-reminder_check   c7"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -2987,17 +2992,17 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      style={Object {}}
     >
       <svg
-        height={120}
-        width={120}
+        className="c1"
       >
         <circle
           cx={60}
           cy={60}
           fill="none"
           r={56}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={8}
         />
         <circle
@@ -3005,8 +3010,8 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#e8e8e8"
-          strokeDasharray="0 352"
+          stroke="#ebecf0"
+          strokeDasharray="0 351.85837720205683"
           strokeLinecap="round"
           strokeWidth={8}
           style={
@@ -3018,7 +3023,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c2"
         size="default"
         style={
           Object {
@@ -3038,17 +3043,17 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      style={Object {}}
     >
       <svg
-        height={120}
-        width={120}
+        className="c1"
       >
         <circle
           cx={60}
           cy={60}
           fill="none"
           r={56}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={8}
         />
         <circle
@@ -3057,7 +3062,7 @@ exports[`Progress css 1`] = `
           fill="none"
           r={56}
           stroke="#4d63ff"
-          strokeDasharray="105.6 352"
+          strokeDasharray="105.55751316061705 351.85837720205683"
           strokeLinecap="round"
           strokeWidth={8}
           style={
@@ -3069,7 +3074,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c2"
         size="default"
         style={
           Object {
@@ -3081,7 +3086,7 @@ exports[`Progress css 1`] = `
       </span>
     </div>
     <button
-      className="c15"
+      className="c16"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -3095,18 +3100,18 @@ exports[`Progress css 1`] = `
       style={
         Object {
           "backgroundColor": "white",
-          "borderBottomColor": "#cccccc",
+          "borderBottomColor": "#d0d3da",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
+          "borderLeftColor": "#d0d3da",
           "borderLeftStyle": "solid",
           "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
+          "borderRightColor": "#d0d3da",
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
+          "borderTopColor": "#d0d3da",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
           "borderTopStyle": "solid",
@@ -3120,10 +3125,10 @@ exports[`Progress css 1`] = `
       }
     >
       <span
-        className="c16"
+        className="c17"
       >
         <span
-          className="c17"
+          className="c18"
           style={
             Object {
               "color": "#363B40",
@@ -3137,7 +3142,7 @@ exports[`Progress css 1`] = `
     </button>
      
     <button
-      className="c15"
+      className="c16"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -3151,18 +3156,18 @@ exports[`Progress css 1`] = `
       style={
         Object {
           "backgroundColor": "white",
-          "borderBottomColor": "#cccccc",
+          "borderBottomColor": "#d0d3da",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
+          "borderLeftColor": "#d0d3da",
           "borderLeftStyle": "solid",
           "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
+          "borderRightColor": "#d0d3da",
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
+          "borderTopColor": "#d0d3da",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
           "borderTopStyle": "solid",
@@ -3176,10 +3181,10 @@ exports[`Progress css 1`] = `
       }
     >
       <span
-        className="c16"
+        className="c17"
       >
         <span
-          className="c17"
+          className="c18"
           style={
             Object {
               "color": "#363B40",
@@ -3200,17 +3205,17 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      style={Object {}}
     >
       <svg
-        height={120}
-        width={120}
+        className="c1"
       >
         <circle
           cx={60}
           cy={60}
           fill="none"
           r={56}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={8}
         />
         <circle
@@ -3219,7 +3224,7 @@ exports[`Progress css 1`] = `
           fill="none"
           r={56}
           stroke="#56c22d"
-          strokeDasharray="352 352"
+          strokeDasharray="351.85837720205683 351.85837720205683"
           strokeLinecap="round"
           strokeWidth={8}
           style={
@@ -3231,7 +3236,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c2"
         size="default"
         style={
           Object {
@@ -3240,7 +3245,7 @@ exports[`Progress css 1`] = `
         }
       >
         <i
-          className="lugia-icon-reminder_check   c6"
+          className="lugia-icon-reminder_check   c7"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -3265,17 +3270,17 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      style={Object {}}
     >
       <svg
-        height={120}
-        width={120}
+        className="c1"
       >
         <circle
           cx={60}
           cy={60}
           fill="none"
           r={56}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={8}
         />
         <circle
@@ -3284,7 +3289,7 @@ exports[`Progress css 1`] = `
           fill="none"
           r={56}
           stroke="#56c22d"
-          strokeDasharray="176 352"
+          strokeDasharray="175.92918860102841 351.85837720205683"
           strokeLinecap="round"
           strokeWidth={8}
           style={
@@ -3296,7 +3301,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c2"
         size="default"
         style={
           Object {
@@ -3305,7 +3310,7 @@ exports[`Progress css 1`] = `
         }
       >
         <i
-          className="lugia-icon-reminder_check   c6"
+          className="lugia-icon-reminder_check   c7"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -3330,17 +3335,17 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      style={Object {}}
     >
       <svg
-        height={120}
-        width={120}
+        className="c1"
       >
         <circle
           cx={60}
           cy={60}
           fill="none"
           r={56}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={8}
         />
         <circle
@@ -3349,7 +3354,7 @@ exports[`Progress css 1`] = `
           fill="none"
           r={56}
           stroke="#f22735"
-          strokeDasharray="176 352"
+          strokeDasharray="175.92918860102841 351.85837720205683"
           strokeLinecap="round"
           strokeWidth={8}
           style={
@@ -3361,7 +3366,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c2"
         size="default"
         style={
           Object {
@@ -3370,7 +3375,7 @@ exports[`Progress css 1`] = `
         }
       >
         <i
-          className="lugia-icon-reminder_close   c6"
+          className="lugia-icon-reminder_close   c7"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -3395,17 +3400,17 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      style={Object {}}
     >
       <svg
-        height={120}
-        width={120}
+        className="c1"
       >
         <circle
           cx={60}
           cy={60}
           fill="none"
           r={56}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={8}
         />
         <circle
@@ -3414,7 +3419,7 @@ exports[`Progress css 1`] = `
           fill="none"
           r={56}
           stroke="#f22735"
-          strokeDasharray="352 352"
+          strokeDasharray="351.85837720205683 351.85837720205683"
           strokeLinecap="round"
           strokeWidth={8}
           style={
@@ -3426,7 +3431,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c2"
         size="default"
         style={
           Object {
@@ -3435,7 +3440,7 @@ exports[`Progress css 1`] = `
         }
       >
         <i
-          className="lugia-icon-reminder_close   c6"
+          className="lugia-icon-reminder_close   c7"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -3461,17 +3466,17 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      style={Object {}}
     >
       <svg
-        height={120}
-        width={120}
+        className="c1"
       >
         <circle
           cx={60}
           cy={60}
           fill="none"
           r={56}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={8}
         />
         <circle
@@ -3480,7 +3485,7 @@ exports[`Progress css 1`] = `
           fill="none"
           r={56}
           stroke="#f22735"
-          strokeDasharray="176 352"
+          strokeDasharray="175.92918860102841 351.85837720205683"
           strokeLinecap="round"
           strokeWidth={8}
           style={
@@ -3492,7 +3497,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c2"
         size="default"
         style={
           Object {
@@ -3512,17 +3517,17 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      style={Object {}}
     >
       <svg
-        height={120}
-        width={120}
+        className="c1"
       >
         <circle
           cx={60}
           cy={60}
           fill="none"
           r={56}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={8}
         />
         <circle
@@ -3531,7 +3536,7 @@ exports[`Progress css 1`] = `
           fill="none"
           r={56}
           stroke="#4d63ff"
-          strokeDasharray="105.6 352"
+          strokeDasharray="105.55751316061705 351.85837720205683"
           strokeLinecap="round"
           strokeWidth={8}
           style={
@@ -3543,7 +3548,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c1"
+        className="c2"
         size="default"
         style={
           Object {
@@ -3562,19 +3567,19 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c26"
+      className="c27"
       size="small"
+      style={Object {}}
     >
       <svg
-        height={80}
-        width={80}
+        className="c1"
       >
         <circle
           cx={40}
           cy={40}
           fill="none"
           r={37}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={6}
         />
         <circle
@@ -3582,8 +3587,8 @@ exports[`Progress css 1`] = `
           cy={40}
           fill="none"
           r={37}
-          stroke="#e8e8e8"
-          strokeDasharray="0 233"
+          stroke="#ebecf0"
+          strokeDasharray="0 232.4778563656447"
           strokeLinecap="round"
           strokeWidth={6}
           style={
@@ -3595,7 +3600,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c27"
+        className="c28"
         size="small"
         style={
           Object {
@@ -3613,19 +3618,19 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c26"
+      className="c27"
       size="small"
+      style={Object {}}
     >
       <svg
-        height={80}
-        width={80}
+        className="c1"
       >
         <circle
           cx={40}
           cy={40}
           fill="none"
           r={37}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={6}
         />
         <circle
@@ -3634,7 +3639,7 @@ exports[`Progress css 1`] = `
           fill="none"
           r={37}
           stroke="#4d63ff"
-          strokeDasharray="69.89999999999999 233"
+          strokeDasharray="69.7433569096934 232.4778563656447"
           strokeLinecap="round"
           strokeWidth={6}
           style={
@@ -3646,7 +3651,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c27"
+        className="c28"
         size="small"
         style={
           Object {
@@ -3664,19 +3669,19 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c26"
+      className="c27"
       size="small"
+      style={Object {}}
     >
       <svg
-        height={80}
-        width={80}
+        className="c1"
       >
         <circle
           cx={40}
           cy={40}
           fill="none"
           r={37}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={6}
         />
         <circle
@@ -3685,7 +3690,7 @@ exports[`Progress css 1`] = `
           fill="none"
           r={37}
           stroke="#56c22d"
-          strokeDasharray="233 233"
+          strokeDasharray="232.4778563656447 232.4778563656447"
           strokeLinecap="round"
           strokeWidth={6}
           style={
@@ -3697,7 +3702,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c27"
+        className="c28"
         size="small"
         style={
           Object {
@@ -3706,7 +3711,7 @@ exports[`Progress css 1`] = `
         }
       >
         <i
-          className="lugia-icon-reminder_check   c6"
+          className="lugia-icon-reminder_check   c7"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -3729,19 +3734,19 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c26"
+      className="c27"
       size="small"
+      style={Object {}}
     >
       <svg
-        height={80}
-        width={80}
+        className="c1"
       >
         <circle
           cx={40}
           cy={40}
           fill="none"
           r={37}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={6}
         />
         <circle
@@ -3750,7 +3755,7 @@ exports[`Progress css 1`] = `
           fill="none"
           r={37}
           stroke="#f22735"
-          strokeDasharray="116.5 233"
+          strokeDasharray="116.23892818282235 232.4778563656447"
           strokeLinecap="round"
           strokeWidth={6}
           style={
@@ -3762,7 +3767,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c27"
+        className="c28"
         size="small"
         style={
           Object {
@@ -3771,7 +3776,7 @@ exports[`Progress css 1`] = `
         }
       >
         <i
-          className="lugia-icon-reminder_close   c6"
+          className="lugia-icon-reminder_close   c7"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -3794,19 +3799,19 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c26"
+      className="c27"
       size="small"
+      style={Object {}}
     >
       <svg
-        height={80}
-        width={80}
+        className="c1"
       >
         <circle
           cx={40}
           cy={40}
           fill="none"
           r={37}
-          stroke="#e8e8e8"
+          stroke="#ebecf0"
           strokeWidth={6}
         />
         <circle
@@ -3815,7 +3820,7 @@ exports[`Progress css 1`] = `
           fill="none"
           r={37}
           stroke="#f22735"
-          strokeDasharray="233 233"
+          strokeDasharray="232.4778563656447 232.4778563656447"
           strokeLinecap="round"
           strokeWidth={6}
           style={
@@ -3827,7 +3832,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c27"
+        className="c28"
         size="small"
         style={
           Object {
@@ -3836,7 +3841,7 @@ exports[`Progress css 1`] = `
         }
       >
         <i
-          className="lugia-icon-reminder_close   c6"
+          className="lugia-icon-reminder_close   c7"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -3866,10 +3871,10 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        style={Object {}}
       >
         <svg
-          height={120}
-          width={120}
+          className="c1"
         >
           <polyline
             points={
@@ -3981,7 +3986,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#e8e8e8",
+                "stroke": "#ebecf0",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -4055,7 +4060,7 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c1"
+          className="c2"
           size="default"
           style={
             Object {
@@ -4071,10 +4076,10 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        style={Object {}}
       >
         <svg
-          height={120}
-          width={120}
+          className="c1"
         >
           <polyline
             points={
@@ -4186,7 +4191,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#e8e8e8",
+                "stroke": "#ebecf0",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -4202,7 +4207,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#e8e8e8",
+                "stroke": "#ebecf0",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -4210,7 +4215,7 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c1"
+          className="c2"
           size="default"
           style={
             Object {
@@ -4221,7 +4226,7 @@ exports[`Progress css 1`] = `
           }
         >
           <i
-            className="lugia-icon-reminder_close   c6"
+            className="lugia-icon-reminder_close   c7"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -4240,10 +4245,10 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        style={Object {}}
       >
         <svg
-          height={120}
-          width={120}
+          className="c1"
         >
           <polyline
             points={
@@ -4355,7 +4360,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#e8e8e8",
+                "stroke": "#ebecf0",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -4479,7 +4484,7 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c1"
+          className="c2"
           size="default"
           style={
             Object {
@@ -4490,7 +4495,7 @@ exports[`Progress css 1`] = `
           }
         >
           <i
-            className="lugia-icon-reminder_check   c6"
+            className="lugia-icon-reminder_check   c7"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -4514,10 +4519,10 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        style={Object {}}
       >
         <svg
-          height={120}
-          width={120}
+          className="c1"
         >
           <polyline
             points={
@@ -4629,7 +4634,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#e8e8e8",
+                "stroke": "#ebecf0",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -4703,7 +4708,7 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c1"
+          className="c2"
           size="default"
           style={
             Object {
@@ -4723,10 +4728,10 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        style={Object {}}
       >
         <svg
-          height={120}
-          width={120}
+          className="c1"
         >
           <polyline
             points={
@@ -4838,7 +4843,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#e8e8e8",
+                "stroke": "#ebecf0",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -4962,7 +4967,7 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c1"
+          className="c2"
           size="default"
           style={
             Object {
@@ -4971,7 +4976,7 @@ exports[`Progress css 1`] = `
           }
         >
           <i
-            className="lugia-icon-reminder_check   c6"
+            className="lugia-icon-reminder_check   c7"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -4997,10 +5002,10 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        style={Object {}}
       >
         <svg
-          height={120}
-          width={120}
+          className="c1"
         >
           <polyline
             points={
@@ -5112,7 +5117,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#e8e8e8",
+                "stroke": "#ebecf0",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -5216,7 +5221,7 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c1"
+          className="c2"
           size="default"
           style={
             Object {
@@ -5225,7 +5230,7 @@ exports[`Progress css 1`] = `
           }
         >
           <i
-            className="lugia-icon-reminder_check   c6"
+            className="lugia-icon-reminder_check   c7"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -5251,10 +5256,10 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        style={Object {}}
       >
         <svg
-          height={120}
-          width={120}
+          className="c1"
         >
           <polyline
             points={
@@ -5366,7 +5371,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#e8e8e8",
+                "stroke": "#ebecf0",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -5430,7 +5435,7 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c1"
+          className="c2"
           size="default"
           style={
             Object {
@@ -5439,7 +5444,7 @@ exports[`Progress css 1`] = `
           }
         >
           <i
-            className="lugia-icon-reminder_close   c6"
+            className="lugia-icon-reminder_close   c7"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -5465,10 +5470,10 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        style={Object {}}
       >
         <svg
-          height={120}
-          width={120}
+          className="c1"
         >
           <polyline
             points={
@@ -5580,7 +5585,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#e8e8e8",
+                "stroke": "#ebecf0",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -5704,7 +5709,7 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c1"
+          className="c2"
           size="default"
           style={
             Object {
@@ -5713,7 +5718,7 @@ exports[`Progress css 1`] = `
           }
         >
           <i
-            className="lugia-icon-reminder_close   c6"
+            className="lugia-icon-reminder_close   c7"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -5739,10 +5744,10 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        style={Object {}}
       >
         <svg
-          height={120}
-          width={120}
+          className="c1"
         >
           <polyline
             points={
@@ -5854,7 +5859,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#e8e8e8",
+                "stroke": "#ebecf0",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -5928,7 +5933,7 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c1"
+          className="c2"
           size="default"
           style={
             Object {
@@ -5948,10 +5953,10 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        style={Object {}}
       >
         <svg
-          height={120}
-          width={120}
+          className="c1"
         >
           <polyline
             points={
@@ -6063,7 +6068,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#e8e8e8",
+                "stroke": "#ebecf0",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -6117,7 +6122,7 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c1"
+          className="c2"
           size="default"
           style={
             Object {
@@ -6129,7 +6134,7 @@ exports[`Progress css 1`] = `
         </span>
       </div>
       <button
-        className="c15"
+        className="c16"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -6143,18 +6148,18 @@ exports[`Progress css 1`] = `
         style={
           Object {
             "backgroundColor": "white",
-            "borderBottomColor": "#cccccc",
+            "borderBottomColor": "#d0d3da",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#cccccc",
+            "borderLeftColor": "#d0d3da",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#cccccc",
+            "borderRightColor": "#d0d3da",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#cccccc",
+            "borderTopColor": "#d0d3da",
             "borderTopLeftRadius": "0.4rem",
             "borderTopRightRadius": "0.4rem",
             "borderTopStyle": "solid",
@@ -6168,10 +6173,10 @@ exports[`Progress css 1`] = `
         }
       >
         <span
-          className="c16"
+          className="c17"
         >
           <span
-            className="c17"
+            className="c18"
             style={
               Object {
                 "color": "#363B40",
@@ -6185,7 +6190,7 @@ exports[`Progress css 1`] = `
       </button>
        
       <button
-        className="c15"
+        className="c16"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -6199,18 +6204,18 @@ exports[`Progress css 1`] = `
         style={
           Object {
             "backgroundColor": "white",
-            "borderBottomColor": "#cccccc",
+            "borderBottomColor": "#d0d3da",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#cccccc",
+            "borderLeftColor": "#d0d3da",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#cccccc",
+            "borderRightColor": "#d0d3da",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#cccccc",
+            "borderTopColor": "#d0d3da",
             "borderTopLeftRadius": "0.4rem",
             "borderTopRightRadius": "0.4rem",
             "borderTopStyle": "solid",
@@ -6224,10 +6229,10 @@ exports[`Progress css 1`] = `
         }
       >
         <span
-          className="c16"
+          className="c17"
         >
           <span
-            className="c17"
+            className="c18"
             style={
               Object {
                 "color": "#363B40",
@@ -6248,10 +6253,10 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        style={Object {}}
       >
         <svg
-          height={120}
-          width={120}
+          className="c1"
         >
           <polyline
             points={
@@ -6363,7 +6368,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#e8e8e8",
+                "stroke": "#ebecf0",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -6417,7 +6422,7 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c1"
+          className="c2"
           size="default"
           style={
             Object {
@@ -6429,6 +6434,208 @@ exports[`Progress css 1`] = `
         </span>
       </div>
     </div>
+  </div>
+  <div
+    className="c0"
+    size="default"
+    style={
+      Object {
+        "height": "30rem",
+        "width": "30rem",
+      }
+    }
+  >
+    <svg
+      className="c1"
+    >
+      <polyline
+        points={
+          Array [
+            "56.7958043777554,261.0764507823794",
+            "51.38821227458989,256.3048226638785",
+            "46.22456058182806,251.2702235287615",
+            "41.31762285668988,245.98510769113767",
+            "36.67953761151885,240.46254917954076",
+            "32.32177828619763,234.71620939511618",
+            "28.25512486578448,228.7603033167996",
+            "24.48963721358014,222.60956433708492",
+            "21.034630185591425,216.2792078153687",
+            "17.898650587953824,209.7848934390326",
+            "15.089456034312718,203.1426864853703",
+            "12.613995755466362,196.36901808018996",
+            "10.478393408740885,189.48064455139917",
+            "8.687931929624426,182.49460597812413",
+            "7.247040463132038,175.4281840379006",
+            "6.1592834072306175,168.2988592562103",
+            "5.427351595427524,161.1242677641212",
+            "5.053055640334918,153.92215767099682",
+            "5.037321454675862,146.7103451601998",
+            "5.380187960812378,139.50667041640045",
+            "6.080806994461653,132.32895349350812",
+            "7.137445402837869,125.19495023240495",
+            "8.547489332030324,118.12230833752349",
+            "10.307450693011305,111.12852372092708",
+            "12.412975790278438,104.23089722188678",
+            "14.858856091787175,97.44649180901703",
+            "17.639041113530453,90.79209037084388",
+            "20.746653386892632,84.28415419921976",
+            "24.17400547175302,77.93878226828554",
+            "27.912618973251753,71.77167140971505",
+            "31.953245515175993,65.79807748275766",
+            "36.2858896180841,60.03277763513289",
+            "40.8998334255717,54.49003374813704",
+            "45.78366321751564,49.18355715638546",
+            "50.925297644705125,44.12647472946918",
+            "56.312017615019045,39.33129639942692",
+            "61.930497757215306,34.809884214364374",
+            "67.76683938450043,30.573422994772855",
+            "73.80660487633602,26.63239266513588",
+            "80.03485339342865,22.996542329269715",
+            "86.43617783755622,19.67486615352655",
+            "92.99474296479875,16.675581117521318",
+            "99.69432455789246,14.006106687420214",
+            "106.51834956080612,11.673046462073216",
+            "113.44993707625306,9.682171837395742",
+            "120.47194012472653,8.038407729406373",
+            "127.56698806175291,6.745820391241409",
+            "134.71752954843524,5.807607354281515",
+            "141.9058759689892,5.2260895182746765",
+            "149.114245187867,5.002705410022287",
+            "156.32480553822484,5.138007624830578",
+            "163.51971993291858,5.631661459531074",
+            "170.6811899889075,6.482445740450601",
+            "177.79150005591444,7.688255844283503",
+            "184.83306104042578,9.246108904393083",
+            "191.7884539166226,11.15215118966259",
+            "198.64047281660746,13.401667637643271",
+            "205.37216759333302,15.989093518416041",
+            "211.96688575094205,18.908028200313908",
+            "218.4083136387955,22.151250983452385",
+            "224.68051680728257,25.71073896189911",
+            "230.7679794255847,29.57768687029663",
+            "236.65564266388367,33.74252886584321",
+            "242.32894194506565,38.19496219174782",
+            "247.77384297376972,42.92397266362268",
+            "252.9768764536554,47.91786191576611",
+            "257.9251714070059,53.164276339935384",
+            "262.6064870142442,58.650237645022514",
+            "267.0092428945983,64.36217496203615",
+            "271.1225477530097,70.28595841497007",
+            "274.93622632241954,76.40693407451242",
+            "278.4408445347834,82.70996020812889",
+            "281.62773285854996,89.17944473684727",
+            "284.48900774487015,95.7993838060834",
+            "287.01759112948685,102.55340137509562",
+            "289.20722794205983,109.42478972713266",
+            "291.0525015796149,116.39655080006318",
+            "292.54884730583774,123.45143823524604",
+            "293.69256354306725,130.57200004062224",
+            "294.4808210290547,137.74062176249254",
+            "294.9116698158367,144.9395700591824",
+            "294.98404409340935,152.15103656880652",
+            "294.69776482627,159.357181962614",
+            "294.0535401963057,166.54018007493676",
+            "293.0529638509318,173.68226200057748",
+            "291.6985109608146,180.76576005054812",
+            "289.9935320969305,187.77315145742656",
+            "287.9422449421081,194.68710172221347",
+            "285.5497238575566,201.49050749546126",
+            "282.8218873301904,208.1665388865987",
+            "279.76548333180233,214.6986810967869",
+            "276.3880726263022,221.07077527231968",
+            "272.6980100663157,227.26705847750574",
+            "268.7044239254099,233.27220268815142",
+            "264.4171933170729,239.07135270918243",
+            "259.8469237563066,244.65016292260765",
+            "255.00492092428783,249.99483277491925",
+            "249.90316270099703,255.09214091614137",
+            "244.55426953499784,259.92947790607843",
+            "238.9714732236668,264.4948774068532",
+            "233.16858418110158,268.77704578457497",
+          ]
+        }
+        stroke-dasharray="5,5"
+        style={
+          Object {
+            "fill": "none",
+            "stroke": "#ebecf0",
+            "strokeWidth": 10,
+            "transition": "all .3s",
+          }
+        }
+      />
+      <polyline
+        points={
+          Array [
+            "56.7958043777554,261.0764507823794",
+            "51.38821227458989,256.3048226638785",
+            "46.22456058182806,251.2702235287615",
+            "41.31762285668988,245.98510769113767",
+            "36.67953761151885,240.46254917954076",
+            "32.32177828619763,234.71620939511618",
+            "28.25512486578448,228.7603033167996",
+            "24.48963721358014,222.60956433708492",
+            "21.034630185591425,216.2792078153687",
+            "17.898650587953824,209.7848934390326",
+            "15.089456034312718,203.1426864853703",
+            "12.613995755466362,196.36901808018996",
+            "10.478393408740885,189.48064455139917",
+            "8.687931929624426,182.49460597812413",
+            "7.247040463132038,175.4281840379006",
+            "6.1592834072306175,168.2988592562103",
+            "5.427351595427524,161.1242677641212",
+            "5.053055640334918,153.92215767099682",
+            "5.037321454675862,146.7103451601998",
+            "5.380187960812378,139.50667041640045",
+            "6.080806994461653,132.32895349350812",
+            "7.137445402837869,125.19495023240495",
+            "8.547489332030324,118.12230833752349",
+            "10.307450693011305,111.12852372092708",
+            "12.412975790278438,104.23089722188678",
+            "14.858856091787175,97.44649180901703",
+            "17.639041113530453,90.79209037084388",
+            "20.746653386892632,84.28415419921976",
+            "24.17400547175302,77.93878226828554",
+            "27.912618973251753,71.77167140971505",
+            "31.953245515175993,65.79807748275766",
+          ]
+        }
+        stroke-dasharray="5,5"
+        style={
+          Object {
+            "fill": "none",
+            "stroke": "skyblue",
+            "strokeWidth": 10,
+            "transition": "all .3s",
+          }
+        }
+      />
+    </svg>
+    <span
+      className="c2"
+      size="default"
+      style={
+        Object {
+          "color": "#56c22d",
+        }
+      }
+    >
+      <i
+        className="lugia-icon-reminder_check   c7"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#56c22d",
+            "cursor": "default",
+            "fontSize": "3rem",
+          }
+        }
+      />
+    </span>
   </div>
 </div>
 `;

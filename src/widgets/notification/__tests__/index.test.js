@@ -21,7 +21,10 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Notification', () => {
   const getState = (target: any): Object => {
-    const state = target.instance().state;
+    const state = target
+      .children()
+      .at(0)
+      .instance().state;
     return state;
   };
   it('css', () => {
@@ -46,25 +49,5 @@ describe('Notification', () => {
     await delay(400);
     expect(getState(target).closing).toBe(false);
     expect(getState(target).visible).toBe(false);
-  });
-  it('Notification handleDuration', async () => {
-    const target = mount(
-      <Notification
-        create={false}
-        duration={4.5}
-        title="今天天气很好！"
-        description="因为今天的太阳很大。"
-      />
-    );
-    const cmp = target.instance();
-    const result = cmp.handleDuration(4.5);
-    expect(result).toBe(4.5);
-
-    const res = cmp.handleDuration(0);
-    expect(res).toBe('no');
-    const res2 = cmp.handleDuration(null);
-    expect(res2).toBe('no');
-    const res3 = cmp.handleDuration();
-    expect(res3).toBe(4.5);
   });
 });

@@ -9,6 +9,8 @@ import * as React from 'react';
 import InnerTree from './tree';
 import { getTreeData } from '../menu/utils';
 import { getMenuItemHeight } from '../css/tree';
+import ThemeProvider from '../theme-provider';
+import Widget from '../consts/index';
 
 class Tree extends React.Component<any, any> {
   static defaultProps = {
@@ -56,4 +58,4 @@ class Tree extends React.Component<any, any> {
   };
 }
 
-export default Tree;
+export default ThemeProvider(Tree, Widget.Tree);

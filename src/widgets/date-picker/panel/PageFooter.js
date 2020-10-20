@@ -15,7 +15,11 @@ import {
 } from '../styled/styledFooter';
 import { modeStyle } from '../utils/booleanUtils';
 import moment from 'moment';
-import { getExtraFooterTheme, getFooterButtonsTheme } from '../themeConfig/themeConfig';
+import {
+  getExtraFooterTheme,
+  getFooterButtonsTheme,
+  getPageFooterLineTheme,
+} from '../themeConfig/themeConfig';
 type TypeProps = {
   onChange?: Function,
   footerChange?: Function,
@@ -194,8 +198,9 @@ class PageFooter extends Component<TypeProps, TypeState> {
     const { showTimeBtnIsDisabled } = this.props;
     const newChildrenNode = (isDate || isRange) && buttonOptions ? childrenNode : '';
     const extraFooterTheme = getExtraFooterTheme(this.props);
+    const footerWrapBorder = getPageFooterLineTheme(this.props);
     return (
-      <FooterWrap showFooter={showFooter}>
+      <FooterWrap showFooter={showFooter} footerWrapBorder={footerWrapBorder}>
         {showFooter ? (
           <Footer showToday={showToday}>
             {showExtraFooter ? (

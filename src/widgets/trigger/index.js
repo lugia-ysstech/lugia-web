@@ -13,6 +13,7 @@ import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import Popup from './Popup';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
+import { getIndex } from '../utils/widget-zindex';
 
 function noop() {}
 
@@ -136,6 +137,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     this.state = {
       popupVisible,
     };
+    this.index = popupVisible ? getIndex() : undefined;
   }
 
   popupContainer: ?Object;
@@ -146,7 +148,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
     const { getPopupContainer, getDocument } = this.props;
     const popupContainer = document.createElement('div');
-    popupContainer.style.position = 'releative';
+    popupContainer.style.position = 'relative';
     popupContainer.style.top = '0';
     popupContainer.style.left = '0';
     const mountNode = getPopupContainer ? getPopupContainer(findDOMNode(this)) : getDocument().body;
@@ -158,7 +160,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   getComponent() {
     const { props, state } = this;
     const { onPopupAlign, popup, offsetX, offsetY, liquidLayout } = props;
-    const { destroyPopupOnHide, mask, zIndex, align, getTheme, className } = props;
+    const { destroyPopupOnHide, mask, align, getTheme, className } = props;
     const mouseProps = {};
     if (this.isMouseEnterToShow()) {
       mouseProps.onMouseEnter = this.onPopupMouseEnter;
@@ -166,6 +168,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     if (this.isMouseLeaveToHide()) {
       mouseProps.onMouseLeave = this.onPopupMouseLeave;
     }
+
     return (
       <Popup
         getTheme={getTheme}
@@ -181,7 +184,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
         {...mouseProps}
         getRootDomNode={this.getRootDomNode}
         isMask={mask}
-        zIndex={zIndex}
+        zIndex={this.index}
         liquidLayout={liquidLayout}
       >
         {typeof popup === 'function' ? popup() : popup}
@@ -204,6 +207,21 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
         this.fireEvents(h, e);
       };
     });
+  }
+
+  componentDidMount() {
+    const { popupContainerId } = this.props;
+    if (popupContainerId) {
+      setTimeout(() => {
+        const triggerContainerDom = document.getElementById(popupContainerId);
+        if (triggerContainerDom) {
+          const targetPosition = window.getComputedStyle(triggerContainerDom).position;
+          triggerContainerDom.style.position =
+            targetPosition === 'static' ? 'relative' : targetPosition;
+          this.popupContainer = triggerContainerDom;
+        }
+      }, 0);
+    }
   }
 
   componentDidUpdate() {
@@ -241,8 +259,11 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   componentWillUnmount() {
     this.clearDelayTimer();
     this.clearOutsideHandler();
-    this.popupContainer && document.body && document.body.removeChild(this.popupContainer);
-    this.popupContainer = undefined;
+    const { popupContainerId } = this.props;
+    if (!popupContainerId) {
+      this.popupContainer && document.body && document.body.removeChild(this.popupContainer);
+      this.popupContainer = undefined;
+    }
   }
 
   getPopupDomNode() {
@@ -253,6 +274,16 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   }
 
   getRootDomNode = () => {
+    const { getPopTargetDom } = this.props;
+
+    if (getPopTargetDom) {
+      const popTargetDomResult = getPopTargetDom();
+      if (popTargetDomResult) {
+        return popTargetDomResult;
+      }
+      return;
+    }
+
     return findDOMNode(this);
   };
   isFirstShow: boolean;
@@ -263,11 +294,15 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     this.setFirstShow(popupVisible);
     if (this.state.popupVisible !== popupVisible) {
       if (!('popupVisible' in this.props)) {
-        this.setState({
-          popupVisible,
-        });
+        this.setState(
+          {
+            popupVisible,
+          },
+          () => this.props.onPopupVisibleChange(popupVisible)
+        );
+      } else {
+        this.props.onPopupVisibleChange(popupVisible);
       }
-      this.props.onPopupVisibleChange(popupVisible);
     }
   }
 
@@ -359,9 +394,18 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
       newChildProps.onBlur = this.createTwoChains('onBlur');
     }
     newChildProps.key = 'container';
-    const portal = this.props.createPortal
-      ? createPortal(this.getComponent(), this.getContainer())
-      : this.getComponent();
+    const { popupVisible } = this.state;
+    if (!this.index && this.index !== 0 && popupVisible) {
+      this.index = getIndex();
+    }
+
+    const { popupContainerId } = this.props;
+    const portal =
+      popupContainerId && this.popupContainer
+        ? createPortal(this.getComponent(), this.popupContainer)
+        : this.props.createPortal
+        ? createPortal(this.getComponent(), this.getContainer())
+        : this.getComponent();
 
     return (
       <React.Fragment>

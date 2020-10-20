@@ -139,6 +139,7 @@ class Time extends Component<TypeProps, TypeState> {
       timePanelListTheme,
       selectTimeOptionTheme,
       timePanelHeadTheme,
+      timePanelInnerTheme,
     } = getTimeTheme({
       getPartOfThemeProps,
     });
@@ -157,6 +158,9 @@ class Time extends Component<TypeProps, TypeState> {
               ...menuContainerTheme,
             },
             MenuItem: {
+              MenuItemWrap: {
+                ...timePanelInnerTheme,
+              },
               SelectedMenuItemWrap: {
                 ...selectTimeOptionThemeTheme,
               },

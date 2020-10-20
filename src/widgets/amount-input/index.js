@@ -41,7 +41,7 @@ const AmountInputPrefix = CSSComponent({
   tag: 'span',
   className: 'AmountInputPrefix',
   normal: {
-    selectNames: [['fontSize'], ['font'], ['color']],
+    selectNames: [['fontSize'], ['font'], ['color'], ['padding']],
   },
 });
 Title.displayName = 'toolTip_title';
@@ -245,9 +245,11 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
       },
       toolTipThemeProps
     );
-
+    const { createPortal, popupContainerId } = this.props;
     return (
       <ToolTip
+        createPortal={createPortal}
+        popupContainerId={popupContainerId}
         propsConfig={{ value }}
         title={this.getTitle()}
         action={'focus'}

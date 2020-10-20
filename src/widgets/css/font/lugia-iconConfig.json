@@ -849,6 +849,18 @@
   {
     "category": "financial",
     "name": "金融图标",
+    "iconClass": "lugia-icon-financial_lightning",
+    "title": "交互 动作 快速 便捷 闪电"
+  },
+  {
+    "category": "financial",
+    "name": "金融图标",
+    "iconClass": "lugia-icon-financial_lightning_o",
+    "title": "交互 动作 快速 便捷 闪电"
+  },
+  {
+    "category": "financial",
+    "name": "金融图标",
     "iconClass": "lugia-icon-financial_like",
     "title": "点赞喜欢"
   },

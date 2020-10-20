@@ -572,7 +572,12 @@ export const DividedContainer = CSSComponent({
       return disabled ? '' : hoverCSS;
     },
   },
-
+  hover: {
+    selectNames: [['opacity'], ['boxShadow'], ['borderRadius']],
+  },
+  active: {
+    selectNames: [['opacity'], ['boxShadow'], ['borderRadius']],
+  },
   disabled: {
     selectNames: [
       ['lineHeight'],
@@ -601,7 +606,7 @@ export const DividedContainer = CSSComponent({
     box-sizing: border-box;
     font-size: ${px2remcss(14)};
   `,
-  option: { hover: false, active: false, disabled: true },
+  option: { hover: true, active: true, disabled: true },
 });
 
 export const DividedWrap = StaticComponent({
@@ -1027,13 +1032,11 @@ const getSeparatorBorderColor = props => {
     const { hover: { color } = {} } = themeConfig;
     return color ? color : type === 'primary' ? get('focusBorder').color : get('defaultColor');
   }
-  const { normal: { color: normalColor = get('borderColor') } = {} } = themeConfig;
-
+  const { normal: { color: normalColor } = {} } = themeConfig;
   if (normalColor) {
-    return type === 'primary' ? normalColor : get('defaultColor');
+    return normalColor;
   }
-
-  return type === 'primary' ? get('lightGreyColor') : get('defaultColor');
+  return type === 'primary' ? get('borderColor') : get('defaultColor');
 };
 
 const getSeparatorBorderWidth = props => {

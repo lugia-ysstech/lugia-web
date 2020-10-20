@@ -4,6 +4,7 @@
     "title": "下拉菜单",
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
+      { "name": "divided", "text": "显示菜单分割线" },
       { "name": "action", "text": "弹出方式" },
       { "name": "align", "text": "弹出方向" },
       { "name": "data", "text": "数据编辑" }
@@ -21,6 +22,7 @@
                 "text": "整体背景",
                 "desc": "整体背景外观配置的区"
               },
+              "textPart": { "hidden": true },
               "spacingPart": {
                 "hidden": true
               }
@@ -59,35 +61,23 @@
         "iconClass": "dropmenuTrueButton",
         "data": [
           {
-            "name": "下拉图标配置",
-            "path": ["SwitchIcon"],
-            "props": [
-              {
-                "name": "switchIconClass",
-                "typeInTheme": "icon"
-              }
-            ],
-            "description": {
-              "textPart": {
-                "text": "下拉图标",
-                "desc": "下拉图标外观配置的区"
-              },
-              "spacingPart": {
-                "desc": "下拉图标内外边距配置"
-              }
-            }
-          },
-          {
             "name": "下拉按钮外盒",
             "path": ["SwitchIconContainer"],
             "description": {
-              "appearancePart": {
-                "text": "背景",
-                "desc": "选择框外观配置的区"
-              },
-              "spacingPart": {
+              "appearancePart": { "text": "背景", "desc": "选择框外观配置的区" },
+              "textPart": {
                 "hidden": true
-              }
+              },
+              "spacingPart": { "hidden": true }
+            }
+          },
+          {
+            "name": "下拉图标配置",
+            "path": ["SwitchIcon"],
+            "props": [{ "name": "switchIconClass", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": { "text": "下拉图标", "desc": "下拉图标外观配置的区" },
+              "spacingPart": { "desc": "下拉图标内外边距配置" }
             }
           }
         ]
@@ -142,7 +132,7 @@
         "data": [
           {
             "name": "分割线配置",
-            "path": ["Divides"],
+            "path": ["Divided"],
             "description": {
               "appearancePart": {
                 "text": "分割线",
@@ -294,6 +284,7 @@
     "title": "无分隔符的下拉按钮",
     "viewProps": [
       { "name": "disabled", "text": "禁用" },
+      { "name": "divided", "text": "显示菜单分割线" },
       { "name": "action", "text": "弹出方式" },
       { "name": "align", "text": "弹出方向" },
       { "name": "data", "text": "数据编辑" }
@@ -312,8 +303,7 @@
                 "desc": "整体背景外观配置的区"
               },
               "textPart": {
-                "text": "整体文本/图标",
-                "desc": "整体文本/图标文本配置"
+                "hidden": true
               },
               "spacingPart": {
                 "desc": "整体配置内外边距配置"

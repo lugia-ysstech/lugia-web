@@ -81,8 +81,18 @@ export default ThemeProvider(
     }
 
     render() {
-      const { children, getTheme, collapsedWidth, collapsible, trigger, value } = this.props;
+      const {
+        children,
+        collapsedWidth,
+        collapsible,
+        trigger,
+        value,
+        getPartOfThemeProps,
+      } = this.props;
       const { collapsed } = this.state;
+      const childrenWrapTheme = getPartOfThemeProps('ChildrenWrap');
+      const triggerTheme = getPartOfThemeProps('Trigger');
+
       return (
         <EnlargeContext.Consumer>
           {(context: Object) => {
@@ -92,13 +102,13 @@ export default ThemeProvider(
             }
 
             return (
-              <Aside theme={getTheme()} collapsed={collapsed} collapsedWidth={collapsedWidth}>
-                <ChildrenWrap theme={getTheme()}>
+              <Aside collapsed={collapsed} collapsedWidth={collapsedWidth}>
+                <ChildrenWrap themeProps={childrenWrapTheme}>
                   <div>{children}</div>
                   {collapsible && trigger !== null ? (
                     <Trigger
                       themePass
-                      theme={getTheme()}
+                      themeProps={triggerTheme}
                       collapsed={collapsed}
                       onClick={this.handleTriggerClick}
                       collapsedWidth={collapsedWidth}

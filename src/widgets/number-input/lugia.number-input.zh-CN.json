@@ -2,11 +2,20 @@
   "widgetName": "NumberInput",
   "title": "数字输入框",
   "desc": "常用于数字输入,可以进行快速加减显示",
+  "tag": "numberinput 数字输入框 进步器 表单 数值输入框 number输入框 数字调节器",
   "props": {
     "lugiaHidden": {
       "type": "boolean",
       "desc": "是否渲染当前组件",
       "defaultValue": false
+    },
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出校验框"
+    },
+    "popupContainerId": {
+      "type": "ContainerDomIdType",
+      "desc": "配置弹出校验框的作用容器id"
     },
     "disabled": {
       "type": "boolean",
@@ -82,6 +91,15 @@
     "parser": {
       "type": "function",
       "desc": "解析格式化显示内容的规则,需与 formatter 属性配套使用"
+    },
+    "showArrow": {
+      "type": "boolean",
+      "desc": "是否显示步长的箭头图标",
+      "propsDefaultValue": true
+    },
+    "suffix": {
+      "type": "icon",
+      "desc": "后缀图标, showArrow为false时生效"
     }
   },
   "events": {
@@ -184,12 +202,57 @@
           "type": "MouseEvent"
         }
       ]
+    },
+    "getFocus": {
+      "desc": "数字输入框主动聚焦事件",
+      "args": [
+        {
+          "name": "focus",
+          "desc": "输入框的聚焦方法",
+          "type": "Function"
+        }
+      ]
     }
   },
   "type": {
-    "InputSize": ["small", "default", "large"],
-    "ValidateStatus": ["default", "error"],
-    "ValidateType": ["top", "bottom", "inner"],
+    "InputSize": [
+      {
+        "value": "small",
+        "text": "小"
+      },
+      {
+        "value": "default",
+        "text": "正常"
+      },
+      {
+        "value": "large",
+        "text": "大"
+      }
+    ],
+    "ValidateStatus": [
+      {
+        "value": "default",
+        "text": "正常"
+      },
+      {
+        "value": "error",
+        "text": "错误"
+      }
+    ],
+    "ValidateType": [
+      {
+        "value": "top",
+        "text": "顶部弹窗"
+      },
+      {
+        "value": "bottom",
+        "text": "底部文本"
+      },
+      {
+        "value": "inner",
+        "text": "框内文本"
+      }
+    ],
     "ChangeType": {
       "newValue": "number",
       "oldValue": "number",
@@ -350,6 +413,11 @@
       ],
       "hover": [],
       "active": []
+    },
+    "ArrowDivider": {
+      "name": "步长箭头图标分割线",
+      "desc": "步长箭头图标分割线",
+      "normal": [["border", "top"]]
     }
   }
 }

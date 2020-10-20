@@ -11,6 +11,7 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Tabs, { hasTargetInProps, getDefaultData } from '../tabs';
 import { hasActivityValueData, defaultData, shortChildren, longChildren } from '../demo';
+import Tabpane from '../tabpane';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -290,6 +291,28 @@ describe('tabsDemo', () => {
     expect(getCmp(target).state.data).toEqual([]);
     target.setProps({ data: hasActivityValueData });
     expect(getCmp(target).state.data).toEqual(hasActivityValueData);
+  });
+
+  it('props hideTabBar', () => {
+    const target = mount(
+      <Tabs
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        hideTabBar={true}
+      />
+    );
+    expect(getCmp(target).props.hideTabBar).toBe(true);
+  });
+
+  it('props isShowArrowIcon', () => {
+    const target = mount(
+      <Tabs
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        isShowArrowIcon={false}
+      />
+    );
+    expect(getCmp(target).props.isShowArrowIcon).toBe(false);
   });
 
   it('getCurrentPageByActivityValue', async () => {

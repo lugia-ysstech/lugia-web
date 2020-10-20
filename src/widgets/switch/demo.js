@@ -45,8 +45,6 @@ export default class Sw extends Component<any, TypeState> {
               [Widgets.Switch]: {
                 Switch_SwitchOpen: {
                   normal: {
-                    width: 150,
-                    height: 40,
                     fontSize: 20,
                     color: '#fff',
                     background: {
@@ -62,8 +60,6 @@ export default class Sw extends Component<any, TypeState> {
                 },
                 Switch_SwitchClosed: {
                   normal: {
-                    width: 150,
-                    height: 40,
                     fontSize: 20,
                     color: '#000',
                     background: {
@@ -102,8 +98,8 @@ export default class Sw extends Component<any, TypeState> {
                 },
                 Container: {
                   normal: {
-                    width: 200,
-                    height: 60,
+                    width: 150,
+                    height: 40,
                     margin: {
                       top: 10,
                       right: 10,
@@ -116,8 +112,6 @@ export default class Sw extends Component<any, TypeState> {
                       bottom: 10,
                       left: 10,
                     },
-                    border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
-                    //opacity: 0.5,
                   },
                 },
               },
@@ -136,6 +130,144 @@ export default class Sw extends Component<any, TypeState> {
             />
           </Theme>
         </section>
+
+        <section style={{ marginBottom: '20px' }}>
+          <h3>高度为字符串</h3>
+          <Theme
+            config={{
+              [Widgets.Switch]: {
+                Switch_SwitchOpen: {
+                  normal: {
+                    fontSize: 18,
+                    color: '#fff',
+                    background: {
+                      color: 'orange',
+                    },
+                    border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
+                  },
+                },
+                Switch_SwitchClosed: {
+                  normal: {
+                    fontSize: 18,
+                    color: 'grey',
+                    background: {
+                      color: 'orange',
+                    },
+                  },
+                },
+                SwitchButton: {
+                  normal: {
+                    width: 25,
+                    height: '25',
+                    background: {
+                      color: 'yellow',
+                    },
+                    borderRadius: getBorderRadius(40),
+                  },
+                },
+                Container: {
+                  normal: {
+                    width: 120,
+                    height: '30',
+                    margin: {
+                      top: 10,
+                      right: 10,
+                      bottom: 10,
+                      left: 10,
+                    },
+                    padding: {
+                      top: 10,
+                      right: 10,
+                      bottom: 10,
+                      left: 10,
+                    },
+                  },
+                },
+              },
+            }}
+          >
+            <Switch
+              onChange={this.change}
+              //disabled
+              // autoFocus
+              // loading
+              data={[
+                { text: <Icon className={'lugia-icon-reminder_check'} /> },
+                { text: '国' },
+                { text: '日' },
+              ]}
+            />
+          </Theme>
+        </section>
+        <section style={{ marginBottom: '50px', height: 30 }}>
+          <h3>高度为百分百</h3>
+          <Theme
+            config={{
+              [Widgets.Switch]: {
+                Switch_SwitchOpen: {
+                  normal: {
+                    fontSize: 10,
+                    color: '#fff',
+                    background: {
+                      color: 'orange',
+                    },
+                    border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
+                  },
+                },
+                Switch_SwitchClosed: {
+                  normal: {
+                    fontSize: 10,
+                    color: 'white',
+                    background: {
+                      color: 'green',
+                    },
+                  },
+                },
+                SwitchButton: {
+                  normal: {
+                    width: 25,
+                    height: '100%',
+                    background: {
+                      color: 'yellow',
+                    },
+                    borderRadius: getBorderRadius(40),
+                  },
+                },
+                Container: {
+                  normal: {
+                    width: 120,
+                    height: '100%',
+                    margin: {
+                      top: 10,
+                      right: 0,
+                      bottom: 10,
+                      left: 20,
+                    },
+                    // padding: {
+                    //   top: 10,
+                    //   right: 30,
+                    //   bottom: 10,
+                    //   left: 10,
+                    // },
+                  },
+                },
+              },
+            }}
+          >
+            <Switch
+              onChange={this.change}
+              //disabled
+              // autoFocus
+              // loading
+              data={[
+                { text: <Icon className={'lugia-icon-reminder_check'} /> },
+                { text: '国' },
+                { text: '日' },
+              ]}
+            />
+          </Theme>
+        </section>
+
         <section style={{ marginBottom: '20px' }}>
           <h3>size=‘small’</h3>
           <Switch size={'small'} />

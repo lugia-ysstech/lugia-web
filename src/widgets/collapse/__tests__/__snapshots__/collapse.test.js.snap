@@ -46,22 +46,24 @@ exports[`Collapse Collapse CSS 1`] = `
 .c2 {
   font-size: 1.4rem;
   box-sizing: border-box;
-  background: #ffffff;
+  background: transparent;
   border-style: solid;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border-color: #cccccc;
+  overflow: hidden;
+  border-color: #d0d3da;
   border-width: 0 0 1px;
 }
 
 .c10 {
   font-size: 1.4rem;
   box-sizing: border-box;
-  background: #ffffff;
+  background: transparent;
   border-style: solid;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border-color: #cccccc;
+  overflow: hidden;
+  border-color: #d0d3da;
   position: relative;
   z-index: 99;
   border-width: 0 0 0px;
@@ -70,11 +72,12 @@ exports[`Collapse Collapse CSS 1`] = `
 .c11 {
   font-size: 1.4rem;
   box-sizing: border-box;
-  background: #ffffff;
+  background: transparent;
   border-style: solid;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border-color: #cccccc;
+  overflow: hidden;
+  border-color: #d0d3da;
   border-width: 0 0 0px;
 }
 
@@ -112,6 +115,7 @@ exports[`Collapse Collapse CSS 1`] = `
 
 .c1 {
   font-size: 1.4rem;
+  overflow: hidden;
   opacity: 1;
 }
 
@@ -132,7 +136,34 @@ exports[`Collapse Collapse CSS 1`] = `
     </p>
     <div
       className="c1"
-      style={Object {}}
+      style={
+        Object {
+          "backgroundColor": "orange",
+          "borderBottomColor": "green",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.2rem",
+          "borderLeftColor": "green",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.2rem",
+          "borderRightColor": "green",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.2rem",
+          "borderTopColor": "green",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.2rem",
+          "height": "50rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
+          "opacity": 1,
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
+          "width": "41rem",
+        }
+      }
     >
       <div
         className="c2"
@@ -358,7 +389,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -427,7 +458,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -506,7 +537,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -575,7 +606,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -654,7 +685,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -723,7 +754,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -801,7 +832,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -870,7 +901,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -939,7 +970,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1008,7 +1039,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1086,7 +1117,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1150,7 +1181,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1222,7 +1253,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1286,7 +1317,7 @@ exports[`Collapse Collapse CSS 1`] = `
                     Object {
                       "backgroundColor": "#fff",
                       "paddingBottom": "1.6rem",
-                      "paddingLeft": "3.4rem",
+                      "paddingLeft": "3.2rem",
                       "paddingRight": "0rem",
                       "paddingTop": "1.6rem",
                     }
@@ -1355,7 +1386,7 @@ exports[`Collapse Collapse CSS 1`] = `
                     Object {
                       "backgroundColor": "#fff",
                       "paddingBottom": "1.6rem",
-                      "paddingLeft": "3.4rem",
+                      "paddingLeft": "3.2rem",
                       "paddingRight": "0rem",
                       "paddingTop": "1.6rem",
                     }
@@ -1428,7 +1459,7 @@ exports[`Collapse Collapse CSS 1`] = `
             Object {
               "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1507,7 +1538,7 @@ exports[`Collapse Collapse CSS 1`] = `
             "borderBottomRightRadius": "0.4rem",
             "borderTopLeftRadius": "0.4rem",
             "borderTopRightRadius": "0.4rem",
-            "boxShadow": "0px 0px 6px 0px #cccccc",
+            "boxShadow": "0px 0px 6px 0px #d0d3da",
           }
         }
       >
@@ -1521,7 +1552,7 @@ exports[`Collapse Collapse CSS 1`] = `
               "borderTopLeftRadius": "0.4rem",
               "borderTopRightRadius": "0.4rem",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1603,7 +1634,7 @@ exports[`Collapse Collapse CSS 1`] = `
               "borderTopLeftRadius": "0.4rem",
               "borderTopRightRadius": "0.4rem",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1683,7 +1714,7 @@ exports[`Collapse Collapse CSS 1`] = `
               "borderTopLeftRadius": "0.4rem",
               "borderTopRightRadius": "0.4rem",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1763,7 +1794,7 @@ exports[`Collapse Collapse CSS 1`] = `
               "borderTopLeftRadius": "0.4rem",
               "borderTopRightRadius": "0.4rem",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3.4rem",
+              "paddingLeft": "3.2rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -1804,6 +1835,250 @@ exports[`Collapse Collapse CSS 1`] = `
                 "backgroundColor": "#fff",
                 "paddingBottom": "2.2rem",
                 "paddingLeft": "3.4rem",
+                "paddingRight": "3rem",
+                "paddingTop": "0.6rem",
+              }
+            }
+          >
+            <div>
+              PanelContent...
+            </div>
+            <div>
+              PanelContent...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <h2>
+      不展示箭头
+    </h2>
+    <div
+      className="c1"
+      style={
+        Object {
+          "borderBottomColor": "green",
+          "borderBottomLeftRadius": "2rem",
+          "borderBottomRightRadius": "2rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.2rem",
+          "borderLeftColor": "green",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.2rem",
+          "borderRightColor": "green",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.2rem",
+          "borderTopColor": "green",
+          "borderTopLeftRadius": "2rem",
+          "borderTopRightRadius": "2rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.2rem",
+        }
+      }
+    >
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={Object {}}
+      >
+        <div
+          className="c3"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "paddingBottom": "1.6rem",
+              "paddingLeft": "3.2rem",
+              "paddingRight": "0rem",
+              "paddingTop": "1.6rem",
+            }
+          }
+        >
+          <span
+            className="c5"
+            style={Object {}}
+          >
+            LUGIA
+          </span>
+        </div>
+        <div
+          className="c9"
+          height={0}
+          open={false}
+          style={Object {}}
+        >
+          <div
+            className="c7"
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "paddingBottom": "2.2rem",
+                "paddingLeft": "3.2rem",
+                "paddingRight": "3rem",
+                "paddingTop": "0.6rem",
+              }
+            }
+          >
+            <div>
+              PanelContent...
+            </div>
+            <div>
+              PanelContent...
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={Object {}}
+      >
+        <div
+          className="c3"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "paddingBottom": "1.6rem",
+              "paddingLeft": "3.2rem",
+              "paddingRight": "0rem",
+              "paddingTop": "1.6rem",
+            }
+          }
+        >
+          <span
+            className="c5"
+            style={Object {}}
+          >
+            LUGIA
+          </span>
+        </div>
+        <div
+          className="c9"
+          height={0}
+          open={false}
+          style={Object {}}
+        >
+          <div
+            className="c7"
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "paddingBottom": "2.2rem",
+                "paddingLeft": "3.2rem",
+                "paddingRight": "3rem",
+                "paddingTop": "0.6rem",
+              }
+            }
+          >
+            <div>
+              PanelContent...
+            </div>
+            <div>
+              PanelContent...
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={Object {}}
+      >
+        <div
+          className="c3"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "paddingBottom": "1.6rem",
+              "paddingLeft": "3.2rem",
+              "paddingRight": "0rem",
+              "paddingTop": "1.6rem",
+            }
+          }
+        >
+          <span
+            className="c5"
+            style={Object {}}
+          >
+            LUGIA
+          </span>
+        </div>
+        <div
+          className="c9"
+          height={0}
+          open={false}
+          style={Object {}}
+        >
+          <div
+            className="c7"
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "paddingBottom": "2.2rem",
+                "paddingLeft": "3.2rem",
+                "paddingRight": "3rem",
+                "paddingTop": "0.6rem",
+              }
+            }
+          >
+            <div>
+              PanelContent...
+            </div>
+            <div>
+              PanelContent...
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={Object {}}
+      >
+        <div
+          className="c3"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "paddingBottom": "1.6rem",
+              "paddingLeft": "3.2rem",
+              "paddingRight": "0rem",
+              "paddingTop": "1.6rem",
+            }
+          }
+        >
+          <span
+            className="c5"
+            style={Object {}}
+          >
+            LUGIA
+          </span>
+        </div>
+        <div
+          className="c9"
+          height={0}
+          open={false}
+          style={Object {}}
+        >
+          <div
+            className="c7"
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "paddingBottom": "2.2rem",
+                "paddingLeft": "3.2rem",
                 "paddingRight": "3rem",
                 "paddingTop": "0.6rem",
               }

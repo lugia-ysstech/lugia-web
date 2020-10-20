@@ -44,6 +44,7 @@ type PopconfirmProps = {
   themeProps: Object,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
+  createPortal: boolean,
 };
 type PopconfirmState = {
   visible: boolean,
@@ -57,7 +58,7 @@ const IconContainer: Object = StaticComponent({
   css: css`
     position: relative;
     display: flex;
-    margin-right: ${get('paddingToText')}px;
+    margin-right: ${() => px2remcss(get('paddingToText'))};
     text-align: center;
   `,
 });
@@ -116,6 +117,14 @@ const Operation = StaticComponent({
     text-align: right;
   `,
 });
+const TitleContainer = StaticComponent({
+  tag: 'div',
+  className: 'PopconfirmTitleContainer',
+  css: css`
+    display: flex;
+    align-items: center;
+  `,
+});
 
 class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
   static displayName = Widget.Popconfirm;
@@ -135,21 +144,18 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
   getTitle(): React.Node | null {
     const { title, getPartOfThemeProps, icon } = this.props;
 
-    return title
-      ? [
-          this.getIcon(),
-          <Title themeProps={getPartOfThemeProps('PopconfirmTitle', { props: { icon } })}>
-            {title}
-          </Title>,
-        ]
-      : null;
+    return title ? (
+      <TitleContainer>
+        {this.getIcon()}
+        <Title themeProps={getPartOfThemeProps('PopconfirmTitle', { props: { icon } })}>
+          {title}
+        </Title>
+      </TitleContainer>
+    ) : null;
   }
 
-  getOperation(): React.Node | null {
-    const { cancelText = '取消', okText = '确定', okType = 'primary' } = this.props;
-    const { theme: theTheme, viewClass } = this.props.getPartOfThemeHocProps('PopconfirmButton');
-
-    const ButtonTheme = deepMerge(
+  getButtonTheme(viewClass, theme) {
+    return deepMerge(
       {
         [viewClass]: {
           Container: {
@@ -168,16 +174,35 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
           },
         },
       },
-      theTheme
+      theme
     );
+  }
+  getOperation(): React.Node | null {
+    const {
+      cancelText = '取消',
+      okText = '确定',
+      okType = 'primary',
+      getPartOfThemeHocProps,
+    } = this.props;
+    const { theme: okTheme, viewClass: okViewClass } = getPartOfThemeHocProps('PopconfirmOkButton');
+    const { theme: cancelTheTheme, viewClass: cancelViewClass } = getPartOfThemeHocProps(
+      'PopconfirmCancelButton'
+    );
+    const theOkTheme = this.getButtonTheme(okViewClass, okTheme);
+    const theCancelTheme = this.getButtonTheme(cancelViewClass, cancelTheTheme);
     return (
       <Operation>
-        <Button theme={ButtonTheme} viewClass={viewClass} size="small" onClick={this.onCancel}>
+        <Button
+          theme={theCancelTheme}
+          viewClass={cancelViewClass}
+          size="small"
+          onClick={this.onCancel}
+        >
           {cancelText}
         </Button>
         <Button
-          theme={ButtonTheme}
-          viewClass={viewClass}
+          theme={theOkTheme}
+          viewClass={okViewClass}
           type={okType}
           size="small"
           onClick={this.onConfirm}
@@ -243,6 +268,10 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
       description,
       alwaysOpen,
       liquidLayout,
+      createPortal = true,
+      popArrowType = 'sharp',
+      popupContainerId,
+      getPopTargetDom,
     } = this.props;
     const getTarget: Function = cmp => (this.target = cmp);
     const theChildren = children ? children : defaultChildren;
@@ -281,6 +310,8 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
 
     return (
       <Tooltip
+        popupContainerId={popupContainerId}
+        createPortal={createPortal}
         alwaysOpen={alwaysOpen}
         liquidLayout={liquidLayout}
         theme={popoverTheme}
@@ -293,7 +324,9 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
         description={description}
         content={this.getContent()}
         ref={getTarget}
+        getPopTargetDom={getPopTargetDom}
         placement={placement}
+        popArrowType={popArrowType}
       >
         {theChildren}
       </Tooltip>

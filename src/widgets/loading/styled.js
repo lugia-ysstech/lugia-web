@@ -39,9 +39,7 @@ export const circleKeyframes = keyframes`
     opacity: 0.5;
   }
 `;
-const circleKeyframesAnimation = css`
-  ${circleKeyframes};
-`;
+
 const getStyled = (props?: CssProps) => {
   const { width, color, circleDiameter, delay, scale } = props;
   const LodingWrapperStyle = `
@@ -64,7 +62,7 @@ const getStyled = (props?: CssProps) => {
   `;
   const scaleAnimation = css`
     transform: scale(1.2);
-    animation: ${circleKeyframesAnimation} 2.5s infinite;
+    animation: ${circleKeyframes} 2.5s infinite;
     animation-delay: 0.6s;
   `;
   const LodingInnerCircleStyle = css`
@@ -88,15 +86,14 @@ const getStyled = (props?: CssProps) => {
 const getChildrenStyled = (props: Object) => {
   const { hasChildren } = props;
   const fatherMaskStyle = `
-    position:relative;    
-    
+    position:relative;
     &::after{
       content:'';
       width:100%;
       height:100%;
       position:absolute;
       left:0;
-      top:0;      
+      top:0;
       background:rgba(255,255,255,0.5);
     }
   `;
@@ -122,6 +119,7 @@ const getPositionWhenTip = (props: Object) => {
 };
 export const LoadingFatherBox = styled.div`
   display: inline-block;
+  ${props => (props.isInherit ? 'width: 100%; height: 100%;' : '')}
   ${props => getChildrenStyled(props).fatherMaskStyle}
 `;
 export const LodingBox = styled.div`

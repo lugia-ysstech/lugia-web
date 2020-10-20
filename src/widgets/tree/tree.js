@@ -345,8 +345,26 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.createQueryTreeUtils(props);
     const { query, blackList, whiteList, searchType = 'include' } = props;
 
-    this.search(this.getUtils(props), result, query, searchType, blackList, whiteList);
+    const utils = this.getUtils(props);
+
+    this.search(utils, result, query, searchType, blackList, whiteList);
+    if (this.state) {
+      this.allExpandKeys = this.state.expandedKeys;
+      const usableExpandKeys = this.filterUsableExpandKeys(
+        this.state.expandedKeys,
+        result.id2ExtendInfo
+      );
+      if (usableExpandKeys.length > 0) {
+        usableExpandKeys.forEach(item => {
+          utils.expandNode(item, result.id2ExtendInfo);
+        });
+      }
+    }
     return result;
+  }
+
+  filterUsableExpandKeys(source, id2ExtendInfo) {
+    return source.filter(item => id2ExtendInfo[item] && item !== 'lugia_tree_root');
   }
 
   getEmptyExpandInfo(): ExpandInfo {
@@ -358,11 +376,20 @@ class Tree extends React.Component<TreeProps, TreeState> {
       const utils = this.getUtils(props);
       if (this.allExpandKeys == undefined || utils.isWhiteOrBlackListChanged()) {
         const { expandAll } = this.props;
-        this.allExpandKeys = expandAll ? Object.keys(id2ExtendInfo) : [];
+        this.allExpandKeys = expandAll
+          ? Object.keys(id2ExtendInfo)
+          : this.state
+          ? this.filterUsableExpandKeys(this.state.expandedKeys, id2ExtendInfo)
+          : [];
       }
       return this.allExpandKeys;
     }
-    return Object.keys(id2ExtendInfo);
+    return Array.from(
+      new Set([
+        ...this.allExpandKeys.filter(item => item !== 'lugia_tree_root'),
+        ...Object.keys(id2ExtendInfo).filter(item => item !== 'lugia_tree_root'),
+      ])
+    );
   }
 
   isQueryAll({ query }): boolean {

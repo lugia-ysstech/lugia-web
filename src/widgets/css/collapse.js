@@ -31,6 +31,7 @@ export const Wrap = CSSComponent({
   className: 'CollapseWrap',
   css: css`
     font-size: ${px2remcss(14)};
+    overflow: hidden;
   `,
   normal: {
     defaultTheme: {
@@ -44,6 +45,8 @@ export const Wrap = CSSComponent({
       ['height'],
       ['background'],
       ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
     ],
   },
 });

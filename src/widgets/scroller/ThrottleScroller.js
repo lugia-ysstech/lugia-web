@@ -87,6 +87,11 @@ export default (
       this.marginBottom = this.getItemMarginBottom();
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+      this.itemHeight = this.getActiveItemHeight(nextProps);
+      return true;
+    }
+
     componentWillUpdate() {
       this.viewSize = this.fetchViewSize();
     }
@@ -142,7 +147,7 @@ export default (
     render() {
       const { props } = this;
       const start = this.getStart(props, this.state);
-      const { level, autoHeight = false } = props;
+      const { level, autoHeight = false, __virtual = true } = props;
       const activeAutoHeight = this.getActiveAutoHeight();
       const totalSize = this.fetchTotalSize(activeAutoHeight);
       const defaultHeight = this.getDefaultHeight();
@@ -152,6 +157,7 @@ export default (
           autoHeight: activeAutoHeight,
           totalSize,
           defaultHeight,
+          __virtual,
         },
       });
 
@@ -159,14 +165,14 @@ export default (
         return (
           <ScrollerContainer
             themeProps={themeProps}
-            onWheel={activeAutoHeight ? undefined : this.onWheel}
+            onWheel={activeAutoHeight || !__virtual ? undefined : this.onWheel}
           >
             {element}
           </ScrollerContainer>
         );
       };
 
-      if (!this.isNeedScroller() || autoHeight) {
+      if (!this.isNeedScroller() || autoHeight || !__virtual) {
         const { length } = this.getTarget();
         //TODO: 待测试
         return pack(

@@ -61,10 +61,10 @@ const defaultCircleEdgeCheckedTheme = () => ({
   },
 });
 
-const defaultEdgeTheme = () => ({
+const defaultIndeterminateEdgeTheme = () => ({
   themeConfig: {
     normal: {
-      border: getBorder(get('normalBorder')),
+      border: getBorder(get('focusBorder')),
       borderRadius: getBorderRadius(2),
       background: { color: themeColor },
     },
@@ -82,13 +82,19 @@ const defaultEdgeTheme = () => ({
 });
 const defaultInnerTheme = {
   normal: {
-    color: defaultColor,
+    background: {
+      color: defaultColor,
+    },
   },
   hover: {
-    color: defaultColor,
+    background: {
+      color: defaultColor,
+    },
   },
   disabled: {
-    color: disableTextColor,
+    background: {
+      color: disableTextColor,
+    },
   },
 };
 const defaultCancelTextTheme = {
@@ -112,6 +118,15 @@ const defaultCircleEdgeUnCheckedTheme = () => ({
       border: getBorder(get('disabledBorder')),
       borderRadius: getBorderRadius(2),
       background: { color: disableColor },
+    },
+  },
+});
+const defaultCircleEdgeHasCheckedTheme = () => ({
+  themeConfig: {
+    normal: {
+      border: getBorder(get('focusBorder')),
+      borderRadius: getBorderRadius(2),
+      background: { color: defaultColor },
     },
   },
 });
@@ -204,7 +219,9 @@ export default ThemeProvider(
         : checked
         ? deepMerge(defaultCircleEdgeCheckedTheme(), circleEdgeCheckedTheme)
         : indeterminate
-        ? deepMerge(defaultEdgeTheme(), circleEdgeIndeterminateTheme)
+        ? deepMerge(defaultIndeterminateEdgeTheme(), circleEdgeIndeterminateTheme)
+        : hasChecked
+        ? deepMerge(defaultCircleEdgeHasCheckedTheme(), circleEdgeUnCheckedTheme)
         : deepMerge(defaultCircleEdgeUnCheckedTheme(), circleEdgeUnCheckedTheme);
       const circleInnerCheckedTheme = getPartOfThemeConfig('CheckboxInnerChecked');
       const circleInnerCancelTheme = getPartOfThemeConfig('CheckboxInnerCancel');

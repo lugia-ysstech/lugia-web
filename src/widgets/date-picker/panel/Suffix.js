@@ -9,22 +9,27 @@ class Suffix extends Component {
   };
 
   clearBtn = () => {
-    const { onClear, clearButtonTheme } = this.props;
+    const { onClear, clearButtonTheme, clearIcon = 'lugia-icon-reminder_close' } = this.props;
+    const { themeConfig: { normal = {} } = {} } = clearButtonTheme;
+    const { margin, padding } = normal;
+    if (margin) {
+      delete normal.margin;
+    }
+    if (padding) {
+      delete normal.padding;
+    }
     return (
       <Theme
         config={{
           [Widget.Icon]: {
             Icon: {
-              disabled: {
-                color: '#ddd',
-              },
               ...clearButtonTheme.themeConfig,
             },
           },
         }}
       >
         <Icon
-          iconClass={'lugia-icon-reminder_close'}
+          iconClass={clearIcon}
           onClick={e => {
             onClear(e);
           }}
