@@ -61,7 +61,7 @@ const HBasePage = CSSComponent({
   css: css`
     text-align: center;
     width: 24px;
-    display: ${props => (props.arrowShow === false ? 'none' : 'flex')};
+    display: ${props => (props.arrowShow === false ? 'none' : '')};
   `,
 });
 
@@ -434,7 +434,9 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   componentDidUpdate(nextProps: Object, nextState: Object) {
     const { allowToCalc } = this.state;
-    if (allowToCalc) {
+    const { activityValue } = this.props;
+    const { activityValue: nextActivityValue } = nextProps;
+    if (allowToCalc || activityValue !== nextActivityValue) {
       this.matchPage();
     }
   }
@@ -453,7 +455,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   matchPage() {
     const titleSize = this.getTabpaneWidthOrHeight();
 
-    const { allowToCalc, maxIndex, data, activityValue } = this.state;
+    const { maxIndex, data, activityValue } = this.state;
     const newMaxIndex = maxIndex ? maxIndex : this.getCurrentMaxIndex(titleSize);
     let { currentPage } = this.state;
     const { tabPosition, pagedType } = this.props;
@@ -470,12 +472,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
       offsetSize = this.getScrollBoxSize(offsetSize);
     }
     const totalPage = pagedType === 'page' ? computePage(offsetSize, actualSize) : titleSize.length;
-    if (allowToCalc) {
-      currentPage =
-        pagedType === 'page'
-          ? this.getCurrentPageByActivityValue(data, activityValue, totalPage)
-          : titleSize.length;
-    }
+    currentPage = this.getCurrentPageByActivityValue(data, activityValue, totalPage);
+
     this.setState(
       { arrowShow, totalPage, currentPage, titleSize, allowToCalc: false, maxIndex: newMaxIndex },
       () => {
@@ -947,7 +945,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       case 'single':
         const maxIndex = this.getCurrentMaxIndex(titleSize);
         const length = currentPage - maxIndex;
-        for (let i = 1; i <= length; i++) {
+        for (let i = 1; i < length; i++) {
           distance += titleSize[Math.min(maxIndex + i, titleSize.length - 1)];
         }
         break;

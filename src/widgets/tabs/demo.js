@@ -9,6 +9,7 @@ import Tabs from './';
 import Tabpane from './tabpane';
 import Widget from '../consts/index';
 import Icon from '../icon';
+import Button from '../button';
 import Theme from '../theme/';
 
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
@@ -29,6 +30,7 @@ const FlexContainer = StaticComponent({
   css: css`
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
   `,
 });
 
@@ -503,6 +505,32 @@ export const customData = [
     title: '资源下载',
   },
 ];
+export const fixBugTestData = [
+  {
+    title: '猪蹄',
+    value: '猪蹄',
+    content: (
+      <div>
+        {' '}
+        <div>猪蹄啊啊啊啊</div> <div>猪蹄啊啊啊啊</div> <div>猪蹄啊啊啊啊</div>{' '}
+        <div>猪蹄啊啊啊啊</div>{' '}
+      </div>
+    ),
+    hideCloseBtn: true,
+    icon: 'lugia-icon-financial_heart',
+    suffixIcon: 'lugia-icon-financial_like',
+  },
+  { title: '排骨', value: '排骨', content: '排骨啊啊啊啊' },
+  { title: '鸡腿', value: '鸡腿', content: '鸡腿啊啊啊啊' },
+  { title: '午餐肉', value: '午餐肉', content: '午餐肉啊啊啊啊' },
+  { title: '西红柿炖牛腩', value: '西红柿炖牛腩', content: '西红柿炖牛腩啊啊啊啊' },
+  { title: '茄子', value: '茄子', content: '茄子啊啊啊啊' },
+  { title: '玉米', value: '玉米', content: '玉米啊啊啊啊' },
+  { title: '烤鱼', value: '烤鱼', content: '烤鱼啊啊啊啊' },
+  { title: '牛蛙', value: '牛蛙', content: '牛蛙啊啊啊啊' },
+  { title: '水煮肉', value: '水煮肉', content: '水煮肉啊啊啊啊' },
+  { title: '春饼', value: '春饼', content: '春饼啊啊啊啊' },
+];
 
 const addItem = [
   { title: '虾滑', content: '虾滑啊啊啊啊' },
@@ -826,6 +854,38 @@ const customLeftTheme = {
   },
 };
 
+const tabpanTheme = {
+  [Widget.Tabs]: {
+    TabHeader: {
+      DefaultTabPan: {
+        normal: {
+          // width: 120,
+          // textAlign: 'left',
+          padding: {
+            left: 20,
+            right: 20,
+          },
+        },
+        disabled: {
+          color: 'red',
+        },
+      },
+    },
+  },
+};
+const testHeader = {
+  [Widget.Tabs]: {
+    Container: {
+      normal: {
+        width: 151,
+        height: 60,
+      },
+    },
+  },
+};
+
+const typeList = ['line', 'card', 'window'];
+
 type TabpaneProps = {};
 
 type TabpaneState = {
@@ -960,6 +1020,16 @@ export default class TabsDemo extends React.Component<any, any> {
     this.setState({ abc, abcActivityValue: value });
   };
 
+  changeActiveValue = (value: string) => () => {
+    this.setState({ activeValue: value });
+  };
+
+  changeData = () => {
+    const { bugData = [] } = this.state;
+    const newData = fixBugTestData[bugData.length];
+    this.setState({ bugData: bugData.concat(newData), activeValue: newData.title });
+  };
+
   render() {
     const {
       data: addItemPageTypeData,
@@ -969,42 +1039,80 @@ export default class TabsDemo extends React.Component<any, any> {
       abcActivityValue,
       activityValue,
       nullActiveData,
+      activeValue = '猪蹄',
+      bugData = [],
     } = this.state;
 
-    const tabpanTheme = {
-      [Widget.Tabs]: {
-        TabHeader: {
-          DefaultTabPan: {
-            normal: {
-              // width: 120,
-              // textAlign: 'left',
-              padding: {
-                left: 20,
-                right: 20,
-              },
-            },
-            disabled: {
-              color: 'red',
-            },
-          },
-        },
-      },
-    };
-    const testHeader = {
-      [Widget.Tabs]: {
-        Container: {
-          normal: {
-            width: 151,
-            height: 60,
-          },
-        },
-      },
-    };
-
-    const typeList = ['line', 'card', 'window'];
     return (
       <div>
         <FlexContainer>
+          <BlockContainer>
+            <Description>动态切换页签时跟随滚动</Description>
+
+            <div style={{ margin: 20 }}>
+              {fixBugTestData &&
+                fixBugTestData.map(item => {
+                  return <Button onClick={this.changeActiveValue(item.title)}>{item.title}</Button>;
+                })}
+            </div>
+            <div style={{ width: 460 }}>
+              <Tabs
+                activeValue={activeValue}
+                data={fixBugTestData}
+                showDeleteBtn={true}
+                hideContent={true}
+                isShowArrowIcon={true}
+                showDividerLine={true}
+                pagedType={'single'}
+              />
+            </div>
+
+            <div style={{ width: 460 }}>
+              <Tabs
+                activeValue={activeValue}
+                data={fixBugTestData}
+                showDeleteBtn={true}
+                hideContent={true}
+                isShowArrowIcon={true}
+                showDividerLine={true}
+                pagedType={'page'}
+              />
+            </div>
+          </BlockContainer>
+
+          <BlockContainer>
+            <Description>动态添加页签时翻页箭头不正确出现demo</Description>
+            <div style={{ margin: 20 }}>
+              <Button onClick={this.changeData}>添加data</Button>
+            </div>
+            <FlexContainer>
+              <div style={{ border: '1px solid red' }}>123</div>
+
+              <div style={{ border: '1px solid blue' }}>
+                <Tabs
+                  activeValue={activeValue}
+                  data={bugData}
+                  showDeleteBtn={true}
+                  hideContent={true}
+                  isShowArrowIcon={true}
+                  showDividerLine={true}
+                  pagedType={'single'}
+                />
+              </div>
+              <div style={{ border: '1px solid blue', width: '100%' }}>
+                <Tabs
+                  activeValue={activeValue}
+                  data={bugData}
+                  showDeleteBtn={true}
+                  hideContent={true}
+                  isShowArrowIcon={true}
+                  showDividerLine={true}
+                  pagedType={'single'}
+                />
+              </div>
+            </FlexContainer>
+          </BlockContainer>
+
           <BlockContainer>
             <Description>默认无属性Tabs</Description>
             <Tabs />
