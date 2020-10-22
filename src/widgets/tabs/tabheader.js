@@ -457,7 +457,6 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const newMaxIndex = maxIndex ? maxIndex : this.getCurrentMaxIndex(titleSize);
     let { currentPage } = this.state;
     const { tabPosition, pagedType } = this.props;
-    currentPage = pagedType === 'page' ? 1 : newMaxIndex;
     let offsetSize;
     if (isVertical(tabPosition)) {
       offsetSize = this.offsetHeight;
@@ -469,8 +468,13 @@ class TabHeader extends Component<TabsProps, TabsState> {
     if (arrowShow) {
       offsetSize = this.getScrollBoxSize(offsetSize);
     }
-    const totalPage = pagedType === 'page' ? computePage(offsetSize, actualSize) : titleSize.length;
-    currentPage = this.getCurrentPageByActivityValue(data, activityValue, totalPage);
+    const isPageType = pagedType === 'page';
+    const totalPage = isPageType ? computePage(offsetSize, actualSize) : titleSize.length;
+    const newPage = this.getCurrentPageByActivityValue(data, activityValue, totalPage);
+    currentPage =
+      !isPageType && this.inSamePageRange({ newPage, oldPage: currentPage, maxIndex })
+        ? currentPage
+        : newPage;
 
     this.setState(
       { arrowShow, totalPage, currentPage, titleSize, allowToCalc: false, maxIndex: newMaxIndex },
@@ -479,6 +483,11 @@ class TabHeader extends Component<TabsProps, TabsState> {
       }
     );
   }
+
+  inSamePageRange = (param: Object) => {
+    const { newPage, oldPage, maxIndex } = param;
+    return newPage < oldPage && newPage >= oldPage - maxIndex;
+  };
 
   getScrollBoxSize = (offsetSize: number) => {
     const { showAddBtn } = this.props;
