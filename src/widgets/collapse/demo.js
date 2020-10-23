@@ -432,6 +432,19 @@ export const CollapseDemo = class extends React.Component<any, any> {
               </Panel>
             </Collapse>
           </Theme>
+
+          <br />
+          <p>value属性</p>
+          <Collapse value={activeValue} onChange={this.handleChangeActiveValue}>
+            <Panel value="1" title="LUGIA">
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+            <Panel value="2" title="LUGIA">
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+          </Collapse>
         </Wrapper>
       </div>
     );

@@ -13,6 +13,7 @@ type CollapseDesignProps = {
 };
 export type CollapseProps = {
   activeValue?: string | string[],
+  value?: string | string[],
   defaultActiveValue?: string | string[],
   onChange?: Function,
   showArrow?: boolean,
