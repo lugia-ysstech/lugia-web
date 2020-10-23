@@ -26,10 +26,11 @@ function handleStateValue(value: string | string[], accordion?: boolean): string
 export default ThemeProvider(
   class extends React.Component<CollapseProps, CollapseState> {
     static getDerivedStateFromProps(props, state) {
-      const { activeValue, defaultActiveValue, accordion, value } = props;
+      const { value, activeValue, defaultValue, defaultActiveValue, accordion } = props;
       const hasValue = 'value' in props || 'activeValue' in props;
       const theActiveValue = value || activeValue;
-      const stateValue = hasValue ? theActiveValue : state ? state.value : defaultActiveValue;
+      const theDefaultValue = defaultValue || defaultActiveValue;
+      const stateValue = hasValue ? theActiveValue : state ? state.value : theDefaultValue;
 
       return {
         value: handleStateValue(stateValue, accordion),
