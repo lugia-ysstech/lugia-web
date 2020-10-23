@@ -27,6 +27,9 @@ export default ThemeProvider(
   class extends React.Component<CollapseProps, CollapseState> {
     static getDerivedStateFromProps(props, state) {
       const { value, activeValue, defaultValue, defaultActiveValue, accordion } = props;
+      if (defaultValue || defaultActiveValue) {
+        console.log('defaultValue和defaultActiveValue即将废弃, 请使用value或defaultValue代替');
+      }
       const hasValue = 'value' in props || 'activeValue' in props;
       const theActiveValue = value || activeValue;
       const theDefaultValue = defaultValue || defaultActiveValue;
