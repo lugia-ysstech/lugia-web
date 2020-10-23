@@ -13,6 +13,10 @@
       "type": "string | string[]",
       "desc": "当前展开面板的 value值 或者 value 集合"
     },
+    "value": {
+      "type": "string | string[]",
+      "desc": "当前展开面板的 value值 或者 value 集合, 同activeValue, 方便动作插件使用而添加"
+    },
     "defaultActiveValue": {
       "type": "string | string[]",
       "desc": "初始时展开面板的 value值 或者 value 集合"

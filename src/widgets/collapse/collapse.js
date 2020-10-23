@@ -26,9 +26,10 @@ function handleStateValue(value: string | string[], accordion?: boolean): string
 export default ThemeProvider(
   class extends React.Component<CollapseProps, CollapseState> {
     static getDerivedStateFromProps(props, state) {
-      const { activeValue, defaultActiveValue, accordion } = props;
-      const hasValue = 'activeValue' in props;
-      const stateValue = hasValue ? activeValue : state ? state.value : defaultActiveValue;
+      const { activeValue, defaultActiveValue, accordion, value } = props;
+      const hasValue = 'value' in props || 'activeValue' in props;
+      const theActiveValue = value || activeValue;
+      const stateValue = hasValue ? theActiveValue : state ? state.value : defaultActiveValue;
 
       return {
         value: handleStateValue(stateValue, accordion),
@@ -133,7 +134,7 @@ export default ThemeProvider(
       return value === panelValue;
     };
     hasValueProps() {
-      return 'activeValue' in this.props;
+      return 'value' in this.props || 'activeValue' in this.props;
     }
   },
   Widget.Collapse
