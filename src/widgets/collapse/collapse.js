@@ -28,7 +28,7 @@ export default ThemeProvider(
     static getDerivedStateFromProps(props, state) {
       const { value, activeValue, defaultValue, defaultActiveValue, accordion } = props;
       if (defaultValue || defaultActiveValue) {
-        console.log('defaultValue和defaultActiveValue即将废弃, 请使用value或defaultValue代替');
+        console.log('activeValue和defaultActiveValue即将废弃, 请使用value或defaultValue替代');
       }
       const hasValue = 'value' in props || 'activeValue' in props;
       const theActiveValue = value || activeValue;
