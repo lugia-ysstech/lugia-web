@@ -15,6 +15,7 @@ export type CollapseProps = {
   activeValue?: string | string[],
   value?: string | string[],
   defaultActiveValue?: string | string[],
+  defaultValue?: string | string[],
   onChange?: Function,
   showArrow?: boolean,
   accordion?: boolean,
