@@ -26,9 +26,14 @@ function handleStateValue(value: string | string[], accordion?: boolean): string
 export default ThemeProvider(
   class extends React.Component<CollapseProps, CollapseState> {
     static getDerivedStateFromProps(props, state) {
-      const { activeValue, defaultActiveValue, accordion } = props;
-      const hasValue = 'activeValue' in props;
-      const stateValue = hasValue ? activeValue : state ? state.value : defaultActiveValue;
+      const { value, activeValue, defaultValue, defaultActiveValue, accordion } = props;
+      if (activeValue || defaultActiveValue) {
+        console.info('activeValue和defaultActiveValue即将废弃, 请使用value或defaultValue替代');
+      }
+      const hasValue = 'value' in props || 'activeValue' in props;
+      const theActiveValue = value || activeValue;
+      const theDefaultValue = defaultValue || defaultActiveValue;
+      const stateValue = hasValue ? theActiveValue : state ? state.value : theDefaultValue;
 
       return {
         value: handleStateValue(stateValue, accordion),
@@ -133,7 +138,7 @@ export default ThemeProvider(
       return value === panelValue;
     };
     hasValueProps() {
-      return 'activeValue' in this.props;
+      return 'value' in this.props || 'activeValue' in this.props;
     }
   },
   Widget.Collapse

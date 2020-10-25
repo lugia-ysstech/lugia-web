@@ -9,13 +9,13 @@
       "desc": "是否渲染当前组件",
       "defaultValue": false
     },
-    "activeValue": {
+    "value": {
       "type": "string | string[]",
-      "desc": "当前展开面板的 value值 或者 value 集合"
+      "desc": "当前展开面板的 value值 或者 value 集合, 兼容activeValue"
     },
-    "defaultActiveValue": {
+    "defaultValue": {
       "type": "string | string[]",
-      "desc": "初始时展开面板的 value值 或者 value 集合"
+      "desc": "初始时展开面板的 value值 或者 value 集合, 兼容defaultActiveValue"
     },
     "showArrow": {
       "type": "boolean",
