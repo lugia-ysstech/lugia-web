@@ -71,7 +71,7 @@
     "flow": "flow --show-all-errors > flow-error-detail.log",
     "flow-check": "node readflow.js",
     "flow-typed": "flow-typed",
-    "reset-flow-typed": "npx shx rm -rf flow-tstatstayped/npm && flow-typed install --overwrite || true",
+    "reset-flow-typed": "npx shx rm -rf flow-typed/npm && flow-typed install --overwrite || true",
     "test": "node scripts/test.js --env=jsdom",
     "cover": "node scripts/test.js --env=jsdom  --coverage",
     "clean": "npx shx rm -rf dist/ interface/ npm-shrinkwrap.all.json src/widgets/static src/widgets/designInfo.dll.json",
