@@ -10,6 +10,9 @@ import TimeLineItem from './timeLineItem';
 import Icon from '../icon/';
 import Button from '../button/';
 import styled from 'styled-components';
+import Theme from '../theme';
+import Widget from '../consts';
+import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 
 class TimeLinePending extends React.Component<Object, Object> {
   state = {
@@ -44,6 +47,21 @@ const Wrapper = styled.div`
   margin-left: 100px;
   display: inline-block;
 `;
+
+const testItemTheme = {
+  [Widget.TimeLineItem]: {
+    TimeLineDot: {
+      normal: {
+        background: {
+          color: 'yellow',
+        },
+        border: getBorder({ width: 2, color: 'blue', style: 'solid' }),
+        boxShadow: getBoxShadow('1px 2px 2px 2px red'),
+      },
+    },
+  },
+};
+
 export const SimpleDemo = () => {
   return (
     <div>
@@ -151,6 +169,19 @@ export const SimpleDemo = () => {
         </TimeLine>
       </Wrapper>
       <TimeLinePending />
+      <Wrapper>
+        <p>节点主题修复</p>
+        <br />
+        <Theme config={testItemTheme}>
+          <TimeLine>
+            <TimeLineItem time="2018-01-01" />
+            <TimeLineItem time="2018-01-02" />
+            <TimeLineItem time="2018-01-03" />
+            <TimeLineItem time="2018-01-04" />
+            <TimeLineItem time="2018-01-05" />
+          </TimeLine>
+        </Theme>
+      </Wrapper>
     </div>
   );
 };
