@@ -245,7 +245,7 @@
             "data": [
               {
                 "name": "外观",
-                "path": ["TransferButton", "ButtonWrap"],
+                "path": ["TransferButton", "Container"],
                 "description": {
                   "appearancePart": {
                     "text": "外观",
@@ -773,7 +773,7 @@
             "data": [
               {
                 "name": "外观",
-                "path": ["TransferButton", "ButtonWrap"],
+                "path": ["TransferButton", "Container"],
                 "description": {
                   "appearancePart": {
                     "text": "外观",

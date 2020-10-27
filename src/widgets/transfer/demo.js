@@ -279,6 +279,15 @@ export default class TransferDemo extends React.Component<any, any> {
             },
           },
         },
+        TransferButton: {
+          Container: {
+            normal: {
+              background: {
+                color: 'red',
+              },
+            },
+          },
+        },
       },
     };
     const { fruitsData } = this.state;

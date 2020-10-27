@@ -601,7 +601,7 @@
           "name": "穿梭框按钮样式",
           "desc": "为穿梭框配置按钮样式",
           "theme": {
-            "ButtonWrap": {
+            "Container": {
               "name": "按钮整体样式",
               "desc": "为按钮配置整体样式",
               "normal": [
@@ -1153,7 +1153,7 @@
       "name": "穿梭框按钮样式",
       "desc": "为穿梭框配置按钮样式",
       "theme": {
-        "ButtonWrap": {
+        "Container": {
           "name": "按钮整体样式",
           "desc": "为按钮配置整体样式",
           "normal": [
