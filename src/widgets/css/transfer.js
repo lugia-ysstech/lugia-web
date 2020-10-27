@@ -123,9 +123,7 @@ export const Check = CSSComponent({
       },
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const {
-        propsConfig: { size },
-      } = themeProps;
+      const { propsConfig: { size = 'default' } = {} } = themeProps;
       const { height } = themeMeta;
       return {
         height: height || getHeightBySize(size),
@@ -146,9 +144,7 @@ export const CheckText = CSSComponent({
     selectNames: [['padding'], ['color'], ['font'], ['fontSize']],
     defaultTheme: { color: lightGreyColor, fontSize: 12 },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const {
-        propsConfig: { size },
-      } = themeProps;
+      const { propsConfig: { size = 'default' } = {} } = themeProps;
       const { fontSize, font: { size: theFontSize } = {} } = themeMeta;
       return {
         fontSize: theFontSize || fontSize || getFontSizeBySize(size),
