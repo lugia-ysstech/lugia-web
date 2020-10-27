@@ -27,7 +27,7 @@ class JSONEditorReact extends Component {
     this.schemaRefs = cloneDeep(this.props.schemaRefs);
   }
 
-  componentWillUpdate(nextProps, nextState) {
+  UNSAFE_componentWillUpdate(nextProps, nextState) {
     if ('json' in nextProps) {
       this.jsoneditor.update(nextProps.json);
     }

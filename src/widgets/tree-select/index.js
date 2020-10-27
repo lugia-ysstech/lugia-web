@@ -209,7 +209,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     );
   }
 
-  componentWillReceiveProps(nextProps: TreeSelectProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: TreeSelectProps) {
     if (!Support.isNotLimit(nextProps)) {
       const { value = [] } = nextProps;
       this.changeOldValue(value);

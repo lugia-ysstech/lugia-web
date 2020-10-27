@@ -92,7 +92,7 @@ export default (
       return true;
     }
 
-    componentWillUpdate() {
+    UNSAFE_componentWillUpdate() {
       this.viewSize = this.fetchViewSize();
     }
 
