@@ -156,7 +156,14 @@ const Dot = CSSComponent({
   tag: 'div',
   className: 'TimeLineItemDot',
   normal: {
-    selectNames: [['width'], ['height'], ['background'], ['borderRadius']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['borderRadius'],
+      ['border'],
+      ['boxShadow'],
+    ],
     defaultTheme: {
       width: 10,
       height: 10,

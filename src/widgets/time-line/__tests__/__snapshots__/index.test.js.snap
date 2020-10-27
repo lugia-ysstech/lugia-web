@@ -280,7 +280,7 @@ exports[`timeLineDemo Component JSON 1`] = `
                 className="c7"
                 style={Object {}}
               >
-                2020-07-28
+                2020-10-27
               </div>
             </div>
           </div>
@@ -330,7 +330,7 @@ exports[`timeLineDemo Component JSON 1`] = `
                 className="c7"
                 style={Object {}}
               >
-                2020-07-29
+                2020-10-28
               </div>
             </div>
           </div>
@@ -380,7 +380,7 @@ exports[`timeLineDemo Component JSON 1`] = `
                 className="c7"
                 style={Object {}}
               >
-                2020-07-30
+                2020-10-29
               </div>
             </div>
           </div>
@@ -430,7 +430,7 @@ exports[`timeLineDemo Component JSON 1`] = `
                 className="c7"
                 style={Object {}}
               >
-                2020-07-31
+                2020-10-30
               </div>
             </div>
           </div>
@@ -480,7 +480,7 @@ exports[`timeLineDemo Component JSON 1`] = `
                 className="c7"
                 style={Object {}}
               >
-                2020-08-01
+                2020-10-31
               </div>
             </div>
           </div>
@@ -3127,6 +3127,339 @@ exports[`timeLineDemo Component JSON 1`] = `
                 style={Object {}}
               >
                 description555
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c10"
+              style={Object {}}
+            />
+          </div>
+        </div>
+         
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      节点主题修复
+    </p>
+    <br />
+    <div
+      className=""
+      style={Object {}}
+    >
+      <div
+        className="c1"
+      >
+        <div
+          className="c2"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
+        >
+          <div
+            className="c3"
+            style={
+              Object {
+                "height": "1rem",
+              }
+            }
+          >
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "yellow",
+                    "borderBottomColor": "blue",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "0.2rem",
+                    "borderLeftColor": "blue",
+                    "borderLeftStyle": "solid",
+                    "borderLeftWidth": "0.2rem",
+                    "borderRightColor": "blue",
+                    "borderRightStyle": "solid",
+                    "borderRightWidth": "0.2rem",
+                    "borderTopColor": "blue",
+                    "borderTopStyle": "solid",
+                    "borderTopWidth": "0.2rem",
+                    "boxShadow": "1px 2px 2px 2px red",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-01
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
+          </div>
+        </div>
+        <div
+          className="c2"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
+        >
+          <div
+            className="c3"
+            style={
+              Object {
+                "height": "1rem",
+              }
+            }
+          >
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "yellow",
+                    "borderBottomColor": "blue",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "0.2rem",
+                    "borderLeftColor": "blue",
+                    "borderLeftStyle": "solid",
+                    "borderLeftWidth": "0.2rem",
+                    "borderRightColor": "blue",
+                    "borderRightStyle": "solid",
+                    "borderRightWidth": "0.2rem",
+                    "borderTopColor": "blue",
+                    "borderTopStyle": "solid",
+                    "borderTopWidth": "0.2rem",
+                    "boxShadow": "1px 2px 2px 2px red",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-02
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
+          </div>
+        </div>
+        <div
+          className="c2"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
+        >
+          <div
+            className="c3"
+            style={
+              Object {
+                "height": "1rem",
+              }
+            }
+          >
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "yellow",
+                    "borderBottomColor": "blue",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "0.2rem",
+                    "borderLeftColor": "blue",
+                    "borderLeftStyle": "solid",
+                    "borderLeftWidth": "0.2rem",
+                    "borderRightColor": "blue",
+                    "borderRightStyle": "solid",
+                    "borderRightWidth": "0.2rem",
+                    "borderTopColor": "blue",
+                    "borderTopStyle": "solid",
+                    "borderTopWidth": "0.2rem",
+                    "boxShadow": "1px 2px 2px 2px red",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-03
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
+          </div>
+        </div>
+        <div
+          className="c2"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
+        >
+          <div
+            className="c3"
+            style={
+              Object {
+                "height": "1rem",
+              }
+            }
+          >
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "yellow",
+                    "borderBottomColor": "blue",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "0.2rem",
+                    "borderLeftColor": "blue",
+                    "borderLeftStyle": "solid",
+                    "borderLeftWidth": "0.2rem",
+                    "borderRightColor": "blue",
+                    "borderRightStyle": "solid",
+                    "borderRightWidth": "0.2rem",
+                    "borderTopColor": "blue",
+                    "borderTopStyle": "solid",
+                    "borderTopWidth": "0.2rem",
+                    "boxShadow": "1px 2px 2px 2px red",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-04
+              </div>
+            </div>
+          </div>
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+              style={Object {}}
+            />
+          </div>
+        </div>
+        <div
+          className="c2"
+          style={
+            Object {
+              "height": "4.2rem",
+            }
+          }
+        >
+          <div
+            className="c3"
+            style={
+              Object {
+                "height": "1rem",
+              }
+            }
+          >
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "backgroundColor": "yellow",
+                    "borderBottomColor": "blue",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "0.2rem",
+                    "borderLeftColor": "blue",
+                    "borderLeftStyle": "solid",
+                    "borderLeftWidth": "0.2rem",
+                    "borderRightColor": "blue",
+                    "borderRightStyle": "solid",
+                    "borderRightWidth": "0.2rem",
+                    "borderTopColor": "blue",
+                    "borderTopStyle": "solid",
+                    "borderTopWidth": "0.2rem",
+                    "boxShadow": "1px 2px 2px 2px red",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="c6"
+              style={Object {}}
+            >
+              <div
+                className="c7"
+                style={Object {}}
+              >
+                2018-01-05
               </div>
             </div>
           </div>
