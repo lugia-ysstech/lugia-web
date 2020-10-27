@@ -52,7 +52,8 @@ import Tree from './tree';
 import TreeSelect from './tree-select';
 import Upload from './upload';
 import Window from './window';
-
+import { load } from './css/theme-common-dict.js';
+export { load };
 export default [
   {
     meta: {
@@ -84,10 +85,7 @@ export default [
       type: {
         AlertType: [
           { value: 'info', text: '信息' },
-          {
-            value: 'success',
-            text: '成功',
-          },
+          { value: 'success', text: '成功' },
           { value: 'error', text: '错误' },
           { value: 'warning', text: '警告' },
         ],
@@ -214,10 +212,7 @@ export default [
       type: {
         InputSize: [
           { value: 'small', text: '小' },
-          {
-            value: 'default',
-            text: '正常',
-          },
+          { value: 'default', text: '正常' },
           { value: 'large', text: '大' },
         ],
         PrefixType: [{ value: '¥', text: '人民币' }, { value: '$', text: '美元' }],
@@ -225,10 +220,7 @@ export default [
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'bottom', text: '底部文本' },
-          {
-            value: 'inner',
-            text: '框内文本',
-          },
+          { value: 'inner', text: '框内文本' },
         ],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
       },
@@ -372,11 +364,7 @@ export default [
           desc: '点击锚点时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            {
-              name: 'href',
-              desc: '点击的锚点href值',
-              type: 'string',
-            },
+            { name: 'href', desc: '点击的锚点href值', type: 'string' },
           ],
         },
       },
@@ -745,18 +733,12 @@ export default [
         AvatarType: [
           { value: 'text', text: '文本' },
           { value: 'icon', text: '图标' },
-          {
-            value: 'img',
-            text: '图片',
-          },
+          { value: 'img', text: '图片' },
         ],
         AvatarSize: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         AvatarShape: [{ value: 'circle', text: '圆形' }, { value: 'square', text: '正方形' }],
       },
@@ -899,18 +881,12 @@ export default [
         AvatarType: [
           { value: 'text', text: '文本' },
           { value: 'icon', text: '图标' },
-          {
-            value: 'img',
-            text: '图片',
-          },
+          { value: 'img', text: '图片' },
         ],
         AvatarSize: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         AvatarShape: [{ value: 'circle', text: '圆形' }, { value: 'square', text: '正方形' }],
       },
@@ -984,18 +960,12 @@ export default [
         AvatarType: [
           { value: 'text', text: '文本' },
           { value: 'icon', text: '图标' },
-          {
-            value: 'img',
-            text: '图片',
-          },
+          { value: 'img', text: '图片' },
         ],
         AvatarSize: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         AvatarShape: [{ value: 'circle', text: '圆形' }, { value: 'square', text: '正方形' }],
       },
@@ -1335,22 +1305,14 @@ export default [
           desc: '生成面包屑数据对象的数组，path是跳转路径，title是面包屑展示文本',
           meta: [
             { key: 'path', title: '跳转路径', type: 'string' },
-            {
-              key: 'title',
-              title: '展示文本',
-              type: 'string',
-            },
+            { key: 'title', title: '展示文本', type: 'string' },
             {
               key: 'icons',
               title: '前/后缀图标',
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
               ],
             },
           ],
@@ -1639,25 +1601,16 @@ export default [
         ButtonShape: [{ value: 'default', text: '默认型' }, { value: 'round', text: '圆角型' }],
         ButtonType: [
           { value: 'default', text: '默认类型' },
-          {
-            value: 'primary',
-            text: '主题类型',
-          },
+          { value: 'primary', text: '主题类型' },
           { value: 'success', text: '成功类型' },
           { value: 'warning', text: '警告类型' },
-          {
-            value: 'danger',
-            text: '危险类型',
-          },
+          { value: 'danger', text: '危险类型' },
           { value: 'link', text: '链接类型' },
         ],
         ButtonSize: [
           { value: 'default', text: '默认尺寸' },
           { value: 'small', text: '小尺寸' },
-          {
-            value: 'large',
-            text: '大尺寸',
-          },
+          { value: 'large', text: '大尺寸' },
         ],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
@@ -1990,25 +1943,16 @@ export default [
         ButtonShape: [{ value: 'default', text: '默认型' }, { value: 'round', text: '圆角型' }],
         ButtonType: [
           { value: 'default', text: '默认类型' },
-          {
-            value: 'primary',
-            text: '主题类型',
-          },
+          { value: 'primary', text: '主题类型' },
           { value: 'success', text: '成功类型' },
           { value: 'warning', text: '警告类型' },
-          {
-            value: 'danger',
-            text: '危险类型',
-          },
+          { value: 'danger', text: '危险类型' },
           { value: 'link', text: '链接类型' },
         ],
         ButtonSize: [
           { value: 'default', text: '默认尺寸' },
           { value: 'small', text: '小尺寸' },
-          {
-            value: 'large',
-            text: '大尺寸',
-          },
+          { value: 'large', text: '大尺寸' },
         ],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
@@ -2123,25 +2067,16 @@ export default [
         ButtonShape: [{ value: 'default', text: '默认型' }, { value: 'round', text: '圆角型' }],
         ButtonType: [
           { value: 'default', text: '默认类型' },
-          {
-            value: 'primary',
-            text: '主题类型',
-          },
+          { value: 'primary', text: '主题类型' },
           { value: 'success', text: '成功类型' },
           { value: 'warning', text: '警告类型' },
-          {
-            value: 'danger',
-            text: '危险类型',
-          },
+          { value: 'danger', text: '危险类型' },
           { value: 'link', text: '链接类型' },
         ],
         ButtonSize: [
           { value: 'default', text: '默认尺寸' },
           { value: 'small', text: '小尺寸' },
-          {
-            value: 'large',
-            text: '大尺寸',
-          },
+          { value: 'large', text: '大尺寸' },
         ],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
@@ -2256,25 +2191,16 @@ export default [
         ButtonShape: [{ value: 'default', text: '默认型' }, { value: 'round', text: '圆角型' }],
         ButtonType: [
           { value: 'default', text: '默认类型' },
-          {
-            value: 'primary',
-            text: '主题类型',
-          },
+          { value: 'primary', text: '主题类型' },
           { value: 'success', text: '成功类型' },
           { value: 'warning', text: '警告类型' },
-          {
-            value: 'danger',
-            text: '危险类型',
-          },
+          { value: 'danger', text: '危险类型' },
           { value: 'link', text: '链接类型' },
         ],
         ButtonSize: [
           { value: 'default', text: '默认尺寸' },
           { value: 'small', text: '小尺寸' },
-          {
-            value: 'large',
-            text: '大尺寸',
-          },
+          { value: 'large', text: '大尺寸' },
         ],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
@@ -2380,25 +2306,16 @@ export default [
         ButtonShape: [{ value: 'default', text: '默认型' }, { value: 'round', text: '圆角型' }],
         ButtonType: [
           { value: 'default', text: '默认类型' },
-          {
-            value: 'primary',
-            text: '主题类型',
-          },
+          { value: 'primary', text: '主题类型' },
           { value: 'success', text: '成功类型' },
           { value: 'warning', text: '警告类型' },
-          {
-            value: 'danger',
-            text: '危险类型',
-          },
+          { value: 'danger', text: '危险类型' },
           { value: 'link', text: '链接类型' },
         ],
         ButtonSize: [
           { value: 'default', text: '默认尺寸' },
           { value: 'small', text: '小尺寸' },
-          {
-            value: 'large',
-            text: '大尺寸',
-          },
+          { value: 'large', text: '大尺寸' },
         ],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
@@ -2482,25 +2399,16 @@ export default [
         ButtonShape: [{ value: 'default', text: '默认型' }, { value: 'round', text: '圆角型' }],
         ButtonType: [
           { value: 'default', text: '默认类型' },
-          {
-            value: 'primary',
-            text: '主题类型',
-          },
+          { value: 'primary', text: '主题类型' },
           { value: 'success', text: '成功类型' },
           { value: 'warning', text: '警告类型' },
-          {
-            value: 'danger',
-            text: '危险类型',
-          },
+          { value: 'danger', text: '危险类型' },
           { value: 'link', text: '链接类型' },
         ],
         ButtonSize: [
           { value: 'default', text: '默认尺寸' },
           { value: 'small', text: '小尺寸' },
-          {
-            value: 'large',
-            text: '大尺寸',
-          },
+          { value: 'large', text: '大尺寸' },
         ],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
@@ -2588,16 +2496,10 @@ export default [
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
-          {
-            value: 'avatar',
-            text: '带头像卡片',
-          },
+          { value: 'avatar', text: '带头像卡片' },
           { value: 'image', text: '带图片卡片' },
           { value: 'combo', text: '自定义卡片' },
-          {
-            value: 'tip',
-            text: '头部提示卡片',
-          },
+          { value: 'tip', text: '头部提示卡片' },
           { value: 'transparent', text: '空白盒子' },
         ],
         ImageOrientation: [
@@ -3092,16 +2994,10 @@ export default [
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
-          {
-            value: 'avatar',
-            text: '带头像卡片',
-          },
+          { value: 'avatar', text: '带头像卡片' },
           { value: 'image', text: '带图片卡片' },
           { value: 'combo', text: '自定义卡片' },
-          {
-            value: 'tip',
-            text: '头部提示卡片',
-          },
+          { value: 'tip', text: '头部提示卡片' },
           { value: 'transparent', text: '空白盒子' },
         ],
         ImageOrientation: [
@@ -3213,16 +3109,10 @@ export default [
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
-          {
-            value: 'avatar',
-            text: '带头像卡片',
-          },
+          { value: 'avatar', text: '带头像卡片' },
           { value: 'image', text: '带图片卡片' },
           { value: 'combo', text: '自定义卡片' },
-          {
-            value: 'tip',
-            text: '头部提示卡片',
-          },
+          { value: 'tip', text: '头部提示卡片' },
           { value: 'transparent', text: '空白盒子' },
         ],
         ImageOrientation: [
@@ -3344,16 +3234,10 @@ export default [
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
-          {
-            value: 'avatar',
-            text: '带头像卡片',
-          },
+          { value: 'avatar', text: '带头像卡片' },
           { value: 'image', text: '带图片卡片' },
           { value: 'combo', text: '自定义卡片' },
-          {
-            value: 'tip',
-            text: '头部提示卡片',
-          },
+          { value: 'tip', text: '头部提示卡片' },
           { value: 'transparent', text: '空白盒子' },
         ],
         ImageOrientation: [
@@ -3465,16 +3349,10 @@ export default [
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
-          {
-            value: 'avatar',
-            text: '带头像卡片',
-          },
+          { value: 'avatar', text: '带头像卡片' },
           { value: 'image', text: '带图片卡片' },
           { value: 'combo', text: '自定义卡片' },
-          {
-            value: 'tip',
-            text: '头部提示卡片',
-          },
+          { value: 'tip', text: '头部提示卡片' },
           { value: 'transparent', text: '空白盒子' },
         ],
         ImageOrientation: [
@@ -3590,16 +3468,10 @@ export default [
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
-          {
-            value: 'avatar',
-            text: '带头像卡片',
-          },
+          { value: 'avatar', text: '带头像卡片' },
           { value: 'image', text: '带图片卡片' },
           { value: 'combo', text: '自定义卡片' },
-          {
-            value: 'tip',
-            text: '头部提示卡片',
-          },
+          { value: 'tip', text: '头部提示卡片' },
           { value: 'transparent', text: '空白盒子' },
         ],
         ImageOrientation: [
@@ -3718,16 +3590,10 @@ export default [
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
-          {
-            value: 'avatar',
-            text: '带头像卡片',
-          },
+          { value: 'avatar', text: '带头像卡片' },
           { value: 'image', text: '带图片卡片' },
           { value: 'combo', text: '自定义卡片' },
-          {
-            value: 'tip',
-            text: '头部提示卡片',
-          },
+          { value: 'tip', text: '头部提示卡片' },
           { value: 'transparent', text: '空白盒子' },
         ],
         ImageOrientation: [
@@ -3799,29 +3665,19 @@ export default [
           desc: '触发指示器切换或点击切换按钮时触发',
           args: [
             { name: 'newValue', desc: '切换到下一次面板的索引值', type: 'number' },
-            {
-              name: 'oldValue',
-              desc: '本次的索引值',
-              type: 'number',
-            },
+            { name: 'oldValue', desc: '本次的索引值', type: 'number' },
           ],
         },
       },
       type: {
         IndicatorType: [
           { value: 'horizontal', text: '水平显示' },
-          {
-            value: 'vertical',
-            text: '垂直显示',
-          },
+          { value: 'vertical', text: '垂直显示' },
           { value: 'outside', text: '外部显示' },
         ],
         SwitchType: [
           { value: 'horizontal', text: '水平切换' },
-          {
-            value: 'vertical',
-            text: '垂直切换',
-          },
+          { value: 'vertical', text: '垂直切换' },
           { value: 'fade', text: '渐显切换' },
         ],
         ActionType: [
@@ -3942,28 +3798,16 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             {
               key: 'icons',
               title: '前/后缀图标',
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
                 { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                {
-                  key: 'suffixIconSrc',
-                  title: '后缀图片',
-                  type: 'image',
-                },
+                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
             { key: 'children', title: '子项数据', type: 'Object[]' },
@@ -4033,19 +3877,13 @@ export default [
         sizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'bottom', text: '底部文本' },
-          {
-            value: 'inner',
-            text: '框内文本',
-          },
+          { value: 'inner', text: '框内文本' },
         ],
       },
       category: ['数据录入'],
@@ -4612,11 +4450,7 @@ export default [
           desc: 'Checkbox改变时回调',
           args: [
             { name: 'event', desc: '关闭时的DOM事件', type: 'Object' },
-            {
-              name: 'checked',
-              desc: '当前是否选中',
-              type: 'boolean',
-            },
+            { name: 'checked', desc: '当前是否选中', type: 'boolean' },
           ],
         },
       },
@@ -4736,19 +4570,12 @@ export default [
           propsDefaultValue: [],
           meta: [
             { key: 'text', title: '展示文字', type: 'string' },
-            {
-              key: 'value',
-              title: '对应字段',
-              type: 'string',
-            },
+            { key: 'value', title: '对应字段', type: 'string' },
           ],
           defaultValue: [
             { text: '选项1', value: '1' },
             { text: '选项2', value: '2' },
-            {
-              text: '选项3',
-              value: '3',
-            },
+            { text: '选项3', value: '3' },
           ],
         },
         displayField: { type: 'string', desc: '指定CheckboxGroup展示字段值' },
@@ -4935,19 +4762,12 @@ export default [
           propsDefaultValue: [],
           meta: [
             { key: 'text', title: '展示文字', type: 'string' },
-            {
-              key: 'value',
-              title: '对应字段',
-              type: 'string',
-            },
+            { key: 'value', title: '对应字段', type: 'string' },
           ],
           defaultValue: [
             { text: '选项1', value: '1' },
             { text: '选项2', value: '2' },
-            {
-              text: '选项3',
-              value: '3',
-            },
+            { text: '选项3', value: '3' },
           ],
         },
         displayField: { type: 'string', desc: '指定CheckboxGroup展示字段值' },
@@ -5143,20 +4963,12 @@ export default [
           injectProps: false,
           meta: [
             { key: 'value', title: '对应字段', type: 'string' },
-            {
-              key: 'title',
-              title: '展示文字',
-              type: 'string',
-            },
+            { key: 'title', title: '展示文字', type: 'string' },
             { key: 'children', title: '展示内容', type: 'lugiaDPages' },
           ],
           defaultValue: [
             { value: '1', title: '标题1', children: '内容1' },
-            {
-              value: '2',
-              title: '标题2',
-              children: '内容2',
-            },
+            { value: '2', title: '标题2', children: '内容2' },
             { value: '3', title: '标题3', children: '内容3' },
           ],
         },
@@ -5167,11 +4979,7 @@ export default [
           desc: 'Collapse面板展开/折叠时回调',
           args: [
             { name: 'event', desc: '关闭时的DOM事件', type: 'Object' },
-            {
-              name: 'value',
-              desc: '变化Collapse的value值',
-              type: 'string',
-            },
+            { name: 'value', desc: '变化Collapse的value值', type: 'string' },
           ],
         },
       },
@@ -5418,11 +5226,7 @@ export default [
           desc: '头部一级图标',
           meta: [
             { key: 'left', title: '左边图标', type: 'icon' },
-            {
-              key: 'right',
-              title: '右边图标',
-              type: 'icon',
-            },
+            { key: 'right', title: '右边图标', type: 'icon' },
           ],
         },
         headSwitchIconLevelTwo: {
@@ -5430,11 +5234,7 @@ export default [
           desc: '头部二级图标',
           meta: [
             { key: 'left', title: '左边图标', type: 'icon' },
-            {
-              key: 'right',
-              title: '右边图标',
-              type: 'icon',
-            },
+            { key: 'right', title: '右边图标', type: 'icon' },
           ],
         },
       },
@@ -5454,19 +5254,13 @@ export default [
       type: {
         InputSize: [
           { value: 'small', text: '小' },
-          {
-            value: 'default',
-            text: '默认',
-          },
+          { value: 'default', text: '默认' },
           { value: 'large', text: '大' },
         ],
         ValidateType: [
           { value: 'top', text: '上' },
           { value: 'bottom', text: '下' },
-          {
-            value: 'inner',
-            text: '内部',
-          },
+          { value: 'inner', text: '内部' },
         ],
         ValidateStatus: [{ value: 'default', text: '默认' }, { value: 'error', text: '错误' }],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
@@ -5759,11 +5553,7 @@ export default [
           desc: '头部一级图标',
           meta: [
             { key: 'left', title: '左边图标', type: 'icon' },
-            {
-              key: 'right',
-              title: '右边图标',
-              type: 'icon',
-            },
+            { key: 'right', title: '右边图标', type: 'icon' },
           ],
         },
       },
@@ -5778,19 +5568,13 @@ export default [
       type: {
         InputSize: [
           { value: 'small', text: '小' },
-          {
-            value: 'default',
-            text: '默认',
-          },
+          { value: 'default', text: '默认' },
           { value: 'large', text: '大' },
         ],
         ValidateType: [
           { value: 'top', text: '上' },
           { value: 'bottom', text: '下' },
-          {
-            value: 'inner',
-            text: '内部',
-          },
+          { value: 'inner', text: '内部' },
         ],
         ValidateStatus: [{ value: 'default', text: '默认' }, { value: 'error', text: '错误' }],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
@@ -5971,11 +5755,7 @@ export default [
           desc: '头部一级图标',
           meta: [
             { key: 'left', title: '左边图标', type: 'icon' },
-            {
-              key: 'right',
-              title: '右边图标',
-              type: 'icon',
-            },
+            { key: 'right', title: '右边图标', type: 'icon' },
           ],
         },
       },
@@ -5990,19 +5770,13 @@ export default [
       type: {
         InputSize: [
           { value: 'small', text: '小' },
-          {
-            value: 'default',
-            text: '默认',
-          },
+          { value: 'default', text: '默认' },
           { value: 'large', text: '大' },
         ],
         ValidateType: [
           { value: 'top', text: '上' },
           { value: 'bottom', text: '下' },
-          {
-            value: 'inner',
-            text: '内部',
-          },
+          { value: 'inner', text: '内部' },
         ],
         ValidateStatus: [{ value: 'default', text: '默认' }, { value: 'error', text: '错误' }],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
@@ -6206,11 +5980,7 @@ export default [
           desc: '头部一级图标',
           meta: [
             { key: 'left', title: '左边图标', type: 'icon' },
-            {
-              key: 'right',
-              title: '右边图标',
-              type: 'icon',
-            },
+            { key: 'right', title: '右边图标', type: 'icon' },
           ],
         },
         headSwitchIconLevelTwo: {
@@ -6218,11 +5988,7 @@ export default [
           desc: '头部二级图标',
           meta: [
             { key: 'left', title: '左边图标', type: 'icon' },
-            {
-              key: 'right',
-              title: '右边图标',
-              type: 'icon',
-            },
+            { key: 'right', title: '右边图标', type: 'icon' },
           ],
         },
       },
@@ -6242,19 +6008,13 @@ export default [
       type: {
         InputSize: [
           { value: 'small', text: '小' },
-          {
-            value: 'default',
-            text: '默认',
-          },
+          { value: 'default', text: '默认' },
           { value: 'large', text: '大' },
         ],
         ValidateType: [
           { value: 'top', text: '上' },
           { value: 'bottom', text: '下' },
-          {
-            value: 'inner',
-            text: '内部',
-          },
+          { value: 'inner', text: '内部' },
         ],
         ValidateStatus: [{ value: 'default', text: '默认' }, { value: 'error', text: '错误' }],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
@@ -6544,11 +6304,7 @@ export default [
           desc: '头部一级图标',
           meta: [
             { key: 'left', title: '左边图标', type: 'icon' },
-            {
-              key: 'right',
-              title: '右边图标',
-              type: 'icon',
-            },
+            { key: 'right', title: '右边图标', type: 'icon' },
           ],
         },
       },
@@ -6563,19 +6319,13 @@ export default [
       type: {
         InputSize: [
           { value: 'small', text: '小' },
-          {
-            value: 'default',
-            text: '默认',
-          },
+          { value: 'default', text: '默认' },
           { value: 'large', text: '大' },
         ],
         ValidateType: [
           { value: 'top', text: '上' },
           { value: 'bottom', text: '下' },
-          {
-            value: 'inner',
-            text: '内部',
-          },
+          { value: 'inner', text: '内部' },
         ],
         ValidateStatus: [{ value: 'default', text: '默认' }, { value: 'error', text: '错误' }],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
@@ -6803,11 +6553,7 @@ export default [
           desc: '头部一级图标',
           meta: [
             { key: 'left', title: '左边图标', type: 'icon' },
-            {
-              key: 'right',
-              title: '右边图标',
-              type: 'icon',
-            },
+            { key: 'right', title: '右边图标', type: 'icon' },
           ],
         },
         headSwitchIconLevelTwo: {
@@ -6815,11 +6561,7 @@ export default [
           desc: '头部二级图标',
           meta: [
             { key: 'left', title: '左边图标', type: 'icon' },
-            {
-              key: 'right',
-              title: '右边图标',
-              type: 'icon',
-            },
+            { key: 'right', title: '右边图标', type: 'icon' },
           ],
         },
       },
@@ -6839,19 +6581,13 @@ export default [
       type: {
         InputSize: [
           { value: 'small', text: '小' },
-          {
-            value: 'default',
-            text: '默认',
-          },
+          { value: 'default', text: '默认' },
           { value: 'large', text: '大' },
         ],
         ValidateType: [
           { value: 'top', text: '上' },
           { value: 'bottom', text: '下' },
-          {
-            value: 'inner',
-            text: '内部',
-          },
+          { value: 'inner', text: '内部' },
         ],
         ValidateStatus: [{ value: 'default', text: '默认' }, { value: 'error', text: '错误' }],
         ChangeType: {
@@ -7265,10 +7001,7 @@ export default [
       type: {
         PlacementType: [
           { value: 'top', text: '顶部' },
-          {
-            value: 'right',
-            text: '右侧',
-          },
+          { value: 'right', text: '右侧' },
           { value: 'left', text: '左侧' },
           { value: 'bottom', text: '底部' },
         ],
@@ -7365,11 +7098,7 @@ export default [
           desc: '配置前置和后缀图标',
           meta: [
             { key: 'prefixIconClass', title: '前置图标', type: 'icon' },
-            {
-              key: 'suffixIconClass',
-              title: '后缀图标',
-              type: 'icon',
-            },
+            { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
           ],
         },
         data: {
@@ -7377,38 +7106,23 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             {
               key: 'icons',
               title: '前/后缀图标',
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
                 { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                {
-                  key: 'suffixIconSrc',
-                  title: '后缀图片',
-                  type: 'image',
-                },
+                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
           ],
           defaultValue: [
             { value: '选项一', text: '选项一' },
             { value: '选项二', text: '选项二' },
-            {
-              value: '选项三',
-              text: '选项三',
-            },
+            { value: '选项三', text: '选项三' },
           ],
         },
       },
@@ -7437,11 +7151,7 @@ export default [
           desc: '鼠标点击弹开菜单时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            {
-              name: 'key',
-              desc: '选中项key值',
-              type: 'Object',
-            },
+            { name: 'key', desc: '选中项key值', type: 'Object' },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -7449,33 +7159,21 @@ export default [
       type: {
         AlignType: [
           { value: 'topLeft', text: '上左' },
-          {
-            value: 'top',
-            text: '上',
-          },
+          { value: 'top', text: '上' },
           { value: 'topRight', text: '上右' },
           { value: 'bottomLeft', text: '下左' },
-          {
-            value: 'bottom',
-            text: '下',
-          },
+          { value: 'bottom', text: '下' },
           { value: 'bottomRight', text: '下右' },
         ],
         SizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         StyleType: [
           { value: 'customs', text: '填充风格' },
           { value: 'primary', text: '文本风格' },
-          {
-            value: 'basic',
-            text: '线框风格',
-          },
+          { value: 'basic', text: '线框风格' },
         ],
         ActionType: [{ value: 'hover', text: '悬浮展开' }, { value: 'click', text: '点击展开' }],
       },
@@ -8082,11 +7780,7 @@ export default [
           desc: '配置前置和后缀图标',
           meta: [
             { key: 'prefixIconClass', title: '前置图标', type: 'icon' },
-            {
-              key: 'suffixIconClass',
-              title: '后缀图标',
-              type: 'icon',
-            },
+            { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
           ],
         },
         data: {
@@ -8094,38 +7788,23 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             {
               key: 'icons',
               title: '前/后缀图标',
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
                 { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                {
-                  key: 'suffixIconSrc',
-                  title: '后缀图片',
-                  type: 'image',
-                },
+                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
           ],
           defaultValue: [
             { value: '选项一', text: '选项一' },
             { value: '选项二', text: '选项二' },
-            {
-              value: '选项三',
-              text: '选项三',
-            },
+            { value: '选项三', text: '选项三' },
           ],
         },
       },
@@ -8154,11 +7833,7 @@ export default [
           desc: '鼠标点击弹开菜单时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            {
-              name: 'key',
-              desc: '选中项key值',
-              type: 'Object',
-            },
+            { name: 'key', desc: '选中项key值', type: 'Object' },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -8166,33 +7841,21 @@ export default [
       type: {
         AlignType: [
           { value: 'topLeft', text: '上左' },
-          {
-            value: 'top',
-            text: '上',
-          },
+          { value: 'top', text: '上' },
           { value: 'topRight', text: '上右' },
           { value: 'bottomLeft', text: '下左' },
-          {
-            value: 'bottom',
-            text: '下',
-          },
+          { value: 'bottom', text: '下' },
           { value: 'bottomRight', text: '下右' },
         ],
         SizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         StyleType: [
           { value: 'customs', text: '填充风格' },
           { value: 'primary', text: '文本风格' },
-          {
-            value: 'basic',
-            text: '线框风格',
-          },
+          { value: 'basic', text: '线框风格' },
         ],
         ActionType: [{ value: 'hover', text: '悬浮展开' }, { value: 'click', text: '点击展开' }],
       },
@@ -8625,19 +8288,13 @@ export default [
         InputSize: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'bottom', text: '底部文本' },
-          {
-            value: 'inner',
-            text: '框内文本',
-          },
+          { value: 'inner', text: '框内文本' },
         ],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
       },
@@ -8845,10 +8502,7 @@ export default [
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
         ResizeType: [
           { value: 'both', text: '可调整宽高' },
-          {
-            value: 'horizontal',
-            text: '可调整宽',
-          },
+          { value: 'horizontal', text: '可调整宽' },
           { value: 'vertical', text: '可调整高' },
           { value: 'none', text: '宽高固定' },
         ],
@@ -8856,10 +8510,7 @@ export default [
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'bottom', text: '底部文本' },
-          {
-            value: 'inner',
-            text: '框内文本',
-          },
+          { value: 'inner', text: '框内文本' },
         ],
       },
       category: ['数据录入'],
@@ -9056,10 +8707,7 @@ export default [
         sizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
       },
       category: ['其他'],
@@ -9139,11 +8787,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             { key: 'des', title: '辅助文本', type: 'string' },
             {
               key: 'icons',
@@ -9151,27 +8795,16 @@ export default [
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
                 { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                {
-                  key: 'suffixIconSrc',
-                  title: '后缀图片',
-                  type: 'image',
-                },
+                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
           ],
           defaultValue: [
             { value: '选项一', text: '选项一' },
             { value: '选项二', text: '选项二' },
-            {
-              value: '选项三',
-              text: '选项三',
-            },
+            { value: '选项三', text: '选项三' },
           ],
         },
         mutliple: { type: 'boolean', desc: '是否多选', propsDefaultValue: false },
@@ -9219,11 +8852,7 @@ export default [
           desc: '点击列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            {
-              name: 'keys',
-              desc: '所有的选中值',
-              type: 'Object',
-            },
+            { name: 'keys', desc: '所有的选中值', type: 'Object' },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -9231,11 +8860,7 @@ export default [
           desc: '鼠标进入列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            {
-              name: 'item',
-              desc: '当前鼠标进入的列表项数据',
-              type: 'Object',
-            },
+            { name: 'item', desc: '当前鼠标进入的列表项数据', type: 'Object' },
           ],
         },
         onExpandPathChange: {
@@ -9249,17 +8874,11 @@ export default [
         SizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         CheckedCSSType: [
           { value: 'background', text: '填充背景风格' },
-          {
-            value: 'checkbox',
-            text: '多选框风格',
-          },
+          { value: 'checkbox', text: '多选框风格' },
           { value: 'none', text: '高亮文本风格' },
         ],
         ActionType: [{ value: 'hover', text: '悬浮展开' }, { value: 'click', text: '点击展开' }],
@@ -9771,11 +9390,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             { key: 'des', title: '辅助文本', type: 'string' },
             {
               key: 'icons',
@@ -9783,27 +9398,16 @@ export default [
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
                 { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                {
-                  key: 'suffixIconSrc',
-                  title: '后缀图片',
-                  type: 'image',
-                },
+                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
           ],
           defaultValue: [
             { value: '选项一', text: '选项一' },
             { value: '选项二', text: '选项二' },
-            {
-              value: '选项三',
-              text: '选项三',
-            },
+            { value: '选项三', text: '选项三' },
           ],
         },
         mutliple: {
@@ -9856,11 +9460,7 @@ export default [
           desc: '点击列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            {
-              name: 'keys',
-              desc: '所有的选中值',
-              type: 'Object',
-            },
+            { name: 'keys', desc: '所有的选中值', type: 'Object' },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -9868,11 +9468,7 @@ export default [
           desc: '鼠标进入列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            {
-              name: 'item',
-              desc: '当前鼠标进入的列表项数据',
-              type: 'Object',
-            },
+            { name: 'item', desc: '当前鼠标进入的列表项数据', type: 'Object' },
           ],
         },
         onExpandPathChange: {
@@ -9886,17 +9482,11 @@ export default [
         SizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         CheckedCSSType: [
           { value: 'background', text: '填充背景风格' },
-          {
-            value: 'checkbox',
-            text: '多选框风格',
-          },
+          { value: 'checkbox', text: '多选框风格' },
           { value: 'none', text: '高亮文本风格' },
         ],
         ActionType: [{ value: 'hover', text: '悬浮展开' }, { value: 'click', text: '点击展开' }],
@@ -10366,11 +9956,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'open', title: '展开图标', type: 'icon' },
-            {
-              key: 'close',
-              title: '关闭图标',
-              type: 'icon',
-            },
+            { key: 'close', title: '关闭图标', type: 'icon' },
           ],
         },
         indentDistance: { type: 'number', desc: '每一项leftPadding的距离', propsDefaultValue: 14 },
@@ -10401,34 +9987,18 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             { key: 'des', title: '辅助文本', type: 'string' },
-            {
-              key: 'icon',
-              title: '前缀图标',
-              type: 'icon',
-            },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
             {
               key: 'icons',
               title: '前/后缀图标',
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
                 { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                {
-                  key: 'suffixIconSrc',
-                  title: '后缀图片',
-                  type: 'image',
-                },
+                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
             { key: 'children', title: '子项数据', type: 'Object[]' },
@@ -11909,11 +11479,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'open', title: '展开图标', type: 'icon' },
-            {
-              key: 'close',
-              title: '关闭图标',
-              type: 'icon',
-            },
+            { key: 'close', title: '关闭图标', type: 'icon' },
           ],
         },
         indentDistance: { type: 'number', desc: '每一项leftPadding的距离', propsDefaultValue: 14 },
@@ -11944,34 +11510,18 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             { key: 'des', title: '辅助文本', type: 'string' },
-            {
-              key: 'icon',
-              title: '前缀图标',
-              type: 'icon',
-            },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
             {
               key: 'icons',
               title: '前/后缀图标',
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
                 { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                {
-                  key: 'suffixIconSrc',
-                  title: '后缀图片',
-                  type: 'image',
-                },
+                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
             { key: 'children', title: '子项数据', type: 'Object[]' },
@@ -12422,11 +11972,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'open', title: '展开图标', type: 'icon' },
-            {
-              key: 'close',
-              title: '关闭图标',
-              type: 'icon',
-            },
+            { key: 'close', title: '关闭图标', type: 'icon' },
           ],
         },
         indentDistance: { type: 'number', desc: '每一项leftPadding的距离', propsDefaultValue: 14 },
@@ -12457,34 +12003,18 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             { key: 'des', title: '辅助文本', type: 'string' },
-            {
-              key: 'icon',
-              title: '前缀图标',
-              type: 'icon',
-            },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
             {
               key: 'icons',
               title: '前/后缀图标',
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
                 { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                {
-                  key: 'suffixIconSrc',
-                  title: '后缀图片',
-                  type: 'image',
-                },
+                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
             { key: 'children', title: '子项数据', type: 'Object[]' },
@@ -12994,11 +12524,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'open', title: '展开图标', type: 'icon' },
-            {
-              key: 'close',
-              title: '关闭图标',
-              type: 'icon',
-            },
+            { key: 'close', title: '关闭图标', type: 'icon' },
           ],
         },
         indentDistance: { type: 'number', desc: '每一项leftPadding的距离', propsDefaultValue: 14 },
@@ -13029,34 +12555,18 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             { key: 'des', title: '辅助文本', type: 'string' },
-            {
-              key: 'icon',
-              title: '前缀图标',
-              type: 'icon',
-            },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
             {
               key: 'icons',
               title: '前/后缀图标',
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
                 { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                {
-                  key: 'suffixIconSrc',
-                  title: '后缀图片',
-                  type: 'image',
-                },
+                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
             { key: 'children', title: '子项数据', type: 'Object[]' },
@@ -13416,10 +12926,7 @@ export default [
       type: {
         PlacementType: [
           { value: 'topRight', text: '右上' },
-          {
-            value: 'bottomLeft',
-            text: '左下',
-          },
+          { value: 'bottomLeft', text: '左下' },
           { value: 'bottomRight', text: '右下' },
           { value: 'topLeft', text: '左上' },
         ],
@@ -13552,20 +13059,14 @@ export default [
       type: {
         InputSize: [
           { value: 'small', text: '小' },
-          {
-            value: 'default',
-            text: '正常',
-          },
+          { value: 'default', text: '正常' },
           { value: 'large', text: '大' },
         ],
         ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'bottom', text: '底部文本' },
-          {
-            value: 'inner',
-            text: '框内文本',
-          },
+          { value: 'inner', text: '框内文本' },
         ],
         ChangeType: { newValue: 'number', oldValue: 'number', event: 'SyntheticEvent' },
       },
@@ -13862,50 +13363,30 @@ export default [
           desc: '页码改变的回调，参数是改变后的页码及每页条数',
           args: [
             { name: 'newValue', desc: '页码改变后的页码', type: 'number' },
-            {
-              name: 'oldValue',
-              desc: '页码改变前的页码',
-              type: 'number',
-            },
+            { name: 'oldValue', desc: '页码改变前的页码', type: 'number' },
             { name: 'page', desc: '页码改变后的页码', type: 'number' },
-            {
-              name: 'pageSize',
-              desc: '每页条数',
-              type: 'number',
-            },
+            { name: 'pageSize', desc: '每页条数', type: 'number' },
           ],
         },
         onShowSizeChange: {
           desc: 'pageSize 变化的回调',
           args: [
             { name: 'current', desc: '当前页数', type: 'number' },
-            {
-              name: 'size',
-              desc: '每页条数',
-              type: 'number',
-            },
+            { name: 'size', desc: '每页条数', type: 'number' },
           ],
         },
         onQuickJumperInputBlur: {
           desc: '快速跳转输入框失去焦点时触发',
           args: [
             { name: 'current', desc: '当前输入框的值', type: 'number' },
-            {
-              name: 'event',
-              desc: '失去焦点的DOM事件',
-              type: 'FocusEvent',
-            },
+            { name: 'event', desc: '失去焦点的DOM事件', type: 'FocusEvent' },
           ],
         },
         onQuickJumperInputEnter: {
           desc: '键盘按下去并松开后执行',
           args: [
             { name: 'current', desc: '当前输入框的值', type: 'number' },
-            {
-              name: 'event',
-              desc: '键盘按下回车键的DOM事件',
-              type: 'KeyboardEvent',
-            },
+            { name: 'event', desc: '键盘按下回车键的DOM事件', type: 'KeyboardEvent' },
           ],
         },
         onQuickJumperInputChange: {
@@ -13932,10 +13413,7 @@ export default [
       type: {
         BlockType: [
           { value: 'Page', text: '主体' },
-          {
-            value: 'PageInput',
-            text: '快速跳转',
-          },
+          { value: 'PageInput', text: '快速跳转' },
           { value: 'Total', text: '总共数据' },
           { value: 'PageSize', text: '每页数量' },
         ],
@@ -13943,10 +13421,7 @@ export default [
         SizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         ChangeType: { newValue: 'number', oldValue: 'number', event: 'SyntheticEvent' },
       },
@@ -14475,50 +13950,30 @@ export default [
           desc: '页码改变的回调，参数是改变后的页码及每页条数',
           args: [
             { name: 'newValue', desc: '页码改变后的页码', type: 'number' },
-            {
-              name: 'oldValue',
-              desc: '页码改变前的页码',
-              type: 'number',
-            },
+            { name: 'oldValue', desc: '页码改变前的页码', type: 'number' },
             { name: 'page', desc: '页码改变后的页码', type: 'number' },
-            {
-              name: 'pageSize',
-              desc: '每页条数',
-              type: 'number',
-            },
+            { name: 'pageSize', desc: '每页条数', type: 'number' },
           ],
         },
         onShowSizeChange: {
           desc: 'pageSize 变化的回调',
           args: [
             { name: 'current', desc: '当前页数', type: 'number' },
-            {
-              name: 'size',
-              desc: '每页条数',
-              type: 'number',
-            },
+            { name: 'size', desc: '每页条数', type: 'number' },
           ],
         },
         onQuickJumperInputBlur: {
           desc: '快速跳转输入框失去焦点时触发',
           args: [
             { name: 'current', desc: '当前输入框的值', type: 'number' },
-            {
-              name: 'event',
-              desc: '失去焦点的DOM事件',
-              type: 'FocusEvent',
-            },
+            { name: 'event', desc: '失去焦点的DOM事件', type: 'FocusEvent' },
           ],
         },
         onQuickJumperInputEnter: {
           desc: '键盘按下去并松开后执行',
           args: [
             { name: 'current', desc: '当前输入框的值', type: 'number' },
-            {
-              name: 'event',
-              desc: '键盘按下回车键的DOM事件',
-              type: 'KeyboardEvent',
-            },
+            { name: 'event', desc: '键盘按下回车键的DOM事件', type: 'KeyboardEvent' },
           ],
         },
         onQuickJumperInputChange: {
@@ -14545,10 +14000,7 @@ export default [
       type: {
         BlockType: [
           { value: 'Page', text: '主体' },
-          {
-            value: 'PageInput',
-            text: '快速跳转',
-          },
+          { value: 'PageInput', text: '快速跳转' },
           { value: 'Total', text: '总共数据' },
           { value: 'PageSize', text: '每页数量' },
         ],
@@ -14556,10 +14008,7 @@ export default [
         SizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         ChangeType: { newValue: 'number', oldValue: 'number', event: 'SyntheticEvent' },
       },
@@ -14709,45 +14158,27 @@ export default [
       type: {
         DirectionType: [
           { value: 'topLeft', text: '上左' },
-          {
-            value: 'top',
-            text: '上',
-          },
+          { value: 'top', text: '上' },
           { value: 'topRight', text: '上右' },
           { value: 'bottomLeft', text: '下左' },
-          {
-            value: 'bottom',
-            text: '下',
-          },
+          { value: 'bottom', text: '下' },
           { value: 'bottomRight', text: '下右' },
           { value: 'leftTop', text: '左上' },
-          {
-            value: 'left',
-            text: '左',
-          },
+          { value: 'left', text: '左' },
           { value: 'leftBottom', text: '左下' },
           { value: 'rightTop', text: '右上' },
-          {
-            value: 'right',
-            text: '右',
-          },
+          { value: 'right', text: '右' },
           { value: 'rightBottom', text: '右下' },
         ],
         ActionType: [
           { value: 'click', text: '点击' },
           { value: 'hover', text: '滑过' },
-          {
-            value: 'focus',
-            text: '聚焦',
-          },
+          { value: 'focus', text: '聚焦' },
         ],
         ButtonType: [
           { value: 'default', text: '默认' },
           { value: 'primary', text: '线框' },
-          {
-            value: 'success',
-            text: '成功',
-          },
+          { value: 'success', text: '成功' },
           { value: 'warning', text: '警告' },
           { value: 'danger', text: '危险' },
         ],
@@ -15017,45 +14448,27 @@ export default [
       type: {
         DirectionType: [
           { value: 'topLeft', text: '上左' },
-          {
-            value: 'top',
-            text: '上',
-          },
+          { value: 'top', text: '上' },
           { value: 'topRight', text: '上右' },
           { value: 'bottomLeft', text: '下左' },
-          {
-            value: 'bottom',
-            text: '下',
-          },
+          { value: 'bottom', text: '下' },
           { value: 'bottomRight', text: '下右' },
           { value: 'leftTop', text: '左上' },
-          {
-            value: 'left',
-            text: '左',
-          },
+          { value: 'left', text: '左' },
           { value: 'leftBottom', text: '左下' },
           { value: 'rightTop', text: '右上' },
-          {
-            value: 'right',
-            text: '右',
-          },
+          { value: 'right', text: '右' },
           { value: 'rightBottom', text: '右下' },
         ],
         ActionType: [
           { value: 'click', text: '点击' },
           { value: 'hover', text: '滑过' },
-          {
-            value: 'focus',
-            text: '聚焦',
-          },
+          { value: 'focus', text: '聚焦' },
         ],
         ButtonType: [
           { value: 'default', text: '默认' },
           { value: 'primary', text: '线框' },
-          {
-            value: 'success',
-            text: '成功',
-          },
+          { value: 'success', text: '成功' },
           { value: 'warning', text: '警告' },
           { value: 'danger', text: '危险' },
         ],
@@ -15217,37 +14630,22 @@ export default [
       type: {
         DirectionType: [
           { value: 'topLeft', text: '上左' },
-          {
-            value: 'top',
-            text: '上',
-          },
+          { value: 'top', text: '上' },
           { value: 'topRight', text: '上右' },
           { value: 'bottomLeft', text: '下左' },
-          {
-            value: 'bottom',
-            text: '下',
-          },
+          { value: 'bottom', text: '下' },
           { value: 'bottomRight', text: '下右' },
           { value: 'leftTop', text: '左上' },
-          {
-            value: 'left',
-            text: '左',
-          },
+          { value: 'left', text: '左' },
           { value: 'leftBottom', text: '左下' },
           { value: 'rightTop', text: '右上' },
-          {
-            value: 'right',
-            text: '右',
-          },
+          { value: 'right', text: '右' },
           { value: 'rightBottom', text: '右下' },
         ],
         ActionType: [
           { value: 'click', text: '点击' },
           { value: 'hover', text: '滑过' },
-          {
-            value: 'focus',
-            text: '聚焦',
-          },
+          { value: 'focus', text: '聚焦' },
         ],
         PopArrowType: [{ value: 'sharp', text: '尖角' }, { value: 'round', text: '圆角' }],
       },
@@ -15406,37 +14804,22 @@ export default [
       type: {
         DirectionType: [
           { value: 'topLeft', text: '上左' },
-          {
-            value: 'top',
-            text: '上',
-          },
+          { value: 'top', text: '上' },
           { value: 'topRight', text: '上右' },
           { value: 'bottomLeft', text: '下左' },
-          {
-            value: 'bottom',
-            text: '下',
-          },
+          { value: 'bottom', text: '下' },
           { value: 'bottomRight', text: '下右' },
           { value: 'leftTop', text: '左上' },
-          {
-            value: 'left',
-            text: '左',
-          },
+          { value: 'left', text: '左' },
           { value: 'leftBottom', text: '左下' },
           { value: 'rightTop', text: '右上' },
-          {
-            value: 'right',
-            text: '右',
-          },
+          { value: 'right', text: '右' },
           { value: 'rightBottom', text: '右下' },
         ],
         ActionType: [
           { value: 'click', text: '点击' },
           { value: 'hover', text: '滑过' },
-          {
-            value: 'focus',
-            text: '聚焦',
-          },
+          { value: 'focus', text: '聚焦' },
         ],
         PopArrowType: [{ value: 'sharp', text: '尖角' }, { value: 'round', text: '圆角' }],
       },
@@ -15529,18 +14912,12 @@ export default [
       type: {
         ProgressType: [
           { value: 'line', text: '线型' },
-          {
-            value: 'circle',
-            text: '圆型',
-          },
+          { value: 'circle', text: '圆型' },
           { value: 'dashboard', text: '仪表盘' },
         ],
         ProgressStatusType: [
           { value: 'default', text: '正常' },
-          {
-            value: 'success',
-            text: '成功',
-          },
+          { value: 'success', text: '成功' },
           { value: 'error', text: '错误' },
         ],
         ProgressShowType: [{ value: 'default', text: '外部' }, { value: 'inside', text: '内部' }],
@@ -15760,18 +15137,12 @@ export default [
       type: {
         ProgressType: [
           { value: 'line', text: '线型' },
-          {
-            value: 'circle',
-            text: '圆型',
-          },
+          { value: 'circle', text: '圆型' },
           { value: 'dashboard', text: '仪表盘' },
         ],
         ProgressStatusType: [
           { value: 'default', text: '正常' },
-          {
-            value: 'success',
-            text: '成功',
-          },
+          { value: 'success', text: '成功' },
           { value: 'error', text: '错误' },
         ],
         ProgressShowType: [{ value: 'default', text: '外部' }, { value: 'inside', text: '内部' }],
@@ -15869,18 +15240,12 @@ export default [
       type: {
         ProgressType: [
           { value: 'line', text: '线型' },
-          {
-            value: 'circle',
-            text: '圆型',
-          },
+          { value: 'circle', text: '圆型' },
           { value: 'dashboard', text: '仪表盘' },
         ],
         ProgressStatusType: [
           { value: 'default', text: '正常' },
-          {
-            value: 'success',
-            text: '成功',
-          },
+          { value: 'success', text: '成功' },
           { value: 'error', text: '错误' },
         ],
         ProgressShowType: [{ value: 'default', text: '外部' }, { value: 'inside', text: '内部' }],
@@ -16062,19 +15427,12 @@ export default [
           propsDefaultValue: [],
           meta: [
             { key: 'text', title: '展示文字', type: 'string' },
-            {
-              key: 'value',
-              title: '对应字段',
-              type: 'string',
-            },
+            { key: 'value', title: '对应字段', type: 'string' },
           ],
           defaultValue: [
             { text: '选项1', value: '1' },
             { text: '选项2', value: '2' },
-            {
-              text: '选项3',
-              value: '3',
-            },
+            { text: '选项3', value: '3' },
           ],
         },
         displayField: { type: 'string', desc: '单选框的显示字段值', defaultValue: 'text' },
@@ -16104,10 +15462,7 @@ export default [
         RadioChildType: [{ value: 'default', text: '正常' }, { value: 'button', text: '按钮' }],
         RadioButtonSizeType: [
           { value: 'default', text: '正常' },
-          {
-            value: 'small',
-            text: '小',
-          },
+          { value: 'small', text: '小' },
           { value: 'large', text: '大' },
         ],
       },
@@ -16231,19 +15586,12 @@ export default [
           propsDefaultValue: [],
           meta: [
             { key: 'text', title: '展示文字', type: 'string' },
-            {
-              key: 'value',
-              title: '对应字段',
-              type: 'string',
-            },
+            { key: 'value', title: '对应字段', type: 'string' },
           ],
           defaultValue: [
             { text: '选项1', value: '1' },
             { text: '选项2', value: '2' },
-            {
-              text: '选项3',
-              value: '3',
-            },
+            { text: '选项3', value: '3' },
           ],
         },
         displayField: { type: 'string', desc: '单选框的显示字段值', defaultValue: 'text' },
@@ -16277,10 +15625,7 @@ export default [
         RadioChildType: [{ value: 'default', text: '正常' }, { value: 'button', text: '按钮' }],
         RadioButtonSizeType: [
           { value: 'default', text: '正常' },
-          {
-            value: 'small',
-            text: '小',
-          },
+          { value: 'small', text: '小' },
           { value: 'large', text: '大' },
         ],
       },
@@ -16400,17 +15745,9 @@ export default [
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'icon' },
-            {
-              key: 'primary',
-              title: '选中状态图标名称',
-              type: 'icon',
-            },
+            { key: 'primary', title: '选中状态图标名称', type: 'icon' },
             { key: 'danger', title: '低分值图标名称', type: 'icon' },
-            {
-              key: 'amazed',
-              title: '高分值图标名称',
-              type: 'icon',
-            },
+            { key: 'amazed', title: '高分值图标名称', type: 'icon' },
             { key: 'half', title: '半星图标名称', type: 'icon' },
           ],
           defaultValue: {
@@ -16550,17 +15887,9 @@ export default [
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'icon' },
-            {
-              key: 'primary',
-              title: '选中状态图标名称',
-              type: 'icon',
-            },
+            { key: 'primary', title: '选中状态图标名称', type: 'icon' },
             { key: 'danger', title: '低分值图标名称', type: 'icon' },
-            {
-              key: 'amazed',
-              title: '高分值图标名称',
-              type: 'icon',
-            },
+            { key: 'amazed', title: '高分值图标名称', type: 'icon' },
             { key: 'half', title: '半星图标名称', type: 'icon' },
           ],
           defaultValue: {
@@ -16642,17 +15971,9 @@ export default [
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'icon' },
-            {
-              key: 'primary',
-              title: '选中状态图标名称',
-              type: 'icon',
-            },
+            { key: 'primary', title: '选中状态图标名称', type: 'icon' },
             { key: 'danger', title: '低分值图标名称', type: 'icon' },
-            {
-              key: 'amazed',
-              title: '高分值图标名称',
-              type: 'icon',
-            },
+            { key: 'amazed', title: '高分值图标名称', type: 'icon' },
             { key: 'half', title: '半星图标名称', type: 'icon' },
           ],
           defaultValue: {
@@ -16721,11 +16042,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             { key: 'des', title: '辅助文本', type: 'string' },
             {
               key: 'icons',
@@ -16733,27 +16050,16 @@ export default [
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
                 { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                {
-                  key: 'suffixIconSrc',
-                  title: '后缀图片',
-                  type: 'image',
-                },
+                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
           ],
           defaultValue: [
             { value: '选项一', text: '选项一' },
             { value: '选项二', text: '选项二' },
-            {
-              value: '选项三',
-              text: '选项三',
-            },
+            { value: '选项三', text: '选项三' },
           ],
         },
         size: {
@@ -16816,23 +16122,11 @@ export default [
           desc: '选中项发生变化时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            {
-              name: 'newDisplayValue',
-              desc: '所有选中项的displayField的集合',
-              type: 'string[]',
-            },
+            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'newValue',
-              desc: '所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'oldValue',
-              desc: '改变之前所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
           ],
         },
         onTrigger: { desc: '菜单展开是触发' },
@@ -16848,23 +16142,11 @@ export default [
           desc: '选中时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            {
-              name: 'newDisplayValue',
-              desc: '所有选中项的displayField的集合',
-              type: 'string[]',
-            },
+            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'newValue',
-              desc: '所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'oldValue',
-              desc: '改变之前所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
           ],
         },
         onRefresh: { desc: '点击刷新按钮时触发' },
@@ -16873,17 +16155,11 @@ export default [
         sizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         SearchType: [
           { value: 'start', text: '以关键字开头' },
-          {
-            value: 'end',
-            text: '以关键字结尾',
-          },
+          { value: 'end', text: '以关键字结尾' },
           { value: 'include', text: '包含关键字' },
           { value: 'eql', text: '等于关键字' },
         ],
@@ -16891,10 +16167,7 @@ export default [
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'bottom', text: '底部文本' },
-          {
-            value: 'inner',
-            text: '框内文本',
-          },
+          { value: 'inner', text: '框内文本' },
         ],
       },
       category: ['数据录入'],
@@ -17833,11 +17106,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             { key: 'des', title: '辅助文本', type: 'string' },
             {
               key: 'icons',
@@ -17845,27 +17114,16 @@ export default [
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
                 { key: 'prefixIconSrc', title: '前缀图片', type: 'image' },
-                {
-                  key: 'suffixIconSrc',
-                  title: '后缀图片',
-                  type: 'image',
-                },
+                { key: 'suffixIconSrc', title: '后缀图片', type: 'image' },
               ],
             },
           ],
           defaultValue: [
             { value: '选项一', text: '选项一' },
             { value: '选项二', text: '选项二' },
-            {
-              value: '选项三',
-              text: '选项三',
-            },
+            { value: '选项三', text: '选项三' },
           ],
         },
         size: {
@@ -17933,23 +17191,11 @@ export default [
           desc: '选中项发生变化时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            {
-              name: 'newDisplayValue',
-              desc: '所有选中项的displayField的集合',
-              type: 'string[]',
-            },
+            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'newValue',
-              desc: '所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'oldValue',
-              desc: '改变之前所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
           ],
         },
         onTrigger: { desc: '菜单展开是触发' },
@@ -17965,23 +17211,11 @@ export default [
           desc: '选中时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            {
-              name: 'newDisplayValue',
-              desc: '所有选中项的displayField的集合',
-              type: 'string[]',
-            },
+            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'newValue',
-              desc: '所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'oldValue',
-              desc: '改变之前所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
           ],
         },
         onRefresh: { desc: '点击刷新按钮时触发' },
@@ -17990,17 +17224,11 @@ export default [
         sizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         SearchType: [
           { value: 'start', text: '以关键字开头' },
-          {
-            value: 'end',
-            text: '以关键字结尾',
-          },
+          { value: 'end', text: '以关键字结尾' },
           { value: 'include', text: '包含关键字' },
           { value: 'eql', text: '等于关键字' },
         ],
@@ -18008,10 +17236,7 @@ export default [
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'bottom', text: '底部文本' },
-          {
-            value: 'inner',
-            text: '框内文本',
-          },
+          { value: 'inner', text: '框内文本' },
         ],
       },
       category: ['数据录入'],
@@ -19373,32 +18598,16 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
-            {
-              key: 'icon',
-              title: '步骤条图标(图标步骤条填写)',
-              type: 'icon',
-            },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
             { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
           propsDefaultValue: [
             { title: '步骤1', description: '步骤1的描述文本', stepStatus: 'finish' },
-            {
-              title: '步骤2',
-              description: '步骤2的描述文本',
-              stepStatus: 'process',
-            },
+            { title: '步骤2', description: '步骤2的描述文本', stepStatus: 'process' },
             { title: '步骤3', description: '步骤3的描述文本', stepStatus: 'next' },
-            {
-              title: '步骤4',
-              description: '步骤4的描述文本',
-              stepStatus: 'wait',
-            },
+            { title: '步骤4', description: '步骤4的描述文本', stepStatus: 'wait' },
           ],
         },
         defaultData: {
@@ -19406,17 +18615,9 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
-            {
-              key: 'icon',
-              title: '步骤条图标(图标步骤条填写)',
-              type: 'icon',
-            },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
             { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
@@ -19455,10 +18656,7 @@ export default [
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
-          {
-            value: 'flat',
-            text: '半扁平风格',
-          },
+          { value: 'flat', text: '半扁平风格' },
           { value: 'icon', text: '图标风格' },
           { value: 'dot', text: '点状风格' },
         ],
@@ -19471,10 +18669,7 @@ export default [
         StepStatus: [
           { value: 'finish', text: '已完成' },
           { value: 'process', text: '进行中' },
-          {
-            value: 'next',
-            text: '下一步',
-          },
+          { value: 'next', text: '下一步' },
           { value: 'wait', text: '等待中' },
           { value: 'error', text: '异常' },
         ],
@@ -20462,32 +19657,16 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
-            {
-              key: 'icon',
-              title: '步骤条图标(图标步骤条填写)',
-              type: 'icon',
-            },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
             { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
           propsDefaultValue: [
             { title: '步骤1', description: '步骤1的描述文本', stepStatus: 'finish' },
-            {
-              title: '步骤2',
-              description: '步骤2的描述文本',
-              stepStatus: 'process',
-            },
+            { title: '步骤2', description: '步骤2的描述文本', stepStatus: 'process' },
             { title: '步骤3', description: '步骤3的描述文本', stepStatus: 'next' },
-            {
-              title: '步骤4',
-              description: '步骤4的描述文本',
-              stepStatus: 'wait',
-            },
+            { title: '步骤4', description: '步骤4的描述文本', stepStatus: 'wait' },
           ],
         },
         defaultData: {
@@ -20495,17 +19674,9 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
-            {
-              key: 'icon',
-              title: '步骤条图标(图标步骤条填写)',
-              type: 'icon',
-            },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
             { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
@@ -20545,10 +19716,7 @@ export default [
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
-          {
-            value: 'flat',
-            text: '半扁平风格',
-          },
+          { value: 'flat', text: '半扁平风格' },
           { value: 'icon', text: '图标风格' },
           { value: 'dot', text: '点状风格' },
         ],
@@ -20561,10 +19729,7 @@ export default [
         StepStatus: [
           { value: 'finish', text: '已完成' },
           { value: 'process', text: '进行中' },
-          {
-            value: 'next',
-            text: '下一步',
-          },
+          { value: 'next', text: '下一步' },
           { value: 'wait', text: '等待中' },
           { value: 'error', text: '异常' },
         ],
@@ -20779,32 +19944,16 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
-            {
-              key: 'icon',
-              title: '步骤条图标(图标步骤条填写)',
-              type: 'icon',
-            },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
             { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
           propsDefaultValue: [
             { title: '步骤1', description: '步骤1的描述文本', stepStatus: 'finish' },
-            {
-              title: '步骤2',
-              description: '步骤2的描述文本',
-              stepStatus: 'process',
-            },
+            { title: '步骤2', description: '步骤2的描述文本', stepStatus: 'process' },
             { title: '步骤3', description: '步骤3的描述文本', stepStatus: 'next' },
-            {
-              title: '步骤4',
-              description: '步骤4的描述文本',
-              stepStatus: 'wait',
-            },
+            { title: '步骤4', description: '步骤4的描述文本', stepStatus: 'wait' },
           ],
         },
         defaultData: {
@@ -20812,17 +19961,9 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
-            {
-              key: 'icon',
-              title: '步骤条图标(图标步骤条填写)',
-              type: 'icon',
-            },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
             { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
@@ -20863,10 +20004,7 @@ export default [
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
-          {
-            value: 'flat',
-            text: '半扁平风格',
-          },
+          { value: 'flat', text: '半扁平风格' },
           { value: 'icon', text: '图标风格' },
           { value: 'dot', text: '点状风格' },
         ],
@@ -20879,10 +20017,7 @@ export default [
         StepStatus: [
           { value: 'finish', text: '已完成' },
           { value: 'process', text: '进行中' },
-          {
-            value: 'next',
-            text: '下一步',
-          },
+          { value: 'next', text: '下一步' },
           { value: 'wait', text: '等待中' },
           { value: 'error', text: '异常' },
         ],
@@ -21097,32 +20232,16 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
-            {
-              key: 'icon',
-              title: '步骤条图标(图标步骤条填写)',
-              type: 'icon',
-            },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
             { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
           propsDefaultValue: [
             { title: '步骤1', description: '步骤1的描述文本', stepStatus: 'finish' },
-            {
-              title: '步骤2',
-              description: '步骤2的描述文本',
-              stepStatus: 'process',
-            },
+            { title: '步骤2', description: '步骤2的描述文本', stepStatus: 'process' },
             { title: '步骤3', description: '步骤3的描述文本', stepStatus: 'next' },
-            {
-              title: '步骤4',
-              description: '步骤4的描述文本',
-              stepStatus: 'wait',
-            },
+            { title: '步骤4', description: '步骤4的描述文本', stepStatus: 'wait' },
           ],
         },
         defaultData: {
@@ -21130,17 +20249,9 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
-            {
-              key: 'icon',
-              title: '步骤条图标(图标步骤条填写)',
-              type: 'icon',
-            },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
             { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
@@ -21181,10 +20292,7 @@ export default [
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
-          {
-            value: 'flat',
-            text: '半扁平风格',
-          },
+          { value: 'flat', text: '半扁平风格' },
           { value: 'icon', text: '图标风格' },
           { value: 'dot', text: '点状风格' },
         ],
@@ -21197,10 +20305,7 @@ export default [
         StepStatus: [
           { value: 'finish', text: '已完成' },
           { value: 'process', text: '进行中' },
-          {
-            value: 'next',
-            text: '下一步',
-          },
+          { value: 'next', text: '下一步' },
           { value: 'wait', text: '等待中' },
           { value: 'error', text: '异常' },
         ],
@@ -21425,32 +20530,16 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
-            {
-              key: 'icon',
-              title: '步骤条图标(图标步骤条填写)',
-              type: 'icon',
-            },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
             { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
           propsDefaultValue: [
             { title: '步骤1', description: '步骤1的描述文本', stepStatus: 'finish' },
-            {
-              title: '步骤2',
-              description: '步骤2的描述文本',
-              stepStatus: 'process',
-            },
+            { title: '步骤2', description: '步骤2的描述文本', stepStatus: 'process' },
             { title: '步骤3', description: '步骤3的描述文本', stepStatus: 'next' },
-            {
-              title: '步骤4',
-              description: '步骤4的描述文本',
-              stepStatus: 'wait',
-            },
+            { title: '步骤4', description: '步骤4的描述文本', stepStatus: 'wait' },
           ],
         },
         defaultData: {
@@ -21458,17 +20547,9 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
-            {
-              key: 'icon',
-              title: '步骤条图标(图标步骤条填写)',
-              type: 'icon',
-            },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
             { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
@@ -21509,10 +20590,7 @@ export default [
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
-          {
-            value: 'flat',
-            text: '半扁平风格',
-          },
+          { value: 'flat', text: '半扁平风格' },
           { value: 'icon', text: '图标风格' },
           { value: 'dot', text: '点状风格' },
         ],
@@ -21525,10 +20603,7 @@ export default [
         StepStatus: [
           { value: 'finish', text: '已完成' },
           { value: 'process', text: '进行中' },
-          {
-            value: 'next',
-            text: '下一步',
-          },
+          { value: 'next', text: '下一步' },
           { value: 'wait', text: '等待中' },
           { value: 'error', text: '异常' },
         ],
@@ -21833,27 +20908,15 @@ export default [
           type: 'Object[]',
           meta: [
             { key: 'title', title: '表头文本', type: 'string' },
-            {
-              key: 'key',
-              title: '对应key',
-              type: 'any',
-            },
+            { key: 'key', title: '对应key', type: 'any' },
             { key: 'dataIndex', title: '指定展示项', type: 'any' },
-            {
-              key: 'width',
-              title: '列宽',
-              type: 'number',
-            },
+            { key: 'width', title: '列宽', type: 'number' },
           ],
           desc: '表格每一行展示的内容',
           propsDefaultValue: [],
           defaultValue: [
             { title: 'Name', dataIndex: 'name', key: 'name' },
-            {
-              title: 'Age',
-              dataIndex: 'age',
-              key: 'age',
-            },
+            { title: 'Age', dataIndex: 'age', key: 'age' },
             { title: 'Address', dataIndex: 'address', key: 'address' },
           ],
         },
@@ -21862,11 +20925,7 @@ export default [
           desc: '表格是否有选中项',
           meta: [
             { key: 'width', title: '选择框所在列的宽度', type: 'number | string' },
-            {
-              key: 'selectRowKeys',
-              title: '指定选中行的key值集合',
-              type: 'string[]',
-            },
+            { key: 'selectRowKeys', title: '指定选中行的key值集合', type: 'string[]' },
           ],
         },
         data: {
@@ -21876,11 +20935,7 @@ export default [
           propsDefaultValue: [],
           defaultValue: [
             { name: 'Jack', age: 28, address: 'some where' },
-            {
-              name: 'Rose',
-              age: 36,
-              address: 'some where',
-            },
+            { name: 'Rose', age: 36, address: 'some where' },
             { name: 'Bob', age: 25, address: 'some where' },
           ],
         },
@@ -21923,28 +20978,16 @@ export default [
           desc: '点击展开图标时触发',
           args: [
             { name: 'expanded', desc: '当前是否展开', type: 'boolean' },
-            {
-              name: 'record',
-              desc: '当前行数据',
-              type: 'Object',
-            },
+            { name: 'record', desc: '当前行数据', type: 'Object' },
           ],
         },
         onChange: {
           desc: '点击排序变化时触发',
           args: [
             { name: 'column', desc: '当前列的表头数据', type: 'Object' },
-            {
-              name: 'filed',
-              desc: '当前列数据在数据项中对应的key',
-              type: 'String',
-            },
+            { name: 'filed', desc: '当前列数据在数据项中对应的key', type: 'String' },
             { name: 'order', desc: '当前排序类型', type: 'String' },
-            {
-              name: 'data',
-              desc: '当前排完序的数据',
-              type: 'Array',
-            },
+            { name: 'data', desc: '当前排完序的数据', type: 'Array' },
           ],
         },
       },
@@ -21992,26 +21035,14 @@ export default [
           injectProps: false,
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            {
-              key: 'content',
-              title: '内容',
-              type: 'lugiaDPages',
-            },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
-            {
-              key: 'icon',
-              title: '前缀图标',
-              type: 'icon',
-            },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
           ],
           defaultValue: [
             { title: 'Tab1', value: 'Tab1', content: 'content of Tab1' },
-            {
-              title: 'Tab2',
-              value: 'Tab2',
-              content: 'content of Tab2',
-            },
+            { title: 'Tab2', value: 'Tab2', content: 'content of Tab2' },
           ],
         },
         defaultData: {
@@ -22019,17 +21050,9 @@ export default [
           desc: '默认配置标签页需要配置的数据,若有data,以data优先',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            {
-              key: 'content',
-              title: '内容',
-              type: 'lugiaDPages',
-            },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
-            {
-              key: 'icon',
-              title: '前缀图标',
-              type: 'icon',
-            },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
           ],
         },
@@ -22073,11 +21096,7 @@ export default [
           },
           meta: [
             { key: 'preIcon', title: '上一页图标', type: 'icon' },
-            {
-              key: 'suffixIcon',
-              title: '下一页图标',
-              type: 'icon',
-            },
+            { key: 'suffixIcon', title: '下一页图标', type: 'icon' },
           ],
         },
         hideTabBar: { type: 'boolean', desc: '否渲染页签头部区域', propsDefaultValue: false },
@@ -22125,20 +21144,14 @@ export default [
       type: {
         TabType: [
           { value: 'line', text: '线性标签页' },
-          {
-            value: 'card',
-            text: '卡片标签页',
-          },
+          { value: 'card', text: '卡片标签页' },
           { value: 'window', text: '窗口标签页' },
         ],
         PagedType: [{ value: 'single', text: '单个切换' }, { value: 'page', text: '整页切换' }],
         TabPositionType: [
           { value: 'top', text: '上' },
           { value: 'bottom', text: '下' },
-          {
-            value: 'left',
-            text: '左',
-          },
+          { value: 'left', text: '左' },
           { value: 'right', text: '右' },
         ],
         ReturnType: {
@@ -22600,26 +21613,14 @@ export default [
           injectProps: false,
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            {
-              key: 'content',
-              title: '内容',
-              type: 'lugiaDPages',
-            },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
-            {
-              key: 'icon',
-              title: '前缀图标',
-              type: 'icon',
-            },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
           ],
           defaultValue: [
             { title: 'Tab1', value: 'Tab1', content: 'content of Tab1' },
-            {
-              title: 'Tab2',
-              value: 'Tab2',
-              content: 'content of Tab2',
-            },
+            { title: 'Tab2', value: 'Tab2', content: 'content of Tab2' },
           ],
         },
         defaultData: {
@@ -22627,17 +21628,9 @@ export default [
           desc: '默认配置标签页需要配置的数据,若有data,以data优先',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            {
-              key: 'content',
-              title: '内容',
-              type: 'lugiaDPages',
-            },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
-            {
-              key: 'icon',
-              title: '前缀图标',
-              type: 'icon',
-            },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
           ],
         },
@@ -22681,11 +21674,7 @@ export default [
           },
           meta: [
             { key: 'preIcon', title: '上一页图标', type: 'icon' },
-            {
-              key: 'suffixIcon',
-              title: '下一页图标',
-              type: 'icon',
-            },
+            { key: 'suffixIcon', title: '下一页图标', type: 'icon' },
           ],
         },
         hideTabBar: { type: 'boolean', desc: '否渲染页签头部区域', propsDefaultValue: false },
@@ -22733,20 +21722,14 @@ export default [
       type: {
         TabType: [
           { value: 'line', text: '线性标签页' },
-          {
-            value: 'card',
-            text: '卡片标签页',
-          },
+          { value: 'card', text: '卡片标签页' },
           { value: 'window', text: '窗口标签页' },
         ],
         PagedType: [{ value: 'single', text: '单个切换' }, { value: 'page', text: '整页切换' }],
         TabPositionType: [
           { value: 'top', text: '上' },
           { value: 'bottom', text: '下' },
-          {
-            value: 'left',
-            text: '左',
-          },
+          { value: 'left', text: '左' },
           { value: 'right', text: '右' },
         ],
         ReturnType: {
@@ -22923,26 +21906,14 @@ export default [
           injectProps: false,
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            {
-              key: 'content',
-              title: '内容',
-              type: 'lugiaDPages',
-            },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
-            {
-              key: 'icon',
-              title: '前缀图标',
-              type: 'icon',
-            },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
           ],
           defaultValue: [
             { title: 'Tab1', value: 'Tab1', content: 'content of Tab1' },
-            {
-              title: 'Tab2',
-              value: 'Tab2',
-              content: 'content of Tab2',
-            },
+            { title: 'Tab2', value: 'Tab2', content: 'content of Tab2' },
           ],
         },
         defaultData: {
@@ -22950,17 +21921,9 @@ export default [
           desc: '默认配置标签页需要配置的数据,若有data,以data优先',
           meta: [
             { key: 'title', title: '页签', type: 'string' },
-            {
-              key: 'content',
-              title: '内容',
-              type: 'lugiaDPages',
-            },
+            { key: 'content', title: '内容', type: 'lugiaDPages' },
             { key: 'value', title: '唯一标识', type: 'string' },
-            {
-              key: 'icon',
-              title: '前缀图标',
-              type: 'icon',
-            },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
             { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
           ],
         },
@@ -23004,11 +21967,7 @@ export default [
           },
           meta: [
             { key: 'preIcon', title: '上一页图标', type: 'icon' },
-            {
-              key: 'suffixIcon',
-              title: '下一页图标',
-              type: 'icon',
-            },
+            { key: 'suffixIcon', title: '下一页图标', type: 'icon' },
           ],
         },
         hideTabBar: { type: 'boolean', desc: '否渲染页签头部区域', propsDefaultValue: false },
@@ -23056,20 +22015,14 @@ export default [
       type: {
         TabType: [
           { value: 'line', text: '线性标签页' },
-          {
-            value: 'card',
-            text: '卡片标签页',
-          },
+          { value: 'card', text: '卡片标签页' },
           { value: 'window', text: '窗口标签页' },
         ],
         PagedType: [{ value: 'single', text: '单个切换' }, { value: 'page', text: '整页切换' }],
         TabPositionType: [
           { value: 'top', text: '上' },
           { value: 'bottom', text: '下' },
-          {
-            value: 'left',
-            text: '左',
-          },
+          { value: 'left', text: '左' },
           { value: 'right', text: '右' },
         ],
         ReturnType: {
@@ -23258,10 +22211,7 @@ export default [
         ShapeType: [{ value: 'basic', text: '基本类型' }, { value: 'round', text: '圆角类型' }],
         StyleType: [
           { value: 'customs', text: '自定义风格' },
-          {
-            value: 'primary',
-            text: '主题风格',
-          },
+          { value: 'primary', text: '主题风格' },
           { value: 'basic', text: '基本风格' },
           { value: 'presets', text: '预设类型' },
         ],
@@ -23486,10 +22436,7 @@ export default [
         ShapeType: [{ value: 'basic', text: '基本类型' }, { value: 'round', text: '圆角类型' }],
         StyleType: [
           { value: 'customs', text: '自定义风格' },
-          {
-            value: 'primary',
-            text: '主题风格',
-          },
+          { value: 'primary', text: '主题风格' },
           { value: 'basic', text: '基本风格' },
           { value: 'presets', text: '预设类型' },
         ],
@@ -23587,10 +22534,7 @@ export default [
         ShapeType: [{ value: 'basic', text: '基本类型' }, { value: 'round', text: '圆角类型' }],
         StyleType: [
           { value: 'customs', text: '自定义风格' },
-          {
-            value: 'primary',
-            text: '主题风格',
-          },
+          { value: 'primary', text: '主题风格' },
           { value: 'basic', text: '基本风格' },
           { value: 'presets', text: '预设类型' },
         ],
@@ -23691,24 +22635,13 @@ export default [
           desc: '时间轴填充的数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            {
-              key: 'description',
-              title: '时间节点详细描述',
-              type: 'string',
-            },
+            { key: 'description', title: '时间节点详细描述', type: 'string' },
             { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineItemType' },
-            {
-              key: 'status',
-              title: '时间节点状态',
-              type: 'TimeLineStatus',
-            },
+            { key: 'status', title: '时间节点状态', type: 'TimeLineStatus' },
           ],
           propsDefaultValue: [
             { time: '时间节点1', description: '时间节点1的描述文本' },
-            {
-              time: '时间节点2',
-              description: '时间节点2的描述文本',
-            },
+            { time: '时间节点2', description: '时间节点2的描述文本' },
             { time: '时间节点3', description: '时间节点3的描述文本' },
             { time: '时间节点4', description: '时间节点4的描述文本' },
           ],
@@ -23718,17 +22651,9 @@ export default [
           desc: '时间轴填充的默认显示数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            {
-              key: 'description',
-              title: '时间节点详细描述',
-              type: 'string',
-            },
+            { key: 'description', title: '时间节点详细描述', type: 'string' },
             { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineItemType' },
-            {
-              key: 'status',
-              title: '时间节点状态',
-              type: 'TimeLineStatus',
-            },
+            { key: 'status', title: '时间节点状态', type: 'TimeLineStatus' },
           ],
         },
         reverse: {
@@ -23747,26 +22672,17 @@ export default [
       type: {
         TimeLineMode: [
           { value: 'left', text: '左侧展示' },
-          {
-            value: 'right',
-            text: '右侧展示',
-          },
+          { value: 'right', text: '右侧展示' },
           { value: 'alternate', text: '交替展示' },
         ],
         TimeLineItemType: [
           { value: 'dot', text: '点状节点' },
-          {
-            value: 'icon',
-            text: '图标节点',
-          },
+          { value: 'icon', text: '图标节点' },
           { value: 'explain', text: '隐藏节点' },
         ],
         TimeLineStatus: [
           { value: 'success', text: '成功状态' },
-          {
-            value: 'failed',
-            text: '失败状态',
-          },
+          { value: 'failed', text: '失败状态' },
           { value: 'normal', text: '正常状态' },
         ],
       },
@@ -23996,24 +22912,13 @@ export default [
           desc: '时间轴填充的数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            {
-              key: 'description',
-              title: '时间节点详细描述',
-              type: 'string',
-            },
+            { key: 'description', title: '时间节点详细描述', type: 'string' },
             { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineItemType' },
-            {
-              key: 'status',
-              title: '时间节点状态',
-              type: 'TimeLineStatus',
-            },
+            { key: 'status', title: '时间节点状态', type: 'TimeLineStatus' },
           ],
           propsDefaultValue: [
             { time: '时间节点1', description: '时间节点1的描述文本' },
-            {
-              time: '时间节点2',
-              description: '时间节点2的描述文本',
-            },
+            { time: '时间节点2', description: '时间节点2的描述文本' },
             { time: '时间节点3', description: '时间节点3的描述文本' },
             { time: '时间节点4', description: '时间节点4的描述文本' },
           ],
@@ -24023,17 +22928,9 @@ export default [
           desc: '时间轴填充的默认显示数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            {
-              key: 'description',
-              title: '时间节点详细描述',
-              type: 'string',
-            },
+            { key: 'description', title: '时间节点详细描述', type: 'string' },
             { key: 'timeLineType', title: '时间节点类型', type: 'TimeLineItemType' },
-            {
-              key: 'status',
-              title: '时间节点状态',
-              type: 'TimeLineStatus',
-            },
+            { key: 'status', title: '时间节点状态', type: 'TimeLineStatus' },
           ],
         },
         reverse: {
@@ -24056,26 +22953,17 @@ export default [
       type: {
         TimeLineMode: [
           { value: 'left', text: '左侧展示' },
-          {
-            value: 'right',
-            text: '右侧展示',
-          },
+          { value: 'right', text: '右侧展示' },
           { value: 'alternate', text: '交替展示' },
         ],
         TimeLineItemType: [
           { value: 'dot', text: '点状节点' },
-          {
-            value: 'icon',
-            text: '图标节点',
-          },
+          { value: 'icon', text: '图标节点' },
           { value: 'explain', text: '隐藏节点' },
         ],
         TimeLineStatus: [
           { value: 'success', text: '成功状态' },
-          {
-            value: 'failed',
-            text: '失败状态',
-          },
+          { value: 'failed', text: '失败状态' },
           { value: 'normal', text: '正常状态' },
         ],
       },
@@ -24223,19 +23111,13 @@ export default [
       type: {
         InputSize: [
           { value: 'small', text: '小' },
-          {
-            value: 'default',
-            text: '正常',
-          },
+          { value: 'default', text: '正常' },
           { value: 'large', text: '大' },
         ],
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'bottom', text: '底部文本' },
-          {
-            value: 'inner',
-            text: '框内文本',
-          },
+          { value: 'inner', text: '框内文本' },
         ],
         ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
@@ -24392,38 +23274,23 @@ export default [
       type: {
         ActionType: [
           { value: 'click', text: '点击' },
-          {
-            value: 'hover',
-            text: '滑过',
-          },
+          { value: 'hover', text: '滑过' },
           { value: 'focus', text: '聚焦' },
         ],
         PopArrowType: [{ value: 'sharp', text: '尖角' }, { value: 'round', text: '圆角' }],
         DirectionType: [
           { value: 'topLeft', text: '上左' },
           { value: 'top', text: '上' },
-          {
-            value: 'topRight',
-            text: '上右',
-          },
+          { value: 'topRight', text: '上右' },
           { value: 'bottomLeft', text: '下左' },
           { value: 'bottom', text: '下' },
-          {
-            value: 'bottomRight',
-            text: '下右',
-          },
+          { value: 'bottomRight', text: '下右' },
           { value: 'leftTop', text: '左上' },
           { value: 'left', text: '左' },
-          {
-            value: 'leftBottom',
-            text: '左下',
-          },
+          { value: 'leftBottom', text: '左下' },
           { value: 'rightTop', text: '右上' },
           { value: 'right', text: '右' },
-          {
-            value: 'rightBottom',
-            text: '右下',
-          },
+          { value: 'rightBottom', text: '右下' },
         ],
       },
       category: ['数据展示'],
@@ -24492,20 +23359,12 @@ export default [
           desc: '左右两个面板数据源',
           meta: [
             { key: 'text', title: '展示文字', type: 'string' },
-            {
-              key: 'value',
-              title: '对应字段',
-              type: 'string',
-            },
+            { key: 'value', title: '对应字段', type: 'string' },
             { key: 'disabled', title: '是否禁用', type: 'boolean' },
           ],
           defaultValue: [
             { text: '选项1', value: '选项1', disabled: false },
-            {
-              text: '选项2',
-              value: '选项2',
-              disabled: false,
-            },
+            { text: '选项2', value: '选项2', disabled: false },
             { text: '选项3', value: '选项3', disabled: false },
             { text: '选项4', value: '选项4', disabled: false },
           ],
@@ -24546,11 +23405,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'open', title: '展开图标', type: 'icon' },
-            {
-              key: 'close',
-              title: '关闭图标',
-              type: 'icon',
-            },
+            { key: 'close', title: '关闭图标', type: 'icon' },
           ],
         },
         title: { type: 'string', desc: '穿梭框面板头部标题' },
@@ -24575,11 +23430,7 @@ export default [
           desc: 'Transfer 穿梭回调',
           args: [
             { name: 'nextValue', desc: 'Transfer穿梭后，右侧面板值的集合', type: 'string[]' },
-            {
-              name: 'direction',
-              desc: '穿梭的方向，left、right',
-              type: 'DirectionType',
-            },
+            { name: 'direction', desc: '穿梭的方向，left、right', type: 'DirectionType' },
             { name: 'moveKeys', desc: '移动值的集合', type: 'string[]' },
           ],
         },
@@ -24587,11 +23438,7 @@ export default [
           desc: 'Transfer 取消选项点击回调',
           args: [
             { name: 'nextValue', desc: 'Transfer 右侧面板值的集合', type: 'string[]' },
-            {
-              name: 'newDisplayValue',
-              desc: 'Transfer 右侧面板值的备用集合',
-              type: 'string[]',
-            },
+            { name: 'newDisplayValue', desc: 'Transfer 右侧面板值的备用集合', type: 'string[]' },
           ],
         },
       },
@@ -24599,10 +23446,7 @@ export default [
         SizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         TransferType: [
           { value: 'panel', text: '基本穿梭框' },
@@ -25697,11 +24541,7 @@ export default [
           desc: '左右两个面板数据源',
           meta: [
             { key: 'text', title: '展示文字', type: 'string' },
-            {
-              key: 'value',
-              title: '对应字段',
-              type: 'string',
-            },
+            { key: 'value', title: '对应字段', type: 'string' },
             { key: 'disabled', title: '是否禁用', type: 'boolean' },
           ],
           defaultValue: [
@@ -25760,11 +24600,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'open', title: '展开图标', type: 'icon' },
-            {
-              key: 'close',
-              title: '关闭图标',
-              type: 'icon',
-            },
+            { key: 'close', title: '关闭图标', type: 'icon' },
           ],
         },
         title: { type: 'string', desc: '穿梭框面板头部标题' },
@@ -25789,11 +24625,7 @@ export default [
           desc: 'Transfer 穿梭回调',
           args: [
             { name: 'nextValue', desc: 'Transfer穿梭后，右侧面板值的集合', type: 'string[]' },
-            {
-              name: 'direction',
-              desc: '穿梭的方向，left、right',
-              type: 'DirectionType',
-            },
+            { name: 'direction', desc: '穿梭的方向，left、right', type: 'DirectionType' },
             { name: 'moveKeys', desc: '移动值的集合', type: 'string[]' },
           ],
         },
@@ -25801,11 +24633,7 @@ export default [
           desc: 'Transfer 取消选项点击回调',
           args: [
             { name: 'nextValue', desc: 'Transfer 右侧面板值的集合', type: 'string[]' },
-            {
-              name: 'newDisplayValue',
-              desc: 'Transfer 右侧面板值的备用集合',
-              type: 'string[]',
-            },
+            { name: 'newDisplayValue', desc: 'Transfer 右侧面板值的备用集合', type: 'string[]' },
           ],
         },
       },
@@ -25813,10 +24641,7 @@ export default [
         SizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         TransferType: [
           { value: 'panel', text: '基本穿梭框' },
@@ -26312,22 +25137,14 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             {
               key: 'icons',
               title: '前/后缀图标',
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
               ],
             },
             { key: 'children', title: '子项数据', type: 'Object[]' },
@@ -26356,11 +25173,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'open', title: '展开图标', type: 'icon' },
-            {
-              key: 'close',
-              title: '关闭图标',
-              type: 'icon',
-            },
+            { key: 'close', title: '关闭图标', type: 'icon' },
           ],
         },
         igronSelectField: {
@@ -26397,28 +25210,16 @@ export default [
           desc: '滚动条滚动时触发',
           args: [
             { name: 'start', desc: '显示区域内，第一个树节点所在数据中的索引值', type: 'number' },
-            {
-              name: 'end',
-              desc: '显示区域内，最后树节点所在数据中的索引值',
-              type: 'number',
-            },
+            { name: 'end', desc: '显示区域内，最后树节点所在数据中的索引值', type: 'number' },
           ],
         },
         onDrop: {
           desc: 'drop 触发时调用',
           args: [
             { name: 'dragInfo', desc: '拖拽信息', type: 'object' },
-            {
-              name: 'targetInfo',
-              desc: '拖拽目标信息',
-              type: 'object',
-            },
+            { name: 'targetInfo', desc: '拖拽目标信息', type: 'object' },
             { name: 'dropToGap', desc: '是否拖拽到间隙', type: 'boolean' },
-            {
-              name: 'translateTreeData',
-              desc: '是否开启嵌套数据生成Tree',
-              type: 'boolean',
-            },
+            { name: 'translateTreeData', desc: '是否开启嵌套数据生成Tree', type: 'boolean' },
             { name: 'isSelf', desc: '拖拽是否发生在同一tree中', type: 'boolean' },
           ],
         },
@@ -26427,33 +25228,21 @@ export default [
           desc: '拖拽状态进入tree时触发',
           args: [
             { name: 'mouseEvent', desc: 'mouseevent对象', type: 'object' },
-            {
-              name: 'targetInfo',
-              desc: '拖拽节点信息',
-              type: 'object',
-            },
+            { name: 'targetInfo', desc: '拖拽节点信息', type: 'object' },
           ],
         },
         onDragLeave: {
           desc: '拖拽状态离开tree时触发',
           args: [
             { name: 'mouseEvent', desc: 'mouseevent对象', type: 'object' },
-            {
-              name: 'nodeData',
-              desc: '拖拽节点信息',
-              type: 'object',
-            },
+            { name: 'nodeData', desc: '拖拽节点信息', type: 'object' },
           ],
         },
         onExpand: {
           desc: '展开/收起节点时触发',
           args: [
             { name: 'expandedKeys', desc: '所有展开节点的valueField值的集合', type: 'string[]' },
-            {
-              name: 'data',
-              desc: '所有的树形数据信息',
-              type: 'Array<Object>',
-            },
+            { name: 'data', desc: '所有的树形数据信息', type: 'Array<Object>' },
           ],
         },
         onSelect: {
@@ -26463,11 +25252,7 @@ export default [
         onChange: {
           desc: '选中节点发生改变时触发',
           args: [
-            {
-              name: 'selectValue',
-              desc: '所有选中项的valueField值的集合',
-              type: 'string[]',
-            },
+            { name: 'selectValue', desc: '所有选中项的valueField值的集合', type: 'string[]' },
             {
               name: 'selectDisplayValue',
               desc: '所有选中项的displayField值的集合',
@@ -26490,10 +25275,7 @@ export default [
         sizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
       },
       category: ['数据录入'],
@@ -27126,22 +25908,14 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             {
               key: 'icons',
               title: '前/后缀图标',
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
               ],
             },
             { key: 'children', title: '子项数据', type: 'Object[]' },
@@ -27170,11 +25944,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'open', title: '展开图标', type: 'icon' },
-            {
-              key: 'close',
-              title: '关闭图标',
-              type: 'icon',
-            },
+            { key: 'close', title: '关闭图标', type: 'icon' },
           ],
         },
         igronSelectField: {
@@ -27216,28 +25986,16 @@ export default [
           desc: '滚动条滚动时触发',
           args: [
             { name: 'start', desc: '显示区域内，第一个树节点所在数据中的索引值', type: 'number' },
-            {
-              name: 'end',
-              desc: '显示区域内，最后树节点所在数据中的索引值',
-              type: 'number',
-            },
+            { name: 'end', desc: '显示区域内，最后树节点所在数据中的索引值', type: 'number' },
           ],
         },
         onDrop: {
           desc: 'drop 触发时调用',
           args: [
             { name: 'dragInfo', desc: '拖拽信息', type: 'object' },
-            {
-              name: 'targetInfo',
-              desc: '拖拽目标信息',
-              type: 'object',
-            },
+            { name: 'targetInfo', desc: '拖拽目标信息', type: 'object' },
             { name: 'dropToGap', desc: '是否拖拽到间隙', type: 'boolean' },
-            {
-              name: 'translateTreeData',
-              desc: '是否开启嵌套数据生成Tree',
-              type: 'boolean',
-            },
+            { name: 'translateTreeData', desc: '是否开启嵌套数据生成Tree', type: 'boolean' },
             { name: 'isSelf', desc: '拖拽是否发生在同一tree中', type: 'boolean' },
           ],
         },
@@ -27246,33 +26004,21 @@ export default [
           desc: '拖拽状态进入tree时触发',
           args: [
             { name: 'mouseEvent', desc: 'mouseevent对象', type: 'object' },
-            {
-              name: 'targetInfo',
-              desc: '拖拽节点信息',
-              type: 'object',
-            },
+            { name: 'targetInfo', desc: '拖拽节点信息', type: 'object' },
           ],
         },
         onDragLeave: {
           desc: '拖拽状态离开tree时触发',
           args: [
             { name: 'mouseEvent', desc: 'mouseevent对象', type: 'object' },
-            {
-              name: 'nodeData',
-              desc: '拖拽节点信息',
-              type: 'object',
-            },
+            { name: 'nodeData', desc: '拖拽节点信息', type: 'object' },
           ],
         },
         onExpand: {
           desc: '展开/收起节点时触发',
           args: [
             { name: 'expandedKeys', desc: '所有展开节点的valueField值的集合', type: 'string[]' },
-            {
-              name: 'data',
-              desc: '所有的树形数据信息',
-              type: 'Array<Object>',
-            },
+            { name: 'data', desc: '所有的树形数据信息', type: 'Array<Object>' },
           ],
         },
         onSelect: {
@@ -27282,11 +26028,7 @@ export default [
         onChange: {
           desc: '选中节点发生改变时触发',
           args: [
-            {
-              name: 'selectValue',
-              desc: '所有选中项的valueField值的集合',
-              type: 'string[]',
-            },
+            { name: 'selectValue', desc: '所有选中项的valueField值的集合', type: 'string[]' },
             {
               name: 'selectDisplayValue',
               desc: '所有选中项的displayField值的集合',
@@ -27309,10 +26051,7 @@ export default [
         sizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
       },
       category: ['数据录入'],
@@ -27635,11 +26374,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'open', title: '展开图标', type: 'icon' },
-            {
-              key: 'close',
-              title: '关闭图标',
-              type: 'icon',
-            },
+            { key: 'close', title: '关闭图标', type: 'icon' },
           ],
           propsDefaultValue: {
             open: 'lugia-icon-direction_caret_down',
@@ -27657,22 +26392,14 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             {
               key: 'icons',
               title: '前/后缀图标',
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
               ],
             },
             { key: 'children', title: '子项数据', type: 'array' },
@@ -27683,10 +26410,7 @@ export default [
               text: '一级树节点',
               children: [
                 { value: '二级树节点-1', text: '二级树节点-1' },
-                {
-                  value: '二级树节点-2',
-                  text: '一级树节点-2',
-                },
+                { value: '二级树节点-2', text: '一级树节点-2' },
                 { value: '二级树节点-3', text: '一级树节点-3' },
               ],
             },
@@ -27776,19 +26500,13 @@ export default [
         sizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'bottom', text: '底部文本' },
-          {
-            value: 'inner',
-            text: '框内文本',
-          },
+          { value: 'inner', text: '框内文本' },
         ],
       },
       category: ['数据录入'],
@@ -28935,11 +27653,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'open', title: '展开图标', type: 'icon' },
-            {
-              key: 'close',
-              title: '关闭图标',
-              type: 'icon',
-            },
+            { key: 'close', title: '关闭图标', type: 'icon' },
           ],
           propsDefaultValue: {
             open: 'lugia-icon-direction_caret_down',
@@ -28957,22 +27671,14 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
             {
               key: 'icons',
               title: '前/后缀图标',
               type: 'object',
               children: [
                 { key: 'prefixIconClass', title: '前缀图标', type: 'icon' },
-                {
-                  key: 'suffixIconClass',
-                  title: '后缀图标',
-                  type: 'icon',
-                },
+                { key: 'suffixIconClass', title: '后缀图标', type: 'icon' },
               ],
             },
             { key: 'children', title: '子项数据', type: 'array' },
@@ -28983,10 +27689,7 @@ export default [
               text: '一级树节点',
               children: [
                 { value: '二级树节点-1', text: '二级树节点-1' },
-                {
-                  value: '二级树节点-2',
-                  text: '一级树节点-2',
-                },
+                { value: '二级树节点-2', text: '一级树节点-2' },
                 { value: '二级树节点-3', text: '一级树节点-3' },
               ],
             },
@@ -29081,19 +27784,13 @@ export default [
         sizeType: [
           { value: 'small', text: '小' },
           { value: 'default', text: '正常' },
-          {
-            value: 'large',
-            text: '大',
-          },
+          { value: 'large', text: '大' },
         ],
         ValidateStatus: [{ value: 'default', text: '正常' }, { value: 'error', text: '错误' }],
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'bottom', text: '底部文本' },
-          {
-            value: 'inner',
-            text: '框内文本',
-          },
+          { value: 'inner', text: '框内文本' },
         ],
       },
       category: ['数据录入'],
@@ -29768,11 +28465,7 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            {
-              key: 'name',
-              title: '文件名',
-              type: 'string',
-            },
+            { key: 'name', title: '文件名', type: 'string' },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -29831,17 +28524,9 @@ export default [
           desc: '默认的上传提示语',
           meta: [
             { key: 'uploadText', title: '上传按钮文字', type: 'string' },
-            {
-              key: 'uploadTips',
-              title: '上传区域提示文字',
-              type: 'string',
-            },
+            { key: 'uploadTips', title: '上传区域提示文字', type: 'string' },
             { key: 'failTips', title: '上传失败提示', type: 'string' },
-            {
-              key: 'loadingTips',
-              title: '文件上传加载提示',
-              type: 'string',
-            },
+            { key: 'loadingTips', title: '文件上传加载提示', type: 'string' },
           ],
           propsDefaultValue: {
             uploadText: '上传',
@@ -29857,11 +28542,7 @@ export default [
           desc: '用户自定义上传',
           args: [
             { name: 'file', desc: '用户上传的文件', type: 'file' },
-            {
-              name: 'operate',
-              desc: '所有可执行函数(success,fail,start)',
-              type: 'Object',
-            },
+            { name: 'operate', desc: '所有可执行函数(success,fail,start)', type: 'Object' },
           ],
         },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
@@ -29900,24 +28581,15 @@ export default [
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
-          {
-            value: 'default',
-            text: '默认',
-          },
+          { value: 'default', text: '默认' },
           { value: 'large', text: '大' },
         ],
         UploadType: [
           { value: 'default', text: '默认上传' },
-          {
-            value: 'both',
-            text: '带按钮的默认上传',
-          },
+          { value: 'both', text: '带按钮的默认上传' },
           { value: 'button', text: '按钮上传' },
           { value: 'picture', text: '图片上传' },
-          {
-            value: 'area',
-            text: '区域上传',
-          },
+          { value: 'area', text: '区域上传' },
           { value: 'custom', text: '自定义上传' },
         ],
         FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
@@ -29925,10 +28597,7 @@ export default [
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'inner', text: '框内文本' },
-          {
-            value: 'bottom',
-            text: '底部文本',
-          },
+          { value: 'bottom', text: '底部文本' },
         ],
       },
       category: ['数据录入'],
@@ -30796,11 +29465,7 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            {
-              key: 'name',
-              title: '文件名',
-              type: 'string',
-            },
+            { key: 'name', title: '文件名', type: 'string' },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -30859,17 +29524,9 @@ export default [
           desc: '默认的上传提示语',
           meta: [
             { key: 'uploadText', title: '上传按钮文字', type: 'string' },
-            {
-              key: 'uploadTips',
-              title: '上传区域提示文字',
-              type: 'string',
-            },
+            { key: 'uploadTips', title: '上传区域提示文字', type: 'string' },
             { key: 'failTips', title: '上传失败提示', type: 'string' },
-            {
-              key: 'loadingTips',
-              title: '文件上传加载提示',
-              type: 'string',
-            },
+            { key: 'loadingTips', title: '文件上传加载提示', type: 'string' },
           ],
           propsDefaultValue: {
             uploadText: '上传',
@@ -30885,11 +29542,7 @@ export default [
           desc: '用户自定义上传',
           args: [
             { name: 'file', desc: '用户上传的文件', type: 'file' },
-            {
-              name: 'operate',
-              desc: '所有可执行函数(success,fail,start)',
-              type: 'Object',
-            },
+            { name: 'operate', desc: '所有可执行函数(success,fail,start)', type: 'Object' },
           ],
         },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
@@ -30928,24 +29581,15 @@ export default [
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
-          {
-            value: 'default',
-            text: '默认',
-          },
+          { value: 'default', text: '默认' },
           { value: 'large', text: '大' },
         ],
         UploadType: [
           { value: 'default', text: '默认上传' },
-          {
-            value: 'both',
-            text: '带按钮的默认上传',
-          },
+          { value: 'both', text: '带按钮的默认上传' },
           { value: 'button', text: '按钮上传' },
           { value: 'picture', text: '图片上传' },
-          {
-            value: 'area',
-            text: '区域上传',
-          },
+          { value: 'area', text: '区域上传' },
           { value: 'custom', text: '自定义上传' },
         ],
         FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
@@ -30953,10 +29597,7 @@ export default [
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'inner', text: '框内文本' },
-          {
-            value: 'bottom',
-            text: '底部文本',
-          },
+          { value: 'bottom', text: '底部文本' },
         ],
       },
       category: ['数据录入'],
@@ -31118,11 +29759,7 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            {
-              key: 'name',
-              title: '文件名',
-              type: 'string',
-            },
+            { key: 'name', title: '文件名', type: 'string' },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -31181,17 +29818,9 @@ export default [
           desc: '默认的上传提示语',
           meta: [
             { key: 'uploadText', title: '上传按钮文字', type: 'string' },
-            {
-              key: 'uploadTips',
-              title: '上传区域提示文字',
-              type: 'string',
-            },
+            { key: 'uploadTips', title: '上传区域提示文字', type: 'string' },
             { key: 'failTips', title: '上传失败提示', type: 'string' },
-            {
-              key: 'loadingTips',
-              title: '文件上传加载提示',
-              type: 'string',
-            },
+            { key: 'loadingTips', title: '文件上传加载提示', type: 'string' },
           ],
           propsDefaultValue: {
             uploadText: '上传',
@@ -31207,11 +29836,7 @@ export default [
           desc: '用户自定义上传',
           args: [
             { name: 'file', desc: '用户上传的文件', type: 'file' },
-            {
-              name: 'operate',
-              desc: '所有可执行函数(success,fail,start)',
-              type: 'Object',
-            },
+            { name: 'operate', desc: '所有可执行函数(success,fail,start)', type: 'Object' },
           ],
         },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
@@ -31250,24 +29875,15 @@ export default [
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
-          {
-            value: 'default',
-            text: '默认',
-          },
+          { value: 'default', text: '默认' },
           { value: 'large', text: '大' },
         ],
         UploadType: [
           { value: 'default', text: '默认上传' },
-          {
-            value: 'both',
-            text: '带按钮的默认上传',
-          },
+          { value: 'both', text: '带按钮的默认上传' },
           { value: 'button', text: '按钮上传' },
           { value: 'picture', text: '图片上传' },
-          {
-            value: 'area',
-            text: '区域上传',
-          },
+          { value: 'area', text: '区域上传' },
           { value: 'custom', text: '自定义上传' },
         ],
         FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
@@ -31275,10 +29891,7 @@ export default [
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'inner', text: '框内文本' },
-          {
-            value: 'bottom',
-            text: '底部文本',
-          },
+          { value: 'bottom', text: '底部文本' },
         ],
       },
       category: ['数据录入'],
@@ -31409,11 +30022,7 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            {
-              key: 'name',
-              title: '文件名',
-              type: 'string',
-            },
+            { key: 'name', title: '文件名', type: 'string' },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -31472,17 +30081,9 @@ export default [
           desc: '默认的上传提示语',
           meta: [
             { key: 'uploadText', title: '上传按钮文字', type: 'string' },
-            {
-              key: 'uploadTips',
-              title: '上传区域提示文字',
-              type: 'string',
-            },
+            { key: 'uploadTips', title: '上传区域提示文字', type: 'string' },
             { key: 'failTips', title: '上传失败提示', type: 'string' },
-            {
-              key: 'loadingTips',
-              title: '文件上传加载提示',
-              type: 'string',
-            },
+            { key: 'loadingTips', title: '文件上传加载提示', type: 'string' },
           ],
           propsDefaultValue: {
             uploadText: '上传',
@@ -31498,11 +30099,7 @@ export default [
           desc: '用户自定义上传',
           args: [
             { name: 'file', desc: '用户上传的文件', type: 'file' },
-            {
-              name: 'operate',
-              desc: '所有可执行函数(success,fail,start)',
-              type: 'Object',
-            },
+            { name: 'operate', desc: '所有可执行函数(success,fail,start)', type: 'Object' },
           ],
         },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
@@ -31541,24 +30138,15 @@ export default [
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
-          {
-            value: 'default',
-            text: '默认',
-          },
+          { value: 'default', text: '默认' },
           { value: 'large', text: '大' },
         ],
         UploadType: [
           { value: 'default', text: '默认上传' },
-          {
-            value: 'both',
-            text: '带按钮的默认上传',
-          },
+          { value: 'both', text: '带按钮的默认上传' },
           { value: 'button', text: '按钮上传' },
           { value: 'picture', text: '图片上传' },
-          {
-            value: 'area',
-            text: '区域上传',
-          },
+          { value: 'area', text: '区域上传' },
           { value: 'custom', text: '自定义上传' },
         ],
         FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
@@ -31566,10 +30154,7 @@ export default [
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'inner', text: '框内文本' },
-          {
-            value: 'bottom',
-            text: '底部文本',
-          },
+          { value: 'bottom', text: '底部文本' },
         ],
       },
       category: ['数据录入'],
@@ -31709,11 +30294,7 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            {
-              key: 'name',
-              title: '文件名',
-              type: 'string',
-            },
+            { key: 'name', title: '文件名', type: 'string' },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -31772,17 +30353,9 @@ export default [
           desc: '默认的上传提示语',
           meta: [
             { key: 'uploadText', title: '上传按钮文字', type: 'string' },
-            {
-              key: 'uploadTips',
-              title: '上传区域提示文字',
-              type: 'string',
-            },
+            { key: 'uploadTips', title: '上传区域提示文字', type: 'string' },
             { key: 'failTips', title: '上传失败提示', type: 'string' },
-            {
-              key: 'loadingTips',
-              title: '文件上传加载提示',
-              type: 'string',
-            },
+            { key: 'loadingTips', title: '文件上传加载提示', type: 'string' },
           ],
           propsDefaultValue: {
             uploadText: '上传',
@@ -31798,11 +30371,7 @@ export default [
           desc: '用户自定义上传',
           args: [
             { name: 'file', desc: '用户上传的文件', type: 'file' },
-            {
-              name: 'operate',
-              desc: '所有可执行函数(success,fail,start)',
-              type: 'Object',
-            },
+            { name: 'operate', desc: '所有可执行函数(success,fail,start)', type: 'Object' },
           ],
         },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
@@ -31841,24 +30410,15 @@ export default [
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
-          {
-            value: 'default',
-            text: '默认',
-          },
+          { value: 'default', text: '默认' },
           { value: 'large', text: '大' },
         ],
         UploadType: [
           { value: 'default', text: '默认上传' },
-          {
-            value: 'both',
-            text: '带按钮的默认上传',
-          },
+          { value: 'both', text: '带按钮的默认上传' },
           { value: 'button', text: '按钮上传' },
           { value: 'picture', text: '图片上传' },
-          {
-            value: 'area',
-            text: '区域上传',
-          },
+          { value: 'area', text: '区域上传' },
           { value: 'custom', text: '自定义上传' },
         ],
         FileType: [{ value: 'done', text: '成功' }, { value: 'fail', text: '失败' }],
@@ -31866,10 +30426,7 @@ export default [
         ValidateType: [
           { value: 'top', text: '顶部弹窗' },
           { value: 'inner', text: '框内文本' },
-          {
-            value: 'bottom',
-            text: '底部文本',
-          },
+          { value: 'bottom', text: '底部文本' },
         ],
       },
       category: ['数据录入'],
@@ -32284,10 +30841,7 @@ export default [
           args: [
             { name: 'event', desc: '改变状态触发的DOM事件' },
             { name: 'x', desc: '横向坐标值' },
-            {
-              name: 'y',
-              desc: '纵向坐标值',
-            },
+            { name: 'y', desc: '纵向坐标值' },
             { name: 'lockDirection', desc: '锁定方向' },
           ],
         },
@@ -32295,10 +30849,7 @@ export default [
           desc: '拖拽结束触发',
           args: [
             { name: 'clientX', desc: '点击位置距离当前body可视区的x坐标' },
-            {
-              name: 'clientY',
-              desc: '点击位置距离当前body可视区的y坐标',
-            },
+            { name: 'clientY', desc: '点击位置距离当前body可视区的y坐标' },
             { name: 'left', desc: '相对窗口左边的距离' },
             { name: 'top', desc: '相对窗口顶部的距离' },
           ],
