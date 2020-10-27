@@ -53,7 +53,7 @@ export default class TransferButton extends React.Component<
     const { viewClass, theme: buttonTheme } = theme;
     const defaultTheme = {
       [viewClass]: {
-        ButtonWrap: {
+        Container: {
           normal: {
             width: 38,
             padding: {
