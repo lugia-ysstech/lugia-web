@@ -84,11 +84,15 @@ export default class TransferDemo extends React.Component<any, any> {
     return keys;
   };
 
+  componentDidMount() {
+    this.setState({ fruitsData: this.createFruitsData() });
+  }
+
   createRandom = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
   };
 
-  changeData = () => {
+  createFruitsData = () => {
     const fruits = [
       '苹果',
       '沙果',
@@ -119,7 +123,11 @@ export default class TransferDemo extends React.Component<any, any> {
         data.push({ text: value, value, disabled: false });
       }
     }
-    this.setState({ fruitsData: data });
+    return data;
+  };
+
+  changeData = () => {
+    this.setState({ fruitsData: this.createFruitsData() });
   };
 
   render() {
