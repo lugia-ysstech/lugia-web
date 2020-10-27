@@ -1,6 +1,6 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.2.6-alpha.7",
+  "version": "1.2.6-alpha.8",
   "keywords": [
     "lugia",
     "design",
@@ -80,7 +80,7 @@
     "create-info": "lugia-create-info"
   },
   "devDependencies": {
-    "@lugia/devtools-widgets": "1.0.1",
+    "@lugia/devtools-widgets": "^1.0.4",
     "@lugia/dict": "^1.0.5",
     "@lugia/jverify": "^1.0.10",
     "@lugia/lugiax-router": "^1.0.22",
