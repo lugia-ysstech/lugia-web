@@ -192,7 +192,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     );
   }
 
-  componentWillReceiveProps({ popupVisible }: TriggerProps, state: TriggerState) {
+  UNSAFE_componentWillReceiveProps({ popupVisible }: TriggerProps, state: TriggerState) {
     if (popupVisible !== undefined) {
       this.setFirstShow(popupVisible);
       this.setState({
@@ -201,7 +201,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     ALL_HANDLERS.forEach((h: EventName) => {
       this.handlers[`fire${h}`] = (e: Object) => {
         this.fireEvents(h, e);

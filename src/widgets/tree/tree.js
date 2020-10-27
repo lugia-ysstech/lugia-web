@@ -212,7 +212,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return Support.isNotLimit(props);
   }
 
-  componentWillReceiveProps(props: TreeProps) {
+  UNSAFE_componentWillReceiveProps(props: TreeProps) {
     const dataChanged = JSON.stringify(props.data) !== JSON.stringify(this.props.data);
     if (dataChanged === true) {
       this.allExpandInfo = this.getEmptyExpandInfo();

@@ -134,7 +134,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.updateStepInfo(props);
   }
 
-  componentWillReceiveProps(props: ScrollerProps) {
+  UNSAFE_componentWillReceiveProps(props: ScrollerProps) {
     this.setState({
       value: Support.getNumberValue(props, this.state),
       sliderSize: this.getSliderBarSize(props),

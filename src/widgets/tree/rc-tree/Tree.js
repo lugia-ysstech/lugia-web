@@ -102,7 +102,7 @@ class Tree extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { props } = this;
     const newState = {};
     const expandedKeys = nextProps.expandedKeys;

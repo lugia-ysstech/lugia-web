@@ -203,7 +203,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     return !Support.isNotLimit(props);
   }
 
-  componentWillReceiveProps(props: InputTagProps) {
+  UNSAFE_componentWillReceiveProps(props: InputTagProps) {
     if (this.isLimit()) {
       if (props.value !== this.props.value) {
         const value = this.fetchValueObject(props);
