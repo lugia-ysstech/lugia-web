@@ -52,6 +52,8 @@ import Tree from './tree';
 import TreeSelect from './tree-select';
 import Upload from './upload';
 import Window from './window';
+import { load } from './css/theme-common-dict.js';
+export { load };
 export default [
   {
     meta: {
@@ -4943,10 +4945,13 @@ export default [
       tag: '折叠面板 Collapse 组合折叠面板 收起展开面板 多项折叠面板',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
-        activeValue: { type: 'string | string[]', desc: '当前展开面板的 value值 或者 value 集合' },
-        defaultActiveValue: {
+        value: {
           type: 'string | string[]',
-          desc: '初始时展开面板的 value值 或者 value 集合',
+          desc: '当前展开面板的 value值 或者 value 集合, 兼容activeValue',
+        },
+        defaultValue: {
+          type: 'string | string[]',
+          desc: '初始时展开面板的 value值 或者 value 集合, 兼容defaultActiveValue',
         },
         showArrow: { type: 'boolean', desc: '是否展示面板箭头' },
         accordion: { type: 'boolean', desc: '设置是否为手风琴模式' },
