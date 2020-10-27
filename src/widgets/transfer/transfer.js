@@ -128,7 +128,7 @@ export default ThemeProvider(
       const {
         theme = {},
         checkboxTheme,
-        headerTextTheme,
+        headerTextTheme = {},
         headerTheme,
         cancelBoxTheme,
         size,

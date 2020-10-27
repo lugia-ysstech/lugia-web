@@ -47,7 +47,7 @@ export default class TransferMenu extends React.Component<TransferMenuProps, Tra
     if (direction === 'Source') {
       targetData = getMenuDataByBlackList(data, valueField, blackList);
     } else {
-      const { mapData = {} } = state;
+      const mapData = getMapData(data, valueField) || {};
       ({ whiteListData: targetData } = getWhiteListDataAndCancelItem(
         mapData,
         displayValue,
