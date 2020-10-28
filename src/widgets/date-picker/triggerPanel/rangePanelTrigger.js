@@ -248,8 +248,8 @@ class Range extends Component<TypeProps, TypeState> {
     const { isValid } = this.getIsValid(renderValue);
     const { onChange } = this.props;
     const newValue = this.getSortValue(renderValue, format);
-    isValid && onChange && onChange({ newValue, oldValue, event });
     if (isValid) {
+      onChange && onChange({ newValue, oldValue, event });
       this.onBlur();
     }
     return newValue;
