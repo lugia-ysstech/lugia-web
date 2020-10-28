@@ -259,6 +259,12 @@ export class CheckboxDemo extends React.Component<any, any> {
             CheckBox
           </CheckBox>
         </Wrapper>
+        <Wrapper>
+          <p>checkbox子元素为非字符串时，title不显示</p>
+          <CheckBox>
+            <div>CheckBox</div>
+          </CheckBox>
+        </Wrapper>
       </div>
     );
   }

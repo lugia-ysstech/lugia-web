@@ -1057,10 +1057,10 @@
     immutable "^3.8.2"
     yargs "^13.2.2"
 
-"@lugia/devtools-widgets@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@lugia/devtools-widgets/-/devtools-widgets-1.0.1.tgz#adeca61dd8a420627757092be3ba634481aa4636"
-  integrity sha512-cj2UPQxXlOZtEIqxDPlB69OecRym8ET6DBGefd/TUZeh2Ml2BFQ4gar1voDz3wn8wK4QK14O8pWNG/87omZieQ==
+"@lugia/devtools-widgets@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/@lugia/devtools-widgets/-/devtools-widgets-1.0.4.tgz#9d9c97b96d4cfd44d915ecda3569ac4f7983307c"
+  integrity sha512-MXsyNl8bYv4S6RHRNzRM9p3oLmV2zQsMBKJtnFXfy4ggifzSgLKPRQXHG5Aco6TG8Delw/aAOc36HYv7LsRcyA==
   dependencies:
     "@lugia/devtools-material" "^1.0.44"
     fs-extra "^9.0.1"

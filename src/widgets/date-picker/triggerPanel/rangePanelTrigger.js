@@ -237,19 +237,22 @@ class Range extends Component<TypeProps, TypeState> {
       if (onOk || showTime) {
         visible = true;
       }
-      const { isValid } = this.getIsValid(renderValue);
-      const { onChange } = this.props;
-      const sortValue = this.getSortValue(renderValue, format);
-      isValid &&
-        onChange &&
-        onChange({ newValue: sortValue, oldValue: this.changeOldValue, event });
+      const sortValue = this.exportOnChange(renderValue, this.changeOldValue, event);
       setStateData = { value: sortValue, rangeValue: [], isHover: false };
-      if (isValid) {
-        this.onBlur();
-      }
     }
     this.drawPageAgain(renderValue, format);
     this.setState({ ...setStateData, visible });
+  };
+  exportOnChange = (renderValue: string[], oldValue: string[], event: Object) => {
+    const { format } = this.state;
+    const { isValid } = this.getIsValid(renderValue);
+    const { onChange } = this.props;
+    const newValue = this.getSortValue(renderValue, format);
+    if (isValid) {
+      onChange && onChange({ newValue, oldValue, event });
+      this.onBlur();
+    }
+    return newValue;
   };
   getSortValue = (rangeValue: Array<string>, format: string) => {
     const momentsA = moment(rangeValue[0], format);
@@ -380,12 +383,14 @@ class Range extends Component<TypeProps, TypeState> {
     this.setState({ ...stateData, visible, rangeValue: [] });
   };
   timeChange = (obj: Object) => {
-    const { keys, timeIndex } = obj;
+    const { keys, timeIndex, event } = obj;
     const timeValue = obj.value;
     this.times = keys;
     const { value } = this.state;
+    this.oldValue = value;
     const newValue = [...value];
     newValue[timeIndex] = timeValue;
+    this.exportOnChange(newValue, this.oldValue, event);
     this.setState({ value: newValue });
   };
   drawPageAgain = (rangeValue: Array<string>, format: string) => {

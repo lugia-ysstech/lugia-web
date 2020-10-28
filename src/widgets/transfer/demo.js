@@ -32,18 +32,12 @@ const treeData = [
       {
         text: '2.1',
         value: '2.1',
-        children: [
-          { text: '2.1.1', value: '2.1.1' },
-          { text: '2.1.2', value: '2.1.2' },
-        ],
+        children: [{ text: '2.1.1', value: '2.1.1' }, { text: '2.1.2', value: '2.1.2' }],
       },
       {
         text: '2.2',
         value: '2.2',
-        children: [
-          { text: '2.2.1', value: '2.2.1' },
-          { text: '2.2.2', value: '2.2.2' },
-        ],
+        children: [{ text: '2.2.1', value: '2.2.1' }, { text: '2.2.2', value: '2.2.2' }],
       },
     ],
   },
@@ -56,6 +50,7 @@ export default class TransferDemo extends React.Component<any, any> {
       targetKeys: ['选项3', '选项7', '选项9'],
       sourceSelectedKeys: ['选项5'],
       targetSelectedKeys: [],
+      fruitsData: [],
     };
   }
   handleSelectChange = (sourceSelectedKeys: string[], targetSelectedKeys: string[]) => {
@@ -88,6 +83,53 @@ export default class TransferDemo extends React.Component<any, any> {
     });
     return keys;
   };
+
+  componentDidMount() {
+    this.setState({ fruitsData: this.createFruitsData() });
+  }
+
+  createRandom = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min;
+  };
+
+  createFruitsData = () => {
+    const fruits = [
+      '苹果',
+      '沙果',
+      '海棠',
+      '野樱莓',
+      '枇杷',
+      '欧楂',
+      '山楂',
+      '香梨',
+      '雪梨',
+      '杏',
+      '樱桃',
+      '水蜜桃',
+      '油桃',
+      '蟠桃等',
+      '李子',
+      '梅子',
+      '西梅',
+    ];
+    const data = [];
+    const exist = {};
+    for (let i = 0; i < 10; i++) {
+      const value = fruits[this.createRandom(1, fruits.length)];
+      if (exist[value]) {
+        i--;
+      } else {
+        exist[value] = true;
+        data.push({ text: value, value, disabled: false });
+      }
+    }
+    return data;
+  };
+
+  changeData = () => {
+    this.setState({ fruitsData: this.createFruitsData() });
+  };
+
   render() {
     const { targetKeys, sourceSelectedKeys, targetSelectedKeys } = this.state;
     const TransferView = {
@@ -239,10 +281,14 @@ export default class TransferDemo extends React.Component<any, any> {
         },
       },
     };
+    const { fruitsData } = this.state;
     return (
       <div style={{ marginLeft: '30px', marginTop: '30px' }}>
         <Transfer />
         <Transfer type="tree" />
+        <button onClick={this.changeData}>异步加载数据</button>
+        <Transfer data={fruitsData} defaultValue={['枇杷', '杏', '水蜜桃', '李子']} />
+
         <Transfer
           data={data}
           showSearch
