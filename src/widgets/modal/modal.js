@@ -183,7 +183,7 @@ export default ThemeProvider(
         closable = true,
         closeIconClass,
         zIndex,
-        mountBody = false,
+        mountBody = true,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       if (!zIndex && zIndex !== 0 && !this.index && this.index !== 0 && visible) {
@@ -280,14 +280,13 @@ export default ThemeProvider(
         <Wrap visible={closing ? true : visible} zIndex={zIndex || this.index}>
           {mask ? (
             <ModalMask
-              onClick={this.handleMaskClick}
               closing={closing}
               opening={opening}
               themeProps={modalMaskTheme}
               zIndex={zIndex || this.index}
             />
           ) : null}
-          <ModalWrap>
+          <ModalWrap onClick={this.handleMaskClick}>
             <Modal
               tabIndex="1"
               ref={this.saveModalDom}
@@ -295,6 +294,7 @@ export default ThemeProvider(
               opening={opening}
               themeProps={modalWrapTheme}
               zIndex={zIndex || this.index}
+              onClick={this.handleModalClick}
             >
               {modalContent}
             </Modal>
@@ -312,6 +312,9 @@ export default ThemeProvider(
     handleMaskClick = () => {
       const { maskClosable = true } = this.props;
       maskClosable && this.handleCancel();
+    };
+    handleModalClick = e => {
+      e.stopPropagation();
     };
     handleOk = () => {
       const { onOk } = this.props;
