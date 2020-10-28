@@ -184,6 +184,7 @@ export const ModalContent = CSSComponent({
     border: 0;
     border-radius: ${px2remcss(4)};
     box-shadow: 0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15);
+    min-width: ${px2remcss(520)};
   `,
   normal: {
     selectNames: [
@@ -205,7 +206,6 @@ export const ModalContent = CSSComponent({
       boxShadow: getBoxShadow(`0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15)`),
       border: getBorder({ width: 1, style: 'solid', color: '#ccc' }),
       borderRadius: getBorderRadius('$lugia-dict.@lugia/lugia-web.largeBorderRadiusValue'),
-      minWidth: 520,
     },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
