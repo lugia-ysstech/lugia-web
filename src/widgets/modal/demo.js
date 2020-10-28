@@ -80,7 +80,6 @@ export default class ModalDemo extends React.Component<any, any> {
       visable7: false,
       visable8: false,
       visable9: false,
-      visable10: false,
       buttonValue: 'testValue',
     };
   }
@@ -124,7 +123,6 @@ export default class ModalDemo extends React.Component<any, any> {
       visable7,
       visable8,
       visable9,
-      visable10,
       confirmLoading,
       buttonValue,
     } = this.state;
@@ -199,16 +197,6 @@ export default class ModalDemo extends React.Component<any, any> {
                 color: 'red',
               },
             },
-          },
-        },
-      },
-    };
-    const minWidthTheme = {
-      [Widgets.Modal]: {
-        Container: {
-          normal: {
-            minWidth: 0,
-            width: 300,
           },
         },
       },
@@ -365,20 +353,6 @@ export default class ModalDemo extends React.Component<any, any> {
           <BlankBox />
           <p>另一段描述</p>
         </Modal>
-
-        <br />
-        <br />
-        <Button onClick={this.Click(10)}>最小宽度可调整</Button>
-        <Theme config={minWidthTheme}>
-          <Modal
-            visible={visable10}
-            title="这是标题！"
-            onOk={this.buttonClick(10)}
-            onCancel={this.buttonClick(10)}
-          >
-            这是内容！
-          </Modal>
-        </Theme>
       </div>
     );
   }
