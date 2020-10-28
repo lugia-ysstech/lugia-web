@@ -77,19 +77,30 @@ export default class ModalDemo extends React.Component<any, any> {
     };
   }
 
-  static getDerivedStateFromProps(props) {
+  static getDerivedStateFromProps(props, state) {
     const { visible = false, mountBody = true } = props;
+    const {
+      visable1,
+      visable2,
+      visable3,
+      visable4,
+      visable5,
+      visable6,
+      visable7,
+      visable8,
+      visable9,
+    } = state;
     return {
       mountBody,
-      visable1: visible,
-      visable2: visible,
-      visable3: visible,
-      visable4: visible,
-      visable5: visible,
-      visable6: visible,
-      visable7: visible,
-      visable8: visible,
-      visable9: visible,
+      visable1: visable1 || visible,
+      visable2: visable2 || visible,
+      visable3: visable3 || visible,
+      visable4: visable4 || visible,
+      visable5: visable5 || visible,
+      visable6: visable6 || visible,
+      visable7: visable7 || visible,
+      visable8: visable8 || visible,
+      visable9: visable9 || visible,
     };
   }
 
@@ -307,9 +318,7 @@ export default class ModalDemo extends React.Component<any, any> {
         <br />
         <br />
         <Button
-          onClick={() =>
-            Modal.info({ title: 'info', content: 'this info text!', mountBody })
-          }
+          onClick={() => Modal.info({ title: 'info', content: 'this info text!', mountBody })}
         >
           info
         </Button>
@@ -325,18 +334,14 @@ export default class ModalDemo extends React.Component<any, any> {
         <br />
         <br />
         <Button
-          onClick={() =>
-            Modal.error({ title: 'error', content: 'this error text!', mountBody })
-          }
+          onClick={() => Modal.error({ title: 'error', content: 'this error text!', mountBody })}
         >
           error
         </Button>
         <br />
         <br />
         <Button
-          onClick={() =>
-            Modal.createShowModal({ title: 'warning', component: Text, mountBody })()
-          }
+          onClick={() => Modal.createShowModal({ title: 'warning', component: Text, mountBody })()}
         >
           warning
         </Button>
@@ -355,13 +360,16 @@ export default class ModalDemo extends React.Component<any, any> {
         >
           createModal
         </Button>
-        <Select
-          canSearch
-          canClear={false}
-          displayField={'label'}
-          data={data}
-          onTrigger={this.Click(4)}
-        />
+
+        {mountBody ? (
+          <Select
+            canSearch
+            canClear={false}
+            displayField={'label'}
+            data={data}
+            onTrigger={this.Click(4)}
+          />
+        ) : null}
 
         <br />
         <br />
