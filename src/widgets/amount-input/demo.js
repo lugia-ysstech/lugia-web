@@ -5,7 +5,6 @@
  * @flow
  */
 import * as React from 'react';
-import Theme from '../theme';
 import AmountInput from './index';
 import styled from 'styled-components';
 
@@ -55,35 +54,11 @@ class ValidateInput extends React.Component<any, any> {
 const Wrapper = styled.div`
   margin-left: 50px;
 `;
-export default () => {
-  const view = {};
-  const onChange = (cmpName: string) => (value: any) => {};
-  return (
-    <div>
-      <Wrapper>
-        <p>formatter AmountInput</p>
-        <AmountInput placeholder={'请填写金额'} />
-        <p>default AmountInput</p>
-        <AmountInput placeholder={'请填写金额'} />
-        <p>禁用状态 </p>
-        <AmountInput size={'default'} disabled={true} />
-      </Wrapper>
-      <Wrapper>
-        <Theme config={view}>
-          <p>small size</p>
-          <AmountInput size={'small'} placeholder={'请填写金额'} />
-          <p>default size</p>
-          <AmountInput placeholder={'请填写金额'} />
-          <p>large size</p>
-          <AmountInput size={'large'} placeholder={'请填写金额'} disabled={true} />
-        </Theme>
-      </Wrapper>
-      <Wrapper>
-        <p>受限Input</p>
-        <LimitAmountInput onChange={onChange('limit')} />
-        <p>有默认值的 受限Input</p>
-        <DefaultValueAmountInput value={'123456'} onChange={onChange('limit')} />
-        <p>主动聚焦的 Input</p>
+
+export class FocusInput extends React.Component {
+  render() {
+    return (
+      <div>
         <button
           onClick={() => {
             this.inputFocus();
@@ -96,6 +71,50 @@ export default () => {
             this.inputFocus = focus;
           }}
         />
+      </div>
+    );
+  }
+}
+const onChange = (cmpName: string) => (value: any) => {};
+export function ValidateAmountInputDemo() {
+  return (
+    <Wrapper>
+      <p>校验信息显示类型 top 输入值 是否含有5</p>
+      <ValidateInput validateType="top" onChange={onChange('limit')} validateStatus={'error'} />
+      <p>校验信息显示类型 bottom 输入值 是否含有5</p>
+      <ValidateInput validateType="bottom" onChange={onChange('limit')} validateStatus={'error'} />
+      <p>校验信息显示类型 inner 输入值 是否含有5</p>
+      <ValidateInput validateType="inner" onChange={onChange('limit')} validateStatus={'error'} />
+    </Wrapper>
+  );
+}
+
+export function DefaultAmountInputDemo() {
+  return (
+    <div>
+      <Wrapper>
+        <p>formatter AmountInput</p>
+        <AmountInput placeholder={'请填写金额'} />
+        <p>default AmountInput</p>
+        <AmountInput placeholder={'请填写金额'} />
+        <p>禁用状态 </p>
+        <AmountInput size={'default'} disabled={true} />
+      </Wrapper>
+      <Wrapper>
+        <p>small size</p>
+        <AmountInput size={'small'} placeholder={'请填写金额'} />
+        <p>default size</p>
+        <AmountInput placeholder={'请填写金额'} />
+        <p>large size</p>
+        <AmountInput size={'large'} placeholder={'请填写金额'} disabled={true} />
+      </Wrapper>
+      <Wrapper>
+        <p>受限Input</p>
+        <LimitAmountInput onChange={onChange('limit')} />
+        <p>有默认值的 受限Input</p>
+        <DefaultValueAmountInput value={'123456'} onChange={onChange('limit')} />
+        <p>主动聚焦的 Input</p>
+        {<FocusInput />}
       </Wrapper>
       <Wrapper>
         <p>amountPrefix: '¥' transform: false </p>
@@ -103,18 +122,9 @@ export default () => {
         <p>amountPrefix: '$' transform: false </p>
         <AmountInput amountPrefix="$" transform={false} />
       </Wrapper>
-      <Wrapper>
-        <p>校验信息显示类型 top 输入值 是否含有5</p>
-        <ValidateInput validateType="top" onChange={onChange('limit')} validateStatus={'error'} />
-        <p>校验信息显示类型 bottom 输入值 是否含有5</p>
-        <ValidateInput
-          validateType="bottom"
-          onChange={onChange('limit')}
-          validateStatus={'error'}
-        />
-        <p>校验信息显示类型 inner 输入值 是否含有5</p>
-        <ValidateInput validateType="inner" onChange={onChange('limit')} validateStatus={'error'} />
-      </Wrapper>
     </div>
   );
+}
+export default () => {
+  return [<DefaultAmountInputDemo />, <ValidateAmountInputDemo />];
 };

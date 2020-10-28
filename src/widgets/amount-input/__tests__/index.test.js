@@ -1,13 +1,7 @@
-/**
- *
- * create by ligx
- *
- * @flow
- */
 import React from 'react';
 import chai from 'chai';
 import renderer from 'react-test-renderer';
-import Wrapper from '../demo';
+import { DefaultAmountInputDemo } from '../demo';
 import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -116,7 +110,7 @@ describe('AmountInputDemo', () => {
 
   it('Component JSON', () => {
     global.svtest = true;
-    const renders = renderer.create(<Wrapper />);
+    const renders = renderer.create(<DefaultAmountInputDemo />);
     expect(renders.toJSON()).toMatchSnapshot();
     global.svtest = false;
   });

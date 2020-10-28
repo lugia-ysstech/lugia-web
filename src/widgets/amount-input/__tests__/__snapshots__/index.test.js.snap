@@ -8,75 +8,81 @@ exports[`AmountInputDemo Component JSON 1`] = `
   user-select: none;
   cursor: pointer;
   visibility: hidden;
-  padding-right: 1rem;
+  padding-right: 1.2rem;
 }
 
-.c7 {
+.c13 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
   visibility: visible;
-  padding-right: 1rem;
+  padding-right: 1.2rem;
+}
+
+.c6 {
+  display: none;
+}
+
+.c7 {
+  position: absolute;
+  border-radius: 4px;
+  box-sizing: border-box;
+  left: -9999px;
+  top: -9999px;
+  z-index: undefined;
+}
+
+.c8 {
+  position: relative;
+  padding-bottom: 0.4rem;
+  background: transparent;
+  box-shadow: none;
+}
+
+.c9 {
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+}
+
+.c10 {
+  border-color: transparent;
+  position: absolute;
+  border-style: solid;
+  line-height: 1;
+  left: 1rem;
+  bottom: -0.3rem;
+  border-top-color: #363B40;
+  border-width: 0.5rem 0.5rem 0;
+}
+
+.c11 {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #ffffff;
 }
 
 .c1 {
   display: inline-block;
-  display: block;
-}
-
-.c8 {
-  display: inline-block;
-  width: 100%;
   height: 100%;
   display: block;
 }
 
-.c10 {
-  font-size: 1.2rem;
-  height: 3.2rem;
-  color: #f22735;
-  margin-top: 0.4rem;
-  margin-bottom: 0rem;
-  margin-left: 1rem;
-  margin-right: 0rem;
-  visibility: hidden;
-}
-
-.c12 {
-  min-width: 3rem;
-  position: absolute;
-  right: 1rem;
-  top: 10%;
-  height: 80%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-size: 1.2rem;
-  color: #f22735;
-  visibility: hidden;
-  background-color: #ffffff;
-  box-shadow: -1.4rem 0 0.6rem 0 #ffffff;
-}
-
-.c9 {
-  font-size: 0;
-  width: 100%;
-}
-
-.c11 {
-  font-size: 0;
-  position: relative;
-  width: 100%;
-}
-
 .c4 {
+  background-color: transparent;
   box-sizing: border-box;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -89,34 +95,30 @@ exports[`AmountInputDemo Component JSON 1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
-  background-color: #ffffff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c4::-webkit-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c4::-moz-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c4:-ms-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c4::placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
-.c6 {
+.c12 {
+  background-color: transparent;
   box-sizing: border-box;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -129,30 +131,25 @@ exports[`AmountInputDemo Component JSON 1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
-  background-color: #ffffff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
-.c6::-webkit-input-placeholder {
-  color: #cccccc;
+.c12::-webkit-input-placeholder {
+  color: #c2c5ce;
   font-size: 1.2rem;
 }
 
-.c6::-moz-placeholder {
-  color: #cccccc;
+.c12::-moz-placeholder {
+  color: #c2c5ce;
   font-size: 1.2rem;
 }
 
-.c6:-ms-input-placeholder {
-  color: #cccccc;
+.c12:-ms-input-placeholder {
+  color: #c2c5ce;
   font-size: 1.2rem;
 }
 
-.c6::placeholder {
-  color: #cccccc;
+.c12::placeholder {
+  color: #c2c5ce;
   font-size: 1.2rem;
 }
 
@@ -169,26 +166,11 @@ exports[`AmountInputDemo Component JSON 1`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
-  background-color: #ffffff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
+  background-color: white;
 }
 
 .c3 {
+  height: 100%;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -197,9 +179,11 @@ exports[`AmountInputDemo Component JSON 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #9EA4AE;
-  padding-left: 1rem;
   color: #363B40;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1.2rem;
+  padding-right: 0rem;
 }
 
 .c0 {
@@ -229,6 +213,22 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
+            "borderBottomColor": "#d0d3da",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#d0d3da",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#d0d3da",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#d0d3da",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
             "height": "3.2rem",
           }
         }
@@ -289,11 +289,15 @@ exports[`AmountInputDemo Component JSON 1`] = `
           size="default"
           style={
             Object {
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
               "color": "#363B40",
               "fontSize": "1.4rem",
               "paddingBottom": "0rem",
               "paddingLeft": "0.6rem",
-              "paddingRight": "1rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "0rem",
             }
           }
@@ -315,6 +319,57 @@ exports[`AmountInputDemo Component JSON 1`] = `
             }
           }
         />
+      </div>
+    </div>
+    <div
+      className="c6"
+    >
+      <div
+        className="c7"
+      >
+        <div
+          className="c8"
+          style={Object {}}
+        >
+          <div
+            className="c9"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#363B40",
+                "borderBottomLeftRadius": "0.2rem",
+                "borderBottomRightRadius": "0.2rem",
+                "borderTopLeftRadius": "0.2rem",
+                "borderTopRightRadius": "0.2rem",
+                "opacity": 0,
+              }
+            }
+          >
+            <div
+              className="c10"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+            <div
+              className="c11"
+              style={
+                Object {
+                  "color": "#ffffff",
+                }
+              }
+            >
+              <span
+                className=""
+                onClick={[Function]}
+                style={Object {}}
+              >
+
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <p>
@@ -336,6 +391,22 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
+            "borderBottomColor": "#d0d3da",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#d0d3da",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#d0d3da",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#d0d3da",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
             "height": "3.2rem",
           }
         }
@@ -396,11 +467,15 @@ exports[`AmountInputDemo Component JSON 1`] = `
           size="default"
           style={
             Object {
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
               "color": "#363B40",
               "fontSize": "1.4rem",
               "paddingBottom": "0rem",
               "paddingLeft": "0.6rem",
-              "paddingRight": "1rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "0rem",
             }
           }
@@ -424,8 +499,59 @@ exports[`AmountInputDemo Component JSON 1`] = `
         />
       </div>
     </div>
+    <div
+      className="c6"
+    >
+      <div
+        className="c7"
+      >
+        <div
+          className="c8"
+          style={Object {}}
+        >
+          <div
+            className="c9"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#363B40",
+                "borderBottomLeftRadius": "0.2rem",
+                "borderBottomRightRadius": "0.2rem",
+                "borderTopLeftRadius": "0.2rem",
+                "borderTopRightRadius": "0.2rem",
+                "opacity": 0,
+              }
+            }
+          >
+            <div
+              className="c10"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+            <div
+              className="c11"
+              style={
+                Object {
+                  "color": "#ffffff",
+                }
+              }
+            >
+              <span
+                className=""
+                onClick={[Function]}
+                style={Object {}}
+              >
+
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <p>
-      禁用状态 
+      禁用状态
     </p>
     <div
       className="c1"
@@ -443,20 +569,23 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#f2f2f2",
-            "borderBottomColor": "#e8e8e8",
+            "backgroundColor": "#f4f5f8",
+            "borderBottomColor": "#ebecf0",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#e8e8e8",
+            "borderLeftColor": "#ebecf0",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#e8e8e8",
+            "borderRightColor": "#ebecf0",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#e8e8e8",
+            "borderTopColor": "#ebecf0",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
             "borderTopStyle": "solid",
             "borderTopWidth": "0.1rem",
-            "color": "#cccccc",
             "height": "3.2rem",
           }
         }
@@ -465,7 +594,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
           className="c3"
           style={
             Object {
-              "color": "#cccccc",
+              "color": "#d0d3da",
               "fontSize": "1.4rem",
             }
           }
@@ -518,13 +647,17 @@ exports[`AmountInputDemo Component JSON 1`] = `
           size="default"
           style={
             Object {
-              "backgroundColor": "#f2f2f2",
-              "color": "#cccccc",
+              "backgroundColor": "#f4f5f8",
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
+              "color": "#d0d3da",
               "cursor": "not-allowed",
               "fontSize": "1.4rem",
               "paddingBottom": "0rem",
               "paddingLeft": "0.6rem",
-              "paddingRight": "1rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "0rem",
             }
           }
@@ -541,12 +674,63 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "color": "#cccccc",
+              "color": "#d0d3da",
               "cursor": "not-allowed",
               "fontSize": "1.2rem",
             }
           }
         />
+      </div>
+    </div>
+    <div
+      className="c6"
+    >
+      <div
+        className="c7"
+      >
+        <div
+          className="c8"
+          style={Object {}}
+        >
+          <div
+            className="c9"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#363B40",
+                "borderBottomLeftRadius": "0.2rem",
+                "borderBottomRightRadius": "0.2rem",
+                "borderTopLeftRadius": "0.2rem",
+                "borderTopRightRadius": "0.2rem",
+                "opacity": 0,
+              }
+            }
+          >
+            <div
+              className="c10"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+            <div
+              className="c11"
+              style={
+                Object {
+                  "color": "#ffffff",
+                }
+              }
+            >
+              <span
+                className=""
+                onClick={[Function]}
+                style={Object {}}
+              >
+
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -572,6 +756,22 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
+            "borderBottomColor": "#d0d3da",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#d0d3da",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#d0d3da",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#d0d3da",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
             "height": "2.4rem",
           }
         }
@@ -593,7 +793,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         </span>
         <input
           autoFocus={false}
-          className="c6"
+          className="c12"
           disabled={false}
           maxLength="16"
           onBlur={[Function]}
@@ -632,11 +832,15 @@ exports[`AmountInputDemo Component JSON 1`] = `
           size="small"
           style={
             Object {
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
               "color": "#363B40",
               "fontSize": "1.2rem",
               "paddingBottom": "0rem",
               "paddingLeft": "0.6rem",
-              "paddingRight": "1rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "0rem",
             }
           }
@@ -654,10 +858,61 @@ exports[`AmountInputDemo Component JSON 1`] = `
           style={
             Object {
               "color": "#9EA4AE",
-              "fontSize": "1rem",
+              "fontSize": "1.2rem",
             }
           }
         />
+      </div>
+    </div>
+    <div
+      className="c6"
+    >
+      <div
+        className="c7"
+      >
+        <div
+          className="c8"
+          style={Object {}}
+        >
+          <div
+            className="c9"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#363B40",
+                "borderBottomLeftRadius": "0.2rem",
+                "borderBottomRightRadius": "0.2rem",
+                "borderTopLeftRadius": "0.2rem",
+                "borderTopRightRadius": "0.2rem",
+                "opacity": 0,
+              }
+            }
+          >
+            <div
+              className="c10"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+            <div
+              className="c11"
+              style={
+                Object {
+                  "color": "#ffffff",
+                }
+              }
+            >
+              <span
+                className=""
+                onClick={[Function]}
+                style={Object {}}
+              >
+
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <p>
@@ -679,6 +934,22 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
+            "borderBottomColor": "#d0d3da",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#d0d3da",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#d0d3da",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#d0d3da",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
             "height": "3.2rem",
           }
         }
@@ -739,11 +1010,15 @@ exports[`AmountInputDemo Component JSON 1`] = `
           size="default"
           style={
             Object {
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
               "color": "#363B40",
               "fontSize": "1.4rem",
               "paddingBottom": "0rem",
               "paddingLeft": "0.6rem",
-              "paddingRight": "1rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "0rem",
             }
           }
@@ -767,6 +1042,57 @@ exports[`AmountInputDemo Component JSON 1`] = `
         />
       </div>
     </div>
+    <div
+      className="c6"
+    >
+      <div
+        className="c7"
+      >
+        <div
+          className="c8"
+          style={Object {}}
+        >
+          <div
+            className="c9"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#363B40",
+                "borderBottomLeftRadius": "0.2rem",
+                "borderBottomRightRadius": "0.2rem",
+                "borderTopLeftRadius": "0.2rem",
+                "borderTopRightRadius": "0.2rem",
+                "opacity": 0,
+              }
+            }
+          >
+            <div
+              className="c10"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+            <div
+              className="c11"
+              style={
+                Object {
+                  "color": "#ffffff",
+                }
+              }
+            >
+              <span
+                className=""
+                onClick={[Function]}
+                style={Object {}}
+              >
+
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <p>
       large size
     </p>
@@ -786,20 +1112,23 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "backgroundColor": "#f2f2f2",
-            "borderBottomColor": "#e8e8e8",
+            "backgroundColor": "#f4f5f8",
+            "borderBottomColor": "#ebecf0",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#e8e8e8",
+            "borderLeftColor": "#ebecf0",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#e8e8e8",
+            "borderRightColor": "#ebecf0",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#e8e8e8",
+            "borderTopColor": "#ebecf0",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
             "borderTopStyle": "solid",
             "borderTopWidth": "0.1rem",
-            "color": "#cccccc",
             "height": "4rem",
           }
         }
@@ -808,7 +1137,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
           className="c3"
           style={
             Object {
-              "color": "#cccccc",
+              "color": "#d0d3da",
               "fontSize": "1.4rem",
             }
           }
@@ -861,13 +1190,17 @@ exports[`AmountInputDemo Component JSON 1`] = `
           size="large"
           style={
             Object {
-              "backgroundColor": "#f2f2f2",
-              "color": "#cccccc",
+              "backgroundColor": "#f4f5f8",
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
+              "color": "#d0d3da",
               "cursor": "not-allowed",
               "fontSize": "1.4rem",
               "paddingBottom": "0rem",
               "paddingLeft": "0.6rem",
-              "paddingRight": "1rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "0rem",
             }
           }
@@ -884,12 +1217,63 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "color": "#cccccc",
+              "color": "#d0d3da",
               "cursor": "not-allowed",
               "fontSize": "1.2rem",
             }
           }
         />
+      </div>
+    </div>
+    <div
+      className="c6"
+    >
+      <div
+        className="c7"
+      >
+        <div
+          className="c8"
+          style={Object {}}
+        >
+          <div
+            className="c9"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#363B40",
+                "borderBottomLeftRadius": "0.2rem",
+                "borderBottomRightRadius": "0.2rem",
+                "borderTopLeftRadius": "0.2rem",
+                "borderTopRightRadius": "0.2rem",
+                "opacity": 0,
+              }
+            }
+          >
+            <div
+              className="c10"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+            <div
+              className="c11"
+              style={
+                Object {
+                  "color": "#ffffff",
+                }
+              }
+            >
+              <span
+                className=""
+                onClick={[Function]}
+                style={Object {}}
+              >
+
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -915,6 +1299,22 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
+            "borderBottomColor": "#d0d3da",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#d0d3da",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#d0d3da",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#d0d3da",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
             "height": "3.2rem",
           }
         }
@@ -974,11 +1374,15 @@ exports[`AmountInputDemo Component JSON 1`] = `
           size="default"
           style={
             Object {
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
               "color": "#363B40",
               "fontSize": "1.4rem",
               "paddingBottom": "0rem",
               "paddingLeft": "0.6rem",
-              "paddingRight": "1rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "0rem",
             }
           }
@@ -1000,6 +1404,57 @@ exports[`AmountInputDemo Component JSON 1`] = `
             }
           }
         />
+      </div>
+    </div>
+    <div
+      className="c6"
+    >
+      <div
+        className="c7"
+      >
+        <div
+          className="c8"
+          style={Object {}}
+        >
+          <div
+            className="c9"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#363B40",
+                "borderBottomLeftRadius": "0.2rem",
+                "borderBottomRightRadius": "0.2rem",
+                "borderTopLeftRadius": "0.2rem",
+                "borderTopRightRadius": "0.2rem",
+                "opacity": 0,
+              }
+            }
+          >
+            <div
+              className="c10"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+            <div
+              className="c11"
+              style={
+                Object {
+                  "color": "#ffffff",
+                }
+              }
+            >
+              <span
+                className=""
+                onClick={[Function]}
+                style={Object {}}
+              >
+
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <p>
@@ -1021,6 +1476,22 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
+            "borderBottomColor": "#d0d3da",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#d0d3da",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#d0d3da",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#d0d3da",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
             "height": "3.2rem",
           }
         }
@@ -1080,11 +1551,15 @@ exports[`AmountInputDemo Component JSON 1`] = `
           size="default"
           style={
             Object {
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
               "color": "#363B40",
               "fontSize": "1.4rem",
               "paddingBottom": "0rem",
               "paddingLeft": "0.6rem",
-              "paddingRight": "1rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "0rem",
             }
           }
@@ -1092,7 +1567,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
           value="123,456"
         />
         <i
-          className="lugia-icon-reminder_close   c7"
+          className="lugia-icon-reminder_close   c13"
           disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
@@ -1108,12 +1583,247 @@ exports[`AmountInputDemo Component JSON 1`] = `
         />
       </div>
     </div>
+    <div
+      className="c6"
+    >
+      <div
+        className="c7"
+      >
+        <div
+          className="c8"
+          style={Object {}}
+        >
+          <div
+            className="c9"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#363B40",
+                "borderBottomLeftRadius": "0.2rem",
+                "borderBottomRightRadius": "0.2rem",
+                "borderTopLeftRadius": "0.2rem",
+                "borderTopRightRadius": "0.2rem",
+                "opacity": 1,
+              }
+            }
+          >
+            <div
+              className="c10"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+            <div
+              className="c11"
+              style={
+                Object {
+                  "color": "#ffffff",
+                }
+              }
+            >
+              <span
+                className=""
+                onClick={[Function]}
+                style={Object {}}
+              >
+                壹拾贰万叁仟肆佰伍拾陆元整
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      主动聚焦的 Input
+    </p>
+    <div>
+      <button
+        onClick={[Function]}
+      >
+        点击主动聚焦
+      </button>
+      <div
+        className="c1"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        style={Object {}}
+      >
+        <div
+          className="c2"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "borderBottomColor": "#d0d3da",
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#d0d3da",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#d0d3da",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#d0d3da",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "height": "3.2rem",
+            }
+          }
+        >
+          <span
+            className="c3"
+            style={
+              Object {
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            <span
+              className=""
+              style={Object {}}
+            >
+              ¥
+            </span>
+          </span>
+          <input
+            autoFocus={false}
+            className="c4"
+            disabled={false}
+            maxLength="16"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            prefix={
+              <ForwardRef(ResultForward)
+                themeProps={
+                  Object {
+                    "onLugia": [Function],
+                    "propsConfig": Object {
+                      "size": "default",
+                    },
+                    "themeConfig": Object {
+                      "__partName": "AmountInputPrefix",
+                    },
+                    "themeState": Object {
+                      "disabled": false,
+                    },
+                  }
+                }
+              >
+                ¥
+              </ForwardRef(ResultForward)>
+            }
+            readOnly={false}
+            size="default"
+            style={
+              Object {
+                "borderBottomLeftRadius": "0.4rem",
+                "borderBottomRightRadius": "0.4rem",
+                "borderTopLeftRadius": "0.4rem",
+                "borderTopRightRadius": "0.4rem",
+                "color": "#363B40",
+                "fontSize": "1.4rem",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0.6rem",
+                "paddingRight": "1.2rem",
+                "paddingTop": "0rem",
+              }
+            }
+            type="text"
+            value=""
+          />
+          <i
+            className="lugia-icon-reminder_close   c5"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "fontSize": "1.2rem",
+              }
+            }
+          />
+        </div>
+      </div>
+      <div
+        className="c6"
+      >
+        <div
+          className="c7"
+        >
+          <div
+            className="c8"
+            style={Object {}}
+          >
+            <div
+              className="c9"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#363B40",
+                  "borderBottomLeftRadius": "0.2rem",
+                  "borderBottomRightRadius": "0.2rem",
+                  "borderTopLeftRadius": "0.2rem",
+                  "borderTopRightRadius": "0.2rem",
+                  "opacity": 0,
+                }
+              }
+            >
+              <div
+                className="c10"
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={Object {}}
+              />
+              <div
+                className="c11"
+                style={
+                  Object {
+                    "color": "#ffffff",
+                  }
+                }
+              >
+                <span
+                  className=""
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div
     className="c0"
   >
     <p>
-      amountPrefix: '¥' transform: false 
+      amountPrefix: '¥' transform: false
     </p>
     <div
       className="c1"
@@ -1131,6 +1841,22 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
+            "borderBottomColor": "#d0d3da",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#d0d3da",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#d0d3da",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#d0d3da",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
             "height": "3.2rem",
           }
         }
@@ -1190,11 +1916,15 @@ exports[`AmountInputDemo Component JSON 1`] = `
           size="default"
           style={
             Object {
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
               "color": "#363B40",
               "fontSize": "1.4rem",
               "paddingBottom": "0rem",
               "paddingLeft": "0.6rem",
-              "paddingRight": "1rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "0rem",
             }
           }
@@ -1218,8 +1948,58 @@ exports[`AmountInputDemo Component JSON 1`] = `
         />
       </div>
     </div>
+    <div
+      className="c6"
+    >
+      <div
+        className="c7"
+      >
+        <div
+          className="c8"
+          style={Object {}}
+        >
+          <div
+            className="c9"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#363B40",
+                "borderBottomLeftRadius": "0.2rem",
+                "borderBottomRightRadius": "0.2rem",
+                "borderTopLeftRadius": "0.2rem",
+                "borderTopRightRadius": "0.2rem",
+                "opacity": 0,
+              }
+            }
+          >
+            <div
+              className="c10"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+            <div
+              className="c11"
+              style={
+                Object {
+                  "color": "#ffffff",
+                }
+              }
+            >
+              <span
+                className=""
+                style={Object {}}
+              >
+
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <p>
-      amountPrefix: '$' transform: false 
+      amountPrefix: '$' transform: false
     </p>
     <div
       className="c1"
@@ -1237,6 +2017,22 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
+            "borderBottomColor": "#d0d3da",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#d0d3da",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#d0d3da",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#d0d3da",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
             "height": "3.2rem",
           }
         }
@@ -1296,11 +2092,15 @@ exports[`AmountInputDemo Component JSON 1`] = `
           size="default"
           style={
             Object {
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
               "color": "#363B40",
               "fontSize": "1.4rem",
               "paddingBottom": "0rem",
               "paddingLeft": "0.6rem",
-              "paddingRight": "1rem",
+              "paddingRight": "1.2rem",
               "paddingTop": "0rem",
             }
           }
@@ -1324,358 +2124,54 @@ exports[`AmountInputDemo Component JSON 1`] = `
         />
       </div>
     </div>
-  </div>
-  <div
-    className="c0"
-  >
-    <p>
-      校验信息显示类型 top 输入值 是否含有5
-    </p>
     <div
-      className="c1"
-      onBlur={[Function]}
-      onFocus={[Function]}
-      style={Object {}}
+      className="c6"
     >
       <div
-        className="c8"
-        onBlur={[Function]}
-        onFocus={[Function]}
-        style={Object {}}
+        className="c7"
       >
         <div
-          className="c2"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          style={
-            Object {
-              "height": "3.2rem",
-              "width": "100%",
-            }
-          }
-        >
-          <span
-            className="c3"
-            style={
-              Object {
-                "fontSize": "1.4rem",
-              }
-            }
-          >
-            <span
-              className=""
-              style={Object {}}
-            >
-              ¥
-            </span>
-          </span>
-          <input
-            autoFocus={false}
-            className="c4"
-            disabled={false}
-            maxLength="16"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            prefix={
-              <ForwardRef(ResultForward)
-                themeProps={
-                  Object {
-                    "onLugia": [Function],
-                    "propsConfig": Object {
-                      "size": "default",
-                    },
-                    "themeConfig": Object {
-                      "__partName": "AmountInputPrefix",
-                    },
-                    "themeState": Object {
-                      "disabled": false,
-                    },
-                  }
-                }
-              >
-                ¥
-              </ForwardRef(ResultForward)>
-            }
-            readOnly={false}
-            size="default"
-            style={
-              Object {
-                "color": "#363B40",
-                "fontSize": "1.4rem",
-                "paddingBottom": "0rem",
-                "paddingLeft": "0.6rem",
-                "paddingRight": "1rem",
-                "paddingTop": "0rem",
-              }
-            }
-            type="text"
-            value=""
-          />
-          <i
-            className="lugia-icon-reminder_close   c5"
-            disabled={false}
-            onClick={[Function]}
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            style={
-              Object {
-                "color": "#9EA4AE",
-                "fontSize": "1.2rem",
-              }
-            }
-          />
-        </div>
-      </div>
-    </div>
-    <p>
-      校验信息显示类型 bottom 输入值 是否含有5
-    </p>
-    <div
-      className="c1"
-      onBlur={[Function]}
-      onFocus={[Function]}
-      style={Object {}}
-    >
-      <div
-        className="c9"
-        style={Object {}}
-      >
-        <div
-          className="c2"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          style={
-            Object {
-              "height": "3.2rem",
-              "width": "100%",
-            }
-          }
-        >
-          <span
-            className="c3"
-            style={
-              Object {
-                "fontSize": "1.4rem",
-              }
-            }
-          >
-            <span
-              className=""
-              style={Object {}}
-            >
-              ¥
-            </span>
-          </span>
-          <input
-            autoFocus={false}
-            className="c4"
-            disabled={false}
-            maxLength="16"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            prefix={
-              <ForwardRef(ResultForward)
-                themeProps={
-                  Object {
-                    "onLugia": [Function],
-                    "propsConfig": Object {
-                      "size": "default",
-                    },
-                    "themeConfig": Object {
-                      "__partName": "AmountInputPrefix",
-                    },
-                    "themeState": Object {
-                      "disabled": false,
-                    },
-                  }
-                }
-              >
-                ¥
-              </ForwardRef(ResultForward)>
-            }
-            readOnly={false}
-            size="default"
-            style={
-              Object {
-                "color": "#363B40",
-                "fontSize": "1.4rem",
-                "paddingBottom": "0rem",
-                "paddingLeft": "0.6rem",
-                "paddingRight": "1rem",
-                "paddingTop": "0rem",
-              }
-            }
-            type="text"
-            value=""
-          />
-          <i
-            className="lugia-icon-reminder_close   c5"
-            disabled={false}
-            onClick={[Function]}
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            style={
-              Object {
-                "color": "#9EA4AE",
-                "fontSize": "1.2rem",
-              }
-            }
-          />
-        </div>
-        <div
-          className="c10"
+          className="c8"
           style={Object {}}
         >
-          验证出错
-        </div>
-      </div>
-    </div>
-    <p>
-      校验信息显示类型 inner 输入值 是否含有5
-    </p>
-    <div
-      className="c1"
-      onBlur={[Function]}
-      onFocus={[Function]}
-      style={Object {}}
-    >
-      <div
-        className="c11"
-        style={Object {}}
-      >
-        <div
-          className="c2"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          style={
-            Object {
-              "height": "3.2rem",
-              "width": "100%",
-            }
-          }
-        >
-          <span
-            className="c3"
+          <div
+            className="c9"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
             style={
               Object {
-                "fontSize": "1.4rem",
+                "backgroundColor": "#363B40",
+                "borderBottomLeftRadius": "0.2rem",
+                "borderBottomRightRadius": "0.2rem",
+                "borderTopLeftRadius": "0.2rem",
+                "borderTopRightRadius": "0.2rem",
+                "opacity": 0,
               }
             }
           >
-            <span
-              className=""
+            <div
+              className="c10"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
               style={Object {}}
-            >
-              ¥
-            </span>
-          </span>
-          <input
-            autoFocus={false}
-            className="c4"
-            disabled={false}
-            maxLength="16"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            prefix={
-              <ForwardRef(ResultForward)
-                themeProps={
-                  Object {
-                    "onLugia": [Function],
-                    "propsConfig": Object {
-                      "size": "default",
-                    },
-                    "themeConfig": Object {
-                      "__partName": "AmountInputPrefix",
-                    },
-                    "themeState": Object {
-                      "disabled": false,
-                    },
-                  }
+            />
+            <div
+              className="c11"
+              style={
+                Object {
+                  "color": "#ffffff",
                 }
+              }
+            >
+              <span
+                className=""
+                style={Object {}}
               >
-                ¥
-              </ForwardRef(ResultForward)>
-            }
-            readOnly={false}
-            size="default"
-            style={
-              Object {
-                "color": "#363B40",
-                "fontSize": "1.4rem",
-                "paddingBottom": "0rem",
-                "paddingLeft": "0.6rem",
-                "paddingRight": "1rem",
-                "paddingTop": "0rem",
-              }
-            }
-            type="text"
-            value=""
-          />
-          <i
-            className="lugia-icon-reminder_close   c5"
-            disabled={false}
-            onClick={[Function]}
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            style={
-              Object {
-                "color": "#9EA4AE",
-                "fontSize": "1.2rem",
-              }
-            }
-          />
+                $
+              </span>
+            </div>
+          </div>
         </div>
-        <span
-          className="c12"
-          style={Object {}}
-        >
-          验证出错
-        </span>
       </div>
     </div>
   </div>
@@ -1683,22 +2179,25 @@ exports[`AmountInputDemo Component JSON 1`] = `
 `;
 
 exports[`AmountInputDemo props: placeholder  1`] = `
-.c4 {
+Array [
+  .c4 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
   visibility: hidden;
-  padding-right: 1rem;
+  padding-right: 1.2rem;
 }
 
 .c0 {
   display: inline-block;
+  height: 100%;
   display: block;
 }
 
 .c3 {
+  background-color: transparent;
   box-sizing: border-box;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -1711,30 +2210,25 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
-  background-color: #ffffff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c3::-webkit-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c3::-moz-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c3:-ms-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c3::placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
@@ -1751,26 +2245,11 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
-  background-color: #ffffff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
+  background-color: white;
 }
 
 .c2 {
+  height: 100%;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1779,134 +2258,265 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #9EA4AE;
-  padding-left: 1rem;
   color: #363B40;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1.2rem;
+  padding-right: 0rem;
 }
 
 <div
-  className="c0"
-  onBlur={[Function]}
-  onFocus={[Function]}
-  style={Object {}}
->
-  <div
-    className="c1"
+    className="c0"
     onBlur={[Function]}
     onFocus={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    style={
-      Object {
-        "height": "3.2rem",
-      }
-    }
+    style={Object {}}
   >
-    <span
-      className="c2"
+    <div
+      className="c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
       style={
         Object {
-          "fontSize": "1.4rem",
+          "borderBottomColor": "#d0d3da",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#d0d3da",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#d0d3da",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#d0d3da",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
         }
       }
     >
       <span
-        className=""
+        className="c2"
+        style={
+          Object {
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        <span
+          className=""
+          style={Object {}}
+        >
+          ¥
+        </span>
+      </span>
+      <input
+        autoFocus={false}
+        className="c3"
+        disabled={false}
+        maxLength="16"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        placeholder="请填写内容"
+        prefix={
+          <ForwardRef(ResultForward)
+            themeProps={
+              Object {
+                "onLugia": [Function],
+                "propsConfig": Object {
+                  "size": "default",
+                },
+                "themeConfig": Object {
+                  "__partName": "AmountInputPrefix",
+                },
+                "themeState": Object {
+                  "disabled": false,
+                },
+              }
+            }
+          >
+            ¥
+          </ForwardRef(ResultForward)>
+        }
+        readOnly={false}
+        size="default"
+        style={
+          Object {
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "0.6rem",
+            "paddingRight": "1.2rem",
+            "paddingTop": "0rem",
+          }
+        }
+        type="text"
+        value=""
+      />
+      <i
+        className="lugia-icon-reminder_close   c4"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#9EA4AE",
+            "fontSize": "1.2rem",
+          }
+        }
+      />
+    </div>
+  </div>,
+  .c0 {
+  display: none;
+}
+
+.c1 {
+  position: absolute;
+  border-radius: 4px;
+  box-sizing: border-box;
+  left: -9999px;
+  top: -9999px;
+  z-index: undefined;
+}
+
+.c2 {
+  position: relative;
+  padding-bottom: 0.4rem;
+  background: transparent;
+  box-shadow: none;
+}
+
+.c3 {
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+}
+
+.c4 {
+  border-color: transparent;
+  position: absolute;
+  border-style: solid;
+  line-height: 1;
+  left: 1rem;
+  bottom: -0.3rem;
+  border-top-color: #363B40;
+  border-width: 0.5rem 0.5rem 0;
+}
+
+.c5 {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+<div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
         style={Object {}}
       >
-        ¥
-      </span>
-    </span>
-    <input
-      autoFocus={false}
-      className="c3"
-      disabled={false}
-      maxLength="16"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      placeholder="请填写内容"
-      prefix={
-        <ForwardRef(ResultForward)
-          themeProps={
+        <div
+          className="c3"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
             Object {
-              "onLugia": [Function],
-              "propsConfig": Object {
-                "size": "default",
-              },
-              "themeConfig": Object {
-                "__partName": "AmountInputPrefix",
-              },
-              "themeState": Object {
-                "disabled": false,
-              },
+              "backgroundColor": "#363B40",
+              "borderBottomLeftRadius": "0.2rem",
+              "borderBottomRightRadius": "0.2rem",
+              "borderTopLeftRadius": "0.2rem",
+              "borderTopRightRadius": "0.2rem",
+              "opacity": 0,
             }
           }
         >
-          ¥
-        </ForwardRef(ResultForward)>
-      }
-      readOnly={false}
-      size="default"
-      style={
-        Object {
-          "color": "#363B40",
-          "fontSize": "1.4rem",
-          "paddingBottom": "0rem",
-          "paddingLeft": "0.6rem",
-          "paddingRight": "1rem",
-          "paddingTop": "0rem",
-        }
-      }
-      type="text"
-      value=""
-    />
-    <i
-      className="lugia-icon-reminder_close   c4"
-      disabled={false}
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "color": "#9EA4AE",
-          "fontSize": "1.2rem",
-        }
-      }
-    />
-  </div>
-</div>
+          <div
+            className="c4"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="c5"
+            style={
+              Object {
+                "color": "#ffffff",
+              }
+            }
+          >
+            <span
+              className=""
+              onClick={[Function]}
+              style={Object {}}
+            >
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
 `;
 
 exports[`AmountInputDemo props: placeholder  2`] = `
-.c4 {
+Array [
+  .c4 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
   visibility: hidden;
-  padding-right: 1rem;
+  padding-right: 1.2rem;
 }
 
 .c0 {
   display: inline-block;
+  height: 100%;
   display: block;
 }
 
 .c3 {
+  background-color: transparent;
   box-sizing: border-box;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -1919,30 +2529,25 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
-  background-color: #ffffff;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c3::-webkit-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c3::-moz-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c3:-ms-input-placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
 .c3::placeholder {
-  color: #cccccc;
+  color: #c2c5ce;
   font-size: 1.4rem;
 }
 
@@ -1959,26 +2564,11 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
-  background-color: #ffffff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
+  background-color: white;
 }
 
 .c2 {
+  height: 100%;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1987,113 +2577,241 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #9EA4AE;
-  padding-left: 1rem;
   color: #363B40;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1.2rem;
+  padding-right: 0rem;
 }
 
 <div
-  className="c0"
-  onBlur={[Function]}
-  onFocus={[Function]}
-  style={Object {}}
->
-  <div
-    className="c1"
+    className="c0"
     onBlur={[Function]}
     onFocus={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    style={
-      Object {
-        "height": "3.2rem",
-      }
-    }
+    style={Object {}}
   >
-    <span
-      className="c2"
+    <div
+      className="c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
       style={
         Object {
-          "fontSize": "1.4rem",
+          "borderBottomColor": "#d0d3da",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#d0d3da",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#d0d3da",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#d0d3da",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
         }
       }
     >
       <span
-        className=""
+        className="c2"
+        style={
+          Object {
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        <span
+          className=""
+          style={Object {}}
+        >
+          ¥
+        </span>
+      </span>
+      <input
+        autoFocus={false}
+        className="c3"
+        disabled={false}
+        maxLength="16"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        placeholder=""
+        prefix={
+          <ForwardRef(ResultForward)
+            themeProps={
+              Object {
+                "onLugia": [Function],
+                "propsConfig": Object {
+                  "size": "default",
+                },
+                "themeConfig": Object {
+                  "__partName": "AmountInputPrefix",
+                },
+                "themeState": Object {
+                  "disabled": false,
+                },
+              }
+            }
+          >
+            ¥
+          </ForwardRef(ResultForward)>
+        }
+        readOnly={false}
+        size="default"
+        style={
+          Object {
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "0.6rem",
+            "paddingRight": "1.2rem",
+            "paddingTop": "0rem",
+          }
+        }
+        type="text"
+        value=""
+      />
+      <i
+        className="lugia-icon-reminder_close   c4"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#9EA4AE",
+            "fontSize": "1.2rem",
+          }
+        }
+      />
+    </div>
+  </div>,
+  .c0 {
+  display: none;
+}
+
+.c1 {
+  position: absolute;
+  border-radius: 4px;
+  box-sizing: border-box;
+  left: -9999px;
+  top: -9999px;
+  z-index: undefined;
+}
+
+.c2 {
+  position: relative;
+  padding-bottom: 0.4rem;
+  background: transparent;
+  box-shadow: none;
+}
+
+.c3 {
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+}
+
+.c4 {
+  border-color: transparent;
+  position: absolute;
+  border-style: solid;
+  line-height: 1;
+  left: 1rem;
+  bottom: -0.3rem;
+  border-top-color: #363B40;
+  border-width: 0.5rem 0.5rem 0;
+}
+
+.c5 {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+<div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
         style={Object {}}
       >
-        ¥
-      </span>
-    </span>
-    <input
-      autoFocus={false}
-      className="c3"
-      disabled={false}
-      maxLength="16"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      placeholder=""
-      prefix={
-        <ForwardRef(ResultForward)
-          themeProps={
+        <div
+          className="c3"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
             Object {
-              "onLugia": [Function],
-              "propsConfig": Object {
-                "size": "default",
-              },
-              "themeConfig": Object {
-                "__partName": "AmountInputPrefix",
-              },
-              "themeState": Object {
-                "disabled": false,
-              },
+              "backgroundColor": "#363B40",
+              "borderBottomLeftRadius": "0.2rem",
+              "borderBottomRightRadius": "0.2rem",
+              "borderTopLeftRadius": "0.2rem",
+              "borderTopRightRadius": "0.2rem",
+              "opacity": 0,
             }
           }
         >
-          ¥
-        </ForwardRef(ResultForward)>
-      }
-      readOnly={false}
-      size="default"
-      style={
-        Object {
-          "color": "#363B40",
-          "fontSize": "1.4rem",
-          "paddingBottom": "0rem",
-          "paddingLeft": "0.6rem",
-          "paddingRight": "1rem",
-          "paddingTop": "0rem",
-        }
-      }
-      type="text"
-      value=""
-    />
-    <i
-      className="lugia-icon-reminder_close   c4"
-      disabled={false}
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "color": "#9EA4AE",
-          "fontSize": "1.2rem",
-        }
-      }
-    />
-  </div>
-</div>
+          <div
+            className="c4"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="c5"
+            style={
+              Object {
+                "color": "#ffffff",
+              }
+            }
+          >
+            <span
+              className=""
+              onClick={[Function]}
+              style={Object {}}
+            >
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
 `;
