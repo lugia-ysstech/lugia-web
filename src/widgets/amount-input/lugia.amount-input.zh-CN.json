@@ -11,7 +11,8 @@
     },
     "createPortal": {
       "type": "boolean",
-      "desc": "是否全局弹出框"
+      "desc": "是否全局弹出框",
+      "propsDefaultValue": false
     },
     "popupContainerId": {
       "type": "ContainerDomIdType",
