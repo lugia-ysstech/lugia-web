@@ -13,7 +13,7 @@ import chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
 import { delay } from '@lugia/react-test-utils';
 
-import ModalDemo from '../demo';
+import ModalDemo from '../testDemo';
 import Modal from '../index';
 
 const { expect: exp } = chai;
@@ -28,7 +28,7 @@ describe('Modal', () => {
     return state;
   };
   it('css', () => {
-    const Target = <Modal />;
+    const Target = <ModalDemo />;
     expect(renderer.create(Target).toJSON()).toMatchSnapshot();
   });
   it('Modal state: visible and opening and closing', async () => {
