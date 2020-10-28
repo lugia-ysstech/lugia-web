@@ -365,7 +365,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
                 onClick={[Function]}
                 style={Object {}}
               >
-
+                
               </span>
             </div>
           </div>
@@ -543,7 +543,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
                 onClick={[Function]}
                 style={Object {}}
               >
-
+                
               </span>
             </div>
           </div>
@@ -551,7 +551,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
       </div>
     </div>
     <p>
-      禁用状态
+      禁用状态 
     </p>
     <div
       className="c1"
@@ -726,7 +726,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
                 onClick={[Function]}
                 style={Object {}}
               >
-
+                
               </span>
             </div>
           </div>
@@ -908,7 +908,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
                 onClick={[Function]}
                 style={Object {}}
               >
-
+                
               </span>
             </div>
           </div>
@@ -1086,7 +1086,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
                 onClick={[Function]}
                 style={Object {}}
               >
-
+                
               </span>
             </div>
           </div>
@@ -1269,7 +1269,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
                 onClick={[Function]}
                 style={Object {}}
               >
-
+                
               </span>
             </div>
           </div>
@@ -1450,7 +1450,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
                 onClick={[Function]}
                 style={Object {}}
               >
-
+                
               </span>
             </div>
           </div>
@@ -1810,7 +1810,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
                   onClick={[Function]}
                   style={Object {}}
                 >
-
+                  
                 </span>
               </div>
             </div>
@@ -1823,7 +1823,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
     className="c0"
   >
     <p>
-      amountPrefix: '¥' transform: false
+      amountPrefix: '¥' transform: false 
     </p>
     <div
       className="c1"
@@ -1991,7 +1991,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
                 className=""
                 style={Object {}}
               >
-
+                
               </span>
             </div>
           </div>
@@ -1999,7 +1999,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
       </div>
     </div>
     <p>
-      amountPrefix: '$' transform: false
+      amountPrefix: '$' transform: false 
     </p>
     <div
       className="c1"
@@ -2487,7 +2487,7 @@ Array [
               onClick={[Function]}
               style={Object {}}
             >
-
+              
             </span>
           </div>
         </div>
@@ -2806,7 +2806,7 @@ Array [
               onClick={[Function]}
               style={Object {}}
             >
-
+              
             </span>
           </div>
         </div>
