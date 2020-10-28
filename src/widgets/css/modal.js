@@ -145,10 +145,16 @@ export const ModalWrap = StaticComponent({
   tag: 'div',
   className: 'ModalWrap',
   css: css`
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
     position: fixed;
-    left: 50%;
-    top: 100px;
-    transform: translateX(-50%);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 150px;
+    overflow: auto;
     z-index: ${props => (props.zIndex ? props.zIndex : '99999')};
   `,
 });
@@ -156,6 +162,11 @@ export const Modal = CSSComponent({
   tag: 'div',
   className: 'Modal',
   css: css`
+    display: inline-block;
+    position: relative;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
     box-sizing: border-box;
     font-size: ${FontSize}rem;
     outline: none;
@@ -173,7 +184,6 @@ export const ModalContent = CSSComponent({
     border: 0;
     border-radius: ${px2remcss(4)};
     box-shadow: 0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15);
-    min-width: ${px2remcss(520)};
   `,
   normal: {
     selectNames: [
@@ -195,6 +205,7 @@ export const ModalContent = CSSComponent({
       boxShadow: getBoxShadow(`0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15)`),
       border: getBorder({ width: 1, style: 'solid', color: '#ccc' }),
       borderRadius: getBorderRadius('$lugia-dict.@lugia/lugia-web.largeBorderRadiusValue'),
+      minWidth: 520,
     },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
