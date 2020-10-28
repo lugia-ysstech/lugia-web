@@ -12,6 +12,12 @@ import Select from '../select';
 import Theme from '../theme';
 import Widgets from '../consts';
 import { getBorderRadius } from '../theme/CSSProvider';
+import styled from 'styled-components';
+
+const BlankBox = styled.div`
+  height: 1200px;
+  background: #ccc;
+`;
 
 const Text = (props: Object) => {
   return <div>{props.text}</div>;
@@ -73,6 +79,8 @@ export default class ModalDemo extends React.Component<any, any> {
       visable6: false,
       visable7: false,
       visable8: false,
+      visable9: false,
+      visable10: false,
       buttonValue: 'testValue',
     };
   }
@@ -115,6 +123,8 @@ export default class ModalDemo extends React.Component<any, any> {
       visable6,
       visable7,
       visable8,
+      visable9,
+      visable10,
       confirmLoading,
       buttonValue,
     } = this.state;
@@ -189,6 +199,16 @@ export default class ModalDemo extends React.Component<any, any> {
                 color: 'red',
               },
             },
+          },
+        },
+      },
+    };
+    const minWidthTheme = {
+      [Widgets.Modal]: {
+        Container: {
+          normal: {
+            minWidth: 0,
+            width: 300,
           },
         },
       },
@@ -330,6 +350,35 @@ export default class ModalDemo extends React.Component<any, any> {
         >
           <button onClick={this.handleTestButtonClick}>{buttonValue}</button>
         </Modal>
+
+        <br />
+        <br />
+        <Button onClick={this.Click(9)}>对话框高度超出窗口时,可以滚动</Button>
+        <Modal
+          visible={visable9}
+          title="这是标题！"
+          onOk={this.buttonClick(9)}
+          onCancel={this.buttonClick(9)}
+        >
+          这是内容！
+          <p>一段描述</p>
+          <BlankBox />
+          <p>另一段描述</p>
+        </Modal>
+
+        <br />
+        <br />
+        <Button onClick={this.Click(10)}>最小宽度可调整</Button>
+        <Theme config={minWidthTheme}>
+          <Modal
+            visible={visable10}
+            title="这是标题！"
+            onOk={this.buttonClick(10)}
+            onCancel={this.buttonClick(10)}
+          >
+            这是内容！
+          </Modal>
+        </Theme>
       </div>
     );
   }

@@ -85,7 +85,7 @@
     "mountBody": {
       "type": "boolean",
       "desc": "是否挂载body上",
-      "propsDefaultValue": false
+      "propsDefaultValue": true
     }
   },
   "events": {
