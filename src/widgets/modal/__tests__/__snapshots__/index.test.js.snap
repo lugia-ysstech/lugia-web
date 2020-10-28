@@ -1,7 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal css 1`] = `
-.c0 {
+.c3 {
+  display: block;
+  font-size: 1.4rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4000;
+}
+
+.c13 {
+  display: block;
+  font-size: 1.4rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+}
+
+.c15 {
+  display: block;
+  font-size: 1.4rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4001;
+}
+
+.c17 {
   display: none;
   font-size: 1.4rem;
   position: fixed;
@@ -12,7 +45,93 @@ exports[`Modal css 1`] = `
   z-index: 99999;
 }
 
-.c1 {
+.c20 {
+  display: block;
+  font-size: 1.4rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4002;
+}
+
+.c22 {
+  display: block;
+  font-size: 1.4rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4003;
+}
+
+.c24 {
+  display: block;
+  font-size: 1.4rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4004;
+}
+
+.c26 {
+  display: block;
+  font-size: 1.4rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4005;
+}
+
+.c4 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.65);
+  z-index: 4000;
+  -webkit-animation: eMLfYp 0.4s;
+  animation: eMLfYp 0.4s;
+}
+
+.c14 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.65);
+  z-index: 99999;
+  -webkit-animation: eMLfYp 0.4s;
+  animation: eMLfYp 0.4s;
+}
+
+.c16 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.65);
+  z-index: 4001;
+  -webkit-animation: eMLfYp 0.4s;
+  animation: eMLfYp 0.4s;
+}
+
+.c18 {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -24,23 +143,105 @@ exports[`Modal css 1`] = `
   z-index: 99999;
 }
 
-.c2 {
+.c21 {
   position: fixed;
-  left: 50%;
-  top: 100px;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.65);
+  z-index: 4002;
+  -webkit-animation: eMLfYp 0.4s;
+  animation: eMLfYp 0.4s;
+}
+
+.c23 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.65);
+  z-index: 4003;
+  -webkit-animation: eMLfYp 0.4s;
+  animation: eMLfYp 0.4s;
+}
+
+.c25 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.65);
+  z-index: 4004;
+  -webkit-animation: eMLfYp 0.4s;
+  animation: eMLfYp 0.4s;
+}
+
+.c27 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.65);
+  z-index: 4005;
+  -webkit-animation: eMLfYp 0.4s;
+  animation: eMLfYp 0.4s;
+}
+
+.c5 {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-bottom: 150px;
+  overflow: auto;
   z-index: 99999;
 }
 
-.c3 {
+.c6 {
+  display: inline-block;
+  position: relative;
+  top: 100px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  outline: none;
+  -webkit-animation: eMLfYp 0.4s;
+  animation: eMLfYp 0.4s;
+}
+
+.c19 {
+  display: inline-block;
+  position: relative;
+  top: 100px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
   box-sizing: border-box;
   font-size: 1.4rem;
   outline: none;
 }
 
-.c4 {
+.c7 {
   position: relative;
   border: 0;
   border-radius: 0.4rem;
@@ -66,7 +267,7 @@ exports[`Modal css 1`] = `
   border-bottom-left-radius: 0.8rem;
 }
 
-.c5 {
+.c8 {
   position: absolute;
   right: 0;
   top: 0;
@@ -77,7 +278,7 @@ exports[`Modal css 1`] = `
   line-height: 6.4rem;
 }
 
-.c7 {
+.c10 {
   border-radius: 0.4rem 0.4rem 0 0;
   color: #363B40;
   font-size: 1.6rem;
@@ -88,7 +289,7 @@ exports[`Modal css 1`] = `
   padding-right: 0rem;
 }
 
-.c8 {
+.c11 {
   word-wrap: break-word;
   color: #646A6E;
   font-size: 1.4rem;
@@ -98,20 +299,20 @@ exports[`Modal css 1`] = `
   padding-right: 0rem;
 }
 
-.c9 {
+.c12 {
   padding-top: 2.2rem;
   border-radius: 0 0 4px 4px;
 }
 
-.c9 > button {
+.c12 > button {
   margin-left: 1.4rem;
 }
 
-.c9 > button:first-child {
+.c12 > button:first-child {
   margin-left: 0;
 }
 
-.c10 {
+.c0 {
   display: inline-block;
   margin-bottom: 0;
   box-sizing: border-box;
@@ -143,11 +344,11 @@ exports[`Modal css 1`] = `
   border-right-color: #d0d3da;
 }
 
-.c12 {
+.c2 {
   font-size: 1.4rem;
 }
 
-.c11 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -164,7 +365,7 @@ exports[`Modal css 1`] = `
   height: 100%;
 }
 
-.c6 {
+.c9 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -172,167 +373,2193 @@ exports[`Modal css 1`] = `
   cursor: pointer;
 }
 
-<div
-  className="c0"
->
-  <div
-    className="c1"
+.c28 {
+  height: 1200px;
+  background: #ccc;
+}
+
+<div>
+  <button
+    className="c0"
+    onBlur={[Function]}
     onClick={[Function]}
-    style={Object {}}
-  />
-  <div
-    className="c2"
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomColor": "#d0d3da",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#d0d3da",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#d0d3da",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#d0d3da",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
   >
-    <div
-      className="c3"
-      style={Object {}}
-      tabIndex="1"
+    <span
+      className="c1"
     >
-      <div
-        className="c4"
+      <span
+        className="c2"
         style={
           Object {
-            "paddingBottom": "3rem",
-            "paddingLeft": "3rem",
-            "paddingRight": "3rem",
-            "paddingTop": "3rem",
+            "color": "#363B40",
+            "fontSize": "1.4rem",
           }
         }
       >
-        <div
-          className="c5"
-          onClick={[Function]}
-        >
-          <i
-            className="lugia-icon-reminder_close   c6"
-            onClick={[Function]}
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            style={
-              Object {
-                "color": "#9EA4AE",
-                "fontSize": "1.4rem",
-              }
-            }
-          />
-        </div>
+        Theme Modal
+      </span>
+    </span>
+  </button>
+  <div
+    className="c3"
+  >
+    <div
+      className="c4"
+      style={
+        Object {
+          "backgroundColor": "green",
+        }
+      }
+    />
+    <div
+      className="c5"
+      onClick={[Function]}
+    >
+      <div
+        className="c6"
+        onClick={[Function]}
+        style={
+          Object {
+            "height": "50rem",
+            "width": "80rem",
+          }
+        }
+        tabIndex="1"
+      >
         <div
           className="c7"
-          style={Object {}}
-          title={true}
-        />
-        <div
-          className="c8"
-          style={Object {}}
-        />
-        <div
-          className="c9"
+          style={
+            Object {
+              "backgroundColor": "orange",
+              "borderBottomColor": "#4d63ff",
+              "borderBottomLeftRadius": "5rem",
+              "borderBottomRightRadius": "5rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#4d63ff",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#4d63ff",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#4d63ff",
+              "borderTopLeftRadius": "5rem",
+              "borderTopRightRadius": "5rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "50rem",
+              "opacity": 0.8,
+              "paddingBottom": "3rem",
+              "paddingLeft": "5rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+              "width": "80rem",
+            }
+          }
         >
-          <button
-            className="c10"
-            onBlur={[Function]}
+          <div
+            className="c8"
             onClick={[Function]}
-            onFocus={[Function]}
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            onMouseUp={[Function]}
-            size="default"
+          >
+            <i
+              className="lugia-icon-reminder_close   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "green",
+                  "fontSize": "1.8rem",
+                }
+              }
+            />
+          </div>
+          <div
+            className="c10"
             style={
               Object {
-                "backgroundColor": "#4d63ff",
-                "borderBottomLeftRadius": "0.4rem",
-                "borderBottomRightRadius": "0.4rem",
-                "borderBottomWidth": 0,
-                "borderLeftWidth": 0,
-                "borderRightWidth": 0,
-                "borderTopLeftRadius": "0.4rem",
-                "borderTopRightRadius": "0.4rem",
-                "borderTopWidth": 0,
-                "height": "3.2rem",
-                "paddingBottom": "0rem",
-                "paddingLeft": "1.8rem",
-                "paddingRight": "1.8rem",
-                "paddingTop": "0rem",
+                "color": "green",
+                "fontSize": "1.8rem",
+                "fontWeight": 500,
+                "paddingBottom": "3rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "3rem",
+                "paddingTop": "3rem",
               }
             }
-            type="primary"
+            title={true}
           >
-            <span
-              className="c11"
-            >
-              <span
-                className="c12"
-                style={
-                  Object {
-                    "color": "#ffffff",
-                    "fontSize": "1.4rem",
-                  }
-                }
-              >
-                确定
-              </span>
-            </span>
-          </button>
-          <button
-            className="c10"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            onMouseUp={[Function]}
-            size="default"
+            这是标题！
+          </div>
+          <div
+            className="c11"
             style={
               Object {
-                "backgroundColor": "white",
-                "borderBottomColor": "#d0d3da",
-                "borderBottomLeftRadius": "0.4rem",
-                "borderBottomRightRadius": "0.4rem",
-                "borderBottomStyle": "solid",
-                "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#d0d3da",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#d0d3da",
-                "borderRightStyle": "solid",
-                "borderRightWidth": "0.1rem",
-                "borderTopColor": "#d0d3da",
-                "borderTopLeftRadius": "0.4rem",
-                "borderTopRightRadius": "0.4rem",
-                "borderTopStyle": "solid",
-                "borderTopWidth": "0.1rem",
-                "height": "3.2rem",
-                "paddingBottom": "0rem",
-                "paddingLeft": "1.8rem",
-                "paddingRight": "1.8rem",
-                "paddingTop": "0rem",
+                "color": "green",
+                "fontSize": "1.8rem",
+                "fontWeight": 500,
+                "paddingBottom": "3rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "3rem",
+                "paddingTop": "3rem",
               }
             }
           >
-            <span
-              className="c11"
+            这是内容！
+          </div>
+          <div
+            className="c12"
+          >
+            <button
+              className="c0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              style={
+                Object {
+                  "backgroundColor": "#4d63ff",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomWidth": 0,
+                  "borderLeftWidth": 0,
+                  "borderRightWidth": 0,
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopWidth": 0,
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                  "width": "20rem",
+                }
+              }
+              type="primary"
             >
               <span
-                className="c12"
+                className="c1"
+              >
+                <span
+                  className="c2"
+                  style={
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  确定
+                </span>
+              </span>
+            </button>
+            <button
+              className="c0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              style={
+                Object {
+                  "backgroundColor": "red",
+                  "borderBottomColor": "#d0d3da",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "#d0d3da",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "#d0d3da",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "#d0d3da",
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                  "width": "10rem",
+                }
+              }
+            >
+              <span
+                className="c1"
+              >
+                <span
+                  className="c2"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  取消
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomColor": "#d0d3da",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#d0d3da",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#d0d3da",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#d0d3da",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
+  >
+    <span
+      className="c1"
+    >
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        Modal
+      </span>
+    </span>
+  </button>
+  <div
+    className="c13"
+  >
+    <div
+      className="c14"
+      style={Object {}}
+    />
+    <div
+      className="c5"
+      onClick={[Function]}
+    >
+      <div
+        className="c6"
+        onClick={[Function]}
+        style={Object {}}
+        tabIndex="1"
+      >
+        <div
+          className="c7"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
+        >
+          <div
+            className="c8"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#9EA4AE",
+                  "fontSize": "1.4rem",
+                }
+              }
+            />
+          </div>
+          <div
+            className="c10"
+            style={Object {}}
+            title={true}
+          >
+            这是标题！
+          </div>
+          <div
+            className="c11"
+            style={Object {}}
+          >
+            这是内容！
+          </div>
+          <div
+            className="c12"
+          >
+            <button
+              className="c0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              style={
+                Object {
+                  "backgroundColor": "#56c22d",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomWidth": 0,
+                  "borderLeftWidth": 0,
+                  "borderRightWidth": 0,
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopWidth": 0,
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                }
+              }
+              type="success"
+            >
+              <span
+                className="c1"
+              >
+                <span
+                  className="c2"
+                  style={
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  确定
+                </span>
+              </span>
+            </button>
+            <button
+              className="c0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              style={
+                Object {
+                  "backgroundColor": "#f22735",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomWidth": 0,
+                  "borderLeftWidth": 0,
+                  "borderRightWidth": 0,
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopWidth": 0,
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                }
+              }
+              type="danger"
+            >
+              <span
+                className="c1"
+              >
+                <span
+                  className="c2"
+                  style={
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  取消
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomColor": "#d0d3da",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#d0d3da",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#d0d3da",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#d0d3da",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
+  >
+    <span
+      className="c1"
+    >
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        Modal
+      </span>
+    </span>
+  </button>
+  <div
+    className="c15"
+  >
+    <div
+      className="c16"
+      style={Object {}}
+    />
+    <div
+      className="c5"
+      onClick={[Function]}
+    >
+      <div
+        className="c6"
+        onClick={[Function]}
+        style={Object {}}
+        tabIndex="1"
+      >
+        <div
+          className="c7"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
+        >
+          <div
+            className="c8"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#9EA4AE",
+                  "fontSize": "1.4rem",
+                }
+              }
+            />
+          </div>
+          <div
+            className="c10"
+            style={Object {}}
+            title={true}
+          >
+            这是标题！
+          </div>
+          <div
+            className="c11"
+            style={Object {}}
+          >
+            <div
+              style={
+                Object {
+                  "bottom": "30px",
+                  "position": "absolute",
+                  "right": "30px",
+                }
+              }
+            >
+              <button
+                className="c0"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                onMouseUp={[Function]}
+                size="default"
                 style={
                   Object {
-                    "color": "#363B40",
-                    "fontSize": "1.4rem",
+                    "backgroundColor": "white",
+                    "borderBottomColor": "#d0d3da",
+                    "borderBottomLeftRadius": "0.4rem",
+                    "borderBottomRightRadius": "0.4rem",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "0.1rem",
+                    "borderLeftColor": "#d0d3da",
+                    "borderLeftStyle": "solid",
+                    "borderLeftWidth": "0.1rem",
+                    "borderRightColor": "#d0d3da",
+                    "borderRightStyle": "solid",
+                    "borderRightWidth": "0.1rem",
+                    "borderTopColor": "#d0d3da",
+                    "borderTopLeftRadius": "0.4rem",
+                    "borderTopRightRadius": "0.4rem",
+                    "borderTopStyle": "solid",
+                    "borderTopWidth": "0.1rem",
+                    "height": "3.2rem",
+                    "paddingBottom": "0rem",
+                    "paddingLeft": "1.8rem",
+                    "paddingRight": "1.8rem",
+                    "paddingTop": "0rem",
                   }
                 }
               >
-                取消
+                <span
+                  className="c1"
+                >
+                  <span
+                    className="c2"
+                    style={
+                      Object {
+                        "color": "#363B40",
+                        "fontSize": "1.4rem",
+                      }
+                    }
+                  >
+                    弹出
+                  </span>
+                </span>
+              </button>
+              <div
+                className="c17"
+              >
+                <div
+                  className="c18"
+                  style={Object {}}
+                />
+                <div
+                  className="c5"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="c19"
+                    onClick={[Function]}
+                    style={Object {}}
+                    tabIndex="1"
+                  >
+                    <div
+                      className="c7"
+                      style={
+                        Object {
+                          "paddingBottom": "3rem",
+                          "paddingLeft": "3rem",
+                          "paddingRight": "3rem",
+                          "paddingTop": "3rem",
+                        }
+                      }
+                    >
+                      <div
+                        className="c8"
+                        onClick={[Function]}
+                      >
+                        <i
+                          className="lugia-icon-reminder_close   c9"
+                          onClick={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseUp={[Function]}
+                          style={
+                            Object {
+                              "color": "#9EA4AE",
+                              "fontSize": "1.4rem",
+                            }
+                          }
+                        />
+                      </div>
+                      <div
+                        className="c10"
+                        style={Object {}}
+                        title={true}
+                      >
+                        另一个对话框！
+                      </div>
+                      <div
+                        className="c11"
+                        style={Object {}}
+                      >
+                        <div
+                          style={
+                            Object {
+                              "height": "300px",
+                              "width": "100px",
+                            }
+                          }
+                        >
+                          我也是一个对话框
+                        </div>
+                      </div>
+                      <div
+                        className="c12"
+                      >
+                        <button
+                          className="c0"
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseOut={[Function]}
+                          onMouseOver={[Function]}
+                          onMouseUp={[Function]}
+                          size="default"
+                          style={
+                            Object {
+                              "backgroundColor": "#4d63ff",
+                              "borderBottomLeftRadius": "0.4rem",
+                              "borderBottomRightRadius": "0.4rem",
+                              "borderBottomWidth": 0,
+                              "borderLeftWidth": 0,
+                              "borderRightWidth": 0,
+                              "borderTopLeftRadius": "0.4rem",
+                              "borderTopRightRadius": "0.4rem",
+                              "borderTopWidth": 0,
+                              "height": "3.2rem",
+                              "paddingBottom": "0rem",
+                              "paddingLeft": "1.8rem",
+                              "paddingRight": "1.8rem",
+                              "paddingTop": "0rem",
+                            }
+                          }
+                          type="primary"
+                        >
+                          <span
+                            className="c1"
+                          >
+                            <span
+                              className="c2"
+                              style={
+                                Object {
+                                  "color": "#ffffff",
+                                  "fontSize": "1.4rem",
+                                }
+                              }
+                            >
+                              确定
+                            </span>
+                          </span>
+                        </button>
+                        <button
+                          className="c0"
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseOut={[Function]}
+                          onMouseOver={[Function]}
+                          onMouseUp={[Function]}
+                          size="default"
+                          style={
+                            Object {
+                              "backgroundColor": "white",
+                              "borderBottomColor": "#d0d3da",
+                              "borderBottomLeftRadius": "0.4rem",
+                              "borderBottomRightRadius": "0.4rem",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "0.1rem",
+                              "borderLeftColor": "#d0d3da",
+                              "borderLeftStyle": "solid",
+                              "borderLeftWidth": "0.1rem",
+                              "borderRightColor": "#d0d3da",
+                              "borderRightStyle": "solid",
+                              "borderRightWidth": "0.1rem",
+                              "borderTopColor": "#d0d3da",
+                              "borderTopLeftRadius": "0.4rem",
+                              "borderTopRightRadius": "0.4rem",
+                              "borderTopStyle": "solid",
+                              "borderTopWidth": "0.1rem",
+                              "height": "3.2rem",
+                              "paddingBottom": "0rem",
+                              "paddingLeft": "1.8rem",
+                              "paddingRight": "1.8rem",
+                              "paddingTop": "0rem",
+                            }
+                          }
+                        >
+                          <span
+                            className="c1"
+                          >
+                            <span
+                              className="c2"
+                              style={
+                                Object {
+                                  "color": "#363B40",
+                                  "fontSize": "1.4rem",
+                                }
+                              }
+                            >
+                              取消
+                            </span>
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c12"
+          >
+            <button
+              className="c0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              style={
+                Object {
+                  "backgroundColor": "#4d63ff",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomWidth": 0,
+                  "borderLeftWidth": 0,
+                  "borderRightWidth": 0,
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopWidth": 0,
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                }
+              }
+              type="primary"
+            >
+              <span
+                className="c1"
+              >
+                <span
+                  className="c2"
+                  style={
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  确定
+                </span>
               </span>
-            </span>
-          </button>
+            </button>
+            <button
+              className="c0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              style={
+                Object {
+                  "backgroundColor": "white",
+                  "borderBottomColor": "#d0d3da",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "#d0d3da",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "#d0d3da",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "#d0d3da",
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                }
+              }
+            >
+              <span
+                className="c1"
+              >
+                <span
+                  className="c2"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  取消
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomColor": "#d0d3da",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#d0d3da",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#d0d3da",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#d0d3da",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
+  >
+    <span
+      className="c1"
+    >
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        异步关闭
+      </span>
+    </span>
+  </button>
+  <div
+    className="c20"
+  >
+    <div
+      className="c21"
+      style={Object {}}
+    />
+    <div
+      className="c5"
+      onClick={[Function]}
+    >
+      <div
+        className="c6"
+        onClick={[Function]}
+        style={Object {}}
+        tabIndex="1"
+      >
+        <div
+          className="c7"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
+        >
+          <div
+            className="c8"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#9EA4AE",
+                  "fontSize": "1.4rem",
+                }
+              }
+            />
+          </div>
+          <div
+            className="c10"
+            style={Object {}}
+            title={true}
+          >
+            这是标题！
+          </div>
+          <div
+            className="c11"
+            style={Object {}}
+          >
+            这是内容！
+          </div>
+          <div
+            className="c12"
+          >
+            <button
+              className="c0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              style={
+                Object {
+                  "backgroundColor": "#4d63ff",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomWidth": 0,
+                  "borderLeftWidth": 0,
+                  "borderRightWidth": 0,
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopWidth": 0,
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                }
+              }
+              type="primary"
+            >
+              <span
+                className="c1"
+              >
+                <span
+                  className="c2"
+                  style={
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  确定
+                </span>
+              </span>
+            </button>
+            <button
+              className="c0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              style={
+                Object {
+                  "backgroundColor": "white",
+                  "borderBottomColor": "#d0d3da",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "#d0d3da",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "#d0d3da",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "#d0d3da",
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                }
+              }
+            >
+              <span
+                className="c1"
+              >
+                <span
+                  className="c2"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  取消
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomColor": "#d0d3da",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#d0d3da",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#d0d3da",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#d0d3da",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
+  >
+    <span
+      className="c1"
+    >
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        自定义页脚
+      </span>
+    </span>
+  </button>
+  <div
+    className="c22"
+  >
+    <div
+      className="c23"
+      style={Object {}}
+    />
+    <div
+      className="c5"
+      onClick={[Function]}
+    >
+      <div
+        className="c6"
+        onClick={[Function]}
+        style={Object {}}
+        tabIndex="1"
+      >
+        <div
+          className="c7"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
+        >
+          <div
+            className="c8"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#9EA4AE",
+                  "fontSize": "1.4rem",
+                }
+              }
+            />
+          </div>
+          <div
+            className="c10"
+            style={Object {}}
+            title={true}
+          >
+            这是标题！
+          </div>
+          <div
+            className="c11"
+            style={Object {}}
+          >
+            这是内容！
+          </div>
+          <div
+            style={
+              Object {
+                "marginTop": "15px",
+              }
+            }
+          >
+            <button
+              className="c0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              style={
+                Object {
+                  "backgroundColor": "#4d63ff",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomWidth": 0,
+                  "borderLeftWidth": 0,
+                  "borderRightWidth": 0,
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopWidth": 0,
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                }
+              }
+              type="primary"
+            >
+              <span
+                className="c1"
+              >
+                <span
+                  className="c2"
+                  style={
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  自定义页脚
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomColor": "#d0d3da",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#d0d3da",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#d0d3da",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#d0d3da",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
+  >
+    <span
+      className="c1"
+    >
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        confirm
+      </span>
+    </span>
+  </button>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomColor": "#d0d3da",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#d0d3da",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#d0d3da",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#d0d3da",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
+  >
+    <span
+      className="c1"
+    >
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        info
+      </span>
+    </span>
+  </button>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomColor": "#d0d3da",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#d0d3da",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#d0d3da",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#d0d3da",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
+  >
+    <span
+      className="c1"
+    >
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        success
+      </span>
+    </span>
+  </button>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomColor": "#d0d3da",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#d0d3da",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#d0d3da",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#d0d3da",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
+  >
+    <span
+      className="c1"
+    >
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        error
+      </span>
+    </span>
+  </button>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomColor": "#d0d3da",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#d0d3da",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#d0d3da",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#d0d3da",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
+  >
+    <span
+      className="c1"
+    >
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        warning
+      </span>
+    </span>
+  </button>
+  <button
+    className="c0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomColor": "#d0d3da",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#d0d3da",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#d0d3da",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#d0d3da",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
+  >
+    <span
+      className="c1"
+    >
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        createModal
+      </span>
+    </span>
+  </button>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomColor": "#d0d3da",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#d0d3da",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#d0d3da",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#d0d3da",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
+  >
+    <span
+      className="c1"
+    >
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        挂载在body上
+      </span>
+    </span>
+  </button>
+  <div
+    className="c24"
+  >
+    <div
+      className="c25"
+      style={Object {}}
+    />
+    <div
+      className="c5"
+      onClick={[Function]}
+    >
+      <div
+        className="c6"
+        onClick={[Function]}
+        style={Object {}}
+        tabIndex="1"
+      >
+        <div
+          className="c7"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
+        >
+          <div
+            className="c8"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#9EA4AE",
+                  "fontSize": "1.4rem",
+                }
+              }
+            />
+          </div>
+          <div
+            className="c10"
+            style={Object {}}
+            title={true}
+          >
+            这是标题！
+          </div>
+          <div
+            className="c11"
+            style={Object {}}
+          >
+            <button
+              onClick={[Function]}
+            >
+              testValue
+            </button>
+          </div>
+          <div
+            className="c12"
+          >
+            <button
+              className="c0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              style={
+                Object {
+                  "backgroundColor": "#4d63ff",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomWidth": 0,
+                  "borderLeftWidth": 0,
+                  "borderRightWidth": 0,
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopWidth": 0,
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                }
+              }
+              type="primary"
+            >
+              <span
+                className="c1"
+              >
+                <span
+                  className="c2"
+                  style={
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  确定
+                </span>
+              </span>
+            </button>
+            <button
+              className="c0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              style={
+                Object {
+                  "backgroundColor": "white",
+                  "borderBottomColor": "#d0d3da",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "#d0d3da",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "#d0d3da",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "#d0d3da",
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                }
+              }
+            >
+              <span
+                className="c1"
+              >
+                <span
+                  className="c2"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  取消
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomColor": "#d0d3da",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#d0d3da",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#d0d3da",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#d0d3da",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
+  >
+    <span
+      className="c1"
+    >
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        对话框高度超出窗口时,可以滚动
+      </span>
+    </span>
+  </button>
+  <div
+    className="c26"
+  >
+    <div
+      className="c27"
+      style={Object {}}
+    />
+    <div
+      className="c5"
+      onClick={[Function]}
+    >
+      <div
+        className="c6"
+        onClick={[Function]}
+        style={Object {}}
+        tabIndex="1"
+      >
+        <div
+          className="c7"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
+        >
+          <div
+            className="c8"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#9EA4AE",
+                  "fontSize": "1.4rem",
+                }
+              }
+            />
+          </div>
+          <div
+            className="c10"
+            style={Object {}}
+            title={true}
+          >
+            这是标题！
+          </div>
+          <div
+            className="c11"
+            style={Object {}}
+          >
+            这是内容！
+            <p>
+              一段描述
+            </p>
+            <div
+              className="c28"
+            />
+            <p>
+              另一段描述
+            </p>
+          </div>
+          <div
+            className="c12"
+          >
+            <button
+              className="c0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              style={
+                Object {
+                  "backgroundColor": "#4d63ff",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomWidth": 0,
+                  "borderLeftWidth": 0,
+                  "borderRightWidth": 0,
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopWidth": 0,
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                }
+              }
+              type="primary"
+            >
+              <span
+                className="c1"
+              >
+                <span
+                  className="c2"
+                  style={
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  确定
+                </span>
+              </span>
+            </button>
+            <button
+              className="c0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              style={
+                Object {
+                  "backgroundColor": "white",
+                  "borderBottomColor": "#d0d3da",
+                  "borderBottomLeftRadius": "0.4rem",
+                  "borderBottomRightRadius": "0.4rem",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "#d0d3da",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "#d0d3da",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "#d0d3da",
+                  "borderTopLeftRadius": "0.4rem",
+                  "borderTopRightRadius": "0.4rem",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                  "height": "3.2rem",
+                  "paddingBottom": "0rem",
+                  "paddingLeft": "1.8rem",
+                  "paddingRight": "1.8rem",
+                  "paddingTop": "0rem",
+                }
+              }
+            >
+              <span
+                className="c1"
+              >
+                <span
+                  className="c2"
+                  style={
+                    Object {
+                      "color": "#363B40",
+                      "fontSize": "1.4rem",
+                    }
+                  }
+                >
+                  取消
+                </span>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
