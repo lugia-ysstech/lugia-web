@@ -303,6 +303,17 @@ const InputDemo = () => {
             this.textareaFocus = focus;
           }}
         />
+        <br /> <br />
+        <p>验证textArea 100%没生效问题</p>
+        <Theme
+          config={{
+            [Widget.Textarea]: {
+              Container: { normal: { width: '100%', height: 100 } },
+            },
+          }}
+        >
+          <Textarea placeholder={'请填写内容'} />
+        </Theme>
       </Wrapper>
       <Wrapper>
         <p>校验信息显示类型 top 输入值 是否含有a</p>
