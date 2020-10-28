@@ -13,7 +13,7 @@ import chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
 import { delay } from '@lugia/react-test-utils';
 
-import ModalDemo from '../testDemo';
+import ModalDemo from '../demoTest';
 import Modal from '../index';
 
 const { expect: exp } = chai;
