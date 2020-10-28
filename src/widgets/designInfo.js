@@ -14177,7 +14177,7 @@ export default [
         ],
         ButtonType: [
           { value: 'default', text: '默认' },
-          { value: 'primary', text: '线框' },
+          { value: 'primary', text: '主题' },
           { value: 'success', text: '成功' },
           { value: 'warning', text: '警告' },
           { value: 'danger', text: '危险' },
@@ -14467,7 +14467,7 @@ export default [
         ],
         ButtonType: [
           { value: 'default', text: '默认' },
-          { value: 'primary', text: '线框' },
+          { value: 'primary', text: '主题' },
           { value: 'success', text: '成功' },
           { value: 'warning', text: '警告' },
           { value: 'danger', text: '危险' },
