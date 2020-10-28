@@ -239,11 +239,12 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     onChange && onChange(obj);
   };
   changeTime = (obj: Object) => {
-    const { timeIndex } = this.props;
     const { value } = obj;
-    const { timeChange, onChange } = this.props;
+    const { timeChange, onChange, timeIndex } = this.props;
+    const { mode } = this.state;
+    const { isRange } = modeStyle(mode);
     timeChange && timeChange({ ...obj, timeIndex });
-    onChange && onChange(obj);
+    !isRange && onChange && onChange(obj);
     this.setStateFunc({ value });
   };
   setStateFunc = (state: Object) => {
