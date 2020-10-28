@@ -18,6 +18,7 @@ import { css } from 'styled-components';
 import TableTitle from './tableTitle';
 import { deepCopy, isEqualArray } from './utils';
 import isEqual from 'lodash/isEqual';
+import Empty from '../empty';
 
 const sizePadding = {
   default: 8,
@@ -315,6 +316,21 @@ export default ThemeProvider(
       const tableData = dataIsSame ? stateData : propsData;
       return tableData;
     };
+
+    getDefaultEmpty = () => {
+      const theme = {
+        [Widget.Empty]: {
+          Container: {
+            normal: {
+              width: 'auto',
+            },
+          },
+        },
+      };
+      return {
+        emptyText: <Empty {...this.props} theme={theme} />,
+      };
+    };
     render() {
       const {
         children,
@@ -361,6 +377,7 @@ export default ThemeProvider(
             }}
           >
             <RcTable
+              {...this.getDefaultEmpty()}
               {...this.props}
               data={tableData}
               showHeader={showHeader}
@@ -430,6 +447,7 @@ export default ThemeProvider(
           className={this.getClass(tableStyle, size)}
         >
           <RcTable
+            {...this.getDefaultEmpty()}
             {...this.props}
             columns={theColumns}
             data={tableData}
