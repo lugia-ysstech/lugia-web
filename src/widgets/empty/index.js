@@ -6,5 +6,7 @@
  */
 
 import Empty from './empty';
+import ThemeProvider from '../theme-provider';
+import Widget from '../consts';
 
-export default Empty;
+export default ThemeProvider(Empty, Widget.Empty, { hover: true, active: true, focus: true });
