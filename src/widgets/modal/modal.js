@@ -315,6 +315,7 @@ export default ThemeProvider(
     };
     handleModalClick = e => {
       e.stopPropagation();
+      e.preventDefault();
     };
     handleOk = () => {
       const { onOk } = this.props;
