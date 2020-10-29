@@ -116,7 +116,8 @@
     ]
   },
   {
-    "widgetName": "FreeWidthModal",
+    "widgetName": "Modal",
+    "aliasName": "FreeWidthModal",
     "title": "不限宽对话框",
     "viewProps": [
       { "name": "mask", "text": "显示遮罩" },
