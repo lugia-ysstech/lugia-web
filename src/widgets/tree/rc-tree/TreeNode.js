@@ -182,7 +182,10 @@ class TreeNode extends React.Component {
       );
     }
     if (mutliple || !describe || __navmenu) {
-      const { open, close } = switchIconNames;
+      const {
+        open = 'lugia-icon-direction_caret_down',
+        close = 'lugia-icon-direction_caret_right',
+      } = switchIconNames;
       const iconClass = expandedState === 'open' ? open : close;
       return (
         <Switch disabled={disabled} onClick={this.onExpand}>
