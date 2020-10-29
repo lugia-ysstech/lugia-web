@@ -409,7 +409,8 @@
         ["border"],
         ["fontSize"],
         ["font"],
-        ["color"]
+        ["color"],
+        ["margin"]
       ],
       "hover": [],
       "active": []
