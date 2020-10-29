@@ -265,7 +265,7 @@ const InputDemo = () => {
         <p>校验信息显示类型 bottom 输入值 受限校验</p>
         <Input validateType="bottom" validateStatus="error" />
         <p>校验信息显示类型 inner 输入值 受限校验 </p>
-        <Input validateType="inner" validateStatus="error" />
+        <Input validateType="inner" validateStatus="error" innerHelpPaddingRight={30} />
       </Wrapper>
       <Wrapper>
         <p>段落文本输入框 resizeType="horizontal" </p>

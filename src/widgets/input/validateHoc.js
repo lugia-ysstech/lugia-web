@@ -45,6 +45,7 @@ const ValidateHoc = (Target: Object) => {
         getPartOfThemeHocProps,
         getPartOfThemeProps,
         getPartOfThemeConfig,
+        innerHelpPaddingRight,
       } = this.props;
       const { _isValidateVisible } = this.state;
       const theHelp = help || DefaultHelp;
@@ -63,7 +64,7 @@ const ValidateHoc = (Target: Object) => {
       const innerProps =
         validateType === 'inner' ? { innerVisible: !_isValidateVisible } : { innerVisible: true };
       const validateThemeProps = getPartOfThemeProps('ValidateErrorText', {
-        props: { validateStatus, ...innerProps },
+        props: { validateStatus, innerHelpPaddingRight, ...innerProps },
       });
       const { __lugiad__header__absolute__ } = this.props;
       const innerThemeProps = deepMerge(validateThemeProps, getPartOfThemeProps('Container'));

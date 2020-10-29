@@ -51,15 +51,17 @@ export const InnerTipText: Object = CSSComponent({
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { background } = themeMeta;
+      const { propsConfig: { innerHelpPaddingRight } = {} } = themeProps;
+      const theRight = innerHelpPaddingRight || get('padding');
       const theColor = background && background.color ? background.color : 'white';
       return `${getTipShowCSS(themeProps)};background-color:${theColor};
-          box-shadow: ${px2remcss(-14)} 0 ${px2remcss(6)} 0 ${theColor};`;
+          box-shadow: ${px2remcss(-14)} 0 ${px2remcss(6)} 0 ${theColor};
+             right: ${px2remcss(theRight)};`;
     },
   },
   css: css`
     min-width: ${px2remcss(30)};
     position: absolute;
-    right: ${px2remcss(get('padding'))};
     top: 10%;
     height: 80%;
     display: flex;
