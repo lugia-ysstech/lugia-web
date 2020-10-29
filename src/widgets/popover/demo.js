@@ -243,6 +243,34 @@ export const WrapperDemo = () => {
           </Popover>
         </Theme>
       </div>
+
+      <br />
+      <br />
+      <br />
+      <p>test 气泡卡片传入多个div元素是否换行展示问题</p>
+      <Popover
+        title={title}
+        action={'click'}
+        placement="bottom"
+        description={[<div>{description}</div>, <div>{description}</div>]}
+        popArrowType={'round'}
+      >
+        <Direction type="primary">点击</Direction>
+      </Popover>
+
+      <br />
+      <br />
+      <br />
+      <p>test 气泡卡片传入多个span元素是否不换行展示问题</p>
+      <Popover
+        title={title}
+        action={'click'}
+        placement="bottom"
+        description={[<span>{description}</span>, <span>{description}</span>]}
+        popArrowType={'round'}
+      >
+        <Direction type="primary">点击</Direction>
+      </Popover>
     </Wrapper>
   );
 };
