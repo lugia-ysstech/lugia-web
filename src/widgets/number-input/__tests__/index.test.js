@@ -595,7 +595,8 @@ describe('NumberInput', () => {
   );
   it('props : value "."', () => {
     const component = mount(<NumberInput />);
-    getInputComponent(component).value = '.';
-    expect(getInputComponent(component).state.value).toBe('');
+    const inputComponent = getInputComponent(component);
+    inputComponent.value = '.';
+    expect(inputComponent.state.value).toBe('');
   });
 });
