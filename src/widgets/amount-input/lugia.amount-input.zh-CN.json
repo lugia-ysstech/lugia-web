@@ -326,6 +326,38 @@
           "disabled": []
         }
       }
+    },
+    "ValidateErrorInput": {
+      "name": "校验失败的输入框",
+      "desc": "配置校验失败的输入框",
+      "normal": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"]
+      ],
+      "hover": [["background"], ["border"], ["boxShadow"]],
+      "focus": [["background"], ["border"], ["boxShadow"]],
+      "active": [["background"], ["border"], ["boxShadow"]]
+    },
+    "ValidateErrorText": {
+      "name": "校验失败提示信息",
+      "desc": "配置校验失败的提示信息",
+      "normal": [
+        ["background"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["margin"]
+      ],
+      "hover": [],
+      "active": []
     }
   },
   "defaultTheme": {

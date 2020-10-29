@@ -44,7 +44,7 @@ export const InnerTipText: Object = CSSComponent({
   tag: 'span',
   className: 'InnerTip',
   normal: {
-    selectNames: [['font'], ['fontSize'], ['color'], ['background']],
+    selectNames: [['font'], ['fontSize'], ['color'], ['background'], ['margin']],
     defaultTheme: {
       color: dangerColor,
       fontSize: 12,
