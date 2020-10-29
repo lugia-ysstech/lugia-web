@@ -246,6 +246,9 @@ function getBelowMin(value, min) {
   return Number(value) <= min;
 }
 
+function handleFirstPoint(value: string | number) {
+  return value === '.' ? '' : value;
+}
 function handleEmpty(value, handleValue) {
   return value === '' ? '' : handleValue;
 }
@@ -544,7 +547,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const value = event.newValue;
     const { value: sValue } = this.state;
     const handleNumberValue = checkNumber(value + '');
-    const theValue = handleEmpty(value, handleNumberValue);
+    const theValue = handleFirstPoint(handleNumberValue);
     if (sValue !== handleNumberValue) {
       this.setValue(theValue, event);
     }
@@ -553,8 +556,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   setValue(value: number, event: any): void {
     const oldValue = this.state.value;
     const { disabled, onChange } = this.props;
-    const theNewValue = handleEmpty(value, Number(value));
-    const param = { newValue: theNewValue, oldValue, event };
+    const param = { newValue: value, oldValue, event };
     if (hasValueProps(this.props) === false) {
       if (disabled) {
         return;
