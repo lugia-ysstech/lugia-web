@@ -593,4 +593,9 @@ describe('NumberInput', () => {
     },
     { step: 5, max: 100, defaultValue: 10, min: 10 }
   );
+  it('props : value "."', () => {
+    const component = mount(<NumberInput />);
+    getInputComponent(component).value = '.';
+    expect(getInputComponent(component).state.value).toBe('');
+  });
 });
