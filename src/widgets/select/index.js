@@ -622,6 +622,19 @@ class Select extends React.Component<SelectProps, SelectState> {
         this.getCurrentRow(value);
       }
       onQuery && onQuery(value);
+      setTimeout(() => {
+        if (
+          this.menuTriger &&
+          this.menuTriger.getTrigger() &&
+          this.menuTriger.getTrigger().current &&
+          this.menuTriger.getTrigger().current.getThemeTarget()
+        ) {
+          this.menuTriger
+            .getTrigger()
+            .current.getThemeTarget()
+            .forceAlign();
+        }
+      }, 0);
     };
 
     const { throttle = -1 } = props;
