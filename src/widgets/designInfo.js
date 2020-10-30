@@ -150,7 +150,7 @@ export default [
       tag: '金额输入框 AmountInput ¥ $ 数额输入框 核算输入框 统计输入 表单',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
-        createPortal: { type: 'boolean', desc: '是否全局弹出框' },
+        createPortal: { type: 'boolean', desc: '是否全局弹出框', propsDefaultValue: false },
         popupContainerId: { type: 'ContainerDomIdType', desc: '配置弹出框的作用容器id' },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
         transform: {
@@ -337,8 +337,43 @@ export default [
             },
           },
         },
+        ValidateErrorInput: {
+          name: '校验失败的输入框',
+          desc: '配置校验失败的输入框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          focus: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['margin'],
+          ],
+          hover: [],
+          active: [],
+        },
       },
-      defaultTheme: { AmountTip: { ChildrenContainer: { normal: { width: '100%' } } } },
+      defaultTheme: {
+        Container: { normal: { width: 250 } },
+        AmountTip: { ChildrenContainer: { normal: { width: '100%' } } },
+      },
       childrenWidget: [],
     },
     target: AmountInput,
@@ -7172,8 +7207,8 @@ export default [
         ],
         StyleType: [
           { value: 'customs', text: '填充风格' },
-          { value: 'primary', text: '文本风格' },
           { value: 'basic', text: '线框风格' },
+          { value: 'primary', text: '文本风格' },
         ],
         ActionType: [{ value: 'hover', text: '悬浮展开' }, { value: 'click', text: '点击展开' }],
       },
@@ -7854,8 +7889,8 @@ export default [
         ],
         StyleType: [
           { value: 'customs', text: '填充风格' },
-          { value: 'primary', text: '文本风格' },
           { value: 'basic', text: '线框风格' },
+          { value: 'primary', text: '文本风格' },
         ],
         ActionType: [{ value: 'hover', text: '悬浮展开' }, { value: 'click', text: '点击展开' }],
       },
@@ -8420,6 +8455,7 @@ export default [
             ['fontSize'],
             ['font'],
             ['color'],
+            ['margin'],
           ],
           hover: [],
           active: [],
@@ -8595,6 +8631,7 @@ export default [
             ['fontSize'],
             ['font'],
             ['color'],
+            ['margin'],
           ],
           hover: [],
           active: [],
@@ -9809,13 +9846,130 @@ export default [
         closeIconClass: { type: 'icon', desc: '自定义后缀图标' },
         showIcon: { type: 'boolean', desc: '是否显示图标', propsDefaultValue: false },
         zIndex: { type: 'number', desc: '设置 Modal 的 z-index' },
-        mountBody: { type: 'boolean', desc: '是否挂载body上', propsDefaultValue: false },
+        mountBody: { type: 'boolean', desc: '是否挂载body上', propsDefaultValue: true },
       },
       events: {
         onOk: { desc: '点击确定时的回调', args: [] },
         onCancel: { desc: '点击取消时的回调', args: [] },
       },
       category: ['反馈'],
+      designInfo: {
+        FreeWidthModal: {
+          sequence: 1,
+          title: '不限宽对话框',
+          desc: '宽度可以自由调整对话框',
+          tag: 'model 对话框 弹出窗口 弹窗 弹层',
+          props: {},
+          theme: {
+            Container: {
+              name: '弹窗整体样式',
+              desc: '为弹窗配置整体样式',
+              normal: [
+                ['width'],
+                ['height'],
+                ['opacity'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+                ['background'],
+                ['padding'],
+                ['minWidth'],
+                ['maxWidth'],
+                ['maxHeight'],
+                ['minHeight'],
+              ],
+            },
+            ModalTitle: {
+              name: '弹窗标题样式',
+              desc: '为弹窗文字配置样式',
+              normal: [['font'], ['color'], ['padding'], ['margin']],
+            },
+            ModalContentText: {
+              name: '弹窗内容文本样式',
+              desc: '为弹窗内容文本配置样式',
+              normal: [['font'], ['color'], ['padding']],
+            },
+            ModalIcon: {
+              name: '弹窗前缀图标样式',
+              desc: '为弹窗前缀图标配置样式',
+              normal: [['fontSize'], ['color']],
+            },
+            ModalCloseIcon: {
+              name: '弹窗关闭图标样式',
+              desc: '为弹窗关闭图标配置样式',
+              normal: [['fontSize'], ['color']],
+            },
+            ModalOkButton: {
+              name: '弹窗确定按钮样式',
+              desc: '为弹窗确定按钮配置样式',
+              theme: {
+                Container: {
+                  name: '弹窗确定按钮',
+                  normal: [
+                    ['background'],
+                    ['border'],
+                    ['height'],
+                    ['width'],
+                    ['padding'],
+                    ['margin'],
+                    ['borderRadius'],
+                  ],
+                  hover: [['background'], ['border']],
+                  active: [['background'], ['border']],
+                  disabled: [['background'], ['border']],
+                  focus: [['background'], ['border']],
+                },
+                ButtonText: {
+                  name: '确定按钮文字样式',
+                  desc: '为确定按钮文字配置样式',
+                  normal: [['color'], ['font']],
+                  hover: [['color']],
+                  active: [['color']],
+                  disabled: [['color']],
+                  focus: [['color']],
+                },
+              },
+            },
+            ModalCancelButton: {
+              name: '弹窗取消按钮样式',
+              desc: '为弹窗取消按钮配置样式',
+              theme: {
+                Container: {
+                  name: '弹窗取消按钮',
+                  normal: [
+                    ['background'],
+                    ['border'],
+                    ['height'],
+                    ['width'],
+                    ['padding'],
+                    ['margin'],
+                    ['borderRadius'],
+                  ],
+                  hover: [['background'], ['border']],
+                  active: [['background'], ['border']],
+                  disabled: [['background'], ['border']],
+                  focus: [['background'], ['border']],
+                },
+                ButtonText: {
+                  name: '取消按钮文字样式',
+                  desc: '为取消按钮文字配置样式',
+                  normal: [['color'], ['font']],
+                  hover: [['color']],
+                  active: [['color']],
+                  disabled: [['color']],
+                  focus: [['color']],
+                },
+              },
+            },
+            ModalMask: {
+              name: '弹窗遮罩样式',
+              desc: '为弹窗遮罩配置样式',
+              normal: [['background']],
+            },
+          },
+          defaultTheme: { Container: { normal: { minWidth: 0, width: 520, height: 70 } } },
+        },
+      },
       theme: {
         Container: {
           name: '弹窗整体样式',
@@ -9925,6 +10079,152 @@ export default [
     target: Modal,
     screenshot:
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAABBFJREFUeAHtnTtoFUEUhkeNeWEakWAikocgFlFBwdpCKxFtBG1CwEIEwUaxCZg0FlEQxcZCCWlUBBEsbawFAwkpxMIYxUREfBBIYio9uVzITfZmZ2Xn7Bn3u5V39uycf77/dza5Dl7neEEAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQKJrAJl8Bp8/2D/nWUmeXwPPHYxv6uNmudJQVQYBAFEHdcE8CYdicIqQRiCKoG+5JIAybU4Q0AlEEdcM9CYRhc4qQRiCKoG64J4EwbE4R0hpCNu3t6Wq7cH7g+O5dnd0tzc1tIXuVZe7FpaX5T59nP9x/MPry/fTMfN7rDrZDSBhuDA1e3Lundz9hyM82YSlMha0wzm/mykzBAiE7Q1NjY0vegpmvQkDYCuO8eQQLhDwm8hbLfLUEQjAOFggeE7XmhXgXgnGwQIQAwJzhCQT9LSNJ/qOnL5KG142dO3NyZSz2+nULMz7ADmHcIG15BEKbuPF+BMK4QdryCIQ2ceP9CIRxg7TlEQht4sb7EQjjBmnLIxDaxI33IxDGDdKWRyC0iRvvRyCMG6Qtj0BoEzfej0AYN0hbHoHQJm68H4EwbpC2PPXzENVzDr4Ljb3ed51W6tghrDhhRAeBMGKEFRkEwooTRnQQCCNGWJFBIKw4YUQHgTBihBUZBMKKE0Z0qH8OMT7l3L0x57591yGwY7tzl/qdO9RX22/uy1f3+s2kW1hYrL0Q6F1ra4s7cviA69jZHqhDPtOqB0IzDIJIgic9H47UApMwaBo0O1cJ4KkTx2qFGHun/sjQ2hlWc07qKTuD5t/Wzo52td1o9dqz/lk9EFkFUq9LQP2Rkba80VvJFQNXKuNp15Pvzj569fqdxJtuDl9eGU+7nnhzBIPsEBGYpCmRQGjSjqAXgYjAJE2JBEKTdgS9CEQEJmlKJBCatCPoRSAiMElTIoHQpB1BLwIRgUmaEs19Uln9RLIehLTr9e7LOl79RLLefWnX691nfZwdwrpDyvrUAyHnE7RfST3lfIL8k7TWS3pJT+sv9UeGHFbRPBNRPSCz1gg5C1HEAZm1Oqy9DxYI+V6HpP+LWU4urT2sUgQUOQth/bBKGhdhnFaT9XqwR4Z8yUdWMdRnIxCCcbBAyDe+/F5e1jmwmI3jf1EtbIVx3ovZ4jvhvr6DR31rpe7Hz1/L4xOTkz3dXdv+/jDVurWhoSnL/dQmE5DHxPTMx3cjt+8++ZevWHo7NfEqeebKaLCfIWR6EXxtcPjZRgK4ZotAsEeGrWWixpcAgfAlVZI6AlESo32XSSB8SZWkjkCUxGjfZRIIX1IlqSMQJTHad5kEwpdUSeoIREmMZpkQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABOIh8AfDrLm5svq1hQAAAABJRU5ErkJggg==',
+  },
+  {
+    meta: {
+      widgetName: 'Modal',
+      title: '不限宽对话框',
+      desc: '宽度可以自由调整对话框',
+      tag: 'model 对话框 弹出窗口 弹窗 弹层',
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        injectLugiad: { type: 'Object', defaultValue: { type: 'Modal' }, isHidden: true },
+        title: { type: 'React.node', desc: '标题' },
+        visible: { type: 'boolean', desc: 'Modal 是否可见' },
+        cancelText: { type: 'string', desc: '取消按钮文字', propsDefaultValue: '取消' },
+        cancelButtonProps: { type: 'Object', desc: '取消按钮 props ' },
+        okText: { type: 'string', desc: '确认按钮文字', propsDefaultValue: '确定' },
+        okButtonProps: { type: 'Object', desc: '确认按钮 props ' },
+        confirmLoading: { type: 'boolean', desc: '确定按钮是否 loading', propsDefaultValue: false },
+        footer: {
+          type: 'boolean | React.node',
+          desc: '底部内容是否显示, 或自定义底部内容',
+          propsDefaultValue: true,
+        },
+        maskClosable: { type: 'boolean', desc: '点击蒙层是否允许关闭', propsDefaultValue: true },
+        closable: { type: 'boolean', desc: '是否显示关闭按钮', propsDefaultValue: true },
+        mask: { type: 'boolean', desc: '是否显示遮罩', propsDefaultValue: true },
+        iconClass: { type: 'icon', desc: '自定义前缀图标' },
+        closeIconClass: { type: 'icon', desc: '自定义后缀图标' },
+        showIcon: { type: 'boolean', desc: '是否显示图标', propsDefaultValue: false },
+        zIndex: { type: 'number', desc: '设置 Modal 的 z-index' },
+        mountBody: { type: 'boolean', desc: '是否挂载body上', propsDefaultValue: true },
+      },
+      events: {
+        onOk: { desc: '点击确定时的回调', args: [] },
+        onCancel: { desc: '点击取消时的回调', args: [] },
+      },
+      category: ['反馈'],
+      theme: {
+        Container: {
+          name: '弹窗整体样式',
+          desc: '为弹窗配置整体样式',
+          normal: [
+            ['width'],
+            ['height'],
+            ['opacity'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['background'],
+            ['padding'],
+            ['minWidth'],
+            ['maxWidth'],
+            ['maxHeight'],
+            ['minHeight'],
+          ],
+        },
+        ModalTitle: {
+          name: '弹窗标题样式',
+          desc: '为弹窗文字配置样式',
+          normal: [['font'], ['color'], ['padding'], ['margin']],
+        },
+        ModalContentText: {
+          name: '弹窗内容文本样式',
+          desc: '为弹窗内容文本配置样式',
+          normal: [['font'], ['color'], ['padding']],
+        },
+        ModalIcon: {
+          name: '弹窗前缀图标样式',
+          desc: '为弹窗前缀图标配置样式',
+          normal: [['fontSize'], ['color']],
+        },
+        ModalCloseIcon: {
+          name: '弹窗关闭图标样式',
+          desc: '为弹窗关闭图标配置样式',
+          normal: [['fontSize'], ['color']],
+        },
+        ModalOkButton: {
+          name: '弹窗确定按钮样式',
+          desc: '为弹窗确定按钮配置样式',
+          theme: {
+            Container: {
+              name: '弹窗确定按钮',
+              normal: [
+                ['background'],
+                ['border'],
+                ['height'],
+                ['width'],
+                ['padding'],
+                ['margin'],
+                ['borderRadius'],
+              ],
+              hover: [['background'], ['border']],
+              active: [['background'], ['border']],
+              disabled: [['background'], ['border']],
+              focus: [['background'], ['border']],
+            },
+            ButtonText: {
+              name: '确定按钮文字样式',
+              desc: '为确定按钮文字配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+          },
+        },
+        ModalCancelButton: {
+          name: '弹窗取消按钮样式',
+          desc: '为弹窗取消按钮配置样式',
+          theme: {
+            Container: {
+              name: '弹窗取消按钮',
+              normal: [
+                ['background'],
+                ['border'],
+                ['height'],
+                ['width'],
+                ['padding'],
+                ['margin'],
+                ['borderRadius'],
+              ],
+              hover: [['background'], ['border']],
+              active: [['background'], ['border']],
+              disabled: [['background'], ['border']],
+              focus: [['background'], ['border']],
+            },
+            ButtonText: {
+              name: '取消按钮文字样式',
+              desc: '为取消按钮文字配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+          },
+        },
+        ModalMask: { name: '弹窗遮罩样式', desc: '为弹窗遮罩配置样式', normal: [['background']] },
+      },
+      defaultTheme: { Container: { normal: { minWidth: 0, width: 520, height: 70 } } },
+      childrenWidget: [],
+      aliasName: 'FreeWidthModal',
+    },
+    target: Modal,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -13221,6 +13521,7 @@ export default [
             ['fontSize'],
             ['font'],
             ['color'],
+            ['margin'],
           ],
           hover: [],
           active: [],
@@ -13231,6 +13532,7 @@ export default [
           normal: [['border', 'top']],
         },
       },
+      defaultTheme: { Container: { normal: { width: 250 } } },
       childrenWidget: [],
     },
     target: NumberInput,
@@ -23895,7 +24197,7 @@ export default [
               name: '穿梭框按钮样式',
               desc: '为穿梭框配置按钮样式',
               theme: {
-                ButtonWrap: {
+                Container: {
                   name: '按钮整体样式',
                   desc: '为按钮配置整体样式',
                   normal: [
@@ -24484,7 +24786,7 @@ export default [
           name: '穿梭框按钮样式',
           desc: '为穿梭框配置按钮样式',
           theme: {
-            ButtonWrap: {
+            Container: {
               name: '按钮整体样式',
               desc: '为按钮配置整体样式',
               normal: [
@@ -25044,7 +25346,7 @@ export default [
           name: '穿梭框按钮样式',
           desc: '为穿梭框配置按钮样式',
           theme: {
-            ButtonWrap: {
+            Container: {
               name: '按钮整体样式',
               desc: '为按钮配置整体样式',
               normal: [
