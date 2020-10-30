@@ -16,7 +16,7 @@ const H2 = styled.h2`
 `;
 
 const Box = styled.div`
-  padding-bottom: 500px;
+  padding-bottom: 20px;
 `;
 
 const data = (function(t) {
