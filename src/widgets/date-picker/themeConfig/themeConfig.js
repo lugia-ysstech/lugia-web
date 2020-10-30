@@ -406,7 +406,7 @@ export function getValidateErrorInput(props) {
   const { themeConfig = {} } = themeProps;
   const { themeConfig: { normal: defaultNormalFont = {} } = {} } = validateValueDefaultTheme;
   const newThemeConfig = deepMerge(
-    validateBorderDefaultTheme.themeConfig,
+    validateBorderDefaultTheme().themeConfig,
     {
       normal: defaultNormalFont,
       hover: defaultNormalFont,
