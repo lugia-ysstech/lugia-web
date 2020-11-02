@@ -7,12 +7,18 @@ exports[`CheckBox CheckBox CSS 1`] = `
   box-sizing: border-box;
   padding: 0;
   list-style: none;
-  display: inline-block;
   line-height: 1;
-  white-space: nowrap;
   display: inline-block;
   margin-right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-overflow: ellipsis;
   opacity: 1;
 }
@@ -23,12 +29,18 @@ exports[`CheckBox CheckBox CSS 1`] = `
   box-sizing: border-box;
   padding: 0;
   list-style: none;
-  display: inline-block;
   line-height: 1;
-  white-space: nowrap;
   display: inline-block;
   margin-right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-overflow: ellipsis;
   opacity: 1;
 }
@@ -1319,18 +1331,13 @@ exports[`CheckBox CheckBox CSS 1`] = `
       checkbox子元素为非字符串时，title不显示
     </p>
     <label
-      className="c6"
-      disabled={true}
+      className="c1"
       onClick={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-        }
-      }
+      style={Object {}}
       title=""
     >
       <span
@@ -1338,30 +1345,27 @@ exports[`CheckBox CheckBox CSS 1`] = `
         onClick={null}
       >
         <input
-          className="c7"
-          disabled={true}
+          className="c3"
           onBlur={[Function]}
           type="checkbox"
         />
         <span
-          checked={true}
-          className="c9"
-          disabled={true}
+          className="c4"
           style={
             Object {
-              "backgroundColor": "#f4f5f8",
-              "borderBottomColor": "#ebecf0",
+              "backgroundColor": "#ffffff",
+              "borderBottomColor": "#d0d3da",
               "borderBottomLeftRadius": "0.2rem",
               "borderBottomRightRadius": "0.2rem",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
-              "borderLeftColor": "#ebecf0",
+              "borderLeftColor": "#d0d3da",
               "borderLeftStyle": "solid",
               "borderLeftWidth": "0.1rem",
-              "borderRightColor": "#ebecf0",
+              "borderRightColor": "#d0d3da",
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
-              "borderTopColor": "#ebecf0",
+              "borderTopColor": "#d0d3da",
               "borderTopLeftRadius": "0.2rem",
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
@@ -1372,15 +1376,69 @@ exports[`CheckBox CheckBox CSS 1`] = `
       </span>
       <span
         className="c5"
-        style={
-          Object {
-            "color": "#d0d3da",
-          }
-        }
+        style={Object {}}
       >
         <div>
           CheckBox
         </div>
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      checkbox内容很多时，自动换行。
+    </p>
+    <label
+      className="c1"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
+      title="checkbox子元素为非字符串时，title不显示,checkbox子元素为非字符串时，title不显示,checkbox子元素为非字符串时 ，title不显示checkbox子元素为非字符串时，title不显示checkbox子元素为非字符串时，title不显示checkbox子元素为非字符串时，title不显示"
+    >
+      <span
+        className="c2"
+        onClick={null}
+      >
+        <input
+          className="c3"
+          onBlur={[Function]}
+          type="checkbox"
+        />
+        <span
+          className="c4"
+          style={
+            Object {
+              "backgroundColor": "#ffffff",
+              "borderBottomColor": "#d0d3da",
+              "borderBottomLeftRadius": "0.2rem",
+              "borderBottomRightRadius": "0.2rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#d0d3da",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#d0d3da",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#d0d3da",
+              "borderTopLeftRadius": "0.2rem",
+              "borderTopRightRadius": "0.2rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+            }
+          }
+        />
+      </span>
+      <span
+        className="c5"
+        style={Object {}}
+      >
+        checkbox子元素为非字符串时，title不显示,checkbox子元素为非字符串时，title不显示,checkbox子元素为非字符串时 ，title不显示checkbox子元素为非字符串时，title不显示checkbox子元素为非字符串时，title不显示checkbox子元素为非字符串时，title不显示
       </span>
     </label>
   </div>

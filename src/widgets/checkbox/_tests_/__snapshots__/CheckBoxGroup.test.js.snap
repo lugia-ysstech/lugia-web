@@ -15,12 +15,18 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   box-sizing: border-box;
   padding: 0;
   list-style: none;
-  display: inline-block;
   line-height: 1;
-  white-space: nowrap;
   display: block;
   margin-bottom: 1.2rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-overflow: ellipsis;
   opacity: 1;
 }
@@ -31,12 +37,18 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   box-sizing: border-box;
   padding: 0;
   list-style: none;
-  display: inline-block;
   line-height: 1;
-  white-space: nowrap;
   display: inline-block;
   margin-right: 2.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-overflow: ellipsis;
   opacity: 1;
 }
@@ -47,12 +59,18 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   box-sizing: border-box;
   padding: 0;
   list-style: none;
-  display: inline-block;
   line-height: 1;
-  white-space: nowrap;
   display: inline-block;
   margin-right: 2.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-overflow: ellipsis;
   opacity: 1;
 }
@@ -63,12 +81,18 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   box-sizing: border-box;
   padding: 0;
   list-style: none;
-  display: inline-block;
   line-height: 1;
-  white-space: nowrap;
   display: inline-block;
   margin-right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-overflow: ellipsis;
   opacity: 1;
 }
@@ -79,12 +103,18 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   box-sizing: border-box;
   padding: 0;
   list-style: none;
-  display: inline-block;
   line-height: 1;
-  white-space: nowrap;
   display: block;
   margin-bottom: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-overflow: ellipsis;
   opacity: 1;
 }
