@@ -66,8 +66,8 @@ describe('Select', () => {
     const cmp = mount(<Select data={data} mutliple displayField={'label'} />);
     showTrigger(cmp);
     checkAll(cmp);
-    exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
-    checkAll(cmp);
+    exp(findCancelCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
+    unCheckAll(cmp);
     exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.false;
   });
 
@@ -93,8 +93,7 @@ describe('Select', () => {
     const cmp = mount(<Select data={data} mutliple limitCount={10} displayField={'label'} />);
     showTrigger(cmp);
     checkAll(cmp);
-
-    exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
+    exp(findCancelCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
     const value = data.filter((item: Object, index: number) => index < 10).map(item => item.value);
     checkSelectValue(cmp, value);
   });
@@ -109,7 +108,7 @@ describe('Select', () => {
     const text = 'szfeng';
     changeQuery(cmp, text);
     queryInputEnter(cmp);
-    exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
+    exp(findCancelCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
 
     const value = data.filter((item: Object, index: number) => index < 10).map(item => item.value);
     checkSelectValue(cmp, value);
@@ -155,12 +154,12 @@ describe('Select', () => {
 
     showTrigger(cmp);
     checkAll(cmp);
-    exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
+    exp(findCancelCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
     const expValue = data
       .filter((item: Object, index: number) => index < 5)
       .map(item => item.value);
     checkSelectValue(cmp, [...expValue]);
-    checkAll(cmp);
+    unCheckAll(cmp);
     checkSelectValue(cmp, []);
     exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.false;
   });
@@ -196,10 +195,10 @@ describe('Select', () => {
 
     showTrigger(cmp);
     checkAll(cmp);
-    exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
+    exp(findCancelCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
     checkSelectValue(cmp, [...value, 'key-2', 'key-3', 'key-4']);
     showTrigger(cmp);
-    checkAll(cmp);
+    unCheckAll(cmp);
     exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.false;
     checkSelectValue(cmp, []);
   });
@@ -222,10 +221,10 @@ describe('Select', () => {
 
     showTrigger(cmp);
     checkAll(cmp);
-    exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
+    exp(findCancelCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
     checkSelectValue(cmp, [...value, 'key-0', 'key-1', 'key-2']);
     showTrigger(cmp);
-    checkAll(cmp);
+    unCheckAll(cmp);
     exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.false;
     checkSelectValue(cmp, []);
   });
@@ -248,10 +247,10 @@ describe('Select', () => {
 
     showTrigger(cmp);
     checkAll(cmp);
-    exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
+    exp(findCancelCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
     checkSelectValue(cmp, [...value, 'key-0', 'key-1', 'key-2']);
     showTrigger(cmp);
-    checkAll(cmp);
+    unCheckAll(cmp);
     exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.false;
     checkSelectValue(cmp, []);
   });
@@ -428,7 +427,7 @@ describe('Select', () => {
     queryInputEnter(cmp);
     exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.false;
     checkAll(cmp);
-    exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
+    exp(findCancelCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
 
     const expValue = data
       .filter((item: Object, index: number) => index < 4)
@@ -593,7 +592,7 @@ describe('Select', () => {
       .filter((item: Object, index: number) => index < 5)
       .map(item => item.label);
 
-    checkAll(cmp);
+    unCheckAll(cmp);
     const result = await selectPromise;
     expect(result).toEqual([{ value, displayValue }, { value: [], displayValue: [] }]);
   });
@@ -1116,12 +1115,20 @@ describe('Select', () => {
     findCheckedAllButton(cmp).simulate('click');
   }
 
+  function unCheckAll(cmp: Object) {
+    findCancelCheckedAllButton(cmp).simulate('click');
+  }
+
   function clickRefreshButton(cmp: Object) {
     cmp.find('RefreshButton').simulate('click');
   }
 
   function findCheckedAllButton(cmp: Object) {
     return cmp.find('CheckAllButton');
+  }
+
+  function findCancelCheckedAllButton(cmp: Object) {
+    return cmp.find('CancelCheckAllButton');
   }
 
   function queryInputEnter(cmp: Object) {
