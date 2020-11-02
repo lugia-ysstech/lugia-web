@@ -265,6 +265,13 @@ export class CheckboxDemo extends React.Component<any, any> {
             <div>CheckBox</div>
           </CheckBox>
         </Wrapper>
+        <Wrapper>
+          <p>checkbox内容很多时，自动换行。</p>
+          <CheckBox>
+            checkbox子元素为非字符串时，title不显示,checkbox子元素为非字符串时，title不显示,checkbox子元素为非字符串时
+            ，title不显示checkbox子元素为非字符串时，title不显示checkbox子元素为非字符串时，title不显示checkbox子元素为非字符串时，title不显示
+          </CheckBox>
+        </Wrapper>
       </div>
     );
   }
