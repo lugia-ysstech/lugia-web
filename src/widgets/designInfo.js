@@ -7207,8 +7207,8 @@ export default [
         ],
         StyleType: [
           { value: 'customs', text: '填充风格' },
-          { value: 'basic', text: '线框风格' },
-          { value: 'primary', text: '文本风格' },
+          { value: 'primary', text: '线框风格' },
+          { value: 'basic', text: '文本风格' },
         ],
         ActionType: [{ value: 'hover', text: '悬浮展开' }, { value: 'click', text: '点击展开' }],
       },
@@ -7889,8 +7889,8 @@ export default [
         ],
         StyleType: [
           { value: 'customs', text: '填充风格' },
-          { value: 'basic', text: '线框风格' },
-          { value: 'primary', text: '文本风格' },
+          { value: 'primary', text: '线框风格' },
+          { value: 'basic', text: '文本风格' },
         ],
         ActionType: [{ value: 'hover', text: '悬浮展开' }, { value: 'click', text: '点击展开' }],
       },
