@@ -11,17 +11,17 @@ import Widget from '../consts/index';
 import Theme from '../theme';
 
 const data = [
-  { text: '选项1', value: '选项1', disabled: false },
-  { text: '选项2', value: '选项2', disabled: false },
-  { text: '选项3', value: '选项3', disabled: false },
-  { text: '选项4', value: '选项4', disabled: false },
-  { text: '选项5', value: '选项5', disabled: true },
-  { text: '选项6', value: '选项6', disabled: false },
-  { text: '选项7', value: '选项7', disabled: false },
-  { text: '选项8', value: '选项8', disabled: false },
-  { text: '选项9', value: '选项9', disabled: false },
-  { text: '选项0', value: '选项0', disabled: true },
-  { text: '选项10', value: '选项10', disabled: true },
+  { text: '选项1', value: 'key-1', disabled: false },
+  { text: '选项2', value: 'key-2', disabled: false },
+  { text: '选项3', value: 'key-3', disabled: false },
+  { text: '选项4', value: 'key-4', disabled: false },
+  { text: '选项5', value: 'key-5', disabled: true },
+  { text: '选项6', value: 'key-6', disabled: false },
+  { text: '选项7', value: 'key-7', disabled: false },
+  { text: '选项8', value: 'key-8', disabled: false },
+  { text: '选项9', value: 'key-9', disabled: false },
+  { text: '选项0', value: 'key-0', disabled: true },
+  { text: '选项10', value: 'key-10', disabled: true },
 ];
 const treeData = [
   { text: '1', value: '1' },
