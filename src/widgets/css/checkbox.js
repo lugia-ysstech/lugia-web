@@ -93,11 +93,11 @@ export const CheckBoxWrap = CSSComponent({
     box-sizing: border-box;
     padding: 0;
     list-style: none;
-    display: inline-block;
     line-height: 1;
-    white-space: nowrap;
     ${getStyleCSS};
+    display: flex;
     overflow: hidden;
+    align-items: center;
     text-overflow: ellipsis;
   `,
   normal: {
