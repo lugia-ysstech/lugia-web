@@ -29,6 +29,7 @@ export type GroupProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   size: SizeType,
+  transferButtonIcon?: Object,
 };
 export type GroupState = {
   inputValue: string,
