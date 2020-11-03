@@ -173,7 +173,9 @@
               {
                 "name": "文本框",
                 "path": ["TransferPanelMenu", "MenuItem", "Text"],
-                "description": { "textPart": { "text": "标题文本", "desc": "文本框置内外边距配置区" } }
+                "description": {
+                  "textPart": { "text": "标题文本", "desc": "文本框置内外边距配置区" }
+                }
               }
             ]
           },
@@ -192,7 +194,9 @@
               {
                 "name": "文本框",
                 "path": ["TransferPanelMenu", "MenuItem", "CheckedText"],
-                "description": { "textPart": { "text": "标题文本", "desc": "文本框置内外边距配置区" } }
+                "description": {
+                  "textPart": { "text": "标题文本", "desc": "文本框置内外边距配置区" }
+                }
               }
             ]
           },
@@ -240,20 +244,25 @@
         "iconClass": "transferButton",
         "data": [
           {
-            "title": "穿梭按钮",
-            "iconClass": "checkboxUncheck",
-            "data": [
-              {
-                "name": "外观",
-                "path": ["TransferButton", "Container"],
-                "description": {
-                  "appearancePart": {
-                    "text": "外观",
-                    "desc": "外观"
-                  }
-                }
+            "name": "外观",
+            "path": ["TransferButton", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "外观"
               }
-            ]
+            }
+          },
+          {
+            "name": "按钮图标样式",
+            "path": ["TransferButton", "ButtonIcon"],
+            "props": [{ "name": "transferButtonIcon", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": {
+                "text": "图标",
+                "desc": "图标样式"
+              }
+            }
           }
         ]
       },
@@ -768,40 +777,25 @@
         "iconClass": "transferButton",
         "data": [
           {
-            "title": "穿梭按钮",
-            "iconClass": "checkboxUncheck",
-            "data": [
-              {
-                "name": "外观",
-                "path": ["TransferButton", "Container"],
-                "description": {
-                  "appearancePart": {
-                    "text": "外观",
-                    "desc": "外观"
-                  }
-                }
-              },
-              {
-                "name": "文字",
-                "path": ["TransferButton", "ButtonText"],
-                "description": {
-                  "textPart": {
-                    "text": "文字",
-                    "desc": "文字"
-                  }
-                }
-              },
-              {
-                "name": "图标",
-                "path": ["TransferButton", "ButtonIcon"],
-                "description": {
-                  "textPart": {
-                    "text": "图标",
-                    "desc": "图标"
-                  }
-                }
+            "name": "外观",
+            "path": ["TransferButton", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "外观"
               }
-            ]
+            }
+          },
+          {
+            "name": "图标",
+            "path": ["TransferButton", "ButtonIcon"],
+            "props": [{ "name": "transferButtonIcon", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": {
+                "text": "图标",
+                "desc": "图标样式"
+              }
+            }
           }
         ]
       },

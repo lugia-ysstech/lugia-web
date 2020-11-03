@@ -42,6 +42,10 @@ const treeData = [
     ],
   },
 ];
+const transferButtonIcon = {
+  transferLeftButtonIcon: 'lugia-icon-direction_caret_left',
+  transferRightButtonIcon: 'lugia-icon-direction_caret_right',
+};
 
 export default class TransferDemo extends React.Component<any, any> {
   constructor() {
@@ -396,6 +400,7 @@ export default class TransferDemo extends React.Component<any, any> {
             sourceSelectedKeys={sourceSelectedKeys}
             targetSelectedKeys={targetSelectedKeys}
             value={targetKeys}
+            transferButtonIcon={transferButtonIcon}
             onSelectChange={this.handleSelectChange}
             onDirectionClick={this.handleDirectionClick}
           />
