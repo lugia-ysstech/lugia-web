@@ -110,7 +110,7 @@
       "desc": "穿梭框面板头部标题"
     }
   },
-  "event": {
+  "events": {
     "onSelectChange": {
       "desc": "Transfer 选中回调",
       "args": [
