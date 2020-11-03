@@ -18,7 +18,6 @@ exports[`Image background: isBackground = true 1`] = `
 exports[`Image image: isBackground = false 1`] = `
 .c0 {
   width: 20rem;
-  height: 10rem;
 }
 
 <img
