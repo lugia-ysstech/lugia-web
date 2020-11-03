@@ -43,8 +43,8 @@ const treeData = [
   },
 ];
 const transferButtonIcon = {
-  transferLeftButtonIcon: 'lugia-icon-direction_caret_left',
-  transferRightButtonIcon: 'lugia-icon-direction_caret_right',
+  transferLeftButtonIcon: 'lugia-icon-direction_caret_right',
+  transferRightButtonIcon: 'lugia-icon-direction_caret_left',
 };
 
 export default class TransferDemo extends React.Component<any, any> {
