@@ -77,7 +77,8 @@
     "clean": "npx shx rm -rf dist/ interface/ npm-shrinkwrap.all.json src/widgets/static src/widgets/designInfo.dll.json",
     "create": "node scripts/create.js",
     "dist": " npm run clean && node  --max-old-space-size=24000  scripts/build.js",
-    "create-info": "lugia-create-info"
+    "create-info": "lugia-create-info",
+    "updateVersion": " node --max-old-space-size=24000  scripts/changeVersion.js"
   },
   "devDependencies": {
     "@lugia/devtools-widgets": "^1.0.6",
