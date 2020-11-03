@@ -82,8 +82,8 @@ export default class TransferButton extends React.Component<
     const {
       size,
       transferButtonIcon: {
-        transferLeftButtonIcon = 'lugia-icon-direction_Left',
-        transferRightButtonIcon = 'lugia-icon-direction_right',
+        transferLeftButtonIcon = 'lugia-icon-direction_right',
+        transferRightButtonIcon = 'lugia-icon-direction_Left',
       } = {},
     } = this.props;
     return (
