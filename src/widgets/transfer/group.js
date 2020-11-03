@@ -154,6 +154,7 @@ export default ThemeProvider(
         getPartOfThemeProps,
         getPartOfThemeHocProps,
         size,
+        transferButtonIcon = {},
       } = this.props;
       const transFerWrapTheme = getPartOfThemeProps('TransferWrap');
       const transferPanelTheme = getPartOfThemeProps('TransferPanel');
@@ -199,6 +200,7 @@ export default ThemeProvider(
             onLeftClick={this.handleToRight}
             onRightClick={this.handleToLeft}
             theme={transferButtonThemeObj}
+            transferButtonIcon={transferButtonIcon}
           />
           <TransFer
             key="2"
