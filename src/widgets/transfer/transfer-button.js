@@ -16,8 +16,6 @@ type TransferButtonProps = {
   leftModel: Object,
   rightModel: Object,
   theme: Object,
-  transferLeftButtonIcon?: string,
-  transferRightButtonIcon?: string,
   transferButtonIcon?: Object,
 };
 type TransferButtonState = {
