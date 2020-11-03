@@ -1,12 +1,12 @@
 [
   {
     "widgetName": "Image",
-    "title": "图片配置",
+    "title": "更改图片",
     "treeNodeHidden": true,
     "viewProps": [
       {
         "name": "src",
-        "text": "图片配置"
+        "text": "更改图片"
       },
       {
         "name": "isBackground",
