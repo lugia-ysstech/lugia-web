@@ -23702,6 +23702,14 @@ export default [
         transferClearIcon: { type: 'icon', desc: '清除图标类型' },
         transferPrefixIcon: { type: 'icon', desc: '前缀图标类型' },
         transferSuffixIcon: { type: 'icon', desc: '后缀图标类型' },
+        transferButtonIcon: {
+          type: 'object',
+          desc: '生成选择项的数据',
+          meta: [
+            { key: 'transferLeftButtonIcon', title: '左穿梭图标', type: 'icon' },
+            { key: 'transferRightButtonIcon', title: '右穿梭图标', type: 'icon' },
+          ],
+        },
         switchIconNames: {
           type: 'object',
           desc: '生成选择项的数据',
@@ -23712,7 +23720,7 @@ export default [
         },
         title: { type: 'string', desc: '穿梭框面板头部标题' },
       },
-      event: {
+      events: {
         onSelectChange: {
           desc: 'Transfer 选中回调',
           args: [
@@ -24897,6 +24905,14 @@ export default [
         transferClearIcon: { type: 'icon', desc: '清除图标类型' },
         transferPrefixIcon: { type: 'icon', desc: '前缀图标类型' },
         transferSuffixIcon: { type: 'icon', desc: '后缀图标类型' },
+        transferButtonIcon: {
+          type: 'object',
+          desc: '生成选择项的数据',
+          meta: [
+            { key: 'transferLeftButtonIcon', title: '左穿梭图标', type: 'icon' },
+            { key: 'transferRightButtonIcon', title: '右穿梭图标', type: 'icon' },
+          ],
+        },
         switchIconNames: {
           type: 'object',
           desc: '生成选择项的数据',
@@ -24907,7 +24923,7 @@ export default [
         },
         title: { type: 'string', desc: '穿梭框面板头部标题' },
       },
-      event: {
+      events: {
         onSelectChange: {
           desc: 'Transfer 选中回调',
           args: [
