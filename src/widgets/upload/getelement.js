@@ -107,7 +107,7 @@ const buttonStyle = {
 const getButtonStyle = (normalButtonTheme, classNameStatus) => {
   return {
     Container: {
-      normal: { ...normalButtonTheme, background: { color: buttonStyle[classNameStatus] } },
+      normal: { normalButtonTheme, background: { color: buttonStyle[classNameStatus] } },
       hover: { background: { color: buttonStyle[classNameStatus] } },
       active: { background: { color: buttonStyle[classNameStatus] } },
       focus: { background: { color: buttonStyle[classNameStatus] } },
@@ -144,7 +144,7 @@ const bottonThemeStyle = classNameStatus => ({
 const getButtonFailBorder = (normalButtonTheme, classNameStatus) => {
   return {
     normal: {
-      ...normalButtonTheme,
+      normalButtonTheme,
       ...bottonThemeStyle(classNameStatus),
     },
     hover: {
@@ -954,6 +954,7 @@ type DefProps = {
   getInputRef: Function,
   validateStatus: ValidateStatus,
   validateType: ValidateType,
+  onDelete: Function,
 };
 type StateProps = {
   status: string,
@@ -1356,9 +1357,14 @@ class GetElement extends React.Component<DefProps, StateProps> {
           },
         },
         areaThemeProps,
-        uploadStatusTheme,
-        validateTheme
+        uploadStatusTheme
       );
+      const validateTextTheme = isValidateError(validateStatus)
+        ? deepMerge(validateValueDefaultTheme, validateErrorInputThemeProps)
+        : {};
+      const areaThemeMerge = deepMerge(areaTheme, validateTheme);
+      const textMerge = deepMerge(areaTheme, validateTextTheme);
+
       const areaIconProps = {
         ...defaultIconProps,
         iconClassName:
@@ -1371,7 +1377,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       };
       children = (
         <AreaView
-          themeProps={areaTheme}
+          themeProps={areaThemeMerge}
           disabled={disabled}
           onClick={handleClickToUpload}
           dragIn={dragIn}
@@ -1380,13 +1386,13 @@ class GetElement extends React.Component<DefProps, StateProps> {
         >
           {getIconByType(areaIconProps)}
           {classNameStatus === 'loading' ? (
-            <AreaText themeProps={areaTheme}>{loadingTips}</AreaText>
+            <AreaText themeProps={textMerge}>{loadingTips}</AreaText>
           ) : classNameStatus === 'fail' ? (
-            <AreaText themeProps={areaTheme} disabled={disabled}>
+            <AreaText themeProps={textMerge} disabled={disabled}>
               {failTips}
             </AreaText>
           ) : (
-            <AreaText themeProps={areaTheme} disabled={disabled}>
+            <AreaText themeProps={textMerge} disabled={disabled}>
               {uploadTips},或
               <AreaTextBlue themeProps={areaTextBlue} disabled={disabled}>
                 {uploadText}
@@ -1409,7 +1415,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const { setAutoUploadState } = this.props;
     setAutoUploadState && setAutoUploadState(true);
   };
-  handleClickToDelete = (index: number, item: object) => {
+  handleClickToDelete = (index: number, item: Object) => {
     const { setDeleteList, onDelete } = this.props;
     onDelete && onDelete({ item, index });
     setDeleteList && setDeleteList(index, item);
