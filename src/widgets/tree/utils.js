@@ -86,8 +86,8 @@ class TreeUtils {
       limitCount,
       splitQuery,
       pathSeparator = '|',
-      pathField,
-      pidField,
+      pathField = 'path',
+      pidField = 'pid',
     } = config;
     this.Error = ErrorDefine;
     this.version = 0;
