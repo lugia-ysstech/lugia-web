@@ -77,26 +77,4 @@ describe('CSSProvider', () => {
       })
     ).toEqual('background-color:red;border-size:1px;');
   });
-
-  it('getThemeByConfig', () => {});
-
-  it('getSelectNameThemeMeta selectNames =[]', () => {
-    expect(
-      getSelectNameThemeMeta(
-        {
-          a: 1,
-          b: 2,
-        },
-        []
-      )
-    ).toEqual({});
-  });
-  it('getSelectNameThemeMeta selectNames 不填', () => {
-    expect(
-      getSelectNameThemeMeta({
-        a: 1,
-        b: 2,
-      })
-    ).toEqual({ a: 1, b: 2 });
-  });
 });
