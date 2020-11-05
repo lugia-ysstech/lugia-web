@@ -239,11 +239,11 @@ function hasValueProps(props: Object) {
 }
 
 function getOverMax(value, max) {
-  return Number(value) >= max;
+  return parseFloat(value) >= max;
 }
 
 function getBelowMin(value, min) {
-  return Number(value) <= min;
+  return parseFloat(value) <= min;
 }
 
 function handleFirstPoint(value: string | number) {
@@ -556,7 +556,13 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   setValue(value: number, event: any): void {
     const oldValue = this.state.value;
     const { disabled, onChange } = this.props;
-    const param = { newValue: value, oldValue, event };
+    const theNewValue = handleEmpty(value, parseFloat(value));
+    const theOldValue = handleEmpty(oldValue, parseFloat(oldValue));
+    const param = {
+      newValue: theNewValue,
+      oldValue: theOldValue,
+      event,
+    };
     if (hasValueProps(this.props) === false) {
       if (disabled) {
         return;
@@ -573,10 +579,12 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const { precision } = this.props;
     let { value } = this.state;
     let { step, min, max } = this.props;
-    value = Number(value);
-    step = click === 'plus' ? Number(step) : step * -1;
-    const finalValue = accAdd(value, step, precision);
-    this.setValue(limit(finalValue, [min, max]), event);
+    if (value !== '') {
+      value = parseFloat(value);
+      step = click === 'plus' ? parseFloat(step) : step * -1;
+      const finalValue = accAdd(value, step, precision);
+      this.setValue(limit(finalValue, [min, max]), event);
+    }
   }
 }
 
