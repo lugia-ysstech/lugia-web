@@ -191,6 +191,13 @@ export const ComboDemo = () => {
       },
     },
   };
+  const TransparentCard = {
+    [Widget.Card]: {
+      Container: {
+        normal: { width: '100%' },
+      },
+    },
+  };
   const defaultData = [
     {
       title: 'Tab1',
@@ -226,6 +233,18 @@ export const ComboDemo = () => {
         <Wrapper>
           <Card viewClass={'price'} type={'combo'} content={<AmountCard />} />
         </Wrapper>
+      </Theme>
+      <p>测试空白盒子的height和overflow</p>
+      <Theme config={TransparentCard}>
+        <Card type={'transparent'} height={'50vh'} overflow={'auto'}>
+          <div>
+            <AmountCard />
+            <AmountCard />
+            <AmountCard />
+            <AmountCard />
+            <AmountCard />
+          </div>
+        </Card>
       </Theme>
     </div>
   );
