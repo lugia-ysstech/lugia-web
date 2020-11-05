@@ -77,12 +77,16 @@ const CardOutContainer = CSSComponent({
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { type },
+        propsConfig: { type, height, overflow },
       } = themeProps;
+      const cardHeight = height ? checkSizeIsNumber(height) : '400';
+      const theOverflow = overflow ? overflow : 'hidden';
       if (type === 'transparent') {
         return {
           background: { color: 'transparent' },
           boxShadow: 'none',
+          overflow: `${theOverflow}`,
+          height: `${cardHeight}`,
         };
       }
       return {
@@ -449,7 +453,7 @@ class Card extends React.Component<CardProps, CardState> {
   static getDerivedStateFromProps(nextProps, prevState) {}
 
   render() {
-    const { type, imageOrientation, minHeight } = this.props;
+    const { type, imageOrientation, minHeight, height, overflow } = this.props;
     let resultTheme;
     const hCard = isHorizontal(imageOrientation);
     switch (type) {
@@ -488,7 +492,7 @@ class Card extends React.Component<CardProps, CardState> {
       return (
         <CardOutContainer
           themeProps={this.props.getPartOfThemeProps('Container', {
-            props: { type },
+            props: { type, height, overflow },
           })}
         >
           {children}
