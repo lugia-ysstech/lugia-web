@@ -61,7 +61,7 @@ class Popup extends React.Component<PopupProps> {
     return [this.getMaskElement(), this.getPopupElement()];
   }
 
-  onAlign = (popupDomNode: HTMLElement, align: string) => {
+  onAlign = (popupDomNode: HTMLElement, align: Object) => {
     const { onAlign } = this.props;
     onAlign && onAlign(popupDomNode, align);
   };
