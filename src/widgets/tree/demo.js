@@ -295,6 +295,7 @@ export default class TreeDome extends React.Component {
             autoHeight
             parentIsHighlight
             onlySelectLeaf
+            query="南"
             // mutliple
             // __navmenu
             switchIconNames={switchIconNames}
@@ -310,6 +311,7 @@ export default class TreeDome extends React.Component {
             parentIsHighlight
             onlySelectLeaf
             mutliple
+            query="南"
             // __navmenu
             switchIconNames={switchIconNames}
           />
