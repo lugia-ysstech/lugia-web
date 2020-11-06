@@ -81,7 +81,7 @@ const CardOutContainer = CSSComponent({
       } = themeProps;
       const cardHeight = height ? checkSizeIsNumber(height) : '400';
       const theOverflow = overflow ? overflow : 'hidden';
-      if (type === 'transparent') {
+      if (type === 'transparent' || type === 'Responsive') {
         return {
           background: { color: 'transparent' },
           boxShadow: 'none',
@@ -496,6 +496,17 @@ class Card extends React.Component<CardProps, CardState> {
           })}
         >
           {children}
+        </CardOutContainer>
+      );
+    }
+    if (type === 'Responsive') {
+      return (
+        <CardOutContainer
+          themeProps={this.props.getPartOfThemeProps('Container', {
+            props: { type, height, overflow },
+          })}
+        >
+          <div style={{ width: '100%', overflow: 'auto' }}>{children}</div>
         </CardOutContainer>
       );
     }
