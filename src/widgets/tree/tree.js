@@ -384,9 +384,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
       }
       return this.allExpandKeys;
     }
+    const newAllExpandKeys = this.allExpandKeys || [];
     return Array.from(
       new Set([
-        ...this.allExpandKeys.filter(item => item !== 'lugia_tree_root'),
+        ...newAllExpandKeys.filter(item => item !== 'lugia_tree_root'),
         ...Object.keys(id2ExtendInfo).filter(item => item !== 'lugia_tree_root'),
       ])
     );
