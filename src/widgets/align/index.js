@@ -10,7 +10,7 @@ import VisibleBox from '../common/VisibleBox';
 import Widget from '../consts/index';
 import RcAlign from 'rc-align';
 
-const builtinPlacements = {
+export const builtinPlacements = {
   left: ['cr', 'cl'],
   leftTop: ['tr', 'tl'],
   leftBottom: ['br', 'bl'],
@@ -53,7 +53,16 @@ export default class Align extends React.Component<PropsType> {
   }
 
   render() {
-    const { visible, autoResize, align, getTargetDom, children, offsetX, offsetY } = this.props;
+    const {
+      visible,
+      autoResize,
+      align,
+      getTargetDom,
+      children,
+      offsetX,
+      offsetY,
+      onAlign,
+    } = this.props;
     const config = builtinPlacements[align];
     const rcAlignArg = {
       points: config ? config : builtinPlacements[defaultAligh],
@@ -72,6 +81,7 @@ export default class Align extends React.Component<PropsType> {
           align={rcAlignArg}
           monitorWindowResize={autoResize}
           ref={this.rcAlign}
+          onAlign={onAlign}
         >
           {children}
         </RcAlign>

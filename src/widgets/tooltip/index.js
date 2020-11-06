@@ -15,6 +15,7 @@ import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { getBorderRadius } from '@lugia/theme-utils';
 import get from '../css/theme-common-dict';
 import { units } from '@lugia/css';
+import { builtinPlacements } from '../align';
 const { px2remcss } = units;
 
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
@@ -213,6 +214,10 @@ export function getStateFromProps(
   return { visible: state.visible };
 }
 
+function getPlacementByDirMap(obj, points) {
+  return Object.keys(obj).find(key => JSON.stringify(obj[key]) === JSON.stringify(points));
+}
+
 class Tooltip extends React.Component<TooltipProps, TooltipState> {
   static displayName = Widget.Tooltip;
 
@@ -240,6 +245,13 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     }
     return { visible: state.visible };
   }
+
+  onPopupAlign = (source, result) => {
+    const { points } = result;
+    const actualDirection = getPlacementByDirMap(builtinPlacements, points);
+    this.setState({ actualDirection });
+  };
+
   render() {
     const {
       placement,
@@ -253,8 +265,8 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       popupContainerId,
       getPopTargetDom,
     } = this.props;
-    const { visible } = this.state;
-    const direction = this.getDirection(placement);
+    const { visible, actualDirection } = this.state;
+    const direction = this.getDirection(actualDirection || placement);
     const getTarget: Function = cmp => (this.trigger = cmp);
     const contentThemeProps = getPartOfThemeProps('Container', {
       props: {
@@ -287,7 +299,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
         getPopTargetDom={getPopTargetDom}
         onPopupVisibleChange={this.onVisibleChange}
         action={action}
-        direction={direction}
+        onPopupAlign={this.onPopupAlign}
         popup={
           <ContentWrapper themeProps={childrenThemeProps}>
             {this.getContent(childrenThemeProps, direction)}
@@ -323,10 +335,11 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
   }
   getArrow(direction, channel) {
     const { placement, popArrowType } = this.props;
+    const { actualDirection } = this.state;
     const theThemeProps = this.props.getPartOfThemeProps('Container', {
       props: {
         direction,
-        placement,
+        placement: actualDirection || placement,
       },
     });
     if (popArrowType === 'round') {
