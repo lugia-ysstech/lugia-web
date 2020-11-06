@@ -154,6 +154,7 @@ const Title: Object = CSSComponent({
     overflow: hidden;
     text-align: left;
     text-decoration: none;
+    word-break: break-word;
   `,
 });
 const Description: Object = CSSComponent({
