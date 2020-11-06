@@ -19,7 +19,7 @@ const ButtonDemo = styled(Button)`
 const ToolTipBaseWrapper = styled.div`
   display: inline-block;
 `;
-const OuterWarpper = styled.div`
+const OuterWrapper = styled.div`
   margin-left: 100px;
 `;
 const DirectionTopWrapper = styled.div`
@@ -71,6 +71,16 @@ const childrenContainerConfig = {
     },
   },
 };
+const containerConfig = {
+  [Widget.Tooltip]: {
+    Container: {
+      normal: {
+        width: 120,
+        height: 50,
+      },
+    },
+  },
+};
 
 export default () => {
   const config = {
@@ -83,7 +93,7 @@ export default () => {
     },
   };
   return (
-    <OuterWarpper>
+    <OuterWrapper>
       <Theme config={config}>
         <DirectionTopWrapper>
           <ToolTipTHWrapper>
@@ -174,6 +184,17 @@ export default () => {
           </Tooltip>
         </Theme>
       </div>
-    </OuterWarpper>
+      <div style={{ width: 100, height: 50 }}>
+        <Theme config={containerConfig}>
+          <Tooltip
+            title={'This is an English title that wants to wrap a line'}
+            action={'click'}
+            placement="top"
+          >
+            <ButtonDemo type="primary">英文 可换行的title</ButtonDemo>
+          </Tooltip>
+        </Theme>
+      </div>
+    </OuterWrapper>
   );
 };
