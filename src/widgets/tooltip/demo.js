@@ -22,6 +22,20 @@ const ToolTipBaseWrapper = styled.div`
 const OuterWrapper = styled.div`
   margin-left: 100px;
 `;
+const TestContainer = styled.div`
+  width: 200px;
+  position: relative;
+  height: 200px;
+  border: 1px red solid;
+  margin-left: 100px;
+`;
+const TestDiv = styled.div`
+  width: 50px;
+  height: 20px;
+  border: 1px blue solid;
+`;
+TestDiv.displayName = 'TestDiv';
+
 const DirectionTopWrapper = styled.div`
   margin-left: 120px;
   white-space: nowrap;
@@ -82,7 +96,7 @@ const containerConfig = {
   },
 };
 
-export default () => {
+export const Demo = () => {
   const config = {
     [Widget.Button]: {
       Container: {
@@ -197,4 +211,23 @@ export default () => {
       </div>
     </OuterWrapper>
   );
+};
+export const TestDemo = () => {
+  return (
+    <TestContainer>
+      <p>距左边距离不够弹窗时 在右边弹窗 箭头位于左边 </p>
+      <div>
+        <Tooltip
+          placement={'left'}
+          title={<div style={{ width: 100, height: 50 }}> this is title</div>}
+        >
+          <TestDiv>test</TestDiv>
+        </Tooltip>
+      </div>
+    </TestContainer>
+  );
+};
+
+export default () => {
+  return [<Demo />, <TestDemo />];
 };

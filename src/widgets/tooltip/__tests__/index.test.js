@@ -3,29 +3,18 @@ import React from 'react';
 import chai from 'chai';
 import 'jest-styled-components';
 
-import Tooltip from '../';
+import Tooltip from '.././index';
+import { TestDemo } from '../demo';
 import { createTestComponent } from '@lugia/react-test-utils';
 
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import ReactDOM from 'react-dom';
+import renderer from 'react-test-renderer';
 
 Enzyme.configure({ adapter: new Adapter() });
 
 const { expect: exp } = chai;
-/*
-  left: ['cr', 'cl',],
-  leftTop: ['tr', 'tl',],
-  leftBottom: ['br', 'bl',],
-  right: ['cl', 'cr',],
-  rightTop: ['tl', 'tr',],
-  rightBottom: ['bl', 'br',],
-  top: ['bc', 'tc',],
-  bottom: ['tc', 'bc',],
-  topLeft: ['bl', 'tl',],
-  topRight: ['br', 'tr',],
-  bottomRight: ['tr', 'br',],
-  bottomLeft: ['tl', 'bl',],
- */
 
 describe('Tooltip', () => {
   it('getDirection', () => {
@@ -51,5 +40,14 @@ describe('Tooltip', () => {
         <button />
       </Target>
     );
+  });
+
+  it('Snapshot JSON', () => {
+    global.svtest = true;
+    const component = mount(<TestDemo />);
+    ReactDOM.createPortal = node => node;
+    component.find('TestDiv').simulate('click');
+    expect(renderer.create(component).toJSON()).toMatchSnapshot();
+    global.svtest = false;
   });
 });
