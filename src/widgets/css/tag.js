@@ -21,12 +21,14 @@ export function getPublicColor() {
     darkGreyColor: get('darkGreyColor'),
     borderRadiusValue: get('borderRadiusValue'),
     defaultColor: get('defaultColor'),
+    blackColor: get('blackColor'),
   };
 }
 export const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const themeActiveColor = '$lugia-dict.@lugia/lugia-web.themeActiveColor';
 export const fontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
 const descriptionFontSize = '$lugia-dict.@lugia/lugia-web.descriptionFontSize';
+export const paddingToText = '$lugia-dict.@lugia/lugia-web.paddingToText';
 
 type shapeType = 'basic' | 'round';
 type styleType = 'customs' | 'primary' | 'basic' | 'presets' | 'optional';
@@ -188,7 +190,6 @@ export const TagWrap = CSSComponent({
   className: 'tagContainer',
   normal: {
     selectNames: [
-      ['color'],
       ['background'],
       ['border'],
       ['borderRadius'],
@@ -196,10 +197,8 @@ export const TagWrap = CSSComponent({
       ['height'],
       ['boxShadow'],
       ['opacity'],
-      ['font'],
       ['margin'],
       ['padding'],
-      ['fontSize'],
       ['cursor'],
     ],
     getThemeMeta() {
@@ -231,15 +230,7 @@ export const TagWrap = CSSComponent({
     },
   },
   hover: {
-    selectNames: [
-      ['color'],
-      ['background'],
-      ['border'],
-      ['borderRadius'],
-      ['boxShadow'],
-      ['opacity'],
-      ['font'],
-    ],
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
     getStyle: (themeMeta, themeProps) => {
       const { themeConfig, propsConfig } = themeProps;
       const { normal = {}, hover = {} } = themeConfig;
@@ -274,10 +265,10 @@ export const ItemText = CSSComponent({
   tag: 'span',
   className: 'ItemText',
   normal: {
-    selectNames: [],
+    selectNames: [['color'], ['fontSize'], ['margin'], ['font']],
   },
   hover: {
-    selectNames: [],
+    selectNames: [['color'], ['fontSize'], ['margin'], ['font']],
   },
   active: {
     selectNames: [],
@@ -313,7 +304,6 @@ export const OptionalWrap = CSSComponent({
   className: 'OptionalWrap',
   normal: {
     selectNames: [
-      ['color'],
       ['background'],
       ['border'],
       ['borderRadius'],
@@ -321,10 +311,8 @@ export const OptionalWrap = CSSComponent({
       ['height'],
       ['boxShadow'],
       ['opacity'],
-      ['font'],
       ['margin'],
       ['padding'],
-      ['fontSize'],
       ['cursor'],
     ],
     getThemeMeta() {
@@ -358,15 +346,7 @@ export const OptionalWrap = CSSComponent({
     },
   },
   hover: {
-    selectNames: [
-      ['color'],
-      ['background'],
-      ['border'],
-      ['borderRadius'],
-      ['boxShadow'],
-      ['opacity'],
-      ['font'],
-    ],
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
     getCSS: (themeMeta, themeProps) => {
       const { color: hoverColor } = themeMeta;
       const { propsConfig } = themeProps;
@@ -382,15 +362,7 @@ export const OptionalWrap = CSSComponent({
     },
   },
   active: {
-    selectNames: [
-      ['color'],
-      ['background'],
-      ['border'],
-      ['borderRadius'],
-      ['boxShadow'],
-      ['opacity'],
-      ['font'],
-    ],
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
     getStyle: (themeMeta, themeProps) => {
       const { color: activeColor } = themeMeta;
       const color = activeColor ? activeColor : themeActiveColor;
