@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip Snapshot JSON 1`] = `
+.c3 {
+  display: none;
+}
+
+.c4 {
+  position: absolute;
+  border-radius: 4px;
+  box-sizing: border-box;
+  left: -9999px;
+  top: -9999px;
+  z-index: undefined;
+}
+
+.c5 {
+  position: relative;
+  padding-right: 0.4rem;
+  background: transparent;
+  box-shadow: none;
+}
+
+.c6 {
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+}
+
+.c7 {
+  border-color: transparent;
+  position: absolute;
+  border-style: solid;
+  line-height: 1;
+  top: calc(50% - 5px);
+  right: -0.3rem;
+  border-left-color: #363B40;
+  border-width: 0.5rem 0 0.5rem 0.5rem;
+}
+
+.c8 {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  word-break: break-word;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.c1 {
+  display: inline-block;
+  height: 100%;
+}
+
+.c0 {
+  width: 200px;
+  position: relative;
+  height: 200px;
+  border: 1px red solid;
+  margin-left: 100px;
+}
+
+.c2 {
+  width: 50px;
+  height: 20px;
+  border: 1px blue solid;
+}
+
+<div
+  className="c0"
+>
+  <p>
+    距左边距离不够弹窗时 在右边弹窗 箭头位于左边 
+  </p>
+  <div>
+    <div
+      className="c1"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onTouchStart={[Function]}
+      style={Object {}}
+    >
+      <div
+        className="c2"
+      >
+        test
+      </div>
+    </div>
+    <div
+      className="c3"
+    >
+      <div
+        className="c4"
+      >
+        <div
+          className="c5"
+          style={Object {}}
+        >
+          <div
+            className="c6"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#363B40",
+                "borderBottomLeftRadius": "0.4rem",
+                "borderBottomRightRadius": "0.4rem",
+                "borderTopLeftRadius": "0.4rem",
+                "borderTopRightRadius": "0.4rem",
+                "boxShadow": "0px 0px 6px 0px #d0d3da",
+              }
+            }
+          >
+            <div
+              className="c7"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            />
+            <div
+              className="c8"
+              style={Object {}}
+            >
+              <div
+                style={
+                  Object {
+                    "height": 50,
+                    "width": 100,
+                  }
+                }
+              >
+                 this is title
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
