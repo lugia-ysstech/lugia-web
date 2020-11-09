@@ -8,6 +8,7 @@ import Widget from '../consts/index';
 import styled from 'styled-components';
 import React from 'react';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
+import Theme from '../theme';
 
 const Box = styled.div`
   display: inline-block;
@@ -21,7 +22,7 @@ for (let i = 10; i < 20; i++) {
 
 const commonConfig = {
   [Widget.Tag]: {
-    TagWrap: {
+    Container: {
       normal: {
         width: 300,
         height: 60,
@@ -73,7 +74,7 @@ const commonConfig = {
 
 const optionalConfig = {
   [Widget.Tag]: {
-    TagWrap: {
+    Container: {
       normal: {
         width: 300,
         height: 60,
@@ -239,6 +240,19 @@ export class NormalCase extends React.Component<any, any> {
             </Tag>
           </Box>
 
+          <Box>
+            <Tag
+              // theme={optionalConfig}
+              type="optional"
+              onClick={this.onClick}
+              onClose={this.onClose}
+              preIcon={'lugia-icon-logo_twitter'}
+              suffixIcon={'lugia-icon-logo_gitlab'}
+            >
+              Optional
+            </Tag>
+          </Box>
+
           <h2>主题配置</h2>
           <Box>
             <Tag
@@ -295,6 +309,21 @@ export class NormalCase extends React.Component<any, any> {
             </Tag>
           </Box>
 
+          <Box>
+            <Tag
+              // theme={commonConfig}
+              type="customs"
+              onClick={this.onClick}
+              closable={false}
+              onClose={this.onClose}
+              shape={'basic'}
+              preIcon={'lugia-icon-logo_twitter'}
+              suffixIcon={'lugia-icon-logo_gitlab'}
+            >
+              customs
+            </Tag>
+          </Box>
+
           <h2>更换图标的默认样式</h2>
           <div>
             <Box>
@@ -303,6 +332,19 @@ export class NormalCase extends React.Component<any, any> {
                 closable
                 onClose={this.onClose}
                 closeIcon="lugia-icon-reminder_close_circle_o"
+              >
+                customs
+              </Tag>
+            </Box>
+
+            <Box>
+              <Tag
+                onClick={this.onClick}
+                closable
+                onClose={this.onClose}
+                closeIcon="lugia-icon-reminder_close_circle_o"
+                preIcon={'lugia-icon-logo_twitter'}
+                suffixIcon={'lugia-icon-logo_gitlab'}
               >
                 customs
               </Tag>
@@ -358,6 +400,19 @@ export class NormalCase extends React.Component<any, any> {
               closable
             </Tag>
           </Box>
+
+          <Box>
+            <Tag
+              type="primary"
+              shape={'round'}
+              onClose={this.onClose}
+              preIcon={'lugia-icon-logo_twitter'}
+              suffixIcon={'lugia-icon-logo_gitlab'}
+            >
+              closable
+            </Tag>
+          </Box>
+
           <h2>主题配置</h2>
           <Box>
             <Tag theme={commonConfig} type="primary" closable onClose={this.onClose}>
@@ -398,6 +453,19 @@ export class NormalCase extends React.Component<any, any> {
               closable
             </Tag>
           </Box>
+
+          <Box>
+            <Tag
+              type="basic"
+              shape={'round'}
+              onClose={this.onClose}
+              preIcon={'lugia-icon-logo_twitter'}
+              suffixIcon={'lugia-icon-logo_gitlab'}
+            >
+              closable
+            </Tag>
+          </Box>
+
           <h2>主题配置</h2>
 
           <Box>
@@ -446,6 +514,20 @@ export class NormalCase extends React.Component<any, any> {
             </Tag>
           </Box>
 
+          <Box>
+            <Tag
+              type="presets"
+              disabled
+              shape={'round'}
+              onClick={this.onClick}
+              onClose={this.onClose}
+              preIcon={'lugia-icon-logo_twitter'}
+              suffixIcon={'lugia-icon-logo_gitlab'}
+            >
+              closable
+            </Tag>
+          </Box>
+
           <h2>主题配置</h2>
 
           <Box>
@@ -465,6 +547,62 @@ export class NormalCase extends React.Component<any, any> {
               presets
             </Tag>
           </Box>
+        </div>
+
+        <h1>添加前后图标</h1>
+        <div>
+          <h2>默认样式</h2>
+          <Box>
+            <Tag preIcon={'lugia-icon-logo_twitter'} suffixIcon={'lugia-icon-logo_gitlab'} />
+          </Box>
+
+          <h2>主题配置</h2>
+          <div>
+            <Box>
+              <Theme
+                config={{
+                  [Widget.Tag]: {
+                    Container: {
+                      normal: {
+                        color: 'orange',
+                        padding: {
+                          left: 30,
+                          right: 30,
+                        },
+                        background: { color: 'gray' },
+                      },
+                    },
+                    TagText: {
+                      normal: {
+                        margin: {
+                          left: 30,
+                          right: 30,
+                        },
+                      },
+                    },
+                    PreIcon: {
+                      normal: {
+                        margin: {
+                          right: 30,
+                        },
+                        color: 'yellow',
+                      },
+                    },
+                    SuffixIcon: {
+                      normal: {
+                        margin: {
+                          left: 30,
+                        },
+                        color: 'yellow',
+                      },
+                    },
+                  },
+                }}
+              >
+                <Tag preIcon={'lugia-icon-logo_twitter'} suffixIcon={'lugia-icon-logo_gitlab'} />
+              </Theme>
+            </Box>
+          </div>
         </div>
       </div>
     );
