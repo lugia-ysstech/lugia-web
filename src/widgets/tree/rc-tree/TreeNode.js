@@ -754,10 +754,7 @@ class TreeNode extends React.Component {
           mutliple && this.onCheck(e);
           if (this.isSelectable()) {
             this.onSelect();
-            if (
-              (!props.describe && onlySelectLeaf) ||
-              (onlySelectLeaf && expandedState === 'close')
-            ) {
+            if (onlySelectLeaf && (!props.describe || expandedState === 'close')) {
               this.onExpand();
             }
           }
