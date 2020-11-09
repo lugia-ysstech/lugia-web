@@ -81,7 +81,6 @@ export const Group = CSSComponent({
   className: 'CheckboxGroup',
   css: css`
     ${getButtonCSS};
-    display: flex;
   `,
   normal: {
     selectNames: [

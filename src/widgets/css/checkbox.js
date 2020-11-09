@@ -79,7 +79,7 @@ const getStyleCSS = (props: CheckBoxType): string => {
     `;
   }
   return `
-    display: inline-block;
+    display: inline-flex;
     margin-right: ${last ? 0 : em(get('marginToDifferentElement'))};
   `;
 };
@@ -93,11 +93,11 @@ export const CheckBoxWrap = CSSComponent({
     box-sizing: border-box;
     padding: 0;
     list-style: none;
+    display: inline-block;
     line-height: 1;
+    white-space: nowrap;
     ${getStyleCSS};
-    display: flex;
     overflow: hidden;
-    align-items: center;
     text-overflow: ellipsis;
   `,
   normal: {
