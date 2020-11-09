@@ -10,7 +10,7 @@ import Widget from '../consts/index';
 import ThemeHoc from '@lugia/theme-hoc';
 import Icon from '../icon';
 import { deepMerge } from '@lugia/object-utils';
-import { TagWrap, OptionalWrap, ItemText, FlexBox, fontSize } from '../css/tag';
+import { TagWrap, OptionalWrap, ItemText, FlexBox, fontSize, paddingToText } from '../css/tag';
 
 type shapeType = 'basic' | 'round';
 type styleType = 'customs' | 'primary' | 'basic' | 'presets' | 'optional';
@@ -28,6 +28,8 @@ type TagProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   closeIcon: string,
+  preIcon: string,
+  suffixIcon: string,
 };
 
 type TagState = {
@@ -83,6 +85,9 @@ class Tag extends React.Component<TagProps, TagState> {
       shape,
       closable = false,
       closeIcon = 'lugia-icon-reminder_close',
+      preIcon = '',
+      suffixIcon = '',
+      getPartOfThemeHocProps,
     } = this.props;
 
     const params = {
@@ -96,24 +101,47 @@ class Tag extends React.Component<TagProps, TagState> {
     const themeProps =
       type === 'optional' && checked
         ? getPartOfThemeProps('CheckedTagWrap', { props: params })
-        : getPartOfThemeProps('TagWrap', { props: params });
-
+        : getPartOfThemeProps('Container', { props: params });
+    const { viewClass: preIconViewClass, theme: preTheme } = getPartOfThemeHocProps('PreIcon');
+    const { viewClass: SuffixIconViewClass, theme: SuffixIconTheme } = getPartOfThemeHocProps(
+      'SuffixIcon'
+    );
+    const tagText = getPartOfThemeProps('TagText');
     const value = this.getValue();
     return type === 'optional' ? (
       <OptionalWrap onClick={this.onClick} themeProps={themeProps}>
         <FlexBox>
-          <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
+          <Icon
+            {...this.getIconTheme(preIconViewClass, preTheme, false)}
+            singleTheme
+            iconClass={preIcon}
+          />
+          <ItemText themeProps={tagText} ref={cmp => (this.itemText = cmp)} type={type}>
             {value}
           </ItemText>
+          <Icon
+            {...this.getIconTheme(SuffixIconViewClass, SuffixIconTheme, true)}
+            singleTheme
+            iconClass={suffixIcon}
+          />
         </FlexBox>
       </OptionalWrap>
     ) : (
       <TagWrap onClick={this.onClick} themeProps={themeProps}>
         <FlexBox>
-          <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
+          <Icon
+            {...this.getIconTheme(preIconViewClass, preTheme, false)}
+            singleTheme
+            iconClass={preIcon}
+          />
+          <ItemText themeProps={tagText} ref={cmp => (this.itemText = cmp)} type={type}>
             {value}
           </ItemText>
-
+          <Icon
+            {...this.getIconTheme(SuffixIconViewClass, SuffixIconTheme, true)}
+            singleTheme
+            iconClass={suffixIcon}
+          />
           {closable ? (
             <Icon
               {...this.getCloseTheme('CloseButton')}
@@ -163,7 +191,29 @@ class Tag extends React.Component<TagProps, TagState> {
       theme: iconTheme,
     };
   };
+  getIconTheme = (viewClass, iconTheme, isSuffix) => {
+    const iconMergeTheme = deepMerge(
+      {
+        [viewClass]: {
+          normal: {
+            ...this.getIconStyle(isSuffix),
+          },
+        },
+      },
+      iconTheme
+    );
+    return {
+      viewClass,
+      theme: iconMergeTheme,
+    };
+  };
 
+  getIconStyle = isSuffix => {
+    if (isSuffix) {
+      return { margin: { left: paddingToText } };
+    }
+    return { margin: { right: paddingToText } };
+  };
   onCloseClick(e) {
     e.stopPropagation();
 
