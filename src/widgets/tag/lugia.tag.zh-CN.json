@@ -28,6 +28,16 @@
       "type": "icon",
       "desc": "标签图标样式",
       "propsDefaultValue": "lugia-icon-reminder_close"
+    },
+    "preIcon": {
+      "type": "icon",
+      "desc": "标签前缀图标样式",
+      "propsDefaultValue": ""
+    },
+    "suffixIcon": {
+      "type": "icon",
+      "desc": "标签后缀图标样式",
+      "propsDefaultValue": ""
     }
   },
   "events": {
@@ -79,31 +89,21 @@
         "closable": true
       },
       "theme": {
-        "TagWrap": {
+        "Container": {
           "name": "标签区域",
           "desc": "标签内的样式配置",
           "normal": [
-            ["color"],
             ["background"],
             ["border"],
-            ["borderRadius"],
             ["width"],
             ["height"],
             ["boxShadow"],
             ["opacity"],
-            ["font"],
             ["margin"],
-            ["padding"]
+            ["padding"],
+            ["borderRadius"]
           ],
-          "hover": [
-            ["color"],
-            ["background"],
-            ["borderRadius"],
-            ["border"],
-            ["boxShadow"],
-            ["opacity"],
-            ["font"]
-          ],
+          "hover": [["background"], ["borderRadius"], ["border"], ["boxShadow"], ["opacity"]],
           "active": [],
           "disabled": []
         },
@@ -113,6 +113,30 @@
           "desc": "关闭按钮的样式配置",
           "normal": [["font"], ["color"], ["margin"]],
           "hover": [["font"], ["color"]],
+          "active": [],
+          "disabled": []
+        },
+        "TagText": {
+          "name": "标签文字",
+          "desc": "标签文字的样式配置",
+          "normal": [["font"], ["color"], ["fontSize"]],
+          "hover": [["font"], ["color"], ["fontSize"]],
+          "active": [],
+          "disabled": []
+        },
+        "PreIcon": {
+          "name": "前缀图标",
+          "desc": "前缀图标的样式配置",
+          "normal": [["font"], ["color"], ["margin"], ["fontSize"]],
+          "hover": [["font"], ["color"], ["fontSize"]],
+          "active": [],
+          "disabled": []
+        },
+        "SuffixIcon": {
+          "name": "前缀图标",
+          "desc": "前缀图标的样式配置",
+          "normal": [["font"], ["color"], ["margin"], ["fontSize"]],
+          "hover": [["font"], ["color"], ["fontSize"]],
           "active": [],
           "disabled": []
         }
@@ -128,39 +152,32 @@
         "type": "optional"
       },
       "theme": {
-        "TagWrap": {
+        "Container": {
           "name": "标签区域",
           "desc": "标签内的样式配置",
           "normal": [
-            ["color"],
             ["background"],
             ["border"],
             ["width"],
             ["height"],
             ["boxShadow"],
-            ["borderRadius"],
             ["opacity"],
-            ["font"],
             ["margin"],
             ["padding"]
           ],
           "hover": [
-            ["color"],
             ["borderRadius"],
             ["background"],
             ["border"],
             ["boxShadow"],
-            ["opacity"],
-            ["font"]
+            ["opacity"]
           ],
           "active": [
-            ["color"],
             ["borderRadius"],
             ["background"],
             ["border"],
             ["boxShadow"],
-            ["opacity"],
-            ["font"]
+            ["opacity"]
           ],
           "disabled": []
         },
@@ -169,36 +186,54 @@
           "name": "选中标签区域",
           "desc": "选中后的标签内的样式配置",
           "normal": [
-            ["color"],
             ["background"],
             ["border"],
             ["width"],
             ["height"],
             ["boxShadow"],
             ["opacity"],
-            ["font"],
             ["margin"],
             ["padding"],
             ["borderRadius"]
           ],
           "hover": [
-            ["color"],
             ["background"],
             ["border"],
             ["boxShadow"],
             ["opacity"],
-            ["font"],
             ["borderRadius"]
           ],
           "active": [
-            ["color"],
             ["background"],
             ["border"],
             ["boxShadow"],
             ["opacity"],
-            ["font"],
             ["borderRadius"]
           ],
+          "disabled": []
+        },
+        "TagText": {
+          "name": "标签文字",
+          "desc": "标签文字的样式配置",
+          "normal": [["font"], ["color"], ["fontSize"]],
+          "hover": [["font"], ["color"], ["fontSize"]],
+          "active": [],
+          "disabled": []
+        },
+        "PreIcon": {
+          "name": "前缀图标",
+          "desc": "前缀图标的样式配置",
+          "normal": [["font"], ["color"], ["margin"], ["fontSize"]],
+          "hover": [["font"], ["color"], ["fontSize"]],
+          "active": [],
+          "disabled": []
+        },
+        "SuffixIcon": {
+          "name": "前缀图标",
+          "desc": "前缀图标的样式配置",
+          "normal": [["font"], ["color"], ["margin"], ["fontSize"]],
+          "hover": [["font"], ["color"], ["fontSize"]],
+          "active": [],
           "disabled": []
         }
       }
@@ -206,30 +241,26 @@
   },
 
   "theme": {
-    "TagWrap": {
+    "Container": {
       "name": "标签区域",
       "desc": "标签内的样式配置",
       "normal": [
-        ["color"],
         ["background"],
         ["border"],
         ["width"],
         ["height"],
         ["boxShadow"],
         ["opacity"],
-        ["font"],
         ["margin"],
         ["padding"],
         ["borderRadius"]
       ],
       "hover": [
-        ["color"],
         ["borderRadius"],
         ["background"],
         ["border"],
         ["boxShadow"],
-        ["opacity"],
-        ["font"]
+        ["opacity"]
       ],
       "active": [],
       "disabled": []
@@ -239,6 +270,30 @@
       "desc": "关闭按钮的样式配置",
       "normal": [["font"], ["color"], ["margin"]],
       "hover": [["font"], ["color"]],
+      "active": [],
+      "disabled": []
+    },
+    "TagText": {
+      "name": "标签文字",
+      "desc": "标签文字的样式配置",
+      "normal": [["font"], ["color"], ["fontSize"]],
+      "hover": [["font"], ["color"], ["fontSize"]],
+      "active": [],
+      "disabled": []
+    },
+    "PreIcon": {
+      "name": "前缀图标",
+      "desc": "前缀图标的样式配置",
+      "normal": [["font"], ["color"], ["margin"], ["fontSize"]],
+      "hover": [["font"], ["color"], ["fontSize"]],
+      "active": [],
+      "disabled": []
+    },
+    "SuffixIcon": {
+      "name": "前缀图标",
+      "desc": "前缀图标的样式配置",
+      "normal": [["font"], ["color"], ["margin"], ["fontSize"]],
+      "hover": [["font"], ["color"], ["fontSize"]],
       "active": [],
       "disabled": []
     }
