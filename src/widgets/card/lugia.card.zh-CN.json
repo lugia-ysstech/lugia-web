@@ -94,6 +94,10 @@
       {
         "value": "transparent",
         "text": "空白盒子"
+      },
+      {
+        "value": "responsive",
+        "text": "响应式盒子"
       }
     ],
     "ImageOrientation": [
@@ -516,12 +520,12 @@
       }
     },
     "ResponsiveCard": {
-      "sequence": 6,
+      "sequence": 7,
       "title": "响应式盒子",
       "desc": "响应式盒子样式",
       "tag": "card 卡片 响应式盒子 父容器 父卡片",
       "props": {
-        "type": "Responsive"
+        "type": "responsive"
       },
       "theme": {
         "Container": {

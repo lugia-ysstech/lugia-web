@@ -234,18 +234,10 @@ export const ComboDemo = () => {
           <Card viewClass={'price'} type={'combo'} content={<AmountCard />} />
         </Wrapper>
       </Theme>
-      <p>测试空白盒子的height和overflow</p>
-      <Theme config={TransparentCard}>
-        <Card type={'transparent'} height={'50vh'} overflow={'auto'}>
-          <div>
-            <AmountCard />
-            <AmountCard />
-            <AmountCard />
-            <AmountCard />
-            <AmountCard />
-          </div>
-        </Card>
-      </Theme>
+      <p>响应式盒子</p>
+      <Wrapper>
+        <Card type={'responsive'}>sdfdsfsdfsd</Card>
+      </Wrapper>
     </div>
   );
 };
