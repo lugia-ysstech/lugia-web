@@ -59,14 +59,6 @@
       "type": "boolean",
       "desc": "当选择标题提示风格时,可配置是否显示标题下的分割线",
       "defaultValue": false
-    },
-    "height": {
-      "type": "number | string",
-      "desc": "卡片的高度"
-    },
-    "overflow": {
-      "type": "string",
-      "desc": "定义溢出元素内容区的内容会如何处理"
     }
   },
   "type": {
