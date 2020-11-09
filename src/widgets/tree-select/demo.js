@@ -319,7 +319,7 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
           pathSeparator={'/'}
           data={info}
           translateTreeData
-          onlySelectLeaf
+          onlySelectLeaf={false}
           onSelect={obj => {
             console.log('onSelect=====>', obj);
           }}
