@@ -1,78 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CheckBox CheckBoxGroup CSS 1`] = `
-.c23 {
+.c22 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-}
-
-.c11 {
-  font-size: 1.4rem;
-  cursor: pointer;
-  box-sizing: border-box;
-  padding: 0;
-  list-style: none;
-  line-height: 1;
-  display: block;
-  margin-bottom: 1.2rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-overflow: ellipsis;
-  opacity: 1;
-}
-
-.c2 {
-  font-size: 1.4rem;
-  cursor: not-allowed;
-  box-sizing: border-box;
-  padding: 0;
-  list-style: none;
-  line-height: 1;
-  display: inline-block;
-  margin-right: 2.4rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-overflow: ellipsis;
-  opacity: 1;
-}
-
-.c7 {
-  font-size: 1.4rem;
-  cursor: pointer;
-  box-sizing: border-box;
-  padding: 0;
-  list-style: none;
-  line-height: 1;
-  display: inline-block;
-  margin-right: 2.4rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-overflow: ellipsis;
-  opacity: 1;
 }
 
 .c10 {
@@ -81,45 +15,90 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   box-sizing: border-box;
   padding: 0;
   list-style: none;
-  line-height: 1;
   display: inline-block;
-  margin-right: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  line-height: 1;
+  white-space: nowrap;
+  display: block;
+  margin-bottom: 1.2rem;
   overflow: hidden;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   text-overflow: ellipsis;
   opacity: 1;
 }
 
-.c13 {
+.c1 {
+  font-size: 1.4rem;
+  cursor: not-allowed;
+  box-sizing: border-box;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-right: 2.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 1;
+}
+
+.c6 {
   font-size: 1.4rem;
   cursor: pointer;
   box-sizing: border-box;
   padding: 0;
   list-style: none;
+  display: inline-block;
   line-height: 1;
-  display: block;
-  margin-bottom: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  white-space: nowrap;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-right: 2.4rem;
   overflow: hidden;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   text-overflow: ellipsis;
   opacity: 1;
 }
 
-.c3 {
+.c9 {
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 1;
+}
+
+.c12 {
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  display: block;
+  margin-bottom: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 1;
+}
+
+.c2 {
   margin: 0;
   outline: none;
   line-height: 1;
@@ -128,14 +107,14 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   position: relative;
 }
 
-.c6 {
+.c5 {
   padding-left: 0.8rem;
   vertical-align: middle;
   color: #363B40;
   font-size: 1.4rem;
 }
 
-.c8 {
+.c7 {
   position: absolute;
   left: 0;
   z-index: 1;
@@ -148,7 +127,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   height: 100%;
 }
 
-.c4 {
+.c3 {
   position: absolute;
   left: 0;
   z-index: 1;
@@ -161,7 +140,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   height: 100%;
 }
 
-.c12 {
+.c11 {
   position: relative;
   box-sizing: border-box;
   top: 0;
@@ -173,7 +152,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   height: 1.6rem;
 }
 
-.c12::after {
+.c11::after {
   position: absolute;
   box-sizing: border-box;
   -webkit-transform: translate(-50%,-50%) rotate(45deg) scale(1);
@@ -192,7 +171,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   content: ' ';
 }
 
-.c9 {
+.c8 {
   position: relative;
   box-sizing: border-box;
   top: 0;
@@ -204,7 +183,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   height: 1.6rem;
 }
 
-.c5 {
+.c4 {
   position: relative;
   box-sizing: border-box;
   top: 0;
@@ -216,7 +195,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   height: 1.6rem;
 }
 
-.c5::after {
+.c4::after {
   position: absolute;
   box-sizing: border-box;
   -webkit-transform: translate(-50%,-50%) rotate(45deg) scale(1);
@@ -235,7 +214,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   content: ' ';
 }
 
-.c15 {
+.c14 {
   position: relative;
   display: inline-block;
   outline: none;
@@ -243,11 +222,46 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   transition: all 0.3s;
 }
 
-.c16 {
+.c15 {
   opacity: 0;
   outline: none;
   position: absolute;
   z-index: -1;
+}
+
+.c16 {
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  text-align: center;
+  margin: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  border-left: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 3.2rem;
+  line-height: 3rem;
+  font-size: 1.4rem;
+  color: #646A6E;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #d0d3da;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #d0d3da;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #d0d3da;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c17 {
@@ -283,9 +297,10 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   padding-bottom: 0rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  line-height: 3rem;
 }
 
-.c18 {
+.c19 {
   display: inline-block;
   box-sizing: border-box;
   white-space: nowrap;
@@ -321,43 +336,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   line-height: 3rem;
 }
 
-.c20 {
-  display: inline-block;
-  box-sizing: border-box;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  text-align: center;
-  margin: 0;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  border-left: 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  height: 3.2rem;
-  line-height: 3rem;
-  font-size: 1.4rem;
-  color: #646A6E;
-  background-color: #fff;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #d0d3da;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #d0d3da;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #d0d3da;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  line-height: 3rem;
-}
-
-.c24 {
+.c23 {
   display: inline-block;
   box-sizing: border-box;
   white-space: nowrap;
@@ -393,7 +372,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   line-height: 5rem;
 }
 
-.c26 {
+.c25 {
   display: inline-block;
   box-sizing: border-box;
   white-space: nowrap;
@@ -428,7 +407,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   padding-right: 1rem;
 }
 
-.c21 {
+.c20 {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -451,68 +430,40 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   z-index: -2;
 }
 
-.c22 {
+.c21 {
   vertical-align: text-bottom !important;
   font-size: 1.4rem!important;
   color: #646A6E;
 }
 
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c14 > label:first-child > span {
+.c13 > label:first-child > span {
   border-left: 1px solid #4d63ff;
   border-radius: 0.4rem 0 0 0.4rem;
 }
 
-.c14 > label:last-child > span {
+.c13 > label:last-child > span {
   border-radius: 0 0.4rem 0.4rem 0;
 }
 
-.c19 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c19 > label:first-child > span {
+.c18 > label:first-child > span {
   border-left: 1px solid #c0c8ff;
   border-radius: 0.4rem 0 0 0.4rem;
 }
 
-.c19 > label:first-child > span > span {
+.c18 > label:first-child > span > span {
   border-radius: 0.4rem 0 0 0.4rem;
 }
 
-.c19 > label:last-child > span {
+.c18 > label:last-child > span {
   border-radius: 0 0.4rem 0.4rem 0;
 }
 
-.c25 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c25 > label:first-child > span {
+.c24 > label:first-child > span {
   border-left: 1px solid #ebecf0;
   border-radius: 0.4rem 0 0 0.4rem;
 }
 
-.c25 > label:last-child > span {
+.c24 > label:last-child > span {
   border-radius: 0 0.4rem 0.4rem 0;
 }
 
@@ -525,11 +476,11 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
     className="c0"
   >
     <div
-      className="c1"
+      className=""
       style={Object {}}
     >
       <label
-        className="c2"
+        className="c1"
         disabled={true}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -544,18 +495,18 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="CheckBox1"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c4"
+            className="c3"
             disabled={true}
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={true}
-            className="c5"
+            className="c4"
             disabled={true}
             style={
               Object {
@@ -581,7 +532,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={
             Object {
               "color": "#d0d3da",
@@ -592,7 +543,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         </span>
       </label>
       <label
-        className="c7"
+        className="c6"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -602,17 +553,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="CheckBox2"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={false}
-            className="c9"
+            className="c8"
             style={
               Object {
                 "backgroundColor": "#ffffff",
@@ -637,14 +588,14 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={Object {}}
         >
           CheckBox2
         </span>
       </label>
       <label
-        className="c10"
+        className="c9"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -654,17 +605,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="CheckBox3"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={false}
-            className="c9"
+            className="c8"
             style={
               Object {
                 "backgroundColor": "#ffffff",
@@ -689,7 +640,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={Object {}}
         >
           CheckBox3
@@ -701,11 +652,11 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
     className="c0"
   >
     <div
-      className="c1"
+      className=""
       style={Object {}}
     >
       <label
-        className="c2"
+        className="c1"
         disabled={true}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -720,18 +671,18 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="CheckBox1"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c4"
+            className="c3"
             disabled={true}
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={false}
-            className="c9"
+            className="c8"
             disabled={true}
             style={
               Object {
@@ -757,7 +708,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={
             Object {
               "color": "#d0d3da",
@@ -768,7 +719,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         </span>
       </label>
       <label
-        className="c7"
+        className="c6"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -778,17 +729,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="CheckBox2"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={false}
-            className="c9"
+            className="c8"
             style={
               Object {
                 "backgroundColor": "#ffffff",
@@ -813,14 +764,14 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={Object {}}
         >
           CheckBox2
         </span>
       </label>
       <label
-        className="c10"
+        className="c9"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -830,17 +781,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="CheckBox3"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={false}
-            className="c9"
+            className="c8"
             style={
               Object {
                 "backgroundColor": "#ffffff",
@@ -865,7 +816,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={Object {}}
         >
           CheckBox3
@@ -880,7 +831,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       themes
     </p>
     <div
-      className="c1"
+      className=""
       style={
         Object {
           "backgroundColor": "orange",
@@ -915,7 +866,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       }
     >
       <label
-        className="c11"
+        className="c10"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -939,17 +890,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="check1"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={true}
-            className="c12"
+            className="c11"
             style={
               Object {
                 "backgroundColor": "#56c22d",
@@ -974,7 +925,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={
             Object {
               "color": "red",
@@ -985,7 +936,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         </span>
       </label>
       <label
-        className="c11"
+        className="c10"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -1009,17 +960,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="check2"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={false}
-            className="c9"
+            className="c8"
             style={
               Object {
                 "backgroundColor": "yellow",
@@ -1044,7 +995,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={
             Object {
               "color": "red",
@@ -1055,7 +1006,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         </span>
       </label>
       <label
-        className="c13"
+        className="c12"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -1079,17 +1030,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="check3"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={false}
-            className="c9"
+            className="c8"
             style={
               Object {
                 "backgroundColor": "yellow",
@@ -1114,7 +1065,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={
             Object {
               "color": "red",
@@ -1130,11 +1081,11 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
     className="c0"
   >
     <div
-      className="c1"
+      className=""
       style={Object {}}
     >
       <label
-        className="c11"
+        className="c10"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -1144,17 +1095,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="check5"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={[Function]}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={true}
-            className="c12"
+            className="c11"
             style={
               Object {
                 "backgroundColor": "#c0c8ff",
@@ -1179,7 +1130,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={
             Object {
               "color": "#646A6E",
@@ -1190,7 +1141,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         </span>
       </label>
       <label
-        className="c11"
+        className="c10"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -1200,17 +1151,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="check1"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={true}
-            className="c12"
+            className="c11"
             style={
               Object {
                 "backgroundColor": "#4d63ff",
@@ -1235,14 +1186,14 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={Object {}}
         >
           check1
         </span>
       </label>
       <label
-        className="c11"
+        className="c10"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -1252,17 +1203,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="check2"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={false}
-            className="c9"
+            className="c8"
             style={
               Object {
                 "backgroundColor": "#ffffff",
@@ -1287,14 +1238,14 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={Object {}}
         >
           check2
         </span>
       </label>
       <label
-        className="c11"
+        className="c10"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -1304,17 +1255,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="check3"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={false}
-            className="c9"
+            className="c8"
             style={
               Object {
                 "backgroundColor": "#ffffff",
@@ -1339,7 +1290,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={Object {}}
         >
           check3
@@ -1351,11 +1302,11 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
     className="c0"
   >
     <div
-      className="c1"
+      className=""
       style={Object {}}
     >
       <label
-        className="c11"
+        className="c10"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -1365,17 +1316,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="check5"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={[Function]}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={true}
-            className="c12"
+            className="c11"
             style={
               Object {
                 "backgroundColor": "#c0c8ff",
@@ -1400,7 +1351,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={
             Object {
               "color": "#646A6E",
@@ -1411,7 +1362,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         </span>
       </label>
       <label
-        className="c11"
+        className="c10"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -1421,17 +1372,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="check1"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={true}
-            className="c12"
+            className="c11"
             style={
               Object {
                 "backgroundColor": "#4d63ff",
@@ -1456,14 +1407,14 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={Object {}}
         >
           check1
         </span>
       </label>
       <label
-        className="c11"
+        className="c10"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -1473,17 +1424,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="check2"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={false}
-            className="c9"
+            className="c8"
             style={
               Object {
                 "backgroundColor": "#ffffff",
@@ -1508,14 +1459,14 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={Object {}}
         >
           check2
         </span>
       </label>
       <label
-        className="c11"
+        className="c10"
         onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -1525,17 +1476,17 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         title="check3"
       >
         <span
-          className="c3"
+          className="c2"
           onClick={null}
         >
           <input
-            className="c8"
+            className="c7"
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={false}
-            className="c9"
+            className="c8"
             style={
               Object {
                 "backgroundColor": "#ffffff",
@@ -1560,7 +1511,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           />
         </span>
         <span
-          className="c6"
+          className="c5"
           style={Object {}}
         >
           check3
@@ -1572,25 +1523,25 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
     className="c0"
   >
     <div
-      className="c14"
+      className="c13"
       style={Object {}}
     >
       <label
         checked={true}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={true}
-          className="c17"
+          className="c16"
           onClick={[Function]}
           style={
             Object {
@@ -1618,20 +1569,20 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={true}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={true}
-          className="c17"
+          className="c16"
           onClick={[Function]}
           style={
             Object {
@@ -1659,20 +1610,20 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={false}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={false}
-          className="c17"
+          className="c16"
           onClick={[Function]}
           style={
             Object {
@@ -1704,25 +1655,25 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
     className="c0"
   >
     <div
-      className="c14"
+      className="c13"
       style={Object {}}
     >
       <label
         checked={true}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={true}
-          className="c18"
+          className="c17"
           onClick={[Function]}
           style={
             Object {
@@ -1756,20 +1707,20 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={true}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={true}
-          className="c18"
+          className="c17"
           onClick={[Function]}
           style={
             Object {
@@ -1800,20 +1751,20 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={false}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={false}
-          className="c18"
+          className="c17"
           onClick={[Function]}
           style={
             Object {
@@ -1848,12 +1799,12 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
     className="c0"
   >
     <div
-      className="c19"
+      className="c18"
       style={Object {}}
     >
       <label
         checked={true}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -1861,13 +1812,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={true}
-          className="c20"
+          className="c19"
           onClick={[Function]}
           size="default"
           style={
@@ -1899,11 +1850,11 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         >
           check5
           <span
-            className="c21"
+            className="c20"
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close c22  c23"
+              className="lugia-icon-reminder_close c21  c22"
               onClick={[Function]}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
@@ -1916,7 +1867,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={true}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -1924,13 +1875,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={true}
-          className="c18"
+          className="c17"
           onClick={[Function]}
           size="default"
           style={
@@ -1962,7 +1913,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={false}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -1970,13 +1921,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={false}
-          className="c18"
+          className="c17"
           onClick={[Function]}
           size="default"
           style={
@@ -2008,7 +1959,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={false}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -2016,13 +1967,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={false}
-          className="c18"
+          className="c17"
           onClick={[Function]}
           size="default"
           style={
@@ -2058,12 +2009,12 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
     className="c0"
   >
     <div
-      className="c19"
+      className="c18"
       style={Object {}}
     >
       <label
         checked={true}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -2071,13 +2022,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={true}
-          className="c20"
+          className="c19"
           onClick={[Function]}
           size="default"
           style={
@@ -2109,11 +2060,11 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         >
           check5
           <span
-            className="c21"
+            className="c20"
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close c22  c23"
+              className="lugia-icon-reminder_close c21  c22"
               onClick={[Function]}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
@@ -2126,7 +2077,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={true}
-        className="c15"
+        className="c14"
         disabled={true}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -2135,13 +2086,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={true}
-          className="c24"
+          className="c23"
           disabled={true}
           onClick={[Function]}
           size="default"
@@ -2174,7 +2125,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={false}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -2182,13 +2133,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={false}
-          className="c18"
+          className="c17"
           onClick={[Function]}
           size="default"
           style={
@@ -2220,7 +2171,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={false}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -2228,13 +2179,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={false}
-          className="c18"
+          className="c17"
           onClick={[Function]}
           size="default"
           style={
@@ -2270,12 +2221,12 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
     className="c0"
   >
     <div
-      className="c25"
+      className="c24"
       style={Object {}}
     >
       <label
         checked={false}
-        className="c15"
+        className="c14"
         disabled={true}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -2284,13 +2235,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={false}
-          className="c24"
+          className="c23"
           disabled={true}
           onClick={[Function]}
           size="default"
@@ -2323,7 +2274,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={true}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -2331,13 +2282,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={true}
-          className="c18"
+          className="c17"
           onClick={[Function]}
           size="default"
           style={
@@ -2369,7 +2320,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={false}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -2377,13 +2328,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={false}
-          className="c18"
+          className="c17"
           onClick={[Function]}
           size="default"
           style={
@@ -2419,12 +2370,12 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
     className="c0"
   >
     <div
-      className="c19"
+      className="c18"
       style={Object {}}
     >
       <label
         checked={true}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -2432,13 +2383,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={true}
-          className="c26"
+          className="c25"
           onClick={[Function]}
           size="default"
           style={
@@ -2467,11 +2418,11 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         >
           check5
           <span
-            className="c21"
+            className="c20"
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close c22  c23"
+              className="lugia-icon-reminder_close c21  c22"
               onClick={[Function]}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
@@ -2484,7 +2435,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={true}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -2492,13 +2443,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={true}
-          className="c17"
+          className="c16"
           onClick={[Function]}
           size="default"
           style={
@@ -2527,7 +2478,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={false}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -2535,13 +2486,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={false}
-          className="c17"
+          className="c16"
           onClick={[Function]}
           size="default"
           style={
@@ -2570,7 +2521,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
       </label>
       <label
         checked={false}
-        className="c15"
+        className="c14"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -2578,13 +2529,13 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         size="default"
       >
         <input
-          className="c16"
+          className="c15"
           onBlur={[Function]}
           type="radio"
         />
         <span
           checked={false}
-          className="c17"
+          className="c16"
           onClick={[Function]}
           size="default"
           style={
