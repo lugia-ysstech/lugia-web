@@ -497,5 +497,43 @@
         ]
       }
     ]
+  },
+  {
+    "widgetName": "Card",
+    "aliasName": "TransparentCard",
+    "title": "空白卡片",
+    "viewProps": [],
+    "data": [
+      {
+        "title": "卡片整体",
+        "iconClass": "cardbackground",
+        "data": [
+          {
+            "name": "卡片整体",
+            "path": ["Container"],
+            "description": { "appearancePart": { "text": "卡片整体", "desc": "卡片整体" } }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Card",
+    "aliasName": "ResponsiveCard",
+    "title": "响应式卡片",
+    "viewProps": [],
+    "data": [
+      {
+        "title": "卡片整体",
+        "iconClass": "cardbackground",
+        "data": [
+          {
+            "name": "卡片整体",
+            "path": ["Container"],
+            "description": { "appearancePart": { "text": "卡片整体", "desc": "卡片整体" } }
+          }
+        ]
+      }
+    ]
   }
 ]

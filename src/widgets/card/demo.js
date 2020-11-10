@@ -227,6 +227,10 @@ export const ComboDemo = () => {
           <Card viewClass={'price'} type={'combo'} content={<AmountCard />} />
         </Wrapper>
       </Theme>
+      <p>响应式盒子</p>
+      <Wrapper>
+        <Card type={'responsive'}>sdfdsfsdfsd</Card>
+      </Wrapper>
     </div>
   );
 };

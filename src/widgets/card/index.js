@@ -42,6 +42,15 @@ const getPositionCSS = (position: boolean) => {
   return positionCSS;
 };
 
+const ResponsiveContainer = StaticComponent({
+  tag: 'div',
+  className: 'ResponsiveContainer',
+  css: css`
+    width: 100%;
+    overflow: auto;
+  `,
+});
+
 const CardOutContainer = CSSComponent({
   tag: 'div',
   className: 'CardOutContainer',
@@ -79,7 +88,7 @@ const CardOutContainer = CSSComponent({
       const {
         propsConfig: { type },
       } = themeProps;
-      if (type === 'transparent') {
+      if (type === 'transparent' || type === 'responsive') {
         return {
           background: { color: 'transparent' },
           boxShadow: 'none',
@@ -492,6 +501,17 @@ class Card extends React.Component<CardProps, CardState> {
           })}
         >
           {children}
+        </CardOutContainer>
+      );
+    }
+    if (type === 'responsive') {
+      return (
+        <CardOutContainer
+          themeProps={this.props.getPartOfThemeProps('Container', {
+            props: { type },
+          })}
+        >
+          <ResponsiveContainer>{children}</ResponsiveContainer>
         </CardOutContainer>
       );
     }
