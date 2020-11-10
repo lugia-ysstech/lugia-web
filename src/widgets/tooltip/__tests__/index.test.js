@@ -2,8 +2,7 @@
 import React from 'react';
 import chai from 'chai';
 import 'jest-styled-components';
-
-import Tooltip from '.././index';
+import Tooltip from '../';
 import { TestDemo } from '../demo';
 import { createTestComponent } from '@lugia/react-test-utils';
 
