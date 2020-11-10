@@ -1,14 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tag Theme: type= basic, closable=false shape= round 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -33,7 +25,7 @@ exports[`Tag Theme: type= basic, closable=false shape= round 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -76,58 +68,18 @@ exports[`Tag Theme: type= basic, closable=false shape= round 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="basic"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag Theme: type= basic, shape= round 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -152,7 +104,7 @@ exports[`Tag Theme: type= basic, shape= round 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -195,58 +147,18 @@ exports[`Tag Theme: type= basic, shape= round 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="basic"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag Theme: type= customs, closable=false shape= round 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -272,7 +184,7 @@ exports[`Tag Theme: type= customs, closable=false shape= round 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -315,58 +227,18 @@ exports[`Tag Theme: type= customs, closable=false shape= round 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="customs"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag Theme: type= customs, shape= round 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -392,7 +264,7 @@ exports[`Tag Theme: type= customs, shape= round 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -435,58 +307,18 @@ exports[`Tag Theme: type= customs, shape= round 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="customs"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag Theme: type= presets, closable=false shape= round 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -512,7 +344,7 @@ exports[`Tag Theme: type= presets, closable=false shape= round 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -555,58 +387,18 @@ exports[`Tag Theme: type= presets, closable=false shape= round 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="presets"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag Theme: type= presets, shape= round 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -632,7 +424,7 @@ exports[`Tag Theme: type= presets, shape= round 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -675,58 +467,18 @@ exports[`Tag Theme: type= presets, shape= round 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="presets"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag Theme: type= primary, closable=false shape= round 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -752,7 +504,7 @@ exports[`Tag Theme: type= primary, closable=false shape= round 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -795,58 +547,18 @@ exports[`Tag Theme: type= primary, closable=false shape= round 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="primary"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag Theme: type= primary, shape= round 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -872,7 +584,7 @@ exports[`Tag Theme: type= primary, shape= round 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -915,58 +627,18 @@ exports[`Tag Theme: type= primary, shape= round 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="primary"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag default: type = basic 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -991,7 +663,7 @@ exports[`Tag default: type = basic 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1034,58 +706,18 @@ exports[`Tag default: type = basic 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="basic"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag default: type = basic, shape = round 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -1110,7 +742,7 @@ exports[`Tag default: type = basic, shape = round 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1153,58 +785,18 @@ exports[`Tag default: type = basic, shape = round 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="basic"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag default: type = customs 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -1230,7 +822,7 @@ exports[`Tag default: type = customs 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1273,58 +865,18 @@ exports[`Tag default: type = customs 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="customs"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag default: type = customs, shape = round 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -1350,7 +902,7 @@ exports[`Tag default: type = customs, shape = round 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1393,58 +945,18 @@ exports[`Tag default: type = customs, shape = round 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="customs"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag default: type = presets 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -1470,7 +982,7 @@ exports[`Tag default: type = presets 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1513,58 +1025,18 @@ exports[`Tag default: type = presets 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="presets"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag default: type = presets, shape = round 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -1590,7 +1062,7 @@ exports[`Tag default: type = presets, shape = round 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1633,58 +1105,18 @@ exports[`Tag default: type = presets, shape = round 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="presets"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag default: type = primary 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -1710,7 +1142,7 @@ exports[`Tag default: type = primary 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1753,58 +1185,18 @@ exports[`Tag default: type = primary 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="primary"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;
 
 exports[`Tag default: type = primary, shape = round 1`] = `
-.c2 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 2rem;
@@ -1830,7 +1222,7 @@ exports[`Tag default: type = primary, shape = round 1`] = `
   transform: scale(1,1);
 }
 
-.c3 {
+.c2 {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1873,45 +1265,13 @@ exports[`Tag default: type = primary, shape = round 1`] = `
   <div
     className="c1"
   >
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0rem",
-          "marginRight": "0.6rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
     <span
-      className="c3"
+      className="c2"
       style={Object {}}
       type="primary"
     >
       Tag
     </span>
-    <i
-      className="   c2"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "marginBottom": "0rem",
-          "marginLeft": "0.6rem",
-          "marginRight": "0rem",
-          "marginTop": "0rem",
-        }
-      }
-    />
   </div>
 </div>
 `;

@@ -85,8 +85,8 @@ class Tag extends React.Component<TagProps, TagState> {
       shape,
       closable = false,
       closeIcon = 'lugia-icon-reminder_close',
-      prefixIcon = '',
-      suffixIcon = '',
+      prefixIcon,
+      suffixIcon,
       getPartOfThemeHocProps,
     } = this.props;
 
@@ -109,40 +109,42 @@ class Tag extends React.Component<TagProps, TagState> {
       'SuffixIcon'
     );
     const value = this.getValue();
+    const getPrefixIcon = () => {
+      return (
+        <Icon
+          {...this.getIconTheme(prefixIconViewClass, preTheme, false)}
+          singleTheme
+          iconClass={prefixIcon}
+        />
+      );
+    };
+    const getSuffixIcon = () => {
+      return (
+        <Icon
+          {...this.getIconTheme(SuffixIconViewClass, SuffixIconTheme, true)}
+          singleTheme
+          iconClass={suffixIcon}
+        />
+      );
+    };
     return type === 'optional' ? (
       <OptionalWrap onClick={this.onClick} themeProps={themeProps}>
         <FlexBox>
-          <Icon
-            {...this.getIconTheme(prefixIconViewClass, preTheme, false)}
-            singleTheme
-            iconClass={prefixIcon}
-          />
+          {prefixIcon ? getPrefixIcon() : null}
           <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
             {value}
           </ItemText>
-          <Icon
-            {...this.getIconTheme(SuffixIconViewClass, SuffixIconTheme, true)}
-            singleTheme
-            iconClass={suffixIcon}
-          />
+          {suffixIcon ? getSuffixIcon() : null}
         </FlexBox>
       </OptionalWrap>
     ) : (
       <TagWrap onClick={this.onClick} themeProps={themeProps}>
         <FlexBox>
-          <Icon
-            {...this.getIconTheme(prefixIconViewClass, preTheme, false)}
-            singleTheme
-            iconClass={prefixIcon}
-          />
+          {prefixIcon ? getPrefixIcon() : null}
           <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
             {value}
           </ItemText>
-          <Icon
-            {...this.getIconTheme(SuffixIconViewClass, SuffixIconTheme, true)}
-            singleTheme
-            iconClass={suffixIcon}
-          />
+          {suffixIcon ? getSuffixIcon() : null}
           {closable ? (
             <Icon
               {...this.getCloseTheme('CloseButton')}
