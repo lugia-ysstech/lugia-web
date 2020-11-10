@@ -13,19 +13,14 @@
             "path": ["Container"],
             "props": [{ "name": "text", "typeInTheme": "text" }],
             "description": {
-              "appearancePart": { "text": "外观", "desc": "标签区域外观配置" }
+              "appearancePart": { "text": "外观", "desc": "标签区域外观配置" },
+              "textPart": { "text": "文本", "desc": "标签文本配置" }
             }
           },
           {
-            "name": "标签文字样式",
-            "path": ["TagText"],
-            "props": [{ "name": "text", "typeInTheme": "text" }],
-            "description": { "textPart": { "text": "文本配置", "desc": "文本配置区块的显示文本" } }
-          },
-          {
             "name": "前缀图标",
-            "path": ["PreIcon"],
-            "props": [{ "name": "preIcon", "typeInTheme": "icon" }],
+            "path": ["PrefixIcon"],
+            "props": [{ "name": "prefixIcon", "typeInTheme": "icon" }],
             "description": {
               "textPart": { "text": "前缀图标", "desc": "前缀图标文本配置" }
             }
@@ -59,7 +54,8 @@
             "path": ["Container"],
             "props": [{ "name": "text", "typeInTheme": "text" }],
             "description": {
-              "appearancePart": { "text": "外观", "desc": "标签区域外观配置" }
+              "appearancePart": { "text": "外观", "desc": "标签区域外观配置" },
+              "textPart": { "text": "文本", "desc": "标签文本配置" }
             }
           },
           {
@@ -72,15 +68,9 @@
             }
           },
           {
-            "name": "标签文字样式",
-            "path": ["TagText"],
-            "props": [{ "name": "text", "typeInTheme": "text" }],
-            "description": { "textPart": { "text": "文本配置", "desc": "文本配置区块的显示文本" } }
-          },
-          {
             "name": "前缀图标",
-            "path": ["PreIcon"],
-            "props": [{ "name": "preIcon", "typeInTheme": "icon" }],
+            "path": ["PrefixIcon"],
+            "props": [{ "name": "prefixIcon", "typeInTheme": "icon" }],
             "description": {
               "textPart": { "text": "前缀图标", "desc": "前缀图标文本配置" }
             }
@@ -124,19 +114,17 @@
               "spacingPart": {
                 "text": "margin/padding",
                 "desc": "未选中标签内外边距配置区"
+              },
+              "textPart": {
+                "text": "文本",
+                "desc": "未选中标签文本配置"
               }
             }
           },
           {
-            "name": "标签文字样式",
-            "path": ["TagText"],
-            "props": [{ "name": "text", "typeInTheme": "text" }],
-            "description": { "textPart": { "text": "文本配置", "desc": "文本配置区块的显示文本" } }
-          },
-          {
             "name": "前缀图标",
-            "path": ["PreIcon"],
-            "props": [{ "name": "preIcon", "typeInTheme": "icon" }],
+            "path": ["PrefixIcon"],
+            "props": [{ "name": "prefixIcon", "typeInTheme": "icon" }],
             "description": {
               "textPart": { "text": "前缀图标", "desc": "前缀图标文本配置" }
             }
