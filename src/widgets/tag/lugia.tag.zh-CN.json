@@ -31,13 +31,11 @@
     },
     "prefixIcon": {
       "type": "icon",
-      "desc": "标签前缀图标样式",
-      "propsDefaultValue": ""
+      "desc": "标签前缀图标样式"
     },
     "suffixIcon": {
       "type": "icon",
-      "desc": "标签后缀图标样式",
-      "propsDefaultValue": ""
+      "desc": "标签后缀图标样式"
     }
   },
   "events": {
