@@ -29,7 +29,7 @@
       "desc": "标签图标样式",
       "propsDefaultValue": "lugia-icon-reminder_close"
     },
-    "preIcon": {
+    "prefixIcon": {
       "type": "icon",
       "desc": "标签前缀图标样式",
       "propsDefaultValue": ""
@@ -101,9 +101,12 @@
             ["opacity"],
             ["margin"],
             ["padding"],
-            ["borderRadius"]
+            ["borderRadius"],
+            ["font"],
+            ["color"],
+            ["fontSize"]
           ],
-          "hover": [["background"], ["borderRadius"], ["border"], ["boxShadow"], ["opacity"]],
+          "hover": [["background"], ["borderRadius"], ["border"], ["boxShadow"], ["opacity"],["font"], ["color"], ["fontSize"]],
           "active": [],
           "disabled": []
         },
@@ -116,15 +119,7 @@
           "active": [],
           "disabled": []
         },
-        "TagText": {
-          "name": "标签文字",
-          "desc": "标签文字的样式配置",
-          "normal": [["font"], ["color"], ["fontSize"]],
-          "hover": [["font"], ["color"], ["fontSize"]],
-          "active": [],
-          "disabled": []
-        },
-        "PreIcon": {
+        "PrefixIcon": {
           "name": "前缀图标",
           "desc": "前缀图标的样式配置",
           "normal": [["font"], ["color"], ["margin"], ["fontSize"]],
@@ -163,21 +158,30 @@
             ["boxShadow"],
             ["opacity"],
             ["margin"],
-            ["padding"]
+            ["padding"],
+            ["font"],
+            ["color"],
+            ["fontSize"]
           ],
           "hover": [
             ["borderRadius"],
             ["background"],
             ["border"],
             ["boxShadow"],
-            ["opacity"]
+            ["opacity"],
+            ["font"],
+            ["color"],
+            ["fontSize"]
           ],
           "active": [
             ["borderRadius"],
             ["background"],
             ["border"],
             ["boxShadow"],
-            ["opacity"]
+            ["opacity"],
+            ["font"],
+            ["color"],
+            ["fontSize"]
           ],
           "disabled": []
         },
@@ -194,33 +198,34 @@
             ["opacity"],
             ["margin"],
             ["padding"],
-            ["borderRadius"]
+            ["borderRadius"],
+            ["font"],
+            ["color"],
+            ["fontSize"]
           ],
           "hover": [
             ["background"],
             ["border"],
             ["boxShadow"],
             ["opacity"],
-            ["borderRadius"]
+            ["borderRadius"],
+            ["font"],
+            ["color"],
+            ["fontSize"]
           ],
           "active": [
             ["background"],
             ["border"],
             ["boxShadow"],
             ["opacity"],
-            ["borderRadius"]
+            ["borderRadius"],
+            ["font"],
+            ["color"],
+            ["fontSize"]
           ],
           "disabled": []
         },
-        "TagText": {
-          "name": "标签文字",
-          "desc": "标签文字的样式配置",
-          "normal": [["font"], ["color"], ["fontSize"]],
-          "hover": [["font"], ["color"], ["fontSize"]],
-          "active": [],
-          "disabled": []
-        },
-        "PreIcon": {
+        "PrefixIcon": {
           "name": "前缀图标",
           "desc": "前缀图标的样式配置",
           "normal": [["font"], ["color"], ["margin"], ["fontSize"]],
@@ -253,14 +258,20 @@
         ["opacity"],
         ["margin"],
         ["padding"],
-        ["borderRadius"]
+        ["borderRadius"],
+        ["font"],
+        ["color"],
+        ["fontSize"]
       ],
       "hover": [
         ["borderRadius"],
         ["background"],
         ["border"],
         ["boxShadow"],
-        ["opacity"]
+        ["opacity"],
+        ["font"],
+        ["color"],
+        ["fontSize"]
       ],
       "active": [],
       "disabled": []
@@ -273,15 +284,7 @@
       "active": [],
       "disabled": []
     },
-    "TagText": {
-      "name": "标签文字",
-      "desc": "标签文字的样式配置",
-      "normal": [["font"], ["color"], ["fontSize"]],
-      "hover": [["font"], ["color"], ["fontSize"]],
-      "active": [],
-      "disabled": []
-    },
-    "PreIcon": {
+    "PrefixIcon": {
       "name": "前缀图标",
       "desc": "前缀图标的样式配置",
       "normal": [["font"], ["color"], ["margin"], ["fontSize"]],

@@ -246,7 +246,7 @@ export class NormalCase extends React.Component<any, any> {
               type="optional"
               onClick={this.onClick}
               onClose={this.onClose}
-              preIcon={'lugia-icon-logo_twitter'}
+              prefixIcon={'lugia-icon-logo_twitter'}
               suffixIcon={'lugia-icon-logo_gitlab'}
             >
               Optional
@@ -317,7 +317,7 @@ export class NormalCase extends React.Component<any, any> {
               closable={false}
               onClose={this.onClose}
               shape={'basic'}
-              preIcon={'lugia-icon-logo_twitter'}
+              prefixIcon={'lugia-icon-logo_twitter'}
               suffixIcon={'lugia-icon-logo_gitlab'}
             >
               customs
@@ -343,7 +343,7 @@ export class NormalCase extends React.Component<any, any> {
                 closable
                 onClose={this.onClose}
                 closeIcon="lugia-icon-reminder_close_circle_o"
-                preIcon={'lugia-icon-logo_twitter'}
+                prefixIcon={'lugia-icon-logo_twitter'}
                 suffixIcon={'lugia-icon-logo_gitlab'}
               >
                 customs
@@ -406,7 +406,7 @@ export class NormalCase extends React.Component<any, any> {
               type="primary"
               shape={'round'}
               onClose={this.onClose}
-              preIcon={'lugia-icon-logo_twitter'}
+              prefixIcon={'lugia-icon-logo_twitter'}
               suffixIcon={'lugia-icon-logo_gitlab'}
             >
               closable
@@ -459,7 +459,7 @@ export class NormalCase extends React.Component<any, any> {
               type="basic"
               shape={'round'}
               onClose={this.onClose}
-              preIcon={'lugia-icon-logo_twitter'}
+              prefixIcon={'lugia-icon-logo_twitter'}
               suffixIcon={'lugia-icon-logo_gitlab'}
             >
               closable
@@ -521,7 +521,7 @@ export class NormalCase extends React.Component<any, any> {
               shape={'round'}
               onClick={this.onClick}
               onClose={this.onClose}
-              preIcon={'lugia-icon-logo_twitter'}
+              prefixIcon={'lugia-icon-logo_twitter'}
               suffixIcon={'lugia-icon-logo_gitlab'}
             >
               closable
@@ -553,7 +553,7 @@ export class NormalCase extends React.Component<any, any> {
         <div>
           <h2>默认样式</h2>
           <Box>
-            <Tag preIcon={'lugia-icon-logo_twitter'} suffixIcon={'lugia-icon-logo_gitlab'} />
+            <Tag prefixIcon={'lugia-icon-logo_twitter'} suffixIcon={'lugia-icon-logo_gitlab'} />
           </Box>
 
           <h2>主题配置</h2>
@@ -572,15 +572,7 @@ export class NormalCase extends React.Component<any, any> {
                         background: { color: 'gray' },
                       },
                     },
-                    TagText: {
-                      normal: {
-                        margin: {
-                          left: 30,
-                          right: 30,
-                        },
-                      },
-                    },
-                    PreIcon: {
+                    PrefixIcon: {
                       normal: {
                         margin: {
                           right: 30,
@@ -599,7 +591,7 @@ export class NormalCase extends React.Component<any, any> {
                   },
                 }}
               >
-                <Tag preIcon={'lugia-icon-logo_twitter'} suffixIcon={'lugia-icon-logo_gitlab'} />
+                <Tag prefixIcon={'lugia-icon-logo_twitter'} suffixIcon={'lugia-icon-logo_gitlab'} />
               </Theme>
             </Box>
           </div>

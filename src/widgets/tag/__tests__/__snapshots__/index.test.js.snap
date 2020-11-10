@@ -67,7 +67,11 @@ exports[`Tag Theme: type= basic, closable=false shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -182,7 +186,11 @@ exports[`Tag Theme: type= basic, shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -298,7 +306,11 @@ exports[`Tag Theme: type= customs, closable=false shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -414,7 +426,11 @@ exports[`Tag Theme: type= customs, shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -530,7 +546,11 @@ exports[`Tag Theme: type= presets, closable=false shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -646,7 +666,11 @@ exports[`Tag Theme: type= presets, shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -762,7 +786,11 @@ exports[`Tag Theme: type= primary, closable=false shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -878,7 +906,11 @@ exports[`Tag Theme: type= primary, shape= round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -993,7 +1025,11 @@ exports[`Tag default: type = basic 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -1108,7 +1144,11 @@ exports[`Tag default: type = basic, shape = round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -1224,7 +1264,11 @@ exports[`Tag default: type = customs 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -1340,7 +1384,11 @@ exports[`Tag default: type = customs, shape = round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -1456,7 +1504,11 @@ exports[`Tag default: type = presets 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -1572,7 +1624,11 @@ exports[`Tag default: type = presets, shape = round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -1688,7 +1744,11 @@ exports[`Tag default: type = primary 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
@@ -1804,7 +1864,11 @@ exports[`Tag default: type = primary, shape = round 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "fontSize": "1.4rem",
+    }
+  }
 >
   <div
     className="c1"
