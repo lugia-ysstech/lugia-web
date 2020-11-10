@@ -537,33 +537,6 @@
           ]
         }
       }
-    },
-    "ResponsiveCard": {
-      "sequence": 7,
-      "title": "响应式盒子",
-      "desc": "响应式盒子样式",
-      "tag": "card 卡片 响应式盒子 父容器 父卡片",
-      "props": {
-        "type": "responsive"
-      },
-      "theme": {
-        "Container": {
-          "name": "卡片容器整体",
-          "desc": "配置卡片容器整体",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["boxShadow"],
-            ["border"],
-            ["margin"],
-            ["padding"],
-            ["boxShadow"],
-            ["opacity"],
-            ["borderRadius"]
-          ]
-        }
-      }
     }
   },
   "theme": {
