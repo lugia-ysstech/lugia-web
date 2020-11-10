@@ -28,7 +28,7 @@ type TagProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   closeIcon: string,
-  preIcon: string,
+  prefixIcon: string,
   suffixIcon: string,
 };
 
@@ -85,7 +85,7 @@ class Tag extends React.Component<TagProps, TagState> {
       shape,
       closable = false,
       closeIcon = 'lugia-icon-reminder_close',
-      preIcon = '',
+      prefixIcon = '',
       suffixIcon = '',
       getPartOfThemeHocProps,
     } = this.props;
@@ -102,21 +102,22 @@ class Tag extends React.Component<TagProps, TagState> {
       type === 'optional' && checked
         ? getPartOfThemeProps('CheckedTagWrap', { props: params })
         : getPartOfThemeProps('Container', { props: params });
-    const { viewClass: preIconViewClass, theme: preTheme } = getPartOfThemeHocProps('PreIcon');
+    const { viewClass: prefixIconViewClass, theme: preTheme } = getPartOfThemeHocProps(
+      'PrefixIcon'
+    );
     const { viewClass: SuffixIconViewClass, theme: SuffixIconTheme } = getPartOfThemeHocProps(
       'SuffixIcon'
     );
-    const tagText = getPartOfThemeProps('TagText');
     const value = this.getValue();
     return type === 'optional' ? (
       <OptionalWrap onClick={this.onClick} themeProps={themeProps}>
         <FlexBox>
           <Icon
-            {...this.getIconTheme(preIconViewClass, preTheme, false)}
+            {...this.getIconTheme(prefixIconViewClass, preTheme, false)}
             singleTheme
-            iconClass={preIcon}
+            iconClass={prefixIcon}
           />
-          <ItemText themeProps={tagText} ref={cmp => (this.itemText = cmp)} type={type}>
+          <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
             {value}
           </ItemText>
           <Icon
@@ -130,11 +131,11 @@ class Tag extends React.Component<TagProps, TagState> {
       <TagWrap onClick={this.onClick} themeProps={themeProps}>
         <FlexBox>
           <Icon
-            {...this.getIconTheme(preIconViewClass, preTheme, false)}
+            {...this.getIconTheme(prefixIconViewClass, preTheme, false)}
             singleTheme
-            iconClass={preIcon}
+            iconClass={prefixIcon}
           />
-          <ItemText themeProps={tagText} ref={cmp => (this.itemText = cmp)} type={type}>
+          <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
             {value}
           </ItemText>
           <Icon
@@ -191,7 +192,7 @@ class Tag extends React.Component<TagProps, TagState> {
       theme: iconTheme,
     };
   };
-  getIconTheme = (viewClass, iconTheme, isSuffix) => {
+  getIconTheme = (viewClass: string, iconTheme: Object, isSuffix: boolean) => {
     const iconMergeTheme = deepMerge(
       {
         [viewClass]: {
@@ -208,7 +209,7 @@ class Tag extends React.Component<TagProps, TagState> {
     };
   };
 
-  getIconStyle = isSuffix => {
+  getIconStyle = (isSuffix: boolean) => {
     if (isSuffix) {
       return { margin: { left: paddingToText } };
     }

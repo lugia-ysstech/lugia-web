@@ -200,6 +200,9 @@ export const TagWrap = CSSComponent({
       ['margin'],
       ['padding'],
       ['cursor'],
+      ['font'],
+      ['color'],
+      ['fontSize'],
     ],
     getThemeMeta() {
       return {
@@ -230,7 +233,16 @@ export const TagWrap = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
+    selectNames: [
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['opacity'],
+      ['font'],
+      ['color'],
+      ['fontSize'],
+    ],
     getStyle: (themeMeta, themeProps) => {
       const { themeConfig, propsConfig } = themeProps;
       const { normal = {}, hover = {} } = themeConfig;
@@ -265,10 +277,10 @@ export const ItemText = CSSComponent({
   tag: 'span',
   className: 'ItemText',
   normal: {
-    selectNames: [['color'], ['fontSize'], ['margin'], ['font']],
+    selectNames: [],
   },
   hover: {
-    selectNames: [['color'], ['fontSize'], ['margin'], ['font']],
+    selectNames: [],
   },
   active: {
     selectNames: [],
@@ -314,6 +326,9 @@ export const OptionalWrap = CSSComponent({
       ['margin'],
       ['padding'],
       ['cursor'],
+      ['font'],
+      ['color'],
+      ['fontSize'],
     ],
     getThemeMeta() {
       return {
@@ -346,7 +361,16 @@ export const OptionalWrap = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
+    selectNames: [
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['opacity'],
+      ['font'],
+      ['color'],
+      ['fontSize'],
+    ],
     getCSS: (themeMeta, themeProps) => {
       const { color: hoverColor } = themeMeta;
       const { propsConfig } = themeProps;
@@ -362,7 +386,16 @@ export const OptionalWrap = CSSComponent({
     },
   },
   active: {
-    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
+    selectNames: [
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['opacity'],
+      ['font'],
+      ['color'],
+      ['fontSize'],
+    ],
     getStyle: (themeMeta, themeProps) => {
       const { color: activeColor } = themeMeta;
       const color = activeColor ? activeColor : themeActiveColor;
