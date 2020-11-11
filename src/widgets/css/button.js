@@ -216,8 +216,8 @@ export const getClickCSS = (props: ButtonOutProps) => {
       border-radius: ${borderRadius};
     }
   `;
-  const { clicked } = props;
-  if (clicked) {
+  const { clicked, transition } = props;
+  if (clicked && transition) {
     return css`
       &::after {
         content: '';
