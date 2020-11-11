@@ -102,49 +102,32 @@ class Tag extends React.Component<TagProps, TagState> {
       type === 'optional' && checked
         ? getPartOfThemeProps('CheckedTagWrap', { props: params })
         : getPartOfThemeProps('Container', { props: params });
-    const { viewClass: prefixIconViewClass, theme: preTheme } = getPartOfThemeHocProps(
+    const { viewClass: prefixIconViewClass, theme: prefixTheme } = getPartOfThemeHocProps(
       'PrefixIcon'
     );
     const { viewClass: SuffixIconViewClass, theme: SuffixIconTheme } = getPartOfThemeHocProps(
       'SuffixIcon'
     );
     const value = this.getValue();
-    const getPrefixIcon = () => {
-      return (
-        <Icon
-          {...this.getIconTheme(prefixIconViewClass, preTheme, false)}
-          singleTheme
-          iconClass={prefixIcon}
-        />
-      );
-    };
-    const getSuffixIcon = () => {
-      return (
-        <Icon
-          {...this.getIconTheme(SuffixIconViewClass, SuffixIconTheme, true)}
-          singleTheme
-          iconClass={suffixIcon}
-        />
-      );
-    };
+
     return type === 'optional' ? (
       <OptionalWrap onClick={this.onClick} themeProps={themeProps}>
         <FlexBox>
-          {prefixIcon ? getPrefixIcon() : null}
+          {prefixIcon ? this.getPrefixIcon(prefixIcon, prefixIconViewClass, prefixTheme) : null}
           <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
             {value}
           </ItemText>
-          {suffixIcon ? getSuffixIcon() : null}
+          {suffixIcon ? this.getSuffixIcon(suffixIcon, SuffixIconViewClass, SuffixIconTheme) : null}
         </FlexBox>
       </OptionalWrap>
     ) : (
       <TagWrap onClick={this.onClick} themeProps={themeProps}>
         <FlexBox>
-          {prefixIcon ? getPrefixIcon() : null}
+          {prefixIcon ? this.getPrefixIcon(prefixIcon, prefixIconViewClass, prefixTheme) : null}
           <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
             {value}
           </ItemText>
-          {suffixIcon ? getSuffixIcon() : null}
+          {suffixIcon ? this.getSuffixIcon(suffixIcon, SuffixIconViewClass, SuffixIconTheme) : null}
           {closable ? (
             <Icon
               {...this.getCloseTheme('CloseButton')}
@@ -210,7 +193,24 @@ class Tag extends React.Component<TagProps, TagState> {
       theme: iconMergeTheme,
     };
   };
-
+  getPrefixIcon = (prefixIcon, prefixIconViewClass, prefixTheme) => {
+    return (
+      <Icon
+        {...this.getIconTheme(prefixIconViewClass, prefixTheme, false)}
+        singleTheme
+        iconClass={prefixIcon}
+      />
+    );
+  };
+  getSuffixIcon = (suffixIcon, SuffixIconViewClass, SuffixIconTheme) => {
+    return (
+      <Icon
+        {...this.getIconTheme(SuffixIconViewClass, SuffixIconTheme, true)}
+        singleTheme
+        iconClass={suffixIcon}
+      />
+    );
+  };
   getIconStyle = (isSuffix: boolean) => {
     if (isSuffix) {
       return { margin: { left: paddingToText } };
