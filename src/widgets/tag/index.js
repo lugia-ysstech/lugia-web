@@ -87,7 +87,6 @@ class Tag extends React.Component<TagProps, TagState> {
       closeIcon = 'lugia-icon-reminder_close',
       prefixIcon,
       suffixIcon,
-      getPartOfThemeHocProps,
     } = this.props;
 
     const params = {
@@ -102,32 +101,27 @@ class Tag extends React.Component<TagProps, TagState> {
       type === 'optional' && checked
         ? getPartOfThemeProps('CheckedTagWrap', { props: params })
         : getPartOfThemeProps('Container', { props: params });
-    const { viewClass: prefixIconViewClass, theme: prefixTheme } = getPartOfThemeHocProps(
-      'PrefixIcon'
-    );
-    const { viewClass: SuffixIconViewClass, theme: SuffixIconTheme } = getPartOfThemeHocProps(
-      'SuffixIcon'
-    );
+
     const value = this.getValue();
 
     return type === 'optional' ? (
       <OptionalWrap onClick={this.onClick} themeProps={themeProps}>
         <FlexBox>
-          {prefixIcon ? this.getPrefixIcon(prefixIcon, prefixIconViewClass, prefixTheme) : null}
+          {prefixIcon ? this.getIcon(prefixIcon, 'PrefixIcon', false) : null}
           <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
             {value}
           </ItemText>
-          {suffixIcon ? this.getSuffixIcon(suffixIcon, SuffixIconViewClass, SuffixIconTheme) : null}
+          {suffixIcon ? this.getIcon(suffixIcon, 'SuffixIcon', true) : null}
         </FlexBox>
       </OptionalWrap>
     ) : (
       <TagWrap onClick={this.onClick} themeProps={themeProps}>
         <FlexBox>
-          {prefixIcon ? this.getPrefixIcon(prefixIcon, prefixIconViewClass, prefixTheme) : null}
+          {prefixIcon ? this.getIcon(prefixIcon, 'PrefixIcon', false) : null}
           <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
             {value}
           </ItemText>
-          {suffixIcon ? this.getSuffixIcon(suffixIcon, SuffixIconViewClass, SuffixIconTheme) : null}
+          {suffixIcon ? this.getIcon(suffixIcon, 'SuffixIcon', true) : null}
           {closable ? (
             <Icon
               {...this.getCloseTheme('CloseButton')}
@@ -193,22 +187,10 @@ class Tag extends React.Component<TagProps, TagState> {
       theme: iconMergeTheme,
     };
   };
-  getPrefixIcon = (prefixIcon, prefixIconViewClass, prefixTheme) => {
+  getIcon = (iconClass: string, iconThemeProps: string, isSuffix: boolean) => {
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconThemeProps);
     return (
-      <Icon
-        {...this.getIconTheme(prefixIconViewClass, prefixTheme, false)}
-        singleTheme
-        iconClass={prefixIcon}
-      />
-    );
-  };
-  getSuffixIcon = (suffixIcon, SuffixIconViewClass, SuffixIconTheme) => {
-    return (
-      <Icon
-        {...this.getIconTheme(SuffixIconViewClass, SuffixIconTheme, true)}
-        singleTheme
-        iconClass={suffixIcon}
-      />
+      <Icon {...this.getIconTheme(viewClass, theme, isSuffix)} singleTheme iconClass={iconClass} />
     );
   };
   getIconStyle = (isSuffix: boolean) => {
