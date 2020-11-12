@@ -10,7 +10,7 @@ import Theme from '../../theme';
 import renderer from 'react-test-renderer';
 import chai from 'chai';
 import 'jest-styled-components';
-import { MaxSafeNumber, MinSafeNumber } from '../index';
+import { maxSafeNumber, minSafeNumber } from '../index';
 
 import {
   assertInputValue,
@@ -21,7 +21,6 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Widget from '../../consts';
 import type { ClickType } from '../../css/number-input';
-import AmountInput from '../../amount-input';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -622,7 +621,7 @@ describe('NumberInput', () => {
     const inputComponent = getInputComponent(component);
     component.find('input').simulate('change', { target: { value: overMaxLengthNumber } });
     component.find('input').simulate('blur');
-    expect(inputComponent.state.value).toBe(MaxSafeNumber);
+    expect(inputComponent.state.value).toBe(maxSafeNumber);
   });
 
   it(' onblur && below minLengthNumber ', () => {
@@ -630,7 +629,7 @@ describe('NumberInput', () => {
     const inputComponent = getInputComponent(component);
     component.find('input').simulate('change', { target: { value: -overMaxLengthNumber } });
     component.find('input').simulate('blur');
-    expect(inputComponent.state.value).toBe(MinSafeNumber);
+    expect(inputComponent.state.value).toBe(minSafeNumber);
   });
   it(' onblur && min -100 ', () => {
     const component = mount(<NumberInput onBlur={() => {}} min={-100} />);

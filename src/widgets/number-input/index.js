@@ -292,14 +292,14 @@ const iconDefaultTheme = (viewClass: string) => {
     },
   };
 };
-export const MaxSafeNumber = Number.MAX_SAFE_INTEGER;
-export const MinSafeNumber = Number.MIN_SAFE_INTEGER;
+export const maxSafeNumber = Number.MAX_SAFE_INTEGER;
+export const minSafeNumber = Number.MIN_SAFE_INTEGER;
 
 class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   static defaultProps = {
     disabled: false,
-    max: MaxSafeNumber,
-    min: MinSafeNumber,
+    max: maxSafeNumber,
+    min: minSafeNumber,
     viewClass: Widget.NumberInput,
     size: 'default',
     precision: 0,
