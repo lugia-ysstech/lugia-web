@@ -526,8 +526,8 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         this.setValue(finalValue, event);
       }
       this.setState({ _innerFocus: false });
+      onBlur && onBlur(event);
     }
-    onBlur && onBlur(event);
   };
 
   onFocus = (event: UIEvent) => {
