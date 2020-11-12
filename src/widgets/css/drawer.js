@@ -76,6 +76,7 @@ export const Drawer = styled.div`
   ${getDrawerWidth};
   height: 100%;
   z-index: 1000;
+  pointer-events: none;
 `;
 const getMaskStyle = (props: CSSProps) => {
   const { visible } = props;
@@ -113,6 +114,7 @@ export const DrawerMask = CSSComponent({
     transition: opacity 0.3s linear;
     ${getMaskStyle};
     background-color: rgba(0, 0, 0, 0.65);
+    pointer-events: auto;
   `,
   normal: {
     selectNames: [['opacity'], ['background']],
@@ -284,6 +286,7 @@ export const DrawerContentWrap = CSSComponent({
     min-width: 256px;
     min-height: 100px;
     background: #fff;
+    pointer-events: auto;
   `,
   normal: {
     selectNames: [
