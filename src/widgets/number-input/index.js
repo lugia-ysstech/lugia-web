@@ -292,12 +292,14 @@ const iconDefaultTheme = (viewClass: string) => {
     },
   };
 };
+export const MaxSafeNumber = Number.MAX_SAFE_INTEGER;
+export const MinSafeNumber = Number.MIN_SAFE_INTEGER;
 
 class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   static defaultProps = {
     disabled: false,
-    max: Infinity,
-    min: -Infinity,
+    max: MaxSafeNumber,
+    min: MinSafeNumber,
     viewClass: Widget.NumberInput,
     size: 'default',
     precision: 0,
@@ -524,8 +526,8 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         this.setValue(finalValue, event);
       }
       this.setState({ _innerFocus: false });
-      onBlur && onBlur(event);
     }
+    onBlur && onBlur(event);
   };
 
   onFocus = (event: UIEvent) => {
