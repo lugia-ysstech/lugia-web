@@ -19,10 +19,14 @@ const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 
 const Quill = ReactQuill.Quill;
 const fontSizeList = ['14px', '16px', '18px', '20px', '24px', '32px'];
-const fontSizeObj = {
-  sizeStyle: 'attributors/style/size',
-  sizeClass: 'formats/size',
-};
+const fontFamilyList = ['serif', 'sans-serif', 'monospace', 'cursive', 'fantasy'];
+
+const richTextConfig = [
+  { name: 'sizeStyle', url: 'attributors/style/size', value: fontSizeList },
+  { name: 'sizeClass', url: 'formats/size', value: fontSizeList },
+  { name: 'alginItem', url: 'attributors/style/align', value: ['left', 'right', 'center'] },
+  { name: 'fontFamily', url: 'attributors/style/font', value: fontFamilyList },
+];
 
 const LabelContainer = CSSComponent({
   tag: 'div',
@@ -165,14 +169,16 @@ class Label extends React.Component<LabelProps, LabelState> {
   }
 
   shouldRichTextSizeRegister = () => {
-    this.textIsHtml && this.richTextSizeRegister();
+    this.textIsHtml && this.richTextSizeRegister(richTextConfig);
   };
-  richTextSizeRegister = () => {
-    Object.entries(fontSizeObj).forEach(([key, value]) => {
-      this[key] = Quill.import(value);
-      this[key].whitelist = fontSizeList;
-      Quill.register(this[key], true);
-    });
+  richTextSizeRegister = data => {
+    data &&
+      data.forEach(item => {
+        const { name, url, value } = item;
+        this[name] = Quill.import(url);
+        this[name].whitelist = value;
+        Quill.register(this[name], true);
+      });
   };
 
   shouldAttachQuillRefs = () => {

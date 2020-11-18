@@ -25,7 +25,7 @@ const LabelBox = StaticComponent({
 });
 
 const testHtml =
-  '<p><strong>this</strong> <em>is</em> <u>a </u><span style="color: red;">long </span><span style="background-color: blue;">text</span>, <span style="font-size: 20px;">long</span>, <span class="ql-font-serif">long</span><strong>...</strong></p><p>A new paragraph</p>';
+  '<p><strong>this</strong> <em>is</em> <u>a </u><span style="color: red;">long </span><span style="background-color: lightblue;">text</span>, <span style="font-size: 20px;">long</span>, <span style="font-family: serif;">long</span><strong>...</strong></p><p>A new paragraph</p>';
 
 class LabelDemo extends React.Component<PropsType, StateType> {
   render() {
