@@ -159,13 +159,24 @@ class Label extends React.Component<LabelProps, LabelState> {
   }
 
   componentDidMount() {
-    this.textIsHtml && this.attachQuillRefs();
+    this.shouldAttachQuillRefs();
   }
 
   componentDidUpdate() {
-    this.textIsHtml && this.attachQuillRefs();
+    this.shouldAttachQuillRefs();
   }
 
+  richTextSizeRegister = () => {
+    Object.entries(fontSizeObj).forEach(([key, value]) => {
+      this[key] = Quill.import(value);
+      this[key].whitelist = fontSizeList;
+      Quill.register(this[key], true);
+    });
+  };
+
+  shouldAttachQuillRefs = () => {
+    this.textIsHtml && this.attachQuillRefs();
+  };
   attachQuillRefs = () => {
     if (!this.reactQuillRef || typeof this.reactQuillRef.getEditor !== 'function') return;
     const editorRoot = this.reactQuillRef.getEditor().root;
@@ -176,14 +187,13 @@ class Label extends React.Component<LabelProps, LabelState> {
     editorRootStyle.fontSize = '0.875rem';
   };
 
-  richTextSizeRegister = () => {
-    Object.entries(fontSizeObj).forEach(([key, value]) => {
-      this[key] = Quill.import(value);
-      this[key].whitelist = fontSizeList;
-      Quill.register(this[key], true);
-    });
+  isHtml = value => {
+    if (!value) {
+      return false;
+    }
+    const reg = /<[^>]+>/g;
+    return reg.test(value);
   };
-
   handleStringText = text => {
     if (this.isHtml(text)) {
       return (
@@ -199,13 +209,6 @@ class Label extends React.Component<LabelProps, LabelState> {
     }
 
     return text;
-  };
-  isHtml = value => {
-    if (!value) {
-      return false;
-    }
-    const reg = /<[^>]+>/g;
-    return reg.test(value);
   };
 
   render() {
