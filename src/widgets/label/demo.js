@@ -24,6 +24,9 @@ const LabelBox = StaticComponent({
   `,
 });
 
+const testHtml =
+  '<p><strong>this</strong> <em>is</em> <u>a </u><span style="color: red;">long </span><span style="background-color: blue;">text</span>, <span style="font-size: 20px;">long</span>, <span class="ql-font-serif">long</span><strong>...</strong></p><p>another part of text</p>';
+
 class LabelDemo extends React.Component<PropsType, StateType> {
   render() {
     const config = {
@@ -184,7 +187,8 @@ class LabelDemo extends React.Component<PropsType, StateType> {
         <br />
         <br />
         <br />
-        <LabelBox title="我是title">我是有title的文本</LabelBox>
+        <LabelBox>富文本:</LabelBox>
+        <Label text={testHtml}></Label>
         <br />
         <br />
         <br />

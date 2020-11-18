@@ -42,6 +42,41 @@
     }
   },
   "category": ["数据展示"],
+  "designInfo": {
+    "RichTextLabel": {
+      "sequence": 1,
+      "title": "富文本",
+      "desc": "富文本",
+      "tag": "富文本",
+      "props": {},
+      "theme": {
+        "Container": {
+          "name": "文本",
+          "desc": "文本的样式",
+          "normal": [
+            ["margin"],
+            ["padding"],
+            ["cursor"],
+            ["width"],
+            ["height"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"],
+            ["background"]
+          ],
+          "hover": [["cursor"], ["border"], ["borderRadius"], ["boxShadow"], ["background"]],
+          "disabled": [["cursor"], ["border"], ["borderRadius"], ["boxShadow"], ["background"]]
+        },
+        "LabelPrefix": {
+          "name": "文本前缀",
+          "desc": "文本前缀的样式",
+          "normal": [["lineHeight"], ["margin"], ["cursor"]],
+          "hover": [["cursor"]],
+          "disabled": [["cursor"]]
+        }
+      }
+    }
+  },
   "theme": {
     "Container": {
       "name": "文本",

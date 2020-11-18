@@ -7,6 +7,8 @@
 import '../common/shirm';
 
 import * as React from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.bubble.css';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
@@ -14,6 +16,13 @@ import CSSComponent, { css } from '@lugia/theme-css-hoc';
 const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+
+const Quill = ReactQuill.Quill;
+const fontSizeList = ['14px', '16px', '18px', '20px', '24px', '32px'];
+const fontSizeObj = {
+  sizeStyle: 'attributors/style/size',
+  sizeClass: 'formats/size',
+};
 
 const LabelContainer = CSSComponent({
   tag: 'div',
@@ -136,9 +145,72 @@ type LabelProps = {
 type LabelState = {};
 
 class Label extends React.Component<LabelProps, LabelState> {
+  reactQuillRef: Object;
+  textIsHtml: boolean;
+
+  constructor(props) {
+    super(props);
+    this.reactQuillRef = null;
+    this.textIsHtml = this.isHtml(props.text);
+  }
+
+  componentWillMount() {
+    this.textIsHtml && this.richTextSizeRegister();
+  }
+
+  componentDidMount() {
+    this.textIsHtml && this.attachQuillRefs();
+  }
+
+  componentDidUpdate() {
+    this.textIsHtml && this.attachQuillRefs();
+  }
+
+  attachQuillRefs = () => {
+    if (!this.reactQuillRef || typeof this.reactQuillRef.getEditor !== 'function') return;
+    const editorRoot = this.reactQuillRef.getEditor().root;
+    editorRoot.type = 'text';
+    const editorRootStyle = editorRoot.style;
+    editorRootStyle.padding = 0;
+    editorRootStyle.lineHeight = 'unset';
+    editorRootStyle.fontSize = '0.875rem';
+  };
+
+  richTextSizeRegister = () => {
+    Object.entries(fontSizeObj).forEach(([key, value]) => {
+      this[key] = Quill.import(value);
+      this[key].whitelist = fontSizeList;
+      Quill.register(this[key], true);
+    });
+  };
+
+  handleStringText = text => {
+    if (this.isHtml(text)) {
+      return (
+        <ReactQuill
+          value={text}
+          theme="bubble"
+          readOnly
+          ref={el => {
+            this.reactQuillRef = el;
+          }}
+        />
+      );
+    }
+
+    return text;
+  };
+  isHtml = value => {
+    if (!value) {
+      return false;
+    }
+    const reg = /<[^>]+>/g;
+    return reg.test(value);
+  };
+
   render() {
     const { text, title, children, onClick = () => {}, showPrefix, prefix } = this.props;
-    const target = children ? children : text;
+    const target = children ? children : this.handleStringText(text);
     const themeProps = this.props.getPartOfThemeProps('Container');
     const prefixThemeProps = this.props.getPartOfThemeProps('LabelPrefix');
     return (
