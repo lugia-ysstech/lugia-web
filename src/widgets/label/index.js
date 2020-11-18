@@ -21,7 +21,7 @@ const Quill = ReactQuill.Quill;
 const fontSizeList = ['14px', '16px', '18px', '20px', '24px', '32px'];
 const fontFamilyList = ['serif', 'sans-serif', 'monospace', 'cursive', 'fantasy'];
 
-const richTextConfig = [
+const registerConfig = [
   { name: 'sizeStyle', url: 'attributors/style/size', value: fontSizeList },
   { name: 'sizeClass', url: 'formats/size', value: fontSizeList },
   { name: 'alginItem', url: 'attributors/style/align', value: ['left', 'right', 'center'] },
@@ -169,7 +169,7 @@ class Label extends React.Component<LabelProps, LabelState> {
   }
 
   shouldRichTextSizeRegister = () => {
-    this.textIsHtml && this.richTextSizeRegister(richTextConfig);
+    this.textIsHtml && this.richTextSizeRegister(registerConfig);
   };
   richTextSizeRegister = data => {
     data &&
