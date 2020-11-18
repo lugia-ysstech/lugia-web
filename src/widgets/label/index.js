@@ -155,17 +155,18 @@ class Label extends React.Component<LabelProps, LabelState> {
   }
 
   componentWillMount() {
-    this.textIsHtml && this.richTextSizeRegister();
+    this.shouldRichTextSizeRegister();
   }
-
   componentDidMount() {
     this.shouldAttachQuillRefs();
   }
-
   componentDidUpdate() {
     this.shouldAttachQuillRefs();
   }
 
+  shouldRichTextSizeRegister = () => {
+    this.textIsHtml && this.richTextSizeRegister();
+  };
   richTextSizeRegister = () => {
     Object.entries(fontSizeObj).forEach(([key, value]) => {
       this[key] = Quill.import(value);
