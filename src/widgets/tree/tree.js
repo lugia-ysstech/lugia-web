@@ -481,7 +481,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   render() {
     const { props, state } = this;
-    const empty = <Empty themeProps={props.getPartOfThemeProps('Container')} />;
+    const empty = <Empty themeInfo={props.getPartOfThemeProps('Container')} />;
     const { __dontShowEmpty } = props;
     if (this.isEmpty(props) && !__dontShowEmpty) {
       return empty;
