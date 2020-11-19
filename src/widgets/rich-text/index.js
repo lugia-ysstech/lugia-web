@@ -47,7 +47,9 @@ const LabelContainer = CSSComponent({
   css: css`
     display: inline-block;
     box-sizing: border-box;
-    white-space: pre;
+    white-space: normal;
+    word-break: break-all;
+    overflow: hidden;
   `,
   option: { hover: true },
 });
