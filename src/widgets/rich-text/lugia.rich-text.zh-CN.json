@@ -1,0 +1,62 @@
+{
+  "widgetName": "RichText",
+  "title": "富文本",
+  "desc": "富文本组件",
+  "tag": "rich label 文本 富文本 文字 字符 字符串 中文 英文 text",
+  "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
+    "text": {
+      "type": "string",
+      "desc": "文本内容",
+      "defaultValue": "Label"
+    },
+    "title": {
+      "type": "string",
+      "desc": "文本提示内容"
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "RichText被点击时触发的事件",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "SyntheticEvent"
+        }
+      ]
+    }
+  },
+  "category": ["数据展示"],
+  "theme": {
+    "Container": {
+      "name": "富文本",
+      "desc": "富文本的样式",
+      "normal": [
+        ["margin"],
+        ["padding"],
+        ["cursor"],
+        ["width"],
+        ["height"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["background"]
+      ],
+      "hover": [["cursor"], ["border"], ["borderRadius"], ["boxShadow"], ["background"]],
+      "disabled": [["cursor"], ["border"], ["borderRadius"], ["boxShadow"], ["background"]]
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 300,
+        "height": 120
+      }
+    }
+  }
+}
