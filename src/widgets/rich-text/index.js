@@ -29,11 +29,9 @@ const LabelContainer = CSSComponent({
       ['boxShadow'],
       ['background'],
     ],
-    getThemeMeta() {
-      return {
-        color: blackColor,
-        fontSize: sectionFontSize,
-      };
+    defaultTheme: {
+      color: blackColor,
+      fontSize: sectionFontSize,
     },
     getCSS: (theme: Object, themeProps: Object) => {
       const { textAlign } = theme;
