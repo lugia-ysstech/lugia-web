@@ -9,6 +9,7 @@ const Input = 'lugia_widget_Input';
 const Align = 'lugia_widget_Align';
 const Trigger = 'lugia_widget_Trigger';
 const Label = 'lugia_widget_Label';
+const RichText = 'lugia_widget_RichText';
 const Tooltip = 'lugia_widget_Tooltip';
 const ThemeWrapWidget = 'lugia_widget_ThemeWrapWidget';
 
@@ -139,6 +140,7 @@ export default {
   Align,
   Trigger,
   Label,
+  RichText,
   Tooltip,
   ThemeWrapWidget,
   InputTag,
