@@ -332,7 +332,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }
 
     if (!data || data.length === 0) {
-      return <Empty themeProps={this.props.getPartOfThemeProps('Container')} />;
+      const themeInfo = this.props.getPartOfThemeProps('Container');
+      return <Empty themeInfo={themeInfo} />;
     }
   }
 
@@ -877,8 +878,8 @@ const Result = ThemeHoc(
 
 Result.Placeholder = Placeholder;
 Result.computeCanSeeCount = (
-  height?: number = DefaultHeight,
-  menuItemHeight?: number = DefaultMenuItemHeight
+  height: number = DefaultHeight,
+  menuItemHeight: number = DefaultMenuItemHeight
 ): number => {
   return Math.floor(getCanSeeCountRealy(height, menuItemHeight));
 };

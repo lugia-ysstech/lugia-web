@@ -51,9 +51,9 @@ export default class Empty extends React.Component<any, any> {
   static displayName = Widget.Empty;
 
   render() {
-    const { getPartOfThemeProps } = this.props;
+    const { themeInfo } = this.props;
     return (
-      <EmptyContainer themeProps={getPartOfThemeProps('Container')}>
+      <EmptyContainer themeProps={themeInfo}>
         <Img>
           <img
             src="data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACsCAYAAACZ4FUpAAAACXBIWXMAAAsTAAALEwEAmpwYAAA4
