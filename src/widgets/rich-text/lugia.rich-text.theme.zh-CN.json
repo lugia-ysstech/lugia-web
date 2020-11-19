@@ -1,0 +1,24 @@
+[
+  {
+    "widgetName": "RichText",
+    "title": "富文本",
+    "data": [
+      {
+        "title": "文本",
+        "iconClass": "radioText",
+        "data": [
+          {
+            "name": "文本",
+            "path": ["Container"],
+            "props": [
+              {
+                "name": "text",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
