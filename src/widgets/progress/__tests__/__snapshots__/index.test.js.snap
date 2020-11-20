@@ -1628,7 +1628,7 @@ exports[`Progress css 1`] = `
     <p>
       props: percent=
       30
-      active
+      active 
     </p>
     <br />
     <div
@@ -1883,7 +1883,7 @@ exports[`Progress css 1`] = `
     </div>
     <br />
     <p>
-      props: percent=this.state.percent active
+      props: percent=this.state.percent active 
     </p>
     <br />
     <div
@@ -2212,7 +2212,7 @@ exports[`Progress css 1`] = `
       <p>
         props: size=small percent=
         30
-         active
+         active 
       </p>
       <br />
       <div
