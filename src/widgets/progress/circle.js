@@ -24,6 +24,11 @@ function getPolyLine(radius: number, strokeWidth: number, cnt: number, stroke: s
 }
 
 export default class extends React.Component<any, any> {
+  constructor(props) {
+    super(props);
+    this.circleProgress = React.createRef();
+  }
+
   render() {
     const {
       percent = 0,
@@ -59,7 +64,7 @@ export default class extends React.Component<any, any> {
     const lineColor = this.getLineColor(lineTheme);
 
     return (
-      <SvgInner size={size} themeProps={svgInnerTheme}>
+      <SvgInner size={size} themeProps={svgInnerTheme} ref={this.circleProgress}>
         {type === 'circle' ? (
           <CircleWrap>
             <circle {...config} stroke={backgroundLineColor} />
@@ -108,7 +113,7 @@ export default class extends React.Component<any, any> {
     } = svgInnerTheme;
     const { size = 'default' } = this.props;
     const isDefault = size === 'default';
-    const halfWidth = width / 2;
+    const halfWidth = this.whetherWidthIsPercent(width) ? this.getParentNodeWidth() / 2 : width / 2;
     const cxOrCy = width ? halfWidth : isDefault ? 60 : 40;
     const borderWidth = topWidth || rightWidth || bottomWidth || leftWidth;
     const strokeWidth = borderWidth || circleWidth || (isDefault ? 8 : 6);
@@ -132,6 +137,20 @@ export default class extends React.Component<any, any> {
         : 'matrix(0,-1,1,0,0,80)',
     };
   };
+
+  whetherWidthIsPercent = (value: string | number) => {
+    if (!value && value !== 0) return;
+    const reg = /^\d+%$/; // 判断宽度是否是百分比
+    return reg.test(value);
+  };
+  getParentNodeWidth = () => {
+    if (this.circleProgress.current && this.circleProgress.current.parentNode) {
+      const { offsetWidth = 0 } = this.circleProgress.current.parentNode;
+      return offsetWidth;
+    }
+    return 120;
+  };
+
   getPercentText = () => {
     const {
       percent = 0,
