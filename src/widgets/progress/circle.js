@@ -140,10 +140,11 @@ export default class extends React.Component<any, any> {
 
   whetherWidthIsPercent = (value: string | number) => {
     if (!value && value !== 0) return;
-    const reg = /^\d+%$/; // 判断宽度是否是百分比
+    const reg = /^\d+%$/;
     return reg.test(value);
   };
   getParentNodeWidth = () => {
+    if (!this.circleProgress) return;
     if (this.circleProgress.current && this.circleProgress.current.parentNode) {
       const { offsetWidth = 0 } = this.circleProgress.current.parentNode;
       return offsetWidth;
