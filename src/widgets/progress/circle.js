@@ -113,7 +113,8 @@ export default class extends React.Component<any, any> {
     } = svgInnerTheme;
     const { size = 'default' } = this.props;
     const isDefault = size === 'default';
-    const halfWidth = this.whetherWidthIsPercent(width) ? this.getParentNodeWidth() / 2 : width / 2;
+    const finalWidth = this.getFinalWidth(width);
+    const halfWidth = finalWidth / 2;
     const cxOrCy = width ? halfWidth : isDefault ? 60 : 40;
     const borderWidth = topWidth || rightWidth || bottomWidth || leftWidth;
     const strokeWidth = borderWidth || circleWidth || (isDefault ? 8 : 6);
@@ -131,25 +132,27 @@ export default class extends React.Component<any, any> {
       strokeWidth,
       circleLength,
       transform: width
-        ? `matrix(0,-1,1,0,0,${width})`
+        ? `matrix(0,-1,1,0,0,${finalWidth})`
         : isDefault
         ? 'matrix(0,-1,1,0,0,120)'
         : 'matrix(0,-1,1,0,0,80)',
     };
   };
 
+  getFinalWidth = (value: string | number): number => {
+    return this.whetherWidthIsPercent(value) ? this.getParentNodeWidth() : value;
+  };
   whetherWidthIsPercent = (value: string | number) => {
     if (!value && value !== 0) return;
     const reg = /^\d+%$/;
     return reg.test(value);
   };
   getParentNodeWidth = () => {
-    if (!this.circleProgress) return;
     if (this.circleProgress.current && this.circleProgress.current.parentNode) {
       const { offsetWidth = 0 } = this.circleProgress.current.parentNode;
       return offsetWidth;
     }
-    return 120;
+    return 0;
   };
 
   getPercentText = () => {
