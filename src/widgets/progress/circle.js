@@ -38,6 +38,7 @@ export default class extends React.Component<any, any> {
 
   componentDidMount() {
     if (this.shouldSecondRender) {
+      this.shouldSecondRender = false;
       this.setState({ secondRender: Math.random() });
     }
   }
