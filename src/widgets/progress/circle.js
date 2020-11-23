@@ -24,9 +24,22 @@ function getPolyLine(radius: number, strokeWidth: number, cnt: number, stroke: s
 }
 
 export default class extends React.Component<any, any> {
+  circleProgress: Object;
+  shouldSecondRender: boolean;
+
   constructor(props) {
     super(props);
     this.circleProgress = React.createRef();
+    this.shouldSecondRender = false;
+    this.state = {
+      secondRender: 0,
+    };
+  }
+
+  componentDidMount() {
+    if (this.shouldSecondRender) {
+      this.setState({ secondRender: Math.random() });
+    }
   }
 
   render() {
@@ -152,6 +165,8 @@ export default class extends React.Component<any, any> {
       const { offsetWidth = 0 } = this.circleProgress.current.parentNode;
       return offsetWidth;
     }
+    this.shouldSecondRender = true;
+
     return 0;
   };
 
