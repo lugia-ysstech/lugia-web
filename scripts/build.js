@@ -5,27 +5,10 @@
  * @flow
  */
 const compileComponent = require('@lugia/devtools-widgets');
+const inValidComponent = require('../src/widgets/invalidComponent.json');
 
 const commonInvalid = ['common', 'consts', 'css', 'utils', 'static'];
-const componentInvalid = [
-  ...commonInvalid,
-  'align',
-  'code-box',
-  'check-button',
-  'inputtag',
-  'page-loading',
-  'screen-shot',
-  'scroller',
-  'theme',
-  'theme-provider',
-  'trigger',
-  'empty',
-  'design-responsive',
-  'affix',
-  'grid',
-  'layout',
-  'new-table',
-];
+const componentInvalid = [...commonInvalid, ...inValidComponent];
 const hideInTollPanelComponents = {
   message: 'message',
   anchor: 'index',
