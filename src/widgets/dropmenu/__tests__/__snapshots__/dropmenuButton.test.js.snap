@@ -210,6 +210,10 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
 <div
   className="sc-csuQGl eauwPn"
   disabled={false}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
   style={
     Object {
       "height": "3.2rem",

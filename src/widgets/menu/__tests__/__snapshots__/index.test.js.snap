@@ -10,7 +10,6 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  overflow: hidden;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 25rem;
@@ -87,6 +86,27 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   width: 25rem;
   background-color: #fff;
   height: 25rem;
+}
+
+.c0::-webkit-scrollbar {
+  width: 8px;
+}
+
+.c0::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: transparent;
+}
+
+.c0:hover::-webkit-scrollbar-thumb {
+  background: #c2c2c2;
+}
+
+.c0::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}
+
+.c0::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .c0:hover > div:nth-child(2) {
@@ -290,7 +310,6 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  overflow: hidden;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 25rem;
@@ -367,6 +386,27 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   width: 25rem;
   background-color: #fff;
   height: 25rem;
+}
+
+.c0::-webkit-scrollbar {
+  width: 8px;
+}
+
+.c0::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: transparent;
+}
+
+.c0:hover::-webkit-scrollbar-thumb {
+  background: #c2c2c2;
+}
+
+.c0::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}
+
+.c0::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .c0:hover > div:nth-child(2) {
@@ -569,7 +609,6 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  overflow: hidden;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 25rem;
@@ -646,6 +685,27 @@ exports[`Menu DropMenu width: 500px height: 300px 1`] = `
   width: 25rem;
   background-color: #fff;
   height: 25rem;
+}
+
+.c0::-webkit-scrollbar {
+  width: 8px;
+}
+
+.c0::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: transparent;
+}
+
+.c0:hover::-webkit-scrollbar-thumb {
+  background: #c2c2c2;
+}
+
+.c0::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}
+
+.c0::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .c0:hover > div:nth-child(2) {
@@ -847,7 +907,6 @@ exports[`Menu children: items 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  overflow: hidden;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 25rem;
@@ -924,6 +983,27 @@ exports[`Menu children: items 1`] = `
   width: 25rem;
   background-color: #fff;
   height: 25rem;
+}
+
+.c0::-webkit-scrollbar {
+  width: 8px;
+}
+
+.c0::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: transparent;
+}
+
+.c0:hover::-webkit-scrollbar-thumb {
+  background: #c2c2c2;
+}
+
+.c0::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}
+
+.c0::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .c0:hover > div:nth-child(2) {
