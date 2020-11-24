@@ -292,6 +292,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
+  word-break: break-word;
   font-size: 1.2rem;
   color: #ffffff;
 }
@@ -396,10 +397,6 @@ exports[`popconfirm Demo Component JSON 1`] = `
   min-width: 3rem;
   width: 100%;
   background-color: white;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c0 {
@@ -3344,6 +3341,8 @@ exports[`popconfirm Demo Component JSON 1`] = `
       style={
         Object {
           "borderBottomColor": "#d0d3da",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
           "borderLeftColor": "#d0d3da",
@@ -3353,6 +3352,8 @@ exports[`popconfirm Demo Component JSON 1`] = `
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
           "borderTopColor": "#d0d3da",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
           "borderTopStyle": "solid",
           "borderTopWidth": "0.1rem",
           "height": "3.2rem",
@@ -3378,6 +3379,10 @@ exports[`popconfirm Demo Component JSON 1`] = `
         size="default"
         style={
           Object {
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
             "color": "#363B40",
             "fontSize": "1.4rem",
             "paddingBottom": "0rem",

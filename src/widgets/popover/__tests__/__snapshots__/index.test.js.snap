@@ -77,6 +77,13 @@ exports[`popover Demo Component JSON 1`] = `
   z-index: undefined;
 }
 
+.c22 {
+  position: relative;
+  padding-top: 0.4rem;
+  background: transparent;
+  box-shadow: none;
+}
+
 .c7 {
   position: relative;
   padding-bottom: 0.4rem;
@@ -98,13 +105,6 @@ exports[`popover Demo Component JSON 1`] = `
   box-shadow: none;
 }
 
-.c22 {
-  position: relative;
-  padding-top: 0.4rem;
-  background: transparent;
-  box-shadow: none;
-}
-
 .c8 {
   position: relative;
   box-sizing: border-box;
@@ -112,6 +112,17 @@ exports[`popover Demo Component JSON 1`] = `
   padding-bottom: 0.4rem;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
+}
+
+.c24 {
+  border-color: transparent;
+  position: absolute;
+  border-style: solid;
+  line-height: 1;
+  left: calc(50% - 5px);
+  top: -0.3rem;
+  border-bottom-color: white;
+  border-width: 0 0.5rem 0.5rem;
 }
 
 .c9 {
@@ -224,17 +235,6 @@ exports[`popover Demo Component JSON 1`] = `
   border-width: 0 0.5rem 0.5rem;
 }
 
-.c24 {
-  border-color: transparent;
-  position: absolute;
-  border-style: solid;
-  line-height: 1;
-  left: calc(50% - 5px);
-  top: -0.3rem;
-  border-bottom-color: white;
-  border-width: 0 0.5rem 0.5rem;
-}
-
 .c25 {
   border-color: transparent;
   position: absolute;
@@ -284,6 +284,7 @@ exports[`popover Demo Component JSON 1`] = `
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
+  word-break: break-word;
   font-size: 1.2rem;
   color: #ffffff;
 }
@@ -298,6 +299,7 @@ exports[`popover Demo Component JSON 1`] = `
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
+  word-break: break-word;
   font-size: 1.2rem;
   color: #ffffff;
   margin-top: 0.6rem;
