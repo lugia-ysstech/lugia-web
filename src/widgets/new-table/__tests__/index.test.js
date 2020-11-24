@@ -1114,7 +1114,7 @@ describe('new-table', () => {
         selectColumn: 0,
         selectRow: 1,
         isLugiaHead: false,
-        isAllowSelect: true,
+        isAllowEdit: true,
       },
       isSelected: false,
       isMultiple: false,
@@ -1127,7 +1127,7 @@ describe('new-table', () => {
         selectColumn: 2,
         selectRow: 1,
         isLugiaHead: false,
-        isAllowSelect: true,
+        isAllowEdit: true,
       },
       isSelected: false,
       isMultiple: false,
@@ -1140,7 +1140,7 @@ describe('new-table', () => {
         selectColumn: 2,
         selectRow: 1,
         isLugiaHead: false,
-        isAllowSelect: true,
+        isAllowEdit: true,
       },
       isSelected: false,
       isMultiple: false,
@@ -1153,7 +1153,7 @@ describe('new-table', () => {
         selectColumn: 2,
         selectRow: 1,
         isLugiaHead: false,
-        isAllowSelect: true,
+        isAllowEdit: true,
       },
       isSelected: true,
       isMultiple: false,
@@ -1166,12 +1166,38 @@ describe('new-table', () => {
         selectColumn: 2,
         selectRow: 1,
         isLugiaHead: false,
-        isAllowSelect: true,
+        isAllowEdit: true,
       },
       isSelected: false,
       isMultiple: true,
       selectCell: [{ selectColumn: 2, selectRow: 2 }],
       expectResult: [{ selectColumn: 2, selectRow: 1 }],
+    },
+    {
+      info: {
+        e: {},
+        selectColumn: 2,
+        selectRow: 1,
+        isLugiaHead: false,
+        isAllowEdit: false,
+      },
+      isSelected: false,
+      isMultiple: false,
+      selectCell: [],
+      expectResult: [],
+    },
+    {
+      info: {
+        e: {},
+        selectColumn: 2,
+        selectRow: 1,
+        isLugiaHead: false,
+        isAllowEdit: false,
+      },
+      isSelected: false,
+      isMultiple: true,
+      selectCell: [{ selectColumn: 2, selectRow: 2 }],
+      expectResult: [],
     },
   ];
 
@@ -1190,7 +1216,8 @@ describe('new-table', () => {
       });
 
       expect(editTableListener.getSelectCell()).toEqual(expectResult);
-      expect(editTableListener.getEditCell()).toEqual(expectResult[0]);
+      const editCell = expectResult[0] || {};
+      expect(editTableListener.getEditCell()).toEqual(editCell);
     });
   });
 
