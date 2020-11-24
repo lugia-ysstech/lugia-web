@@ -185,6 +185,27 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
   height: 100rem;
 }
 
+.c1::-webkit-scrollbar {
+  width: 8px;
+}
+
+.c1::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: transparent;
+}
+
+.c1:hover::-webkit-scrollbar-thumb {
+  background: #c2c2c2;
+}
+
+.c1::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}
+
+.c1::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .c1:hover > div:nth-child(2) {
   opacity: 1;
 }
@@ -2294,6 +2315,27 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
   height: 100rem;
 }
 
+.c1::-webkit-scrollbar {
+  width: 8px;
+}
+
+.c1::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: transparent;
+}
+
+.c1:hover::-webkit-scrollbar-thumb {
+  background: #c2c2c2;
+}
+
+.c1::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}
+
+.c1::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .c1:hover > div:nth-child(2) {
   opacity: 1;
 }
@@ -4237,6 +4279,27 @@ exports[`NavMenu  mode=vertical  1`] = `
   height: 20rem;
 }
 
+.c1::-webkit-scrollbar {
+  width: 8px;
+}
+
+.c1::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: transparent;
+}
+
+.c1:hover::-webkit-scrollbar-thumb {
+  background: #c2c2c2;
+}
+
+.c1::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}
+
+.c1::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .c1:hover > div:nth-child(2) {
   opacity: 1;
 }
@@ -4260,7 +4323,6 @@ exports[`NavMenu  mode=vertical  1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  overflow: hidden;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 25rem;
@@ -4399,6 +4461,7 @@ exports[`NavMenu  mode=vertical  1`] = `
                 "fontSize": "1.4rem",
               }
             }
+            title="Lugia Design of React"
           >
             Lugia Design of React
           </span>
@@ -4442,6 +4505,7 @@ exports[`NavMenu  mode=vertical  1`] = `
                 "fontSize": "1.4rem",
               }
             }
+            title="快速上手"
           >
             快速上手
           </span>
@@ -4485,6 +4549,7 @@ exports[`NavMenu  mode=vertical  1`] = `
                 "fontSize": "1.4rem",
               }
             }
+            title="项目实战"
           >
             项目实战
           </span>
@@ -4528,6 +4593,7 @@ exports[`NavMenu  mode=vertical  1`] = `
                 "fontSize": "1.4rem",
               }
             }
+            title="在Lugia-mega中使用"
           >
             在Lugia-mega中使用
           </span>
@@ -4571,6 +4637,7 @@ exports[`NavMenu  mode=vertical  1`] = `
                 "fontSize": "1.4rem",
               }
             }
+            title="Components"
           >
             Components
           </span>
@@ -4782,6 +4849,27 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   width: 25rem;
   background-color: #fff;
   height: 100rem;
+}
+
+.c1::-webkit-scrollbar {
+  width: 8px;
+}
+
+.c1::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: transparent;
+}
+
+.c1:hover::-webkit-scrollbar-thumb {
+  background: #c2c2c2;
+}
+
+.c1::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}
+
+.c1::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .c1:hover > div:nth-child(2) {
@@ -6895,6 +6983,27 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   width: 25rem;
   background-color: #fff;
   height: 100rem;
+}
+
+.c1::-webkit-scrollbar {
+  width: 8px;
+}
+
+.c1::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: transparent;
+}
+
+.c1:hover::-webkit-scrollbar-thumb {
+  background: #c2c2c2;
+}
+
+.c1::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}
+
+.c1::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .c1:hover > div:nth-child(2) {

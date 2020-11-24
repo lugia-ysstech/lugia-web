@@ -71,6 +71,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
+  word-break: break-word;
   font-size: 1.2rem;
   color: #ffffff;
 }
@@ -2439,6 +2440,7 @@ Array [
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
+  word-break: break-word;
   font-size: 1.2rem;
   color: #ffffff;
 }
@@ -2758,6 +2760,7 @@ Array [
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
+  word-break: break-word;
   font-size: 1.2rem;
   color: #ffffff;
 }
