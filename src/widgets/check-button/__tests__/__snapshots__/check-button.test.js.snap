@@ -27,21 +27,24 @@ exports[`Button ChedckButton CSS 1`] = `
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   border-left: 0;
-  height: 2.8rem;
-  line-height: 2.6rem;
-  font-size: 1.2rem;
-  color: #666666;
-  opacity: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 2.4rem;
+  line-height: 2.2rem;
+  font-size: 1.4rem;
+  color: #646A6E;
   background-color: #fff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   padding-top: 0rem;
   padding-bottom: 0rem;
   padding-left: 1rem;
@@ -59,21 +62,24 @@ exports[`Button ChedckButton CSS 1`] = `
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   border-left: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   height: 3.2rem;
   line-height: 3rem;
-  font-size: 1.2rem;
-  color: #666666;
-  opacity: 1;
+  font-size: 1.4rem;
+  color: #646A6E;
   background-color: #fff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   padding-top: 0rem;
   padding-bottom: 0rem;
   padding-left: 1rem;
@@ -91,21 +97,24 @@ exports[`Button ChedckButton CSS 1`] = `
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   border-left: 0;
-  height: 3.8rem;
-  line-height: 3.6rem;
-  font-size: 1.2rem;
-  color: #666666;
-  opacity: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 4rem;
+  line-height: 3.8rem;
+  font-size: 1.4rem;
+  color: #646A6E;
   background-color: #fff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   padding-top: 0rem;
   padding-bottom: 0rem;
   padding-left: 1rem;
@@ -123,21 +132,24 @@ exports[`Button ChedckButton CSS 1`] = `
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   border-left: 0;
-  height: 4.2rem;
-  line-height: 4rem;
-  font-size: 1.2rem;
-  color: #666666;
-  opacity: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: NaNrem;
+  line-height: NaNrem;
+  font-size: NaNrem;
+  color: #646A6E;
   background-color: #fff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   padding-top: 0rem;
   padding-bottom: 0rem;
   padding-left: 1rem;
@@ -155,21 +167,24 @@ exports[`Button ChedckButton CSS 1`] = `
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   border-left: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   height: 3.2rem;
   line-height: 3rem;
-  font-size: 1.2rem;
-  color: #666666;
-  opacity: 1;
+  font-size: 1.4rem;
+  color: #646A6E;
   background-color: #fff;
   border-top-width: 0.1rem;
   border-top-style: solid;
-  border-top-color: #cccccc;
+  border-top-color: #d0d3da;
   border-bottom-width: 0.1rem;
   border-bottom-style: solid;
-  border-bottom-color: #cccccc;
+  border-bottom-color: #d0d3da;
   border-right-width: 0.1rem;
   border-right-style: solid;
-  border-right-color: #cccccc;
+  border-right-color: #d0d3da;
   padding-top: 0rem;
   padding-bottom: 0rem;
   padding-left: 1rem;
@@ -209,7 +224,25 @@ exports[`Button ChedckButton CSS 1`] = `
         className="c3"
         onClick={[Function]}
         size="small"
-        style={Object {}}
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "borderBottomColor": "#d0d3da",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderRightColor": "#d0d3da",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#d0d3da",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "color": "#363B40",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="checkbox"
       >
         CheckButton
@@ -233,7 +266,25 @@ exports[`Button ChedckButton CSS 1`] = `
       <span
         className="c5"
         onClick={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "borderBottomColor": "#d0d3da",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderRightColor": "#d0d3da",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#d0d3da",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "color": "#363B40",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="checkbox"
       >
         CheckButton
@@ -259,7 +310,25 @@ exports[`Button ChedckButton CSS 1`] = `
         className="c6"
         onClick={[Function]}
         size="large"
-        style={Object {}}
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "borderBottomColor": "#d0d3da",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderRightColor": "#d0d3da",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#d0d3da",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "color": "#363B40",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="checkbox"
       >
         CheckButton
@@ -285,7 +354,25 @@ exports[`Button ChedckButton CSS 1`] = `
         className="c7"
         onClick={[Function]}
         size="bigger"
-        style={Object {}}
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "borderBottomColor": "#d0d3da",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderRightColor": "#d0d3da",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#d0d3da",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "color": "#363B40",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="checkbox"
       >
         CheckButton
@@ -327,7 +414,11 @@ exports[`Button ChedckButton CSS 1`] = `
             "borderTopColor": "#4d63ff",
             "borderTopStyle": "solid",
             "borderTopWidth": "0.1rem",
-            "color": "#fff",
+            "color": "#ffffff",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "0rem",
           }
         }
         type="checkbox"
@@ -353,7 +444,25 @@ exports[`Button ChedckButton CSS 1`] = `
       <span
         className="c5"
         onClick={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "borderBottomColor": "#d0d3da",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderRightColor": "#d0d3da",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#d0d3da",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "color": "#363B40",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="checkbox"
       >
         CheckButton
@@ -386,17 +495,16 @@ exports[`Button ChedckButton CSS 1`] = `
         style={
           Object {
             "backgroundColor": "#fff",
-            "borderBottomColor": "#e8e8e8",
+            "borderBottomColor": "#ebecf0",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderRightColor": "#e8e8e8",
+            "borderRightColor": "#ebecf0",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#e8e8e8",
+            "borderTopColor": "#ebecf0",
             "borderTopStyle": "solid",
             "borderTopWidth": "0.1rem",
-            "color": "#cccccc",
-            "fontSize": "1.2rem",
+            "color": "#d0d3da",
             "opacity": 1,
             "paddingBottom": "0rem",
             "paddingLeft": "1rem",
@@ -434,17 +542,16 @@ exports[`Button ChedckButton CSS 1`] = `
         style={
           Object {
             "backgroundColor": "rgba(77,99,255,0.05)",
-            "borderBottomColor": "#e8e8e8",
+            "borderBottomColor": "#ebecf0",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
             "borderRightColor": "#fff",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#e8e8e8",
+            "borderTopColor": "#ebecf0",
             "borderTopStyle": "solid",
             "borderTopWidth": "0.1rem",
-            "color": "#cccccc",
-            "fontSize": "1.2rem",
+            "color": "#c2c5ce",
             "opacity": 1,
             "paddingBottom": "0rem",
             "paddingLeft": "1rem",
