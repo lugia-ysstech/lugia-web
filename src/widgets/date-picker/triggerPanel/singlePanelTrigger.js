@@ -206,7 +206,7 @@ class DateInput extends Component<TypeProps, TypeState> {
                   <SwitchPanel
                     {...newProps}
                     hasStateValue={hasStateValue}
-                    onChange={this.onChange}
+                    onChange={this.panelChane}
                     status={status}
                     value={panelValue}
                     timeValue={value}
@@ -271,7 +271,8 @@ class DateInput extends Component<TypeProps, TypeState> {
     if (hasOpenInProps) {
       visible = alwaysOpen;
     }
-    this.setState({ visible });
+    const newValue = this.needControlClose() ? { value: this.oldValue } : {};
+    this.setState({ visible, ...newValue });
     const { onDocumentClick } = this.props;
     if (onDocumentClick) {
       onDocumentClick();
@@ -280,35 +281,41 @@ class DateInput extends Component<TypeProps, TypeState> {
   };
 
   onChange = (param: Object) => {
-    let visible = true;
-    const { isClear } = this;
-    if (isClear) {
-      visible = false;
-    }
-    const { newValue, action, event } = param;
+    const { newValue, event } = param;
     const { normalStyleValueObj } = this;
     const { format } = this.state;
     const { mode } = this.props;
-    const { isWeeks, isWeek, isYear, isMonth, isTime } = modeStyle(mode);
-    const isValid =
-      action === 'click' ? true : formatValueIsValid(normalStyleValueObj, newValue, format);
-    const { onChange } = this.props;
-    if (isValid) {
-      visible = false;
-      const { showTime, onOk } = this.props;
-      if ((showTime || onOk) && !(isWeek || isYear || isMonth)) {
-        visible = true;
-      }
-      this.setModeState(newValue, format, isWeeks || isWeek);
-    }
-
-    onChange && onChange({ event, newValue, oldValue: this.oldValue });
-    const visibleState = isTime ? {} : { visible };
-    this.setState({ value: newValue, isValid, ...visibleState });
-    if (!visible) {
-      this.onBlur();
-    }
+    const { isWeeks, isWeek } = modeStyle(mode);
+    const isValid = formatValueIsValid(normalStyleValueObj, newValue, format);
+    isValid && this.setModeState(newValue, format, isWeeks || isWeek);
+    this.setState({ value: newValue, isValid, visible: this.panelNeedVisible() }, () => {
+      this.exportOnChange({ event, newValue, oldValue: this.oldValue });
+    });
   };
+
+  panelChane = (param: { newValue: string, event: Object }) => {
+    const { newValue, event } = param;
+    this.setState({ value: newValue, visible: this.panelNeedVisible(), isValid: true }, () => {
+      this.exportOnChange({ event, newValue, oldValue: this.oldValue });
+    });
+  };
+
+  exportOnChange = (param: { event: Object, newValue: string, oldValue: string }) => {
+    const { onChange } = this.props;
+    onChange && onChange(param);
+  };
+
+  panelNeedVisible = () => {
+    const { mode } = this.props;
+    const { isWeek, isYear, isMonth, isTime } = modeStyle(mode);
+    return (this.needControlClose() && !(isWeek || isYear || isMonth) && !this.isClear) || isTime;
+  };
+
+  needControlClose = () => {
+    const { showTime, onOk } = this.props;
+    return showTime || onOk;
+  };
+
   setModeState = (value: string, format: string, isWeeks: boolean) => {
     const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
     const { newVal, isStartOfWeek } = this.getWeekStart(value, format, isWeeks);
