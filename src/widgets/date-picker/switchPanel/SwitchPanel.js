@@ -35,6 +35,8 @@ type TypeProps = {
   valueIsValid?: boolean,
   hasOldValue?: boolean,
   themeProps?: Object,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeProps: Function,
 };
 type TypeState = {
   value: string,
