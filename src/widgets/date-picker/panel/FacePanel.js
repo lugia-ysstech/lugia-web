@@ -8,6 +8,8 @@ import { OtherChild, OtherChildText, DatePanel } from '../styled/styled';
 import { getWeeksRange } from '../utils/differUtils';
 import moment from 'moment';
 import { getBigDate } from '../themeConfig/themeConfig';
+import getYearRange from '../utils/year';
+import { valueInRange } from '@lugia/math';
 type TypeProps = {
   onChange?: Function,
   showYears?: boolean,
@@ -24,19 +26,31 @@ type TypeProps = {
   column?: number,
   theme?: Object,
   themeProps: Object,
+  yearsRange: number[],
 };
 
 OtherChild.displayName = 'OtherChild';
 class FacePanel extends Component<TypeProps, any> {
   static displayName = 'FacePanel';
   render() {
-    const { start, step, mode, year, weeks = 1, lang, data, column = 3, showYears } = this.props;
+    const {
+      start,
+      step,
+      mode,
+      year,
+      weeks = 1,
+      lang,
+      data,
+      column = 3,
+      showYears,
+      yearsRange,
+    } = this.props;
     const { isWeek, isYear, isMonth } = modeStyle(mode);
     const weeksInYear = moment()
       .set({ year })
       .weeksInYear();
     const years = !showYears && isYear && this.getYears(start, step);
-    const doubleYear = showYears && isYear && this.getRangeYears(start, step);
+    const doubleYear = showYears && isYear && this.getRangeYears(yearsRange, step);
     const months = isMonth && this.getMonthDate(lang, data);
     const { weeksDate, rangeIndex } = isWeek && getWeeksRange(weeks, weeksInYear, step);
     const { weeksInner, weekIndex } =
@@ -55,6 +69,13 @@ class FacePanel extends Component<TypeProps, any> {
     return (
       <DatePanel themeProps={themeProps}>
         {ChildrenData.map((current: any, index: number) => {
+          const { value } = current;
+          let isChose = value === equalValue;
+
+          if (isYear && showYears) {
+            isChose = valueInRange(equalValue, value);
+          }
+
           return (
             <OtherChild
               themeProps={themeProps}
@@ -63,11 +84,7 @@ class FacePanel extends Component<TypeProps, any> {
               key={index}
               column={column}
             >
-              <OtherChildText
-                themeProps={themeProps}
-                {...theme}
-                isChose={current.value === equalValue}
-              >
+              <OtherChildText themeProps={themeProps} {...theme} isChose={isChose}>
                 {current.text}
               </OtherChildText>
             </OtherChild>
@@ -96,26 +113,21 @@ class FacePanel extends Component<TypeProps, any> {
     onChange && onChange({ ...data, event: e });
   };
   getYears = (start: number, step: number): Array<Object> => {
+    const { startYear, endYear } = getYearRange(start, step);
     const years = [];
-    const nextYear = moment()
-      .set({ year: start })
-      .add(-1, 'year');
-    for (let i = 0; i < step; i++) {
-      const moments = moment(nextYear);
-      const year = moments.add(i, 'year');
-      const yearChild = year.year();
-      years.push({ text: yearChild, value: yearChild });
+    for (let i = startYear; i <= endYear; i++) {
+      years.push({ text: i, value: i });
     }
     return years;
   };
-  getRangeYears = (start: number, step: number): Array<Object> => {
+  getRangeYears = (rangeYears: number[], step: number): Array<Object> => {
+    const rangeYearStart = rangeYears[0];
     const doubleYear = [];
-    const yStart = start - step;
     for (let i = 0; i < step; i++) {
-      const star = yStart + step * i;
-      const en = star + step - 1;
-      const text = star + '-' + en;
-      doubleYear.push({ text, start: star, end: en, value: star });
+      const start = rangeYearStart + step * i;
+      const end = start + step - 1;
+      const text = start + '-' + end;
+      doubleYear.push({ text, start, end, value: [start, end] });
     }
     return doubleYear;
   };

@@ -7,6 +7,7 @@ import Icon from '../../icon/index';
 import { DateHeader, HeaderTop, HeaderTopArrow, HeaderTopText } from '../styled/styled';
 import { getHeadArrowTheme, getHeadYearAndMonth } from '../themeConfig/themeConfig';
 import { getHeadIconClass } from '../utils/getHeadIcon';
+import getYearRange, { getYearsRange } from '../utils/year';
 const moment = require('moment');
 type TypeProps = {
   onChange?: Function,
@@ -33,30 +34,34 @@ type TypeState = {
   showYears: boolean,
   secondTitle: string,
   isWeekInner: boolean,
+  startYear: number,
 };
 class Head extends Component<TypeProps, TypeState> {
   static displayName = 'Head';
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
-    const { start, title, mode, secondTitle, isWeekInner } = nextProps;
-    const star = start - 1;
-    const normalTitle = star + '-' + (star + 11);
+    const { start, title, mode, secondTitle, isWeekInner, step } = nextProps;
+    const { startYear, endYear } = getYearRange(start, step);
+    const normalTitle = startYear + '-' + endYear;
     const secontTit = isWeekInner && secondTitle ? `${secondTitle}` : '';
     return {
       year: start,
       title: mode !== 'year' ? start : title || normalTitle,
       secondTitle: secontTit,
+      startYear,
     };
   }
   changeYear = (number: number) => () => {
-    const { onChange, showYears, mode } = this.props;
-    const { start, step } = this.props;
+    const { onChange, showYears, mode, step } = this.props;
+    let { start } = this.props;
     if (mode === 'year' && start !== undefined) {
+      const { startYear } = getYearRange(start, step);
+      start = startYear;
       number = number === -1 ? -step : step;
     }
     const moments = moment().set({ year: start });
     const newYear = moments.add(number, 'year').year();
     this.setState({ year: newYear });
-    const titStart = newYear - 1;
+    const titStart = newYear;
     const titEnd = titStart + step - 1;
     const title = titStart + '-' + titEnd;
     let data = { showYears: false, start: newYear, title };
@@ -65,45 +70,36 @@ class Head extends Component<TypeProps, TypeState> {
     }
     onChange && onChange(data);
     if (showYears) {
-      const { start, step } = this.props;
       const { startY, endY, title } = this.getSandE(start, step, number);
-      onChange && onChange({ start: startY, end: endY, showYears, title });
+      onChange &&
+        onChange({ yearsRange: [startY, endY], start: startY, end: endY, showYears, title });
     }
   };
   getSandE = (start: number, step: number, number: number) => {
-    const times = step - 1;
-    const titleStart = start - times - 1;
-    const titleEnd = start + times * (times + 1) - 1;
-
-    const TitleYearRange = titleEnd - titleStart;
-
-    let newTitleStart = titleStart - TitleYearRange - 1;
-    let newTitleEnd = titleStart - 1;
-    if (number > 0) {
-      newTitleStart = titleEnd + 1;
-      newTitleEnd = newTitleStart + TitleYearRange;
-    }
-    const yearStart = newTitleStart + step;
-    const yearEnd = yearStart + step - 1;
-    const title = newTitleStart + '-' + newTitleEnd;
+    const { startYear, endYear } = getYearsRange(start, step);
+    const times = step * step;
+    const startY = number > 0 ? endYear + 1 : startYear - times;
+    const endY = number > 0 ? startY + (times - 1) : startYear - 1;
     return {
-      startY: yearStart,
-      endY: yearEnd,
-      title,
+      startY,
+      endY,
+      title: startY + '-' + endY,
     };
   };
   headClick = () => {
-    const { year } = this.state;
-    let { start, showYears, step } = this.props;
+    const { year, startYear } = this.state;
+    const { showYears, step } = this.props;
     if (!showYears) {
-      start = start - 1;
-      const end = start + step - 1;
-      const times = end - start;
-      const star = start - times - 1;
-      const en = start + times * (times + 1) - 1;
-      const title = star + '-' + en;
+      const { startYear: s, endYear } = getYearsRange(startYear, step);
+      const title = s + '-' + endYear;
       const { headOnChange } = this.props;
-      headOnChange && headOnChange({ start: star + step, end, year, showYears: true, title });
+      headOnChange &&
+        headOnChange({
+          yearsRange: [s, endYear],
+          year,
+          showYears: true,
+          title,
+        });
     }
   };
   secondHeadClick = () => {

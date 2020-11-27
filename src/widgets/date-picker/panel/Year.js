@@ -15,6 +15,8 @@ type TypeProps = {
   model: Object,
   year: number,
   themeProps?: Object,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeProps: Function,
 };
 type TypeState = {
   showYears: boolean,
@@ -22,6 +24,7 @@ type TypeState = {
   end: number,
   title: string,
   month: number,
+  yearsRange: number[],
 };
 class Year extends Component<TypeProps, TypeState> {
   static displayName = 'Year';
@@ -49,8 +52,9 @@ class Year extends Component<TypeProps, TypeState> {
     };
   }
   arrorChange = (obj: Object) => {
-    const { start, end, showYears, title } = obj;
+    const { start, end, showYears, title, yearsRange } = obj;
     this.setState({
+      yearsRange,
       showYears,
       start,
       end,
@@ -58,8 +62,8 @@ class Year extends Component<TypeProps, TypeState> {
     });
   };
   headOnChange = (obj: Object) => {
-    const { start, end, showYears, title } = obj;
-    this.setState({ start, end, showYears, title });
+    const { yearsRange, year, end, showYears, title } = obj;
+    this.setState({ start: year, end, showYears, title, yearsRange });
   };
   panelChange = (obj: Object) => {
     const { showYears, start, text, event } = obj;
@@ -78,7 +82,7 @@ class Year extends Component<TypeProps, TypeState> {
     onChange && onChange({ ...data, from, mode: from });
   };
   render() {
-    const { showYears, start, end, title } = this.state;
+    const { showYears, start, end, title, yearsRange } = this.state;
     const { step = 12, theme, themeProps } = this.props;
     return (
       <DateWrapper themeProps={themeProps} {...theme} mode={this.props.mode}>
@@ -104,6 +108,7 @@ class Year extends Component<TypeProps, TypeState> {
             title={title}
             mode={'year'}
             themeProps={themeProps}
+            yearsRange={yearsRange}
           />
         </div>
       </DateWrapper>
