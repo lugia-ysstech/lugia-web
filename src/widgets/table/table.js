@@ -328,7 +328,7 @@ export default ThemeProvider(
         },
       };
       return {
-        emptyText: <Empty {...this.props} theme={theme} />,
+        emptyText: <Empty {...this.props} themeInfo={theme} />,
       };
     };
     render() {
@@ -360,6 +360,7 @@ export default ThemeProvider(
       const propsDataIsChange = isEqual(this.oldPropsData, propsData, { isStrengthen: true });
 
       const tableData = propsDataIsChange ? data : propsData;
+
       if (!propsDataIsChange) {
         this.oldPropsData = [...propsData];
         this.setState({ data: propsData });
