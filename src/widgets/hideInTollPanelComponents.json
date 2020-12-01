@@ -1,0 +1,9 @@
+{
+  "message": "message",
+  "anchor": "index",
+  "notification": "notification",
+  "popover": "index",
+  "tooltip": "index",
+  "popconfirm": "index",
+  "back-top": "index"
+}
