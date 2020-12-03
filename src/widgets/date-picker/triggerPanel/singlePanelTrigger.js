@@ -98,8 +98,8 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { format } = this.state;
     const value = moment().format(format);
     this.normalStyleValueObj = getformatSymbol(value);
-    const { hasOpenInProps, alwaysOpen } = getOpenProps(this.props);
-    if (hasOpenInProps) {
+    const { alwaysOpen } = getOpenProps(this.props);
+    if (alwaysOpen) {
       this.setState({ visible: alwaysOpen });
     }
   }
@@ -266,9 +266,9 @@ class DateInput extends Component<TypeProps, TypeState> {
   }
 
   onDocumentClick = () => {
-    const { hasOpenInProps, alwaysOpen } = getOpenProps(this.props);
+    const { alwaysOpen } = getOpenProps(this.props);
     let visible = false;
-    if (hasOpenInProps) {
+    if (alwaysOpen) {
       visible = alwaysOpen;
     }
     const newValue = this.needControlClose() ? { value: this.oldValue } : {};
