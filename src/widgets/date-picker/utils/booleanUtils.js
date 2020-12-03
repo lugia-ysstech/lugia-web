@@ -85,10 +85,5 @@ export function modeStyle(mode: string): Object {
 }
 export function getOpenProps(props: Object) {
   const { alwaysOpen, open } = props;
-  const hasCurrentInProp = (name: string) => {
-    return name in props && name !== 'undefined' && name !== 'null';
-  };
-  const hasOpenInProps = hasCurrentInProp('open');
-  const hasAlwaysOpenInProps = hasCurrentInProp('alwaysOpen');
-  return { hasOpenInProps: hasAlwaysOpenInProps || hasOpenInProps, alwaysOpen: alwaysOpen || open };
+  return { alwaysOpen: alwaysOpen || open };
 }
