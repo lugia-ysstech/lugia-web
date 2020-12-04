@@ -1030,10 +1030,10 @@
     babel-plugin-transform-react-remove-prop-types "0.4.24"
     core-js "^3.1.4"
 
-"@lugia/css@^1.0.24":
-  version "1.0.24"
-  resolved "https://registry.yarnpkg.com/@lugia/css/-/css-1.0.24.tgz#1716bcf1fa9fbb1255d8c08c43a4d9738d629454"
-  integrity sha512-Vl9zZNFvz55OHz6l5Nu5/xkz9V2NFsxEVcRSjZBRUDLbJEtgRrcQ4bK5z5J68khYvXme60EcbgksoK9eliZ58g==
+"@lugia/css@^1.0.25":
+  version "1.0.25"
+  resolved "https://registry.yarnpkg.com/@lugia/css/-/css-1.0.25.tgz#ef710d2c6d8df19c9ceaafb9da219455e95ac874"
+  integrity sha512-mYlTdWkFvWIzUtb+ngGhgLyzgsFInXL5o4NWo5EhWfdr81zKHMkettFfPDtBlXsHi9Z1E/Set2V98QIeJ6tw2g==
   dependencies:
     "@types/debug" "^4.1.5"
     debug "^4.1.1"
@@ -1426,6 +1426,16 @@
     is-plain-object "^3.0.0"
     tslib "^1.11.1"
 
+"@lugia/object-utils@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@lugia/object-utils/-/object-utils-1.1.0.tgz#52364be605e4a4ff9465c21bdc22dfae6f25f22c"
+  integrity sha512-/5a2wN1PaNOwL0YBN/GmIg8UdFtqNroYUFDXEIhYzb3kvHIe67NGO5nkB1eHqT+coEUCtC3danoRgl0zPXET6Q==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    deepmerge "^3.2.0"
+    is-plain-object "^3.0.0"
+    tslib "^1.11.1"
+
 "@lugia/ramada@^1.0.5":
   version "1.0.5"
   resolved "https://registry.npmjs.org/@lugia/ramada/-/ramada-1.0.5.tgz#e760646adcd3a9b00e4b8200359e03483c344779"
@@ -1462,16 +1472,16 @@
     debug "^4.1.1"
     tslib "^1.11.1"
 
-"@lugia/theme-css-hoc@^1.1.19":
-  version "1.1.19"
-  resolved "https://registry.npmjs.org/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.19.tgz#143618279d5f04640e05de0e8113dd668e72f06e"
-  integrity sha512-pBucapv1ac68iC3tOQU+WVyv4jou8El1uyyxzCMjG9uyV09/hAZ9PE6hFCElTJswPXcRF1cjUDMI0s9SQCXDmA==
+"@lugia/theme-css-hoc@^1.1.21":
+  version "1.1.21"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.21.tgz#618c429747335f637769b24c0321a264b9458b37"
+  integrity sha512-1vQzGVkw/y5GmVyRxK9w5evLGd336Q3cnzD3BnUCAYVwGbFmEJBYQp4iDXGlqaWLcQyuqmvLf+myxNhsjMO1GA==
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/css" "^1.0.24"
-    "@lugia/object-utils" "^1.0.19"
+    "@lugia/css" "^1.0.25"
+    "@lugia/object-utils" "^1.1.0"
     "@lugia/ramada" "^1.0.5"
-    "@lugia/theme-utils" "^1.1.9"
+    "@lugia/theme-utils" "^1.1.10"
     "@types/react" "^16.9.32"
     "@types/styled-components" "^4.4.3"
     tslib "^1.11.1"
@@ -1487,13 +1497,13 @@
     "@types/styled-components" "^5.0.1"
     tslib "^1.11.1"
 
-"@lugia/theme-utils@^1.1.9":
-  version "1.1.9"
-  resolved "https://registry.npmjs.org/@lugia/theme-utils/-/theme-utils-1.1.9.tgz#987b794894ecbf661f6da1de0703ec1683f99713"
-  integrity sha512-wdktPzonXm4Dx4pP8AS0lZ3FYqWw9XCh0I/HXL1/NnX2MhW1KCI63QsjR9qKERyzVFEedtdjmOIWksNjbYJ/Aw==
+"@lugia/theme-utils@^1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-utils/-/theme-utils-1.1.10.tgz#ead454b54ec40a7816579629ac8e95327638d6f5"
+  integrity sha512-TREmvDIcqPrHytMgLrqlTfpD6zb3bA4XyCq8ZzDWxYCxsDeBISfCviaM72Z7N9fpiVB02bM+YBHcuMCGRDnvEA==
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/css" "^1.0.24"
+    "@lugia/css" "^1.0.25"
     tslib "^1.11.1"
 
 "@lugia/type-utils@^1.0.1", "@lugia/type-utils@^1.0.6":
