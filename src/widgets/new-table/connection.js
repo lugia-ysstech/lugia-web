@@ -244,7 +244,7 @@ export default class EditTableEventListener extends Listener<any> {
         newItem.customRender = render;
       }
       newItem.render = (text, record, index) => {
-        return renderFunc({ text, record, index, ...newItem });
+        return renderFunc({ text, record, index, ...newItem, columnConfig: item });
       };
       newCols.push(newItem);
     });

@@ -90,6 +90,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
 
     if (editing && !disableEdit) {
       const currentEditType = isLugiaHead ? columnType : editType;
+      const { columnConfig } = this.props;
       return (
         <TdContainer>
           <EditElement
@@ -98,6 +99,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
             type={currentEditType}
             listener={listener}
             data={selectData}
+            lugiaExtraData={{ columnConfig, record }}
           />
         </TdContainer>
       );
