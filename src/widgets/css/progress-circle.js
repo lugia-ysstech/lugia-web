@@ -42,6 +42,14 @@ const getFontSize = (props: CSSProps) => {
   return `font-size: ${px2remcss(get(fontSize))}`;
 };
 
+const getTopPosition = (props: CSSProps) => {
+  const { widthMinusHeight } = props;
+  if (widthMinusHeight < 0) {
+    return `calc(50% + ${widthMinusHeight / 2}px)`;
+  }
+  return '50%';
+};
+
 export const SvgText = CSSComponent({
   tag: 'span',
   className: 'ProgressSvgText',
@@ -51,7 +59,7 @@ export const SvgText = CSSComponent({
     width: 100%;
     text-align: center;
     line-height: 1;
-    top: 50%;
+    top: ${getTopPosition};
     transform: translateY(-50%);
     left: 0;
     margin: 0;
