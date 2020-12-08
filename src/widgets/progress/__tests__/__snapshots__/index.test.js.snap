@@ -34,20 +34,13 @@ exports[`Progress css 1`] = `
   height: 100%;
 }
 
-<div
-  style={
-    Object {
-      "display": "grid",
-      "placeItems": "center",
-    }
-  }
->
+<div>
   <div
     style={
       Object {
         "border": "1px solid #ccc",
-        "height": "200px",
-        "width": "100px",
+        "height": "100px",
+        "width": "200px",
       }
     }
   >

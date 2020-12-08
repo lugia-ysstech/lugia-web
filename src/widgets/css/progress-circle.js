@@ -44,10 +44,10 @@ const getFontSize = (props: CSSProps) => {
 
 const getTopPosition = (props: CSSProps) => {
   const { widthMinusHeight } = props;
-  if (widthMinusHeight >= 0) {
-    return '50%';
+  if (widthMinusHeight < 0) {
+    return `calc(50% + ${widthMinusHeight / 2}px)`;
   }
-  return `calc(50% + ${widthMinusHeight / 2}px)`;
+  return '50%';
 };
 
 export const SvgText = CSSComponent({
