@@ -26,11 +26,12 @@ function getPolyLine(radius: number, strokeWidth: number, cnt: number, stroke: s
 export default class extends React.Component<any, any> {
   circleProgress: Object;
   shouldSecondRender: boolean;
-
+  widthMinusHeight: number;
   constructor(props) {
     super(props);
     this.circleProgress = React.createRef();
     this.shouldSecondRender = false;
+    this.widthMinusHeight = 0;
     this.state = {
       secondRender: 0,
     };
@@ -103,7 +104,13 @@ export default class extends React.Component<any, any> {
           </CircleWrap>
         )}
 
-        <SvgText themeProps={textTheme} percent={percent} status={status} size={size}>
+        <SvgText
+          themeProps={textTheme}
+          percent={percent}
+          status={status}
+          size={size}
+          widthMinusHeight={this.widthMinusHeight}
+        >
           {this.getPercentText()}
         </SvgText>
       </SvgInner>
@@ -139,14 +146,16 @@ export default class extends React.Component<any, any> {
       ? 60 - halfStrokeWidth
       : 40 - halfStrokeWidth;
     const circleLength = 2 * radius * Math.PI;
+    const halfWidthMinusHeight = this.widthMinusHeight > 0 ? this.widthMinusHeight / 2 : 0;
+
     return {
-      cx: cxOrCy,
+      cx: cxOrCy + halfWidthMinusHeight,
       cy: cxOrCy,
       radius,
       strokeWidth,
       circleLength,
       transform: width
-        ? `matrix(0,-1,1,0,0,${finalWidth})`
+        ? `matrix(0,-1,1,0,${halfWidthMinusHeight},${finalWidth + halfWidthMinusHeight})`
         : isDefault
         ? 'matrix(0,-1,1,0,0,120)'
         : 'matrix(0,-1,1,0,0,80)',
@@ -163,8 +172,9 @@ export default class extends React.Component<any, any> {
   };
   getParentNodeWidth = () => {
     if (this.circleProgress.current && this.circleProgress.current.parentNode) {
-      const { offsetWidth = 0 } = this.circleProgress.current.parentNode;
-      return offsetWidth;
+      const { offsetWidth = 0, offsetHeight = 0 } = this.circleProgress.current.parentNode;
+      this.widthMinusHeight = offsetWidth - offsetHeight;
+      return this.widthMinusHeight > 0 ? offsetHeight : offsetWidth;
     }
     this.shouldSecondRender = true;
 
