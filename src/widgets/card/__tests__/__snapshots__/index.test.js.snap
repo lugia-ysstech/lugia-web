@@ -1,6 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card css 1`] = `
+.c24 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
 .c14 {
   box-sizing: border-box;
   display: inline-block;
@@ -156,9 +164,6 @@ exports[`Card css 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
   width: 100%;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
@@ -166,6 +171,26 @@ exports[`Card css 1`] = `
   padding-bottom: 0rem;
   padding-left: 0rem;
   padding-right: 0rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 0rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c8 {
@@ -213,9 +238,26 @@ exports[`Card css 1`] = `
   color: #646A6E;
 }
 
+.c23 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c25 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
 .c0 {
   margin-left: 50px;
-  margin-top: 50px;
+  margin-top: 30px;
   display: inline-block;
 }
 
@@ -880,6 +922,121 @@ exports[`Card css 1`] = `
             style={Object {}}
           >
             this is description
+             
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    头部可操作 配置
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c18"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      style={
+        Object {
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "boxShadow": "0px 0px 6px 0px #d0d3da",
+          "height": "30rem",
+          "width": "100rem",
+        }
+      }
+    >
+      <div
+        className="c22"
+        style={
+          Object {
+            "backgroundColor": "red",
+          }
+        }
+      >
+        <span
+          className="c23"
+        >
+          <span
+            onClick={[Function]}
+          >
+            左一
+          </span>
+          <span
+            onClick={[Function]}
+          >
+            左二
+          </span>
+          <span
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-logo_lugia   c24"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={Object {}}
+            />
+          </span>
+        </span>
+        <span
+          className="c25"
+        />
+        <span
+          className="c23"
+        >
+          <span
+            onClick={[Function]}
+          >
+            右一
+          </span>
+          <span
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-logo_lugia   c24"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={Object {}}
+            />
+          </span>
+        </span>
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+        type="customHeader"
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "paddingBottom": "1rem",
+              "paddingLeft": "1.2rem",
+              "paddingRight": "1.2rem",
+              "paddingTop": "1.4rem",
+            }
+          }
+        >
+          <div
+            className="c6"
+            style={Object {}}
+          >
+            <div>
+              this is description
+            </div>
+            <div>
+              this is description
+            </div>
              
           </div>
         </div>

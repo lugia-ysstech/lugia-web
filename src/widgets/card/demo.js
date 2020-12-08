@@ -10,10 +10,11 @@ import styled from 'styled-components';
 import Theme from '../theme';
 import Tabs from '../tabs/tabs';
 import Widget from '../consts';
+import Icon from '../icon';
 
 const Wrapper = styled.div`
   margin-left: 50px;
-  margin-top: 50px;
+  margin-top: 30px;
   display: inline-block;
 `;
 const TabsWrapper = styled.div`
@@ -81,6 +82,43 @@ export const CardDemo = () => {
       CardTitle: { normal: { padding: { top: 30 } } },
     },
   };
+  const headerOperationCard = {
+    [Widget.Card]: {
+      Container: { normal: { width: 1000, height: 300 } },
+      CardTitleHeadContainer: {
+        normal: { background: { color: 'red' } },
+      },
+    },
+  };
+  const headerLeftOperations = [
+    {
+      id: 'l1',
+      click: () => {},
+      render: '左一',
+    },
+    {
+      id: 'l2',
+      click: () => {},
+      render: '左二',
+    },
+    {
+      id: 'l3',
+      click: () => {},
+      render: <Icon />,
+    },
+  ];
+  const headerRightOperations = [
+    {
+      id: 'r1',
+      click: () => {},
+      render: '右一',
+    },
+    {
+      id: 'r2',
+      click: () => {},
+      render: <Icon />,
+    },
+  ];
   return (
     <Wrapper>
       <p>基本样式</p>
@@ -171,6 +209,18 @@ export const CardDemo = () => {
           image={
             'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg'
           }
+        />
+      </Wrapper>
+      <p>头部可操作 配置</p>
+      <Wrapper>
+        <Card
+          theme={headerOperationCard}
+          headerLeftOperations={headerLeftOperations}
+          headerRightOperations={headerRightOperations}
+          showTipBottomLine
+          type={'customHeader'}
+          title={'this is title'}
+          description={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
         />
       </Wrapper>
     </Wrapper>

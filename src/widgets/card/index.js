@@ -77,7 +77,8 @@ const CardOutContainer = CSSComponent({
         propsConfig: { imageOrientation, type, minHeight },
       } = themeProps;
       const textAlign = type === 'avatar' && !isHorizontal(imageOrientation) ? 'center' : '';
-      const flexDirection = !isHorizontal(imageOrientation) ? 'column' : 'row';
+      const flexDirection =
+        !isHorizontal(imageOrientation) || type === 'customHeader' ? 'column' : 'row';
       const theHeight = minHeight ? checkSizeIsNumber(minHeight) : px2remcss(20);
       return `
         min-height:${theHeight};
@@ -346,15 +347,15 @@ const TitleHeadContainer = CSSComponent({
     },
     getCSS(themeMeta, themeProps) {
       const {
-        propsConfig: { __lugiad__header__absolute__ },
+        propsConfig: { __lugiad__header__absolute__, type },
       } = themeProps;
       const positionCSS = getPositionCSS(__lugiad__header__absolute__);
-      return `${positionCSS}`;
+      const flexDir = ` ${type !== 'customHeader' ? 'column' : 'row'}`;
+      return `flex-direction:${flexDir};${positionCSS}`;
     },
   },
   css: css`
     display: flex;
-    flex-direction: column;
   `,
 });
 const TitleTipContainer = StaticComponent({
@@ -445,6 +446,22 @@ const Operation = CSSComponent({
   },
 });
 
+const HeaderOperationInnerContainer = StaticComponent({
+  tag: 'span',
+  className: 'HeaderOperationInnerContainer',
+  css: css`
+    display: flex;
+    align-items: center;
+  `,
+});
+const OptionDivider = StaticComponent({
+  tag: 'span',
+  className: 'OptionDivider',
+  css: css`
+    flex: 1;
+  `,
+});
+
 class Card extends React.Component<CardProps, CardState> {
   static defaultProps = {
     type: 'simple',
@@ -518,11 +535,47 @@ class Card extends React.Component<CardProps, CardState> {
     return (
       <CardOutContainer themeProps={resultTheme}>
         {hasChildren ? (
-          [this.getDetails('operation'), this.getImageContainer(), this.getInnerContent()]
+          [
+            this.getHeaderOperation(),
+            this.getDetails('operation'),
+            this.getImageContainer(),
+            this.getInnerContent(),
+          ]
         ) : (
           <DefaultChildren />
         )}
       </CardOutContainer>
+    );
+  }
+
+  getHeaderOperation() {
+    const {
+      type,
+      headerLeftOperations,
+      headerRightOperations,
+      __lugiad__header__absolute__,
+      getPartOfThemeProps,
+    } = this.props;
+    const headerOperationMap = data =>
+      data.map(item => {
+        const { render, click } = item;
+        return <span onClick={click}>{render}</span>;
+      });
+    if (type !== 'customHeader') return;
+    return (
+      <TitleHeadContainer
+        themeProps={getPartOfThemeProps('CardTitleHeadContainer', {
+          props: { __lugiad__header__absolute__, type },
+        })}
+      >
+        <HeaderOperationInnerContainer>
+          {headerLeftOperations.length > 0 && headerOperationMap(headerLeftOperations)}
+        </HeaderOperationInnerContainer>
+        <OptionDivider />
+        <HeaderOperationInnerContainer>
+          {headerRightOperations.length > 0 && headerOperationMap(headerRightOperations)}
+        </HeaderOperationInnerContainer>
+      </TitleHeadContainer>
     );
   }
 
@@ -549,6 +602,7 @@ class Card extends React.Component<CardProps, CardState> {
 
   getTitleTipContainer() {
     const { title, type, getPartOfThemeProps, __lugiad__header__absolute__ } = this.props;
+    if (type === 'customHeader') return;
     const TitleCmp = this.getDetails('title');
     if (title && type === 'tip') {
       return (
