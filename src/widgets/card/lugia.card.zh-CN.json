@@ -59,6 +59,24 @@
       "type": "boolean",
       "desc": "当选择标题提示风格时,可配置是否显示标题下的分割线",
       "defaultValue": false
+    },
+    "headerLeftOperations": {
+      "type": "Object[]",
+      "meta": [
+        { "key": "id", "title": "自定义操作项id", "type": "string" },
+        { "key": "click", "title": "点击事件", "type": "Function" },
+        { "key": "render", "title": "渲染自定义操作项内容", "type": "React.ReactNode," }
+      ],
+      "desc": "头部左侧自定义操作选项配置"
+    },
+    "headerRightOperations": {
+      "type": "Object[]",
+      "meta": [
+        { "key": "id", "title": "自定义操作项id", "type": "string" },
+        { "key": "click", "title": "点击事件", "type": "Function" },
+        { "key": "render", "title": "渲染自定义操作项内容", "type": "React.ReactNode," }
+      ],
+      "desc": "头部右侧自定义操作选项配置"
     }
   },
   "type": {
@@ -90,6 +108,10 @@
       {
         "value": "responsive",
         "text": "响应式盒子"
+      },
+      {
+        "value": "customHeader",
+        "text": "自定义头部卡片"
       }
     ],
     "ImageOrientation": [
