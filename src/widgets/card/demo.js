@@ -217,9 +217,7 @@ export const CardDemo = () => {
           theme={headerOperationCard}
           headerLeftOperations={headerLeftOperations}
           headerRightOperations={headerRightOperations}
-          showTipBottomLine
           type={'customHeader'}
-          title={'this is title'}
           description={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
         />
       </Wrapper>
