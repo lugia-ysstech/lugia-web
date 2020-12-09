@@ -221,6 +221,15 @@ export const CardDemo = () => {
           description={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
         />
       </Wrapper>
+
+      <p>头部可操作 没有配置数据</p>
+      <Wrapper>
+        <Card
+          theme={headerOperationCard}
+          type={'customHeader'}
+          description={[<div>this is description</div>]}
+        />
+      </Wrapper>
     </Wrapper>
   );
 };
