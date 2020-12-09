@@ -41,6 +41,9 @@ const getPositionCSS = (position: boolean) => {
   const positionCSS = position ? 'position:absolute;z-index:4000;' : '';
   return positionCSS;
 };
+const isArrayAndHasLength = (array: Object[] | undefined) => {
+  return !Array.isArray(array) || (array && array.length === 0);
+};
 
 const ResponsiveContainer = StaticComponent({
   tag: 'div',
@@ -556,27 +559,36 @@ class Card extends React.Component<CardProps, CardState> {
       __lugiad__header__absolute__,
       getPartOfThemeProps,
     } = this.props;
-    const headerOperationMap = data =>
-      data.map(item => {
-        const { render, click } = item;
-        return <span onClick={click}>{render}</span>;
-      });
-    if (type !== 'customHeader') return;
+    if (
+      type !== 'customHeader' ||
+      (isArrayAndHasLength(headerLeftOperations) && isArrayAndHasLength(headerRightOperations))
+    )
+      return;
     return (
       <TitleHeadContainer
         themeProps={getPartOfThemeProps('CardTitleHeadContainer', {
           props: { __lugiad__header__absolute__, type },
         })}
       >
-        <HeaderOperationInnerContainer>
-          {headerLeftOperations.length > 0 && headerOperationMap(headerLeftOperations)}
-        </HeaderOperationInnerContainer>
+        {this.getHeadOperations(headerLeftOperations)}
         <OptionDivider />
-        <HeaderOperationInnerContainer>
-          {headerRightOperations.length > 0 && headerOperationMap(headerRightOperations)}
-        </HeaderOperationInnerContainer>
+        {this.getHeadOperations(headerRightOperations)}
       </TitleHeadContainer>
     );
+  }
+
+  getHeadOperations(data) {
+    if (isArrayAndHasLength(data)) return;
+    return (
+      <HeaderOperationInnerContainer>{this.getOperationList(data)}</HeaderOperationInnerContainer>
+    );
+  }
+
+  getOperationList(data) {
+    return data.map(item => {
+      const { render, click } = item;
+      return <span onClick={click}>{render}</span>;
+    });
   }
 
   getInnerContent() {
