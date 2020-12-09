@@ -579,16 +579,20 @@ class Card extends React.Component<CardProps, CardState> {
 
   getHeadOperations(data) {
     if (isInvalidArray(data)) return;
-    return (
-      <HeaderOperationInnerContainer>{this.getOperationList(data)}</HeaderOperationInnerContainer>
-    );
+    const operationList = this.getOperationList(data);
+    if (isInvalidArray(operationList)) return;
+    return <HeaderOperationInnerContainer>{operationList}</HeaderOperationInnerContainer>;
   }
 
   getOperationList(data) {
-    return data.map(item => {
+    const operationList = [];
+    data.forEach(item => {
       const { render, click } = item;
-      return <span onClick={click}>{render}</span>;
+      if (render) {
+        operationList.push(<span onClick={click}>{render}</span>);
+      }
     });
+    return operationList;
   }
 
   getInnerContent() {
