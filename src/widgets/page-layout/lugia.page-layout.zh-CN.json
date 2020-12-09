@@ -22,10 +22,6 @@
     "hiddenInfo": {
       "type": "Object",
       "desc": "被隐藏区域的信息"
-    },
-    "contentInfo": {
-      "type": "Object",
-      "desc": "区域内的内容"
     }
   },
   "events": {
