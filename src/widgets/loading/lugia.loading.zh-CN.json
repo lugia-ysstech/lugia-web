@@ -4,6 +4,11 @@
   "desc": "用于页面和区块的加载中状态",
   "tag": "loading 加载中 载入",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "size": {
       "type": "sizeType",
       "desc": "Loading尺寸大小 small|default|large",
