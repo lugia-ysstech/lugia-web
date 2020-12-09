@@ -1043,5 +1043,56 @@ exports[`Card css 1`] = `
       </div>
     </div>
   </div>
+  <p>
+    头部可操作 没有配置数据
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c18"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      style={
+        Object {
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "boxShadow": "0px 0px 6px 0px #d0d3da",
+          "height": "30rem",
+          "width": "100rem",
+        }
+      }
+    >
+      <div
+        className="c3"
+        style={Object {}}
+        type="customHeader"
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "paddingBottom": "1rem",
+              "paddingLeft": "1.2rem",
+              "paddingRight": "1.2rem",
+              "paddingTop": "1.4rem",
+            }
+          }
+        >
+          <div
+            className="c6"
+            style={Object {}}
+          >
+            <div>
+              this is description
+            </div>
+             
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;
