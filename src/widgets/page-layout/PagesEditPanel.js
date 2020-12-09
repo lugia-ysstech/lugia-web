@@ -22,6 +22,7 @@ const PagesEditContainer = styled.div`
   justify-content: space-around;
   padding: 30px;
   flex: 1;
+  max-height: 80%;
 `;
 
 const BottomWrap = styled.div`
