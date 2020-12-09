@@ -93,29 +93,24 @@ export const CardDemo = () => {
   const headerLeftOperations = [
     {
       id: 'l1',
-      click: () => {},
       render: '左一',
     },
     {
       id: 'l2',
-      click: () => {},
       render: '左二',
     },
     {
       id: 'l3',
-      click: () => {},
       render: <Icon />,
     },
   ];
   const headerRightOperations = [
     {
       id: 'r1',
-      click: () => {},
       render: '右一',
     },
     {
       id: 'r2',
-      click: () => {},
       render: <Icon />,
     },
   ];

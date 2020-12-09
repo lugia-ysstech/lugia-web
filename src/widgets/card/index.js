@@ -587,9 +587,9 @@ class Card extends React.Component<CardProps, CardState> {
   getOperationList(data) {
     const operationList = [];
     data.forEach(item => {
-      const { render, click } = item;
+      const { render } = item;
       if (render) {
-        operationList.push(<span onClick={click}>{render}</span>);
+        operationList.push(render);
       }
     });
     return operationList;
