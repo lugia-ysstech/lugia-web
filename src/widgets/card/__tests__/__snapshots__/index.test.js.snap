@@ -961,29 +961,17 @@ exports[`Card css 1`] = `
         <span
           className="c23"
         >
-          <span
+          左一
+          左二
+          <i
+            className="lugia-icon-logo_lugia   c24"
             onClick={[Function]}
-          >
-            左一
-          </span>
-          <span
-            onClick={[Function]}
-          >
-            左二
-          </span>
-          <span
-            onClick={[Function]}
-          >
-            <i
-              className="lugia-icon-logo_lugia   c24"
-              onClick={[Function]}
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={Object {}}
-            />
-          </span>
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
+          />
         </span>
         <span
           className="c25"
@@ -991,24 +979,16 @@ exports[`Card css 1`] = `
         <span
           className="c23"
         >
-          <span
+          右一
+          <i
+            className="lugia-icon-logo_lugia   c24"
             onClick={[Function]}
-          >
-            右一
-          </span>
-          <span
-            onClick={[Function]}
-          >
-            <i
-              className="lugia-icon-logo_lugia   c24"
-              onClick={[Function]}
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={Object {}}
-            />
-          </span>
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
+          />
         </span>
       </div>
       <div
