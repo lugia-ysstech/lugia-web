@@ -41,7 +41,7 @@ const getPositionCSS = (position: boolean) => {
   const positionCSS = position ? 'position:absolute;z-index:4000;' : '';
   return positionCSS;
 };
-const isArrayAndHasLength = (array: Object[] | undefined) => {
+const isInvalidArray = (array: Object[] | undefined) => {
   return !Array.isArray(array) || (array && array.length === 0);
 };
 
@@ -561,7 +561,7 @@ class Card extends React.Component<CardProps, CardState> {
     } = this.props;
     if (
       type !== 'customHeader' ||
-      (isArrayAndHasLength(headerLeftOperations) && isArrayAndHasLength(headerRightOperations))
+      (isInvalidArray(headerLeftOperations) && isInvalidArray(headerRightOperations))
     )
       return;
     return (
@@ -578,7 +578,7 @@ class Card extends React.Component<CardProps, CardState> {
   }
 
   getHeadOperations(data) {
-    if (isArrayAndHasLength(data)) return;
+    if (isInvalidArray(data)) return;
     return (
       <HeaderOperationInnerContainer>{this.getOperationList(data)}</HeaderOperationInnerContainer>
     );
