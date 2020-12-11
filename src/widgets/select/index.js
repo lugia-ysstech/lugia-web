@@ -260,8 +260,11 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   isLimit(): boolean {
-    const { value } = this.state;
+    const { value, length } = this.state;
     const limitCount = this.getLimitCount();
+    if (length === 0) {
+      return false;
+    }
     return value.length >= limitCount;
   }
 
@@ -388,35 +391,33 @@ class Select extends React.Component<SelectProps, SelectState> {
     const searchIconTheme = getPartOfThemeHocProps('SearchIcon');
 
     const menu = [
-      data && data.length !== 0 ? (
-        <QueryInput
-          theme={queryInputTheme}
-          receivedTheme={receivedQueryInputTheme}
-          toggleIconTheme={toggleIconTheme}
-          resetIconTheme={resetIconTheme}
-          searchAddIconTheme={searchAddIconTheme}
-          checkAllIconTheme={checkAllIconTheme}
-          deselectionIconTheme={deselectionIconTheme}
-          searchIconTheme={searchIconTheme}
-          query={query}
-          onQueryInputChange={this.onQueryInputChange}
-          onQueryInputKeyDown={this.onQueryInputKeyDown}
-          refreshValue={this.refreshValue}
-          addClick={this.addClick}
-          isCheckedAll={isCheckedAll}
-          onCheckAll={this.onCheckAll}
-          canSearch={canSearch}
-          mutliple={mutliple}
-          canInput={canInput}
-          searchClearIcon={searchClearIcon}
-          toggleIcon={toggleIcon}
-          resetIcon={resetIcon}
-          searchAddIcon={searchAddIcon}
-          checkAllIcon={checkAllIcon}
-          deselectionIcon={deselectionIcon}
-          searchIcon={searchIcon}
-        />
-      ) : null,
+      <QueryInput
+        theme={queryInputTheme}
+        receivedTheme={receivedQueryInputTheme}
+        toggleIconTheme={toggleIconTheme}
+        resetIconTheme={resetIconTheme}
+        searchAddIconTheme={searchAddIconTheme}
+        checkAllIconTheme={checkAllIconTheme}
+        deselectionIconTheme={deselectionIconTheme}
+        searchIconTheme={searchIconTheme}
+        query={query}
+        onQueryInputChange={this.onQueryInputChange}
+        onQueryInputKeyDown={this.onQueryInputKeyDown}
+        refreshValue={this.refreshValue}
+        addClick={this.addClick}
+        isCheckedAll={isCheckedAll}
+        onCheckAll={this.onCheckAll}
+        canSearch={canSearch}
+        mutliple={mutliple}
+        canInput={canInput}
+        searchClearIcon={searchClearIcon}
+        toggleIcon={toggleIcon}
+        resetIcon={resetIcon}
+        searchAddIcon={searchAddIcon}
+        checkAllIcon={checkAllIcon}
+        deselectionIcon={deselectionIcon}
+        searchIcon={searchIcon}
+      />,
       this.getMenuItems(getMenu),
     ];
 
@@ -661,7 +662,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     return searchFields && Array.isArray(searchFields) && searchFields.length > 0;
   }
 
-  updateMenuData(data: Array<Object>, query: string | number, searchType?: QueryType = 'include') {
+  updateMenuData(data: Array<Object>, query: string | number, searchType: QueryType = 'include') {
     const { displayField = DisplayField, searchFields = [] } = this.props;
 
     let menuData;
