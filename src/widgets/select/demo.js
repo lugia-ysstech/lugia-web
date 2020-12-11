@@ -170,6 +170,15 @@ export default class Demo extends React.Component {
           valueField={'eventValue'}
           displayField={'eventName'}
         />
+        <H2>single value ,data为空时,展示 SearchInput</H2>
+        <Select
+          createPortal
+          canSearch
+          canInput
+          isShowClearButton={false}
+          valueField={'eventValue'}
+          displayField={'eventName'}
+        />
         <H2>renderSuffixItems属性</H2>
         <Select
           createPortal
