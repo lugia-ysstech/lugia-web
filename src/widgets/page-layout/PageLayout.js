@@ -11,26 +11,35 @@ import EnlargeContainer from './EnlargeContainer';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { defaultMargin, typeType } from './utils';
 import { PageLayoutContext } from './PageLayoutWrap';
+import { px2remcss } from '../css/units';
 
-export const PageLayoutWrap = CSSComponent({
+const DefaultContainerHeight = 600;
+
+export const PageLayoutContainer = CSSComponent({
   tag: 'div',
-  className: 'PageLayoutWrap',
+  className: 'PageLayoutContainer',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [['width']],
+    getCSS: (themeMeta, themeProps) => {
+      const { propsConfig: { activeContainerHeight } = {} } = themeProps;
+      return `
+          height: ${px2remcss(Number(activeContainerHeight))}
+        `;
+    },
   },
   hover: {
     selectNames: [],
   },
   css: css`
     width: 100%;
-    height: 600px;
+    height: ${DefaultContainerHeight}px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
   `,
   option: { hover: false },
 });
-PageLayoutWrap.displayName = 'PageLayoutWrap';
+PageLayoutContainer.displayName = 'PageLayoutContainer';
 
 const CommonFlexWrap = styled.div`
   width: 100%;
@@ -97,26 +106,105 @@ function fetchShowData(data: Object, hiddenInfo: Object = {}) {
 }
 
 function filterShowData(showData: Object, data: Object, hiddenInfo: Object) {
-  data.forEach(item => {
-    const { id, children = [] } = item;
+  let canPushNextSpacing = true;
+
+  data.forEach((item, index) => {
+    const { id, children = [], spacing = false } = item;
     const newItem = JSON.parse(JSON.stringify(item));
-    if (!hiddenInfo[id]) {
-      if (children.length !== 0) {
+
+    /**
+     * 当隐藏一块内容区域时，将相邻的固定右边或下边的固定区域隐藏
+     * 如果下一个固定区域时最后一个，则不隐藏
+     */
+    const nextIndex = index + 1;
+    const inArea = nextIndex < data.length - 1;
+
+    let nextItemIsSpacing = false;
+    if (inArea) {
+      const { spacing = false } = data[nextIndex];
+      if (spacing) {
+        nextItemIsSpacing = true;
+      }
+    }
+
+    if (hiddenInfo[id]) {
+      if (nextItemIsSpacing) {
+        canPushNextSpacing = false;
+      }
+    } else {
+      if (children.length === 0) {
+        if (!spacing) {
+          showData.push(newItem);
+        } else {
+          canPushNextSpacing && showData.push(newItem);
+        }
+        canPushNextSpacing = true;
+      } else {
         const newChildren = [];
         filterShowData(newChildren, children, hiddenInfo);
-        newItem.children = newChildren;
+        const noFlexChild = newChildren.every(newChild => {
+          return newChild.spacing;
+        });
+        if (!noFlexChild) {
+          newItem.children = newChildren;
+          showData.push(newItem);
+          canPushNextSpacing = true;
+        } else {
+          if (nextItemIsSpacing) {
+            canPushNextSpacing = false;
+          }
+        }
       }
-      showData.push(newItem);
     }
   });
+}
+
+function fetchFlexValue(value: string) {
+  const numberStr = value.split('%')[0];
+  return Number(numberStr);
+}
+
+function getOutRowItemsHeight(containerHeight: string, data: Object) {
+  let flexTotalHeight = containerHeight;
+  let spacingTotalHeight = 0;
+  const spacingHeightTarget = {};
+  const rowPercentHeightTarget = {};
+  data.forEach(item => {
+    const {
+      type = 'cow',
+      spacing = false,
+      id = '',
+      size: { height = '0%' } = {},
+      numberHeight = 0,
+    } = item;
+    if (type === 'row') {
+      if (spacing) {
+        const spacingHeight = Number(numberHeight);
+        flexTotalHeight -= spacingHeight;
+        spacingTotalHeight += spacingHeight;
+        spacingHeightTarget[id] = spacingHeight;
+      } else {
+        rowPercentHeightTarget[id] = fetchFlexValue(height) / 100;
+      }
+    }
+  });
+
+  return {
+    containerHeight,
+    flexTotalHeight,
+    spacingTotalHeight,
+    spacingHeightTarget,
+    rowPercentHeightTarget,
+  };
 }
 
 type PageLayoutProps = {
   theme: Object,
   data: Object[],
   drag?: boolean,
-  enlarge?: boolean,
+  enlarge: boolean,
   title: string,
+  fixedHeight: boolean,
   contentInfo: Object,
   hiddenInfo: Object,
   onChange?: Function,
@@ -132,14 +220,15 @@ type PageLayoutState = {
 
 class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   static contextType = PageLayoutContext;
-
+  static defaultProps = {
+    fixedHeight: true,
+    enlarge: false,
+  };
   constructor(props) {
     super(props);
     const { data = [], hiddenInfo = {}, contentInfo = {} } = this.props;
-    const showData = fetchShowData(data, hiddenInfo);
     this.state = {
       data,
-      showData,
       contentInfo,
       hiddenInfo,
     };
@@ -151,6 +240,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     this.cloneNode = null;
     this.enlargeContainer = React.createRef();
     this.wrapId = this.getWrapId();
+    this.allRowItemsHeight = getOutRowItemsHeight(this.getContainerHeight(), data);
   }
 
   static getDerivedStateFromProps(props: any, state: any) {
@@ -169,11 +259,11 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     }
     const isLimitHiddenInfo = !__lugiad__header__absolute__ && 'hiddenInfo' in props;
     const activeHiddenInfo = isLimitHiddenInfo ? hiddenInfo : state.hiddenInfo;
-    const showData = fetchShowData(data, activeHiddenInfo);
 
     const isLimitContentInfo = !__lugiad__header__absolute__ && 'contentInfo' in props;
     const activeContentInfo = isLimitContentInfo ? contentInfo : state.contentInfo;
 
+    const showData = fetchShowData(data, activeHiddenInfo);
     return {
       data,
       showData,
@@ -455,7 +545,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
         const { width = '0%', height = '0%' } = size;
 
         const itemFlexStr = type === 'row' ? height : width;
-        const itemFlex = this.fetchFlexValue(itemFlexStr);
+        const itemFlex = fetchFlexValue(itemFlexStr);
         allFlex = allFlex + itemFlex;
       }
     });
@@ -479,11 +569,11 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     let nextFlex;
 
     if (type === 'row') {
-      preFlex = this.fetchFlexValue(preHeightPercent);
-      nextFlex = this.fetchFlexValue(nextHeightPercent);
+      preFlex = fetchFlexValue(preHeightPercent);
+      nextFlex = fetchFlexValue(nextHeightPercent);
     } else {
-      preFlex = this.fetchFlexValue(preWidthPercent);
-      nextFlex = this.fetchFlexValue(nextWidthPercent);
+      preFlex = fetchFlexValue(preWidthPercent);
+      nextFlex = fetchFlexValue(nextWidthPercent);
     }
     const allFlex = this.fetchAllBrotherItemsFlex(type, brotherItems);
     const preSize = this.fetchFlexToValue(preFlex, fatherSize, allFlex);
@@ -683,16 +773,11 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     ) : null;
   };
 
-  fetchFlexValue = value => {
-    const numberStr = value.split('%')[0];
-    return Number(numberStr);
-  };
-
   fetchPercentToFlexValue = (size: Object = {}) => {
     const { width = '100%', height = '100%' } = size;
     return {
-      widthFlex: this.fetchFlexValue(width),
-      heightFlex: this.fetchFlexValue(height),
+      widthFlex: fetchFlexValue(width),
+      heightFlex: fetchFlexValue(height),
     };
   };
 
@@ -929,20 +1014,98 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     const { showData = [], contentInfo = {} } = this.state;
     this.updateInfo();
     return (
-      <PageLayoutWrap id={this.wrapId} themeProps={this.getWrapThemeProps()}>
+      <PageLayoutContainer id={this.wrapId} themeProps={this.getWrapThemeProps()}>
         {this.getPageLayoutComponent(showData)}
         <EnlargeContainer
           wrapId={this.wrapId}
           ref={this.enlargeContainer}
           contentInfo={contentInfo}
         />
-      </PageLayoutWrap>
+      </PageLayoutContainer>
     );
   }
 
+  getOutRowFlexIds = () => {
+    const { showData = [] } = this.state;
+    const outRowFlexIds = [];
+    const outRowSpacingIds = [];
+    showData.forEach(item => {
+      const { id = '', type = 'row', spacing = false } = item;
+      if (type === 'row') {
+        if (spacing) {
+          outRowSpacingIds.push(id);
+        } else {
+          outRowFlexIds.push(id);
+        }
+      }
+    });
+    return { outRowFlexIds, outRowSpacingIds };
+  };
+
+  getContainerHeight = () => {
+    const { getPartOfThemeConfig } = this.props;
+    const {
+      normal: { height = DefaultContainerHeight },
+    } = getPartOfThemeConfig('Container');
+    return height;
+  };
+
+  getTotalOutRowSpacingHeight = (outRowSpacingIds: String[], spacingHeightTarget: Object = {}) => {
+    if (outRowSpacingIds.length === 0) {
+      return 0;
+    }
+    let totalOutRowSpacingHeight = 0;
+    outRowSpacingIds.forEach(id => {
+      totalOutRowSpacingHeight += spacingHeightTarget[id];
+    });
+    return totalOutRowSpacingHeight;
+  };
+
+  getTotalOutRowFlexHeight = (
+    outRowFlexIds: string[],
+    rowPercentHeightTarget: Object = {},
+    flexTotalHeight: string
+  ) => {
+    let totalOutRowFlexHeight = 0;
+    outRowFlexIds.forEach(id => {
+      totalOutRowFlexHeight += flexTotalHeight * rowPercentHeightTarget[id];
+    });
+    return totalOutRowFlexHeight;
+  };
+
   getWrapThemeProps = () => {
-    const { getPartOfThemeProps } = this.props;
-    return getPartOfThemeProps('Container');
+    const { getPartOfThemeProps, fixedHeight } = this.props;
+    const { outRowFlexIds, outRowSpacingIds } = this.getOutRowFlexIds();
+    const {
+      containerHeight,
+      flexTotalHeight,
+      spacingHeightTarget = {},
+      rowPercentHeightTarget = {},
+    } = this.allRowItemsHeight;
+    let activeContainerHeight;
+    if (fixedHeight) {
+      activeContainerHeight = containerHeight;
+    } else {
+      if (outRowFlexIds.length === 0) {
+        activeContainerHeight = 0;
+      } else {
+        const totalOutRowSpacingHeight = this.getTotalOutRowSpacingHeight(
+          outRowSpacingIds,
+          spacingHeightTarget
+        );
+        const totalOutRowFlexHeight = this.getTotalOutRowFlexHeight(
+          outRowFlexIds,
+          rowPercentHeightTarget,
+          flexTotalHeight
+        );
+        activeContainerHeight = totalOutRowSpacingHeight + totalOutRowFlexHeight;
+      }
+    }
+    return getPartOfThemeProps('Container', {
+      props: {
+        activeContainerHeight,
+      },
+    });
   };
 }
 

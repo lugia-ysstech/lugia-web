@@ -121,6 +121,14 @@ const data1 = [
         },
         children: [
           {
+            id: 'com1C1C1-spacing-1',
+            spacing: true,
+            type: 'row',
+            fatherId: 'com1C1',
+            path: 'com1/com1C1',
+            numberHeight: 10,
+          },
+          {
             id: 'com1C1C1',
             type: 'row',
             fatherId: 'com1C1',
@@ -129,6 +137,14 @@ const data1 = [
               width: '100%',
               height: '20%',
             },
+          },
+          {
+            id: 'com1C1C1-spacing-2',
+            spacing: true,
+            type: 'row',
+            fatherId: 'com1C1',
+            path: 'com1/com1C1',
+            numberHeight: 10,
           },
           {
             id: 'com1C1C2',
@@ -161,6 +177,14 @@ const data1 = [
             },
           },
           {
+            id: 'com1C1C1-spacing-3',
+            spacing: true,
+            type: 'row',
+            fatherId: 'com1C1',
+            path: 'com1/com1C1',
+            numberHeight: 10,
+          },
+          {
             id: 'com1C1C5',
             type: 'row',
             fatherId: 'com1C1',
@@ -169,6 +193,14 @@ const data1 = [
               width: '100%',
               height: '20%',
             },
+          },
+          {
+            id: 'com1C1C1-spacing-4',
+            spacing: true,
+            type: 'row',
+            fatherId: 'com1C1',
+            path: 'com1/com1C1',
+            numberHeight: 10,
           },
         ],
       },
@@ -183,6 +215,15 @@ const data1 = [
           height: '100%',
         },
         children: [
+          {
+            id: 'com1C2C1-spacing-1',
+            spacing: true,
+            type: 'row',
+            fatherId: 'com1C2',
+            path: 'com1/com1C2',
+            numberHeight: 20,
+          },
+
           {
             id: 'com1C2C1',
             type: 'row',
@@ -240,7 +281,7 @@ const data1 = [
   {
     id: 'com2',
     type: 'row',
-    size: { width: '100%', height: '40%' },
+    size: { width: '100%', height: '20%' },
     children: [
       {
         id: 'com2C1',
@@ -284,18 +325,6 @@ const data1 = [
   },
 
   {
-    id: 'c-spacing-3',
-    spacing: true,
-    type: 'row',
-    numberHeight: 20,
-  },
-  {
-    id: 'c-spacing-4',
-    spacing: true,
-    type: 'row',
-    numberHeight: 20,
-  },
-  {
     id: 'c-spacing-5',
     spacing: true,
     type: 'row',
@@ -313,10 +342,20 @@ const data1 = [
     size: { width: '100%', height: '10%' },
   },
   {
+    id: 'com5',
+    type: 'row',
+    size: { width: '100%', height: '10%' },
+  },
+  {
     id: 'c-spacing-6',
     spacing: true,
     type: 'row',
     numberHeight: 20,
+  },
+  {
+    id: 'com6',
+    type: 'row',
+    size: { width: '100%', height: '10%' },
   },
   {
     id: 'c-spacing-7',
@@ -395,19 +434,23 @@ const config = {
       normal: {
         width: 1200,
         height: 800,
-        background: {
-          color: 'pink',
-        },
+        // background: {
+        //   color: 'pink',
+        // },
       },
     },
   },
 };
 
 const contentInfo1 = {
-  com1C1C1: { component: <Page1Content>页面一内容</Page1Content>, title: '页面' },
-  com1C2C1: { component: <Page2Content>页面二内容</Page2Content>, title: '页面' },
-  com2C1: { component: <Page3Content>页面三内容</Page3Content>, title: '页面' },
-  com3: { component: <Page4Content>页面四内容</Page4Content>, title: '页面' },
+  com1C1C1: { component: <Page1Content>页面一内容</Page1Content>, title: '页面1' },
+  com1C1C4: { component: <Page2Content>页面com1C1C4内容</Page2Content>, title: '页面com1C1C4' },
+  com1C1C5: { component: <Page2Content>页面com1C1C5内容</Page2Content>, title: '页面com1C1C5' },
+  com2C1: { component: <Page3Content>页面三内容</Page3Content>, title: '页面3' },
+  com2C2: { component: <Page2Content>页面二内容</Page2Content>, title: '页面2' },
+  com2C3: { component: <Page4Content>页面四内容</Page4Content>, title: '页面4' },
+  com3: { component: <Page4Content>页面五内容</Page4Content>, title: '页面5' },
+  com5: { component: <Page1Content>页面com5内容</Page1Content>, title: '页面com5' },
 };
 
 const contentInfo2 = {
@@ -417,7 +460,8 @@ const contentInfo2 = {
 };
 
 const hiddenInfo1 = {
-  com1C1C1: true,
+  // com1C1C1: true,
+  com2C3: true,
 };
 
 const hiddenInfo2 = {
@@ -479,6 +523,7 @@ class Demo extends Component {
       hiddenInfo1 = {},
       hiddenInfo2 = {},
     } = this.state;
+
     return (
       <Wrap>
         <LineMargin />
@@ -490,6 +535,7 @@ class Demo extends Component {
               data={data1}
               drag
               enlarge
+              fixedHeight={false}
               title={'模块一'}
               hiddenInfo={hiddenInfo1}
               contentInfo={contentInfo1}

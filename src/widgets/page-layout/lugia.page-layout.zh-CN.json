@@ -14,6 +14,11 @@
       "desc": "是否支持指定区域全屏展示",
       "propsDefaultValue": false
     },
+    "fixedHeight": {
+      "type": "boolean",
+      "desc": "区域隐藏后, 组件总高度是否保持不变",
+      "propsDefaultValue": true
+    },
     "title": {
       "type": "string",
       "desc": "页面布局组件的title",
@@ -56,24 +61,12 @@
       ]
     }
   },
-  "category": [
-    "数据录入"
-  ],
+  "category": ["数据录入"],
   "theme": {
     "Container": {
       "name": "页面布局",
       "desc": "页面布局组件外盒配置",
-      "normal": [
-        [
-          "width"
-        ],
-        [
-          "height"
-        ],
-        [
-          "background"
-        ]
-      ],
+      "normal": [["width"], ["height"], ["background"]],
       "hover": [],
       "clicked": [],
       "disabled": []
