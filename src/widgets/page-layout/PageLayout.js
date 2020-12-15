@@ -928,10 +928,13 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   };
 
   getContainerBackground = () => {
-    const { getPartOfThemeConfig } = this.props;
+    const { getPartOfThemeConfig, __lugiad__header__absolute__: isIdeOpen = false } = this.props;
     const config = getPartOfThemeConfig('Container');
-    const { normal: { background: { color = '#f5f5f5' } = {} } = {} } = config;
-    return color;
+    const { normal: { background: { color } = {} } = {} } = config;
+    if (color) {
+      return color;
+    }
+    return isIdeOpen ? 'transparent' : '#f5f5f5';
   };
   getPageLayoutComponent = (data: Object = []) => {
     if (data.length === 0) {
