@@ -122,9 +122,7 @@ function filterShowData(showData: Object, data: Object, hiddenInfo: Object) {
     let nextItemIsSpacing = false;
     if (inArea) {
       const { spacing = false } = data[nextIndex];
-      if (spacing) {
-        nextItemIsSpacing = true;
-      }
+      nextItemIsSpacing = !!spacing;
     }
 
     if (hiddenInfo[id]) {
