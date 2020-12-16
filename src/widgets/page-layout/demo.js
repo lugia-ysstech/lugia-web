@@ -16,6 +16,12 @@ const Wrap = styled.div`
   padding: 20px;
 `;
 
+const PageLayoutContainer = styled.div`
+  height: 1000px;
+  width: 100%;
+  background: #000;
+`;
+
 const LineMargin = styled.div`
   width: 100%;
   height: 20px;
@@ -433,10 +439,7 @@ const config = {
     Container: {
       normal: {
         width: 1200,
-        height: 800,
-        // background: {
-        //   color: 'pink',
-        // },
+        height: '100%',
       },
     },
   },
@@ -462,6 +465,8 @@ const contentInfo2 = {
 const hiddenInfo1 = {
   // com1C1C1: true,
   com2C3: true,
+  com2C1: true,
+  com2C2: true,
 };
 
 const hiddenInfo2 = {
@@ -526,10 +531,8 @@ class Demo extends Component {
 
     return (
       <Wrap>
-        <LineMargin />
-
         <PageLayoutWrap>
-          <div>
+          <PageLayoutContainer>
             <PageLayoutCom
               theme={config}
               data={data1}
@@ -540,24 +543,26 @@ class Demo extends Component {
               hiddenInfo={hiddenInfo1}
               contentInfo={contentInfo1}
               onChange={this.onChange1}
-              __lugiad__header__absolute__
+              // __lugiad__header__absolute__
               onHiddenInfoChange={this.onHiddenInfoChange1}
               onContentInfoChange={this.onContentInfoChange1}
             />
-          </div>
+          </PageLayoutContainer>
 
           {'a '}
           <LineMargin />
-          <PageLayoutCom
-            theme={config}
-            data={data2}
-            title={'模块二'}
-            hiddenInfo={hiddenInfo2}
-            contentInfo={contentInfo2}
-            onChange={this.onChange2}
-            onHiddenInfoChange={this.onHiddenInfoChange2}
-            onContentInfoChange={this.onContentInfoChange2}
-          />
+          <PageLayoutContainer>
+            <PageLayoutCom
+              theme={config}
+              data={data2}
+              title={'模块二'}
+              hiddenInfo={hiddenInfo2}
+              contentInfo={contentInfo2}
+              onChange={this.onChange2}
+              onHiddenInfoChange={this.onHiddenInfoChange2}
+              onContentInfoChange={this.onContentInfoChange2}
+            />
+          </PageLayoutContainer>
         </PageLayoutWrap>
       </Wrap>
     );

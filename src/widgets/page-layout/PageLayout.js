@@ -21,10 +21,20 @@ export const PageLayoutContainer = CSSComponent({
   normal: {
     selectNames: [['width']],
     getCSS: (themeMeta, themeProps) => {
-      const { propsConfig: { activeContainerHeight } = {} } = themeProps;
+      const {
+        propsConfig: { activeContainerHeight, fixedHeight, init } = {},
+        themeConfig: { normal: { height } = {} },
+      } = themeProps;
+
+      let theHeight;
+      if (fixedHeight || init) {
+        theHeight = typeof height === 'number' ? px2remcss(height) : height;
+      } else {
+        theHeight = px2remcss(activeContainerHeight);
+      }
       return `
-          height: ${px2remcss(Number(activeContainerHeight))}
-        `;
+              height: ${theHeight};
+           `;
     },
   },
   hover: {
@@ -238,7 +248,8 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     this.cloneNode = null;
     this.enlargeContainer = React.createRef();
     this.wrapId = this.getWrapId();
-    this.allRowItemsHeight = getOutRowItemsHeight(this.getContainerHeight(), data);
+    this.containerRef = React.createRef();
+    this.initContainerHeight = true;
   }
 
   static getDerivedStateFromProps(props: any, state: any) {
@@ -273,6 +284,11 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   componentDidMount() {
     document.body.addEventListener('mousemove', this.onMouseMove);
     document.body.addEventListener('mouseup', this.onMouseUp);
+    const { fixedHeight } = this.props;
+    if (!fixedHeight) {
+      this.containerHeight = this.containerRef.current.offsetHeight;
+      this.initContainerHeight = false;
+    }
   }
 
   componentWillUnmount() {
@@ -286,6 +302,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
       themeProps: nextThemeProps,
       data: nextData,
       title: nextTitle,
+      fixedHeight: nextFixedHeight,
       hiddenInfo: nextHiddenInfo = {},
       contentInfo: nextContentInfo = {},
       __lugiad__header__absolute__: __next__lugiad__header__absolute__,
@@ -296,6 +313,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
       themeProps,
       data,
       title,
+      fixedHeight,
       hiddenInfo = {},
       contentInfo = {},
       __lugiad__header__absolute__,
@@ -316,6 +334,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
 
     return (
       title !== nextTitle ||
+      fixedHeight !== nextFixedHeight ||
       __lugiad__header__absolute__ !== __next__lugiad__header__absolute__ ||
       this.isObjectChange(theme, nextTheme) ||
       this.isObjectChange(themeProps, nextThemeProps) ||
@@ -929,7 +948,10 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     const { getPartOfThemeConfig, __lugiad__header__absolute__: isIdeOpen = false } = this.props;
     const config = getPartOfThemeConfig('Container');
     const { normal: { background: { color } = {} } = {} } = config;
-    return color || isIdeOpen ? 'transparent' : '#f5f5f5';
+    if (color) {
+      return color;
+    }
+    return isIdeOpen ? 'transparent' : '#f5f5f5';
   };
   getPageLayoutComponent = (data: Object = []) => {
     if (data.length === 0) {
@@ -1012,7 +1034,11 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     const { showData = [], contentInfo = {} } = this.state;
     this.updateInfo();
     return (
-      <PageLayoutContainer id={this.wrapId} themeProps={this.getWrapThemeProps()}>
+      <PageLayoutContainer
+        ref={this.containerRef}
+        id={this.wrapId}
+        themeProps={this.getWrapThemeProps()}
+      >
         {this.getPageLayoutComponent(showData)}
         <EnlargeContainer
           wrapId={this.wrapId}
@@ -1040,14 +1066,6 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     return { outRowFlexIds, outRowSpacingIds };
   };
 
-  getContainerHeight = () => {
-    const { getPartOfThemeConfig } = this.props;
-    const {
-      normal: { height = defaultContainerHeight },
-    } = getPartOfThemeConfig('Container');
-    return height;
-  };
-
   getTotalOutRowSpacingHeight = (outRowSpacingIds: String[], spacingHeightTarget: Object = {}) => {
     if (outRowSpacingIds.length === 0) {
       return 0;
@@ -1072,21 +1090,17 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   };
 
   getWrapThemeProps = () => {
-    const { getPartOfThemeProps, fixedHeight } = this.props;
-    const { outRowFlexIds, outRowSpacingIds } = this.getOutRowFlexIds();
-    const {
-      containerHeight,
-      flexTotalHeight,
-      spacingHeightTarget = {},
-      rowPercentHeightTarget = {},
-    } = this.allRowItemsHeight;
-    let activeContainerHeight;
-    if (fixedHeight) {
-      activeContainerHeight = containerHeight;
-    } else {
-      if (outRowFlexIds.length === 0) {
-        activeContainerHeight = 0;
-      } else {
+    const { data = [], getPartOfThemeProps, fixedHeight } = this.props;
+    let activeContainerHeight = 0;
+    if (!fixedHeight && !this.initContainerHeight) {
+      const { outRowFlexIds, outRowSpacingIds } = this.getOutRowFlexIds();
+      const {
+        flexTotalHeight,
+        spacingHeightTarget = {},
+        rowPercentHeightTarget = {},
+      } = getOutRowItemsHeight(this.containerHeight, data);
+
+      if (outRowFlexIds.length !== 0) {
         const totalOutRowSpacingHeight = this.getTotalOutRowSpacingHeight(
           outRowSpacingIds,
           spacingHeightTarget
@@ -1099,9 +1113,12 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
         activeContainerHeight = totalOutRowSpacingHeight + totalOutRowFlexHeight;
       }
     }
+
     return getPartOfThemeProps('Container', {
       props: {
         activeContainerHeight,
+        fixedHeight,
+        init: this.initContainerHeight,
       },
     });
   };
