@@ -13,7 +13,7 @@ import { defaultMargin, typeType } from './utils';
 import { PageLayoutContext } from './PageLayoutWrap';
 import { px2remcss } from '../css/units';
 
-const DefaultContainerHeight = 600;
+const defaultContainerHeight = 600;
 
 export const PageLayoutContainer = CSSComponent({
   tag: 'div',
@@ -32,7 +32,7 @@ export const PageLayoutContainer = CSSComponent({
   },
   css: css`
     width: 100%;
-    height: ${DefaultContainerHeight}px;
+    height: ${defaultContainerHeight}px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -171,7 +171,7 @@ function getOutRowItemsHeight(containerHeight: string, data: Object) {
   const rowPercentHeightTarget = {};
   data.forEach(item => {
     const {
-      type = 'cow',
+      type = 'row',
       spacing = false,
       id = '',
       size: { height = '0%' } = {},
@@ -931,10 +931,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     const { getPartOfThemeConfig, __lugiad__header__absolute__: isIdeOpen = false } = this.props;
     const config = getPartOfThemeConfig('Container');
     const { normal: { background: { color } = {} } = {} } = config;
-    if (color) {
-      return color;
-    }
-    return isIdeOpen ? 'transparent' : '#f5f5f5';
+    return color || isIdeOpen ? 'transparent' : '#f5f5f5';
   };
   getPageLayoutComponent = (data: Object = []) => {
     if (data.length === 0) {
@@ -1048,7 +1045,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   getContainerHeight = () => {
     const { getPartOfThemeConfig } = this.props;
     const {
-      normal: { height = DefaultContainerHeight },
+      normal: { height = defaultContainerHeight },
     } = getPartOfThemeConfig('Container');
     return height;
   };
