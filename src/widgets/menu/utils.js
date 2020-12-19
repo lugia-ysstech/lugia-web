@@ -217,7 +217,7 @@ export function recurTreeData(
     parentPath?: string[],
   },
 
-  opt?: {
+  opt: {
     onAdd?: Function,
     displayField?: string,
     valueField?: string,
