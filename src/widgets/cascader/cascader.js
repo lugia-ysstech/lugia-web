@@ -5,11 +5,9 @@
  */
 import * as React from 'react';
 import Menu from '../menu';
-import Widget from '../consts/index';
 import Trigger from '../trigger';
 import Theme from '../theme';
 import InputTag from '../inputtag';
-import { getTreeData } from '../menu/utils';
 import { deepMerge } from '@lugia/object-utils';
 import { getInputtagThemeHoc } from '../select/utils';
 import { DisplayField, ValueField } from '../consts/props';
@@ -33,7 +31,7 @@ type CascaderProps = {
   onChange?: Function,
   separator?: string,
   value: string[],
-  divided?: Boolean,
+  divided: Boolean,
   displayValue?: string[],
   disabled: boolean,
   displayField: string,
@@ -43,6 +41,7 @@ type CascaderProps = {
   allowClear?: boolean,
   pullIconClass?: string,
   clearIconClass?: string,
+  getPartOfThemeHocProps: Function,
 };
 type CascaderState = {
   popupVisible: boolean,
@@ -54,7 +53,7 @@ type CascaderState = {
   getPartOfThemeProps: Function,
 };
 
-const DefaultMenuWidth = 150;
+const defaultMenuWidth = 150;
 
 export default class Cascader extends React.Component<CascaderProps, CascaderState> {
   static defaultProps = {
@@ -67,6 +66,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     valueField: ValueField,
     allowClear: true,
     createPortal: false,
+    divided: false,
     pullIconClass: 'lugia-icon-direction_down',
     clearIconClass: 'lugia-icon-reminder_close',
   };
@@ -79,27 +79,25 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
 
   constructor(props: CascaderProps) {
     super(props);
-    this.state = {
-      popupVisible: false,
-      value: getValue(props, null),
-      expandedPath: getInitExpandedPath(props),
-      selectedKeys: getInitExpandedPath(props),
-      inputValue: getInitInputValue(props),
-      treeData: getTreeData(props),
-      divided: false,
-    };
     this.menu = React.createRef();
   }
 
   static getDerivedStateFromProps(props: CascaderProps, state: CascaderState) {
     if (!state) {
-      return {};
+      return {
+        popupVisible: false,
+        value: getValue(props, null),
+        selectedKeys: getInitExpandedPath(props),
+        expandedPath: getInitExpandedPath(props),
+        inputValue: getInitInputValue(props),
+      };
     }
 
     return {
       value: getValue(props, state),
       selectedKeys: state.value,
       expandedPath: state.expandedPath,
+      popupVisible: state.popupVisible,
       inputValue: getInputValue(props, state),
     };
   }
@@ -166,7 +164,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     this.trigger && this.trigger.setPopupVisible(visible, force);
   }
 
-  setPopupVisibleInner(popupVisible: boolean, otherTarget?: Object = {}) {
+  setPopupVisibleInner(popupVisible: boolean, otherTarget: Object = {}) {
     if (!popupVisible && this.forcePopup) {
       return;
     }
@@ -196,12 +194,14 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
       separator,
       offsetX,
       valueField,
+      treeData,
       displayField,
       divided,
       autoHeight,
       switchIconClass,
     } = this.props;
     const { popupVisible, expandedPath, selectedKeys } = this.state;
+
     return (
       <Menu
         {...this.getMenuTheme()}
@@ -216,6 +216,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
         handleIsInMenu={this.handleIsInMenu}
         checkedCSS={'background'}
         data={data}
+        __treeData__={treeData}
         displayField={displayField}
         valueField={valueField}
         onClick={this.onClick}
@@ -252,7 +253,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     const { getPartOfThemeConfig } = this.props;
     const { InputTagWrap = {} } = getPartOfThemeConfig('InputTag');
     const { normal = {} } = InputTagWrap;
-    const { width = DefaultMenuWidth } = normal;
+    const { width = defaultMenuWidth } = normal;
     const defaultMenuTheme = {
       Container: {
         normal: {
