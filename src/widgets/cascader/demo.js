@@ -155,8 +155,6 @@ const info = [
 ];
 
 const dataSource = [
-  // { text: '一级菜单1', value: 'a1' },
-  // { text: '一级菜单2', value: 'a2' },
   {
     text: '一级菜单4',
     value: 'a4',
@@ -168,28 +166,6 @@ const dataSource = [
       },
     ],
   },
-  // {
-  //   text: '一级菜单6',
-  //   value: 'a6',
-  //   disabled: false,
-  //   children: [
-  //     { text: '次级菜单6-1', value: 'a6-1' },
-  //     {
-  //       text: '次级菜单6-2',
-  //       value: 'a6-2',
-  //       children: [
-  //         {
-  //           text: '三级菜单6-2-1',
-  //           value: 'a6-2-1',
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
-  // { text: '一级菜单9', value: 'a9' },
-  // { text: '一级菜单10', value: 'a10' },
-  // { text: '一级菜单11', value: 'a11' },
-  // { text: '一级菜单12', value: 'a12' },
 ];
 
 export default class extends React.Component<any, any> {
