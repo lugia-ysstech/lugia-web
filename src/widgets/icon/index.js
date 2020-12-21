@@ -5,7 +5,6 @@
  */
 import '../common/shirm';
 import * as React from 'react';
-import '../css/font/lugia-icon.css';
 import { px2remcss } from '../css/units';
 import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
@@ -29,7 +28,7 @@ const IconImgWrap = CSSComponent({
         width: ${px2remcss(activeFontSize)};
         height: ${px2remcss(activeFontSize)};
         text-align: center;
-        
+
         & img{
           max-width: 100%;
           max-height: 100%;
@@ -49,7 +48,7 @@ const IconImgWrap = CSSComponent({
         width: ${px2remcss(activeFontSize)};
         height: ${px2remcss(activeFontSize)};
         text-align: center;
-        
+
         & img{
           max-width: 100%;
           max-height: 100%;
