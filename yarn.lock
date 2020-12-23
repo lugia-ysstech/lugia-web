@@ -1100,10 +1100,10 @@
     clone "^2.1.1"
     deep-equal "^1.0.1"
 
-"@lugia/listener@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.npmjs.org/@lugia/listener/-/listener-1.0.5.tgz#7283a14ff90a69ae72e05ce826e2d602614a5357"
-  integrity sha512-w4zmw9oBlYFKcDF3CJUlPamW3EpuAlFY1foOEa5th0iOb+YHp8qstbJdJ7nW2MJ4nO8Sk7ociIwRRANUlv2YWA==
+"@lugia/listener@^1.1.1":
+  version "1.1.1"
+  resolved "http://192.168.102.79:5001/@lugia%2flistener/-/listener-1.1.1.tgz#5bae2cd4f3b8e0dc32f2681b6a8ea0fbbac83418"
+  integrity sha1-W64s1PO44Nwy8mgbao6g+7rINBg=
   dependencies:
     "@babel/runtime" "^7.4.5"
     events "^3.0.0"
@@ -1486,13 +1486,13 @@
     "@types/styled-components" "^4.4.3"
     tslib "^1.11.1"
 
-"@lugia/theme-hoc@^1.1.10":
-  version "1.1.10"
-  resolved "https://registry.npmjs.org/@lugia/theme-hoc/-/theme-hoc-1.1.10.tgz#bcb952ec745dd9e82ac5e0b64d9351079cf09b1e"
-  integrity sha512-vM+NhOnr7qpSPXq0qbsIKeh44OYR5G2+INbUOXyYiJX66HwCyp32BGlXW/tygF1PhJtF+QsQE5phngj6B/i7BA==
+"@lugia/theme-hoc@^1.1.16":
+  version "1.1.16"
+  resolved "http://192.168.102.79:5001/@lugia%2ftheme-hoc/-/theme-hoc-1.1.16.tgz#b2fc4c98acf16b76b70d7f6004a69cd511dc886c"
+  integrity sha1-svxMmKzxa3a3DX9gBKac1RHciGw=
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/object-utils" "^1.0.19"
+    "@lugia/object-utils" "^1.1.0"
     "@types/react" "^16.9.32"
     "@types/styled-components" "^5.0.1"
     tslib "^1.11.1"
