@@ -501,6 +501,14 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
             color: themeColor,
           },
         },
+        TextContainer: {
+          normal: {
+            padding: {
+              left: 10,
+              right: 26,
+            },
+          },
+        },
       },
     };
     return this.mergeTheme('Menu', defaultMenuTheme);
