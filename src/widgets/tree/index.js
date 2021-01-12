@@ -11,6 +11,7 @@ import { getTreeData } from '../menu/utils';
 import { getMenuItemHeight } from '../css/tree';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
+import Empty from '../empty';
 
 class Tree extends React.Component<any, any> {
   static defaultProps = {
@@ -29,11 +30,35 @@ class Tree extends React.Component<any, any> {
     this.innerTree = React.createRef();
   }
 
+  getEmptyTheme = () => {
+    const { getPartOfThemeConfig } = this.props;
+    const containerThemeConfig = getPartOfThemeConfig('Container');
+    const {
+      normal: { width = 250, height = 200, opacity = 1, background: { color } = {} } = {},
+    } = containerThemeConfig;
+    return {
+      [Widget.Empty]: {
+        Container: {
+          normal: {
+            width,
+            height,
+            opacity,
+            background: {
+              color,
+            },
+          },
+        },
+      },
+    };
+  };
+
   render() {
     const { props } = this;
-    const { size } = props;
     const data = this.getTreeData();
-    const { draggable, expandAll } = props;
+    const { draggable, expandAll, size, __dontShowEmpty } = props;
+    if (data.length === 0 && !__dontShowEmpty) {
+      return <Empty theme={this.getEmptyTheme()} />;
+    }
     const activeExpandAll = draggable ? true : expandAll;
     const menuItemHeight = getMenuItemHeight(size);
     return (

@@ -8,7 +8,6 @@ import '../common/shirm';
 import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo, QueryType } from '@lugia/lugia-web';
 import animation from '../common/openAnimation';
 import ThemeHoc from '@lugia/theme-hoc';
-import Empty from '../empty';
 import * as React from 'react';
 import { TreeNode } from './rc-tree';
 import Support from '../common/FormFieldWidgetSupport';
@@ -481,11 +480,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   render() {
     const { props, state } = this;
-    const empty = <Empty themeInfo={props.getPartOfThemeProps('Container')} />;
-    const { __dontShowEmpty } = props;
-    if (this.isEmpty(props) && !__dontShowEmpty) {
-      return empty;
-    }
     if (this.state.hasError) {
       return <ErrorTooltip>树形数据错误</ErrorTooltip>;
     }
@@ -515,9 +509,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.data = data;
     getTreeData && getTreeData(data);
 
-    if (data.length === 0 && !__dontShowEmpty) {
-      return empty;
-    }
     if (this.isQueryAll(props)) {
       this.allStart = start;
     }
