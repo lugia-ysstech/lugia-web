@@ -993,6 +993,13 @@
   resolved "https://registry.npm.taobao.org/@emotion/unitless/download/@emotion/unitless-0.7.4.tgz#a87b4b04e5ae14a88d48ebef15015f6b7d1f5677"
   integrity sha1-qHtLBOWuFKiNSOvvFQFfa30fVnc=
 
+"@lugia/array-utils@1.0.6":
+  version "1.0.6"
+  resolved "http://192.168.102.79:5001/@lugia%2farray-utils/-/array-utils-1.0.6.tgz#3826cd11dfcea435f36ac5cd598fc558f9dc80ae"
+  integrity sha1-OCbNEd/OpDXzasXNWY/FWPncgK4=
+  dependencies:
+    tslib "^1.11.1"
+
 "@lugia/array-utils@^1.0.2":
   version "1.0.3"
   resolved "https://registry.npmjs.org/@lugia/array-utils/-/array-utils-1.0.3.tgz#5a4a01a176ada49013b6dcc79b0b4818e9b4fa2d"
@@ -1057,10 +1064,10 @@
     immutable "^3.8.2"
     yargs "^13.2.2"
 
-"@lugia/devtools-widgets@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/@lugia/devtools-widgets/-/devtools-widgets-1.0.8.tgz#27ca27d8c33756c4139f2e0bc55d5f1f49696c20"
-  integrity sha512-q4N+8QdR9VUpts8J9O+HM8N7pGA/zoSnOgwTdR3YFTx28CuNirvy/J8/Bevz1COgrT49ivqKeTjVHz2G1yiHVg==
+"@lugia/devtools-widgets@^1.1.0":
+  version "1.1.0"
+  resolved "http://192.168.102.79:5001/@lugia%2fdevtools-widgets/-/devtools-widgets-1.1.0.tgz#4bed233baf9cac1da5268f263e0b72fb7596e44d"
+  integrity sha1-S+0jO6+crB2lJo8mPgty+3WW5E0=
   dependencies:
     "@lugia/devtools-material" "^1.0.44"
     fs-extra "^9.0.1"
@@ -1091,10 +1098,10 @@
     "@lugia/math" "^1.0.10"
     tslib "^1.11.1"
 
-"@lugia/jverify@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@lugia/jverify/-/jverify-1.0.10.tgz#6b933e7f6620437cf50a632dff09c7fdf9c21355"
-  integrity sha512-NmRDyQnaZj5I5A1aJw07tcy3HM/nP189XS+SH1fGGTB3EE+cIaV3fIuxeB26gAQ+jxm4NmUt9PXOvdt4WZEMew==
+"@lugia/jverify@^1.0.12":
+  version "1.0.12"
+  resolved "http://192.168.102.79:5001/@lugia%2fjverify/-/jverify-1.0.12.tgz#4d3ee2383ba9d6348c738a02f91f921804c13563"
+  integrity sha1-TT7iODup1jSMc4oC+R+SGATBNWM=
   dependencies:
     "@lugia/type-utils" "^1.0.1"
     clone "^2.1.1"
@@ -1110,122 +1117,125 @@
     rxjs "^6.3.3"
     tslib "^1.11.1"
 
-"@lugia/lugiad-compiler-types@^1.1.5":
-  version "1.1.5"
-  resolved "http://192.168.102.79:5001/@lugia%2flugiad-compiler-types/-/lugiad-compiler-types-1.1.5.tgz#62edd2c64ca668c53484101ed7cda79f8d3c1d6d"
-  integrity sha1-Yu3SxkymaMU0hBAe182nn408HW0=
+"@lugia/lugiad-compiler-types@^1.2.3":
+  version "1.2.3"
+  resolved "http://192.168.102.79:5001/@lugia%2flugiad-compiler-types/-/lugiad-compiler-types-1.2.3.tgz#e395c0cdaa32f3c6ac15867bf37e8f2ff15512a4"
+  integrity sha1-45XAzaoy88asFYZ7836PL/FVEqQ=
   dependencies:
-    "@lugia/lugiad-types" "^1.1.6"
+    "@lugia/lugiad-types" "^1.2.3"
 
-"@lugia/lugiad-compiler@^1.1.7", "@lugia/lugiad-compiler@^1.1.9":
-  version "1.1.9"
-  resolved "http://192.168.102.79:5001/@lugia%2flugiad-compiler/-/lugiad-compiler-1.1.9.tgz#49a3d23a10dd77ca1f2d209eb0fcfa405fec8bf1"
-  integrity sha1-SaPSOhDdd8ofLSCesPz6QF/si/E=
+"@lugia/lugiad-compiler@^1.2.3":
+  version "1.2.3"
+  resolved "http://192.168.102.79:5001/@lugia%2flugiad-compiler/-/lugiad-compiler-1.2.3.tgz#91d993f7bb0c67d942a105f9c7b08a6abd409071"
+  integrity sha1-kdmT97sMZ9lCoQX5x7CKar1AkHE=
   dependencies:
     "@lugia/array-utils" "^1.0.2"
     "@lugia/geometry" "^1.0.13"
-    "@lugia/lugiad" "^1.1.9"
-    "@lugia/lugiad-compiler-types" "^1.1.5"
-    "@lugia/lugiad-runtime-lib" "^1.0.3"
+    "@lugia/lugiad" "^1.2.3"
+    "@lugia/lugiad-compiler-types" "^1.2.3"
+    "@lugia/lugiad-runtime-lib" "^1.1.0"
     tslib "^1.11.1"
 
-"@lugia/lugiad-loader@^1.4.0-alpha.5":
-  version "1.4.0-alpha.5"
-  resolved "http://192.168.102.79:5001/@lugia%2flugiad-loader/-/lugiad-loader-1.4.0-alpha.5.tgz#364a086055abaf4966cfe27febd9b9c6fbb9f0b5"
-  integrity sha1-NkoIYFWrr0lmz+J/69m5xvu58LU=
+"@lugia/lugiad-loader@^1.4.6":
+  version "1.4.6"
+  resolved "http://192.168.102.79:5001/@lugia%2flugiad-loader/-/lugiad-loader-1.4.6.tgz#b39c5fcfa37097a2ad1d3c6b5ef4fd6a7ecbf2a0"
+  integrity sha1-s5xfz6Nwl6KtHTxrXvT9an7L8qA=
   dependencies:
     "@babel/runtime" "^7.4.3"
-    "@lugia/lugiad-runtime" "1.1.7"
+    "@lugia/lugiad-runtime" "^1.2.2"
     loader-utils "1.2.3"
 
-"@lugia/lugiad-runtime-lib@^1.0.3":
-  version "1.0.3"
-  resolved "http://192.168.102.79:5001/@lugia%2flugiad-runtime-lib/-/lugiad-runtime-lib-1.0.3.tgz#0aba32da085fad90420fc5e1ead40d884ed63480"
-  integrity sha1-Croy2ghfrZBCD8Xh6tQNiE7WNIA=
+"@lugia/lugiad-runtime-lib@^1.1.0":
+  version "1.1.0"
+  resolved "http://192.168.102.79:5001/@lugia%2flugiad-runtime-lib/-/lugiad-runtime-lib-1.1.0.tgz#b0b2f9f3682acef7c1f5822958d9101fde215c17"
+  integrity sha1-sLL582gqzvfB9YIpWNkQH94hXBc=
   dependencies:
     tslib "^1.11.1"
 
-"@lugia/lugiad-runtime@1.1.7":
-  version "1.1.7"
-  resolved "http://192.168.102.79:5001/@lugia%2flugiad-runtime/-/lugiad-runtime-1.1.7.tgz#8d206e2dafdacb563cfc6c289a9e254a39c63ef7"
-  integrity sha1-jSBuLa/ay1Y8/Gwomp4lSjnGPvc=
+"@lugia/lugiad-runtime@^1.2.2":
+  version "1.2.4"
+  resolved "http://192.168.102.79:5001/@lugia%2flugiad-runtime/-/lugiad-runtime-1.2.4.tgz#8843da1161decc4347fdff215a41c510d7b37d28"
+  integrity sha1-iEPaEWHezENH/f8hWkHFENezfSg=
   dependencies:
-    "@lugia/lugiad-compiler" "^1.1.7"
-    "@lugia/lugiad-compiler-types" "^1.1.5"
-    "@lugia/lugiad-types" "^1.1.6"
-    "@lugia/lugiadc-render" "^1.1.7"
-    "@lugia/lugiadc-render-react-plugin" "^1.1.5"
-    "@lugia/lugiadc-render-types" "^1.1.5"
+    "@lugia/lugiad-compiler" "^1.2.3"
+    "@lugia/lugiad-compiler-types" "^1.2.3"
+    "@lugia/lugiad-types" "^1.2.3"
+    "@lugia/lugiadc-render" "^1.2.3"
+    "@lugia/lugiadc-render-react-plugin" "^1.2.4"
+    "@lugia/lugiadc-render-types" "^1.2.3"
     tslib "^1.11.1"
 
-"@lugia/lugiad-types@^1.1.6":
-  version "1.1.6"
-  resolved "http://192.168.102.79:5001/@lugia%2flugiad-types/-/lugiad-types-1.1.6.tgz#98c1618cf91af2dce3733d30fcfa896a7fc04d85"
-  integrity sha1-mMFhjPka8tzjcz0w/PqJan/ATYU=
-
-"@lugia/lugiad@^1.1.9":
-  version "1.1.9"
-  resolved "http://192.168.102.79:5001/@lugia%2flugiad/-/lugiad-1.1.9.tgz#83b403b89e342a0c95557ce6fbfee026aaf7237f"
-  integrity sha1-g7QDuJ40KgyVVXzm+/7gJqr3I38=
+"@lugia/lugiad-types@^1.2.3":
+  version "1.2.3"
+  resolved "http://192.168.102.79:5001/@lugia%2flugiad-types/-/lugiad-types-1.2.3.tgz#f0158828201dbdc11f7f2bf7c2cb0296d158ae72"
+  integrity sha1-8BWIKCAdvcEffyv3wssCltFYrnI=
   dependencies:
-    "@lugia/lugiad-types" "^1.1.6"
+    "@lugia/array-utils" "1.0.6"
+    "@lugia/object-utils" "^1.1.0"
+
+"@lugia/lugiad@^1.2.3":
+  version "1.2.3"
+  resolved "http://192.168.102.79:5001/@lugia%2flugiad/-/lugiad-1.2.3.tgz#90cce51a941c042ed556572e02497cfccb95a5a6"
+  integrity sha1-kMzlGpQcBC7VVlcuAkl8/MuVpaY=
+  dependencies:
+    "@lugia/lugiad-types" "^1.2.3"
     tslib "^1.11.1"
 
-"@lugia/lugiadac-loader@^1.0.1-alpha.5":
-  version "1.0.1-alpha.5"
-  resolved "http://192.168.102.79:5001/@lugia%2flugiadac-loader/-/lugiadac-loader-1.0.1-alpha.5.tgz#69ccbac4f7b3dcb995460e2b015b02e5bea6779c"
-  integrity sha1-acy6xPez3LmVRg4rAVsC5b6md5w=
+"@lugia/lugiadac-loader@^1.0.7":
+  version "1.0.7"
+  resolved "http://192.168.102.79:5001/@lugia%2flugiadac-loader/-/lugiadac-loader-1.0.7.tgz#2d673699ff06a5f0478fa86c242acb91bfc00e96"
+  integrity sha1-LWc2mf8GpfBHj6hsJCrLkb/ADpY=
   dependencies:
     "@babel/runtime" "^7.4.3"
-    "@lugia/lugiad-runtime" "1.1.7"
+    "@lugia/lugiad-runtime" "^1.2.2"
     loader-utils "1.2.3"
 
-"@lugia/lugiadc-render-lib@^1.1.5":
-  version "1.1.5"
-  resolved "http://192.168.102.79:5001/@lugia%2flugiadc-render-lib/-/lugiadc-render-lib-1.1.5.tgz#f4c8b042a74ddd69dec46492ff5013284125e933"
-  integrity sha1-9MiwQqdN3WnexGSS/1ATKEEl6TM=
+"@lugia/lugiadc-render-lib@^1.2.3":
+  version "1.2.3"
+  resolved "http://192.168.102.79:5001/@lugia%2flugiadc-render-lib/-/lugiadc-render-lib-1.2.3.tgz#86c98c96c853b50ec39ad4c41bd5386281fb39f8"
+  integrity sha1-hsmMlshTtQ7DmtTEG9U4YoH7Ofg=
   dependencies:
-    "@lugia/lugiad-compiler-types" "^1.1.5"
-    "@lugia/lugiad-runtime-lib" "^1.0.3"
-    "@lugia/lugiad-types" "^1.1.6"
-    "@lugia/lugiadc-render-types" "^1.1.5"
+    "@lugia/lugiad-compiler-types" "^1.2.3"
+    "@lugia/lugiad-runtime-lib" "^1.1.0"
+    "@lugia/lugiad-types" "^1.2.3"
+    "@lugia/lugiadc-render-types" "^1.2.3"
     "@types/prettier" "^2.0.0"
     prettier "^2.0.5"
     tslib "^1.11.1"
 
-"@lugia/lugiadc-render-react-plugin@^1.1.5":
-  version "1.1.5"
-  resolved "http://192.168.102.79:5001/@lugia%2flugiadc-render-react-plugin/-/lugiadc-render-react-plugin-1.1.5.tgz#cedb6c3a2cf2f7713ab1ace1c276d49f7b422ddb"
-  integrity sha1-zttsOizy93E6sazhwnbUn3tCLds=
+"@lugia/lugiadc-render-react-plugin@^1.2.4":
+  version "1.2.4"
+  resolved "http://192.168.102.79:5001/@lugia%2flugiadc-render-react-plugin/-/lugiadc-render-react-plugin-1.2.4.tgz#f76103d5484501ac7afcd2776572357774e866b6"
+  integrity sha1-92ED1UhFAax6/NJ3ZXI1d3ToZrY=
   dependencies:
-    "@lugia/lugiad-compiler-types" "^1.1.5"
-    "@lugia/lugiad-runtime-lib" "^1.0.3"
-    "@lugia/lugiad-types" "^1.1.6"
-    "@lugia/lugiadc-render-lib" "^1.1.5"
-    "@lugia/lugiadc-render-types" "^1.1.5"
+    "@lugia/lugiad-compiler-types" "^1.2.3"
+    "@lugia/lugiad-runtime-lib" "^1.1.0"
+    "@lugia/lugiad-types" "^1.2.3"
+    "@lugia/lugiadc-render-lib" "^1.2.3"
+    "@lugia/lugiadc-render-types" "^1.2.3"
     "@lugia/object-utils" "^1.0.16"
     tslib "^1.11.1"
 
-"@lugia/lugiadc-render-types@^1.1.5":
-  version "1.1.5"
-  resolved "http://192.168.102.79:5001/@lugia%2flugiadc-render-types/-/lugiadc-render-types-1.1.5.tgz#5e76edf7392b31780542157d612a57d87ca9aec9"
-  integrity sha1-Xnbt9zkrMXgFQhV9YSpX2Hyprsk=
+"@lugia/lugiadc-render-types@^1.2.3":
+  version "1.2.3"
+  resolved "http://192.168.102.79:5001/@lugia%2flugiadc-render-types/-/lugiadc-render-types-1.2.3.tgz#7544c33a3fa1791a9f8106650c4d45922e03af63"
+  integrity sha1-dUTDOj+heRqfgQZlDE1Fki4Dr2M=
   dependencies:
-    "@lugia/lugiad-compiler-types" "^1.1.5"
+    "@lugia/lugiad-compiler-types" "^1.2.3"
 
-"@lugia/lugiadc-render@^1.1.7":
-  version "1.1.9"
-  resolved "http://192.168.102.79:5001/@lugia%2flugiadc-render/-/lugiadc-render-1.1.9.tgz#92b483555924fea5f8cc2a31a23d50af01b9de7f"
-  integrity sha1-krSDVVkk/qX4zCoxoj1QrwG53n8=
+"@lugia/lugiadc-render@^1.2.3":
+  version "1.2.3"
+  resolved "http://192.168.102.79:5001/@lugia%2flugiadc-render/-/lugiadc-render-1.2.3.tgz#62953f72b80038ea9becda842080d2388e2b2e8b"
+  integrity sha1-YpU/crgAOOqb7NqEIIDSOI4rLos=
   dependencies:
     "@lugia/geometry" "^1.0.13"
-    "@lugia/lugiad" "^1.1.9"
-    "@lugia/lugiad-compiler" "^1.1.9"
-    "@lugia/lugiad-compiler-types" "^1.1.5"
-    "@lugia/lugiad-runtime-lib" "^1.0.3"
-    "@lugia/lugiad-types" "^1.1.6"
-    "@lugia/lugiadc-render-lib" "^1.1.5"
-    "@lugia/lugiadc-render-types" "^1.1.5"
+    "@lugia/lugiad" "^1.2.3"
+    "@lugia/lugiad-compiler" "^1.2.3"
+    "@lugia/lugiad-compiler-types" "^1.2.3"
+    "@lugia/lugiad-runtime-lib" "^1.1.0"
+    "@lugia/lugiad-types" "^1.2.3"
+    "@lugia/lugiadc-render-lib" "^1.2.3"
+    "@lugia/lugiadc-render-types" "^1.2.3"
     "@types/prettier" "^2.0.0"
     prettier "^2.0.5"
     tslib "^1.11.1"
@@ -1267,13 +1277,13 @@
   dependencies:
     tslib "^1.11.1"
 
-"@lugia/mega-config@^1.3.0-alpha.0":
-  version "1.3.0-alpha.0"
-  resolved "https://registry.npmjs.org/@lugia/mega-config/-/mega-config-1.3.0-alpha.0.tgz#03da5b8af8d5760c1b20d52ee1adfdeb600001b4"
-  integrity sha512-hp0adNwZXEPz7bJO6TKW6I7PvWUEfj0JIrU8MG/YjPHfGtLcdP+Kh7zBaVpTPwSIaV0gpeOHJqj5pxFTG7Q+Tw==
+"@lugia/mega-config@^1.3.0":
+  version "1.3.0"
+  resolved "http://192.168.102.79:5001/@lugia%2fmega-config/-/mega-config-1.3.0.tgz#2cb27c6d107c6aa7b73e9f5c41a7f0ed901f742c"
+  integrity sha1-LLJ8bRB8aqe3Pp9cQafw7ZAfdCw=
   dependencies:
     "@babel/runtime" "^7.1.5"
-    "@lugia/mega-utils" "^1.6.0-alpha.0"
+    "@lugia/mega-utils" "^1.6.0"
     assert "^1.4.1"
     chalk "^2.4.1"
     chokidar "^2.0.4"
@@ -1282,19 +1292,19 @@
     lodash.isequal "^4.5.0"
     requireindex "^1.2.0"
 
-"@lugia/mega-scripts@^1.6.0-alpha.6":
-  version "1.6.0-alpha.6"
-  resolved "http://192.168.102.79:5001/@lugia%2fmega-scripts/-/mega-scripts-1.6.0-alpha.6.tgz#9b692d95576a3fcd24b7e64ae74b8729bea9c692"
-  integrity sha1-m2ktlVdqP80kt+ZK50uHKb6pxpI=
+"@lugia/mega-scripts@^1.6.7":
+  version "1.6.7"
+  resolved "http://192.168.102.79:5001/@lugia%2fmega-scripts/-/mega-scripts-1.6.7.tgz#726de3e77ad6825b247695769c8381bbb2f9117b"
+  integrity sha1-cm3j53rWglskdpV2nIOBu7L5EXs=
   dependencies:
     "@babel/core" "7.4.3"
     "@babel/runtime" "^7.1.5"
     "@lugia/babel-preset-mega" "^1.2.0-alpha.0"
     "@lugia/devtools-material" "^1.0.40"
-    "@lugia/lugiad-runtime" "1.1.7"
-    "@lugia/mega-config" "^1.3.0-alpha.0"
-    "@lugia/mega-utils" "^1.6.0-alpha.0"
-    "@lugia/mega-webpack" "^1.6.0-alpha.6"
+    "@lugia/lugiad-runtime" "^1.2.2"
+    "@lugia/mega-config" "^1.3.0"
+    "@lugia/mega-utils" "^1.6.0"
+    "@lugia/mega-webpack" "^1.6.6"
     babel-plugin-add-module-exports "^1.0.0"
     body-parser "^1.18.3"
     browser-sync "^2.26.3"
@@ -1319,10 +1329,10 @@
     xlsx "^0.14.0"
     yargs "^12.0.2"
 
-"@lugia/mega-utils@^1.6.0-alpha.0":
-  version "1.6.0-alpha.0"
-  resolved "https://registry.npmjs.org/@lugia/mega-utils/-/mega-utils-1.6.0-alpha.0.tgz#ae5a3f88c091638e72c875d80e01301e500d29a6"
-  integrity sha512-P0TTlNYWijFbYLFSjuaBVOJJAGFfryxLKWA8Fg8hyPtaE9YJ2qO5nMO4Vmsq31RIZgv+zY/tLrJTtdOiM8rYSQ==
+"@lugia/mega-utils@^1.6.0":
+  version "1.6.0"
+  resolved "http://192.168.102.79:5001/@lugia%2fmega-utils/-/mega-utils-1.6.0.tgz#446b3dc2a1ca2c447026ee9066071b997e4edeeb"
+  integrity sha1-RGs9wqHKLERwJu6QZgcbmX5O3us=
   dependencies:
     "@babel/plugin-transform-modules-commonjs" "^7.4.3"
     "@babel/register" "^7.4.0"
@@ -1346,21 +1356,22 @@
     semver "^5.7.0"
     strip-json-comments "^2.0.1"
     tar-fs "^1.16.3"
+    ts-loader "^8.0.4"
     uri-js "^4.2.2"
     username "^4.1.0"
     which "^1.3.1"
 
-"@lugia/mega-webpack@^1.6.0-alpha.6":
-  version "1.6.0-alpha.6"
-  resolved "http://192.168.102.79:5001/@lugia%2fmega-webpack/-/mega-webpack-1.6.0-alpha.6.tgz#57399b3dfa01190880c9dde33e2710ab74cceef2"
-  integrity sha1-VzmbPfoBGQiAyd3jPicQq3TM7vI=
+"@lugia/mega-webpack@^1.6.6":
+  version "1.6.6"
+  resolved "http://192.168.102.79:5001/@lugia%2fmega-webpack/-/mega-webpack-1.6.6.tgz#71fbc337708617cb975029d338e37e7ebb738d4c"
+  integrity sha1-cfvDN3CGF8uXUCnTOON+frtzjUw=
   dependencies:
     "@babel/core" "7.1.5"
     "@babel/runtime" "^7.5.5"
     "@lugia/babel-preset-mega" "^1.2.0-alpha.0"
-    "@lugia/lugiad-loader" "^1.4.0-alpha.5"
-    "@lugia/lugiadac-loader" "^1.0.1-alpha.5"
-    "@lugia/mega-utils" "^1.6.0-alpha.0"
+    "@lugia/lugiad-loader" "^1.4.6"
+    "@lugia/lugiadac-loader" "^1.0.7"
+    "@lugia/mega-utils" "^1.6.0"
     assert "^1.4.1"
     autoprefixer "^8.6.5"
     babel-eslint "^8.2.6"
@@ -1416,7 +1427,7 @@
     webpack-merge "^4.2.1"
     webpack-parallel-uglify-plugin "^1.1.0"
 
-"@lugia/object-utils@^1.0.16", "@lugia/object-utils@^1.0.19":
+"@lugia/object-utils@^1.0.16":
   version "1.0.19"
   resolved "https://registry.npmjs.org/@lugia/object-utils/-/object-utils-1.0.19.tgz#87b00d483133b4b86981bbd9fbaaabde9245f503"
   integrity sha512-boQtyntfMe6ccJHfQ1boMz7hc4JkWhT/UrMLcNiIflQuypEIIRprv45vQyS4HoKn5T2qnbWLI+Vg7h0Ouy0Z1Q==
@@ -1443,31 +1454,28 @@
   dependencies:
     "@babel/runtime" "^7.4.5"
 
-"@lugia/react-test-utils@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npm.taobao.org/@lugia/react-test-utils/download/@lugia/react-test-utils-1.0.1.tgz#325233fb6afd3d5dfdaecf98b76ed72d1d4f6c81"
-  integrity sha1-MlIz+2r9PV39rs+Yt27XLR1PbIE=
-  dependencies:
-    react "^16.4.0"
-    react-dom "^16.4.0"
+"@lugia/react-test-utils@^1.0.2":
+  version "1.0.2"
+  resolved "http://192.168.102.79:5001/@lugia%2freact-test-utils/-/react-test-utils-1.0.2.tgz#1b1f3c4594118263552d06994f1f551f5ab19b8c"
+  integrity sha1-Gx88RZQRgmNVLQaZTx9VH1qxm4w=
 
-"@lugia/theme-config@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@lugia/theme-config/-/theme-config-1.1.5.tgz#1d4536aadc92854396501a5afe1893090c6a8b9c"
-  integrity sha512-rpS7DiTEDXjxpknUqVM1etqMvz7LIH3rbkNd7ECrHMahyTmGA9i/PTqFhgIr/acAuFMLXBOfPrGjYmP1Id5HHQ==
+"@lugia/theme-config@^1.1.7":
+  version "1.1.7"
+  resolved "http://192.168.102.79:5001/@lugia%2ftheme-config/-/theme-config-1.1.7.tgz#d44d0ea64f161d106e6806692ea8758237506d65"
+  integrity sha1-1E0Opk8WHRBuaAZpLqh1gjdQbWU=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@types/react" "^16.9.27"
     "@types/react-test-renderer" "^16.9.2"
     prop-types "^15.7.2"
 
-"@lugia/theme-core@^1.1.9":
-  version "1.1.9"
-  resolved "https://registry.npmjs.org/@lugia/theme-core/-/theme-core-1.1.9.tgz#5ff8b8917c1b0c7fca9985d31bff02e2bd5294f6"
-  integrity sha512-Nf9KCgTORnCn/Tw/Li3R+ZQqPlhHGWlLIGqdLUgmx2arIq9U7WKyfUjUJ2yUiiot/kJVV+NnLyUq7nNCPggCvA==
+"@lugia/theme-core@^1.1.13":
+  version "1.1.13"
+  resolved "http://192.168.102.79:5001/@lugia%2ftheme-core/-/theme-core-1.1.13.tgz#447da184dcb76df00253d11ba5db60b8d55ec43c"
+  integrity sha1-RH2hhNy3bfACU9EbpdtguNVexDw=
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/object-utils" "^1.0.19"
+    "@lugia/object-utils" "^1.1.0"
     "@types/react" "^16.9.32"
     debug "^4.1.1"
     tslib "^1.11.1"
@@ -13578,16 +13586,6 @@ react-dom@^16.13.1:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-react-dom@^16.4.0:
-  version "16.9.0"
-  resolved "https://registry.npm.taobao.org/react-dom/download/react-dom-16.9.0.tgz#5e65527a5e26f22ae3701131bcccaee9fb0d3962"
-  integrity sha1-XmVSel4m8irjcBExvMyu6fsNOWI=
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.15.0"
-
 react-error-overlay@1.0.9:
   version "1.0.9"
   resolved "https://registry.npm.taobao.org/react-error-overlay/download/react-error-overlay-1.0.9.tgz#988e48f6f343afa97a719c4ddae51b8fe8ccfee8"
@@ -13677,15 +13675,6 @@ react@^16.13.1:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
   integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-
-react@^16.4.0:
-  version "16.9.0"
-  resolved "https://registry.npm.taobao.org/react/download/react-16.9.0.tgz?cache=0&sync_timestamp=1565317892814&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact%2Fdownload%2Freact-16.9.0.tgz#40ba2f9af13bc1a38d75dbf2f4359a5185c4f7aa"
-  integrity sha1-QLovmvE7waONddvy9DWaUYXE96o=
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
