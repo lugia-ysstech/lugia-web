@@ -18,45 +18,47 @@ type ThrottleScrollerState = {
 };
 const EVENTS_TO_MODIFY = ['touchstart', 'touchmove', 'touchend', 'touchcancel', 'wheel'];
 
-const originalAddEventListener = window.addEventListener.bind();
+if (typeof window !== 'undefined') {
+  const originalAddEventListener = window.addEventListener.bind();
 
-document.addEventListener = (type, listener, options, wantsUntrusted) => {
-  let modOptions = options;
-  if (EVENTS_TO_MODIFY.includes(type)) {
-    if (typeof options === 'boolean') {
-      modOptions = {
-        capture: options,
-        passive: false,
-      };
-    } else if (typeof options === 'object') {
-      modOptions = {
-        passive: false,
-        ...options,
-      };
+  document.addEventListener = (type, listener, options, wantsUntrusted) => {
+    let modOptions = options;
+    if (EVENTS_TO_MODIFY.includes(type)) {
+      if (typeof options === 'boolean') {
+        modOptions = {
+          capture: options,
+          passive: false,
+        };
+      } else if (typeof options === 'object') {
+        modOptions = {
+          passive: false,
+          ...options,
+        };
+      }
     }
-  }
 
-  return originalAddEventListener(type, listener, modOptions, wantsUntrusted);
-};
+    return originalAddEventListener(type, listener, modOptions, wantsUntrusted);
+  };
 
-const originalRemoveEventListener = window.removeEventListener.bind();
-document.removeEventListener = (type, listener, options) => {
-  let modOptions = options;
-  if (EVENTS_TO_MODIFY.includes(type)) {
-    if (typeof options === 'boolean') {
-      modOptions = {
-        capture: options,
-        passive: false,
-      };
-    } else if (typeof options === 'object') {
-      modOptions = {
-        passive: false,
-        ...options,
-      };
+  const originalRemoveEventListener = window.removeEventListener.bind();
+  document.removeEventListener = (type, listener, options) => {
+    let modOptions = options;
+    if (EVENTS_TO_MODIFY.includes(type)) {
+      if (typeof options === 'boolean') {
+        modOptions = {
+          capture: options,
+          passive: false,
+        };
+      } else if (typeof options === 'object') {
+        modOptions = {
+          passive: false,
+          ...options,
+        };
+      }
     }
-  }
-  return originalRemoveEventListener(type, listener, modOptions);
-};
+    return originalRemoveEventListener(type, listener, modOptions);
+  };
+}
 
 export default (
   Target: React.ComponentType<any>,

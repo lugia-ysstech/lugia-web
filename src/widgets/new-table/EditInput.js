@@ -22,11 +22,12 @@ type StateType = {
 };
 
 const doStopPropagation = (e: any) => {
-  e = e || window.event;
   if (e.stopPropagation) {
     e.stopPropagation();
   } else {
-    e.cancelBubble = true;
+    if (typeof window !== 'undefined') {
+      window.event.cancelBubble = true;
+    }
   }
 };
 

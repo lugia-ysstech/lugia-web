@@ -5,6 +5,9 @@ function requestAnimationFramePolyfill() {
   return function(callback) {
     const currTime = new Date().getTime();
     const timeToCall = Math.max(0, 16 - (currTime - lastTime));
+    if (typeof window === 'undefined') {
+      return '';
+    }
     const id = window.setTimeout(function() {
       callback(currTime + timeToCall);
     }, timeToCall);
