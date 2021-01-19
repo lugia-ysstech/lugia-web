@@ -41,7 +41,10 @@ export default ThemeProvider(
       }, 100);
     }
     initScroll = () => {
-      const href = window && window.location.href;
+      let href = '';
+      if (typeof window !== 'undefined') {
+        href = window.location.href;
+      }
       if (href) {
         const id = href.split('#')[1];
         const dom = document.getElementById(id);
