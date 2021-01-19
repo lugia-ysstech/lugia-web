@@ -19,6 +19,10 @@ const Wrapper = styled.div`
   border: 1px solid #e8e8e8;
 `;
 
+function Title() {
+  return <div>hello LUGIA</div>;
+}
+
 export const PanelDemo = class extends React.Component<any, any> {
   constructor() {
     super();
@@ -186,11 +190,16 @@ export const CollapseDemo = class extends React.Component<any, any> {
     const data = [
       {
         value: '1',
-        title: 'LUGIA',
+        title: <div>hello lugia</div>,
         children: 'PanelContent...',
       },
       {
         value: '2',
+        title: <Title />,
+        children: 'PanelContent...',
+      },
+      {
+        value: '3',
         title: 'LUGIA',
         children: 'PanelContent...',
       },

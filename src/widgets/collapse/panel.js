@@ -143,7 +143,11 @@ export default ThemeProvider(
                 disabled={disabled}
               />
             ) : null}
-            <PanelHeaderText themeProps={panelHeaderTextTheme}>{title}</PanelHeaderText>
+            {React.isValidElement(title) ? (
+              title
+            ) : (
+              <PanelHeaderText themeProps={panelHeaderTextTheme}>{title}</PanelHeaderText>
+            )}
           </PanelHeader>
           <PanelContentWrap
             ref={(node: any) => (this.panel = node)}
