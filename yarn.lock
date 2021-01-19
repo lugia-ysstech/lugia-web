@@ -1049,10 +1049,10 @@
     immutable "^3.8.2"
     yargs "^13.2.2"
 
-"@lugia/devtools-widgets@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npm.taobao.org/@lugia/devtools-widgets/download/@lugia/devtools-widgets-1.1.0.tgz#4bed233baf9cac1da5268f263e0b72fb7596e44d"
-  integrity sha1-S+0jO6+crB2lJo8mPgty+3WW5E0=
+"@lugia/devtools-widgets@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/@lugia/devtools-widgets/-/devtools-widgets-1.1.1.tgz#6defb32ab68ab06427303a8dea074d1100c7100c"
+  integrity sha512-lVP72Sou+e+9ZlkklfYAWIQfrHfWDizk5u2qXTsEc+SiDYraBUBNHlWm6/UWh62L8ljdqu5xZTHaWpp4MMJM4Q==
   dependencies:
     "@lugia/devtools-material" "^1.0.44"
     fs-extra "^9.0.1"
