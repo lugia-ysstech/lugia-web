@@ -1470,10 +1470,10 @@
     debug "^4.1.1"
     tslib "^1.11.1"
 
-"@lugia/theme-css-hoc@^1.1.21":
-  version "1.1.21"
-  resolved "https://registry.npm.taobao.org/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.1.21.tgz#618c429747335f637769b24c0321a264b9458b37"
-  integrity sha1-YYxCl0czX2N3abJMAyGiZLlFizc=
+"@lugia/theme-css-hoc@^1.1.22":
+  version "1.1.22"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.22.tgz#dd9e69d1e7a25217d409176f61b0c9c9fab9e3c3"
+  integrity sha512-q175tOqabTNF7rwRmBQOBlG8FtFKtMYEFGnMsCG4J/5vTbFa56xZpBZuk8U1NtU640Gz4NrGtD+8oNbHrDY7Eg==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.25"
@@ -1484,10 +1484,10 @@
     "@types/styled-components" "^4.4.3"
     tslib "^1.11.1"
 
-"@lugia/theme-hoc@^1.1.16":
-  version "1.1.16"
-  resolved "https://registry.npm.taobao.org/@lugia/theme-hoc/download/@lugia/theme-hoc-1.1.16.tgz#b2fc4c98acf16b76b70d7f6004a69cd511dc886c"
-  integrity sha1-svxMmKzxa3a3DX9gBKac1RHciGw=
+"@lugia/theme-hoc@^1.1.17":
+  version "1.1.17"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-hoc/-/theme-hoc-1.1.17.tgz#03b98973b9b1e2ab5fc366c2edc5e09156827e13"
+  integrity sha512-43CfWQx3s+vvJcQc1lAhM1MtWZ+C9lD2iGdSzG6wLonnvT2Wcw4HXcs0uq2FIzJwVTFsJIB5cxvQeOkftbdTjA==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.1.0"
