@@ -67,7 +67,7 @@ const getDrawerPosition = (props: CSSProps) => {
   }
   return `
     position: fixed;
-    top: 0;  
+    top: 0;
   `;
 };
 export const Drawer = styled.div`
@@ -151,6 +151,9 @@ const getWidthOrHeight = (props: CSSProps) => {
 const getNewDistance = (distance: string, isPlacedInHorizontal: boolean) => {
   const currentClientPara = isPlacedInHorizontal ? 'clientHeight' : 'clientWidth';
   const currentDirection = isPlacedInHorizontal ? 'vh' : 'vw';
+  if (typeof window === 'undefined') {
+    return '';
+  }
   const currentClientDistance = window.document.documentElement[currentClientPara];
   if (distance.endsWith(currentDirection) || distance.endsWith('%')) {
     return (currentClientDistance / 100) * parseFloat(distance);

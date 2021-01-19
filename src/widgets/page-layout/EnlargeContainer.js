@@ -91,29 +91,33 @@ class EnlargeContainer extends Component<EnlargeContainerProps, EnlargeContainer
         content,
       },
       () => {
-        const node = document.getElementById(this.containerId);
-        this.cloneNode = node;
-        node.parentNode.removeChild(node);
+        if (typeof document !== 'undefined') {
+          const node = document.getElementById(this.containerId);
+          this.cloneNode = node;
+          node.parentNode.removeChild(node);
 
-        node.style.left = '0px';
-        node.style.top = '0px';
-        node.style.width = '100vw';
-        node.style.height = '100vh';
-        document.body.appendChild(node);
+          node.style.left = '0px';
+          node.style.top = '0px';
+          node.style.width = '100vw';
+          node.style.height = '100vh';
+          document.body.appendChild(node);
+        }
       }
     );
   };
 
   onClose = () => {
-    document.body.removeChild(this.cloneNode);
-    const { wrapId } = this.props;
-    const wrapNode = document.getElementById(wrapId);
-    wrapNode.appendChild(this.cloneNode);
-    this.cloneNode = null;
-    this.setState({
-      visible: false,
-      content: null,
-    });
+    if (typeof document !== 'undefined') {
+      document.body.removeChild(this.cloneNode);
+      const { wrapId } = this.props;
+      const wrapNode = document.getElementById(wrapId);
+      wrapNode.appendChild(this.cloneNode);
+      this.cloneNode = null;
+      this.setState({
+        visible: false,
+        content: null,
+      });
+    }
   };
 
   render() {

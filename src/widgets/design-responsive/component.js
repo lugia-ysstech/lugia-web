@@ -29,7 +29,11 @@ export default class extends React.Component<ResponsiveProps, ResponsiveState> {
   widthRangeMap: RangeMap;
   constructor(props: any) {
     super(props);
-    const { innerWidth = 0 } = window;
+    let innerWidth = 0;
+    if (typeof window !== 'undefined') {
+      const { innerWidth: windowInnerWidth } = window;
+      innerWidth = windowInnerWidth;
+    }
     const { mode2Config = {}, sideMenuWidth = 0 } = props;
     const { rangesMap = {}, rangeMinValues } = this.handleWindowConfig(mode2Config);
     this.widthRangeMap = rangesMap;
@@ -38,7 +42,7 @@ export default class extends React.Component<ResponsiveProps, ResponsiveState> {
     this.state = {
       windowWidthRange: this.getRange(width, this.widthRangeMap, this.rangeMinValues),
     };
-    if (window) {
+    if (typeof window !== 'undefined') {
       window.onresize = this.handleWindowDrag;
     }
   }
