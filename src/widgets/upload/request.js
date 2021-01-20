@@ -76,7 +76,8 @@ function parseResponse(xhr, dataType) {
       res = responseXML;
       break;
     case 'json':
-      res = JSON.parse(responseText);
+      res =
+        responseText && typeof responseText !== 'string' ? JSON.parse(responseText) : responseText;
       break;
     default:
   }
@@ -124,7 +125,7 @@ function request(dataObject: Object) {
     const { readyState } = xhr;
     if (readyState === 4) {
       const { status } = xhr;
-      if (status === 200) {
+      if (successCode.findIndex(code => code === status) !== -1) {
         const res = parseResponse(xhr, dataType);
         onSuccess && onSuccess(res);
       } else {
@@ -135,5 +136,7 @@ function request(dataObject: Object) {
   };
   return xhr;
 }
+
+const successCode = [200, 201, 202, 203, 204, 205, 206, 207];
 
 export default request;
