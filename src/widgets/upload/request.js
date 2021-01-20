@@ -126,7 +126,6 @@ function request(dataObject: Object) {
     if (readyState === 4) {
       const { status } = xhr;
       if (successCode.findIndex(code => code === status) !== -1) {
-        console.log('successCode', xhr, dataType);
         const res = parseResponse(xhr, dataType);
         onSuccess && onSuccess(res);
       } else {
