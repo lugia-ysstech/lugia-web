@@ -51,9 +51,14 @@ const doGet = function(xhr, url, data, asynch) {
   xhr.send();
 };
 
-const doPost = function(xhr, url, { data, headers, file, uploadFileName }, asynch) {
+const doPost = function(
+  xhr,
+  url,
+  { data, headers, file, uploadFileName, method = 'post' },
+  asynch
+) {
   const params = getFormData(data, file, uploadFileName);
-  xhr.open('post', url, asynch);
+  xhr.open(method, url, asynch);
 
   if (headers) {
     Object.keys(headers).forEach(field => {
@@ -116,7 +121,7 @@ function request(dataObject: Object) {
     case 'post':
     default:
       const { headers, file } = dataObject;
-      doPost(xhr, url, { data, file, headers, uploadFileName }, asynch);
+      doPost(xhr, url, { data, file, headers, uploadFileName, method }, asynch);
       break;
   }
 
