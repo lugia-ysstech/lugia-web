@@ -139,12 +139,18 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
         columns,
       };
       if (showHeader && selectRow === 0) {
-        const newColumns = this.editTableListener.changeColumns({
+        const { onlyEditTitle = true } = this.props;
+        const { columns: newColumns, data: newData } = this.editTableListener.changeColumns({
           value: newValue,
           editCell,
           columns,
+          data,
+          onlyEditTitle,
         });
         result.columns = [...newColumns];
+        if (!onlyEditTitle) {
+          result.data = [...newData];
+        }
       } else {
         const changedData = this.editTableListener.setInputChangedValue({
           value: newValue,

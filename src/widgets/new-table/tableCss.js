@@ -77,7 +77,7 @@ export const Container = CSSComponent({
   tag: 'div',
   className: 'Container',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background'], ['boxShadow']],
     defaultTheme: {
       width: '100%',
     },
@@ -195,7 +195,7 @@ export const NoData = CSSComponent({
   tag: 'div',
   className: 'NoData',
   normal: {
-    selectNames: [['height'], ['padding'], ['font']],
+    selectNames: [['width'], ['height'], ['padding'], ['font']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { tableSize },
