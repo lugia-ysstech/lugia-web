@@ -429,13 +429,33 @@ export default class EditTableEventListener extends Listener<any> {
     });
   };
 
-  changeColumns = (props: Object): ?Array<Object> => {
-    const { editCell: { selectColumn } = {}, columns, value } = props;
-    return [...columns].map((item, index) => {
+  changeColumns = (props: Object): ?Object => {
+    const { editCell: { selectColumn } = {}, columns, value, onlyEditTitle, data } = props;
+    const oldDataIndex = columns[selectColumn].dataIndex;
+    const newColumns = [...columns].map((item, index) => {
       const newItem = { ...item };
       if (index === selectColumn) {
         newItem.title = value;
+        if (!onlyEditTitle) {
+          newItem.dataIndex = value;
+          newItem.key = value;
+        }
       }
+      return newItem;
+    });
+    let newData = data;
+    if (!onlyEditTitle) {
+      newData = this.changeDataAfterChangedColumns({ keyName: oldDataIndex, value, data });
+    }
+    return { columns: newColumns, data: newData };
+  };
+
+  changeDataAfterChangedColumns = (params: Object) => {
+    const { keyName, value, data } = params;
+    return data.map(item => {
+      const newItem = { ...item };
+      newItem[value] = item[keyName];
+      delete newItem[keyName];
       return newItem;
     });
   };

@@ -82,6 +82,11 @@
       "type": "boolean",
       "desc": "是否显示单元格title提示",
       "propsDefaultValue": false
+    },
+    "onlyEditTitle": {
+      "type": "boolean",
+      "desc": "是否禁止修改dataIndex",
+      "propsDefaultValue": true
     }
   },
   "event": {

@@ -88,17 +88,12 @@ const treeColumns = [
     dataIndex: 'value',
     key: 'value',
     editType: 'string',
-    columnType: '',
-    disableEdit: true,
-    allowSelect: false,
   },
   {
     title: 'text',
     dataIndex: 'text',
     key: 'text',
     editType: 'string',
-    columnType: '',
-    disableEdit: true,
   },
   {
     title: 'icons',
@@ -256,6 +251,8 @@ export default class TableDemo extends React.Component<Object, Object> {
       columns,
       checkBoxdata: newData.concat(checkBoxdata),
       checkboxColumns,
+      changedColumns: treeColumns,
+      changedData: treeData,
     };
   }
   onChange = res => {
@@ -278,8 +275,22 @@ export default class TableDemo extends React.Component<Object, Object> {
   onHeaderCell = res => {
     console.log('OnHeaderCell', res);
   };
+  onChangeEditChangedData = res => {
+    console.log('onChange', res);
+    const { data, columns } = res;
+    this.setState({ changedData: data, changedColumns: columns });
+  };
   render() {
-    const { tableData, treeData, treeColumns, columns, checkBoxdata, checkboxColumns } = this.state;
+    const {
+      tableData,
+      treeData,
+      treeColumns,
+      columns,
+      checkBoxdata,
+      checkboxColumns,
+      changedColumns,
+      changedData,
+    } = this.state;
 
     const config = {
       [Widgets.EditTable]: {
@@ -311,6 +322,11 @@ export default class TableDemo extends React.Component<Object, Object> {
     };
     const tableConfig = {
       [Widgets.Table]: {
+        Container: {
+          normal: {
+            width: 20,
+          },
+        },
         Th_Td: {
           normal: {
             padding: {
@@ -325,12 +341,22 @@ export default class TableDemo extends React.Component<Object, Object> {
             },
           },
         },
+        EmptyData: {
+          normal: {
+            width: 300,
+          },
+        },
       },
     };
 
     const checkBoxConfig = {
       [Widgets.EditTable]: {
         Table: {
+          Container: {
+            normal: {
+              width: 20,
+            },
+          },
           Tr: {
             normal: {
               border: 'none',
@@ -351,12 +377,43 @@ export default class TableDemo extends React.Component<Object, Object> {
               },
             },
           },
+          EmptyData: {
+            normal: {
+              width: 300,
+            },
+          },
         },
       },
     };
 
     return (
       <div>
+        <Title>空数据</Title>
+        <Theme config={checkBoxConfig}>
+          <EditTable
+            data={[]}
+            columns={[]}
+            allowEditHead={true}
+            onChange={this.onChangeEditChangedData}
+          />
+        </Theme>
+
+        <Title>可编辑头部，dataInde同步变化</Title>
+        <EditTable
+          data={changedData}
+          columns={changedColumns}
+          allowEditHead={true}
+          onChange={this.onChangeEditChangedData}
+        />
+
+        <EditTable
+          data={changedData}
+          columns={changedColumns}
+          allowEditHead={true}
+          onlyEditTitle={false}
+          onChange={this.onChangeEditChangedData}
+        />
+
         <Title>多选可编辑表格 嵌套数据</Title>
         <div>{JSON.stringify(treeData)}</div>
         <Theme config={checkBoxConfig}>
