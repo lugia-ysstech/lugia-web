@@ -331,8 +331,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }
 
     if (!data || data.length === 0) {
-      const themeInfo = this.props.getPartOfThemeProps('Container');
-      return <Empty themeInfo={themeInfo} />;
+      return <Empty />;
     }
   }
 
