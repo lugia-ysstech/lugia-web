@@ -30,6 +30,7 @@ import {
   getSelectedKeys,
   getTargetOrDefaultTarget,
   getTargetOrDefaultTargetLazy,
+  getTreeData,
   getexpandedPathInProps,
 } from './utils';
 
@@ -134,6 +135,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   trigger: Object | null;
   expandedData: string[];
   level2MenuInstance: { [level: string]: Object };
+  treeData: Object[] | [];
   clickOutsideHandler: Function | null;
   touchOutsideHandler: Function | null;
   childMenu: any;
@@ -150,7 +152,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       indexOffsetY: 0,
       start: 0,
     };
-
+    this.treeData = getTreeData(props, '|');
     this.updateIsSelect(this.state, this.props);
     this.updataExpandedData(this.state, this.props);
     this.allChildData = getInitAllChildData(props, this.state);
@@ -329,7 +331,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }
 
     if (!data || data.length === 0) {
-      return <Empty />;
+      const themeInfo = this.props.getPartOfThemeProps('Container');
+      return <Empty themeInfo={themeInfo} />;
     }
   }
 
@@ -613,7 +616,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
       divided,
       renderSuffixItems,
       size,
-      treeData,
       isShowAuxiliaryText = false,
       auxiliaryTextField = 'des',
       switchIconClass,
@@ -657,7 +659,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         deleteMenuInstance={this.getDeleteMenuInstance()}
         mouseDownInMenus={this.getMouseDownInMenus()}
         allChildData={this.getAllChildData()}
-        treeData={treeData}
+        treeData={this.getTreeData()}
         setSelectedKeys={this.getSetSelectedKeys()}
         setExpandedPath={this.getSetExpandedPath()}
         expandedData={this.getExpandedData()}
@@ -680,6 +682,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   isRoot() {
     return this.props.level === 0;
+  }
+
+  getTreeData() {
+    return getTargetOrDefaultTarget(this.isRoot(), this.treeData, this.props.treeData);
   }
 
   getExpandedData() {
