@@ -155,6 +155,8 @@ export default ThemeProvider(
         getPartOfThemeHocProps,
         size,
         transferButtonIcon = {},
+        sourcePlateTitle = '列表A',
+        targetPlateTitle = '列表B',
       } = this.props;
       const transFerWrapTheme = getPartOfThemeProps('TransferWrap');
       const transferPanelTheme = getPartOfThemeProps('TransferPanel');
@@ -180,7 +182,7 @@ export default ThemeProvider(
             onSelect={this.handleSourceSelect}
             model={this.sourceModel}
             onCheckAll={this.checkAllForLeft}
-            title="列表A"
+            title={sourcePlateTitle}
             {...this.props}
             displayField={displayField}
             valueField={valueField}
@@ -210,7 +212,7 @@ export default ThemeProvider(
             onCheckAll={this.checkAllForRight}
             needCancelBox
             onCancelItemClick={this.handleCancelItemClick}
-            title="列表B"
+            title={targetPlateTitle}
             {...this.props}
             displayField={displayField}
             valueField={valueField}

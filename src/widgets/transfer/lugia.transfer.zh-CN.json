@@ -9,6 +9,14 @@
       "desc": "是否渲染当前组件",
       "defaultValue": false
     },
+    "sourcePlateTitle":{
+      "type": "string",
+      "desc": "左边板子的标题"
+    },
+    "targetPlateTitle":{
+      "type": "string",
+      "desc": "右边板子的标题"
+    },
     "data": {
       "type": "Object[]",
       "desc": "左右两个面板数据源",
