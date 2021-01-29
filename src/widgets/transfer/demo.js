@@ -297,8 +297,8 @@ export default class TransferDemo extends React.Component<any, any> {
     const { fruitsData } = this.state;
     return (
       <div style={{ marginLeft: '30px', marginTop: '30px' }}>
-        <Transfer />
-        <Transfer type="tree" />
+        <Transfer sourcePlateTitle="A结合" targetPlateTitle="B集合" />
+        <Transfer type="tree" sourcePlateTitle="左边" targetPlateTitle="右边" />
         <button onClick={this.changeData}>异步加载数据</button>
         <Transfer data={fruitsData} defaultValue={['枇杷', '杏', '水蜜桃', '李子']} />
 
