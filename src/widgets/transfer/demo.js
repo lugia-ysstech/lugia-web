@@ -330,6 +330,8 @@ export default class TransferDemo extends React.Component<any, any> {
         </Theme>
 
         <p>normal tree transfer</p>
+        <button onClick={this.changeData}>异步加载数据</button>
+        <Transfer type="tree" data={fruitsData} defaultValue={['枇杷', '杏', '水蜜桃', '李子']} />
         <Transfer
           data={treeData}
           type="tree"

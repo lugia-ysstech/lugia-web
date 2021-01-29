@@ -62,6 +62,13 @@ export default ThemeProvider(
         });
       });
 
+      model.on('onTreeDataChange', param => {
+        const { data } = param;
+        this.setState({
+          treeData: data,
+        });
+      });
+
       model.on('onCancelItemChange', param => {
         const { data } = param;
         this.setState({

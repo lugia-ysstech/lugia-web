@@ -50,6 +50,7 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
   }
 
   setTreeData(treeData: Object[]) {
+    this.emit('onTreeDataChange', { data: treeData });
     this.treeData = treeData;
   }
 
