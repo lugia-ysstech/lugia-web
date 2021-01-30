@@ -81,7 +81,7 @@
 		"updateVersion": " node --max-old-space-size=24000  scripts/changeVersion.js"
 	},
 	"devDependencies": {
-		"@lugia/devtools-widgets": "1.1.1",
+		"@lugia/devtools-widgets": "^1.2.0",
 		"@lugia/dict": "^1.0.5",
 		"@lugia/jverify": "^1.0.12",
 		"@lugia/lugiax-router": "^1.0.22",
