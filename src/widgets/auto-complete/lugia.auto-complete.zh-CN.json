@@ -85,6 +85,10 @@
       "type": "icon",
       "desc": "上次选择值Icon",
       "propsDefaultValue": ""
+    },
+    "help": {
+      "type": "string",
+      "desc": "auto-complete校验提示信息"
     }
   },
   "events": {

@@ -137,6 +137,7 @@ export default class AutoCompleteBounded extends React.Component<any, any> {
             value={value}
             data={menuData}
             validateStatus={'error'}
+            help={'检验出错啦'}
             onChange={this.onChange}
           />
         </Box>
