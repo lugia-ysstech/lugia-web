@@ -30,6 +30,7 @@ type AutoCompleteProps = {
   data: String[],
   showOldValue: boolean,
   createPortal?: boolean,
+  help?: string,
   value?: string,
   defaultValue?: string,
   onChange?: Function,
@@ -151,6 +152,7 @@ export default ShortKeyBoard(
           liquidLayout,
           clearIcon,
           popupContainerId,
+          help,
         } = props;
         const data = this.getMenuData();
         const len = data.length;
@@ -188,6 +190,7 @@ export default ShortKeyBoard(
                 clearIcon={clearIcon}
                 validateType={validateType}
                 validateStatus={validateStatus}
+                help={help}
               />
             </Trigger>
           </Theme>
