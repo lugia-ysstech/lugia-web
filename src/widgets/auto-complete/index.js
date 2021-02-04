@@ -191,6 +191,7 @@ export default ShortKeyBoard(
                 validateType={validateType}
                 validateStatus={validateStatus}
                 help={help}
+                popupContainerId={popupContainerId}
               />
             </Trigger>
           </Theme>
