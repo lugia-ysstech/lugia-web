@@ -18,9 +18,15 @@
   border-color: #e8e8e8;
 }
 :global(.lugia-table .rc-table-ping-right .rc-table-cell-fix-right-first::after) {
-  box-shadow: none;
+  box-shadow: inset -10px 0 8px -8px #e8e8e8;
 }
 :global(.lugia-table .rc-table-cell-fix-right-first) {
+  box-shadow: none;
+}
+:global(.lugia-table .rc-table-ping-left .rc-table-cell-fix-left-last::after) {
+  box-shadow: inset 10px 0 8px -8px #e8e8e8;
+}
+:global(.lugia-table .rc-table-cell-fix-left-last) {
   box-shadow: none;
 }
 :global(.lugia-table .rc-table-expanded-row .rc-table-cell) {
@@ -70,6 +76,7 @@
 /*:global(.rc-table tr:hover) {*/
 /*background: rgba(77, 99, 255, 0.05);*/
 /*}*/
+
 :global(.rc-table-expanded-row td) {
   padding: 16px 20px;
 }
