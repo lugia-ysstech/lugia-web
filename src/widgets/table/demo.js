@@ -39,6 +39,34 @@ const columns = [
     render: () => <a href="#">Delete</a>,
   },
 ];
+const fixColumns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+    // width: 100,
+    fixed: 'left',
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+    key: 'age',
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+    // width: 200,
+    key: 'address',
+  },
+  {
+    title: 'Operations',
+    dataIndex: '',
+    // width: 100,
+    key: 'operations',
+    render: () => <a href="#">Delete</a>,
+    fixed: 'right',
+  },
+];
 const sortColumns = [
   {
     title: 'Name',
@@ -1149,6 +1177,16 @@ export default class ModalDemo extends React.Component<any, any> {
           <Button onClick={this.changeTAble}>点击动态渲染包含dom的table</Button>
           {isTable ? <Table columns={columnsDom} data={dataDom} /> : <div>ddd</div>}
         </div>
+        <h1>固定列和固定头</h1>
+        <Table
+          columns={fixColumns}
+          data={data}
+          scroll={{
+            y: 200,
+            x: 1500,
+          }}
+          useFixedHeader
+        />
       </div>
     );
   }
