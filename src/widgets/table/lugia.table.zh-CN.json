@@ -116,6 +116,10 @@
       "type": "tableStyleType",
       "desc": "表格标题",
       "defaultValue": "bordered"
+    },
+    "scroll": {
+      "type": "Object",
+      "desc": "设置滚动条，也可用于指定滚动区域的宽和高"
     }
   },
   "events": {
