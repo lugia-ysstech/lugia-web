@@ -24,7 +24,7 @@ export const createNotification = (iconType?: 'info' | 'success' | 'error' | 'wa
         padding: 0; 
         list-style: none;
         position: fixed; 
-        z-index: 4001;
+        z-index: 99999;
         width: 384px; 
         margin-right: 24px;
         ${getPosition(placement)}`;
