@@ -13,7 +13,6 @@ import { TreeNode } from './rc-tree';
 import Support from '../common/FormFieldWidgetSupport';
 import ThrottleTree from './ThrottleTree';
 import Widget from '../consts/index';
-import './index.css';
 import TreeUtils from './utils';
 import { deleteValue } from '../utils/index';
 import styled from 'styled-components';

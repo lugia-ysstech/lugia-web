@@ -11,8 +11,6 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import RcTable, { INTERNAL_COL_DEFINE } from 'rc-table';
 import Checkbox from '../checkbox';
-import 'rc-table/assets/index.css';
-import './style/lugia-table.css';
 import type { TableProps, TableState } from '../css/table';
 import { css } from 'styled-components';
 import TableTitle from './tableTitle';

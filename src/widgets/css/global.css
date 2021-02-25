@@ -527,4 +527,7 @@ samp {
 
 /* icon font */
 @import './font/lugia-icon.css';
+@import './lugia-table.css';
+@import './rc-table.css';
+@import './tree.css';
 /* icon font END */

@@ -9,7 +9,6 @@ import animation from '../common/openAnimation';
 import * as React from 'react';
 import LugiaTree, { TreeNode } from './rc-tree';
 import ThrottleScroller from '../scroller/ThrottleScroller';
-import './index.css';
 import TreeUtils from './utils';
 import { TreeItemHeight } from '../css/tree';
 
