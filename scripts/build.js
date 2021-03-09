@@ -4,7 +4,7 @@
  *
  * @flow
  */
-const compileComponent = require('@lugia/devtools-widgets');
+const compileComponent = require('@lugia/lugia-package-widgets').default;
 const inValidComponent = require('../src/widgets/invalidComponent.json');
 const hideInTollPanelComponents = require('../src/widgets/hideInTollPanelComponents.json');
 
