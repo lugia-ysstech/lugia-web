@@ -11,11 +11,14 @@ import ReactDom from 'react-dom';
 
 type createTreeDragParameter = {
   groupKey?: string,
+  data: Object,
 };
 
 class TreeDragController {
   treeDrags: Object;
   groups: Object;
+  treeData: Object;
+  derivedTreeData: Object;
   isDrag: boolean;
   dragCopyListener: Listener;
   dragNode: Object;
@@ -24,10 +27,13 @@ class TreeDragController {
   dragStart: boolean;
   oldMousePosition: Object;
   treeSource: string;
+  isMoveSuccess: boolean;
   constructor() {
     this.treeDrags = {};
     this.groups = {};
     this.isFirstLeave = true;
+    this.isMoveSuccess = false;
+    this.derivedTreeData = null;
   }
   createTreeDrag = (props: createTreeDragParameter = {}) => {
     const treeGragUUID = this.createUUid();
@@ -35,13 +41,16 @@ class TreeDragController {
     const treeGrag = new TreeDrag(treeListener);
     treeGrag.uuid = treeGragUUID;
     this.treeDrags = { ...this.treeDrags, ...{ [treeGragUUID]: treeGrag } };
-    const { groupKey } = props;
+    const { groupKey, data } = props;
+
     if (groupKey) {
       treeGrag.groupKey = groupKey;
       this.groups[groupKey]
         ? this.groups[groupKey].push(treeGrag.uuid)
         : (this.groups[groupKey] = [treeGrag.uuid]);
     }
+    treeGrag.treeData = data;
+
     return treeGrag;
   };
   getTreeDrag = (key: String) => {
@@ -119,7 +128,8 @@ class TreeDragController {
   documentMouseUp = () => {
     document.removeEventListener('mousemove', this.documentMouseMove);
     document.removeEventListener('mouseup', this.documentMouseUp);
-    this.previousDragEnd && this.previousDragEnd();
+    this.previousDragEnd && this.previousDragEnd(this.isMoveSuccess);
+    this.isMoveSuccess = false;
     this.isFirstLeave = true;
     this.dragNode = undefined;
     this.isDrag = false;
@@ -131,7 +141,8 @@ class TreeDragController {
   isSameGroup = (groupKey: string, currentTreeKey: string) => {
     if (this.treeSource === currentTreeKey) return true;
     const groupData = this.getGroupDataByGroupKey(groupKey);
-    return groupData ? groupData.includes(currentTreeKey) : false;
+
+    return groupData ? groupData.includes(this.treeSource) : false;
   };
   getDragNodeData() {
     let res: Object = {};
@@ -149,6 +160,9 @@ class TreeDragController {
     res = { text, value, pid, path, disabled, expanded, isLeaf, currentNodeIndex };
     return res;
   }
+  getDerivedTreeData() {
+    return this.derivedTreeData;
+  }
 }
 const treeDragController = new TreeDragController();
 
@@ -160,6 +174,7 @@ class TreeDrag {
   preName: string;
   targetNode: Object;
   mouseTimer: TimeoutID;
+  treeData: Object;
   constructor(listener: Listener) {
     this.nodesInformation = {};
     this.listener = listener;
@@ -227,6 +242,7 @@ class TreeDrag {
     if (pidArray.includes(dragkey) && isSelf) return;
     if (targetkey === dragkey && isSelf) return;
     const dropToGap = targetPositon !== 'dragOver' ? true : false;
+    const derivedTreeData = treeDragController.getDerivedTreeData();
     const res = {
       dragInfo: {
         key: dragkey,
@@ -249,6 +265,7 @@ class TreeDrag {
       dropToGap,
       translateTreeData,
       isSelf,
+      derivedTreeData,
     };
     if (!translateTreeData) {
       res.dragInfo = {
@@ -268,11 +285,19 @@ class TreeDrag {
     }
     const sameGroup = treeDragController.isSameGroup(this.groupKey, this.uuid);
     sameGroup && callback(res);
-    treeDragController.previousDragEnd && treeDragController.previousDragEnd();
+
+    if (treeDragController.previousDragEnd && sameGroup && !isSelf) {
+      treeDragController.isMoveSuccess = true;
+      treeDragController.previousDragEnd(true);
+    } else {
+      treeDragController.isMoveSuccess = false;
+    }
+
     treeDragController.isFirstLeave = true;
     treeDragController.oldMousePosition = undefined;
     treeDragController.treeSource = '';
     treeDragController.dragNode = undefined;
+    treeDragController.derivedTreeData = null;
   }
   mouseMove(
     mouseEvent: SyntheticMouseEvent<HTMLButtonElement>,
@@ -337,7 +362,8 @@ class TreeDrag {
       treeDragController.isFirstLeave = false;
     }
     const nodeData = treeDragController.getDragNodeData();
-    eventFn && eventFn({ mouseEvent, nodeData });
+    treeDragController.derivedTreeData = this.treeData;
+    eventFn && eventFn({ mouseEvent, nodeData, derivedTreeData: this.treeData });
   }
   onMouseEnter(mouseEvent: SyntheticMouseEvent<HTMLButtonElement>, onMouseEnter: Function) {
     let nodeData = {};

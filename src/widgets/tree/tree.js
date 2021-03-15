@@ -491,6 +491,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       searchType = 'include',
       valueField,
       getTreeData,
+      data: originData,
     } = props;
     const {
       expand,
@@ -529,6 +530,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         onCheck={this.onCheck}
         onSelect={this.onSelect}
         data={data}
+        originData={originData}
         selectable={this.isSingleSelect()}
         highlight={highlight}
         selectedKeys={selectValue}

@@ -331,6 +331,16 @@
           "type": "object"
         }
       ]
+    },
+    "onDragComplete": {
+      "desc": "拖拽成功后触发事件",
+      "args": [
+        {
+          "name": "obj",
+          "desc": "拖拽成功后新树的数据",
+          "type": "DragCompleteType"
+        }
+      ]
     }
   },
   "type": {
@@ -338,7 +348,11 @@
       { "value": "small", "text": "小" },
       { "value": "default", "text": "正常" },
       { "value": "large", "text": "大" }
-    ]
+    ],
+    "DragCompleteType": {
+      "data": "object[]",
+      "changeItem": "object"
+    }
   },
 
   "category": ["数据录入"],
