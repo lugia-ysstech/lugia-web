@@ -216,6 +216,137 @@ const exchange2 = [
     ],
   },
 ];
+const exchange3 = [
+  {
+    value: '0',
+    text: '地球',
+    children: [
+      {
+        value: '0-0',
+        text: '陆地',
+        children: [{ value: '0-0-0', text: '亚洲' }],
+      },
+      {
+        value: '0-1',
+        text: '海洋',
+        children: [{ value: '0-1-0', text: '太平洋' }, { value: '0-1-1', text: '大西洋' }],
+      },
+      {
+        value: '0-2',
+        text: '大气',
+        children: [{ value: '0-2-0', text: '平流层' }, { value: '0-2-1', text: '对流层' }],
+      },
+    ],
+  },
+];
+const exchange4 = [
+  {
+    value: 'a',
+    text: '中国',
+    children: [
+      {
+        value: 'a-a',
+        text: '气候',
+        children: [
+          { value: 'a-a-a', text: '热带气候' },
+          { value: 'a-a-b', text: '温带气候' },
+          { value: 'a-a-c', text: '寒带气候' },
+        ],
+      },
+      {
+        value: 'a-b',
+        text: '省份/直辖市',
+        children: [
+          { value: 'a-b-a', text: '江苏省' },
+          { value: 'a-b-b', text: '广东省' },
+          { value: 'a-b-c', text: '北京市' },
+        ],
+      },
+      {
+        value: 'a-c',
+        text: '地貌',
+        children: [
+          { value: 'a-c-a', text: '平原' },
+          { value: 'a-c-b', text: '山区' },
+          { value: 'a-c-c', text: '丘陵' },
+          { value: 'a-c-d', text: '盆地' },
+        ],
+      },
+    ],
+  },
+];
+const exchange5 = [
+  {
+    value: 'z',
+    text: '地表',
+    children: [
+      {
+        value: 'z-a',
+        text: '动物',
+        children: [
+          { value: 'z-a-a', text: '人类' },
+          { value: 'z-a-b', text: '猴子' },
+          { value: 'z-a-c', text: '山羊' },
+        ],
+      },
+      {
+        value: 'z-b',
+        text: '植物',
+        children: [
+          { value: 'z-b-a', text: '小麦' },
+          { value: 'z-b-b', text: '木棉' },
+          { value: 'z-b-c', text: '梧桐' },
+        ],
+      },
+      {
+        value: 'z-c',
+        text: '岩石',
+        children: [
+          { value: 'z-c-a', text: '大理石' },
+          { value: 'z-c-b', text: '花岗岩' },
+          { value: 'z-c-c', text: '普通石头' },
+          { value: 'z-c-d', text: '矿石' },
+        ],
+      },
+    ],
+  },
+];
+const exchange6 = [
+  {
+    value: 'y',
+    text: '地表',
+    children: [
+      {
+        value: 'y-a',
+        text: '动物',
+        children: [
+          { value: 'y-a-a', text: '人类' },
+          { value: 'y-a-b', text: '猴子' },
+          { value: 'y-a-c', text: '山羊' },
+        ],
+      },
+      {
+        value: 'y-b',
+        text: '植物',
+        children: [
+          { value: 'y-b-a', text: '小麦' },
+          { value: 'y-b-b', text: '木棉' },
+          { value: 'y-b-c', text: '梧桐' },
+        ],
+      },
+      {
+        value: 'y-c',
+        text: '岩石',
+        children: [
+          { value: 'y-c-a', text: '大理石' },
+          { value: 'y-c-b', text: '花岗岩' },
+          { value: 'y-c-c', text: '普通石头' },
+          { value: 'y-c-d', text: '矿石' },
+        ],
+      },
+    ],
+  },
+];
 
 const switchIconNames = {
   open: 'lugia-icon-direction_down',
@@ -491,9 +622,20 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
     this.setState({ exchange2: [...info] });
   };
 
+  handleDragThreeComplete = (obj: Object) => {
+    const { data, changeItem } = obj;
+    console.log('data_three', data);
+    console.log('data_changeItem', changeItem);
+  };
+  handleDragFourComplete = (obj: Object) => {
+    const { data, changeItem } = obj;
+    console.log('data_four', data);
+    console.log('changeItem_four', changeItem);
+  };
+
   render() {
     const { info = [], info1 = [], exchange1, exchange2 } = this.state;
-    return (
+    return [
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <h1 style={{ padding: '20px 0' }}>树和树之间拖拽</h1>
         <div style={{ display: 'flex', flex: 1 }}>
@@ -571,7 +713,80 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
             />
           </div>
         </div>
-      </div>
-    );
+      </div>,
+      <h1>树组拖拽</h1>,
+      <div
+        style={{
+          width: '1500px',
+          padding: '20px 0',
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
+        <div>
+          <Tree
+            data={exchange3}
+            draggable
+            groupKey={'111'}
+            translateTreeData
+            expandAll
+            autoHeight
+            parentIsHighlight
+            switchIconNames={switchIconNames}
+            onDragComplete={this.handleDragThreeComplete}
+          />
+          <p>
+            groupKey: <span style={{ fontSize: '18px', color: 'blue' }}>111</span>
+          </p>
+        </div>
+        <div>
+          <Tree
+            data={exchange4}
+            draggable
+            groupKey={'111'}
+            translateTreeData
+            expandAll
+            autoHeight
+            parentIsHighlight
+            switchIconNames={switchIconNames}
+            onDragComplete={this.handleDragFourComplete}
+          />
+          <p>
+            groupKey: <span style={{ fontSize: '18px', color: 'blue' }}>111</span>
+          </p>
+        </div>
+
+        <div>
+          <Tree
+            data={exchange5}
+            draggable
+            groupKey={'888'}
+            translateTreeData
+            expandAll
+            autoHeight
+            parentIsHighlight
+            switchIconNames={switchIconNames}
+          />
+          <p>
+            groupKey: <span style={{ fontSize: '18px', color: 'red' }}>888</span>
+          </p>
+        </div>
+        <div>
+          <Tree
+            data={exchange6}
+            draggable
+            groupKey={'888'}
+            translateTreeData
+            expandAll
+            autoHeight
+            parentIsHighlight
+            switchIconNames={switchIconNames}
+          />
+          <p>
+            groupKey: <span style={{ fontSize: '18px', color: 'red' }}>888</span>
+          </p>
+        </div>
+      </div>,
+    ];
   }
 }

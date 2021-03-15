@@ -31,6 +31,7 @@ class Tree extends React.Component {
     checkedKeys: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.object]),
     defaultSelectedKeys: PropTypes.arrayOf(PropTypes.string),
     selectedKeys: PropTypes.arrayOf(PropTypes.string),
+    originData: PropTypes.arrayOf(PropTypes.object),
     onExpand: PropTypes.func,
     onCheck: PropTypes.func,
     onSelect: PropTypes.func,
@@ -65,6 +66,7 @@ class Tree extends React.Component {
     defaultExpandedKeys: [],
     defaultCheckedKeys: [],
     defaultSelectedKeys: [],
+    originData: [],
     onExpand: noop,
     onCheck: noop,
     onSelect: noop,
@@ -80,8 +82,9 @@ class Tree extends React.Component {
 
   constructor(props) {
     super(props);
-    const { expandedKeys, checkedKeys, halfCheckedKeys, groupKey } = props;
-    this.treeDrag = treeDragController.createTreeDrag({ groupKey });
+    const { expandedKeys, checkedKeys, halfCheckedKeys, groupKey, originData } = props;
+
+    this.treeDrag = treeDragController.createTreeDrag({ groupKey, data: originData });
     this.state = {
       expandedKeys,
       checkedKeys,
@@ -91,6 +94,14 @@ class Tree extends React.Component {
       dragNodesKeys: '',
       dragOverNodeKey: '',
     };
+  }
+
+  componentWillUpdate(nextProps, nextState, nextContext) {
+    const { originData } = this.props;
+    const { originData: newOriginData } = nextProps;
+    if (JSON.stringify(originData) !== JSON.stringify(newOriginData)) {
+      this.treeDrag.treeData = newOriginData;
+    }
   }
 
   getChildContext() {
