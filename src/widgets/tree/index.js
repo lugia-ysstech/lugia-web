@@ -5,12 +5,12 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts';
 
 function getNewDragObj(dragData, sourceData) {
-  const { isLeaf, value, text } = dragData;
+  const { isLeaf, value, text, icons } = dragData;
   if (isLeaf) {
     return { value, text };
   }
 
-  const res = { value, text };
+  const res = { value, text, icons };
   let recursionRes = [];
   sourceData &&
     sourceData.forEach(item => {
