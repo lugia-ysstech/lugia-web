@@ -125,10 +125,10 @@ class Tree extends Component {
   };
 
   handleDragEnd = (isMoveSuccess: boolean) => {
-    const { onDragEnd, onDragComplete } = this.props;
+    const { deleteDragItems = true, onDragEnd, onDragComplete } = this.props;
     onDragEnd && onDragEnd();
 
-    if (!isMoveSuccess) {
+    if (!isMoveSuccess || !deleteDragItems) {
       this.dragData = null;
       return;
     }

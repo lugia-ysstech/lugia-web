@@ -78,6 +78,11 @@
       "desc": "设置节点可拖拽",
       "propsDefaultValue": false
     },
+    "deleteDragItems": {
+      "type": "boolean",
+      "desc": "是否删除拖拽节点",
+      "propsDefaultValue": true
+    },
 
     "groupKey": {
       "type": "string",
