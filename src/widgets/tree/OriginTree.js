@@ -58,7 +58,7 @@ class OriginTree extends React.Component<TreeProps> {
     if (data.length === 0 && !__dontShowEmpty) {
       return <Empty theme={this.getEmptyTheme()} />;
     }
-    const activeExpandAll = draggable ? true : expandAll;
+    const activeExpandAll = draggable || expandAll;
     const menuItemHeight = getMenuItemHeight(size);
     return (
       <InnerTree
@@ -73,7 +73,7 @@ class OriginTree extends React.Component<TreeProps> {
 
   getTreeData = () => {
     const { translateTreeData, data = [] } = this.props;
-    return translateTreeData === true ? this.mapDataTranslateTreeData() : data;
+    return translateTreeData ? this.mapDataTranslateTreeData() : data;
   };
 
   mapDataTranslateTreeData = () => {
