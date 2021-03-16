@@ -128,7 +128,7 @@ class Tree extends Component {
     const { deleteDragItems = true, onDragEnd, onDragComplete } = this.props;
     onDragEnd && onDragEnd();
 
-    if (!isMoveSuccess || !deleteDragItems) {
+    if (!isMoveSuccess) {
       this.dragData = null;
       return;
     }
@@ -136,6 +136,13 @@ class Tree extends Component {
     if (this.dragData) {
       const { data } = this.state;
       const tempData = JSON.parse(JSON.stringify(data));
+
+      if (!deleteDragItems) {
+        onDragComplete && onDragComplete({ data: tempData, changeItem: this.dragData });
+
+        this.dragData = null;
+        return;
+      }
 
       const { pid, value, text } = this.dragData;
 
