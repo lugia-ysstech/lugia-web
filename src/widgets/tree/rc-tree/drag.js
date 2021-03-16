@@ -17,7 +17,6 @@ type createTreeDragParameter = {
 class TreeDragController {
   treeDrags: Object;
   groups: Object;
-  treeData: Object;
   derivedTreeData: Object;
   isDrag: boolean;
   dragCopyListener: Listener;
