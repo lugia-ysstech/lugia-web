@@ -39,6 +39,36 @@ const notEmpty = (obj: any) => {
 
 const VirtualRoot: string = 'lugia_tree_root';
 
+type TreeDataItem = {
+  value: string,
+  text: string,
+  pid?: string,
+  path?: string,
+  isLeaf?: boolean,
+  children?: Array<TreeDataItem>,
+};
+export function recursion(data: Array<TreeDataItem>, key: string, callback: Function) {
+  let flag = false;
+  const fn = (data, key, xx) => {
+    if (Array.isArray(data) && data.length > 0) {
+      for (let i = 0; i < data.length; i++) {
+        if (flag) {
+          return;
+        }
+        const info = data[i];
+        if (info.value === key) {
+          flag = true;
+          return callback(info, i, data);
+        }
+        if (Array.isArray(info.children) && info.children.length > 0) {
+          fn(info.children, key, callback);
+        }
+      }
+    }
+  };
+  fn(data, key, callback);
+}
+
 class TreeUtils {
   VirtualRoot: string = VirtualRoot;
 

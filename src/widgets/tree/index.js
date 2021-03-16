@@ -3,6 +3,7 @@ import OriginTree from './OriginTree';
 import type { TreeDataItem } from './dragDome';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts';
+import { recursion } from './utils';
 
 function getNewDragObj(dragData, sourceData) {
   const { isLeaf, value, text, icons } = dragData;
@@ -52,28 +53,6 @@ class Tree extends Component {
     return null;
   }
 
-  recursion = (data: Array<TreeDataItem>, key: string, callback: Function) => {
-    let flag = false;
-    const fn = (data, key, xx) => {
-      if (Array.isArray(data) && data.length > 0) {
-        for (let i = 0; i < data.length; i++) {
-          if (flag) {
-            return;
-          }
-          const info = data[i];
-          if (info.value === key) {
-            flag = true;
-            return callback(info, i, data);
-          }
-          if (Array.isArray(info.children) && info.children.length > 0) {
-            fn(info.children, key, callback);
-          }
-        }
-      }
-    };
-    fn(data, key, callback);
-  };
-
   handleDragLeave = (node: Object) => {
     const { onDragLeave } = this.props;
     onDragLeave && onDragLeave(node);
@@ -108,7 +87,7 @@ class Tree extends Component {
     const InsertPosition = positionArray[positionArray.length - 1];
     let dragObj: TreeDataItem = {};
     if (isSelf) {
-      this.recursion(oldData, key, (item, index, data) => {
+      recursion(oldData, key, (item, index, data) => {
         data.splice(index, 1);
         dragObj = item;
       });
@@ -123,7 +102,7 @@ class Tree extends Component {
     if (!dragObj) return;
     if (dropToGap) {
       if (pid) {
-        this.recursion(newData, pid, (item, index, data) => {
+        recursion(newData, pid, (item, index, data) => {
           item.children = item.children || [];
           dropPosition === 'top'
             ? item.children.splice(InsertPosition, 0, dragObj)
@@ -135,7 +114,7 @@ class Tree extends Component {
           : newData.splice(Number(InsertPosition) + 1, 0, dragObj);
       }
     } else {
-      this.recursion(newData, targetKye, (item, index, data) => {
+      recursion(newData, targetKye, (item, index, data) => {
         item.children = item.children || [];
         item.children.push(dragObj);
       });
@@ -160,7 +139,7 @@ class Tree extends Component {
 
       const { pid, value, text } = this.dragData;
 
-      this.recursion(tempData, pid, (item, index, data) => {
+      recursion(tempData, pid, (item, index, data) => {
         const { value: dragItemValue } = this.dragData;
         const leaveItemChildren = item.children || [];
         const newItemChildren = leaveItemChildren.filter(item => {
