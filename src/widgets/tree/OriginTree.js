@@ -6,13 +6,13 @@
  */
 import '../common/shirm';
 import * as React from 'react';
-import InnerTree from './tree';
+import InnerTree, { TreeProps } from './tree';
 import { getTreeData } from '../menu/utils';
 import { getMenuItemHeight } from '../css/tree';
 import Widget from '../consts/index';
 import Empty from '../empty';
 
-class OriginTree extends React.Component<any, any> {
+class OriginTree extends React.Component<TreeProps> {
   static defaultProps = {
     translateTreeData: false,
     pathSeparator: '|',
@@ -24,7 +24,7 @@ class OriginTree extends React.Component<any, any> {
   };
   innerTree: Object;
 
-  constructor(props: any) {
+  constructor(props: TreeProps) {
     super(props);
     this.innerTree = React.createRef();
   }
