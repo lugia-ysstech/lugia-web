@@ -166,7 +166,10 @@ const exchange1 = [
       {
         value: '0-1',
         text: '生存方式',
-        children: [{ value: '0-1-0', text: '野生动物' }, { value: '0-1-1', text: '饲养动物' }],
+        children: [
+          { value: '0-1-0', text: '野生动物' },
+          { value: '0-1-1', text: '饲养动物' },
+        ],
       },
       {
         value: '0-2',
@@ -206,7 +209,10 @@ const exchange2 = [
       {
         value: '0-2',
         text: '食性',
-        children: [{ value: '0-2-0', text: '植物动物' }, { value: '0-2-1', text: '肉食动物' }],
+        children: [
+          { value: '0-2-0', text: '植物动物' },
+          { value: '0-2-1', text: '肉食动物' },
+        ],
       },
       {
         value: '0-3',
@@ -229,12 +235,18 @@ const exchange3 = [
       {
         value: '0-1',
         text: '海洋',
-        children: [{ value: '0-1-0', text: '太平洋' }, { value: '0-1-1', text: '大西洋' }],
+        children: [
+          { value: '0-1-0', text: '太平洋' },
+          { value: '0-1-1', text: '大西洋' },
+        ],
       },
       {
         value: '0-2',
         text: '大气',
-        children: [{ value: '0-2-0', text: '平流层' }, { value: '0-2-1', text: '对流层' }],
+        children: [
+          { value: '0-2-0', text: '平流层' },
+          { value: '0-2-1', text: '对流层' },
+        ],
       },
     ],
   },
@@ -314,34 +326,31 @@ const exchange5 = [
 const exchange6 = [
   {
     value: 'y',
-    text: '地表',
+    text: '运动',
     children: [
       {
         value: 'y-a',
-        text: '动物',
+        text: '篮球',
         children: [
-          { value: 'y-a-a', text: '人类' },
-          { value: 'y-a-b', text: '猴子' },
-          { value: 'y-a-c', text: '山羊' },
+          { value: 'y-a-a', text: 'NBA' },
+          { value: 'y-a-b', text: 'CBA' },
+          { value: 'y-a-c', text: '亚锦赛' },
         ],
       },
       {
         value: 'y-b',
-        text: '植物',
+        text: '乒乓球',
         children: [
-          { value: 'y-b-a', text: '小麦' },
-          { value: 'y-b-b', text: '木棉' },
-          { value: 'y-b-c', text: '梧桐' },
+          { value: 'y-b-a', text: '中国' },
+          { value: 'y-b-b', text: '其它' },
         ],
       },
       {
         value: 'y-c',
-        text: '岩石',
+        text: '游泳',
         children: [
-          { value: 'y-c-a', text: '大理石' },
-          { value: 'y-c-b', text: '花岗岩' },
-          { value: 'y-c-c', text: '普通石头' },
-          { value: 'y-c-d', text: '矿石' },
+          { value: 'y-c-a', text: '菲尔普斯' },
+          { value: 'y-c-b', text: '孙杨' },
         ],
       },
     ],
@@ -760,6 +769,7 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
           <Tree
             data={exchange5}
             draggable
+            deleteDragItems={false}
             groupKey={'888'}
             translateTreeData
             expandAll
