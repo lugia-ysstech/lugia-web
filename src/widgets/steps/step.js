@@ -263,12 +263,16 @@ const SimpleLine = CSSComponent({
         },
       };
     },
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const { orientation } = propsConfig;
+      const transformCSS = isHorizontal(orientation) ? 'transform: translate(-50%, -50%);' : '';
+      return `${transformCSS}`;
+    },
   },
   css: css`
     position: relative;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
   `,
 });
 const FlatLine = CSSComponent({
@@ -284,12 +288,11 @@ const FlatLine = CSSComponent({
       const theHeight = getSize(false, height, orientation, 6);
       const theBoxShadow = `0 0 2px ${flatBoxShadowColor()} inset`;
       const resBoxShadow = boxShadow || getBoxShadow(theBoxShadow);
-      const theThemeMeta = {
+      return {
         height: theHeight,
         width: theWidth,
         boxShadow: resBoxShadow,
       };
-      return theThemeMeta;
     },
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
