@@ -54,6 +54,7 @@ class OriginTree extends React.Component<TreeProps> {
   render() {
     const { props } = this;
     const data = this.getTreeData();
+    const copyData = JSON.parse(JSON.stringify(data));
     const { draggable, expandAll, size, __dontShowEmpty } = props;
     if (data.length === 0 && !__dontShowEmpty) {
       return <Empty theme={this.getEmptyTheme()} />;
@@ -64,7 +65,7 @@ class OriginTree extends React.Component<TreeProps> {
       <InnerTree
         {...props}
         ref={this.innerTree}
-        data={data}
+        data={copyData}
         expandAll={activeExpandAll}
         menuItemHeight={menuItemHeight}
       />
