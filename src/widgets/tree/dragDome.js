@@ -357,6 +357,63 @@ const exchange6 = [
   },
 ];
 
+const flatData = [
+  { value: '0', text: '北京分行' },
+  { value: '0.0', text: '朝阳支行办事处', pid: '0', path: '0' },
+  {
+    value: '0.0.0',
+    text: '朝阳支行办事处-1',
+    pid: '0.0',
+    path: '0/0.0',
+    isLeaf: true,
+    notCanSelect1: true,
+  },
+  { value: '0.0.1', text: '朝阳支行办事处-2', pid: '0.0', path: '0/0.0', isLeaf: true },
+  { value: '0.1', text: '海淀支行办事处', pid: '0', path: '0', isLeaf: true },
+  { value: '0.2', text: '石景山支行办事处', pid: '0', path: '0', isLeaf: true },
+  { value: '1', text: '天津分行' },
+  { value: '1.0', text: '和平支行办事处', pid: '1', path: '1', isLeaf: true },
+  { value: '1.1', text: '河东支行办事处', pid: '1', path: '1', isLeaf: true },
+  { value: '1.2', text: '南开支行办事处', pid: '1', path: '1', isLeaf: true },
+];
+const flatDataTwo = [
+  { value: 'a', text: '北京分行' },
+  { value: 'a.a', text: '朝阳支行', pid: 'a', path: 'a' },
+  {
+    value: 'a.a.a',
+    text: '朝阳支行-1',
+    pid: 'a.a',
+    path: 'a/a.a',
+    isLeaf: true,
+    notCanSelect1: true,
+  },
+  { value: 'a.a.b', text: '朝阳支行-2', pid: 'a.a', path: 'a/a.a', isLeaf: true },
+  { value: 'a.b', text: '海淀支行', pid: 'a', path: 'a', isLeaf: true },
+  { value: 'a.c', text: '石景山支行', pid: 'a', path: 'a', isLeaf: true },
+  { value: 'b', text: '天津分行' },
+  { value: 'b.a', text: '和平支行', pid: 'b', path: 'b', isLeaf: true },
+  { value: 'b.b', text: '河东支行', pid: 'b', path: 'b', isLeaf: true },
+  { value: 'b.c', text: '南开支行', pid: 'b', path: 'b', isLeaf: true },
+];
+const flatDataThree = [
+  { value: 'z', text: '电子产品' },
+  { value: 'z.z', text: '平板电脑', pid: 'z', path: 'z' },
+  { value: 'z.y', text: '手机', pid: 'z', path: 'z', isLeaf: true },
+  { value: 'z.x', text: '手环', pid: 'z', path: 'z', isLeaf: true },
+  {
+    value: 'z.z.z',
+    text: 'ipad',
+    pid: 'z.z',
+    path: 'z/z.z',
+    isLeaf: true,
+    notCanSelect1: true,
+  },
+  { value: 'y', text: '家电' },
+  { value: 'y.y', text: '电视', pid: 'y', path: 'y' },
+  { value: 'y.y.y', text: '小米电视', pid: 'y.y', path: 'y/y.y', isLeaf: true },
+  { value: 'y.x', text: '冰箱', pid: 'y', path: 'y', isLeaf: true },
+];
+
 const switchIconNames = {
   open: 'lugia-icon-direction_down',
   close: 'lugia-icon-direction_right',
@@ -642,6 +699,13 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
     console.log('changeItem_four', changeItem);
   };
 
+  handleFlatTreeDragComplete = (obj: Object) => {
+    console.log('obj_flat', obj);
+  };
+  handleFlatTreeDragTwoComplete = (obj: Object) => {
+    console.log('obj_flat_two', obj);
+  };
+
   render() {
     const { info = [], info1 = [], exchange1, exchange2 } = this.state;
     return [
@@ -778,7 +842,7 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
             switchIconNames={switchIconNames}
           />
           <p>
-            groupKey: <span style={{ fontSize: '18px', color: 'red' }}>888</span>
+            groupKey: <span style={{ fontSize: '18px', color: 'red' }}>888</span>, 拖拽后不删除
           </p>
         </div>
         <div>
@@ -794,6 +858,62 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
           />
           <p>
             groupKey: <span style={{ fontSize: '18px', color: 'red' }}>888</span>
+          </p>
+        </div>
+      </div>,
+
+      <h1>拍平数据树组拖拽</h1>,
+      <div
+        style={{
+          width: '1200px',
+          padding: '20px 0',
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
+        <div>
+          <Tree
+            data={flatData}
+            draggable
+            groupKey={'flat666'}
+            expandAll
+            autoHeight
+            parentIsHighlight
+            switchIconNames={switchIconNames}
+            onDragComplete={this.handleFlatTreeDragComplete}
+          />
+          <p>
+            groupKey: <span style={{ fontSize: '18px', color: 'red' }}>flat666</span>
+          </p>
+        </div>
+        <div>
+          <Tree
+            data={flatDataTwo}
+            draggable
+            deleteDragItems={false}
+            groupKey={'flat666'}
+            expandAll
+            autoHeight
+            parentIsHighlight
+            switchIconNames={switchIconNames}
+            onDragComplete={this.handleFlatTreeDragTwoComplete}
+          />
+          <p>
+            groupKey: <span style={{ fontSize: '18px', color: 'red' }}>flat666</span>,拖拽后不删除
+          </p>
+        </div>
+        <div>
+          <Tree
+            data={flatDataThree}
+            draggable
+            groupKey={'flat888'}
+            expandAll
+            autoHeight
+            parentIsHighlight
+            switchIconNames={switchIconNames}
+          />
+          <p>
+            groupKey: <span style={{ fontSize: '18px', color: 'blue' }}>flat888</span>
           </p>
         </div>
       </div>,
