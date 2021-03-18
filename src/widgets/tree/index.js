@@ -181,7 +181,13 @@ class Tree extends Component {
       const preItem = filterData[index - 1];
       const nextItem = filterData[index + 1];
 
-      if (item.pid && nextItem && item.pid !== nextItem && preItem && item.pid !== preItem.pid) {
+      if (
+        item.pid &&
+        nextItem &&
+        item.pid !== nextItem.pid &&
+        preItem &&
+        item.pid !== preItem.pid
+      ) {
         return { ...item, isLeaf: true };
       }
       if (item.pid && !nextItem && item.pid !== preItem.pid) {
@@ -292,7 +298,7 @@ class Tree extends Component {
       ) {
         dragPreData.isLeaf = true;
       }
-      if (!dragNextdata && dragCurrentData.pid !== dragPreData.pid) {
+      if (dragCurrentData.pid && !dragNextdata && dragCurrentData.pid !== dragPreData.pid) {
         dragPreData.isLeaf = true;
       }
       const deleteCount = this.calculationDragCount(dargCurrentIndex, copyMetaData);
