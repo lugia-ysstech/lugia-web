@@ -10,6 +10,7 @@ type UpdataDataParameter = {
   deleteCount: number,
   fixTargetCurrentIndex: number,
   nextPathArray: Array<string>,
+  data: Array<Object>,
 };
 
 function getCurrentDragData(dragData: Object, sourceData: Object[]) {
@@ -136,6 +137,7 @@ class Tree extends Component {
   handleDrop = (obj: Object) => {
     const { onDrop, translateTreeData = false } = this.props;
     onDrop && onDrop(obj);
+    if (onDrop) return;
 
     translateTreeData ? this.normalDataDrop(obj) : this.flatDataDrop(obj);
   };
@@ -176,6 +178,7 @@ class Tree extends Component {
       });
 
     const resDataPids = [];
+    // 去下一个值做对比 循环有点浪费效率
     filterData.forEach(item => {
       const { pid } = item;
       if (pid) {
@@ -192,6 +195,7 @@ class Tree extends Component {
     this.handleDragComplete(resData, this.dragData);
     this.setState({ data: resData });
   };
+
   normalDataDragEnd = (data: Object[]) => {
     const { pid, value, text } = this.dragData[0];
 
@@ -265,6 +269,8 @@ class Tree extends Component {
   };
   flatDataDrop = (obj: Object) => {
     const { data: metadata } = this.state;
+    const copyMetaData = JSON.parse(JSON.stringify(metadata));
+
     let {
       dragInfo: { dargCurrentIndex, dargNextIndex, dargPreIndex, data: dragInfoData } = {},
       targetInfo: { dropPosition, targetParentIndex, targetCurrentIndex },
@@ -275,9 +281,9 @@ class Tree extends Component {
     let dragObj = [];
 
     if (isSelf) {
-      const dragCurrentData = metadata[dargCurrentIndex];
-      const dragPreData = metadata[dargPreIndex];
-      const dragNextdata = metadata[dargNextIndex];
+      const dragCurrentData = copyMetaData[dargCurrentIndex];
+      const dragPreData = copyMetaData[dargPreIndex];
+      const dragNextdata = copyMetaData[dargNextIndex];
       if (
         dragNextdata &&
         dragCurrentData.pid !== dragNextdata.pid &&
@@ -289,8 +295,8 @@ class Tree extends Component {
       if (!dragNextdata && dragCurrentData.pid !== dragPreData.pid) {
         dragPreData.isLeaf = true;
       }
-      const deleteCount = this.calculationDragCount(dargCurrentIndex);
-      dragObj = metadata.splice(dargCurrentIndex, deleteCount);
+      const deleteCount = this.calculationDragCount(dargCurrentIndex, copyMetaData);
+      dragObj = copyMetaData.splice(dargCurrentIndex, deleteCount);
       targetCurrentIndex =
         targetCurrentIndex >= dargCurrentIndex
           ? targetCurrentIndex - deleteCount
@@ -301,57 +307,74 @@ class Tree extends Component {
       dragObj = formatDragData(dragInfoData);
     }
 
+    let newCopyData = [];
+
     if (dropToGap) {
       if (dropPosition === 'top') {
-        this.dragTargetToTopHandler(targetCurrentIndex, dragObj, targetParentIndex);
+        newCopyData = this.dragTargetToTopHandler(
+          targetCurrentIndex,
+          dragObj,
+          targetParentIndex,
+          copyMetaData
+        );
       } else {
-        this.dragTargetToBottomHandler(targetCurrentIndex, dragObj, targetParentIndex);
+        newCopyData = this.dragTargetToBottomHandler(
+          targetCurrentIndex,
+          dragObj,
+          targetParentIndex,
+          copyMetaData
+        );
       }
     } else {
-      this.dragTargetToInHandler(targetCurrentIndex, dragObj);
+      newCopyData = this.dragTargetToInHandler(targetCurrentIndex, dragObj, copyMetaData);
     }
 
-    this.handleDragComplete([...metadata], dragObj);
+    this.handleDragComplete([...newCopyData], dragObj);
 
-    this.setState({ data: [...metadata] });
+    this.setState({ data: [...newCopyData] });
   };
-  calculationDragCount(dargCurrentIndex: number) {
-    const { data: metadata } = this.state;
+  calculationDragCount(dargCurrentIndex: number, data: Array<Object> = []) {
     let deleteCount = 1;
-    for (let i = dargCurrentIndex + 1, max = metadata.length; i < max; i++) {
-      const tem = metadata[i];
+    for (let i = dargCurrentIndex + 1, max = data.length; i < max; i++) {
+      const tem = data[i];
       const { path = '' } = tem;
       const pidArray = path.split('/');
-      if (pidArray.indexOf(metadata[dargCurrentIndex].value) === -1) {
+      if (pidArray.indexOf(data[dargCurrentIndex].value) === -1) {
         break;
       }
       deleteCount += 1;
     }
     return deleteCount;
   }
-  dragTargetToInHandler(targetIndex: number, InsertNodeinfos: Array<Object> = []) {
-    const { data: metadata } = this.state;
-    metadata.splice(targetIndex + 1, 0, ...InsertNodeinfos);
-    const { value = '' } = metadata[targetIndex];
+  dragTargetToInHandler(
+    targetIndex: number,
+    InsertNodeinfos: Array<Object> = [],
+    data: Array<Object> = []
+  ) {
+    data.splice(targetIndex + 1, 0, ...InsertNodeinfos);
+
+    const { value = '' } = data[targetIndex];
     let nextPathArray = [];
-    const updataItem = metadata[targetIndex];
+    const updataItem = data[targetIndex];
     updataItem.isLeaf = false;
     nextPathArray = updataItem.path ? [updataItem.path, updataItem.value] : [updataItem.value];
-    this.updataDataPath({
+    const newCopyData = this.updataDataPath({
       pid: value,
       deleteCount: InsertNodeinfos.length,
       fixTargetCurrentIndex: targetIndex + 1,
       nextPathArray,
+      data,
     });
+
+    return newCopyData;
   }
   updataDataPath(parameter: UpdataDataParameter) {
-    const { data: metadata } = this.state;
-    const { pid, deleteCount, fixTargetCurrentIndex, nextPathArray } = parameter;
+    const { pid, deleteCount, fixTargetCurrentIndex, nextPathArray, data = [] } = parameter;
     const startIndex = fixTargetCurrentIndex;
     const endIndex = fixTargetCurrentIndex + deleteCount;
     let prePathArray: Array<string> = [];
     for (let i = startIndex; i < endIndex; i++) {
-      const tem = metadata[i];
+      const tem = data[i];
       if (i === startIndex) {
         tem.pid = pid;
         prePathArray = tem.path ? tem.path.split('/') : [];
@@ -362,51 +385,57 @@ class Tree extends Component {
         tem.path = nextPathArray.concat(currentPathArray).join('/');
       }
     }
+
+    return data;
   }
   dragTargetToTopHandler(
     targetIndex: number,
     InsertNodeinfos: Array<Object> = [],
-    targetParentIndex: number
+    targetParentIndex: number,
+    data: Array<Object> = []
   ) {
-    const { data: metadata } = this.state;
-    // 拖拽数据插入到响应位置
-    const { pid: targetPid = '' } = metadata[targetIndex];
-    metadata.splice(targetIndex, 0, ...InsertNodeinfos);
+    const { pid: targetPid = '' } = data[targetIndex];
+    data.splice(targetIndex, 0, ...InsertNodeinfos);
     let nextPathArray = [];
-    // 重新计算path
     if (targetPid) {
-      const updataItem = metadata[targetParentIndex];
+      const updataItem = data[targetParentIndex];
       updataItem.isLeaf = false;
       nextPathArray = updataItem.path ? [updataItem.path, updataItem.value] : [updataItem.value];
     }
-    this.updataDataPath({
+    const newCopyData = this.updataDataPath({
       pid: targetPid,
       deleteCount: InsertNodeinfos.length,
       fixTargetCurrentIndex: targetIndex,
       nextPathArray,
+      data,
     });
+
+    return newCopyData;
   }
   dragTargetToBottomHandler(
     targetIndex: number,
     InsertNodeinfos: Array<Object> = [],
-    targetParentIndex: number
+    targetParentIndex: number,
+    data: Array<Object> = []
   ) {
-    const { data: metadata } = this.state;
-    const count = this.calculationDragCount(targetIndex);
-    const { pid: targetPid = '' } = metadata[targetIndex];
-    metadata.splice(targetIndex + count, 0, ...InsertNodeinfos);
+    const count = this.calculationDragCount(targetIndex, data);
+    const { pid: targetPid = '' } = data[targetIndex];
+    data.splice(targetIndex + count, 0, ...InsertNodeinfos);
     let nextPathArray = [];
     if (targetPid) {
-      const updataItem = metadata[targetParentIndex];
+      const updataItem = data[targetParentIndex];
       updataItem.isLeaf = false;
       nextPathArray = updataItem.path ? [updataItem.path, updataItem.value] : [updataItem.value];
     }
-    this.updataDataPath({
+    const newCopyData = this.updataDataPath({
       pid: targetPid,
       deleteCount: InsertNodeinfos.length,
       fixTargetCurrentIndex: targetIndex + count,
       nextPathArray,
+      data,
     });
+
+    return newCopyData;
   }
 
   render() {
