@@ -177,19 +177,20 @@ class Tree extends Component {
         return !dragDataValues.includes(value);
       });
 
-    const resDataPids = [];
-    // 去下一个值做对比 循环有点浪费效率
-    filterData.forEach(item => {
-      const { pid } = item;
-      if (pid) {
-        resDataPids.push(pid);
+    const resData = filterData.map((item, index) => {
+      if (
+        filterData[index + 1] &&
+        item.pid !== filterData[index + 1].pid &&
+        filterData[index - 1] &&
+        item.pid !== filterData[index - 1].pid
+      ) {
+        return { ...item, isLeaf: true };
       }
-    });
+      if (!filterData[index + 1] && item.pid !== filterData[index - 1].pid) {
+        return { ...item, isLeaf: true };
+      }
 
-    const resData = filterData.map(item => {
-      const { value } = item;
-
-      return { ...item, isLeaf: !resDataPids.includes(value) };
+      return { ...item };
     });
 
     this.handleDragComplete(resData, this.dragData);
