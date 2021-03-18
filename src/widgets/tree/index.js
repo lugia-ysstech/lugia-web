@@ -178,15 +178,13 @@ class Tree extends Component {
       });
 
     const resData = filterData.map((item, index) => {
-      if (
-        filterData[index + 1] &&
-        item.pid !== filterData[index + 1].pid &&
-        filterData[index - 1] &&
-        item.pid !== filterData[index - 1].pid
-      ) {
+      const preItem = filterData[index - 1];
+      const nextItem = filterData[index + 1];
+
+      if (item.pid && nextItem && item.pid !== nextItem && preItem && item.pid !== preItem.pid) {
         return { ...item, isLeaf: true };
       }
-      if (!filterData[index + 1] && item.pid !== filterData[index - 1].pid) {
+      if (item.pid && !nextItem && item.pid !== preItem.pid) {
         return { ...item, isLeaf: true };
       }
 
@@ -286,6 +284,7 @@ class Tree extends Component {
       const dragPreData = copyMetaData[dargPreIndex];
       const dragNextdata = copyMetaData[dargNextIndex];
       if (
+        dragCurrentData.pid &&
         dragNextdata &&
         dragCurrentData.pid !== dragNextdata.pid &&
         dragPreData &&
