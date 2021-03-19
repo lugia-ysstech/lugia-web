@@ -1732,10 +1732,10 @@
     debug "^4.1.1"
     tslib "^1.11.1"
 
-"@lugia/theme-css-hoc@^1.1.22":
-  version "1.1.22"
-  resolved "https://registry.yarnpkg.com/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.22.tgz#dd9e69d1e7a25217d409176f61b0c9c9fab9e3c3"
-  integrity sha512-q175tOqabTNF7rwRmBQOBlG8FtFKtMYEFGnMsCG4J/5vTbFa56xZpBZuk8U1NtU640Gz4NrGtD+8oNbHrDY7Eg==
+"@lugia/theme-css-hoc@^1.1.23":
+  version "1.1.23"
+  resolved "http://192.168.102.79:5001/@lugia%2ftheme-css-hoc/-/theme-css-hoc-1.1.23.tgz#1461c11230e033601af731bece00ed27bc100fb5"
+  integrity sha1-FGHBEjDgM2Aa9zG+zgDtJ7wQD7U=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.25"
