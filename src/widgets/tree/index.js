@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ThemeProvider from '@lugia/theme-hoc';
+import Widget from '../consts';
 import OriginTree from './OriginTree';
 import type { TreeDataItem } from './dragDome';
 import { recursion } from './utils';
@@ -75,6 +77,9 @@ function formatDragData(data: Object) {
 }
 
 class Tree extends Component {
+  dragData: Object;
+  originTree: Object;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -82,6 +87,7 @@ class Tree extends Component {
       prevPropsData: props.data,
     };
     this.dragData = null;
+    this.originTree = React.createRef();
   }
 
   static getDerivedStateFromProps(nextProps, preState) {
@@ -448,6 +454,7 @@ class Tree extends Component {
     return (
       <OriginTree
         {...this.props}
+        ref={this.originTree}
         data={data}
         onDragEnter={this.handleDragEnter}
         onDragLeave={this.handleDragLeave}
@@ -458,4 +465,4 @@ class Tree extends Component {
   }
 }
 
-export default Tree;
+export default ThemeProvider(Tree, Widget.Tree);
