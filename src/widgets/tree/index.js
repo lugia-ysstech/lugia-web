@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import OriginTree from './OriginTree';
 import type { TreeDataItem } from './dragDome';
-import ThemeProvider from '../theme-provider';
-import Widget from '../consts';
 import { recursion } from './utils';
 
 type UpdataDataParameter = {
@@ -460,4 +458,4 @@ class Tree extends Component {
   }
 }
 
-export default ThemeProvider(Tree, Widget.Tree);
+export default Tree;
