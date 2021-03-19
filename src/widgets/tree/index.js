@@ -445,10 +445,18 @@ class Tree extends Component {
   render() {
     const { data } = this.state;
 
+    const getData = () => {
+      if (data) {
+        return { data };
+      }
+
+      return null;
+    };
+
     return (
       <OriginTree
         {...this.props}
-        data={data}
+        {...getData()}
         onDragEnter={this.handleDragEnter}
         onDragLeave={this.handleDragLeave}
         onDragEnd={this.handleDragEnd}
