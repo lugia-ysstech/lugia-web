@@ -723,7 +723,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return (
       this.treeCmp &&
       this.treeCmp.getThemeTarget &&
-      this.treeCmp.getThemeTarget().innerTree.current.getThemeTarget()
+      this.treeCmp.getThemeTarget().originTree.current &&
+      this.treeCmp.getThemeTarget().originTree.current.innerTree.current.getThemeTarget()
     );
   }
 
@@ -738,7 +739,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return (
       !this.treeCmp ||
       !this.treeCmp.getThemeTarget ||
-      !this.treeCmp.getThemeTarget().innerTree.current
+      !this.treeCmp.getThemeTarget().originTree.current ||
+      !this.treeCmp.getThemeTarget().originTree.current.innerTree.current
     );
   }
 

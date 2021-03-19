@@ -6,7 +6,6 @@
  */
 import '../common/shirm';
 import * as React from 'react';
-import ThemeProvider from '@lugia/theme-hoc';
 import InnerTree, { TreeProps } from './tree';
 import { getTreeData } from '../menu/utils';
 import { getMenuItemHeight } from '../css/tree';
@@ -83,4 +82,4 @@ class OriginTree extends React.Component<TreeProps> {
   };
 }
 
-export default ThemeProvider(OriginTree, Widget.Tree);
+export default OriginTree;
