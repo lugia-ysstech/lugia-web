@@ -178,11 +178,17 @@ class TreeDrag {
     this.nodesInformation = {};
     this.listener = listener;
   }
-  mouseDown(mouseEvent: SyntheticMouseEvent<HTMLButtonElement>) {
+  mouseDown(mouseEvent: SyntheticMouseEvent<HTMLButtonElement>, opt: Object) {
     const { clientX: mouseX, clientY: mouseY, button } = mouseEvent;
     if (button !== 0) return;
     const dragNode = this.calculationMouseHoverPosition({ mouseX, mouseY });
-    const { node: { props: { disabled } = {} } = {} } = dragNode || {};
+    const { node = {} } = dragNode || {};
+    const { props: { disabled, item: { canDrag = true } = {} } = {} } = node;
+    const { isNodeCanDrag } = opt;
+    const isCanDrag = isNodeCanDrag && isNodeCanDrag({ targetNode: node });
+    if (isCanDrag !== undefined && isCanDrag === false) return;
+    if (canDrag !== undefined && canDrag === false) return;
+
     if (dragNode && !disabled) {
       treeDragController.dragNode = dragNode;
       treeDragController.dragStart = true;
