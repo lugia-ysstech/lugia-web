@@ -357,6 +357,77 @@ const exchange6 = [
   },
 ];
 
+const exchange7 = [
+  {
+    value: 'y',
+    text: '运动',
+    canDrag: false,
+    children: [
+      {
+        value: 'y-a',
+        text: '篮球',
+        children: [
+          { value: 'y-a-a', text: 'NBA' },
+          { value: 'y-a-b', text: 'CBA' },
+          { value: 'y-a-c', text: '亚锦赛' },
+        ],
+      },
+      {
+        value: 'y-b',
+        text: '乒乓球',
+        children: [
+          { value: 'y-b-a', text: '中国__不可拖动', canDrag: false },
+          { value: 'y-b-b', text: '其它' },
+        ],
+      },
+      {
+        value: 'y-c',
+        text: '游泳',
+        children: [
+          { value: 'y-c-a', text: '菲尔普斯' },
+          { value: 'y-c-b', text: '孙杨' },
+        ],
+      },
+    ],
+  },
+];
+const exchange8 = [
+  {
+    value: 'z',
+    text: '地表',
+    children: [
+      {
+        value: 'z-a',
+        text: '动物',
+        children: [
+          { value: 'z-a-a', text: '人类' },
+          { value: 'z-a-b', text: '猴子' },
+          { value: 'z-a-c', text: '山羊' },
+        ],
+      },
+      {
+        value: 'z-b',
+        text: '植物',
+        children: [
+          { value: 'z-b-a', text: '小麦' },
+          { value: 'z-b-b', text: '木棉' },
+          { value: 'z-b-c', text: '梧桐' },
+        ],
+      },
+      {
+        value: 'z-c',
+        text: '岩石',
+        children: [
+          { value: 'z-c-a', text: '大理石' },
+          { value: 'z-c-b', text: '花岗岩' },
+          { value: 'z-c-c', text: '普通石头' },
+          { value: 'z-c-d', text: '矿石' },
+        ],
+      },
+    ],
+  },
+];
+
 const flatData = [
   { value: '0', text: '北京分行' },
   { value: '0.0', text: '朝阳支行办事处', pid: '0', path: '0' },
@@ -706,6 +777,14 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
     console.log('obj_flat_two', obj);
   };
 
+  judgeNodeIsCanDrag = (obj: Object = {}) => {
+    const { targetNode = {} } = obj;
+    if (!targetNode) return;
+    const { props: { item: { canDrag = true } = {} } = {} } = targetNode;
+
+    return canDrag;
+  };
+
   render() {
     const { info = [], info1 = [], exchange1, exchange2 } = this.state;
     return [
@@ -914,6 +993,50 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
           />
           <p>
             groupKey: <span style={{ fontSize: '18px', color: 'blue' }}>flat888</span>
+          </p>
+        </div>
+      </div>,
+
+      <h1>指定拖动节点</h1>,
+      <div
+        style={{
+          width: '600px',
+          padding: '20px 0',
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
+        <div>
+          <Tree
+            data={exchange7}
+            draggable
+            groupKey={'111'}
+            translateTreeData
+            expandAll
+            autoHeight
+            parentIsHighlight
+            switchIconNames={switchIconNames}
+            isNodeCanDrag={this.judgeNodeIsCanDrag}
+            onDragComplete={this.handleDragThreeComplete}
+          />
+          <p>
+            groupKey: <span style={{ fontSize: '18px', color: 'blue' }}>111</span>
+          </p>
+        </div>
+        <div>
+          <Tree
+            data={exchange8}
+            draggable
+            groupKey={'111'}
+            translateTreeData
+            expandAll
+            autoHeight
+            parentIsHighlight
+            switchIconNames={switchIconNames}
+            onDragComplete={this.handleDragFourComplete}
+          />
+          <p>
+            groupKey: <span style={{ fontSize: '18px', color: 'blue' }}>111</span>
           </p>
         </div>
       </div>,

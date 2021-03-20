@@ -110,7 +110,8 @@
             { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" }
           ]
         },
-        { "key": "children", "title": "子项数据", "type": "Object[]" }
+        { "key": "children", "title": "子项数据", "type": "Object[]" },
+        { "key": "canDrag", "title": "是否可拖拽", "type": "boolean" }
       ],
       "defaultValue": [
         {
@@ -344,6 +345,16 @@
           "name": "obj",
           "desc": "拖拽成功后新树的数据",
           "type": "DragCompleteType"
+        }
+      ]
+    },
+    "isNodeCanDrag": {
+      "desc": "判断节点是否可拖动的回调函数",
+      "args": [
+        {
+          "name": "targetNode",
+          "desc": "当前即将拖动节点的数据",
+          "type": "object"
         }
       ]
     }
