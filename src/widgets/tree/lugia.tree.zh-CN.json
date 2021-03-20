@@ -195,7 +195,7 @@
     "enableDragField": {
       "type": "string",
       "desc": "data数据的拖拽配置项的名称",
-      "defaultValue": ""
+      "propsDefaultValue": ""
     }
   },
   "events": {
