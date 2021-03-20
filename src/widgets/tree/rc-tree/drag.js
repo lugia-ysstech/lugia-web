@@ -188,11 +188,7 @@ class TreeDrag {
     const isCanDrag = isNodeCanDrag && isNodeCanDrag({ targetNode: node });
 
     if (isCanDrag !== undefined && isCanDrag === false) return;
-    if (enableDragField) {
-      if (item[enableDragField] == undefined || item[enableDragField] === false) {
-        return;
-      }
-    }
+    if (enableDragField && item[enableDragField] !== true) return;
 
     if (dragNode && !disabled) {
       treeDragController.dragNode = dragNode;
