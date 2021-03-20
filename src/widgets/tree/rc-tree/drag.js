@@ -183,11 +183,16 @@ class TreeDrag {
     if (button !== 0) return;
     const dragNode = this.calculationMouseHoverPosition({ mouseX, mouseY });
     const { node = {} } = dragNode || {};
-    const { props: { disabled, item: { canDrag = true } = {} } = {} } = node;
-    const { isNodeCanDrag } = opt;
+    const { props: { disabled, item = {} } = {} } = node;
+    const { isNodeCanDrag, enableDragField = '' } = opt;
     const isCanDrag = isNodeCanDrag && isNodeCanDrag({ targetNode: node });
+
     if (isCanDrag !== undefined && isCanDrag === false) return;
-    if (canDrag !== undefined && canDrag === false) return;
+    if (enableDragField) {
+      if (item[enableDragField] == undefined || item[enableDragField] === false) {
+        return;
+      }
+    }
 
     if (dragNode && !disabled) {
       treeDragController.dragNode = dragNode;

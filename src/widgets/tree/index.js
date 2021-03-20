@@ -14,12 +14,18 @@ type UpdataDataParameter = {
 };
 
 function getCurrentDragData(dragData: Object, sourceData: Object[]) {
-  const { isLeaf, value, text, icons } = dragData;
+  const { isLeaf, value } = dragData;
   if (isLeaf) {
-    return { value, text };
+    return { ...dragData };
   }
 
-  const res = { value, text, icons };
+  const res = {};
+  for (const item in dragData) {
+    if (item !== 'children') {
+      res[item] = dragData[item];
+    }
+  }
+
   let recursionRes = [];
   sourceData &&
     sourceData.forEach(item => {

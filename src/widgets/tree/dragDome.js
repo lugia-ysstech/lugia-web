@@ -361,7 +361,6 @@ const exchange7 = [
   {
     value: 'y',
     text: '运动',
-    canDrag: false,
     children: [
       {
         value: 'y-a',
@@ -376,7 +375,7 @@ const exchange7 = [
         value: 'y-b',
         text: '乒乓球',
         children: [
-          { value: 'y-b-a', text: '中国__不可拖动', canDrag: false },
+          { value: 'y-b-a', text: '中国__可拖动', canDrag: true },
           { value: 'y-b-b', text: '其它' },
         ],
       },
@@ -384,7 +383,7 @@ const exchange7 = [
         value: 'y-c',
         text: '游泳',
         children: [
-          { value: 'y-c-a', text: '菲尔普斯' },
+          { value: 'y-c-a', text: '菲尔普斯__可拖动', canDrag: true },
           { value: 'y-c-b', text: '孙杨' },
         ],
       },
@@ -780,7 +779,7 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
   judgeNodeIsCanDrag = (obj: Object = {}) => {
     const { targetNode = {} } = obj;
     if (!targetNode) return;
-    const { props: { item: { canDrag = true } = {} } = {} } = targetNode;
+    const { props: { item: { canDrag = false } = {} } = {} } = targetNode;
 
     return canDrag;
   };
@@ -1010,6 +1009,7 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
           <Tree
             data={exchange7}
             draggable
+            enableDragField={'canDrag'}
             groupKey={'111'}
             translateTreeData
             expandAll
