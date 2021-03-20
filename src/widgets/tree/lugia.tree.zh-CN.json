@@ -110,8 +110,7 @@
             { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" }
           ]
         },
-        { "key": "children", "title": "子项数据", "type": "Object[]" },
-        { "key": "canDrag", "title": "是否可拖拽", "type": "boolean" }
+        { "key": "children", "title": "子项数据", "type": "Object[]" }
       ],
       "defaultValue": [
         {
@@ -192,6 +191,11 @@
       "type": "boolean",
       "desc": "是否开启嵌套数据生成Tree",
       "defaultValue": true
+    },
+    "enableDragField": {
+      "type": "string",
+      "desc": "data数据的拖拽配置项的名称",
+      "defaultValue": ""
     }
   },
   "events": {
