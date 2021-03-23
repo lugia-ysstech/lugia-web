@@ -65,6 +65,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
       listener,
       allowSelect = true,
       propsAllowSelect,
+      allowEditCell,
     } = this.props;
 
     const { isSelect, editing, clearValue } = this.state;
@@ -73,7 +74,9 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
     const editingTheme = editing ? defaultEditTheme : {};
     const { isLugiaHead } = record;
     const isAllowSelect = allowSelect && propsAllowSelect;
-    const isAllowEdit = allowEdit && !disableEdit;
+
+    const isAllowEdit = allowEdit && !disableEdit && allowEditCell;
+
     const propsConfig = {
       isSelect,
       align,
@@ -167,10 +170,10 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
   };
 
   doEnterEditing = (props: Object): void => {
-    const { listener, disableEdit } = this.props;
+    const { listener, disableEdit, allowEditCell } = this.props;
     const editCell = listener.getEditCell();
     const isCurrentCell = this.isCurrentCell({ editCell });
-    if (!isCurrentCell || disableEdit) {
+    if (!isCurrentCell || disableEdit || !allowEditCell) {
       return;
     }
 

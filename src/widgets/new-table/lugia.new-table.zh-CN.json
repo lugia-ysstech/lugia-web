@@ -119,6 +119,16 @@
           "type": "Object"
         }
       ]
+    },
+    "isAllowEditCell": {
+      "desc": "判断某一单元格是否可编辑",
+      "args": [
+        {
+          "name": "result",
+          "desc": "当前单元格的信息",
+          "type": "Object"
+        }
+      ]
     }
   },
   "type": {
