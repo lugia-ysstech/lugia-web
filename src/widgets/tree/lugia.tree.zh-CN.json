@@ -332,7 +332,7 @@
         }
       ]
     },
-    "renderSuffix": {
+    "renderSuffixItems": {
       "desc": "自定义后缀图标的回调函数",
       "args": [
         {
