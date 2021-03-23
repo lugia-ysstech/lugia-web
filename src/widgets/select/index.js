@@ -776,10 +776,10 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   onMenuPopupVisibleChange = (visible: boolean) => {
     if (visible) {
-      const { onTrigger } = this.props;
-      onTrigger && onTrigger(visible);
       this.onQueryInputChange({ newValue: '' });
     }
+    const { onTrigger } = this.props;
+    onTrigger && onTrigger(visible);
     this.setState({ menuVisible: visible });
     this.menuVisible = visible;
   };
