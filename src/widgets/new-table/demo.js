@@ -429,7 +429,7 @@ export default class TableDemo extends React.Component<Object, Object> {
             allowEditHead={false}
             tableStyle={'linear'}
             onChange={this.onChangeCheckData}
-            isAllowEditStatus={this.isAllowEdit}
+            isAllowEditCell={this.isAllowEdit}
           />
         </Theme>
 

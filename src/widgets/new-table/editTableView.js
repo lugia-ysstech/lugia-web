@@ -110,20 +110,20 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       selectSuffixElement,
       allowSelect,
       showCellTitle,
-      isAllowEditStatus,
+      isAllowEditCell,
     } = this.props;
     const { editTableListener } = this;
     const { index, text, record, dataIndex, columnConfig } = renderObject;
     const allowEdit = allowEditHead ? true : index !== 0;
-    const editRow =
-      allowEdit && isAllowEditStatus
-        ? isAllowEditStatus({ index: index - 1, text, record, dataIndex, columnConfig })
+    const allowEditRow =
+      allowEdit && isAllowEditCell
+        ? isAllowEditCell({ index: index - 1, text, record, dataIndex, columnConfig })
         : true;
     return (
       <TableCell
         {...renderObject}
         allowEdit={allowEdit}
-        allowEditRow={editRow}
+        allowEditRow={allowEditRow}
         showCellTitle={showCellTitle}
         propsAllowSelect={allowSelect}
         selectSuffixElement={selectSuffixElement}

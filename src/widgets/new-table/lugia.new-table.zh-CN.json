@@ -120,7 +120,7 @@
         }
       ]
     },
-    "isAllowEditStatus": {
+    "isAllowEditCell": {
       "desc": "判断某一单元格是否可编辑",
       "args": [
         {
