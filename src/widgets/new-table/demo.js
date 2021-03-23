@@ -280,6 +280,11 @@ export default class TableDemo extends React.Component<Object, Object> {
     const { data, columns } = res;
     this.setState({ changedData: data, changedColumns: columns });
   };
+  isAllowEdit = res => {
+    console.log('isAllowEdit', res);
+    const { dataIndex, text } = res;
+    return !(dataIndex === 'age' && text === 36);
+  };
   render() {
     const {
       tableData,
@@ -424,6 +429,7 @@ export default class TableDemo extends React.Component<Object, Object> {
             allowEditHead={false}
             tableStyle={'linear'}
             onChange={this.onChangeCheckData}
+            isAllowEditStatus={this.isAllowEdit}
           />
         </Theme>
 
