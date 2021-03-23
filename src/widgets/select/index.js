@@ -125,6 +125,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     displayField: DisplayField,
     valueField: ValueField,
     mode: 'local',
+    checkedCSS: 'background',
     throttle: 100,
     disabled: false,
     validateStatus: 'success',
