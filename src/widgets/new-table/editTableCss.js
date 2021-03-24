@@ -17,6 +17,10 @@ export type EditTableProps = TableProps & {
   onHeaderCell?: Function,
   customEditElement?: any,
   selectSuffixElement?: any,
+  allowSelect?: boolean,
+  onlyEditTitle?: boolean,
+  showCellTitle?: boolean,
+  isAllowEditCell?: Function,
 };
 
 export type EditTableState = {};

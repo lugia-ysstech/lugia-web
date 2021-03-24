@@ -169,7 +169,16 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
           result.data = [...newData];
         }
       }
-      this.exportChange({ ...result });
+      const realSelectRow = Math.max(showHeader ? selectRow - 1 : selectRow, 0);
+      const item = result.data && result.data[realSelectRow];
+      const oldItem = data && data[realSelectRow];
+      const { selectColumn } = editCell;
+      this.exportChange({
+        ...result,
+        newItem: item,
+        oldItem,
+        selectItem: { selectRow: realSelectRow, selectColumn },
+      });
     }
     this.clearEditState();
   };
