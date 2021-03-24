@@ -349,13 +349,15 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     const { selectedKeys } = event;
     const { onChange } = this.props;
 
+    const data = new Array().concat(selectedKeys);
+
     const { value: oldValue } = this.state;
 
-    selectedKeys.newValue = selectedKeys;
-    selectedKeys.oldValue = oldValue;
-    selectedKeys.event = event;
+    data.newValue = selectedKeys;
+    data.oldValue = oldValue;
+    data.event = event;
 
-    onChange && onChange(selectedKeys);
+    onChange && onChange(data);
   };
 
   onMouseEnterContainer = () => {
