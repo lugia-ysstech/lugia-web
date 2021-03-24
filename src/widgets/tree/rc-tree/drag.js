@@ -221,12 +221,12 @@ class TreeDrag {
     const {
       nodeEmitName: targetkey,
       node: {
-        props: { item: targetData, pos },
+        props: { item: targetData = {}, pos },
       },
       position: targetPositon,
     } = this.targetNode;
     const {
-      pid: targetPid,
+      pid: targetPid = '',
       path: targetPath = '',
       currentNodeIndex: targetCurrentIndex,
       nextNodeIndex: targetNextIndex,
@@ -237,12 +237,12 @@ class TreeDrag {
     const {
       nodeEmitName: dragkey,
       node: {
-        props: { item: dargData, translateTreeData },
+        props: { item: dargData = {}, translateTreeData },
       },
     } = treeDragController.dragNode;
 
     const {
-      pid: dragtPid,
+      pid: dragtPid = '',
       path: dragPath = '',
       currentNodeIndex: dargCurrentIndex,
       nextNodeIndex: dargNextIndex,
