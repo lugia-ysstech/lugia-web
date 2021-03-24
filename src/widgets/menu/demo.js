@@ -159,6 +159,11 @@ const theme = {
   },
 };
 
+const numData = [
+  { value: 0, text: '否' },
+  { value: 1, text: '是' },
+];
+
 export default class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
@@ -288,6 +293,10 @@ export default class extends React.Component<any, any> {
     };
     return (
       <div>
+        <H2>value值是number类型</H2>
+        <Box>
+          <Menu data={numData} />
+        </Box>
         <H2>动态开启辅助文本</H2>
         <Box>
           <Menu
