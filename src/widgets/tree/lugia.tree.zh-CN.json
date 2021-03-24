@@ -191,6 +191,11 @@
       "type": "boolean",
       "desc": "是否开启嵌套数据生成Tree",
       "defaultValue": true
+    },
+    "enableDragField": {
+      "type": "string",
+      "desc": "data数据的拖拽配置项的名称",
+      "propsDefaultValue": ""
     }
   },
   "events": {
@@ -327,7 +332,7 @@
         }
       ]
     },
-    "renderSuffix": {
+    "renderSuffixItems": {
       "desc": "自定义后缀图标的回调函数",
       "args": [
         {
@@ -344,6 +349,16 @@
           "name": "obj",
           "desc": "拖拽成功后新树的数据",
           "type": "DragCompleteType"
+        }
+      ]
+    },
+    "isNodeCanDrag": {
+      "desc": "判断节点是否可拖动的回调函数",
+      "args": [
+        {
+          "name": "targetNode",
+          "desc": "当前即将拖动节点的数据",
+          "type": "object"
         }
       ]
     }

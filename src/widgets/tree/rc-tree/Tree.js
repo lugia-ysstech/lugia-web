@@ -139,7 +139,8 @@ class Tree extends React.Component {
     this.setState(newState);
   }
   onMouseDown = mouseEvent => {
-    this.treeDrag.mouseDown(mouseEvent);
+    const { isNodeCanDrag, enableDragField = '' } = this.props;
+    this.treeDrag.mouseDown(mouseEvent, { isNodeCanDrag, enableDragField });
   };
   onMouseUp = mouseEvent => {
     const { onDrop } = this.props;

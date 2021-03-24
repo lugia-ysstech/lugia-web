@@ -52,6 +52,11 @@
       "desc": "可配置三种尺寸大小的select",
       "propsDefaultValue": "default"
     },
+    "checkedCSS": {
+      "type": "CheckedCSSType",
+      "desc": "选中项的样式",
+      "propsDefaultValue": "background"
+    },
     "canSearch": {
       "type": "boolean",
       "desc": "是否支持查询",
@@ -307,6 +312,11 @@
       { "value": "end", "text": "以关键字结尾" },
       { "value": "include", "text": "包含关键字" },
       { "value": "eql", "text": "等于关键字" }
+    ],
+    "CheckedCSSType": [
+      { "value": "background", "text": "填充背景风格" },
+      { "value": "checkbox", "text": "多选框风格" },
+      { "value": "none", "text": "高亮文本风格" }
     ],
     "ValidateStatus": [
       { "value": "default", "text": "正常" },
