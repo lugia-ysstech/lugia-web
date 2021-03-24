@@ -218,12 +218,17 @@
         {
           "name": "selectedKeys",
           "desc": "选中的层级数据(通过自定义分隔符separator连接),点击项的数据item",
-          "type": "string[]"
+          "type": "changeType"
         }
       ]
     }
   },
   "type": {
+    "changeType": {
+      "newValue": "string[]",
+      "oldValue": "string[]",
+      "event": "SyntheticEvent"
+    },
     "sizeType": [
       { "value": "small", "text": "小" },
       { "value": "default", "text": "正常" },
