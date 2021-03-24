@@ -274,7 +274,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     start = Math.round(start);
     end = Math.round(end);
     if (data && data.length > 0) {
-      return this.computeItems(data, start, end, (obj: Object, isFirst: boolean) => {
+      return this.computeItems(data, start, end, false, (obj: Object, isFirst: boolean) => {
         const {
           valueField,
           displayField,
@@ -303,6 +303,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
             isShowAuxiliaryText={isShowAuxiliaryText}
             auxiliaryTextField={auxiliaryTextField}
             key={key}
+            __activeValue__={key}
             item={obj}
             disabled={disabled}
             checkedCSS={checkedCSS}
@@ -327,7 +328,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { children } = props;
 
     if (children) {
-      return this.computeItems(children, start, end, (obj: Object) => obj);
+      return this.computeItems(children, start, end, true, (obj: Object) => obj);
     }
 
     if (!data || data.length === 0) {
@@ -335,7 +336,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }
   }
 
-  computeItems(data: Array<Object>, start: number, end: number, getItem: Function): Array<Object> {
+  computeItems(
+    data: Array<Object>,
+    start: number,
+    end: number,
+    isChild: boolean,
+    getItem: Function
+  ): Array<Object> {
     if (!Array.isArray(data)) {
       return data;
     }
@@ -346,7 +353,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
       const item = data[i];
       const indexOffsetY = i - start;
       items.push(
-        this.createMenuItemElement(getItem(item, isFirst), this.isSelect, item, indexOffsetY)
+        this.createMenuItemElement(
+          getItem(item, isFirst),
+          isChild,
+          this.isSelect,
+          item,
+          indexOffsetY
+        )
       );
       isFirst = false;
     }
@@ -356,11 +369,18 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   createMenuItemElement = (
     child: React.Element<typeof Item>,
+    isChild: boolean,
     isSelect: Function,
     item: Object,
     indexOffsetY: number
   ) => {
-    const { key, props } = child;
+    const { props } = child;
+    let { key } = child;
+    if (!isChild) {
+      const { __activeValue__ } = props;
+      key = __activeValue__;
+    }
+
     const { disabled, size } = props;
     return React.cloneElement(
       child,
@@ -377,7 +397,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   ): MenuItemProps {
     const { mutliple } = this.props;
     const eventConfig = this.onMenuItemEventHandler(key, item, disabled, indexOffsetY);
-    if (!key || !isSelect(key)) {
+    if ((!key && key !== 0 && key !== false) || !isSelect(key)) {
       return { mutliple, ...eventConfig, checked: false, disabled };
     }
 
@@ -403,20 +423,21 @@ class Menu extends React.Component<MenuProps, MenuState> {
     disabled: boolean,
     indexOffsetY: number
   ): Object => {
-    if (!key || disabled) {
+    const notKey = !key && key !== 0 && key !== false;
+    if (notKey || disabled) {
       return {};
     }
+
     const { mutliple, onClick, onChange, limitCount = 999999, separator } = this.props;
     return {
       onClick: (event: Object) => {
-        if (!key) {
+        if (notKey) {
           return;
         }
 
         this.setState({ indexOffsetY });
 
         const { selectedKeys } = this.state;
-
         let index = -1;
         index = selectedKeys.indexOf(key);
 
@@ -495,8 +516,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }): string[] => {
     const { mutliple, separator } = config;
 
-    let { key } = config;
-    key = key + '';
+    const { key } = config;
+
     if (!mutliple) {
       return this.getSelectedKeysOrExpandedPath(key, separator);
     }
@@ -558,7 +579,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   getSelectedKeysOrExpandedPath(key: any, separator: string) {
     const newExpandedData = this.getNewExpandedPathData(key);
-    return [newExpandedData.join(separator)];
+    const keyType = typeof key;
+    let selectKey = newExpandedData.join(separator);
+    if (keyType === 'number') {
+      selectKey = Number(selectKey);
+    }
+    return [selectKey];
   }
 
   pushMenuInstance = (level: number, instance: Object) => {
