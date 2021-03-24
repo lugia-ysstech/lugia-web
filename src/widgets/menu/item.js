@@ -57,6 +57,7 @@ export type MenuItemProps = {
   icons: Object,
   item: Object,
   mutliple: boolean,
+  __activeValue__: number | string,
   menuItemHeight: number,
   switchIconClass: Object,
   marginBottom?: Number,
