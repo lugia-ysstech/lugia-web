@@ -135,6 +135,18 @@ const EventWarpNumber = styled.div`
   justify-content: center;
   margin-right: 8px;
 `;
+
+const numData = [
+  {
+    value: 0,
+    text: '否',
+  },
+  {
+    value: 1,
+    text: '是',
+  },
+];
+
 const Test = props => {
   return (
     <EventWarpNumber>
@@ -161,6 +173,8 @@ export default class Demo extends React.Component {
 
     return (
       <Box>
+        <H2>data的value值为数字</H2>
+        <Select data={numData} value={0} />
         <H2>single value 是constructor</H2>
         <Select
           createPortal

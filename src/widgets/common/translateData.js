@@ -238,7 +238,7 @@ function getItem(itemMap: Object, v: string, displayField: string) {
 }
 
 function toArray(param: any, defaultValue: ?any = []): any[] {
-  if (!param) {
+  if (!param && param !== 0) {
     return defaultValue;
   }
   return Support.toArray(param);
