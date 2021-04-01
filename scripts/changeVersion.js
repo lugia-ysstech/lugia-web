@@ -1,2 +1,2 @@
-const changeVersion = require('@lugia/devtools-widgets/lib/updateVersion');
+const changeVersion = require('@lugia/lugia-package-widgets/lib/updateVersion').default;
 changeVersion({filePath:'./package.json'});
