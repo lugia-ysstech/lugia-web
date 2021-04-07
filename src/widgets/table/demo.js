@@ -1187,6 +1187,16 @@ export default class ModalDemo extends React.Component<any, any> {
           }}
           useFixedHeader
         />
+        <h1>设置表格行的类名</h1>
+        <Table
+          columns={fixColumns}
+          data={data}
+          rowClassName={(record, index) => {
+            if (index === 0) {
+              return 'row-class-name';
+            }
+          }}
+        />
       </div>
     );
   }
