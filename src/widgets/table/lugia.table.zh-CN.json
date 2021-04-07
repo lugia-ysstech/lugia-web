@@ -120,6 +120,10 @@
     "scroll": {
       "type": "Object",
       "desc": "设置滚动条，也可用于指定滚动区域的宽和高"
+    },
+    "rowClassName": {
+      "type": "Function(record, index): String",
+      "desc": "表格行的类名"
     }
   },
   "events": {
