@@ -152,7 +152,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
       indexOffsetY: 0,
       start: 0,
     };
-    this.treeData = getTreeData(props, '|');
     this.updateIsSelect(this.state, this.props);
     this.updataExpandedData(this.state, this.props);
     this.allChildData = getInitAllChildData(props, this.state);
@@ -638,6 +637,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       valueField,
       mutliple,
       autoHeight,
+      treeData,
       divided,
       renderSuffixItems,
       size,
@@ -684,7 +684,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         deleteMenuInstance={this.getDeleteMenuInstance()}
         mouseDownInMenus={this.getMouseDownInMenus()}
         allChildData={this.getAllChildData()}
-        treeData={this.getTreeData()}
+        treeData={treeData}
         setSelectedKeys={this.getSetSelectedKeys()}
         setExpandedPath={this.getSetExpandedPath()}
         expandedData={this.getExpandedData()}
@@ -707,10 +707,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   isRoot() {
     return this.props.level === 0;
-  }
-
-  getTreeData() {
-    return getTargetOrDefaultTarget(this.isRoot(), this.treeData, this.props.treeData);
   }
 
   getExpandedData() {
