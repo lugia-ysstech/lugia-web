@@ -14,7 +14,7 @@ import Widget from '../consts/index';
 import QueryInput from '../common/QueryInput';
 import { deepMerge } from '@lugia/object-utils';
 import ValidateHoc from '../input/validateHoc';
-import { getInputtagThemeHoc } from './utils';
+import { getInputtagThemeHoc, computeCanSearchProps } from './utils';
 import { PopupMenuWrap, getDefaultPopupMenuWrap } from '../css/select';
 
 import {
@@ -129,7 +129,6 @@ class Select extends React.Component<SelectProps, SelectState> {
     throttle: 100,
     disabled: false,
     validateStatus: 'success',
-    canSearch: false,
     autoHeight: false,
     splitQuery: ',',
     searchType: 'include',
@@ -357,7 +356,6 @@ class Select extends React.Component<SelectProps, SelectState> {
     const { props, state } = this;
     const {
       mutliple,
-      canSearch,
       canInput,
       data,
       getPartOfThemeProps,
@@ -390,35 +388,37 @@ class Select extends React.Component<SelectProps, SelectState> {
     const checkAllIconTheme = getPartOfThemeHocProps('CheckAllIcon');
     const deselectionIconTheme = getPartOfThemeHocProps('DeselectionIcon');
     const searchIconTheme = getPartOfThemeHocProps('SearchIcon');
-
+    const activeCanSearch = computeCanSearchProps(this.props);
     const menu = [
-      <QueryInput
-        theme={queryInputTheme}
-        receivedTheme={receivedQueryInputTheme}
-        toggleIconTheme={toggleIconTheme}
-        resetIconTheme={resetIconTheme}
-        searchAddIconTheme={searchAddIconTheme}
-        checkAllIconTheme={checkAllIconTheme}
-        deselectionIconTheme={deselectionIconTheme}
-        searchIconTheme={searchIconTheme}
-        query={query}
-        onQueryInputChange={this.onQueryInputChange}
-        onQueryInputKeyDown={this.onQueryInputKeyDown}
-        refreshValue={this.refreshValue}
-        addClick={this.addClick}
-        isCheckedAll={isCheckedAll}
-        onCheckAll={this.onCheckAll}
-        canSearch={canSearch}
-        mutliple={mutliple}
-        canInput={canInput}
-        searchClearIcon={searchClearIcon}
-        toggleIcon={toggleIcon}
-        resetIcon={resetIcon}
-        searchAddIcon={searchAddIcon}
-        checkAllIcon={checkAllIcon}
-        deselectionIcon={deselectionIcon}
-        searchIcon={searchIcon}
-      />,
+      activeCanSearch ? (
+        <QueryInput
+          theme={queryInputTheme}
+          receivedTheme={receivedQueryInputTheme}
+          toggleIconTheme={toggleIconTheme}
+          resetIconTheme={resetIconTheme}
+          searchAddIconTheme={searchAddIconTheme}
+          checkAllIconTheme={checkAllIconTheme}
+          deselectionIconTheme={deselectionIconTheme}
+          searchIconTheme={searchIconTheme}
+          query={query}
+          onQueryInputChange={this.onQueryInputChange}
+          onQueryInputKeyDown={this.onQueryInputKeyDown}
+          refreshValue={this.refreshValue}
+          addClick={this.addClick}
+          isCheckedAll={isCheckedAll}
+          onCheckAll={this.onCheckAll}
+          canSearch={activeCanSearch}
+          mutliple={mutliple}
+          canInput={canInput}
+          searchClearIcon={searchClearIcon}
+          toggleIcon={toggleIcon}
+          resetIcon={resetIcon}
+          searchAddIcon={searchAddIcon}
+          checkAllIcon={checkAllIcon}
+          deselectionIcon={deselectionIcon}
+          searchIcon={searchIcon}
+        />
+      ) : null,
       this.getMenuItems(getMenu),
     ];
 
