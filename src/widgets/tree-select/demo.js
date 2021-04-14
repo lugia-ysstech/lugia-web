@@ -305,6 +305,57 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
   render() {
     return [
       <Box>
+        <p>mutliple 等于 true canSearch 等于 false </p>
+        <TreeSelect
+          expandAll
+          autoHeight
+          mutliple={true}
+          translateTreeData={true}
+          onlySelectLeaf={false}
+          canSearch={false}
+          data={info}
+        />
+        <p>mutliple 等于 true canSearch 等于 true </p>
+        <TreeSelect
+          expandAll
+          autoHeight
+          mutliple={true}
+          translateTreeData={true}
+          onlySelectLeaf={false}
+          canSearch={true}
+          data={info}
+        />
+        <p>mutliple 等于 true canSearch 不传 兼容以前只传入mutliple一个属性时 显示查询</p>
+        <TreeSelect
+          expandAll
+          autoHeight
+          mutliple={true}
+          translateTreeData={true}
+          onlySelectLeaf={false}
+          data={info}
+        />
+      </Box>,
+      <Box>
+        <p>mutliple 等于 false canSearch 等于 true </p>
+        <TreeSelect
+          expandAll
+          autoHeight
+          data={info}
+          translateTreeData={true}
+          onlySelectLeaf={false}
+          canSearch={true}
+        />
+        <p>mutliple 等于 false canSearch 等于 false </p>
+        <TreeSelect
+          expandAll
+          autoHeight
+          translateTreeData={true}
+          onlySelectLeaf={false}
+          canSearch={false}
+          data={info}
+        />
+      </Box>,
+      <Box>
         <Modal visible={this.state.visible} onOk={this.onClick} onCancel={this.onClick}>
           <TreeSelect theme={theme} createPortal={true} />
         </Modal>

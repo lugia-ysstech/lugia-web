@@ -24,6 +24,7 @@ import { PopupMenuWrap, getDefaultPopupMenuWrap } from '../css/select';
 import changeColor from '../css/utilsColor';
 import get from '../css/theme-common-dict';
 import { getTreeData } from '../menu/utils';
+import { computeCanSearchProps } from '../select/utils';
 
 type ValidateStatus = 'success' | 'error';
 
@@ -108,7 +109,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     createPortal: true,
     throttle: 200,
     disabled: false,
-    canSearch: false,
     expandAll: false,
     translateTreeData: false,
     isShowClearButton: true,
@@ -283,7 +283,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   getPopupTree = () => {
     const {
       data,
-      canSearch,
       mutliple,
       canInput,
       igronSelectField,
@@ -327,8 +326,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const checkAllIconTheme = getPartOfThemeHocProps('CheckAllIcon');
     const deselectionIconTheme = getPartOfThemeHocProps('DeselectionIcon');
 
+    const activeCanSearch = computeCanSearchProps(this.props);
     const tree = [
-      data && data.length !== 0 ? (
+      data && data.length !== 0 && activeCanSearch ? (
         <QueryInput
           theme={queryInputTheme}
           receivedTheme={receivedQueryInputTheme}
@@ -345,7 +345,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           addClick={this.onAdd}
           isCheckedAll={selectAll}
           onCheckAll={this.onSelectAll}
-          canSearch={canSearch}
+          canSearch={activeCanSearch}
           mutliple={mutliple}
           canInput={canInput}
           toggleIcon={toggleIcon}

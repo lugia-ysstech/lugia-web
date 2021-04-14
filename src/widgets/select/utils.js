@@ -43,3 +43,8 @@ export function getInputtagThemeHoc(props: Object): Object {
   };
   return inputTagTheme;
 }
+
+export function computeCanSearchProps(props: object): boolean {
+  const { mutliple, canSearch } = props;
+  return mutliple && !('canSearch' in props) ? true : canSearch;
+}

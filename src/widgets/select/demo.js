@@ -171,7 +171,49 @@ export default class Demo extends React.Component {
   render() {
     const { value } = this.state;
 
-    return (
+    return [
+      <Box>
+        <p>mutliple 等于 true canSearch 等于 false </p>
+        <Select
+          displayField={'label'}
+          expandAll
+          autoHeight
+          mutliple={true}
+          canSearch={false}
+          data={data}
+        />
+        <p>mutliple 等于 true canSearch 等于 true </p>
+        <Select
+          displayField={'label'}
+          expandAll
+          autoHeight
+          mutliple={true}
+          canSearch={true}
+          data={data}
+        />
+        <p>mutliple 等于 true canSearch 不传 兼容以前只传入mutliple一个属性时 显示查询</p>
+        <Select displayField={'label'} expandAll autoHeight mutliple={true} data={data} />
+      </Box>,
+      <Box>
+        <p>mutliple 等于 false canSearch 等于 true </p>
+        <Select
+          displayField={'label'}
+          mutliple={false}
+          expandAll
+          autoHeight
+          data={data}
+          canSearch={true}
+        />
+        <p>mutliple 等于 false canSearch 等于 false </p>
+        <Select
+          displayField={'label'}
+          mutliple={false}
+          expandAll
+          autoHeight
+          canSearch={false}
+          data={data}
+        />
+      </Box>,
       <Box>
         <H2>data的value值为数字</H2>
         <Select data={numData} value={0} />
@@ -340,8 +382,8 @@ export default class Demo extends React.Component {
             canInput
           />
         </Theme>
-      </Box>
-    );
+      </Box>,
+    ];
   }
 
   handleChange = obj => {

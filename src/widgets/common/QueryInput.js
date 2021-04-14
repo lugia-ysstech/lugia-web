@@ -169,7 +169,7 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
     const { props } = this;
 
     const mutliple = isMutliple(props);
-    if (!mutliple && !isCanSearch(props)) {
+    if (!isCanSearch(props)) {
       return null;
     }
 
