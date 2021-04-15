@@ -12,6 +12,8 @@ import PullIcon from '../icon/PullIcon';
 import styled from 'styled-components';
 import { fixControlledValue } from '../utils';
 import Theme from '../theme';
+import CombineInputDemo from './combineInputDemo';
+
 const Textarea = Input.Textarea;
 
 export class LimitInput extends React.Component<any, any> {
@@ -211,6 +213,8 @@ const InputDemo = () => {
   const parser = value => {
     return value.replace(/\$\s?|(,*)/g, '');
   };
+  let textareaFocus: Function = null;
+  let inputFocus: Function = null;
   return (
     <div>
       <Theme config={register}>
@@ -253,14 +257,14 @@ const InputDemo = () => {
         <p>主动聚焦的 input</p>
         <button
           onClick={() => {
-            this.inputFocus();
+            inputFocus();
           }}
         >
           点击主动聚焦
         </button>
         <Input
           getFocus={focus => {
-            this.inputFocus = focus;
+            inputFocus = focus;
           }}
         />
       </Wrapper>
@@ -306,14 +310,14 @@ const InputDemo = () => {
         <p>主动聚焦的 段落文本输入框</p>
         <button
           onClick={() => {
-            this.textareaFocus();
+            textareaFocus();
           }}
         >
           点击主动聚焦
         </button>
         <Textarea
           getFocus={focus => {
-            this.textareaFocus = focus;
+            textareaFocus = focus;
           }}
         />
         <br /> <br />
@@ -341,6 +345,9 @@ const InputDemo = () => {
         <Textarea validateType="bottom" validateStatus="error" />
         <p>校验信息显示类型 inner 输入值 受限校验 </p>
         <Textarea validateType="inner" validateStatus="error" />
+      </Wrapper>
+      <Wrapper>
+        <CombineInputDemo />
       </Wrapper>
     </div>
   );
