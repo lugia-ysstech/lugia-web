@@ -280,7 +280,7 @@
     }
   },
   "category": ["数据录入"],
-  "childrenWidget": ["textarea"],
+  "childrenWidget": ["textarea","combineInput"],
   "theme": {
     "Container": {
       "name": "输入框主体",

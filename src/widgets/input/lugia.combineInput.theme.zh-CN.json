@@ -1,0 +1,559 @@
+[
+  {
+    "widgetName": "Input.CombineInput",
+    "title": "扩展输入框",
+    "viewProps": [
+      {
+        "name": "addBefore",
+        "text": "前缀补充"
+      },
+      {
+        "name": "beforeType",
+        "text": "前缀类型"
+      },
+      {
+        "name": "addAfter",
+        "text": "后缀补充"
+      },
+      {
+        "name": "afterType",
+        "text": "后缀类型"
+      },
+      {
+        "name": "disabled",
+        "text": "禁用"
+      },
+      {
+        "name": "canClear",
+        "text": "清除功能"
+      },
+      {
+        "name": "type",
+        "text": "类型"
+      },
+      {
+        "name": "validateStatus",
+        "text": "校验状态"
+      },
+      {
+        "name": "validateType",
+        "text": "校验类型"
+      }
+    ],
+    "data": [
+      {
+        "title": "前缀补充",
+        "iconClass": "inputPrefix",
+        "children": [
+          {
+            "title": "主体",
+            "iconClass": "inputPrefix",
+            "data": [
+              {
+                "name": "背景框",
+                "path": ["BeforeContent"],
+                "description": {
+                  "appearancePart": {
+                    "text": "背景框",
+                    "desc": "背景框配置"
+                  },
+                  "textPart": {
+                    "text": "文本",
+                    "desc": "文本配置"
+                  }
+                },
+                "props": [
+                  {
+                    "name": "beforeText",
+                    "typeInTheme": "text"
+                  }
+                ]
+              },
+              {
+                "name": "装饰图标",
+                "path": ["BeforeIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "装饰图标",
+                    "desc": "装饰图标配置"
+                  }
+                },
+                "props": [
+                  {
+                    "name": "beforeIconClass",
+                    "typeInTheme": "icon"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "下拉菜单",
+            "iconClass": "menu",
+            "children": [
+              {
+                "title": "主体",
+                "iconClass": "input",
+                "data": [
+                  {
+                    "name": "整体面板 ",
+                    "path": ["BeforeSelect", "Container"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "选择框",
+                        "desc": "面板中外观配置的区块显示文本"
+                      },
+                      "textPart": {
+                        "hidden": true
+                      }
+                    }
+                  },
+                  {
+                    "name": "选择文本",
+                    "path": ["BeforeSelect", "TextContent"],
+                    "description": {
+                      "textPart": {
+                        "text": "选择文本",
+                        "desc": "文本配置区块的显示文本"
+                      }
+                    }
+                  },
+                  {
+                    "name": "下拉图标",
+                    "path": ["BeforeSelect", "SwitchIcon"],
+                    "props": [
+                      {
+                        "name": "beforeSelectPullIconClass",
+                        "typeInTheme": "icon"
+                      }
+                    ],
+                    "description": {
+                      "textPart": {
+                        "text": "下拉图标",
+                        "desc": "下拉图标配置区块"
+                      },
+                      "spacingPart": {
+                        "hidden": true
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "菜单",
+                "iconClass": "menu",
+                "children": [
+                  {
+                    "title": "整体面板",
+                    "iconClass": "menubackground",
+                    "data": [
+                      {
+                        "name": "选择框整体配置",
+                        "path": ["BeforeSelect", "Menu", "Container"],
+                        "description": {
+                          "appearancePart": {
+                            "text": "外框",
+                            "desc": "面板中外观配置的区"
+                          },
+                          "spacingPart": {
+                            "text": "padding/margin",
+                            "desc": "面板内外边距配置区"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "默认项",
+                    "iconClass": "Default",
+                    "data": [
+                      {
+                        "name": "项的外盒",
+                        "path": ["BeforeSelect", "Menu", "MenuItem", "MenuItemWrap"],
+                        "description": {
+                          "appearancePart": {
+                            "text": "选项背景",
+                            "desc": "项的外盒外观配置区"
+                          },
+                          "spacingPart": {
+                            "text": "padding/margin",
+                            "desc": "项的外盒内外边距配置区"
+                          },
+                          "textPart": {
+                            "hidden": true
+                          }
+                        }
+                      },
+                      {
+                        "name": "文本框",
+                        "path": ["BeforeSelect", "Menu", "MenuItem", "TextContainer"],
+                        "description": {
+                          "textPart": {
+                            "text": "文本",
+                            "desc": "文本框置内外边距配置区"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "选中项",
+                    "iconClass": "Checked",
+                    "data": [
+                      {
+                        "name": "选中项的外盒",
+                        "path": ["BeforeSelect", "Menu", "MenuItem", "SelectedMenuItemWrap"],
+                        "description": {
+                          "appearancePart": {
+                            "text": "选项背景",
+                            "desc": "文本配置区块的显示文本"
+                          },
+                          "textPart": {
+                            "text": "文本",
+                            "desc": "选中项文本配置区"
+                          },
+                          "spacingPart": {
+                            "text": "padding/margin",
+                            "desc": "选中项内外边距配置区"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "分割线",
+                    "iconClass": "Dividingline",
+                    "data": [
+                      {
+                        "name": "分割线",
+                        "path": ["BeforeSelect", "Menu", "MenuItem", "Divider"],
+                        "description": {
+                          "appearancePart": {
+                            "text": "分割线",
+                            "desc": "分割线外观配置"
+                          },
+                          "spacingPart": {
+                            "text": "padding/margin",
+                            "desc": "分割线内外边距配置区"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "输入框",
+        "iconClass": "input",
+        "children": [
+          {
+            "title": "输入框",
+            "iconClass": "input",
+            "data": [
+              {
+                "name": "输入框",
+                "path": ["Input", "Container"],
+                "description": {
+                  "appearancePart": {
+                    "text": "输入框",
+                    "desc": "输入框配置"
+                  },
+                  "textPart": {
+                    "text": "输入文本",
+                    "desc": "输入文本配置"
+                  }
+                },
+                "props": [
+                  {
+                    "name": "value",
+                    "typeInTheme": "text"
+                  }
+                ]
+              },
+              {
+                "name": "提示文本",
+                "path": ["Input", "Placeholder"],
+                "description": {
+                  "textPart": {
+                    "text": "提示文本",
+                    "desc": "提示文本配置"
+                  }
+                },
+                "props": [
+                  {
+                    "name": "placeholder",
+                    "typeInTheme": "text"
+                  }
+                ]
+              },
+              {
+                "name": "清除图标",
+                "path": ["Input", "ClearButton"],
+                "description": {
+                  "textPart": {
+                    "text": "清除图标",
+                    "desc": "清除图标配置"
+                  }
+                },
+                "props": [
+                  {
+                    "name": "clearIcon",
+                    "typeInTheme": "icon"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "校验失败",
+            "iconClass": "Verificationfailed",
+            "data": [
+              {
+                "name": "配置校验失败的段落文本输入框",
+                "path": ["Input", "ValidateErrorInput"],
+                "description": {
+                  "textPart": {
+                    "text": "校验失败的段落文本输入框",
+                    "desc": "校验失败的段落文本输入框配置"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "失败提示",
+            "iconClass": "Failureprompt",
+            "data": [
+              {
+                "name": "校验失败提示信息",
+                "path": ["Input", "ValidateErrorText"],
+                "description": {
+                  "textPart": {
+                    "text": "校验失败提示信息",
+                    "desc": "校验失败的提示信息"
+                  }
+                },
+                "props": [
+                  {
+                    "name": "help",
+                    "typeInTheme": "text"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "title": "后缀补充",
+        "iconClass": "inputSuffix",
+        "children": [
+          {
+            "title": "主体",
+            "iconClass": "inputSuffix",
+            "data": [
+              {
+                "name": "背景框",
+                "path": ["AfterContent"],
+                "description": {
+                  "appearancePart": {
+                    "text": "背景框",
+                    "desc": "背景框配置"
+                  },
+                  "textPart": {
+                    "text": "文本",
+                    "desc": "文本配置"
+                  }
+                },
+                "props": [
+                  {
+                    "name": "afterText",
+                    "typeInTheme": "text"
+                  }
+                ]
+              },
+              {
+                "name": "装饰图标",
+                "path": ["AfterIcon"],
+                "description": {
+                  "textPart": {
+                    "text": "装饰图标",
+                    "desc": "装饰图标配置"
+                  }
+                },
+                "props": [
+                  {
+                    "name": "afterIconClass",
+                    "typeInTheme": "icon"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "下拉菜单",
+            "iconClass": "menu",
+            "children": [
+              {
+                "title": "主体",
+                "iconClass": "input",
+                "data": [
+                  {
+                    "name": "整体面板 ",
+                    "path": ["AfterSelect", "Container"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "选择框",
+                        "desc": "面板中外观配置的区块显示文本"
+                      },
+                      "textPart": {
+                        "hidden": true
+                      }
+                    }
+                  },
+                  {
+                    "name": "选择文本",
+                    "path": ["AfterSelect", "TextContent"],
+                    "description": {
+                      "textPart": {
+                        "text": "选择文本",
+                        "desc": "文本配置区块的显示文本"
+                      }
+                    }
+                  },
+                  {
+                    "name": "下拉图标",
+                    "path": ["AfterSelect", "SwitchIcon"],
+                    "props": [
+                      {
+                        "name": "afterSelectPullIconClass",
+                        "typeInTheme": "icon"
+                      }
+                    ],
+                    "description": {
+                      "textPart": {
+                        "text": "下拉图标",
+                        "desc": "下拉图标配置区块"
+                      },
+                      "spacingPart": {
+                        "hidden": true
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "菜单",
+                "iconClass": "menu",
+                "children": [
+                  {
+                    "title": "整体面板",
+                    "iconClass": "menubackground",
+                    "data": [
+                      {
+                        "name": "选择框整体配置",
+                        "path": ["AfterSelect", "Menu", "Container"],
+                        "description": {
+                          "appearancePart": {
+                            "text": "外框",
+                            "desc": "面板中外观配置的区"
+                          },
+                          "spacingPart": {
+                            "text": "padding/margin",
+                            "desc": "面板内外边距配置区"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "默认项",
+                    "iconClass": "Default",
+                    "data": [
+                      {
+                        "name": "项的外盒",
+                        "path": ["AfterSelect", "Menu", "MenuItem", "MenuItemWrap"],
+                        "description": {
+                          "appearancePart": {
+                            "text": "选项背景",
+                            "desc": "项的外盒外观配置区"
+                          },
+                          "spacingPart": {
+                            "text": "padding/margin",
+                            "desc": "项的外盒内外边距配置区"
+                          },
+                          "textPart": {
+                            "hidden": true
+                          }
+                        }
+                      },
+                      {
+                        "name": "文本框",
+                        "path": ["AfterSelect", "Menu", "MenuItem", "TextContainer"],
+                        "description": {
+                          "textPart": {
+                            "text": "文本",
+                            "desc": "文本框置内外边距配置区"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "选中项",
+                    "iconClass": "Checked",
+                    "data": [
+                      {
+                        "name": "选中项的外盒",
+                        "path": ["AfterSelect", "Menu", "MenuItem", "SelectedMenuItemWrap"],
+                        "description": {
+                          "appearancePart": {
+                            "text": "选项背景",
+                            "desc": "文本配置区块的显示文本"
+                          },
+                          "textPart": {
+                            "text": "文本",
+                            "desc": "选中项文本配置区"
+                          },
+                          "spacingPart": {
+                            "text": "padding/margin",
+                            "desc": "选中项内外边距配置区"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "分割线",
+                    "iconClass": "Dividingline",
+                    "data": [
+                      {
+                        "name": "分割线",
+                        "path": ["AfterSelect", "Menu", "MenuItem", "Divider"],
+                        "description": {
+                          "appearancePart": {
+                            "text": "分割线",
+                            "desc": "分割线外观配置"
+                          },
+                          "spacingPart": {
+                            "text": "padding/margin",
+                            "desc": "分割线内外边距配置区"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
