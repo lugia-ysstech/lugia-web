@@ -243,7 +243,7 @@
       "type": "icon",
       "desc": "指定前缀标签下拉菜单下拉图标"
     },
-    "afterSelectBeforePullIconClass": {
+    "afterSelectPullIconClass": {
       "type": "icon",
       "desc": "指定后缀标签下拉菜单下拉图标"
     },
