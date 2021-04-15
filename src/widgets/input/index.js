@@ -6,7 +6,9 @@
  */
 import Input from './input';
 import Textarea from './textarea';
+import CombineInput from './combineInput';
 
 Input.Textarea = Textarea;
-export { Input, Textarea };
+Input.CombineInput = CombineInput;
+export { Input, Textarea, CombineInput };
 export default Input;
