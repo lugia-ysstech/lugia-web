@@ -245,7 +245,7 @@ class CombineInput extends React.Component<CombineInputProps> {
       size,
       beforeSelectData,
       beforeType,
-      onBeforeSelectOnChange,
+      onBeforeSelectChange,
       afterSelectData,
       onAfterSelectChange,
       afterType,
@@ -280,7 +280,7 @@ class CombineInput extends React.Component<CombineInputProps> {
       let pullIconClass = '';
       if (checkValue(position, 'Before')) {
         data = beforeSelectData;
-        onSelectChange = onBeforeSelectOnChange;
+        onSelectChange = onBeforeSelectChange;
         value = beforeSelectValue;
         displayValue = beforeSelectDisplayValue;
         valueField = beforeSelectValueField;
