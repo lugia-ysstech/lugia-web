@@ -13,6 +13,8 @@ const normalSize = '$lugia-dict.@lugia/lugia-web.normalSize';
 const largeSize = '$lugia-dict.@lugia/lugia-web.largeSize';
 const xxsFontSize = '$lugia-dict.@lugia/lugia-web.xxsFontSize';
 const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
+const sectionFontSize = '$lugia-dict.@lugia/lugia-web.sectionFontSize';
+const descriptionFontSize = '$lugia-dict.@lugia/lugia-web.descriptionFontSize';
 
 export const FontSize = 1.2;
 export const RadiusSize = 4;
@@ -49,4 +51,7 @@ export function getInputIconSize(size: InputSize) {
 }
 export function getInputFixSize(size: InputSize) {
   return size === 'small' ? 12 : 14;
+}
+export function getDisplayTextSize(size: InputSize) {
+  return size === 'small' ? descriptionFontSize : sectionFontSize;
 }

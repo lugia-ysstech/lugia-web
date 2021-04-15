@@ -133,6 +133,7 @@ const Lugiad = 'lugia_widget_Lugiad';
 
 /* add by zhanglunyu */
 const Image = 'lugia_widget_Image';
+const CombineInput = 'lugia_widget_CombineInput';
 
 export default {
   Button,
@@ -248,4 +249,5 @@ export default {
   Lugiad,
   Image,
   PageLayout,
+  CombineInput,
 };

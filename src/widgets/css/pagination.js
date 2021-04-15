@@ -43,7 +43,7 @@ export type PaginationState = {
 function getSize(size: SizeType) {
   return size === 'small' ? 12 : 14;
 }
-function getIconSize(size: SizeType) {
+export function getIconSize(size: SizeType) {
   return size === 'small' ? get('xsFontSize') : get('sFontSize');
 }
 export function getThemeFontSize(themeMeta, themeProps, iconType?: boolean) {
