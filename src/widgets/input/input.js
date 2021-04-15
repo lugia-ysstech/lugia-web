@@ -6,24 +6,24 @@ import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import { fixControlledValue } from '../utils';
 import type { InputSize } from '../css/input';
-import { getInputHeight, getInputIconSize, getInputFixSize } from '../css/input';
+import { getInputFixSize, getInputHeight, getInputIconSize } from '../css/input';
 import Icon from '../icon';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
-import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import get from '../css/theme-common-dict';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
 import ValidateHoc from './validateHoc';
+import type { ValidateStatus, ValidateType } from '../css/validateHoc';
 import {
-  validateValueDefaultTheme,
-  validateBorderDefaultTheme,
   isValidateError,
+  validateBorderDefaultTheme,
+  validateValueDefaultTheme,
   validateWidthTheme,
 } from '../css/validateHoc';
-import type { ValidateStatus, ValidateType } from '../css/validateHoc';
 
 const { px2remcss } = units;
 const { hShadow, vShadow, transitionTime } = colorsFunc();
@@ -230,7 +230,7 @@ type InsideProps = {
   _focus: boolean,
 };
 
-type InputProps = {
+export type InputProps = {
   size?: InputSize,
   viewClass: string,
   themeProps: Object,
@@ -331,7 +331,7 @@ class TextBox extends Component<InputProps, InputState> {
       value = parser(value);
     }
     const param = { newValue: value, oldValue, event };
-    if ('value' in this.props === false) {
+    if (!('value' in this.props)) {
       this.setState({ value }, () => {
         onChange && onChange(param);
       });
