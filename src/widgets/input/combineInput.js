@@ -2,12 +2,12 @@ import React from 'react';
 import Input from './index';
 import Select from '../select/index';
 
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import Widget from '../consts';
-import { getInputHeight, getDisplayTextSize } from '../css/input';
+import { getDisplayTextSize, getInputHeight } from '../css/input';
 import { getIconSize } from '../css/pagination';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
@@ -98,6 +98,17 @@ const CombineInputContainer: Object = CSSComponent({
   },
   css: css`
     display: flex;
+  `,
+});
+
+const InnerInputContainer: props = StaticComponent({
+  tag: 'span',
+  className: 'InnerInputContainer',
+  css: css`
+    flex: ${props => {
+      const { addBefore, addAfter } = props;
+      return addBefore && addAfter ? '3' : addBefore || addAfter ? '4;' : '1;';
+    }};
   `,
 });
 type AddType = 'text' | 'select' | 'custom';
@@ -398,13 +409,6 @@ class CombineInput extends React.Component<CombineInputProps> {
           Container: {
             normal: {
               borderRadius: getBorderRadiusCSSByPosition(position),
-              getCSS() {
-                return addBefore && addAfter
-                  ? 'flex:3;'
-                  : addBefore || addAfter
-                  ? 'flex:4;'
-                  : 'flex:1;';
-              },
             },
             hover: {
               borderRadius: getBorderRadiusCSSByPosition(position),
@@ -444,7 +448,9 @@ class CombineInput extends React.Component<CombineInputProps> {
     return (
       <CombineInputContainer themeProps={autoInputContainer}>
         {addBefore ? this.generateExtendContentByPosition('Before') : null}
-        {input}
+        <InnerInputContainer addBefore={addBefore} addAfter={addAfter}>
+          {input}
+        </InnerInputContainer>
         {addAfter ? this.generateExtendContentByPosition('After') : null}
       </CombineInputContainer>
     );
