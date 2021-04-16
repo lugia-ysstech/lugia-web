@@ -123,7 +123,6 @@ type CombineInputProps = {
   addAfter?: boolean,
   beforeType?: AddType,
   afterType?: AddType,
-  afterRenderValue?: string,
   beforeIconClass?: string,
   afterIconClass?: string,
   beforeIconPosition?: IconPositionType,
@@ -137,7 +136,7 @@ type CombineInputProps = {
   beforeSelectDisplayField?: string,
   afterSelectDisplayField?: string,
   beforeRenderValue?: string | React.ReactNode,
-  afterRender?: string | React.ReactNode,
+  afterRenderValue?: string | React.ReactNode,
   onBeforeSelectChange?: Function,
   onAfterSelectChange?: Function,
 } & InputProps;
