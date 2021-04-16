@@ -27,7 +27,7 @@ export default () => {
       BeforeSelect: {
         Container: {
           normal: {
-            width: 100,
+            width: 150,
           },
         },
       },
@@ -41,7 +41,7 @@ export default () => {
       },
       BeforeContent: {
         normal: {
-          width: 100,
+          width: 200,
           color: 'blue',
           fontSize: 30,
         },
@@ -69,8 +69,8 @@ export default () => {
   };
 
   function SelectInput() {
-    const [beforeSelectValue, setBeforeSelectValue] = useState('');
-    const [afterSelectValue, setAfterSelectValue] = useState('');
+    const [beforeRenderValue, setBeforeSelectValue] = useState('');
+    const [afterRenderValue, setAfterSelectValue] = useState('');
     const onAfterSelectChange = value => {
       const { newValue } = value;
       setAfterSelectValue(newValue);
@@ -87,9 +87,9 @@ export default () => {
         afterType={'select'}
         afterSelectData={data}
         onBeforeSelectChange={onBeforeSelectChange}
-        beforeSelectValue={beforeSelectValue}
+        beforeRenderValue={beforeRenderValue}
         onAfterSelectChange={onAfterSelectChange}
-        afterSelectValue={afterSelectValue}
+        afterRenderValue={afterRenderValue}
       />
     );
   }
@@ -112,7 +112,7 @@ export default () => {
       <br />
       <p>前缀图标</p>
       <CombineInput
-        beforeType={'text'}
+        beforeType={'display'}
         beforeText=""
         beforeIconClass={'lugia-icon-direction_backward'}
       />
@@ -120,15 +120,25 @@ export default () => {
       <br />
       <br />
       <p>前缀文字</p>
-      <CombineInput beforeType={'text'} beforeText="前缀文字" beforeIconClass={''} />
+      <CombineInput beforeType={'display'} beforeText="前缀文字" beforeIconClass={''} />
       <br />
       <br />
       <br />
       <p>前缀文字 + 图标</p>
       <CombineInput
-        beforeType={'text'}
+        beforeType={'display'}
         beforeText="前缀文字"
         beforeIconClass={'lugia-icon-direction_backward'}
+      />
+      <br />
+      <br />
+      <br />
+      <p>前缀文字 + 图标 图标在后</p>
+      <CombineInput
+        beforeType={'display'}
+        beforeText="前缀文字"
+        beforeIconClass={'lugia-icon-direction_backward'}
+        beforeIconPosition={'after'}
       />
       <br />
       <br />
@@ -136,9 +146,9 @@ export default () => {
       <p>size large</p>
       <CombineInput
         size={'large'}
-        beforeType={'text'}
+        beforeType={'display'}
         beforeText="前缀文字"
-        afterType={'text'}
+        afterType={'display'}
         afterText="后缀文字"
       />
       <br />
@@ -147,16 +157,16 @@ export default () => {
       <p>size small</p>
       <CombineInput
         size={'small'}
-        beforeType={'text'}
+        beforeType={'display'}
         beforeText="前缀文字"
-        afterType={'text'}
+        afterType={'display'}
         afterText="后缀文字"
       />
       <br />
       <br />
       <br />
       <p>自定义内容</p>
-      <CombineInput beforeType={'cutom'} beforeRender={<div>自定义内容</div>} />
+      <CombineInput beforeType={'custom'} beforeRenderValue={<div>自定义内容</div>} />
       <br />
       <br />
       <br />
@@ -182,7 +192,7 @@ export default () => {
         <br />
         <br />
         <br />
-        <CombineInput beforeType={'text'} afterType={'text'} />
+        <CombineInput beforeType={'display'} afterType={'display'} />
       </Theme>
       <br />
     </div>

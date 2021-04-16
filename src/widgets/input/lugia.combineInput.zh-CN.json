@@ -117,16 +117,6 @@
       "desc": "后缀标签类型",
       "defaultValue": "text"
     },
-    "beforeText": {
-      "type": "string",
-      "desc": "前缀标签文字内容",
-      "defaultValue": "http://"
-    },
-    "afterText": {
-      "type": "string",
-      "desc": "后缀标签文字内容",
-      "defaultValue": ".com"
-    },
     "beforeIconClass": {
       "type": "icon",
       "desc": "前缀标签图标"
@@ -134,6 +124,16 @@
     "afterIconClass": {
       "type": "icon",
       "desc": "后缀标签图标"
+    },
+    "beforeIconPosition": {
+      "type": "IconPositionType",
+      "desc": "前缀标签位置",
+      "propsDefaultValue": "before"
+    },
+    "afterIconPosition": {
+      "type": "IconPositionType",
+      "desc": "后缀标签位置",
+      "propsDefaultValue": "before"
     },
     "beforeSelectData": {
       "type": "Object[]",
@@ -203,13 +203,15 @@
         }
       ]
     },
-    "beforeSelectValue": {
-      "type": "string",
-      "desc": "指定前缀标签下拉菜单选中的条目"
+    "beforeRenderValue": {
+      "type": "string | React.Node",
+      "desc": "前缀标签渲染的内容",
+      "defaultValue": "http://"
     },
-    "afterSelectValue": {
-      "type": "string",
-      "desc": "指定后缀标签下拉菜单选中的条目"
+    "afterRenderValue": {
+      "type": "string | React.Node",
+      "desc": "后缀标签渲染的内容",
+      "defaultValue": ".com"
     },
     "beforeSelectDisplayValue": {
       "type": "string",
@@ -246,14 +248,6 @@
     "afterSelectPullIconClass": {
       "type": "icon",
       "desc": "指定后缀标签下拉菜单下拉图标"
-    },
-    "beforeRender": {
-      "type": "React.Node",
-      "desc": "前缀标签自定义渲染的内容"
-    },
-    "afterRender": {
-      "type": "React.Node",
-      "desc": "后缀标签自定义渲染的内容"
     }
   },
   "events": {
@@ -429,9 +423,19 @@
     }
   },
   "type": {
+    "IconPositionType": [
+      {
+        "value": "before",
+        "text": "前边"
+      },
+      {
+        "value": "after",
+        "text": "后边"
+      }
+    ],
     "AddType": [
       {
-        "value": "text",
+        "value": "display",
         "text": "展示"
       },
       {

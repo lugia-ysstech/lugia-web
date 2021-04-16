@@ -64,7 +64,7 @@
                 },
                 "props": [
                   {
-                    "name": "beforeText",
+                    "name": "beforeRenderValue",
                     "typeInTheme": "text"
                   }
                 ]
@@ -372,7 +372,7 @@
                 },
                 "props": [
                   {
-                    "name": "afterText",
+                    "name": "afterRenderValue",
                     "typeInTheme": "text"
                   }
                 ]
