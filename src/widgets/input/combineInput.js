@@ -244,11 +244,18 @@ class CombineInput extends React.Component<CombineInputProps> {
   }
 
   getDisplayRender(position: _InnerPositionType) {
-    return checkValue(position, _BeforeType)
-      ? this.getBeforeRenderContent()
-      : checkValue(position, _AfterType)
-      ? this.getAfterRenderContent()
-      : '';
+    let render;
+    switch (position) {
+      case _BeforeType:
+        render = this.getBeforeRenderContent();
+        break;
+      case _AfterType:
+        render = this.getAfterRenderContent();
+        break;
+      default:
+        render = '';
+    }
+    return render;
   }
 
   getAfterRenderContent() {
@@ -258,11 +265,24 @@ class CombineInput extends React.Component<CombineInputProps> {
       afterIconPosition,
       afterIconClass = defaultIconClass,
     } = this.props;
-    return checkValue(afterType, 'display')
-      ? this.getDisplayInnerContent(_AfterType, afterRenderValue, afterIconClass, afterIconPosition)
-      : checkValue(afterType, 'custom')
-      ? afterRenderValue
-      : '';
+
+    let render;
+    switch (afterType) {
+      case 'display':
+        render = this.getDisplayInnerContent(
+          _AfterType,
+          afterRenderValue,
+          afterIconClass,
+          afterIconPosition
+        );
+        break;
+      case 'custom':
+        render = afterRenderValue;
+        break;
+      default:
+        render = '';
+    }
+    return render;
   }
 
   getBeforeRenderContent() {
@@ -273,16 +293,23 @@ class CombineInput extends React.Component<CombineInputProps> {
       beforeIconClass = defaultIconClass,
     } = this.props;
 
-    return checkValue(beforeType, 'display')
-      ? this.getDisplayInnerContent(
+    let render;
+    switch (beforeType) {
+      case 'display':
+        render = this.getDisplayInnerContent(
           _BeforeType,
           beforeRenderValue,
           beforeIconClass,
           beforeIconPosition
-        )
-      : checkValue(beforeType, 'custom')
-      ? beforeRenderValue
-      : '';
+        );
+        break;
+      case 'custom':
+        render = beforeRenderValue;
+        break;
+      default:
+        render = '';
+    }
+    return render;
   }
 
   getDisplayInnerContent(
