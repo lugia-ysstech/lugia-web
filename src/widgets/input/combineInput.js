@@ -25,9 +25,12 @@ const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const paddingToText = '$lugia-dict.@lugia/lugia-web.paddingToText';
 
 const defaultIconClass = 'lugia-icon-financial_classification';
-const ExtendContainer: Object = CSSComponent({
+const _BeforeType = 'Before';
+const _AfterType = 'After';
+
+const CombineContainer: Object = CSSComponent({
   tag: 'div',
-  className: 'ExtendContainer',
+  className: 'CombineContainer',
   normal: {
     selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
     defaultTheme: {
@@ -52,9 +55,9 @@ const ExtendContainer: Object = CSSComponent({
     padding: 0 ${() => px2remcss(get('padding'))};
   `,
 });
-const ExtendText: Object = CSSComponent({
+const CombineText: Object = CSSComponent({
   tag: 'div',
-  className: 'ExtendText',
+  className: 'CombineText',
   normal: {
     selectNames: [['color'], ['fontSize'], ['font']],
     defaultTheme: {
@@ -111,30 +114,30 @@ const InnerInputContainer: props = StaticComponent({
     }};
   `,
 });
-type AddType = 'text' | 'select' | 'custom';
-type PositionType = 'Before' | 'After' | 'Both';
+type AddType = 'display' | 'select' | 'custom';
+type IconPositionType = 'before' | 'after';
+type _InnerPositionType = 'Before' | 'After' | 'Both';
 
 type CombineInputProps = {
   addBefore?: boolean,
   addAfter?: boolean,
   beforeType?: AddType,
   afterType?: AddType,
-  beforeText?: string,
-  afterText?: string,
+  afterRenderValue?: string,
   beforeIconClass?: string,
   afterIconClass?: string,
+  beforeIconPosition?: IconPositionType,
+  afterIconPosition?: IconPositionType,
   beforeSelectData?: Object[],
   afterSelectData?: Object[],
-  beforeSelectValue?: string,
-  afterSelectValue?: string,
   beforeSelectDisplayValue?: string,
   afterSelectDisplayValue?: string,
   beforeSelectValueField?: string,
   afterSelectValueField?: string,
   beforeSelectDisplayField?: string,
   afterSelectDisplayField?: string,
-  beforeRender?: React.ReactNode,
-  afterRender?: React.ReactNode,
+  beforeRenderValue?: string | React.ReactNode,
+  afterRender?: string | React.ReactNode,
   onBeforeSelectChange?: Function,
   onAfterSelectChange?: Function,
 } & InputProps;
@@ -142,23 +145,37 @@ type CombineInputProps = {
 const checkValue = (actualValue: string, expectValue: string) => {
   return actualValue === expectValue;
 };
-const getBorderCSSByPosition = (position: PositionType) => {
-  const border = checkValue(position, 'Before')
-    ? { right: { width: 0 } }
-    : checkValue(position, 'After')
-    ? { left: { width: 0 } }
-    : {};
+const getBorderCSSByPosition = (position: _InnerPositionType) => {
+  let border;
+  switch (position) {
+    case _BeforeType:
+      border = { right: { width: 0 } };
+      break;
+    case _AfterType:
+      border = { left: { width: 0 } };
+      break;
+    default:
+      border = {};
+  }
+
   return {
     border,
     borderRadius: getBorderRadiusCSSByPosition(position),
   };
 };
-const getBorderRadiusCSSByPosition = (position: PositionType) => {
-  return checkValue(position, 'Before')
-    ? getBorderRadius(0, ['tr', 'br'])
-    : checkValue(position, 'After')
-    ? getBorderRadius(0, ['tl', 'bl'])
-    : '';
+const getBorderRadiusCSSByPosition = (position: _InnerPositionType) => {
+  let borderRadius;
+  switch (position) {
+    case _BeforeType:
+      borderRadius = getBorderRadius(0, ['tr', 'br']);
+      break;
+    case _AfterType:
+      borderRadius = getBorderRadius(0, ['tl', 'bl']);
+      break;
+    default:
+      borderRadius = '';
+  }
+  return borderRadius;
 };
 
 class CombineInput extends React.Component<CombineInputProps> {
@@ -171,49 +188,40 @@ class CombineInput extends React.Component<CombineInputProps> {
     addBefore: true,
     addAfter: true,
     beforeType: 'select',
-    afterType: 'text',
-    beforeText: 'http://',
-    afterText: '.com',
+    afterType: 'display',
+    beforeRenderValue: 'http://',
+    afterRenderValue: '.com',
+    beforeIconPosition: 'before',
+    afterIconPosition: 'before',
   };
 
-  getDisplayText(position: PositionType, text: string) {
+  getDisplayText(position: _InnerPositionType, text: string) {
     const { getPartOfThemeProps, disabled, size } = this.props;
     const themeProps = getPartOfThemeProps(`${position}Content`, { props: { size } });
     return text !== '' ? (
-      <ExtendText disabled={disabled} themeProps={themeProps}>
-        text
-      </ExtendText>
+      <CombineText disabled={disabled} themeProps={themeProps}>
+        {text}
+      </CombineText>
     ) : null;
   }
 
-  getDisplayIcon(position: PositionType) {
-    const {
-      getPartOfThemeHocProps,
-      beforeIconClass = defaultIconClass,
-      afterIconClass = defaultIconClass,
-      disabled,
-    } = this.props;
-
-    const iconClass = checkValue(position, 'Before')
-      ? beforeIconClass
-      : checkValue(position, 'After')
-      ? afterIconClass
-      : '';
+  getDisplayIcon(position: _InnerPositionType, iconClass: string, iconPosition: IconPositionType) {
+    const { getPartOfThemeHocProps, disabled, size } = this.props;
     const { theme, viewClass } = getPartOfThemeHocProps(`${position}Icon`);
+
+    const theIconPosition = checkValue(iconPosition, 'after') ? 'left' : 'right';
     const iconDefaultTheme = {
       [viewClass]: {
         normal: {
           color: blackColor,
-          margin: {
-            left: paddingToText,
-          },
-          getThemeMeta(themeMeta, themeProps) {
-            const { propsConfig } = themeProps;
-            const { size } = propsConfig;
+          getThemeMeta(themeMeta) {
             const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
             const theSize = innerFontSize || fontSize || getIconSize(size);
             return {
               fontSize: theSize,
+              margin: {
+                [theIconPosition]: paddingToText,
+              },
             };
           },
         },
@@ -225,6 +233,8 @@ class CombineInput extends React.Component<CombineInputProps> {
     const theTheme = deepMerge(iconDefaultTheme, theme);
     return iconClass !== '' ? (
       <Icon
+        size={size}
+        iconPosition={iconPosition}
         disabled={disabled}
         singleTheme
         iconClass={iconClass}
@@ -234,98 +244,154 @@ class CombineInput extends React.Component<CombineInputProps> {
     ) : null;
   }
 
-  getDisplayContent(position: PositionType) {
-    const { beforeType, beforeText, beforeRender, afterType, afterText, afterRender } = this.props;
-
-    let content = '';
-
-    if (checkValue(position, 'Before')) {
-      content = checkValue(beforeType, 'text')
-        ? [this.getDisplayText(position, beforeText), this.getDisplayIcon(position)]
-        : beforeRender;
-    } else if (checkValue(position, 'After')) {
-      content = checkValue(afterType, 'text')
-        ? [this.getDisplayText(position, afterText), this.getDisplayIcon(position)]
-        : afterRender;
-    }
-    return content;
+  getDisplayRender(position: _InnerPositionType) {
+    return checkValue(position, _BeforeType)
+      ? this.getBeforeRenderContent()
+      : checkValue(position, _AfterType)
+      ? this.getAfterRenderContent()
+      : '';
   }
 
-  generateExtendContentByPosition(position: PositionType): React$Node {
+  getAfterRenderContent() {
+    const {
+      afterType,
+      afterRenderValue,
+      afterIconPosition,
+      afterIconClass = defaultIconClass,
+    } = this.props;
+    return checkValue(afterType, 'display')
+      ? this.getDisplayInnerContent(_AfterType, afterRenderValue, afterIconClass, afterIconPosition)
+      : checkValue(afterType, 'custom')
+      ? afterRenderValue
+      : '';
+  }
+
+  getBeforeRenderContent() {
+    const {
+      beforeType,
+      beforeRenderValue,
+      beforeIconPosition,
+      beforeIconClass = defaultIconClass,
+    } = this.props;
+
+    return checkValue(beforeType, 'display')
+      ? this.getDisplayInnerContent(
+          _BeforeType,
+          beforeRenderValue,
+          beforeIconClass,
+          beforeIconPosition
+        )
+      : checkValue(beforeType, 'custom')
+      ? beforeRenderValue
+      : '';
+  }
+
+  getDisplayInnerContent(
+    position: _InnerPositionType,
+    renderValue: string | React.ReactNode,
+    iconClass: string,
+    iconPosition: IconPositionType
+  ) {
+    if (checkValue(iconPosition, 'after')) {
+      return [
+        this.getDisplayText(position, renderValue),
+        this.getDisplayIcon(position, iconClass, iconPosition),
+      ];
+    }
+    return [
+      this.getDisplayIcon(position, iconClass, iconPosition),
+      this.getDisplayText(position, renderValue),
+    ];
+  }
+
+  getBeforeSelect() {
     const {
       size,
+      disabled,
       beforeSelectData,
-      beforeType,
       onBeforeSelectChange,
+      beforeRenderValue,
+      beforeSelectDisplayValue,
+      beforeSelectValueField,
+      beforeSelectDisplayField,
+      beforeSelectPullIconClass,
+      createPortal,
+      popupContainerId,
+    } = this.props;
+    const { theme, viewClass } = this.getSelectTheme(_BeforeType);
+    return (
+      <Select
+        popupContainerId={popupContainerId}
+        createPortal={createPortal}
+        disabled={disabled}
+        value={beforeRenderValue}
+        displayValue={beforeSelectDisplayValue}
+        valueField={beforeSelectValueField}
+        displayField={beforeSelectDisplayField}
+        pullIconClass={beforeSelectPullIconClass}
+        data={beforeSelectData}
+        viewClass={viewClass}
+        theme={theme}
+        size={size}
+        onChange={onBeforeSelectChange}
+      />
+    );
+  }
+
+  getAfterSelect() {
+    const {
+      size,
+      disabled,
       afterSelectData,
       onAfterSelectChange,
-      afterType,
-      disabled,
-      getPartOfThemeProps,
-      beforeSelectValue,
-      afterSelectValue,
-      beforeSelectDisplayValue,
+      afterRenderValue,
       afterSelectDisplayValue,
-      beforeSelectValueField,
       afterSelectValueField,
-      beforeSelectDisplayField,
       afterSelectDisplayField,
-      beforeSelectPullIconClass,
       afterSelectPullIconClass,
       createPortal,
       popupContainerId,
     } = this.props;
+    const { theme, viewClass } = this.getSelectTheme(_AfterType);
 
-    const { theme, viewClass } = this.getSelectTheme(position);
+    return (
+      <Select
+        popupContainerId={popupContainerId}
+        createPortal={createPortal}
+        disabled={disabled}
+        value={afterRenderValue}
+        displayValue={afterSelectDisplayValue}
+        valueField={afterSelectValueField}
+        displayField={afterSelectDisplayField}
+        pullIconClass={afterSelectPullIconClass}
+        data={afterSelectData}
+        viewClass={viewClass}
+        theme={theme}
+        size={size}
+        onChange={onAfterSelectChange}
+      />
+    );
+  }
 
-    if (
-      (checkValue(position, 'Before') && checkValue(beforeType, 'select')) ||
-      (checkValue(position, 'After') && checkValue(afterType, 'select'))
-    ) {
-      let data = [];
-      let onSelectChange = null;
-      let value = [];
-      let displayValue = [];
-      let valueField = '';
-      let displayField = '';
-      let pullIconClass = '';
-      if (checkValue(position, 'Before')) {
-        data = beforeSelectData;
-        onSelectChange = onBeforeSelectChange;
-        value = beforeSelectValue;
-        displayValue = beforeSelectDisplayValue;
-        valueField = beforeSelectValueField;
-        displayField = beforeSelectDisplayField;
-        pullIconClass = beforeSelectPullIconClass;
-      } else if (checkValue(position, 'After')) {
-        data = afterSelectData;
-        onSelectChange = onAfterSelectChange;
-        value = afterSelectValue;
-        displayValue = afterSelectDisplayValue;
-        valueField = afterSelectValueField;
-        displayField = afterSelectDisplayField;
-        pullIconClass = afterSelectPullIconClass;
-      }
-      return (
-        <Select
-          popupContainerId={popupContainerId}
-          createPortal={createPortal}
-          disabled={disabled}
-          value={value}
-          displayValue={displayValue}
-          valueField={valueField}
-          displayField={displayField}
-          pullIconClass={pullIconClass}
-          data={data}
-          viewClass={viewClass}
-          theme={theme}
-          size={size}
-          onChange={onSelectChange}
-        />
-      );
+  getBeforeCombineContent(): React$Node {
+    const { beforeType } = this.props;
+    if (checkValue(beforeType, 'select')) {
+      return this.getBeforeSelect();
     }
+    return this.getDisplayContent(_BeforeType);
+  }
 
-    const extendThemeProps = getPartOfThemeProps(`${position}Content`, {
+  getAfterCombineContent(): React$Node {
+    const { afterType } = this.props;
+    if (checkValue(afterType, 'select')) {
+      return this.getAfterSelect();
+    }
+    return this.getDisplayContent(_AfterType);
+  }
+
+  getDisplayContent(position: _InnerPositionType) {
+    const { getPartOfThemeProps, size } = this.props;
+    const combineThemeProps = getPartOfThemeProps(`${position}Content`, {
       props: { position, size },
     });
     const {
@@ -344,11 +410,11 @@ class CombineInput extends React.Component<CombineInputProps> {
       },
     };
 
-    const theThemeProps = deepMerge(defaultTheme, extendThemeProps);
+    const theThemeProps = deepMerge(defaultTheme, combineThemeProps);
     return (
-      <ExtendContainer themeProps={theThemeProps}>
-        {this.getDisplayContent(position)}
-      </ExtendContainer>
+      <CombineContainer themeProps={theThemeProps}>
+        {this.getDisplayRender(position)}
+      </CombineContainer>
     );
   }
 
@@ -360,7 +426,7 @@ class CombineInput extends React.Component<CombineInputProps> {
     return height;
   }
 
-  getSelectTheme(position: PositionType) {
+  getSelectTheme(position: _InnerPositionType) {
     const { getPartOfThemeHocProps, addBefore, addAfter } = this.props;
 
     const { theme: selectThemeProps, viewClass } = getPartOfThemeHocProps(`${position}Select`);
@@ -402,7 +468,7 @@ class CombineInput extends React.Component<CombineInputProps> {
     const { theme: inputThemeProps, viewClass } = getPartOfThemeHocProps('Input');
 
     const position =
-      addAfter && addBefore ? 'Both' : addAfter ? 'Before' : addBefore ? 'After' : '';
+      addAfter && addBefore ? 'Both' : addAfter ? _BeforeType : addBefore ? _AfterType : '';
     const theme = deepMerge(
       {
         [viewClass]: {
@@ -440,18 +506,18 @@ class CombineInput extends React.Component<CombineInputProps> {
     if (!addBefore && !addAfter) {
       return input;
     }
-    const autoInputContainer = getPartOfThemeProps('Container', {
+    const combineInputContainerThemeProps = getPartOfThemeProps('Container', {
       props: {
         size,
       },
     });
     return (
-      <CombineInputContainer themeProps={autoInputContainer}>
-        {addBefore ? this.generateExtendContentByPosition('Before') : null}
+      <CombineInputContainer themeProps={combineInputContainerThemeProps}>
+        {addBefore ? this.getBeforeCombineContent() : null}
         <InnerInputContainer addBefore={addBefore} addAfter={addAfter}>
           {input}
         </InnerInputContainer>
-        {addAfter ? this.generateExtendContentByPosition('After') : null}
+        {addAfter ? this.getAfterCombineContent() : null}
       </CombineInputContainer>
     );
   }
