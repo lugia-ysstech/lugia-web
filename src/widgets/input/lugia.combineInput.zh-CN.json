@@ -110,20 +110,22 @@
     "beforeType": {
       "type": "AddType",
       "desc": "前缀标签类型",
-      "defaultValue": "select"
+      "propsDefaultValue": "select"
     },
     "afterType": {
       "type": "AddType",
       "desc": "后缀标签类型",
-      "defaultValue": "text"
+      "propsDefaultValue": "text"
     },
     "beforeIconClass": {
       "type": "icon",
-      "desc": "前缀标签图标"
+      "desc": "前缀标签图标",
+      "propsDefaultValue": "lugia-icon-financial_classification"
     },
     "afterIconClass": {
       "type": "icon",
-      "desc": "后缀标签图标"
+      "desc": "后缀标签图标",
+      "propsDefaultValue": "lugia-icon-financial_classification"
     },
     "beforeIconPosition": {
       "type": "IconPositionType",
@@ -154,18 +156,18 @@
           ]
         }
       ],
-      "defaultValue": [
+      "propsDefaultValue": [
         {
-          "value": "选项一",
-          "text": "选项一"
+          "value": "https://",
+          "text": "https://"
         },
         {
-          "value": "选项二",
-          "text": "选项二"
+          "value": "http://",
+          "text": "http://"
         },
         {
-          "value": "选项三",
-          "text": "选项三"
+          "value": "www.",
+          "text": "www."
         }
       ]
     },
@@ -188,30 +190,26 @@
           ]
         }
       ],
-      "defaultValue": [
+      "propsDefaultValue": [
         {
-          "value": "选项一",
-          "text": "选项一"
+          "value": ".com",
+          "text": ".com"
         },
         {
-          "value": "选项二",
-          "text": "选项二"
-        },
-        {
-          "value": "选项三",
-          "text": "选项三"
+          "value": ".cn",
+          "text": ".cn"
         }
       ]
     },
     "beforeRenderValue": {
       "type": "string | React.Node",
       "desc": "前缀标签渲染的内容",
-      "defaultValue": "http://"
+      "propsDefaultValue": "http://"
     },
     "afterRenderValue": {
       "type": "string | React.Node",
       "desc": "后缀标签渲染的内容",
-      "defaultValue": ".com"
+      "propsDefaultValue": ".com"
     },
     "beforeSelectDisplayValue": {
       "type": "string",

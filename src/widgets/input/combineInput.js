@@ -342,16 +342,12 @@ class CombineInput extends React.Component<CombineInputProps> {
     iconClass: string,
     iconPosition: IconPositionType
   ) {
+    const displayText = this.getDisplayText(position, renderValue);
+    const displayIcon = this.getDisplayIcon(position, iconClass, iconPosition);
     if (checkValue(iconPosition, 'after')) {
-      return [
-        this.getDisplayText(position, renderValue),
-        this.getDisplayIcon(position, iconClass, iconPosition),
-      ];
+      return [displayText, displayIcon];
     }
-    return [
-      this.getDisplayIcon(position, iconClass, iconPosition),
-      this.getDisplayText(position, renderValue),
-    ];
+    return [displayIcon, displayText];
   }
 
   getBeforeSelect() {
