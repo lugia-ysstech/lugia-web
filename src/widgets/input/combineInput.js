@@ -186,6 +186,30 @@ class CombineInput extends React.Component<CombineInputProps> {
     canClear: true,
     addBefore: true,
     addAfter: true,
+    beforeSelectData: [
+      {
+        value: 'https://',
+        text: 'https://',
+      },
+      {
+        value: 'http://',
+        text: 'http://',
+      },
+      {
+        value: 'www.',
+        text: 'www.',
+      },
+    ],
+    afterSelectData: [
+      {
+        value: '.com',
+        text: '.com',
+      },
+      {
+        value: '.cn',
+        text: '.cn',
+      },
+    ],
     beforeType: 'select',
     afterType: 'display',
     beforeRenderValue: 'http://',
