@@ -200,6 +200,7 @@
 	"main": "dist/designInfo.js",
 	"files": [
 		"dist",
+    "src",
 		"interface",
 		"npm-shrinkwrap.json"
 	],
