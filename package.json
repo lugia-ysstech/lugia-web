@@ -1,6 +1,6 @@
 {
 	"name": "@lugia/lugia-web",
-	"version": "1.2.9-alpha.57",
+	"version": "1.2.9-alpha.58",
 	"keywords": [
 		"lugia",
 		"design",
@@ -200,7 +200,7 @@
 	"main": "dist/designInfo.js",
 	"files": [
 		"dist",
-    "src",
+		"src",
 		"interface",
 		"npm-shrinkwrap.json"
 	],
