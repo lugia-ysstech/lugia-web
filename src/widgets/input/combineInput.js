@@ -477,28 +477,29 @@ class CombineInput extends React.Component<CombineInputProps> {
 
     const { theme: selectThemeProps, viewClass } = getPartOfThemeHocProps(`${position}Select`);
     const height = this.getContainerHeight();
+    const borderCSS = getBorderCSSByPosition(position);
     const theme = deepMerge(
       {
         [viewClass]: {
           Container: {
             normal: {
-              ...getBorderCSSByPosition(position),
+              ...borderCSS,
               height,
               getCSS() {
                 return addBefore || addAfter ? 'flex:1;' : '';
               },
             },
             hover: {
-              ...getBorderCSSByPosition(position),
+              ...borderCSS,
             },
             focus: {
-              ...getBorderCSSByPosition(position),
+              ...borderCSS,
             },
             active: {
-              ...getBorderCSSByPosition(position),
+              ...borderCSS,
             },
             disabled: {
-              ...getBorderCSSByPosition(position),
+              ...borderCSS,
             },
           },
         },
@@ -515,24 +516,25 @@ class CombineInput extends React.Component<CombineInputProps> {
 
     const position =
       addAfter && addBefore ? 'Both' : addAfter ? _BeforeType : addBefore ? _AfterType : '';
+    const borderRadius = getBorderRadiusCSSByPosition(position);
     const theme = deepMerge(
       {
         [viewClass]: {
           Container: {
             normal: {
-              borderRadius: getBorderRadiusCSSByPosition(position),
+              borderRadius,
             },
             hover: {
-              borderRadius: getBorderRadiusCSSByPosition(position),
+              borderRadius,
             },
             focus: {
-              borderRadius: getBorderRadiusCSSByPosition(position),
+              borderRadius,
             },
             active: {
-              borderRadius: getBorderRadiusCSSByPosition(position),
+              borderRadius,
             },
             disabled: {
-              borderRadius: getBorderRadiusCSSByPosition(position),
+              borderRadius,
             },
           },
         },
