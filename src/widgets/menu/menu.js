@@ -469,7 +469,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         const keys = { selectedKeys: [...newSelectedKeys] };
 
         onClick && onClick(event, keys, item);
-        onChange && onChange(keys);
+        onChange && onChange(keys, item);
 
         event.preventDefault();
         event.stopPropagation();
