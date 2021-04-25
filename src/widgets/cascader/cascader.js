@@ -345,7 +345,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     });
   };
 
-  onChange = (event: Object) => {
+  onChange = (event: Object, item: Object) => {
     const { selectedKeys } = event;
     const { onChange } = this.props;
 
@@ -356,6 +356,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     data.newValue = selectedKeys;
     data.oldValue = oldValue;
     data.event = event;
+    data.item = item;
 
     onChange && onChange(data);
   };
