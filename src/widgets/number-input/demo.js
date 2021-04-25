@@ -102,6 +102,7 @@ const NumberInputDemo = () => {
   const parser = (value: string) => {
     return value.replace(/\$\s?|(,*)/g, '');
   };
+  let inputFocus: Function = null;
   return (
     <div>
       <Wrapper>
@@ -119,14 +120,14 @@ const NumberInputDemo = () => {
           <p>主动聚焦的numberInput</p>
           <button
             onClick={() => {
-              this.inputFocus();
+              inputFocus();
             }}
           >
             点击主动聚焦
           </button>
           <NumberInput
             getFocus={focus => {
-              this.inputFocus = focus;
+              inputFocus = focus;
             }}
           />
           <p>校验信息显示类型 top 输入值 是否含有5</p>

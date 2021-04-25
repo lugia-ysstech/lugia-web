@@ -197,6 +197,11 @@ type NumberInputState = {|
 
 const PlusClass = 'lugia-icon-direction_up';
 const MinusClass = 'lugia-icon-direction_down';
+
+type InsideProps = {
+  _focus: boolean,
+};
+
 export type NumberInputProps = {
   size?: InputSize,
   viewClass: string,
@@ -232,7 +237,7 @@ export type NumberInputProps = {
   suffix?: React$Node,
   dispatchEvent: Function,
   showArrow: boolean,
-};
+} & InsideProps;
 
 function hasValueProps(props: Object) {
   return 'value' in props;
@@ -498,10 +503,17 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     };
 
     const arrowContainerChannel = createEventChannel([['hover'], ['focus']]);
+    const { _focus } = this.props;
+    const focus =
+      'getFocus' in this.props
+        ? {}
+        : '_focus' in this.props
+        ? { _focus }
+        : { _focus: stepHover === 'plus' || stepHover === 'minus' };
     return (
       <Input
+        {...focus}
         {...this.props}
-        _focus={stepHover === 'plus' || stepHover === 'minus'}
         getInputRef={this.getInputRef}
         lugiaConsumers={arrowContainerChannel.consumer}
         theme={theInputTheme}
