@@ -562,6 +562,7 @@ class TextBox extends Component<InputProps, InputState> {
       isShowClearButton,
       size,
       _focus,
+      getFocus,
     } = this.props;
     const {
       themeConfig: { normal: { color, font = {}, fontSize } = {} },
@@ -618,13 +619,17 @@ class TextBox extends Component<InputProps, InputState> {
       theValidateWidthThemeProps,
       theValidateThemeProps
     );
-    if (_focus) {
-      theThemeProps.themeState.active = false;
-      theThemeProps.themeState.focus = true;
+    if ('_focus' in this.props) {
+      if (_focus) {
+        theThemeProps.themeState.active = false;
+        theThemeProps.themeState.focus = true;
+      } else {
+        theThemeProps.themeState.active = false;
+        theThemeProps.themeState.focus = false;
+      }
     }
     return theThemeProps;
   }
-
   onKeyDown = (event: KeyboardEvent) => {
     const { onKeyDown, onEnter, disabled, readOnly } = this.props;
     if (disabled || readOnly) {
