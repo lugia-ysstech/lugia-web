@@ -621,10 +621,8 @@ class TextBox extends Component<InputProps, InputState> {
     );
     if ('_focus' in this.props) {
       if (_focus) {
-        theThemeProps.themeState.active = false;
         theThemeProps.themeState.focus = true;
       } else {
-        theThemeProps.themeState.active = false;
         theThemeProps.themeState.focus = false;
       }
     }
