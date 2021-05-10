@@ -14,9 +14,9 @@ class ThrottleMenu extends React.Component<any, any> {
 
   render() {
     const { props } = this;
-    const { data = [], children, getPartOfThemeConfig, __treeData__, separator = '|' } = props;
+    const { children, getPartOfThemeConfig, __treeData__, separator = '|' } = props;
     const treeData =
-      __treeData__ && __treeData__.length !== 0 ? __treeData__ : getTreeData(data, separator);
+      __treeData__ && __treeData__.length !== 0 ? __treeData__ : getTreeData(props, separator);
     const menuItemThemeConfig = getPartOfThemeConfig('MenuItem');
     const menuItemHeight = getMenuItemHeight(menuItemThemeConfig, props);
     return (
