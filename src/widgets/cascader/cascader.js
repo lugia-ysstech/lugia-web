@@ -89,7 +89,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
         value: getValue(props, null),
         selectedKeys: getInitExpandedPath(props),
         expandedPath: getInitExpandedPath(props),
-        inputValue: getInitInputValue(props),
+        inputValue: getInputValue(props, state),
       };
     }
 
