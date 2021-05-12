@@ -162,7 +162,6 @@ export default ShortKeyBoard(
         return (
           <Theme config={this.getInputTheme()}>
             <Trigger
-              popupContainerId={popupContainerId}
               createPortal={this.props.createPortal}
               themePass
               align={'bottomLeft'}

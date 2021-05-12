@@ -143,18 +143,31 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   popupContainer: ?Object;
 
   getContainer() {
-    if (this.popupContainer) {
-      return this.popupContainer;
+    const { popupContainerId } = this.props;
+    const { popupVisible } = this.state;
+    if (popupContainerId && popupVisible) {
+      const triggerContainerDom = document.getElementById(popupContainerId);
+      if (triggerContainerDom) {
+        const targetPosition = window.getComputedStyle(triggerContainerDom).position;
+        triggerContainerDom.style.position =
+          targetPosition === 'static' ? 'relative' : targetPosition;
+        this.popupContainer = triggerContainerDom;
+        return triggerContainerDom;
+      }
     }
-    const { getPopupContainer, getDocument } = this.props;
-    const popupContainer = document.createElement('div');
-    popupContainer.style.position = 'relative';
-    popupContainer.style.top = '0';
-    popupContainer.style.left = '0';
-    const mountNode = getPopupContainer ? getPopupContainer(findDOMNode(this)) : getDocument().body;
-    mountNode.appendChild(popupContainer);
-    this.popupContainer = popupContainer;
-    return popupContainer;
+    if (popupVisible) {
+      const { getPopupContainer, getDocument } = this.props;
+      const popupContainer = document.createElement('div');
+      popupContainer.style.position = 'relative';
+      popupContainer.style.top = '0';
+      popupContainer.style.left = '0';
+      const mountNode = getPopupContainer
+        ? getPopupContainer(findDOMNode(this))
+        : getDocument().body;
+      mountNode.appendChild(popupContainer);
+      this.popupContainer = popupContainer;
+      return popupContainer;
+    }
   }
 
   getComponent() {
@@ -207,21 +220,6 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
         this.fireEvents(h, e);
       };
     });
-  }
-
-  componentDidMount() {
-    const { popupContainerId } = this.props;
-    if (popupContainerId) {
-      setTimeout(() => {
-        const triggerContainerDom = document.getElementById(popupContainerId);
-        if (triggerContainerDom) {
-          const targetPosition = window.getComputedStyle(triggerContainerDom).position;
-          triggerContainerDom.style.position =
-            targetPosition === 'static' ? 'relative' : targetPosition;
-          this.popupContainer = triggerContainerDom;
-        }
-      }, 0);
-    }
   }
 
   componentDidUpdate() {
@@ -400,11 +398,11 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
 
     const { popupContainerId } = this.props;
+    const popupContainer = this.getContainer();
+
     const portal =
-      popupContainerId && this.popupContainer
-        ? createPortal(this.getComponent(), this.popupContainer)
-        : this.props.createPortal
-        ? createPortal(this.getComponent(), this.getContainer())
+      (popupContainerId || this.props.createPortal) && popupContainer
+        ? createPortal(this.getComponent(), popupContainer)
         : this.getComponent();
 
     return (
@@ -499,7 +497,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
   };
 
-  createOnClick = (eventName: EventName, targetEvent?: EventName = 'onClick') => (e: Object) => {
+  createOnClick = (eventName: EventName, targetEvent: EventName = 'onClick') => (e: Object) => {
     this.fireChildrenEvents(eventName, e);
     this.fireSelfEvents(targetEvent, e);
     // focus will trigger click

@@ -245,11 +245,10 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
       },
       toolTipThemeProps
     );
-    const { createPortal = false, popupContainerId } = this.props;
+    const { createPortal = false } = this.props;
     return (
       <ToolTip
         createPortal={createPortal}
-        popupContainerId={popupContainerId}
         propsConfig={{ value }}
         title={this.getTitle()}
         action={'focus'}
