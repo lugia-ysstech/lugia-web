@@ -189,7 +189,6 @@ class DateInput extends Component<TypeProps, TypeState> {
       >
         <Box themeProps={inputContainProps}>
           <Trigger
-            popupContainerId={popupContainerId}
             themePass
             createPortal={createPortal}
             onDocumentClick={this.onDocumentClick}
@@ -258,6 +257,7 @@ class DateInput extends Component<TypeProps, TypeState> {
               validateStatus={validateStatus}
               help={help}
               size={size}
+              popupContainerId={popupContainerId}
             />
           </Trigger>
         </Box>

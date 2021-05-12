@@ -41,6 +41,10 @@
       "desc": "只读input",
       "propsDefaultValue": false
     },
+    "popupContainerId": {
+      "type": "ContainerDomIdType",
+      "desc": "配置弹出框的作用容器id"
+    },
     "validateStatus": {
       "type": "ValidateStatus",
       "desc": "校验状态"
