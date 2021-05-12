@@ -262,7 +262,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       getPartOfThemeProps,
       alwaysOpen,
       liquidLayout,
-      createPortal = true,
+      createPortal,
       popupContainerId,
       getPopTargetDom,
     } = this.props;
