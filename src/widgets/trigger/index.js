@@ -143,6 +143,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   popupContainer: ?Object;
 
   getContainer() {
+    if (this.popupContainer) {
+      return this.popupContainer;
+    }
     const { popupContainerId } = this.props;
     const { popupVisible } = this.state;
     if (popupContainerId && popupVisible) {
@@ -398,7 +401,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
 
     const { popupContainerId } = this.props;
-    const popupContainer = this.getContainer();
+    const popupContainer = this.getContainer(this.popupContainer);
 
     const portal =
       (popupContainerId || this.props.createPortal) && popupContainer
