@@ -123,8 +123,8 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
           popupContainerId={popupContainerId}
           themePass
           align={'bottomLeft'}
-          action={disabled ? [] : this.props.action || ['click']}
-          hideAction={['click']}
+          action={'click'}
+          hideAction={'click'}
           offsetY={offsetY}
           popupVisible={popupVisible}
           popup={this.getMenu()}
@@ -153,7 +153,11 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     );
   }
   onPopupVisibleChange = (visible: boolean) => {
-    const { data } = this.props;
+    const { disabled, data } = this.props;
+    if (disabled) {
+      return;
+    }
+
     if (this.forcePopup || !data || data.length === 0) {
       this.setPopupVisibleInner(visible);
     }
@@ -169,7 +173,10 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
       return;
     }
     this.checked = popupVisible;
-    this.setState({ popupVisible, ...otherTarget });
+    const { value } = this.props;
+    const expandedPath = Array.isArray(value) ? value : [value];
+
+    this.setState({ popupVisible, expandedPath, ...otherTarget });
   }
 
   handleClickInputTag = () => {
@@ -225,8 +232,6 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
         expandedPath={expandedPath}
         offsetX={offsetX}
         offsetY={0}
-        onMouseEnter={this.onMouseEnter}
-        onMouseLeave={this.onMouseLeave}
         onExpandPathChange={this.onExpandPathChange}
       />
     );
