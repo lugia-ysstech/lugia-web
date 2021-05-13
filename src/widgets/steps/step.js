@@ -94,7 +94,6 @@ const StepOutContainer = CSSComponent({
   },
   css: css`
     display: inline-flex;
-    cursor: pointer;
   `,
 });
 
@@ -454,6 +453,7 @@ const StepInner = CSSComponent({
       ['border'],
       ['boxShadow'],
       ['borderRadius'],
+      ['cursor'],
     ],
     defaultTheme: {
       borderRadius: getBorderRadius('50%'),
@@ -588,7 +588,7 @@ const DotInnerContainer = CSSComponent({
   extend: BaseInnerContainer,
   className: 'StepDotInnerContainer',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [['width'], ['height'], ['cursor']],
     defaultTheme: {
       width: 12,
       height: 12,
@@ -620,6 +620,8 @@ type StepProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   getChildWidths: Function,
+  finishIcon: string,
+  errorIcon: string,
 };
 
 class Step extends React.Component<StepProps, StepState> {

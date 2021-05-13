@@ -229,7 +229,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "ProcessStepInnerContainer": {
@@ -241,7 +242,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "NextStepInnerContainer": {
@@ -253,7 +255,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "WaitStepInnerContainer": {
@@ -265,7 +268,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "ErrorStepInnerContainer": {
@@ -277,7 +281,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
 
@@ -405,27 +410,27 @@
             "FinishStepFlatLine": {
               "name": "已完成状态步骤间连接线",
               "desc": "已完成状态步骤间连接线的配置",
-              "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
+              "normal": [["width"], ["height"], ["boxShadow"], ["border"], ["background"]]
             },
             "ProcessStepFlatLine": {
               "name": "进行中状态步骤间连接线",
               "desc": "进行中状态步骤间连接线的配置",
-              "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
+              "normal": [["width"], ["height"], ["boxShadow"], ["border"], ["background"]]
             },
             "NextStepFlatLine": {
               "name": "下一步状态步骤间连接线",
               "desc": "下一步状态步骤间连接线的配置",
-              "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
+              "normal": [["width"], ["height"], ["boxShadow"], ["border"], ["background"]]
             },
             "WaitStepFlatLine": {
               "name": "等待中状态步骤间连接线",
               "desc": "等待中状态步骤间连接线的配置",
-              "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
+              "normal": [["width"], ["height"], ["boxShadow"], ["border"], ["background"]]
             },
             "ErrorStepFlatLine": {
               "name": "异常状态步骤间连接线",
               "desc": "异常状态步骤间连接线的配置",
-              "normal": [["width"], ["height"], ["boxShadow"], ["border"],["background"]]
+              "normal": [["width"], ["height"], ["boxShadow"], ["border"], ["background"]]
             },
 
             "FinishStepInnerContainer": {
@@ -437,7 +442,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "ProcessStepInnerContainer": {
@@ -449,7 +455,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "NextStepInnerContainer": {
@@ -461,7 +468,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "WaitStepInnerContainer": {
@@ -473,7 +481,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "ErrorStepInnerContainer": {
@@ -485,7 +494,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
 
@@ -638,7 +648,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "ProcessStepInnerContainer": {
@@ -650,7 +661,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "NextStepInnerContainer": {
@@ -662,7 +674,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "WaitStepInnerContainer": {
@@ -674,7 +687,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "ErrorStepInnerContainer": {
@@ -686,7 +700,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
 
@@ -900,7 +915,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "ProcessStepDot": {
@@ -912,7 +928,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "NextStepDot": {
@@ -924,7 +941,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "WaitStepDot": {
@@ -936,7 +954,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             },
             "ErrorStepDot": {
@@ -948,7 +967,8 @@
                 ["background"],
                 ["border"],
                 ["boxShadow"],
-                ["borderRadius"]
+                ["borderRadius"],
+                ["cursor"]
               ]
             }
           }
@@ -1025,7 +1045,8 @@
             ["background"],
             ["border"],
             ["boxShadow"],
-            ["borderRadius"]
+            ["borderRadius"],
+            ["cursor"]
           ]
         },
         "ProcessStepInnerContainer": {
@@ -1037,7 +1058,8 @@
             ["background"],
             ["border"],
             ["boxShadow"],
-            ["borderRadius"]
+            ["borderRadius"],
+            ["cursor"]
           ]
         },
         "NextStepInnerContainer": {
@@ -1049,7 +1071,8 @@
             ["background"],
             ["border"],
             ["boxShadow"],
-            ["borderRadius"]
+            ["borderRadius"],
+            ["cursor"]
           ]
         },
         "WaitStepInnerContainer": {
@@ -1061,7 +1084,8 @@
             ["background"],
             ["border"],
             ["boxShadow"],
-            ["borderRadius"]
+            ["borderRadius"],
+            ["cursor"]
           ]
         },
         "ErrorStepInnerContainer": {
@@ -1073,7 +1097,8 @@
             ["background"],
             ["border"],
             ["boxShadow"],
-            ["borderRadius"]
+            ["borderRadius"],
+            ["cursor"]
           ]
         },
 
