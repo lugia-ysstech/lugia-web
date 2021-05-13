@@ -294,6 +294,29 @@ export default () => {
         </Steps>
       </Wrapper>
       <VWrapper>
+        <p>简洁风格 size mini</p>
+        <Steps orientation="vertical" stepType="simple" size="mini">
+          <Step title="步骤1" stepStatus="finish" description="描述性文本1" />
+          <Step title="步骤1" stepStatus="finish" description="描述性文本1" />
+          <Step title="步骤2" stepStatus="process" description="描述性文本" />
+          <Step title="步骤3" stepStatus="next" description="描述性文本3" />
+          <Step title="步骤4" stepStatus="wait" description="描述性文本4" />
+          <Step title="步骤5" stepStatus="error" description="描述性文本5" />
+        </Steps>
+      </VWrapper>
+      <VWrapper>
+        <p>简洁风格 size normal</p>
+
+        <Steps orientation="vertical" stepType="simple" size="normal">
+          <Step title="步骤1" stepStatus="finish" description="描述性文本1" />
+          <Step title="步骤1" stepStatus="finish" description="描述性文本1" />
+          <Step title="步骤2" stepStatus="process" description="描述性文本" />
+          <Step title="步骤3" stepStatus="next" description="描述性文本3" />
+          <Step title="步骤4" stepStatus="wait" description="描述性文本4" />
+          <Step title="步骤5" stepStatus="error" description="描述性文本5" />
+        </Steps>
+      </VWrapper>
+      <VWrapper>
         <p>带有描述</p>
         <Steps orientation="vertical" stepType="simple" size={'default'}>
           <Step title="步骤1" description={'描述性文本'} stepStatus="finish" />
