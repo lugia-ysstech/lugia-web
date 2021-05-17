@@ -216,13 +216,13 @@
         }
       ]
     },
-    "getInputRef": {
-      "desc": "获取触发文件选择的input实例的引用",
+    "getClearValue": {
+      "desc": "获取清除选中文件的方法",
       "args": [
         {
           "name": "result",
-          "desc": "获取触发文件选择的input实例的引用",
-          "type": "Object"
+          "desc": "获取清除选中文件的方法",
+          "type": "Function"
         }
       ]
     }
