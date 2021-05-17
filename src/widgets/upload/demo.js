@@ -107,14 +107,13 @@ class UploadDemo extends React.Component<any, any> {
       name: 'lugiaRR',
       showFileList: true,
       autoUpload: false,
-      getInputRef: input => {
-        this.input = input;
+      getClearValue: clearValue => {
+        this.clear = clearValue;
       },
       onChange: res => {
-        console.log('res', res, 'this.input', this.input);
+        console.log('res', res, 'this.clear', this.clear);
         setTimeout(() => {
-          this.input.value = '';
-          this.setState({ aa: 123 });
+          this.clear();
         }, 2000);
       },
       defaultTips: {

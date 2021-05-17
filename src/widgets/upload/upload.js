@@ -68,6 +68,7 @@ type UploadProps = {
   isShowProgress?: boolean,
   getInputRef?: Function,
   customUpload?: Function,
+  getClearValue?: Function,
 };
 type StateProps = {
   defaultText?: string,
@@ -157,9 +158,10 @@ class Upload extends React.Component<UploadProps, StateProps> {
   }
 
   componentDidMount() {
-    const { getInputRef } = this.props;
-    const { input } = this;
+    const { getInputRef, getClearValue } = this.props;
+    const { input, clearInputValue } = this;
     getInputRef && getInputRef(input);
+    getClearValue && getClearValue(clearInputValue);
   }
 
   render() {
@@ -182,6 +184,10 @@ class Upload extends React.Component<UploadProps, StateProps> {
 
   getInputRef = (element: any) => {
     this.input = element;
+  };
+
+  clearInputValue = () => {
+    this.input.value = '';
   };
 
   setChoosedFile = (res: Array<Object>): void => {
@@ -354,7 +360,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
 
   uploadComplete = (res: Object): void => {
     const { onComplete } = this.props;
-    this.input.value = '';
+    this.clearInputValue();
     onComplete && onComplete(res.currentTarget.response);
   };
 
@@ -379,7 +385,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
       { target: 'status', value: 'fail' },
     ]);
     this.setStateValue({ classNameStatus: 'fail', fileListDone: list, isAllowUpload: false });
-    this.input.value = '';
+    this.clearInputValue();
     const { onFail } = this.props;
     onFail && onFail(res);
   };
@@ -438,7 +444,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     fileListDone.splice(index, 1);
     if (item && this.input.value.indexOf(item.name) !== -1) {
       this.setState({ defaultText: '' });
-      this.input.value = '';
+      this.clearInputValue();
     }
     this.setStateValue({ fileListDone });
   };
