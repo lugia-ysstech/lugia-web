@@ -47,7 +47,7 @@ export default ThemeProvider(
       if (!zIndex && zIndex !== 0) {
         this.index = visible ? getIndex() : undefined;
       }
-      this.node = document.createElement('div');
+      this.node = typeof document === 'undefined' ? '' : document.createElement('div');
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -66,6 +66,9 @@ export default ThemeProvider(
       this.modalEle = el;
     };
     componentDidMount() {
+      if (!this.node) {
+        this.node = document.createElement('div');
+      }
       window.addEventListener('keydown', this.hideWindowPopUp, false);
       this.changeNodeMountStatus(true);
     }
@@ -77,7 +80,7 @@ export default ThemeProvider(
     changeNodeMountStatus = (mounted: boolean) => {
       const doc = window && window.document;
       const handleChild = mounted ? 'appendChild' : 'removeChild';
-      if (doc) {
+      if (doc && this.node) {
         doc.body && doc.body[handleChild](this.node);
       }
     };

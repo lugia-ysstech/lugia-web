@@ -143,6 +143,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   popupContainer: ?Object;
 
   getContainer() {
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+      return;
+    }
     const { popupContainerId } = this.props;
 
     const triggerContainerDom = document.getElementById(popupContainerId);
