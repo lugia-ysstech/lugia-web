@@ -297,17 +297,13 @@ export const getweekFormatValue = (year: number, weeks: number, format: string) 
     .format(format);
   return weekValue;
 };
-export const getValueFromWeekToDate = (
-  value: string,
-  format: string,
-  funName?: string = 'startOf'
-) => {
+export const getValueFromWeekToDate = (value: string, format: string, funName?: string) => {
   const moments = moment(value, format);
   const weeks = moments.format('w');
   const year = moment(value, 'YYYY').year();
   const result = moment()
     .set({ year, weeks })
-    [funName]('week')
+    [funName || 'startOf']('week')
     .format('YYYY-MM-DD');
   return result;
 };
