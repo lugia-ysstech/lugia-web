@@ -4,7 +4,7 @@
  * */
 import React, { Component } from 'react';
 import { DateChild, DateChildInner, DatePanel } from '../styled/styled';
-import { modeStyle, isBeforeTime, isAfterTime, formatValueIsValid } from '../utils/booleanUtils';
+import { modeStyle, isBeforeTime, isAfterTime, hasLimitValue } from '../utils/booleanUtils';
 import { valueInRange, getMinAndMax } from '../../common/Math';
 import { getYandM } from '../utils/differUtils';
 import { getDateTheme } from '../themeConfig/themeConfig';
@@ -122,8 +122,8 @@ class Dates extends Component<TypeProps, any> {
       format,
     } = this.props;
     const { isRange, isDate } = modeStyle(mode);
-    const hasLimitMinValue = limitMinValue && formatValueIsValid(limitMinValue, format);
-    const hasLimitMaxValue = limitMaxValue && formatValueIsValid(limitMaxValue, format);
+    const hasLimitMinValue = hasLimitValue(limitMinValue, format);
+    const hasLimitMaxValue = hasLimitValue(limitMaxValue, format);
     let isBeforeDisabled = false;
     let isAfterDisabled = false;
     const getCompareParam = (compareTime: string) => {

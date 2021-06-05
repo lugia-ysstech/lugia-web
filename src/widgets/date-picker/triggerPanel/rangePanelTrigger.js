@@ -9,7 +9,11 @@ import { getDerivedForInput } from '../utils/getDerived';
 import { RangeWrap, RangeWrapInner, Box } from '../styled/styled';
 import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
-import { formatValueIsValid, rangeValueMonthIsSame } from '../utils/booleanUtils';
+import {
+  formatValueIsValid,
+  rangeValueMonthIsSame,
+  getValueIsInLimit,
+} from '../utils/booleanUtils';
 import { getNewStepProps } from '../utils/utils';
 import { getFacePanelContain, getWrapThemeProps } from '../themeConfig/themeConfig';
 type TypeProps = {
@@ -39,6 +43,8 @@ type TypeProps = {
   alwaysOpen?: boolean,
   onDocumentClick?: Function,
   popupContainerId?: string,
+  limitMinValue?: string,
+  limitMaxValue?: string,
 };
 type TypeState = {
   value: Array<string>,
@@ -192,14 +198,21 @@ class Range extends Component<TypeProps, TypeState> {
   };
   getIsValid = (newValue: Array<string> = []) => {
     const { format } = this.state;
+    const { limitMinValue, limitMaxValue } = this.props;
     const formatIsValids = [];
     let isValid = true;
     Array.isArray(newValue) &&
       newValue.forEach((dateValue, index) => {
         if (dateValue !== '') {
           const isValids = formatValueIsValid(dateValue, format);
-          formatIsValids.push(isValids);
-          if (!isValids) {
+          const isInLimit = getValueIsInLimit({
+            dateValue,
+            limitMinValue,
+            limitMaxValue,
+            format,
+          });
+          formatIsValids.push(isValids && isInLimit);
+          if (!isValids || !isInLimit) {
             isValid = false;
           }
         }
@@ -329,11 +342,10 @@ class Range extends Component<TypeProps, TypeState> {
     this.setState({ visible: open });
   };
   onFocus = (e: any) => {
-    const { value, panelValue, status } = this.state;
+    const { value, panelValue, status, format } = this.state;
     const { isValid } = this.getIsValid(value);
     this.isClear = false;
 
-    const { format } = this.state;
     if (isValid) {
       this.oldValue = [...value];
       this.changeOldValue = [...value];
@@ -355,7 +367,7 @@ class Range extends Component<TypeProps, TypeState> {
     const { onFocus } = this.props;
     onFocus && onFocus();
   };
-  onBlur = () => {
+  onBlur = event => {
     const { value } = this.state;
     const { isValid } = this.getIsValid(value);
     const hasValue = value[0] !== '' || value[1] !== '';
@@ -370,6 +382,10 @@ class Range extends Component<TypeProps, TypeState> {
           : this.changeOldValue
           ? this.changeOldValue
           : ['', ''];
+      const { onChange } = this.props;
+      if (onChange) {
+        onChange({ newValue, oldValue: [...newValue], event });
+      }
       this.setState({ value: newValue });
     }
     const { onBlur } = this.props;

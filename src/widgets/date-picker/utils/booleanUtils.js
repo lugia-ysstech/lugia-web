@@ -1,24 +1,15 @@
 // @flow
 import moment from 'moment';
-import { valueInRange } from '../../common/Math';
-function getunixValue(value, format) {
-  const time = { hour: 0, minute: 0, second: 0 };
-  const nuix = moment(value, format)
-    .set(time)
-    .valueOf();
-  return nuix;
-}
-export const getValueIsInRange = (
-  maxValue: string,
-  minValue: string,
-  choseValue: string,
-  format: string
-) => {
-  const maxUnix = getunixValue(maxValue, format);
-  const minUnix = getunixValue(minValue, format);
-  const choseValueUnix = getunixValue(choseValue, format);
-  const choseValueIn = valueInRange(choseValueUnix, [minUnix, maxUnix]);
-  return choseValueIn;
+
+export const getValueIsInRange = (values: string[], choseValue: string, format: string) => {
+  const first = values[0] || '';
+  const second = values[1] || '';
+  return moment(moment(choseValue, format)).isBetween(
+    moment(first, format),
+    moment(second, format),
+    'day',
+    '[]'
+  );
 };
 export const rangeValueMonthIsSame = (rangeValue: Array<string>, format: string) => {
   const startTime = moment(rangeValue[0], format);
@@ -55,6 +46,10 @@ export function getOpenProps(props: Object) {
   return { alwaysOpen: alwaysOpen || open };
 }
 
+export function hasLimitValue(limitValue: string, format: string): boolean {
+  return limitValue && formatValueIsValid(limitValue, format);
+}
+
 export function isBeforeTime(param: { everyTime: string, compareTime: string, format: string }) {
   return compareTime({ ...param, type: 'isBefore' });
 }
@@ -84,4 +79,25 @@ export function compareTime(param: {
       break;
   }
   return result;
+}
+
+export function getValueIsInLimit(param: {
+  dateValue: string,
+  limitMinValue: string,
+  limitMaxValue: string,
+  format: string,
+}): boolean {
+  const { limitMinValue, limitMaxValue = '', format, dateValue } = param;
+  const hasLimitMinValue = hasLimitValue(limitMinValue, format);
+  const hasLimitMaxValue = hasLimitValue(limitMaxValue, format);
+  if (hasLimitMaxValue && hasLimitMinValue) {
+    return getValueIsInRange([limitMinValue, limitMaxValue], dateValue, format);
+  }
+  if (hasLimitMinValue) {
+    return !isBeforeTime({ everyTime: dateValue, compareTime: limitMinValue, format });
+  }
+  if (hasLimitMaxValue) {
+    return !isAfterTime({ everyTime: dateValue, compareTime: limitMaxValue, format });
+  }
+  return true;
 }
