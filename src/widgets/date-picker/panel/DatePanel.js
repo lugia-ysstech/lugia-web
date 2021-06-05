@@ -4,7 +4,7 @@
  * */
 import React, { Component } from 'react';
 import { DateChild, DateChildInner, DatePanel } from '../styled/styled';
-import { modeStyle, isBeforeTime, isAfterTime } from '../utils/booleanUtils';
+import { modeStyle, isBeforeTime, isAfterTime, formatValueIsValid } from '../utils/booleanUtils';
 import { valueInRange, getMinAndMax } from '../../common/Math';
 import { getYandM } from '../utils/differUtils';
 import { getDateTheme } from '../themeConfig/themeConfig';
@@ -112,25 +112,47 @@ class Dates extends Component<TypeProps, any> {
   };
 
   getDisabled = (index: number, currentValue: number) => {
-    const { mode, rangeValue, startDisabled, endDisabled } = this.props;
-    const { isRange } = modeStyle(mode);
-
+    const {
+      mode,
+      rangeValue,
+      startDisabled,
+      endDisabled,
+      limitMinValue,
+      limitMaxValue,
+      format,
+    } = this.props;
+    const { isRange, isDate } = modeStyle(mode);
+    const hasLimitMinValue = limitMinValue && formatValueIsValid(limitMinValue, format);
+    const hasLimitMaxValue = limitMaxValue && formatValueIsValid(limitMaxValue, format);
     let isBeforeDisabled = false;
     let isAfterDisabled = false;
-    if (isRange) {
-      const compareParam = {
+    const getCompareParam = (compareTime: string) => {
+      return {
         everyTime: this.getTransChoseDate(index, currentValue),
-        compareTime: startDisabled ? rangeValue[0] : endDisabled ? rangeValue[1] : '',
+        compareTime,
+        format,
       };
-
+    };
+    if (isRange) {
+      const compareParam = getCompareParam(
+        startDisabled ? rangeValue[0] : endDisabled ? rangeValue[1] : ''
+      );
       if (startDisabled) {
         isBeforeDisabled = isBeforeTime(compareParam);
       }
       if (endDisabled) {
         isAfterDisabled = isAfterTime(compareParam);
       }
-      return isBeforeDisabled || isAfterDisabled;
     }
+    if (isDate || isRange) {
+      if (hasLimitMinValue) {
+        isBeforeDisabled = isBeforeTime(getCompareParam(limitMinValue));
+      }
+      if (hasLimitMaxValue) {
+        isAfterDisabled = isAfterTime(getCompareParam(limitMaxValue));
+      }
+    }
+    return (isBeforeDisabled || isAfterDisabled) && (isDate || isRange);
   };
 
   getRangeIndex = () => {

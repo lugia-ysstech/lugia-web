@@ -17,6 +17,14 @@
       "type": "string",
       "desc": "日期显示值"
     },
+    "limitMaxValue": {
+      "type": "string",
+      "desc": "设置日期最大值"
+    },
+    "limitMinValue": {
+      "type": "string",
+      "desc": "设置日期最小值"
+    },
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
