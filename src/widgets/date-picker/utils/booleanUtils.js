@@ -87,3 +87,13 @@ export function getOpenProps(props: Object) {
   const { alwaysOpen, open } = props;
   return { alwaysOpen: alwaysOpen || open };
 }
+
+export function isBeforeTime(param: { everyTime: string, compareTime: string }) {
+  const { everyTime, compareTime } = param;
+  return moment(everyTime).isBefore(compareTime);
+}
+
+export function isAfterTime(param: { everyTime: string, compareTime: string }) {
+  const { everyTime, compareTime } = param;
+  return moment(everyTime).isAfter(compareTime);
+}

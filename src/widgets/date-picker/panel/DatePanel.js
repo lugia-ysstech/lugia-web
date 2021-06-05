@@ -4,7 +4,7 @@
  * */
 import React, { Component } from 'react';
 import { DateChild, DateChildInner, DatePanel } from '../styled/styled';
-import { modeStyle } from '../utils/booleanUtils';
+import { modeStyle, isBeforeTime, isAfterTime } from '../utils/booleanUtils';
 import { valueInRange, getMinAndMax } from '../../common/Math';
 import { getYandM } from '../utils/differUtils';
 import { getDateTheme } from '../themeConfig/themeConfig';
@@ -38,41 +38,33 @@ type TypeProps = {
   todayDate: string,
   value: string,
   today: number,
-  fromat: string,
   rangeRenderIndex: Array<number>,
   rangeChoseDayIndex: Array<number>,
   themeProps?: Object,
+  startDisabled?: boolean,
+  endDisabled?: boolean,
 };
 class Dates extends Component<TypeProps, any> {
   static displayName = 'Dates';
+
   onDateChange = (index: number, child: number) => (e: any) => {
-    const { onDateChange, month, year, format, firstDayIndex, maxDay, weekIndex } = this.props;
-    const { value, mode } = this.props;
-    const paramsGetYandMProps = {
-      year,
-      month,
-      maxDay,
-      weekIndex,
-      format,
-    };
-    const getYandMParams = {
-      index,
-      child,
+    const { onDateChange } = this.props;
+    onDateChange && onDateChange({ choseValue: this.getTransChoseDate(index, child), event: e });
+  };
+
+  getTransChoseDate = (choseIndex: number, dateValue: number) => {
+    const { month, year, format, firstDayIndex, maxDay, weekIndex, value, mode } = this.props;
+    const { choseValue } = getYandM({
+      index: choseIndex,
+      child: dateValue,
       value,
       mode,
       firstDayIndex,
-      props: paramsGetYandMProps,
-    };
-
-    const { choseValue } = getYandM(getYandMParams);
-    const { isRange } = modeStyle(mode);
-    const rangeParames = {};
-    if (isRange) {
-      rangeParames.month = month;
-      rangeParames.year = year;
-    }
-    onDateChange && onDateChange({ choseValue, event: e });
+      props: { year, month, maxDay, weekIndex, format },
+    });
+    return choseValue;
   };
+
   mouseOver = (e: any) => {
     const target = e.target;
     const index = target.getAttribute('data-index');
@@ -118,6 +110,37 @@ class Dates extends Component<TypeProps, any> {
       onMouseOut && onMouseOut();
     }
   };
+
+  getDisabled = (index: number, currentValue: number) => {
+    const { mode, rangeValue, startDisabled, endDisabled } = this.props;
+    const { isRange } = modeStyle(mode);
+
+    let isBeforeDisabled = false;
+    let isAfterDisabled = false;
+    if (isRange) {
+      const compareParam = {
+        everyTime: this.getTransChoseDate(index, currentValue),
+        compareTime: startDisabled ? rangeValue[0] : endDisabled ? rangeValue[1] : '',
+      };
+
+      if (startDisabled) {
+        isBeforeDisabled = isBeforeTime(compareParam);
+      }
+      if (endDisabled) {
+        isAfterDisabled = isAfterTime(compareParam);
+      }
+      return isBeforeDisabled || isAfterDisabled;
+    }
+  };
+
+  getRangeIndex = () => {
+    const { rangeRenderIndex = [] } = this.props;
+    return {
+      rangeStartIndex: rangeRenderIndex[0],
+      rangeEndIndex: rangeRenderIndex[rangeRenderIndex.length - 1],
+    };
+  };
+
   render() {
     const {
       today,
@@ -134,7 +157,7 @@ class Dates extends Component<TypeProps, any> {
       days,
       todayDate,
       value,
-      fromat,
+      format,
       rangeRenderIndex,
       choseDayIndex,
     } = this.props;
@@ -150,6 +173,8 @@ class Dates extends Component<TypeProps, any> {
       todayTheme,
       dateTheme,
     } = getDateTheme(this.props);
+
+    const { rangeStartIndex, rangeEndIndex } = this.getRangeIndex();
     const dateChildren = days.map((currentValue, index) => {
       let rangeChose = false;
       if (rangeRenderIndex && rangeRenderIndex.length !== 0) {
@@ -158,7 +183,8 @@ class Dates extends Component<TypeProps, any> {
       }
       const todayIndex = today + weekIndex;
       const compareIndex = index + 1;
-      const rangeStartIndex = rangeRenderIndex && rangeRenderIndex[0];
+      const disabled = this.getDisabled(index, currentValue);
+
       return (
         <DateChild
           themeProps={themeProps}
@@ -172,7 +198,7 @@ class Dates extends Component<TypeProps, any> {
           mode={mode}
           choseDayIndex={choseDayIndex}
           todayIndex={todayIndex}
-          fromat={fromat}
+          fromat={format}
           showToday={showToday}
           selectToday={selectToday}
           noToday={noToday}
@@ -189,12 +215,14 @@ class Dates extends Component<TypeProps, any> {
           rangeChose={rangeChose}
           rangeIndex={this.props.index}
           rangeStartIndex={rangeStartIndex}
-          rangeEndIndex={rangeRenderIndex && rangeRenderIndex[rangeRenderIndex.length - 1]}
+          rangeEndIndex={rangeEndIndex}
           index={index}
           data-index={index}
           data-child={currentValue}
           key={index}
-          onClick={this.onDateChange(index, currentValue)}
+          onClick={disabled ? '' : this.onDateChange(index, currentValue)}
+          disabled={disabled}
+          isRange={isRange}
         >
           <DateChildInner
             themeProps={dateTheme}
@@ -207,16 +235,17 @@ class Dates extends Component<TypeProps, any> {
             noSingleHoverState={isWeeks || rangeChose}
             mode={mode}
             key={index}
-            isToday={showToday && todayIndex === index + 1 ? true : false}
+            isToday={showToday && todayIndex === index + 1}
             showToday={showToday}
             selectToday={selectToday}
             todayIndex={todayIndex}
-            outMonth={index < weekIndex || index > lastDayIndexInMonth ? true : false}
+            outMonth={index < weekIndex || index > lastDayIndexInMonth}
             choseDayIndex={choseDayIndex}
             data-index={index}
             data-child={currentValue}
+            disabled={disabled}
+            isRange={isRange}
           >
-            {' '}
             {currentValue}
           </DateChildInner>
         </DateChild>
