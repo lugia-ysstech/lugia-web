@@ -44,7 +44,11 @@ function getDatesInRangeValue(
   });
   return [rangeDatesFirst, rangeDatessecond];
 }
-function getRangeIndex(rangeDates: string, monthAndYear: Array<string>, format: string) {
+function getRangeIndex(
+  rangeDates: Array<Array<string>>,
+  monthAndYear: Array<string>,
+  format: string
+) {
   const rangeIndex = [];
   rangeDates.forEach((items, index) => {
     const moments = moment(monthAndYear[index], format);
@@ -87,12 +91,10 @@ export function getIndexInRange(
   panelDatesArray: Array<string>,
   format: string
 ) {
-  // const { monthAndYear, panelDatesArray } = this;
   const rangeDates = getDatesInRangeValue(rangeValue, panelDatesArray, monthAndYear, format);
   const rangeIndex = getRangeIndex(rangeDates, monthAndYear, format);
   const choseDayIndex = getRangeChoseDayIndex(rangeValue, monthAndYear, format);
   return { rangeIndex, choseDayIndex };
-  // this.setState({ rangeIndex, choseDayIndex });
 }
 export function differMonthAndYear(monthAndYear) {
   const first = moment(monthAndYear[0], 'YYYY-MM');
@@ -108,7 +110,7 @@ export function differMonthAndYear(monthAndYear) {
 export function getCurrentPageDates(monthAndYear: Array<string>, format: string) {
   const datesArray = [];
   monthAndYear.forEach((item, index) => {
-    const moments = moment(item);
+    const moments = moment(item, format);
     const days = getDays(moments);
     const year = moments.year();
     const month = moments.month();
