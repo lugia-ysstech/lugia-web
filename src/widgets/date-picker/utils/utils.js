@@ -20,16 +20,7 @@ export const getTheme = (props: Object) => {
   const theme = getTheme();
   return { ...theme };
 };
-export function getNewProps(props: Object): Object {
-  const filterParmas = { defaultVaule: 'defaultValue', value: 'value' };
-  const newProps = {};
-  for (const i in props) {
-    if (i !== filterParmas[i]) {
-      newProps[i] = props[i];
-    }
-  }
-  return newProps;
-}
+
 export function tansValueFromStringToArray(props) {
   const filterParmas = { defaultValue: 'defaultValue', value: 'value', placeholder: 'placeholder' };
   const newProps = {};
