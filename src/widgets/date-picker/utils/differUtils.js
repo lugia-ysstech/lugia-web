@@ -96,9 +96,9 @@ export function getIndexInRange(
   const choseDayIndex = getRangeChoseDayIndex(rangeValue, monthAndYear, format);
   return { rangeIndex, choseDayIndex };
 }
-export function differMonthAndYear(monthAndYear) {
-  const first = moment(monthAndYear[0], 'YYYY-MM');
-  const second = moment(monthAndYear[1], 'YYYY-MM');
+export function differMonthAndYear(monthAndYear: string, format: string) {
+  const first = moment(monthAndYear[0], format);
+  const second = moment(monthAndYear[1], format);
   const differ = second.diff(first, 'month');
   const differAmonth = differ === 1 || differ === 0 || first.diff(second, 'month') >= 1;
   const differAyear = differ <= 12;

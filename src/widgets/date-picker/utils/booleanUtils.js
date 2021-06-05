@@ -1,7 +1,6 @@
 // @flow
 import moment from 'moment';
 import { valueInRange } from '../../common/Math';
-import { getformatSymbol } from './utils';
 function getunixValue(value, format) {
   const time = { hour: 0, minute: 0, second: 0 };
   const nuix = moment(value, format)
@@ -56,12 +55,33 @@ export function getOpenProps(props: Object) {
   return { alwaysOpen: alwaysOpen || open };
 }
 
-export function isBeforeTime(param: { everyTime: string, compareTime: string }) {
-  const { everyTime, compareTime } = param;
-  return moment(everyTime).isBefore(compareTime);
+export function isBeforeTime(param: { everyTime: string, compareTime: string, format: string }) {
+  return compareTime({ ...param, type: 'isBefore' });
 }
 
-export function isAfterTime(param: { everyTime: string, compareTime: string }) {
-  const { everyTime, compareTime } = param;
-  return moment(everyTime).isAfter(compareTime);
+export function isAfterTime(param: { everyTime: string, compareTime: string, format: string }) {
+  return compareTime({ ...param, type: 'isAfter' });
+}
+
+export function compareTime(param: {
+  everyTime: string,
+  compareTime: string,
+  format: string,
+  type: 'isBefore' | 'isAfter',
+}) {
+  const { everyTime, compareTime, format, type } = param;
+  const time = moment(everyTime, format);
+  const compare = moment(compareTime, format);
+  let result = false;
+  switch (type) {
+    case 'isBefore':
+      result = moment(time).isBefore(compare);
+      break;
+    case 'isAfter':
+      result = moment(time).isAfter(compare);
+      break;
+    default:
+      break;
+  }
+  return result;
 }
