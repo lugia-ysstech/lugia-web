@@ -44,6 +44,16 @@
       "desc": "禁用状态,是否不可用",
       "propsDefaultValue": false
     },
+    "disabledEndTime": {
+      "type": "boolean",
+      "desc": "结束日期是否禁用",
+      "propsDefaultValue": false
+    },
+    "disabledStartTime": {
+      "type": "boolean",
+      "desc": "开始日期是否禁用",
+      "propsDefaultValue": false
+    },
     "readOnly": {
       "type": "boolean",
       "desc": "只读input",
