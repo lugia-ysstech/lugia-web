@@ -314,14 +314,14 @@ class Range extends Component<TypeProps, TypeState> {
   };
   getCurrentYandM = (obj: Object) => {
     const { month, year, index } = obj;
+    const { format, rangeValue, value } = this.state;
+
     const date = moment()
       .set({ month, year })
-      .format('YYYY-MM');
+      .format(format);
     const { monthAndYear } = this;
     monthAndYear[index] = date;
-    const { format } = this.state;
     this.panelDatesArray = getCurrentPageDates(monthAndYear, format);
-    const { rangeValue, value } = this.state;
     const renderValue = rangeValue.length > 0 ? rangeValue : value;
     rangeValue && this.drawPageAgain(renderValue, format);
   };
@@ -474,7 +474,7 @@ class Range extends Component<TypeProps, TypeState> {
       disabledStartTime,
     } = this.props;
     const { monthAndYear } = this;
-    const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
+    const { differAmonth, differAyear } = differMonthAndYear(monthAndYear, format);
     const config = {
       panelChoseDate: rangeValue && rangeValue[0],
       timeValue,
