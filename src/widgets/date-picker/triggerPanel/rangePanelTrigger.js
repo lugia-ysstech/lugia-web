@@ -17,6 +17,8 @@ type TypeProps = {
   value?: Array<string>,
   format?: string,
   disabled?: boolean,
+  disabledEndTime?: boolean,
+  disabledStartTime?: boolean,
   readOnly?: boolean,
   onChange?: Function,
   onFocus?: Function,
@@ -195,10 +197,12 @@ class Range extends Component<TypeProps, TypeState> {
     let isValid = true;
     Array.isArray(newValue) &&
       newValue.forEach((item, index) => {
-        const isValids = formatValueIsValid(normalStyleValueObj, item, format);
-        formatIsValids.push(isValids);
-        if (!isValids) {
-          isValid = false;
+        if (item !== '') {
+          const isValids = formatValueIsValid(normalStyleValueObj, item, format);
+          formatIsValids.push(isValids);
+          if (!isValids) {
+            isValid = false;
+          }
         }
       });
     return {
@@ -212,14 +216,26 @@ class Range extends Component<TypeProps, TypeState> {
   onChangeSecond = (parmas: Object) => {
     this.panelChange({ ...parmas, index: 1 });
   };
-  panelChange = (parmas: Object) => {
+  panelChange = (param: Object) => {
+    const { disabledStartTime, disabledEndTime } = this.props;
     this.isClear = false;
-    let visible = true;
-    const { newValue, event } = parmas;
-    const { format } = this.state;
-    const { rangeValue } = this.state;
-    const newRangeValue = rangeValue.length > 0 ? [rangeValue[0]] : [];
-    newRangeValue.push(newValue);
+    const isDisabledOneSide = disabledStartTime || disabledEndTime;
+    const { newValue, event } = param;
+    const { format, rangeValue, value } = this.state;
+    let newRangeValue = [];
+    if (isDisabledOneSide) {
+      newRangeValue = rangeValue.length === 0 ? [...value] : [...rangeValue];
+
+      if (disabledStartTime) {
+        newRangeValue[1] = newValue;
+      } else if (disabledEndTime) {
+        newRangeValue[0] = newValue;
+      }
+    } else {
+      newRangeValue = rangeValue.length > 0 ? [rangeValue[0]] : [];
+      newRangeValue.push(newValue);
+    }
+
     const { length } = newRangeValue;
     let renderValue = [];
     let setStateData;
@@ -230,6 +246,8 @@ class Range extends Component<TypeProps, TypeState> {
         rangeValue: newRangeValue,
       };
     }
+    let visible = true;
+
     if (length === 2) {
       renderValue = [...newRangeValue];
       const { onOk, showTime } = this.props;
@@ -445,6 +463,8 @@ class Range extends Component<TypeProps, TypeState> {
       alwaysOpen,
       open,
       popupContainerId,
+      disabledEndTime,
+      disabledStartTime,
     } = this.props;
     const { monthAndYear } = this;
     const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
@@ -465,6 +485,7 @@ class Range extends Component<TypeProps, TypeState> {
       { mode, size, getPartOfThemeProps, validateStatus, visible },
       'Container'
     );
+    const newDisabled = disabled || (disabledEndTime && disabledStartTime);
     return (
       <Box themeProps={inputContainProps}>
         <Trigger
@@ -481,7 +502,8 @@ class Range extends Component<TypeProps, TypeState> {
               isTime={status === 'showTime'}
               mode={mode}
               themeProps={themeProps}
-              disabled={disabled || readOnly}
+              disabled={newDisabled}
+              readOnly={readOnly}
             >
               <RangeWrapInner>
                 <SwitchPanel
@@ -496,8 +518,11 @@ class Range extends Component<TypeProps, TypeState> {
                   choseDayIndex={choseDayIndex && choseDayIndex[0]}
                   model={this.targetModeFirst}
                   timeValue={value[0]}
+                  rangeValue={value}
                   themeProps={themeProps}
                   step={getNewStepProps(this.props)}
+                  startDisabled={disabledStartTime}
+                  endDisabled={disabledEndTime}
                 />
                 <SwitchPanel
                   {...this.props}
@@ -510,8 +535,11 @@ class Range extends Component<TypeProps, TypeState> {
                   choseDayIndex={choseDayIndex && choseDayIndex[1]}
                   model={this.targetModeSecond}
                   timeValue={value[1]}
+                  rangeValue={value}
                   themeProps={themeProps}
                   noBorder
+                  startDisabled={disabledStartTime}
+                  endDisabled={disabledEndTime}
                 />
               </RangeWrapInner>
               <PageFooter
@@ -539,12 +567,14 @@ class Range extends Component<TypeProps, TypeState> {
             onBlur={() => {}}
             onFocus={this.onFocus}
             onClear={this.onClear}
-            disabled={disabled}
             readOnly={readOnly}
             theme={theme}
             visible={visible}
             isClear={isClear}
             themeProps={inputContainProps}
+            startDisabled={disabledStartTime}
+            endDisabled={disabledEndTime}
+            disabled={newDisabled}
           />
         </Trigger>
       </Box>

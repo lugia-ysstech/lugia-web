@@ -40,6 +40,8 @@ type TypeProps = {
   help: string,
   validateType: string,
   middleSymbol?: string,
+  startDisabled?: boolean,
+  endDisabled?: boolean,
 };
 type TypeState = {
   value: Array<string>,
@@ -109,7 +111,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
       disabled,
       readOnly,
     };
-    const { mode, getPartOfThemeProps } = this.props;
+    const { mode, getPartOfThemeProps, endDisabled, startDisabled } = this.props;
 
     const inputPublicConfig = state => {
       return {
@@ -157,7 +159,6 @@ class RangeInput extends Component<TypeProps, TypeState> {
       size,
       getPartOfThemeProps,
     });
-
     return (
       <Theme
         config={{
@@ -213,7 +214,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
         <RangeInputWrap
           mode={mode}
           disabled={disabled}
-          onClick={readOnly || disabled ? '' : this.onHandleClick}
+          onClick={readOnly || disabled || startDisabled || endDisabled ? '' : this.onHandleClick}
           themeProps={inputContainProps}
           {...addMouseEvent(this)}
         >
@@ -228,6 +229,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 {...config}
                 suffix={<i />}
                 {...this.props.dispatchEvent([['hover']], 'f2c')}
+                disabled={startDisabled}
               />
             </RangeInputInnerInput>
 
@@ -247,6 +249,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 {...config}
                 // onClear={this.onClear}
                 {...this.props.dispatchEvent([['hover']], 'f2c')}
+                disabled={endDisabled}
               />
             </RangeInputInnerInput>
           </RangeInputInner>
