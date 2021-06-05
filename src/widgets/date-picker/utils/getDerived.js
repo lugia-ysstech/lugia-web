@@ -4,7 +4,6 @@
  * */
 
 import moment from 'moment';
-import { getformatSymbol } from './utils';
 import { rangeValueMonthIsSame, formatValueIsValid, modeStyle } from './booleanUtils';
 import { getDays, getRangeIndexfromWeeks, getValueFromWeekToDate } from './differUtils';
 export const getNormalFormat = (mode: string): string => {
@@ -149,17 +148,17 @@ function getPlaceholder(nextProps: Object): Array<string> {
   }
   return newPlaceholder;
 }
-export function getValueWhetherValid(value?: Array<string>, format: string): boolean {
-  const normalFormatbyValue = moment().format(format);
-  const normalvalueFormatObj = getformatSymbol(normalFormatbyValue);
+export function getValueWhetherValid(value: Array<string>, format: string): boolean {
   let valueIsValid = true;
-  value &&
-    value.forEach((item, index) => {
-      const isValid = formatValueIsValid(normalvalueFormatObj, item, format);
-      if (!isValid) {
-        valueIsValid = false;
-      }
-    });
+  if (!value || !Array.isArray(value)) {
+    return false;
+  }
+  value.forEach((item, index) => {
+    const isValid = formatValueIsValid(item, format);
+    if (!isValid) {
+      valueIsValid = false;
+    }
+  });
   return valueIsValid;
 }
 
