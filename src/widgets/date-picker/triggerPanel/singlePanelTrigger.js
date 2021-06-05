@@ -45,6 +45,8 @@ type TypeProps = {
   liquidLayout?: boolean,
   alwaysOpen?: boolean,
   popupContainerId?: string,
+  limitMinValue?: string,
+  limitMaxValue?: string,
 };
 type TypeState = {
   value: string,

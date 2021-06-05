@@ -361,9 +361,8 @@ function getHoverStyle(props) {
     } = {},
     noSingleHoverState,
     disabled,
-    isRange,
   } = props;
-  if (isRange && disabled) {
+  if (disabled) {
     return '';
   }
   if (noSingleHoverState) {
@@ -479,12 +478,13 @@ const getDateChildStyle = props => {
     mode,
     disabled,
   } = props;
+
+  if (disabled) {
+    return '';
+  }
   const { isDate, isRange, isWeeks } = modeStyle(mode);
   let chooseStyle;
   if (isDate || isRange) {
-    if (disabled) {
-      return '';
-    }
     const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
     const {
       background: { color: bgColor },
