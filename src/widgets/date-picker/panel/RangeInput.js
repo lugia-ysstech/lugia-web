@@ -20,6 +20,7 @@ import {
 } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import getDateIcon from '../panel/InputIcon';
+import { getLimitInputValue } from '../utils/utils';
 type TypeProps = {
   onChange?: Function,
   onClick?: Function,
@@ -42,6 +43,8 @@ type TypeProps = {
   middleSymbol?: string,
   startDisabled?: boolean,
   endDisabled?: boolean,
+  limitMinValue?: string,
+  limitMaxValue?: string,
 };
 type TypeState = {
   value: Array<string>,

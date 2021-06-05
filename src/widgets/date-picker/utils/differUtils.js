@@ -29,7 +29,7 @@ function getDatesInRangeValue(
   const rangeDatessecond = [];
   panelDatesArray.forEach((current, index) => {
     panelDatesArray[index].forEach(item => {
-      const isInRange = getValueIsInRange(max, min, item, format);
+      const isInRange = getValueIsInRange([min, max], item, format);
       const isNoCurrentItemone = rangeDatesFirst.indexOf(item) < 0;
       const isNoCurrentItemTwo = rangeDatessecond.indexOf(item) < 0;
       const isSameYearandMonthOne = rangeValueMonthIsSame([item, monthAndYear[0]], format);
