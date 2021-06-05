@@ -168,7 +168,7 @@ export const HeaderTopArrow = CSSComponent({
   },
   css: css`
     float: ${props => props.position};
-    ${getMargin}
+    ${getMargin};
     vertical-align: middle;
   `,
 });
@@ -279,23 +279,27 @@ export const DateChild = CSSComponent({
     ${props => getRangeChoseStyle(props)};
     ${props => getDateChildStyle(props).todayStyle};
     ${props => getDateChildStyle(props).chooseStyle};
-    ${props => rangeBorderDireStyle('7n', 'right', props.rangeNormalTheme)};
-    ${props => rangeBorderDireStyle('7n+1', 'left', props.rangeNormalTheme)};
+    ${props => rangeBorderDireStyle('7n', 'right', props)};
+    ${props => rangeBorderDireStyle('7n+1', 'left', props)};
     ${props =>
-      props &&
-      props.rangeStartIndex &&
-      rangeBorderDireStyle(props.rangeStartIndex, 'left', props.rangeNormalTheme)};
+      props && props.rangeStartIndex && rangeBorderDireStyle(props.rangeStartIndex, 'left', props)};
     ${props =>
-      props &&
-      props.rangeEndIndex &&
-      rangeBorderDireStyle(props.rangeEndIndex, 'right', props.rangeNormalTheme)};
+      props && props.rangeEndIndex && rangeBorderDireStyle(props.rangeEndIndex, 'right', props)};
   `,
 });
 function getRangeChoseStyle(props) {
   const {
     rangeNormalTheme: { color: textColor, background: { color: bgColor } = {} } = {},
     rangeChose,
+    disabled,
   } = props;
+  if (disabled) {
+    return `
+    background: #ddd;
+    opacity: 0.5;
+    cursor:not-allowed;
+    `;
+  }
   let color = '';
   let newTextColor;
   if (rangeChose) {
@@ -337,7 +341,7 @@ export const DateChildInner = CSSComponent({
     text-align: center;
     line-height: ${em(dateSize.DateChildWidth)};
     vertical-align: text-top;
-    cursor: pointer;
+    cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
     font-size: ${em(14)};
     &:hover {
       ${props => getHoverStyle(props)};
@@ -356,7 +360,12 @@ function getHoverStyle(props) {
       border,
     } = {},
     noSingleHoverState,
+    disabled,
+    isRange,
   } = props;
+  if (isRange && disabled) {
+    return '';
+  }
   if (noSingleHoverState) {
     return '';
   }
@@ -468,10 +477,14 @@ const getDateChildStyle = props => {
     todayTheme = {},
     rangeWeekDate = {},
     mode,
+    disabled,
   } = props;
   const { isDate, isRange, isWeeks } = modeStyle(mode);
   let chooseStyle;
   if (isDate || isRange) {
+    if (disabled) {
+      return '';
+    }
     const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
     const {
       background: { color: bgColor },
@@ -552,7 +565,10 @@ const getDateChildStyle = props => {
     todayStyle,
   };
 };
-function rangeBorderDireStyle(index, dire, rangeNormalTheme) {
+function rangeBorderDireStyle(index, dire, { rangeNormalTheme, disabled }) {
+  if (disabled) {
+    return '';
+  }
   let topRadius = '';
   let botRadius = '';
   if (dire === 'left') {
