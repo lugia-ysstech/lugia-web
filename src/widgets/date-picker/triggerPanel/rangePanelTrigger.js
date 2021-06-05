@@ -272,10 +272,20 @@ class Range extends Component<TypeProps, TypeState> {
     return newValue;
   };
   getSortValue = (rangeValue: Array<string>, format: string) => {
-    const momentsA = moment(rangeValue[0], format);
-    const momentsB = moment(rangeValue[1], format);
-    const min = moment.min(momentsA, momentsB).format(format);
-    const max = moment.max(momentsA, momentsB).format(format);
+    const range = [];
+    rangeValue.forEach(value => {
+      const isValid = value && moment(value, format).isValid();
+      if (isValid) {
+        range.push(value);
+      }
+    });
+    if (range.length === 1) {
+      return [...range, ''];
+    }
+    const start = range[0];
+    const end = range[1];
+    const min = moment.min(start, end);
+    const max = moment.max(start, end);
     return [min, max];
   };
   setTargetMode = (panelValue: Array<string>) => {
