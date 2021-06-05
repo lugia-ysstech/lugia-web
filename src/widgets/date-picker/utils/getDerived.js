@@ -5,7 +5,7 @@
 
 import moment from 'moment';
 import { getformatSymbol } from './utils';
-import { getIsSame, formatValueIsValid, modeStyle } from './booleanUtils';
+import { rangeValueMonthIsSame, formatValueIsValid, modeStyle } from './booleanUtils';
 import { getDays, getRangeIndexfromWeeks, getValueFromWeekToDate } from './differUtils';
 export const getNormalFormat = (mode: string): string => {
   const { isWeeks, isWeek, isMonth, isYear, isTime, isTimes } = modeStyle(mode);
@@ -83,8 +83,8 @@ export function getDerivedForInput(nextProps: Object, preState: Object): Object 
   const newPlaceholder = getPlaceholder(nextProps);
   const newValue = getValueFromValue(nextProps, preState);
   const valueIsValid = getValueWhetherValid(newValue, format);
-  const { isSameYandM } = isRange && getIsSame(newValue, format);
-  const modeWithValid = isRange ? valueIsValid && !isSameYandM : valueIsValid;
+  const monthIsSame = isRange && rangeValueMonthIsSame(newValue, format);
+  const modeWithValid = isRange ? valueIsValid && !monthIsSame : valueIsValid;
   let panelValue = modeWithValid ? newValue : getInValidValue(newValue, format);
   const normalValue = panelValue;
   if ((isWeeks || isWeek) && panelValue) {
@@ -164,22 +164,15 @@ export function getValueWhetherValid(value?: Array<string>, format: string): boo
 }
 
 function getInValidValue(value?: Array<string>, format: string): Array<string> {
-  const normalFormatbyValue = moment().format(format);
-  const normalvalueFormatObj = getformatSymbol(normalFormatbyValue);
   const normalValue = [];
-  const normal = moment().format(format);
   value &&
-    value.forEach((item, index) => {
-      let newVal = item;
-      const isValid = formatValueIsValid(normalvalueFormatObj, newVal, format);
-      if (!isValid || newVal === '') {
-        newVal = normal;
-      }
+    value.forEach(dateValue => {
+      const newVal = formatValueIsValid(dateValue, format) ? dateValue : moment().format(format);
       normalValue.push(newVal);
     });
   if (normalValue.length === 2) {
-    const { isSameYandM } = getIsSame(normalValue, format);
-    if (isSameYandM) {
+    const monthIsSame = rangeValueMonthIsSame(normalValue, format);
+    if (monthIsSame) {
       normalValue[1] = moment(normalValue[0], format)
         .add(1, 'month')
         .format(format);

@@ -10,7 +10,7 @@ import PageFooter from '../panel/PageFooter';
 import { getDerivedForInput } from '../utils/getDerived';
 import SwitchPanel from '../switchPanel/SwitchPanel';
 import { getValueFromWeekToDate } from '../utils/differUtils';
-import { getformatSymbol, getNewProps, getNewStepProps } from '../utils/utils';
+import { getNewStepProps } from '../utils/utils';
 import { formatValueIsValid, modeStyle, getOpenProps } from '../utils/booleanUtils';
 import { PanelWrap, Box } from '../styled/styled';
 import Theme from '../../theme';
@@ -62,7 +62,6 @@ type TypeState = {
 };
 class DateInput extends Component<TypeProps, TypeState> {
   static displayName = 'DateInput';
-  normalStyleValueObj: Object;
   trigger: any;
   oldValue: string;
   targetMode: SwitchPanelMode;
@@ -95,9 +94,6 @@ class DateInput extends Component<TypeProps, TypeState> {
     };
   }
   componentDidMount() {
-    const { format } = this.state;
-    const value = moment().format(format);
-    this.normalStyleValueObj = getformatSymbol(value);
     const { alwaysOpen } = getOpenProps(this.props);
     if (alwaysOpen) {
       this.setState({ visible: alwaysOpen });
@@ -118,6 +114,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       alwaysOpen,
       open,
       popupContainerId,
+      step,
     } = this.props;
     const {
       value,
@@ -130,11 +127,6 @@ class DateInput extends Component<TypeProps, TypeState> {
       isStartOfWeek,
       visible,
     } = this.state;
-    const hasStateValue = value ? true : false;
-    const showTimeBtnIsDisabled = valueIsValid ? true : false;
-    const { oldValue } = this;
-    const hasOldValue = oldValue ? true : false;
-    const newProps = getNewProps(this.props);
     const { mode } = this.props;
     const { isTime } = modeStyle(mode);
     const { themeProps } = getFacePanelContain({ mode, getPartOfThemeProps }, 'FacePanelContain');
@@ -203,8 +195,8 @@ class DateInput extends Component<TypeProps, TypeState> {
                   disabled={disabled || readOnly}
                 >
                   <SwitchPanel
-                    {...newProps}
-                    hasStateValue={hasStateValue}
+                    {...this.props}
+                    hasStateValue={value}
                     onChange={this.panelChane}
                     status={status}
                     value={panelValue}
@@ -215,22 +207,20 @@ class DateInput extends Component<TypeProps, TypeState> {
                     isScroll={isScroll}
                     valueIsValid={valueIsValid}
                     index={0}
-                    hasOldValue={hasOldValue}
+                    hasOldValue={this.oldValue}
                     isStartOfWeek={isStartOfWeek}
                     themeProps={themeProps}
-                    step={getNewStepProps(newProps)}
+                    step={getNewStepProps({ step })}
                     noBorder
                   />
 
-                  {isTime ? (
-                    ''
-                  ) : (
+                  {isTime && (
                     <PageFooter
                       {...this.props}
                       format={format}
                       onChange={this.onChange}
                       footerChange={this.footerChange}
-                      showTimeBtnIsDisabled={showTimeBtnIsDisabled}
+                      showTimeBtnIsDisabled={valueIsValid}
                       model={this.pageFooterChange}
                     />
                   )}
@@ -282,11 +272,10 @@ class DateInput extends Component<TypeProps, TypeState> {
 
   onChange = (param: Object) => {
     const { newValue, event } = param;
-    const { normalStyleValueObj } = this;
     const { format } = this.state;
     const { mode } = this.props;
     const { isWeeks, isWeek } = modeStyle(mode);
-    const isValid = formatValueIsValid(normalStyleValueObj, newValue, format);
+    const isValid = formatValueIsValid(newValue, format);
     isValid && this.setModeState(newValue, format, isWeeks || isWeek);
     this.setState({ value: newValue, isValid, visible: this.panelNeedVisible() }, () => {
       this.exportOnChange({ event, newValue, oldValue: this.oldValue });

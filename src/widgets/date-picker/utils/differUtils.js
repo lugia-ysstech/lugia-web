@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { getValueIsInRange, getIsSame, modeStyle } from './booleanUtils';
+import { getValueIsInRange, rangeValueMonthIsSame, modeStyle } from './booleanUtils';
 import { sortable } from '../../common/Math';
 function getWeekIndex(moments: Object) {
   const momentA = moments.clone();
@@ -32,8 +32,8 @@ function getDatesInRangeValue(
       const isInRange = getValueIsInRange(max, min, item, format);
       const isNoCurrentItemone = rangeDatesFirst.indexOf(item) < 0;
       const isNoCurrentItemTwo = rangeDatessecond.indexOf(item) < 0;
-      const isSameYearandMonthOne = getIsSame([item, monthAndYear[0]], format).isSameYandM;
-      const isSameYearandMonthTwo = getIsSame([item, monthAndYear[1]], format).isSameYandM;
+      const isSameYearandMonthOne = rangeValueMonthIsSame([item, monthAndYear[0]], format);
+      const isSameYearandMonthTwo = rangeValueMonthIsSame([item, monthAndYear[1]], format);
       if (isInRange && isSameYearandMonthOne && isNoCurrentItemone) {
         rangeDatesFirst.push(item);
       }
@@ -70,8 +70,8 @@ function getRangeChoseDayIndex(
     const { weekIndex } = getWeekIndex(moments);
     const choseDayIndex = [];
     rangeValue.forEach((list, i) => {
-      const { isSameYandM } = getIsSame([item, list], format);
-      if (isSameYandM) {
+      const monthIsSame = rangeValueMonthIsSame([item, list], format);
+      if (monthIsSame) {
         const dateIndex = getIndexInValue(list, weekIndex, format);
         choseDayIndex.push(dateIndex);
       }

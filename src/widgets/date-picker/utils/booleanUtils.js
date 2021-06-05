@@ -21,47 +21,15 @@ export const getValueIsInRange = (
   const choseValueIn = valueInRange(choseValueUnix, [minUnix, maxUnix]);
   return choseValueIn;
 };
-export const getIsSame = (rangeValue: Array<string>, format: string) => {
-  const momentS = moment(rangeValue[0], format);
-  const momentE = moment(rangeValue[1], format);
-  const isSamePanelS = momentS.format('YYYY-MM');
-  const isSamePanelE = momentE.format('YYYY-MM');
-  return {
-    isSameYandM:
-      rangeValue.length === 2 &&
-      rangeValue[0] !== '' &&
-      rangeValue[1] !== '' &&
-      isSamePanelS === isSamePanelE,
-    dateS: momentS.date(),
-    dateE: momentE.date(),
-    year: momentS.year(),
-    month: momentS.month(),
-  };
+export const rangeValueMonthIsSame = (rangeValue: Array<string>, format: string) => {
+  const startTime = moment(rangeValue[0], format);
+  const endTime = moment(rangeValue[1], format);
+  return moment(startTime).isSame(endTime, 'month');
 };
 
-export const formatValueIsValid = (normalStyleValueObj: Object, value: string, format: string) => {
-  const isSame = getValueIsValid(normalStyleValueObj, value);
-  const isValid = moment(value, format).isValid();
-  return isSame && isValid;
+export const formatValueIsValid = (value: string, format: string) => {
+  return moment(value, format, true).isValid();
 };
-function getValueIsValid(normalStyleValueObj: Object, value: string) {
-  if (!value) {
-    return false;
-  }
-  const { symbolCont, numberIndex } = getformatSymbol(value);
-  const numberIsSame = getArrayIsSame(normalStyleValueObj.numberIndex, numberIndex);
-  const symbolIsSame = getArrayIsSame(normalStyleValueObj.symbolCont, symbolCont);
-  return numberIsSame && symbolIsSame;
-}
-function getArrayIsSame(normalArr: [], newArr: []) {
-  let isSame = true;
-  normalArr.forEach((item, index) => {
-    if (newArr[index] !== item) {
-      isSame = false;
-    }
-  });
-  return isSame && normalArr.length === newArr.length;
-}
 
 export function modeStyle(mode: string): Object {
   const isWeek = mode === 'week';

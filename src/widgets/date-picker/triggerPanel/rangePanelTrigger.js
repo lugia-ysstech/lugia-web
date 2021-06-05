@@ -9,8 +9,8 @@ import { getDerivedForInput } from '../utils/getDerived';
 import { RangeWrap, RangeWrapInner, Box } from '../styled/styled';
 import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
-import { formatValueIsValid, getIsSame } from '../utils/booleanUtils';
-import { getformatSymbol, getNewStepProps } from '../utils/utils';
+import { formatValueIsValid, rangeValueMonthIsSame } from '../utils/booleanUtils';
+import { getNewStepProps } from '../utils/utils';
 import { getFacePanelContain, getWrapThemeProps } from '../themeConfig/themeConfig';
 type TypeProps = {
   defaultValue?: Array<string>,
@@ -112,10 +112,10 @@ class Range extends Component<TypeProps, TypeState> {
     });
     const hasValue = value[0] !== '' || value[1] !== '';
     const newVal = hasValue ? [...value] : currentValue;
-    const { isSameYandM } = getIsSame(newVal, format);
+    const monthIsSame = rangeValueMonthIsSame(newVal, format);
     const date = moment().date();
     const { isValid } = this.getIsValid(newVal);
-    if (isSameYandM) {
+    if (monthIsSame) {
       const second = moment(newVal[0], format)
         .set({ date })
         .add({ month: 1 })
@@ -191,14 +191,13 @@ class Range extends Component<TypeProps, TypeState> {
     }
   };
   getIsValid = (newValue: Array<string> = []) => {
-    const { normalStyleValueObj } = this;
     const { format } = this.state;
     const formatIsValids = [];
     let isValid = true;
     Array.isArray(newValue) &&
-      newValue.forEach((item, index) => {
-        if (item !== '') {
-          const isValids = formatValueIsValid(normalStyleValueObj, item, format);
+      newValue.forEach((dateValue, index) => {
+        if (dateValue !== '') {
+          const isValids = formatValueIsValid(dateValue, format);
           formatIsValids.push(isValids);
           if (!isValids) {
             isValid = false;
@@ -423,8 +422,6 @@ class Range extends Component<TypeProps, TypeState> {
   };
   componentDidMount() {
     const { format, panelValue } = this.state;
-    const value = moment().format(format);
-    this.normalStyleValueObj = getformatSymbol(value);
     this.monthAndYear = [...panelValue];
     this.panelDatesArray = getCurrentPageDates(panelValue, format);
   }
