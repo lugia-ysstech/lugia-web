@@ -24,3 +24,96 @@ export const isEqualArray = (arr: any[], newArr: any[], opt: { isStrengthen: fal
   });
   return flag;
 };
+
+export const getValidSelectRowKeys = (
+  data: Object[],
+  selectRowKeys,
+  validSelectRowKeys,
+  rowKey,
+  cb
+) => {
+  for (let i = 0; i < data.length; i++) {
+    const item = data[i];
+    const { hasChildren = false, children = [] } = item;
+    const itemKey = item[rowKey];
+    const checkboxProps = cb(item) || {};
+    if (!checkboxProps.disabled) {
+      const selectc = selectRowKeys.includes(itemKey);
+      if (selectc) {
+        validSelectRowKeys.push(itemKey);
+      }
+      if (hasChildren && children.length > 0) {
+        getValidSelectRowKeys(children, selectRowKeys, validSelectRowKeys, rowKey, cb);
+      }
+    }
+  }
+  return validSelectRowKeys;
+};
+
+export const getValidNotCheckedKeys = (
+  data: Object[],
+  selectRowKeys: string[],
+  rowKey,
+  setCheckboxProps
+) => {
+  if (data.length <= 0) {
+    return [];
+  }
+  const { childrenKeys = [] } = getChildrenKeys(data, [], [], rowKey, setCheckboxProps);
+  return childrenKeys.filter(item => !selectRowKeys.includes(item));
+};
+
+export const getAllParentData = (data: Object[], key, rowKey) => {
+  let arrRes = [];
+  if (data.length == 0) {
+    if (key) {
+      arrRes.unshift(data);
+    }
+    return arrRes;
+  }
+  const rev = (childrenData, nodeId) => {
+    for (let i = 0, length = childrenData.length; i < length; i++) {
+      const node = childrenData[i];
+      if (node[rowKey] === nodeId) {
+        arrRes.unshift(node);
+        rev(data, node.parentId);
+        break;
+      } else {
+        if (node.children) {
+          rev(node.children, nodeId);
+        }
+      }
+    }
+    return arrRes;
+  };
+  arrRes = rev(data, key);
+  return arrRes;
+};
+
+export const getChildrenKeys = (data, childrenKeys, childrenRecords, rowKey, setCheckboxProps?) => {
+  if (data.length <= 0) {
+    return { childrenKeys: [], childrenRecords: [] };
+  }
+  data.map(item => {
+    const { children = [] } = item;
+    const checkboxProps = (setCheckboxProps && setCheckboxProps(item)) || {};
+    if (!checkboxProps.disabled) {
+      childrenKeys.push(item[rowKey]);
+      childrenRecords.push(item);
+      if (children.length > 0) {
+        const { childrenKeys: keys, childrenRecords: records } = getChildrenKeys(
+          children,
+          childrenKeys,
+          childrenRecords,
+          rowKey,
+          setCheckboxProps
+        );
+        return {
+          childrenKeys: keys,
+          childrenRecords: records,
+        };
+      }
+    }
+  });
+  return { childrenKeys, childrenRecords };
+};
