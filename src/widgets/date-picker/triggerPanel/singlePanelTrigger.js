@@ -11,7 +11,12 @@ import { getDerivedForInput } from '../utils/getDerived';
 import SwitchPanel from '../switchPanel/SwitchPanel';
 import { getValueFromWeekToDate } from '../utils/differUtils';
 import { getNewStepProps } from '../utils/utils';
-import { formatValueIsValid, modeStyle, getOpenProps } from '../utils/booleanUtils';
+import {
+  formatValueIsValid,
+  modeStyle,
+  getOpenProps,
+  getValueIsInLimit,
+} from '../utils/booleanUtils';
 import { PanelWrap, Box } from '../styled/styled';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
@@ -23,6 +28,8 @@ import getThemeProps, {
 } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import getDateIcon from '../panel/InputIcon';
+import { RangeInputWrap } from '../styled/styledRangeInput';
+import RangeInput from '../panel/RangeInput';
 
 type TypeProps = {
   getPartOfThemeProps: Function,
@@ -181,7 +188,7 @@ class DateInput extends Component<TypeProps, TypeState> {
           },
         }}
       >
-        <Box themeProps={inputContainProps}>
+        <Box themeProps={inputContainProps} {...addMouseEvent(this)}>
           <Trigger
             themePass
             createPortal={createPortal}
@@ -191,11 +198,7 @@ class DateInput extends Component<TypeProps, TypeState> {
             liquidLayout={liquidLayout}
             popup={
               <React.Fragment>
-                <PanelWrap
-                  themeProps={themeProps}
-                  {...addMouseEvent(this)}
-                  disabled={disabled || readOnly}
-                >
+                <PanelWrap themeProps={themeProps} disabled={disabled || readOnly}>
                   <SwitchPanel
                     {...this.props}
                     hasStateValue={value}
@@ -243,6 +246,7 @@ class DateInput extends Component<TypeProps, TypeState> {
               placeholder={placeholder}
               onFocus={this.onFocus}
               focus={visible}
+              onBlur={this.onBlur}
               disabled={disabled}
               readOnly={readOnly}
               validateType={validateType}
@@ -258,27 +262,37 @@ class DateInput extends Component<TypeProps, TypeState> {
   }
 
   onDocumentClick = () => {
-    const { alwaysOpen } = getOpenProps(this.props);
-    let visible = false;
-    if (alwaysOpen) {
-      visible = alwaysOpen;
-    }
-    const newValue = this.needControlClose() ? { value: this.oldValue } : {};
-    this.setState({ visible, ...newValue });
+    this.setState({ visible: false });
     const { onDocumentClick } = this.props;
     if (onDocumentClick) {
       onDocumentClick();
     }
-    this.onBlur();
   };
 
+  getIsValid = (newValue: string) => {
+    const { format } = this.state;
+    const { limitMinValue = '', limitMaxValue = '' } = this.props;
+
+    return (
+      formatValueIsValid(newValue, format) &&
+      getValueIsInLimit({
+        dateValue: newValue,
+        limitMinValue,
+        limitMaxValue,
+        format,
+      })
+    );
+  };
   onChange = (param: Object) => {
     const { newValue, event } = param;
     const { format } = this.state;
     const { mode } = this.props;
     const { isWeeks, isWeek } = modeStyle(mode);
-    const isValid = formatValueIsValid(newValue, format);
+    const isValid = this.getIsValid(newValue);
     isValid && this.setModeState(newValue, format, isWeeks || isWeek);
+    if (isValid) {
+      this.oldValue = newValue;
+    }
     this.setState({ value: newValue, isValid, visible: this.panelNeedVisible() }, () => {
       this.exportOnChange({ event, newValue, oldValue: this.oldValue });
     });
@@ -338,10 +352,13 @@ class DateInput extends Component<TypeProps, TypeState> {
     }
     return { newVal, isStartOfWeek };
   };
-  onFocus = () => {
+  onFocus = e => {
     this.isClear = false;
     const { value, valueIsValid, normalValue, format, status } = this.state;
-    this.oldValue = value;
+    const isValid = this.getIsValid(value);
+    if (isValid) {
+      this.oldValue = value;
+    }
     const { mode } = this.props;
     const { isWeeks, isWeek } = modeStyle(mode);
     this.setState({ value, status: 'showDate', visible: true });
@@ -353,14 +370,15 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { onFocus } = this.props;
     onFocus && onFocus();
   };
-  onBlur = () => {
-    const { isValid, value } = this.state;
-    if (value && !isValid) {
+  onBlur = event => {
+    const { value } = this.state;
+    const isValid = this.getIsValid(value);
+
+    if (!isValid) {
       this.setState({ value: this.oldValue });
+      this.exportOnChange({ event, newValue: this.oldValue, oldValue: this.oldValue });
     }
-    if (!value) {
-      this.oldValue = '';
-    }
+
     const { onBlur } = this.props;
     onBlur && onBlur();
   };
