@@ -30,6 +30,8 @@ export default class Sl extends Component<any> {
       v: moment().year(),
       cv: moment().year(),
       open: true,
+      oneSideRangeValue: ['2021年06月05日', '2021年07月20日'],
+      limitDateValue: '2021年06月05日',
     };
   }
   onChange = (obj: Object) => {
@@ -57,6 +59,12 @@ export default class Sl extends Component<any> {
   onClick = () => {
     const { open } = this.state;
     this.setState({ open: !open });
+  };
+  onChangeRangeOneSize = ({ newValue }) => {
+    this.setState({ oneSideRangeValue: newValue });
+  };
+  onDateLimitChange = ({ newValue }) => {
+    this.setState({ limitDateValue: newValue });
   };
   render() {
     const dateFormate = 'YYYY年MM月DD日';
@@ -304,10 +312,29 @@ export default class Sl extends Component<any> {
         },
       },
     };
-    const { open } = this.state;
+    const { open, oneSideRangeValue, limitDateValue } = this.state;
     return (
       <div>
         <div style={{ margin: '30px', overflow: 'hidden' }}>
+          <h1>范围日期 单侧禁用 + 设置最小日期值</h1>
+          <RangePicker
+            onChange={this.onChangeRangeOneSize}
+            // disabledStartTime={true}
+            disabledEndTime={true}
+            value={oneSideRangeValue}
+            // readOnly
+            format={'YYYY年MM月DD日'}
+            limitMinValue={'2021年06月05日'}
+          />
+          <h1>设置最小日期值</h1>
+          <DatePicker
+            startDisabled={true}
+            limitMinValue={'2021年06月05日'}
+            limitMaxValue={'2021年07月05日'}
+            onChange={this.onDateLimitChange}
+            value={limitDateValue}
+            format={'YYYY年MM月DD日'}
+          />
           <h2 style={{ margin: '10px' }}>
             open 占位/不占位 <Button onClick={this.onClick}>{open ? '关闭' : '开启'}</Button>
           </h2>
@@ -318,7 +345,6 @@ export default class Sl extends Component<any> {
             <DatePicker open={open} />
           </div>
           <h2 style={{ margin: '10px' }}>Date</h2>
-
           <h2>date-normal-selectToday-theme</h2>
           <Theme
             config={{
@@ -373,7 +399,6 @@ export default class Sl extends Component<any> {
             <TimePicker />
             <WeeksPicker />
           </Theme>
-
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>date-defaultValue</h2>
             <DatePicker
