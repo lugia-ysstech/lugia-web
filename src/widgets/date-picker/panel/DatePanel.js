@@ -114,7 +114,7 @@ class Dates extends Component<TypeProps, any> {
   getDisabled = (index: number, currentValue: number) => {
     const {
       mode,
-      rangeValue,
+      rangeValue = [],
       startDisabled,
       endDisabled,
       limitMinValue,
@@ -135,7 +135,7 @@ class Dates extends Component<TypeProps, any> {
     };
     if (isRange) {
       const compareParam = getCompareParam(
-        startDisabled ? rangeValue[0] : endDisabled ? rangeValue[1] : ''
+        startDisabled ? rangeValue[0] || '' : endDisabled ? rangeValue[1] || '' : ''
       );
       if (startDisabled) {
         isBeforeDisabled = isBeforeTime(compareParam);
@@ -158,8 +158,8 @@ class Dates extends Component<TypeProps, any> {
   getRangeIndex = () => {
     const { rangeRenderIndex = [] } = this.props;
     return {
-      rangeStartIndex: rangeRenderIndex[0],
-      rangeEndIndex: rangeRenderIndex[rangeRenderIndex.length - 1],
+      rangeStartIndex: rangeRenderIndex[0] || 0,
+      rangeEndIndex: rangeRenderIndex[rangeRenderIndex.length - 1] || 0,
     };
   };
 
