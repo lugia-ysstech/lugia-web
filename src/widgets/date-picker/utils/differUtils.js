@@ -11,7 +11,7 @@ function getIndexInValue(value: string, weekIndex: number, format: string) {
   const dateIndex = date + weekIndex;
   return dateIndex;
 }
-function getMinAndMaxInMonth(rangeValue: Array<string>, format: string) {
+export function getSortValue(rangeValue: Array<string>, format: string) {
   const start = rangeValue[0];
   const end = rangeValue[1];
   const min = moment.min(moment(start, format), moment(end, format)).format(format);
@@ -20,29 +20,27 @@ function getMinAndMaxInMonth(rangeValue: Array<string>, format: string) {
 }
 function getDatesInRangeValue(
   rangeValue: Array<string>,
-  panelDatesArray: Array<string>,
+  panelsDates: string[][],
   monthAndYear: Array<string>,
   format: string
 ) {
-  const { min, max } = getMinAndMaxInMonth(rangeValue, format);
-  const rangeDatesFirst = [];
-  const rangeDatessecond = [];
-  panelDatesArray.forEach((current, index) => {
-    panelDatesArray[index].forEach(item => {
-      const isInRange = getValueIsInRange([min, max], item, format);
-      const isNoCurrentItemone = rangeDatesFirst.indexOf(item) < 0;
-      const isNoCurrentItemTwo = rangeDatessecond.indexOf(item) < 0;
-      const isSameYearandMonthOne = rangeValueMonthIsSame([item, monthAndYear[0]], format);
-      const isSameYearandMonthTwo = rangeValueMonthIsSame([item, monthAndYear[1]], format);
-      if (isInRange && isSameYearandMonthOne && isNoCurrentItemone) {
-        rangeDatesFirst.push(item);
+  const { min, max } = getSortValue(rangeValue, format);
+  const firstPanelRangeDates = new Set();
+  const secondPanelRangeDates = new Set();
+  panelsDates.forEach(panelDates => {
+    panelDates.forEach(dateValue => {
+      const isInRange = getValueIsInRange([min, max], dateValue, format);
+      const dateIsInFirstPanel = rangeValueMonthIsSame([dateValue, monthAndYear[0]], format);
+      const dateIsInSecondPanel = rangeValueMonthIsSame([dateValue, monthAndYear[1]], format);
+      if (isInRange && dateIsInFirstPanel) {
+        firstPanelRangeDates.add(dateValue);
       }
-      if (isInRange && isSameYearandMonthTwo && isNoCurrentItemTwo) {
-        rangeDatessecond.push(item);
+      if (isInRange && dateIsInSecondPanel) {
+        secondPanelRangeDates.add(dateValue);
       }
     });
   });
-  return [rangeDatesFirst, rangeDatessecond];
+  return [Array.from(firstPanelRangeDates), Array.from(secondPanelRangeDates)];
 }
 function getRangeIndex(
   rangeDates: Array<Array<string>>,
