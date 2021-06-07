@@ -8,7 +8,12 @@ import Trigger from '../../trigger/OpenTrigger';
 import { getDerivedForInput } from '../utils/getDerived';
 import { RangeWrap, RangeWrapInner, Box } from '../styled/styled';
 import SwitchPanelMode from '../mode';
-import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
+import {
+  differMonthAndYear,
+  getIndexInRange,
+  getCurrentPageDates,
+  getSortValue,
+} from '../utils/differUtils';
 import {
   formatValueIsValid,
   rangeValueMonthIsSame,
@@ -287,18 +292,15 @@ class Range extends Component<TypeProps, TypeState> {
   getSortValue = (rangeValue: Array<string>, format: string) => {
     const range = [];
     rangeValue.forEach(value => {
-      const isValid = value && moment(value, format).isValid();
-      if (isValid) {
-        range.push(value);
+      if (value) {
+        const isValid = moment(value, format, true).isValid();
+        if (isValid) {
+          range.push(value);
+        }
       }
     });
-    if (range.length === 1) {
-      return [...range, ''];
-    }
-    const start = range[0];
-    const end = range[1];
-    const min = moment.min(start, end);
-    const max = moment.max(start, end);
+
+    const { min, max } = getSortValue(range, format);
     return [min, max];
   };
   setTargetMode = (panelValue: Array<string>) => {
