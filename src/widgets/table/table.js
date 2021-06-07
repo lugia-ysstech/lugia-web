@@ -14,9 +14,17 @@ import Checkbox from '../checkbox';
 import type { TableProps, TableState } from '../css/table';
 import { css } from 'styled-components';
 import TableTitle from './tableTitle';
-import { deepCopy, isEqualArray } from './utils';
+import {
+  deepCopy,
+  getChildrenKeys,
+  getAllParentData,
+  getValidSelectRowKeys,
+  isEqualArray,
+  getValidNotCheckedKeys,
+} from './utils';
 import isEqual from 'lodash/isEqual';
 import Empty from '../empty';
+import item from '../menu/item';
 
 const sizePadding = {
   default: 8,
@@ -144,21 +152,15 @@ export default ThemeProvider(
             return {};
           },
         } = selectOptions;
-        let allValidSelected = data && data.length > 0;
-        const validSelectRowKeys = [];
-        for (let i = 0; i < data.length; i++) {
-          const item = data[i];
-          const itemKey = item[rowKey];
-          const checkboxProps = setCheckboxProps(item) || {};
-          if (!checkboxProps.disabled) {
-            const selectc = selectRowKeys.includes(itemKey);
-            if (selectc) {
-              validSelectRowKeys.push(itemKey);
-            } else {
-              allValidSelected = false;
-            }
-          }
-        }
+        const validSelectRowKeys = getValidSelectRowKeys(
+          data,
+          selectRowKeys,
+          [],
+          rowKey,
+          setCheckboxProps
+        );
+        const allValidSelected =
+          getValidNotCheckedKeys(data, selectRowKeys, rowKey, setCheckboxProps).length <= 0;
         return {
           headChecked: allValidSelected,
           headIndeterminate: !!validSelectRowKeys.length,
@@ -170,16 +172,70 @@ export default ThemeProvider(
       return { sortOrder: dataIsSame ? sortOrder : true, data };
     }
 
+    handleParentData = (data: Object, selectRowKeys, selectRecords, rowKey, setCheckboxProps) => {
+      const { children: childrenData = [] } = data;
+      const notChecked = getValidNotCheckedKeys(
+        childrenData,
+        selectRowKeys,
+        rowKey,
+        setCheckboxProps
+      );
+      if (notChecked.length > 0) {
+        selectRowKeys = this.filterKey(selectRowKeys, item => item !== data[rowKey]);
+        selectRecords = this.filterKey(selectRecords, item => item[rowKey] !== data[rowKey]);
+      } else {
+        selectRowKeys = [...selectRowKeys, data[rowKey]];
+        selectRecords = [...selectRecords, data];
+      }
+      return { selectRowKeys, selectRecords };
+    };
+
     tableItemChange = (key, record) => () => {
       const { selectOptions = {}, rowKey = 'key' } = this.props;
-      const { selectRowKeys } = this.state;
+      const {
+        setCheckboxProps = (record: Object) => {
+          return {};
+        },
+      } = selectOptions;
+      const { selectRowKeys, data } = this.state;
+      const { children = [], parentId } = record;
       const unSelect = selectRowKeys.includes(key);
-      const newSelectRowKeys = unSelect
-        ? this.filterKey(selectRowKeys, item => item !== key)
-        : [...selectRowKeys, key];
-      const newRecords = unSelect
-        ? this.filterKey(this.selectedRecords, item => item[rowKey] !== key)
-        : [...this.selectedRecords, record];
+
+      let newSelectRowKeys = [];
+      let newRecords = [];
+      const { childrenKeys, childrenRecords } = getChildrenKeys(
+        children,
+        [],
+        [],
+        rowKey,
+        setCheckboxProps
+      );
+      const parentDataArr = getAllParentData(data, parentId, rowKey);
+      if (unSelect) {
+        newSelectRowKeys = this.filterKey(selectRowKeys, item => item !== key);
+        newRecords = this.filterKey(this.selectedRecords, item => item[rowKey] !== key);
+        newSelectRowKeys = this.filterKey(newSelectRowKeys, item => !childrenKeys.includes(item));
+        newRecords = this.filterKey(newRecords, item => !childrenKeys.includes(item[rowKey]));
+      } else {
+        newSelectRowKeys = [...selectRowKeys, key, ...childrenKeys];
+        newRecords = [...this.selectedRecords, record, ...childrenRecords];
+      }
+      if (parentDataArr.length > 0) {
+        for (let i = parentDataArr.length - 1; i >= 0; i--) {
+          const {
+            selectRowKeys: parentSelectRowKeys,
+            selectRecords: parentSelectRecords,
+          } = this.handleParentData(
+            parentDataArr[i],
+            newSelectRowKeys,
+            newRecords,
+            rowKey,
+            setCheckboxProps
+          );
+          newSelectRowKeys = parentSelectRowKeys;
+          newRecords = parentSelectRecords;
+        }
+      }
       const { onChange } = selectOptions;
       onChange && onChange(newSelectRowKeys, newRecords);
       if ('selectRowKeys' in selectOptions) {
@@ -231,24 +287,35 @@ export default ThemeProvider(
       });
     };
 
-    getValidKey = () => {
-      const selectedRecords = [];
-      const validKeys = [];
-      const disabledSelectedKeys = [];
-      const validRecords = [];
-      const disabledSelectedRecords = [];
-      const { rowKey: cusRowKey = 'key', selectOptions = {}, data: propsData } = this.props;
+    getValidData = (
+      tableData: Object[],
+      param: {
+        selectedRecords: Object[],
+        disabledSelectedKeys: any[],
+        disabledSelectedRecords: any[],
+        validKeys: any[],
+        validRecords: any[],
+      }
+    ) => {
+      const { rowKey: cusRowKey = 'key', selectOptions = {} } = this.props;
       const {
         setCheckboxProps = (record: Object) => {
           return {};
         },
       } = selectOptions;
-      const { selectRowKeys: stateSelectRowKeys, data = [] } = this.state;
-      const tableData = this.getTableData(propsData, data);
+      const { selectRowKeys: stateSelectRowKeys } = this.state;
+      const {
+        selectedRecords = [],
+        disabledSelectedKeys = [],
+        disabledSelectedRecords = [],
+        validKeys = [],
+        validRecords = [],
+      } = param;
       tableData.forEach(record => {
         const rowKey = record[cusRowKey];
         const select = stateSelectRowKeys.includes(rowKey);
         const checkboxProps = setCheckboxProps(record) || {};
+        const { hasChildren = false, children = [] } = record;
         if (select) {
           selectedRecords.push(record);
           if (checkboxProps.disabled) {
@@ -260,13 +327,52 @@ export default ThemeProvider(
           validKeys.push(rowKey);
           validRecords.push(record);
         }
+        if (hasChildren && children.length > 0) {
+          this.getValidData(children, {
+            selectedRecords,
+            disabledSelectedRecords,
+            disabledSelectedKeys,
+            validRecords,
+            validKeys,
+          });
+        }
       });
+      return {
+        selectedRecords,
+        disabledSelectedKeys,
+        disabledSelectedRecords,
+        validKeys,
+        validRecords,
+      };
+    };
 
-      this.selectedRecords = selectedRecords;
-      this.validKeys = validKeys;
-      this.disabledSelectedKeys = disabledSelectedKeys;
-      this.validRecords = validRecords;
-      this.disabledSelectedRecords = disabledSelectedRecords;
+    getValidKey = () => {
+      const selectedRecords = [];
+      const validKeys = [];
+      const disabledSelectedKeys = [];
+      const validRecords = [];
+      const disabledSelectedRecords = [];
+      const { data: propsData } = this.props;
+      const { data = [] } = this.state;
+      const tableData = this.getTableData(propsData, data);
+      const {
+        selectedRecords: newSelectedRecords,
+        validKeys: newValidKeys,
+        disabledSelectedKeys: newDisabledSelectedKeys,
+        validRecords: newValidRecords,
+        disabledSelectedRecords: newDisabledSelectedRecords,
+      } = this.getValidData(tableData, {
+        selectedRecords,
+        validKeys,
+        validRecords,
+        disabledSelectedKeys,
+        disabledSelectedRecords,
+      });
+      this.selectedRecords = newSelectedRecords;
+      this.validKeys = newValidKeys;
+      this.disabledSelectedKeys = newDisabledSelectedKeys;
+      this.validRecords = newValidRecords;
+      this.disabledSelectedRecords = newDisabledSelectedRecords;
     };
     getSortColumns = (columns: Object[]) => {
       const newColumns = [];
@@ -411,16 +517,33 @@ export default ThemeProvider(
           key: 'selection-column',
           width,
           render: (text, record) => {
+            const { children = [] } = record;
             const rowKey = record[cusRowKey];
             const select = stateSelectRowKeys.includes(rowKey);
             const checkboxProps = setCheckboxProps(record) || {};
-
+            const notChecked = getValidNotCheckedKeys(
+              children,
+              stateSelectRowKeys,
+              cusRowKey,
+              setCheckboxProps
+            );
+            const allCheck = notChecked.length <= 0 && select;
+            const { childrenKeys = [] } = getChildrenKeys(
+              children,
+              [],
+              [],
+              cusRowKey,
+              setCheckboxProps
+            );
+            const indeterminate =
+              allCheck || notChecked.length === childrenKeys.length ? false : true;
             return (
               <div style={{ fontSize: 0 }}>
                 <Checkbox
-                  checked={select}
+                  checked={allCheck}
                   onChange={this.tableItemChange(rowKey, record)}
                   {...checkboxProps}
+                  indeterminate={indeterminate}
                 />
               </div>
             );
