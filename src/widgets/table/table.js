@@ -166,10 +166,9 @@ export default ThemeProvider(
           headIndeterminate: !!validSelectRowKeys.length,
           selectRowKeys,
           sortOrder: dataIsSame ? sortOrder : true,
-          data,
         };
       }
-      return { sortOrder: dataIsSame ? sortOrder : true, data };
+      return { sortOrder: dataIsSame ? sortOrder : true };
     }
 
     handleParentData = (data: Object, selectRowKeys, selectRecords, rowKey, setCheckboxProps) => {
@@ -191,13 +190,14 @@ export default ThemeProvider(
     };
 
     tableItemChange = (key, record) => () => {
-      const { selectOptions = {}, rowKey = 'key' } = this.props;
+      const { selectOptions = {}, rowKey = 'key', data: propsData } = this.props;
       const {
         setCheckboxProps = (record: Object) => {
           return {};
         },
       } = selectOptions;
       const { selectRowKeys, data } = this.state;
+      const { tableData } = this.getTableData(propsData, data);
       const { children = [], parentId } = record;
       const unSelect = selectRowKeys.includes(key);
 
@@ -210,7 +210,7 @@ export default ThemeProvider(
         rowKey,
         setCheckboxProps
       );
-      const parentDataArr = getAllParentData(data, parentId, rowKey);
+      const parentDataArr = getAllParentData(tableData, parentId, rowKey);
       if (unSelect) {
         newSelectRowKeys = this.filterKey(selectRowKeys, item => item !== key);
         newRecords = this.filterKey(this.selectedRecords, item => item[rowKey] !== key);
@@ -354,7 +354,8 @@ export default ThemeProvider(
       const disabledSelectedRecords = [];
       const { data: propsData } = this.props;
       const { data = [] } = this.state;
-      const tableData = this.getTableData(propsData, data);
+      const { tableData, dataIsSame } = this.getTableData(propsData, data);
+      if (!dataIsSame) this.sortState = '';
       const {
         selectedRecords: newSelectedRecords,
         validKeys: newValidKeys,
@@ -414,11 +415,17 @@ export default ThemeProvider(
       this.setState({ data: sortData, sortOrder: newSortOrder });
       onChange && onChange({ column: columnData, filed: dataIndex, order: type, data: sortData });
     };
-    getTableData = (propsData, stateData) => {
-      const dataIsSame = isEqualArray(stateData, propsData, { isStrengthen: false });
-      if (!dataIsSame) this.sortState = '';
+
+    getStrengthenValue = () => {
+      return this.sortState !== '';
+    };
+
+    getTableData = (propsData, stateData, isStrengthen?) => {
+      const dataIsSame = isEqualArray(stateData, propsData, {
+        isStrengthen: isStrengthen || this.getStrengthenValue(),
+      });
       const tableData = dataIsSame ? stateData : propsData;
-      return tableData;
+      return { tableData, dataIsSame };
     };
 
     getDefaultEmpty = () => {
@@ -461,8 +468,11 @@ export default ThemeProvider(
         scroll = {},
         data = [],
       } = this.state;
-      const propsDataIsChange = isEqual(this.oldPropsData, propsData, { isStrengthen: true });
-
+      const { dataIsSame: propsDataIsChange } = this.getTableData(
+        this.oldPropsData,
+        propsData,
+        true
+      );
       const tableData = propsDataIsChange ? data : propsData;
 
       if (!propsDataIsChange) {
