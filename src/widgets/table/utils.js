@@ -64,30 +64,30 @@ export const getValidNotCheckedKeys = (
 };
 
 export const getAllParentData = (data: Object[], key, rowKey) => {
-  let arrRes = [];
+  let parentDataArr = [];
   if (data.length == 0) {
     if (key) {
-      arrRes.unshift(data);
+      parentDataArr.unshift(data);
     }
-    return arrRes;
+    return parentDataArr;
   }
-  const rev = (childrenData, nodeId) => {
+  const getParentData = (childrenData, nodeId) => {
     for (let i = 0, length = childrenData.length; i < length; i++) {
       const node = childrenData[i];
       if (node[rowKey] === nodeId) {
-        arrRes.unshift(node);
-        rev(data, node.parentId);
+        parentDataArr.unshift(node);
+        getParentData(data, node.parentId);
         break;
       } else {
         if (node.children) {
-          rev(node.children, nodeId);
+          getParentData(node.children, nodeId);
         }
       }
     }
-    return arrRes;
+    return parentDataArr;
   };
-  arrRes = rev(data, key);
-  return arrRes;
+  parentDataArr = getParentData(data, key);
+  return parentDataArr;
 };
 
 export const getChildrenKeys = (data, childrenKeys, childrenRecords, rowKey, setCheckboxProps?) => {

@@ -22,9 +22,7 @@ import {
   isEqualArray,
   getValidNotCheckedKeys,
 } from './utils';
-import isEqual from 'lodash/isEqual';
 import Empty from '../empty';
-import item from '../menu/item';
 
 const sizePadding = {
   default: 8,
