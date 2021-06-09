@@ -37,17 +37,16 @@ const ItemContainer = CSSComponent({
     selectNames: [['width'], ['height'], ['margin'], ['padding']],
     getCSS: (theme: Object, themeProps: Object) => {
       const { propsConfig } = themeProps;
-      const { maxWidth, mode } = propsConfig;
-      if (mode !== 'right') {
-        return `transform: translateX(${maxWidth}px);`;
-      }
+      const { maxWidth, mode, _parentHasHeight } = propsConfig;
+      const flexCSS = _parentHasHeight ? 'flex: 1;' : '';
+      const transformCSS = mode !== 'right' ? `transform: translateX(${maxWidth}px);` : '';
+      return `${flexCSS}${transformCSS}`;
     },
   },
   css: css`
     position: relative;
     display: flex;
     flex-direction: column;
-    flex: 1;
   `,
 });
 const BaseText = CSSComponent({
@@ -262,6 +261,7 @@ type TimeLineProps = {
   getPartOfThemeProps: Function,
   themeProps: Object,
   _leftMaxWidth: string,
+  _parentHasHeight: boolean,
 };
 
 class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
@@ -316,7 +316,16 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
   }
 
   render() {
-    const { description, time, isLast, direction, timeLineType, mode, _leftMaxWidth } = this.props;
+    const {
+      description,
+      time,
+      isLast,
+      direction,
+      timeLineType,
+      mode,
+      _leftMaxWidth,
+      _parentHasHeight,
+    } = this.props;
 
     const theTime = timeLineType !== 'explain' ? time : '';
     const itemThemeProps = deepMerge(
@@ -325,6 +334,7 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
         props: {
           maxWidth: _leftMaxWidth || 0,
           mode,
+          _parentHasHeight,
         },
       })
     );
