@@ -169,7 +169,7 @@ export function getInputValue(props: CascaderProps, state: CascaderState) {
   }
 
   const isLeaf = isLeafPath(treeData, filterValueData, valueField);
-  return isLeaf ? [getLastLevelValue(displayValueData)] : state.inputValue;
+  return isLeaf ? [getLastLevelValue(displayValueData)] : state ? state.inputValue : '';
 }
 
 export function getFilterValueData(
