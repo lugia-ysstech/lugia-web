@@ -30,6 +30,7 @@ const ItemContainer = StaticComponent({
   css: css`
     display: flex;
     flex-direction: column;
+    height: 100%;
   `,
 });
 
@@ -100,7 +101,7 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
     );
   }
 
-  getChildren() {
+  getChildren(): Array<Object> {
     const { reverse } = this.props;
     if (reverse === true) {
       return this.getMapChildren().reverse();
@@ -108,9 +109,9 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
     return this.getMapChildren();
   }
 
-  getMapChildren() {
+  getMapChildren(): Array<Object> {
     const { data, defaultData, children } = this.props;
-    const finalData = data
+    const finalData: Array<Object> = data
       ? this.data2Item(data)
       : Array.isArray(children) && children.length > 0
       ? React.Children.map(children, (child, i) => {
@@ -131,9 +132,13 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
       children,
       defaultData,
       getPartOfThemeHocProps,
+      getPartOfThemeProps,
     } = this.props;
     const size = data ? data.length : children ? children.length : defaultData.length;
     const getDirection = this.getDirection(mode);
+    const {
+      themeConfig: { normal: { height: theTimeLineContainerHeight } = {} } = {},
+    } = getPartOfThemeProps('Container');
     return {
       ...getPartOfThemeHocProps('TimeLineItem'),
       isLast: this.isLast(i, size, reverse),
@@ -160,6 +165,7 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
       mode,
       getChildDirectionAndWidth: this.getChildDirectionAndWidth,
       _leftMaxWidth: this.leftChildMaxWidth,
+      _parentHasHeight: theTimeLineContainerHeight,
     };
   }
   handleCmpWidth(widthArray) {

@@ -62,6 +62,16 @@ const testItemTheme = {
   },
 };
 
+const heightTheme = {
+  [Widget.TimeLine]: {
+    Container: {
+      normal: {
+        height: 500,
+      },
+    },
+  },
+};
+
 export const SimpleDemo = () => {
   return (
     <div>
@@ -73,13 +83,15 @@ export const SimpleDemo = () => {
       <Wrapper>
         <p> 调节高度的 简洁样式</p>
         <br />
-        <TimeLine>
-          <TimeLineItem time="2018-01-01" />
-          <TimeLineItem time="2018-01-02" />
-          <TimeLineItem time="2018-01-03" />
-          <TimeLineItem time="2018-01-04" />
-          <TimeLineItem time="2018-01-05" />
-        </TimeLine>
+        <Theme config={heightTheme}>
+          <TimeLine>
+            <TimeLineItem time="2018-01-01" />
+            <TimeLineItem time="2018-01-02" />
+            <TimeLineItem time="2018-01-03" />
+            <TimeLineItem time="2018-01-04" />
+            <TimeLineItem time="2018-01-05" />
+          </TimeLine>
+        </Theme>
       </Wrapper>
       <Wrapper>
         <p>有详情描述 简洁样式 </p>
