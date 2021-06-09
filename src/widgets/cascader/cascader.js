@@ -89,7 +89,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
         value: getValue(props, null),
         selectedKeys: getInitExpandedPath(props),
         expandedPath: getInitExpandedPath(props),
-        inputValue: getInputValue(props, state),
+        inputValue: getInputValue(props, null),
       };
     }
 
@@ -173,7 +173,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
       return;
     }
     this.checked = popupVisible;
-    const { value } = this.props;
+    const { value = '' } = this.props;
     const expandedPath = Array.isArray(value) ? value : [value];
 
     this.setState({ popupVisible, expandedPath, ...otherTarget });
