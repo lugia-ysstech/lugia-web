@@ -15,7 +15,7 @@ import Col from './col';
 import { ColWrap } from '../css/col';
 
 let enquire;
-if (typeof window !== undefined) {
+if (typeof window !== 'undefined') {
   const matchMediaPolyfill = (mediaQuery: string) => {
     return {
       media: mediaQuery,
