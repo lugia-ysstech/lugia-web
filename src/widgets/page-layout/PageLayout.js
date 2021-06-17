@@ -258,6 +258,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
       hiddenInfo = {},
       contentInfo = {},
       onChange,
+      canEdit = true,
       __lugiad__header__absolute__ = false,
     } = props;
     let data;
@@ -266,10 +267,11 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     } else {
       data = state.data;
     }
-    const isLimitHiddenInfo = !__lugiad__header__absolute__ && 'hiddenInfo' in props;
+    const isLimitHiddenInfo = (!__lugiad__header__absolute__ || !canEdit) && 'hiddenInfo' in props;
     const activeHiddenInfo = isLimitHiddenInfo ? hiddenInfo : state.hiddenInfo;
 
-    const isLimitContentInfo = !__lugiad__header__absolute__ && 'contentInfo' in props;
+    const isLimitContentInfo =
+      (!__lugiad__header__absolute__ || !canEdit) && 'contentInfo' in props;
     const activeContentInfo = isLimitContentInfo ? contentInfo : state.contentInfo;
 
     const showData = fetchShowData(data, activeHiddenInfo);
@@ -356,9 +358,10 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   gatherChildrenHiddenInfo = (
     __initHiddenInfo__: Object,
     __initHiddenInfoChangeEvents__: Object,
-    __initSetStateHiddenInfo__: Object
+    __initSetStateHiddenInfo__: Object,
+    __initCanEditArr__: boolean[]
   ) => {
-    const { title = '页面布局' } = this.props;
+    const { title = '页面布局', canEdit = true } = this.props;
     const { hiddenInfo = {}, contentInfo = {} } = this.state;
     __initHiddenInfo__[this.wrapId] = {
       hiddenInfo,
@@ -368,6 +371,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     };
     __initHiddenInfoChangeEvents__[this.wrapId] = this.onHiddenInfoChange;
     __initSetStateHiddenInfo__[this.wrapId] = this.setHiddenInfoState;
+    __initCanEditArr__.push(canEdit);
   };
 
   isObjectChange = (preObject: Object, nextObject: Object) =>
@@ -969,7 +973,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
         const { numberWidth = 50, numberHeight = 50 } = item;
         const SpacingBox = type === 'row' ? SpacingRowBox : SpacingColBox;
         return (
-          <React.Fragment>
+          <React.Fragment key={`page_layout_component${id}`}>
             {this.getSpacingTopLine(id, type, index, data)}
             <SpacingBox width={numberWidth} height={numberHeight} />
             {this.getSpacingBottomLine(id, type, index, data)}
@@ -1019,12 +1023,14 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
       __initHiddenInfo__,
       __initHiddenInfoChangeEvents__ = {},
       __initSetStateHiddenInfo__ = {},
+      __initCanEditArr__ = [],
     } = this.context;
     if (__initHiddenInfo__) {
       this.gatherChildrenHiddenInfo(
         __initHiddenInfo__,
         __initHiddenInfoChangeEvents__,
-        __initSetStateHiddenInfo__
+        __initSetStateHiddenInfo__,
+        __initCanEditArr__
       );
     }
     this.updateAllItemInfo(data, showData);

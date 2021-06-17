@@ -229,7 +229,11 @@ class PagesEditPanel extends Component<PagesEditPanelProps, PagesEditPanelState>
 
     return showKeys.map(id => {
       const { title = id } = contentInfo[id];
-      return <ItemTag onClick={this.onClickShowTag(id)}>{title}</ItemTag>;
+      return (
+        <ItemTag key={`item_tag_show_${id}`} onClick={this.onClickShowTag(id)}>
+          {title}
+        </ItemTag>
+      );
     });
   };
 
@@ -255,7 +259,11 @@ class PagesEditPanel extends Component<PagesEditPanelProps, PagesEditPanelState>
 
     return hiddenKeys.map(id => {
       const { title = id } = contentInfo[id];
-      return <ItemTag onClick={this.onClickHiddenTag(id)}>{title}</ItemTag>;
+      return (
+        <ItemTag key={`item_tag_hidden_${id}`} onClick={this.onClickHiddenTag(id)}>
+          {title}
+        </ItemTag>
+      );
     });
   };
 

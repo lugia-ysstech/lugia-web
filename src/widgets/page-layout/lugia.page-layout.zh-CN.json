@@ -27,6 +27,11 @@
     "hiddenInfo": {
       "type": "Object",
       "desc": "被隐藏区域的信息"
+    },
+    "canEdit": {
+      "type": "boolean",
+      "desc": "按F9按钮,是否弹开编辑内容隐藏或显示的编辑",
+      "propsDefaultValue": "true"
     }
   },
   "events": {
