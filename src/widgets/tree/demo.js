@@ -343,6 +343,13 @@ export default class TreeDome extends React.Component {
                       {
                         value: '二级节点1-1',
                         text: '二级节点1-1',
+                        disabled: true,
+                        children: [
+                          {
+                            value: '二级节点1-1-1',
+                            text: '二级节点1-1-1',
+                          },
+                        ],
                       },
                       {
                         value: '二级节点1-2',
@@ -369,7 +376,7 @@ export default class TreeDome extends React.Component {
             },
           }}
         >
-          <Tree viewClass={'HHHHH'} translateTreeData />
+          <Tree viewClass={'HHHHH'} expandAll translateTreeData mutliple />
         </Theme>
       </RowWrap>,
     ];
