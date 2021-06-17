@@ -10,6 +10,7 @@ type PageLayoutWrapState = {
   isShowSelectModel: boolean,
   selectData: Object[],
   selectKey: string,
+  canEdit: boolean,
 };
 
 class PageLayoutWrap extends Component<PageLayoutWrapProps, PageLayoutWrapState> {
@@ -21,10 +22,12 @@ class PageLayoutWrap extends Component<PageLayoutWrapProps, PageLayoutWrapState>
       isShowSelectModel: false,
       selectData: [],
       selectKey: '',
+      canEdit: true,
     };
     this.initHiddenInfo = {};
     this.initHiddenInfoChangeEvents = {};
     this.initSetStateHiddenInfo = {};
+    this.initCanEditArr = [];
   }
 
   componentDidMount() {
@@ -36,11 +39,14 @@ class PageLayoutWrap extends Component<PageLayoutWrapProps, PageLayoutWrapState>
     }
 
     const selectKey = keys[0];
+    const canEdit = this.initCanEditArr.every(value => value === true);
+
     this.setState({
       allHiddenInfo: this.initHiddenInfo,
       isShowSelectModel,
       selectData,
       selectKey,
+      canEdit,
     });
     this.selectKey = selectKey;
     document.body.addEventListener('keydown', this.onKeyPress);
@@ -79,9 +85,9 @@ class PageLayoutWrap extends Component<PageLayoutWrapProps, PageLayoutWrapState>
   };
 
   onKeyPress = (event: Object) => {
-    const { visible = false } = this.state;
+    const { visible = false, canEdit } = this.state;
     const { key, repeat } = event;
-    if (key === 'F9' && !repeat) {
+    if (key === 'F9' && !repeat && canEdit) {
       if (visible) {
         this.onClose();
       } else {
@@ -95,6 +101,7 @@ class PageLayoutWrap extends Component<PageLayoutWrapProps, PageLayoutWrapState>
       __initHiddenInfo__: this.initHiddenInfo,
       __initHiddenInfoChangeEvents__: this.initHiddenInfoChangeEvents,
       __initSetStateHiddenInfo__: this.initSetStateHiddenInfo,
+      __initCanEditArr__: this.initCanEditArr,
     };
   };
 
