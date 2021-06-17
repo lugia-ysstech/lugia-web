@@ -613,9 +613,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   onCheck = (_, event, item) => {
+    const { disabled } = item;
     const { node, checked, shiftKey } = event;
     const { eventKey } = node.props;
-    this.check(eventKey, checked, shiftKey, item);
+    !disabled && this.check(eventKey, checked, shiftKey, item);
   };
 
   check(eventKey: string, checked: boolean, shiftKey: boolean = false, item: Object) {
