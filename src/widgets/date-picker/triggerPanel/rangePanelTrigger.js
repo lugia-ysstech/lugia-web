@@ -309,19 +309,7 @@ class Range extends Component<TypeProps, TypeState> {
     this.targetModeSecond.onChange({ value: panelValue[1], isScroll: false, status });
   };
   rangeHoverChange = (obj: Object) => {
-    const { value, format, rangeValue } = this.state;
-    const { formatIsValids } = this.getIsValid(value);
-    if ((value[0] || value[1]) && !(value[0] !== '' && value[1] !== '')) {
-      value.forEach((item, index) => {
-        if (formatIsValids[index]) {
-          this.validValue = item;
-        }
-        if (item && !formatIsValids[index]) {
-          value[index] = this.validValue;
-          rangeValue[0] = this.validValue;
-        }
-      });
-    }
+    const { format, rangeValue } = this.state;
     const { choseValue } = obj;
     const hoverRangeValue = [rangeValue[0], choseValue];
     this.setState({ rangeValue: hoverRangeValue, isHover: true });
