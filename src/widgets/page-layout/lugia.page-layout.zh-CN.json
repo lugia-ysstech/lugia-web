@@ -19,6 +19,22 @@
       "desc": "区域隐藏后, 组件总高度是否保持不变",
       "propsDefaultValue": true
     },
+    "fixedContent": {
+      "type": "boolean",
+      "desc": "内容固定,不能通过拖拽分割线改变大小",
+      "propsDefaultValue": false
+    },
+    "sizeInfo": {
+      "type": "Object",
+      "desc": "",
+      "meta": [
+        {
+          "key": "value",
+          "title": "区块对应的宽或高百分比数字",
+          "type": "number"
+        }
+      ]
+    },
     "title": {
       "type": "string",
       "desc": "页面布局组件的title",

@@ -22,6 +22,19 @@ const PageLayoutContainer = styled.div`
   background: #000;
 `;
 
+const Button = styled.div`
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  color: #fff;
+  background: #4d63ff;
+  text-align: center;
+  margin: 10px;
+`;
+
 const LineMargin = styled.div`
   width: 100%;
   height: 20px;
@@ -478,6 +491,7 @@ class Demo extends Component {
     super(props);
     this.state = {
       data1,
+      sizeInfo: {},
       data2,
       contentInfo1,
       contentInfo2,
@@ -519,10 +533,25 @@ class Demo extends Component {
     console.log('onHiddenInfoChange 2', target);
   };
 
+  onChangeSizeInfo = () => {
+    this.setState({
+      sizeInfo: {
+        com1C1: 0,
+      },
+    });
+  };
+
+  onInitSizeInfo = () => {
+    this.setState({
+      sizeInfo: {},
+    });
+  };
+
   render() {
     const {
       data1 = [],
       data2 = [],
+      sizeInfo,
       contentInfo1 = {},
       contentInfo2 = {},
       hiddenInfo1 = {},
@@ -531,6 +560,9 @@ class Demo extends Component {
 
     return (
       <Wrap>
+        <Button onClick={this.onChangeSizeInfo}>改变sizeInfo</Button>
+        <Button onClick={this.onInitSizeInfo}>重置sizeInfo</Button>
+
         <PageLayoutWrap>
           <PageLayoutContainer>
             <PageLayoutCom
@@ -538,6 +570,7 @@ class Demo extends Component {
               data={data1}
               drag
               enlarge
+              sizeInfo={sizeInfo}
               fixedHeight={false}
               title={'模块一'}
               hiddenInfo={hiddenInfo1}

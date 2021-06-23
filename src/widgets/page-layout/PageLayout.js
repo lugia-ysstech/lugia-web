@@ -59,6 +59,7 @@ const CommonFlexWrap = styled.div`
   box-sizing: border-box;
   overflow: hidden;
   background: ${props => props.background};
+  transition: all ${props => (props.fixedContent ? '0.3s' : '0s')};
   &:hover > div {
     opacity: 1;
   }
@@ -213,6 +214,7 @@ type PageLayoutProps = {
   enlarge: boolean,
   title: string,
   fixedHeight: boolean,
+  fixedContent: boolean,
   contentInfo: Object,
   hiddenInfo: Object,
   onChange?: Function,
@@ -230,6 +232,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
   static contextType = PageLayoutContext;
   static defaultProps = {
     fixedHeight: true,
+    fixedContent: false,
     enlarge: false,
   };
   constructor(props) {
@@ -948,6 +951,10 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     onContentInfoChange && onContentInfoChange(contentInfo);
   };
 
+  isHasSizeInfo = (sizeInfo: Object | undefined) => {
+    return Object.prototype.toString.call(sizeInfo) === '[object Object]';
+  };
+
   getContainerBackground = () => {
     const { getPartOfThemeConfig, __lugiad__header__absolute__: isIdeOpen = false } = this.props;
     const config = getPartOfThemeConfig('Container');
@@ -961,17 +968,21 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
     if (data.length === 0) {
       return null;
     }
-    const { drag = false } = this.props;
+    const { drag = false, fixedContent, sizeInfo } = this.props;
     const { contentInfo = {} } = this.state;
+    const hasSizeInfo = this.isHasSizeInfo(sizeInfo);
+    const activeFixedContent = fixedContent || hasSizeInfo;
 
     return data.map((item: Object, index: number) => {
-      const { id = '', type = 'row', size = {}, spacing = false, children = [] } = item;
+      const { id = '', type = 'row', spacing = false, children = [] } = item;
+      let { size = {} } = item;
       if (!id) {
         return null;
       }
+      const isRow = type === 'row';
       if (spacing) {
         const { numberWidth = 50, numberHeight = 50 } = item;
-        const SpacingBox = type === 'row' ? SpacingRowBox : SpacingColBox;
+        const SpacingBox = isRow ? SpacingRowBox : SpacingColBox;
         return (
           <React.Fragment key={`page_layout_component${id}`}>
             {this.getSpacingTopLine(id, type, index, data)}
@@ -980,10 +991,19 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
           </React.Fragment>
         );
       }
+      if (hasSizeInfo) {
+        const num = sizeInfo[id];
+        if (num === 0 || (typeof num === 'number' && !isNaN(num) && num >= 0 && num <= 100)) {
+          size = {
+            width: isRow ? '100%' : `${num}%`,
+            height: isRow ? `${num}%` : '100%',
+          };
+        }
+      }
       const { width = '100%', height = '100%' } = size;
       const { widthFlex, heightFlex } = this.fetchPercentToFlexValue(size);
       const FlexWrap = this.getFlexWrap(type);
-      const flexValue = type === 'row' ? heightFlex : widthFlex;
+      const flexValue = isRow ? heightFlex : widthFlex;
       const noChild = children.length === 0;
       const flexboxBackground = !noChild ? 'transparent' : this.getContainerBackground();
       const dragEvent =
@@ -1000,10 +1020,11 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
           : {};
       return (
         <React.Fragment key={`${id}-Fragment-${type}`}>
-          {this.getTopLine(id, type, index, data)}
+          {!activeFixedContent ? this.getTopLine(id, type, index, data) : null}
           <FlexWrap
             key={`${id}-flexWrap`}
             id={id}
+            fixedContent={activeFixedContent}
             width={width}
             height={height}
             flexValue={flexValue}
