@@ -20,9 +20,7 @@ type PropTypes = {
   themeProps: Object,
   webkitdirectory?: boolean,
 };
-type StateTypes = {
-  folders: Array<string>,
-};
+
 const Input = CSSComponent({
   tag: 'input',
   className: 'upload_Input',
@@ -32,7 +30,7 @@ const Input = CSSComponent({
   `,
 });
 
-class FileInput extends React.Component<PropTypes, StateTypes> {
+class FileInput extends React.Component<PropTypes, any> {
   input: any;
   static defaultProps = {
     accept: '*',
@@ -45,32 +43,13 @@ class FileInput extends React.Component<PropTypes, StateTypes> {
   constructor(props: Object) {
     super(props);
     this.input = React.createRef();
-    this.state = {
-      folders: [],
-    };
   }
-  onHandleChange = (e: Object) => {
-    const filesNameArray = [];
-    const files = e.target.files;
-    for (let i = 0; i < files.length; i++) {
-      filesNameArray.push(files[i].webkitRelativePath);
-    }
-    this.setState({
-      folders: filesNameArray,
-    });
-  };
   componentDidMount() {
     const { getRegisterInput, webkitdirectory } = this.props;
     getRegisterInput && getRegisterInput(findDOMNode(this.input));
     const element = this.input;
     if (webkitdirectory && element) {
       element.setAttribute('webkitdirectory', '');
-      element.addEventListener('change', this.onHandleChange);
-    }
-  }
-  componentWillUnmount() {
-    if (this.input) {
-      this.input.removeEventListener('change', this.onHandleChange);
     }
   }
 
@@ -91,9 +70,13 @@ class FileInput extends React.Component<PropTypes, StateTypes> {
   }
 
   handleChange = (e: Object) => {
-    if (e.target.files.length <= 0) return;
+    const files = e.target.files;
+    if (files.length <= 0) return;
     const { getChangeInfo } = this.props;
-    const { folders } = this.state;
+    const folders = [];
+    for (let i = 0; i < files.length; i++) {
+      folders.push(files[i].webkitRelativePath);
+    }
     getChangeInfo && getChangeInfo('choose', e, folders);
   };
 }
