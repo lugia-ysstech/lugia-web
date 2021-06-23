@@ -9,7 +9,6 @@
 import React from 'react';
 import CSSComponent, { css } from '../theme/CSSProvider';
 import { findDOMNode } from 'react-dom';
-import addEventListener from 'rc-util/lib/Dom/addEventListener';
 type PropTypes = {
   accept?: string,
   multiple?: boolean,
@@ -20,9 +19,10 @@ type PropTypes = {
   disabled?: boolean,
   themeProps: Object,
   webkitdirectory?: boolean,
-  multiDirectory?: Array<string>,
 };
-
+type StateTypes = {
+  folders?: Array<string>,
+};
 const Input = CSSComponent({
   tag: 'input',
   className: 'upload_Input',
@@ -32,7 +32,7 @@ const Input = CSSComponent({
   `,
 });
 
-class FileInput extends React.Component<PropTypes, any> {
+class FileInput extends React.Component<PropTypes, StateTypes> {
   input: any;
   static defaultProps = {
     accept: '*',
@@ -45,24 +45,30 @@ class FileInput extends React.Component<PropTypes, any> {
   constructor(props: Object) {
     super(props);
     this.input = React.createRef();
+    this.state = {
+      folders: [],
+    };
   }
-
+  onHandleChange = e => {
+    const filesNameArray = [];
+    const files = e.target.files;
+    for (let i = 0; i < files.length; i++) {
+      filesNameArray.push(files[i].webkitRelativePath);
+    }
+    this.setState({
+      folders: filesNameArray,
+    });
+  };
   componentDidMount() {
     const { getRegisterInput, webkitdirectory } = this.props;
     getRegisterInput && getRegisterInput(findDOMNode(this.input));
     if (webkitdirectory) {
       this.input.setAttribute('webkitdirectory', '');
+      this.input.addEventListener('change', this.onHandleChange);
     }
-    addEventListener(this.input, 'change', e => {
-      const file = [];
-      const files = e.target.files;
-      for (let i = 0; i < files.length; i++) {
-        file.push(files[i].webkitRelativePath);
-      }
-      this.setState({
-        multiDirectory: file,
-      });
-    });
+  }
+  componentWillUnmount() {
+    this.input.removeEventListener('change', this.onHandleChange);
   }
 
   render() {
@@ -84,8 +90,8 @@ class FileInput extends React.Component<PropTypes, any> {
   handleChange = (e: Object) => {
     if (e.target.files.length <= 0) return;
     const { getChangeInfo } = this.props;
-    const { multiDirectory } = this.state;
-    getChangeInfo && getChangeInfo('choose', e, multiDirectory);
+    const { folders = [] } = this.state;
+    getChangeInfo && getChangeInfo('choose', e, folders);
   };
 }
 

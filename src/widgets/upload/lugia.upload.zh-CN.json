@@ -153,6 +153,11 @@
       "type": "ValidateType",
       "desc": "校验信息显示类型",
       "propsDefaultValue": "top"
+    },
+    "webkitdirectory": {
+      "type": "boolean",
+      "desc": "是否允许文件夹上传",
+      "propsDefaultValue": false
     }
   },
   "events": {
@@ -195,7 +200,7 @@
           "type": "Object[]"
         },
         {
-          "name": "nameArray",
+          "name": "folders",
           "desc": "选择文件夹时，所有文件夹的名字",
           "type": "string[]"
         }

@@ -963,7 +963,6 @@ type StateProps = {
   classNameStatus: string,
   defaultText: string,
   dragIn: boolean,
-  multiDirectory?: Array<string>,
 };
 
 class GetElement extends React.Component<DefProps, StateProps> {
@@ -1034,7 +1033,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       });
     }
   };
-  getChangeInfo = (types: string, e: Object, directory?: Array<string>) => {
+  getChangeInfo = (types: string, e: Object, folders?: Array<string>) => {
     const { setChoosedFile } = this.props;
     if (!setChoosedFile) {
       return;
@@ -1042,7 +1041,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (types === 'drag') {
       setChoosedFile(e);
     } else {
-      setChoosedFile(e.target.files, directory);
+      setChoosedFile(e.target.files, folders);
     }
   };
 

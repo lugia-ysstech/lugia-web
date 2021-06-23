@@ -69,6 +69,7 @@ type UploadProps = {
   getInputRef?: Function,
   customUpload?: Function,
   getClearValue?: Function,
+  webkitdirectory?: boolean,
 };
 type StateProps = {
   defaultText?: string,
@@ -77,8 +78,6 @@ type StateProps = {
   isAllowUpload: boolean,
   choosedFile?: Array<Object>,
   previewUrl?: string,
-  webkitdirectory?: Array<string>,
-  multiDirectory?: Array<string>,
 };
 
 export const getIndexInArray = (data: Array<string>, key: string): number => {
