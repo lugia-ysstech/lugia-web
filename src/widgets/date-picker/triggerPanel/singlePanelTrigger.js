@@ -124,6 +124,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       open,
       popupContainerId,
       step,
+      showTime,
     } = this.props;
     const {
       value,
@@ -137,7 +138,6 @@ class DateInput extends Component<TypeProps, TypeState> {
       visible,
     } = this.state;
     const { mode } = this.props;
-    const { isTime } = modeStyle(mode);
     const { themeProps } = getFacePanelContain({ mode, getPartOfThemeProps }, 'FacePanelContain');
     const inputContainProps = getThemeProps({ mode, getPartOfThemeProps }, 'Container');
     const { themeConfig: validateErrorText } = getThemeProps(
@@ -219,7 +219,7 @@ class DateInput extends Component<TypeProps, TypeState> {
                     noBorder
                   />
 
-                  {isTime && (
+                  {showTime && (
                     <PageFooter
                       {...this.props}
                       format={format}
