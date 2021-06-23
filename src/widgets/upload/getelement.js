@@ -1396,7 +1396,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
             </AreaText>
           ) : (
             <AreaText themeProps={textMerge} disabled={disabled}>
-              {uploadTips}
+              {uploadTips},或
               <AreaTextBlue themeProps={areaTextBlue} disabled={disabled}>
                 {uploadText}
               </AreaTextBlue>
