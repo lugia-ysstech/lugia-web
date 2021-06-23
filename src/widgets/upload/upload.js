@@ -191,7 +191,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     this.input.value = '';
   };
 
-  setChoosedFile = (res: Array<Object>, folders: Array<string>): void => {
+  setChoosedFile = (res: Array<Object>, folders?: Array<string>): void => {
     const { multiple } = this.props;
     let choosedFiles = res;
     if (!multiple) {
