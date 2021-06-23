@@ -21,7 +21,7 @@ type PropTypes = {
   webkitdirectory?: boolean,
 };
 type StateTypes = {
-  folders?: Array<string>,
+  folders: Array<string>,
 };
 const Input = CSSComponent({
   tag: 'input',
@@ -49,7 +49,7 @@ class FileInput extends React.Component<PropTypes, StateTypes> {
       folders: [],
     };
   }
-  onHandleChange = e => {
+  onHandleChange = (e: Object) => {
     const filesNameArray = [];
     const files = e.target.files;
     for (let i = 0; i < files.length; i++) {
@@ -62,13 +62,16 @@ class FileInput extends React.Component<PropTypes, StateTypes> {
   componentDidMount() {
     const { getRegisterInput, webkitdirectory } = this.props;
     getRegisterInput && getRegisterInput(findDOMNode(this.input));
-    if (webkitdirectory) {
-      this.input.setAttribute('webkitdirectory', '');
-      this.input.addEventListener('change', this.onHandleChange);
+    const element = this.input;
+    if (webkitdirectory && element) {
+      element.setAttribute('webkitdirectory', '');
+      element.addEventListener('change', this.onHandleChange);
     }
   }
   componentWillUnmount() {
-    this.input.removeEventListener('change', this.onHandleChange);
+    if (this.input) {
+      this.input.removeEventListener('change', this.onHandleChange);
+    }
   }
 
   render() {
