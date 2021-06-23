@@ -232,6 +232,9 @@ class UploadDemo extends React.Component<any, any> {
       inputId: 'upload6',
       showFileList: true,
       url: 'http://localhost:7001/upload',
+      onChange: (file, folders) => {
+        console.log(1234, file, folders);
+      },
     };
     const defaultProps7 = {
       areaType: 'default',
