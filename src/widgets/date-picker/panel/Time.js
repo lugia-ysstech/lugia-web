@@ -169,13 +169,7 @@ class Time extends Component<TypeProps, TypeState> {
         }}
       >
         <TimeWrap themeProps={timePikerSingleWrapTheme} noBorder={noBorder}>
-          {isTime ? (
-            ''
-          ) : (
-            <TimeTitle themeProps={timePanelHeadTheme}>
-              {moment(value).format('YYYY年MM月DD日')}
-            </TimeTitle>
-          )}
+          {isTime ? '' : <TimeTitle themeProps={timePanelHeadTheme}>{value}</TimeTitle>}
           <TimeWrapInner>
             {isTime && !hasHour ? (
               ''
