@@ -191,7 +191,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     this.input.value = '';
   };
 
-  setChoosedFile = (res: Array<Object>, multiDirectory: Array<string>): void => {
+  setChoosedFile = (res: Array<Object>, folders: Array<string>): void => {
     const { multiple } = this.props;
     let choosedFiles = res;
     if (!multiple) {
@@ -206,7 +206,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
       }
     );
     const { onChange } = this.props;
-    onChange && onChange(choosedFiles, multiDirectory);
+    onChange && onChange(choosedFiles, folders);
   };
 
   getChangeUploadState = (typeState: string, name: string, hashMark: string) => {

@@ -90,7 +90,7 @@ class FileInput extends React.Component<PropTypes, StateTypes> {
   handleChange = (e: Object) => {
     if (e.target.files.length <= 0) return;
     const { getChangeInfo } = this.props;
-    const { folders = [] } = this.state;
+    const { folders } = this.state;
     getChangeInfo && getChangeInfo('choose', e, folders);
   };
 }
