@@ -192,7 +192,12 @@
         {
           "name": "result",
           "desc": "选中文件",
-          "type": "Object"
+          "type": "Object[]"
+        },
+        {
+          "name": "nameArray",
+          "desc": "选择文件夹时，所有文件夹的名字",
+          "type": "string[]"
         }
       ]
     },

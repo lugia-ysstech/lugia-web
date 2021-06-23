@@ -955,6 +955,7 @@ type DefProps = {
   validateStatus: ValidateStatus,
   validateType: ValidateType,
   onDelete: Function,
+  webkitdirectory?: boolean,
 };
 type StateProps = {
   status: string,
@@ -962,6 +963,7 @@ type StateProps = {
   classNameStatus: string,
   defaultText: string,
   dragIn: boolean,
+  multiDirectory?: Array<string>,
 };
 
 class GetElement extends React.Component<DefProps, StateProps> {
@@ -1032,7 +1034,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       });
     }
   };
-  getChangeInfo = (types: string, e: Object) => {
+  getChangeInfo = (types: string, e: Object, directory?: Array<string>) => {
     const { setChoosedFile } = this.props;
     if (!setChoosedFile) {
       return;
@@ -1040,7 +1042,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (types === 'drag') {
       setChoosedFile(e);
     } else {
-      setChoosedFile(e.target.files);
+      setChoosedFile(e.target.files, directory);
     }
   };
 
@@ -1064,7 +1066,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const { state } = this;
     const { classNameStatus, dragIn } = state;
     const children = this.getChildren(areaType, props, classNameStatus, dragIn);
-    const { inputId, disabled, accept, multiple } = props;
+    const { inputId, disabled, accept, multiple, webkitdirectory } = props;
     let acceptType = accept;
     if (areaType === 'picture' && !accept) {
       acceptType = 'image/*';
@@ -1081,6 +1083,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           accept={acceptType}
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
+          webkitdirectory={webkitdirectory}
         />
         {children}
       </React.Fragment>
@@ -1138,10 +1141,10 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const containerStyle = this.props.getPartOfThemeProps('Container');
       const uploadInputTheme = this.props.getPartOfThemeProps('UploadInputTheme');
       const uploadAfterTheme = deepMerge(uploadInputTheme, uploadStatusTheme);
-      const { viewClass: buttonViewClass, theme: buttonTheme } = props.getPartOfThemeHocProps(
-        'UploadButtonType',
-        { props: { areaType } }
-      );
+      const {
+        viewClass: buttonViewClass,
+        theme: buttonTheme,
+      } = props.getPartOfThemeHocProps('UploadButtonType', { props: { areaType } });
       const inputContentTheme = deepMerge(
         {
           themeConfig: {
@@ -1393,7 +1396,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
             </AreaText>
           ) : (
             <AreaText themeProps={textMerge} disabled={disabled}>
-              {uploadTips},或
+              {uploadTips}
               <AreaTextBlue themeProps={areaTextBlue} disabled={disabled}>
                 {uploadText}
               </AreaTextBlue>

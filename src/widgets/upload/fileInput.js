@@ -9,6 +9,7 @@
 import React from 'react';
 import CSSComponent, { css } from '../theme/CSSProvider';
 import { findDOMNode } from 'react-dom';
+import addEventListener from 'rc-util/lib/Dom/addEventListener';
 type PropTypes = {
   accept?: string,
   multiple?: boolean,
@@ -18,6 +19,8 @@ type PropTypes = {
   getRegisterInput: Function,
   disabled?: boolean,
   themeProps: Object,
+  webkitdirectory?: boolean,
+  multiDirectory?: Array<string>,
 };
 
 const Input = CSSComponent({
@@ -45,8 +48,21 @@ class FileInput extends React.Component<PropTypes, any> {
   }
 
   componentDidMount() {
-    const { getRegisterInput } = this.props;
+    const { getRegisterInput, webkitdirectory } = this.props;
     getRegisterInput && getRegisterInput(findDOMNode(this.input));
+    if (webkitdirectory) {
+      this.input.setAttribute('webkitdirectory', '');
+    }
+    addEventListener(this.input, 'change', e => {
+      const file = [];
+      const files = e.target.files;
+      for (let i = 0; i < files.length; i++) {
+        file.push(files[i].webkitRelativePath);
+      }
+      this.setState({
+        multiDirectory: file,
+      });
+    });
   }
 
   render() {
@@ -68,7 +84,8 @@ class FileInput extends React.Component<PropTypes, any> {
   handleChange = (e: Object) => {
     if (e.target.files.length <= 0) return;
     const { getChangeInfo } = this.props;
-    getChangeInfo && getChangeInfo('choose', e);
+    const { multiDirectory } = this.state;
+    getChangeInfo && getChangeInfo('choose', e, multiDirectory);
   };
 }
 

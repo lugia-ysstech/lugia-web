@@ -77,6 +77,8 @@ type StateProps = {
   isAllowUpload: boolean,
   choosedFile?: Array<Object>,
   previewUrl?: string,
+  webkitdirectory?: Array<string>,
+  multiDirectory?: Array<string>,
 };
 
 export const getIndexInArray = (data: Array<string>, key: string): number => {
@@ -190,7 +192,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     this.input.value = '';
   };
 
-  setChoosedFile = (res: Array<Object>): void => {
+  setChoosedFile = (res: Array<Object>, multiDirectory: Array<string>): void => {
     const { multiple } = this.props;
     let choosedFiles = res;
     if (!multiple) {
@@ -205,7 +207,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
       }
     );
     const { onChange } = this.props;
-    onChange && onChange(choosedFiles);
+    onChange && onChange(choosedFiles, multiDirectory);
   };
 
   getChangeUploadState = (typeState: string, name: string, hashMark: string) => {
