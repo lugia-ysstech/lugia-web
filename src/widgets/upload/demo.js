@@ -609,6 +609,10 @@ class UploadDemo extends React.Component<any, any> {
 
     return (
       <div>
+        <Title>可以选择文件夹的upload</Title>
+        <Upload {...defaultProps6} webkitdirectory />
+        <Title>-----------------------</Title>
+
         <Title>-------------customUploadProps</Title>
         <Upload {...customUploadProps} />
         <Title>-------------</Title>
