@@ -308,6 +308,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
       data: nextData,
       title: nextTitle,
       fixedHeight: nextFixedHeight,
+      sizeInfo: nextSizeInfo = {},
       hiddenInfo: nextHiddenInfo = {},
       contentInfo: nextContentInfo = {},
       __lugiad__header__absolute__: __next__lugiad__header__absolute__,
@@ -320,6 +321,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
       title,
       fixedHeight,
       hiddenInfo = {},
+      sizeInfo = {},
       contentInfo = {},
       __lugiad__header__absolute__,
     } = this.props;
@@ -341,6 +343,7 @@ class PageLayout extends Component<PageLayoutProps, PageLayoutState> {
       title !== nextTitle ||
       fixedHeight !== nextFixedHeight ||
       __lugiad__header__absolute__ !== __next__lugiad__header__absolute__ ||
+      this.isObjectChange(sizeInfo, nextSizeInfo) ||
       this.isObjectChange(theme, nextTheme) ||
       this.isObjectChange(themeProps, nextThemeProps) ||
       this.isObjectChange(data, nextData) ||
