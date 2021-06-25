@@ -475,7 +475,6 @@ export default ThemeProvider(
 
       if (!propsDataIsChange) {
         this.oldPropsData = [...propsData];
-        this.setState({ data: propsData });
       }
       const containerPartOfThemeProps = getPartOfThemeProps('Container', {
         props: { size },
