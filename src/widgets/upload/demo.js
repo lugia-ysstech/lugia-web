@@ -610,8 +610,42 @@ class UploadDemo extends React.Component<any, any> {
     const typeMap = ['default', 'button', 'both', 'picture', 'area'];
     const validateTypeOption = ['top', 'inner', 'bottom'];
 
+    const onChange = (files, folders) => {
+      console.log('onChange', files);
+
+      this.setState({
+        files,
+      });
+    };
+    const onUpload = () => {
+      const { files } = this.state;
+      console.log('onUpload----', files);
+      for (const file of files) {
+        request({
+          url: 'http://localhost:7001/upload',
+          method: 'post',
+          dataType: 'json',
+          data: { name: file.name },
+          onSuccess: res => {
+            console.log('onUpload----onSuccess', res);
+          },
+          onFail: res => {
+            console.log('onUpload----onFail', res);
+          },
+        });
+      }
+    };
+
     return (
       <div>
+        <Title>测试重复选择相同文件是否触发onChange</Title>
+        <Upload
+          url={'http://localhost:7001/upload'}
+          multiple={true}
+          autoUpload={true}
+          onChange={onChange}
+        />
+        <Title onClick={onUpload}>点击上传</Title>
         <Title>可以选择文件夹的upload</Title>
         <Upload {...defaultProps6} webkitdirectory />
         <Title>-----------------------</Title>

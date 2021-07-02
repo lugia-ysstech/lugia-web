@@ -361,7 +361,6 @@ class Upload extends React.Component<UploadProps, StateProps> {
 
   uploadComplete = (res: Object): void => {
     const { onComplete } = this.props;
-    this.clearInputValue();
     onComplete && onComplete(res.currentTarget.response);
   };
 
@@ -386,7 +385,6 @@ class Upload extends React.Component<UploadProps, StateProps> {
       { target: 'status', value: 'fail' },
     ]);
     this.setStateValue({ classNameStatus: 'fail', fileListDone: list, isAllowUpload: false });
-    this.clearInputValue();
     const { onFail } = this.props;
     onFail && onFail(res);
   };
@@ -445,7 +443,6 @@ class Upload extends React.Component<UploadProps, StateProps> {
     fileListDone.splice(index, 1);
     if (item && this.input.value.indexOf(item.name) !== -1) {
       this.setState({ defaultText: '' });
-      this.clearInputValue();
     }
     this.setStateValue({ fileListDone });
   };
