@@ -78,6 +78,8 @@ class FileInput extends React.Component<PropTypes, any> {
       folders.push(files[i].webkitRelativePath);
     }
     getChangeInfo && getChangeInfo('choose', e, folders);
+    this.input.type = 'text';
+    this.input.type = 'file';
   };
 }
 
