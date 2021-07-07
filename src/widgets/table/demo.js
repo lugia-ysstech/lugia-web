@@ -69,16 +69,17 @@ const fixColumns = [
 ];
 const sortColumns = [
   {
-    title: 'Name',
+    title: <div style={{ textAlign: 'left' }}>name</div>,
     dataIndex: 'name',
     key: 'name',
     // width: 100,
   },
   {
-    title: 'Age',
+    title: <div style={{ textAlign: 'center' }}>age</div>,
     dataIndex: 'age',
     key: 'age',
     sorter: (a, b) => a.age - b.age,
+    align: 'right',
   },
   {
     title: 'Address',
