@@ -233,7 +233,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     this.setState({ popupVisible, ...otherTarget });
   }
 
-  getTabsMenuValueByActivityValue = (activityValue: number) => {
+  getTabsMenuValueByActivityValue = (activityValue: string) => {
     if (!activityValue) {
       return [];
     }
