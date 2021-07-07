@@ -379,12 +379,19 @@ export default ThemeProvider(
         const { sorter } = item;
         if (sorter) {
           const newItem = deepCopy(item);
+          const { title } = newItem;
+          let props = {};
+          if (React.isValidElement(title)) {
+            props = title.props;
+          }
           newItem.title = (
-            <TableTitle
-              title={item.title}
-              positiveSequence={() => this.onSortChange(item, 'ascend')}
-              negativeSequence={() => this.onSortChange(item, 'descend')}
-            />
+            <div {...props}>
+              <TableTitle
+                title={item.title}
+                positiveSequence={() => this.onSortChange(item, 'ascend')}
+                negativeSequence={() => this.onSortChange(item, 'descend')}
+              />
+            </div>
           );
           newColumns.push(newItem);
         } else {
