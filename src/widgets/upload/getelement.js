@@ -968,6 +968,7 @@ type StateProps = {
 class GetElement extends React.Component<DefProps, StateProps> {
   static defaultProps = {};
   dropArea: any;
+  ge;
 
   constructor(props: Object) {
     super(props);
@@ -996,7 +997,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       });
     });
     const { disabled } = this.props;
-    dragDrop.addEventListener('drop', function(e: Object) {
+    addEventListener(dragDrop, 'drop', e => {
       stopPropagation(e);
       if (disabled) {
         return;
