@@ -1289,7 +1289,11 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const { disabled, userDefine } = props;
       const { handleClickToUpload } = this;
       if (userDefine) {
-        children = React.cloneElement(userDefine, { disabled, onClick: handleClickToUpload });
+        children = React.cloneElement(userDefine, {
+          disabled,
+          ref: this.dropArea,
+          onClick: handleClickToUpload,
+        });
       }
     }
 
