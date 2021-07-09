@@ -73,11 +73,7 @@ class FileInput extends React.Component<PropTypes, any> {
     const files = e.target.files;
     if (files.length <= 0) return;
     const { getChangeInfo } = this.props;
-    const folders = [];
-    for (let i = 0; i < files.length; i++) {
-      folders.push(files[i].webkitRelativePath);
-    }
-    getChangeInfo && getChangeInfo('choose', e, folders);
+    getChangeInfo && getChangeInfo('choose', e);
   };
 }
 

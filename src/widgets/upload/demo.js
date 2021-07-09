@@ -273,6 +273,8 @@ class UploadDemo extends React.Component<any, any> {
       areaType: 'custom',
       inputId: 'upload1',
       url: 'http://localhost:7001/upload',
+      webkitdirectory: true,
+      multiple: true,
       userDefine: (
         <div
           style={{ width: '200px', height: '300px', border: '1px solid red', background: 'pink' }}
@@ -281,6 +283,9 @@ class UploadDemo extends React.Component<any, any> {
         </div>
       ),
       showFileList: true,
+      onChange: (file, folders) => {
+        console.log('file', file, folders);
+      },
       customUpload: (file, func) => {
         console.log('file,func', file, func);
         func.start();

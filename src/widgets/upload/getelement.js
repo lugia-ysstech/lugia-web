@@ -23,6 +23,7 @@ import {
   validateBorderDefaultTheme,
   validateValueDefaultTheme,
 } from '../css/validateHoc';
+import { dropFileReader } from './readFilesuUtils';
 
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
@@ -968,7 +969,6 @@ type StateProps = {
 class GetElement extends React.Component<DefProps, StateProps> {
   static defaultProps = {};
   dropArea: any;
-  ge;
 
   constructor(props: Object) {
     super(props);
@@ -997,14 +997,16 @@ class GetElement extends React.Component<DefProps, StateProps> {
       });
     });
     const { disabled } = this.props;
-    addEventListener(dragDrop, 'drop', e => {
-      stopPropagation(e);
-      if (disabled) {
-        return;
-      }
-      const files = e.target.files || e.dataTransfer.files;
-      getChangeInfo('drag', files);
-    });
+    dragDrop &&
+      dragDrop.addEventListener &&
+      dragDrop.addEventListener('drop', async (e: Object) => {
+        stopPropagation(e);
+        if (disabled) {
+          return;
+        }
+        const fileEntryList = await dropFileReader(e);
+        getChangeInfo('drag', fileEntryList);
+      });
   }
 
   static getDerivedStateFromProps(defProps: DefProps, stateProps: StateProps) {
@@ -1034,16 +1036,20 @@ class GetElement extends React.Component<DefProps, StateProps> {
       });
     }
   };
-  getChangeInfo = (types: string, e: Object, folders?: Array<string>) => {
+  getChangeInfo = (types: string, e: Object) => {
     const { setChoosedFile } = this.props;
     if (!setChoosedFile) {
       return;
     }
-    if (types === 'drag') {
-      setChoosedFile(e);
-    } else {
-      setChoosedFile(e.target.files, folders);
+    const fileList = types === 'drag' ? e : e.target.files;
+    const { webkitdirectory } = this.props;
+    let folders = [];
+    if (webkitdirectory) {
+      folders = fileList.map(file => {
+        return file.webkitRelativePath || file.fullPath;
+      });
     }
+    setChoosedFile(fileList, folders);
   };
 
   render() {
