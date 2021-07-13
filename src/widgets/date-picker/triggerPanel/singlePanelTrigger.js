@@ -28,8 +28,6 @@ import getThemeProps, {
 } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import getDateIcon from '../panel/InputIcon';
-import { RangeInputWrap } from '../styled/styledRangeInput';
-import RangeInput from '../panel/RangeInput';
 
 type TypeProps = {
   getPartOfThemeProps: Function,

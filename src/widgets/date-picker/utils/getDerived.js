@@ -23,8 +23,8 @@ export const getNormalFormat = (mode: string): string => {
 export const getDerived = (nextProps: Object, preState: Object) => {
   const { value, format, mode, valueIsValid, hasOldValue, isStartOfWeek } = nextProps;
   const { isWeeks } = modeStyle(mode);
-  const newValue = preState ? preState.value : value;
   const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
+  const newValue = preState ? preState.value : value || moment().format(newFormat);
   const momentsA = moment(newValue, newFormat);
   const momentsB = momentsA.clone();
   const { years, months, date } = momentsB.toObject();
