@@ -704,7 +704,7 @@ const childrenData = [
             key: 33100,
             id: 33100,
             parentId: 33000,
-            hasChildren: false,
+            hasChildren: true,
             children: [
               {
                 key: 33110,
@@ -923,6 +923,180 @@ const columnsDom = [
   },
 ];
 
+const tableColumns = [
+  {
+    title: '序号',
+    dataIndex: 'num',
+    key: 'num',
+    align: 'left',
+    ellipsis: 'true',
+    width: '160',
+  },
+  {
+    title: '日期',
+    dataIndex: 'co',
+    key: 'co',
+    align: 'left',
+    ellipsis: 'true',
+    width: '160',
+  },
+  {
+    title: '总资产净值',
+    dataIndex: 'co1',
+    key: 'co1',
+    align: 'left',
+    ellipsis: 'true',
+    width: '160',
+  },
+  {
+    title: '总资产比例(%)',
+    dataIndex: 'co2',
+    key: 'co2',
+    align: 'left',
+    ellipsis: 'true',
+    width: '160',
+  },
+  {
+    title: '总资产收益额',
+    dataIndex: 'co3',
+    key: 'co3',
+    align: 'left',
+    ellipsis: 'true',
+    width: '160',
+  },
+  {
+    title: '总资产收益率(%)',
+    dataIndex: 'co4',
+    key: 'co4',
+    align: 'left',
+    ellipsis: 'true',
+    width: '160',
+  },
+];
+
+const data2 = [
+  {
+    co1: '2665453256421.11',
+    co3: '33131313135454.45',
+    num: '1',
+    co2: '100.00',
+    co4: '393',
+    co: '20180101',
+  },
+  {
+    co1: '2665453256421.12',
+    co3: '33131313135454.45',
+    num: '2',
+    co2: '100.00',
+    co4: '839',
+    co: '20180102',
+  },
+  {
+    co1: '2665453256421.13',
+    co3: '33131313135454.35',
+    num: '3',
+    co2: '100.00',
+    co4: '482',
+    co: '20180103',
+  },
+  {
+    co1: '2665453256421.14',
+    co3: '33131313135454.35',
+    num: '4',
+    co2: '100.00',
+    co4: '493',
+    co: '20180104',
+  },
+  {
+    co1: '100266521.21',
+    co3: '33131313135454.34',
+    num: '5',
+    co2: '20.00',
+    co4: '282',
+    co: '20180105',
+  },
+  {
+    co1: '2002421.21',
+    co3: '4231313135454.34',
+    num: '6',
+    co2: '14.21',
+    co4: '493',
+    co: '20180106',
+  },
+  {
+    co1: '2665453256421.21',
+    co3: '331315454.34',
+    num: '7',
+    co2: '45.01',
+    co4: '282',
+    co: '20180107',
+  },
+  {
+    co1: '1003256421.21',
+    co3: '1013135454.34',
+    num: '8',
+    co2: '45.02',
+    co4: '933',
+    co: '20180108',
+  },
+  {
+    co1: '2665450421.21',
+    co3: '135454.34',
+    num: '9',
+    co2: '100.00',
+    co4: '383',
+    co: '20180109',
+  },
+  {
+    co1: '2665453256421.22',
+    co3: '33131313135454.34',
+    num: '10',
+    co2: '100.00',
+    co4: '282',
+    co: '20180110',
+  },
+  {
+    co1: '2665453256421.22',
+    co3: '33131313135454.34',
+    num: '11',
+    co2: '100.00',
+    co4: '483',
+    co: '20180111',
+  },
+  {
+    co1: '2665453256421.22',
+    co3: '33131313135454.34',
+    num: '12',
+    co2: '100.00',
+    co4: '484',
+    co: '20180112',
+  },
+  {
+    co1: '2665453256421.22',
+    co3: '33131313135454.34',
+    num: '13',
+    co2: '100.00',
+    co4: '238',
+    co: '20180113',
+  },
+  {
+    co1: '2665453256421.14',
+    co3: '33131313135454.35',
+    num: '4',
+    co2: '100.00',
+    co4: '493',
+    co: '20180104',
+  },
+  {
+    co1: '2665453256421.14',
+    co3: '33131313135454.35',
+    num: '15',
+    co2: '100.00',
+    co4: '273',
+    co: '20180104',
+  },
+];
+
 export default class ModalDemo extends React.Component<any, any> {
   constructor() {
     super();
@@ -930,6 +1104,7 @@ export default class ModalDemo extends React.Component<any, any> {
       selectRowKeys: ['1'],
       updateData: data,
       treeTable: undefined,
+      testData: [],
     };
   }
   update = () => {
@@ -964,6 +1139,10 @@ export default class ModalDemo extends React.Component<any, any> {
   onHandleChange(sorter) {
     console.log('param', sorter);
   }
+
+  onClick = () => {
+    this.setState({ testData: data });
+  };
   render() {
     console.log('this.state', this.state.selectRowKeys);
     const dataDom = [
@@ -1026,7 +1205,7 @@ export default class ModalDemo extends React.Component<any, any> {
         },
       },
     };
-    const { updateData, treeTable, isTable } = this.state;
+    const { updateData, treeTable, isTable, testData } = this.state;
 
     return (
       <div style={{ padding: '20px' }}>
@@ -1197,6 +1376,20 @@ export default class ModalDemo extends React.Component<any, any> {
               return 'row-class-name';
             }
           }}
+        />
+        <h1>bug</h1>
+        <Table
+          columns={sortColumns}
+          data={testData}
+          onChange={this.onHandleChange}
+          tableStyle="linear"
+        />
+        <button onClick={this.onClick}>设置值</button>
+        <Table
+          columns={tableColumns}
+          data={data2}
+          onChange={this.onHandleChange}
+          tableStyle="linear"
         />
       </div>
     );

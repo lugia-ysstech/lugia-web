@@ -143,6 +143,7 @@ export default ThemeProvider(
       const { data = [], selectOptions = {}, rowKey = 'key' } = props;
       const { data: stateData = [], sortOrder } = nextState;
       const dataIsSame = isEqualArray(stateData, data, { isStrengthen: false });
+      const tableData = dataIsSame ? stateData : data;
       if ('selectRowKeys' in selectOptions) {
         const {
           selectRowKeys = [],
@@ -164,9 +165,10 @@ export default ThemeProvider(
           headIndeterminate: !!validSelectRowKeys.length,
           selectRowKeys,
           sortOrder: dataIsSame ? sortOrder : true,
+          data: tableData,
         };
       }
-      return { sortOrder: dataIsSame ? sortOrder : true };
+      return { sortOrder: dataIsSame ? sortOrder : true, data: tableData };
     }
 
     handleParentData = (data: Object, selectRowKeys, selectRecords, rowKey, setCheckboxProps) => {
