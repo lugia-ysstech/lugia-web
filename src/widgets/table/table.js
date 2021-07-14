@@ -159,7 +159,8 @@ export default ThemeProvider(
           setCheckboxProps
         );
         const allValidSelected =
-          getValidNotCheckedKeys(data, selectRowKeys, rowKey, setCheckboxProps).length <= 0;
+          getValidNotCheckedKeys(data, selectRowKeys, rowKey, setCheckboxProps).length <= 0 &&
+          data.length > 0;
         return {
           headChecked: allValidSelected,
           headIndeterminate: !!validSelectRowKeys.length,
