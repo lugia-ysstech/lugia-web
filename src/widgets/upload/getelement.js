@@ -1043,11 +1043,12 @@ class GetElement extends React.Component<DefProps, StateProps> {
     }
     const fileList = types === 'drag' ? e : e.target.files;
     const { webkitdirectory } = this.props;
-    let folders = [];
+    const folders = [];
     if (webkitdirectory) {
-      folders = fileList.map(file => {
-        return file.webkitRelativePath || file.fullPath;
-      });
+      for (let i = 0; i < fileList.length; i++) {
+        const file = fileList[i];
+        folders.push(file.webkitRelativePath || file.fullPath);
+      }
     }
     setChoosedFile(fileList, folders);
   };
