@@ -10,7 +10,11 @@ export async function dropFileReader(event) {
   let selectFileList = [];
 
   for (const item of fileItems) {
-    selectFileList.push(item.webkitGetAsEntry());
+    const itemFile = item.webkitGetAsEntry();
+    const { isFile } = itemFile;
+    if (!isFile) {
+      selectFileList.push(itemFile);
+    }
   }
 
   const allFileList = await getDirectoryFiles(selectFileList);
