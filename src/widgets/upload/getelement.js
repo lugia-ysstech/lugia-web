@@ -1004,8 +1004,14 @@ class GetElement extends React.Component<DefProps, StateProps> {
         if (disabled) {
           return;
         }
-        const fileEntryList = await dropFileReader(e);
-        getChangeInfo('drag', fileEntryList);
+        const { webkitdirectory } = this.props;
+        if (webkitdirectory) {
+          const fileEntryList = await dropFileReader(e);
+          getChangeInfo('drag', fileEntryList);
+        } else {
+          const files = e.target.files || e.dataTransfer.files;
+          getChangeInfo('drag', files);
+        }
       });
   }
 
