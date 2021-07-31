@@ -124,6 +124,7 @@ export const LoadingFatherBox = styled.div`
 `;
 export const LodingBox = styled.div`
   display: inline-block;
+  pointer-events: none;
   ${props => getChildrenStyled(props).childMaskStyle}
 `;
 export const LodingWrapper = styled.div`
