@@ -119,12 +119,12 @@ const getPositionWhenTip = (props: Object) => {
 };
 export const LoadingFatherBox = styled.div`
   display: inline-block;
+  ${props => (props.isShowLoading ? 'pointer-events: none;' : '')}
   ${props => (props.isInherit ? 'width: 100%; height: 100%;' : '')}
   ${props => getChildrenStyled(props).fatherMaskStyle}
 `;
 export const LodingBox = styled.div`
   display: inline-block;
-  pointer-events: none;
   ${props => getChildrenStyled(props).childMaskStyle}
 `;
 export const LodingWrapper = styled.div`
