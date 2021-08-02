@@ -23,15 +23,15 @@ export const WrapperKeyframes = keyframes`
 `;
 export const circleKeyframes = keyframes`
   0% {
-    transform: scale (1, 1);
+    transform: scale (1);
     opacity: 0.5;
   }
   40% {
-    transform: scale (1, 1);
+    transform: scale (1);
     opacity: 1;
   }
   60% {
-    transform: scale (1, 1);
+    transform: scale (1);
     opacity: 1;
   }
   100% {
@@ -102,7 +102,7 @@ const getChildrenStyled = (props: Object) => {
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
-    z-index:2;
+    z-index:200000;
   `;
   return {
     fatherMaskStyle: hasChildren ? fatherMaskStyle : null,
