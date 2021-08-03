@@ -320,6 +320,8 @@ const getAnimation = (
   const { nowTrans, toTrans } = getWidthIsPercentOrNumAnimation(unit, preStart, nextStart);
   let animation;
   if (switchType === 'vertical') {
+    console.log('vertical', nowTrans, toTrans);
+
     animation = keyframes`
       0% {
         top: ${nowTrans};
@@ -368,10 +370,11 @@ export const AllItemsContainer = CSSComponent({
       const isVertical = switchType === 'vertical';
       const activeWidth = isVertical || isFade ? width : width * (len + 1);
       const activeHeight = isVertical ? height * (len + 1) : height;
+      const isWhiteSpace = isVertical ? { whiteSpace: '' } : { whiteSpace: 'nowrap' };
       return {
         width: activeWidth || width,
         height: activeHeight,
-        whiteSpace: 'nowrap',
+        ...isWhiteSpace,
         background: '#ccc',
       };
     },
