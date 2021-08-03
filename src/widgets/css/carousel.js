@@ -5,6 +5,7 @@
  */
 import { px2remcss } from '../css/units';
 import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
+import { toNumber, isPercent } from '../common/NumberUtils';
 
 export const defaultWidth = 400;
 export const defaultHeight = 200;
@@ -295,6 +296,15 @@ export const Indicator = CSSComponent({
 
 Indicator.displayName = 'indicator';
 
+const getWidthIsPercentOrNumAnimation = (unit, preStart, nextStart) => {
+  const unitNum = toNumber(unit);
+  const nowTrans = -preStart * unitNum;
+  const toTrans = nowTrans - unitNum;
+  if (isPercent(unit)) {
+    return { nowTrans: `${nowTrans}%`, toTrans: `${toTrans}%` };
+  }
+  return { nowTrans: px2remcss(nowTrans), toTrans: px2remcss(toTrans) };
+};
 const getAnimation = (
   switchType: string,
   preStart: number,
@@ -307,30 +317,24 @@ const getAnimation = (
   }
 
   const unit = switchType === 'vertical' ? height : width;
-
-  const nowTrans = -(preStart * unit);
-
-  const addTrans = (nextStart - preStart) * unit;
-
-  const toTrans = nowTrans - addTrans;
-
+  const { nowTrans, toTrans } = getWidthIsPercentOrNumAnimation(unit, preStart, nextStart);
   let animation;
   if (switchType === 'vertical') {
     animation = keyframes`
       0% {
-        top: ${px2remcss(nowTrans)};
+        top: ${nowTrans};
       }
       100% {
-        top: ${px2remcss(toTrans)};
+        top: ${toTrans};
       }
     `;
   } else {
     animation = keyframes`
       0% {
-        left: ${px2remcss(nowTrans)};
+        left: ${nowTrans};
       }
       100% {
-        left: ${px2remcss(toTrans)};
+        left: ${toTrans};
       }
     `;
   }
@@ -365,8 +369,9 @@ export const AllItemsContainer = CSSComponent({
       const activeWidth = isVertical || isFade ? width : width * (len + 1);
       const activeHeight = isVertical ? height * (len + 1) : height;
       return {
-        width: activeWidth,
+        width: activeWidth || width,
         height: activeHeight,
+        whiteSpace: 'nowrap',
         background: '#ccc',
       };
     },

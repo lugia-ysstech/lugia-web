@@ -15,3 +15,6 @@ export function toNumber(value: any, defaultValue?: number = 0): number {
 export function isNumber(value: any): boolean {
   return typeof value === 'number';
 }
+export function isPercent(value: string | number): boolean {
+  return !isNumber(value) && typeof value === 'string' && value.lastIndexOf('%') !== -1;
+}

@@ -4,7 +4,7 @@
  * @flow
  */
 import * as React from 'react';
-import { toNumber } from '../common/NumberUtils';
+import { toNumber, isPercent } from '../common/NumberUtils';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import {
@@ -112,7 +112,11 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   initWidthAndHeight() {
     const { normal = {} } = this.props.getPartOfThemeConfig('CarouselWrap');
     const { width = defaultWidth, height = defaultHeight } = normal;
-    this.width = toNumber(width, defaultWidth);
+    if (isPercent(width)) {
+      this.width = normal.width;
+    } else {
+      this.width = toNumber(width, defaultWidth);
+    }
     this.height = toNumber(height, defaultHeight);
   }
 
