@@ -321,8 +321,6 @@ const getAnimation = (
   const { nowTrans, toTrans } = getWidthIsPercentOrNumAnimation(unit, preStart, nextStart);
   let animation;
   if (switchType === 'vertical') {
-    console.log('vertical', nowTrans, toTrans);
-
     animation = keyframes`
       0% {
         top: ${nowTrans};
