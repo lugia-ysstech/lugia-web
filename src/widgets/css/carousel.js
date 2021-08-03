@@ -299,7 +299,8 @@ Indicator.displayName = 'indicator';
 const getWidthIsPercentOrNumAnimation = (unit, preStart, nextStart) => {
   const unitNum = toNumber(unit);
   const nowTrans = -preStart * unitNum;
-  const toTrans = nowTrans - unitNum;
+  const addTrans = (nextStart - preStart) * unitNum;
+  const toTrans = nowTrans - addTrans;
   if (isPercent(unit)) {
     return { nowTrans: `${nowTrans}%`, toTrans: `${toTrans}%` };
   }
