@@ -339,8 +339,14 @@ const getAnimation = (
   return animation;
 };
 
-const getActualWidthAndHeight = (value: number, len: number) => {
-  return isPercent(value) ? value : value * (len + 1);
+const getActualWidthAndHeight = (value: number | string, len: number) => {
+  if (isPercent(value)) {
+    return value;
+  }
+  if (typeof value === 'number') {
+    return value * (len + 1);
+  }
+  return defaultWidth;
 };
 export const AllItemsContainer = CSSComponent({
   tag: 'div',
