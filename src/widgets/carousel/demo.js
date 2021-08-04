@@ -195,6 +195,16 @@ export default class SkeletonDemo extends React.Component<any, any> {
         },
       },
     };
+    const configWidHi80 = {
+      [Widget.Carousel]: {
+        CarouselWrap: {
+          normal: {
+            width: '80%',
+            height: '80%',
+          },
+        },
+      },
+    };
     return (
       <div>
         <H2>宽度100%</H2>
@@ -225,6 +235,26 @@ export default class SkeletonDemo extends React.Component<any, any> {
             switchType={'vertical'}
             indicatorType={'vertical'}
           >
+            {this.getItemWrap()}
+          </Carousel>
+        </div>
+
+        <H2>竖向滚动 宽 、高度80%</H2>
+        <div style={{ height: 500 }}>
+          <Carousel
+            theme={configWidHi80}
+            defaultStart={0}
+            autoPlay={true}
+            delay={3000}
+            switchType={'vertical'}
+            indicatorType={'vertical'}
+          >
+            {this.getItemWrap()}
+          </Carousel>
+        </div>
+        <H2>横向滚动 宽 、高度80%</H2>
+        <div style={{ width: 800, height: 500 }}>
+          <Carousel theme={configWidHi80} defaultStart={0} autoPlay={true} delay={3000}>
             {this.getItemWrap()}
           </Carousel>
         </div>

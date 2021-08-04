@@ -156,7 +156,22 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   addPropsConfig(name: string, params: Object) {
     return this.props.getPartOfThemeProps(name, { props: params });
   }
-
+  addThemeConfig(name: string, params: Object) {
+    const containerTheme = this.props.getPartOfThemeProps(name, { props: params });
+    const {
+      themeConfig: { normal: { width: itemWidth, height: itemHeight } = {} } = {},
+    } = containerTheme;
+    const width = this.getPercentScale(itemWidth);
+    const height = this.getPercentScale(itemHeight);
+    return deepMerge(containerTheme, {
+      themeConfig: {
+        normal: {
+          width,
+          height,
+        },
+      },
+    });
+  }
   render() {
     this.initPropsConfig();
     const channel = this.props.createEventChannel(['hover']);
@@ -168,10 +183,10 @@ export default class Carousel extends React.Component<any, CarouselProps> {
       nextButtonFontSize: this.nextButtonFontSize,
     };
     const WrapThemeProps = getPartOfThemeProps('CarouselWrap', { props: params });
-
+    const CarouselContainerTheme = this.addThemeConfig('CarouselWrap', params);
     return (
       <Wrap themeProps={WrapThemeProps} {...addMouseEvent(this)}>
-        <CarouselContainer themeProps={WrapThemeProps} lugiaConsumers={channel.consumer}>
+        <CarouselContainer themeProps={CarouselContainerTheme} lugiaConsumers={channel.consumer}>
           {switchButton ? this.getSwitchButton() : null}
           {this.getItems(channel)}
         </CarouselContainer>
@@ -369,6 +384,10 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     }
   }
 
+  getPercentScale = (value: number | string) => {
+    return isPercent(value) ? '100%' : value;
+  };
+
   getItems = (channel: Object) => {
     const { children, getPartOfThemeProps } = this.props;
 
@@ -380,13 +399,15 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     const { start: nextStart } = this.state;
     const { start: initStart, switchType } = this.props;
     const len = children.length;
+    const width = this.getPercentScale(this.width);
+    const height = this.getPercentScale(this.height);
     const WrapThemeProps = this.addPropsConfig('CarouselWrap', {
       len,
       switchType,
       initStart,
       nextStart,
-      width: this.width,
-      height: this.height,
+      width,
+      height,
       preStart: this.preStart,
       animationTime: this.animationTime,
     });
@@ -428,7 +449,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   getItemWrap(param: { switchType: SwitchType, start: number, index: number, item: any }) {
     const { switchType, start, index, item } = param;
     const checked = start === index;
-    const ItemWrapThemeProps = this.addPropsConfig('CarouselWrap', {
+    const ItemWrapThemeProps = this.addThemeConfig('CarouselWrap', {
       checked,
       switchType,
       width: this.width,
