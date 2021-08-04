@@ -112,12 +112,13 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   initWidthAndHeight() {
     const { normal = {} } = this.props.getPartOfThemeConfig('CarouselWrap');
     const { width = defaultWidth, height = defaultHeight } = normal;
-    if (isPercent(width)) {
+    if (isPercent(width) || isPercent(height)) {
       this.width = width;
+      this.height = height;
     } else {
       this.width = toNumber(width, defaultWidth);
+      this.height = toNumber(height, defaultHeight);
     }
-    this.height = toNumber(height, defaultHeight);
   }
 
   initSwitchButtonFontSize() {
@@ -379,6 +380,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     const { start: nextStart } = this.state;
     const { start: initStart, switchType } = this.props;
     const len = children.length;
+    console.log('this.height', this.height);
     const WrapThemeProps = this.addPropsConfig('CarouselWrap', {
       len,
       switchType,

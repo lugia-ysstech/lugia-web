@@ -343,6 +343,10 @@ const getAnimation = (
   return animation;
 };
 
+const getActualWidthAndHeight = (value: number, len: number) => {
+  const totalValue = value * (len + 1);
+  return totalValue && typeof totalValue === 'number' ? totalValue : value;
+};
 export const AllItemsContainer = CSSComponent({
   tag: 'div',
   className: 'AllItemsContainer',
@@ -367,12 +371,11 @@ export const AllItemsContainer = CSSComponent({
       const { switchType, len, width, height } = themeProps.propsConfig;
       const isFade = switchType === 'fade';
       const isVertical = switchType === 'vertical';
+      const calcTotalWidth = getActualWidthAndHeight(width, len);
+      const activeWidth = isVertical || isFade ? width : calcTotalWidth;
+      const calcTotalHeight = getActualWidthAndHeight(height, len);
+      const activeHeight = isVertical ? calcTotalHeight : height;
 
-      const addTotalWidth = width * (len + 1);
-      const calcWidth = addTotalWidth && typeof addTotalWidth === 'number' ? addTotalWidth : width;
-      const activeWidth = isVertical || isFade ? width : calcWidth;
-
-      const activeHeight = isVertical ? height * (len + 1) : height;
       const isWhiteSpace = isVertical ? {} : { whiteSpace: 'nowrap' };
       return {
         width: activeWidth,

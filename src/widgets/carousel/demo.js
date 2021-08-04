@@ -175,12 +175,49 @@ export default class SkeletonDemo extends React.Component<any, any> {
       },
     };
 
+    const configHeight100 = {
+      [Widget.Carousel]: {
+        CarouselWrap: {
+          normal: {
+            width: '100%',
+            height: '100%',
+          },
+        },
+      },
+    };
     return (
       <div>
         <H2>宽度100%</H2>
         <Carousel theme={config100} defaultStart={0} autoPlay={true} delay={3000}>
           {this.getItemWrap()}
         </Carousel>
+
+        <H2>高度100%</H2>
+        <div style={{ width: 800, height: 300 }}>
+          <Carousel
+            theme={configHeight100}
+            defaultStart={0}
+            autoPlay={true}
+            delay={3000}
+            switchType={'vertical'}
+            indicatorType={'vertical'}
+          >
+            {this.getItemWrap()}
+          </Carousel>
+        </div>
+        <H2>宽 、高度100%</H2>
+        <div style={{ height: 500 }}>
+          <Carousel
+            theme={configHeight100}
+            defaultStart={0}
+            autoPlay={true}
+            delay={3000}
+            switchType={'vertical'}
+            indicatorType={'vertical'}
+          >
+            {this.getItemWrap()}
+          </Carousel>
+        </div>
 
         <H2>3s自动切换</H2>
         <DemoWrap>
