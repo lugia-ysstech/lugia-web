@@ -345,7 +345,7 @@ const getAnimation = (
 
 const getActualWidthAndHeight = (value: number, len: number) => {
   const totalValue = value * (len + 1);
-  return totalValue && typeof totalValue === 'number' ? totalValue : value;
+  return isPercent(value) ? value : totalValue;
 };
 export const AllItemsContainer = CSSComponent({
   tag: 'div',
