@@ -113,7 +113,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     const { normal = {} } = this.props.getPartOfThemeConfig('CarouselWrap');
     const { width = defaultWidth, height = defaultHeight } = normal;
     if (isPercent(width)) {
-      this.width = normal.width;
+      this.width = width;
     } else {
       this.width = toNumber(width, defaultWidth);
     }

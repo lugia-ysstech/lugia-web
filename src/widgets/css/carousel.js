@@ -367,11 +367,15 @@ export const AllItemsContainer = CSSComponent({
       const { switchType, len, width, height } = themeProps.propsConfig;
       const isFade = switchType === 'fade';
       const isVertical = switchType === 'vertical';
-      const activeWidth = isVertical || isFade ? width : width * (len + 1);
+
+      const addTotalWidth = width * (len + 1);
+      const calcWidth = addTotalWidth && typeof addTotalWidth === 'number' ? addTotalWidth : width;
+      const activeWidth = isVertical || isFade ? width : calcWidth;
+
       const activeHeight = isVertical ? height * (len + 1) : height;
-      const isWhiteSpace = isVertical ? { whiteSpace: '' } : { whiteSpace: 'nowrap' };
+      const isWhiteSpace = isVertical ? {} : { whiteSpace: 'nowrap' };
       return {
-        width: activeWidth || width,
+        width: activeWidth,
         height: activeHeight,
         ...isWhiteSpace,
         background: '#ccc',
