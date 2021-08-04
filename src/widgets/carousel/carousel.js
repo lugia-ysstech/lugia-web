@@ -112,13 +112,8 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   initWidthAndHeight() {
     const { normal = {} } = this.props.getPartOfThemeConfig('CarouselWrap');
     const { width = defaultWidth, height = defaultHeight } = normal;
-    if (isPercent(width) || isPercent(height)) {
-      this.width = width;
-      this.height = height;
-    } else {
-      this.width = toNumber(width, defaultWidth);
-      this.height = toNumber(height, defaultHeight);
-    }
+    this.width = isPercent(width) ? width : toNumber(width, defaultWidth);
+    this.height = isPercent(height) ? height : toNumber(height, defaultHeight);
   }
 
   initSwitchButtonFontSize() {
@@ -183,10 +178,9 @@ export default class Carousel extends React.Component<any, CarouselProps> {
       nextButtonFontSize: this.nextButtonFontSize,
     };
     const WrapThemeProps = getPartOfThemeProps('CarouselWrap', { props: params });
-    const CarouselContainerTheme = this.addThemeConfig('CarouselWrap', params);
     return (
       <Wrap themeProps={WrapThemeProps} {...addMouseEvent(this)}>
-        <CarouselContainer themeProps={CarouselContainerTheme} lugiaConsumers={channel.consumer}>
+        <CarouselContainer themeProps={WrapThemeProps} lugiaConsumers={channel.consumer}>
           {switchButton ? this.getSwitchButton() : null}
           {this.getItems(channel)}
         </CarouselContainer>

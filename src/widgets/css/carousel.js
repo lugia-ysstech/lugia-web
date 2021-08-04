@@ -109,11 +109,7 @@ export const CarouselContainer = CSSComponent({
   tag: 'div',
   className: 'carouselContainer',
   normal: {
-    selectNames: [['width'], ['height']],
-    defaultTheme: {
-      width: defaultWidth,
-      height: defaultHeight,
-    },
+    selectNames: [],
   },
   hover: {
     selectNames: [],
@@ -138,8 +134,8 @@ export const CarouselContainer = CSSComponent({
   css: css`
     overflow: hidden;
     position: relative;
-    width: ${px2remcss(defaultWidth)};
-    height: ${px2remcss(defaultHeight)};
+    width: 100%;
+    height: 100%;
   `,
 });
 
@@ -344,8 +340,7 @@ const getAnimation = (
 };
 
 const getActualWidthAndHeight = (value: number, len: number) => {
-  const totalValue = value * (len + 1);
-  return isPercent(value) ? value : totalValue;
+  return isPercent(value) ? value : value * (len + 1);
 };
 export const AllItemsContainer = CSSComponent({
   tag: 'div',
