@@ -179,6 +179,16 @@ export default class SkeletonDemo extends React.Component<any, any> {
       [Widget.Carousel]: {
         CarouselWrap: {
           normal: {
+            width: 700,
+            height: '100%',
+          },
+        },
+      },
+    };
+    const configWidHi100 = {
+      [Widget.Carousel]: {
+        CarouselWrap: {
+          normal: {
             width: '100%',
             height: '100%',
           },
@@ -208,7 +218,7 @@ export default class SkeletonDemo extends React.Component<any, any> {
         <H2>宽 、高度100%</H2>
         <div style={{ height: 500 }}>
           <Carousel
-            theme={configHeight100}
+            theme={configWidHi100}
             defaultStart={0}
             autoPlay={true}
             delay={3000}

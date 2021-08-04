@@ -380,7 +380,6 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     const { start: nextStart } = this.state;
     const { start: initStart, switchType } = this.props;
     const len = children.length;
-    console.log('this.height', this.height);
     const WrapThemeProps = this.addPropsConfig('CarouselWrap', {
       len,
       switchType,
