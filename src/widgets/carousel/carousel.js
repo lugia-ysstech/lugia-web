@@ -94,7 +94,6 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     this.clickDisabled = false;
     this.preStart = toNumber(props.start, 0);
     this.animationTime = this.getAnimationTime(props) / 1000;
-    this.initWidthAndHeight();
     this.initSwitchButtonFontSize();
   }
 
@@ -104,16 +103,10 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     if (isHasStart(props)) {
       return { start: getInitStart(props, start) };
     }
-    if (!state) {
-      return { start: defaultStart };
-    }
-  }
 
-  initWidthAndHeight() {
-    const { normal = {} } = this.props.getPartOfThemeConfig('CarouselWrap');
-    const { width = defaultWidth, height = defaultHeight } = normal;
-    this.width = toNumber(width, defaultWidth);
-    this.height = toNumber(height, defaultHeight);
+    if (!state) {
+      return { start: getInitStart(props, defaultStart) };
+    }
   }
 
   initSwitchButtonFontSize() {
@@ -170,14 +163,13 @@ export default class Carousel extends React.Component<any, CarouselProps> {
           {switchButton ? this.getSwitchButton() : null}
           {this.getItems(channel)}
         </CarouselContainer>
-        {this.getIndicatros(indicatorType, indicator)}
+        {this.getIndicators(indicatorType, indicator)}
       </Wrap>
     );
   }
 
-  getIndicatros(indicatorType: IndicatorType, isRenderIndicator: boolean) {
-    const indicators = this.createIndicators();
-    return isRenderIndicator ? indicators : null;
+  getIndicators(indicatorType: IndicatorType, isRenderIndicator: boolean) {
+    return isRenderIndicator ? this.createIndicators() : null;
   }
 
   getSwitchTheme = (target: string) => {
@@ -207,7 +199,12 @@ export default class Carousel extends React.Component<any, CarouselProps> {
 
   getSwitchButton = () => {
     const { indicatorType, children, getPartOfThemeProps } = this.props;
-    if (!children || children.length === 0 || indicatorType === 'vertical') {
+    if (
+      !children ||
+      children.length === 0 ||
+      children.length === 1 ||
+      indicatorType === 'vertical'
+    ) {
       return null;
     }
     const PreButtonThemeProps = getPartOfThemeProps('PreButton');
@@ -265,6 +262,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
 
         return (
           <IndicatorContainer
+            key={`_indicator_container_${index}_`}
             themeProps={IndicatorThemeProps}
             onMouseEnter={this.handleMouseEnterIndicator.bind(this, index)}
             onClick={this.handleClickIndicator.bind(this, index)}
@@ -276,8 +274,6 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     }
     const IndicatorContainerThemeProps = this.addPropsConfig('Indicator', {
       indicatorType,
-      width: this.width,
-      height: this.height,
     });
     return <IndicatorWrap themeProps={IndicatorContainerThemeProps}>{items}</IndicatorWrap>;
   };
@@ -380,8 +376,6 @@ export default class Carousel extends React.Component<any, CarouselProps> {
       switchType,
       initStart,
       nextStart,
-      width: this.width,
-      height: this.height,
       preStart: this.preStart,
       animationTime: this.animationTime,
     });
@@ -401,37 +395,49 @@ export default class Carousel extends React.Component<any, CarouselProps> {
       return [];
     }
 
+    const len = children.length;
     const items = children.map((item, index) => {
       return this.getItemWrap({
         switchType,
         start,
         index,
         item,
+        len,
       });
     });
     items.push(
       this.getItemWrap({
         switchType,
         start,
-        index: children.length,
+        index: len,
         item: children[0],
+        len,
       })
     );
     return items;
   };
 
-  getItemWrap(param: { switchType: SwitchType, start: number, index: number, item: any }) {
-    const { switchType, start, index, item } = param;
+  getItemWrap(param: {
+    switchType: SwitchType,
+    start: number,
+    index: number,
+    item: any,
+    len: number,
+  }) {
+    const { switchType, start, index, item, len } = param;
     const checked = start === index;
     const ItemWrapThemeProps = this.addPropsConfig('CarouselWrap', {
       checked,
       switchType,
-      width: this.width,
-      height: this.height,
+      len,
       animationTime: this.animationTime,
     });
 
-    return <ItemWrap themeProps={ItemWrapThemeProps}>{item}</ItemWrap>;
+    return (
+      <ItemWrap key={index} themeProps={ItemWrapThemeProps}>
+        {item}
+      </ItemWrap>
+    );
   }
 
   componentDidMount() {

@@ -28,10 +28,20 @@
       "desc": "自动切换的时间间隔，单位为毫秒",
       "propsDefaultValue": 3000
     },
+    "indicator": {
+      "type": "boolean",
+      "desc": "是否显示指示器",
+      "propsDefaultValue": true
+    },
     "indicatorType": {
       "type": "IndicatorType",
       "desc": "指示器的显示方式",
       "propsDefaultValue": "horizontal"
+    },
+    "switchButton": {
+      "type": "boolean",
+      "desc": "是否显示切换按钮",
+      "propsDefaultValue": true
     },
     "switchType": {
       "type": "SwitchType",
@@ -79,7 +89,8 @@
     ],
     "ActionType": [
       { "value": "hover", "text": "hover触发切换" },
-      { "value": "click", "text": "click触发切换" }]
+      { "value": "click", "text": "click触发切换" }
+    ]
   },
   "category": ["数据展示"],
   "theme": {
@@ -94,8 +105,7 @@
         ["border"],
         ["opacity"],
         ["margin"],
-        ["border"],
-        ["padding"]
+        ["border"]
       ],
       "hover": [["opacity"], ["boxShadow"], ["boxShadow"], ["borderRadius"], ["border"]],
       "clicked": [],
