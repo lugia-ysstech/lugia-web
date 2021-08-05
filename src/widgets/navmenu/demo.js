@@ -370,7 +370,12 @@ export default class LimitDemo extends React.Component<Object, Object> {
 
   constructor(props) {
     super(props);
-    this.state = { value: ['Affix 固钉'], activityValue: '项目实战', height: 500 };
+    this.state = {
+      value: ['Affix 固钉'],
+      activityValue: '项目实战',
+      tabsMenuValueActivityValue: '/analyse/test',
+      height: 500,
+    };
   }
 
   tabsOnChange = (target: Object) => {
@@ -385,6 +390,21 @@ export default class LimitDemo extends React.Component<Object, Object> {
   render() {
     return (
       <div>
+        <H2>activityValue和 tabsMenuValue 不一致的水平导航菜单</H2>
+
+        <HoriBox>
+          <H3>数据不一致的水平导航菜单</H3>
+          <Navmenu
+            theme={tabsHoverTheme}
+            data={hoverTabsData}
+            pathSeparator={'@'}
+            themeStyle={'dark'}
+            activityValue={this.state.tabsMenuValueActivityValue}
+            mode={'horizontal'}
+            action={'hover'}
+          />
+        </HoriBox>
+
         <H2>无数据的水平导航菜单</H2>
 
         <HoriBox>

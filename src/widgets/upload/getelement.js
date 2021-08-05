@@ -23,6 +23,7 @@ import {
   validateBorderDefaultTheme,
   validateValueDefaultTheme,
 } from '../css/validateHoc';
+import { dropFileReader } from './readFilesuUtils';
 
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
@@ -996,14 +997,22 @@ class GetElement extends React.Component<DefProps, StateProps> {
       });
     });
     const { disabled } = this.props;
-    dragDrop.addEventListener('drop', function(e: Object) {
-      stopPropagation(e);
-      if (disabled) {
-        return;
-      }
-      const files = e.target.files || e.dataTransfer.files;
-      getChangeInfo('drag', files);
-    });
+    dragDrop &&
+      dragDrop.addEventListener &&
+      dragDrop.addEventListener('drop', async (e: Object) => {
+        stopPropagation(e);
+        if (disabled) {
+          return;
+        }
+        const { webkitdirectory } = this.props;
+        if (webkitdirectory) {
+          const fileEntryList = await dropFileReader(e);
+          getChangeInfo('drag', fileEntryList);
+        } else {
+          const files = e.target.files || e.dataTransfer.files;
+          getChangeInfo('drag', files);
+        }
+      });
   }
 
   static getDerivedStateFromProps(defProps: DefProps, stateProps: StateProps) {
@@ -1033,16 +1042,21 @@ class GetElement extends React.Component<DefProps, StateProps> {
       });
     }
   };
-  getChangeInfo = (types: string, e: Object, folders?: Array<string>) => {
+  getChangeInfo = (types: string, e: Object) => {
     const { setChoosedFile } = this.props;
     if (!setChoosedFile) {
       return;
     }
-    if (types === 'drag') {
-      setChoosedFile(e);
-    } else {
-      setChoosedFile(e.target.files, folders);
+    const fileList = types === 'drag' ? e : e.target.files;
+    const { webkitdirectory } = this.props;
+    const folders = [];
+    if (webkitdirectory) {
+      for (let i = 0; i < fileList.length; i++) {
+        const file = fileList[i];
+        folders.push(file.webkitRelativePath || file.fullPath);
+      }
     }
+    setChoosedFile(fileList, folders);
   };
 
   render() {
@@ -1289,7 +1303,11 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const { disabled, userDefine } = props;
       const { handleClickToUpload } = this;
       if (userDefine) {
-        children = React.cloneElement(userDefine, { disabled, onClick: handleClickToUpload });
+        children = React.cloneElement(userDefine, {
+          disabled,
+          ref: this.dropArea,
+          onClick: handleClickToUpload,
+        });
       }
     }
 

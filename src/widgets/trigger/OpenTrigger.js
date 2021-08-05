@@ -18,7 +18,7 @@ export default class OpenTrigger extends React.Component<TypeProps, null> {
   };
   render() {
     const { alwaysOpen, liquidLayout } = this.props;
-    const newPopupVisible = alwaysOpen ? { popupVisible: true } : {};
+    const newPopupVisible = alwaysOpen ? { popupVisible: true, lazy: false } : {};
     const newCreatePortal = liquidLayout ? { createPortal: false } : {};
     return (
       <Trigger ref={this.triggerRef} {...this.props} {...newPopupVisible} {...newCreatePortal} />

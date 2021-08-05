@@ -462,6 +462,7 @@ class Range extends Component<TypeProps, TypeState> {
       visible,
       isClear,
       placeholder,
+      panelValue,
     } = this.state;
     const {
       disabled,
@@ -480,7 +481,8 @@ class Range extends Component<TypeProps, TypeState> {
       disabledStartTime,
     } = this.props;
     const { monthAndYear } = this;
-    const { differAmonth, differAyear } = differMonthAndYear(monthAndYear, format);
+    const newMonthAndYear = monthAndYear.length > 0 ? monthAndYear : panelValue;
+    const { differAmonth, differAyear } = differMonthAndYear(newMonthAndYear, format);
     const config = {
       panelChoseDate: rangeValue && rangeValue[0],
       timeValue,
@@ -521,7 +523,7 @@ class Range extends Component<TypeProps, TypeState> {
               <RangeWrapInner>
                 <SwitchPanel
                   {...this.props}
-                  value={monthAndYear[0]}
+                  value={newMonthAndYear[0]}
                   onChange={this.onChangeFirst}
                   index={0}
                   timeIndex={0}
@@ -539,7 +541,7 @@ class Range extends Component<TypeProps, TypeState> {
                 />
                 <SwitchPanel
                   {...this.props}
-                  value={monthAndYear[1]}
+                  value={newMonthAndYear[1]}
                   onChange={this.onChangeSecond}
                   index={1}
                   timeIndex={1}

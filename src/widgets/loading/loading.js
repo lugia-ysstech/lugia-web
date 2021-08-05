@@ -118,7 +118,11 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
     const showTips = delay ? isLoading && tip : tip;
     const isShowLoading = delay ? loading && isLoading : loading;
     return (
-      <LoadingFatherBox hasChildren={hasChildren} isInherit={isInherit}>
+      <LoadingFatherBox
+        hasChildren={hasChildren}
+        isInherit={isInherit}
+        isShowLoading={isShowLoading}
+      >
         {Children}
         {!isShowLoading ? (
           ''

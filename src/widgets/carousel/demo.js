@@ -8,16 +8,21 @@ import Carousel from './index';
 import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import styled from 'styled-components';
 import Widget from '../consts/index';
+import Image from './carousel.png';
 
 const data = [
-  'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543751358232&di=f7fd14870cb6028086f7bb55d479df53&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F4%2F586b090b7f42b.jpg',
-  'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543751053813&di=7374346483180a4f42ea53227f866fcb&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e8072871e49.jpg',
-  'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543751112606&di=d22242ff68a6a20996cc4ac375d04776&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-07-20%2F5b517965781e5.jpg',
-  'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543751600594&di=be6d42fffdc5d235f4d2c83455885936&imgtype=0&src=http%3A%2F%2Fbbsfiles.vivo.com.cn%2Fvivobbs%2Fattachment%2Fforum%2F201601%2F24%2F175433rossj7cn74vksn4p.jpg',
+  'https://wallpaperm.cmcm.com/live/preview_img_raw/a03f8b79f5b344c92855592f5b016cb0_preview_raw.jpg',
+  'https://img-baofun.zhhainiao.com/pcwallpaper_ugc/live/dd59b2e2ab68b1c003ba0dafab20eca0.mp4.jpg',
+  'https://img-baofun.zhhainiao.com/pcwallpaper_ugc/preview_jpg/19367cbcf3b03cc253455b4208074d76.jpg',
+  'https://wallpaperm.cmcm.com/scene/preview_img_raw/97ba6b60662ab4f31ef06cdf5a5f8e94_preview_raw.jpg',
 ];
 
 const DemoWrap = styled.div`
   margin: 20px;
+  width: 500px;
+  height: 300px;
+  background: #666;
+  padding: 20px;
 `;
 
 const Img = styled.img`
@@ -34,11 +39,11 @@ const getBackground = (props: Object) => {
 };
 
 const ItemWrap = styled.a`
-  display: block;
   width: 100%;
   height: 100%;
-  line-height: 350px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   ${getBackground};
   color: #ccc;
   font-size: 14px;
@@ -53,7 +58,13 @@ const getImgWrap = () => {
   const items = [];
   for (let i = 0; i < len; i++) {
     items.push(
-      <ItemWrap i={i}>
+      <ItemWrap
+        key={i}
+        i={i}
+        onClick={() => {
+          console.log('click', i);
+        }}
+      >
         <Img src={data[i]} />
       </ItemWrap>
     );
@@ -101,9 +112,8 @@ export default class SkeletonDemo extends React.Component<any, any> {
       [Widget.Carousel]: {
         CarouselWrap: {
           normal: {
-            width: 700,
-            height: 350,
-            padding: { left: 10 },
+            width: '100%',
+            height: '100%',
             border: getBorder({ color: '#9482ff', width: 1, style: 'solid' }),
             boxShadow: getBoxShadow('0px 0px 5px 5px yellow'),
             borderRadius: getBorderRadius(20),
@@ -169,14 +179,14 @@ export default class SkeletonDemo extends React.Component<any, any> {
       <div>
         <H2>3s自动切换</H2>
         <DemoWrap>
-          <Carousel theme={config} defaultStart={2} autoPlay={false} delay={3000}>
+          <Carousel theme={{}} defaultStart={4} delay={3000}>
             {this.getItemWrap()}
           </Carousel>
         </DemoWrap>
 
         <H2>水平切换 指示器在外部 indicatorType=outside</H2>
         <DemoWrap>
-          <Carousel theme={config} autoPlay={true} delay={3000} indicatorType={'outside'}>
+          <Carousel autoPlay={true} delay={3000} indicatorType={'outside'}>
             {this.getItemWrap()}
           </Carousel>
         </DemoWrap>
@@ -194,13 +204,13 @@ export default class SkeletonDemo extends React.Component<any, any> {
           </Carousel>
         </DemoWrap>
 
-        <H2>透明度切换 switchType === fade indicatorType=vertical</H2>
+        <H2>透明度切换 switchType === fade</H2>
         <DemoWrap>
           <Carousel
             theme={config}
             animationTime={1000}
             autoPlay={false}
-            deafultStart={3}
+            defaultStart={2}
             delay={3000}
             switchType={'fade'}
           >
@@ -208,7 +218,7 @@ export default class SkeletonDemo extends React.Component<any, any> {
           </Carousel>
         </DemoWrap>
 
-        <h2>图片轮播图 deafultStart=2 从索引值为2的图开始</h2>
+        <h2>图片轮播图 defaultStart=2 从索引值为2的图开始</h2>
         <DemoWrap>
           <Carousel theme={config} autoPlay={true} delay={3000} defaultStart={2}>
             {getImgWrap()}
@@ -225,7 +235,7 @@ export default class SkeletonDemo extends React.Component<any, any> {
             autoPlay={true}
             switchType={'fade'}
             delay={3000}
-            deafultStart={2}
+            defaultStart={2}
           >
             {getImgWrap()}
           </Carousel>
@@ -244,7 +254,11 @@ export default class SkeletonDemo extends React.Component<any, any> {
     const items = [];
     for (let i = 0; i < len; i++) {
       const index = i + 1;
-      items.push(<ItemWrap i={i}>{'Banner0' + index}</ItemWrap>);
+      items.push(
+        <ItemWrap key={i} i={i}>
+          {'Banner0' + index}
+        </ItemWrap>
+      );
     }
     return items;
   };

@@ -67,7 +67,6 @@ type NavMenuState = {
   expandedPath: string[],
   activityValue: number,
   tabsMenuExpandedPath: string[],
-  tabsMenuValue: string[],
 };
 
 export default class MenuTree extends React.Component<NavMenuProps, NavMenuState> {
@@ -100,7 +99,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       activityValue: props.activityValue ? props.activityValue : '',
       tabsPopupVisible: false,
       tabsMenuExpandedPath: [],
-      tabsMenuValue: [],
     };
     this.activityIndex = -1;
     const { pathSeparator } = props;
@@ -129,7 +127,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       state.activityValue !== nextState.activityValue ||
       state.tabsPopupVisible !== nextState.tabsPopupVisible ||
       state.tabsMenuExpandedPath !== nextState.tabsMenuExpandedPath ||
-      state.tabsMenuValue !== nextState.tabsMenuValue ||
       props.value !== nextProps.value ||
       props.inlineExpandAll !== nextProps.inlineExpandAll ||
       props.data !== nextProps.data ||
@@ -236,9 +233,37 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     this.setState({ popupVisible, ...otherTarget });
   }
 
+  getTabsMenuValueByActivityValue = (activityValue: string) => {
+    if (!activityValue) {
+      return [];
+    }
+    const { valueField } = this.props;
+    const filterResult = this.treeData.filter(item => {
+      const { [valueField]: value } = item;
+      return value === activityValue;
+    });
+    const [activeItem] = filterResult;
+
+    const { path, value } = activeItem || {};
+    if (!activeItem || !path || !value) {
+      return [];
+    }
+    const { separator, pathSeparator } = this.props;
+    const regExp = new RegExp(`^[A-Za-z0-9]*\\${pathSeparator}`, 'gim');
+    const matchResult = path.match(regExp);
+
+    if (matchResult) {
+      const tabsMenuValue = `${path.replace(regExp, '')}${separator}${value}`;
+      return [tabsMenuValue];
+    }
+    return [value];
+  };
+
   getHorizontalNavMenu = () => {
     const tabsData = this.getTabsData();
     const { activityValue } = this.state;
+    const tabsMenuValue = this.getTabsMenuValueByActivityValue(activityValue);
+
     return (
       <Tabs
         tabType={'line'}
@@ -247,7 +272,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
         hideContent={true}
         onTabClick={this.onTabClick}
         activityValue={this.getActivityValue(activityValue)}
-        getTabpane={this.getTabpane}
+        getTabpane={this.getTabpane(tabsMenuValue)}
         isShowArrowIcon={false}
       >
         {this.getTabpanes(tabsData)}
@@ -313,17 +338,17 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     return path.split(pathSeparator)[0];
   };
 
-  getTabpane = (target: Object, i: number) => {
+  getTabpane = (tabsMenuValue: Array<string>) => (target: Object, i: number) => {
     const { tabsPopupVisible } = this.state;
     if (!this.isHasChildren(i)) {
       return target;
     }
-    const popup = this.getHorizontaMenu(i);
+    const popup = this.getHorizontaMenu(i, tabsMenuValue);
     const { action } = this.props;
-    const poupVisible = tabsPopupVisible && this.activityIndex === i;
+    const popupVisible = tabsPopupVisible && this.activityIndex === i;
     return (
       <DropMenu
-        popupVisible={poupVisible}
+        popupVisible={popupVisible}
         onPopupVisibleChange={this.onTabsPopupVisibleChange}
         offsetY={4}
         align={'bottomLeft'}
@@ -347,10 +372,10 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     }
   };
 
-  getHorizontaMenu = (i: number) => {
+  getHorizontaMenu = (i: number, tabsMenuValue: Array<string>) => {
     const { data = [], autoHeight = true, themeStyle, switchIconClass } = this.props;
     const { children } = data[i];
-    const { tabsMenuExpandedPath, tabsMenuValue } = this.state;
+    const { tabsMenuExpandedPath } = this.state;
     return (
       <Menu
         action={'hover'}
@@ -391,8 +416,8 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     const { selectedKeys = [] } = keys;
     const { children } = item;
     if (!children || children.length === 0) {
-      const activityValue = this.getParentTarget(item[valueField])[valueField];
-      this.setState({ activityValue, tabsMenuValue: selectedKeys });
+      const activityValue = item[valueField];
+      this.setState({ activityValue });
       this.exposeOnChange(this.getMenuValue(selectedKeys[0]));
     }
   };

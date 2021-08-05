@@ -273,8 +273,19 @@ class UploadDemo extends React.Component<any, any> {
       areaType: 'custom',
       inputId: 'upload1',
       url: 'http://localhost:7001/upload',
-      userDefine: <div>点这里进行上传</div>,
+      webkitdirectory: true,
+      multiple: true,
+      userDefine: (
+        <div
+          style={{ width: '200px', height: '300px', border: '1px solid red', background: 'pink' }}
+        >
+          点这里进行自定义的上传
+        </div>
+      ),
       showFileList: true,
+      onChange: (file, folders) => {
+        console.log('file', file, folders);
+      },
       customUpload: (file, func) => {
         console.log('file,func', file, func);
         func.start();

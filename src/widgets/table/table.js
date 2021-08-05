@@ -143,6 +143,7 @@ export default ThemeProvider(
       const { data = [], selectOptions = {}, rowKey = 'key' } = props;
       const { data: stateData = [], sortOrder } = nextState;
       const dataIsSame = isEqualArray(stateData, data, { isStrengthen: false });
+      const tableData = dataIsSame ? stateData : data;
       if ('selectRowKeys' in selectOptions) {
         const {
           selectRowKeys = [],
@@ -158,15 +159,17 @@ export default ThemeProvider(
           setCheckboxProps
         );
         const allValidSelected =
+          data.length > 0 &&
           getValidNotCheckedKeys(data, selectRowKeys, rowKey, setCheckboxProps).length <= 0;
         return {
           headChecked: allValidSelected,
           headIndeterminate: !!validSelectRowKeys.length,
           selectRowKeys,
           sortOrder: dataIsSame ? sortOrder : true,
+          data: tableData,
         };
       }
-      return { sortOrder: dataIsSame ? sortOrder : true };
+      return { sortOrder: dataIsSame ? sortOrder : true, data: tableData };
     }
 
     handleParentData = (data: Object, selectRowKeys, selectRecords, rowKey, setCheckboxProps) => {
@@ -379,12 +382,19 @@ export default ThemeProvider(
         const { sorter } = item;
         if (sorter) {
           const newItem = deepCopy(item);
+          const { title } = newItem;
+          let props = {};
+          if (React.isValidElement(title)) {
+            props = title.props;
+          }
           newItem.title = (
-            <TableTitle
-              title={item.title}
-              positiveSequence={() => this.onSortChange(item, 'ascend')}
-              negativeSequence={() => this.onSortChange(item, 'descend')}
-            />
+            <div {...props}>
+              <TableTitle
+                title={item.title}
+                positiveSequence={() => this.onSortChange(item, 'ascend')}
+                negativeSequence={() => this.onSortChange(item, 'descend')}
+              />
+            </div>
           );
           newColumns.push(newItem);
         } else {
