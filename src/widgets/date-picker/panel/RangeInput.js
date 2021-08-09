@@ -169,7 +169,6 @@ class RangeInput extends Component<TypeProps, TypeState> {
             Container: {
               normal: {
                 width: '100%',
-                height: height - (borderWidthT * 1 + borderWidthB * 1),
                 border: getBorder({ style: '', width: 0, color: '' }),
               },
             },
