@@ -265,6 +265,7 @@ export type InputProps = {
   onMouseEnter?: Function,
   onMouseLeave?: Function,
   getFocus?: Function,
+  name?: string,
 } & InsideProps;
 
 class TextBox extends Component<InputProps, InputState> {
@@ -368,7 +369,7 @@ class TextBox extends Component<InputProps, InputState> {
     this.setValue('', e);
   };
 
-  getInputContainer() {
+  render() {
     const mouseConfig = {
       enter: this.onMouseEnter,
       leave: this.onMouseLeave,
@@ -385,9 +386,7 @@ class TextBox extends Component<InputProps, InputState> {
       </InputContainer>
     );
   }
-  render() {
-    return this.getInputContainer();
-  }
+
   focus = () => {
     this.getRef().current.focus();
   };
@@ -517,6 +516,7 @@ class TextBox extends Component<InputProps, InputState> {
       type,
       disabled,
       _maxLength,
+      name,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
@@ -525,6 +525,7 @@ class TextBox extends Component<InputProps, InputState> {
 
     return (
       <CommonInputStyle
+        name={name}
         maxLength={_maxLength}
         themeProps={this.getFinalThemeProps()}
         autoFocus={autoFocus}

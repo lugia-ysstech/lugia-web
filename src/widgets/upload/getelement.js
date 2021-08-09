@@ -1004,8 +1004,14 @@ class GetElement extends React.Component<DefProps, StateProps> {
         if (disabled) {
           return;
         }
-        const fileEntryList = await dropFileReader(e);
-        getChangeInfo('drag', fileEntryList);
+        const { webkitdirectory } = this.props;
+        if (webkitdirectory) {
+          const fileEntryList = await dropFileReader(e);
+          getChangeInfo('drag', fileEntryList);
+        } else {
+          const files = e.target.files || e.dataTransfer.files;
+          getChangeInfo('drag', files);
+        }
       });
   }
 
@@ -1043,11 +1049,12 @@ class GetElement extends React.Component<DefProps, StateProps> {
     }
     const fileList = types === 'drag' ? e : e.target.files;
     const { webkitdirectory } = this.props;
-    let folders = [];
+    const folders = [];
     if (webkitdirectory) {
-      folders = fileList.map(file => {
-        return file.webkitRelativePath || file.fullPath;
-      });
+      for (let i = 0; i < fileList.length; i++) {
+        const file = fileList[i];
+        folders.push(file.webkitRelativePath || file.fullPath);
+      }
     }
     setChoosedFile(fileList, folders);
   };

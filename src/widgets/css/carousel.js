@@ -29,7 +29,7 @@ export const PreButton = CSSComponent({
       const { font = {} } = themeMeta;
       const { size = defaultButtonFontSize } = font;
       return `
-        left: -${px2remcss(size)};
+        left: -${px2remcss(size * 1.1)};
         width: ${px2remcss(size)};
         height: ${px2remcss(size)}
         `;
@@ -37,7 +37,9 @@ export const PreButton = CSSComponent({
   },
   hover: {
     selectNames: [['boxShadow'], ['border'], ['opacity']],
-    defaultTheme: {},
+    defaultTheme: {
+      opacity: 1,
+    },
   },
   css: css`
     ${buttonCSS};
@@ -57,7 +59,7 @@ export const NextButton = CSSComponent({
       const { font = {} } = themeMeta;
       const { size = defaultButtonFontSize } = font;
       return `
-        right: -${px2remcss(size)};
+        right: -${px2remcss(size * 1.1)};
         width: ${px2remcss(size)};
         height: ${px2remcss(size)}
         `;
@@ -65,6 +67,9 @@ export const NextButton = CSSComponent({
   },
   hover: {
     selectNames: [['boxShadow'], ['border'], ['opacity']],
+    defaultTheme: {
+      opacity: 1,
+    },
   },
   css: css`
     ${buttonCSS};
@@ -88,7 +93,6 @@ export const Wrap = CSSComponent({
       ['opacity'],
       ['margin'],
       ['border'],
-      ['padding'],
     ],
     defaultTheme: {
       width: defaultWidth,
@@ -100,7 +104,7 @@ export const Wrap = CSSComponent({
   },
   css: css`
     position: relative;
-    box-sizing: content-box;
+    box-sizing: border-box;
   `,
 });
 
@@ -108,11 +112,7 @@ export const CarouselContainer = CSSComponent({
   tag: 'div',
   className: 'carouselContainer',
   normal: {
-    selectNames: [['width'], ['height']],
-    defaultTheme: {
-      width: defaultWidth,
-      height: defaultHeight,
-    },
+    selectNames: [['borderRadius']],
   },
   hover: {
     selectNames: [],
@@ -126,7 +126,7 @@ export const CarouselContainer = CSSComponent({
         transform: translate(${px2remcss(leftTrans)}, -50%);
         opacity: 0.6;
       }
-    
+
       &:hover > span:nth-child(2) {
         transform: translate(-${px2remcss(rightTrans)}, -50%);
         opacity: 0.6;
@@ -137,12 +137,12 @@ export const CarouselContainer = CSSComponent({
   css: css`
     overflow: hidden;
     position: relative;
-    width: ${px2remcss(defaultWidth)};
-    height: ${px2remcss(defaultHeight)};
+    width: 100%;
+    height: 100%;
   `,
 });
 
-const getIndicatorWrapCSS = (indicatorType: string, width: number, height: number) => {
+const getIndicatorWrapCSS = (indicatorType: string) => {
   return indicatorType === 'vertical'
     ? `
   right: ${px2remcss(0)};
@@ -151,9 +151,9 @@ const getIndicatorWrapCSS = (indicatorType: string, width: number, height: numbe
   `
     : indicatorType === 'outside'
     ? `
-    top: ${px2remcss(height)};
+    bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 100%);
     `
     : `
   bottom: ${px2remcss(0)};
@@ -169,9 +169,8 @@ export const IndicatorWrap = CSSComponent({
     selectNames: [],
     getCSS: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
-      const { indicatorType, width, height } = propsConfig;
-      const indicatorContainerCSS = getIndicatorWrapCSS(indicatorType, width, height);
-      return indicatorContainerCSS;
+      const { indicatorType } = propsConfig;
+      return getIndicatorWrapCSS(indicatorType);
     },
   },
   hover: {
@@ -211,8 +210,7 @@ export const IndicatorContainer = CSSComponent({
     getCSS: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
       const { indicatorType } = propsConfig;
-      const indicatorWrapCSS = getIndicatorContainerCSS(indicatorType);
-      return indicatorWrapCSS;
+      return getIndicatorContainerCSS(indicatorType);
     },
   },
   hover: {
@@ -295,18 +293,12 @@ export const Indicator = CSSComponent({
 
 Indicator.displayName = 'indicator';
 
-const getAnimation = (
-  switchType: string,
-  preStart: number,
-  nextStart: number,
-  width: number,
-  height: number
-) => {
-  if (nextStart === preStart || switchType === 'fade') {
+const getAnimation = (switchType: string, preStart: number, nextStart: number, len: number) => {
+  if (nextStart === preStart || switchType === 'fade' || len === 0 || len === 1) {
     return null;
   }
 
-  const unit = switchType === 'vertical' ? height : width;
+  const unit = 100;
 
   const nowTrans = -(preStart * unit);
 
@@ -318,24 +310,32 @@ const getAnimation = (
   if (switchType === 'vertical') {
     animation = keyframes`
       0% {
-        top: ${px2remcss(nowTrans)};
+        top: ${nowTrans}%;
       }
       100% {
-        top: ${px2remcss(toTrans)};
+        top: ${toTrans}%;
       }
     `;
   } else {
     animation = keyframes`
       0% {
-        left: ${px2remcss(nowTrans)};
+        left: ${nowTrans}%;
       }
       100% {
-        left: ${px2remcss(toTrans)};
+        left: ${toTrans}%;
       }
     `;
   }
 
   return animation;
+};
+
+const getItemWidthAndHeight = (switchType: string, activeSize: string) => {
+  const isFade = switchType === 'fade';
+  const isVertical = switchType === 'vertical';
+  const activeWidth = isVertical || isFade ? '100%' : activeSize;
+  const activeHeight = isVertical ? activeSize : '100%';
+  return { width: activeWidth, height: activeHeight };
 };
 
 export const AllItemsContainer = CSSComponent({
@@ -344,29 +344,22 @@ export const AllItemsContainer = CSSComponent({
   normal: {
     selectNames: [],
     getCSS: (themeMeta, themeProps) => {
-      const {
-        width,
-        height,
-        switchType,
-        preStart,
-        nextStart,
-        animationTime,
-      } = themeProps.propsConfig;
-      const animation = getAnimation(switchType, preStart, nextStart, width, height);
+      const { len, switchType, preStart, nextStart, animationTime } = themeProps.propsConfig;
+      const animation = getAnimation(switchType, preStart, nextStart, len);
+
       return css`
         animation: ${animation} ${animationTime}s linear;
         animation-fill-mode: forwards;
       `;
     },
     getStyle: (themeMeta, themeProps) => {
-      const { switchType, len, width, height } = themeProps.propsConfig;
-      const isFade = switchType === 'fade';
-      const isVertical = switchType === 'vertical';
-      const activeWidth = isVertical || isFade ? width : width * (len + 1);
-      const activeHeight = isVertical ? height * (len + 1) : height;
+      const { switchType, len } = themeProps.propsConfig;
+      const activeLength = len + 1;
+      const activeSize = `${100 * activeLength}%`;
+      const { width, height } = getItemWidthAndHeight(switchType, activeSize);
       return {
-        width: activeWidth,
-        height: activeHeight,
+        width,
+        height,
         background: '#ccc',
       };
     },
@@ -384,18 +377,36 @@ export const ItemWrap = CSSComponent({
   tag: 'div',
   className: 'itemWrap',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [],
     getCSS: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
+
       const { switchType, checked, animationTime } = propsConfig;
       const isFade = switchType === 'fade';
+
       const positionType = isFade ? 'absolute' : 'relative';
       const opacity = isFade && !checked ? 0 : 1;
+      const zIndex = isFade && !checked ? -10 : 10;
+
       return `
         position: ${positionType};
-        opacity: ${opacity}
-        transition: opacity ${animationTime}s
+        z-index: ${zIndex};
+        opacity: ${opacity};
+        transition: all ${animationTime}s
       `;
+    },
+
+    getStyle: (themeMeta, themeProps) => {
+      const { switchType, len } = themeProps.propsConfig;
+
+      const activeLength = len + 1;
+      const activeSize = `${100 / activeLength}%`;
+      const { width, height } = getItemWidthAndHeight(switchType, activeSize);
+
+      return {
+        width,
+        height,
+      };
     },
   },
   hover: {
