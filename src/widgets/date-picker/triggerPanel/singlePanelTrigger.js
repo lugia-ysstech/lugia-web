@@ -79,6 +79,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     this.trigger = React.createRef();
     this.targetMode = new SwitchPanelMode();
     this.pageFooterChange = new SwitchPanelMode();
+    this.oldValue = '';
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const {
@@ -160,8 +161,6 @@ class DateInput extends Component<TypeProps, TypeState> {
       getPartOfThemeProps,
     });
     const { normal = {} } = themeConfig;
-    const { height } = normal;
-    const inputHeight = height !== undefined ? { height: '100%' } : {};
     return (
       <Theme
         config={{
@@ -171,7 +170,6 @@ class DateInput extends Component<TypeProps, TypeState> {
               normal: {
                 ...normal,
                 width: '100%',
-                ...inputHeight,
               },
             },
             InputPrefix: {

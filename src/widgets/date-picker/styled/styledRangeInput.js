@@ -12,6 +12,7 @@ export const RangeInputWrap = CSSComponent({
   normal: {
     selectNames: [
       ['width'],
+      ['height'],
       ['border'],
       ['boxShadow'],
       ['borderRadius'],
@@ -19,6 +20,9 @@ export const RangeInputWrap = CSSComponent({
       ['margin'],
       ['padding'],
     ],
+    defaultTheme: {
+      background: { color: '#fff' },
+    },
   },
   hover: {
     selectNames: [['border'], ['boxShadow'], ['borderRadius'], ['background']],
