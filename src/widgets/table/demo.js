@@ -10,6 +10,8 @@ import Theme from '../theme';
 import Widget from '../consts/index';
 import Input from '../input';
 import Button from '../button';
+import sortData from './data.json';
+import column from './demoColumns';
 
 const { ColumnGroup, Column } = Table;
 
@@ -1097,7 +1099,41 @@ const data2 = [
   },
 ];
 
-export default class ModalDemo extends React.Component<any, any> {
+function SortDemo() {
+  const rowSorter = (column, sortType) => {
+    const newColumn = column;
+    const dataIndex = column.dataIndex;
+    if (sortType) {
+      newColumn.sorter =
+        sortType === 'string'
+          ? (a, b) => a[dataIndex].localeCompare(b[dataIndex])
+          : (a, b) => a[dataIndex] - b[dataIndex];
+    }
+    return newColumn;
+  };
+
+  const newColumn = column.map(item => {
+    const { titleAlign, sortType } = item;
+    if (titleAlign) {
+      item.title = <div style={{ textAlign: titleAlign }}>{item.title}</div>;
+    }
+
+    return rowSorter(item, sortType);
+  });
+
+  return (
+    <Table
+      data={sortData}
+      columns={newColumn}
+      scroll={{
+        x: 3040,
+        y: 500,
+      }}
+    />
+  );
+}
+
+class OldDemo extends React.Component<any, any> {
   constructor() {
     super();
     this.state = {
@@ -1398,3 +1434,12 @@ export default class ModalDemo extends React.Component<any, any> {
     this.setState({ isTable: true });
   };
 }
+
+export default () => {
+  return (
+    <div>
+      <SortDemo />
+      <OldDemo />
+    </div>
+  );
+};
