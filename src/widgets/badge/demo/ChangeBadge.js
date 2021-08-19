@@ -1,0 +1,47 @@
+import React from 'react';
+import styled from 'styled-components';
+import Badge from '../index';
+import Icon from '../../icon/index';
+import Theme from '../../theme';
+import Widget from '../../consts/index';
+
+const Box = styled.div`
+  width: 40px;
+  height: 40px;
+  background: #ccc;
+  margin-left: 10px;
+`;
+export default class ChangeBadge extends React.Component<any, any> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
+
+  click = type => () => {
+    const newCount = type === 'plus' ? this.state.count + 1 : this.state.count - 1;
+    const count = newCount <= 0 ? 0 : newCount > 100 ? 100 : newCount;
+    this.setState({ count });
+  };
+  render() {
+    const config = {
+      [Widget.Badge]: {
+        Badge: {
+          normal: { position: { top: -5, right: -5 } },
+        },
+      },
+    };
+    return (
+      <div>
+        <Theme config={config}>
+          <Badge count={this.state.count} showZero overflowCount={99}>
+            <Box />
+          </Badge>
+          <Icon iconClass="lugia-icon-reminder_plus_square_o" onClick={this.click('plus')} />
+          <Icon iconClass="lugia-icon-reminder_minus_square_o" onClick={this.click('minus')} />
+        </Theme>
+      </div>
+    );
+  }
+}
