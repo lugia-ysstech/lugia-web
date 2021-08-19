@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Affix, Button } from '@lugia/lugia-web';
+import Affix from '../index';
+import Button from '../../button';
 
 export default class BasicDemo extends React.Component {
   handleChange = res => {
