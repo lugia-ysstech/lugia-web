@@ -1,5 +1,5 @@
 import React from 'react';
-import { Upload, Theme } from '@lugia/lugia-web';
+import Upload from '../../index';
 import styled from 'styled-components';
 const Text = styled.span`
   display: inline-block;

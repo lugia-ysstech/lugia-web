@@ -1,6 +1,6 @@
 import React from 'react';
-import { Rate } from '@lugia/lugia-web';
 import styled from 'styled-components';
+import Rate from '../../index';
 const TextBox = styled.span`
   font-size: 14px;
   color: #333;

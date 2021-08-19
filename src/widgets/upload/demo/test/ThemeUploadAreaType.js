@@ -1,6 +1,7 @@
 import React from 'react';
-import { Upload, Theme } from '@lugia/lugia-web';
-import Widget from '@lugia/lugia-web/dist/consts/index';
+import Upload from '../../index';
+import Theme from '../../../theme';
+import Widget from '../../../consts/index';
 import { getBorderRadius, getBorder, getBoxShadow } from '@lugia/theme-utils';
 import styled from 'styled-components';
 const Text = styled.p`

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Slider } from '@lugia/lugia-web';
 import SwitchDemo1 from './switch_001';
 import SwitchDemo2 from './switch_002';
 import SwitchDemo3 from './switch_003';

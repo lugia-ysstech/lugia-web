@@ -1,6 +1,5 @@
 import React from 'react';
-import { Theme, Tabs } from '@lugia/lugia-web';
-import Widget from '@lugia/lugia-web/dist/consts';
+import Tabs from '../../index';
 import styled from 'styled-components';
 
 const Contain = styled.div`

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from '@lugia/lugia-web';
+import Switch from '../../index';
 import styled from 'styled-components';
 export const DemoItem = styled.div`
   padding: 0 20px 20px 0;

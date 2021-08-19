@@ -1,6 +1,6 @@
 import React from 'react';
-import { Slider } from '@lugia/lugia-web';
 import styled from 'styled-components';
+import Slider from '../../index';
 export const DemoItem = styled.div`
   padding: 0 20px 20px 0;
 `;

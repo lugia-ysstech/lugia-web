@@ -1,7 +1,7 @@
 import React from 'react';
-import { Switch, Icon } from '@lugia/lugia-web';
-import { Theme } from '@lugia/lugia-web';
-import Widget from '@lugia/lugia-web/dist/consts/index';
+import Switch from '../../index';
+import Theme from '../../../theme';
+import Widget from '../../../consts/index';
 import { getBorderRadius, getBorder, getBoxShadow } from '@lugia/theme-utils';
 import styled from 'styled-components';
 export const DemoItem = styled.div`

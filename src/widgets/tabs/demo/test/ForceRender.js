@@ -1,6 +1,5 @@
 import React from 'react';
-import { Theme, Tabs } from '@lugia/lugia-web';
-import Widget from '@lugia/lugia-web/dist/consts';
+import Tabs from '../../index';
 import ForceRenderComponent from './ForceRenderComponent';
 import styled from 'styled-components';
 const H2 = styled.p`

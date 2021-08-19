@@ -1,5 +1,5 @@
 import React from 'react';
-import { Upload, Theme } from '@lugia/lugia-web';
+import Upload from '../../index';
 export default class FileList extends React.Component<any, any> {
   render() {
     const defaultProps = {

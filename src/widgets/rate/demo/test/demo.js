@@ -1,5 +1,4 @@
 import React from 'react';
-import { Rate, Theme } from '@lugia/lugia-web';
 import styled from 'styled-components';
 import Base from './Base';
 import Count from './Count';

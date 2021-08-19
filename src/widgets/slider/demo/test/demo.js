@@ -1,5 +1,4 @@
 import React from 'react';
-import { Slider } from '@lugia/lugia-web';
 import SliderDemo1 from './slider_001';
 import SliderDemo2 from './slider_002';
 import SliderDemo3 from './slider_003';

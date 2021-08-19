@@ -1,7 +1,8 @@
 import React from 'react';
-import { Rate, Theme } from '@lugia/lugia-web';
-import Widget from '@lugia/lugia-web/dist/consts/index';
 import styled from 'styled-components';
+import Rate from '../../index';
+import Theme from '../../../theme';
+import Widget from '../../../consts/index';
 const Text = styled.span`
   display: inline-block;
   padding: 0 10px;

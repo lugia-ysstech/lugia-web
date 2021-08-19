@@ -1,7 +1,7 @@
 import React from 'react';
-import { Slider } from '@lugia/lugia-web';
-import { Theme } from '@lugia/lugia-web';
-import Widget from '@lugia/lugia-web/dist/consts/index';
+import Slider from '../../index';
+import Theme from '../../../theme';
+import Widget from '../../../consts/index';
 import styled from 'styled-components';
 import { getBorderRadius, getBorder } from '@lugia/theme-utils';
 export const DemoItem = styled.div`
