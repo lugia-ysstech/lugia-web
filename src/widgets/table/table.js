@@ -21,6 +21,7 @@ import {
   getValidSelectRowKeys,
   isEqualArray,
   getValidNotCheckedKeys,
+  isEqualObject,
 } from './utils';
 import Empty from '../empty';
 
@@ -74,7 +75,12 @@ export default ThemeProvider(
     oldPropsData: Object[];
     constructor(props) {
       super();
-      const { data = [], selectOptions: { selectRowKeys = [] } = {}, scroll = {} } = props;
+      const {
+        data = [],
+        selectOptions: { selectRowKeys = [] } = {},
+        scroll = {},
+        columns = [],
+      } = props;
 
       const dataLength = data.length;
       const selectRowKeyLength = selectRowKeys.length;
@@ -88,6 +94,7 @@ export default ThemeProvider(
       };
       this.tableWrap = React.createRef();
       this.oldPropsData = [];
+      this.columns = this.getSortColumns(columns);
     }
     componentDidMount() {
       setTimeout(() => {
@@ -104,6 +111,17 @@ export default ThemeProvider(
           this.setState({ scroll: undefined });
         }
       }, 0);
+    }
+
+    shouldComponentUpdate(nextProps: TableProps) {
+      const { columns: nextColumns } = nextProps;
+      const { columns } = this.props;
+
+      if (!isEqualObject(nextColumns, columns)) {
+        this.columns = this.getSortColumns(nextColumns);
+      }
+
+      return true;
     }
 
     computeTableHeight() {
@@ -511,7 +529,6 @@ export default ThemeProvider(
           </TableWrap>
         );
       }
-      const theColumns = this.getSortColumns(columns);
       if ('selectOptions' in this.props) {
         this.getValidKey();
         const {
@@ -569,10 +586,12 @@ export default ThemeProvider(
             className: 'lugia-selection-col',
           },
         };
-        theColumns.unshift(selectColumnItem);
+        this.columns.unshift(selectColumnItem);
       }
       let expandIconColumnIndex =
-        theColumns && theColumns[0] && theColumns[0][cusRowKey] === 'selection-column' ? 1 : 0;
+        this.columns && this.columns[0] && this.columns[0][cusRowKey] === 'selection-column'
+          ? 1
+          : 0;
       if ('expandIconColumnIndex' in this.props) {
         const { expandIconColumnIndex: propsIndex } = this.props;
         expandIconColumnIndex = Number(propsIndex);
@@ -588,7 +607,7 @@ export default ThemeProvider(
           <RcTable
             {...this.getDefaultEmpty()}
             {...this.props}
-            columns={theColumns}
+            columns={this.columns}
             data={tableData}
             showHeader={showHeader}
             expandIconColumnIndex={expandIconColumnIndex}

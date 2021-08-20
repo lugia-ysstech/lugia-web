@@ -117,3 +117,7 @@ export const getChildrenKeys = (data, childrenKeys, childrenRecords, rowKey, set
   });
   return { childrenKeys, childrenRecords };
 };
+
+export function isEqualObject(newData, data) {
+  return _.eq(newData, data);
+}
