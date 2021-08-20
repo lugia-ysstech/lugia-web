@@ -45,13 +45,13 @@ class Suffix extends Component {
     this.setState({ isEnter: false });
   };
   render() {
-    const { suffix, value } = this.props;
+    const { suffix, value, canClear } = this.props;
     const { isEnter } = this.state;
     return (
       <React.Fragment>
         {suffix && typeof suffix === 'string' ? (
           <div onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
-            {isEnter ? (
+            {isEnter && canClear ? (
               <span>{this.clearBtn()}</span>
             ) : (
               <span>
@@ -59,7 +59,7 @@ class Suffix extends Component {
               </span>
             )}
           </div>
-        ) : value ? (
+        ) : value && canClear ? (
           this.clearBtn()
         ) : (
           <i />
