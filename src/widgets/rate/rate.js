@@ -608,7 +608,7 @@ class Rate extends React.Component<RateProps, any> {
     onChange && onChange(resValue);
   };
 
-  setValue = (obj: Object, hasClick?: boolean = false) => {
+  setValue = (obj: Object, hasClick: boolean = false) => {
     this.setState({ ...obj }, () => {
       if (hasClick) {
         this.saveState();
@@ -718,7 +718,7 @@ class Rate extends React.Component<RateProps, any> {
         [resultViewClass]: {
           normal: {
             getCSS: () => {
-              return `              
+              return `
               vertical-align: text-bottom !important;
               color:${get('superLightColor')};
               position: absolute;
