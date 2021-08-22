@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Tree from '../index';
-import Icon from '../../Icon/index';
+import Icon from '../../icon/index';
 import Widget from '../../consts/index';
 
 const IconBox = styled.div`

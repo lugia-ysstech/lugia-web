@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Card from '../index';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
-import avatarImgSrc from '../../../public/card-avatar-circle.png';
-import cardImgSrc from '../../../public/card.jpg';
+import avatarImgSrc from './card-avatar-circle.png';
+import cardImgSrc from './card.jpg';
 
 const Wrapper = styled.div`
   display: inline-block;

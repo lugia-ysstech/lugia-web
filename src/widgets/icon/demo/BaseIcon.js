@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import Copy from '../code-box/Copy';
-import Icon from '../index';
+import Copy from './Copy';
+import Icon from '../';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 
-import colorsFunc from '@lugia/lugia-web/dist/css/stateColor';
+import colorsFunc from '../../css/stateColor';
 const { themeColor, defaultColor } = colorsFunc();
 
 const IconWrapper = styled.div`

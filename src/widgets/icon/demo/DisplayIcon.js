@@ -1,9 +1,8 @@
 import React from 'react';
-import colorsFunc from '@lugia/lugia-web/dist/css/stateColor';
+import colorsFunc from '../../css/stateColor';
 import styled from 'styled-components';
-import Copy from '../code-box/Copy';
+import Copy from './Copy';
 import Icon from '../index';
-import notification from '../../notification/index';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import avatarSrc from '../../../public/avatar-jiaxin.jpg';
+import avatarSrc from '../avatar.png';
 import Avatar from '../index';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
