@@ -476,7 +476,10 @@ describe('Select', () => {
       .simulate('click');
 
     const result = await selectPromise;
-    expect(result).toEqual([{ value, displayValue }, { value: [], displayValue: [] }]);
+    expect(result).toEqual([
+      { value, displayValue },
+      { value: [], displayValue: [] },
+    ]);
   });
 
   it('单选 点击menu第一个，触发onSelect事件', async () => {
@@ -513,7 +516,10 @@ describe('Select', () => {
       .simulate('click');
 
     const result = await selectPromise;
-    expect(result).toEqual([{ value, displayValue }, { value, displayValue }]);
+    expect(result).toEqual([
+      { value, displayValue },
+      { value, displayValue },
+    ]);
   });
 
   it('单选 点击menu第一个后再点击第二个，触发onSelect事件', async () => {
@@ -594,7 +600,10 @@ describe('Select', () => {
 
     unCheckAll(cmp);
     const result = await selectPromise;
-    expect(result).toEqual([{ value, displayValue }, { value: [], displayValue: [] }]);
+    expect(result).toEqual([
+      { value, displayValue },
+      { value: [], displayValue: [] },
+    ]);
   });
 
   it('多选mutliple，点击选中项，全选状态为‘不全选’', async () => {

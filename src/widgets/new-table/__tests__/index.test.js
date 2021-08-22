@@ -257,7 +257,10 @@ describe('new-table', () => {
   });
 
   const selectCell = [{ selectColumn: 0, selectRow: 0 }];
-  const multipleSelectCell = [{ selectColumn: 0, selectRow: 0 }, { selectColumn: 1, selectRow: 1 }];
+  const multipleSelectCell = [
+    { selectColumn: 0, selectRow: 0 },
+    { selectColumn: 1, selectRow: 1 },
+  ];
   const { isSelected } = publicEditTableListener;
 
   it(' Connection isSelected', () => {
@@ -377,7 +380,10 @@ describe('new-table', () => {
       { selectColumn: 2, selectRow: 1 },
       { selectColumn: 3, selectRow: 1 },
     ];
-    const clearCellRes = [{ selectColumn: 2, selectRow: 1 }, { selectColumn: 3, selectRow: 1 }];
+    const clearCellRes = [
+      { selectColumn: 2, selectRow: 1 },
+      { selectColumn: 3, selectRow: 1 },
+    ];
 
     expect(getClearSingleSelectCell(clearCellItem, clearSelectCell)).toEqual(clearCellRes);
   });
@@ -433,7 +439,10 @@ describe('new-table', () => {
     const multipleResetSelectRowProps = {
       currentItem: { selectColumn: 2, selectRow: 0 },
       newValue: [{ selectColumn: 2, selectRow: 0 }],
-      oldValue: [{ selectColumn: 1, selectRow: 0 }, { selectColumn: 0, selectRow: 0 }],
+      oldValue: [
+        { selectColumn: 1, selectRow: 0 },
+        { selectColumn: 0, selectRow: 0 },
+      ],
       columns,
     };
 
@@ -457,7 +466,10 @@ describe('new-table', () => {
 
     expect(cmp.editTableListener.dataKeyMap).toEqual(dataKeyMap);
 
-    const selectInfo = [{ selectColumn: 1, selectRow: 0 }, { selectColumn: 0, selectRow: 0 }];
+    const selectInfo = [
+      { selectColumn: 1, selectRow: 0 },
+      { selectColumn: 0, selectRow: 0 },
+    ];
     const result = [
       { title: 'Age', dataIndex: 'age', key: 'age' },
       { title: '姓名', dataIndex: 'name', key: 'name', width: 100, align: 'center' },
@@ -1076,7 +1088,10 @@ describe('new-table', () => {
       isSelected: false,
       isMultiple: true,
       selectCell: [{ selectColumn: 2, selectRow: 2 }],
-      expectResult: [{ selectColumn: 2, selectRow: 2 }, { selectColumn: 2, selectRow: 1 }],
+      expectResult: [
+        { selectColumn: 2, selectRow: 2 },
+        { selectColumn: 2, selectRow: 1 },
+      ],
     },
   ];
 

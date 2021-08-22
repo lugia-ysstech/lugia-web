@@ -4,7 +4,7 @@
  * @flow
  */
 import '../common/shirm';
-import * as React from 'react';
+import React from 'react';
 import { px2remcss } from '../css/units';
 import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';

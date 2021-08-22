@@ -11,7 +11,10 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('translateData', () => {
   const props = {
-    data: [{ label: 'A', value: 'a' }, { label: 'B', value: 'b' }],
+    data: [
+      { label: 'A', value: 'a' },
+      { label: 'B', value: 'b' },
+    ],
     value: ['a', 'c'],
     displayValue: ['B', 'C'],
     displayField: 'label',
@@ -33,7 +36,10 @@ describe('translateData', () => {
     testProps.data = [];
     const result = translateData(testProps, testProps.displayValue);
     expect(result).toEqual({
-      cancelItem: [{ label: 'B', value: 'a' }, { label: 'C', value: 'c' }],
+      cancelItem: [
+        { label: 'B', value: 'a' },
+        { label: 'C', value: 'c' },
+      ],
       cancelItemData: { a: { label: 'B', value: 'a' }, c: { label: 'C', value: 'c' } },
       dataItem: {},
     });

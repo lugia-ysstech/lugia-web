@@ -886,7 +886,10 @@ describe('TreeSelect', () => {
       .at(0)
       .simulate('click');
     const result = await selAllPromise;
-    expect(result).toEqual([{ value, displayValue }, { value: [], displayValue: [] }]);
+    expect(result).toEqual([
+      { value, displayValue },
+      { value: [], displayValue: [] },
+    ]);
   });
 
   it('单选 选择第一个 onSelect 事件', async () => {
@@ -930,7 +933,10 @@ describe('TreeSelect', () => {
       .at(0)
       .simulate('click');
     const result = await selAllPromise;
-    expect(result).toEqual([{ value, displayValue }, { value: [''], displayValue: [''] }]);
+    expect(result).toEqual([
+      { value, displayValue },
+      { value: [''], displayValue: [''] },
+    ]);
   });
 
   it('selectAll onSelect 事件', async () => {
@@ -968,7 +974,10 @@ describe('TreeSelect', () => {
       .map(item => item.text);
     selctedAll(cmp);
     const result = await selAllPromise;
-    const expRes = [{ value, displayValue }, { value: [], displayValue: [] }];
+    const expRes = [
+      { value, displayValue },
+      { value: [], displayValue: [] },
+    ];
     expect(result).toEqual(expRes);
   });
 

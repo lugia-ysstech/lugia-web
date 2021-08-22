@@ -127,12 +127,18 @@ describe('Transfer.utils', () => {
       {
         text: '1',
         value: 'value1',
-        children: [{ text: '1-1', value: 'value11' }, { text: '1-2', value: 'value12' }],
+        children: [
+          { text: '1-1', value: 'value11' },
+          { text: '1-2', value: 'value12' },
+        ],
       },
       {
         text: '2',
         value: 'value2',
-        children: [{ text: '2-1', value: 'value21' }, { text: '2-2', value: 'value22' }],
+        children: [
+          { text: '2-1', value: 'value21' },
+          { text: '2-2', value: 'value22' },
+        ],
       },
     ];
     const expTarget = [
@@ -220,7 +226,10 @@ describe('Transfer.utils', () => {
   it('getCancelItem', () => {
     const targetKeys = ['value1', 'value4', 'value5'];
     const displayValue = ['value1', 'dis1', 'dis2'];
-    const expCancelItem = [{ text: 'dis1', value: 'value4' }, { text: 'dis2', value: 'value5' }];
+    const expCancelItem = [
+      { text: 'dis1', value: 'value4' },
+      { text: 'dis2', value: 'value5' },
+    ];
     const cancelItem = getCancelItem(targetKeys, mapData, {}, displayValue);
     expect(cancelItem).toEqual(expCancelItem);
 

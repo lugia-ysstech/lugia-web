@@ -12,7 +12,6 @@ import type { RowProps, RowState, screensType } from '../css/row';
 import { RowWrap } from '../css/row';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
 import Col from './col';
-import { ColWrap } from '../css/col';
 
 let enquire;
 if (typeof window !== 'undefined') {

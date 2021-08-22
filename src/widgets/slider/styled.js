@@ -250,12 +250,7 @@ export const Tipinner = CSSComponent({
       ['font'],
       ['fontSize'],
     ],
-    getCSS(
-      themeMate,
-      {
-        propsConfig: { tipsText },
-      }
-    ) {
+    getCSS(themeMate, { propsConfig: { tipsText } }) {
       const { height } = themeMate;
       return `
         line-height:${em(height)};

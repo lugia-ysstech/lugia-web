@@ -120,13 +120,19 @@ const horizontalData = [
         value: 'Navigation',
         text: 'Navigation',
         describe: true,
-        children: [{ value: 'Affix', text: 'Affix' }, { value: 'tag', text: 'tag' }],
+        children: [
+          { value: 'Affix', text: 'Affix' },
+          { value: 'tag', text: 'tag' },
+        ],
       },
 
       {
         value: 'Data Entry',
         text: 'Data Entry',
-        children: [{ value: 'rate', text: 'rate' }, { value: 'Cascader', text: 'Cascader' }],
+        children: [
+          { value: 'rate', text: 'rate' },
+          { value: 'Cascader', text: 'Cascader' },
+        ],
       },
     ],
   },

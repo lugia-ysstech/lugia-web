@@ -50,7 +50,10 @@ describe('Transfer.menu-utils', () => {
       displayField,
       whiteList
     );
-    expect(whiteListData).toEqual([{ title: '2', key: 'key2' }, { title: '3', key: 'key3' }]);
+    expect(whiteListData).toEqual([
+      { title: '2', key: 'key2' },
+      { title: '3', key: 'key3' },
+    ]);
     expect(cancelItem).toEqual([]);
 
     const list = ['key2', 'key3', 'key4'];
@@ -58,7 +61,10 @@ describe('Transfer.menu-utils', () => {
       whiteListData: newWhiteListData,
       cancelItem: newCancelItem,
     } = getWhiteListDataAndCancelItem(mapData, displayValue, valueField, displayField, list);
-    expect(newWhiteListData).toEqual([{ title: '2', key: 'key2' }, { title: '3', key: 'key3' }]);
+    expect(newWhiteListData).toEqual([
+      { title: '2', key: 'key2' },
+      { title: '3', key: 'key3' },
+    ]);
     expect(newCancelItem).toEqual([{ title: 'c', key: 'key4' }]);
 
     expect(

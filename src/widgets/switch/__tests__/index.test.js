@@ -93,7 +93,10 @@ describe('Switch', () => {
     const target = mount(
       <Switch
         displayFiled={'left'}
-        data={[{ left: '年', name: 'ppp' }, { left: '月', name: 'ww' }]}
+        data={[
+          { left: '年', name: 'ppp' },
+          { left: '月', name: 'ww' },
+        ]}
       />
     );
     const switchComponent = getSwitchComponent(target);
@@ -101,7 +104,12 @@ describe('Switch', () => {
   });
   it('no  displayFiled', async () => {
     const target = mount(
-      <Switch data={[{ left: '年', name: 'ppp' }, { left: '月', name: 'ww' }]} />
+      <Switch
+        data={[
+          { left: '年', name: 'ppp' },
+          { left: '月', name: 'ww' },
+        ]}
+      />
     );
     const switchComponent = getSwitchComponent(target);
     expect(switchComponent.state.text).toBe(undefined);
@@ -109,7 +117,10 @@ describe('Switch', () => {
   it('no  displayFiled have text', async () => {
     const target = mount(
       <Switch
-        data={[{ text: '日', left: '年', name: 'ppp' }, { text: '时', left: '月', name: 'ww' }]}
+        data={[
+          { text: '日', left: '年', name: 'ppp' },
+          { text: '时', left: '月', name: 'ww' },
+        ]}
       />
     );
     const switchComponent = getSwitchComponent(target);

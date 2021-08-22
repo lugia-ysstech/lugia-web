@@ -67,8 +67,8 @@ export function testKeyBoardEvent(
 }
 
 /*
-*   键盘事件为空的情况
-*/
+ *   键盘事件为空的情况
+ */
 export function testFireNullKeyBoardEvent(
   keyEvent: KeyEventType,
   opt: { keyCode: any, Target: React.ComponentType<any> }

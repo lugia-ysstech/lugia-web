@@ -32,12 +32,18 @@ const treeData = [
       {
         text: '2.1',
         value: '2.1',
-        children: [{ text: '2.1.1', value: '2.1.1' }, { text: '2.1.2', value: '2.1.2' }],
+        children: [
+          { text: '2.1.1', value: '2.1.1' },
+          { text: '2.1.2', value: '2.1.2' },
+        ],
       },
       {
         text: '2.2',
         value: '2.2',
-        children: [{ text: '2.2.1', value: '2.2.1' }, { text: '2.2.2', value: '2.2.2' }],
+        children: [
+          { text: '2.2.1', value: '2.2.1' },
+          { text: '2.2.2', value: '2.2.2' },
+        ],
       },
     ],
   },

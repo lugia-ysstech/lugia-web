@@ -159,7 +159,11 @@ describe('RadioGroup', () => {
     }
   });
 
-  const data = [{ text: 'a', value: '1' }, { text: 'b', value: '2' }, { text: 'c', value: '3' }];
+  const data = [
+    { text: 'a', value: '1' },
+    { text: 'b', value: '2' },
+    { text: 'c', value: '3' },
+  ];
   const MapTestTarget = mount(<RadioGroup data={data} />);
   it('RadioGroup: MapData props:data change-render', () => {
     const cmp = MapTestTarget.children()
@@ -240,7 +244,11 @@ describe('RadioGroup', () => {
     });
     expect(cmp.state.value).toBe('4');
   });
-  const datas = [{ text: 'a', value: '1' }, { text: 'b', value: '2' }, { text: 'c', value: '3' }];
+  const datas = [
+    { text: 'a', value: '1' },
+    { text: 'b', value: '2' },
+    { text: 'c', value: '3' },
+  ];
 
   it('RadioGroup: props: {childType: button, data, displayValue, defaultValue}', () => {
     let num = 0;

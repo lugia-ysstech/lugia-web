@@ -92,7 +92,10 @@ describe('Anchor', () => {
     const wrongMax = component.getMaxTopLink({});
     expect(wrongMax).toBe('');
 
-    const max = component.getMaxTopLink([{ top: 1, link: '1' }, { top: 2, link: '2' }]);
+    const max = component.getMaxTopLink([
+      { top: 1, link: '1' },
+      { top: 2, link: '2' },
+    ]);
     expect(max).toBe('2');
   });
 });

@@ -16,21 +16,47 @@ describe('new-table utils', () => {
     expect(isEqualArray([1, 2, 3], [1, 2, 3])).toBeTruthy();
     expect(
       isEqualArray(
-        [{ a: 111, b: 222 }, { a: 123, b: 123 }],
-        [{ a: 111, b: 222 }, { a: 123, b: 123 }]
+        [
+          { a: 111, b: 222 },
+          { a: 123, b: 123 },
+        ],
+        [
+          { a: 111, b: 222 },
+          { a: 123, b: 123 },
+        ]
       )
     ).toBeTruthy();
     expect(isEqualArray([], [1])).toBeFalsy();
     expect(isEqualArray([1, 2, 3], [1, 2])).toBeFalsy();
     expect(isEqualArray([1, 2, 3], [1, 2, 4])).toBeFalsy();
-    expect(isEqualArray([{ a: 111, b: 222 }, { a: 123, b: 123 }], [])).toBeFalsy();
     expect(
-      isEqualArray([{ a: 111, b: 222 }, { a: 123, b: 123 }], [{ a: 111, b: 222 }])
+      isEqualArray(
+        [
+          { a: 111, b: 222 },
+          { a: 123, b: 123 },
+        ],
+        []
+      )
     ).toBeFalsy();
     expect(
       isEqualArray(
-        [{ a: 111, b: 222 }, { a: 123, b: 123 }],
-        [{ a: 111, b: 222 }, { a: 123, b: 124 }]
+        [
+          { a: 111, b: 222 },
+          { a: 123, b: 123 },
+        ],
+        [{ a: 111, b: 222 }]
+      )
+    ).toBeFalsy();
+    expect(
+      isEqualArray(
+        [
+          { a: 111, b: 222 },
+          { a: 123, b: 123 },
+        ],
+        [
+          { a: 111, b: 222 },
+          { a: 123, b: 124 },
+        ]
       )
     ).toBeFalsy();
     expect(isEqualArray([])).toBeFalsy();
@@ -39,11 +65,43 @@ describe('new-table utils', () => {
   });
 
   it(' isInArray ', () => {
-    expect(isInArray([{ a: 1, b: 2 }, { a: 1, b: 3 }], { a: 1, b: 2 })).toBeTruthy();
-    expect(isInArray([{ a: 1, b: 2 }, { a: 1, b: 3 }], { b: 2, a: 1 })).toBeTruthy();
-    expect(isInArray([{ a: 1, b: 2, c: 3 }, { a: 1, b: 3 }], { a: 1, b: 2 })).toBeFalsy();
+    expect(
+      isInArray(
+        [
+          { a: 1, b: 2 },
+          { a: 1, b: 3 },
+        ],
+        { a: 1, b: 2 }
+      )
+    ).toBeTruthy();
+    expect(
+      isInArray(
+        [
+          { a: 1, b: 2 },
+          { a: 1, b: 3 },
+        ],
+        { b: 2, a: 1 }
+      )
+    ).toBeTruthy();
+    expect(
+      isInArray(
+        [
+          { a: 1, b: 2, c: 3 },
+          { a: 1, b: 3 },
+        ],
+        { a: 1, b: 2 }
+      )
+    ).toBeFalsy();
     expect(isInArray(null, { a: 1, b: 2 })).toBeFalsy();
-    expect(isInArray([{ a: 1, b: 2 }, { a: 1, b: 3 }], null)).toBeFalsy();
+    expect(
+      isInArray(
+        [
+          { a: 1, b: 2 },
+          { a: 1, b: 3 },
+        ],
+        null
+      )
+    ).toBeFalsy();
   });
 
   it(' isObject ', () => {

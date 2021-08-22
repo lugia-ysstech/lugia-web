@@ -67,8 +67,16 @@ describe('utils', () => {
 
   const sampleWidthSize = [1, 2, 3];
   const anotherWidthSize = [100, 2, 30];
-  const sampleWithWidths = [{ a: 'a', width: 1 }, { a: 'b', width: 2 }, { a: 'c', width: 3 }];
-  const anotherWithWidths = [{ a: 'a', width: 100 }, { a: 'b', width: 2 }, { a: 'c', width: 30 }];
+  const sampleWithWidths = [
+    { a: 'a', width: 1 },
+    { a: 'b', width: 2 },
+    { a: 'c', width: 3 },
+  ];
+  const anotherWithWidths = [
+    { a: 'a', width: 100 },
+    { a: 'b', width: 2 },
+    { a: 'c', width: 30 },
+  ];
 
   function testAddWidth2Data(
     paramData: Array<Object>,

@@ -316,18 +316,29 @@ export default class Sw extends Component<any, TypeState> {
           <h3>displayFiled</h3>
           <Switch
             displayFiled={'left'}
-            data={[{ left: '年', name: 'ppp' }, { left: '月', name: 'ww' }]}
+            data={[
+              { left: '年', name: 'ppp' },
+              { left: '月', name: 'ww' },
+            ]}
           />
         </section>
         <section style={{ marginBottom: '20px' }}>
           <h3>no displayFiled, have text</h3>
           <Switch
-            data={[{ text: '日', left: '年', name: 'ppp' }, { text: '时', left: '月', name: 'ww' }]}
+            data={[
+              { text: '日', left: '年', name: 'ppp' },
+              { text: '时', left: '月', name: 'ww' },
+            ]}
           />
         </section>
         <section style={{ marginBottom: '20px' }}>
           <h3>no displayFiled no text</h3>
-          <Switch data={[{ left: '年', name: 'ppp' }, { left: '月', name: 'ww' }]} />
+          <Switch
+            data={[
+              { left: '年', name: 'ppp' },
+              { left: '月', name: 'ww' },
+            ]}
+          />
         </section>
         <section style={{ marginBottom: '20px' }}>
           <h3>isInverse</h3>
