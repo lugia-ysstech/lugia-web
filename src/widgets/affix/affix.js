@@ -5,6 +5,7 @@
  * @flow
  *
  */
+import '../common/shirm';
 import * as React from 'react';
 import type { AffixProps, AffixState } from '../css/affix';
 import { Affix } from '../css/affix';
