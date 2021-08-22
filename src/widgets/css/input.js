@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import type { ThemeType } from '@lugia/lugia-web';
+import type { ThemeType } from '../../interface/types';
 import type { ValidateStatus, ValidateType } from './validateHoc';
 import get from '../css/theme-common-dict';
 

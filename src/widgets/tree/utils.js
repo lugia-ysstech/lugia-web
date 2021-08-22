@@ -11,8 +11,7 @@ import type {
   NodeId2SelectInfo,
   QueryType,
   SelectType,
-} from '@lugia/lugia-web';
-import { updateVersion } from './version';
+} from '../../interface/types';
 
 const EmptyError = '结点不能为空',
   PathEqlKey = 'path不能等于key',
@@ -146,7 +145,10 @@ class TreeUtils {
   }
 
   updateVersion(): void {
-    updateVersion.call(this);
+    this.version++;
+    if (this.version >= Number.MAX_VALUE) {
+      this.version = 0;
+    }
   }
 
   isRightTreeRowData(data: Object): string {

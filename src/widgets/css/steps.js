@@ -1,5 +1,5 @@
 import { px2emcss } from './units';
-import type { ThemeType } from '@lugia/lugia-web';
+
 export type StepType = 'simple' | 'flat' | 'icon' | 'dot';
 export type StepStatus = 'finish' | 'process' | 'next' | 'wait' | 'error';
 export type SizeType = 'default' | 'small';

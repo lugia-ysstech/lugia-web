@@ -1,5 +1,5 @@
 //@flow
-import type { SelectItem } from '@lugia/lugia-web';
+import type { SelectItem } from '../../interface/types';
 import Listener from '@lugia/listener';
 import { deepMerge } from '@lugia/object-utils';
 import { getRandom } from './utils';

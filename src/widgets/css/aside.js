@@ -4,14 +4,13 @@
  * @flow
  */
 import { px2emcss } from '../css/units';
-import type { ThemeType } from '@lugia/lugia-web';
+import type { ThemeType } from '../../interface/types';
 import type { screensType } from '../css/row';
-import styled from 'styled-components';
-import { getMargin, createGetWidthOrHeight } from '../common/ThemeUtils';
+import styled, { css } from 'styled-components';
+import { createGetWidthOrHeight, getMargin } from '../common/ThemeUtils';
 import { getThemeHeightCSS } from './layout';
 import Icon from '../icon';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-import { css } from 'styled-components';
 import get from './theme-common-dict';
 
 const FontSize = 1.2;

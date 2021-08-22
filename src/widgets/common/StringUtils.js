@@ -3,7 +3,7 @@
  * create by ligx
  *@flow
  */
-import type { QueryType } from '@lugia/lugia-web';
+import type { QueryType } from '../../interface/types';
 import { ObjectUtils } from '@lugia/type-utils';
 
 function isMatch(val: string, queryArray: Array<string>, match: Function): boolean {

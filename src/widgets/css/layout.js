@@ -4,7 +4,7 @@
  * @flow
  */
 import { px2emcss } from '../css/units';
-import type { ThemeType } from '@lugia/lugia-web';
+import type { ThemeType } from '../../interface/types';
 import { css } from 'styled-components';
 import { getMargin, getWidth } from '../common/ThemeUtils';
 import CSSComponent from '@lugia/theme-css-hoc';

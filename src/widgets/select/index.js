@@ -3,7 +3,7 @@
  *
  * @flow
  */
-import type { QueryType } from '@lugia/lugia-web';
+import type { QueryType } from '../../interface/types';
 import '../common/shirm';
 import * as React from 'react';
 import Theme from '../theme';

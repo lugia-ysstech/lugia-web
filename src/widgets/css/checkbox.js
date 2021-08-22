@@ -8,7 +8,7 @@ import styled, { css } from 'styled-components';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import get from './theme-common-dict';
 import { px2remcss } from '../css/units';
-import type { ThemeType } from '@lugia/lugia-web';
+import type { ThemeType } from '../../interface/types';
 import Icon from '../icon';
 import { judgeStarts } from '../utils';
 import { getDictValue } from '@lugia/theme-utils';

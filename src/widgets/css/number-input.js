@@ -4,7 +4,7 @@
  * @flow
  */
 import { px2emcss } from './units';
-import type { ThemeType } from '@lugia/lugia-web';
+import type { ThemeType } from '../../interface/types';
 import colorsFunc from '../css/stateColor';
 import { createGetWidthOrHeight } from '../common/ThemeUtils';
 

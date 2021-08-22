@@ -5,9 +5,8 @@
  */
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
-import type { ThemeType } from '@lugia/lugia-web';
+import type { ThemeType } from '../../interface/types';
 import { css } from 'styled-components';
-import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 
 const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const paddingToText = '$lugia-dict.@lugia/lugia-web.paddingToText';

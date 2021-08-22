@@ -3,7 +3,6 @@
  * create by guorg
  * @flow
  */
-import type { ThemeType } from '@lugia/lugia-web';
 
 export type TransferMenuProps = {
   data: Object[],

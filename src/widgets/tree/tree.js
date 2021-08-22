@@ -5,7 +5,12 @@
  * @flow
  */
 import '../common/shirm';
-import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo, QueryType } from '@lugia/lugia-web';
+import type {
+  ExpandInfo,
+  NodeId2ExtendInfo,
+  NodeId2SelectInfo,
+  QueryType,
+} from '../../interface/types';
 import animation from '../common/openAnimation';
 import ThemeHoc from '@lugia/theme-hoc';
 import * as React from 'react';

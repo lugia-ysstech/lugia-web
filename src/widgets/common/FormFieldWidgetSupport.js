@@ -1,5 +1,5 @@
 //@flow
-import type { GetValueArgType } from '@lugia/lugia-web';
+import type { GetValueArgType } from '../../interface/types';
 
 const Utils = require('@lugia/type-utils');
 

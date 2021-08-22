@@ -6,7 +6,6 @@
 import { css } from 'styled-components';
 import CSSComponent from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
-import type { ThemeType } from '@lugia/lugia-web';
 import get from './theme-common-dict';
 
 export type GroupCSSProps = {

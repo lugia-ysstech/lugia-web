@@ -4,8 +4,6 @@
  *
  * @flow
  */
-import type { ThemeType } from '@lugia/lugia-web';
-import { ObjectUtils } from '@lugia/type-utils';
 
 export type CardType = 'simple' | 'avatar' | 'image' | 'combo' | 'tip';
 export type ImageOrientation = 'horizontal' | 'vertical';

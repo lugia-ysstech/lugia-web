@@ -1,15 +1,11 @@
 import React from 'react';
-import { Theme, Tabs } from '@lugia/lugia-web';
-import Widget from '@lugia/lugia-web/dist/consts';
 import styled from 'styled-components';
 import TabPosition from './TabPosition';
-import Disabled from './Disabled';
 import TabType from './TabType';
 import Data from './Data';
 import ShowDeleteBtn from './ShowDeleteBtn';
 import IsSelect from './IsSelect';
 import TalPanel from './TalPanel';
-import ShowAddBtn from './ShowAddBtn';
 import ForceRender from './ForceRender';
 import TabPanelEvent from './TabPanelEvent';
 import TabsEvent from './TabsEvent';
@@ -21,6 +17,7 @@ import ThemeContentBlock from './ThemeContentBlock';
 import ThemeTitleContainer from './ThemeTitleContainer';
 import ThemeBorderStyle from './ThemeBorderStyle';
 import ThemeTabsDefaultTabPan from './ThemeTabsDefaultTabPan';
+
 const Contain = styled.div`
   float: left;
   width: 50%;

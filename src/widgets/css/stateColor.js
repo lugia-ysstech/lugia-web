@@ -2,7 +2,7 @@
  * by wangcuixia
  * @flow
  * **/
-import type { CommonCSS } from '@lugia/lugia-web';
+import type { CommonCSS } from '../../interface/types';
 
 import changeColor from './utilsColor';
 

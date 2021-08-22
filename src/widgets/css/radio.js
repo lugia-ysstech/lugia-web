@@ -7,7 +7,7 @@
 import { css } from 'styled-components';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
-import type { ThemeType } from '@lugia/lugia-web';
+import type { ThemeType } from '../../interface/types';
 import { getBorder, getDictValue } from '@lugia/theme-utils';
 import { getBorderRadius } from '../theme/CSSProvider';
 import get from './theme-common-dict';

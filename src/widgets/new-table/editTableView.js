@@ -1,5 +1,5 @@
 //@flow
-import type { EditTableEventListenerHandle } from '@lugia/lugia-web';
+import type { EditTableEventListenerHandle } from '../../interface/types';
 import React from 'react';
 import Table from './table';
 import ThemeProvider from '../theme-provider';

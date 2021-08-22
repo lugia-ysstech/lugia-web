@@ -1,5 +1,4 @@
 import React from 'react';
-import { Rate, Theme } from '@lugia/lugia-web';
 import styled from 'styled-components';
 import Disabled from './Disabled';
 import Limit from './Limit';
@@ -14,6 +13,7 @@ import ThemeUploadListFailedIcon from './ThemeUploadListFailedIcon';
 import ThemeUploadButtonType from './ThemeUploadButtonType';
 import ThemeUploadPictureType from './ThemeUploadPictureType';
 import ThemeUploadAreaType from './ThemeUploadAreaType';
+
 const Contain = styled.div`
   float: left;
   width: 50%;

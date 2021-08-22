@@ -5,7 +5,7 @@
  */
 import { px2remcss } from '../css/units';
 import { css, keyframes } from 'styled-components';
-import type { ThemeType } from '@lugia/lugia-web';
+import type { ThemeType } from '../../interface/types';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 
 import { getBorder, getBoxShadow } from '@lugia/theme-utils';

@@ -5,7 +5,6 @@
  */
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
-import type { ThemeType } from '@lugia/lugia-web';
 import { css } from 'styled-components';
 import type { SizeType } from './transfer';
 

@@ -1,5 +1,5 @@
 //@flow
-import type { EditTableEventListenerHandle } from '@lugia/lugia-web';
+import type { EditTableEventListenerHandle } from '../../interface/types';
 import * as React from 'react';
 import { px2emcss } from '../css/units';
 import changeColor from '../css/utilsColor';

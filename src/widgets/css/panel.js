@@ -7,7 +7,7 @@ import { css, keyframes } from 'styled-components';
 import CSSComponent from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import changeColor from '../css/utilsColor';
-import type { ThemeType } from '@lugia/lugia-web';
+import type { ThemeType } from '../../interface/types';
 import get from './theme-common-dict';
 import { getBorderRadius } from '@lugia/theme-utils';
 

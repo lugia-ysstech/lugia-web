@@ -1,5 +1,5 @@
 //@flow
-import type { ThemeType } from '@lugia/lugia-web';
+import type { ThemeType } from '../../../interface/types';
 
 import {
   createGetMargin,
