@@ -118,6 +118,11 @@
       "type": "icon",
       "desc": "清除图标"
     },
+    "canClear": {
+      "type": "boolean",
+      "desc": "是否展示清除按钮",
+      "propsDefaultValue": true
+    },
     "alwaysOpen": {
       "type": "boolean",
       "desc": "控制面板是否始终展开",
