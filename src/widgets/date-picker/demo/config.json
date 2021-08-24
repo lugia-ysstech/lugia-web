@@ -30,5 +30,9 @@
   "ExtraFooterDemo": {
     "title": "页脚",
     "desc": "在面板中添加页脚,可以用来定制某些信息"
+  },
+  "CanClearDemo": {
+    "title": "是否开启清除按钮",
+    "desc": "默认开启"
   }
 }
