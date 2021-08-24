@@ -50,6 +50,7 @@ type TypeProps = {
   popupContainerId?: string,
   limitMinValue?: string,
   limitMaxValue?: string,
+  canClear?: boolean,
 };
 type TypeState = {
   value: Array<string>,
@@ -479,6 +480,7 @@ class Range extends Component<TypeProps, TypeState> {
       popupContainerId,
       disabledEndTime,
       disabledStartTime,
+      canClear = true,
     } = this.props;
     const { monthAndYear } = this;
     const newMonthAndYear = monthAndYear.length > 0 ? monthAndYear : panelValue;
@@ -590,6 +592,7 @@ class Range extends Component<TypeProps, TypeState> {
             startDisabled={disabledStartTime}
             endDisabled={disabledEndTime}
             disabled={newDisabled}
+            canClear={canClear}
           />
         </Trigger>
       </Box>
