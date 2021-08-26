@@ -52,6 +52,7 @@ type TypeProps = {
   popupContainerId?: string,
   limitMinValue?: string,
   limitMaxValue?: string,
+  canClear?: boolean,
 };
 type TypeState = {
   value: string,
@@ -124,6 +125,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       popupContainerId,
       step,
       showTime,
+      canClear = true,
     } = this.props;
     const {
       value,
@@ -152,6 +154,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { themeConfig: inputPrefixThemeConfig } = inputPrefixProps;
     const { suffixIcon, prefixIcon } = getDateIcon({
       ...this.props,
+      canClear,
       value: this.state.value,
       onClear: this.onClear,
       clearButtonTheme: clearButtonProps,

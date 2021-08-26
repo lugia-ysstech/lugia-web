@@ -115,6 +115,11 @@
       "type": "icon",
       "desc": "清除图标"
     },
+    "canClear": {
+      "type": "boolean",
+      "desc": "是否展示清除按钮",
+      "propsDefaultValue": true
+    },
     "validateStatus": {
       "type": "ValidateStatus",
       "desc": "校验状态"

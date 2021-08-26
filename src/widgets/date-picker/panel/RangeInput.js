@@ -45,6 +45,7 @@ type TypeProps = {
   endDisabled?: boolean,
   limitMinValue?: string,
   limitMaxValue?: string,
+  canClear: boolean,
 };
 type TypeState = {
   value: Array<string>,
@@ -108,6 +109,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
       value,
       themeProps,
       middleSymbol = '~',
+      canClear,
     } = this.props;
     const config = {
       onFocus: disabled || readOnly ? '' : this.onFocus,
@@ -154,6 +156,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
     const { themeConfig: inputPrefixThemeConfig } = inputPrefixProps;
     const { suffixIcon, prefixIcon } = getDateIcon({
       ...this.props,
+      canClear,
       onClear: this.onClear,
       clearButtonTheme: clearButtonProps,
     });
