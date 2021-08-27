@@ -81,11 +81,11 @@
 		"updateVersion": " node --max-old-space-size=24000  scripts/changeVersion.js"
 	},
 	"devDependencies": {
-    "@lugia/lugia-package-demo": "^1.0.7",
-    "@babel/preset-flow": "^7.12.13",
+		"@babel/preset-flow": "^7.12.13",
 		"@lugia/dict": "^1.0.5",
 		"@lugia/jverify": "^1.0.12",
-		"@lugia/lugia-package-widgets": "^1.0.4-alpha.0",
+		"@lugia/lugia-package-demo": "^1.0.7",
+		"@lugia/lugia-package-widgets": "^1.0.8",
 		"@lugia/lugiax-router": "^1.0.22",
 		"@lugia/mega-scripts": "^1.6.16",
 		"@lugia/react-test-utils": "^1.0.2",

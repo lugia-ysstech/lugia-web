@@ -1229,10 +1229,10 @@
     rxjs "^6.3.3"
     tslib "^1.11.1"
 
-"@lugia/lugia-package-common@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.nlark.com/@lugia/lugia-package-common/download/@lugia/lugia-package-common-1.0.5.tgz#49a9245afb5a86d5cf22c4b5582da1da5fc08f6a"
-  integrity sha1-SakkWvtahtXPIsS1WC2h2l/Aj2o=
+"@lugia/lugia-package-common@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/@lugia/lugia-package-common/-/lugia-package-common-1.0.6.tgz#3b915a85548672767851270bf8953d29efa06d91"
+  integrity sha512-JYrF+yBCPm7o2wbN44S8I5fTfCq+gvMNf9uQJkDfeqexMCqe0CALtuJlEM4mQg+i6vJrI6fE7WIQCkDCzN5zyQ==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.13.0"
     "@babel/plugin-proposal-decorators" "^7.13.5"
@@ -1273,13 +1273,21 @@
   resolved "https://registry.nlark.com/@lugia/lugia-package-material/download/@lugia/lugia-package-material-1.0.2.tgz#b86c26c1fa99a12f24d791a06d7a889765d930f7"
   integrity sha1-uGwmwfqZoS8k15GgbXqIl2XZMPc=
 
-"@lugia/lugia-package-widgets@^1.0.4-alpha.0":
-  version "1.0.6"
-  resolved "https://registry.nlark.com/@lugia/lugia-package-widgets/download/@lugia/lugia-package-widgets-1.0.6.tgz#42213b982c5240f804d16be829fe7e9523f4e024"
-  integrity sha1-QiE7mCxSQPgE0WvoKf5+lSP04CQ=
+"@lugia/lugia-package-utils@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@lugia/lugia-package-utils/-/lugia-package-utils-1.0.1.tgz#440e2b2a8709d808d8a8f13cb602c775acfe7c30"
+  integrity sha512-QLHJBBduRJ00CPXVwjCAezkBkD/1OJ6+jar3LkLcS502hgir0mcGWHVr8eCDvXpsivYb/wHqFzQna1boex0cYA==
   dependencies:
-    "@lugia/lugia-package-common" "^1.0.5"
+    prettier "^1.18.2"
+
+"@lugia/lugia-package-widgets@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.npmjs.org/@lugia/lugia-package-widgets/-/lugia-package-widgets-1.0.8.tgz#c7bc787acff0889eb8dcaf19ef6a9cf0673f3f66"
+  integrity sha512-wNFZI9GoOQK8+rS1agOIqMON3MvYdyfZ5iBMJn9WabnAyP1P+BhhLbU+Xq7HAfPwRijvNXRkiWUJ5qH0geNDmw==
+  dependencies:
+    "@lugia/lugia-package-common" "^1.0.6"
     "@lugia/lugia-package-material" "^1.0.2"
+    "@lugia/lugia-package-utils" "^1.0.1"
     fs-extra "^9.1.0"
     ts-import-plugin "^1.6.6"
 

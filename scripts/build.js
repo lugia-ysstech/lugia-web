@@ -12,13 +12,12 @@ const commonInvalid = ['common', 'consts', 'css', 'utils', 'static'];
 const componentInvalid = [...commonInvalid, ...inValidComponent];
 const themeInvalid = [...commonInvalid];
 
-const extendCode = "import { load } from './css/theme-common-dict.js';\n" + 'export { load };';
-
 compileComponent({
   externals: [],
   importModules: [],
   componentInvalid,
   hideInTollPanelComponents,
   themeInvalid,
-  extendCode,
+  extendCode: "import { load } from './css/theme-common-dict.js';",
+  endCode: 'export { load };',
 });
