@@ -1,65 +1,109 @@
 {
   "widgetName": "Message",
   "title": "全局提示",
+  "aliasName": null,
   "desc": "全局提示，展示操作反馈信息。",
   "tag": "message 全局提示 提示信息 消息提示 提示窗口 提示弹窗 操作反馈 展示信息",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "content": {
+      "desc": "提示消息的内容",
       "type": "React.node",
-      "desc": "提示消息的内容"
+      "designOnly": false,
+      "injectProps": false
     },
     "time": {
-      "type": "number",
       "desc": "自定义延时关闭时间，单位为 秒, 设置 0 或 null 时不关闭",
-      "propsDefaultValue": 2,
-      "defaultValue": 0
+      "type": "number",
+      "designOnly": false,
+      "injectProps": false,
+      "propsDefaultValue": 2
     },
     "callBack": {
+      "desc": "关闭时的回调",
       "type": "Function",
-      "desc": "关闭时的回调"
+      "designOnly": false,
+      "injectProps": false
     },
     "icon": {
+      "desc": "自定义图标",
       "type": "string",
-      "desc": "自定义图标"
+      "designOnly": false,
+      "injectProps": false
     }
   },
-  "category": ["反馈"],
-  "theme": {
-    "Container": {
-      "name": "Message整体样式配置",
-      "desc": "为Message整体配置样式",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["boxShadow"],
-        ["background"],
-        ["borderRadius"],
-        ["padding"],
-        ["opacity"],
-        ["border"]
-      ]
-    },
-    "MessageText": {
-      "name": "Message文字样式配置",
-      "desc": "为Message文字配置样式",
-      "normal": [["color"], ["font"]]
-    },
-    "MessageIcon": {
-      "name": "Message图标样式配置",
-      "desc": "为Message图标配置样式",
-      "normal": [["color"], ["font"]]
-    }
-  },
+  "events": {},
+  "designInfo": {},
+  "category": [
+    "反馈"
+  ],
   "defaultTheme": {
     "Container": {
       "normal": {
         "width": 500
       }
+    }
+  },
+  "theme": {
+    "Container": {
+      "name": "Message整体样式配置",
+      "desc": "为Message整体配置样式",
+      "normal": [
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "border"
+        ]
+      ]
+    },
+    "MessageText": {
+      "name": "Message文字样式配置",
+      "desc": "为Message文字配置样式",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
+    },
+    "MessageIcon": {
+      "name": "Message图标样式配置",
+      "desc": "为Message图标配置样式",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     }
   }
 }

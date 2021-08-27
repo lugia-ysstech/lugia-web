@@ -1,59 +1,82 @@
 {
   "widgetName": "Drawer",
   "title": "抽屉",
+  "aliasName": null,
   "desc": "在屏幕边缘出现的浮层面板。",
   "tag": "抽屉 Drawer 弹窗 弹层 弹出面板",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "injectLugiad": {
+      "desc": null,
       "type": "Object",
-      "defaultValue": { "type": "Drawer" },
-      "isHidden": true
+      "designOnly": false,
+      "injectProps": false,
+      "defaultValue": {
+        "type": "Drawer"
+      }
     },
     "placement": {
-      "type": "PlacementType",
       "desc": "抽屉的方向",
+      "type": "PlacementType",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "right"
     },
     "title": {
+      "desc": "抽屉的标题",
       "type": "React.node",
-      "desc": "抽屉的标题"
+      "designOnly": false,
+      "injectProps": false
     },
     "visible": {
+      "desc": "抽屉是否展示",
       "type": "boolean",
-      "desc": "抽屉是否展示"
+      "designOnly": false,
+      "injectProps": false
     },
     "mask": {
-      "type": "boolean",
       "desc": "是否展示遮罩层",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": true
     },
     "maskClosable": {
-      "type": "boolean",
       "desc": "点击遮罩层是否允许关闭抽屉",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": true
     },
     "closable": {
-      "type": "boolean",
       "desc": "是否展示抽屉右上角关闭按钮",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "sidebar": {
-      "type": "boolean",
       "desc": "是否展示抽屉侧边抽拉按钮",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "getContainer": {
+      "desc": "是否在指定容器内展示抽屉",
       "type": "boolean | React.node | function",
-      "desc": "是否在指定容器内展示抽屉"
+      "designOnly": false,
+      "injectProps": false
     },
     "drawerCloseIcon": {
+      "desc": "自定义关闭图标",
       "type": "icon",
-      "desc": "自定义关闭图标"
+      "designOnly": false,
+      "injectProps": false
     }
   },
   "events": {
@@ -66,39 +89,81 @@
       "args": []
     }
   },
+  "designInfo": {},
+  "category": [
+    "反馈"
+  ],
   "type": {
     "PlacementType": [
-      { "value": "top", "text": "顶部" },
-      { "value": "right", "text": "右侧" },
-      { "value": "left", "text": "左侧" },
-      { "value": "bottom", "text": "底部" }
+      {
+        "value": "top",
+        "text": "顶部"
+      },
+      {
+        "value": "right",
+        "text": "右侧"
+      },
+      {
+        "value": "left",
+        "text": "左侧"
+      },
+      {
+        "value": "bottom",
+        "text": "底部"
+      }
     ]
   },
-  "category": ["反馈"],
   "theme": {
     "Container": {
       "name": "抽屉整体样式",
       "desc": "为抽屉配置整体样式",
       "normal": [
-        ["width"],
-        ["height"],
-        ["borderRadius"],
-        ["opacity"],
-        ["background"],
-        ["border"],
-        ["boxShadow"],
-        ["padding"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "padding"
+        ]
       ]
     },
     "DrawerContent": {
       "name": "抽屉内容样式",
       "desc": "为抽屉内容配置样式",
-      "normal": [["background"]]
+      "normal": [
+        [
+          "background"
+        ]
+      ]
     },
     "DrawerTitle": {
       "name": "抽屉标题样式",
       "desc": "为抽屉标题配置样式",
-      "normal": [["font"], ["color"]]
+      "normal": [
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
+      ]
     },
     "DrawerCloseIcon": {
       "name": "抽屉关闭图标样式",
@@ -107,22 +172,82 @@
         "Icon": {
           "name": "图标",
           "desc": "图标",
-          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
-          "hover": [["color"], ["margin"], ["cursor"]],
-          "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
-          "disabled": [["color"], ["cursor"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "cursor"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "cursor"
+            ]
+          ],
+          "active": [
+            [
+              "color"
+            ],
+            [
+              "cursor"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "cursor"
+            ]
+          ]
         }
       }
     },
     "DrawerMask": {
       "name": "抽屉遮罩样式",
       "desc": "为抽屉遮罩配置样式",
-      "normal": [["opacity"], ["background"]]
+      "normal": [
+        [
+          "opacity"
+        ],
+        [
+          "background"
+        ]
+      ]
     },
     "HandleWrap": {
       "name": "抽屉把手样式",
       "desc": "为抽屉把手配置样式",
-      "normal": [["opacity"], ["background"]]
+      "normal": [
+        [
+          "opacity"
+        ],
+        [
+          "background"
+        ]
+      ]
     }
   }
 }

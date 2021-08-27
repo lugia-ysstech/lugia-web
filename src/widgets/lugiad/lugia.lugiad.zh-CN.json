@@ -1,47 +1,93 @@
 {
   "widgetName": "Lugiad",
   "title": "Lugiad页面",
+  "aliasName": null,
   "desc": "用于放入一个lugiad格式的子页面",
   "tag": "lugiad Lugiad页面 子页面 页面容器 页面卡片",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "content": {
+      "desc": "mega项目中包含的子页面",
       "type": "lugiaDPages",
-      "desc": "mega项目中包含的子页面"
+      "designOnly": false,
+      "injectProps": false
     }
   },
-  "category": ["数据展示"],
+  "events": {},
   "designInfo": {},
-  "theme": {
-    "Container": {
-      "name": "容器整体",
-      "desc": "配置容器整体",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["boxShadow"],
-        ["border"],
-        ["borderRadius"],
-        ["margin"],
-        ["padding"],
-        ["boxShadow"],
-        ["opacity"],
-        ["borderRadius"]
-      ],
-      "hover": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["opacity"]]
-    }
-  },
+  "category": [
+    "数据展示"
+  ],
   "defaultTheme": {
     "Container": {
       "normal": {
         "width": 750,
         "height": 400
       }
+    }
+  },
+  "theme": {
+    "Container": {
+      "name": "容器整体",
+      "desc": "配置容器整体",
+      "normal": [
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "borderRadius"
+        ]
+      ],
+      "hover": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "opacity"
+        ]
+      ]
     }
   }
 }

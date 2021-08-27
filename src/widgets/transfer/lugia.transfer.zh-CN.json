@@ -1,121 +1,210 @@
 {
   "widgetName": "Transfer",
   "title": "穿梭框",
+  "aliasName": null,
   "desc": "穿梭框。",
   "tag": "transfer 基本穿梭框 基础穿梭框 选项穿梭框 选择穿梭框 数据展示 表单",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
-    "sourcePlateTitle":{
+    "sourcePlateTitle": {
+      "desc": "左边板子的标题",
       "type": "string",
-      "desc": "左边板子的标题"
+      "designOnly": false,
+      "injectProps": false
     },
-    "targetPlateTitle":{
+    "targetPlateTitle": {
+      "desc": "右边板子的标题",
       "type": "string",
-      "desc": "右边板子的标题"
+      "designOnly": false,
+      "injectProps": false
     },
     "data": {
-      "type": "Object[]",
       "desc": "左右两个面板数据源",
-      "meta": [
-        { "key": "text", "title": "展示文字", "type": "string" },
-        { "key": "value", "title": "对应字段", "type": "string" },
-        { "key": "disabled", "title": "是否禁用", "type": "boolean" }
-      ],
+      "type": "Object[]",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": [
-        { "text": "选项1", "value": "选项1", "disabled": false },
-        { "text": "选项2", "value": "选项2", "disabled": false },
-        { "text": "选项3", "value": "选项3", "disabled": false },
-        { "text": "选项4", "value": "选项4", "disabled": false }
+        {
+          "text": "选项1",
+          "value": "选项1",
+          "disabled": false
+        },
+        {
+          "text": "选项2",
+          "value": "选项2",
+          "disabled": false
+        },
+        {
+          "text": "选项3",
+          "value": "选项3",
+          "disabled": false
+        },
+        {
+          "text": "选项4",
+          "value": "选项4",
+          "disabled": false
+        }
       ],
-      "propsDefaultValue": []
+      "propsDefaultValue": [],
+      "meta": [
+        {
+          "key": "text",
+          "title": "展示文字",
+          "type": "string"
+        },
+        {
+          "key": "value",
+          "title": "对应字段",
+          "type": "string"
+        },
+        {
+          "key": "disabled",
+          "title": "是否禁用",
+          "type": "boolean"
+        }
+      ]
     },
     "showSearch": {
+      "desc": "是否展示搜索框",
       "type": "boolean",
-      "desc": "是否展示搜索框"
+      "designOnly": false,
+      "injectProps": false
     },
     "filterOption": {
+      "desc": "搜索条件函数，接收 inputValue 和 option 两个参数，可以自定义筛选条件",
       "type": "Function",
-      "desc": "搜索条件函数，接收 inputValue 和 option 两个参数，可以自定义筛选条件"
+      "designOnly": false,
+      "injectProps": false
     },
     "value": {
+      "desc": "显示在右侧面板数据集合",
       "type": "string[]",
-      "desc": "显示在右侧面板数据集合"
+      "designOnly": false,
+      "injectProps": false
     },
     "defaultValue": {
+      "desc": "显示在右侧面板初始数据集合",
       "type": "string[]",
-      "desc": "显示在右侧面板初始数据集合"
+      "designOnly": false,
+      "injectProps": false
     },
     "sourceSelectedKeys": {
+      "desc": "左侧面板选中值的集合",
       "type": "string[]",
-      "desc": "左侧面板选中值的集合"
+      "designOnly": false,
+      "injectProps": false
     },
     "targetSelectedKeys": {
+      "desc": "右侧面板选中值的集合",
       "type": "string[]",
-      "desc": "右侧面板选中值的集合"
+      "designOnly": false,
+      "injectProps": false
     },
     "defaultSourceSelectedKeys": {
+      "desc": "左侧面板初始选中值的集合",
       "type": "string[]",
-      "desc": "左侧面板初始选中值的集合"
+      "designOnly": false,
+      "injectProps": false
     },
     "defaultTargetSelectedKeys": {
+      "desc": "右侧面板初始选中值的集合",
       "type": "string[]",
-      "desc": "右侧面板初始选中值的集合"
+      "designOnly": false,
+      "injectProps": false
     },
     "type": {
-      "type": "TransferType",
       "desc": "指定 Transfer 类型，可设置为tree 或不设",
+      "type": "TransferType",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "panel"
     },
     "displayField": {
-      "type": "string",
       "desc": "指定 Transfer 面板展示字段值",
+      "type": "string",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "text"
     },
     "valueField": {
-      "type": "string",
       "desc": "指定 Transfer 面板选项 value 字段值",
+      "type": "string",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "value"
     },
     "size": {
-      "type": "SizeType",
       "desc": "指定 Transfer 的尺寸",
+      "type": "SizeType",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "default"
     },
     "transferClearIcon": {
+      "desc": "清除图标类型",
       "type": "icon",
-      "desc": "清除图标类型"
+      "designOnly": false,
+      "injectProps": false
     },
     "transferPrefixIcon": {
+      "desc": "前缀图标类型",
       "type": "icon",
-      "desc": "前缀图标类型"
+      "designOnly": false,
+      "injectProps": false
     },
     "transferSuffixIcon": {
+      "desc": "后缀图标类型",
       "type": "icon",
-      "desc": "后缀图标类型"
+      "designOnly": false,
+      "injectProps": false
     },
     "transferButtonIcon": {
-      "type": "object",
       "desc": "生成选择项的数据",
+      "type": "object",
+      "designOnly": false,
+      "injectProps": false,
       "meta": [
-        { "key": "transferLeftButtonIcon", "title": "左穿梭图标", "type": "icon" },
-        { "key": "transferRightButtonIcon", "title": "右穿梭图标", "type": "icon" }
+        {
+          "key": "transferLeftButtonIcon",
+          "title": "左穿梭图标",
+          "type": "icon"
+        },
+        {
+          "key": "transferRightButtonIcon",
+          "title": "右穿梭图标",
+          "type": "icon"
+        }
       ]
     },
     "switchIconNames": {
-      "type": "object",
       "desc": "生成选择项的数据",
+      "type": "object",
+      "designOnly": false,
+      "injectProps": false,
       "meta": [
-        { "key": "open", "title": "展开图标", "type": "icon" },
-        { "key": "close", "title": "关闭图标", "type": "icon" }
+        {
+          "key": "open",
+          "title": "展开图标",
+          "type": "icon"
+        },
+        {
+          "key": "close",
+          "title": "关闭图标",
+          "type": "icon"
+        }
       ]
     },
     "title": {
+      "desc": "穿梭框面板头部标题",
       "type": "string",
-      "desc": "穿梭框面板头部标题"
+      "designOnly": false,
+      "injectProps": false
     }
   },
   "events": {
@@ -170,39 +259,19 @@
       ]
     }
   },
-  "type": {
-    "SizeType": [
-      { "value": "small", "text": "小" },
-      { "value": "default", "text": "正常" },
-      { "value": "large", "text": "大" }
-    ],
-    "TransferType": [
-      { "value": "panel", "text": "基本穿梭框" },
-      { "value": "tree", "text": "树型穿梭框" }
-    ],
-    "DirectionType": ["left", "right"],
-    "TransferStyle": {
-      "height": {
-        "type": "number",
-        "desc": "Transfer 的高度"
-      },
-      "width": {
-        "type": "number",
-        "desc": "Transfer 的宽度"
-      }
-    }
-  },
-  "category": ["数据录入"],
   "designInfo": {
     "TransferTree": {
-      "sequence": 1,
       "title": "树形穿梭框",
-      "desc": "树形穿梭框，展示树形数据",
+      "sequence": 1,
       "tag": "transfer 树形穿梭框 展示树形数据 表单",
+      "desc": "树形穿梭框，展示树形数据",
       "props": {
         "type": "tree",
         "data": [
-          { "text": "1", "value": "1" },
+          {
+            "text": "1",
+            "value": "1"
+          },
           {
             "text": "2",
             "value": "2",
@@ -211,16 +280,28 @@
                 "text": "2.1",
                 "value": "2.1",
                 "children": [
-                  { "text": "2.1.1", "value": "2.1.1" },
-                  { "text": "2.1.2", "value": "2.1.2" }
+                  {
+                    "text": "2.1.1",
+                    "value": "2.1.1"
+                  },
+                  {
+                    "text": "2.1.2",
+                    "value": "2.1.2"
+                  }
                 ]
               },
               {
                 "text": "2.2",
                 "value": "2.2",
                 "children": [
-                  { "text": "2.2.1", "value": "2.2.1" },
-                  { "text": "2.2.2", "value": "2.2.2" }
+                  {
+                    "text": "2.2.1",
+                    "value": "2.2.1"
+                  },
+                  {
+                    "text": "2.2.2",
+                    "value": "2.2.2"
+                  }
                 ]
               }
             ]
@@ -232,34 +313,77 @@
           "name": "穿梭框整体样式",
           "desc": "为穿梭框配置整体样式",
           "normal": [
-            ["width"],
-            ["height"],
-            ["margin"],
-            ["padding"],
-            ["background"],
-            ["border"],
-            ["borderRadius"]
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ]
           ]
         },
         "TransferPanel": {
           "name": "穿梭框面板样式",
           "desc": "为穿梭框配置左右面板样式",
           "normal": [
-            ["width"],
-            ["height"],
-            ["margin"],
-            ["padding"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"],
-            ["opacity"]
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "opacity"
+            ]
           ]
         },
         "TransferHeaderWrap": {
           "name": "穿梭框面板头部",
           "desc": "为穿梭框配置左右面板头部样式",
-          "normal": [["background"], ["border", "bottom"], ["padding"]]
+          "normal": [
+            [
+              "background"
+            ],
+            [
+              "border",
+              "bottom"
+            ],
+            [
+              "padding"
+            ]
+          ]
         },
         "TransferPanelHeaderCheckbox": {
           "name": "穿梭框面板头部Checkbox",
@@ -268,58 +392,263 @@
             "CheckboxWrap": {
               "name": "Checkbox整体配置",
               "desc": "Checkbox整体配置",
-              "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
-              "hover": [["opacity"]],
-              "disabled": [["opacity"]]
+              "normal": [
+                [
+                  "opacity"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ]
+              ],
+              "hover": [
+                [
+                  "opacity"
+                ]
+              ],
+              "disabled": [
+                [
+                  "opacity"
+                ]
+              ]
             },
             "CheckboxText": {
               "name": "Checkbox文字配置",
               "desc": "Checkbox文字配置",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ]
             },
             "CheckboxEdgeChecked": {
               "name": "Checkbox选中后边框配置",
               "desc": "Checkbox选中后边框配置样式",
-              "normal": [["background"], ["borderRadius"], ["border"]],
-              "hover": [["background"], ["borderRadius"], ["border"]],
-              "disabled": [["background"], ["borderRadius"], ["border"]]
+              "normal": [
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "hover": [
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "disabled": [
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "border"
+                ]
+              ]
             },
             "CheckboxEdgeUnChecked": {
               "name": "Checkbox未选中边框配置",
               "desc": "Checkbox未选中边框配置样式",
-              "normal": [["background"], ["borderRadius"], ["border"]],
-              "hover": [["background"], ["borderRadius"], ["border"]],
-              "disabled": [["background"], ["borderRadius"], ["border"]]
+              "normal": [
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "hover": [
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "disabled": [
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "border"
+                ]
+              ]
             },
             "CheckboxEdgeIndeterminate": {
               "name": "Checkbox半选边框配置",
               "desc": "Checkbox半选状态边框配置样式",
-              "normal": [["background"], ["borderRadius"], ["border"]],
-              "hover": [["background"], ["borderRadius"], ["border"]],
-              "disabled": [["background"], ["borderRadius"], ["border"]]
+              "normal": [
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "hover": [
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "disabled": [
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "border"
+                ]
+              ]
             },
             "CheckboxInnerChecked": {
               "name": "Checkbox选中样式配置",
               "desc": "Checkbox选中样式配置",
-              "normal": [["background"], ["width"], ["height"]],
-              "hover": [["background"], ["width"], ["height"]],
-              "disabled": [["background"], ["width"], ["height"]]
+              "normal": [
+                [
+                  "background"
+                ],
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ]
+              ],
+              "hover": [
+                [
+                  "background"
+                ],
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ]
+              ],
+              "disabled": [
+                [
+                  "background"
+                ],
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ]
+              ]
             },
             "CheckboxInnerIndeterminate": {
               "name": "Checkbox半选样式配置",
               "desc": "Checkbox半选状态样式配置",
-              "normal": [["background"], ["width"], ["height"]],
-              "hover": [["background"], ["width"], ["height"]],
-              "disabled": [["background"], ["width"], ["height"]]
+              "normal": [
+                [
+                  "background"
+                ],
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ]
+              ],
+              "hover": [
+                [
+                  "background"
+                ],
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ]
+              ],
+              "disabled": [
+                [
+                  "background"
+                ],
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ]
+              ]
             }
           }
         },
         "TransferHeaderText": {
           "name": "穿梭框面板头部文字样式",
           "desc": "为穿梭框配置左右面板头部文字样式",
-          "normal": [["padding"], ["color"], ["font"]]
+          "normal": [
+            [
+              "padding"
+            ],
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ]
         },
         "TransferSearchInput": {
           "name": "穿梭框面板搜索框样式",
@@ -329,54 +658,150 @@
               "name": "输入框",
               "desc": "输入框外部容器",
               "normal": [
-                ["width"],
-                ["height"],
-                ["margin"],
-                ["fontSize"],
-                ["font"],
-                ["color"],
-                ["background"],
-                ["border"],
-                ["borderRadius"],
-                ["cursor"],
-                ["opacity"]
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "cursor"
+                ],
+                [
+                  "opacity"
+                ]
               ],
               "hover": [
-                ["border"],
-                ["borderRadius"],
-                ["cursor"],
-                ["background"],
-                ["opacity"],
-                ["boxShadow"]
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "cursor"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "boxShadow"
+                ]
               ],
-              "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+              "active": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "cursor"
+                ],
+                [
+                  "background"
+                ]
+              ],
               "focus": [
-                ["border"],
-                ["borderRadius"],
-                ["background"],
-                ["opacity"],
-                ["boxShadow"],
-                ["cursor"],
-                ["fontSize"],
-                ["font"],
-                ["color"]
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "boxShadow"
+                ],
+                [
+                  "cursor"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ]
               ],
               "disabled": [
-                ["fontSize"],
-                ["font"],
-                ["color"],
-                ["background"],
-                ["border"],
-                ["borderRadius"],
-                ["cursor"],
-                ["padding"],
-                ["opacity"]
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "cursor"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "opacity"
+                ]
               ]
             },
             "InputSuffix": {
               "name": "后缀图标",
               "desc": "输入框后缀自定义图标",
-              "normal": [["color"], ["fontSize"], ["font"]],
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ]
+              ],
               "hover": [],
               "clicked": [],
               "disabled": []
@@ -384,23 +809,89 @@
             "InputPrefix": {
               "name": "前缀图标",
               "desc": "输入框前缀自定义图标",
-              "normal": [["color"], ["fontSize"], ["font"], ["padding"], ["margin"]],
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "margin"
+                ]
+              ],
               "hover": [],
               "clicked": [],
-              "disabled": [["color"], ["fontSize"], ["font"]]
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ]
+              ]
             },
             "ClearButton": {
               "name": "输入框清除图标",
               "desc": "输入框后缀清除图标",
-              "normal": [["color"], ["fontSize"], ["font"]],
-              "hover": [["color"], ["fontSize"], ["font"]],
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ]
+              ],
               "clicked": [],
-              "disabled": [["color"], ["fontSize"], ["font"]]
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ]
+              ]
             },
             "Placeholder": {
               "name": "输入框提示信息文字",
               "desc": "输入框提示信息文字",
-              "normal": [["color"], ["fontSize"], ["font"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ]
+              ]
             }
           }
         },
@@ -408,12 +899,25 @@
           "name": "穿梭框面板取消项盒子样式",
           "desc": "为穿梭框配置右面板取消项盒子样式",
           "normal": [
-            ["width"],
-            ["height"],
-            ["margin"],
-            ["padding"],
-            ["background"],
-            ["border", "top"]
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border",
+              "top"
+            ]
           ]
         },
         "TransferCancelCheckbox": {
@@ -423,33 +927,100 @@
             "CheckboxWrap": {
               "name": "Checkbox整体配置",
               "desc": "Checkbox整体配置",
-              "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
-              "hover": [["opacity"]],
-              "disabled": [["opacity"]]
+              "normal": [
+                [
+                  "opacity"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ]
+              ],
+              "hover": [
+                [
+                  "opacity"
+                ]
+              ],
+              "disabled": [
+                [
+                  "opacity"
+                ]
+              ]
             },
             "CheckboxText": {
               "name": "Checkbox文字配置",
               "desc": "Checkbox文字配置",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ]
             },
             "CheckboxEdgeCancel": {
               "name": "取消状态外框样式",
               "desc": "取消状态外框样式",
               "normal": [
-                ["background"],
-                ["borderRadius"],
-                ["border"],
-                ["boxShadow"],
-                ["width"],
-                ["height"]
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "boxShadow"
+                ],
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ]
               ]
             },
             "CheckboxInnerCancel": {
               "name": "Checkbox取消状态样式配置",
               "desc": "Checkbox取消状态样式配置",
-              "normal": [["background"], ["width"], ["height"]]
+              "normal": [
+                [
+                  "background"
+                ],
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ]
+              ]
             }
           }
         },
@@ -461,16 +1032,45 @@
               "name": "树形控件外盒",
               "desc": "配置树形组件的外盒样式",
               "normal": [
-                ["width"],
-                ["height"],
-                ["background"],
-                ["opacity"],
-                ["border"],
-                ["borderRadius"],
-                ["margin"],
-                ["padding"]
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "padding"
+                ]
               ],
-              "hover": [["background"], ["opacity"], ["border"], ["borderRadius"]],
+              "hover": [
+                [
+                  "background"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ]
+              ],
               "clicked": [],
               "disabled": []
             },
@@ -480,132 +1080,555 @@
                   "name": "项的外盒",
                   "desc": "配置每一项的外盒",
                   "normal": [
-                    ["background"],
-                    ["border"],
-                    ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["padding"]
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "opacity"
+                    ],
+                    [
+                      "color"
+                    ],
+                    [
+                      "padding"
+                    ]
                   ],
-                  "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-                  "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+                  "hover": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "opacity"
+                    ],
+                    [
+                      "color"
+                    ]
+                  ],
+                  "active": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "opacity"
+                    ],
+                    [
+                      "color"
+                    ]
+                  ],
                   "disabled": []
                 },
                 "SelectedTreeItemWrap": {
                   "name": "选中项的外盒",
                   "desc": "配置选中项的外盒",
                   "normal": [
-                    ["background"],
-                    ["border"],
-                    ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["padding"]
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "opacity"
+                    ],
+                    [
+                      "color"
+                    ],
+                    [
+                      "padding"
+                    ]
                   ],
-                  "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-                  "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+                  "hover": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "opacity"
+                    ],
+                    [
+                      "color"
+                    ]
+                  ],
+                  "active": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "opacity"
+                    ],
+                    [
+                      "color"
+                    ]
+                  ],
                   "disabled": []
                 },
                 "Text": {
                   "name": "项的文本",
                   "desc": "配置每一项文本内容的样式",
                   "normal": [
-                    ["color"],
-                    ["font"],
-                    ["background"],
-                    ["padding"],
-                    ["border"],
-                    ["borderRadius"]
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ],
+                    [
+                      "background"
+                    ],
+                    [
+                      "padding"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ]
                   ],
-                  "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-                  "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-                  "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
+                  "hover": [
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ],
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ]
+                  ],
+                  "active": [
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ],
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ]
+                  ],
+                  "disabled": [
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ],
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ]
+                  ]
                 },
                 "SelectedText": {
                   "name": "选中项的文本",
                   "desc": "配置选中项文本内容的样式",
                   "normal": [
-                    ["color"],
-                    ["font"],
-                    ["background"],
-                    ["padding"],
-                    ["border"],
-                    ["borderRadius"]
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ],
+                    [
+                      "background"
+                    ],
+                    [
+                      "padding"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ]
                   ],
-                  "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-                  "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-                  "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
+                  "hover": [
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ],
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ]
+                  ],
+                  "active": [
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ],
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ]
+                  ],
+                  "disabled": [
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ],
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ]
+                  ]
                 },
                 "Switch": {
                   "name": "控制器配置",
                   "desc": "配置控制树节点展开或隐藏的控制器的样式",
-                  "normal": [["color"], ["font"]],
-                  "hover": [["color"], ["font"]],
-                  "active": [["color"], ["font"]],
-                  "disabled": [["color"], ["font"]]
+                  "normal": [
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ]
+                  ],
+                  "hover": [
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ]
+                  ],
+                  "active": [
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ]
+                  ],
+                  "disabled": [
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ]
+                  ]
                 },
                 "Checkbox": {
                   "theme": {
                     "CheckboxWrap": {
                       "name": "Checkbox整体配置",
                       "desc": "Checkbox整体配置",
-                      "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
-                      "hover": [["opacity"]],
-                      "disabled": [["opacity"]]
+                      "normal": [
+                        [
+                          "opacity"
+                        ],
+                        [
+                          "margin"
+                        ],
+                        [
+                          "padding"
+                        ],
+                        [
+                          "width"
+                        ],
+                        [
+                          "height"
+                        ]
+                      ],
+                      "hover": [
+                        [
+                          "opacity"
+                        ]
+                      ],
+                      "disabled": [
+                        [
+                          "opacity"
+                        ]
+                      ]
                     },
                     "CheckboxText": {
                       "name": "Checkbox文字配置",
                       "desc": "Checkbox文字配置",
-                      "normal": [["color"], ["font"]],
-                      "hover": [["color"], ["font"]],
-                      "disabled": [["color"], ["font"]]
+                      "normal": [
+                        [
+                          "color"
+                        ],
+                        [
+                          "font"
+                        ]
+                      ],
+                      "hover": [
+                        [
+                          "color"
+                        ],
+                        [
+                          "font"
+                        ]
+                      ],
+                      "disabled": [
+                        [
+                          "color"
+                        ],
+                        [
+                          "font"
+                        ]
+                      ]
                     },
                     "CheckboxEdgeChecked": {
                       "name": "Checkbox选中后边框配置",
                       "desc": "Checkbox选中后边框配置样式",
-                      "normal": [["background"], ["borderRadius"], ["border"]],
-                      "hover": [["background"], ["borderRadius"], ["border"]],
-                      "disabled": [["background"], ["borderRadius"], ["border"]]
+                      "normal": [
+                        [
+                          "background"
+                        ],
+                        [
+                          "borderRadius"
+                        ],
+                        [
+                          "border"
+                        ]
+                      ],
+                      "hover": [
+                        [
+                          "background"
+                        ],
+                        [
+                          "borderRadius"
+                        ],
+                        [
+                          "border"
+                        ]
+                      ],
+                      "disabled": [
+                        [
+                          "background"
+                        ],
+                        [
+                          "borderRadius"
+                        ],
+                        [
+                          "border"
+                        ]
+                      ]
                     },
                     "CheckboxEdgeUnChecked": {
                       "name": "Checkbox未选中边框配置",
                       "desc": "Checkbox未选中边框配置样式",
-                      "normal": [["background"], ["borderRadius"], ["border"]],
-                      "hover": [["background"], ["borderRadius"], ["border"]],
-                      "disabled": [["background"], ["borderRadius"], ["border"]]
+                      "normal": [
+                        [
+                          "background"
+                        ],
+                        [
+                          "borderRadius"
+                        ],
+                        [
+                          "border"
+                        ]
+                      ],
+                      "hover": [
+                        [
+                          "background"
+                        ],
+                        [
+                          "borderRadius"
+                        ],
+                        [
+                          "border"
+                        ]
+                      ],
+                      "disabled": [
+                        [
+                          "background"
+                        ],
+                        [
+                          "borderRadius"
+                        ],
+                        [
+                          "border"
+                        ]
+                      ]
                     },
                     "CheckboxInnerChecked": {
                       "name": "Checkbox选中样式配置",
                       "desc": "Checkbox选中样式配置",
-                      "normal": [["background"], ["width"], ["height"]],
-                      "hover": [["background"], ["width"], ["height"]],
-                      "disabled": [["background"], ["width"], ["height"]]
+                      "normal": [
+                        [
+                          "background"
+                        ],
+                        [
+                          "width"
+                        ],
+                        [
+                          "height"
+                        ]
+                      ],
+                      "hover": [
+                        [
+                          "background"
+                        ],
+                        [
+                          "width"
+                        ],
+                        [
+                          "height"
+                        ]
+                      ],
+                      "disabled": [
+                        [
+                          "background"
+                        ],
+                        [
+                          "width"
+                        ],
+                        [
+                          "height"
+                        ]
+                      ]
                     },
                     "CheckboxEdgeIndeterminate": {
                       "name": "半选外框样式",
                       "desc": "半选状态外框样式",
                       "normal": [
-                        ["background"],
-                        ["borderRadius"],
-                        ["border"],
-                        ["boxShadow"],
-                        ["width"],
-                        ["height"]
+                        [
+                          "background"
+                        ],
+                        [
+                          "borderRadius"
+                        ],
+                        [
+                          "border"
+                        ],
+                        [
+                          "boxShadow"
+                        ],
+                        [
+                          "width"
+                        ],
+                        [
+                          "height"
+                        ]
                       ],
                       "disabled": [
-                        ["background"],
-                        ["borderRadius"],
-                        ["border"],
-                        ["width"],
-                        ["height"]
+                        [
+                          "background"
+                        ],
+                        [
+                          "borderRadius"
+                        ],
+                        [
+                          "border"
+                        ],
+                        [
+                          "width"
+                        ],
+                        [
+                          "height"
+                        ]
                       ]
                     },
                     "CheckboxInnerIndeterminate": {
                       "name": "Checkbox半选样式配置",
                       "desc": "Checkbox半选状态样式配置",
-                      "normal": [["background"], ["width"], ["height"]],
-                      "hover": [["background"], ["width"], ["height"]],
-                      "disabled": [["background"], ["width"], ["height"]]
+                      "normal": [
+                        [
+                          "background"
+                        ],
+                        [
+                          "width"
+                        ],
+                        [
+                          "height"
+                        ]
+                      ],
+                      "hover": [
+                        [
+                          "background"
+                        ],
+                        [
+                          "width"
+                        ],
+                        [
+                          "height"
+                        ]
+                      ],
+                      "disabled": [
+                        [
+                          "background"
+                        ],
+                        [
+                          "width"
+                        ],
+                        [
+                          "height"
+                        ]
+                      ]
                     }
                   }
                 }
@@ -621,39 +1644,170 @@
               "name": "按钮整体样式",
               "desc": "为按钮配置整体样式",
               "normal": [
-                ["background"],
-                ["border"],
-                ["height"],
-                ["width"],
-                ["padding"],
-                ["margin"],
-                ["borderRadius"]
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "height"
+                ],
+                [
+                  "width"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "borderRadius"
+                ]
               ],
-              "hover": [["background"], ["border"]],
-              "active": [["background"], ["border"]],
-              "disabled": [["background"], ["border"]],
-              "focus": [["background"], ["border"]]
+              "hover": [
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "active": [
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "disabled": [
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "focus": [
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ]
+              ]
             },
             "ButtonText": {
               "name": "按钮文字样式",
               "desc": "为按钮文字配置样式",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"]],
-              "active": [["color"]],
-              "disabled": [["color"]],
-              "focus": [["color"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ]
+              ],
+              "active": [
+                [
+                  "color"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ]
+              ],
+              "focus": [
+                [
+                  "color"
+                ]
+              ]
             },
             "ButtonIcon": {
               "name": "按钮图标样式",
               "desc": "为按钮图标配置样式",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"]],
-              "active": [["color"]],
-              "disabled": [["color"]],
-              "focus": [["color"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ]
+              ],
+              "active": [
+                [
+                  "color"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ]
+              ],
+              "focus": [
+                [
+                  "color"
+                ]
+              ]
             }
           }
         }
+      }
+    }
+  },
+  "category": [
+    "数据录入"
+  ],
+  "type": {
+    "SizeType": [
+      {
+        "value": "small",
+        "text": "小"
+      },
+      {
+        "value": "default",
+        "text": "正常"
+      },
+      {
+        "value": "large",
+        "text": "大"
+      }
+    ],
+    "TransferType": [
+      {
+        "value": "panel",
+        "text": "基本穿梭框"
+      },
+      {
+        "value": "tree",
+        "text": "树型穿梭框"
+      }
+    ],
+    "DirectionType": [
+      "left",
+      "right"
+    ],
+    "TransferStyle": {
+      "height": {
+        "type": "number",
+        "desc": "Transfer 的高度"
+      },
+      "width": {
+        "type": "number",
+        "desc": "Transfer 的宽度"
       }
     }
   },
@@ -662,34 +1816,77 @@
       "name": "穿梭框整体样式",
       "desc": "为穿梭框配置整体样式",
       "normal": [
-        ["width"],
-        ["height"],
-        ["margin"],
-        ["padding"],
-        ["background"],
-        ["border"],
-        ["borderRadius"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ]
       ]
     },
     "TransferPanel": {
       "name": "穿梭框面板样式",
       "desc": "为穿梭框配置左右面板样式",
       "normal": [
-        ["width"],
-        ["height"],
-        ["margin"],
-        ["padding"],
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["boxShadow"],
-        ["opacity"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "opacity"
+        ]
       ]
     },
     "TransferHeaderWrap": {
       "name": "穿梭框面板头部",
       "desc": "为穿梭框配置左右面板头部样式",
-      "normal": [["background"], ["border", "bottom"], ["padding"]]
+      "normal": [
+        [
+          "background"
+        ],
+        [
+          "border",
+          "bottom"
+        ],
+        [
+          "padding"
+        ]
+      ]
     },
     "TransferPanelHeaderCheckbox": {
       "name": "穿梭框面板头部Checkbox",
@@ -698,92 +1895,324 @@
         "Container": {
           "name": "整体样式",
           "desc": "整体样式",
-          "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]]
+          "normal": [
+            [
+              "opacity"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
+          ]
         },
         "CheckboxText": {
           "name": "文字样式",
           "desc": "文字样式",
-          "normal": [["color"], ["font"], ["padding"]],
-          "hover": [["color"], ["font"]],
-          "disabled": [["color"], ["font"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ],
+            [
+              "padding"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ]
         },
         "CheckboxEdgeUnChecked": {
           "name": "未选中外框样式",
           "desc": "未选中外框样式",
           "normal": [
-            ["background"],
-            ["borderRadius"],
-            ["border"],
-            ["boxShadow"],
-            ["width"],
-            ["height"]
+            [
+              "background"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
           ],
-          "hover": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
-          "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+          "hover": [
+            [
+              "background"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "border"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
+          ],
+          "disabled": [
+            [
+              "background"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "border"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
+          ]
         },
         "CheckboxEdgeChecked": {
           "name": "选中外框样式",
           "desc": "选中外框样式",
           "normal": [
-            ["background"],
-            ["borderRadius"],
-            ["border"],
-            ["boxShadow"],
-            ["width"],
-            ["height"]
+            [
+              "background"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
           ],
-          "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+          "disabled": [
+            [
+              "background"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "border"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
+          ]
         },
         "CheckboxEdgeIndeterminate": {
           "name": "半选外框样式",
           "desc": "半选状态外框样式",
           "normal": [
-            ["background"],
-            ["borderRadius"],
-            ["border"],
-            ["boxShadow"],
-            ["width"],
-            ["height"]
+            [
+              "background"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
           ],
-          "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+          "disabled": [
+            [
+              "background"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "border"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
+          ]
         },
         "CheckboxEdgeCancel": {
           "name": "取消状态外框样式",
           "desc": "取消状态外框样式",
           "normal": [
-            ["background"],
-            ["borderRadius"],
-            ["border"],
-            ["boxShadow"],
-            ["width"],
-            ["height"]
+            [
+              "background"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
           ]
         },
         "CheckboxInnerChecked": {
           "name": "选中内框样式",
           "desc": "选中内框样式",
-          "normal": [["background"], ["width"], ["height"]],
-          "hover": [["background"], ["width"], ["height"]],
-          "disabled": [["background"], ["width"], ["height"]]
+          "normal": [
+            [
+              "background"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
+          ],
+          "hover": [
+            [
+              "background"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
+          ],
+          "disabled": [
+            [
+              "background"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
+          ]
         },
         "CheckboxInnerIndeterminate": {
           "name": "半选内框样式",
           "desc": "半选内框样式",
-          "normal": [["background"], ["width"], ["height"]],
-          "hover": [["background"], ["width"], ["height"]],
-          "disabled": [["background"], ["width"], ["height"]]
+          "normal": [
+            [
+              "background"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
+          ],
+          "hover": [
+            [
+              "background"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
+          ],
+          "disabled": [
+            [
+              "background"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
+          ]
         },
         "CheckboxInnerCancel": {
           "name": "取消状态内框样式",
           "desc": "取消状态内框样式",
-          "normal": [["background"], ["width"], ["height"]]
+          "normal": [
+            [
+              "background"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
+          ]
         }
       }
     },
     "TransferHeaderText": {
       "name": "穿梭框面板头部文字样式",
       "desc": "为穿梭框配置左右面板头部文字样式",
-      "normal": [["padding"], ["color"], ["font"]]
+      "normal": [
+        [
+          "padding"
+        ],
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "TransferSearchInput": {
       "name": "穿梭框面板搜索框样式",
@@ -793,54 +2222,150 @@
           "name": "输入框",
           "desc": "输入框外部容器",
           "normal": [
-            ["width"],
-            ["height"],
-            ["margin"],
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["cursor"],
-            ["opacity"]
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "color"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "cursor"
+            ],
+            [
+              "opacity"
+            ]
           ],
           "hover": [
-            ["border"],
-            ["borderRadius"],
-            ["cursor"],
-            ["background"],
-            ["opacity"],
-            ["boxShadow"]
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "cursor"
+            ],
+            [
+              "background"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "boxShadow"
+            ]
           ],
-          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+          "active": [
+            [
+              "boxShadow"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "cursor"
+            ],
+            [
+              "background"
+            ]
+          ],
           "focus": [
-            ["border"],
-            ["borderRadius"],
-            ["background"],
-            ["opacity"],
-            ["boxShadow"],
-            ["cursor"],
-            ["fontSize"],
-            ["font"],
-            ["color"]
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "background"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "cursor"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "color"
+            ]
           ],
           "disabled": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["cursor"],
-            ["padding"],
-            ["opacity"]
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "color"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "cursor"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "opacity"
+            ]
           ]
         },
         "InputSuffix": {
           "name": "后缀图标",
           "desc": "输入框后缀自定义图标",
-          "normal": [["color"], ["fontSize"], ["font"]],
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ],
           "hover": [],
           "clicked": [],
           "disabled": []
@@ -848,30 +2373,116 @@
         "InputPrefix": {
           "name": "前缀图标",
           "desc": "输入框前缀自定义图标",
-          "normal": [["color"], ["fontSize"], ["font"], ["padding"], ["margin"]],
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "margin"
+            ]
+          ],
           "hover": [],
           "clicked": [],
-          "disabled": [["color"], ["fontSize"], ["font"]]
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ]
         },
         "ClearButton": {
           "name": "输入框清除图标",
           "desc": "输入框后缀清除图标",
-          "normal": [["color"], ["fontSize"], ["font"]],
-          "hover": [["color"], ["fontSize"], ["font"]],
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ],
           "clicked": [],
-          "disabled": [["color"], ["fontSize"], ["font"]]
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ]
         },
         "Placeholder": {
           "name": "输入框提示信息文字",
           "desc": "输入框提示信息文字",
-          "normal": [["color"], ["fontSize"], ["font"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ]
         }
       }
     },
     "TransferCancelBox": {
       "name": "穿梭框面板取消项盒子样式",
       "desc": "为穿梭框配置右面板取消项盒子样式",
-      "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["border", "top"]]
+      "normal": [
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border",
+          "top"
+        ]
+      ]
     },
     "TransferCancelCheckbox": {
       "name": "穿梭框面板取消项盒子样式",
@@ -880,33 +2491,100 @@
         "CheckboxWrap": {
           "name": "Checkbox整体配置",
           "desc": "Checkbox整体配置",
-          "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
-          "hover": [["opacity"]],
-          "disabled": [["opacity"]]
+          "normal": [
+            [
+              "opacity"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
+          ],
+          "hover": [
+            [
+              "opacity"
+            ]
+          ],
+          "disabled": [
+            [
+              "opacity"
+            ]
+          ]
         },
         "CheckboxText": {
           "name": "Checkbox文字配置",
           "desc": "Checkbox文字配置",
-          "normal": [["color"], ["font"]],
-          "hover": [["color"], ["font"]],
-          "disabled": [["color"], ["font"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ]
         },
         "CheckboxEdgeCancel": {
           "name": "取消状态外框样式",
           "desc": "取消状态外框样式",
           "normal": [
-            ["background"],
-            ["borderRadius"],
-            ["border"],
-            ["boxShadow"],
-            ["width"],
-            ["height"]
+            [
+              "background"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
           ]
         },
         "CheckboxInnerCancel": {
           "name": "Checkbox取消状态样式配置",
           "desc": "Checkbox取消状态样式配置",
-          "normal": [["background"], ["width"], ["height"]]
+          "normal": [
+            [
+              "background"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ]
+          ]
         }
       }
     },
@@ -918,17 +2596,51 @@
           "name": "菜单整体配置",
           "desc": "配置菜单组件的外盒样式",
           "normal": [
-            ["width"],
-            ["height"],
-            ["boxShadow"],
-            ["background"],
-            ["opacity"],
-            ["border"],
-            ["borderRadius"],
-            ["margin"],
-            ["padding"]
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "background"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "padding"
+            ]
           ],
-          "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
+          "hover": [
+            [
+              "boxShadow"
+            ],
+            [
+              "background"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ]
+          ],
           "clicked": [],
           "disabled": []
         },
@@ -939,227 +2651,830 @@
               "name": "项的外盒",
               "desc": "配置每一项的外盒",
               "normal": [
-                ["height"],
-                ["cursor"],
-                ["border"],
-                ["borderRadius"],
-                ["padding"],
-                ["background"],
-                ["opacity"],
-                ["boxShadow"]
+                [
+                  "height"
+                ],
+                [
+                  "cursor"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "boxShadow"
+                ]
               ],
               "hover": [
-                ["background"],
-                ["opacity"],
-                ["border"],
-                ["borderRadius"],
-                ["boxShadow"]
+                [
+                  "background"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "boxShadow"
+                ]
               ],
               "active": [
-                ["background"],
-                ["opacity"],
-                ["border"],
-                ["borderRadius"],
-                ["boxShadow"]
+                [
+                  "background"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "boxShadow"
+                ]
               ],
               "disabled": [
-                ["cursor"],
-                ["borderRadius"],
-                ["padding"],
-                ["background"],
-                ["opacity"]
+                [
+                  "cursor"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "opacity"
+                ]
               ]
             },
             "SelectedMenuItemWrap": {
               "name": "选中项的外盒",
               "desc": "配置选中项的外盒",
               "normal": [
-                ["height"],
-                ["cursor"],
-                ["border"],
-                ["borderRadius"],
-                ["padding"],
-                ["background"],
-                ["opacity"],
-                ["boxShadow"]
+                [
+                  "height"
+                ],
+                [
+                  "cursor"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "boxShadow"
+                ]
               ],
               "hover": [],
               "active": [],
               "disabled": []
             },
-
             "Divider": {
               "name": "分割线",
               "desc": "配置每项之间的分割线，当divided为true时生效",
-              "normal": [["background"]],
+              "normal": [
+                [
+                  "background"
+                ]
+              ],
               "hover": [],
               "active": [],
               "disabled": []
             },
-
             "TextContainer": {
               "name": "文本框",
               "desc": "配置文本和前缀后缀图标的位置",
-              "normal": [["padding"]],
+              "normal": [
+                [
+                  "padding"
+                ]
+              ],
               "hover": [],
               "active": [],
               "disabled": []
             },
-
             "DesContainer": {
               "name": "辅助字段框",
               "desc": "配置辅助文本的样式和位置",
-              "normal": [["color"], ["font"], ["fontSize"], ["padding"], ["lineHeight"]],
-              "hover": [["color"], ["font"], ["fontSize"]],
-              "active": [["color"], ["font"], ["fontSize"]],
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "lineHeight"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "active": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
               "disabled": []
             },
-
             "SelectedDesContainer": {
               "name": "选中项辅助字段框",
               "desc": "配置被选中项的辅助文本的样式和位置",
-              "normal": [["color"], ["font"], ["fontSize"], ["padding"]],
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "padding"
+                ]
+              ],
               "hover": [],
               "active": [],
               "disabled": []
             },
-
             "PrefixIcon": {
               "name": "前置图标配置",
               "desc": "前置图标的样式配置",
-              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-              "hover": [["color"], ["font"], ["fontSize"]],
-              "active": [["color"], ["font"], ["fontSize"]],
-              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "cursor"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "active": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "cursor"
+                ]
+              ]
             },
-
             "SelectedPrefixIcon": {
               "name": "选中项前置图标配置",
               "desc": "选中项前置图标的样式配置",
-              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-              "hover": [["color"], ["font"], ["fontSize"]],
-              "active": [["color"], ["font"], ["fontSize"]],
-              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "cursor"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "active": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "cursor"
+                ]
+              ]
             },
-
             "SuffixIcon": {
               "name": "后缀图标配置",
               "desc": "后缀图标的样式配置",
-              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-              "hover": [["color"], ["font"], ["fontSize"]],
-              "active": [["color"], ["font"], ["fontSize"]],
-              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "cursor"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "active": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "cursor"
+                ]
+              ]
             },
-
             "SelectedSuffixIcon": {
               "name": "选中项后缀图标配置",
               "desc": "选中项后缀图标的样式配置",
-              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-              "hover": [["color"], ["font"], ["fontSize"]],
-              "active": [["color"], ["font"], ["fontSize"]],
-              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "cursor"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "active": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "cursor"
+                ]
+              ]
             },
-
             "Checkbox": {
               "name": "单选菜单选择器配置",
               "theme": {
                 "Container": {
                   "name": "整体样式",
                   "desc": "整体样式",
-                  "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]]
+                  "normal": [
+                    [
+                      "opacity"
+                    ],
+                    [
+                      "margin"
+                    ],
+                    [
+                      "padding"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
+                  ]
                 },
                 "CheckboxText": {
                   "name": "文字样式",
                   "desc": "文字样式",
-                  "normal": [["color"], ["font"], ["padding"]],
-                  "hover": [["color"], ["font"]],
-                  "disabled": [["color"], ["font"]]
+                  "normal": [
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ],
+                    [
+                      "padding"
+                    ]
+                  ],
+                  "hover": [
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ]
+                  ],
+                  "disabled": [
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ]
+                  ]
                 },
                 "CheckboxEdgeUnChecked": {
                   "name": "未选中外框样式",
                   "desc": "未选中外框样式",
                   "normal": [
-                    ["background"],
-                    ["borderRadius"],
-                    ["border"],
-                    ["boxShadow"],
-                    ["width"],
-                    ["height"]
+                    [
+                      "background"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "boxShadow"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
                   ],
-                  "hover": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
-                  "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+                  "hover": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
+                  ],
+                  "disabled": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
+                  ]
                 },
                 "CheckboxEdgeChecked": {
                   "name": "选中外框样式",
                   "desc": "选中外框样式",
                   "normal": [
-                    ["background"],
-                    ["borderRadius"],
-                    ["border"],
-                    ["boxShadow"],
-                    ["width"],
-                    ["height"]
+                    [
+                      "background"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "boxShadow"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
                   ],
-                  "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+                  "disabled": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
+                  ]
                 },
                 "CheckboxEdgeIndeterminate": {
                   "name": "半选外框样式",
                   "desc": "半选状态外框样式",
                   "normal": [
-                    ["background"],
-                    ["borderRadius"],
-                    ["border"],
-                    ["boxShadow"],
-                    ["width"],
-                    ["height"]
+                    [
+                      "background"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "boxShadow"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
                   ],
-                  "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+                  "disabled": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
+                  ]
                 },
                 "CheckboxEdgeCancel": {
                   "name": "取消状态外框样式",
                   "desc": "取消状态外框样式",
                   "normal": [
-                    ["background"],
-                    ["borderRadius"],
-                    ["border"],
-                    ["boxShadow"],
-                    ["width"],
-                    ["height"]
+                    [
+                      "background"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "boxShadow"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
                   ]
                 },
                 "CheckboxInnerChecked": {
                   "name": "选中内框样式",
                   "desc": "选中内框样式",
-                  "normal": [["background"], ["width"], ["height"]],
-                  "hover": [["background"], ["width"], ["height"]],
-                  "disabled": [["background"], ["width"], ["height"]]
+                  "normal": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
+                  ],
+                  "hover": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
+                  ],
+                  "disabled": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
+                  ]
                 },
                 "CheckboxInnerIndeterminate": {
                   "name": "半选内框样式",
                   "desc": "半选内框样式",
-                  "normal": [["background"], ["width"], ["height"]],
-                  "hover": [["background"], ["width"], ["height"]],
-                  "disabled": [["background"], ["width"], ["height"]]
+                  "normal": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
+                  ],
+                  "hover": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
+                  ],
+                  "disabled": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
+                  ]
                 },
                 "CheckboxInnerCancel": {
                   "name": "取消状态内框样式",
                   "desc": "取消状态内框样式",
-                  "normal": [["background"], ["width"], ["height"]]
+                  "normal": [
+                    [
+                      "background"
+                    ],
+                    [
+                      "width"
+                    ],
+                    [
+                      "height"
+                    ]
+                  ]
                 }
               }
             },
-
             "Text": {
               "name": "默认项文本",
               "desc": "为默认项文本配置样式",
-              "normal": [["color"], ["font"], ["fontSize"]],
-              "hover": [["color"], ["font"], ["fontSize"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ]
+              ]
             },
             "CheckedText": {
               "name": "选中项文本",
               "desc": "为选中项文本配置样式",
-              "normal": [["color"], ["font"], ["fontSize"]],
-              "hover": [["color"], ["font"], ["fontSize"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "fontSize"
+                ]
+              ]
             }
           }
         }
@@ -1173,36 +3488,124 @@
           "name": "按钮整体样式",
           "desc": "为按钮配置整体样式",
           "normal": [
-            ["background"],
-            ["border"],
-            ["height"],
-            ["width"],
-            ["padding"],
-            ["margin"],
-            ["borderRadius"]
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "height"
+            ],
+            [
+              "width"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "borderRadius"
+            ]
           ],
-          "hover": [["background"], ["border"]],
-          "active": [["background"], ["border"]],
-          "disabled": [["background"], ["border"]],
-          "focus": [["background"], ["border"]]
+          "hover": [
+            [
+              "background"
+            ],
+            [
+              "border"
+            ]
+          ],
+          "active": [
+            [
+              "background"
+            ],
+            [
+              "border"
+            ]
+          ],
+          "disabled": [
+            [
+              "background"
+            ],
+            [
+              "border"
+            ]
+          ],
+          "focus": [
+            [
+              "background"
+            ],
+            [
+              "border"
+            ]
+          ]
         },
         "ButtonText": {
           "name": "按钮文字样式",
           "desc": "为按钮文字配置样式",
-          "normal": [["color"], ["font"]],
-          "hover": [["color"]],
-          "active": [["color"]],
-          "disabled": [["color"]],
-          "focus": [["color"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ]
+          ],
+          "active": [
+            [
+              "color"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ]
+          ],
+          "focus": [
+            [
+              "color"
+            ]
+          ]
         },
         "ButtonIcon": {
           "name": "按钮图标样式",
           "desc": "为按钮图标配置样式",
-          "normal": [["color"], ["font"]],
-          "hover": [["color"]],
-          "active": [["color"]],
-          "disabled": [["color"]],
-          "focus": [["color"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ]
+          ],
+          "active": [
+            [
+              "color"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ]
+          ],
+          "focus": [
+            [
+              "color"
+            ]
+          ]
         }
       }
     }

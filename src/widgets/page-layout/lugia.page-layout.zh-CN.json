@@ -1,32 +1,41 @@
 {
   "widgetName": "PageLayout",
   "title": "页面布局",
+  "aliasName": null,
   "desc": "快速生成页面布局的组件",
   "tag": "page pagelayout 页面 布局 页面布局",
+  "needExport": true,
   "props": {
     "drag": {
-      "type": "boolean",
       "desc": "页面布局是否支持拖拽切换内容",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "enlarge": {
-      "type": "boolean",
       "desc": "是否支持指定区域全屏展示",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "fixedHeight": {
-      "type": "boolean",
       "desc": "区域隐藏后, 组件总高度是否保持不变",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": true
     },
     "fixedContent": {
-      "type": "boolean",
       "desc": "内容固定,不能通过拖拽分割线改变大小",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "sizeInfo": {
-      "type": "Object",
       "desc": "",
+      "type": "Object",
+      "designOnly": false,
+      "injectProps": false,
       "meta": [
         {
           "key": "value",
@@ -36,18 +45,24 @@
       ]
     },
     "title": {
-      "type": "string",
       "desc": "页面布局组件的title",
+      "type": "string",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "页面布局"
     },
     "hiddenInfo": {
+      "desc": "被隐藏区域的信息",
       "type": "Object",
-      "desc": "被隐藏区域的信息"
+      "designOnly": false,
+      "injectProps": false
     },
     "canEdit": {
-      "type": "boolean",
       "desc": "按F9按钮,是否弹开编辑内容隐藏或显示的编辑",
-      "propsDefaultValue": "true"
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
+      "propsDefaultValue": true
     }
   },
   "events": {
@@ -82,22 +97,35 @@
       ]
     }
   },
-  "category": ["数据录入"],
-  "theme": {
-    "Container": {
-      "name": "页面布局",
-      "desc": "页面布局组件外盒配置",
-      "normal": [["width"], ["height"], ["background"]],
-      "hover": [],
-      "clicked": [],
-      "disabled": []
-    }
-  },
+  "designInfo": {},
+  "category": [
+    "数据录入"
+  ],
   "defaultTheme": {
     "Container": {
       "normal": {
         "width": 800
       }
+    }
+  },
+  "theme": {
+    "Container": {
+      "name": "页面布局",
+      "desc": "页面布局组件外盒配置",
+      "normal": [
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ]
+      ],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
     }
   }
 }

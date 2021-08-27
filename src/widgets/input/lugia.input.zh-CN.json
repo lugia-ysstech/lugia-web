@@ -1,109 +1,153 @@
 {
   "widgetName": "Input",
   "title": "文本输入框",
+  "aliasName": null,
   "desc": "常用于昵称,名称,表格内容等填写.",
   "tag": "input 文本输入框 文本框 搜索框 输入框 表单",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "createPortal": {
+      "desc": "是否全局弹出校验框",
       "type": "boolean",
-      "desc": "是否全局弹出校验框"
+      "designOnly": false,
+      "injectProps": false
     },
     "popupContainerId": {
+      "desc": "配置弹出校验框的作用容器id",
       "type": "ContainerDomIdType",
-      "desc": "配置弹出校验框的作用容器id"
+      "designOnly": false,
+      "injectProps": false
     },
     "disabled": {
-      "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "viewClass": {
+      "desc": "用于配置通用主题属性",
       "type": "string",
-      "desc": "用于配置通用主题属性"
+      "designOnly": false,
+      "injectProps": false
     },
     "size": {
-      "type": "InputSize",
       "desc": "可配置三种尺寸大小的input",
+      "type": "InputSize",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "default"
     },
     "validateStatus": {
+      "desc": "校验状态",
       "type": "ValidateStatus",
-      "desc": "校验状态"
+      "designOnly": false,
+      "injectProps": false
     },
     "validateType": {
-      "type": "ValidateType",
       "desc": "校验信息显示类型",
+      "type": "ValidateType",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "top"
     },
     "help": {
+      "desc": "input校验提示信息",
       "type": "string",
-      "desc": "input校验提示信息"
+      "designOnly": false,
+      "injectProps": false
     },
     "placeholder": {
+      "desc": "input输入提示信息",
       "type": "string",
-      "desc": "input输入提示信息"
+      "designOnly": false,
+      "injectProps": false
     },
     "prefix": {
+      "desc": "带有前缀的 input",
       "type": "icon",
-      "desc": "带有前缀的 input"
+      "designOnly": false,
+      "injectProps": false
     },
     "suffix": {
+      "desc": "带有后缀的 input",
       "type": "icon",
-      "desc": "带有后缀的 input"
+      "designOnly": false,
+      "injectProps": false
     },
     "defaultValue": {
+      "desc": "默认显示内容",
       "type": "string",
-      "desc": "默认显示内容"
+      "designOnly": false,
+      "injectProps": false
     },
     "value": {
+      "desc": "显示内容",
       "type": "string",
-      "desc": "显示内容"
+      "designOnly": false,
+      "injectProps": false
     },
     "clearIcon": {
+      "desc": "清除图标类型",
       "type": "icon",
-      "desc": "清除图标类型"
+      "designOnly": false,
+      "injectProps": false
     },
     "canClear": {
-      "type": "boolean",
       "desc": "是否展示清除按钮",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": true
     },
     "formatter": {
+      "desc": "格式化显示内容的匹配规则,需与 parser 属性配套使用",
       "type": "function",
-      "desc": "格式化显示内容的匹配规则,需与 parser 属性配套使用"
+      "designOnly": false,
+      "injectProps": false
     },
     "parser": {
+      "desc": "解析格式化显示内容的规则,需与 formatter 属性配套使用",
       "type": "function",
-      "desc": "解析格式化显示内容的规则,需与 formatter 属性配套使用"
+      "designOnly": false,
+      "injectProps": false
     },
     "readOnly": {
-      "type": "boolean",
       "desc": "只读input",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "autoFocus": {
-      "type": "boolean",
       "desc": "是否自动获取焦点",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "type": {
-      "type": "InputType",
       "desc": "input类型",
+      "type": "InputType",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "text"
     },
     "isShowClearButton": {
-      "type": "boolean",
       "desc": "是否显示清除按钮",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": true
     },
     "name": {
+      "desc": "input 元素的名称",
       "type": "string",
-      "desc": "input 元素的名称"
+      "designOnly": false,
+      "injectProps": false
     }
   },
   "events": {
@@ -228,6 +272,10 @@
       ]
     }
   },
+  "designInfo": {},
+  "category": [
+    "数据录入"
+  ],
   "type": {
     "InputType": [
       {
@@ -283,139 +331,399 @@
       "event": "SyntheticEvent"
     }
   },
-  "category": ["数据录入"],
-  "childrenWidget": ["textarea","combineInput"],
-  "theme": {
-    "Container": {
-      "name": "输入框主体",
-      "desc": "输入框主体结构",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["margin"],
-        ["padding"],
-        ["border"],
-        ["borderRadius"],
-        ["boxShadow"],
-        ["background"],
-        ["opacity"],
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["cursor"]
-      ],
-      "hover": [
-        ["border"],
-        ["borderRadius"],
-        ["background"],
-        ["opacity"],
-        ["boxShadow"],
-        ["cursor"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
-      ],
-      "focus": [
-        ["border"],
-        ["borderRadius"],
-        ["background"],
-        ["opacity"],
-        ["boxShadow"],
-        ["cursor"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
-      ],
-      "active": [
-        ["boxShadow"],
-        ["border"],
-        ["borderRadius"],
-        ["background"],
-        ["opacity"],
-        ["cursor"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
-      ],
-      "disabled": [
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["opacity"],
-        ["cursor"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
-      ]
-    },
-    "Placeholder": {
-      "name": "输入框提示信息文字",
-      "desc": "输入框提示信息文字",
-      "normal": [["color"], ["fontSize"], ["font"]]
-    },
-    "InputSuffix": {
-      "name": "后缀图标",
-      "desc": "输入框后缀自定义图标",
-      "normal": [["color"], ["fontSize"], ["font"], ["padding"], ["margin"]],
-      "hover": [],
-      "clicked": [],
-      "disabled": [["color"], ["fontSize"], ["font"]]
-    },
-    "InputPrefix": {
-      "name": "前缀图标",
-      "desc": "输入框前缀自定义图标",
-      "normal": [["color"], ["fontSize"], ["font"], ["padding"], ["margin"]],
-      "hover": [],
-      "clicked": [],
-      "disabled": [["color"], ["fontSize"], ["font"]]
-    },
-    "ClearButton": {
-      "name": "输入框清除图标",
-      "desc": "输入框后缀清除图标",
-      "normal": [["color"], ["fontSize"], ["font"]],
-      "hover": [["color"], ["fontSize"], ["font"]],
-      "clicked": [],
-      "disabled": [["color"], ["fontSize"], ["font"]]
-    },
-    "ValidateErrorInput": {
-      "name": "校验失败的输入框",
-      "desc": "配置校验失败的输入框",
-      "normal": [
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["background"],
-        ["border"],
-        ["boxShadow"],
-        ["opacity"]
-      ],
-      "hover": [["background"], ["border"], ["boxShadow"]],
-      "active": [["background"], ["border"], ["boxShadow"]],
-      "focus": [["background"], ["border"], ["boxShadow"]],
-      "disabled": [["background"], ["border"], ["boxShadow"]]
-    },
-    "ValidateErrorText": {
-      "name": "校验失败提示信息",
-      "desc": "配置校验失败的提示信息",
-      "normal": [
-        ["background"],
-        ["boxShadow"],
-        ["borderRadius"],
-        ["border"],
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["margin"]
-      ],
-      "hover": [],
-      "active": []
-    }
-  },
   "defaultTheme": {
     "Container": {
       "normal": {
         "width": 250
       }
     }
-  }
+  },
+  "theme": {
+    "Container": {
+      "name": "输入框主体",
+      "desc": "输入框主体结构",
+      "normal": [
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "background"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ]
+      ],
+      "hover": [
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "background"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
+      ],
+      "focus": [
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "background"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
+      ],
+      "active": [
+        [
+          "boxShadow"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "background"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
+      ],
+      "disabled": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
+      ]
+    },
+    "Placeholder": {
+      "name": "输入框提示信息文字",
+      "desc": "输入框提示信息文字",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ]
+    },
+    "InputSuffix": {
+      "name": "后缀图标",
+      "desc": "输入框后缀自定义图标",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "margin"
+        ]
+      ],
+      "hover": [],
+      "clicked": [],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ]
+    },
+    "InputPrefix": {
+      "name": "前缀图标",
+      "desc": "输入框前缀自定义图标",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "margin"
+        ]
+      ],
+      "hover": [],
+      "clicked": [],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ]
+    },
+    "ClearButton": {
+      "name": "输入框清除图标",
+      "desc": "输入框后缀清除图标",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "clicked": [],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ]
+    },
+    "ValidateErrorInput": {
+      "name": "校验失败的输入框",
+      "desc": "配置校验失败的输入框",
+      "normal": [
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "opacity"
+        ]
+      ],
+      "hover": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ],
+      "active": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ],
+      "focus": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ],
+      "disabled": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ]
+    },
+    "ValidateErrorText": {
+      "name": "校验失败提示信息",
+      "desc": "配置校验失败的提示信息",
+      "normal": [
+        [
+          "background"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ]
+      ],
+      "hover": [],
+      "active": []
+    }
+  },
+  "childrenWidget": [
+    "textarea",
+    "combineInput"
+  ]
 }

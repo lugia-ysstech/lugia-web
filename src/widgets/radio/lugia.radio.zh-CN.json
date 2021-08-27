@@ -1,35 +1,47 @@
 {
   "widgetName": "Radio",
   "title": "单选框",
+  "aliasName": null,
   "desc": "单选框。",
   "tag": "Radio 单选框 单项选择框",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "checked": {
+      "desc": "单选框是否选中",
       "type": "boolean",
-      "desc": "单选框是否选中"
+      "designOnly": false,
+      "injectProps": false
     },
     "defaultChecked": {
+      "desc": "单选框初始是否选中",
       "type": "boolean",
-      "desc": "单选框初始是否选中"
+      "designOnly": false,
+      "injectProps": false
     },
     "disabled": {
+      "desc": "单选框是否禁用",
       "type": "boolean",
-      "desc": "单选框是否禁用"
+      "designOnly": false,
+      "injectProps": false
     },
     "value": {
-      "type": "string",
       "desc": "单选框的 value 值",
+      "type": "string",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": true
     },
     "children": {
-      "type": "string | React.node",
       "desc": "Radio展示内容",
-      "propsDefaultValue": "",
+      "type": "string | React.node",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "radio"
     }
   },
@@ -45,6 +57,10 @@
       ]
     }
   },
+  "designInfo": {},
+  "category": [
+    "数据录入"
+  ],
   "type": {
     "RadioStyle": {
       "color": {
@@ -53,76 +69,211 @@
       }
     }
   },
-  "childrenWidget": ["radio-group"],
-  "category": ["数据录入"],
   "theme": {
     "Container": {
       "name": "整体样式",
       "desc": "整体样式",
-      "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]]
+      "normal": [
+        [
+          "opacity"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ]
     },
     "RadioText": {
       "name": "文字样式",
       "desc": "文字样式",
-      "normal": [["color"], ["font"], ["padding"]],
-      "hover": [["color"], ["font"]],
-      "disabled": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ],
+        [
+          "padding"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "RadioEdgeUnChecked": {
       "name": "未选中外框样式",
       "desc": "未选中外框样式",
       "normal": [
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["boxShadow"],
-        ["width"],
-        ["height"]
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
       ],
-      "hover": [["background"], ["borderRadius"], ["border"]],
-      "disabled": [["background"], ["borderRadius"], ["border"]]
+      "hover": [
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ]
+      ],
+      "disabled": [
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ]
+      ]
     },
     "RadioEdgeChecked": {
       "name": "选中外框样式",
       "desc": "选中外框样式",
       "normal": [
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["boxShadow"],
-        ["width"],
-        ["height"]
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
       ],
       "disabled": [
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["boxShadow"],
-        ["width"],
-        ["height"]
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
       ]
     },
     "RadioInnerChecked": {
       "name": "选中内框样式",
       "desc": "选中内框样式",
-      "normal": [["background"], ["width"], ["height"], ["borderRadius"]]
+      "normal": [
+        [
+          "background"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "borderRadius"
+        ]
+      ]
     },
     "RadioEdgeCancel": {
       "name": "取消状态外框样式",
       "desc": "取消状态外框样式",
       "normal": [
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["boxShadow"],
-        ["width"],
-        ["height"]
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
       ]
     },
     "RadioInnerCancel": {
       "name": "取消状态内框样式",
       "desc": "取消状态内框样式",
-      "normal": [["background"], ["width"], ["height"],["borderRadius"]]
+      "normal": [
+        [
+          "background"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "borderRadius"
+        ]
+      ]
     }
-  }
+  },
+  "childrenWidget": [
+    "radio-group"
+  ]
 }

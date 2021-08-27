@@ -1,55 +1,86 @@
 {
   "widgetName": "Loading",
   "title": "加载中",
+  "aliasName": null,
   "desc": "用于页面和区块的加载中状态",
   "tag": "loading 加载中 载入",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "size": {
-      "type": "sizeType",
       "desc": "Loading尺寸大小 small|default|large",
+      "type": "sizeType",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "default"
     },
     "delay": {
+      "desc": "延迟加载时间",
       "type": "number",
-      "desc": "延迟加载时间"
+      "designOnly": false,
+      "injectProps": false
     },
     "isInherit": {
+      "desc": "是否继承父级宽高",
       "type": "boolean",
-      "desc": "是否继承父级宽高"
+      "designOnly": false,
+      "injectProps": false
     },
     "scale": {
-      "type": "boolean",
       "desc": "是否缩放",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "iconClass": {
+      "desc": "自定义Loading,iconClass接受一个图标名的字符串",
       "type": "string",
-      "desc": "自定义Loading,iconClass接受一个图标名的字符串"
+      "designOnly": false,
+      "injectProps": false
     },
     "tip": {
+      "desc": "自定义Loading加载文本",
       "type": "string",
-      "desc": "自定义Loading加载文本"
+      "designOnly": false,
+      "injectProps": false
     },
     "children": {
+      "desc": "Loading组件允许内嵌容器",
       "type": "any",
-      "desc": "Loading组件允许内嵌容器"
+      "designOnly": false,
+      "injectProps": false
     },
     "data": {
+      "desc": "与children属性一样，在Loading组件内嵌入内容",
       "type": "any",
-      "desc": "与children属性一样，在Loading组件内嵌入内容"
+      "designOnly": false,
+      "injectProps": false
     }
   },
+  "events": {},
+  "designInfo": {},
+  "category": [
+    "其他"
+  ],
   "type": {
     "sizeType": [
-      { "value": "small", "text": "小" },
-      { "value": "default", "text": "正常" },
-      { "value": "large", "text": "大" }
+      {
+        "value": "small",
+        "text": "小"
+      },
+      {
+        "value": "default",
+        "text": "正常"
+      },
+      {
+        "value": "large",
+        "text": "大"
+      }
     ]
-  },
-  "category": ["其他"]
+  }
 }

@@ -1,43 +1,58 @@
 {
   "widgetName": "Checkbox",
   "title": "多选框",
+  "aliasName": null,
   "desc": "多选框。",
   "tag": "多选框 checkbox 复选框 多项选择框",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "checked": {
+      "desc": "指定Checkbox是否选中",
       "type": "boolean",
-      "desc": "指定Checkbox是否选中"
+      "designOnly": false,
+      "injectProps": false
     },
     "defaultChecked": {
+      "desc": "指定Checkbox初始是否选中",
       "type": "boolean",
-      "desc": "指定Checkbox初始是否选中"
+      "designOnly": false,
+      "injectProps": false
     },
     "disabled": {
+      "desc": "指定Checkbox是否禁用",
       "type": "boolean",
-      "desc": "指定Checkbox是否禁用"
+      "designOnly": false,
+      "injectProps": false
     },
     "indeterminate": {
+      "desc": "设置半选状态，只用于样式控制",
       "type": "boolean",
-      "desc": "设置半选状态，只用于样式控制"
+      "designOnly": false,
+      "injectProps": false
     },
     "value": {
+      "desc": "组件value值",
       "type": "string",
-      "desc": "组件value值"
+      "designOnly": false,
+      "injectProps": false
     },
     "styles": {
-      "type": "CheckboxType",
       "desc": "Checkbox展示方向，可选值为 vertical 或不设",
-      "defaultValue": false
+      "type": "CheckboxType",
+      "designOnly": false,
+      "injectProps": false
     },
     "children": {
-      "type": "string | React.node",
       "desc": "Checkbox展示内容",
-      "propsDefaultValue": "",
+      "type": "string | React.node",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "checkbox"
     }
   },
@@ -58,8 +73,15 @@
       ]
     }
   },
+  "designInfo": {},
+  "category": [
+    "数据录入"
+  ],
   "type": {
-    "CheckboxType": ["default", "vertical"],
+    "CheckboxType": [
+      "default",
+      "vertical"
+    ],
     "CheckboxStyle": {
       "width": {
         "type": "number",
@@ -71,84 +93,314 @@
       }
     }
   },
-  "childrenWidget": ["checkbox-group"],
-  "category": ["数据录入"],
   "theme": {
     "Container": {
       "name": "整体样式",
       "desc": "整体样式",
-      "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]]
+      "normal": [
+        [
+          "opacity"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ]
     },
     "CheckboxText": {
       "name": "文字样式",
       "desc": "文字样式",
-      "normal": [["color"], ["font"], ["padding"]],
-      "hover": [["color"], ["font"]],
-      "disabled": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ],
+        [
+          "padding"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "CheckboxEdgeUnChecked": {
       "name": "未选中外框样式",
       "desc": "未选中外框样式",
       "normal": [
-        ["background"],
-        ["borderRadius"],
-        ["border"],
-        ["boxShadow"],
-        ["width"],
-        ["height"]
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
       ],
-      "hover": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
-      "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+      "hover": [
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ],
+      "disabled": [
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ]
     },
     "CheckboxEdgeChecked": {
       "name": "选中外框样式",
       "desc": "选中外框样式",
       "normal": [
-        ["background"],
-        ["borderRadius"],
-        ["border"],
-        ["boxShadow"],
-        ["width"],
-        ["height"]
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
       ],
-      "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+      "disabled": [
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ]
     },
     "CheckboxEdgeIndeterminate": {
       "name": "半选外框样式",
       "desc": "半选状态外框样式",
       "normal": [
-        ["background"],
-        ["borderRadius"],
-        ["border"],
-        ["boxShadow"],
-        ["width"],
-        ["height"]
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
       ],
-      "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+      "disabled": [
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ]
     },
     "CheckboxEdgeCancel": {
       "name": "取消状态外框样式",
       "desc": "取消状态外框样式",
-      "normal": [["background"], ["borderRadius"], ["border"], ["boxShadow"], ["width"], ["height"]]
+      "normal": [
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ]
     },
     "CheckboxInnerChecked": {
       "name": "选中内框样式",
       "desc": "选中内框样式",
-      "normal": [["background"], ["width"], ["height"]],
-      "hover": [["background"], ["width"], ["height"]],
-      "disabled": [["background"], ["width"], ["height"]]
+      "normal": [
+        [
+          "background"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ],
+      "hover": [
+        [
+          "background"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ],
+      "disabled": [
+        [
+          "background"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ]
     },
     "CheckboxInnerIndeterminate": {
       "name": "半选内框样式",
       "desc": "半选内框样式",
-      "normal": [["background"], ["width"], ["height"]],
-      "hover": [["background"], ["width"], ["height"]],
-      "disabled": [["background"], ["width"], ["height"]]
+      "normal": [
+        [
+          "background"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ],
+      "hover": [
+        [
+          "background"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ],
+      "disabled": [
+        [
+          "background"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ]
     },
     "CheckboxInnerCancel": {
       "name": "取消状态内框样式",
       "desc": "取消状态内框样式",
-      "normal": [["background"], ["width"], ["height"]]
+      "normal": [
+        [
+          "background"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ]
     }
-  }
+  },
+  "childrenWidget": [
+    "checkbox-group"
+  ]
 }

@@ -1,53 +1,92 @@
 {
   "widgetName": "Collapse",
   "title": "折叠面板",
+  "aliasName": null,
   "desc": "折叠面板，用于展开/折叠内容区域。",
   "tag": "折叠面板 Collapse 组合折叠面板 收起展开面板 多项折叠面板",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "value": {
+      "desc": "当前展开面板的 value值 或者 value 集合, 兼容activeValue",
       "type": "string | string[]",
-      "desc": "当前展开面板的 value值 或者 value 集合, 兼容activeValue"
+      "designOnly": false,
+      "injectProps": false
     },
     "defaultValue": {
+      "desc": "初始时展开面板的 value值 或者 value 集合, 兼容defaultActiveValue",
       "type": "string | string[]",
-      "desc": "初始时展开面板的 value值 或者 value 集合, 兼容defaultActiveValue"
+      "designOnly": false,
+      "injectProps": false
     },
     "showArrow": {
+      "desc": "是否展示面板箭头",
       "type": "boolean",
-      "desc": "是否展示面板箭头"
+      "designOnly": false,
+      "injectProps": false
     },
     "accordion": {
+      "desc": "设置是否为手风琴模式",
       "type": "boolean",
-      "desc": "设置是否为手风琴模式"
+      "designOnly": false,
+      "injectProps": false
     },
     "zebraStripe": {
+      "desc": "设置是否为斑马纹模式",
       "type": "boolean",
-      "desc": "设置是否为斑马纹模式"
+      "designOnly": false,
+      "injectProps": false
     },
     "data": {
-      "type": "Object[]",
       "desc": "指定折叠面板data数据源，仅用于设计器",
+      "type": "Object[]",
       "designOnly": true,
       "injectProps": false,
-      "meta": [
-        { "key": "value", "title": "对应字段", "type": "string" },
-        { "key": "title", "title": "展示文字", "type": "string" },
-        { "key": "children", "title": "展示内容", "type": "lugiaDPages" }
-      ],
       "defaultValue": [
-        { "value": "1", "title": "标题1", "children": "内容1" },
-        { "value": "2", "title": "标题2", "children": "内容2" },
-        { "value": "3", "title": "标题3", "children": "内容3" }
+        {
+          "value": "1",
+          "title": "标题1",
+          "children": "内容1"
+        },
+        {
+          "value": "2",
+          "title": "标题2",
+          "children": "内容2"
+        },
+        {
+          "value": "3",
+          "title": "标题3",
+          "children": "内容3"
+        }
+      ],
+      "meta": [
+        {
+          "key": "value",
+          "title": "对应字段",
+          "type": "string"
+        },
+        {
+          "key": "title",
+          "title": "展示文字",
+          "type": "string"
+        },
+        {
+          "key": "children",
+          "title": "展示内容",
+          "type": "lugiaDPages"
+        }
       ]
     },
     "arrowIcon": {
+      "desc": "自定义图标，showArrow 为 true 时有效",
       "type": "icon",
-      "desc": "自定义图标，showArrow 为 true 时有效"
+      "designOnly": false,
+      "injectProps": false
     }
   },
   "events": {
@@ -67,6 +106,10 @@
       ]
     }
   },
+  "designInfo": {},
+  "category": [
+    "数据展示"
+  ],
   "type": {
     "CollapseStyle": {
       "width": {
@@ -79,22 +122,45 @@
       }
     }
   },
-  "childrenWidget": ["panel"],
-  "category": ["数据展示"],
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 400
+      }
+    }
+  },
   "theme": {
     "Container": {
       "name": "Collapse整体配置",
       "desc": "Collapse整体配置",
       "normal": [
-        ["opacity"],
-        ["margin"],
-        ["padding"],
-        ["width"],
-        ["height"],
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["boxShadow"]
+        [
+          "opacity"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ]
       ]
     },
     "Panel": {
@@ -102,62 +168,174 @@
         "Container": {
           "name": "面板整体配置",
           "desc": "面板整体配置",
-          "normal": [["width"], ["border", "bottom"]]
+          "normal": [
+            [
+              "width"
+            ],
+            [
+              "border",
+              "bottom"
+            ]
+          ]
         },
         "PanelHeader": {
           "name": "面板头部配置",
           "desc": "面板头部样式配置",
           "normal": [
-            ["opacity"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"],
-            ["padding"],
-            ["width"],
-            ["height"],
-            ["background"]
+            [
+              "opacity"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "background"
+            ]
           ],
-          "hover": [["borderRadius"], ["background"], ["opacity"], ["border"], ["boxShadow"]],
-          "disabled": [["borderRadius"], ["background"], ["opacity"], ["border"], ["boxShadow"]]
+          "hover": [
+            [
+              "borderRadius"
+            ],
+            [
+              "background"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ]
+          ],
+          "disabled": [
+            [
+              "borderRadius"
+            ],
+            [
+              "background"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ]
+          ]
         },
         "PanelHeaderText": {
           "name": "面板头部文字",
           "desc": "面板头部文字样式配置",
-          "normal": [["font"], ["color"]],
-          "hover": [["color"]],
-          "disabled": [["color"]]
+          "normal": [
+            [
+              "font"
+            ],
+            [
+              "color"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ]
+          ]
         },
         "PanelHeaderIcon": {
           "name": "面板头部图标",
           "desc": "面板头部图标样式配置",
-          "normal": [["fontSize"], ["color"], ["padding"]],
-          "hover": [["color"], ["padding"]],
-          "disabled": [["color"]]
+          "normal": [
+            [
+              "fontSize"
+            ],
+            [
+              "color"
+            ],
+            [
+              "padding"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "padding"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ]
+          ]
         },
         "PanelContent": {
           "name": "面板内容样式",
           "desc": "面板内容样式配置",
           "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["padding"],
-            ["font"],
-            ["color"],
-            ["border"],
-            ["boxShadow"]
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "background"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "font"
+            ],
+            [
+              "color"
+            ],
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ]
           ],
-          "hover": [["color"]],
-          "disabled": [["color"]]
+          "hover": [
+            [
+              "color"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ]
+          ]
         }
       }
     }
   },
-  "defaultTheme": {
-    "Container": {
-      "normal": {
-        "width": 400
-      }
-    }
-  }
+  "childrenWidget": [
+    "panel"
+  ]
 }

@@ -1,115 +1,181 @@
 {
   "widgetName": "Pagination",
   "title": "分页",
+  "aliasName": null,
   "desc": "分页组件，分页展示数据。",
   "tag": "pagination 分页 分页选择器 页数选择 跳转页面",
+  "needExport": true,
   "props": {
     "current": {
+      "desc": "当前页数",
       "type": "number",
-      "desc": "当前页数"
+      "designOnly": false,
+      "injectProps": false
     },
     "defaultCurrent": {
-      "type": "number",
       "desc": "默认的当前页数",
+      "type": "number",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": 1
     },
     "total": {
-      "type": "number",
       "desc": "数据总数",
+      "type": "number",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": 1
     },
     "pageSize": {
+      "desc": "每页的条数",
       "type": "number",
-      "desc": "每页的条数"
+      "designOnly": false,
+      "injectProps": false
     },
     "defaultPageSize": {
-      "type": "number",
       "desc": "默认的每页条数",
+      "type": "number",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": 10
     },
     "pageSizeOptions": {
-      "type": "string[]",
       "desc": "指定每页可以显示多少条",
-      "meta": [{ "key": "pageSizes", "title": "每页显示多少条的集合", "type": "string" }],
-      "propsDefaultValue": ["10", "20", "30", "50"]
+      "type": "string[]",
+      "designOnly": false,
+      "injectProps": false,
+      "propsDefaultValue": [
+        "10",
+        "20",
+        "30",
+        "50"
+      ],
+      "meta": [
+        {
+          "key": "pageSizes",
+          "title": "每页显示多少条的集合",
+          "type": "string"
+        }
+      ]
     },
     "showQuickJumper": {
-      "type": "boolean",
       "desc": "是否可以快速跳至某页",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "showTotal": {
+      "desc": "用于显示数据总量和当前数据顺序",
       "type": "Function(total, range)",
-      "desc": "用于显示数据总量和当前数据顺序"
+      "designOnly": false,
+      "injectProps": false
     },
     "hideOnSinglePage": {
-      "type": "boolean",
       "desc": "只有一页时是否隐藏分页器",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "showSizeChanger": {
-      "type": "boolean",
       "desc": "是否显示可以改变 pageSize",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "showTotalData": {
-      "type": "boolean",
       "desc": "是否可以显示数据总量",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "simple": {
-      "type": "boolean",
       "desc": "当添加该属性时，显示为简单分页",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "preIconClass": {
-      "type": "icon",
       "desc": "分页上一页图标资源",
+      "type": "icon",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "lugia-icon-direction_Left"
     },
     "nextIconClass": {
-      "type": "icon",
       "desc": "分页下一页图标资源",
+      "type": "icon",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "lugia-icon-direction_right"
     },
     "preIconSrc": {
+      "desc": "分页上一页图片资源",
       "type": "image",
-      "desc": "分页上一页图片资源"
+      "designOnly": false,
+      "injectProps": false
     },
     "nextIconSrc": {
+      "desc": "分页下一页图片资源",
       "type": "image",
-      "desc": "分页下一页图片资源"
+      "designOnly": false,
+      "injectProps": false
     },
     "blockList": {
-      "type": "string[]",
       "desc": "分页各部位展示的位置列表",
-      "meta": [{ "key": "displayLocation", "title": "分页各部位展示的位置", "type": "BlockType" }],
-      "propsDefaultValue": ["Page", "PageInput", "Total", "PageSize"],
-      "defaultValue": ["Page", "PageInput", "Total", "PageSize"]
+      "type": "string[]",
+      "designOnly": false,
+      "injectProps": false,
+      "defaultValue": [
+        "Page",
+        "PageInput",
+        "Total",
+        "PageSize"
+      ],
+      "propsDefaultValue": [
+        "Page",
+        "PageInput",
+        "Total",
+        "PageSize"
+      ],
+      "meta": [
+        {
+          "key": "displayLocation",
+          "title": "分页各部位展示的位置",
+          "type": "BlockType"
+        }
+      ]
     },
     "align": {
-      "type": "AlignType",
       "desc": "分页各部位对齐的方式",
+      "type": "AlignType",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "Left"
     },
     "size": {
-      "type": "SizeType",
       "desc": "可配置三种尺寸大小的Pagination",
+      "type": "SizeType",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "default"
     },
     "divided": {
-      "type": "boolean",
       "desc": "是否展示菜单分割线",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "manualQuickJumper": {
-      "type": "boolean",
       "desc": "是否手动控制分页快速跳转,值为true时,分页跳转由quickJumperValue控制",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "quickJumperValue": {
+      "desc": "当manualQuickJumper值为true时,控制分页跳转的值",
       "type": "number",
-      "desc": "当manualQuickJumper值为true时,控制分页跳转的值"
+      "designOnly": false,
+      "injectProps": false
     }
   },
   "events": {
@@ -234,6 +300,293 @@
       ]
     }
   },
+  "designInfo": {
+    "SimplePagination": {
+      "title": "简洁分页",
+      "sequence": 1,
+      "tag": "SimplePagination 简洁分页选择器 简单分页 迷你分页 页数选择 跳转页面",
+      "desc": "简洁分页",
+      "props": {
+        "simple": true
+      },
+      "theme": {
+        "Container": {
+          "name": "分页外部容器",
+          "desc": "配置分页外部容器",
+          "normal": [
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "background"
+            ],
+            [
+              "cursor"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "margin"
+            ]
+          ]
+        },
+        "SimplePaginationInput": {
+          "name": "简洁分页输入框",
+          "desc": "简洁分页输入框",
+          "theme": {
+            "Container": {
+              "name": "输入框",
+              "desc": "输入框外部容器",
+              "normal": [
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "cursor"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "boxShadow"
+                ]
+              ],
+              "hover": [
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "cursor"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "boxShadow"
+                ]
+              ],
+              "active": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "cursor"
+                ],
+                [
+                  "background"
+                ]
+              ],
+              "focus": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "cursor"
+                ],
+                [
+                  "background"
+                ]
+              ],
+              "disabled": [
+                [
+                  "fontSize"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "cursor"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "boxShadow"
+                ]
+              ]
+            }
+          }
+        },
+        "PaginationQuickJumpText": {
+          "name": "分页快速跳至文字",
+          "desc": "分页快速跳至文字部分",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "cursor"
+            ]
+          ]
+        },
+        "ChangePageIcon": {
+          "name": "分页切换页数下一页图标",
+          "desc": "配置分页切换页数下一页图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ]
+        },
+        "ChangePagePreIcon": {
+          "name": "分页切换页数上一页图标",
+          "desc": "配置分页切换页数上一页图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ]
+        },
+        "PaginationSimpleText": {
+          "name": "简洁分页文字",
+          "desc": "配置简洁分页文字",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "cursor"
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "category": [
+    "导航"
+  ],
   "type": {
     "BlockType": [
       {
@@ -264,9 +617,18 @@
       }
     ],
     "SizeType": [
-      { "value": "small", "text": "小" },
-      { "value": "default", "text": "正常" },
-      { "value": "large", "text": "大" }
+      {
+        "value": "small",
+        "text": "小"
+      },
+      {
+        "value": "default",
+        "text": "正常"
+      },
+      {
+        "value": "large",
+        "text": "大"
+      }
     ],
     "ChangeType": {
       "newValue": "number",
@@ -274,215 +636,317 @@
       "event": "SyntheticEvent"
     }
   },
-  "designInfo": {
-    "SimplePagination": {
-      "sequence": 1,
-      "title": "简洁分页",
-      "desc": "简洁分页",
-      "tag": "SimplePagination 简洁分页选择器 简单分页 迷你分页 页数选择 跳转页面",
-      "props": {
-        "simple": true
-      },
-      "theme": {
-        "Container": {
-          "name": "分页外部容器",
-          "desc": "配置分页外部容器",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["cursor"],
-            ["padding"],
-            ["opacity"],
-            ["margin"]
-          ]
-        },
-        "SimplePaginationInput": {
-          "name": "简洁分页输入框",
-          "desc": "简洁分页输入框",
-          "theme": {
-            "Container": {
-              "name": "输入框",
-              "desc": "输入框外部容器",
-              "normal": [
-                ["width"],
-                ["height"],
-                ["margin"],
-                ["fontSize"],
-                ["font"],
-                ["color"],
-                ["background"],
-                ["border"],
-                ["borderRadius"],
-                ["cursor"],
-                ["opacity"],
-                ["boxShadow"]
-              ],
-              "hover": [
-                ["border"],
-                ["borderRadius"],
-                ["cursor"],
-                ["background"],
-                ["opacity"],
-                ["boxShadow"]
-              ],
-              "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
-              "focus": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
-              "disabled": [
-                ["fontSize"],
-                ["font"],
-                ["color"],
-                ["background"],
-                ["border"],
-                ["borderRadius"],
-                ["cursor"],
-                ["padding"],
-                ["opacity"],
-                ["boxShadow"]
-              ]
-            }
-          }
-        },
-        "PaginationQuickJumpText": {
-          "name": "分页快速跳至文字",
-          "desc": "分页快速跳至文字部分",
-          "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
-        },
-        "ChangePageIcon": {
-          "name": "分页切换页数下一页图标",
-          "desc": "配置分页切换页数下一页图标",
-          "normal": [["color"], ["fontSize"], ["font"]],
-          "hover": [["color"], ["fontSize"], ["font"]],
-          "disabled": [["color"], ["fontSize"], ["font"]]
-        },
-        "ChangePagePreIcon": {
-          "name": "分页切换页数上一页图标",
-          "desc": "配置分页切换页数上一页图标",
-          "normal": [["color"], ["fontSize"], ["font"]],
-          "hover": [["color"], ["fontSize"], ["font"]],
-          "disabled": [["color"], ["fontSize"], ["font"]]
-        },
-        "PaginationSimpleText": {
-          "name": "简洁分页文字",
-          "desc": "配置简洁分页文字",
-          "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
-        }
-      }
-    }
-  },
   "theme": {
     "Container": {
       "name": "分页外部容器",
       "desc": "配置分页外部容器",
       "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["cursor"],
-        ["padding"],
-        ["opacity"],
-        ["margin"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "margin"
+        ]
       ]
     },
     "PaginationListContainer": {
       "name": "分页列表的容器",
       "desc": "分页列表的容器",
-      "normal": [["margin"]]
+      "normal": [
+        [
+          "margin"
+        ]
+      ]
     },
     "PaginationListItem": {
       "name": "单个页数",
       "desc": "单个页数",
       "normal": [
-        ["width"],
-        ["height"],
-        ["cursor"],
-        ["border"],
-        ["borderRadius"],
-        ["opacity"],
-        ["background"],
-        ["boxShadow"],
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["margin"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "background"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ]
       ],
       "hover": [
-        ["cursor"],
-        ["border"],
-        ["borderRadius"],
-        ["opacity"],
-        ["background"],
-        ["boxShadow"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
+        [
+          "cursor"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "background"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
       ],
       "disabled": [
-        ["cursor"],
-        ["border"],
-        ["borderRadius"],
-        ["opacity"],
-        ["background"],
-        ["boxShadow"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
+        [
+          "cursor"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "background"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
       ],
       "focus": [
-        ["border"],
-        ["borderRadius"],
-        ["opacity"],
-        ["background"],
-        ["boxShadow"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "background"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
       ]
     },
     "ChangePageIcon": {
       "name": "分页切换页数下一页图标",
       "desc": "配置分页切换页数下一页图标",
-      "normal": [["color"], ["fontSize"], ["font"]],
-      "hover": [["color"], ["fontSize"], ["font"]],
-      "disabled": [["color"], ["fontSize"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "ChangePagePreIcon": {
       "name": "分页切换页数上一页图标",
       "desc": "配置分页切换页数上一页图标",
-      "normal": [["color"], ["fontSize"], ["font"]],
-      "hover": [["color"], ["fontSize"], ["font"]],
-      "disabled": [["color"], ["fontSize"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "PaginationArrowIconContainer": {
       "name": "分页切换页数图标外部容器",
       "desc": "配置分页切换页数图标外部容器",
       "normal": [
-        ["width"],
-        ["height"],
-        ["cursor"],
-        ["border"],
-        ["borderRadius"],
-        ["opacity"],
-        ["background"],
-        ["boxShadow"],
-        ["padding"],
-        ["margin"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "background"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "margin"
+        ]
       ],
       "hover": [
-        ["cursor"],
-        ["border"],
-        ["borderRadius"],
-        ["opacity"],
-        ["background"],
-        ["boxShadow"]
+        [
+          "cursor"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "background"
+        ],
+        [
+          "boxShadow"
+        ]
       ],
       "disabled": [
-        ["cursor"],
-        ["border"],
-        ["borderRadius"],
-        ["opacity"],
-        ["background"],
-        ["boxShadow"]
+        [
+          "cursor"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "background"
+        ],
+        [
+          "boxShadow"
+        ]
       ]
     },
     "QuickJumpInput": {
@@ -493,40 +957,128 @@
           "name": "输入框",
           "desc": "输入框外部容器",
           "normal": [
-            ["width"],
-            ["height"],
-            ["margin"],
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["cursor"],
-            ["opacity"],
-            ["boxShadow"]
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "color"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "cursor"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "boxShadow"
+            ]
           ],
           "hover": [
-            ["border"],
-            ["borderRadius"],
-            ["cursor"],
-            ["background"],
-            ["opacity"],
-            ["boxShadow"]
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "cursor"
+            ],
+            [
+              "background"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "boxShadow"
+            ]
           ],
-          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
-          "focus": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+          "active": [
+            [
+              "boxShadow"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "cursor"
+            ],
+            [
+              "background"
+            ]
+          ],
+          "focus": [
+            [
+              "boxShadow"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "cursor"
+            ],
+            [
+              "background"
+            ]
+          ],
           "disabled": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["cursor"],
-            ["padding"],
-            ["opacity"],
-            ["boxShadow"]
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "color"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "cursor"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "boxShadow"
+            ]
           ]
         }
       }
@@ -534,29 +1086,99 @@
     "PaginationQuickJumpContainer": {
       "name": "分页快速跳至容器",
       "desc": "配置分页快速跳至整体外部容器",
-      "normal": [["width"], ["height"], ["margin"]]
+      "normal": [
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "margin"
+        ]
+      ]
     },
     "PaginationQuickJumpText": {
       "name": "分页快速跳至文字",
       "desc": "配置分页快速跳至文字部分",
-      "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "cursor"
+        ]
+      ]
     },
     "PaginationTotalContainer": {
       "name": "分页总数据容器",
       "desc": "配置分页总数据外部容器",
-      "normal": [["margin"]]
+      "normal": [
+        [
+          "margin"
+        ]
+      ]
     },
     "PaginationTotalText": {
       "name": "分页总数据文字",
       "desc": "配置分页总数据文字部分",
-      "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "cursor"
+        ]
+      ]
     },
     "MorePageIcon": {
       "name": "更多页数图标",
       "desc": "配置更多页数图标",
-      "normal": [["color"], ["fontSize"], ["font"]],
-      "hover": [["color"], ["fontSize"], ["font"]],
-      "disabled": [["color"], ["fontSize"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "PaginationPageSizeSelect": {
       "name": "切换每页显示页数选择器",
@@ -565,49 +1187,191 @@
           "name": "选择框整体配置",
           "desc": "配置展示选中数据的外盒样式",
           "normal": [
-            ["width"],
-            ["height"],
-            ["margin"],
-            ["padding"],
-            ["color"],
-            ["background"],
-            ["border"],
-            ["boxShadow"],
-            ["borderRadius"],
-            ["font"],
-            ["opacity"]
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "color"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "font"
+            ],
+            [
+              "opacity"
+            ]
           ],
           "hover": [
-            ["color"],
-            ["background"],
-            ["border"],
-            ["boxShadow"],
-            ["borderRadius"],
-            ["font"],
-            ["opacity"]
+            [
+              "color"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "font"
+            ],
+            [
+              "opacity"
+            ]
           ]
         },
         "TextContent": {
           "name": "文本样式",
           "desc": "文本样式",
-          "normal": [["color"], ["font"], ["fontSize"]],
-          "disabled": [["color"], ["font"], ["fontSize"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ],
+            [
+              "fontSize"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
         },
         "SwitchIcon": {
           "name": "下拉图标",
           "desc": "配置下拉图标样式",
-          "normal": [["color"], ["background"], ["font"], ["margin"], ["opacity"]],
-          "hover": [["color"], ["font"], ["opacity"]],
-          "active": [["color"], ["fontSize"]],
-          "disabled": [["color"], ["fontSize"], ["cursor"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "background"
+            ],
+            [
+              "font"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "opacity"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ],
+            [
+              "opacity"
+            ]
+          ],
+          "active": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "cursor"
+            ]
+          ]
         },
         "ClearIcon": {
           "name": "清空图标",
           "desc": "配置清除图标样式",
-          "normal": [["color"], ["background"], ["font"], ["margin"], ["opacity"]],
-          "hover": [["color"], ["font"], ["opacity"]],
-          "active": [["color"], ["fontSize"]],
-          "disabled": [["color"], ["fontSize"], ["cursor"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "background"
+            ],
+            [
+              "font"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "opacity"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ],
+            [
+              "opacity"
+            ]
+          ],
+          "active": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "cursor"
+            ]
+          ]
         },
         "Menu": {
           "name": "弹开菜单",
@@ -616,17 +1380,51 @@
               "name": "菜单外盒",
               "desc": "配置菜单组件的外盒样式",
               "normal": [
-                ["width"],
-                ["height"],
-                ["boxShadow"],
-                ["background"],
-                ["opacity"],
-                ["border"],
-                ["borderRadius"],
-                ["margin"],
-                ["padding"]
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ],
+                [
+                  "boxShadow"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "padding"
+                ]
               ],
-              "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]]
+              "hover": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "borderRadius"
+                ]
+              ]
             },
             "MenuItem": {
               "name": "菜单项配置",
@@ -635,72 +1433,164 @@
                   "name": "项的外盒",
                   "desc": "配置每一项的外盒",
                   "normal": [
-                    ["height"],
-                    ["background"],
-                    ["border"],
-                    ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["padding"]
+                    [
+                      "height"
+                    ],
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "opacity"
+                    ],
+                    [
+                      "color"
+                    ],
+                    [
+                      "padding"
+                    ]
                   ],
                   "hover": [
-                    ["background"],
-                    ["border"],
-                    ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["font"]
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "opacity"
+                    ],
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ]
                   ],
                   "active": [
-                    ["background"],
-                    ["border"],
-                    ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["font"]
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "opacity"
+                    ],
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ]
                   ],
                   "disabled": [
-                    ["background"],
-                    ["color"],
-                    ["borderRadius"],
-                    ["opacity"],
-                    ["padding"],
-                    ["font"]
+                    [
+                      "background"
+                    ],
+                    [
+                      "color"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "opacity"
+                    ],
+                    [
+                      "padding"
+                    ],
+                    [
+                      "font"
+                    ]
                   ]
                 },
                 "SelectedMenuItemWrap": {
                   "name": "选中项的外盒",
                   "desc": "配置选中项的外盒",
                   "normal": [
-                    ["background"],
-                    ["border"],
-                    ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["padding"],
-                    ["font"]
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "opacity"
+                    ],
+                    [
+                      "color"
+                    ],
+                    [
+                      "padding"
+                    ],
+                    [
+                      "font"
+                    ]
                   ],
                   "hover": [
-                    ["background"],
-                    ["border"],
-                    ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["font"]
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "opacity"
+                    ],
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ]
                   ],
                   "active": [
-                    ["background"],
-                    ["border"],
-                    ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["font"]
+                    [
+                      "background"
+                    ],
+                    [
+                      "border"
+                    ],
+                    [
+                      "borderRadius"
+                    ],
+                    [
+                      "opacity"
+                    ],
+                    [
+                      "color"
+                    ],
+                    [
+                      "font"
+                    ]
                   ]
                 },
                 "Divider": {
                   "name": "分割线",
                   "desc": "配置每项之间的分割线，当divided为true时生效",
-                  "normal": [["background"]],
+                  "normal": [
+                    [
+                      "background"
+                    ]
+                  ],
                   "hover": [],
                   "active": [],
                   "disabled": []
@@ -711,6 +1601,5 @@
         }
       }
     }
-  },
-  "category": ["导航"]
+  }
 }

@@ -1,24 +1,22 @@
 {
   "widgetName": "Table",
   "title": "表格",
+  "aliasName": null,
   "desc": "Table  表格。",
   "tag": "表格 tabel",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "columns": {
-      "type": "Object[]",
-      "meta": [
-        { "key": "title", "title": "表头文本", "type": "string" },
-        { "key": "key", "title": "对应key", "type": "any" },
-        { "key": "dataIndex", "title": "指定展示项", "type": "any" },
-        { "key": "width", "title": "列宽", "type": "number" }
-      ],
       "desc": "表格每一行展示的内容",
-      "propsDefaultValue": [],
+      "type": "Object[]",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": [
         {
           "title": "Name",
@@ -35,95 +33,173 @@
           "dataIndex": "address",
           "key": "address"
         }
+      ],
+      "propsDefaultValue": [],
+      "meta": [
+        {
+          "key": "title",
+          "title": "表头文本",
+          "type": "string"
+        },
+        {
+          "key": "key",
+          "title": "对应key",
+          "type": "any"
+        },
+        {
+          "key": "dataIndex",
+          "title": "指定展示项",
+          "type": "any"
+        },
+        {
+          "key": "width",
+          "title": "列宽",
+          "type": "number"
+        }
       ]
     },
     "selectOptions": {
-      "type": "Object",
       "desc": "表格是否有选中项",
+      "type": "Object",
+      "designOnly": false,
+      "injectProps": false,
       "meta": [
-        { "key": "width", "title": "选择框所在列的宽度", "type": "number | string" },
-        { "key": "selectRowKeys", "title": "指定选中行的key值集合", "type": "string[]" }
+        {
+          "key": "width",
+          "title": "选择框所在列的宽度",
+          "type": "number | string"
+        },
+        {
+          "key": "selectRowKeys",
+          "title": "指定选中行的key值集合",
+          "type": "string[]"
+        }
       ]
     },
     "data": {
-      "type": "Object[]",
-      "meta": "columns",
       "desc": "数据源，指定 table 组件的数据",
-      "propsDefaultValue": [],
+      "type": "Object[]",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": [
-        { "name": "Jack", "age": 28, "address": "some where" },
-        { "name": "Rose", "age": 36, "address": "some where" },
-        { "name": "Bob", "age": 25, "address": "some where" }
-      ]
+        {
+          "name": "Jack",
+          "age": 28,
+          "address": "some where"
+        },
+        {
+          "name": "Rose",
+          "age": 36,
+          "address": "some where"
+        },
+        {
+          "name": "Bob",
+          "age": 25,
+          "address": "some where"
+        }
+      ],
+      "propsDefaultValue": []
     },
     "defaultExpandedRowKeys": {
+      "desc": "初始展开的行的集合",
       "type": "string[]",
-      "desc": "初始展开的行的集合"
+      "designOnly": false,
+      "injectProps": false
     },
     "expandedRowKeys": {
+      "desc": "展开的行的集合",
       "type": "string[]",
-      "desc": "展开的行的集合"
+      "designOnly": false,
+      "injectProps": false
     },
     "defaultExpandAllRows": {
+      "desc": "初始是否展开所有的行",
       "type": "boolean",
-      "desc": "初始是否展开所有的行"
+      "designOnly": false,
+      "injectProps": false
     },
     "expandedRowRender": {
+      "desc": "额外的展开行",
       "type": "Function(recode, index, indent, expanded):ReactNode",
-      "desc": "额外的展开行"
+      "designOnly": false,
+      "injectProps": false
     },
     "useFixedHeader": {
+      "desc": "固定 Table 标题，使其固定在最上方",
       "type": "boolean",
-      "desc": "固定 Table 标题，使其固定在最上方"
+      "designOnly": false,
+      "injectProps": false
     },
     "footer": {
+      "desc": "表格尾部",
       "type": "Function(currentPageData)",
-      "desc": "表格尾部"
+      "designOnly": false,
+      "injectProps": false
     },
     "indentSize": {
-      "type": "number",
       "desc": "展示树形数据时，每层缩进的宽度，以 px 为单位",
+      "type": "number",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": 15
     },
     "rowKey": {
-      "type": "{ x: number | true, y: number }",
       "desc": "表格行 key 的取值，可以是字符串或一个函数",
+      "type": "{ x: number | true, y: number }",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "key"
     },
     "showHeader": {
-      "type": "boolean",
       "desc": "是否展示标头",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": true
     },
     "title": {
+      "desc": "表格标题",
       "type": "Function(currentPageData)",
-      "desc": "表格标题"
+      "designOnly": false,
+      "injectProps": false
     },
     "size": {
-      "type": "SizeType",
       "desc": "设置表格单元格大小，可选 default、large、small，默认为 default;",
+      "type": "SizeType",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "default"
     },
     "onHeaderRow": {
+      "desc": "设置头部行属性",
       "type": "Function(column, index)",
-      "desc": "设置头部行属性"
+      "designOnly": false,
+      "injectProps": false
     },
     "onRow": {
+      "desc": "设置行属性",
       "type": "Function(record, index)",
-      "desc": "设置行属性"
+      "designOnly": false,
+      "injectProps": false
     },
     "tableStyle": {
-      "type": "tableStyleType",
       "desc": "表格标题",
+      "type": "tableStyleType",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "bordered"
     },
     "scroll": {
+      "desc": "设置滚动条，也可用于指定滚动区域的宽和高",
       "type": "Object",
-      "desc": "设置滚动条，也可用于指定滚动区域的宽和高"
+      "designOnly": false,
+      "injectProps": false
     },
     "rowClassName": {
+      "desc": "表格行的类名",
       "type": "Function(record, index): string",
-      "desc": "表格行的类名"
+      "designOnly": false,
+      "injectProps": false
     }
   },
   "events": {
@@ -178,17 +254,38 @@
       ]
     }
   },
+  "designInfo": {},
+  "category": [
+    "数据展示"
+  ],
   "type": {
-    "tableStyleType": ["zebraStripe", "linear", "bordered"],
-    "SizeType": ["default", "large", "small"]
+    "tableStyleType": [
+      "zebraStripe",
+      "linear",
+      "bordered"
+    ],
+    "SizeType": [
+      "default",
+      "large",
+      "small"
+    ]
   },
-  "childrenWidget": ["column", "selectOptions"],
-  "category": ["数据展示"],
   "theme": {
     "Container": {
       "name": "表格整体样式",
       "desc": "为表格配置整体样式",
-      "normal": [["width"], ["height"]]
+      "normal": [
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ]
     }
-  }
+  },
+  "childrenWidget": [
+    "column",
+    "selectOptions"
+  ]
 }

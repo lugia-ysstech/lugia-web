@@ -1,163 +1,241 @@
 {
   "widgetName": "Upload",
   "title": "上传",
+  "aliasName": null,
   "desc": "上传组件,可通过文件选择和拖拽上传",
   "tag": "upload 上传框 上传文件框 传输框 普通上传 基础上传 表单",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "data": {
+      "desc": "上传时附带的额外参数",
       "type": "object",
-      "desc": "上传时附带的额外参数"
+      "designOnly": false,
+      "injectProps": false
     },
     "areaType": {
-      "type": "UploadType",
       "desc": "上传组件的类型",
+      "type": "UploadType",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "default"
     },
     "disabled": {
-      "type": "boolean",
       "desc": "禁用状态",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "limit": {
+      "desc": "一次性可允许上传的最大文件数",
       "type": "number",
-      "desc": "一次性可允许上传的最大文件数"
+      "designOnly": false,
+      "injectProps": false
     },
     "multiple": {
-      "type": "boolean",
       "desc": "是否允许多个文件上传",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "showFileList": {
-      "type": "boolean",
       "desc": "是否显示上传列表",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "fileList": {
-      "type": "object[]",
       "desc": "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
+      "type": "object[]",
+      "designOnly": false,
+      "injectProps": false,
       "meta": [
-        { "key": "id", "title": "文件唯一标识", "type": "number" },
-        { "key": "name", "title": "文件名", "type": "string" },
-        { "key": "status", "title": "文件传输状态", "type": "FileType" }
+        {
+          "key": "id",
+          "title": "文件唯一标识",
+          "type": "number"
+        },
+        {
+          "key": "name",
+          "title": "文件名",
+          "type": "string"
+        },
+        {
+          "key": "status",
+          "title": "文件传输状态",
+          "type": "FileType"
+        }
       ]
     },
     "withCredentials": {
-      "type": "boolean",
       "desc": "上传请求时是否允许携带cookie凭证",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "autoUpload": {
-      "type": "boolean",
       "desc": "是否允许自动上传",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": true
     },
     "url": {
+      "desc": "上传的请求地址(必填参数)",
       "type": "string",
-      "desc": "上传的请求地址(必填参数)"
+      "designOnly": false,
+      "injectProps": false
     },
     "accept": {
+      "desc": "指定上传文件类型",
       "type": "string",
-      "desc": "指定上传文件类型"
+      "designOnly": false,
+      "injectProps": false
     },
     "name": {
+      "desc": "发送到后台的文件参数名",
       "type": "string",
-      "desc": "发送到后台的文件参数名"
+      "designOnly": false,
+      "injectProps": false
     },
     "icon": {
+      "desc": "默认上传图标",
       "type": "icon",
-      "desc": "默认上传图标"
+      "designOnly": false,
+      "injectProps": false
     },
     "successIcon": {
-      "type": "icon",
       "desc": "上传成功提示图标",
+      "type": "icon",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "lugia-icon-reminder_check_circle"
     },
     "failIcon": {
-      "type": "icon",
       "desc": "上传失败提示图标",
+      "type": "icon",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "lugia-icon-reminder_close_circle"
     },
     "loadingIcon": {
-      "type": "icon",
       "desc": "加载中图标",
+      "type": "icon",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "lugia-icon-financial_loading_o"
     },
     "liDeleteIcon": {
-      "type": "icon",
       "desc": "列表删除图标",
+      "type": "icon",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "lugia-icon-reminder_close"
     },
     "liVideoIcon": {
-      "type": "icon",
       "desc": "列表视频图标",
+      "type": "icon",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "lugia-icon-financial_video_camera"
     },
     "liFileIcon": {
-      "type": "icon",
       "desc": "列表文件图标",
+      "type": "icon",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "lugia-icon-financial_folder"
     },
     "liPictureIcon": {
-      "type": "icon",
       "desc": "列表图片图标",
+      "type": "icon",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "lugia-icon-financial_pic"
     },
     "size": {
-      "type": "UploadSize",
       "desc": "picture类型可配置的三种尺寸",
+      "type": "UploadSize",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "default"
     },
     "defaultTips": {
-      "type": "Object",
       "desc": "默认的上传提示语",
-      "meta": [
-        { "key": "uploadText", "title": "上传按钮文字", "type": "string" },
-        { "key": "uploadTips", "title": "上传区域提示文字", "type": "string" },
-        { "key": "failTips", "title": "上传失败提示", "type": "string" },
-        { "key": "loadingTips", "title": "文件上传加载提示", "type": "string" }
-      ],
+      "type": "Object",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": {
         "uploadText": "上传",
         "uploadTips": "请将文件拖到此处",
         "failTips": "文件上传失败请重试",
         "loadingTips": "文件上传中..."
-      }
+      },
+      "meta": [
+        {
+          "key": "uploadText",
+          "title": "上传按钮文字",
+          "type": "string"
+        },
+        {
+          "key": "uploadTips",
+          "title": "上传区域提示文字",
+          "type": "string"
+        },
+        {
+          "key": "failTips",
+          "title": "上传失败提示",
+          "type": "string"
+        },
+        {
+          "key": "loadingTips",
+          "title": "文件上传加载提示",
+          "type": "string"
+        }
+      ]
     },
     "userDefine": {
+      "desc": "用户自定义上传按钮",
       "type": "React$Element<any>",
-      "desc": "用户自定义上传按钮"
+      "designOnly": false,
+      "injectProps": false
     },
     "isShowProgress": {
-      "type": "boolean",
       "desc": "是否有进度条",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": true
     },
     "customUpload": {
-      "type": "Function",
       "desc": "用户自定义上传",
-      "args": [
-        { "name": "file", "desc": "用户上传的文件", "type": "file" },
-        { "name": "operate", "desc": "所有可执行函数(success,fail,start)", "type": "Object" }
-      ]
+      "type": "Function",
+      "designOnly": false,
+      "injectProps": false
     },
     "validateStatus": {
+      "desc": "校验状态",
       "type": "ValidateStatus",
-      "desc": "校验状态"
+      "designOnly": false,
+      "injectProps": false
     },
     "validateType": {
-      "type": "ValidateType",
       "desc": "校验信息显示类型",
+      "type": "ValidateType",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "top"
     },
     "webkitdirectory": {
-      "type": "boolean",
       "desc": "是否允许文件夹上传",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     }
   },
   "events": {
@@ -237,6 +315,2119 @@
       ]
     }
   },
+  "designInfo": {
+    "ButtonTypeUpload": {
+      "title": "按钮上传",
+      "sequence": 1,
+      "tag": "buttomtypeupload 按钮上传框 按钮上传文件框 按钮传输框 表单",
+      "desc": "按钮上传模式的配置项",
+      "props": {
+        "areaType": "button"
+      },
+      "theme": {
+        "Container": {
+          "name": "上传组件整体样式",
+          "theme": {
+            "Container": {
+              "name": "上传整体样式配置",
+              "desc": "按钮上传类型的整体样式配置",
+              "normal": [
+                [
+                  "background"
+                ],
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ],
+                [
+                  "boxShadow"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "borderRadius"
+                ]
+              ],
+              "hover": [
+                [
+                  "background"
+                ],
+                [
+                  "boxShadow"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "opacity"
+                ]
+              ],
+              "focus": [
+                [
+                  "background"
+                ],
+                [
+                  "boxShadow"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "opacity"
+                ]
+              ],
+              "disabled": [
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ]
+              ]
+            },
+            "ButtonText": {
+              "name": "文件上传文字样式",
+              "desc": "上传时的文字样式的文字",
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ]
+            }
+          }
+        },
+        "UploadLiType": {
+          "name": "上传文件列表",
+          "desc": "上传列表的行样式",
+          "normal": [
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ],
+          "hover": [
+            [
+              "border"
+            ],
+            [
+              "background"
+            ],
+            [
+              "color"
+            ]
+          ]
+        },
+        "liIconTheme": {
+          "name": "上传列表图标样式",
+          "desc": "默认类型的上传图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadListSuccessIcon": {
+          "name": "上传成功图标样式",
+          "desc": "上传成功时列表图标的样式",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadListFailedIcon": {
+          "name": "上传失败图标样式",
+          "desc": "上传失败时列表图标的样式",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadButtonFail": {
+          "name": "按钮失败整体样式",
+          "theme": {
+            "Container": {
+              "name": "按钮失败样式",
+              "desc": "带按钮类型的上传框失败整体配置",
+              "normal": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "right"
+                ]
+              ],
+              "hover": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "right"
+                ]
+              ],
+              "active": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "right"
+                ]
+              ],
+              "focus": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "right"
+                ]
+              ],
+              "disabled": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "right"
+                ]
+              ]
+            },
+            "ButtonText": {
+              "name": "按钮文字失败样式",
+              "desc": "按钮类型的按钮文字样式配置",
+              "normal": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "hover": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "active": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "focus": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "disabled": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ]
+            }
+          }
+        },
+        "UploadButtonDone": {
+          "name": "按钮失败整体样式",
+          "theme": {
+            "Container": {
+              "desc": "带按钮类型的上传框失败整体配置",
+              "normal": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "right"
+                ]
+              ],
+              "hover": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "right"
+                ]
+              ],
+              "active": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "right"
+                ]
+              ],
+              "focus": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "right"
+                ]
+              ],
+              "disabled": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "right"
+                ]
+              ]
+            },
+            "ButtonText": {
+              "name": "按钮文字失败样式",
+              "desc": "按钮类型的按钮文字样式配置",
+              "normal": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "hover": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "active": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "focus": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "disabled": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ]
+            }
+          }
+        },
+        "UploadIcon": {
+          "name": "上传图标样式",
+          "desc": "默认类型的上传图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadLoadingIcon": {
+          "name": "加载中图标样式",
+          "desc": "默认类型的上传图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiFileIcon": {
+          "name": "列表文件样式",
+          "desc": "默认类型的列表文件图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiPictureIcon": {
+          "name": "列表图片样式",
+          "desc": "默认类型的列表图片图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiVideoIcon": {
+          "name": "列表视频样式",
+          "desc": "默认类型的列表视频图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiDeleteIcon": {
+          "name": "列表删除样式",
+          "desc": "默认类型的列表删除图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        }
+      },
+      "defaultTheme": {
+        "UploadLiType": {
+          "normal": {
+            "width": "100%"
+          }
+        }
+      }
+    },
+    "PictureTypeUpload": {
+      "title": "图片上传",
+      "sequence": 2,
+      "tag": "PictureTypeUpload 图片上传框 图片上传文件框 图片传输框 image上传 表单",
+      "desc": "图片上传模式的配置项，仅支持图片",
+      "props": {
+        "areaType": "picture"
+      },
+      "theme": {
+        "Container": {
+          "name": "图片上传区域",
+          "desc": "图片上传类型的样式配置",
+          "normal": [
+            [
+              "background"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ]
+          ],
+          "hover": [
+            [
+              "background"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ]
+          ],
+          "disabled": [
+            [
+              "background"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ]
+          ]
+        },
+        "UploadLiType": {
+          "name": "上传文件列表",
+          "desc": "上传列表的行样式",
+          "normal": [
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ],
+          "hover": [
+            [
+              "border"
+            ],
+            [
+              "background"
+            ],
+            [
+              "color"
+            ]
+          ]
+        },
+        "liIconTheme": {
+          "name": "上传列表图标样式",
+          "desc": "默认类型的上传图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadListSuccessIcon": {
+          "name": "上传成功图标样式",
+          "desc": "上传成功时列表图标的样式",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadListFailedIcon": {
+          "name": "上传失败图标样式",
+          "desc": "上传失败时列表图标的样式",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadLoading": {
+          "name": "加载中样式",
+          "desc": "图片类型的加载图标",
+          "normal": [
+            [
+              "background"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ]
+          ]
+        },
+        "UploadDone": {
+          "name": "上传成功样式",
+          "desc": "图片类型的上传成功图标",
+          "normal": [
+            [
+              "background"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ]
+          ]
+        },
+        "UploadFail": {
+          "name": "上传失败样式",
+          "desc": "图片类型的上传失败图标",
+          "normal": [
+            [
+              "background"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "font"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "color"
+            ]
+          ]
+        },
+        "UploadIcon": {
+          "name": "上传图标样式",
+          "desc": "默认类型的上传图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadLoadingIcon": {
+          "name": "加载中图标样式",
+          "desc": "默认类型的上传图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiFileIcon": {
+          "name": "列表文件样式",
+          "desc": "默认类型的列表文件图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiPictureIcon": {
+          "name": "列表图片样式",
+          "desc": "默认类型的列表图片图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiVideoIcon": {
+          "name": "列表视频样式",
+          "desc": "默认类型的列表视频图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiDeleteIcon": {
+          "name": "列表删除样式",
+          "desc": "默认类型的列表删除图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        }
+      },
+      "defaultTheme": {
+        "UploadPictureType": {
+          "normal": {
+            "width": 80
+          }
+        },
+        "UploadLiType": {
+          "normal": {
+            "width": "100%"
+          }
+        }
+      }
+    },
+    "AreaTypeUpload": {
+      "title": "区域拖拽上传",
+      "sequence": 3,
+      "tag": "AreaTypeupload 区域上传框 区域上传文件框 区域传输框 多文件拖拽上传 表单",
+      "desc": "大面积区域拖拽上传模式的配置项",
+      "props": {
+        "areaType": "area"
+      },
+      "theme": {
+        "Container": {
+          "name": "文件上传区域",
+          "desc": "区域拖拽上传类型的样式配置",
+          "normal": [
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "background"
+            ],
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "opacity"
+            ]
+          ],
+          "disabled": [
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "color"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "opacity"
+            ]
+          ]
+        },
+        "UploadLiType": {
+          "name": "上传文件列表",
+          "desc": "上传列表的行样式",
+          "normal": [
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ],
+          "hover": [
+            [
+              "border"
+            ],
+            [
+              "background"
+            ],
+            [
+              "color"
+            ]
+          ]
+        },
+        "liIconTheme": {
+          "name": "上传列表图标样式",
+          "desc": "默认类型的上传图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadListSuccessIcon": {
+          "name": "上传成功图标样式",
+          "desc": "上传成功时列表图标的样式",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadListFailedIcon": {
+          "name": "上传失败图标样式",
+          "desc": "上传失败时列表图标的样式",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadAreaText": {
+          "name": "上传文本样式",
+          "desc": "区域类型的「上传」按钮文字样式",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ]
+        },
+        "UploadLoading": {
+          "name": "加载中样式",
+          "desc": "区域类型的加载样式",
+          "normal": [
+            [
+              "border"
+            ],
+            [
+              "color"
+            ],
+            [
+              "font"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadDone": {
+          "name": "上传成功样式",
+          "desc": "区域类型的上传成功样式",
+          "normal": [
+            [
+              "border"
+            ],
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ]
+        },
+        "UploadFail": {
+          "name": "上传失败样式",
+          "desc": "区域类型的上传失败样式",
+          "normal": [
+            [
+              "border"
+            ],
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ]
+          ]
+        },
+        "UploadIcon": {
+          "name": "上传图标样式",
+          "desc": "默认类型的上传图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadLoadingIcon": {
+          "name": "加载中图标样式",
+          "desc": "默认类型的上传图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiFileIcon": {
+          "name": "列表文件样式",
+          "desc": "默认类型的列表文件图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiPictureIcon": {
+          "name": "列表图片样式",
+          "desc": "默认类型的列表图片图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiVideoIcon": {
+          "name": "列表视频样式",
+          "desc": "默认类型的列表视频图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiDeleteIcon": {
+          "name": "列表删除样式",
+          "desc": "默认类型的列表删除图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        }
+      },
+      "defaultTheme": {
+        "UploadAreaType": {
+          "normal": {
+            "width": 300
+          }
+        },
+        "UploadLiType": {
+          "normal": {
+            "width": "100%"
+          }
+        }
+      }
+    },
+    "BothTypeUpload": {
+      "title": "带按钮的拖拽上传",
+      "sequence": 4,
+      "tag": null,
+      "desc": "带按钮的拖拽上传模式的配置项",
+      "props": {
+        "areaType": "both"
+      },
+      "theme": {
+        "UploadButtonType": {
+          "name": "按钮配置",
+          "desc": "按钮部分的样式配置",
+          "theme": {
+            "Container": {
+              "name": "按钮整体样式",
+              "desc": "为按钮配置整体样式",
+              "normal": [
+                [
+                  "width"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "hover": [
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "active": [
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "focus": [
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "disabled": [
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "border"
+                ]
+              ]
+            },
+            "ButtonText": {
+              "name": "按钮文字样式",
+              "desc": "为按钮文字配置样式",
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "active": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "focus": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ]
+            }
+          }
+        },
+        "Container": {
+          "name": "文件上传整体区域",
+          "desc": "默认上传框的整体样式",
+          "normal": [
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "boxShadow"
+            ]
+          ],
+          "disabled": [
+            [
+              "cursor"
+            ]
+          ]
+        },
+        "UploadInputTheme": {
+          "name": "上传框区域",
+          "desc": "默认输入框的样式",
+          "normal": [
+            [
+              "border"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "borderRadius",
+              "topLeft",
+              "bottomLeft"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "color"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "background"
+            ]
+          ],
+          "hover": [
+            [
+              "border"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "borderRadius",
+              "topLeft",
+              "bottomLeft"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "color"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "background"
+            ]
+          ],
+          "disabled": [
+            [
+              "border"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "borderRadius",
+              "topLeft",
+              "bottomLeft"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "color"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "cursor"
+            ],
+            [
+              "background"
+            ]
+          ]
+        },
+        "UploadFail": {
+          "name": "上传框失败样式",
+          "desc": "带按钮类型上传框失败样式",
+          "normal": [
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "borderRadius",
+              "topLeft",
+              "bottomLeft"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "background"
+            ]
+          ]
+        },
+        "UploadLoading": {
+          "name": "上传框加载样式",
+          "desc": "带按钮类型加载中的上传框样式",
+          "normal": [
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "borderRadius",
+              "topLeft",
+              "bottomLeft"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "background"
+            ]
+          ]
+        },
+        "UploadDone": {
+          "name": "上传框成功样式",
+          "desc": "带按钮类型上传框成功样式",
+          "normal": [
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "borderRadius",
+              "topLeft",
+              "bottomLeft"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "background"
+            ]
+          ]
+        },
+        "UploadLiType": {
+          "name": "上传文件列表",
+          "desc": "上传列表的行样式",
+          "normal": [
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ],
+          "hover": [
+            [
+              "border"
+            ],
+            [
+              "background"
+            ],
+            [
+              "color"
+            ]
+          ]
+        },
+        "liIconTheme": {
+          "name": "上传列表图标样式",
+          "desc": "默认类型的上传图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadListSuccessIcon": {
+          "name": "上传成功图标样式",
+          "desc": "上传成功时列表图标的样式",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadListFailedIcon": {
+          "name": "上传失败图标样式",
+          "desc": "上传失败时列表图标的样式",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadButtonFail": {
+          "name": "按钮失败整体样式",
+          "theme": {
+            "Container": {
+              "desc": "带按钮类型的上传框失败整体配置",
+              "normal": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "hover": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "active": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "focus": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "disabled": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ]
+            },
+            "ButtonText": {
+              "name": "按钮文字失败样式",
+              "desc": "带按钮类型的按钮文字样式配置",
+              "normal": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "hover": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "active": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "focus": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "disabled": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ]
+            }
+          }
+        },
+        "UploadButtonLoading": {
+          "name": "按钮失败整体样式",
+          "theme": {
+            "Container": {
+              "desc": "带按钮类型的上传框失败整体配置",
+              "normal": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "hover": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "active": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "focus": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "disabled": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ]
+            }
+          }
+        },
+        "UploadButtonDone": {
+          "name": "按钮失败整体样式",
+          "theme": {
+            "Container": {
+              "desc": "带按钮类型的上传框失败整体配置",
+              "normal": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "hover": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "active": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "focus": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ],
+              "disabled": [
+                [
+                  "boxShadow"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "borderRadius",
+                  "topRight",
+                  "bottomRight"
+                ],
+                [
+                  "border"
+                ]
+              ]
+            },
+            "ButtonText": {
+              "name": "按钮文字失败样式",
+              "desc": "带按钮类型的按钮文字样式配置",
+              "normal": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "hover": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "active": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "focus": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ],
+              "disabled": [
+                [
+                  "font"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "fontSize"
+                ]
+              ]
+            }
+          }
+        },
+        "UploadIcon": {
+          "name": "上传图标样式",
+          "desc": "默认类型的上传图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "UploadLoadingIcon": {
+          "name": "加载中图标样式",
+          "desc": "默认类型的上传图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiFileIcon": {
+          "name": "列表文件样式",
+          "desc": "默认类型的列表文件图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiPictureIcon": {
+          "name": "列表图片样式",
+          "desc": "默认类型的列表图片图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiVideoIcon": {
+          "name": "列表视频样式",
+          "desc": "默认类型的列表视频图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        },
+        "LiDeleteIcon": {
+          "name": "列表删除样式",
+          "desc": "默认类型的列表删除图标",
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "fontSize"
+            ]
+          ]
+        }
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "width": 346
+          }
+        },
+        "UploadLiType": {
+          "normal": {
+            "width": "100%"
+          }
+        }
+      }
+    }
+  },
+  "category": [
+    "数据录入"
+  ],
   "type": {
     "UploadSize": [
       {
@@ -313,866 +2504,6 @@
       }
     ]
   },
-  "category": ["数据录入"],
-  "designInfo": {
-    "ButtonTypeUpload": {
-      "sequence": 1,
-      "title": "按钮上传",
-      "desc": "按钮上传模式的配置项",
-      "tag": "buttomtypeupload 按钮上传框 按钮上传文件框 按钮传输框 表单",
-      "props": {
-        "areaType": "button"
-      },
-      "theme": {
-        "Container": {
-          "name": "上传组件整体样式",
-          "theme": {
-            "Container": {
-              "name": "上传整体样式配置",
-              "desc": "按钮上传类型的整体样式配置",
-              "normal": [
-                ["background"],
-                ["width"],
-                ["height"],
-                ["boxShadow"],
-                ["border"],
-                ["opacity"],
-                ["borderRadius"]
-              ],
-              "hover": [["background"], ["boxShadow"], ["border"], ["opacity"]],
-              "focus": [["background"], ["boxShadow"], ["border"], ["opacity"]],
-              "disabled": [["background"], ["border"]]
-            },
-            "ButtonText": {
-              "name": "文件上传文字样式",
-              "desc": "上传时的文字样式的文字",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
-            }
-          }
-        },
-        "UploadLiType": {
-          "name": "上传文件列表",
-          "desc": "上传列表的行样式",
-          "normal": [["width"], ["height"], ["background"], ["border"], ["color"], ["fontSize"]],
-          "hover": [["border"], ["background"], ["color"]]
-        },
-        "liIconTheme": {
-          "name": "上传列表图标样式",
-          "desc": "默认类型的上传图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadListSuccessIcon": {
-          "name": "上传成功图标样式",
-          "desc": "上传成功时列表图标的样式",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadListFailedIcon": {
-          "name": "上传失败图标样式",
-          "desc": "上传失败时列表图标的样式",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadButtonFail": {
-          "name": "按钮失败整体样式",
-          "theme": {
-            "Container": {
-              "name": "按钮失败样式",
-              "desc": "带按钮类型的上传框失败整体配置",
-              "normal": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"]],
-              "hover": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"]],
-              "active": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"]],
-              "focus": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"]],
-              "disabled": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"]]
-            },
-            "ButtonText": {
-              "name": "按钮文字失败样式",
-              "desc": "按钮类型的按钮文字样式配置",
-              "normal": [["font"], ["color"], ["fontSize"]],
-              "hover": [["font"], ["color"], ["fontSize"]],
-              "active": [["font"], ["color"], ["fontSize"]],
-              "focus": [["font"], ["color"], ["fontSize"]],
-              "disabled": [["font"], ["color"], ["fontSize"]]
-            }
-          }
-        },
-        "UploadButtonDone": {
-          "name": "按钮失败整体样式",
-          "theme": {
-            "Container": {
-              "desc": "带按钮类型的上传框失败整体配置",
-              "normal": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"]],
-              "hover": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"]],
-              "active": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"]],
-              "focus": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"]],
-              "disabled": [["boxShadow"], ["opacity"], ["background"], ["borderRadius", "right"]]
-            },
-            "ButtonText": {
-              "name": "按钮文字失败样式",
-              "desc": "按钮类型的按钮文字样式配置",
-              "normal": [["font"], ["color"], ["fontSize"]],
-              "hover": [["font"], ["color"], ["fontSize"]],
-              "active": [["font"], ["color"], ["fontSize"]],
-              "focus": [["font"], ["color"], ["fontSize"]],
-              "disabled": [["font"], ["color"], ["fontSize"]]
-            }
-          }
-        },
-        "UploadIcon": {
-          "name": "上传图标样式",
-          "desc": "默认类型的上传图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadLoadingIcon": {
-          "name": "加载中图标样式",
-          "desc": "默认类型的上传图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiFileIcon": {
-          "name": "列表文件样式",
-          "desc": "默认类型的列表文件图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiPictureIcon": {
-          "name": "列表图片样式",
-          "desc": "默认类型的列表图片图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiVideoIcon": {
-          "name": "列表视频样式",
-          "desc": "默认类型的列表视频图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiDeleteIcon": {
-          "name": "列表删除样式",
-          "desc": "默认类型的列表删除图标",
-          "normal": [["color"], ["fontSize"]]
-        }
-      },
-      "defaultTheme": {
-        "UploadLiType": {
-          "normal": {
-            "width": "100%"
-          }
-        }
-      }
-    },
-    "PictureTypeUpload": {
-      "sequence": 2,
-      "title": "图片上传",
-      "desc": "图片上传模式的配置项，仅支持图片",
-      "tag": "PictureTypeUpload 图片上传框 图片上传文件框 图片传输框 image上传 表单",
-      "props": {
-        "areaType": "picture"
-      },
-      "theme": {
-        "Container": {
-          "name": "图片上传区域",
-          "desc": "图片上传类型的样式配置",
-          "normal": [
-            ["background"],
-            ["width"],
-            ["height"],
-            ["opacity"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"]
-          ],
-          "hover": [["background"], ["opacity"], ["border"], ["borderRadius"], ["boxShadow"]],
-          "disabled": [["background"], ["opacity"], ["border"], ["borderRadius"], ["boxShadow"]]
-        },
-        "UploadLiType": {
-          "name": "上传文件列表",
-          "desc": "上传列表的行样式",
-          "normal": [["width"], ["height"], ["background"], ["border"], ["color"], ["fontSize"]],
-          "hover": [["border"], ["background"], ["color"]]
-        },
-        "liIconTheme": {
-          "name": "上传列表图标样式",
-          "desc": "默认类型的上传图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadListSuccessIcon": {
-          "name": "上传成功图标样式",
-          "desc": "上传成功时列表图标的样式",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadListFailedIcon": {
-          "name": "上传失败图标样式",
-          "desc": "上传失败时列表图标的样式",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadLoading": {
-          "name": "加载中样式",
-          "desc": "图片类型的加载图标",
-          "normal": [["background"], ["opacity"], ["border"], ["borderRadius"], ["boxShadow"]]
-        },
-        "UploadDone": {
-          "name": "上传成功样式",
-          "desc": "图片类型的上传成功图标",
-          "normal": [["background"], ["opacity"], ["border"], ["borderRadius"], ["boxShadow"]]
-        },
-        "UploadFail": {
-          "name": "上传失败样式",
-          "desc": "图片类型的上传失败图标",
-          "normal": [["background"], ["opacity"], ["border"], ["borderRadius"], ["boxShadow"],["font"],["fontSize"],["color"]]
-        },
-        "UploadIcon": {
-          "name": "上传图标样式",
-          "desc": "默认类型的上传图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadLoadingIcon": {
-          "name": "加载中图标样式",
-          "desc": "默认类型的上传图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiFileIcon": {
-          "name": "列表文件样式",
-          "desc": "默认类型的列表文件图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiPictureIcon": {
-          "name": "列表图片样式",
-          "desc": "默认类型的列表图片图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiVideoIcon": {
-          "name": "列表视频样式",
-          "desc": "默认类型的列表视频图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiDeleteIcon": {
-          "name": "列表删除样式",
-          "desc": "默认类型的列表删除图标",
-          "normal": [["color"], ["fontSize"]]
-        }
-      },
-      "defaultTheme": {
-        "UploadPictureType": {
-          "normal": {
-            "width": 80
-          }
-        },
-        "UploadLiType": {
-          "normal": {
-            "width": "100%"
-          }
-        }
-      }
-    },
-    "AreaTypeUpload": {
-      "sequence": 3,
-      "title": "区域拖拽上传",
-      "desc": "大面积区域拖拽上传模式的配置项",
-      "tag": "AreaTypeupload 区域上传框 区域上传文件框 区域传输框 多文件拖拽上传 表单",
-      "props": {
-        "areaType": "area"
-      },
-      "theme": {
-        "Container": {
-          "name": "文件上传区域",
-          "desc": "区域拖拽上传类型的样式配置",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"],
-            ["opacity"],
-            ["background"],
-            ["color"],
-            ["fontSize"],
-            ["font"]
-          ],
-          "hover": [["border"], ["borderRadius"], ["boxShadow"], ["opacity"]],
-          "disabled": [
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"],
-            ["opacity"]
-          ]
-        },
-        "UploadLiType": {
-          "name": "上传文件列表",
-          "desc": "上传列表的行样式",
-          "normal": [["width"], ["height"], ["background"], ["border"], ["color"], ["fontSize"]],
-          "hover": [["border"], ["background"], ["color"]]
-        },
-        "liIconTheme": {
-          "name": "上传列表图标样式",
-          "desc": "默认类型的上传图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadListSuccessIcon": {
-          "name": "上传成功图标样式",
-          "desc": "上传成功时列表图标的样式",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadListFailedIcon": {
-          "name": "上传失败图标样式",
-          "desc": "上传失败时列表图标的样式",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadAreaText": {
-          "name": "上传文本样式",
-          "desc": "区域类型的「上传」按钮文字样式",
-          "normal": [["color"], ["fontSize"], ["font"]],
-          "hover": [["color"], ["fontSize"], ["font"]],
-          "disabled": [["color"], ["fontSize"], ["font"]]
-        },
-        "UploadLoading": {
-          "name": "加载中样式",
-          "desc": "区域类型的加载样式",
-          "normal": [["border"], ["color"], ["font"], ["fontSize"]]
-        },
-        "UploadDone": {
-          "name": "上传成功样式",
-          "desc": "区域类型的上传成功样式",
-          "normal": [["border"], ["color"], ["fontSize"], ["font"]]
-        },
-        "UploadFail": {
-          "name": "上传失败样式",
-          "desc": "区域类型的上传失败样式",
-          "normal": [["border"], ["color"], ["fontSize"], ["font"]]
-        },
-        "UploadIcon": {
-          "name": "上传图标样式",
-          "desc": "默认类型的上传图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadLoadingIcon": {
-          "name": "加载中图标样式",
-          "desc": "默认类型的上传图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiFileIcon": {
-          "name": "列表文件样式",
-          "desc": "默认类型的列表文件图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiPictureIcon": {
-          "name": "列表图片样式",
-          "desc": "默认类型的列表图片图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiVideoIcon": {
-          "name": "列表视频样式",
-          "desc": "默认类型的列表视频图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiDeleteIcon": {
-          "name": "列表删除样式",
-          "desc": "默认类型的列表删除图标",
-          "normal": [["color"], ["fontSize"]]
-        }
-      },
-      "defaultTheme": {
-        "UploadAreaType": {
-          "normal": {
-            "width": 300
-          }
-        },
-        "UploadLiType": {
-          "normal": {
-            "width": "100%"
-          }
-        }
-      }
-    },
-    "BothTypeUpload": {
-      "sequence": 4,
-      "title": "带按钮的拖拽上传",
-      "desc": "带按钮的拖拽上传模式的配置项",
-      "props": {
-        "areaType": "both"
-      },
-      "theme": {
-        "UploadButtonType": {
-          "name": "按钮配置",
-          "desc": "按钮部分的样式配置",
-          "theme": {
-            "Container": {
-              "name": "按钮整体样式",
-              "desc": "为按钮配置整体样式",
-              "normal": [
-                ["width"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["opacity"],
-                ["border"]
-              ],
-              "hover": [
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["opacity"],
-                ["border"]
-              ],
-              "active": [
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["opacity"],
-                ["border"]
-              ],
-              "focus": [
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["opacity"],
-                ["border"]
-              ],
-              "disabled": [
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["opacity"],
-                ["border"]
-              ]
-            },
-            "ButtonText": {
-              "name": "按钮文字样式",
-              "desc": "为按钮文字配置样式",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "active": [["color"], ["font"]],
-              "focus": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
-            }
-          }
-        },
-        "Container": {
-          "name": "文件上传整体区域",
-          "desc": "默认上传框的整体样式",
-          "normal": [["width"], ["height"], ["boxShadow"]],
-          "disabled": [["cursor"]]
-        },
-        "UploadInputTheme": {
-          "name": "上传框区域",
-          "desc": "默认输入框的样式",
-          "normal": [
-            ["border"],
-            ["fontSize"],
-            ["font"],
-            ["borderRadius", "topLeft", "bottomLeft"],
-            ["opacity"],
-            ["color"],
-            ["padding"],
-            ["background"]
-          ],
-          "hover": [
-            ["border"],
-            ["fontSize"],
-            ["font"],
-            ["borderRadius", "topLeft", "bottomLeft"],
-            ["opacity"],
-            ["color"],
-            ["padding"],
-            ["background"]
-          ],
-          "disabled": [
-            ["border"],
-            ["fontSize"],
-            ["font"],
-            ["borderRadius", "topLeft", "bottomLeft"],
-            ["opacity"],
-            ["color"],
-            ["padding"],
-            ["cursor"],
-            ["background"]
-          ]
-        },
-        "UploadFail": {
-          "name": "上传框失败样式",
-          "desc": "带按钮类型上传框失败样式",
-          "normal": [
-            ["border"],
-            ["boxShadow"],
-            ["borderRadius", "topLeft", "bottomLeft"],
-            ["opacity"],
-            ["color"],
-            ["fontSize"],
-            ["font"],
-            ["background"]
-          ]
-        },
-        "UploadLoading": {
-          "name": "上传框加载样式",
-          "desc": "带按钮类型加载中的上传框样式",
-          "normal": [
-            ["border"],
-            ["boxShadow"],
-            ["borderRadius", "topLeft", "bottomLeft"],
-            ["opacity"],
-            ["color"],
-            ["fontSize"],
-            ["font"],
-            ["background"]
-          ]
-        },
-        "UploadDone": {
-          "name": "上传框成功样式",
-          "desc": "带按钮类型上传框成功样式",
-          "normal": [
-            ["border"],
-            ["boxShadow"],
-            ["borderRadius", "topLeft", "bottomLeft"],
-            ["opacity"],
-            ["color"],
-            ["fontSize"],
-            ["font"],
-            ["background"]
-          ]
-        },
-        "UploadLiType": {
-          "name": "上传文件列表",
-          "desc": "上传列表的行样式",
-          "normal": [["width"], ["height"], ["background"], ["border"], ["color"], ["fontSize"]],
-          "hover": [["border"], ["background"], ["color"]]
-        },
-        "liIconTheme": {
-          "name": "上传列表图标样式",
-          "desc": "默认类型的上传图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadListSuccessIcon": {
-          "name": "上传成功图标样式",
-          "desc": "上传成功时列表图标的样式",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadListFailedIcon": {
-          "name": "上传失败图标样式",
-          "desc": "上传失败时列表图标的样式",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadButtonFail": {
-          "name": "按钮失败整体样式",
-          "theme": {
-            "Container": {
-              "desc": "带按钮类型的上传框失败整体配置",
-              "normal": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ],
-              "hover": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ],
-              "active": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ],
-              "focus": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ],
-              "disabled": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ]
-            },
-            "ButtonText": {
-              "name": "按钮文字失败样式",
-              "desc": "带按钮类型的按钮文字样式配置",
-              "normal": [["font"], ["color"], ["fontSize"]],
-              "hover": [["font"], ["color"], ["fontSize"]],
-              "active": [["font"], ["color"], ["fontSize"]],
-              "focus": [["font"], ["color"], ["fontSize"]],
-              "disabled": [["font"], ["color"], ["fontSize"]]
-            }
-          }
-        },
-        "UploadButtonLoading": {
-          "name": "按钮失败整体样式",
-          "theme": {
-            "Container": {
-              "desc": "带按钮类型的上传框失败整体配置",
-              "normal": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ],
-              "hover": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ],
-              "active": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ],
-              "focus": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ],
-              "disabled": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ]
-            }
-          }
-        },
-        "UploadButtonDone": {
-          "name": "按钮失败整体样式",
-          "theme": {
-            "Container": {
-              "desc": "带按钮类型的上传框失败整体配置",
-              "normal": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ],
-              "hover": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ],
-              "active": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ],
-              "focus": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ],
-              "disabled": [
-                ["boxShadow"],
-                ["opacity"],
-                ["background"],
-                ["borderRadius", "topRight", "bottomRight"],
-                ["border"]
-              ]
-            },
-            "ButtonText": {
-              "name": "按钮文字失败样式",
-              "desc": "带按钮类型的按钮文字样式配置",
-              "normal": [["font"], ["color"], ["fontSize"]],
-              "hover": [["font"], ["color"], ["fontSize"]],
-              "active": [["font"], ["color"], ["fontSize"]],
-              "focus": [["font"], ["color"], ["fontSize"]],
-              "disabled": [["font"], ["color"], ["fontSize"]]
-            }
-          }
-        },
-        "UploadIcon": {
-          "name": "上传图标样式",
-          "desc": "默认类型的上传图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "UploadLoadingIcon": {
-          "name": "加载中图标样式",
-          "desc": "默认类型的上传图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiFileIcon": {
-          "name": "列表文件样式",
-          "desc": "默认类型的列表文件图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiPictureIcon": {
-          "name": "列表图片样式",
-          "desc": "默认类型的列表图片图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiVideoIcon": {
-          "name": "列表视频样式",
-          "desc": "默认类型的列表视频图标",
-          "normal": [["color"], ["fontSize"]]
-        },
-        "LiDeleteIcon": {
-          "name": "列表删除样式",
-          "desc": "默认类型的列表删除图标",
-          "normal": [["color"], ["fontSize"]]
-        }
-      },
-      "defaultTheme": {
-        "Container": {
-          "normal": {
-            "width": 346
-          }
-        },
-        "UploadLiType": {
-          "normal": {
-            "width": "100%"
-          }
-        }
-      }
-    }
-  },
-  "theme": {
-    "Container": {
-      "name": "文件上传区域",
-      "desc": "默认上传框的样式",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["boxShadow"],
-        ["border"],
-        ["opacity"],
-        ["padding"],
-        ["borderRadius"],
-        ["background"],
-        ["color"],
-        ["fontSize"],
-        ["font"]
-      ],
-      "hover": [
-        ["boxShadow"],
-        ["border"],
-        ["border"],
-        ["color"],
-        ["fontSize"],
-        ["font"],
-        ["opacity"],
-        ["padding"],
-        ["borderRadius"],
-        ["background"]
-      ],
-      "disabled": [
-        ["border"],
-        ["cursor"],
-        ["border"],
-        ["color"],
-        ["fontSize"],
-        ["font"],
-        ["opacity"],
-        ["padding"],
-        ["borderRadius"],
-        ["background"]
-      ]
-    },
-    "UploadLiType": {
-      "name": "上传文件列表",
-      "desc": "上传列表的行样式",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["border"],
-        ["color"],
-        ["fontSize"],
-        ["font"]
-      ],
-      "hover": [["border"], ["background"], ["color"]]
-    },
-    "UploadListSuccessIcon": {
-      "name": "上传成功图标样式",
-      "desc": "上传成功时列表图标的样式",
-      "normal": [["color"], ["fontSize"]]
-    },
-    "UploadListFailedIcon": {
-      "name": "上传失败图标样式",
-      "desc": "上传失败时列表图标的样式",
-      "normal": [["color"], ["fontSize"]]
-    },
-    "UploadLoading": {
-      "name": "加载中样式",
-      "desc": "默认类型的加载图标",
-      "normal": [
-        ["border"],
-        ["color"],
-        ["fontSize"],
-        ["font"],
-        ["borderRadius"],
-        ["opacity"],
-        ["boxShadow"]
-      ]
-    },
-    "UploadDone": {
-      "name": "上传成功样式",
-      "desc": "默认类型的上传成功图标",
-      "normal": [
-        ["border"],
-        ["color"],
-        ["fontSize"],
-        ["font"],
-        ["borderRadius"],
-        ["opacity"],
-        ["boxShadow"]
-      ]
-    },
-    "UploadFail": {
-      "name": "上传失败样式",
-      "desc": "默认类型的上传失败图标",
-      "normal": [
-        ["border"],
-        ["color"],
-        ["fontSize"],
-        ["font"],
-        ["borderRadius"],
-        ["opacity"],
-        ["boxShadow"]
-      ]
-    },
-    "UploadIcon": {
-      "name": "上传图标样式",
-      "desc": "默认类型的上传图标",
-      "normal": [["color"], ["fontSize"]]
-    },
-    "UploadLoadingIcon": {
-      "name": "加载中图标样式",
-      "desc": "默认类型的上传图标",
-      "normal": [["color"], ["fontSize"]]
-    },
-    "LiFileIcon": {
-      "name": "列表文件样式",
-      "desc": "默认类型的列表文件图标",
-      "normal": [["color"], ["fontSize"]]
-    },
-    "LiPictureIcon": {
-      "name": "列表图片样式",
-      "desc": "默认类型的列表图片图标",
-      "normal": [["color"], ["fontSize"]]
-    },
-    "LiVideoIcon": {
-      "name": "列表视频样式",
-      "desc": "默认类型的列表视频图标",
-      "normal": [["color"], ["fontSize"]]
-    },
-    "LiDeleteIcon": {
-      "name": "列表删除样式",
-      "desc": "默认类型的列表删除图标",
-      "normal": [["color"], ["fontSize"]]
-    }
-  },
   "defaultTheme": {
     "Container": {
       "normal": {
@@ -1183,6 +2514,326 @@
       "normal": {
         "width": "100%"
       }
+    }
+  },
+  "theme": {
+    "Container": {
+      "name": "文件上传区域",
+      "desc": "默认上传框的样式",
+      "normal": [
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "border"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "background"
+        ],
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "boxShadow"
+        ],
+        [
+          "border"
+        ],
+        [
+          "border"
+        ],
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "background"
+        ]
+      ],
+      "disabled": [
+        [
+          "border"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "border"
+        ],
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "background"
+        ]
+      ]
+    },
+    "UploadLiType": {
+      "name": "上传文件列表",
+      "desc": "上传列表的行样式",
+      "normal": [
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "border"
+        ],
+        [
+          "background"
+        ],
+        [
+          "color"
+        ]
+      ]
+    },
+    "UploadListSuccessIcon": {
+      "name": "上传成功图标样式",
+      "desc": "上传成功时列表图标的样式",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ]
+      ]
+    },
+    "UploadListFailedIcon": {
+      "name": "上传失败图标样式",
+      "desc": "上传失败时列表图标的样式",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ]
+      ]
+    },
+    "UploadLoading": {
+      "name": "加载中样式",
+      "desc": "默认类型的加载图标",
+      "normal": [
+        [
+          "border"
+        ],
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "boxShadow"
+        ]
+      ]
+    },
+    "UploadDone": {
+      "name": "上传成功样式",
+      "desc": "默认类型的上传成功图标",
+      "normal": [
+        [
+          "border"
+        ],
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "boxShadow"
+        ]
+      ]
+    },
+    "UploadFail": {
+      "name": "上传失败样式",
+      "desc": "默认类型的上传失败图标",
+      "normal": [
+        [
+          "border"
+        ],
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "boxShadow"
+        ]
+      ]
+    },
+    "UploadIcon": {
+      "name": "上传图标样式",
+      "desc": "默认类型的上传图标",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ]
+      ]
+    },
+    "UploadLoadingIcon": {
+      "name": "加载中图标样式",
+      "desc": "默认类型的上传图标",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ]
+      ]
+    },
+    "LiFileIcon": {
+      "name": "列表文件样式",
+      "desc": "默认类型的列表文件图标",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ]
+      ]
+    },
+    "LiPictureIcon": {
+      "name": "列表图片样式",
+      "desc": "默认类型的列表图片图标",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ]
+      ]
+    },
+    "LiVideoIcon": {
+      "name": "列表视频样式",
+      "desc": "默认类型的列表视频图标",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ]
+      ]
+    },
+    "LiDeleteIcon": {
+      "name": "列表删除样式",
+      "desc": "默认类型的列表删除图标",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ]
+      ]
     }
   }
 }

@@ -1,87 +1,163 @@
 {
   "widgetName": "Notification",
   "title": "通知提醒框",
+  "aliasName": null,
   "desc": "Notification 通知提醒框。",
   "tag": "notification 通知提醒框 提示信息 消息提醒 信息弹窗 信息提示 消息通知",
+  "needExport": true,
   "props": {
     "title": {
+      "desc": "标题",
       "type": "React.node",
-      "desc": "标题"
+      "designOnly": false,
+      "injectProps": false
     },
     "duration": {
-      "type": "number",
       "desc": "自定义延时关闭时间，单位为 秒, 设置 0 或 null 时不关闭",
-      "propsDefaultValue": 4.5,
-      "defaultValue": 0
+      "type": "number",
+      "designOnly": false,
+      "injectProps": false,
+      "propsDefaultValue": 4.5
     },
     "description": {
+      "desc": "通知提醒内容",
       "type": "React.node",
-      "desc": "通知提醒内容"
+      "designOnly": false,
+      "injectProps": false
     },
     "icon": {
+      "desc": "自定义图标",
       "type": "icon",
-      "desc": "自定义图标"
+      "designOnly": false,
+      "injectProps": false
     },
     "closeIcon": {
+      "desc": "自定义图标",
       "type": "icon",
-      "desc": "自定义图标"
+      "designOnly": false,
+      "injectProps": false
     },
     "placement": {
-      "type": "PlacementType",
       "desc": "弹出位置，topRight、bottomLeft、bottomRight、topLeft",
+      "type": "PlacementType",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "topRight"
     }
   },
+  "events": {},
+  "designInfo": {},
+  "category": [
+    "反馈"
+  ],
   "type": {
     "PlacementType": [
-      { "value": "topRight", "text": "右上" },
-      { "value": "bottomLeft", "text": "左下" },
-      { "value": "bottomRight", "text": "右下" },
-      { "value": "topLeft", "text": "左上" }
+      {
+        "value": "topRight",
+        "text": "右上"
+      },
+      {
+        "value": "bottomLeft",
+        "text": "左下"
+      },
+      {
+        "value": "bottomRight",
+        "text": "右下"
+      },
+      {
+        "value": "topLeft",
+        "text": "左上"
+      }
     ]
-  },
-  "category": ["反馈"],
-  "theme": {
-    "Container": {
-      "name": "Notification整体样式配置",
-      "desc": "为Notification整体配置样式",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["borderRadius"],
-        ["opacity"],
-        ["background"],
-        ["border"],
-        ["boxShadow"],
-        ["margin"]
-      ]
-    },
-    "NotificationTitle": {
-      "name": "Notification标题样式配置",
-      "desc": "为Notification标题配置样式",
-      "normal": [["color"], ["font"], ["padding"]]
-    },
-    "NotificationText": {
-      "name": "Notification描述文本样式配置",
-      "desc": "为Notification描述文本配置样式",
-      "normal": [["color"], ["font"]]
-    },
-    "NotificationIcon": {
-      "name": "Notification前缀图标样式配置",
-      "desc": "为Notification前缀图标配置样式",
-      "normal": [["color"], ["font"]]
-    },
-    "NotificationCloseIcon": {
-      "name": "Notification关闭图标样式配置",
-      "desc": "为Notification关闭图标配置样式",
-      "normal": [["color"], ["font"]]
-    }
   },
   "defaultTheme": {
     "Container": {
       "normal": {
         "width": 500
       }
+    }
+  },
+  "theme": {
+    "Container": {
+      "name": "Notification整体样式配置",
+      "desc": "为Notification整体配置样式",
+      "normal": [
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "margin"
+        ]
+      ]
+    },
+    "NotificationTitle": {
+      "name": "Notification标题样式配置",
+      "desc": "为Notification标题配置样式",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ],
+        [
+          "padding"
+        ]
+      ]
+    },
+    "NotificationText": {
+      "name": "Notification描述文本样式配置",
+      "desc": "为Notification描述文本配置样式",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
+    },
+    "NotificationIcon": {
+      "name": "Notification前缀图标样式配置",
+      "desc": "为Notification前缀图标配置样式",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
+    },
+    "NotificationCloseIcon": {
+      "name": "Notification关闭图标样式配置",
+      "desc": "为Notification关闭图标配置样式",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     }
   }
 }

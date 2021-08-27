@@ -1,35 +1,96 @@
 {
   "widgetName": "Divider",
   "title": "分割线",
+  "aliasName": null,
   "desc": "区隔内容的分割线",
   "tag": "分割线 Divider 直线 水平线 水平分割线",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "position": {
+      "desc": "分割线中显示内容的位置,与content 配合使用",
       "type": "DividerPosition",
-      "desc": "分割线中显示内容的位置,与content 配合使用"
+      "designOnly": false,
+      "injectProps": false
     },
     "dashed": {
-      "type": "boolean",
       "desc": "分割线是否是虚线",
-      "defaultValue": false,
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "content": {
+      "desc": "分割线中可添加显示的内容",
       "type": "string",
-      "desc": "分割线中可添加显示的内容"
+      "designOnly": false,
+      "injectProps": false
     },
     "type": {
-      "type": "DividerType",
       "desc": "分割线的风格 水平或者 垂直",
+      "type": "DividerType",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "horizontal",
       "propsDefaultValue": "horizontal"
     }
   },
+  "events": {},
+  "designInfo": {
+    "VerticalDivider": {
+      "title": "垂直分割线",
+      "sequence": 1,
+      "tag": "分割线 Divider 直线 垂直线 垂直分割线",
+      "desc": "垂直分割线",
+      "props": {
+        "type": "vertical"
+      },
+      "theme": {
+        "Container": {
+          "name": "垂直分割线",
+          "desc": "分割线为垂直类型时的配置",
+          "normal": [
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "background"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "boxShadow"
+            ]
+          ]
+        }
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "width": 1,
+            "height": 200
+          }
+        }
+      }
+    }
+  },
+  "category": [
+    "其他"
+  ],
   "type": {
     "DividerPosition": [
       {
@@ -52,38 +113,11 @@
       }
     ]
   },
-  "category": ["其他"],
-  "designInfo": {
-    "VerticalDivider": {
-      "sequence": 1,
-      "title": "垂直分割线",
-      "desc": "垂直分割线",
-      "tag": "分割线 Divider 直线 垂直线 垂直分割线",
-      "props": {
-        "type": "vertical"
-      },
-      "defaultTheme": {
-        "Container": {
-          "normal": {
-            "width": 1,
-            "height": 200
-          }
-        }
-      },
-      "theme": {
-        "Container": {
-          "name": "垂直分割线",
-          "desc": "分割线为垂直类型时的配置",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["opacity"],
-            ["margin"],
-            ["padding"],
-            ["boxShadow"]
-          ]
-        }
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 200,
+        "height": 1
       }
     }
   },
@@ -92,22 +126,28 @@
       "name": "水平分割线",
       "desc": "分割线为水平类型时的配置",
       "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["opacity"],
-        ["margin"],
-        ["padding"],
-        ["boxShadow"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "boxShadow"
+        ]
       ]
-    }
-  },
-  "defaultTheme": {
-    "Container": {
-      "normal": {
-        "width": 200,
-        "height": 1
-      }
     }
   }
 }

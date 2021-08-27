@@ -1,57 +1,77 @@
 {
   "widgetName": "Switch",
   "title": "开关",
+  "aliasName": null,
   "desc": "开关选择器",
   "tag": "Switch 开关",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "defaultValue": {
-      "type": "boolean",
       "desc": "默认开关状态",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "value": {
-      "type": "boolean",
       "desc": "开关状态",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "data": {
+      "desc": "开关配置的展示信息",
       "type": "Object[]",
-      "meta": [{ "key": "text", "title": "显示文本", "type": "any" }],
-      "desc": "开关配置的展示信息"
+      "designOnly": false,
+      "injectProps": false,
+      "meta": [
+        {
+          "key": "text",
+          "title": "显示文本",
+          "type": "any"
+        }
+      ]
     },
-
     "size": {
+      "desc": "设置开关大小 default | small",
       "type": "SizeType",
-      "desc": "设置开关大小 default | small"
+      "designOnly": false,
+      "injectProps": false
     },
     "isInverse": {
-      "type": "boolean",
       "desc": "开关翻转",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "loading": {
-      "type": "boolean",
       "desc": "是否配置加载",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "autoFocus": {
-      "type": "boolean",
       "desc": "是否自动聚焦",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "disabled": {
-      "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "displayFiled": {
-      "type": "string",
       "desc": "匹配需要显示的文本,读取data中需要显示的内容名",
+      "type": "string",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "text"
     }
   },
@@ -67,86 +87,196 @@
       ]
     }
   },
+  "designInfo": {},
+  "category": [
+    "数据录入"
+  ],
   "type": {
-    "SizeType": [{ "value": "default", "text": "默认尺寸" },{ "value": "small", "text": "小尺寸" }],
+    "SizeType": [
+      {
+        "value": "default",
+        "text": "默认尺寸"
+      },
+      {
+        "value": "small",
+        "text": "小尺寸"
+      }
+    ],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
       "event": "SyntheticEvent"
     }
   },
-  "category": ["数据录入"],
   "theme": {
     "Switch_SwitchOpen": {
       "name": "组件打开",
       "desc": "开关组件打开的样式配置",
       "normal": [
-        ["background"],
-        ["fontSize"],
-        ["borderRadius"],
-        ["border"],
-        ["boxShadow"],
-        ["color"],
-        ["font"]
+        [
+          "background"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
       ],
       "hover": [],
       "active": [],
-      "disabled": [["background"], ["border"]]
+      "disabled": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ]
+      ]
     },
     "Switch_SwitchClosed": {
       "name": "组件关闭",
       "desc": "开关组件打开的样式配置",
       "normal": [
-        ["background"],
-        ["fontSize"],
-        ["borderRadius"],
-        ["border"],
-        ["boxShadow"],
-        ["color"],
-        ["font"]
+        [
+          "background"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
       ],
       "hover": [],
       "active": [],
-      "disabled": [["background"], ["border"]]
+      "disabled": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ]
+      ]
     },
     "SwitchButton": {
       "name": "按钮",
       "desc": "按钮的样式配置",
       "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["borderRadius"],
-        ["border"],
-        ["boxShadow"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
       ],
       "hover": [],
       "active": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["borderRadius"],
-        ["border"],
-        ["boxShadow"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
       ],
-      "disabled": [["background"], ["border"], ["width"], ["height"], ["borderRadius"]]
+      "disabled": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "borderRadius"
+        ]
+      ]
     },
     "Container": {
       "name": "开关整体",
       "desc": "开关整体的样式配置",
       "normal": [
-        ["width"],
-        ["height"],
-        ["margin"],
-        ["padding"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ]
       ],
       "hover": [],
       "active": [],
       "disabled": [
-        ["width"],
-        ["height"],
-        ["margin"],
-        ["padding"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ]
       ]
     }
   }

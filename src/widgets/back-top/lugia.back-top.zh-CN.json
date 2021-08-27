@@ -1,64 +1,124 @@
 {
   "widgetName": "BackTop",
   "title": "回到顶部",
+  "aliasName": null,
   "desc": "返回页面顶部。",
   "tag": "回到顶部 返回顶部 返回页面顶部 BackTop 置顶 回到页面顶部",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "injectLugiad": {
+      "desc": null,
       "type": "Object",
-      "defaultValue": { "type": "BackTop" },
-      "isHidden": true
+      "designOnly": false,
+      "injectProps": false,
+      "defaultValue": {
+        "type": "BackTop"
+      }
     },
     "visibilityHeight": {
-      "type": "number",
       "desc": "页面滚动高度达到指定值后出现BackTop",
+      "type": "number",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": 400
     },
     "target": {
-      "type": "Function",
       "desc": "设置监听滚动事件的元素，返回值为DOM元素的函数",
+      "type": "Function",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "() => window"
     },
     "showType": {
+      "desc": "选择backTop是图标类型，还是文字类型",
       "type": "ShowType",
-      "desc": "选择backTop是图标类型，还是文字类型"
+      "designOnly": false,
+      "injectProps": false
     },
     "text": {
+      "desc": "showType为文字类型时，配置的文字信息",
       "type": "string",
-      "desc": "showType为文字类型时，配置的文字信息"
+      "designOnly": false,
+      "injectProps": false
     },
     "icon": {
+      "desc": "showType为图标类型时，配置的图标信息",
       "type": "string",
-      "desc": "showType为图标类型时，配置的图标信息"
+      "designOnly": false,
+      "injectProps": false
     }
   },
+  "events": {},
+  "designInfo": {},
+  "category": [
+    "其他"
+  ],
   "type": {
-    "ShowType": [{ "value": "textType", "text": "文本" }, { "value": "iconType", "text": "图标" }]
+    "ShowType": [
+      {
+        "value": "textType",
+        "text": "文本"
+      },
+      {
+        "value": "iconType",
+        "text": "图标"
+      }
+    ]
   },
-  "category": ["其他"],
   "theme": {
     "Container": {
       "name": "返回顶部整体样式",
       "desc": "配置返回顶部整体样式",
       "normal": [
-        ["background"],
-        ["color"],
-        ["width"],
-        ["height"],
-        ["opacity"],
-        ["border"],
-        ["borderRadius"]
+        [
+          "background"
+        ],
+        [
+          "color"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ]
       ]
     },
     "BackTopIcon": {
       "name": "返回顶部图标样式",
       "desc": "配置返回顶部图标样式",
-      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "padding"
+        ]
+      ]
     }
   }
 }

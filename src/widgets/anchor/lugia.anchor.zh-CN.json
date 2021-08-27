@@ -1,36 +1,49 @@
 {
   "widgetName": "Anchor",
   "title": "锚点",
+  "aliasName": null,
   "desc": "用于跳转到页面指定位置。",
-  "tag":"锚点 Anchor 跳至 页面节点",
+  "tag": "锚点 Anchor 跳至 页面节点",
+  "needExport": true,
   "props": {
     "affix": {
-      "type": "boolean",
       "desc": "是否固定在窗口",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": true
     },
     "offsetTop": {
-      "type": "number",
       "desc": "距离窗口顶部达到指定值后触发",
-      "defaultValue": 0
+      "type": "number",
+      "designOnly": false,
+      "injectProps": false
     },
     "offsetBottom": {
+      "desc": "距离窗口底部达到指定值后触发",
       "type": "number",
-      "desc": "距离窗口底部达到指定值后触发"
+      "designOnly": false,
+      "injectProps": false
     },
     "slideType": {
-      "type": "SlideType",
       "desc": "分割线样式",
+      "type": "SlideType",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "circle"
     },
     "slideLine": {
-      "type": "boolean",
       "desc": "是否展示分割线",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": true
     },
     "useHref": {
-      "type": "boolean",
       "desc": "是否启用a标签的href属性",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": true
     }
   },
@@ -51,8 +64,20 @@
       ]
     }
   },
+  "designInfo": {},
+  "category": [
+    "其他"
+  ],
   "type": {
-    "SlideType": [{ "value": "circle", "text": "圆型" }, { "value": "line", "text": "线型" }]
-  },
-  "category": ["其他"]
+    "SlideType": [
+      {
+        "value": "circle",
+        "text": "圆型"
+      },
+      {
+        "value": "line",
+        "text": "线型"
+      }
+    ]
+  }
 }

@@ -1,105 +1,148 @@
 {
   "widgetName": "NumberInput",
   "title": "数字输入框",
+  "aliasName": null,
   "desc": "常用于数字输入,可以进行快速加减显示",
   "tag": "numberinput 数字输入框 进步器 表单 数值输入框 number输入框 数字调节器",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "createPortal": {
+      "desc": "是否全局弹出校验框",
       "type": "boolean",
-      "desc": "是否全局弹出校验框"
+      "designOnly": false,
+      "injectProps": false
     },
     "popupContainerId": {
+      "desc": "配置弹出校验框的作用容器id",
       "type": "ContainerDomIdType",
-      "desc": "配置弹出校验框的作用容器id"
+      "designOnly": false,
+      "injectProps": false
     },
     "disabled": {
-      "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "viewClass": {
+      "desc": "用于配置通用主题属性",
       "type": "string",
-      "desc": "用于配置通用主题属性"
+      "designOnly": false,
+      "injectProps": false
     },
     "size": {
-      "type": "InputSize",
       "desc": "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
+      "type": "InputSize",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "default"
     },
     "validateStatus": {
+      "desc": "校验状态",
       "type": "ValidateStatus",
-      "desc": "校验状态"
+      "designOnly": false,
+      "injectProps": false
     },
     "validateType": {
-      "type": "ValidateType",
       "desc": "校验信息显示类型",
+      "type": "ValidateType",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "top"
     },
     "help": {
+      "desc": "校验提示信息",
       "type": "string",
-      "desc": "校验提示信息"
+      "designOnly": false,
+      "injectProps": false
     },
     "placeholder": {
+      "desc": "input输入提示信息",
       "type": "string",
-      "desc": "input输入提示信息"
+      "designOnly": false,
+      "injectProps": false
     },
     "defaultValue": {
+      "desc": "默认显示内容",
       "type": "string",
-      "desc": "默认显示内容"
+      "designOnly": false,
+      "injectProps": false
     },
     "value": {
+      "desc": "显示内容",
       "type": "string",
-      "desc": "显示内容"
+      "designOnly": false,
+      "injectProps": false
     },
     "max": {
-      "type": "number",
       "desc": "输入最大值限制",
+      "type": "number",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": 999999999999
     },
     "min": {
-      "type": "number",
       "desc": "输入最小值限制",
+      "type": "number",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": -999999999999
     },
     "step": {
-      "type": "number",
       "desc": "每次改变步数，可以为小数",
+      "type": "number",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": 1
     },
     "precision": {
-      "type": "number",
       "desc": "数值精度,默认0",
-      "defaultValue": 0
+      "type": "number",
+      "designOnly": false,
+      "injectProps": false
     },
     "formatter": {
+      "desc": "格式化显示内容的匹配规则,需与 parser 属性配套使用",
       "type": "function",
-      "desc": "格式化显示内容的匹配规则,需与 parser 属性配套使用"
+      "designOnly": false,
+      "injectProps": false
     },
     "addIcon": {
+      "desc": "向上增加的增加图标类型",
       "type": "icon",
-      "desc": "向上增加的增加图标类型"
+      "designOnly": false,
+      "injectProps": false
     },
     "subtractIcon": {
+      "desc": "向下减少的图标类型",
       "type": "icon",
-      "desc": "向下减少的图标类型"
+      "designOnly": false,
+      "injectProps": false
     },
     "parser": {
+      "desc": "解析格式化显示内容的规则,需与 formatter 属性配套使用",
       "type": "function",
-      "desc": "解析格式化显示内容的规则,需与 formatter 属性配套使用"
+      "designOnly": false,
+      "injectProps": false
     },
     "showArrow": {
-      "type": "boolean",
       "desc": "是否显示步长的箭头图标",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": true
     },
     "suffix": {
+      "desc": "后缀图标, showArrow为false时生效",
       "type": "icon",
-      "desc": "后缀图标, showArrow为false时生效"
+      "designOnly": false,
+      "injectProps": false
     }
   },
   "events": {
@@ -214,6 +257,10 @@
       ]
     }
   },
+  "designInfo": {},
+  "category": [
+    "数据录入"
+  ],
   "type": {
     "InputSize": [
       {
@@ -259,158 +306,516 @@
       "event": "SyntheticEvent"
     }
   },
-  "category": ["数据录入"],
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 250
+      }
+    }
+  },
   "theme": {
     "Container": {
       "name": "数字输入框",
       "desc": "数字输入框中输入框部分",
       "normal": [
-        ["width"],
-        ["height"],
-        ["margin"],
-        ["padding"],
-        ["border"],
-        ["borderRadius"],
-        ["boxShadow"],
-        ["background"],
-        ["opacity"],
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["cursor"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "background"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ]
       ],
       "hover": [
-        ["border"],
-        ["borderRadius"],
-        ["background"],
-        ["opacity"],
-        ["boxShadow"],
-        ["cursor"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "background"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
       ],
       "active": [
-        ["border"],
-        ["borderRadius"],
-        ["background"],
-        ["opacity"],
-        ["boxShadow"],
-        ["cursor"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "background"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
       ],
       "focus": [
-        ["border"],
-        ["borderRadius"],
-        ["background"],
-        ["opacity"],
-        ["boxShadow"],
-        ["cursor"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "background"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
       ],
       "disabled": [
-        ["border"],
-        ["borderRadius"],
-        ["background"],
-        ["opacity"],
-        ["boxShadow"],
-        ["cursor"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "background"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
       ]
     },
     "ArrowIconContainer": {
       "name": "数字输入框步长图标包裹框",
       "desc": "数字输入框步长图标包裹框",
       "normal": [
-        ["width"],
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["background"],
-        ["border", "left"],
-        ["cursor"],
-        ["margin"],
-        ["padding"],
-        ["opacity"]
+        [
+          "width"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border",
+          "left"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "opacity"
+        ]
       ],
       "hover": [
-        ["font"],
-        ["fontSize"],
-        ["color"],
-        ["background"],
-        ["border", "left"],
-        ["cursor"],
-        ["opacity"]
+        [
+          "font"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "color"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border",
+          "left"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "opacity"
+        ]
       ],
       "active": [
-        ["font"],
-        ["fontSize"],
-        ["color"],
-        ["background"],
-        ["border", "left"],
-        ["cursor"],
-        ["opacity"]
+        [
+          "font"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "color"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border",
+          "left"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "opacity"
+        ]
       ],
       "disabled": [
-        ["font"],
-        ["fontSize"],
-        ["color"],
-        ["background"],
-        ["border", "left"],
-        ["cursor"],
-        ["opacity"]
+        [
+          "font"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "color"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border",
+          "left"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "opacity"
+        ]
       ]
     },
     "InputArrowIcon": {
       "name": "数字输入框步长图标",
       "desc": "数字输入框步长图标",
-      "normal": [["fontSize"], ["font"], ["color"], ["cursor"], ["opacity"]],
-      "hover": [["fontSize"], ["font"], ["color"], ["cursor"], ["opacity"]],
-      "active": [["fontSize"], ["font"], ["color"], ["cursor"], ["opacity"]],
-      "disabled": [["fontSize"], ["font"], ["color"], ["cursor"], ["opacity"]]
+      "normal": [
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "opacity"
+        ]
+      ],
+      "hover": [
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "opacity"
+        ]
+      ],
+      "active": [
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "opacity"
+        ]
+      ],
+      "disabled": [
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "opacity"
+        ]
+      ]
     },
     "InputArrowSubtractIcon": {
       "name": "数字输入框减少步长图标",
       "desc": "数字输入框减少步长图标",
-      "normal": [["fontSize"], ["font"], ["color"], ["cursor"], ["opacity"]],
-      "hover": [["fontSize"], ["font"], ["color"], ["cursor"], ["opacity"]],
-      "active": [["fontSize"], ["font"], ["color"], ["cursor"], ["opacity"]],
-      "disabled": [["fontSize"], ["font"], ["color"], ["cursor"], ["opacity"]]
+      "normal": [
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "opacity"
+        ]
+      ],
+      "hover": [
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "opacity"
+        ]
+      ],
+      "active": [
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "opacity"
+        ]
+      ],
+      "disabled": [
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "opacity"
+        ]
+      ]
     },
     "ValidateErrorInput": {
       "name": "校验失败的输入框",
       "desc": "配置校验失败的输入框",
       "normal": [
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["background"],
-        ["border"],
-        ["boxShadow"],
-        ["opacity"]
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "opacity"
+        ]
       ],
-      "hover": [["background"], ["border"], ["boxShadow"]],
-      "focus": [["background"], ["border"], ["boxShadow"]],
-      "active": [["background"], ["border"], ["boxShadow"]]
+      "hover": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ],
+      "focus": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ],
+      "active": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ]
     },
     "ValidateErrorText": {
       "name": "校验失败提示信息",
       "desc": "配置校验失败的提示信息",
       "normal": [
-        ["background"],
-        ["boxShadow"],
-        ["borderRadius"],
-        ["border"],
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["margin"]
+        [
+          "background"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ]
       ],
       "hover": [],
       "active": []
@@ -418,14 +823,12 @@
     "ArrowDivider": {
       "name": "步长箭头图标分割线",
       "desc": "步长箭头图标分割线",
-      "normal": [["border", "top"]]
-    }
-  },
-  "defaultTheme": {
-    "Container": {
-      "normal": {
-        "width": 250
-      }
+      "normal": [
+        [
+          "border",
+          "top"
+        ]
+      ]
     }
   }
 }

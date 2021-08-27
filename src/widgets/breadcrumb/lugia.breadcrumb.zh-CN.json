@@ -1,45 +1,69 @@
 {
   "widgetName": "Breadcrumb",
   "title": "面包屑",
+  "aliasName": null,
   "desc": "显示系统的层级关系和当先所在的位置,并能向上返回",
   "tag": "面包屑导航 Breadcrumb 路径导航 层级位置 定位",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "separator": {
-      "type": "string",
       "desc": "自定义层级分隔符",
-      "defaultPropsValue": "/"
+      "type": "string",
+      "designOnly": false,
+      "injectProps": false
     },
-
     "lastSeparator": {
+      "desc": "最后一个元素的分隔符",
       "type": "string | React.Element<any>",
-      "desc": "最后一个元素的分隔符"
+      "designOnly": false,
+      "injectProps": false
     },
-
     "routes": {
-      "type": "object[]",
       "desc": "生成面包屑数据对象的数组，path是跳转路径，title是面包屑展示文本",
+      "type": "object[]",
+      "designOnly": false,
+      "injectProps": false,
       "meta": [
-        { "key": "path", "title": "跳转路径", "type": "string" },
-        { "key": "title", "title": "展示文本", "type": "string" },
+        {
+          "key": "path",
+          "title": "跳转路径",
+          "type": "string"
+        },
+        {
+          "key": "title",
+          "title": "展示文本",
+          "type": "string"
+        },
         {
           "key": "icons",
           "title": "前/后缀图标",
           "type": "object",
           "children": [
-            { "key": "prefixIconClass", "title": "前缀图标", "type": "icon" },
-            { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" }
+            {
+              "key": "prefixIconClass",
+              "title": "前缀图标",
+              "type": "icon"
+            },
+            {
+              "key": "suffixIconClass",
+              "title": "后缀图标",
+              "type": "icon"
+            }
           ]
         }
       ]
     },
     "params": {
+      "desc": "路由参数",
       "type": "Object",
-      "desc": "路由参数"
+      "designOnly": false,
+      "injectProps": false
     }
   },
   "events": {
@@ -54,23 +78,50 @@
       ]
     }
   },
+  "designInfo": {},
+  "category": [
+    "通用"
+  ],
   "type": {},
-
-  "category": ["通用"],
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 312
+      }
+    }
+  },
   "theme": {
     "Container": {
       "name": "面包屑",
       "desc": "面包屑所在区域面积",
       "normal": [
-        ["width"],
-        ["height"],
-        ["padding"],
-        ["margin"],
-        ["border"],
-        ["opacity"],
-        ["borderRadius"],
-        ["boxShadow"],
-        ["background"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "border"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "background"
+        ]
       ],
       "hover": [],
       "clicked": [],
@@ -84,174 +135,565 @@
           "desc": "面包屑的文本配置",
           "normal": {
             "selectNames": [
-              ["width"],
-              ["padding"],
-              ["margin"],
-              ["opacity"],
-              ["border"],
-              ["borderRadius"],
-              ["boxShadow"],
-              ["background"]
+              [
+                "width"
+              ],
+              [
+                "padding"
+              ],
+              [
+                "margin"
+              ],
+              [
+                "opacity"
+              ],
+              [
+                "border"
+              ],
+              [
+                "borderRadius"
+              ],
+              [
+                "boxShadow"
+              ],
+              [
+                "background"
+              ]
             ],
             "nth": [
-              ["width"],
-              ["padding"],
-              ["margin"],
-              ["opacity"],
-              ["border"],
-              ["borderRadius"],
-              ["boxShadow"],
-              ["background"]
+              [
+                "width"
+              ],
+              [
+                "padding"
+              ],
+              [
+                "margin"
+              ],
+              [
+                "opacity"
+              ],
+              [
+                "border"
+              ],
+              [
+                "borderRadius"
+              ],
+              [
+                "boxShadow"
+              ],
+              [
+                "background"
+              ]
             ]
           },
           "hover": {
             "selectNames": [
-              ["width"],
-              ["padding"],
-              ["margin"],
-              ["opacity"],
-              ["border"],
-              ["borderRadius"],
-              ["boxShadow"],
-              ["background"]
+              [
+                "width"
+              ],
+              [
+                "padding"
+              ],
+              [
+                "margin"
+              ],
+              [
+                "opacity"
+              ],
+              [
+                "border"
+              ],
+              [
+                "borderRadius"
+              ],
+              [
+                "boxShadow"
+              ],
+              [
+                "background"
+              ]
             ],
             "nth": [
-              ["width"],
-              ["padding"],
-              ["margin"],
-              ["opacity"],
-              ["border"],
-              ["borderRadius"],
-              ["boxShadow"],
-              ["background"]
+              [
+                "width"
+              ],
+              [
+                "padding"
+              ],
+              [
+                "margin"
+              ],
+              [
+                "opacity"
+              ],
+              [
+                "border"
+              ],
+              [
+                "borderRadius"
+              ],
+              [
+                "boxShadow"
+              ],
+              [
+                "background"
+              ]
             ]
           },
           "clicked": [],
           "disabled": []
         },
-
         "Text": {
           "name": "文本",
           "desc": "面包屑的文本配置",
           "normal": {
             "selectNames": [
-              ["color"],
-              ["fontSize"],
-              ["margin", "left"],
-              ["margin", "right"],
-              ["padding", "left"],
-              ["padding", "right"],
-              ["font"],
-              ["cursor"]
+              [
+                "color"
+              ],
+              [
+                "fontSize"
+              ],
+              [
+                "margin",
+                "left"
+              ],
+              [
+                "margin",
+                "right"
+              ],
+              [
+                "padding",
+                "left"
+              ],
+              [
+                "padding",
+                "right"
+              ],
+              [
+                "font"
+              ],
+              [
+                "cursor"
+              ]
             ],
             "nth": [
-              ["color"],
-              ["fontSize"],
-              ["margin", "left"],
-              ["margin", "right"],
-              ["padding", "left"],
-              ["padding", "right"],
-              ["font"]
+              [
+                "color"
+              ],
+              [
+                "fontSize"
+              ],
+              [
+                "margin",
+                "left"
+              ],
+              [
+                "margin",
+                "right"
+              ],
+              [
+                "padding",
+                "left"
+              ],
+              [
+                "padding",
+                "right"
+              ],
+              [
+                "font"
+              ]
             ]
           },
           "hover": {
             "selectNames": [
-              ["color"],
-              ["fontSize"],
-              ["margin", "left"],
-              ["margin", "right"],
-              ["padding", "left"],
-              ["padding", "right"],
-              ["font"]
+              [
+                "color"
+              ],
+              [
+                "fontSize"
+              ],
+              [
+                "margin",
+                "left"
+              ],
+              [
+                "margin",
+                "right"
+              ],
+              [
+                "padding",
+                "left"
+              ],
+              [
+                "padding",
+                "right"
+              ],
+              [
+                "font"
+              ]
             ],
             "nth": [
-              ["color"],
-              ["fontSize"],
-              ["margin", "left"],
-              ["margin", "right"],
-              ["padding", "left"],
-              ["padding", "right"],
-              ["font"]
+              [
+                "color"
+              ],
+              [
+                "fontSize"
+              ],
+              [
+                "margin",
+                "left"
+              ],
+              [
+                "margin",
+                "right"
+              ],
+              [
+                "padding",
+                "left"
+              ],
+              [
+                "padding",
+                "right"
+              ],
+              [
+                "font"
+              ]
             ]
           },
           "clicked": [],
           "disabled": []
         },
-
         "Separator": {
           "name": "分隔符",
           "desc": "面包屑的分隔符配置",
           "normal": {
             "selectNames": [
-              ["color"],
-              ["fontSize"],
-              ["margin", "left"],
-              ["margin", "right"],
-              ["padding", "left"],
-              ["padding", "right"]
+              [
+                "color"
+              ],
+              [
+                "fontSize"
+              ],
+              [
+                "margin",
+                "left"
+              ],
+              [
+                "margin",
+                "right"
+              ],
+              [
+                "padding",
+                "left"
+              ],
+              [
+                "padding",
+                "right"
+              ]
             ],
             "nth": [
-              ["color"],
-              ["fontSize"],
-              ["margin", "left"],
-              ["margin", "right"],
-              ["padding", "left"],
-              ["padding", "right"]
+              [
+                "color"
+              ],
+              [
+                "fontSize"
+              ],
+              [
+                "margin",
+                "left"
+              ],
+              [
+                "margin",
+                "right"
+              ],
+              [
+                "padding",
+                "left"
+              ],
+              [
+                "padding",
+                "right"
+              ]
             ]
           },
           "hover": [],
           "clicked": [],
           "disabled": []
         },
-
         "PrefixIcon": {
           "name": "前置图标配置",
           "desc": "前置图标或图片的样式配置",
           "normal": {
-            "selectNames": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-            "nth": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            "selectNames": [
+              [
+                "color"
+              ],
+              [
+                "margin"
+              ],
+              [
+                "fontSize"
+              ],
+              [
+                "font"
+              ],
+              [
+                "padding"
+              ],
+              [
+                "cursor"
+              ]
+            ],
+            "nth": [
+              [
+                "color"
+              ],
+              [
+                "margin"
+              ],
+              [
+                "fontSize"
+              ],
+              [
+                "font"
+              ],
+              [
+                "padding"
+              ],
+              [
+                "cursor"
+              ]
+            ]
           },
           "hover": {
-            "selectNames": [["color"], ["font"], ["fontSize"]],
-            "nth": [["color"], ["font"], ["fontSize"]]
+            "selectNames": [
+              [
+                "color"
+              ],
+              [
+                "font"
+              ],
+              [
+                "fontSize"
+              ]
+            ],
+            "nth": [
+              [
+                "color"
+              ],
+              [
+                "font"
+              ],
+              [
+                "fontSize"
+              ]
+            ]
           },
           "active": {
-            "selectNames": [["color"], ["font"], ["fontSize"]],
-            "nth": [["color"], ["font"], ["fontSize"]]
+            "selectNames": [
+              [
+                "color"
+              ],
+              [
+                "font"
+              ],
+              [
+                "fontSize"
+              ]
+            ],
+            "nth": [
+              [
+                "color"
+              ],
+              [
+                "font"
+              ],
+              [
+                "fontSize"
+              ]
+            ]
           },
           "disabled": {
-            "selectNames": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-            "nth": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            "selectNames": [
+              [
+                "color"
+              ],
+              [
+                "margin"
+              ],
+              [
+                "fontSize"
+              ],
+              [
+                "font"
+              ],
+              [
+                "padding"
+              ],
+              [
+                "cursor"
+              ]
+            ],
+            "nth": [
+              [
+                "color"
+              ],
+              [
+                "margin"
+              ],
+              [
+                "fontSize"
+              ],
+              [
+                "font"
+              ],
+              [
+                "padding"
+              ],
+              [
+                "cursor"
+              ]
+            ]
           }
         },
-
         "SuffixIcon": {
           "name": "后缀图标配置",
           "desc": "后缀图标或图片的样式配置",
           "normal": {
-            "selectNames": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-            "nth": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            "selectNames": [
+              [
+                "color"
+              ],
+              [
+                "margin"
+              ],
+              [
+                "fontSize"
+              ],
+              [
+                "font"
+              ],
+              [
+                "padding"
+              ],
+              [
+                "cursor"
+              ]
+            ],
+            "nth": [
+              [
+                "color"
+              ],
+              [
+                "margin"
+              ],
+              [
+                "fontSize"
+              ],
+              [
+                "font"
+              ],
+              [
+                "padding"
+              ],
+              [
+                "cursor"
+              ]
+            ]
           },
           "hover": {
-            "selectNames": [["color"], ["font"], ["fontSize"]],
-            "nth": [["color"], ["font"], ["fontSize"]]
+            "selectNames": [
+              [
+                "color"
+              ],
+              [
+                "font"
+              ],
+              [
+                "fontSize"
+              ]
+            ],
+            "nth": [
+              [
+                "color"
+              ],
+              [
+                "font"
+              ],
+              [
+                "fontSize"
+              ]
+            ]
           },
           "active": {
-            "selectNames": [["color"], ["font"], ["fontSize"]],
-            "nth": [["color"], ["font"], ["fontSize"]]
+            "selectNames": [
+              [
+                "color"
+              ],
+              [
+                "font"
+              ],
+              [
+                "fontSize"
+              ]
+            ],
+            "nth": [
+              [
+                "color"
+              ],
+              [
+                "font"
+              ],
+              [
+                "fontSize"
+              ]
+            ]
           },
           "disabled": {
-            "selectNames": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-            "nth": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            "selectNames": [
+              [
+                "color"
+              ],
+              [
+                "margin"
+              ],
+              [
+                "fontSize"
+              ],
+              [
+                "font"
+              ],
+              [
+                "padding"
+              ],
+              [
+                "cursor"
+              ]
+            ],
+            "nth": [
+              [
+                "color"
+              ],
+              [
+                "margin"
+              ],
+              [
+                "fontSize"
+              ],
+              [
+                "font"
+              ],
+              [
+                "padding"
+              ],
+              [
+                "cursor"
+              ]
+            ]
           }
         }
-      }
-    }
-  },
-  "defaultTheme": {
-    "Container": {
-      "normal": {
-        "width": 312
       }
     }
   }

@@ -1,32 +1,66 @@
 {
   "widgetName": "BasicElements",
   "title": "基本元素",
+  "aliasName": null,
   "desc": "基本元素",
   "tag": "基本元素 BasicElements 矩形 正方形 长方形 基本形状 rectangle square 通用元素",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "shape": {
-      "type": "ShapeType",
       "desc": "基本元素形状",
+      "type": "ShapeType",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "square"
     }
   },
-  "type": {
-    "ShapeType": [{ "value": "circle", "text": "圆形" }, { "value": "square", "text": "方形" }]
-  },
-  "category": ["通用"],
+  "events": {},
   "designInfo": {
     "Circle": {
-      "sequence": 2,
       "title": "圆形元素",
-      "desc": "圆形元素",
+      "sequence": 2,
       "tag": "圆形元素 BasicElements circular 椭圆形",
+      "desc": "圆形元素",
       "props": {
         "shape": "circle"
+      },
+      "theme": {
+        "Container": {
+          "name": "配置圆形",
+          "desc": "配置圆形",
+          "normal": [
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "margin"
+            ]
+          ],
+          "hover": [],
+          "active": [],
+          "disabled": []
+        }
       },
       "defaultTheme": {
         "Container": {
@@ -35,24 +69,29 @@
             "height": 32
           }
         }
+      }
+    }
+  },
+  "category": [
+    "通用"
+  ],
+  "type": {
+    "ShapeType": [
+      {
+        "value": "circle",
+        "text": "圆形"
       },
-      "theme": {
-        "Container": {
-          "name": "配置圆形",
-          "desc": "配置圆形",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["border"],
-            ["boxShadow"],
-            ["opacity"],
-            ["margin"]
-          ],
-          "hover": [],
-          "active": [],
-          "disabled": []
-        }
+      {
+        "value": "square",
+        "text": "方形"
+      }
+    ]
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 32,
+        "height": 32
       }
     }
   },
@@ -61,26 +100,34 @@
       "name": "配置方形",
       "desc": "配置方形",
       "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["borderRadius"],
-        ["border"],
-        ["boxShadow"],
-        ["opacity"],
-        ["margin"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "margin"
+        ]
       ],
       "hover": [],
       "active": [],
       "disabled": []
-    }
-  },
-  "defaultTheme": {
-    "Container": {
-      "normal": {
-        "width": 32,
-        "height": 32
-      }
     }
   }
 }

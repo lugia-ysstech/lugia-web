@@ -1,30 +1,40 @@
 {
   "widgetName": "Icon",
   "title": "图标",
+  "aliasName": null,
   "desc": "语义化的矢量图形",
   "tag": "图标 Icon 表情 标识 标志 图形",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "viewClass": {
+      "desc": "用于配置通用主题属性",
       "type": "string",
-      "desc": "用于配置通用主题属性"
+      "designOnly": false,
+      "injectProps": false
     },
     "iconClass": {
+      "desc": "图标资源,需从图标库中获取.",
       "type": "icon",
-      "desc": "图标资源,需从图标库中获取."
+      "designOnly": false,
+      "injectProps": false
     },
     "src": {
+      "desc": "头像显示图片资源",
       "type": "image",
-      "desc": "头像显示图片资源"
+      "designOnly": false,
+      "injectProps": false
     },
     "disabled": {
-      "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     }
   },
   "events": {
@@ -39,15 +49,64 @@
       ]
     }
   },
-  "category": ["通用"],
+  "designInfo": {},
+  "category": [
+    "通用"
+  ],
   "theme": {
     "Icon": {
       "name": "图标",
       "desc": "图标",
-      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
-      "hover": [["color"], ["margin"], ["cursor"]],
-      "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
-      "disabled": [["color"], ["cursor"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "cursor"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "cursor"
+        ]
+      ],
+      "active": [
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ]
+      ]
     }
   }
 }

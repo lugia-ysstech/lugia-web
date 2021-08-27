@@ -1,45 +1,56 @@
 {
   "widgetName": "Badge",
   "title": "徽标数",
+  "aliasName": null,
   "desc": "图标右上角的圆形徽标数字",
   "tag": "徽标数 小红点 数字提示 数字提醒 红点警告 报错提醒 消息提醒 Badge",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "viewClass": {
+      "desc": "用于配置通用主题属性",
       "type": "string",
-      "desc": "用于配置通用主题属性"
+      "designOnly": false,
+      "injectProps": false
     },
     "showZero": {
-      "type": "boolean",
       "desc": "当数值为 0 时，是否展示 Badge",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "overflowCount": {
-      "type": "number",
       "desc": "超过 overflowCount 的会显示为 ${overflowCount}+，默认的 overflowCount 为 99",
+      "type": "number",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": 99
     },
     "children": {
+      "desc": "可作为显示徽标数的子组件",
       "type": "React$Element<any>",
-      "desc": "可作为显示徽标数的子组件"
+      "designOnly": false,
+      "injectProps": false
     },
     "count": {
-      "type": "number",
       "desc": "展示的数字，大于封顶数时 显示为${overflowCount}+,为 0 时隐藏",
-      "defaultValue": 0
+      "type": "number",
+      "designOnly": false,
+      "injectProps": false
     }
   },
-  "category": ["数据展示"],
+  "events": {},
   "designInfo": {
     "BadgeNumber": {
-      "sequence": 1,
       "title": "数字徽标",
-      "desc": "徽标数大于0时,显示的数字",
+      "sequence": 1,
       "tag": "数字徽标数 小红点 数字提示 数字提醒 红点警告 报错提醒 消息提醒 Badge",
+      "desc": "徽标数大于0时,显示的数字",
       "props": {
         "showZero": true,
         "count": 1
@@ -49,39 +60,88 @@
           "name": "数字徽标",
           "desc": "徽标数大于0时,显示的数字",
           "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["position"],
-            ["opacity"],
-            ["color"],
-            ["margin"],
-            ["font"],
-            ["fontSize"],
-            ["color"],
-            ["boxShadow"],
-            ["border"],
-            ["borderRadius"]
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "background"
+            ],
+            [
+              "position"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "color"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "font"
+            ],
+            [
+              "fontSize"
+            ],
+            [
+              "color"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ]
           ]
         }
       }
     }
   },
+  "category": [
+    "数据展示"
+  ],
   "theme": {
     "Badge": {
       "name": "点状徽标",
       "desc": "徽标数不显示数字时的样式展示",
       "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["position"],
-        ["opacity"],
-        ["margin"],
-        ["padding"],
-        ["boxShadow"],
-        ["border"],
-        ["borderRadius"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ],
+        [
+          "position"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ]
       ]
     }
   }

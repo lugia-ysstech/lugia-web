@@ -1,48 +1,73 @@
 {
   "widgetName": "Alert",
   "title": "警告提示",
+  "aliasName": null,
   "desc": "警告提示信息。",
   "tag": "警告提示 Alert 提示信息 标注信息 提示框 高亮提示 说明信息 补充信息 解释说明",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
+      "meta": ""
     },
     "type": {
-      "type": "AlertType",
       "desc": "指定警告提示的样式，有四种可以选择：success、error、info、warning",
-      "defaultValue": 0
+      "type": "alerttype",
+      "designOnly": false,
+      "injectProps": false,
+      "meta": ""
     },
     "message": {
+      "desc": "警告提示内容",
       "type": "React.node",
-      "desc": "警告提示内容"
+      "designOnly": false,
+      "injectProps": false,
+      "meta": ""
     },
     "showIcon": {
-      "type": "boolean",
       "desc": "是否展示图标",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
+      "meta": ""
     },
     "closeText": {
+      "desc": "自定义关闭按钮",
       "type": "React.node",
-      "desc": "自定义关闭按钮"
+      "designOnly": false,
+      "injectProps": false,
+      "meta": ""
     },
     "closable": {
-      "type": "boolean",
       "desc": "是否显示关闭按钮",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
+      "meta": ""
     },
     "description": {
+      "desc": "提示内容的辅助性文字介绍",
       "type": "React.node",
-      "desc": "提示内容的辅助性文字介绍"
+      "designOnly": false,
+      "injectProps": false,
+      "meta": ""
     },
     "icon": {
+      "desc": "自定义图标，showIcon 为 true 时有效",
       "type": "string",
-      "desc": "自定义图标，showIcon 为 true 时有效"
+      "designOnly": false,
+      "injectProps": false,
+      "meta": ""
     },
     "closeIcon": {
+      "desc": "自定义关闭图标, closable 为 true 时有效",
       "type": "string",
-      "desc": "自定义关闭图标, closable 为 true 时有效"
+      "designOnly": false,
+      "injectProps": false,
+      "meta": ""
     }
   },
   "events": {
@@ -57,64 +82,146 @@
       ]
     }
   },
+  "designInfo": {},
+  "category": [
+    "反馈"
+  ],
   "type": {
     "AlertType": [
-      { "value": "info", "text": "信息" },
-      { "value": "success", "text": "成功" },
-      { "value": "error", "text": "错误" },
-      { "value": "warning", "text": "警告" }
+      {
+        "value": "info",
+        "text": "信息"
+      },
+      {
+        "value": "success",
+        "text": "成功"
+      },
+      {
+        "value": "error",
+        "text": "错误"
+      },
+      {
+        "value": "warning",
+        "text": "警告"
+      }
     ]
-  },
-  "category": ["反馈"],
-  "theme": {
-    "Container": {
-      "name": "警告提示整体样式",
-      "desc": "为警告提示配置整体样式",
-      "normal": [
-        ["opacity"],
-        ["margin"],
-        ["padding"],
-        ["width"],
-        ["height"],
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["boxShadow"]
-      ]
-    },
-    "AlertMessage": {
-      "name": "警告提示内容样式",
-      "desc": "为警告提示内容配置样式",
-      "normal": [["color"], ["font"]]
-    },
-    "AlertDescription": {
-      "name": "警告提示辅助性文字样式",
-      "desc": "为警告提示辅助性文字配置样式",
-      "normal": [["color"], ["font"], ["padding"]]
-    },
-    "CloseText": {
-      "name": "警告提示关闭文字样式",
-      "desc": "为警告提示关闭文字配置样式",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"]],
-      "active": [["color"]]
-    },
-    "CloseIcon": {
-      "name": "警告提示关闭图标样式",
-      "desc": "为警告提示关闭图标配置样式",
-      "normal": [["color"], ["font"]]
-    },
-    "AlertIcon": {
-      "name": "警告提示图标样式",
-      "desc": "为警告提示图标配置样式",
-      "normal": [["color"], ["fontSize"], ["padding"]]
-    }
   },
   "defaultTheme": {
     "Container": {
       "normal": {
         "width": 400
       }
+    }
+  },
+  "theme": {
+    "Container": {
+      "name": "警告提示整体样式",
+      "desc": "为警告提示配置整体样式",
+      "normal": [
+        [
+          "opacity"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ]
+      ]
+    },
+    "AlertMessage": {
+      "name": "警告提示内容样式",
+      "desc": "为警告提示内容配置样式",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
+    },
+    "AlertDescription": {
+      "name": "警告提示辅助性文字样式",
+      "desc": "为警告提示辅助性文字配置样式",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ],
+        [
+          "padding"
+        ]
+      ]
+    },
+    "CloseText": {
+      "name": "警告提示关闭文字样式",
+      "desc": "为警告提示关闭文字配置样式",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ]
+      ],
+      "active": [
+        [
+          "color"
+        ]
+      ]
+    },
+    "CloseIcon": {
+      "name": "警告提示关闭图标样式",
+      "desc": "为警告提示关闭图标配置样式",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
+    },
+    "AlertIcon": {
+      "name": "警告提示图标样式",
+      "desc": "为警告提示图标配置样式",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "padding"
+        ]
+      ]
     }
   }
 }

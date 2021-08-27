@@ -1,80 +1,111 @@
 {
   "widgetName": "AmountInput",
   "title": "金额输入框",
+  "aliasName": null,
   "desc": "用于金额数字的填写,可切换人民币大小写显示效果.",
   "tag": "金额输入框 AmountInput ¥ $ 数额输入框 核算输入框 统计输入 表单",
+  "needExport": true,
   "props": {
     "lugiaHidden": {
-      "type": "boolean",
       "desc": "是否渲染当前组件",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "createPortal": {
-      "type": "boolean",
       "desc": "是否全局弹出框",
-      "propsDefaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "popupContainerId": {
+      "desc": "配置弹出框的作用容器id",
       "type": "ContainerDomIdType",
-      "desc": "配置弹出框的作用容器id"
+      "designOnly": false,
+      "injectProps": false
     },
     "disabled": {
-      "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": false
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
     },
     "transform": {
-      "type": "boolean",
       "desc": "是否开启转换,仅在amountPrefix='¥'时生效",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": true
     },
     "viewClass": {
+      "desc": "用于配置主题属性",
       "type": "string",
-      "desc": "用于配置主题属性"
+      "designOnly": false,
+      "injectProps": false
     },
     "size": {
-      "type": "InputSize",
       "desc": "可配置三种尺寸大小的input ('large' , 'default' , 'small'),高度分别为 40px、32px 和 24px。",
+      "type": "InputSize",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "default"
     },
     "placeholder": {
+      "desc": "input输入提示信息",
       "type": "string",
-      "desc": "input输入提示信息"
+      "designOnly": false,
+      "injectProps": false
     },
     "amountPrefix": {
-      "type": "PrefixType",
       "desc": "货币种类,默认'¥'",
+      "type": "PrefixType",
+      "designOnly": false,
+      "injectProps": false,
       "defaultValue": "¥"
     },
     "defaultValue": {
+      "desc": "默认显示内容",
       "type": "string",
-      "desc": "默认显示内容"
+      "designOnly": false,
+      "injectProps": false
     },
     "value": {
+      "desc": "显示内容",
       "type": "string",
-      "desc": "显示内容"
+      "designOnly": false,
+      "injectProps": false
     },
     "validateStatus": {
+      "desc": "校验状态",
       "type": "ValidateStatus",
-      "desc": "校验状态"
+      "designOnly": false,
+      "injectProps": false
     },
     "validateType": {
-      "type": "ValidateType",
       "desc": "校验信息显示类型",
+      "type": "ValidateType",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": "top"
     },
     "help": {
+      "desc": "校验提示信息",
       "type": "string",
-      "desc": "校验提示信息"
+      "designOnly": false,
+      "injectProps": false
     },
     "isShowClearButton": {
-      "type": "boolean",
       "desc": "是否显示清除按钮",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
       "propsDefaultValue": true
     },
     "clearIcon": {
+      "desc": "清除图标类型",
       "type": "icon",
-      "desc": "清除图标类型"
+      "designOnly": false,
+      "injectProps": false
     }
   },
   "events": {
@@ -159,6 +190,10 @@
       ]
     }
   },
+  "designInfo": {},
+  "category": [
+    "数据录入"
+  ],
   "type": {
     "InputSize": [
       {
@@ -214,152 +249,6 @@
       "event": "SyntheticEvent"
     }
   },
-  "category": ["数据录入"],
-  "theme": {
-    "Container": {
-      "name": "金额输入框",
-      "desc": "金额输入框配置",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["margin"],
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["cursor"],
-        ["opacity"],
-        ["boxShadow"]
-      ],
-      "hover": [
-        ["border"],
-        ["borderRadius"],
-        ["background"],
-        ["opacity"],
-        ["boxShadow"],
-        ["cursor"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
-      ],
-      "focus": [
-        ["border"],
-        ["borderRadius"],
-        ["background"],
-        ["opacity"],
-        ["boxShadow"],
-        ["cursor"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
-      ],
-      "active": [
-        ["boxShadow"],
-        ["border"],
-        ["borderRadius"],
-        ["background"],
-        ["opacity"],
-        ["cursor"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
-      ],
-      "disabled": [
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["opacity"],
-        ["cursor"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
-      ]
-    },
-    "ClearButton": {
-      "name": "输入框清除图标",
-      "desc": "输入框后缀清除图标",
-      "normal": [["color"], ["fontSize"], ["font"]],
-      "hover": [["color"], ["fontSize"], ["font"]],
-      "clicked": [],
-      "disabled": [["color"], ["fontSize"], ["font"]]
-    },
-    "Placeholder": {
-      "name": "输入框提示信息文字",
-      "desc": "输入框提示信息文字",
-      "normal": [["color"], ["fontSize"], ["font"]]
-    },
-    "AmountInputPrefix": {
-      "name": "金额输入框主体前缀",
-      "desc": "金额输入框主体前缀",
-      "normal": [["fontSize"], ["font"], ["color"], ["padding"]],
-      "hover": [],
-      "clicked": [],
-      "disabled": []
-    },
-    "AmountTip": {
-      "name": "金额切换提示",
-      "theme": {
-        "Container": {
-          "name": "输入框提示框外框部分",
-          "desc": "输入框提示框外框部分",
-          "normal": [
-            ["opacity"],
-            ["background"],
-            ["width"],
-            ["height"],
-            ["boxShadow"],
-            ["borderRadius"],
-            ["border"]
-          ],
-          "hover": [["background"], ["boxShadow"]],
-          "clicked": [],
-          "disabled": []
-        },
-        "TooltipTitle": {
-          "name": "提示信息文字部分",
-          "desc": "提示信息文字部分",
-          "normal": [["fontSize"], ["font"], ["color"]],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
-        }
-      }
-    },
-    "ValidateErrorInput": {
-      "name": "校验失败的输入框",
-      "desc": "配置校验失败的输入框",
-      "normal": [
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["background"],
-        ["border"],
-        ["boxShadow"],
-        ["opacity"]
-      ],
-      "hover": [["background"], ["border"], ["boxShadow"]],
-      "focus": [["background"], ["border"], ["boxShadow"]],
-      "active": [["background"], ["border"], ["boxShadow"]]
-    },
-    "ValidateErrorText": {
-      "name": "校验失败提示信息",
-      "desc": "配置校验失败的提示信息",
-      "normal": [
-        ["background"],
-        ["boxShadow"],
-        ["borderRadius"],
-        ["border"],
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["margin"]
-      ],
-      "hover": [],
-      "active": []
-    }
-  },
   "defaultTheme": {
     "Container": {
       "normal": {
@@ -372,6 +261,389 @@
           "width": "100%"
         }
       }
+    }
+  },
+  "theme": {
+    "Container": {
+      "name": "金额输入框",
+      "desc": "金额输入框配置",
+      "normal": [
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "boxShadow"
+        ]
+      ],
+      "hover": [
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "background"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
+      ],
+      "focus": [
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "background"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
+      ],
+      "active": [
+        [
+          "boxShadow"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "background"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
+      ],
+      "disabled": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
+      ]
+    },
+    "ClearButton": {
+      "name": "输入框清除图标",
+      "desc": "输入框后缀清除图标",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "clicked": [],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ]
+    },
+    "Placeholder": {
+      "name": "输入框提示信息文字",
+      "desc": "输入框提示信息文字",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ]
+    },
+    "AmountInputPrefix": {
+      "name": "金额输入框主体前缀",
+      "desc": "金额输入框主体前缀",
+      "normal": [
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "padding"
+        ]
+      ],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "AmountTip": {
+      "name": "金额切换提示",
+      "theme": {
+        "Container": {
+          "name": "输入框提示框外框部分",
+          "desc": "输入框提示框外框部分",
+          "normal": [
+            [
+              "opacity"
+            ],
+            [
+              "background"
+            ],
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "border"
+            ]
+          ],
+          "hover": [
+            [
+              "background"
+            ],
+            [
+              "boxShadow"
+            ]
+          ],
+          "clicked": [],
+          "disabled": []
+        },
+        "TooltipTitle": {
+          "name": "提示信息文字部分",
+          "desc": "提示信息文字部分",
+          "normal": [
+            [
+              "fontSize"
+            ],
+            [
+              "font"
+            ],
+            [
+              "color"
+            ]
+          ],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    },
+    "ValidateErrorInput": {
+      "name": "校验失败的输入框",
+      "desc": "配置校验失败的输入框",
+      "normal": [
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "opacity"
+        ]
+      ],
+      "hover": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ],
+      "focus": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ],
+      "active": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ]
+    },
+    "ValidateErrorText": {
+      "name": "校验失败提示信息",
+      "desc": "配置校验失败的提示信息",
+      "normal": [
+        [
+          "background"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ]
+      ],
+      "hover": [],
+      "active": []
     }
   }
 }
