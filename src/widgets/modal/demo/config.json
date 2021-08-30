@@ -18,5 +18,9 @@
   "MoreDemo": {
     "title": "信息提示",
     "desc": "更多快速弹出对话框"
+  },
+  "UserDefinePositionDemo": {
+    "title": "自定义弹出位置",
+    "desc": "可以根据需求自定义对话框的弹出位置"
   }
 }
