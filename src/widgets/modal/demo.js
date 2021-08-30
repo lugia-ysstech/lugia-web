@@ -164,6 +164,10 @@ export default class ModalDemo extends React.Component<any, any> {
               bottom: 30,
               left: 50,
             },
+            position: {
+              left: 200,
+              top: 150,
+            },
           },
         },
         ModalTitle: {

@@ -7,6 +7,7 @@ import { px2remcss } from '../css/units';
 import { css, keyframes } from 'styled-components';
 import type { ThemeType } from '../../interface/types';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import { ObjectUtils } from '@lugia/type-utils';
 
 import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import { getBorderRadius } from '../theme/CSSProvider';
@@ -164,16 +165,44 @@ export const Modal = CSSComponent({
   css: css`
     display: inline-block;
     position: relative;
-    top: 100px;
-    left: 50%;
-    transform: translateX(-50%);
     box-sizing: border-box;
     font-size: ${FontSize}rem;
     outline: none;
     ${getAnimate};
   `,
   normal: {
-    selectNames: [['width'], ['height'], ['minWidth'], ['maxWidth'], ['maxHeight'], ['minHeight']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['minWidth'],
+      ['maxWidth'],
+      ['maxHeight'],
+      ['minHeight'],
+      ['position'],
+    ],
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const { position = {} } = themeMeta;
+      const { top = 100, left = '50%' } = position;
+      let theTop = top;
+      let translateTop = 0;
+      let translateLeft = 0;
+      let theLeft = left;
+      if (ObjectUtils.isNumber(top)) {
+        theTop = `${top}px`;
+      } else {
+        translateTop = top;
+      }
+      if (ObjectUtils.isNumber(left)) {
+        theLeft = `${left}px`;
+      } else {
+        translateLeft = left;
+      }
+      return `
+        top:${theTop};
+        left:${theLeft} ;
+        transform: translate(-${translateLeft},-${translateTop});
+      `;
+    },
   },
 });
 export const ModalContent = CSSComponent({
