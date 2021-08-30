@@ -147,100 +147,40 @@
           "name": "弹窗整体样式",
           "desc": "为弹窗配置整体样式",
           "normal": [
-            [
-              "width"
-            ],
-            [
-              "height"
-            ],
-            [
-              "opacity"
-            ],
-            [
-              "boxShadow"
-            ],
-            [
-              "borderRadius"
-            ],
-            [
-              "border"
-            ],
-            [
-              "background"
-            ],
-            [
-              "padding"
-            ],
-            [
-              "minWidth"
-            ],
-            [
-              "maxWidth"
-            ],
-            [
-              "maxHeight"
-            ],
-            [
-              "minHeight"
-            ]
+            ["width"],
+            ["height"],
+            ["opacity"],
+            ["boxShadow"],
+            ["borderRadius"],
+            ["border"],
+            ["background"],
+            ["padding"],
+            ["minWidth"],
+            ["maxWidth"],
+            ["maxHeight"],
+            ["minHeight"],
+            ["position"]
           ]
         },
         "ModalTitle": {
           "name": "弹窗标题样式",
           "desc": "为弹窗文字配置样式",
-          "normal": [
-            [
-              "font"
-            ],
-            [
-              "color"
-            ],
-            [
-              "padding"
-            ],
-            [
-              "margin"
-            ]
-          ]
+          "normal": [["font"], ["color"], ["padding"], ["margin"]]
         },
         "ModalContentText": {
           "name": "弹窗内容文本样式",
           "desc": "为弹窗内容文本配置样式",
-          "normal": [
-            [
-              "font"
-            ],
-            [
-              "color"
-            ],
-            [
-              "padding"
-            ]
-          ]
+          "normal": [["font"], ["color"], ["padding"]]
         },
         "ModalIcon": {
           "name": "弹窗前缀图标样式",
           "desc": "为弹窗前缀图标配置样式",
-          "normal": [
-            [
-              "fontSize"
-            ],
-            [
-              "color"
-            ]
-          ]
+          "normal": [["fontSize"], ["color"]]
         },
         "ModalCloseIcon": {
           "name": "弹窗关闭图标样式",
           "desc": "为弹窗关闭图标配置样式",
-          "normal": [
-            [
-              "fontSize"
-            ],
-            [
-              "color"
-            ]
-          ]
+          "normal": [["fontSize"], ["color"]]
         },
         "ModalOkButton": {
           "name": "弹窗确定按钮样式",
@@ -249,92 +189,27 @@
             "Container": {
               "name": "弹窗确定按钮",
               "normal": [
-                [
-                  "background"
-                ],
-                [
-                  "border"
-                ],
-                [
-                  "height"
-                ],
-                [
-                  "width"
-                ],
-                [
-                  "padding"
-                ],
-                [
-                  "margin"
-                ],
-                [
-                  "borderRadius"
-                ]
+                ["background"],
+                ["border"],
+                ["height"],
+                ["width"],
+                ["padding"],
+                ["margin"],
+                ["borderRadius"]
               ],
-              "hover": [
-                [
-                  "background"
-                ],
-                [
-                  "border"
-                ]
-              ],
-              "active": [
-                [
-                  "background"
-                ],
-                [
-                  "border"
-                ]
-              ],
-              "disabled": [
-                [
-                  "background"
-                ],
-                [
-                  "border"
-                ]
-              ],
-              "focus": [
-                [
-                  "background"
-                ],
-                [
-                  "border"
-                ]
-              ]
+              "hover": [["background"], ["border"]],
+              "active": [["background"], ["border"]],
+              "disabled": [["background"], ["border"]],
+              "focus": [["background"], ["border"]]
             },
             "ButtonText": {
               "name": "确定按钮文字样式",
               "desc": "为确定按钮文字配置样式",
-              "normal": [
-                [
-                  "color"
-                ],
-                [
-                  "font"
-                ]
-              ],
-              "hover": [
-                [
-                  "color"
-                ]
-              ],
-              "active": [
-                [
-                  "color"
-                ]
-              ],
-              "disabled": [
-                [
-                  "color"
-                ]
-              ],
-              "focus": [
-                [
-                  "color"
-                ]
-              ]
+              "normal": [["color"], ["font"]],
+              "hover": [["color"]],
+              "active": [["color"]],
+              "disabled": [["color"]],
+              "focus": [["color"]]
             }
           }
         },
@@ -345,103 +220,34 @@
             "Container": {
               "name": "弹窗取消按钮",
               "normal": [
-                [
-                  "background"
-                ],
-                [
-                  "border"
-                ],
-                [
-                  "height"
-                ],
-                [
-                  "width"
-                ],
-                [
-                  "padding"
-                ],
-                [
-                  "margin"
-                ],
-                [
-                  "borderRadius"
-                ]
+                ["background"],
+                ["border"],
+                ["height"],
+                ["width"],
+                ["padding"],
+                ["margin"],
+                ["borderRadius"]
               ],
-              "hover": [
-                [
-                  "background"
-                ],
-                [
-                  "border"
-                ]
-              ],
-              "active": [
-                [
-                  "background"
-                ],
-                [
-                  "border"
-                ]
-              ],
-              "disabled": [
-                [
-                  "background"
-                ],
-                [
-                  "border"
-                ]
-              ],
-              "focus": [
-                [
-                  "background"
-                ],
-                [
-                  "border"
-                ]
-              ]
+              "hover": [["background"], ["border"]],
+              "active": [["background"], ["border"]],
+              "disabled": [["background"], ["border"]],
+              "focus": [["background"], ["border"]]
             },
             "ButtonText": {
               "name": "取消按钮文字样式",
               "desc": "为取消按钮文字配置样式",
-              "normal": [
-                [
-                  "color"
-                ],
-                [
-                  "font"
-                ]
-              ],
-              "hover": [
-                [
-                  "color"
-                ]
-              ],
-              "active": [
-                [
-                  "color"
-                ]
-              ],
-              "disabled": [
-                [
-                  "color"
-                ]
-              ],
-              "focus": [
-                [
-                  "color"
-                ]
-              ]
+              "normal": [["color"], ["font"]],
+              "hover": [["color"]],
+              "active": [["color"]],
+              "disabled": [["color"]],
+              "focus": [["color"]]
             }
           }
         },
         "ModalMask": {
           "name": "弹窗遮罩样式",
           "desc": "为弹窗遮罩配置样式",
-          "normal": [
-            [
-              "background"
-            ]
-          ]
+          "normal": [["background"]]
         }
       },
       "defaultTheme": {
@@ -455,9 +261,7 @@
       }
     }
   },
-  "category": [
-    "反馈"
-  ],
+  "category": ["反馈"],
   "defaultTheme": {
     "Container": {
       "normal": {
@@ -471,100 +275,40 @@
       "name": "弹窗整体样式",
       "desc": "为弹窗配置整体样式",
       "normal": [
-        [
-          "width"
-        ],
-        [
-          "height"
-        ],
-        [
-          "opacity"
-        ],
-        [
-          "boxShadow"
-        ],
-        [
-          "borderRadius"
-        ],
-        [
-          "border"
-        ],
-        [
-          "background"
-        ],
-        [
-          "padding"
-        ],
-        [
-          "minWidth"
-        ],
-        [
-          "maxWidth"
-        ],
-        [
-          "maxHeight"
-        ],
-        [
-          "minHeight"
-        ]
+        ["width"],
+        ["height"],
+        ["opacity"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"],
+        ["background"],
+        ["padding"],
+        ["minWidth"],
+        ["maxWidth"],
+        ["maxHeight"],
+        ["minHeight"],
+        ["position"]
       ]
     },
     "ModalTitle": {
       "name": "弹窗标题样式",
       "desc": "为弹窗文字配置样式",
-      "normal": [
-        [
-          "font"
-        ],
-        [
-          "color"
-        ],
-        [
-          "padding"
-        ],
-        [
-          "margin"
-        ]
-      ]
+      "normal": [["font"], ["color"], ["padding"], ["margin"]]
     },
     "ModalContentText": {
       "name": "弹窗内容文本样式",
       "desc": "为弹窗内容文本配置样式",
-      "normal": [
-        [
-          "font"
-        ],
-        [
-          "color"
-        ],
-        [
-          "padding"
-        ]
-      ]
+      "normal": [["font"], ["color"], ["padding"]]
     },
     "ModalIcon": {
       "name": "弹窗前缀图标样式",
       "desc": "为弹窗前缀图标配置样式",
-      "normal": [
-        [
-          "fontSize"
-        ],
-        [
-          "color"
-        ]
-      ]
+      "normal": [["fontSize"], ["color"]]
     },
     "ModalCloseIcon": {
       "name": "弹窗关闭图标样式",
       "desc": "为弹窗关闭图标配置样式",
-      "normal": [
-        [
-          "fontSize"
-        ],
-        [
-          "color"
-        ]
-      ]
+      "normal": [["fontSize"], ["color"]]
     },
     "ModalOkButton": {
       "name": "弹窗确定按钮样式",
@@ -573,92 +317,27 @@
         "Container": {
           "name": "弹窗确定按钮",
           "normal": [
-            [
-              "background"
-            ],
-            [
-              "border"
-            ],
-            [
-              "height"
-            ],
-            [
-              "width"
-            ],
-            [
-              "padding"
-            ],
-            [
-              "margin"
-            ],
-            [
-              "borderRadius"
-            ]
+            ["background"],
+            ["border"],
+            ["height"],
+            ["width"],
+            ["padding"],
+            ["margin"],
+            ["borderRadius"]
           ],
-          "hover": [
-            [
-              "background"
-            ],
-            [
-              "border"
-            ]
-          ],
-          "active": [
-            [
-              "background"
-            ],
-            [
-              "border"
-            ]
-          ],
-          "disabled": [
-            [
-              "background"
-            ],
-            [
-              "border"
-            ]
-          ],
-          "focus": [
-            [
-              "background"
-            ],
-            [
-              "border"
-            ]
-          ]
+          "hover": [["background"], ["border"]],
+          "active": [["background"], ["border"]],
+          "disabled": [["background"], ["border"]],
+          "focus": [["background"], ["border"]]
         },
         "ButtonText": {
           "name": "确定按钮文字样式",
           "desc": "为确定按钮文字配置样式",
-          "normal": [
-            [
-              "color"
-            ],
-            [
-              "font"
-            ]
-          ],
-          "hover": [
-            [
-              "color"
-            ]
-          ],
-          "active": [
-            [
-              "color"
-            ]
-          ],
-          "disabled": [
-            [
-              "color"
-            ]
-          ],
-          "focus": [
-            [
-              "color"
-            ]
-          ]
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
         }
       }
     },
@@ -669,103 +348,34 @@
         "Container": {
           "name": "弹窗取消按钮",
           "normal": [
-            [
-              "background"
-            ],
-            [
-              "border"
-            ],
-            [
-              "height"
-            ],
-            [
-              "width"
-            ],
-            [
-              "padding"
-            ],
-            [
-              "margin"
-            ],
-            [
-              "borderRadius"
-            ]
+            ["background"],
+            ["border"],
+            ["height"],
+            ["width"],
+            ["padding"],
+            ["margin"],
+            ["borderRadius"]
           ],
-          "hover": [
-            [
-              "background"
-            ],
-            [
-              "border"
-            ]
-          ],
-          "active": [
-            [
-              "background"
-            ],
-            [
-              "border"
-            ]
-          ],
-          "disabled": [
-            [
-              "background"
-            ],
-            [
-              "border"
-            ]
-          ],
-          "focus": [
-            [
-              "background"
-            ],
-            [
-              "border"
-            ]
-          ]
+          "hover": [["background"], ["border"]],
+          "active": [["background"], ["border"]],
+          "disabled": [["background"], ["border"]],
+          "focus": [["background"], ["border"]]
         },
         "ButtonText": {
           "name": "取消按钮文字样式",
           "desc": "为取消按钮文字配置样式",
-          "normal": [
-            [
-              "color"
-            ],
-            [
-              "font"
-            ]
-          ],
-          "hover": [
-            [
-              "color"
-            ]
-          ],
-          "active": [
-            [
-              "color"
-            ]
-          ],
-          "disabled": [
-            [
-              "color"
-            ]
-          ],
-          "focus": [
-            [
-              "color"
-            ]
-          ]
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
         }
       }
     },
     "ModalMask": {
       "name": "弹窗遮罩样式",
       "desc": "为弹窗遮罩配置样式",
-      "normal": [
-        [
-          "background"
-        ]
-      ]
+      "normal": [["background"]]
     }
   }
 }

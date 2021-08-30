@@ -33,30 +33,30 @@ class ModalBox extends React.Component<any, any> {
   constructor() {
     super();
     this.state = {
-      visable: false,
+      visible: false,
     };
   }
 
   click = () => {
     this.setState({
-      visable: true,
+      visible: true,
     });
   };
 
   buttonClick = () => {
     this.setState({
-      visable: false,
+      visible: false,
     });
   };
 
   render() {
-    const { visable } = this.state;
+    const { visible } = this.state;
     const { mountBody } = this.props;
     return (
       <div style={{ position: 'absolute', bottom: '30px', right: '30px' }}>
         <Button onClick={this.click}>弹出</Button>
         <Modal
-          visible={visable}
+          visible={visible}
           title="另一个对话框！"
           onOk={this.buttonClick}
           onCancel={this.buttonClick}
@@ -80,38 +80,40 @@ export default class ModalDemo extends React.Component<any, any> {
   static getDerivedStateFromProps(props, state) {
     const { visible = false, mountBody = true } = props;
     const {
-      visable1,
-      visable2,
-      visable3,
-      visable4,
-      visable5,
-      visable6,
-      visable7,
-      visable8,
-      visable9,
+      visible1,
+      visible2,
+      visible3,
+      visible4,
+      visible5,
+      visible6,
+      visible7,
+      visible8,
+      visible9,
+      visible10,
     } = state;
     return {
       mountBody,
-      visable1: visable1 || visible,
-      visable2: visable2 || visible,
-      visable3: visable3 || visible,
-      visable4: visable4 || visible,
-      visable5: visable5 || visible,
-      visable6: visable6 || visible,
-      visable7: visable7 || visible,
-      visable8: visable8 || visible,
-      visable9: visable9 || visible,
+      visible1: visible1 || visible,
+      visible2: visible2 || visible,
+      visible3: visible3 || visible,
+      visible4: visible4 || visible,
+      visible5: visible5 || visible,
+      visible6: visible6 || visible,
+      visible7: visible7 || visible,
+      visible8: visible8 || visible,
+      visible9: visible9 || visible,
+      visible10: visible10 || visible,
     };
   }
 
   Click = (cur: number) => () => {
     this.setState({
-      ['visable' + cur]: true,
+      ['visible' + cur]: true,
     });
   };
   buttonClick = (cur: number) => () => {
     this.setState({
-      ['visable' + cur]: false,
+      ['visible' + cur]: false,
     });
   };
   loadingClick = (cur: number) => () => {
@@ -120,7 +122,7 @@ export default class ModalDemo extends React.Component<any, any> {
     });
     setTimeout(() => {
       this.setState({
-        ['visable' + cur]: false,
+        ['visible' + cur]: false,
       });
     }, 2000);
   };
@@ -134,15 +136,16 @@ export default class ModalDemo extends React.Component<any, any> {
 
   render() {
     const {
-      visable1,
-      visable2,
-      visable3,
-      visable4,
-      visable5,
-      visable6,
-      visable7,
-      visable8,
-      visable9,
+      visible1,
+      visible2,
+      visible3,
+      visible4,
+      visible5,
+      visible6,
+      visible7,
+      visible8,
+      visible9,
+      visible10,
       confirmLoading,
       buttonValue,
       mountBody,
@@ -222,12 +225,24 @@ export default class ModalDemo extends React.Component<any, any> {
         },
       },
     };
+    const modalPositionConfig = {
+      [Widgets.Modal]: {
+        Container: {
+          normal: {
+            position: {
+              left: 100,
+              top: 100,
+            },
+          },
+        },
+      },
+    };
     return (
       <div>
         <Button onClick={this.Click(7)}>Theme Modal</Button>
         <Theme config={view}>
           <Modal
-            visible={visable7}
+            visible={visible7}
             title="这是标题！"
             onOk={this.buttonClick(7)}
             onCancel={this.buttonClick(7)}
@@ -241,7 +256,7 @@ export default class ModalDemo extends React.Component<any, any> {
         <Button onClick={this.Click(4)}>Modal</Button>
         <Modal
           injectProps={{ type: 'Modal' }}
-          visible={visable4}
+          visible={visible4}
           title="这是标题！"
           onOk={this.buttonClick(4)}
           onCancel={this.buttonClick(4)}
@@ -257,7 +272,7 @@ export default class ModalDemo extends React.Component<any, any> {
         <br />
         <Button onClick={this.Click(1)}>Modal</Button>
         <Modal
-          visible={visable1}
+          visible={visible1}
           title="这是标题！"
           onOk={this.buttonClick(1)}
           onCancel={this.buttonClick(1)}
@@ -269,7 +284,7 @@ export default class ModalDemo extends React.Component<any, any> {
         <br />
         <Button onClick={this.Click(2)}>异步关闭</Button>
         <Modal
-          visible={visable2}
+          visible={visible2}
           confirmLoading={confirmLoading}
           onOk={this.loadingClick(2)}
           onCancel={this.buttonClick(2)}
@@ -282,7 +297,7 @@ export default class ModalDemo extends React.Component<any, any> {
         <br />
         <Button onClick={this.Click(3)}>自定义页脚</Button>
         <Modal
-          visible={visable3}
+          visible={visible3}
           footer={[
             <div style={{ marginTop: '15px' }}>
               <Button type="primary" onClick={this.buttonClick(3)}>
@@ -375,7 +390,7 @@ export default class ModalDemo extends React.Component<any, any> {
         <br />
         <Button onClick={this.Click(8)}>挂载在body上</Button>
         <Modal
-          visible={visable8}
+          visible={visible8}
           title="这是标题！"
           onOk={this.buttonClick(8)}
           onCancel={this.buttonClick(8)}
@@ -388,7 +403,7 @@ export default class ModalDemo extends React.Component<any, any> {
         <br />
         <Button onClick={this.Click(9)}>对话框高度超出窗口时,可以滚动</Button>
         <Modal
-          visible={visable9}
+          visible={visible9}
           title="这是标题！"
           onOk={this.buttonClick(9)}
           onCancel={this.buttonClick(9)}
@@ -399,6 +414,19 @@ export default class ModalDemo extends React.Component<any, any> {
           <BlankBox />
           <p>另一段描述</p>
         </Modal>
+        <br />
+        <br />
+        <Button onClick={this.Click(10)}>自定义弹出位置的弹窗</Button>
+        <Theme config={modalPositionConfig}>
+          <Modal
+            visible={visible10}
+            title="这是标题！"
+            onOk={this.buttonClick(10)}
+            onCancel={this.buttonClick(10)}
+          >
+            这是内容！
+          </Modal>
+        </Theme>
       </div>
     );
   }
