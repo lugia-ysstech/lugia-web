@@ -127,6 +127,12 @@ export default [
           injectProps: false,
           meta: '',
         },
+        cf: {
+          desc: '',
+          type: 'object[]',
+          designOnly: false,
+          injectProps: false,
+        },
       },
       events: {
         onClose: {
@@ -14480,6 +14486,7 @@ export default [
             ['maxWidth'],
             ['maxHeight'],
             ['minHeight'],
+            ['position'],
           ],
         },
         ModalTitle: {

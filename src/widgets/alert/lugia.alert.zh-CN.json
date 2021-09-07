@@ -68,6 +68,12 @@
       "designOnly": false,
       "injectProps": false,
       "meta": ""
+    },
+    "cf": {
+      "desc": "",
+      "type": "object[]",
+      "designOnly": false,
+      "injectProps": false
     }
   },
   "events": {
