@@ -200,6 +200,14 @@
       "type": "Function(record, index): string",
       "designOnly": false,
       "injectProps": false
+    },
+    "expandIcon": {
+      "type": "String ｜ Function():ReactNode",
+      "desc": "展开图标属性"
+    },
+    "collapseIcon": {
+      "type": "String ｜ Function():ReactNode",
+      "desc": "收起图标属性"
     }
   },
   "events": {

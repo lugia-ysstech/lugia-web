@@ -19,6 +19,28 @@
             }
           }
         ]
+      },
+      {
+        "title": "展开行图标",
+        "iconClass": "icon",
+        "data": [
+          {
+            "name": "展开行图标样式",
+            "path": ["ExpandIcon"],
+            "props": [{ "name": "expandIcon", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": { "text": "展开行图标", "desc": "为展开行图标配置样式" }
+            }
+          },
+          {
+            "name": "折叠行图标样式",
+            "path": ["CollapseIcon"],
+            "props": [{ "name": "collapseIcon", "typeInTheme": "icon" }],
+            "description": {
+              "textPart": { "text": "展开行图标", "desc": "为折叠行图标配置样式" }
+            }
+          }
+        ]
       }
     ]
   }

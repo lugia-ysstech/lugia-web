@@ -18,6 +18,8 @@ export type TableProps = {
   getPartOfThemeProps: Function,
   selectOptions?: Object,
   expandIconColumnIndex?: number,
+  expandIcon?: string | Function,
+  collapseIcon?: string | Function,
 };
 export type TableState = {
   headChecked: boolean,

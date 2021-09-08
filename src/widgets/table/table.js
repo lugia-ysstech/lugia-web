@@ -24,6 +24,7 @@ import {
   isEqualObject,
 } from './utils';
 import Empty from '../empty';
+import Icon from '../icon';
 
 const sizePadding = {
   default: 8,
@@ -480,6 +481,8 @@ export default ThemeProvider(
         rowKey: cusRowKey = 'key',
         scroll: propsScroll = {},
         data: propsData = [],
+        expandIcon,
+        collapseIcon,
       } = this.props;
 
       this.selectedRecords = [];
@@ -596,6 +599,36 @@ export default ThemeProvider(
         const { expandIconColumnIndex: propsIndex } = this.props;
         expandIconColumnIndex = Number(propsIndex);
       }
+
+      const getIconByType = (icon, iconConfig) => {
+        const iconType = typeof icon;
+        if (iconType === 'string') {
+          return (
+            <Icon singleTheme iconClass={icon} {...this.props.getPartOfThemeHocProps(iconConfig)} />
+          );
+        } else if (iconType === 'function') {
+          return icon && icon();
+        }
+      };
+
+      const getCustomIcon = param => {
+        return param.expanded
+          ? getIconByType(expandIcon, 'ExpandIcon')
+          : getIconByType(collapseIcon, 'CollapseIcon');
+      };
+
+      const customExpandIcon = prop => {
+        return (
+          <div
+            className={'custom-icon'}
+            onClick={() => {
+              prop.onExpand(prop.record);
+            }}
+          >
+            {getCustomIcon(prop)}
+          </div>
+        );
+      };
       return (
         <TableWrap
           ref={el => {
@@ -612,6 +645,7 @@ export default ThemeProvider(
             showHeader={showHeader}
             expandIconColumnIndex={expandIconColumnIndex}
             scroll={{ ...scroll, ...propsScroll }}
+            expandIcon={(expandIcon || collapseIcon) && customExpandIcon}
           />
         </TableWrap>
       );
