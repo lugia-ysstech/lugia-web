@@ -218,13 +218,13 @@
     },
     "expandIcon": {
       "desc": "展开行图标",
-      "type": "string | React.node",
+      "type": "icon | function():React.node",
       "designOnly": false,
       "injectProps": false
     },
     "collapseIcon": {
       "desc": "折叠行图标",
-      "type": "string | React.node",
+      "type": "icon | function():React.node",
       "designOnly": false,
       "injectProps": false
     }

@@ -18,5 +18,9 @@
   "CheckDemo": {
     "title": "有选择项的 Table",
     "desc": "有选择项的 Table，可以获取 选中行的keys"
+  },
+  "ExpandIconDemo": {
+    "title": "展开行/折叠行图标 Table",
+    "desc": "自定义设置展开行/折叠行图标"
   }
 }
