@@ -28500,15 +28500,17 @@ export default [
         },
         expandIcon: {
           desc: '展开行图标',
-          type: 'string | React.node',
+          type: 'icon | Function',
           designOnly: false,
           injectProps: false,
+          meta: '',
         },
         collapseIcon: {
           desc: '折叠行图标',
-          type: 'string | React.node',
+          type: 'icon | Function',
           designOnly: false,
           injectProps: false,
+          meta: '',
         },
       },
       events: {

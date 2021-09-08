@@ -218,15 +218,17 @@
     },
     "expandIcon": {
       "desc": "展开行图标",
-      "type": "icon | function():React.node",
+      "type": "icon | Function",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "collapseIcon": {
       "desc": "折叠行图标",
-      "type": "icon | function():React.node",
+      "type": "icon | Function",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     }
   },
   "events": {
