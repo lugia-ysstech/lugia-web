@@ -216,15 +216,15 @@
       "injectProps": false,
       "meta": ""
     },
-    "expandIcon": {
-      "desc": "展开行图标",
+    "collapseIcon": {
+      "desc": "折叠行图标",
       "type": "icon | Function",
       "designOnly": false,
       "injectProps": false,
       "meta": ""
     },
-    "collapseIcon": {
-      "desc": "折叠行图标",
+    "expandIcon": {
+      "desc": "展开行图标",
       "type": "icon | Function",
       "designOnly": false,
       "injectProps": false,
