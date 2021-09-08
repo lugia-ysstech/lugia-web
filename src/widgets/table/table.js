@@ -480,6 +480,8 @@ export default ThemeProvider(
         rowKey: cusRowKey = 'key',
         scroll: propsScroll = {},
         data: propsData = [],
+        expandIcon,
+        collapseIcon,
       } = this.props;
 
       this.selectedRecords = [];
@@ -596,6 +598,26 @@ export default ThemeProvider(
         const { expandIconColumnIndex: propsIndex } = this.props;
         expandIconColumnIndex = Number(propsIndex);
       }
+
+      const getIcon = param => {
+        if (param.expanded) {
+          return expandIcon && expandIcon();
+        }
+        return collapseIcon && collapseIcon();
+      };
+
+      const customExpandIcon = prop => {
+        return (
+          <div
+            className={'custom-icon'}
+            onClick={() => {
+              prop.onExpand(prop.record);
+            }}
+          >
+            {getIcon(prop)}
+          </div>
+        );
+      };
       return (
         <TableWrap
           ref={el => {
@@ -612,6 +634,7 @@ export default ThemeProvider(
             showHeader={showHeader}
             expandIconColumnIndex={expandIconColumnIndex}
             scroll={{ ...scroll, ...propsScroll }}
+            expandIcon={(expandIcon || collapseIcon) && customExpandIcon}
           />
         </TableWrap>
       );
