@@ -24,6 +24,7 @@ import {
   isEqualObject,
 } from './utils';
 import Empty from '../empty';
+import Icon from '../icon';
 
 const sizePadding = {
   default: 8,
@@ -599,11 +600,21 @@ export default ThemeProvider(
         expandIconColumnIndex = Number(propsIndex);
       }
 
-      const getIcon = param => {
-        if (param.expanded) {
-          return expandIcon && expandIcon();
+      const getIconByType = (icon, iconConfig) => {
+        const iconType = typeof icon;
+        if (iconType === 'string') {
+          return (
+            <Icon singleTheme iconClass={icon} {...this.props.getPartOfThemeHocProps(iconConfig)} />
+          );
+        } else if (iconType === 'function') {
+          return icon && icon();
         }
-        return collapseIcon && collapseIcon();
+      };
+
+      const getCustomIcon = param => {
+        return param.expanded
+          ? getIconByType(expandIcon, 'ExpandIcon')
+          : getIconByType(collapseIcon, 'CollapseIcon');
       };
 
       const customExpandIcon = prop => {
@@ -614,7 +625,7 @@ export default ThemeProvider(
               prop.onExpand(prop.record);
             }}
           >
-            {getIcon(prop)}
+            {getCustomIcon(prop)}
           </div>
         );
       };

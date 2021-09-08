@@ -1247,10 +1247,24 @@ class OldDemo extends React.Component<any, any> {
     const onExpand = (expand, record) => {
       console.log(expand, record);
     };
+    const iconTheme = {
+      [Widget.Table]: {
+        ExpandIcon: {
+          normal: {
+            color: 'red',
+          },
+        },
+        CollapseIcon: {
+          normal: {
+            color: 'orange',
+          },
+        },
+      },
+    };
     return (
       <div style={{ padding: '20px' }}>
         <div style={{ padding: '20px' }}>
-          <h1>修改展开图标</h1>
+          <h1>修改展开图标 传字符串</h1>
           <Table
             columns={columns}
             data={updateData}
@@ -1259,6 +1273,20 @@ class OldDemo extends React.Component<any, any> {
             expandIcon={() => <Icon iconClass={'lugia-icon-direction_arrow_down'} />}
             collapseIcon={() => <Icon iconClass={'lugia-icon-direction_arrow_up'} />}
           />
+        </div>
+
+        <div style={{ padding: '20px' }}>
+          <h1>修改展开图标 传函数</h1>
+          <Theme config={iconTheme}>
+            <Table
+              columns={columns}
+              data={updateData}
+              expandedRowRender={record => <p>{record.name}</p>}
+              onExpand={onExpand}
+              expandIcon={'lugia-icon-direction_caret_up'}
+              collapseIcon={'lugia-icon-direction_caret_down'}
+            />
+          </Theme>
         </div>
 
         <h1>tree-table 模拟异步获取数据</h1>

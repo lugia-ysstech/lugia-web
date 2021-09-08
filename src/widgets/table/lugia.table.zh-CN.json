@@ -202,11 +202,11 @@
       "injectProps": false
     },
     "expandIcon": {
-      "type": "Function():ReactNode",
+      "type": "String ｜ Function():ReactNode",
       "desc": "展开图标属性"
     },
     "collapseIcon": {
-      "type": "Function():ReactNode",
+      "type": "String ｜ Function():ReactNode",
       "desc": "收起图标属性"
     }
   },
