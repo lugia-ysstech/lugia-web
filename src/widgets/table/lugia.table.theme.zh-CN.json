@@ -2,11 +2,11 @@
   {
     "widgetName": "Table",
     "title": "表格",
-    "treeNodeHidden": true,
+
     "data": [
       {
         "title": "表格整体样式",
-        "iconClass": "icon",
+        "iconClass": "AmountInput",
         "data": [
           {
             "name": "表格整体样式",
@@ -22,7 +22,7 @@
       },
       {
         "title": "展开行图标",
-        "iconClass": "icon",
+        "iconClass": "uploadImage",
         "data": [
           {
             "name": "展开行图标样式",
@@ -37,7 +37,7 @@
             "path": ["CollapseIcon"],
             "props": [{ "name": "collapseIcon", "typeInTheme": "icon" }],
             "description": {
-              "textPart": { "text": "展开行图标", "desc": "为折叠行图标配置样式" }
+              "textPart": { "text": "折叠行图标", "desc": "为折叠行图标配置样式" }
             }
           }
         ]

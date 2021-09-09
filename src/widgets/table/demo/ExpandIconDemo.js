@@ -43,7 +43,7 @@ export default class ExpandIconDemo extends React.Component {
   render() {
     return (
       <div>
-        <h1>修改展开图标 传函数</h1>
+        <h1>修改展开图标 传字符串</h1>
         <Table
           columns={columns}
           data={data}
@@ -55,7 +55,7 @@ export default class ExpandIconDemo extends React.Component {
         <br />
         <br />
 
-        <h1>修改展开图标 传字符串</h1>
+        <h1>修改展开图标 传函数</h1>
         <Table
           columns={columns}
           data={data}
