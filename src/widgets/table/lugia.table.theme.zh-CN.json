@@ -5,7 +5,7 @@
     "data": [
       {
         "title": "表格整体样式",
-        "iconClass": "icon",
+        "iconClass": "AmountInput",
         "data": [
           {
             "name": "表格整体样式",
@@ -21,7 +21,7 @@
       },
       {
         "title": "展开行图标",
-        "iconClass": "icon",
+        "iconClass": "uploadImage",
         "data": [
           {
             "name": "展开行图标样式",
