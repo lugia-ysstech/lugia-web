@@ -218,14 +218,14 @@
     },
     "expandIcon": {
       "desc": "展开行图标",
-      "type": "icon | Function",
+      "type": "icon | function",
       "designOnly": false,
       "injectProps": false,
       "meta": ""
     },
     "collapseIcon": {
       "desc": "折叠行图标",
-      "type": "icon | Function",
+      "type": "icon | function",
       "designOnly": false,
       "injectProps": false,
       "meta": ""
@@ -309,6 +309,114 @@
         ],
         [
           "height"
+        ]
+      ]
+    },
+    "ExpandIcon": {
+      "name": "展开行图标样式",
+      "desc": "展开行图标样式配置点",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "cursor"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "cursor"
+        ]
+      ],
+      "active": [
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ]
+      ]
+    },
+    "CollapseIcon": {
+      "name": "折叠行图标样式",
+      "desc": "折叠行图标样式配置点",
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "cursor"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "cursor"
+        ]
+      ],
+      "active": [
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "cursor"
         ]
       ]
     }
