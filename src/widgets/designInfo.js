@@ -28500,14 +28500,14 @@ export default [
         },
         expandIcon: {
           desc: '展开行图标',
-          type: 'icon | function',
+          type: 'icon',
           designOnly: false,
           injectProps: false,
           meta: '',
         },
         collapseIcon: {
           desc: '折叠行图标',
-          type: 'icon | function',
+          type: 'icon',
           designOnly: false,
           injectProps: false,
           meta: '',
