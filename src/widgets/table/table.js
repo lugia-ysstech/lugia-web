@@ -544,6 +544,20 @@ export default ThemeProvider(
           expandedRowStyle: this.getExpandedRowStyle(),
         },
       });
+      const customExpandIcon = prop => {
+        const { expandable } = prop;
+        return expandable ? (
+          <span
+            className={'custom-icon'}
+            onClick={() => {
+              prop.onExpand(prop.record);
+            }}
+          >
+            {getCustomIcon(prop)}
+          </span>
+        ) : null;
+      };
+
       if (children) {
         return (
           <TableWrap
@@ -651,18 +665,6 @@ export default ThemeProvider(
           : getIconByType(collapseIcon, 'CollapseIcon');
       };
 
-      const customExpandIcon = prop => {
-        return (
-          <div
-            className={'custom-icon'}
-            onClick={() => {
-              prop.onExpand(prop.record);
-            }}
-          >
-            {getCustomIcon(prop)}
-          </div>
-        );
-      };
       return (
         <TableWrap
           ref={el => {
