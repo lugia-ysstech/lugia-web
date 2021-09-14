@@ -478,15 +478,18 @@ export default ThemeProvider(
       const { columns, expandedRowRender } = this.props;
       const isTree = !!expandedRowRender;
 
-      return columns
-        .map((item, index) => {
-          const { style } = item;
-          if (style) {
-            const newIndex = isTree ? index + 2 : index + 1;
-            return `${className}(${newIndex})${Json2Css(style)}`;
-          }
-        })
-        .join('');
+      return (
+        columns &&
+        columns
+          .map((item, index) => {
+            const { style } = item;
+            if (style) {
+              const newIndex = isTree ? index + 2 : index + 1;
+              return `${className}(${newIndex})${Json2Css(style)}`;
+            }
+          })
+          .join('')
+      );
     };
 
     getColumnsStyle = () => {
