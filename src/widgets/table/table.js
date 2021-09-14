@@ -26,6 +26,7 @@ import {
 } from './utils';
 import Empty from '../empty';
 import Icon from '../icon';
+import { deepMerge } from '@lugia/object-utils';
 
 const sizePadding = {
   default: 8,
@@ -476,6 +477,7 @@ export default ThemeProvider(
     getColumnsClass = className => {
       const { columns, expandedRowRender } = this.props;
       const isTree = !!expandedRowRender;
+
       return columns
         .map((item, index) => {
           const { style } = item;
@@ -648,12 +650,31 @@ export default ThemeProvider(
         expandIconColumnIndex = Number(propsIndex);
       }
 
+      const getIconTheme = iconType => {
+        const { getPartOfThemeHocProps, expandedRowRender } = this.props;
+        const isTree = !!expandedRowRender;
+        const { viewClass, theme } = getPartOfThemeHocProps(iconType);
+        const defaultTheme = {
+          normal: {
+            padding: {
+              right: isTree ? 0 : 5,
+            },
+          },
+        };
+        return {
+          viewClass,
+          theme: deepMerge(
+            {
+              [viewClass]: { ...defaultTheme },
+            },
+            theme
+          ),
+        };
+      };
       const getIconByType = (icon, iconConfig) => {
         const iconType = typeof icon;
         if (iconType === 'string') {
-          return (
-            <Icon singleTheme iconClass={icon} {...this.props.getPartOfThemeHocProps(iconConfig)} />
-          );
+          return <Icon singleTheme iconClass={icon} {...getIconTheme(iconConfig)} />;
         } else if (iconType === 'function') {
           return icon && icon();
         }
