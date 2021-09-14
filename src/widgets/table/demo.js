@@ -139,6 +139,11 @@ const columnsStyle = [
     width: '30%',
     key: 'address',
   },
+  {
+    title: 'Operations',
+    dataIndex: '',
+    key: 'operations',
+  },
 ];
 const dataStyle = [
   { name: 'Jack', age: 28, address: 'some where', key: '1' },
@@ -1375,6 +1380,13 @@ class OldDemo extends React.Component<any, any> {
     };
     const iconTheme = {
       [Widget.Table]: {
+        Container: {
+          normal: {
+            background: {
+              color: '#108ee9',
+            },
+          },
+        },
         ExpandIcon: {
           normal: {
             color: 'red',
@@ -1389,30 +1401,38 @@ class OldDemo extends React.Component<any, any> {
     };
     return (
       <div style={{ padding: '20px' }}>
-        <h1>修改每一列的颜色</h1>
-        <Table
-          columns={columnsStyle}
-          data={dataStyle}
-          expandedRowRender={record => (
-            <div style={{ marginLeft: -8, width: 100 }}>{record.name}</div>
-          )}
-          collapseIcon={'lugia-icon-direction_up_circle'}
-          expandIcon={'lugia-icon-direction_down_circle'}
-          expandedRowStyle={{
-            background: '#108ee9',
-          }}
-        />
+        <div style={{ padding: '20px' }}>
+          <h1>修改每一列的颜色</h1>
+          <Table
+            columns={columnsStyle}
+            data={dataStyle}
+            expandedRowRender={record => (
+              <div style={{ marginLeft: -8, width: 100 }}>{record.name}</div>
+            )}
+            collapseIcon={'lugia-icon-direction_up_circle'}
+            expandIcon={'lugia-icon-direction_down_circle'}
+            expandedRowStyle={{
+              background: '#108ee9',
+            }}
+          />
+        </div>
 
-        <br />
-        <br />
+        <div style={{ padding: '20px' }}>
+          <h1>带主题的修改每一列的颜色</h1>
+          <Theme config={iconTheme}>
+            <Table columns={columnsStyle} data={dataStyle} />
+          </Theme>
+        </div>
 
-        <h1>树形结果修改颜色</h1>
-        <Table
-          columns={treeColumnsStyle}
-          data={treeData}
-          collapseIcon={'lugia-icon-direction_up_circle'}
-          expandIcon={'lugia-icon-direction_down_circle'}
-        />
+        <div style={{ padding: '20px' }}>
+          <h1>树形结果修改颜色</h1>
+          <Table
+            columns={treeColumnsStyle}
+            data={treeData}
+            collapseIcon={'lugia-icon-direction_up_circle'}
+            expandIcon={'lugia-icon-direction_down_circle'}
+          />
+        </div>
 
         <div style={{ padding: '20px' }}>
           <h1>修改展开图标 传字符串</h1>
