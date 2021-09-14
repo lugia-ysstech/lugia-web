@@ -477,7 +477,6 @@ export default ThemeProvider(
     getColumnsClass = className => {
       const { columns, expandedRowRender } = this.props;
       const isTree = !!expandedRowRender;
-
       return (
         columns &&
         columns
@@ -579,6 +578,7 @@ export default ThemeProvider(
               showHeader={showHeader}
               rowClassName={(record, i) => `row-${i}`}
               className="table"
+              expandIcon={(expandIcon || collapseIcon) && customExpandIcon}
             >
               {children}
             </RcTable>
