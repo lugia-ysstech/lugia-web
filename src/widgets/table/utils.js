@@ -121,3 +121,25 @@ export const getChildrenKeys = (data, childrenKeys, childrenRecords, rowKey, set
 export function isEqualObject(newData, data) {
   return _.eq(newData, data);
 }
+
+export function Json2Css(code) {
+  const jsonString = JSON.stringify(code, null, 4);
+  let codeArray = jsonString.split('\n');
+  codeArray = codeArray.map(item => {
+    if (item.includes(':')) {
+      // 去掉双引号
+      let prefix = item.split(':')[0];
+      let suffix = item.split(':')[1];
+      prefix = prefix.replace(/"/g, '');
+      suffix = suffix.replace(/"/g, '');
+      const style = prefix + ':' + suffix + ';';
+      const newCode = style.replace(',', '');
+      // 将大写变成小写
+      const searchIndex = newCode.search(/[A-Z]/g);
+      const replaceStr = newCode.toLowerCase()[searchIndex];
+      return newCode.replace(/[A-Z]/g, `-${replaceStr}`);
+    }
+    return item;
+  });
+  return codeArray.join('');
+}

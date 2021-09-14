@@ -22,6 +22,7 @@ import {
   isEqualArray,
   getValidNotCheckedKeys,
   isEqualObject,
+  Json2Css,
 } from './utils';
 import Empty from '../empty';
 import Icon from '../icon';
@@ -44,7 +45,7 @@ const TableWrap = CSSComponent({
     selectNames: [['width'], ['height']],
     getCSS(themeMeta, themeProps): string {
       const { background: { color } = {} } = themeMeta;
-      const { propsConfig: { size = 'default' } = {} } = themeProps;
+      const { propsConfig: { size = 'default', columnsStyle, expandedRowStyle } = {} } = themeProps;
       const padding = sizePadding[size] || sizePadding.default;
       let bgColor;
       if (color) {
@@ -59,6 +60,8 @@ const TableWrap = CSSComponent({
         }
 
         ${color ? bgColor : ''}
+        ${columnsStyle}
+        ${expandedRowStyle}
       `;
     },
   },
@@ -469,6 +472,34 @@ export default ThemeProvider(
         emptyText: <Empty {...this.props} themeInfo={theme} />,
       };
     };
+
+    getColumnsClass = className => {
+      const { columns, expandedRowRender } = this.props;
+      const isTree = !!expandedRowRender;
+      return columns
+        .map((item, index) => {
+          const { style } = item;
+          if (style) {
+            const newIndex = isTree ? index + 2 : index + 1;
+            return `${className}(${newIndex})${Json2Css(style)}`;
+          }
+        })
+        .join('');
+    };
+
+    getColumnsStyle = () => {
+      return `${this.getColumnsClass('table tbody tr td:nth-child')}${this.getColumnsClass(
+        'table thead tr th:nth-child'
+      )}`;
+    };
+
+    getExpandedRowStyle = () => {
+      const { expandedRowStyle } = this.props;
+      if (expandedRowStyle) {
+        return `.rc-table td.rc-table-row-expand-icon-cell,
+        .rc-table th.rc-table-row-expand-icon-cell${Json2Css(expandedRowStyle)}`;
+      }
+    };
     render() {
       const {
         children,
@@ -484,7 +515,6 @@ export default ThemeProvider(
         expandIcon,
         collapseIcon,
       } = this.props;
-
       this.selectedRecords = [];
       this.validKeys = [];
       this.disabledSelectedKeys = [];
@@ -508,7 +538,11 @@ export default ThemeProvider(
         this.oldPropsData = [...propsData];
       }
       const containerPartOfThemeProps = getPartOfThemeProps('Container', {
-        props: { size },
+        props: {
+          size,
+          columnsStyle: this.getColumnsStyle(),
+          expandedRowStyle: this.getExpandedRowStyle(),
+        },
       });
       if (children) {
         return (
