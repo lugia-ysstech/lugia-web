@@ -22,7 +22,7 @@ import {
   isEqualArray,
   getValidNotCheckedKeys,
   isEqualObject,
-  Json2Css,
+  json2Css,
 } from './utils';
 import Empty from '../empty';
 import Icon from '../icon';
@@ -484,7 +484,7 @@ export default ThemeProvider(
             const { style } = item;
             if (style) {
               const newIndex = isTree ? index + 2 : index + 1;
-              return `${className}(${newIndex})${Json2Css(style)}`;
+              return `${className}(${newIndex})${json2Css(style)}`;
             }
           })
           .join('')
@@ -501,7 +501,7 @@ export default ThemeProvider(
       const { expandedRowStyle } = this.props;
       if (expandedRowStyle) {
         return `.rc-table td.rc-table-row-expand-icon-cell,
-        .rc-table th.rc-table-row-expand-icon-cell${Json2Css(expandedRowStyle)}`;
+        .rc-table th.rc-table-row-expand-icon-cell${json2Css(expandedRowStyle)}`;
       }
     };
     render() {

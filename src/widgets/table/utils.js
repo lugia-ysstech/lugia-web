@@ -122,7 +122,7 @@ export function isEqualObject(newData, data) {
   return _.eq(newData, data);
 }
 
-export function Json2Css(code) {
+export function json2Css(code) {
   const jsonString = JSON.stringify(code, null, 4);
   let codeArray = jsonString.split('\n');
   codeArray = codeArray.map(item => {
