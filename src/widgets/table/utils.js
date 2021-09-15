@@ -122,24 +122,33 @@ export function isEqualObject(newData, data) {
   return _.eq(newData, data);
 }
 
+const replace = (string, reg, symbol) => {
+  return string.replace(reg, symbol);
+};
 export function json2Css(code) {
   const jsonString = JSON.stringify(code, null, 4);
   let codeArray = jsonString.split('\n');
+  const space = '';
+  const reg = /"/g;
+  const searchReg = /[A-Z]/g;
+  const semicolon = ':';
+
   codeArray = codeArray.map(item => {
-    if (item.includes(':')) {
+    if (item.includes(semicolon)) {
       // 去掉双引号
-      let prefix = item.split(':')[0];
-      let suffix = item.split(':')[1];
-      prefix = prefix.replace(/"/g, '');
-      suffix = suffix.replace(/"/g, '');
-      const style = prefix + ':' + suffix + ';';
-      const newCode = style.replace(',', '');
+      const split = item.split(semicolon);
+      let prefix = split[0];
+      let suffix = split[1];
+      prefix = replace(prefix, reg, space);
+      suffix = replace(suffix, reg, space);
+      const style = prefix + semicolon + suffix + ';';
+      const newCode = replace(style, ',', space);
       // 将大写变成小写
-      const searchIndex = newCode.search(/[A-Z]/g);
+      const searchIndex = newCode.search(searchReg);
       const replaceStr = newCode.toLowerCase()[searchIndex];
-      return newCode.replace(/[A-Z]/g, `-${replaceStr}`);
+      return replace(newCode, searchReg, replaceStr);
     }
     return item;
   });
-  return codeArray.join('');
+  return codeArray.join(space);
 }
