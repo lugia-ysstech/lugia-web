@@ -121,35 +121,3 @@ export const getChildrenKeys = (data, childrenKeys, childrenRecords, rowKey, set
 export function isEqualObject(newData, data) {
   return _.eq(newData, data);
 }
-
-const replace = (string, reg, symbol) => {
-  return string.replace(reg, symbol);
-};
-const split = (string, symbol) => {
-  return string.split(symbol);
-};
-export function json2Css(code) {
-  const jsonString = JSON.stringify(code, null, 4);
-  let codeArray = split(jsonString, '\n');
-  const space = '';
-  const reg = /"/g;
-  const searchReg = /[A-Z]/g;
-  const semicolon = ':';
-
-  codeArray = codeArray.map(item => {
-    if (item.includes(semicolon)) {
-      // 去掉双引号
-      let [prefix, suffix] = split(item, semicolon);
-      prefix = replace(prefix, reg, space);
-      suffix = replace(suffix, reg, space);
-      const style = prefix + semicolon + suffix + ';';
-      const newCode = replace(style, ',', space);
-      // 将大写变成小写
-      const searchIndex = newCode.search(searchReg);
-      const replaceStr = newCode.toLowerCase()[searchIndex];
-      return replace(newCode, searchReg, replaceStr);
-    }
-    return item;
-  });
-  return codeArray.join(space);
-}

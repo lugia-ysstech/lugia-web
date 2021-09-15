@@ -22,12 +22,11 @@ import {
   isEqualArray,
   getValidNotCheckedKeys,
   isEqualObject,
-  json2Css,
 } from './utils';
 import Empty from '../empty';
 import Icon from '../icon';
 import { deepMerge } from '@lugia/object-utils';
-
+import { style2css } from '@lugia/css';
 const sizePadding = {
   default: 8,
   small: 4,
@@ -484,7 +483,7 @@ export default ThemeProvider(
             const { style } = item;
             if (style) {
               const newIndex = isTree ? index + 2 : index + 1;
-              return `${className}(${newIndex})${json2Css(style)}`;
+              return `${className}(${newIndex}){${style2css(style)}}`;
             }
           })
           .join('')
@@ -501,7 +500,7 @@ export default ThemeProvider(
       const { expandedRowStyle } = this.props;
       if (expandedRowStyle) {
         return `.rc-table td.rc-table-row-expand-icon-cell,
-        .rc-table th.rc-table-row-expand-icon-cell${json2Css(expandedRowStyle)}`;
+        .rc-table th.rc-table-row-expand-icon-cell{${style2css(expandedRowStyle)}}`;
       }
     };
     render() {
