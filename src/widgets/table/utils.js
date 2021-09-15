@@ -139,9 +139,7 @@ export function json2Css(code) {
   codeArray = codeArray.map(item => {
     if (item.includes(semicolon)) {
       // 去掉双引号
-      const splitStr = split(item, semicolon);
-      let prefix = splitStr[0];
-      let suffix = splitStr[1];
+      let [prefix, suffix] = split(item, semicolon);
       prefix = replace(prefix, reg, space);
       suffix = replace(suffix, reg, space);
       const style = prefix + semicolon + suffix + ';';
