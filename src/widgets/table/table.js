@@ -25,7 +25,8 @@ import {
 } from './utils';
 import Empty from '../empty';
 import Icon from '../icon';
-
+import { deepMerge } from '@lugia/object-utils';
+import { style2css } from '@lugia/css';
 const sizePadding = {
   default: 8,
   small: 4,
@@ -44,7 +45,7 @@ const TableWrap = CSSComponent({
     selectNames: [['width'], ['height']],
     getCSS(themeMeta, themeProps): string {
       const { background: { color } = {} } = themeMeta;
-      const { propsConfig: { size = 'default' } = {} } = themeProps;
+      const { propsConfig: { size = 'default', columnsStyle, expandedRowStyle } = {} } = themeProps;
       const padding = sizePadding[size] || sizePadding.default;
       let bgColor;
       if (color) {
@@ -59,6 +60,8 @@ const TableWrap = CSSComponent({
         }
 
         ${color ? bgColor : ''}
+        ${columnsStyle}
+        ${expandedRowStyle}
       `;
     },
   },
@@ -469,6 +472,37 @@ export default ThemeProvider(
         emptyText: <Empty {...this.props} themeInfo={theme} />,
       };
     };
+
+    getColumnsClass = className => {
+      const { columns, expandedRowRender } = this.props;
+      const isTree = !!expandedRowRender;
+      return (
+        columns &&
+        columns
+          .map((item, index) => {
+            const { style } = item;
+            if (style) {
+              const newIndex = isTree ? index + 2 : index + 1;
+              return `${className}(${newIndex}){${style2css(style)}}`;
+            }
+          })
+          .join('')
+      );
+    };
+
+    getColumnsStyle = () => {
+      return `${this.getColumnsClass('table tbody tr td:nth-child')}${this.getColumnsClass(
+        'table thead tr th:nth-child'
+      )}`;
+    };
+
+    getExpandedRowStyle = () => {
+      const { expandedRowStyle } = this.props;
+      if (expandedRowStyle) {
+        return `.rc-table td.rc-table-row-expand-icon-cell,
+        .rc-table th.rc-table-row-expand-icon-cell{${style2css(expandedRowStyle)}}`;
+      }
+    };
     render() {
       const {
         children,
@@ -484,7 +518,6 @@ export default ThemeProvider(
         expandIcon,
         collapseIcon,
       } = this.props;
-
       this.selectedRecords = [];
       this.validKeys = [];
       this.disabledSelectedKeys = [];
@@ -508,8 +541,26 @@ export default ThemeProvider(
         this.oldPropsData = [...propsData];
       }
       const containerPartOfThemeProps = getPartOfThemeProps('Container', {
-        props: { size },
+        props: {
+          size,
+          columnsStyle: this.getColumnsStyle(),
+          expandedRowStyle: this.getExpandedRowStyle(),
+        },
       });
+      const customExpandIcon = prop => {
+        const { expandable } = prop;
+        return expandable ? (
+          <span
+            className={'custom-icon'}
+            onClick={() => {
+              prop.onExpand(prop.record);
+            }}
+          >
+            {getCustomIcon(prop)}
+          </span>
+        ) : null;
+      };
+
       if (children) {
         return (
           <TableWrap
@@ -526,6 +577,7 @@ export default ThemeProvider(
               showHeader={showHeader}
               rowClassName={(record, i) => `row-${i}`}
               className="table"
+              expandIcon={(expandIcon || collapseIcon) && customExpandIcon}
             >
               {children}
             </RcTable>
@@ -600,12 +652,31 @@ export default ThemeProvider(
         expandIconColumnIndex = Number(propsIndex);
       }
 
+      const getIconTheme = iconType => {
+        const { getPartOfThemeHocProps, expandedRowRender } = this.props;
+        const isTree = !!expandedRowRender;
+        const { viewClass, theme } = getPartOfThemeHocProps(iconType);
+        const defaultTheme = {
+          normal: {
+            padding: {
+              right: isTree ? 0 : 5,
+            },
+          },
+        };
+        return {
+          viewClass,
+          theme: deepMerge(
+            {
+              [viewClass]: { ...defaultTheme },
+            },
+            theme
+          ),
+        };
+      };
       const getIconByType = (icon, iconConfig) => {
         const iconType = typeof icon;
         if (iconType === 'string') {
-          return (
-            <Icon singleTheme iconClass={icon} {...this.props.getPartOfThemeHocProps(iconConfig)} />
-          );
+          return <Icon singleTheme iconClass={icon} {...getIconTheme(iconConfig)} />;
         } else if (iconType === 'function') {
           return icon && icon();
         }
@@ -617,18 +688,6 @@ export default ThemeProvider(
           : getIconByType(collapseIcon, 'CollapseIcon');
       };
 
-      const customExpandIcon = prop => {
-        return (
-          <div
-            className={'custom-icon'}
-            onClick={() => {
-              prop.onExpand(prop.record);
-            }}
-          >
-            {getCustomIcon(prop)}
-          </div>
-        );
-      };
       return (
         <TableWrap
           ref={el => {
