@@ -125,9 +125,12 @@ export function isEqualObject(newData, data) {
 const replace = (string, reg, symbol) => {
   return string.replace(reg, symbol);
 };
+const split = (string, symbol) => {
+  return string.split(symbol);
+};
 export function json2Css(code) {
   const jsonString = JSON.stringify(code, null, 4);
-  let codeArray = jsonString.split('\n');
+  let codeArray = split(jsonString, '\n');
   const space = '';
   const reg = /"/g;
   const searchReg = /[A-Z]/g;
@@ -136,9 +139,9 @@ export function json2Css(code) {
   codeArray = codeArray.map(item => {
     if (item.includes(semicolon)) {
       // 去掉双引号
-      const split = item.split(semicolon);
-      let prefix = split[0];
-      let suffix = split[1];
+      const splitStr = split(item, semicolon);
+      let prefix = splitStr[0];
+      let suffix = splitStr[1];
       prefix = replace(prefix, reg, space);
       suffix = replace(suffix, reg, space);
       const style = prefix + semicolon + suffix + ';';
