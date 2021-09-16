@@ -28512,6 +28512,12 @@ export default [
           injectProps: false,
           meta: '',
         },
+        expandedRowStyle: {
+          desc: '展开列样式',
+          type: 'object',
+          designOnly: false,
+          injectProps: false,
+        },
       },
       events: {
         onExpandedRowsChange: {
