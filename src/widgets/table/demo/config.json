@@ -22,5 +22,9 @@
   "ExpandIconDemo": {
     "title": "展开行/折叠行图标 Table",
     "desc": "自定义设置展开行/折叠行图标"
+  },
+  "ChangeColumnsStyleDemo": {
+    "title": "设置每列样式的 Table",
+    "desc": "自定义修改每列样式的 Table"
   }
 }

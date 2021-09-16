@@ -158,7 +158,7 @@ export default class ExpandIconDemo extends React.Component {
         </div>
 
         <div style={{ padding: '20px' }}>
-          <h3>树形table修改列样式</h3>
+          <h3>修改树形table列样式</h3>
           <Table
             columns={treeColumnsStyle}
             data={treeData}
