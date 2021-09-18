@@ -117,11 +117,15 @@ export default ThemeProvider(
       }, 0);
     }
 
-    shouldComponentUpdate(nextProps: TableProps) {
+    shouldComponentUpdate(nextProps: TableProps, nextState: TableState) {
       const { columns: nextColumns } = nextProps;
+      const { selectRowKeys: nextSelectRowKeys } = nextState;
       const { columns } = this.props;
-
-      if (!isEqualObject(nextColumns, columns)) {
+      const { selectRowKeys } = this.state;
+      if (
+        !isEqualObject(nextColumns, columns) ||
+        !isEqualObject(nextSelectRowKeys, selectRowKeys)
+      ) {
         this.columns = this.getSortColumns(nextColumns);
       }
 
