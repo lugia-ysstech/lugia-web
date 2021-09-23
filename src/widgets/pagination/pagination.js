@@ -835,7 +835,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
 
   changePageSize = (type: MorePageType) => () => {
     const pageSize = type === 'pre' ? this.goPrePage() : this.goNextPage();
-    this.changePage(pageSize)();
+    this.changePage(pageSize);
   };
 
   showTotal() {
@@ -975,7 +975,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   }
   simpleArrowClick = (type: MorePageType) => () => {
     const page = this.checkArrowChange(type);
-    this.changePage(page)();
+    this.changePage(page);
   };
 
   render() {
