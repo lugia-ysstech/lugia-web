@@ -74,6 +74,8 @@ class FileInput extends React.Component<PropTypes, any> {
     if (files.length <= 0) return;
     const { getChangeInfo } = this.props;
     getChangeInfo && getChangeInfo('choose', e);
+    this.input.type = 'text';
+    this.input.type = 'file';
   };
 }
 
