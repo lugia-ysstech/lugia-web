@@ -234,7 +234,8 @@
         ["cursor"],
         ["opacity"],
         ["margin"],
-        ["padding"]
+        ["padding"],
+        ["lineHeight"]
       ],
       "hover": [
         ["border"],

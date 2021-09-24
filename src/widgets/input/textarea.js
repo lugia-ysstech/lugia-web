@@ -55,6 +55,7 @@ const Textarea = CSSComponent({
       ['padding'],
       ['opacity'],
       ['boxShadow'],
+      ['lineHeight'],
     ],
     defaultTheme: {
       cursor: 'text',
