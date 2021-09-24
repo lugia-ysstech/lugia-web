@@ -340,35 +340,14 @@
   },
   "theme": {
     "Container": {
-      "name": "输入框主体",
-      "desc": "输入框主体结构",
+      "name": "段落文本输入框",
+      "desc": "配置段落文本输入框",
       "normal": [
         [
           "width"
         ],
         [
           "height"
-        ],
-        [
-          "margin"
-        ],
-        [
-          "padding"
-        ],
-        [
-          "border"
-        ],
-        [
-          "borderRadius"
-        ],
-        [
-          "boxShadow"
-        ],
-        [
-          "background"
-        ],
-        [
-          "opacity"
         ],
         [
           "fontSize"
@@ -380,7 +359,28 @@
           "color"
         ],
         [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
           "cursor"
+        ],
+        [
+          "opacity"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "lineHeight"
         ]
       ],
       "hover": [
@@ -391,6 +391,9 @@
           "borderRadius"
         ],
         [
+          "cursor"
+        ],
+        [
           "background"
         ],
         [
@@ -398,21 +401,12 @@
         ],
         [
           "boxShadow"
-        ],
-        [
-          "cursor"
-        ],
-        [
-          "fontSize"
-        ],
-        [
-          "font"
-        ],
-        [
-          "color"
         ]
       ],
       "focus": [
+        [
+          "boxShadow"
+        ],
         [
           "border"
         ],
@@ -420,25 +414,10 @@
           "borderRadius"
         ],
         [
-          "background"
-        ],
-        [
-          "opacity"
-        ],
-        [
-          "boxShadow"
-        ],
-        [
           "cursor"
         ],
         [
-          "fontSize"
-        ],
-        [
-          "font"
-        ],
-        [
-          "color"
+          "background"
         ]
       ],
       "active": [
@@ -452,14 +431,13 @@
           "borderRadius"
         ],
         [
-          "background"
-        ],
-        [
-          "opacity"
-        ],
-        [
           "cursor"
         ],
+        [
+          "background"
+        ]
+      ],
+      "disabled": [
         [
           "fontSize"
         ],
@@ -468,9 +446,7 @@
         ],
         [
           "color"
-        ]
-      ],
-      "disabled": [
+        ],
         [
           "background"
         ],
@@ -481,94 +457,20 @@
           "borderRadius"
         ],
         [
-          "opacity"
-        ],
-        [
           "cursor"
         ],
         [
-          "fontSize"
+          "padding"
         ],
         [
-          "font"
-        ],
-        [
-          "color"
+          "opacity"
         ]
       ]
     },
     "Placeholder": {
-      "name": "输入框提示信息文字",
-      "desc": "输入框提示信息文字",
+      "name": "提示信息文字",
+      "desc": "提示信息文字",
       "normal": [
-        [
-          "color"
-        ],
-        [
-          "fontSize"
-        ],
-        [
-          "font"
-        ]
-      ]
-    },
-    "InputSuffix": {
-      "name": "后缀图标",
-      "desc": "输入框后缀自定义图标",
-      "normal": [
-        [
-          "color"
-        ],
-        [
-          "fontSize"
-        ],
-        [
-          "font"
-        ],
-        [
-          "padding"
-        ],
-        [
-          "margin"
-        ]
-      ],
-      "hover": [],
-      "clicked": [],
-      "disabled": [
-        [
-          "color"
-        ],
-        [
-          "fontSize"
-        ],
-        [
-          "font"
-        ]
-      ]
-    },
-    "InputPrefix": {
-      "name": "前缀图标",
-      "desc": "输入框前缀自定义图标",
-      "normal": [
-        [
-          "color"
-        ],
-        [
-          "fontSize"
-        ],
-        [
-          "font"
-        ],
-        [
-          "padding"
-        ],
-        [
-          "margin"
-        ]
-      ],
-      "hover": [],
-      "clicked": [],
-      "disabled": [
         [
           "color"
         ],
@@ -581,8 +483,8 @@
       ]
     },
     "ClearButton": {
-      "name": "输入框清除图标",
-      "desc": "输入框后缀清除图标",
+      "name": "清除图标",
+      "desc": "后缀清除图标",
       "normal": [
         [
           "color"
@@ -606,17 +508,7 @@
         ]
       ],
       "clicked": [],
-      "disabled": [
-        [
-          "color"
-        ],
-        [
-          "fontSize"
-        ],
-        [
-          "font"
-        ]
-      ]
+      "disabled": []
     },
     "ValidateErrorInput": {
       "name": "校验失败的输入框",
@@ -655,17 +547,6 @@
           "boxShadow"
         ]
       ],
-      "active": [
-        [
-          "background"
-        ],
-        [
-          "border"
-        ],
-        [
-          "boxShadow"
-        ]
-      ],
       "focus": [
         [
           "background"
@@ -677,7 +558,7 @@
           "boxShadow"
         ]
       ],
-      "disabled": [
+      "active": [
         [
           "background"
         ],
