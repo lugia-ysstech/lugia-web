@@ -11377,6 +11377,19 @@ export default [
         help: { type: 'string', desc: '校验提示信息' },
         cols: { type: 'number', desc: '段落文本输入框展示内容的字数' },
         rows: { type: 'number', desc: '段落文本输入框展示内容的行数' },
+        showMaxLength: {
+          desc: '是否展示限制最大长度',
+          type: 'boolean',
+          designOnly: false,
+          injectProps: false,
+          propsDefaultValue: false,
+        },
+        maxLength: {
+          desc: '限制输入的最大长度',
+          type: 'number',
+          designOnly: false,
+          injectProps: false,
+        },
       },
       events: {
         onChange: {
