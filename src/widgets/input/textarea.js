@@ -6,7 +6,7 @@ import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import { fixControlledValue } from '../utils';
 import Icon from '../icon';
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
@@ -165,6 +165,16 @@ const TextareaContainer = CSSComponent({
     display: inline-block;
   `,
 });
+const MaxLengthTip = StaticComponent({
+  tag: 'span',
+  className: 'MaxLengthTip',
+  css: css`
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    color: ${() => get('darkGreyColor')};
+  `,
+});
 
 const Clear = 'lugia-icon-reminder_close';
 
@@ -199,6 +209,8 @@ type TextareaProps = {
   rows?: number,
   readOnly: boolean,
   getFocus?: Function,
+  showMaxLength?: boolean,
+  maxLength?: number,
 };
 function getTheValidateWidthThemeProps(validateType: ValidateType, validateStatus: ValidateStatus) {
   return validateType && validateStatus ? validateWidthTheme : {};
@@ -274,15 +286,27 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   }
 
   render() {
-    const { getPartOfThemeProps, validateType, validateStatus } = this.props;
+    const {
+      getPartOfThemeProps,
+      validateType,
+      validateStatus,
+      maxLength,
+      showMaxLength,
+    } = this.props;
     const theTheme = deepMerge(
       getPartOfThemeProps('Container'),
       getTheValidateWidthThemeProps(validateType, validateStatus)
     );
+    const { value } = this.state;
     return (
       <TextareaContainer {...addMouseEvent(this)} themeProps={theTheme}>
         {this.generateInput()}
         {this.getClearButton()}
+        {showMaxLength ? (
+          <MaxLengthTip>
+            {value.length} / {maxLength}
+          </MaxLengthTip>
+        ) : null}
       </TextareaContainer>
     );
   }
@@ -423,9 +447,10 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
       getTheValidateWidthThemeProps(validateType, validateStatus),
       theValidateThemeProps
     );
-    const { rows, cols } = this.props;
+    const { rows, cols, maxLength } = this.props;
     return (
       <Textarea
+        maxLength={maxLength}
         cols={cols}
         rows={rows}
         themeProps={theThemeProps}
