@@ -38,5 +38,10 @@
     "title": "段落文本输入框",
     "desc": "适用于输入文字段落",
     "path": "./Textarea"
+  },
+  "MaxLengthTextarea": {
+    "title": "限制长度的文本输入框",
+    "desc": "限制输入长度的段落文本输入框",
+    "path": "./MaxLengthTextarea"
   }
 }
