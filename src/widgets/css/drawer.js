@@ -315,6 +315,7 @@ export const DrawerContent = CSSComponent({
     background-color: #fff;
     border: 0;
     z-index: 1;
+    overflow-y: auto;
   `,
   normal: {
     selectNames: [['background']],
