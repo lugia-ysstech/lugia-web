@@ -43,6 +43,8 @@ export type CheckBoxProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeConfig: Function,
   themeProps: Object,
+  needNewLine?: boolean,
+  lines?: number,
 } & ForGroupType;
 type CheckBoxType = CheckBoxProps & CSStype;
 
@@ -74,7 +76,7 @@ const getStyleCSS = (props: CheckBoxType): string => {
   }
   if (styles === 'vertical') {
     return `
-      display: block;
+      display: flex;
       margin-bottom: ${last ? 0 : em(get('marginToPeerElementForY'))};
     `;
   }
@@ -92,7 +94,7 @@ export const CheckBoxWrap = CSSComponent({
     box-sizing: border-box;
     padding: 0;
     list-style: none;
-    display: inline-block;
+    display: ${props => (props.needNewLine ? 'inline-flex' : 'inline-block')};
     line-height: 1;
     white-space: nowrap;
     ${getStyleCSS};
@@ -132,12 +134,25 @@ export const CheckBoxContent = StaticComponent({
   `,
 });
 
+const getNewLineCSS = props => {
+  const { lines } = props;
+  return `display: -webkit-inline-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: ${lines || 0};
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;`;
+};
+
 export const CheckBoxLabelSpan = CSSComponent({
   tag: 'span',
   className: 'CheckBoxLabelSpan',
   css: css`
     padding-left: ${props => (props.hasChildren ? em(get('marginToSameElement')) : 0)};
     vertical-align: middle;
+    ${props => (props.needNewLine ? getNewLineCSS(props) : '')}
   `,
   normal: {
     selectNames: [['color'], ['font'], ['padding']],
