@@ -700,16 +700,21 @@ export default ThemeProvider(
           themeProps={containerPartOfThemeProps}
           className={this.getClass(tableStyle, size)}
         >
-          <RcTable
-            {...this.getDefaultEmpty()}
-            {...this.props}
-            columns={this.columns}
-            data={tableData}
-            showHeader={showHeader}
-            expandIconColumnIndex={expandIconColumnIndex}
-            scroll={{ ...scroll, ...propsScroll }}
-            expandIcon={(expandIcon || collapseIcon) && customExpandIcon}
-          />
+          {tableData.length > 0 ? (
+            <RcTable
+              {...this.getDefaultEmpty()}
+              {...this.props}
+              columns={this.columns}
+              data={tableData}
+              showHeader={showHeader}
+              expandIconColumnIndex={expandIconColumnIndex}
+              scroll={{ ...scroll, ...propsScroll }}
+              expandIcon={(expandIcon || collapseIcon) && customExpandIcon}
+              key={'exist'}
+            />
+          ) : (
+            <RcTable {...this.getDefaultEmpty()} columns={this.columns} key={'empty'} />
+          )}
         </TableWrap>
       );
     }

@@ -1273,6 +1273,7 @@ class OldDemo extends React.Component<any, any> {
       updateData: data,
       treeTable: undefined,
       testData: [],
+      newTreeData: [],
     };
   }
   update = () => {
@@ -1373,7 +1374,7 @@ class OldDemo extends React.Component<any, any> {
         },
       },
     };
-    const { updateData, treeTable, isTable, testData } = this.state;
+    const { updateData, treeTable, isTable, testData, newTreeData } = this.state;
 
     const onExpand = (expand, record) => {
       console.log(expand, record);
@@ -1399,8 +1400,22 @@ class OldDemo extends React.Component<any, any> {
         },
       },
     };
+    const onClick = () => {
+      this.setState({ newTreeData: treeData });
+    };
     return (
       <div style={{ padding: '20px' }}>
+        <div style={{ padding: '20px' }}>
+          <h1>解决异步加载时树组件无法展开问题</h1>
+          <button onClick={onClick}>点击加载data数据</button>
+          <Table
+            columns={columns}
+            data={newTreeData}
+            expandedRowRender={record => <div>{record.name}</div>}
+            defaultExpandAllRows
+          />
+        </div>
+
         <div style={{ padding: '20px' }}>
           <h1>修改每一列的颜色</h1>
           <Table
