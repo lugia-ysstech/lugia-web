@@ -478,15 +478,15 @@ export default ThemeProvider(
     };
 
     getColumnsClass = className => {
-      const { columns, expandedRowRender } = this.props;
-      const isTree = !!expandedRowRender;
+      const { columns, expandedRowRender, data } = this.props;
+      const isHasExpand = !!expandedRowRender;
       return (
         columns &&
         columns
           .map((item, index) => {
             const { style } = item;
             if (style) {
-              const newIndex = isTree ? index + 2 : index + 1;
+              const newIndex = isHasExpand && data.length ? index + 2 : index + 1;
               return `${className}(${newIndex}){${style2css(style)}}`;
             }
           })
