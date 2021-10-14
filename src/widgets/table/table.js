@@ -493,11 +493,12 @@ export default ThemeProvider(
           .join('')
       );
     };
+    getHeadStyle = () => {
+      return this.getColumnsClass('table thead tr th:nth-child');
+    };
 
-    getColumnsStyle = () => {
-      return `${this.getColumnsClass('table tbody tr td:nth-child')}${this.getColumnsClass(
-        'table thead tr th:nth-child'
-      )}`;
+    getEveryColumnsStyle = () => {
+      return `${this.getColumnsClass('table tbody tr td:nth-child')}${this.getHeadStyle()}`;
     };
 
     getExpandedRowStyle = () => {
@@ -547,7 +548,7 @@ export default ThemeProvider(
       const containerPartOfThemeProps = getPartOfThemeProps('Container', {
         props: {
           size,
-          columnsStyle: this.getColumnsStyle(),
+          columnsStyle: data.length ? this.getEveryColumnsStyle() : this.getHeadStyle(),
           expandedRowStyle: this.getExpandedRowStyle(),
         },
       });

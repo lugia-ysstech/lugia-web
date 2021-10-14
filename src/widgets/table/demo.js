@@ -1406,6 +1406,11 @@ class OldDemo extends React.Component<any, any> {
     return (
       <div style={{ padding: '20px' }}>
         <div style={{ padding: '20px' }}>
+          <h1>解决data数据为空时 表的内容不渲染颜色</h1>
+          <Table columns={columnsStyle} data={[]} />
+        </div>
+
+        <div style={{ padding: '20px' }}>
           <h1>解决异步加载时树组件无法展开问题</h1>
           <button onClick={onClick}>点击加载data数据</button>
           <Table
