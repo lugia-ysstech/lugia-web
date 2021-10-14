@@ -1406,7 +1406,7 @@ class OldDemo extends React.Component<any, any> {
     return (
       <div style={{ padding: '20px' }}>
         <div style={{ padding: '20px' }}>
-          <h1>解决data数据为空时 表的内容渲染了颜色</h1>
+          <h1>解决data数据为空时 表的内容渲染了颜色问题</h1>
           <Table columns={columnsStyle} data={[]} />
         </div>
 
