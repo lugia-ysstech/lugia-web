@@ -659,12 +659,12 @@ export default ThemeProvider(
 
       const getIconTheme = iconType => {
         const { getPartOfThemeHocProps, expandedRowRender } = this.props;
-        const isTree = !!expandedRowRender;
+        const isHasExpandedRow = !!expandedRowRender;
         const { viewClass, theme } = getPartOfThemeHocProps(iconType);
         const defaultTheme = {
           normal: {
             padding: {
-              right: isTree ? 0 : 5,
+              right: isHasExpandedRow ? 0 : 5,
             },
           },
         };
@@ -692,7 +692,7 @@ export default ThemeProvider(
           ? getIconByType(expandIcon, 'ExpandIcon')
           : getIconByType(collapseIcon, 'CollapseIcon');
       };
-
+      const key = tableData.length > 0 ? 'exist' : 'empty';
       return (
         <TableWrap
           ref={el => {
@@ -710,7 +710,7 @@ export default ThemeProvider(
             expandIconColumnIndex={expandIconColumnIndex}
             scroll={{ ...scroll, ...propsScroll }}
             expandIcon={(expandIcon || collapseIcon) && customExpandIcon}
-            key={tableData.length > 0 ? 'exist' : 'empty'}
+            key={key}
           />
         </TableWrap>
       );
