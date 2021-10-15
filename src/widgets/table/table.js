@@ -478,26 +478,27 @@ export default ThemeProvider(
     };
 
     getColumnsClass = className => {
-      const { columns, expandedRowRender } = this.props;
-      const isTree = !!expandedRowRender;
+      const { columns, expandedRowRender, data } = this.props;
+      const isHasExpand = !!expandedRowRender;
       return (
         columns &&
         columns
           .map((item, index) => {
             const { style } = item;
             if (style) {
-              const newIndex = isTree ? index + 2 : index + 1;
+              const newIndex = isHasExpand && data.length ? index + 2 : index + 1;
               return `${className}(${newIndex}){${style2css(style)}}`;
             }
           })
           .join('')
       );
     };
+    getHeadStyle = () => {
+      return this.getColumnsClass('table thead tr th:nth-child');
+    };
 
-    getColumnsStyle = () => {
-      return `${this.getColumnsClass('table tbody tr td:nth-child')}${this.getColumnsClass(
-        'table thead tr th:nth-child'
-      )}`;
+    getEveryColumnsStyle = () => {
+      return `${this.getColumnsClass('table tbody tr td:nth-child')}${this.getHeadStyle()}`;
     };
 
     getExpandedRowStyle = () => {
@@ -547,7 +548,7 @@ export default ThemeProvider(
       const containerPartOfThemeProps = getPartOfThemeProps('Container', {
         props: {
           size,
-          columnsStyle: this.getColumnsStyle(),
+          columnsStyle: data.length ? this.getEveryColumnsStyle() : this.getHeadStyle(),
           expandedRowStyle: this.getExpandedRowStyle(),
         },
       });
@@ -658,12 +659,12 @@ export default ThemeProvider(
 
       const getIconTheme = iconType => {
         const { getPartOfThemeHocProps, expandedRowRender } = this.props;
-        const isTree = !!expandedRowRender;
+        const isHasExpandedRow = !!expandedRowRender;
         const { viewClass, theme } = getPartOfThemeHocProps(iconType);
         const defaultTheme = {
           normal: {
             padding: {
-              right: isTree ? 0 : 5,
+              right: isHasExpandedRow ? 0 : 5,
             },
           },
         };
@@ -691,7 +692,7 @@ export default ThemeProvider(
           ? getIconByType(expandIcon, 'ExpandIcon')
           : getIconByType(collapseIcon, 'CollapseIcon');
       };
-
+      const key = tableData && tableData.length > 0 ? 'exist' : 'empty';
       return (
         <TableWrap
           ref={el => {
@@ -709,6 +710,7 @@ export default ThemeProvider(
             expandIconColumnIndex={expandIconColumnIndex}
             scroll={{ ...scroll, ...propsScroll }}
             expandIcon={(expandIcon || collapseIcon) && customExpandIcon}
+            key={key}
           />
         </TableWrap>
       );
