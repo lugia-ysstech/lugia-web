@@ -692,7 +692,7 @@ export default ThemeProvider(
           ? getIconByType(expandIcon, 'ExpandIcon')
           : getIconByType(collapseIcon, 'CollapseIcon');
       };
-      const key = tableData.length > 0 ? 'exist' : 'empty';
+      const key = tableData && tableData.length > 0 ? 'exist' : 'empty';
       return (
         <TableWrap
           ref={el => {
