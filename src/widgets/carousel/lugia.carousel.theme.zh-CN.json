@@ -31,7 +31,7 @@
         "data": [
           {
             "name": "外观",
-            "path": ["CarouselWrap"],
+            "path": ["Container"],
             "description": {
               "appearancePart": {
                 "text": "外观",
@@ -68,6 +68,22 @@
               },
               "appearancePart": {
                 "hidden": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "轮播指示器外盒",
+        "iconClass": "carouselIndicatorWrap",
+        "data": [
+          {
+            "name": "外观",
+            "path": ["IndicatorWrap"],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "外观"
               }
             }
           }
