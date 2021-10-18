@@ -6528,6 +6528,19 @@ export default [
           type: 'boolean',
           desc: '指定CheckboxGroup中实时更新data 数据源信息',
         },
+        needNewLine: {
+          desc: '是否需要换行',
+          type: 'boolean',
+          designOnly: false,
+          injectProps: false,
+          defaultValue: false,
+        },
+        lines: {
+          desc: '换行数量',
+          type: 'number',
+          designOnly: false,
+          injectProps: false,
+        },
       },
       events: {
         onChange: {
@@ -6727,6 +6740,19 @@ export default [
         cache: {
           type: 'boolean',
           desc: '指定CheckboxGroup中实时更新data 数据源信息',
+        },
+        needNewLine: {
+          desc: '是否需要换行',
+          type: 'boolean',
+          designOnly: false,
+          injectProps: false,
+          defaultValue: false,
+        },
+        lines: {
+          desc: '换行数量',
+          type: 'number',
+          designOnly: false,
+          injectProps: false,
         },
       },
       events: {

@@ -54,19 +54,6 @@
       "designOnly": false,
       "injectProps": false,
       "defaultValue": "checkbox"
-    },
-    "needNewLine": {
-    "desc": "是否需要换行",
-    "type": "boolean",
-    "designOnly": false,
-    "injectProps": false,
-    "defaultValue": false
-    },
-    "lines": {
-    "desc": "换行数量",
-    "type": "number",
-    "designOnly": false,
-    "injectProps": false
     }
   },
   "events": {
