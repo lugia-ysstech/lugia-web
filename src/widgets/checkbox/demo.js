@@ -17,6 +17,9 @@ const CheckBoxButton = CheckBox.Button;
 const Wrapper = styled.div`
   margin: 20px;
 `;
+const CheckboxWrapper = styled.div`
+  width: 200px;
+`;
 const defaultValue = ['1', '2'];
 const options = [
   { label: 'check1', value: '11', name: '1' },
@@ -182,6 +185,12 @@ export class CheckboxDemo extends React.Component<any, any> {
     };
     return (
       <div>
+        <CheckboxWrapper>
+          <CheckBox needNewLine={true} lines={2}>
+            CheckBox CheckBox CheckBox CheckBoxCheckBox CheckBox CheckBox CheckBoxCheckBox CheckBox
+            CheckBox CheckBox
+          </CheckBox>
+        </CheckboxWrapper>
         <Wrapper>
           <Theme config={view}>
             <CheckBox>CheckBox</CheckBox>

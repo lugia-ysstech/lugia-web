@@ -3,6 +3,10 @@
     "desc": "最简单的用法",
     "title": "基本"
   },
+  "NewLineDemo": {
+    "desc": "可换行Checkbox",
+    "title": "可换行Checkbox"
+  },
   "LimitedCheckBox": {
     "title": "受限的Checkbox",
     "desc": "受限的Checkbox"
@@ -42,5 +46,9 @@
   "DisplayValueGroup": {
     "title": "按钮Checkbox组取消项",
     "desc": "按钮Checkbox组的取消项展示"
+  },
+  "NewLineGroupDemo": {
+    "desc": "可换行Checkbox组",
+    "title": "可换行Checkbox组"
   }
 }

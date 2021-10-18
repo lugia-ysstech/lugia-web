@@ -178,7 +178,8 @@ function renderChildren(
   if (!value) {
     value = type === 'radio' ? '' : [];
   }
-  const { children, disabled, styles } = params.props;
+  const { children, disabled, styles, lines, needNewLine } = params.props;
+
   const childrenCount = React.Children.count(children);
   return React.Children.map(children, (child, index) => {
     if (React.isValidElement(child)) {
@@ -197,6 +198,8 @@ function renderChildren(
         last: childrenCount === index + 1,
         childrenIndex: index,
         childrenCount,
+        needNewLine,
+        lines,
       });
     }
   });
