@@ -143,7 +143,9 @@ const getNewLineCSS = props => {
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   word-break: break-all;
-  white-space: normal;`;
+  white-space: normal;
+  height: min-content;
+  `;
 };
 
 export const CheckBoxLabelSpan = CSSComponent({
