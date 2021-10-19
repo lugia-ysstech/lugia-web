@@ -32,9 +32,9 @@
     "path": "./LimitCarousel"
   },
 
-  "BgCarousel.js": {
+  "BgCarousel": {
     "title": "背景色配置",
     "desc": "设置轮播组件的背景主题",
-    "path": "./BgCarousel.js"
+    "path": "./BgCarousel"
   }
 }
