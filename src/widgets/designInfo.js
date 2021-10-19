@@ -5457,7 +5457,7 @@ export default [
         ],
       },
       theme: {
-        CarouselWrap: {
+        Container: {
           name: 'Carousel的外框',
           desc: 'Carousel的外框',
           normal: [
@@ -5487,6 +5487,32 @@ export default [
           desc: '切换到后一个',
           normal: [['font'], ['opacity'], ['color'], ['boxShadow'], ['border'], ['margin']],
           hover: [['opacity'], ['boxShadow'], ['color'], ['border']],
+          clicked: [],
+          disabled: [],
+        },
+        IndicatorWrap: {
+          name: '轮播指示器父容器',
+          desc: '所有轮播指示器的父容器',
+          normal: [
+            ['width'],
+            ['height'],
+            ['margin'],
+            ['padding'],
+            ['background'],
+            ['opacity'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+          ],
+          hover: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['opacity'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+          ],
           clicked: [],
           disabled: [],
         },
