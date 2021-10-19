@@ -46,6 +46,7 @@ const ItemWrap = styled.a`
   justify-content: center;
   ${getBackground};
   color: #ccc;
+  border-radius: 20px;
   font-size: 14px;
 `;
 
@@ -104,49 +105,60 @@ class CarouselLimtDemo extends React.Component<any, any> {
 export default class SkeletonDemo extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
-    this.state = {};
+    this.state = { start: 0 };
   }
+
+  handleChange = (target: object) => {
+    const { newValue } = target;
+    this.setState({ start: newValue });
+  };
 
   render() {
     const config = {
       [Widget.Carousel]: {
-        CarouselWrap: {
+        Container: {
           normal: {
             width: '100%',
             height: '100%',
-            border: getBorder({ color: '#9482ff', width: 1, style: 'solid' }),
-            boxShadow: getBoxShadow('0px 0px 5px 5px yellow'),
-            borderRadius: getBorderRadius(20),
+            background: {
+              color: 'orange',
+            },
           },
         },
         PreButton: {
           normal: {
-            color: 'blue',
+            color: '#fff',
             font: {
-              size: 60,
+              size: 0,
             },
-            opacity: 0.2,
-            boxShadow: getBoxShadow('0px 0px 5px 5px yellow'),
-            margin: {
-              left: 30,
+            opacity: 0,
+            background: {
+              color: '#556374',
             },
-            padding: { left: 30 },
           },
-          hover: { opacity: 1 },
         },
         NextButton: {
           normal: {
             color: 'yellow',
             font: {
-              size: 60,
+              size: 0,
             },
             margin: {
               right: 30,
             },
-            opacity: 0.2,
-            boxShadow: getBoxShadow('0px 0px 5px 5px blue'),
           },
-          hover: { opacity: 1 },
+        },
+        IndicatorWrap: {
+          normal: {
+            height: 40,
+            background: {
+              color: '#000',
+            },
+            borderRadius: getBorderRadius(20),
+            margin: {
+              bottom: 10,
+            },
+          },
         },
         Indicator: {
           normal: {
@@ -179,7 +191,7 @@ export default class SkeletonDemo extends React.Component<any, any> {
       <div>
         <H2>3s自动切换</H2>
         <DemoWrap>
-          <Carousel theme={{}} defaultStart={4} delay={3000}>
+          <Carousel theme={config} defaultStart={4} delay={3000}>
             {this.getItemWrap()}
           </Carousel>
         </DemoWrap>
@@ -235,7 +247,9 @@ export default class SkeletonDemo extends React.Component<any, any> {
             autoPlay={true}
             switchType={'fade'}
             delay={3000}
-            defaultStart={2}
+            indicator={false}
+            start={this.state.start}
+            onChange={this.handleChange}
           >
             {getImgWrap()}
           </Carousel>

@@ -155,7 +155,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
       preButtonFontSize: this.preButtonFontSize,
       nextButtonFontSize: this.nextButtonFontSize,
     };
-    const WrapThemeProps = getPartOfThemeProps('CarouselWrap', { props: params });
+    const WrapThemeProps = getPartOfThemeProps('Container', { props: params });
 
     return (
       <Wrap themeProps={WrapThemeProps} {...addMouseEvent(this)}>
@@ -272,10 +272,10 @@ export default class Carousel extends React.Component<any, CarouselProps> {
         );
       });
     }
-    const IndicatorContainerThemeProps = this.addPropsConfig('Indicator', {
+    const IndicatorWrapThemeProps = this.addPropsConfig('IndicatorWrap', {
       indicatorType,
     });
-    return <IndicatorWrap themeProps={IndicatorContainerThemeProps}>{items}</IndicatorWrap>;
+    return <IndicatorWrap themeProps={IndicatorWrapThemeProps}>{items}</IndicatorWrap>;
   };
 
   handleMouseEnterIndicator(index: number) {
@@ -363,7 +363,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   getItems = (channel: Object) => {
     const { children, getPartOfThemeProps } = this.props;
 
-    const EmptyThemeProps = getPartOfThemeProps('CarouselWrap');
+    const EmptyThemeProps = getPartOfThemeProps('Container');
 
     if (this.getIsArray(children)) {
       return <Empty themeProps={EmptyThemeProps}>暂无切换框</Empty>;
@@ -371,7 +371,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     const { start: nextStart } = this.state;
     const { start: initStart, switchType } = this.props;
     const len = children.length;
-    const WrapThemeProps = this.addPropsConfig('CarouselWrap', {
+    const WrapThemeProps = this.addPropsConfig('Container', {
       len,
       switchType,
       initStart,
@@ -426,7 +426,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   }) {
     const { switchType, start, index, item, len } = param;
     const checked = start === index;
-    const ItemWrapThemeProps = this.addPropsConfig('CarouselWrap', {
+    const ItemWrapThemeProps = this.addPropsConfig('Container', {
       checked,
       switchType,
       len,

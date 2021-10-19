@@ -166,7 +166,17 @@ export const IndicatorWrap = CSSComponent({
   tag: 'div',
   className: 'IndicatorWrap',
   normal: {
-    selectNames: [],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['margin'],
+      ['padding'],
+      ['background'],
+      ['opacity'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+    ],
     getCSS: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
       const { indicatorType } = propsConfig;
@@ -174,13 +184,23 @@ export const IndicatorWrap = CSSComponent({
     },
   },
   hover: {
-    selectNames: [],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['opacity'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+    ],
   },
   css: `
     margin: 0;
     padding: 0;
     position: absolute;
     z-index: 100;
+    width: auto;
+    height: auto;
   `,
 });
 IndicatorWrap.displayName = 'IndicatorWrap';
@@ -360,7 +380,6 @@ export const AllItemsContainer = CSSComponent({
       return {
         width,
         height,
-        background: '#ccc',
       };
     },
   },

@@ -99,9 +99,7 @@
     }
   },
   "designInfo": {},
-  "category": [
-    "数据展示"
-  ],
+  "category": ["数据展示"],
   "type": {
     "IndicatorType": [
       {
@@ -143,131 +141,61 @@
     ]
   },
   "theme": {
-    "CarouselWrap": {
+    "Container": {
       "name": "Carousel的外框",
       "desc": "Carousel的外框",
       "normal": [
-        [
-          "width"
-        ],
-        [
-          "height"
-        ],
-        [
-          "borderRadius"
-        ],
-        [
-          "boxShadow"
-        ],
-        [
-          "border"
-        ],
-        [
-          "opacity"
-        ],
-        [
-          "margin"
-        ],
-        [
-          "border"
-        ]
+        ["width"],
+        ["height"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["border"],
+        ["opacity"],
+        ["margin"],
+        ["border"]
       ],
-      "hover": [
-        [
-          "opacity"
-        ],
-        [
-          "boxShadow"
-        ],
-        [
-          "boxShadow"
-        ],
-        [
-          "borderRadius"
-        ],
-        [
-          "border"
-        ]
-      ],
+      "hover": [["opacity"], ["boxShadow"], ["boxShadow"], ["borderRadius"], ["border"]],
       "clicked": [],
       "disabled": []
     },
     "PreButton": {
       "name": "左切换按钮",
       "desc": "切换到前一个",
-      "normal": [
-        [
-          "font"
-        ],
-        [
-          "opacity"
-        ],
-        [
-          "color"
-        ],
-        [
-          "boxShadow"
-        ],
-        [
-          "border"
-        ],
-        [
-          "margin"
-        ]
-      ],
-      "hover": [
-        [
-          "opacity"
-        ],
-        [
-          "boxShadow"
-        ],
-        [
-          "color"
-        ],
-        [
-          "border"
-        ]
-      ],
+      "normal": [["font"], ["opacity"], ["color"], ["boxShadow"], ["border"], ["margin"]],
+      "hover": [["opacity"], ["boxShadow"], ["color"], ["border"]],
       "clicked": [],
       "disabled": []
     },
     "NextButton": {
       "name": "右切换按钮",
       "desc": "切换到后一个",
+      "normal": [["font"], ["opacity"], ["color"], ["boxShadow"], ["border"], ["margin"]],
+      "hover": [["opacity"], ["boxShadow"], ["color"], ["border"]],
+      "clicked": [],
+      "disabled": []
+    },
+    "IndicatorWrap": {
+      "name": "轮播指示器父容器",
+      "desc": "所有轮播指示器的父容器",
       "normal": [
-        [
-          "font"
-        ],
-        [
-          "opacity"
-        ],
-        [
-          "color"
-        ],
-        [
-          "boxShadow"
-        ],
-        [
-          "border"
-        ],
-        [
-          "margin"
-        ]
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["padding"],
+        ["background"],
+        ["opacity"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"]
       ],
       "hover": [
-        [
-          "opacity"
-        ],
-        [
-          "boxShadow"
-        ],
-        [
-          "color"
-        ],
-        [
-          "border"
-        ]
+        ["width"],
+        ["height"],
+        ["background"],
+        ["opacity"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"]
       ],
       "clicked": [],
       "disabled": []
@@ -276,45 +204,15 @@
       "name": "轮播指示器",
       "desc": "显示当前轮播所在位置",
       "normal": [
-        [
-          "background"
-        ],
-        [
-          "width"
-        ],
-        [
-          "height"
-        ],
-        [
-          "border"
-        ],
-        [
-          "boxShadow"
-        ],
-        [
-          "margin"
-        ],
-        [
-          "opacity"
-        ]
+        ["background"],
+        ["width"],
+        ["height"],
+        ["border"],
+        ["boxShadow"],
+        ["margin"],
+        ["opacity"]
       ],
-      "hover": [
-        [
-          "background"
-        ],
-        [
-          "opacity"
-        ],
-        [
-          "border"
-        ],
-        [
-          "boxShadow"
-        ],
-        [
-          "borderRadius"
-        ]
-      ],
+      "hover": [["background"], ["opacity"], ["border"], ["boxShadow"], ["borderRadius"]],
       "clicked": [],
       "disabled": []
     }
