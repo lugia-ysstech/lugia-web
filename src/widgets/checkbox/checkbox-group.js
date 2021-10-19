@@ -40,6 +40,8 @@ type CheckBoxGroupProps = {
   cache?: boolean,
   childType?: 'default' | 'button',
   size?: 'default' | 'small' | 'large',
+  needNewLine?: boolean,
+  lines?: number,
 };
 type CheckBoxGroupState = {
   value: Array<string>,
@@ -137,6 +139,8 @@ export default ThemeProvider(
         disabled,
         styles,
         getPartOfThemeProps,
+        lines,
+        needNewLine = false,
       } = this.props;
       if (!cache) {
         updateMapData(this.props, this.state.displayValue, this.updateMapData);
@@ -147,6 +151,8 @@ export default ThemeProvider(
           data,
           disabled,
           styles,
+          lines,
+          needNewLine,
         },
         state: {
           value: this.state.value,
@@ -173,6 +179,8 @@ export default ThemeProvider(
         styles = 'default',
         childType = 'default',
         size = 'default',
+        needNewLine = false,
+        lines,
       } = this.props;
       const { last } = options;
       const config = {};
@@ -205,6 +213,8 @@ export default ThemeProvider(
           {...config}
           last={last}
           handleCancelItemClick={this.handleCancelItemClick}
+          needNewLine={needNewLine}
+          lines={lines}
         >
           {item[displayField]}
         </CheckBox>

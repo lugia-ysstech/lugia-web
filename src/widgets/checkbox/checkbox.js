@@ -251,8 +251,11 @@ export default ThemeProvider(
       circleEdgeTheme.propsConfig.isDisabled = disabled;
       circleEdgeTheme.propsConfig.hasChecked = hasChecked;
 
+      const { lines, needNewLine = false } = this.props;
       return (
         <CheckBoxWrap
+          needNewLine={needNewLine}
+          lines={lines}
           themeProps={checkboxWrapProps}
           onClick={this.handleClick(value)}
           disabled={disabled}
@@ -280,7 +283,13 @@ export default ThemeProvider(
               />
             )}
           </CheckBoxContent>
-          <CheckBoxLabelSpan hasChildren={!!children} themeProps={checkboxTextTheme}>
+          <CheckBoxLabelSpan
+            title={children}
+            hasChildren={!!children}
+            themeProps={checkboxTextTheme}
+            lines={lines}
+            needNewLine={needNewLine}
+          >
             {children}
           </CheckBoxLabelSpan>
         </CheckBoxWrap>
