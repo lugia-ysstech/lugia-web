@@ -30,5 +30,11 @@
     "title": "受限的走马灯",
     "desc": "通过传入start来控制走马灯的切换,start是索引值",
     "path": "./LimitCarousel"
+  },
+
+  "BgCarousel.js": {
+    "title": "背景色配置",
+    "desc": "设置轮播组件的背景主题",
+    "path": "./BgCarousel.js"
   }
 }
