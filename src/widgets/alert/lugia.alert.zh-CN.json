@@ -73,7 +73,8 @@
       "desc": "",
       "type": "object[]",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     }
   },
   "events": {

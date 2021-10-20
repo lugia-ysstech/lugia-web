@@ -132,6 +132,7 @@ export default [
           type: 'object[]',
           designOnly: false,
           injectProps: false,
+          meta: '',
         },
       },
       events: {
