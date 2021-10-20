@@ -21,13 +21,13 @@ const DemoWrap = styled.div`
   margin: 20px;
   width: 500px;
   height: 300px;
-  background: #666;
-  padding: 20px;
+  background: #f2f2f2;
+  padding: 10px;
 `;
 
 const Img = styled.img`
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
   display: inline-block;
   vertical-align: top;
 `;
@@ -48,6 +48,7 @@ const ItemWrap = styled.a`
   color: #ccc;
   border-radius: 20px;
   font-size: 14px;
+  overflow: hidden;
 `;
 
 const H2 = styled.h2`
@@ -73,7 +74,7 @@ const getImgWrap = () => {
   return items;
 };
 
-class CarouselLimtDemo extends React.Component<any, any> {
+class CarouselLimitDemo extends React.Component<any, any> {
   constructor() {
     super();
     this.state = { start: 0 };
@@ -81,6 +82,7 @@ class CarouselLimtDemo extends React.Component<any, any> {
 
   onChange = (param: Object) => {
     const { newValue } = param;
+    console.log('newValue', newValue);
     this.setState({ start: newValue });
   };
 
@@ -125,29 +127,7 @@ export default class SkeletonDemo extends React.Component<any, any> {
             },
           },
         },
-        PreButton: {
-          normal: {
-            color: '#fff',
-            font: {
-              size: 0,
-            },
-            opacity: 0,
-            background: {
-              color: '#556374',
-            },
-          },
-        },
-        NextButton: {
-          normal: {
-            color: 'yellow',
-            font: {
-              size: 0,
-            },
-            margin: {
-              right: 30,
-            },
-          },
-        },
+
         IndicatorWrap: {
           normal: {
             height: 40,
@@ -190,38 +170,26 @@ export default class SkeletonDemo extends React.Component<any, any> {
     return (
       <div>
         <H2>3s自动切换</H2>
-        <DemoWrap>
-          <Carousel theme={config} defaultStart={4} delay={3000}>
-            {this.getItemWrap()}
-          </Carousel>
-        </DemoWrap>
+        <Carousel defaultStart={4} delay={3000}>
+          {this.getItemWrap()}
+        </Carousel>
 
         <H2>水平切换 指示器在外部 indicatorType=outside</H2>
-        <DemoWrap>
-          <Carousel autoPlay={true} delay={3000} indicatorType={'outside'}>
-            {this.getItemWrap()}
-          </Carousel>
-        </DemoWrap>
+        <Carousel autoPlay={true} delay={3000} indicatorType={'outside'}>
+          {this.getItemWrap()}
+        </Carousel>
 
         <H2>垂直切换 switchType === vertical indicatorType=vertical</H2>
-        <DemoWrap>
-          <Carousel
-            theme={config}
-            autoPlay={true}
-            delay={3000}
-            switchType={'vertical'}
-            indicatorType={'vertical'}
-          >
-            {this.getItemWrap()}
-          </Carousel>
-        </DemoWrap>
+        <Carousel autoPlay={true} delay={3000} switchType={'vertical'} indicatorType={'vertical'}>
+          {this.getItemWrap()}
+        </Carousel>
 
         <H2>透明度切换 switchType === fade</H2>
         <DemoWrap>
           <Carousel
             theme={config}
             animationTime={1000}
-            autoPlay={false}
+            autoPlay={true}
             defaultStart={2}
             delay={3000}
             switchType={'fade'}
@@ -238,16 +206,16 @@ export default class SkeletonDemo extends React.Component<any, any> {
         </DemoWrap>
 
         <h2>受限</h2>
-        <CarouselLimtDemo />
+        <CarouselLimitDemo />
 
-        <h2>图片轮播图 switchType === fade 透明度切换</h2>
+        <h2>受限：图片轮播图 switchType === fade 透明度切换</h2>
         <DemoWrap>
           <Carousel
             theme={config}
             autoPlay={true}
             switchType={'fade'}
             delay={3000}
-            indicator={false}
+            indicator={true}
             start={this.state.start}
             onChange={this.handleChange}
           >
@@ -256,9 +224,17 @@ export default class SkeletonDemo extends React.Component<any, any> {
         </DemoWrap>
 
         <h2>双击输入文本后页面报错demo</h2>
-        <Carousel theme={config} autoPlay={true} switchType={'fade'} delay={3000} deafultStart={2}>
-          66666
-        </Carousel>
+        <DemoWrap>
+          <Carousel
+            theme={config}
+            autoPlay={true}
+            switchType={'fade'}
+            delay={3000}
+            deafultStart={2}
+          >
+            66666
+          </Carousel>
+        </DemoWrap>
       </div>
     );
   }

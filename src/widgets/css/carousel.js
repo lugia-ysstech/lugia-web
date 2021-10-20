@@ -296,7 +296,7 @@ export const Indicator = CSSComponent({
       const backgroundColor = checked ? checkedColor : defaultColor;
 
       return `
-        transition: all ${animationTime}s;
+        transition: all ${animationTime}ms;
         ${indicatorCSS};
         background: ${backgroundColor};
       `;
@@ -313,14 +313,22 @@ export const Indicator = CSSComponent({
 
 Indicator.displayName = 'indicator';
 
-const getAnimation = (switchType: string, preStart: number, nextStart: number, len: number) => {
-  if (nextStart === preStart || switchType === 'fade' || len === 0 || len === 1) {
-    return null;
+const getAnimation = (
+  switchType: string,
+  preStart: number,
+  nextStart: number,
+  len: number,
+  animationTime: number
+) => {
+  if (switchType === 'fade') {
+    return '';
   }
-
   const unit = 100;
 
   const nowTrans = -(preStart * unit);
+  if (preStart === nextStart || len === 0 || len === 1) {
+    return switchType === 'vertical' ? `top: ${nowTrans}%;` : `left: ${nowTrans}%;`;
+  }
 
   const addTrans = (nextStart - preStart) * unit;
 
@@ -347,7 +355,9 @@ const getAnimation = (switchType: string, preStart: number, nextStart: number, l
     `;
   }
 
-  return animation;
+  return css`
+    animation: ${animation} ${animationTime}ms linear forwards;
+  `;
 };
 
 const getItemWidthAndHeight = (switchType: string, activeSize: string) => {
@@ -365,10 +375,10 @@ export const AllItemsContainer = CSSComponent({
     selectNames: [],
     getCSS: (themeMeta, themeProps) => {
       const { len, switchType, preStart, nextStart, animationTime } = themeProps.propsConfig;
-      const animation = getAnimation(switchType, preStart, nextStart, len);
+      const animationCSS = getAnimation(switchType, preStart, nextStart, len, animationTime);
 
       return css`
-        animation: ${animation} ${animationTime}s linear;
+        ${animationCSS};
         animation-fill-mode: forwards;
       `;
     },
@@ -411,7 +421,7 @@ export const ItemWrap = CSSComponent({
         position: ${positionType};
         z-index: ${zIndex};
         opacity: ${opacity};
-        transition: all ${animationTime}s
+        transition: all ${animationTime}ms
       `;
     },
 
