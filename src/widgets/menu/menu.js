@@ -539,11 +539,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { onExpandPathChange } = props;
     onExpandPathChange && onExpandPathChange(expandedPath);
 
-    const { action, checkedCSS, level } = props;
+    const { action, level } = props;
     const isExpandedPathInProps = 'expandedPath' in props && level === 0;
-    const notSetExpandedPathCondition =
-      action !== targetAction || checkedCSS !== 'none' || isExpandedPathInProps;
-
+    const notSetExpandedPathCondition = action !== targetAction || isExpandedPathInProps;
     if (notSetExpandedPathCondition) {
       return false;
     }
