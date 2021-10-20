@@ -13,18 +13,16 @@ import {
   Indicator,
   IndicatorContainer,
   IndicatorWrap,
-  ItemWrap,
   NextButton,
   PreButton,
   Wrap,
   Empty,
-  defaultWidth,
-  defaultHeight,
   defaultButtonFontSize,
 } from '../css/carousel';
 import colorsFunc from '../css/stateColor';
-import { limit } from '../common/Math';
 import Icon from '../icon';
+import Item from './item';
+
 const { lightGreyColor } = colorsFunc();
 
 const defaultDelay = 4000;
@@ -32,8 +30,9 @@ const defaultAnimationTime = 500;
 type IndicatorType = 'horizontal' | 'vertical' | 'outside';
 type SwitchType = 'horizontal' | 'vertical' | 'fade';
 type clickButtonType = 'pre' | 'next';
+type Children = React.ReactNode | React.ReactNode[] | undefined;
 type CarouselProps = {
-  children?: React.Node[],
+  children?: Children,
   getTheme?: Function,
   start?: number,
   defaultStart?: number,
@@ -53,15 +52,16 @@ type CarouselState = {
   start: number,
 };
 
-export const getInitStart = (props: CarouselProps, start: number): number => {
-  const { children } = props;
-  if (!children || children.length === 0) {
+export const getReactChildrenLength = (children: Children) => {
+  return React.Children.count(children);
+};
+
+export const getInitStart = (start: number, len: number): number => {
+  if (len === 0) {
     return 0;
   }
-  const len = children.length;
-  start = toNumber(start, 0);
-  start = start > len ? 0 : start;
-  return limit(start, [0, len]);
+  const numberStart = toNumber(start, 0);
+  return len >= numberStart ? start : numberStart % len;
 };
 
 export const isHasStart = (props: CarouselProps): boolean => {
@@ -83,7 +83,6 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   clickDisabled: boolean;
   preStart: any;
   interval: any;
-  animationTime: number;
   width: number;
   height: number;
   preButtonFontSize: number;
@@ -91,22 +90,24 @@ export default class Carousel extends React.Component<any, CarouselProps> {
 
   constructor(props: CarouselProps) {
     super(props);
+    const { start = 0, children } = props;
     this.clickDisabled = false;
-    this.preStart = toNumber(props.start, 0);
-    this.animationTime = this.getAnimationTime(props) / 1000;
+    this.preStart = getInitStart(start, getReactChildrenLength(children));
     this.initSwitchButtonFontSize();
   }
 
   static getDerivedStateFromProps(props: CarouselProps, state: CarouselState) {
-    const { start = 0, defaultStart } = props;
+    const { start = 0, defaultStart, children } = props;
+    const len = getReactChildrenLength(children);
 
-    if (isHasStart(props)) {
-      return { start: getInitStart(props, start) };
+    if ('start' in props) {
+      return { start: getInitStart(start, len) };
     }
 
     if (!state) {
-      return { start: getInitStart(props, defaultStart) };
+      return { start: getInitStart(defaultStart, len) };
     }
+    return state;
   }
 
   initSwitchButtonFontSize() {
@@ -122,19 +123,27 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     this.nextButtonFontSize = toNumber(nextButtonFontSize, defaultButtonFontSize);
   }
 
+  getChildrenLength = () => {
+    const { children } = this.props;
+    if (!children) {
+      return 0;
+    }
+    return getReactChildrenLength(children);
+  };
+
   initPropsConfig = () => {
     const { state, props } = this;
 
     const { start: nextStart } = state;
-    const { children, themeProps, indicatorType, switchType, start: initStart } = props;
-    const len = children ? children.length : 0;
-    const animationTime = this.animationTime;
+    const { themeProps, indicatorType, switchType, animationTime } = props;
+
+    const len = this.getChildrenLength();
     const preStart = this.preStart;
+
     themeProps.propsConfig = {
       indicatorType,
       animationTime,
       switchType,
-      initStart,
       preStart,
       nextStart,
       len,
@@ -198,15 +207,12 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   };
 
   getSwitchButton = () => {
-    const { indicatorType, children, getPartOfThemeProps } = this.props;
-    if (
-      !children ||
-      children.length === 0 ||
-      children.length === 1 ||
-      indicatorType === 'vertical'
-    ) {
+    const { indicatorType, getPartOfThemeProps } = this.props;
+    const len = this.getChildrenLength();
+    if (len === 0 || len === 1 || indicatorType === 'vertical') {
       return null;
     }
+
     const PreButtonThemeProps = getPartOfThemeProps('PreButton');
     const preItem = (
       <PreButton onClick={this.preClick} themeProps={PreButtonThemeProps}>
@@ -233,34 +239,21 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     return [preItem, NextItem];
   };
 
-  getAnimationTime(props: Object): number {
-    const { animationTime = defaultAnimationTime } = props;
-    return limit(toNumber(animationTime, defaultAnimationTime), [200, 100000]);
-  }
-
-  getIsArray(children) {
-    return !children || children.length === 0 || !Array.isArray(children);
-  }
-
   createIndicators = () => {
-    let items = [];
-    const { indicatorType, children } = this.props;
-    if (children) {
-      const { start } = this.state;
-      const length = children.length;
-      if (this.getIsArray(children)) {
-        return [];
-      }
-      items = children.map((item, index) => {
-        const checked = start === index || (index === 0 && start === length);
+    const items = [];
+    const { indicatorType, animationTime } = this.props;
+    const childrenLength = this.getChildrenLength();
 
+    if (childrenLength > 0) {
+      const { start } = this.state;
+      for (let index = 0; index < childrenLength; index++) {
+        const checked = start === index || (index === 0 && start === childrenLength);
         const IndicatorThemeProps = this.addPropsConfig('Indicator', {
           indicatorType,
           checked,
-          animationTime: this.animationTime,
+          animationTime,
         });
-
-        return (
+        items.push(
           <IndicatorContainer
             key={`_indicator_container_${index}_`}
             themeProps={IndicatorThemeProps}
@@ -270,7 +263,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
             <Indicator themeProps={IndicatorThemeProps} key={index} checked={checked} />
           </IndicatorContainer>
         );
-      });
+      }
     }
     const IndicatorWrapThemeProps = this.addPropsConfig('IndicatorWrap', {
       indicatorType,
@@ -294,45 +287,6 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     this.changeIndicatorState(index);
   }
 
-  preClick = () => {
-    this.clickSwitchButton('pre');
-  };
-
-  nextClick = () => {
-    this.clickSwitchButton('next');
-  };
-
-  changeIndicatorState = (index: number) => {
-    this.resetHandleAutoPlay(this.props);
-    const { state, props } = this;
-    const { start } = state;
-    const len = props.children.length;
-    if (index === start || (start === len && index === 0)) {
-      return;
-    }
-    this.preStart = start === len ? 0 : start;
-    this.setStart(index);
-  };
-
-  clickSwitchButton = (clickButtonType: clickButtonType) => {
-    if (this.clickDisabled) {
-      return;
-    }
-    this.clickDisabled = true;
-    this.resetHandleAutoPlay(this.props);
-    const { state, props } = this;
-    const { children = [] } = props;
-    const { start = 0 } = state;
-    const len = children.length;
-    const { newStart, preStart } = this.getPreStart(clickButtonType, start, len);
-    this.preStart = preStart;
-    this.setStart(newStart);
-
-    setTimeout(() => {
-      this.clickDisabled = false;
-    }, this.animationTime);
-  };
-
   getPreStart(
     clickButtonType: clickButtonType,
     start: number,
@@ -346,6 +300,46 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     return { preStart, newStart: preStart + 1 };
   }
 
+  clickSwitchButton = (clickButtonType: clickButtonType) => {
+    if (this.clickDisabled) {
+      return;
+    }
+    this.clickDisabled = true;
+
+    const { animationTime } = this.props;
+    this.resetHandleAutoPlay(this.props);
+    const { start = 0 } = this.state;
+    const len = this.getChildrenLength();
+    const { newStart, preStart } = this.getPreStart(clickButtonType, start, len);
+
+    this.preStart = preStart;
+    this.setStart(newStart);
+
+    setTimeout(() => {
+      this.clickDisabled = false;
+    }, animationTime);
+  };
+
+  preClick = () => {
+    this.clickSwitchButton('pre');
+  };
+
+  nextClick = () => {
+    this.clickSwitchButton('next');
+  };
+
+  changeIndicatorState = (index: number) => {
+    this.resetHandleAutoPlay(this.props);
+    const { state } = this;
+    const { start } = state;
+    const len = this.getChildrenLength();
+    if (index === start || (start === len && index === 0)) {
+      return;
+    }
+    this.preStart = start === len ? 0 : start;
+    this.setStart(index);
+  };
+
   setStart(start: number) {
     const { onChange } = this.props;
     onChange &&
@@ -353,6 +347,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
         newValue: start,
         oldValue: this.state.start,
       });
+
     if (!isHasStart(this.props)) {
       this.setState({
         start,
@@ -361,59 +356,68 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   }
 
   getItems = (channel: Object) => {
-    const { children, getPartOfThemeProps } = this.props;
+    const { getPartOfThemeProps } = this.props;
+
+    const len = this.getChildrenLength();
 
     const EmptyThemeProps = getPartOfThemeProps('Container');
 
-    if (this.getIsArray(children)) {
+    if (len === 0) {
       return <Empty themeProps={EmptyThemeProps}>暂无切换框</Empty>;
     }
+
     const { start: nextStart } = this.state;
-    const { start: initStart, switchType } = this.props;
-    const len = children.length;
+    const { switchType, animationTime } = this.props;
+
     const WrapThemeProps = this.addPropsConfig('Container', {
       len,
       switchType,
-      initStart,
       nextStart,
       preStart: this.preStart,
-      animationTime: this.animationTime,
+      animationTime,
     });
 
     return (
-      <AllItemsContainer {...channel.provider} themeProps={WrapThemeProps} initStart={initStart}>
-        {this.getChildren(children)}
+      <AllItemsContainer {...channel.provider} themeProps={WrapThemeProps}>
+        {this.getChildren()}
       </AllItemsContainer>
     );
   };
 
-  getChildren = (children: Array<Object>): Array<Object> => {
-    const { props, state } = this;
-    const { switchType } = props;
-    const { start = 0 } = state;
-    if (this.getIsArray(children)) {
-      return [];
+  getChildren = (): Array<Object> => {
+    const len = this.getChildrenLength();
+    if (len === 0) {
+      return null;
     }
 
-    const len = children.length;
-    const items = children.map((item, index) => {
+    const { props, state } = this;
+    const { switchType, children } = props;
+    const { start = 0 } = state;
+
+    if (len === 1) {
+      return children;
+    }
+
+    const items = React.Children.map(children, (child, index) => {
       return this.getItemWrap({
         switchType,
         start,
         index,
-        item,
+        child,
         len,
       });
     });
+
     items.push(
       this.getItemWrap({
         switchType,
         start,
         index: len,
-        item: children[0],
+        child: children[0],
         len,
       })
     );
+
     return items;
   };
 
@@ -421,22 +425,23 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     switchType: SwitchType,
     start: number,
     index: number,
-    item: any,
+    child: React.ReactNode,
     len: number,
   }) {
-    const { switchType, start, index, item, len } = param;
+    const { switchType, start, index, child, len } = param;
+    const { animationTime } = this.props;
     const checked = start === index;
     const ItemWrapThemeProps = this.addPropsConfig('Container', {
       checked,
       switchType,
       len,
-      animationTime: this.animationTime,
+      animationTime,
     });
 
     return (
-      <ItemWrap key={index} themeProps={ItemWrapThemeProps}>
-        {item}
-      </ItemWrap>
+      <Item key={`${index}`} themeProps={ItemWrapThemeProps}>
+        {child}
+      </Item>
     );
   }
 
