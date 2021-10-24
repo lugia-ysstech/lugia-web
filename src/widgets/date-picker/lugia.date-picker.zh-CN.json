@@ -149,6 +149,11 @@
       "designOnly": false,
       "injectProps": false
     },
+    "canClear": {
+      "type": "boolean",
+      "desc": "是否展示清除按钮",
+      "propsDefaultValue": true
+    },
     "validateStatus": {
       "desc": "校验状态",
       "type": "ValidateStatus",
