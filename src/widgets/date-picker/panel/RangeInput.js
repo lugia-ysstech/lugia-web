@@ -234,7 +234,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 {...config}
                 suffix={<i />}
                 {...this.props.dispatchEvent([['hover']], 'f2c')}
-                disabled={startDisabled}
+                disabled={disabled || startDisabled}
               />
             </RangeInputInnerInput>
 
@@ -254,7 +254,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 {...config}
                 // onClear={this.onClear}
                 {...this.props.dispatchEvent([['hover']], 'f2c')}
-                disabled={endDisabled}
+                disabled={disabled || endDisabled}
               />
             </RangeInputInnerInput>
           </RangeInputInner>
