@@ -16,6 +16,7 @@ import ThemeHoc from '../theme-provider';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import Widget from '../consts';
+import PageItem from './pageItem';
 import { ObjectUtils } from '@lugia/type-utils';
 import get from '../css/theme-common-dict';
 
@@ -162,7 +163,7 @@ const PaginationTextDivider = CSSComponent({
     },
   },
 });
-const PaginationListItem = CSSComponent({
+export const PaginationListItem = CSSComponent({
   extend: PaginationMoreItem,
   className: 'PaginationListItem',
   normal: {
@@ -176,6 +177,7 @@ const PaginationListItem = CSSComponent({
       ['background'],
       ['boxShadow'],
       ['margin'],
+      ['padding'],
     ],
     defaultTheme: {
       cursor: 'pointer',
@@ -183,8 +185,11 @@ const PaginationListItem = CSSComponent({
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const sizeCSS = getPaginationItemStyle(themeMeta, themeProps);
+      const { propsConfig: { isOverflow } = {} } = themeProps;
+      const widthStyle = isOverflow ? { width: '', padding: { left: 4, right: 4 } } : {};
       return {
         ...sizeCSS,
+        ...widthStyle,
       };
     },
   },
@@ -281,7 +286,7 @@ const PaginationArrowIconContainer = CSSComponent({
   option: { hover: true, active: true },
 });
 
-const PaginationListItemText = CSSComponent({
+export const PaginationListItemText = CSSComponent({
   tag: 'a',
   className: 'PaginationListItemText',
   normal: {
@@ -349,7 +354,7 @@ function computePage(pageSize: number, sPageSize: number, total: number) {
   const thePageSize = pageSize ? pageSize : sPageSize;
   return Math.floor((total - 1) / thePageSize) + 1;
 }
-const defaultPaginationTheme = () => ({
+export const defaultPaginationTheme = () => ({
   themeConfig: {
     normal: {
       border: getBorder(get('normalBorder')),
@@ -369,6 +374,9 @@ const defaultPaginationTheme = () => ({
 
 const handleZero = value => {
   return value === 0 ? '' : value;
+};
+const getOtherWidth = value => {
+  return value.toString().length - 3 > 0 ? (value.toString().length - 3) * 8 : 0;
 };
 
 class Pagination extends React.Component<PaginationProps, PaginationState> {
@@ -502,24 +510,17 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
 
   getItems(index: number, isSelected: boolean, pageNumber: number) {
     const { createEventChannel, getPartOfThemeProps, size } = this.props;
-    const channel = createEventChannel(['active', 'hover']);
-    const theThemeProps = deepMerge(
-      defaultPaginationTheme(),
-      getPartOfThemeProps('PaginationListItem', {
-        props: { size },
-      })
-    );
-    theThemeProps.themeState.focus = isSelected;
     return (
-      <PaginationListItem
-        {...channel.provider}
-        onClick={this.changePage(index)}
-        themeProps={theThemeProps}
-      >
-        <PaginationListItemText lugiaConsumers={channel.consumer} themeProps={theThemeProps}>
-          {pageNumber}
-        </PaginationListItemText>
-      </PaginationListItem>
+      <PageItem
+        key={`${index}_${pageNumber}`}
+        size={size}
+        changePage={this.changePage}
+        createEventChannel={createEventChannel}
+        getPartOfThemeProps={getPartOfThemeProps}
+        index={index}
+        isSelected={isSelected}
+        pageNumber={pageNumber}
+      />
     );
   }
 
@@ -637,12 +638,19 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const { getPartOfThemeProps, getPartOfThemeHocProps, size } = this.props;
 
     const { viewClass, theme } = getPartOfThemeHocProps('QuickJumpInput');
+
+    const quickJumpTextTheme = getPartOfThemeProps('PaginationQuickJumpText', { props: { size } });
+    const { pageSize } = this.state;
+    const { total, quickJumperValue } = this.props;
+    const totalPage = this.getTotalPages(pageSize, total);
+    const theQuickJumperValue = quickJumperValue || this.state.quickJumperValue;
+
     const InnerInputTheme = deepMerge(
       {
         [viewClass]: {
           Container: {
             normal: {
-              width: 60,
+              width: 60 + getOtherWidth(theQuickJumperValue),
               margin: {
                 left: 8,
                 right: 8,
@@ -654,12 +662,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       },
       theme
     );
-    const quickJumpTextTheme = getPartOfThemeProps('PaginationQuickJumpText', { props: { size } });
-    const { pageSize } = this.state;
-    const { total, quickJumperValue } = this.props;
-    const totalPage = this.getTotalPages(pageSize, total);
-    const theQuickJumperValue = quickJumperValue || this.state.quickJumperValue;
-
     return (
       <PaginationTextContainer
         themeProps={getPartOfThemeProps('PaginationQuickJumpContainer', { props: { isLast } })}
@@ -990,7 +992,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           [viewClass]: {
             Container: {
               normal: {
-                width: 50,
+                width: 50 + getOtherWidth(current),
                 margin: {
                   left: get('padding'),
                   right: get('padding'),

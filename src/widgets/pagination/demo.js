@@ -125,6 +125,10 @@ export default class PaginationDemo extends React.Component<any, any> {
           quickJumperValue={this.state.quickJumperValue}
           onQuickJumperInputChange={this.onQuickJumperInputChange}
         />
+        <Title> 简洁分页 大数据分页</Title>
+        <Pagination defaultCurrent={99999} total={10000000} simple />
+        <Title> 总数据很多时 页码可自适应宽度</Title>
+        <Pagination defaultCurrent={99999} total={10000000} />
       </div>
     );
   }

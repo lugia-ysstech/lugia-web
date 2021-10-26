@@ -26,5 +26,9 @@
   "BlockListDemo": {
     "title": "分页展示的内容",
     "desc": "可以配置分页展示的内容和顺序"
+  },
+  "BigDataDemo": {
+    "title": "大数据分页",
+    "desc": "当数据量很大时,页码可自适应宽度"
   }
 }
