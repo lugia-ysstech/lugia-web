@@ -417,7 +417,6 @@ export default class TableDemo extends React.Component<Object, Object> {
           allowEditHead={true}
           onlyEditTitle={false}
           onChange={this.onChangeEditChangedData}
-          scrollY={150}
         />
 
         <Title>多选可编辑表格 嵌套数据</Title>
@@ -431,7 +430,6 @@ export default class TableDemo extends React.Component<Object, Object> {
             tableStyle={'linear'}
             onChange={this.onChangeCheckData}
             isAllowEditCell={this.isAllowEdit}
-            scrollY={150}
           />
         </Theme>
 
@@ -449,7 +447,6 @@ export default class TableDemo extends React.Component<Object, Object> {
             onCell={this.onCell}
             onHeaderCell={this.onHeaderCell}
             selectSuffixElement={<div>00</div>}
-            scrollY={150}
           />
         </Theme>
         <Title>可编辑表格 嵌套数据 禁止选中</Title>
@@ -468,7 +465,6 @@ export default class TableDemo extends React.Component<Object, Object> {
             onCell={this.onCell}
             onHeaderCell={this.onHeaderCell}
             selectSuffixElement={<div>00</div>}
-            scrollY={150}
           />
         </Theme>
         <Title>可编辑表格</Title>
@@ -485,7 +481,6 @@ export default class TableDemo extends React.Component<Object, Object> {
             onHeaderCell={this.onHeaderCell}
             isEditHead
             selectSuffixElement={<div>00</div>}
-            scrollY={150}
           />
         </Theme>
         <Theme config={tableConfig}>
@@ -495,7 +490,6 @@ export default class TableDemo extends React.Component<Object, Object> {
             columns={columns}
             title={'这是一个表格'}
             footer={<div>这是表格底部信息</div>}
-            scrollY={150}
           />
         </Theme>
         <Title>tableSize： large tableStyle：zebraStripe </Title>
@@ -508,17 +502,15 @@ export default class TableDemo extends React.Component<Object, Object> {
           tableSize={'middle'}
           title={'这是一个有边框的表格'}
           footer={<div>这是表格底部信息</div>}
-          scrollY={150}
         />
         <Title>tableSize： large tableStyle：bordered data:null </Title>
-        <Table columns={columns} tableStyle={'bordered'} tableSize={'large'} scrollY={150} />
+        <Table columns={columns} tableStyle={'bordered'} tableSize={'large'} />
         <Title>tableSize： default tableStyle：bordered column:null </Title>
         <Table
           data={data}
           // columns={columns}
           tableStyle={'bordered'}
           footer={<div>这是表格底部信息</div>}
-          scrollY={150}
         />
         <Title>scrollY 150 固定表头 可滚动数据表格</Title>
         <EditTable
