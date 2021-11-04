@@ -21,6 +21,7 @@ export type EditTableProps = TableProps & {
   onlyEditTitle?: boolean,
   showCellTitle?: boolean,
   isAllowEditCell?: Function,
+  scrollY?: number,
 };
 
 export type EditTableState = {};

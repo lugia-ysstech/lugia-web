@@ -87,6 +87,10 @@
       "type": "boolean",
       "desc": "是否禁止修改dataIndex",
       "propsDefaultValue": true
+    },
+    "scrollY": {
+      "type": "number",
+      "desc": "可滚动的高度范围"
     }
   },
   "event": {
