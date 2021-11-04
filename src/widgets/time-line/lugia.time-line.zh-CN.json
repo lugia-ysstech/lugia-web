@@ -656,5 +656,6 @@
   },
   "childrenWidget": [
     "timeLineItem"
-  ]
+  ],
+  "themeConfig": []
 }

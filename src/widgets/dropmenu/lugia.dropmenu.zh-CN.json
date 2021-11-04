@@ -2100,5 +2100,6 @@
   },
   "childrenWidget": [
     "dropmenuButton"
-  ]
+  ],
+  "themeConfig": []
 }

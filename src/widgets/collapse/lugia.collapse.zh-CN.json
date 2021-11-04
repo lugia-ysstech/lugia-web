@@ -337,5 +337,6 @@
   },
   "childrenWidget": [
     "panel"
-  ]
+  ],
+  "themeConfig": []
 }

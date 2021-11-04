@@ -606,5 +606,6 @@
   "childrenWidget": [
     "textarea",
     "combineInput"
-  ]
+  ],
+  "themeConfig": []
 }

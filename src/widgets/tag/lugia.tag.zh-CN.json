@@ -701,5 +701,6 @@
       "active": [],
       "disabled": []
     }
-  }
+  },
+  "themeConfig": []
 }

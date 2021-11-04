@@ -328,5 +328,6 @@
       "left",
       "right"
     ]
-  }
+  },
+  "themeConfig": []
 }

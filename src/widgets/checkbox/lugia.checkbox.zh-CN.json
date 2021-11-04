@@ -423,5 +423,6 @@
   },
   "childrenWidget": [
     "checkbox-group"
-  ]
+  ],
+  "themeConfig": []
 }

@@ -275,5 +275,6 @@
   },
   "childrenWidget": [
     "radio-group"
-  ]
+  ],
+  "themeConfig": []
 }

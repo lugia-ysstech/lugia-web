@@ -3293,5 +3293,6 @@
   },
   "childrenWidget": [
     "step"
-  ]
+  ],
+  "themeConfig": []
 }
