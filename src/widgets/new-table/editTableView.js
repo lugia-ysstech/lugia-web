@@ -73,14 +73,14 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   }
 
   render() {
-    const { data = [], columns = [], showHeader = true } = this.props;
+    const { data = [], columns = [], showHeader = true, scrollY } = this.props;
     const { restColumnsIntoData, getThemeForTable, restColumnsWithRender } = this.editTableListener;
     const firstLineData = restColumnsIntoData(columns);
     const tableData = showHeader ? firstLineData.concat(data) : data;
     const { renderFunc } = this;
     const tableColumns = restColumnsWithRender(columns, renderFunc);
     const { tableSize, tableStyle } = this.props;
-    const tableProps = { tableSize, tableStyle };
+    const tableProps = { tableSize, tableStyle, scrollY };
     const containerTheme = this.props.getPartOfThemeProps('Container');
     const defaultTableTheme = {
       Td: { normal: { padding: { left: 0, right: 0 } } },

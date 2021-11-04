@@ -69,6 +69,7 @@ export type TableProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   rowKey: string | Function,
+  scrollY?: number,
 };
 
 export type TableState = {};
@@ -90,6 +91,26 @@ export const Container = CSSComponent({
   `,
 });
 
+export const TableContainer = CSSComponent({
+  tag: 'div',
+  className: 'TableContainer',
+  normal: {
+    selectNames: [['width']],
+    defaultTheme: {
+      width: '100%',
+    },
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { scrollY },
+      } = themeProps;
+      return scrollY ? `max-height: ${scrollY}px;overflow-x: hidden;overflow-y: visible;` : '';
+    },
+  },
+  css: `
+    border-top: 1px solid ${borderColor};
+  `,
+});
+
 export const Tr = CSSComponent({
   tag: 'div',
   className: 'Tr',
@@ -97,13 +118,15 @@ export const Tr = CSSComponent({
     selectNames: [['background']],
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { tableStyle },
+        propsConfig: { tableStyle, isHead, scrollY },
       } = themeProps;
+      const positionCSS =
+        scrollY && isHead ? 'top : 0;  position : sticky; z-index:1;background:white;' : '';
       if (tableStyle !== 'zebraStripe') {
-        return '';
+        return `${positionCSS}`;
       }
-      return `&:nth-child(even) {
-        background: ${changeColor(themeColor, 0, 0, 5).rgba};
+      return `${positionCSS};&:nth-child(even) {
+          background: ${changeColor(themeColor, 0, 0, 5).rgba};
       }`;
     },
   },
@@ -143,16 +166,9 @@ export const Td = CSSComponent({
       const {
         propsConfig: { tableSize, tableStyle },
       } = themeProps;
-      let border = getBorder(
-        { color: borderColor, width: borderSize, style: 'solid' },
-        { directions: ['b'] }
-      );
-      if (tableStyle === 'bordered') {
-        border = getBorder(
-          { color: borderColor, width: borderSize, style: 'solid' },
-          { directions: ['l', 'b'] }
-        );
-      }
+      const directions = tableStyle === 'bordered' ? ['l', 'b'] : ['b'];
+      const borderStyle = { color: borderColor, width: borderSize, style: 'solid' };
+      const border = getBorder(borderStyle, { directions });
       return { height: em(size[tableSize]), border };
     },
   },
@@ -223,6 +239,5 @@ export const LugiaTable = CSSComponent({
     width: 100%;
     display: table;
     table-layout: fixed;
-    border-top: 1px solid ${borderColor};
   `,
 });

@@ -329,7 +329,7 @@ export default class TableDemo extends React.Component<Object, Object> {
       [Widgets.Table]: {
         Container: {
           normal: {
-            width: 20,
+            width: 1000,
           },
         },
         Th_Td: {
@@ -359,7 +359,7 @@ export default class TableDemo extends React.Component<Object, Object> {
         Table: {
           Container: {
             normal: {
-              width: 20,
+              width: 1000,
             },
           },
           Tr: {
@@ -511,6 +511,18 @@ export default class TableDemo extends React.Component<Object, Object> {
           // columns={columns}
           tableStyle={'bordered'}
           footer={<div>这是表格底部信息</div>}
+        />
+        <Title>scrollY 150 固定表头 可滚动数据表格</Title>
+        <EditTable
+          data={tableData}
+          columns={columns}
+          tableStyle={'bordered'}
+          tableSize={'large'}
+          onChange={this.onChange}
+          onCell={this.onCell}
+          onHeaderCell={this.onHeaderCell}
+          isEditHead
+          scrollY={150}
         />
       </div>
     );
