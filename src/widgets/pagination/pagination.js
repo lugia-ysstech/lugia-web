@@ -566,7 +566,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
         {...channel.provider}
         themeProps={getPartOfThemeProps('PaginationListItem', { props: { size } })}
         title={text}
-        onClick={this.changePageSize(type)}
+        onClick={this.changePage(type === 'pre' ? this.goPrePage() : this.goNextPage())}
         onMouseEnter={this.onMouseEnter(type)}
         onMouseLeave={this.onMouseLeave}
       >
@@ -688,7 +688,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   }
 
   getShowTotalData(isLast: boolean) {
-    const { total, getPartOfThemeProps, size } = this.props;
+    const { total, getPartOfThemeProps, size, totalText } = this.props;
     return (
       <PaginationTextContainer
         themeProps={getPartOfThemeProps('PaginationTotalContainer', { props: isLast })}
@@ -696,7 +696,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
         <PaginationBaseText
           themeProps={getPartOfThemeProps('PaginationTotalText', { props: { size } })}
         >
-          {`共${total}条数据`}
+          {totalText || `共${total}条数据`}
         </PaginationBaseText>
       </PaginationTextContainer>
     );
@@ -833,11 +833,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const theCurrent = this.getQuickJumperValue();
     const { total } = this.props;
     return Math.min(computePage(0, pageSize, total), theCurrent + 5);
-  };
-
-  changePageSize = (type: MorePageType) => () => {
-    const pageSize = type === 'pre' ? this.goPrePage() : this.goNextPage();
-    this.changePage(pageSize);
   };
 
   showTotal() {

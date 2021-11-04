@@ -129,6 +129,13 @@ export default class PaginationDemo extends React.Component<any, any> {
         <Pagination defaultCurrent={99999} total={10000000} simple />
         <Title> 总数据很多时 页码可自适应宽度</Title>
         <Pagination defaultCurrent={99999} total={10000000} />
+        <Title> 自定义共计数据文本</Title>
+        <Pagination
+          defaultCurrent={5}
+          total={100}
+          totalText={'共计100组数据'}
+          showTotalData={true}
+        />
       </div>
     );
   }
