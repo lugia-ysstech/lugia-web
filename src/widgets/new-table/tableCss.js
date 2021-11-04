@@ -108,6 +108,28 @@ export const TableContainer = CSSComponent({
   },
   css: `
     border-top: 1px solid ${borderColor};
+    scroll-behavior: smooth;
+    ::-webkit-scrollbar {
+    width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: transparent;
+    }
+    :hover::-webkit-scrollbar-thumb {
+    background: #d9d9d9;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+    background: #bdbdbd;
+    }
+    ::-webkit-scrollbar-track {
+    background: transparent;
+    }
+
   `,
 });
 
