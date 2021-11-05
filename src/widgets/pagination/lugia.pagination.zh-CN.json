@@ -10,46 +10,43 @@
       "desc": "当前页数",
       "type": "number",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "defaultCurrent": {
       "desc": "默认的当前页数",
       "type": "number",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": 1
+      "meta": ""
     },
     "total": {
       "desc": "数据总数",
       "type": "number",
       "designOnly": false,
       "injectProps": false,
-      "defaultValue": 1
+      "defaultValue": 1,
+      "meta": ""
     },
     "pageSize": {
       "desc": "每页的条数",
       "type": "number",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "defaultPageSize": {
       "desc": "默认的每页条数",
       "type": "number",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": 10
+      "meta": ""
     },
     "pageSizeOptions": {
       "desc": "指定每页可以显示多少条",
       "type": "string[]",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": [
-        "10",
-        "20",
-        "30",
-        "50"
-      ],
       "meta": [
         {
           "key": "pageSizes",
@@ -62,63 +59,71 @@
       "desc": "是否可以快速跳至某页",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "showTotal": {
       "desc": "用于显示数据总量和当前数据顺序",
-      "type": "Function(total, range)",
+      "type": "function(total, range)",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "hideOnSinglePage": {
       "desc": "只有一页时是否隐藏分页器",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "showSizeChanger": {
       "desc": "是否显示可以改变 pageSize",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "showTotalData": {
       "desc": "是否可以显示数据总量",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "simple": {
       "desc": "当添加该属性时，显示为简单分页",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "preIconClass": {
       "desc": "分页上一页图标资源",
       "type": "icon",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "lugia-icon-direction_Left"
+      "meta": ""
     },
     "nextIconClass": {
       "desc": "分页下一页图标资源",
       "type": "icon",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "lugia-icon-direction_right"
+      "meta": ""
     },
     "preIconSrc": {
       "desc": "分页上一页图片资源",
       "type": "image",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "nextIconSrc": {
       "desc": "分页下一页图片资源",
       "type": "image",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "blockList": {
       "desc": "分页各部位展示的位置列表",
@@ -126,12 +131,6 @@
       "designOnly": false,
       "injectProps": false,
       "defaultValue": [
-        "Page",
-        "PageInput",
-        "Total",
-        "PageSize"
-      ],
-      "propsDefaultValue": [
         "Page",
         "PageInput",
         "Total",
@@ -147,35 +146,38 @@
     },
     "align": {
       "desc": "分页各部位对齐的方式",
-      "type": "AlignType",
+      "type": "aligntype",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "Left"
+      "meta": ""
     },
     "size": {
       "desc": "可配置三种尺寸大小的Pagination",
-      "type": "SizeType",
+      "type": "sizetype",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "default"
+      "meta": ""
     },
     "divided": {
       "desc": "是否展示菜单分割线",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "manualQuickJumper": {
       "desc": "是否手动控制分页快速跳转,值为true时,分页跳转由quickJumperValue控制",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "quickJumperValue": {
       "desc": "当manualQuickJumper值为true时,控制分页跳转的值",
       "type": "number",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "totalText": {
       "desc": "自定义渲染的共计数据文本",
