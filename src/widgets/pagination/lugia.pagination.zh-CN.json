@@ -176,6 +176,18 @@
       "type": "number",
       "designOnly": false,
       "injectProps": false
+    },
+    "totalText": {
+      "desc": "自定义渲染的共计数据文本",
+      "type": "string",
+      "designOnly": false,
+      "injectProps": false
+    },
+    "paginationUnitText": {
+      "desc": "自定义分页单位文本",
+      "type": "string",
+      "designOnly": false,
+      "injectProps": false
     }
   },
   "events": {
