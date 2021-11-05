@@ -606,9 +606,16 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       },
       theme
     );
-    const { pageSizeOptions = [10, 20, 30, 50], defaultPageSize, pageSize, size } = this.props;
+    const {
+      pageSizeOptions = [10, 20, 30, 50],
+      defaultPageSize,
+      pageSize,
+      size,
+      paginationUnitText,
+    } = this.props;
     const optionsList = [];
-    const unit = '条/页';
+
+    const unit = paginationUnitText || '条/页';
     for (let i = 0; i < pageSizeOptions.length; i++) {
       optionsList.push({
         value: pageSizeOptions[i] + unit,

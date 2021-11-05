@@ -136,6 +136,13 @@ export default class PaginationDemo extends React.Component<any, any> {
           totalText={'共计100组数据'}
           showTotalData={true}
         />
+        <Title> 自定义分页单位文本</Title>
+        <Pagination
+          paginationUnitText={'组/页'}
+          defaultCurrent={5}
+          total={100}
+          blockList={['Page', 'PageSize']}
+        />
       </div>
     );
   }

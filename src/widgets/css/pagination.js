@@ -33,6 +33,7 @@ export type PaginationProps = {
   onQuickJumperInputBlur?: (current: number, event: UIEvent) => void,
   onQuickJumperInputEnter?: (current: number, event: KeyboardEvent) => void,
   totalText?: string,
+  paginationUnitText?: string,
 };
 
 export type PaginationState = {
