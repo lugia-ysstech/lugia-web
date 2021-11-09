@@ -117,6 +117,7 @@ const WindowContainer = CSSComponent({
       ['opacity'],
       ['width'],
       ['height'],
+      ['margin'],
     ],
   },
   disabled: {
@@ -141,6 +142,7 @@ const OutContainer = CSSComponent({
       ['border'],
       ['borderRadius'],
       ['boxShadow'],
+      ['margin'],
     ],
     getThemeMeta(themeMeta, themeConfig) {
       const {
@@ -174,6 +176,7 @@ const VerticalOutContainer = CSSComponent({
       ['border'],
       ['borderRadius'],
       ['boxShadow'],
+      ['margin'],
     ],
   },
   disabled: {

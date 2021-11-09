@@ -278,7 +278,8 @@
             ["background"],
             ["border"],
             ["borderRadius"],
-            ["boxShadow"]
+            ["boxShadow"],
+            ["margin"]
           ]
         },
         "ContentBlock": {
@@ -426,7 +427,8 @@
             ["borderRadius"],
             ["boxShadow"],
             ["padding"],
-            ["opacity"]
+            ["opacity"],
+            ["margin"]
           ]
         },
         "ContentBlock": {
@@ -616,7 +618,15 @@
     "Container": {
       "name": "标签页整体配置",
       "desc": "标签页整体样式配置",
-      "normal": [["width"], ["height"], ["background"], ["border"], ["borderRadius"], ["boxShadow"]]
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["margin"]
+      ]
     },
     "ContentBlock": {
       "name": "内容区域",
