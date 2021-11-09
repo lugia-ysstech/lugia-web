@@ -620,6 +620,10 @@ const containerContentTheme = {
         background: {
           color: 'rgb(251,246,219)',
         },
+        margin: {
+          left: 30,
+          right: 20,
+        },
       },
     },
   },
