@@ -273,53 +273,138 @@
           "name": "标签页整体配置",
           "desc": "标签页整体样式配置",
           "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"],
-            ["margin"]
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ]
           ]
         },
         "ContentBlock": {
           "name": "内容区域",
           "desc": "内容区域的样式配置",
           "normal": [
-            ["background"],
-            ["padding"],
-            ["height"],
-            ["boxShadow"],
-            ["border"],
-            ["borderRadius"],
-            ["textAlign"],
-            ["font"],
-            ["color"]
+            [
+              "background"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "height"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "textAlign"
+            ],
+            [
+              "font"
+            ],
+            [
+              "color"
+            ]
           ]
         },
         "AddButton": {
           "name": "新增按钮",
           "desc": "新增按钮样式配置",
-          "normal": [["color"], ["font"]],
-          "hover": [["color"], ["font"]],
-          "disabled": [["color"], ["font"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ]
         },
         "ArrowIcon": {
           "name": "翻页图标",
           "desc": "翻页图标样式配置",
-          "normal": [["color"], ["font"]],
-          "hover": [["color"], ["font"]],
-          "disabled": [["color"], ["font"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ]
         },
         "TitleContainer": {
           "name": "页签区域",
           "desc": "页签区域样式配置",
-          "normal": [["background"], ["textAlign"]]
+          "normal": [
+            [
+              "background"
+            ],
+            [
+              "textAlign"
+            ]
+          ]
         },
         "BorderStyle": {
           "name": "默认线",
           "desc": "默认线样式配置",
-          "normal": [["background"], ["width"]]
+          "normal": [
+            [
+              "background"
+            ],
+            [
+              "width"
+            ]
+          ]
         },
         "TabHeader": {
           "name": "标签配置",
@@ -328,35 +413,100 @@
               "name": "默认标签",
               "desc": "默认标签样式配置",
               "normal": [
-                ["width"],
-                ["height"],
-                ["color"],
-                ["background"],
-                ["border"],
-                ["margin"],
-                ["padding"],
-                ["font"],
-                ["opacity"],
-                ["borderRadius"],
-                ["boxShadow"],
-                ["textAlign"]
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "boxShadow"
+                ],
+                [
+                  "textAlign"
+                ]
               ],
-              "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
-              "disabled": [["color"], ["background"]]
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "opacity"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "background"
+                ]
+              ]
             },
             "SelectTabPan": {
               "name": "选中标签",
               "desc": "选中标签样式配置",
               "normal": [
-                ["color"],
-                ["background"],
-                ["border"],
-                ["margin"],
-                ["padding"],
-                ["font"],
-                ["opacity"],
-                ["borderRadius"],
-                ["boxShadow"]
+                [
+                  "color"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "boxShadow"
+                ]
               ],
               "hover": [],
               "disabled": []
@@ -364,37 +514,142 @@
             "DeleteIcon": {
               "name": "删除图标",
               "desc": "删除图标样式配置",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ]
             },
             "PrefixIcon": {
               "name": "前缀图标",
               "desc": "前缀图标样式配置",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ]
             },
             "SelectPrefixIcon": {
               "name": "前缀图标选中样式",
               "desc": "前缀图标选中样式配置",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ]
             },
             "SuffixIcon": {
               "name": "后缀图标",
               "desc": "后缀图标样式配置",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ]
             },
             "SelectSuffixIcon": {
               "name": "后缀图标选中样式",
               "desc": "后缀图标选中样式配置",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ]
             }
           }
         }
@@ -420,45 +675,120 @@
           "name": "标签页整体配置",
           "desc": "标签页整体样式配置",
           "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"],
-            ["padding"],
-            ["opacity"],
-            ["margin"]
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "opacity"
+            ]
           ]
         },
         "ContentBlock": {
           "name": "内容区域",
           "desc": "内容区域的样式配置",
           "normal": [
-            ["background"],
-            ["padding"],
-            ["height"],
-            ["boxShadow"],
-            ["border"],
-            ["borderRadius"],
-            ["textAlign"],
-            ["font"],
-            ["color"]
+            [
+              "background"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "height"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "border"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "textAlign"
+            ],
+            [
+              "font"
+            ],
+            [
+              "color"
+            ]
           ]
         },
         "AddButton": {
           "name": "新增按钮",
           "desc": "新增按钮样式配置",
-          "normal": [["color"], ["font"]],
-          "hover": [["color"], ["font"]],
-          "disabled": [["color"], ["font"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ]
         },
         "ArrowIcon": {
           "name": "翻页图标",
           "desc": "翻页图标样式配置",
-          "normal": [["color"], ["font"]],
-          "hover": [["color"], ["font"]],
-          "disabled": [["color"], ["font"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ]
         },
         "TabHeader": {
           "name": "标签配置",
@@ -467,35 +797,100 @@
               "name": "默认标签",
               "desc": "默认标签样式配置",
               "normal": [
-                ["width"],
-                ["height"],
-                ["color"],
-                ["background"],
-                ["border"],
-                ["margin"],
-                ["padding"],
-                ["font"],
-                ["opacity"],
-                ["borderRadius"],
-                ["boxShadow"],
-                ["textAlign"]
+                [
+                  "width"
+                ],
+                [
+                  "height"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "boxShadow"
+                ],
+                [
+                  "textAlign"
+                ]
               ],
-              "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
-              "disabled": [["color"], ["background"]]
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "opacity"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "background"
+                ]
+              ]
             },
             "SelectTabPan": {
               "name": "选中标签",
               "desc": "选中标签样式配置",
               "normal": [
-                ["color"],
-                ["background"],
-                ["border"],
-                ["margin"],
-                ["padding"],
-                ["font"],
-                ["opacity"],
-                ["borderRadius"],
-                ["boxShadow"]
+                [
+                  "color"
+                ],
+                [
+                  "background"
+                ],
+                [
+                  "border"
+                ],
+                [
+                  "margin"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "font"
+                ],
+                [
+                  "opacity"
+                ],
+                [
+                  "borderRadius"
+                ],
+                [
+                  "boxShadow"
+                ]
               ],
               "hover": [],
               "disabled": []
@@ -503,44 +898,156 @@
             "DeleteIcon": {
               "name": "删除图标",
               "desc": "删除图标样式配置",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ]
             },
             "PrefixIcon": {
               "name": "前缀图标",
               "desc": "前缀图标样式配置",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ]
             },
             "SelectPrefixIcon": {
               "name": "前缀图标选中样式",
               "desc": "前缀图标选中样式配置",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ]
             },
             "SuffixIcon": {
               "name": "后缀图标",
               "desc": "后缀图标样式配置",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ]
             },
             "SelectSuffixIcon": {
               "name": "后缀图标选中样式",
               "desc": "后缀图标选中样式配置",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
+              "normal": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "hover": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ],
+              "disabled": [
+                [
+                  "color"
+                ],
+                [
+                  "font"
+                ]
+              ]
             }
           }
         },
         "TitleContainer": {
           "name": "页签区域",
           "desc": "页签区域样式配置",
-          "normal": [["background"], ["textAlign"]]
+          "normal": [
+            [
+              "background"
+            ],
+            [
+              "textAlign"
+            ]
+          ]
         }
       },
       "defaultTheme": {
@@ -552,7 +1059,9 @@
       }
     }
   },
-  "category": ["数据展示"],
+  "category": [
+    "数据展示"
+  ],
   "type": {
     "TabType": [
       {
@@ -619,54 +1128,141 @@
       "name": "标签页整体配置",
       "desc": "标签页整体样式配置",
       "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["boxShadow"],
-        ["margin"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ]
       ]
     },
     "ContentBlock": {
       "name": "内容区域",
       "desc": "内容区域的样式配置",
       "normal": [
-        ["background"],
-        ["padding"],
-        ["width"],
-        ["height"],
-        ["boxShadow"],
-        ["border"],
-        ["borderRadius"],
-        ["textAlign"],
-        ["font"],
-        ["color"]
+        [
+          "background"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "textAlign"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
       ]
     },
     "TitleContainer": {
       "name": "页签区域",
       "desc": "页签区域样式配置",
-      "normal": [["background"], ["textAlign"]]
+      "normal": [
+        [
+          "background"
+        ],
+        [
+          "textAlign"
+        ]
+      ]
     },
     "BorderStyle": {
       "name": "默认线",
       "desc": "默认线样式配置",
-      "normal": [["background"], ["width"]]
+      "normal": [
+        [
+          "background"
+        ],
+        [
+          "width"
+        ]
+      ]
     },
     "AddButton": {
       "name": "新增按钮",
       "desc": "新增按钮样式配置",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]],
-      "disabled": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "ArrowIcon": {
       "name": "翻页按钮",
       "desc": "翻页按钮样式配置",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]],
-      "disabled": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "TabHeader": {
       "name": "标签配置",
@@ -675,35 +1271,100 @@
           "name": "默认标签",
           "desc": "默认标签样式配置",
           "normal": [
-            ["width"],
-            ["height"],
-            ["color"],
-            ["background"],
-            ["border"],
-            ["margin"],
-            ["padding"],
-            ["font"],
-            ["opacity"],
-            ["borderRadius"],
-            ["boxShadow"],
-            ["textAlign"]
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "color"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "font"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ],
+            [
+              "textAlign"
+            ]
           ],
-          "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
-          "disabled": [["color"], ["background"]]
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "font"
+            ],
+            [
+              "opacity"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "background"
+            ]
+          ]
         },
         "SelectTabPan": {
           "name": "选中标签",
           "desc": "选中标签样式配置",
           "normal": [
-            ["color"],
-            ["background"],
-            ["border"],
-            ["margin"],
-            ["padding"],
-            ["font"],
-            ["opacity"],
-            ["borderRadius"],
-            ["boxShadow"]
+            [
+              "color"
+            ],
+            [
+              "background"
+            ],
+            [
+              "border"
+            ],
+            [
+              "margin"
+            ],
+            [
+              "padding"
+            ],
+            [
+              "font"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "borderRadius"
+            ],
+            [
+              "boxShadow"
+            ]
           ],
           "hover": [],
           "disabled": []
@@ -711,51 +1372,178 @@
         "DividerTheme": {
           "name": "分割线",
           "desc": "分割线样式配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "background"
+            ]
+          ]
         },
         "DeleteIcon": {
           "name": "删除图标",
           "desc": "删除图标样式配置",
-          "normal": [["color"], ["font"]],
-          "hover": [["color"], ["font"]],
-          "disabled": [["color"], ["font"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ]
         },
         "PrefixIcon": {
           "name": "前缀图标",
           "desc": "前缀图标样式配置",
-          "normal": [["color"], ["font"]],
-          "hover": [["color"], ["font"]],
-          "disabled": [["color"], ["font"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ]
         },
         "SelectPrefixIcon": {
           "name": "前缀图标选中样式",
           "desc": "前缀图标选中样式配置",
-          "normal": [["color"], ["font"]],
-          "hover": [["color"], ["font"]],
-          "disabled": [["color"], ["font"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ]
         },
         "SuffixIcon": {
           "name": "后缀图标",
           "desc": "后缀图标样式配置",
-          "normal": [["color"], ["font"]],
-          "hover": [["color"], ["font"]],
-          "disabled": [["color"], ["font"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ]
         },
         "SelectSuffixIcon": {
           "name": "后缀图标选中样式",
           "desc": "后缀图标选中样式配置",
-          "normal": [["color"], ["font"]],
-          "hover": [["color"], ["font"]],
-          "disabled": [["color"], ["font"]]
+          "normal": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "hover": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ],
+          "disabled": [
+            [
+              "color"
+            ],
+            [
+              "font"
+            ]
+          ]
         },
         "SelectLine": {
           "name": "选中页签底部标识线",
           "desc": "选中页签底部标识线样式配置",
-          "normal": [["width"], ["height"], ["background"]]
+          "normal": [
+            [
+              "width"
+            ],
+            [
+              "height"
+            ],
+            [
+              "background"
+            ]
+          ]
         }
       }
     }
   },
-  "childrenWidget": ["tabpane"],
+  "childrenWidget": [
+    "tabpane"
+  ],
   "themeConfig": []
 }
