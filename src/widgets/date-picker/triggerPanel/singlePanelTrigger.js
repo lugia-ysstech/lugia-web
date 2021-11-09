@@ -191,6 +191,7 @@ class DateInput extends Component<TypeProps, TypeState> {
           <Trigger
             themePass
             createPortal={createPortal}
+            popupContainerId={popupContainerId}
             onDocumentClick={this.onDocumentClick}
             popupVisible={visible}
             alwaysOpen={alwaysOpen || open}
