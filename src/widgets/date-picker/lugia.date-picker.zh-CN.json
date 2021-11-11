@@ -249,7 +249,9 @@
     }
   },
   "designInfo": {},
-  "category": ["数据录入"],
+  "category": [
+    "数据录入"
+  ],
   "type": {
     "InputSize": [
       {
@@ -313,172 +315,653 @@
       "name": "文本框",
       "desc": "文本框配置",
       "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["fontSize"],
-        ["borderRadius"],
-        ["border"],
-        ["boxShadow"],
-        ["color"],
-        ["font"],
-        ["margin"],
-        ["padding"],
-        ["textAlign"]
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "color"
+        ],
+        [
+          "font"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "textAlign"
+        ]
       ],
-      "hover": [["border"], ["borderRadius"], ["boxShadow"], ["background"]],
+      "hover": [
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "background"
+        ]
+      ],
       "active": [],
-      "focus": [["background"], ["borderRadius"], ["border"], ["boxShadow"]],
-      "disabled": [["background"], ["borderRadius"], ["border"], ["boxShadow"]]
+      "focus": [
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ],
+      "disabled": [
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ]
     },
     "Placeholder": {
       "name": "文本框提示信息",
       "desc": "文本框提示信息配置",
-      "normal": [["color"], ["fontSize"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "InputPrefix": {
       "name": "前缀图标",
       "desc": "前缀图标配置",
-      "normal": [["color"], ["font"], ["padding"], ["margin"]],
-      "hover": [["color"], ["font"]],
-      "disabled": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "margin"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "InputSuffix": {
       "name": "后缀图标",
       "desc": "后缀图标配置",
-      "normal": [["color"], ["font"], ["padding"], ["margin"]],
-      "hover": [["color"], ["font"]],
-      "disabled": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "margin"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "ClearButton": {
       "name": "清除图标",
       "desc": "清除图标配置",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]],
-      "disabled": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "FacePanelContain": {
       "name": "日期面板",
       "desc": "日期面板配置",
-      "normal": [["width"], ["height"], ["background"], ["border"], ["boxShadow"], ["borderRadius"]]
+      "normal": [
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "borderRadius"
+        ]
+      ]
     },
     "InMonthDate": {
       "name": "日期",
       "desc": "日期配置",
-      "normal": [["color"]],
-      "hover": [["color"], ["background"], ["borderRadius"], ["boxShadow"], ["border"]],
-      "active": [["color"], ["background"], ["borderRadius"], ["boxShadow"], ["border"]]
+      "normal": [
+        [
+          "color"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "border"
+        ]
+      ],
+      "active": [
+        [
+          "color"
+        ],
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "border"
+        ]
+      ]
     },
     "OutMonthDate": {
       "name": "非本月日期",
       "desc": "非本月日期配置",
-      "normal": [["color"]]
+      "normal": [
+        [
+          "color"
+        ]
+      ]
     },
     "SelectToday": {
       "name": "当天日期",
       "desc": "当天日期配置",
-      "normal": [["border", "style", "color"], ["color"], ["background"], ["borderRadius"]]
+      "normal": [
+        [
+          "border",
+          "style",
+          "color"
+        ],
+        [
+          "color"
+        ],
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ]
+      ]
     },
     "HeadSingleArrow": {
       "name": "头部单箭头",
       "desc": "头部单箭头",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]],
-      "active": [["color"], ["font"]],
-      "disabled": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "active": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "HeadDoubleArrow": {
       "name": "头部双箭头",
       "desc": "头部双箭头",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]],
-      "active": [["color"], ["font"]],
-      "disabled": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "active": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "HeadYearText": {
       "name": "头部年",
       "desc": "头部年的配置",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]],
-      "active": [["color"], ["font"]],
-      "disabled": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "active": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "HeadMonthText": {
       "name": "头部月",
       "desc": "头部月的配置",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]],
-      "active": [["color"], ["font"]],
-      "disabled": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "active": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "HeadWeekText": {
       "name": "头部周",
       "desc": "头部周的配置",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]],
-      "active": [["color"], ["font"]],
-      "disabled": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "active": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "SecondWeekDate": {
       "name": "星期项",
       "desc": "星期项配置",
-      "normal": [["color"]],
-      "hover": [["color"]]
+      "normal": [
+        [
+          "color"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ]
+      ]
     },
     "GroupDate": {
       "name": "分类日期",
       "desc": "年/月/周面板内容文字的配置",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]],
-      "active": [["color"], ["font"], ["background"], ["borderRadius"], ["border"], ["boxShadow"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "active": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ],
+        [
+          "background"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ]
     },
     "TimePanelHead": {
       "name": "时间板头部",
       "desc": "时间板头部配置",
-      "normal": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "TimePanel": {
       "name": "时间内容区",
       "desc": "时间内容配置",
-      "normal": [["color"], ["background"]],
-      "hover": [["color"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "background"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ]
+      ]
     },
     "TimePanelList": {
       "name": "单列",
       "desc": "单列时间配置",
-      "normal": [["border", "right"]]
+      "normal": [
+        [
+          "border",
+          "right"
+        ]
+      ]
     },
     "SelectTimeOption": {
       "name": "选中时间",
       "desc": "选中时间配置",
-      "normal": [["color"], ["background"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "background"
+        ]
+      ]
     },
     "ValidateErrorInput": {
       "name": "校验失败的输入框",
       "desc": "配置校验失败的输入框",
       "normal": [
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["background"],
-        ["border"],
-        ["boxShadow"],
-        ["opacity"]
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ],
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "opacity"
+        ]
       ],
-      "hover": [["background"], ["border"], ["boxShadow"]],
-      "active": [["background"], ["border"], ["boxShadow"]]
+      "hover": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ],
+      "active": [
+        [
+          "background"
+        ],
+        [
+          "border"
+        ],
+        [
+          "boxShadow"
+        ]
+      ]
     },
     "ValidateErrorText": {
       "name": "校验失败提示信息",
       "desc": "配置校验失败的提示信息",
       "normal": [
-        ["background"],
-        ["boxShadow"],
-        ["borderRadius"],
-        ["border"],
-        ["fontSize"],
-        ["font"],
-        ["color"]
+        [
+          "background"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "border"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "color"
+        ]
       ],
       "hover": [],
       "active": []
@@ -486,59 +969,173 @@
     "ExtraFooter": {
       "name": "额外页脚",
       "desc": "额外页脚配置",
-      "normal": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "FooterButtonOptions": {
       "name": "页脚按钮",
       "desc": "页脚按钮配置",
       "normal": [
-        ["color"],
-        ["font"],
-        ["margin"],
-        ["padding"],
-        ["width"],
-        ["height"],
-        ["border"],
-        ["borderRadius"],
-        ["background"]
+        [
+          "color"
+        ],
+        [
+          "font"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "width"
+        ],
+        [
+          "height"
+        ],
+        [
+          "border"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "background"
+        ]
       ]
     },
     "FooterToday": {
       "name": "页脚'今天'按钮",
       "desc": "页脚'今天'按钮配置",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "FooterTimeButton": {
       "name": "页脚时间按钮",
       "desc": "页脚时间按钮配置",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]],
-      "disabled": [["color"], ["font"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ]
+      ]
     },
     "FooterOkButton": {
       "name": "页脚确定按钮",
       "desc": "页脚确定按钮配置",
       "normal": [
-        ["background"],
-        ["margin"],
-        ["padding"],
-        ["borderRadius"],
-        ["color"],
-        ["font"],
-        ["fontSize"],
-        ["boxShadow"],
-        ["border"]
+        [
+          "background"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "padding"
+        ],
+        [
+          "borderRadius"
+        ],
+        [
+          "color"
+        ],
+        [
+          "font"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "border"
+        ]
       ],
-      "hover": [["color"], ["font"], ["fontSize"], ["background"]],
-      "disabled": [["color"], ["background"], ["boxShadow"], ["border"]]
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "font"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "background"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "background"
+        ],
+        [
+          "boxShadow"
+        ],
+        [
+          "border"
+        ]
+      ]
     },
     "FooterLine": {
       "name": "页脚分割线",
       "desc": "页脚分割线配置",
-      "normal": [["background"]]
+      "normal": [
+        [
+          "background"
+        ]
+      ]
     }
   },
-  "childrenWidget": ["month", "year", "week", "weeks", "range"],
+  "childrenWidget": [
+    "month",
+    "year",
+    "week",
+    "weeks",
+    "range"
+  ],
   "themeConfig": []
 }
