@@ -65,6 +65,7 @@ const CommonInputStyle = CSSComponent({
       const theColor = color || placeHolderColor || get('lightGreyColor');
       const theSize = placeHolderFontSize || placeHolderSize || getInputFixSize(size);
       return css`
+        text-align: ${textAlign};
         &::placeholder {
           color: ${theColor};
           font-size: ${px2remcss(theSize)};
