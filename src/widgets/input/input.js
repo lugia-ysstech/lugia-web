@@ -41,11 +41,20 @@ const CommonInputStyle = CSSComponent({
   tag: 'input',
   className: 'InnerInput',
   normal: {
-    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['padding'], ['borderRadius']],
+    selectNames: [
+      ['fontSize'],
+      ['font'],
+      ['color'],
+      ['cursor'],
+      ['padding'],
+      ['borderRadius'],
+      ['textAlign'],
+    ],
     defaultTheme: {
       cursor: 'text',
     },
     getCSS(themeMeta: Object, themeProps: Object) {
+      const { textAlign } = themeMeta;
       const { propsConfig } = themeProps;
       const {
         size,
@@ -56,6 +65,7 @@ const CommonInputStyle = CSSComponent({
       const theColor = color || placeHolderColor || get('lightGreyColor');
       const theSize = placeHolderFontSize || placeHolderSize || getInputFixSize(size);
       return css`
+        text-align: ${textAlign};
         &::placeholder {
           color: ${theColor};
           font-size: ${px2remcss(theSize)};
