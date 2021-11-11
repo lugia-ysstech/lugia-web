@@ -205,7 +205,8 @@
         ["color"],
         ["font"],
         ["margin"],
-        ["padding"]
+        ["padding"],
+        ["textAlign"]
       ],
       "hover": [["border"], ["borderRadius"], ["boxShadow"], ["background"]],
       "active": [],

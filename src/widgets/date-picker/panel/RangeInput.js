@@ -151,6 +151,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
         top: { width: borderWidthT = 0 } = {},
         bottom: { width: borderWidthB = 0 } = {},
       } = {},
+      textAlign = '',
     } = normal;
 
     const { themeConfig: inputPrefixThemeConfig } = inputPrefixProps;
@@ -173,6 +174,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
               normal: {
                 width: '100%',
                 border: getBorder({ style: '', width: 0, color: '' }),
+                textAlign,
               },
             },
             Input: {
