@@ -7,12 +7,12 @@
 import * as React from 'react';
 import Scroller from './index';
 import Widget from '../consts/index';
-import { getBoxShadow } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
-import { DefaultHeight, ScrollerContainer, Col, ScrollerCol } from '../css/scroller';
-import { getCanSeeCount, getCanRenderCompleteCount } from './support';
+import { Col, DefaultHeight, ScrollerCol, ScrollerContainer } from '../css/scroller';
+import { getCanRenderCompleteCount, getCanSeeCount } from './support';
 import { getBorderRadius } from '../theme/CSSProvider';
 import get from '../css/theme-common-dict';
+
 type ThrottleScrollerState = {
   start: number,
 };
@@ -40,7 +40,7 @@ if (typeof window !== 'undefined') {
     return originalAddEventListener(type, listener, modOptions, wantsUntrusted);
   };
 
-  const originalRemoveEventListener = window.removeEventListener.bind();
+  const originalRemoveEventListener = document.removeEventListener;
   document.removeEventListener = (type, listener, options) => {
     let modOptions = options;
     if (EVENTS_TO_MODIFY.includes(type)) {
@@ -56,7 +56,7 @@ if (typeof window !== 'undefined') {
         };
       }
     }
-    return originalRemoveEventListener(type, listener, modOptions);
+    return originalRemoveEventListener.call(document, type, listener, modOptions);
   };
 }
 
