@@ -19,7 +19,7 @@ type ThrottleScrollerState = {
 const EVENTS_TO_MODIFY = ['touchstart', 'touchmove', 'touchend', 'touchcancel', 'wheel'];
 
 if (typeof window !== 'undefined') {
-  const originalAddEventListener = window.addEventListener.bind();
+  const originalAddEventListener = window.addEventListener;
 
   document.addEventListener = (type, listener, options, wantsUntrusted) => {
     let modOptions = options;
@@ -37,7 +37,7 @@ if (typeof window !== 'undefined') {
       }
     }
 
-    return originalAddEventListener(type, listener, modOptions, wantsUntrusted);
+    return originalAddEventListener.call(document, type, listener, modOptions, wantsUntrusted);
   };
 
   const originalRemoveEventListener = document.removeEventListener;
