@@ -18,6 +18,8 @@ import {
   formatValueIsValid,
   rangeValueMonthIsSame,
   getValueIsInLimit,
+  isAfterTime,
+  isBeforeTime,
 } from '../utils/booleanUtils';
 import { getNewStepProps } from '../utils/utils';
 import { getFacePanelContain, getWrapThemeProps } from '../themeConfig/themeConfig';
@@ -69,6 +71,8 @@ type TypeState = {
   hasNormalvalue: boolean,
   rangeIndex: Array<number>,
   choseDayIndex: Array<number>,
+  disabledStartValue: boolean,
+  disabledEndValue: boolean,
 };
 class Range extends Component<TypeProps, TypeState> {
   static displayName = 'Range';
@@ -86,6 +90,8 @@ class Range extends Component<TypeProps, TypeState> {
   choseDate: string;
   validValue: string;
   times: Array<number>;
+  panelChoseTimes: number;
+  inputRefs: { [key: string]: any };
   constructor(props: TypeProps) {
     super(props);
     this.trigger = React.createRef();
@@ -95,6 +101,8 @@ class Range extends Component<TypeProps, TypeState> {
     this.targetModeFirst = new SwitchPanelMode();
     this.targetModeSecond = new SwitchPanelMode();
     this.pageFooterChange = new SwitchPanelMode();
+    this.panelChoseTimes = 0;
+    this.inputRefs = undefined;
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const { value, format, placeholder, panelValue, valueIsValid } = getDerivedForInput(
@@ -113,6 +121,8 @@ class Range extends Component<TypeProps, TypeState> {
       rangeValue: preState ? preState.rangeValue : [],
       status: preState && preState.status,
       isHover,
+      disabledStartValue: preState ? preState.disabledStartValue : false,
+      disabledEndValue: preState ? preState.disabledEndValue : false,
     };
   }
   getDatePanelValue = (value: Array<string>) => {
@@ -221,6 +231,8 @@ class Range extends Component<TypeProps, TypeState> {
           if (!isValids || !isInLimit) {
             isValid = false;
           }
+        } else {
+          isValid = false;
         }
       });
     return {
@@ -234,12 +246,21 @@ class Range extends Component<TypeProps, TypeState> {
   onChangeSecond = (parmas: Object) => {
     this.panelChange({ ...parmas, index: 1 });
   };
+
   panelChange = (param: Object) => {
-    const { disabledStartTime, disabledEndTime } = this.props;
     this.isClear = false;
-    const isDisabledOneSide = disabledStartTime || disabledEndTime;
+
+    const { disabledStartTime, disabledEndTime } = this.props;
     const { newValue, event } = param;
-    const { format, rangeValue, value } = this.state;
+    const { format, rangeValue, value, currentInputIndex } = this.state;
+    const hasValue = this.hasDoubleValue(value);
+    const propsRangeValueDisabled = disabledStartTime || disabledEndTime;
+
+    const { panelChoseTimes } = this;
+    this.panelChoseTimes = propsRangeValueDisabled ? 2 : panelChoseTimes + 1;
+
+    const isDisabledOneSide = propsRangeValueDisabled;
+
     let newRangeValue = [];
     if (isDisabledOneSide) {
       newRangeValue = rangeValue.length === 0 ? [...value] : [...rangeValue];
@@ -250,8 +271,20 @@ class Range extends Component<TypeProps, TypeState> {
         newRangeValue[0] = newValue;
       }
     } else {
-      newRangeValue = rangeValue.length > 0 ? [rangeValue[0]] : [];
-      newRangeValue.push(newValue);
+      if (hasValue) {
+        const outMaxValue = isAfterTime({ everyTime: newValue, compareTime: value[1], format });
+        const outMinValue = isBeforeTime({ everyTime: newValue, compareTime: value[0], format });
+        if ((currentInputIndex === 0 && outMaxValue) || (currentInputIndex === 1 && outMinValue)) {
+          newRangeValue = [];
+          newRangeValue.push(newValue);
+        } else {
+          newRangeValue = rangeValue.length === 0 ? [...value] : [...rangeValue];
+          newRangeValue[currentInputIndex] = newValue;
+        }
+      } else {
+        newRangeValue = rangeValue.length > 0 ? [rangeValue[0]] : [];
+        newRangeValue.push(newValue);
+      }
     }
 
     const { length } = newRangeValue;
@@ -259,25 +292,57 @@ class Range extends Component<TypeProps, TypeState> {
     let setStateData;
     if (length === 1) {
       renderValue = [newRangeValue[0], newRangeValue[0]];
+      const newVal = ['', ''];
+      newVal[currentInputIndex] = newRangeValue[0];
       setStateData = {
+        value: newVal,
         hasNormalvalue: true,
         rangeValue: newRangeValue,
       };
     }
-    let visible = true;
 
     if (length === 2) {
       renderValue = [...newRangeValue];
-      const { onOk, showTime } = this.props;
-      visible = false;
-      if (onOk || showTime) {
-        visible = true;
-      }
       const sortValue = this.exportOnChange(renderValue, this.changeOldValue, event);
-      setStateData = { value: sortValue, rangeValue: [], isHover: false };
+      setStateData = {
+        value: sortValue,
+        rangeValue: [],
+        isHover: false,
+      };
     }
     this.drawPageAgain(renderValue, format);
-    this.setState({ ...setStateData, visible });
+
+    let visible = this.panelChoseTimes === 2 ? false : true;
+    const { onOk, showTime } = this.props;
+    if (onOk || showTime) {
+      visible = true;
+    }
+
+    const autoDisabledValueState = propsRangeValueDisabled
+      ? { disabledStartValue: false, disabledEndValue: false }
+      : {
+          disabledStartValue: currentInputIndex === 0,
+          disabledEndValue: currentInputIndex === 1,
+          currentInputIndex: currentInputIndex === 0 ? 1 : 0,
+        };
+
+    if (!propsRangeValueDisabled) {
+      if (this.panelChoseTimes === 1) {
+        const { currentInputIndex } = autoDisabledValueState;
+        this.autoFocus = true;
+        this.inputRefs[currentInputIndex].current.focus();
+        this.autoFocus = false;
+      }
+    }
+
+    if (this.panelChoseTimes === 2) {
+      this.panelChoseTimes = 0;
+    }
+    this.setState({
+      ...setStateData,
+      visible,
+      ...autoDisabledValueState,
+    });
   };
   exportOnChange = (renderValue: string[], oldValue: string[], event: Object) => {
     const { format } = this.state;
@@ -316,6 +381,29 @@ class Range extends Component<TypeProps, TypeState> {
     this.setState({ rangeValue: hoverRangeValue, isHover: true });
     this.drawPageAgain(hoverRangeValue, format);
   };
+  againRangeHoverChange = (obj: { hoverValue: string }) => {
+    if (this.panelChoseTimes !== 1) {
+      return;
+    }
+    const { format, value, currentInputIndex } = this.state;
+    const { hoverValue } = obj;
+    const hasValue = this.hasDoubleValue(value);
+    if (!hasValue) {
+      return;
+    }
+    const index = currentInputIndex === 0 ? 1 : 0;
+    const hoverRangeValue = [value[index], hoverValue];
+
+    const { monthAndYear, panelDatesArray } = this;
+    const { rangeIndex, choseDayIndex } = getIndexInRange(
+      hoverRangeValue,
+      monthAndYear,
+      panelDatesArray,
+      format
+    );
+    this.setState({ againRangeIndex: rangeIndex, againChoseDayIndex: choseDayIndex });
+  };
+
   getCurrentYandM = (obj: Object) => {
     const { month, year, index } = obj;
     const { format, rangeValue, value } = this.state;
@@ -332,11 +420,28 @@ class Range extends Component<TypeProps, TypeState> {
   setTriggerVisible = (open: boolean) => {
     this.setState({ visible: open });
   };
-  onFocus = (e: any) => {
+
+  valueIsEmpty = (value: string[]) => {
+    return value[0] === '' && value[1] === '';
+  };
+
+  hasDoubleValue = (value: string[]): boolean => {
+    return !!(value[0] && value[1]);
+  };
+
+  hasSingleValue = (value: string[]): boolean => {
+    return value[0] || value[1];
+  };
+
+  onFocus = (e: any, index: number, inputRefs: { [key: string]: any }) => {
+    if (this.autoFocus) {
+      return;
+    }
     const { value, panelValue, status, format } = this.state;
     const { isValid } = this.getIsValid(value);
     this.isClear = false;
-
+    this.panelChoseTimes = 0;
+    this.inputRefs = inputRefs;
     if (isValid) {
       this.oldValue = [...value];
       this.changeOldValue = [...value];
@@ -345,8 +450,7 @@ class Range extends Component<TypeProps, TypeState> {
       this.panelDatesArray = getCurrentPageDates(panelValue, format);
       this.setState({ rangeValue: [] });
     }
-    const noValue = value[0] === '' && value[1] === '';
-    if (noValue) {
+    if (this.valueIsEmpty(value)) {
       this.setState({ rangeValue: [] });
       this.drawPageAgain(['', ''], this.state.format);
     }
@@ -357,6 +461,13 @@ class Range extends Component<TypeProps, TypeState> {
     this.onClickTrigger(e, true);
     const { onFocus } = this.props;
     onFocus && onFocus();
+    this.setState({
+      disabledStartValue: false,
+      disabledEndValue: false,
+      currentInputIndex: index,
+      againRangeIndex: [],
+      againChoseDayIndex: [],
+    });
   };
   onBlur = event => {
     const { value } = this.state;
@@ -443,7 +554,8 @@ class Range extends Component<TypeProps, TypeState> {
     this.panelDatesArray = getCurrentPageDates(panelValue, format);
   }
   onDocumentClick = () => {
-    this.setState({ visible: false });
+    this.panelChoseTimes = 0;
+    this.setState({ visible: false, againRangeIndex: [], againChoseDayIndex: [] });
     const { onDocumentClick } = this.props;
     if (onDocumentClick) {
       onDocumentClick();
@@ -464,6 +576,10 @@ class Range extends Component<TypeProps, TypeState> {
       isClear,
       placeholder,
       panelValue,
+      disabledStartValue,
+      disabledEndValue,
+      againRangeIndex,
+      againChoseDayIndex,
     } = this.state;
     const {
       disabled,
@@ -489,6 +605,7 @@ class Range extends Component<TypeProps, TypeState> {
       panelChoseDate: rangeValue && rangeValue[0],
       timeValue,
       rangeHoverChange: this.rangeHoverChange,
+      againRangeHoverChange: this.againRangeHoverChange,
       getCurrentYandM: this.getCurrentYandM,
       differAmonth,
       differAyear,
@@ -503,6 +620,9 @@ class Range extends Component<TypeProps, TypeState> {
       'Container'
     );
     const newDisabled = disabled || (disabledEndTime && disabledStartTime);
+
+    const disabledStartValue_panel = disabledStartTime || disabledStartValue;
+    const disabledEndValue_panel = disabledEndTime || disabledEndValue;
     return (
       <Box themeProps={inputContainProps}>
         <Trigger
@@ -533,13 +653,15 @@ class Range extends Component<TypeProps, TypeState> {
                   {...config}
                   rangeRenderIndex={rangeIndex && rangeIndex[0]}
                   choseDayIndex={choseDayIndex && choseDayIndex[0]}
+                  againRangeRenderIndex={againRangeIndex && againRangeIndex[0]}
+                  againChoseDayIndex={againChoseDayIndex && againChoseDayIndex[0]}
                   model={this.targetModeFirst}
                   timeValue={value[0]}
                   rangeValue={value}
                   themeProps={themeProps}
                   step={getNewStepProps(this.props)}
-                  startDisabled={disabledStartTime}
-                  endDisabled={disabledEndTime}
+                  startDisabled={disabledStartValue_panel}
+                  endDisabled={disabledEndValue_panel}
                 />
                 <SwitchPanel
                   {...this.props}
@@ -550,13 +672,15 @@ class Range extends Component<TypeProps, TypeState> {
                   {...config}
                   rangeRenderIndex={rangeIndex && rangeIndex[1]}
                   choseDayIndex={choseDayIndex && choseDayIndex[1]}
+                  againRangeRenderIndex={againRangeIndex && againRangeIndex[1]}
+                  againChoseDayIndex={againChoseDayIndex && againChoseDayIndex[2]}
                   model={this.targetModeSecond}
                   timeValue={value[1]}
                   rangeValue={value}
                   themeProps={themeProps}
                   noBorder
-                  startDisabled={disabledStartTime}
-                  endDisabled={disabledEndTime}
+                  startDisabled={disabledStartValue_panel}
+                  endDisabled={disabledEndValue_panel}
                 />
               </RangeWrapInner>
               <PageFooter

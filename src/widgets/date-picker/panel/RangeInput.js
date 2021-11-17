@@ -46,6 +46,7 @@ type TypeProps = {
   limitMinValue?: string,
   limitMaxValue?: string,
   canClear: boolean,
+  needFocusIndex: number,
 };
 type TypeState = {
   value: Array<string>,
@@ -54,9 +55,11 @@ type TypeState = {
 class RangeInput extends Component<TypeProps, TypeState> {
   static dispalyName = 'RangeInput';
   oldValue: Array<string>;
+  inputRefs: { [key: string]: any };
   constructor() {
     super();
     this.oldValue = [];
+    this.inputRefs = {};
   }
   onChangeFirst = (params: Object) => {
     this.onChange(0, params);
@@ -75,11 +78,11 @@ class RangeInput extends Component<TypeProps, TypeState> {
     const { onClick } = this.props;
     onClick && onClick(e, true);
   };
-  onFocus = (e: any) => {
+  onFocus = (index: number) => (e: any) => {
     const { value } = this.props;
     this.oldValue = [...value];
     const { onFocus } = this.props;
-    onFocus && onFocus();
+    onFocus && onFocus(e, index, this.inputRefs);
   };
   onBlur = () => {
     const { onBlur } = this.props;
@@ -111,10 +114,12 @@ class RangeInput extends Component<TypeProps, TypeState> {
       middleSymbol = '~',
       canClear,
     } = this.props;
-    const config = {
-      onFocus: disabled || readOnly ? '' : this.onFocus,
-      disabled,
-      readOnly,
+    const getConfig = (index: number) => {
+      return {
+        onFocus: disabled || readOnly ? '' : this.onFocus(index),
+        disabled,
+        readOnly,
+      };
     };
     const { mode, getPartOfThemeProps, endDisabled, startDisabled } = this.props;
 
@@ -233,10 +238,14 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 onChange={this.onChangeFirst}
                 placeholder={placeholder[0]}
                 onBlur={this.onBlur}
-                {...config}
+                {...getConfig(0)}
                 suffix={<i />}
                 {...this.props.dispatchEvent([['hover']], 'f2c')}
                 disabled={disabled || startDisabled}
+                getInputRef={param => {
+                  const { ref } = param;
+                  this.inputRefs[0] = ref;
+                }}
               />
             </RangeInputInnerInput>
 
@@ -253,10 +262,14 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 onChange={this.onChangeSecond}
                 onBlur={this.onBlur}
                 placeholder={placeholder[1]}
-                {...config}
+                {...getConfig(1)}
                 // onClear={this.onClear}
                 {...this.props.dispatchEvent([['hover']], 'f2c')}
                 disabled={disabled || endDisabled}
+                getInputRef={param => {
+                  const { ref } = param;
+                  this.inputRefs[1] = ref;
+                }}
               />
             </RangeInputInnerInput>
           </RangeInputInner>
