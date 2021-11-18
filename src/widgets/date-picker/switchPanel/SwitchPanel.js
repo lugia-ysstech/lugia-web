@@ -107,7 +107,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
   }
   render() {
     let { mode, from, format, panelStates, choseDayIndex } = this.state;
-    const { status, themeProps, timeValue: dateValue } = this.props;
+    const { status, themeProps, timeValue: dateValue, againChoseDayIndex } = this.props;
     if (status === 'showTime') {
       mode = 'time';
     }
@@ -162,6 +162,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
         setTriggerVisible={this.setTriggerVisible}
         value={value}
         choseDayIndex={this.props.mode === 'range' ? this.props.choseDayIndex : choseDayIndex}
+        againChoseDayIndex={this.props.mode === 'range' ? againChoseDayIndex : ''}
       />
     );
   }

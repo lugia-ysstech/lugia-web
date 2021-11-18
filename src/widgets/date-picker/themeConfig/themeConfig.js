@@ -8,6 +8,7 @@ import {
 } from '../../css/validateHoc';
 import changeColor from '../../css/utilsColor';
 import { getThemeUpdate } from '../styled/utils';
+import { colorHex } from '@lugia/css/lib/utilsColor';
 
 export default function getThemeProps(props, partName) {
   const { getPartOfThemeProps, mode } = props;
@@ -207,6 +208,7 @@ export function getDateTheme(props) {
     normal: rangeNormalTheme,
     hover: rangeWeekHoverTheme,
   };
+  const { background: { color: rangeNormalBgColor = '' } = {} } = rangeNormalTheme;
   return {
     hoverTheme,
     normalTheme,
@@ -216,8 +218,33 @@ export function getDateTheme(props) {
     rangeWeekDate,
     todayTheme: getTodayTheme(props, normal),
     dateTheme: themeProps,
+    alignRangeHoverBgColor: getAlignRangeHoverBgColor(rangeNormalBgColor),
   };
 }
+
+export function getAlignRangeHoverBgColor(color: string) {
+  let hexColor = color.startsWith('#') ? color : '';
+  if (
+    color.startsWith('rgb') ||
+    color.startsWith('RGB') ||
+    color.startsWith('rgba') ||
+    color.startsWith('RGBA')
+  ) {
+    const rgbReg = /(?:\(|\)|rgb|RGB)*/g;
+    const rgbaReg = /(?:\(|\)|rgba|RGBA)*/g;
+    let rgbColor = rgbReg.test(color) ? color : '';
+    if (rgbaReg.test(color)) {
+      const rgbaArr = color.replace(/(?:\(|\)|rgba|RGBA)*/g, '').split(',');
+      const r = rgbaArr[0];
+      const g = rgbaArr[1];
+      const b = rgbaArr[2];
+      rgbColor = `rgb(${r},${g},${b})`;
+    }
+    hexColor = colorHex(rgbColor);
+  }
+  return changeColor(hexColor, 0, 0, 15).rgba;
+}
+
 export function getTodayTheme(props, dateNormalTheme) {
   const { getPartOfThemeProps } = props;
 

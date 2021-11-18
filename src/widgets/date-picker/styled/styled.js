@@ -285,13 +285,23 @@ export const DateChild = CSSComponent({
       props && props.rangeStartIndex && rangeBorderDireStyle(props.rangeStartIndex, 'left', props)};
     ${props =>
       props && props.rangeEndIndex && rangeBorderDireStyle(props.rangeEndIndex, 'right', props)};
+    ${props =>
+      props &&
+      props.againRangeStartIndex &&
+      rangeBorderDireStyle(props.againRangeStartIndex, 'left', props)};
+    ${props =>
+      props &&
+      props.againRangeEndIndex &&
+      rangeBorderDireStyle(props.againRangeEndIndex, 'right', props)};
   `,
 });
 function getRangeChoseStyle(props) {
   const {
     rangeNormalTheme: { color: textColor, background: { color: bgColor } = {} } = {},
     rangeChose,
+    againRangeChose,
     disabled,
+    alignRangeHoverBgColor,
   } = props;
   if (disabled) {
     return `
@@ -304,7 +314,6 @@ function getRangeChoseStyle(props) {
   let newTextColor;
   if (rangeChose) {
     color = bgColor;
-
     if (textColor) {
       newTextColor = `
         & > i{
@@ -312,6 +321,9 @@ function getRangeChoseStyle(props) {
             }
         `;
     }
+  }
+  if (againRangeChose) {
+    color = alignRangeHoverBgColor;
   }
   return `
       background:${color};
@@ -565,7 +577,19 @@ const getDateChildStyle = props => {
     todayStyle,
   };
 };
-function rangeBorderDireStyle(index, dire, { rangeNormalTheme, disabled }) {
+function rangeBorderDireStyle(
+  index,
+  dire,
+  {
+    rangeNormalTheme,
+    disabled,
+    rangeChose,
+    againRangeChose,
+    index: dateIndex,
+    rangeEndIndex,
+    rangeStartIndex,
+  }
+) {
   if (disabled) {
     return '';
   }
@@ -584,6 +608,15 @@ function rangeBorderDireStyle(index, dire, { rangeNormalTheme, disabled }) {
   const botR = borderRadius[botRadius];
   const topRadiusValue = getRadiusValue(topR);
   const botRadiusValue = getRadiusValue(botR);
+  const dateValueIndex = dateIndex + 1;
+  if (
+    rangeChose &&
+    againRangeChose &&
+    index === dateValueIndex &&
+    (dateValueIndex !== rangeEndIndex || dateValueIndex !== rangeStartIndex)
+  ) {
+    return '';
+  }
   return `
   &:nth-child(${index}){
     border-top-${dire}-radius:${topRadiusValue};

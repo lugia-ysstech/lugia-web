@@ -131,7 +131,10 @@ class Date extends Component<TypeProps, TypeState> {
       weekHoverEnd: '',
     });
   };
-
+  onHeaderMouseEnter = () => {
+    const { onDatePanelLeave } = this.props;
+    onDatePanelLeave && onDatePanelLeave();
+  };
   render() {
     const { year, month } = this.state;
     const { firstWeekDay, maxDay, value } = this.state;
@@ -177,7 +180,7 @@ class Date extends Component<TypeProps, TypeState> {
     return (
       <DateWrapper mode={mode} themeProps={themeProps}>
         <div>
-          <DateHeader>
+          <DateHeader onMouseEnter={this.onHeaderMouseEnter}>
             <HeaderTop>
               {differAyear && index === 1 ? (
                 ''

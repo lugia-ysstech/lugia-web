@@ -10,11 +10,13 @@ import { getYandM } from '../utils/differUtils';
 import { getDateTheme } from '../themeConfig/themeConfig';
 type TypeProps = {
   choseDayIndex: Array<number> | number | string,
+  againChoseDayIndex: Array<number>,
   onMouseOver?: Function,
   onMouseOut?: Function,
   onDateChange: Function,
   panelChoseDate: string,
   rangeHoverChange?: Function,
+  againRangeHoverChange?: Function,
   month: number,
   year: number,
   mode: string,
@@ -79,7 +81,17 @@ class Dates extends Component<TypeProps, any> {
       onMouseOver && onMouseOver(index, child);
     }
     if (isRange) {
-      const { value, mode, firstDayIndex, year, month, maxDay, weekIndex, format } = this.props;
+      const {
+        value,
+        mode,
+        firstDayIndex,
+        year,
+        month,
+        maxDay,
+        weekIndex,
+        format,
+        againRangeHoverChange,
+      } = this.props;
       const paramsGetYandMProps = {
         year,
         month,
@@ -100,6 +112,10 @@ class Dates extends Component<TypeProps, any> {
       if (panelChoseDate) {
         const { rangeHoverChange } = this.props;
         rangeHoverChange && rangeHoverChange({ choseValue });
+      }
+
+      if (againRangeHoverChange) {
+        againRangeHoverChange({ hoverValue: this.getTransChoseDate(index, child) });
       }
     }
   };
@@ -162,7 +178,13 @@ class Dates extends Component<TypeProps, any> {
       rangeEndIndex: rangeRenderIndex[rangeRenderIndex.length - 1] || 0,
     };
   };
-
+  getAgainRangeIndex = () => {
+    const { againRangeRenderIndex = [] } = this.props;
+    return {
+      againRangeStartIndex: againRangeRenderIndex[0] || 0,
+      againRangeEndIndex: againRangeRenderIndex[againRangeRenderIndex.length - 1] || 0,
+    };
+  };
   render() {
     const {
       today,
@@ -181,7 +203,9 @@ class Dates extends Component<TypeProps, any> {
       value,
       format,
       rangeRenderIndex,
+      againRangeRenderIndex,
       choseDayIndex,
+      againChoseDayIndex,
     } = this.props;
     const { isWeeks, isRange } = modeStyle(mode);
     const { themeProps } = this.props;
@@ -194,14 +218,21 @@ class Dates extends Component<TypeProps, any> {
       rangeWeekDate,
       todayTheme,
       dateTheme,
+      alignRangeHoverBgColor,
     } = getDateTheme(this.props);
-
     const { rangeStartIndex, rangeEndIndex } = this.getRangeIndex();
+    const { againRangeStartIndex, againRangeEndIndex } = this.getAgainRangeIndex();
     const dateChildren = days.map((currentValue, index) => {
       let rangeChose = false;
       if (rangeRenderIndex && rangeRenderIndex.length !== 0) {
         const { max, min } = getMinAndMax(rangeRenderIndex);
         rangeChose = valueInRange(index + 1, [max, min]);
+      }
+
+      let againRangeChose = false;
+      if (againRangeRenderIndex && againRangeRenderIndex.length !== 0) {
+        const { max, min } = getMinAndMax(againRangeRenderIndex);
+        againRangeChose = valueInRange(index + 1, [max, min]);
       }
       const todayIndex = today + weekIndex;
       const compareIndex = index + 1;
@@ -215,10 +246,12 @@ class Dates extends Component<TypeProps, any> {
           rangeNormalTheme={rangeNormalTheme}
           rangeWeekDate={rangeWeekDate}
           todayTheme={todayTheme}
+          alignRangeHoverBgColor={alignRangeHoverBgColor}
           value={value}
           todayDate={todayDate}
           mode={mode}
           choseDayIndex={choseDayIndex}
+          againChoseDayIndex={againChoseDayIndex}
           todayIndex={todayIndex}
           fromat={format}
           showToday={showToday}
@@ -235,9 +268,12 @@ class Dates extends Component<TypeProps, any> {
           weekHoverStart={weekHoverStart}
           weekHoverEnd={weekHoverEnd}
           rangeChose={rangeChose}
+          againRangeChose={againRangeChose}
           rangeIndex={this.props.index}
           rangeStartIndex={rangeStartIndex}
           rangeEndIndex={rangeEndIndex}
+          againRangeStartIndex={againRangeStartIndex}
+          againRangeEndIndex={againRangeEndIndex}
           index={index}
           data-index={index}
           data-child={currentValue}
@@ -263,6 +299,7 @@ class Dates extends Component<TypeProps, any> {
             todayIndex={todayIndex}
             outMonth={index < weekIndex || index > lastDayIndexInMonth}
             choseDayIndex={choseDayIndex}
+            againChoseDayIndex={againChoseDayIndex}
             data-index={index}
             data-child={currentValue}
             disabled={disabled}
