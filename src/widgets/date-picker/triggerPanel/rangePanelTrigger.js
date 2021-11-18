@@ -323,8 +323,8 @@ class Range extends Component<TypeProps, TypeState> {
       };
     }
     this.drawPageAgain(renderValue, format);
-
-    let visible = this.panelChoseTimes !== 2;
+    const { panelChoseTimes: newPanelChoseTimes } = this;
+    let visible = newPanelChoseTimes !== 2;
     const { onOk, showTime } = this.props;
     if (onOk || showTime) {
       visible = true;
@@ -338,16 +338,14 @@ class Range extends Component<TypeProps, TypeState> {
           currentInputIndex: this.getNewInputIndex(currentInputIndex),
         };
 
-    if (!isDisabledOneSide) {
-      if (this.panelChoseTimes === 1) {
-        const { currentInputIndex } = autoDisabledValueState;
-        this.autoFocus = true;
-        this.inputRefs[currentInputIndex].current.focus();
-        this.autoFocus = false;
-      }
+    if (!isDisabledOneSide && newPanelChoseTimes === 1) {
+      const { currentInputIndex } = autoDisabledValueState;
+      this.autoFocus = true;
+      this.inputRefs[currentInputIndex].current.focus();
+      this.autoFocus = false;
     }
 
-    if (this.panelChoseTimes === 2) {
+    if (newPanelChoseTimes === 2) {
       this.panelChoseTimes = 0;
     }
     this.setState({
