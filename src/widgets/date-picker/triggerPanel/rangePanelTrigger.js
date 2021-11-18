@@ -132,7 +132,7 @@ class Range extends Component<TypeProps, TypeState> {
     const { format } = this.state;
     const { monthAndYear } = this;
     const currentValue = [];
-    monthAndYear.forEach((item, index) => {
+    monthAndYear.forEach(item => {
       currentValue.push(moment(item).format(format));
     });
     const hasValue = value[0] !== '' || value[1] !== '';
@@ -250,44 +250,49 @@ class Range extends Component<TypeProps, TypeState> {
     this.panelChange({ ...parmas, index: 1 });
   };
 
+  currentValueIsOutRange = (values: string[], currentValue: string, currentInputIndex: number) => {
+    const hasValue = this.hasDoubleValue(values);
+    const { format } = this.state;
+    if (hasValue) {
+      const outMaxValue = isAfterTime({ everyTime: currentValue, compareTime: values[1], format });
+      const outMinValue = isBeforeTime({ everyTime: currentValue, compareTime: values[0], format });
+      return (currentInputIndex === 0 && outMaxValue) || (currentInputIndex === 1 && outMinValue);
+    }
+    return false;
+  };
+
   panelChange = (param: Object) => {
     this.isClear = false;
 
     const { disabledStartTime, disabledEndTime } = this.props;
     const { newValue, event } = param;
-    const { format, rangeValue, value, currentInputIndex } = this.state;
+    const { format, rangeValue: rangeV, value, currentInputIndex } = this.state;
     const hasValue = this.hasDoubleValue(value);
-    const propsRangeValueDisabled = disabledStartTime || disabledEndTime;
 
     const { panelChoseTimes } = this;
-    this.panelChoseTimes = propsRangeValueDisabled ? 2 : panelChoseTimes + 1;
 
-    const isDisabledOneSide = propsRangeValueDisabled;
+    const isDisabledOneSide = disabledStartTime || disabledEndTime;
+
+    this.panelChoseTimes = isDisabledOneSide ? 2 : panelChoseTimes + 1;
 
     let newRangeValue = [];
-    if (isDisabledOneSide) {
+    let rangeValue = [...rangeV];
+    const isOutRange = this.currentValueIsOutRange(value, newValue, currentInputIndex);
+    if (isDisabledOneSide || (hasValue && !isOutRange)) {
       newRangeValue = rangeValue.length === 0 ? [...value] : [...rangeValue];
-
+      let newCurrentInputIndex = currentInputIndex;
       if (disabledStartTime) {
-        newRangeValue[1] = newValue;
+        newCurrentInputIndex = 1;
       } else if (disabledEndTime) {
-        newRangeValue[0] = newValue;
+        newCurrentInputIndex = 0;
       }
+      newRangeValue[newCurrentInputIndex] = newValue;
     } else {
-      if (hasValue) {
-        const outMaxValue = isAfterTime({ everyTime: newValue, compareTime: value[1], format });
-        const outMinValue = isBeforeTime({ everyTime: newValue, compareTime: value[0], format });
-        if ((currentInputIndex === 0 && outMaxValue) || (currentInputIndex === 1 && outMinValue)) {
-          newRangeValue = [];
-          newRangeValue.push(newValue);
-        } else {
-          newRangeValue = rangeValue.length === 0 ? [...value] : [...rangeValue];
-          newRangeValue[currentInputIndex] = newValue;
-        }
-      } else {
-        newRangeValue = rangeValue.length > 0 ? [rangeValue[0]] : [];
-        newRangeValue.push(newValue);
+      if (hasValue && isOutRange) {
+        rangeValue = [];
       }
+      newRangeValue = rangeValue.length > 0 ? [rangeValue[0]] : [];
+      newRangeValue.push(newValue);
     }
 
     const { length } = newRangeValue;
@@ -315,21 +320,21 @@ class Range extends Component<TypeProps, TypeState> {
     }
     this.drawPageAgain(renderValue, format);
 
-    let visible = this.panelChoseTimes === 2 ? false : true;
+    let visible = this.panelChoseTimes !== 2;
     const { onOk, showTime } = this.props;
     if (onOk || showTime) {
       visible = true;
     }
 
-    const autoDisabledValueState = propsRangeValueDisabled
+    const autoDisabledValueState = isDisabledOneSide
       ? { disabledStartValue: false, disabledEndValue: false }
       : {
           disabledStartValue: currentInputIndex === 0,
           disabledEndValue: currentInputIndex === 1,
-          currentInputIndex: currentInputIndex === 0 ? 1 : 0,
+          currentInputIndex: this.getNewInputIndex(currentInputIndex),
         };
 
-    if (!propsRangeValueDisabled) {
+    if (!isDisabledOneSide) {
       if (this.panelChoseTimes === 1) {
         const { currentInputIndex } = autoDisabledValueState;
         this.autoFocus = true;
@@ -346,6 +351,10 @@ class Range extends Component<TypeProps, TypeState> {
       visible,
       ...autoDisabledValueState,
     });
+  };
+
+  getNewInputIndex = (currentInputIndex: number) => {
+    return currentInputIndex === 0 ? 1 : 0;
   };
   exportOnChange = (renderValue: string[], oldValue: string[], event: Object) => {
     const { format } = this.state;
@@ -394,7 +403,7 @@ class Range extends Component<TypeProps, TypeState> {
     if (!hasValue) {
       return;
     }
-    const index = currentInputIndex === 0 ? 1 : 0;
+    const index = this.getNewInputIndex(currentInputIndex);
     const hoverRangeValue = [value[index], hoverValue];
 
     const { rangeIndex, choseDayIndex } = this.getRangeRenderIndex(hoverRangeValue, format);
@@ -470,12 +479,11 @@ class Range extends Component<TypeProps, TypeState> {
   onBlur = event => {
     const { value } = this.state;
     const { isValid } = this.getIsValid(value);
-    const hasValue = value[0] !== '' || value[1] !== '';
-    const noValue = value[0] === '' && value[1] === '';
+    const noValue = this.valueIsEmpty(value);
     if (noValue) {
       this.oldValue = ['', ''];
     }
-    if (hasValue && !isValid) {
+    if (!isValid) {
       const newValue =
         this.oldValue[0] && this.oldValue[1]
           ? this.oldValue
@@ -584,8 +592,8 @@ class Range extends Component<TypeProps, TypeState> {
         choseDayIndex,
       });
     }
-
-    if (getArrayLen(againRangeIndex[0] > 0) || getArrayLen(againRangeIndex[1] > 0)) {
+    const [startPanelIndex, endPanelIndex] = againRangeIndex;
+    if (getArrayLen(startPanelIndex) > 0 || getArrayLen(endPanelIndex) > 0) {
       this.setState({
         againRangeIndex: [],
         againChoseDayIndex: [],
