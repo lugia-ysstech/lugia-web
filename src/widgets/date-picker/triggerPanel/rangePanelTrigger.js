@@ -277,9 +277,12 @@ class Range extends Component<TypeProps, TypeState> {
 
     let newRangeValue = [];
     let rangeValue = [...rangeV];
+
     const isOutRange = this.currentValueIsOutRange(value, newValue, currentInputIndex);
+
     if (isDisabledOneSide || (hasValue && !isOutRange)) {
       newRangeValue = rangeValue.length === 0 ? [...value] : [...rangeValue];
+
       let newCurrentInputIndex = currentInputIndex;
       if (disabledStartTime) {
         newCurrentInputIndex = 1;
@@ -299,9 +302,10 @@ class Range extends Component<TypeProps, TypeState> {
     let renderValue = [];
     let setStateData;
     if (length === 1) {
-      renderValue = [newRangeValue[0], newRangeValue[0]];
+      const [startValue] = newRangeValue;
+      renderValue = [startValue, startValue];
       const newVal = ['', ''];
-      newVal[currentInputIndex] = newRangeValue[0];
+      newVal[currentInputIndex] = startValue;
       setStateData = {
         value: newVal,
         hasNormalvalue: true,
