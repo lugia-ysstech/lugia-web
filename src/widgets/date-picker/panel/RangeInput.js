@@ -75,10 +75,16 @@ class RangeInput extends Component<TypeProps, TypeState> {
     onChange && onChange({ event, newValue: value, oldValue: this.oldValue, number });
   };
   onHandleClick = (e: any) => {
-    const { onClick } = this.props;
-    onClick && onClick(e, true);
+    this.isOutInputClick = true;
+    const normalInputIndex = 0;
+    this.inputRefs[normalInputIndex].current.focus();
+    this.isOutInputClick = false;
+    this.onFocus(normalInputIndex)(e);
   };
   onFocus = (index: number) => (e: any) => {
+    if (this.isOutInputClick) {
+      return;
+    }
     const { value } = this.props;
     this.oldValue = [...value];
     const { onFocus } = this.props;
@@ -226,7 +232,6 @@ class RangeInput extends Component<TypeProps, TypeState> {
         <RangeInputWrap
           mode={mode}
           disabled={disabled}
-          onClick={readOnly || disabled || startDisabled || endDisabled ? '' : this.onHandleClick}
           themeProps={inputContainProps}
           {...addMouseEvent(this)}
         >
@@ -252,6 +257,9 @@ class RangeInput extends Component<TypeProps, TypeState> {
             <RangeMiddleSpan
               themeProps={middleSymbolTheme}
               {...this.props.dispatchEvent([['hover']], 'f2c')}
+              onClick={
+                readOnly || disabled || startDisabled || endDisabled ? '' : this.onHandleClick
+              }
             >
               {middleSymbol}
             </RangeMiddleSpan>
@@ -263,7 +271,6 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 onBlur={this.onBlur}
                 placeholder={placeholder[1]}
                 {...getConfig(1)}
-                // onClear={this.onClear}
                 {...this.props.dispatchEvent([['hover']], 'f2c')}
                 disabled={disabled || endDisabled}
                 getInputRef={param => {
