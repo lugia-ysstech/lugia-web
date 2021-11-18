@@ -23,6 +23,9 @@ import {
 } from '../utils/booleanUtils';
 import { getNewStepProps } from '../utils/utils';
 import { getFacePanelContain, getWrapThemeProps } from '../themeConfig/themeConfig';
+
+import { getArrayLen } from '@lugia/array-utils';
+
 type TypeProps = {
   defaultValue?: Array<string>,
   value?: Array<string>,
@@ -394,13 +397,8 @@ class Range extends Component<TypeProps, TypeState> {
     const index = currentInputIndex === 0 ? 1 : 0;
     const hoverRangeValue = [value[index], hoverValue];
 
-    const { monthAndYear, panelDatesArray } = this;
-    const { rangeIndex, choseDayIndex } = getIndexInRange(
-      hoverRangeValue,
-      monthAndYear,
-      panelDatesArray,
-      format
-    );
+    const { rangeIndex, choseDayIndex } = this.getRangeRenderIndex(hoverRangeValue, format);
+
     this.setState({ againRangeIndex: rangeIndex, againChoseDayIndex: choseDayIndex });
   };
 
@@ -539,6 +537,14 @@ class Range extends Component<TypeProps, TypeState> {
     this.setState({ value: newValue });
   };
   drawPageAgain = (rangeValue: Array<string>, format: string) => {
+    const { rangeIndex, choseDayIndex } = this.getRangeRenderIndex(rangeValue, format);
+    this.setState({ rangeIndex, choseDayIndex });
+  };
+
+  getRangeRenderIndex = (
+    rangeValue: Array<string>,
+    format: string
+  ): { rangeIndex: number[][], choseDayIndex: number[][] } => {
     const { monthAndYear, panelDatesArray } = this;
     const { rangeIndex, choseDayIndex } = getIndexInRange(
       rangeValue,
@@ -546,8 +552,9 @@ class Range extends Component<TypeProps, TypeState> {
       panelDatesArray,
       format
     );
-    this.setState({ rangeIndex, choseDayIndex });
+    return { rangeIndex, choseDayIndex };
   };
+
   componentDidMount() {
     const { format, panelValue } = this.state;
     this.monthAndYear = [...panelValue];
@@ -562,6 +569,30 @@ class Range extends Component<TypeProps, TypeState> {
     }
     this.onBlur();
   };
+
+  onMouseLeave = () => {
+    this.onDatePanelLeave();
+  };
+
+  onDatePanelLeave = () => {
+    const { value, againRangeIndex = [] } = this.state;
+    if (this.panelChoseTimes === 1 && !this.hasDoubleValue(value)) {
+      const { rangeValue, format } = this.state;
+      const { choseDayIndex } = this.getRangeRenderIndex([rangeValue[0]], format);
+      this.setState({
+        rangeIndex: [],
+        choseDayIndex,
+      });
+    }
+
+    if (getArrayLen(againRangeIndex[0] > 0) || getArrayLen(againRangeIndex[1] > 0)) {
+      this.setState({
+        againRangeIndex: [],
+        againChoseDayIndex: [],
+      });
+    }
+  };
+
   render() {
     const {
       value,
@@ -642,7 +673,7 @@ class Range extends Component<TypeProps, TypeState> {
               disabled={newDisabled}
               readOnly={readOnly}
             >
-              <RangeWrapInner>
+              <RangeWrapInner onMouseLeave={this.onMouseLeave}>
                 <SwitchPanel
                   {...this.props}
                   value={newMonthAndYear[0]}
@@ -662,6 +693,7 @@ class Range extends Component<TypeProps, TypeState> {
                   step={getNewStepProps(this.props)}
                   startDisabled={disabledStartValue_panel}
                   endDisabled={disabledEndValue_panel}
+                  onDatePanelLeave={this.onDatePanelLeave}
                 />
                 <SwitchPanel
                   {...this.props}
@@ -681,6 +713,7 @@ class Range extends Component<TypeProps, TypeState> {
                   noBorder
                   startDisabled={disabledStartValue_panel}
                   endDisabled={disabledEndValue_panel}
+                  onDatePanelLeave={this.onDatePanelLeave}
                 />
               </RangeWrapInner>
               <PageFooter
