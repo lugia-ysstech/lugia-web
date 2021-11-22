@@ -25,6 +25,7 @@ import getThemeProps, {
   getFacePanelContain,
   getIconTheme,
   getRangeInputPlaceholderTheme,
+  getWrapThemeProps,
 } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import getDateIcon from '../panel/InputIcon';
@@ -140,7 +141,10 @@ class DateInput extends Component<TypeProps, TypeState> {
     } = this.state;
     const { mode } = this.props;
     const { themeProps } = getFacePanelContain({ mode, getPartOfThemeProps }, 'FacePanelContain');
-    const inputContainProps = getThemeProps({ mode, getPartOfThemeProps }, 'Container');
+    const inputContainProps = getWrapThemeProps(
+      { getPartOfThemeProps, mode, validateStatus, size, visible, liquidLayout },
+      'Container'
+    );
     const { themeConfig: validateErrorText } = getThemeProps(
       { mode, getPartOfThemeProps },
       'ValidateErrorText'
