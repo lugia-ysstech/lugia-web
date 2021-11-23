@@ -618,7 +618,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const unit = paginationUnitText || '条/页';
     for (let i = 0; i < pageSizeOptions.length; i++) {
       optionsList.push({
-        value: pageSizeOptions[i] + unit,
+        value: pageSizeOptions[i],
         label: pageSizeOptions[i] + unit,
       });
     }
@@ -814,13 +814,10 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const { onShowSizeChange } = this.props;
     const { pageSize } = this.state;
     const { newValue } = obj;
-    const unit = '条/页';
-    const start = newValue.indexOf(unit);
-    const thePageSize = Number(newValue.substring(0, start));
-    if (pageSize !== thePageSize) {
-      this.setState({ pageSize: thePageSize });
+    if (pageSize !== newValue && newValue) {
+      this.setState({ pageSize: newValue });
+      onShowSizeChange && onShowSizeChange(this.getQuickJumperValue(), newValue);
     }
-    onShowSizeChange && onShowSizeChange(this.getQuickJumperValue(), thePageSize);
   };
 
   changePage = (page: number) => () => {
