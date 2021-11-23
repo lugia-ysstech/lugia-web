@@ -657,7 +657,7 @@ class Range extends Component<TypeProps, TypeState> {
     };
     const { themeProps } = getFacePanelContain({ mode, getPartOfThemeProps });
     const inputContainProps = getWrapThemeProps(
-      { mode, size, getPartOfThemeProps, validateStatus, visible },
+      { mode, size, getPartOfThemeProps, validateStatus, visible, liquidLayout },
       'Container'
     );
     const newDisabled = disabled || (disabledEndTime && disabledStartTime);

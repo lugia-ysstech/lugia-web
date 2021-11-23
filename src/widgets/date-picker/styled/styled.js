@@ -9,6 +9,15 @@ export const Box = CSSComponent({
     defaultTheme: {
       width: '100%',
     },
+    getStyle(themeMeta, themeConfig) {
+      const { propsConfig: { liquidLayout } = {} } = themeConfig;
+      const { height } = themeMeta;
+      const hasHeight = 'height' in themeMeta;
+      if (liquidLayout || !hasHeight) {
+        return {};
+      }
+      return { height };
+    },
   },
   hover: {
     selectNames: [],
