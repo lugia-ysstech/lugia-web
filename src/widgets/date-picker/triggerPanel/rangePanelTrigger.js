@@ -274,7 +274,6 @@ class Range extends Component<TypeProps, TypeState> {
     const isOutRange = this.currentValueIsOutRange(value, newValue, currentInputIndex);
 
     this.panelChoseTimes = isDisabledOneSide ? 2 : panelChoseTimes + 1;
-    console.log('this.panelChoseTimes', this.panelChoseTimes);
     const rangeValue =
       hasValue && isOutRange ? ['', ''] : this.valueIsEmpty(rangeV) ? [...value] : [...rangeV];
 
@@ -654,7 +653,6 @@ class Range extends Component<TypeProps, TypeState> {
       'Container'
     );
     const newDisabled = disabled || (disabledEndTime && disabledStartTime);
-    console.log('disabledStartValue', choseDayIndex);
     const disabledStartValue_panel = disabledStartTime || disabledStartValue;
     const disabledEndValue_panel = disabledEndTime || disabledEndValue;
     return (
