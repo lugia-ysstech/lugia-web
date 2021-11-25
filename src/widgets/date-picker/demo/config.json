@@ -15,6 +15,10 @@
     "title": "受控组件",
     "desc": "需要value 和 onChange 配合使用"
   },
+  "RangeSingleDate": {
+    "title": "默认单一日期配合组件受控",
+    "desc": "需要value 和 onChange 配合使用"
+  },
   "TimeDateDemo": {
     "title": "日期时间选择",
     "desc": "通过showTime属性，为组件内部创建TimePicker,使得日期组件可以选择时间"

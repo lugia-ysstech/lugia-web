@@ -266,75 +266,58 @@ class Range extends Component<TypeProps, TypeState> {
 
     const { disabledStartTime, disabledEndTime } = this.props;
     const { newValue, event } = param;
-    const { format, rangeValue: rangeV, value, currentInputIndex } = this.state;
+    const { format, rangeValue: rangeV = ['', ''], value, currentInputIndex } = this.state;
     const hasValue = this.hasDoubleValue(value);
-
     const { panelChoseTimes } = this;
 
     const isDisabledOneSide = disabledStartTime || disabledEndTime;
-
-    this.panelChoseTimes = isDisabledOneSide ? 2 : panelChoseTimes + 1;
-
-    let newRangeValue = [];
-    let rangeValue = [...rangeV];
-
     const isOutRange = this.currentValueIsOutRange(value, newValue, currentInputIndex);
 
-    if (isDisabledOneSide || (hasValue && !isOutRange)) {
-      newRangeValue = rangeValue.length === 0 ? [...value] : [...rangeValue];
+    this.panelChoseTimes = isDisabledOneSide ? 2 : panelChoseTimes + 1;
+    const rangeValue =
+      hasValue && isOutRange ? ['', ''] : this.valueIsEmpty(rangeV) ? [...value] : [...rangeV];
 
-      let newCurrentInputIndex = currentInputIndex;
-      if (disabledStartTime) {
-        newCurrentInputIndex = 1;
-      } else if (disabledEndTime) {
-        newCurrentInputIndex = 0;
-      }
-      newRangeValue[newCurrentInputIndex] = newValue;
+    const newRangeValue = hasValue && isOutRange ? ['', ''] : [...value];
+
+    let newCurrentInputIndex = currentInputIndex;
+    if (disabledStartTime) {
+      newCurrentInputIndex = 1;
+    } else if (disabledEndTime) {
+      newCurrentInputIndex = 0;
     } else {
-      if (hasValue && isOutRange) {
-        rangeValue = [];
+      const hasValueIndex = rangeValue.findIndex(v => v !== '');
+      if (hasValueIndex > 0) {
+        newCurrentInputIndex = this.getNewInputIndex(hasValueIndex);
       }
-      newRangeValue = rangeValue.length > 0 ? [rangeValue[0]] : [];
-      newRangeValue.push(newValue);
     }
+    newRangeValue[newCurrentInputIndex] = newValue;
 
-    const { length } = newRangeValue;
-    let renderValue = [];
-    let setStateData;
-    if (length === 1) {
-      const [startValue] = newRangeValue;
-      renderValue = [startValue, startValue];
-      const newVal = ['', ''];
-      newVal[currentInputIndex] = startValue;
-      setStateData = {
-        value: newVal,
-        hasNormalvalue: true,
-        rangeValue: newRangeValue,
-      };
-    }
+    const sortValue = this.exportOnChange(newRangeValue, this.changeOldValue, event);
 
-    if (length === 2) {
-      renderValue = [...newRangeValue];
-      const sortValue = this.exportOnChange(renderValue, this.changeOldValue, event);
-      setStateData = {
-        value: sortValue,
-        rangeValue: [],
-        isHover: false,
-      };
-    }
-    this.drawPageAgain(renderValue, format);
+    const singleDate = this.hasSingleValue(newRangeValue);
+    const choseDoubleValue = this.hasDoubleValue(newRangeValue);
+
+    const setStateData = {
+      value: sortValue,
+      rangeValue: choseDoubleValue ? [] : singleDate ? [singleDate, singleDate] : [],
+      isHover: false,
+    };
+
+    this.drawPageAgain(newRangeValue, format);
     const { panelChoseTimes: newPanelChoseTimes } = this;
     let visible = newPanelChoseTimes !== 2;
     const { onOk, showTime } = this.props;
-    if (onOk || showTime) {
+    const showOkFooter = onOk || showTime;
+    if (showOkFooter) {
       visible = true;
     }
 
+    const choseDone = newPanelChoseTimes === 2;
     const autoDisabledValueState = isDisabledOneSide
       ? { disabledStartValue: false, disabledEndValue: false }
       : {
-          disabledStartValue: currentInputIndex === 0,
-          disabledEndValue: currentInputIndex === 1,
+          disabledStartValue: choseDone ? false : currentInputIndex === 0,
+          disabledEndValue: choseDone ? false : currentInputIndex === 1,
           currentInputIndex: this.getNewInputIndex(currentInputIndex),
         };
 
@@ -344,14 +327,21 @@ class Range extends Component<TypeProps, TypeState> {
       this.inputRefs[currentInputIndex].current.focus();
       this.autoFocus = false;
     }
+    let againRangeState = {};
 
     if (newPanelChoseTimes === 2) {
       this.panelChoseTimes = 0;
+      againRangeState = {
+        againRangeIndex: [],
+        againChoseDayIndex: [],
+      };
     }
+
     this.setState({
       ...setStateData,
       visible,
       ...autoDisabledValueState,
+      ...againRangeState,
     });
   };
 
@@ -360,16 +350,16 @@ class Range extends Component<TypeProps, TypeState> {
   };
   exportOnChange = (renderValue: string[], oldValue: string[], event: Object) => {
     const { format } = this.state;
-    const { isValid } = this.getIsValid(renderValue);
     const { onChange } = this.props;
     const newValue = this.getSortValue(renderValue, format);
-    if (isValid) {
-      onChange && onChange({ newValue, oldValue, event });
-      this.onBlur();
-    }
+    onChange && onChange({ newValue, oldValue, event });
     return newValue;
   };
+
   getSortValue = (rangeValue: Array<string>, format: string) => {
+    if (!this.hasDoubleValue(rangeValue)) {
+      return rangeValue;
+    }
     const range = [];
     rangeValue.forEach(value => {
       if (value) {
@@ -377,6 +367,8 @@ class Range extends Component<TypeProps, TypeState> {
         if (isValid) {
           range.push(value);
         }
+      } else {
+        range.push('');
       }
     });
 
@@ -431,7 +423,7 @@ class Range extends Component<TypeProps, TypeState> {
   };
 
   valueIsEmpty = (value: string[]) => {
-    return value[0] === '' && value[1] === '';
+    return getArrayLen(value) === 0 || (value[0] === '' && value[1] === '');
   };
 
   hasDoubleValue = (value: string[]): boolean => {
@@ -439,7 +431,7 @@ class Range extends Component<TypeProps, TypeState> {
   };
 
   hasSingleValue = (value: string[]): boolean => {
-    return value[0] || value[1];
+    return !this.hasDoubleValue(value) && (value[0] || value[1]);
   };
 
   onFocus = (e: any, index: number, inputRefs: { [key: string]: any }) => {
@@ -661,7 +653,6 @@ class Range extends Component<TypeProps, TypeState> {
       'Container'
     );
     const newDisabled = disabled || (disabledEndTime && disabledStartTime);
-
     const disabledStartValue_panel = disabledStartTime || disabledStartValue;
     const disabledEndValue_panel = disabledEndTime || disabledEndValue;
     return (
