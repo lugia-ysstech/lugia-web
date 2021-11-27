@@ -155,6 +155,7 @@ export default class Sl extends Component<any> {
           },
         },
       },
+      TextPadding: { normal: { padding: { left: 10, right: 10 } } },
       InputPrefix: { normal: { color: 'pink', fontSize: 16 } },
       InputSuffix: { normal: { color: 'red', fontSize: 16 } },
       ClearButton: { normal: { color: 'red', fontSize: 14 } },
@@ -382,7 +383,7 @@ export default class Sl extends Component<any> {
               extraFooter={{ message: 'extraFooter' }}
               onOk={this.onOk}
               //disabled
-              suffix={'lugia-icon-financial_date'}
+              prefix={'lugia-icon-financial_date'}
             />
             <DatePicker
               value={this.state.value}

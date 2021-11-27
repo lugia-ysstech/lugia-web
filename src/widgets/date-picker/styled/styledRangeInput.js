@@ -100,9 +100,6 @@ export const RangeInputInnerInput = CSSComponent({
   },
   css: css`
     width: 50%;
-    & input {
-      ${props => (props.last ? ' padding-left: 0 !important;' : '')};
-    }
   `,
 });
 export const RangeMiddleSpan = CSSComponent({
@@ -124,6 +121,5 @@ export const RangeMiddleSpan = CSSComponent({
     display: flex;
     align-items: center;
     background: transparent;
-    padding: 0 ${getThemeUpdate().paddingToText}px;
   `,
 });

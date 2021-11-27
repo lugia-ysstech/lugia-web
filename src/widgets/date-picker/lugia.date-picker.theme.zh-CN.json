@@ -45,6 +45,13 @@
                 }
               },
               {
+                "name": "文本边距",
+                "path": ["TextPadding"],
+                "description": {
+                  "spacingPart": { "text": "文本边距", "desc": "文本边距" }
+                }
+              },
+              {
                 "name": "清除图标",
                 "path": ["ClearButton"],
                 "props": [

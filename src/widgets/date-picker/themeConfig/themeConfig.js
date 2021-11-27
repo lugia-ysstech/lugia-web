@@ -221,6 +221,23 @@ export function getDateTheme(props) {
     alignRangeHoverBgColor: getAlignRangeHoverBgColor(rangeNormalBgColor),
   };
 }
+export function getRangeInputTextPaddingTheme(props) {
+  const { getPartOfThemeProps } = props;
+  const themeProps = getPartOfThemeProps('TextPadding');
+
+  const { themeConfig } = themeProps;
+  const { normal: { padding = {} } = {} } = themeConfig;
+
+  return {
+    padding: {
+      left: 10,
+      right: 10,
+      ...padding,
+      top: 0,
+      bottom: 0,
+    },
+  };
+}
 
 export function getAlignRangeHoverBgColor(color: string) {
   let hexColor = color.startsWith('#') ? color : '';
