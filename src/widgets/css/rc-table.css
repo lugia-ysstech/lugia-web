@@ -164,6 +164,9 @@
 }
 .rc-table-expanded-row-fixed {
   box-sizing: border-box;
+  margin: -16px -8px;
+  padding: 16px 8px;
+  margin-right: -10px;
 }
 .rc-table-expanded-row-fixed::after {
   content: '';
