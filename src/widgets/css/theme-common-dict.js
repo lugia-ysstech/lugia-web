@@ -167,7 +167,7 @@ function getReduceColor(
 /**
  * 加载lugia-web的默认主题
  */
-if (!dict[NameSpace]) {
+if (!dict.namespace2value[NameSpace]) {
   dict.load(NameSpace, PublicValue);
   load(PublicValue);
 }
