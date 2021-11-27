@@ -2,11 +2,27 @@ import React, { Component } from 'react';
 import Icon from '../../icon';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
-import styled from 'styled-components';
+import CSSComponent from '@lugia/theme-css-hoc';
 
-const IconWrap = styled.div`
-  display: flex;
-`;
+const IconWrap = CSSComponent({
+  tag: 'div',
+  className: 'IconWrap',
+  normal: {
+    selectNames: [],
+    getStyle(themeMeta) {
+      const { font: { size } = {}, fontSize } = themeMeta;
+      const iconSize = size || fontSize;
+      return { width: iconSize, height: iconSize };
+    },
+  },
+  hover: { selectNames: [] },
+  active: { selectNames: [] },
+  focus: { selectNames: [] },
+  disabled: { selectNames: [] },
+  css: `
+      display: flex;
+  `,
+});
 
 class Suffix extends Component {
   state = {
@@ -50,18 +66,24 @@ class Suffix extends Component {
     this.setState({ isEnter: false });
   };
   render() {
-    const { suffix, value, canClear } = this.props;
+    const { suffix, value, canClear, clearButtonTheme } = this.props;
     const { isEnter } = this.state;
     return (
       <React.Fragment>
         {suffix && typeof suffix === 'string' ? (
-          <IconWrap onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+          <IconWrap
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+            themeProps={clearButtonTheme}
+          >
             {isEnter && canClear ? this.clearBtn() : <Icon iconClass={suffix} />}
           </IconWrap>
         ) : value && canClear ? (
-          this.clearBtn()
+          <IconWrap themeProps={clearButtonTheme}>{this.clearBtn()}</IconWrap>
         ) : (
-          <i />
+          <IconWrap themeProps={clearButtonTheme}>
+            <i />
+          </IconWrap>
         )}
       </React.Fragment>
     );
