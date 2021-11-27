@@ -9174,6 +9174,11 @@ export default [
           focus: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
           disabled: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
         },
+        TextPadding: {
+          name: '文本边距',
+          desc: '文本边距配置',
+          normal: [['padding', 'left', 'right']],
+        },
         Placeholder: {
           name: '文本框提示信息',
           desc: '文本框提示信息配置',
