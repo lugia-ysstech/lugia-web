@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import Icon from '../../icon';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
+import styled from 'styled-components';
+
+const IconWrap = styled.div`
+  display: flex;
+`;
 
 class Suffix extends Component {
   state = {
@@ -50,15 +55,9 @@ class Suffix extends Component {
     return (
       <React.Fragment>
         {suffix && typeof suffix === 'string' ? (
-          <div onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
-            {isEnter && canClear ? (
-              <span>{this.clearBtn()}</span>
-            ) : (
-              <span>
-                <Icon iconClass={suffix} />
-              </span>
-            )}
-          </div>
+          <IconWrap onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+            {isEnter && canClear ? this.clearBtn() : <Icon iconClass={suffix} />}
+          </IconWrap>
         ) : value && canClear ? (
           this.clearBtn()
         ) : (

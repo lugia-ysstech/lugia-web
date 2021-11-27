@@ -17,10 +17,11 @@ import {
   getIconTheme,
   getRangeInputMiddleSymbolTheme,
   getRangeInputPlaceholderTheme,
+  getRangeInputTextPaddingTheme,
 } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import getDateIcon from '../panel/InputIcon';
-import { getLimitInputValue } from '../utils/utils';
+
 type TypeProps = {
   onChange?: Function,
   onClick?: Function,
@@ -177,6 +178,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
       size,
       getPartOfThemeProps,
     });
+    const textPaddingTheme = getRangeInputTextPaddingTheme(this.props);
     return (
       <Theme
         config={{
@@ -186,6 +188,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 width: '100%',
                 border: getBorder({ style: '', width: 0, color: '' }),
                 textAlign,
+                ...textPaddingTheme,
               },
             },
             Input: {
@@ -244,13 +247,13 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 placeholder={placeholder[0]}
                 onBlur={this.onBlur}
                 {...getConfig(0)}
-                suffix={<i />}
                 {...this.props.dispatchEvent([['hover']], 'f2c')}
                 disabled={disabled || startDisabled}
                 getInputRef={param => {
                   const { ref } = param;
                   this.inputRefs[0] = ref;
                 }}
+                canClear={false}
               />
             </RangeInputInnerInput>
 
