@@ -14,9 +14,7 @@
 }
 .rc-table th,
 .rc-table td {
-  padding: 0;
   position: relative;
-  border: 1px solid red;
   border-top: 0;
   border-left: 0;
   transition: box-shadow 0.3s;
@@ -149,7 +147,6 @@
   border-radius: 5px 0 0 0;
 }
 .rc-table-body {
-  border: 1px solid red;
   border-right: 0;
   border-bottom: 0;
   border-top: 0;
@@ -160,7 +157,6 @@
   right: 0;
   top: 0;
   bottom: 0;
-  border-right: 1px solid red;
   z-index: 1;
 }
 .rc-table-expanded-row .rc-table-cell {
@@ -176,10 +172,9 @@
   content: '';
   position: absolute;
   width: 0;
+  right: 0;
   top: 0;
   bottom: 0;
-  right: 1px;
-  border-right: 1px solid red;
 }
 .rc-table-row-expand-icon {
   display: inline-block;

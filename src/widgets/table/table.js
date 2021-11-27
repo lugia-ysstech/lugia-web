@@ -699,7 +699,7 @@ export default ThemeProvider(
             this.tableWrap = el;
           }}
           themeProps={containerPartOfThemeProps}
-          className={this.getClass(tableStyle, size)}
+          className={this.getClass(tableStyle, size, key)}
         >
           <RcTable
             {...this.getDefaultEmpty()}
@@ -717,10 +717,13 @@ export default ThemeProvider(
     }
     getClass = (
       tableStyle: 'zebraStripe' | 'linear' | 'bordered',
-      size: 'default' | 'small' | 'large'
+      size: 'default' | 'small' | 'large',
+      key: 'exist' | 'empty'
     ): string => {
+      const emptyClassName = key === 'empty' ? 'lugia-table-empty' : '';
       const sizeClassName = `lugia-${size}-table`;
-      return `lugia-table lugia-table-${tableStyle} ${sizeClassName}`;
+
+      return `lugia-table lugia-table-${tableStyle} ${sizeClassName} ${emptyClassName}`;
     };
   },
   Widget.Table

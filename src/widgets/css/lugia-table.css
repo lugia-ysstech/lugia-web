@@ -130,3 +130,6 @@
 :global(.lugia-large-table .rc-table tbody .rc-table-row) {
   height: 40px;
 }
+:global(.lugia-table-empty .rc-table-cell) {
+  padding: 0 !important;
+}
