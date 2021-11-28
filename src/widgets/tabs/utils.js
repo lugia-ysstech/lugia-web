@@ -26,8 +26,8 @@ export function plusWidth(index: number, width: Array<number>): number {
   return sum;
 }
 
-export function computePage(offset: number, actualSize: number): number {
-  const totalPage = Math.ceil(actualSize / offset);
+export function computePage(data: Array<Object>, maxIndex: number): number {
+  const totalPage = Math.ceil(data.length / maxIndex);
   return totalPage;
 }
 
@@ -80,4 +80,45 @@ export function isValued(value: string) {
 
 export function isBatchValued(value: string[]) {
   return value.some(item => isValued(item));
+}
+
+export const defaultCardBlock = 8;
+
+export function computeMoveDistance(param) {
+  const { maxIndex, currentPage, titleSize, tabType, pagedType, tabPosition } = param;
+  const isPageType = pagedType === 'page';
+  const distanceLength = currentPage - 1;
+  const blockDistance = tabType === 'card' ? defaultCardBlock : 0;
+
+  const length = isPageType
+    ? isVertical(tabPosition)
+      ? distanceLength * maxIndex - 1
+      : distanceLength * maxIndex
+    : maxIndex;
+  let beforeWidth = 0;
+  if (length) {
+    for (let i = 0; i < length; i++) {
+      beforeWidth += titleSize[Math.min(i, titleSize.length - 1)] + blockDistance;
+    }
+  }
+  let distance = 0;
+  switch (pagedType) {
+    case 'single':
+      if (distanceLength) {
+        const movedSzie = titleSize.slice(maxIndex, maxIndex + distanceLength);
+        distance = movedSzie.length
+          ? movedSzie.reduce(function(prev, curr) {
+              return prev + curr + blockDistance;
+            })
+          : 0;
+      }
+      break;
+    case 'page':
+      distance = beforeWidth;
+      break;
+    default:
+      break;
+  }
+
+  return -Math.max(0, distance);
 }

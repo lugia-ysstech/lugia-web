@@ -889,6 +889,7 @@ const testHeader = {
 };
 
 const typeList = ['line', 'card', 'window'];
+const pagetype = ['single', 'page'];
 
 type TabpaneProps = {};
 
@@ -898,6 +899,23 @@ type TabpaneState = {
   activityValue: string,
   abc: Array<Object>,
 };
+
+const getPageData = () => {
+  const defaultData = [];
+  for (let i = 0; i < 25; i++) {
+    const valueNumber = getRandom(1000);
+    const valueNumberAfter = getRandom(40);
+    const title = `Tab${valueNumber}${valueNumberAfter}`;
+    const item = {
+      title,
+      content: <CustomContent>Content of new {title}</CustomContent>,
+      value: title,
+    };
+    defaultData.push(item);
+  }
+  return defaultHome.concat(defaultData);
+};
+const pageData = getPageData();
 
 export default class TabsDemo extends React.Component<any, any> {
   static getDerivedStateFromProps(nextProps: TabpaneProps, state: TabpaneState) {
@@ -1050,6 +1068,40 @@ export default class TabsDemo extends React.Component<any, any> {
     return (
       <div>
         <FlexContainer>
+          <BlockContainer>
+            <div style={{ margin: 20 }}>
+              {pageData &&
+                pageData.map((item, index) => {
+                  return (
+                    <Button type={'primary'} onClick={this.changeActiveValue(item.title)}>
+                      {item.title}--{index}
+                    </Button>
+                  );
+                })}
+            </div>
+            {pagetype.map(type => {
+              return typeList.map(item => {
+                return (
+                  <div>
+                    <Description>
+                      tabType: {item}; pagedType: {type}
+                    </Description>
+                    <Tabs
+                      activeValue={activeValue}
+                      data={pageData}
+                      showDeleteBtn={true}
+                      isShowArrowIcon={true}
+                      showDividerLine={true}
+                      showAddBtn={true}
+                      tabType={item}
+                      pagedType={type}
+                    />
+                  </div>
+                );
+              });
+            })}
+          </BlockContainer>
+
           <BlockContainer>
             <Description>动态切换页签时跟随滚动</Description>
 
