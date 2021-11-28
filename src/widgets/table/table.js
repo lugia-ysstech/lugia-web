@@ -692,14 +692,17 @@ export default ThemeProvider(
           ? getIconByType(expandIcon, 'ExpandIcon')
           : getIconByType(collapseIcon, 'CollapseIcon');
       };
-      const key = tableData && tableData.length > 0 ? 'exist' : 'empty';
+      const notEmptyData = tableData && tableData.length > 0;
+      const key = notEmptyData ? 'exist' : 'empty';
+      const chosenScroll = notEmptyData ? { ...scroll, ...propsScroll } : {};
+
       return (
         <TableWrap
           ref={el => {
             this.tableWrap = el;
           }}
           themeProps={containerPartOfThemeProps}
-          className={this.getClass(tableStyle, size, key)}
+          className={this.getClass(tableStyle, size)}
         >
           <RcTable
             {...this.getDefaultEmpty()}
@@ -708,7 +711,7 @@ export default ThemeProvider(
             data={tableData}
             showHeader={showHeader}
             expandIconColumnIndex={expandIconColumnIndex}
-            scroll={{ ...scroll, ...propsScroll }}
+            scroll={chosenScroll}
             expandIcon={(expandIcon || collapseIcon) && customExpandIcon}
             key={key}
           />
@@ -717,13 +720,11 @@ export default ThemeProvider(
     }
     getClass = (
       tableStyle: 'zebraStripe' | 'linear' | 'bordered',
-      size: 'default' | 'small' | 'large',
-      key: 'exist' | 'empty'
+      size: 'default' | 'small' | 'large'
     ): string => {
-      const emptyClassName = key === 'empty' ? 'lugia-table-empty' : '';
       const sizeClassName = `lugia-${size}-table`;
 
-      return `lugia-table lugia-table-${tableStyle} ${sizeClassName} ${emptyClassName}`;
+      return `lugia-table lugia-table-${tableStyle} ${sizeClassName}`;
     };
   },
   Widget.Table
