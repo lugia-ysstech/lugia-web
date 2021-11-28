@@ -3,6 +3,10 @@
     "title": "基本",
     "desc": "日期组件基本用法"
   },
+  "DoubleRangeDate": {
+    "title": "范围日期组件-双日期框展示",
+    "desc": "范围日期组件-双日期框展示使用方法"
+  },
   "FormatDemo": {
     "title": "日期格式",
     "desc": "使用format指定日期格式"
