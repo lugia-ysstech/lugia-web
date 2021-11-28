@@ -463,15 +463,11 @@ class TabHeader extends Component<TabsProps, TabsState> {
       return;
     }
 
-    const scrollBoxSize = this.getScrollBoxSize();
-    const actualSize = this.getActualWidthOrHeight();
-
     const { data, activityValue, pagedType, tabType, tabPosition, isShowArrowIcon } = this.props;
     const { arrowShow } = this.state;
     if (!isShowArrowIcon || !arrowShow) {
       return;
     }
-    console.log('isShowArrowIcon', isShowArrowIcon);
     const titleSize = this.getTabpaneWidthOrHeight();
     const isPageType = pagedType === 'page';
     const maxIndex = this.getCurrentMaxIndex(titleSize);
