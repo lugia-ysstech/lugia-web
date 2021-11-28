@@ -134,7 +134,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   };
 
   quitEdit = (res: Object): void => {
-    const { oldValue, newValue } = res;
+    const { oldValue, newValue, isQuit = true } = res;
     if (oldValue !== newValue) {
       const editCell = this.editTableListener.getEditCell();
       const { data, columns, showHeader = true } = this.props;
@@ -180,7 +180,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
         selectItem: { selectRow: realSelectRow, selectColumn },
       });
     }
-    this.clearEditState();
+    isQuit && this.clearEditState();
   };
 
   clearEditState = (): void => {
