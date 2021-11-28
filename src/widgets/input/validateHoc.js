@@ -80,7 +80,6 @@ const ValidateHoc = (Target: Object) => {
       }
 
       if (validateType === 'inner') {
-        console.info(innerThemeProps, 11111111);
         return (
           <FatherContainer themeProps={ContainerThemeProps}>
             {result}
