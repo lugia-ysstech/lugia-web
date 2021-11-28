@@ -26,7 +26,7 @@ import { getFacePanelContain, getWrapThemeProps } from '../themeConfig/themeConf
 
 import { getArrayLen } from '@lugia/array-utils';
 
-type TypeProps = {
+export type TypeProps = {
   defaultValue?: Array<string>,
   value?: Array<string>,
   format?: string,

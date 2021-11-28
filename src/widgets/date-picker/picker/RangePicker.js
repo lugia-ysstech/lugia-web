@@ -3,12 +3,19 @@ import Widget from '../../consts/index';
 import ThemeProvider from '../../theme-provider';
 import Range from '../triggerPanel/rangePanelTrigger';
 import ValidateHoc from '../../input/validateHoc';
-
+import RangePickerDoubleInput from '../triggerPanel/RangePicker_double_input';
+import { isDoubleDate } from '../utils/booleanUtils';
 export default ThemeProvider(
   ValidateHoc(
     class RangePicker extends Component {
       render() {
-        return <Range {...this.props} mode={'range'} />;
+        const { type } = this.props;
+        const isDouble = isDoubleDate(type);
+        return isDouble ? (
+          <RangePickerDoubleInput {...this.props} mode={'range'} />
+        ) : (
+          <Range {...this.props} mode={'range'} />
+        );
       }
     }
   ),

@@ -54,6 +54,7 @@ type TypeProps = {
   limitMinValue?: string,
   limitMaxValue?: string,
   canClear?: boolean,
+  type?: string,
 };
 type TypeState = {
   value: string,
@@ -127,6 +128,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       step,
       showTime,
       canClear = true,
+      type,
     } = this.props;
     const {
       value,
@@ -142,7 +144,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { mode } = this.props;
     const { themeProps } = getFacePanelContain({ mode, getPartOfThemeProps }, 'FacePanelContain');
     const inputContainProps = getWrapThemeProps(
-      { getPartOfThemeProps, mode, validateStatus, size, visible, liquidLayout },
+      { getPartOfThemeProps, mode, validateStatus, size, visible, liquidLayout, type },
       'Container'
     );
     const { themeConfig: validateErrorText } = getThemeProps(

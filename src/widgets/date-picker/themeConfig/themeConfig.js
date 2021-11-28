@@ -1,6 +1,6 @@
 import { deepMerge } from '@lugia/object-utils';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
-import { modeStyle } from '../utils/booleanUtils';
+import { isDoubleDate, modeStyle } from '../utils/booleanUtils';
 import {
   validateValueDefaultTheme,
   validateBorderDefaultTheme,
@@ -39,7 +39,7 @@ function getDefaultStyleFromSize(size: string) {
   };
 }
 export function getWrapThemeProps(props, partName) {
-  const { getPartOfThemeProps, mode, validateStatus, size, visible, liquidLayout } = props;
+  const { getPartOfThemeProps, mode, validateStatus, size, visible, liquidLayout, type } = props;
   const themeProps = deepMerge(getPartOfThemeProps(partName), {});
   themeProps.propsConfig = { mode, liquidLayout };
   themeProps.themeState.focus = visible;
@@ -70,6 +70,11 @@ export function getWrapThemeProps(props, partName) {
 
   const deeMergeTheme = deepMerge(defaultNormal, themeConfig) || {};
   const { normal = {}, hover = {}, active = {}, focus = {}, disabled = {} } = deeMergeTheme;
+  const isDouble = isDoubleDate(type);
+  const { isDate } = modeStyle(mode);
+  if (isDouble && isDate) {
+    normal.width = '100%';
+  }
   const { borderRadius } = normal;
   const deafultHoverBorderColor = {
     border: getBorder(hoverBorder),
@@ -119,7 +124,7 @@ export function getWrapThemeProps(props, partName) {
   return themeProps;
 }
 export function getRangeInputMiddleSymbolTheme(props) {
-  const { getPartOfThemeProps, size } = props;
+  const { getPartOfThemeProps, size, type = 'default' } = props;
 
   const themeProps = getPartOfThemeProps('RangeInputMiddleSymbol');
   const { defaultFontSize } = getDefaultStyleFromSize(size);
@@ -127,10 +132,12 @@ export function getRangeInputMiddleSymbolTheme(props) {
   const font = {
     fontSize: defaultFontSize,
   };
+  const margin = type === 'double' ? { margin: { left: 10, right: 10 } } : {};
   const defaultTheme = {
     normal: {
       color: darkGreyColor,
       ...font,
+      ...margin,
     },
     disabled: {
       color: disableTextColor,
