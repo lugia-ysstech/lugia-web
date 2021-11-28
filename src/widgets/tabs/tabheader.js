@@ -502,7 +502,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     let maxIndex = 0;
     let distance = 0;
     const actuallySize = this.getScrollBoxSize();
-    const margin = isVertical(tabPosition) || matchType(tabType, 'line') ? 0 : 8;
+    const margin = isVertical(tabPosition) || !matchType(tabType, 'card') ? 0 : 8;
     titleSize.some((item, index) => {
       distance += item + margin;
       if (distance > actuallySize) {
