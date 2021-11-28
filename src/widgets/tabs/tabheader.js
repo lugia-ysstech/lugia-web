@@ -463,10 +463,11 @@ class TabHeader extends Component<TabsProps, TabsState> {
       return;
     }
 
-    const scrollBoxSize = this.getScrollBoxSize();
-    const actualSize = this.getActualWidthOrHeight();
-
-    const { data, activityValue, pagedType, tabType, tabPosition } = this.props;
+    const { data, activityValue, pagedType, tabType, tabPosition, isShowArrowIcon } = this.props;
+    const { arrowShow } = this.state;
+    if (!isShowArrowIcon || !arrowShow) {
+      return;
+    }
     const titleSize = this.getTabpaneWidthOrHeight();
     const isPageType = pagedType === 'page';
     const maxIndex = this.getCurrentMaxIndex(titleSize);
@@ -501,7 +502,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     let maxIndex = 0;
     let distance = 0;
     const actuallySize = this.getScrollBoxSize();
-    const margin = isVertical(tabPosition) || matchType(tabType, 'line') ? 0 : 8;
+    const margin = isVertical(tabPosition) || !matchType(tabType, 'card') ? 0 : 8;
     titleSize.some((item, index) => {
       distance += item + margin;
       if (distance > actuallySize) {
@@ -592,7 +593,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     );
     const IconThemeProps = this.props.getPartOfThemeHocProps('ArrowIcon');
     return (
-      <VTabsOutContainer themeProps={tabsOutContainerThemeProps} ref={this.scrollBox}>
+      <VTabsOutContainer themeProps={tabsOutContainerThemeProps}>
         {isShowArrowIcon
           ? this.getPrevOrNextPage(
               'prev',
@@ -602,7 +603,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
               isDisabledToNext
             )
           : null}
-        <VTabsContainer themeProps={themeProps}>
+        <VTabsContainer themeProps={themeProps} ref={this.scrollBox}>
           <YscrollerContainer y={distance} themeProps={themeProps} ref={this.tabPanBox}>
             {this.getChildren()}
           </YscrollerContainer>
