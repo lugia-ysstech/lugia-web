@@ -40,6 +40,18 @@ export const TipBottom = CSSComponent({
   },
 });
 
+function getColorCSS(themeMeta, themeProps, status) {
+  const { background } = themeMeta;
+  const theColor =
+    background && background.color
+      ? background.color
+      : status === 'disabled'
+      ? get('disableColor')
+      : 'white';
+  return `${getTipShowCSS(themeProps)};background-color:${theColor};
+          box-shadow: ${px2remcss(-14)} 0 ${px2remcss(6)} 0 ${theColor};`;
+}
+
 export const InnerTipText: Object = CSSComponent({
   tag: 'span',
   className: 'InnerTip',
@@ -50,10 +62,19 @@ export const InnerTipText: Object = CSSComponent({
       fontSize: 12,
     },
     getCSS(themeMeta: Object, themeProps: Object) {
-      const { background } = themeMeta;
-      const theColor = background && background.color ? background.color : 'white';
-      return `${getTipShowCSS(themeProps)};background-color:${theColor};
-          box-shadow: ${px2remcss(-14)} 0 ${px2remcss(6)} 0 ${theColor};`;
+      return getColorCSS(themeMeta, themeProps, 'normal');
+    },
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [['background']],
+    getCSS(themeMeta: Object, themeProps: Object) {
+      return getColorCSS(themeMeta, themeProps, 'disabled');
     },
   },
   css: css`
