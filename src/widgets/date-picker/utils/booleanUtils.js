@@ -101,3 +101,7 @@ export function getValueIsInLimit(param: {
   }
   return true;
 }
+
+export function isDoubleDate(type: string) {
+  return type === 'double';
+}

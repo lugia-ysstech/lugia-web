@@ -132,7 +132,7 @@ function getValueFromValue(nextProps: Object, preState: Object): Array<string> |
 
   return newValue;
 }
-function getPlaceholder(nextProps: Object): Array<string> {
+export function getPlaceholder(nextProps: Object): Array<string> {
   const { mode, placeholder } = nextProps;
   const hasPlaceholder = placeholder && 'placeholder' in nextProps;
   const { isRange, isTime, isTimes } = modeStyle(mode);
