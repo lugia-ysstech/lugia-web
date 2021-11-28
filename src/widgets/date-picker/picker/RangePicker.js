@@ -3,7 +3,7 @@ import Widget from '../../consts/index';
 import ThemeProvider from '../../theme-provider';
 import Range from '../triggerPanel/rangePanelTrigger';
 import ValidateHoc from '../../input/validateHoc';
-import RangePickerDoubleInput from '../triggerPanel/RangePicker_double_input';
+import RangePickerDoubleInput from '../triggerPanel/RangePickerDoubleInput';
 import { isDoubleDate } from '../utils/booleanUtils';
 export default ThemeProvider(
   ValidateHoc(

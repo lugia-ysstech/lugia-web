@@ -51,7 +51,7 @@ export default (props: TypeProps) => {
       oldValueRef.current[valueIndex] = oldValue;
     }
 
-    onChange && onChange({ newValue: valueRef.current, oldValue: oldValueRef.current });
+    onChange && onChange({ newValue: [...valueRef.current], oldValue: [...oldValueRef.current] });
   };
   const newPlaceholder = getPlaceholder({ placeholder, mode });
 
