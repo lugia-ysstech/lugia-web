@@ -90,11 +90,7 @@ export function computeMoveDistance(param) {
   const distanceLength = currentPage - 1;
   const blockDistance = tabType === 'card' ? defaultCardBlock : 0;
 
-  const length = isPageType
-    ? isVertical(tabPosition)
-      ? distanceLength * maxIndex - 1
-      : distanceLength * maxIndex
-    : maxIndex;
+  const length = isPageType ? distanceLength * maxIndex : maxIndex;
   let beforeWidth = 0;
   if (length) {
     for (let i = 0; i < length; i++) {
