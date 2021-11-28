@@ -45,6 +45,7 @@ const ValidateHoc = (Target: Object) => {
         getPartOfThemeHocProps,
         getPartOfThemeProps,
         getPartOfThemeConfig,
+        hiddenHelp = false,
       } = this.props;
       const { _isValidateVisible } = this.state;
       const theHelp = help || DefaultHelp;
@@ -57,7 +58,7 @@ const ValidateHoc = (Target: Object) => {
         />
       );
       const isOpenValidate = hasValidateStatusInProps(this.props);
-      if (!isOpenValidate) {
+      if (!isOpenValidate || hiddenHelp) {
         return <Target {...this.props} />;
       }
       const innerProps =
