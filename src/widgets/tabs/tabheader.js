@@ -497,11 +497,6 @@ class TabHeader extends Component<TabsProps, TabsState> {
     });
   }
 
-  inSamePageRange = (param: Object) => {
-    const { newPage, oldPage, maxIndex } = param;
-    return newPage < oldPage && newPage >= oldPage - maxIndex;
-  };
-
   getCurrentMaxIndex(titleSize: Array<number>) {
     const { tabPosition, tabType } = this.props;
     let maxIndex = 0;
@@ -598,7 +593,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     );
     const IconThemeProps = this.props.getPartOfThemeHocProps('ArrowIcon');
     return (
-      <VTabsOutContainer themeProps={tabsOutContainerThemeProps} ref={this.scrollBox}>
+      <VTabsOutContainer themeProps={tabsOutContainerThemeProps}>
         {isShowArrowIcon
           ? this.getPrevOrNextPage(
               'prev',
@@ -608,7 +603,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
               isDisabledToNext
             )
           : null}
-        <VTabsContainer themeProps={themeProps}>
+        <VTabsContainer themeProps={themeProps} ref={this.scrollBox}>
           <YscrollerContainer y={distance} themeProps={themeProps} ref={this.tabPanBox}>
             {this.getChildren()}
           </YscrollerContainer>
