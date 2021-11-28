@@ -116,6 +116,13 @@
           "type": "icon"
         }
       ]
+    },
+    "hiddenHelp": {
+      "desc": "是否隐藏校验信息,只显示错误边框样式",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
+      "propsDefaultValue": false
     }
   },
   "events": {

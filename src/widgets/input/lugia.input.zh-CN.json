@@ -148,6 +148,13 @@
       "type": "string",
       "designOnly": false,
       "injectProps": false
+    },
+    "hiddenHelp": {
+      "desc": "是否隐藏校验信息,只显示错误边框样式",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
+      "propsDefaultValue": false
     }
   },
   "events": {
@@ -273,9 +280,7 @@
     }
   },
   "designInfo": {},
-  "category": [
-    "数据录入"
-  ],
+  "category": ["数据录入"],
   "type": {
     "InputType": [
       {
@@ -343,173 +348,53 @@
       "name": "段落文本输入框",
       "desc": "配置段落文本输入框",
       "normal": [
-        [
-          "width"
-        ],
-        [
-          "height"
-        ],
-        [
-          "fontSize"
-        ],
-        [
-          "font"
-        ],
-        [
-          "color"
-        ],
-        [
-          "background"
-        ],
-        [
-          "border"
-        ],
-        [
-          "borderRadius"
-        ],
-        [
-          "cursor"
-        ],
-        [
-          "opacity"
-        ],
-        [
-          "margin"
-        ],
-        [
-          "padding"
-        ],
-        [
-          "lineHeight"
-        ],
-        [
-          "textAlign"
-        ]
+        ["width"],
+        ["height"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["opacity"],
+        ["margin"],
+        ["padding"],
+        ["lineHeight"],
+        ["textAlign"]
       ],
       "hover": [
-        [
-          "border"
-        ],
-        [
-          "borderRadius"
-        ],
-        [
-          "cursor"
-        ],
-        [
-          "background"
-        ],
-        [
-          "opacity"
-        ],
-        [
-          "boxShadow"
-        ]
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"]
       ],
-      "focus": [
-        [
-          "boxShadow"
-        ],
-        [
-          "border"
-        ],
-        [
-          "borderRadius"
-        ],
-        [
-          "cursor"
-        ],
-        [
-          "background"
-        ]
-      ],
-      "active": [
-        [
-          "boxShadow"
-        ],
-        [
-          "border"
-        ],
-        [
-          "borderRadius"
-        ],
-        [
-          "cursor"
-        ],
-        [
-          "background"
-        ]
-      ],
+      "focus": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+      "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
       "disabled": [
-        [
-          "fontSize"
-        ],
-        [
-          "font"
-        ],
-        [
-          "color"
-        ],
-        [
-          "background"
-        ],
-        [
-          "border"
-        ],
-        [
-          "borderRadius"
-        ],
-        [
-          "cursor"
-        ],
-        [
-          "padding"
-        ],
-        [
-          "opacity"
-        ]
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["padding"],
+        ["opacity"]
       ]
     },
     "Placeholder": {
       "name": "提示信息文字",
       "desc": "提示信息文字",
-      "normal": [
-        [
-          "color"
-        ],
-        [
-          "fontSize"
-        ],
-        [
-          "font"
-        ]
-      ]
+      "normal": [["color"], ["fontSize"], ["font"]]
     },
     "ClearButton": {
       "name": "清除图标",
       "desc": "后缀清除图标",
-      "normal": [
-        [
-          "color"
-        ],
-        [
-          "fontSize"
-        ],
-        [
-          "font"
-        ]
-      ],
-      "hover": [
-        [
-          "color"
-        ],
-        [
-          "fontSize"
-        ],
-        [
-          "font"
-        ]
-      ],
+      "normal": [["color"], ["fontSize"], ["font"]],
+      "hover": [["color"], ["fontSize"], ["font"]],
       "clicked": [],
       "disabled": []
     },
@@ -517,98 +402,35 @@
       "name": "校验失败的输入框",
       "desc": "配置校验失败的输入框",
       "normal": [
-        [
-          "fontSize"
-        ],
-        [
-          "font"
-        ],
-        [
-          "color"
-        ],
-        [
-          "background"
-        ],
-        [
-          "border"
-        ],
-        [
-          "boxShadow"
-        ],
-        [
-          "opacity"
-        ]
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"]
       ],
-      "hover": [
-        [
-          "background"
-        ],
-        [
-          "border"
-        ],
-        [
-          "boxShadow"
-        ]
-      ],
-      "focus": [
-        [
-          "background"
-        ],
-        [
-          "border"
-        ],
-        [
-          "boxShadow"
-        ]
-      ],
-      "active": [
-        [
-          "background"
-        ],
-        [
-          "border"
-        ],
-        [
-          "boxShadow"
-        ]
-      ]
+      "hover": [["background"], ["border"], ["boxShadow"]],
+      "focus": [["background"], ["border"], ["boxShadow"]],
+      "active": [["background"], ["border"], ["boxShadow"]]
     },
     "ValidateErrorText": {
       "name": "校验失败提示信息",
       "desc": "配置校验失败的提示信息",
       "normal": [
-        [
-          "background"
-        ],
-        [
-          "boxShadow"
-        ],
-        [
-          "borderRadius"
-        ],
-        [
-          "border"
-        ],
-        [
-          "fontSize"
-        ],
-        [
-          "font"
-        ],
-        [
-          "color"
-        ],
-        [
-          "margin"
-        ]
+        ["background"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["margin"]
       ],
       "hover": [],
       "active": []
     }
   },
-  "childrenWidget": [
-    "textarea",
-    "combineInput"
-  ],
+  "childrenWidget": ["textarea", "combineInput"],
   "themeConfig": []
 }

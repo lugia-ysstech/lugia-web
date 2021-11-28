@@ -38,12 +38,17 @@ export class ValidateInput extends React.Component<any, any> {
   };
 
   render() {
-    const { validateType } = this.props;
+    const { validateType, hiddenHelp } = this.props;
     const value = this.state.value;
     const validateStatus = value.indexOf('a') === -1 ? 'success' : 'error';
 
     return (
-      <Input onChange={this.onChange} validateType={validateType} validateStatus={validateStatus} />
+      <Input
+        onChange={this.onChange}
+        validateType={validateType}
+        validateStatus={validateStatus}
+        hiddenHelp={hiddenHelp}
+      />
     );
   }
 }
@@ -96,17 +101,24 @@ export default class ValidateTypeInput extends React.Component<any, any> {
 
   render() {
     return (
-      <OutWrapper>
+      <div>
+        <OutWrapper>
+          <Wrapper>
+            <TopInput validateType="top" onChange={onChange('limit')} />
+          </Wrapper>
+          <Wrapper>
+            <ValidateInput validateType="bottom" onChange={onChange('limit')} />
+          </Wrapper>
+          <Wrapper>
+            <ValidateInput validateType="inner" onChange={onChange('limit')} />
+          </Wrapper>
+          <br />
+        </OutWrapper>
+        <p>隐藏校验信息 只显示错误样式 </p>
         <Wrapper>
-          <TopInput validateType="top" onChange={onChange('limit')} />
+          <ValidateInput validateType="top" onChange={onChange('limit')} hiddenHelp />
         </Wrapper>
-        <Wrapper>
-          <ValidateInput validateType="bottom" onChange={onChange('limit')} />
-        </Wrapper>
-        <Wrapper>
-          <ValidateInput validateType="inner" onChange={onChange('limit')} />
-        </Wrapper>
-      </OutWrapper>
+      </div>
     );
   }
 }
