@@ -2,7 +2,7 @@
  * @Author:cuixiawang
  * @Date:
  */
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { RangeMiddleSpan } from '../styled/styledRangeInput';
 import getThemeProps, { getRangeInputMiddleSymbolTheme } from '../themeConfig/themeConfig';
 import DateInput from './singlePanelTrigger';
@@ -12,7 +12,11 @@ import { getPlaceholder } from '../utils/getDerived';
 import { TypeProps } from './rangePanelTrigger';
 const startIndex = 0;
 const endIndex = 1;
-export default (props: TypeProps) => {
+
+type Props = TypeProps & {
+  doubleValid?: { validateStatus: string, help: string }[],
+};
+export default (props: Props) => {
   const {
     middleSymbol = '~',
     disabled,
@@ -26,6 +30,10 @@ export default (props: TypeProps) => {
     defaultValue = ['', ''],
     placeholder,
     onChange,
+    doubleValid = [],
+    help,
+    validateStatus,
+    hiddenHelp,
   } = props;
   const middleSymbolTheme = getRangeInputMiddleSymbolTheme({ size, getPartOfThemeProps, type });
   const containerTheme = getThemeProps({ getPartOfThemeProps, mode }, 'Container');
@@ -53,7 +61,19 @@ export default (props: TypeProps) => {
 
     onChange && onChange({ newValue: [...valueRef.current], oldValue: [...oldValueRef.current] });
   };
+
+  useEffect(() => {
+    if (valueRef.current) {
+      valueRef.current = [...value];
+    }
+  }, [value]);
+
   const newPlaceholder = getPlaceholder({ placeholder, mode });
+
+  const { help: startHelp = help || '', validateStatus: startValidateStatus = validateStatus } =
+    doubleValid[startIndex] || {};
+  const { help: endHelp = help || '', validateStatus: endValidateStatus = validateStatus } =
+    doubleValid[endIndex] || {};
 
   return (
     <Box themeProps={containerTheme}>
@@ -67,6 +87,9 @@ export default (props: TypeProps) => {
             disabled={disabled || disabledStartTime}
             defaultValue={defaultValue[startIndex]}
             placeholder={newPlaceholder[startIndex]}
+            help={startHelp}
+            validateStatus={startValidateStatus}
+            hiddenHelp={hiddenHelp || (startHelp === '' && startValidateStatus === 'error')}
           />
         </RangeSingle>
         <RangeMiddleSpan themeProps={middleSymbolTheme}>{middleSymbol}</RangeMiddleSpan>
@@ -79,6 +102,9 @@ export default (props: TypeProps) => {
             disabled={disabled || disabledEndTime}
             defaultValue={defaultValue[endIndex]}
             placeholder={newPlaceholder[endIndex]}
+            help={endHelp}
+            validateStatus={endValidateStatus}
+            hiddenHelp={hiddenHelp || (endHelp === '' && endValidateStatus === 'error')}
           />
         </RangeSingle>
       </WrapInner>

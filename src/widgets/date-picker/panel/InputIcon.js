@@ -3,10 +3,14 @@ import Icon from '../../icon';
 import Suffix from './Suffix';
 
 export default function getDateIcon(props) {
-  const { suffix, prefix = 'lugia-icon-financial_date' } = props;
+  const { suffix, prefix = 'lugia-icon-financial_date', onClickIcon } = props;
 
   const prefixIcon =
-    !suffix && prefix && typeof prefix === 'string' ? <Icon iconClass={prefix} /> : '';
+    !suffix && prefix && typeof prefix === 'string' ? (
+      <Icon iconClass={prefix} onClick={onClickIcon} />
+    ) : (
+      ''
+    );
 
   return {
     suffixIcon: { suffix: <Suffix {...props} /> },

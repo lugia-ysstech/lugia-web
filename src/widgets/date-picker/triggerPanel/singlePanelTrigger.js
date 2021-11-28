@@ -69,6 +69,7 @@ type TypeState = {
   normalValue: string,
   placeholder: string,
   isStartOfWeek: boolean,
+  hiddenHelp?: boolean,
 };
 class DateInput extends Component<TypeProps, TypeState> {
   static displayName = 'DateInput';
@@ -77,12 +78,15 @@ class DateInput extends Component<TypeProps, TypeState> {
   targetMode: SwitchPanelMode;
   pageFooterChange: SwitchPanelMode;
   isClear: boolean;
+  inputRef: HTMLElement;
+
   constructor() {
     super();
     this.trigger = React.createRef();
     this.targetMode = new SwitchPanelMode();
     this.pageFooterChange = new SwitchPanelMode();
     this.oldValue = '';
+    this.inputRef = undefined;
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const {
@@ -110,6 +114,12 @@ class DateInput extends Component<TypeProps, TypeState> {
       this.setState({ visible: alwaysOpen });
     }
   }
+  onClickIcon = () => {
+    const { current } = this.inputRef || {};
+    if (current) {
+      current.focus();
+    }
+  };
 
   render() {
     const {
@@ -129,6 +139,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       showTime,
       canClear = true,
       type,
+      hiddenHelp,
     } = this.props;
     const {
       value,
@@ -164,6 +175,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       value: this.state.value,
       onClear: this.onClear,
       clearButtonTheme: clearButtonProps,
+      onClickIcon: this.onClickIcon,
     });
     const { themeConfig: placeholderTheme } = getRangeInputPlaceholderTheme({
       size,
@@ -260,6 +272,11 @@ class DateInput extends Component<TypeProps, TypeState> {
               help={help}
               size={size}
               popupContainerId={popupContainerId}
+              getInputRef={param => {
+                const { ref } = param;
+                this.inputRef = ref;
+              }}
+              hiddenHelp={hiddenHelp}
             />
           </Trigger>
         </Box>

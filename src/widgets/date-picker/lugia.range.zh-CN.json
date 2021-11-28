@@ -155,6 +155,29 @@
       "type": "string",
       "desc": "校验提示信息"
     },
+    "hiddenHelp": {
+      "desc": "是否隐藏校验信息,只显示错误边框样式",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
+      "propsDefaultValue": false
+    },
+    "doubleValid": {
+      "type": "object[]",
+      "desc": "配合type类型为double使用，双日期框分别展示错误信息",
+      "meta": [
+        {
+          "key": "help",
+          "title": "错误信息",
+          "type": "string"
+        },
+        {
+          "key": "validateStatus",
+          "title": "校验状态",
+          "type": "ValidateStatus"
+        }
+      ]
+    },
     "size": {
       "type": "InputSize",
       "desc": "可配置三种尺寸大小的input",

@@ -110,6 +110,14 @@ class RangeInput extends Component<TypeProps, TypeState> {
     });
     return obj;
   };
+
+  onClickIcon = () => {
+    const { current } = this.inputRefs[0] || {};
+    if (current) {
+      current.focus();
+    }
+  };
+
   render() {
     const {
       disabled,
@@ -172,6 +180,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
       canClear,
       onClear: this.onClear,
       clearButtonTheme: clearButtonProps,
+      onClickIcon: this.onClickIcon,
     });
     const middleSymbolTheme = getRangeInputMiddleSymbolTheme({ size, getPartOfThemeProps });
     const { themeConfig: placeholderTheme } = getRangeInputPlaceholderTheme({
