@@ -8979,6 +8979,7 @@ export default [
           meta: [{ key: 'value', type: 'string' }],
           desc: '日期显示值',
         },
+        type: { type: 'UIType', desc: '组件风格', defaultValue: 'default' },
         limitMaxValue: { type: 'string', desc: '设置日期最大值' },
         limitMinValue: { type: 'string', desc: '设置日期最小值' },
         createPortal: {
@@ -9147,6 +9148,10 @@ export default [
           oldValue: 'Array<string>',
           event: 'SyntheticEvent',
         },
+        UIType: [
+          { value: 'default', text: '默认' },
+          { value: 'double', text: '双日期框' },
+        ],
       },
       category: ['数据录入'],
       componentName: 'RangePicker',
