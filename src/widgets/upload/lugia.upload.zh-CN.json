@@ -10,44 +10,50 @@
       "desc": "是否渲染当前组件",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "data": {
       "desc": "上传时附带的额外参数",
       "type": "object",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "areaType": {
       "desc": "上传组件的类型",
-      "type": "UploadType",
+      "type": "uploadtype",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "default"
+      "meta": ""
     },
     "disabled": {
       "desc": "禁用状态",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "limit": {
       "desc": "一次性可允许上传的最大文件数",
       "type": "number",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "multiple": {
       "desc": "是否允许多个文件上传",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "showFileList": {
       "desc": "是否显示上传列表",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "fileList": {
       "desc": "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
@@ -76,106 +82,105 @@
       "desc": "上传请求时是否允许携带cookie凭证",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "autoUpload": {
       "desc": "是否允许自动上传",
       "type": "boolean",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": true
+      "meta": ""
     },
     "url": {
       "desc": "上传的请求地址(必填参数)",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "accept": {
       "desc": "指定上传文件类型",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "name": {
       "desc": "发送到后台的文件参数名",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "icon": {
       "desc": "默认上传图标",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "successIcon": {
       "desc": "上传成功提示图标",
       "type": "icon",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "lugia-icon-reminder_check_circle"
+      "meta": ""
     },
     "failIcon": {
       "desc": "上传失败提示图标",
       "type": "icon",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "lugia-icon-reminder_close_circle"
+      "meta": ""
     },
     "loadingIcon": {
       "desc": "加载中图标",
       "type": "icon",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "lugia-icon-financial_loading_o"
+      "meta": ""
     },
     "liDeleteIcon": {
       "desc": "列表删除图标",
       "type": "icon",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "lugia-icon-reminder_close"
+      "meta": ""
     },
     "liVideoIcon": {
       "desc": "列表视频图标",
       "type": "icon",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "lugia-icon-financial_video_camera"
+      "meta": ""
     },
     "liFileIcon": {
       "desc": "列表文件图标",
       "type": "icon",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "lugia-icon-financial_folder"
+      "meta": ""
     },
     "liPictureIcon": {
       "desc": "列表图片图标",
       "type": "icon",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "lugia-icon-financial_pic"
+      "meta": ""
     },
     "size": {
       "desc": "picture类型可配置的三种尺寸",
-      "type": "UploadSize",
+      "type": "uploadsize",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "default"
+      "meta": ""
     },
     "defaultTips": {
       "desc": "默认的上传提示语",
-      "type": "Object",
+      "type": "object",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": {
-        "uploadText": "上传",
-        "uploadTips": "请将文件拖到此处",
-        "failTips": "文件上传失败请重试",
-        "loadingTips": "文件上传中..."
-      },
       "meta": [
         {
           "key": "uploadText",
@@ -201,41 +206,52 @@
     },
     "userDefine": {
       "desc": "用户自定义上传按钮",
-      "type": "React$Element<any>",
+      "type": "react$element<any>",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "isShowProgress": {
       "desc": "是否有进度条",
       "type": "boolean",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": true
+      "meta": ""
     },
     "customUpload": {
       "desc": "用户自定义上传",
       "type": "Function",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "validateStatus": {
       "desc": "校验状态",
-      "type": "ValidateStatus",
+      "type": "validatestatus",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "validateType": {
       "desc": "校验信息显示类型",
-      "type": "ValidateType",
+      "type": "validatetype",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "top"
+      "meta": ""
     },
     "webkitdirectory": {
       "desc": "是否允许文件夹上传",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
+    },
+    "hiddenHelp": {
+      "desc": "是否隐藏校验信息,只显示错误边框样式",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
+      "defaultValue": false
     }
   },
   "events": {

@@ -10,17 +10,19 @@
       "desc": "是否渲染当前组件",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "popupContainerId": {
       "desc": "配置弹出框的作用容器id",
-      "type": "ContainerDomIdType",
+      "type": "containerdomidtype",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "data": {
       "desc": "生成选择项的数据",
-      "type": "Object[]",
+      "type": "object[]",
       "designOnly": false,
       "injectProps": false,
       "defaultValue": [
@@ -84,216 +86,248 @@
     },
     "size": {
       "desc": "可配置三种尺寸大小的select",
-      "type": "sizeType",
+      "type": "sizetype",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "default"
+      "meta": ""
     },
     "checkedCSS": {
       "desc": "选中项的样式",
-      "type": "CheckedCSSType",
+      "type": "checkedcsstype",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "background"
+      "meta": ""
     },
     "canSearch": {
       "desc": "是否支持查询",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "virtual": {
       "desc": "是否性能加载",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "canInput": {
       "desc": "是否支持自定义值,只有在canSearch为true时才生效",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "searchFields": {
       "desc": "配置查询字段",
       "type": "string[]",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "canClear": {
       "desc": "是否展示清空图标",
       "type": "boolean",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": true
+      "meta": ""
     },
     "createPortal": {
       "desc": "是否全局弹出下拉框",
       "type": "boolean",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": true
+      "meta": ""
     },
     "throttle": {
       "desc": "查询的延迟时间，单位为毫秒",
       "type": "number",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": 100
+      "meta": ""
     },
     "valueField": {
       "desc": "data数据的value值的名称",
       "type": "string",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "value"
+      "meta": ""
     },
     "displayField": {
       "desc": "data数据的displayValue值的名称",
       "type": "string",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "text"
+      "meta": ""
     },
     "value": {
       "desc": "指定当前选中的条目",
       "type": "string | string[] | number | number[]",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "displayValue": {
       "desc": "指定当前选中的条目的displayValue值",
       "type": "string | string[] | number | number[]",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "defaultValue": {
       "desc": "初始状态下指定当前选中的条目,只生效一次",
       "type": "string | string[] | number | number[]",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "defaultDisplayValue": {
       "desc": "初始状态下指定当前选中的条目的displayValue值,只生效一次",
       "type": "string | string[] | number | number[]",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "disabled": {
       "desc": "是否禁选",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "mutliple": {
       "desc": "是否多选",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "validateStatus": {
       "desc": "校验状态",
-      "type": "ValidateStatus",
+      "type": "validatestatus",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "validateType": {
       "desc": "校验信息显示类型",
-      "type": "ValidateType",
+      "type": "validatetype",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "top"
+      "meta": ""
     },
     "limitCount": {
       "desc": "多选时最多个数",
       "type": "number",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "placeholder": {
       "desc": "占位符",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "searchType": {
       "desc": "查询的方式",
-      "type": "SearchType",
+      "type": "searchtype",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "include"
+      "meta": ""
     },
     "help": {
       "desc": "树形选择控件校验提示信息",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "divided": {
       "desc": "弹出菜单中是否展示分割线",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "pullIconClass": {
       "desc": "下拉按钮图标",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "clearIconClass": {
       "desc": "清空按钮图标",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "searchClearIcon": {
       "desc": "搜索框清空按钮图标",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "toggleIcon": {
       "desc": "搜索框切换按钮图标",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "resetIcon": {
       "desc": "搜索框重置按钮图标",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "singleClearIcon": {
       "desc": "标签删除按钮图标",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "searchAddIcon": {
       "desc": "搜索框添加图标icon名称",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "checkAllIcon": {
       "desc": "全选图标icon名称",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "deselectionIcon": {
       "desc": "取消全选图标icon名称",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "searchIcon": {
       "desc": "搜索图标icon名称",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
+    },
+    "hiddenHelp": {
+      "desc": "是否隐藏校验信息,只显示错误边框样式",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
+      "defaultValue": false
     }
   },
   "events": {

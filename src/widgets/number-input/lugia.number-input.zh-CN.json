@@ -10,139 +10,166 @@
       "desc": "是否渲染当前组件",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "createPortal": {
       "desc": "是否全局弹出校验框",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "popupContainerId": {
       "desc": "配置弹出校验框的作用容器id",
-      "type": "ContainerDomIdType",
+      "type": "containerdomidtype",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "disabled": {
       "desc": "禁用状态,是否不可用",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "viewClass": {
       "desc": "用于配置通用主题属性",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "size": {
       "desc": "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
-      "type": "InputSize",
+      "type": "inputsize",
       "designOnly": false,
       "injectProps": false,
-      "defaultValue": "default"
+      "defaultValue": "default",
+      "meta": ""
     },
     "validateStatus": {
       "desc": "校验状态",
-      "type": "ValidateStatus",
+      "type": "validatestatus",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "validateType": {
       "desc": "校验信息显示类型",
-      "type": "ValidateType",
+      "type": "validatetype",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "top"
+      "meta": ""
     },
     "help": {
       "desc": "校验提示信息",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "placeholder": {
       "desc": "input输入提示信息",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "defaultValue": {
       "desc": "默认显示内容",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "value": {
       "desc": "显示内容",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "max": {
       "desc": "输入最大值限制",
       "type": "number",
       "designOnly": false,
       "injectProps": false,
-      "defaultValue": 999999999999
+      "defaultValue": 999999999999,
+      "meta": ""
     },
     "min": {
       "desc": "输入最小值限制",
       "type": "number",
       "designOnly": false,
       "injectProps": false,
-      "defaultValue": -999999999999
+      "defaultValue": -999999999999,
+      "meta": ""
     },
     "step": {
       "desc": "每次改变步数，可以为小数",
       "type": "number",
       "designOnly": false,
       "injectProps": false,
-      "defaultValue": 1
+      "defaultValue": 1,
+      "meta": ""
     },
     "precision": {
       "desc": "数值精度,默认0",
       "type": "number",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "formatter": {
       "desc": "格式化显示内容的匹配规则,需与 parser 属性配套使用",
       "type": "function",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "addIcon": {
       "desc": "向上增加的增加图标类型",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "subtractIcon": {
       "desc": "向下减少的图标类型",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "parser": {
       "desc": "解析格式化显示内容的规则,需与 formatter 属性配套使用",
       "type": "function",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "showArrow": {
       "desc": "是否显示步长的箭头图标",
       "type": "boolean",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": true
+      "meta": ""
     },
     "suffix": {
       "desc": "后缀图标, showArrow为false时生效",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
+    },
+    "hiddenHelp": {
+      "desc": "是否隐藏校验信息,只显示错误边框样式",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
+      "defaultValue": false
     }
   },
   "events": {

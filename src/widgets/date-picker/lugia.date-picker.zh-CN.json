@@ -10,91 +10,104 @@
       "desc": "是否渲染当前组件",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "defaultValue": {
       "desc": "日期默认显示值",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "value": {
       "desc": "日期显示值",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "limitMaxValue": {
       "desc": "设置日期最大值",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "limitMinValue": {
       "desc": "设置日期最小值",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "createPortal": {
       "desc": "是否全局弹出下拉框",
       "type": "boolean",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": true
+      "meta": ""
     },
     "popupContainerId": {
       "desc": "配置弹出框的作用容器id",
-      "type": "ContainerDomIdType",
+      "type": "containerdomidtype",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "format": {
       "desc": "用于指定输入框日期显示的格式",
       "type": "string",
       "designOnly": false,
       "injectProps": false,
-      "defaultValue": "YYYY-MM-DD"
+      "defaultValue": "YYYY-MM-DD",
+      "meta": ""
     },
     "placeholder": {
       "desc": "input输入提示信息",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "disabled": {
       "desc": "禁用状态,是否不可用",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "readOnly": {
       "desc": "只读input",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "selectToday": {
       "desc": "是否默认选中今天日期",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "showToday": {
       "desc": "是否展示'今天'按钮 | showToday={message:'XXX'} 可以指定按钮文本 ",
-      "type": "boolean | Object",
+      "type": "boolean | object",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "showTime": {
       "desc": "为组件增加时间选择功能 | showTime={message:{showTime:'XXX',showDate:'XXX'}} 可以指定按钮切换文本",
-      "type": "boolean | Object",
+      "type": "boolean | object",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "extraFooter": {
       "desc": "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
-      "type": "Object",
+      "type": "object",
       "designOnly": false,
       "injectProps": false,
       "meta": [
@@ -107,7 +120,7 @@
     },
     "buttonOptions": {
       "desc": "自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ",
-      "type": "Object",
+      "type": "object",
       "designOnly": false,
       "injectProps": false,
       "meta": [
@@ -129,67 +142,75 @@
       "desc": "设置周,年的展示步长",
       "type": "number",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "suffix": {
       "desc": "后缀图标",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "prefix": {
       "desc": "前缀图标",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "clearIcon": {
       "desc": "清除图标",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "validateStatus": {
       "desc": "校验状态",
-      "type": "ValidateStatus",
+      "type": "validatestatus",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "validateType": {
       "desc": "校验信息显示类型",
-      "type": "ValidateType",
+      "type": "validatetype",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "top"
+      "meta": ""
     },
     "help": {
       "desc": "校验提示信息",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "size": {
       "desc": "可配置三种尺寸大小的input",
-      "type": "InputSize",
+      "type": "inputsize",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "default"
+      "meta": ""
     },
     "alwaysOpen": {
       "desc": "控制面板是否始终展开",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "liquidLayout": {
       "desc": "是否开启流式布局",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "headSwitchIconLevelOne": {
       "desc": "头部一级图标",
-      "type": "Object",
+      "type": "object",
       "designOnly": false,
       "injectProps": false,
       "meta": [
@@ -207,7 +228,7 @@
     },
     "headSwitchIconLevelTwo": {
       "desc": "头部二级图标",
-      "type": "Object",
+      "type": "object",
       "designOnly": false,
       "injectProps": false,
       "meta": [
@@ -228,7 +249,7 @@
       "type": "boolean",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": false
+      "defaultValue": false
     }
   },
   "events": {

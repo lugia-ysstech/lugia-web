@@ -10,113 +10,134 @@
       "desc": "是否渲染当前组件",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "defaultValue": {
       "desc": "时间默认显示值",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "createPortal": {
       "desc": "是否全局弹出下拉框",
       "type": "boolean",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": true
+      "meta": ""
     },
     "value": {
       "desc": "时间显示值",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "format": {
       "desc": "用于指定输入框时间显示的格式",
       "type": "string",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "HH:mm:ss"
+      "meta": ""
     },
     "placeholder": {
       "desc": "input输入提示信息",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "disabled": {
       "desc": "禁用状态,是否不可用",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "readOnly": {
       "desc": "只读input",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "popupContainerId": {
       "desc": "配置弹出框的作用容器id",
-      "type": "ContainerDomIdType",
+      "type": "containerdomidtype",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "validateStatus": {
       "desc": "校验状态",
-      "type": "ValidateStatus",
+      "type": "validatestatus",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "validateType": {
       "desc": "校验信息显示类型",
-      "type": "ValidateType",
+      "type": "validatetype",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "top"
+      "meta": ""
     },
     "help": {
       "desc": "校验提示信息",
       "type": "string",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "size": {
       "desc": "可配置三种尺寸大小的input",
-      "type": "InputSize",
+      "type": "inputsize",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "default"
+      "meta": ""
     },
     "suffix": {
       "desc": "后缀图标",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "prefix": {
       "desc": "前缀图标",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "clearIcon": {
       "desc": "清除图标",
       "type": "icon",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "alwaysOpen": {
       "desc": "控制面板是否始终展开",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "liquidLayout": {
       "desc": "是否开启流式布局",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
+    },
+    "hiddenHelp": {
+      "desc": "是否隐藏校验信息,只显示错误边框样式",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
+      "defaultValue": false
     }
   },
   "events": {
