@@ -7,6 +7,10 @@
     "title": "范围日期组件-双日期框展示",
     "desc": "范围日期组件-双日期框展示使用方法"
   },
+  "DoubleRangeValid": {
+    "title": "范围日期组件-双日期框错误校验展示",
+    "desc": "开放doubleValid 属性支持分别制定输入框的错误信息，配合type类型为'double'一起使用"
+  },
   "FormatDemo": {
     "title": "日期格式",
     "desc": "使用format指定日期格式"

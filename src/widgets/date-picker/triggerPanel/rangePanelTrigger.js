@@ -56,6 +56,7 @@ export type TypeProps = {
   limitMinValue?: string,
   limitMaxValue?: string,
   canClear?: boolean,
+  hiddenHelp?: boolean,
 };
 type TypeState = {
   value: Array<string>,

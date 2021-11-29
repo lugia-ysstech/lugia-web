@@ -101,6 +101,13 @@
       "type": "string",
       "desc": "校验提示信息"
     },
+    "hiddenHelp": {
+      "desc": "是否隐藏校验信息,只显示错误边框样式",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false,
+      "propsDefaultValue": false
+    },
     "size": {
       "type": "InputSize",
       "desc": "可配置三种尺寸大小的input",

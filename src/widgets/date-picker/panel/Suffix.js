@@ -21,6 +21,7 @@ const IconWrap = CSSComponent({
   disabled: { selectNames: [] },
   css: `
       display: flex;
+      align-items:center;
   `,
 });
 
@@ -66,7 +67,7 @@ class Suffix extends Component {
     this.setState({ isEnter: false });
   };
   render() {
-    const { suffix, value, canClear, clearButtonTheme } = this.props;
+    const { suffix, value, canClear, clearButtonTheme, onClickIcon } = this.props;
     const { isEnter } = this.state;
     return (
       <React.Fragment>
@@ -76,7 +77,11 @@ class Suffix extends Component {
             onMouseLeave={this.onMouseLeave}
             themeProps={clearButtonTheme}
           >
-            {isEnter && canClear ? this.clearBtn() : <Icon iconClass={suffix} />}
+            {isEnter && canClear ? (
+              this.clearBtn()
+            ) : (
+              <Icon iconClass={suffix} onClick={onClickIcon} />
+            )}
           </IconWrap>
         ) : value && canClear ? (
           <IconWrap themeProps={clearButtonTheme}>{this.clearBtn()}</IconWrap>
