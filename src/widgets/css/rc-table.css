@@ -143,10 +143,16 @@
   background: #fff;
 }
 .rc-table-content {
-  border: 1px solid red;
-  border-right: 0;
-  border-bottom: 0;
-  border-radius: 5px 0 0 0;
+  border-top: 1px solid red;
+  position: relative;
+}
+.rc-table-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-left: 1px solid red;
 }
 .rc-table-body {
   border: 1px solid red;
@@ -179,7 +185,6 @@
   top: 0;
   bottom: 0;
   right: 1px;
-  border-right: 1px solid red;
 }
 .rc-table-row-expand-icon {
   display: inline-block;

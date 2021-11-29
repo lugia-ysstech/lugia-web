@@ -692,9 +692,7 @@ export default ThemeProvider(
           ? getIconByType(expandIcon, 'ExpandIcon')
           : getIconByType(collapseIcon, 'CollapseIcon');
       };
-      const notEmptyData = tableData && tableData.length > 0;
-      const key = notEmptyData ? 'exist' : 'empty';
-      const chosenScroll = notEmptyData ? { ...scroll, ...propsScroll } : {};
+      const key = tableData && tableData.length > 0 ? 'exist' : 'empty';
 
       return (
         <TableWrap
@@ -711,7 +709,7 @@ export default ThemeProvider(
             data={tableData}
             showHeader={showHeader}
             expandIconColumnIndex={expandIconColumnIndex}
-            scroll={chosenScroll}
+            scroll={{ ...scroll, ...propsScroll }}
             expandIcon={(expandIcon || collapseIcon) && customExpandIcon}
             key={key}
           />

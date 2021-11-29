@@ -8,6 +8,9 @@
 :global(.lugia-table .rc-table-content) {
   border-color: #e8e8e8;
 }
+:global(.lugia-table .rc-table-content::after) {
+  border-color: #e8e8e8;
+}
 :global(.lugia-table .rc-table-header) {
   border-color: #e8e8e8;
 }
@@ -54,7 +57,10 @@
   border-color: transparent;
   border-top-color: #e8e8e8;
 }
-:global(.lugia-table-linear .rc-table-content) {
+:global(.lugia-table-linear .rc-table-content  ) {
+  border-left: 0;
+}
+:global(.lugia-table-linear .rc-table-content::after  ) {
   border-left: 0;
 }
 :global(.lugia-table-linear .rc-table-container) {
