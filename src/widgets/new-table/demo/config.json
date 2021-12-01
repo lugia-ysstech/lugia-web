@@ -10,5 +10,9 @@
   "MultipleDemo": {
     "title": "编辑列为多选框的表格",
     "desc": "编辑列为多选框的表格"
+  },
+  "SelectDemo": {
+    "title": "可选择的表格",
+    "desc": "可使用CheckBox选择的表格"
   }
 }

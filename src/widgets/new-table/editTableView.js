@@ -73,12 +73,18 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   }
 
   render() {
-    const { data = [], columns = [], showHeader = true, scrollY } = this.props;
-    const { restColumnsIntoData, getThemeForTable, restColumnsWithRender } = this.editTableListener;
+    const { data = [], columns = [], showHeader = true, scrollY, selectOptions } = this.props;
+    const {
+      restColumnsIntoData,
+      getThemeForTable,
+      restColumnsWithRender,
+      restColumnsBySelectOptions,
+    } = this.editTableListener;
     const firstLineData = restColumnsIntoData(columns);
     const tableData = showHeader ? firstLineData.concat(data) : data;
     const { renderFunc } = this;
-    const tableColumns = restColumnsWithRender(columns, renderFunc);
+    const selectionColumns = restColumnsBySelectOptions(columns, selectOptions);
+    const tableColumns = restColumnsWithRender(selectionColumns, renderFunc);
     const { tableSize, tableStyle } = this.props;
     const tableProps = { tableSize, tableStyle, scrollY };
     const containerTheme = this.props.getPartOfThemeProps('Container');
@@ -111,6 +117,9 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       allowSelect,
       showCellTitle,
       isAllowEditCell,
+      selectOptions,
+      rowKey,
+      data,
     } = this.props;
     const { editTableListener } = this;
     const { index, text, record, dataIndex, columnConfig } = renderObject;
@@ -123,12 +132,15 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       <TableCell
         {...renderObject}
         allowEdit={allowEdit}
+        rowKey={rowKey}
         allowEditCell={allowEditCell}
         showCellTitle={showCellTitle}
         propsAllowSelect={allowSelect}
         selectSuffixElement={selectSuffixElement}
         getPartOfThemeProps={getPartOfThemeProps}
         listener={editTableListener}
+        selectOptions={selectOptions}
+        data={data}
       />
     );
   };
