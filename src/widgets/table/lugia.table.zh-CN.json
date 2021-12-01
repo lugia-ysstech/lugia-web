@@ -234,7 +234,29 @@
       "desc": "展开列样式",
       "type": "object",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
+    },
+    "fixedData": {
+      "desc": "固定操作面板数据源",
+      "type": "object[]",
+      "designOnly": false,
+      "injectProps": false,
+      "meta": ""
+    },
+    "canFixedColumnsDataIndex": {
+      "desc": "可以固定的列的dataIndex集合",
+      "type": "string[]",
+      "designOnly": false,
+      "injectProps": false,
+      "meta": ""
+    },
+    "fixedColumns": {
+      "desc": "固定的列的dataIndex集合",
+      "type": "string[]",
+      "designOnly": false,
+      "injectProps": false,
+      "meta": ""
     }
   },
   "events": {
@@ -285,6 +307,21 @@
           "name": "data",
           "desc": "当前排完序的数据",
           "type": "Array"
+        }
+      ]
+    },
+    "onFixed": {
+      "desc": "点击固定时的回调",
+      "args": [
+        {
+          "name": "dataIndex",
+          "type": "string",
+          "desc": "固定列的 dataIndex值"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "desc": "当前操作type类型"
         }
       ]
     }
