@@ -5,6 +5,7 @@ import { TdContainer, EditDiv, InnerTriggerDiv } from './editTableCss';
 
 import EditInput from './EditInput';
 import { getEditDivTheme, isValued, isEqualObject, isInArray } from './utils';
+import CheckBoxCell from './checkBoxCell';
 
 const defaultEditTheme = {
   themeConfig: {
@@ -66,8 +67,10 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
       allowSelect = true,
       propsAllowSelect,
       allowEditCell,
+      dataIndex,
+      index,
+      selectOptions,
     } = this.props;
-
     const { isSelect, editing, clearValue } = this.state;
 
     const EditElement = customEditElement || EditInput;
@@ -91,6 +94,21 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
       ? record[text] || text
       : '';
 
+    if (dataIndex === 'lugia_selectBox' && selectOptions) {
+      const { rowKey, data } = this.props;
+      return (
+        <EditDiv themeProps={editDivTheme}>
+          <CheckBoxCell
+            index={index}
+            selectOptions={selectOptions}
+            record={record}
+            rowKey={rowKey}
+            data={data}
+          />
+        </EditDiv>
+      );
+    }
+
     if (editing && !disableEdit) {
       const currentEditType = isLugiaHead ? columnType : editType;
       const { columnConfig } = this.props;
@@ -108,7 +126,7 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
       );
     }
 
-    const { dataIndex, index, selectSuffixElement, customRender, showCellTitle } = this.props;
+    const { selectSuffixElement, customRender, showCellTitle } = this.props;
     const { getSelectColumnMark, onCellClick, onCellDBClick } = listener;
     const selectColumn = getSelectColumnMark(dataIndex);
     return (

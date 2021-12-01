@@ -232,6 +232,27 @@ export default class EditTableEventListener extends Listener<any> {
     return { theme: resultTheme, viewClass };
   };
 
+  restColumnsBySelectOptions = (
+    columns: Array<Object> = [],
+    selectOptions?: Object
+  ): Array<Object> => {
+    if (!selectOptions) {
+      return columns;
+    }
+    const { width = 100 } = selectOptions;
+    const selectCols = [
+      {
+        title: '选择',
+        dataIndex: 'lugia_selectBox',
+        key: 'lugia_selectBox',
+        width,
+        align: 'center',
+      },
+    ];
+
+    return selectCols.concat(columns);
+  };
+
   restColumnsWithRender = (columns: ?Array<Object>, renderFunc: Function): Array<Object> => {
     if (!columns) {
       return [];
