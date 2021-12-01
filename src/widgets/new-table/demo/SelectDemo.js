@@ -57,7 +57,7 @@ export default class TableDemo extends React.Component {
           data={data}
           columns={columns}
           allowEditHead={true}
-          // rowKey={'name'}
+          rowKey={'name'}
           scrollY={120}
           selectOptions={{
             onChange: this.selectChange,
