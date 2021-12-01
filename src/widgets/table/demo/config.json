@@ -26,5 +26,17 @@
   "ChangeColumnsStyleDemo": {
     "title": "设置每列样式的 Table",
     "desc": "自定义修改每列样式的 Table"
+  },
+  "ExpandAllDemo": {
+    "title": "展开所有行的表格",
+    "desc": "展开所有行的表格"
+  },
+  "FixedOneColumnDemo": {
+    "title": "固定单列的表格",
+    "desc": "只有一列需要固定的表格"
+  },
+  "FixedColumnsDemo": {
+    "title": "固定多列的表格",
+    "desc": "需要固定多列的表格"
   }
 }
