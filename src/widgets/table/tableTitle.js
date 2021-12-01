@@ -5,6 +5,8 @@ import Button from '../button';
 import styled from 'styled-components';
 import Widget from '../consts/index';
 import { css, StaticComponent } from '@lugia/theme-css-hoc';
+import Tooltip from '../tooltip';
+import FixedMenu from './fixedMenu';
 
 const TitleName = StaticComponent({
   tag: 'div',
@@ -72,6 +74,17 @@ const themeConfig = {
   },
 };
 
+const sortIconConfig = {
+  [Widget.Icon]: {
+    Icon: {
+      normal: {
+        fontSize: 10,
+        color: '$lugia-dict.@lugia/lugia-web.themeColor',
+      },
+    },
+  },
+};
+
 export default class TableTitle extends Component<TableTitleProps, any> {
   positiveSequence = e => {
     const { positiveSequence } = this.props;
@@ -82,21 +95,67 @@ export default class TableTitle extends Component<TableTitleProps, any> {
     negativeSequence && negativeSequence();
   };
 
+  handleFixed = (type: string) => {
+    const { onFixed, dataIndex } = this.props;
+    onFixed && onFixed({ type, dataIndex });
+  };
+
   render() {
-    const { title } = this.props;
+    const {
+      title,
+      sorter,
+      canFixed,
+      fixed,
+      canFixedColumnsDataIndex = [],
+      fixedData,
+      tableId,
+    } = this.props;
+    const iconClass = fixed ? 'lugia-icon-financial_pin_o' : 'lugia-icon-financial_pin';
     return (
       <Wrapper>
         <TitleName>{title}</TitleName>
-        <Theme config={themeConfig}>
+
+        {sorter ? (
+          <Theme config={themeConfig}>
+            <ArrowWrapper>
+              <Button type={'link'}>
+                <Icon iconClass={'lugia-icon-direction_caret_up'} onClick={this.positiveSequence} />
+              </Button>
+              <Button type={'link'}>
+                <Icon
+                  iconClass={'lugia-icon-direction_caret_down'}
+                  onClick={this.negativeSequence}
+                />
+              </Button>
+            </ArrowWrapper>
+          </Theme>
+        ) : null}
+        {canFixed ? (
           <ArrowWrapper>
-            <Button type={'link'}>
-              <Icon iconClass={'lugia-icon-direction_caret_up'} onClick={this.positiveSequence} />
-            </Button>
-            <Button type={'link'}>
-              <Icon iconClass={'lugia-icon-direction_caret_down'} onClick={this.negativeSequence} />
-            </Button>
+            <Theme config={sortIconConfig}>
+              {canFixedColumnsDataIndex.length && canFixedColumnsDataIndex.length > 1 ? (
+                <FixedMenu
+                  tableId={tableId}
+                  fixedData={fixedData}
+                  iconClass={iconClass}
+                  onFixed={this.handleFixed}
+                />
+              ) : (
+                <Tooltip
+                  title={`${fixed ? '取消' : '选中'}固定列`}
+                  action={'hover'}
+                  placement="top"
+                  popupContainerId={tableId}
+                >
+                  <Icon
+                    iconClass={iconClass}
+                    onClick={() => this.handleFixed(fixed ? 'cancelCurrent' : 'fixedCurrent')}
+                  />
+                </Tooltip>
+              )}
+            </Theme>
           </ArrowWrapper>
-        </Theme>
+        ) : null}
       </Wrapper>
     );
   }
