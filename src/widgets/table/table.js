@@ -27,6 +27,8 @@ import Empty from '../empty';
 import Icon from '../icon';
 import { deepMerge } from '@lugia/object-utils';
 import { style2css } from '@lugia/css';
+import getUuid from '../utils/getUuid';
+
 const sizePadding = {
   default: 8,
   small: 4,
@@ -76,6 +78,7 @@ export default ThemeProvider(
     disabledSelectedKeys: any[];
     tableWrap: Object;
     sortState: string;
+    tableId: string;
     oldPropsData: Object[];
     constructor(props) {
       super();
@@ -85,6 +88,8 @@ export default ThemeProvider(
         scroll = {},
         columns = [],
       } = props;
+      this.tableId = `lugia-table-${getUuid()}`;
+      this.propsKey = getUuid();
 
       const dataLength = data.length;
       const selectRowKeyLength = selectRowKeys.length;
@@ -98,7 +103,8 @@ export default ThemeProvider(
       };
       this.tableWrap = React.createRef();
       this.oldPropsData = [];
-      this.columns = this.getSortColumns(columns);
+      this.columns = this.handleColumns(props);
+      this.columnsWidthMap = {};
     }
     componentDidMount() {
       setTimeout(() => {
@@ -118,15 +124,16 @@ export default ThemeProvider(
     }
 
     shouldComponentUpdate(nextProps: TableProps, nextState: TableState) {
-      const { columns: nextColumns } = nextProps;
+      const { columns: nextColumns, fixedColumns: nextFixedColumns } = nextProps;
       const { selectRowKeys: nextSelectRowKeys } = nextState;
-      const { columns } = this.props;
+      const { columns, fixedColumns } = this.props;
       const { selectRowKeys } = this.state;
       if (
         !isEqualObject(nextColumns, columns) ||
-        !isEqualObject(nextSelectRowKeys, selectRowKeys)
+        !isEqualObject(nextSelectRowKeys, selectRowKeys) ||
+        !isEqualObject(nextFixedColumns, fixedColumns)
       ) {
-        this.columns = this.getSortColumns(nextColumns);
+        this.columns = this.handleColumns(nextProps);
       }
 
       return true;
@@ -402,32 +409,73 @@ export default ThemeProvider(
       this.validRecords = newValidRecords;
       this.disabledSelectedRecords = newDisabledSelectedRecords;
     };
-    getSortColumns = (columns: Object[]) => {
+
+    handleColumns = (currentProps: Object) => {
+      const {
+        columns = [],
+        canFixedColumnsDataIndex = [],
+        fixedColumns = [],
+        onFixed,
+        fixedData = [],
+      } = currentProps;
       const newColumns = [];
-      columns.map(item => {
-        const { sorter } = item;
-        if (sorter) {
+      const fixLeftColumns = [];
+      const fixRightColumns = [];
+
+      columns.forEach(item => {
+        const { sorter, dataIndex } = item;
+        const canFixed = canFixedColumnsDataIndex.indexOf(dataIndex) > -1;
+        if (sorter || canFixed) {
           const newItem = deepCopy(item);
-          const { title } = newItem;
+          const { title, dataIndex } = newItem;
           let props = {};
           if (React.isValidElement(title)) {
             props = title.props;
           }
+          const fixedOptions = {};
+          if (canFixed) {
+            const fixInfo = fixedColumns.find(item => item.dataIndex === dataIndex);
+            const columnFixed = !!fixInfo;
+            fixedOptions.fixed = columnFixed;
+            fixedOptions.canFixed = canFixed;
+            fixedOptions.onFixed = onFixed;
+            fixedOptions.canFixedColumnsDataIndex = canFixedColumnsDataIndex;
+            fixedOptions.dataIndex = dataIndex;
+            fixedOptions.fixedData = fixedData;
+            if (columnFixed) {
+              const { direction = 'left' } = fixInfo;
+              newItem.fixed = direction;
+            }
+          }
           newItem.title = (
             <div {...props}>
               <TableTitle
+                sorter={sorter}
                 title={item.title}
                 positiveSequence={() => this.onSortChange(item, 'ascend')}
                 negativeSequence={() => this.onSortChange(item, 'descend')}
+                {...fixedOptions}
+                tableId={this.tableId}
               />
             </div>
           );
-          newColumns.push(newItem);
+
+          switch (newItem.fixed) {
+            case 'left':
+              fixLeftColumns.push(newItem);
+              break;
+            case 'right':
+              fixRightColumns.push(newItem);
+              break;
+            default:
+              newColumns.push(newItem);
+          }
         } else {
           newColumns.push(item);
         }
       });
-      return newColumns;
+
+      return fixLeftColumns.concat(newColumns, fixRightColumns);
     };
     onSortChange = (columnData: Object, type: string) => {
       const { sortOrder } = this.state;
@@ -522,6 +570,7 @@ export default ThemeProvider(
         data: propsData = [],
         expandIcon,
         collapseIcon,
+        defaultExpandAllRows,
       } = this.props;
       this.selectedRecords = [];
       this.validKeys = [];
@@ -692,10 +741,15 @@ export default ThemeProvider(
           ? getIconByType(expandIcon, 'ExpandIcon')
           : getIconByType(collapseIcon, 'CollapseIcon');
       };
-      const key = tableData && tableData.length > 0 ? 'exist' : 'empty';
+      if (defaultExpandAllRows) {
+        if (propsDataIsChange) {
+          this.propsKey = getUuid();
+        }
+      }
 
       return (
         <TableWrap
+          id={this.tableId}
           ref={el => {
             this.tableWrap = el;
           }}
@@ -711,7 +765,7 @@ export default ThemeProvider(
             expandIconColumnIndex={expandIconColumnIndex}
             scroll={{ ...scroll, ...propsScroll }}
             expandIcon={(expandIcon || collapseIcon) && customExpandIcon}
-            key={key}
+            key={this.propsKey}
           />
         </TableWrap>
       );

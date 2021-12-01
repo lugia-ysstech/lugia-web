@@ -2,30 +2,6 @@
   {
     "category": "direction",
     "name": "方向图标",
-    "iconClass": "lugia-icon-direction_Center_alignment",
-    "title": "段落居中对齐文字本"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
-    "iconClass": "lugia-icon-direction_Left",
-    "title": "左边返回方向箭头"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
-    "iconClass": "lugia-icon-direction_Left_aligned",
-    "title": "段落左对齐文字本"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
-    "iconClass": "lugia-icon-direction_Telescopic",
-    "title": "拉伸拖拽放大"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
     "iconClass": "lugia-icon-direction_arrow_down",
     "title": "向下箭头方向"
   },
@@ -98,6 +74,12 @@
   {
     "category": "direction",
     "name": "方向图标",
+    "iconClass": "lugia-icon-direction_Center_alignment",
+    "title": "段落居中对齐文字本"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
     "iconClass": "lugia-icon-direction_double_left",
     "title": "左边向左方向箭头返回后退"
   },
@@ -106,24 +88,6 @@
     "name": "方向图标",
     "iconClass": "lugia-icon-direction_double_right",
     "title": "向右右边方向箭头前进"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
-    "iconClass": "lugia-icon-direction_down-square",
-    "title": "向下置底箭头方向"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
-    "iconClass": "lugia-icon-direction_down",
-    "title": "下方方向箭头置底"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
-    "iconClass": "lugia-icon-direction_down_circle",
-    "title": "置底下方方向箭头"
   },
   {
     "category": "direction",
@@ -140,20 +104,38 @@
   {
     "category": "direction",
     "name": "方向图标",
+    "iconClass": "lugia-icon-direction_down_circle",
+    "title": "置底下方方向箭头"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
     "iconClass": "lugia-icon-direction_down_square_o",
     "title": "方向箭置底下方头"
   },
   {
     "category": "direction",
     "name": "方向图标",
-    "iconClass": "lugia-icon-direction_enter",
-    "title": "确定箭头方向转发分享"
+    "iconClass": "lugia-icon-direction_down-square",
+    "title": "向下置底箭头方向"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
+    "iconClass": "lugia-icon-direction_down",
+    "title": "下方方向箭头置底"
   },
   {
     "category": "direction",
     "name": "方向图标",
     "iconClass": "lugia-icon-direction_enter_c",
     "title": "返回箭头方向回退"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
+    "iconClass": "lugia-icon-direction_enter",
+    "title": "确定箭头方向转发分享"
   },
   {
     "category": "direction",
@@ -182,26 +164,26 @@
   {
     "category": "direction",
     "name": "方向图标",
-    "iconClass": "lugia-icon-direction_left-square",
-    "title": "向后左边回退方向返回"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
     "iconClass": "lugia-icon-direction_left_aligned_new",
     "title": "左对齐间距居左方向"
   },
   {
     "category": "direction",
     "name": "方向图标",
-    "iconClass": "lugia-icon-direction_left_circle",
-    "title": "方向左边返回后退"
+    "iconClass": "lugia-icon-direction_Left_aligned",
+    "title": "段落左对齐文字本"
   },
   {
     "category": "direction",
     "name": "方向图标",
     "iconClass": "lugia-icon-direction_left_circle_o",
     "title": "方向左边后退返回"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
+    "iconClass": "lugia-icon-direction_left_circle",
+    "title": "方向左边返回后退"
   },
   {
     "category": "direction",
@@ -214,6 +196,18 @@
     "name": "方向图标",
     "iconClass": "lugia-icon-direction_left_square_o",
     "title": "左边返回后退箭头方向"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
+    "iconClass": "lugia-icon-direction_left-square",
+    "title": "向后左边回退方向返回"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
+    "iconClass": "lugia-icon-direction_Left",
+    "title": "左边返回方向箭头"
   },
   {
     "category": "direction",
@@ -242,13 +236,13 @@
   {
     "category": "direction",
     "name": "方向图标",
-    "iconClass": "lugia-icon-direction_play_circle",
+    "iconClass": "lugia-icon-direction_play_circle_o",
     "title": "开始播放"
   },
   {
     "category": "direction",
     "name": "方向图标",
-    "iconClass": "lugia-icon-direction_play_circle_o",
+    "iconClass": "lugia-icon-direction_play_circle",
     "title": "开始播放"
   },
   {
@@ -256,6 +250,30 @@
     "name": "方向图标",
     "iconClass": "lugia-icon-direction_retweet",
     "title": "循环方向箭头转向互换双箭头"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
+    "iconClass": "lugia-icon-direction_right_aligned",
+    "title": "右对齐段落对齐文字"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
+    "iconClass": "lugia-icon-direction_right_circle_o",
+    "title": "右向右箭头方向"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
+    "iconClass": "lugia-icon-direction_right_circle",
+    "title": "右向右箭头方向"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
+    "iconClass": "lugia-icon-direction_right_square_o",
+    "title": "右向右箭头方向方向"
   },
   {
     "category": "direction",
@@ -268,30 +286,6 @@
     "name": "方向图标",
     "iconClass": "lugia-icon-direction_right",
     "title": "右箭头方向边向前进"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
-    "iconClass": "lugia-icon-direction_right_aligned",
-    "title": "右对齐段落对齐文字"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
-    "iconClass": "lugia-icon-direction_right_circle",
-    "title": "右向右箭头方向"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
-    "iconClass": "lugia-icon-direction_right_circle_o",
-    "title": "右向右箭头方向"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
-    "iconClass": "lugia-icon-direction_right_square_o",
-    "title": "右向右箭头方向方向"
   },
   {
     "category": "direction",
@@ -320,12 +314,6 @@
   {
     "category": "direction",
     "name": "方向图标",
-    "iconClass": "lugia-icon-direction_swap",
-    "title": "双箭头左右箭头循环交换"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
     "iconClass": "lugia-icon-direction_swap_left",
     "title": "左边向左箭头方向"
   },
@@ -338,26 +326,20 @@
   {
     "category": "direction",
     "name": "方向图标",
+    "iconClass": "lugia-icon-direction_swap",
+    "title": "双箭头左右箭头循环交换"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
+    "iconClass": "lugia-icon-direction_Telescopic",
+    "title": "拉伸拖拽放大"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
     "iconClass": "lugia-icon-direction_unfold",
     "title": "展开扩大打开全屏整屏"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
-    "iconClass": "lugia-icon-direction_up-square",
-    "title": "向上置顶方向箭头"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
-    "iconClass": "lugia-icon-direction_up",
-    "title": "向上方向箭头上边"
-  },
-  {
-    "category": "direction",
-    "name": "方向图标",
-    "iconClass": "lugia-icon-direction_up_circle",
-    "title": "向下置底方向箭头"
   },
   {
     "category": "direction",
@@ -370,6 +352,12 @@
     "name": "方向图标",
     "iconClass": "lugia-icon-direction_up_circle_o",
     "title": "向上置顶方向箭头"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
+    "iconClass": "lugia-icon-direction_up_circle",
+    "title": "向下置底方向箭头"
   },
   {
     "category": "direction",
@@ -386,6 +374,18 @@
   {
     "category": "direction",
     "name": "方向图标",
+    "iconClass": "lugia-icon-direction_up-square",
+    "title": "向上置顶方向箭头"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
+    "iconClass": "lugia-icon-direction_up",
+    "title": "向上方向箭头上边"
+  },
+  {
+    "category": "direction",
+    "name": "方向图标",
     "iconClass": "lugia-icon-direction_verticle_left",
     "title": "左边推进回退收起方向"
   },
@@ -394,24 +394,6 @@
     "name": "方向图标",
     "iconClass": "lugia-icon-direction_verticle_right",
     "title": "右边推进快进收起方向"
-  },
-  {
-    "category": "financial",
-    "name": "金融图标",
-    "iconClass": "lugia-icon-financial_Back_file",
-    "title": "导出文件进入"
-  },
-  {
-    "category": "financial",
-    "name": "金融图标",
-    "iconClass": "lugia-icon-financial_Hourglass",
-    "title": "沙漏时间等待容器"
-  },
-  {
-    "category": "financial",
-    "name": "金融图标",
-    "iconClass": "lugia-icon-financial_QR_code",
-    "title": "二维码QR_code"
   },
   {
     "category": "financial",
@@ -440,12 +422,6 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_audit",
-    "title": "审计审查稽核检查"
-  },
-  {
-    "category": "financial",
-    "name": "金融图标",
     "iconClass": "lugia-icon-financial_audit_add",
     "title": "页面添加 项目添加 导入 增加"
   },
@@ -464,8 +440,20 @@
   {
     "category": "financial",
     "name": "金融图标",
+    "iconClass": "lugia-icon-financial_audit",
+    "title": "审计审查稽核检查"
+  },
+  {
+    "category": "financial",
+    "name": "金融图标",
     "iconClass": "lugia-icon-financial_back_file_new",
     "title": "导出文件进入文档"
+  },
+  {
+    "category": "financial",
+    "name": "金融图标",
+    "iconClass": "lugia-icon-financial_Back_file",
+    "title": "导出文件进入"
   },
   {
     "category": "financial",
@@ -484,6 +472,11 @@
     "name": "金融图标",
     "iconClass": "lugia-icon-financial_bell",
     "title": "铃铛闹钟提醒待办事项注意"
+  },
+  {
+    "category": "financial",
+    "name": "",
+    "iconClass": "lugia-icon-financial_Binding_R"
   },
   {
     "category": "financial",
@@ -572,13 +565,13 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_copy",
+    "iconClass": "lugia-icon-financial_copy_new",
     "title": "复制新增添加"
   },
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_copy_new",
+    "iconClass": "lugia-icon-financial_copy",
     "title": "复制新增添加"
   },
   {
@@ -619,6 +612,11 @@
   },
   {
     "category": "financial",
+    "name": "",
+    "iconClass": "lugia-icon-financial_diagnosis"
+  },
+  {
+    "category": "financial",
     "name": "金融图标",
     "iconClass": "lugia-icon-financial_disconnect",
     "title": "断开取消关联取消绑定"
@@ -626,14 +624,14 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_download",
-    "title": "下载"
+    "iconClass": "lugia-icon-financial_download_cloud",
+    "title": "云下载"
   },
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_download_cloud",
-    "title": "云下载"
+    "iconClass": "lugia-icon-financial_download",
+    "title": "下载"
   },
   {
     "category": "financial",
@@ -692,12 +690,6 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_folder",
-    "title": "文件夹文档钱包"
-  },
-  {
-    "category": "financial",
-    "name": "金融图标",
     "iconClass": "lugia-icon-financial_folder_add",
     "title": "添加文件夹文档"
   },
@@ -706,6 +698,12 @@
     "name": "金融图标",
     "iconClass": "lugia-icon-financial_folder_open",
     "title": "打开文件夹文档"
+  },
+  {
+    "category": "financial",
+    "name": "金融图标",
+    "iconClass": "lugia-icon-financial_folder",
+    "title": "文件夹文档钱包"
   },
   {
     "category": "financial",
@@ -776,13 +774,13 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_heart",
+    "iconClass": "lugia-icon-financial_heart_o",
     "title": "喜欢点赞爱心打爱情红心收藏"
   },
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_heart_o",
+    "iconClass": "lugia-icon-financial_heart",
     "title": "喜欢点赞爱心打爱情红心收藏"
   },
   {
@@ -812,8 +810,8 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_information",
-    "title": "消息提醒i重要注意警告"
+    "iconClass": "lugia-icon-financial_Hourglass",
+    "title": "沙漏时间等待容器"
   },
   {
     "category": "financial",
@@ -821,7 +819,22 @@
     "iconClass": "lugia-icon-financial_information_c",
     "title": "消息提醒信息说话文本评论"
   },
-  { "category": "financial", "name": "下载安装", "iconClass": "lugia-icon-financial_install" },
+  {
+    "category": "financial",
+    "name": "金融图标",
+    "iconClass": "lugia-icon-financial_information",
+    "title": "消息提醒i重要注意警告"
+  },
+  {
+    "category": "financial",
+    "name": "下载安装",
+    "iconClass": "lugia-icon-financial_install"
+  },
+  {
+    "category": "financial",
+    "name": "",
+    "iconClass": "lugia-icon-financial_iphone"
+  },
   {
     "category": "financial",
     "name": "金融图标",
@@ -849,20 +862,14 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_lightning",
-    "title": "交互 动作 快速 便捷 闪电"
-  },
-  {
-    "category": "financial",
-    "name": "金融图标",
     "iconClass": "lugia-icon-financial_lightning_o",
     "title": "交互 动作 快速 便捷 闪电"
   },
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_like",
-    "title": "点赞喜欢"
+    "iconClass": "lugia-icon-financial_lightning",
+    "title": "交互 动作 快速 便捷 闪电"
   },
   {
     "category": "financial",
@@ -873,8 +880,8 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_line",
-    "title": "布局分栏图表页面"
+    "iconClass": "lugia-icon-financial_like",
+    "title": "点赞喜欢"
   },
   {
     "category": "financial",
@@ -885,14 +892,14 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_link",
-    "title": "连接链接绑定捆绑关联"
+    "iconClass": "lugia-icon-financial_line",
+    "title": "布局分栏图表页面"
   },
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_loading",
-    "title": "加载循环loading"
+    "iconClass": "lugia-icon-financial_link",
+    "title": "连接链接绑定捆绑关联"
   },
   {
     "category": "financial",
@@ -903,13 +910,19 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_lock",
-    "title": "锁定加锁"
+    "iconClass": "lugia-icon-financial_loading",
+    "title": "加载循环loading"
   },
   {
     "category": "financial",
     "name": "金融图标",
     "iconClass": "lugia-icon-financial_lock_o",
+    "title": "锁定加锁"
+  },
+  {
+    "category": "financial",
+    "name": "金融图标",
+    "iconClass": "lugia-icon-financial_lock",
     "title": "锁定加锁"
   },
   {
@@ -927,13 +940,13 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_meh",
+    "iconClass": "lugia-icon-financial_meh_o",
     "title": "表情图标"
   },
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_meh_o",
+    "iconClass": "lugia-icon-financial_meh",
     "title": "表情图标"
   },
   {
@@ -1023,12 +1036,6 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_pic",
-    "title": "图片照片占位图加载"
-  },
-  {
-    "category": "financial",
-    "name": "金融图标",
     "iconClass": "lugia-icon-financial_pic_center",
     "title": "居中布局显示"
   },
@@ -1047,14 +1054,30 @@
   {
     "category": "financial",
     "name": "金融图标",
+    "iconClass": "lugia-icon-financial_pic",
+    "title": "图片照片占位图加载"
+  },
+  {
+    "category": "financial",
+    "name": "金融图标",
     "iconClass": "lugia-icon-financial_pie-chart",
     "title": "饼图图表数据"
+  },
+  {
+    "category": "financial",
+    "name": "",
+    "iconClass": "lugia-icon-financial_pin_o"
   },
   {
     "category": "financial",
     "name": "金融图标",
     "iconClass": "lugia-icon-financial_pin",
     "title": "固定固钉子粘贴A"
+  },
+  {
+    "category": "financial",
+    "name": "",
+    "iconClass": "lugia-icon-financial_position"
   },
   {
     "category": "financial",
@@ -1083,19 +1106,25 @@
   {
     "category": "financial",
     "name": "金融图标",
+    "iconClass": "lugia-icon-financial_QR_code",
+    "title": "二维码QR_code"
+  },
+  {
+    "category": "financial",
+    "name": "金融图标",
     "iconClass": "lugia-icon-financial_questionnaire",
     "title": "文本文件摘要文档档案"
   },
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_release",
+    "iconClass": "lugia-icon-financial_release_letter",
     "title": "分享转发文本文档文件摘要档案发送"
   },
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_release_letter",
+    "iconClass": "lugia-icon-financial_release",
     "title": "分享转发文本文档文件摘要档案发送"
   },
   {
@@ -1130,13 +1159,13 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_sad",
+    "iconClass": "lugia-icon-financial_sad_o",
     "title": "表情沮丧"
   },
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_sad_o",
+    "iconClass": "lugia-icon-financial_sad",
     "title": "表情沮丧"
   },
   {
@@ -1196,13 +1225,13 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_smile",
+    "iconClass": "lugia-icon-financial_smile_o",
     "title": "表情开心图标"
   },
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_smile_o",
+    "iconClass": "lugia-icon-financial_smile",
     "title": "表情开心图标"
   },
   {
@@ -1226,13 +1255,13 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_star",
+    "iconClass": "lugia-icon-financial_star_o",
     "title": "关注星星点赞"
   },
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_star_o",
+    "iconClass": "lugia-icon-financial_star",
     "title": "关注星星点赞"
   },
   {
@@ -1316,25 +1345,25 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_unlike",
-    "title": "不喜欢差评"
-  },
-  {
-    "category": "financial",
-    "name": "金融图标",
     "iconClass": "lugia-icon-financial_unlike_o",
     "title": "不喜欢差评"
   },
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_unlock",
-    "title": "解锁解除绑定开锁"
+    "iconClass": "lugia-icon-financial_unlike",
+    "title": "不喜欢差评"
   },
   {
     "category": "financial",
     "name": "金融图标",
     "iconClass": "lugia-icon-financial_unlock_o",
+    "title": "解锁解除绑定开锁"
+  },
+  {
+    "category": "financial",
+    "name": "金融图标",
+    "iconClass": "lugia-icon-financial_unlock",
     "title": "解锁解除绑定开锁"
   },
   {
@@ -1346,14 +1375,14 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_upload",
-    "title": "上传导入"
+    "iconClass": "lugia-icon-financial_upload_cloud",
+    "title": "云上传导入"
   },
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_upload_cloud",
-    "title": "云上传导入"
+    "iconClass": "lugia-icon-financial_upload",
+    "title": "上传导入"
   },
   {
     "category": "financial",
@@ -1376,14 +1405,14 @@
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_voice",
-    "title": "声音喇叭语音播放空放音量"
+    "iconClass": "lugia-icon-financial_voice_z",
+    "title": "语音声音喇叭话筒播放音量"
   },
   {
     "category": "financial",
     "name": "金融图标",
-    "iconClass": "lugia-icon-financial_voice_z",
-    "title": "语音声音喇叭话筒播放音量"
+    "iconClass": "lugia-icon-financial_voice",
+    "title": "声音喇叭语音播放空放音量"
   },
   {
     "category": "financial",
@@ -1424,20 +1453,8 @@
   {
     "category": "logo",
     "name": "logo图标",
-    "iconClass": "lugia-icon-logo_QQ",
-    "title": "腾讯QQlogo"
-  },
-  {
-    "category": "logo",
-    "name": "logo图标",
     "iconClass": "lugia-icon-logo_aliyun",
     "title": "阿里云aliyunlogo"
-  },
-  {
-    "category": "logo",
-    "name": "logo图标",
-    "iconClass": "lugia-icon-logo_android",
-    "title": "安卓手机安卓androidlogo"
   },
   {
     "category": "logo",
@@ -1448,13 +1465,19 @@
   {
     "category": "logo",
     "name": "logo图标",
-    "iconClass": "lugia-icon-logo_apple",
-    "title": "苹果iphonelogoapplemac"
+    "iconClass": "lugia-icon-logo_android",
+    "title": "安卓手机安卓androidlogo"
   },
   {
     "category": "logo",
     "name": "logo图标",
     "iconClass": "lugia-icon-logo_apple_o",
+    "title": "苹果iphonelogoapplemac"
+  },
+  {
+    "category": "logo",
+    "name": "logo图标",
+    "iconClass": "lugia-icon-logo_apple",
     "title": "苹果iphonelogoapplemac"
   },
   {
@@ -1478,13 +1501,13 @@
   {
     "category": "logo",
     "name": "logo图标",
-    "iconClass": "lugia-icon-logo_codepen",
+    "iconClass": "lugia-icon-logo_codepen_ciecle",
     "title": "code前端代码"
   },
   {
     "category": "logo",
     "name": "logo图标",
-    "iconClass": "lugia-icon-logo_codepen_ciecle",
+    "iconClass": "lugia-icon-logo_codepen",
     "title": "code前端代码"
   },
   {
@@ -1502,13 +1525,13 @@
   {
     "category": "logo",
     "name": "logo图标",
-    "iconClass": "lugia-icon-logo_dingding",
+    "iconClass": "lugia-icon-logo_dingding_circle",
     "title": "钉钉打卡考勤"
   },
   {
     "category": "logo",
     "name": "logo图标",
-    "iconClass": "lugia-icon-logo_dingding_circle",
+    "iconClass": "lugia-icon-logo_dingding",
     "title": "钉钉打卡考勤"
   },
   {
@@ -1544,14 +1567,14 @@
   {
     "category": "logo",
     "name": "logo图标",
-    "iconClass": "lugia-icon-logo_google",
-    "title": "chrome谷歌浏览器google"
+    "iconClass": "lugia-icon-logo_google_plus",
+    "title": "chrome谷歌浏览器googleplus"
   },
   {
     "category": "logo",
     "name": "logo图标",
-    "iconClass": "lugia-icon-logo_google_plus",
-    "title": "chrome谷歌浏览器googleplus"
+    "iconClass": "lugia-icon-logo_google",
+    "title": "chrome谷歌浏览器google"
   },
   {
     "category": "logo",
@@ -1598,6 +1621,12 @@
   {
     "category": "logo",
     "name": "logo图标",
+    "iconClass": "lugia-icon-logo_QQ",
+    "title": "腾讯QQlogo"
+  },
+  {
+    "category": "logo",
+    "name": "logo图标",
     "iconClass": "lugia-icon-logo_skype",
     "title": "skype"
   },
@@ -1622,20 +1651,14 @@
   {
     "category": "logo",
     "name": "logo图标",
-    "iconClass": "lugia-icon-logo_weibo",
-    "title": "微博weibo新浪"
-  },
-  {
-    "category": "logo",
-    "name": "logo图标",
     "iconClass": "lugia-icon-logo_weibo_circle",
     "title": "新浪微博weibo"
   },
   {
     "category": "logo",
     "name": "logo图标",
-    "iconClass": "lugia-icon-logo_windows",
-    "title": "windows微软10"
+    "iconClass": "lugia-icon-logo_weibo",
+    "title": "微博weibo新浪"
   },
   {
     "category": "logo",
@@ -1646,20 +1669,26 @@
   {
     "category": "logo",
     "name": "logo图标",
+    "iconClass": "lugia-icon-logo_windows",
+    "title": "windows微软10"
+  },
+  {
+    "category": "logo",
+    "name": "logo图标",
     "iconClass": "lugia-icon-logo_ysstech",
     "title": "赢时胜ysstech300377"
   },
   {
     "category": "logo",
     "name": "logo图标",
-    "iconClass": "lugia-icon-logo_zhifubao",
-    "title": "支付宝"
+    "iconClass": "lugia-icon-logo_zhifubao_circle",
+    "title": "支付宝zhifubao"
   },
   {
     "category": "logo",
     "name": "logo图标",
-    "iconClass": "lugia-icon-logo_zhifubao_circle",
-    "title": "支付宝zhifubao"
+    "iconClass": "lugia-icon-logo_zhifubao",
+    "title": "支付宝"
   },
   {
     "category": "reminder",
@@ -1670,25 +1699,13 @@
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_check",
-    "title": "正确对勾好"
-  },
-  {
-    "category": "reminder",
-    "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_check_circle",
-    "title": "好正确对勾"
-  },
-  {
-    "category": "reminder",
-    "name": "reminder图标",
     "iconClass": "lugia-icon-reminder_check_circle_o",
     "title": "好正确对勾"
   },
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_check_square",
+    "iconClass": "lugia-icon-reminder_check_circle",
     "title": "好正确对勾"
   },
   {
@@ -1700,8 +1717,14 @@
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_clock_circle",
-    "title": "时钟时间闹钟表"
+    "iconClass": "lugia-icon-reminder_check_square",
+    "title": "好正确对勾"
+  },
+  {
+    "category": "reminder",
+    "name": "reminder图标",
+    "iconClass": "lugia-icon-reminder_check",
+    "title": "正确对勾好"
   },
   {
     "category": "reminder",
@@ -1712,7 +1735,13 @@
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_close",
+    "iconClass": "lugia-icon-reminder_clock_circle",
+    "title": "时钟时间闹钟表"
+  },
+  {
+    "category": "reminder",
+    "name": "reminder图标",
+    "iconClass": "lugia-icon-reminder_close_circle_o",
     "title": "错误差错号"
   },
   {
@@ -1724,7 +1753,7 @@
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_close_circle_o",
+    "iconClass": "lugia-icon-reminder_close_square_o",
     "title": "错误差错号"
   },
   {
@@ -1736,13 +1765,13 @@
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_close_square_o",
+    "iconClass": "lugia-icon-reminder_close",
     "title": "错误差错号"
   },
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_exclamation",
+    "iconClass": "lugia-icon-reminder_exclamation_circle_o",
     "title": "注意提醒警告"
   },
   {
@@ -1754,13 +1783,13 @@
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_exclamation_circle_o",
+    "iconClass": "lugia-icon-reminder_exclamation",
     "title": "注意提醒警告"
   },
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_info",
+    "iconClass": "lugia-icon-reminder_info_circle_o",
     "title": "注意提醒警告i"
   },
   {
@@ -1772,13 +1801,13 @@
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_info_circle_o",
+    "iconClass": "lugia-icon-reminder_info",
     "title": "注意提醒警告i"
   },
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_minus",
+    "iconClass": "lugia-icon-reminder_minus_circle_o",
     "title": "减号法-"
   },
   {
@@ -1790,7 +1819,7 @@
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_minus_circle_o",
+    "iconClass": "lugia-icon-reminder_minus_square_o",
     "title": "减号法-"
   },
   {
@@ -1802,13 +1831,13 @@
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_minus_square_o",
+    "iconClass": "lugia-icon-reminder_minus",
     "title": "减号法-"
   },
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_pause",
+    "iconClass": "lugia-icon-reminder_pause_circle_o",
     "title": "暂停静止"
   },
   {
@@ -1820,19 +1849,19 @@
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_pause_circle_o",
-    "title": "暂停静止"
-  },
-  {
-    "category": "reminder",
-    "name": "reminder图标",
     "iconClass": "lugia-icon-reminder_pause_cycle",
     "title": "暂停静止周期"
   },
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_plus",
+    "iconClass": "lugia-icon-reminder_pause",
+    "title": "暂停静止"
+  },
+  {
+    "category": "reminder",
+    "name": "reminder图标",
+    "iconClass": "lugia-icon-reminder_plus_circle_o",
     "title": "+加号添加新建增加创建"
   },
   {
@@ -1844,7 +1873,7 @@
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_plus_circle_o",
+    "iconClass": "lugia-icon-reminder_plus_square_o",
     "title": "+加号添加新建增加创建"
   },
   {
@@ -1856,13 +1885,13 @@
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_plus_square_o",
+    "iconClass": "lugia-icon-reminder_plus",
     "title": "+加号添加新建增加创建"
   },
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_question",
+    "iconClass": "lugia-icon-reminder_question_circle_o",
     "title": "？问号提问问题状态"
   },
   {
@@ -1874,7 +1903,7 @@
   {
     "category": "reminder",
     "name": "reminder图标",
-    "iconClass": "lugia-icon-reminder_question_circle_o",
+    "iconClass": "lugia-icon-reminder_question",
     "title": "？问号提问问题状态"
   },
   {
