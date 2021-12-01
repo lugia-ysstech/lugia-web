@@ -88,7 +88,7 @@ export default ThemeProvider(
         scroll = {},
         columns = [],
       } = props;
-      this.tableId = getUuid();
+      this.tableId = `lugia-table-${getUuid()}`;
       this.propsKey = getUuid();
 
       const dataLength = data.length;
