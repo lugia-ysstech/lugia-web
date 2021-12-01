@@ -384,7 +384,7 @@ export const AllItemsContainer = CSSComponent({
     },
     getStyle: (themeMeta, themeProps) => {
       const { switchType, len } = themeProps.propsConfig;
-      const activeLength = len + 1;
+      const activeLength = len === 1 ? 1 : len + 1;
       const activeSize = `${100 * activeLength}%`;
       const { width, height } = getItemWidthAndHeight(switchType, activeSize);
       return {
