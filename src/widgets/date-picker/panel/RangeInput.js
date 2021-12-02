@@ -29,6 +29,7 @@ type TypeProps = {
   onBlur?: Function,
   onClear?: Function,
   getPartOfThemeProps: Function,
+  getInitInputRefs: Function,
   dispatchEvent: Function,
   value: Array<string>,
   disabled?: boolean,
@@ -117,6 +118,12 @@ class RangeInput extends Component<TypeProps, TypeState> {
       current.focus();
     }
   };
+  componentDidMount() {
+    const { getInitInputRefs, alwaysOpen, open, visible } = this.props;
+    if ((alwaysOpen || open || visible) && getInitInputRefs) {
+      getInitInputRefs(this.inputRefs);
+    }
+  }
 
   render() {
     const {
