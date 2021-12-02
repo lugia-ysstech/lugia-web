@@ -609,6 +609,13 @@ class Range extends Component<TypeProps, TypeState> {
     }
   };
 
+  getInitInputRefs = (inputRefs: Object) => {
+    if (inputRefs) {
+      this.inputRefs = inputRefs;
+      this.setState({ currentInputIndex: 0 });
+    }
+  };
+
   render() {
     const {
       value,
