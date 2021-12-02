@@ -7,6 +7,7 @@ export type TableProps = {
   children?: any,
   columns: Object[],
   data: Object[],
+  scrollerFixed?: number,
   size?: 'default' | 'small' | 'large',
   rowKey?: string,
   scroll?: Object,

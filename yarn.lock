@@ -12860,15 +12860,15 @@ rc-select@^8.6.4:
     react-lifecycles-compat "^3.0.2"
     warning "^4.0.2"
 
-rc-table@^7.0.0-rc.10:
-  version "7.17.1"
-  resolved "https://registry.nlark.com/rc-table/download/rc-table-7.17.1.tgz#09f8ab40d383f220efeb895dbfb279e7341e26d4"
-  integrity sha1-CfirQNOD8iDv64ldv7J55zQeJtQ=
+rc-table@7.19.1:
+  version "7.19.1"
+  resolved "http://192.168.102.79:5001/rc-table/-/rc-table-7.19.1.tgz#f43532aed0ba9463f42e19cc76340584f725556f"
+  integrity sha512-Ng7xvUaunuLK6vs5mMw+7cqSo4JeQH6hpAX4bwL/8qYsQgLD0dEqmQnByPtYhDtEdJyjIzm0zkd9SRhBaGeprA==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.5"
     rc-resize-observer "^1.0.0"
-    rc-util "^5.13.0"
+    rc-util "^5.14.0"
     shallowequal "^1.1.0"
 
 rc-trigger@^2.3.0, rc-trigger@^2.5.4:
@@ -12904,10 +12904,19 @@ rc-util@^4.0.4, rc-util@^4.13.0, rc-util@^4.15.3, rc-util@^4.4.0:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.1.0"
 
-rc-util@^5.0.0, rc-util@^5.13.0:
+rc-util@^5.0.0:
   version "5.13.2"
   resolved "https://registry.nlark.com/rc-util/download/rc-util-5.13.2.tgz#a8a0bb77743351841ba8bed6393e03b8d2f685c8"
   integrity sha1-qKC7d3QzUYQbqL7WOT4DuNL2hcg=
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    react-is "^16.12.0"
+    shallowequal "^1.1.0"
+
+rc-util@^5.14.0:
+  version "5.15.0"
+  resolved "http://192.168.102.79:5001/rc-util/-/rc-util-5.15.0.tgz#3527bd6c5806cf04476e17a0c7bf094fc8ea4666"
+  integrity sha512-8RI8sjOCXD3FhD3dzQNBQetpGol6BBd3sHQ/8jSGk9NPT0CH3JGtBfPODnASyE7AdDpCFQMOmgcp9CBs3S/1hg==
   dependencies:
     "@babel/runtime" "^7.12.5"
     react-is "^16.12.0"
