@@ -109,7 +109,7 @@ const StepButton = CSSComponent({
     text-align: center;
     color: rgba(0, 0, 0, 0.45);
     position: relative;
-    transition: all pointer 0.1s linear;
+    transition: all 0.1s linear;
     display: block;
     width: 100%;
     font-weight: bold;
@@ -252,10 +252,10 @@ function getBelowMin(value, min) {
 }
 
 function handleFirstPoint(value: string | number) {
-  return value === '.' ? '' : value;
+  return value === '.' ? '' : value || '';
 }
 function handleEmpty(value, handleValue) {
-  return value === '' ? '' : handleValue;
+  return value === '' ? '' : handleValue || '';
 }
 
 const iconDefaultTheme = (viewClass: string) => {
