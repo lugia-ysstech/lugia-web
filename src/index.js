@@ -4,22 +4,14 @@ import 'core-js/es/set';
 import 'core-js/es/string';
 import React from 'react';
 import { createBrowserHistory } from 'history';
-import { createApp, render } from '@lugia/lugiax-router';
+import { render } from '@lugia/lugiax-router';
 import registerServiceWorker from './registerServiceWorker';
-import Main from './App';
+import Main from './widgets/table/demo/ScorllerFixedDemo';
 
 const history = createBrowserHistory();
-const App = createApp(
-  {
-    '/': {
-      component: Main,
-    },
-  },
-  history
-);
 
 render(() => {
-  return <App />;
+  return <Main />;
 }, 'root');
 
 registerServiceWorker();

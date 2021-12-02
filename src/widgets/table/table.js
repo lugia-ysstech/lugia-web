@@ -6,6 +6,7 @@
  *
  */
 import * as React from 'react';
+import ResizeObserver from 'resize-observer-polyfill';
 import CSSComponent from '@lugia/theme-css-hoc';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
@@ -82,12 +83,7 @@ export default ThemeProvider(
     oldPropsData: Object[];
     constructor(props) {
       super();
-      const {
-        data = [],
-        selectOptions: { selectRowKeys = [] } = {},
-        scroll = {},
-        columns = [],
-      } = props;
+      const { data = [], selectOptions: { selectRowKeys = [] } = {}, scroll = {} } = props;
       this.tableId = `lugia-table-${getUuid()}`;
       this.propsKey = getUuid();
 
@@ -121,6 +117,36 @@ export default ThemeProvider(
           this.setState({ scroll: undefined });
         }
       }, 0);
+
+      const { xScrollerCritical } = this.props;
+
+      if (xScrollerCritical) {
+        this.xScrollerCriticalResizeObserver = new ResizeObserver(entries => {
+          if (!entries) {
+            return;
+          }
+
+          const entry = entries[0];
+          if (!entry) {
+            return;
+          }
+          const { target } = entry;
+
+          if (Math.abs(target.scrollWidth - target.clientWidth) <= xScrollerCritical) {
+            target.style.overflowX = 'hidden';
+          } else {
+            target.style.overflowX = '';
+          }
+        });
+
+        this.xScrollerCriticalResizeObserver.observe(this.getTableBody());
+      }
+    }
+
+    componentWillUnmount() {
+      if (this.xScrollerCriticalResizeObserver) {
+        this.xScrollerCriticalResizeObserver.disconnect();
+      }
     }
 
     shouldComponentUpdate(nextProps: TableProps, nextState: TableState) {
@@ -141,13 +167,34 @@ export default ThemeProvider(
 
     computeTableHeight() {
       if (this.tableWrap && this.tableWrap.querySelector) {
+        const tableBody = this.getTableBody();
+
+        if (!tableBody) {
+          return;
+        }
+
+        let tableBodyHeight = 0;
+        if (tableBody && tableBody.offsetHeight) {
+          tableBodyHeight = parseInt(tableBody.offsetHeight, 10);
+        }
+
+        let tableHeaderHeight = 0;
+        const tableHead = this.tableWrap.querySelector('.rc-table-header');
+        if (tableHead && tableHead.offsetHeight) {
+          tableHeaderHeight = parseInt(tableHead.offsetHeight, 10);
+        }
+        return tableBodyHeight + tableHeaderHeight;
+      }
+    }
+
+    getTableBody() {
+      if (this.tableWrap && this.tableWrap.querySelector) {
         const tableWarp = this.tableWrap.querySelector('.rc-table-content');
         const tableBody = this.tableWrap.querySelector('.rc-table-body table');
-        const tableHead = this.tableWrap.querySelector('.rc-table-header');
-        if (tableWarp && tableWarp.offsetHeight) {
-          return tableWarp.offsetHeight;
-        } else if (tableBody && tableBody.offsetHeight && tableHead && tableHead.offsetHeight) {
-          return parseInt(tableBody.offsetHeight, 10) + parseInt(tableHead.offsetHeight, 10);
+        if (tableWarp) {
+          return tableWarp;
+        } else if (tableBody) {
+          return tableBody;
         }
       }
     }
@@ -180,7 +227,7 @@ export default ThemeProvider(
       if ('selectRowKeys' in selectOptions) {
         const {
           selectRowKeys = [],
-          setCheckboxProps = (record: Object) => {
+          setCheckboxProps = () => {
             return {};
           },
         } = selectOptions;
@@ -226,7 +273,7 @@ export default ThemeProvider(
     tableItemChange = (key, record) => () => {
       const { selectOptions = {}, rowKey = 'key', data: propsData } = this.props;
       const {
-        setCheckboxProps = (record: Object) => {
+        setCheckboxProps = () => {
           return {};
         },
       } = selectOptions;
@@ -333,7 +380,7 @@ export default ThemeProvider(
     ) => {
       const { rowKey: cusRowKey = 'key', selectOptions = {} } = this.props;
       const {
-        setCheckboxProps = (record: Object) => {
+        setCheckboxProps = () => {
           return {};
         },
       } = selectOptions;
@@ -537,6 +584,7 @@ export default ThemeProvider(
               const newIndex = isHasExpand && data.length ? index + 2 : index + 1;
               return `${className}(${newIndex}){${style2css(style)}}`;
             }
+            return '';
           })
           .join('')
       );
@@ -559,7 +607,6 @@ export default ThemeProvider(
     render() {
       const {
         children,
-        columns = [],
         showHeader = true,
         tableStyle = 'bordered',
         getPartOfThemeProps,
@@ -641,7 +688,7 @@ export default ThemeProvider(
       if ('selectOptions' in this.props) {
         this.getValidKey();
         const {
-          setCheckboxProps = (record: Object) => {
+          setCheckboxProps = () => {
             return {};
           },
           width = 60,
@@ -678,8 +725,7 @@ export default ThemeProvider(
               cusRowKey,
               setCheckboxProps
             );
-            const indeterminate =
-              allCheck || notChecked.length === childrenKeys.length ? false : true;
+            const indeterminate = allCheck || notChecked.length !== childrenKeys.length;
             return (
               <div style={{ fontSize: 0 }}>
                 <Checkbox
