@@ -28948,6 +28948,12 @@ export default [
           injectProps: false,
           meta: '',
         },
+        xScrollerCritical: {
+          desc: '水平滚动条临界值配置',
+          type: 'number',
+          designOnly: false,
+          injectProps: false,
+        },
       },
       events: {
         onExpandedRowsChange: {
