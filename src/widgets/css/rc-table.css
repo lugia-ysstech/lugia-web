@@ -131,9 +131,7 @@
   left: auto;
 }
 .rc-table-header {
-  border: 1px solid red;
-  border-right: 0;
-  border-bottom: 0;
+  border: none;
 }
 .rc-table-placeholder {
   text-align: center;
