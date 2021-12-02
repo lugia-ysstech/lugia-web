@@ -56,7 +56,7 @@ const ResponsiveContainer = StaticComponent({
 
 const CardOutContainer = CSSComponent({
   tag: 'div',
-  className: 'CardOutContainer',
+  className: 'LugiaCardOutContainer',
   normal: {
     selectNames: [
       ['width'],
@@ -513,9 +513,11 @@ class Card extends React.Component<CardProps, CardState> {
     );
     const { operation, title, description, content, children } = this.props;
     const hasChildren = operation || title || description || content || children;
+    const className = 'LugiaCardOutContainer';
     if (type === 'transparent') {
       return (
         <CardOutContainer
+          className={className}
           themeProps={this.props.getPartOfThemeProps('Container', {
             props: { type },
           })}
@@ -527,6 +529,7 @@ class Card extends React.Component<CardProps, CardState> {
     if (type === 'responsive') {
       return (
         <CardOutContainer
+          className={className}
           themeProps={this.props.getPartOfThemeProps('Container', {
             props: { type },
           })}
@@ -536,7 +539,7 @@ class Card extends React.Component<CardProps, CardState> {
       );
     }
     return (
-      <CardOutContainer themeProps={resultTheme}>
+      <CardOutContainer className={className} themeProps={resultTheme}>
         {hasChildren ? (
           [
             this.getHeaderOperation(),
