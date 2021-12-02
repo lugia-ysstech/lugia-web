@@ -470,6 +470,11 @@ class Range extends Component<TypeProps, TypeState> {
       againRangeIndex: [],
       againChoseDayIndex: [],
     });
+    this.initPanel();
+  };
+  initPanel = () => {
+    this.targetModeFirst.onModeChange({ mode: 'date' });
+    this.targetModeSecond.onModeChange({ mode: 'date' });
   };
   onBlur = event => {
     const { value } = this.state;
@@ -493,6 +498,7 @@ class Range extends Component<TypeProps, TypeState> {
     }
     const { onBlur } = this.props;
     onBlur && onBlur();
+    this.initPanel();
   };
   onClear = (event: any) => {
     const newValue = ['', ''];
@@ -593,6 +599,13 @@ class Range extends Component<TypeProps, TypeState> {
         againRangeIndex: [],
         againChoseDayIndex: [],
       });
+    }
+  };
+
+  getInitInputRefs = (inputRefs: Object) => {
+    if (inputRefs) {
+      this.inputRefs = inputRefs;
+      this.setState({ currentInputIndex: 0 });
     }
   };
 
@@ -725,6 +738,7 @@ class Range extends Component<TypeProps, TypeState> {
                 footerChange={this.footerChange}
                 model={this.pageFooterChange}
                 showTimeBtnIsDisabled={valueIsValid}
+                visible={visible}
               />
             </RangeWrap>
           }
@@ -752,6 +766,7 @@ class Range extends Component<TypeProps, TypeState> {
             endDisabled={disabledEndTime}
             disabled={newDisabled}
             canClear={canClear}
+            getInitInputRefs={this.getInitInputRefs}
           />
         </Trigger>
       </Box>

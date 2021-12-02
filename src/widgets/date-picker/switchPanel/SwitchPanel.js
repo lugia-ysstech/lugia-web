@@ -66,11 +66,16 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
   constructor(props: TypeProps) {
     super(props);
     const { model } = props;
-    model &&
+    if (model) {
       model.on('inputOnChange', (data: Object) => {
         const { value } = data;
         this.setState({ value });
       });
+      model.on('onModeChange', param => {
+        const { mode } = param;
+        this.setState({ mode });
+      });
+    }
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const panelStates = getDerived(nextProps, preState);
