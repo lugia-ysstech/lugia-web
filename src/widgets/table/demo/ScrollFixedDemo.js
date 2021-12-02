@@ -51,10 +51,19 @@ const data = [
   { name: 'TheShy', age: 36, address: 'some where', key: '6' },
   { name: 'TheShy', age: 36, address: 'some where', key: '6' },
   { name: 'TheShy', age: 36, address: 'some where', key: '6' },
+  { name: 'TheShy', age: 36, address: 'some where', key: '6' },
+  { name: 'TheShy', age: 36, address: 'some where', key: '6' },
+  { name: 'TheShy', age: 36, address: 'some where', key: '6' },
+  { name: 'TheShy', age: 36, address: 'some where', key: '6' },
+  { name: 'TheShy', age: 36, address: 'some where', key: '6' },
+  { name: 'TheShy', age: 36, address: 'some where', key: '6' },
+  { name: 'TheShy', age: 36, address: 'some where', key: '6' },
+  { name: 'TheShy', age: 36, address: 'some where', key: '6' },
+  { name: 'TheShy', age: 36, address: 'some where', key: '6' },
 ];
 
 export default () => {
-  const [width, setWidth] = useState(695);
+  const [width, setWidth] = useState(858);
 
   const widthCss = `${width}px`;
 
@@ -65,7 +74,8 @@ export default () => {
       </div>
       <Table columns={columns} data={data} scroll={{ x: 700 }} />
       <div>忽略5像素（含5像素）情况下的水平滚动条</div>
-      <Table columns={columns} data={data} scroll={{ x: 700 }} xScrollerCritical={5} />
+      <Table columns={columns} data={data} scroll={{ x: 846, y: 500 }} xScrollerCritical={5} />
+      <Table columns={columns} data={data} scroll={{ x: 846 }} xScrollerCritical={5} />
       <Button
         onClick={() => {
           setWidth(width - 1);

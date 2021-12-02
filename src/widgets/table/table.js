@@ -139,7 +139,7 @@ export default ThemeProvider(
           }
         });
 
-        this.xScrollerCriticalResizeObserver.observe(this.getTableBody());
+        this.xScrollerCriticalResizeObserver.observe(this.getTableBodyDom());
       }
     }
 
@@ -167,7 +167,7 @@ export default ThemeProvider(
 
     computeTableHeight() {
       if (this.tableWrap && this.tableWrap.querySelector) {
-        const tableBody = this.getTableBody();
+        const tableBody = this.getTableBodyDom();
 
         if (!tableBody) {
           return;
@@ -187,10 +187,14 @@ export default ThemeProvider(
       }
     }
 
-    getTableBody() {
+    getTableDom() {
+      return this.getTableBodyDom(true);
+    }
+
+    getTableBodyDom(table: boolean = false) {
       if (this.tableWrap && this.tableWrap.querySelector) {
         const tableWarp = this.tableWrap.querySelector('.rc-table-content');
-        const tableBody = this.tableWrap.querySelector('.rc-table-body table');
+        const tableBody = this.tableWrap.querySelector(`.rc-table-body ${table ? 'table' : ''}`);
         if (tableWarp) {
           return tableWarp;
         } else if (tableBody) {

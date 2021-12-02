@@ -6,7 +6,7 @@ import React from 'react';
 import { createBrowserHistory } from 'history';
 import { createApp, render } from '@lugia/lugiax-router';
 import registerServiceWorker from './registerServiceWorker';
-import Main from './App';
+import Main from './widgets/table/demo/ScrollFixedDemo';
 
 const history = createBrowserHistory();
 const App = createApp(
