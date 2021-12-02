@@ -33,7 +33,7 @@ export const Box = CSSComponent({
   },
   css: css`
     display: inline-block;
-    vertical-align: text-top;
+    vertical-align: middle;
     font-size: 0;
   `,
 });
