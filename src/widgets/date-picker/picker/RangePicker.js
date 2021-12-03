@@ -4,6 +4,10 @@ import ThemeProvider from '../../theme-provider';
 import Range from '../triggerPanel/rangePanelTrigger';
 import RangePickerDoubleInput from '../triggerPanel/RangePickerDoubleInput';
 import { isDoubleDate } from '../utils/booleanUtils';
+import ValidateHoc from '../../input/validateHoc';
+
+const RangeValidPicker = ValidateHoc(Range);
+
 export default ThemeProvider(
   class RangePicker extends Component {
     render() {
@@ -12,7 +16,7 @@ export default ThemeProvider(
       return isDouble ? (
         <RangePickerDoubleInput {...this.props} mode={'range'} />
       ) : (
-        <Range {...this.props} mode={'range'} />
+        <RangeValidPicker {...this.props} mode={'range'} />
       );
     }
   },
