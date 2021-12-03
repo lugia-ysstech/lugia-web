@@ -805,6 +805,7 @@ export default ThemeProvider(
           }}
           themeProps={containerPartOfThemeProps}
           className={this.getClass(tableStyle, size)}
+          key={this.propsKey}
         >
           <RcTable
             {...this.getDefaultEmpty()}
@@ -815,7 +816,6 @@ export default ThemeProvider(
             expandIconColumnIndex={expandIconColumnIndex}
             scroll={{ ...scroll, ...propsScroll }}
             expandIcon={(expandIcon || collapseIcon) && customExpandIcon}
-            key={this.propsKey}
           />
         </TableWrap>
       );
