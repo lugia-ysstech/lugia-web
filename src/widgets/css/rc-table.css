@@ -150,7 +150,6 @@
   top: 0;
   bottom: 0;
   left: 0;
-  border-left: 1px solid red;
   z-index: 2;
 }
 .rc-table-body {
