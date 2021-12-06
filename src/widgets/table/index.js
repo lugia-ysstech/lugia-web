@@ -5,7 +5,7 @@
  * @flow
  */
 import Table from './table';
-import RcTable from 'rc-table';
+import RcTable from '@lugia/rc-table';
 
 const { ColumnGroup, Column } = RcTable;
 
