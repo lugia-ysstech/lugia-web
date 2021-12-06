@@ -8,10 +8,12 @@
 import * as React from 'react';
 import { AnchorContext } from './anchor';
 import type { AnchorLinkProps, AnchorLinkState } from '../css/anchor-link';
-import { LinkWrap, Link } from '../css/anchor-link';
+import { LinkWrap, LinkTitle } from '../css/anchor-link';
+import ThemeProvider from '../theme-provider';
+import Widget from '../consts';
 
-export default class extends React.Component<AnchorLinkProps, AnchorLinkState> {
-  static displayName = 'AnchorLink';
+class AnchorLink extends React.Component<AnchorLinkProps, AnchorLinkState> {
+  static displayName = 'Link';
   isLoad: boolean;
   constructor() {
     super();
@@ -22,24 +24,27 @@ export default class extends React.Component<AnchorLinkProps, AnchorLinkState> {
     return (
       <AnchorContext.Consumer>
         {context => {
-          const { title, href, children } = this.props;
+          const { title, href, children, getPartOfThemeProps } = this.props;
+          const { onClick, activeLink, useHref = true } = context;
+          const themeProps = getPartOfThemeProps('Container');
+          const { themeState } = themeProps;
+          themeState.active = activeLink === href;
           if (!this.isLoad) {
             const { getLinks } = context;
             this.isLoad = true;
             context && context.links.push(href);
             getLinks && getLinks(context.links);
           }
-          const { onClick, activeLink, useHref = true } = context;
           const linkHref = useHref ? { href } : {};
           return (
-            <LinkWrap>
-              <Link
+            <LinkWrap themeProps={themeProps}>
+              <LinkTitle
+                themeProps={themeProps}
                 onClick={e => onClick && onClick(e, href)}
-                active={activeLink === href}
                 {...linkHref}
               >
                 {title}
-              </Link>
+              </LinkTitle>
               {children}
             </LinkWrap>
           );
@@ -48,3 +53,4 @@ export default class extends React.Component<AnchorLinkProps, AnchorLinkState> {
     );
   }
 }
+export default ThemeProvider(AnchorLink, Widget.Link);

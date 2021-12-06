@@ -115,6 +115,7 @@ const TimeLineItem = 'lugia_widget_TimeLineItem';
 const Transfer = 'lugia_widget_Transfer';
 const Drawer = 'lugia_widget_Drawer';
 const Anchor = 'lugia_widget_Anchor';
+const Link = 'lugia_widget_Link';
 
 const Card = 'lugia_widget_Card';
 const CardImage = 'lugia_widget_CardImage';
@@ -229,6 +230,7 @@ export default {
   Transfer,
   Drawer,
   Anchor,
+  Link,
   Card,
   CardImage,
   Rate,
