@@ -1,0 +1,50 @@
+{
+  "widgetName": "Link",
+  "title": "锚点链接",
+  "aliasName": null,
+  "desc": "用于跳转到页面指定位置链接。",
+  "tag": "锚点链接 Link 指定链接 指定位置",
+  "needExport": true,
+  "props": {
+    "title": {
+      "desc": "链接标题",
+      "type": "string | React.Node",
+      "designOnly": false,
+      "injectProps": false
+    },
+    "href": {
+      "desc": "链接地址",
+      "type": "string",
+      "designOnly": false,
+      "injectProps": false
+    },
+    "children": {
+      "desc": "锚点链接的children 内容 ",
+      "type": "React.Node",
+      "designOnly": false,
+      "injectProps": false
+    }
+  },
+  "events": {},
+  "designInfo": {},
+  "category": ["其他"],
+  "theme": {
+    "Container": {
+      "name": "锚点链接",
+      "desc": "锚点链接",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["padding"],
+        ["margin"],
+        ["background"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "hover": [["background"], ["fontSize"], ["font"], ["color"]],
+      "active": [["background"], ["fontSize"], ["font"], ["color"]]
+    }
+  },
+  "themeConfig": []
+}

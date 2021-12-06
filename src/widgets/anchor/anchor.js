@@ -10,7 +10,8 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import Affix from '../affix/index';
 import type { AnchorProps, AnchorState } from '../css/anchor';
-import { Anchor, Circle } from '../css/anchor';
+import { Anchor, Indicator } from '../css/anchor';
+import Link from './link';
 
 export const AnchorContext: Object = React.createContext({
   links: [],
@@ -18,6 +19,10 @@ export const AnchorContext: Object = React.createContext({
   activeLink: undefined,
   onClick: undefined,
 });
+
+const isValidArray = (data?: Object[]) => {
+  return data && Array.isArray(data) && data.length > 0;
+};
 
 export default ThemeProvider(
   class extends React.Component<AnchorProps, AnchorState> {
@@ -95,6 +100,18 @@ export default ThemeProvider(
       return linkInfo.reduce((prev, curr) => (curr.top > prev.top ? curr : prev)).link;
     }
 
+    getLinkData = (data: Object[]) => {
+      const { getPartOfThemeHocProps } = this.props;
+      return data.map(item => {
+        const { title, href, children } = item;
+        return (
+          <Link title={title} href={href} {...getPartOfThemeHocProps('AnchorLink')}>
+            {isValidArray(children) ? this.getLinkData(children) : null}
+          </Link>
+        );
+      });
+    };
+
     render() {
       const {
         affix = true,
@@ -103,18 +120,18 @@ export default ThemeProvider(
         slideType = 'circle',
         slideLine = true,
         useHref = true,
+        getPartOfThemeProps,
+        data,
       } = this.props;
-      const { activeLink } = this.state;
-      let index;
-      if (activeLink) {
-        index = this.links ? this.links.indexOf(activeLink) : 0;
-      }
+
+      const themeProps = getPartOfThemeProps('Container');
       const element = (
-        <Anchor slideType={slideType} slideLine={slideLine}>
-          {children}
-          <Circle slideType={slideType} index={index} />
+        <Anchor slideType={slideType} slideLine={slideLine} themeProps={themeProps}>
+          {isValidArray(data) ? this.getLinkData(data) : children}
+          {this.getAnchorIndicator()}
         </Anchor>
       );
+      const { activeLink } = this.state;
       return (
         <AnchorContext.Provider
           value={{
@@ -127,6 +144,18 @@ export default ThemeProvider(
         >
           {affix ? <Affix offsetTop={offsetTop}>{element}</Affix> : element}
         </AnchorContext.Provider>
+      );
+    }
+
+    getAnchorIndicator() {
+      const { slideType, getPartOfThemeProps } = this.props;
+      const { activeLink } = this.state;
+      let index = 0;
+      if (activeLink) {
+        index = this.links ? this.links.indexOf(activeLink) : 0;
+      }
+      return (
+        <Indicator themeProps={getPartOfThemeProps('Indicator', { props: { slideType, index } })} />
       );
     }
 

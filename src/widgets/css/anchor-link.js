@@ -3,50 +3,67 @@
  * create by guorg
  * @flow
  */
-import { px2emcss } from '../css/units';
-import styled from 'styled-components';
 import get from './theme-common-dict';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 
 export type AnchorLinkProps = {
   title: string | React.ReactNode,
   href: string,
-  children?: any,
-  onClick?: Function,
-  active?: boolean,
+  children?: AnchorLinkProps[],
 };
 export type AnchorLinkState = {};
-type CSSProps = {
-  active?: boolean,
-};
 
-const FontSize = 1.2;
-const em = px2emcss(FontSize);
+export const LinkWrap = CSSComponent({
+  tag: 'div',
+  className: 'LinkWrap',
+  normal: {
+    selectNames: [['width'], ['height'], ['margin'], ['padding'], ['background']],
+    defaultTheme: {
+      padding: {
+        top: 12,
+        left: get('marginToSameElement'),
+      },
+    },
+  },
 
-export const LinkWrap = styled.div`
-  font-size: ${FontSize}rem;
-  padding-top: ${em(12)};
-  padding-left: ${em(get('marginToSameElement'))};
-  line-height: 1;
-`;
+  css: css`
+    line-height: 1;
+  `,
+  option: { hover: true, active: true },
+});
+export const LinkTitle = CSSComponent({
+  tag: 'a',
+  className: 'LinkTitle',
+  normal: {
+    selectNames: [['fontSize'], ['font'], ['color']],
+    defaultTheme: {
+      color: get('darkGreyColor'),
+    },
+  },
+  hover: {
+    selectNames: [['fontSize'], ['font'], ['color']],
+    defaultTheme: {
+      color: get('themeColor'),
+    },
+  },
+  focus: {
+    selectNames: [['fontSize'], ['font'], ['color']],
+    defaultTheme: {},
+    getCSS() {
+      return 'text-decoration: none;';
+    },
+  },
+  active: {
+    selectNames: [['fontSize'], ['font'], ['color']],
+    defaultTheme: {
+      color: get('themeColor'),
+    },
+  },
 
-const getLinkColor = (props: CSSProps) => {
-  const { active } = props;
-  let color = 'darkGreyColor';
-  if (active) {
-    color = 'themeColor';
-  }
-  return `color: ${get(color)};`;
-};
-
-export const Link = styled.a`
-  display: block;
-  ${getLinkColor};
-  transition: all 0.3s ease-in-out;
-  text-decoration: none;
-  &:hover {
-    color: ${get('themeColor')};
-  }
-  &:focus {
+  css: css`
+    display: block;
+    transition: all 0.3s ease-in-out;
     text-decoration: none;
-  }
-`;
+  `,
+  option: { hover: true, active: true },
+});

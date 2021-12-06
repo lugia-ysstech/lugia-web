@@ -570,8 +570,8 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   setValue(value: number, event: any): void {
     const oldValue = this.state.value;
     const { disabled, onChange } = this.props;
-    const theNewValue = handleEmpty(value, parseFloat(value));
-    const theOldValue = handleEmpty(oldValue, parseFloat(oldValue));
+    const theNewValue = handleEmpty(value, value);
+    const theOldValue = handleEmpty(oldValue, oldValue);
     const param = {
       newValue: theNewValue,
       oldValue: theOldValue,
