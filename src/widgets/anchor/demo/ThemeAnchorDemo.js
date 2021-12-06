@@ -1,15 +1,9 @@
-/**
- *
- * create by guorg
- *
- * @flow
- */
 import React from 'react';
-import styled from 'styled-components';
-import Theme from '../theme';
-import Widget from '../consts/index';
+import Anchor from '../index';
+import Widget from '../../consts';
 import { getBorder } from '@lugia/theme-utils';
-import Anchor from './index';
+import Theme from '../../theme';
+import styled from 'styled-components';
 
 const { Link } = Anchor;
 const DemoBox = styled.div`
@@ -20,7 +14,7 @@ const DemoBox = styled.div`
   height: 200px;
 `;
 
-export default class DrawerDemo extends React.Component<any, any> {
+export default class ThemeAnchorDemo extends React.Component<any, any> {
   constructor() {
     super();
   }
@@ -84,11 +78,7 @@ export default class DrawerDemo extends React.Component<any, any> {
             <Anchor slideType="hollowCircle" useHref={false} onClick={this.handleLinkClick}>
               <Link title="anchor-link1" href="#anchor-link1" />
               <Link title="anchor-link2" href="#anchor-link2" />
-              <Link title="anchor-link3" href="#anchor-link3">
-                <Link title="anchor-link3.1" href="#anchor-link3.1" />
-                <Link title="anchor-link3.2" href="#anchor-link3.2" />
-              </Link>
-              <Link title="anchor-link4" href="#anchor-link4" />
+              <Link title="anchor-link3" href="#anchor-link3" />
             </Anchor>
           </Theme>
         </DemoBox>
@@ -96,22 +86,14 @@ export default class DrawerDemo extends React.Component<any, any> {
           <Anchor slideType="line">
             <Link title="anchor-link1" href="#anchor-link1" />
             <Link title="anchor-link2" href="#anchor-link2" />
-            <Link title="anchor-link3" href="#anchor-link3">
-              <Link title="anchor-link3.1" href="#anchor-link3.1" />
-              <Link title="anchor-link3.2" href="#anchor-link3.2" />
-            </Link>
-            <Link title="anchor-link4" href="#anchor-link4" />
+            <Link title="anchor-link3" href="#anchor-link3" />
           </Anchor>
         </DemoBox>
         <DemoBox cur={2}>
           <Anchor slideType="circle">
             <Link title="anchor-link1" href="#anchor-link1" />
             <Link title="anchor-link2" href="#anchor-link2" />
-            <Link title="anchor-link3" href="#anchor-link3">
-              <Link title="anchor-link3.1" href="#anchor-link3.1" />
-              <Link title="anchor-link3.2" href="#anchor-link3.2" />
-            </Link>
-            <Link title="anchor-link4" href="#anchor-link4" />
+            <Link title="anchor-link3" href="#anchor-link3" />
           </Anchor>
         </DemoBox>
         <div style={{ marginTop: '100px' }} id="anchor-link1" name="anchor-link1">
@@ -122,15 +104,6 @@ export default class DrawerDemo extends React.Component<any, any> {
         </div>
         <div style={{ marginTop: '300px' }} id="anchor-link3" name="anchor-link3">
           anchor-link3
-        </div>
-        <div style={{ marginTop: '200px' }} id="anchor-link3.1" name="anchor-link3.1">
-          anchor-link3.1
-        </div>
-        <div style={{ marginTop: '200px' }} id="anchor-link3.2" name="anchor-link3.2">
-          anchor-link3.2
-        </div>
-        <div style={{ marginTop: '300px' }} id="anchor-link4" name="anchor-link4">
-          anchor-link4
         </div>
       </div>
     );

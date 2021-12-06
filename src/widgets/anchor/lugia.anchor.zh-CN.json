@@ -64,10 +64,48 @@
       ]
     }
   },
-  "designInfo": {},
-  "category": [
-    "其他"
-  ],
+  "designInfo": {
+    "HollowCircleAnchor": {
+      "title": "空心圆指示锚点",
+      "sequence": 1,
+      "tag": "锚点 空心圆 指示 ",
+      "desc": "指示器为空心圆样式的锚点",
+      "props": {
+        "slideType": "hollowCircle"
+      },
+      "theme": {
+        "Container": {
+          "name": "锚点容器",
+          "desc": "锚点容器整体",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["border", ["left"]],
+            ["padding"],
+            ["margin"],
+            ["background"]
+          ]
+        }
+      }
+    },
+    "LineAnchor": {
+      "title": "线性指示锚点",
+      "sequence": 2,
+      "tag": "锚点 线性 指示 ",
+      "desc": "指示器为线性样式的锚点",
+      "props": {
+        "slideType": "line"
+      },
+      "theme": {
+        "Container": {
+          "name": "锚点容器",
+          "desc": "锚点容器整体",
+          "normal": [["width"], ["height"], ["padding"], ["margin"], ["background"]]
+        }
+      }
+    }
+  },
+  "category": ["其他"],
   "type": {
     "SlideType": [
       {
@@ -75,10 +113,22 @@
         "text": "圆型"
       },
       {
+        "value": "hollowCircle",
+        "text": "空心圆型"
+      },
+      {
         "value": "line",
         "text": "线型"
       }
     ]
   },
+  "theme": {
+    "Container": {
+      "name": "锚点容器",
+      "desc": "锚点容器整体",
+      "normal": [["width"], ["height"], ["padding"], ["margin"], ["background"]]
+    }
+  },
+  "childrenWidget": ["link"],
   "themeConfig": []
 }
