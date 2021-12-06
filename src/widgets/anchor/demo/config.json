@@ -11,6 +11,10 @@
     "title": "固定状态改变的回调",
     "desc": "可以获取是否固定状态"
   },
+  "DataDemo": {
+    "title": "Data类型的锚点",
+      "desc": "可以通过传入data数据,生产跳转链接的锚点"
+  },
   "ThemeAnchorDemo": {
     "title": "不同风格指示器的锚点",
     "desc": "可以配置主题的不同风格指示器的锚点"

@@ -15,6 +15,7 @@ export type AnchorProps = {
   slideLine?: boolean,
   useHref?: boolean,
   onClick?: Function,
+  data?: Object[],
 };
 export type AnchorState = {
   activeLink: string,
@@ -38,7 +39,10 @@ export const Anchor = CSSComponent({
       ['border', ['left']],
       ['padding'],
       ['margin'],
+      ['borderRadius'],
       ['background'],
+      ['opacity'],
+      ['boxShadow'],
     ],
     defaultTheme: {
       border: {
@@ -78,42 +82,25 @@ const getPositionCSS = (props: CSSProps) => {
   return 'display: none;';
 };
 
-export const HollowCircleIndicator = CSSComponent({
-  tag: 'div',
-  className: 'HollowCircleIndicator',
-  normal: {
-    selectNames: [['width'], ['height'], ['border'], ['background']],
-    defaultTheme: {
-      width: defaultWidth,
-      height: defaultHeight,
-      border: getBorder({
-        color: get('themeColor'),
-        style: 'solid',
-        width: 1,
-      }),
-      background: 'transparent',
-    },
-    getCSS(themeMeta, themeProps) {
-      const { propsConfig: { slideType, index } = {} } = themeProps;
-      const { height } = themeMeta;
-      return getPositionCSS({ slideType, index, height });
-    },
-  },
-  css: css`
-    border-radius: 50%;
-    ${getIndicatorCSS()}
-  `,
-});
-
 function getIndicatorCSS() {
   return 'position:absolute;transition: all 0.3s ease-in-out;transform: translateX(-50%);';
 }
 
-export const NormalIndicator = CSSComponent({
+export const Indicator = CSSComponent({
   tag: 'div',
-  className: 'Anchor',
+  className: 'Indicator',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['padding'],
+      ['margin'],
+      ['border'],
+      ['borderRadius'],
+      ['background'],
+      ['opacity'],
+      ['boxShadow'],
+    ],
     defaultTheme: {
       width: defaultWidth,
       height: defaultHeight,
@@ -134,10 +121,4 @@ export const NormalIndicator = CSSComponent({
   css: css`
     ${getIndicatorCSS()}
   `,
-});
-
-export const ChildrenContent = CSSComponent({
-  tag: 'span',
-  className: 'ChildrenContent',
-  normal: {},
 });

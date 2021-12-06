@@ -15,7 +15,7 @@ const { Link } = Anchor;
 const DemoBox = styled.div`
   display: inline-block;
   padding: 20px;
-  margin-left: ${props => 120 + props.cur * 100}px;
+  margin-left: ${props => 120 + props.cur * 80}px;
   width: 210px;
   height: 200px;
 `;
@@ -53,8 +53,11 @@ export default class DrawerDemo extends React.Component<any, any> {
             },
           },
         },
-        HollowIndicator: {
+        Indicator: {
           normal: {
+            background: {
+              color: 'transparent',
+            },
             border: getBorder({
               width: 1,
               color: 'blue',
@@ -62,26 +65,54 @@ export default class DrawerDemo extends React.Component<any, any> {
             }),
           },
         },
-      },
-      [Widget.Link]: {
-        Container: {
-          normal: {
-            color: 'black',
-          },
-          hover: {
-            color: 'blue',
-          },
-          active: {
-            color: 'red',
+        AnchorLink: {
+          Container: {
+            normal: {
+              color: 'gray',
+            },
+            hover: {
+              color: 'blue',
+            },
+            active: {
+              color: 'red',
+            },
           },
         },
       },
     };
+    const linkData = [
+      {
+        title: 'anchor-link1',
+        href: '#anchor-link1',
+      },
+      {
+        title: 'anchor-link2',
+        href: '#anchor-link2',
+      },
+      {
+        title: 'anchor-link3',
+        href: '#anchor-link3',
+        children: [
+          {
+            title: 'anchor-link3.1',
+            href: '#anchor-link3.1',
+          },
+          {
+            title: 'anchor-link3.2',
+            href: '#anchor-link3.2',
+          },
+        ],
+      },
+      {
+        title: 'anchor-link4',
+        href: '#anchor-link4',
+      },
+    ];
     return (
       <div>
         <DemoBox cur={0}>
           <Theme config={config}>
-            <Anchor slideType="hollowCircle" useHref={false} onClick={this.handleLinkClick}>
+            <Anchor slideType="circle" useHref={false} onClick={this.handleLinkClick}>
               <Link title="anchor-link1" href="#anchor-link1" />
               <Link title="anchor-link2" href="#anchor-link2" />
               <Link title="anchor-link3" href="#anchor-link3">
@@ -113,6 +144,11 @@ export default class DrawerDemo extends React.Component<any, any> {
             </Link>
             <Link title="anchor-link4" href="#anchor-link4" />
           </Anchor>
+        </DemoBox>
+        <DemoBox cur={3}>
+          <Theme config={config}>
+            <Anchor slideType="circle" data={linkData} />
+          </Theme>
         </DemoBox>
         <div style={{ marginTop: '100px' }} id="anchor-link1" name="anchor-link1">
           anchor-link1

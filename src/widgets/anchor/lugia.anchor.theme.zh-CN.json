@@ -1,61 +1,30 @@
 [
   {
     "widgetName": "Anchor",
-    "aliasName": "HollowCircleAnchor",
-    "title": "空心圆类型锚点",
-    "viewProps": [],
-    "data": [
-      {
-        "title": "锚点整体",
-        "iconClass": "",
-        "data": [
-          {
-            "name": "锚点整体",
-            "path": ["Container"],
-            "description": {
-              "appearancePart": {
-                "text": "锚点整体",
-                "desc": "锚点整体"
-              }
-            }
-          }
-        ]
-      },
-      {
-        "title": "锚点空心圆指示器",
-        "iconClass": "",
-        "data": [
-          {
-            "name": "空心圆指示器",
-            "path": ["HollowIndicator"],
-            "description": {
-              "appearancePart": {
-                "text": "指示器",
-                "desc": "指示器"
-              }
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "widgetName": "Anchor",
     "aliasName": "LineAnchor",
     "title": "线形锚点",
-    "viewProps": [],
+    "viewProps": [
+      {
+        "name": "SlideType",
+        "text": "指示器类型"
+      },
+      {
+        "name": "data",
+        "text": "锚点链接数据编辑"
+      }
+    ],
     "data": [
       {
-        "title": "锚点整体",
-        "iconClass": "",
+        "title": "锚点主体",
+        "iconClass": "anchorBackground",
         "data": [
           {
             "name": "锚点整体",
             "path": ["Container"],
             "description": {
               "appearancePart": {
-                "text": "锚点整体",
-                "desc": "锚点整体"
+                "text": "锚点主体",
+                "desc": "锚点主体"
               }
             }
           }
@@ -63,7 +32,7 @@
       },
       {
         "title": "线形指示器",
-        "iconClass": "",
+        "iconClass": "anchorPoint",
         "data": [
           {
             "name": "线形指示器",
@@ -76,6 +45,22 @@
             }
           }
         ]
+      },
+      {
+        "title": "跳转链接",
+        "iconClass": "anchorText",
+        "data": [
+          {
+            "name": "跳转链接",
+            "path": ["AnchorLink", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "跳转链接",
+                "desc": "跳转链接"
+              }
+            }
+          }
+        ]
       }
     ]
   },
@@ -83,19 +68,24 @@
     "widgetName": "Anchor",
     "aliasName": "CircleAnchor",
     "title": "圆形锚点",
-    "viewProps": [],
+    "viewProps": [
+      {
+        "name": "SlideType",
+        "text": "指示器类型"
+      }
+    ],
     "data": [
       {
-        "title": "锚点整体",
-        "iconClass": "",
+        "title": "锚点主体",
+        "iconClass": "anchorBackground",
         "data": [
           {
-            "name": "锚点整体",
+            "name": "锚点主体",
             "path": ["Container"],
             "description": {
               "appearancePart": {
-                "text": "锚点整体",
-                "desc": "锚点整体"
+                "text": "锚点主体",
+                "desc": "锚点主体"
               }
             }
           }
@@ -103,7 +93,7 @@
       },
       {
         "title": "圆形指示器",
-        "iconClass": "",
+        "iconClass": "anchorPointO",
         "data": [
           {
             "name": "圆形指示器",
@@ -116,7 +106,23 @@
             }
           }
         ]
+      },
+      {
+        "title": "跳转链接",
+        "iconClass": "anchorText",
+        "data": [
+          {
+            "name": "跳转链接",
+            "path": ["AnchorLink", "Container"],
+            "description": {
+              "appearancePart": {
+                "text": "跳转链接",
+                "desc": "跳转链接"
+              }
+            }
+          }
+        ]
       }
     ]
-  },
+  }
 ]

@@ -45,6 +45,38 @@
       "designOnly": false,
       "injectProps": false,
       "defaultValue": true
+    },
+    "data": {
+      "desc": "指定跳转页面的数据",
+      "type": "Object[]",
+      "designOnly": true,
+      "injectProps": false,
+      "defaultValue": [
+        {
+          "value": "跳转页面链接1",
+          "title": "标题1"
+        },
+        {
+          "value": "跳转页面链接2",
+          "title": "标题2"
+        },
+        {
+          "value": "跳转页面链接3",
+          "title": "标题3"
+        }
+      ],
+      "meta": [
+        {
+          "key": "value",
+          "title": "对应字段",
+          "type": "string"
+        },
+        {
+          "key": "title",
+          "title": "展示文字",
+          "type": "string"
+        }
+      ]
     }
   },
   "events": {
@@ -65,32 +97,9 @@
     }
   },
   "designInfo": {
-    "HollowCircleAnchor": {
-      "title": "空心圆指示锚点",
-      "sequence": 1,
-      "tag": "锚点 空心圆 指示 ",
-      "desc": "指示器为空心圆样式的锚点",
-      "props": {
-        "slideType": "hollowCircle"
-      },
-      "theme": {
-        "Container": {
-          "name": "锚点容器",
-          "desc": "锚点容器整体",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["border", ["left"]],
-            ["padding"],
-            ["margin"],
-            ["background"]
-          ]
-        }
-      }
-    },
     "LineAnchor": {
       "title": "线性指示锚点",
-      "sequence": 2,
+      "sequence": 1,
       "tag": "锚点 线性 指示 ",
       "desc": "指示器为线性样式的锚点",
       "props": {
@@ -98,9 +107,53 @@
       },
       "theme": {
         "Container": {
-          "name": "锚点容器",
+          "name": "锚点主体",
           "desc": "锚点容器整体",
-          "normal": [["width"], ["height"], ["padding"], ["margin"], ["background"]]
+          "normal": [
+            ["width"],
+            ["height"],
+            ["padding"],
+            ["margin"],
+            ["border", ["left"]],
+            ["borderRadius"],
+            ["background"],
+            ["opacity"],
+            ["boxShadow"]
+          ]
+        },
+        "Indicator": {
+          "name": "锚点指示器",
+          "desc": "锚点指示器",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["padding"],
+            ["margin"],
+            ["border"],
+            ["borderRadius"],
+            ["background"],
+            ["opacity"],
+            ["boxShadow"]
+          ]
+        },
+        "AnchorLink": {
+          "name": "跳转链接",
+          "theme": {
+            "Container": {
+              "normal": [
+                ["width"],
+                ["height"],
+                ["padding"],
+                ["margin"],
+                ["background"],
+                ["fontSize"],
+                ["font"],
+                ["color"]
+              ],
+              "hover": [["background"], ["fontSize"], ["font"], ["color"]],
+              "active": [["background"], ["fontSize"], ["font"], ["color"]]
+            }
+          }
         }
       }
     }
@@ -113,10 +166,6 @@
         "text": "圆型"
       },
       {
-        "value": "hollowCircle",
-        "text": "空心圆型"
-      },
-      {
         "value": "line",
         "text": "线型"
       }
@@ -126,7 +175,51 @@
     "Container": {
       "name": "锚点容器",
       "desc": "锚点容器整体",
-      "normal": [["width"], ["height"], ["padding"], ["margin"], ["background"]]
+      "normal": [
+        ["width"],
+        ["height"],
+        ["padding"],
+        ["margin"],
+        ["border", ["left"]],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"]
+      ]
+    },
+    "Indicator": {
+      "name": "锚点指示器",
+      "desc": "锚点指示器",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["padding"],
+        ["margin"],
+        ["border"],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"]
+      ]
+    },
+    "AnchorLink": {
+      "name": "跳转链接",
+      "theme": {
+        "Container": {
+          "normal": [
+            ["width"],
+            ["height"],
+            ["padding"],
+            ["margin"],
+            ["background"],
+            ["fontSize"],
+            ["font"],
+            ["color"]
+          ],
+          "hover": [["background"], ["fontSize"], ["font"], ["color"]],
+          "active": [["background"], ["fontSize"], ["font"], ["color"]]
+        }
+      }
     }
   },
   "childrenWidget": ["link"],

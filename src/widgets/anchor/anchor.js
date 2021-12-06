@@ -10,7 +10,8 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import Affix from '../affix/index';
 import type { AnchorProps, AnchorState } from '../css/anchor';
-import { Anchor, NormalIndicator, HollowCircleIndicator } from '../css/anchor';
+import { Anchor, Indicator } from '../css/anchor';
+import Link from './link';
 
 export const AnchorContext: Object = React.createContext({
   links: [],
@@ -18,6 +19,10 @@ export const AnchorContext: Object = React.createContext({
   activeLink: undefined,
   onClick: undefined,
 });
+
+const isValidArray = (data?: Object[]) => {
+  return data && Array.isArray(data) && data.length > 0;
+};
 
 export default ThemeProvider(
   class extends React.Component<AnchorProps, AnchorState> {
@@ -95,6 +100,18 @@ export default ThemeProvider(
       return linkInfo.reduce((prev, curr) => (curr.top > prev.top ? curr : prev)).link;
     }
 
+    getLinkData = (data: Object[]) => {
+      const { getPartOfThemeHocProps } = this.props;
+      return data.map(item => {
+        const { title, href, children } = item;
+        return (
+          <Link title={title} href={href} {...getPartOfThemeHocProps('AnchorLink')}>
+            {isValidArray(children) ? this.getLinkData(children) : null}
+          </Link>
+        );
+      });
+    };
+
     render() {
       const {
         affix = true,
@@ -104,12 +121,13 @@ export default ThemeProvider(
         slideLine = true,
         useHref = true,
         getPartOfThemeProps,
+        data,
       } = this.props;
 
       const themeProps = getPartOfThemeProps('Container');
       const element = (
         <Anchor slideType={slideType} slideLine={slideLine} themeProps={themeProps}>
-          {children}
+          {isValidArray(data) ? this.getLinkData(data) : children}
           {this.getAnchorIndicator()}
         </Anchor>
       );
@@ -136,19 +154,8 @@ export default ThemeProvider(
       if (activeLink) {
         index = this.links ? this.links.indexOf(activeLink) : 0;
       }
-      if (slideType === 'hollowCircle') {
-        return (
-          <HollowCircleIndicator
-            themeProps={getPartOfThemeProps('HollowIndicator', {
-              props: { slideType, index },
-            })}
-          />
-        );
-      }
       return (
-        <NormalIndicator
-          themeProps={getPartOfThemeProps('Indicator', { props: { slideType, index } })}
-        />
+        <Indicator themeProps={getPartOfThemeProps('Indicator', { props: { slideType, index } })} />
       );
     }
 

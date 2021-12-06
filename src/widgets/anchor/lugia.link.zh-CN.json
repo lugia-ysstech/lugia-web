@@ -36,11 +36,14 @@
         ["width"],
         ["height"],
         ["padding"],
+        ["margin"],
         ["background"],
         ["fontSize"],
         ["font"],
         ["color"]
-      ]
+      ],
+      "hover": [["background"], ["fontSize"], ["font"], ["color"]],
+      "active": [["background"], ["fontSize"], ["font"], ["color"]]
     }
   },
   "themeConfig": []

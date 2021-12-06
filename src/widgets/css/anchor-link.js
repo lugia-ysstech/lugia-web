@@ -9,6 +9,7 @@ import CSSComponent, { css } from '@lugia/theme-css-hoc';
 export type AnchorLinkProps = {
   title: string | React.ReactNode,
   href: string,
+  children?: AnchorLinkProps[],
 };
 export type AnchorLinkState = {};
 
@@ -16,7 +17,7 @@ export const LinkWrap = CSSComponent({
   tag: 'div',
   className: 'LinkWrap',
   normal: {
-    selectNames: [['width'], ['height'], ['padding'], ['background']],
+    selectNames: [['width'], ['height'], ['margin'], ['padding'], ['background']],
     defaultTheme: {
       padding: {
         top: 12,

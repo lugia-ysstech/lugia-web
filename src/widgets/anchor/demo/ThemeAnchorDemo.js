@@ -47,8 +47,11 @@ export default class ThemeAnchorDemo extends React.Component<any, any> {
             },
           },
         },
-        HollowIndicator: {
+        Indicator: {
           normal: {
+            background: {
+              color: 'transparent',
+            },
             border: getBorder({
               width: 1,
               color: 'blue',
@@ -57,25 +60,13 @@ export default class ThemeAnchorDemo extends React.Component<any, any> {
           },
         },
       },
-      [Widget.Link]: {
-        Container: {
-          normal: {
-            color: 'black',
-          },
-          hover: {
-            color: 'blue',
-          },
-          active: {
-            color: 'red',
-          },
-        },
-      },
     };
+
     return (
       <div>
         <DemoBox cur={0}>
           <Theme config={config}>
-            <Anchor slideType="hollowCircle" useHref={false} onClick={this.handleLinkClick}>
+            <Anchor slideType="circle" useHref={false} onClick={this.handleLinkClick}>
               <Link title="anchor-link1" href="#anchor-link1" />
               <Link title="anchor-link2" href="#anchor-link2" />
               <Link title="anchor-link3" href="#anchor-link3" />

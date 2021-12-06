@@ -13,7 +13,7 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts';
 
 class AnchorLink extends React.Component<AnchorLinkProps, AnchorLinkState> {
-  static displayName = 'Link';
+  static displayName = 'AnchorLink';
   isLoad: boolean;
   constructor() {
     super();
