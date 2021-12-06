@@ -224,6 +224,23 @@
               "boxShadow"
             ]
           ],
+          "active": [
+            [
+              "borderRadius"
+            ],
+            [
+              "background"
+            ],
+            [
+              "opacity"
+            ],
+            [
+              "border"
+            ],
+            [
+              "boxShadow"
+            ]
+          ],
           "disabled": [
             [
               "borderRadius"

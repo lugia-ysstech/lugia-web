@@ -1,0 +1,26 @@
+[
+  {
+    "widgetName": "Link",
+    "aliasName": "",
+    "title": "锚点链接",
+    "viewProps": [],
+    "data": [
+      {
+        "title": "链接",
+        "iconClass": "",
+        "data": [
+          {
+            "name": "链接",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "链接",
+                "desc": "链接"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

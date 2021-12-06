@@ -64,6 +64,9 @@ export const PanelDemo = class extends React.Component<any, any> {
             border: getBorder({ width: 2, style: 'solid', color: 'pink' }),
             boxShadow: getBoxShadow('1px 2px 2px 2px #e8e8e8'),
           },
+          active: {
+            background: { color: 'purple' },
+          },
           disabled: {
             borderRadius: getBorderRadius(10),
             background: { color: 'orange' },
@@ -471,4 +474,12 @@ export const CollapseDemo = class extends React.Component<any, any> {
       </div>
     );
   }
+};
+export default () => {
+  return (
+    <div>
+      <PanelDemo />
+      <CollapseDemo />
+    </div>
+  );
 };

@@ -120,6 +120,8 @@ export default ThemeProvider(
       const panelHeaderTheme = getPartOfThemeProps('PanelHeader', {
         props: { hover, ...partProps },
       });
+      const { themeState } = panelHeaderTheme;
+      themeState.active = open;
       const panelHeaderTextTheme = getPartOfThemeProps('PanelHeaderText', {
         props: { ...partProps },
       });
@@ -134,7 +136,7 @@ export default ThemeProvider(
             onClick={this.handlePanelClick}
             ref={(node: any) => (this.header = node)}
           >
-            {showArrow || hover ? (
+            {showArrow ? (
               <Icon
                 iconClass={iconType}
                 {...this.getIconTheme()}
@@ -219,5 +221,5 @@ export default ThemeProvider(
     };
   },
   Widget.Panel,
-  { hover: true }
+  { hover: true, active: true }
 );

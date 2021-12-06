@@ -8,14 +8,16 @@ import React from 'react';
 import styled from 'styled-components';
 import Theme from '../theme';
 import Widget from '../consts/index';
+import { getBorder } from '@lugia/theme-utils';
 import Anchor from './index';
 
 const { Link } = Anchor;
 const DemoBox = styled.div`
+  display: inline-block;
   padding: 20px;
-  margin-left: ${props => 120 + props.cur * 120}px;
-  width: 209px;
-  height: 203px;
+  margin-left: ${props => 120 + props.cur * 80}px;
+  width: 210px;
+  height: 200px;
 `;
 
 export default class DrawerDemo extends React.Component<any, any> {
@@ -39,18 +41,87 @@ export default class DrawerDemo extends React.Component<any, any> {
     }
   };
   render() {
+    const config = {
+      [Widget.Anchor]: {
+        Container: {
+          normal: {
+            width: 200,
+            border: {
+              left: {
+                color: 'red',
+              },
+            },
+          },
+        },
+        Indicator: {
+          normal: {
+            background: {
+              color: 'transparent',
+            },
+            border: getBorder({
+              width: 1,
+              color: 'blue',
+              style: 'solid',
+            }),
+          },
+        },
+        AnchorLink: {
+          Container: {
+            normal: {
+              color: 'gray',
+            },
+            hover: {
+              color: 'blue',
+            },
+            active: {
+              color: 'red',
+            },
+          },
+        },
+      },
+    };
+    const linkData = [
+      {
+        title: 'anchor-link1',
+        href: '#anchor-link1',
+      },
+      {
+        title: 'anchor-link2',
+        href: '#anchor-link2',
+      },
+      {
+        title: 'anchor-link3',
+        href: '#anchor-link3',
+        children: [
+          {
+            title: 'anchor-link3.1',
+            href: '#anchor-link3.1',
+          },
+          {
+            title: 'anchor-link3.2',
+            href: '#anchor-link3.2',
+          },
+        ],
+      },
+      {
+        title: 'anchor-link4',
+        href: '#anchor-link4',
+      },
+    ];
     return (
       <div>
         <DemoBox cur={0}>
-          <Anchor slideType="circle" useHref={false} onClick={this.handleLinkClick}>
-            <Link title="anchor-link1" href="#anchor-link1" />
-            <Link title="anchor-link2" href="#anchor-link2" />
-            <Link title="anchor-link3" href="#anchor-link3">
-              <Link title="anchor-link3.1" href="#anchor-link3.1" />
-              <Link title="anchor-link3.2" href="#anchor-link3.2" />
-            </Link>
-            <Link title="anchor-link4" href="#anchor-link4" />
-          </Anchor>
+          <Theme config={config}>
+            <Anchor slideType="circle" useHref={false} onClick={this.handleLinkClick}>
+              <Link title="anchor-link1" href="#anchor-link1" />
+              <Link title="anchor-link2" href="#anchor-link2" />
+              <Link title="anchor-link3" href="#anchor-link3">
+                <Link title="anchor-link3.1" href="#anchor-link3.1" />
+                <Link title="anchor-link3.2" href="#anchor-link3.2" />
+              </Link>
+              <Link title="anchor-link4" href="#anchor-link4" />
+            </Anchor>
+          </Theme>
         </DemoBox>
         <DemoBox cur={1}>
           <Anchor slideType="line">
@@ -64,7 +135,7 @@ export default class DrawerDemo extends React.Component<any, any> {
           </Anchor>
         </DemoBox>
         <DemoBox cur={2}>
-          <Anchor slideType="none" affix={false}>
+          <Anchor slideType="circle">
             <Link title="anchor-link1" href="#anchor-link1" />
             <Link title="anchor-link2" href="#anchor-link2" />
             <Link title="anchor-link3" href="#anchor-link3">
@@ -73,6 +144,11 @@ export default class DrawerDemo extends React.Component<any, any> {
             </Link>
             <Link title="anchor-link4" href="#anchor-link4" />
           </Anchor>
+        </DemoBox>
+        <DemoBox cur={3}>
+          <Theme config={config}>
+            <Anchor slideType="circle" data={linkData} />
+          </Theme>
         </DemoBox>
         <div style={{ marginTop: '100px' }} id="anchor-link1" name="anchor-link1">
           anchor-link1
