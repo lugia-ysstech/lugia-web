@@ -48,6 +48,16 @@ const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const getZebraStripeColor = index => {
   return index % 2 === 0 ? '#F8F8F8' : '#fff';
 };
+
+const getBackgroundCSS = (themeProps, themeMeta, defaultColorName) => {
+  const { propsConfig: { zebraStripe, count } = {} } = themeProps;
+  const { background } = themeMeta;
+  const defaultBackground = zebraStripe
+    ? { color: getZebraStripeColor(count) }
+    : { color: changeColor(get(defaultColorName), 0, 0, 5).rgba };
+  return { background: background || defaultBackground };
+};
+
 export const PanelHeader = CSSComponent({
   tag: 'div',
   className: 'PanelHeader',
@@ -76,12 +86,14 @@ export const PanelHeader = CSSComponent({
       ['background'],
     ],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig: { zebraStripe, count, open } = {} } = themeProps;
+      const { propsConfig: { zebraStripe, count, open, showArrow } = {} } = themeProps;
       const padding = {
         top: 16,
         right: 0,
         bottom: 16,
-        left: get('sFontSize') + get('marginToSameElement') + 10,
+        left: !showArrow
+          ? get('marginToSameElement')
+          : get('sFontSize') + get('marginToSameElement') + 10,
       };
       const background = zebraStripe ? { color: getZebraStripeColor(count) } : { color: '#fff' };
       const borderRadius = zebraStripe
@@ -95,11 +107,13 @@ export const PanelHeader = CSSComponent({
   hover: {
     selectNames: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig: { zebraStripe, count } = {} } = themeProps;
-      const background = zebraStripe
-        ? { color: getZebraStripeColor(count) }
-        : { color: changeColor(get('themeColor'), 0, 0, 5).rgba };
-      return { background };
+      return getBackgroundCSS(themeMeta, themeProps, 'themeColor');
+    },
+  },
+  active: {
+    selectNames: [['border'], ['borderRadius'], ['boxShadow'], ['background']],
+    getThemeMeta(themeMeta, themeProps) {
+      return getBackgroundCSS(themeMeta, themeProps, 'themeFocusColor');
     },
   },
   disabled: {
