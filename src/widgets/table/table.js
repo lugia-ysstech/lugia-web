@@ -584,14 +584,10 @@ export default ThemeProvider(
         scroll = {},
         data = [],
       } = this.state;
-      const { dataIsSame: propsDataIsChange } = this.getTableData(
-        this.oldPropsData,
-        propsData,
-        true
-      );
-      const tableData = propsDataIsChange ? data : propsData;
+      const { dataIsSame: propsDataIsSame } = this.getTableData(this.oldPropsData, propsData, true);
+      const tableData = propsDataIsSame ? data : propsData;
 
-      if (!propsDataIsChange) {
+      if (!propsDataIsSame) {
         this.oldPropsData = [...propsData];
       }
       const containerPartOfThemeProps = getPartOfThemeProps('Container', {
@@ -742,7 +738,7 @@ export default ThemeProvider(
           : getIconByType(collapseIcon, 'CollapseIcon');
       };
       if (defaultExpandAllRows) {
-        if (propsDataIsChange) {
+        if (!propsDataIsSame) {
           this.propsKey = getUuid();
         }
       }
