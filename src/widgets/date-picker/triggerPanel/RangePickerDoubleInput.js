@@ -64,7 +64,7 @@ export default (props: Props) => {
 
   useEffect(() => {
     if (valueRef.current) {
-      valueRef.current = [...value];
+      valueRef.current = value ? [...value] : [];
     }
   }, [value]);
 
