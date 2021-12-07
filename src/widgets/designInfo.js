@@ -568,18 +568,21 @@ export default [
           designOnly: false,
           injectProps: false,
           defaultValue: true,
+          meta: '',
         },
         offsetTop: {
           desc: '距离窗口顶部达到指定值后触发',
           type: 'number',
           designOnly: false,
           injectProps: false,
+          meta: '',
         },
         offsetBottom: {
           desc: '距离窗口底部达到指定值后触发',
           type: 'number',
           designOnly: false,
           injectProps: false,
+          meta: '',
         },
         slideType: {
           desc: '分割线样式',
@@ -587,6 +590,7 @@ export default [
           designOnly: false,
           injectProps: false,
           defaultValue: 'circle',
+          meta: '',
         },
         slideLine: {
           desc: '是否展示分割线',
@@ -594,6 +598,7 @@ export default [
           designOnly: false,
           injectProps: false,
           defaultValue: true,
+          meta: '',
         },
         useHref: {
           desc: '是否启用a标签的href属性',
@@ -601,6 +606,13 @@ export default [
           designOnly: false,
           injectProps: false,
           defaultValue: true,
+          meta: '',
+        },
+        data: {
+          desc: '用于便捷配置跳转链接数据',
+          type: 'object[]',
+          designOnly: false,
+          injectProps: false,
         },
       },
       events: {
