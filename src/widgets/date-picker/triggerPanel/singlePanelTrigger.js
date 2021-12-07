@@ -397,7 +397,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { value } = this.state;
     const isValid = this.getIsValid(value);
 
-    if (!isValid) {
+    if (value && !isValid) {
       this.setState({ value: this.oldValue });
       this.exportOnChange({ event, newValue: this.oldValue, oldValue: this.oldValue });
     }
