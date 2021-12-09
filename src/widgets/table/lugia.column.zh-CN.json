@@ -8,6 +8,10 @@
       "desc": "设置列内容的对齐方式",
       "defaultValue": "left"
     },
+    "titleAlign": {
+      "type": "AlignType",
+      "desc": "设置列表头的对齐方式"
+    },
     "colSpan": {
       "type": "number",
       "desc": "表头列合并,设置为 0 时，不渲染"
