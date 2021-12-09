@@ -48,7 +48,9 @@ const TableWrap = CSSComponent({
     selectNames: [['width'], ['height']],
     getCSS(themeMeta, themeProps): string {
       const { background: { color } = {} } = themeMeta;
-      const { propsConfig: { size = 'default', columnsStyle, expandedRowStyle } = {} } = themeProps;
+      const {
+        propsConfig: { size = 'default', columnsStyle, expandedRowStyle, columnsTitleStyle } = {},
+      } = themeProps;
       const padding = sizePadding[size] || sizePadding.default;
       let bgColor;
       if (color) {
@@ -64,6 +66,7 @@ const TableWrap = CSSComponent({
 
         ${color ? bgColor : ''}
         ${columnsStyle}
+        ${columnsTitleStyle}
         ${expandedRowStyle}
       `;
     },
@@ -593,6 +596,19 @@ export default ThemeProvider(
           .join('')
       );
     };
+    getColumnsAlignCSS = className => {
+      const { columns } = this.props;
+      return (
+        columns &&
+        columns.map((item, index) => {
+          const { titleAlign } = item;
+          const titleAlignCSS = `text-align:${titleAlign} !important;`;
+          const titleAlignStyle = titleAlign ? titleAlignCSS : '';
+          const normalChildIndex = index + 1;
+          return `${className}(${normalChildIndex}){${titleAlignStyle}}`;
+        })
+      );
+    };
     getHeadStyle = () => {
       return this.getColumnsClass('table thead tr th:nth-child');
     };
@@ -645,6 +661,7 @@ export default ThemeProvider(
         props: {
           size,
           columnsStyle: data.length ? this.getEveryColumnsStyle() : this.getHeadStyle(),
+          columnsTitleStyle: this.getColumnsAlignCSS('table thead tr th:nth-child'),
           expandedRowStyle: this.getExpandedRowStyle(),
         },
       });
