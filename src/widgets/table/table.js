@@ -76,7 +76,7 @@ export const ExpandIconWrap = StaticComponent({
   tag: 'span',
   className: 'ExpandIconWrap',
   css: css`
-    display: flex;
+    display: inline-flex;
     align-items: center;
   `,
 });
