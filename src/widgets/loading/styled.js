@@ -122,7 +122,8 @@ export const LoadingFatherBox = styled.div`
   display: inline-block;
   ${props => (props.isShowLoading ? 'pointer-events: none;' : '')}
   ${props => (props.isInherit ? 'width: 100%; height: 100%;' : '')}
-  ${props => getChildrenStyled(props).fatherMaskStyle}
+  ${props => getChildrenStyled(props).fatherMaskStyle};
+  vertical-align: top;
 `;
 export const LodingBox = styled.div`
   display: inline-block;
