@@ -92,6 +92,8 @@ export default ThemeProvider(
     sortState: string;
     tableId: string;
     oldPropsData: Object[];
+    currentPropsDataIsSame: boolean;
+
     constructor(props) {
       super();
       const { data = [], selectOptions: { selectRowKeys = [] } = {}, scroll = {} } = props;
@@ -112,6 +114,7 @@ export default ThemeProvider(
       this.oldPropsData = [];
       this.columns = this.handleColumns(props);
       this.columnsWidthMap = {};
+      this.currentPropsDataIsSame = true;
     }
     componentDidMount() {
       setTimeout(() => {
@@ -129,7 +132,19 @@ export default ThemeProvider(
         }
       }, 0);
 
+      this.setXScrollerCriticalResizeObserver();
+    }
+
+    disconnectXScrollerCriticalResizeObserver() {
+      if (this.xScrollerCriticalResizeObserver) {
+        this.xScrollerCriticalResizeObserver.disconnect();
+      }
+    }
+
+    setXScrollerCriticalResizeObserver() {
       const { xScrollerCritical } = this.props;
+
+      this.disconnectXScrollerCriticalResizeObserver();
 
       if (xScrollerCritical) {
         this.xScrollerCriticalResizeObserver = new ResizeObserver(entries => {
@@ -155,9 +170,7 @@ export default ThemeProvider(
     }
 
     componentWillUnmount() {
-      if (this.xScrollerCriticalResizeObserver) {
-        this.xScrollerCriticalResizeObserver.disconnect();
-      }
+      this.disconnectXScrollerCriticalResizeObserver();
     }
 
     shouldComponentUpdate(nextProps: TableProps, nextState: TableState) {
@@ -232,6 +245,11 @@ export default ThemeProvider(
         }
         this.tableHeight = tableHeight;
       }, 0);
+
+      const { defaultExpandAllRows } = this.props;
+      if (defaultExpandAllRows && !this.currentPropsDataIsSame) {
+        this.setXScrollerCriticalResizeObserver();
+      }
     }
 
     static getDerivedStateFromProps(props, nextState) {
@@ -661,6 +679,7 @@ export default ThemeProvider(
       } = this.state;
       const { dataIsSame: propsDataIsSame } = this.getTableData(this.oldPropsData, propsData, true);
       const tableData = propsDataIsSame ? data : propsData;
+      this.currentPropsDataIsSame = propsDataIsSame;
 
       if (!propsDataIsSame) {
         this.oldPropsData = [...propsData];
