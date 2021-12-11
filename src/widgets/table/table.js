@@ -7,7 +7,7 @@
  */
 import * as React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import RcTable, { INTERNAL_COL_DEFINE } from '@lugia/rc-table';
@@ -71,6 +71,14 @@ const TableWrap = CSSComponent({
       `;
     },
   },
+});
+export const ExpandIconWrap = StaticComponent({
+  tag: 'span',
+  className: 'ExpandIconWrap',
+  css: css`
+    display: flex;
+    align-items: center;
+  `,
 });
 
 export default ThemeProvider(
@@ -668,14 +676,14 @@ export default ThemeProvider(
       const customExpandIcon = prop => {
         const { expandable } = prop;
         return expandable ? (
-          <span
+          <ExpandIconWrap
             className={'custom-icon'}
             onClick={() => {
               prop.onExpand(prop.record);
             }}
           >
             {getCustomIcon(prop)}
-          </span>
+          </ExpandIconWrap>
         ) : null;
       };
 

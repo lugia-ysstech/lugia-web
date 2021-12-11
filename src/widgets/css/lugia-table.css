@@ -154,7 +154,3 @@
 :global(.lugia-large-table .rc-table tbody .rc-table-row) {
   height: 40px;
 }
-:global(.custom-icon) {
-  align-items: center;
-  display: inline-flex;
-}
