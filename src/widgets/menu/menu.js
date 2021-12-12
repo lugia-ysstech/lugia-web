@@ -97,6 +97,7 @@ export type MenuProps = {
   defaultHeight?: number,
   isShowAuxiliaryText?: boolean,
   auxiliaryTextField?: string,
+  align?: string,
 };
 const EmptyData = [];
 
@@ -250,12 +251,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const activeOffsetY = getTargetOrDefaultTarget(isOffsetY, offsetY, indexOffsetY * itemHeight);
 
     const { popupVisible = false, childData } = this.state;
+    const { align = 'rightTop' } = this.props;
     return (
       <Trigger
         popupContainerId={popupContainerId}
         themePass
         ref={cmp => (this.trigger = cmp)}
-        align={'rightTop'}
+        align={align}
         lazy={false}
         offsetX={activeOffsetX}
         offsetY={activeOffsetY}

@@ -56,6 +56,7 @@ type NavMenuProps = {
   switchIconNames?: Object,
   renderSuffixItems?: Function,
   selectLinePosition?: 'right' | 'left',
+  align?: string,
 };
 
 type NavMenuState = {
@@ -344,14 +345,14 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       return target;
     }
     const popup = this.getHorizontaMenu(i, tabsMenuValue);
-    const { action } = this.props;
+    const { action, align = 'bottomLeft' } = this.props;
     const popupVisible = tabsPopupVisible && this.activityIndex === i;
     return (
       <DropMenu
         popupVisible={popupVisible}
         onPopupVisibleChange={this.onTabsPopupVisibleChange}
         offsetY={4}
-        align={'bottomLeft'}
+        align={align}
         menus={popup}
         action={action}
         hideAction={action}
