@@ -69,7 +69,7 @@ export const EditDiv = CSSComponent({
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { align = 'left', isLugiaHead },
-        themeConfig: { normal: { align: themeAlign = align } = {} },
+        themeConfig: { normal: { textAlign: themeAlign = align } = {} },
       } = themeProps;
       const flexMap = { right: 'flex-end', left: 'flex-start', center: 'center' };
       const alignType = isLugiaHead ? themeAlign : align;

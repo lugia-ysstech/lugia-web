@@ -146,23 +146,56 @@
       "desc": "为表格配置整体样式",
       "normal": [["width"], ["height"]]
     },
-    "Tr": {
-      "name": "表格行样式",
-      "desc": "为表格行配置样式",
-      "normal": {
-        "selectNames": [["background"]],
-        "nth": [["background"]]
+    "EditTarget": {
+      "name": "可编辑单元格样式",
+      "desc": "可编辑单元格样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["border"],
+        ["background"],
+        ["padding"],
+        ["color"],
+        ["cursor"],
+        ["textAlign"]
+      ]
+    },
+    "Table": {
+      "name": "表格整体样式",
+      "desc": "为表格配置整体样式",
+      "theme": {
+        "Container": {
+          "name": "表格整体样式",
+          "desc": "为表格配置整体样式",
+          "normal": [["width"], ["height"]]
+        },
+        "Th_Td": {
+          "name": "表格头单元格样式",
+          "desc": "为表格行配置样式",
+          "normal": {
+            "selectNames": [["background"], ["padding"], ["color"], ["cursor"], ["textAlign"]],
+            "nth": [["background"], ["padding"], ["color"], ["cursor"], ["textAlign"]]
+          }
+        },
+        "Tr": {
+          "name": "表格行样式",
+          "desc": "为表格行配置样式",
+          "normal": {
+            "selectNames": [["background"]],
+            "nth": [["background"]]
+          }
+        },
+        "Td": {
+          "name": "单元格样式",
+          "desc": "为单元格配置样式",
+          "normal": [["width"], ["height"], ["border"], ["padding"]]
+        },
+        "EmptyData": {
+          "name": "无数据提示",
+          "desc": "无数据提示配置样式",
+          "normal": [["height"], ["padding"], ["font"]]
+        }
       }
-    },
-    "Td": {
-      "name": "单元格样式",
-      "desc": "为单元格配置样式",
-      "normal": [["width"], ["height"], ["border"], ["padding"]]
-    },
-    "EmptyData": {
-      "name": "无数据提示",
-      "desc": "无数据提示配置样式",
-      "normal": [["height"], ["padding"], ["font"]]
     }
   },
   "defaultTheme": {
