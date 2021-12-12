@@ -10,34 +10,36 @@
       "desc": "是否渲染当前组件",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "isShowAuxiliaryText": {
       "desc": "是否展示辅助文本",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "auxiliaryTextField": {
       "desc": "辅助文本展示的对应字段名",
       "type": "string",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "des"
+      "meta": ""
     },
     "parentIsHighlight": {
       "desc": "父级元素是否高亮",
       "type": "boolean",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": true
+      "meta": ""
     },
     "valueField": {
       "desc": "data数据的value值的名称",
       "type": "string",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "value"
+      "meta": ""
     },
     "switchIconNames": {
       "desc": "生成选择项的数据",
@@ -62,44 +64,41 @@
       "type": "number",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": 14
+      "meta": ""
     },
     "selectLinePosition": {
       "desc": "选中项侧线标识线展示位置",
-      "type": "PositionType",
+      "type": "positiontype",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "left"
+      "meta": ""
     },
     "displayField": {
       "desc": "data数据的displayValue值的名称",
       "type": "string",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "text"
+      "meta": ""
     },
     "pathSeparator": {
       "desc": "指定结点数组中path信息的分隔符号",
       "type": "string",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "|"
+      "meta": ""
     },
     "action": {
       "desc": "弹出项的打开方式",
-      "type": "ActionType",
+      "type": "actiontype",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "click"
+      "meta": ""
     },
     "switchIconClass": {
       "desc": "展开图标",
       "type": "object",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": {
-        "iconClass": "lugia-icon-direction_right"
-      },
       "meta": [
         {
           "key": "iconClass",
@@ -202,48 +201,57 @@
       "desc": "指定当前选中的条目",
       "type": "string | string[] | number | number[]",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "mode": {
       "desc": "菜单类型，支持垂直、内嵌和水平模式",
       "type": "vertical | inline| horizontal",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "inline"
+      "meta": ""
     },
     "inlineType": {
       "desc": "菜单类型为inline(内嵌模式)时,支持两种风格",
       "type": "primary | ellipse",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "primary"
+      "meta": ""
     },
     "themeStyle": {
       "desc": "菜单类型为inline(内嵌模式)时,支持两种主题",
-      "type": "ThemeStyleType",
+      "type": "themestyletype",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "light"
+      "meta": ""
     },
     "inlineExpandAll": {
       "desc": "菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true",
       "type": "boolean",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": true
+      "meta": ""
     },
     "separator": {
       "desc": "自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ",
       "type": "string",
       "designOnly": false,
       "injectProps": false,
-      "propsDefaultValue": "|"
+      "meta": ""
     },
     "divided": {
       "desc": "项之间是否展示分割线",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
+    },
+    "align": {
+      "desc": "设置菜单弹出方向",
+      "type": "string",
+      "designOnly": false,
+      "injectProps": false,
+      "defaultValue": "bottomLeft"
     }
   },
   "events": {
