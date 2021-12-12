@@ -68,12 +68,13 @@ export const EditDiv = CSSComponent({
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { align = 'left' },
+        propsConfig: { align = 'left', isLugiaHead },
+        themeConfig: { normal: { align: themeAlign = align } = {} },
       } = themeProps;
       const flexMap = { right: 'flex-end', left: 'flex-start', center: 'center' };
-
+      const alignType = isLugiaHead ? themeAlign : align;
       return `
-      justify-content: ${flexMap[align]};
+      justify-content: ${flexMap[alignType]};
       `;
     },
   },
