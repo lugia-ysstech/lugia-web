@@ -64,10 +64,23 @@ const TableWrap = CSSComponent({
           padding: 0 ${padding}px;
         }
 
-        ${color ? bgColor : ''}
-        ${columnsStyle}
-        ${columnsTitleStyle}
-        ${expandedRowStyle}
+        ${color ? bgColor : ''};
+        ${columnsStyle};
+        ${columnsTitleStyle};
+        ${expandedRowStyle};
+
+        .rc-table tbody .rc-table-row {
+          height: ${props => props.headHeight}px;
+        }
+        .rc-table tbody .rc-table-row td {
+          height: ${props => props.headHeight}px;
+        }
+        .rc-table thead tr {
+          height: ${props => props.headHeight}px;
+        }
+        .rc-table thead tr th {
+          height: ${props => props.headHeight}px;
+        }
       `;
     },
   },
@@ -238,7 +251,7 @@ export default ThemeProvider(
         if (data.length === prevPropsData.length || (scroll && scroll.y)) {
           return;
         }
-        if (tableHeight && themeHeight < tableHeight - 2) {
+        if (tableHeight && (themeHeight < tableHeight - 2 || themeHeight === tableHeight)) {
           this.setState({ scroll: this.getTableBodyHeight(themeHeight) });
         } else {
           this.setState({ scroll: undefined });
@@ -368,15 +381,22 @@ export default ThemeProvider(
     }
 
     getTableBodyHeight = (themeHeight: number) => {
-      const { showHeader = true, size = 'default' } = this.props;
+      const { showHeader = true } = this.props;
       if (!themeHeight) {
         return {};
       }
-      const tableLineHeight = sizeHeight[size];
+      const tableLineHeight = this.getHeadHeight();
       const height = parseInt(themeHeight, 10);
       return {
         y: showHeader ? height - tableLineHeight : height,
       };
+    };
+
+    getHeadHeight = () => {
+      const { size = 'default', getPartOfThemeConfig } = this.props;
+      const { normal } = getPartOfThemeConfig('Head');
+      const { height: headHeight = 0 } = normal || {};
+      return headHeight || sizeHeight[size];
     };
 
     tableHeadChange = () => {
@@ -844,8 +864,10 @@ export default ThemeProvider(
             this.tableWrap = el;
           }}
           themeProps={containerPartOfThemeProps}
-          className={this.getClass(tableStyle, size)}
+          className={this.getClass(tableStyle)}
           key={this.propsKey}
+          size={size}
+          headHeight={this.getHeadHeight()}
         >
           <RcTable
             {...this.getDefaultEmpty()}
@@ -860,13 +882,8 @@ export default ThemeProvider(
         </TableWrap>
       );
     }
-    getClass = (
-      tableStyle: 'zebraStripe' | 'linear' | 'bordered',
-      size: 'default' | 'small' | 'large'
-    ): string => {
-      const sizeClassName = `lugia-${size}-table`;
-
-      return `lugia-table lugia-table-${tableStyle} ${sizeClassName}`;
+    getClass = (tableStyle: 'zebraStripe' | 'linear' | 'bordered'): string => {
+      return `lugia-table lugia-table-${tableStyle}`;
     };
   },
   Widget.Table
