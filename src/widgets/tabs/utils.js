@@ -106,7 +106,7 @@ export function computeMoveDistance(param) {
     case 'page':
       const distanceLength = currentPage - 1;
       if (distanceLength) {
-        const length = pageSplitInfo[distanceLength].length;
+        const length = getLengthByCurrentPage(distanceLength, pageSplitInfo);
         if (length) {
           for (let i = 0; i < length; i++) {
             distance += titleSize[Math.min(i, titleSize.length - 1)] + blockDistance;
@@ -120,3 +120,14 @@ export function computeMoveDistance(param) {
 
   return -Math.max(0, distance);
 }
+
+export const getLengthByCurrentPage = (distanceLength, pageSplitInfo) => {
+  let length = 0;
+  for (let i = 1; i <= distanceLength; i++) {
+    const silgleLength = pageSplitInfo[i].length;
+    if (silgleLength) {
+      length += silgleLength;
+    }
+  }
+  return length;
+};
