@@ -251,7 +251,7 @@ export default ThemeProvider(
         if (data.length === prevPropsData.length || (scroll && scroll.y)) {
           return;
         }
-        if (tableHeight && themeHeight < tableHeight - 2) {
+        if (tableHeight && (themeHeight < tableHeight - 2 || themeHeight === tableHeight)) {
           this.setState({ scroll: this.getTableBodyHeight(themeHeight) });
         } else {
           this.setState({ scroll: undefined });
