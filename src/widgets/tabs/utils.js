@@ -131,3 +131,7 @@ export const getLengthByCurrentPage = (distanceLength, pageSplitInfo) => {
   }
   return length;
 };
+
+export const isPagedType = (pagedType: 'page' | 'single') => {
+  return pagedType === 'page';
+};

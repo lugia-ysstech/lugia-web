@@ -18,6 +18,7 @@ import {
   computeMoveDistance,
   isInFirstPage,
   getFirstPageLength,
+  isPagedType,
 } from './utils';
 import { getAttributeFromObject, deepMerge } from '@lugia/object-utils';
 
@@ -476,7 +477,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       return;
     }
     const titleSize = this.getTabpaneWidthOrHeight();
-    const isPageType = pagedType === 'page';
+    const isPageType = isPagedType(pagedType);
     const pageSplitInfo = this.getPagesInfo(titleSize);
     const totalPage = isPageType ? pageSplitInfo.length : titleSize.length;
     const currentIndex = this.getCurrentPageByActivityValue(data, activityValue, pageSplitInfo);
@@ -972,10 +973,11 @@ class TabHeader extends Component<TabsProps, TabsState> {
   getIsAllowToMove() {
     const { currentPage, totalPage, pageSplitInfo } = this.state;
     const { pagedType } = this.props;
-    const isDisabledToNext =
-      pagedType === 'page' ? currentPage >= totalPage : currentPage >= totalPage - 1;
-    const isDisabledToPrev =
-      pagedType === 'page' ? currentPage <= 1 : currentPage <= getFirstPageLength(pageSplitInfo);
+    const isPageType = isPagedType(pagedType);
+    const isDisabledToNext = isPageType ? currentPage >= totalPage : currentPage >= totalPage - 1;
+    const isDisabledToPrev = isPageType
+      ? currentPage <= 1
+      : currentPage <= getFirstPageLength(pageSplitInfo);
     return { isDisabledToPrev, isDisabledToNext };
   }
 
