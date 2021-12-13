@@ -21,6 +21,22 @@
         ]
       },
       {
+        "title": "表格整体样式",
+        "iconClass": "Head",
+        "data": [
+          {
+            "name": "表格表头配置",
+            "path": ["Head"],
+            "description": {
+              "appearancePart": {
+                "text": "表头",
+                "desc": "表格表头配置"
+              }
+            }
+          }
+        ]
+      },
+      {
         "title": "展开行图标",
         "iconClass": "uploadImage",
         "data": [
