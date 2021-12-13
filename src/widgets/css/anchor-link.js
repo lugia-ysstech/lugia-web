@@ -17,18 +17,29 @@ export const LinkWrap = CSSComponent({
   tag: 'div',
   className: 'LinkWrap',
   normal: {
-    selectNames: [['width'], ['height'], ['margin'], ['padding'], ['background']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['lineHeight'],
+      ['margin'],
+      ['padding'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+    ],
     defaultTheme: {
+      lineHeight: 24,
       padding: {
-        top: 12,
         left: get('marginToSameElement'),
       },
     },
   },
-
-  css: css`
-    line-height: 1;
-  `,
+  hover: {
+    selectNames: [['background'], ['border'], ['borderRadius']],
+  },
+  active: {
+    selectNames: [['background'], ['border'], ['borderRadius']],
+  },
   option: { hover: true, active: true },
 });
 export const LinkTitle = CSSComponent({
@@ -38,6 +49,7 @@ export const LinkTitle = CSSComponent({
     selectNames: [['fontSize'], ['font'], ['color']],
     defaultTheme: {
       color: get('darkGreyColor'),
+      fontSize: 12,
     },
   },
   hover: {
