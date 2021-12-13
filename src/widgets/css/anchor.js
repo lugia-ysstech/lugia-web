@@ -25,6 +25,7 @@ type CSSProps = {
   slideType: 'circle' | 'line' | 'hollowCircle',
   slideLine?: boolean,
   height?: number,
+  linkHeight?: number,
 };
 const defaultWidth = 8;
 const defaultHeight = 8;
@@ -64,18 +65,15 @@ export const Anchor = CSSComponent({
   css: css`
     position: relative;
     box-sizing: border-box;
-    & > div:first-child {
-      padding-top: 6px;
-    }
   `,
 });
 
 const getPositionCSS = (props: CSSProps) => {
-  const { index, slideType, height } = props;
+  const { index, slideType, height, linkHeight = 24 } = props;
   if (index || index >= 0) {
-    let top = index * 24;
+    let top = index * linkHeight;
     if (slideType !== 'line') {
-      top += height || defaultHeight;
+      top += (linkHeight - (height || defaultHeight)) / 2;
     }
     return `top: ${top}px; left:-0.5px;`;
   }
@@ -109,13 +107,13 @@ export const Indicator = CSSComponent({
       },
     },
     getCSS(themeMeta, themeProps) {
-      const { propsConfig: { slideType, index } = {} } = themeProps;
+      const { propsConfig: { slideType, index, linkHeight } = {} } = themeProps;
       const { height } = themeMeta;
       if (slideType === 'circle') {
-        return `border-radius: 50%;${getPositionCSS({ slideType, index, height })}`;
+        return `border-radius: 50%;${getPositionCSS({ slideType, index, height, linkHeight })}`;
       }
 
-      return `width: 2px;height:24px;${getPositionCSS({ slideType, index, height })}`;
+      return `width: 2px;height:24px;${getPositionCSS({ slideType, index, height, linkHeight })}`;
     },
   },
   css: css`

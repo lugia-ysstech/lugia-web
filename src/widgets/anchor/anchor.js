@@ -29,6 +29,7 @@ export default ThemeProvider(
     static displayName = 'Anchor';
     links: string[];
     isClick: boolean;
+    linkHeight: number;
 
     constructor(props) {
       super(props);
@@ -37,6 +38,7 @@ export default ThemeProvider(
       };
       this.isClick = false;
       this.links = [];
+      this.linkHeight = 24;
     }
 
     componentDidMount() {
@@ -102,10 +104,13 @@ export default ThemeProvider(
 
     getLinkData = (data: Object[]) => {
       const { getPartOfThemeHocProps } = this.props;
+      const { viewClass, theme } = getPartOfThemeHocProps('AnchorLink');
+      const { Container: { normal: { lineHeight } = {} } = {} } = theme[viewClass];
+      this.linkHeight = lineHeight;
       return data.map(item => {
         const { title, href, children } = item;
         return (
-          <Link title={title} href={href} {...getPartOfThemeHocProps('AnchorLink')}>
+          <Link title={title} href={href} viewClass={viewClass} theme={theme}>
             {isValidArray(children) ? this.getLinkData(children) : null}
           </Link>
         );
@@ -155,7 +160,11 @@ export default ThemeProvider(
         index = this.links ? this.links.indexOf(activeLink) : 0;
       }
       return (
-        <Indicator themeProps={getPartOfThemeProps('Indicator', { props: { slideType, index } })} />
+        <Indicator
+          themeProps={getPartOfThemeProps('Indicator', {
+            props: { slideType, index, linkHeight: this.linkHeight },
+          })}
+        />
       );
     }
 

@@ -38,12 +38,14 @@
         ["padding"],
         ["margin"],
         ["background"],
+        ["border"],
+        ["borderRadius"],
         ["fontSize"],
         ["font"],
         ["color"]
       ],
-      "hover": [["background"], ["fontSize"], ["font"], ["color"]],
-      "active": [["background"], ["fontSize"], ["font"], ["color"]]
+      "hover": [["background"], ["border"], ["borderRadius"], ["fontSize"], ["font"], ["color"]],
+      "active": [["background"], ["border"], ["borderRadius"], ["fontSize"], ["font"], ["color"]]
     }
   },
   "themeConfig": []

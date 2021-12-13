@@ -68,6 +68,7 @@ export default class DrawerDemo extends React.Component<any, any> {
         AnchorLink: {
           Container: {
             normal: {
+              lineHeight: 32,
               color: 'gray',
             },
             hover: {
