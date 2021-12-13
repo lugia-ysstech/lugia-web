@@ -29148,6 +29148,7 @@ export default [
           desc: '为表格配置整体样式',
           normal: [['width'], ['height']],
         },
+        Head: { name: '表头', desc: '表头配置', normal: [['height']] },
         ExpandIcon: {
           name: '展开行图标样式',
           desc: '展开行图标样式配置点',

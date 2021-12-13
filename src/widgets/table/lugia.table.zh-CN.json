@@ -333,39 +333,155 @@
     }
   },
   "designInfo": {},
-  "category": ["数据展示"],
+  "category": [
+    "数据展示"
+  ],
   "type": {
-    "tableStyleType": ["zebraStripe", "linear", "bordered"],
-    "SizeType": ["default", "large", "small"]
+    "tableStyleType": [
+      "zebraStripe",
+      "linear",
+      "bordered"
+    ],
+    "SizeType": [
+      "default",
+      "large",
+      "small"
+    ]
   },
   "theme": {
     "Container": {
       "name": "表格整体样式",
       "desc": "为表格配置整体样式",
-      "normal": [["width"], ["height"]]
+      "normal": [
+        [
+          "width"
+        ],
+        [
+          "height"
+        ]
+      ]
     },
     "Head": {
       "name": "表头",
       "desc": "表头配置",
-      "normal": [["height"]]
+      "normal": [
+        [
+          "height"
+        ]
+      ]
     },
     "ExpandIcon": {
       "name": "展开行图标样式",
       "desc": "展开行图标样式配置点",
-      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
-      "hover": [["color"], ["margin"], ["cursor"]],
-      "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
-      "disabled": [["color"], ["cursor"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "cursor"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "cursor"
+        ]
+      ],
+      "active": [
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ]
+      ]
     },
     "CollapseIcon": {
       "name": "折叠行图标样式",
       "desc": "折叠行图标样式配置点",
-      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
-      "hover": [["color"], ["margin"], ["cursor"]],
-      "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
-      "disabled": [["color"], ["cursor"]]
+      "normal": [
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ],
+        [
+          "cursor"
+        ]
+      ],
+      "hover": [
+        [
+          "color"
+        ],
+        [
+          "margin"
+        ],
+        [
+          "cursor"
+        ]
+      ],
+      "active": [
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ],
+        [
+          "fontSize"
+        ],
+        [
+          "font"
+        ]
+      ],
+      "disabled": [
+        [
+          "color"
+        ],
+        [
+          "cursor"
+        ]
+      ]
     }
   },
-  "childrenWidget": ["column", "selectOptions"],
+  "childrenWidget": [
+    "column",
+    "selectOptions"
+  ],
   "themeConfig": []
 }
