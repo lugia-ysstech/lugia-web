@@ -134,23 +134,3 @@
   border-color: #4d63ff;
 }
 
-:global(.lugia-small-table .rc-table thead tr) {
-  height: 24px;
-}
-:global(.lugia-small-table .rc-table tbody .rc-table-row) {
-  height: 24px;
-}
-
-:global(.lugia-default-table .rc-table thead tr) {
-  height: 32px;
-}
-:global(.lugia-default-table .rc-table tbody .rc-table-row) {
-  height: 32px;
-}
-
-:global(.lugia-large-table .rc-table thead tr) {
-  height: 40px;
-}
-:global(.lugia-large-table .rc-table tbody .rc-table-row) {
-  height: 40px;
-}
