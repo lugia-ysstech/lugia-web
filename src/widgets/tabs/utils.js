@@ -26,11 +26,6 @@ export function plusWidth(index: number, width: Array<number>): number {
   return sum;
 }
 
-export function computePage(data: Array<Object>, maxIndex: number): number {
-  const totalPage = Math.ceil(data.length / maxIndex);
-  return totalPage;
-}
-
 export function addActivityValue2Data(data: Array<Object>): Array<Object> {
   if (data) {
     return data.map((item: Object, i: number): Object => {
@@ -82,26 +77,25 @@ export function isBatchValued(value: string[]) {
   return value.some(item => isValued(item));
 }
 
+export function isInFirstPage(currentPage, pageSplitInfo) {
+  return pageSplitInfo && currentPage < getFirstPageLength(pageSplitInfo);
+}
+export function getFirstPageLength(pageSplitInfo) {
+  return pageSplitInfo && pageSplitInfo[0] && pageSplitInfo[0].length - 1;
+}
+
 export const defaultCardBlock = 8;
 
 export function computeMoveDistance(param) {
-  const { maxIndex, currentPage, titleSize, tabType, pagedType, tabPosition } = param;
-  const isPageType = pagedType === 'page';
-  const distanceLength = currentPage - 1;
+  const { currentPage, titleSize, tabType, pagedType, pageSplitInfo } = param;
   const blockDistance = tabType === 'card' ? defaultCardBlock : 0;
-
-  const length = isPageType ? distanceLength * maxIndex : maxIndex;
-  let beforeWidth = 0;
-  if (length) {
-    for (let i = 0; i < length; i++) {
-      beforeWidth += titleSize[Math.min(i, titleSize.length - 1)] + blockDistance;
-    }
-  }
   let distance = 0;
   switch (pagedType) {
     case 'single':
-      if (distanceLength) {
-        const movedSzie = titleSize.slice(maxIndex, maxIndex + distanceLength);
+      const firstPageLength = pageSplitInfo[0].length - 1;
+      const moveLength = currentPage - firstPageLength;
+      if (moveLength > 0) {
+        const movedSzie = titleSize.slice(firstPageLength, firstPageLength + moveLength);
         distance = movedSzie.length
           ? movedSzie.reduce(function(prev, curr) {
               return prev + curr + blockDistance;
@@ -110,7 +104,15 @@ export function computeMoveDistance(param) {
       }
       break;
     case 'page':
-      distance = beforeWidth;
+      const distanceLength = currentPage - 1;
+      if (distanceLength) {
+        const length = pageSplitInfo[distanceLength].length;
+        if (length) {
+          for (let i = 0; i < length; i++) {
+            distance += titleSize[Math.min(i, titleSize.length - 1)] + blockDistance;
+          }
+        }
+      }
       break;
     default:
       break;

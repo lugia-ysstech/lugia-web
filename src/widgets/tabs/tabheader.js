@@ -11,7 +11,14 @@ import Widget from '../consts/index';
 import { EditEventType, PagedType, TabPositionType, TabType } from '../css/tabs';
 
 import { px2remcss } from '../css/units';
-import { computePage, isVertical, matchType, getTextAlign, computeMoveDistance } from './utils';
+import {
+  isVertical,
+  matchType,
+  getTextAlign,
+  computeMoveDistance,
+  isInFirstPage,
+  getFirstPageLength,
+} from './utils';
 import { getAttributeFromObject, deepMerge } from '@lugia/object-utils';
 
 import Icon from '../icon';
@@ -334,7 +341,7 @@ type TabsState = {
   arrowShow: boolean,
   titleSize: Array<number>,
   oldDataLength: number,
-  maxIndex: number,
+  pageSplitInfo: number[][],
 };
 
 type TabsProps = {
@@ -398,8 +405,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
         activityValue,
         oldDataLength: dataLength,
         titleSize: state.titleSize,
-        maxIndex: state.maxIndex,
         distance: state.distance,
+        pageSplitInfo: state.pageSplitInfo,
       };
     } else {
       returnData = {
@@ -410,8 +417,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
         activityValue,
         oldDataLength: dataLength,
         titleSize: [],
-        maxIndex: 0,
         distance: 0,
+        pageSplitInfo: [],
       };
     }
 
@@ -463,65 +470,85 @@ class TabHeader extends Component<TabsProps, TabsState> {
       return;
     }
 
-    const { data, activityValue, pagedType, tabType, tabPosition, isShowArrowIcon } = this.props;
+    const { data, activityValue, pagedType, tabType, isShowArrowIcon } = this.props;
     const { arrowShow } = this.state;
     if (!isShowArrowIcon || !arrowShow) {
       return;
     }
     const titleSize = this.getTabpaneWidthOrHeight();
     const isPageType = pagedType === 'page';
-    const maxIndex = this.getCurrentMaxIndex(titleSize);
-
-    const totalPage = isPageType ? computePage(data, maxIndex) : titleSize.length;
-    const currentIndex = this.getCurrentPageByActivityValue(data, activityValue, totalPage);
+    const pageSplitInfo = this.getPagesInfo(titleSize);
+    const totalPage = isPageType ? pageSplitInfo.length : titleSize.length;
+    const currentIndex = this.getCurrentPageByActivityValue(data, activityValue, pageSplitInfo);
+    const currentSelectIndex = this.getIndexByActivityValue(data, activityValue);
 
     let { currentPage } = this.state;
 
     if (type === 'activeValue') {
-      currentPage = isPageType ? currentIndex || 1 : currentIndex - maxIndex + 1;
+      currentPage = isPageType ? currentIndex : currentSelectIndex;
     }
-
     const distance = computeMoveDistance({
-      maxIndex,
       currentPage,
       titleSize,
       tabType,
       pagedType,
-      tabPosition,
+      pageSplitInfo,
     });
     this.setState({
       distance,
       currentPage,
-      maxIndex,
       totalPage,
+      pageSplitInfo,
     });
   }
 
-  getCurrentMaxIndex(titleSize: Array<number>) {
+  getPagesInfo(titleSize: Array<number>) {
     const { tabPosition, tabType } = this.props;
-    let maxIndex = 0;
     let distance = 0;
+    const result = [];
     const actuallySize = this.getScrollBoxSize();
     const margin = isVertical(tabPosition) || !matchType(tabType, 'card') ? 0 : 8;
-    titleSize.some((item, index) => {
+    let singlepage = [];
+    titleSize.forEach((item, index) => {
       distance += item + margin;
+
       if (distance > actuallySize) {
-        maxIndex = index;
-        return true;
+        result.push(singlepage);
+        singlepage = [index];
+        distance = item;
+      } else {
+        singlepage.push(index);
+      }
+      if (index >= titleSize.length - 1) {
+        result.push(singlepage);
       }
     });
-    return maxIndex;
+    return result;
   }
 
-  getCurrentPageByActivityValue(data: Array<Object>, activityValue: string, totalPage: number) {
-    let currentIndex = 0;
-    data.some((item, index) => {
-      if (item.value === activityValue) {
-        currentIndex = index + 1;
-        return true;
-      }
+  getIndexByActivityValue(data: Array<Object>, activityValue: string) {
+    return data.findIndex(item => {
+      return item.value === activityValue;
     });
-    return Math.max(Math.ceil(currentIndex / Math.ceil(data.length / totalPage)), 0);
+  }
+
+  getCurrentPageByActivityValue(
+    data: Array<Object>,
+    activityValue: string,
+    pageSplitInfo: number[][]
+  ) {
+    const currentIndex = this.getIndexByActivityValue(data, activityValue);
+    if (currentIndex === -1) {
+      return 1;
+    }
+    const pageIndex = pageSplitInfo.findIndex(item => {
+      return (
+        item.findIndex(pageIndex => {
+          return pageIndex === currentIndex;
+        }) !== -1
+      );
+    });
+    return pageIndex + 1;
   }
 
   render() {
@@ -727,7 +754,15 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   getPagedCount(currentPage: number, totalPage: number, type: EditEventType) {
     if (matchType(type, 'next')) {
-      currentPage++;
+      const { pagedType } = this.props;
+      const { pageSplitInfo } = this.state;
+      const firstPageLength = getFirstPageLength(pageSplitInfo);
+      const inFirstPage = isInFirstPage(currentPage, pageSplitInfo);
+      if (pagedType === 'single' && inFirstPage) {
+        currentPage = firstPageLength + 1;
+      } else {
+        currentPage++;
+      }
     } else if (matchType(type, 'pre')) {
       currentPage--;
     }
@@ -935,11 +970,12 @@ class TabHeader extends Component<TabsProps, TabsState> {
   };
 
   getIsAllowToMove() {
-    const { currentPage, totalPage, maxIndex } = this.state;
+    const { currentPage, totalPage, pageSplitInfo } = this.state;
     const { pagedType } = this.props;
     const isDisabledToNext =
-      pagedType === 'page' ? currentPage >= totalPage : currentPage >= totalPage - maxIndex + 1;
-    const isDisabledToPrev = currentPage <= 1;
+      pagedType === 'page' ? currentPage >= totalPage : currentPage >= totalPage - 1;
+    const isDisabledToPrev =
+      pagedType === 'page' ? currentPage <= 1 : currentPage <= getFirstPageLength(pageSplitInfo);
     return { isDisabledToPrev, isDisabledToNext };
   }
 
