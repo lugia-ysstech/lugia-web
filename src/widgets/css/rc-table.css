@@ -11,6 +11,7 @@
 .rc-table table {
   border-spacing: 0px;
   width: 100%;
+  border-collapse: separate;
 }
 .rc-table th,
 .rc-table td {
