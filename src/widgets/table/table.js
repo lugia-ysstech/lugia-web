@@ -72,6 +72,7 @@ const TableWrap = CSSComponent({
           heightType,
           headHeight,
           bodyRowHeight,
+          fixedColStyle,
         } = {},
       } = themeProps;
       const padding = sizePadding[size] || sizePadding.default;
@@ -105,6 +106,7 @@ const TableWrap = CSSComponent({
         ${columnsStyle};
         ${columnsTitleStyle};
         ${expandedRowStyle};
+        ${fixedColStyle};
 
         .rc-table tbody .rc-table-row {
           height: ${bodyRowHeightString};
@@ -725,6 +727,11 @@ export default ThemeProvider(
           .join('')
       );
     };
+
+    getFixedBottomStyle = className => {
+      return `${className}(1){position: sticky;z-index:1;bottom:0;};`;
+    };
+
     getColumnsAlignCSS = className => {
       const { columns } = this.props;
       return (
@@ -767,6 +774,7 @@ export default ThemeProvider(
         expandIcon,
         collapseIcon,
         defaultExpandAllRows,
+        fixedBottom,
       } = this.props;
       this.selectedRecords = [];
       this.validKeys = [];
@@ -796,6 +804,9 @@ export default ThemeProvider(
           headHeight: this.getHeadHeight(),
           bodyRowHeight: this.getBodyRowHeight(),
           heightType: this.getLugiadHeightType(),
+          fixedColStyle: fixedBottom
+            ? this.getFixedBottomStyle('.rc-table tbody tr:nth-last-child')
+            : '',
         },
       });
       const customExpandIcon = prop => {
