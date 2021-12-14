@@ -167,21 +167,30 @@ export default ThemeProvider(
       this.currentPropsDataIsSame = true;
     }
     getLugiadHeightType = (): HeightType => {
-      const { lugiadLayout, getPartOfThemeProps } = this.props;
-      const { themeConfig: { normal: { height } = {} } = {} } = getPartOfThemeProps('Container');
-      const { heightType } = lugiadLayout || {};
+      const { lugiadLayout, getPartOfThemeProps, tableHeightType } = this.props;
+      const { themeConfig: { normal } = {} } = getPartOfThemeProps('Container');
+      const newNormal = normal || {};
+      const { height } = newNormal;
       const { fixed, auto } = lugiadLayoutName;
+      if (tableHeightType) {
+        const hasHeight = 'height' in newNormal;
+        if (tableHeightType === fixed && !hasHeight) {
+          console.log('表格高度为空,表格内容将完全展示');
+        }
+        return tableHeightType || auto;
+      }
+
+      if (lugiadLayout) {
+        const { heightType } = lugiadLayout;
+        return heightType;
+      }
 
       //兼容组件主题高度为数字类型时生效
-      if (typeof height === 'number' && !heightType) {
+      if (typeof height === 'number') {
         return fixed;
       }
 
-      if (!heightType || (heightType === fixed && !height)) {
-        return auto;
-      }
-
-      return heightType;
+      return auto;
     };
 
     canShowScrollY = (): boolean => {
