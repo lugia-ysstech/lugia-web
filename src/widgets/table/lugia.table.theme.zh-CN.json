@@ -21,7 +21,7 @@
         ]
       },
       {
-        "title": "表格整体样式",
+        "title": "表头",
         "iconClass": "Head",
         "data": [
           {
@@ -31,6 +31,22 @@
               "appearancePart": {
                 "text": "表头",
                 "desc": "表格表头配置"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "表格行",
+        "iconClass": "Head",
+        "data": [
+          {
+            "name": "表格行",
+            "path": ["BodyRow"],
+            "description": {
+              "appearancePart": {
+                "text": "表格行",
+                "desc": "表格行配置"
               }
             }
           }

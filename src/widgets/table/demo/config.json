@@ -46,5 +46,13 @@
   "ScrollFixedDemo": {
     "title": "滚动条临界值处理",
     "desc": "通过设置临界值来解决滚动条仅有1像素宽，而不想让其出现滚动条的需求"
+  },
+  "TableHeightTypeDemo": {
+    "title": "表格高度配置",
+    "desc": "表格高度配置"
+  },
+  "TableRowThemeDemo": {
+    "title": "表格主题",
+    "desc": "表头，表体行高"
   }
 }
