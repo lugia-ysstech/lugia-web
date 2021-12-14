@@ -23,7 +23,7 @@ export type TableProps = {
   expandIconColumnIndex?: number,
   expandIcon?: string | Function,
   collapseIcon?: string | Function,
-  lugiadLayout?: { heightType: HeightType },
+  tableHeightType?: HeightType,
 };
 export type TableState = {
   headChecked: boolean,

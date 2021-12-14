@@ -68,23 +68,23 @@ export default class TableHeightTypeDemo extends React.Component {
         <Table
           columns={columns}
           data={data}
-          lugiadLayout={{ heightType: 'fixed' }}
+          tableHeightType={'fixed'}
           viewClass={'Table'}
           theme={{ Table: { Container: { normal: { height: '200px' } } } }}
         />
         <p>固定高度：fixed 无高度值时，默认被自己的内容填充</p>
-        <Table columns={columns} data={data} lugiadLayout={{ heightType: 'fixed' }} />
+        <Table columns={columns} data={data} tableHeightType={'fixed'} />
 
         <p>表格高度展示-auto：内容适配</p>
         <p>不受父元素高度影响</p>
         <div style={{ height: '320px', overflow: 'auto' }}>
-          <Table columns={columns} data={data} lugiadLayout={{ heightType: 'auto' }} />
+          <Table columns={columns} data={data} tableHeightType={'auto'} />
         </div>
 
         <p>表格高度展示-free：自适应</p>
         <p>虽父高度变化</p>
         <div style={{ height: '300px' }}>
-          <Table columns={columns} data={data} lugiadLayout={{ heightType: 'reactive' }} />
+          <Table columns={columns} data={data} tableHeightType={'reactive'} />
         </div>
       </div>
     );
