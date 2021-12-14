@@ -29,7 +29,7 @@ import Icon from '../icon';
 import { deepMerge } from '@lugia/object-utils';
 import { style2css } from '@lugia/css';
 import getUuid from '../utils/getUuid';
-import { LugiadLayoutType } from '../css/table';
+import { HeightType } from '../css/table';
 
 const sizePadding = {
   default: 8,
@@ -44,7 +44,7 @@ const sizeHeight = {
 
 const lugiadLayoutName = { auto: 'auto', reactive: 'reactive', fixed: 'fixed' };
 
-const getLugiadHeightTypeBoolean = (lugiadLayout: LugiadLayoutType) => {
+const getLugiadHeightTypeBoolean = (lugiadLayout: HeightType) => {
   const { auto, reactive, fixed } = lugiadLayoutName;
   return {
     isAuto: lugiadLayout === auto, // 内容填充
@@ -166,17 +166,22 @@ export default ThemeProvider(
       this.columnsWidthMap = {};
       this.currentPropsDataIsSame = true;
     }
-    getLugiadHeightType = (): LugiadLayoutType => {
+    getLugiadHeightType = (): HeightType => {
       const { lugiadLayout, getPartOfThemeProps } = this.props;
       const { themeConfig: { normal: { height } = {} } = {} } = getPartOfThemeProps('Container');
-      //兼容组件主题高度为数字类型时生效
       const { heightType } = lugiadLayout || {};
       const { fixed, auto } = lugiadLayoutName;
-      return typeof height === 'number' && !heightType
-        ? fixed
-        : heightType === fixed && !height
-        ? auto
-        : heightType || auto;
+
+      //兼容组件主题高度为数字类型时生效
+      if (typeof height === 'number' && !heightType) {
+        return fixed;
+      }
+
+      if (!heightType || (heightType === fixed && !height)) {
+        return auto;
+      }
+
+      return heightType;
     };
 
     canShowScrollY = (): boolean => {
