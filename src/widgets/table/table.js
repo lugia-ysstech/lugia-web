@@ -29,6 +29,7 @@ import Icon from '../icon';
 import { deepMerge } from '@lugia/object-utils';
 import { style2css } from '@lugia/css';
 import getUuid from '../utils/getUuid';
+import { LugiadLayoutType } from '../css/table';
 
 const sizePadding = {
   default: 8,
@@ -41,15 +42,37 @@ const sizeHeight = {
   large: 40,
 };
 
+const lugiadLayoutName = { auto: 'auto', reactive: 'reactive', fixed: 'fixed' };
+
+const getLugiadHeightTypeBoolean = (lugiadLayout: LugiadLayoutType) => {
+  const { auto, reactive, fixed } = lugiadLayoutName;
+  return {
+    isAuto: lugiadLayout === auto, // 内容填充
+    isReactive: lugiadLayout === reactive, // 自适应
+    isFixed: lugiadLayout === fixed, // 固定值
+  };
+};
+
+const getStringValue = (val: string | number): string => {
+  return typeof val === 'number' ? `${val}px` : val;
+};
 const TableWrap = CSSComponent({
   tag: 'div',
   className: 'TableWrap',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [['width']],
     getCSS(themeMeta, themeProps): string {
-      const { background: { color } = {} } = themeMeta;
+      const { height, background: { color } = {} } = themeMeta;
       const {
-        propsConfig: { size = 'default', columnsStyle, expandedRowStyle, columnsTitleStyle } = {},
+        propsConfig: {
+          size = 'default',
+          columnsStyle,
+          expandedRowStyle,
+          columnsTitleStyle,
+          heightType,
+          headHeight,
+          bodyRowHeight,
+        } = {},
       } = themeProps;
       const padding = sizePadding[size] || sizePadding.default;
       let bgColor;
@@ -58,7 +81,21 @@ const TableWrap = CSSComponent({
           background: ${color};
         }`;
       }
+      const { isReactive, isFixed } = getLugiadHeightTypeBoolean(heightType);
+
+      let heightStyle = '';
+      if (isFixed) {
+        heightStyle =
+          typeof height === 'number' ? `height:${height}px;` : height ? `height:${height};` : '';
+      }
+      if (isReactive) {
+        heightStyle = 'height:100%;';
+      }
+
+      const headHeightString = getStringValue(headHeight);
+      const bodyRowHeightString = getStringValue(bodyRowHeight);
       return css`
+        ${heightStyle};
         .rc-table th,
         .rc-table td {
           padding: 0 ${padding}px;
@@ -70,16 +107,16 @@ const TableWrap = CSSComponent({
         ${expandedRowStyle};
 
         .rc-table tbody .rc-table-row {
-          height: ${props => props.headHeight}px;
+          height: ${bodyRowHeightString};
         }
         .rc-table tbody .rc-table-row td {
-          height: ${props => props.headHeight}px;
+          height: ${bodyRowHeightString};
         }
         .rc-table thead tr {
-          height: ${props => props.headHeight}px;
+          height: ${headHeightString};
         }
         .rc-table thead tr th {
-          height: ${props => props.headHeight}px;
+          height: ${headHeightString};
         }
       `;
     },
@@ -129,20 +166,38 @@ export default ThemeProvider(
       this.columnsWidthMap = {};
       this.currentPropsDataIsSame = true;
     }
+    getLugiadHeightType = (): LugiadLayoutType => {
+      const { lugiadLayout, getPartOfThemeProps } = this.props;
+      const { themeConfig: { normal: { height } = {} } = {} } = getPartOfThemeProps('Container');
+      //兼容组件主题高度为数字类型时生效
+      const { heightType } = lugiadLayout || {};
+      const { fixed, auto } = lugiadLayoutName;
+      return typeof height === 'number' && !heightType
+        ? fixed
+        : heightType === fixed && !height
+        ? auto
+        : heightType || auto;
+    };
+
+    canShowScrollY = (): boolean => {
+      const { isAuto } = getLugiadHeightTypeBoolean(this.getLugiadHeightType());
+      if (isAuto) {
+        return 0;
+      }
+      const containerHeight = this.getContainerHeight();
+      const tableHeight = this.computeTableHeight();
+      return tableHeight && (containerHeight < tableHeight - 2 || tableHeight === containerHeight);
+    };
+
     componentDidMount() {
       setTimeout(() => {
+        if (this.tableWrap) {
+          this.tableWrap.querySelector('.rc-table-content');
+        }
         if (this.props.scroll && this.props.scroll.y) {
           return;
         }
-        const { getPartOfThemeConfig } = this.props;
-        const containerTheme = getPartOfThemeConfig('Container') || {};
-        const { normal: { height: themeHeight } = {} } = containerTheme;
-        const tableHeight = this.computeTableHeight();
-        if (tableHeight && themeHeight < tableHeight - 2) {
-          this.setState({ scroll: this.getTableBodyHeight(themeHeight) });
-        } else {
-          this.setState({ scroll: undefined });
-        }
+        this.updateScrollY();
       }, 0);
 
       this.setXScrollerCriticalResizeObserver();
@@ -202,6 +257,14 @@ export default ThemeProvider(
       return true;
     }
 
+    getContainerHeight = () => {
+      if (this.tableWrap) {
+        const { offsetHeight } = this.tableWrap;
+        return offsetHeight;
+      }
+      return 0;
+    };
+
     computeTableHeight() {
       if (this.tableWrap && this.tableWrap.querySelector) {
         const tableBody = this.getTableBodyDom();
@@ -239,24 +302,23 @@ export default ThemeProvider(
         }
       }
     }
+    updateScrollY = () => {
+      const tableHeight = this.getContainerHeight();
+      if (this.canShowScrollY()) {
+        this.setState({ scroll: this.getTableBodyHeight(tableHeight) });
+      } else {
+        this.setState({ scroll: undefined });
+      }
+    };
 
     componentDidUpdate(prevProps, prevState) {
       setTimeout(() => {
-        const { getPartOfThemeConfig } = this.props;
-        const containerTheme = getPartOfThemeConfig('Container') || {};
-        const { normal: { height: themeHeight } = {} } = containerTheme;
-        const tableHeight = this.computeTableHeight();
         const { data = [], scroll } = this.props;
         const { data: prevPropsData = [] } = prevProps;
         if (data.length === prevPropsData.length || (scroll && scroll.y)) {
           return;
         }
-        if (tableHeight && (themeHeight < tableHeight - 2 || themeHeight === tableHeight)) {
-          this.setState({ scroll: this.getTableBodyHeight(themeHeight) });
-        } else {
-          this.setState({ scroll: undefined });
-        }
-        this.tableHeight = tableHeight;
+        this.updateScrollY();
       }, 0);
 
       const { defaultExpandAllRows } = this.props;
@@ -397,6 +459,13 @@ export default ThemeProvider(
       const { normal } = getPartOfThemeConfig('Head');
       const { height: headHeight = 0 } = normal || {};
       return headHeight || sizeHeight[size];
+    };
+
+    getBodyRowHeight = () => {
+      const { getPartOfThemeConfig } = this.props;
+      const { normal } = getPartOfThemeConfig('BodyRow');
+      const { height: rowHeight = 0 } = normal || {};
+      return rowHeight || this.getHeadHeight();
     };
 
     tableHeadChange = () => {
@@ -710,6 +779,9 @@ export default ThemeProvider(
           columnsStyle: data.length ? this.getEveryColumnsStyle() : this.getHeadStyle(),
           columnsTitleStyle: this.getColumnsAlignCSS('table thead tr th:nth-child'),
           expandedRowStyle: this.getExpandedRowStyle(),
+          headHeight: this.getHeadHeight(),
+          bodyRowHeight: this.getBodyRowHeight(),
+          heightType: this.getLugiadHeightType(),
         },
       });
       const customExpandIcon = prop => {
@@ -867,7 +939,6 @@ export default ThemeProvider(
           className={this.getClass(tableStyle)}
           key={this.propsKey}
           size={size}
-          headHeight={this.getHeadHeight()}
         >
           <RcTable
             {...this.getDefaultEmpty()}

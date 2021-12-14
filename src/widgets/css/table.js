@@ -3,6 +3,8 @@
  * create by guorg
  * @flow
  */
+
+export type LugiadLayoutType = 'auto' | 'reactive' | 'fixed';
 export type TableProps = {
   children?: any,
   columns: Object[],
@@ -21,6 +23,7 @@ export type TableProps = {
   expandIconColumnIndex?: number,
   expandIcon?: string | Function,
   collapseIcon?: string | Function,
+  lugiadLayout?: { heightType: LugiadLayoutType },
 };
 export type TableState = {
   headChecked: boolean,

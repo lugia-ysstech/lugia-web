@@ -370,6 +370,11 @@
         ]
       ]
     },
+    "BodyRow": {
+      "name": "表格行",
+      "desc": "表格行配置",
+      "normal": [["height"]]
+    },
     "ExpandIcon": {
       "name": "展开行图标样式",
       "desc": "展开行图标样式配置点",
