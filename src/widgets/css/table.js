@@ -24,6 +24,7 @@ export type TableProps = {
   expandIcon?: string | Function,
   collapseIcon?: string | Function,
   tableHeightType?: HeightType,
+  fixedBottom?: boolean,
 };
 export type TableState = {
   headChecked: boolean,
