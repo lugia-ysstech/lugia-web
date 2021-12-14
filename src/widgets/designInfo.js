@@ -29101,6 +29101,26 @@ export default [
           type: 'number',
           designOnly: false,
           injectProps: false,
+          meta: '',
+        },
+        fixedBottom: {
+          desc: '固定最后一行',
+          type: 'boolean',
+          designOnly: false,
+          injectProps: false,
+          meta: '',
+        },
+        tableHeightType: {
+          desc: '表格高度展示类型',
+          type: 'object[]',
+          designOnly: false,
+          injectProps: false,
+          defaultValue: 'auto',
+          meta: [
+            { 列2: null, value: 'auto', text: '内容填充' },
+            { value: 'reactive', text: '自适应' },
+            { value: 'fixed', text: '固定高度' },
+          ],
         },
       },
       events: {
