@@ -536,10 +536,8 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const { onBlur, min, max } = this.props;
     const { value, stepHover } = this.state;
     const finalValue = handleEmpty(value, limit(value, [min, max]));
-    console.info(value, limit(value, [min, max]), 11111);
     if (stepHover !== 'plus' && stepHover !== 'minus') {
       if (this.state.value !== finalValue) {
-        console.info(finalValue, 111111111111123131231231);
         this.setValue(finalValue, event);
       }
       this.setState({ _innerFocus: false });
@@ -567,8 +565,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const { value: sValue } = this.state;
     const handleNumberValue = checkNumber(value + '');
     const theValue = handleFirstPoint(handleNumberValue);
-    console.info(theValue, 11111111);
-    console.info(value, 11111111);
     if (sValue !== handleNumberValue) {
       this.setValue(theValue, event);
     }
