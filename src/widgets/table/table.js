@@ -731,19 +731,52 @@ export default ThemeProvider(
     getFixedBottomStyle = className => {
       return `${className}(1){position: sticky;z-index:1;bottom:0;};`;
     };
-
-    getColumnsAlignCSS = className => {
+    childrenTitleAlignCSSList = [];
+    getColumnsAlignCSS = () => {
       const { columns } = this.props;
-      return (
-        columns &&
-        columns.map((item, index) => {
-          const { titleAlign } = item;
-          const titleAlignCSS = `text-align:${titleAlign} !important;`;
-          const titleAlignStyle = titleAlign ? titleAlignCSS : '';
-          const normalChildIndex = index + 1;
-          return `${className}(${normalChildIndex}){${titleAlignStyle}}`;
-        })
-      );
+      const columnTdLengthMap = {};
+      const level = 1;
+      columns &&
+        columns.forEach((item, index) => {
+          const { titleAlign, children } = item;
+          const childIndex = index + 1;
+          this.childrenTitleAlignCSSList.push(
+            this.getTitleAlignCSSByIndex(level, childIndex, titleAlign)
+          );
+          if (Array.isArray(children) && children.length > 0) {
+            this.childrenTitleAlignCSSList.concat(
+              this.getChildrenTitleAlignCSS(children, level, columnTdLengthMap)
+            );
+          }
+        });
+
+      return this.childrenTitleAlignCSSList;
+    };
+
+    getTitleAlignCSSByIndex(trIndex: number, tdIndex: number, titleAlign?: string) {
+      const titleAlignStyle = titleAlign ? `text-align:${titleAlign} !important;` : '';
+      return `table thead tr:nth-child(${trIndex}) th:nth-child(${tdIndex}){${titleAlignStyle}}`;
+    }
+
+    getChildrenTitleAlignCSS = (children: Object[], level: number, columnTdLengthMap: Object) => {
+      level++;
+      columnTdLengthMap[level] = columnTdLengthMap[level] || 0;
+
+      children.forEach(item => {
+        const { children: nextChildren, titleAlign } = item;
+        columnTdLengthMap[level]++;
+        const childrenTitleAlignStyle = this.getTitleAlignCSSByIndex(
+          level,
+          columnTdLengthMap[level],
+          titleAlign
+        );
+        this.childrenTitleAlignCSSList.push(`${childrenTitleAlignStyle}`);
+        if (nextChildren) {
+          this.childrenTitleAlignCSSList.concat(
+            this.getChildrenTitleAlignCSS(nextChildren, level, columnTdLengthMap)
+          );
+        }
+      });
     };
     getHeadStyle = () => {
       return this.getColumnsClass('table thead tr th:nth-child');
@@ -799,7 +832,7 @@ export default ThemeProvider(
         props: {
           size,
           columnsStyle: data.length ? this.getEveryColumnsStyle() : this.getHeadStyle(),
-          columnsTitleStyle: this.getColumnsAlignCSS('table thead tr th:nth-child'),
+          columnsTitleStyle: this.getColumnsAlignCSS(),
           expandedRowStyle: this.getExpandedRowStyle(),
           headHeight: this.getHeadHeight(),
           bodyRowHeight: this.getBodyRowHeight(),
