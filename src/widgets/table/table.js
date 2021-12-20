@@ -771,7 +771,7 @@ export default ThemeProvider(
           titleAlign
         );
         this.childrenTitleAlignCSSList.push(`${childrenTitleAlignStyle}`);
-        if (nextChildren) {
+        if (Array.isArray(nextChildren) && nextChildren.length > 0) {
           this.childrenTitleAlignCSSList.concat(
             this.getChildrenTitleAlignCSS(nextChildren, level, columnTdLengthMap)
           );
