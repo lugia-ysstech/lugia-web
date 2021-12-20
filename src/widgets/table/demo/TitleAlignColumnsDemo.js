@@ -106,63 +106,6 @@ const columns = [
       },
     ],
   },
-  {
-    title: '境内股票',
-    dataIndex: 'pfName',
-    key: 'pfName',
-    align: 'center',
-    titleAlign: 'center',
-    ellipsis: true,
-    width: 160,
-  },
-  {
-    title: '本年累计完成投资额',
-    dataIndex: 'cy',
-    key: 'cy',
-    titleAlign: 'center',
-
-    ellipsis: true,
-    children: [
-      {
-        title: '新增',
-        dataIndex: 'increaseCy',
-        key: 'increaseCy',
-        align: 'right',
-        titleAlign: 'center',
-        ellipsis: true,
-        width: 100,
-        children: [
-          {
-            title: '新增',
-            dataIndex: 'increaseCy',
-            key: 'increaseCy',
-            align: 'right',
-            titleAlign: 'center',
-            ellipsis: true,
-            width: 100,
-          },
-        ],
-      },
-      {
-        title: '减持',
-        dataIndex: 'hdReductionCy',
-        key: 'hdReductionCy',
-        align: 'right',
-        titleAlign: 'center',
-        ellipsis: true,
-        width: 100,
-      },
-      {
-        title: '净增',
-        dataIndex: 'netIncreaseCy',
-        key: 'netIncreaseCy',
-        align: 'right',
-        titleAlign: 'center',
-        ellipsis: true,
-        width: 100,
-      },
-    ],
-  },
 ];
 const data = [
   {
