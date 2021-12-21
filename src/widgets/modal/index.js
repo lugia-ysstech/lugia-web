@@ -22,13 +22,13 @@ Modal.onShow = (cb: (props: Object) => void) => {
 };
 
 Modal.onOk = (cb: (props: Object) => void) => {
-  modalListener.on('onOk', (props: Object) => {
+  return modalListener.on('onOk', (props: Object) => {
     cb(props);
   });
 };
 
 Modal.onCancel = (cb: (props: Object) => void) => {
-  modalListener.on('onCancel', (props: Object) => {
+  return modalListener.on('onCancel', (props: Object) => {
     cb(props);
   });
 };
