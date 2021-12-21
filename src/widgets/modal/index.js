@@ -16,7 +16,7 @@ Modal.warning = quickcall('warning');
 Modal.createShowModal = createShowModal;
 
 Modal.onShow = (cb: (props: Object) => void) => {
-  modalListener.on('onShow', (props: Object) => {
+  return modalListener.on('onShow', (props: Object) => {
     cb(props);
   });
 };
