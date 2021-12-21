@@ -8,6 +8,9 @@
 import { FncModal } from './fncmodal';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Listener from '@lugia/listener';
+
+export const modalListener = new Listener();
 
 export default (defaultProps: Object) => {
   return (props: Object) => {
@@ -20,6 +23,6 @@ export default (defaultProps: Object) => {
       props = {};
     }
     const lastProps = { ...defaultProps, ...props };
-    ReactDOM.render(<FncModal parentDom={div} {...lastProps} />, div);
+    ReactDOM.render(<FncModal parentDom={div} {...lastProps} listener={modalListener} />, div);
   };
 };
