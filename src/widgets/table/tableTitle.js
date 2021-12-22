@@ -32,6 +32,7 @@ const ArrowWrapper = StaticComponent({
      display: flex;
      margin: 0 0 0 8px;
      cursor: pointer;
+     line-height: 12px;
   `,
 });
 
