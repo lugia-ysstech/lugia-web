@@ -26,6 +26,7 @@ import Icon from '../icon';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import { findDOMNode } from 'react-dom';
 import get from '../css/theme-common-dict';
+import { isEqualArray } from '../table/utils';
 
 const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
@@ -429,12 +430,20 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   componentDidUpdate(prevProps: Object, prevState: Object) {
-    const { currentPage, arrowShow } = this.state;
-    const { currentPage: prevCurrentPage, arrowShow: prevArrowShow } = prevState;
-    const { activityValue } = this.props;
+    const { currentPage, arrowShow, data } = this.state;
+    const { currentPage: prevCurrentPage, arrowShow: prevArrowShow, data: prevData } = prevState;
+    const { activityValue, pagedType } = this.props;
     const { activityValue: prevActivityValue } = prevProps;
     const activityValueChanged = activityValue !== prevActivityValue;
     const currentPageChanged = currentPage !== prevCurrentPage;
+    if (!isEqualArray(data, prevData, true)) {
+      const titleSize = this.getTabpaneWidthOrHeight();
+      const pageSplitInfo = this.getPagesInfo(titleSize);
+      if (isPagedType(pagedType) && pageSplitInfo.length < currentPage) {
+        this.setState({ currentPage: pageSplitInfo.length });
+      }
+      this.isShowArrow();
+    }
     if (activityValueChanged || currentPageChanged || arrowShow !== prevArrowShow) {
       const type = activityValueChanged ? 'activeValue' : currentPageChanged ? 'currentPage' : '';
       this.matchPage(type);
@@ -472,8 +481,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     }
 
     const { data, activityValue, pagedType, tabType, isShowArrowIcon } = this.props;
-    const { arrowShow } = this.state;
-    if (!isShowArrowIcon || !arrowShow) {
+    if (!isShowArrowIcon) {
       return;
     }
     const titleSize = this.getTabpaneWidthOrHeight();
