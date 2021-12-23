@@ -10,7 +10,7 @@ import ResizeObserver from 'resize-observer-polyfill';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
-import RcTable, { INTERNAL_COL_DEFINE } from 'rc-table';
+import RcTable, { INTERNAL_COL_DEFINE } from '@lugia/rc-table';
 import Checkbox from '../checkbox';
 import type { TableProps, TableState } from '../css/table';
 import { css } from 'styled-components';
