@@ -881,61 +881,65 @@ export default ThemeProvider(
       }
       if ('selectOptions' in this.props) {
         this.getValidKey();
-        const {
-          setCheckboxProps = () => {
-            return {};
-          },
-          width = 60,
-        } = selectOptions;
-        const selectColumnItem = {
-          title: (
-            <div style={{ fontSize: 0 }}>
-              <Checkbox
-                checked={headChecked}
-                indeterminate={headIndeterminate}
-                onChange={this.tableHeadChange}
-              />
-            </div>
-          ),
-          className: 'lugia-select-column',
-          key: 'selection-column',
-          width,
-          render: (text, record) => {
-            const { children = [] } = record;
-            const rowKey = record[cusRowKey];
-            const select = stateSelectRowKeys.includes(rowKey);
-            const checkboxProps = setCheckboxProps(record) || {};
-            const notChecked = getValidNotCheckedKeys(
-              children,
-              stateSelectRowKeys,
-              cusRowKey,
-              setCheckboxProps
-            );
-            const allCheck = notChecked.length <= 0 && select;
-            const { childrenKeys = [] } = getChildrenKeys(
-              children,
-              [],
-              [],
-              cusRowKey,
-              setCheckboxProps
-            );
-            const indeterminate = allCheck || notChecked.length !== childrenKeys.length;
-            return (
-              <div style={{ fontSize: 0 }}>
-                <Checkbox
-                  checked={allCheck}
-                  onChange={this.tableItemChange(rowKey, record)}
-                  {...checkboxProps}
-                  indeterminate={indeterminate}
-                />
-              </div>
-            );
-          },
-          [INTERNAL_COL_DEFINE]: {
-            className: 'lugia-selection-col',
-          },
-        };
-        this.columns.unshift(selectColumnItem);
+        if (this.columns && this.columns[0]) {
+          if (this.columns[0].key !== 'selection-column') {
+            const {
+              setCheckboxProps = () => {
+                return {};
+              },
+              width = 60,
+            } = selectOptions;
+            const selectColumnItem = {
+              title: (
+                <div style={{ fontSize: 0 }}>
+                  <Checkbox
+                    checked={headChecked}
+                    indeterminate={headIndeterminate}
+                    onChange={this.tableHeadChange}
+                  />
+                </div>
+              ),
+              className: 'lugia-select-column',
+              key: 'selection-column',
+              width,
+              render: (text, record) => {
+                const { children = [] } = record;
+                const rowKey = record[cusRowKey];
+                const select = stateSelectRowKeys.includes(rowKey);
+                const checkboxProps = setCheckboxProps(record) || {};
+                const notChecked = getValidNotCheckedKeys(
+                  children,
+                  stateSelectRowKeys,
+                  cusRowKey,
+                  setCheckboxProps
+                );
+                const allCheck = notChecked.length <= 0 && select;
+                const { childrenKeys = [] } = getChildrenKeys(
+                  children,
+                  [],
+                  [],
+                  cusRowKey,
+                  setCheckboxProps
+                );
+                const indeterminate = allCheck || notChecked.length !== childrenKeys.length;
+                return (
+                  <div style={{ fontSize: 0 }}>
+                    <Checkbox
+                      checked={allCheck}
+                      onChange={this.tableItemChange(rowKey, record)}
+                      {...checkboxProps}
+                      indeterminate={indeterminate}
+                    />
+                  </div>
+                );
+              },
+              [INTERNAL_COL_DEFINE]: {
+                className: 'lugia-selection-col',
+              },
+            };
+            this.columns.unshift(selectColumnItem);
+          }
+        }
       }
       let expandIconColumnIndex =
         this.columns && this.columns[0] && this.columns[0][cusRowKey] === 'selection-column'
