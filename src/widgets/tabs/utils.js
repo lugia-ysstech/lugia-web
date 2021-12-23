@@ -123,7 +123,7 @@ export function computeMoveDistance(param) {
 
 export const getLengthByCurrentPage = (distanceLength, pageSplitInfo) => {
   let length = 0;
-  for (let i = 1; i <= distanceLength; i++) {
+  for (let i = 0; i < distanceLength; i++) {
     const silgleLength = pageSplitInfo[i].length;
     if (silgleLength) {
       length += silgleLength;
