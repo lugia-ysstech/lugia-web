@@ -937,7 +937,6 @@ export default ThemeProvider(
                 className: 'lugia-selection-col',
               },
             };
-            console.log('sssssssssssssss');
             this.columns.unshift(selectColumnItem);
           }
         }
@@ -991,8 +990,6 @@ export default ThemeProvider(
           this.propsKey = getUuid();
         }
       }
-
-      console.log('this.columns ===>>>', this.columns);
 
       return (
         <TableWrap
