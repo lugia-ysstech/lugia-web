@@ -55,6 +55,7 @@
 }
 :global(.lugia-table .rc-table td) {
   border-color: #e8e8e8;
+  background-clip: padding-box;
 }
 :global(.lugia-table .rc-table-expanded-row .rc-table-cell) {
   border-color: #e8e8e8;
