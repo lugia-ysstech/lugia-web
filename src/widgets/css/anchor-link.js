@@ -76,6 +76,9 @@ export const LinkTitle = CSSComponent({
     display: block;
     transition: all 0.3s ease-in-out;
     text-decoration: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   `,
   option: { hover: true, active: true },
 });

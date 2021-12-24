@@ -37,7 +37,7 @@ class AnchorLink extends React.Component<AnchorLinkProps, AnchorLinkState> {
           }
           const linkHref = useHref ? { href } : {};
           return (
-            <LinkWrap themeProps={themeProps}>
+            <LinkWrap themeProps={themeProps} title={title}>
               <LinkTitle
                 themeProps={themeProps}
                 onClick={e => onClick && onClick(e, href)}
