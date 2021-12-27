@@ -97,6 +97,7 @@ const TableWrap = CSSComponent({
       const bodyRowHeightString = getStringValue(bodyRowHeight);
       return css`
         ${heightStyle};
+        overflow: hidden;
         .rc-table th,
         .rc-table td {
           padding: 0 ${padding}px;
@@ -805,6 +806,15 @@ export default ThemeProvider(
         .rc-table th.rc-table-row-expand-icon-cell{${style2css(expandedRowStyle)}}`;
       }
     };
+
+    onExpandedRowsChange = (...param) => {
+      const { onExpandedRowsChange } = this.props;
+      onExpandedRowsChange && onExpandedRowsChange(...param);
+      setTimeout(() => {
+        this.updateScrollY();
+      }, 0);
+    };
+
     render() {
       const {
         children,
@@ -1017,6 +1027,7 @@ export default ThemeProvider(
           <RcTable
             {...this.getDefaultEmpty()}
             {...this.props}
+            onExpandedRowsChange={this.onExpandedRowsChange}
             columns={this.columns}
             data={tableData}
             showHeader={showHeader}
