@@ -145,6 +145,7 @@ export default ThemeProvider(
     tableId: string;
     oldPropsData: Object[];
     currentPropsDataIsSame: boolean;
+    userAgentInfor: string;
 
     constructor(props) {
       super();
@@ -167,6 +168,7 @@ export default ThemeProvider(
       this.columns = this.handleColumns(props);
       this.columnsWidthMap = {};
       this.currentPropsDataIsSame = true;
+      this.userAgentInfor = '';
     }
     getLugiadHeightType = (): HeightType => {
       const { lugiadLayout, getPartOfThemeProps, tableHeightType } = this.props;
@@ -217,6 +219,7 @@ export default ThemeProvider(
       }, 0);
 
       this.setXScrollerCriticalResizeObserver();
+      this.userAgentInfor = navigator.userAgent.toLowerCase();
     }
 
     disconnectXScrollerCriticalResizeObserver() {
@@ -281,6 +284,13 @@ export default ThemeProvider(
       return 0;
     };
 
+    isWinSystem = () => {
+      return this.userAgentInfor.indexOf('win32') > 0 || this.userAgentInfor.indexOf('win64') > 0;
+    };
+    isFirefoxBrowser = () => {
+      return this.userAgentInfor.indexOf('firefox') > 0;
+    };
+
     computeTableHeight() {
       if (this.tableWrap && this.tableWrap.querySelector) {
         const tableBody = this.getTableBodyDom();
@@ -291,7 +301,9 @@ export default ThemeProvider(
 
         let tableBodyHeight = 0;
         if (tableBody && tableBody.offsetHeight) {
-          tableBodyHeight = parseInt(tableBody.offsetHeight, 10);
+          const windowsAndFirefox = this.isWinSystem() && this.isFirefoxBrowser();
+
+          tableBodyHeight = parseInt(tableBody.offsetHeight, 10) + +windowsAndFirefox;
         }
 
         let tableHeaderHeight = 0;
