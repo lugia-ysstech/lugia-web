@@ -88,7 +88,6 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       filter: '',
       popupVisible: props.popupVisible !== undefined ? props.popupVisible : false,
     };
-    this.isLeaf = true;
   }
 
   static getDerivedStateFromProps(props: NavMenuProps, state: NavMenuState) {
@@ -239,10 +238,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     const { onMenuClick } = this.props;
     const { children } = item;
     if (!children || children.length === 0) {
-      this.isLeaf = true;
       this.onPopupVisibleChange(false);
-    } else {
-      this.isLeaf = false;
     }
     const key = keys.selectedKeys[0];
 
@@ -261,12 +257,10 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
   onPopupVisibleChange = (popupVisible: boolean) => {
     const { onPopupVisibleChange } = this.props;
-    if (this.isLeaf) {
-      setTimeout(() => {
-        this.setState({ popupVisible });
-      }, 200);
-      onPopupVisibleChange && onPopupVisibleChange(popupVisible);
-    }
+    setTimeout(() => {
+      this.setState({ popupVisible });
+    }, 200);
+    onPopupVisibleChange && onPopupVisibleChange(popupVisible);
   };
 
   mergeTheme = (target: string, defaultTheme: Object) => {
