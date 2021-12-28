@@ -851,8 +851,10 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const { getTabpane } = this.props;
     return data
       ? data.map((child: Object, index: number) => {
+          const { value } = child;
           const Target = (
             <Tabpane
+              key={value}
               ref={node => (this.titlePanel[index] = node)}
               {...this.props}
               {...this.getTabpaneConfig(child, index)}
@@ -964,7 +966,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     return this.titlePanel.map(item => {
       let offsetSize = 0;
       if (item) {
-        const tabPan = findDOMNode(item.getThemeTarget());
+        let tabPan = findDOMNode(item.getThemeTarget());
         if (!tabPan) {
           return offsetSize;
         }
@@ -973,6 +975,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         } else {
           offsetSize = tabPan.offsetWidth;
         }
+        tabPan = null;
       }
       return offsetSize;
     });
