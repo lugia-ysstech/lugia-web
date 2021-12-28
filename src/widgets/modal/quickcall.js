@@ -8,6 +8,7 @@
 import { FncModal } from './fncmodal';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { modalListener } from './create-show-modal';
 
 export const quickcall = (
   iconType: 'confirm' | 'info' | 'success' | 'warning' | 'error' = 'info'
@@ -46,6 +47,6 @@ export const quickcall = (
     const div = document.createElement('div');
     document.body && document.body.appendChild(div);
 
-    ReactDOM.render(<FncModal parentDom={div} {...config} />, div);
+    ReactDOM.render(<FncModal parentDom={div} {...config} listener={modalListener} />, div);
   };
 };
