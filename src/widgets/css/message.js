@@ -4,6 +4,8 @@
  * @flow
  */
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import Listener from '@lugia/listener';
+
 import { px2remcss } from '../css/units';
 import { css, keyframes } from 'styled-components';
 import type { Type } from './component-iconwrap';
@@ -12,6 +14,7 @@ export type MessageProps = {
   icon?: string,
   iconType?: Type,
   time: number,
+  listener?: Listener,
   content: string,
   callBack?: Function,
   getPartOfThemeProps: Function,

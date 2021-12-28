@@ -16,6 +16,7 @@ import get from '../css/theme-common-dict';
 import { getBorderRadius } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import { handleDuration } from '../utils';
+import { modalListener } from '../modal/create-show-modal';
 
 const defaultMessageContentTheme = () => ({
   themeConfig: {
@@ -38,6 +39,14 @@ export default ThemeProvider(
         closing: false,
       };
     }
+
+    emit(eventName: string) {
+      const { listener = modalListener } = this.props;
+      if (listener) {
+        listener.emit(eventName, this.props);
+      }
+    }
+
     componentDidMount() {
       setTimeout(() => {
         this.setState({
@@ -82,6 +91,11 @@ export default ThemeProvider(
       const messageIconThemeObj = getPartOfThemeHocProps('MessageIcon');
       const messageContentTheme = deepMerge(defaultMessageContentTheme(), messageTheme);
       const { themeConfig: { normal: { height = 40 } = {} } = {} } = messageContentTheme;
+      if (visible) {
+        this.emit('onShow');
+      } else {
+        this.emit('onOk');
+      }
       if (visible) {
         return (
           <Message>
