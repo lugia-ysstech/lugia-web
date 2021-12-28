@@ -297,6 +297,48 @@ type TabpaneProps = {
 class Tabpane extends Component<TabpaneProps, TabpaneState> {
   static displayName = Widget.Tabpane;
 
+  shouldComponentUpdate(nextProps: TabpaneProps) {
+    const {
+      title: titleNext,
+      icon: iconNext,
+      suffixIcon: suffixIconNext,
+      tabType: tabTypeNext,
+      tabPosition: tabPositionNext,
+      keyVal: keyValNext,
+      isSelect: isSelectNext,
+      disabled: disabledNext,
+      showDeleteBtn: showDeleteBtnNext,
+      deleteIcon: deleteIconNext,
+      showDividerLine: showDividerLineNext,
+    } = nextProps;
+    const {
+      title,
+      icon,
+      suffixIcon,
+      tabType,
+      tabPosition,
+      keyVal,
+      isSelect,
+      disabled,
+      showDeleteBtn,
+      deleteIcon,
+      showDividerLine,
+    } = this.props;
+    return (
+      title !== titleNext ||
+      icon !== iconNext ||
+      suffixIcon !== suffixIconNext ||
+      tabType !== tabTypeNext ||
+      tabPosition !== tabPositionNext ||
+      keyVal !== keyValNext ||
+      isSelect !== isSelectNext ||
+      disabled !== disabledNext ||
+      showDeleteBtn !== showDeleteBtnNext ||
+      deleteIcon !== deleteIconNext ||
+      showDividerLine !== showDividerLineNext
+    );
+  }
+
   render() {
     const {
       title,
