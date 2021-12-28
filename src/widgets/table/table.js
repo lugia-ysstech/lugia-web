@@ -744,26 +744,32 @@ export default ThemeProvider(
     getFixedBottomStyle = className => {
       return `${className}(1){position: sticky;z-index:1;bottom:0;};`;
     };
-    childrenTitleAlignCSSList = [];
+
     getColumnsAlignCSS = () => {
       const { columns } = this.props;
+      const childrenTitleAlignCSSList = [];
       const columnTdLengthMap = {};
       const level = 1;
       columns &&
         columns.forEach((item, index) => {
           const { titleAlign, children } = item;
           const childIndex = index + 1;
-          this.childrenTitleAlignCSSList.push(
+          childrenTitleAlignCSSList.push(
             this.getTitleAlignCSSByIndex(level, childIndex, titleAlign)
           );
           if (Array.isArray(children) && children.length > 0) {
-            this.childrenTitleAlignCSSList.concat(
-              this.getChildrenTitleAlignCSS(children, level, columnTdLengthMap)
+            childrenTitleAlignCSSList.concat(
+              this.getChildrenTitleAlignCSS(
+                children,
+                level,
+                columnTdLengthMap,
+                childrenTitleAlignCSSList
+              )
             );
           }
         });
 
-      return this.childrenTitleAlignCSSList;
+      return childrenTitleAlignCSSList;
     };
 
     getTitleAlignCSSByIndex(trIndex: number, tdIndex: number, titleAlign?: string) {
@@ -771,7 +777,12 @@ export default ThemeProvider(
       return `table thead tr:nth-child(${trIndex}) th:nth-child(${tdIndex}){${titleAlignStyle}}`;
     }
 
-    getChildrenTitleAlignCSS = (children: Object[], level: number, columnTdLengthMap: Object) => {
+    getChildrenTitleAlignCSS = (
+      children: Object[],
+      level: number,
+      columnTdLengthMap: Object,
+      childrenTitleAlignCSSList: string[]
+    ) => {
       level++;
       columnTdLengthMap[level] = columnTdLengthMap[level] || 0;
 
@@ -783,10 +794,15 @@ export default ThemeProvider(
           columnTdLengthMap[level],
           titleAlign
         );
-        this.childrenTitleAlignCSSList.push(`${childrenTitleAlignStyle}`);
+        childrenTitleAlignCSSList.push(`${childrenTitleAlignStyle}`);
         if (Array.isArray(nextChildren) && nextChildren.length > 0) {
-          this.childrenTitleAlignCSSList.concat(
-            this.getChildrenTitleAlignCSS(nextChildren, level, columnTdLengthMap)
+          childrenTitleAlignCSSList.concat(
+            this.getChildrenTitleAlignCSS(
+              nextChildren,
+              level,
+              columnTdLengthMap,
+              childrenTitleAlignCSSList
+            )
           );
         }
       });
