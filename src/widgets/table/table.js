@@ -97,7 +97,6 @@ const TableWrap = CSSComponent({
       const bodyRowHeightString = getStringValue(bodyRowHeight);
       return css`
         ${heightStyle};
-        overflow: hidden;
         .rc-table th,
         .rc-table td {
           padding: 0 ${padding}px;
