@@ -389,7 +389,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   };
   state = {
     quickJumperValue: 1,
-    isTriggerBlur: true,
   };
 
   static getDerivedStateFromProps(props: PaginationProps, state: PaginationState) {
@@ -716,6 +715,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const { disabled, total } = this.props;
     const theValue = this.getQuickJumperValue();
     const theNewValue = (newValue + '').replace(/-/g, '');
+    this.isTriggerBlur = true;
     if (theNewValue !== theValue && theNewValue !== 'NaN' && newValue !== '-') {
       let page = Number(theNewValue);
       if (!disabled) {
@@ -750,21 +750,19 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
 
   onInputBlur = (e: Object) => {
     const { quickJumperInputBlur, onQuickJumperInputBlur } = this.props;
-    const { isTriggerBlur } = this.state;
-    if (isTriggerBlur) {
+    if (this.isTriggerBlur) {
       this.handleInputEvent(e, onQuickJumperInputBlur, quickJumperInputBlur);
     }
   };
   onInputFocus = (e: Object) => {
     const { onQuickJumperInputFocus } = this.props;
-    this.setState({ isTriggerBlur: true });
     onQuickJumperInputFocus && onQuickJumperInputFocus(e);
   };
 
   onInputEnter = (e: Object) => {
     const { onQuickJumperInputEnter } = this.props;
     this.handleInputEvent(e, onQuickJumperInputEnter);
-    this.setState({ isTriggerBlur: false });
+    this.isTriggerBlur = false;
   };
 
   handleInputEvent(e: Object, eventFunction: Function, oldEventFunction?: Function) {
