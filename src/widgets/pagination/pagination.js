@@ -389,6 +389,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   };
   state = {
     quickJumperValue: 1,
+    isTriggerBlur: true,
   };
 
   static getDerivedStateFromProps(props: PaginationProps, state: PaginationState) {
@@ -749,15 +750,21 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
 
   onInputBlur = (e: Object) => {
     const { quickJumperInputBlur, onQuickJumperInputBlur } = this.props;
-    this.handleInputEvent(e, onQuickJumperInputBlur, quickJumperInputBlur);
+    const { isTriggerBlur } = this.state;
+    if (isTriggerBlur) {
+      this.handleInputEvent(e, onQuickJumperInputBlur, quickJumperInputBlur);
+    }
   };
   onInputFocus = (e: Object) => {
     const { onQuickJumperInputFocus } = this.props;
+    this.setState({ isTriggerBlur: true });
     onQuickJumperInputFocus && onQuickJumperInputFocus(e);
   };
+
   onInputEnter = (e: Object) => {
     const { onQuickJumperInputEnter } = this.props;
     this.handleInputEvent(e, onQuickJumperInputEnter);
+    this.setState({ isTriggerBlur: false });
   };
 
   handleInputEvent(e: Object, eventFunction: Function, oldEventFunction?: Function) {
