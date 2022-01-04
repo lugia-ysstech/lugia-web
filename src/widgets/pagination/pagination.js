@@ -984,6 +984,10 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     this.changePage(page);
   };
 
+  onBlockUnitMouseEnter = () => {
+    this.isTriggerBlur = false;
+  };
+
   render() {
     const { simple } = this.props;
     if (simple) {
@@ -1054,7 +1058,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const length = blockList.length;
     return (
       <PaginationListContainer themeProps={this.props.getPartOfThemeProps('Container')}>
-        <BlockUnit order={positionMap.Page || 1}>
+        <BlockUnit order={positionMap.Page || 1} onMouseEnter={this.onBlockUnitMouseEnter}>
           {this.getPaginationList(length === positionMap.Page)}
         </BlockUnit>
         {positionMap.PageInput && (
@@ -1068,7 +1072,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           </BlockUnit>
         )}
         {positionMap.PageSize && (
-          <BlockUnit order={positionMap.PageSize || 4}>
+          <BlockUnit order={positionMap.PageSize || 4} onMouseEnter={this.onBlockUnitMouseEnter}>
             {this.getPageSelect(length === positionMap.PageSize)}
           </BlockUnit>
         )}
