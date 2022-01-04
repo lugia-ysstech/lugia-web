@@ -161,7 +161,7 @@ export default ThemeProvider(
         selectRowKeys: selectRowKeys || [],
         scroll,
         data,
-        sortOrder: true,
+        newDataIndex: '',
       };
       this.tableWrap = React.createRef();
       this.oldPropsData = [];
@@ -357,7 +357,7 @@ export default ThemeProvider(
 
     static getDerivedStateFromProps(props, nextState) {
       const { data = [], selectOptions = {}, rowKey = 'key' } = props;
-      const { data: stateData = [], sortOrder } = nextState;
+      const { data: stateData = [] } = nextState;
       const dataIsSame = isEqualArray(stateData, data, { isStrengthen: false });
       const tableData = dataIsSame ? stateData : data;
       if ('selectRowKeys' in selectOptions) {
@@ -381,11 +381,10 @@ export default ThemeProvider(
           headChecked: allValidSelected,
           headIndeterminate: !!validSelectRowKeys.length,
           selectRowKeys,
-          sortOrder: dataIsSame ? sortOrder : true,
           data: tableData,
         };
       }
-      return { sortOrder: dataIsSame ? sortOrder : true, data: tableData };
+      return { data: tableData };
     }
 
     handleParentData = (data: Object, selectRowKeys, selectRecords, rowKey, setCheckboxProps) => {
@@ -675,22 +674,18 @@ export default ThemeProvider(
       return fixLeftColumns.concat(newColumns, fixRightColumns);
     };
     onSortChange = (columnData: Object, type: string) => {
-      const { sortOrder } = this.state;
+      const { newDataIndex } = this.state;
       const { data, onChange } = this.props;
       const { sortState } = this;
       const { sorter, dataIndex } = columnData;
       let sortData = deepCopy(data);
-      let newSortOrder = !sortOrder;
-      if (sortOrder || (sortState && sortState !== type && !sortOrder)) {
-        if (sortState && sortState !== type && !sortOrder) {
-          newSortOrder = false;
-        }
+      if (dataIndex && (newDataIndex !== dataIndex || sortState !== type)) {
         sortData = sortData.sort(sorter);
         if (type === 'descend') {
           sortData = sortData.reverse();
         }
         this.sortState = type;
-        this.setState({ data: sortData, sortOrder: newSortOrder });
+        this.setState({ data: sortData, newDataIndex: dataIndex });
         onChange && onChange({ column: columnData, filed: dataIndex, order: type, data: sortData });
       }
     };
