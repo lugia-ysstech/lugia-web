@@ -161,7 +161,7 @@ export default ThemeProvider(
         selectRowKeys: selectRowKeys || [],
         scroll,
         data,
-        newDataIndex: '',
+        dataIndex: '',
       };
       this.tableWrap = React.createRef();
       this.oldPropsData = [];
@@ -674,19 +674,20 @@ export default ThemeProvider(
       return fixLeftColumns.concat(newColumns, fixRightColumns);
     };
     onSortChange = (columnData: Object, type: string) => {
-      const { newDataIndex } = this.state;
+      const { dataIndex } = this.state;
       const { data, onChange } = this.props;
       const { sortState } = this;
-      const { sorter, dataIndex } = columnData;
+      const { sorter, dataIndex: newDataIndex } = columnData;
       let sortData = deepCopy(data);
-      if (dataIndex && (newDataIndex !== dataIndex || sortState !== type)) {
+      if (newDataIndex && (newDataIndex !== dataIndex || sortState !== type)) {
         sortData = sortData.sort(sorter);
         if (type === 'descend') {
           sortData = sortData.reverse();
         }
         this.sortState = type;
-        this.setState({ data: sortData, newDataIndex: dataIndex });
-        onChange && onChange({ column: columnData, filed: dataIndex, order: type, data: sortData });
+        this.setState({ data: sortData, dataIndex: newDataIndex });
+        onChange &&
+          onChange({ column: columnData, filed: newDataIndex, order: type, data: sortData });
       }
     };
 
