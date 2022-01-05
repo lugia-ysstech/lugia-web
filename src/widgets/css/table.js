@@ -32,5 +32,5 @@ export type TableState = {
   selectRowKeys: any[],
   scroll: Object,
   data: Object[],
-  sortOrder: boolean,
+  dataIndex: string | number,
 };
