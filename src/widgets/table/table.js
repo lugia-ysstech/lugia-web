@@ -128,8 +128,8 @@ export const ExpandIconWrap = StaticComponent({
   tag: 'span',
   className: 'ExpandIconWrap',
   css: css`
-    display: inline-flex;
-    align-items: center;
+    display: inline-block;
+    vertical-align: inherit;
   `,
 });
 
