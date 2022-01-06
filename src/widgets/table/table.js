@@ -301,9 +301,7 @@ export default ThemeProvider(
 
         let tableBodyHeight = 0;
         if (tableBody && tableBody.offsetHeight) {
-          const windowsAndFirefox = this.isWinSystem() && this.isFirefoxBrowser();
-
-          tableBodyHeight = parseInt(tableBody.offsetHeight, 10) + +windowsAndFirefox;
+          tableBodyHeight = parseInt(tableBody.offsetHeight, 10);
         }
 
         let tableHeaderHeight = 0;
