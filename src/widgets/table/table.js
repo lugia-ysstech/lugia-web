@@ -712,7 +712,7 @@ export default ThemeProvider(
         },
       };
       return {
-        emptyText: <Empty {...this.props} themeInfo={theme} />,
+        emptyText: <Empty {...this.props} themeInfo={theme} tableId={this.tableId} />,
       };
     };
 
