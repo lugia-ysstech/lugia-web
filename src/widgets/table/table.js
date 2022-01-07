@@ -169,6 +169,7 @@ export default ThemeProvider(
       this.columnsWidthMap = {};
       this.currentPropsDataIsSame = true;
       this.userAgentInfor = '';
+      this.tableThead = 0;
     }
     getLugiadHeightType = (): HeightType => {
       const { lugiadLayout, getPartOfThemeProps, tableHeightType } = this.props;
@@ -215,6 +216,9 @@ export default ThemeProvider(
         if (this.props.scroll && this.props.scroll.y) {
           return;
         }
+        this.setState({
+          tableThead: this.getTableThead(),
+        });
         this.updateScrollY();
       }, 0);
 
@@ -337,13 +341,25 @@ export default ThemeProvider(
       }
     };
 
+    getTableThead = () => {
+      if (this.tableWrap && this.tableWrap.querySelector) {
+        const { offsetHeight: tableHeaderHeight } = this.tableWrap.querySelector('.rc-table-thead');
+        return tableHeaderHeight;
+      }
+    };
     componentDidUpdate(prevProps, prevState) {
       setTimeout(() => {
         const { data = [], scroll } = this.props;
         const { data: prevPropsData = [] } = prevProps;
-        if (data.length === prevPropsData.length || (scroll && scroll.y)) {
+        const { tableThead } = prevState;
+        const nextHeader = this.getTableThead();
+        if (
+          tableThead === nextHeader &&
+          (data.length === prevPropsData.length || (scroll && scroll.y))
+        ) {
           return;
         }
+        this.setState({ tableThead: nextHeader });
         this.updateScrollY();
       }, 0);
 
@@ -472,7 +488,7 @@ export default ThemeProvider(
       if (!themeHeight) {
         return {};
       }
-      const tableLineHeight = this.getHeadHeight();
+      const tableLineHeight = this.getTableThead();
       const height = parseInt(themeHeight, 10);
       return {
         y: showHeader ? height - tableLineHeight : height,
