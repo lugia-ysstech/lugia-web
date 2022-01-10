@@ -36,14 +36,16 @@ export const EmptyContainer = CSSComponent({
   `,
 });
 
+const imgWidth = 80;
+
 const getImgWrapPosition = props => {
   const { tableContainerWidth, shouldCenter = false } = props;
 
   if (shouldCenter) {
-    const stickPosition = (tableContainerWidth - 80) / 2;
+    const stickPosition = (tableContainerWidth - imgWidth) / 2;
 
     return `
-    width: 80px;
+    width: ${imgWidth}px;
     position: sticky;
     left: ${stickPosition}px;
     right: ${stickPosition}px;
