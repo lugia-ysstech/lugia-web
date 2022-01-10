@@ -9,6 +9,10 @@ import styled from 'styled-components';
 import { px2remcss } from '../css/units';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 
+function hasFixedProps(data) {
+  return data && data.some(({ fixed }) => fixed !== undefined);
+}
+
 export const EmptyContainer = CSSComponent({
   tag: 'div',
   className: 'EmptyContainer',
@@ -71,7 +75,6 @@ export default class Empty extends React.Component<any, any> {
     super(props);
     this.state = {
       tableContainerWidth: 0,
-      shouldCenter: false,
     };
   }
 
@@ -86,18 +89,18 @@ export default class Empty extends React.Component<any, any> {
       const targetRef = tableBodyRef || tableContentRef;
       const targetRefWidth = targetRef.offsetWidth;
       const hasYScroll = targetRef.style.overflowY && targetRef.style.overflowY !== 'hidden';
-      const hasXScroll = targetRef.style.overflowX && targetRef.style.overflowX !== 'hidden';
       const tableContainerWidth = targetRefWidth - !!hasYScroll * 17;
 
       if (tableContainerWidth) {
-        this.setState({ tableContainerWidth, shouldCenter: !!hasXScroll });
+        this.setState({ tableContainerWidth });
       }
     }
   }
 
   render() {
-    const { getPartOfThemeProps } = this.props;
-    const { tableContainerWidth, shouldCenter } = this.state;
+    const { getPartOfThemeProps, tableId = '', columns = [] } = this.props;
+    const { tableContainerWidth } = this.state;
+    const shouldCenter = tableId && !hasFixedProps(columns);
 
     return (
       <EmptyContainer themeProps={getPartOfThemeProps('Container')}>
