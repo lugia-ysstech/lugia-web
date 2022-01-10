@@ -76,33 +76,36 @@ export default class Empty extends React.Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
+      shouldCenter: false,
       tableContainerWidth: 0,
     };
   }
 
   componentDidMount() {
-    const { tableId } = this.props;
+    const { tableId, columns = [] } = this.props;
 
-    if (tableId) {
+    if (tableId && !hasFixedProps(columns)) {
       const tableWrapRef = document.getElementById(tableId);
       const tableBodyRef = tableWrapRef && tableWrapRef.getElementsByClassName('rc-table-body')[0];
       const tableContentRef =
         tableWrapRef && tableWrapRef.getElementsByClassName('rc-table-content')[0];
       const targetRef = tableBodyRef || tableContentRef;
-      const targetRefWidth = targetRef.offsetWidth;
-      const hasYScroll = targetRef.style.overflowY && targetRef.style.overflowY !== 'hidden';
-      const tableContainerWidth = targetRefWidth - !!hasYScroll * 17;
+      if (targetRef) {
+        const targetRefWidth = targetRef.offsetWidth;
+        const hasYScroll = targetRef.style.overflowY && targetRef.style.overflowY !== 'hidden';
+        const hasXScroll = targetRef.style.overflowX && targetRef.style.overflowX !== 'hidden';
+        const tableContainerWidth = targetRefWidth - !!hasYScroll * 17;
 
-      if (tableContainerWidth) {
-        this.setState({ tableContainerWidth });
+        if (tableContainerWidth) {
+          this.setState({ shouldCenter: hasXScroll, tableContainerWidth });
+        }
       }
     }
   }
 
   render() {
-    const { getPartOfThemeProps, tableId = '', columns = [] } = this.props;
-    const { tableContainerWidth } = this.state;
-    const shouldCenter = tableId && !hasFixedProps(columns);
+    const { getPartOfThemeProps } = this.props;
+    const { shouldCenter, tableContainerWidth } = this.state;
 
     return (
       <EmptyContainer themeProps={getPartOfThemeProps('Container')}>
