@@ -5,13 +5,18 @@
  */
 import * as React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
-import Widget from '../consts/index';
 import styled from 'styled-components';
-import { px2remcss } from '../css/units';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import Widget from '../consts/index';
+import { px2remcss } from '../css/units';
+import { disconnectResizeObserver, existResizeObserverTarget, getStickyStyle } from '../utils';
 
 function hasFixedProps(data) {
   return data && data.some(({ fixed }) => fixed !== undefined);
+}
+
+function getTargetByClassName(source, classNameStr) {
+  return source && source.getElementsByClassName(classNameStr)[0];
 }
 
 export const EmptyContainer = CSSComponent({
@@ -45,12 +50,7 @@ const getImgWrapPosition = props => {
   if (shouldCenter) {
     const stickPosition = (tableContainerWidth - imgWidth) / 2;
 
-    return `
-    width: ${imgWidth}px;
-    position: sticky;
-    left: ${stickPosition}px;
-    right: ${stickPosition}px;
-  `;
+    return getStickyStyle({ stickPosition, imgWidth });
   }
 };
 
@@ -88,9 +88,9 @@ export default class Empty extends React.Component<any, any> {
 
     if (tableId && !hasFixedProps(columns)) {
       const tableWrapRef = document.getElementById(tableId);
-      const tableBodyRef = tableWrapRef && tableWrapRef.getElementsByClassName('rc-table-body')[0];
-      const tableContentRef =
-        tableWrapRef && tableWrapRef.getElementsByClassName('rc-table-content')[0];
+      const tableBodyRef = getTargetByClassName(tableWrapRef, 'rc-table-body');
+      const tableContentRef = getTargetByClassName(tableWrapRef, 'rc-table-content');
+
       const targetRef = tableBodyRef || tableContentRef;
       if (targetRef) {
         const { hasXScroll, tableContainerWidth } = this.getCurrentTableInfo(targetRef);
@@ -106,11 +106,11 @@ export default class Empty extends React.Component<any, any> {
   }
 
   componentWillUnmount() {
-    this.disconnectResizeObserver();
+    disconnectResizeObserver(this.tableContainerWidthResizeObserver);
   }
 
   getCurrentTableInfo = targetRef => {
-    const tBodyRef = targetRef.getElementsByClassName('rc-table-tbody')[0];
+    const tBodyRef = getTargetByClassName(targetRef, 'rc-table-tbody');
     const tBodyRefWidth = tBodyRef && tBodyRef.offsetWidth;
     const targetRefWidth = targetRef.offsetWidth;
     const hasYScroll = targetRef.style.overflowY && targetRef.style.overflowY !== 'hidden';
@@ -121,14 +121,11 @@ export default class Empty extends React.Component<any, any> {
   };
 
   createResizeObserver = targetRef => {
-    this.disconnectResizeObserver();
+    disconnectResizeObserver(this.tableContainerWidthResizeObserver);
 
     this.tableContainerWidthResizeObserver = new ResizeObserver(entries => {
-      if (!entries) {
-        return;
-      }
-      const entry = entries[0];
-      if (!entry) {
+      const existTarget = existResizeObserverTarget(entries);
+      if (!existTarget) {
         return;
       }
 
@@ -141,12 +138,6 @@ export default class Empty extends React.Component<any, any> {
         });
       }
     });
-  };
-
-  disconnectResizeObserver = () => {
-    if (this.tableContainerWidthResizeObserver) {
-      this.tableContainerWidthResizeObserver.disconnect();
-    }
   };
 
   render() {

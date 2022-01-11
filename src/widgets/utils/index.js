@@ -103,3 +103,30 @@ export const handleDuration = (duration?: number | null, defaultTime: number = 2
   }
   return defaultTime;
 };
+
+export function disconnectResizeObserver(resizeObserver) {
+  if (resizeObserver) {
+    resizeObserver.disconnect();
+    resizeObserver = null;
+  }
+}
+
+export function existResizeObserverTarget(entries) {
+  if (!entries) {
+    return false;
+  }
+  const entry = entries[0];
+
+  return !!entry;
+}
+
+export function getStickyStyle(config) {
+  const { stickPosition, imgWidth, leftPositionFix = 0 } = config;
+
+  return `
+    width: ${imgWidth}px;
+    position: sticky;
+    left: ${stickPosition - leftPositionFix}px;
+    right: ${stickPosition}px;
+  `;
+}
