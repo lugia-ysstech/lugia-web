@@ -4,6 +4,7 @@
  * @flow
  */
 import * as React from 'react';
+import ResizeObserver from 'resize-observer-polyfill';
 import Widget from '../consts/index';
 import styled from 'styled-components';
 import { px2remcss } from '../css/units';
@@ -75,6 +76,7 @@ export default class Empty extends React.Component<any, any> {
 
   constructor(props) {
     super(props);
+    this.tableContainerWidthResizeObserver = null;
     this.state = {
       shouldCenter: false,
       tableContainerWidth: 0,
@@ -91,17 +93,61 @@ export default class Empty extends React.Component<any, any> {
         tableWrapRef && tableWrapRef.getElementsByClassName('rc-table-content')[0];
       const targetRef = tableBodyRef || tableContentRef;
       if (targetRef) {
-        const targetRefWidth = targetRef.offsetWidth;
-        const hasYScroll = targetRef.style.overflowY && targetRef.style.overflowY !== 'hidden';
-        const hasXScroll = targetRef.style.overflowX && targetRef.style.overflowX !== 'hidden';
-        const tableContainerWidth = targetRefWidth - !!hasYScroll * 17;
+        const { hasXScroll, tableContainerWidth } = this.getCurrentTableInfo(targetRef);
 
         if (tableContainerWidth) {
           this.setState({ shouldCenter: hasXScroll, tableContainerWidth });
         }
+
+        this.createResizeObserver(targetRef);
+        this.tableContainerWidthResizeObserver.observe(targetRef);
       }
     }
   }
+
+  componentWillUnmount() {
+    this.disconnectResizeObserver();
+  }
+
+  getCurrentTableInfo = targetRef => {
+    const tBodyRef = targetRef.getElementsByClassName('rc-table-tbody')[0];
+    const tBodyRefWidth = tBodyRef && tBodyRef.offsetWidth;
+    const targetRefWidth = targetRef.offsetWidth;
+    const hasYScroll = targetRef.style.overflowY && targetRef.style.overflowY !== 'hidden';
+    const hasXScroll = Number(tBodyRefWidth) > targetRefWidth;
+    const tableContainerWidth = targetRefWidth - !!hasYScroll * 17;
+
+    return { hasXScroll: !!hasXScroll, tableContainerWidth };
+  };
+
+  createResizeObserver = targetRef => {
+    this.disconnectResizeObserver();
+
+    this.tableContainerWidthResizeObserver = new ResizeObserver(entries => {
+      if (!entries) {
+        return;
+      }
+      const entry = entries[0];
+      if (!entry) {
+        return;
+      }
+
+      const { hasXScroll: stateHasXScroll, tableContainerWidth: stateWidth } = this.state;
+      const { hasXScroll, tableContainerWidth } = this.getCurrentTableInfo(targetRef);
+      if (stateHasXScroll !== hasXScroll || tableContainerWidth !== stateWidth) {
+        this.setState({
+          shouldCenter: hasXScroll,
+          tableContainerWidth,
+        });
+      }
+    });
+  };
+
+  disconnectResizeObserver = () => {
+    if (this.tableContainerWidthResizeObserver) {
+      this.tableContainerWidthResizeObserver.disconnect();
+    }
+  };
 
   render() {
     const { getPartOfThemeProps } = this.props;
