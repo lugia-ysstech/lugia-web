@@ -110,9 +110,11 @@ export default class Empty extends React.Component<any, any> {
   }
 
   getCurrentTableInfo = targetRef => {
+    const tBodyRef = targetRef.getElementsByClassName('rc-table-tbody')[0];
+    const tBodyRefWidth = tBodyRef && tBodyRef.offsetWidth;
     const targetRefWidth = targetRef.offsetWidth;
     const hasYScroll = targetRef.style.overflowY && targetRef.style.overflowY !== 'hidden';
-    const hasXScroll = targetRef.style.overflowX && targetRef.style.overflowX !== 'hidden';
+    const hasXScroll = Number(tBodyRefWidth) > targetRefWidth;
     const tableContainerWidth = targetRefWidth - !!hasYScroll * 17;
 
     return { hasXScroll: !!hasXScroll, tableContainerWidth };
