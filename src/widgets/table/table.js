@@ -219,7 +219,7 @@ export default ThemeProvider(
       const length = data.length;
       const numMaxHeight = this.transferPxToNumber(maxHeight);
       const bodyRowHeight = this.getBodyRowHeight();
-      if (maxHeight && bodyRowHeight * length > numMaxHeight && height > maxHeight) {
+      if (maxHeight && bodyRowHeight * length > numMaxHeight) {
         return deepMerge(oldGetPartOfThemeProps, {
           themeConfig: { normal: { height: numMaxHeight } },
         });
