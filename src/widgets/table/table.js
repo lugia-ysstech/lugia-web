@@ -56,13 +56,17 @@ const getLugiadHeightTypeBoolean = (lugiadLayout: HeightType) => {
 const getStringValue = (val: string | number): string => {
   return typeof val === 'number' ? `${val}px` : val;
 };
+
+const setFixedHeight = height => {
+  return typeof height === 'number' ? `height:${height}px;` : height ? `height:${height};` : '';
+};
 const TableWrap = CSSComponent({
   tag: 'div',
   className: 'TableWrap',
   normal: {
-    selectNames: [['width']],
+    selectNames: [['width'], ['maxHeight']],
     getCSS(themeMeta, themeProps): string {
-      const { height, background: { color } = {} } = themeMeta;
+      const { height, maxHeight, background: { color } = {} } = themeMeta;
       const {
         propsConfig: {
           size = 'default',
@@ -86,8 +90,7 @@ const TableWrap = CSSComponent({
 
       let heightStyle = '';
       if (isFixed) {
-        heightStyle =
-          typeof height === 'number' ? `height:${height}px;` : height ? `height:${height};` : '';
+        heightStyle = maxHeight ? setFixedHeight(maxHeight) : setFixedHeight(height);
       }
       if (isReactive) {
         heightStyle = 'height:100%;';
@@ -172,8 +175,8 @@ export default ThemeProvider(
       this.tableThead = 0;
     }
     getLugiadHeightType = (): HeightType => {
-      const { lugiadLayout, getPartOfThemeProps, tableHeightType } = this.props;
-      const { themeConfig: { normal } = {} } = getPartOfThemeProps('Container');
+      const { lugiadLayout, tableHeightType } = this.props;
+      const { themeConfig: { normal } = {} } = this.getPartOfThemeProps('Container');
       const newNormal = normal || {};
       const { height } = newNormal;
       const { fixed, auto } = lugiadLayoutName;
@@ -196,6 +199,26 @@ export default ThemeProvider(
       }
 
       return auto;
+    };
+    transferPxToNumber = value => {
+      return parseInt(value, 10);
+    };
+    getPartOfThemeProps = param => {
+      const { getPartOfThemeProps, data = [] } = this.props;
+      const { themeConfig: { normal: { maxHeight = 0, height } = {} } = {} } = getPartOfThemeProps(
+        param
+      );
+
+      const numMaxHeight = this.transferPxToNumber(maxHeight);
+      if (!maxHeight) {
+        return { themeConfig: { normal: { height } } };
+      }
+
+      const length = data.length;
+      const bodyRowHeight = this.getBodyRowHeight();
+      if (maxHeight && bodyRowHeight * length > numMaxHeight && height > maxHeight) {
+        return { themeConfig: { normal: { height: numMaxHeight } } };
+      }
     };
 
     canShowScrollY = (): boolean => {
@@ -305,13 +328,13 @@ export default ThemeProvider(
 
         let tableBodyHeight = 0;
         if (tableBody && tableBody.offsetHeight) {
-          tableBodyHeight = parseInt(tableBody.offsetHeight, 10);
+          tableBodyHeight = this.transferPxToNumber(tableBody.offsetHeight);
         }
 
         let tableHeaderHeight = 0;
         const tableHead = this.tableWrap.querySelector('.rc-table-header');
         if (tableHead && tableHead.offsetHeight) {
-          tableHeaderHeight = parseInt(tableHead.offsetHeight, 10);
+          tableHeaderHeight = this.transferPxToNumber(tableHead.offsetHeight);
         }
         return tableBodyHeight + tableHeaderHeight;
       }
@@ -489,7 +512,7 @@ export default ThemeProvider(
         return {};
       }
       const tableLineHeight = this.getTableThead();
-      const height = parseInt(themeHeight, 10);
+      const height = this.transferPxToNumber(themeHeight);
       return {
         y: showHeader ? height - tableLineHeight : height,
       };

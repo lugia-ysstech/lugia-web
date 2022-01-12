@@ -1406,6 +1406,23 @@ class OldDemo extends React.Component<any, any> {
     return (
       <div style={{ padding: '20px' }}>
         <div style={{ padding: '20px' }}>
+          <h1>添加max-height</h1>
+          <Table
+            data={data2}
+            columns={tableColumns}
+            theme={{
+              [Widget.Table]: {
+                Container: {
+                  normal: {
+                    maxHeight: 224,
+                    height: 400,
+                  },
+                },
+              },
+            }}
+          />
+        </div>
+        <div style={{ padding: '20px' }}>
           <h1>解决data数据为空时 表的内容渲染了颜色问题</h1>
           <Table columns={columnsStyle} data={[]} />
         </div>
