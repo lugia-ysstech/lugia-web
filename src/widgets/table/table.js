@@ -205,19 +205,20 @@ export default ThemeProvider(
     };
     getPartOfThemeProps = param => {
       const { getPartOfThemeProps, data = [] } = this.props;
-      const { themeConfig: { normal: { maxHeight = 0, height } = {} } = {} } = getPartOfThemeProps(
-        param
-      );
-
-      const numMaxHeight = this.transferPxToNumber(maxHeight);
-      if (!maxHeight) {
-        return { themeConfig: { normal: { height } } };
+      const { themeConfig = {} } = getPartOfThemeProps(param);
+      const { normal: { maxHeight = 0, height } = {} } = themeConfig;
+      if (param !== 'Container') {
+        return;
       }
-
+      const newThemeConfig = { themeConfig };
+      if (!maxHeight) {
+        return deepMerge(newThemeConfig, { themeConfig: { normal: { height } } });
+      }
       const length = data.length;
+      const numMaxHeight = this.transferPxToNumber(maxHeight);
       const bodyRowHeight = this.getBodyRowHeight();
       if (maxHeight && bodyRowHeight * length > numMaxHeight && height > maxHeight) {
-        return { themeConfig: { normal: { height: numMaxHeight } } };
+        return deepMerge(newThemeConfig, { themeConfig: { normal: { height: numMaxHeight } } });
       }
     };
 
