@@ -206,13 +206,13 @@ export default ThemeProvider(
     getPartOfThemeProps = (configPoint, otherParam) => {
       const { getPartOfThemeProps, data = [] } = this.props;
       const oldGetPartOfThemeProps = getPartOfThemeProps(configPoint, otherParam);
+      if (configPoint !== 'Container') {
+        return oldGetPartOfThemeProps;
+      }
       const {
         themeConfig: { normal: { maxHeight = 0, height } = {} } = {},
       } = oldGetPartOfThemeProps;
 
-      if (configPoint !== 'Container') {
-        return oldGetPartOfThemeProps;
-      }
       if (!maxHeight) {
         return deepMerge(oldGetPartOfThemeProps, { themeConfig: { normal: { height } } });
       }
