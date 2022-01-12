@@ -30,6 +30,7 @@ import { deepMerge } from '@lugia/object-utils';
 import { style2css } from '@lugia/css';
 import getUuid from '../utils/getUuid';
 import { HeightType } from '../css/table';
+import { log } from 'debug';
 
 const sizePadding = {
   default: 8,
@@ -203,22 +204,25 @@ export default ThemeProvider(
     transferPxToNumber = value => {
       return parseInt(value, 10);
     };
-    getPartOfThemeProps = param => {
+    getPartOfThemeProps = (configPoint, otherParam) => {
       const { getPartOfThemeProps, data = [] } = this.props;
-      const { themeConfig = {} } = getPartOfThemeProps(param);
+      const { themeConfig = {} } = getPartOfThemeProps(configPoint);
       const { normal: { maxHeight = 0, height } = {} } = themeConfig;
-      if (param !== 'Container') {
-        return;
+      const newGetPartOfThemeProps = { ...getPartOfThemeProps(configPoint, otherParam) };
+
+      if (configPoint !== 'Container') {
+        return newGetPartOfThemeProps;
       }
-      const newThemeConfig = { themeConfig };
       if (!maxHeight) {
-        return deepMerge(newThemeConfig, { themeConfig: { normal: { height } } });
+        return deepMerge(newGetPartOfThemeProps, { themeConfig: { normal: { height } } });
       }
       const length = data.length;
       const numMaxHeight = this.transferPxToNumber(maxHeight);
       const bodyRowHeight = this.getBodyRowHeight();
       if (maxHeight && bodyRowHeight * length > numMaxHeight && height > maxHeight) {
-        return deepMerge(newThemeConfig, { themeConfig: { normal: { height: numMaxHeight } } });
+        return deepMerge(newGetPartOfThemeProps, {
+          themeConfig: { normal: { height: numMaxHeight } },
+        });
       }
     };
 
@@ -869,7 +873,6 @@ export default ThemeProvider(
         children,
         showHeader = true,
         tableStyle = 'bordered',
-        getPartOfThemeProps,
         selectOptions = {},
         size = 'default',
         rowKey: cusRowKey = 'key',
@@ -899,7 +902,7 @@ export default ThemeProvider(
       if (!propsDataIsSame) {
         this.oldPropsData = [...propsData];
       }
-      const containerPartOfThemeProps = getPartOfThemeProps('Container', {
+      const containerPartOfThemeProps = this.getPartOfThemeProps('Container', {
         props: {
           size,
           columnsStyle: data.length ? this.getEveryColumnsStyle() : this.getHeadStyle(),
@@ -913,6 +916,7 @@ export default ThemeProvider(
             : '',
         },
       });
+      console.log('containerPartOfThemeProps', containerPartOfThemeProps);
       const customExpandIcon = prop => {
         const { expandable } = prop;
         return expandable ? (
