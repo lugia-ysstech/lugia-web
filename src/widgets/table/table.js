@@ -224,6 +224,9 @@ export default ThemeProvider(
           themeConfig: { normal: { height: numMaxHeight } },
         });
       }
+      return deepMerge(oldGetPartOfThemeProps, {
+        themeConfig: { normal: { height: undefined } },
+      });
     };
 
     canShowScrollY = (): boolean => {
