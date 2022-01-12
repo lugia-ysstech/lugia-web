@@ -205,21 +205,22 @@ export default ThemeProvider(
     };
     getPartOfThemeProps = (configPoint, otherParam) => {
       const { getPartOfThemeProps, data = [] } = this.props;
-      const { themeConfig = {} } = getPartOfThemeProps(configPoint);
-      const { normal: { maxHeight = 0, height } = {} } = themeConfig;
-      const newGetPartOfThemeProps = { ...getPartOfThemeProps(configPoint, otherParam) };
+      const oldGetPartOfThemeProps = getPartOfThemeProps(configPoint, otherParam);
+      const {
+        themeConfig: { normal: { maxHeight = 0, height } = {} } = {},
+      } = oldGetPartOfThemeProps;
 
       if (configPoint !== 'Container') {
-        return newGetPartOfThemeProps;
+        return oldGetPartOfThemeProps;
       }
       if (!maxHeight) {
-        return deepMerge(newGetPartOfThemeProps, { themeConfig: { normal: { height } } });
+        return deepMerge(oldGetPartOfThemeProps, { themeConfig: { normal: { height } } });
       }
       const length = data.length;
       const numMaxHeight = this.transferPxToNumber(maxHeight);
       const bodyRowHeight = this.getBodyRowHeight();
       if (maxHeight && bodyRowHeight * length > numMaxHeight && height > maxHeight) {
-        return deepMerge(newGetPartOfThemeProps, {
+        return deepMerge(oldGetPartOfThemeProps, {
           themeConfig: { normal: { height: numMaxHeight } },
         });
       }
