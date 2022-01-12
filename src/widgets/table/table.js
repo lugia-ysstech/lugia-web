@@ -30,7 +30,6 @@ import { deepMerge } from '@lugia/object-utils';
 import { style2css } from '@lugia/css';
 import getUuid from '../utils/getUuid';
 import { HeightType } from '../css/table';
-import { log } from 'debug';
 
 const sizePadding = {
   default: 8,
@@ -916,7 +915,6 @@ export default ThemeProvider(
             : '',
         },
       });
-      console.log('containerPartOfThemeProps', containerPartOfThemeProps);
       const customExpandIcon = prop => {
         const { expandable } = prop;
         return expandable ? (
