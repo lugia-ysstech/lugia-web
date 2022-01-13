@@ -3,18 +3,23 @@ import { VariableSizeGrid as Grid } from 'react-window';
 import ResizeObserver from 'rc-resize-observer';
 import RcTable from '@lugia/rc-table';
 import classNames from 'classnames';
+import getUuid from '../utils/getUuid';
 
-// todo: 使用虚拟表格, 须传入scroll.y, 如若不传, 使用当前可视高度作为y;
+// todo: 不传入scroll.y时, 且获取不到外层高度时;
 
 const defaultScrollbarSize = 18;
 const singleElasticMinWidth = 24;
+const defaultRowHeight = 32;
 
 export default function VirtualTable(props) {
   const { columns, scroll } = props;
-  const { x: scrollX = 0 } = scroll || {};
+  const { x: scrollX = 0, y: scrollY = 0 } = scroll || {};
+
   const columnsLength = columns.length;
+  const tableId = `lugia-virtual-table-${getUuid()}`;
 
   const [tableWidth, setTableWidth] = useState(0);
+  const [tableBodyHeight, setTableBodyHeight] = useState(scrollY);
 
   const columnsInfoRef = useRef({ sumPropsWidth: 0, widthPropsColumnsCount: 0 });
   const columnsInfoRefCurrent = columnsInfoRef.current;
@@ -111,12 +116,28 @@ export default function VirtualTable(props) {
 
   useEffect(() => resetVirtualGrid, [tableWidth]);
 
+  const getBodyHeight = () => {
+    const tableDomRef = document.getElementById(tableId);
+    const tableParentDomRef = tableDomRef.parentNode;
+    const tableHeaderDomRef = tableDomRef.querySelector('.rc-table-header');
+
+    const { offsetHeight: parentOffsetHeight, style } = tableParentDomRef;
+    const { paddingTop, paddingBottom } = style;
+    const { offsetHeight: headerHeight } = tableHeaderDomRef;
+
+    const parentContentHeight =
+      parentOffsetHeight - parseFloat(paddingTop) - parseFloat(paddingBottom);
+    const bodyHeight = parentContentHeight - headerHeight;
+
+    return bodyHeight;
+  };
+
   const renderVirtualList = (rawData, cbParams) => {
     // 未能正确获取scrollbarSize, 当前为0;
     const { scrollbarSize, ref, onScroll } = cbParams;
 
     ref.current = connectObject;
-    const totalHeight = rawData.length * 54;
+    const totalHeight = rawData.length * defaultRowHeight;
 
     return (
       <Grid
@@ -126,13 +147,13 @@ export default function VirtualTable(props) {
         columnWidth={index => {
           const { width } = mergedColumns[index];
 
-          return totalHeight > scroll.y && index === columnsLength - 1
+          return totalHeight > tableBodyHeight && index === columnsLength - 1
             ? width - defaultScrollbarSize - 1
             : width;
         }}
-        height={scroll.y}
+        height={tableBodyHeight}
         rowCount={rawData.length}
-        rowHeight={() => 54}
+        rowHeight={() => defaultRowHeight}
         width={tableWidth}
         onScroll={({ scrollLeft }) => {
           onScroll({
@@ -158,12 +179,17 @@ export default function VirtualTable(props) {
 
   return (
     <ResizeObserver
-      onResize={({ width }) => {
+      onResize={config => {
+        const { width } = config;
+        const borderHeight = getBodyHeight();
+
         setTableWidth(width);
+        setTableBodyHeight(borderHeight);
       }}
     >
       <RcTable
         {...props}
+        id={tableId}
         className="virtual-table"
         columns={mergedColumns}
         pagination={false}
