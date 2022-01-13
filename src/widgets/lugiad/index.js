@@ -49,7 +49,7 @@ class Lugiad extends React.Component<any> {
     const { fixed = false, zIndex = 100, lugiadWidgetId } = this.props;
 
     if (fixed && lugiadWidgetId) {
-      const layerBox = document.getElementById(`${lugiadWidgetId}`);
+      const layerBox = document.getElementById(lugiadWidgetId);
       const parentBox = layerBox && layerBox.parentNode;
       if (parentBox) {
         parentBox.style.position = 'sticky';
