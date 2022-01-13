@@ -15,6 +15,7 @@ export class FncModal extends React.Component<any, any> {
     this.state = {
       visible: true,
     };
+    this.visible = false;
   }
   handleOk = () => {
     const { onOk } = this.props;
@@ -42,10 +43,11 @@ export class FncModal extends React.Component<any, any> {
 
   render() {
     const { visible } = this.state;
-    const { content, component: Targert } = this.props;
-    if (visible) {
-      this.emit('onShow');
+    if (visible !== this.visible) {
+      this.emit(visible ? 'onShow' : 'onHide');
     }
+    this.visible = visible;
+    const { content, component: Targert } = this.props;
     return (
       <Modal {...this.props} visible={visible} onOk={this.handleOk} onCancel={this.handleCancel}>
         {Targert ? <Targert {...this.props} /> : content}

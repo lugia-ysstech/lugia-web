@@ -21,6 +21,12 @@ Modal.onShow = (cb: (props: Object) => void) => {
   });
 };
 
+Modal.onHide = (cb: (props: Object) => void) => {
+  return modalListener.on('onHide', (props: Object) => {
+    cb(props);
+  });
+};
+
 Modal.onOk = (cb: (props: Object) => void) => {
   return modalListener.on('onOk', (props: Object) => {
     cb(props);

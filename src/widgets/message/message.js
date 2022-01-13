@@ -91,11 +91,11 @@ export default ThemeProvider(
       const messageIconThemeObj = getPartOfThemeHocProps('MessageIcon');
       const messageContentTheme = deepMerge(defaultMessageContentTheme(), messageTheme);
       const { themeConfig: { normal: { height = 40 } = {} } = {} } = messageContentTheme;
-      if (visible) {
-        this.emit('onShow');
-      } else {
-        this.emit('onOk');
+
+      if (visible !== this.visible) {
+        this.emit(visible ? 'onShow' : 'onHide');
       }
+      this.visible = visible;
       if (visible) {
         return (
           <Message>
