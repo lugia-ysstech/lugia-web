@@ -28,7 +28,16 @@ export default function VirtualTable(props) {
   }
 
   const isAllColumnsHasWidth = columnsLength === columnsInfoRefCurrent.widthPropsColumnsCount;
-  const baseWidth = scrollX > tableWidth ? scrollX : tableWidth;
+  const getBaseWidth = () => {
+    if (scrollX > 0) {
+      return scrollX > tableWidth ? scrollX : tableWidth;
+    }
+
+    const { sumPropsWidth } = columnsInfoRefCurrent;
+
+    return tableWidth > sumPropsWidth ? tableWidth : sumPropsWidth;
+  };
+  const baseWidth = getBaseWidth();
 
   const getFixedNum = value => {
     if (typeof value !== 'number') {
