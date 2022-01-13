@@ -4,9 +4,10 @@ import ResizeObserver from 'rc-resize-observer';
 import RcTable from '@lugia/rc-table';
 import classNames from 'classnames';
 
-// 使用虚拟表格, 须传入scroll.y
+// todo: 使用虚拟表格, 须传入scroll.y, 如若不传, 使用当前可视高度作为y;
 
 const defaultScrollbarSize = 18;
+const singleElasticMinWidth = 24;
 
 export default function VirtualTable(props) {
   const { columns, scroll } = props;
@@ -28,14 +29,19 @@ export default function VirtualTable(props) {
   }
 
   const isAllColumnsHasWidth = columnsLength === columnsInfoRefCurrent.widthPropsColumnsCount;
+  const withoutWidthPropsColumnsCount =
+    columns.length - columnsInfoRefCurrent.widthPropsColumnsCount;
+
   const getBaseWidth = () => {
     if (scrollX > 0) {
       return scrollX > tableWidth ? scrollX : tableWidth;
     }
 
     const { sumPropsWidth } = columnsInfoRefCurrent;
+    const sumPropsWidthWithElastic =
+      sumPropsWidth + withoutWidthPropsColumnsCount * singleElasticMinWidth;
 
-    return tableWidth > sumPropsWidth ? tableWidth : sumPropsWidth;
+    return tableWidth > sumPropsWidthWithElastic ? tableWidth : sumPropsWidthWithElastic;
   };
   const baseWidth = getBaseWidth();
 
@@ -60,20 +66,19 @@ export default function VirtualTable(props) {
     }
 
     const scrollRelateWidth = scrollX > 0 ? defaultScrollbarSize : 0;
+    const { sumPropsWidth } = columnsInfoRefCurrent;
+    const elasticWidthSum = baseWidth - sumPropsWidth - scrollRelateWidth;
+    const meanWidth = getFixedNum(elasticWidthSum / withoutWidthPropsColumnsCount);
+    const elasticSingleWidth = meanWidth > defaultScrollbarSize ? meanWidth : defaultScrollbarSize;
 
     return columns.map(column => {
       if (column.width) {
         return column;
       }
 
-      const { sumPropsWidth, widthPropsColumnsCount } = columnsInfoRefCurrent;
-
       return {
         ...column,
-        width: getFixedNum(
-          (baseWidth - sumPropsWidth - scrollRelateWidth) /
-            (columns.length - widthPropsColumnsCount)
-        ),
+        width: elasticSingleWidth,
       };
     });
   };
