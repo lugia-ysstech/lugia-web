@@ -10,11 +10,25 @@
       "desc": "是否渲染当前组件",
       "type": "boolean",
       "designOnly": false,
-      "injectProps": false
+      "injectProps": false,
+      "meta": ""
     },
     "content": {
       "desc": "mega项目中包含的子页面",
       "type": "lugiaDPages",
+      "designOnly": false,
+      "injectProps": false,
+      "meta": ""
+    },
+    "fixed": {
+      "desc": "该元素的父元素是否吸顶",
+      "type": "boolean",
+      "designOnly": false,
+      "injectProps": false
+    },
+    "zIndex": {
+      "desc": "父元素z-index值",
+      "type": "number",
       "designOnly": false,
       "injectProps": false
     }
