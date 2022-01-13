@@ -45,6 +45,20 @@ const LugiadContainer = CSSComponent({
 });
 
 class Lugiad extends React.Component<any> {
+  componentDidMount() {
+    const { fixed = false, zIndex = 100, lugiadWidgetId } = this.props;
+
+    if (fixed && lugiadWidgetId) {
+      const layerBox = document.getElementById(lugiadWidgetId);
+      const parentBox = layerBox && layerBox.parentNode;
+      if (parentBox) {
+        parentBox.style.position = 'sticky';
+        parentBox.style.zIndex = zIndex;
+        parentBox.style.top = 0;
+      }
+    }
+  }
+
   render() {
     const { props } = this;
     return (
