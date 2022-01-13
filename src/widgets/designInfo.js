@@ -29162,30 +29162,8 @@ export default [
         tableStyleType: ['zebraStripe', 'linear', 'bordered'],
         SizeType: ['default', 'large', 'small'],
       },
-      theme: {
-        Container: {
-          name: '表格整体样式',
-          desc: '为表格配置整体样式',
-          normal: [['width'], ['height']],
-        },
-        Head: { name: '表头', desc: '表头配置', normal: [['height']] },
-        ExpandIcon: {
-          name: '展开行图标样式',
-          desc: '展开行图标样式配置点',
-          normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
-          hover: [['color'], ['margin'], ['cursor']],
-          active: [['color'], ['cursor'], ['fontSize'], ['font']],
-          disabled: [['color'], ['cursor']],
-        },
-        CollapseIcon: {
-          name: '折叠行图标样式',
-          desc: '折叠行图标样式配置点',
-          normal: [['color'], ['margin'], ['fontSize'], ['font'], ['cursor']],
-          hover: [['color'], ['margin'], ['cursor']],
-          active: [['color'], ['cursor'], ['fontSize'], ['font']],
-          disabled: [['color'], ['cursor']],
-        },
-      },
+      theme:
+        ' {\n    "Container": {\n      "name": "表格整体样式",\n      "desc": "为表格配置整体样式",\n      "normal": [["width"], ["height”], [“maxHeight”]]\n    },\n    "Head": {\n      "name": "表头",\n      "desc": "表头配置",\n      "normal": [["height"]]\n    },\n    "ExpandIcon": {\n      "name": "展开行图标样式",\n      "desc": "展开行图标样式配置点",\n      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],\n      "hover": [["color"], ["margin"], ["cursor"]],\n      "active": [["color"], ["cursor"], ["fontSize"], ["font"]],\n      "disabled": [["color"], ["cursor"]]\n    },\n    "CollapseIcon": {\n      "name": "折叠行图标样式",\n      "desc": "折叠行图标样式配置点",\n      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],\n      "hover": [["color"], ["margin"], ["cursor"]],\n      "active": [["color"], ["cursor"], ["fontSize"], ["font"]],\n      "disabled": [["color"], ["cursor"]]\n    }\n  }\n',
       childrenWidget: [],
       themeConfig: [],
     },
