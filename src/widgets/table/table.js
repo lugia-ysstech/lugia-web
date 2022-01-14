@@ -57,16 +57,13 @@ const getStringValue = (val: string | number): string => {
   return typeof val === 'number' ? `${val}px` : val;
 };
 
-const setFixedHeight = height => {
-  return typeof height === 'number' ? `height:${height}px;` : height ? `height:${height};` : '';
-};
 const TableWrap = CSSComponent({
   tag: 'div',
   className: 'TableWrap',
   normal: {
     selectNames: [['width'], ['maxHeight']],
     getCSS(themeMeta, themeProps): string {
-      const { height, maxHeight, background: { color } = {} } = themeMeta;
+      const { height, background: { color } = {} } = themeMeta;
       const {
         propsConfig: {
           size = 'default',
@@ -90,7 +87,8 @@ const TableWrap = CSSComponent({
 
       let heightStyle = '';
       if (isFixed) {
-        heightStyle = maxHeight ? setFixedHeight(maxHeight) : setFixedHeight(height);
+        heightStyle =
+          typeof height === 'number' ? `height:${height}px;` : height ? `height:${height};` : '';
       }
       if (isReactive) {
         heightStyle = 'height:100%;';
@@ -175,8 +173,8 @@ export default ThemeProvider(
       this.tableThead = 0;
     }
     getLugiadHeightType = (): HeightType => {
-      const { lugiadLayout, tableHeightType } = this.props;
-      const { themeConfig: { normal } = {} } = this.getPartOfThemeProps('Container');
+      const { lugiadLayout, getPartOfThemeProps, tableHeightType } = this.props;
+      const { themeConfig: { normal } = {} } = getPartOfThemeProps('Container');
       const newNormal = normal || {};
       const { height } = newNormal;
       const { fixed, auto } = lugiadLayoutName;
@@ -203,39 +201,16 @@ export default ThemeProvider(
     transferPxToNumber = value => {
       return parseInt(value, 10);
     };
-    getPartOfThemeProps = (configPoint, otherParam) => {
-      const { getPartOfThemeProps, data = [] } = this.props;
-      const oldGetPartOfThemeProps = getPartOfThemeProps(configPoint, otherParam);
-      if (configPoint !== 'Container') {
-        return oldGetPartOfThemeProps;
-      }
-      const {
-        themeConfig: { normal: { maxHeight = 0, height } = {} } = {},
-      } = oldGetPartOfThemeProps;
-
-      if (!maxHeight) {
-        return deepMerge(oldGetPartOfThemeProps, { themeConfig: { normal: { height } } });
-      }
-      const length = data.length;
-      const numMaxHeight = this.transferPxToNumber(maxHeight);
-      const bodyRowHeight = this.getBodyRowHeight();
-      if (maxHeight && bodyRowHeight * length > numMaxHeight) {
-        return deepMerge(oldGetPartOfThemeProps, {
-          themeConfig: { normal: { height: numMaxHeight } },
-        });
-      }
-      return deepMerge(oldGetPartOfThemeProps, {
-        themeConfig: { normal: { height: undefined } },
-      });
-    };
 
     canShowScrollY = (): boolean => {
       const { isAuto } = getLugiadHeightTypeBoolean(this.getLugiadHeightType());
-      if (isAuto) {
-        return 0;
-      }
+
       const containerHeight = this.getContainerHeight();
       const tableHeight = this.computeTableHeight();
+      if (isAuto && (tableHeight === containerHeight || tableHeight < containerHeight)) {
+        return;
+      }
+
       return tableHeight && (containerHeight < tableHeight - 2 || tableHeight === containerHeight);
     };
 
@@ -335,8 +310,8 @@ export default ThemeProvider(
         }
 
         let tableBodyHeight = 0;
-        if (tableBody && tableBody.offsetHeight) {
-          tableBodyHeight = this.transferPxToNumber(tableBody.offsetHeight);
+        if (tableBody && tableBody.scrollHeight) {
+          tableBodyHeight = this.transferPxToNumber(tableBody.scrollHeight);
         }
 
         let tableHeaderHeight = 0;
@@ -876,6 +851,7 @@ export default ThemeProvider(
         children,
         showHeader = true,
         tableStyle = 'bordered',
+        getPartOfThemeProps,
         selectOptions = {},
         size = 'default',
         rowKey: cusRowKey = 'key',
@@ -905,7 +881,7 @@ export default ThemeProvider(
       if (!propsDataIsSame) {
         this.oldPropsData = [...propsData];
       }
-      const containerPartOfThemeProps = this.getPartOfThemeProps('Container', {
+      const containerPartOfThemeProps = getPartOfThemeProps('Container', {
         props: {
           size,
           columnsStyle: data.length ? this.getEveryColumnsStyle() : this.getHeadStyle(),
