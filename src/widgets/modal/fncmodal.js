@@ -10,12 +10,15 @@ import { unmountComponentAtNode } from 'react-dom';
 import Modal from './modal';
 
 export class FncModal extends React.Component<any, any> {
+  key: Symbol;
+
   constructor() {
     super();
     this.state = {
       visible: true,
     };
     this.visible = false;
+    this.key = Symbol();
   }
   handleOk = () => {
     const { onOk } = this.props;
@@ -58,7 +61,7 @@ export class FncModal extends React.Component<any, any> {
   emit(eventName: string) {
     const { listener } = this.props;
     if (listener) {
-      listener.emit(eventName, this.props);
+      listener.emit(eventName, { props: this.props, key: this.key });
     }
   }
 

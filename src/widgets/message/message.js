@@ -31,6 +31,8 @@ export default ThemeProvider(
   class extends React.Component<MessageProps, MessageState> {
     closeTimer: any;
     removeTimer: any;
+    key: Symbol;
+
     constructor() {
       super();
       this.state = {
@@ -38,12 +40,13 @@ export default ThemeProvider(
         opening: true,
         closing: false,
       };
+      this.key = Symbol();
     }
 
     emit(eventName: string) {
       const { listener = modalListener } = this.props;
       if (listener) {
-        listener.emit(eventName, this.props);
+        listener.emit(eventName, { props: this.props, key: this.key });
       }
     }
 
