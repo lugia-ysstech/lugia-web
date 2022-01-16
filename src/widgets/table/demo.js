@@ -426,7 +426,7 @@ const childrenData = [
       },
     ],
     icon: 'lugia-icon-financial_editor',
-    name: '系统管理',
+    name: '系统管理系统管理系统管理系统管理系统管理系统管理系统管理',
     spread: false,
     path: '/systemManage',
     keepAlive: '0',
@@ -1403,8 +1403,44 @@ class OldDemo extends React.Component<any, any> {
     const onClick = () => {
       this.setState({ newTreeData: treeData });
     };
+
+    const columnsFixed = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+        fixed: 'left',
+        ellipsis: true,
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        key: 'age',
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+        key: 'address',
+      },
+      {
+        title: 'Operations',
+        dataIndex: '',
+        key: 'operations',
+        render: () => <a href="#">Delete</a>,
+      },
+    ];
     return (
       <div style={{ padding: '20px' }}>
+        <br />
+        <h1>解决 树型table columns为fixed 且 ellipsis ：true时，文字会换行 问题</h1>
+        <Table
+          columns={columnsFixed}
+          data={childrenData}
+          expandIcon={'lugia-icon-direction_caret_right'}
+          collapseIcon={'lugia-icon-direction_caret_down'}
+          indentSize={'30'}
+        />
+
         <div style={{ padding: '20px' }}>
           <h1>添加max-height</h1>
           <Table

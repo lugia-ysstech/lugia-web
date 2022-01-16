@@ -74,6 +74,7 @@ const TableWrap = CSSComponent({
           headHeight,
           bodyRowHeight,
           fixedColStyle,
+          hasChildrenAndFixed,
         } = {},
       } = themeProps;
       const padding = sizePadding[size] || sizePadding.default;
@@ -121,6 +122,13 @@ const TableWrap = CSSComponent({
         .rc-table thead tr th {
           height: ${headHeightString};
         }
+
+        ${hasChildrenAndFixed
+          ? `tbody .rc-table-cell.rc-table-cell-ellipsis.rc-table-cell-fix-left-last {
+                  display: flex;
+                  align-items: center;
+            }`
+          : ''};
       `;
     },
   },
@@ -171,7 +179,19 @@ export default ThemeProvider(
       this.currentPropsDataIsSame = true;
       this.userAgentInfor = '';
       this.tableThead = 0;
+      this.hasChildrenAndFixed =
+        this.keyInstanceOfData0(data, 'children') &&
+        this.keyInstanceOfData0(this.columns, 'ellipsis') &&
+        this.columns[0].fixed === 'left';
     }
+
+    isHasData = value => {
+      return value && value.length > 0;
+    };
+    keyInstanceOfData0 = (data, key) => {
+      return this.isHasData(data) && data[0][key];
+    };
+
     getLugiadHeightType = (): HeightType => {
       const { lugiadLayout, getPartOfThemeProps, tableHeightType } = this.props;
       const { themeConfig: { normal } = {} } = getPartOfThemeProps('Container');
@@ -353,6 +373,7 @@ export default ThemeProvider(
         return tableHeaderHeight;
       }
     };
+
     componentDidUpdate(prevProps, prevState) {
       setTimeout(() => {
         const { data = [], scroll } = this.props;
@@ -893,6 +914,7 @@ export default ThemeProvider(
           fixedColStyle: fixedBottom
             ? this.getFixedBottomStyle('.rc-table tbody tr:nth-last-child')
             : '',
+          hasChildrenAndFixed: this.hasChildrenAndFixed,
         },
       });
       const customExpandIcon = prop => {
