@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { VariableSizeGrid as Grid } from 'react-window';
 import ResizeObserver from 'rc-resize-observer';
 import RcTable from '@lugia/rc-table';
-import classNames from 'classnames';
+import VirtualList from './VirtualList';
 import getUuid from '../utils/getUuid';
-
-// todo: 不传入scroll.y时, 且获取不到外层高度时;
-
-const defaultScrollbarSize = 18;
-const singleElasticMinWidth = 24;
-const defaultRowHeight = 32;
-const defaultRowNum = 6;
+import {
+  defaultScrollbarSize,
+  singleElasticMinWidth,
+  defaultRowHeight,
+  defaultRowNum,
+} from './constants';
 
 export default function VirtualTable(props) {
   const { columns, scroll } = props;
@@ -140,52 +138,17 @@ export default function VirtualTable(props) {
     return parentContentHeight - headerHeight;
   };
 
-  const renderVirtualList = (rawData, cbParams) => {
-    // 未能正确获取scrollbarSize, 当前为0;
-    const { scrollbarSize, ref, onScroll } = cbParams;
-
-    ref.current = connectObject;
-    const totalHeight = rawData.length * defaultRowHeight;
-
-    return (
-      <Grid
-        ref={gridRef}
-        className="virtual-grid"
-        columnCount={columnsLength}
-        columnWidth={index => {
-          const { width } = mergedColumns[index];
-
-          return totalHeight > tableBodyHeight && index === columnsLength - 1
-            ? width - defaultScrollbarSize - 1
-            : width;
-        }}
-        height={tableBodyHeight}
-        rowCount={rawData.length}
-        rowHeight={() => defaultRowHeight}
-        width={tableWidth}
-        onScroll={({ scrollLeft }) => {
-          onScroll({
-            scrollLeft,
-          });
-        }}
-      >
-        {({ columnIndex, rowIndex, style }) => {
-          return (
-            <div
-              className={classNames('virtual-table-cell', {
-                'virtual-table-cell-last': columnIndex === mergedColumns.length - 1,
-              })}
-              style={{ ...style, borderRight: '1px solid #888', borderBottom: '1px solid #888' }}
-            >
-              {rawData[rowIndex][mergedColumns[columnIndex].dataIndex]}
-            </div>
-          );
-        }}
-      </Grid>
-    );
-  };
-
-  console.log('render________');
+  const replaceVirtualList = (rawData, cbParams) => (
+    <VirtualList
+      rawData={rawData}
+      cbParams={cbParams}
+      connectObject={connectObject}
+      gridRef={gridRef}
+      columns={mergedColumns}
+      tableWidth={tableWidth}
+      tableBodyHeight={tableBodyHeight}
+    />
+  );
 
   return (
     <ResizeObserver
@@ -205,7 +168,7 @@ export default function VirtualTable(props) {
         columns={mergedColumns}
         pagination={false}
         components={{
-          body: renderVirtualList,
+          body: replaceVirtualList,
         }}
       />
     </ResizeObserver>
