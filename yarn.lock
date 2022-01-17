@@ -1635,14 +1635,14 @@
   dependencies:
     "@babel/runtime" "^7.4.5"
 
-"@lugia/rc-table@^7.21.2":
-  version "7.21.2"
-  resolved "https://registry.npmjs.org/@lugia/rc-table/-/rc-table-7.21.2.tgz#54f55c32ee162b5c0d786cb411458d3b7e4d2ace"
-  integrity sha512-UzbWG2hqzUncGd7PZAide999BAjXPOZ+tItTwnx+alD1F6BcAOsLsjmZtbyRaJTwYlEM57YPPgQS7U7k6NP5WQ==
+"@lugia/rc-table@^7.21.3":
+  version "7.21.3"
+  resolved "https://registry.npmjs.org/@lugia/rc-table/-/rc-table-7.21.3.tgz#e997ed82e497db8a53fa6a59a3ec4c3099669b77"
+  integrity sha512-z61SGSjpMoRTCESE/r12950GopgS8Xr4sL+X/4vpZBQZyZ6tlEcp7aWkcArTPsvuBPFVqlIq4SmXy7UFN7xWog==
   dependencies:
     "@babel/runtime" "^7.16.7"
     classnames "^2.2.5"
-    rc-resize-observer "^1.1.0"
+    rc-resize-observer "^1.2.0"
     rc-util "^5.14.0"
     shallowequal "^1.1.0"
 
@@ -12850,10 +12850,10 @@ rc-pagination@1.17.3:
     babel-runtime "6.x"
     prop-types "^15.5.7"
 
-rc-resize-observer@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.npmjs.org/rc-resize-observer/-/rc-resize-observer-1.1.1.tgz#ef666e38065f550730176404bae2ce8ca5fb1ac4"
-  integrity sha512-5A3B9ha297ItltzXl812WFE36SyRDTNclfrXE3FL1pEwXkBh7iSEzxjzfwsPeMcF9ahy3ZoxLgLuRksXBGGD6A==
+rc-resize-observer@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/rc-resize-observer/-/rc-resize-observer-1.2.0.tgz#9f46052f81cdf03498be35144cb7c53fd282c4c7"
+  integrity sha512-6W+UzT3PyDM0wVCEHfoW3qTHPTvbdSgiA43buiy8PzmeMnfgnDeb9NjdimMXMl3/TcrvvWl5RRVdp+NqcR47pQ==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.1"
