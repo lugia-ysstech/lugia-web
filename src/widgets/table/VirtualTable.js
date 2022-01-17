@@ -8,10 +8,11 @@ import {
   singleElasticMinWidth,
   defaultRowHeight,
   defaultRowNum,
+  defaultGridStyle,
 } from './constants';
 
 export default function VirtualTable(props) {
-  const { columns, scroll } = props;
+  const { columns, scroll, virtualRowHeight, virtualGridStyle } = props;
   const { x: scrollX = 0, y: scrollY = defaultRowHeight * defaultRowNum } = scroll || {};
 
   const columnsLength = columns.length;
@@ -147,6 +148,8 @@ export default function VirtualTable(props) {
       columns={mergedColumns}
       tableWidth={tableWidth}
       tableBodyHeight={tableBodyHeight}
+      rowHeight={virtualRowHeight || defaultRowHeight}
+      gridStyle={virtualGridStyle || defaultGridStyle}
     />
   );
 
@@ -164,7 +167,7 @@ export default function VirtualTable(props) {
         {...props}
         scroll={{ ...scroll, y: tableBodyHeight }}
         id={tableId}
-        className="virtual-table"
+        className="lugia-table virtual-table"
         columns={mergedColumns}
         pagination={false}
         components={{

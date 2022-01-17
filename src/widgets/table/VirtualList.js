@@ -19,13 +19,15 @@ export default (props: any) => {
     columns = [],
     tableWidth,
     tableBodyHeight,
+    rowHeight = defaultRowHeight,
+    gridStyle = {},
   } = props;
   const columnsLength = columns.length;
   // 未能正确获取scrollbarSize, 当前为0;
   const { scrollbarSize, ref, onScroll } = cbParams;
 
   ref.current = connectObject;
-  const totalHeight = rawData.length * defaultRowHeight;
+  const totalHeight = rawData.length * rowHeight;
 
   return (
     <Grid
@@ -55,7 +57,7 @@ export default (props: any) => {
             className={classNames('virtual-table-cell', {
               'virtual-table-cell-last': columnIndex === columns.length - 1,
             })}
-            style={{ ...style, borderRight: '1px solid #888', borderBottom: '1px solid #888' }}
+            style={{ ...style, ...gridStyle }}
           >
             {rawData[rowIndex][columns[columnIndex].dataIndex]}
           </div>
