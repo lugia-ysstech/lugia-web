@@ -12,7 +12,7 @@ import {
 } from './constants';
 
 export default function VirtualTable(props) {
-  const { columns, scroll, virtualRowHeight, virtualGridStyle } = props;
+  const { columns, scroll, virtualRowHeight, renderVirtualGrid, virtualGridStyle } = props;
   const { x: scrollX = 0, y: scrollY = defaultRowHeight * defaultRowNum } = scroll || {};
 
   const columnsLength = columns.length;
@@ -163,6 +163,7 @@ export default function VirtualTable(props) {
       columns={mergedColumns}
       tableWidth={tableWidth}
       tableBodyHeight={tableBodyHeight}
+      renderVirtualGrid={renderVirtualGrid}
       rowHeight={virtualRowHeight || defaultRowHeight}
       gridStyle={virtualGridStyle || defaultGridStyle}
     />

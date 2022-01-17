@@ -5,6 +5,7 @@
  * @flow
  */
 import * as React from 'react';
+import classNames from 'classnames';
 import Table from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
@@ -1548,10 +1549,23 @@ class OldDemo extends React.Component<any, any> {
   };
 }
 
+const renderVirtualGrid = ({ columnIndex, rowIndex, style }) => {
+  return (
+    <div
+      className={classNames('virtual-table-cell', {
+        'virtual-table-cell-last': columnIndex === mockVirtualColumns.length - 1,
+      })}
+      style={{ ...style, lineHeight: '32px', borderBottom: '1px solid #e8e8e8' }}
+    >
+      {virtualData[rowIndex][mockVirtualColumns[columnIndex].dataIndex]}
+    </div>
+  );
+};
+
 function VirtualDemo() {
   return (
     <div style={{ padding: 20 }}>
-      <h1>100000数据表格</h1>
+      <h1>100000条数据表格</h1>
       <Table
         data={virtualData}
         columns={mockVirtualColumns}
@@ -1567,6 +1581,7 @@ function VirtualDemo() {
           borderBottom: '1px solid #e8e8e8',
           lineHeight: '32px',
         }}
+        renderVirtualGrid={renderVirtualGrid}
       />
     </div>
   );

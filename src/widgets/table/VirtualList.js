@@ -10,7 +10,7 @@ import { VariableSizeGrid as Grid } from 'react-window';
 import classNames from 'classnames';
 import { defaultScrollbarSize, defaultRowHeight, defaultGridBorderStyle } from './constants';
 
-export default (props: any) => {
+export default props => {
   const {
     rawData,
     cbParams,
@@ -20,6 +20,7 @@ export default (props: any) => {
     tableWidth,
     tableBodyHeight,
     rowHeight = defaultRowHeight,
+    renderVirtualGrid,
     gridStyle = {},
   } = props;
   const columnsLength = columns.length;
@@ -50,7 +51,13 @@ export default (props: any) => {
         });
       }}
     >
-      {({ columnIndex, rowIndex, style }) => {
+      {gridInfo => {
+        const { columnIndex, rowIndex, style } = gridInfo;
+
+        if (typeof renderVirtualGrid === 'function') {
+          return renderVirtualGrid({ ...gridInfo });
+        }
+
         return (
           <div
             className={classNames('virtual-table-cell', {
