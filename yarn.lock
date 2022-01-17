@@ -1049,6 +1049,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.16.7":
+  version "7.16.7"
+  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.16.7.tgz#03ff99f64106588c9c403c6ecb8c3bafbbdff1fa"
+  integrity sha512-9E9FJowqAsytyOY6LG+1KuueckRL+aQW+mKvXRXnuFGyRAyepJPmEo9vgMfXUA6O9u3IeEdv9MAkppFcaQwogQ==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@7.0.0-beta.44":
   version "7.0.0-beta.44"
   resolved "https://registry.nlark.com/@babel/template/download/@babel/template-7.0.0-beta.44.tgz#f8832f4fdcee5d59bf515e595fc5106c529b394f"
@@ -1628,12 +1635,12 @@
   dependencies:
     "@babel/runtime" "^7.4.5"
 
-"@lugia/rc-table@^7.21.1":
-  version "7.21.1"
-  resolved "https://registry.npmjs.org/@lugia/rc-table/-/rc-table-7.21.1.tgz#87021c2a240738adb6ea3880805b9d3b4f050c18"
-  integrity sha512-y0P/E9BWnFCxEwVEO9zl+B6sMxzRHFhuMR01AoWh8/IvKJB1iBiZZvRdzS8bVoMamu4+Z0sfx1/vTDg4WPqIUQ==
+"@lugia/rc-table@^7.21.2":
+  version "7.21.2"
+  resolved "https://registry.npmjs.org/@lugia/rc-table/-/rc-table-7.21.2.tgz#54f55c32ee162b5c0d786cb411458d3b7e4d2ace"
+  integrity sha512-UzbWG2hqzUncGd7PZAide999BAjXPOZ+tItTwnx+alD1F6BcAOsLsjmZtbyRaJTwYlEM57YPPgQS7U7k6NP5WQ==
   dependencies:
-    "@babel/runtime" "^7.10.1"
+    "@babel/runtime" "^7.16.7"
     classnames "^2.2.5"
     rc-resize-observer "^1.1.0"
     rc-util "^5.14.0"
