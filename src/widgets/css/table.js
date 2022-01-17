@@ -25,6 +25,10 @@ export type TableProps = {
   collapseIcon?: string | Function,
   tableHeightType?: HeightType,
   fixedBottom?: boolean,
+  virtualModel?: boolean,
+  virtualBoundary?: number,
+  virtualRowHeight?: number,
+  virtualGridStyle?: Object,
 };
 export type TableState = {
   headChecked: boolean,

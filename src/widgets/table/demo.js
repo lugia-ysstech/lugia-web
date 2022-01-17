@@ -11,7 +11,8 @@ import Widget from '../consts/index';
 import Input from '../input';
 import Button from '../button';
 import sortData from './data.json';
-import column from './demoColumns';
+import virtualData from './mockBigData_100000.json';
+import column, { mockVirtualColumns } from './demoColumns';
 import Icon from '../icon';
 
 const { ColumnGroup, Column } = Table;
@@ -1547,11 +1548,36 @@ class OldDemo extends React.Component<any, any> {
   };
 }
 
+function VirtualDemo() {
+  return (
+    <div style={{ padding: 20 }}>
+      <h1>100000数据表格</h1>
+      <Table
+        data={virtualData}
+        columns={mockVirtualColumns}
+        scroll={{
+          x: 1500,
+          y: 300,
+        }}
+        virtualModel={true}
+        virtualBoundary={2000}
+        virtualRowHeight={32}
+        virtualGridStyle={{
+          borderRight: '1px solid #e8e8e8',
+          borderBottom: '1px solid #e8e8e8',
+          lineHeight: '32px',
+        }}
+      />
+    </div>
+  );
+}
+
 export default () => {
   return (
     <div>
       <SortDemo />
       <OldDemo />
+      <VirtualDemo />
     </div>
   );
 };
