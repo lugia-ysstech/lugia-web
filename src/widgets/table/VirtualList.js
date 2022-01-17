@@ -8,7 +8,7 @@
 import React from 'react';
 import { VariableSizeGrid as Grid } from 'react-window';
 import classNames from 'classnames';
-import { defaultScrollbarSize, defaultRowHeight } from './constants';
+import { defaultScrollbarSize, defaultRowHeight, defaultGridBorderStyle } from './constants';
 
 export default (props: any) => {
   const {
@@ -23,7 +23,6 @@ export default (props: any) => {
     gridStyle = {},
   } = props;
   const columnsLength = columns.length;
-  // 未能正确获取scrollbarSize, 当前为0;
   const { scrollbarSize, ref, onScroll } = cbParams;
 
   ref.current = connectObject;
@@ -43,7 +42,7 @@ export default (props: any) => {
       }}
       height={tableBodyHeight}
       rowCount={rawData.length}
-      rowHeight={() => defaultRowHeight}
+      rowHeight={() => rowHeight}
       width={tableWidth}
       onScroll={({ scrollLeft }) => {
         onScroll({
@@ -57,7 +56,7 @@ export default (props: any) => {
             className={classNames('virtual-table-cell', {
               'virtual-table-cell-last': columnIndex === columns.length - 1,
             })}
-            style={{ ...style, ...gridStyle }}
+            style={{ ...style, ...defaultGridBorderStyle, ...gridStyle }}
           >
             {rawData[rowIndex][columns[columnIndex].dataIndex]}
           </div>
