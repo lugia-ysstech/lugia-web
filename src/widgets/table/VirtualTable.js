@@ -10,10 +10,11 @@ import getUuid from '../utils/getUuid';
 const defaultScrollbarSize = 18;
 const singleElasticMinWidth = 24;
 const defaultRowHeight = 32;
+const defaultRowNum = 6;
 
 export default function VirtualTable(props) {
   const { columns, scroll } = props;
-  const { x: scrollX = 0, y: scrollY = 0 } = scroll || {};
+  const { x: scrollX = 0, y: scrollY = defaultRowHeight * defaultRowNum } = scroll || {};
 
   const columnsLength = columns.length;
   const tableId = `lugia-virtual-table-${getUuid()}`;
@@ -116,6 +117,14 @@ export default function VirtualTable(props) {
 
   useEffect(() => resetVirtualGrid, [tableWidth]);
 
+  const getNumByString = value => {
+    if (!value) {
+      return 0;
+    }
+
+    return parseFloat(value);
+  };
+
   const getBodyHeight = () => {
     const tableDomRef = document.getElementById(tableId);
     const tableParentDomRef = tableDomRef.parentNode;
@@ -126,10 +135,9 @@ export default function VirtualTable(props) {
     const { offsetHeight: headerHeight } = tableHeaderDomRef;
 
     const parentContentHeight =
-      parentOffsetHeight - parseFloat(paddingTop) - parseFloat(paddingBottom);
-    const bodyHeight = parentContentHeight - headerHeight;
+      parentOffsetHeight - getNumByString(paddingTop) - getNumByString(paddingBottom);
 
-    return bodyHeight;
+    return parentContentHeight - headerHeight;
   };
 
   const renderVirtualList = (rawData, cbParams) => {
@@ -177,18 +185,21 @@ export default function VirtualTable(props) {
     );
   };
 
+  console.log('render________');
+
   return (
     <ResizeObserver
       onResize={config => {
         const { width } = config;
-        const borderHeight = getBodyHeight();
+        const bodyHeight = getBodyHeight();
 
         setTableWidth(width);
-        setTableBodyHeight(borderHeight);
+        setTableBodyHeight(bodyHeight);
       }}
     >
       <RcTable
         {...props}
+        scroll={{ ...scroll, y: tableBodyHeight }}
         id={tableId}
         className="virtual-table"
         columns={mergedColumns}
