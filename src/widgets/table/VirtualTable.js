@@ -124,9 +124,24 @@ export default function VirtualTable(props) {
     return parseFloat(value);
   };
 
+  const getSiblingHeight = data => {
+    let sumHeight = 0;
+    data.forEach(item => {
+      if (item.id !== tableId) {
+        const { offsetHeight = 0 } = item;
+
+        sumHeight += offsetHeight;
+      }
+    });
+
+    return sumHeight;
+  };
+
   const getBodyHeight = () => {
     const tableDomRef = document.getElementById(tableId);
     const tableParentDomRef = tableDomRef.parentNode;
+    const childrenDom = tableParentDomRef.children;
+    const siblingHeightSum = getSiblingHeight(Array.from(childrenDom));
     const tableHeaderDomRef = tableDomRef.querySelector('.rc-table-header');
 
     const { offsetHeight: parentOffsetHeight, style } = tableParentDomRef;
@@ -136,7 +151,7 @@ export default function VirtualTable(props) {
     const parentContentHeight =
       parentOffsetHeight - getNumByString(paddingTop) - getNumByString(paddingBottom);
 
-    return parentContentHeight - headerHeight;
+    return parentContentHeight - siblingHeightSum - headerHeight;
   };
 
   const replaceVirtualList = (rawData, cbParams) => (
