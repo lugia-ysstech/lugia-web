@@ -10489,7 +10489,7 @@ mem@^4.0.0:
     mimic-fn "^2.0.0"
     p-is-promise "^2.0.0"
 
-memoize-one@^5.0.0:
+"memoize-one@>=3.1.1 <6", memoize-one@^5.0.0:
   version "5.2.1"
   resolved "https://registry.nlark.com/memoize-one/download/memoize-one-5.2.1.tgz#8337aa3c4335581839ec01c3d594090cebe8f00e"
   integrity sha1-gzeqPEM1WBg57AHD1ZQJDOvo8A4=
@@ -12860,6 +12860,16 @@ rc-resize-observer@^1.2.0:
     rc-util "^5.15.0"
     resize-observer-polyfill "^1.5.1"
 
+rc-resize-observer@^1.2.0:
+  version "1.2.0"
+  resolved "http://192.168.102.79/verdaccio/rc-resize-observer/-/rc-resize-observer-1.2.0.tgz#9f46052f81cdf03498be35144cb7c53fd282c4c7"
+  integrity sha512-6W+UzT3PyDM0wVCEHfoW3qTHPTvbdSgiA43buiy8PzmeMnfgnDeb9NjdimMXMl3/TcrvvWl5RRVdp+NqcR47pQ==
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+    classnames "^2.2.1"
+    rc-util "^5.15.0"
+    resize-observer-polyfill "^1.5.1"
+
 rc-select@^8.6.4:
   version "8.8.4"
   resolved "https://registry.nlark.com/rc-select/download/rc-select-8.8.4.tgz#aca3fc3082cd3a8085f01d2b22bfdaeadc5042f3"
@@ -13066,6 +13076,14 @@ react-test-renderer@^16.0.0-0, react-test-renderer@^16.13.1:
     prop-types "^15.6.2"
     react-is "^16.8.6"
     scheduler "^0.19.1"
+
+react-window@^1.8.6:
+  version "1.8.6"
+  resolved "http://192.168.102.79/verdaccio/react-window/-/react-window-1.8.6.tgz#d011950ac643a994118632665aad0c6382e2a112"
+  integrity sha1-0BGVCsZDqZQRhjJmWq0MY4LioRI=
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    memoize-one ">=3.1.1 <6"
 
 react@^16.13.1:
   version "16.14.0"
