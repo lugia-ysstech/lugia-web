@@ -29,6 +29,7 @@ export type TableProps = {
   virtualBoundary?: number,
   virtualRowHeight?: number,
   virtualGridStyle?: Object,
+  renderVirtualGrid?: Function,
 };
 export type TableState = {
   headChecked: boolean,
