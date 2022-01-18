@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useReducer } from 'react';
 import ResizeObserver from 'rc-resize-observer';
 import RcTable from '@lugia/rc-table';
 import VirtualList from './VirtualList';
@@ -11,6 +11,15 @@ import {
   defaultGridStyle,
 } from './constants';
 
+function reducer(state, action) {
+  switch (action.type) {
+    case 'widthAndHeight':
+      return { ...state, tableWidth: action.width, tableBodyHeight: action.height };
+    default:
+      throw new Error('未定义action类型');
+  }
+}
+
 export default function VirtualTable(props) {
   const { columns, scroll, virtualRowHeight, renderVirtualGrid, virtualGridStyle } = props;
   const { x: scrollX = 0, y: scrollY = defaultRowHeight * defaultRowNum } = scroll || {};
@@ -18,8 +27,9 @@ export default function VirtualTable(props) {
   const columnsLength = columns.length;
   const tableId = `lugia-virtual-table-${getUuid()}`;
 
-  const [tableWidth, setTableWidth] = useState(0);
-  const [tableBodyHeight, setTableBodyHeight] = useState(scrollY);
+  const initState = { tableWidth: 0, tableBodyHeight: scrollY };
+  const [state, dispatch] = useReducer(reducer, initState);
+  const { tableWidth, tableBodyHeight } = state;
 
   const columnsInfoRef = useRef({ sumPropsWidth: 0, widthPropsColumnsCount: 0 });
   const columnsInfoRefCurrent = columnsInfoRef.current;
@@ -175,8 +185,7 @@ export default function VirtualTable(props) {
         const { width } = config;
         const bodyHeight = getBodyHeight();
 
-        setTableWidth(width);
-        setTableBodyHeight(bodyHeight);
+        dispatch({ type: 'widthAndHeight', width, height: bodyHeight });
       }}
     >
       <RcTable
