@@ -179,10 +179,7 @@ export default ThemeProvider(
       this.currentPropsDataIsSame = true;
       this.userAgentInfor = '';
       this.tableThead = 0;
-      this.hasChildrenAndFixed =
-        this.keyInstanceOfData0(data, 'children') &&
-        this.keyInstanceOfData0(this.columns, 'ellipsis') &&
-        this.columns[0].fixed === 'left';
+      this.hasChildrenAndFixed = this.isExistChildrenAndFixedAndEllipsis(props);
     }
 
     isHasData = value => {
@@ -191,7 +188,15 @@ export default ThemeProvider(
     keyInstanceOfData0 = (data, key) => {
       return this.isHasData(data) && data[0][key];
     };
-
+    isExistChildrenAndFixedAndEllipsis = props => {
+      const { data = [] } = props;
+      return (
+        this.isHasData(data) &&
+        data.some(({ children }) => !!children) &&
+        this.keyInstanceOfData0(this.columns, 'ellipsis') &&
+        this.columns[0].fixed === 'left'
+      );
+    };
     getLugiadHeightType = (): HeightType => {
       const { lugiadLayout, getPartOfThemeProps, tableHeightType } = this.props;
       const { themeConfig: { normal } = {} } = getPartOfThemeProps('Container');
