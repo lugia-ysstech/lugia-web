@@ -296,10 +296,19 @@ export default ThemeProvider(
     }
 
     shouldComponentUpdate(nextProps: TableProps, nextState: TableState) {
-      const { columns: nextColumns, fixedColumns: nextFixedColumns } = nextProps;
+      const { columns: nextColumns, fixedColumns: nextFixedColumns, data: nextData } = nextProps;
       const { selectRowKeys: nextSelectRowKeys } = nextState;
-      const { columns, fixedColumns } = this.props;
+      const { columns, fixedColumns, data: preData } = this.props;
       const { selectRowKeys } = this.state;
+      if (
+        Array.isArray(nextData) &&
+        Array.isArray(preData) &&
+        (nextData.length !== preData.length || JSON.stringify(nextData) !== JSON.stringify(preData))
+      ) {
+        setTimeout(() => {
+          this.updateScrollY();
+        }, 0);
+      }
       if (
         !isEqualObject(nextColumns, columns) ||
         !isEqualObject(nextSelectRowKeys, selectRowKeys) ||
