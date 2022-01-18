@@ -29136,6 +29136,37 @@ export default [
             { value: 'fixed', text: '固定高度' },
           ],
         },
+        virtualModel: {
+          desc: '虚拟化模式',
+          type: 'boolean',
+          designOnly: false,
+          injectProps: false,
+          defaultValue: false,
+          meta: '',
+        },
+        virtualBoundary: {
+          desc: '开启虚拟化最小数据量',
+          type: 'number',
+          designOnly: false,
+          injectProps: false,
+          defaultValue: 1000,
+          meta: '',
+        },
+        virtualRowHeight: {
+          desc: '虚拟化表格行高',
+          type: 'number',
+          designOnly: false,
+          injectProps: false,
+          defaultValue: 32,
+          meta: '',
+        },
+        virtualGridStyle: {
+          desc: '虚拟化单元格样式配置',
+          type: 'object',
+          designOnly: false,
+          injectProps: false,
+          meta: '',
+        },
       },
       events: {
         onExpandedRowsChange: {
@@ -29167,6 +29198,16 @@ export default [
           args: [
             { name: 'dataIndex', type: 'string', desc: '固定列的 dataIndex值' },
             { name: 'type', type: 'string', desc: '当前操作type类型' },
+          ],
+        },
+        renderVirtualGrid: {
+          desc: '定义虚拟化单元格的回调',
+          args: [
+            {
+              type: 'object',
+              name: 'virtualGridInfo',
+              desc: '定义虚拟化单元格的回调参数',
+            },
           ],
         },
       },
