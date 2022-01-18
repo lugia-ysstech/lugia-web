@@ -27,8 +27,7 @@ export default function VirtualTable(props) {
   const columnsLength = columns.length;
   const tableId = `lugia-virtual-table-${getUuid()}`;
 
-  const initState = { tableWidth: 0, tableBodyHeight: scrollY };
-  const [state, dispatch] = useReducer(reducer, initState);
+  const [state, dispatch] = useReducer(reducer, { tableWidth: 0, tableBodyHeight: scrollY });
   const { tableWidth, tableBodyHeight } = state;
 
   const columnsInfoRef = useRef({ sumPropsWidth: 0, widthPropsColumnsCount: 0 });

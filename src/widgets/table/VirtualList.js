@@ -29,18 +29,38 @@ export default props => {
   ref.current = connectObject;
   const totalHeight = rawData.length * rowHeight;
 
+  const getColumnWidth = index => {
+    const { width } = columns[index];
+
+    return totalHeight > tableBodyHeight && index === columnsLength - 1
+      ? width - defaultScrollbarSize - 1
+      : width;
+  };
+  const getGridInner = gridInfo => {
+    const { columnIndex, rowIndex, style } = gridInfo;
+
+    if (typeof renderVirtualGrid === 'function') {
+      return renderVirtualGrid({ ...gridInfo });
+    }
+
+    return (
+      <div
+        className={classNames('virtual-table-cell', {
+          'virtual-table-cell-last': columnIndex === columns.length - 1,
+        })}
+        style={{ ...style, ...defaultGridBorderStyle, ...gridStyle }}
+      >
+        {rawData[rowIndex][columns[columnIndex].dataIndex]}
+      </div>
+    );
+  };
+
   return (
     <Grid
       ref={gridRef}
       className="virtual-grid"
       columnCount={columnsLength}
-      columnWidth={index => {
-        const { width } = columns[index];
-
-        return totalHeight > tableBodyHeight && index === columnsLength - 1
-          ? width - defaultScrollbarSize - 1
-          : width;
-      }}
+      columnWidth={getColumnWidth}
       height={tableBodyHeight}
       rowCount={rawData.length}
       rowHeight={() => rowHeight}
@@ -51,24 +71,7 @@ export default props => {
         });
       }}
     >
-      {gridInfo => {
-        const { columnIndex, rowIndex, style } = gridInfo;
-
-        if (typeof renderVirtualGrid === 'function') {
-          return renderVirtualGrid({ ...gridInfo });
-        }
-
-        return (
-          <div
-            className={classNames('virtual-table-cell', {
-              'virtual-table-cell-last': columnIndex === columns.length - 1,
-            })}
-            style={{ ...style, ...defaultGridBorderStyle, ...gridStyle }}
-          >
-            {rawData[rowIndex][columns[columnIndex].dataIndex]}
-          </div>
-        );
-      }}
+      {getGridInner}
     </Grid>
   );
 };
