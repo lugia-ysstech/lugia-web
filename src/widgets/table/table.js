@@ -344,7 +344,7 @@ export default ThemeProvider(
       ) {
         this.columns = this.handleColumns(nextProps);
       }
-      this.isVirtualTable = virtualModel && isBeyondBoundary(data, virtualBoundary);
+      this.isVirtualTable = virtualModel && isBeyondBoundary(nextData, virtualBoundary);
 
       return true;
     }
