@@ -1,3 +1,56 @@
+export const mockVirtualColumns = [
+  {
+    title: '日期',
+    dataIndex: 'firstC',
+    key: 'firstC',
+    align: 'left',
+    ellipsis: true,
+    width: 142,
+    sortType: 'number',
+    titleAlign: 'center',
+  },
+  {
+    title: '净值',
+    dataIndex: 'secondC',
+    key: 'secondC',
+    align: 'left',
+    ellipsis: true,
+    width: 168,
+    sortType: 'number',
+    titleAlign: 'center',
+  },
+  {
+    title: '日收益',
+    dataIndex: 'thirdC',
+    key: 'thirdC',
+    align: 'left',
+    ellipsis: true,
+    width: 88,
+    sortType: 'number',
+    titleAlign: 'center',
+  },
+  {
+    title: '日收益率(%)',
+    dataIndex: 'fourthC',
+    key: 'fourthC',
+    align: 'left',
+    ellipsis: true,
+    width: 128,
+    sortType: 'number',
+    titleAlign: 'center',
+  },
+  {
+    title: '净值',
+    dataIndex: 'fifthC',
+    key: 'fifthC',
+    align: 'left',
+    ellipsis: true,
+    width: 168,
+    sortType: 'number',
+    titleAlign: 'center',
+  },
+];
+
 export default [
   {
     title: '日期',

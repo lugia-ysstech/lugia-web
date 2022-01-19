@@ -39,9 +39,11 @@
         "rc-align": "2.4.3",
         "rc-animate": "2.4.1",
         "rc-pagination": "1.17.3",
+        "rc-resize-observer": "^1.2.0",
         "rc-select": "^8.6.4",
         "rc-util": "4.0.4",
         "react-error-overlay": "1.0.9",
+        "react-window": "^1.8.6",
         "resize-observer-polyfill": "^1.5.1",
         "warning": "3.0.0"
     },

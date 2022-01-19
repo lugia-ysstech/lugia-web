@@ -15,6 +15,8 @@ import Checkbox from '../checkbox';
 import type { TableProps, TableState } from '../css/table';
 import { css } from 'styled-components';
 import TableTitle from './tableTitle';
+import VirtualTable from './VirtualTable';
+import { defaultVirtualBoundary } from './constants';
 import {
   deepCopy,
   getChildrenKeys,
@@ -51,6 +53,16 @@ const getLugiadHeightTypeBoolean = (lugiadLayout: HeightType) => {
     isReactive: lugiadLayout === reactive, // 自适应
     isFixed: lugiadLayout === fixed, // 固定值
   };
+};
+const isBeyondBoundary = (data = [], bigDataBoundary): boolean => {
+  const chosenBoundary =
+    typeof bigDataBoundary !== 'number'
+      ? defaultVirtualBoundary
+      : bigDataBoundary > defaultVirtualBoundary
+      ? bigDataBoundary
+      : defaultVirtualBoundary;
+
+  return data.length > chosenBoundary;
 };
 
 const getStringValue = (val: string | number): string => {
@@ -155,10 +167,17 @@ export default ThemeProvider(
     oldPropsData: Object[];
     currentPropsDataIsSame: boolean;
     userAgentInfor: string;
+    isVirtualTable: boolean;
 
     constructor(props) {
       super();
-      const { data = [], selectOptions: { selectRowKeys = [] } = {}, scroll = {} } = props;
+      const {
+        data = [],
+        selectOptions: { selectRowKeys = [] } = {},
+        scroll = {},
+        virtualModel = false,
+        virtualBoundary = defaultVirtualBoundary,
+      } = props;
       this.tableId = `lugia-table-${getUuid()}`;
       this.propsKey = getUuid();
 
@@ -179,6 +198,7 @@ export default ThemeProvider(
       this.currentPropsDataIsSame = true;
       this.userAgentInfor = '';
       this.tableThead = 0;
+      this.isVirtualTable = virtualModel && isBeyondBoundary(data, virtualBoundary);
       this.hasChildrenAndFixed = this.isExistChildrenAndFixedAndEllipsis(props);
     }
 
@@ -240,21 +260,23 @@ export default ThemeProvider(
     };
 
     componentDidMount() {
-      setTimeout(() => {
-        if (this.tableWrap) {
-          this.tableWrap.querySelector('.rc-table-content');
-        }
-        if (this.props.scroll && this.props.scroll.y) {
-          return;
-        }
-        this.setState({
-          tableThead: this.getTableThead(),
-        });
-        this.updateScrollY();
-      }, 0);
+      if (!this.isVirtualTable) {
+        setTimeout(() => {
+          if (this.tableWrap) {
+            this.tableWrap.querySelector('.rc-table-content');
+          }
+          if (this.props.scroll && this.props.scroll.y) {
+            return;
+          }
+          this.setState({
+            tableThead: this.getTableThead(),
+          });
+          this.updateScrollY();
+        }, 0);
 
-      this.setXScrollerCriticalResizeObserver();
-      this.userAgentInfor = navigator.userAgent.toLowerCase();
+        this.setXScrollerCriticalResizeObserver();
+        this.userAgentInfor = navigator.userAgent.toLowerCase();
+      }
     }
 
     disconnectXScrollerCriticalResizeObserver() {
@@ -296,7 +318,13 @@ export default ThemeProvider(
     }
 
     shouldComponentUpdate(nextProps: TableProps, nextState: TableState) {
-      const { columns: nextColumns, fixedColumns: nextFixedColumns, data: nextData } = nextProps;
+      const {
+        columns: nextColumns,
+        fixedColumns: nextFixedColumns,
+        data: nextData = [],
+        virtualModel = false,
+        virtualBoundary = defaultVirtualBoundary,
+      } = nextProps;
       const { selectRowKeys: nextSelectRowKeys } = nextState;
       const { columns, fixedColumns, data: preData } = this.props;
       const { selectRowKeys } = this.state;
@@ -316,6 +344,7 @@ export default ThemeProvider(
       ) {
         this.columns = this.handleColumns(nextProps);
       }
+      this.isVirtualTable = virtualModel && isBeyondBoundary(nextData, virtualBoundary);
 
       return true;
     }
@@ -411,35 +440,44 @@ export default ThemeProvider(
     }
 
     static getDerivedStateFromProps(props, nextState) {
-      const { data = [], selectOptions = {}, rowKey = 'key' } = props;
-      const { data: stateData = [] } = nextState;
-      const dataIsSame = isEqualArray(stateData, data, { isStrengthen: false });
-      const tableData = dataIsSame ? stateData : data;
-      if ('selectRowKeys' in selectOptions) {
-        const {
-          selectRowKeys = [],
-          setCheckboxProps = () => {
-            return {};
-          },
-        } = selectOptions;
-        const validSelectRowKeys = getValidSelectRowKeys(
-          data,
-          selectRowKeys,
-          [],
-          rowKey,
-          setCheckboxProps
-        );
-        const allValidSelected =
-          data.length > 0 &&
-          getValidNotCheckedKeys(data, selectRowKeys, rowKey, setCheckboxProps).length <= 0;
-        return {
-          headChecked: allValidSelected,
-          headIndeterminate: !!validSelectRowKeys.length,
-          selectRowKeys,
-          data: tableData,
-        };
+      const {
+        data = [],
+        selectOptions = {},
+        rowKey = 'key',
+        virtualModel = false,
+        virtualBoundary = defaultVirtualBoundary,
+      } = props;
+
+      if (!(virtualModel && isBeyondBoundary(data, virtualBoundary))) {
+        const { data: stateData = [] } = nextState;
+        const dataIsSame = isEqualArray(stateData, data, { isStrengthen: false });
+        const tableData = dataIsSame ? stateData : data;
+        if ('selectRowKeys' in selectOptions) {
+          const {
+            selectRowKeys = [],
+            setCheckboxProps = () => {
+              return {};
+            },
+          } = selectOptions;
+          const validSelectRowKeys = getValidSelectRowKeys(
+            data,
+            selectRowKeys,
+            [],
+            rowKey,
+            setCheckboxProps
+          );
+          const allValidSelected =
+            data.length > 0 &&
+            getValidNotCheckedKeys(data, selectRowKeys, rowKey, setCheckboxProps).length <= 0;
+          return {
+            headChecked: allValidSelected,
+            headIndeterminate: !!validSelectRowKeys.length,
+            selectRowKeys,
+            data: tableData,
+          };
+        }
+        return { data: tableData };
       }
-      return { data: tableData };
     }
 
     handleParentData = (data: Object, selectRowKeys, selectRecords, rowKey, setCheckboxProps) => {
@@ -944,6 +982,10 @@ export default ThemeProvider(
           </ExpandIconWrap>
         ) : null;
       };
+
+      if (this.isVirtualTable) {
+        return <VirtualTable {...this.props} />;
+      }
 
       if (children) {
         return (
