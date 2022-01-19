@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef, useReducer } from 'react';
-import ResizeObserver from 'rc-resize-observer';
+import ResizeObserver from 'resize-observer-polyfill';
 import RcTable from '@lugia/rc-table';
 import VirtualList from './VirtualList';
 import getUuid from '../utils/getUuid';
+import { disconnectResizeObserver, existResizeObserverTarget } from '../utils';
 import {
   defaultScrollbarSize,
   singleElasticMinWidth,
@@ -100,6 +101,9 @@ export default function VirtualTable(props) {
   const mergedColumns = getMergedColumns();
 
   const gridRef = useRef();
+  const resizeObserverRef = useRef({
+    tableWidthResizeObserver: null,
+  });
 
   const [connectObject] = useState(() => {
     const obj = {};
@@ -123,7 +127,32 @@ export default function VirtualTable(props) {
     });
   };
 
-  useEffect(() => resetVirtualGrid, [tableWidth]);
+  useEffect(() => {
+    const tableDomRef = document.getElementById(tableId);
+
+    createResizeObserver();
+    if (resizeObserverRef.current.tableWidthResizeObserver) {
+      resizeObserverRef.current.tableWidthResizeObserver.observe(tableDomRef);
+    }
+  }, [tableId]);
+
+  const createResizeObserver = () => {
+    disconnectResizeObserver(resizeObserverRef.current.tableWidthResizeObserver);
+
+    resizeObserverRef.current.tableWidthResizeObserver = new ResizeObserver(entries => {
+      const existTarget = existResizeObserverTarget(entries);
+      if (!existTarget) {
+        return;
+      }
+
+      const { width, height } = getBodyHeight();
+
+      if (tableWidth !== width) {
+        dispatch({ type: 'widthAndHeight', width, height });
+        resetVirtualGrid();
+      }
+    });
+  };
 
   const getNumByString = value => {
     if (!value) {
@@ -131,6 +160,9 @@ export default function VirtualTable(props) {
     }
 
     return parseFloat(value);
+  };
+  const getBorderPaddingHeight = data => {
+    return data.reduce((pre, current) => pre + getNumByString(current), 0);
   };
 
   const getSiblingHeight = data => {
@@ -153,14 +185,18 @@ export default function VirtualTable(props) {
     const siblingHeightSum = getSiblingHeight(Array.from(childrenDom));
     const tableHeaderDomRef = tableDomRef.querySelector('.rc-table-header');
 
+    const { offsetWidth: tableWidth } = tableDomRef;
     const { offsetHeight: parentOffsetHeight } = tableParentDomRef;
-    const { paddingTop, paddingBottom } = getComputedStyle(tableParentDomRef);
+    const { paddingTop, paddingBottom, borderTop, borderBottom } = getComputedStyle(
+      tableParentDomRef
+    );
     const { offsetHeight: headerHeight } = tableHeaderDomRef;
 
     const parentContentHeight =
-      parentOffsetHeight - getNumByString(paddingTop) - getNumByString(paddingBottom);
+      parentOffsetHeight -
+      getBorderPaddingHeight([paddingTop, paddingBottom, borderTop, borderBottom]);
 
-    return parentContentHeight - siblingHeightSum - headerHeight;
+    return { width: tableWidth, height: parentContentHeight - siblingHeightSum - headerHeight };
   };
 
   const replaceVirtualList = (rawData, cbParams) => (
@@ -179,25 +215,16 @@ export default function VirtualTable(props) {
   );
 
   return (
-    <ResizeObserver
-      onResize={config => {
-        const { width } = config;
-        const bodyHeight = getBodyHeight();
-
-        dispatch({ type: 'widthAndHeight', width, height: bodyHeight });
+    <RcTable
+      {...props}
+      scroll={{ ...scroll, y: tableBodyHeight }}
+      id={tableId}
+      className="lugia-table virtual-table"
+      columns={mergedColumns}
+      pagination={false}
+      components={{
+        body: replaceVirtualList,
       }}
-    >
-      <RcTable
-        {...props}
-        scroll={{ ...scroll, y: tableBodyHeight }}
-        id={tableId}
-        className="lugia-table virtual-table"
-        columns={mergedColumns}
-        pagination={false}
-        components={{
-          body: replaceVirtualList,
-        }}
-      />
-    </ResizeObserver>
+    />
   );
 }
