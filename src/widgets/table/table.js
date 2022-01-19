@@ -328,25 +328,29 @@ export default ThemeProvider(
       const { selectRowKeys: nextSelectRowKeys } = nextState;
       const { columns, fixedColumns, data: preData } = this.props;
       const { selectRowKeys } = this.state;
-      if (
-        Array.isArray(nextData) &&
-        Array.isArray(preData) &&
-        (nextData.length !== preData.length || JSON.stringify(nextData) !== JSON.stringify(preData))
-      ) {
-        setTimeout(() => {
-          this.updateScrollY();
-        }, 0);
-      }
-      if (
-        !isEqualObject(nextColumns, columns) ||
-        !isEqualObject(nextSelectRowKeys, selectRowKeys) ||
-        !isEqualObject(nextFixedColumns, fixedColumns)
-      ) {
-        this.columns = this.handleColumns(nextProps);
-      }
+
       this.isVirtualTable = virtualModel && isBeyondBoundary(nextData, virtualBoundary);
 
-      return true;
+      if (!this.isVirtualTable) {
+        if (
+          Array.isArray(nextData) &&
+          Array.isArray(preData) &&
+          (nextData.length !== preData.length ||
+            JSON.stringify(nextData) !== JSON.stringify(preData))
+        ) {
+          setTimeout(() => {
+            this.updateScrollY();
+          }, 0);
+        }
+        if (
+          !isEqualObject(nextColumns, columns) ||
+          !isEqualObject(nextSelectRowKeys, selectRowKeys) ||
+          !isEqualObject(nextFixedColumns, fixedColumns)
+        ) {
+          this.columns = this.handleColumns(nextProps);
+        }
+        return true;
+      }
     }
 
     getContainerHeight = () => {
