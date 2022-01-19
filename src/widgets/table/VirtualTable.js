@@ -153,8 +153,8 @@ export default function VirtualTable(props) {
     const siblingHeightSum = getSiblingHeight(Array.from(childrenDom));
     const tableHeaderDomRef = tableDomRef.querySelector('.rc-table-header');
 
-    const { offsetHeight: parentOffsetHeight, style } = tableParentDomRef;
-    const { paddingTop, paddingBottom } = style;
+    const { offsetHeight: parentOffsetHeight } = tableParentDomRef;
+    const { paddingTop, paddingBottom } = getComputedStyle(tableParentDomRef);
     const { offsetHeight: headerHeight } = tableHeaderDomRef;
 
     const parentContentHeight =
