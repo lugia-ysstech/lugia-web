@@ -48,7 +48,14 @@ export default props => {
         className={classNames('virtual-table-cell', {
           'virtual-table-cell-last': columnIndex === columns.length - 1,
         })}
-        style={{ ...style, ...defaultGridBorderStyle, ...gridStyle }}
+        style={{
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          ...style,
+          ...defaultGridBorderStyle,
+          ...gridStyle,
+        }}
       >
         {rawData[rowIndex][columns[columnIndex].dataIndex]}
       </div>

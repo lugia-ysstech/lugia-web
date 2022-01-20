@@ -49,7 +49,9 @@ export default function VirtualTable(props) {
 
   const getBaseWidth = () => {
     if (scrollX > 0) {
-      return scrollX > tableWidth ? scrollX : tableWidth;
+      return scrollX > tableWidth + defaultScrollbarSize
+        ? scrollX
+        : tableWidth + defaultScrollbarSize;
     }
 
     const { sumPropsWidth } = columnsInfoRefCurrent;
@@ -72,11 +74,16 @@ export default function VirtualTable(props) {
     if (isAllColumnsHasWidth) {
       const { sumPropsWidth } = columnsInfoRefCurrent;
 
-      return columns.map(column => {
+      return columns.map((column, index) => {
         const { width } = column;
         const computedWidth = getFixedNum((width / sumPropsWidth) * baseWidth);
 
-        return { ...column, width: computedWidth };
+        const choseWidth =
+          scrollX > 0 && index === columns.length - 1
+            ? computedWidth - defaultScrollbarSize
+            : computedWidth;
+
+        return { ...column, width: choseWidth };
       });
     }
 
