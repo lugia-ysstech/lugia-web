@@ -32,6 +32,7 @@ import { deepMerge } from '@lugia/object-utils';
 import { style2css } from '@lugia/css';
 import getUuid from '../utils/getUuid';
 import { HeightType } from '../css/table';
+import { isBeyondBoundary } from '../utils';
 
 const sizePadding = {
   default: 8,
@@ -53,16 +54,6 @@ const getLugiadHeightTypeBoolean = (lugiadLayout: HeightType) => {
     isReactive: lugiadLayout === reactive, // 自适应
     isFixed: lugiadLayout === fixed, // 固定值
   };
-};
-const isBeyondBoundary = (data = [], bigDataBoundary): boolean => {
-  const chosenBoundary =
-    typeof bigDataBoundary !== 'number'
-      ? defaultVirtualBoundary
-      : bigDataBoundary > defaultVirtualBoundary
-      ? bigDataBoundary
-      : defaultVirtualBoundary;
-
-  return data.length > chosenBoundary;
 };
 
 const getStringValue = (val: string | number): string => {
