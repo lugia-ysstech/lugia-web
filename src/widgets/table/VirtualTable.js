@@ -11,11 +11,12 @@ import {
   defaultRowNum,
   defaultGridStyle,
   VirtualGridClassName,
+  BodyInfoChange,
 } from './constants';
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'widthAndHeight':
+    case BodyInfoChange:
       const { width, height, scrollBarWidth } = action;
 
       return {
@@ -27,6 +28,13 @@ function reducer(state, action) {
     default:
       throw new Error('未定义action类型');
   }
+}
+function getFixedNum(value) {
+  if (typeof value !== 'number') {
+    return 0;
+  }
+
+  return +value.toFixed(2);
 }
 
 export default function VirtualTable(props) {
@@ -41,9 +49,28 @@ export default function VirtualTable(props) {
     tableBodyHeight: scrollY,
     scrollBarWidth: defaultScrollbarSize,
   });
+  const [connectObject] = useState(() => {
+    const obj = {};
+    Object.defineProperty(obj, 'scrollLeft', {
+      get: () => null,
+      set: scrollLeft => {
+        if (gridRef.current) {
+          gridRef.current.scrollTo({
+            scrollLeft,
+          });
+        }
+      },
+    });
+    return obj;
+  });
   const { tableWidth, tableBodyHeight, scrollBarWidth } = state;
 
+  const gridRef = useRef();
   const columnsInfoRef = useRef({ sumPropsWidth: 0, widthPropsColumnsCount: 0 });
+  const resizeObserverRef = useRef({
+    tableWidthResizeObserver: null,
+  });
+
   const columnsInfoRefCurrent = columnsInfoRef.current;
 
   if (!tableWidth) {
@@ -59,6 +86,91 @@ export default function VirtualTable(props) {
   const withoutWidthPropsColumnsCount =
     columns.length - columnsInfoRefCurrent.widthPropsColumnsCount;
 
+  useEffect(() => {
+    const tableDomRef = document.getElementById(tableId);
+
+    createResizeObserver();
+    if (resizeObserverRef.current.tableWidthResizeObserver) {
+      resizeObserverRef.current.tableWidthResizeObserver.observe(tableDomRef);
+    }
+  }, [tableId]);
+
+  const resetVirtualGrid = () => {
+    gridRef.current.resetAfterIndices({
+      columnIndex: 0,
+      shouldForceUpdate: true,
+    });
+  };
+
+  const createResizeObserver = () => {
+    disconnectResizeObserver(resizeObserverRef.current.tableWidthResizeObserver);
+
+    resizeObserverRef.current.tableWidthResizeObserver = new ResizeObserver(entries => {
+      const existTarget = existResizeObserverTarget(entries);
+      if (!existTarget) {
+        return;
+      }
+
+      const { width, height, scrollBarWidth: currentScrollBarWidth } = getBodyInfo();
+
+      if (tableWidth !== width || scrollBarWidth !== currentScrollBarWidth) {
+        dispatch({ type: BodyInfoChange, width, height, scrollBarWidth: currentScrollBarWidth });
+        resetVirtualGrid();
+      }
+    });
+  };
+
+  const getNumByString = value => {
+    if (!value) {
+      return 0;
+    }
+
+    return parseFloat(value);
+  };
+  const getBorderPaddingHeight = data => {
+    return data.reduce((pre, current) => pre + getNumByString(current), 0);
+  };
+
+  const getSiblingHeight = data => {
+    let sumHeight = 0;
+    data.forEach(item => {
+      if (item.id !== tableId) {
+        const { offsetHeight = 0 } = item;
+
+        sumHeight += offsetHeight;
+      }
+    });
+
+    return sumHeight;
+  };
+
+  const getBodyInfo = () => {
+    const tableDomRef = document.getElementById(tableId);
+    const tableParentDomRef = tableDomRef.parentNode;
+    const childrenDom = tableParentDomRef.children;
+    const siblingHeightSum = getSiblingHeight(Array.from(childrenDom));
+    const tableHeaderDomRef = tableDomRef.querySelector('.rc-table-header');
+    const GridWrapDomRef = tableDomRef.querySelector(`.${VirtualGridClassName}`);
+
+    const { offsetWidth: tableWidth } = tableDomRef;
+    const { offsetHeight: parentOffsetHeight } = tableParentDomRef;
+    const { offsetWidth, clientWidth } = GridWrapDomRef;
+    const { paddingTop, paddingBottom, borderTop, borderBottom } = getComputedStyle(
+      tableParentDomRef
+    );
+    const { offsetHeight: headerHeight } = tableHeaderDomRef;
+
+    const parentContentHeight =
+      parentOffsetHeight -
+      getBorderPaddingHeight([paddingTop, paddingBottom, borderTop, borderBottom]);
+
+    return {
+      width: tableWidth,
+      height: parentContentHeight - siblingHeightSum - headerHeight,
+      scrollBarWidth: offsetWidth - clientWidth,
+    };
+  };
+
   const getBaseWidth = () => {
     if (scrollX > 0) {
       const tableWidthAndBar = tableWidth + scrollBarWidth;
@@ -73,14 +185,6 @@ export default function VirtualTable(props) {
     return tableWidth > sumPropsWidthWithElastic ? tableWidth : sumPropsWidthWithElastic;
   };
   const baseWidth = getBaseWidth();
-
-  const getFixedNum = value => {
-    if (typeof value !== 'number') {
-      return;
-    }
-
-    return +value.toFixed(2);
-  };
 
   const getMergedColumns = () => {
     if (isAllColumnsHasWidth) {
@@ -116,113 +220,7 @@ export default function VirtualTable(props) {
       };
     });
   };
-
   const mergedColumns = getMergedColumns();
-
-  const gridRef = useRef();
-  const resizeObserverRef = useRef({
-    tableWidthResizeObserver: null,
-  });
-
-  const [connectObject] = useState(() => {
-    const obj = {};
-    Object.defineProperty(obj, 'scrollLeft', {
-      get: () => null,
-      set: scrollLeft => {
-        if (gridRef.current) {
-          gridRef.current.scrollTo({
-            scrollLeft,
-          });
-        }
-      },
-    });
-    return obj;
-  });
-
-  const resetVirtualGrid = () => {
-    gridRef.current.resetAfterIndices({
-      columnIndex: 0,
-      shouldForceUpdate: true,
-    });
-  };
-
-  useEffect(() => {
-    const tableDomRef = document.getElementById(tableId);
-
-    createResizeObserver();
-    if (resizeObserverRef.current.tableWidthResizeObserver) {
-      resizeObserverRef.current.tableWidthResizeObserver.observe(tableDomRef);
-    }
-  }, [tableId]);
-
-  const createResizeObserver = () => {
-    disconnectResizeObserver(resizeObserverRef.current.tableWidthResizeObserver);
-
-    resizeObserverRef.current.tableWidthResizeObserver = new ResizeObserver(entries => {
-      const existTarget = existResizeObserverTarget(entries);
-      if (!existTarget) {
-        return;
-      }
-
-      const { width, height, scrollBarWidth: currentScrollBarWidth } = getBodyHeight();
-
-      if (tableWidth !== width || scrollBarWidth !== currentScrollBarWidth) {
-        dispatch({ type: 'widthAndHeight', width, height, scrollBarWidth: currentScrollBarWidth });
-        resetVirtualGrid();
-      }
-    });
-  };
-
-  const getNumByString = value => {
-    if (!value) {
-      return 0;
-    }
-
-    return parseFloat(value);
-  };
-  const getBorderPaddingHeight = data => {
-    return data.reduce((pre, current) => pre + getNumByString(current), 0);
-  };
-
-  const getSiblingHeight = data => {
-    let sumHeight = 0;
-    data.forEach(item => {
-      if (item.id !== tableId) {
-        const { offsetHeight = 0 } = item;
-
-        sumHeight += offsetHeight;
-      }
-    });
-
-    return sumHeight;
-  };
-
-  const getBodyHeight = () => {
-    const tableDomRef = document.getElementById(tableId);
-    const tableParentDomRef = tableDomRef.parentNode;
-    const childrenDom = tableParentDomRef.children;
-    const siblingHeightSum = getSiblingHeight(Array.from(childrenDom));
-    const tableHeaderDomRef = tableDomRef.querySelector('.rc-table-header');
-    const GridWrapDomRef = tableDomRef.querySelector(`.${VirtualGridClassName}`);
-
-    const { offsetWidth: tableWidth } = tableDomRef;
-    const { offsetHeight: parentOffsetHeight } = tableParentDomRef;
-    const { offsetWidth, clientWidth } = GridWrapDomRef;
-    const { paddingTop, paddingBottom, borderTop, borderBottom } = getComputedStyle(
-      tableParentDomRef
-    );
-    const { offsetHeight: headerHeight } = tableHeaderDomRef;
-
-    const parentContentHeight =
-      parentOffsetHeight -
-      getBorderPaddingHeight([paddingTop, paddingBottom, borderTop, borderBottom]);
-
-    return {
-      width: tableWidth,
-      height: parentContentHeight - siblingHeightSum - headerHeight,
-      scrollBarWidth: offsetWidth - clientWidth,
-    };
-  };
 
   const replaceVirtualList = (rawData, cbParams) => (
     <VirtualList

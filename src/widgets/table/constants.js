@@ -6,6 +6,7 @@ export const defaultRowNum = 6;
 export const defaultBorderColor = '#e8e8e8';
 
 export const VirtualGridClassName = 'virtual-grid';
+export const BodyInfoChange = 'bodyInfoChange';
 
 export const defaultGridBorderStyle = {
   borderRight: `1px solid ${defaultBorderColor}`,

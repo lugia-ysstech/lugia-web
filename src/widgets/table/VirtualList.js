@@ -25,7 +25,7 @@ export default props => {
     gridStyle = {},
   } = props;
   const columnsLength = columns.length;
-  const { scrollbarSize, ref, onScroll } = cbParams;
+  const { ref, onScroll } = cbParams;
 
   ref.current = connectObject;
   const totalHeight = rawData.length * rowHeight;
