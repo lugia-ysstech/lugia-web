@@ -537,7 +537,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const { value, stepHover } = this.state;
     const finalValue = handleEmpty(value, limit(value, [min, max]));
     if (stepHover !== 'plus' && stepHover !== 'minus') {
-      if (this.state.value !== finalValue) {
+      if (value !== finalValue && Number(value) !== Number(finalValue)) {
         this.setValue(finalValue, event);
       }
       this.setState({ _innerFocus: false });
