@@ -611,6 +611,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       defaultPageSize,
       pageSize,
       size,
+      popupContainerId,
       paginationUnitText,
     } = this.props;
     const optionsList = [];
@@ -629,6 +630,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
         divided={divided}
         size={size}
         autoHeight
+        popupContainerId={popupContainerId}
         canClear={false}
         theme={selectTheme}
         viewClass={viewClass}
