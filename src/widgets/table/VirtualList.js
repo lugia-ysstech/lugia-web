@@ -8,7 +8,7 @@
 import React from 'react';
 import { VariableSizeGrid as Grid } from 'react-window';
 import classNames from 'classnames';
-import { defaultScrollbarSize, defaultRowHeight, defaultGridBorderStyle } from './constants';
+import { defaultRowHeight, defaultGridBorderStyle, VirtualGridClassName } from './constants';
 
 export default props => {
   const {
@@ -19,6 +19,7 @@ export default props => {
     columns = [],
     tableWidth,
     tableBodyHeight,
+    scrollBarWidth,
     rowHeight = defaultRowHeight,
     renderVirtualGrid,
     gridStyle = {},
@@ -33,7 +34,7 @@ export default props => {
     const { width } = columns[index];
 
     return totalHeight > tableBodyHeight && index === columnsLength - 1
-      ? width - defaultScrollbarSize - 1
+      ? width - scrollBarWidth - 1
       : width;
   };
   const getGridInner = gridInfo => {
@@ -65,7 +66,7 @@ export default props => {
   return (
     <Grid
       ref={gridRef}
-      className="virtual-grid"
+      className={VirtualGridClassName}
       columnCount={columnsLength}
       columnWidth={getColumnWidth}
       height={tableBodyHeight}
