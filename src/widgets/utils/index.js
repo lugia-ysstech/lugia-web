@@ -1,3 +1,5 @@
+import { defaultVirtualBoundary } from '../table/constants';
+
 /**
  *
  * create by ligx
@@ -129,4 +131,15 @@ export function getStickyStyle(config) {
     left: ${stickPosition - leftPositionFix}px;
     right: ${stickPosition}px;
   `;
+}
+
+export function isBeyondBoundary(data = [], bigDataBoundary) {
+  const chosenBoundary =
+    typeof bigDataBoundary !== 'number'
+      ? defaultVirtualBoundary
+      : bigDataBoundary > defaultVirtualBoundary
+      ? bigDataBoundary
+      : defaultVirtualBoundary;
+
+  return data.length > chosenBoundary;
 }

@@ -8,32 +8,31 @@
 import React from 'react';
 import { VariableSizeGrid as Grid } from 'react-window';
 import classNames from 'classnames';
-import { defaultScrollbarSize, defaultRowHeight, defaultGridBorderStyle } from './constants';
+import { defaultRowHeight, defaultGridBorderStyle, VirtualGridClassName } from './constants';
 
 export default props => {
   const {
     rawData,
     cbParams,
-    connectObject,
     gridRef,
     columns = [],
     tableWidth,
     tableBodyHeight,
+    scrollBarWidth,
     rowHeight = defaultRowHeight,
     renderVirtualGrid,
     gridStyle = {},
   } = props;
   const columnsLength = columns.length;
-  const { scrollbarSize, ref, onScroll } = cbParams;
+  const { onScroll } = cbParams;
 
-  ref.current = connectObject;
   const totalHeight = rawData.length * rowHeight;
 
   const getColumnWidth = index => {
     const { width } = columns[index];
 
     return totalHeight > tableBodyHeight && index === columnsLength - 1
-      ? width - defaultScrollbarSize - 1
+      ? width - scrollBarWidth - 1
       : width;
   };
   const getGridInner = gridInfo => {
@@ -48,7 +47,14 @@ export default props => {
         className={classNames('virtual-table-cell', {
           'virtual-table-cell-last': columnIndex === columns.length - 1,
         })}
-        style={{ ...style, ...defaultGridBorderStyle, ...gridStyle }}
+        style={{
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          ...style,
+          ...defaultGridBorderStyle,
+          ...gridStyle,
+        }}
       >
         {rawData[rowIndex][columns[columnIndex].dataIndex]}
       </div>
@@ -58,7 +64,7 @@ export default props => {
   return (
     <Grid
       ref={gridRef}
-      className="virtual-grid"
+      className={VirtualGridClassName}
       columnCount={columnsLength}
       columnWidth={getColumnWidth}
       height={tableBodyHeight}

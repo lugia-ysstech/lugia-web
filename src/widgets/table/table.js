@@ -32,6 +32,7 @@ import { deepMerge } from '@lugia/object-utils';
 import { style2css } from '@lugia/css';
 import getUuid from '../utils/getUuid';
 import { HeightType } from '../css/table';
+import { isBeyondBoundary } from '../utils';
 
 const sizePadding = {
   default: 8,
@@ -53,16 +54,6 @@ const getLugiadHeightTypeBoolean = (lugiadLayout: HeightType) => {
     isReactive: lugiadLayout === reactive, // 自适应
     isFixed: lugiadLayout === fixed, // 固定值
   };
-};
-const isBeyondBoundary = (data = [], bigDataBoundary): boolean => {
-  const chosenBoundary =
-    typeof bigDataBoundary !== 'number'
-      ? defaultVirtualBoundary
-      : bigDataBoundary > defaultVirtualBoundary
-      ? bigDataBoundary
-      : defaultVirtualBoundary;
-
-  return data.length > chosenBoundary;
 };
 
 const getStringValue = (val: string | number): string => {
@@ -325,9 +316,17 @@ export default ThemeProvider(
         virtualModel = false,
         virtualBoundary = defaultVirtualBoundary,
       } = nextProps;
+
+      this.isVirtualTable = virtualModel && isBeyondBoundary(nextData, virtualBoundary);
+
+      if (this.isVirtualTable) {
+        return true;
+      }
+
       const { selectRowKeys: nextSelectRowKeys } = nextState;
       const { columns, fixedColumns, data: preData } = this.props;
       const { selectRowKeys } = this.state;
+
       if (
         Array.isArray(nextData) &&
         Array.isArray(preData) &&
@@ -344,8 +343,6 @@ export default ThemeProvider(
       ) {
         this.columns = this.handleColumns(nextProps);
       }
-      this.isVirtualTable = virtualModel && isBeyondBoundary(nextData, virtualBoundary);
-
       return true;
     }
 
@@ -418,6 +415,10 @@ export default ThemeProvider(
     };
 
     componentDidUpdate(prevProps, prevState) {
+      if (this.isVirtualTable) {
+        return;
+      }
+
       setTimeout(() => {
         const { data = [], scroll } = this.props;
         const { data: prevPropsData = [] } = prevProps;
@@ -947,6 +948,11 @@ export default ThemeProvider(
         scroll = {},
         data = [],
       } = this.state;
+
+      if (this.isVirtualTable) {
+        return <VirtualTable {...this.props} />;
+      }
+
       const { dataIsSame: propsDataIsSame } = this.getTableData(this.oldPropsData, propsData, true);
       const tableData = propsDataIsSame ? data : propsData;
       this.currentPropsDataIsSame = propsDataIsSame;
@@ -982,10 +988,6 @@ export default ThemeProvider(
           </ExpandIconWrap>
         ) : null;
       };
-
-      if (this.isVirtualTable) {
-        return <VirtualTable {...this.props} />;
-      }
 
       if (children) {
         return (

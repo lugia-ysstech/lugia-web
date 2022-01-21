@@ -1,23 +1,40 @@
-import React, { useState, useEffect, useRef, useReducer } from 'react';
-import ResizeObserver from 'rc-resize-observer';
+import React, { useEffect, useRef, useReducer } from 'react';
+import ResizeObserver from 'resize-observer-polyfill';
 import RcTable from '@lugia/rc-table';
 import VirtualList from './VirtualList';
 import getUuid from '../utils/getUuid';
+import { disconnectResizeObserver, existResizeObserverTarget } from '../utils';
 import {
   defaultScrollbarSize,
   singleElasticMinWidth,
   defaultRowHeight,
   defaultRowNum,
   defaultGridStyle,
+  VirtualGridClassName,
+  BodyInfoChange,
 } from './constants';
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'widthAndHeight':
-      return { ...state, tableWidth: action.width, tableBodyHeight: action.height };
+    case BodyInfoChange:
+      const { width, height, scrollBarWidth } = action;
+
+      return {
+        ...state,
+        tableWidth: width,
+        tableBodyHeight: height,
+        scrollBarWidth,
+      };
     default:
       throw new Error('未定义action类型');
   }
+}
+function getFixedNum(value) {
+  if (typeof value !== 'number') {
+    return 0;
+  }
+
+  return +value.toFixed(2);
 }
 
 export default function VirtualTable(props) {
@@ -27,10 +44,19 @@ export default function VirtualTable(props) {
   const columnsLength = columns.length;
   const tableId = `lugia-virtual-table-${getUuid()}`;
 
-  const [state, dispatch] = useReducer(reducer, { tableWidth: 0, tableBodyHeight: scrollY });
-  const { tableWidth, tableBodyHeight } = state;
+  const [state, dispatch] = useReducer(reducer, {
+    tableWidth: 0,
+    tableBodyHeight: scrollY,
+    scrollBarWidth: defaultScrollbarSize,
+  });
+  const { tableWidth, tableBodyHeight, scrollBarWidth } = state;
 
+  const gridRef = useRef();
   const columnsInfoRef = useRef({ sumPropsWidth: 0, widthPropsColumnsCount: 0 });
+  const resizeObserverRef = useRef({
+    tableWidthResizeObserver: null,
+  });
+
   const columnsInfoRefCurrent = columnsInfoRef.current;
 
   if (!tableWidth) {
@@ -46,75 +72,14 @@ export default function VirtualTable(props) {
   const withoutWidthPropsColumnsCount =
     columns.length - columnsInfoRefCurrent.widthPropsColumnsCount;
 
-  const getBaseWidth = () => {
-    if (scrollX > 0) {
-      return scrollX > tableWidth ? scrollX : tableWidth;
+  useEffect(() => {
+    const tableDomRef = document.getElementById(tableId);
+
+    createResizeObserver();
+    if (resizeObserverRef.current.tableWidthResizeObserver) {
+      resizeObserverRef.current.tableWidthResizeObserver.observe(tableDomRef);
     }
-
-    const { sumPropsWidth } = columnsInfoRefCurrent;
-    const sumPropsWidthWithElastic =
-      sumPropsWidth + withoutWidthPropsColumnsCount * singleElasticMinWidth;
-
-    return tableWidth > sumPropsWidthWithElastic ? tableWidth : sumPropsWidthWithElastic;
-  };
-  const baseWidth = getBaseWidth();
-
-  const getFixedNum = value => {
-    if (typeof value !== 'number') {
-      return;
-    }
-
-    return +value.toFixed(2);
-  };
-
-  const getMergedColumns = () => {
-    if (isAllColumnsHasWidth) {
-      const { sumPropsWidth } = columnsInfoRefCurrent;
-
-      return columns.map(column => {
-        const { width } = column;
-        const computedWidth = getFixedNum((width / sumPropsWidth) * baseWidth);
-
-        return { ...column, width: computedWidth };
-      });
-    }
-
-    const scrollRelateWidth = scrollX > 0 ? defaultScrollbarSize : 0;
-    const { sumPropsWidth } = columnsInfoRefCurrent;
-    const elasticWidthSum = baseWidth - sumPropsWidth - scrollRelateWidth;
-    const meanWidth = getFixedNum(elasticWidthSum / withoutWidthPropsColumnsCount);
-    const elasticSingleWidth = meanWidth > defaultScrollbarSize ? meanWidth : defaultScrollbarSize;
-
-    return columns.map(column => {
-      if (column.width) {
-        return column;
-      }
-
-      return {
-        ...column,
-        width: elasticSingleWidth,
-      };
-    });
-  };
-
-  const mergedColumns = getMergedColumns();
-
-  const gridRef = useRef();
-
-  const [connectObject] = useState(() => {
-    const obj = {};
-    Object.defineProperty(obj, 'scrollLeft', {
-      get: () => null,
-      set: scrollLeft => {
-        if (gridRef.current) {
-          gridRef.current.scrollTo({
-            scrollLeft,
-          });
-        }
-      },
-    });
-    return obj;
-  });
+  }, [tableId]);
 
   const resetVirtualGrid = () => {
     gridRef.current.resetAfterIndices({
@@ -123,7 +88,23 @@ export default function VirtualTable(props) {
     });
   };
 
-  useEffect(() => resetVirtualGrid, [tableWidth]);
+  const createResizeObserver = () => {
+    disconnectResizeObserver(resizeObserverRef.current.tableWidthResizeObserver);
+
+    resizeObserverRef.current.tableWidthResizeObserver = new ResizeObserver(entries => {
+      const existTarget = existResizeObserverTarget(entries);
+      if (!existTarget) {
+        return;
+      }
+
+      const { width, height, scrollBarWidth: currentScrollBarWidth } = getBodyInfo();
+
+      if (tableWidth !== width || scrollBarWidth !== currentScrollBarWidth) {
+        dispatch({ type: BodyInfoChange, width, height, scrollBarWidth: currentScrollBarWidth });
+        resetVirtualGrid();
+      }
+    });
+  };
 
   const getNumByString = value => {
     if (!value) {
@@ -131,6 +112,9 @@ export default function VirtualTable(props) {
     }
 
     return parseFloat(value);
+  };
+  const getBorderPaddingHeight = data => {
+    return data.reduce((pre, current) => pre + getNumByString(current), 0);
   };
 
   const getSiblingHeight = data => {
@@ -146,32 +130,93 @@ export default function VirtualTable(props) {
     return sumHeight;
   };
 
-  const getBodyHeight = () => {
+  const getBodyInfo = () => {
     const tableDomRef = document.getElementById(tableId);
     const tableParentDomRef = tableDomRef.parentNode;
     const childrenDom = tableParentDomRef.children;
     const siblingHeightSum = getSiblingHeight(Array.from(childrenDom));
     const tableHeaderDomRef = tableDomRef.querySelector('.rc-table-header');
+    const GridWrapDomRef = tableDomRef.querySelector(`.${VirtualGridClassName}`);
 
-    const { offsetHeight: parentOffsetHeight, style } = tableParentDomRef;
-    const { paddingTop, paddingBottom } = style;
+    const { offsetWidth: tableWidth } = tableDomRef;
+    const { offsetHeight: parentOffsetHeight } = tableParentDomRef;
+    const { offsetWidth, clientWidth } = GridWrapDomRef;
+    const { paddingTop, paddingBottom, borderTop, borderBottom } = getComputedStyle(
+      tableParentDomRef
+    );
     const { offsetHeight: headerHeight } = tableHeaderDomRef;
 
     const parentContentHeight =
-      parentOffsetHeight - getNumByString(paddingTop) - getNumByString(paddingBottom);
+      parentOffsetHeight -
+      getBorderPaddingHeight([paddingTop, paddingBottom, borderTop, borderBottom]);
 
-    return parentContentHeight - siblingHeightSum - headerHeight;
+    return {
+      width: tableWidth,
+      height: parentContentHeight - siblingHeightSum - headerHeight,
+      scrollBarWidth: offsetWidth - clientWidth,
+    };
   };
+
+  const getBaseWidth = () => {
+    if (scrollX > 0) {
+      const tableWidthAndBar = tableWidth + scrollBarWidth;
+
+      return scrollX > tableWidthAndBar ? scrollX : tableWidthAndBar;
+    }
+
+    const { sumPropsWidth } = columnsInfoRefCurrent;
+    const sumPropsWidthWithElastic =
+      sumPropsWidth + withoutWidthPropsColumnsCount * singleElasticMinWidth;
+
+    return tableWidth > sumPropsWidthWithElastic ? tableWidth : sumPropsWidthWithElastic;
+  };
+  const baseWidth = getBaseWidth();
+
+  const getMergedColumns = () => {
+    if (isAllColumnsHasWidth) {
+      const { sumPropsWidth } = columnsInfoRefCurrent;
+
+      return columns.map((column, index) => {
+        const { width } = column;
+        const computedWidth = getFixedNum((width / sumPropsWidth) * baseWidth);
+
+        const choseWidth =
+          scrollX > 0 && index === columns.length - 1
+            ? computedWidth - scrollBarWidth
+            : computedWidth;
+
+        return { ...column, width: choseWidth };
+      });
+    }
+
+    const scrollRelateWidth = scrollX > 0 ? scrollBarWidth : 0;
+    const { sumPropsWidth } = columnsInfoRefCurrent;
+    const elasticWidthSum = baseWidth - sumPropsWidth - scrollRelateWidth;
+    const meanWidth = getFixedNum(elasticWidthSum / withoutWidthPropsColumnsCount);
+    const elasticSingleWidth = meanWidth > scrollBarWidth ? meanWidth : scrollBarWidth;
+
+    return columns.map(column => {
+      if (column.width) {
+        return column;
+      }
+
+      return {
+        ...column,
+        width: elasticSingleWidth,
+      };
+    });
+  };
+  const mergedColumns = getMergedColumns();
 
   const replaceVirtualList = (rawData, cbParams) => (
     <VirtualList
       rawData={rawData}
       cbParams={cbParams}
-      connectObject={connectObject}
       gridRef={gridRef}
       columns={mergedColumns}
       tableWidth={tableWidth}
       tableBodyHeight={tableBodyHeight}
+      scrollBarWidth={scrollBarWidth}
       renderVirtualGrid={renderVirtualGrid}
       rowHeight={virtualRowHeight || defaultRowHeight}
       gridStyle={virtualGridStyle || defaultGridStyle}
@@ -179,25 +224,16 @@ export default function VirtualTable(props) {
   );
 
   return (
-    <ResizeObserver
-      onResize={config => {
-        const { width } = config;
-        const bodyHeight = getBodyHeight();
-
-        dispatch({ type: 'widthAndHeight', width, height: bodyHeight });
+    <RcTable
+      {...props}
+      scroll={{ ...scroll, y: tableBodyHeight }}
+      id={tableId}
+      className="lugia-table virtual-table"
+      columns={mergedColumns}
+      pagination={false}
+      components={{
+        body: replaceVirtualList,
       }}
-    >
-      <RcTable
-        {...props}
-        scroll={{ ...scroll, y: tableBodyHeight }}
-        id={tableId}
-        className="lugia-table virtual-table"
-        columns={mergedColumns}
-        pagination={false}
-        components={{
-          body: replaceVirtualList,
-        }}
-      />
-    </ResizeObserver>
+    />
   );
 }
