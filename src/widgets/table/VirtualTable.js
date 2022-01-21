@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useReducer } from 'react';
+import React, { useEffect, useRef, useReducer } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 import RcTable from '@lugia/rc-table';
 import VirtualList from './VirtualList';
@@ -48,20 +48,6 @@ export default function VirtualTable(props) {
     tableWidth: 0,
     tableBodyHeight: scrollY,
     scrollBarWidth: defaultScrollbarSize,
-  });
-  const [connectObject] = useState(() => {
-    const obj = {};
-    Object.defineProperty(obj, 'scrollLeft', {
-      get: () => null,
-      set: scrollLeft => {
-        if (gridRef.current) {
-          gridRef.current.scrollTo({
-            scrollLeft,
-          });
-        }
-      },
-    });
-    return obj;
   });
   const { tableWidth, tableBodyHeight, scrollBarWidth } = state;
 
@@ -226,7 +212,6 @@ export default function VirtualTable(props) {
     <VirtualList
       rawData={rawData}
       cbParams={cbParams}
-      connectObject={connectObject}
       gridRef={gridRef}
       columns={mergedColumns}
       tableWidth={tableWidth}

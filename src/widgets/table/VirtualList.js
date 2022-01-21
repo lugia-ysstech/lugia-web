@@ -14,7 +14,6 @@ export default props => {
   const {
     rawData,
     cbParams,
-    connectObject,
     gridRef,
     columns = [],
     tableWidth,
@@ -25,9 +24,8 @@ export default props => {
     gridStyle = {},
   } = props;
   const columnsLength = columns.length;
-  const { ref, onScroll } = cbParams;
+  const { onScroll } = cbParams;
 
-  ref.current = connectObject;
   const totalHeight = rawData.length * rowHeight;
 
   const getColumnWidth = index => {
