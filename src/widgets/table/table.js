@@ -316,32 +316,34 @@ export default ThemeProvider(
         virtualModel = false,
         virtualBoundary = defaultVirtualBoundary,
       } = nextProps;
+
+      this.isVirtualTable = virtualModel && isBeyondBoundary(nextData, virtualBoundary);
+
+      if (this.isVirtualTable) {
+        return true;
+      }
+
       const { selectRowKeys: nextSelectRowKeys } = nextState;
       const { columns, fixedColumns, data: preData } = this.props;
       const { selectRowKeys } = this.state;
 
-      this.isVirtualTable = virtualModel && isBeyondBoundary(nextData, virtualBoundary);
-
-      if (!this.isVirtualTable) {
-        if (
-          Array.isArray(nextData) &&
-          Array.isArray(preData) &&
-          (nextData.length !== preData.length ||
-            JSON.stringify(nextData) !== JSON.stringify(preData))
-        ) {
-          setTimeout(() => {
-            this.updateScrollY();
-          }, 0);
-        }
-        if (
-          !isEqualObject(nextColumns, columns) ||
-          !isEqualObject(nextSelectRowKeys, selectRowKeys) ||
-          !isEqualObject(nextFixedColumns, fixedColumns)
-        ) {
-          this.columns = this.handleColumns(nextProps);
-        }
-        return true;
+      if (
+        Array.isArray(nextData) &&
+        Array.isArray(preData) &&
+        (nextData.length !== preData.length || JSON.stringify(nextData) !== JSON.stringify(preData))
+      ) {
+        setTimeout(() => {
+          this.updateScrollY();
+        }, 0);
       }
+      if (
+        !isEqualObject(nextColumns, columns) ||
+        !isEqualObject(nextSelectRowKeys, selectRowKeys) ||
+        !isEqualObject(nextFixedColumns, fixedColumns)
+      ) {
+        this.columns = this.handleColumns(nextProps);
+      }
+      return true;
     }
 
     getContainerHeight = () => {
@@ -413,6 +415,10 @@ export default ThemeProvider(
     };
 
     componentDidUpdate(prevProps, prevState) {
+      if (this.isVirtualTable) {
+        return;
+      }
+
       setTimeout(() => {
         const { data = [], scroll } = this.props;
         const { data: prevPropsData = [] } = prevProps;
@@ -942,6 +948,11 @@ export default ThemeProvider(
         scroll = {},
         data = [],
       } = this.state;
+
+      if (this.isVirtualTable) {
+        return <VirtualTable {...this.props} />;
+      }
+
       const { dataIsSame: propsDataIsSame } = this.getTableData(this.oldPropsData, propsData, true);
       const tableData = propsDataIsSame ? data : propsData;
       this.currentPropsDataIsSame = propsDataIsSame;
@@ -977,10 +988,6 @@ export default ThemeProvider(
           </ExpandIconWrap>
         ) : null;
       };
-
-      if (this.isVirtualTable) {
-        return <VirtualTable {...this.props} />;
-      }
 
       if (children) {
         return (
