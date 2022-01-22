@@ -14,39 +14,18 @@ export const quickcall = (
   iconType: 'confirm' | 'info' | 'success' | 'warning' | 'error' = 'info'
 ) => {
   return (props: Object) => {
-    const {
-      title,
-      content,
-      cancelText = '取消',
-      okText = '确定',
-      onOk,
-      onCancel,
-      cancelButtonProps = {},
-      okButtonProps = {},
-      iconClass,
-      mask,
-      zIndex,
-    } = props;
-
-    const config: Object = {
-      title,
-      cancelText,
-      okText,
-      showIcon: true,
-      iconType,
-      content,
-      onOk,
-      onCancel,
-      cancelButtonProps,
-      okButtonProps,
-      iconClass,
-      mask,
-      zIndex,
-    };
-
     const div = document.createElement('div');
     document.body && document.body.appendChild(div);
 
-    ReactDOM.render(<FncModal parentDom={div} {...config} listener={modalListener} />, div);
+    ReactDOM.render(
+      <FncModal
+        parentDom={div}
+        {...props}
+        iconType={iconType}
+        showIcon={true}
+        listener={modalListener}
+      />,
+      div
+    );
   };
 };
