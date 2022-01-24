@@ -187,6 +187,7 @@ export default ThemeProvider(
         closeIconClass,
         zIndex,
         mountBody = true,
+        forceRender,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       if (!zIndex && zIndex !== 0 && !this.index && this.index !== 0 && visible) {
@@ -304,13 +305,19 @@ export default ThemeProvider(
           </ModalWrap>
         </Wrap>
       );
+      let newIntegrateModal = integrateModal;
+
+      if (forceRender) {
+        newIntegrateModal = visible || closing ? integrateModal : <div />;
+      }
+
       if (mountBody) {
         if (!this.node) {
           return null;
         }
-        return createPortal(integrateModal, this.node);
+        return createPortal(newIntegrateModal, this.node);
       }
-      return integrateModal;
+      return newIntegrateModal;
     }
     handleMaskClick = () => {
       const { maskClosable = true } = this.props;

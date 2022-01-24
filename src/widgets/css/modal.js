@@ -22,6 +22,7 @@ export type ModalProps = {
   title?: string | React.ReactNode,
   children: string | React.ReactNode,
   visible: boolean,
+  forceRender?: boolean,
   cancelText?: string,
   okText?: string,
   onOk: Function,
@@ -285,7 +286,7 @@ const getLugiaMegaCSS = (props: CSSProps): string => {
     return css`
       position: absolute;
       left: 30px;
-      ${theCSS}
+      ${theCSS};
       z-index: 4000;
       padding-top: 0;
     `;
