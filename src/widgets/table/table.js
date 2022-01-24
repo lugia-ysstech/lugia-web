@@ -127,7 +127,7 @@ const TableWrap = CSSComponent({
         }
 
         ${hasChildrenAndFixed
-          ? `tbody .rc-table-cell.rc-table-cell-ellipsis.rc-table-cell-fix-left-last {
+          ? `.rc-table tbody tr td:first-child {
                   display: flex;
                   align-items: center;
             }`
@@ -190,7 +190,6 @@ export default ThemeProvider(
       this.userAgentInfor = '';
       this.tableThead = 0;
       this.isVirtualTable = virtualModel && isBeyondBoundary(data, virtualBoundary);
-      this.hasChildrenAndFixed = this.isExistChildrenAndFixedAndEllipsis(props);
     }
 
     isHasData = value => {
@@ -199,8 +198,8 @@ export default ThemeProvider(
     keyInstanceOfData0 = (data, key) => {
       return this.isHasData(data) && data[0][key];
     };
-    isExistChildrenAndFixedAndEllipsis = props => {
-      const { data = [] } = props;
+    isExistChildrenAndFixedAndEllipsis = () => {
+      const { data = [] } = this.props;
       return (
         this.isHasData(data) &&
         data.some(({ children }) => !!children) &&
@@ -430,6 +429,7 @@ export default ThemeProvider(
         ) {
           return;
         }
+
         this.setState({ tableThead: nextHeader });
         this.updateScrollY();
       }, 0);
@@ -972,7 +972,7 @@ export default ThemeProvider(
           fixedColStyle: fixedBottom
             ? this.getFixedBottomStyle('.rc-table tbody tr:nth-last-child')
             : '',
-          hasChildrenAndFixed: this.hasChildrenAndFixed,
+          hasChildrenAndFixed: this.isExistChildrenAndFixedAndEllipsis(),
         },
       });
       const customExpandIcon = prop => {
