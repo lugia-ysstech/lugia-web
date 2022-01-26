@@ -198,13 +198,16 @@ export default ThemeProvider(
     keyInstanceOfData0 = (data, key) => {
       return this.isHasData(data) && data[0][key];
     };
+
     isExistChildrenAndFixedAndEllipsis = () => {
       const { data = [] } = this.props;
+      const columns = this.columns;
+      const fixed0 = this.keyInstanceOfData0(columns, 'fixed');
       return (
         this.isHasData(data) &&
         data.some(({ children }) => !!children) &&
-        this.keyInstanceOfData0(this.columns, 'ellipsis') &&
-        this.columns[0].fixed === 'left'
+        this.keyInstanceOfData0(columns, 'ellipsis') &&
+        (fixed0 === 'left' || !!fixed0)
       );
     };
     getLugiadHeightType = (): HeightType => {
