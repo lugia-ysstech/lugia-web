@@ -127,7 +127,7 @@ const TableWrap = CSSComponent({
         }
 
         ${hasChildrenAndFixed
-          ? `.rc-table tbody tr td:first-child {
+          ? `tbody .rc-table-cell.rc-table-cell-ellipsis.rc-table-cell-fix-left-last {
                   display: flex;
                   align-items: center;
             }`
