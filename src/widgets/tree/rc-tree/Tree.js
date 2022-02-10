@@ -95,6 +95,10 @@ class Tree extends React.Component {
       dragOverNodeKey: '',
     };
   }
+  treeUlNode: React$Node;
+  setTreeUlNode = (node: React$Node) => {
+    this.treeUlNode = node;
+  };
 
   componentWillUpdate(nextProps, nextState, nextContext) {
     const { originData } = this.props;
@@ -174,8 +178,28 @@ class Tree extends React.Component {
     const { onDragEnter } = this.props;
     this.treeDrag.onMouseEnter(mouseEvent, onDragEnter);
   };
+
+  componentDidMount() {
+    const treeUlNode = this.treeUlNode;
+    if (treeUlNode && this.props.draggable) {
+      treeUlNode.addEventListener('mousemove', this.onMouseMove);
+      treeUlNode.addEventListener('mouseleave', this.onMouseLeave);
+      treeUlNode.addEventListener('mousedown', this.onMouseDown);
+      treeUlNode.addEventListener('mouseup', this.onMouseUp);
+      treeUlNode.addEventListener('mouseenter', this.onMouseEnter);
+    }
+  }
+
   componentWillUnmount() {
     treeDragController.destroyTreeDrag(this.treeDrag.uuid);
+    const treeUlNode = this.treeUlNode;
+    if (treeUlNode && this.props.draggable) {
+      treeUlNode.removeEventListener('mousemove', this.onMouseMove);
+      treeUlNode.removeEventListener('mouseleave', this.onMouseLeave);
+      treeUlNode.removeEventListener('mousedown', this.onMouseDown);
+      treeUlNode.removeEventListener('mouseup', this.onMouseUp);
+      treeUlNode.removeEventListener('mouseenter', this.onMouseEnter);
+    }
   }
 
   onDragStart(e, treeNode) {
@@ -514,12 +538,8 @@ class Tree extends React.Component {
         role="tree-node"
         unselectable="on"
         style={props.style}
+        ref={this.setTreeUlNode}
         themeProps={getPartOfThemeProps('Container', { props: { top } })}
-        onMouseMove={props.draggable && this.onMouseMove}
-        onMouseLeave={props.draggable && this.onMouseLeave}
-        onMouseDown={props.draggable && this.onMouseDown}
-        onMouseUp={props.draggable && this.onMouseUp}
-        onMouseEnter={props.draggable && this.onMouseEnter}
       >
         <DragCopy listener={this.treeDrag.listener} />
         {React.Children.map(props.children, this.renderTreeNode, this)}
