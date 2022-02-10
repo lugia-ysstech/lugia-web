@@ -410,10 +410,12 @@ export default ThemeProvider(
     };
 
     getTableThead = () => {
-      if (this.tableWrap && this.tableWrap.querySelector) {
+      const { showHeader } = this.props;
+      if (showHeader && this.tableWrap && this.tableWrap.querySelector) {
         const { offsetHeight: tableHeaderHeight } = this.tableWrap.querySelector('.rc-table-thead');
         return tableHeaderHeight;
       }
+      return 0;
     };
 
     componentDidUpdate(prevProps, prevState) {
