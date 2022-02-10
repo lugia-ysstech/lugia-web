@@ -121,3 +121,20 @@ export const getChildrenKeys = (data, childrenKeys, childrenRecords, rowKey, set
 export function isEqualObject(newData, data) {
   return _.eq(newData, data);
 }
+
+export function selfReferenceStringify(data) {
+  let cache = [];
+  const str = JSON.stringify(data, function(key, value) {
+    if (typeof value === 'object' && value !== null) {
+      if (cache.indexOf(value) !== -1) {
+        return;
+      }
+      cache.push(value);
+    }
+    return value;
+  });
+
+  cache = null;
+
+  return str;
+}
