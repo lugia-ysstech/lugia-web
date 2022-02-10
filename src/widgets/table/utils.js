@@ -122,7 +122,7 @@ export function isEqualObject(newData, data) {
   return _.eq(newData, data);
 }
 
-export function selfReferenceStringify(data) {
+export function circularReferenceStringify(data) {
   let cache = [];
   const str = JSON.stringify(data, function(key, value) {
     if (typeof value === 'object' && value !== null) {
