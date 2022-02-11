@@ -123,13 +123,14 @@ export function isEqualObject(newData, data) {
 }
 
 export function circularReferenceStringify(data) {
-  let cache = [];
+  let cache = new Map();
   const str = JSON.stringify(data, function(key, value) {
     if (typeof value === 'object' && value !== null) {
-      if (cache.indexOf(value) !== -1) {
+      if (cache.get(value) !== undefined) {
         return;
       }
-      cache.push(value);
+
+      cache.set(value, value);
     }
     return value;
   });
