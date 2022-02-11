@@ -121,3 +121,21 @@ export const getChildrenKeys = (data, childrenKeys, childrenRecords, rowKey, set
 export function isEqualObject(newData, data) {
   return _.eq(newData, data);
 }
+
+export function circularReferenceStringify(data) {
+  let cache = new Map();
+  const str = JSON.stringify(data, function(key, value) {
+    if (typeof value === 'object' && value !== null) {
+      if (cache.get(value) !== undefined) {
+        return;
+      }
+
+      cache.set(value, value);
+    }
+    return value;
+  });
+
+  cache = null;
+
+  return str;
+}

@@ -25,6 +25,7 @@ import {
   isEqualArray,
   getValidNotCheckedKeys,
   isEqualObject,
+  circularReferenceStringify,
 } from './utils';
 import Empty from '../empty';
 import Icon from '../icon';
@@ -332,7 +333,8 @@ export default ThemeProvider(
       if (
         Array.isArray(nextData) &&
         Array.isArray(preData) &&
-        (nextData.length !== preData.length || JSON.stringify(nextData) !== JSON.stringify(preData))
+        (nextData.length !== preData.length ||
+          circularReferenceStringify(nextData) !== circularReferenceStringify(preData))
       ) {
         setTimeout(() => {
           this.updateScrollY();
