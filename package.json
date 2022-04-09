@@ -33,7 +33,7 @@
     "deepmerge": "^3.2.0",
     "enquire.js": "^2.1.6",
     "events": "^3.0.0",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "prop-types": "15.5.10",
     "prop-types-extra": "1.0.1",
     "rc-align": "2.4.3",
