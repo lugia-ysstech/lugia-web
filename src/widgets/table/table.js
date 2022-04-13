@@ -78,6 +78,7 @@ const TableWrap = CSSComponent({
           bodyRowHeight,
           fixedColStyle,
           hasChildrenAndFixed,
+          lastColumnsIsHasChildren,
         } = {},
       } = themeProps;
       const padding = sizePadding[size] || sizePadding.default;
@@ -125,6 +126,12 @@ const TableWrap = CSSComponent({
         .rc-table thead tr th {
           height: ${headHeightString};
         }
+
+        ${lastColumnsIsHasChildren
+          ? `.rc-table thead tr:nth-child(1) .rc-table-cell-scrollbar::after {
+          background: #e8e8e8;
+        }`
+          : ''}
 
         ${hasChildrenAndFixed
           ? `tbody .rc-table-cell.rc-table-cell-ellipsis.rc-table-cell-fix-left-last {
@@ -925,6 +932,14 @@ export default ThemeProvider(
       }, 0);
     };
 
+    judgeLastColumnIsHasChildren = () => {
+      const { columns = [] } = this.props;
+      return (
+        this.isHasData(columns) &&
+        Array.isArray(columns) &&
+        columns.some(() => !!columns[columns.length - 1].children)
+      );
+    };
     render() {
       const {
         children,
@@ -978,6 +993,7 @@ export default ThemeProvider(
             ? this.getFixedBottomStyle('.rc-table tbody tr:nth-last-child')
             : '',
           hasChildrenAndFixed: this.isExistChildrenAndFixedAndEllipsis(),
+          lastColumnsIsHasChildren: this.judgeLastColumnIsHasChildren(),
         },
       });
       const customExpandIcon = prop => {
