@@ -27,6 +27,10 @@
     "title": "设置每列样式的 Table",
     "desc": "自定义修改每列样式的 Table"
   },
+  "GroupHeaderDemo": {
+    "title": "表头分组且有滚动条 Table",
+    "desc": "columns[n] 内嵌 children 且有scrollY时，分组表头的样式展示"
+  },
   "TitleAlignColumnsDemo": {
     "title": "单独设置每列表头文本的对齐方式",
     "desc": "表格表头文本的对齐方式可以和表体分开设置"
