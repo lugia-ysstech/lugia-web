@@ -23,7 +23,7 @@
 
 "@babel/core@>=7.2.2", "@babel/core@^7.12.9":
   version "7.15.0"
-  resolved "http://192.168.102.79:5001/@babel%2fcore/-/core-7.15.0.tgz#749e57c68778b73ad8082775561f67f5196aafa8"
+  resolved "https://registry.npmmirror.com/@babel%2fcore/-/core-7.15.0.tgz#749e57c68778b73ad8082775561f67f5196aafa8"
   integrity sha512-tXtmTminrze5HEUPn/a0JtOzzfp0nk+UEXQ/tqIJo3WDGypl/2OFQEMll/zSFU8f/lfmfLXvTaORHF3cfXIQMw==
   dependencies:
     "@babel/code-frame" "^7.14.5"
@@ -785,7 +785,7 @@
 
 "@babel/plugin-transform-react-jsx-development@^7.14.5":
   version "7.14.5"
-  resolved "http://192.168.102.79:5001/@babel%2fplugin-transform-react-jsx-development/-/plugin-transform-react-jsx-development-7.14.5.tgz#1a6c73e2f7ed2c42eebc3d2ad60b0c7494fcb9af"
+  resolved "https://registry.npmmirror.com/@babel%2fplugin-transform-react-jsx-development/-/plugin-transform-react-jsx-development-7.14.5.tgz#1a6c73e2f7ed2c42eebc3d2ad60b0c7494fcb9af"
   integrity sha1-Gmxz4vftLELuvD0q1gsMdJT8ua8=
   dependencies:
     "@babel/plugin-transform-react-jsx" "^7.14.5"
@@ -803,7 +803,7 @@
 
 "@babel/plugin-transform-react-pure-annotations@^7.14.5":
   version "7.14.5"
-  resolved "http://192.168.102.79:5001/@babel%2fplugin-transform-react-pure-annotations/-/plugin-transform-react-pure-annotations-7.14.5.tgz#18de612b84021e3a9802cbc212c9d9f46d0d11fc"
+  resolved "https://registry.npmmirror.com/@babel%2fplugin-transform-react-pure-annotations/-/plugin-transform-react-pure-annotations-7.14.5.tgz#18de612b84021e3a9802cbc212c9d9f46d0d11fc"
   integrity sha1-GN5hK4QCHjqYAsvCEsnZ9G0NEfw=
   dependencies:
     "@babel/helper-annotate-as-pure" "^7.14.5"
@@ -1004,7 +1004,7 @@
 
 "@babel/preset-react@^7.14.5":
   version "7.14.5"
-  resolved "http://192.168.102.79:5001/@babel%2fpreset-react/-/preset-react-7.14.5.tgz#0fbb769513f899c2c56f3a882fa79673c2d4ab3c"
+  resolved "https://registry.npmmirror.com/@babel%2fpreset-react/-/preset-react-7.14.5.tgz#0fbb769513f899c2c56f3a882fa79673c2d4ab3c"
   integrity sha1-D7t2lRP4mcLFbzqIL6eWc8LUqzw=
   dependencies:
     "@babel/helper-plugin-utils" "^7.14.5"
@@ -12913,7 +12913,7 @@ rc-util@^4.0.4, rc-util@^4.13.0, rc-util@^4.15.3, rc-util@^4.4.0:
 
 rc-util@^5.14.0:
   version "5.15.0"
-  resolved "http://192.168.102.79:5001/rc-util/-/rc-util-5.15.0.tgz#3527bd6c5806cf04476e17a0c7bf094fc8ea4666"
+  resolved "https://registry.npmmirror.com/rc-util/-/rc-util-5.15.0.tgz#3527bd6c5806cf04476e17a0c7bf094fc8ea4666"
   integrity sha512-8RI8sjOCXD3FhD3dzQNBQetpGol6BBd3sHQ/8jSGk9NPT0CH3JGtBfPODnASyE7AdDpCFQMOmgcp9CBs3S/1hg==
   dependencies:
     "@babel/runtime" "^7.12.5"
