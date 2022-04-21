@@ -132,7 +132,6 @@ const TableWrap = CSSComponent({
           background: #e8e8e8;
         }`
           : ''}
-
         ${hasChildrenAndFixed
           ? `tbody .rc-table-cell.rc-table-cell-ellipsis.rc-table-cell-fix-left-last {
                   display: flex;
