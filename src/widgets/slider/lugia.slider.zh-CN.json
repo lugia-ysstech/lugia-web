@@ -1114,6 +1114,7 @@
   "category": [
     "数据录入"
   ],
+  "themeConfigStyle": [],
   "type": {
     "ChangeType": {
       "newValue": "string",

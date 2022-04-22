@@ -107,6 +107,7 @@
   "category": [
     "数据展示"
   ],
+  "themeConfigStyle": [],
   "theme": {
     "Badge": {
       "name": "点状徽标",

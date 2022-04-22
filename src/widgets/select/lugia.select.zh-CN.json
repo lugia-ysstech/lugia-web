@@ -327,7 +327,8 @@
       "type": "boolean",
       "designOnly": false,
       "injectProps": false,
-      "defaultValue": false
+      "defaultValue": false,
+      "meta": ""
     }
   },
   "events": {
@@ -418,6 +419,16 @@
           "name": "oldValue",
           "desc": "改变之前所有选中项的valueField的集合",
           "type": "string[]"
+        }
+      ]
+    },
+    "onBlur": {
+      "desc": "失焦时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "失焦的DOM事件",
+          "type": "object"
         }
       ]
     }
@@ -2028,6 +2039,7 @@
   "category": [
     "数据录入"
   ],
+  "themeConfigStyle": [],
   "type": {
     "sizeType": [
       {

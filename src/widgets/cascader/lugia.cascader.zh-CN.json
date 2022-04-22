@@ -288,6 +288,7 @@
   "category": [
     "数据录入"
   ],
+  "themeConfigStyle": [],
   "type": {
     "changeType": {
       "newValue": "string[]",

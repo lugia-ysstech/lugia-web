@@ -1,6 +1,6 @@
 {
     "name": "@lugia/lugia-web",
-    "version": "1.2.40-beta.26",
+    "version": "1.2.40-beta.31",
     "keywords": [
         "lugia",
         "design",
@@ -212,5 +212,6 @@
     "engines": {
         "node": ">=8.0.0",
         "npm": ">=5.2.0"
-    }
+    },
+    "moduleName": "@lugia/lugia-web"
 }

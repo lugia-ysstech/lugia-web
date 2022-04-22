@@ -55,6 +55,7 @@
   "category": [
     "数据展示"
   ],
+  "themeConfigStyle": [],
   "theme": {
     "Container": {
       "name": "文本",

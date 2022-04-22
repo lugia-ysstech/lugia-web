@@ -235,6 +235,7 @@
   "category": [
     "数据录入"
   ],
+  "themeConfigStyle": [],
   "theme": {
     "ActiveIcon": {
       "name": "选中状态的图标",

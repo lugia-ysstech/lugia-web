@@ -143,6 +143,7 @@ export default [
       },
       designInfo: {},
       category: ['反馈'],
+      themeConfigStyle: [],
       type: {
         AlertType: [
           { value: 'info', text: '信息' },
@@ -372,6 +373,7 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         InputSize: [
           { value: 'small', text: '小' },
@@ -626,6 +628,7 @@ export default [
       },
       designInfo: {},
       category: ['其他'],
+      themeConfigStyle: [],
       type: {
         SlideType: [
           { value: 'circle', text: '圆型' },
@@ -829,6 +832,7 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         sizeType: ['small', 'default', 'large'],
         ValidateStatus: ['default', 'error'],
@@ -1245,6 +1249,7 @@ export default [
         },
       },
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         AvatarType: [
           { value: 'text', text: '文本' },
@@ -1362,6 +1367,7 @@ export default [
       },
       events: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         AvatarType: [
           { value: 'text', text: '文本' },
@@ -1480,6 +1486,7 @@ export default [
       },
       events: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         AvatarType: [
           { value: 'text', text: '文本' },
@@ -1588,6 +1595,7 @@ export default [
       events: {},
       designInfo: {},
       category: ['其他'],
+      themeConfigStyle: [],
       type: {
         ShowType: [
           { value: 'textType', text: '文本' },
@@ -1701,6 +1709,7 @@ export default [
         },
       },
       category: ['数据展示'],
+      themeConfigStyle: [],
       theme: {
         Badge: {
           name: '点状徽标',
@@ -1777,6 +1786,7 @@ export default [
       },
       events: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       theme: {
         Badge: {
           name: '数字徽标',
@@ -1858,6 +1868,7 @@ export default [
         },
       },
       category: ['通用'],
+      themeConfigStyle: [],
       type: {
         ShapeType: [
           { value: 'circle', text: '圆形' },
@@ -1916,6 +1927,7 @@ export default [
       },
       events: {},
       category: ['通用'],
+      themeConfigStyle: [],
       type: {
         ShapeType: [
           { value: 'circle', text: '圆形' },
@@ -2009,6 +2021,7 @@ export default [
       },
       designInfo: {},
       category: ['通用'],
+      themeConfigStyle: [],
       type: {},
       defaultTheme: { Container: { normal: { width: 312 } } },
       theme: {
@@ -2557,6 +2570,7 @@ export default [
         },
       },
       category: ['通用'],
+      themeConfigStyle: [],
       type: {
         ButtonShape: [
           { value: 'default', text: '默认型' },
@@ -2736,6 +2750,7 @@ export default [
         },
       },
       category: ['通用'],
+      themeConfigStyle: [],
       type: {
         ButtonShape: [
           { value: 'default', text: '默认型' },
@@ -2915,6 +2930,7 @@ export default [
         },
       },
       category: ['通用'],
+      themeConfigStyle: [],
       type: {
         ButtonShape: [
           { value: 'default', text: '默认型' },
@@ -3095,6 +3111,7 @@ export default [
         },
       },
       category: ['通用'],
+      themeConfigStyle: [],
       type: {
         ButtonShape: [
           { value: 'default', text: '默认型' },
@@ -3264,6 +3281,7 @@ export default [
         },
       },
       category: ['通用'],
+      themeConfigStyle: [],
       type: {
         ButtonShape: [
           { value: 'default', text: '默认型' },
@@ -3412,6 +3430,7 @@ export default [
         },
       },
       category: ['通用'],
+      themeConfigStyle: [],
       type: {
         ButtonShape: [
           { value: 'default', text: '默认型' },
@@ -3996,6 +4015,7 @@ export default [
         },
       },
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -4208,6 +4228,7 @@ export default [
       },
       events: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -4411,6 +4432,7 @@ export default [
       },
       events: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -4621,6 +4643,7 @@ export default [
       },
       events: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -4824,6 +4847,7 @@ export default [
       },
       events: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -5031,6 +5055,7 @@ export default [
       },
       events: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -5241,6 +5266,7 @@ export default [
       },
       events: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -5408,6 +5434,7 @@ export default [
       },
       events: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -5552,6 +5579,7 @@ export default [
       },
       designInfo: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         IndicatorType: [
           { value: 'horizontal', text: '水平显示' },
@@ -5888,6 +5916,7 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         changeType: {
           newValue: 'string[]',
@@ -6534,6 +6563,7 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         CheckboxType: ['default', 'vertical'],
         CheckboxStyle: {
@@ -7136,6 +7166,7 @@ export default [
       },
       designInfo: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         CollapseStyle: {
           width: { type: 'number', desc: 'Collapse宽度' },
@@ -7575,6 +7606,7 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         InputSize: [
           { value: 'small', text: '小' },
@@ -9653,6 +9685,7 @@ export default [
         },
       },
       category: ['其他'],
+      themeConfigStyle: [],
       type: {
         DividerPosition: [
           { value: 'left', text: '居左' },
@@ -9730,6 +9763,7 @@ export default [
       },
       events: {},
       category: ['其他'],
+      themeConfigStyle: [],
       type: {
         DividerPosition: [
           { value: 'left', text: '居左' },
@@ -9849,6 +9883,7 @@ export default [
       },
       designInfo: {},
       category: ['反馈'],
+      themeConfigStyle: [],
       type: {
         PlacementType: [
           { value: 'top', text: '顶部' },
@@ -10366,6 +10401,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         AlignType: [
           { value: 'topLeft', text: '上左' },
@@ -10866,6 +10902,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         AlignType: [
           { value: 'topLeft', text: '上左' },
@@ -11191,6 +11228,7 @@ export default [
       },
       designInfo: {},
       category: ['通用'],
+      themeConfigStyle: [],
       theme: {
         Icon: {
           name: '图标',
@@ -11247,6 +11285,7 @@ export default [
       events: {},
       designInfo: {},
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {},
       defaultTheme: {},
       theme: {
@@ -11517,6 +11556,7 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         InputType: [
           { value: 'text', text: '文本' },
@@ -13064,6 +13104,7 @@ export default [
       },
       designInfo: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       theme: {
         Container: {
           name: '文本',
@@ -13189,6 +13230,7 @@ export default [
       events: {},
       designInfo: {},
       category: ['其他'],
+      themeConfigStyle: [],
       type: {
         sizeType: [
           { value: 'small', text: '小' },
@@ -13242,6 +13284,7 @@ export default [
       events: {},
       designInfo: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       defaultTheme: { Container: { normal: { width: 750, height: 400 } } },
       theme: {
         Container: {
@@ -13773,6 +13816,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         SizeType: [
           { value: 'small', text: '小' },
@@ -14238,6 +14282,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         SizeType: [
           { value: 'small', text: '小' },
@@ -14534,6 +14579,7 @@ export default [
       events: {},
       designInfo: {},
       category: ['反馈'],
+      themeConfigStyle: [],
       defaultTheme: { Container: { normal: { width: 500 } } },
       theme: {
         Container: {
@@ -14836,6 +14882,7 @@ export default [
         },
       },
       category: ['反馈'],
+      themeConfigStyle: [],
       defaultTheme: { Container: { normal: { width: 520, height: 70 } } },
       theme: {
         Container: {
@@ -15100,6 +15147,7 @@ export default [
         onCancel: { desc: '点击取消时的回调', args: [] },
       },
       category: ['反馈'],
+      themeConfigStyle: [],
       defaultTheme: {
         Container: { normal: { minWidth: 0, width: 520, height: 70 } },
       },
@@ -16548,6 +16596,7 @@ export default [
         },
       },
       category: ['导航'],
+      themeConfigStyle: [],
       type: {
         ThemeStyleType: [
           { value: 'light', text: '白昼风格' },
@@ -17038,6 +17087,7 @@ export default [
         },
       },
       category: ['导航'],
+      themeConfigStyle: [],
       type: {
         ThemeStyleType: [
           { value: 'light', text: '白昼风格' },
@@ -17611,6 +17661,7 @@ export default [
         },
       },
       category: ['导航'],
+      themeConfigStyle: [],
       type: {
         ThemeStyleType: [
           { value: 'light', text: '白昼风格' },
@@ -18244,6 +18295,7 @@ export default [
         },
       },
       category: ['导航'],
+      themeConfigStyle: [],
       type: {
         ThemeStyleType: [
           { value: 'light', text: '白昼风格' },
@@ -18563,6 +18615,7 @@ export default [
       events: {},
       designInfo: {},
       category: ['反馈'],
+      themeConfigStyle: [],
       type: {
         PlacementType: [
           { value: 'topRight', text: '右上' },
@@ -18857,6 +18910,7 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         InputSize: [
           { value: 'small', text: '小' },
@@ -19131,6 +19185,7 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
+      themeConfigStyle: [],
       defaultTheme: { Container: { normal: { width: 800 } } },
       theme: {
         Container: {
@@ -19492,6 +19547,7 @@ export default [
         },
       },
       category: ['导航'],
+      themeConfigStyle: [],
       type: {
         BlockType: [
           { value: 'Page', text: '主体' },
@@ -20113,6 +20169,7 @@ export default [
         },
       },
       category: ['导航'],
+      themeConfigStyle: [],
       type: {
         BlockType: [
           { value: 'Page', text: '主体' },
@@ -20483,6 +20540,7 @@ export default [
         },
       },
       category: ['反馈'],
+      themeConfigStyle: [],
       type: {
         DirectionType: [
           { value: 'topLeft', text: '上左' },
@@ -20768,6 +20826,7 @@ export default [
         },
       },
       category: ['反馈'],
+      themeConfigStyle: [],
       type: {
         DirectionType: [
           { value: 'topLeft', text: '上左' },
@@ -21071,6 +21130,7 @@ export default [
         },
       },
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         DirectionType: [
           { value: 'topLeft', text: '上左' },
@@ -21270,6 +21330,7 @@ export default [
         },
       },
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         DirectionType: [
           { value: 'topLeft', text: '上左' },
@@ -21529,6 +21590,7 @@ export default [
         },
       },
       category: ['反馈'],
+      themeConfigStyle: [],
       type: {
         ProgressType: [
           { value: 'line', text: '线型' },
@@ -21702,6 +21764,7 @@ export default [
       },
       events: {},
       category: ['反馈'],
+      themeConfigStyle: [],
       type: {
         ProgressType: [
           { value: 'line', text: '线型' },
@@ -21851,6 +21914,7 @@ export default [
       },
       events: {},
       category: ['反馈'],
+      themeConfigStyle: [],
       type: {
         ProgressType: [
           { value: 'line', text: '线型' },
@@ -21979,6 +22043,7 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: { RadioStyle: { color: { type: 'string', desc: 'Radio的颜色' } } },
       theme: {
         Container: {
@@ -22591,6 +22656,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       theme: {
         ActiveIcon: {
           name: '选中状态的图标',
@@ -22706,6 +22772,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       theme: {
         ActiveIcon: {
           name: '选中状态的图标',
@@ -22839,6 +22906,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       theme: {
         ActiveTextIcon: {
           name: '选中状态的文字',
@@ -22901,6 +22969,7 @@ export default [
       },
       designInfo: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       defaultTheme: { Container: { normal: { width: 300, height: 120 } } },
       theme: {
         Container: {
@@ -23223,6 +23292,7 @@ export default [
           designOnly: false,
           injectProps: false,
           defaultValue: false,
+          meta: '',
         },
       },
       events: {
@@ -23295,6 +23365,10 @@ export default [
               type: 'string[]',
             },
           ],
+        },
+        onBlur: {
+          desc: '失焦时触发',
+          args: [{ name: 'event', desc: '失焦的DOM事件', type: 'object' }],
         },
       },
       designInfo: {
@@ -23809,6 +23883,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         sizeType: [
           { value: 'small', text: '小' },
@@ -24542,6 +24617,7 @@ export default [
           designOnly: false,
           injectProps: false,
           defaultValue: false,
+          meta: '',
         },
       },
       events: {
@@ -24615,8 +24691,13 @@ export default [
             },
           ],
         },
+        onBlur: {
+          desc: '失焦时触发',
+          args: [{ name: 'event', desc: '失焦的DOM事件', type: 'object' }],
+        },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         sizeType: [
           { value: 'small', text: '小' },
@@ -25198,6 +25279,7 @@ export default [
       events: {},
       designInfo: {},
       category: ['反馈'],
+      themeConfigStyle: [],
       theme: {
         Wrap: {
           name: 'Skeleton的外框',
@@ -25629,6 +25711,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         ChangeType: {
           newValue: 'string',
@@ -25803,6 +25886,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         ChangeType: {
           newValue: 'string',
@@ -25976,6 +26060,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         ChangeType: {
           newValue: 'string',
@@ -26150,6 +26235,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         ChangeType: {
           newValue: 'string',
@@ -27160,6 +27246,7 @@ export default [
         },
       },
       category: ['导航'],
+      themeConfigStyle: [],
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
@@ -27508,6 +27595,7 @@ export default [
       },
       events: {},
       category: ['导航'],
+      themeConfigStyle: [],
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
@@ -27857,6 +27945,7 @@ export default [
       },
       events: {},
       category: ['导航'],
+      themeConfigStyle: [],
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
@@ -28206,6 +28295,7 @@ export default [
       },
       events: {},
       category: ['导航'],
+      themeConfigStyle: [],
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
@@ -28565,6 +28655,7 @@ export default [
       },
       events: {},
       category: ['导航'],
+      themeConfigStyle: [],
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
@@ -28857,6 +28948,7 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         SizeType: [
           { value: 'default', text: '默认尺寸' },
@@ -29263,6 +29355,7 @@ export default [
       },
       designInfo: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         tableStyleType: ['zebraStripe', 'linear', 'bordered'],
         SizeType: ['default', 'large', 'small'],
@@ -29762,6 +29855,7 @@ export default [
         },
       },
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         TabType: [
           { value: 'line', text: '线性标签页' },
@@ -30125,6 +30219,7 @@ export default [
         },
       },
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         TabType: [
           { value: 'line', text: '线性标签页' },
@@ -30477,6 +30572,7 @@ export default [
         },
       },
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         TabType: [
           { value: 'line', text: '线性标签页' },
@@ -30877,6 +30973,7 @@ export default [
         },
       },
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         ShapeType: [
           { value: 'basic', text: '基本类型' },
@@ -31027,6 +31124,7 @@ export default [
         },
       },
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         ShapeType: [
           { value: 'basic', text: '基本类型' },
@@ -31177,6 +31275,7 @@ export default [
         },
       },
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         ShapeType: [
           { value: 'basic', text: '基本类型' },
@@ -31479,6 +31578,7 @@ export default [
         },
       },
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         TimeLineMode: [
           { value: 'left', text: '左侧展示' },
@@ -31696,6 +31796,7 @@ export default [
       },
       events: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         TimeLineMode: [
           { value: 'left', text: '左侧展示' },
@@ -31971,6 +32072,7 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         InputSize: [
           { value: 'small', text: '小' },
@@ -32204,6 +32306,7 @@ export default [
       },
       designInfo: {},
       category: ['数据展示'],
+      themeConfigStyle: [],
       type: {
         ActionType: [
           { value: 'click', text: '点击' },
@@ -32981,6 +33084,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         SizeType: [
           { value: 'small', text: '小' },
@@ -33833,6 +33937,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         SizeType: [
           { value: 'small', text: '小' },
@@ -34969,6 +35074,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         sizeType: [
           { value: 'small', text: '小' },
@@ -35559,6 +35665,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         sizeType: [
           { value: 'small', text: '小' },
@@ -36868,6 +36975,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         sizeType: [
           { value: 'small', text: '小' },
@@ -37623,6 +37731,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         sizeType: [
           { value: 'small', text: '小' },
@@ -39259,6 +39368,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
@@ -39708,6 +39818,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
@@ -40144,6 +40255,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
@@ -40549,6 +40661,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
@@ -40963,6 +41076,7 @@ export default [
         },
       },
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
@@ -41579,6 +41693,7 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
+      themeConfigStyle: [],
       type: {
         lockingWayType: ['default', 'click', 'drag'],
         lockDirectionType: ['left', 'right'],
