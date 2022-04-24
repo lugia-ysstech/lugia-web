@@ -52,6 +52,8 @@ const getImgWrapPosition = props => {
 
     return getStickyStyle({ stickPosition, imgWidth });
   }
+
+  return 'text-align: center;';
 };
 
 const ImgWrap = styled.div`
