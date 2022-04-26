@@ -165,6 +165,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       this.updateDisplayValue(value);
     }
     this.inputTag = React.createRef();
+    this.blurEvent = {};
   }
 
   updateDisplayValue(value: string[]) {
@@ -435,6 +436,18 @@ class Select extends React.Component<SelectProps, SelectState> {
     return <PopupMenuWrap themeProps={menuThemeConfig}>{menu}</PopupMenuWrap>;
   };
 
+  onHandleBlur = event => {
+    const { mutliple, onBlur } = this.props;
+    this.blurEvent = event;
+    !mutliple && onBlur && onBlur(event);
+  };
+
+  onDocumentClick = () => {
+    const { mutliple, onBlur } = this.props;
+    this.setState({ menuVisible: false });
+    mutliple && onBlur && onBlur(this.blurEvent);
+  };
+
   fetchRenderItems() {
     const { props, state } = this;
     const {
@@ -450,7 +463,6 @@ class Select extends React.Component<SelectProps, SelectState> {
       singleClearIcon,
       isShowClearButton,
       onFocus,
-      onBlur,
       alwaysOpen,
       liquidLayout,
       popupContainerId,
@@ -478,6 +490,8 @@ class Select extends React.Component<SelectProps, SelectState> {
           onPopupVisibleChange={this.onMenuPopupVisibleChange}
           alwaysOpen={alwaysOpen}
           liquidLayout={liquidLayout}
+          onDocumentClick={this.onDocumentClick}
+          popupVisible={menuVisible}
         >
           <InputTag
             ref={this.inputTag}
@@ -500,7 +514,7 @@ class Select extends React.Component<SelectProps, SelectState> {
             clearIconClass={clearIconClass}
             isShowClearButton={isShowClearButton}
             onFocus={onFocus}
-            onBlur={onBlur}
+            onBlur={this.onHandleBlur}
             singleClearIcon={singleClearIcon}
           />
         </Trigger>
@@ -575,7 +589,8 @@ class Select extends React.Component<SelectProps, SelectState> {
     const { selectedKeys } = selectedValue;
 
     const { displayValue = [] } = this.getItem(selectedKeys, true);
-
+    this.inputTag.current.onFocus();
+    // console.log('menuItemClickHandler');
     if (isMutliple(props)) {
       this.setValue(selectedKeys, displayValue, {});
       this.onChangeHandle({ value: selectedKeys, displayValue, event });
@@ -744,7 +759,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     }
   }
 
-  onInputTagChange = ({ value, displayValue }: Object) => {
+  onInputTagChange = ({ value, displayValue, event }: Object) => {
     this.setValue(value, displayValue, {});
     this.onChangeHandle({ value, displayValue });
   };
