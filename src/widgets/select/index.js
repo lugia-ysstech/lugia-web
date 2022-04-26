@@ -589,8 +589,6 @@ class Select extends React.Component<SelectProps, SelectState> {
     const { selectedKeys } = selectedValue;
 
     const { displayValue = [] } = this.getItem(selectedKeys, true);
-    this.inputTag.current.onFocus();
-    // console.log('menuItemClickHandler');
     if (isMutliple(props)) {
       this.setValue(selectedKeys, displayValue, {});
       this.onChangeHandle({ value: selectedKeys, displayValue, event });
@@ -759,7 +757,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     }
   }
 
-  onInputTagChange = ({ value, displayValue, event }: Object) => {
+  onInputTagChange = ({ value, displayValue }: Object) => {
     this.setValue(value, displayValue, {});
     this.onChangeHandle({ value, displayValue });
   };
