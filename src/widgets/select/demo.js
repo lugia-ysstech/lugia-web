@@ -168,11 +168,19 @@ export default class Demo extends React.Component {
     return [<Test data={item} />];
   }
 
+  onBlur(event) {
+    console.log('失焦了', event);
+  }
   render() {
     const { value } = this.state;
 
     return [
       <Box>
+        <p>添加onBlur事件 单选</p>
+        <Select displayField={'label'} mutliple={false} data={data} onBlur={this.onBlur} />
+        <p>添加onBlur事件 多选</p>
+        <Select displayField={'label'} mutliple={true} data={data} onBlur={this.onBlur} />
+
         <p>mutliple 等于 true canSearch 等于 false </p>
         <Select
           displayField={'label'}
