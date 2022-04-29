@@ -307,8 +307,7 @@ export default ThemeProvider(
             target.style.overflowX = '';
           }
         });
-
-        this.xScrollerCriticalResizeObserver.observe(this.getTableBodyDom());
+        this.xScrollerCriticalResizeObserver.observe(this.getContentTableDom());
       }
     }
 
@@ -406,6 +405,13 @@ export default ThemeProvider(
         }
       }
     }
+
+    getContentTableDom() {
+      if (this.tableWrap && this.tableWrap.querySelector) {
+        return this.tableWrap.querySelector('.rc-table-content table');
+      }
+    }
+
     updateScrollY = () => {
       const tableHeight = this.getContainerHeight();
       if (this.canShowScrollY()) {
@@ -444,11 +450,6 @@ export default ThemeProvider(
         this.setState({ tableThead: nextHeader });
         this.updateScrollY();
       }, 0);
-
-      const { defaultExpandAllRows } = this.props;
-      if (defaultExpandAllRows && !this.currentPropsDataIsSame) {
-        this.setXScrollerCriticalResizeObserver();
-      }
     }
 
     static getDerivedStateFromProps(props, nextState) {
