@@ -221,14 +221,18 @@ export default ThemeProvider(
       const { getPartOfThemeProps } = this.props;
       const { themeConfig: { normal } = {} } = getPartOfThemeProps('Container');
       const newNormal = normal || {};
-      return 'height' in newNormal;
+      const { height } = newNormal;
+      return {
+        hasHeight: 'height' in newNormal,
+        height,
+      };
     }
 
     getLugiadHeightType = (): HeightType => {
       const { lugiadLayout, tableHeightType } = this.props;
       const { fixed, auto } = lugiadLayoutName;
+      const { height, hasHeight } = this.getContainerThemeHasHeight;
       if (tableHeightType) {
-        const hasHeight = this.getContainerThemeHasHeight();
         if (tableHeightType === fixed && !hasHeight) {
           console.log('表格高度为空,表格内容将完全展示');
         }
@@ -254,15 +258,12 @@ export default ThemeProvider(
     canShowScrollY = (): boolean => {
       const { isAuto, isFixed } = getLugiadHeightTypeBoolean(this.getLugiadHeightType());
 
-      const containerHeight = this.getContainerHeight();
-      const tableHeight = this.computeTableHeight();
-      if (
-        (isAuto && (tableHeight === containerHeight || tableHeight < containerHeight)) ||
-        (isFixed && !this.getContainerThemeHasHeight())
-      ) {
+      if (isAuto || (isFixed && !this.getContainerThemeHasHeight().hasHeight)) {
         return;
       }
 
+      const containerHeight = this.getContainerHeight();
+      const tableHeight = this.computeTableHeight();
       return tableHeight && (containerHeight < tableHeight - 2 || tableHeight === containerHeight);
     };
 
