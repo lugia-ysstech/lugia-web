@@ -263,12 +263,10 @@ export default ThemeProvider(
 
       if (
         (isAuto && tableHeight <= containerHeight) ||
-        (isFixed && !this.getContainerThemeHasHeight().hasHeight)
+        (isFixed && !this.getContainerThemeHasHeight().hasHeight) ||
+        !data ||
+        !data.length
       ) {
-        return;
-      }
-
-      if (!data || !data.length) {
         return;
       }
 
