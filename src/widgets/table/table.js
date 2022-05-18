@@ -256,14 +256,20 @@ export default ThemeProvider(
     };
 
     canShowScrollY = (): boolean => {
+      const { data } = this.props;
       const { isAuto, isFixed } = getLugiadHeightTypeBoolean(this.getLugiadHeightType());
+      const containerHeight = this.getContainerHeight();
+      const tableHeight = this.computeTableHeight();
 
-      if (isAuto || (isFixed && !this.getContainerThemeHasHeight().hasHeight)) {
+      if (
+        (isAuto && tableHeight <= containerHeight) ||
+        (isFixed && !this.getContainerThemeHasHeight().hasHeight) ||
+        !data ||
+        !data.length
+      ) {
         return;
       }
 
-      const containerHeight = this.getContainerHeight();
-      const tableHeight = this.computeTableHeight();
       return tableHeight && (containerHeight < tableHeight - 2 || tableHeight === containerHeight);
     };
 
