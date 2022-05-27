@@ -88,9 +88,10 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
       isAllowSelect,
     };
     const editDivTheme = getEditDivTheme(this.props, isLugiaHead, propsConfig, editingTheme);
+    const isReactDom = React.isValidElement(text);
     const defaultText = clearValue
       ? ''
-      : typeof text !== 'object' && isValued(text)
+      : (typeof text !== 'object' && isValued(text)) || isReactDom
       ? record[text] || text
       : '';
 
@@ -153,7 +154,9 @@ export default class TableCell extends React.Component<TableCellProps, TableCell
       >
         {customRender && !isLugiaHead
           ? customRender(text, record, index)
-          : defaultText && defaultText.toString()}
+          : defaultText && isReactDom
+          ? defaultText
+          : defaultText.toString()}
         {allowEdit && isSelect && selectSuffixElement ? (
           <InnerTriggerDiv>{selectSuffixElement}</InnerTriggerDiv>
         ) : null}

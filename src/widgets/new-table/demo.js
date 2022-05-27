@@ -240,6 +240,46 @@ const newData = [
     isHead: true,
   },
 ];
+const domColumn = [
+  {
+    title: <div>"姓名123123123"</div>,
+    dataIndex: 'name',
+    key: 'name',
+    align: 'left',
+    sortType: 'string',
+    width: 100,
+    ellipsis: true,
+    fixed: 'left',
+  },
+  {
+    title: '年龄',
+    dataIndex: 'age',
+    key: 'age',
+    align: 'left',
+    sortType: 'number',
+    width: 226,
+    ellipsis: true,
+    fixed: 'left',
+  },
+  {
+    title: '分数',
+    dataIndex: 'score',
+    key: 'score',
+    align: 'left',
+    sortType: 'number',
+    width: 204,
+    ellipsis: true,
+    fixed: 'left',
+  },
+  {
+    title: '12312312',
+    dataIndex: 'score1',
+    key: 'score1',
+    align: 'left',
+    sortType: 'number',
+    width: 132,
+  },
+];
 
 export default class TableDemo extends React.Component<Object, Object> {
   constructor(props) {
@@ -393,6 +433,8 @@ export default class TableDemo extends React.Component<Object, Object> {
 
     return (
       <div>
+        <Title>表头渲染DOM节点数据</Title>
+        <EditTable data={[]} columns={domColumn} showHeader={true} allowEditHead={false} />
         <Title>空数据</Title>
         <Theme config={checkBoxConfig}>
           <EditTable
