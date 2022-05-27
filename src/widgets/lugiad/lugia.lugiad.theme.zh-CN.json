@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "widgetName": "Lugiad",
+    "aliasName": null,
+    "title": "子页面",
+    "viewProps": [],
+    "treeNodeHidden": false,
+    "data": [
+      {
+        "title": "子页面",
+        "iconClass": "icon",
+        "data": [
+          {
+            "name": "子页面",
+            "path": [
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "子页面",
+                "desc": "子页面"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -80,7 +80,6 @@
   "category": [
     "其他"
   ],
-  "themeConfigStyle": [],
   "type": {
     "SlideType": [
       {
@@ -224,6 +223,5 @@
         }
       }
     }
-  },
-  "themeConfig": []
+  }
 }

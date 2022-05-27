@@ -475,7 +475,6 @@
   "category": [
     "反馈"
   ],
-  "themeConfigStyle": [],
   "defaultTheme": {
     "Container": {
       "normal": {
@@ -788,6 +787,5 @@
         ]
       ]
     }
-  },
-  "themeConfig": []
+  }
 }

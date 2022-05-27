@@ -93,7 +93,6 @@
   "category": [
     "反馈"
   ],
-  "themeConfigStyle": [],
   "type": {
     "PlacementType": [
       {
@@ -250,6 +249,5 @@
         ]
       ]
     }
-  },
-  "themeConfig": []
+  }
 }

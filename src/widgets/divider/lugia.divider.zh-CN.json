@@ -91,7 +91,6 @@
   "category": [
     "其他"
   ],
-  "themeConfigStyle": [],
   "type": {
     "DividerPosition": [
       {
@@ -150,6 +149,5 @@
         ]
       ]
     }
-  },
-  "themeConfig": []
+  }
 }

@@ -100,7 +100,6 @@
   "category": [
     "数据展示"
   ],
-  "themeConfigStyle": [],
   "type": {
     "ActionType": [
       {
@@ -269,6 +268,5 @@
       "clicked": [],
       "disabled": []
     }
-  },
-  "themeConfig": []
+  }
 }

@@ -1,1 +1,418 @@
-[]
+[
+  {
+    "widgetName": "TimeLine",
+    "aliasName": null,
+    "title": "时间轴",
+    "viewProps": [
+      {
+        "name": "reverse",
+        "text": "节点是否正序"
+      },
+      {
+        "name": "pending",
+        "text": "幽灵节点开启"
+      },
+      {
+        "name": "mode",
+        "text": "信息描述位置"
+      },
+      {
+        "name": "data",
+        "text": "数据编辑"
+      }
+    ],
+    "treeNodeHidden": false,
+    "data": [
+      {
+        "title": "时间节点",
+        "iconClass": "timeLineSpot",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": [
+              "TimeLineItem",
+              "TimeLineItemContainer"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              },
+              "spacingPart": {
+                "hidden": true
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": [
+              "TimeLineItem",
+              "TimeLineDot"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": [
+              "TimeLineItem",
+              "TimeLineItemLine"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "节点文本",
+        "iconClass": "timeLineText",
+        "data": [
+          {
+            "name": "标题文本",
+            "path": [
+              "TimeLineItem",
+              "TimeLineItemTitle"
+            ],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "描述文本",
+            "path": [
+              "TimeLineItem",
+              "TimeLineItemDescription"
+            ],
+            "description": {
+              "textPart": {
+                "text": "描述文本",
+                "desc": "描述文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "隐藏节点",
+        "iconClass": "timeLineDot",
+        "data": [
+          {
+            "name": "隐藏节点",
+            "path": [
+              "TimeLineItem",
+              "TimeLineExplainDot"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "隐藏节点",
+                "desc": "隐藏节点"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "隐藏信息",
+        "iconClass": "timeLineMessage",
+        "data": [
+          {
+            "name": "背景",
+            "path": [
+              "TimeLineItem",
+              "TimeLineItemTip",
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": [
+              "TimeLineItem",
+              "TimeLineItemTip",
+              "TooltipTitle"
+            ],
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "描述文本",
+            "path": [
+              "TimeLineItem",
+              "TimeLineItemTip",
+              "TooltipDescription"
+            ],
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "描述文本",
+                "desc": "描述文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "整体尺寸",
+        "iconClass": "background",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": [
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "TimeLine",
+    "aliasName": "PendingDotTimeLine",
+    "title": "幽灵节点时间轴",
+    "viewProps": [
+      {
+        "name": "reverse",
+        "text": "节点是否正序"
+      },
+      {
+        "name": "pending",
+        "text": "幽灵节点开启"
+      },
+      {
+        "name": "mode",
+        "text": "信息描述位置"
+      },
+      {
+        "name": "data",
+        "text": "数据编辑"
+      }
+    ],
+    "treeNodeHidden": false,
+    "data": [
+      {
+        "title": "时间节点",
+        "iconClass": "timeLineSpot",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": [
+              "TimeLineItem",
+              "TimeLineItemContainer"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          },
+          {
+            "name": "节点",
+            "path": [
+              "TimeLineItem",
+              "TimeLineDot"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "节点",
+                "desc": "节点"
+              }
+            }
+          },
+          {
+            "name": "连接线",
+            "path": [
+              "TimeLineItem",
+              "TimeLineItemLine"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "连接线",
+                "desc": "连接线"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "节点文本",
+        "iconClass": "timeLineText",
+        "data": [
+          {
+            "name": "标题文本",
+            "path": [
+              "TimeLineItem",
+              "TimeLineItemTitle"
+            ],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "描述文本",
+            "path": [
+              "TimeLineItem",
+              "TimeLineItemDescription"
+            ],
+            "description": {
+              "textPart": {
+                "text": "描述文本",
+                "desc": "描述文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "隐藏节点",
+        "iconClass": "timeLineDot",
+        "data": [
+          {
+            "name": "隐藏节点",
+            "path": [
+              "TimeLineItem",
+              "TimeLineExplainDot"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "隐藏节点",
+                "desc": "隐藏节点"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "隐藏信息",
+        "iconClass": "timeLineMessage",
+        "data": [
+          {
+            "name": "背景",
+            "path": [
+              "TimeLineItem",
+              "TimeLineItemTip",
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": [
+              "TimeLineItem",
+              "TimeLineItemTip",
+              "TooltipTitle"
+            ],
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              }
+            }
+          },
+          {
+            "name": "描述文本",
+            "path": [
+              "TimeLineItem",
+              "TimeLineItemTip",
+              "TooltipDescription"
+            ],
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "描述文本",
+                "desc": "描述文本"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "幽灵节点",
+        "iconClass": "timeLineGhost",
+        "data": [
+          {
+            "name": "节点图标",
+            "path": [
+              "TimeLineItem",
+              "TimeLineIcon"
+            ],
+            "description": {
+              "textPart": {
+                "text": "节点图标",
+                "desc": "节点图标"
+              }
+            },
+            "props": [
+              {
+                "name": "pendingDot",
+                "typeInTheme": "icon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "整体尺寸",
+        "iconClass": "background",
+        "data": [
+          {
+            "name": "整体尺寸",
+            "path": [
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "整体尺寸",
+                "desc": "整体尺寸"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

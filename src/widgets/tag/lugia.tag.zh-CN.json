@@ -513,7 +513,6 @@
   "category": [
     "数据展示"
   ],
-  "themeConfigStyle": [],
   "type": {
     "ShapeType": [
       {
@@ -702,6 +701,5 @@
       "active": [],
       "disabled": []
     }
-  },
-  "themeConfig": []
+  }
 }

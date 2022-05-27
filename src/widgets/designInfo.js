@@ -143,7 +143,6 @@ export default [
       },
       designInfo: {},
       category: ['反馈'],
-      themeConfigStyle: [],
       type: {
         AlertType: [
           { value: 'info', text: '信息' },
@@ -197,7 +196,6 @@ export default [
           normal: [['color'], ['fontSize'], ['padding']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Alert,
@@ -373,7 +371,6 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         InputSize: [
           { value: 'small', text: '小' },
@@ -548,7 +545,6 @@ export default [
           active: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: AmountInput,
@@ -628,7 +624,6 @@ export default [
       },
       designInfo: {},
       category: ['其他'],
-      themeConfigStyle: [],
       type: {
         SlideType: [
           { value: 'circle', text: '圆型' },
@@ -686,7 +681,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
       hideInTollPanel: true,
     },
@@ -832,7 +826,6 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         sizeType: ['small', 'default', 'large'],
         ValidateStatus: ['default', 'error'],
@@ -1102,7 +1095,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: AutoComplete,
@@ -1249,7 +1241,6 @@ export default [
         },
       },
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         AvatarType: [
           { value: 'text', text: '文本' },
@@ -1294,7 +1285,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Avatar,
@@ -1367,7 +1357,6 @@ export default [
       },
       events: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         AvatarType: [
           { value: 'text', text: '文本' },
@@ -1412,7 +1401,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Avatar,
@@ -1486,7 +1474,6 @@ export default [
       },
       events: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         AvatarType: [
           { value: 'text', text: '文本' },
@@ -1530,7 +1517,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Avatar,
@@ -1595,7 +1581,6 @@ export default [
       events: {},
       designInfo: {},
       category: ['其他'],
-      themeConfigStyle: [],
       type: {
         ShowType: [
           { value: 'textType', text: '文本' },
@@ -1622,7 +1607,6 @@ export default [
           normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
       hideInTollPanel: true,
     },
@@ -1709,7 +1693,6 @@ export default [
         },
       },
       category: ['数据展示'],
-      themeConfigStyle: [],
       theme: {
         Badge: {
           name: '点状徽标',
@@ -1728,7 +1711,6 @@ export default [
           ],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Badge,
@@ -1786,7 +1768,6 @@ export default [
       },
       events: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       theme: {
         Badge: {
           name: '数字徽标',
@@ -1808,7 +1789,6 @@ export default [
           ],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Badge,
@@ -1868,7 +1848,6 @@ export default [
         },
       },
       category: ['通用'],
-      themeConfigStyle: [],
       type: {
         ShapeType: [
           { value: 'circle', text: '圆形' },
@@ -1895,7 +1874,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: BasicElements,
@@ -1927,7 +1905,6 @@ export default [
       },
       events: {},
       category: ['通用'],
-      themeConfigStyle: [],
       type: {
         ShapeType: [
           { value: 'circle', text: '圆形' },
@@ -1953,7 +1930,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: BasicElements,
@@ -2021,7 +1997,6 @@ export default [
       },
       designInfo: {},
       category: ['通用'],
-      themeConfigStyle: [],
       type: {},
       defaultTheme: { Container: { normal: { width: 312 } } },
       theme: {
@@ -2239,7 +2214,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Breadcrumb,
@@ -2570,7 +2544,6 @@ export default [
         },
       },
       category: ['通用'],
-      themeConfigStyle: [],
       type: {
         ButtonShape: [
           { value: 'default', text: '默认型' },
@@ -2642,7 +2615,6 @@ export default [
           focus: [['color']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Button,
@@ -2750,7 +2722,6 @@ export default [
         },
       },
       category: ['通用'],
-      themeConfigStyle: [],
       type: {
         ButtonShape: [
           { value: 'default', text: '默认型' },
@@ -2822,7 +2793,6 @@ export default [
           focus: [['color']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Button,
@@ -2930,7 +2900,6 @@ export default [
         },
       },
       category: ['通用'],
-      themeConfigStyle: [],
       type: {
         ButtonShape: [
           { value: 'default', text: '默认型' },
@@ -3002,7 +2971,6 @@ export default [
           focus: [['color']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Button,
@@ -3111,7 +3079,6 @@ export default [
         },
       },
       category: ['通用'],
-      themeConfigStyle: [],
       type: {
         ButtonShape: [
           { value: 'default', text: '默认型' },
@@ -3174,7 +3141,6 @@ export default [
           focus: [['color']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Button,
@@ -3281,7 +3247,6 @@ export default [
         },
       },
       category: ['通用'],
-      themeConfigStyle: [],
       type: {
         ButtonShape: [
           { value: 'default', text: '默认型' },
@@ -3322,7 +3287,6 @@ export default [
           focus: [['color']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Button,
@@ -3430,7 +3394,6 @@ export default [
         },
       },
       category: ['通用'],
-      themeConfigStyle: [],
       type: {
         ButtonShape: [
           { value: 'default', text: '默认型' },
@@ -3489,7 +3452,6 @@ export default [
           focus: [['color']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Button,
@@ -4015,7 +3977,6 @@ export default [
         },
       },
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -4096,7 +4057,6 @@ export default [
           normal: [['width'], ['height'], ['border', 'bottom'], ['margin']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Card,
@@ -4228,7 +4188,6 @@ export default [
       },
       events: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -4302,7 +4261,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Card,
@@ -4432,7 +4390,6 @@ export default [
       },
       events: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -4511,7 +4468,6 @@ export default [
           hover: [['width'], ['height'], ['background']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Card,
@@ -4643,7 +4599,6 @@ export default [
       },
       events: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -4717,7 +4672,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Card,
@@ -4847,7 +4801,6 @@ export default [
       },
       events: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -4926,7 +4879,6 @@ export default [
           hover: [['width'], ['height'], ['background']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Card,
@@ -5055,7 +5007,6 @@ export default [
       },
       events: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -5137,7 +5088,6 @@ export default [
           ],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Card,
@@ -5266,7 +5216,6 @@ export default [
       },
       events: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -5305,7 +5254,6 @@ export default [
           ],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Card,
@@ -5434,7 +5382,6 @@ export default [
       },
       events: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         CardType: [
           { value: 'simple', text: '简洁卡片' },
@@ -5473,7 +5420,6 @@ export default [
           ],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Card,
@@ -5579,7 +5525,6 @@ export default [
       },
       designInfo: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         IndicatorType: [
           { value: 'horizontal', text: '水平显示' },
@@ -5673,7 +5618,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Carousel,
@@ -5916,7 +5860,6 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         changeType: {
           newValue: 'string[]',
@@ -6465,7 +6408,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Cascader,
@@ -6563,7 +6505,6 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         CheckboxType: ['default', 'vertical'],
         CheckboxStyle: {
@@ -6657,7 +6598,6 @@ export default [
         },
       },
       childrenWidget: ['Checkbox.Group'],
-      themeConfig: [],
     },
     target: Checkbox,
     screenshot:
@@ -7166,7 +7106,6 @@ export default [
       },
       designInfo: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         CollapseStyle: {
           width: { type: 'number', desc: 'Collapse宽度' },
@@ -7248,7 +7187,6 @@ export default [
         },
       },
       childrenWidget: ['Collapse.Panel'],
-      themeConfig: [],
     },
     target: Collapse,
     screenshot:
@@ -7606,7 +7544,6 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         InputSize: [
           { value: 'small', text: '小' },
@@ -7884,7 +7821,6 @@ export default [
         'DatePicker.WeeksPicker',
         'DatePicker.RangePicker',
       ],
-      themeConfig: [],
     },
     target: DatePicker,
     screenshot:
@@ -9685,7 +9621,6 @@ export default [
         },
       },
       category: ['其他'],
-      themeConfigStyle: [],
       type: {
         DividerPosition: [
           { value: 'left', text: '居左' },
@@ -9712,7 +9647,6 @@ export default [
           ],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Divider,
@@ -9763,7 +9697,6 @@ export default [
       },
       events: {},
       category: ['其他'],
-      themeConfigStyle: [],
       type: {
         DividerPosition: [
           { value: 'left', text: '居左' },
@@ -9790,7 +9723,6 @@ export default [
           ],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Divider,
@@ -9883,7 +9815,6 @@ export default [
       },
       designInfo: {},
       category: ['反馈'],
-      themeConfigStyle: [],
       type: {
         PlacementType: [
           { value: 'top', text: '顶部' },
@@ -9942,7 +9873,6 @@ export default [
           normal: [['opacity'], ['background']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Drawer,
@@ -10401,7 +10331,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         AlignType: [
           { value: 'topLeft', text: '上左' },
@@ -10713,7 +10642,6 @@ export default [
         },
       },
       childrenWidget: [],
-      themeConfig: [],
     },
     target: Dropmenu,
     screenshot:
@@ -10902,7 +10830,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         AlignType: [
           { value: 'topLeft', text: '上左' },
@@ -11174,7 +11101,6 @@ export default [
         },
       },
       childrenWidget: [],
-      themeConfig: [],
     },
     target: Dropmenu,
     screenshot:
@@ -11228,7 +11154,6 @@ export default [
       },
       designInfo: {},
       category: ['通用'],
-      themeConfigStyle: [],
       theme: {
         Icon: {
           name: '图标',
@@ -11239,7 +11164,6 @@ export default [
           disabled: [['color'], ['cursor']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Icon,
@@ -11285,7 +11209,6 @@ export default [
       events: {},
       designInfo: {},
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {},
       defaultTheme: {},
       theme: {
@@ -11307,7 +11230,6 @@ export default [
           ],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Image,
@@ -11556,7 +11478,6 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         InputType: [
           { value: 'text', text: '文本' },
@@ -11672,7 +11593,6 @@ export default [
         },
       },
       childrenWidget: ['Input.Textarea', 'Input.CombineInput'],
-      themeConfig: [],
     },
     target: Input,
     screenshot:
@@ -13104,7 +13024,6 @@ export default [
       },
       designInfo: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       theme: {
         Container: {
           name: '文本',
@@ -13155,7 +13074,6 @@ export default [
           disabled: [['color'], ['cursor']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Label,
@@ -13284,7 +13202,6 @@ export default [
       events: {},
       designInfo: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       defaultTheme: { Container: { normal: { width: 750, height: 400 } } },
       theme: {
         Container: {
@@ -13306,7 +13223,6 @@ export default [
           hover: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Lugiad,
@@ -13816,7 +13732,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         SizeType: [
           { value: 'small', text: '小' },
@@ -14037,7 +13952,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Menu,
@@ -14282,7 +14196,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         SizeType: [
           { value: 'small', text: '小' },
@@ -14528,7 +14441,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Menu,
@@ -14579,7 +14491,6 @@ export default [
       events: {},
       designInfo: {},
       category: ['反馈'],
-      themeConfigStyle: [],
       defaultTheme: { Container: { normal: { width: 500 } } },
       theme: {
         Container: {
@@ -14607,7 +14518,6 @@ export default [
           normal: [['color'], ['font']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
       hideInTollPanel: true,
     },
@@ -14882,7 +14792,6 @@ export default [
         },
       },
       category: ['反馈'],
-      themeConfigStyle: [],
       defaultTheme: { Container: { normal: { width: 520, height: 70 } } },
       theme: {
         Container: {
@@ -14992,7 +14901,6 @@ export default [
           normal: [['background']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Modal,
@@ -15147,7 +15055,6 @@ export default [
         onCancel: { desc: '点击取消时的回调', args: [] },
       },
       category: ['反馈'],
-      themeConfigStyle: [],
       defaultTheme: {
         Container: { normal: { minWidth: 0, width: 520, height: 70 } },
       },
@@ -15258,7 +15165,6 @@ export default [
           normal: [['background']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Modal,
@@ -16596,7 +16502,6 @@ export default [
         },
       },
       category: ['导航'],
-      themeConfigStyle: [],
       type: {
         ThemeStyleType: [
           { value: 'light', text: '白昼风格' },
@@ -16863,7 +16768,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Navmenu,
@@ -17087,7 +16991,6 @@ export default [
         },
       },
       category: ['导航'],
-      themeConfigStyle: [],
       type: {
         ThemeStyleType: [
           { value: 'light', text: '白昼风格' },
@@ -17437,7 +17340,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Navmenu,
@@ -17661,7 +17563,6 @@ export default [
         },
       },
       category: ['导航'],
-      themeConfigStyle: [],
       type: {
         ThemeStyleType: [
           { value: 'light', text: '白昼风格' },
@@ -18070,7 +17971,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Navmenu,
@@ -18295,7 +18195,6 @@ export default [
         },
       },
       category: ['导航'],
-      themeConfigStyle: [],
       type: {
         ThemeStyleType: [
           { value: 'light', text: '白昼风格' },
@@ -18557,7 +18456,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Navmenu,
@@ -18615,7 +18513,6 @@ export default [
       events: {},
       designInfo: {},
       category: ['反馈'],
-      themeConfigStyle: [],
       type: {
         PlacementType: [
           { value: 'topRight', text: '右上' },
@@ -18661,7 +18558,6 @@ export default [
           normal: [['color'], ['font']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
       hideInTollPanel: true,
     },
@@ -18910,7 +18806,6 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         InputSize: [
           { value: 'small', text: '小' },
@@ -19094,7 +18989,6 @@ export default [
           normal: [['border', 'top']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: NumberInput,
@@ -19185,7 +19079,6 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
-      themeConfigStyle: [],
       defaultTheme: { Container: { normal: { width: 800 } } },
       theme: {
         Container: {
@@ -19197,7 +19090,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: PageLayout,
@@ -19547,7 +19439,6 @@ export default [
         },
       },
       category: ['导航'],
-      themeConfigStyle: [],
       type: {
         BlockType: [
           { value: 'Page', text: '主体' },
@@ -19912,7 +19803,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Pagination,
@@ -20169,7 +20059,6 @@ export default [
         },
       },
       category: ['导航'],
-      themeConfigStyle: [],
       type: {
         BlockType: [
           { value: 'Page', text: '主体' },
@@ -20277,7 +20166,6 @@ export default [
           normal: [['color'], ['font'], ['fontSize'], ['cursor']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Pagination,
@@ -20540,7 +20428,6 @@ export default [
         },
       },
       category: ['反馈'],
-      themeConfigStyle: [],
       type: {
         DirectionType: [
           { value: 'topLeft', text: '上左' },
@@ -20670,7 +20557,6 @@ export default [
           normal: [['opacity'], ['color'], ['font'], ['fontSize']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
       hideInTollPanel: true,
     },
@@ -20826,7 +20712,6 @@ export default [
         },
       },
       category: ['反馈'],
-      themeConfigStyle: [],
       type: {
         DirectionType: [
           { value: 'topLeft', text: '上左' },
@@ -20954,7 +20839,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
       hideInTollPanel: true,
       defaultTheme: {
@@ -21130,7 +21014,6 @@ export default [
         },
       },
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         DirectionType: [
           { value: 'topLeft', text: '上左' },
@@ -21210,7 +21093,6 @@ export default [
           ],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
       hideInTollPanel: true,
     },
@@ -21330,7 +21212,6 @@ export default [
         },
       },
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         DirectionType: [
           { value: 'topLeft', text: '上左' },
@@ -21393,7 +21274,6 @@ export default [
           hover: [['color']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
       hideInTollPanel: true,
       defaultTheme: {
@@ -21590,7 +21470,6 @@ export default [
         },
       },
       category: ['反馈'],
-      themeConfigStyle: [],
       type: {
         ProgressType: [
           { value: 'line', text: '线型' },
@@ -21674,7 +21553,6 @@ export default [
           normal: [['color']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Progress,
@@ -21764,7 +21642,6 @@ export default [
       },
       events: {},
       category: ['反馈'],
-      themeConfigStyle: [],
       type: {
         ProgressType: [
           { value: 'line', text: '线型' },
@@ -21824,7 +21701,6 @@ export default [
           normal: [['background']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Progress,
@@ -21914,7 +21790,6 @@ export default [
       },
       events: {},
       category: ['反馈'],
-      themeConfigStyle: [],
       type: {
         ProgressType: [
           { value: 'line', text: '线型' },
@@ -21974,7 +21849,6 @@ export default [
           normal: [['background']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Progress,
@@ -22043,7 +21917,6 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: { RadioStyle: { color: { type: 'string', desc: 'Radio的颜色' } } },
       theme: {
         Container: {
@@ -22116,7 +21989,6 @@ export default [
         },
       },
       childrenWidget: ['Radio.Group'],
-      themeConfig: [],
     },
     target: Radio,
     screenshot:
@@ -22656,7 +22528,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       theme: {
         ActiveIcon: {
           name: '选中状态的图标',
@@ -22675,7 +22546,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Rate,
@@ -22772,7 +22642,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       theme: {
         ActiveIcon: {
           name: '选中状态的图标',
@@ -22807,7 +22676,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Rate,
@@ -22906,7 +22774,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       theme: {
         ActiveTextIcon: {
           name: '选中状态的文字',
@@ -22925,7 +22792,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Rate,
@@ -22969,7 +22835,6 @@ export default [
       },
       designInfo: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       defaultTheme: { Container: { normal: { width: 300, height: 120 } } },
       theme: {
         Container: {
@@ -22990,7 +22855,6 @@ export default [
           disabled: [['cursor'], ['border'], ['borderRadius'], ['boxShadow'], ['background']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: RichText,
@@ -23883,7 +23747,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         sizeType: [
           { value: 'small', text: '小' },
@@ -24314,7 +24177,6 @@ export default [
           disabled: [['color'], ['cursor']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Select,
@@ -24697,7 +24559,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         sizeType: [
           { value: 'small', text: '小' },
@@ -25212,7 +25073,6 @@ export default [
           disabled: [['color'], ['cursor']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Select,
@@ -25279,7 +25139,6 @@ export default [
       events: {},
       designInfo: {},
       category: ['反馈'],
-      themeConfigStyle: [],
       theme: {
         Wrap: {
           name: 'Skeleton的外框',
@@ -25370,7 +25229,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Skeleton,
@@ -25711,7 +25569,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         ChangeType: {
           newValue: 'string',
@@ -25787,7 +25644,6 @@ export default [
           ],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Slider,
@@ -25886,7 +25742,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         ChangeType: {
           newValue: 'string',
@@ -25962,7 +25817,6 @@ export default [
           ],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Slider,
@@ -26060,7 +25914,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         ChangeType: {
           newValue: 'string',
@@ -26136,7 +25989,6 @@ export default [
           ],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Slider,
@@ -26235,7 +26087,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         ChangeType: {
           newValue: 'string',
@@ -26325,7 +26176,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Slider,
@@ -27246,7 +27096,6 @@ export default [
         },
       },
       category: ['导航'],
-      themeConfigStyle: [],
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
@@ -27468,7 +27317,6 @@ export default [
         },
       },
       childrenWidget: [],
-      themeConfig: [],
     },
     target: Steps,
     screenshot:
@@ -27595,7 +27443,6 @@ export default [
       },
       events: {},
       category: ['导航'],
-      themeConfigStyle: [],
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
@@ -27817,7 +27664,6 @@ export default [
         },
       },
       childrenWidget: [],
-      themeConfig: [],
     },
     target: Steps,
     screenshot:
@@ -27945,7 +27791,6 @@ export default [
       },
       events: {},
       category: ['导航'],
-      themeConfigStyle: [],
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
@@ -28167,7 +28012,6 @@ export default [
         },
       },
       childrenWidget: [],
-      themeConfig: [],
     },
     target: Steps,
     screenshot:
@@ -28295,7 +28139,6 @@ export default [
       },
       events: {},
       category: ['导航'],
-      themeConfigStyle: [],
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
@@ -28527,7 +28370,6 @@ export default [
         },
       },
       childrenWidget: [],
-      themeConfig: [],
     },
     target: Steps,
     screenshot:
@@ -28655,7 +28497,6 @@ export default [
       },
       events: {},
       category: ['导航'],
-      themeConfigStyle: [],
       type: {
         StepType: [
           { value: 'simple', text: '简洁风格' },
@@ -28862,7 +28703,6 @@ export default [
         },
       },
       childrenWidget: [],
-      themeConfig: [],
     },
     target: Steps,
     screenshot:
@@ -28948,7 +28788,6 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         SizeType: [
           { value: 'default', text: '默认尺寸' },
@@ -29024,7 +28863,6 @@ export default [
           disabled: [['width'], ['height'], ['margin'], ['padding']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Switch,
@@ -29355,7 +29193,6 @@ export default [
       },
       designInfo: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         tableStyleType: ['zebraStripe', 'linear', 'bordered'],
         SizeType: ['default', 'large', 'small'],
@@ -29385,7 +29222,6 @@ export default [
         },
       },
       childrenWidget: [],
-      themeConfig: [],
     },
     target: Table,
     screenshot:
@@ -29855,7 +29691,6 @@ export default [
         },
       },
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         TabType: [
           { value: 'line', text: '线性标签页' },
@@ -30023,7 +29858,6 @@ export default [
         },
       },
       childrenWidget: [],
-      themeConfig: [],
     },
     target: Tabs,
     screenshot:
@@ -30219,7 +30053,6 @@ export default [
         },
       },
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         TabType: [
           { value: 'line', text: '线性标签页' },
@@ -30376,7 +30209,6 @@ export default [
         },
       },
       childrenWidget: [],
-      themeConfig: [],
     },
     target: Tabs,
     screenshot:
@@ -30572,7 +30404,6 @@ export default [
         },
       },
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         TabType: [
           { value: 'line', text: '线性标签页' },
@@ -30726,7 +30557,6 @@ export default [
         },
       },
       childrenWidget: [],
-      themeConfig: [],
     },
     target: Tabs,
     screenshot:
@@ -30973,7 +30803,6 @@ export default [
         },
       },
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         ShapeType: [
           { value: 'basic', text: '基本类型' },
@@ -31042,7 +30871,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Tag,
@@ -31124,7 +30952,6 @@ export default [
         },
       },
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         ShapeType: [
           { value: 'basic', text: '基本类型' },
@@ -31193,7 +31020,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Tag,
@@ -31275,7 +31101,6 @@ export default [
         },
       },
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         ShapeType: [
           { value: 'basic', text: '基本类型' },
@@ -31383,7 +31208,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Tag,
@@ -31578,7 +31402,6 @@ export default [
         },
       },
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         TimeLineMode: [
           { value: 'left', text: '左侧展示' },
@@ -31701,7 +31524,6 @@ export default [
         },
       },
       childrenWidget: [],
-      themeConfig: [],
     },
     target: TimeLine,
     screenshot:
@@ -31796,7 +31618,6 @@ export default [
       },
       events: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         TimeLineMode: [
           { value: 'left', text: '左侧展示' },
@@ -31907,7 +31728,6 @@ export default [
         },
       },
       childrenWidget: [],
-      themeConfig: [],
     },
     target: TimeLine,
     screenshot:
@@ -32072,7 +31892,6 @@ export default [
       },
       designInfo: {},
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         InputSize: [
           { value: 'small', text: '小' },
@@ -32198,7 +32017,6 @@ export default [
           normal: [['color'], ['background']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: TimePicker,
@@ -32306,7 +32124,6 @@ export default [
       },
       designInfo: {},
       category: ['数据展示'],
-      themeConfigStyle: [],
       type: {
         ActionType: [
           { value: 'click', text: '点击' },
@@ -32377,7 +32194,6 @@ export default [
           disabled: [],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
       hideInTollPanel: true,
     },
@@ -33084,7 +32900,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         SizeType: [
           { value: 'small', text: '小' },
@@ -33688,7 +33503,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Transfer,
@@ -33937,7 +33751,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         SizeType: [
           { value: 'small', text: '小' },
@@ -34382,7 +34195,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Transfer,
@@ -35074,7 +34886,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         sizeType: [
           { value: 'small', text: '小' },
@@ -35315,7 +35126,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Tree,
@@ -35665,7 +35475,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         sizeType: [
           { value: 'small', text: '小' },
@@ -35960,7 +35769,6 @@ export default [
           },
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Tree,
@@ -36975,7 +36783,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         sizeType: [
           { value: 'small', text: '小' },
@@ -37409,7 +37216,6 @@ export default [
           disabled: [['color'], ['cursor']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: TreeSelect,
@@ -37731,7 +37537,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         sizeType: [
           { value: 'small', text: '小' },
@@ -38393,7 +38198,6 @@ export default [
           disabled: [['color'], ['cursor']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: TreeSelect,
@@ -39368,7 +39172,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
@@ -39537,7 +39340,6 @@ export default [
           normal: [['color'], ['fontSize']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Upload,
@@ -39818,7 +39620,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
@@ -39974,7 +39775,6 @@ export default [
           normal: [['color'], ['fontSize']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Upload,
@@ -40255,7 +40055,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
@@ -40380,7 +40179,6 @@ export default [
           normal: [['color'], ['fontSize']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Upload,
@@ -40661,7 +40459,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
@@ -40795,7 +40592,6 @@ export default [
           normal: [['color'], ['fontSize']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Upload,
@@ -41076,7 +40872,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      themeConfigStyle: [],
       type: {
         UploadSize: [
           { value: 'small', text: '小' },
@@ -41442,7 +41237,6 @@ export default [
           normal: [['color'], ['fontSize']],
         },
       },
-      themeConfig: [],
       childrenWidget: [],
     },
     target: Upload,
