@@ -1,1 +1,107 @@
-[]
+[
+  {
+    "widgetName": "Table",
+    "aliasName": null,
+    "title": "表格",
+    "viewProps": "",
+    "treeNodeHidden": false,
+    "data": [
+      {
+        "title": "表格整体样式",
+        "iconClass": "AmountInput",
+        "data": [
+          {
+            "name": "表格整体样式",
+            "path": [
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "为表格配置整体样式"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "表头",
+        "iconClass": "Head",
+        "data": [
+          {
+            "name": "表格表头配置",
+            "path": [
+              "Head"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "表头",
+                "desc": "表格表头配置"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "表格行",
+        "iconClass": "Head",
+        "data": [
+          {
+            "name": "表格行",
+            "path": [
+              "BodyRow"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "表格行",
+                "desc": "表格行配置"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "展开行图标",
+        "iconClass": "uploadImage",
+        "data": [
+          {
+            "name": "展开行图标样式",
+            "path": [
+              "ExpandIcon"
+            ],
+            "props": [
+              {
+                "name": "expandIcon",
+                "typeInTheme": "icon"
+              }
+            ],
+            "description": {
+              "textPart": {
+                "text": "展开行图标",
+                "desc": "为展开行图标配置样式"
+              }
+            }
+          },
+          {
+            "name": "折叠行图标样式",
+            "path": [
+              "CollapseIcon"
+            ],
+            "props": [
+              {
+                "name": "collapseIcon",
+                "typeInTheme": "icon"
+              }
+            ],
+            "description": {
+              "textPart": {
+                "text": "折叠行图标",
+                "desc": "为折叠行图标配置样式"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -164,7 +164,6 @@
   "category": [
     "数据录入"
   ],
-  "themeConfigStyle": [],
   "type": {
     "InputSize": [
       {
@@ -549,6 +548,5 @@
         ]
       ]
     }
-  },
-  "themeConfig": []
+  }
 }

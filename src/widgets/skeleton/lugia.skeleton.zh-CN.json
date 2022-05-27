@@ -67,7 +67,6 @@
   "category": [
     "反馈"
   ],
-  "themeConfigStyle": [],
   "theme": {
     "Wrap": {
       "name": "Skeleton的外框",
@@ -293,6 +292,5 @@
       "clicked": [],
       "disabled": []
     }
-  },
-  "themeConfig": []
+  }
 }

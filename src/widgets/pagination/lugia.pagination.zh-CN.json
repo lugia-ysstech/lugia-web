@@ -609,7 +609,6 @@
   "category": [
     "导航"
   ],
-  "themeConfigStyle": [],
   "type": {
     "BlockType": [
       {
@@ -1624,6 +1623,5 @@
         }
       }
     }
-  },
-  "themeConfig": []
+  }
 }

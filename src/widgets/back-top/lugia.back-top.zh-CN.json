@@ -59,7 +59,6 @@
   "category": [
     "其他"
   ],
-  "themeConfigStyle": [],
   "type": {
     "ShowType": [
       {
@@ -121,6 +120,5 @@
         ]
       ]
     }
-  },
-  "themeConfig": []
+  }
 }

@@ -1,1 +1,40 @@
-[]
+[
+  {
+    "widgetName": "Image",
+    "aliasName": null,
+    "title": "更改图片",
+    "viewProps": [
+      {
+        "name": "src",
+        "text": "更改图片"
+      },
+      {
+        "name": "isBackground",
+        "text": "是否为背景图片"
+      }
+    ],
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "图片整体配置",
+        "data": [
+          {
+            "name": "图片整体样式配置",
+            "path": [
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "外观",
+                "desc": "面板中外观配置的区块整体文本"
+              },
+              "textPart": {
+                "hidden": true
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

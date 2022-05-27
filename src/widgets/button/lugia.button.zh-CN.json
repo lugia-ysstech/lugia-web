@@ -820,7 +820,6 @@
   "category": [
     "通用"
   ],
-  "themeConfigStyle": [],
   "type": {
     "ButtonShape": [
       {
@@ -1066,6 +1065,5 @@
         ]
       ]
     }
-  },
-  "themeConfig": []
+  }
 }

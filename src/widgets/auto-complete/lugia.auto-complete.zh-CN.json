@@ -171,7 +171,6 @@
   "category": [
     "数据录入"
   ],
-  "themeConfigStyle": [],
   "type": {
     "sizeType": [
       "small",
@@ -836,6 +835,5 @@
       "clicked": [],
       "disabled": []
     }
-  },
-  "themeConfig": []
+  }
 }

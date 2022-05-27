@@ -38,7 +38,6 @@
   "category": [
     "数据展示"
   ],
-  "themeConfigStyle": [],
   "defaultTheme": {
     "Container": {
       "normal": {
@@ -104,6 +103,5 @@
         ]
       ]
     }
-  },
-  "themeConfig": []
+  }
 }

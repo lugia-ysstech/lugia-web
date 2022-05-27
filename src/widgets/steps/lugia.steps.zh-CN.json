@@ -2611,7 +2611,6 @@
   "category": [
     "导航"
   ],
-  "themeConfigStyle": [],
   "type": {
     "StepType": [
       {
@@ -3294,6 +3293,5 @@
   },
   "childrenWidget": [
     "step"
-  ],
-  "themeConfig": []
+  ]
 }

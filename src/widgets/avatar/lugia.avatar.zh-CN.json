@@ -224,7 +224,6 @@
   "category": [
     "数据展示"
   ],
-  "themeConfigStyle": [],
   "type": {
     "AvatarType": [
       {
@@ -349,6 +348,5 @@
       "clicked": [],
       "disabled": []
     }
-  },
-  "themeConfig": []
+  }
 }

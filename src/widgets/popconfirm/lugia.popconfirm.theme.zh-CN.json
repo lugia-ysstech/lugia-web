@@ -1,1 +1,284 @@
-[]
+[
+  {
+    "widgetName": "Popconfirm",
+    "aliasName": null,
+    "title": "气泡确认框",
+    "viewProps": [
+      {
+        "name": "placement",
+        "text": "显示位置"
+      },
+      {
+        "name": "popArrowType",
+        "text": "箭头风格"
+      },
+      {
+        "name": "okType",
+        "text": "确定按钮类型"
+      }
+    ],
+    "treeNodeHidden": false,
+    "data": [
+      {
+        "title": "气泡框",
+        "iconClass": "popconfirm",
+        "data": [
+          {
+            "name": "背景框",
+            "path": [
+              "PopconfirmContent",
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "背景框",
+                "desc": "背景框"
+              },
+              "textPart": {
+                "hidden": true
+              }
+            }
+          },
+          {
+            "name": "标题文本",
+            "path": [
+              "PopconfirmTitle"
+            ],
+            "description": {
+              "textPart": {
+                "text": "标题文本",
+                "desc": "标题文本"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            },
+            "props": [
+              {
+                "name": "title",
+                "typeInTheme": "text"
+              }
+            ]
+          },
+          {
+            "name": "前缀图标",
+            "path": [
+              "PopconfirmIcon"
+            ],
+            "description": {
+              "textPart": {
+                "text": "前缀图标",
+                "desc": "前缀图标"
+              },
+              "appearancePart": {
+                "hidden": true
+              }
+            },
+            "props": [
+              {
+                "name": "icon",
+                "typeInTheme": "icon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "确认按钮",
+        "iconClass": "buttonAffirm",
+        "data": [
+          {
+            "name": "背景",
+            "path": [
+              "PopconfirmOkButton",
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "文本",
+            "path": [
+              "PopconfirmOkButton",
+              "ButtonText"
+            ],
+            "description": {
+              "textPart": {
+                "text": "文本",
+                "desc": "文本"
+              }
+            },
+            "props": [
+              {
+                "name": "okText",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "取消按钮",
+        "iconClass": "buttonCancel",
+        "data": [
+          {
+            "name": "背景",
+            "path": [
+              "PopconfirmCancelButton",
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "文本",
+            "path": [
+              "PopconfirmCancelButton",
+              "ButtonText"
+            ],
+            "description": {
+              "textPart": {
+                "text": "文本",
+                "desc": "文本"
+              }
+            },
+            "props": [
+              {
+                "name": "cancelText",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "Popconfirm",
+    "aliasName": "CustomPopconfirm",
+    "title": "气泡确认框",
+    "viewProps": [
+      {
+        "name": "placement",
+        "text": "显示位置"
+      },
+      {
+        "name": "popArrowType",
+        "text": "箭头风格"
+      },
+      {
+        "name": "okType",
+        "text": "确定按钮类型"
+      }
+    ],
+    "treeNodeHidden": false,
+    "data": [
+      {
+        "title": "气泡框",
+        "iconClass": "popconfirm",
+        "data": [
+          {
+            "name": "背景框",
+            "path": [
+              "PopconfirmContent",
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "背景框",
+                "desc": "背景框"
+              },
+              "textPart": {
+                "hidden": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "确认按钮",
+        "iconClass": "buttonAffirm",
+        "data": [
+          {
+            "name": "背景",
+            "path": [
+              "PopconfirmOkButton",
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "文本",
+            "path": [
+              "PopconfirmOkButton",
+              "ButtonText"
+            ],
+            "description": {
+              "textPart": {
+                "text": "文本",
+                "desc": "文本"
+              }
+            },
+            "props": [
+              {
+                "name": "okText",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "取消按钮",
+        "iconClass": "buttonCancel",
+        "data": [
+          {
+            "name": "背景",
+            "path": [
+              "PopconfirmCancelButton",
+              "Container"
+            ],
+            "description": {
+              "appearancePart": {
+                "text": "背景",
+                "desc": "背景"
+              }
+            }
+          },
+          {
+            "name": "文本",
+            "path": [
+              "PopconfirmCancelButton",
+              "ButtonText"
+            ],
+            "description": {
+              "textPart": {
+                "text": "文本",
+                "desc": "文本"
+              }
+            },
+            "props": [
+              {
+                "name": "cancelText",
+                "typeInTheme": "text"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

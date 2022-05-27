@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "widgetName": "Icon",
+    "aliasName": null,
+    "title": "图标",
+    "viewProps": "",
+    "treeNodeHidden": true,
+    "data": [
+      {
+        "title": "图标",
+        "iconClass": "iconsmall",
+        "data": [
+          {
+            "name": "图标",
+            "path": [
+              "Icon"
+            ],
+            "description": {
+              "textPart": {
+                "text": "图标",
+                "desc": "图标"
+              }
+            },
+            "props": [
+              {
+                "name": "iconClass",
+                "typeInTheme": "icon"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

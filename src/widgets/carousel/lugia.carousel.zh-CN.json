@@ -102,7 +102,6 @@
   "category": [
     "数据展示"
   ],
-  "themeConfigStyle": [],
   "type": {
     "IndicatorType": [
       {
@@ -377,6 +376,5 @@
       "clicked": [],
       "disabled": []
     }
-  },
-  "themeConfig": []
+  }
 }

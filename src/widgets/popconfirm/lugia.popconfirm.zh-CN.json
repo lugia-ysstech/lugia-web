@@ -445,7 +445,6 @@
   "category": [
     "反馈"
   ],
-  "themeConfigStyle": [],
   "type": {
     "DirectionType": [
       {
@@ -845,6 +844,5 @@
         ]
       ]
     }
-  },
-  "themeConfig": []
+  }
 }
