@@ -196,7 +196,20 @@ export default ThemeProvider(
       this.userAgentInfor = '';
       this.tableThead = 0;
       this.isVirtualTable = virtualModel && isBeyondBoundary(data, virtualBoundary);
+      this.timer = null;
     }
+
+    //updateScroll方法增加防抖，因为过程中需要rctable完成渲染之后才能进行高度获取从而设置scroll，期间会进行多次setState，
+    //中间几次setState获取的高度为错误高度，所以增加防抖使最后一次渲染进行修改，确保获取dom高度准确性
+    debounce = fn => {
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
+      //不然就创建新的定时器
+      this.timer = setTimeout(function() {
+        fn();
+      }, 40);
+    };
 
     isHasData = value => {
       return value && value.length > 0;
@@ -285,7 +298,8 @@ export default ThemeProvider(
           this.setState({
             tableThead: this.getTableThead(),
           });
-          this.updateScrollY();
+          this.debounce(this.updateScrollY);
+          // this.updateScrollY();
         }, 0);
 
         this.setXScrollerCriticalResizeObserver();
@@ -322,7 +336,8 @@ export default ThemeProvider(
             target.style.overflowX = '';
           }
         });
-        this.xScrollerCriticalResizeObserver.observe(this.getContentTableDom());
+        this.getContentTableDom() &&
+          this.xScrollerCriticalResizeObserver.observe(this.getContentTableDom());
       }
     }
 
@@ -354,9 +369,10 @@ export default ThemeProvider(
         Array.isArray(preData) &&
         (nextData.length !== preData.length || !isEqualObject(nextData, preData))
       ) {
-        setTimeout(() => {
-          this.updateScrollY();
-        }, 0);
+        // setTimeout(() => {
+        //   this.updateScrollY();
+        // }, 0);
+        this.debounce(this.updateScrollY);
       }
       if (
         !isEqualObject(nextColumns, columns) ||
@@ -392,8 +408,14 @@ export default ThemeProvider(
         }
 
         let tableBodyHeight = 0;
+
         if (tableBody && tableBody.scrollHeight) {
           tableBodyHeight = this.transferPxToNumber(tableBody.scrollHeight);
+        }
+        //这里增加滚动条高度配置，当没有竖向滚动条时scrollHeight为不包含滚动条的高度，此时tableHeight的高度就会计算出问题
+        let tableXScrollHeight = 0;
+        if (tableBody && (tableBody.offsetHeight || tableBody.clientHeight)) {
+          tableXScrollHeight = this.transferPxToNumber(tableBody.offsetHeight) - this.transferPxToNumber(tableBody.clientHeight);
         }
 
         let tableHeaderHeight = 0;
@@ -401,7 +423,7 @@ export default ThemeProvider(
         if (tableHead && tableHead.offsetHeight) {
           tableHeaderHeight = this.transferPxToNumber(tableHead.offsetHeight);
         }
-        return tableBodyHeight + tableHeaderHeight;
+        return tableBodyHeight+ tableXScrollHeight + tableHeaderHeight;
       }
     }
 
@@ -463,7 +485,8 @@ export default ThemeProvider(
         }
 
         this.setState({ tableThead: nextHeader });
-        this.updateScrollY();
+        this.debounce(this.updateScrollY);
+          // this.updateScrollY();
       }, 0);
     }
 
@@ -942,9 +965,10 @@ export default ThemeProvider(
     onExpandedRowsChange = (...param) => {
       const { onExpandedRowsChange } = this.props;
       onExpandedRowsChange && onExpandedRowsChange(...param);
-      setTimeout(() => {
-        this.updateScrollY();
-      }, 0);
+      this.debounce(this.updateScrollY);
+      // setTimeout(() => {
+      //   this.updateScrollY();
+      // }, 0);
     };
 
     judgeLastColumnIsHasChildren = () => {
