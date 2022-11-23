@@ -80,8 +80,6 @@ class DateInput extends Component<TypeProps, TypeState> {
   isClear: boolean;
   inputRef: HTMLElement;
 
-  
-
   constructor() {
     super();
     this.trigger = React.createRef();
@@ -259,6 +257,8 @@ class DateInput extends Component<TypeProps, TypeState> {
             hideAction={['click']}
           >
             <Input
+              {...prefixIcon}
+              {...suffixIcon}
               value={value}
               onChange={this.onChange}
               placeholder={placeholder}
