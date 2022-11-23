@@ -184,7 +184,6 @@ class DateInput extends Component<TypeProps, TypeState> {
       getPartOfThemeProps,
     });
     const { normal = {} } = themeConfig;
-    console.log(this.props,1111111111111);
     return (
       <Theme
         config={{
