@@ -80,6 +80,8 @@ class DateInput extends Component<TypeProps, TypeState> {
   isClear: boolean;
   inputRef: HTMLElement;
 
+  
+
   constructor() {
     super();
     this.trigger = React.createRef();
@@ -182,6 +184,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       getPartOfThemeProps,
     });
     const { normal = {} } = themeConfig;
+    console.log(this.props,1111111111111);
     return (
       <Theme
         config={{
@@ -257,8 +260,6 @@ class DateInput extends Component<TypeProps, TypeState> {
             hideAction={['click']}
           >
             <Input
-              {...prefixIcon}
-              {...suffixIcon}
               value={value}
               onChange={this.onChange}
               placeholder={placeholder}
@@ -316,16 +317,22 @@ class DateInput extends Component<TypeProps, TypeState> {
     if (isValid) {
       this.oldValue = newValue;
     }
-    this.setState({ value: newValue, isValid, visible: this.panelNeedVisible() }, () => {
-      this.exportOnChange({ event, newValue, oldValue: this.oldValue });
-    });
+    // this.setState({ value: newValue, isValid, visible: this.panelNeedVisible() }, () => {
+    //   this.exportOnChange({ event, newValue, oldValue: this.oldValue });
+    // });
+    //这里原来使用的setState回调，会使得输入框重新渲染导致修改后光标立马到日期框最后，用户体验不好
+    this.setState({ value: newValue, isValid, visible: this.panelNeedVisible() });
+    this.exportOnChange({ event, newValue, oldValue: this.oldValue });
   };
 
   panelChane = (param: { newValue: string, event: Object }) => {
     const { newValue, event } = param;
-    this.setState({ value: newValue, visible: this.panelNeedVisible(), isValid: true }, () => {
-      this.exportOnChange({ event, newValue, oldValue: this.oldValue });
-    });
+    // this.setState({ value: newValue, visible: this.panelNeedVisible(), isValid: true }, () => {
+    //   this.exportOnChange({ event, newValue, oldValue: this.oldValue });
+    // });
+    //同上
+    this.setState({ value: newValue, visible: this.panelNeedVisible(), isValid: true });
+    this.exportOnChange({ event, newValue, oldValue: this.oldValue });
   };
 
   exportOnChange = (param: { event: Object, newValue: string, oldValue: string }) => {
